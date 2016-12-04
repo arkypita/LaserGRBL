@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{839698EC-FE05-4112-ACCB-A5D7556714F0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LaserGRBL</RootNamespace>
+    <AssemblyName>LaserGRBL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <RunCodeAnalysis>False</RunCodeAnalysis>
+    <SourceAnalysisOverrideSettingsFile>C:\Users\Diego\AppData\Roaming\ICSharpCode\SharpDevelop5\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+    <ApplicationIcon>Grafica\LaserGrbl.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>PdbOnly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <BaseAddress>4194304</BaseAddress>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+    <StartAction>Project</StartAction>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Threading" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GrblCom.cs" />
+    <Compile Include="CSV\CsvDictionary.cs" />
+    <Compile Include="CSV\FormattedMessage.cs" />
+    <Compile Include="GrblCommand.cs" />
+    <Compile Include="GrblFile.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\HiResTimer.cs" />
+    <Compile Include="Tools\MathHelper.cs" />
+    <Compile Include="Tools\ThreadClass.cs" />
+    <Compile Include="Tools\WordWrap.cs" />
+    <Compile Include="UserControls\ColorProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ColorProgressBar.Designer.cs">
+      <DependentUpon>ColorProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ColorProgressBarDesigner.cs" />
+    <Compile Include="UserControls\CommandLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CommandLog.Designer.cs">
+      <DependentUpon>CommandLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DoubleProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DoubleProgressBar.Designer.cs">
+      <DependentUpon>DoubleProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GrblPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\GrblPanel.Designer.cs">
+      <DependentUpon>GrblPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GrblTextBox.cs" />
+    <Compile Include="UserControls\GrblTextBox.Designer.cs">
+      <DependentUpon>GrblTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ImageButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ImageButton.Designer.cs">
+      <DependentUpon>ImageButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ImageTransform.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UserControls\CommandLog.resx">
+      <DependentUpon>CommandLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\GrblPanel.resx">
+      <DependentUpon>GrblPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSV\alarm_codes.csv" />
+    <EmbeddedResource Include="CSV\error_codes.csv" />
+    <EmbeddedResource Include="CSV\setting_codes.csv" />
+    <None Include="Grafica\LaserGrbl.ico" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Grafica\add2.png" />
+    <Content Include="Grafica\check.png" />
+    <Content Include="Grafica\check2.png" />
+    <Content Include="Grafica\checks.png" />
+    <Content Include="Grafica\closeall.png" />
+    <Content Include="Grafica\configure.png" />
+    <Content Include="Grafica\connect_creating.png" />
+    <Content Include="Grafica\document_check.png" />
+    <Content Include="Grafica\document_delete.png" />
+    <Content Include="Grafica\document_error.png" />
+    <Content Include="Grafica\document_new.png" />
+    <Content Include="Grafica\error.png" />
+    <Content Include="Grafica\fileopen.png" />
+    <Content Include="Grafica\flash.png" />
+    <Content Include="Grafica\forbidden.png" />
+    <Content Include="Grafica\media_play_green.png" />
+    <Content Include="Grafica\media_stop_red.png" />
+    <Content Include="Grafica\stop.png" />
+    <Content Include="Grafica\text_align_left.png" />
+    <Content Include="Grafica\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CSV" />
+    <Folder Include="Tools" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
