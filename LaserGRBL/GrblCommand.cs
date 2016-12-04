@@ -15,7 +15,7 @@ namespace LaserGRBL
 		Color RightColor { get; }
 	}
 	
-	public class CSVD
+	public static class CSVD
 	{
 		public static CsvDictionary Settings = new CSV.CsvDictionary("LaserGRBL.CSV.setting_codes.csv", 3);
 		public static CsvDictionary Alarms = new CSV.CsvDictionary("LaserGRBL.CSV.alarm_codes.csv", 2);
@@ -29,6 +29,9 @@ namespace LaserGRBL
 		private CommandStatus mStatus;
 		private Dictionary<char, GrblCommand.Element> list;
 		private string mToolTip;
+		
+		private decimal mDistanceOffset;
+		private TimeSpan mTimeOffset;
 		
 		public class Element
 		{
@@ -51,9 +54,20 @@ namespace LaserGRBL
 
 		}
 
+		public void SetOffset(decimal Distance, TimeSpan Time)
+		{
+			mDistanceOffset = Distance;
+			mTimeOffset = Time;
+		}
+		
+		public TimeSpan TimeOffset
+		{get {return mTimeOffset;}}
+		
+		public decimal DistanceOffset
+		{get {return mDistanceOffset;}}
+		
 		public enum CommandStatus
 		{ Queued, WaitingResponse, ResponseGood, ResponseBad }
-
 
 		public object Clone()
 		{ return MemberwiseClone(); }
@@ -121,7 +135,9 @@ namespace LaserGRBL
 				}
 
 				mLine = sb.ToString();
-				Add(new Element(cmd, Decimal.Parse(num, System.Globalization.NumberFormatInfo.InvariantInfo))); //aggiungi l'ultimo
+				
+				if (cmd != '\0') 
+					Add(new Element(cmd, Decimal.Parse(num, System.Globalization.NumberFormatInfo.InvariantInfo))); //aggiungi l'ultimo
 			}
 			catch {}
 		}
@@ -148,12 +164,19 @@ namespace LaserGRBL
 					string brief = CSVD.Errors.GetItem(key, 0);
 					string desc = CSVD.Errors.GetItem(key, 1);
 					
-					mResult = brief;
-					mToolTip = desc;
+					if (brief != null)
+						mResult = brief;
+					
+					if (desc != null)
+						mToolTip = desc;
 				} catch {}
 			}
 		}
 
+		
+		public bool IsEmpty
+		{get{return mLine.Length == 0;}}
+		
 		#region G Codes
 
 		public Element G
@@ -313,8 +336,11 @@ namespace LaserGRBL
 						string unit = CSVD.Settings.GetItem(key, 1);
 						string desc = CSVD.Settings.GetItem(key, 2);
 						
-						mMessage = string.Format("{0} ({1})", message, brief);
-						mToolTip = string.Format("{0} [{1}]",desc ,unit);
+						if (brief != null)
+							mMessage = string.Format("{0} ({1})", message, brief);
+						
+						if (desc != null)
+							mToolTip = string.Format("{0} [{1}]",desc ,unit);
 					}
 					else if (mType == MessageType.Alarm) //ALARM:NUM
 					{

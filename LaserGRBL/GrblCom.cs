@@ -31,12 +31,21 @@ namespace LaserGRBL
 		
 		private int mBuffer;
 		private System.Drawing.PointF mLaserPosition;
+		
 		private int mProgramTarget;
 		private int mProgramExecuted;
 		private int mProgramSent;
+		
+		private TimeSpan mProgramTargetTime;
+		private TimeSpan mProgramExecutedTime;
+		
+		
 		private bool mInProgram;
 		private DateTime mProgramStart;
 		private DateTime mProgramEnd;
+		private DateTime mProgramPauseBegin;
+		private TimeSpan mPausedTime;
+		
 		private MacStatus mMachineStatus;
 		private const int BUFFER_SIZE = 127;
 		private Version mGrblVersion;
@@ -176,10 +185,14 @@ namespace LaserGRBL
 			{
 				ClearQueue(true);
 				mProgramTarget = prog.Count;
+				mProgramTargetTime = prog.EstimatedTime;
 				mProgramExecuted = 0;
+				mProgramExecutedTime = TimeSpan.Zero;
 				mProgramSent = 0;
 				mProgramStart = DateTime.UtcNow;
+				mProgramPauseBegin = mProgramStart;
 				mProgramEnd = DateTime.UtcNow;
+				mPausedTime = TimeSpan.Zero;
 				mInProgram = true;
 				foreach (GrblCommand cmd in prog)
 					mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
@@ -285,19 +298,31 @@ namespace LaserGRBL
 		public TimeSpan ProgramTime
 		{ get { return mProgramEnd - mProgramStart; } }
 		
+		public TimeSpan ProgramPauses
+		{
+			get
+			{
+				if (mMachineStatus == MacStatus.Run)
+					return mPausedTime;
+				else
+					return mPausedTime + (DateTime.UtcNow - mProgramPauseBegin);
+			}
+		}
+
+		public TimeSpan TrueProgramTime
+		{ get { return ProgramTime - ProgramPauses; } }
+		
 		public TimeSpan ProjectedTime
 		{
 			get 
 			{
 				int done = ProgramExecuted;
-				if (mInProgram && done > 1)
+				if (mInProgram && mProgramExecutedTime.Ticks > 0)
 				{
-					int targ = ProgramTarget;
-					int remain = targ - done;
-					TimeSpan elapsed = ProgramTime;
-					double speed = elapsed.TotalSeconds / done;
-					TimeSpan missing = TimeSpan.FromSeconds(remain * speed);
-					return elapsed+missing;
+					long real = TrueProgramTime.Ticks; //real elapsed time
+					long e_done = mProgramExecutedTime.Ticks; //projected at analyze
+					long e_total = mProgramTargetTime.Ticks; //total at analyze
+					return TimeSpan.FromTicks(real * e_total / e_done) + ProgramPauses;
 				}
 				else
 					return TimeSpan.Zero;
@@ -422,6 +447,8 @@ namespace LaserGRBL
 									if (mInProgram)
 										mProgramExecuted++;
 	
+									if (mInProgram)
+										mProgramExecutedTime = pending.TimeOffset;
 									//if (mQueue.Count == 0 && mPending.Count == 0)
 									//{
 									//	if (QueueStatus != null)
@@ -485,9 +512,21 @@ namespace LaserGRBL
 			Enum.TryParse(data, out var);
 			if (mMachineStatus != var)
 			{
+				bool oldpause = mMachineStatus != MacStatus.Run;
+				bool newpause = var != MacStatus.Run;
+				
 				mMachineStatus = var;
 				if (MachineStatusChanged != null)
 					MachineStatusChanged(mMachineStatus);
+				
+				if (mInProgram)
+				{
+					if (newpause != oldpause && newpause) //rising of pause
+						mProgramPauseBegin = DateTime.UtcNow; //store pause begin time
+					
+					if (newpause != oldpause && !newpause) //falling of pause
+						mPausedTime += (DateTime.UtcNow - mProgramPauseBegin); //cumulate pause time
+				}
 			}
 			
 			if (mMachineStatus == MacStatus.Idle && mQueuePtr.Count == 0 && mPending.Count == 0)

@@ -27,8 +27,11 @@ namespace LaserGRBL
 					string line = null;
 					while ((line = sr.ReadLine()) != null)
 						if ((line = line.Trim()).Length > 0)
-							if (!line.StartsWith(";"))
-								list.Add(new GrblCommand(line));
+						{
+							GrblCommand cmd = new GrblCommand(line);
+							if (!cmd.IsEmpty)
+								list.Add(cmd);
+						}
 				}
 			}
 			Analyze();
@@ -104,7 +107,8 @@ namespace LaserGRBL
 					else
 						mEstimatedTimeOff += delay;
 				}
-
+				
+				cmd.SetOffset(mTotalTravelOn + mTotalTravelOff, mEstimatedTimeOn + mEstimatedTimeOff);
 			}
 		}
 

@@ -45,7 +45,7 @@ namespace LaserGRBL.CSV
 			if (mD.ContainsKey(key))
 				return mD[key][item];
 			else
-				return "";
+				return null;
 		}
 	}
 }
