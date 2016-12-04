@@ -478,6 +478,10 @@ namespace LaserGRBL
 		private void ParseMachineStatus(string data)
 		{
 			MacStatus var = MacStatus.Disconnected;
+			
+			if (data.Contains(":"))
+				data = data.Substring(0, data.IndexOf(':'));
+			
 			Enum.TryParse(data, out var);
 			if (mMachineStatus != var)
 			{
