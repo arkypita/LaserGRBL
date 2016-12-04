@@ -168,7 +168,7 @@ namespace LaserGRBL
 		}
 		void BtnStopClick(object sender, EventArgs e)
 		{
-			mCom.SafetyDoor();
+			mCom.FeedHold();
 		}
 		void BtnResumeClick(object sender, EventArgs e)
 		{
