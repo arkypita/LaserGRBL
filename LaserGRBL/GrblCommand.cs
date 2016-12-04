@@ -190,9 +190,18 @@ namespace LaserGRBL
 		public Element M
 		{ get { return GetElement('M'); } }
 
+		public bool IsLaserON
+		{get {return IsM3 || IsM4;}}
+		
 		public bool IsM3
 		{ get { return M != null && M.Number == 3; } }
 
+		public bool IsM4
+		{ get { return M != null && M.Number == 4; } }
+		
+		public bool IsLaserOFF
+		{get {return IsM5;}}
+		
 		public bool IsM5
 		{ get { return M != null && M.Number == 5; } }
 

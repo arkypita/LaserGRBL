@@ -55,9 +55,9 @@ namespace LaserGRBL
 
 			foreach (GrblCommand cmd in list)
 			{
-				if (cmd.IsM3)
+				if (cmd.IsLaserON)
 					drawing = true;
-				else if (cmd.IsM5)
+				else if (cmd.IsLaserOFF)
 					drawing = false;
 				
 				if (cmd.F != null)
@@ -174,9 +174,9 @@ namespace LaserGRBL
 			
 			foreach (GrblCommand cmd in list)
 			{
-				if (cmd.IsM3)
+				if (cmd.IsLaserON)
 					drawing = true;
-				else if (cmd.IsM5)
+				else if (cmd.IsLaserOFF)
 					drawing = false;
 				
 				if (cmd.S != null)
