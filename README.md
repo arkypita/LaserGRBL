@@ -31,7 +31,7 @@ LaserGRBL is compatible with [Grbl v0.9](https://github.com/grbl/grbl/) and [Grb
 
 LaserGRBL is free software, released under the [GPLv3 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
-LaserGRBL is written in C# for .NET Framework 4.0 and can be compiled with [SharpDevelop](http://www.icsharpcode.net/opensource/sd/) IDE/Compiler
+LaserGRBL is written in C# for .NET Framework 4.0 and can be compiled with [SharpDevelop](http://www.icsharpcode.net/opensource/sd/) and of course with [Microsoft Visual Studio](https://www.visualstudio.com) IDE/Compiler
 
 #### Screenshot
 
