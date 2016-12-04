@@ -4,6 +4,10 @@ Laser optimized GUI for [GRBL](https://github.com/grbl/grbl/wiki)
 LaserGRBL is a Windows GUI for [GRBL](https://github.com/grbl/grbl/wiki). Unlike other GUI LaserGRBL it is specifically developed for use with laser cutter and engraver.
 LaserGRBL is compatible with [Grbl v0.9](https://github.com/grbl/grbl/) and [Grbl v1.1](https://github.com/gnea/grbl/)
 
+#### Download
+
+[Download precompiled version of LaserGRBL](https://dl.dropboxusercontent.com/u/21662123/shared%20on%20web/LaserGRBL.exe)
+
 #### Existing Features
 
 - File loading with engraving/cutting job preview (with alpha blending for grayscale engraving)
@@ -28,7 +32,7 @@ LaserGRBL is free software, released under the [GPLv3 license](https://www.gnu.o
 
 LaserGRBL is written in C# for .NET Framework 4.0 and can be compiled with [SharpDevelop](http://www.icsharpcode.net/opensource/sd/) IDE/Compiler
 
-### Screenshot
+#### Screenshot
 
 ![Galeon](https://cloud.githubusercontent.com/assets/8782035/20867453/e59430e6-ba44-11e6-91ed-0d3407387adf.jpg)
 
