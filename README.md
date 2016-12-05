@@ -20,11 +20,7 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 
 - Jogging
 - Feed overrides (added in Grbl v1.1)
-
-#### Known Bugs
-
-- 2D preview works only with absolute positions (G91 not supported in preview)
-- As claim to be laser optimized Z info are ignored when drawing preview
+- As claim to be laser optimized Z info are ignored when drawing preview!
 
 #### Licensing
 
