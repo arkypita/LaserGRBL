@@ -24,7 +24,6 @@ LaserGRBL is compatible with [Grbl v0.9](https://github.com/grbl/grbl/) and [Grb
 #### Known Bugs
 
 - 2D preview works only with absolute positions (G91 not supported in preview)
-- XYZ commands without explicit G command are ignored building preview
 - As claim to be laser optimized Z info are ignored when drawing preview
 
 #### Licensing
