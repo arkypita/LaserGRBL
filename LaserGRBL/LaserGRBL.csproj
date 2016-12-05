@@ -99,6 +99,103 @@
     <Compile Include="UserControls\CommandLog.Designer.cs">
       <DependentUpon>CommandLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\AutoHideStripBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockAreasEditor.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockContentCollection.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockContentEventArgs.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockContentHandler.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockOutlineBase.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPane.SplitterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPaneCaptionBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPaneCollection.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.AutoHideWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.DockDragHandler.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.DragHandler.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.FocusManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.MdiClientController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.Persistor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.SplitterDragHandler.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanelExtender.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockPanelSkin.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockPaneStripBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockWindow.SplitterControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockWindowCollection.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DragForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DummyControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\Enums.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\FloatWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\FloatWindowCollection.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Helpers\DockHelper.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Helpers\DrawHelper.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Helpers\ResourceHelper.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Helpers\Win32Helper.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\InertButtonBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\Interfaces.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Localization.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Measures.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\NestedDockingStatus.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\NestedPaneCollection.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\SplitterBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\VisibleNestedPaneCollection.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\VS2005AutoHideStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\VS2005DockPaneCaption.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\VS2005DockPaneStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\Win32\Enums.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Win32\NativeMethods.cs" />
+    <Compile Include="UserControls\DockingManager\Resources.Designer.cs" />
+    <Compile Include="UserControls\DockingManager\Strings.Designer.cs" />
     <Compile Include="UserControls\DoubleProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,6 +236,8 @@
     <EmbeddedResource Include="UserControls\CommandLog.resx">
       <DependentUpon>CommandLog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DockingManager\Resources.resx" />
+    <EmbeddedResource Include="UserControls\DockingManager\Strings.resx" />
     <EmbeddedResource Include="UserControls\GrblPanel.resx">
       <DependentUpon>GrblPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +276,31 @@
     <Content Include="Grafica\stop.png" />
     <Content Include="Grafica\text_align_left.png" />
     <Content Include="Grafica\warning.png" />
+    <Content Include="UserControls\DockingManager\Docking\DockPanel.bmp" />
+    <Content Include="UserControls\DockingManager\license.txt" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Bottom.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\Dockindicator_PaneDiamond_Fill.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Hotspot.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_HotspotIndex.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Left.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Right.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Top.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelBottom.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelBottom_Active.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelFill.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelFill_Active.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelLeft.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelLeft_Active.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelRight.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelRight_Active.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelTop.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelTop_Active.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockPane_AutoHide.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockPane_Close.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockPane_Dock.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockPane_Option.bmp" />
+    <Content Include="UserControls\DockingManager\Resources\DockPane_OptionOverflow.bmp" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
