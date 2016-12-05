@@ -79,7 +79,7 @@ namespace LaserGRBL
 
 					if (cmd.IsLinearMovement)
 						distance = Tools.MathHelper.LinearDistance(curX, curY, newX, newY);
-					else //arc of given radius
+					else if (cmd.IsArcMovement) //arc of given radius
 						distance = Tools.MathHelper.ArcDistance(curX, curY, newX, newY, cmd.GetArcRadius());
 
 					if (drawing)
@@ -98,7 +98,7 @@ namespace LaserGRBL
 					curX = newX;
 					curY = newY;
 				}
-				else if (cmd.IsG4)
+				else if (cmd.IsPause)
 				{
 					TimeSpan delay = cmd.P != null ? TimeSpan.FromMilliseconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
 
@@ -175,6 +175,7 @@ namespace LaserGRBL
 			bool drawing = false;
 			decimal curX = 0, curY = 0;
 			int curAlpha = 0;
+			bool cw = false;
 			
 			foreach (GrblCommand cmd in list)
 			{
@@ -204,13 +205,13 @@ namespace LaserGRBL
 							pen.DashPattern = new float[] { 4f, 4f };
 						}
 						
-						if (cmd.IsLinearMovement && (cmd.X != null || cmd.Y != null))
+						if (cmd.IsLinearMovement)
 						{
 							g.DrawLine(pen, new PointF((float)curX, (float)curY), new PointF((float)newX, (float)newY));
 						}
 						else if (cmd.IsArcMovement)
 						{
-							bool cw = cmd.IsG2;
+							cw = cmd.IsCW(cw);
 
 							PointF center = cmd.GetCenter((float)curX, (float)curY);
 							double cX = center.X;

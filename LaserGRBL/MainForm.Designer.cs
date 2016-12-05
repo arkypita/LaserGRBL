@@ -579,17 +579,17 @@
 			// StatusBar
 			// 
 			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.TTLFile,
-			this.TTTFile,
-			this.TTLLines,
-			this.TTTLines,
-			this.TTLEstimated,
-			this.TTTEstimated,
-			this.TTLLoadedIn,
-			this.TTTLoadedIn,
-			this.spring,
-			this.TTLStatus,
-			this.TTTStatus});
+            this.TTLFile,
+            this.TTTFile,
+            this.TTLLines,
+            this.TTTLines,
+            this.TTLLoadedIn,
+            this.TTTLoadedIn,
+            this.TTLEstimated,
+            this.TTTEstimated,
+            this.spring,
+            this.TTLStatus,
+            this.TTTStatus});
 			this.StatusBar.Location = new System.Drawing.Point(0, 646);
 			this.StatusBar.Name = "StatusBar";
 			this.StatusBar.Size = new System.Drawing.Size(1006, 24);
@@ -677,8 +677,8 @@
 			// MMn
 			// 
 			this.MMn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.fileToolStripMenuItem,
-			this.grblToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.grblToolStripMenuItem});
 			this.MMn.Location = new System.Drawing.Point(0, 0);
 			this.MMn.Name = "MMn";
 			this.MMn.Size = new System.Drawing.Size(1006, 24);
@@ -688,10 +688,10 @@
 			// fileToolStripMenuItem
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.MnFileOpen,
-			this.MnFileSend,
-			this.toolStripMenuItem1,
-			this.exitToolStripMenuItem});
+            this.MnFileOpen,
+            this.MnFileSend,
+            this.toolStripMenuItem1,
+            this.exitToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
 			this.fileToolStripMenuItem.Text = "&File";
@@ -725,10 +725,10 @@
 			// grblToolStripMenuItem
 			// 
 			this.grblToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.MnGrblReset,
-			this.toolStripSeparator1,
-			this.MnExportConfig,
-			this.MnImportConfig});
+            this.MnGrblReset,
+            this.toolStripSeparator1,
+            this.MnExportConfig,
+            this.MnImportConfig});
 			this.grblToolStripMenuItem.Name = "grblToolStripMenuItem";
 			this.grblToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
 			this.grblToolStripMenuItem.Text = "&Grbl";

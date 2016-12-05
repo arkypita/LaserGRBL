@@ -111,7 +111,9 @@
     <Compile Include="UserControls\GrblPanel.Designer.cs">
       <DependentUpon>GrblPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\GrblTextBox.cs" />
+    <Compile Include="UserControls\GrblTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\GrblTextBox.Designer.cs">
       <DependentUpon>GrblTextBox.cs</DependentUpon>
     </Compile>
@@ -176,10 +178,7 @@
     <Content Include="Grafica\text_align_left.png" />
     <Content Include="Grafica\warning.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CSV" />
-    <Folder Include="Tools" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

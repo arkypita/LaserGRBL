@@ -183,27 +183,34 @@ namespace LaserGRBL
 		{ get { return GetElement('G'); } }
 
 		public bool IsMovement
-		{ get { return G != null && G.Number >= 0 && G.Number <= 3; } }
+		{ get { return IsLinearMovement || IsArcMovement; } }
 
 		public bool IsLinearMovement
-		{ get { return G != null && (G.Number == 0 || G.Number == 1); } }
+		{ get { return (X != null || Y != null) && (I == null && J == null && R == null); } }
 
 		public bool IsArcMovement
-		{ get { return G != null && (G.Number == 2 || G.Number == 3); } }
+		{ get { return I != null || J != null || R != null; } }
 
-		public bool IsG0
-		{ get { return G != null && G.Number == 0; } }
+		//public bool IsG0
+		//{ get { return G != null && G.Number == 0; } }
 
-		public bool IsG1
-		{ get { return G != null && G.Number == 1; } }
+		//public bool IsG1
+		//{ get { return G != null && G.Number == 1; } }
 
-		public bool IsG2
-		{ get { return G != null && G.Number == 2; } }
+		public bool IsCW(bool prev)
+		{
+			if (G != null && G.Number == 2)
+				return true;
+			else if (G != null && G.Number == 3)
+				return false;
+			else
+				return prev;
+		}
 
-		public bool IsG3
-		{ get { return G != null && G.Number == 3; } }
+		//public bool IsG3
+		//{ get { return G != null && G.Number == 3; } }
 
-		public bool IsG4
+		public bool IsPause
 		{ get { return G != null && G.Number == 4; } }
 
 		#endregion

@@ -105,7 +105,7 @@ namespace LaserGRBL
 
 				RefreshButtonEnabled();
 				TbFileName.Text = filename;
-				TTTFile.Text = filename;
+				TTTFile.Text = System.IO.Path.GetFileName(filename);
 				TTTLines.Text = mLoadedFile.Count.ToString();
 				TTTLoadedIn.Text = elapsed.ToString() + " ms";
 				TTTEstimated.Text = Tools.Utils.TimeSpanToString(mLoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Millisecond);
