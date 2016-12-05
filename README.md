@@ -6,7 +6,7 @@ LaserGRBL is compatible with [Grbl v0.9](https://github.com/grbl/grbl/) and [Grb
 
 #### Download
 
-[Download precompiled version of LaserGRBL v0.1](https://dl.dropboxusercontent.com/u/21662123/shared%20on%20web/LaserGRBL.exe)
+All downloads available at https://github.com/arkypita/LaserGRBL/releases
 
 #### Existing Features
 
