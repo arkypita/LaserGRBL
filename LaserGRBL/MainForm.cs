@@ -108,7 +108,6 @@ namespace LaserGRBL
 				TTTFile.Text = System.IO.Path.GetFileName(filename);
 				TTTLines.Text = mLoadedFile.Count.ToString();
 				TTTLoadedIn.Text = elapsed.ToString() + " ms";
-				TTTEstimated.Text = Tools.Utils.TimeSpanToString(mLoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Millisecond);
 				Cursor = Cursors.Default;
 			}
 		}
@@ -210,9 +209,9 @@ namespace LaserGRBL
 				PB.PercString = "";
 			
 			if (mCom.InProgram)
-				TTTEstimated.Text = Tools.Utils.TimeSpanToString(mCom.ProjectedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Millisecond);
+				TTTEstimated.Text = Tools.Utils.TimeSpanToString(mCom.ProjectedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
 			else if (mLoadedFile != null)
-				TTTEstimated.Text = Tools.Utils.TimeSpanToString(mLoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Millisecond);
+				TTTEstimated.Text = Tools.Utils.TimeSpanToString(mLoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
 
 			if (mCom.InProgram)
 				TTLEstimated.Text = "Projected Time:";

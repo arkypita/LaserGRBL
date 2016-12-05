@@ -191,12 +191,6 @@ namespace LaserGRBL
 		public bool IsArcMovement
 		{ get { return I != null || J != null || R != null; } }
 
-		//public bool IsG0
-		//{ get { return G != null && G.Number == 0; } }
-
-		//public bool IsG1
-		//{ get { return G != null && G.Number == 1; } }
-
 		public bool IsCW(bool prev)
 		{
 			if (G != null && G.Number == 2)
@@ -207,11 +201,16 @@ namespace LaserGRBL
 				return prev;
 		}
 
-		//public bool IsG3
-		//{ get { return G != null && G.Number == 3; } }
-
 		public bool IsPause
 		{ get { return G != null && G.Number == 4; } }
+
+		//G90 
+
+		public bool IsAbsoluteCoord
+		{ get { return G != null && G.Number == 90; } }
+
+		public bool IsRelativeCoord
+		{ get { return G != null && G.Number == 91; } }
 
 		#endregion
 
@@ -284,7 +283,7 @@ namespace LaserGRBL
 			return new PointF(curX + oX, curY + oY);
 		}
 
-		public bool TrueMovement(decimal curX, decimal curY)
+		public bool TrueMovement(decimal curX, decimal curY, bool abs)
 		{ return (X != null || Y != null) && ((X == null || X.Number != curX) || (Y == null || Y.Number != curY)); }
 
 		public string LeftString

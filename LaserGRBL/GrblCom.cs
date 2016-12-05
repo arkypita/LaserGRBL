@@ -32,19 +32,7 @@ namespace LaserGRBL
 		private int mBuffer;
 		private System.Drawing.PointF mLaserPosition;
 		
-		private int mProgramTarget;
-		private int mProgramExecuted;
-		private int mProgramSent;
-		
-		private TimeSpan mProgramTargetTime;
-		private TimeSpan mProgramExecutedTime;
-		
-		
-		private bool mInProgram;
-		private DateTime mProgramStart;
-		private DateTime mProgramEnd;
-		private DateTime mProgramPauseBegin;
-		private TimeSpan mPausedTime;
+		private TimeProjection mTP = new TimeProjection();
 		
 		private MacStatus mMachineStatus;
 		private const int BUFFER_SIZE = 127;
@@ -184,16 +172,10 @@ namespace LaserGRBL
 			lock(this)
 			{
 				ClearQueue(true);
-				mProgramTarget = prog.Count;
-				mProgramTargetTime = prog.EstimatedTime;
-				mProgramExecuted = 0;
-				mProgramExecutedTime = TimeSpan.Zero;
-				mProgramSent = 0;
-				mProgramStart = DateTime.UtcNow;
-				mProgramPauseBegin = mProgramStart;
-				mProgramEnd = DateTime.UtcNow;
-				mPausedTime = TimeSpan.Zero;
-				mInProgram = true;
+			
+				mTP.Reset();
+				mTP.JobStart(prog.EstimatedTime, prog.Count);
+
 				foreach (GrblCommand cmd in prog)
 					mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
 			}
@@ -268,7 +250,7 @@ namespace LaserGRBL
 			{
 				ClearQueue(true);
 				mBuffer = 0;
-				mInProgram = false;
+				mTP.JobEnd();
 				
 				SendImmediate(24);
 			}
@@ -287,53 +269,25 @@ namespace LaserGRBL
 		#region Public Property
 		
 		public int ProgramTarget
-		{get { return mProgramTarget; }}
+		{get { return mTP.Target; }}
 
 		public int ProgramSent
-		{ get { return Math.Min(mProgramSent, mProgramTarget); } }
+		{ get { return mTP.Sent; } }
 
 		public int ProgramExecuted
-		{ get { return Math.Min(mProgramExecuted, mProgramTarget); } }
+		{ get { return mTP.Executed; } }
 		
 		public TimeSpan ProgramTime
-		{ get { return mProgramEnd - mProgramStart; } }
-		
-		public TimeSpan ProgramPauses
-		{
-			get
-			{
-				if (mMachineStatus == MacStatus.Run)
-					return mPausedTime;
-				else
-					return mPausedTime + (DateTime.UtcNow - mProgramPauseBegin);
-			}
-		}
-
-		public TimeSpan TrueProgramTime
-		{ get { return ProgramTime - ProgramPauses; } }
+		{ get { return mTP.TotalJobTime; } }
 		
 		public TimeSpan ProjectedTime
-		{
-			get 
-			{
-				int done = ProgramExecuted;
-				if (mInProgram && mProgramExecutedTime.Ticks > 0)
-				{
-					long real = TrueProgramTime.Ticks; //real elapsed time
-					long e_done = mProgramExecutedTime.Ticks; //projected at analyze
-					long e_total = mProgramTargetTime.Ticks; //total at analyze
-					return TimeSpan.FromTicks(real * e_total / e_done) + ProgramPauses;
-				}
-				else
-					return TimeSpan.Zero;
-			}
-		}
+		{ get { return mTP.ProjectedTarget; } }
 
 		public MacStatus MachineStatus
 		{ get { return mMachineStatus; } }
 
 		public bool InProgram
-		{ get { return mInProgram; } }
+		{ get { return mTP.InProgram; } }
 		
 		public System.Drawing.PointF LaserPosition
 		{ get { return mLaserPosition; } }
@@ -403,13 +357,10 @@ namespace LaserGRBL
 					mQueuePtr.Dequeue();
 				
 					mBuffer += (tosend.Command.Length +2); //+2 for \r\n
-					com.WriteLine(tosend.Command); 
+					com.WriteLine(tosend.Command);
 
-					if (mInProgram)
-					{
-						mProgramSent++;
-						mProgramEnd = DateTime.UtcNow;
-					}
+					if (mTP.InProgram)
+						mTP.JobSent();
 				}
 			}
 			catch {}
@@ -429,10 +380,6 @@ namespace LaserGRBL
 					{
 						lock(this)
 						{
-								
-							if (mInProgram)
-								mProgramEnd = DateTime.UtcNow;
-	
 							if (rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error"))
 							{
 								if (mPending.Count > 0)
@@ -443,12 +390,10 @@ namespace LaserGRBL
 	
 									pending.SetResult(rline, SupportCSV);
 									mBuffer -= (pending.Command.Length + 2); //+2 for \r\n
-	
-									if (mInProgram)
-										mProgramExecuted++;
-	
-									if (mInProgram)
-										mProgramExecutedTime = pending.TimeOffset;
+
+									if (mTP.InProgram)
+										mTP.JobExecuted(pending.TimeOffset);
+
 									//if (mQueue.Count == 0 && mPending.Count == 0)
 									//{
 									//	if (QueueStatus != null)
@@ -512,26 +457,26 @@ namespace LaserGRBL
 			Enum.TryParse(data, out var);
 			if (mMachineStatus != var)
 			{
-				bool oldpause = mMachineStatus != MacStatus.Run;
-				bool newpause = var != MacStatus.Run;
-				
 				mMachineStatus = var;
+
 				if (MachineStatusChanged != null)
 					MachineStatusChanged(mMachineStatus);
 				
-				if (mInProgram)
+				if (mTP.InProgram)
 				{
-					if (newpause != oldpause && newpause) //rising of pause
-						mProgramPauseBegin = DateTime.UtcNow; //store pause begin time
-					
-					if (newpause != oldpause && !newpause) //falling of pause
-						mPausedTime += (DateTime.UtcNow - mProgramPauseBegin); //cumulate pause time
+					if (InPause)
+						mTP.JobPause();
+					else
+						mTP.JobResume();
 				}
 			}
-			
+
 			if (mMachineStatus == MacStatus.Idle && mQueuePtr.Count == 0 && mPending.Count == 0)
-				mInProgram = false;
+				mTP.JobEnd();
 		}
+
+		private bool InPause
+		{ get { return mMachineStatus != MacStatus.Run && mMachineStatus != MacStatus.Idle; } }
 		
 		private void ClearQueue(bool sent)
 		{
@@ -540,8 +485,174 @@ namespace LaserGRBL
 			if (sent) mSent.Clear();
 		}
 	}
-	
-	
+
+	public class TimeProjection
+	{
+		private TimeSpan mETarget;
+		private TimeSpan mEProgress;
+
+		private long mStart;		//Start Time
+		private long mEnd;			//End Time
+		private long mPauseBegin;	//Pause begin Time
+		private long mCumulatedPause;
+
+		private bool mInPause;
+		private bool mCompleted;
+		private bool mStarted;
+
+		private int mTargetCount;
+		private int mExecutedCount;
+		private int mSentCount;
+
+		public TimeProjection()
+		{Reset();}
+
+		public void Reset()
+		{
+			mStart = 0;
+			mEnd = 0;
+			mPauseBegin = 0;
+			mCumulatedPause = 0;
+			mInPause = false;
+			mCompleted = false;
+			mStarted = false;
+		}
+
+		public TimeSpan EstimatedTarget
+		{
+			get { return mETarget; }
+			//set { mETarget = value; }
+		}
+
+		//public TimeSpan EstimatedProgress
+		//{
+		//	get { return mEProgress; }
+		//	//set { mEProgress = value; }
+		//}
+
+		public bool InProgram
+		{ get { return mStarted && !mCompleted; } }
+
+		public int Target
+		{ get { return mTargetCount; } }
+
+		public int Sent
+		{ get { return mSentCount; } }
+
+		public int Executed
+		{ get { return mExecutedCount; } }
+
+		public TimeSpan ProjectedTarget
+		{
+			get
+			{
+				if (mStarted)
+				{
+					long real = TrueJobTime.Ticks;	//job time spent in execution
+					long target = mETarget.Ticks;	//total estimated
+					long done = mEProgress.Ticks;	//done of estimated
+
+					if (done != 0)
+						return TimeSpan.FromTicks(real * target / done) + TotalJobPauses;
+					else
+						return EstimatedTarget;
+				}
+				else
+					return TimeSpan.Zero;
+			}
+		}
+
+		private TimeSpan TrueJobTime
+		{ get { return TotalJobTime - TotalJobPauses; } }
+
+		public TimeSpan TotalJobTime
+		{
+			get	
+			{
+				if (mCompleted)
+					return TimeSpan.FromMilliseconds(mEnd - mStart);
+				else if (mStarted)
+					return TimeSpan.FromMilliseconds(now - mStart);
+				else
+					return TimeSpan.Zero;
+			}
+		}
+
+		private TimeSpan TotalJobPauses
+		{
+			get 
+			{
+				if (mInPause)
+					return TimeSpan.FromMilliseconds(mCumulatedPause + (now - mPauseBegin));
+				else
+					return TimeSpan.FromMilliseconds(mCumulatedPause);
+			}
+		}
+
+		public void JobStart(TimeSpan EstimatedTarget, int LineCount)
+		{
+			if (!mStarted)
+			{
+				mETarget = EstimatedTarget;
+				mTargetCount = LineCount;
+				mEProgress = TimeSpan.Zero;
+				mStart = Tools.HiResTimer.TotalMilliseconds;
+				mPauseBegin = 0;
+				mInPause = false;
+				mCompleted = false;
+				mStarted = true;
+				mExecutedCount = 0;
+				mSentCount = 0;
+			}
+		}
+
+		public void JobSent()
+		{
+			if (mStarted && !mCompleted)
+				mSentCount++;
+		}
+
+		public void JobExecuted(TimeSpan EstimatedProgress)
+		{
+			if (mStarted && !mCompleted)
+			{
+				mExecutedCount++;
+				mEProgress = EstimatedProgress;
+			}
+		}
+
+		public void JobPause()
+		{
+			if (mStarted && !mCompleted && !mInPause)
+			{
+				mInPause = true;
+				mPauseBegin = now;
+			}
+		}
+
+		public void JobResume()
+		{
+			if (mStarted && !mCompleted && mInPause)
+			{
+				mCumulatedPause += Tools.HiResTimer.TotalMilliseconds - mPauseBegin;
+				mInPause = false;
+			}
+		}
+
+		public void JobEnd()
+		{
+			if (mStarted && !mCompleted)
+			{
+				JobResume(); //nel caso l'ultimo comando fosse una pausa, la chiudo e la cumulo
+				mEnd = Tools.HiResTimer.TotalMilliseconds;
+				mCompleted = true;
+				mStarted = false;
+			}
+		}
+
+		private long now
+		{ get { return Tools.HiResTimer.TotalMilliseconds; } }
+	}
 }
 
 /*
