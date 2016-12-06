@@ -405,7 +405,7 @@ namespace LaserGRBL
 							{
 								rline = rline.Substring(1, rline.Length - 2);
 								
-								if (rline.Contains("|"))
+								if (rline.Contains("|")) //grbl > 1.1
 								{
 									string[] arr = rline.Split("|".ToCharArray());
 									
@@ -455,6 +455,13 @@ namespace LaserGRBL
 				data = data.Substring(0, data.IndexOf(':'));
 			
 			Enum.TryParse(data, out var);
+			
+			if (var == MacStatus.Idle && mQueuePtr.Count == 0 && mPending.Count == 0)
+				mTP.JobEnd();
+			
+			if (mTP.InProgram && var == MacStatus.Idle) //bugfix for grbl sending Idle on G4
+				var = MacStatus.Run;
+			
 			if (mMachineStatus != var)
 			{
 				mMachineStatus = var;
@@ -471,8 +478,6 @@ namespace LaserGRBL
 				}
 			}
 
-			if (mMachineStatus == MacStatus.Idle && mQueuePtr.Count == 0 && mPending.Count == 0)
-				mTP.JobEnd();
 		}
 
 		private bool InPause
