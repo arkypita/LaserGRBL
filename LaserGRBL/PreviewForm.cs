@@ -34,10 +34,12 @@ namespace LaserGRBL
 		public void TimerUpdate()
 		{
 			Preview.TimerUpdate();
+			SuspendLayout();
 			BtnReset.Enabled = ComPort.IsOpen && ComPort.MachineStatus != GrblCom.MacStatus.Disconnected;
 			BtnGoHome.Enabled = ComPort.IsOpen && (ComPort.MachineStatus == GrblCom.MacStatus.Idle || ComPort.MachineStatus == GrblCom.MacStatus.Alarm);
 			BtnStop.Enabled = ComPort.IsOpen && ComPort.MachineStatus == GrblCom.MacStatus.Run;
 			BtnResume.Enabled = ComPort.IsOpen && (ComPort.MachineStatus == GrblCom.MacStatus.Door || ComPort.MachineStatus == GrblCom.MacStatus.Hold);
+			ResumeLayout();
 		}
 
 		void BtnGoHomeClick(object sender, EventArgs e)

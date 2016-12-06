@@ -108,6 +108,8 @@ namespace LaserGRBL
 		
 		public void TimerUpdate()
 		{
+			SuspendLayout();
+
 			if (!ComPort.IsOpen && System.IO.Ports.SerialPort.GetPortNames().Length != CBPort.Items.Count)
 				InitPortCB();
 			
@@ -151,6 +153,8 @@ namespace LaserGRBL
 			CBSpeed.Enabled = !ComPort.IsOpen;
 
 			CmdLog.TimerUpdate();
+
+			ResumeLayout();
 		}
 	}
 }
