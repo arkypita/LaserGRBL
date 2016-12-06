@@ -553,12 +553,12 @@ namespace LaserGRBL
 			{
 				if (mStarted)
 				{
-					long real = TrueJobTime.Ticks;	//job time spent in execution
-					long target = mETarget.Ticks;	//total estimated
-					long done = mEProgress.Ticks;	//done of estimated
+					double real = TrueJobTime.TotalSeconds;	//job time spent in execution
+					double target = mETarget.TotalSeconds;	//total estimated
+					double done = mEProgress.TotalSeconds;	//done of estimated
 
 					if (done != 0)
-						return TimeSpan.FromTicks(real * target / done) + TotalJobPauses;
+						return TimeSpan.FromSeconds(real * target / done) + TotalJobPauses;
 					else
 						return EstimatedTarget;
 				}

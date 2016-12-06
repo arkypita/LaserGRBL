@@ -92,6 +92,8 @@ namespace LaserGRBL
 
 			foreach (GrblCommand cmd in list)
 			{
+				TimeSpan delay = TimeSpan.Zero;
+				
 				if (cmd.IsLaserON)
 					laser = true;
 				else if (cmd.IsLaserOFF)
@@ -133,12 +135,7 @@ namespace LaserGRBL
 							mTotalTravelOff += distance;
 
 						if (distance != 0 && speed != 0)
-						{
-							if (laser)
-								mEstimatedTimeOn += TimeSpan.FromMinutes((double)distance / (double)speed);
-							else
-								mEstimatedTimeOff += TimeSpan.FromMinutes((double)distance / (double)speed);
-						}
+							delay = TimeSpan.FromMinutes((double)distance / (double)speed);
 					}
 
 					if (drawing)
@@ -192,22 +189,24 @@ namespace LaserGRBL
 
 						firstline = false;
 					}
-					else if (analyze && cmd.IsPause)
-					{
-						//TimeSpan delay = cmd.P != null ? TimeSpan.FromMilliseconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
-
-						//grbl seem to use both P and S as number of seconds
-						TimeSpan delay = cmd.P != null ? TimeSpan.FromSeconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
-
-						if (laser)
-							mEstimatedTimeOn += delay;
-						else
-							mEstimatedTimeOff += delay;
-					}
 
 					curX = newX;
 					curY = newY;
 				}
+				else if (cmd.IsPause)
+				{
+					if (analyze)
+					{
+						//TimeSpan delay = cmd.P != null ? TimeSpan.FromMilliseconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
+						//grbl seem to use both P and S as number of seconds
+						delay = cmd.P != null ? TimeSpan.FromSeconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
+					}
+				}
+				
+				if (laser)
+					mEstimatedTimeOn += delay;
+				else
+					mEstimatedTimeOff += delay;
 
 				if (analyze)
 					cmd.SetOffset(mTotalTravelOn + mTotalTravelOff, mEstimatedTimeOn + mEstimatedTimeOff);
