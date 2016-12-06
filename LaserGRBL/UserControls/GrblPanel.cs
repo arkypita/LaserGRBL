@@ -8,8 +8,8 @@ namespace LaserGRBL.UserControls
 {
 	public partial class GrblPanel : UserControl
 	{
-		GrblFile mProgram;
-		GrblCom mCom;
+		GrblFile LoadedFile;
+		GrblCom ComPort;
 		System.Drawing.Bitmap mBitmap;
 		System.Threading.Thread TH;
 		Matrix mLastMatrix;
@@ -42,18 +42,20 @@ namespace LaserGRBL.UserControls
 			}
 		}
 		
-		public GrblFile Program
+			
+
+		public void SetComProgram(GrblCom com, GrblFile file)
 		{
-			set
-			{
-				mProgram = value;
-				RecreateBMP();
-			} 
+			ComPort = com;
+			LoadedFile = file;
+			LoadedFile.OnFileLoaded += OnFileLoaded;
 		}
 
-		public void SetCom(GrblCom com)
-		{mCom = com;}
-
+		void OnFileLoaded(long elapsed, string filename)
+		{
+			RecreateBMP();
+		}
+		
 		public void RecreateBMP()
 		{
 			if (TH != null)
@@ -75,6 +77,10 @@ namespace LaserGRBL.UserControls
 		private void DoTheWork()
 		{
 			Size wSize = Size;
+			
+			if (wSize.IsEmpty)
+				return;
+			
 			System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(wSize.Width, wSize.Height);
 			using (System.Drawing.Graphics g = Graphics.FromImage(bmp))
 			{
@@ -94,8 +100,8 @@ namespace LaserGRBL.UserControls
 
 				g.DrawLines(Pens.Black, new PointF[] { new PointF(0, wSize.Height), new PointF(0, 0), new PointF(wSize.Width, 0) });
 
-				if (mProgram != null)
-					mProgram.DrawOnGraphics(g, wSize);
+				if (LoadedFile != null)
+					LoadedFile.DrawOnGraphics(g, wSize);
 
 				mLastMatrix = g.Transform;
 			}
@@ -128,9 +134,9 @@ namespace LaserGRBL.UserControls
 
 		public void TimerUpdate()
 		{
-			if (mCom != null && mLastPosition != mCom.LaserPosition)
+			if (ComPort != null && mLastPosition != ComPort.LaserPosition)
 			{
-				mLastPosition = mCom.LaserPosition;
+				mLastPosition = ComPort.LaserPosition;
 				Invalidate();
 			}
 		}

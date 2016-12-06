@@ -9,17 +9,25 @@ namespace LaserGRBL
 {
 	public class GrblFile : IEnumerable<GrblCommand>
 	{
-		private List<GrblCommand> list;
-		private ProgramRange mRange;
+		public delegate void OnFileLoadedDlg(long elapsed, string filename);
+		public event OnFileLoadedDlg OnFileLoaded;
+		
+		private List<GrblCommand> list = new List<GrblCommand>();
+		private ProgramRange mRange = new ProgramRange();
 		private decimal mTotalTravelOn;
 		private decimal mTotalTravelOff;
 		private TimeSpan mEstimatedTimeOn;
 		private TimeSpan mEstimatedTimeOff;
 
-		public GrblFile(string filename) 
+		public void LoadFile(string filename) 
 		{
-			list = new List<GrblCommand>();
-			mRange = new ProgramRange();
+			long start = Tools.HiResTimer.TotalMilliseconds;
+			mTotalTravelOff = 0;
+			mTotalTravelOn = 0;
+			mEstimatedTimeOff = TimeSpan.Zero;
+			mEstimatedTimeOn = TimeSpan.Zero;
+			list.Clear();
+			mRange.ResetRange();
 			if (System.IO.File.Exists(filename))
 			{
 				using (System.IO.StreamReader sr = new System.IO.StreamReader(filename))
@@ -35,6 +43,10 @@ namespace LaserGRBL
 				}
 			}
 			Analyze();
+			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+			
+			if (OnFileLoaded != null)
+				OnFileLoaded(elapsed, filename);
 		}
 
 		public int Count
@@ -43,82 +55,7 @@ namespace LaserGRBL
 		public TimeSpan EstimatedTime { get { return mEstimatedTimeOff + mEstimatedTimeOn; } }
 		
 		private void Analyze()
-		{
-			Process(null, Size.Empty); //analyze only
-			return;
-
-			//bool laser = false;
-			//decimal speed = 0;
-			//decimal curX = 0, curY = 0;
-			//mRange.ResetRange();
-			//mRange.UpdateSRange(0);
-			//mRange.UpdateXYRange(0, 0, false);
-			//mTotalTravelOn = 0;
-			//mTotalTravelOff = 0;
-			//mEstimatedTimeOn = TimeSpan.Zero;
-			//mEstimatedTimeOff = TimeSpan.Zero;
-			//bool abs = false; //absolute-relative memo
-
-			//foreach (GrblCommand cmd in list)
-			//{
-			//	if (cmd.IsLaserON)
-			//		laser = true;
-			//	else if (cmd.IsLaserOFF)
-			//		laser = false;
-
-			//	if (cmd.IsRelativeCoord)
-			//		abs = false;
-			//	if (cmd.IsAbsoluteCoord)
-			//		abs = true;
-
-			//	if (cmd.F != null)
-			//		speed = cmd.F.Number;
-
-			//	if (cmd.S != null)
-			//		mRange.UpdateSRange(cmd.S.Number);
-
-			//	if (cmd.IsMovement)
-			//	{
-			//		decimal newX = cmd.X != null ? (abs ? cmd.X.Number : curX + cmd.X.Number) : curX;
-			//		decimal newY = cmd.Y != null ? (abs ? cmd.Y.Number : curY + cmd.Y.Number) : curY;
-			//		mRange.UpdateXYRange(newX, newY, laser);
-
-			//		decimal distance = 0;
-
-			//		if (cmd.IsLinearMovement)
-			//			distance = Tools.MathHelper.LinearDistance(curX, curY, newX, newY);
-			//		else if (cmd.IsArcMovement) //arc of given radius
-			//			distance = Tools.MathHelper.ArcDistance(curX, curY, newX, newY, cmd.GetArcRadius());
-
-			//		if (laser)
-			//			mTotalTravelOn += distance;
-			//		else
-			//			mTotalTravelOff += distance;
-
-			//		if (distance != 0 && speed != 0)
-			//		{
-			//			if (laser)
-			//				mEstimatedTimeOn += TimeSpan.FromMinutes((double)distance / (double)speed);
-			//			else
-			//				mEstimatedTimeOff += TimeSpan.FromMinutes((double)distance / (double)speed);
-			//		}
-
-			//		curX = newX;
-			//		curY = newY;
-			//	}
-			//	else if (cmd.IsPause)
-			//	{
-			//		TimeSpan delay = cmd.P != null ? TimeSpan.FromMilliseconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
-
-			//		if (laser)
-			//			mEstimatedTimeOn += delay;
-			//		else
-			//			mEstimatedTimeOff += delay;
-			//	}
-
-			//	cmd.SetOffset(mTotalTravelOn + mTotalTravelOff, mEstimatedTimeOn + mEstimatedTimeOff);
-			//}
-		}
+		{Process(null, Size.Empty);} //analyze only
 
 		public void DrawOnGraphics(Graphics g, Size s)
 		{ Process(g, s); }
