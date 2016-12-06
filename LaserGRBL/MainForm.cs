@@ -15,7 +15,7 @@ namespace LaserGRBL
 		private GrblFile LoadedFile;
 		private ConnectLogForm ConnectionForm;
 		private PreviewForm PreviewForm;
-		private JogForm JogForm;
+		//private JogForm JogForm;
 		
 		public MainForm()
 		{
@@ -31,8 +31,8 @@ namespace LaserGRBL
 			ConnectionForm.Show(DockArea);
 			PreviewForm = new PreviewForm(ComPort, LoadedFile);
 			PreviewForm.Show(DockArea);
-			JogForm = new JogForm(ComPort, LoadedFile);
-			JogForm.Show(DockArea);
+			//JogForm = new JogForm(ComPort, LoadedFile);
+			//JogForm.Show(DockArea);
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -62,7 +62,7 @@ namespace LaserGRBL
 			TimerUpdate();
 			ConnectionForm.TimerUpdate();
 			PreviewForm.TimerUpdate();
-			JogForm.TimerUpdate();
+			//JogForm.TimerUpdate();
 		}
 		
 		private void TimerUpdate()
