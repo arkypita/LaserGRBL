@@ -19,7 +19,7 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 #### Missing Features
 
 - Jogging
-- Feed overrides (added in Grbl v1.1)
+- Feed overrides (added in Grbl v1.1 and not yet implemented in LaserGRBL UI)
 - As claim to be laser optimized Z info are ignored when drawing preview!
 
 #### Licensing
