@@ -15,7 +15,6 @@ namespace LaserGRBL
 		private GrblFile LoadedFile;
 		private ConnectLogForm ConnectionForm;
 		private PreviewForm PreviewForm;
-		private ButtonForm ButtonForm;
 		
 		public MainForm()
 		{
@@ -31,8 +30,6 @@ namespace LaserGRBL
 			ConnectionForm.Show(DockArea);
 			PreviewForm = new PreviewForm(ComPort, LoadedFile);
 			PreviewForm.Show(DockArea);
-			ButtonForm = new ButtonForm(ComPort, LoadedFile);
-			ButtonForm.Show(PreviewForm.DockPanel);
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -62,7 +59,6 @@ namespace LaserGRBL
 			TimerUpdate();
 			ConnectionForm.TimerUpdate();
 			PreviewForm.TimerUpdate();
-			ButtonForm.TimerUpdate();
 		}
 		
 		private void TimerUpdate()

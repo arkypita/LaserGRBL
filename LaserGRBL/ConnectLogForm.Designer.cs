@@ -437,7 +437,7 @@ namespace LaserGRBL
 			this.CloseButtonVisible = false;
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.DockAreas = ((LaserGRBL.UserControls.DockingManager.DockAreas)(((LaserGRBL.UserControls.DockingManager.DockAreas.Float | LaserGRBL.UserControls.DockingManager.DockAreas.DockLeft) 
-			| LaserGRBL.UserControls.DockingManager.DockAreas.DockRight)));
+            | LaserGRBL.UserControls.DockingManager.DockAreas.DockRight)));
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Name = "ConnectLogForm";
 			this.ShowHint = LaserGRBL.UserControls.DockingManager.DockState.DockLeft;

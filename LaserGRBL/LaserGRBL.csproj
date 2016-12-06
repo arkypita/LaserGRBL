@@ -69,11 +69,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ButtonForm.cs" />
-    <Compile Include="ButtonForm.Designer.cs">
-      <DependentUpon>ButtonForm.cs</DependentUpon>
+    <Compile Include="ConnectLogForm.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConnectLogForm.cs" />
     <Compile Include="ConnectLogForm.Designer.cs">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </Compile>
@@ -88,7 +86,9 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PreviewForm.cs" />
+    <Compile Include="PreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PreviewForm.Designer.cs">
       <DependentUpon>PreviewForm.cs</DependentUpon>
     </Compile>
@@ -233,9 +233,6 @@
       <DependentUpon>ImageButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ImageTransform.cs" />
-    <EmbeddedResource Include="ButtonForm.resx">
-      <DependentUpon>ButtonForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ConnectLogForm.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </EmbeddedResource>

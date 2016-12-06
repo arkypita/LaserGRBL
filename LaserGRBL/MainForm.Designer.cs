@@ -77,17 +77,17 @@
 			// StatusBar
 			// 
 			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.TTLFile,
-			this.TTTFile,
-			this.TTLLines,
-			this.TTTLines,
-			this.TTLLoadedIn,
-			this.TTTLoadedIn,
-			this.TTLEstimated,
-			this.TTTEstimated,
-			this.spring,
-			this.TTLStatus,
-			this.TTTStatus});
+            this.TTLFile,
+            this.TTTFile,
+            this.TTLLines,
+            this.TTTLines,
+            this.TTLLoadedIn,
+            this.TTTLoadedIn,
+            this.TTLEstimated,
+            this.TTTEstimated,
+            this.spring,
+            this.TTLStatus,
+            this.TTTStatus});
 			this.StatusBar.Location = new System.Drawing.Point(0, 459);
 			this.StatusBar.Name = "StatusBar";
 			this.StatusBar.Size = new System.Drawing.Size(856, 24);
@@ -170,12 +170,13 @@
 			// UpdateTimer
 			// 
 			this.UpdateTimer.Enabled = true;
+			this.UpdateTimer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
 			// 
 			// MMn
 			// 
 			this.MMn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.fileToolStripMenuItem,
-			this.grblToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.grblToolStripMenuItem});
 			this.MMn.Location = new System.Drawing.Point(0, 0);
 			this.MMn.Name = "MMn";
 			this.MMn.Size = new System.Drawing.Size(856, 24);
@@ -185,10 +186,10 @@
 			// fileToolStripMenuItem
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.MnFileOpen,
-			this.MnFileSend,
-			this.toolStripMenuItem1,
-			this.exitToolStripMenuItem});
+            this.MnFileOpen,
+            this.MnFileSend,
+            this.toolStripMenuItem1,
+            this.exitToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
 			this.fileToolStripMenuItem.Text = "&File";
@@ -196,34 +197,34 @@
 			// MnFileOpen
 			// 
 			this.MnFileOpen.Name = "MnFileOpen";
-			this.MnFileOpen.Size = new System.Drawing.Size(152, 22);
+			this.MnFileOpen.Size = new System.Drawing.Size(103, 22);
 			this.MnFileOpen.Text = "&Open";
 			// 
 			// MnFileSend
 			// 
 			this.MnFileSend.Name = "MnFileSend";
-			this.MnFileSend.Size = new System.Drawing.Size(152, 22);
+			this.MnFileSend.Size = new System.Drawing.Size(103, 22);
 			this.MnFileSend.Text = "&Send";
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(100, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
 			this.exitToolStripMenuItem.Text = "&Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
 			// grblToolStripMenuItem
 			// 
 			this.grblToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.MnGrblReset,
-			this.toolStripSeparator1,
-			this.MnExportConfig,
-			this.MnImportConfig});
+            this.MnGrblReset,
+            this.toolStripSeparator1,
+            this.MnExportConfig,
+            this.MnImportConfig});
 			this.grblToolStripMenuItem.Name = "grblToolStripMenuItem";
 			this.grblToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
 			this.grblToolStripMenuItem.Text = "&Grbl";
@@ -231,25 +232,25 @@
 			// MnGrblReset
 			// 
 			this.MnGrblReset.Name = "MnGrblReset";
-			this.MnGrblReset.Size = new System.Drawing.Size(152, 22);
+			this.MnGrblReset.Size = new System.Drawing.Size(149, 22);
 			this.MnGrblReset.Text = "&Reset";
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
 			// 
 			// MnExportConfig
 			// 
 			this.MnExportConfig.Name = "MnExportConfig";
-			this.MnExportConfig.Size = new System.Drawing.Size(152, 22);
+			this.MnExportConfig.Size = new System.Drawing.Size(149, 22);
 			this.MnExportConfig.Text = "&Export Config";
 			this.MnExportConfig.Click += new System.EventHandler(this.MnExportConfigClick);
 			// 
 			// MnImportConfig
 			// 
 			this.MnImportConfig.Name = "MnImportConfig";
-			this.MnImportConfig.Size = new System.Drawing.Size(152, 22);
+			this.MnImportConfig.Size = new System.Drawing.Size(149, 22);
 			this.MnImportConfig.Text = "&Import Config";
 			this.MnImportConfig.Click += new System.EventHandler(this.MnImportConfigClick);
 			// 

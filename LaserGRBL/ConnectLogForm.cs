@@ -35,6 +35,7 @@ namespace LaserGRBL
 			
 			InitSpeedCB();
 			InitPortCB();
+			TimerUpdate();
 		}
 
 		private void InitSpeedCB() //Baud Rates combo box
@@ -148,6 +149,8 @@ namespace LaserGRBL
 			
 			CBPort.Enabled = !ComPort.IsOpen;
 			CBSpeed.Enabled = !ComPort.IsOpen;
+
+			CmdLog.TimerUpdate();
 		}
 	}
 }
