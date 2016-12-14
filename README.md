@@ -15,10 +15,10 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 - Configuration, Alarm and Error codes decoding for Grbl v1.1 (with description tooltip)
 - Homing button, Feed Hold button, Resume button and Grbl Reset button
 - Job time preview and realtime projection
+- Jogging (for any Grbl version)
 
 #### Missing Features
 
-- Jogging
 - Feed overrides (added in Grbl v1.1 and not yet implemented in LaserGRBL UI)
 - As claim to be laser optimized Z info are ignored when drawing preview!
 
