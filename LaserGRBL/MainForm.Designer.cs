@@ -70,6 +70,8 @@
 			this.MnExportConfig = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnImportConfig = new System.Windows.Forms.ToolStripMenuItem();
 			this.DockArea = new LaserGRBL.UserControls.DockingManager.DockPanel();
+			this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.joggingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.StatusBar.SuspendLayout();
 			this.MMn.SuspendLayout();
 			this.SuspendLayout();
@@ -176,7 +178,8 @@
 			// 
 			this.MMn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.grblToolStripMenuItem});
+            this.grblToolStripMenuItem,
+            this.windowsToolStripMenuItem});
 			this.MMn.Location = new System.Drawing.Point(0, 0);
 			this.MMn.Name = "MMn";
 			this.MMn.Size = new System.Drawing.Size(856, 24);
@@ -197,26 +200,26 @@
 			// MnFileOpen
 			// 
 			this.MnFileOpen.Name = "MnFileOpen";
-			this.MnFileOpen.Size = new System.Drawing.Size(152, 22);
+			this.MnFileOpen.Size = new System.Drawing.Size(103, 22);
 			this.MnFileOpen.Text = "&Open";
 			this.MnFileOpen.Click += new System.EventHandler(this.MnFileOpen_Click);
 			// 
 			// MnFileSend
 			// 
 			this.MnFileSend.Name = "MnFileSend";
-			this.MnFileSend.Size = new System.Drawing.Size(152, 22);
+			this.MnFileSend.Size = new System.Drawing.Size(103, 22);
 			this.MnFileSend.Text = "&Send";
 			this.MnFileSend.Click += new System.EventHandler(this.MnFileSend_Click);
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(100, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
 			this.exitToolStripMenuItem.Text = "&Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
@@ -234,26 +237,26 @@
 			// MnGrblReset
 			// 
 			this.MnGrblReset.Name = "MnGrblReset";
-			this.MnGrblReset.Size = new System.Drawing.Size(152, 22);
+			this.MnGrblReset.Size = new System.Drawing.Size(149, 22);
 			this.MnGrblReset.Text = "&Reset";
 			this.MnGrblReset.Click += new System.EventHandler(this.MnGrblReset_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
 			// 
 			// MnExportConfig
 			// 
 			this.MnExportConfig.Name = "MnExportConfig";
-			this.MnExportConfig.Size = new System.Drawing.Size(152, 22);
+			this.MnExportConfig.Size = new System.Drawing.Size(149, 22);
 			this.MnExportConfig.Text = "&Export Config";
 			this.MnExportConfig.Click += new System.EventHandler(this.MnExportConfigClick);
 			// 
 			// MnImportConfig
 			// 
 			this.MnImportConfig.Name = "MnImportConfig";
-			this.MnImportConfig.Size = new System.Drawing.Size(152, 22);
+			this.MnImportConfig.Size = new System.Drawing.Size(149, 22);
 			this.MnImportConfig.Text = "&Import Config";
 			this.MnImportConfig.Click += new System.EventHandler(this.MnImportConfigClick);
 			// 
@@ -311,6 +314,21 @@
 			this.DockArea.Skin = dockPanelSkin1;
 			this.DockArea.TabIndex = 3;
 			// 
+			// windowsToolStripMenuItem
+			// 
+			this.windowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.joggingToolStripMenuItem});
+			this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
+			this.windowsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+			this.windowsToolStripMenuItem.Text = "&Windows";
+			// 
+			// joggingToolStripMenuItem
+			// 
+			this.joggingToolStripMenuItem.Name = "joggingToolStripMenuItem";
+			this.joggingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.joggingToolStripMenuItem.Text = "&Jogging";
+			this.joggingToolStripMenuItem.Click += new System.EventHandler(this.joggingToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -362,6 +380,8 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
 		private LaserGRBL.UserControls.DockingManager.DockPanel DockArea;
+		private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem joggingToolStripMenuItem;
 
 	}
 }

@@ -12,10 +12,9 @@ namespace LaserGRBL
 	public partial class MainForm : Form
 	{
 		private GrblCom ComPort;
-		//private GrblFile LoadedFile;
 		private ConnectLogForm ConnectionForm;
 		private PreviewForm PreviewForm;
-		//private JogForm JogForm;
+		private JogForm JogForm;
 		
 		public MainForm()
 		{
@@ -30,8 +29,8 @@ namespace LaserGRBL
 			ConnectionForm.Show(DockArea);
 			PreviewForm = new PreviewForm(ComPort);
 			PreviewForm.Show(DockArea);
-			//JogForm = new JogForm(ComPort, LoadedFile);
-			//JogForm.Show(DockArea);
+			JogForm = new JogForm(ComPort);
+			JogForm.Show(DockArea);
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -61,7 +60,7 @@ namespace LaserGRBL
 			TimerUpdate();
 			ConnectionForm.TimerUpdate();
 			PreviewForm.TimerUpdate();
-			//JogForm.TimerUpdate();
+			JogForm.TimerUpdate();
 		}
 		
 		private void TimerUpdate()
@@ -136,6 +135,11 @@ namespace LaserGRBL
 		private void MnGrblReset_Click(object sender, EventArgs e)
 		{
 			ComPort.GrblReset();
+		}
+
+		private void joggingToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			JogForm.Show(DockArea);
 		}
 
 	}

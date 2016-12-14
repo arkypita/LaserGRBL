@@ -16,7 +16,10 @@ namespace LaserGRBL
 	public class GrblCom : Tools.ThreadClass
 	{
 		public enum MacStatus
-		{Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check}
+		{Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog}
+
+		public enum JogDirection
+		{ N ,S ,W ,E , NW, NE, SW, SE }
 				
 		public delegate void dlgOnMachineStatus(MacStatus status);
 		public event dlgOnMachineStatus MachineStatusChanged;
@@ -357,10 +360,71 @@ namespace LaserGRBL
 		{ get {return mGrblVersion != null && mGrblVersion >= new Version(1,1); }}
 		
 		public bool SupportCSV
-		{ get {return mGrblVersion != null && mGrblVersion >= new Version(1,1); }}		
-		
+		{ get {return mGrblVersion != null && mGrblVersion >= new Version(1,1); }}
+
 		#endregion
-		
+
+		public bool JogEnabled
+		{
+			get
+			{
+				if (SupportJogging)
+					return IsOpen && (MachineStatus == GrblCom.MacStatus.Idle || MachineStatus == GrblCom.MacStatus.Jog);
+				else
+					return IsOpen && (MachineStatus == GrblCom.MacStatus.Idle || MachineStatus == GrblCom.MacStatus.Run) && !InProgram;
+			}
+		}
+
+		public void Jog(JogDirection dir, decimal size, decimal speed)
+		{
+			if (JogEnabled)
+			{
+				string cmd = SupportJogging ? "$J=G91X{1}Y{0}F{2}" : "G0X{1}Y{0}F{2}";
+
+				if (dir == JogDirection.N)
+					cmd = string.Format(cmd, size, 0, speed);
+				else if (dir == JogDirection.S)
+					cmd = string.Format(cmd, -size, 0, speed);
+				else if (dir == JogDirection.W)
+					cmd = string.Format(cmd, 0, -size, speed);
+				else if (dir == JogDirection.E)
+					cmd = string.Format(cmd, 0, size, speed);
+				else if (dir == JogDirection.NE)
+					cmd = string.Format(cmd, size, size, speed);
+				else if (dir == JogDirection.NW)
+					cmd = string.Format(cmd, size, -size, speed);
+				else if (dir == JogDirection.SE)
+					cmd = string.Format(cmd, -size, size, speed);
+				else if (dir == JogDirection.SW)
+					cmd = string.Format(cmd, -size, -size, speed);
+
+				if (!SupportJogging)
+					EnqueueCommand(new GrblCommand("G91"));	
+
+				EnqueueCommand(new GrblCommand(cmd));
+
+				if (!SupportJogging)
+					EnqueueCommand(new GrblCommand("G90"));	
+			}
+		}
+
+		internal void JogHome(decimal speed)
+		{
+			if (JogEnabled)
+			{
+				if (SupportJogging)
+				{
+					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", speed)));
+				}
+				else
+				{
+					EnqueueCommand(new GrblCommand(string.Format("G90")));
+					EnqueueCommand(new GrblCommand(string.Format("G0X0Y0F{0}", speed)));
+				}
+			}
+		}
+
+
 		private long lastPosRequest;
 		protected override void DoTheWork()
 		{
@@ -530,6 +594,10 @@ namespace LaserGRBL
 			mPending.Clear();
 			if (sent) mSent.Clear();
 		}
+
+
+
+
 	}
 
 	public class TimeProjection
