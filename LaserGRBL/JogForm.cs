@@ -12,13 +12,11 @@ namespace LaserGRBL
 	public partial class JogForm : UserControls.DockingManager.DockContent
 	{
 		GrblCom ComPort;
-		GrblFile LoadedFile;
 
-		public JogForm(GrblCom com, GrblFile file)
+		public JogForm(GrblCom com)
 		{
 			InitializeComponent();
 			ComPort = com;
-			LoadedFile = file;
 
 			TimerUpdate();
 		}

@@ -12,7 +12,7 @@ namespace LaserGRBL
 	public partial class MainForm : Form
 	{
 		private GrblCom ComPort;
-		private GrblFile LoadedFile;
+		//private GrblFile LoadedFile;
 		private ConnectLogForm ConnectionForm;
 		private PreviewForm PreviewForm;
 		//private JogForm JogForm;
@@ -24,12 +24,11 @@ namespace LaserGRBL
 			//build main communication object
 			ComPort = new GrblCom();
 			ComPort.MachineStatusChanged += OnMachineStatus;
-			LoadedFile = new GrblFile();
-			LoadedFile.OnFileLoaded += OnFileLoaded;
+			ComPort.OnFileLoaded += OnFileLoaded;
 			
-			ConnectionForm = new ConnectLogForm(ComPort, LoadedFile);
+			ConnectionForm = new ConnectLogForm(ComPort);
 			ConnectionForm.Show(DockArea);
-			PreviewForm = new PreviewForm(ComPort, LoadedFile);
+			PreviewForm = new PreviewForm(ComPort);
 			PreviewForm.Show(DockArea);
 			//JogForm = new JogForm(ComPort, LoadedFile);
 			//JogForm.Show(DockArea);
@@ -39,9 +38,9 @@ namespace LaserGRBL
 		{
 			TimerUpdate();
 			TTTFile.Text = System.IO.Path.GetFileName(filename);
-			TTTLines.Text = LoadedFile.Count.ToString();
+			TTTLines.Text = ComPort.LoadedFile.Count.ToString();
 			TTTLoadedIn.Text = elapsed.ToString() + " ms";
-			TTTEstimated.Text = Tools.Utils.TimeSpanToString(LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
+			TTTEstimated.Text = Tools.Utils.TimeSpanToString(ComPort.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
 		}
 		
 		void OnMachineStatus(GrblCom.MacStatus status)
@@ -67,22 +66,24 @@ namespace LaserGRBL
 		
 		private void TimerUpdate()
 		{
+			SuspendLayout();
 			TTTStatus.Text = ComPort.MachineStatus.ToString();
 
 			if (ComPort.InProgram)
 				TTTEstimated.Text = Tools.Utils.TimeSpanToString(ComPort.ProjectedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
-			else if (LoadedFile != null)
-				TTTEstimated.Text = Tools.Utils.TimeSpanToString(LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
+			else
+				TTTEstimated.Text = Tools.Utils.TimeSpanToString(ComPort.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
 
 			if (ComPort.InProgram)
 				TTLEstimated.Text = "Projected Time:";
-			else if (LoadedFile != null)
+			else
 				TTLEstimated.Text = "Estimated Time:";
 			
 			MnFileOpen.Enabled = true;
-			MnFileSend.Enabled = LoadedFile != null && LoadedFile.Count > 0 && ComPort.IsOpen && ComPort.MachineStatus == GrblCom.MacStatus.Idle; 
+			MnFileSend.Enabled = ComPort.HasProgram && ComPort.IsOpen && ComPort.MachineStatus == GrblCom.MacStatus.Idle; 
 			MnExportConfig.Enabled = MnImportConfig.Enabled = ComPort.IsOpen && ComPort.MachineStatus == GrblCom.MacStatus.Idle;
 			MnGrblReset.Enabled = ComPort.IsOpen && ComPort.MachineStatus != GrblCom.MacStatus.Disconnected;
+			ResumeLayout();
 		}
 
 		void MnExportConfigClick(object sender, EventArgs e)
@@ -120,6 +121,21 @@ namespace LaserGRBL
 		void ExitToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			Close();
+		}
+
+		private void MnFileOpen_Click(object sender, EventArgs e)
+		{
+			ComPort.OpenFile();
+		}
+
+		private void MnFileSend_Click(object sender, EventArgs e)
+		{
+			ComPort.EnqueueProgram();
+		}
+
+		private void MnGrblReset_Click(object sender, EventArgs e)
+		{
+			ComPort.GrblReset();
 		}
 
 	}

@@ -19,15 +19,13 @@ namespace LaserGRBL
 	public partial class PreviewForm : UserControls.DockingManager.DockContent
 	{
 		GrblCom ComPort;
-		GrblFile LoadedFile;
 		
-		public PreviewForm(GrblCom com, GrblFile file)
+		public PreviewForm(GrblCom com)
 		{
 			InitializeComponent();
 
 			ComPort = com;
-			LoadedFile = file;
-			Preview.SetComProgram(com, file);
+			Preview.SetComProgram(com);
 			TimerUpdate();
 		}
 		

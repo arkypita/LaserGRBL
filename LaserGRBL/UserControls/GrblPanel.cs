@@ -8,7 +8,6 @@ namespace LaserGRBL.UserControls
 {
 	public partial class GrblPanel : UserControl
 	{
-		GrblFile LoadedFile;
 		GrblCom ComPort;
 		System.Drawing.Bitmap mBitmap;
 		System.Threading.Thread TH;
@@ -44,11 +43,10 @@ namespace LaserGRBL.UserControls
 		
 			
 
-		public void SetComProgram(GrblCom com, GrblFile file)
+		public void SetComProgram(GrblCom com)
 		{
 			ComPort = com;
-			LoadedFile = file;
-			LoadedFile.OnFileLoaded += OnFileLoaded;
+			ComPort.OnFileLoaded += OnFileLoaded;
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -100,8 +98,8 @@ namespace LaserGRBL.UserControls
 
 				g.DrawLines(Pens.Black, new PointF[] { new PointF(0, wSize.Height), new PointF(0, 0), new PointF(wSize.Width, 0) });
 
-				if (LoadedFile != null)
-					LoadedFile.DrawOnGraphics(g, wSize);
+				if (ComPort != null && ComPort.HasProgram)
+					ComPort.LoadedFile.DrawOnGraphics(g, wSize);
 
 				mLastMatrix = g.Transform;
 			}

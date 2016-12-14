@@ -21,13 +21,12 @@ namespace LaserGRBL
 		private object[] baudRates = { 4800, 9600, 19200, 38400, 57600, 115200, 230400 };
 		
 		GrblCom ComPort;
-		GrblFile LoadedFile;
 		
-		public ConnectLogForm(GrblCom com, GrblFile file)
+		public ConnectLogForm(GrblCom com)
 		{
 			InitializeComponent();
 			ComPort = com;
-			LoadedFile = file;
+			ComPort.OnFileLoaded += ComPort_OnFileLoaded;
 			CmdLog.SetCom(com);
 			
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(Color.LightSkyBlue));
@@ -36,6 +35,11 @@ namespace LaserGRBL
 			InitSpeedCB();
 			InitPortCB();
 			TimerUpdate();
+		}
+
+		void ComPort_OnFileLoaded(long elapsed, string filename)
+		{
+			TbFileName.Text = filename;
 		}
 
 		private void InitSpeedCB() //Baud Rates combo box
@@ -77,29 +81,12 @@ namespace LaserGRBL
 		
 		void BtnOpenClick(object sender, EventArgs e)
 		{
-			string filename = null;
-			using (System.Windows.Forms.OpenFileDialog ofd = new OpenFileDialog())
-			{
-				ofd.Filter = "GCODE Files|*.nc;*.gcode";
-				ofd.CheckFileExists = true;
-				ofd.Multiselect = false;
-				ofd.RestoreDirectory = true;
-				if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-					filename = ofd.FileName;
-			}
-
-			if (filename != null)
-			{
-				Cursor = Cursors.WaitCursor;
-				LoadedFile.LoadFile(filename);
-				TbFileName.Text = filename;
-				Cursor = Cursors.Default;
-			}
+			ComPort.OpenFile();
 		}
-		
+
 		void BtnRunProgramClick(object sender, EventArgs e)
 		{
-			ComPort.EnqueueProgram(LoadedFile);
+			ComPort.EnqueueProgram();
 		}
 		void TxtManualCommandCommandEntered(string command)
 		{
@@ -142,7 +129,7 @@ namespace LaserGRBL
 
 			BtnConnectDisconnect.UseAltImage = ComPort.IsOpen;
 			BtnOpen.Enabled = true;
-			BtnRunProgram.Enabled = LoadedFile != null && LoadedFile.Count > 0 && ComPort.IsOpen && ComPort.MachineStatus == GrblCom.MacStatus.Idle;
+			BtnRunProgram.Enabled = ComPort.HasProgram && ComPort.IsOpen && ComPort.MachineStatus == GrblCom.MacStatus.Idle;
 
 			bool old = TxtManualCommand.Enabled;
 			TxtManualCommand.Enabled = ComPort.IsOpen && ComPort.MachineStatus != GrblCom.MacStatus.Disconnected;

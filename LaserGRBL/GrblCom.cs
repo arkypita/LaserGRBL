@@ -20,8 +20,10 @@ namespace LaserGRBL
 				
 		public delegate void dlgOnMachineStatus(MacStatus status);
 		public event dlgOnMachineStatus MachineStatusChanged;
+		public event GrblFile.OnFileLoadedDlg OnFileLoaded;
 
 		private System.IO.Ports.SerialPort com;
+		private GrblFile file;
 		private System.Collections.Generic.Queue<GrblCommand> mQueue ;
 		private System.Collections.Generic.List<IGrblRow> mSent;
 		private System.Collections.Generic.Queue<GrblCommand> mPending ;
@@ -37,11 +39,15 @@ namespace LaserGRBL
 		private MacStatus mMachineStatus;
 		private const int BUFFER_SIZE = 127;
 		private Version mGrblVersion;
+
+
 		
 		public GrblCom() : base(1, false, "Command Queue Thread")
 		{
 			com = new System.IO.Ports.SerialPort();
-			
+			file = new GrblFile();
+			file.OnFileLoaded += RiseOnFileLoaded;
+ 
 			mMachineStatus = MacStatus.Disconnected;
 			
 			this.com.DataReceived += OnDataReceived;
@@ -54,6 +60,38 @@ namespace LaserGRBL
 			mQueuePtr = mQueue;
 			mGrblVersion = null;
 		}
+
+		void RiseOnFileLoaded(long elapsed, string filename)
+		{
+			if (OnFileLoaded != null)
+				OnFileLoaded(elapsed, filename);
+		}
+
+		public GrblFile LoadedFile
+		{ get { return file; } }
+
+		public void OpenFile()
+		{
+			string filename = null;
+			using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
+			{
+				ofd.Filter = "GCODE Files|*.nc;*.gcode";
+				ofd.CheckFileExists = true;
+				ofd.Multiselect = false;
+				ofd.RestoreDirectory = true;
+				if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+					filename = ofd.FileName;
+			}
+
+			if (filename != null)
+			{
+				System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+				file.LoadFile(filename);
+				//TbFileName.Text = filename;
+				System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+			}
+		}
+
 
 		public void ExportConfig(string filename)
 		{
@@ -167,19 +205,22 @@ namespace LaserGRBL
 			}
 		}
 		
-		public void EnqueueProgram(GrblFile prog)
+		public void EnqueueProgram()
 		{
 			lock(this)
 			{
 				ClearQueue(true);
 			
 				mTP.Reset();
-				mTP.JobStart(prog.EstimatedTime, prog.Count);
+				mTP.JobStart(file.EstimatedTime, file.Count);
 
-				foreach (GrblCommand cmd in prog)
+				foreach (GrblCommand cmd in file)
 					mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
 			}
 		}
+
+		public bool HasProgram
+		{ get { return file != null && file.Count > 0; } }
 
 		public void EnqueueCommand(GrblCommand cmd)
 		{
