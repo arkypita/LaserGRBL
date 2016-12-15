@@ -245,12 +245,6 @@
       <DependentUpon>ImageButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ImageTransform.cs" />
-    <Compile Include="UserControls\LabelTB.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\LabelTB.designer.cs">
-      <DependentUpon>LabelTB.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="ConnectLogForm.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -286,9 +280,6 @@
     <EmbeddedResource Include="CSV\alarm_codes.csv" />
     <EmbeddedResource Include="CSV\error_codes.csv" />
     <EmbeddedResource Include="CSV\setting_codes.csv" />
-    <EmbeddedResource Include="UserControls\LabelTB.resx">
-      <DependentUpon>LabelTB.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Grafica\LaserGrbl.ico" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

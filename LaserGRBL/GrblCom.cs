@@ -22,8 +22,11 @@ namespace LaserGRBL
 		{ N ,S ,W ,E , NW, NE, SW, SE }
 				
 		public delegate void dlgOnMachineStatus(MacStatus status);
+		public delegate void dlgOnOverrideChange();
+		
 		public event dlgOnMachineStatus MachineStatusChanged;
 		public event GrblFile.OnFileLoadedDlg OnFileLoaded;
+		public event dlgOnOverrideChange OnOverrideChange;
 
 		private System.IO.Ports.SerialPort com;
 		private GrblFile file;
@@ -40,10 +43,12 @@ namespace LaserGRBL
 		private TimeProjection mTP = new TimeProjection();
 		
 		private MacStatus mMachineStatus;
-		private const int BUFFER_SIZE = 127;
+		private const int BUFFER_SIZE = 120;
 		private Version mGrblVersion;
-
-
+		
+		private int mOvFeed;
+		private int mOvRapids;
+		private int mOvSpindle;
 		
 		public GrblCom() : base(1, false, "Command Queue Thread")
 		{
@@ -62,6 +67,11 @@ namespace LaserGRBL
 			mSentPtr = mSent;
 			mQueuePtr = mQueue;
 			mGrblVersion = null;
+			
+			mOvFeed = 100;
+			mOvRapids = 100;
+			mOvSpindle = 100;
+		
 		}
 
 		void RiseOnFileLoaded(long elapsed, string filename)
@@ -295,12 +305,12 @@ namespace LaserGRBL
 				ClearQueue(true);
 				mBuffer = 0;
 				mTP.JobEnd();
-				
 				SendImmediate(24);
+				ChangeOverrides(100,100,100);
 			}
 		}
 
-		private void SendImmediate(byte b)
+		public void SendImmediate(byte b)
 		{
 			try{
 				lock(com)
@@ -362,6 +372,9 @@ namespace LaserGRBL
 		public bool SupportCSV
 		{ get {return mGrblVersion != null && mGrblVersion >= new Version(1,1); }}
 
+		public bool SupportOverride
+		{ get {return mGrblVersion != null && mGrblVersion >= new Version(1,1); }}
+		
 		#endregion
 
 		public bool JogEnabled
@@ -422,68 +435,6 @@ namespace LaserGRBL
 					EnqueueCommand(new GrblCommand(string.Format("G0X0Y0F{0}", speed)));
 				}
 			}
-		}
-
-		/*
-		Rapid Overrides
-		Immediately alters the rapid override value. An active rapid motion is altered within tens of milliseconds.
-		Only effects rapid motions, which include G0, G28, and G30.
-		If rapid override value does not change, the command is ignored.
-		Rapid override set values may be changed in config.h.
-		The commands are:
-		0x95 : Set to 100% full rapid rate.
-		0x96 : Set to 50% of rapid rate.
-		0x97 : Set to 25% of rapid rate.
-		*/
-
-		public void SetRapidOverride(int value) //receive 0,1,2
-		{
-			if (value == 0)
-				SendImmediate(0x97);
-			else if (value == 1)
-				SendImmediate(0x96);
-			else if (value == 2)
-				SendImmediate(0x95);
-		}
-
-		/*
-		Feed Overrides
-		Immediately alters the feed override value. An active feed motion is altered within tens of milliseconds.
-		Does not alter rapid rates, which include G0, G28, and G30, or jog motions.
-		Feed override value can not be 10% or greater than 200%.
-		If feed override value does not change, the command is ignored.
-		Feed override range and increments may be changed in config.h.
-		The commands are:
-		0x90 : Set 100% of programmed rate.
-		0x91 : Increase 10%
-		0x92 : Decrease 10%
-		0x93 : Increase 1%
-		0x94 : Decrease 1%
-		*/
-
-		public void SetSpeedOverride(int value)
-		{
-
-		}
-
-		/*
-		Spindle Speed Overrides
-		Immediately alters the spindle speed override value. An active spindle speed is altered within tens of milliseconds.
-		Override values may be changed at any time, regardless of if the spindle is enabled or disabled.
-		Spindle override value can not be 10% or greater than 200%
-		If spindle override value does not change, the command is ignored.
-		Spindle override range and increments may be altered in config.h.
-		The commands are:
-		0x99 : Set 100% of programmed spindle speed
-		0x9A : Increase 10%
-		0x9B : Decrease 10%
-		0x9C : Increase 1%
-		0x9D : Decrease 1%
-		*/
-
-		public void SetPowerOverride(int value)
-		{
-
 		}
 
 		private long lastPosRequest;
@@ -570,7 +521,7 @@ namespace LaserGRBL
 							else if (rline.StartsWith("<") && rline.EndsWith(">"))
 							{
 								rline = rline.Substring(1, rline.Length - 2);
-								
+								System.Diagnostics.Debug.WriteLine(rline);
 								if (rline.Contains("|")) //grbl > 1.1
 								{
 									string[] arr = rline.Split("|".ToCharArray());
@@ -579,6 +530,9 @@ namespace LaserGRBL
 									string mpos = arr[1].Substring(5, arr[1].Length - 5);
 									string[] xyz = mpos.Split(",".ToCharArray());
 									mLaserPosition = new System.Drawing.PointF(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo));
+									
+									if (arr.Length > 3 && arr[4].StartsWith("Ov"))
+										ParseOverrides(arr[4]);
 								}
 								else //<Idle,MPos:0.000,0.000,0.000,WPos:0.000,0.000,0.000>
 								{
@@ -613,6 +567,38 @@ namespace LaserGRBL
 			} catch {}
 		}
 
+		private void ParseOverrides(string data)
+		{
+			//Ov:100,100,100
+			//indicates current override values in percent of programmed values
+			//for feed, rapids, and spindle speed, respectively.
+			
+			data = data.Substring(data.IndexOf(':') + 1);
+			string[] arr = data.Split(",".ToCharArray());
+			
+			ChangeOverrides(int.Parse(arr[0]), int.Parse(arr[1]), int.Parse(arr[2]));
+		}
+		
+		private void ChangeOverrides(int feed, int rapids, int spindle)
+		{
+			bool notify = (feed != mOvFeed || rapids != mOvRapids || spindle != mOvSpindle);
+			mOvFeed = feed;
+			mOvRapids = rapids;
+			mOvSpindle = spindle;
+			
+			if (notify && OnOverrideChange != null)
+				OnOverrideChange();
+		}
+		
+		public int OverrideFeed
+		{get {return mOvFeed;}}
+		
+		public int OverrideRapids
+		{get {return mOvRapids;}}
+		
+		public int OverrideSpindle
+		{get {return mOvSpindle;}}
+		
 		private void ParseMachineStatus(string data)
 		{
 			MacStatus var = MacStatus.Disconnected;

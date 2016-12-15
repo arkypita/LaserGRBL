@@ -31,9 +31,9 @@ namespace LaserGRBL
 			PreviewForm = new PreviewForm(ComPort);
 			PreviewForm.Show(DockArea);
 			JogForm = new JogForm(ComPort);
-			JogForm.Show(DockArea);
+			//JogForm.Show(DockArea);
 			OvForm = new OverridesForm(ComPort);
-			OvForm.Show(DockArea);
+			//OvForm.Show(DockArea);
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
