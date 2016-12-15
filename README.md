@@ -16,10 +16,10 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 - Homing button, Feed Hold button, Resume button and Grbl Reset button
 - Job time preview and realtime projection
 - Jogging (for any Grbl version)
+- Feed overrides (for Grbl > v1.1)
 
 #### Missing Features
 
-- Feed overrides (added in Grbl v1.1 and not yet implemented in LaserGRBL UI)
 - As claim to be laser optimized Z info are ignored when drawing preview!
 
 #### Licensing
