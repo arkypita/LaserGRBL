@@ -17,8 +17,6 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
 			ComPort = com;
-			TbSpeed_ValueChanged(null, null); //set tooltip
-			TbStep_ValueChanged(null, null); //set tooltip
 			TimerUpdate();
 		}
 
@@ -30,24 +28,31 @@ namespace LaserGRBL
 			ResumeLayout();
 		}
 
-		private void OnJogButtonMouseDown(object sender, MouseEventArgs e)
+		private void TbRapid_ValueChanged(object sender, EventArgs e)
 		{
-			//ComPort.Jog((sender as DirectionButton).JogDirection, TbStep.Value, TbSpeed.Value);
+			if (TbRapid.Value == 0)
+				LblRapid.Text = "Rapid [0.25x]";
+			else if (TbRapid.Value == 1)
+				LblRapid.Text = "Rapid [0.50x]";
+			else if (TbRapid.Value == 2)
+				LblRapid.Text = "Rapid [1.00x]";
+
+			ComPort.SetRapidOverride(TbRapid.Value);
 		}
 
 		private void TbSpeed_ValueChanged(object sender, EventArgs e)
 		{
-			TT.SetToolTip(OvRapid, string.Format("Speed: {0}", OvRapid.Value));
+			LblSpeed.Text = string.Format("Speed [{0:0.00}x]", TbSpeed.Value / 100.0);
+			ComPort.SetSpeedOverride(TbSpeed.Value);
 		}
 
-		private void TbStep_ValueChanged(object sender, EventArgs e)
+		private void TbPower_ValueChanged(object sender, EventArgs e)
 		{
-			//TT.SetToolTip(TbStep, string.Format("Step: {0}", TbStep.Value));
+			LblPower.Text = string.Format("Power [{0:0.00}x]", TbPower.Value / 100.0);
+			ComPort.SetPowerOverride(TbPower.Value);
 		}
 
-		private void BtnHome_Click(object sender, EventArgs e)
-		{
-			ComPort.JogHome(OvRapid.Value);
-		}
 	}
 }
+
+

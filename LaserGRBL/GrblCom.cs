@@ -424,6 +424,67 @@ namespace LaserGRBL
 			}
 		}
 
+		/*
+		Rapid Overrides
+		Immediately alters the rapid override value. An active rapid motion is altered within tens of milliseconds.
+		Only effects rapid motions, which include G0, G28, and G30.
+		If rapid override value does not change, the command is ignored.
+		Rapid override set values may be changed in config.h.
+		The commands are:
+		0x95 : Set to 100% full rapid rate.
+		0x96 : Set to 50% of rapid rate.
+		0x97 : Set to 25% of rapid rate.
+		*/
+
+		public void SetRapidOverride(int value) //receive 0,1,2
+		{
+			if (value == 0)
+				SendImmediate(0x97);
+			else if (value == 1)
+				SendImmediate(0x96);
+			else if (value == 2)
+				SendImmediate(0x95);
+		}
+
+		/*
+		Feed Overrides
+		Immediately alters the feed override value. An active feed motion is altered within tens of milliseconds.
+		Does not alter rapid rates, which include G0, G28, and G30, or jog motions.
+		Feed override value can not be 10% or greater than 200%.
+		If feed override value does not change, the command is ignored.
+		Feed override range and increments may be changed in config.h.
+		The commands are:
+		0x90 : Set 100% of programmed rate.
+		0x91 : Increase 10%
+		0x92 : Decrease 10%
+		0x93 : Increase 1%
+		0x94 : Decrease 1%
+		*/
+
+		public void SetSpeedOverride(int value)
+		{
+
+		}
+
+		/*
+		Spindle Speed Overrides
+		Immediately alters the spindle speed override value. An active spindle speed is altered within tens of milliseconds.
+		Override values may be changed at any time, regardless of if the spindle is enabled or disabled.
+		Spindle override value can not be 10% or greater than 200%
+		If spindle override value does not change, the command is ignored.
+		Spindle override range and increments may be altered in config.h.
+		The commands are:
+		0x99 : Set 100% of programmed spindle speed
+		0x9A : Increase 10%
+		0x9B : Decrease 10%
+		0x9C : Increase 1%
+		0x9D : Decrease 1%
+		*/
+
+		public void SetPowerOverride(int value)
+		{
+
+		}
 
 		private long lastPosRequest;
 		protected override void DoTheWork()

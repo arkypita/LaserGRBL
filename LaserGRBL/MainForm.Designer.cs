@@ -69,9 +69,10 @@
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnExportConfig = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnImportConfig = new System.Windows.Forms.ToolStripMenuItem();
-			this.DockArea = new LaserGRBL.UserControls.DockingManager.DockPanel();
 			this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.joggingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.DockArea = new LaserGRBL.UserControls.DockingManager.DockPanel();
+			this.overridesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.StatusBar.SuspendLayout();
 			this.MMn.SuspendLayout();
 			this.SuspendLayout();
@@ -260,6 +261,22 @@
 			this.MnImportConfig.Text = "&Import Config";
 			this.MnImportConfig.Click += new System.EventHandler(this.MnImportConfigClick);
 			// 
+			// windowsToolStripMenuItem
+			// 
+			this.windowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.joggingToolStripMenuItem,
+            this.overridesToolStripMenuItem});
+			this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
+			this.windowsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+			this.windowsToolStripMenuItem.Text = "&Windows";
+			// 
+			// joggingToolStripMenuItem
+			// 
+			this.joggingToolStripMenuItem.Name = "joggingToolStripMenuItem";
+			this.joggingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.joggingToolStripMenuItem.Text = "&Jogging";
+			this.joggingToolStripMenuItem.Click += new System.EventHandler(this.joggingToolStripMenuItem_Click);
+			// 
 			// DockArea
 			// 
 			this.DockArea.ActiveAutoHideContent = null;
@@ -314,20 +331,12 @@
 			this.DockArea.Skin = dockPanelSkin1;
 			this.DockArea.TabIndex = 3;
 			// 
-			// windowsToolStripMenuItem
+			// overridesToolStripMenuItem
 			// 
-			this.windowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.joggingToolStripMenuItem});
-			this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
-			this.windowsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-			this.windowsToolStripMenuItem.Text = "&Windows";
-			// 
-			// joggingToolStripMenuItem
-			// 
-			this.joggingToolStripMenuItem.Name = "joggingToolStripMenuItem";
-			this.joggingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.joggingToolStripMenuItem.Text = "&Jogging";
-			this.joggingToolStripMenuItem.Click += new System.EventHandler(this.joggingToolStripMenuItem_Click);
+			this.overridesToolStripMenuItem.Name = "overridesToolStripMenuItem";
+			this.overridesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.overridesToolStripMenuItem.Text = "&Overrides";
+			this.overridesToolStripMenuItem.Click += new System.EventHandler(this.overridesToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -382,6 +391,7 @@
 		private LaserGRBL.UserControls.DockingManager.DockPanel DockArea;
 		private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem joggingToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem overridesToolStripMenuItem;
 
 	}
 }

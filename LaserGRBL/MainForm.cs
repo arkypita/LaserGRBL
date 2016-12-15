@@ -15,7 +15,7 @@ namespace LaserGRBL
 		private ConnectLogForm ConnectionForm;
 		private PreviewForm PreviewForm;
 		private JogForm JogForm;
-		//private OverridesForm OvForm;
+		private OverridesForm OvForm;
 		
 		public MainForm()
 		{
@@ -32,8 +32,8 @@ namespace LaserGRBL
 			PreviewForm.Show(DockArea);
 			JogForm = new JogForm(ComPort);
 			JogForm.Show(DockArea);
-			//OvForm = new OverridesForm(ComPort);
-			//OvForm.Show(DockArea);
+			OvForm = new OverridesForm(ComPort);
+			OvForm.Show(DockArea);
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -64,7 +64,7 @@ namespace LaserGRBL
 			ConnectionForm.TimerUpdate();
 			PreviewForm.TimerUpdate();
 			JogForm.TimerUpdate();
-			//OvForm.TimerUpdate();
+			OvForm.TimerUpdate();
 		}
 		
 		private void TimerUpdate()
@@ -144,6 +144,11 @@ namespace LaserGRBL
 		private void joggingToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			JogForm.Show(DockArea);
+		}
+
+		private void overridesToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OvForm.Show(DockArea);
 		}
 
 	}
