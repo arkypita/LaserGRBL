@@ -12,6 +12,7 @@ namespace LaserGRBL.UserControls
 		int RowHeight = 16;
 		System.Collections.Generic.List<IGrblRow> mDraw;
 		int mPosition = -1;
+		bool mUseImages = false;
 
 		public CommandLog()
 		{
@@ -73,14 +74,23 @@ namespace LaserGRBL.UserControls
 					if (cmd.LeftString != null)
 					{
 						using (Brush b = new SolidBrush(cmd.LeftColor))
-							e.Graphics.DrawString(cmd.LeftString, Font, b, 1, RowHeight * i + 1);
+							e.Graphics.DrawString(cmd.LeftString, Font, b, mUseImages && cmd.ImageIndex >= 0 ? RowHeight + 1 : 1, RowHeight * i + 1);
 					}
 
-					if (cmd.RightString != null)
+					if (mUseImages && cmd.ImageIndex >= 0)
+					{
+						System.Drawing.Image I = IL.Images[cmd.ImageIndex];
+						int iW = RowHeight -2;
+						int iH = RowHeight - 2;
+						e.Graphics.DrawImage(I, /*Width - ScrollBar.Width - iW - 2*/ 1, RowHeight * i + (RowHeight - iH) / 2, iW, iH );
+					}
+					if (!mUseImages && cmd.RightString != null)
 					{
 						using (Brush b = new SolidBrush(cmd.RightColor))
 							e.Graphics.DrawString(cmd.RightString, Font, b, Width - ScrollBar.Width - 1, RowHeight * i + 2, new StringFormat(StringFormatFlags.DirectionRightToLeft));
 					}
+
+
 
 					e.Graphics.DrawLine(Pens.LightGray, 0, RowHeight * (i + 1), Width, RowHeight * (i + 1));
 				}

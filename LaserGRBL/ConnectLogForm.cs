@@ -16,7 +16,7 @@ namespace LaserGRBL
 	/// <summary>
 	/// Description of ConnectLogForm.
 	/// </summary>
-	public partial class ConnectLogForm : UserControls.DockingManager.DockContent
+	public partial class ConnectLogForm : LaserGRBL.UserControls.DockingManager.DockContent
 	{
 		private object[] baudRates = { 4800, 9600, 19200, 38400, 57600, 115200, 230400 };
 		

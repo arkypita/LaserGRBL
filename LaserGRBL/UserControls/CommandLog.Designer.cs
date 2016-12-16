@@ -29,8 +29,10 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommandLog));
 			this.ScrollBar = new System.Windows.Forms.VScrollBar();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
+			this.IL = new System.Windows.Forms.ImageList(this.components);
 			this.SuspendLayout();
 			// 
 			// ScrollBar
@@ -42,6 +44,14 @@
 			this.ScrollBar.Name = "ScrollBar";
 			this.ScrollBar.Size = new System.Drawing.Size(17, 404);
 			this.ScrollBar.TabIndex = 0;
+			// 
+			// IL
+			// 
+			this.IL.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IL.ImageStream")));
+			this.IL.TransparentColor = System.Drawing.Color.Transparent;
+			this.IL.Images.SetKeyName(0, "GcodeQueue.png");
+			this.IL.Images.SetKeyName(1, "GcodeOK.png");
+			this.IL.Images.SetKeyName(2, "GcodeKO.png");
 			// 
 			// CommandLog
 			// 
@@ -60,5 +70,6 @@
 
 		private System.Windows.Forms.VScrollBar ScrollBar;
 		private System.Windows.Forms.ToolTip TT;
+		private System.Windows.Forms.ImageList IL;
 	}
 }

@@ -531,7 +531,7 @@ namespace LaserGRBL
 									string[] xyz = mpos.Split(",".ToCharArray());
 									mLaserPosition = new System.Drawing.PointF(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo));
 									
-									if (arr.Length > 3 && arr[4].StartsWith("Ov"))
+									if (arr.Length > 4 && arr[4].StartsWith("Ov"))
 										ParseOverrides(arr[4]);
 								}
 								else //<Idle,MPos:0.000,0.000,0.000,WPos:0.000,0.000,0.000>

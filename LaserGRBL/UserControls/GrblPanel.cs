@@ -76,7 +76,7 @@ namespace LaserGRBL.UserControls
 		{
 			Size wSize = Size;
 			
-			if (wSize.IsEmpty)
+			if (wSize.Width < 1 || wSize.Height < 1)
 				return;
 			
 			System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(wSize.Width, wSize.Height);

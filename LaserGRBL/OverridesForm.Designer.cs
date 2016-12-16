@@ -53,30 +53,31 @@
 			// 
 			// tlp1
 			// 
-			this.tlp1.ColumnCount = 7;
+			this.tlp1.ColumnCount = 8;
+			this.tlp1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlp1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
 			this.tlp1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tlp1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tlp1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tlp1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tlp1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tlp1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-			this.tlp1.Controls.Add(this.LblRapid, 0, 1);
-			this.tlp1.Controls.Add(this.LblPower, 0, 3);
-			this.tlp1.Controls.Add(this.LblSpeed, 0, 2);
-			this.tlp1.Controls.Add(this.immediateCommandButton1, 1, 2);
-			this.tlp1.Controls.Add(this.immediateCommandButton2, 2, 2);
-			this.tlp1.Controls.Add(this.immediateCommandButton3, 3, 2);
-			this.tlp1.Controls.Add(this.immediateCommandButton4, 4, 2);
-			this.tlp1.Controls.Add(this.immediateCommandButton5, 5, 2);
-			this.tlp1.Controls.Add(this.immediateCommandButton6, 1, 3);
-			this.tlp1.Controls.Add(this.immediateCommandButton7, 2, 3);
-			this.tlp1.Controls.Add(this.immediateCommandButton8, 3, 3);
-			this.tlp1.Controls.Add(this.immediateCommandButton9, 4, 3);
-			this.tlp1.Controls.Add(this.immediateCommandButton10, 5, 3);
-			this.tlp1.Controls.Add(this.immediateCommandButton11, 1, 1);
-			this.tlp1.Controls.Add(this.immediateCommandButton13, 5, 1);
-			this.tlp1.Controls.Add(this.immediateCommandButton12, 3, 1);
+			this.tlp1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlp1.Controls.Add(this.LblRapid, 1, 1);
+			this.tlp1.Controls.Add(this.LblPower, 1, 3);
+			this.tlp1.Controls.Add(this.LblSpeed, 1, 2);
+			this.tlp1.Controls.Add(this.immediateCommandButton1, 2, 2);
+			this.tlp1.Controls.Add(this.immediateCommandButton2, 3, 2);
+			this.tlp1.Controls.Add(this.immediateCommandButton3, 4, 2);
+			this.tlp1.Controls.Add(this.immediateCommandButton4, 5, 2);
+			this.tlp1.Controls.Add(this.immediateCommandButton5, 6, 2);
+			this.tlp1.Controls.Add(this.immediateCommandButton6, 2, 3);
+			this.tlp1.Controls.Add(this.immediateCommandButton7, 3, 3);
+			this.tlp1.Controls.Add(this.immediateCommandButton8, 4, 3);
+			this.tlp1.Controls.Add(this.immediateCommandButton9, 5, 3);
+			this.tlp1.Controls.Add(this.immediateCommandButton10, 6, 3);
+			this.tlp1.Controls.Add(this.immediateCommandButton11, 2, 1);
+			this.tlp1.Controls.Add(this.immediateCommandButton13, 6, 1);
+			this.tlp1.Controls.Add(this.immediateCommandButton12, 4, 1);
 			this.tlp1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tlp1.Location = new System.Drawing.Point(0, 0);
 			this.tlp1.Name = "tlp1";
@@ -86,14 +87,14 @@
 			this.tlp1.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tlp1.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tlp1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlp1.Size = new System.Drawing.Size(295, 194);
+			this.tlp1.Size = new System.Drawing.Size(226, 114);
 			this.tlp1.TabIndex = 1;
 			// 
 			// LblRapid
 			// 
 			this.LblRapid.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.LblRapid.AutoSize = true;
-			this.LblRapid.Location = new System.Drawing.Point(3, 67);
+			this.LblRapid.Location = new System.Drawing.Point(16, 27);
 			this.LblRapid.Name = "LblRapid";
 			this.LblRapid.Size = new System.Drawing.Size(70, 13);
 			this.LblRapid.TabIndex = 3;
@@ -103,7 +104,7 @@
 			// 
 			this.LblPower.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.LblPower.AutoSize = true;
-			this.LblPower.Location = new System.Drawing.Point(3, 113);
+			this.LblPower.Location = new System.Drawing.Point(16, 73);
 			this.LblPower.Name = "LblPower";
 			this.LblPower.Size = new System.Drawing.Size(72, 13);
 			this.LblPower.TabIndex = 5;
@@ -113,7 +114,7 @@
 			// 
 			this.LblSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.LblSpeed.AutoSize = true;
-			this.LblSpeed.Location = new System.Drawing.Point(3, 90);
+			this.LblSpeed.Location = new System.Drawing.Point(16, 50);
 			this.LblSpeed.Name = "LblSpeed";
 			this.LblSpeed.Size = new System.Drawing.Size(73, 13);
 			this.LblSpeed.TabIndex = 4;
@@ -127,7 +128,7 @@
 			this.immediateCommandButton1.Coloration = System.Drawing.Color.Empty;
 			this.immediateCommandButton1.Image = ((System.Drawing.Image)(resources.GetObject("immediateCommandButton1.Image")));
 			this.immediateCommandButton1.ImmediateCommand = ((byte)(146));
-			this.immediateCommandButton1.Location = new System.Drawing.Point(88, 88);
+			this.immediateCommandButton1.Location = new System.Drawing.Point(101, 48);
 			this.immediateCommandButton1.Name = "immediateCommandButton1";
 			this.immediateCommandButton1.Size = new System.Drawing.Size(17, 17);
 			this.immediateCommandButton1.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -143,7 +144,7 @@
 			this.immediateCommandButton2.Coloration = System.Drawing.Color.Empty;
 			this.immediateCommandButton2.Image = ((System.Drawing.Image)(resources.GetObject("immediateCommandButton2.Image")));
 			this.immediateCommandButton2.ImmediateCommand = ((byte)(148));
-			this.immediateCommandButton2.Location = new System.Drawing.Point(111, 88);
+			this.immediateCommandButton2.Location = new System.Drawing.Point(124, 48);
 			this.immediateCommandButton2.Name = "immediateCommandButton2";
 			this.immediateCommandButton2.Size = new System.Drawing.Size(17, 17);
 			this.immediateCommandButton2.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -159,7 +160,7 @@
 			this.immediateCommandButton3.Coloration = System.Drawing.Color.Empty;
 			this.immediateCommandButton3.Image = ((System.Drawing.Image)(resources.GetObject("immediateCommandButton3.Image")));
 			this.immediateCommandButton3.ImmediateCommand = ((byte)(144));
-			this.immediateCommandButton3.Location = new System.Drawing.Point(134, 88);
+			this.immediateCommandButton3.Location = new System.Drawing.Point(147, 48);
 			this.immediateCommandButton3.Name = "immediateCommandButton3";
 			this.immediateCommandButton3.Size = new System.Drawing.Size(17, 17);
 			this.immediateCommandButton3.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -175,7 +176,7 @@
 			this.immediateCommandButton4.Coloration = System.Drawing.Color.Empty;
 			this.immediateCommandButton4.Image = ((System.Drawing.Image)(resources.GetObject("immediateCommandButton4.Image")));
 			this.immediateCommandButton4.ImmediateCommand = ((byte)(147));
-			this.immediateCommandButton4.Location = new System.Drawing.Point(157, 88);
+			this.immediateCommandButton4.Location = new System.Drawing.Point(170, 48);
 			this.immediateCommandButton4.Name = "immediateCommandButton4";
 			this.immediateCommandButton4.Size = new System.Drawing.Size(17, 17);
 			this.immediateCommandButton4.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -191,7 +192,7 @@
 			this.immediateCommandButton5.Coloration = System.Drawing.Color.Empty;
 			this.immediateCommandButton5.Image = ((System.Drawing.Image)(resources.GetObject("immediateCommandButton5.Image")));
 			this.immediateCommandButton5.ImmediateCommand = ((byte)(145));
-			this.immediateCommandButton5.Location = new System.Drawing.Point(180, 88);
+			this.immediateCommandButton5.Location = new System.Drawing.Point(193, 48);
 			this.immediateCommandButton5.Name = "immediateCommandButton5";
 			this.immediateCommandButton5.Size = new System.Drawing.Size(17, 17);
 			this.immediateCommandButton5.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -207,7 +208,7 @@
 			this.immediateCommandButton6.Coloration = System.Drawing.Color.Empty;
 			this.immediateCommandButton6.Image = ((System.Drawing.Image)(resources.GetObject("immediateCommandButton6.Image")));
 			this.immediateCommandButton6.ImmediateCommand = ((byte)(155));
-			this.immediateCommandButton6.Location = new System.Drawing.Point(88, 111);
+			this.immediateCommandButton6.Location = new System.Drawing.Point(101, 71);
 			this.immediateCommandButton6.Name = "immediateCommandButton6";
 			this.immediateCommandButton6.Size = new System.Drawing.Size(17, 17);
 			this.immediateCommandButton6.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -223,7 +224,7 @@
 			this.immediateCommandButton7.Coloration = System.Drawing.Color.Empty;
 			this.immediateCommandButton7.Image = ((System.Drawing.Image)(resources.GetObject("immediateCommandButton7.Image")));
 			this.immediateCommandButton7.ImmediateCommand = ((byte)(157));
-			this.immediateCommandButton7.Location = new System.Drawing.Point(111, 111);
+			this.immediateCommandButton7.Location = new System.Drawing.Point(124, 71);
 			this.immediateCommandButton7.Name = "immediateCommandButton7";
 			this.immediateCommandButton7.Size = new System.Drawing.Size(17, 17);
 			this.immediateCommandButton7.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -239,7 +240,7 @@
 			this.immediateCommandButton8.Coloration = System.Drawing.Color.Empty;
 			this.immediateCommandButton8.Image = ((System.Drawing.Image)(resources.GetObject("immediateCommandButton8.Image")));
 			this.immediateCommandButton8.ImmediateCommand = ((byte)(153));
-			this.immediateCommandButton8.Location = new System.Drawing.Point(134, 111);
+			this.immediateCommandButton8.Location = new System.Drawing.Point(147, 71);
 			this.immediateCommandButton8.Name = "immediateCommandButton8";
 			this.immediateCommandButton8.Size = new System.Drawing.Size(17, 17);
 			this.immediateCommandButton8.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -255,7 +256,7 @@
 			this.immediateCommandButton9.Coloration = System.Drawing.Color.Empty;
 			this.immediateCommandButton9.Image = ((System.Drawing.Image)(resources.GetObject("immediateCommandButton9.Image")));
 			this.immediateCommandButton9.ImmediateCommand = ((byte)(156));
-			this.immediateCommandButton9.Location = new System.Drawing.Point(157, 111);
+			this.immediateCommandButton9.Location = new System.Drawing.Point(170, 71);
 			this.immediateCommandButton9.Name = "immediateCommandButton9";
 			this.immediateCommandButton9.Size = new System.Drawing.Size(17, 17);
 			this.immediateCommandButton9.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -271,7 +272,7 @@
 			this.immediateCommandButton10.Coloration = System.Drawing.Color.Empty;
 			this.immediateCommandButton10.Image = ((System.Drawing.Image)(resources.GetObject("immediateCommandButton10.Image")));
 			this.immediateCommandButton10.ImmediateCommand = ((byte)(154));
-			this.immediateCommandButton10.Location = new System.Drawing.Point(180, 111);
+			this.immediateCommandButton10.Location = new System.Drawing.Point(193, 71);
 			this.immediateCommandButton10.Name = "immediateCommandButton10";
 			this.immediateCommandButton10.Size = new System.Drawing.Size(17, 17);
 			this.immediateCommandButton10.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -287,7 +288,7 @@
 			this.immediateCommandButton11.Coloration = System.Drawing.Color.Empty;
 			this.immediateCommandButton11.Image = ((System.Drawing.Image)(resources.GetObject("immediateCommandButton11.Image")));
 			this.immediateCommandButton11.ImmediateCommand = ((byte)(151));
-			this.immediateCommandButton11.Location = new System.Drawing.Point(88, 65);
+			this.immediateCommandButton11.Location = new System.Drawing.Point(101, 25);
 			this.immediateCommandButton11.Name = "immediateCommandButton11";
 			this.immediateCommandButton11.Size = new System.Drawing.Size(17, 17);
 			this.immediateCommandButton11.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -303,7 +304,7 @@
 			this.immediateCommandButton13.Coloration = System.Drawing.Color.Empty;
 			this.immediateCommandButton13.Image = ((System.Drawing.Image)(resources.GetObject("immediateCommandButton13.Image")));
 			this.immediateCommandButton13.ImmediateCommand = ((byte)(149));
-			this.immediateCommandButton13.Location = new System.Drawing.Point(180, 65);
+			this.immediateCommandButton13.Location = new System.Drawing.Point(193, 25);
 			this.immediateCommandButton13.Name = "immediateCommandButton13";
 			this.immediateCommandButton13.Size = new System.Drawing.Size(17, 17);
 			this.immediateCommandButton13.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -319,7 +320,7 @@
 			this.immediateCommandButton12.Coloration = System.Drawing.Color.Empty;
 			this.immediateCommandButton12.Image = ((System.Drawing.Image)(resources.GetObject("immediateCommandButton12.Image")));
 			this.immediateCommandButton12.ImmediateCommand = ((byte)(150));
-			this.immediateCommandButton12.Location = new System.Drawing.Point(134, 65);
+			this.immediateCommandButton12.Location = new System.Drawing.Point(147, 25);
 			this.immediateCommandButton12.Name = "immediateCommandButton12";
 			this.immediateCommandButton12.Size = new System.Drawing.Size(17, 17);
 			this.immediateCommandButton12.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -331,10 +332,10 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(295, 194);
+			this.ClientSize = new System.Drawing.Size(226, 114);
 			this.Controls.Add(this.tlp1);
 			this.DockAreas = ((LaserGRBL.UserControls.DockingManager.DockAreas)(((LaserGRBL.UserControls.DockingManager.DockAreas.Float | LaserGRBL.UserControls.DockingManager.DockAreas.DockLeft) 
-			| LaserGRBL.UserControls.DockingManager.DockAreas.DockRight)));
+            | LaserGRBL.UserControls.DockingManager.DockAreas.DockRight)));
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.HideOnClose = true;
 			this.Name = "OverridesForm";

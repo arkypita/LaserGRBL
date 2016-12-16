@@ -25,15 +25,55 @@ namespace LaserGRBL
 			ComPort = new GrblCom();
 			ComPort.MachineStatusChanged += OnMachineStatus;
 			ComPort.OnFileLoaded += OnFileLoaded;
-			
-			ConnectionForm = new ConnectLogForm(ComPort);
-			ConnectionForm.Show(DockArea);
+		}
+
+		private void MainForm_Load(object sender, EventArgs e)
+		{
 			PreviewForm = new PreviewForm(ComPort);
-			PreviewForm.Show(DockArea);
+			ConnectionForm = new ConnectLogForm(ComPort);
 			JogForm = new JogForm(ComPort);
-			//JogForm.Show(DockArea);
 			OvForm = new OverridesForm(ComPort);
-			//OvForm.Show(DockArea);
+
+			//if (System.IO.File.Exists("Docking.xml"))
+			//{
+			//	DockArea.LoadFromXml("Docking.xml", new LaserGRBL.UserControls.DockingManager.DeserializeDockContent(this.GetContentFromPersistString));
+			//}
+			//else
+			//{
+				PreviewForm.Show(DockArea, LaserGRBL.UserControls.DockingManager.DockState.Document);
+				ConnectionForm.Show(DockArea, LaserGRBL.UserControls.DockingManager.DockState.DockLeft);
+				OvForm.Show(ConnectionForm.Pane, LaserGRBL.UserControls.DockingManager.DockAlignment.Bottom, 0.2);
+				JogForm.Show(OvForm.Pane, null);
+				
+			//}
+		}
+
+		private LaserGRBL.UserControls.DockingManager.IDockContent GetContentFromPersistString(string persistString)
+		{
+			if (persistString == typeof(ConnectLogForm).ToString())
+			{
+				ConnectionForm.Show(DockArea);
+				return ConnectionForm;
+			}
+			else if (persistString == typeof(PreviewForm).ToString())
+			{
+				PreviewForm.Show(DockArea);
+				return PreviewForm;
+			}
+			else if (persistString == typeof(JogForm).ToString())
+			{
+				JogForm.Show(DockArea);
+				return JogForm;
+			}
+			else if (persistString == typeof(OverridesForm).ToString())
+			{
+				OvForm.Show(DockArea);
+				return OvForm;
+			}
+			else
+			{
+				return null;
+			}
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -54,6 +94,7 @@ namespace LaserGRBL
 		}
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
+			//DockArea.SaveAsXml("Docking.xml");
 			ComPort.CloseCom();
 		}
 		

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace LaserGRBL
 {
-	public partial class OverridesForm : UserControls.DockingManager.DockContent
+	public partial class OverridesForm : LaserGRBL.UserControls.DockingManager.DockContent
 	{
 		GrblCom ComPort;
 		

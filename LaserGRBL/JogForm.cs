@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace LaserGRBL
 {
-	public partial class JogForm : UserControls.DockingManager.DockContent
+	public partial class JogForm : LaserGRBL.UserControls.DockingManager.DockContent
 	{
 		GrblCom ComPort;
 
@@ -25,9 +25,7 @@ namespace LaserGRBL
 		public void TimerUpdate()
 		{
 			SuspendLayout();
-			foreach (Control ctr in tlp1.Controls)
-					ctr.Enabled = ComPort.JogEnabled;
-			foreach (Control ctr in tlp2.Controls)
+			foreach (Control ctr in tlp.Controls)
 					ctr.Enabled = ComPort.JogEnabled;
 			ResumeLayout();
 		}

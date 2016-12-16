@@ -270,6 +270,9 @@
   <data name="DockPanel_AllowEndUserNestedDocking_Description" xml:space="preserve">
     <value>Determines if the drag and drop nested docking is allowed.</value>
   </data>
+  <data name="DockPanel_ActiveAutoHideContentChanged_Description" xml:space="preserve">
+    <value>Occurs when the value of the AutoHideWindow's ActiveContent changed.</value>
+  </data>
   <data name="DockPanel_ContentAdded_Description" xml:space="preserve">
     <value>Occurs when a content added to the DockPanel.</value>
   </data>
@@ -351,7 +354,19 @@
   <data name="DockPanel_DockPanelSkin" xml:space="preserve">
     <value>The visual skin to use when displaying the docked windows.</value>
   </data>
+  <data name="DockPanel_DockPanelSkinStyle" xml:space="preserve">
+    <value>The predefined style used as the base for the skin.</value>
+  </data>
   <data name="DockPanel_DocumentTabStripLocation" xml:space="preserve">
     <value>Determines where the tab strip for Document style content is drawn.</value>
+  </data>
+  <data name="Category_Performance" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="DockPanel_SupportDeeplyNestedContent_Description" xml:space="preserve">
+    <value>Support deeply nested controls.  Disabling this setting may improve resize performance but may cause heavily nested content not to resize.</value>
+  </data>
+  <data name="DockPanel_ShowAutoHideContentOnHover_Description" xml:space="preserve">
+    <value>Shows the hidden autohide content when hovering over the tab.  When disabled, the tab must be clicked to show the content.</value>
   </data>
 </root>

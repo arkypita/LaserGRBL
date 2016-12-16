@@ -29,12 +29,12 @@ namespace LaserGRBL.UserControls.DockingManager
 
                 protected override void StartDrag()
                 {
-        			AutoHideWindow.DockPanel.BeginDrag(AutoHideWindow, AutoHideWindow.RectangleToScreen(Bounds));
+                    AutoHideWindow.DockPanel.BeginDrag(AutoHideWindow, AutoHideWindow.RectangleToScreen(Bounds));
                 }
             }
 
             #region consts
-            private const int ANIMATE_TIME = 100;	// in mini-seconds
+            private const int ANIMATE_TIME = 100;    // in mini-seconds
             #endregion
 
             private Timer m_timerMouseTrack;
@@ -82,6 +82,20 @@ namespace LaserGRBL.UserControls.DockingManager
                 m_activePane = value;
             }
 
+            private static readonly object ActiveContentChangedEvent = new object();
+            public event EventHandler ActiveContentChanged
+            {
+                add { Events.AddHandler(ActiveContentChangedEvent, value); }
+                remove { Events.RemoveHandler(ActiveContentChangedEvent, value); }
+            }
+
+            protected virtual void OnActiveContentChanged(EventArgs e)
+            {
+                EventHandler handler = (EventHandler)Events[ActiveContentChangedEvent];
+                if (handler != null)
+                    handler(this, e);
+            }
+
             private IDockContent m_activeContent = null;
             public IDockContent ActiveContent
             {
@@ -102,7 +116,13 @@ namespace LaserGRBL.UserControls.DockingManager
                     if (m_activeContent != null)
                     {
                         if (m_activeContent.DockHandler.Form.ContainsFocus)
-                            DockPanel.ContentFocusManager.GiveUpFocus(m_activeContent);
+                        {
+                            if (!Win32Helper.IsRunningOnMono)
+                            {
+                                DockPanel.ContentFocusManager.GiveUpFocus(m_activeContent);
+                            }
+                        }
+
                         AnimateWindow(false);
                     }
 
@@ -118,6 +138,8 @@ namespace LaserGRBL.UserControls.DockingManager
                     DockPanel.RefreshAutoHideStrip();
 
                     SetTimerMouseTrack();
+
+                    OnActiveContentChanged(EventArgs.Empty);
                 }
             }
 

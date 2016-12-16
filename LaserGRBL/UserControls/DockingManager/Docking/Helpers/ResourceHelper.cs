@@ -6,8 +6,8 @@ using System.Windows.Forms;
 
 namespace LaserGRBL.UserControls.DockingManager
 {
-	internal static class ResourceHelper
-	{
+    internal static class ResourceHelper
+    {
         private static ResourceManager _resourceManager = null;
 
         private static ResourceManager ResourceManager
@@ -21,9 +21,9 @@ namespace LaserGRBL.UserControls.DockingManager
 
         }
 
-		public static string GetString(string name)
-		{
-			return ResourceManager.GetString(name);
-		}
-	}
+        public static string GetString(string name)
+        {
+            return ResourceManager.GetString(name);
+        }
+    }
 }

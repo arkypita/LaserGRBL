@@ -144,6 +144,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControls\DockingManager\Docking\DockPaneCollection.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.Appearance.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\DockingManager\Docking\DockPanel.AutoHideWindow.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -203,9 +206,13 @@
     <Compile Include="UserControls\DockingManager\Docking\Measures.cs" />
     <Compile Include="UserControls\DockingManager\Docking\NestedDockingStatus.cs" />
     <Compile Include="UserControls\DockingManager\Docking\NestedPaneCollection.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Resources.Designer.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Skins\DockPanelSkinBuilder.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Skins\Style.cs" />
     <Compile Include="UserControls\DockingManager\Docking\SplitterBase.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\Strings.Designer.cs" />
     <Compile Include="UserControls\DockingManager\Docking\VisibleNestedPaneCollection.cs" />
     <Compile Include="UserControls\DockingManager\Docking\VS2005AutoHideStrip.cs">
       <SubType>Component</SubType>
@@ -218,8 +225,6 @@
     </Compile>
     <Compile Include="UserControls\DockingManager\Docking\Win32\Enums.cs" />
     <Compile Include="UserControls\DockingManager\Docking\Win32\NativeMethods.cs" />
-    <Compile Include="UserControls\DockingManager\Resources.Designer.cs" />
-    <Compile Include="UserControls\DockingManager\Strings.Designer.cs" />
     <Compile Include="UserControls\DoubleProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -272,7 +277,9 @@
     <EmbeddedResource Include="UserControls\CommandLog.resx">
       <DependentUpon>CommandLog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\DockingManager\Resources.resx" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\DockingManager\Strings.resx" />
     <EmbeddedResource Include="UserControls\GrblPanel.resx">
       <DependentUpon>GrblPanel.cs</DependentUpon>
@@ -293,12 +300,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Grafica\add2.png" />
-    <Content Include="Grafica\check.png" />
+    <Content Include="Grafica\aE.png" />
+    <Content Include="Grafica\aN.png" />
+    <Content Include="Grafica\aNE.png" />
+    <Content Include="Grafica\aNW.png" />
+    <Content Include="Grafica\aS.png" />
+    <Content Include="Grafica\aSE.png" />
+    <Content Include="Grafica\aSW.png" />
+    <Content Include="Grafica\aW.png" />
+    <Content Include="Grafica\GcodeQueue.png" />
+    <Content Include="Grafica\GcodeOK.png" />
     <Content Include="Grafica\check2.png" />
     <Content Include="Grafica\checks.png" />
     <Content Include="Grafica\closeall.png" />
     <Content Include="Grafica\configure.png" />
     <Content Include="Grafica\connect_creating.png" />
+    <Content Include="Grafica\control_end.png" />
+    <Content Include="Grafica\control_forward.png" />
+    <Content Include="Grafica\control_repeat.png" />
+    <Content Include="Grafica\control_rewind.png" />
+    <Content Include="Grafica\control_start.png" />
     <Content Include="Grafica\document_check.png" />
     <Content Include="Grafica\document_delete.png" />
     <Content Include="Grafica\document_error.png" />
@@ -306,37 +327,37 @@
     <Content Include="Grafica\error.png" />
     <Content Include="Grafica\fileopen.png" />
     <Content Include="Grafica\flash.png" />
-    <Content Include="Grafica\forbidden.png" />
+    <Content Include="Grafica\GcodeKO.png" />
     <Content Include="Grafica\media_play_green.png" />
     <Content Include="Grafica\media_stop_red.png" />
     <Content Include="Grafica\stop.png" />
     <Content Include="Grafica\text_align_left.png" />
     <Content Include="Grafica\warning.png" />
     <Content Include="UserControls\DockingManager\Docking\DockPanel.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Bottom.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\Dockindicator_PaneDiamond_Fill.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Hotspot.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_HotspotIndex.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Left.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Right.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Top.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelBottom.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelBottom_Active.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelFill.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelFill_Active.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelLeft.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelLeft_Active.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelRight.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelRight_Active.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelTop.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelTop_Active.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_AutoHide.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_Close.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_Dock.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_Option.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_OptionOverflow.bmp" />
     <Content Include="UserControls\DockingManager\license.txt" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Bottom.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\Dockindicator_PaneDiamond_Fill.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Hotspot.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_HotspotIndex.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Left.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Right.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Top.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelBottom.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelBottom_Active.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelFill.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelFill_Active.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelLeft.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelLeft_Active.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelRight.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelRight_Active.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelTop.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockIndicator_PanelTop_Active.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockPane_AutoHide.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockPane_Close.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockPane_Dock.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockPane_Option.bmp" />
-    <Content Include="UserControls\DockingManager\Resources\DockPane_OptionOverflow.bmp" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

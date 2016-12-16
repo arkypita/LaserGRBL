@@ -13,6 +13,8 @@ namespace LaserGRBL
 
 		Color LeftColor { get; }
 		Color RightColor { get; }
+
+		int ImageIndex { get; }
 	}
 	
 	public static class CSVD
@@ -32,6 +34,7 @@ namespace LaserGRBL
 		
 		private decimal mDistanceOffset;
 		private TimeSpan mTimeOffset;
+		private bool mIsGrbl;
 		
 		public class Element
 		{
@@ -88,7 +91,7 @@ namespace LaserGRBL
 
 			try
 			{
-				mLine = line.ToUpper();
+				mLine = line.ToUpper().Trim();
 
 				char cmd = '\0';
 				string num = "";
@@ -96,48 +99,56 @@ namespace LaserGRBL
 				bool oldspace = false;
 				System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
-				foreach (char c in mLine)
+				if (mLine.StartsWith("$")) //do not parse grbl commands
 				{
-					if (c == ';') //dal punto e virgola fino a fine riga -> commento!
-						break;
-					
-					if (c == '(')
-						comment = true;
-					
-					bool space = c == ' ' ? true : false;
-					if (!comment)
-					{
-						if (space && !oldspace)
-							sb.Append(' ');
-						else if (!space)
-							sb.Append(c);
-					}
-					oldspace = space;
-					
-					if (!comment)
-					{
-						if (Char.IsLetter(c))
-						{
-							if (cmd != '\0') //chiudi il comando precedente
-								Add(new Element(cmd, Decimal.Parse(num, System.Globalization.NumberFormatInfo.InvariantInfo)));
-	
-							cmd = c; //apri il comando successivo
-							num = "";
-						}
-						else if (Char.IsNumber(c) || c == '.' || c == '-')
-						{
-							num += c; //accumula il dato
-						}
-					}
-					
-					if (c == ')')
-						comment = false;
+					mIsGrbl = true;
 				}
+				else //parse only gcodes
+				{
+					mIsGrbl = false;
+					foreach (char c in mLine)
+					{
+						if (c == ';') //dal punto e virgola fino a fine riga -> commento!
+							break;
 
-				mLine = sb.ToString();
-				
-				if (cmd != '\0') 
-					Add(new Element(cmd, Decimal.Parse(num, System.Globalization.NumberFormatInfo.InvariantInfo))); //aggiungi l'ultimo
+						if (c == '(')
+							comment = true;
+
+						bool space = c == ' ' ? true : false;
+						if (!comment)
+						{
+							if (space && !oldspace)
+								sb.Append(' ');
+							else if (!space)
+								sb.Append(c);
+						}
+						oldspace = space;
+
+						if (!comment)
+						{
+							if (Char.IsLetter(c))
+							{
+								if (cmd != '\0') //chiudi il comando precedente
+									Add(new Element(cmd, Decimal.Parse(num, System.Globalization.NumberFormatInfo.InvariantInfo)));
+
+								cmd = c; //apri il comando successivo
+								num = "";
+							}
+							else if (Char.IsNumber(c) || c == '.' || c == '-')
+							{
+								num += c; //accumula il dato
+							}
+						}
+
+						if (c == ')')
+							comment = false;
+					}
+
+					mLine = sb.ToString();
+
+					if (cmd != '\0')
+						Add(new Element(cmd, Decimal.Parse(num, System.Globalization.NumberFormatInfo.InvariantInfo))); //aggiungi l'ultimo
+				}
 			}
 			catch {}
 		}
@@ -173,6 +184,8 @@ namespace LaserGRBL
 			}
 		}
 
+		public bool IsGrblCommand
+		{ get { return mIsGrbl; } }
 		
 		public bool IsEmpty
 		{get{return mLine.Length == 0;}}
@@ -236,6 +249,8 @@ namespace LaserGRBL
 
 		#endregion
 
+		#region Parameters
+	
 		public Element T
 		{ get { return GetElement('T'); } }
 
@@ -265,6 +280,8 @@ namespace LaserGRBL
 
 		public Element R
 		{ get { return GetElement('R'); } }
+
+		#endregion
 
 		private Element GetElement(char key)
 		{ return list.ContainsKey(key) ? list[key] : null; }
@@ -303,6 +320,9 @@ namespace LaserGRBL
 
 		internal void SetSending()
 		{mStatus = CommandStatus.WaitingResponse;}
+
+		public int ImageIndex
+		{ get { return Status == CommandStatus.Queued || Status == CommandStatus.WaitingResponse ? 0 : Status == CommandStatus.ResponseGood ? 1 : 2; } }
 	}
 
 	public class GrblMessage : IGrblRow
@@ -398,5 +418,8 @@ namespace LaserGRBL
 
 		public Color RightColor
 		{get { return Color.Black; }}
+
+		public int ImageIndex
+		{ get { return -1; } }
 	}
 }

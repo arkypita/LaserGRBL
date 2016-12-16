@@ -57,25 +57,6 @@ namespace LaserGRBL.UserControls.DockingManager
                     g.DrawLine(SystemPens.ControlDarkDark, rect.Right - 1, rect.Top, rect.Right - 1, rect.Bottom);
             }
 
-			protected override void OnMouseMove(MouseEventArgs e)
-			{
-				base.OnMouseMove(e);
-
-				DockWindow window = Parent as DockWindow;
-				if (window == null)
-					return;
-
-				bool sizable = window.DockPanel.AllowResizing;
-
-				if (sizable && (m_alignment == DockAlignment.Left || m_alignment == DockAlignment.Right))
-					Cursor = Cursors.VSplit;
-				else if (sizable && (m_alignment == DockAlignment.Top || m_alignment == DockAlignment.Bottom))
-					Cursor = Cursors.HSplit;
-				else
-					Cursor = Cursors.Default;
-
-			}
-
             protected override void OnMouseDown(MouseEventArgs e)
             {
                 base.OnMouseDown(e);

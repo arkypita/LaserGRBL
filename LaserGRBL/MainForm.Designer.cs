@@ -71,8 +71,8 @@
 			this.MnImportConfig = new System.Windows.Forms.ToolStripMenuItem();
 			this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.joggingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.DockArea = new LaserGRBL.UserControls.DockingManager.DockPanel();
 			this.overridesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.DockArea = new LaserGRBL.UserControls.DockingManager.DockPanel();
 			this.StatusBar.SuspendLayout();
 			this.MMn.SuspendLayout();
 			this.SuspendLayout();
@@ -273,18 +273,25 @@
 			// joggingToolStripMenuItem
 			// 
 			this.joggingToolStripMenuItem.Name = "joggingToolStripMenuItem";
-			this.joggingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.joggingToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
 			this.joggingToolStripMenuItem.Text = "&Jogging";
 			this.joggingToolStripMenuItem.Click += new System.EventHandler(this.joggingToolStripMenuItem_Click);
+			// 
+			// overridesToolStripMenuItem
+			// 
+			this.overridesToolStripMenuItem.Name = "overridesToolStripMenuItem";
+			this.overridesToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+			this.overridesToolStripMenuItem.Text = "&Overrides";
+			this.overridesToolStripMenuItem.Click += new System.EventHandler(this.overridesToolStripMenuItem_Click);
 			// 
 			// DockArea
 			// 
 			this.DockArea.ActiveAutoHideContent = null;
 			this.DockArea.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.DockArea.DockBackColor = System.Drawing.SystemColors.Control;
-			this.DockArea.Location = new System.Drawing.Point(0, 24);
+			this.DockArea.Location = new System.Drawing.Point(0, 0);
 			this.DockArea.Name = "DockArea";
-			this.DockArea.Size = new System.Drawing.Size(856, 435);
+			this.DockArea.Size = new System.Drawing.Size(856, 483);
 			dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
 			dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
 			autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
@@ -331,21 +338,14 @@
 			this.DockArea.Skin = dockPanelSkin1;
 			this.DockArea.TabIndex = 3;
 			// 
-			// overridesToolStripMenuItem
-			// 
-			this.overridesToolStripMenuItem.Name = "overridesToolStripMenuItem";
-			this.overridesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.overridesToolStripMenuItem.Text = "&Overrides";
-			this.overridesToolStripMenuItem.Click += new System.EventHandler(this.overridesToolStripMenuItem_Click);
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(856, 483);
-			this.Controls.Add(this.DockArea);
 			this.Controls.Add(this.StatusBar);
 			this.Controls.Add(this.MMn);
+			this.Controls.Add(this.DockArea);
 			this.Cursor = System.Windows.Forms.Cursors.Default;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.IsMdiContainer = true;
@@ -353,6 +353,7 @@
 			this.Name = "MainForm";
 			this.Text = "Laser GRBL";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
+			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.StatusBar.ResumeLayout(false);
 			this.StatusBar.PerformLayout();
 			this.MMn.ResumeLayout(false);

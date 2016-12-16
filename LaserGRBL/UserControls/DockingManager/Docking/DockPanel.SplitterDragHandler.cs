@@ -159,7 +159,6 @@ namespace LaserGRBL.UserControls.DockingManager
 
         internal void BeginDrag(ISplitterDragSource dragSource, Rectangle rectSplitter)
         {
-			if (AllowResizing == false) return;
             GetSplitterDragHandler().BeginDrag(dragSource, rectSplitter);
         }
     }

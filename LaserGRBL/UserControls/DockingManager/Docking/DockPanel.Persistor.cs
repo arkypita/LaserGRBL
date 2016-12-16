@@ -214,30 +214,15 @@ namespace LaserGRBL.UserControls.DockingManager
 
             public static void SaveAsXml(DockPanel dockPanel, string fileName, Encoding encoding)
             {
-				string tmp = fileName + ".tmp";
-				FileStream fs = null;
-				try
-				{
-					fs = new FileStream(tmp, FileMode.Create);
-					SaveAsXml(dockPanel, fs, encoding);
-					fs.Close();
-
-					if (System.IO.File.Exists(fileName))
-						System.IO.File.Delete(fileName);
-
-					System.IO.File.Move(tmp, fileName);
-				}
-				catch 
-				{
-					try
-					{
-						if (fs != null)
-							fs.Close();
-						if (System.IO.File.Exists(tmp))
-							System.IO.File.Delete(tmp);
-					}
-					catch { }
-				}
+                FileStream fs = new FileStream(fileName, FileMode.Create);
+                try
+                {
+                    SaveAsXml(dockPanel, fs, encoding);
+                }
+                finally
+                {
+                    fs.Close();
+                }
             }
 
             public static void SaveAsXml(DockPanel dockPanel, Stream stream, Encoding encoding)
@@ -267,8 +252,12 @@ namespace LaserGRBL.UserControls.DockingManager
                 xmlOut.WriteAttributeString("DockRightPortion", dockPanel.DockRightPortion.ToString(CultureInfo.InvariantCulture));
                 xmlOut.WriteAttributeString("DockTopPortion", dockPanel.DockTopPortion.ToString(CultureInfo.InvariantCulture));
                 xmlOut.WriteAttributeString("DockBottomPortion", dockPanel.DockBottomPortion.ToString(CultureInfo.InvariantCulture));
-                xmlOut.WriteAttributeString("ActiveDocumentPane", dockPanel.Panes.IndexOf(dockPanel.ActiveDocumentPane).ToString(CultureInfo.InvariantCulture));
-                xmlOut.WriteAttributeString("ActivePane", dockPanel.Panes.IndexOf(dockPanel.ActivePane).ToString(CultureInfo.InvariantCulture));
+
+                if (!Win32Helper.IsRunningOnMono)
+                {
+                    xmlOut.WriteAttributeString("ActiveDocumentPane", dockPanel.Panes.IndexOf(dockPanel.ActiveDocumentPane).ToString(CultureInfo.InvariantCulture));
+                    xmlOut.WriteAttributeString("ActivePane", dockPanel.Panes.IndexOf(dockPanel.ActivePane).ToString(CultureInfo.InvariantCulture));
+                }                
 
                 // Contents
                 xmlOut.WriteStartElement("Contents");
@@ -362,7 +351,7 @@ namespace LaserGRBL.UserControls.DockingManager
                     xmlOut.WriteEndElement();
                     xmlOut.WriteEndElement();
                 }
-                xmlOut.WriteEndElement();	//	</FloatWindows>
+                xmlOut.WriteEndElement();    //    </FloatWindows>
 
                 xmlOut.WriteEndElement();
 

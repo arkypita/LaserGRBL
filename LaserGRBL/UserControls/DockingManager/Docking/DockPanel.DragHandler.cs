@@ -37,22 +37,23 @@ namespace LaserGRBL.UserControls.DockingManager
 
             protected bool BeginDrag()
             {
-                // Avoid re-entrance;
-                lock (this)
+                if (DragControl == null)
+                    return false;
+
+                StartMousePosition = Control.MousePosition;
+
+                if (!Win32Helper.IsRunningOnMono)
                 {
-                    if (DragControl == null)
-                        return false;
-
-                    StartMousePosition = Control.MousePosition;
-
                     if (!NativeMethods.DragDetect(DragControl.Handle, StartMousePosition))
+                    {
                         return false;
-
-                    DragControl.FindForm().Capture = true;
-                    AssignHandle(DragControl.FindForm().Handle);
-                    Application.AddMessageFilter(this);
-                    return true;
+                    }
                 }
+
+                DragControl.FindForm().Capture = true;
+                AssignHandle(DragControl.FindForm().Handle);
+                Application.AddMessageFilter(this);
+                return true;
             }
 
             protected abstract void OnDragging();

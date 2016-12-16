@@ -16,7 +16,7 @@ namespace LaserGRBL
 	/// <summary>
 	/// Description of PreviewForm.
 	/// </summary>
-	public partial class PreviewForm : UserControls.DockingManager.DockContent
+	public partial class PreviewForm : LaserGRBL.UserControls.DockingManager.DockContent
 	{
 		GrblCom ComPort;
 		
