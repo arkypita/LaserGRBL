@@ -128,8 +128,8 @@ namespace LaserGRBL
 			*/
 
 			BtnConnectDisconnect.UseAltImage = ComPort.IsOpen;
-			BtnOpen.Enabled = true;
 			BtnRunProgram.Enabled = ComPort.HasProgram && ComPort.IsOpen && ComPort.MachineStatus == GrblCom.MacStatus.Idle;
+			BtnOpen.Enabled = !ComPort.InProgram;
 
 			bool old = TxtManualCommand.Enabled;
 			TxtManualCommand.Enabled = ComPort.IsOpen && ComPort.MachineStatus != GrblCom.MacStatus.Disconnected;
