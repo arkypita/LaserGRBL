@@ -80,17 +80,17 @@
 			// StatusBar
 			// 
 			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TTLFile,
-            this.TTTFile,
-            this.TTLLines,
-            this.TTTLines,
-            this.TTLLoadedIn,
-            this.TTTLoadedIn,
-            this.TTLEstimated,
-            this.TTTEstimated,
-            this.spring,
-            this.TTLStatus,
-            this.TTTStatus});
+			this.TTLFile,
+			this.TTTFile,
+			this.TTLLines,
+			this.TTTLines,
+			this.TTLLoadedIn,
+			this.TTTLoadedIn,
+			this.TTLEstimated,
+			this.TTTEstimated,
+			this.spring,
+			this.TTLStatus,
+			this.TTTStatus});
 			this.StatusBar.Location = new System.Drawing.Point(0, 459);
 			this.StatusBar.Name = "StatusBar";
 			this.StatusBar.Size = new System.Drawing.Size(856, 24);
@@ -153,7 +153,7 @@
 			// spring
 			// 
 			this.spring.Name = "spring";
-			this.spring.Size = new System.Drawing.Size(383, 19);
+			this.spring.Size = new System.Drawing.Size(352, 19);
 			this.spring.Spring = true;
 			// 
 			// TTLStatus
@@ -178,9 +178,9 @@
 			// MMn
 			// 
 			this.MMn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.grblToolStripMenuItem,
-            this.windowsToolStripMenuItem});
+			this.fileToolStripMenuItem,
+			this.grblToolStripMenuItem,
+			this.windowsToolStripMenuItem});
 			this.MMn.Location = new System.Drawing.Point(0, 0);
 			this.MMn.Name = "MMn";
 			this.MMn.Size = new System.Drawing.Size(856, 24);
@@ -190,10 +190,10 @@
 			// fileToolStripMenuItem
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MnFileOpen,
-            this.MnFileSend,
-            this.toolStripMenuItem1,
-            this.exitToolStripMenuItem});
+			this.MnFileOpen,
+			this.MnFileSend,
+			this.toolStripMenuItem1,
+			this.exitToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
 			this.fileToolStripMenuItem.Text = "&File";
@@ -227,10 +227,10 @@
 			// grblToolStripMenuItem
 			// 
 			this.grblToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MnGrblReset,
-            this.toolStripSeparator1,
-            this.MnExportConfig,
-            this.MnImportConfig});
+			this.MnGrblReset,
+			this.toolStripSeparator1,
+			this.MnExportConfig,
+			this.MnImportConfig});
 			this.grblToolStripMenuItem.Name = "grblToolStripMenuItem";
 			this.grblToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
 			this.grblToolStripMenuItem.Text = "&Grbl";
@@ -264,8 +264,8 @@
 			// windowsToolStripMenuItem
 			// 
 			this.windowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.joggingToolStripMenuItem,
-            this.overridesToolStripMenuItem});
+			this.joggingToolStripMenuItem,
+			this.overridesToolStripMenuItem});
 			this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
 			this.windowsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
 			this.windowsToolStripMenuItem.Text = "&Windows";
