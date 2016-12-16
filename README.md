@@ -25,7 +25,8 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 #### Licensing
 
 LaserGRBL is free software, released under the [GPLv3 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
-LaserGRBL contains code from [DockPanel Suite](https://github.com/dockpanelsuite/dockpanelsuite).
+
+LaserGRBL contains some code from [DockPanel Suite](https://github.com/dockpanelsuite/dockpanelsuite) - Copyright (c) 2007 Weifen Luo (email: weifenluo@yahoo.com).
 
 LaserGRBL is written in C# for .NET Framework 4.0 and can be compiled with [SharpDevelop](http://www.icsharpcode.net/opensource/sd/) and of course with [Microsoft Visual Studio](https://www.visualstudio.com) IDE/Compiler
 
