@@ -92,12 +92,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OverridesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OverridesForm.Designer.cs">
-      <DependentUpon>OverridesForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="PreviewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,6 +244,10 @@
       <DependentUpon>ImageButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ImageTransform.cs" />
+    <Compile Include="UserControls\LabelTB.cs" />
+    <Compile Include="UserControls\LabelTB.Designer.cs">
+      <DependentUpon>LabelTB.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ConnectLogForm.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,9 +256,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OverridesForm.resx">
-      <DependentUpon>OverridesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
@@ -287,6 +282,9 @@
     <EmbeddedResource Include="CSV\alarm_codes.csv" />
     <EmbeddedResource Include="CSV\error_codes.csv" />
     <EmbeddedResource Include="CSV\setting_codes.csv" />
+    <EmbeddedResource Include="UserControls\LabelTB.resx">
+      <DependentUpon>LabelTB.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Grafica\LaserGrbl.ico" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -15,22 +15,22 @@ namespace LaserGRBL
 		private ConnectLogForm ConnectionForm;
 		private PreviewForm PreviewForm;
 		private JogForm JogForm;
-		private OverridesForm OvForm;
-		
+
 		public MainForm()
 		{
 			InitializeComponent();
 
 			//build main communication object
-			ComPort = new GrblCom();
+			ComPort = new GrblCom(this);
 			ComPort.MachineStatusChanged += OnMachineStatus;
 			ComPort.OnFileLoaded += OnFileLoaded;
+			ComPort.OnOverrideChange += ComPort_OnOverrideChange;
+			ComPort_OnOverrideChange();
 			
-			
+						
 			PreviewForm = new PreviewForm(ComPort);
 			ConnectionForm = new ConnectLogForm(ComPort);
 			JogForm = new JogForm(ComPort);
-			OvForm = new OverridesForm(ComPort);
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
@@ -43,8 +43,7 @@ namespace LaserGRBL
 			{
 				PreviewForm.Show(DockArea, LaserGRBL.UserControls.DockingManager.DockState.Document);
 				ConnectionForm.Show(DockArea, LaserGRBL.UserControls.DockingManager.DockState.DockLeft);
-				OvForm.Show(ConnectionForm.Pane, LaserGRBL.UserControls.DockingManager.DockAlignment.Bottom, 0.2);
-				JogForm.Show(OvForm.Pane, null);
+				JogForm.Show(ConnectionForm.Pane, LaserGRBL.UserControls.DockingManager.DockAlignment.Bottom, 0.2);
 			}
 		}
 
@@ -56,8 +55,6 @@ namespace LaserGRBL
 				return PreviewForm;
 			else if (persistString == typeof(JogForm).ToString())
 				return JogForm;
-			else if (persistString == typeof(OverridesForm).ToString())
-				return OvForm;
 			else
 				return null;
 		}
@@ -65,18 +62,15 @@ namespace LaserGRBL
 		void OnFileLoaded(long elapsed, string filename)
 		{
 			TimerUpdate();
-			TTTFile.Text = System.IO.Path.GetFileName(filename);
-			TTTLines.Text = ComPort.LoadedFile.Count.ToString();
-			TTTLoadedIn.Text = elapsed.ToString() + " ms";
+			//TTTFile.Text = System.IO.Path.GetFileName(filename);
+			TTLines.Text = String.Format("Lines: {0}", ComPort.LoadedFile.Count);
+			//TTTLoadedIn.Text = elapsed.ToString() + " ms";
 			TTTEstimated.Text = Tools.Utils.TimeSpanToString(ComPort.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
 		}
 		
-		void OnMachineStatus(GrblCom.MacStatus status)
+		void OnMachineStatus()
 		{
-			if (InvokeRequired)
-				BeginInvoke(new GrblCom.dlgOnMachineStatus(OnMachineStatus), status);
-			else
-				TimerUpdate();
+			TimerUpdate();
 		}
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -91,13 +85,12 @@ namespace LaserGRBL
 			ConnectionForm.TimerUpdate();
 			PreviewForm.TimerUpdate();
 			JogForm.TimerUpdate();
-			OvForm.TimerUpdate();
 		}
 		
 		private void TimerUpdate()
 		{
 			SuspendLayout();
-			TTTStatus.Text = ComPort.MachineStatus.ToString();
+			TTStatus.Text = string.Format("Status: {0}", ComPort.MachineStatus);
 
 			if (ComPort.InProgram)
 				TTTEstimated.Text = Tools.Utils.TimeSpanToString(ComPort.ProjectedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
@@ -113,6 +106,40 @@ namespace LaserGRBL
 			MnFileSend.Enabled = ComPort.HasProgram && ComPort.IsOpen && ComPort.MachineStatus == GrblCom.MacStatus.Idle; 
 			MnExportConfig.Enabled = MnImportConfig.Enabled = ComPort.IsOpen && ComPort.MachineStatus == GrblCom.MacStatus.Idle;
 			MnGrblReset.Enabled = ComPort.IsOpen && ComPort.MachineStatus != GrblCom.MacStatus.Disconnected;
+			
+			TTOvG0.Visible = ComPort.SupportOverride;
+			TTOvG1.Visible = ComPort.SupportOverride;
+			TTOvS.Visible = ComPort.SupportOverride;
+			spacer.Visible = ComPort.SupportOverride;
+			
+			
+			switch (ComPort.MachineStatus)
+			{
+				//Disconnected, Connecting, Idle, *Run, *Hold, *Door, Home, *Alarm, *Check, *Jog
+					
+				case GrblCom.MacStatus.Alarm:
+					TTStatus.BackColor = Color.Red;
+					TTStatus.ForeColor = Color.White;
+					break;
+				case GrblCom.MacStatus.Door:
+				case GrblCom.MacStatus.Hold: 					
+					TTStatus.BackColor = Color.DarkOrange;
+					TTStatus.ForeColor = Color.Black;
+					break;
+				case GrblCom.MacStatus.Jog:
+				case GrblCom.MacStatus.Run:
+				case GrblCom.MacStatus.Check:
+					TTStatus.BackColor = Color.LightGreen;
+					TTStatus.ForeColor = Color.Black;
+					break;
+				default:
+					TTStatus.BackColor = DefaultBackColor;
+					TTStatus.ForeColor = DefaultForeColor;
+					break;
+					
+
+					
+			}
 			ResumeLayout();
 		}
 
@@ -172,11 +199,48 @@ namespace LaserGRBL
 		{
 			JogForm.Show(DockArea);
 		}
-
-		private void overridesToolStripMenuItem_Click(object sender, EventArgs e)
+		
+		void ComPort_OnOverrideChange()
 		{
-			OvForm.Show(DockArea);
+			SuspendLayout();
+			TTOvG0.Text = string.Format("G0 [{0:0.00}x]", ComPort.OverrideG0 / 100.0);
+			TTOvG0.BackColor = ComPort.OverrideG0 > 100 ? Color.LightPink : (ComPort.OverrideG0 < 100 ? Color.LightBlue : SystemColors.Control) ;
+			TTOvG1.Text = string.Format("G1 [{0:0.00}x]", ComPort.OverrideG1 / 100.0);
+			TTOvG1.BackColor = ComPort.OverrideG1 > 100 ? Color.LightPink : (ComPort.OverrideG1 < 100 ? Color.LightBlue : SystemColors.Control) ;
+			TTOvS.Text = string.Format("S [{0:0.00}x]", ComPort.OverrideS / 100.0);
+			TTOvS.BackColor = ComPort.OverrideS > 100 ? Color.LightPink : (ComPort.OverrideS < 100 ? Color.LightBlue : SystemColors.Control) ;
+			ResumeLayout();
+		}
+		void TTOvClick(object sender, EventArgs e)
+		{
+			GetOvMenu().Show(Cursor.Position);
 		}
 
+		
+		
+		internal virtual System.Windows.Forms.ContextMenuStrip GetOvMenu()
+		{
+			System.Windows.Forms.ContextMenuStrip CM = new System.Windows.Forms.ContextMenuStrip();
+			CM.Items.Add(new ToolStripTraceBarItem(ComPort, 0));
+			CM.Items.Add(new ToolStripTraceBarItem(ComPort, 1));
+			CM.Items.Add(new ToolStripTraceBarItem(ComPort, 2));
+			CM.Width = 150;
+
+			return CM;
+		}
+		
+		/// <summary>
+		/// Adds trackbar to toolstrip stuff
+		/// </summary>
+		[System.Windows.Forms.Design.ToolStripItemDesignerAvailability(System.Windows.Forms.Design.ToolStripItemDesignerAvailability.ToolStrip | System.Windows.Forms.Design.ToolStripItemDesignerAvailability.StatusStrip)]
+		public class ToolStripTraceBarItem : System.Windows.Forms.ToolStripControlHost
+		{
+			public ToolStripTraceBarItem(GrblCom com, int function): base(new UserControls.LabelTB(com, function))
+			{
+				Control.Dock = System.Windows.Forms.DockStyle.Fill;
+			}
+		}
+		
+		
 	}
 }

@@ -21,13 +21,14 @@ namespace LaserGRBL
 		public enum JogDirection
 		{ N ,S ,W ,E , NW, NE, SW, SE }
 				
-		public delegate void dlgOnMachineStatus(MacStatus status);
+		public delegate void dlgOnMachineStatus();
 		public delegate void dlgOnOverrideChange();
 		
 		public event dlgOnMachineStatus MachineStatusChanged;
 		public event GrblFile.OnFileLoadedDlg OnFileLoaded;
 		public event dlgOnOverrideChange OnOverrideChange;
 
+		private System.Windows.Forms.Control syncro;
 		private System.IO.Ports.SerialPort com;
 		private GrblFile file;
 		private System.Collections.Generic.Queue<GrblCommand> mQueue ;
@@ -46,13 +47,19 @@ namespace LaserGRBL
 		private const int BUFFER_SIZE = 120;
 		private Version mGrblVersion;
 		
-		private int mOvFeed;
-		private int mOvRapids;
-		private int mOvSpindle;
+		private int mCurOvFeed;
+		private int mCurOvRapids;
+		private int mCurOvSpindle;
+
+		private int mTarOvFeed;
+		private int mTarOvRapids;
+		private int mTarOvSpindle;
 		
-		public GrblCom() : base(1, false, "Command Queue Thread")
+		public GrblCom(System.Windows.Forms.Control syncroObject) : base(1, false, "Command Queue Thread")
 		{
+			syncro = syncroObject;
 			com = new System.IO.Ports.SerialPort();
+			
 			file = new GrblFile();
 			file.OnFileLoaded += RiseOnFileLoaded;
  
@@ -68,12 +75,33 @@ namespace LaserGRBL
 			mQueuePtr = mQueue;
 			mGrblVersion = null;
 			
-			mOvFeed = 100;
-			mOvRapids = 100;
-			mOvSpindle = 100;
-		
+			mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
+			mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;		
 		}
 
+		
+		void RiseMachineStatusChanged()
+		{
+			if (MachineStatusChanged != null)
+			{
+				if (syncro.InvokeRequired)
+					syncro.BeginInvoke(new dlgOnMachineStatus(RiseMachineStatusChanged));
+				else
+					MachineStatusChanged();
+			}
+		}			
+		
+		void RiseOverrideChanged()
+		{
+			if (OnOverrideChange != null)
+			{
+				if (syncro.InvokeRequired)
+					syncro.BeginInvoke(new dlgOnOverrideChange(RiseOverrideChanged));
+				else
+					OnOverrideChange();
+			}
+		}
+		
 		void RiseOnFileLoaded(long elapsed, string filename)
 		{
 			if (OnFileLoaded != null)
@@ -306,8 +334,12 @@ namespace LaserGRBL
 				mBuffer = 0;
 				mTP.JobEnd();
 				SendImmediate(24);
-				ChangeOverrides(100,100,100);
+				
+				mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
+				mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;	
 			}
+			
+			RiseOverrideChanged();
 		}
 
 		public void SendImmediate(byte b)
@@ -567,6 +599,39 @@ namespace LaserGRBL
 			} catch {}
 		}
 
+		
+		private void ManageOverrides()
+		{
+			if (mTarOvFeed == 100 && mCurOvFeed != 100) //devo fare un reset
+				SendImmediate(144);
+			else if (mTarOvFeed - mCurOvFeed >= 10) //devo fare un bigstep +
+				SendImmediate(145);
+			else if (mCurOvFeed - mTarOvFeed >= 10) //devo fare un bigstep -
+				SendImmediate(146);
+			else if (mTarOvFeed - mCurOvFeed >= 1) //devo fare uno smallstep +
+				SendImmediate(147);
+			else if (mCurOvFeed - mTarOvFeed >= 1) //devo fare uno smallstep -
+				SendImmediate(148);
+
+			if (mTarOvSpindle == 100 && mCurOvSpindle != 100) //devo fare un reset
+				SendImmediate(153);
+			else if (mTarOvSpindle - mCurOvSpindle >= 10) //devo fare un bigstep +
+				SendImmediate(154);
+			else if (mCurOvSpindle - mTarOvSpindle >= 10) //devo fare un bigstep -
+				SendImmediate(155);
+			else if (mTarOvSpindle - mCurOvSpindle >= 1) //devo fare uno smallstep +
+				SendImmediate(156);
+			else if (mCurOvSpindle - mTarOvSpindle >= 1) //devo fare uno smallstep -
+				SendImmediate(157);
+			
+			if (mTarOvRapids == 100 && mCurOvRapids != 100)
+				SendImmediate(149);
+			else if (mTarOvRapids == 50 && mCurOvRapids != 50)
+				SendImmediate(150);
+			else if (mTarOvRapids == 25 && mCurOvRapids != 25)
+				SendImmediate(151);			
+		}
+		
 		private void ParseOverrides(string data)
 		{
 			//Ov:100,100,100
@@ -577,27 +642,46 @@ namespace LaserGRBL
 			string[] arr = data.Split(",".ToCharArray());
 			
 			ChangeOverrides(int.Parse(arr[0]), int.Parse(arr[1]), int.Parse(arr[2]));
+			ManageOverrides();
 		}
 		
 		private void ChangeOverrides(int feed, int rapids, int spindle)
 		{
-			bool notify = (feed != mOvFeed || rapids != mOvRapids || spindle != mOvSpindle);
-			mOvFeed = feed;
-			mOvRapids = rapids;
-			mOvSpindle = spindle;
+			bool notify = (feed != mCurOvFeed || rapids != mCurOvRapids || spindle != mCurOvSpindle);
+			mCurOvFeed = feed;
+			mCurOvRapids = rapids;
+			mCurOvSpindle = spindle;
 			
-			if (notify && OnOverrideChange != null)
-				OnOverrideChange();
+			if (notify)
+				RiseOverrideChanged();
 		}
 		
-		public int OverrideFeed
-		{get {return mOvFeed;}}
+		public int OverrideG1
+		{get {return mCurOvFeed;}}
 		
-		public int OverrideRapids
-		{get {return mOvRapids;}}
+		public int OverrideG0
+		{get {return mCurOvRapids;}}
 		
-		public int OverrideSpindle
-		{get {return mOvSpindle;}}
+		public int OverrideS
+		{get {return mCurOvSpindle;}}
+
+		public int TOverrideG1
+		{
+			get {return mTarOvFeed;}
+			set {mTarOvFeed = value;}
+		}
+		
+		public int TOverrideG0
+		{
+			get {return mTarOvRapids;}
+			set {mTarOvRapids = value;}
+		}
+		
+		public int TOverrideS
+		{
+			get {return mTarOvSpindle;}
+			set {mTarOvSpindle = value;}
+		}
 		
 		private void ParseMachineStatus(string data)
 		{
@@ -617,9 +701,7 @@ namespace LaserGRBL
 			if (mMachineStatus != var)
 			{
 				mMachineStatus = var;
-
-				if (MachineStatusChanged != null)
-					MachineStatusChanged(mMachineStatus);
+				RiseMachineStatusChanged();
 				
 				if (mTP.InProgram)
 				{
@@ -680,16 +762,7 @@ namespace LaserGRBL
 		}
 
 		public TimeSpan EstimatedTarget
-		{
-			get { return mETarget; }
-			//set { mETarget = value; }
-		}
-
-		//public TimeSpan EstimatedProgress
-		//{
-		//	get { return mEProgress; }
-		//	//set { mEProgress = value; }
-		//}
+		{get { return mETarget; }}
 
 		public bool InProgram
 		{ get { return mStarted && !mCompleted; } }
