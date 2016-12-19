@@ -244,7 +244,9 @@
       <DependentUpon>ImageButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ImageTransform.cs" />
-    <Compile Include="UserControls\LabelTB.cs" />
+    <Compile Include="UserControls\LabelTB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControls\LabelTB.Designer.cs">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </Compile>

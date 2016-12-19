@@ -54,6 +54,8 @@ namespace LaserGRBL.UserControls
 				TB.TickFrequency = 10;
 				TB.Value = ComPort.OverrideS;
 			}
+
+			RefreshText();
 		}
 
 		private void TB_ValueChanged(object sender, EventArgs e)

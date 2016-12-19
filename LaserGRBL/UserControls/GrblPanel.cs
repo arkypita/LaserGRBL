@@ -28,17 +28,14 @@ namespace LaserGRBL.UserControls
 		{
 			base.OnPaint(e);
 		
-			lock(this)
-			{
-				if (mBitmap != null)
-					e.Graphics.DrawImage(mBitmap, 0, 0, Width, Height);
+			if (mBitmap != null)
+				e.Graphics.DrawImage(mBitmap, 0, 0, Width, Height);
 
 
-				PointF p = TranslatePoint(mLastPosition);
-				e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-				e.Graphics.DrawLine(Pens.Blue, (int)p.X, (int)p.Y - 3, (int)p.X, (int)p.Y - 3 + 7);
-				e.Graphics.DrawLine(Pens.Blue, (int)p.X - 3, (int)p.Y, (int)p.X - 3 + 7, (int)p.Y);
-			}
+			PointF p = TranslatePoint(mLastPosition);
+			e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+			e.Graphics.DrawLine(Pens.Blue, (int)p.X, (int)p.Y - 3, (int)p.X, (int)p.Y - 3 + 7);
+			e.Graphics.DrawLine(Pens.Blue, (int)p.X - 3, (int)p.Y, (int)p.X - 3 + 7, (int)p.Y);
 		}
 		
 			

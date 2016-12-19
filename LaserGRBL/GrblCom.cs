@@ -345,7 +345,7 @@ namespace LaserGRBL
 		public void SendImmediate(byte b)
 		{
 			try{
-				lock(com)
+				lock(this)
 				{if (com.IsOpen) com.Write(new byte[] { b }, 0, 1);}
 			}catch{}
 		}
@@ -489,7 +489,7 @@ namespace LaserGRBL
 		private bool CanSend()
 		{
 			GrblCommand next = mQueuePtr.Count > 0 ? mQueuePtr.Peek() : null;
-			return next != null && (mBuffer + next.Command.Length) < BUFFER_SIZE;
+			return next != null && (mBuffer + next.Command.Length +2) <= BUFFER_SIZE; //+2 for /r/n
 		}
 
 		private void SendLine()
@@ -515,16 +515,16 @@ namespace LaserGRBL
 			catch {}
 		}
 
-		private	char[] trimarray = new char[]  {'\r', '\n', ' '};
+		public int Buffer
+		{ get { return BUFFER_SIZE - mBuffer; } }
+
 		void OnDataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
 		{
 			try
 			{
 				string rline = null;
-				while ((rline = com.ReadLine()) != null && rline.Length > 0)
+				while ((rline = GetComLineOrDisconnect()) != null)
 				{
-					rline = rline.TrimEnd(trimarray); //rimuovi ritorno a capo
-					rline = rline.Trim(); //rimuovi spazi iniziali e finali
 					if (rline.Length > 0)
 					{
 						lock(this)
@@ -599,6 +599,23 @@ namespace LaserGRBL
 			} catch {}
 		}
 
+		private char[] trimarray = new char[] { '\r', '\n', ' ' };
+		private string GetComLineOrDisconnect()
+		{
+			try
+			{
+				string rv = com.ReadLine();
+				rv = rv.TrimEnd(trimarray); //rimuovi ritorno a capo
+				rv = rv.Trim(); //rimuovi spazi iniziali e finali
+				return rv.Length > 0 ? rv : null;
+			}
+			catch
+			{
+				try { CloseCom(); }
+				catch { }
+				return null;
+			}
+		}
 		
 		private void ManageOverrides()
 		{
