@@ -4,11 +4,11 @@ Laser optimized GUI for [GRBL](https://github.com/grbl/grbl/wiki)
 LaserGRBL is a Windows GUI for [GRBL](https://github.com/grbl/grbl/wiki). Unlike other GUI LaserGRBL it is specifically developed for use with laser cutter and engraver.
 LaserGRBL is compatible with [Grbl v0.9](https://github.com/grbl/grbl/) and [Grbl v1.1](https://github.com/gnea/grbl/)
 
-#### Download
+### Download
 
 All downloads available at https://github.com/arkypita/LaserGRBL/releases
 
-#### Existing Features
+### Existing Features
 
 - File loading with engraving/cutting job preview (with alpha blending for grayscale engraving)
 - Grbl Configuration Import/Export
@@ -18,20 +18,26 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 - Jogging (for any Grbl version)
 - Feed overrides (for Grbl > v1.1) with easy-to-use interface
 
-#### Missing Features
+### Missing Features
 
 - As claim to be laser optimized Z info are ignored when drawing preview!
-
-#### Licensing
-
-LaserGRBL is free software, released under the [GPLv3 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
-
-LaserGRBL is written in C# for .NET Framework 4.0 and can be compiled with [SharpDevelop](http://www.icsharpcode.net/opensource/sd/) and of course with [Microsoft Visual Studio](https://www.visualstudio.com) IDE/Compiler
-
-LaserGRBL contains some code from [DockPanel Suite](https://github.com/dockpanelsuite/dockpanelsuite) - Copyright (c) 2007 Weifen Luo (email: weifenluo@yahoo.com).
 
 #### Screenshot
 
 ![Galeon](https://cloud.githubusercontent.com/assets/8782035/21349915/dba84a5a-c6b4-11e6-965f-a74fd283267a.jpg)
 
 ![Alpha](https://cloud.githubusercontent.com/assets/8782035/21351296/1df460c2-c6bc-11e6-8eee-4612bb7978fa.jpg)
+
+### Suggested GCODE Generator
+
+We suggest to use [Inkscape](https://inkscape.org/) with [Raster 2 Laser GCode generator](https://github.com/305engineering/Inkscape) extension for raster engraving, end [J Tech Photonics Laser Tool](https://jtechphotonics.com/?page_id=2012) for vector engraving/cutting
+
+### Compiling
+
+LaserGRBL is written in C# for .NET Framework 4.0 and can be compiled with [SharpDevelop](http://www.icsharpcode.net/opensource/sd/) and of course with [Microsoft Visual Studio](https://www.visualstudio.com) IDE/Compiler
+
+### Licensing
+
+LaserGRBL is free software, released under the [GPLv3 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
+
+LaserGRBL contains some code from [DockPanel Suite](https://github.com/dockpanelsuite/dockpanelsuite) - Copyright (c) 2007 Weifen Luo (email: weifenluo@yahoo.com).
