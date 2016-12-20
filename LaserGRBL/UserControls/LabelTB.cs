@@ -10,13 +10,13 @@ namespace LaserGRBL.UserControls
 {
 	public partial class LabelTB : UserControl
 	{
-		GrblCom ComPort;
+		GrblCore Core;
 		int fun;
 
-		public LabelTB(GrblCom com, int function)
+		public LabelTB(GrblCore core, int function)
 		{
 			InitializeComponent();
-			ComPort = com;
+			Core = core;
 			fun = function;
 			
 			if (function == 0)
@@ -27,9 +27,9 @@ namespace LaserGRBL.UserControls
 				TB.SmallChange = 1;
 				TB.LargeChange = 1;
 				TB.TickFrequency = 1;
-				if (ComPort.OverrideG0 == 25)
+				if (Core.OverrideG0 == 25)
 					TB.Value = 0;
-				else if (ComPort.OverrideG0 == 50)
+				else if (Core.OverrideG0 == 50)
 					TB.Value = 1;
 				else
 					TB.Value = 2;
@@ -42,7 +42,7 @@ namespace LaserGRBL.UserControls
 				TB.SmallChange = 5;
 				TB.LargeChange = 10;
 				TB.TickFrequency = 10;
-				TB.Value = ComPort.OverrideG1;
+				TB.Value = Core.OverrideG1;
 			}
 			else
 			{
@@ -52,7 +52,7 @@ namespace LaserGRBL.UserControls
 				TB.SmallChange = 5;
 				TB.LargeChange = 10;
 				TB.TickFrequency = 10;
-				TB.Value = ComPort.OverrideS;
+				TB.Value = Core.OverrideS;
 			}
 
 			RefreshText();
@@ -61,11 +61,11 @@ namespace LaserGRBL.UserControls
 		private void TB_ValueChanged(object sender, EventArgs e)
 		{
 			if (fun == 0)
-				ComPort.TOverrideG0 = (TB.Value == 0 ? 25 : TB.Value == 1 ? 50 : 100);
+				Core.TOverrideG0 = (TB.Value == 0 ? 25 : TB.Value == 1 ? 50 : 100);
 			if (fun == 1)
-				ComPort.TOverrideG1 = TB.Value;
+				Core.TOverrideG1 = TB.Value;
 			if (fun == 2)
-				ComPort.TOverrideS = TB.Value;
+				Core.TOverrideS = TB.Value;
 			
 			RefreshText();
 		}
@@ -87,6 +87,11 @@ namespace LaserGRBL.UserControls
 				Lbl.Text = String.Format("{0} [{1:0.00}x]", _basetext, (TB.Value == 0 ? 25 : TB.Value == 1 ? 50 : 100) / 100.0);
 			else
 				Lbl.Text = String.Format("{0} [{1:0.00}x]", _basetext, TB.Value / 100.0);
+		}
+
+		private void TB_MouseUp(object sender, MouseEventArgs e)
+		{
+			Core.ManageOverrides();
 		}
 
 	}

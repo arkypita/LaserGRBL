@@ -11,12 +11,12 @@ namespace LaserGRBL
 {
 	public partial class JogForm : LaserGRBL.UserControls.DockingManager.DockContent
 	{
-		GrblCom ComPort;
+		GrblCore Core;
 
-		public JogForm(GrblCom com)
+		public JogForm(GrblCore core)
 		{
 			InitializeComponent();
-			ComPort = com;
+			Core = core;
 			TbSpeed_ValueChanged(null, null); //set tooltip
 			TbStep_ValueChanged(null, null); //set tooltip
 			TimerUpdate();
@@ -26,13 +26,13 @@ namespace LaserGRBL
 		{
 			SuspendLayout();
 			foreach (Control ctr in tlp.Controls)
-					ctr.Enabled = ComPort.JogEnabled;
+					ctr.Enabled = Core.JogEnabled;
 			ResumeLayout();
 		}
 
 		private void OnJogButtonMouseDown(object sender, MouseEventArgs e)
 		{
-			ComPort.Jog((sender as DirectionButton).JogDirection, TbStep.Value, TbSpeed.Value);
+			Core.Jog((sender as DirectionButton).JogDirection, TbStep.Value, TbSpeed.Value);
 		}
 
 		private void TbSpeed_ValueChanged(object sender, EventArgs e)
@@ -47,15 +47,15 @@ namespace LaserGRBL
 
 		private void BtnHome_Click(object sender, EventArgs e)
 		{
-			ComPort.JogHome(TbSpeed.Value);
+			Core.JogHome(TbSpeed.Value);
 		}
 	}
 
 	public class DirectionButton : UserControls.ImageButton
 	{
-		private GrblCom.JogDirection mDir = GrblCom.JogDirection.N;
+		private GrblCore.JogDirection mDir = GrblCore.JogDirection.N;
 
-		public GrblCom.JogDirection JogDirection
+		public GrblCore.JogDirection JogDirection
 		{
 			get { return mDir; }
 			set { mDir = value; }

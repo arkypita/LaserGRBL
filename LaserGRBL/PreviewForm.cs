@@ -18,14 +18,14 @@ namespace LaserGRBL
 	/// </summary>
 	public partial class PreviewForm : LaserGRBL.UserControls.DockingManager.DockContent
 	{
-		GrblCom ComPort;
+		GrblCore Core;
 		
-		public PreviewForm(GrblCom com)
+		public PreviewForm(GrblCore core)
 		{
 			InitializeComponent();
 
-			ComPort = com;
-			Preview.SetComProgram(com);
+			Core = core;
+			Preview.SetComProgram(core);
 			TimerUpdate();
 		}
 		
@@ -33,28 +33,34 @@ namespace LaserGRBL
 		{
 			Preview.TimerUpdate();
 			SuspendLayout();
-			BtnReset.Enabled = ComPort.IsOpen && ComPort.MachineStatus != GrblCom.MacStatus.Disconnected;
-			BtnGoHome.Enabled = ComPort.IsOpen && (ComPort.MachineStatus == GrblCom.MacStatus.Idle || ComPort.MachineStatus == GrblCom.MacStatus.Alarm);
-			BtnStop.Enabled = ComPort.IsOpen && ComPort.MachineStatus == GrblCom.MacStatus.Run;
-			BtnResume.Enabled = ComPort.IsOpen && (ComPort.MachineStatus == GrblCom.MacStatus.Door || ComPort.MachineStatus == GrblCom.MacStatus.Hold);
+			BtnReset.Enabled = Core.CanResetGrbl;
+			BtnGoHome.Enabled = Core.CanGoHome;
+			BtnUnlock.Enabled = Core.CanGoHome;
+			BtnStop.Enabled = Core.CanFeedHold;
+			BtnResume.Enabled = Core.CanResumeHold;
 			ResumeLayout();
 		}
 
 		void BtnGoHomeClick(object sender, EventArgs e)
 		{
-			ComPort.EnqueueCommand(new GrblCommand("$H"));
+			Core.EnqueueCommand(new GrblCommand("$H"));
 		}
 		void BtnResetClick(object sender, EventArgs e)
 		{
-			ComPort.GrblReset();
+			Core.GrblReset();
 		}
 		void BtnStopClick(object sender, EventArgs e)
 		{
-			ComPort.FeedHold();
+			Core.FeedHold();
 		}
 		void BtnResumeClick(object sender, EventArgs e)
 		{
-			ComPort.CycleStartResume();
+			Core.CycleStartResume();
+		}
+
+		private void BtnUnlockClick(object sender, EventArgs e)
+		{
+			Core.EnqueueCommand(new GrblCommand("$X"));
 		}
 	}
 

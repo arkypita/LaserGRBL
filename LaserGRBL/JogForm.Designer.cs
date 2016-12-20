@@ -89,7 +89,7 @@
 			this.BtnHome.Coloration = System.Drawing.Color.Empty;
 			this.BtnHome.Enabled = false;
 			this.BtnHome.Image = ((System.Drawing.Image)(resources.GetObject("BtnHome.Image")));
-			this.BtnHome.JogDirection = LaserGRBL.GrblCom.JogDirection.N;
+			this.BtnHome.JogDirection = LaserGRBL.GrblCore.JogDirection.N;
 			this.BtnHome.Location = new System.Drawing.Point(106, 55);
 			this.BtnHome.MaximumSize = new System.Drawing.Size(48, 48);
 			this.BtnHome.Name = "BtnHome";
@@ -144,7 +144,7 @@
 			this.imageButton1.Coloration = System.Drawing.Color.Empty;
 			this.imageButton1.Enabled = false;
 			this.imageButton1.Image = ((System.Drawing.Image)(resources.GetObject("imageButton1.Image")));
-			this.imageButton1.JogDirection = LaserGRBL.GrblCom.JogDirection.W;
+			this.imageButton1.JogDirection = LaserGRBL.GrblCore.JogDirection.W;
 			this.imageButton1.Location = new System.Drawing.Point(65, 55);
 			this.imageButton1.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton1.Name = "imageButton1";
@@ -162,7 +162,7 @@
 			this.imageButton2.Coloration = System.Drawing.Color.Empty;
 			this.imageButton2.Enabled = false;
 			this.imageButton2.Image = ((System.Drawing.Image)(resources.GetObject("imageButton2.Image")));
-			this.imageButton2.JogDirection = LaserGRBL.GrblCom.JogDirection.N;
+			this.imageButton2.JogDirection = LaserGRBL.GrblCore.JogDirection.N;
 			this.imageButton2.Location = new System.Drawing.Point(106, 16);
 			this.imageButton2.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton2.Name = "imageButton2";
@@ -180,7 +180,7 @@
 			this.imageButton4.Coloration = System.Drawing.Color.Empty;
 			this.imageButton4.Enabled = false;
 			this.imageButton4.Image = ((System.Drawing.Image)(resources.GetObject("imageButton4.Image")));
-			this.imageButton4.JogDirection = LaserGRBL.GrblCom.JogDirection.E;
+			this.imageButton4.JogDirection = LaserGRBL.GrblCore.JogDirection.E;
 			this.imageButton4.Location = new System.Drawing.Point(147, 55);
 			this.imageButton4.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton4.Name = "imageButton4";
@@ -198,7 +198,7 @@
 			this.imageButton6.Coloration = System.Drawing.Color.Empty;
 			this.imageButton6.Enabled = false;
 			this.imageButton6.Image = ((System.Drawing.Image)(resources.GetObject("imageButton6.Image")));
-			this.imageButton6.JogDirection = LaserGRBL.GrblCom.JogDirection.NW;
+			this.imageButton6.JogDirection = LaserGRBL.GrblCore.JogDirection.NW;
 			this.imageButton6.Location = new System.Drawing.Point(65, 16);
 			this.imageButton6.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton6.Name = "imageButton6";
@@ -216,7 +216,7 @@
 			this.imageButton5.Coloration = System.Drawing.Color.Empty;
 			this.imageButton5.Enabled = false;
 			this.imageButton5.Image = ((System.Drawing.Image)(resources.GetObject("imageButton5.Image")));
-			this.imageButton5.JogDirection = LaserGRBL.GrblCom.JogDirection.NE;
+			this.imageButton5.JogDirection = LaserGRBL.GrblCore.JogDirection.NE;
 			this.imageButton5.Location = new System.Drawing.Point(147, 16);
 			this.imageButton5.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton5.Name = "imageButton5";
@@ -234,7 +234,7 @@
 			this.imageButton8.Coloration = System.Drawing.Color.Empty;
 			this.imageButton8.Enabled = false;
 			this.imageButton8.Image = ((System.Drawing.Image)(resources.GetObject("imageButton8.Image")));
-			this.imageButton8.JogDirection = LaserGRBL.GrblCom.JogDirection.S;
+			this.imageButton8.JogDirection = LaserGRBL.GrblCore.JogDirection.S;
 			this.imageButton8.Location = new System.Drawing.Point(105, 94);
 			this.imageButton8.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton8.Name = "imageButton8";
@@ -252,7 +252,7 @@
 			this.imageButton7.Coloration = System.Drawing.Color.Empty;
 			this.imageButton7.Enabled = false;
 			this.imageButton7.Image = ((System.Drawing.Image)(resources.GetObject("imageButton7.Image")));
-			this.imageButton7.JogDirection = LaserGRBL.GrblCom.JogDirection.SW;
+			this.imageButton7.JogDirection = LaserGRBL.GrblCore.JogDirection.SW;
 			this.imageButton7.Location = new System.Drawing.Point(64, 94);
 			this.imageButton7.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton7.Name = "imageButton7";
@@ -270,7 +270,7 @@
 			this.imageButton3.Coloration = System.Drawing.Color.Empty;
 			this.imageButton3.Enabled = false;
 			this.imageButton3.Image = ((System.Drawing.Image)(resources.GetObject("imageButton3.Image")));
-			this.imageButton3.JogDirection = LaserGRBL.GrblCom.JogDirection.SE;
+			this.imageButton3.JogDirection = LaserGRBL.GrblCore.JogDirection.SE;
 			this.imageButton3.Location = new System.Drawing.Point(146, 94);
 			this.imageButton3.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton3.Name = "imageButton3";

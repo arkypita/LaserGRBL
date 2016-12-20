@@ -63,6 +63,7 @@
 			this.TB.TabIndex = 6;
 			this.TB.TickStyle = System.Windows.Forms.TickStyle.Both;
 			this.TB.ValueChanged += new System.EventHandler(this.TB_ValueChanged);
+			this.TB.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TB_MouseUp);
 			// 
 			// Lbl
 			// 

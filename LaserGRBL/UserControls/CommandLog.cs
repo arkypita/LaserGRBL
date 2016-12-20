@@ -8,7 +8,7 @@ namespace LaserGRBL.UserControls
 {
 	public partial class CommandLog : UserControl
 	{
-		GrblCom mCom;
+		GrblCore mCom;
 		int RowHeight = 16;
 		System.Collections.Generic.List<IGrblRow> mDraw;
 		int mPosition = -1;
@@ -23,8 +23,8 @@ namespace LaserGRBL.UserControls
 			SetStyle(ControlStyles.ResizeRedraw, true);
 		}
 
-		public void SetCom(GrblCom com)
-		{mCom = com;}
+		public void SetCom(GrblCore core)
+		{ mCom = core; }
 
 		protected override void OnPaint(PaintEventArgs e)
 		{

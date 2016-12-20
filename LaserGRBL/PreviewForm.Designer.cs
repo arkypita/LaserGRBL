@@ -44,6 +44,7 @@ namespace LaserGRBL
 			this.BtnGoHome = new LaserGRBL.UserControls.ImageButton();
 			this.BtnStop = new LaserGRBL.UserControls.ImageButton();
 			this.BtnResume = new LaserGRBL.UserControls.ImageButton();
+			this.BtnUnlock = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel8.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -53,30 +54,32 @@ namespace LaserGRBL
 			this.Preview.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.Preview.Location = new System.Drawing.Point(0, 0);
 			this.Preview.Name = "Preview";
-			this.Preview.Size = new System.Drawing.Size(409, 307);
+			this.Preview.Size = new System.Drawing.Size(617, 307);
 			this.Preview.TabIndex = 0;
 			// 
 			// tableLayoutPanel8
 			// 
 			this.tableLayoutPanel8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.tableLayoutPanel8.BackColor = System.Drawing.SystemColors.Control;
-			this.tableLayoutPanel8.ColumnCount = 5;
+			this.tableLayoutPanel8.ColumnCount = 6;
 			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel8.Controls.Add(this.BtnReset, 4, 0);
-			this.tableLayoutPanel8.Controls.Add(this.BtnGoHome, 0, 0);
-			this.tableLayoutPanel8.Controls.Add(this.BtnStop, 1, 0);
-			this.tableLayoutPanel8.Controls.Add(this.BtnResume, 2, 0);
+			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel8.Controls.Add(this.BtnGoHome, 1, 0);
+			this.tableLayoutPanel8.Controls.Add(this.BtnReset, 0, 0);
+			this.tableLayoutPanel8.Controls.Add(this.BtnStop, 5, 0);
+			this.tableLayoutPanel8.Controls.Add(this.BtnResume, 4, 0);
+			this.tableLayoutPanel8.Controls.Add(this.BtnUnlock, 2, 0);
 			this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 307);
 			this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(1);
 			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
 			this.tableLayoutPanel8.RowCount = 1;
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel8.Size = new System.Drawing.Size(409, 56);
+			this.tableLayoutPanel8.Size = new System.Drawing.Size(617, 56);
 			this.tableLayoutPanel8.TabIndex = 5;
 			// 
 			// BtnReset
@@ -88,7 +91,7 @@ namespace LaserGRBL
 			this.BtnReset.Coloration = System.Drawing.Color.Empty;
 			this.BtnReset.Enabled = false;
 			this.BtnReset.Image = ((System.Drawing.Image)(resources.GetObject("BtnReset.Image")));
-			this.BtnReset.Location = new System.Drawing.Point(357, 3);
+			this.BtnReset.Location = new System.Drawing.Point(3, 3);
 			this.BtnReset.Name = "BtnReset";
 			this.BtnReset.Size = new System.Drawing.Size(49, 49);
 			this.BtnReset.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -105,7 +108,7 @@ namespace LaserGRBL
 			this.BtnGoHome.Coloration = System.Drawing.Color.Empty;
 			this.BtnGoHome.Enabled = false;
 			this.BtnGoHome.Image = ((System.Drawing.Image)(resources.GetObject("BtnGoHome.Image")));
-			this.BtnGoHome.Location = new System.Drawing.Point(3, 3);
+			this.BtnGoHome.Location = new System.Drawing.Point(58, 3);
 			this.BtnGoHome.Name = "BtnGoHome";
 			this.BtnGoHome.Size = new System.Drawing.Size(49, 49);
 			this.BtnGoHome.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -122,7 +125,7 @@ namespace LaserGRBL
 			this.BtnStop.Coloration = System.Drawing.Color.Empty;
 			this.BtnStop.Enabled = false;
 			this.BtnStop.Image = ((System.Drawing.Image)(resources.GetObject("BtnStop.Image")));
-			this.BtnStop.Location = new System.Drawing.Point(58, 3);
+			this.BtnStop.Location = new System.Drawing.Point(565, 3);
 			this.BtnStop.Name = "BtnStop";
 			this.BtnStop.Size = new System.Drawing.Size(49, 49);
 			this.BtnStop.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -139,7 +142,7 @@ namespace LaserGRBL
 			this.BtnResume.Coloration = System.Drawing.Color.Empty;
 			this.BtnResume.Enabled = false;
 			this.BtnResume.Image = ((System.Drawing.Image)(resources.GetObject("BtnResume.Image")));
-			this.BtnResume.Location = new System.Drawing.Point(113, 3);
+			this.BtnResume.Location = new System.Drawing.Point(510, 3);
 			this.BtnResume.Name = "BtnResume";
 			this.BtnResume.Size = new System.Drawing.Size(49, 49);
 			this.BtnResume.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -147,9 +150,26 @@ namespace LaserGRBL
 			this.BtnResume.UseAltImage = false;
 			this.BtnResume.Click += new System.EventHandler(this.BtnResumeClick);
 			// 
+			// BtnUnlock
+			// 
+			this.BtnUnlock.AltImage = null;
+			this.BtnUnlock.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.BtnUnlock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnUnlock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BtnUnlock.Coloration = System.Drawing.Color.Empty;
+			this.BtnUnlock.Enabled = false;
+			this.BtnUnlock.Image = ((System.Drawing.Image)(resources.GetObject("BtnUnlock.Image")));
+			this.BtnUnlock.Location = new System.Drawing.Point(113, 3);
+			this.BtnUnlock.Name = "BtnUnlock";
+			this.BtnUnlock.Size = new System.Drawing.Size(49, 49);
+			this.BtnUnlock.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnUnlock.TabIndex = 7;
+			this.BtnUnlock.UseAltImage = false;
+			this.BtnUnlock.Click += new System.EventHandler(this.BtnUnlockClick);
+			// 
 			// PreviewForm
 			// 
-			this.ClientSize = new System.Drawing.Size(409, 363);
+			this.ClientSize = new System.Drawing.Size(617, 363);
 			this.CloseButton = false;
 			this.CloseButtonVisible = false;
 			this.Controls.Add(this.Preview);
@@ -169,5 +189,6 @@ namespace LaserGRBL
 		private UserControls.ImageButton BtnGoHome;
 		private UserControls.ImageButton BtnStop;
 		private UserControls.ImageButton BtnResume;
+		private UserControls.ImageButton BtnUnlock;
 	}
 }

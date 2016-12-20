@@ -399,6 +399,7 @@ namespace LaserGRBL
 			this.CBPort.Name = "CBPort";
 			this.CBPort.Size = new System.Drawing.Size(223, 21);
 			this.CBPort.TabIndex = 2;
+			this.CBPort.SelectedIndexChanged += new System.EventHandler(this.CBPort_SelectedIndexChanged);
 			// 
 			// CBSpeed
 			// 
@@ -410,6 +411,7 @@ namespace LaserGRBL
 			this.CBSpeed.Name = "CBSpeed";
 			this.CBSpeed.Size = new System.Drawing.Size(223, 21);
 			this.CBSpeed.TabIndex = 3;
+			this.CBSpeed.SelectedIndexChanged += new System.EventHandler(this.CBSpeed_SelectedIndexChanged);
 			// 
 			// BtnConnectDisconnect
 			// 

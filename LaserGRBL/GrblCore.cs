@@ -13,7 +13,7 @@ namespace LaserGRBL
 	/// <summary>
 	/// Description of CommandThread.
 	/// </summary>
-	public class GrblCom : Tools.ThreadClass
+	public class GrblCore : Tools.ThreadClass
 	{
 		public enum MacStatus
 		{Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog}
@@ -55,7 +55,7 @@ namespace LaserGRBL
 		private int mTarOvRapids;
 		private int mTarOvSpindle;
 		
-		public GrblCom(System.Windows.Forms.Control syncroObject) : base(1, false, "Command Queue Thread")
+		public GrblCore(System.Windows.Forms.Control syncroObject) : base(1, false, "Command Queue Thread")
 		{
 			syncro = syncroObject;
 			com = new System.IO.Ports.SerialPort();
@@ -269,15 +269,24 @@ namespace LaserGRBL
 			{mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);}
 		}
 
+		public string PortName
+		{
+			get { return com.PortName; }
+			set { com.PortName = value; }
+		}
+
+		public int BaudRate
+		{
+			get { return com.BaudRate; }
+			set { com.BaudRate = value; }
+		}
 		
-		public void OpenCom(string port, int baudrate)
+		public void OpenCom()
 		{
 			mMachineStatus = MacStatus.Connecting;
 			
 			if (!com.IsOpen)
 			{
-				com.PortName = port;
-				com.BaudRate = baudrate;
 				com.Open();
 				com.DiscardOutBuffer();
 				com.DiscardInBuffer();		
@@ -414,9 +423,9 @@ namespace LaserGRBL
 			get
 			{
 				if (SupportJogging)
-					return IsOpen && (MachineStatus == GrblCom.MacStatus.Idle || MachineStatus == GrblCom.MacStatus.Jog);
+					return IsOpen && (MachineStatus == GrblCore.MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Jog);
 				else
-					return IsOpen && (MachineStatus == GrblCom.MacStatus.Idle || MachineStatus == GrblCom.MacStatus.Run) && !InProgram;
+					return IsOpen && (MachineStatus == GrblCore.MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Run) && !InProgram;
 			}
 		}
 
@@ -617,7 +626,7 @@ namespace LaserGRBL
 			}
 		}
 		
-		private void ManageOverrides()
+		public void ManageOverrides()
 		{
 			if (mTarOvFeed == 100 && mCurOvFeed != 100) //devo fare un reset
 				SendImmediate(144);
@@ -744,6 +753,30 @@ namespace LaserGRBL
 
 
 
+
+		public bool CanLoadNewFile
+		{ get { return !InProgram; } }
+
+		public bool CanSendFile
+		{ get { return IsOpen && MachineStatus == MacStatus.Idle && HasProgram; } }
+
+		public bool CanImportExport
+		{ get { return IsOpen && MachineStatus == MacStatus.Idle; } }
+
+		public bool CanResetGrbl
+		{ get { return IsOpen && MachineStatus != MacStatus.Disconnected; } }
+
+		public bool CanSendManualCommand
+		{ get { return IsOpen && MachineStatus != MacStatus.Disconnected; } }
+
+		public bool CanGoHome
+		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm); } }
+
+		public bool CanFeedHold
+		{ get { return IsOpen && MachineStatus == MacStatus.Run; } }
+
+		public bool CanResumeHold
+		{ get { return IsOpen && (MachineStatus == MacStatus.Door || MachineStatus == MacStatus.Hold); } }
 	}
 
 	public class TimeProjection

@@ -8,7 +8,7 @@ namespace LaserGRBL.UserControls
 {
 	public partial class GrblPanel : UserControl
 	{
-		GrblCom ComPort;
+		GrblCore Core;
 		System.Drawing.Bitmap mBitmap;
 		System.Threading.Thread TH;
 		Matrix mLastMatrix;
@@ -40,10 +40,10 @@ namespace LaserGRBL.UserControls
 		
 			
 
-		public void SetComProgram(GrblCom com)
+		public void SetComProgram(GrblCore core)
 		{
-			ComPort = com;
-			ComPort.OnFileLoaded += OnFileLoaded;
+			Core = core;
+			Core.OnFileLoaded += OnFileLoaded;
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -95,8 +95,8 @@ namespace LaserGRBL.UserControls
 
 				g.DrawLines(Pens.Black, new PointF[] { new PointF(0, wSize.Height), new PointF(0, 0), new PointF(wSize.Width, 0) });
 
-				if (ComPort != null && ComPort.HasProgram)
-					ComPort.LoadedFile.DrawOnGraphics(g, wSize);
+				if (Core != null && Core.HasProgram)
+					Core.LoadedFile.DrawOnGraphics(g, wSize);
 
 				mLastMatrix = g.Transform;
 			}
@@ -129,9 +129,9 @@ namespace LaserGRBL.UserControls
 
 		public void TimerUpdate()
 		{
-			if (ComPort != null && mLastPosition != ComPort.LaserPosition)
+			if (Core != null && mLastPosition != Core.LaserPosition)
 			{
-				mLastPosition = ComPort.LaserPosition;
+				mLastPosition = Core.LaserPosition;
 				Invalidate();
 			}
 		}

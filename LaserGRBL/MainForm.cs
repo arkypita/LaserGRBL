@@ -11,7 +11,7 @@ namespace LaserGRBL
 {
 	public partial class MainForm : Form
 	{
-		private GrblCom ComPort;
+		private GrblCore Core;
 		private ConnectLogForm ConnectionForm;
 		private PreviewForm PreviewForm;
 		private JogForm JogForm;
@@ -21,16 +21,16 @@ namespace LaserGRBL
 			InitializeComponent();
 
 			//build main communication object
-			ComPort = new GrblCom(this);
-			ComPort.MachineStatusChanged += OnMachineStatus;
-			ComPort.OnFileLoaded += OnFileLoaded;
-			ComPort.OnOverrideChange += ComPort_OnOverrideChange;
+			Core = new GrblCore(this);
+			Core.MachineStatusChanged += OnMachineStatus;
+			Core.OnFileLoaded += OnFileLoaded;
+			Core.OnOverrideChange += ComPort_OnOverrideChange;
 			ComPort_OnOverrideChange();
 			
 						
-			PreviewForm = new PreviewForm(ComPort);
-			ConnectionForm = new ConnectLogForm(ComPort);
-			JogForm = new JogForm(ComPort);
+			PreviewForm = new PreviewForm(Core);
+			ConnectionForm = new ConnectLogForm(Core);
+			JogForm = new JogForm(Core);
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
@@ -63,9 +63,9 @@ namespace LaserGRBL
 		{
 			TimerUpdate();
 			//TTTFile.Text = System.IO.Path.GetFileName(filename);
-			TTLines.Text = String.Format("Lines: {0}", ComPort.LoadedFile.Count);
+			TTLines.Text = String.Format("Lines: {0}", Core.LoadedFile.Count);
 			//TTTLoadedIn.Text = elapsed.ToString() + " ms";
-			TTTEstimated.Text = Tools.Utils.TimeSpanToString(ComPort.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
+			TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
 		}
 		
 		void OnMachineStatus()
@@ -75,7 +75,7 @@ namespace LaserGRBL
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
 			DockArea.SaveAsXml("Docking.xml");
-			ComPort.CloseCom();
+			Core.CloseCom();
 		}
 		
 
@@ -90,45 +90,52 @@ namespace LaserGRBL
 		private void TimerUpdate()
 		{
 			SuspendLayout();
-			TTStatus.Text = string.Format("Status: {0}", ComPort.MachineStatus);
+			TTStatus.Text = string.Format("Status: {0}", Core.MachineStatus);
 
-			if (ComPort.InProgram)
-				TTTEstimated.Text = Tools.Utils.TimeSpanToString(ComPort.ProjectedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
+			if (Core.InProgram)
+				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.ProjectedTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second);
 			else
-				TTTEstimated.Text = Tools.Utils.TimeSpanToString(ComPort.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
+				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second);
 
-			if (ComPort.InProgram)
+			if (Core.InProgram)
 				TTLEstimated.Text = "Projected Time:";
 			else
 				TTLEstimated.Text = "Estimated Time:";
+
+			MnFileOpen.Enabled = Core.CanLoadNewFile;
+			MnFileSend.Enabled = Core.CanSendFile; 
+			MnExportConfig.Enabled = Core.CanImportExport;
+			MnImportConfig.Enabled = Core.CanImportExport;
+			MnGrblReset.Enabled = Core.CanResetGrbl;
+
+			MnConnect.Visible = !Core.IsOpen;
+			MnDisconnect.Visible = Core.IsOpen;
+
+			MnGoHome.Enabled = Core.CanGoHome;
+			MnUnlock.Enabled = Core.CanGoHome;
 			
-			MnFileOpen.Enabled = true;
-			MnFileSend.Enabled = ComPort.HasProgram && ComPort.IsOpen && ComPort.MachineStatus == GrblCom.MacStatus.Idle; 
-			MnExportConfig.Enabled = MnImportConfig.Enabled = ComPort.IsOpen && ComPort.MachineStatus == GrblCom.MacStatus.Idle;
-			MnGrblReset.Enabled = ComPort.IsOpen && ComPort.MachineStatus != GrblCom.MacStatus.Disconnected;
-			
-			TTOvG0.Visible = ComPort.SupportOverride;
-			TTOvG1.Visible = ComPort.SupportOverride;
-			TTOvS.Visible = ComPort.SupportOverride;
-			spacer.Visible = ComPort.SupportOverride;
+			TTOvG0.Visible = Core.SupportOverride;
+			TTOvG1.Visible = Core.SupportOverride;
+			TTOvS.Visible = Core.SupportOverride;
+			spacer.Visible = Core.SupportOverride;
 			
 			
-			switch (ComPort.MachineStatus)
+			switch (Core.MachineStatus)
 			{
 				//Disconnected, Connecting, Idle, *Run, *Hold, *Door, Home, *Alarm, *Check, *Jog
 					
-				case GrblCom.MacStatus.Alarm:
+				case GrblCore.MacStatus.Alarm:
 					TTStatus.BackColor = Color.Red;
 					TTStatus.ForeColor = Color.White;
 					break;
-				case GrblCom.MacStatus.Door:
-				case GrblCom.MacStatus.Hold: 					
+				case GrblCore.MacStatus.Door:
+				case GrblCore.MacStatus.Hold: 					
 					TTStatus.BackColor = Color.DarkOrange;
 					TTStatus.ForeColor = Color.Black;
 					break;
-				case GrblCom.MacStatus.Jog:
-				case GrblCom.MacStatus.Run:
-				case GrblCom.MacStatus.Check:
+				case GrblCore.MacStatus.Jog:
+				case GrblCore.MacStatus.Run:
+				case GrblCore.MacStatus.Check:
 					TTStatus.BackColor = Color.LightGreen;
 					TTStatus.ForeColor = Color.Black;
 					break;
@@ -156,7 +163,7 @@ namespace LaserGRBL
 			}
 
 			if (filename != null)
-			{ComPort.ExportConfig(filename);}
+			{Core.ExportConfig(filename);}
 			
 		}
 		void MnImportConfigClick(object sender, EventArgs e)
@@ -172,7 +179,7 @@ namespace LaserGRBL
 					filename = ofd.FileName;
 			}
 			
-			ComPort.ImportConfig(filename);
+			Core.ImportConfig(filename);
 		}
 
 		void ExitToolStripMenuItemClick(object sender, EventArgs e)
@@ -182,17 +189,17 @@ namespace LaserGRBL
 
 		private void MnFileOpen_Click(object sender, EventArgs e)
 		{
-			ComPort.OpenFile();
+			Core.OpenFile();
 		}
 
 		private void MnFileSend_Click(object sender, EventArgs e)
 		{
-			ComPort.EnqueueProgram();
+			Core.EnqueueProgram();
 		}
 
 		private void MnGrblReset_Click(object sender, EventArgs e)
 		{
-			ComPort.GrblReset();
+			Core.GrblReset();
 		}
 
 		private void joggingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -203,17 +210,17 @@ namespace LaserGRBL
 		void ComPort_OnOverrideChange()
 		{
 			SuspendLayout();
-			TTOvG0.Text = string.Format("G0 [{0:0.00}x]", ComPort.OverrideG0 / 100.0);
-			TTOvG0.BackColor = ComPort.OverrideG0 > 100 ? Color.LightPink : (ComPort.OverrideG0 < 100 ? Color.LightBlue : SystemColors.Control) ;
-			TTOvG1.Text = string.Format("G1 [{0:0.00}x]", ComPort.OverrideG1 / 100.0);
-			TTOvG1.BackColor = ComPort.OverrideG1 > 100 ? Color.LightPink : (ComPort.OverrideG1 < 100 ? Color.LightBlue : SystemColors.Control) ;
-			TTOvS.Text = string.Format("S [{0:0.00}x]", ComPort.OverrideS / 100.0);
-			TTOvS.BackColor = ComPort.OverrideS > 100 ? Color.LightPink : (ComPort.OverrideS < 100 ? Color.LightBlue : SystemColors.Control) ;
+			TTOvG0.Text = string.Format("G0 [{0:0.00}x]", Core.OverrideG0 / 100.0);
+			TTOvG0.BackColor = Core.OverrideG0 > 100 ? Color.LightPink : (Core.OverrideG0 < 100 ? Color.LightBlue : SystemColors.Control) ;
+			TTOvG1.Text = string.Format("G1 [{0:0.00}x]", Core.OverrideG1 / 100.0);
+			TTOvG1.BackColor = Core.OverrideG1 > 100 ? Color.LightPink : (Core.OverrideG1 < 100 ? Color.LightBlue : SystemColors.Control) ;
+			TTOvS.Text = string.Format("S [{0:0.00}x]", Core.OverrideS / 100.0);
+			TTOvS.BackColor = Core.OverrideS > 100 ? Color.LightPink : (Core.OverrideS < 100 ? Color.LightBlue : SystemColors.Control) ;
 			ResumeLayout();
 		}
 		void TTOvClick(object sender, EventArgs e)
 		{
-			GetOvMenu().Show(Cursor.Position);
+			GetOvMenu().Show(Cursor.Position,ToolStripDropDownDirection.AboveLeft);
 		}
 
 		
@@ -221,9 +228,9 @@ namespace LaserGRBL
 		internal virtual System.Windows.Forms.ContextMenuStrip GetOvMenu()
 		{
 			System.Windows.Forms.ContextMenuStrip CM = new System.Windows.Forms.ContextMenuStrip();
-			CM.Items.Add(new ToolStripTraceBarItem(ComPort, 0));
-			CM.Items.Add(new ToolStripTraceBarItem(ComPort, 1));
-			CM.Items.Add(new ToolStripTraceBarItem(ComPort, 2));
+			CM.Items.Add(new ToolStripTraceBarItem(Core, 2));
+			CM.Items.Add(new ToolStripTraceBarItem(Core, 1));
+			CM.Items.Add(new ToolStripTraceBarItem(Core, 0));
 			CM.Width = 150;
 
 			return CM;
@@ -235,10 +242,31 @@ namespace LaserGRBL
 		[System.Windows.Forms.Design.ToolStripItemDesignerAvailability(System.Windows.Forms.Design.ToolStripItemDesignerAvailability.ToolStrip | System.Windows.Forms.Design.ToolStripItemDesignerAvailability.StatusStrip)]
 		public class ToolStripTraceBarItem : System.Windows.Forms.ToolStripControlHost
 		{
-			public ToolStripTraceBarItem(GrblCom com, int function): base(new UserControls.LabelTB(com, function))
+			public ToolStripTraceBarItem(GrblCore core, int function)
+				: base(new UserControls.LabelTB(core, function))
 			{
 				Control.Dock = System.Windows.Forms.DockStyle.Fill;
 			}
+		}
+
+		private void MnGoHome_Click(object sender, EventArgs e)
+		{
+			Core.EnqueueCommand(new GrblCommand("$H"));
+		}
+
+		private void MnUnlock_Click(object sender, EventArgs e)
+		{
+			Core.EnqueueCommand(new GrblCommand("$X"));
+		}
+
+		private void MnConnect_Click(object sender, EventArgs e)
+		{
+			Core.OpenCom();
+		}
+
+		private void MnDisconnect_Click(object sender, EventArgs e)
+		{
+			Core.CloseCom();
 		}
 		
 		
