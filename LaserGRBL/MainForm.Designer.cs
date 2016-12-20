@@ -58,24 +58,23 @@
 			this.spacer2 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.UpdateTimer = new System.Windows.Forms.Timer(this.components);
 			this.MMn = new System.Windows.Forms.MenuStrip();
-			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.MnFileOpen = new System.Windows.Forms.ToolStripMenuItem();
-			this.MnFileSend = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.grblToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnConnect = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnDisconnect = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnGrblReset = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnGoHome = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnUnlock = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnExportConfig = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnImportConfig = new System.Windows.Forms.ToolStripMenuItem();
-			this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.joggingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-			this.MnConnect = new System.Windows.Forms.ToolStripMenuItem();
-			this.MnDisconnect = new System.Windows.Forms.ToolStripMenuItem();
-			this.MnGoHome = new System.Windows.Forms.ToolStripMenuItem();
-			this.MnUnlock = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnExit = new System.Windows.Forms.ToolStripMenuItem();
+			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnFileOpen = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnFileSend = new System.Windows.Forms.ToolStripMenuItem();
+			this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.joggingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.DockArea = new LaserGRBL.UserControls.DockingManager.DockPanel();
 			this.StatusBar.SuspendLayout();
 			this.MMn.SuspendLayout();
@@ -198,35 +197,6 @@
 			this.MMn.TabIndex = 2;
 			this.MMn.Text = "menuStrip1";
 			// 
-			// fileToolStripMenuItem
-			// 
-			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MnFileOpen,
-            this.MnFileSend,
-            this.toolStripMenuItem1});
-			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-			this.fileToolStripMenuItem.Text = "&File";
-			// 
-			// MnFileOpen
-			// 
-			this.MnFileOpen.Name = "MnFileOpen";
-			this.MnFileOpen.Size = new System.Drawing.Size(103, 22);
-			this.MnFileOpen.Text = "&Open";
-			this.MnFileOpen.Click += new System.EventHandler(this.MnFileOpen_Click);
-			// 
-			// MnFileSend
-			// 
-			this.MnFileSend.Name = "MnFileSend";
-			this.MnFileSend.Size = new System.Drawing.Size(103, 22);
-			this.MnFileSend.Text = "&Send";
-			this.MnFileSend.Click += new System.EventHandler(this.MnFileSend_Click);
-			// 
-			// toolStripMenuItem1
-			// 
-			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(100, 6);
-			// 
 			// grblToolStripMenuItem
 			// 
 			this.grblToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -245,31 +215,99 @@
 			this.grblToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
 			this.grblToolStripMenuItem.Text = "&Grbl";
 			// 
+			// MnConnect
+			// 
+			this.MnConnect.Name = "MnConnect";
+			this.MnConnect.Size = new System.Drawing.Size(149, 22);
+			this.MnConnect.Text = "&Connect";
+			this.MnConnect.Click += new System.EventHandler(this.MnConnect_Click);
+			// 
+			// MnDisconnect
+			// 
+			this.MnDisconnect.Name = "MnDisconnect";
+			this.MnDisconnect.Size = new System.Drawing.Size(149, 22);
+			this.MnDisconnect.Text = "&Disconnect";
+			this.MnDisconnect.Click += new System.EventHandler(this.MnDisconnect_Click);
+			// 
+			// toolStripMenuItem2
+			// 
+			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(146, 6);
+			// 
 			// MnGrblReset
 			// 
 			this.MnGrblReset.Name = "MnGrblReset";
-			this.MnGrblReset.Size = new System.Drawing.Size(152, 22);
+			this.MnGrblReset.Size = new System.Drawing.Size(149, 22);
 			this.MnGrblReset.Text = "&Reset";
 			this.MnGrblReset.Click += new System.EventHandler(this.MnGrblReset_Click);
+			// 
+			// MnGoHome
+			// 
+			this.MnGoHome.Name = "MnGoHome";
+			this.MnGoHome.Size = new System.Drawing.Size(149, 22);
+			this.MnGoHome.Text = "&Homing";
+			this.MnGoHome.Click += new System.EventHandler(this.MnGoHome_Click);
+			// 
+			// MnUnlock
+			// 
+			this.MnUnlock.Name = "MnUnlock";
+			this.MnUnlock.Size = new System.Drawing.Size(149, 22);
+			this.MnUnlock.Text = "&Unlock";
+			this.MnUnlock.Click += new System.EventHandler(this.MnUnlock_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
 			// 
 			// MnExportConfig
 			// 
 			this.MnExportConfig.Name = "MnExportConfig";
-			this.MnExportConfig.Size = new System.Drawing.Size(152, 22);
+			this.MnExportConfig.Size = new System.Drawing.Size(149, 22);
 			this.MnExportConfig.Text = "E&xport Config";
 			this.MnExportConfig.Click += new System.EventHandler(this.MnExportConfigClick);
 			// 
 			// MnImportConfig
 			// 
 			this.MnImportConfig.Name = "MnImportConfig";
-			this.MnImportConfig.Size = new System.Drawing.Size(152, 22);
+			this.MnImportConfig.Size = new System.Drawing.Size(149, 22);
 			this.MnImportConfig.Text = "&Import Config";
 			this.MnImportConfig.Click += new System.EventHandler(this.MnImportConfigClick);
+			// 
+			// toolStripMenuItem3
+			// 
+			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(146, 6);
+			// 
+			// MnExit
+			// 
+			this.MnExit.Name = "MnExit";
+			this.MnExit.Size = new System.Drawing.Size(149, 22);
+			this.MnExit.Text = "&Exit";
+			this.MnExit.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
+			// 
+			// fileToolStripMenuItem
+			// 
+			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MnFileOpen,
+            this.MnFileSend});
+			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+			this.fileToolStripMenuItem.Text = "&File";
+			// 
+			// MnFileOpen
+			// 
+			this.MnFileOpen.Name = "MnFileOpen";
+			this.MnFileOpen.Size = new System.Drawing.Size(152, 22);
+			this.MnFileOpen.Text = "&Open";
+			this.MnFileOpen.Click += new System.EventHandler(this.MnFileOpen_Click);
+			// 
+			// MnFileSend
+			// 
+			this.MnFileSend.Name = "MnFileSend";
+			this.MnFileSend.Size = new System.Drawing.Size(152, 22);
+			this.MnFileSend.Text = "&Send";
+			this.MnFileSend.Click += new System.EventHandler(this.MnFileSend_Click);
 			// 
 			// windowsToolStripMenuItem
 			// 
@@ -285,51 +323,6 @@
 			this.joggingToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
 			this.joggingToolStripMenuItem.Text = "&Jogging";
 			this.joggingToolStripMenuItem.Click += new System.EventHandler(this.joggingToolStripMenuItem_Click);
-			// 
-			// toolStripMenuItem2
-			// 
-			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
-			// 
-			// MnConnect
-			// 
-			this.MnConnect.Name = "MnConnect";
-			this.MnConnect.Size = new System.Drawing.Size(152, 22);
-			this.MnConnect.Text = "&Connect";
-			this.MnConnect.Click += new System.EventHandler(this.MnConnect_Click);
-			// 
-			// MnDisconnect
-			// 
-			this.MnDisconnect.Name = "MnDisconnect";
-			this.MnDisconnect.Size = new System.Drawing.Size(152, 22);
-			this.MnDisconnect.Text = "&Disconnect";
-			this.MnDisconnect.Click += new System.EventHandler(this.MnDisconnect_Click);
-			// 
-			// MnGoHome
-			// 
-			this.MnGoHome.Name = "MnGoHome";
-			this.MnGoHome.Size = new System.Drawing.Size(152, 22);
-			this.MnGoHome.Text = "&Homing";
-			this.MnGoHome.Click += new System.EventHandler(this.MnGoHome_Click);
-			// 
-			// MnUnlock
-			// 
-			this.MnUnlock.Name = "MnUnlock";
-			this.MnUnlock.Size = new System.Drawing.Size(152, 22);
-			this.MnUnlock.Text = "&Unlock";
-			this.MnUnlock.Click += new System.EventHandler(this.MnUnlock_Click);
-			// 
-			// toolStripMenuItem3
-			// 
-			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
-			// 
-			// MnExit
-			// 
-			this.MnExit.Name = "MnExit";
-			this.MnExit.Size = new System.Drawing.Size(152, 22);
-			this.MnExit.Text = "&Exit";
-			this.MnExit.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
 			// DockArea
 			// 
@@ -424,7 +417,6 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripMenuItem MnExportConfig;
 		private System.Windows.Forms.ToolStripMenuItem MnImportConfig;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
 		private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem joggingToolStripMenuItem;
 		private System.Windows.Forms.Timer UpdateTimer;
