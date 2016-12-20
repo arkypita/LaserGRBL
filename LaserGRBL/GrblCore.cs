@@ -218,7 +218,7 @@ namespace LaserGRBL
 						try 
 						{
 							sr.Close();
-							while (mQueuePtr.Count > 0 || mPending.Count > 0) //resta in attesa del completamento della comunicazione
+							while (com.IsOpen && (mQueuePtr.Count > 0 || mPending.Count > 0)) //resta in attesa del completamento della comunicazione
 								;
 							
 							int errors = 0;
