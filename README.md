@@ -33,3 +33,5 @@ LaserGRBL contains some code from [DockPanel Suite](https://github.com/dockpanel
 #### Screenshot
 
 ![Galeon](https://cloud.githubusercontent.com/assets/8782035/21349915/dba84a5a-c6b4-11e6-965f-a74fd283267a.jpg)
+
+![Alpha](https://cloud.githubusercontent.com/assets/8782035/21351296/1df460c2-c6bc-11e6-8eee-4612bb7978fa.jpg)
