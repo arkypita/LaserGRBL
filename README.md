@@ -36,7 +36,7 @@ Inkscape has two interesting GCODE plugin:
 - [Raster 2 Laser GCode generator](https://github.com/305engineering/Inkscape) for raster engraving
 - [J Tech Photonics Laser Tool](https://jtechphotonics.com/?page_id=2012) for vector engraving/cutting
 
-More suggestion about GCODE Inkscape extension can be found on YouTube https://www.youtube.com/results?search_query=inkscape+laser
+More suggestion about GCODE Inkscape extension can be found searching on [YouTube](https://www.youtube.com/results?search_query=inkscape+laser)
 
 ### Compiling
 
