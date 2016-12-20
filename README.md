@@ -16,7 +16,7 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 - Homing button, Feed Hold button, Resume button and Grbl Reset button
 - Job time preview and realtime projection
 - Jogging (for any Grbl version)
-- Feed overrides (for Grbl > v1.1)
+- Feed overrides (for Grbl > v1.1) with easy-to-use interface
 
 #### Missing Features
 
@@ -32,6 +32,4 @@ LaserGRBL contains some code from [DockPanel Suite](https://github.com/dockpanel
 
 #### Screenshot
 
-![Galeon](https://cloud.githubusercontent.com/assets/8782035/20867453/e59430e6-ba44-11e6-91ed-0d3407387adf.jpg)
-
-![Alpha](https://cloud.githubusercontent.com/assets/8782035/20867452/e58f7f38-ba44-11e6-80e1-490ae3be0358.jpg)
+![Galeon](https://cloud.githubusercontent.com/assets/8782035/21349915/dba84a5a-c6b4-11e6-965f-a74fd283267a.jpg)
