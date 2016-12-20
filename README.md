@@ -30,7 +30,13 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 
 ### Suggested GCODE Generator
 
-We suggest to use [Inkscape](https://inkscape.org/) with [Raster 2 Laser GCode generator](https://github.com/305engineering/Inkscape) extension for raster engraving, end [J Tech Photonics Laser Tool](https://jtechphotonics.com/?page_id=2012) for vector engraving/cutting
+We suggest to use [Inkscape](https://inkscape.org/) to draw your vector files and vectorize bitmap.
+
+Inkscape has two interesting GCODE plugin:
+- [Raster 2 Laser GCode generator](https://github.com/305engineering/Inkscape) for raster engraving
+- [J Tech Photonics Laser Tool](https://jtechphotonics.com/?page_id=2012) for vector engraving/cutting
+
+More suggestion about GCODE Inkscape extension can be found on YouTube https://www.youtube.com/results?search_query=inkscape+laser
 
 ### Compiling
 
