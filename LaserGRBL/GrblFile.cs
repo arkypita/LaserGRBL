@@ -65,7 +65,7 @@ namespace LaserGRBL
 			
 			SetABSOLUTE();
 			SetFEED();
-			for (int Y = 0; Y < H; Y++) 
+			for (int Y = H-1; Y >= 0; Y--) 
 			{
 				LaserON();
 				if (!IsOdd(Y))
@@ -114,7 +114,7 @@ namespace LaserGRBL
 								//inizia un segmento con nuovo colore
 								//oppure raggiunto inizio linea
 								
-								CreateSegment(color, X);
+								CreateSegment(color, X+1);
 								startX = X;
 								color = pcolor;
 							}
@@ -123,7 +123,7 @@ namespace LaserGRBL
 				}
 				
 				LaserOFF();
-				IncrementY(Y);
+				IncrementY(H-Y);
 			}
 			
 			Analyze();
