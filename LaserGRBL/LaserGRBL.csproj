@@ -100,6 +100,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RasterConverter\ImageTransform.cs" />
+    <Compile Include="RasterConverter\RasterToLaserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RasterConverter\RasterToLaserForm.Designer.cs">
+      <DependentUpon>RasterToLaserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\HiResTimer.cs" />
     <Compile Include="Tools\MathHelper.cs" />
     <Compile Include="Tools\ThreadClass.cs" />
@@ -262,15 +269,9 @@
     <EmbeddedResource Include="PreviewForm.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="RasterConverter\RasterToLaserForm.resx">
+      <DependentUpon>RasterToLaserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="UserControls\CommandLog.resx">
       <DependentUpon>CommandLog.cs</DependentUpon>
     </EmbeddedResource>
@@ -359,7 +360,9 @@
     <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_OptionOverflow.bmp" />
     <Content Include="UserControls\DockingManager\license.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

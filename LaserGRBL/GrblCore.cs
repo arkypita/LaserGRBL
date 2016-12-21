@@ -111,12 +111,14 @@ namespace LaserGRBL
 		public GrblFile LoadedFile
 		{ get { return file; } }
 
+
+		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string> { ".jpg", ".bmp", ".png", ".gif" };
 		public void OpenFile()
 		{
 			string filename = null;
 			using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
 			{
-				ofd.Filter = "GCODE Files|*.nc;*.gcode";
+				ofd.Filter = "Any supported file|*.nc;*.gcode;*.bmp;*.png;*.jpg|GCODE Files|*.nc;*.gcode|Raster Image|*.bmp;*.png;*.jpg;*.gif";
 				ofd.CheckFileExists = true;
 				ofd.Multiselect = false;
 				ofd.RestoreDirectory = true;
@@ -126,10 +128,18 @@ namespace LaserGRBL
 
 			if (filename != null)
 			{
-				System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
-				file.LoadFile(filename);
-				//TbFileName.Text = filename;
-				System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+
+
+				if (ImageExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant())) //import raster image
+				{
+					RasterConverter.RasterToLaserForm.CreateAndShowDialog(file, filename);
+				}
+				else //load GCODE file
+				{
+					System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+					file.LoadFile(filename);
+					System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+				}
 			}
 		}
 
