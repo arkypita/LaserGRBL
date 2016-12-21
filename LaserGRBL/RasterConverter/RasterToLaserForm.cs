@@ -12,13 +12,17 @@ namespace LaserGRBL.RasterConverter
 	public partial class RasterToLaserForm : Form
 	{
 		GrblFile mFile;
-		string mFilename;
 		Image mOriginal;
-		bool mRefresh;
+		bool mIgnoreEvent;
 
+
+		double scaleX = 1.0; //square ratio
+		
+		
 		private RasterToLaserForm(GrblFile file, string filename)
 		{
 			InitializeComponent();
+			mFile = file;
 
 			mOriginal = Image.FromFile(filename);
 			PbOriginal.Image = mOriginal;
@@ -31,6 +35,8 @@ namespace LaserGRBL.RasterConverter
 			else
 				PbConverted.SizeMode = PictureBoxSizeMode.Normal;
 
+			scaleX = (double)mOriginal.Width / (double)mOriginal.Height;
+			
 			CbMode.SuspendLayout();
 			CbMode.Items.Add(ImageTransform.Formula.SimpleAverage);
 			CbMode.Items.Add(ImageTransform.Formula.WeightAverage);
@@ -38,6 +44,7 @@ namespace LaserGRBL.RasterConverter
 			CbMode.ResumeLayout();
 
 			RefreshPreview();
+			RefreshSizes();
 		}
 
 		internal static void CreateAndShowDialog(GrblFile file, string filename)
@@ -55,6 +62,16 @@ namespace LaserGRBL.RasterConverter
 			PbConverted.Image = img;
 		}
 
+		private void RefreshSizes()
+		{
+			const double milimetresPerInch = 25.4;
+			
+			int H = (int)(mOriginal.Height / mOriginal.VerticalResolution * milimetresPerInch);
+			int W = (int)(H * scaleX);
+			
+			TbSizeW.Text = W.ToString();
+			TbSizeH.Text = H.ToString();
+		}
 	
 
 		private void CbMode_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,6 +88,64 @@ namespace LaserGRBL.RasterConverter
 		{
 			RefreshPreview();
 		}
+		
+		void GoodInput(object sender, KeyPressEventArgs e)
+		{
+			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            	e.Handled = true;
+		}
+		
+		void TbSizeWTextChanged(object sender, EventArgs e)
+		{
+			if (!mIgnoreEvent)
+			{
+				mIgnoreEvent = true;
+				try
+				{
+					int W = int.Parse(TbSizeW.Text);
+					int H = (int)(W / scaleX);
+				
+					TbSizeW.Text = W.ToString();
+					TbSizeH.Text = H.ToString();
+				}
+				catch {}
+				mIgnoreEvent = false;
+			}
+		}
+		void TbSizeHTextChanged(object sender, EventArgs e)
+		{
+			if (!mIgnoreEvent)
+			{
+				mIgnoreEvent = true;
+				try
+				{
+					int H = int.Parse(TbSizeH.Text);
+					int W = (int)(H * scaleX);
+				
+					TbSizeW.Text = W.ToString();
+					TbSizeH.Text = H.ToString();
+				}
+				catch {}
+				mIgnoreEvent = false;
+			}
+		}
+		void BtnCreateClick(object sender, EventArgs e)
+		{
+			int H = int.Parse(TbSizeH.Text) * (int)UDQuality.Value;
+			int W = (int)(H * scaleX);
+			
+			using (Bitmap bmp = new Bitmap(W, H))
+			{
+				using (Graphics g = Graphics.FromImage(bmp))
+				{
+					g.DrawImage(PbConverted.Image, 0, 0, W, H);
+					mFile.LoadImage(bmp);
+				}
+			}
+		}
+		
+
+		
 
 	}
 }

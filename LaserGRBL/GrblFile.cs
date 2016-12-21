@@ -49,6 +49,115 @@ namespace LaserGRBL
 				OnFileLoaded(elapsed, filename);
 		}
 
+		public void LoadImage(Bitmap image)
+		{
+			long start = Tools.HiResTimer.TotalMilliseconds;
+			mTotalTravelOff = 0;
+			mTotalTravelOn = 0;
+			mEstimatedTimeOff = TimeSpan.Zero;
+			mEstimatedTimeOn = TimeSpan.Zero;
+			list.Clear();
+			mRange.ResetRange();
+			
+			
+			int H = image.Height;
+			int W = image.Width;
+			
+			SetABSOLUTE();
+			SetFEED();
+			for (int Y = 0; Y < H; Y++) 
+			{
+				LaserON();
+				if (!IsOdd(Y))
+				{
+					int color = -1;
+					int startX = -1;
+					
+					for (int X = 0; X < W; X++) 
+					{
+						int pcolor = 255 - image.GetPixel(X, Y).R;
+						if (startX == -1)
+						{
+							startX = X;
+							color = pcolor;
+						}
+						else
+						{
+							if (pcolor != color || X == W-1) 
+							{
+								//inizia un segmento con nuovo colore
+								//oppure raggiunto il fine linea
+								
+								CreateSegment(color, X);
+								startX = X;
+								color = pcolor;
+							}
+						}
+					}
+				}
+				else
+				{
+					int color = -1;
+					int startX = -1;
+					for (int X = W-1; X >= 0; X--) 
+					{
+						int pcolor = 255 - image.GetPixel(X, Y).R;
+						if (startX == -1)
+						{
+							startX = X;
+							color = pcolor;
+						}
+						else
+						{
+							if (pcolor != color || X == 0) 
+							{
+								//inizia un segmento con nuovo colore
+								//oppure raggiunto inizio linea
+								
+								CreateSegment(color, X);
+								startX = X;
+								color = pcolor;
+							}
+						}
+					}
+				}
+				
+				LaserOFF();
+				IncrementY(Y);
+			}
+			
+			Analyze();
+			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+			
+			if (OnFileLoaded != null)
+				OnFileLoaded(elapsed, "bitmap");
+		}
+
+		private void SetABSOLUTE()
+		{list.Add(new GrblCommand("G90")); } 
+		
+		private void SetFEED()
+		{list.Add(new GrblCommand("F100")); } 
+		
+		private void LaserOFF()
+		{list.Add(new GrblCommand("M5")); } //spegni il laser
+		
+		private void LaserON()
+		{list.Add(new GrblCommand("M4")); } //accendi il laser
+		
+		private void IncrementY(int Y)
+		{
+			list.Add(new GrblCommand(string.Format("G0 Y{0} S0", Y))); //muovi a posizione Y
+		}
+		private void CreateSegment(int power, int endX)
+		{
+			list.Add(new GrblCommand(string.Format("G1 X{0} S{1}", endX, power))); //il laser non si spegne durante tutto il movimento X
+		}
+		
+		
+		private static bool IsOdd(int value)
+    	{return value % 2 != 0;}
+		
 		public int Count
 		{ get { return list.Count; } }
 
