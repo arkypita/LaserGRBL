@@ -118,7 +118,7 @@ namespace LaserGRBL
 			string filename = null;
 			using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
 			{
-				ofd.Filter = "Any supported file|*.nc;*.gcode;*.bmp;*.png;*.jpg|GCODE Files|*.nc;*.gcode|Raster Image|*.bmp;*.png;*.jpg;*.gif";
+				ofd.Filter = "Any supported file|*.nc;*.gcode;*.bmp;*.png;*.jpg;*.gif|GCODE Files|*.nc;*.gcode|Raster Image|*.bmp;*.png;*.jpg;*.gif";
 				ofd.CheckFileExists = true;
 				ofd.Multiselect = false;
 				ofd.RestoreDirectory = true;

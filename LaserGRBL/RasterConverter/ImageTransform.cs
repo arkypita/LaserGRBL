@@ -59,7 +59,6 @@ namespace LaserGRBL.RasterConverter
 
 		}
 
-
 		public static Image Brightness(Image img, float brightness)
 		{
 			ColorMatrix cm = new ColorMatrix(new float[][] {
@@ -104,7 +103,51 @@ namespace LaserGRBL.RasterConverter
 
 		}
 
-		public static Image BrightnessContrast(Image img, float brightness, float contrast)
+		public static Image Contrast(Image img, float contrast)
+		{
+			ColorMatrix cm = new ColorMatrix(new float[][] {
+				new float[] {
+					contrast,
+					0,
+					0,
+					0,
+					0
+				},
+				new float[] {
+					0,
+					contrast,
+					0,
+					0,
+					0
+				},
+				new float[] {
+					0,
+					0,
+					contrast,
+					0,
+					0
+				},
+				new float[] {
+					0,
+					0,
+					0,
+					1,
+					0
+				},
+				new float[] {
+					0,
+					0,
+					0,
+					0,
+					1
+				}
+			});
+
+			return draw_adjusted_image(img, cm);
+
+		}
+
+		public static Bitmap BrightnessContrast(Image img, float brightness, float contrast)
 		{
 			ColorMatrix cm = new ColorMatrix(new float[][] {
 				new float[] {
@@ -148,233 +191,25 @@ namespace LaserGRBL.RasterConverter
 
 		}
 
-		public static Image Contrast(Image img, float Val)
+		public static Bitmap Threshold(Image img, float threshold, bool apply)
 		{
-			ColorMatrix cm = new ColorMatrix(new float[][] {
-				new float[] {
-					Val,
-					0,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					Val,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					Val,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					0,
-					1,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					0,
-					0,
-					1
-				}
-			});
+			Bitmap bmp = new Bitmap(img);
 
-			return draw_adjusted_image(img, cm);
+			using (Graphics g = Graphics.FromImage(bmp))
+			{
+				// Create an ImageAttributes object, and set its color threshold.
+				ImageAttributes imageAttr = new ImageAttributes();
+				imageAttr.SetThreshold(threshold);
 
-		}
-
-		public static Image Coloration(Image img, Color DestColor, bool greyscalize, float Bright)
-		{
-			float r = 0;
-			float g = 0;
-			float b = 0;
-			Image rv = (Image)img.Clone();
-
-			if (greyscalize) {
-				rv = GrayScale(rv);
+				if (apply)
+					g.DrawImage(img, new Rectangle(0,0, bmp.Width, bmp.Height), 0,0, bmp.Width, bmp.Height,	GraphicsUnit.Pixel, imageAttr);
+				else
+					g.DrawImage(img, 0,0);
 			}
-
-			// noramlize the color components to 1
-			r = Convert.ToSingle(DestColor.R / 255);
-			g = Convert.ToSingle(DestColor.G / 255);
-			b = Convert.ToSingle(DestColor.B / 255);
-
-
-			// create the color matrix
-			ColorMatrix cm = new ColorMatrix(new float[][] {
-				new float[] {
-					r,
-					0,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					g,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					b,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					0,
-					1,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					0,
-					0,
-					1
-				}
-			});
-
-			// apply the matrix to the image
-			rv = draw_adjusted_image(rv, cm);
-
-			if (!(Bright == 0)) {
-				rv = Brightness(rv, Bright);
-			}
-
-			return rv;
-
+			return bmp;
 		}
 
-
-		public static Image Translate(Image img, Color Color, byte Alpha = 255)
-		{
-			return Translate(img, Color.R, Color.G, Color.B, Alpha);
-		}
-
-		public static Image Translate(Image img, float red, float green, float blue, byte alpha = 255)
-		{
-
-			float sr = 0;
-			float sg = 0;
-			float sb = 0;
-			float sa = 0;
-
-			// noramlize the color components to 1
-			sr = red / 255;
-			sg = green / 255;
-			sb = blue / 255;
-			sa = Convert.ToSingle(alpha / 255);
-
-			// create the color matrix
-			ColorMatrix cm = new ColorMatrix(new float[][] {
-				new float[] {
-					1,
-					0,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					1,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					1,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					0,
-					1,
-					0
-				},
-				new float[] {
-					sr,
-					sg,
-					sb,
-					sa,
-					1
-				}
-			});
-
-			// apply the matrix to the image
-			return draw_adjusted_image(img, cm);
-
-		}
-
-		public static Image ChangeAlpha(Image img, byte alpha)
-		{
-
-			// noramlize the color components to 1
-			float sa = Convert.ToSingle(alpha / 255);
-
-			// create the color matrix
-			ColorMatrix cm = new ColorMatrix(new float[][] {
-				new float[] {
-					1,
-					0,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					1,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					1,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					0,
-					sa,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					0,
-					0,
-					1
-				}
-			});
-
-			// apply the matrix to the image
-			return draw_adjusted_image(img, cm);
-
-		}
-
-
-		private static Image draw_adjusted_image(Image img, ColorMatrix cm)
+		private static Bitmap draw_adjusted_image(Image img, ColorMatrix cm)
 		{
 
 			try {
@@ -408,41 +243,37 @@ namespace LaserGRBL.RasterConverter
 		public enum Formula
 		{
 			SimpleAverage = 0,
-			// Least accurate
-			WeightAverage = 1,
-			NtscPal = 2,
-			// CCIR Recommendation 601-1 (Used in Ntsc/Pal Standards)
-			CCIRRec709 = 3
-			// CCIR Recommendation 709
+			WeightAverage = 1
 		}
 
 
-		public static Image GrayScale(Image img, Formula formula = Formula.CCIRRec709)
+		public static Bitmap GrayScale(Image img, float R, float G, float B, Formula formula)
 		{
 			ColorMatrix cm = default(ColorMatrix);
 
 			// Apply selected grayscale formula
-			switch (formula) {
-				case Formula.CCIRRec709:
+						
+			if (formula == Formula.SimpleAverage)
+			{
 					cm = new ColorMatrix(new float[][] {
 						new float[] {
-							0.213F,
-							0.213F,
-							0.213F,
+							0.333F * R,
+							0.333F * R,
+							0.333F * R,
 							0F,
 							0F
 						},
 						new float[] {
-							0.715F,
-							0.715F,
-							0.715F,
+							0.333F * G,
+							0.333F * G,
+							0.333F * G,
 							0F,
 							0F
 						},
 						new float[] {
-							0.072F,
-							0.072F,
-							0.072F,
+							0.333F * B,
+							0.333F * B,
+							0.333F * B,
 							0F,
 							0F
 						},
@@ -461,165 +292,48 @@ namespace LaserGRBL.RasterConverter
 							1F
 						}
 					});
-					break;
-				case Formula.NtscPal:
-					cm = new ColorMatrix(new float[][] {
-						new float[] {
-							0.299F,
-							0.299F,
-							0.299F,
-							0F,
-							0F
-						},
-						new float[] {
-							0.587F,
-							0.587F,
-							0.587F,
-							0F,
-							0F
-						},
-						new float[] {
-							0.114F,
-							0.114F,
-							0.114F,
-							0F,
-							0F
-						},
-						new float[] {
-							0F,
-							0F,
-							0F,
-							1F,
-							0F
-						},
-						new float[] {
-							0F,
-							0F,
-							0F,
-							0F,
-							1F
-						}
-					});
-					break;
-				case Formula.SimpleAverage:
-					cm = new ColorMatrix(new float[][] {
-						new float[] {
-							0.333F,
-							0.333F,
-							0.333F,
-							0F,
-							0F
-						},
-						new float[] {
-							0.333F,
-							0.333F,
-							0.333F,
-							0F,
-							0F
-						},
-						new float[] {
-							0.333F,
-							0.333F,
-							0.333F,
-							0F,
-							0F
-						},
-						new float[] {
-							0F,
-							0F,
-							0F,
-							1F,
-							0F
-						},
-						new float[] {
-							0F,
-							0F,
-							0F,
-							0F,
-							1F
-						}
-					});
-					break;
-				case Formula.WeightAverage:
-					cm = new ColorMatrix(new float[][] {
-						new float[] {
-							0.333F,
-							0.333F,
-							0.333F,
-							0F,
-							0F
-						},
-						new float[] {
-							0.444F,
-							0.444F,
-							0.444F,
-							0F,
-							0F
-						},
-						new float[] {
-							0.222F,
-							0.222F,
-							0.222F,
-							0F,
-							0F
-						},
-						new float[] {
-							0F,
-							0F,
-							0F,
-							1F,
-							0F
-						},
-						new float[] {
-							0F,
-							0F,
-							0F,
-							0F,
-							1F
-						}
-					});
-					break;
-				default:
-					// Use CCIR Rec. 709 as catch all
-					cm = new ColorMatrix(new float[][] {
-						new float[] {
-							0.213F,
-							0.213F,
-							0.213F,
-							0F,
-							0F
-						},
-						new float[] {
-							0.715F,
-							0.715F,
-							0.715F,
-							0F,
-							0F
-						},
-						new float[] {
-							0.072F,
-							0.072F,
-							0.072F,
-							0F,
-							0F
-						},
-						new float[] {
-							0F,
-							0F,
-							0F,
-							1F,
-							0F
-						},
-						new float[] {
-							0F,
-							0F,
-							0F,
-							0F,
-							1F
-						}
-					});
-					break;
 			}
+			else if (formula == Formula.WeightAverage)
+			{
+					cm = new ColorMatrix(new float[][] {
+						new float[] {
+							0.333F * R,
+							0.333F * R,
+							0.333F * R,
+							0F,
+							0F
+						},
+						new float[] {
+							0.444F * G,
+							0.444F * G,
+							0.444F * G,
+							0F,
+							0F
+						},
+						new float[] {
+							0.222F * B,
+							0.222F * B,
+							0.222F * B,
+							0F,
+							0F
+						},
+						new float[] {
+							0F,
+							0F,
+							0F,
+							1F,
+							0F
+						},
+						new float[] {
+							0F,
+							0F,
+							0F,
+							0F,
+							1F
+						}
+					});
+			}	
+
 
 			return draw_adjusted_image(img, cm);
 

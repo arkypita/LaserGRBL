@@ -116,10 +116,10 @@ namespace LaserGRBL.CSV
 		{ return ReadString(i++); }
 		public string ReadString(int index)
 		{ return list[index]; }
-		public string ReadString(System.Data.DataColumn dest)
-		{ return Truncate(ReadString(i++), dest); }
-		public string ReadString(int index, System.Data.DataColumn dest)
-		{ return Truncate(list[index], dest); }
+		//public string ReadString(System.Data.DataColumn dest)
+		//{ return Truncate(ReadString(i++), dest); }
+		//public string ReadString(int index, System.Data.DataColumn dest)
+		//{ return Truncate(list[index], dest); }
 		public TimeSpan ReadTimeSpan()
 		{ return ReadTimeSpan(i++); }
 		public TimeSpan ReadTimeSpan(int index)
@@ -138,17 +138,17 @@ namespace LaserGRBL.CSV
 				return UnixToDotNet(Convert.ToInt32(list[index], dtf));
 		}
 
-		private string Truncate(string source, System.Data.DataColumn dest)
-		{
-			if (source.Length > dest.MaxLength)
-			{
-				source = source.Substring(0, dest.MaxLength);
-				//TODO: log the event
-				System.Diagnostics.Debug.WriteLine(System.String.Format("Tronco il campo {0}", dest.ColumnName));
-			}
+		//private string Truncate(string source, System.Data.DataColumn dest)
+		//{
+		//	if (source.Length > dest.MaxLength)
+		//	{
+		//		source = source.Substring(0, dest.MaxLength);
+		//		//TODO: log the event
+		//		System.Diagnostics.Debug.WriteLine(System.String.Format("Tronco il campo {0}", dest.ColumnName));
+		//	}
 
-			return source;
-		}
+		//	return source;
+		//}
 
 
 		//**************************************************************

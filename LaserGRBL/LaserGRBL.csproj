@@ -58,15 +58,10 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
-    <Reference Include="System.Threading" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectLogForm.cs">
@@ -251,6 +246,15 @@
       <DependentUpon>ImageButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ImageTransform.cs" />
+    <Compile Include="UserControls\IntegerInput\ColoredBorderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\IntegerInput\IntegerInputBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\IntegerInput\IntegerInputRanged.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControls\LabelTB.cs">
       <SubType>UserControl</SubType>
     </Compile>
