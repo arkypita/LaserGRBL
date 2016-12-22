@@ -49,7 +49,7 @@ namespace LaserGRBL
 				OnFileLoaded(elapsed, filename);
 		}
 
-		public void LoadImage(Bitmap image)
+		public void LoadImage(Bitmap image, string filename, int resolution, int oX, int oY, int speed)
 		{
 			long start = Tools.HiResTimer.TotalMilliseconds;
 			mTotalTravelOff = 0;
@@ -63,19 +63,23 @@ namespace LaserGRBL
 			int H = image.Height;
 			int W = image.Width;
 			
-			SetABSOLUTE();
-			SetFEED();
-			for (int Y = H-1; Y >= 0; Y--) 
+			SetHeader(speed);
+
+					
+			bool oncolor = false;
+			for (int Y = H-1; Y >= 0; Y--)
 			{
 				LaserON();
 				if (!IsOdd(Y))
 				{
 					int color = -1;
 					int startX = -1;
-					
 					for (int X = 0; X < W; X++) 
 					{
-						int pcolor = 255 - image.GetPixel(X, Y).R;
+						int pcolor = GetColor(image, X,Y);
+						if (!oncolor && pcolor > 0)
+							oncolor = true;
+					
 						if (startX == -1)
 						{
 							startX = X;
@@ -88,7 +92,7 @@ namespace LaserGRBL
 								//inizia un segmento con nuovo colore
 								//oppure raggiunto il fine linea
 								
-								CreateSegment(color, X);
+								CreateSegment(color, X, oX, resolution);
 								startX = X;
 								color = pcolor;
 							}
@@ -101,7 +105,10 @@ namespace LaserGRBL
 					int startX = -1;
 					for (int X = W-1; X >= 0; X--) 
 					{
-						int pcolor = 255 - image.GetPixel(X, Y).R;
+						int pcolor = GetColor(image, X,Y);
+						if (!oncolor && pcolor > 0)
+							oncolor = true;
+						
 						if (startX == -1)
 						{
 							startX = X;
@@ -114,7 +121,7 @@ namespace LaserGRBL
 								//inizia un segmento con nuovo colore
 								//oppure raggiunto inizio linea
 								
-								CreateSegment(color, X+1);
+								CreateSegment(color, X+1, oX, resolution);
 								startX = X;
 								color = pcolor;
 							}
@@ -123,21 +130,31 @@ namespace LaserGRBL
 				}
 				
 				LaserOFF();
-				IncrementY(H-Y);
+				IncrementY(H-Y, oY, resolution);
 			}
 			
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 			
 			if (OnFileLoaded != null)
-				OnFileLoaded(elapsed, "bitmap");
+				OnFileLoaded(elapsed, filename);
 		}
 
-		private void SetABSOLUTE()
-		{list.Add(new GrblCommand("G90")); } 
+		private int GetColor(Bitmap I, int X, int Y)
+		{
+			int rv = 255 - I.GetPixel(X, Y).R;
+			if (rv < 5)
+				return 0;
+			else
+				return rv;
+		}
 		
-		private void SetFEED()
-		{list.Add(new GrblCommand("F100")); } 
+		private void SetHeader(int speed)
+		{
+			list.Add(new GrblCommand("G90")); 
+			list.Add(new GrblCommand(String.Format("F{0}", speed))); 
+			list.Add(new GrblCommand("G0 X0 Y0"));
+		}
 		
 		private void LaserOFF()
 		{list.Add(new GrblCommand("M5")); } //spegni il laser
@@ -145,15 +162,17 @@ namespace LaserGRBL
 		private void LaserON()
 		{list.Add(new GrblCommand("M4")); } //accendi il laser
 		
-		private void IncrementY(int Y)
+		private void IncrementY(int Y, int oY, int res)
 		{
-			list.Add(new GrblCommand(string.Format("G0 Y{0} S0", Y))); //muovi a posizione Y
+			list.Add(new GrblCommand(string.Format("G0 Y{0} S0", formatnumber(oY + (double)Y / (double)res)))); //muovi a posizione Y
 		}
-		private void CreateSegment(int power, int endX)
+		private void CreateSegment(int power, int X, int oX, int res)
 		{
-			list.Add(new GrblCommand(string.Format("G1 X{0} S{1}", endX, power))); //il laser non si spegne durante tutto il movimento X
+			list.Add(new GrblCommand(string.Format("G1 X{0} S{1}", formatnumber(oX + (double)X / (double)res) , power))); //il laser non si spegne durante tutto il movimento X
 		}
 		
+		private string formatnumber(double number)
+		{return number.ToString("0.000", System.Globalization.CultureInfo.InvariantCulture);}
 		
 		private static bool IsOdd(int value)
     	{return value % 2 != 0;}

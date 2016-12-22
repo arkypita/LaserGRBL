@@ -42,7 +42,7 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.TbSizeW = new System.Windows.Forms.TextBox();
 			this.UDQuality = new System.Windows.Forms.NumericUpDown();
-			this.TbOffsettX = new System.Windows.Forms.TextBox();
+			this.TbOffsetX = new System.Windows.Forms.TextBox();
 			this.label10 = new System.Windows.Forms.Label();
 			this.TbOffsetY = new System.Windows.Forms.TextBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -59,6 +59,9 @@
 			this.TpOriginal = new System.Windows.Forms.TabPage();
 			this.PbOriginal = new System.Windows.Forms.PictureBox();
 			this.BtnCreate = new System.Windows.Forms.Button();
+			this.label12 = new System.Windows.Forms.Label();
+			this.TbSpeed = new System.Windows.Forms.TextBox();
+			this.label13 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -110,7 +113,7 @@
 			this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
 			this.groupBox2.Location = new System.Drawing.Point(0, 148);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(220, 97);
+			this.groupBox2.Size = new System.Drawing.Size(220, 123);
 			this.groupBox2.TabIndex = 1;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Gcode generation";
@@ -125,6 +128,7 @@
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel3.Controls.Add(this.label12, 0, 3);
 			this.tableLayoutPanel3.Controls.Add(this.label11, 4, 2);
 			this.tableLayoutPanel3.Controls.Add(this.label9, 0, 2);
 			this.tableLayoutPanel3.Controls.Add(this.label8, 2, 1);
@@ -135,17 +139,21 @@
 			this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
 			this.tableLayoutPanel3.Controls.Add(this.TbSizeW, 1, 0);
 			this.tableLayoutPanel3.Controls.Add(this.UDQuality, 1, 1);
-			this.tableLayoutPanel3.Controls.Add(this.TbOffsettX, 1, 2);
+			this.tableLayoutPanel3.Controls.Add(this.TbOffsetX, 1, 2);
 			this.tableLayoutPanel3.Controls.Add(this.label10, 2, 2);
 			this.tableLayoutPanel3.Controls.Add(this.TbOffsetY, 3, 2);
+			this.tableLayoutPanel3.Controls.Add(this.TbSpeed, 1, 3);
+			this.tableLayoutPanel3.Controls.Add(this.label13, 2, 3);
 			this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 16);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-			this.tableLayoutPanel3.RowCount = 3;
+			this.tableLayoutPanel3.RowCount = 4;
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(214, 78);
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(214, 104);
 			this.tableLayoutPanel3.TabIndex = 0;
 			// 
 			// label11
@@ -264,12 +272,13 @@
 			// 
 			// TbOffsettX
 			// 
-			this.TbOffsettX.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.TbOffsettX.Location = new System.Drawing.Point(48, 55);
-			this.TbOffsettX.Name = "TbOffsettX";
-			this.TbOffsettX.Size = new System.Drawing.Size(55, 20);
-			this.TbOffsettX.TabIndex = 10;
-			this.TbOffsettX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.GoodInput);
+			this.TbOffsetX.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.TbOffsetX.Location = new System.Drawing.Point(48, 55);
+			this.TbOffsetX.Name = "TbOffsettX";
+			this.TbOffsetX.Size = new System.Drawing.Size(55, 20);
+			this.TbOffsetX.TabIndex = 10;
+			this.TbOffsetX.Text = "0";
+			this.TbOffsetX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.GoodInput);
 			// 
 			// label10
 			// 
@@ -288,6 +297,7 @@
 			this.TbOffsetY.Name = "TbOffsetY";
 			this.TbOffsetY.Size = new System.Drawing.Size(55, 20);
 			this.TbOffsetY.TabIndex = 12;
+			this.TbOffsetY.Text = "0";
 			this.TbOffsetY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.GoodInput);
 			// 
 			// groupBox1
@@ -461,6 +471,36 @@
 			this.BtnCreate.UseVisualStyleBackColor = true;
 			this.BtnCreate.Click += new System.EventHandler(this.BtnCreateClick);
 			// 
+			// label12
+			// 
+			this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label12.AutoSize = true;
+			this.label12.Location = new System.Drawing.Point(3, 84);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(38, 13);
+			this.label12.TabIndex = 13;
+			this.label12.Text = "Speed";
+			// 
+			// TbSpeed
+			// 
+			this.TbSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.TbSpeed.Location = new System.Drawing.Point(48, 81);
+			this.TbSpeed.Name = "TbSpeed";
+			this.TbSpeed.Size = new System.Drawing.Size(55, 20);
+			this.TbSpeed.TabIndex = 14;
+			this.TbSpeed.Text = "1000";
+			// 
+			// label13
+			// 
+			this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label13.AutoSize = true;
+			this.tableLayoutPanel3.SetColumnSpan(this.label13, 3);
+			this.label13.Location = new System.Drawing.Point(109, 84);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(44, 13);
+			this.label13.TabIndex = 15;
+			this.label13.Text = "mm/min";
+			// 
 			// RasterToLaserForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -521,9 +561,12 @@
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.TextBox TbOffsettX;
+		private System.Windows.Forms.TextBox TbOffsetX;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.TextBox TbOffsetY;
 		private System.Windows.Forms.Button BtnCreate;
+		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.TextBox TbSpeed;
+		private System.Windows.Forms.Label label13;
 	}
 }

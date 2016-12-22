@@ -14,6 +14,7 @@ namespace LaserGRBL.RasterConverter
 		GrblFile mFile;
 		Image mOriginal;
 		bool mIgnoreEvent;
+		string mFileName;
 
 
 		double scaleX = 1.0; //square ratio
@@ -23,6 +24,7 @@ namespace LaserGRBL.RasterConverter
 		{
 			InitializeComponent();
 			mFile = file;
+			mFileName = filename;
 
 			mOriginal = Image.FromFile(filename);
 			PbOriginal.Image = mOriginal;
@@ -134,14 +136,21 @@ namespace LaserGRBL.RasterConverter
 			int H = int.Parse(TbSizeH.Text) * (int)UDQuality.Value;
 			int W = (int)(H * scaleX);
 			
+			int oX = int.Parse(TbOffsetX.Text);
+			int oY = int.Parse(TbOffsetY.Text);
+			
+			int f =  int.Parse(TbSpeed.Text);
+			
 			using (Bitmap bmp = new Bitmap(W, H))
 			{
 				using (Graphics g = Graphics.FromImage(bmp))
 				{
 					g.DrawImage(PbConverted.Image, 0, 0, W, H);
-					mFile.LoadImage(bmp);
+					mFile.LoadImage(bmp, mFileName, (int)UDQuality.Value, oX, oY, f);
 				}
 			}
+			
+			Close();
 		}
 		
 
