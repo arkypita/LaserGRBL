@@ -10,7 +10,8 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 
 ### Existing Features
 
-- File loading with engraving/cutting job preview (with alpha blending for grayscale engraving)
+- GCode file loading with engraving/cutting job preview (with alpha blending for grayscale engraving)
+- Image import (jpg, bmp...) and Raster2Laser GCode generation.
 - Grbl Configuration Import/Export
 - Configuration, Alarm and Error codes decoding for Grbl v1.1 (with description tooltip)
 - Homing button, Feed Hold button, Resume button and Grbl Reset button
@@ -26,7 +27,11 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 
 ![Galeon](https://cloud.githubusercontent.com/assets/8782035/21349915/dba84a5a-c6b4-11e6-965f-a74fd283267a.jpg)
 
+![Raster2Laser](https://cloud.githubusercontent.com/assets/8782035/21425748/34400d46-c84b-11e6-99e5-6eb529a98f8f.jpg)
+
 ![Alpha](https://cloud.githubusercontent.com/assets/8782035/21351296/1df460c2-c6bc-11e6-8eee-4612bb7978fa.jpg)
+
+
 
 ### Suggested GCODE Generator
 
