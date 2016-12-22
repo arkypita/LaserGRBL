@@ -16,7 +16,6 @@ namespace LaserGRBL.RasterConverter
 		Image mScaled;
 		Image mConverted;
 
-		bool mIgnoreEvent;
 		string mFileName;
 
 
@@ -33,7 +32,7 @@ namespace LaserGRBL.RasterConverter
 			scaleX = (double)mOriginal.Width / (double)mOriginal.Height;
 
 			Size scaleSize = CalculateResizeToFit(mOriginal.Size, PbConverted.Size);
-			mScaled = ResizeImage(mOriginal, scaleSize.Width, scaleSize.Height);
+			mScaled = ImageTransform.ResizeImage(mOriginal, scaleSize.Width, scaleSize.Height);
 
 			PbOriginal.Image = mScaled;
 
@@ -76,35 +75,61 @@ namespace LaserGRBL.RasterConverter
 				{
 					Bitmap th = ImageTransform.Threshold(bc, TbThreshold.Value / 100.0F, CbThreshold.Checked);
 
-					if (CbLinePreview.Checked)
+					if (RbLineToLineTracing.Checked)
+						PreviewLineByLine(th);
+					else if (RbVectorize.Checked)
+						PreviewVector(th);
+
+				}
+			}
+		}
+
+
+
+		private void PreviewVector(Bitmap th)
+		{
+			using (Graphics g = Graphics.FromImage(th))
+				g.Clear(Color.White);
+
+			PbConverted.SuspendLayout();
+			if (mConverted != null)
+				mConverted.Dispose();
+			mConverted = th;
+			PbConverted.Image = mConverted;
+			PbConverted.ResumeLayout();
+		}
+
+		private void PreviewLineByLine(Bitmap th)
+		{
+			if (CbLinePreview.Checked)
+			{
+				using (Graphics g = Graphics.FromImage(th))
+				{
+					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+
+					int mod = 7 - (int)UDQuality.Value / 3;
+					for (int Y = 0; Y < th.Height; Y++)
 					{
-						using (Graphics g = Graphics.FromImage(th))
+						using (Pen mark = new Pen(Color.FromArgb(0, 255, 255, 255), 1F))
 						{
-							g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-							for (int Y = 0; Y < bc.Height; Y += 3)
+							using (Pen nomark = new Pen(Color.FromArgb(255, 255, 255, 255), 1F))
 							{
-								using (Pen P = new Pen(Color.FromArgb(150, 255, 255, 255), 1F))
-								{
-									using (Pen P1 = new Pen(Color.FromArgb(100, 255, 255, 255), 1F))
-									{
-										if (IsOdd(Y))
-											g.DrawLine(P, 0, Y, bc.Width, Y);
-										else
-											g.DrawLine(P1, 0, Y, bc.Width, Y);
-									}
-								}
+								if (Y % mod == 0)
+									g.DrawLine(mark, 0, Y, th.Width, Y);
+								else
+									g.DrawLine(nomark, 0, Y, th.Width, Y);
 							}
 						}
 					}
-
-					PbConverted.SuspendLayout();
-					if (mConverted != null)
-						mConverted.Dispose();
-					mConverted = th;
-					PbConverted.Image = mConverted;
-					PbConverted.ResumeLayout();
 				}
 			}
+
+			PbConverted.SuspendLayout();
+			if (mConverted != null)
+				mConverted.Dispose();
+			mConverted = th;
+			PbConverted.Image = mConverted;
+			PbConverted.ResumeLayout();
 		}
 
 		private void RefreshSizes()
@@ -135,7 +160,7 @@ namespace LaserGRBL.RasterConverter
 			int H = IISizeH.CurrentValue * (int)UDQuality.Value;
 			int W = IISizeW.CurrentValue * (int)UDQuality.Value;
 
-			using (Bitmap res = ResizeImage(mOriginal, W, H))
+			using (Bitmap res = ImageTransform.ResizeImage(mOriginal, W, H))
 			{
 				using (Bitmap gs = ImageTransform.GrayScale(res, TBRed.Value / 100.0F, TBGreen.Value / 100.0F, TBBlue.Value / 100.0F, (ImageTransform.Formula)CbMode.SelectedItem))
 				{
@@ -143,7 +168,7 @@ namespace LaserGRBL.RasterConverter
 					{
 						using (Bitmap th = ImageTransform.Threshold(bc, TbThreshold.Value / 100.0F, CbThreshold.Checked))
 						{
-							using (Bitmap killed = KillAlfa(th))
+							using (Bitmap killed = ImageTransform.KillAlfa(th))
 							{
 								mFile.LoadImage(killed, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IISpeed.CurrentValue);
 							}
@@ -167,51 +192,19 @@ namespace LaserGRBL.RasterConverter
 				IISizeW.CurrentValue = (int)(NewValue * scaleX);
 		}
 
-		private static Bitmap ResizeImage(Image image, int width, int height)
-		{
-			Rectangle destRect = new Rectangle(0, 0, width, height);
-			Bitmap destImage = new Bitmap(width, height);
-			
-			destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-
-			using (Graphics g = Graphics.FromImage(destImage))
-			{
-				g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-				g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-				g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-				g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-				g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-
-				using (var wrapMode = new System.Drawing.Imaging.ImageAttributes())
-				{
-					wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
-					g.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
-				}
-			}
-
-			return destImage;
-		}
-
 		private static bool IsOdd(int value)
 		{ return value % 2 != 0; }
 
-		private static Bitmap KillAlfa(Image image)
+		private void OnGeneratorChange(object sender, EventArgs e)
 		{
-			Bitmap destImage = new Bitmap(image.Width, image.Height);
-			destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked;
+			GbVectorizeOptions.Visible = RbVectorize.Checked;
+			RefreshPreview();
+		}
 
-			using (Graphics g = Graphics.FromImage(destImage))
-			{
-				g.Clear(Color.White);
-				g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-				g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-				g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-				g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-				g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-				g.DrawImage(image,0, 0);
-			}
-
-			return destImage;
+		private void UDQuality_ValueChanged(object sender, EventArgs e)
+		{
+			RefreshPreview();
 		}
 
 

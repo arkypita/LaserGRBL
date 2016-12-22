@@ -13,8 +13,51 @@ namespace LaserGRBL.RasterConverter
 	public class ImageTransform
 	{
 
+		public static Bitmap ResizeImage(Image image, int width, int height)
+		{
+			Rectangle destRect = new Rectangle(0, 0, width, height);
+			Bitmap destImage = new Bitmap(width, height);
 
-		public static Image Negative(Image img)
+			destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+			using (Graphics g = Graphics.FromImage(destImage))
+			{
+				g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+				g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+				g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+				g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+				g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+
+				using (var wrapMode = new System.Drawing.Imaging.ImageAttributes())
+				{
+					wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
+					g.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+				}
+			}
+
+			return destImage;
+		}
+
+		public static Bitmap KillAlfa(Image image)
+		{
+			Bitmap destImage = new Bitmap(image.Width, image.Height);
+			destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+			using (Graphics g = Graphics.FromImage(destImage))
+			{
+				g.Clear(Color.White);
+				g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+				g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+				g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+				g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+				g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+				g.DrawImage(image, 0, 0);
+			}
+
+			return destImage;
+		}
+
+		public static Bitmap Negative(Image img)
 		{
 
 			ColorMatrix cm = new ColorMatrix(new float[][] {
@@ -59,7 +102,7 @@ namespace LaserGRBL.RasterConverter
 
 		}
 
-		public static Image Brightness(Image img, float brightness)
+		public static Bitmap Brightness(Image img, float brightness)
 		{
 			ColorMatrix cm = new ColorMatrix(new float[][] {
 				new float[] {
@@ -103,7 +146,7 @@ namespace LaserGRBL.RasterConverter
 
 		}
 
-		public static Image Contrast(Image img, float contrast)
+		public static Bitmap Contrast(Image img, float contrast)
 		{
 			ColorMatrix cm = new ColorMatrix(new float[][] {
 				new float[] {
