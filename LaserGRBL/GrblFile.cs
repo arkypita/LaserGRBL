@@ -49,7 +49,7 @@ namespace LaserGRBL
 				OnFileLoaded(elapsed, filename);
 		}
 
-		public void LoadImage(Bitmap image, string filename, int resolution, int oX, int oY, int speed)
+		public void LoadImage(Bitmap image, string filename, int resolution, int oX, int oY, int markSpeed, int travelSpeed)
 		{
 			long start = Tools.HiResTimer.TotalMilliseconds;
 			mTotalTravelOff = 0;
@@ -62,75 +62,61 @@ namespace LaserGRBL
 			
 			int H = image.Height;
 			int W = image.Width;
+			bool mustG1 = false;
+			bool mustF = false;
+			bool rtl = true; //right to left
 			
-			SetHeader(speed);
-
-					
-			bool oncolor = false;
-			for (int Y = H-1; Y >= 0; Y--)
+			SetHeader(travelSpeed, ref mustG1);
+			int curSpeed = travelSpeed;
+			
+			for (int Y = H-1; Y >= 0; Y--) //per ogni linea dell'immagine
 			{
 				LaserON();
-				if (!IsOdd(Y))
+				
+				int power = -1;
+				int startX = -1;
+				bool skip = false;
+				
+				for (int X = rtl ? 0 : W-1 ; rtl ? X < W : X >=0 ; X = (rtl ? X+1 : X-1) )
 				{
-					int color = -1;
-					int startX = -1;
-					for (int X = 0; X < W; X++) 
+					int pcolor = GetColor(image, X,Y);
+					if (startX == -1)
 					{
-						int pcolor = GetColor(image, X,Y);
-						if (!oncolor && pcolor > 0)
-							oncolor = true;
-					
-						if (startX == -1)
-						{
-							startX = X;
-							color = pcolor;
-						}
-						else
-						{
-							if (pcolor != color || X == W-1) 
-							{
-								//inizia un segmento con nuovo colore
-								//oppure raggiunto il fine linea
-								
-								CreateSegment(color, X, oX, resolution);
-								startX = X;
-								color = pcolor;
-							}
-						}
+						startX = X;
+						power = pcolor;
 					}
-				}
-				else
-				{
-					int color = -1;
-					int startX = -1;
-					for (int X = W-1; X >= 0; X--) 
+					else
 					{
-						int pcolor = GetColor(image, X,Y);
-						if (!oncolor && pcolor > 0)
-							oncolor = true;
-						
-						if (startX == -1)
+						if (pcolor != power || X == (rtl ? W-1 : 0))
 						{
-							startX = X;
-							color = pcolor;
-						}
-						else
-						{
-							if (pcolor != color || X == 0) 
+							//inizia un segmento con nuovo colore
+							//oppure raggiunto il fine/inizio linea
+							
+							if (power == 0 && ((startX == 0 && X == W-1) || (startX == W-1 && X == 0))) //intera linea bianca
 							{
-								//inizia un segmento con nuovo colore
-								//oppure raggiunto inizio linea
-								
-								CreateSegment(color, X+1, oX, resolution);
-								startX = X;
-								color = pcolor;
+								skip = true; //skip line
 							}
+							else
+							{
+								int newSpeed = (power == 0 ? travelSpeed : markSpeed);
+								if (curSpeed != newSpeed)
+									CreateSegment(power, rtl ? X : X+1, oX, resolution, ref mustG1, String.Format("F{0}", curSpeed = newSpeed ));
+								else
+									CreateSegment(power, rtl ? X : X+1, oX, resolution, ref mustG1);
+							}
+							
+							startX = X;
+							power = pcolor;
+							mustG1 = false;
 						}
 					}
 				}
 				
+				if (!skip)
+					rtl = !rtl;
+				
 				LaserOFF();
-				IncrementY(H-Y, oY, resolution);
+				IncrementY(H-Y, oY, resolution, ref mustG1, String.Format("F{0}", curSpeed = travelSpeed ));
 			}
 			
 			Analyze();
@@ -149,12 +135,17 @@ namespace LaserGRBL
 				return rv;
 		}
 		
-		private void SetHeader(int speed)
+		private void SetHeader(int speed, ref bool mustG1)
 		{
 			list.Add(new GrblCommand("G90")); 
 			list.Add(new GrblCommand(String.Format("F{0}", speed))); 
-			list.Add(new GrblCommand("G0 X0 Y0"));
+			list.Add(new GrblCommand("G0X0Y0"));
+			list.Add(new GrblCommand("M5S0")); 
+			mustG1 = true;
 		}
+		
+		private void LaserSpeed(int speed)
+		{list.Add(new GrblCommand(String.Format("F{0}", speed))); }
 		
 		private void LaserOFF()
 		{list.Add(new GrblCommand("M5")); } //spegni il laser
@@ -162,13 +153,19 @@ namespace LaserGRBL
 		private void LaserON()
 		{list.Add(new GrblCommand("M4")); } //accendi il laser
 		
-		private void IncrementY(int Y, int oY, int res)
+		private void IncrementY(int Y, int oY, int res, ref bool mustG1, string f = null)
 		{
-			list.Add(new GrblCommand(string.Format("G0 Y{0} S0", formatnumber(oY + (double)Y / (double)res)))); //muovi a posizione Y
+			list.Add(new GrblCommand(string.Format("G0Y{0}S0{1}", formatnumber(oY + (double)Y / (double)res), f))); //muovi a posizione Y
+			mustG1 = true;
 		}
-		private void CreateSegment(int power, int X, int oX, int res)
+		private void CreateSegment(int power, int X, int oX, int res, ref bool mustG1, string f = null)
 		{
-			list.Add(new GrblCommand(string.Format("G1 X{0} S{1}", formatnumber(oX + (double)X / (double)res) , power))); //il laser non si spegne durante tutto il movimento X
+			if (mustG1)
+				list.Add(new GrblCommand(string.Format("G1X{0}S{1}{2}", formatnumber(oX + (double)X / (double)res) , power, f))); //il laser non si spegne durante tutto il movimento X
+			else
+				list.Add(new GrblCommand(string.Format("X{0}S{1}{2}", formatnumber(oX + (double)X / (double)res) , power, f))); //il laser non si spegne durante tutto il movimento X
+			
+			mustG1 = false;
 		}
 		
 		private string formatnumber(double number)

@@ -33,15 +33,20 @@
 			this.GbVectorizeOptions = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
 			this.label18 = new System.Windows.Forms.Label();
+			this.integerInputRanged1 = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label21 = new System.Windows.Forms.Label();
 			this.GbLineToLineOptions = new System.Windows.Forms.GroupBox();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
+			this.label20 = new System.Windows.Forms.Label();
+			this.label19 = new System.Windows.Forms.Label();
 			this.label12 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.UDQuality = new System.Windows.Forms.NumericUpDown();
+			this.IIMarkSpeed = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
 			this.CbLinePreview = new System.Windows.Forms.CheckBox();
+			this.IITravelSpeed = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.RbVectorize = new System.Windows.Forms.RadioButton();
@@ -50,6 +55,10 @@
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.IIOffsetX = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IIOffsetY = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IISizeH = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IISizeW = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
@@ -77,12 +86,6 @@
 			this.TpOriginal = new System.Windows.Forms.TabPage();
 			this.PbOriginal = new System.Windows.Forms.PictureBox();
 			this.BtnCreate = new System.Windows.Forms.Button();
-			this.integerInputRanged1 = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IISpeed = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IIOffsetX = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IIOffsetY = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IISizeH = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IISizeW = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.GbVectorizeOptions.SuspendLayout();
@@ -146,7 +149,7 @@
 			this.GbVectorizeOptions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.GbVectorizeOptions.Controls.Add(this.tableLayoutPanel5);
 			this.GbVectorizeOptions.Dock = System.Windows.Forms.DockStyle.Top;
-			this.GbVectorizeOptions.Location = new System.Drawing.Point(0, 493);
+			this.GbVectorizeOptions.Location = new System.Drawing.Point(0, 513);
 			this.GbVectorizeOptions.Name = "GbVectorizeOptions";
 			this.GbVectorizeOptions.Size = new System.Drawing.Size(220, 88);
 			this.GbVectorizeOptions.TabIndex = 4;
@@ -187,6 +190,21 @@
 			this.label18.TabIndex = 13;
 			this.label18.Text = "Speed";
 			// 
+			// integerInputRanged1
+			// 
+			this.integerInputRanged1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.integerInputRanged1.CurrentValue = 1000;
+			this.integerInputRanged1.ForcedText = null;
+			this.integerInputRanged1.ForceMinMax = false;
+			this.integerInputRanged1.Location = new System.Drawing.Point(44, 52);
+			this.integerInputRanged1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.integerInputRanged1.MaxValue = 4000;
+			this.integerInputRanged1.MinValue = 1;
+			this.integerInputRanged1.Name = "integerInputRanged1";
+			this.integerInputRanged1.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.integerInputRanged1.Size = new System.Drawing.Size(55, 15);
+			this.integerInputRanged1.TabIndex = 16;
+			// 
 			// label21
 			// 
 			this.label21.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -205,7 +223,7 @@
 			this.GbLineToLineOptions.Dock = System.Windows.Forms.DockStyle.Top;
 			this.GbLineToLineOptions.Location = new System.Drawing.Point(0, 405);
 			this.GbLineToLineOptions.Name = "GbLineToLineOptions";
-			this.GbLineToLineOptions.Size = new System.Drawing.Size(220, 88);
+			this.GbLineToLineOptions.Size = new System.Drawing.Size(220, 108);
 			this.GbLineToLineOptions.TabIndex = 2;
 			this.GbLineToLineOptions.TabStop = false;
 			this.GbLineToLineOptions.Text = "Line To Line Options";
@@ -220,22 +238,46 @@
 			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.TLP.Controls.Add(this.label20, 2, 3);
+			this.TLP.Controls.Add(this.label19, 0, 3);
 			this.TLP.Controls.Add(this.label12, 0, 2);
 			this.TLP.Controls.Add(this.label5, 0, 1);
 			this.TLP.Controls.Add(this.UDQuality, 1, 1);
-			this.TLP.Controls.Add(this.IISpeed, 1, 2);
+			this.TLP.Controls.Add(this.IIMarkSpeed, 1, 2);
 			this.TLP.Controls.Add(this.label8, 2, 1);
 			this.TLP.Controls.Add(this.label13, 2, 2);
 			this.TLP.Controls.Add(this.CbLinePreview, 0, 0);
+			this.TLP.Controls.Add(this.IITravelSpeed, 1, 3);
 			this.TLP.Dock = System.Windows.Forms.DockStyle.Top;
 			this.TLP.Location = new System.Drawing.Point(3, 16);
 			this.TLP.Name = "TLP";
-			this.TLP.RowCount = 3;
+			this.TLP.RowCount = 4;
 			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.TLP.Size = new System.Drawing.Size(214, 69);
+			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.TLP.Size = new System.Drawing.Size(214, 89);
 			this.TLP.TabIndex = 0;
+			// 
+			// label20
+			// 
+			this.label20.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label20.AutoSize = true;
+			this.label20.Location = new System.Drawing.Point(118, 72);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(44, 13);
+			this.label20.TabIndex = 19;
+			this.label20.Text = "mm/min";
+			// 
+			// label19
+			// 
+			this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label19.AutoSize = true;
+			this.label19.Location = new System.Drawing.Point(3, 72);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(51, 13);
+			this.label19.TabIndex = 17;
+			this.label19.Text = "Travel @";
 			// 
 			// label12
 			// 
@@ -243,9 +285,9 @@
 			this.label12.AutoSize = true;
 			this.label12.Location = new System.Drawing.Point(3, 52);
 			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(38, 13);
+			this.label12.Size = new System.Drawing.Size(45, 13);
 			this.label12.TabIndex = 13;
-			this.label12.Text = "Speed";
+			this.label12.Text = "Mark @";
 			// 
 			// label5
 			// 
@@ -259,33 +301,48 @@
 			// 
 			// UDQuality
 			// 
-			this.UDQuality.Location = new System.Drawing.Point(45, 26);
+			this.UDQuality.Location = new System.Drawing.Point(57, 26);
 			this.UDQuality.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
 			this.UDQuality.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+			10,
+			0,
+			0,
+			0});
 			this.UDQuality.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+			1,
+			0,
+			0,
+			0});
 			this.UDQuality.Name = "UDQuality";
 			this.UDQuality.Size = new System.Drawing.Size(55, 20);
 			this.UDQuality.TabIndex = 7;
 			this.UDQuality.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
+			3,
+			0,
+			0,
+			0});
 			this.UDQuality.ValueChanged += new System.EventHandler(this.UDQuality_ValueChanged);
+			// 
+			// IIMarkSpeed
+			// 
+			this.IIMarkSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IIMarkSpeed.CurrentValue = 1000;
+			this.IIMarkSpeed.ForcedText = null;
+			this.IIMarkSpeed.ForceMinMax = false;
+			this.IIMarkSpeed.Location = new System.Drawing.Point(57, 52);
+			this.IIMarkSpeed.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IIMarkSpeed.MaxValue = 4000;
+			this.IIMarkSpeed.MinValue = 1;
+			this.IIMarkSpeed.Name = "IIMarkSpeed";
+			this.IIMarkSpeed.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIMarkSpeed.Size = new System.Drawing.Size(55, 15);
+			this.IIMarkSpeed.TabIndex = 16;
 			// 
 			// label8
 			// 
 			this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(106, 29);
+			this.label8.Location = new System.Drawing.Point(118, 29);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(49, 13);
 			this.label8.TabIndex = 8;
@@ -295,7 +352,7 @@
 			// 
 			this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(106, 52);
+			this.label13.Location = new System.Drawing.Point(118, 52);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(44, 13);
 			this.label13.TabIndex = 15;
@@ -312,6 +369,21 @@
 			this.CbLinePreview.Text = "Line Preview";
 			this.CbLinePreview.UseVisualStyleBackColor = true;
 			this.CbLinePreview.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			// 
+			// IITravelSpeed
+			// 
+			this.IITravelSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IITravelSpeed.CurrentValue = 4000;
+			this.IITravelSpeed.ForcedText = null;
+			this.IITravelSpeed.ForceMinMax = false;
+			this.IITravelSpeed.Location = new System.Drawing.Point(57, 72);
+			this.IITravelSpeed.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IITravelSpeed.MaxValue = 4000;
+			this.IITravelSpeed.MinValue = 1;
+			this.IITravelSpeed.Name = "IITravelSpeed";
+			this.IITravelSpeed.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IITravelSpeed.Size = new System.Drawing.Size(55, 15);
+			this.IITravelSpeed.TabIndex = 18;
 			// 
 			// groupBox4
 			// 
@@ -430,6 +502,63 @@
 			this.label4.Size = new System.Drawing.Size(27, 13);
 			this.label4.TabIndex = 1;
 			this.label4.Text = "Size";
+			// 
+			// IIOffsetX
+			// 
+			this.IIOffsetX.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IIOffsetX.ForcedText = null;
+			this.IIOffsetX.ForceMinMax = false;
+			this.IIOffsetX.Location = new System.Drawing.Point(61, 24);
+			this.IIOffsetX.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IIOffsetX.MaxValue = 1000;
+			this.IIOffsetX.MinValue = 0;
+			this.IIOffsetX.Name = "IIOffsetX";
+			this.IIOffsetX.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIOffsetX.Size = new System.Drawing.Size(55, 15);
+			this.IIOffsetX.TabIndex = 17;
+			// 
+			// IIOffsetY
+			// 
+			this.IIOffsetY.ForcedText = null;
+			this.IIOffsetY.ForceMinMax = false;
+			this.IIOffsetY.Location = new System.Drawing.Point(139, 24);
+			this.IIOffsetY.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IIOffsetY.MaxValue = 1000;
+			this.IIOffsetY.MinValue = 0;
+			this.IIOffsetY.Name = "IIOffsetY";
+			this.IIOffsetY.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIOffsetY.Size = new System.Drawing.Size(55, 15);
+			this.IIOffsetY.TabIndex = 18;
+			// 
+			// IISizeH
+			// 
+			this.IISizeH.CurrentValue = 100;
+			this.IISizeH.ForcedText = null;
+			this.IISizeH.ForceMinMax = false;
+			this.IISizeH.Location = new System.Drawing.Point(139, 3);
+			this.IISizeH.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IISizeH.MaxValue = 1000;
+			this.IISizeH.MinValue = 5;
+			this.IISizeH.Name = "IISizeH";
+			this.IISizeH.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IISizeH.Size = new System.Drawing.Size(55, 15);
+			this.IISizeH.TabIndex = 20;
+			this.IISizeH.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeH_CurrentValueChanged);
+			// 
+			// IISizeW
+			// 
+			this.IISizeW.CurrentValue = 100;
+			this.IISizeW.ForcedText = null;
+			this.IISizeW.ForceMinMax = false;
+			this.IISizeW.Location = new System.Drawing.Point(61, 3);
+			this.IISizeW.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IISizeW.MaxValue = 1000;
+			this.IISizeW.MinValue = 5;
+			this.IISizeW.Name = "IISizeW";
+			this.IISizeW.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IISizeW.Size = new System.Drawing.Size(55, 15);
+			this.IISizeW.TabIndex = 19;
+			this.IISizeW.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeW_CurrentValueChanged);
 			// 
 			// label6
 			// 
@@ -730,6 +859,7 @@
 			// 
 			// PbConverted
 			// 
+			this.PbConverted.BackColor = System.Drawing.Color.White;
 			this.PbConverted.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PbConverted.Location = new System.Drawing.Point(3, 3);
 			this.PbConverted.Name = "PbConverted";
@@ -751,6 +881,7 @@
 			// 
 			// PbOriginal
 			// 
+			this.PbOriginal.BackColor = System.Drawing.Color.White;
 			this.PbOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PbOriginal.Location = new System.Drawing.Point(3, 3);
 			this.PbOriginal.Name = "PbOriginal";
@@ -769,93 +900,6 @@
 			this.BtnCreate.Text = "CREATE!";
 			this.BtnCreate.UseVisualStyleBackColor = true;
 			this.BtnCreate.Click += new System.EventHandler(this.BtnCreateClick);
-			// 
-			// integerInputRanged1
-			// 
-			this.integerInputRanged1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.integerInputRanged1.CurrentValue = 1000;
-			this.integerInputRanged1.ForcedText = null;
-			this.integerInputRanged1.ForceMinMax = false;
-			this.integerInputRanged1.Location = new System.Drawing.Point(44, 52);
-			this.integerInputRanged1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-			this.integerInputRanged1.MaxValue = 4000;
-			this.integerInputRanged1.MinValue = 1;
-			this.integerInputRanged1.Name = "integerInputRanged1";
-			this.integerInputRanged1.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.integerInputRanged1.Size = new System.Drawing.Size(55, 15);
-			this.integerInputRanged1.TabIndex = 16;
-			// 
-			// IISpeed
-			// 
-			this.IISpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.IISpeed.CurrentValue = 1000;
-			this.IISpeed.ForcedText = null;
-			this.IISpeed.ForceMinMax = false;
-			this.IISpeed.Location = new System.Drawing.Point(45, 52);
-			this.IISpeed.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-			this.IISpeed.MaxValue = 4000;
-			this.IISpeed.MinValue = 1;
-			this.IISpeed.Name = "IISpeed";
-			this.IISpeed.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IISpeed.Size = new System.Drawing.Size(55, 15);
-			this.IISpeed.TabIndex = 16;
-			// 
-			// IIOffsetX
-			// 
-			this.IIOffsetX.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.IIOffsetX.ForcedText = null;
-			this.IIOffsetX.ForceMinMax = false;
-			this.IIOffsetX.Location = new System.Drawing.Point(61, 24);
-			this.IIOffsetX.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-			this.IIOffsetX.MaxValue = 1000;
-			this.IIOffsetX.MinValue = 0;
-			this.IIOffsetX.Name = "IIOffsetX";
-			this.IIOffsetX.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IIOffsetX.Size = new System.Drawing.Size(55, 15);
-			this.IIOffsetX.TabIndex = 17;
-			// 
-			// IIOffsetY
-			// 
-			this.IIOffsetY.ForcedText = null;
-			this.IIOffsetY.ForceMinMax = false;
-			this.IIOffsetY.Location = new System.Drawing.Point(139, 24);
-			this.IIOffsetY.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-			this.IIOffsetY.MaxValue = 1000;
-			this.IIOffsetY.MinValue = 0;
-			this.IIOffsetY.Name = "IIOffsetY";
-			this.IIOffsetY.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IIOffsetY.Size = new System.Drawing.Size(55, 15);
-			this.IIOffsetY.TabIndex = 18;
-			// 
-			// IISizeH
-			// 
-			this.IISizeH.CurrentValue = 100;
-			this.IISizeH.ForcedText = null;
-			this.IISizeH.ForceMinMax = false;
-			this.IISizeH.Location = new System.Drawing.Point(139, 3);
-			this.IISizeH.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-			this.IISizeH.MaxValue = 1000;
-			this.IISizeH.MinValue = 5;
-			this.IISizeH.Name = "IISizeH";
-			this.IISizeH.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IISizeH.Size = new System.Drawing.Size(55, 15);
-			this.IISizeH.TabIndex = 20;
-			this.IISizeH.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeH_CurrentValueChanged);
-			// 
-			// IISizeW
-			// 
-			this.IISizeW.CurrentValue = 100;
-			this.IISizeW.ForcedText = null;
-			this.IISizeW.ForceMinMax = false;
-			this.IISizeW.Location = new System.Drawing.Point(61, 3);
-			this.IISizeW.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-			this.IISizeW.MaxValue = 1000;
-			this.IISizeW.MinValue = 5;
-			this.IISizeW.Name = "IISizeW";
-			this.IISizeW.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IISizeW.Size = new System.Drawing.Size(55, 15);
-			this.IISizeW.TabIndex = 19;
-			this.IISizeW.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeW_CurrentValueChanged);
 			// 
 			// RasterToLaserForm
 			// 
@@ -933,7 +977,7 @@
 		private System.Windows.Forms.Button BtnCreate;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label label13;
-		private UserControls.IntegerInput.IntegerInputRanged IISpeed;
+		private UserControls.IntegerInput.IntegerInputRanged IIMarkSpeed;
 		private UserControls.IntegerInput.IntegerInputRanged IISizeW;
 		private UserControls.IntegerInput.IntegerInputRanged IISizeH;
 		private System.Windows.Forms.TrackBar TBRed;
@@ -962,5 +1006,8 @@
 		private System.Windows.Forms.Label label18;
 		private UserControls.IntegerInput.IntegerInputRanged integerInputRanged1;
 		private System.Windows.Forms.Label label21;
+		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.Label label20;
+		private LaserGRBL.UserControls.IntegerInput.IntegerInputRanged IITravelSpeed;
 	}
 }

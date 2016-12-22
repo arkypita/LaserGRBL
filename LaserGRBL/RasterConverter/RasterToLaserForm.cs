@@ -170,7 +170,7 @@ namespace LaserGRBL.RasterConverter
 						{
 							using (Bitmap killed = ImageTransform.KillAlfa(th))
 							{
-								mFile.LoadImage(killed, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IISpeed.CurrentValue);
+								mFile.LoadImage(killed, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue);
 							}
 						}
 					}
