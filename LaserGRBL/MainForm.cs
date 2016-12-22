@@ -21,7 +21,8 @@ namespace LaserGRBL
 			InitializeComponent();
 
 			SplashScreenForm f = new SplashScreenForm();
-			f.Show();
+			f.ShowDialog();
+			f.Dispose();
 
 			//build main communication object
 			Core = new GrblCore(this);
@@ -48,6 +49,8 @@ namespace LaserGRBL
 				ConnectionForm.Show(DockArea, LaserGRBL.UserControls.DockingManager.DockState.DockLeft);
 				JogForm.Show(ConnectionForm.Pane, LaserGRBL.UserControls.DockingManager.DockAlignment.Bottom, 0.2);
 			}
+			
+			UpdateTimer.Enabled = true;
 		}
 
 		private LaserGRBL.UserControls.DockingManager.IDockContent GetContentFromPersistString(string persistString)

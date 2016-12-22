@@ -14,6 +14,7 @@ namespace LaserGRBL
 		public SplashScreenForm()
 		{
 			InitializeComponent();
+			this.DoubleBuffered = true;
 		}
 
 		private void SplashScreenForm_Load(object sender, EventArgs e)
@@ -23,14 +24,19 @@ namespace LaserGRBL
 
 		private void timer1_Tick(object sender, EventArgs e)
 		{
-			timer1.Enabled = false;
-			Close();
+			CloseAndGoMain();
 		}
 
 		private void pictureBox1_Click(object sender, EventArgs e)
 		{
+			CloseAndGoMain();
+		}
+		
+		private void CloseAndGoMain()
+		{
 			timer1.Enabled = false;
 			Close();
+			
 		}
 	}
 }
