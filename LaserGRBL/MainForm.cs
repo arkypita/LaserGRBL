@@ -20,6 +20,9 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
 
+			SplashScreenForm f = new SplashScreenForm();
+			f.Show();
+
 			//build main communication object
 			Core = new GrblCore(this);
 			Core.MachineStatusChanged += OnMachineStatus;
