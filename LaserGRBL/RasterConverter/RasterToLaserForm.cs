@@ -18,7 +18,7 @@ namespace LaserGRBL.RasterConverter
 		Image mConverted;
 
 		string mFileName;
-
+		private bool mNeedRefresh;
 
 		double scaleX = 1.0; //square ratio
 
@@ -45,6 +45,15 @@ namespace LaserGRBL.RasterConverter
 
 			RefreshPreview();
 			RefreshSizes();
+
+			Application.Idle += Application_Idle;
+		}
+
+		void Application_Idle(object sender, EventArgs e)
+		{
+			if (mNeedRefresh)
+				RefreshPreview();
+			mNeedRefresh = false;
 		}
 
 		private static Size CalculateResizeToFit(Size imageSize, Size boxSize)
@@ -68,53 +77,76 @@ namespace LaserGRBL.RasterConverter
 
 		private void RefreshPreview()
 		{
-			TbThreshold.Enabled = CbThreshold.Checked;
+			Bitmap bmp = ProduceBitmap(true); //non usare using perché poi viene assegnato al visualizzatore, 
 
-			using (Bitmap gs = ImageTransform.GrayScale(mScaled, TBRed.Value / 100.0F, TBGreen.Value / 100.0F, TBBlue.Value / 100.0F, (ImageTransform.Formula)CbMode.SelectedItem))
-			{
-				using (Bitmap bc = ImageTransform.BrightnessContrast(gs, -((100 - TbBright.Value) / 100.0F), (TbContrast.Value / 100.0F)))
-				{
-					Bitmap th = ImageTransform.Threshold(bc, TbThreshold.Value / 100.0F, CbThreshold.Checked);
+			if (RbLineToLineTracing.Checked)
+				PreviewLineByLine(bmp);
+			else if (RbVectorize.Checked)
+				PreviewVector(bmp);
 
-					if (RbLineToLineTracing.Checked)
-						PreviewLineByLine(th);
-					else if (RbVectorize.Checked)
-						PreviewVector(th);
-
-				}
-			}
-		}
-
-
-
-		private void PreviewVector(Bitmap th)
-		{
-			ArrayList ListOfCurveArray = new ArrayList();
-            //Potrace.turdsize = Convert.ToInt32(textBox2.Text);
-            //Potrace.alphamax = Convert.ToDouble(textBox5.Text);
-            //Potrace.opttolerance = Convert.ToDouble(textBox3.Text);
-            //Potrace.curveoptimizing = checkBox4.Checked; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
-            
-            bool[,] Matrix = Potrace.BitMapToBinary(th, 125);
-           	Potrace.potrace_trace(Matrix, ListOfCurveArray);
-
-           	using (Graphics g = Graphics.FromImage(th))
-				g.Clear(Color.White);
-           	
-           	drawVector(ListOfCurveArray, th);
-           	
 			PbConverted.SuspendLayout();
 			if (mConverted != null)
 				mConverted.Dispose();
-			mConverted = th;
+			mConverted = bmp;
 			PbConverted.Image = mConverted;
 			PbConverted.ResumeLayout();
+		}
+
+
+		private Bitmap ProduceBitmap(bool preview)
+		{
+ 			Image src = preview ? mScaled : mOriginal;
+			int H = preview ? mScaled.Height : IISizeH.CurrentValue * (int)UDQuality.Value;
+			int W = preview ? mScaled.Width : IISizeW.CurrentValue * (int)UDQuality.Value;
+
+			using (Bitmap resized = ImageTransform.ResizeImage(src, W, H))
+				using (Bitmap flat = ImageTransform.KillAlfa(resized))
+					using (Bitmap grayscale = ImageTransform.GrayScale(flat, TBRed.Value / 100.0F, TBGreen.Value / 100.0F, TBBlue.Value / 100.0F, (ImageTransform.Formula)CbMode.SelectedItem))
+						using (Bitmap brightContrast = ImageTransform.BrightnessContrast(grayscale, -((100 - TbBright.Value) / 100.0F), (TbContrast.Value / 100.0F)))
+							return ImageTransform.Threshold(brightContrast, TbThreshold.Value / 100.0F, CbThreshold.Checked);
+		}
+
+
+		private void PreviewVector(Bitmap bmp)
+		{
+			ArrayList ListOfCurveArray = new ArrayList();
+
+			Potrace.turdsize = CbSpotRemoval.Checked ? (int)UDSpotRemoval.Value : (int)UDSpotRemoval.Minimum;
+			Potrace.alphamax = CbSmoothing.Checked ? (double)UDSmoothing.Value : (double)UDSmoothing.Minimum;
+			Potrace.opttolerance = CbOptimize.Checked ? (double)UDOptimize.Value : (double)UDOptimize.Minimum;
+			Potrace.curveoptimizing = CbOptimize.Checked; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
+            
+            bool[,] Matrix = Potrace.BitMapToBinary(bmp, 125);
+           	Potrace.potrace_trace(Matrix, ListOfCurveArray);
+
+
+			using (Graphics g = Graphics.FromImage(bmp))
+			{
+				if (!CbShowImage.Checked)
+					g.Clear(Color.White);
+				else
+				{
+					using (Brush b = new SolidBrush(Color.FromArgb(240, Color.White)))
+						g.FillRectangle(b, 0, 0, bmp.Width, bmp.Height);
+				}
+			}
+
+           	drawVector(ListOfCurveArray, bmp);
+          	
 		}
 		
 		private void drawVector(ArrayList ListOfCurveArray, Bitmap bmp)
         {
             if (ListOfCurveArray == null) return;
             Graphics g = Graphics.FromImage(bmp);
+
+			g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+			g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+			g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+			g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+
+
+
             GraphicsPath gp = new GraphicsPath();
             for (int i = 0; i < ListOfCurveArray.Count; i++)
             {   
@@ -156,17 +188,12 @@ namespace LaserGRBL.RasterConverter
                 gp.AddPath(Contour, false);
             }
 
-            
-            if (true)
-            g.FillPath(Brushes.Black, gp);
-            if (true)
-            g.DrawPath(Pens.Red,gp);
+            g.DrawPath(Pens.Black,gp); //draw path
 
-       	 	if (true)
-       	 	drawPoints(ListOfCurveArray, bmp);
-
-
+			if (CbShowDots.Checked)
+       	 		drawPoints(ListOfCurveArray, bmp); //draw points
         }
+
         private void drawPoints(ArrayList ListOfCurveArray, Bitmap bmp)
         {
             if (ListOfCurveArray == null) return;
@@ -183,7 +210,7 @@ namespace LaserGRBL.RasterConverter
                         factor = 1;
                     for (int k = 0; k < Curves.Length; k++)
                     {
-                        g.FillRectangle(Brushes.Yellow, (float)((Curves[k].A.X) * factor - 1.5), (float)((Curves[k].A.Y) * factor - 1.5), 3, 3);
+                        g.FillRectangle(Brushes.Red, (float)((Curves[k].A.X) * factor - 0.5), (float)((Curves[k].A.Y) * factor - 0.5), 1, 1);
                     }
                 }
             }
@@ -193,37 +220,30 @@ namespace LaserGRBL.RasterConverter
 		
 		
 
-		private void PreviewLineByLine(Bitmap th)
+		private void PreviewLineByLine(Bitmap bmp)
 		{
 			if (CbLinePreview.Checked)
 			{
-				using (Graphics g = Graphics.FromImage(th))
+				using (Graphics g = Graphics.FromImage(bmp))
 				{
 					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
 
-					int mod = 7 - (int)UDQuality.Value / 3;
-					for (int Y = 0; Y < th.Height; Y++)
+					int mod = 2; //7 - (int)UDQuality.Value / 3;
+					for (int Y = 0; Y < bmp.Height; Y++)
 					{
 						using (Pen mark = new Pen(Color.FromArgb(0, 255, 255, 255), 1F))
 						{
 							using (Pen nomark = new Pen(Color.FromArgb(255, 255, 255, 255), 1F))
 							{
 								if (Y % mod == 0)
-									g.DrawLine(mark, 0, Y, th.Width, Y);
+									g.DrawLine(mark, 0, Y, bmp.Width, Y);
 								else
-									g.DrawLine(nomark, 0, Y, th.Width, Y);
+									g.DrawLine(nomark, 0, Y, bmp.Width, Y);
 							}
 						}
 					}
 				}
 			}
-
-			PbConverted.SuspendLayout();
-			if (mConverted != null)
-				mConverted.Dispose();
-			mConverted = th;
-			PbConverted.Image = mConverted;
-			PbConverted.ResumeLayout();
 		}
 
 		private void RefreshSizes()
@@ -237,10 +257,15 @@ namespace LaserGRBL.RasterConverter
 			IISizeH.CurrentValue = H;
 		}
 
-
 		private void OnSelectorChange(object sender, EventArgs e)
 		{
-			RefreshPreview();
+			TbThreshold.Enabled = CbThreshold.Checked;
+			UDSpotRemoval.Enabled = CbSpotRemoval.Checked;
+			UDSmoothing.Enabled = CbSmoothing.Checked;
+			UDOptimize.Enabled = CbOptimize.Checked;
+			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked;
+			GbVectorizeOptions.Visible = RbVectorize.Checked;
+			mNeedRefresh = true;
 		}
 
 		void GoodInput(object sender, KeyPressEventArgs e)
@@ -254,21 +279,15 @@ namespace LaserGRBL.RasterConverter
 			int H = IISizeH.CurrentValue * (int)UDQuality.Value;
 			int W = IISizeW.CurrentValue * (int)UDQuality.Value;
 
-			using (Bitmap res = ImageTransform.ResizeImage(mOriginal, W, H))
+			if (RbLineToLineTracing.Checked)
 			{
-				using (Bitmap gs = ImageTransform.GrayScale(res, TBRed.Value / 100.0F, TBGreen.Value / 100.0F, TBBlue.Value / 100.0F, (ImageTransform.Formula)CbMode.SelectedItem))
-				{
-					using (Bitmap bc = ImageTransform.BrightnessContrast(gs, -((100 - TbBright.Value) / 100.0F), (TbContrast.Value / 100.0F)))
-					{
-						using (Bitmap th = ImageTransform.Threshold(bc, TbThreshold.Value / 100.0F, CbThreshold.Checked))
-						{
-							using (Bitmap killed = ImageTransform.KillAlfa(th))
-							{
-								mFile.LoadImage(killed, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue);
-							}
-						}
-					}
-				}
+				using (Bitmap bmp = ProduceBitmap(false))
+					mFile.LoadImage(bmp, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue);
+			}
+			else if (RbVectorize.Checked)
+			{
+				System.Windows.Forms.MessageBox.Show("Not implemented yet!");
+				return;
 			}
 
 			Close();
@@ -288,18 +307,6 @@ namespace LaserGRBL.RasterConverter
 
 		private static bool IsOdd(int value)
 		{ return value % 2 != 0; }
-
-		private void OnGeneratorChange(object sender, EventArgs e)
-		{
-			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked;
-			GbVectorizeOptions.Visible = RbVectorize.Checked;
-			RefreshPreview();
-		}
-
-		private void UDQuality_ValueChanged(object sender, EventArgs e)
-		{
-			RefreshPreview();
-		}
 
 
 	}
