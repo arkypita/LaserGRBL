@@ -282,7 +282,7 @@ namespace LaserGRBL.RasterConverter
 			if (RbLineToLineTracing.Checked)
 			{
 				using (Bitmap bmp = ProduceBitmap(false))
-					mFile.LoadImage(bmp, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue);
+					mFile.LoadImage(bmp, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue, IIMinPower.CurrentValue, IIMaxPower.CurrentValue, TxtLaserOn.Text, TxtLaserOff.Text);
 			}
 			else if (RbVectorize.Checked)
 			{

@@ -49,7 +49,7 @@ namespace LaserGRBL
 				OnFileLoaded(elapsed, filename);
 		}
 
-		public void LoadImage(Bitmap image, string filename, int resolution, int oX, int oY, int markSpeed, int travelSpeed)
+		public void LoadImage(Bitmap image, string filename, int resolution, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff)
 		{
 			long start = Tools.HiResTimer.TotalMilliseconds;
 			mTotalTravelOff = 0;
@@ -63,7 +63,6 @@ namespace LaserGRBL
 			int H = image.Height;
 			int W = image.Width;
 			bool mustG1 = false;
-			bool mustF = false;
 			bool rtl = true; //right to left
 			
 			SetHeader(travelSpeed, ref mustG1);
@@ -71,7 +70,7 @@ namespace LaserGRBL
 			
 			for (int Y = H-1; Y >= 0; Y--) //per ogni linea dell'immagine
 			{
-				LaserON();
+				list.Add(new GrblCommand(lOn)); //accendi il laser
 				
 				int power = -1;
 				int startX = -1;
@@ -79,7 +78,7 @@ namespace LaserGRBL
 				
 				for (int X = rtl ? 0 : W-1 ; rtl ? X < W : X >=0 ; X = (rtl ? X+1 : X-1) )
 				{
-					int pcolor = GetColor(image, X,Y);
+					int pcolor = GetColor(image, X,Y, minPower, maxPower);
 					if (startX == -1)
 					{
 						startX = X;
@@ -115,7 +114,7 @@ namespace LaserGRBL
 				if (!skip)
 					rtl = !rtl;
 				
-				LaserOFF();
+				list.Add(new GrblCommand(lOff)); //spegni il laser
 				IncrementY(H-Y, oY, resolution, ref mustG1, String.Format("F{0}", curSpeed = travelSpeed ));
 			}
 			
@@ -126,13 +125,11 @@ namespace LaserGRBL
 				OnFileLoaded(elapsed, filename);
 		}
 
-		private int GetColor(Bitmap I, int X, int Y)
+		
+		private int GetColor(Bitmap I, int X, int Y, int min, int max)
 		{
 			int rv = 255 - I.GetPixel(X, Y).R;
-			if (rv < 5)
-				return 0;
-			else
-				return rv;
+			return rv * (max - min) / 255  + min; //scale to range
 		}
 		
 		private void SetHeader(int speed, ref bool mustG1)
@@ -146,12 +143,6 @@ namespace LaserGRBL
 		
 		private void LaserSpeed(int speed)
 		{list.Add(new GrblCommand(String.Format("F{0}", speed))); }
-		
-		private void LaserOFF()
-		{list.Add(new GrblCommand("M5")); } //spegni il laser
-		
-		private void LaserON()
-		{list.Add(new GrblCommand("M4")); } //accendi il laser
 		
 		private void IncrementY(int Y, int oY, int res, ref bool mustG1, string f = null)
 		{
