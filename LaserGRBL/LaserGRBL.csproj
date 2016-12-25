@@ -129,6 +129,10 @@
       <DependentUpon>ColorProgressBar.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ColorProgressBarDesigner.cs" />
+    <Compile Include="UserControls\ColorSlider.cs" />
+    <Compile Include="UserControls\ColorSlider.Designer.cs">
+      <DependentUpon>ColorSlider.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\CommandLog.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -298,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SplashScreenForm.resx">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ColorSlider.resx">
+      <DependentUpon>ColorSlider.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CommandLog.resx">
       <DependentUpon>CommandLog.cs</DependentUpon>

@@ -382,6 +382,15 @@ namespace LaserGRBL.RasterConverter
 
 		private static bool IsOdd(int value)
 		{ return value % 2 != 0; }
+		
+		void OnRGBCBDoubleClick(object sender, EventArgs e)
+		{
+			((UserControls.ColorSlider)sender).Value = 100;
+		}
+		void OnThresholdDoubleClick(object sender, EventArgs e)
+		{
+			((UserControls.ColorSlider)sender).Value = 50;
+		}
 
 
 	}

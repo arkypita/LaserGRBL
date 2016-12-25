@@ -46,7 +46,6 @@ namespace LaserGRBL.UserControls.IntegerInput
 			this.TB.TabIndex = 0;
 			this.TB.KeyDown += TB_KeyDown;
 			this.TB.KeyPress += TBKeyPress;
-			this.TB.MouseWheel += TBWheel;
 			this.TB.GotFocus += FocusEvent;
 			this.TB.LostFocus += FocusEvent;
 			//
@@ -248,16 +247,6 @@ namespace LaserGRBL.UserControls.IntegerInput
 		{
 			System.Globalization.CultureInfo CI = System.Globalization.CultureInfo.CurrentCulture;
 			return char.IsDigit(key) | char.IsControl(key) | key.ToString() == CI.NumberFormat.NegativeSign;
-		}
-
-		private void TBWheel(object sender, System.Windows.Forms.MouseEventArgs e)
-		{
-			OnMouseWheel(e.Delta / System.Windows.Forms.SystemInformation.MouseWheelScrollDelta);
-		}
-
-
-		protected virtual new void OnMouseWheel(int delta)
-		{
 		}
 
 		private void FocusEvent(object sender, System.EventArgs e)
