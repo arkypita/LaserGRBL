@@ -111,6 +111,7 @@
     <Compile Include="RasterConverter\RasterToLaserForm.Designer.cs">
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="SplashScreenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,15 +316,6 @@
       <DependentUpon>LabelTB.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Grafica\LaserGrbl.ico" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Grafica\add2.png" />

@@ -39,9 +39,9 @@ namespace LaserGRBL
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			if (System.IO.File.Exists("Docking.xml"))
+			if (System.IO.File.Exists("LaserGRBL.Docking.xml"))
 			{
-				DockArea.LoadFromXml("Docking.xml", new LaserGRBL.UserControls.DockingManager.DeserializeDockContent(this.GetContentFromPersistString));
+				DockArea.LoadFromXml("LaserGRBL.Docking.xml", new LaserGRBL.UserControls.DockingManager.DeserializeDockContent(this.GetContentFromPersistString));
 			}
 			else
 			{
@@ -80,7 +80,7 @@ namespace LaserGRBL
 		}
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
-			DockArea.SaveAsXml("Docking.xml");
+			DockArea.SaveAsXml("LaserGRBL.Docking.xml");
 			Core.CloseCom();
 		}
 		

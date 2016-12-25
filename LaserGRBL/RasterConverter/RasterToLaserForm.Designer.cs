@@ -162,7 +162,7 @@
 			this.tableLayoutPanel1.RowCount = 2;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(912, 572);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(912, 588);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// Tp
@@ -174,7 +174,7 @@
 			this.Tp.Location = new System.Drawing.Point(239, 3);
 			this.Tp.Name = "Tp";
 			this.Tp.SelectedIndex = 0;
-			this.Tp.Size = new System.Drawing.Size(670, 502);
+			this.Tp.Size = new System.Drawing.Size(670, 518);
 			this.Tp.TabIndex = 3;
 			// 
 			// TpPreview
@@ -183,7 +183,7 @@
 			this.TpPreview.Location = new System.Drawing.Point(4, 22);
 			this.TpPreview.Name = "TpPreview";
 			this.TpPreview.Padding = new System.Windows.Forms.Padding(3);
-			this.TpPreview.Size = new System.Drawing.Size(662, 476);
+			this.TpPreview.Size = new System.Drawing.Size(662, 492);
 			this.TpPreview.TabIndex = 0;
 			this.TpPreview.Text = "Preview";
 			this.TpPreview.UseVisualStyleBackColor = true;
@@ -194,7 +194,7 @@
 			this.PbConverted.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PbConverted.Location = new System.Drawing.Point(3, 3);
 			this.PbConverted.Name = "PbConverted";
-			this.PbConverted.Size = new System.Drawing.Size(656, 470);
+			this.PbConverted.Size = new System.Drawing.Size(656, 486);
 			this.PbConverted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.PbConverted.TabIndex = 0;
 			this.PbConverted.TabStop = false;
@@ -205,7 +205,7 @@
 			this.TpOriginal.Location = new System.Drawing.Point(4, 22);
 			this.TpOriginal.Name = "TpOriginal";
 			this.TpOriginal.Padding = new System.Windows.Forms.Padding(3);
-			this.TpOriginal.Size = new System.Drawing.Size(662, 476);
+			this.TpOriginal.Size = new System.Drawing.Size(662, 492);
 			this.TpOriginal.TabIndex = 1;
 			this.TpOriginal.Text = "Original";
 			this.TpOriginal.UseVisualStyleBackColor = true;
@@ -216,7 +216,7 @@
 			this.PbOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PbOriginal.Location = new System.Drawing.Point(3, 3);
 			this.PbOriginal.Name = "PbOriginal";
-			this.PbOriginal.Size = new System.Drawing.Size(656, 470);
+			this.PbOriginal.Size = new System.Drawing.Size(656, 486);
 			this.PbOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.PbOriginal.TabIndex = 0;
 			this.PbOriginal.TabStop = false;
@@ -224,7 +224,7 @@
 			// BtnCreate
 			// 
 			this.BtnCreate.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.BtnCreate.Location = new System.Drawing.Point(802, 511);
+			this.BtnCreate.Location = new System.Drawing.Point(802, 527);
 			this.BtnCreate.Name = "BtnCreate";
 			this.BtnCreate.Size = new System.Drawing.Size(107, 58);
 			this.BtnCreate.TabIndex = 4;
@@ -241,7 +241,7 @@
 			this.tabControl1.Name = "tabControl1";
 			this.tableLayoutPanel1.SetRowSpan(this.tabControl1, 2);
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(230, 566);
+			this.tabControl1.Size = new System.Drawing.Size(230, 582);
 			this.tabControl1.TabIndex = 7;
 			// 
 			// tabPage1
@@ -251,7 +251,7 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(222, 540);
+			this.tabPage1.Size = new System.Drawing.Size(222, 556);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "GrayScale Conversion";
 			// 
@@ -271,7 +271,7 @@
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel8.Size = new System.Drawing.Size(216, 534);
+			this.tableLayoutPanel8.Size = new System.Drawing.Size(216, 550);
 			this.tableLayoutPanel8.TabIndex = 3;
 			// 
 			// GbVectorizeOptions
@@ -588,7 +588,6 @@
 			this.TBRed.Size = new System.Drawing.Size(140, 29);
 			this.TBRed.TabIndex = 7;
 			this.TBRed.TickFrequency = 10;
-			this.TBRed.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
 			this.TBRed.Value = 100;
 			this.TBRed.Scroll += new System.EventHandler(this.OnSelectorChange);
 			// 
@@ -644,7 +643,6 @@
 			this.TBGreen.Size = new System.Drawing.Size(140, 29);
 			this.TBGreen.TabIndex = 9;
 			this.TBGreen.TickFrequency = 10;
-			this.TBGreen.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
 			this.TBGreen.Value = 100;
 			this.TBGreen.Scroll += new System.EventHandler(this.OnSelectorChange);
 			// 
@@ -660,7 +658,6 @@
 			this.TbBright.Size = new System.Drawing.Size(140, 29);
 			this.TbBright.TabIndex = 3;
 			this.TbBright.TickFrequency = 10;
-			this.TbBright.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
 			this.TbBright.Value = 100;
 			this.TbBright.Scroll += new System.EventHandler(this.OnSelectorChange);
 			// 
@@ -676,7 +673,6 @@
 			this.TBBlue.Size = new System.Drawing.Size(140, 29);
 			this.TBBlue.TabIndex = 10;
 			this.TBBlue.TickFrequency = 10;
-			this.TBBlue.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
 			this.TBBlue.Value = 100;
 			this.TBBlue.Scroll += new System.EventHandler(this.OnSelectorChange);
 			// 
@@ -692,7 +688,6 @@
 			this.TbContrast.Size = new System.Drawing.Size(140, 29);
 			this.TbContrast.TabIndex = 5;
 			this.TbContrast.TickFrequency = 10;
-			this.TbContrast.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
 			this.TbContrast.Value = 100;
 			this.TbContrast.Scroll += new System.EventHandler(this.OnSelectorChange);
 			// 
@@ -717,7 +712,6 @@
 			this.TbThreshold.Size = new System.Drawing.Size(140, 29);
 			this.TbThreshold.TabIndex = 14;
 			this.TbThreshold.TickFrequency = 10;
-			this.TbThreshold.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
 			this.TbThreshold.Value = 50;
 			this.TbThreshold.Scroll += new System.EventHandler(this.OnSelectorChange);
 			// 
@@ -892,7 +886,7 @@
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(222, 540);
+			this.tabPage2.Size = new System.Drawing.Size(222, 556);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "Gcode Options";
 			// 
@@ -910,7 +904,7 @@
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel9.Size = new System.Drawing.Size(216, 534);
+			this.tableLayoutPanel9.Size = new System.Drawing.Size(216, 550);
 			this.tableLayoutPanel9.TabIndex = 0;
 			// 
 			// groupBox2
@@ -1316,7 +1310,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(912, 572);
+			this.ClientSize = new System.Drawing.Size(912, 588);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;

@@ -22,10 +22,14 @@ namespace LaserGRBL.RasterConverter
 
 		double scaleX = 1.0; //square ratio
 
+		enum Tool 
+		{Line2Line, Vectorize}
 
 		private RasterToLaserForm(GrblFile file, string filename)
 		{
 			InitializeComponent();
+			LoadSettings();
+			
 			mFile = file;
 			mFileName = filename;
 
@@ -279,6 +283,8 @@ namespace LaserGRBL.RasterConverter
 			int H = IISizeH.CurrentValue * (int)UDQuality.Value;
 			int W = IISizeW.CurrentValue * (int)UDQuality.Value;
 
+			StoreSettings();
+			
 			if (RbLineToLineTracing.Checked)
 			{
 				using (Bitmap bmp = ProduceBitmap(false))
@@ -293,6 +299,75 @@ namespace LaserGRBL.RasterConverter
 			Close();
 		}
 
+		private void StoreSettings()
+		{
+			Settings.SetObject("GrayScaleConversion.ConversionTool", RbLineToLineTracing.Checked ? Tool.Line2Line : Tool.Vectorize);
+			
+			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Quality", UDQuality.Value);
+			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Preview", CbLinePreview.Checked);
+			
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.SpotRemoval.Enabled", CbSpotRemoval.Checked);
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.SpotRemoval.Value", UDSpotRemoval.Value);
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Smooting.Enabled", CbSmoothing.Checked);
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Smooting.Value", UDSmoothing.Value);
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Optimize.Enabled", CbOptimize.Checked);
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Optimize.Value", UDOptimize.Value);
+			
+			Settings.SetObject("GrayScaleConversion.Parameters.Mode", (ImageTransform.Formula)CbMode.SelectedItem);
+			Settings.SetObject("GrayScaleConversion.Parameters.R", TBRed.Value);
+			Settings.SetObject("GrayScaleConversion.Parameters.G", TBGreen.Value);
+			Settings.SetObject("GrayScaleConversion.Parameters.B", TBBlue.Value);
+			Settings.SetObject("GrayScaleConversion.Parameters.Brightness", TbBright.Value);
+			Settings.SetObject("GrayScaleConversion.Parameters.Contrast", TbContrast.Value);
+			Settings.SetObject("GrayScaleConversion.Parameters.Threshold.Enabled", CbThreshold.Checked);
+			Settings.SetObject("GrayScaleConversion.Parameters.Threshold.Value", TbThreshold.Value);
+			
+			Settings.SetObject("GrayScaleConversion.Gcode.Speed.Mark", IIMarkSpeed.CurrentValue);
+			Settings.SetObject("GrayScaleConversion.Gcode.Speed.Travel", IITravelSpeed.CurrentValue);
+			
+			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", TxtLaserOn.Text);
+			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", TxtLaserOff.Text);
+			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", IIMinPower.CurrentValue);
+			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", IIMaxPower.CurrentValue);
+			
+			Settings.Save(); // Saves settings in application configuration file
+		}
+		
+		private void LoadSettings()
+		{
+			if ((Tool)Settings.GetObject("GrayScaleConversion.ConversionTool", Tool.Line2Line) == Tool.Line2Line)
+				RbLineToLineTracing.Checked = true;
+			else
+				RbVectorize.Checked = true;
+			
+			UDQuality.Value = (decimal)Settings.GetObject("GrayScaleConversion.Line2LineOptions.Quality", 3m);
+			CbLinePreview.Checked = (bool)Settings.GetObject("GrayScaleConversion.Line2LineOptions.Preview", false);
+			
+			CbSpotRemoval.Checked = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.SpotRemoval.Enabled", false);
+			UDSpotRemoval.Value = (decimal)Settings.GetObject("GrayScaleConversion.VectorizeOptions.SpotRemoval.Value", 2.0m);
+			CbSmoothing.Checked = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.Smooting.Enabled", false);
+			UDSmoothing.Value = (decimal)Settings.GetObject("GrayScaleConversion.VectorizeOptions.Smooting.Value", 1.0m);
+			CbOptimize.Checked = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.Optimize.Enabled", false);
+			UDOptimize.Value = (decimal)Settings.GetObject("GrayScaleConversion.VectorizeOptions.Optimize.Value", 0.2m);
+			
+			CbMode.SelectedItem = (ImageTransform.Formula)Settings.GetObject("GrayScaleConversion.Parameters.Mode", ImageTransform.Formula.SimpleAverage);
+			TBRed.Value = (int)Settings.GetObject("GrayScaleConversion.Parameters.R", 100);
+			TBGreen.Value = (int)Settings.GetObject("GrayScaleConversion.Parameters.G", 100);
+			TBBlue.Value = (int)Settings.GetObject("GrayScaleConversion.Parameters.B", 100);
+			TbBright.Value = (int)Settings.GetObject("GrayScaleConversion.Parameters.Brightness", 100);
+			TbContrast.Value = (int)Settings.GetObject("GrayScaleConversion.Parameters.Contrast", 100);
+			CbThreshold.Checked = (bool)Settings.GetObject("GrayScaleConversion.Parameters.Threshold.Enabled", false);
+			TbThreshold.Value = (int)Settings.GetObject("GrayScaleConversion.Parameters.Threshold.Value", 50);
+			
+			IIMarkSpeed.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Mark", 1000);
+			IITravelSpeed.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Travel", 4000);
+			
+			TxtLaserOn.Text = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
+			TxtLaserOff.Text = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
+			IIMinPower.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
+			IIMaxPower.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
+		}
+		
 		private void IISizeW_CurrentValueChanged(object sender, int NewValue, bool ByUser)
 		{
 			if (ByUser)
