@@ -143,6 +143,11 @@ namespace LaserGRBL
 			}
 		}
 
+		public void SaveProgram(string filename)
+		{
+			if (HasProgram)
+				file.SaveProgram(filename);
+		}
 
 		public void ExportConfig(string filename)
 		{

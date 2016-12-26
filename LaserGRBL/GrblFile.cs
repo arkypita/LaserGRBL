@@ -19,6 +19,19 @@ namespace LaserGRBL
 		private TimeSpan mEstimatedTimeOn;
 		private TimeSpan mEstimatedTimeOff;
 
+		public void SaveProgram(string filename)
+		{
+			try
+			{
+				using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filename))
+				{
+					foreach (GrblCommand cmd in list)
+						sw.WriteLine(cmd.Command);
+					sw.Close();
+				}
+			} catch{}
+		}
+		
 		public void LoadFile(string filename) 
 		{
 			long start = Tools.HiResTimer.TotalMilliseconds;
@@ -65,7 +78,7 @@ namespace LaserGRBL
 			bool mustG1 = false;
 			bool rtl = true; //right to left
 			
-			SetHeader(travelSpeed, ref mustG1);
+			SetHeader(minPower, travelSpeed, ref mustG1);
 			int curSpeed = travelSpeed;
 			
 			for (int Y = H-1; Y >= 0; Y--) //per ogni linea dell'immagine
@@ -99,7 +112,7 @@ namespace LaserGRBL
 							{
 								int newSpeed = (power == 0 ? travelSpeed : markSpeed);
 								if (curSpeed != newSpeed)
-									CreateSegment(power, rtl ? X : X+1, oX, resolution, ref mustG1, String.Format("F{0}", curSpeed = newSpeed ));
+									CreateSegment(power, rtl ? X : X+1, oX, resolution, ref mustG1, curSpeed = newSpeed);
 								else
 									CreateSegment(power, rtl ? X : X+1, oX, resolution, ref mustG1);
 							}
@@ -115,7 +128,7 @@ namespace LaserGRBL
 					rtl = !rtl;
 				
 				list.Add(new GrblCommand(lOff)); //spegni il laser
-				IncrementY(H-Y, oY, resolution, ref mustG1, String.Format("F{0}", curSpeed = travelSpeed ));
+				IncrementY(H-Y, oY, resolution, ref mustG1, curSpeed = travelSpeed);
 			}
 			
 			Analyze();
@@ -132,29 +145,31 @@ namespace LaserGRBL
 			return rv * (max - min) / 255  + min; //scale to range
 		}
 		
-		private void SetHeader(int speed, ref bool mustG1)
+		private void SetHeader(int power, int speed, ref bool mustG1)
 		{
 			list.Add(new GrblCommand("G90")); 
 			list.Add(new GrblCommand(String.Format("F{0}", speed))); 
-			list.Add(new GrblCommand("G0X0Y0"));
-			list.Add(new GrblCommand("M5S0")); 
+			list.Add(new GrblCommand("G0 X0 Y0"));
+			list.Add(new GrblCommand(String.Format("M5 S{0}", power)));
 			mustG1 = true;
 		}
 		
 		private void LaserSpeed(int speed)
 		{list.Add(new GrblCommand(String.Format("F{0}", speed))); }
 		
-		private void IncrementY(int Y, int oY, int res, ref bool mustG1, string f = null)
+		private void IncrementY(int Y, int oY, int res, ref bool mustG1, int speed)
 		{
-			list.Add(new GrblCommand(string.Format("G0Y{0}S0{1}", formatnumber(oY + (double)Y / (double)res), f))); //muovi a posizione Y
+			list.Add(new GrblCommand(string.Format("G0 Y{0} F{1}", formatnumber(oY + (double)Y / (double)res), speed))); //muovi a posizione Y
 			mustG1 = true;
 		}
-		private void CreateSegment(int power, int X, int oX, int res, ref bool mustG1, string f = null)
+		private void CreateSegment(int power, int X, int oX, int res, ref bool mustG1, int speed = 0)
 		{
+			string fcommand = speed > 0 ? string.Format(" F{0}", speed) : "";
+			
 			if (mustG1)
-				list.Add(new GrblCommand(string.Format("G1X{0}S{1}{2}", formatnumber(oX + (double)X / (double)res) , power, f))); //il laser non si spegne durante tutto il movimento X
+				list.Add(new GrblCommand(string.Format("G1 X{0} S{1}{2}", formatnumber(oX + (double)X / (double)res) , power, fcommand))); //il laser non si spegne durante tutto il movimento X
 			else
-				list.Add(new GrblCommand(string.Format("X{0}S{1}{2}", formatnumber(oX + (double)X / (double)res) , power, f))); //il laser non si spegne durante tutto il movimento X
+				list.Add(new GrblCommand(string.Format("X{0} S{1}{2}", formatnumber(oX + (double)X / (double)res) , power, fcommand))); //il laser non si spegne durante tutto il movimento X
 			
 			mustG1 = false;
 		}
@@ -197,7 +212,7 @@ namespace LaserGRBL
 			if (analyze)
 			{
 				mRange.ResetRange();
-				mRange.UpdateSRange(0);
+				//mRange.UpdateSRange(0);
 				mRange.UpdateXYRange(0, 0, false);
 				mTotalTravelOn = 0;
 				mTotalTravelOff = 0;
@@ -224,7 +239,12 @@ namespace LaserGRBL
 					speed = cmd.F.Number;
 
 				if (cmd.S != null)
-					curAlpha = mRange.SpindleRange.ValidRange ? (int)(cmd.S.Number * 255 / mRange.SpindleRange.S.Max) : 255;
+				{
+					if (mRange.SpindleRange.ValidRange)
+						curAlpha =  (int)((cmd.S.Number - mRange.SpindleRange.S.Min) * 255 / (mRange.SpindleRange.S.Max - mRange.SpindleRange.S.Min));
+					else
+						curAlpha = 255;
+				}
 
 				if (analyze && cmd.S != null)
 					mRange.UpdateSRange(cmd.S.Number);
@@ -474,7 +494,7 @@ namespace LaserGRBL
 				}
 
 				public bool ValidRange
-				{ get { return Min != decimal.MaxValue && Max != decimal.MinValue && Max > 0; } }
+				{ get { return Min != Max && Min != decimal.MaxValue && Max != decimal.MinValue && Max > 0; } }
 			}
 
 			public Range S = new Range();

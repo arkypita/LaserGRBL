@@ -109,6 +109,7 @@ namespace LaserGRBL
 				TTLEstimated.Text = "Estimated Time:";
 
 			MnFileOpen.Enabled = Core.CanLoadNewFile;
+			MnSaveProgram.Enabled = Core.HasProgram;
 			MnFileSend.Enabled = Core.CanSendFile; 
 			MnExportConfig.Enabled = Core.CanImportExport;
 			MnImportConfig.Enabled = Core.CanImportExport;
@@ -273,6 +274,21 @@ namespace LaserGRBL
 		private void MnDisconnect_Click(object sender, EventArgs e)
 		{
 			Core.CloseCom();
+		}
+		void MnSaveProgramClick(object sender, EventArgs e)
+		{
+			string filename = null;
+			using (System.Windows.Forms.SaveFileDialog ofd = new SaveFileDialog())
+			{
+				ofd.Filter = "GCODE Files|*.nc";
+				ofd.AddExtension = true;
+				ofd.RestoreDirectory = true;
+				if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+					filename = ofd.FileName;
+			}
+
+			if (filename != null)
+			{Core.SaveProgram(filename);}
 		}
 		
 		

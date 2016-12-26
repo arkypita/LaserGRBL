@@ -72,6 +72,8 @@
 			this.MnExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnFileOpen = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnSaveProgram = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnFileSend = new System.Windows.Forms.ToolStripMenuItem();
 			this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.joggingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -289,6 +291,8 @@
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
 			this.MnFileOpen,
+			this.MnSaveProgram,
+			this.toolStripMenuItem1,
 			this.MnFileSend});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -297,15 +301,27 @@
 			// MnFileOpen
 			// 
 			this.MnFileOpen.Name = "MnFileOpen";
-			this.MnFileOpen.Size = new System.Drawing.Size(103, 22);
-			this.MnFileOpen.Text = "&Open";
+			this.MnFileOpen.Size = new System.Drawing.Size(165, 22);
+			this.MnFileOpen.Text = "&Open File";
 			this.MnFileOpen.Click += new System.EventHandler(this.MnFileOpen_Click);
+			// 
+			// MnSaveProgram
+			// 
+			this.MnSaveProgram.Name = "MnSaveProgram";
+			this.MnSaveProgram.Size = new System.Drawing.Size(165, 22);
+			this.MnSaveProgram.Text = "&Save Program";
+			this.MnSaveProgram.Click += new System.EventHandler(this.MnSaveProgramClick);
+			// 
+			// toolStripMenuItem1
+			// 
+			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(162, 6);
 			// 
 			// MnFileSend
 			// 
 			this.MnFileSend.Name = "MnFileSend";
-			this.MnFileSend.Size = new System.Drawing.Size(103, 22);
-			this.MnFileSend.Text = "&Send";
+			this.MnFileSend.Size = new System.Drawing.Size(165, 22);
+			this.MnFileSend.Text = "Send To &Machine";
 			this.MnFileSend.Click += new System.EventHandler(this.MnFileSend_Click);
 			// 
 			// windowsToolStripMenuItem
@@ -436,6 +452,8 @@
 		private System.Windows.Forms.ToolStripMenuItem MnUnlock;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
 		private System.Windows.Forms.ToolStripMenuItem MnExit;
+		private System.Windows.Forms.ToolStripMenuItem MnSaveProgram;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
 	}
 }
 
