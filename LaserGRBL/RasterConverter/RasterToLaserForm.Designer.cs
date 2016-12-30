@@ -29,6 +29,11 @@
 		private void InitializeComponent()
 		{
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.Tp = new System.Windows.Forms.TabControl();
+			this.TpPreview = new System.Windows.Forms.TabPage();
+			this.PbConverted = new System.Windows.Forms.PictureBox();
+			this.TpOriginal = new System.Windows.Forms.TabPage();
+			this.PbOriginal = new System.Windows.Forms.PictureBox();
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -105,13 +110,12 @@
 			this.IIMaxPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label18 = new System.Windows.Forms.Label();
 			this.TxtLaserOn = new System.Windows.Forms.TextBox();
-			this.BW = new System.ComponentModel.BackgroundWorker();
-			this.TpOriginal = new System.Windows.Forms.TabPage();
-			this.PbOriginal = new System.Windows.Forms.PictureBox();
-			this.TpPreview = new System.Windows.Forms.TabPage();
-			this.PbConverted = new System.Windows.Forms.PictureBox();
-			this.Tp = new System.Windows.Forms.TabControl();
 			this.tableLayoutPanel1.SuspendLayout();
+			this.Tp.SuspendLayout();
+			this.TpPreview.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PbConverted)).BeginInit();
+			this.TpOriginal.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).BeginInit();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tableLayoutPanel8.SuspendLayout();
@@ -135,11 +139,6 @@
 			this.tableLayoutPanel6.SuspendLayout();
 			this.groupBox5.SuspendLayout();
 			this.tableLayoutPanel7.SuspendLayout();
-			this.TpOriginal.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).BeginInit();
-			this.TpPreview.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PbConverted)).BeginInit();
-			this.Tp.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -159,6 +158,62 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(912, 588);
 			this.tableLayoutPanel1.TabIndex = 0;
+			// 
+			// Tp
+			// 
+			this.tableLayoutPanel1.SetColumnSpan(this.Tp, 2);
+			this.Tp.Controls.Add(this.TpPreview);
+			this.Tp.Controls.Add(this.TpOriginal);
+			this.Tp.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Tp.Location = new System.Drawing.Point(239, 3);
+			this.Tp.Name = "Tp";
+			this.Tp.SelectedIndex = 0;
+			this.Tp.Size = new System.Drawing.Size(670, 549);
+			this.Tp.TabIndex = 3;
+			// 
+			// TpPreview
+			// 
+			this.TpPreview.Controls.Add(this.PbConverted);
+			this.TpPreview.Location = new System.Drawing.Point(4, 22);
+			this.TpPreview.Name = "TpPreview";
+			this.TpPreview.Padding = new System.Windows.Forms.Padding(3);
+			this.TpPreview.Size = new System.Drawing.Size(662, 523);
+			this.TpPreview.TabIndex = 0;
+			this.TpPreview.Text = "Preview";
+			this.TpPreview.UseVisualStyleBackColor = true;
+			// 
+			// PbConverted
+			// 
+			this.PbConverted.BackColor = System.Drawing.Color.White;
+			this.PbConverted.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.PbConverted.Location = new System.Drawing.Point(3, 3);
+			this.PbConverted.Name = "PbConverted";
+			this.PbConverted.Size = new System.Drawing.Size(656, 517);
+			this.PbConverted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.PbConverted.TabIndex = 0;
+			this.PbConverted.TabStop = false;
+			// 
+			// TpOriginal
+			// 
+			this.TpOriginal.Controls.Add(this.PbOriginal);
+			this.TpOriginal.Location = new System.Drawing.Point(4, 22);
+			this.TpOriginal.Name = "TpOriginal";
+			this.TpOriginal.Padding = new System.Windows.Forms.Padding(3);
+			this.TpOriginal.Size = new System.Drawing.Size(662, 523);
+			this.TpOriginal.TabIndex = 1;
+			this.TpOriginal.Text = "Original";
+			this.TpOriginal.UseVisualStyleBackColor = true;
+			// 
+			// PbOriginal
+			// 
+			this.PbOriginal.BackColor = System.Drawing.Color.White;
+			this.PbOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.PbOriginal.Location = new System.Drawing.Point(3, 3);
+			this.PbOriginal.Name = "PbOriginal";
+			this.PbOriginal.Size = new System.Drawing.Size(656, 517);
+			this.PbOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.PbOriginal.TabIndex = 0;
+			this.PbOriginal.TabStop = false;
 			// 
 			// BtnCreate
 			// 
@@ -277,19 +332,19 @@
 			this.UDSpotRemoval.Enabled = false;
 			this.UDSpotRemoval.Location = new System.Drawing.Point(83, 3);
 			this.UDSpotRemoval.Minimum = new decimal(new int[] {
-			2,
-			0,
-			0,
-			0});
+            2,
+            0,
+            0,
+            0});
 			this.UDSpotRemoval.Name = "UDSpotRemoval";
 			this.UDSpotRemoval.Size = new System.Drawing.Size(54, 20);
 			this.UDSpotRemoval.TabIndex = 19;
 			this.UDSpotRemoval.Value = new decimal(new int[] {
-			2,
-			0,
-			0,
-			0});
-			this.UDSpotRemoval.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+            2,
+            0,
+            0,
+            0});
+			this.UDSpotRemoval.ValueChanged += new System.EventHandler(this.UDSpotRemoval_ValueChanged);
 			// 
 			// label23
 			// 
@@ -307,30 +362,30 @@
 			this.UDSmoothing.DecimalPlaces = 1;
 			this.UDSmoothing.Enabled = false;
 			this.UDSmoothing.Increment = new decimal(new int[] {
-			1,
-			0,
-			0,
-			65536});
+            1,
+            0,
+            0,
+            65536});
 			this.UDSmoothing.Location = new System.Drawing.Point(83, 29);
 			this.UDSmoothing.Maximum = new decimal(new int[] {
-			10,
-			0,
-			0,
-			0});
+            10,
+            0,
+            0,
+            0});
 			this.UDSmoothing.Minimum = new decimal(new int[] {
-			10,
-			0,
-			0,
-			65536});
+            10,
+            0,
+            0,
+            65536});
 			this.UDSmoothing.Name = "UDSmoothing";
 			this.UDSmoothing.Size = new System.Drawing.Size(54, 20);
 			this.UDSmoothing.TabIndex = 20;
 			this.UDSmoothing.Value = new decimal(new int[] {
-			10,
-			0,
-			0,
-			65536});
-			this.UDSmoothing.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+            10,
+            0,
+            0,
+            65536});
+			this.UDSmoothing.ValueChanged += new System.EventHandler(this.UDSmoothing_ValueChanged);
 			// 
 			// label24
 			// 
@@ -348,30 +403,30 @@
 			this.UDOptimize.DecimalPlaces = 1;
 			this.UDOptimize.Enabled = false;
 			this.UDOptimize.Increment = new decimal(new int[] {
-			1,
-			0,
-			0,
-			65536});
+            1,
+            0,
+            0,
+            65536});
 			this.UDOptimize.Location = new System.Drawing.Point(83, 55);
 			this.UDOptimize.Maximum = new decimal(new int[] {
-			10,
-			0,
-			0,
-			0});
+            10,
+            0,
+            0,
+            0});
 			this.UDOptimize.Minimum = new decimal(new int[] {
-			2,
-			0,
-			0,
-			65536});
+            2,
+            0,
+            0,
+            65536});
 			this.UDOptimize.Name = "UDOptimize";
 			this.UDOptimize.Size = new System.Drawing.Size(54, 20);
 			this.UDOptimize.TabIndex = 21;
 			this.UDOptimize.Value = new decimal(new int[] {
-			2,
-			0,
-			0,
-			65536});
-			this.UDOptimize.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+            2,
+            0,
+            0,
+            65536});
+			this.UDOptimize.ValueChanged += new System.EventHandler(this.UDOptimize_ValueChanged);
 			// 
 			// CbSpotRemoval
 			// 
@@ -382,7 +437,7 @@
 			this.CbSpotRemoval.Size = new System.Drawing.Size(15, 14);
 			this.CbSpotRemoval.TabIndex = 25;
 			this.CbSpotRemoval.UseVisualStyleBackColor = true;
-			this.CbSpotRemoval.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbSpotRemoval.CheckedChanged += new System.EventHandler(this.CbSpotRemoval_CheckedChanged);
 			// 
 			// CbSmoothing
 			// 
@@ -393,7 +448,7 @@
 			this.CbSmoothing.Size = new System.Drawing.Size(15, 14);
 			this.CbSmoothing.TabIndex = 26;
 			this.CbSmoothing.UseVisualStyleBackColor = true;
-			this.CbSmoothing.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbSmoothing.CheckedChanged += new System.EventHandler(this.CbSmoothing_CheckedChanged);
 			// 
 			// CbOptimize
 			// 
@@ -404,7 +459,7 @@
 			this.CbOptimize.Size = new System.Drawing.Size(15, 14);
 			this.CbOptimize.TabIndex = 27;
 			this.CbOptimize.UseVisualStyleBackColor = true;
-			this.CbOptimize.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbOptimize.CheckedChanged += new System.EventHandler(this.CbOptimize_CheckedChanged);
 			// 
 			// CbShowDots
 			// 
@@ -418,7 +473,7 @@
 			this.CbShowDots.TabIndex = 28;
 			this.CbShowDots.Text = "Show Dots";
 			this.CbShowDots.UseVisualStyleBackColor = true;
-			this.CbShowDots.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbShowDots.CheckedChanged += new System.EventHandler(this.CbShowDots_CheckedChanged);
 			// 
 			// CbShowImage
 			// 
@@ -432,7 +487,7 @@
 			this.CbShowImage.TabIndex = 29;
 			this.CbShowImage.Text = "Show Image";
 			this.CbShowImage.UseVisualStyleBackColor = true;
-			this.CbShowImage.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbShowImage.CheckedChanged += new System.EventHandler(this.CbShowImage_CheckedChanged);
 			// 
 			// groupBox1
 			// 
@@ -513,7 +568,7 @@
 			this.CbMode.Name = "CbMode";
 			this.CbMode.Size = new System.Drawing.Size(136, 21);
 			this.CbMode.TabIndex = 2;
-			this.CbMode.SelectedIndexChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbMode.SelectedIndexChanged += new System.EventHandler(this.CbMode_SelectedIndexChanged);
 			// 
 			// TBRed
 			// 
@@ -536,7 +591,7 @@
 			this.TBRed.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
 			this.TBRed.ThumbSize = 10;
 			this.TBRed.Value = 100;
-			this.TBRed.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.TBRed.ValueChanged += new System.EventHandler(this.TBRed_ValueChanged);
 			this.TBRed.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
 			// 
 			// label14
@@ -598,7 +653,7 @@
 			this.TBGreen.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
 			this.TBGreen.ThumbSize = 10;
 			this.TBGreen.Value = 100;
-			this.TBGreen.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.TBGreen.ValueChanged += new System.EventHandler(this.TBGreen_ValueChanged);
 			this.TBGreen.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
 			// 
 			// TbBright
@@ -622,7 +677,7 @@
 			this.TbBright.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
 			this.TbBright.ThumbSize = 10;
 			this.TbBright.Value = 100;
-			this.TbBright.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.TbBright.ValueChanged += new System.EventHandler(this.TbBright_ValueChanged);
 			this.TbBright.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
 			// 
 			// TBBlue
@@ -646,7 +701,7 @@
 			this.TBBlue.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
 			this.TBBlue.ThumbSize = 10;
 			this.TBBlue.Value = 100;
-			this.TBBlue.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.TBBlue.ValueChanged += new System.EventHandler(this.TBBlue_ValueChanged);
 			this.TBBlue.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
 			// 
 			// TbContrast
@@ -670,7 +725,7 @@
 			this.TbContrast.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
 			this.TbContrast.ThumbSize = 10;
 			this.TbContrast.Value = 100;
-			this.TbContrast.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.TbContrast.ValueChanged += new System.EventHandler(this.TbContrast_ValueChanged);
 			this.TbContrast.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
 			// 
 			// label3
@@ -692,6 +747,7 @@
 			this.TbThreshold.BorderRoundRectSize = new System.Drawing.Size(8, 8);
 			this.TbThreshold.ElapsedInnerColor = System.Drawing.Color.White;
 			this.TbThreshold.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.TbThreshold.Enabled = false;
 			this.TbThreshold.LargeChange = ((uint)(5u));
 			this.TbThreshold.Location = new System.Drawing.Point(63, 186);
 			this.TbThreshold.Margin = new System.Windows.Forms.Padding(1);
@@ -701,7 +757,7 @@
 			this.TbThreshold.TabIndex = 14;
 			this.TbThreshold.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
 			this.TbThreshold.ThumbSize = 10;
-			this.TbThreshold.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.TbThreshold.ValueChanged += new System.EventHandler(this.TbThreshold_ValueChanged);
 			this.TbThreshold.DoubleClick += new System.EventHandler(this.OnThresholdDoubleClick);
 			// 
 			// CbThreshold
@@ -714,7 +770,7 @@
 			this.CbThreshold.TabIndex = 15;
 			this.CbThreshold.Text = "BW Threshold";
 			this.CbThreshold.UseVisualStyleBackColor = true;
-			this.CbThreshold.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbThreshold.CheckedChanged += new System.EventHandler(this.CbThreshold_CheckedChanged);
 			// 
 			// GbLineToLineOptions
 			// 
@@ -756,24 +812,24 @@
 			this.UDQuality.Location = new System.Drawing.Point(45, 3);
 			this.UDQuality.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
 			this.UDQuality.Maximum = new decimal(new int[] {
-			10,
-			0,
-			0,
-			0});
+            10,
+            0,
+            0,
+            0});
 			this.UDQuality.Minimum = new decimal(new int[] {
-			1,
-			0,
-			0,
-			0});
+            1,
+            0,
+            0,
+            0});
 			this.UDQuality.Name = "UDQuality";
 			this.UDQuality.Size = new System.Drawing.Size(55, 20);
 			this.UDQuality.TabIndex = 7;
 			this.UDQuality.Value = new decimal(new int[] {
-			3,
-			0,
-			0,
-			0});
-			this.UDQuality.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+            3,
+            0,
+            0,
+            0});
+			this.UDQuality.ValueChanged += new System.EventHandler(this.UDQuality_ValueChanged);
 			// 
 			// label8
 			// 
@@ -797,7 +853,7 @@
 			this.CbLinePreview.TabIndex = 12;
 			this.CbLinePreview.Text = "Line Preview";
 			this.CbLinePreview.UseVisualStyleBackColor = true;
-			this.CbLinePreview.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbLinePreview.CheckedChanged += new System.EventHandler(this.CbLinePreview_CheckedChanged);
 			// 
 			// label5
 			// 
@@ -851,7 +907,7 @@
 			this.RbVectorize.TabIndex = 1;
 			this.RbVectorize.Text = "Vectorize!";
 			this.RbVectorize.UseVisualStyleBackColor = true;
-			this.RbVectorize.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.RbVectorize.CheckedChanged += new System.EventHandler(this.RbVectorize_CheckedChanged);
 			// 
 			// RbLineToLineTracing
 			// 
@@ -865,7 +921,7 @@
 			this.RbLineToLineTracing.TabStop = true;
 			this.RbLineToLineTracing.Text = "Line To Line Tracing";
 			this.RbLineToLineTracing.UseVisualStyleBackColor = true;
-			this.RbLineToLineTracing.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.RbLineToLineTracing.CheckedChanged += new System.EventHandler(this.RbLineToLineTracing_CheckedChanged);
 			// 
 			// tabPage2
 			// 
@@ -1294,70 +1350,6 @@
 			this.TxtLaserOn.TabIndex = 20;
 			this.TxtLaserOn.Text = "M3";
 			// 
-			// BW
-			// 
-			this.BW.WorkerReportsProgress = true;
-			this.BW.WorkerSupportsCancellation = true;
-			this.BW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BWDoWork);
-			this.BW.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BWProgressChanged);
-			this.BW.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BWRunWorkerCompleted);
-			// 
-			// TpOriginal
-			// 
-			this.TpOriginal.Controls.Add(this.PbOriginal);
-			this.TpOriginal.Location = new System.Drawing.Point(4, 22);
-			this.TpOriginal.Name = "TpOriginal";
-			this.TpOriginal.Padding = new System.Windows.Forms.Padding(3);
-			this.TpOriginal.Size = new System.Drawing.Size(898, 523);
-			this.TpOriginal.TabIndex = 1;
-			this.TpOriginal.Text = "Original";
-			this.TpOriginal.UseVisualStyleBackColor = true;
-			// 
-			// PbOriginal
-			// 
-			this.PbOriginal.BackColor = System.Drawing.Color.White;
-			this.PbOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PbOriginal.Location = new System.Drawing.Point(3, 3);
-			this.PbOriginal.Name = "PbOriginal";
-			this.PbOriginal.Size = new System.Drawing.Size(892, 517);
-			this.PbOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.PbOriginal.TabIndex = 0;
-			this.PbOriginal.TabStop = false;
-			// 
-			// TpPreview
-			// 
-			this.TpPreview.Controls.Add(this.PbConverted);
-			this.TpPreview.Location = new System.Drawing.Point(4, 22);
-			this.TpPreview.Name = "TpPreview";
-			this.TpPreview.Padding = new System.Windows.Forms.Padding(3);
-			this.TpPreview.Size = new System.Drawing.Size(662, 523);
-			this.TpPreview.TabIndex = 0;
-			this.TpPreview.Text = "Preview";
-			this.TpPreview.UseVisualStyleBackColor = true;
-			// 
-			// PbConverted
-			// 
-			this.PbConverted.BackColor = System.Drawing.Color.White;
-			this.PbConverted.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PbConverted.Location = new System.Drawing.Point(3, 3);
-			this.PbConverted.Name = "PbConverted";
-			this.PbConverted.Size = new System.Drawing.Size(656, 517);
-			this.PbConverted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.PbConverted.TabIndex = 0;
-			this.PbConverted.TabStop = false;
-			// 
-			// Tp
-			// 
-			this.tableLayoutPanel1.SetColumnSpan(this.Tp, 2);
-			this.Tp.Controls.Add(this.TpPreview);
-			this.Tp.Controls.Add(this.TpOriginal);
-			this.Tp.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Tp.Location = new System.Drawing.Point(239, 3);
-			this.Tp.Name = "Tp";
-			this.Tp.SelectedIndex = 0;
-			this.Tp.Size = new System.Drawing.Size(670, 549);
-			this.Tp.TabIndex = 3;
-			// 
 			// RasterToLaserForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1370,7 +1362,13 @@
 			this.Name = "RasterToLaserForm";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.Text = "Import Raster Image";
+			this.Load += new System.EventHandler(this.RasterToLaserForm_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
+			this.Tp.ResumeLayout(false);
+			this.TpPreview.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.PbConverted)).EndInit();
+			this.TpOriginal.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).EndInit();
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.tableLayoutPanel8.ResumeLayout(false);
@@ -1410,11 +1408,6 @@
 			this.groupBox5.PerformLayout();
 			this.tableLayoutPanel7.ResumeLayout(false);
 			this.tableLayoutPanel7.PerformLayout();
-			this.TpOriginal.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).EndInit();
-			this.TpPreview.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.PbConverted)).EndInit();
-			this.Tp.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -1503,6 +1496,5 @@
 		private System.Windows.Forms.Label label26;
 		private System.Windows.Forms.TextBox TxtLaserOn;
 		private System.Windows.Forms.TextBox TxtLaserOff;
-		private System.ComponentModel.BackgroundWorker BW;
 	}
 }

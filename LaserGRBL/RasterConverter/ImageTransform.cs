@@ -13,10 +13,13 @@ namespace LaserGRBL.RasterConverter
 	public class ImageTransform
 	{
 
-		public static Bitmap ResizeImage(Image image, int width, int height)
+		public static Bitmap ResizeImage(Image image, Size size)
 		{
-			Rectangle destRect = new Rectangle(0, 0, width, height);
-			Bitmap destImage = new Bitmap(width, height);
+			if (image.Size == size)
+				return new Bitmap(image);
+
+			Rectangle destRect = new Rectangle(0, 0, size.Width, size.Height);
+			Bitmap destImage = new Bitmap(size.Width, size.Height);
 
 			destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
@@ -380,34 +383,6 @@ namespace LaserGRBL.RasterConverter
 
 			return draw_adjusted_image(img, cm);
 
-		}
-
-		public static Image To8bit(Image image)
-		{
-			using (var bitmap = new Bitmap(image))
-			using (var stream = new System.IO.MemoryStream())
-			{
-				var parameters = new EncoderParameters(1);
-				parameters.Param[0] = new EncoderParameter(Encoder.ColorDepth, 8L);
-
-				var info = GetEncoderInfo("image/tiff");
-				bitmap.Save(stream, info, parameters);
-
-				return Image.FromStream(stream);
-			}
-		}
-
-		private static ImageCodecInfo GetEncoderInfo(String mimeType)
-		{
-			int j;
-			ImageCodecInfo[] encoders;
-			encoders = ImageCodecInfo.GetImageEncoders();
-			for (j = 0; j < encoders.Length; ++j)
-			{
-				if (encoders[j].MimeType == mimeType)
-					return encoders[j];
-			}
-			return null;
 		}
 	}
 
