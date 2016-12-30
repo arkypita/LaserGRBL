@@ -29,11 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.Tp = new System.Windows.Forms.TabControl();
-			this.TpPreview = new System.Windows.Forms.TabPage();
-			this.PbConverted = new System.Windows.Forms.PictureBox();
-			this.TpOriginal = new System.Windows.Forms.TabPage();
-			this.PbOriginal = new System.Windows.Forms.PictureBox();
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -110,12 +105,13 @@
 			this.IIMaxPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label18 = new System.Windows.Forms.Label();
 			this.TxtLaserOn = new System.Windows.Forms.TextBox();
+			this.BW = new System.ComponentModel.BackgroundWorker();
+			this.TpOriginal = new System.Windows.Forms.TabPage();
+			this.PbOriginal = new System.Windows.Forms.PictureBox();
+			this.TpPreview = new System.Windows.Forms.TabPage();
+			this.PbConverted = new System.Windows.Forms.PictureBox();
+			this.Tp = new System.Windows.Forms.TabControl();
 			this.tableLayoutPanel1.SuspendLayout();
-			this.Tp.SuspendLayout();
-			this.TpPreview.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PbConverted)).BeginInit();
-			this.TpOriginal.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).BeginInit();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tableLayoutPanel8.SuspendLayout();
@@ -139,13 +135,18 @@
 			this.tableLayoutPanel6.SuspendLayout();
 			this.groupBox5.SuspendLayout();
 			this.tableLayoutPanel7.SuspendLayout();
+			this.TpOriginal.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).BeginInit();
+			this.TpPreview.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PbConverted)).BeginInit();
+			this.Tp.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
 			// 
 			this.tableLayoutPanel1.ColumnCount = 3;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 236F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel1.Controls.Add(this.Tp, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.BtnCreate, 2, 1);
@@ -159,68 +160,12 @@
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(912, 588);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
-			// Tp
-			// 
-			this.tableLayoutPanel1.SetColumnSpan(this.Tp, 2);
-			this.Tp.Controls.Add(this.TpPreview);
-			this.Tp.Controls.Add(this.TpOriginal);
-			this.Tp.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Tp.Location = new System.Drawing.Point(239, 3);
-			this.Tp.Name = "Tp";
-			this.Tp.SelectedIndex = 0;
-			this.Tp.Size = new System.Drawing.Size(670, 518);
-			this.Tp.TabIndex = 3;
-			// 
-			// TpPreview
-			// 
-			this.TpPreview.Controls.Add(this.PbConverted);
-			this.TpPreview.Location = new System.Drawing.Point(4, 22);
-			this.TpPreview.Name = "TpPreview";
-			this.TpPreview.Padding = new System.Windows.Forms.Padding(3);
-			this.TpPreview.Size = new System.Drawing.Size(662, 492);
-			this.TpPreview.TabIndex = 0;
-			this.TpPreview.Text = "Preview";
-			this.TpPreview.UseVisualStyleBackColor = true;
-			// 
-			// PbConverted
-			// 
-			this.PbConverted.BackColor = System.Drawing.Color.White;
-			this.PbConverted.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PbConverted.Location = new System.Drawing.Point(3, 3);
-			this.PbConverted.Name = "PbConverted";
-			this.PbConverted.Size = new System.Drawing.Size(656, 486);
-			this.PbConverted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.PbConverted.TabIndex = 0;
-			this.PbConverted.TabStop = false;
-			// 
-			// TpOriginal
-			// 
-			this.TpOriginal.Controls.Add(this.PbOriginal);
-			this.TpOriginal.Location = new System.Drawing.Point(4, 22);
-			this.TpOriginal.Name = "TpOriginal";
-			this.TpOriginal.Padding = new System.Windows.Forms.Padding(3);
-			this.TpOriginal.Size = new System.Drawing.Size(662, 492);
-			this.TpOriginal.TabIndex = 1;
-			this.TpOriginal.Text = "Original";
-			this.TpOriginal.UseVisualStyleBackColor = true;
-			// 
-			// PbOriginal
-			// 
-			this.PbOriginal.BackColor = System.Drawing.Color.White;
-			this.PbOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PbOriginal.Location = new System.Drawing.Point(3, 3);
-			this.PbOriginal.Name = "PbOriginal";
-			this.PbOriginal.Size = new System.Drawing.Size(656, 486);
-			this.PbOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.PbOriginal.TabIndex = 0;
-			this.PbOriginal.TabStop = false;
-			// 
 			// BtnCreate
 			// 
 			this.BtnCreate.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.BtnCreate.Location = new System.Drawing.Point(802, 527);
+			this.BtnCreate.Location = new System.Drawing.Point(835, 558);
 			this.BtnCreate.Name = "BtnCreate";
-			this.BtnCreate.Size = new System.Drawing.Size(107, 58);
+			this.BtnCreate.Size = new System.Drawing.Size(74, 27);
 			this.BtnCreate.TabIndex = 4;
 			this.BtnCreate.Text = "CREATE!";
 			this.BtnCreate.UseVisualStyleBackColor = true;
@@ -900,7 +845,6 @@
 			// 
 			this.RbVectorize.AutoSize = true;
 			this.tableLayoutPanel4.SetColumnSpan(this.RbVectorize, 3);
-			this.RbVectorize.Enabled = false;
 			this.RbVectorize.Location = new System.Drawing.Point(3, 26);
 			this.RbVectorize.Name = "RbVectorize";
 			this.RbVectorize.Size = new System.Drawing.Size(72, 17);
@@ -1350,6 +1294,70 @@
 			this.TxtLaserOn.TabIndex = 20;
 			this.TxtLaserOn.Text = "M3";
 			// 
+			// BW
+			// 
+			this.BW.WorkerReportsProgress = true;
+			this.BW.WorkerSupportsCancellation = true;
+			this.BW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BWDoWork);
+			this.BW.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BWProgressChanged);
+			this.BW.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BWRunWorkerCompleted);
+			// 
+			// TpOriginal
+			// 
+			this.TpOriginal.Controls.Add(this.PbOriginal);
+			this.TpOriginal.Location = new System.Drawing.Point(4, 22);
+			this.TpOriginal.Name = "TpOriginal";
+			this.TpOriginal.Padding = new System.Windows.Forms.Padding(3);
+			this.TpOriginal.Size = new System.Drawing.Size(898, 523);
+			this.TpOriginal.TabIndex = 1;
+			this.TpOriginal.Text = "Original";
+			this.TpOriginal.UseVisualStyleBackColor = true;
+			// 
+			// PbOriginal
+			// 
+			this.PbOriginal.BackColor = System.Drawing.Color.White;
+			this.PbOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.PbOriginal.Location = new System.Drawing.Point(3, 3);
+			this.PbOriginal.Name = "PbOriginal";
+			this.PbOriginal.Size = new System.Drawing.Size(892, 517);
+			this.PbOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.PbOriginal.TabIndex = 0;
+			this.PbOriginal.TabStop = false;
+			// 
+			// TpPreview
+			// 
+			this.TpPreview.Controls.Add(this.PbConverted);
+			this.TpPreview.Location = new System.Drawing.Point(4, 22);
+			this.TpPreview.Name = "TpPreview";
+			this.TpPreview.Padding = new System.Windows.Forms.Padding(3);
+			this.TpPreview.Size = new System.Drawing.Size(662, 523);
+			this.TpPreview.TabIndex = 0;
+			this.TpPreview.Text = "Preview";
+			this.TpPreview.UseVisualStyleBackColor = true;
+			// 
+			// PbConverted
+			// 
+			this.PbConverted.BackColor = System.Drawing.Color.White;
+			this.PbConverted.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.PbConverted.Location = new System.Drawing.Point(3, 3);
+			this.PbConverted.Name = "PbConverted";
+			this.PbConverted.Size = new System.Drawing.Size(656, 517);
+			this.PbConverted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.PbConverted.TabIndex = 0;
+			this.PbConverted.TabStop = false;
+			// 
+			// Tp
+			// 
+			this.tableLayoutPanel1.SetColumnSpan(this.Tp, 2);
+			this.Tp.Controls.Add(this.TpPreview);
+			this.Tp.Controls.Add(this.TpOriginal);
+			this.Tp.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Tp.Location = new System.Drawing.Point(239, 3);
+			this.Tp.Name = "Tp";
+			this.Tp.SelectedIndex = 0;
+			this.Tp.Size = new System.Drawing.Size(670, 549);
+			this.Tp.TabIndex = 3;
+			// 
 			// RasterToLaserForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1363,11 +1371,6 @@
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.Text = "Import Raster Image";
 			this.tableLayoutPanel1.ResumeLayout(false);
-			this.Tp.ResumeLayout(false);
-			this.TpPreview.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.PbConverted)).EndInit();
-			this.TpOriginal.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).EndInit();
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.tableLayoutPanel8.ResumeLayout(false);
@@ -1407,6 +1410,11 @@
 			this.groupBox5.PerformLayout();
 			this.tableLayoutPanel7.ResumeLayout(false);
 			this.tableLayoutPanel7.PerformLayout();
+			this.TpOriginal.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).EndInit();
+			this.TpPreview.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.PbConverted)).EndInit();
+			this.Tp.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -1495,5 +1503,6 @@
 		private System.Windows.Forms.Label label26;
 		private System.Windows.Forms.TextBox TxtLaserOn;
 		private System.Windows.Forms.TextBox TxtLaserOff;
+		private System.ComponentModel.BackgroundWorker BW;
 	}
 }
