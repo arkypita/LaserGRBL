@@ -343,7 +343,7 @@ namespace LaserGRBL.RasterConverter
 			e.Cancel = true;
 			try
 			{
-				Bitmap bmp = ProduceBitmap(mResized, mTargetSize); //non usare using perché poi viene assegnato al visualizzatore 
+				Bitmap bmp = ProduceBitmap(mResized, mTargetSize, false); //non usare using perché poi viene assegnato al visualizzatore 
 
 				if (!MustExit)
 				{
@@ -361,6 +361,11 @@ namespace LaserGRBL.RasterConverter
 			}
 			catch {}
 		}
+		
+		public Bitmap CreateTarget(Size size)
+		{
+			return ProduceBitmap(mOriginal, size, true); //non usare using perché poi viene assegnato al postprocessing 
+		}
 
 		void BW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
@@ -373,21 +378,21 @@ namespace LaserGRBL.RasterConverter
 		private bool MustExit
 		{get { return BW.CancellationPending; } }
 
-		private Bitmap ProduceBitmap(Image img, Size size)
+		private Bitmap ProduceBitmap(Image img, Size size, bool force)
 		{
 			using (Bitmap resized = ImageTransform.ResizeImage(img, size))
 			{
-				if (MustExit)
+				if (MustExit && !force)
 					return null;
 				else
 					using (Bitmap flat = ImageTransform.KillAlfa(resized))
 					{
-						if (MustExit)
+						if (MustExit && !force)
 							return null;
 						else
 							using (Bitmap grayscale = ImageTransform.GrayScale(flat, Red / 100.0F, Green / 100.0F, Blue / 100.0F, Formula))
 							{
-								if (MustExit)
+								if (MustExit && !force)
 									return null;
 								else
 									using (Bitmap brightContrast = ImageTransform.BrightnessContrast(grayscale, -((100 - Brightness) / 100.0F), (Contrast / 100.0F)))

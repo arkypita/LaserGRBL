@@ -34,6 +34,9 @@ namespace LaserGRBL.RasterConverter
 			CbMode.SelectedItem = ImageTransform.Formula.SimpleAverage;
 			CbMode.ResumeLayout();
 
+			IISizeW.CurrentValue = 50;
+			IISizeH.CurrentValue = IP.WidthToHeight(50);
+			
 			LoadSettings();
 		}
 
@@ -60,28 +63,28 @@ namespace LaserGRBL.RasterConverter
 
 		void BtnCreateClick(object sender, EventArgs e)
 		{
-			//int H = IISizeH.CurrentValue * (int)UDQuality.Value;
-			//int W = IISizeW.CurrentValue * (int)UDQuality.Value;
+			int H = IISizeH.CurrentValue * (int)UDQuality.Value;
+			int W = IISizeW.CurrentValue * (int)UDQuality.Value;
 
-			//StoreSettings();
+			StoreSettings();
 
-			//if (RbLineToLineTracing.Checked)
-			//{
-			//	//using (Bitmap bmp = ProduceBitmap(false))
-			//	//	mFile.LoadImage(bmp, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue, IIMinPower.CurrentValue, IIMaxPower.CurrentValue, TxtLaserOn.Text, TxtLaserOff.Text);
-			//}
-			//else if (RbVectorize.Checked)
-			//{
-			//	System.Windows.Forms.MessageBox.Show("Not implemented yet!");
-			//	return;
-			//}
+			if (RbLineToLineTracing.Checked)
+			{
+				using (Bitmap bmp = IP.CreateTarget(new Size(IISizeW.CurrentValue * (int)IP.Quality, IISizeH.CurrentValue * (int)IP.Quality)))
+					mFile.LoadImage(bmp, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue, IIMinPower.CurrentValue, IIMaxPower.CurrentValue, TxtLaserOn.Text, TxtLaserOff.Text);
+			}
+			else if (RbVectorize.Checked)
+			{
+				System.Windows.Forms.MessageBox.Show("Not implemented yet!");
+				return;
+			}
 
 			Close();
 		}
 
 		private void StoreSettings()
 		{
-			Settings.SetObject("GrayScaleConversion.ConversionTool", RbLineToLineTracing.Checked ? ImageProcessor.Tool.Line2Line : ImageProcessor.Tool.Vectorize);
+			Settings.SetObject("GrayScaleConversion.RasterConversionTool", RbLineToLineTracing.Checked ? ImageProcessor.Tool.Line2Line : ImageProcessor.Tool.Vectorize);
 
 			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Quality", UDQuality.Value);
 			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Preview", CbLinePreview.Checked);
@@ -117,7 +120,7 @@ namespace LaserGRBL.RasterConverter
 
 		private void LoadSettings()
 		{
-			if ((IP.SelectedTool = (ImageProcessor.Tool)Settings.GetObject("GrayScaleConversion.ConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Line2Line)
+			if ((IP.SelectedTool = (ImageProcessor.Tool)Settings.GetObject("GrayScaleConversion.RasterConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Line2Line)
 				RbLineToLineTracing.Checked = true;
 			else
 				RbVectorize.Checked = true;
