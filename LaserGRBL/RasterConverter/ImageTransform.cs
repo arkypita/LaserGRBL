@@ -60,182 +60,182 @@ namespace LaserGRBL.RasterConverter
 			return destImage;
 		}
 
-		public static Bitmap Negative(Image img)
-		{
-
-			ColorMatrix cm = new ColorMatrix(new float[][] {
-				new float[] {
-					-1,
-					0,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					-1,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					-1,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					0,
-					1,
-					0
-				},
-				new float[] {
-					1,
-					1,
-					1,
-					0,
-					1
-				}
-			});
-
-			return draw_adjusted_image(img, cm);
-
-		}
-
-		public static Bitmap Brightness(Image img, float brightness)
-		{
-			ColorMatrix cm = new ColorMatrix(new float[][] {
-				new float[] {
-					1,
-					0,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					1,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					1,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					0,
-					1,
-					0
-				},
-				new float[] {
-					brightness,
-					brightness,
-					brightness,
-					0,
-					1
-				}
-			});
-
-			return draw_adjusted_image(img, cm);
-
-		}
-
-		public static Bitmap Contrast(Image img, float contrast)
-		{
-			ColorMatrix cm = new ColorMatrix(new float[][] {
-				new float[] {
-					contrast,
-					0,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					contrast,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					contrast,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					0,
-					1,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					0,
-					0,
-					1
-				}
-			});
-
-			return draw_adjusted_image(img, cm);
-
-		}
-
-		public static Bitmap BrightnessContrast(Image img, float brightness, float contrast)
-		{
-			ColorMatrix cm = new ColorMatrix(new float[][] {
-				new float[] {
-					contrast,
-					0,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					contrast,
-					0,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					contrast,
-					0,
-					0
-				},
-				new float[] {
-					0,
-					0,
-					0,
-					1,
-					0
-				},
-				new float[] {
-					brightness,
-					brightness,
-					brightness,
-					0,
-					1
-				}
-			});
-
-			return draw_adjusted_image(img, cm);
-
-		}
+//		public static Bitmap Negative(Image img)
+//		{
+//
+//			ColorMatrix cm = new ColorMatrix(new float[][] {
+//				new float[] {
+//					-1,
+//					0,
+//					0,
+//					0,
+//					0
+//				},
+//				new float[] {
+//					0,
+//					-1,
+//					0,
+//					0,
+//					0
+//				},
+//				new float[] {
+//					0,
+//					0,
+//					-1,
+//					0,
+//					0
+//				},
+//				new float[] {
+//					0,
+//					0,
+//					0,
+//					1,
+//					0
+//				},
+//				new float[] {
+//					1,
+//					1,
+//					1,
+//					0,
+//					1
+//				}
+//			});
+//
+//			return draw_adjusted_image(img, cm);
+//
+//		}
+//
+//		public static Bitmap Brightness(Image img, float brightness)
+//		{
+//			ColorMatrix cm = new ColorMatrix(new float[][] {
+//				new float[] {
+//					1,
+//					0,
+//					0,
+//					0,
+//					0
+//				},
+//				new float[] {
+//					0,
+//					1,
+//					0,
+//					0,
+//					0
+//				},
+//				new float[] {
+//					0,
+//					0,
+//					1,
+//					0,
+//					0
+//				},
+//				new float[] {
+//					0,
+//					0,
+//					0,
+//					1,
+//					0
+//				},
+//				new float[] {
+//					brightness,
+//					brightness,
+//					brightness,
+//					0,
+//					1
+//				}
+//			});
+//
+//			return draw_adjusted_image(img, cm);
+//
+//		}
+//
+//		public static Bitmap Contrast(Image img, float contrast)
+//		{
+//			ColorMatrix cm = new ColorMatrix(new float[][] {
+//				new float[] {
+//					contrast,
+//					0,
+//					0,
+//					0,
+//					0
+//				},
+//				new float[] {
+//					0,
+//					contrast,
+//					0,
+//					0,
+//					0
+//				},
+//				new float[] {
+//					0,
+//					0,
+//					contrast,
+//					0,
+//					0
+//				},
+//				new float[] {
+//					0,
+//					0,
+//					0,
+//					1,
+//					0
+//				},
+//				new float[] {
+//					0,
+//					0,
+//					0,
+//					0,
+//					1
+//				}
+//			});
+//
+//			return draw_adjusted_image(img, cm);
+//
+//		}
+//
+//		public static Bitmap BrightnessContrast(Image img, float brightness, float contrast)
+//		{
+//			ColorMatrix cm = new ColorMatrix(new float[][] {
+//				new float[] {
+//					contrast,
+//					0,
+//					0,
+//					0,
+//					0
+//				},
+//				new float[] {
+//					0,
+//					contrast,
+//					0,
+//					0,
+//					0
+//				},
+//				new float[] {
+//					0,
+//					0,
+//					contrast,
+//					0,
+//					0
+//				},
+//				new float[] {
+//					0,
+//					0,
+//					0,
+//					1,
+//					0
+//				},
+//				new float[] {
+//					brightness,
+//					brightness,
+//					brightness,
+//					0,
+//					1
+//				}
+//			});
+//
+//			return draw_adjusted_image(img, cm);
+//
+//		}
 
 		public static Bitmap Threshold(Image img, float threshold, bool apply)
 		{
@@ -293,33 +293,33 @@ namespace LaserGRBL.RasterConverter
 		}
 
 
-		public static Bitmap GrayScale(Image img, float R, float G, float B, Formula formula)
+		public static Bitmap GrayScale(Image img, float R, float G, float B, float brightness, float contrast, Formula formula)
 		{
 			ColorMatrix cm = default(ColorMatrix);
 
 			// Apply selected grayscale formula
-						
+			
 			if (formula == Formula.SimpleAverage)
 			{
 					cm = new ColorMatrix(new float[][] {
 						new float[] {
-							0.333F * R,
-							0.333F * R,
-							0.333F * R,
+							0.333F * R * contrast,
+							0.333F * R * contrast,
+							0.333F * R * contrast,
 							0F,
 							0F
 						},
 						new float[] {
-							0.333F * G,
-							0.333F * G,
-							0.333F * G,
+							0.333F * G * contrast,
+							0.333F * G * contrast,
+							0.333F * G * contrast,
 							0F,
 							0F
 						},
 						new float[] {
-							0.333F * B,
-							0.333F * B,
-							0.333F * B,
+							0.333F * B * contrast,
+							0.333F * B * contrast,
+							0.333F * B * contrast,
 							0F,
 							0F
 						},
@@ -331,9 +331,9 @@ namespace LaserGRBL.RasterConverter
 							0F
 						},
 						new float[] {
-							0F,
-							0F,
-							0F,
+							brightness,
+							brightness,
+							brightness,
 							0F,
 							1F
 						}
@@ -343,23 +343,23 @@ namespace LaserGRBL.RasterConverter
 			{
 					cm = new ColorMatrix(new float[][] {
 						new float[] {
-							0.333F * R,
-							0.333F * R,
-							0.333F * R,
+							0.333F * R * contrast,
+							0.333F * R * contrast,
+							0.333F * R * contrast,
 							0F,
 							0F
 						},
 						new float[] {
-							0.444F * G,
-							0.444F * G,
-							0.444F * G,
+							0.444F * G * contrast,
+							0.444F * G * contrast,
+							0.444F * G * contrast,
 							0F,
 							0F
 						},
 						new float[] {
-							0.222F * B,
-							0.222F * B,
-							0.222F * B,
+							0.222F * B * contrast,
+							0.222F * B * contrast,
+							0.222F * B * contrast,
 							0F,
 							0F
 						},
@@ -371,15 +371,14 @@ namespace LaserGRBL.RasterConverter
 							0F
 						},
 						new float[] {
-							0F,
-							0F,
-							0F,
+							brightness,
+							brightness,
+							brightness,
 							0F,
 							1F
 						}
 					});
 			}	
-
 
 			return draw_adjusted_image(img, cm);
 

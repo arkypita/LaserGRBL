@@ -390,14 +390,8 @@ namespace LaserGRBL.RasterConverter
 						if (MustExit && !force)
 							return null;
 						else
-							using (Bitmap grayscale = ImageTransform.GrayScale(flat, Red / 100.0F, Green / 100.0F, Blue / 100.0F, Formula))
-							{
-								if (MustExit && !force)
-									return null;
-								else
-									using (Bitmap brightContrast = ImageTransform.BrightnessContrast(grayscale, -((100 - Brightness) / 100.0F), (Contrast / 100.0F)))
-									{ return ImageTransform.Threshold(brightContrast, Threshold / 100.0F, UseThreshold); }
-							}
+							using (Bitmap grayscale = ImageTransform.GrayScale(flat, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), Formula))
+							{ return ImageTransform.Threshold(grayscale, Threshold / 100.0F, UseThreshold); }
 					}
 			}
 		}
