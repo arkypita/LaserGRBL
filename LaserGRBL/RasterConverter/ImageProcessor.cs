@@ -37,7 +37,7 @@ namespace LaserGRBL.RasterConverter
 			mSincro = sincro;
 			mOriginal = source;
 			mTargetSize = CalculateResizeToFit(source.Size, boxSize);
-			mResized = ImageTransform.ResizeImage(mOriginal, mTargetSize);
+			mResized = ImageTransform.ResizeImage(mOriginal, mTargetSize, false);
 		}
 
 		public void Suspend()
@@ -380,19 +380,13 @@ namespace LaserGRBL.RasterConverter
 
 		private Bitmap ProduceBitmap(Image img, Size size, bool force)
 		{
-			using (Bitmap resized = ImageTransform.ResizeImage(img, size))
+			using (Bitmap resized = ImageTransform.ResizeImage(img, size, false))
 			{
 				if (MustExit && !force)
 					return null;
 				else
-					using (Bitmap flat = ImageTransform.KillAlfa(resized))
-					{
-						if (MustExit && !force)
-							return null;
-						else
-							using (Bitmap grayscale = ImageTransform.GrayScale(flat, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), Formula))
-							{ return ImageTransform.Threshold(grayscale, Threshold / 100.0F, UseThreshold); }
-					}
+					using (Bitmap grayscale = ImageTransform.GrayScale(resized, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), Formula))
+					{ return ImageTransform.Threshold(grayscale, Threshold / 100.0F, UseThreshold); }
 			}
 		}
 

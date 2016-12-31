@@ -141,7 +141,8 @@ namespace LaserGRBL
 		
 		private int GetColor(Bitmap I, int X, int Y, int min, int max)
 		{
-			int rv = 255 - I.GetPixel(X, Y).R;
+			Color C = I.GetPixel(X, Y);
+			int rv = (255 - C.R) * C.A;
 			return rv * (max - min) / 255  + min; //scale to range
 		}
 		

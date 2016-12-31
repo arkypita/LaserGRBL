@@ -13,7 +13,7 @@ namespace LaserGRBL.RasterConverter
 	public class ImageTransform
 	{
 
-		public static Bitmap ResizeImage(Image image, Size size)
+		public static Bitmap ResizeImage(Image image, Size size, bool killalfa)
 		{
 			if (image.Size == size)
 				return new Bitmap(image);
@@ -25,7 +25,15 @@ namespace LaserGRBL.RasterConverter
 
 			using (Graphics g = Graphics.FromImage(destImage))
 			{
-				g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+				if (killalfa)
+					g.Clear(Color.White);
+				
+				
+				if (killalfa)
+					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+				else
+					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+				
 				g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
 				g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
 				g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -41,24 +49,24 @@ namespace LaserGRBL.RasterConverter
 			return destImage;
 		}
 
-		public static Bitmap KillAlfa(Image image)
-		{
-			Bitmap destImage = new Bitmap(image.Width, image.Height);
-			destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-
-			using (Graphics g = Graphics.FromImage(destImage))
-			{
-				g.Clear(Color.White);
-				g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-				g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-				g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-				g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-				g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-				g.DrawImage(image, 0, 0);
-			}
-
-			return destImage;
-		}
+//		public static Bitmap KillAlfa(Image image)
+//		{
+//			Bitmap destImage = new Bitmap(image.Width, image.Height);
+//			destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+//
+//			using (Graphics g = Graphics.FromImage(destImage))
+//			{
+//				g.Clear(Color.White);
+//				g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+//				g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+//				g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+//				g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+//				g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+//				g.DrawImage(image, 0, 0);
+//			}
+//
+//			return destImage;
+//		}
 
 //		public static Bitmap Negative(Image img)
 //		{
