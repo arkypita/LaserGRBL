@@ -31,22 +31,17 @@ namespace LaserGRBL.RasterConverter
 				
 				
 				if (killalfa)
-					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+					g.CompositingMode = CompositingMode.SourceOver;
 				else
-					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+					g.CompositingMode = CompositingMode.SourceCopy;
 				
-				g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+				g.CompositingQuality = CompositingQuality.HighQuality;
+				g.SmoothingMode = SmoothingMode.HighQuality;
 				
 				if (scaleDown)
-				{
-					g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-					g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-				}
-				else
-				{
-					g.SmoothingMode = SmoothingMode.None;
+					g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+				else //scale UP
 					g.InterpolationMode = InterpolationMode.NearestNeighbor;
-				}
 				
 
 				
