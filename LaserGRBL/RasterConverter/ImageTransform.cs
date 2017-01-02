@@ -17,6 +17,8 @@ namespace LaserGRBL.RasterConverter
 			if (image.Size == size)
 				return new Bitmap(image);
 
+			bool scaleDown = (size.Width * size.Height) < (image.Size.Width * image.Size.Height);
+			
 			Rectangle destRect = new Rectangle(0, 0, size.Width, size.Height);
 			Bitmap destImage = new Bitmap(size.Width, size.Height);
 
@@ -34,8 +36,20 @@ namespace LaserGRBL.RasterConverter
 					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
 				
 				g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-				g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-				g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+				
+				if (scaleDown)
+				{
+					g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+					g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+				}
+				else
+				{
+					g.SmoothingMode = SmoothingMode.None;
+					g.InterpolationMode = InterpolationMode.NearestNeighbor;
+				}
+				
+
+				
 				g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
 
 				using (var wrapMode = new System.Drawing.Imaging.ImageAttributes())
