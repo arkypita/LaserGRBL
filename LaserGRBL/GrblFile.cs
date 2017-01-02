@@ -64,6 +64,9 @@ namespace LaserGRBL
 
 		public void LoadImage(Bitmap image, string filename, int resolution, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, RasterConverter.ImageProcessor.Direction dir)
 		{
+			
+			image.RotateFlip(RotateFlipType.RotateNoneFlipY);
+			
 			long start = Tools.HiResTimer.TotalMilliseconds;
 			mTotalTravelOff = 0;
 			mTotalTravelOn = 0;
@@ -83,7 +86,7 @@ namespace LaserGRBL
 			bool lastLOn = false;
 			bool rtl = false;
 			
-			SetHeader(travelSpeed, ref lastX, ref lastY, ref lastS, ref lastF);
+			SetHeader(travelSpeed, CorrectedX(oX, oY, W, H, dir, rtl), CorrectedY(oX, oY, W, H, dir, rtl), ref lastX, ref lastY, ref lastS, ref lastF);
 			
 			StartA(ref X, ref Y, W, H, dir);
 			while (ContinueA(X, Y, W, H, dir)) //per ogni linea dell'immagine
@@ -93,7 +96,7 @@ namespace LaserGRBL
 				while (ContinueB(X, Y, W, H, dir, rtl))
 				{
 					//System.Diagnostics.Debug.WriteLine(String.Format("X:{0} Y:{1}", X, Y));
-					int curS = GetColor(image, X,Y, minPower, maxPower);
+					int curS = GetColor(image, X, Y, minPower, maxPower);
 					
 					if (prevS == -1)
 						prevS = curS;
@@ -134,7 +137,7 @@ namespace LaserGRBL
 		private void StartA(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
-				Y = H-1;
+				Y = 0;
 			else
 				X = 0;
 		}
@@ -142,7 +145,7 @@ namespace LaserGRBL
 		private void StepA(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
-				Y--;
+				Y++;
 			else
 				X++;
 		}		
@@ -150,7 +153,7 @@ namespace LaserGRBL
 		private bool ContinueA(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
-				return Y >= 0;
+				return Y < H;
 			else
 				return X < W;
 		}
@@ -174,7 +177,7 @@ namespace LaserGRBL
 		private bool ContinueB(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
-				return rtl ? X < W : X >=0;
+				return rtl ? X < W : X >= 0;
 			else
 				return rtl ? Y >= 0 : Y < H;
 		}
@@ -182,7 +185,7 @@ namespace LaserGRBL
 		private int CorrectedX(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
-				return rtl ? X : X+1;
+				return rtl ? X : X + 1;
 			else
 				return X;
 		}
@@ -190,9 +193,9 @@ namespace LaserGRBL
 		private int CorrectedY(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
-				return H-1 - Y;
+				return Y;
 			else
-				return rtl ? H - Y - 1 : H - Y;
+				return rtl ? Y + 1 : Y ;
 		}
 		
 		private int GetColor(Bitmap I, int X, int Y, int min, int max)
@@ -202,15 +205,15 @@ namespace LaserGRBL
 			return rv * (max - min) / 255  + min; //scale to range
 		}
 		
-		private void SetHeader(int travelSpeed, ref int lastX, ref int lastY, ref int lastS, ref int lastF)
+		private void SetHeader(int travelSpeed, int oX, int oY, ref int lastX, ref int lastY, ref int lastS, ref int lastF)
 		{
 			list.Add(new GrblCommand("G90"));
 			list.Add(new GrblCommand(String.Format("F{0}", travelSpeed))); 
-			list.Add(new GrblCommand("G0 X0 Y0")); //move to origin
+			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", oX, oY))); //move to offset
 			list.Add(new GrblCommand(String.Format("M5 S0"))); //laser off and power to 0
 			
-			lastX = 0;
-			lastY = 0;
+			lastX = oX;
+			lastY = oY;
 			lastS = 0;
 			lastF = travelSpeed;
 		}
