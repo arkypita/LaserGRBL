@@ -27,7 +27,7 @@ namespace LaserGRBL.RasterConverter
 		{ Line2Line, Vectorize }
 		
 		public enum Direction
-		{ Horizontal, Vertical, Diagonal }
+		{ Horizontal, Vertical/*, Diagonal */}
 
 		public ImageProcessor(Control sincro, Image source, Size boxSize)
 		{
@@ -323,6 +323,20 @@ namespace LaserGRBL.RasterConverter
 				}
 			}
 		}
+		
+		private Direction mDirection;
+		public Direction LineDirection
+		{
+			get { return mDirection; }
+			set
+			{
+				if (value != mDirection)
+				{
+					mDirection = value;
+					Refresh();
+				}
+			}
+		}		
 
 		private void Refresh()
 		{
@@ -411,19 +425,40 @@ namespace LaserGRBL.RasterConverter
 				using (Graphics g = Graphics.FromImage(bmp))
 				{
 					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-					for (int Y = 0; Y < bmp.Height && !MustExit; Y++)
+					
+					if (LineDirection == Direction.Horizontal)
 					{
-						using (Pen mark = new Pen(Color.FromArgb(0, 255, 255, 255), 1F))
+						for (int Y = 0; Y < bmp.Height && !MustExit; Y++)
 						{
-							using (Pen nomark = new Pen(Color.FromArgb(255, 255, 255, 255), 1F))
+							using (Pen mark = new Pen(Color.FromArgb(0, 255, 255, 255), 1F))
 							{
-								if (Y % 2 == 0)
-									g.DrawLine(mark, 0, Y, bmp.Width, Y);
-								else
-									g.DrawLine(nomark, 0, Y, bmp.Width, Y);
+								using (Pen nomark = new Pen(Color.FromArgb(255, 255, 255, 255), 1F))
+								{
+									if (Y % 2 == 0)
+										g.DrawLine(mark, 0, Y, bmp.Width, Y);
+									else
+										g.DrawLine(nomark, 0, Y, bmp.Width, Y);
+								}
 							}
 						}
 					}
+					else if (LineDirection == Direction.Vertical)
+					{
+						for (int X = 0; X < bmp.Width && !MustExit; X++)
+						{
+							using (Pen mark = new Pen(Color.FromArgb(0, 255, 255, 255), 1F))
+							{
+								using (Pen nomark = new Pen(Color.FromArgb(255, 255, 255, 255), 1F))
+								{
+									if (X % 2 == 0)
+										g.DrawLine(mark, X, 0, X, bmp.Height);
+									else
+										g.DrawLine(nomark, X, 0, X, bmp.Height);
+								}
+							}
+						}
+					}
+					
 				}
 			}
 		}

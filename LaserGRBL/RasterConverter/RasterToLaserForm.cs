@@ -266,6 +266,8 @@ namespace LaserGRBL.RasterConverter
 			IP.Suspend();
 			IP.Dispose();
 		}
+		void CbDirectionsSelectedIndexChanged(object sender, EventArgs e)
+		{ IP.LineDirection = (ImageProcessor.Direction)CbDirections.SelectedItem; }
 
 	}
 }

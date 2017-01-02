@@ -111,6 +111,7 @@
 			this.IIMaxPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label18 = new System.Windows.Forms.Label();
 			this.TxtLaserOn = new System.Windows.Forms.TextBox();
+			this.label8 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.Tp.SuspendLayout();
 			this.TpPreview.SuspendLayout();
@@ -790,15 +791,16 @@
 			// 
 			this.TLP.AutoSize = true;
 			this.TLP.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.TLP.ColumnCount = 2;
+			this.TLP.ColumnCount = 3;
 			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.TLP.Controls.Add(this.CbDirections, 1, 0);
 			this.TLP.Controls.Add(this.UDQuality, 1, 1);
-			this.TLP.Controls.Add(this.CbLinePreview, 1, 2);
+			this.TLP.Controls.Add(this.CbLinePreview, 0, 2);
 			this.TLP.Controls.Add(this.label5, 0, 1);
 			this.TLP.Controls.Add(this.label27, 0, 0);
+			this.TLP.Controls.Add(this.label8, 2, 1);
 			this.TLP.Dock = System.Windows.Forms.DockStyle.Top;
 			this.TLP.Location = new System.Drawing.Point(3, 16);
 			this.TLP.Name = "TLP";
@@ -806,19 +808,21 @@
 			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.TLP.Size = new System.Drawing.Size(204, 76);
 			this.TLP.TabIndex = 0;
 			// 
 			// CbDirections
 			// 
 			this.CbDirections.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.TLP.SetColumnSpan(this.CbDirections, 2);
 			this.CbDirections.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbDirections.FormattingEnabled = true;
 			this.CbDirections.Location = new System.Drawing.Point(58, 3);
 			this.CbDirections.Name = "CbDirections";
 			this.CbDirections.Size = new System.Drawing.Size(143, 21);
 			this.CbDirections.TabIndex = 14;
+			this.CbDirections.SelectedIndexChanged += new System.EventHandler(this.CbDirectionsSelectedIndexChanged);
 			// 
 			// UDQuality
 			// 
@@ -849,7 +853,7 @@
 			this.CbLinePreview.AutoSize = true;
 			this.CbLinePreview.Checked = true;
 			this.CbLinePreview.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.TLP.SetColumnSpan(this.CbLinePreview, 2);
+			this.TLP.SetColumnSpan(this.CbLinePreview, 3);
 			this.CbLinePreview.Location = new System.Drawing.Point(3, 56);
 			this.CbLinePreview.Name = "CbLinePreview";
 			this.CbLinePreview.Size = new System.Drawing.Size(87, 17);
@@ -1363,6 +1367,16 @@
 			this.TxtLaserOn.TabIndex = 20;
 			this.TxtLaserOn.Text = "M3";
 			// 
+			// label8
+			// 
+			this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(116, 33);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(53, 13);
+			this.label8.TabIndex = 15;
+			this.label8.Text = "Lines/mm";
+			// 
 			// RasterToLaserForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1511,5 +1525,6 @@
 		private System.Windows.Forms.TextBox TxtLaserOff;
 		private System.Windows.Forms.Label label27;
 		private System.Windows.Forms.ComboBox CbDirections;
+		private System.Windows.Forms.Label label8;
 	}
 }
