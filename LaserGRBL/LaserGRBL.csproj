@@ -104,6 +104,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RasterConverter\ImageProcessor.cs" />
     <Compile Include="RasterConverter\ImageTransform.cs" />
     <Compile Include="RasterConverter\RasterToLaserForm.cs">
       <SubType>Form</SubType>
@@ -129,7 +130,9 @@
       <DependentUpon>ColorProgressBar.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ColorProgressBarDesigner.cs" />
-    <Compile Include="UserControls\ColorSlider.cs" />
+    <Compile Include="UserControls\ColorSlider.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\ColorSlider.Designer.cs">
       <DependentUpon>ColorSlider.cs</DependentUpon>
     </Compile>

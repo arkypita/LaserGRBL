@@ -62,7 +62,7 @@ namespace LaserGRBL
 				OnFileLoaded(elapsed, filename);
 		}
 
-		public void LoadImage(Bitmap image, string filename, int resolution, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff)
+		public void LoadImage(Bitmap image, string filename, int resolution, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, RasterConverter.ImageProcessor.Direction dir)
 		{
 			long start = Tools.HiResTimer.TotalMilliseconds;
 			mTotalTravelOff = 0;
@@ -72,64 +72,49 @@ namespace LaserGRBL
 			list.Clear();
 			mRange.ResetRange();
 			
-			
+			int X = 0;
+			int Y = 0;
 			int H = image.Height;
 			int W = image.Width;
-			bool mustG1 = false;
-			bool rtl = true; //right to left
+			int lastX = -1;
+			int lastY = -1;
+			int lastS = -1;
+			int lastF = -1;
+			bool lastLOn = false;
+			bool rtl = false;
 			
-			SetHeader(minPower, travelSpeed, ref mustG1);
-			int curSpeed = travelSpeed;
+			SetHeader(travelSpeed, ref lastX, ref lastY, ref lastS, ref lastF);
 			
-			for (int Y = H-1; Y >= 0; Y--) //per ogni linea dell'immagine
+			StartA(ref X, ref Y, W, H, dir);
+			while (ContinueA(X, Y, W, H, dir)) //per ogni linea dell'immagine
 			{
-				list.Add(new GrblCommand(lOn)); //accendi il laser
-				
-				int power = -1;
-				int startX = -1;
-				bool skip = false;
-				
-				for (int X = rtl ? 0 : W-1 ; rtl ? X < W : X >=0 ; X = (rtl ? X+1 : X-1) )
+				int prevS = -1;
+				for (StartB(ref X, ref Y, W, H, dir, rtl) ; ContinueB(X, Y, W, H, dir, rtl) ; StepB(ref X, ref Y, W, H, dir, rtl))
 				{
-					int pcolor = GetColor(image, X,Y, minPower, maxPower);
-					if (startX == -1)
+					//System.Diagnostics.Debug.WriteLine(String.Format("X:{0} Y:{1}", X, Y));
+					int curS = GetColor(image, X,Y, minPower, maxPower);
+					
+					if (prevS == -1)
+						prevS = curS;
+					
+					if (ColorChange(prevS, curS)) //if change of color
 					{
-						startX = X;
-						power = pcolor;
-					}
-					else
-					{
-						if (pcolor != power || X == (rtl ? W-1 : 0))
-						{
-							//inizia un segmento con nuovo colore
-							//oppure raggiunto il fine/inizio linea
-							
-							if (power == 0 && ((startX == 0 && X == W-1) || (startX == W-1 && X == 0))) //intera linea bianca
-							{
-								skip = true; //skip line
-							}
-							else
-							{
-								int newSpeed = (power == 0 ? travelSpeed : markSpeed);
-								if (curSpeed != newSpeed)
-									CreateSegment(power, rtl ? X : X+1, oX, resolution, ref mustG1, curSpeed = newSpeed);
-								else
-									CreateSegment(power, rtl ? X : X+1, oX, resolution, ref mustG1);
-							}
-							
-							startX = X;
-							power = pcolor;
-							mustG1 = false;
-						}
+						CreateSegment(prevS, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, true, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
+						prevS = curS;
 					}
 				}
 				
-				if (!skip)
-					rtl = !rtl;
+				//close to the end of line
+				CreateSegment(prevS, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, true, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
 				
-				list.Add(new GrblCommand(lOff)); //spegni il laser
-				IncrementY(H-Y, oY, resolution, ref mustG1, curSpeed = travelSpeed);
+				//move to new line
+				StepA(ref X, ref Y, W, H, dir);
+				CreateSegment(0, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, false, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
+				
+				rtl = !rtl; //invert rtl
 			}
+			
+			list.Add(new GrblCommand(lOff)); //laser OFF
 			
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
@@ -139,39 +124,125 @@ namespace LaserGRBL
 		}
 
 		
+
+		bool ColorChange(int prevS, int curS)
+		{return curS != prevS;}
+		
+		private void StartA(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
+		{
+			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
+				Y = H-1;
+			else
+				X = 0;
+		}
+
+		private void StepA(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
+		{
+			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
+				Y--;
+			else
+				X++;
+		}		
+		
+		private bool ContinueA(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
+		{
+			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
+				return Y >= 0;
+			else
+				return X < W;
+		}
+
+		private void StartB(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
+		{
+			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
+				X = rtl ? 0 : W-1;
+			else
+				Y = rtl ? H-1 : 0;
+		}
+
+		private void StepB(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
+		{
+			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
+				X = rtl ? X+1 : X-1;
+			else
+				Y = rtl ? Y-1 : Y+1;
+		}		
+		
+		private bool ContinueB(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
+		{
+			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
+				return rtl ? X < W : X >=0;
+			else
+				return rtl ? Y >= 0 : Y < H;
+		}
+
+		private int CorrectedX(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
+		{
+			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
+				return rtl ? X : X+1;
+			else
+				return X;
+		}
+		
+		private int CorrectedY(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
+		{
+			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
+				return H-1 - Y;
+			else
+				return rtl ? H - Y - 1 : H - Y;
+		}
+		
 		private int GetColor(Bitmap I, int X, int Y, int min, int max)
 		{
-			int rv = 255 - I.GetPixel(X, Y).R;
+			Color C = I.GetPixel(X, Y);
+			int rv = (255 - C.R) * C.A / 255;
 			return rv * (max - min) / 255  + min; //scale to range
 		}
 		
-		private void SetHeader(int power, int speed, ref bool mustG1)
+		private void SetHeader(int travelSpeed, ref int lastX, ref int lastY, ref int lastS, ref int lastF)
 		{
-			list.Add(new GrblCommand("G90")); 
-			list.Add(new GrblCommand(String.Format("F{0}", speed))); 
-			list.Add(new GrblCommand("G0 X0 Y0"));
-			list.Add(new GrblCommand(String.Format("M5 S{0}", power)));
-			mustG1 = true;
+			list.Add(new GrblCommand("G90"));
+			list.Add(new GrblCommand(String.Format("F{0}", travelSpeed))); 
+			list.Add(new GrblCommand("G0 X0 Y0")); //move to origin
+			list.Add(new GrblCommand(String.Format("M5 S0"))); //laser off and power to 0
+			
+			lastX = 0;
+			lastY = 0;
+			lastS = 0;
+			lastF = travelSpeed;
 		}
 		
-		private void LaserSpeed(int speed)
-		{list.Add(new GrblCommand(String.Format("F{0}", speed))); }
-		
-		private void IncrementY(int Y, int oY, int res, ref bool mustG1, int speed)
+		private void CreateSegment(int S, int X, int Y, int oX, int oY, int res, bool LaserOn, ref int lastX, ref int lastY, ref int lastS, ref int lastF, ref bool lastOO, string lOn, string lOff, int travelSpeed, int markSpeed)
 		{
-			list.Add(new GrblCommand(string.Format("G0 Y{0} F{1}", formatnumber(oY + (double)Y / (double)res), speed))); //muovi a posizione Y
-			mustG1 = true;
-		}
-		private void CreateSegment(int power, int X, int oX, int res, ref bool mustG1, int speed = 0)
-		{
-			string fcommand = speed > 0 ? string.Format(" F{0}", speed) : "";
+			StringBuilder sb = new StringBuilder("G1");
 			
-			if (mustG1)
-				list.Add(new GrblCommand(string.Format("G1 X{0} S{1}{2}", formatnumber(oX + (double)X / (double)res) , power, fcommand))); //il laser non si spegne durante tutto il movimento X
-			else
-				list.Add(new GrblCommand(string.Format("X{0} S{1}{2}", formatnumber(oX + (double)X / (double)res) , power, fcommand))); //il laser non si spegne durante tutto il movimento X
+			if (LaserOn != lastOO)
+			{
+				if (LaserOn)
+					list.Add(new GrblCommand(lOn));
+				else				
+					list.Add(new GrblCommand(lOff)); 
+				
+				lastOO = LaserOn;
+			}
 			
-			mustG1 = false;
+			int F = (S == 0 ? travelSpeed : markSpeed);
+			
+			if (X != lastX)
+				sb.Append(" X" + formatnumber(oX + (double)X / (double)res));
+			if (Y != lastY)
+				sb.Append(" Y" + formatnumber(oY + (double)Y / (double)res));
+			if (S != lastS)
+				sb.Append(" S" + S.ToString());
+			if (F != lastF)
+				sb.Append(" F" + F.ToString());
+			
+			list.Add(new GrblCommand(sb.ToString()));
+			
+			lastS = S;
+			lastF = F;
+			lastX = X;
+			lastY = Y;
 		}
 		
 		private string formatnumber(double number)

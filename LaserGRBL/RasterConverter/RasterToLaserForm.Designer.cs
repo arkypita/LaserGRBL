@@ -70,10 +70,11 @@
 			this.CbThreshold = new System.Windows.Forms.CheckBox();
 			this.GbLineToLineOptions = new System.Windows.Forms.GroupBox();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
+			this.CbDirections = new System.Windows.Forms.ComboBox();
 			this.UDQuality = new System.Windows.Forms.NumericUpDown();
-			this.label8 = new System.Windows.Forms.Label();
 			this.CbLinePreview = new System.Windows.Forms.CheckBox();
 			this.label5 = new System.Windows.Forms.Label();
+			this.label27 = new System.Windows.Forms.Label();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.RbVectorize = new System.Windows.Forms.RadioButton();
@@ -110,6 +111,7 @@
 			this.IIMaxPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label18 = new System.Windows.Forms.Label();
 			this.TxtLaserOn = new System.Windows.Forms.TextBox();
+			this.label8 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.Tp.SuspendLayout();
 			this.TpPreview.SuspendLayout();
@@ -145,7 +147,7 @@
 			// 
 			this.tableLayoutPanel1.ColumnCount = 3;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 236F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel1.Controls.Add(this.Tp, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.BtnCreate, 2, 1);
@@ -168,7 +170,7 @@
 			this.Tp.Location = new System.Drawing.Point(239, 3);
 			this.Tp.Name = "Tp";
 			this.Tp.SelectedIndex = 0;
-			this.Tp.Size = new System.Drawing.Size(670, 518);
+			this.Tp.Size = new System.Drawing.Size(670, 549);
 			this.Tp.TabIndex = 3;
 			// 
 			// TpPreview
@@ -177,7 +179,7 @@
 			this.TpPreview.Location = new System.Drawing.Point(4, 22);
 			this.TpPreview.Name = "TpPreview";
 			this.TpPreview.Padding = new System.Windows.Forms.Padding(3);
-			this.TpPreview.Size = new System.Drawing.Size(662, 492);
+			this.TpPreview.Size = new System.Drawing.Size(662, 523);
 			this.TpPreview.TabIndex = 0;
 			this.TpPreview.Text = "Preview";
 			this.TpPreview.UseVisualStyleBackColor = true;
@@ -188,7 +190,7 @@
 			this.PbConverted.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PbConverted.Location = new System.Drawing.Point(3, 3);
 			this.PbConverted.Name = "PbConverted";
-			this.PbConverted.Size = new System.Drawing.Size(656, 486);
+			this.PbConverted.Size = new System.Drawing.Size(656, 517);
 			this.PbConverted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.PbConverted.TabIndex = 0;
 			this.PbConverted.TabStop = false;
@@ -199,7 +201,7 @@
 			this.TpOriginal.Location = new System.Drawing.Point(4, 22);
 			this.TpOriginal.Name = "TpOriginal";
 			this.TpOriginal.Padding = new System.Windows.Forms.Padding(3);
-			this.TpOriginal.Size = new System.Drawing.Size(662, 492);
+			this.TpOriginal.Size = new System.Drawing.Size(662, 523);
 			this.TpOriginal.TabIndex = 1;
 			this.TpOriginal.Text = "Original";
 			this.TpOriginal.UseVisualStyleBackColor = true;
@@ -210,7 +212,7 @@
 			this.PbOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PbOriginal.Location = new System.Drawing.Point(3, 3);
 			this.PbOriginal.Name = "PbOriginal";
-			this.PbOriginal.Size = new System.Drawing.Size(656, 486);
+			this.PbOriginal.Size = new System.Drawing.Size(656, 517);
 			this.PbOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.PbOriginal.TabIndex = 0;
 			this.PbOriginal.TabStop = false;
@@ -218,9 +220,9 @@
 			// BtnCreate
 			// 
 			this.BtnCreate.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.BtnCreate.Location = new System.Drawing.Point(802, 527);
+			this.BtnCreate.Location = new System.Drawing.Point(835, 558);
 			this.BtnCreate.Name = "BtnCreate";
-			this.BtnCreate.Size = new System.Drawing.Size(107, 58);
+			this.BtnCreate.Size = new System.Drawing.Size(74, 27);
 			this.BtnCreate.TabIndex = 4;
 			this.BtnCreate.Text = "CREATE!";
 			this.BtnCreate.UseVisualStyleBackColor = true;
@@ -274,9 +276,9 @@
 			this.GbVectorizeOptions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.GbVectorizeOptions.Controls.Add(this.tableLayoutPanel5);
 			this.GbVectorizeOptions.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.GbVectorizeOptions.Location = new System.Drawing.Point(3, 385);
+			this.GbVectorizeOptions.Location = new System.Drawing.Point(3, 412);
 			this.GbVectorizeOptions.Name = "GbVectorizeOptions";
-			this.GbVectorizeOptions.Size = new System.Drawing.Size(210, 162);
+			this.GbVectorizeOptions.Size = new System.Drawing.Size(210, 143);
 			this.GbVectorizeOptions.TabIndex = 4;
 			this.GbVectorizeOptions.TabStop = false;
 			this.GbVectorizeOptions.Text = "Vectorize! Options";
@@ -344,7 +346,7 @@
 			0,
 			0,
 			0});
-			this.UDSpotRemoval.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.UDSpotRemoval.ValueChanged += new System.EventHandler(this.UDSpotRemoval_ValueChanged);
 			// 
 			// label23
 			// 
@@ -385,7 +387,7 @@
 			0,
 			0,
 			65536});
-			this.UDSmoothing.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.UDSmoothing.ValueChanged += new System.EventHandler(this.UDSmoothing_ValueChanged);
 			// 
 			// label24
 			// 
@@ -426,7 +428,7 @@
 			0,
 			0,
 			65536});
-			this.UDOptimize.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.UDOptimize.ValueChanged += new System.EventHandler(this.UDOptimize_ValueChanged);
 			// 
 			// CbSpotRemoval
 			// 
@@ -437,7 +439,7 @@
 			this.CbSpotRemoval.Size = new System.Drawing.Size(15, 14);
 			this.CbSpotRemoval.TabIndex = 25;
 			this.CbSpotRemoval.UseVisualStyleBackColor = true;
-			this.CbSpotRemoval.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbSpotRemoval.CheckedChanged += new System.EventHandler(this.CbSpotRemoval_CheckedChanged);
 			// 
 			// CbSmoothing
 			// 
@@ -448,7 +450,7 @@
 			this.CbSmoothing.Size = new System.Drawing.Size(15, 14);
 			this.CbSmoothing.TabIndex = 26;
 			this.CbSmoothing.UseVisualStyleBackColor = true;
-			this.CbSmoothing.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbSmoothing.CheckedChanged += new System.EventHandler(this.CbSmoothing_CheckedChanged);
 			// 
 			// CbOptimize
 			// 
@@ -459,7 +461,7 @@
 			this.CbOptimize.Size = new System.Drawing.Size(15, 14);
 			this.CbOptimize.TabIndex = 27;
 			this.CbOptimize.UseVisualStyleBackColor = true;
-			this.CbOptimize.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbOptimize.CheckedChanged += new System.EventHandler(this.CbOptimize_CheckedChanged);
 			// 
 			// CbShowDots
 			// 
@@ -473,7 +475,7 @@
 			this.CbShowDots.TabIndex = 28;
 			this.CbShowDots.Text = "Show Dots";
 			this.CbShowDots.UseVisualStyleBackColor = true;
-			this.CbShowDots.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbShowDots.CheckedChanged += new System.EventHandler(this.CbShowDots_CheckedChanged);
 			// 
 			// CbShowImage
 			// 
@@ -487,7 +489,7 @@
 			this.CbShowImage.TabIndex = 29;
 			this.CbShowImage.Text = "Show Image";
 			this.CbShowImage.UseVisualStyleBackColor = true;
-			this.CbShowImage.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbShowImage.CheckedChanged += new System.EventHandler(this.CbShowImage_CheckedChanged);
 			// 
 			// groupBox1
 			// 
@@ -568,7 +570,7 @@
 			this.CbMode.Name = "CbMode";
 			this.CbMode.Size = new System.Drawing.Size(136, 21);
 			this.CbMode.TabIndex = 2;
-			this.CbMode.SelectedIndexChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbMode.SelectedIndexChanged += new System.EventHandler(this.CbMode_SelectedIndexChanged);
 			// 
 			// TBRed
 			// 
@@ -591,7 +593,7 @@
 			this.TBRed.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
 			this.TBRed.ThumbSize = 10;
 			this.TBRed.Value = 100;
-			this.TBRed.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.TBRed.ValueChanged += new System.EventHandler(this.TBRed_ValueChanged);
 			this.TBRed.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
 			// 
 			// label14
@@ -653,7 +655,7 @@
 			this.TBGreen.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
 			this.TBGreen.ThumbSize = 10;
 			this.TBGreen.Value = 100;
-			this.TBGreen.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.TBGreen.ValueChanged += new System.EventHandler(this.TBGreen_ValueChanged);
 			this.TBGreen.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
 			// 
 			// TbBright
@@ -677,7 +679,7 @@
 			this.TbBright.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
 			this.TbBright.ThumbSize = 10;
 			this.TbBright.Value = 100;
-			this.TbBright.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.TbBright.ValueChanged += new System.EventHandler(this.TbBright_ValueChanged);
 			this.TbBright.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
 			// 
 			// TBBlue
@@ -701,7 +703,7 @@
 			this.TBBlue.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
 			this.TBBlue.ThumbSize = 10;
 			this.TBBlue.Value = 100;
-			this.TBBlue.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.TBBlue.ValueChanged += new System.EventHandler(this.TBBlue_ValueChanged);
 			this.TBBlue.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
 			// 
 			// TbContrast
@@ -725,7 +727,7 @@
 			this.TbContrast.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
 			this.TbContrast.ThumbSize = 10;
 			this.TbContrast.Value = 100;
-			this.TbContrast.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.TbContrast.ValueChanged += new System.EventHandler(this.TbContrast_ValueChanged);
 			this.TbContrast.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
 			// 
 			// label3
@@ -747,6 +749,7 @@
 			this.TbThreshold.BorderRoundRectSize = new System.Drawing.Size(8, 8);
 			this.TbThreshold.ElapsedInnerColor = System.Drawing.Color.White;
 			this.TbThreshold.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.TbThreshold.Enabled = false;
 			this.TbThreshold.LargeChange = ((uint)(5u));
 			this.TbThreshold.Location = new System.Drawing.Point(63, 186);
 			this.TbThreshold.Margin = new System.Windows.Forms.Padding(1);
@@ -756,7 +759,7 @@
 			this.TbThreshold.TabIndex = 14;
 			this.TbThreshold.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
 			this.TbThreshold.ThumbSize = 10;
-			this.TbThreshold.ValueChanged += new System.EventHandler(this.OnSelectorChange);
+			this.TbThreshold.ValueChanged += new System.EventHandler(this.TbThreshold_ValueChanged);
 			this.TbThreshold.DoubleClick += new System.EventHandler(this.OnThresholdDoubleClick);
 			// 
 			// CbThreshold
@@ -769,7 +772,7 @@
 			this.CbThreshold.TabIndex = 15;
 			this.CbThreshold.Text = "BW Threshold";
 			this.CbThreshold.UseVisualStyleBackColor = true;
-			this.CbThreshold.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbThreshold.CheckedChanged += new System.EventHandler(this.CbThreshold_CheckedChanged);
 			// 
 			// GbLineToLineOptions
 			// 
@@ -779,7 +782,7 @@
 			this.GbLineToLineOptions.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.GbLineToLineOptions.Location = new System.Drawing.Point(3, 311);
 			this.GbLineToLineOptions.Name = "GbLineToLineOptions";
-			this.GbLineToLineOptions.Size = new System.Drawing.Size(210, 68);
+			this.GbLineToLineOptions.Size = new System.Drawing.Size(210, 95);
 			this.GbLineToLineOptions.TabIndex = 2;
 			this.GbLineToLineOptions.TabStop = false;
 			this.GbLineToLineOptions.Text = "Line To Line Options";
@@ -791,24 +794,39 @@
 			this.TLP.ColumnCount = 3;
 			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.TLP.Controls.Add(this.UDQuality, 1, 0);
-			this.TLP.Controls.Add(this.label8, 2, 0);
-			this.TLP.Controls.Add(this.CbLinePreview, 1, 1);
-			this.TLP.Controls.Add(this.label5, 0, 0);
+			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.TLP.Controls.Add(this.CbDirections, 1, 0);
+			this.TLP.Controls.Add(this.UDQuality, 1, 1);
+			this.TLP.Controls.Add(this.CbLinePreview, 0, 2);
+			this.TLP.Controls.Add(this.label5, 0, 1);
+			this.TLP.Controls.Add(this.label27, 0, 0);
+			this.TLP.Controls.Add(this.label8, 2, 1);
 			this.TLP.Dock = System.Windows.Forms.DockStyle.Top;
 			this.TLP.Location = new System.Drawing.Point(3, 16);
 			this.TLP.Name = "TLP";
-			this.TLP.RowCount = 1;
+			this.TLP.RowCount = 2;
 			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.TLP.Size = new System.Drawing.Size(204, 49);
+			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.TLP.Size = new System.Drawing.Size(204, 76);
 			this.TLP.TabIndex = 0;
+			// 
+			// CbDirections
+			// 
+			this.CbDirections.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.TLP.SetColumnSpan(this.CbDirections, 2);
+			this.CbDirections.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbDirections.FormattingEnabled = true;
+			this.CbDirections.Location = new System.Drawing.Point(58, 3);
+			this.CbDirections.Name = "CbDirections";
+			this.CbDirections.Size = new System.Drawing.Size(143, 21);
+			this.CbDirections.TabIndex = 14;
+			this.CbDirections.SelectedIndexChanged += new System.EventHandler(this.CbDirectionsSelectedIndexChanged);
 			// 
 			// UDQuality
 			// 
-			this.UDQuality.Location = new System.Drawing.Point(45, 3);
+			this.UDQuality.Location = new System.Drawing.Point(55, 30);
 			this.UDQuality.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
 			this.UDQuality.Maximum = new decimal(new int[] {
 			10,
@@ -828,17 +846,7 @@
 			0,
 			0,
 			0});
-			this.UDQuality.ValueChanged += new System.EventHandler(this.OnSelectorChange);
-			// 
-			// label8
-			// 
-			this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(106, 6);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(49, 13);
-			this.label8.TabIndex = 8;
-			this.label8.Text = "lines/mm";
+			this.UDQuality.ValueChanged += new System.EventHandler(this.UDQuality_ValueChanged);
 			// 
 			// CbLinePreview
 			// 
@@ -846,23 +854,33 @@
 			this.CbLinePreview.Checked = true;
 			this.CbLinePreview.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.TLP.SetColumnSpan(this.CbLinePreview, 3);
-			this.CbLinePreview.Location = new System.Drawing.Point(3, 29);
+			this.CbLinePreview.Location = new System.Drawing.Point(3, 56);
 			this.CbLinePreview.Name = "CbLinePreview";
 			this.CbLinePreview.Size = new System.Drawing.Size(87, 17);
 			this.CbLinePreview.TabIndex = 12;
 			this.CbLinePreview.Text = "Line Preview";
 			this.CbLinePreview.UseVisualStyleBackColor = true;
-			this.CbLinePreview.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.CbLinePreview.CheckedChanged += new System.EventHandler(this.CbLinePreview_CheckedChanged);
 			// 
 			// label5
 			// 
 			this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(3, 6);
+			this.label5.Location = new System.Drawing.Point(3, 33);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(39, 13);
 			this.label5.TabIndex = 2;
 			this.label5.Text = "Quality";
+			// 
+			// label27
+			// 
+			this.label27.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label27.AutoSize = true;
+			this.label27.Location = new System.Drawing.Point(3, 7);
+			this.label27.Name = "label27";
+			this.label27.Size = new System.Drawing.Size(49, 13);
+			this.label27.TabIndex = 13;
+			this.label27.Text = "Direction";
 			// 
 			// groupBox4
 			// 
@@ -900,14 +918,13 @@
 			// 
 			this.RbVectorize.AutoSize = true;
 			this.tableLayoutPanel4.SetColumnSpan(this.RbVectorize, 3);
-			this.RbVectorize.Enabled = false;
 			this.RbVectorize.Location = new System.Drawing.Point(3, 26);
 			this.RbVectorize.Name = "RbVectorize";
 			this.RbVectorize.Size = new System.Drawing.Size(72, 17);
 			this.RbVectorize.TabIndex = 1;
 			this.RbVectorize.Text = "Vectorize!";
 			this.RbVectorize.UseVisualStyleBackColor = true;
-			this.RbVectorize.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.RbVectorize.CheckedChanged += new System.EventHandler(this.RbVectorize_CheckedChanged);
 			// 
 			// RbLineToLineTracing
 			// 
@@ -921,7 +938,7 @@
 			this.RbLineToLineTracing.TabStop = true;
 			this.RbLineToLineTracing.Text = "Line To Line Tracing";
 			this.RbLineToLineTracing.UseVisualStyleBackColor = true;
-			this.RbLineToLineTracing.CheckedChanged += new System.EventHandler(this.OnSelectorChange);
+			this.RbLineToLineTracing.CheckedChanged += new System.EventHandler(this.RbLineToLineTracing_CheckedChanged);
 			// 
 			// tabPage2
 			// 
@@ -1350,6 +1367,16 @@
 			this.TxtLaserOn.TabIndex = 20;
 			this.TxtLaserOn.Text = "M3";
 			// 
+			// label8
+			// 
+			this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(116, 33);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(53, 13);
+			this.label8.TabIndex = 15;
+			this.label8.Text = "Lines/mm";
+			// 
 			// RasterToLaserForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1362,6 +1389,8 @@
 			this.Name = "RasterToLaserForm";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.Text = "Import Raster Image";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RasterToLaserFormFormClosing);
+			this.Load += new System.EventHandler(this.RasterToLaserForm_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.Tp.ResumeLayout(false);
 			this.TpPreview.ResumeLayout(false);
@@ -1434,7 +1463,6 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.NumericUpDown UDQuality;
-		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Button BtnCreate;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label label13;
@@ -1495,5 +1523,8 @@
 		private System.Windows.Forms.Label label26;
 		private System.Windows.Forms.TextBox TxtLaserOn;
 		private System.Windows.Forms.TextBox TxtLaserOff;
+		private System.Windows.Forms.Label label27;
+		private System.Windows.Forms.ComboBox CbDirections;
+		private System.Windows.Forms.Label label8;
 	}
 }
