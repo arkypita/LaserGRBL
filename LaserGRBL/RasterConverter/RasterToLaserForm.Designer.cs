@@ -53,6 +53,7 @@
 			this.CbShowImage = new System.Windows.Forms.CheckBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.CbResize = new System.Windows.Forms.ComboBox();
 			this.label17 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.CbMode = new System.Windows.Forms.ComboBox();
@@ -68,6 +69,7 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.TbThreshold = new LaserGRBL.UserControls.ColorSlider();
 			this.CbThreshold = new System.Windows.Forms.CheckBox();
+			this.label28 = new System.Windows.Forms.Label();
 			this.GbLineToLineOptions = new System.Windows.Forms.GroupBox();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
 			this.CbDirections = new System.Windows.Forms.ComboBox();
@@ -75,6 +77,7 @@
 			this.CbLinePreview = new System.Windows.Forms.CheckBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label27 = new System.Windows.Forms.Label();
+			this.label8 = new System.Windows.Forms.Label();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.RbVectorize = new System.Windows.Forms.RadioButton();
@@ -111,7 +114,6 @@
 			this.IIMaxPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label18 = new System.Windows.Forms.Label();
 			this.TxtLaserOn = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.Tp.SuspendLayout();
 			this.TpPreview.SuspendLayout();
@@ -276,7 +278,7 @@
 			this.GbVectorizeOptions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.GbVectorizeOptions.Controls.Add(this.tableLayoutPanel5);
 			this.GbVectorizeOptions.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.GbVectorizeOptions.Location = new System.Drawing.Point(3, 412);
+			this.GbVectorizeOptions.Location = new System.Drawing.Point(3, 439);
 			this.GbVectorizeOptions.Name = "GbVectorizeOptions";
 			this.GbVectorizeOptions.Size = new System.Drawing.Size(210, 143);
 			this.GbVectorizeOptions.TabIndex = 4;
@@ -499,7 +501,7 @@
 			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBox1.Location = new System.Drawing.Point(3, 3);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(210, 231);
+			this.groupBox1.Size = new System.Drawing.Size(210, 258);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Parameters";
@@ -511,25 +513,27 @@
 			this.tableLayoutPanel2.ColumnCount = 2;
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel2.Controls.Add(this.label17, 0, 7);
-			this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-			this.tableLayoutPanel2.Controls.Add(this.CbMode, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.TBRed, 1, 1);
-			this.tableLayoutPanel2.Controls.Add(this.label14, 0, 1);
-			this.tableLayoutPanel2.Controls.Add(this.label16, 0, 3);
-			this.tableLayoutPanel2.Controls.Add(this.label15, 0, 2);
-			this.tableLayoutPanel2.Controls.Add(this.label2, 0, 4);
-			this.tableLayoutPanel2.Controls.Add(this.TBGreen, 1, 2);
-			this.tableLayoutPanel2.Controls.Add(this.TbBright, 1, 4);
-			this.tableLayoutPanel2.Controls.Add(this.TBBlue, 1, 3);
-			this.tableLayoutPanel2.Controls.Add(this.TbContrast, 1, 5);
-			this.tableLayoutPanel2.Controls.Add(this.label3, 0, 5);
-			this.tableLayoutPanel2.Controls.Add(this.TbThreshold, 1, 7);
-			this.tableLayoutPanel2.Controls.Add(this.CbThreshold, 0, 6);
+			this.tableLayoutPanel2.Controls.Add(this.CbResize, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.label17, 0, 8);
+			this.tableLayoutPanel2.Controls.Add(this.label1, 0, 1);
+			this.tableLayoutPanel2.Controls.Add(this.CbMode, 1, 1);
+			this.tableLayoutPanel2.Controls.Add(this.TBRed, 1, 2);
+			this.tableLayoutPanel2.Controls.Add(this.label14, 0, 2);
+			this.tableLayoutPanel2.Controls.Add(this.label16, 0, 4);
+			this.tableLayoutPanel2.Controls.Add(this.label15, 0, 3);
+			this.tableLayoutPanel2.Controls.Add(this.label2, 0, 5);
+			this.tableLayoutPanel2.Controls.Add(this.TBGreen, 1, 3);
+			this.tableLayoutPanel2.Controls.Add(this.TbBright, 1, 5);
+			this.tableLayoutPanel2.Controls.Add(this.TBBlue, 1, 4);
+			this.tableLayoutPanel2.Controls.Add(this.TbContrast, 1, 6);
+			this.tableLayoutPanel2.Controls.Add(this.label3, 0, 6);
+			this.tableLayoutPanel2.Controls.Add(this.TbThreshold, 1, 8);
+			this.tableLayoutPanel2.Controls.Add(this.CbThreshold, 0, 7);
+			this.tableLayoutPanel2.Controls.Add(this.label28, 0, 0);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-			this.tableLayoutPanel2.RowCount = 8;
+			this.tableLayoutPanel2.RowCount = 9;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -538,14 +542,27 @@
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(204, 212);
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(204, 239);
 			this.tableLayoutPanel2.TabIndex = 0;
+			// 
+			// CbResize
+			// 
+			this.CbResize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.CbResize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbResize.FormattingEnabled = true;
+			this.CbResize.Location = new System.Drawing.Point(65, 3);
+			this.CbResize.Name = "CbResize";
+			this.CbResize.Size = new System.Drawing.Size(136, 21);
+			this.CbResize.TabIndex = 17;
+			this.CbResize.SelectedIndexChanged += new System.EventHandler(this.CbResizeSelectedIndexChanged);
 			// 
 			// label17
 			// 
 			this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label17.AutoSize = true;
-			this.label17.Location = new System.Drawing.Point(3, 192);
+			this.label17.Location = new System.Drawing.Point(3, 219);
 			this.label17.Name = "label17";
 			this.label17.Size = new System.Drawing.Size(54, 13);
 			this.label17.TabIndex = 13;
@@ -555,18 +572,18 @@
 			// 
 			this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(3, 7);
+			this.label1.Location = new System.Drawing.Point(3, 34);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(34, 13);
+			this.label1.Size = new System.Drawing.Size(54, 13);
 			this.label1.TabIndex = 0;
-			this.label1.Text = "Mode";
+			this.label1.Text = "Grayscale";
 			// 
 			// CbMode
 			// 
 			this.CbMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.CbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbMode.FormattingEnabled = true;
-			this.CbMode.Location = new System.Drawing.Point(65, 3);
+			this.CbMode.Location = new System.Drawing.Point(65, 30);
 			this.CbMode.Name = "CbMode";
 			this.CbMode.Size = new System.Drawing.Size(136, 21);
 			this.CbMode.TabIndex = 2;
@@ -582,7 +599,7 @@
 			this.TBRed.ElapsedInnerColor = System.Drawing.Color.Red;
 			this.TBRed.ElapsedOuterColor = System.Drawing.Color.DarkRed;
 			this.TBRed.LargeChange = ((uint)(5u));
-			this.TBRed.Location = new System.Drawing.Point(63, 28);
+			this.TBRed.Location = new System.Drawing.Point(63, 55);
 			this.TBRed.Margin = new System.Windows.Forms.Padding(1);
 			this.TBRed.Maximum = 160;
 			this.TBRed.Minimum = 40;
@@ -600,7 +617,7 @@
 			// 
 			this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(3, 34);
+			this.label14.Location = new System.Drawing.Point(3, 61);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(27, 13);
 			this.label14.TabIndex = 6;
@@ -610,7 +627,7 @@
 			// 
 			this.label16.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label16.AutoSize = true;
-			this.label16.Location = new System.Drawing.Point(3, 88);
+			this.label16.Location = new System.Drawing.Point(3, 115);
 			this.label16.Name = "label16";
 			this.label16.Size = new System.Drawing.Size(28, 13);
 			this.label16.TabIndex = 11;
@@ -620,7 +637,7 @@
 			// 
 			this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label15.AutoSize = true;
-			this.label15.Location = new System.Drawing.Point(3, 61);
+			this.label15.Location = new System.Drawing.Point(3, 88);
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(36, 13);
 			this.label15.TabIndex = 8;
@@ -630,7 +647,7 @@
 			// 
 			this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(3, 115);
+			this.label2.Location = new System.Drawing.Point(3, 142);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(56, 13);
 			this.label2.TabIndex = 1;
@@ -644,7 +661,7 @@
 			this.TBGreen.BarOuterColor = System.Drawing.Color.DarkGreen;
 			this.TBGreen.BorderRoundRectSize = new System.Drawing.Size(8, 8);
 			this.TBGreen.LargeChange = ((uint)(5u));
-			this.TBGreen.Location = new System.Drawing.Point(63, 55);
+			this.TBGreen.Location = new System.Drawing.Point(63, 82);
 			this.TBGreen.Margin = new System.Windows.Forms.Padding(1);
 			this.TBGreen.Maximum = 160;
 			this.TBGreen.Minimum = 40;
@@ -668,7 +685,7 @@
 			this.TbBright.ElapsedInnerColor = System.Drawing.Color.White;
 			this.TbBright.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.TbBright.LargeChange = ((uint)(5u));
-			this.TbBright.Location = new System.Drawing.Point(63, 109);
+			this.TbBright.Location = new System.Drawing.Point(63, 136);
 			this.TbBright.Margin = new System.Windows.Forms.Padding(1);
 			this.TbBright.Maximum = 160;
 			this.TbBright.Minimum = 40;
@@ -692,7 +709,7 @@
 			this.TBBlue.ElapsedInnerColor = System.Drawing.Color.DodgerBlue;
 			this.TBBlue.ElapsedOuterColor = System.Drawing.Color.SteelBlue;
 			this.TBBlue.LargeChange = ((uint)(5u));
-			this.TBBlue.Location = new System.Drawing.Point(63, 82);
+			this.TBBlue.Location = new System.Drawing.Point(63, 109);
 			this.TBBlue.Margin = new System.Windows.Forms.Padding(1);
 			this.TBBlue.Maximum = 160;
 			this.TBBlue.Minimum = 40;
@@ -716,7 +733,7 @@
 			this.TbContrast.ElapsedInnerColor = System.Drawing.Color.White;
 			this.TbContrast.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.TbContrast.LargeChange = ((uint)(5u));
-			this.TbContrast.Location = new System.Drawing.Point(63, 136);
+			this.TbContrast.Location = new System.Drawing.Point(63, 163);
 			this.TbContrast.Margin = new System.Windows.Forms.Padding(1);
 			this.TbContrast.Maximum = 160;
 			this.TbContrast.Minimum = 40;
@@ -734,7 +751,7 @@
 			// 
 			this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(3, 142);
+			this.label3.Location = new System.Drawing.Point(3, 169);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(46, 13);
 			this.label3.TabIndex = 4;
@@ -751,7 +768,7 @@
 			this.TbThreshold.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.TbThreshold.Enabled = false;
 			this.TbThreshold.LargeChange = ((uint)(5u));
-			this.TbThreshold.Location = new System.Drawing.Point(63, 186);
+			this.TbThreshold.Location = new System.Drawing.Point(63, 213);
 			this.TbThreshold.Margin = new System.Windows.Forms.Padding(1);
 			this.TbThreshold.Name = "TbThreshold";
 			this.TbThreshold.Size = new System.Drawing.Size(140, 25);
@@ -766,7 +783,7 @@
 			// 
 			this.CbThreshold.AutoSize = true;
 			this.tableLayoutPanel2.SetColumnSpan(this.CbThreshold, 2);
-			this.CbThreshold.Location = new System.Drawing.Point(3, 165);
+			this.CbThreshold.Location = new System.Drawing.Point(3, 192);
 			this.CbThreshold.Name = "CbThreshold";
 			this.CbThreshold.Size = new System.Drawing.Size(94, 17);
 			this.CbThreshold.TabIndex = 15;
@@ -774,13 +791,23 @@
 			this.CbThreshold.UseVisualStyleBackColor = true;
 			this.CbThreshold.CheckedChanged += new System.EventHandler(this.CbThreshold_CheckedChanged);
 			// 
+			// label28
+			// 
+			this.label28.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label28.AutoSize = true;
+			this.label28.Location = new System.Drawing.Point(3, 7);
+			this.label28.Name = "label28";
+			this.label28.Size = new System.Drawing.Size(39, 13);
+			this.label28.TabIndex = 16;
+			this.label28.Text = "Resize";
+			// 
 			// GbLineToLineOptions
 			// 
 			this.GbLineToLineOptions.AutoSize = true;
 			this.GbLineToLineOptions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.GbLineToLineOptions.Controls.Add(this.TLP);
 			this.GbLineToLineOptions.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.GbLineToLineOptions.Location = new System.Drawing.Point(3, 311);
+			this.GbLineToLineOptions.Location = new System.Drawing.Point(3, 338);
 			this.GbLineToLineOptions.Name = "GbLineToLineOptions";
 			this.GbLineToLineOptions.Size = new System.Drawing.Size(210, 95);
 			this.GbLineToLineOptions.TabIndex = 2;
@@ -882,13 +909,23 @@
 			this.label27.TabIndex = 13;
 			this.label27.Text = "Direction";
 			// 
+			// label8
+			// 
+			this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(116, 33);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(53, 13);
+			this.label8.TabIndex = 15;
+			this.label8.Text = "Lines/mm";
+			// 
 			// groupBox4
 			// 
 			this.groupBox4.AutoSize = true;
 			this.groupBox4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.groupBox4.Controls.Add(this.tableLayoutPanel4);
 			this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox4.Location = new System.Drawing.Point(3, 240);
+			this.groupBox4.Location = new System.Drawing.Point(3, 267);
 			this.groupBox4.Name = "groupBox4";
 			this.groupBox4.Size = new System.Drawing.Size(210, 65);
 			this.groupBox4.TabIndex = 3;
@@ -1367,16 +1404,6 @@
 			this.TxtLaserOn.TabIndex = 20;
 			this.TxtLaserOn.Text = "M3";
 			// 
-			// label8
-			// 
-			this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(116, 33);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(53, 13);
-			this.label8.TabIndex = 15;
-			this.label8.Text = "Lines/mm";
-			// 
 			// RasterToLaserForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1526,5 +1553,7 @@
 		private System.Windows.Forms.Label label27;
 		private System.Windows.Forms.ComboBox CbDirections;
 		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.ComboBox CbResize;
+		private System.Windows.Forms.Label label28;
 	}
 }

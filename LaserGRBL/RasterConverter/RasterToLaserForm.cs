@@ -27,6 +27,12 @@ namespace LaserGRBL.RasterConverter
 			PbOriginal.Image = IP.Original;
 
 			IP.ImageReady += OnImageReady;
+			
+			CbResize.SuspendLayout();
+			CbResize.Items.Add(InterpolationMode.HighQualityBicubic);
+			CbResize.Items.Add(InterpolationMode.HighQualityBilinear);
+			CbResize.Items.Add(InterpolationMode.NearestNeighbor);
+			CbResize.ResumeLayout();
 			CbMode.SuspendLayout();
 			foreach (ImageTransform.Formula formula in Enum.GetValues(typeof(ImageTransform.Formula)))
 				CbMode.Items.Add(formula);
@@ -102,6 +108,7 @@ namespace LaserGRBL.RasterConverter
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.ShowDots.Enabled", CbShowDots.Checked);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", CbShowImage.Checked);
 
+			Settings.SetObject("GrayScaleConversion.Parameters.Interpolation", (InterpolationMode)CbResize.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.Parameters.Mode", (ImageTransform.Formula)CbMode.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.Parameters.R", TBRed.Value);
 			Settings.SetObject("GrayScaleConversion.Parameters.G", TBGreen.Value);
@@ -142,6 +149,7 @@ namespace LaserGRBL.RasterConverter
 			CbShowDots.Checked = IP.ShowDots = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowDots.Enabled", false);
 			CbShowImage.Checked = IP.ShowImage = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", true);
 
+			CbResize.SelectedItem = IP.Interpolation = (InterpolationMode)Settings.GetObject("GrayScaleConversion.Parameters.Interpolation", InterpolationMode.HighQualityBicubic);
 			CbMode.SelectedItem = IP.Formula = (ImageTransform.Formula)Settings.GetObject("GrayScaleConversion.Parameters.Mode", ImageTransform.Formula.SimpleAverage);
 			TBRed.Value = IP.Red = (int)Settings.GetObject("GrayScaleConversion.Parameters.R", 100);
 			TBGreen.Value = IP.Green = (int)Settings.GetObject("GrayScaleConversion.Parameters.G", 100);
@@ -266,8 +274,12 @@ namespace LaserGRBL.RasterConverter
 			IP.Suspend();
 			IP.Dispose();
 		}
+
 		void CbDirectionsSelectedIndexChanged(object sender, EventArgs e)
 		{ IP.LineDirection = (ImageProcessor.Direction)CbDirections.SelectedItem; }
+
+		void CbResizeSelectedIndexChanged(object sender, EventArgs e)
+		{ IP.Interpolation = (InterpolationMode)CbResize.SelectedItem; }
 
 	}
 }
