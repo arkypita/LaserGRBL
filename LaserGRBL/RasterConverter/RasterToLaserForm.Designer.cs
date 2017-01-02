@@ -71,7 +71,6 @@
 			this.GbLineToLineOptions = new System.Windows.Forms.GroupBox();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
 			this.UDQuality = new System.Windows.Forms.NumericUpDown();
-			this.label8 = new System.Windows.Forms.Label();
 			this.CbLinePreview = new System.Windows.Forms.CheckBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -110,6 +109,8 @@
 			this.IIMaxPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label18 = new System.Windows.Forms.Label();
 			this.TxtLaserOn = new System.Windows.Forms.TextBox();
+			this.label27 = new System.Windows.Forms.Label();
+			this.CbDirections = new System.Windows.Forms.ComboBox();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.Tp.SuspendLayout();
 			this.TpPreview.SuspendLayout();
@@ -274,9 +275,9 @@
 			this.GbVectorizeOptions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.GbVectorizeOptions.Controls.Add(this.tableLayoutPanel5);
 			this.GbVectorizeOptions.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.GbVectorizeOptions.Location = new System.Drawing.Point(3, 385);
+			this.GbVectorizeOptions.Location = new System.Drawing.Point(3, 412);
 			this.GbVectorizeOptions.Name = "GbVectorizeOptions";
-			this.GbVectorizeOptions.Size = new System.Drawing.Size(210, 162);
+			this.GbVectorizeOptions.Size = new System.Drawing.Size(210, 143);
 			this.GbVectorizeOptions.TabIndex = 4;
 			this.GbVectorizeOptions.TabStop = false;
 			this.GbVectorizeOptions.Text = "Vectorize! Options";
@@ -332,18 +333,18 @@
 			this.UDSpotRemoval.Enabled = false;
 			this.UDSpotRemoval.Location = new System.Drawing.Point(83, 3);
 			this.UDSpotRemoval.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
+			2,
+			0,
+			0,
+			0});
 			this.UDSpotRemoval.Name = "UDSpotRemoval";
 			this.UDSpotRemoval.Size = new System.Drawing.Size(54, 20);
 			this.UDSpotRemoval.TabIndex = 19;
 			this.UDSpotRemoval.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
+			2,
+			0,
+			0,
+			0});
 			this.UDSpotRemoval.ValueChanged += new System.EventHandler(this.UDSpotRemoval_ValueChanged);
 			// 
 			// label23
@@ -362,29 +363,29 @@
 			this.UDSmoothing.DecimalPlaces = 1;
 			this.UDSmoothing.Enabled = false;
 			this.UDSmoothing.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
+			1,
+			0,
+			0,
+			65536});
 			this.UDSmoothing.Location = new System.Drawing.Point(83, 29);
 			this.UDSmoothing.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+			10,
+			0,
+			0,
+			0});
 			this.UDSmoothing.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            65536});
+			10,
+			0,
+			0,
+			65536});
 			this.UDSmoothing.Name = "UDSmoothing";
 			this.UDSmoothing.Size = new System.Drawing.Size(54, 20);
 			this.UDSmoothing.TabIndex = 20;
 			this.UDSmoothing.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            65536});
+			10,
+			0,
+			0,
+			65536});
 			this.UDSmoothing.ValueChanged += new System.EventHandler(this.UDSmoothing_ValueChanged);
 			// 
 			// label24
@@ -403,29 +404,29 @@
 			this.UDOptimize.DecimalPlaces = 1;
 			this.UDOptimize.Enabled = false;
 			this.UDOptimize.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
+			1,
+			0,
+			0,
+			65536});
 			this.UDOptimize.Location = new System.Drawing.Point(83, 55);
 			this.UDOptimize.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+			10,
+			0,
+			0,
+			0});
 			this.UDOptimize.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            65536});
+			2,
+			0,
+			0,
+			65536});
 			this.UDOptimize.Name = "UDOptimize";
 			this.UDOptimize.Size = new System.Drawing.Size(54, 20);
 			this.UDOptimize.TabIndex = 21;
 			this.UDOptimize.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            65536});
+			2,
+			0,
+			0,
+			65536});
 			this.UDOptimize.ValueChanged += new System.EventHandler(this.UDOptimize_ValueChanged);
 			// 
 			// CbSpotRemoval
@@ -780,7 +781,7 @@
 			this.GbLineToLineOptions.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.GbLineToLineOptions.Location = new System.Drawing.Point(3, 311);
 			this.GbLineToLineOptions.Name = "GbLineToLineOptions";
-			this.GbLineToLineOptions.Size = new System.Drawing.Size(210, 68);
+			this.GbLineToLineOptions.Size = new System.Drawing.Size(210, 95);
 			this.GbLineToLineOptions.TabIndex = 2;
 			this.GbLineToLineOptions.TabStop = false;
 			this.GbLineToLineOptions.Text = "Line To Line Options";
@@ -789,65 +790,57 @@
 			// 
 			this.TLP.AutoSize = true;
 			this.TLP.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.TLP.ColumnCount = 3;
+			this.TLP.ColumnCount = 2;
 			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.TLP.Controls.Add(this.UDQuality, 1, 0);
-			this.TLP.Controls.Add(this.label8, 2, 0);
-			this.TLP.Controls.Add(this.CbLinePreview, 1, 1);
-			this.TLP.Controls.Add(this.label5, 0, 0);
+			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.TLP.Controls.Add(this.CbDirections, 1, 0);
+			this.TLP.Controls.Add(this.UDQuality, 1, 1);
+			this.TLP.Controls.Add(this.CbLinePreview, 1, 2);
+			this.TLP.Controls.Add(this.label5, 0, 1);
+			this.TLP.Controls.Add(this.label27, 0, 0);
 			this.TLP.Dock = System.Windows.Forms.DockStyle.Top;
 			this.TLP.Location = new System.Drawing.Point(3, 16);
 			this.TLP.Name = "TLP";
-			this.TLP.RowCount = 1;
+			this.TLP.RowCount = 2;
 			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.TLP.Size = new System.Drawing.Size(204, 49);
+			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.TLP.Size = new System.Drawing.Size(204, 76);
 			this.TLP.TabIndex = 0;
 			// 
 			// UDQuality
 			// 
-			this.UDQuality.Location = new System.Drawing.Point(45, 3);
+			this.UDQuality.Location = new System.Drawing.Point(55, 30);
 			this.UDQuality.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
 			this.UDQuality.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+			10,
+			0,
+			0,
+			0});
 			this.UDQuality.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+			1,
+			0,
+			0,
+			0});
 			this.UDQuality.Name = "UDQuality";
 			this.UDQuality.Size = new System.Drawing.Size(55, 20);
 			this.UDQuality.TabIndex = 7;
 			this.UDQuality.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
+			3,
+			0,
+			0,
+			0});
 			this.UDQuality.ValueChanged += new System.EventHandler(this.UDQuality_ValueChanged);
-			// 
-			// label8
-			// 
-			this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(106, 6);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(49, 13);
-			this.label8.TabIndex = 8;
-			this.label8.Text = "lines/mm";
 			// 
 			// CbLinePreview
 			// 
 			this.CbLinePreview.AutoSize = true;
 			this.CbLinePreview.Checked = true;
 			this.CbLinePreview.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.TLP.SetColumnSpan(this.CbLinePreview, 3);
-			this.CbLinePreview.Location = new System.Drawing.Point(3, 29);
+			this.TLP.SetColumnSpan(this.CbLinePreview, 2);
+			this.CbLinePreview.Location = new System.Drawing.Point(3, 56);
 			this.CbLinePreview.Name = "CbLinePreview";
 			this.CbLinePreview.Size = new System.Drawing.Size(87, 17);
 			this.CbLinePreview.TabIndex = 12;
@@ -859,7 +852,7 @@
 			// 
 			this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(3, 6);
+			this.label5.Location = new System.Drawing.Point(3, 33);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(39, 13);
 			this.label5.TabIndex = 2;
@@ -1350,6 +1343,26 @@
 			this.TxtLaserOn.TabIndex = 20;
 			this.TxtLaserOn.Text = "M3";
 			// 
+			// label27
+			// 
+			this.label27.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label27.AutoSize = true;
+			this.label27.Location = new System.Drawing.Point(3, 7);
+			this.label27.Name = "label27";
+			this.label27.Size = new System.Drawing.Size(49, 13);
+			this.label27.TabIndex = 13;
+			this.label27.Text = "Direction";
+			// 
+			// CbDirections
+			// 
+			this.CbDirections.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.CbDirections.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbDirections.FormattingEnabled = true;
+			this.CbDirections.Location = new System.Drawing.Point(58, 3);
+			this.CbDirections.Name = "CbDirections";
+			this.CbDirections.Size = new System.Drawing.Size(143, 21);
+			this.CbDirections.TabIndex = 14;
+			// 
 			// RasterToLaserForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1435,7 +1448,6 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.NumericUpDown UDQuality;
-		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Button BtnCreate;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label label13;
@@ -1496,5 +1508,7 @@
 		private System.Windows.Forms.Label label26;
 		private System.Windows.Forms.TextBox TxtLaserOn;
 		private System.Windows.Forms.TextBox TxtLaserOff;
+		private System.Windows.Forms.Label label27;
+		private System.Windows.Forms.ComboBox CbDirections;
 	}
 }

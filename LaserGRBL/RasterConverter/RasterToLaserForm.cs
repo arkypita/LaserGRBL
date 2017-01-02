@@ -23,17 +23,19 @@ namespace LaserGRBL.RasterConverter
 			mFile = file;
 			mFileName = filename;
 
-			Image img = Image.FromFile(filename);
-			IP = new ImageProcessor(this, img, PbConverted.Size);
+			IP = new ImageProcessor(this,  Image.FromFile(filename), PbConverted.Size);
 			PbOriginal.Image = IP.Original;
 
 			IP.ImageReady += OnImageReady;
 			CbMode.SuspendLayout();
-			CbMode.Items.Add(ImageTransform.Formula.SimpleAverage);
-			CbMode.Items.Add(ImageTransform.Formula.WeightAverage);
-			CbMode.SelectedItem = ImageTransform.Formula.SimpleAverage;
+			foreach (ImageTransform.Formula formula in Enum.GetValues(typeof(ImageTransform.Formula)))
+				CbMode.Items.Add(formula);
 			CbMode.ResumeLayout();
-
+			CbDirections.SuspendLayout();
+			foreach (ImageProcessor.Direction direction in Enum.GetValues(typeof(ImageProcessor.Direction)))
+				CbDirections.Items.Add(direction);
+			CbDirections.ResumeLayout();
+			
 			IISizeW.CurrentValue = 50;
 			IISizeH.CurrentValue = IP.WidthToHeight(50);
 			
@@ -71,7 +73,7 @@ namespace LaserGRBL.RasterConverter
 			if (RbLineToLineTracing.Checked)
 			{
 				using (Bitmap bmp = IP.CreateTarget(new Size(IISizeW.CurrentValue * (int)IP.Quality, IISizeH.CurrentValue * (int)IP.Quality)))
-					mFile.LoadImage(bmp, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue, IIMinPower.CurrentValue, IIMaxPower.CurrentValue, TxtLaserOn.Text, TxtLaserOff.Text);
+					mFile.LoadImage(bmp, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue, IIMinPower.CurrentValue, IIMaxPower.CurrentValue, TxtLaserOn.Text, TxtLaserOff.Text, (ImageProcessor.Direction)CbDirections.SelectedItem);
 			}
 			else if (RbVectorize.Checked)
 			{
@@ -86,6 +88,8 @@ namespace LaserGRBL.RasterConverter
 		{
 			Settings.SetObject("GrayScaleConversion.RasterConversionTool", RbLineToLineTracing.Checked ? ImageProcessor.Tool.Line2Line : ImageProcessor.Tool.Vectorize);
 
+			
+			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Direction", (ImageProcessor.Direction)CbDirections.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Quality", UDQuality.Value);
 			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Preview", CbLinePreview.Checked);
 
@@ -125,6 +129,7 @@ namespace LaserGRBL.RasterConverter
 			else
 				RbVectorize.Checked = true;
 
+			CbDirections.SelectedItem = (ImageProcessor.Direction)Settings.GetObject("GrayScaleConversion.Line2LineOptions.Direction", ImageProcessor.Direction.Horizontal);
 			UDQuality.Value = IP.Quality = (decimal)Settings.GetObject("GrayScaleConversion.Line2LineOptions.Quality", 3m);
 			CbLinePreview.Checked = IP.LinePreview = (bool)Settings.GetObject("GrayScaleConversion.Line2LineOptions.Preview", false);
 

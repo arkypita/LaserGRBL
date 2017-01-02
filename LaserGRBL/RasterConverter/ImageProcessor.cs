@@ -10,7 +10,7 @@ using CsPotrace;
 
 namespace LaserGRBL.RasterConverter
 {
-	class ImageProcessor
+	public class ImageProcessor
 	{
 		public delegate void ImageReadyDlg(Image img);
 		public event ImageReadyDlg ImageReady;
@@ -25,6 +25,9 @@ namespace LaserGRBL.RasterConverter
 
 		public enum Tool
 		{ Line2Line, Vectorize }
+		
+		public enum Direction
+		{ Horizontal, Vertical, Diagonal }
 
 		public ImageProcessor(Control sincro, Image source, Size boxSize)
 		{
