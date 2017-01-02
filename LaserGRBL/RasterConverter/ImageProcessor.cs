@@ -40,7 +40,7 @@ namespace LaserGRBL.RasterConverter
 			mSincro = sincro;
 			mOriginal = source;
 			mTargetSize = CalculateResizeToFit(source.Size, boxSize);
-			mResized = ImageTransform.ResizeImage(mOriginal, mTargetSize, false);
+			mResized = ImageTransform.ResizeImage(mOriginal, mTargetSize, false, Interpolation);
 		}
 
 		public void Suspend()
@@ -57,6 +57,21 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
+		private InterpolationMode mInterpolation = InterpolationMode.HighQualityBicubic;
+		public InterpolationMode Interpolation
+		{
+			get{return mInterpolation;}
+			set 
+			{
+				if (value != mInterpolation)
+				{
+					mInterpolation = value;
+					mResized = ImageTransform.ResizeImage(mOriginal, mTargetSize, false, Interpolation);
+					Refresh();
+				}
+			}
+		}
+		
 		private Tool mTool;
 		public Tool SelectedTool
 		{
@@ -408,7 +423,7 @@ namespace LaserGRBL.RasterConverter
 
 		private Bitmap ProduceBitmap(Image img, Size size, bool force)
 		{
-			using (Bitmap resized = ImageTransform.ResizeImage(img, size, false))
+			using (Bitmap resized = ImageTransform.ResizeImage(img, size, false, Interpolation))
 			{
 				if (MustExit && !force)
 					return null;

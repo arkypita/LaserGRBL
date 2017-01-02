@@ -12,7 +12,7 @@ namespace LaserGRBL.RasterConverter
 {
 	public class ImageTransform
 	{
-		public static Bitmap ResizeImage(Image image, Size size, bool killalfa)
+		public static Bitmap ResizeImage(Image image, Size size, bool killalfa, InterpolationMode interpolation)
 		{
 			if (image.Size == size)
 				return new Bitmap(image);
@@ -29,13 +29,15 @@ namespace LaserGRBL.RasterConverter
 				
 				
 				if (killalfa)
-					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+					g.CompositingMode = CompositingMode.SourceOver;
 				else
-					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+					g.CompositingMode = CompositingMode.SourceCopy;
 				
-				g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-				g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-				g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+				g.CompositingQuality = CompositingQuality.HighQuality;
+				g.SmoothingMode = SmoothingMode.HighQuality;
+				g.InterpolationMode = interpolation;
+
+				
 				g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
 
 				using (var wrapMode = new System.Drawing.Imaging.ImageAttributes())
