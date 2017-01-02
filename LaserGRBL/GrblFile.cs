@@ -89,7 +89,8 @@ namespace LaserGRBL
 			while (ContinueA(X, Y, W, H, dir)) //per ogni linea dell'immagine
 			{
 				int prevS = -1;
-				for (StartB(ref X, ref Y, W, H, dir, rtl) ; ContinueB(X, Y, W, H, dir, rtl) ; StepB(ref X, ref Y, W, H, dir, rtl))
+				StartB(ref X, ref Y, W, H, dir, rtl);
+				while (ContinueB(X, Y, W, H, dir, rtl))
 				{
 					//System.Diagnostics.Debug.WriteLine(String.Format("X:{0} Y:{1}", X, Y));
 					int curS = GetColor(image, X,Y, minPower, maxPower);
@@ -102,6 +103,8 @@ namespace LaserGRBL
 						CreateSegment(prevS, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, true, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
 						prevS = curS;
 					}
+					
+					StepB(ref X, ref Y, W, H, dir, rtl);
 				}
 				
 				//close to the end of line
