@@ -334,6 +334,17 @@ namespace LaserGRBL.RasterConverter
 			else
 				BW.RunWorkerAsync();
 		}
+		
+		public void Dispose()
+		{
+			BW.RunWorkerCompleted -= BW_RunWorkerCompleted;
+			BW.DoWork -= BW_DoWork;
+			
+			if (BW.IsBusy)
+				BW.CancelAsync();	
+	
+			BW.Dispose();
+		}
 
 		private void RiseReady(Image img)
 		{

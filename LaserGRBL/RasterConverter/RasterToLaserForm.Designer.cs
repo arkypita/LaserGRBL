@@ -70,9 +70,11 @@
 			this.CbThreshold = new System.Windows.Forms.CheckBox();
 			this.GbLineToLineOptions = new System.Windows.Forms.GroupBox();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
+			this.CbDirections = new System.Windows.Forms.ComboBox();
 			this.UDQuality = new System.Windows.Forms.NumericUpDown();
 			this.CbLinePreview = new System.Windows.Forms.CheckBox();
 			this.label5 = new System.Windows.Forms.Label();
+			this.label27 = new System.Windows.Forms.Label();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.RbVectorize = new System.Windows.Forms.RadioButton();
@@ -109,8 +111,6 @@
 			this.IIMaxPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label18 = new System.Windows.Forms.Label();
 			this.TxtLaserOn = new System.Windows.Forms.TextBox();
-			this.label27 = new System.Windows.Forms.Label();
-			this.CbDirections = new System.Windows.Forms.ComboBox();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.Tp.SuspendLayout();
 			this.TpPreview.SuspendLayout();
@@ -810,6 +810,16 @@
 			this.TLP.Size = new System.Drawing.Size(204, 76);
 			this.TLP.TabIndex = 0;
 			// 
+			// CbDirections
+			// 
+			this.CbDirections.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.CbDirections.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbDirections.FormattingEnabled = true;
+			this.CbDirections.Location = new System.Drawing.Point(58, 3);
+			this.CbDirections.Name = "CbDirections";
+			this.CbDirections.Size = new System.Drawing.Size(143, 21);
+			this.CbDirections.TabIndex = 14;
+			// 
 			// UDQuality
 			// 
 			this.UDQuality.Location = new System.Drawing.Point(55, 30);
@@ -857,6 +867,16 @@
 			this.label5.Size = new System.Drawing.Size(39, 13);
 			this.label5.TabIndex = 2;
 			this.label5.Text = "Quality";
+			// 
+			// label27
+			// 
+			this.label27.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label27.AutoSize = true;
+			this.label27.Location = new System.Drawing.Point(3, 7);
+			this.label27.Name = "label27";
+			this.label27.Size = new System.Drawing.Size(49, 13);
+			this.label27.TabIndex = 13;
+			this.label27.Text = "Direction";
 			// 
 			// groupBox4
 			// 
@@ -1343,26 +1363,6 @@
 			this.TxtLaserOn.TabIndex = 20;
 			this.TxtLaserOn.Text = "M3";
 			// 
-			// label27
-			// 
-			this.label27.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label27.AutoSize = true;
-			this.label27.Location = new System.Drawing.Point(3, 7);
-			this.label27.Name = "label27";
-			this.label27.Size = new System.Drawing.Size(49, 13);
-			this.label27.TabIndex = 13;
-			this.label27.Text = "Direction";
-			// 
-			// CbDirections
-			// 
-			this.CbDirections.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.CbDirections.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CbDirections.FormattingEnabled = true;
-			this.CbDirections.Location = new System.Drawing.Point(58, 3);
-			this.CbDirections.Name = "CbDirections";
-			this.CbDirections.Size = new System.Drawing.Size(143, 21);
-			this.CbDirections.TabIndex = 14;
-			// 
 			// RasterToLaserForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1375,6 +1375,7 @@
 			this.Name = "RasterToLaserForm";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.Text = "Import Raster Image";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RasterToLaserFormFormClosing);
 			this.Load += new System.EventHandler(this.RasterToLaserForm_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.Tp.ResumeLayout(false);

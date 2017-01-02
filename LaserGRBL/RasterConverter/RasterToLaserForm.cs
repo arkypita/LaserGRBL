@@ -260,6 +260,12 @@ namespace LaserGRBL.RasterConverter
 
 		private void RasterToLaserForm_Load(object sender, EventArgs e)
 		{IP.Resume();}
+		
+		void RasterToLaserFormFormClosing(object sender, FormClosingEventArgs e)
+		{
+			IP.Suspend();
+			IP.Dispose();
+		}
 
 	}
 }

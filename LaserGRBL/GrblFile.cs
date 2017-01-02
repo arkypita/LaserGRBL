@@ -81,16 +81,15 @@ namespace LaserGRBL
 			int lastS = -1;
 			int lastF = -1;
 			bool lastLOn = false;
+			bool rtl = false;
 			
 			SetHeader(travelSpeed, ref lastX, ref lastY, ref lastS, ref lastF);
+			
 			StartA(ref X, ref Y, W, H, dir);
 			while (ContinueA(X, Y, W, H, dir)) //per ogni linea dell'immagine
 			{
 				int prevS = -1;
-				bool IncrementLine = true;
-			
-				StartB(ref X, ref Y, W, H, dir);
-				while (ContinueB(X, Y, W, H, dir))
+				for (StartB(ref X, ref Y, W, H, dir, rtl) ; ContinueB(X, Y, W, H, dir, rtl) ; StepB(ref X, ref Y, W, H, dir, rtl))
 				{
 					//System.Diagnostics.Debug.WriteLine(String.Format("X:{0} Y:{1}", X, Y));
 					int curS = GetColor(image, X,Y, minPower, maxPower);
@@ -98,23 +97,21 @@ namespace LaserGRBL
 					if (prevS == -1)
 						prevS = curS;
 					
-					if (curS != prevS || !ContinueB(X, Y, W, H, dir)) //if change of color or end of line -> emit segment of color
+					if (ColorChange(prevS, curS)) //if change of color
 					{
-						int curF = (prevS == 0 ? travelSpeed : markSpeed);
-						CreateSegment(prevS, CorrectedX(X, Y, W, H, dir), CorrectedY(X, Y, W, H, dir), oX, oY, resolution, curF, !IncrementLine, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff);
-						IncrementLine = false;
+						CreateSegment(prevS, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, true, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
 						prevS = curS;
 					}
-					
-					StepB(ref X, ref Y, W, H, dir);
 				}
-	
-				StepA(ref X, ref Y, W, H, dir);
 				
-				//laser OFF
-				//list.Add(new GrblCommand(lOff)); 
-				//step to next line - without mark
-				//CreateSegment(0, CorrectedX(X, Y, W, H, dir), CorrectedY(X, Y, W, H, dir), oX, oY, resolution, travelSpeed, ref lastX, ref lastY, ref lastS, ref lastF);
+				//close to the end of line
+				CreateSegment(prevS, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, true, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
+				
+				//move to new line
+				StepA(ref X, ref Y, W, H, dir);
+				CreateSegment(0, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, false, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
+				
+				rtl = !rtl; //invert rtl
 			}
 			
 			list.Add(new GrblCommand(lOff)); //laser OFF
@@ -128,7 +125,8 @@ namespace LaserGRBL
 
 		
 
-		
+		bool ColorChange(int prevS, int curS)
+		{return curS != prevS;}
 		
 		private void StartA(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
 		{
@@ -154,49 +152,44 @@ namespace LaserGRBL
 				return X < W;
 		}
 
-		private void StartB(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
+		private void StartB(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
-				X = ReverseMove(Y) ? 0 : W-1;
+				X = rtl ? 0 : W-1;
 			else
-				Y = ReverseMove(X) ? H-1 : 0;
+				Y = rtl ? H-1 : 0;
 		}
 
-		private void StepB(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
+		private void StepB(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
-				X = ReverseMove(Y) ? X+1 : X-1;
+				X = rtl ? X+1 : X-1;
 			else
-				Y = ReverseMove(X) ? Y-1 : Y+1;
+				Y = rtl ? Y-1 : Y+1;
 		}		
 		
-		private bool ContinueB(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
+		private bool ContinueB(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
-				return ReverseMove(Y) ? X < W : X >=0;
+				return rtl ? X < W : X >=0;
 			else
-				return ReverseMove(X) ? Y >= 0 : Y < H;
+				return rtl ? Y >= 0 : Y < H;
 		}
 
-		private int CorrectedX(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
+		private int CorrectedX(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
-				return ReverseMove(Y) ? X - 1 : X;
+				return rtl ? X : X+1;
 			else
 				return X;
 		}
 		
-		private int CorrectedY(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
+		private int CorrectedY(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
-				return H - Y;
+				return H-1 - Y;
 			else
-				return ReverseMove(X) ? H - Y - 1 : H - Y;
-		}
-		
-		private bool ReverseMove(int Val)
-		{
-			return Val % 2 == 1;
+				return rtl ? H - Y - 1 : H - Y;
 		}
 		
 		private int GetColor(Bitmap I, int X, int Y, int min, int max)
@@ -219,7 +212,7 @@ namespace LaserGRBL
 			lastF = travelSpeed;
 		}
 		
-		private void CreateSegment(int S, int X, int Y, int oX, int oY, int res, int F, bool LaserOn, ref int lastX, ref int lastY, ref int lastS, ref int lastF, ref bool lastOO, string lOn, string lOff)
+		private void CreateSegment(int S, int X, int Y, int oX, int oY, int res, bool LaserOn, ref int lastX, ref int lastY, ref int lastS, ref int lastF, ref bool lastOO, string lOn, string lOff, int travelSpeed, int markSpeed)
 		{
 			StringBuilder sb = new StringBuilder("G1");
 			
@@ -232,6 +225,8 @@ namespace LaserGRBL
 				
 				lastOO = LaserOn;
 			}
+			
+			int F = (S == 0 ? travelSpeed : markSpeed);
 			
 			if (X != lastX)
 				sb.Append(" X" + formatnumber(oX + (double)X / (double)res));
