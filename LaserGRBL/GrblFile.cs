@@ -62,6 +62,21 @@ namespace LaserGRBL
 				OnFileLoaded(elapsed, filename);
 		}
 
+		private class ColorPoint
+		{
+			public int Color = -1;
+			public int X = 0;
+			public int Y = 0;
+			
+			public bool segend = false;
+			public bool colorchange = false;
+			public bool imageend = false;
+			
+			public int traceColor = 0;
+			public double traceX = 0;
+			public double traceY = 0;
+		}
+		
 		public void LoadImage(Bitmap image, string filename, int resolution, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, RasterConverter.ImageProcessor.Direction dir)
 		{
 			
@@ -75,8 +90,8 @@ namespace LaserGRBL
 			list.Clear();
 			mRange.ResetRange();
 			
-			int X = 0;
-			int Y = 0;
+			//int X = 0;
+			//int Y = 0;
 			int H = image.Height;
 			int W = image.Width;
 			int lastX = -1;
@@ -88,37 +103,51 @@ namespace LaserGRBL
 			
 			SetHeader(travelSpeed, CorrectedX(oX, oY, W, H, dir, rtl), CorrectedY(oX, oY, W, H, dir, rtl), ref lastX, ref lastY, ref lastS, ref lastF);
 			
-			StartA(ref X, ref Y, W, H, dir);
-			while (ContinueA(X, Y, W, H, dir)) //per ogni linea dell'immagine
+			ColorPoint cp = new ColorPoint(); //get first point
+			while(GetNextPoint(cp, image, dir))
 			{
-				int prevS = -1;
-				StartB(ref X, ref Y, W, H, dir, rtl);
-				while (ContinueB(X, Y, W, H, dir, rtl))
-				{
-					//System.Diagnostics.Debug.WriteLine(String.Format("X:{0} Y:{1}", X, Y));
-					int curS = GetColor(image, X, Y, minPower, maxPower);
-					
-					if (prevS == -1)
-						prevS = curS;
-					
-					if (ColorChange(prevS, curS)) //if change of color
-					{
-						CreateSegment(prevS, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, true, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
-						prevS = curS;
-					}
-					
-					StepB(ref X, ref Y, W, H, dir, rtl);
-				}
+				if (cp.segend || cp.imageend)
+					CreateSegment(cp.traceColor, CorrectedX(cp.X, cp.Y, W, H, dir, rtl), CorrectedY(cp.X, cp.Y, W, H, dir, rtl), oX, oY, resolution, false, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
+				if (cp.colorchange)
+					CreateSegment(cp.traceColor, CorrectedX(cp.X, cp.Y, W, H, dir, rtl), CorrectedY(cp.X, cp.Y, W, H, dir, rtl), oX, oY, resolution, true, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
 				
-				//close to the end of line
-				CreateSegment(prevS, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, true, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
+				System.Diagnostics.Debug.WriteLine(String.Format("X:{0} Y:{1} C:{2} S:{3} I:{4}", cp.X, cp.Y, cp.colorchange, cp.segend, cp.imageend));
 				
-				//move to new line
-				StepA(ref X, ref Y, W, H, dir);
-				CreateSegment(0, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, false, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
-				
-				rtl = !rtl; //invert rtl
+				if (cp.segend)
+					rtl = !rtl;
 			}
+			
+//			StartA(ref X, ref Y, W, H, dir);
+//			while (ContinueA(X, Y, W, H, dir)) //per ogni linea dell'immagine
+//			{
+//				int prevS = -1;
+//				StartB(ref X, ref Y, W, H, dir, rtl);
+//				while (ContinueB(X, Y, W, H, dir, rtl))
+//				{
+//					//System.Diagnostics.Debug.WriteLine(String.Format("X:{0} Y:{1}", X, Y));
+//					int curS = GetColor(image, X, Y, minPower, maxPower);
+//					
+//					if (prevS == -1)
+//						prevS = curS;
+//					
+//					if (ColorChange(prevS, curS)) //if change of color
+//					{
+//						CreateSegment(prevS, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, true, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
+//						prevS = curS;
+//					}
+//					
+//					StepB(ref X, ref Y, W, H, dir, rtl);
+//				}
+//				
+//				//close to the end of line
+//				CreateSegment(prevS, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, true, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
+//				
+//				//move to new line
+//				StepA(ref X, ref Y, W, H, dir);
+//				CreateSegment(0, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, false, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
+//				
+//				rtl = !rtl; //invert rtl
+//			}
 			
 			list.Add(new GrblCommand(lOff)); //laser OFF
 			
@@ -129,8 +158,69 @@ namespace LaserGRBL
 				OnFileLoaded(elapsed, filename);
 		}
 
+		private bool GetNextPoint(ColorPoint rv, Bitmap image, RasterConverter.ImageProcessor.Direction dir)
+		{
+			if (rv.imageend) //if prev was at the end of image, return false
+				return false;
+			
+			
+			//move to the next point
+			if (dir == RasterConverter.ImageProcessor.Direction.Horizontal)
+			{
+				if (rv.segend)		//if prev point was at segment end
+					rv.Y++;			//increment row
+				
+				if (!rv.segend)		//do not change column when segend
+				{
+					if (IsOdd(rv.Y))	//odd row -> go backward
+						rv.X--;			//decrement column
+					else				//even row -> go forward
+						rv.X++;			//increment column
+				}
+				
+				if (IsOdd(rv.Y))	//odd row
+					rv.segend = (rv.X == 0);
+				else				//even row
+					rv.segend = (rv.X == image.Width - 1);
+				
+				if (rv.Y == image.Height - 1)	//last row
+					rv.imageend = rv.segend;
+				else
+					rv.imageend = false;
+			}
+			else if (dir == RasterConverter.ImageProcessor.Direction.Vertical)
+			{
+				if (rv.segend)		//if prev point was at segment end
+					rv.X++;			//increment column
+				
+				if (!rv.segend)		//do not change row when segend
+				{
+					if (IsOdd(rv.X))	//odd column -> go backward
+						rv.Y--;			//decrement row
+					else				//even column -> go forward
+						rv.Y++;			//increment row
+				}
+				
+				if (IsOdd(rv.X))	//odd column
+					rv.segend = (rv.Y == 0);
+				else				//even column
+					rv.segend = (rv.Y == image.Height - 1);
+				
+				if (rv.X == image.Width - 1)	//last column
+					rv.imageend = rv.segend;
+				else
+					rv.imageend = false;
+			}
+			
+			int color = GetColor(image, rv.X, rv.Y, 0, 255);
+			rv.colorchange = (color != rv.Color);
+			rv.traceColor = rv.Color;	//color of the old pixel
+			rv.Color = color;			//color of the new pixel
+				
+			return true;
+			
+		}
 		
-
 		bool ColorChange(int prevS, int curS)
 		{return curS != prevS;}
 		
