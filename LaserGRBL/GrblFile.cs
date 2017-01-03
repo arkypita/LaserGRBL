@@ -11,7 +11,7 @@ namespace LaserGRBL
 	{
 		public delegate void OnFileLoadedDlg(long elapsed, string filename);
 		public event OnFileLoadedDlg OnFileLoaded;
-		
+
 		private List<GrblCommand> list = new List<GrblCommand>();
 		private ProgramRange mRange = new ProgramRange();
 		private decimal mTotalTravelOn;
@@ -29,10 +29,11 @@ namespace LaserGRBL
 						sw.WriteLine(cmd.Command);
 					sw.Close();
 				}
-			} catch{}
+			}
+			catch { }
 		}
-		
-		public void LoadFile(string filename) 
+
+		public void LoadFile(string filename)
 		{
 			long start = Tools.HiResTimer.TotalMilliseconds;
 			mTotalTravelOff = 0;
@@ -57,7 +58,7 @@ namespace LaserGRBL
 			}
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
-			
+
 			if (OnFileLoaded != null)
 				OnFileLoaded(elapsed, filename);
 		}
@@ -67,21 +68,39 @@ namespace LaserGRBL
 			public int Color = -1;
 			public int X = 0;
 			public int Y = 0;
-			
-			public bool segend = false;
-			public bool colorchange = false;
-			public bool imageend = false;
-			
-			public int traceColor = 0;
-			public double traceX = 0;
-			public double traceY = 0;
+
+			public bool ColorChange = false;
+			public bool ImageBegin = false;
+			public bool ImageEnd = false;
+			public bool LineBegin = false;
+			public bool LineEnd = false;
+
+			public int TraceColor = 0;
+			public double TraceX = 0;
+			public double TraceY = 0;
 		}
-		
-		public void LoadImage(Bitmap image, string filename, int resolution, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, RasterConverter.ImageProcessor.Direction dir)
+
+
+		private class ColorSegment
 		{
-			
+			public ColorSegment(int col, int len)
+			{
+				SegmentColor = col;
+				SegmentLen = len;
+			}
+
+			public int SegmentColor;
+			public int SegmentLen;
+
+			public static ColorSegment Separator = new ColorSegment(-1, -1);
+		}
+
+
+		public void LoadImage(Bitmap image, string filename, int res, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, RasterConverter.ImageProcessor.Direction dir)
+		{
+
 			image.RotateFlip(RotateFlipType.RotateNoneFlipY);
-			
+
 			long start = Tools.HiResTimer.TotalMilliseconds;
 			mTotalTravelOff = 0;
 			mTotalTravelOn = 0;
@@ -89,142 +108,242 @@ namespace LaserGRBL
 			mEstimatedTimeOn = TimeSpan.Zero;
 			list.Clear();
 			mRange.ResetRange();
-			
-			//int X = 0;
-			//int Y = 0;
-			int H = image.Height;
-			int W = image.Width;
-			int lastX = -1;
-			int lastY = -1;
-			int lastS = -1;
-			int lastF = -1;
-			bool lastLOn = false;
-			bool rtl = false;
-			
-			SetHeader(travelSpeed, CorrectedX(oX, oY, W, H, dir, rtl), CorrectedY(oX, oY, W, H, dir, rtl), ref lastX, ref lastY, ref lastS, ref lastF);
-			
-			ColorPoint cp = new ColorPoint(); //get first point
-			while(GetNextPoint(cp, image, dir))
+
+			List<ColorSegment> segments = GetSegments(image, dir, minPower, maxPower);
+			list.Add(new GrblCommand("G90"));
+			list.Add(new GrblCommand(String.Format("F{0}", travelSpeed)));
+			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY)))); //move fast to offset
+			list.Add(new GrblCommand(String.Format("M5 S{0}", minPower))); //laser off and power to minPower
+			list.Add(new GrblCommand(String.Format("G1 F{0}", markSpeed)));
+			list.Add(new GrblCommand("G91"));
+			list.Add(new GrblCommand("M3"));
+
+			bool fast = false;
+
+			if (dir == RasterConverter.ImageProcessor.Direction.Horizontal)
 			{
-				if (cp.segend || cp.imageend)
-					CreateSegment(cp.traceColor, CorrectedX(cp.X, cp.Y, W, H, dir, rtl), CorrectedY(cp.X, cp.Y, W, H, dir, rtl), oX, oY, resolution, false, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
-				if (cp.colorchange)
-					CreateSegment(cp.traceColor, CorrectedX(cp.X, cp.Y, W, H, dir, rtl), CorrectedY(cp.X, cp.Y, W, H, dir, rtl), oX, oY, resolution, true, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
-				
-				System.Diagnostics.Debug.WriteLine(String.Format("X:{0} Y:{1} C:{2} S:{3} I:{4}", cp.X, cp.Y, cp.colorchange, cp.segend, cp.imageend));
-				
-				if (cp.segend)
-					rtl = !rtl;
+				foreach (ColorSegment seg in segments)
+				{
+					if (seg == ColorSegment.Separator)
+					{
+						bool changespeed = (fast != true); //se veloce != dafareveloce
+						fast = true;
+
+						list.Add(new GrblCommand("M5"));
+						if (changespeed)
+							list.Add(new GrblCommand(String.Format("{0} F{1} Y{2}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, formatnumber((double)1.0 / (double)res))));
+						else
+							list.Add(new GrblCommand(String.Format("Y{0}", formatnumber(1.0 / (double)res), travelSpeed)));
+						list.Add(new GrblCommand("M3"));
+					}
+					else
+					{
+						bool changespeed = (fast != (seg.SegmentColor == 0)); //se veloce != dafareveloce
+						fast = (seg.SegmentColor == 0);
+
+						if (changespeed)
+							list.Add(new GrblCommand(String.Format("{0} F{1} X{2} S{3}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, formatnumber((double)seg.SegmentLen / (double)res), seg.SegmentColor)));
+						else
+							list.Add(new GrblCommand(String.Format("X{0} S{1}", formatnumber((double)seg.SegmentLen / (double)res), seg.SegmentColor)));
+					}
+				}
 			}
-			
-//			StartA(ref X, ref Y, W, H, dir);
-//			while (ContinueA(X, Y, W, H, dir)) //per ogni linea dell'immagine
-//			{
-//				int prevS = -1;
-//				StartB(ref X, ref Y, W, H, dir, rtl);
-//				while (ContinueB(X, Y, W, H, dir, rtl))
-//				{
-//					//System.Diagnostics.Debug.WriteLine(String.Format("X:{0} Y:{1}", X, Y));
-//					int curS = GetColor(image, X, Y, minPower, maxPower);
-//					
-//					if (prevS == -1)
-//						prevS = curS;
-//					
-//					if (ColorChange(prevS, curS)) //if change of color
-//					{
-//						CreateSegment(prevS, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, true, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
-//						prevS = curS;
-//					}
-//					
-//					StepB(ref X, ref Y, W, H, dir, rtl);
-//				}
-//				
-//				//close to the end of line
-//				CreateSegment(prevS, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, true, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
-//				
-//				//move to new line
-//				StepA(ref X, ref Y, W, H, dir);
-//				CreateSegment(0, CorrectedX(X, Y, W, H, dir, rtl), CorrectedY(X, Y, W, H, dir, rtl), oX, oY, resolution, false, ref lastX, ref lastY, ref lastS, ref lastF, ref lastLOn, lOn, lOff, travelSpeed, markSpeed);
-//				
-//				rtl = !rtl; //invert rtl
-//			}
-			
-			list.Add(new GrblCommand(lOff)); //laser OFF
-			
+			if (dir == RasterConverter.ImageProcessor.Direction.Vertical)
+			{
+				foreach (ColorSegment seg in segments)
+				{
+					if (seg == ColorSegment.Separator)
+					{
+						bool changespeed = (fast != true); //se veloce != dafareveloce
+						fast = true;
+
+						list.Add(new GrblCommand("M5"));
+						if (changespeed)
+							list.Add(new GrblCommand(String.Format("{0} F{1} X{2}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, formatnumber((double)1.0 / (double)res))));
+						else
+							list.Add(new GrblCommand(String.Format("X{0}", formatnumber(1.0 / (double)res), travelSpeed)));
+						list.Add(new GrblCommand("M3"));
+					}
+					else
+					{
+						bool changespeed = (fast != (seg.SegmentColor == 0)); //se veloce != dafareveloce
+						fast = (seg.SegmentColor == 0);
+
+						if (changespeed)
+							list.Add(new GrblCommand(String.Format("{0} F{1} Y{2} S{3}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, formatnumber((double)seg.SegmentLen / (double)res), seg.SegmentColor)));
+						else
+							list.Add(new GrblCommand(String.Format("Y{0} S{1}", formatnumber((double)seg.SegmentLen / (double)res), seg.SegmentColor)));
+					}
+				}
+			}
+
+			list.Add(new GrblCommand("M5"));
+			list.Add(new GrblCommand("G90"));
+
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
-			
+
 			if (OnFileLoaded != null)
 				OnFileLoaded(elapsed, filename);
 		}
 
-		private bool GetNextPoint(ColorPoint rv, Bitmap image, RasterConverter.ImageProcessor.Direction dir)
+		private List<ColorSegment> GetSegments(Bitmap image, RasterConverter.ImageProcessor.Direction dir, int minPower, int maxPower)
 		{
-			if (rv.imageend) //if prev was at the end of image, return false
-				return false;
-			
-			
-			//move to the next point
+			List<ColorSegment> rv = new List<ColorSegment>();
 			if (dir == RasterConverter.ImageProcessor.Direction.Horizontal)
 			{
-				if (rv.segend)		//if prev point was at segment end
-					rv.Y++;			//increment row
-				
-				if (!rv.segend)		//do not change column when segend
+				for (int y = 0; y < image.Height; y++)
 				{
-					if (IsOdd(rv.Y))	//odd row -> go backward
-						rv.X--;			//decrement column
-					else				//even row -> go forward
-						rv.X++;			//increment column
+					int prevCol = -1;
+					int len = -1;
+
+					if (IsEven(y))
+					{
+						for (int x = 0; x < image.Width; x++)
+							ExtractSegment(image, x, y, true, ref len, ref prevCol, rv, minPower, maxPower); //extract different segments
+						rv.Add(new ColorSegment(prevCol, len + 1)); //close last segment
+					}
+					else
+					{
+						for (int x = image.Width - 1; x >= 0; x--)
+							ExtractSegment(image, x, y, false, ref len, ref prevCol, rv, minPower, maxPower); //extract different segments
+						rv.Add(new ColorSegment(prevCol, -(len + 1))); //close last segment
+					}
+
+					if (y < image.Height)
+						rv.Add(ColorSegment.Separator); //new line
 				}
-				
-				if (IsOdd(rv.Y))	//odd row
-					rv.segend = (rv.X == 0);
-				else				//even row
-					rv.segend = (rv.X == image.Width - 1);
-				
-				if (rv.Y == image.Height - 1)	//last row
-					rv.imageend = rv.segend;
-				else
-					rv.imageend = false;
 			}
 			else if (dir == RasterConverter.ImageProcessor.Direction.Vertical)
 			{
-				if (rv.segend)		//if prev point was at segment end
-					rv.X++;			//increment column
-				
-				if (!rv.segend)		//do not change row when segend
+				for (int x = 0; x < image.Width; x++)
 				{
-					if (IsOdd(rv.X))	//odd column -> go backward
-						rv.Y--;			//decrement row
-					else				//even column -> go forward
-						rv.Y++;			//increment row
+					int prevCol = -1;
+					int len = -1;
+
+					if (IsEven(x))
+					{
+						for (int y = 0; y < image.Height; y++)
+							ExtractSegment(image, x, y, true, ref len, ref prevCol, rv, minPower, maxPower); //extract different segments
+						rv.Add(new ColorSegment(prevCol, len + 1)); //close last segment
+					}
+					else
+					{
+						for (int y = image.Height - 1; y >= 0; y--)
+							ExtractSegment(image, x, y, false, ref len, ref prevCol, rv, minPower, maxPower); //extract different segments
+						rv.Add(new ColorSegment(prevCol, -(len + 1))); //close last segment
+					}
+
+					if (x < image.Width)
+						rv.Add(ColorSegment.Separator); //new line
 				}
-				
-				if (IsOdd(rv.X))	//odd column
-					rv.segend = (rv.Y == 0);
-				else				//even column
-					rv.segend = (rv.Y == image.Height - 1);
-				
-				if (rv.X == image.Width - 1)	//last column
-					rv.imageend = rv.segend;
-				else
-					rv.imageend = false;
 			}
-			
-			int color = GetColor(image, rv.X, rv.Y, 0, 255);
-			rv.colorchange = (color != rv.Color);
-			rv.traceColor = rv.Color;	//color of the old pixel
-			rv.Color = color;			//color of the new pixel
-				
-			return true;
-			
+
+			return rv;
 		}
-		
+
+		private void ExtractSegment(Bitmap image, int x, int y, bool even, ref int len, ref int prevCol, List<ColorSegment> rv, int minPower, int maxPower)
+		{
+			len++;
+			int col = GetColor(image, x, y, minPower, maxPower);
+			if (prevCol == -1)
+				prevCol = col;
+
+			if (prevCol != col)
+			{
+				rv.Add(new ColorSegment(prevCol, even ? len : -len));
+				len = 0;
+			}
+
+			prevCol = col;
+		}
+
+
+		//private ColorPoint GetFirstPoint(Bitmap image, RasterConverter.ImageProcessor.Direction dir, int oX, int oY, int res)
+		//{
+		//	ColorPoint rv = new ColorPoint();
+
+		//	rv.X = 0;
+		//	rv.Y = 0;
+		//	rv.TraceColor = rv.Color = GetColor(image, rv.X, rv.Y, 0, 255); //color of first pixel
+		//	rv.LineBegin = true;
+		//	rv.ImageBegin = true;
+		//	rv.ColorChange = false;
+
+		//	if (dir == RasterConverter.ImageProcessor.Direction.Horizontal)
+		//	{
+		//		rv.LineEnd = (image.Width == 1);
+		//		rv.ImageEnd = rv.LineEnd && (image.Height == 1);
+		//	}
+		//	else if (dir == RasterConverter.ImageProcessor.Direction.Vertical)
+		//	{
+		//		rv.LineEnd = (image.Height == 1);
+		//		rv.ImageEnd = rv.LineEnd && (image.Width == 1);
+		//	}
+
+		//	rv.TraceX = oX + (double)rv.X / (double)res;
+		//	rv.TraceY = oY + (double)rv.Y / (double)res;
+
+		//	return rv;
+		//}
+
+		//private bool GetNextPoint(ColorPoint rv, Bitmap image, RasterConverter.ImageProcessor.Direction dir, int oX, int oY, int res)
+		//{
+		//	if (rv.ImageEnd) //if prev was at the end of image, return false
+		//		return false;
+
+		//	rv.ImageBegin = false;
+
+		//	//move to the next point
+		//	if (dir == RasterConverter.ImageProcessor.Direction.Horizontal)
+		//	{
+		//		if (rv.LineEnd)			//if prev point was at segment end
+		//			rv.Y++;				//increment row
+
+		//		if (!rv.LineEnd)		//do not change column when segend, to have a second point on the same column
+		//		{
+		//			if (IsOdd(rv.Y))	//odd row -> go backward
+		//				rv.X--;			//decrement column
+		//			else				//even row -> go forward
+		//				rv.X++;			//increment column
+		//		}
+
+		//		if (IsOdd(rv.Y))		//odd row
+		//			rv.LineEnd = (rv.X == 0);
+		//		else					//even row
+		//			rv.LineEnd = (rv.X == image.Width - 1);
+
+		//		if (IsOdd(rv.Y))		//odd row
+		//			rv.LineBegin = (rv.X == image.Width - 1);
+		//		else					//even row
+		//			rv.LineBegin = (rv.X == 0);
+
+		//		if (rv.Y == image.Height - 1)	//last row
+		//			rv.ImageEnd = rv.LineEnd;
+		//		else
+		//			rv.ImageEnd = false;
+
+		//		rv.TraceX = oX + (double)(IsOdd(rv.Y) ? rv.X + 1 : rv.X) / (double)res;
+		//		rv.TraceY = oY + (double)rv.Y / (double)res;
+		//	}
+		//	else if (dir == RasterConverter.ImageProcessor.Direction.Vertical)
+		//	{
+
+		//	}
+
+		//	int color = GetColor(image, rv.X, rv.Y, 0, 255);
+		//	rv.ColorChange = !rv.LineBegin && (color != rv.Color); //keep low if line begin
+		//	rv.TraceColor = rv.Color;	//color of the old pixel
+		//	rv.Color = color;			//color of the new pixel
+
+		//	return true;
+
+		//}
+
 		bool ColorChange(int prevS, int curS)
-		{return curS != prevS;}
-		
-		private void StartA(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
+		{ return curS != prevS; }
+
+		private void StartA(ref int X, ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
 				Y = 0;
@@ -232,15 +351,15 @@ namespace LaserGRBL
 				X = 0;
 		}
 
-		private void StepA(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
+		private void StepA(ref int X, ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
 				Y++;
 			else
 				X++;
-		}		
-		
-		private bool ContinueA(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
+		}
+
+		private bool ContinueA(int X, int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
 				return Y < H;
@@ -248,23 +367,23 @@ namespace LaserGRBL
 				return X < W;
 		}
 
-		private void StartB(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
+		private void StartB(ref int X, ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
-				X = rtl ? 0 : W-1;
+				X = rtl ? 0 : W - 1;
 			else
-				Y = rtl ? H-1 : 0;
+				Y = rtl ? H - 1 : 0;
 		}
 
-		private void StepB(ref int X,ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
+		private void StepB(ref int X, ref int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
-				X = rtl ? X+1 : X-1;
+				X = rtl ? X + 1 : X - 1;
 			else
-				Y = rtl ? Y-1 : Y+1;
-		}		
-		
-		private bool ContinueB(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
+				Y = rtl ? Y - 1 : Y + 1;
+		}
+
+		private bool ContinueB(int X, int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
 				return rtl ? X < W : X >= 0;
@@ -272,88 +391,88 @@ namespace LaserGRBL
 				return rtl ? Y >= 0 : Y < H;
 		}
 
-		private int CorrectedX(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
+		private int CorrectedX(int X, int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
 				return rtl ? X : X + 1;
 			else
 				return X;
 		}
-		
-		private int CorrectedY(int X,int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
+
+		private int CorrectedY(int X, int Y, int W, int H, RasterConverter.ImageProcessor.Direction Direction, bool rtl)
 		{
 			if (Direction == RasterConverter.ImageProcessor.Direction.Horizontal)
 				return Y;
 			else
-				return rtl ? Y + 1 : Y ;
+				return rtl ? Y + 1 : Y;
 		}
-		
+
 		private int GetColor(Bitmap I, int X, int Y, int min, int max)
 		{
 			Color C = I.GetPixel(X, Y);
 			int rv = (255 - C.R) * C.A / 255;
-			return rv * (max - min) / 255  + min; //scale to range
+			return rv * (max - min) / 255 + min; //scale to range
 		}
-		
-		private void SetHeader(int travelSpeed, int oX, int oY, ref int lastX, ref int lastY, ref int lastS, ref int lastF)
+
+		private void SetHeader(int travelSpeed, double X, double Y, ref double lastX, ref double lastY, ref int lastS, ref int lastF)
 		{
 			list.Add(new GrblCommand("G90"));
-			list.Add(new GrblCommand(String.Format("F{0}", travelSpeed))); 
-			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", oX, oY))); //move to offset
+			list.Add(new GrblCommand(String.Format("F{0}", travelSpeed)));
+			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(X), formatnumber(Y)))); //move to offset
 			list.Add(new GrblCommand(String.Format("M5 S0"))); //laser off and power to 0
-			
-			lastX = oX;
-			lastY = oY;
+
+			lastX = X;
+			lastY = Y;
 			lastS = 0;
 			lastF = travelSpeed;
 		}
-		
-		private void CreateSegment(int S, int X, int Y, int oX, int oY, int res, bool LaserOn, ref int lastX, ref int lastY, ref int lastS, ref int lastF, ref bool lastOO, string lOn, string lOff, int travelSpeed, int markSpeed)
+
+		private void CreateSegment(int S, double X, double Y, bool LaserOn, ref double lastX, ref double lastY, ref int lastS, ref int lastF, ref bool lastOO, string lOn, string lOff, int travelSpeed, int markSpeed)
 		{
 			StringBuilder sb = new StringBuilder("G1");
-			
+
 			if (LaserOn != lastOO)
 			{
 				if (LaserOn)
 					list.Add(new GrblCommand(lOn));
-				else				
-					list.Add(new GrblCommand(lOff)); 
-				
+				else
+					list.Add(new GrblCommand(lOff));
+
 				lastOO = LaserOn;
 			}
-			
+
 			int F = (S == 0 ? travelSpeed : markSpeed);
-			
+
 			if (X != lastX)
-				sb.Append(" X" + formatnumber(oX + (double)X / (double)res));
+				sb.Append(" X" + formatnumber(X));
 			if (Y != lastY)
-				sb.Append(" Y" + formatnumber(oY + (double)Y / (double)res));
+				sb.Append(" Y" + formatnumber(Y));
 			if (S != lastS)
 				sb.Append(" S" + S.ToString());
 			if (F != lastF)
 				sb.Append(" F" + F.ToString());
-			
+
 			list.Add(new GrblCommand(sb.ToString()));
-			
+
 			lastS = S;
 			lastF = F;
 			lastX = X;
 			lastY = Y;
 		}
-		
+
 		private string formatnumber(double number)
-		{return number.ToString("0.000", System.Globalization.CultureInfo.InvariantCulture);}
-		
-		private static bool IsOdd(int value)
-    	{return value % 2 != 0;}
-		
+		{ return number.ToString("#.###", System.Globalization.CultureInfo.InvariantCulture); }
+
+		private static bool IsEven(int value)
+		{ return value % 2 == 0; }
+
 		public int Count
 		{ get { return list.Count; } }
 
 		public TimeSpan EstimatedTime { get { return mEstimatedTimeOff + mEstimatedTimeOn; } }
-		
+
 		private void Analyze()
-		{Process(null, Size.Empty);} //analyze only
+		{ Process(null, Size.Empty); } //analyze only
 
 		public void DrawOnGraphics(Graphics g, Size s)
 		{ Process(g, s); }
@@ -391,7 +510,7 @@ namespace LaserGRBL
 			foreach (GrblCommand cmd in list)
 			{
 				TimeSpan delay = TimeSpan.Zero;
-				
+
 				if (cmd.IsLaserON)
 					laser = true;
 				else if (cmd.IsLaserOFF)
@@ -408,7 +527,7 @@ namespace LaserGRBL
 				if (cmd.S != null)
 				{
 					if (mRange.SpindleRange.ValidRange)
-						curAlpha =  (int)((cmd.S.Number - mRange.SpindleRange.S.Min) * 255 / (mRange.SpindleRange.S.Max - mRange.SpindleRange.S.Min));
+						curAlpha = (int)((cmd.S.Number - mRange.SpindleRange.S.Min) * 255 / (mRange.SpindleRange.S.Max - mRange.SpindleRange.S.Min));
 					else
 						curAlpha = 255;
 				}
@@ -505,7 +624,7 @@ namespace LaserGRBL
 						delay = cmd.P != null ? TimeSpan.FromSeconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
 					}
 				}
-				
+
 				if (laser)
 					mEstimatedTimeOn += delay;
 				else
@@ -577,13 +696,13 @@ namespace LaserGRBL
 		}
 
 
-		
+
 		System.Collections.Generic.IEnumerator<GrblCommand> IEnumerable<GrblCommand>.GetEnumerator()
-		{return list.GetEnumerator();}
-		
-		
+		{ return list.GetEnumerator(); }
+
+
 		public System.Collections.IEnumerator GetEnumerator()
-		{return list.GetEnumerator();}
+		{ return list.GetEnumerator(); }
 	}
 
 
@@ -679,7 +798,7 @@ namespace LaserGRBL
 			public bool ValidRange
 			{ get { return S.ValidRange; } }
 		}
-		
+
 		public XYRange DrawingRange = new XYRange();
 		public XYRange MovingRange = new XYRange();
 		public SRange SpindleRange = new SRange();
@@ -690,9 +809,9 @@ namespace LaserGRBL
 				DrawingRange.UpdateRange(x, y);
 			MovingRange.UpdateRange(x, y);
 		}
-		
+
 		public void UpdateSRange(decimal s)
-		{SpindleRange.UpdateRange(s);}
+		{ SpindleRange.UpdateRange(s); }
 
 		public void ResetRange()
 		{
@@ -702,7 +821,7 @@ namespace LaserGRBL
 		}
 
 	}
-	
+
 }
 
 /*
