@@ -27,7 +27,7 @@ namespace LaserGRBL.RasterConverter
 		{ Line2Line, Vectorize }
 		
 		public enum Direction
-		{ Horizontal, Vertical/*, Diagonal */}
+		{ Horizontal, Vertical, Diagonal }
 
 		public ImageProcessor(Control sincro, Image source, Size boxSize)
 		{
