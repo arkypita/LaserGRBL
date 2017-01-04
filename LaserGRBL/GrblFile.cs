@@ -85,8 +85,16 @@ namespace LaserGRBL
 		{
 			public Separator(int res) : base(0, 1, res)
 			{ }
+		}
 
+		private class DiagonalSeparator : Separator
+		{
+			private bool mDirectionX;
+			public DiagonalSeparator(int res, bool dirX) : base(res)
+			{ mDirectionX = dirX; }
 
+			public bool DirectionX
+			{ get { return mDirectionX; } }
 		}
 
 
@@ -172,33 +180,30 @@ namespace LaserGRBL
 			}
 			else if (dir == RasterConverter.ImageProcessor.Direction.Diagonal)
 			{
-				bool reverse = false;
 				fast = true;
 				list.Add(new GrblCommand(String.Format("G0 Y{0} F{1}", formatnumber(1.0 / (double)res), travelSpeed)));
 				
 				foreach (ColorSegment seg in segments)
 				{
-					if (seg is Separator)
+					if (seg is DiagonalSeparator)
 					{
 						bool changespeed = (fast != true); //se veloce != dafareveloce
 						fast = true;
 
 						list.Add(new GrblCommand("M5"));
 						if (changespeed)
-							list.Add(new GrblCommand(String.Format("{0} F{1} {2}{3} ", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, reverse ? "Y" : "X", formatnumber(seg.SegmentLen))));
+							list.Add(new GrblCommand(String.Format("{0} F{1} {2}{3} ", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, ((DiagonalSeparator)seg).DirectionX ? "X" : "Y", formatnumber(seg.SegmentLen))));
 						else
-							list.Add(new GrblCommand(String.Format("{0}{1}", reverse ? "Y" : "X", formatnumber(seg.SegmentLen), travelSpeed)));
+							list.Add(new GrblCommand(String.Format("{0}{1}", ((DiagonalSeparator)seg).DirectionX ? "X" : "Y", formatnumber(seg.SegmentLen), travelSpeed)));
 						list.Add(new GrblCommand("M3"));
-						
-						reverse = !reverse;
 					}
 					else
 					{
 						bool changespeed = (fast != (seg.SegmentColor == 0)); //se veloce != dafareveloce
 						fast = (seg.SegmentColor == 0);
 
-						double X = -seg.SegmentLen;
-						double Y = seg.SegmentLen;
+						double X = -seg.SegmentLen;// *1.4142;
+						double Y = seg.SegmentLen;// *1.4142;
 						
 						
 						if (changespeed)
@@ -291,6 +296,7 @@ namespace LaserGRBL
 							ExtractSegment(image, j, slice - j, true, ref len, ref prevCol, rv, minPower, maxPower, res); //extract different segments
 				        }
 				        rv.Add(new ColorSegment(prevCol, len + 1, res)); //close last segment
+
 			        }
 			        else
 			        {
@@ -300,11 +306,11 @@ namespace LaserGRBL
 							ExtractSegment(image, j, slice - j, false, ref len, ref prevCol, rv, minPower, maxPower, res); //extract different segments
 				        }
 				        rv.Add(new ColorSegment(prevCol, -(len + 1), res)); //close last segment
+
 			        }
-			        
-			        if (slice < m + n - 1)
-						rv.Add(new Separator(res)); //new line
-			        
+
+					rv.Add(new DiagonalSeparator(res, reverse)); //new line
+
 			        //System.Diagnostics.Debug.WriteLine(String.Format("----------------"));
 			        reverse = !reverse;
 			    }
@@ -456,9 +462,8 @@ namespace LaserGRBL
 
 							if (!laser)
 							{
-								pen.DashStyle = DashStyle.Dot;
-								//pen.EndCap = LineCap.ArrowAnchor;
-								//pen.DashPattern = new float[] { 4f, 4f };
+								//pen.DashStyle = DashStyle.Solid;
+								//pen.DashPattern = new float[] { 1f, 1f };
 							}
 
 							if (cmd.IsLinearMovement)
@@ -534,19 +539,19 @@ namespace LaserGRBL
 
 			using (Pen pen = Pens.LightGray.Clone() as Pen)
 			{
-				pen.ScaleTransform(1 / zoom, 1 / zoom);
-				pen.DashStyle = DashStyle.Dash;
-				pen.DashPattern = new float[] { 1f, 2f };
+				//pen.ScaleTransform(1 / zoom, 1 / zoom);
+				//pen.DashStyle = DashStyle.Dash;
+				//pen.DashPattern = new float[] { 1f, 2f };
 
-				g.DrawLine(pen, 0, (float)mRange.DrawingRange.Y.Min, wSize.Width, (float)mRange.DrawingRange.Y.Min);
-				DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString("0"), false, true, true);
-				g.DrawLine(pen, 0, (float)mRange.DrawingRange.Y.Max, wSize.Width, (float)mRange.DrawingRange.Y.Max);
-				DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString("0"), false, true, true);
+				//g.DrawLine(pen, 0, (float)mRange.DrawingRange.Y.Min, wSize.Width, (float)mRange.DrawingRange.Y.Min);
+				//DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString("0"), false, true, true);
+				//g.DrawLine(pen, 0, (float)mRange.DrawingRange.Y.Max, wSize.Width, (float)mRange.DrawingRange.Y.Max);
+				//DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString("0"), false, true, true);
 
-				g.DrawLine(pen, (float)mRange.DrawingRange.X.Min, 0, (float)mRange.DrawingRange.X.Min, wSize.Height);
-				DrawString(g, zoom, mRange.DrawingRange.X.Min, 0, mRange.DrawingRange.X.Min.ToString("0"), true);
-				g.DrawLine(pen, (float)mRange.DrawingRange.X.Max, 0, (float)mRange.DrawingRange.X.Max, wSize.Height);
-				DrawString(g, zoom, mRange.DrawingRange.X.Max, 0, mRange.DrawingRange.X.Max.ToString("0"), true);
+				//g.DrawLine(pen, (float)mRange.DrawingRange.X.Min, 0, (float)mRange.DrawingRange.X.Min, wSize.Height);
+				//DrawString(g, zoom, mRange.DrawingRange.X.Min, 0, mRange.DrawingRange.X.Min.ToString("0"), true);
+				//g.DrawLine(pen, (float)mRange.DrawingRange.X.Max, 0, (float)mRange.DrawingRange.X.Max, wSize.Height);
+				//DrawString(g, zoom, mRange.DrawingRange.X.Max, 0, mRange.DrawingRange.X.Max.ToString("0"), true);
 			}
 			return zoom;
 		}

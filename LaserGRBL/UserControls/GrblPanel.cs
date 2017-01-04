@@ -87,13 +87,13 @@ namespace LaserGRBL.UserControls
 				g.ScaleTransform(1.0F, -1.0F);
 				g.TranslateTransform(0.0F, -(float)wSize.Height);
 
-				float scaleX = (float)(wSize.Width - 50 - 5) / (float)wSize.Width; //era 25
-				float scaleY = (float)(wSize.Height - 30 - 5) / (float)wSize.Height; //era 15
+				float scaleX = (float)(wSize.Width - 25 - 5) / (float)wSize.Width;
+				float scaleY = (float)(wSize.Height - 15 - 5) / (float)wSize.Height;
 
 				g.ScaleTransform(scaleX, scaleY);
 				g.TranslateTransform(25, 15);
 
-				g.DrawLines(Pens.Black, new PointF[] { new PointF(0, wSize.Height), new PointF(0, 0), new PointF(wSize.Width, 0) });
+				//g.DrawLines(Pens.Black, new PointF[] { new PointF(0, wSize.Height), new PointF(0, 0), new PointF(wSize.Width, 0) });
 
 				if (Core != null && Core.HasProgram)
 					Core.LoadedFile.DrawOnGraphics(g, wSize);
