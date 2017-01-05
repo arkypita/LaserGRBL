@@ -115,7 +115,7 @@ namespace LaserGRBL
 			public VSeparator(int res) : base(0, 1, res, false) {}
 			
 			public override string ToString()
-			{return string.Format("Y{0} S{1}", formatnumber(mLen), mColor);}
+			{return string.Format("Y{0}", formatnumber(mLen));}
 			
 			public override bool IsSeparator
 			{get {return true;}}
@@ -126,7 +126,7 @@ namespace LaserGRBL
 			public HSeparator(int res) : base(0, 1, res, false) {}
 			
 			public override string ToString()
-			{return string.Format("X{0} S{1}", formatnumber(mLen), mColor);}
+			{return string.Format("X{0}", formatnumber(mLen));}
 			
 			public override bool IsSeparator
 			{get {return true;}}
@@ -175,99 +175,6 @@ namespace LaserGRBL
 				if (seg.IsSeparator)
 					list.Add(new GrblCommand(lOn));
 			}
-			
-			
-//			if (dir == RasterConverter.ImageProcessor.Direction.Horizontal)
-//			{
-//				foreach (ColorSegment seg in segments)
-//				{
-//					if (seg is Separator)
-//					{
-//						bool changespeed = (fast != true); //se veloce != dafareveloce
-//						fast = true;
-//
-//						list.Add(new GrblCommand("M5"));
-//						if (changespeed)
-//							list.Add(new GrblCommand(String.Format("{0} F{1} {2}{3}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, ((Separator)seg).MoveString, formatnumber(seg.SegmentLen))));
-//						else
-//							list.Add(new GrblCommand(String.Format("{0}{1}", ((Separator)seg).MoveString, formatnumber(seg.SegmentLen))));
-//						list.Add(new GrblCommand("M3"));
-//					}
-//					else
-//					{
-//						bool changespeed = (fast != (seg.SegmentColor == 0)); //se veloce != dafareveloce
-//						fast = (seg.SegmentColor == 0);
-//
-//						if (changespeed)
-//							list.Add(new GrblCommand(String.Format("{0} F{1} X{2} S{3}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, formatnumber(seg.SegmentLen), seg.SegmentColor)));
-//						else
-//							list.Add(new GrblCommand(String.Format("X{0} S{1}", formatnumber(seg.SegmentLen), seg.SegmentColor)));
-//					}
-//				}
-//			}
-//			else if (dir == RasterConverter.ImageProcessor.Direction.Vertical)
-//			{
-//				foreach (ColorSegment seg in segments)
-//				{
-//					if (seg is Separator)
-//					{
-//						bool changespeed = (fast != true); //se veloce != dafareveloce
-//						fast = true;
-//
-//						list.Add(new GrblCommand("M5"));
-//						if (changespeed)
-//							list.Add(new GrblCommand(String.Format("{0} F{1} X{2}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, formatnumber(seg.SegmentLen))));
-//						else
-//							list.Add(new GrblCommand(String.Format("X{0}", formatnumber(seg.SegmentLen), travelSpeed)));
-//						list.Add(new GrblCommand("M3"));
-//					}
-//					else
-//					{
-//						bool changespeed = (fast != (seg.SegmentColor == 0)); //se veloce != dafareveloce
-//						fast = (seg.SegmentColor == 0);
-//
-//						if (changespeed)
-//							list.Add(new GrblCommand(String.Format("{0} F{1} Y{2} S{3}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, formatnumber(seg.SegmentLen), seg.SegmentColor)));
-//						else
-//							list.Add(new GrblCommand(String.Format("Y{0} S{1}", formatnumber(seg.SegmentLen), seg.SegmentColor)));
-//					}
-//				}
-//			}
-//			else if (dir == RasterConverter.ImageProcessor.Direction.Diagonal)
-//			{
-//				fast = true;
-//				list.Add(new GrblCommand(String.Format("G0 Y{0} F{1}", formatnumber(1.0 / (double)res), travelSpeed)));
-//				
-//				foreach (ColorSegment seg in segments)
-//				{
-//					if (seg is Separator)
-//					{
-//						bool changespeed = (fast != true); //se veloce != dafareveloce
-//						fast = true;
-//
-//						list.Add(new GrblCommand("M5"));
-//						if (changespeed)
-//							list.Add(new GrblCommand(String.Format("{0} F{1} {2}{3} ", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, ((Separator)seg).MoveString, formatnumber(seg.SegmentLen))));
-//						else
-//							list.Add(new GrblCommand(String.Format("{0}{1}", ((Separator)seg).MoveString, formatnumber(seg.SegmentLen), travelSpeed)));
-//						list.Add(new GrblCommand("M3"));
-//					}
-//					else
-//					{
-//						bool changespeed = (fast != (seg.SegmentColor == 0)); //se veloce != dafareveloce
-//						fast = (seg.SegmentColor == 0);
-//
-//						double X = -seg.SegmentLen;// *1.4142;
-//						double Y = seg.SegmentLen;// *1.4142;
-//						
-//						
-//						if (changespeed)
-//							list.Add(new GrblCommand(String.Format("{0} F{1} X{2} Y{3} S{4}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, formatnumber(X), formatnumber(Y), seg.SegmentColor)));
-//						else
-//							list.Add(new GrblCommand(String.Format("X{0} Y{1} S{2}", formatnumber(X), formatnumber(Y), seg.SegmentColor)));
-//					}
-//				}
-//			}
 
 			list.Add(new GrblCommand(lOff));
 			list.Add(new GrblCommand("G90"));
@@ -411,7 +318,7 @@ namespace LaserGRBL
 		}
 
 		public string formatnumber(double number)
-		{ return number.ToString("#.###", System.Globalization.CultureInfo.InvariantCulture); }
+		{ return number.ToString("0.###", System.Globalization.CultureInfo.InvariantCulture); }
 
 		private static bool IsEven(int value)
 		{ return value % 2 == 0; }
@@ -482,7 +389,7 @@ namespace LaserGRBL
 						curAlpha = 255;
 				}
 
-				if (analyze && cmd.S != null)
+				if (analyze && cmd.S != null && laser)
 					mRange.UpdateSRange(cmd.S.Number);
 
 				if (cmd.IsMovement && cmd.TrueMovement(curX, curY, abs))
