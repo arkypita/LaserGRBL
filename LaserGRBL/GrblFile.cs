@@ -335,7 +335,6 @@ namespace LaserGRBL
 				
 				int w = image.Width;
 				int h = image.Height;
-
 			    for (int slice = 0; slice < w + h - 1; ++slice) 
 			    {
 					bool d = IsEven(slice); //direct/reverse
@@ -352,11 +351,27 @@ namespace LaserGRBL
 
 					//System.Diagnostics.Debug.WriteLine(String.Format("sl:{0} z1:{1} z2:{2}", slice, z1, z2));
 
-					//TODO: needs to add the correct H/V separator based on wich border we are and not based on direction!
-					if (d)
-						rv.Add(new HSeparator(res)); //new line
-					else
-						rv.Add(new VSeparator(res)); //new line
+					if (slice < Math.Min(w, h)-1) //first part of the image
+					{
+						if (d)
+							rv.Add(new HSeparator(res)); //new line
+						else
+							rv.Add(new VSeparator(res)); //new line
+					}
+					else if (slice >= Math.Max(w, h)-1) //third part of image
+					{
+						if (d)
+							rv.Add(new VSeparator(res)); //new line
+						else
+							rv.Add(new HSeparator(res)); //new line
+					}
+					else //central part of the image
+					{
+						if (w > h)
+							rv.Add(new HSeparator(res)); //new line
+						else
+							rv.Add(new VSeparator(res)); //new line
+					}
 			    }
 			}
 
@@ -506,8 +521,8 @@ namespace LaserGRBL
 
 							if (!laser)
 							{
-								//pen.DashStyle = DashStyle.Solid;
-								//pen.DashPattern = new float[] { 1f, 1f };
+								pen.DashStyle = DashStyle.Dash;
+								pen.DashPattern = new float[] { 2f, 2f };
 							}
 
 							if (cmd.IsLinearMovement)
