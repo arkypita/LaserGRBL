@@ -352,6 +352,7 @@ namespace LaserGRBL
 
 					//System.Diagnostics.Debug.WriteLine(String.Format("sl:{0} z1:{1} z2:{2}", slice, z1, z2));
 
+					//TODO: needs to add the correct H/V separator based on wich border we are and not based on direction!
 					if (d)
 						rv.Add(new HSeparator(res)); //new line
 					else
