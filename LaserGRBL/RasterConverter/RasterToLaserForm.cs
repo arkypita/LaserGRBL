@@ -78,6 +78,9 @@ namespace LaserGRBL.RasterConverter
 
 			if (RbLineToLineTracing.Checked)
 			{
+				if (((ImageProcessor.Direction)CbDirections.SelectedItem) == ImageProcessor.Direction.Diagonal)
+					System.Windows.Forms.MessageBox.Show("Warning! Diagonal line generation is not complete, and it is buggy!");	
+					
 				using (Bitmap bmp = IP.CreateTarget(new Size(IISizeW.CurrentValue * (int)IP.Quality, IISizeH.CurrentValue * (int)IP.Quality)))
 					mFile.LoadImage(bmp, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue, IIMinPower.CurrentValue, IIMaxPower.CurrentValue, TxtLaserOn.Text, TxtLaserOff.Text, (ImageProcessor.Direction)CbDirections.SelectedItem);
 			}
