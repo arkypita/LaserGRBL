@@ -11,7 +11,7 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 ### Existing Features
 
 - GCode file loading with engraving/cutting job preview (with alpha blending for grayscale engraving)
-- Image import (jpg, bmp...) and line by line GCode generation.
+- Image import (jpg, bmp...) and line by line GCode generation (horizontal, vertical, and diagonal).
 - Grbl Configuration Import/Export
 - Configuration, Alarm and Error codes decoding for Grbl v1.1 (with description tooltip)
 - Homing button, Feed Hold button, Resume button and Grbl Reset button
@@ -35,7 +35,7 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 
 ### Suggested GCODE Generator
 
-We suggest to use [Inkscape](https://inkscape.org/) to draw your vector files and vectorize bitmap.
+LaserGRBL has its own image import, but if you need more power we suggest to use [Inkscape](https://inkscape.org/) to draw your vector files and vectorize bitmap.
 
 Inkscape has two interesting GCODE plugin:
 - [Raster 2 Laser GCode generator](https://github.com/305engineering/Inkscape) for raster engraving
