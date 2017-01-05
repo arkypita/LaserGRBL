@@ -27,7 +27,7 @@ namespace LaserGRBL.RasterConverter
 		{ Line2Line, Vectorize }
 		
 		public enum Direction
-		{ Horizontal, Vertical/*, Diagonal */}
+		{ Horizontal, Vertical, Diagonal }
 
 		public ImageProcessor(Control sincro, Image source, Size boxSize)
 		{
@@ -472,6 +472,27 @@ namespace LaserGRBL.RasterConverter
 								}
 							}
 						}
+					}
+					else if (LineDirection == Direction.Diagonal)
+					{
+						for (int I = 0; I < bmp.Width + bmp.Height -1 && !MustExit; I++)
+						{
+							using (Pen mark = new Pen(Color.FromArgb(0, 255, 255, 255), 1F))
+							{
+								using (Pen nomark = new Pen(Color.FromArgb(255, 255, 255, 255), 1F))
+								{
+									using (Pen middlemark = new Pen(Color.FromArgb(127, 255, 255, 255), 1F))
+									{
+										if (I % 3 == 0)
+											g.DrawLine(mark, 0, bmp.Height-I, I, bmp.Height);
+										else if (I % 3 == 1)
+											g.DrawLine(nomark, 0, bmp.Height-I, I, bmp.Height);
+										else
+											g.DrawLine(middlemark, 0, bmp.Height-I, I, bmp.Height);
+									}
+								}
+							}
+						}						
 					}
 					
 				}
