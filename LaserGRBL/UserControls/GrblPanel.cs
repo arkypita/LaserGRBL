@@ -93,7 +93,7 @@ namespace LaserGRBL.UserControls
 				g.ScaleTransform(scaleX, scaleY);
 				g.TranslateTransform(25, 15);
 
-				//g.DrawLines(Pens.Black, new PointF[] { new PointF(0, wSize.Height), new PointF(0, 0), new PointF(wSize.Width, 0) });
+				g.DrawLines(Pens.Black, new PointF[] { new PointF(0, wSize.Height), new PointF(0, 0), new PointF(wSize.Width, 0) });
 
 				if (Core != null && Core.HasProgram)
 					Core.LoadedFile.DrawOnGraphics(g, wSize);

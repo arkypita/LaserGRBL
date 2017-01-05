@@ -311,39 +311,51 @@ namespace LaserGRBL
 			}
 			else if (dir == RasterConverter.ImageProcessor.Direction.Diagonal)
 			{
+				//based on: http://stackoverflow.com/questions/1779199/traverse-matrix-in-diagonal-strips
+				//based on: http://stackoverflow.com/questions/2112832/traverse-rectangular-matrix-in-diagonal-strips
+
+				/*
+
+				+------------+
+				|  -         |
+				|  -  -      |
+				+-------+    |
+				|  -  - |  - |
+				+-------+----+
+
+				*/
+
+
+				//the algorithm runs along the matrix for diagonal lines (slice index)
+				//z1 and z2 contains the number of missing elements in the lower right and upper left
+				//the length of the segment can be determined as "slice - z1 - z2"
+				//my modified version of algorithm reverses travel direction each slice
+
 				rv.Add(new VSeparator(res)); //new line
 				
-				int m = image.Width;
-				int n = image.Height;
-				bool d = true; //direct/reverse
-			    for (int slice = 0; slice < m + n - 1; ++slice) 
+				int w = image.Width;
+				int h = image.Height;
+
+			    for (int slice = 0; slice < w + h - 1; ++slice) 
 			    {
+					bool d = IsEven(slice); //direct/reverse
+
 			    	int prevCol = -1;
 					int len = -1;
 			    	
-			        int z1 = slice < n ? 0 : slice - n + 1;
-			        int z2 = slice < m ? 0 : slice - m + 1;
+			        int z1 = slice < h ? 0 : slice - h + 1;
+			        int z2 = slice < w ? 0 : slice - w + 1;
 			        
-			        if (d)
-			        {
-			        	for (int j = z1 ; j <= slice - z2; ++j)
-							ExtractSegment(image, j, slice - j, false, ref len, ref prevCol, rv, minPower, maxPower, res, dir); //extract different segments
-				        rv.Add(new DSegment(prevCol, len + 1, res, false)); //close last segment
-			        }
-			        else
-			        {
-				        for (int j = slice - z2; j >= z1; --j)
-							ExtractSegment(image, j, slice - j, true, ref len, ref prevCol, rv, minPower, maxPower, res, dir); //extract different segments
-				        rv.Add(new DSegment(prevCol, len + 1, res, true)); //close last segment
-			        }
+					for (int j = (d ? z1 : slice - z2); d ? j <= slice - z2 : j >= z1 ; j = (d ? j+1 : j-1))
+						ExtractSegment(image, j, slice - j, !d, ref len, ref prevCol, rv, minPower, maxPower, res, dir); //extract different segments
+			        rv.Add(new DSegment(prevCol, len + 1, res, !d)); //close last segment
+
+					//System.Diagnostics.Debug.WriteLine(String.Format("sl:{0} z1:{1} z2:{2}", slice, z1, z2));
 
 					if (d)
 						rv.Add(new HSeparator(res)); //new line
 					else
 						rv.Add(new VSeparator(res)); //new line
-						
-
-			        d = !d;
 			    }
 			}
 
@@ -570,19 +582,19 @@ namespace LaserGRBL
 
 			using (Pen pen = Pens.LightGray.Clone() as Pen)
 			{
-				//pen.ScaleTransform(1 / zoom, 1 / zoom);
-				//pen.DashStyle = DashStyle.Dash;
-				//pen.DashPattern = new float[] { 1f, 2f };
+				pen.ScaleTransform(1 / zoom, 1 / zoom);
+				pen.DashStyle = DashStyle.Dash;
+				pen.DashPattern = new float[] { 1f, 2f };
 
-				//g.DrawLine(pen, 0, (float)mRange.DrawingRange.Y.Min, wSize.Width, (float)mRange.DrawingRange.Y.Min);
-				//DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString("0"), false, true, true);
-				//g.DrawLine(pen, 0, (float)mRange.DrawingRange.Y.Max, wSize.Width, (float)mRange.DrawingRange.Y.Max);
-				//DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString("0"), false, true, true);
+				g.DrawLine(pen, 0, (float)mRange.DrawingRange.Y.Min, wSize.Width, (float)mRange.DrawingRange.Y.Min);
+				DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString("0"), false, true, true);
+				g.DrawLine(pen, 0, (float)mRange.DrawingRange.Y.Max, wSize.Width, (float)mRange.DrawingRange.Y.Max);
+				DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString("0"), false, true, true);
 
-				//g.DrawLine(pen, (float)mRange.DrawingRange.X.Min, 0, (float)mRange.DrawingRange.X.Min, wSize.Height);
-				//DrawString(g, zoom, mRange.DrawingRange.X.Min, 0, mRange.DrawingRange.X.Min.ToString("0"), true);
-				//g.DrawLine(pen, (float)mRange.DrawingRange.X.Max, 0, (float)mRange.DrawingRange.X.Max, wSize.Height);
-				//DrawString(g, zoom, mRange.DrawingRange.X.Max, 0, mRange.DrawingRange.X.Max.ToString("0"), true);
+				g.DrawLine(pen, (float)mRange.DrawingRange.X.Min, 0, (float)mRange.DrawingRange.X.Min, wSize.Height);
+				DrawString(g, zoom, mRange.DrawingRange.X.Min, 0, mRange.DrawingRange.X.Min.ToString("0"), true);
+				g.DrawLine(pen, (float)mRange.DrawingRange.X.Max, 0, (float)mRange.DrawingRange.X.Max, wSize.Height);
+				DrawString(g, zoom, mRange.DrawingRange.X.Max, 0, mRange.DrawingRange.X.Max.ToString("0"), true);
 			}
 			return zoom;
 		}
