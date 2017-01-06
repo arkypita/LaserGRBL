@@ -30,7 +30,6 @@ namespace LaserGRBL.RasterConverter
 			
 			CbResize.SuspendLayout();
 			CbResize.Items.Add(InterpolationMode.HighQualityBicubic);
-			CbResize.Items.Add(InterpolationMode.HighQualityBilinear);
 			CbResize.Items.Add(InterpolationMode.NearestNeighbor);
 			CbResize.ResumeLayout();
 			CbMode.SuspendLayout();
@@ -279,7 +278,10 @@ namespace LaserGRBL.RasterConverter
 		{ IP.LineDirection = (ImageProcessor.Direction)CbDirections.SelectedItem; }
 
 		void CbResizeSelectedIndexChanged(object sender, EventArgs e)
-		{ IP.Interpolation = (InterpolationMode)CbResize.SelectedItem; }
+		{ 
+			IP.Interpolation = (InterpolationMode)CbResize.SelectedItem;
+			PbOriginal.Image = IP.Original;
+		}
 
 	}
 }

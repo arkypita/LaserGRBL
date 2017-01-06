@@ -20,8 +20,9 @@ namespace LaserGRBL.RasterConverter
 		private bool mSuspended;
 		private Control mSincro;
 		private Image mOriginal;
-		private Image mResized;
 		private Size mTargetSize;
+		
+		private Image mResized; //syncronized
 
 		public enum Tool
 		{ Line2Line, Vectorize }
@@ -35,7 +36,9 @@ namespace LaserGRBL.RasterConverter
 			mSincro = sincro;
 			mOriginal = source;
 			mTargetSize = CalculateResizeToFit(source.Size, boxSize);
-			mResized = ImageTransform.ResizeImage(mOriginal, mTargetSize, false, Interpolation);
+			
+			lock (this)
+			{mResized = ImageTransform.ResizeImage(mOriginal, mTargetSize, false, Interpolation);}
 		}
 
 		public void Suspend()
@@ -61,7 +64,13 @@ namespace LaserGRBL.RasterConverter
 				if (value != mInterpolation)
 				{
 					mInterpolation = value;
-					mResized = ImageTransform.ResizeImage(mOriginal, mTargetSize, false, Interpolation);
+
+					lock (this)
+					{
+						mResized.Dispose();
+						mResized = ImageTransform.ResizeImage(mOriginal, mTargetSize, false, Interpolation);
+					}
+					
 					Refresh();
 				}
 			}
@@ -360,7 +369,12 @@ namespace LaserGRBL.RasterConverter
 			BW.WorkerSupportsCancellation = true;
 			BW.DoWork += BW_DoWork;
 			BW.RunWorkerCompleted += BW_RunWorkerCompleted;
-			BW.RunWorkerAsync(new object[] {BW, mResized});
+			
+			Image src;
+			lock (this)
+			{src = (Image)mResized.Clone();}
+			
+			BW.RunWorkerAsync(new object[] {BW, src});
 		}
 		
 		public void Dispose()
@@ -396,7 +410,7 @@ namespace LaserGRBL.RasterConverter
 			e.Cancel = true;
 			try
 			{
-				Bitmap bmp = ProduceBitmap(mResized, mTargetSize, cw); //non usare using perché poi viene assegnato al visualizzatore 
+				Bitmap bmp = ProduceBitmap(src, mTargetSize, cw); //non usare using perché poi viene assegnato al visualizzatore 
 
 				if (!cw.CancellationPending)
 				{
@@ -413,6 +427,7 @@ namespace LaserGRBL.RasterConverter
 				}
 			}
 			catch {e.Cancel = true;}
+			finally {src.Dispose();}
 		}
 		
 		public Bitmap CreateTarget(Size size)
