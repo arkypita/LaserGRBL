@@ -17,12 +17,14 @@ namespace LaserGRBL.RasterConverter
 
 		private System.ComponentModel.BackgroundWorker BW;
 
+		private bool mGrayScale;
+		
 		private bool mSuspended;
 		private Control mSincro;
 		private Image mOriginal;
 		private Size mTargetSize;
 		
-		private Image mResized; //syncronized
+		private Bitmap mResized; //syncronized
 
 		public enum Tool
 		{ Line2Line, Vectorize }
@@ -39,6 +41,25 @@ namespace LaserGRBL.RasterConverter
 			
 			lock (this)
 			{mResized = ImageTransform.ResizeImage(mOriginal, mTargetSize, false, Interpolation);}
+			
+			mGrayScale = TestGrayScale(mResized);
+		}
+		
+		public bool IsGrayScale
+		{get {return mGrayScale;}}
+		
+		bool TestGrayScale(Bitmap bmp)
+		{
+			for(int x = 0; x < bmp.Width; x+=10)
+			{
+				for(int y = 0; y < bmp.Height; y+=10)
+				{
+					Color c = bmp.GetPixel(x,y);
+					if (c.R != c.G || c.G != c.B)
+						return false;
+				}
+			}
+			return true;
 		}
 
 		public void Suspend()
@@ -453,7 +474,7 @@ namespace LaserGRBL.RasterConverter
 				if (cw != null && cw.CancellationPending)
 					return null;
 
-				using (Bitmap grayscale = ImageTransform.GrayScale(resized, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), Formula))
+				using (Bitmap grayscale = ImageTransform.GrayScale(resized, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), IsGrayScale ? ImageTransform.Formula.SimpleAverage : Formula))
 					return ImageTransform.Threshold(grayscale, Threshold / 100.0F, UseThreshold);
 			}
 		}
@@ -627,6 +648,6 @@ namespace LaserGRBL.RasterConverter
 		}
 
 
-		public Image Original { get {return mResized;}}
+		public Bitmap Original { get {return mResized;}}
 	}
 }

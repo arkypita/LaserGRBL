@@ -55,7 +55,7 @@
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.CbResize = new System.Windows.Forms.ComboBox();
 			this.LbThreshold = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
+			this.LblGrayscale = new System.Windows.Forms.Label();
 			this.CbMode = new System.Windows.Forms.ComboBox();
 			this.TBRed = new LaserGRBL.UserControls.ColorSlider();
 			this.LblRed = new System.Windows.Forms.Label();
@@ -515,7 +515,7 @@
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel2.Controls.Add(this.CbResize, 1, 0);
 			this.tableLayoutPanel2.Controls.Add(this.LbThreshold, 0, 8);
-			this.tableLayoutPanel2.Controls.Add(this.label1, 0, 1);
+			this.tableLayoutPanel2.Controls.Add(this.LblGrayscale, 0, 1);
 			this.tableLayoutPanel2.Controls.Add(this.CbMode, 1, 1);
 			this.tableLayoutPanel2.Controls.Add(this.TBRed, 1, 2);
 			this.tableLayoutPanel2.Controls.Add(this.LblRed, 0, 2);
@@ -569,15 +569,15 @@
 			this.LbThreshold.Text = "Threshold";
 			this.LbThreshold.Visible = false;
 			// 
-			// label1
+			// LblGrayscale
 			// 
-			this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(3, 34);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(54, 13);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Grayscale";
+			this.LblGrayscale.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.LblGrayscale.AutoSize = true;
+			this.LblGrayscale.Location = new System.Drawing.Point(3, 34);
+			this.LblGrayscale.Name = "LblGrayscale";
+			this.LblGrayscale.Size = new System.Drawing.Size(54, 13);
+			this.LblGrayscale.TabIndex = 0;
+			this.LblGrayscale.Text = "Grayscale";
 			// 
 			// CbMode
 			// 
@@ -1485,7 +1485,7 @@
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label LblGrayscale;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.ComboBox CbMode;
 		private UserControls.ColorSlider TbBright;

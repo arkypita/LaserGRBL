@@ -15,6 +15,7 @@ namespace LaserGRBL.RasterConverter
 		GrblFile mFile;
 		string mFileName;
 		ImageProcessor IP;
+		bool mGrayScale;
 
 		private RasterToLaserForm(GrblFile file, string filename)
 		{
@@ -25,8 +26,9 @@ namespace LaserGRBL.RasterConverter
 
 			IP = new ImageProcessor(this,  Image.FromFile(filename), PbConverted.Size);
 			PbOriginal.Image = IP.Original;
-
 			IP.ImageReady += OnImageReady;
+			
+			LblGrayscale.Visible = CbMode.Visible = !IP.IsGrayScale;
 			
 			CbResize.SuspendLayout();
 			CbResize.Items.Add(InterpolationMode.HighQualityBicubic);
@@ -46,7 +48,7 @@ namespace LaserGRBL.RasterConverter
 			
 			LoadSettings();
 		}
-
+		
 		void OnImageReady(Image img)
 		{
 			Image old = PbConverted.Image;
@@ -190,8 +192,8 @@ namespace LaserGRBL.RasterConverter
 			IP.Formula = (ImageTransform.Formula)CbMode.SelectedItem;
 
 			SuspendLayout();
-			TBRed.Visible = TBGreen.Visible = TBBlue.Visible = (IP.Formula == ImageTransform.Formula.Custom);
-			LblRed.Visible = LblGreen.Visible = LblBlue.Visible = (IP.Formula == ImageTransform.Formula.Custom);
+			TBRed.Visible = TBGreen.Visible = TBBlue.Visible = (IP.Formula == ImageTransform.Formula.Custom && !IP.IsGrayScale);
+			LblRed.Visible = LblGreen.Visible = LblBlue.Visible = (IP.Formula == ImageTransform.Formula.Custom && !IP.IsGrayScale);
 			ResumeLayout();
 		}
 
