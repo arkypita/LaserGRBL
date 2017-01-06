@@ -470,15 +470,10 @@ namespace LaserGRBL.RasterConverter
 					{
 						for (int Y = 0; Y < bmp.Height && !cw.CancellationPending; Y++)
 						{
-							using (Pen mark = new Pen(Color.FromArgb(0, 255, 255, 255), 1F))
+							using (Pen p = new Pen(Color.FromArgb(200, 255, 255, 255), 1F))
 							{
-								using (Pen nomark = new Pen(Color.FromArgb(255, 255, 255, 255), 1F))
-								{
-									if (Y % 2 == 0)
-										g.DrawLine(mark, 0, Y, bmp.Width, Y);
-									else
-										g.DrawLine(nomark, 0, Y, bmp.Width, Y);
-								}
+								if (Y % 2 == 0)
+									g.DrawLine(p, 0, Y, bmp.Width, Y);
 							}
 						}
 					}
@@ -486,15 +481,10 @@ namespace LaserGRBL.RasterConverter
 					{
 						for (int X = 0; X < bmp.Width && !cw.CancellationPending; X++)
 						{
-							using (Pen mark = new Pen(Color.FromArgb(0, 255, 255, 255), 1F))
+							using (Pen p = new Pen(Color.FromArgb(200, 255, 255, 255), 1F))
 							{
-								using (Pen nomark = new Pen(Color.FromArgb(255, 255, 255, 255), 1F))
-								{
-									if (X % 2 == 0)
-										g.DrawLine(mark, X, 0, X, bmp.Height);
-									else
-										g.DrawLine(nomark, X, 0, X, bmp.Height);
-								}
+								if (X % 2 == 0)
+									g.DrawLine(p, X, 0, X, bmp.Height);
 							}
 						}
 					}
@@ -502,20 +492,10 @@ namespace LaserGRBL.RasterConverter
 					{
 						for (int I = 0; I < bmp.Width + bmp.Height -1 && !cw.CancellationPending; I++)
 						{
-							using (Pen mark = new Pen(Color.FromArgb(0, 255, 255, 255), 1F))
+							using (Pen p = new Pen(Color.FromArgb(255, 255, 255, 255), 1F))
 							{
-								using (Pen nomark = new Pen(Color.FromArgb(255, 255, 255, 255), 1F))
-								{
-									using (Pen middlemark = new Pen(Color.FromArgb(127, 255, 255, 255), 1F))
-									{
-										if (I % 3 == 0)
-											g.DrawLine(mark, 0, bmp.Height-I, I, bmp.Height);
-										else if (I % 3 == 1)
-											g.DrawLine(nomark, 0, bmp.Height-I, I, bmp.Height);
-										else
-											g.DrawLine(middlemark, 0, bmp.Height-I, I, bmp.Height);
-									}
-								}
+									if (I % 3 == 0)
+										g.DrawLine(p, 0, bmp.Height-I, I, bmp.Height);
 							}
 						}						
 					}

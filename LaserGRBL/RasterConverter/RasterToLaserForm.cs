@@ -186,7 +186,14 @@ namespace LaserGRBL.RasterConverter
 		{((UserControls.ColorSlider)sender).Value = 50;}
 
 		private void CbMode_SelectedIndexChanged(object sender, EventArgs e)
-		{ IP.Formula = (ImageTransform.Formula)CbMode.SelectedItem; }
+		{ 
+			IP.Formula = (ImageTransform.Formula)CbMode.SelectedItem;
+
+			SuspendLayout();
+			TBRed.Visible = TBGreen.Visible = TBBlue.Visible = (IP.Formula == ImageTransform.Formula.Custom);
+			LblRed.Visible = LblGreen.Visible = LblBlue.Visible = (IP.Formula == ImageTransform.Formula.Custom);
+			ResumeLayout();
+		}
 
 		private void TBRed_ValueChanged(object sender, EventArgs e)
 		{ IP.Red = TBRed.Value; }
@@ -206,7 +213,8 @@ namespace LaserGRBL.RasterConverter
 		private void CbThreshold_CheckedChanged(object sender, EventArgs e)
 		{ 
 			IP.UseThreshold = CbThreshold.Checked;
-			TbThreshold.Enabled = CbThreshold.Checked;
+			TbThreshold.Visible = CbThreshold.Checked;
+			LbThreshold.Visible = CbThreshold.Checked;
 		}
 
 		private void TbThreshold_ValueChanged(object sender, EventArgs e)
