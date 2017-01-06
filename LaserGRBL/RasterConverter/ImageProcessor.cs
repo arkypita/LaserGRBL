@@ -375,14 +375,10 @@ namespace LaserGRBL.RasterConverter
 			{
 				BW.RunWorkerCompleted -= BW_RunWorkerCompleted;
 				BW.DoWork -= BW_DoWork;
-				
 				if (BW.IsBusy && !BW.CancellationPending)
-				{
-					System.Diagnostics.Debug.Write(".");
 					BW.CancelAsync();	
-				}
-				
 				BW.Dispose();
+				BW = null;
 			}
 		}
 		
