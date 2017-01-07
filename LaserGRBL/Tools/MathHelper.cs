@@ -25,10 +25,14 @@ namespace Tools
 		
 		public static decimal ArcDistance(decimal curX, decimal curY, decimal newX, decimal newY, double radius)
 		{
+			try
+			{
 			decimal dCX = newX - curX;
 			decimal dCY = newY - curY;
 			double chordLenght = Math.Sqrt((double)(dCX * dCX + dCY * dCY));
 			return (decimal)ArcLengthFromChord(radius, chordLenght);
+			}
+			catch{return 0;}
 		}
 		
 		public static double CalculateAngle(double x1, double y1, double x2, double y2)

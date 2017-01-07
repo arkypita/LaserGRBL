@@ -15,7 +15,6 @@ namespace LaserGRBL.RasterConverter
 		GrblFile mFile;
 		string mFileName;
 		ImageProcessor IP;
-		bool mGrayScale;
 
 		private RasterToLaserForm(GrblFile file, string filename)
 		{
@@ -86,7 +85,7 @@ namespace LaserGRBL.RasterConverter
 			{
 				System.Windows.Forms.MessageBox.Show("Warning! Image Vectorization is a work in progress, and it is not completed.\r\n Check later for new version of LaserGRBL.");
 				
-				const int potraceRes = 10;
+				const int potraceRes = 2;
 				
 				Size pixelSize = new Size(IISizeW.CurrentValue * potraceRes, IISizeH.CurrentValue * potraceRes);
 				Size mmSize = new Size(IISizeW.CurrentValue, IISizeH.CurrentValue);
