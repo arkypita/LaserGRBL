@@ -11,7 +11,8 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 ### Existing Features
 
 - GCode file loading with engraving/cutting job preview (with alpha blending for grayscale engraving)
-- Image import (jpg, bmp...) and line by line GCode generation (horizontal, vertical, and diagonal).
+- Image import (jpg, bmp...) with line by line GCode generation (horizontal, vertical, and diagonal).
+- Image import (jpg, bmp...) with Vectorization! [Experimental]
 - Grbl Configuration Import/Export
 - Configuration, Alarm and Error codes decoding for Grbl v1.1 (with description tooltip)
 - Homing button, Feed Hold button, Resume button and Grbl Reset button
@@ -57,3 +58,4 @@ LaserGRBL contains some code from:
 - [DockPanel Suite](https://github.com/dockpanelsuite/dockpanelsuite) - Copyright (c) 2007 Weifen Luo (email: weifenluo@yahoo.com).
 - [ColorSlider](https://www.codeproject.com/articles/17395/owner-drawn-trackbar-slider) - Copyright Michal Brylka
 - [CsPotrace](https://github.com/Invenietis/PoTrace) - Copyright Olivier Spinelli
+- [Bezier2Biarc](https://github.com/domoszlai/bezier2biarc) - Copyright Laszlo
