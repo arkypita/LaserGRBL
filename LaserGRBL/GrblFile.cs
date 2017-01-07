@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
+using CsPotrace;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -132,13 +134,11 @@ namespace LaserGRBL
 			{get {return true;}}
 		}	
 
-	
 		
-
-		public void LoadImage(Bitmap image, string filename, int res, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, RasterConverter.ImageProcessor.Direction dir)
+		
+		public void LoadImagePotrace(Bitmap bmp, string filename, Size targetSize, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize)
 		{
-
-			image.RotateFlip(RotateFlipType.RotateNoneFlipY);
+			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
 			long start = Tools.HiResTimer.TotalMilliseconds;
 			mTotalTravelOff = 0;
@@ -148,7 +148,55 @@ namespace LaserGRBL
 			list.Clear();
 			mRange.ResetRange();
 
-			List<ColorSegment> segments = GetSegments(image, dir, minPower, maxPower, res);
+			list.Add(new GrblCommand("G90"));
+			list.Add(new GrblCommand(String.Format("F{0}", travelSpeed)));
+			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY)))); //move fast to offset
+			list.Add(new GrblCommand(String.Format("M5 S{0}", minPower))); //laser off and power to minPower
+			list.Add(new GrblCommand(String.Format("G1 F{0}", markSpeed)));
+			list.Add(new GrblCommand("G90"));
+
+			ArrayList ListOfCurveArray = new ArrayList();
+
+			Potrace.turdsize = (int)(UseSpotRemoval ? SpotRemoval : 2);
+			Potrace.alphamax = UseSmoothing ? (double)Smoothing : 1.0;
+			Potrace.opttolerance = UseOptimize ? (double)Optimize : 0.2;
+			Potrace.curveoptimizing = UseOptimize; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
+
+			bool[,] Matrix = Potrace.BitMapToBinary(bmp, 125);
+			Potrace.potrace_trace(Matrix, ListOfCurveArray);
+			
+			List<string> gc = Potrace.Export2GCode(ListOfCurveArray, targetSize.Width, targetSize.Height, lOn, lOff);
+			
+			foreach (string code in gc)
+				list.Add(new GrblCommand(code));
+			
+
+			list.Add(new GrblCommand(lOff));
+			list.Add(new GrblCommand("G90"));
+
+			Analyze();
+			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+
+			if (OnFileLoaded != null)
+				OnFileLoaded(elapsed, filename);
+		}
+	
+		
+
+		public void LoadImageL2L(Bitmap bmp, string filename, int res, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, RasterConverter.ImageProcessor.Direction dir)
+		{
+
+			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
+
+			long start = Tools.HiResTimer.TotalMilliseconds;
+			mTotalTravelOff = 0;
+			mTotalTravelOn = 0;
+			mEstimatedTimeOff = TimeSpan.Zero;
+			mEstimatedTimeOn = TimeSpan.Zero;
+			list.Clear();
+			mRange.ResetRange();
+
+			List<ColorSegment> segments = GetSegments(bmp, dir, minPower, maxPower, res);
 			list.Add(new GrblCommand("G90"));
 			list.Add(new GrblCommand(String.Format("F{0}", travelSpeed)));
 			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY)))); //move fast to offset
@@ -186,28 +234,28 @@ namespace LaserGRBL
 				OnFileLoaded(elapsed, filename);
 		}
 
-		private List<ColorSegment> GetSegments(Bitmap image, RasterConverter.ImageProcessor.Direction dir, int minPower, int maxPower, int res)
+		private List<ColorSegment> GetSegments(Bitmap bmp, RasterConverter.ImageProcessor.Direction dir, int minPower, int maxPower, int res)
 		{
 			List<ColorSegment> rv = new List<ColorSegment>();
 			if (dir == RasterConverter.ImageProcessor.Direction.Horizontal || dir == RasterConverter.ImageProcessor.Direction.Vertical)
 			{
 				bool h = (dir == RasterConverter.ImageProcessor.Direction.Horizontal); //horizontal/vertical
 				
-				for (int i = 0; i < (h ? image.Height : image.Width); i++)
+				for (int i = 0; i < (h ? bmp.Height : bmp.Width); i++)
 				{
 					bool d = IsEven(i); //direct/reverse
 					int prevCol = -1;
 					int len = -1;
 
-					for (int j = d ? 0 : (h ? image.Width - 1 : image.Height -1) ; d ? (j < (h ? image.Width : image.Height)) : (j >= 0) ; j = (d ? j+1 : j-1) )
-						ExtractSegment(image,  h?j:i, h?i:j, !d, ref len, ref prevCol, rv, minPower, maxPower, res, dir); //extract different segments
+					for (int j = d ? 0 : (h ? bmp.Width - 1 : bmp.Height -1) ; d ? (j < (h ? bmp.Width : bmp.Height)) : (j >= 0) ; j = (d ? j+1 : j-1) )
+						ExtractSegment(bmp,  h?j:i, h?i:j, !d, ref len, ref prevCol, rv, minPower, maxPower, res, dir); //extract different segments
 
 					if (h)
 						rv.Add(new XSegment(prevCol, len + 1, res, !d)); //close last segment
 					else
 						rv.Add(new YSegment(prevCol, len + 1, res, !d)); //close last segment
 
-					if (i < (h ? image.Height-1 : image.Width-1))
+					if (i < (h ? bmp.Height-1 : bmp.Width-1))
 					{
 						if (h)
 							rv.Add(new VSeparator(res)); //new line
@@ -240,8 +288,8 @@ namespace LaserGRBL
 
 				rv.Add(new VSeparator(res)); //new line
 				
-				int w = image.Width;
-				int h = image.Height;
+				int w = bmp.Width;
+				int h = bmp.Height;
 			    for (int slice = 0; slice < w + h - 1; ++slice) 
 			    {
 					bool d = IsEven(slice); //direct/reverse
@@ -253,7 +301,7 @@ namespace LaserGRBL
 			        int z2 = slice < w ? 0 : slice - w + 1;
 			        
 					for (int j = (d ? z1 : slice - z2); d ? j <= slice - z2 : j >= z1 ; j = (d ? j+1 : j-1))
-						ExtractSegment(image, j, slice - j, !d, ref len, ref prevCol, rv, minPower, maxPower, res, dir); //extract different segments
+						ExtractSegment(bmp, j, slice - j, !d, ref len, ref prevCol, rv, minPower, maxPower, res, dir); //extract different segments
 			        rv.Add(new DSegment(prevCol, len + 1, res, !d)); //close last segment
 
 					//System.Diagnostics.Debug.WriteLine(String.Format("sl:{0} z1:{1} z2:{2}", slice, z1, z2));

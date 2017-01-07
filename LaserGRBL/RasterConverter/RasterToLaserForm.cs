@@ -80,12 +80,19 @@ namespace LaserGRBL.RasterConverter
 			if (RbLineToLineTracing.Checked)
 			{
 				using (Bitmap bmp = IP.CreateTarget(new Size(IISizeW.CurrentValue * (int)IP.Quality, IISizeH.CurrentValue * (int)IP.Quality)))
-					mFile.LoadImage(bmp, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue, IIMinPower.CurrentValue, IIMaxPower.CurrentValue, TxtLaserOn.Text, TxtLaserOff.Text, (ImageProcessor.Direction)CbDirections.SelectedItem);
+					mFile.LoadImageL2L(bmp, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue, IIMinPower.CurrentValue, IIMaxPower.CurrentValue, TxtLaserOn.Text, TxtLaserOff.Text, (ImageProcessor.Direction)CbDirections.SelectedItem);
 			}
 			else if (RbVectorize.Checked)
 			{
-				System.Windows.Forms.MessageBox.Show("Not implemented yet!");
-				return;
+				System.Windows.Forms.MessageBox.Show("Warning! Image Vectorization is a work in progress, and it is not completed.\r\n Check later for new version of LaserGRBL.");
+				
+				const int potraceRes = 10;
+				
+				Size pixelSize = new Size(IISizeW.CurrentValue * potraceRes, IISizeH.CurrentValue * potraceRes);
+				Size mmSize = new Size(IISizeW.CurrentValue, IISizeH.CurrentValue);
+				
+				using (Bitmap bmp = IP.CreateTarget(pixelSize))
+					mFile.LoadImagePotrace(bmp, mFileName, mmSize, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue, IIMinPower.CurrentValue, IIMaxPower.CurrentValue, TxtLaserOn.Text, TxtLaserOff.Text, CbSpotRemoval.Checked, (int)UDSpotRemoval.Value, CbSmoothing.Checked, UDSmoothing.Value, CbOptimize.Checked, UDOptimize.Value);
 			}
 
 			Close();

@@ -73,6 +73,7 @@
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CsPoTrace\CsPotrace.cs" />
+    <Compile Include="CsPoTrace\CsPotraceExportGCODE.cs" />
     <Compile Include="CsPoTrace\CsPtoraceExport.cs" />
     <Compile Include="GrblCore.cs" />
     <Compile Include="CSV\CsvDictionary.cs" />

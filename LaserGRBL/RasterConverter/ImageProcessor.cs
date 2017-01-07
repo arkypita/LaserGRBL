@@ -537,6 +537,9 @@ namespace LaserGRBL.RasterConverter
 
 			bool[,] Matrix = Potrace.BitMapToBinary(bmp, 125);
 			Potrace.potrace_trace(Matrix, ListOfCurveArray);
+			
+			//List<string> gc = Potrace.Export2GCode(ListOfCurveArray, bmp.Width, bmp.Height);
+			//System.IO.File.AppendAllLines("export.nc", gc);
 
 			if (!cw.CancellationPending)
 			{
