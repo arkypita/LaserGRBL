@@ -28,9 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.Tp = new System.Windows.Forms.TabControl();
 			this.TpPreview = new System.Windows.Forms.TabPage();
+			this.WB = new LaserGRBL.UserControls.WaitingProgressBar();
 			this.PbConverted = new System.Windows.Forms.PictureBox();
 			this.TpOriginal = new System.Windows.Forms.TabPage();
 			this.PbOriginal = new System.Windows.Forms.PictureBox();
@@ -114,6 +116,7 @@
 			this.IIMaxPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label18 = new System.Windows.Forms.Label();
 			this.TxtLaserOn = new System.Windows.Forms.TextBox();
+			this.WT = new System.Windows.Forms.Timer(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			this.Tp.SuspendLayout();
 			this.TpPreview.SuspendLayout();
@@ -177,6 +180,7 @@
 			// 
 			// TpPreview
 			// 
+			this.TpPreview.Controls.Add(this.WB);
 			this.TpPreview.Controls.Add(this.PbConverted);
 			this.TpPreview.Location = new System.Drawing.Point(4, 22);
 			this.TpPreview.Name = "TpPreview";
@@ -185,6 +189,28 @@
 			this.TpPreview.TabIndex = 0;
 			this.TpPreview.Text = "Preview";
 			this.TpPreview.UseVisualStyleBackColor = true;
+			// 
+			// WB
+			// 
+			this.WB.BarColor = System.Drawing.Color.SteelBlue;
+			this.WB.BorderColor = System.Drawing.Color.Black;
+			this.WB.BouncingMode = LaserGRBL.UserControls.WaitingProgressBar.BouncingModeEnum.PingPong;
+			this.WB.DrawProgressString = false;
+			this.WB.FillColor = System.Drawing.Color.White;
+			this.WB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
+			this.WB.Interval = 25D;
+			this.WB.Location = new System.Drawing.Point(592, 501);
+			this.WB.Maximum = 20D;
+			this.WB.Minimum = 0D;
+			this.WB.Name = "WB";
+			this.WB.ProgressStringDecimals = 0;
+			this.WB.Reverse = true;
+			this.WB.Running = false;
+			this.WB.Size = new System.Drawing.Size(65, 16);
+			this.WB.Step = 1D;
+			this.WB.TabIndex = 1;
+			this.WB.ThrowExceprion = false;
+			this.WB.Value = 0D;
 			// 
 			// PbConverted
 			// 
@@ -964,9 +990,9 @@
 			this.tableLayoutPanel4.SetColumnSpan(this.RbVectorize, 3);
 			this.RbVectorize.Location = new System.Drawing.Point(3, 26);
 			this.RbVectorize.Name = "RbVectorize";
-			this.RbVectorize.Size = new System.Drawing.Size(72, 17);
+			this.RbVectorize.Size = new System.Drawing.Size(164, 17);
 			this.RbVectorize.TabIndex = 1;
-			this.RbVectorize.Text = "Vectorize!";
+			this.RbVectorize.Text = "Vectorize! [EXPERIMENTAL]";
 			this.RbVectorize.UseVisualStyleBackColor = true;
 			this.RbVectorize.CheckedChanged += new System.EventHandler(this.RbVectorize_CheckedChanged);
 			// 
@@ -1411,6 +1437,11 @@
 			this.TxtLaserOn.TabIndex = 20;
 			this.TxtLaserOn.Text = "M3";
 			// 
+			// WT
+			// 
+			this.WT.Interval = 50;
+			this.WT.Tick += new System.EventHandler(this.WTTick);
+			// 
 			// RasterToLaserForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1562,5 +1593,7 @@
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.ComboBox CbResize;
 		private System.Windows.Forms.Label label28;
+		private LaserGRBL.UserControls.WaitingProgressBar WB;
+		private System.Windows.Forms.Timer WT;
 	}
 }

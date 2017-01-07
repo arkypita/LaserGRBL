@@ -136,7 +136,7 @@ namespace LaserGRBL
 
 		
 		
-		public void LoadImagePotrace(Bitmap bmp, string filename, Size targetSize, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize)
+		public void LoadImagePotrace(Bitmap bmp, string filename, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, double scale)
 		{
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
@@ -165,7 +165,7 @@ namespace LaserGRBL
 			bool[,] Matrix = Potrace.BitMapToBinary(bmp, 125);
 			Potrace.potrace_trace(Matrix, ListOfCurveArray);
 			
-			List<string> gc = Potrace.Export2GCode(ListOfCurveArray, targetSize.Width, targetSize.Height, lOn, lOff);
+			List<string> gc = Potrace.Export2GCode(ListOfCurveArray, oX, oY, scale, lOn, lOff);
 			
 			foreach (string code in gc)
 				list.Add(new GrblCommand(code));
@@ -509,7 +509,10 @@ namespace LaserGRBL
 								double wA = Tools.MathHelper.AngularDistance(aA, bA, cw);
 
 								if (rectW > 0 && rectH > 0)
-									g.DrawArc(pen, (float)rectX, (float)rectY, (float)rectW, (float)rectH, (float)sA, (float)wA);
+								{
+									try{g.DrawArc(pen, (float)rectX, (float)rectY, (float)rectW, (float)rectH, (float)sA, (float)wA);}
+									catch{System.Diagnostics.Debug.WriteLine(String.Format("Ex drwing arc: W{0} H{1}", rectW, rectH));}
+								}
 							}
 
 						}

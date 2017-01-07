@@ -25,7 +25,8 @@ namespace LaserGRBL.RasterConverter
 
 			IP = new ImageProcessor(this,  Image.FromFile(filename), PbConverted.Size);
 			PbOriginal.Image = IP.Original;
-			IP.ImageReady += OnImageReady;
+			ImageProcessor.ImageReady += OnImageReady;
+			ImageProcessor.ImageBegin += OnImageBegin;
 			
 			LblGrayscale.Visible = CbMode.Visible = !IP.IsGrayScale;
 			
@@ -48,14 +49,28 @@ namespace LaserGRBL.RasterConverter
 			LoadSettings();
 		}
 		
+		void OnImageBegin()
+		{
+			WT.Enabled = true;
+		}
 		void OnImageReady(Image img)
 		{
 			Image old = PbConverted.Image;
-			PbConverted.Image = img;
+			PbConverted.Image = img.Clone() as Image;
 			if (old != null)
 				old.Dispose();
+			WT.Enabled = false;
+			WB.Visible = false;
+			WB.Running = false;
 		}
-
+		
+		void WTTick(object sender, EventArgs e)
+		{
+			WT.Enabled = false;
+			WB.Visible = true;
+			WB.Running = true;
+		}
+		
 		internal static void CreateAndShowDialog(GrblFile file, string filename)
 		{
 			RasterToLaserForm f = new RasterToLaserForm(file, filename);
@@ -71,6 +86,9 @@ namespace LaserGRBL.RasterConverter
 
 		void BtnCreateClick(object sender, EventArgs e)
 		{
+			Cursor = Cursors.WaitCursor;
+			this.Enabled = false;
+			
 			int H = IISizeH.CurrentValue * (int)UDQuality.Value;
 			int W = IISizeW.CurrentValue * (int)UDQuality.Value;
 
@@ -83,17 +101,16 @@ namespace LaserGRBL.RasterConverter
 			}
 			else if (RbVectorize.Checked)
 			{
-				System.Windows.Forms.MessageBox.Show("Warning! Image Vectorization is a work in progress, and it is not completed.\r\n Check later for new version of LaserGRBL.");
-				
-				const int potraceRes = 2;
-				
-				Size pixelSize = new Size(IISizeW.CurrentValue * potraceRes, IISizeH.CurrentValue * potraceRes);
-				Size mmSize = new Size(IISizeW.CurrentValue, IISizeH.CurrentValue);
+				//scale the image to be about 1000px wide
+				double potraceRes = 1000.0 / IISizeW.CurrentValue ;
+				Size pixelSize = new Size((int)(IISizeW.CurrentValue * potraceRes), (int)(IISizeH.CurrentValue * potraceRes));
 				
 				using (Bitmap bmp = IP.CreateTarget(pixelSize))
-					mFile.LoadImagePotrace(bmp, mFileName, mmSize, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue, IIMinPower.CurrentValue, IIMaxPower.CurrentValue, TxtLaserOn.Text, TxtLaserOff.Text, CbSpotRemoval.Checked, (int)UDSpotRemoval.Value, CbSmoothing.Checked, UDSmoothing.Value, CbOptimize.Checked, UDOptimize.Value);
+					mFile.LoadImagePotrace(bmp, mFileName, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue, IIMinPower.CurrentValue, IIMaxPower.CurrentValue, TxtLaserOn.Text, TxtLaserOff.Text, CbSpotRemoval.Checked, (int)UDSpotRemoval.Value, CbSmoothing.Checked, UDSmoothing.Value, CbOptimize.Checked, UDOptimize.Value, potraceRes);
 			}
 
+			Cursor = Cursors.Default;
+			
 			Close();
 		}
 
@@ -287,7 +304,6 @@ namespace LaserGRBL.RasterConverter
 		void RasterToLaserFormFormClosing(object sender, FormClosingEventArgs e)
 		{
 			IP.Suspend();
-			IP.Dispose();
 		}
 
 		void CbDirectionsSelectedIndexChanged(object sender, EventArgs e)

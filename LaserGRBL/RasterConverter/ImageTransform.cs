@@ -52,18 +52,19 @@ namespace LaserGRBL.RasterConverter
 
 		public static Bitmap Threshold(Image img, float threshold, bool apply)
 		{
-			Bitmap bmp = new Bitmap(img);
+			Bitmap bmp = new Bitmap(img.Width, img.Height);
 
 			using (Graphics g = Graphics.FromImage(bmp))
 			{
+				g.Clear(Color.White); //Threshold is the final transformation 
+				g.DrawImage(img, 0,0); //so clear any transparent color and apply threshold
+				
 				// Create an ImageAttributes object, and set its color threshold.
 				ImageAttributes imageAttr = new ImageAttributes();
 				imageAttr.SetThreshold(threshold);
 
 				if (apply)
-					g.DrawImage(img, new Rectangle(0,0, bmp.Width, bmp.Height), 0,0, bmp.Width, bmp.Height,	GraphicsUnit.Pixel, imageAttr);
-				else
-					g.DrawImage(img, 0,0);
+					g.DrawImage(bmp, new Rectangle(0,0, bmp.Width, bmp.Height), 0,0, bmp.Width, bmp.Height,	GraphicsUnit.Pixel, imageAttr);
 			}
 			return bmp;
 		}
