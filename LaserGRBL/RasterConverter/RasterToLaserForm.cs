@@ -158,7 +158,7 @@ namespace LaserGRBL.RasterConverter
 			else
 			{
 				Cursor = Cursors.Default;
-				
+				TH = null;
 				if (ex != null)
 					System.Windows.Forms.MessageBox.Show(ex.ToString());
 
@@ -355,7 +355,14 @@ namespace LaserGRBL.RasterConverter
 		
 		void RasterToLaserFormFormClosing(object sender, FormClosingEventArgs e)
 		{
-			IP.Suspend();
+			if (TH != null)
+			{
+				e.Cancel = true;
+			}
+			else
+			{
+				IP.Suspend();
+			}
 		}
 
 		void CbDirectionsSelectedIndexChanged(object sender, EventArgs e)
