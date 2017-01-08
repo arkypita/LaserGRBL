@@ -136,7 +136,7 @@ namespace LaserGRBL
 
 		
 		
-		public void LoadImagePotrace(Bitmap bmp, string filename, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, int scale)
+		public void LoadImagePotrace(Bitmap bmp, string filename, int res, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize)
 		{
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
@@ -166,7 +166,7 @@ namespace LaserGRBL
 			bool[,] Matrix = Potrace.BitMapToBinary(bmp, 125);
 			Potrace.potrace_trace(Matrix, ListOfCurveArray);
 			
-			List<string> gc = Potrace.Export2GCode(ListOfCurveArray, oX, oY, scale, lOn, lOff, bmp.Size);
+			List<string> gc = Potrace.Export2GCode(ListOfCurveArray, oX, oY, res, lOn, lOff, bmp.Size);
 			
 			foreach (string code in gc)
 				list.Add(new GrblCommand(code));

@@ -9,23 +9,17 @@ namespace LaserGRBL.RasterConverter
 {
 	public partial class RasterToLaserForm : Form
 	{
-		GrblFile mFile;
-		string mFileName;
 		ImageProcessor IP;
 
-		private Thread TH;
-
-		private RasterToLaserForm(GrblFile file, string filename)
+		private RasterToLaserForm(GrblCore core, string filename)
 		{
 			InitializeComponent();
 
-			mFile = file;
-			mFileName = filename;
-
-			IP = new ImageProcessor(this,  Image.FromFile(filename), PbConverted.Size);
+			IP = new ImageProcessor(core, filename, PbConverted.Size);
 			PbOriginal.Image = IP.Original;
-			ImageProcessor.ImageReady += OnImageReady;
-			ImageProcessor.ImageBegin += OnImageBegin;
+			ImageProcessor.PreviewReady += OnPreviewReady;
+			ImageProcessor.PreviewBegin += OnPreviewBegin;
+			ImageProcessor.GenerationComplete += OnGenerationComplete;
 			
 			LblGrayscale.Visible = CbMode.Visible = !IP.IsGrayScale;
 			
@@ -55,21 +49,50 @@ namespace LaserGRBL.RasterConverter
 			LoadSettings();
 		}
 		
-		void OnImageBegin()
+		void OnPreviewBegin()
 		{
-			WT.Enabled = true;
-			BtnCreate.Enabled = false;
+			if (InvokeRequired)
+			{
+				Invoke(new ImageProcessor.PreviewBeginDlg(OnPreviewBegin));
+			}
+			else
+			{
+				WT.Enabled = true;
+				BtnCreate.Enabled = false;				
+			}
 		}
-		void OnImageReady(Image img)
+		void OnPreviewReady(Image img)
 		{
-			Image old = PbConverted.Image;
-			PbConverted.Image = img.Clone() as Image;
-			if (old != null)
-				old.Dispose();
-			WT.Enabled = false;
-			WB.Visible = false;
-			WB.Running = false;
-			BtnCreate.Enabled = true;
+			if (InvokeRequired)
+			{
+				Invoke(new ImageProcessor.PreviewReadyDlg(OnPreviewReady), img);
+			}
+			else
+			{
+				Image old = PbConverted.Image;
+				PbConverted.Image = img.Clone() as Image;
+				if (old != null)
+					old.Dispose();
+				WT.Enabled = false;
+				WB.Visible = false;
+				WB.Running = false;
+				BtnCreate.Enabled = true;
+			}
+		}
+
+		void OnGenerationComplete(Exception ex)
+		{
+			if (InvokeRequired)
+			{
+				Invoke(new ImageProcessor.GenerationCompleteDlg(OnGenerationComplete), ex);
+			}
+			else
+			{
+				Cursor = Cursors.Default;
+				if (ex != null)
+					System.Windows.Forms.MessageBox.Show(ex.ToString());
+				Close();
+			}
 		}
 		
 		void WTTick(object sender, EventArgs e)
@@ -79,9 +102,9 @@ namespace LaserGRBL.RasterConverter
 			WB.Running = true;
 		}
 		
-		internal static void CreateAndShowDialog(GrblFile file, string filename)
+		internal static void CreateAndShowDialog(GrblCore core, string filename)
 		{
-			using (RasterToLaserForm f = new RasterToLaserForm(file, filename))
+			using (RasterToLaserForm f = new RasterToLaserForm(core, filename))
 				f.ShowDialog();
 		}
 
@@ -105,72 +128,8 @@ namespace LaserGRBL.RasterConverter
 	
 			StoreSettings();
 
-			TH = new System.Threading.Thread(GenerateCode);
-			
-			GenerationData = new object[] {IISizeW.CurrentValue,
-						                  	IISizeH.CurrentValue,
-						                  	IIOffsetX.CurrentValue,
-						                  	IIOffsetY.CurrentValue,
-						                  	IIMarkSpeed.CurrentValue,
-						                  	IITravelSpeed.CurrentValue,
-						                  	IIMinPower.CurrentValue,
-						                  	IIMaxPower.CurrentValue,
-						                  	TxtLaserOn.Text,
-						                  	TxtLaserOff.Text,
-						                  	IP.Clone()};
-			TH.Start();
-		}
-
-		object[] GenerationData;
-		void GenerateCode()
-		{
-			try{
-			int W = (int)GenerationData[0];
-			int H = (int)GenerationData[1];
-			int oX = (int)GenerationData[2];
-			int oY = (int)GenerationData[3];
-			int mS = (int)GenerationData[4];
-			int tS = (int)GenerationData[5];
-			int minP = (int)GenerationData[6];
-			int maxP = (int)GenerationData[7];
-			string lOn = (string)GenerationData[8];
-			string lOff = (string)GenerationData[9];
-			ImageProcessor opt = (ImageProcessor)GenerationData[10];
-			
-			if (opt.SelectedTool == ImageProcessor.Tool.Line2Line)
-			{
-				using (Bitmap bmp = opt.CreateTarget(new Size(W * (int)opt.Quality, H * (int)opt.Quality)))
-					mFile.LoadImageL2L(bmp, mFileName, (int)opt.Quality, oX, oY, mS, tS, minP, maxP, lOn, lOff, opt.LineDirection);
-			}
-			else if (RbVectorize.Checked)
-			{
-				int potraceRes = 10; //use a fixed resolution of 10ppmm
-				Size pixelSize = new Size((int)(W * potraceRes), (int)(H * potraceRes));
-				
-				using (Bitmap bmp = opt.CreateTarget(pixelSize))
-					mFile.LoadImagePotrace(bmp, mFileName, oX, oY, mS, tS, minP, maxP, lOn, lOff, opt.UseSpotRemoval, (int)opt.SpotRemoval, opt.UseSmoothing, opt.Smoothing, opt.UseOptimize, opt.Optimize, potraceRes);
-			}
-			}
-			catch(Exception ex){GenerateComplete(ex);}
-			finally{GenerateComplete(null);}
-		}
-		
-		private delegate void GenerateCompleteDlg(Exception ex);
-		private void GenerateComplete(Exception ex)
-		{
-			if (InvokeRequired)
-			{
-				Invoke(new GenerateCompleteDlg(GenerateComplete), ex);
-			}
-			else
-			{
-				Cursor = Cursors.Default;
-				if (ex != null)
-					System.Windows.Forms.MessageBox.Show(ex.ToString());
-
-				TH = null;
-				Close();
-			}
+			ImageProcessor targetProcessor = IP.Clone() as ImageProcessor;
+			IP.GenerateGCode();
 		}
 
 		private void StoreSettings()
@@ -242,25 +201,29 @@ namespace LaserGRBL.RasterConverter
 			CbThreshold.Checked = IP.UseThreshold = (bool)Settings.GetObject("GrayScaleConversion.Parameters.Threshold.Enabled", false);
 			TbThreshold.Value = IP.Threshold = (int)Settings.GetObject("GrayScaleConversion.Parameters.Threshold.Value", 50);
 
-			IIMarkSpeed.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Mark", 1000);
-			IITravelSpeed.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Travel", 4000);
+			IIMarkSpeed.CurrentValue = IP.MarkSpeed = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Mark", 1000);
+			IITravelSpeed.CurrentValue = IP.TravelSpeed = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Travel", 4000);
 
-			TxtLaserOn.Text = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
-			TxtLaserOff.Text = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
-			IIMinPower.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
-			IIMaxPower.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
+			TxtLaserOn.Text = IP.LaserOn = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
+			TxtLaserOff.Text = IP.LaserOff = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
+			IIMinPower.CurrentValue = IP.MinPower = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
+			IIMaxPower.CurrentValue = IP.MaxPower = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
 		}
 
 		private void IISizeW_CurrentValueChanged(object sender, int NewValue, bool ByUser)
 		{
 			if (ByUser)
 				IISizeH.CurrentValue = IP.WidthToHeight(NewValue);
+			
+			IP.TargetSize = new Size(IISizeW.CurrentValue, IISizeH.CurrentValue);
 		}
 
 		private void IISizeH_CurrentValueChanged(object sender, int NewValue, bool ByUser)
 		{
 			if (ByUser)
 				IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
+			
+			IP.TargetSize = new Size(IISizeW.CurrentValue, IISizeH.CurrentValue);
 		}
 
 		void OnRGBCBDoubleClick(object sender, EventArgs e)
@@ -362,9 +325,9 @@ namespace LaserGRBL.RasterConverter
 		
 		void RasterToLaserFormFormClosing(object sender, FormClosingEventArgs e)
 		{
-			if (TH != null)
-				e.Cancel = true;
-			else
+//			if (TH != null)
+//				e.Cancel = true;
+//			else
 				IP.Suspend();
 		}
 
@@ -408,6 +371,34 @@ namespace LaserGRBL.RasterConverter
 		{
 			IP.FlipV();
 			PbOriginal.Image = IP.Original;	
+		}
+		void IIMarkSpeedCurrentValueChanged(object sender, int NewValue, bool ByUser)
+		{
+			IP.MarkSpeed = NewValue;
+		}
+		void IITravelSpeedCurrentValueChanged(object sender, int NewValue, bool ByUser)
+		{
+			IP.TravelSpeed = NewValue;
+		}
+		void TxtLaserOnTextChanged(object sender, EventArgs e)
+		{
+			IP.LaserOn = TxtLaserOn.Text;
+		}
+		void TxtLaserOffTextChanged(object sender, EventArgs e)
+		{
+			IP.LaserOff = TxtLaserOff.Text;
+		}
+		void IIOffsetXYCurrentValueChanged(object sender, int NewValue, bool ByUser)
+		{
+			IP.TargetOffset = new Point(IIOffsetX.CurrentValue, IIOffsetY.CurrentValue);
+		}
+		void IIMinPowerCurrentValueChanged(object sender, int NewValue, bool ByUser)
+		{
+			IP.MinPower = NewValue;
+		}
+		void IIMaxPowerCurrentValueChanged(object sender, int NewValue, bool ByUser)
+		{
+			IP.MaxPower = NewValue;
 		}
 	}
 }

@@ -1126,6 +1126,7 @@
 			this.IIOffsetX.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIOffsetX.Size = new System.Drawing.Size(55, 15);
 			this.IIOffsetX.TabIndex = 17;
+			this.IIOffsetX.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIOffsetXYCurrentValueChanged);
 			// 
 			// IIOffsetY
 			// 
@@ -1139,6 +1140,7 @@
 			this.IIOffsetY.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIOffsetY.Size = new System.Drawing.Size(55, 15);
 			this.IIOffsetY.TabIndex = 18;
+			this.IIOffsetY.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIOffsetXYCurrentValueChanged);
 			// 
 			// IISizeH
 			// 
@@ -1299,6 +1301,7 @@
 			this.IIMarkSpeed.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIMarkSpeed.Size = new System.Drawing.Size(55, 15);
 			this.IIMarkSpeed.TabIndex = 16;
+			this.IIMarkSpeed.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMarkSpeedCurrentValueChanged);
 			// 
 			// IITravelSpeed
 			// 
@@ -1314,6 +1317,7 @@
 			this.IITravelSpeed.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IITravelSpeed.Size = new System.Drawing.Size(55, 15);
 			this.IITravelSpeed.TabIndex = 18;
+			this.IITravelSpeed.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IITravelSpeedCurrentValueChanged);
 			// 
 			// label13
 			// 
@@ -1373,6 +1377,7 @@
 			this.TxtLaserOff.Size = new System.Drawing.Size(35, 20);
 			this.TxtLaserOff.TabIndex = 22;
 			this.TxtLaserOff.Text = "M5";
+			this.TxtLaserOff.TextChanged += new System.EventHandler(this.TxtLaserOffTextChanged);
 			// 
 			// label26
 			// 
@@ -1406,6 +1411,7 @@
 			this.IIMinPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIMinPower.Size = new System.Drawing.Size(37, 15);
 			this.IIMinPower.TabIndex = 16;
+			this.IIMinPower.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMinPowerCurrentValueChanged);
 			// 
 			// label25
 			// 
@@ -1430,6 +1436,7 @@
 			this.IIMaxPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIMaxPower.Size = new System.Drawing.Size(37, 15);
 			this.IIMaxPower.TabIndex = 18;
+			this.IIMaxPower.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMaxPowerCurrentValueChanged);
 			// 
 			// label18
 			// 
@@ -1449,6 +1456,7 @@
 			this.TxtLaserOn.Size = new System.Drawing.Size(37, 20);
 			this.TxtLaserOn.TabIndex = 20;
 			this.TxtLaserOn.Text = "M3";
+			this.TxtLaserOn.TextChanged += new System.EventHandler(this.TxtLaserOnTextChanged);
 			// 
 			// FlipControl
 			// 
@@ -1593,7 +1601,6 @@
 			this.tableLayoutPanel7.PerformLayout();
 			this.FlipControl.ResumeLayout(false);
 			this.ResumeLayout(false);
-
 		}
 
 		#endregion

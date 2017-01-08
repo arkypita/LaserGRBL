@@ -10,23 +10,23 @@ namespace LaserGRBL.RasterConverter
 {
 	public class ImageProcessor : ICloneable
 	{
-		public delegate void ImageBeginDlg();
-		public static event ImageBeginDlg ImageBegin;
+		public delegate void PreviewBeginDlg();
+		public static event PreviewBeginDlg PreviewBegin;
 		
-		public delegate void ImageReadyDlg(Image img);
-		public static event ImageReadyDlg ImageReady;
+		public delegate void PreviewReadyDlg(Image img);
+		public static event PreviewReadyDlg PreviewReady;
 
-		private Image mOriginal;
-		private Bitmap mResized; //syncronized
-		
-		private ImageProcessor Current;
-		private bool mGrayScale;
-		private bool mSuspended;
-		private Control mSincro;
-		private Size mTargetSize;
-		private Size mBoxSize;
+		public delegate void GenerationCompleteDlg(Exception ex);
+		public static event GenerationCompleteDlg GenerationComplete;		
 
+		private Bitmap mOriginal;		//original image
+		private Bitmap mResized;		//resized for preview
 		
+		private bool mGrayScale;		//image has no color
+		private bool mSuspended;		//image generator suspended for multiple property change
+		private Size mBoxSize;			//size of the picturebox frame
+
+		//options for image processing
 		private InterpolationMode mInterpolation = InterpolationMode.HighQualityBicubic;
 		private Tool mTool;
 		private ImageTransform.Formula mFormula;
@@ -49,8 +49,39 @@ namespace LaserGRBL.RasterConverter
 		private bool mShowImage;		
 		private Direction mDirection;
 
-		Thread TH;
-		protected ManualResetEvent MustExit;
+		//option for gcode generator
+		public Size TargetSize;
+		public Point TargetOffset;
+		public string LaserOn;
+		public string LaserOff;
+		public int TravelSpeed;
+		public int MarkSpeed;
+		public int MinPower;
+		public int MaxPower;
+		
+		private string mFileName;
+		GrblCore mCore;
+		
+		private ImageProcessor Current; 		//current instance of processor thread/class - used to call abort
+		Thread TH;								//processing thread
+		protected ManualResetEvent MustExit;	//exit condition
+		
+		public enum Tool
+		{ Line2Line, Vectorize }
+		
+		public enum Direction
+		{ Horizontal, Vertical, Diagonal }
+
+		public ImageProcessor(GrblCore core, string fileName, Size boxSize)
+		{
+			mCore = core;
+			mFileName = fileName;
+			mSuspended = true;
+			mOriginal = new Bitmap(fileName);
+			mBoxSize = boxSize;
+			ResizeRecalc();
+			mGrayScale = TestGrayScale(mOriginal);
+		}
 		
 		public object Clone()
 		{
@@ -60,22 +91,6 @@ namespace LaserGRBL.RasterConverter
 			rv.mOriginal = mOriginal;
 			rv.mResized = mResized.Clone() as Bitmap;
 			return rv;
-		}
-		
-		public enum Tool
-		{ Line2Line, Vectorize }
-		
-		public enum Direction
-		{ Horizontal, Vertical, Diagonal }
-
-		public ImageProcessor(Control sincro, Image source, Size boxSize)
-		{
-			mSuspended = true;
-			mSincro = sincro;
-			mOriginal = source;
-			mBoxSize = boxSize;
-			ResizeRecalc();
-			mGrayScale = TestGrayScale(mResized);
 		}
 		
 		public bool IsGrayScale
@@ -100,6 +115,7 @@ namespace LaserGRBL.RasterConverter
 			mSuspended = true;
 		}
 
+		
 		public void Resume()
 		{
 			if (mSuspended)
@@ -159,8 +175,7 @@ namespace LaserGRBL.RasterConverter
 				if (mResized != null)
 					mResized.Dispose();
 				
-				mTargetSize = CalculateResizeToFit(mOriginal.Size, mBoxSize);
-				mResized = ImageTransform.ResizeImage(mOriginal, mTargetSize, false, Interpolation);
+				mResized = ImageTransform.ResizeImage(mOriginal, CalculateResizeToFit(mOriginal.Size, mBoxSize), false, Interpolation);
 			}
 		}
 		
@@ -440,10 +455,13 @@ namespace LaserGRBL.RasterConverter
 		private void RunThread()
 		{
 			MustExit = new ManualResetEvent(false);
-			TH = new Thread(DoWork);
+			TH = new Thread(CreatePreview);
 			TH.Name = "Image Processor";
+			
+			if (PreviewBegin != null)
+				PreviewBegin();
+							
 			TH.Start();
-			RiseBegin();
 		}
 		
 		private void AbortThread()
@@ -471,26 +489,14 @@ namespace LaserGRBL.RasterConverter
 			mResized.Dispose();
 		}
 		
-		protected bool MustExitTH
+		private bool MustExitTH
 		{get{return MustExit != null && MustExit.WaitOne(0, false);}}
 		
-		private void RiseBegin()
-		{
-			if (ImageBegin != null)
-				mSincro.Invoke(ImageBegin);
-		}
-		
-		private void RiseReady(Image img)
-		{
-			if (ImageReady != null)
-				mSincro.Invoke(ImageReady, img);
-		}
-
-		void DoWork()
+		void CreatePreview()
 		{
 			try
 			{
-				using (Bitmap bmp = ProduceBitmap(mResized, mTargetSize))
+				using (Bitmap bmp = ProduceBitmap(mResized, mResized.Size))
 				{
 					if (!MustExitTH)
 					{
@@ -500,8 +506,8 @@ namespace LaserGRBL.RasterConverter
 							PreviewVector(bmp);
 					}
 					
-					if (!MustExitTH)
-						RiseReady(bmp);
+					if (!MustExitTH && PreviewReady != null)
+						PreviewReady(bmp);
 				}
 			}
 			catch(Exception ex) 
@@ -514,7 +520,43 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 		
-		public Bitmap CreateTarget(Size size)
+		public void GenerateGCode()
+		{
+			TH = new Thread(DoTrueWork);
+			TH.Name = "GCode Generator";
+			TH.Start();
+		}
+		
+		void DoTrueWork()
+		{
+			try
+			{
+
+				if (SelectedTool == ImageProcessor.Tool.Line2Line)
+				{
+					using (Bitmap bmp = CreateTarget(new Size(TargetSize.Width * (int)Quality, TargetSize.Height * (int)Quality)))
+						mCore.LoadedFile.LoadImageL2L(bmp, mFileName, (int)Quality, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, LineDirection);
+				}
+				else if (SelectedTool == ImageProcessor.Tool.Vectorize)
+				{
+					int potraceRes = 10; //use a fixed resolution of 10ppmm
+					Size pixelSize = new Size((int)(TargetSize.Width * potraceRes), (int)(TargetSize.Height * potraceRes));
+					
+					using (Bitmap bmp = CreateTarget(pixelSize))
+						mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, potraceRes, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize);
+				}
+				
+				if (GenerationComplete != null)
+					GenerationComplete(null);
+			}
+			catch(Exception ex)
+			{
+				if (GenerationComplete != null)
+					GenerationComplete(ex);
+			}
+		}
+		
+		private Bitmap CreateTarget(Size size)
 		{
 			return ProduceBitmap(mOriginal, size); //non usare using perché poi viene assegnato al postprocessing 
 		}
