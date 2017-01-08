@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace LaserGRBL.RasterConverter
 {
@@ -11,6 +12,8 @@ namespace LaserGRBL.RasterConverter
 		GrblFile mFile;
 		string mFileName;
 		ImageProcessor IP;
+
+		private Thread TH;
 
 		private RasterToLaserForm(GrblFile file, string filename)
 		{
@@ -94,11 +97,9 @@ namespace LaserGRBL.RasterConverter
 	
 			StoreSettings();
 
-			BackgroundWorker BW = new BackgroundWorker();
-			BW.DoWork += GenerateCode;
-			BW.RunWorkerCompleted += GenerateComplete;
+			TH = new System.Threading.Thread(GenerateCode);
 			
-			BW.RunWorkerAsync(new object[] {IISizeW.CurrentValue,
+			GenerationData = new object[] {IISizeW.CurrentValue,
 						                  	IISizeH.CurrentValue,
 						                  	IIOffsetX.CurrentValue,
 						                  	IIOffsetY.CurrentValue,
@@ -108,22 +109,25 @@ namespace LaserGRBL.RasterConverter
 						                  	IIMaxPower.CurrentValue,
 						                  	TxtLaserOn.Text,
 						                  	TxtLaserOff.Text,
-						                  	IP.Clone()});
+						                  	IP.Clone()};
+			TH.Start();
 		}
 
-		void GenerateCode(object sender, DoWorkEventArgs e)
+		object[] GenerationData;
+		void GenerateCode()
 		{
-			int W = (int)((object[])e.Argument)[0];
-			int H = (int)((object[])e.Argument)[1];
-			int oX = (int)((object[])e.Argument)[2];
-			int oY = (int)((object[])e.Argument)[3];
-			int mS = (int)((object[])e.Argument)[4];
-			int tS = (int)((object[])e.Argument)[5];
-			int minP = (int)((object[])e.Argument)[6];
-			int maxP = (int)((object[])e.Argument)[7];
-			string lOn = (string)((object[])e.Argument)[8];
-			string lOff = (string)((object[])e.Argument)[9];
-			ImageProcessor opt = (ImageProcessor)((object[])e.Argument)[10];
+			try{
+			int W = (int)GenerationData[0];
+			int H = (int)GenerationData[1];
+			int oX = (int)GenerationData[2];
+			int oY = (int)GenerationData[3];
+			int mS = (int)GenerationData[4];
+			int tS = (int)GenerationData[5];
+			int minP = (int)GenerationData[6];
+			int maxP = (int)GenerationData[7];
+			string lOn = (string)GenerationData[8];
+			string lOff = (string)GenerationData[9];
+			ImageProcessor opt = (ImageProcessor)GenerationData[10];
 			
 			if (opt.SelectedTool == ImageProcessor.Tool.Line2Line)
 			{
@@ -139,13 +143,27 @@ namespace LaserGRBL.RasterConverter
 				using (Bitmap bmp = opt.CreateTarget(pixelSize))
 					mFile.LoadImagePotrace(bmp, mFileName, oX, oY, mS, tS, minP, maxP, lOn, lOff, opt.UseSpotRemoval, (int)opt.SpotRemoval, opt.UseSmoothing, opt.Smoothing, opt.UseOptimize, opt.Optimize, potraceRes);
 			}
-
+			}
+			catch(Exception ex){GenerateComplete(ex);}
+			finally{GenerateComplete(null);}
 		}
-
-		void GenerateComplete(object sender, RunWorkerCompletedEventArgs e)
+		
+		private delegate void GenerateCompleteDlg(Exception ex);
+		private void GenerateComplete(Exception ex)
 		{
-			Cursor = Cursors.Default;
-			Close();
+			if (InvokeRequired)
+			{
+				Invoke(new GenerateCompleteDlg(GenerateComplete), ex);
+			}
+			else
+			{
+				Cursor = Cursors.Default;
+				
+				if (ex != null)
+					System.Windows.Forms.MessageBox.Show(ex.ToString());
+
+				Close();
+			}
 		}
 
 		private void StoreSettings()

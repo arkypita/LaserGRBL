@@ -62,11 +62,18 @@ namespace LaserGRBL
 
 		void OnFileLoaded(long elapsed, string filename)
 		{
-			TimerUpdate();
-			//TTTFile.Text = System.IO.Path.GetFileName(filename);
-			TTLines.Text = String.Format("Lines: {0}", Core.LoadedFile.Count);
-			//TTTLoadedIn.Text = elapsed.ToString() + " ms";
-			TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
+			if (InvokeRequired)
+			{
+				Invoke(new GrblFile.OnFileLoadedDlg(OnFileLoaded), elapsed, filename);
+			}
+			else
+			{
+				TimerUpdate();
+				//TTTFile.Text = System.IO.Path.GetFileName(filename);
+				TTLines.Text = String.Format("Lines: {0}", Core.LoadedFile.Count);
+				//TTTLoadedIn.Text = elapsed.ToString() + " ms";
+				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
+			}
 		}
 		
 		void OnMachineStatus()

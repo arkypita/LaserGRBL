@@ -24,7 +24,7 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
 			Core = core;
-			Core.OnFileLoaded += ComPort_OnFileLoaded;
+			Core.OnFileLoaded += OnFileLoaded;
 			CmdLog.SetCom(core);
 			
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(Color.LightSkyBlue));
@@ -35,9 +35,16 @@ namespace LaserGRBL
 			TimerUpdate();
 		}
 
-		void ComPort_OnFileLoaded(long elapsed, string filename)
+		void OnFileLoaded(long elapsed, string filename)
 		{
-			TbFileName.Text = filename;
+			if (InvokeRequired)
+			{
+				Invoke(new GrblFile.OnFileLoadedDlg(OnFileLoaded), elapsed, filename);
+			}
+			else
+			{
+				TbFileName.Text = filename;
+			}
 		}
 
 		private void InitSpeedCB() //Baud Rates combo box
