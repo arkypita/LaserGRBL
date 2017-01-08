@@ -151,7 +151,7 @@ namespace LaserGRBL
 			list.Add(new GrblCommand("G90"));
 			list.Add(new GrblCommand(String.Format("F{0}", travelSpeed)));
 			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY)))); //move fast to offset
-			list.Add(new GrblCommand(String.Format("M5 S{0}", minPower))); //laser off and power to minPower
+			list.Add(new GrblCommand(String.Format("M5 S{0}", maxPower))); //laser off and power to maxPower
 			list.Add(new GrblCommand(String.Format("G1 F{0}", markSpeed)));
 			list.Add(new GrblCommand("G90"));
 
