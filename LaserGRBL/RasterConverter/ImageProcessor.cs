@@ -27,6 +27,7 @@ namespace LaserGRBL.RasterConverter
 		private bool mSuspended;
 		private Control mSincro;
 		private Size mTargetSize;
+		private Size mBoxSize;
 
 		
 		private InterpolationMode mInterpolation = InterpolationMode.HighQualityBicubic;
@@ -59,7 +60,7 @@ namespace LaserGRBL.RasterConverter
 			ImageProcessor rv = this.MemberwiseClone() as ImageProcessor;
 			rv.TH = null;
 			rv.MustExit = null;
-			rv.mOriginal = null;
+			rv.mOriginal = mOriginal;
 			rv.mResized = mResized.Clone() as Bitmap;
 			return rv;
 		}
@@ -75,11 +76,8 @@ namespace LaserGRBL.RasterConverter
 			mSuspended = true;
 			mSincro = sincro;
 			mOriginal = source;
-			mTargetSize = CalculateResizeToFit(source.Size, boxSize);
-			
-			lock (this)
-			{mResized = ImageTransform.ResizeImage(mOriginal, mTargetSize, false, Interpolation);}
-			
+			mBoxSize = boxSize;
+			ResizeRecalc();
 			mGrayScale = TestGrayScale(mResized);
 		}
 		
@@ -122,15 +120,50 @@ namespace LaserGRBL.RasterConverter
 				if (value != mInterpolation)
 				{
 					mInterpolation = value;
-
-					lock (this)
-					{
-						mResized.Dispose();
-						mResized = ImageTransform.ResizeImage(mOriginal, mTargetSize, false, Interpolation);
-					}
-					
+					ResizeRecalc();
 					Refresh();
 				}
+			}
+		}
+		
+		public void RotateCW()
+		{
+			mOriginal.RotateFlip(RotateFlipType.Rotate90FlipNone);
+			ResizeRecalc();
+			Refresh();
+		}
+
+		public void RotateCCW()
+		{
+			mOriginal.RotateFlip(RotateFlipType.Rotate270FlipNone);
+			ResizeRecalc();
+			Refresh();			
+		}
+		
+		public void FlipH()
+		{
+			mOriginal.RotateFlip(RotateFlipType.RotateNoneFlipY);
+			ResizeRecalc();
+			Refresh();
+		}
+		
+		public void FlipV()
+		{
+			mOriginal.RotateFlip(RotateFlipType.RotateNoneFlipX);
+			ResizeRecalc();
+			
+			Refresh();			
+		}
+		
+		private void ResizeRecalc()
+		{
+			lock (this)
+			{
+				if (mResized != null)
+					mResized.Dispose();
+				
+				mTargetSize = CalculateResizeToFit(mOriginal.Size, mBoxSize);
+				mResized = ImageTransform.ResizeImage(mOriginal, mTargetSize, false, Interpolation);
 			}
 		}
 		

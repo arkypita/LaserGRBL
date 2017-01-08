@@ -29,16 +29,17 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.Tp = new System.Windows.Forms.TabControl();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RasterToLaserForm));
+			this.RightGrid = new System.Windows.Forms.TableLayoutPanel();
+			this.TCOriginalPreview = new System.Windows.Forms.TabControl();
 			this.TpPreview = new System.Windows.Forms.TabPage();
 			this.WB = new LaserGRBL.UserControls.WaitingProgressBar();
 			this.PbConverted = new System.Windows.Forms.PictureBox();
 			this.TpOriginal = new System.Windows.Forms.TabPage();
 			this.PbOriginal = new System.Windows.Forms.PictureBox();
 			this.BtnCreate = new System.Windows.Forms.Button();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.TCOptions = new System.Windows.Forms.TabControl();
+			this.TPConversion = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
 			this.GbVectorizeOptions = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -84,7 +85,7 @@
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.RbVectorize = new System.Windows.Forms.RadioButton();
 			this.RbLineToLineTracing = new System.Windows.Forms.RadioButton();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.TPGCode = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -116,15 +117,20 @@
 			this.IIMaxPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label18 = new System.Windows.Forms.Label();
 			this.TxtLaserOn = new System.Windows.Forms.TextBox();
+			this.FlipControl = new System.Windows.Forms.TableLayoutPanel();
+			this.BtFlipV = new LaserGRBL.UserControls.ImageButton();
+			this.BtFlipH = new LaserGRBL.UserControls.ImageButton();
+			this.BtRotateCW = new LaserGRBL.UserControls.ImageButton();
+			this.BtRotateCCW = new LaserGRBL.UserControls.ImageButton();
 			this.WT = new System.Windows.Forms.Timer(this.components);
-			this.tableLayoutPanel1.SuspendLayout();
-			this.Tp.SuspendLayout();
+			this.RightGrid.SuspendLayout();
+			this.TCOriginalPreview.SuspendLayout();
 			this.TpPreview.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PbConverted)).BeginInit();
 			this.TpOriginal.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).BeginInit();
-			this.tabControl1.SuspendLayout();
-			this.tabPage1.SuspendLayout();
+			this.TCOptions.SuspendLayout();
+			this.TPConversion.SuspendLayout();
 			this.tableLayoutPanel8.SuspendLayout();
 			this.GbVectorizeOptions.SuspendLayout();
 			this.tableLayoutPanel5.SuspendLayout();
@@ -138,7 +144,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.UDQuality)).BeginInit();
 			this.groupBox4.SuspendLayout();
 			this.tableLayoutPanel4.SuspendLayout();
-			this.tabPage2.SuspendLayout();
+			this.TPGCode.SuspendLayout();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -146,37 +152,40 @@
 			this.tableLayoutPanel6.SuspendLayout();
 			this.groupBox5.SuspendLayout();
 			this.tableLayoutPanel7.SuspendLayout();
+			this.FlipControl.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// tableLayoutPanel1
+			// RightGrid
 			// 
-			this.tableLayoutPanel1.ColumnCount = 3;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 236F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel1.Controls.Add(this.Tp, 1, 0);
-			this.tableLayoutPanel1.Controls.Add(this.BtnCreate, 2, 1);
-			this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 0);
-			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 2;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(912, 588);
-			this.tableLayoutPanel1.TabIndex = 0;
+			this.RightGrid.ColumnCount = 4;
+			this.RightGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 236F));
+			this.RightGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.RightGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.RightGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.RightGrid.Controls.Add(this.TCOriginalPreview, 1, 0);
+			this.RightGrid.Controls.Add(this.BtnCreate, 3, 1);
+			this.RightGrid.Controls.Add(this.TCOptions, 0, 0);
+			this.RightGrid.Controls.Add(this.FlipControl, 1, 1);
+			this.RightGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.RightGrid.Location = new System.Drawing.Point(0, 0);
+			this.RightGrid.Name = "RightGrid";
+			this.RightGrid.RowCount = 2;
+			this.RightGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.RightGrid.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.RightGrid.Size = new System.Drawing.Size(912, 527);
+			this.RightGrid.TabIndex = 0;
 			// 
-			// Tp
+			// TCOriginalPreview
 			// 
-			this.tableLayoutPanel1.SetColumnSpan(this.Tp, 2);
-			this.Tp.Controls.Add(this.TpPreview);
-			this.Tp.Controls.Add(this.TpOriginal);
-			this.Tp.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Tp.Location = new System.Drawing.Point(239, 3);
-			this.Tp.Name = "Tp";
-			this.Tp.SelectedIndex = 0;
-			this.Tp.Size = new System.Drawing.Size(670, 549);
-			this.Tp.TabIndex = 3;
+			this.RightGrid.SetColumnSpan(this.TCOriginalPreview, 3);
+			this.TCOriginalPreview.Controls.Add(this.TpPreview);
+			this.TCOriginalPreview.Controls.Add(this.TpOriginal);
+			this.TCOriginalPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.TCOriginalPreview.Location = new System.Drawing.Point(239, 3);
+			this.TCOriginalPreview.Name = "TCOriginalPreview";
+			this.TCOriginalPreview.SelectedIndex = 0;
+			this.TCOriginalPreview.Size = new System.Drawing.Size(670, 484);
+			this.TCOriginalPreview.TabIndex = 3;
 			// 
 			// TpPreview
 			// 
@@ -185,13 +194,14 @@
 			this.TpPreview.Location = new System.Drawing.Point(4, 22);
 			this.TpPreview.Name = "TpPreview";
 			this.TpPreview.Padding = new System.Windows.Forms.Padding(3);
-			this.TpPreview.Size = new System.Drawing.Size(662, 523);
+			this.TpPreview.Size = new System.Drawing.Size(662, 458);
 			this.TpPreview.TabIndex = 0;
 			this.TpPreview.Text = "Preview";
 			this.TpPreview.UseVisualStyleBackColor = true;
 			// 
 			// WB
 			// 
+			this.WB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.WB.BarColor = System.Drawing.Color.SteelBlue;
 			this.WB.BorderColor = System.Drawing.Color.Black;
 			this.WB.BouncingMode = LaserGRBL.UserControls.WaitingProgressBar.BouncingModeEnum.PingPong;
@@ -199,7 +209,7 @@
 			this.WB.FillColor = System.Drawing.Color.White;
 			this.WB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
 			this.WB.Interval = 25D;
-			this.WB.Location = new System.Drawing.Point(592, 501);
+			this.WB.Location = new System.Drawing.Point(591, 436);
 			this.WB.Maximum = 20D;
 			this.WB.Minimum = 0D;
 			this.WB.Name = "WB";
@@ -218,7 +228,7 @@
 			this.PbConverted.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PbConverted.Location = new System.Drawing.Point(3, 3);
 			this.PbConverted.Name = "PbConverted";
-			this.PbConverted.Size = new System.Drawing.Size(656, 517);
+			this.PbConverted.Size = new System.Drawing.Size(656, 452);
 			this.PbConverted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.PbConverted.TabIndex = 0;
 			this.PbConverted.TabStop = false;
@@ -229,7 +239,7 @@
 			this.TpOriginal.Location = new System.Drawing.Point(4, 22);
 			this.TpOriginal.Name = "TpOriginal";
 			this.TpOriginal.Padding = new System.Windows.Forms.Padding(3);
-			this.TpOriginal.Size = new System.Drawing.Size(662, 523);
+			this.TpOriginal.Size = new System.Drawing.Size(662, 458);
 			this.TpOriginal.TabIndex = 1;
 			this.TpOriginal.Text = "Original";
 			this.TpOriginal.UseVisualStyleBackColor = true;
@@ -240,7 +250,7 @@
 			this.PbOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PbOriginal.Location = new System.Drawing.Point(3, 3);
 			this.PbOriginal.Name = "PbOriginal";
-			this.PbOriginal.Size = new System.Drawing.Size(656, 517);
+			this.PbOriginal.Size = new System.Drawing.Size(656, 452);
 			this.PbOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.PbOriginal.TabIndex = 0;
 			this.PbOriginal.TabStop = false;
@@ -248,7 +258,7 @@
 			// BtnCreate
 			// 
 			this.BtnCreate.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.BtnCreate.Location = new System.Drawing.Point(835, 558);
+			this.BtnCreate.Location = new System.Drawing.Point(835, 495);
 			this.BtnCreate.Name = "BtnCreate";
 			this.BtnCreate.Size = new System.Drawing.Size(74, 27);
 			this.BtnCreate.TabIndex = 4;
@@ -256,28 +266,28 @@
 			this.BtnCreate.UseVisualStyleBackColor = true;
 			this.BtnCreate.Click += new System.EventHandler(this.BtnCreateClick);
 			// 
-			// tabControl1
+			// TCOptions
 			// 
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage2);
-			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tabControl1.Location = new System.Drawing.Point(3, 3);
-			this.tabControl1.Name = "tabControl1";
-			this.tableLayoutPanel1.SetRowSpan(this.tabControl1, 2);
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(230, 582);
-			this.tabControl1.TabIndex = 7;
+			this.TCOptions.Controls.Add(this.TPConversion);
+			this.TCOptions.Controls.Add(this.TPGCode);
+			this.TCOptions.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.TCOptions.Location = new System.Drawing.Point(3, 3);
+			this.TCOptions.Name = "TCOptions";
+			this.RightGrid.SetRowSpan(this.TCOptions, 2);
+			this.TCOptions.SelectedIndex = 0;
+			this.TCOptions.Size = new System.Drawing.Size(230, 521);
+			this.TCOptions.TabIndex = 7;
 			// 
-			// tabPage1
+			// TPConversion
 			// 
-			this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-			this.tabPage1.Controls.Add(this.tableLayoutPanel8);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(222, 556);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "GrayScale Conversion";
+			this.TPConversion.BackColor = System.Drawing.SystemColors.Control;
+			this.TPConversion.Controls.Add(this.tableLayoutPanel8);
+			this.TPConversion.Location = new System.Drawing.Point(4, 22);
+			this.TPConversion.Name = "TPConversion";
+			this.TPConversion.Padding = new System.Windows.Forms.Padding(3);
+			this.TPConversion.Size = new System.Drawing.Size(222, 495);
+			this.TPConversion.TabIndex = 0;
+			this.TPConversion.Text = "Conversion";
 			// 
 			// tableLayoutPanel8
 			// 
@@ -290,12 +300,13 @@
 			this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-			this.tableLayoutPanel8.RowCount = 4;
+			this.tableLayoutPanel8.RowCount = 5;
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel8.Size = new System.Drawing.Size(216, 550);
+			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel8.Size = new System.Drawing.Size(216, 489);
 			this.tableLayoutPanel8.TabIndex = 3;
 			// 
 			// GbVectorizeOptions
@@ -1010,32 +1021,33 @@
 			this.RbLineToLineTracing.UseVisualStyleBackColor = true;
 			this.RbLineToLineTracing.CheckedChanged += new System.EventHandler(this.RbLineToLineTracing_CheckedChanged);
 			// 
-			// tabPage2
+			// TPGCode
 			// 
-			this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-			this.tabPage2.Controls.Add(this.tableLayoutPanel9);
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(222, 556);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Gcode Options";
+			this.TPGCode.BackColor = System.Drawing.SystemColors.Control;
+			this.TPGCode.Controls.Add(this.tableLayoutPanel9);
+			this.TPGCode.Location = new System.Drawing.Point(4, 22);
+			this.TPGCode.Name = "TPGCode";
+			this.TPGCode.Padding = new System.Windows.Forms.Padding(3);
+			this.TPGCode.Size = new System.Drawing.Size(222, 495);
+			this.TPGCode.TabIndex = 1;
+			this.TPGCode.Text = "GCode";
 			// 
 			// tableLayoutPanel9
 			// 
 			this.tableLayoutPanel9.ColumnCount = 1;
-			this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel9.Controls.Add(this.groupBox2, 0, 2);
 			this.tableLayoutPanel9.Controls.Add(this.groupBox3, 0, 0);
 			this.tableLayoutPanel9.Controls.Add(this.groupBox5, 0, 1);
 			this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-			this.tableLayoutPanel9.RowCount = 3;
+			this.tableLayoutPanel9.RowCount = 4;
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel9.Size = new System.Drawing.Size(216, 550);
+			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel9.Size = new System.Drawing.Size(216, 489);
 			this.tableLayoutPanel9.TabIndex = 0;
 			// 
 			// groupBox2
@@ -1043,9 +1055,10 @@
 			this.groupBox2.AutoSize = true;
 			this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.groupBox2.Controls.Add(this.tableLayoutPanel3);
+			this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBox2.Location = new System.Drawing.Point(3, 142);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(203, 61);
+			this.groupBox2.Size = new System.Drawing.Size(212, 61);
 			this.groupBox2.TabIndex = 1;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Image Size and Position [mm]";
@@ -1077,7 +1090,7 @@
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(197, 42);
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(206, 42);
 			this.tableLayoutPanel3.TabIndex = 0;
 			// 
 			// label9
@@ -1213,7 +1226,7 @@
 			this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBox3.Location = new System.Drawing.Point(3, 3);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(210, 61);
+			this.groupBox3.Size = new System.Drawing.Size(212, 61);
 			this.groupBox3.TabIndex = 5;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Speed";
@@ -1239,7 +1252,7 @@
 			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel6.Size = new System.Drawing.Size(204, 42);
+			this.tableLayoutPanel6.Size = new System.Drawing.Size(206, 42);
 			this.tableLayoutPanel6.TabIndex = 0;
 			// 
 			// label20
@@ -1320,7 +1333,7 @@
 			this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBox5.Location = new System.Drawing.Point(3, 70);
 			this.groupBox5.Name = "groupBox5";
-			this.groupBox5.Size = new System.Drawing.Size(210, 66);
+			this.groupBox5.Size = new System.Drawing.Size(212, 66);
 			this.groupBox5.TabIndex = 6;
 			this.groupBox5.TabStop = false;
 			this.groupBox5.Text = "Laser Options";
@@ -1349,7 +1362,7 @@
 			this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel7.Size = new System.Drawing.Size(204, 47);
+			this.tableLayoutPanel7.Size = new System.Drawing.Size(206, 47);
 			this.tableLayoutPanel7.TabIndex = 0;
 			// 
 			// TxtLaserOff
@@ -1437,6 +1450,82 @@
 			this.TxtLaserOn.TabIndex = 20;
 			this.TxtLaserOn.Text = "M3";
 			// 
+			// FlipControl
+			// 
+			this.FlipControl.AutoSize = true;
+			this.FlipControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.FlipControl.ColumnCount = 4;
+			this.FlipControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.FlipControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.FlipControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.FlipControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.FlipControl.Controls.Add(this.BtFlipV, 3, 0);
+			this.FlipControl.Controls.Add(this.BtFlipH, 2, 0);
+			this.FlipControl.Controls.Add(this.BtRotateCW, 0, 0);
+			this.FlipControl.Controls.Add(this.BtRotateCCW, 1, 0);
+			this.FlipControl.Location = new System.Drawing.Point(239, 493);
+			this.FlipControl.Name = "FlipControl";
+			this.FlipControl.RowCount = 1;
+			this.FlipControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.FlipControl.Size = new System.Drawing.Size(124, 31);
+			this.FlipControl.TabIndex = 8;
+			// 
+			// BtFlipV
+			// 
+			this.BtFlipV.AltImage = null;
+			this.BtFlipV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtFlipV.Coloration = System.Drawing.Color.Empty;
+			this.BtFlipV.Image = ((System.Drawing.Image)(resources.GetObject("BtFlipV.Image")));
+			this.BtFlipV.Location = new System.Drawing.Point(96, 3);
+			this.BtFlipV.Name = "BtFlipV";
+			this.BtFlipV.Size = new System.Drawing.Size(25, 25);
+			this.BtFlipV.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtFlipV.TabIndex = 3;
+			this.BtFlipV.UseAltImage = false;
+			this.BtFlipV.Click += new System.EventHandler(this.BtFlipVClick);
+			// 
+			// BtFlipH
+			// 
+			this.BtFlipH.AltImage = null;
+			this.BtFlipH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtFlipH.Coloration = System.Drawing.Color.Empty;
+			this.BtFlipH.Image = ((System.Drawing.Image)(resources.GetObject("BtFlipH.Image")));
+			this.BtFlipH.Location = new System.Drawing.Point(65, 3);
+			this.BtFlipH.Name = "BtFlipH";
+			this.BtFlipH.Size = new System.Drawing.Size(25, 25);
+			this.BtFlipH.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtFlipH.TabIndex = 2;
+			this.BtFlipH.UseAltImage = false;
+			this.BtFlipH.Click += new System.EventHandler(this.BtFlipHClick);
+			// 
+			// BtRotateCW
+			// 
+			this.BtRotateCW.AltImage = null;
+			this.BtRotateCW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtRotateCW.Coloration = System.Drawing.Color.Empty;
+			this.BtRotateCW.Image = ((System.Drawing.Image)(resources.GetObject("BtRotateCW.Image")));
+			this.BtRotateCW.Location = new System.Drawing.Point(3, 3);
+			this.BtRotateCW.Name = "BtRotateCW";
+			this.BtRotateCW.Size = new System.Drawing.Size(25, 25);
+			this.BtRotateCW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtRotateCW.TabIndex = 1;
+			this.BtRotateCW.UseAltImage = false;
+			this.BtRotateCW.Click += new System.EventHandler(this.BtRotateCWClick);
+			// 
+			// BtRotateCCW
+			// 
+			this.BtRotateCCW.AltImage = null;
+			this.BtRotateCCW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtRotateCCW.Coloration = System.Drawing.Color.Empty;
+			this.BtRotateCCW.Image = ((System.Drawing.Image)(resources.GetObject("BtRotateCCW.Image")));
+			this.BtRotateCCW.Location = new System.Drawing.Point(34, 3);
+			this.BtRotateCCW.Name = "BtRotateCCW";
+			this.BtRotateCCW.Size = new System.Drawing.Size(25, 25);
+			this.BtRotateCCW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtRotateCCW.TabIndex = 0;
+			this.BtRotateCCW.UseAltImage = false;
+			this.BtRotateCCW.Click += new System.EventHandler(this.BtRotateCCWClick);
+			// 
 			// WT
 			// 
 			this.WT.Interval = 50;
@@ -1446,8 +1535,8 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(912, 588);
-			this.Controls.Add(this.tableLayoutPanel1);
+			this.ClientSize = new System.Drawing.Size(912, 527);
+			this.Controls.Add(this.RightGrid);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
@@ -1456,14 +1545,15 @@
 			this.Text = "Import Raster Image";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RasterToLaserFormFormClosing);
 			this.Load += new System.EventHandler(this.RasterToLaserForm_Load);
-			this.tableLayoutPanel1.ResumeLayout(false);
-			this.Tp.ResumeLayout(false);
+			this.RightGrid.ResumeLayout(false);
+			this.RightGrid.PerformLayout();
+			this.TCOriginalPreview.ResumeLayout(false);
 			this.TpPreview.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.PbConverted)).EndInit();
 			this.TpOriginal.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).EndInit();
-			this.tabControl1.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
+			this.TCOptions.ResumeLayout(false);
+			this.TPConversion.ResumeLayout(false);
 			this.tableLayoutPanel8.ResumeLayout(false);
 			this.tableLayoutPanel8.PerformLayout();
 			this.GbVectorizeOptions.ResumeLayout(false);
@@ -1486,7 +1576,7 @@
 			this.groupBox4.PerformLayout();
 			this.tableLayoutPanel4.ResumeLayout(false);
 			this.tableLayoutPanel4.PerformLayout();
-			this.tabPage2.ResumeLayout(false);
+			this.TPGCode.ResumeLayout(false);
 			this.tableLayoutPanel9.ResumeLayout(false);
 			this.tableLayoutPanel9.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
@@ -1501,14 +1591,15 @@
 			this.groupBox5.PerformLayout();
 			this.tableLayoutPanel7.ResumeLayout(false);
 			this.tableLayoutPanel7.PerformLayout();
+			this.FlipControl.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private System.Windows.Forms.TabControl Tp;
+		private System.Windows.Forms.TableLayoutPanel RightGrid;
+		private System.Windows.Forms.TabControl TCOriginalPreview;
 		private System.Windows.Forms.TabPage TpPreview;
 		private System.Windows.Forms.PictureBox PbConverted;
 		private System.Windows.Forms.TabPage TpOriginal;
@@ -1579,9 +1670,9 @@
 		private System.Windows.Forms.Label label25;
 		private LaserGRBL.UserControls.IntegerInput.IntegerInputRanged IIMinPower;
 		private LaserGRBL.UserControls.IntegerInput.IntegerInputRanged IIMaxPower;
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.TabControl TCOptions;
+		private System.Windows.Forms.TabPage TPConversion;
+		private System.Windows.Forms.TabPage TPGCode;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
 		private System.Windows.Forms.Label label18;
@@ -1595,5 +1686,10 @@
 		private System.Windows.Forms.Label label28;
 		private LaserGRBL.UserControls.WaitingProgressBar WB;
 		private System.Windows.Forms.Timer WT;
+		private System.Windows.Forms.TableLayoutPanel FlipControl;
+		private LaserGRBL.UserControls.ImageButton BtFlipV;
+		private LaserGRBL.UserControls.ImageButton BtFlipH;
+		private LaserGRBL.UserControls.ImageButton BtRotateCW;
+		private LaserGRBL.UserControls.ImageButton BtRotateCCW;
 	}
 }

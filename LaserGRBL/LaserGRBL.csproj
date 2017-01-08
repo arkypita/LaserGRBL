@@ -333,7 +333,11 @@
     <EmbeddedResource Include="UserControls\LabelTB.resx">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Grafica\flipH.png" />
+    <None Include="Grafica\flipV.png" />
     <None Include="Grafica\LaserGrbl.ico" />
+    <None Include="Grafica\rotCCW.png" />
+    <None Include="Grafica\rotCW.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Grafica\add2.png" />

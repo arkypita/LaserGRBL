@@ -87,30 +87,68 @@ namespace LaserGRBL.RasterConverter
 		void BtnCreateClick(object sender, EventArgs e)
 		{
 			Cursor = Cursors.WaitCursor;
-			this.Enabled = false;
-			
-			int H = IISizeH.CurrentValue * (int)UDQuality.Value;
-			int W = IISizeW.CurrentValue * (int)UDQuality.Value;
-
+			SuspendLayout();
+			TCOriginalPreview.SelectedIndex = 0;
+			TCOptions.Enabled = false;
+			FlipControl.Enabled = false;
+			BtnCreate.Enabled = false;
+			WB.Visible = true;
+			WB.Running = true;
+			ResumeLayout();
+	
 			StoreSettings();
 
-			if (RbLineToLineTracing.Checked)
+			BackgroundWorker BW = new BackgroundWorker();
+			BW.DoWork += GenerateCode;
+			BW.RunWorkerCompleted += GenerateComplete;
+			
+			BW.RunWorkerAsync(new object[] {IISizeW.CurrentValue,
+						                  	IISizeH.CurrentValue,
+						                  	IIOffsetX.CurrentValue,
+						                  	IIOffsetY.CurrentValue,
+						                  	IIMarkSpeed.CurrentValue,
+						                  	IITravelSpeed.CurrentValue,
+						                  	IIMinPower.CurrentValue,
+						                  	IIMaxPower.CurrentValue,
+						                  	TxtLaserOn.Text,
+						                  	TxtLaserOff.Text,
+						                  	IP.Clone()});
+		}
+
+		void GenerateCode(object sender, DoWorkEventArgs e)
+		{
+			int W = (int)((object[])e.Argument)[0];
+			int H = (int)((object[])e.Argument)[1];
+			int oX = (int)((object[])e.Argument)[2];
+			int oY = (int)((object[])e.Argument)[3];
+			int mS = (int)((object[])e.Argument)[4];
+			int tS = (int)((object[])e.Argument)[5];
+			int minP = (int)((object[])e.Argument)[6];
+			int maxP = (int)((object[])e.Argument)[7];
+			string lOn = (string)((object[])e.Argument)[8];
+			string lOff = (string)((object[])e.Argument)[9];
+			ImageProcessor opt = (ImageProcessor)((object[])e.Argument)[10];
+			
+			if (opt.SelectedTool == ImageProcessor.Tool.Line2Line)
 			{
-				using (Bitmap bmp = IP.CreateTarget(new Size(IISizeW.CurrentValue * (int)IP.Quality, IISizeH.CurrentValue * (int)IP.Quality)))
-					mFile.LoadImageL2L(bmp, mFileName, (int)UDQuality.Value, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue, IIMinPower.CurrentValue, IIMaxPower.CurrentValue, TxtLaserOn.Text, TxtLaserOff.Text, (ImageProcessor.Direction)CbDirections.SelectedItem);
+				using (Bitmap bmp = opt.CreateTarget(new Size(W * (int)opt.Quality, H * (int)opt.Quality)))
+					mFile.LoadImageL2L(bmp, mFileName, (int)opt.Quality, oX, oY, mS, tS, minP, maxP, lOn, lOff, opt.LineDirection);
 			}
 			else if (RbVectorize.Checked)
 			{
 				//scale the image to be about 1000px wide
-				double potraceRes = 1000.0 / IISizeW.CurrentValue ;
-				Size pixelSize = new Size((int)(IISizeW.CurrentValue * potraceRes), (int)(IISizeH.CurrentValue * potraceRes));
+				double potraceRes = 1000.0 / W ;
+				Size pixelSize = new Size((int)(W * potraceRes), (int)(H * potraceRes));
 				
-				using (Bitmap bmp = IP.CreateTarget(pixelSize))
-					mFile.LoadImagePotrace(bmp, mFileName, IIOffsetX.CurrentValue, IIOffsetY.CurrentValue, IIMarkSpeed.CurrentValue, IITravelSpeed.CurrentValue, IIMinPower.CurrentValue, IIMaxPower.CurrentValue, TxtLaserOn.Text, TxtLaserOff.Text, CbSpotRemoval.Checked, (int)UDSpotRemoval.Value, CbSmoothing.Checked, UDSmoothing.Value, CbOptimize.Checked, UDOptimize.Value, potraceRes);
+				using (Bitmap bmp = opt.CreateTarget(pixelSize))
+					mFile.LoadImagePotrace(bmp, mFileName, oX, oY, mS, tS, minP, maxP, lOn, lOff, opt.UseSpotRemoval, (int)opt.SpotRemoval, opt.UseSmoothing, opt.Smoothing, opt.UseOptimize, opt.Optimize, potraceRes);
 			}
 
+		}
+
+		void GenerateComplete(object sender, RunWorkerCompletedEventArgs e)
+		{
 			Cursor = Cursors.Default;
-			
 			Close();
 		}
 
@@ -314,6 +352,38 @@ namespace LaserGRBL.RasterConverter
 			IP.Interpolation = (InterpolationMode)CbResize.SelectedItem;
 			PbOriginal.Image = IP.Original;
 		}
+		void BtRotateCWClick(object sender, EventArgs e)
+		{
+			IP.RotateCW();
+			PbOriginal.Image = IP.Original;
+			
+			int w = IISizeW.CurrentValue;
+			int h = IISizeH.CurrentValue;
+			
+			IISizeW.CurrentValue = h;
+			IISizeH.CurrentValue = w;
+		}
+		void BtRotateCCWClick(object sender, EventArgs e)
+		{
+			IP.RotateCCW();
+			PbOriginal.Image = IP.Original;
 
+			int w = IISizeW.CurrentValue;
+			int h = IISizeH.CurrentValue;
+			
+			IISizeW.CurrentValue = h;
+			IISizeH.CurrentValue = w;
+			
+		}
+		void BtFlipHClick(object sender, EventArgs e)
+		{
+			IP.FlipH();
+			PbOriginal.Image = IP.Original;
+		}
+		void BtFlipVClick(object sender, EventArgs e)
+		{
+			IP.FlipV();
+			PbOriginal.Image = IP.Original;	
+		}
 	}
 }
