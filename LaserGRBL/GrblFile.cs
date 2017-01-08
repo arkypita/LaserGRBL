@@ -165,7 +165,7 @@ namespace LaserGRBL
 			bool[,] Matrix = Potrace.BitMapToBinary(bmp, 125);
 			Potrace.potrace_trace(Matrix, ListOfCurveArray);
 			
-			List<string> gc = Potrace.Export2GCode(ListOfCurveArray, oX, oY, scale, lOn, lOff);
+			List<string> gc = Potrace.Export2GCode(ListOfCurveArray, oX, oY, scale, lOn, lOff, bmp.Size);
 			
 			foreach (string code in gc)
 				list.Add(new GrblCommand(code));
