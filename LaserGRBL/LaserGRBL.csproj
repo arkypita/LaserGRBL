@@ -62,7 +62,6 @@
     <Reference Include="System.Design" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
   </ItemGroup>
@@ -76,8 +75,10 @@
     <Compile Include="CsPotrace\BezierToBiarc\Algorithm.cs" />
     <Compile Include="CsPotrace\BezierToBiarc\Arc.cs" />
     <Compile Include="CsPotrace\BezierToBiarc\BiArc.cs" />
+    <Compile Include="CsPotrace\BezierToBiarc\Complex.cs" />
     <Compile Include="CsPotrace\BezierToBiarc\CubicBezier.cs" />
     <Compile Include="CsPotrace\BezierToBiarc\Line.cs" />
+    <Compile Include="CsPotrace\BezierToBiarc\Vector2.cs" />
     <Compile Include="CsPotrace\CsPotrace.cs" />
     <Compile Include="CsPotrace\CsPotraceExportGCODE.cs" />
     <Compile Include="CsPotrace\CsPtoraceExport.cs" />

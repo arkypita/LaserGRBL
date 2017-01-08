@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using CsPotrace.BezierToBiarc;
 using System.Collections;
 using CsPotrace;
-using System.Numerics;
 using System.Drawing;
 
 namespace CsPotrace

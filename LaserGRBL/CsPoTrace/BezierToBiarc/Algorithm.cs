@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Numerics;
 using System.Collections.Generic;
 
 namespace CsPotrace.BezierToBiarc
