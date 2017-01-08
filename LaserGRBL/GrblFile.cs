@@ -136,7 +136,7 @@ namespace LaserGRBL
 
 		
 		
-		public void LoadImagePotrace(Bitmap bmp, string filename, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, double scale)
+		public void LoadImagePotrace(Bitmap bmp, string filename, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, int scale)
 		{
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 

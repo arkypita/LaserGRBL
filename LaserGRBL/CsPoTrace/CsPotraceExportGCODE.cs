@@ -20,7 +20,7 @@ namespace CsPotrace
         /// <param name="Width">Width of the exportd cvg-File</param>
         /// <param name="Height">Height of the exportd cvg-File</param>
         /// <returns></returns>
-        public static List<string> Export2GCode(ArrayList Fig, int oX, int oY, double scale , string lOn, string lOff, Size originalImageSize)
+        public static List<string> Export2GCode(ArrayList Fig, int oX, int oY, int scale , string lOn, string lOff, Size originalImageSize)
         {
         	bool debug = false;
         	
@@ -51,7 +51,7 @@ namespace CsPotrace
             return rv;
         }
 
-        private static List<string> GetPathGC(Potrace.Curve[] Curves, string lOn, string lOff, double oX, double oY, double scale, Graphics g)
+        private static List<string> GetPathGC(Potrace.Curve[] Curves, string lOn, string lOff, double oX, double oY, int scale, Graphics g)
         {
            
         	List<string> rv = new List<string>();
@@ -131,7 +131,7 @@ namespace CsPotrace
             return rv;
         }
 
-        private static string GetArcGC(Arc arc, double oX, double oY, double scale, Graphics g)
+        private static string GetArcGC(Arc arc, double oX, double oY, int scale, Graphics g)
         {
         	//http://www.cnccookbook.com/CCCNCGCodeArcsG02G03.htm
         	//https://www.tormach.com/g02_g03.html
@@ -162,7 +162,7 @@ namespace CsPotrace
 			return Math.Sqrt(dX * dX + dY * dY);
 		}
 		
-        private static string formatnumber(double number, double scale)
+        private static string formatnumber(double number, int scale)
         { return (number/scale).ToString("0.###", System.Globalization.CultureInfo.InvariantCulture); }
 		
         public static PointF AsPointF(Vector2 v)

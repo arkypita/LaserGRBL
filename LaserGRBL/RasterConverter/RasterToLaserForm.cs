@@ -42,9 +42,16 @@ namespace LaserGRBL.RasterConverter
 				CbDirections.Items.Add(direction);
 			CbDirections.ResumeLayout();
 			
-			IISizeW.CurrentValue = 50;
-			IISizeH.CurrentValue = IP.WidthToHeight(50);
-			
+			if (IP.Original.Height < IP.Original.Width)
+			{
+				IISizeW.CurrentValue = 50;
+				IISizeH.CurrentValue = IP.WidthToHeight(50);
+			}
+			else
+			{
+				IISizeH.CurrentValue = 50;
+				IISizeW.CurrentValue = IP.HeightToWidht(50);
+			}
 			LoadSettings();
 		}
 		
@@ -137,8 +144,7 @@ namespace LaserGRBL.RasterConverter
 			}
 			else if (RbVectorize.Checked)
 			{
-				//scale the image to be about 1000px wide
-				double potraceRes = 1000.0 / W ;
+				int potraceRes = 10; //use a fixed resolution of 10ppmm
 				Size pixelSize = new Size((int)(W * potraceRes), (int)(H * potraceRes));
 				
 				using (Bitmap bmp = opt.CreateTarget(pixelSize))
