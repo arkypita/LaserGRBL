@@ -110,6 +110,13 @@ namespace LaserGRBL.RasterConverter
 			return true;
 		}
 
+		public void Dispose()
+		{
+			Suspend();
+			if (Current != null)
+				Current.AbortThread();
+		}
+		
 		public void Suspend()
 		{
 			mSuspended = true;
@@ -304,7 +311,7 @@ namespace LaserGRBL.RasterConverter
 				if (value != mQuality)
 				{
 					mQuality = value;
-					Refresh();
+					//Refresh();
 				}
 			}
 		}

@@ -332,7 +332,16 @@ namespace LaserGRBL.RasterConverter
 		void RasterToLaserFormFormClosing(object sender, FormClosingEventArgs e)
 		{
 			if (preventClose)
+			{
 				e.Cancel = true;
+			}
+			else
+			{
+				ImageProcessor.PreviewReady -= OnPreviewReady;
+				ImageProcessor.PreviewBegin -= OnPreviewBegin;
+				ImageProcessor.GenerationComplete -= OnGenerationComplete;
+				IP.Dispose();
+			}
 		}
 
 		void CbDirectionsSelectedIndexChanged(object sender, EventArgs e)
