@@ -51,6 +51,7 @@ namespace LaserGRBL.RasterConverter
 		void OnImageBegin()
 		{
 			WT.Enabled = true;
+			BtnCreate.Enabled = false;
 		}
 		void OnImageReady(Image img)
 		{
@@ -61,6 +62,7 @@ namespace LaserGRBL.RasterConverter
 			WT.Enabled = false;
 			WB.Visible = false;
 			WB.Running = false;
+			BtnCreate.Enabled = true;
 		}
 		
 		void WTTick(object sender, EventArgs e)
