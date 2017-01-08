@@ -1150,7 +1150,7 @@
 			this.IISizeH.Location = new System.Drawing.Point(139, 3);
 			this.IISizeH.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
 			this.IISizeH.MaxValue = 1000;
-			this.IISizeH.MinValue = 5;
+			this.IISizeH.MinValue = 10;
 			this.IISizeH.Name = "IISizeH";
 			this.IISizeH.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IISizeH.Size = new System.Drawing.Size(55, 15);
@@ -1165,7 +1165,7 @@
 			this.IISizeW.Location = new System.Drawing.Point(61, 3);
 			this.IISizeW.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
 			this.IISizeW.MaxValue = 1000;
-			this.IISizeW.MinValue = 5;
+			this.IISizeW.MinValue = 10;
 			this.IISizeW.Name = "IISizeW";
 			this.IISizeW.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IISizeW.Size = new System.Drawing.Size(55, 15);
@@ -1601,6 +1601,7 @@
 			this.tableLayoutPanel7.PerformLayout();
 			this.FlipControl.ResumeLayout(false);
 			this.ResumeLayout(false);
+
 		}
 
 		#endregion

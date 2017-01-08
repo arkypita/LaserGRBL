@@ -10,7 +10,8 @@ namespace LaserGRBL.RasterConverter
 	public partial class RasterToLaserForm : Form
 	{
 		ImageProcessor IP;
-
+		bool preventClose;
+		
 		private RasterToLaserForm(GrblCore core, string filename)
 		{
 			InitializeComponent();
@@ -51,6 +52,8 @@ namespace LaserGRBL.RasterConverter
 		
 		void OnPreviewBegin()
 		{
+			preventClose = true;
+				
 			if (InvokeRequired)
 			{
 				Invoke(new ImageProcessor.PreviewBeginDlg(OnPreviewBegin));
@@ -77,6 +80,7 @@ namespace LaserGRBL.RasterConverter
 				WB.Visible = false;
 				WB.Running = false;
 				BtnCreate.Enabled = true;
+				preventClose = false;
 			}
 		}
 
@@ -91,6 +95,7 @@ namespace LaserGRBL.RasterConverter
 				Cursor = Cursors.Default;
 				if (ex != null)
 					System.Windows.Forms.MessageBox.Show(ex.ToString());
+				preventClose = false;
 				Close();
 			}
 		}
@@ -116,6 +121,7 @@ namespace LaserGRBL.RasterConverter
 
 		void BtnCreateClick(object sender, EventArgs e)
 		{
+			preventClose = true;
 			Cursor = Cursors.WaitCursor;
 			SuspendLayout();
 			TCOriginalPreview.SelectedIndex = 0;
@@ -325,10 +331,8 @@ namespace LaserGRBL.RasterConverter
 		
 		void RasterToLaserFormFormClosing(object sender, FormClosingEventArgs e)
 		{
-//			if (TH != null)
-//				e.Cancel = true;
-//			else
-				IP.Suspend();
+			if (preventClose)
+				e.Cancel = true;
 		}
 
 		void CbDirectionsSelectedIndexChanged(object sender, EventArgs e)

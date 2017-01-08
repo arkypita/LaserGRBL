@@ -531,23 +531,34 @@ namespace LaserGRBL.RasterConverter
 		{
 			try
 			{
+				int maxSize = 6000*7000; //testato con immagini da 600*700 con res 10ppm
+				int imageRes = SelectedTool == ImageProcessor.Tool.Line2Line ? (int)Quality : 10; //use a fixed resolution of 10ppmm
+				Size pixelSize = new Size((int)(TargetSize.Width * imageRes), (int)(TargetSize.Height * imageRes));
 
-				if (SelectedTool == ImageProcessor.Tool.Line2Line)
+				while (pixelSize.Width * pixelSize.Height > maxSize) 
 				{
-					using (Bitmap bmp = CreateTarget(new Size(TargetSize.Width * (int)Quality, TargetSize.Height * (int)Quality)))
-						mCore.LoadedFile.LoadImageL2L(bmp, mFileName, (int)Quality, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, LineDirection);
-				}
-				else if (SelectedTool == ImageProcessor.Tool.Vectorize)
-				{
-					int potraceRes = 10; //use a fixed resolution of 10ppmm
-					Size pixelSize = new Size((int)(TargetSize.Width * potraceRes), (int)(TargetSize.Height * potraceRes));
-					
-					using (Bitmap bmp = CreateTarget(pixelSize))
-						mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, potraceRes, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize);
+					imageRes--;
+					pixelSize = new Size((int)(TargetSize.Width * imageRes), (int)(TargetSize.Height * imageRes));
 				}
 				
-				if (GenerationComplete != null)
-					GenerationComplete(null);
+				if (imageRes > 0)
+				{
+					using (Bitmap bmp = CreateTarget(pixelSize))
+					{
+						if (SelectedTool == ImageProcessor.Tool.Line2Line)
+							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, imageRes, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, LineDirection);
+						else if (SelectedTool == ImageProcessor.Tool.Vectorize)
+							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, imageRes, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize);
+					}
+					
+					if (GenerationComplete != null)
+						GenerationComplete(null);
+				}
+				else
+				{
+					if (GenerationComplete != null)
+						GenerationComplete(new System.InvalidOperationException("Image size is too big for processing!"));
+				}
 			}
 			catch(Exception ex)
 			{
