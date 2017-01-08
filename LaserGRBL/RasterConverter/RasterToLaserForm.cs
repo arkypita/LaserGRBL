@@ -72,9 +72,8 @@ namespace LaserGRBL.RasterConverter
 		
 		internal static void CreateAndShowDialog(GrblFile file, string filename)
 		{
-			RasterToLaserForm f = new RasterToLaserForm(file, filename);
-			f.ShowDialog();
-			f.Dispose();
+			using (RasterToLaserForm f = new RasterToLaserForm(file, filename))
+				f.ShowDialog();
 		}
 
 		void GoodInput(object sender, KeyPressEventArgs e)
@@ -158,10 +157,10 @@ namespace LaserGRBL.RasterConverter
 			else
 			{
 				Cursor = Cursors.Default;
-				TH = null;
 				if (ex != null)
 					System.Windows.Forms.MessageBox.Show(ex.ToString());
 
+				TH = null;
 				Close();
 			}
 		}
@@ -356,13 +355,9 @@ namespace LaserGRBL.RasterConverter
 		void RasterToLaserFormFormClosing(object sender, FormClosingEventArgs e)
 		{
 			if (TH != null)
-			{
 				e.Cancel = true;
-			}
 			else
-			{
 				IP.Suspend();
-			}
 		}
 
 		void CbDirectionsSelectedIndexChanged(object sender, EventArgs e)
