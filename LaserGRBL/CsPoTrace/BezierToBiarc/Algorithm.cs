@@ -117,6 +117,9 @@ namespace CsPotrace.BezierToBiarc
                 var nrPointsToCheck = biarc.Length / samplingStep;
                 var parameterStep = 1f / nrPointsToCheck;
 
+                if (nrPointsToCheck > 1000)
+                	throw new InvalidOperationException("Too many points to process");
+                
                 for (int i = 0; i <= nrPointsToCheck; i++)
                 {
                     var t = parameterStep * i;

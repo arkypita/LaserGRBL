@@ -73,14 +73,14 @@
     <Compile Include="ConnectLogForm.Designer.cs">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CsPoTrace\BezierToBiarc\Algorithm.cs" />
-    <Compile Include="CsPoTrace\BezierToBiarc\Arc.cs" />
-    <Compile Include="CsPoTrace\BezierToBiarc\BiArc.cs" />
-    <Compile Include="CsPoTrace\BezierToBiarc\CubicBezier.cs" />
-    <Compile Include="CsPoTrace\BezierToBiarc\Line.cs" />
-    <Compile Include="CsPoTrace\CsPotrace.cs" />
-    <Compile Include="CsPoTrace\CsPotraceExportGCODE.cs" />
-    <Compile Include="CsPoTrace\CsPtoraceExport.cs" />
+    <Compile Include="CsPotrace\BezierToBiarc\Algorithm.cs" />
+    <Compile Include="CsPotrace\BezierToBiarc\Arc.cs" />
+    <Compile Include="CsPotrace\BezierToBiarc\BiArc.cs" />
+    <Compile Include="CsPotrace\BezierToBiarc\CubicBezier.cs" />
+    <Compile Include="CsPotrace\BezierToBiarc\Line.cs" />
+    <Compile Include="CsPotrace\CsPotrace.cs" />
+    <Compile Include="CsPotrace\CsPotraceExportGCODE.cs" />
+    <Compile Include="CsPotrace\CsPtoraceExport.cs" />
     <Compile Include="GrblCore.cs" />
     <Compile Include="CSV\CsvDictionary.cs" />
     <Compile Include="CSV\FormattedMessage.cs" />
@@ -401,7 +401,7 @@
     <Content Include="UserControls\DockingManager\license.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CsPoTrace\BezierToBiarc" />
+    <Folder Include="CsPotrace\BezierToBiarc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

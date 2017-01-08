@@ -1,11 +1,4 @@
-﻿/*
- * Created by SharpDevelop.
- * User: Diego
- * Date: 18/11/2016
- * Time: 18:39
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
+﻿
 using System;
 
 namespace LaserGRBL

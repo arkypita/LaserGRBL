@@ -72,23 +72,42 @@ namespace CsPotrace
 
                 if (Curve.Kind == Potrace.CurveKind.Bezier)
                 {
-                	CubicBezier cb = new CubicBezier(new Vector2((float)Curve.A.X, (float)Curve.A.Y),
-                	                                 new Vector2((float)Curve.ControlPointA.X, (float)Curve.ControlPointA.Y),
-                	                                 new Vector2((float)Curve.ControlPointB.X, (float)Curve.ControlPointB.Y),
-                	                                 new Vector2((float)Curve.B.X, (float)Curve.B.Y));
-                	if (g != null) g.DrawBezier(Pens.Green, 
-                	             	AsPointF(cb.P1),
-                	             	AsPointF(cb.C1),
-                	             	AsPointF(cb.C2),
-                	             	AsPointF(cb.P2));
-                	
-                	List<BiArc> bal = Algorithm.ApproxCubicBezier(cb, 5, 1);
-                	
-                	foreach (BiArc ba in bal)
-		            { 
-                		rv.Add(GetArcGC(ba.A1, oX, oY, scale, g));
-                		rv.Add(GetArcGC(ba.A2, oX, oY, scale, g));
-		            }    
+        			double distance = LinearDistance(Curve.A.X, Curve.A.Y, Curve.B.X, Curve.B.Y);
+        	
+        			if (distance > 2) //if not a small bezier
+                	{
+	                	CubicBezier cb = new CubicBezier(new Vector2((float)Curve.A.X, (float)Curve.A.Y),
+	                	                                 new Vector2((float)Curve.ControlPointA.X, (float)Curve.ControlPointA.Y),
+	                	                                 new Vector2((float)Curve.ControlPointB.X, (float)Curve.ControlPointB.Y),
+	                	                                 new Vector2((float)Curve.B.X, (float)Curve.B.Y));
+	                	if (g != null) g.DrawBezier(Pens.Green, 
+	                	             	AsPointF(cb.P1),
+	                	             	AsPointF(cb.C1),
+	                	             	AsPointF(cb.C2),
+	                	             	AsPointF(cb.P2));
+	                	
+        				try
+        				{
+		                	List<BiArc> bal = Algorithm.ApproxCubicBezier(cb, 5, 1);
+		                	
+		                	foreach (BiArc ba in bal)
+				            { 
+		                		rv.Add(GetArcGC(ba.A1, oX, oY, scale, g));
+		                		rv.Add(GetArcGC(ba.A2, oX, oY, scale, g));
+				            }
+        				}
+        				catch
+        				{
+        					if (g != null) g.DrawLine(Pens.DarkGray, (float)Curve.A.X, (float)Curve.A.Y, (float)Curve.B.X, (float)Curve.B.Y);
+                			rv.Add(String.Format("G1 X{0} Y{1}", formatnumber(Curve.B.X + oX, scale), formatnumber(Curve.B.Y + oY, scale)));
+        				}
+                	}
+                	else
+                	{
+                		//trace line
+						if (g != null) g.DrawLine(Pens.DarkGray, (float)Curve.A.X, (float)Curve.A.Y, (float)Curve.B.X, (float)Curve.B.Y);
+                		rv.Add(String.Format("G1 X{0} Y{1}", formatnumber(Curve.B.X + oX, scale), formatnumber(Curve.B.Y + oY, scale)));
+                	}
 
                 }
                 else if (Curve.Kind == Potrace.CurveKind.Line)
