@@ -132,11 +132,11 @@ namespace LaserGRBL
 			
 			public override bool IsSeparator
 			{get {return true;}}
-		}	
+		}
 
-		
-		
-		public void LoadImagePotrace(Bitmap bmp, string filename, int res, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize)
+
+
+		public void LoadImagePotrace(Bitmap bmp, string filename, int res, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, RasterConverter.ImageProcessor.Direction fdir, int fres)
 		{
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
@@ -165,7 +165,22 @@ namespace LaserGRBL
 
 			bool[,] Matrix = Potrace.BitMapToBinary(bmp, 125);
 			Potrace.potrace_trace(Matrix, ListOfCurveArray);
-			
+
+			if (fdir != RasterConverter.ImageProcessor.Direction.None)
+			{
+				using (Bitmap ptb = Potrace.Export2GDIPlus(ListOfCurveArray, bmp.Width, bmp.Height))
+				{
+					using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size(bmp.Width * fres / res, bmp.Height * fres / res), true, InterpolationMode.NearestNeighbor))
+					{
+						list.Add(new GrblCommand("G91"));
+						ImageLine2Line(resampled, fres, markSpeed, travelSpeed, minPower, maxPower, lOn, lOff, fdir);
+						list.Add(new GrblCommand("G90"));
+						list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY)))); //move fast to offset
+						list.Add(new GrblCommand(String.Format("M5 S{0}", maxPower))); //laser off and power to maxPower
+					}
+				}
+			}
+
 			List<string> gc = Potrace.Export2GCode(ListOfCurveArray, oX, oY, res, lOn, lOff, bmp.Size);
 			
 			foreach (string code in gc)
@@ -198,7 +213,6 @@ namespace LaserGRBL
 			list.Clear();
 			mRange.ResetRange();
 
-			List<ColorSegment> segments = GetSegments(bmp, dir, minPower, maxPower, res);
 			list.Add(new GrblCommand("G90"));
 			list.Add(new GrblCommand(String.Format("F{0}", travelSpeed)));
 			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY)))); //move fast to offset
@@ -207,24 +221,7 @@ namespace LaserGRBL
 			list.Add(new GrblCommand("G91"));
 			list.Add(new GrblCommand(lOn));
 
-			bool fast = false;
-
-			foreach (ColorSegment seg in segments)
-			{
-				bool changespeed = (fast != seg.Fast); //se veloce != dafareveloce
-				fast = seg.Fast;
-
-				if (seg.IsSeparator)
-					list.Add(new GrblCommand(lOff));
-				
-				if (changespeed)
-					list.Add(new GrblCommand(String.Format("{0} F{1} {2}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, seg.ToString())));
-				else
-					list.Add(new GrblCommand(seg.ToString()));
-				
-				if (seg.IsSeparator)
-					list.Add(new GrblCommand(lOn));
-			}
+			ImageLine2Line(bmp, res, markSpeed, travelSpeed, minPower, maxPower, lOn, lOff, dir);
 
 			list.Add(new GrblCommand(lOff));
 			list.Add(new GrblCommand("G90"));
@@ -234,6 +231,28 @@ namespace LaserGRBL
 
 			if (OnFileLoaded != null)
 				OnFileLoaded(elapsed, filename);
+		}
+
+		private void ImageLine2Line(Bitmap bmp, int res, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, RasterConverter.ImageProcessor.Direction dir)
+		{
+			bool fast = false;
+			List<ColorSegment> segments = GetSegments(bmp, dir, minPower, maxPower, res);
+			foreach (ColorSegment seg in segments)
+			{
+				bool changespeed = (fast != seg.Fast); //se veloce != dafareveloce
+				fast = seg.Fast;
+
+				if (seg.IsSeparator)
+					list.Add(new GrblCommand(lOff));
+
+				if (changespeed)
+					list.Add(new GrblCommand(String.Format("{0} F{1} {2}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, seg.ToString())));
+				else
+					list.Add(new GrblCommand(seg.ToString()));
+
+				if (seg.IsSeparator)
+					list.Add(new GrblCommand(lOn));
+			}
 		}
 
 		private List<ColorSegment> GetSegments(Bitmap bmp, RasterConverter.ImageProcessor.Direction dir, int minPower, int maxPower, int res)

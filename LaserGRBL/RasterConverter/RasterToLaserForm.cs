@@ -34,8 +34,14 @@ namespace LaserGRBL.RasterConverter
 			CbMode.ResumeLayout();
 			CbDirections.SuspendLayout();
 			foreach (ImageProcessor.Direction direction in Enum.GetValues(typeof(ImageProcessor.Direction)))
-				CbDirections.Items.Add(direction);
+				if (direction != ImageProcessor.Direction.None)
+					CbDirections.Items.Add(direction);
 			CbDirections.ResumeLayout();
+
+			CbFillingDirection.SuspendLayout();
+			foreach (ImageProcessor.Direction direction in Enum.GetValues(typeof(ImageProcessor.Direction)))
+				CbFillingDirection.Items.Add(direction);
+			CbFillingDirection.ResumeLayout();
 			
 			if (IP.Original.Height < IP.Original.Width)
 			{
@@ -155,6 +161,8 @@ namespace LaserGRBL.RasterConverter
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Optimize.Value", UDOptimize.Value);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.ShowDots.Enabled", CbShowDots.Checked);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", CbShowImage.Checked);
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", (ImageProcessor.Direction)CbFillingDirection.SelectedItem);
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", UDFillingQuality.Value);
 
 			Settings.SetObject("GrayScaleConversion.Parameters.Interpolation", (InterpolationMode)CbResize.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.Parameters.Mode", (ImageTransform.Formula)CbMode.SelectedItem);
@@ -184,8 +192,8 @@ namespace LaserGRBL.RasterConverter
 			else
 				RbVectorize.Checked = true;
 
-			CbDirections.SelectedItem = (ImageProcessor.Direction)Settings.GetObject("GrayScaleConversion.Line2LineOptions.Direction", ImageProcessor.Direction.Horizontal);
-			UDQuality.Value = IP.Quality = (decimal)Settings.GetObject("GrayScaleConversion.Line2LineOptions.Quality", 3m);
+			CbDirections.SelectedItem = IP.LineDirection = (ImageProcessor.Direction)Settings.GetObject("GrayScaleConversion.Line2LineOptions.Direction", ImageProcessor.Direction.Horizontal);
+			UDQuality.Value = IP.Quality = Convert.ToInt32(Settings.GetObject("GrayScaleConversion.Line2LineOptions.Quality", 3));
 			CbLinePreview.Checked = IP.LinePreview = (bool)Settings.GetObject("GrayScaleConversion.Line2LineOptions.Preview", false);
 
 			CbSpotRemoval.Checked = IP.UseSpotRemoval = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.SpotRemoval.Enabled", false);
@@ -196,6 +204,8 @@ namespace LaserGRBL.RasterConverter
 			UDOptimize.Value = IP.Optimize = (decimal)Settings.GetObject("GrayScaleConversion.VectorizeOptions.Optimize.Value", 0.2m);
 			CbShowDots.Checked = IP.ShowDots = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowDots.Enabled", false);
 			CbShowImage.Checked = IP.ShowImage = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", true);
+			CbFillingDirection.SelectedItem = IP.FillingDirection = (ImageProcessor.Direction)Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", ImageProcessor.Direction.None);
+			UDFillingQuality.Value = IP.FillingQuality = Convert.ToInt32(Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", 3));
 
 			CbResize.SelectedItem = IP.Interpolation = (InterpolationMode)Settings.GetObject("GrayScaleConversion.Parameters.Interpolation", InterpolationMode.HighQualityBicubic);
 			CbMode.SelectedItem = IP.Formula = (ImageTransform.Formula)Settings.GetObject("GrayScaleConversion.Parameters.Mode", ImageTransform.Formula.SimpleAverage);
@@ -267,7 +277,6 @@ namespace LaserGRBL.RasterConverter
 		{ 
 			IP.UseThreshold = CbThreshold.Checked;
 			TbThreshold.Visible = CbThreshold.Checked;
-			LbThreshold.Visible = CbThreshold.Checked;
 		}
 
 		private void TbThreshold_ValueChanged(object sender, EventArgs e)
@@ -412,6 +421,17 @@ namespace LaserGRBL.RasterConverter
 		void IIMaxPowerCurrentValueChanged(object sender, int NewValue, bool ByUser)
 		{
 			IP.MaxPower = NewValue;
+		}
+
+		private void CbFillingDirection_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			IP.FillingDirection = (ImageProcessor.Direction)CbFillingDirection.SelectedItem;
+			LblFillingLineLbl.Visible = LblFillingQuality.Visible = UDFillingQuality.Visible = ((ImageProcessor.Direction)CbFillingDirection.SelectedItem != ImageProcessor.Direction.None);
+		}
+
+		private void UDFillingQuality_ValueChanged(object sender, EventArgs e)
+		{
+			IP.FillingQuality = (int)UDFillingQuality.Value;
 		}
 	}
 }

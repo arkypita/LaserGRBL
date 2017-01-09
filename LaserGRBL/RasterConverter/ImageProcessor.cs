@@ -37,7 +37,7 @@ namespace LaserGRBL.RasterConverter
 		private int mBrightness;
 		private int mThreshold;
 		private bool mUseThreshold;
-		private decimal mQuality;
+		private int mQuality;
 		private bool mLinePreview;
 		private decimal mSpotRemoval;
 		private bool mUseSpotRemoval;
@@ -48,6 +48,8 @@ namespace LaserGRBL.RasterConverter
 		private bool mShowDots;		
 		private bool mShowImage;		
 		private Direction mDirection;
+		private Direction mFillingDirection;
+		private int mFillingQuality;
 
 		//option for gcode generator
 		public Size TargetSize;
@@ -70,7 +72,7 @@ namespace LaserGRBL.RasterConverter
 		{ Line2Line, Vectorize }
 		
 		public enum Direction
-		{ Horizontal, Vertical, Diagonal }
+		{ Horizontal, Vertical, Diagonal, None }
 
 		public ImageProcessor(GrblCore core, string fileName, Size boxSize)
 		{
@@ -303,7 +305,7 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-		public decimal Quality
+		public int Quality
 		{
 			get { return mQuality; }
 			set
@@ -445,7 +447,33 @@ namespace LaserGRBL.RasterConverter
 					Refresh();
 				}
 			}
-		}		
+		}
+
+		public Direction FillingDirection
+		{
+			get{ return mFillingDirection; }
+			set
+			{
+				if (value != mFillingDirection)
+				{
+					mFillingDirection = value;
+					Refresh();
+				}
+			}
+		}
+
+		public int FillingQuality
+		{
+			get { return mFillingQuality; }
+			set
+			{
+				if (value != mFillingQuality)
+				{
+					mFillingQuality = value;
+					Refresh();
+				}
+			}
+		}
 
 		private void Refresh()
 		{
@@ -555,7 +583,7 @@ namespace LaserGRBL.RasterConverter
 						if (SelectedTool == ImageProcessor.Tool.Line2Line)
 							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, imageRes, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, LineDirection);
 						else if (SelectedTool == ImageProcessor.Tool.Vectorize)
-							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, imageRes, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize);
+							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, imageRes, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, FillingDirection, FillingQuality);
 					}
 					
 					if (GenerationComplete != null)
@@ -760,5 +788,7 @@ namespace LaserGRBL.RasterConverter
 
 
 		public Bitmap Original { get {return mResized;}}
+
+
 	}
 }
