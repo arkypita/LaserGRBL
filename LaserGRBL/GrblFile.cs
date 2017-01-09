@@ -405,7 +405,6 @@ namespace LaserGRBL
 			if (analyze)
 			{
 				mRange.ResetRange();
-				//mRange.UpdateSRange(0);
 				mRange.UpdateXYRange(0, 0, false);
 				mTotalTravelOn = 0;
 				mTotalTravelOff = 0;

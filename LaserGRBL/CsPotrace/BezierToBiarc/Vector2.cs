@@ -85,7 +85,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="right">Secondo vettore da sommare. </param>
     
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 operator +(Vector2 left, Vector2 right)
     {
       return new Vector2(left.X + right.X, left.Y + right.Y);
@@ -97,7 +97,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="right">Secondo vettore. </param>
     
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 operator -(Vector2 left, Vector2 right)
     {
       return new Vector2(left.X - right.X, left.Y - right.Y);
@@ -109,7 +109,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="right">Secondo vettore. </param>
     
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 operator *(Vector2 left, Vector2 right)
     {
       return new Vector2(left.X * right.X, left.Y * right.Y);
@@ -121,7 +121,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="right">Valore scalare. </param>
     
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 operator *(float left, Vector2 right)
     {
       return new Vector2(left, left) * right;
@@ -133,7 +133,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="right">Valore scalare. </param>
     
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 operator *(Vector2 left, float right)
     {
       return left * new Vector2(right, right);
@@ -145,7 +145,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="right">Secondo vettore. </param>
     
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 operator /(Vector2 left, Vector2 right)
     {
       return new Vector2(left.X / right.X, left.Y / right.Y);
@@ -157,7 +157,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="value2">Valore scalare. </param>
     
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 operator /(Vector2 value1, float value2)
     {
       float num = 1f / value2;
@@ -168,7 +168,7 @@ namespace CsPotrace.BezierToBiarc
     /// <returns>Vettore negato. </returns>
     /// <param name="value">Vettore da negare. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 operator -(Vector2 value)
     {
       return Vector2.Zero - value;
@@ -179,7 +179,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="left">Primo vettore da confrontare. </param>
     /// <param name="right">Secondo vettore da confrontare. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool operator ==(Vector2 left, Vector2 right)
     {
       return left.Equals(right);
@@ -190,7 +190,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="left">Primo vettore da confrontare. </param>
     /// <param name="right">Secondo vettore da confrontare. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool operator !=(Vector2 left, Vector2 right)
     {
       return !(left == right);
@@ -208,7 +208,7 @@ namespace CsPotrace.BezierToBiarc
     /// <returns>true se l'istanza corrente è uguale a <paramref name="obj" />; in caso contrario, false. Se <paramref name="obj" /> è null, il metodo restituisce false. </returns>
     /// <param name="obj">Oggetto da confrontare con l'istanza corrente. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public override bool Equals(object obj)
     {
       if (!(obj is Vector2))
@@ -254,7 +254,7 @@ namespace CsPotrace.BezierToBiarc
     /// <summary>Restituisce la lunghezza del vettore. </summary>
     /// <returns>Lunghezza del vettore. </returns>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public float Length()
     {
       return (float) Math.Sqrt((double) this.X * (double) this.X + (double) this.Y * (double) this.Y);
@@ -263,7 +263,7 @@ namespace CsPotrace.BezierToBiarc
     /// <summary>Restituisce la lunghezza del vettore al quadrato. </summary>
     /// <returns>Lunghezza al quadrato del vettore. </returns>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public float LengthSquared()
     {
       return (float) ((double) this.X * (double) this.X + (double) this.Y * (double) this.Y);
@@ -274,7 +274,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="value1">Primo punto. </param>
     /// <param name="value2">Secondo punto. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float Distance(Vector2 value1, Vector2 value2)
     {
       float num1 = value1.X - value2.X;
@@ -287,7 +287,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="value1">Primo punto. </param>
     /// <param name="value2">Secondo punto. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float DistanceSquared(Vector2 value1, Vector2 value2)
     {
       float num1 = value1.X - value2.X;
@@ -299,7 +299,7 @@ namespace CsPotrace.BezierToBiarc
     /// <returns>Vettore normalizzato. </returns>
     /// <param name="value">Vettore da normalizzare. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Normalize(Vector2 value)
     {
       float num1 = 1f / (float) Math.Sqrt((double) value.X * (double) value.X + (double) value.Y * (double) value.Y);
@@ -311,7 +311,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="vector">Vettore di origine. </param>
     /// <param name="normal">Normale della superficie riflessa. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Reflect(Vector2 vector, Vector2 normal)
     {
       float num1 = (float) ((double) vector.X * (double) normal.X + (double) vector.Y * (double) normal.Y);
@@ -324,7 +324,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="min">Valore minimo. </param>
     /// <param name="max">Valore massimo. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Clamp(Vector2 value1, Vector2 min, Vector2 max)
     {
       float x1 = value1.X;
@@ -342,7 +342,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="value2">Secondo vettore. </param>
     /// <param name="amount">Valore compreso tra 0 e 1 che indica il peso di <paramref name="value2" />. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Lerp(Vector2 value1, Vector2 value2, float amount)
     {
       return new Vector2(value1.X + (value2.X - value1.X) * amount, value1.Y + (value2.Y - value1.Y) * amount);
@@ -353,7 +353,7 @@ namespace CsPotrace.BezierToBiarc
 //    /// <param name="position">Vettore da trasformare. </param>
 //    /// <param name="matrix">Matrice di trasformazione. </param>
 //    
-//    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+//    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
 //    public static Vector2 Transform(Vector2 position, Matrix3x2 matrix)
 //    {
 //      return new Vector2((float) ((double) position.X * (double) matrix.M11 + (double) position.Y * (double) matrix.M21) + matrix.M31, (float) ((double) position.X * (double) matrix.M12 + (double) position.Y * (double) matrix.M22) + matrix.M32);
@@ -364,7 +364,7 @@ namespace CsPotrace.BezierToBiarc
 //    /// <param name="position">Vettore da trasformare. </param>
 //    /// <param name="matrix">Matrice di trasformazione. </param>
 //    
-//    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+//    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
 //    public static Vector2 Transform(Vector2 position, Matrix4x4 matrix)
 //    {
 //      return new Vector2((float) ((double) position.X * (double) matrix.M11 + (double) position.Y * (double) matrix.M21) + matrix.M41, (float) ((double) position.X * (double) matrix.M12 + (double) position.Y * (double) matrix.M22) + matrix.M42);
@@ -375,7 +375,7 @@ namespace CsPotrace.BezierToBiarc
 //    /// <param name="normal">Vettore di origine. </param>
 //    /// <param name="matrix">Matrice. </param>
 //    
-//    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+//    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
 //    public static Vector2 TransformNormal(Vector2 normal, Matrix3x2 matrix)
 //    {
 //      return new Vector2((float) ((double) normal.X * (double) matrix.M11 + (double) normal.Y * (double) matrix.M21), (float) ((double) normal.X * (double) matrix.M12 + (double) normal.Y * (double) matrix.M22));
@@ -386,7 +386,7 @@ namespace CsPotrace.BezierToBiarc
 //    /// <param name="normal">Vettore di origine. </param>
 //    /// <param name="matrix">Matrice. </param>
 //    
-//    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+//    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
 //    public static Vector2 TransformNormal(Vector2 normal, Matrix4x4 matrix)
 //    {
 //      return new Vector2((float) ((double) normal.X * (double) matrix.M11 + (double) normal.Y * (double) matrix.M21), (float) ((double) normal.X * (double) matrix.M12 + (double) normal.Y * (double) matrix.M22));
@@ -397,7 +397,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="value">Vettore da ruotare. </param>
     /// <param name="rotation">Rotazione da applicare. </param>
     
-//    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+//    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
 //    public static Vector2 Transform(Vector2 value, Quaternion rotation)
 //    {
 //      float num1 = rotation.X + rotation.X;
@@ -416,7 +416,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="left">Primo vettore da sommare. </param>
     /// <param name="right">Secondo vettore da sommare. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Add(Vector2 left, Vector2 right)
     {
       return left + right;
@@ -427,7 +427,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="left">Primo vettore. </param>
     /// <param name="right">Secondo vettore. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Subtract(Vector2 left, Vector2 right)
     {
       return left - right;
@@ -438,7 +438,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="left">Primo vettore. </param>
     /// <param name="right">Secondo vettore. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Multiply(Vector2 left, Vector2 right)
     {
       return left * right;
@@ -449,7 +449,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="left">Vettore da moltiplicare. </param>
     /// <param name="right">Valore scalare. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Multiply(Vector2 left, float right)
     {
       return left * right;
@@ -460,7 +460,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="left">Valore scalato. </param>
     /// <param name="right">Vettore. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Multiply(float left, Vector2 right)
     {
       return left * right;
@@ -471,7 +471,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="left">Primo vettore. </param>
     /// <param name="right">Secondo vettore. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Divide(Vector2 left, Vector2 right)
     {
       return left / right;
@@ -482,7 +482,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="left">Vettore. </param>
     /// <param name="divisor">Valore scalare. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Divide(Vector2 left, float divisor)
     {
       return left / divisor;
@@ -492,7 +492,7 @@ namespace CsPotrace.BezierToBiarc
     /// <returns>Vettore negato. </returns>
     /// <param name="value">Vettore da negare. </param>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Negate(Vector2 value)
     {
       return -value;
@@ -506,7 +506,7 @@ namespace CsPotrace.BezierToBiarc
     /// <exception cref="T:System.RankException">
     /// <paramref name="array" /> è multidimensionale.</exception>
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void CopyTo(float[] array)
     {
       this.CopyTo(array, 0);
@@ -553,7 +553,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="value2">Secondo vettore. </param>
     
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float Dot(Vector2 value1, Vector2 value2)
     {
       return (float) ((double) value1.X * (double) value2.X + (double) value1.Y * (double) value2.Y);
@@ -565,7 +565,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="value2">Secondo vettore. </param>
     
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Min(Vector2 value1, Vector2 value2)
     {
       return new Vector2((double) value1.X < (double) value2.X ? value1.X : value2.X, (double) value1.Y < (double) value2.Y ? value1.Y : value2.Y);
@@ -577,7 +577,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="value2">Secondo vettore. </param>
     
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Max(Vector2 value1, Vector2 value2)
     {
       return new Vector2((double) value1.X > (double) value2.X ? value1.X : value2.X, (double) value1.Y > (double) value2.Y ? value1.Y : value2.Y);
@@ -588,7 +588,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="value">Vettore. </param>
     
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Abs(Vector2 value)
     {
       return new Vector2(Math.Abs(value.X), Math.Abs(value.Y));
@@ -599,7 +599,7 @@ namespace CsPotrace.BezierToBiarc
     /// <param name="value">Vettore. </param>
     
     
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 SquareRoot(Vector2 value)
     {
       return new Vector2((float) Math.Sqrt((double) value.X), (float) Math.Sqrt((double) value.Y));

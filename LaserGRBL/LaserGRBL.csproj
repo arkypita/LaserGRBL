@@ -292,7 +292,9 @@
     <Compile Include="UserControls\LabelTB.Designer.cs">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\WaitingProgressBar.cs" />
+    <Compile Include="UserControls\WaitingProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <EmbeddedResource Include="ConnectLogForm.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -401,9 +403,7 @@
     <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_OptionOverflow.bmp" />
     <Content Include="UserControls\DockingManager\license.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CsPotrace\BezierToBiarc" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
