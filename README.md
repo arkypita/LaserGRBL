@@ -24,6 +24,10 @@ Do you like LaserGRBL? Support development with your donation!
 - Jogging (for any Grbl version)
 - Feed overrides (for Grbl > v1.1) with easy-to-use interface
 
+### Missing Features
+
+- No Z axis control! (LaserGRBL is for XY machine)
+
 #### Screenshot
 
 ![Galeon](https://cloud.githubusercontent.com/assets/8782035/21349915/dba84a5a-c6b4-11e6-965f-a74fd283267a.jpg)
