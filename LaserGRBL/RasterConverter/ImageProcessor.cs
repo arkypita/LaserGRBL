@@ -45,8 +45,6 @@ namespace LaserGRBL.RasterConverter
 		private bool mUseOptimize;
 		private decimal mSmoothing;
 		private bool mUseSmootihing;
-		private bool mShowDots;		
-		private bool mShowImage;		
 		private Direction mDirection;
 		private Direction mFillingDirection;
 		private int mFillingQuality;
@@ -410,32 +408,6 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-		public bool ShowDots
-		{
-			get { return mShowDots; }
-			set
-			{
-				if (value != mShowDots)
-				{
-					mShowDots = value;
-					Refresh();
-				}
-			}
-		}
-
-		public bool ShowImage
-		{
-			get { return mShowImage; }
-			set
-			{
-				if (value != mShowImage)
-				{
-					mShowImage = value;
-					Refresh();
-				}
-			}
-		}
-
 		public Direction LineDirection
 		{
 			get { return mDirection; }
@@ -616,12 +588,18 @@ namespace LaserGRBL.RasterConverter
 
 		private void PreviewLineByLine(Bitmap bmp)
 		{
-			if (LinePreview && !MustExitTH)
+			Direction dir = Direction.None;
+			if (SelectedTool == ImageProcessor.Tool.Line2Line && LinePreview)
+				dir = LineDirection;
+			else if (SelectedTool == ImageProcessor.Tool.Vectorize && FillingDirection != Direction.None)
+				dir = FillingDirection;
+			
+			if (!MustExitTH && dir != Direction.None)
 			{
 				using (Graphics g = Graphics.FromImage(bmp))
 				{
 					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-					if (LineDirection == Direction.Horizontal)
+					if (dir == Direction.Horizontal)
 					{
 						for (int Y = 0; Y < bmp.Height && !MustExitTH; Y++)
 						{
@@ -632,7 +610,7 @@ namespace LaserGRBL.RasterConverter
 							}
 						}
 					}
-					else if (LineDirection == Direction.Vertical)
+					else if (dir == Direction.Vertical)
 					{
 						for (int X = 0; X < bmp.Width && !MustExitTH; X++)
 						{
@@ -643,7 +621,7 @@ namespace LaserGRBL.RasterConverter
 							}
 						}
 					}
-					else if (LineDirection == Direction.Diagonal)
+					else if (dir == Direction.Diagonal)
 					{
 						for (int I = 0; I < bmp.Width + bmp.Height -1 && !MustExitTH ; I++)
 						{
@@ -681,13 +659,11 @@ namespace LaserGRBL.RasterConverter
 			
 			using (Graphics g = Graphics.FromImage(bmp))
 			{
-				if (!ShowImage)
-					g.Clear(Color.White);
-				else
-				{
-					using (Brush b = new SolidBrush(Color.FromArgb(220, Color.White)))
-						g.FillRectangle(b, 0, 0, bmp.Width, bmp.Height);
-				}
+				using (Bitmap pbmp = Potrace.Export2GDIPlus(ListOfCurveArray, bmp.Width, bmp.Height))
+					g.DrawImage(pbmp, 0, 0);
+				
+				using (Brush b = new SolidBrush(Color.FromArgb(FillingDirection != Direction.None ? 100 : 250, Color.White)))
+					g.FillRectangle(b, 0, 0, bmp.Width, bmp.Height);
 			}
 
 			if (!MustExitTH)
@@ -746,11 +722,15 @@ namespace LaserGRBL.RasterConverter
 				gp.AddPath(Contour, false);
 			}
 
+			PreviewLineByLine(bmp);
+			
 			if(!MustExitTH)
-				g.DrawPath(Pens.Black, gp); //draw path
+				g.DrawPath(Pens.Red, gp); //draw path
 
-			if (ShowDots && !MustExitTH)
-				DrawPoints(ListOfCurveArray, bmp); //draw points
+			//if (!MustExitTH && ShowDots)
+				//DrawPoints(ListOfCurveArray, bmp); //draw points
+			
+
 		}
 
 		private void DrawPoints(ArrayList ListOfCurveArray, Bitmap bmp)

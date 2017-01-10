@@ -54,9 +54,6 @@
 			this.CbSpotRemoval = new System.Windows.Forms.CheckBox();
 			this.CbSmoothing = new System.Windows.Forms.CheckBox();
 			this.CbOptimize = new System.Windows.Forms.CheckBox();
-			this.CbShowImage = new System.Windows.Forms.CheckBox();
-			this.CbShowDots = new System.Windows.Forms.CheckBox();
-			this.label1 = new System.Windows.Forms.Label();
 			this.label14 = new System.Windows.Forms.Label();
 			this.LblFillingQuality = new System.Windows.Forms.Label();
 			this.LblFillingLineLbl = new System.Windows.Forms.Label();
@@ -178,7 +175,7 @@
 			this.RightGrid.RowCount = 2;
 			this.RightGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.RightGrid.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.RightGrid.Size = new System.Drawing.Size(912, 549);
+			this.RightGrid.Size = new System.Drawing.Size(912, 508);
 			this.RightGrid.TabIndex = 0;
 			// 
 			// TCOriginalPreview
@@ -190,7 +187,7 @@
 			this.TCOriginalPreview.Location = new System.Drawing.Point(239, 3);
 			this.TCOriginalPreview.Name = "TCOriginalPreview";
 			this.TCOriginalPreview.SelectedIndex = 0;
-			this.TCOriginalPreview.Size = new System.Drawing.Size(670, 506);
+			this.TCOriginalPreview.Size = new System.Drawing.Size(670, 465);
 			this.TCOriginalPreview.TabIndex = 3;
 			// 
 			// TpPreview
@@ -200,7 +197,7 @@
 			this.TpPreview.Location = new System.Drawing.Point(4, 22);
 			this.TpPreview.Name = "TpPreview";
 			this.TpPreview.Padding = new System.Windows.Forms.Padding(3);
-			this.TpPreview.Size = new System.Drawing.Size(662, 480);
+			this.TpPreview.Size = new System.Drawing.Size(662, 439);
 			this.TpPreview.TabIndex = 0;
 			this.TpPreview.Text = "Preview";
 			this.TpPreview.UseVisualStyleBackColor = true;
@@ -215,7 +212,7 @@
 			this.WB.FillColor = System.Drawing.Color.White;
 			this.WB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
 			this.WB.Interval = 25D;
-			this.WB.Location = new System.Drawing.Point(591, 458);
+			this.WB.Location = new System.Drawing.Point(591, 417);
 			this.WB.Maximum = 20D;
 			this.WB.Minimum = 0D;
 			this.WB.Name = "WB";
@@ -234,7 +231,7 @@
 			this.PbConverted.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PbConverted.Location = new System.Drawing.Point(3, 3);
 			this.PbConverted.Name = "PbConverted";
-			this.PbConverted.Size = new System.Drawing.Size(656, 474);
+			this.PbConverted.Size = new System.Drawing.Size(656, 433);
 			this.PbConverted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.PbConverted.TabIndex = 0;
 			this.PbConverted.TabStop = false;
@@ -245,7 +242,7 @@
 			this.TpOriginal.Location = new System.Drawing.Point(4, 22);
 			this.TpOriginal.Name = "TpOriginal";
 			this.TpOriginal.Padding = new System.Windows.Forms.Padding(3);
-			this.TpOriginal.Size = new System.Drawing.Size(662, 522);
+			this.TpOriginal.Size = new System.Drawing.Size(662, 437);
 			this.TpOriginal.TabIndex = 1;
 			this.TpOriginal.Text = "Original";
 			this.TpOriginal.UseVisualStyleBackColor = true;
@@ -256,7 +253,7 @@
 			this.PbOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PbOriginal.Location = new System.Drawing.Point(3, 3);
 			this.PbOriginal.Name = "PbOriginal";
-			this.PbOriginal.Size = new System.Drawing.Size(656, 516);
+			this.PbOriginal.Size = new System.Drawing.Size(656, 431);
 			this.PbOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.PbOriginal.TabIndex = 0;
 			this.PbOriginal.TabStop = false;
@@ -264,7 +261,7 @@
 			// BtnCreate
 			// 
 			this.BtnCreate.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.BtnCreate.Location = new System.Drawing.Point(835, 517);
+			this.BtnCreate.Location = new System.Drawing.Point(835, 476);
 			this.BtnCreate.Name = "BtnCreate";
 			this.BtnCreate.Size = new System.Drawing.Size(74, 27);
 			this.BtnCreate.TabIndex = 4;
@@ -281,7 +278,7 @@
 			this.TCOptions.Name = "TCOptions";
 			this.RightGrid.SetRowSpan(this.TCOptions, 2);
 			this.TCOptions.SelectedIndex = 0;
-			this.TCOptions.Size = new System.Drawing.Size(230, 543);
+			this.TCOptions.Size = new System.Drawing.Size(230, 502);
 			this.TCOptions.TabIndex = 7;
 			// 
 			// TPConversion
@@ -291,7 +288,7 @@
 			this.TPConversion.Location = new System.Drawing.Point(4, 22);
 			this.TPConversion.Name = "TPConversion";
 			this.TPConversion.Padding = new System.Windows.Forms.Padding(3);
-			this.TPConversion.Size = new System.Drawing.Size(222, 517);
+			this.TPConversion.Size = new System.Drawing.Size(222, 476);
 			this.TPConversion.TabIndex = 0;
 			this.TPConversion.Text = "Conversion";
 			// 
@@ -312,7 +309,7 @@
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel8.Size = new System.Drawing.Size(216, 511);
+			this.tableLayoutPanel8.Size = new System.Drawing.Size(216, 470);
 			this.tableLayoutPanel8.TabIndex = 3;
 			// 
 			// GbVectorizeOptions
@@ -323,7 +320,7 @@
 			this.GbVectorizeOptions.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.GbVectorizeOptions.Location = new System.Drawing.Point(3, 402);
 			this.GbVectorizeOptions.Name = "GbVectorizeOptions";
-			this.GbVectorizeOptions.Size = new System.Drawing.Size(210, 161);
+			this.GbVectorizeOptions.Size = new System.Drawing.Size(210, 140);
 			this.GbVectorizeOptions.TabIndex = 4;
 			this.GbVectorizeOptions.TabStop = false;
 			this.GbVectorizeOptions.Text = "Vectorize! Options";
@@ -339,69 +336,65 @@
 			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel5.Controls.Add(this.UDFillingQuality, 1, 4);
-			this.tableLayoutPanel5.Controls.Add(this.CbFillingDirection, 1, 3);
-			this.tableLayoutPanel5.Controls.Add(this.label22, 0, 0);
-			this.tableLayoutPanel5.Controls.Add(this.UDSpotRemoval, 1, 0);
-			this.tableLayoutPanel5.Controls.Add(this.label23, 0, 1);
-			this.tableLayoutPanel5.Controls.Add(this.UDSmoothing, 1, 1);
-			this.tableLayoutPanel5.Controls.Add(this.label24, 0, 2);
-			this.tableLayoutPanel5.Controls.Add(this.UDOptimize, 1, 2);
-			this.tableLayoutPanel5.Controls.Add(this.CbSpotRemoval, 2, 0);
-			this.tableLayoutPanel5.Controls.Add(this.CbSmoothing, 2, 1);
-			this.tableLayoutPanel5.Controls.Add(this.CbOptimize, 2, 2);
-			this.tableLayoutPanel5.Controls.Add(this.CbShowImage, 1, 5);
-			this.tableLayoutPanel5.Controls.Add(this.CbShowDots, 2, 5);
-			this.tableLayoutPanel5.Controls.Add(this.label1, 0, 5);
-			this.tableLayoutPanel5.Controls.Add(this.label14, 0, 3);
-			this.tableLayoutPanel5.Controls.Add(this.LblFillingQuality, 0, 4);
-			this.tableLayoutPanel5.Controls.Add(this.LblFillingLineLbl, 2, 4);
+			this.tableLayoutPanel5.Controls.Add(this.label14, 0, 0);
+			this.tableLayoutPanel5.Controls.Add(this.CbFillingDirection, 1, 0);
+			this.tableLayoutPanel5.Controls.Add(this.LblFillingQuality, 0, 1);
+			this.tableLayoutPanel5.Controls.Add(this.UDFillingQuality, 1, 1);
+			this.tableLayoutPanel5.Controls.Add(this.LblFillingLineLbl, 2, 1);
+			this.tableLayoutPanel5.Controls.Add(this.label22, 0, 2);
+			this.tableLayoutPanel5.Controls.Add(this.UDSpotRemoval, 1, 2);
+			this.tableLayoutPanel5.Controls.Add(this.CbSpotRemoval, 2, 2);
+			this.tableLayoutPanel5.Controls.Add(this.label24, 0, 4);
+			this.tableLayoutPanel5.Controls.Add(this.label23, 0, 3);
+			this.tableLayoutPanel5.Controls.Add(this.UDOptimize, 1, 4);
+			this.tableLayoutPanel5.Controls.Add(this.UDSmoothing, 1, 3);
+			this.tableLayoutPanel5.Controls.Add(this.CbOptimize, 2, 4);
+			this.tableLayoutPanel5.Controls.Add(this.CbSmoothing, 2, 3);
 			this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
 			this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-			this.tableLayoutPanel5.RowCount = 6;
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel5.RowCount = 5;
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-			this.tableLayoutPanel5.Size = new System.Drawing.Size(204, 142);
+			this.tableLayoutPanel5.Size = new System.Drawing.Size(204, 121);
 			this.tableLayoutPanel5.TabIndex = 0;
 			// 
 			// UDFillingQuality
 			// 
 			this.UDFillingQuality.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.UDFillingQuality.Location = new System.Drawing.Point(82, 99);
+			this.UDFillingQuality.Location = new System.Drawing.Point(82, 27);
 			this.UDFillingQuality.Margin = new System.Windows.Forms.Padding(2);
 			this.UDFillingQuality.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+			10,
+			0,
+			0,
+			0});
 			this.UDFillingQuality.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+			1,
+			0,
+			0,
+			0});
 			this.UDFillingQuality.Name = "UDFillingQuality";
 			this.UDFillingQuality.Size = new System.Drawing.Size(55, 20);
 			this.UDFillingQuality.TabIndex = 32;
 			this.UDFillingQuality.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
+			3,
+			0,
+			0,
+			0});
 			this.UDFillingQuality.ValueChanged += new System.EventHandler(this.UDFillingQuality_ValueChanged);
 			// 
 			// CbFillingDirection
 			// 
-			this.CbFillingDirection.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.CbFillingDirection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tableLayoutPanel5.SetColumnSpan(this.CbFillingDirection, 2);
 			this.CbFillingDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbFillingDirection.FormattingEnabled = true;
-			this.CbFillingDirection.Location = new System.Drawing.Point(82, 74);
+			this.CbFillingDirection.Location = new System.Drawing.Point(82, 2);
 			this.CbFillingDirection.Margin = new System.Windows.Forms.Padding(2);
 			this.CbFillingDirection.Name = "CbFillingDirection";
 			this.CbFillingDirection.Size = new System.Drawing.Size(120, 21);
@@ -412,7 +405,7 @@
 			// 
 			this.label22.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label22.AutoSize = true;
-			this.label22.Location = new System.Drawing.Point(3, 5);
+			this.label22.Location = new System.Drawing.Point(3, 54);
 			this.label22.Name = "label22";
 			this.label22.Size = new System.Drawing.Size(74, 13);
 			this.label22.TabIndex = 22;
@@ -422,28 +415,28 @@
 			// 
 			this.UDSpotRemoval.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.UDSpotRemoval.Enabled = false;
-			this.UDSpotRemoval.Location = new System.Drawing.Point(82, 2);
+			this.UDSpotRemoval.Location = new System.Drawing.Point(82, 51);
 			this.UDSpotRemoval.Margin = new System.Windows.Forms.Padding(2);
 			this.UDSpotRemoval.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
+			2,
+			0,
+			0,
+			0});
 			this.UDSpotRemoval.Name = "UDSpotRemoval";
 			this.UDSpotRemoval.Size = new System.Drawing.Size(54, 20);
 			this.UDSpotRemoval.TabIndex = 19;
 			this.UDSpotRemoval.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
+			2,
+			0,
+			0,
+			0});
 			this.UDSpotRemoval.ValueChanged += new System.EventHandler(this.UDSpotRemoval_ValueChanged);
 			// 
 			// label23
 			// 
 			this.label23.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label23.AutoSize = true;
-			this.label23.Location = new System.Drawing.Point(3, 29);
+			this.label23.Location = new System.Drawing.Point(3, 78);
 			this.label23.Name = "label23";
 			this.label23.Size = new System.Drawing.Size(57, 13);
 			this.label23.TabIndex = 23;
@@ -455,37 +448,37 @@
 			this.UDSmoothing.DecimalPlaces = 1;
 			this.UDSmoothing.Enabled = false;
 			this.UDSmoothing.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-			this.UDSmoothing.Location = new System.Drawing.Point(82, 26);
+			1,
+			0,
+			0,
+			65536});
+			this.UDSmoothing.Location = new System.Drawing.Point(82, 75);
 			this.UDSmoothing.Margin = new System.Windows.Forms.Padding(2);
 			this.UDSmoothing.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+			10,
+			0,
+			0,
+			0});
 			this.UDSmoothing.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            65536});
+			10,
+			0,
+			0,
+			65536});
 			this.UDSmoothing.Name = "UDSmoothing";
 			this.UDSmoothing.Size = new System.Drawing.Size(54, 20);
 			this.UDSmoothing.TabIndex = 20;
 			this.UDSmoothing.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            65536});
+			10,
+			0,
+			0,
+			65536});
 			this.UDSmoothing.ValueChanged += new System.EventHandler(this.UDSmoothing_ValueChanged);
 			// 
 			// label24
 			// 
 			this.label24.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label24.AutoSize = true;
-			this.label24.Location = new System.Drawing.Point(3, 53);
+			this.label24.Location = new System.Drawing.Point(3, 102);
 			this.label24.Name = "label24";
 			this.label24.Size = new System.Drawing.Size(47, 13);
 			this.label24.TabIndex = 24;
@@ -497,37 +490,37 @@
 			this.UDOptimize.DecimalPlaces = 1;
 			this.UDOptimize.Enabled = false;
 			this.UDOptimize.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-			this.UDOptimize.Location = new System.Drawing.Point(82, 50);
+			1,
+			0,
+			0,
+			65536});
+			this.UDOptimize.Location = new System.Drawing.Point(82, 99);
 			this.UDOptimize.Margin = new System.Windows.Forms.Padding(2);
 			this.UDOptimize.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+			10,
+			0,
+			0,
+			0});
 			this.UDOptimize.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            65536});
+			2,
+			0,
+			0,
+			65536});
 			this.UDOptimize.Name = "UDOptimize";
 			this.UDOptimize.Size = new System.Drawing.Size(54, 20);
 			this.UDOptimize.TabIndex = 21;
 			this.UDOptimize.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            65536});
+			2,
+			0,
+			0,
+			65536});
 			this.UDOptimize.ValueChanged += new System.EventHandler(this.UDOptimize_ValueChanged);
 			// 
 			// CbSpotRemoval
 			// 
 			this.CbSpotRemoval.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.CbSpotRemoval.AutoSize = true;
-			this.CbSpotRemoval.Location = new System.Drawing.Point(141, 5);
+			this.CbSpotRemoval.Location = new System.Drawing.Point(141, 54);
 			this.CbSpotRemoval.Margin = new System.Windows.Forms.Padding(2);
 			this.CbSpotRemoval.Name = "CbSpotRemoval";
 			this.CbSpotRemoval.Size = new System.Drawing.Size(15, 14);
@@ -539,7 +532,7 @@
 			// 
 			this.CbSmoothing.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.CbSmoothing.AutoSize = true;
-			this.CbSmoothing.Location = new System.Drawing.Point(141, 29);
+			this.CbSmoothing.Location = new System.Drawing.Point(141, 78);
 			this.CbSmoothing.Margin = new System.Windows.Forms.Padding(2);
 			this.CbSmoothing.Name = "CbSmoothing";
 			this.CbSmoothing.Size = new System.Drawing.Size(15, 14);
@@ -551,7 +544,7 @@
 			// 
 			this.CbOptimize.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.CbOptimize.AutoSize = true;
-			this.CbOptimize.Location = new System.Drawing.Point(141, 53);
+			this.CbOptimize.Location = new System.Drawing.Point(141, 102);
 			this.CbOptimize.Margin = new System.Windows.Forms.Padding(2);
 			this.CbOptimize.Name = "CbOptimize";
 			this.CbOptimize.Size = new System.Drawing.Size(15, 14);
@@ -559,49 +552,11 @@
 			this.CbOptimize.UseVisualStyleBackColor = true;
 			this.CbOptimize.CheckedChanged += new System.EventHandler(this.CbOptimize_CheckedChanged);
 			// 
-			// CbShowImage
-			// 
-			this.CbShowImage.AutoSize = true;
-			this.CbShowImage.Checked = true;
-			this.CbShowImage.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.CbShowImage.Location = new System.Drawing.Point(82, 123);
-			this.CbShowImage.Margin = new System.Windows.Forms.Padding(2);
-			this.CbShowImage.Name = "CbShowImage";
-			this.CbShowImage.Size = new System.Drawing.Size(55, 17);
-			this.CbShowImage.TabIndex = 29;
-			this.CbShowImage.Text = "Image";
-			this.CbShowImage.UseVisualStyleBackColor = true;
-			this.CbShowImage.CheckedChanged += new System.EventHandler(this.CbShowImage_CheckedChanged);
-			// 
-			// CbShowDots
-			// 
-			this.CbShowDots.AutoSize = true;
-			this.CbShowDots.Checked = true;
-			this.CbShowDots.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.CbShowDots.Location = new System.Drawing.Point(141, 123);
-			this.CbShowDots.Margin = new System.Windows.Forms.Padding(2);
-			this.CbShowDots.Name = "CbShowDots";
-			this.CbShowDots.Size = new System.Drawing.Size(48, 17);
-			this.CbShowDots.TabIndex = 28;
-			this.CbShowDots.Text = "Dots";
-			this.CbShowDots.UseVisualStyleBackColor = true;
-			this.CbShowDots.CheckedChanged += new System.EventHandler(this.CbShowDots_CheckedChanged);
-			// 
-			// label1
-			// 
-			this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(3, 125);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(45, 13);
-			this.label1.TabIndex = 30;
-			this.label1.Text = "Preview";
-			// 
 			// label14
 			// 
 			this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(3, 78);
+			this.label14.Location = new System.Drawing.Point(3, 6);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(33, 13);
 			this.label14.TabIndex = 33;
@@ -611,7 +566,7 @@
 			// 
 			this.LblFillingQuality.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.LblFillingQuality.AutoSize = true;
-			this.LblFillingQuality.Location = new System.Drawing.Point(3, 102);
+			this.LblFillingQuality.Location = new System.Drawing.Point(3, 30);
 			this.LblFillingQuality.Name = "LblFillingQuality";
 			this.LblFillingQuality.Size = new System.Drawing.Size(39, 13);
 			this.LblFillingQuality.TabIndex = 34;
@@ -621,7 +576,7 @@
 			// 
 			this.LblFillingLineLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.LblFillingLineLbl.AutoSize = true;
-			this.LblFillingLineLbl.Location = new System.Drawing.Point(142, 102);
+			this.LblFillingLineLbl.Location = new System.Drawing.Point(142, 30);
 			this.LblFillingLineLbl.Name = "LblFillingLineLbl";
 			this.LblFillingLineLbl.Size = new System.Drawing.Size(53, 13);
 			this.LblFillingLineLbl.TabIndex = 35;
@@ -894,9 +849,9 @@
 			this.CbThreshold.Location = new System.Drawing.Point(2, 190);
 			this.CbThreshold.Margin = new System.Windows.Forms.Padding(2);
 			this.CbThreshold.Name = "CbThreshold";
-			this.CbThreshold.Size = new System.Drawing.Size(45, 17);
+			this.CbThreshold.Size = new System.Drawing.Size(50, 17);
 			this.CbThreshold.TabIndex = 15;
-			this.CbThreshold.Text = "Thr.";
+			this.CbThreshold.Text = "B&&W";
 			this.CbThreshold.UseVisualStyleBackColor = true;
 			this.CbThreshold.CheckedChanged += new System.EventHandler(this.CbThreshold_CheckedChanged);
 			// 
@@ -988,23 +943,23 @@
 			this.UDQuality.Location = new System.Drawing.Point(57, 27);
 			this.UDQuality.Margin = new System.Windows.Forms.Padding(2);
 			this.UDQuality.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+			10,
+			0,
+			0,
+			0});
 			this.UDQuality.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+			1,
+			0,
+			0,
+			0});
 			this.UDQuality.Name = "UDQuality";
 			this.UDQuality.Size = new System.Drawing.Size(55, 20);
 			this.UDQuality.TabIndex = 7;
 			this.UDQuality.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
+			3,
+			0,
+			0,
+			0});
 			this.UDQuality.ValueChanged += new System.EventHandler(this.UDQuality_ValueChanged);
 			// 
 			// CbLinePreview
@@ -1119,7 +1074,7 @@
 			this.TPGCode.Location = new System.Drawing.Point(4, 22);
 			this.TPGCode.Name = "TPGCode";
 			this.TPGCode.Padding = new System.Windows.Forms.Padding(3);
-			this.TPGCode.Size = new System.Drawing.Size(222, 559);
+			this.TPGCode.Size = new System.Drawing.Size(222, 474);
 			this.TPGCode.TabIndex = 1;
 			this.TPGCode.Text = "GCode";
 			// 
@@ -1138,7 +1093,7 @@
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel9.Size = new System.Drawing.Size(216, 553);
+			this.tableLayoutPanel9.Size = new System.Drawing.Size(216, 468);
 			this.tableLayoutPanel9.TabIndex = 0;
 			// 
 			// groupBox2
@@ -1562,7 +1517,7 @@
 			this.FlipControl.Controls.Add(this.BtFlipH, 2, 0);
 			this.FlipControl.Controls.Add(this.BtRotateCW, 0, 0);
 			this.FlipControl.Controls.Add(this.BtRotateCCW, 1, 0);
-			this.FlipControl.Location = new System.Drawing.Point(239, 515);
+			this.FlipControl.Location = new System.Drawing.Point(239, 474);
 			this.FlipControl.Name = "FlipControl";
 			this.FlipControl.RowCount = 1;
 			this.FlipControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -1634,7 +1589,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(912, 549);
+			this.ClientSize = new System.Drawing.Size(912, 508);
 			this.Controls.Add(this.RightGrid);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
@@ -1761,8 +1716,6 @@
 		private System.Windows.Forms.CheckBox CbOptimize;
 		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-		private System.Windows.Forms.CheckBox CbShowDots;
-		private System.Windows.Forms.CheckBox CbShowImage;
 		private System.Windows.Forms.GroupBox groupBox5;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
 		private System.Windows.Forms.Label label21;
@@ -1790,7 +1743,6 @@
 		private LaserGRBL.UserControls.ImageButton BtFlipH;
 		private LaserGRBL.UserControls.ImageButton BtRotateCW;
 		private LaserGRBL.UserControls.ImageButton BtRotateCCW;
-		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.NumericUpDown UDFillingQuality;
 		private System.Windows.Forms.ComboBox CbFillingDirection;
 		private System.Windows.Forms.Label label14;
