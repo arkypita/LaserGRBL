@@ -49,16 +49,16 @@ namespace CsPotrace.BezierToBiarc
         /// <returns></returns>
         public Tuple<CubicBezier, CubicBezier> Split(float t)
         {
-            var p0 = P1 + t * (C1 - P1);
-            var p1 = C1 + t * (C2 - C1);
-            var p2 = C2 + t * (P2 - C2);
+            Vector2 p0 = P1 + t * (C1 - P1);
+            Vector2 p1 = C1 + t * (C2 - C1);
+            Vector2 p2 = C2 + t * (P2 - C2);
 
-            var p01 = p0 + t * (p1 - p0);
-            var p12 = p1 + t * (p2 - p1);
+            Vector2 p01 = p0 + t * (p1 - p0);
+            Vector2 p12 = p1 + t * (p2 - p1);
 
-            var dp = p01 + t * (p12 - p01);
+            Vector2 dp = p01 + t * (p12 - p01);
 
-            return Tuple.Create(new CubicBezier(P1, p0, p01, dp), new CubicBezier(dp, p12, p2, P2));
+            return new Tuple<CubicBezier, CubicBezier> (new CubicBezier(P1, p0, p01, dp), new CubicBezier(dp, p12, p2, P2));
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace CsPotrace.BezierToBiarc
         {
             get
             {
-                var sum = 0d;
+                double sum = 0d;
                 sum += (C1.X - P1.X) * (C1.Y + P1.Y);
                 sum += (C2.X - C1.X) * (C2.Y + C1.Y);
                 sum += (P2.X - C2.X) * (P2.Y + C2.Y);
@@ -88,18 +88,18 @@ namespace CsPotrace.BezierToBiarc
             {
                 // http://www.caffeineowl.com/graphics/2d/vectorial/cubic-inflexion.html
 
-                var A = C1 - P1;
-                var B = C2 - C1 - A;
-                var C = P2 - C2 - A - 2 * B;
+                Vector2 A = C1 - P1;
+                Vector2 B = C2 - C1 - A;
+                Vector2 C = P2 - C2 - A - 2 * B;
 
-                var a = new Complex(B.X * C.Y - B.Y * C.X, 0);
-                var b = new Complex(A.X * C.Y - A.Y * C.X, 0);
-                var c = new Complex(A.X * B.Y - A.Y * B.X, 0);
+                Complex a = new Complex(B.X * C.Y - B.Y * C.X, 0);
+                Complex b = new Complex(A.X * C.Y - A.Y * C.X, 0);
+                Complex c = new Complex(A.X * B.Y - A.Y * B.X, 0);
 
-                var t1 = (-b + Complex.Sqrt(b * b - 4 * a * c)) / (2 * a);
-                var t2 = (-b - Complex.Sqrt(b * b - 4 * a * c)) / (2 * a);
+                Complex t1 = (-b + Complex.Sqrt(b * b - 4 * a * c)) / (2 * a);
+                Complex t2 = (-b - Complex.Sqrt(b * b - 4 * a * c)) / (2 * a);
 
-                return Tuple.Create(t1, t2);
+                return new Tuple<Complex, Complex>(t1, t2);
             }
         }
     }

@@ -57,8 +57,8 @@ namespace CsPotrace.BezierToBiarc
         /// <returns></returns>
         public Vector2 PointAt(float t)
         {
-            var x = C.X + r * Math.Cos(startAngle + t * sweepAngle);
-            var y = C.Y + r * Math.Sin(startAngle + t * sweepAngle);
+            double x = C.X + r * Math.Cos(startAngle + t * sweepAngle);
+            double y = C.Y + r * Math.Sin(startAngle + t * sweepAngle);
             return new Vector2((float)x, (float)y);
         }
 

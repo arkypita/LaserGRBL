@@ -24,39 +24,39 @@ namespace CsPotrace.BezierToBiarc
             List<BiArc> biarcs = new List<BiArc>();
 
             // The bezier curves to approximate
-            var curves = new Stack<CubicBezier>();
+            Stack<CubicBezier> curves = new Stack<CubicBezier>();
             curves.Push(bezier);
 
             // ---------------------------------------------------------------------------
             // First, calculate the inflexion points and split the bezier at them (if any)
 
-            var toSplit = curves.Pop();
-            var inflex = toSplit.InflexionPoints;
+            CubicBezier toSplit = curves.Pop();
+            Tuple<Complex, Complex> inflex = toSplit.InflexionPoints;
 
-            var i1 = IsRealInflexionPoint(inflex.Item1);
-            var i2 = IsRealInflexionPoint(inflex.Item2);
+            bool i1 = IsRealInflexionPoint(inflex.Item1);
+            bool i2 = IsRealInflexionPoint(inflex.Item2);
 
             if (i1 && !i2)
             {
-                var splited = toSplit.Split((float)inflex.Item1.Real);
+                Tuple<CubicBezier, CubicBezier> splited = toSplit.Split((float)inflex.Item1.Real);
                 curves.Push(splited.Item2);
                 curves.Push(splited.Item1);
             }
             else if (!i1 && i2)
             {
-                var splited = toSplit.Split((float)inflex.Item2.Real);
+                Tuple<CubicBezier, CubicBezier> splited = toSplit.Split((float)inflex.Item2.Real);
                 curves.Push(splited.Item2);
                 curves.Push(splited.Item1);
             }
             else if (i1 && i2)
             {
-                var t1 = (float)inflex.Item1.Real;
-                var t2 = (float)inflex.Item2.Real;
+                float t1 = (float)inflex.Item1.Real;
+                float t2 = (float)inflex.Item2.Real;
 
                 // I'm not sure if I need, but it does not hurt to order them
                 if (t1 > t2)
                 {
-                    var tmp = t1;
+                    float tmp = t1;
                     t1 = t2;
                     t2 = tmp;
                 }
@@ -64,12 +64,12 @@ namespace CsPotrace.BezierToBiarc
                 // Make the first split and save the first new curve. The second one has to be splitted again
                 // at the recalculated t2 (it is on a new curve)
 
-                var splited1 = toSplit.Split(t1);
+                Tuple<CubicBezier, CubicBezier> splited1 = toSplit.Split(t1);
 
                 t2 = (1 - t1) * t2;
 
                 toSplit = splited1.Item2;
-                var splited2 = toSplit.Split(t2);
+                Tuple<CubicBezier, CubicBezier> splited2 = toSplit.Split(t2);
 
                 curves.Push(splited2.Item2);
                 curves.Push(splited2.Item1);
@@ -91,16 +91,16 @@ namespace CsPotrace.BezierToBiarc
                 // Calculate the transition point for the BiArc 
 
                 // V: Intersection point of tangent lines
-                var T1 = new Line(bezier.P1, bezier.C1);
-                var T2 = new Line(bezier.P2, bezier.C2);
-                var V = T1.Intersection(T2);
+                Line T1 = new Line(bezier.P1, bezier.C1);
+                Line T2 = new Line(bezier.P2, bezier.C2);
+                Vector2 V = T1.Intersection(T2);
 
                 // G: incenter point of the triangle (P1, V, P2)
                 // http://www.mathopenref.com/coordincenter.html
-                var dP2V = Vector2.Distance(bezier.P2, V);
-                var dP1V = Vector2.Distance(bezier.P1, V);
-                var dP1P2 = Vector2.Distance(bezier.P1, bezier.P2);
-                var G = (dP2V * bezier.P1 + dP1V * bezier.P2 + dP1P2 * V) / (dP2V + dP1V + dP1P2);
+                float dP2V = Vector2.Distance(bezier.P2, V);
+                float dP1V = Vector2.Distance(bezier.P1, V);
+                float dP1P2 = Vector2.Distance(bezier.P1, bezier.P2);
+                Vector2 G = (dP2V * bezier.P1 + dP1V * bezier.P2 + dP1P2 * V) / (dP2V + dP1V + dP1P2);
 
                 // ---------------------------------------------------------------------------
                 // Calculate the BiArc
@@ -110,21 +110,21 @@ namespace CsPotrace.BezierToBiarc
                 // ---------------------------------------------------------------------------
                 // Calculate the maximum error
 
-                var maxDistance = 0f;
-                var maxDistanceAt = 0f;
+                float maxDistance = 0f;
+                float maxDistanceAt = 0f;
 
-                var nrPointsToCheck = biarc.Length / samplingStep;
-                var parameterStep = 1f / nrPointsToCheck;
+                float nrPointsToCheck = biarc.Length / samplingStep;
+                float parameterStep = 1f / nrPointsToCheck;
 
                 if (nrPointsToCheck > 1000)
                 	throw new InvalidOperationException("Too many points to process");
                 
                 for (int i = 0; i <= nrPointsToCheck; i++)
                 {
-                    var t = parameterStep * i;
-                    var u1 = biarc.PointAt(t);
-                    var u2 = bezier.PointAt(t);
-                    var distance = (u1 - u2).Length();
+                    float t = parameterStep * i;
+                    Vector2 u1 = biarc.PointAt(t);
+                    Vector2 u2 = bezier.PointAt(t);
+                    float distance = (u1 - u2).Length();
 
                     if (distance > maxDistance)
                     {
@@ -138,7 +138,7 @@ namespace CsPotrace.BezierToBiarc
                 {
                     // If not, split the bezier curve the point where the distance is the maximum
                     // and try again with the two halfs
-                    var bs = bezier.Split(maxDistanceAt);
+                    Tuple<CubicBezier, CubicBezier> bs = bezier.Split(maxDistanceAt);
                     curves.Push(bs.Item2);
                     curves.Push(bs.Item1);
                 }

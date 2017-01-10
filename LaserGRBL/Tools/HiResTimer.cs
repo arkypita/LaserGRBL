@@ -321,7 +321,7 @@ namespace Tools
 
 	public class Utils
 	{
-		public static string TimeSpanToString(TimeSpan Span, TimePrecision Precision, TimePrecision MaxFallBackPrecision, string Separator = ", ", bool WriteSuffix = true)
+		public static string TimeSpanToString(TimeSpan Span, TimePrecision Precision, TimePrecision MaxFallBackPrecision, string Separator, bool WriteSuffix)
 		{
 			if (Span >= TimeSpan.MaxValue)
 			{
@@ -339,7 +339,7 @@ namespace Tools
 		}
 
 
-		public static string HumanReadableDateDiff(DateTime MainDate, DateTime OtherDate, TimePrecision Precision, TimePrecision MaxFallBackPrecision, string Separator = ", ", bool WriteSuffix = true)
+		public static string HumanReadableDateDiff(DateTime MainDate, DateTime OtherDate, TimePrecision Precision, TimePrecision MaxFallBackPrecision, string Separator, bool WriteSuffix)
 		{
 			string functionReturnValue = null;
 

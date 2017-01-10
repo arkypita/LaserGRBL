@@ -12,7 +12,7 @@ namespace Tools
 		private System.Threading.ThreadStart _delegatesub;
 
 		private System.Threading.ThreadStart _firsrunsub;
-		public ThreadObject(System.Threading.ThreadStart DelegateSub, int SleepTime, bool AutoDispose, string Name, System.Threading.ThreadStart FirstRunSub = null) : base(SleepTime, AutoDispose, Name)
+		public ThreadObject(System.Threading.ThreadStart DelegateSub, int SleepTime, bool AutoDispose, string Name, System.Threading.ThreadStart FirstRunSub) : base(SleepTime, AutoDispose, Name)
 		{
 			_delegatesub = DelegateSub;
 			_firsrunsub = FirstRunSub;

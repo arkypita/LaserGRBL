@@ -109,7 +109,7 @@ namespace LaserGRBL
 			PB.Bars[0].Value = Core.ProgramSent;
 			PB.Bars[1].Value = Core.ProgramExecuted;
 
-			string val = Tools.Utils.TimeSpanToString(Core.ProgramTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second);
+			string val = Tools.Utils.TimeSpanToString(Core.ProgramTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, " ,", true);
 
 			if (val != "now")
 				PB.PercString = val;

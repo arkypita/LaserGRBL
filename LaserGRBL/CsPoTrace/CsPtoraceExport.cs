@@ -152,22 +152,22 @@ width='{0}' height='{1}'  viewBox='0 0 {0} {1}'>
 
 		public static GraphicsPath Shrink(GraphicsPath path, float width)
 		{
-			using (var p = new GraphicsPath())
+			using (GraphicsPath p = new GraphicsPath())
 			{
 				p.AddPath(path, false);
 				p.CloseAllFigures();
 				p.Widen(new Pen(Color.Black, width * 2));
 
-				var position = 0;
-				var result = new GraphicsPath();
+				int position = 0;
+				GraphicsPath result = new GraphicsPath();
 				while (position < p.PointCount)
 				{
 					// skip outer edge
 					position += CountNextFigure(p.PathData, position);
 					// count inner edge
-					var figureCount = CountNextFigure(p.PathData, position);
-					var points = new PointF[figureCount];
-					var types = new byte[figureCount];
+					int figureCount = CountNextFigure(p.PathData, position);
+					PointF[] points = new PointF[figureCount];
+					byte[] types = new byte[figureCount];
 
 					Array.Copy(p.PathPoints, position, points, 0, figureCount);
 					Array.Copy(p.PathTypes, position, types, 0, figureCount);
@@ -183,7 +183,7 @@ width='{0}' height='{1}'  viewBox='0 0 {0} {1}'>
 		static int CountNextFigure(PathData data, int position)
 		{
 			int count = 0;
-			for (var i = position; i < data.Types.Length; i++)
+			for (int i = position; i < data.Types.Length; i++)
 			{
 				count++;
 				if (0 != (data.Types[i] & (int)PathPointType.CloseSubpath))

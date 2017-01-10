@@ -40,7 +40,7 @@ namespace LaserGRBL.RasterConverter
 				
 				g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
 
-				using (var wrapMode = new System.Drawing.Imaging.ImageAttributes())
+				using (System.Drawing.Imaging.ImageAttributes wrapMode = new System.Drawing.Imaging.ImageAttributes())
 				{
 					wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
 					g.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);

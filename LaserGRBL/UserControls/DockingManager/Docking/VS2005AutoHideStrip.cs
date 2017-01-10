@@ -436,7 +436,7 @@ namespace LaserGRBL.UserControls.DockingManager
                 return Rectangle.Empty;
             }
 
-            var rect = new Rectangle(x, y, width, height);
+            Rectangle rect = new Rectangle(x, y, width, height);
             return transformed ? GetTransformedRectangle(dockState, rect) : rect;
         }
 

@@ -65,7 +65,7 @@ namespace LaserGRBL.UserControls
 			private Color m_bcolor;
 
 			private bool m_bottom;
-			public Reference(Color ReferenceColor, Color BorderColor, bool bottom = false)
+			public Reference(Color ReferenceColor, Color BorderColor, bool bottom)
 			{
 				m_color = ReferenceColor;
 				m_bcolor = BorderColor;

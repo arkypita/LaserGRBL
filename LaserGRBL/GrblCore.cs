@@ -105,7 +105,7 @@ namespace LaserGRBL
 		{ get { return file; } }
 
 
-		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string> { ".jpg", ".bmp", ".png", ".gif" };
+		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
 		public void OpenFile()
 		{
 			string filename = null;
@@ -725,7 +725,8 @@ namespace LaserGRBL
 			if (data.Contains(":"))
 				data = data.Substring(0, data.IndexOf(':'));
 			
-			Enum.TryParse(data, out var);
+			try{var = (MacStatus)Enum.Parse(typeof(MacStatus), data);}
+			catch{}
 			
 			if (var == MacStatus.Idle && mQueuePtr.Count == 0 && mPending.Count == 0)
 				mTP.JobEnd();

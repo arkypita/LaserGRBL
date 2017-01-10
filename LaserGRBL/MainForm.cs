@@ -72,7 +72,7 @@ namespace LaserGRBL
 				//TTTFile.Text = System.IO.Path.GetFileName(filename);
 				TTLines.Text = String.Format("Lines: {0}", Core.LoadedFile.Count);
 				//TTTLoadedIn.Text = elapsed.ToString() + " ms";
-				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second);
+				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, " ,", true);
 			}
 		}
 		
@@ -101,9 +101,9 @@ namespace LaserGRBL
 			TTStatus.Text = string.Format("Status: {0}", Core.MachineStatus);
 
 			if (Core.InProgram)
-				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.ProjectedTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second);
+				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.ProjectedTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, " ,", true);
 			else
-				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second);
+				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, " ,", true);
 
 			if (Core.InProgram)
 				TTLEstimated.Text = "Projected Time:";

@@ -602,7 +602,7 @@ namespace LaserGRBL.UserControls.DockingManager
         [LocalizedCategory("Category_Docking")]
         [LocalizedDescription("DockPanel_ShowAutoHideContentOnHover_Description")]
         [DefaultValue(true)]
-        public bool ShowAutoHideContentOnHover { get; set; }
+        public bool ShowAutoHideContentOnHover ;
 
         private int GetDockWindowSize(DockState dockState)
         {

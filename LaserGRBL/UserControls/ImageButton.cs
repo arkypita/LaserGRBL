@@ -136,7 +136,7 @@ namespace LaserGRBL.UserControls
 				if (this.Enabled == false)
 				{
 					//Disabilitato
-					Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp);
+					Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
 					Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.11F);
 					//Tmp = Base.Drawing.ImageTransform.ChangeAlpha(Tmp, 150);
 				}
@@ -144,7 +144,7 @@ namespace LaserGRBL.UserControls
 				{
 					if (!Coloration.Equals(Color.Empty))
 					{
-						Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp);
+						Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
 						Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, -0.5F);
 						Tmp = Base.Drawing.ImageTransform.Translate(Tmp, Coloration, 0);
 					}

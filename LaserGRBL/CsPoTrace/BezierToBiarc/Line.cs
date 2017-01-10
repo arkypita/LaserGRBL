@@ -55,8 +55,8 @@ namespace CsPotrace.BezierToBiarc
             }
             else
             {
-                var x = (this.m * this.P.X - l.m * l.P.X - this.P.Y + l.P.Y) / (this.m - l.m);
-                var y = m * x - m * P.X + P.Y;
+                float x = (this.m * this.P.X - l.m * l.P.X - this.P.Y + l.P.Y) / (this.m - l.m);
+                float y = m * x - m * P.X + P.Y;
                 return new Vector2(x, y);
             }
         }
@@ -70,8 +70,8 @@ namespace CsPotrace.BezierToBiarc
         /// <returns></returns>
         private static Vector2 VerticalIntersection(Line vl, Line l)
         {
-            var x = vl.P.X;
-            var y = l.m * (x - l.P.X) + l.P.Y;
+            float x = vl.P.X;
+            float y = l.m * (x - l.P.X) + l.P.Y;
             return new Vector2(x, y);
         }
 
@@ -83,7 +83,7 @@ namespace CsPotrace.BezierToBiarc
         /// <returns></returns>
         public static Line CreatePerpendicularAt(Vector2 P, Vector2 P1)
         {
-            var m = Slope(P, P1);
+            float m = Slope(P, P1);
 
             if (m == 0)
             {
