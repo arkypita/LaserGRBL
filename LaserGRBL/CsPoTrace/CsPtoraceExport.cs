@@ -31,7 +31,7 @@ namespace CsPotrace
        /// <param name="Width">Width of the Bitmap</param>
         /// <param name="Height">Height of the Bitmap</param>
        /// <returns></returns>
-        public static Bitmap Export2GDIPlus(ArrayList Fig, int Width,int Height )
+        public static Bitmap Export2GDIPlus(ArrayList Fig, int Width,int Height, int inset)
         {
             Image I= new Bitmap(Width,Height);
             Graphics g = Graphics.FromImage(I);
@@ -70,13 +70,21 @@ namespace CsPotrace
                             Current.AddLine((float)Curves[k].A.X * factor, (float)Curves[k].A.Y * factor, (float)Curves[k].B.X * factor, (float)Curves[k].B.Y * factor);
 
                     }
-                    if (j > 0) Contour.AddPath(Hole, false);
+					if (j > 0)
+						Contour.AddPath(Hole, false);
                 }
-                gp.AddPath(Contour, false);
+				gp.AddPath(Contour, false);
             }
 
-             g.FillPath(Brushes.Black, gp);
 
+
+            g.FillPath(Brushes.Black, gp);
+
+			if (inset != 0)
+			{
+				using (Pen p = new Pen(Color.White, inset))
+					g.DrawPath(p, gp);
+			}
             
             return (Bitmap)I;
         }
@@ -140,7 +148,51 @@ width='{0}' height='{1}'  viewBox='0 0 {0} {1}'>
             return svg.ToString();
         }
         static System.Globalization.CultureInfo enUsCulture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
-        
+
+
+		public static GraphicsPath Shrink(GraphicsPath path, float width)
+		{
+			using (var p = new GraphicsPath())
+			{
+				p.AddPath(path, false);
+				p.CloseAllFigures();
+				p.Widen(new Pen(Color.Black, width * 2));
+
+				var position = 0;
+				var result = new GraphicsPath();
+				while (position < p.PointCount)
+				{
+					// skip outer edge
+					position += CountNextFigure(p.PathData, position);
+					// count inner edge
+					var figureCount = CountNextFigure(p.PathData, position);
+					var points = new PointF[figureCount];
+					var types = new byte[figureCount];
+
+					Array.Copy(p.PathPoints, position, points, 0, figureCount);
+					Array.Copy(p.PathTypes, position, types, 0, figureCount);
+					position += figureCount;
+					result.AddPath(new GraphicsPath(points, types), false);
+				}
+				path.Reset();
+				path.AddPath(result, false);
+				return path;
+			}
+		}
+
+		static int CountNextFigure(PathData data, int position)
+		{
+			int count = 0;
+			for (var i = position; i < data.Types.Length; i++)
+			{
+				count++;
+				if (0 != (data.Types[i] & (int)PathPointType.CloseSubpath))
+				{
+					return count;
+				}
+			}
+			return count;
+		}
 
 
         private static string  GetContourPath(Potrace.Curve[] Curves)

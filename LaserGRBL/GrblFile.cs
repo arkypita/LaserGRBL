@@ -168,9 +168,9 @@ namespace LaserGRBL
 
 			if (fdir != RasterConverter.ImageProcessor.Direction.None)
 			{
-				using (Bitmap ptb = Potrace.Export2GDIPlus(ListOfCurveArray, bmp.Width, bmp.Height))
+				using (Bitmap ptb = Potrace.Export2GDIPlus(ListOfCurveArray, bmp.Width, bmp.Height, Math.Max(res/fres, 1) + 1))
 				{
-					using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size(bmp.Width * fres / res, bmp.Height * fres / res), true, InterpolationMode.NearestNeighbor))
+					using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size(bmp.Width * fres / res, bmp.Height * fres / res), true, InterpolationMode.HighQualityBicubic))
 					{
 						list.Add(new GrblCommand("G91"));
 						ImageLine2Line(resampled, fres, markSpeed, travelSpeed, minPower, maxPower, lOn, lOff, fdir);

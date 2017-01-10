@@ -539,23 +539,21 @@ namespace LaserGRBL.RasterConverter
 			try
 			{
 				int maxSize = 6000*7000; //testato con immagini da 600*700 con res 10ppm
-				int imageRes = SelectedTool == ImageProcessor.Tool.Line2Line ? (int)Quality : 10; //use a fixed resolution of 10ppmm
-				Size pixelSize = new Size((int)(TargetSize.Width * imageRes), (int)(TargetSize.Height * imageRes));
+				int maxRes = (int)Math.Sqrt((maxSize / (TargetSize.Width * TargetSize.Height))); //limit res if resultimg bmp size is to big
 
-				while (pixelSize.Width * pixelSize.Height > maxSize) 
-				{
-					imageRes--;
-					pixelSize = new Size((int)(TargetSize.Width * imageRes), (int)(TargetSize.Height * imageRes));
-				}
+				int res = Math.Min(maxRes, SelectedTool == ImageProcessor.Tool.Line2Line ? (int)Quality : 10); //use a fixed resolution of 10ppmm
+				int fres = Math.Min(maxRes, FillingQuality);
+
+				Size pixelSize = new Size((int)(TargetSize.Width * res), (int)(TargetSize.Height * res));
 				
-				if (imageRes > 0)
+				if (res > 0)
 				{
 					using (Bitmap bmp = CreateTarget(pixelSize))
 					{
 						if (SelectedTool == ImageProcessor.Tool.Line2Line)
-							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, imageRes, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, LineDirection);
+							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, res, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, LineDirection);
 						else if (SelectedTool == ImageProcessor.Tool.Vectorize)
-							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, imageRes, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, FillingDirection, FillingQuality);
+							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, res, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, FillingDirection, fres);
 					}
 					
 					if (GenerationComplete != null)
@@ -564,7 +562,7 @@ namespace LaserGRBL.RasterConverter
 				else
 				{
 					if (GenerationComplete != null)
-						GenerationComplete(new System.InvalidOperationException("Image size is too big for processing!"));
+						GenerationComplete(new System.InvalidOperationException("Target size too big for processing!"));
 				}
 			}
 			catch(Exception ex)
@@ -659,7 +657,7 @@ namespace LaserGRBL.RasterConverter
 			
 			using (Graphics g = Graphics.FromImage(bmp))
 			{
-				using (Bitmap pbmp = Potrace.Export2GDIPlus(ListOfCurveArray, bmp.Width, bmp.Height))
+				using (Bitmap pbmp = Potrace.Export2GDIPlus(ListOfCurveArray, bmp.Width, bmp.Height, FillingDirection != Direction.None ? 2 : 0))
 					g.DrawImage(pbmp, 0, 0);
 				
 				using (Brush b = new SolidBrush(Color.FromArgb(FillingDirection != Direction.None ? 100 : 250, Color.White)))

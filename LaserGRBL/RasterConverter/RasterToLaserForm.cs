@@ -100,7 +100,7 @@ namespace LaserGRBL.RasterConverter
 			{
 				Cursor = Cursors.Default;
 				if (ex != null)
-					System.Windows.Forms.MessageBox.Show(ex.ToString());
+					System.Windows.Forms.MessageBox.Show(ex.Message);
 				preventClose = false;
 				Close();
 			}
