@@ -116,7 +116,7 @@ namespace Base.Drawing
 
 			if (greyscalize)
 			{
-				rv = GrayScale(rv);
+				rv = GrayScale(rv, Formula.CCIRRec709);
 			}
 
 			// noramlize the color components to 1
@@ -177,12 +177,12 @@ namespace Base.Drawing
 		}
 
 
-		public static Image Translate(Image img, Color Color, byte Alpha = 255)
+		public static Image Translate(Image img, Color Color, byte Alpha)
 		{
 			return Translate(img, Color.R, Color.G, Color.B, Alpha);
 		}
 
-		public static Image Translate(Image img, float red, float green, float blue, byte alpha = 255)
+		public static Image Translate(Image img, float red, float green, float blue, byte alpha)
 		{
 
 			float sr = 0;
@@ -338,7 +338,7 @@ namespace Base.Drawing
 		}
 
 
-		public static Image GrayScale(Image img, Formula formula = Formula.CCIRRec709)
+		public static Image GrayScale(Image img, Formula formula)
 		{
 			ColorMatrix cm = default(ColorMatrix);
 
