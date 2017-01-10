@@ -43,20 +43,20 @@
 			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
 			this.GbVectorizeOptions = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-			this.UDFillingQuality = new System.Windows.Forms.NumericUpDown();
+			this.label14 = new System.Windows.Forms.Label();
 			this.CbFillingDirection = new System.Windows.Forms.ComboBox();
+			this.LblFillingQuality = new System.Windows.Forms.Label();
+			this.UDFillingQuality = new System.Windows.Forms.NumericUpDown();
+			this.LblFillingLineLbl = new System.Windows.Forms.Label();
 			this.label22 = new System.Windows.Forms.Label();
 			this.UDSpotRemoval = new System.Windows.Forms.NumericUpDown();
-			this.label23 = new System.Windows.Forms.Label();
-			this.UDSmoothing = new System.Windows.Forms.NumericUpDown();
-			this.label24 = new System.Windows.Forms.Label();
-			this.UDOptimize = new System.Windows.Forms.NumericUpDown();
 			this.CbSpotRemoval = new System.Windows.Forms.CheckBox();
-			this.CbSmoothing = new System.Windows.Forms.CheckBox();
+			this.label24 = new System.Windows.Forms.Label();
+			this.label23 = new System.Windows.Forms.Label();
+			this.UDOptimize = new System.Windows.Forms.NumericUpDown();
+			this.UDSmoothing = new System.Windows.Forms.NumericUpDown();
 			this.CbOptimize = new System.Windows.Forms.CheckBox();
-			this.label14 = new System.Windows.Forms.Label();
-			this.LblFillingQuality = new System.Windows.Forms.Label();
-			this.LblFillingLineLbl = new System.Windows.Forms.Label();
+			this.CbSmoothing = new System.Windows.Forms.CheckBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.CbResize = new System.Windows.Forms.ComboBox();
@@ -124,6 +124,7 @@
 			this.BtFlipH = new LaserGRBL.UserControls.ImageButton();
 			this.BtRotateCW = new LaserGRBL.UserControls.ImageButton();
 			this.BtRotateCCW = new LaserGRBL.UserControls.ImageButton();
+			this.BtnCrop = new LaserGRBL.UserControls.ImageButton();
 			this.WT = new System.Windows.Forms.Timer(this.components);
 			this.RightGrid.SuspendLayout();
 			this.TCOriginalPreview.SuspendLayout();
@@ -138,8 +139,8 @@
 			this.tableLayoutPanel5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.UDFillingQuality)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDSpotRemoval)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.UDSmoothing)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDOptimize)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.UDSmoothing)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.GbLineToLineOptions.SuspendLayout();
@@ -235,6 +236,9 @@
 			this.PbConverted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.PbConverted.TabIndex = 0;
 			this.PbConverted.TabStop = false;
+			this.PbConverted.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PbConvertedMouseDown);
+			this.PbConverted.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PbConvertedMouseMove);
+			this.PbConverted.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PbConvertedMouseUp);
 			// 
 			// TpOriginal
 			// 
@@ -242,7 +246,7 @@
 			this.TpOriginal.Location = new System.Drawing.Point(4, 22);
 			this.TpOriginal.Name = "TpOriginal";
 			this.TpOriginal.Padding = new System.Windows.Forms.Padding(3);
-			this.TpOriginal.Size = new System.Drawing.Size(662, 437);
+			this.TpOriginal.Size = new System.Drawing.Size(662, 439);
 			this.TpOriginal.TabIndex = 1;
 			this.TpOriginal.Text = "Original";
 			this.TpOriginal.UseVisualStyleBackColor = true;
@@ -253,7 +257,7 @@
 			this.PbOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PbOriginal.Location = new System.Drawing.Point(3, 3);
 			this.PbOriginal.Name = "PbOriginal";
-			this.PbOriginal.Size = new System.Drawing.Size(656, 431);
+			this.PbOriginal.Size = new System.Drawing.Size(656, 433);
 			this.PbOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.PbOriginal.TabIndex = 0;
 			this.PbOriginal.TabStop = false;
@@ -363,6 +367,39 @@
 			this.tableLayoutPanel5.Size = new System.Drawing.Size(204, 121);
 			this.tableLayoutPanel5.TabIndex = 0;
 			// 
+			// label14
+			// 
+			this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label14.AutoSize = true;
+			this.label14.Location = new System.Drawing.Point(3, 6);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(33, 13);
+			this.label14.TabIndex = 33;
+			this.label14.Text = "Filling";
+			// 
+			// CbFillingDirection
+			// 
+			this.CbFillingDirection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tableLayoutPanel5.SetColumnSpan(this.CbFillingDirection, 2);
+			this.CbFillingDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbFillingDirection.FormattingEnabled = true;
+			this.CbFillingDirection.Location = new System.Drawing.Point(82, 2);
+			this.CbFillingDirection.Margin = new System.Windows.Forms.Padding(2);
+			this.CbFillingDirection.Name = "CbFillingDirection";
+			this.CbFillingDirection.Size = new System.Drawing.Size(120, 21);
+			this.CbFillingDirection.TabIndex = 31;
+			this.CbFillingDirection.SelectedIndexChanged += new System.EventHandler(this.CbFillingDirection_SelectedIndexChanged);
+			// 
+			// LblFillingQuality
+			// 
+			this.LblFillingQuality.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.LblFillingQuality.AutoSize = true;
+			this.LblFillingQuality.Location = new System.Drawing.Point(3, 30);
+			this.LblFillingQuality.Name = "LblFillingQuality";
+			this.LblFillingQuality.Size = new System.Drawing.Size(39, 13);
+			this.LblFillingQuality.TabIndex = 34;
+			this.LblFillingQuality.Text = "Quality";
+			// 
 			// UDFillingQuality
 			// 
 			this.UDFillingQuality.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -388,18 +425,15 @@
 			0});
 			this.UDFillingQuality.ValueChanged += new System.EventHandler(this.UDFillingQuality_ValueChanged);
 			// 
-			// CbFillingDirection
+			// LblFillingLineLbl
 			// 
-			this.CbFillingDirection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tableLayoutPanel5.SetColumnSpan(this.CbFillingDirection, 2);
-			this.CbFillingDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CbFillingDirection.FormattingEnabled = true;
-			this.CbFillingDirection.Location = new System.Drawing.Point(82, 2);
-			this.CbFillingDirection.Margin = new System.Windows.Forms.Padding(2);
-			this.CbFillingDirection.Name = "CbFillingDirection";
-			this.CbFillingDirection.Size = new System.Drawing.Size(120, 21);
-			this.CbFillingDirection.TabIndex = 31;
-			this.CbFillingDirection.SelectedIndexChanged += new System.EventHandler(this.CbFillingDirection_SelectedIndexChanged);
+			this.LblFillingLineLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.LblFillingLineLbl.AutoSize = true;
+			this.LblFillingLineLbl.Location = new System.Drawing.Point(142, 30);
+			this.LblFillingLineLbl.Name = "LblFillingLineLbl";
+			this.LblFillingLineLbl.Size = new System.Drawing.Size(53, 13);
+			this.LblFillingLineLbl.TabIndex = 35;
+			this.LblFillingLineLbl.Text = "Lines/mm";
 			// 
 			// label22
 			// 
@@ -432,47 +466,17 @@
 			0});
 			this.UDSpotRemoval.ValueChanged += new System.EventHandler(this.UDSpotRemoval_ValueChanged);
 			// 
-			// label23
+			// CbSpotRemoval
 			// 
-			this.label23.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label23.AutoSize = true;
-			this.label23.Location = new System.Drawing.Point(3, 78);
-			this.label23.Name = "label23";
-			this.label23.Size = new System.Drawing.Size(57, 13);
-			this.label23.TabIndex = 23;
-			this.label23.Text = "Smoothing";
-			// 
-			// UDSmoothing
-			// 
-			this.UDSmoothing.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.UDSmoothing.DecimalPlaces = 1;
-			this.UDSmoothing.Enabled = false;
-			this.UDSmoothing.Increment = new decimal(new int[] {
-			1,
-			0,
-			0,
-			65536});
-			this.UDSmoothing.Location = new System.Drawing.Point(82, 75);
-			this.UDSmoothing.Margin = new System.Windows.Forms.Padding(2);
-			this.UDSmoothing.Maximum = new decimal(new int[] {
-			10,
-			0,
-			0,
-			0});
-			this.UDSmoothing.Minimum = new decimal(new int[] {
-			10,
-			0,
-			0,
-			65536});
-			this.UDSmoothing.Name = "UDSmoothing";
-			this.UDSmoothing.Size = new System.Drawing.Size(54, 20);
-			this.UDSmoothing.TabIndex = 20;
-			this.UDSmoothing.Value = new decimal(new int[] {
-			10,
-			0,
-			0,
-			65536});
-			this.UDSmoothing.ValueChanged += new System.EventHandler(this.UDSmoothing_ValueChanged);
+			this.CbSpotRemoval.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.CbSpotRemoval.AutoSize = true;
+			this.CbSpotRemoval.Location = new System.Drawing.Point(141, 54);
+			this.CbSpotRemoval.Margin = new System.Windows.Forms.Padding(2);
+			this.CbSpotRemoval.Name = "CbSpotRemoval";
+			this.CbSpotRemoval.Size = new System.Drawing.Size(15, 14);
+			this.CbSpotRemoval.TabIndex = 25;
+			this.CbSpotRemoval.UseVisualStyleBackColor = true;
+			this.CbSpotRemoval.CheckedChanged += new System.EventHandler(this.CbSpotRemoval_CheckedChanged);
 			// 
 			// label24
 			// 
@@ -483,6 +487,16 @@
 			this.label24.Size = new System.Drawing.Size(47, 13);
 			this.label24.TabIndex = 24;
 			this.label24.Text = "Optimize";
+			// 
+			// label23
+			// 
+			this.label23.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label23.AutoSize = true;
+			this.label23.Location = new System.Drawing.Point(3, 78);
+			this.label23.Name = "label23";
+			this.label23.Size = new System.Drawing.Size(57, 13);
+			this.label23.TabIndex = 23;
+			this.label23.Text = "Smoothing";
 			// 
 			// UDOptimize
 			// 
@@ -516,29 +530,37 @@
 			65536});
 			this.UDOptimize.ValueChanged += new System.EventHandler(this.UDOptimize_ValueChanged);
 			// 
-			// CbSpotRemoval
+			// UDSmoothing
 			// 
-			this.CbSpotRemoval.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.CbSpotRemoval.AutoSize = true;
-			this.CbSpotRemoval.Location = new System.Drawing.Point(141, 54);
-			this.CbSpotRemoval.Margin = new System.Windows.Forms.Padding(2);
-			this.CbSpotRemoval.Name = "CbSpotRemoval";
-			this.CbSpotRemoval.Size = new System.Drawing.Size(15, 14);
-			this.CbSpotRemoval.TabIndex = 25;
-			this.CbSpotRemoval.UseVisualStyleBackColor = true;
-			this.CbSpotRemoval.CheckedChanged += new System.EventHandler(this.CbSpotRemoval_CheckedChanged);
-			// 
-			// CbSmoothing
-			// 
-			this.CbSmoothing.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.CbSmoothing.AutoSize = true;
-			this.CbSmoothing.Location = new System.Drawing.Point(141, 78);
-			this.CbSmoothing.Margin = new System.Windows.Forms.Padding(2);
-			this.CbSmoothing.Name = "CbSmoothing";
-			this.CbSmoothing.Size = new System.Drawing.Size(15, 14);
-			this.CbSmoothing.TabIndex = 26;
-			this.CbSmoothing.UseVisualStyleBackColor = true;
-			this.CbSmoothing.CheckedChanged += new System.EventHandler(this.CbSmoothing_CheckedChanged);
+			this.UDSmoothing.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.UDSmoothing.DecimalPlaces = 1;
+			this.UDSmoothing.Enabled = false;
+			this.UDSmoothing.Increment = new decimal(new int[] {
+			1,
+			0,
+			0,
+			65536});
+			this.UDSmoothing.Location = new System.Drawing.Point(82, 75);
+			this.UDSmoothing.Margin = new System.Windows.Forms.Padding(2);
+			this.UDSmoothing.Maximum = new decimal(new int[] {
+			10,
+			0,
+			0,
+			0});
+			this.UDSmoothing.Minimum = new decimal(new int[] {
+			10,
+			0,
+			0,
+			65536});
+			this.UDSmoothing.Name = "UDSmoothing";
+			this.UDSmoothing.Size = new System.Drawing.Size(54, 20);
+			this.UDSmoothing.TabIndex = 20;
+			this.UDSmoothing.Value = new decimal(new int[] {
+			10,
+			0,
+			0,
+			65536});
+			this.UDSmoothing.ValueChanged += new System.EventHandler(this.UDSmoothing_ValueChanged);
 			// 
 			// CbOptimize
 			// 
@@ -552,35 +574,17 @@
 			this.CbOptimize.UseVisualStyleBackColor = true;
 			this.CbOptimize.CheckedChanged += new System.EventHandler(this.CbOptimize_CheckedChanged);
 			// 
-			// label14
+			// CbSmoothing
 			// 
-			this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(3, 6);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(33, 13);
-			this.label14.TabIndex = 33;
-			this.label14.Text = "Filling";
-			// 
-			// LblFillingQuality
-			// 
-			this.LblFillingQuality.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.LblFillingQuality.AutoSize = true;
-			this.LblFillingQuality.Location = new System.Drawing.Point(3, 30);
-			this.LblFillingQuality.Name = "LblFillingQuality";
-			this.LblFillingQuality.Size = new System.Drawing.Size(39, 13);
-			this.LblFillingQuality.TabIndex = 34;
-			this.LblFillingQuality.Text = "Quality";
-			// 
-			// LblFillingLineLbl
-			// 
-			this.LblFillingLineLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.LblFillingLineLbl.AutoSize = true;
-			this.LblFillingLineLbl.Location = new System.Drawing.Point(142, 30);
-			this.LblFillingLineLbl.Name = "LblFillingLineLbl";
-			this.LblFillingLineLbl.Size = new System.Drawing.Size(53, 13);
-			this.LblFillingLineLbl.TabIndex = 35;
-			this.LblFillingLineLbl.Text = "Lines/mm";
+			this.CbSmoothing.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.CbSmoothing.AutoSize = true;
+			this.CbSmoothing.Location = new System.Drawing.Point(141, 78);
+			this.CbSmoothing.Margin = new System.Windows.Forms.Padding(2);
+			this.CbSmoothing.Name = "CbSmoothing";
+			this.CbSmoothing.Size = new System.Drawing.Size(15, 14);
+			this.CbSmoothing.TabIndex = 26;
+			this.CbSmoothing.UseVisualStyleBackColor = true;
+			this.CbSmoothing.CheckedChanged += new System.EventHandler(this.CbSmoothing_CheckedChanged);
 			// 
 			// groupBox1
 			// 
@@ -1074,7 +1078,7 @@
 			this.TPGCode.Location = new System.Drawing.Point(4, 22);
 			this.TPGCode.Name = "TPGCode";
 			this.TPGCode.Padding = new System.Windows.Forms.Padding(3);
-			this.TPGCode.Size = new System.Drawing.Size(222, 474);
+			this.TPGCode.Size = new System.Drawing.Size(222, 476);
 			this.TPGCode.TabIndex = 1;
 			this.TPGCode.Text = "GCode";
 			// 
@@ -1093,7 +1097,7 @@
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel9.Size = new System.Drawing.Size(216, 468);
+			this.tableLayoutPanel9.Size = new System.Drawing.Size(216, 470);
 			this.tableLayoutPanel9.TabIndex = 0;
 			// 
 			// groupBox2
@@ -1508,7 +1512,8 @@
 			// 
 			this.FlipControl.AutoSize = true;
 			this.FlipControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.FlipControl.ColumnCount = 4;
+			this.FlipControl.ColumnCount = 5;
+			this.FlipControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.FlipControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.FlipControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.FlipControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -1517,11 +1522,12 @@
 			this.FlipControl.Controls.Add(this.BtFlipH, 2, 0);
 			this.FlipControl.Controls.Add(this.BtRotateCW, 0, 0);
 			this.FlipControl.Controls.Add(this.BtRotateCCW, 1, 0);
+			this.FlipControl.Controls.Add(this.BtnCrop, 4, 0);
 			this.FlipControl.Location = new System.Drawing.Point(239, 474);
 			this.FlipControl.Name = "FlipControl";
 			this.FlipControl.RowCount = 1;
 			this.FlipControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.FlipControl.Size = new System.Drawing.Size(124, 31);
+			this.FlipControl.Size = new System.Drawing.Size(155, 31);
 			this.FlipControl.TabIndex = 8;
 			// 
 			// BtFlipV
@@ -1580,6 +1586,21 @@
 			this.BtRotateCCW.UseAltImage = false;
 			this.BtRotateCCW.Click += new System.EventHandler(this.BtRotateCCWClick);
 			// 
+			// BtnCrop
+			// 
+			this.BtnCrop.AltImage = null;
+			this.BtnCrop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnCrop.Coloration = System.Drawing.Color.Empty;
+			this.BtnCrop.Image = ((System.Drawing.Image)(resources.GetObject("BtnCrop.Image")));
+			this.BtnCrop.Location = new System.Drawing.Point(127, 3);
+			this.BtnCrop.Name = "BtnCrop";
+			this.BtnCrop.Size = new System.Drawing.Size(25, 25);
+			this.BtnCrop.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnCrop.TabIndex = 4;
+			this.BtnCrop.UseAltImage = false;
+			this.BtnCrop.Visible = false;
+			this.BtnCrop.Click += new System.EventHandler(this.BtnCropClick);
+			// 
 			// WT
 			// 
 			this.WT.Interval = 50;
@@ -1616,8 +1637,8 @@
 			this.tableLayoutPanel5.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.UDFillingQuality)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDSpotRemoval)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.UDSmoothing)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDOptimize)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.UDSmoothing)).EndInit();
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
@@ -1748,5 +1769,6 @@
 		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.Label LblFillingQuality;
 		private System.Windows.Forms.Label LblFillingLineLbl;
+		private LaserGRBL.UserControls.ImageButton BtnCrop;
 	}
 }

@@ -77,7 +77,14 @@ namespace LaserGRBL.RasterConverter
 			mCore = core;
 			mFileName = fileName;
 			mSuspended = true;
-			mOriginal = new Bitmap(fileName);
+			//mOriginal = new Bitmap(fileName);
+			
+			//this double pass is needed to normalize loaded image pixelformat
+			//http://stackoverflow.com/questions/2016406/converting-bitmap-pixelformats-in-c-sharp
+			using (Bitmap loadedBmp = new Bitmap(fileName))
+				using (Bitmap tmpBmp = new Bitmap(loadedBmp))
+					mOriginal = tmpBmp.Clone(new Rectangle(0, 0, tmpBmp.Width, tmpBmp.Height), System.Drawing.Imaging.PixelFormat.Format32bppArgb); 
+			
 			mBoxSize = boxSize;
 			ResizeRecalc();
 			mGrayScale = TestGrayScale(mOriginal);

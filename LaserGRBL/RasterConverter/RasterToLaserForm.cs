@@ -433,5 +433,88 @@ namespace LaserGRBL.RasterConverter
 		{
 			IP.FillingQuality = (int)UDFillingQuality.Value;
 		}
+		
+		
+		bool isDrag = false;
+  		Rectangle theRectangle = new Rectangle(new Point(0, 0), new Size(0, 0));
+	  	Point startPoint;
+		
+		void PbConvertedMouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button==MouseButtons.Left && Cropping)
+			{
+				isDrag = true;
+				Control control = (Control) sender;
+				startPoint = control.PointToScreen(new Point(e.X, e.Y));
+			}
+	
+		}
+		void PbConvertedMouseMove(object sender, MouseEventArgs e)
+		{
+			if (isDrag)
+			{
+				ControlPaint.DrawReversibleFrame(theRectangle, this.BackColor, FrameStyle.Dashed);
+				
+				// Calculate the endpoint and dimensions for the new 
+				// rectangle, again using the PointToScreen method.
+				Point endPoint = ((Control) sender).PointToScreen(new Point(e.X, e.Y));
+				
+				int width = endPoint.X-startPoint.X;
+				int height = endPoint.Y-startPoint.Y;
+				theRectangle = new Rectangle(startPoint.X, startPoint.Y, width, height);
+				
+				// Draw the new rectangle by calling DrawReversibleFrame
+				// again.  
+				ControlPaint.DrawReversibleFrame(theRectangle, this.BackColor, FrameStyle.Dashed);
+			}
+		}
+		
+		void PbConvertedMouseUp(object sender, MouseEventArgs e)
+		{
+			// If the MouseUp event occurs, the user is not dragging.
+			if (isDrag)
+			{
+				isDrag = false;
+				
+				// Draw the rectangle to be evaluated. Set a dashed frame style 
+				// using the FrameStyle enumeration.
+				ControlPaint.DrawReversibleFrame(theRectangle, this.BackColor, FrameStyle.Dashed);
+				
+				// Find out which controls intersect the rectangle and 
+				// change their color. The method uses the RectangleToScreen  
+				// method to convert the Control's client coordinates 
+				// to screen coordinates.
+				Rectangle controlRectangle;
+	//			for(int i = 0; i < Controls.Count; i++)
+	//			{
+	//				controlRectangle = Controls[i].RectangleToScreen(Controls[i].ClientRectangle);
+	//				if (controlRectangle.IntersectsWith(theRectangle))
+	//					Controls[i].BackColor = Color.BurlyWood;
+	//			}
+				
+				// Reset the rectangle.
+				theRectangle = new Rectangle(0, 0, 0, 0);
+				Cropping = false;
+				UpdateCropping();
+			}
+		}
+		
+		bool Cropping;
+		void BtnCropClick(object sender, EventArgs e)
+		{
+			Cropping = !Cropping;
+			UpdateCropping();
+		}
+		
+		void UpdateCropping()
+		{
+			if (Cropping)
+				BtnCrop.BackColor = Color.Orange;
+			else
+				BtnCrop.BackColor = DefaultBackColor;
+		}
+		
+		
+		
 	}
 }

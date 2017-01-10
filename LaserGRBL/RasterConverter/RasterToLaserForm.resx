@@ -252,6 +252,30 @@
         AElFTkSuQmCC
 </value>
   </data>
+  <data name="BtnCrop.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAABFFJREFUSEut
+        le9PU1cYx8n+gC17sZmR7ZXuR0xMlm2+4IWDGWGgkizOJZAsQRgwxE2zjMqGwjCTlYmUgoBcoA0gQqkC
+        oUXs79IKlZYqLRSGoFJGaYFBIQjhZ59n59TLKBQWO/dJTs65955+v/d8+5x7gv5Puo3dh8Yd47GOsbGY
+        HrM5Wi2Xv8M+enmMXcb4Ufuo3el02vssFrtWoeggBtHs45ejy9B15Mnwk5UJ1wQM2GzQrlKBsq3Nrtdq
+        Y4IymiGUtvO34TV2fkDo2/UfDA4Muqn44MAA6DUakLW2glalsncZDLFBSTWIabcRvypdDmV/88JcL6l8
+        vVPf+YfL6YJHg4N4r70d70okoJLLoUOvtz8wm2ODgjkIezMQI3Psx1P5Xfkp/O7EqpYHOfm1RomwuVtU
+        LzEIuEK9pLBGIyqpahVklSokOdclosKKRmFjo2zINe7C/t5e0CqVeKelBeVtbaDTasFkNNolUumX3jc5
+        mdv/7imedS9pwaS91ay0lj9bWPTMzz+Dubk5mHG7YWbGDdPTMzA59RdMTk6BTncPng4/hf6+PhDX1kJu
+        djY0kF6tVIKhsxNkMlnvteLiN7wGKXzT5wk8yyeneL17aCMGzNraGi4vL+Pi4iLMz88jMcLZ2Vl0E7NH
+        Q0MYEhoGmdmX8FZdHf6WlQU5mZl4jcdDKY1IrV4h4puRn+Yb4xJ4PWG+BgCAHo8HV1dXYWlpCRcWFpAa
+        jY6MQH3NDfwsPAIOfHwQjx6LxoscDuRzuVjJMCgQCCCNw0lkpZ+TXGB+P55n2ReXb32TNtbgH9bX14Ea
+        zc3OgkwqhfrqasjjciEi6hgc+OgghB4+Aldyc0EgFEJiUlIeK7vJThEhC+uBNDLLw4dIyg9IpeCtm3XA
+        v3oVvzhxEslKIOTTMIj/JrEyKirqFVZ2k42IdlsBxeFwQK/VCqb790GnVntXQvKHCz//BIcjwuH41+cM
+        rJw/GxHttoLp6WkcfvwYbTYbmk0m0Gk0WFpcBN+mJOHvV7jY09MD5XUyISvnz79FNDU1BVTYarEg2ZnI
+        MGXw3dkzWF5RBmNjf9IiQFIEwKtSiVk5f3aqIirucjrp7gS1QoFFhXw898P3KGqoB7d7xrsyOod2tAgu
+        V2ilrJw/O1XRhMsF4pu18OulX4AIg7RVCnRP7EZFnfzFI2q4YxJcyEj3vrFSpYCVlRX6sl6omG9PoeOA
+        IuKVN4p1+nYPWfoWIcrGte99siE9AUVUKLYm0JiaFBZG1Gpiqps6mAqRhimpvsvwKlqYvLImpoD0RUIp
+        udfGlNXKmYJq9WVWzp/tEVGTnca+19vnnOabzrBy/myP6L8YkE89j5XbSkaTJ+SswBGewLftIyaHSFQf
+        0k93oONUZuRoungpJL0RXmWln5N8A5FDTrQY/nhkKt+YTOKKJP/J/kDGcbz+/Rs6J0ph68n49nnE9y4i
+        BqetB3xk+rKhs+dHX4OgoL8BZRdCPwzt1XkAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="WT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>15, 8</value>
   </metadata>
