@@ -36,7 +36,7 @@ Do you like LaserGRBL? Support development with your donation!
 
 ![Alpha](https://cloud.githubusercontent.com/assets/8782035/21351296/1df460c2-c6bc-11e6-8eee-4612bb7978fa.jpg)
 
-
+![FinalWork](https://cloud.githubusercontent.com/assets/8782035/21907104/6ca99c14-d90e-11e6-8542-ffea6b528ebe.jpg)
 
 ### Compiling
 
