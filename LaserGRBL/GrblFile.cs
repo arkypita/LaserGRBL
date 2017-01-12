@@ -136,7 +136,7 @@ namespace LaserGRBL
 
 
 
-		public void LoadImagePotrace(Bitmap bmp, string filename, int res, int oX, int oY, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, RasterConverter.ImageProcessor.Direction fdir, int fres)
+		public void LoadImagePotrace(Bitmap bmp, string filename, int res, int oX, int oY, int borderSpeed, int markSpeed, int travelSpeed, int minPower, int maxPower, string lOn, string lOff, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, RasterConverter.ImageProcessor.Direction fdir, int fres)
 		{
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
@@ -148,16 +148,7 @@ namespace LaserGRBL
 			list.Clear();
 			mRange.ResetRange();
 
-			list.Add(new GrblCommand("G90"));
-			list.Add(new GrblCommand(String.Format("F{0}", travelSpeed)));
-			list.Add(new GrblCommand("G0 X0 Y0")); //move fast to origin
-			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY)))); //move fast to offset
-			list.Add(new GrblCommand(String.Format("M5 S{0}", maxPower))); //laser off and power to maxPower
-			list.Add(new GrblCommand(String.Format("G1 F{0}", markSpeed)));
-			list.Add(new GrblCommand("G90"));
-
 			ArrayList ListOfCurveArray = new ArrayList();
-
 			Potrace.turdsize = (int)(UseSpotRemoval ? SpotRemoval : 2);
 			Potrace.alphamax = UseSmoothing ? (double)Smoothing : 1.0;
 			Potrace.opttolerance = UseOptimize ? (double)Optimize : 0.2;
@@ -172,24 +163,47 @@ namespace LaserGRBL
 				{
 					using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size(bmp.Width * fres / res, bmp.Height * fres / res), true, InterpolationMode.HighQualityBicubic))
 					{
+						//absolute
+						list.Add(new GrblCommand("G90")); 
+						//move fast to offset
+						list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY))));
+						//laser off and power to maxPower						
+						list.Add(new GrblCommand(String.Format("{0} S{1}", lOff, maxPower)));
+						//set speed to markspeed						
+						list.Add(new GrblCommand(String.Format("G1 F{0}", markSpeed)));
+						//relative
 						list.Add(new GrblCommand("G91"));
+						
+						//trace all line
 						ImageLine2Line(resampled, fres, markSpeed, travelSpeed, minPower, maxPower, lOn, lOff, fdir);
-						list.Add(new GrblCommand("G90"));
-						list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY)))); //move fast to offset
-						list.Add(new GrblCommand(String.Format("M5 S{0}", maxPower))); //laser off and power to maxPower
+						
+						//laser off
+						list.Add(new GrblCommand(String.Format("{0}", lOff)));
 					}
 				}
 			}
 
+			//absolute
+			list.Add(new GrblCommand("G90"));
+			//move fast to offset
+			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY))));
+			//laser off and power to maxPower
+			list.Add(new GrblCommand(String.Format("{0} S{1}", lOff, maxPower))); 
+			//set speed to borderspeed
+			list.Add(new GrblCommand(String.Format("G1 F{0}", borderSpeed)));
+	
+			//trace borders
 			List<string> gc = Potrace.Export2GCode(ListOfCurveArray, oX, oY, res, lOn, lOff, bmp.Size);
 			
 			foreach (string code in gc)
 				list.Add(new GrblCommand(code));
 			
 
-			list.Add(new GrblCommand(lOff));
-			list.Add(new GrblCommand("G0 X0 Y0")); //move fast to origin
-			list.Add(new GrblCommand("G90"));
+			//laser off
+			list.Add(new GrblCommand(String.Format("{0}", lOff)));
+			
+			//move fast to origin
+			list.Add(new GrblCommand("G0 X0 Y0"));
 
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;

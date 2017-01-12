@@ -55,6 +55,7 @@ namespace LaserGRBL.RasterConverter
 		public string LaserOn;
 		public string LaserOff;
 		public int TravelSpeed;
+		public int BorderSpeed;
 		public int MarkSpeed;
 		public int MinPower;
 		public int MaxPower;
@@ -560,7 +561,7 @@ namespace LaserGRBL.RasterConverter
 						if (SelectedTool == ImageProcessor.Tool.Line2Line)
 							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, res, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, LineDirection);
 						else if (SelectedTool == ImageProcessor.Tool.Vectorize)
-							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, res, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, FillingDirection, fres);
+							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, res, TargetOffset.X, TargetOffset.Y, BorderSpeed, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, FillingDirection, fres);
 					}
 					
 					if (GenerationComplete != null)

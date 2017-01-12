@@ -103,12 +103,15 @@
 			this.label11 = new System.Windows.Forms.Label();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+			this.LblBorderTracing = new System.Windows.Forms.Label();
+			this.LblBorderTracingmm = new System.Windows.Forms.Label();
+			this.IIBorderTracing = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label20 = new System.Windows.Forms.Label();
-			this.label12 = new System.Windows.Forms.Label();
 			this.label19 = new System.Windows.Forms.Label();
-			this.IIMarkSpeed = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IILinearFilling = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.IITravelSpeed = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.label13 = new System.Windows.Forms.Label();
+			this.LblLinearFillingmm = new System.Windows.Forms.Label();
+			this.LblLinearFilling = new System.Windows.Forms.Label();
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
 			this.TxtLaserOff = new System.Windows.Forms.TextBox();
@@ -1106,7 +1109,7 @@
 			this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.groupBox2.Controls.Add(this.tableLayoutPanel3);
 			this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox2.Location = new System.Drawing.Point(3, 142);
+			this.groupBox2.Location = new System.Drawing.Point(3, 162);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(212, 61);
 			this.groupBox2.TabIndex = 1;
@@ -1278,7 +1281,7 @@
 			this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBox3.Location = new System.Drawing.Point(3, 3);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(212, 61);
+			this.groupBox3.Size = new System.Drawing.Size(212, 81);
 			this.groupBox3.TabIndex = 5;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Speed";
@@ -1291,67 +1294,97 @@
 			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel6.Controls.Add(this.label20, 2, 1);
-			this.tableLayoutPanel6.Controls.Add(this.label12, 0, 0);
-			this.tableLayoutPanel6.Controls.Add(this.label19, 0, 1);
-			this.tableLayoutPanel6.Controls.Add(this.IIMarkSpeed, 1, 0);
-			this.tableLayoutPanel6.Controls.Add(this.IITravelSpeed, 1, 1);
-			this.tableLayoutPanel6.Controls.Add(this.label13, 2, 0);
+			this.tableLayoutPanel6.Controls.Add(this.LblBorderTracing, 0, 0);
+			this.tableLayoutPanel6.Controls.Add(this.LblBorderTracingmm, 2, 0);
+			this.tableLayoutPanel6.Controls.Add(this.IIBorderTracing, 1, 0);
+			this.tableLayoutPanel6.Controls.Add(this.label20, 2, 2);
+			this.tableLayoutPanel6.Controls.Add(this.label19, 0, 2);
+			this.tableLayoutPanel6.Controls.Add(this.IILinearFilling, 1, 1);
+			this.tableLayoutPanel6.Controls.Add(this.IITravelSpeed, 1, 2);
+			this.tableLayoutPanel6.Controls.Add(this.LblLinearFillingmm, 2, 1);
+			this.tableLayoutPanel6.Controls.Add(this.LblLinearFilling, 0, 1);
 			this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 16);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-			this.tableLayoutPanel6.RowCount = 2;
+			this.tableLayoutPanel6.RowCount = 3;
+			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel6.Size = new System.Drawing.Size(206, 42);
+			this.tableLayoutPanel6.Size = new System.Drawing.Size(206, 62);
 			this.tableLayoutPanel6.TabIndex = 0;
+			// 
+			// LblBorderTracing
+			// 
+			this.LblBorderTracing.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.LblBorderTracing.AutoSize = true;
+			this.LblBorderTracing.Location = new System.Drawing.Point(3, 3);
+			this.LblBorderTracing.Name = "LblBorderTracing";
+			this.LblBorderTracing.Size = new System.Drawing.Size(77, 13);
+			this.LblBorderTracing.TabIndex = 23;
+			this.LblBorderTracing.Text = "Border Tracing";
+			// 
+			// LblBorderTracingmm
+			// 
+			this.LblBorderTracingmm.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.LblBorderTracingmm.AutoSize = true;
+			this.LblBorderTracingmm.Location = new System.Drawing.Point(144, 3);
+			this.LblBorderTracingmm.Name = "LblBorderTracingmm";
+			this.LblBorderTracingmm.Size = new System.Drawing.Size(44, 13);
+			this.LblBorderTracingmm.TabIndex = 22;
+			this.LblBorderTracingmm.Text = "mm/min";
+			// 
+			// IIBorderTracing
+			// 
+			this.IIBorderTracing.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IIBorderTracing.CurrentValue = 1000;
+			this.IIBorderTracing.ForcedText = null;
+			this.IIBorderTracing.ForceMinMax = false;
+			this.IIBorderTracing.Location = new System.Drawing.Point(83, 3);
+			this.IIBorderTracing.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IIBorderTracing.MaxValue = 4000;
+			this.IIBorderTracing.MinValue = 1;
+			this.IIBorderTracing.Name = "IIBorderTracing";
+			this.IIBorderTracing.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIBorderTracing.Size = new System.Drawing.Size(55, 15);
+			this.IIBorderTracing.TabIndex = 21;
+			this.IIBorderTracing.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIBorderTracingCurrentValueChanged);
 			// 
 			// label20
 			// 
 			this.label20.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label20.AutoSize = true;
-			this.label20.Location = new System.Drawing.Point(118, 25);
+			this.label20.Location = new System.Drawing.Point(144, 45);
 			this.label20.Name = "label20";
 			this.label20.Size = new System.Drawing.Size(44, 13);
 			this.label20.TabIndex = 19;
 			this.label20.Text = "mm/min";
 			// 
-			// label12
-			// 
-			this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(3, 4);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(45, 13);
-			this.label12.TabIndex = 13;
-			this.label12.Text = "Mark @";
-			// 
 			// label19
 			// 
 			this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label19.AutoSize = true;
-			this.label19.Location = new System.Drawing.Point(3, 25);
+			this.label19.Location = new System.Drawing.Point(3, 45);
 			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(51, 13);
+			this.label19.Size = new System.Drawing.Size(69, 13);
 			this.label19.TabIndex = 17;
-			this.label19.Text = "Travel @";
+			this.label19.Text = "White Space";
 			// 
-			// IIMarkSpeed
+			// IILinearFilling
 			// 
-			this.IIMarkSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.IIMarkSpeed.CurrentValue = 1000;
-			this.IIMarkSpeed.ForcedText = null;
-			this.IIMarkSpeed.ForceMinMax = false;
-			this.IIMarkSpeed.Location = new System.Drawing.Point(57, 3);
-			this.IIMarkSpeed.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-			this.IIMarkSpeed.MaxValue = 4000;
-			this.IIMarkSpeed.MinValue = 1;
-			this.IIMarkSpeed.Name = "IIMarkSpeed";
-			this.IIMarkSpeed.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IIMarkSpeed.Size = new System.Drawing.Size(55, 15);
-			this.IIMarkSpeed.TabIndex = 16;
-			this.IIMarkSpeed.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMarkSpeedCurrentValueChanged);
+			this.IILinearFilling.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IILinearFilling.CurrentValue = 1000;
+			this.IILinearFilling.ForcedText = null;
+			this.IILinearFilling.ForceMinMax = false;
+			this.IILinearFilling.Location = new System.Drawing.Point(83, 23);
+			this.IILinearFilling.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IILinearFilling.MaxValue = 4000;
+			this.IILinearFilling.MinValue = 1;
+			this.IILinearFilling.Name = "IILinearFilling";
+			this.IILinearFilling.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IILinearFilling.Size = new System.Drawing.Size(55, 15);
+			this.IILinearFilling.TabIndex = 16;
+			this.IILinearFilling.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMarkSpeedCurrentValueChanged);
 			// 
 			// IITravelSpeed
 			// 
@@ -1359,7 +1392,7 @@
 			this.IITravelSpeed.CurrentValue = 4000;
 			this.IITravelSpeed.ForcedText = null;
 			this.IITravelSpeed.ForceMinMax = false;
-			this.IITravelSpeed.Location = new System.Drawing.Point(57, 24);
+			this.IITravelSpeed.Location = new System.Drawing.Point(83, 44);
 			this.IITravelSpeed.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
 			this.IITravelSpeed.MaxValue = 4000;
 			this.IITravelSpeed.MinValue = 1;
@@ -1369,15 +1402,25 @@
 			this.IITravelSpeed.TabIndex = 18;
 			this.IITravelSpeed.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IITravelSpeedCurrentValueChanged);
 			// 
-			// label13
+			// LblLinearFillingmm
 			// 
-			this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(118, 4);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(44, 13);
-			this.label13.TabIndex = 15;
-			this.label13.Text = "mm/min";
+			this.LblLinearFillingmm.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.LblLinearFillingmm.AutoSize = true;
+			this.LblLinearFillingmm.Location = new System.Drawing.Point(144, 24);
+			this.LblLinearFillingmm.Name = "LblLinearFillingmm";
+			this.LblLinearFillingmm.Size = new System.Drawing.Size(44, 13);
+			this.LblLinearFillingmm.TabIndex = 15;
+			this.LblLinearFillingmm.Text = "mm/min";
+			// 
+			// LblLinearFilling
+			// 
+			this.LblLinearFilling.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.LblLinearFilling.AutoSize = true;
+			this.LblLinearFilling.Location = new System.Drawing.Point(3, 24);
+			this.LblLinearFilling.Name = "LblLinearFilling";
+			this.LblLinearFilling.Size = new System.Drawing.Size(65, 13);
+			this.LblLinearFilling.TabIndex = 13;
+			this.LblLinearFilling.Text = "Linear Filling";
 			// 
 			// groupBox5
 			// 
@@ -1385,7 +1428,7 @@
 			this.groupBox5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.groupBox5.Controls.Add(this.tableLayoutPanel7);
 			this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox5.Location = new System.Drawing.Point(3, 70);
+			this.groupBox5.Location = new System.Drawing.Point(3, 90);
 			this.groupBox5.Name = "groupBox5";
 			this.groupBox5.Size = new System.Drawing.Size(212, 66);
 			this.groupBox5.TabIndex = 6;
@@ -1696,9 +1739,9 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.NumericUpDown UDQuality;
 		private System.Windows.Forms.Button BtnCreate;
-		private System.Windows.Forms.Label label12;
-		private System.Windows.Forms.Label label13;
-		private UserControls.IntegerInput.IntegerInputRanged IIMarkSpeed;
+		private System.Windows.Forms.Label LblLinearFilling;
+		private System.Windows.Forms.Label LblLinearFillingmm;
+		private UserControls.IntegerInput.IntegerInputRanged IILinearFilling;
 		private UserControls.IntegerInput.IntegerInputRanged IISizeW;
 		private UserControls.IntegerInput.IntegerInputRanged IISizeH;
 		private UserControls.ColorSlider TBRed;
@@ -1770,5 +1813,8 @@
 		private System.Windows.Forms.Label LblFillingQuality;
 		private System.Windows.Forms.Label LblFillingLineLbl;
 		private LaserGRBL.UserControls.ImageButton BtnCrop;
+		private System.Windows.Forms.Label LblBorderTracing;
+		private System.Windows.Forms.Label LblBorderTracingmm;
+		private LaserGRBL.UserControls.IntegerInput.IntegerInputRanged IIBorderTracing;
 	}
 }
