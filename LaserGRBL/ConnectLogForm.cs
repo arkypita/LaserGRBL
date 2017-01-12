@@ -132,6 +132,8 @@ namespace LaserGRBL
 			Check: Grbl is in check G-code mode. It will process and respond to all G-code commands, but not motion or turn on anything. Once toggled off with another '$C' command, Grbl will reset itself.
 			*/
 
+			TT.SetToolTip(BtnConnectDisconnect, Core.IsOpen ? "Disconnect" : "Connect");
+			
 			BtnConnectDisconnect.UseAltImage = Core.IsOpen;
 			BtnRunProgram.Enabled = Core.CanSendFile;
 			BtnOpen.Enabled = Core.CanLoadNewFile;

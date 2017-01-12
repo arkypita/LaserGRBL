@@ -37,14 +37,16 @@ namespace LaserGRBL
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreviewForm));
 			this.Preview = new LaserGRBL.UserControls.GrblPanel();
 			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnReset = new LaserGRBL.UserControls.ImageButton();
 			this.BtnGoHome = new LaserGRBL.UserControls.ImageButton();
+			this.BtnReset = new LaserGRBL.UserControls.ImageButton();
 			this.BtnStop = new LaserGRBL.UserControls.ImageButton();
 			this.BtnResume = new LaserGRBL.UserControls.ImageButton();
 			this.BtnUnlock = new LaserGRBL.UserControls.ImageButton();
+			this.TT = new System.Windows.Forms.ToolTip(this.components);
 			this.tableLayoutPanel8.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -82,23 +84,6 @@ namespace LaserGRBL
 			this.tableLayoutPanel8.Size = new System.Drawing.Size(617, 56);
 			this.tableLayoutPanel8.TabIndex = 5;
 			// 
-			// BtnReset
-			// 
-			this.BtnReset.AltImage = null;
-			this.BtnReset.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.BtnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnReset.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.BtnReset.Coloration = System.Drawing.Color.Empty;
-			this.BtnReset.Enabled = false;
-			this.BtnReset.Image = ((System.Drawing.Image)(resources.GetObject("BtnReset.Image")));
-			this.BtnReset.Location = new System.Drawing.Point(3, 3);
-			this.BtnReset.Name = "BtnReset";
-			this.BtnReset.Size = new System.Drawing.Size(49, 49);
-			this.BtnReset.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnReset.TabIndex = 4;
-			this.BtnReset.UseAltImage = false;
-			this.BtnReset.Click += new System.EventHandler(this.BtnResetClick);
-			// 
 			// BtnGoHome
 			// 
 			this.BtnGoHome.AltImage = null;
@@ -113,8 +98,27 @@ namespace LaserGRBL
 			this.BtnGoHome.Size = new System.Drawing.Size(49, 49);
 			this.BtnGoHome.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.BtnGoHome.TabIndex = 3;
+			this.TT.SetToolTip(this.BtnGoHome, "Homing ($H)");
 			this.BtnGoHome.UseAltImage = false;
 			this.BtnGoHome.Click += new System.EventHandler(this.BtnGoHomeClick);
+			// 
+			// BtnReset
+			// 
+			this.BtnReset.AltImage = null;
+			this.BtnReset.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.BtnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnReset.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BtnReset.Coloration = System.Drawing.Color.Empty;
+			this.BtnReset.Enabled = false;
+			this.BtnReset.Image = ((System.Drawing.Image)(resources.GetObject("BtnReset.Image")));
+			this.BtnReset.Location = new System.Drawing.Point(3, 3);
+			this.BtnReset.Name = "BtnReset";
+			this.BtnReset.Size = new System.Drawing.Size(49, 49);
+			this.BtnReset.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnReset.TabIndex = 4;
+			this.TT.SetToolTip(this.BtnReset, "Grbl Reset (ctrl-x)");
+			this.BtnReset.UseAltImage = false;
+			this.BtnReset.Click += new System.EventHandler(this.BtnResetClick);
 			// 
 			// BtnStop
 			// 
@@ -130,6 +134,7 @@ namespace LaserGRBL
 			this.BtnStop.Size = new System.Drawing.Size(49, 49);
 			this.BtnStop.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.BtnStop.TabIndex = 5;
+			this.TT.SetToolTip(this.BtnStop, "Feed Hold");
 			this.BtnStop.UseAltImage = false;
 			this.BtnStop.Click += new System.EventHandler(this.BtnStopClick);
 			// 
@@ -147,6 +152,7 @@ namespace LaserGRBL
 			this.BtnResume.Size = new System.Drawing.Size(49, 49);
 			this.BtnResume.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.BtnResume.TabIndex = 6;
+			this.TT.SetToolTip(this.BtnResume, "Resume");
 			this.BtnResume.UseAltImage = false;
 			this.BtnResume.Click += new System.EventHandler(this.BtnResumeClick);
 			// 
@@ -164,6 +170,7 @@ namespace LaserGRBL
 			this.BtnUnlock.Size = new System.Drawing.Size(49, 49);
 			this.BtnUnlock.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.BtnUnlock.TabIndex = 7;
+			this.TT.SetToolTip(this.BtnUnlock, "Grbl Unlock ($X)");
 			this.BtnUnlock.UseAltImage = false;
 			this.BtnUnlock.Click += new System.EventHandler(this.BtnUnlockClick);
 			// 
@@ -190,5 +197,6 @@ namespace LaserGRBL
 		private UserControls.ImageButton BtnStop;
 		private UserControls.ImageButton BtnResume;
 		private UserControls.ImageButton BtnUnlock;
+		private System.Windows.Forms.ToolTip TT;
 	}
 }
