@@ -6,7 +6,7 @@ namespace LaserGRBL
 	/// <summary>
 	/// Description of CommandThread.
 	/// </summary>
-	public class GrblCore : Tools.ThreadClass
+	public class GrblCore
 	{
 		public enum MacStatus
 		{Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog}
@@ -48,17 +48,22 @@ namespace LaserGRBL
 		private int mTarOvRapids;
 		private int mTarOvSpindle;
 		
-		public GrblCore(System.Windows.Forms.Control syncroObject) : base(1, false, "Command Queue Thread")
+		private Tools.ThreadObject TX;
+		private Tools.ThreadObject RX;
+		
+		public GrblCore(System.Windows.Forms.Control syncroObject)
 		{
 			syncro = syncroObject;
 			com = new System.IO.Ports.SerialPort();
+			
+			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", null);
+			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null);
 			
 			file = new GrblFile();
 			file.OnFileLoaded += RiseOnFileLoaded;
  
 			mMachineStatus = MacStatus.Disconnected;
 			
-			this.com.DataReceived += OnDataReceived;
 			mQueue = new System.Collections.Generic.Queue<GrblCommand>();
 			mPending = new System.Collections.Generic.Queue<GrblCommand>();
 			mSent = new System.Collections.Generic.List<IGrblRow>();
@@ -303,14 +308,13 @@ namespace LaserGRBL
 			lock(this)
 			{
 				GrblReset();
-				Start();
+				RX.Start();
+				TX.Start();
 			}
 		}
 		
 		public void CloseCom()
 		{
-			Stop();
-
 			if (com.IsOpen)
 			{
 				com.DiscardOutBuffer();
@@ -319,6 +323,9 @@ namespace LaserGRBL
 			}
 			
 			mBuffer = 0;
+
+			TX.Stop();
+			RX.Stop();
 			
 			lock(this)
 			{ClearQueue(false);}
@@ -487,19 +494,23 @@ namespace LaserGRBL
 		}
 
 		private long lastPosRequest;
-		protected override void DoTheWork()
+		protected void ThreadTX()
 		{
 			lock(this)
 			{
-				if (CanSend())
-					SendLine();
-				
-				long now = Tools.HiResTimer.TotalMilliseconds;
-				if (now - lastPosRequest > 200)
+				try
 				{
-					QueryPosition();
-					lastPosRequest = now;
+					if (!TX.MustExitTH() && CanSend())
+						SendLine();
+					
+					long now = Tools.HiResTimer.TotalMilliseconds;
+					if (now - lastPosRequest > 200)
+					{
+						QueryPosition();
+						lastPosRequest = now;
+					}
 				}
+				catch {}
 			}
 		}
 		
@@ -535,12 +546,8 @@ namespace LaserGRBL
 		public int Buffer
 		{ get { return BUFFER_SIZE - mBuffer; } }
 
-		void OnDataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+		void ThreadRX()
 		{
-			
-			if (System.Threading.Thread.CurrentThread.Name == null)
-				System.Threading.Thread.CurrentThread.Name = "COM Data Receiver Thread";
-
 			try
 			{
 				string rline = null;

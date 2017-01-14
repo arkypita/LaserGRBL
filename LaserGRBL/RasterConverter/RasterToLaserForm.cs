@@ -456,8 +456,9 @@ namespace LaserGRBL.RasterConverter
 		
 		bool isDrag = false;
   		Rectangle theRectangle = new Rectangle(new Point(0, 0), new Size(0, 0));
-	  	Point startPoint;
-		
+		Point sP;
+		Point eP;
+	  	
 		void PbConvertedMouseDown(object sender, MouseEventArgs e)
 		{
 			if (e.Button==MouseButtons.Left && Cropping)
@@ -473,7 +474,8 @@ namespace LaserGRBL.RasterConverter
 				if ((e.X >= left && e.Y >= top) && (e.X <= right && e.Y <= bottom))
 				{
 					isDrag = true;
-					startPoint = PbConverted.PointToScreen(new Point(e.X, e.Y));
+					sP = e.Location;
+					eP = e.Location;
 				}
 			}
 	
@@ -482,18 +484,13 @@ namespace LaserGRBL.RasterConverter
 		{
 			if (isDrag)
 			{
+				//erase old rectangle
 				ControlPaint.DrawReversibleFrame(theRectangle, this.BackColor, FrameStyle.Dashed);
-				
-				// Calculate the endpoint and dimensions for the new 
-				// rectangle, again using the PointToScreen method.
-				Point endPoint = ((Control) sender).PointToScreen(new Point(e.X, e.Y));
-				
-				int width = endPoint.X-startPoint.X;
-				int height = endPoint.Y-startPoint.Y;
-				theRectangle = new Rectangle(startPoint.X, startPoint.Y, width, height);
+
+				eP = e.Location;
+				theRectangle = new Rectangle(PbConverted.PointToScreen(sP), new Size(eP.X-sP.X, eP.Y-sP.Y));
 				
 				// Draw the new rectangle by calling DrawReversibleFrame
-				// again.  
 				ControlPaint.DrawReversibleFrame(theRectangle, this.BackColor, FrameStyle.Dashed);
 			}
 		}
@@ -504,15 +501,21 @@ namespace LaserGRBL.RasterConverter
 			if (isDrag)
 			{
 				isDrag = false;
-				// Draw the rectangle to be evaluated. Set a dashed frame style 
-				// using the FrameStyle enumeration.
+				
+				//erase old rectangle
 				ControlPaint.DrawReversibleFrame(theRectangle, this.BackColor, FrameStyle.Dashed);
 				
+
 				int left = (PbConverted.Width - PbConverted.Image.Width) / 2;
 				int top = (PbConverted.Height - PbConverted.Image.Height) / 2;
 				
-				Point p = PbConverted.PointToClient(theRectangle.Location);
-				Rectangle CropRect = new Rectangle(p.X-left, p.Y-top, theRectangle.Width, theRectangle.Height);
+				eP = e.Location;
+				Rectangle CropRect = new Rectangle(Math.Min(sP.X, eP.X) - left,
+			                                         Math.Min(sP.Y, eP.Y) - top,
+			                                         Math.Abs(eP.X-sP.X),
+			                                         Math.Abs(eP.Y-sP.Y));
+				
+				//Rectangle CropRect = new Rectangle(p.X-left, p.Y-top, orientedRect.Width, orientedRect.Height);
 				
 				IP.CropImage(CropRect, PbConverted.Image.Size);
 				
