@@ -1641,7 +1641,6 @@
 			this.BtnCrop.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.BtnCrop.TabIndex = 4;
 			this.BtnCrop.UseAltImage = false;
-			this.BtnCrop.Visible = false;
 			this.BtnCrop.Click += new System.EventHandler(this.BtnCropClick);
 			// 
 			// WT

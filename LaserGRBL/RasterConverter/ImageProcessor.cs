@@ -154,6 +154,29 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 		
+		public void CropImage(Rectangle rect, Size rsize)
+		{
+			if (rect.Width <= 0 || rect.Height <= 0)
+				return;
+			
+			Rectangle scaled = new Rectangle(rect.X * mOriginal.Width / rsize.Width,
+			                                 rect.Y * mOriginal.Height / rsize.Height,
+											 rect.Width * mOriginal.Width / rsize.Width,
+											 rect.Height * mOriginal.Height / rsize.Height);
+			
+			if (scaled.Width <= 0 || scaled.Height <= 0)
+				return;
+			
+			Bitmap newBmp = mOriginal.Clone(scaled, mOriginal.PixelFormat);
+			Bitmap oldBmp = mOriginal;
+		
+			mOriginal = newBmp;
+			oldBmp.Dispose();
+
+			ResizeRecalc();
+			Refresh();
+		}
+		
 		public void RotateCW()
 		{
 			mOriginal.RotateFlip(RotateFlipType.Rotate90FlipNone);

@@ -462,9 +462,19 @@ namespace LaserGRBL.RasterConverter
 		{
 			if (e.Button==MouseButtons.Left && Cropping)
 			{
-				isDrag = true;
-				Control control = (Control) sender;
-				startPoint = control.PointToScreen(new Point(e.X, e.Y));
+				int left = (PbConverted.Width - PbConverted.Image.Width) / 2;
+				int top = (PbConverted.Height - PbConverted.Image.Height) / 2;
+				int right = PbConverted.Width - left;
+				int bottom = PbConverted.Height - top;
+				
+				Point p = PbConverted.PointToScreen(new Point(left, top));
+				Cursor.Clip = new Rectangle(p.X, p.Y, right-left, bottom-top);
+								
+				if ((e.X >= left && e.Y >= top) && (e.X <= right && e.Y <= bottom))
+				{
+					isDrag = true;
+					startPoint = PbConverted.PointToScreen(new Point(e.X, e.Y));
+				}
 			}
 	
 		}
@@ -494,27 +504,38 @@ namespace LaserGRBL.RasterConverter
 			if (isDrag)
 			{
 				isDrag = false;
-				
 				// Draw the rectangle to be evaluated. Set a dashed frame style 
 				// using the FrameStyle enumeration.
 				ControlPaint.DrawReversibleFrame(theRectangle, this.BackColor, FrameStyle.Dashed);
 				
-				// Find out which controls intersect the rectangle and 
-				// change their color. The method uses the RectangleToScreen  
-				// method to convert the Control's client coordinates 
-				// to screen coordinates.
-	//			Rectangle controlRectangle;
-	//			for(int i = 0; i < Controls.Count; i++)
-	//			{
-	//				controlRectangle = Controls[i].RectangleToScreen(Controls[i].ClientRectangle);
-	//				if (controlRectangle.IntersectsWith(theRectangle))
-	//					Controls[i].BackColor = Color.BurlyWood;
-	//			}
+				int left = (PbConverted.Width - PbConverted.Image.Width) / 2;
+				int top = (PbConverted.Height - PbConverted.Image.Height) / 2;
+				
+				Point p = PbConverted.PointToClient(theRectangle.Location);
+				Rectangle CropRect = new Rectangle(p.X-left, p.Y-top, theRectangle.Width, theRectangle.Height);
+				
+				IP.CropImage(CropRect, PbConverted.Image.Size);
+				
+				PbOriginal.Image = IP.Original;
 				
 				// Reset the rectangle.
 				theRectangle = new Rectangle(0, 0, 0, 0);
 				Cropping = false;
+				Cursor.Clip = new Rectangle();
 				UpdateCropping();
+				
+				
+				if (IP.Original.Height < IP.Original.Width)
+				{
+					IISizeW.CurrentValue = 50;
+					IISizeH.CurrentValue = IP.WidthToHeight(50);
+				}
+				else
+				{
+					IISizeH.CurrentValue = 50;
+					IISizeW.CurrentValue = IP.HeightToWidht(50);
+				}
+				
 			}
 		}
 		
