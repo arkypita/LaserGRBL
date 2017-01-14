@@ -445,6 +445,8 @@ namespace LaserGRBL
 				mEstimatedTimeOff = TimeSpan.Zero;
 			}
 
+			if (!mRange.SpindleRange.ValidRange) //assign max alpha if no S range available
+				curAlpha = 255;
 
 			foreach (GrblCommand cmd in list)
 			{
