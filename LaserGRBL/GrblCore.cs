@@ -537,10 +537,14 @@ namespace LaserGRBL
 
 		void OnDataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
 		{
+			
+			if (System.Threading.Thread.CurrentThread.Name == null)
+				System.Threading.Thread.CurrentThread.Name = "COM Data Receiver Thread";
+
 			try
 			{
 				string rline = null;
-				while ((rline = GetComLineOrDisconnect()) != null)
+				if ((rline = GetComLineOrDisconnect()) != null)
 				{
 					if (rline.Length > 0)
 					{

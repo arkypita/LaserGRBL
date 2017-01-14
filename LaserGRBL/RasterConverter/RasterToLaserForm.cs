@@ -503,7 +503,7 @@ namespace LaserGRBL.RasterConverter
 				// change their color. The method uses the RectangleToScreen  
 				// method to convert the Control's client coordinates 
 				// to screen coordinates.
-				Rectangle controlRectangle;
+	//			Rectangle controlRectangle;
 	//			for(int i = 0; i < Controls.Count; i++)
 	//			{
 	//				controlRectangle = Controls[i].RectangleToScreen(Controls[i].ClientRectangle);

@@ -60,6 +60,7 @@ namespace LaserGRBL.UserControls
 			}
 			
 			TH = new System.Threading.Thread(DoTheWork);
+			TH.Name = "GrblPanel Drawing Thread";
 			TH.Start();
 		}
 		

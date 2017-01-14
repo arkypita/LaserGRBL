@@ -15,6 +15,9 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
 
+			if (System.Threading.Thread.CurrentThread.Name == null)
+				System.Threading.Thread.CurrentThread.Name = "Main Thread";
+			
 			SplashScreenForm f = new SplashScreenForm();
 			f.ShowDialog();
 			f.Dispose();
