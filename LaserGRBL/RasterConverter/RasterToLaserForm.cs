@@ -455,6 +455,7 @@ namespace LaserGRBL.RasterConverter
 		
 		
 		bool isDrag = false;
+		Rectangle imageRectangle;
   		Rectangle theRectangle = new Rectangle(new Point(0, 0), new Size(0, 0));
 		Point sP;
 		Point eP;
@@ -467,10 +468,9 @@ namespace LaserGRBL.RasterConverter
 				int top = (PbConverted.Height - PbConverted.Image.Height) / 2;
 				int right = PbConverted.Width - left;
 				int bottom = PbConverted.Height - top;
+
+				imageRectangle = new Rectangle(left, top, PbConverted.Image.Width, PbConverted.Image.Height);
 				
-				Point p = PbConverted.PointToScreen(new Point(left, top));
-				Cursor.Clip = new Rectangle(p.X, p.Y, right-left, bottom-top);
-								
 				if ((e.X >= left && e.Y >= top) && (e.X <= right && e.Y <= bottom))
 				{
 					isDrag = true;
@@ -488,8 +488,17 @@ namespace LaserGRBL.RasterConverter
 				ControlPaint.DrawReversibleFrame(theRectangle, this.BackColor, FrameStyle.Dashed);
 
 				eP = e.Location;
-				theRectangle = new Rectangle(PbConverted.PointToScreen(sP), new Size(eP.X-sP.X, eP.Y-sP.Y));
 				
+				//limit eP to image rectangle
+				int left = (PbConverted.Width - PbConverted.Image.Width) / 2;
+				int top = (PbConverted.Height - PbConverted.Image.Height) / 2;
+				int right = PbConverted.Width - left;
+				int bottom = PbConverted.Height - top;
+				eP.X = Math.Min(Math.Max(eP.X, left), right);
+				eP.Y = Math.Min(Math.Max(eP.Y, top), bottom);
+				
+				theRectangle = new Rectangle(PbConverted.PointToScreen(sP), new Size(eP.X-sP.X, eP.Y-sP.Y));
+		
 				// Draw the new rectangle by calling DrawReversibleFrame
 				ControlPaint.DrawReversibleFrame(theRectangle, this.BackColor, FrameStyle.Dashed);
 			}
@@ -509,7 +518,6 @@ namespace LaserGRBL.RasterConverter
 				int left = (PbConverted.Width - PbConverted.Image.Width) / 2;
 				int top = (PbConverted.Height - PbConverted.Image.Height) / 2;
 				
-				eP = e.Location;
 				Rectangle CropRect = new Rectangle(Math.Min(sP.X, eP.X) - left,
 			                                         Math.Min(sP.Y, eP.Y) - top,
 			                                         Math.Abs(eP.X-sP.X),
