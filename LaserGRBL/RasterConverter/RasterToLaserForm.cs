@@ -46,16 +46,6 @@ namespace LaserGRBL.RasterConverter
 			CbFillingDirection.SelectedIndex = 0;
 			CbFillingDirection.ResumeLayout();
 			
-			if (IP.Original.Height < IP.Original.Width)
-			{
-				IISizeW.CurrentValue = 50;
-				IISizeH.CurrentValue = IP.WidthToHeight(50);
-			}
-			else
-			{
-				IISizeH.CurrentValue = 50;
-				IISizeW.CurrentValue = IP.HeightToWidht(50);
-			}
 			LoadSettings();
 		}
 		
@@ -130,21 +120,27 @@ namespace LaserGRBL.RasterConverter
 
 		void BtnCreateClick(object sender, EventArgs e)
 		{
-			preventClose = true;
-			Cursor = Cursors.WaitCursor;
-			SuspendLayout();
-			TCOriginalPreview.SelectedIndex = 0;
-			TCOptions.Enabled = false;
-			FlipControl.Enabled = false;
-			BtnCreate.Enabled = false;
-			WB.Visible = true;
-			WB.Running = true;
-			ResumeLayout();
-	
-			StoreSettings();
-
-			ImageProcessor targetProcessor = IP.Clone() as ImageProcessor;
-			IP.GenerateGCode();
+			using (ConvertSizeAndOptionForm f = new ConvertSizeAndOptionForm())
+			{
+				f.ShowDialog(IP);
+				if (f.DialogResult == DialogResult.OK)
+				{
+					preventClose = true;
+					Cursor = Cursors.WaitCursor;
+					SuspendLayout();
+					TCOriginalPreview.SelectedIndex = 0;
+					FlipControl.Enabled = false;
+					BtnCreate.Enabled = false;
+					WB.Visible = true;
+					WB.Running = true;
+					ResumeLayout();
+			
+					StoreSettings();
+		
+					ImageProcessor targetProcessor = IP.Clone() as ImageProcessor;
+					IP.GenerateGCode();
+				}
+			}
 		}
 
 		private void StoreSettings()
@@ -166,7 +162,6 @@ namespace LaserGRBL.RasterConverter
 //			Settings.SetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", CbShowImage.Checked);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", (ImageProcessor.Direction)CbFillingDirection.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", UDFillingQuality.Value);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", IIBorderTracing.CurrentValue);
 
 			Settings.SetObject("GrayScaleConversion.Parameters.Interpolation", (InterpolationMode)CbResize.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.Parameters.Mode", (ImageTransform.Formula)CbMode.SelectedItem);
@@ -178,13 +173,14 @@ namespace LaserGRBL.RasterConverter
 			Settings.SetObject("GrayScaleConversion.Parameters.Threshold.Enabled", CbThreshold.Checked);
 			Settings.SetObject("GrayScaleConversion.Parameters.Threshold.Value", TbThreshold.Value);
 
-			Settings.SetObject("GrayScaleConversion.Gcode.Speed.Mark", IILinearFilling.CurrentValue);
-			Settings.SetObject("GrayScaleConversion.Gcode.Speed.Travel", IITravelSpeed.CurrentValue);
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", IP.BorderSpeed);
+			Settings.SetObject("GrayScaleConversion.Gcode.Speed.Mark", IP.MarkSpeed);
+			Settings.SetObject("GrayScaleConversion.Gcode.Speed.Travel", IP.TravelSpeed);
 
-			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", TxtLaserOn.Text);
-			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", TxtLaserOff.Text);
-			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", IIMinPower.CurrentValue);
-			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", IIMaxPower.CurrentValue);
+			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", IP.LaserOn);
+			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", IP.LaserOff);
+			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", IP.MinPower);
+			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", IP.MaxPower);
 
 			Settings.Save(); // Saves settings in application configuration file
 		}
@@ -210,7 +206,6 @@ namespace LaserGRBL.RasterConverter
 			//CbShowImage.Checked = IP.ShowImage = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", true);
 			CbFillingDirection.SelectedItem = IP.FillingDirection = (ImageProcessor.Direction)Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", ImageProcessor.Direction.None);
 			UDFillingQuality.Value = IP.FillingQuality = Convert.ToInt32(Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", 3));
-			IIBorderTracing.CurrentValue = IP.BorderSpeed = (int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
 
 			CbResize.SelectedItem = IP.Interpolation = (InterpolationMode)Settings.GetObject("GrayScaleConversion.Parameters.Interpolation", InterpolationMode.HighQualityBicubic);
 			CbMode.SelectedItem = IP.Formula = (ImageTransform.Formula)Settings.GetObject("GrayScaleConversion.Parameters.Mode", ImageTransform.Formula.SimpleAverage);
@@ -221,32 +216,6 @@ namespace LaserGRBL.RasterConverter
 			TbContrast.Value = IP.Contrast = (int)Settings.GetObject("GrayScaleConversion.Parameters.Contrast", 100);
 			CbThreshold.Checked = IP.UseThreshold = (bool)Settings.GetObject("GrayScaleConversion.Parameters.Threshold.Enabled", false);
 			TbThreshold.Value = IP.Threshold = (int)Settings.GetObject("GrayScaleConversion.Parameters.Threshold.Value", 50);
-
-			IILinearFilling.CurrentValue = IP.MarkSpeed = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Mark", 1000);
-			IITravelSpeed.CurrentValue = IP.TravelSpeed = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Travel", 4000);
-
-			TxtLaserOn.Text = IP.LaserOn = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
-			TxtLaserOff.Text = IP.LaserOff = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
-			IIMinPower.CurrentValue = IP.MinPower = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
-			IIMaxPower.CurrentValue = IP.MaxPower = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
-			
-			UpdateSpeedEnabled();
-		}
-
-		private void IISizeW_CurrentValueChanged(object sender, int NewValue, bool ByUser)
-		{
-			if (ByUser)
-				IISizeH.CurrentValue = IP.WidthToHeight(NewValue);
-			
-			IP.TargetSize = new Size(IISizeW.CurrentValue, IISizeH.CurrentValue);
-		}
-
-		private void IISizeH_CurrentValueChanged(object sender, int NewValue, bool ByUser)
-		{
-			if (ByUser)
-				IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
-			
-			IP.TargetSize = new Size(IISizeW.CurrentValue, IISizeH.CurrentValue);
 		}
 
 		void OnRGBCBDoubleClick(object sender, EventArgs e)
@@ -294,23 +263,13 @@ namespace LaserGRBL.RasterConverter
 			if (RbLineToLineTracing.Checked)
 				IP.SelectedTool = ImageProcessor.Tool.Line2Line;
 			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked;
-			
-			UpdateSpeedEnabled();
 		}
 		
-		private void UpdateSpeedEnabled()
-		{
-			IILinearFilling.Enabled = LblLinearFilling.Enabled = LblLinearFillingmm.Enabled = (RbLineToLineTracing.Checked || (RbVectorize.Checked && ((ImageProcessor.Direction)CbFillingDirection.SelectedItem) != ImageProcessor.Direction.None));
-			IIBorderTracing.Enabled = LblBorderTracing.Enabled = LblBorderTracingmm.Enabled = RbVectorize.Checked;
-		}
-
 		private void RbVectorize_CheckedChanged(object sender, EventArgs e)
 		{
 			if (RbVectorize.Checked)
 				IP.SelectedTool = ImageProcessor.Tool.Vectorize;
 			GbVectorizeOptions.Visible = RbVectorize.Checked;
-			
-			UpdateSpeedEnabled();
 		}
 
 		private void UDQuality_ValueChanged(object sender, EventArgs e)
@@ -382,24 +341,11 @@ namespace LaserGRBL.RasterConverter
 		{
 			IP.RotateCW();
 			PbOriginal.Image = IP.Original;
-			
-			int w = IISizeW.CurrentValue;
-			int h = IISizeH.CurrentValue;
-			
-			IISizeW.CurrentValue = h;
-			IISizeH.CurrentValue = w;
 		}
 		void BtRotateCCWClick(object sender, EventArgs e)
 		{
 			IP.RotateCCW();
 			PbOriginal.Image = IP.Original;
-
-			int w = IISizeW.CurrentValue;
-			int h = IISizeH.CurrentValue;
-			
-			IISizeW.CurrentValue = h;
-			IISizeH.CurrentValue = w;
-			
 		}
 		void BtFlipHClick(object sender, EventArgs e)
 		{
@@ -411,41 +357,17 @@ namespace LaserGRBL.RasterConverter
 			IP.FlipV();
 			PbOriginal.Image = IP.Original;	
 		}
-		void IIMarkSpeedCurrentValueChanged(object sender, int NewValue, bool ByUser)
+		
+		void BtnRevertClick(object sender, EventArgs e)
 		{
-			IP.MarkSpeed = NewValue;
-		}
-		void IITravelSpeedCurrentValueChanged(object sender, int NewValue, bool ByUser)
-		{
-			IP.TravelSpeed = NewValue;
-		}
-		void TxtLaserOnTextChanged(object sender, EventArgs e)
-		{
-			IP.LaserOn = TxtLaserOn.Text;
-		}
-		void TxtLaserOffTextChanged(object sender, EventArgs e)
-		{
-			IP.LaserOff = TxtLaserOff.Text;
-		}
-		void IIOffsetXYCurrentValueChanged(object sender, int NewValue, bool ByUser)
-		{
-			IP.TargetOffset = new Point(IIOffsetX.CurrentValue, IIOffsetY.CurrentValue);
-		}
-		void IIMinPowerCurrentValueChanged(object sender, int NewValue, bool ByUser)
-		{
-			IP.MinPower = NewValue;
-		}
-		void IIMaxPowerCurrentValueChanged(object sender, int NewValue, bool ByUser)
-		{
-			IP.MaxPower = NewValue;
+			IP.Revert();
+			PbOriginal.Image = IP.Original;	
 		}
 
 		private void CbFillingDirection_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			IP.FillingDirection = (ImageProcessor.Direction)CbFillingDirection.SelectedItem;
 			LblFillingLineLbl.Visible = LblFillingQuality.Visible = UDFillingQuality.Visible = ((ImageProcessor.Direction)CbFillingDirection.SelectedItem != ImageProcessor.Direction.None);
-			
-			UpdateSpeedEnabled();
 		}
 
 		private void UDFillingQuality_ValueChanged(object sender, EventArgs e)
@@ -534,19 +456,6 @@ namespace LaserGRBL.RasterConverter
 				Cropping = false;
 				Cursor.Clip = new Rectangle();
 				UpdateCropping();
-				
-				
-				if (IP.Original.Height < IP.Original.Width)
-				{
-					IISizeW.CurrentValue = 50;
-					IISizeH.CurrentValue = IP.WidthToHeight(50);
-				}
-				else
-				{
-					IISizeH.CurrentValue = 50;
-					IISizeW.CurrentValue = IP.HeightToWidht(50);
-				}
-				
 			}
 		}
 		
@@ -564,12 +473,10 @@ namespace LaserGRBL.RasterConverter
 			else
 				BtnCrop.BackColor = DefaultBackColor;
 		}
-		void IIBorderTracingCurrentValueChanged(object sender, int NewValue, bool ByUser)
+		void BtnCancelClick(object sender, EventArgs e)
 		{
-			IP.BorderSpeed = NewValue;
+			Close();
 		}
-		
-		
-		
+	
 	}
 }

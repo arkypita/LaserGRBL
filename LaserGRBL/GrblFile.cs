@@ -165,6 +165,8 @@ namespace LaserGRBL
 					{
 						//absolute
 						list.Add(new GrblCommand("G90")); 
+						//use travel speed
+						list.Add(new GrblCommand(String.Format("F{0}", travelSpeed)));
 						//move fast to offset
 						list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY))));
 						//laser off and power to maxPower						
@@ -185,6 +187,8 @@ namespace LaserGRBL
 
 			//absolute
 			list.Add(new GrblCommand("G90"));
+			//use travel speed
+			list.Add(new GrblCommand(String.Format("F{0}", travelSpeed)));
 			//move fast to offset
 			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY))));
 			//laser off and power to maxPower
@@ -227,18 +231,29 @@ namespace LaserGRBL
 			list.Clear();
 			mRange.ResetRange();
 
+			//absolute
 			list.Add(new GrblCommand("G90"));
+			//use travel speed
 			list.Add(new GrblCommand(String.Format("F{0}", travelSpeed)));
-			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY)))); //move fast to offset
-			list.Add(new GrblCommand(String.Format("M5 S{0}", minPower))); //laser off and power to minPower
+			//move fast to offset
+			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY))));
+			//laser off and power to maxPower						
+			list.Add(new GrblCommand(String.Format("{0} S{1}", lOff, maxPower)));
+			//set speed to markspeed						
 			list.Add(new GrblCommand(String.Format("G1 F{0}", markSpeed)));
+			//relative
 			list.Add(new GrblCommand("G91"));
-			list.Add(new GrblCommand(lOn));
-
+			
+			
+			
 			ImageLine2Line(bmp, res, markSpeed, travelSpeed, minPower, maxPower, lOn, lOff, dir);
 
-			list.Add(new GrblCommand(lOff));
+			//laser off
+			list.Add(new GrblCommand(String.Format("{0}", lOff)));
+			//absolute
 			list.Add(new GrblCommand("G90"));
+			//move fast to origin
+			list.Add(new GrblCommand("G0 X0 Y0"));
 
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
@@ -445,7 +460,7 @@ namespace LaserGRBL
 				mEstimatedTimeOff = TimeSpan.Zero;
 			}
 
-			if (!mRange.SpindleRange.ValidRange) //assign max alpha if no S range available
+			if (drawing && !mRange.SpindleRange.ValidRange) //assign max alpha if no S range available
 				curAlpha = 255;
 
 			foreach (GrblCommand cmd in list)
@@ -465,7 +480,7 @@ namespace LaserGRBL
 				if (cmd.F != null)
 					speed = cmd.F.Number;
 
-				if (cmd.S != null)
+				if (drawing && cmd.S != null)
 				{
 					if (mRange.SpindleRange.ValidRange)
 						curAlpha = (int)((cmd.S.Number - mRange.SpindleRange.S.Min) * 255 / (mRange.SpindleRange.S.Max - mRange.SpindleRange.S.Min));
@@ -473,7 +488,7 @@ namespace LaserGRBL
 						curAlpha = 255;
 				}
 
-				if (analyze && cmd.S != null && laser)
+				if (analyze && cmd.S != null)
 					mRange.UpdateSRange(cmd.S.Number);
 
 				if (cmd.IsMovement && cmd.TrueMovement(curX, curY, abs))

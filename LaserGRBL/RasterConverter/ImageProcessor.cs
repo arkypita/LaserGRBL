@@ -19,7 +19,8 @@ namespace LaserGRBL.RasterConverter
 		public delegate void GenerationCompleteDlg(Exception ex);
 		public static event GenerationCompleteDlg GenerationComplete;		
 
-		private Bitmap mOriginal;		//original image
+		private Bitmap mTrueOriginal;	//real original image
+		private Bitmap mOriginal;		//original image (cropped or rotated)
 		private Bitmap mResized;		//resized for preview
 		
 		private bool mGrayScale;		//image has no color
@@ -86,6 +87,8 @@ namespace LaserGRBL.RasterConverter
 				using (Bitmap tmpBmp = new Bitmap(loadedBmp))
 					mOriginal = tmpBmp.Clone(new Rectangle(0, 0, tmpBmp.Width, tmpBmp.Height), System.Drawing.Imaging.PixelFormat.Format32bppArgb); 
 			
+			mTrueOriginal = mOriginal.Clone() as Bitmap;
+			
 			mBoxSize = boxSize;
 			ResizeRecalc();
 			mGrayScale = TestGrayScale(mOriginal);
@@ -96,6 +99,7 @@ namespace LaserGRBL.RasterConverter
 			ImageProcessor rv = this.MemberwiseClone() as ImageProcessor;
 			rv.TH = null;
 			rv.MustExit = null;
+			rv.mTrueOriginal = mTrueOriginal;
 			rv.mOriginal = mOriginal;
 			rv.mResized = mResized.Clone() as Bitmap;
 			return rv;
@@ -106,16 +110,20 @@ namespace LaserGRBL.RasterConverter
 		
 		bool TestGrayScale(Bitmap bmp)
 		{
+			int maxdiff = 0;
+			
 			for(int x = 0; x < bmp.Width; x+=10)
 			{
 				for(int y = 0; y < bmp.Height; y+=10)
 				{
 					Color c = bmp.GetPixel(x,y);
-					if (c.R != c.G || c.G != c.B)
-						return false;
+					maxdiff = Math.Max(maxdiff, Math.Abs(c.R - c.G));
+					maxdiff = Math.Max(maxdiff, Math.Abs(c.G - c.B));
+					maxdiff = Math.Max(maxdiff, Math.Abs(c.R - c.B));
 				}
 			}
-			return true;
+			
+			return (maxdiff < 20);
 		}
 
 		public void Dispose()
@@ -123,6 +131,10 @@ namespace LaserGRBL.RasterConverter
 			Suspend();
 			if (Current != null)
 				Current.AbortThread();
+			
+			mTrueOriginal.Dispose();
+			mOriginal.Dispose();
+			mResized.Dispose();
 		}
 		
 		public void Suspend()
@@ -198,11 +210,20 @@ namespace LaserGRBL.RasterConverter
 			Refresh();
 		}
 		
+		public void Revert()
+		{
+			Bitmap tmp = mOriginal;
+			mOriginal = mTrueOriginal.Clone() as Bitmap;
+			tmp.Dispose();
+			
+			ResizeRecalc();
+			Refresh();		
+		}
+		
 		public void FlipV()
 		{
 			mOriginal.RotateFlip(RotateFlipType.RotateNoneFlipX);
 			ResizeRecalc();
-			
 			Refresh();			
 		}
 		

@@ -71,9 +71,11 @@ namespace CsPotrace
 
                 if (Curve.Kind == Potrace.CurveKind.Bezier)
                 {
-        			double distance = LinearDistance(Curve.A.X, Curve.A.Y, Curve.B.X, Curve.B.Y);
-        	
-        			if (distance > 2) //if not a small bezier
+        			if (double.IsNaN(Curve.LinearLenght))
+        			{
+        				// problem?
+        			}
+        			else
                 	{
 	                	CubicBezier cb = new CubicBezier(new Vector2((float)Curve.A.X, (float)Curve.A.Y),
 	                	                                 new Vector2((float)Curve.ControlPointA.X, (float)Curve.ControlPointA.Y),
@@ -88,11 +90,13 @@ namespace CsPotrace
         				try
         				{
 		                	List<BiArc> bal = Algorithm.ApproxCubicBezier(cb, 5, 1);
-		                	
 		                	foreach (BiArc ba in bal)
-				            { 
-		                		rv.Add(GetArcGC(ba.A1, oX, oY, scale, g));
-		                		rv.Add(GetArcGC(ba.A2, oX, oY, scale, g));
+				            {
+		                		if (!double.IsNaN(ba.A1.Length) && !double.IsNaN(ba.A1.LinearLength))
+									rv.Add(GetArcGC(ba.A1, oX, oY, scale, g));
+								
+								if (!double.IsNaN(ba.A2.Length) && !double.IsNaN(ba.A2.LinearLength))
+			                		rv.Add(GetArcGC(ba.A2, oX, oY, scale, g));
 				            }
         				}
         				catch
@@ -100,12 +104,6 @@ namespace CsPotrace
         					if (g != null) g.DrawLine(Pens.DarkGray, (float)Curve.A.X, (float)Curve.A.Y, (float)Curve.B.X, (float)Curve.B.Y);
                 			rv.Add(String.Format("G1 X{0} Y{1}", formatnumber(Curve.B.X + oX, scale), formatnumber(Curve.B.Y + oY, scale)));
         				}
-                	}
-                	else
-                	{
-                		//trace line
-						if (g != null) g.DrawLine(Pens.DarkGray, (float)Curve.A.X, (float)Curve.A.Y, (float)Curve.B.X, (float)Curve.B.Y);
-                		rv.Add(String.Format("G1 X{0} Y{1}", formatnumber(Curve.B.X + oX, scale), formatnumber(Curve.B.Y + oY, scale)));
                 	}
 
                 }
@@ -136,14 +134,9 @@ namespace CsPotrace
         	//http://www.cnccookbook.com/CCCNCGCodeArcsG02G03.htm
         	//https://www.tormach.com/g02_g03.html
         	
-        	double distance = LinearDistance(arc.P1.X, arc.P1.Y, arc.P2.X, arc.P2.Y);
-        	
-        	if (distance > 1) //if not a small arc
+        	if (arc.LinearLength > 2) //if not a small arc
         	{
-		        if (g != null) g.DrawArc(Pens.Red,
-	            arc.C.X - arc.r, arc.C.Y - arc.r, 2 * arc.r, 2 * arc.r, 
-	            arc.startAngle * 180.0f / (float)Math.PI, arc.sweepAngle * 180.0f / (float)Math.PI);
-	
+		        if (g != null) g.DrawArc(Pens.Red, arc.C.X - arc.r, arc.C.Y - arc.r, 2 * arc.r, 2 * arc.r, arc.startAngle * 180.0f / (float)Math.PI, arc.sweepAngle * 180.0f / (float)Math.PI);
 				return String.Format("G{0} X{1} Y{2} I{3} J{4}", !arc.IsClockwise ? 2 : 3, formatnumber(arc.P2.X + oX, scale), formatnumber(arc.P2.Y + oY, scale), formatnumber(arc.C.X - arc.P1.X, scale), formatnumber(arc.C.Y - arc.P1.Y, scale));
         	}
         	else //approximate with a line
@@ -155,15 +148,14 @@ namespace CsPotrace
 			
         }
 		
-        private static double LinearDistance(double curX, double curY, double newX, double newY)
-		{
-			double dX = newX - curX;
-			double dY = newY - curY;
-			return Math.Sqrt(dX * dX + dY * dY);
-		}
-		
         private static string formatnumber(double number, int scale)
-        { return (number/scale).ToString("0.###", System.Globalization.CultureInfo.InvariantCulture); }
+        {
+        	double num = number/scale;
+        	if (!double.IsNaN(num))
+	        	return num.ToString("0.###", System.Globalization.CultureInfo.InvariantCulture);
+			else
+				return "0";
+        }
 		
         public static PointF AsPointF(Vector2 v)
         {

@@ -111,6 +111,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RasterConverter\ConvertSizeAndOptionForm.cs" />
+    <Compile Include="RasterConverter\ConvertSizeAndOptionForm.Designer.cs">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RasterConverter\ImageProcessor.cs" />
     <Compile Include="RasterConverter\ImageTransform.cs" />
     <Compile Include="RasterConverter\RasterToLaserForm.cs">
@@ -310,6 +314,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\RasterToLaserForm.resx">
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -337,6 +344,7 @@
     </EmbeddedResource>
     <None Include="Grafica\Actions-transform-crop-and-resize-icon.png" />
     <None Include="Grafica\Crop-tool-icon.png" />
+    <None Include="Grafica\document-revert.png" />
     <None Include="Grafica\flipH.png" />
     <None Include="Grafica\flipV.png" />
     <None Include="Grafica\LaserGrbl.ico" />

@@ -116,6 +116,17 @@ namespace CsPotrace
                 this.ControlPointB = ControlPointB;
                 this.B = b;
             }
+            
+            public double LinearLenght
+			{
+            	get
+            	{
+					double dX = B.X - A.X;
+					double dY = B.Y - A.Y;
+					return Math.Sqrt(dX * dX + dY * dY);
+            	}
+			}
+            
         }
 
         class Path
