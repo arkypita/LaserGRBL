@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="2.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{839698EC-FE05-4112-ACCB-A5D7556714F0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LaserGRBL</RootNamespace>
+    <AssemblyName>LaserGRBL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <RunCodeAnalysis>False</RunCodeAnalysis>
+    <SourceAnalysisOverrideSettingsFile>C:\Users\Diego\AppData\Roaming\ICSharpCode\SharpDevelop5\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+    <ApplicationIcon>Grafica\LaserGrbl.ico</ApplicationIcon>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>PdbOnly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <BaseAddress>4194304</BaseAddress>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+    <StartAction>Project</StartAction>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConnectLogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectLogForm.Designer.cs">
+      <DependentUpon>ConnectLogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CsPotrace\BezierToBiarc\Algorithm.cs" />
+    <Compile Include="CsPotrace\BezierToBiarc\Arc.cs" />
+    <Compile Include="CsPotrace\BezierToBiarc\BiArc.cs" />
+    <Compile Include="CsPotrace\BezierToBiarc\Complex.cs" />
+    <Compile Include="CsPotrace\BezierToBiarc\CubicBezier.cs" />
+    <Compile Include="CsPotrace\BezierToBiarc\Line.cs" />
+    <Compile Include="CsPotrace\BezierToBiarc\Tuple.cs" />
+    <Compile Include="CsPotrace\BezierToBiarc\Vector2.cs" />
+    <Compile Include="CsPotrace\CsPotrace.cs" />
+    <Compile Include="CsPotrace\CsPotraceExportGCODE.cs" />
+    <Compile Include="CsPotrace\CsPtoraceExport.cs" />
+    <Compile Include="GrblCore.cs" />
+    <Compile Include="CSV\CsvDictionary.cs" />
+    <Compile Include="CSV\FormattedMessage.cs" />
+    <Compile Include="GrblCommand.cs" />
+    <Compile Include="GrblFile.cs" />
+    <Compile Include="JogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JogForm.Designer.cs">
+      <DependentUpon>JogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PreviewForm.Designer.cs">
+      <DependentUpon>PreviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RasterConverter\ConvertSizeAndOptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RasterConverter\ConvertSizeAndOptionForm.Designer.cs">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RasterConverter\ImageProcessor.cs" />
+    <Compile Include="RasterConverter\ImageTransform.cs" />
+    <Compile Include="RasterConverter\RasterToLaserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RasterConverter\RasterToLaserForm.Designer.cs">
+      <DependentUpon>RasterToLaserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="SplashScreenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreenForm.Designer.cs">
+      <DependentUpon>SplashScreenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\HiResTimer.cs" />
+    <Compile Include="Tools\MathHelper.cs" />
+    <Compile Include="Tools\ThreadClass.cs" />
+    <Compile Include="Tools\WordWrap.cs" />
+    <Compile Include="UserControls\ColorProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ColorProgressBar.Designer.cs">
+      <DependentUpon>ColorProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ColorProgressBarDesigner.cs" />
+    <Compile Include="UserControls\ColorSlider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\ColorSlider.Designer.cs">
+      <DependentUpon>ColorSlider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CommandLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CommandLog.Designer.cs">
+      <DependentUpon>CommandLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\AutoHideStripBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockAreasEditor.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockContentCollection.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockContentEventArgs.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockContentHandler.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockOutlineBase.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPane.SplitterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPaneCaptionBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPaneCollection.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.Appearance.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.AutoHideWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.DockDragHandler.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.DragHandler.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.FocusManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.MdiClientController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.Persistor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanel.SplitterDragHandler.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockPanelExtender.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockPanelSkin.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DockPaneStripBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockWindow.SplitterControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DockWindowCollection.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\DragForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\DummyControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\Enums.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\FloatWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\FloatWindowCollection.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Helpers\DockHelper.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Helpers\DrawHelper.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Helpers\ResourceHelper.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Helpers\Win32Helper.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\InertButtonBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\Interfaces.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Localization.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Measures.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\NestedDockingStatus.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\NestedPaneCollection.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Resources.Designer.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Skins\DockPanelSkinBuilder.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Skins\Style.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\SplitterBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\Strings.Designer.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\VisibleNestedPaneCollection.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\VS2005AutoHideStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\VS2005DockPaneCaption.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\VS2005DockPaneStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\DockingManager\Docking\Win32\Enums.cs" />
+    <Compile Include="UserControls\DockingManager\Docking\Win32\NativeMethods.cs" />
+    <Compile Include="UserControls\DoubleProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DoubleProgressBar.Designer.cs">
+      <DependentUpon>DoubleProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GrblPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\GrblPanel.Designer.cs">
+      <DependentUpon>GrblPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GrblTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\GrblTextBox.Designer.cs">
+      <DependentUpon>GrblTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ImageButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ImageButton.Designer.cs">
+      <DependentUpon>ImageButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ImageTransform.cs" />
+    <Compile Include="UserControls\IntegerInput\ColoredBorderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\IntegerInput\IntegerInputBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\IntegerInput\IntegerInputRanged.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\LabelTB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\LabelTB.Designer.cs">
+      <DependentUpon>LabelTB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WaitingProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <EmbeddedResource Include="ConnectLogForm.resx">
+      <DependentUpon>ConnectLogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JogForm.resx">
+      <DependentUpon>JogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreviewForm.resx">
+      <DependentUpon>PreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\RasterToLaserForm.resx">
+      <DependentUpon>RasterToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreenForm.resx">
+      <DependentUpon>SplashScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ColorSlider.resx">
+      <DependentUpon>ColorSlider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CommandLog.resx">
+      <DependentUpon>CommandLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DockingManager\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DockingManager\Strings.resx" />
+    <EmbeddedResource Include="UserControls\GrblPanel.resx">
+      <DependentUpon>GrblPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSV\alarm_codes.csv" />
+    <EmbeddedResource Include="CSV\error_codes.csv" />
+    <EmbeddedResource Include="CSV\setting_codes.csv" />
+    <EmbeddedResource Include="UserControls\LabelTB.resx">
+      <DependentUpon>LabelTB.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Grafica\Actions-transform-crop-and-resize-icon.png" />
+    <None Include="Grafica\Crop-tool-icon.png" />
+    <None Include="Grafica\document-revert.png" />
+    <None Include="Grafica\flipH.png" />
+    <None Include="Grafica\flipV.png" />
+    <None Include="Grafica\LaserGrbl.ico" />
+    <None Include="Grafica\rotCCW.png" />
+    <None Include="Grafica\rotCW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Grafica\add2.png" />
+    <Content Include="Grafica\aE.png" />
+    <Content Include="Grafica\aN.png" />
+    <Content Include="Grafica\aNE.png" />
+    <Content Include="Grafica\aNW.png" />
+    <Content Include="Grafica\aS.png" />
+    <Content Include="Grafica\aSE.png" />
+    <Content Include="Grafica\aSW.png" />
+    <Content Include="Grafica\aW.png" />
+    <Content Include="Grafica\GcodeQueue.png" />
+    <Content Include="Grafica\GcodeOK.png" />
+    <Content Include="Grafica\check2.png" />
+    <Content Include="Grafica\checks.png" />
+    <Content Include="Grafica\closeall.png" />
+    <Content Include="Grafica\configure.png" />
+    <Content Include="Grafica\connect_creating.png" />
+    <Content Include="Grafica\control_end.png" />
+    <Content Include="Grafica\control_forward.png" />
+    <Content Include="Grafica\control_repeat.png" />
+    <Content Include="Grafica\control_rewind.png" />
+    <Content Include="Grafica\control_start.png" />
+    <Content Include="Grafica\document_check.png" />
+    <Content Include="Grafica\document_delete.png" />
+    <Content Include="Grafica\document_error.png" />
+    <Content Include="Grafica\document_new.png" />
+    <Content Include="Grafica\error.png" />
+    <Content Include="Grafica\fileopen.png" />
+    <Content Include="Grafica\flash.png" />
+    <Content Include="Grafica\GcodeKO.png" />
+    <Content Include="Grafica\media_play_green.png" />
+    <Content Include="Grafica\media_stop_red.png" />
+    <Content Include="Grafica\stop.png" />
+    <Content Include="Grafica\text_align_left.png" />
+    <Content Include="Grafica\warning.png" />
+    <Content Include="UserControls\DockingManager\Docking\DockPanel.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Bottom.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\Dockindicator_PaneDiamond_Fill.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Hotspot.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_HotspotIndex.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Left.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Right.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Top.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelBottom.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelBottom_Active.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelFill.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelFill_Active.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelLeft.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelLeft_Active.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelRight.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelRight_Active.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelTop.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelTop_Active.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_AutoHide.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_Close.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_Dock.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_Option.bmp" />
+    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_OptionOverflow.bmp" />
+    <Content Include="UserControls\DockingManager\license.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
