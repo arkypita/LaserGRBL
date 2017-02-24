@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using CsPotrace;
 using System.Threading;
+using Cyotek.DitheringTest.Helpers;
 
 namespace LaserGRBL.RasterConverter
 {
@@ -69,7 +70,7 @@ namespace LaserGRBL.RasterConverter
 		protected ManualResetEvent MustExit;	//exit condition
 		
 		public enum Tool
-		{ Line2Line, Vectorize }
+		{ Line2Line, Dithering, Vectorize }
 		
 		public enum Direction
 		{ Horizontal, Vertical, Diagonal, None }
@@ -561,6 +562,8 @@ namespace LaserGRBL.RasterConverter
 					{
 						if (SelectedTool == Tool.Line2Line)
 							PreviewLineByLine(bmp);
+						else if (SelectedTool == Tool.Dithering)
+							PreviewDithering(bmp);
 						else if (SelectedTool == Tool.Vectorize)
 							PreviewVector(bmp);
 					}
@@ -578,7 +581,15 @@ namespace LaserGRBL.RasterConverter
 				mResized.Dispose();
 			}
 		}
-		
+
+		private void PreviewDithering(Bitmap bmp)
+		{
+			PreviewLineByLine(bmp);
+		}
+
+
+
+
 		public void GenerateGCode()
 		{
 			TH = new Thread(DoTrueWork);
@@ -632,14 +643,23 @@ namespace LaserGRBL.RasterConverter
 		private Bitmap ProduceBitmap(Image img, Size size)
 		{
 			using (Bitmap resized = ImageTransform.ResizeImage(img, size, false, Interpolation))
+			{
 				using (Bitmap grayscale = ImageTransform.GrayScale(resized, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), IsGrayScale ? ImageTransform.Formula.SimpleAverage : Formula))
-					return ImageTransform.Threshold(grayscale, Threshold / 100.0F, UseThreshold);
+				{
+					if (SelectedTool == Tool.Dithering)
+						return ImageTransform.DitherImage(grayscale);
+					else
+						return ImageTransform.Threshold(grayscale, Threshold / 100.0F, UseThreshold);
+				}
+			}
 		}
 
 		private void PreviewLineByLine(Bitmap bmp)
 		{
 			Direction dir = Direction.None;
 			if (SelectedTool == ImageProcessor.Tool.Line2Line && LinePreview)
+				dir = LineDirection;
+			if (SelectedTool == ImageProcessor.Tool.Dithering && LinePreview)
 				dir = LineDirection;
 			else if (SelectedTool == ImageProcessor.Tool.Vectorize && FillingDirection != Direction.None)
 				dir = FillingDirection;
@@ -651,9 +671,10 @@ namespace LaserGRBL.RasterConverter
 					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
 					if (dir == Direction.Horizontal)
 					{
+						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 100 : 200;
 						for (int Y = 0; Y < bmp.Height && !MustExitTH; Y++)
 						{
-							using (Pen p = new Pen(Color.FromArgb(200, 255, 255, 255), 1F))
+							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
 							{
 								if (Y % 2 == 0)
 									g.DrawLine(p, 0, Y, bmp.Width, Y);
@@ -662,9 +683,10 @@ namespace LaserGRBL.RasterConverter
 					}
 					else if (dir == Direction.Vertical)
 					{
+						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 100 : 200;
 						for (int X = 0; X < bmp.Width && !MustExitTH; X++)
 						{
-							using (Pen p = new Pen(Color.FromArgb(200, 255, 255, 255), 1F))
+							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
 							{
 								if (X % 2 == 0)
 									g.DrawLine(p, X, 0, X, bmp.Height);
@@ -673,9 +695,10 @@ namespace LaserGRBL.RasterConverter
 					}
 					else if (dir == Direction.Diagonal)
 					{
+						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 150 : 255;
 						for (int I = 0; I < bmp.Width + bmp.Height -1 && !MustExitTH ; I++)
 						{
-							using (Pen p = new Pen(Color.FromArgb(255, 255, 255, 255), 1F))
+							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
 							{
 									if (I % 3 == 0)
 										g.DrawLine(p, 0, bmp.Height-I, I, bmp.Height);

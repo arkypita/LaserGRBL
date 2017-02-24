@@ -96,6 +96,7 @@
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.WT = new System.Windows.Forms.Timer(this.components);
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
+			this.RbDithering = new System.Windows.Forms.RadioButton();
 			this.RightGrid.SuspendLayout();
 			this.TCOriginalPreview.SuspendLayout();
 			this.TpPreview.SuspendLayout();
@@ -368,7 +369,7 @@
 			this.GbVectorizeOptions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.GbVectorizeOptions.Controls.Add(this.tableLayoutPanel5);
 			this.GbVectorizeOptions.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.GbVectorizeOptions.Location = new System.Drawing.Point(3, 402);
+			this.GbVectorizeOptions.Location = new System.Drawing.Point(3, 423);
 			this.GbVectorizeOptions.Name = "GbVectorizeOptions";
 			this.GbVectorizeOptions.Size = new System.Drawing.Size(224, 140);
 			this.GbVectorizeOptions.TabIndex = 4;
@@ -430,19 +431,19 @@
 			this.UDSpotRemoval.Location = new System.Drawing.Point(82, 2);
 			this.UDSpotRemoval.Margin = new System.Windows.Forms.Padding(2);
 			this.UDSpotRemoval.Minimum = new decimal(new int[] {
-			2,
-			0,
-			0,
-			0});
+            2,
+            0,
+            0,
+            0});
 			this.UDSpotRemoval.Name = "UDSpotRemoval";
 			this.UDSpotRemoval.Size = new System.Drawing.Size(54, 20);
 			this.UDSpotRemoval.TabIndex = 19;
 			this.TT.SetToolTip(this.UDSpotRemoval, "Remove small details");
 			this.UDSpotRemoval.Value = new decimal(new int[] {
-			2,
-			0,
-			0,
-			0});
+            2,
+            0,
+            0,
+            0});
 			this.UDSpotRemoval.ValueChanged += new System.EventHandler(this.UDSpotRemoval_ValueChanged);
 			// 
 			// CbSpotRemoval
@@ -483,31 +484,31 @@
 			this.UDOptimize.DecimalPlaces = 1;
 			this.UDOptimize.Enabled = false;
 			this.UDOptimize.Increment = new decimal(new int[] {
-			1,
-			0,
-			0,
-			65536});
+            1,
+            0,
+            0,
+            65536});
 			this.UDOptimize.Location = new System.Drawing.Point(82, 50);
 			this.UDOptimize.Margin = new System.Windows.Forms.Padding(2);
 			this.UDOptimize.Maximum = new decimal(new int[] {
-			10,
-			0,
-			0,
-			0});
+            10,
+            0,
+            0,
+            0});
 			this.UDOptimize.Minimum = new decimal(new int[] {
-			2,
-			0,
-			0,
-			65536});
+            2,
+            0,
+            0,
+            65536});
 			this.UDOptimize.Name = "UDOptimize";
 			this.UDOptimize.Size = new System.Drawing.Size(54, 20);
 			this.UDOptimize.TabIndex = 21;
 			this.TT.SetToolTip(this.UDOptimize, "Optimize path (produce less segments)");
 			this.UDOptimize.Value = new decimal(new int[] {
-			2,
-			0,
-			0,
-			65536});
+            2,
+            0,
+            0,
+            65536});
 			this.UDOptimize.ValueChanged += new System.EventHandler(this.UDOptimize_ValueChanged);
 			// 
 			// UDSmoothing
@@ -516,31 +517,31 @@
 			this.UDSmoothing.DecimalPlaces = 1;
 			this.UDSmoothing.Enabled = false;
 			this.UDSmoothing.Increment = new decimal(new int[] {
-			1,
-			0,
-			0,
-			65536});
+            1,
+            0,
+            0,
+            65536});
 			this.UDSmoothing.Location = new System.Drawing.Point(82, 26);
 			this.UDSmoothing.Margin = new System.Windows.Forms.Padding(2);
 			this.UDSmoothing.Maximum = new decimal(new int[] {
-			10,
-			0,
-			0,
-			0});
+            10,
+            0,
+            0,
+            0});
 			this.UDSmoothing.Minimum = new decimal(new int[] {
-			10,
-			0,
-			0,
-			65536});
+            10,
+            0,
+            0,
+            65536});
 			this.UDSmoothing.Name = "UDSmoothing";
 			this.UDSmoothing.Size = new System.Drawing.Size(54, 20);
 			this.UDSmoothing.TabIndex = 20;
 			this.TT.SetToolTip(this.UDSmoothing, "Smooth hard edges");
 			this.UDSmoothing.Value = new decimal(new int[] {
-			10,
-			0,
-			0,
-			65536});
+            10,
+            0,
+            0,
+            65536});
 			this.UDSmoothing.ValueChanged += new System.EventHandler(this.UDSmoothing_ValueChanged);
 			// 
 			// CbOptimize
@@ -607,24 +608,24 @@
 			this.UDFillingQuality.Location = new System.Drawing.Point(82, 99);
 			this.UDFillingQuality.Margin = new System.Windows.Forms.Padding(2);
 			this.UDFillingQuality.Maximum = new decimal(new int[] {
-			10,
-			0,
-			0,
-			0});
+            10,
+            0,
+            0,
+            0});
 			this.UDFillingQuality.Minimum = new decimal(new int[] {
-			1,
-			0,
-			0,
-			0});
+            1,
+            0,
+            0,
+            0});
 			this.UDFillingQuality.Name = "UDFillingQuality";
 			this.UDFillingQuality.Size = new System.Drawing.Size(55, 20);
 			this.UDFillingQuality.TabIndex = 32;
 			this.TT.SetToolTip(this.UDFillingQuality, "Filling quality (lines/mm)");
 			this.UDFillingQuality.Value = new decimal(new int[] {
-			3,
-			0,
-			0,
-			0});
+            3,
+            0,
+            0,
+            0});
 			this.UDFillingQuality.ValueChanged += new System.EventHandler(this.UDFillingQuality_ValueChanged);
 			// 
 			// LblFillingLineLbl
@@ -951,7 +952,7 @@
 			this.GbLineToLineOptions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.GbLineToLineOptions.Controls.Add(this.TLP);
 			this.GbLineToLineOptions.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.GbLineToLineOptions.Location = new System.Drawing.Point(3, 307);
+			this.GbLineToLineOptions.Location = new System.Drawing.Point(3, 328);
 			this.GbLineToLineOptions.Name = "GbLineToLineOptions";
 			this.GbLineToLineOptions.Size = new System.Drawing.Size(224, 89);
 			this.GbLineToLineOptions.TabIndex = 2;
@@ -1002,24 +1003,24 @@
 			this.UDQuality.Location = new System.Drawing.Point(57, 27);
 			this.UDQuality.Margin = new System.Windows.Forms.Padding(2);
 			this.UDQuality.Maximum = new decimal(new int[] {
-			10,
-			0,
-			0,
-			0});
+            10,
+            0,
+            0,
+            0});
 			this.UDQuality.Minimum = new decimal(new int[] {
-			1,
-			0,
-			0,
-			0});
+            1,
+            0,
+            0,
+            0});
 			this.UDQuality.Name = "UDQuality";
 			this.UDQuality.Size = new System.Drawing.Size(55, 20);
 			this.UDQuality.TabIndex = 7;
 			this.TT.SetToolTip(this.UDQuality, "Set image resolution (lines/mm)");
 			this.UDQuality.Value = new decimal(new int[] {
-			3,
-			0,
-			0,
-			0});
+            3,
+            0,
+            0,
+            0});
 			this.UDQuality.ValueChanged += new System.EventHandler(this.UDQuality_ValueChanged);
 			// 
 			// CbLinePreview
@@ -1076,7 +1077,7 @@
 			this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBox4.Location = new System.Drawing.Point(3, 240);
 			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.Size = new System.Drawing.Size(224, 61);
+			this.groupBox4.Size = new System.Drawing.Size(224, 82);
 			this.groupBox4.TabIndex = 3;
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "Conversion Tool";
@@ -1089,22 +1090,25 @@
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel4.Controls.Add(this.RbVectorize, 0, 1);
+			this.tableLayoutPanel4.Controls.Add(this.RbDithering, 0, 1);
+			this.tableLayoutPanel4.Controls.Add(this.RbVectorize, 0, 2);
 			this.tableLayoutPanel4.Controls.Add(this.RbLineToLineTracing, 0, 0);
 			this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
 			this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-			this.tableLayoutPanel4.RowCount = 2;
+			this.tableLayoutPanel4.RowCount = 3;
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel4.Size = new System.Drawing.Size(218, 42);
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel4.Size = new System.Drawing.Size(218, 63);
 			this.tableLayoutPanel4.TabIndex = 1;
 			// 
 			// RbVectorize
 			// 
 			this.RbVectorize.AutoSize = true;
 			this.tableLayoutPanel4.SetColumnSpan(this.RbVectorize, 3);
-			this.RbVectorize.Location = new System.Drawing.Point(2, 23);
+			this.RbVectorize.Location = new System.Drawing.Point(2, 44);
 			this.RbVectorize.Margin = new System.Windows.Forms.Padding(2);
 			this.RbVectorize.Name = "RbVectorize";
 			this.RbVectorize.Size = new System.Drawing.Size(164, 17);
@@ -1173,6 +1177,20 @@
 			// 
 			this.WT.Interval = 50;
 			this.WT.Tick += new System.EventHandler(this.WTTick);
+			// 
+			// RbDithering
+			// 
+			this.RbDithering.AutoSize = true;
+			this.tableLayoutPanel4.SetColumnSpan(this.RbDithering, 3);
+			this.RbDithering.Location = new System.Drawing.Point(2, 23);
+			this.RbDithering.Margin = new System.Windows.Forms.Padding(2);
+			this.RbDithering.Name = "RbDithering";
+			this.RbDithering.Size = new System.Drawing.Size(108, 17);
+			this.RbDithering.TabIndex = 2;
+			this.RbDithering.Text = "1bit BW Dithering";
+			this.TT.SetToolTip(this.RbDithering, "Produce vector path");
+			this.RbDithering.UseVisualStyleBackColor = true;
+			this.RbDithering.CheckedChanged += new System.EventHandler(this.RbDithering_CheckedChanged);
 			// 
 			// RasterToLaserForm
 			// 
@@ -1293,5 +1311,6 @@
 		private System.Windows.Forms.ToolTip TT;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.Button BtnCancel;
+		private System.Windows.Forms.RadioButton RbDithering;
 	}
 }

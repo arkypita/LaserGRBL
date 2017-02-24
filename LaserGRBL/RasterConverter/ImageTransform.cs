@@ -108,6 +108,64 @@ namespace LaserGRBL.RasterConverter
 			Custom = 3
 		}
 
+		public static Bitmap DitherImage(Bitmap img)
+		{
+			Bitmap image;
+			Cyotek.Drawing.ArgbColor[] originalData;
+			Size size;
+			Cyotek.Drawing.Imaging.ColorReduction.IErrorDiffusion dither;
+
+			image = img;
+			size = image.Size;
+
+			originalData = Cyotek.DitheringTest.Helpers.ImageUtilities.GetPixelsFrom32BitArgbImage(image);
+
+			dither = new Cyotek.Drawing.Imaging.ColorReduction.FloydSteinbergDithering();
+
+			for (int row = 0; row < size.Height; row++)
+			{
+				for (int col = 0; col < size.Width; col++)
+				{
+					int index;
+					Cyotek.Drawing.ArgbColor current;
+					Cyotek.Drawing.ArgbColor transformed;
+
+					index = row * size.Width + col;
+
+					current = originalData[index];
+
+					// transform the pixel - normally this would be some form of color
+					// reduction. For this sample it's simple threshold based
+					// monochrome conversion
+					transformed = TransformPixel(current);
+					originalData[index] = transformed;
+
+					// apply a dither algorithm to this pixel
+					if (dither != null)
+					{
+						dither.Diffuse(originalData, current, transformed, col, row, size.Width, size.Height);
+					}
+				}
+			}
+
+			return Cyotek.DitheringTest.Helpers.ImageUtilities.ToBitmap(originalData, size);
+		}
+
+		private static Cyotek.Drawing.ArgbColor TransformPixel(Cyotek.Drawing.ArgbColor pixel)
+		{
+			byte gray;
+
+			gray = (byte)(0.299 * pixel.R + 0.587 * pixel.G + 0.114 * pixel.B);
+
+			/*
+			 * I'm leaving the alpha channel untouched instead of making it fully opaque
+			 * otherwise the transparent areas become fully black, and I was getting annoyed
+			 * by this when testing images with large swathes of transparency!
+			 */
+
+			return gray < 128 ? new Cyotek.Drawing.ArgbColor(pixel.A, 0, 0, 0) : new Cyotek.Drawing.ArgbColor(pixel.A, 255, 255, 255);
+		}
+
 
 		public static Bitmap GrayScale(Image img, float R, float G, float B, float brightness, float contrast, Formula formula)
 		{

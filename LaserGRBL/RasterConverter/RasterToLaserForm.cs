@@ -145,8 +145,7 @@ namespace LaserGRBL.RasterConverter
 
 		private void StoreSettings()
 		{
-			Settings.SetObject("GrayScaleConversion.RasterConversionTool", RbLineToLineTracing.Checked ? ImageProcessor.Tool.Line2Line : ImageProcessor.Tool.Vectorize);
-
+			Settings.SetObject("GrayScaleConversion.RasterConversionTool", RbLineToLineTracing.Checked ? ImageProcessor.Tool.Line2Line : RbDithering.Checked ? ImageProcessor.Tool.Dithering : ImageProcessor.Tool.Vectorize);
 			
 			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Direction", (ImageProcessor.Direction)CbDirections.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Quality", UDQuality.Value);
@@ -189,6 +188,8 @@ namespace LaserGRBL.RasterConverter
 		{
 			if ((IP.SelectedTool = (ImageProcessor.Tool)Settings.GetObject("GrayScaleConversion.RasterConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Line2Line)
 				RbLineToLineTracing.Checked = true;
+			else if ((IP.SelectedTool = (ImageProcessor.Tool)Settings.GetObject("GrayScaleConversion.RasterConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Dithering)
+				RbDithering.Checked = true;
 			else
 				RbVectorize.Checked = true;
 
@@ -262,7 +263,8 @@ namespace LaserGRBL.RasterConverter
 		{
 			if (RbLineToLineTracing.Checked)
 				IP.SelectedTool = ImageProcessor.Tool.Line2Line;
-			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked;
+			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
+			GbLineToLineOptions.Text = RbLineToLineTracing.Checked ? "Line To Line Options" : "Dithering Options";
 		}
 		
 		private void RbVectorize_CheckedChanged(object sender, EventArgs e)
@@ -476,6 +478,16 @@ namespace LaserGRBL.RasterConverter
 		void BtnCancelClick(object sender, EventArgs e)
 		{
 			Close();
+		}
+
+		private void RbDithering_CheckedChanged(object sender, EventArgs e)
+		{
+			if (RbDithering.Checked)
+				IP.SelectedTool = ImageProcessor.Tool.Dithering;
+			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
+			GbLineToLineOptions.Text = RbLineToLineTracing.Checked ? "Line To Line Options" : "Dithering Options";
+
+			TbThreshold.Visible = CbThreshold.Visible = !RbDithering.Checked;
 		}
 	
 	}

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LaserGRBL</RootNamespace>
     <AssemblyName>LaserGRBL</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NoWin32Manifest>False</NoWin32Manifest>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
@@ -117,6 +117,19 @@
     <Compile Include="RasterConverter\ConvertSizeAndOptionForm.Designer.cs">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RasterConverter\Dithering\ArgbColor.cs" />
+    <Compile Include="RasterConverter\Dithering\AtkinsonDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\BurkesDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\ErrorDiffusionDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\FloydSteinbergDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\IErrorDiffusion.cs" />
+    <Compile Include="RasterConverter\Dithering\ImageUtilities.cs" />
+    <Compile Include="RasterConverter\Dithering\JarvisJudiceNinkeDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\RandomDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\Sierra2Dithering.cs" />
+    <Compile Include="RasterConverter\Dithering\Sierra3Dithering.cs" />
+    <Compile Include="RasterConverter\Dithering\SierraLiteDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\StuckiDithering.cs" />
     <Compile Include="RasterConverter\ImageProcessor.cs" />
     <Compile Include="RasterConverter\ImageTransform.cs" />
     <Compile Include="RasterConverter\RasterToLaserForm.cs">
@@ -344,6 +357,7 @@
     <EmbeddedResource Include="UserControls\LabelTB.resx">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Grafica\Actions-transform-crop-and-resize-icon.png" />
     <None Include="Grafica\Crop-tool-icon.png" />
     <None Include="Grafica\document-revert.png" />
