@@ -604,7 +604,7 @@ namespace LaserGRBL.RasterConverter
 				int maxSize = 6000*7000; //testato con immagini da 600*700 con res 10ppm
 				int maxRes = (int)Math.Sqrt((maxSize / (TargetSize.Width * TargetSize.Height))); //limit res if resultimg bmp size is to big
 
-				int res = Math.Min(maxRes, SelectedTool == ImageProcessor.Tool.Line2Line ? (int)Quality : 10); //use a fixed resolution of 10ppmm
+				int res = Math.Min(maxRes, SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering ? (int)Quality : 10); //use a fixed resolution of 10ppmm
 				int fres = Math.Min(maxRes, FillingQuality);
 
 				Size pixelSize = new Size((int)(TargetSize.Width * res), (int)(TargetSize.Height * res));
@@ -613,7 +613,7 @@ namespace LaserGRBL.RasterConverter
 				{
 					using (Bitmap bmp = CreateTarget(pixelSize))
 					{
-						if (SelectedTool == ImageProcessor.Tool.Line2Line)
+						if (SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering)
 							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, res, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, LineDirection);
 						else if (SelectedTool == ImageProcessor.Tool.Vectorize)
 							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, res, TargetOffset.X, TargetOffset.Y, BorderSpeed, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, FillingDirection, fres);
