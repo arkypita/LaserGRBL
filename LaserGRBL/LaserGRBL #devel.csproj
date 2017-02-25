@@ -115,6 +115,19 @@
     <Compile Include="RasterConverter\ConvertSizeAndOptionForm.Designer.cs">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RasterConverter\Dithering\ArgbColor.cs" />
+    <Compile Include="RasterConverter\Dithering\AtkinsonDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\BurkesDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\ErrorDiffusionDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\FloydSteinbergDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\IErrorDiffusion.cs" />
+    <Compile Include="RasterConverter\Dithering\ImageUtilities.cs" />
+    <Compile Include="RasterConverter\Dithering\JarvisJudiceNinkeDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\RandomDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\Sierra2Dithering.cs" />
+    <Compile Include="RasterConverter\Dithering\Sierra3Dithering.cs" />
+    <Compile Include="RasterConverter\Dithering\SierraLiteDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\StuckiDithering.cs" />
     <Compile Include="RasterConverter\ImageProcessor.cs" />
     <Compile Include="RasterConverter\ImageTransform.cs" />
     <Compile Include="RasterConverter\RasterToLaserForm.cs">
@@ -412,7 +425,9 @@
     <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_OptionOverflow.bmp" />
     <Content Include="UserControls\DockingManager\license.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="RasterConverter\Dithering" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
