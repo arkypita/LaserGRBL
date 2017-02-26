@@ -264,7 +264,7 @@ namespace LaserGRBL.RasterConverter
 			GbLineToLineOptions.Text = RbLineToLineTracing.Checked ? "Line To Line Options" : "Dithering Options";
 
 			CbThreshold.Visible = !RbDithering.Checked;
-			TbThreshold.Visible = CbThreshold.Visible && CbThreshold.Checked;
+			TbThreshold.Visible = !RbDithering.Checked && CbThreshold.Checked;
 		}
 
 		private void TbThreshold_ValueChanged(object sender, EventArgs e)
