@@ -1720,22 +1720,23 @@ namespace CsPotrace
 				Path P = pathlist[i];
 				List<Curve> CurveList = new List<Curve>();
 				ListOfPathes.Add(CurveList);
-				dPoint LastPoint = P.curve.c[(P.curve.n - 1) * 3 + 2];
+				dPoint L = P.curve.c[(P.curve.n - 1) * 3 + 2];
 				for (int j = 0; j < P.curve.n; j++)
 				{
+					dPoint A = P.curve.c[j * 3 + 1];
+					dPoint B = P.curve.c[j * 3 + 2];
+
 					if (P.curve.tag[j] == POTRACE_CORNER)
 					{
-						Curve C = new Curve(CurveKind.Line, P.curve.c[j * 3 + 1], P.curve.c[j * 3 + 1], P.curve.c[j * 3 + 2], P.curve.c[j * 3 + 2]);
-						CurveList.Add(C);
+						CurveList.Add(new Curve(CurveKind.Line, L, L, A, A));
+						CurveList.Add(new Curve(CurveKind.Line, A, A, B, B));
 					}
 					else
 					{
-						Curve C = new Curve(CurveKind.Bezier, LastPoint, P.curve.c[j * 3], P.curve.c[j * 3 + 1], P.curve.c[j * 3 + 2]);
-						CurveList.Add(C);
-
-
+						dPoint CP = P.curve.c[j * 3];
+						CurveList.Add(new Curve(CurveKind.Bezier, L, CP, A, B));
 					}
-					LastPoint = P.curve.c[j * 3 + 2];
+					L = B;
 				}
 			}
 		}

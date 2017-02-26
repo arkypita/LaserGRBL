@@ -152,7 +152,7 @@ namespace LaserGRBL
 			Potrace.alphamax = UseSmoothing ? (double)Smoothing : 1.0;
 			Potrace.opttolerance = UseOptimize ? (double)Optimize : 0.2;
 			Potrace.curveoptimizing = UseOptimize; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
-			
+
 			List<List<CsPotrace.Curve>> plist = Potrace.PotraceTrace(bmp);
 
 			if (fdir != RasterConverter.ImageProcessor.Direction.None)
@@ -529,8 +529,9 @@ namespace LaserGRBL
 
 							if (!laser)
 							{
+								pen.Color = Color.FromArgb(150, pen.Color);
 								pen.DashStyle = DashStyle.Dash;
-								pen.DashPattern = new float[] { 2f, 2f };
+								pen.DashPattern = new float[] { 1f, 1f };
 							}
 
 							if (cmd.IsLinearMovement)
