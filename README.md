@@ -55,7 +55,7 @@ LaserGRBL is free software, released under the [GPLv3 license](https://www.gnu.o
 LaserGRBL contains some code from:
 - [DockPanel Suite](https://github.com/dockpanelsuite/dockpanelsuite) - Copyright (c) 2007 Weifen Luo (email: weifenluo@yahoo.com).
 - [ColorSlider](https://www.codeproject.com/articles/17395/owner-drawn-trackbar-slider) - Copyright Michal Brylka
-- [CsPotrace](https://github.com/Invenietis/PoTrace) - Copyright Olivier Spinelli
+- [CsPotrace](https://drawing3d.de/Downloads.aspx) - Copyright Peter Selinger, port by Wolfgang Nagl
 - [Bezier2Biarc](https://github.com/domoszlai/bezier2biarc) - Copyright Laszlo
 
 
