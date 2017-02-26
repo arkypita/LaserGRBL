@@ -47,6 +47,7 @@ namespace LaserGRBL.RasterConverter
 			CbFillingDirection.ResumeLayout();
 			
 			LoadSettings();
+			RefreshVE();
 		}
 		
 		void OnPreviewBegin()
@@ -253,7 +254,17 @@ namespace LaserGRBL.RasterConverter
 		private void CbThreshold_CheckedChanged(object sender, EventArgs e)
 		{ 
 			IP.UseThreshold = CbThreshold.Checked;
-			TbThreshold.Visible = CbThreshold.Checked;
+			RefreshVE();
+		}
+
+		private void RefreshVE()
+		{
+			GbVectorizeOptions.Visible = RbVectorize.Checked;
+			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
+			GbLineToLineOptions.Text = RbLineToLineTracing.Checked ? "Line To Line Options" : "Dithering Options";
+
+			CbThreshold.Visible = !RbDithering.Checked;
+			TbThreshold.Visible = CbThreshold.Visible && CbThreshold.Checked;
 		}
 
 		private void TbThreshold_ValueChanged(object sender, EventArgs e)
@@ -263,15 +274,14 @@ namespace LaserGRBL.RasterConverter
 		{
 			if (RbLineToLineTracing.Checked)
 				IP.SelectedTool = ImageProcessor.Tool.Line2Line;
-			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
-			GbLineToLineOptions.Text = RbLineToLineTracing.Checked ? "Line To Line Options" : "Dithering Options";
+			RefreshVE();
 		}
 		
 		private void RbVectorize_CheckedChanged(object sender, EventArgs e)
 		{
 			if (RbVectorize.Checked)
 				IP.SelectedTool = ImageProcessor.Tool.Vectorize;
-			GbVectorizeOptions.Visible = RbVectorize.Checked;
+			RefreshVE();
 		}
 
 		private void UDQuality_ValueChanged(object sender, EventArgs e)
@@ -306,12 +316,6 @@ namespace LaserGRBL.RasterConverter
 			IP.UseOptimize = CbOptimize.Checked;
 			UDOptimize.Enabled = CbOptimize.Checked;
 		}
-
-//		private void CbShowDots_CheckedChanged(object sender, EventArgs e)
-//		{ IP.ShowDots = CbShowDots.Checked; }
-//
-//		private void CbShowImage_CheckedChanged(object sender, EventArgs e)
-//		{ IP.ShowImage = CbShowImage.Checked; }
 
 		private void RasterToLaserForm_Load(object sender, EventArgs e)
 		{IP.Resume();}
@@ -484,10 +488,7 @@ namespace LaserGRBL.RasterConverter
 		{
 			if (RbDithering.Checked)
 				IP.SelectedTool = ImageProcessor.Tool.Dithering;
-			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
-			GbLineToLineOptions.Text = RbLineToLineTracing.Checked ? "Line To Line Options" : "Dithering Options";
-
-			TbThreshold.Visible = CbThreshold.Visible = !RbDithering.Checked;
+			RefreshVE();
 		}
 	
 	}

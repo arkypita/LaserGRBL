@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using CsPotrace;
 using System.Threading;
 using Cyotek.DitheringTest.Helpers;
+using System.Collections.Generic;
 
 namespace LaserGRBL.RasterConverter
 {
@@ -713,114 +714,38 @@ namespace LaserGRBL.RasterConverter
 
 		private void PreviewVector(Bitmap bmp)
 		{
-			ArrayList ListOfCurveArray = new ArrayList();
-
 			Potrace.turdsize = (int)(UseSpotRemoval ? SpotRemoval : 2);
 			Potrace.alphamax = UseSmoothing ? (double)Smoothing : 1.0;
 			Potrace.opttolerance = UseOptimize ? (double)Optimize : 0.2;
 			Potrace.curveoptimizing = UseOptimize; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
 
-			bool[,] Matrix = Potrace.BitMapToBinary(bmp, 125);
-			
 			if (MustExitTH)
 				return;
 			
-			Potrace.potrace_trace(Matrix, ListOfCurveArray);
+			List<List<CsPotrace.Curve>> plist = Potrace.PotraceTrace(bmp);
 
 			if (MustExitTH)
 				return;
 			
 			using (Graphics g = Graphics.FromImage(bmp))
 			{
-				using (Bitmap pbmp = Potrace.Export2GDIPlus(ListOfCurveArray, bmp.Width, bmp.Height, FillingDirection != Direction.None ? 2 : 0))
-					g.DrawImage(pbmp, 0, 0);
-				
-				using (Brush b = new SolidBrush(Color.FromArgb(FillingDirection != Direction.None ? 100 : 250, Color.White)))
-					g.FillRectangle(b, 0, 0, bmp.Width, bmp.Height);
-			}
+				g.Clear(Color.White); //remove original image
 
-			if (!MustExitTH)
-				DrawVector(ListOfCurveArray, bmp);
-		}
+				using (Brush fill = new SolidBrush(Color.FromArgb(FillingDirection != Direction.None ? 255 : 30, Color.Black)))
+					Potrace.Export2GDIPlus(plist, g, fill, null); //trace filling
 
-		private void DrawVector(ArrayList ListOfCurveArray, Bitmap bmp)
-		{
-			if (ListOfCurveArray == null) return;
-			Graphics g = Graphics.FromImage(bmp);
+				if (MustExitTH)
+					return;
 
-			g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-			g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-			g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-			g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+				PreviewLineByLine(bmp); //process filling with line by line preview
 
+				if (MustExitTH)
+					return;
 
+				Potrace.Export2GDIPlus(plist, g, null, Pens.Red); //trace borders
 
-			GraphicsPath gp = new GraphicsPath();
-			for (int i = 0; i < ListOfCurveArray.Count && !MustExitTH; i++)
-			{
-				ArrayList CurveArray = (ArrayList)ListOfCurveArray[i];
-				GraphicsPath Contour = null;
-				GraphicsPath Hole = null;
-				GraphicsPath Current = null;
-
-				for (int j = 0; j < CurveArray.Count && !MustExitTH; j++)
-				{
-					if (j == 0)
-					{
-						Contour = new GraphicsPath();
-						Current = Contour;
-					}
-					else
-					{
-
-						Hole = new GraphicsPath();
-						Current = Hole;
-
-					}
-					Potrace.Curve[] Curves = (Potrace.Curve[])CurveArray[j];
-					float factor = 1;
-					if (true)
-						factor = 1;
-					for (int k = 0; k < Curves.Length && !MustExitTH; k++)
-					{
-						if (Curves[k].Kind == Potrace.CurveKind.Bezier)
-							Current.AddBezier((float)Curves[k].A.X * factor, (float)Curves[k].A.Y * factor, (float)Curves[k].ControlPointA.X * factor, (float)Curves[k].ControlPointA.Y * factor,
-										(float)Curves[k].ControlPointB.X * factor, (float)Curves[k].ControlPointB.Y * factor, (float)Curves[k].B.X * factor, (float)Curves[k].B.Y * factor);
-						else
-							Current.AddLine((float)Curves[k].A.X * factor, (float)Curves[k].A.Y * factor, (float)Curves[k].B.X * factor, (float)Curves[k].B.Y * factor);
-
-					}
-					if (j > 0) Contour.AddPath(Hole, false);
-				}
-				gp.AddPath(Contour, false);
-			}
-
-			PreviewLineByLine(bmp);
-			
-			if(!MustExitTH)
-				g.DrawPath(Pens.Red, gp); //draw path
-
-			//if (!MustExitTH && ShowDots)
-				//DrawPoints(ListOfCurveArray, bmp); //draw points
-			
-
-		}
-
-		private void DrawPoints(ArrayList ListOfCurveArray, Bitmap bmp)
-		{
-			if (ListOfCurveArray == null) return;
-			Graphics g = Graphics.FromImage(bmp);
-			for (int i = 0; i < ListOfCurveArray.Count && !MustExitTH; i++)
-			{
-				ArrayList CurveArray = (ArrayList)ListOfCurveArray[i];
-				for (int j = 0; j < CurveArray.Count && !MustExitTH; j++)
-				{
-					Potrace.Curve[] Curves = (Potrace.Curve[])CurveArray[j];
-					for (int k = 0; k < Curves.Length && !MustExitTH; k++)
-					{
-						g.FillRectangle(Brushes.Red, (float)((Curves[k].A.X) - 0.5), (float)((Curves[k].A.Y) - 0.5), 1, 1);
-					}
-				}
+				if (MustExitTH)
+					return;
 			}
 		}
 

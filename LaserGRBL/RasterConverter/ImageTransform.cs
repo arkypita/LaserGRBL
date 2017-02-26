@@ -15,7 +15,7 @@ namespace LaserGRBL.RasterConverter
 		public static Bitmap ResizeImage(Image image, Size size, bool killalfa, InterpolationMode interpolation)
 		{
 			if (image.Size == size)
-				return new Bitmap(image);
+				return new Bitmap((Image)image.Clone());
 
 			Rectangle destRect = new Rectangle(0, 0, size.Width, size.Height);
 			Bitmap destImage = new Bitmap(size.Width, size.Height);

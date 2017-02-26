@@ -16,11 +16,11 @@ namespace CsPotrace
 		        /// <summary>
         /// Exports a figure, created by Potrace from a Bitmap to a svg-formatted string
         /// </summary>
-        /// <param name="Fig">Arraylist, which contains vectorinformations about the Curves</param>
+        /// <param name="list">Arraylist, which contains vectorinformations about the Curves</param>
         /// <param name="Width">Width of the exportd cvg-File</param>
         /// <param name="Height">Height of the exportd cvg-File</param>
         /// <returns></returns>
-        public static List<string> Export2GCode(ArrayList Fig, int oX, int oY, int scale , string lOn, string lOff, Size originalImageSize)
+		public static List<string> Export2GCode(List<List<CsPotrace.Curve>> list, int oX, int oY, int scale, string lOn, string lOff, Size originalImageSize)
         {
         	bool debug = false;
         	
@@ -37,8 +37,7 @@ namespace CsPotrace
         		
         	List<string> rv = new List<string>();
 
-            foreach (ArrayList Path in Fig)
-                foreach(Potrace.Curve[] Curves in Path)
+			foreach (List<CsPotrace.Curve> Curves in list)
             		rv.AddRange(GetPathGC(Curves, lOn, lOff, oX * scale, oY * scale, scale, g));
 
             if (debug)
@@ -51,14 +50,13 @@ namespace CsPotrace
             return rv;
         }
 
-        private static List<string> GetPathGC(Potrace.Curve[] Curves, string lOn, string lOff, double oX, double oY, int scale, Graphics g)
+		private static List<string> GetPathGC(List<CsPotrace.Curve> Curves, string lOn, string lOff, double oX, double oY, int scale, Graphics g)
         {
-           
         	List<string> rv = new List<string>();
             
-            for(int i=0;i<Curves.Length;i++)
+            for(int i=0;i<Curves.Count;i++)
             {
-                Potrace.Curve Curve = Curves[i];
+                CsPotrace.Curve Curve = Curves[i];
                
                 if (i == 0)
                 {
@@ -69,7 +67,7 @@ namespace CsPotrace
                     rv.Add(lOn);
                 }
 
-                if (Curve.Kind == Potrace.CurveKind.Bezier)
+                if (Curve.Kind == CsPotrace.CurveKind.Bezier)
                 {
         			if (double.IsNaN(Curve.LinearLenght))
         			{
@@ -107,14 +105,14 @@ namespace CsPotrace
                 	}
 
                 }
-                else if (Curve.Kind == Potrace.CurveKind.Line)
+                else if (Curve.Kind == CsPotrace.CurveKind.Line)
                 {
                 	//trace line
 					if (g != null) g.DrawLine(Pens.DarkGray, (float)Curve.A.X, (float)Curve.A.Y, (float)Curve.B.X, (float)Curve.B.Y);
                 	rv.Add(String.Format("G1 X{0} Y{1}", formatnumber(Curve.B.X + oX, scale), formatnumber(Curve.B.Y + oY, scale)));
                 }
                 
-                if (i == Curves.Length - 1)
+                if (i == Curves.Count - 1)
                 {
                 	//turn off laser
                     rv.Add(lOff);

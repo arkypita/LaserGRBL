@@ -78,7 +78,9 @@
     <Compile Include="CsPotrace\BezierToBiarc\Line.cs" />
     <Compile Include="CsPotrace\BezierToBiarc\Tuple.cs" />
     <Compile Include="CsPotrace\BezierToBiarc\Vector2.cs" />
-    <Compile Include="CsPotrace\CsPotrace.cs" />
+    <Compile Include="CsPotrace\CsPotrace.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CsPotrace\CsPotraceExportGCODE.cs" />
     <Compile Include="CsPotrace\CsPtoraceExport.cs" />
     <Compile Include="GrblCore.cs" />
