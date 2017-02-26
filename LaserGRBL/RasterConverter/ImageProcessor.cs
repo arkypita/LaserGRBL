@@ -715,7 +715,7 @@ namespace LaserGRBL.RasterConverter
 		private void PreviewVector(Bitmap bmp)
 		{
 			Potrace.turdsize = (int)(UseSpotRemoval ? SpotRemoval : 2);
-			Potrace.alphamax = UseSmoothing ? (double)Smoothing : 1.0;
+			Potrace.alphamax = UseSmoothing ? (double)Smoothing : 0.0;
 			Potrace.opttolerance = UseOptimize ? (double)Optimize : 0.2;
 			Potrace.curveoptimizing = UseOptimize; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
 

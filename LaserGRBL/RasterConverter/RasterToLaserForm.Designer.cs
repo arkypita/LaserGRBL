@@ -33,17 +33,10 @@
 			this.RightGrid = new System.Windows.Forms.TableLayoutPanel();
 			this.TCOriginalPreview = new System.Windows.Forms.TabControl();
 			this.TpPreview = new System.Windows.Forms.TabPage();
-			this.WB = new LaserGRBL.UserControls.WaitingProgressBar();
 			this.PbConverted = new System.Windows.Forms.PictureBox();
 			this.TpOriginal = new System.Windows.Forms.TabPage();
 			this.PbOriginal = new System.Windows.Forms.PictureBox();
 			this.FlipControl = new System.Windows.Forms.TableLayoutPanel();
-			this.BtFlipV = new LaserGRBL.UserControls.ImageButton();
-			this.BtFlipH = new LaserGRBL.UserControls.ImageButton();
-			this.BtRotateCW = new LaserGRBL.UserControls.ImageButton();
-			this.BtRotateCCW = new LaserGRBL.UserControls.ImageButton();
-			this.BtnCrop = new LaserGRBL.UserControls.ImageButton();
-			this.BtnRevert = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
 			this.GbVectorizeOptions = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -66,19 +59,13 @@
 			this.CbResize = new System.Windows.Forms.ComboBox();
 			this.LblGrayscale = new System.Windows.Forms.Label();
 			this.CbMode = new System.Windows.Forms.ComboBox();
-			this.TBRed = new LaserGRBL.UserControls.ColorSlider();
 			this.LblRed = new System.Windows.Forms.Label();
 			this.LblBlue = new System.Windows.Forms.Label();
 			this.LblGreen = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.TBGreen = new LaserGRBL.UserControls.ColorSlider();
-			this.TbBright = new LaserGRBL.UserControls.ColorSlider();
-			this.TBBlue = new LaserGRBL.UserControls.ColorSlider();
-			this.TbContrast = new LaserGRBL.UserControls.ColorSlider();
 			this.label3 = new System.Windows.Forms.Label();
 			this.CbThreshold = new System.Windows.Forms.CheckBox();
 			this.label28 = new System.Windows.Forms.Label();
-			this.TbThreshold = new LaserGRBL.UserControls.ColorSlider();
 			this.GbLineToLineOptions = new System.Windows.Forms.GroupBox();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
 			this.CbDirections = new System.Windows.Forms.ComboBox();
@@ -89,6 +76,7 @@
 			this.label8 = new System.Windows.Forms.Label();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+			this.RbDithering = new System.Windows.Forms.RadioButton();
 			this.RbVectorize = new System.Windows.Forms.RadioButton();
 			this.RbLineToLineTracing = new System.Windows.Forms.RadioButton();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -96,7 +84,19 @@
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.WT = new System.Windows.Forms.Timer(this.components);
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
-			this.RbDithering = new System.Windows.Forms.RadioButton();
+			this.WB = new LaserGRBL.UserControls.WaitingProgressBar();
+			this.BtFlipV = new LaserGRBL.UserControls.ImageButton();
+			this.BtFlipH = new LaserGRBL.UserControls.ImageButton();
+			this.BtRotateCW = new LaserGRBL.UserControls.ImageButton();
+			this.BtRotateCCW = new LaserGRBL.UserControls.ImageButton();
+			this.BtnCrop = new LaserGRBL.UserControls.ImageButton();
+			this.BtnRevert = new LaserGRBL.UserControls.ImageButton();
+			this.TBRed = new LaserGRBL.UserControls.ColorSlider();
+			this.TBGreen = new LaserGRBL.UserControls.ColorSlider();
+			this.TbBright = new LaserGRBL.UserControls.ColorSlider();
+			this.TBBlue = new LaserGRBL.UserControls.ColorSlider();
+			this.TbContrast = new LaserGRBL.UserControls.ColorSlider();
+			this.TbThreshold = new LaserGRBL.UserControls.ColorSlider();
 			this.RightGrid.SuspendLayout();
 			this.TCOriginalPreview.SuspendLayout();
 			this.TpPreview.SuspendLayout();
@@ -166,29 +166,6 @@
 			this.TpPreview.Text = "Preview";
 			this.TpPreview.UseVisualStyleBackColor = true;
 			// 
-			// WB
-			// 
-			this.WB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.WB.BarColor = System.Drawing.Color.SteelBlue;
-			this.WB.BorderColor = System.Drawing.Color.Black;
-			this.WB.BouncingMode = LaserGRBL.UserControls.WaitingProgressBar.BouncingModeEnum.PingPong;
-			this.WB.DrawProgressString = false;
-			this.WB.FillColor = System.Drawing.Color.White;
-			this.WB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
-			this.WB.Interval = 25D;
-			this.WB.Location = new System.Drawing.Point(589, 465);
-			this.WB.Maximum = 20D;
-			this.WB.Minimum = 0D;
-			this.WB.Name = "WB";
-			this.WB.ProgressStringDecimals = 0;
-			this.WB.Reverse = true;
-			this.WB.Running = false;
-			this.WB.Size = new System.Drawing.Size(65, 16);
-			this.WB.Step = 1D;
-			this.WB.TabIndex = 1;
-			this.WB.ThrowExceprion = false;
-			this.WB.Value = 0D;
-			// 
 			// PbConverted
 			// 
 			this.PbConverted.BackColor = System.Drawing.Color.White;
@@ -251,96 +228,6 @@
 			this.FlipControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.FlipControl.Size = new System.Drawing.Size(206, 31);
 			this.FlipControl.TabIndex = 8;
-			// 
-			// BtFlipV
-			// 
-			this.BtFlipV.AltImage = null;
-			this.BtFlipV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtFlipV.Coloration = System.Drawing.Color.Empty;
-			this.BtFlipV.Image = ((System.Drawing.Image)(resources.GetObject("BtFlipV.Image")));
-			this.BtFlipV.Location = new System.Drawing.Point(147, 3);
-			this.BtFlipV.Name = "BtFlipV";
-			this.BtFlipV.Size = new System.Drawing.Size(25, 25);
-			this.BtFlipV.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtFlipV.TabIndex = 3;
-			this.TT.SetToolTip(this.BtFlipV, "Flip image vertical");
-			this.BtFlipV.UseAltImage = false;
-			this.BtFlipV.Click += new System.EventHandler(this.BtFlipVClick);
-			// 
-			// BtFlipH
-			// 
-			this.BtFlipH.AltImage = null;
-			this.BtFlipH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtFlipH.Coloration = System.Drawing.Color.Empty;
-			this.BtFlipH.Image = ((System.Drawing.Image)(resources.GetObject("BtFlipH.Image")));
-			this.BtFlipH.Location = new System.Drawing.Point(116, 3);
-			this.BtFlipH.Name = "BtFlipH";
-			this.BtFlipH.Size = new System.Drawing.Size(25, 25);
-			this.BtFlipH.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtFlipH.TabIndex = 2;
-			this.TT.SetToolTip(this.BtFlipH, "Flip image horizontal");
-			this.BtFlipH.UseAltImage = false;
-			this.BtFlipH.Click += new System.EventHandler(this.BtFlipHClick);
-			// 
-			// BtRotateCW
-			// 
-			this.BtRotateCW.AltImage = null;
-			this.BtRotateCW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtRotateCW.Coloration = System.Drawing.Color.Empty;
-			this.BtRotateCW.Image = ((System.Drawing.Image)(resources.GetObject("BtRotateCW.Image")));
-			this.BtRotateCW.Location = new System.Drawing.Point(54, 3);
-			this.BtRotateCW.Name = "BtRotateCW";
-			this.BtRotateCW.Size = new System.Drawing.Size(25, 25);
-			this.BtRotateCW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtRotateCW.TabIndex = 1;
-			this.TT.SetToolTip(this.BtRotateCW, "Rotate 90° clockwise");
-			this.BtRotateCW.UseAltImage = false;
-			this.BtRotateCW.Click += new System.EventHandler(this.BtRotateCWClick);
-			// 
-			// BtRotateCCW
-			// 
-			this.BtRotateCCW.AltImage = null;
-			this.BtRotateCCW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtRotateCCW.Coloration = System.Drawing.Color.Empty;
-			this.BtRotateCCW.Image = ((System.Drawing.Image)(resources.GetObject("BtRotateCCW.Image")));
-			this.BtRotateCCW.Location = new System.Drawing.Point(85, 3);
-			this.BtRotateCCW.Name = "BtRotateCCW";
-			this.BtRotateCCW.Size = new System.Drawing.Size(25, 25);
-			this.BtRotateCCW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtRotateCCW.TabIndex = 0;
-			this.TT.SetToolTip(this.BtRotateCCW, "Rotate 90° counter-clockwise");
-			this.BtRotateCCW.UseAltImage = false;
-			this.BtRotateCCW.Click += new System.EventHandler(this.BtRotateCCWClick);
-			// 
-			// BtnCrop
-			// 
-			this.BtnCrop.AltImage = null;
-			this.BtnCrop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnCrop.Coloration = System.Drawing.Color.Empty;
-			this.BtnCrop.Image = ((System.Drawing.Image)(resources.GetObject("BtnCrop.Image")));
-			this.BtnCrop.Location = new System.Drawing.Point(178, 3);
-			this.BtnCrop.Name = "BtnCrop";
-			this.BtnCrop.Size = new System.Drawing.Size(25, 25);
-			this.BtnCrop.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnCrop.TabIndex = 4;
-			this.TT.SetToolTip(this.BtnCrop, "Crop image");
-			this.BtnCrop.UseAltImage = false;
-			this.BtnCrop.Click += new System.EventHandler(this.BtnCropClick);
-			// 
-			// BtnRevert
-			// 
-			this.BtnRevert.AltImage = null;
-			this.BtnRevert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnRevert.Coloration = System.Drawing.Color.Empty;
-			this.BtnRevert.Image = ((System.Drawing.Image)(resources.GetObject("BtnRevert.Image")));
-			this.BtnRevert.Location = new System.Drawing.Point(3, 3);
-			this.BtnRevert.Name = "BtnRevert";
-			this.BtnRevert.Size = new System.Drawing.Size(25, 25);
-			this.BtnRevert.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnRevert.TabIndex = 5;
-			this.TT.SetToolTip(this.BtnRevert, "Revert all changes");
-			this.BtnRevert.UseAltImage = false;
-			this.BtnRevert.Click += new System.EventHandler(this.BtnRevertClick);
 			// 
 			// tableLayoutPanel8
 			// 
@@ -528,11 +415,6 @@
             0,
             0,
             0});
-			this.UDSmoothing.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            65536});
 			this.UDSmoothing.Name = "UDSmoothing";
 			this.UDSmoothing.Size = new System.Drawing.Size(54, 20);
 			this.UDSmoothing.TabIndex = 20;
@@ -726,31 +608,6 @@
 			this.TT.SetToolTip(this.CbMode, "Select color conversion formula");
 			this.CbMode.SelectedIndexChanged += new System.EventHandler(this.CbMode_SelectedIndexChanged);
 			// 
-			// TBRed
-			// 
-			this.TBRed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.TBRed.BackColor = System.Drawing.Color.Transparent;
-			this.TBRed.BarInnerColor = System.Drawing.Color.Firebrick;
-			this.TBRed.BarOuterColor = System.Drawing.Color.DarkRed;
-			this.TBRed.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-			this.TBRed.ElapsedInnerColor = System.Drawing.Color.Red;
-			this.TBRed.ElapsedOuterColor = System.Drawing.Color.DarkRed;
-			this.TBRed.LargeChange = ((uint)(5u));
-			this.TBRed.Location = new System.Drawing.Point(63, 51);
-			this.TBRed.Margin = new System.Windows.Forms.Padding(1);
-			this.TBRed.Maximum = 160;
-			this.TBRed.Minimum = 40;
-			this.TBRed.Name = "TBRed";
-			this.TBRed.Size = new System.Drawing.Size(154, 25);
-			this.TBRed.SmallChange = ((uint)(1u));
-			this.TBRed.TabIndex = 7;
-			this.TBRed.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
-			this.TBRed.ThumbSize = 10;
-			this.TBRed.Value = 100;
-			this.TBRed.Visible = false;
-			this.TBRed.ValueChanged += new System.EventHandler(this.TBRed_ValueChanged);
-			this.TBRed.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
-			// 
 			// LblRed
 			// 
 			this.LblRed.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -794,102 +651,6 @@
 			this.label2.TabIndex = 1;
 			this.label2.Text = "Brightness";
 			// 
-			// TBGreen
-			// 
-			this.TBGreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.TBGreen.BackColor = System.Drawing.Color.Transparent;
-			this.TBGreen.BarInnerColor = System.Drawing.Color.Green;
-			this.TBGreen.BarOuterColor = System.Drawing.Color.DarkGreen;
-			this.TBGreen.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-			this.TBGreen.LargeChange = ((uint)(5u));
-			this.TBGreen.Location = new System.Drawing.Point(63, 78);
-			this.TBGreen.Margin = new System.Windows.Forms.Padding(1);
-			this.TBGreen.Maximum = 160;
-			this.TBGreen.Minimum = 40;
-			this.TBGreen.Name = "TBGreen";
-			this.TBGreen.Size = new System.Drawing.Size(154, 25);
-			this.TBGreen.SmallChange = ((uint)(1u));
-			this.TBGreen.TabIndex = 9;
-			this.TBGreen.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
-			this.TBGreen.ThumbSize = 10;
-			this.TBGreen.Value = 100;
-			this.TBGreen.Visible = false;
-			this.TBGreen.ValueChanged += new System.EventHandler(this.TBGreen_ValueChanged);
-			this.TBGreen.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
-			// 
-			// TbBright
-			// 
-			this.TbBright.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.TbBright.BackColor = System.Drawing.Color.Transparent;
-			this.TbBright.BarInnerColor = System.Drawing.Color.DimGray;
-			this.TbBright.BarOuterColor = System.Drawing.Color.Black;
-			this.TbBright.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-			this.TbBright.ElapsedInnerColor = System.Drawing.Color.White;
-			this.TbBright.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.TbBright.LargeChange = ((uint)(5u));
-			this.TbBright.Location = new System.Drawing.Point(63, 132);
-			this.TbBright.Margin = new System.Windows.Forms.Padding(1);
-			this.TbBright.Maximum = 160;
-			this.TbBright.Minimum = 40;
-			this.TbBright.Name = "TbBright";
-			this.TbBright.Size = new System.Drawing.Size(154, 25);
-			this.TbBright.SmallChange = ((uint)(1u));
-			this.TbBright.TabIndex = 3;
-			this.TbBright.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
-			this.TbBright.ThumbSize = 10;
-			this.TbBright.Value = 100;
-			this.TbBright.ValueChanged += new System.EventHandler(this.TbBright_ValueChanged);
-			this.TbBright.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
-			// 
-			// TBBlue
-			// 
-			this.TBBlue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.TBBlue.BackColor = System.Drawing.Color.Transparent;
-			this.TBBlue.BarInnerColor = System.Drawing.Color.MediumBlue;
-			this.TBBlue.BarOuterColor = System.Drawing.Color.DarkBlue;
-			this.TBBlue.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-			this.TBBlue.ElapsedInnerColor = System.Drawing.Color.DodgerBlue;
-			this.TBBlue.ElapsedOuterColor = System.Drawing.Color.SteelBlue;
-			this.TBBlue.LargeChange = ((uint)(5u));
-			this.TBBlue.Location = new System.Drawing.Point(63, 105);
-			this.TBBlue.Margin = new System.Windows.Forms.Padding(1);
-			this.TBBlue.Maximum = 160;
-			this.TBBlue.Minimum = 40;
-			this.TBBlue.Name = "TBBlue";
-			this.TBBlue.Size = new System.Drawing.Size(154, 25);
-			this.TBBlue.SmallChange = ((uint)(1u));
-			this.TBBlue.TabIndex = 10;
-			this.TBBlue.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
-			this.TBBlue.ThumbSize = 10;
-			this.TBBlue.Value = 100;
-			this.TBBlue.Visible = false;
-			this.TBBlue.ValueChanged += new System.EventHandler(this.TBBlue_ValueChanged);
-			this.TBBlue.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
-			// 
-			// TbContrast
-			// 
-			this.TbContrast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.TbContrast.BackColor = System.Drawing.Color.Transparent;
-			this.TbContrast.BarInnerColor = System.Drawing.Color.DimGray;
-			this.TbContrast.BarOuterColor = System.Drawing.Color.Black;
-			this.TbContrast.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-			this.TbContrast.ElapsedInnerColor = System.Drawing.Color.White;
-			this.TbContrast.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.TbContrast.LargeChange = ((uint)(5u));
-			this.TbContrast.Location = new System.Drawing.Point(63, 159);
-			this.TbContrast.Margin = new System.Windows.Forms.Padding(1);
-			this.TbContrast.Maximum = 160;
-			this.TbContrast.Minimum = 40;
-			this.TbContrast.Name = "TbContrast";
-			this.TbContrast.Size = new System.Drawing.Size(154, 25);
-			this.TbContrast.SmallChange = ((uint)(1u));
-			this.TbContrast.TabIndex = 5;
-			this.TbContrast.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
-			this.TbContrast.ThumbSize = 10;
-			this.TbContrast.Value = 100;
-			this.TbContrast.ValueChanged += new System.EventHandler(this.TbContrast_ValueChanged);
-			this.TbContrast.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
-			// 
 			// label3
 			// 
 			this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -923,28 +684,6 @@
 			this.label28.Size = new System.Drawing.Size(39, 13);
 			this.label28.TabIndex = 16;
 			this.label28.Text = "Resize";
-			// 
-			// TbThreshold
-			// 
-			this.TbThreshold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.TbThreshold.BackColor = System.Drawing.Color.Transparent;
-			this.TbThreshold.BarInnerColor = System.Drawing.Color.DimGray;
-			this.TbThreshold.BarOuterColor = System.Drawing.Color.Black;
-			this.TbThreshold.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-			this.TbThreshold.ElapsedInnerColor = System.Drawing.Color.White;
-			this.TbThreshold.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.TbThreshold.LargeChange = ((uint)(5u));
-			this.TbThreshold.Location = new System.Drawing.Point(63, 186);
-			this.TbThreshold.Margin = new System.Windows.Forms.Padding(1);
-			this.TbThreshold.Name = "TbThreshold";
-			this.TbThreshold.Size = new System.Drawing.Size(154, 25);
-			this.TbThreshold.SmallChange = ((uint)(1u));
-			this.TbThreshold.TabIndex = 14;
-			this.TbThreshold.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
-			this.TbThreshold.ThumbSize = 10;
-			this.TbThreshold.Visible = false;
-			this.TbThreshold.ValueChanged += new System.EventHandler(this.TbThreshold_ValueChanged);
-			this.TbThreshold.DoubleClick += new System.EventHandler(this.OnThresholdDoubleClick);
 			// 
 			// GbLineToLineOptions
 			// 
@@ -1104,6 +843,20 @@
 			this.tableLayoutPanel4.Size = new System.Drawing.Size(218, 63);
 			this.tableLayoutPanel4.TabIndex = 1;
 			// 
+			// RbDithering
+			// 
+			this.RbDithering.AutoSize = true;
+			this.tableLayoutPanel4.SetColumnSpan(this.RbDithering, 3);
+			this.RbDithering.Location = new System.Drawing.Point(2, 23);
+			this.RbDithering.Margin = new System.Windows.Forms.Padding(2);
+			this.RbDithering.Name = "RbDithering";
+			this.RbDithering.Size = new System.Drawing.Size(108, 17);
+			this.RbDithering.TabIndex = 2;
+			this.RbDithering.Text = "1bit BW Dithering";
+			this.TT.SetToolTip(this.RbDithering, "Produce vector path");
+			this.RbDithering.UseVisualStyleBackColor = true;
+			this.RbDithering.CheckedChanged += new System.EventHandler(this.RbDithering_CheckedChanged);
+			// 
 			// RbVectorize
 			// 
 			this.RbVectorize.AutoSize = true;
@@ -1178,19 +931,261 @@
 			this.WT.Interval = 50;
 			this.WT.Tick += new System.EventHandler(this.WTTick);
 			// 
-			// RbDithering
+			// WB
 			// 
-			this.RbDithering.AutoSize = true;
-			this.tableLayoutPanel4.SetColumnSpan(this.RbDithering, 3);
-			this.RbDithering.Location = new System.Drawing.Point(2, 23);
-			this.RbDithering.Margin = new System.Windows.Forms.Padding(2);
-			this.RbDithering.Name = "RbDithering";
-			this.RbDithering.Size = new System.Drawing.Size(108, 17);
-			this.RbDithering.TabIndex = 2;
-			this.RbDithering.Text = "1bit BW Dithering";
-			this.TT.SetToolTip(this.RbDithering, "Produce vector path");
-			this.RbDithering.UseVisualStyleBackColor = true;
-			this.RbDithering.CheckedChanged += new System.EventHandler(this.RbDithering_CheckedChanged);
+			this.WB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.WB.BarColor = System.Drawing.Color.SteelBlue;
+			this.WB.BorderColor = System.Drawing.Color.Black;
+			this.WB.BouncingMode = LaserGRBL.UserControls.WaitingProgressBar.BouncingModeEnum.PingPong;
+			this.WB.DrawProgressString = false;
+			this.WB.FillColor = System.Drawing.Color.White;
+			this.WB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
+			this.WB.Interval = 25D;
+			this.WB.Location = new System.Drawing.Point(589, 465);
+			this.WB.Maximum = 20D;
+			this.WB.Minimum = 0D;
+			this.WB.Name = "WB";
+			this.WB.ProgressStringDecimals = 0;
+			this.WB.Reverse = true;
+			this.WB.Running = false;
+			this.WB.Size = new System.Drawing.Size(65, 16);
+			this.WB.Step = 1D;
+			this.WB.TabIndex = 1;
+			this.WB.ThrowExceprion = false;
+			this.WB.Value = 0D;
+			// 
+			// BtFlipV
+			// 
+			this.BtFlipV.AltImage = null;
+			this.BtFlipV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtFlipV.Coloration = System.Drawing.Color.Empty;
+			this.BtFlipV.Image = ((System.Drawing.Image)(resources.GetObject("BtFlipV.Image")));
+			this.BtFlipV.Location = new System.Drawing.Point(147, 3);
+			this.BtFlipV.Name = "BtFlipV";
+			this.BtFlipV.Size = new System.Drawing.Size(25, 25);
+			this.BtFlipV.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtFlipV.TabIndex = 3;
+			this.TT.SetToolTip(this.BtFlipV, "Flip image vertical");
+			this.BtFlipV.UseAltImage = false;
+			this.BtFlipV.Click += new System.EventHandler(this.BtFlipVClick);
+			// 
+			// BtFlipH
+			// 
+			this.BtFlipH.AltImage = null;
+			this.BtFlipH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtFlipH.Coloration = System.Drawing.Color.Empty;
+			this.BtFlipH.Image = ((System.Drawing.Image)(resources.GetObject("BtFlipH.Image")));
+			this.BtFlipH.Location = new System.Drawing.Point(116, 3);
+			this.BtFlipH.Name = "BtFlipH";
+			this.BtFlipH.Size = new System.Drawing.Size(25, 25);
+			this.BtFlipH.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtFlipH.TabIndex = 2;
+			this.TT.SetToolTip(this.BtFlipH, "Flip image horizontal");
+			this.BtFlipH.UseAltImage = false;
+			this.BtFlipH.Click += new System.EventHandler(this.BtFlipHClick);
+			// 
+			// BtRotateCW
+			// 
+			this.BtRotateCW.AltImage = null;
+			this.BtRotateCW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtRotateCW.Coloration = System.Drawing.Color.Empty;
+			this.BtRotateCW.Image = ((System.Drawing.Image)(resources.GetObject("BtRotateCW.Image")));
+			this.BtRotateCW.Location = new System.Drawing.Point(54, 3);
+			this.BtRotateCW.Name = "BtRotateCW";
+			this.BtRotateCW.Size = new System.Drawing.Size(25, 25);
+			this.BtRotateCW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtRotateCW.TabIndex = 1;
+			this.TT.SetToolTip(this.BtRotateCW, "Rotate 90° clockwise");
+			this.BtRotateCW.UseAltImage = false;
+			this.BtRotateCW.Click += new System.EventHandler(this.BtRotateCWClick);
+			// 
+			// BtRotateCCW
+			// 
+			this.BtRotateCCW.AltImage = null;
+			this.BtRotateCCW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtRotateCCW.Coloration = System.Drawing.Color.Empty;
+			this.BtRotateCCW.Image = ((System.Drawing.Image)(resources.GetObject("BtRotateCCW.Image")));
+			this.BtRotateCCW.Location = new System.Drawing.Point(85, 3);
+			this.BtRotateCCW.Name = "BtRotateCCW";
+			this.BtRotateCCW.Size = new System.Drawing.Size(25, 25);
+			this.BtRotateCCW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtRotateCCW.TabIndex = 0;
+			this.TT.SetToolTip(this.BtRotateCCW, "Rotate 90° counter-clockwise");
+			this.BtRotateCCW.UseAltImage = false;
+			this.BtRotateCCW.Click += new System.EventHandler(this.BtRotateCCWClick);
+			// 
+			// BtnCrop
+			// 
+			this.BtnCrop.AltImage = null;
+			this.BtnCrop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnCrop.Coloration = System.Drawing.Color.Empty;
+			this.BtnCrop.Image = ((System.Drawing.Image)(resources.GetObject("BtnCrop.Image")));
+			this.BtnCrop.Location = new System.Drawing.Point(178, 3);
+			this.BtnCrop.Name = "BtnCrop";
+			this.BtnCrop.Size = new System.Drawing.Size(25, 25);
+			this.BtnCrop.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnCrop.TabIndex = 4;
+			this.TT.SetToolTip(this.BtnCrop, "Crop image");
+			this.BtnCrop.UseAltImage = false;
+			this.BtnCrop.Click += new System.EventHandler(this.BtnCropClick);
+			// 
+			// BtnRevert
+			// 
+			this.BtnRevert.AltImage = null;
+			this.BtnRevert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnRevert.Coloration = System.Drawing.Color.Empty;
+			this.BtnRevert.Image = ((System.Drawing.Image)(resources.GetObject("BtnRevert.Image")));
+			this.BtnRevert.Location = new System.Drawing.Point(3, 3);
+			this.BtnRevert.Name = "BtnRevert";
+			this.BtnRevert.Size = new System.Drawing.Size(25, 25);
+			this.BtnRevert.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnRevert.TabIndex = 5;
+			this.TT.SetToolTip(this.BtnRevert, "Revert all changes");
+			this.BtnRevert.UseAltImage = false;
+			this.BtnRevert.Click += new System.EventHandler(this.BtnRevertClick);
+			// 
+			// TBRed
+			// 
+			this.TBRed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.TBRed.BackColor = System.Drawing.Color.Transparent;
+			this.TBRed.BarInnerColor = System.Drawing.Color.Firebrick;
+			this.TBRed.BarOuterColor = System.Drawing.Color.DarkRed;
+			this.TBRed.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+			this.TBRed.ElapsedInnerColor = System.Drawing.Color.Red;
+			this.TBRed.ElapsedOuterColor = System.Drawing.Color.DarkRed;
+			this.TBRed.LargeChange = ((uint)(5u));
+			this.TBRed.Location = new System.Drawing.Point(63, 51);
+			this.TBRed.Margin = new System.Windows.Forms.Padding(1);
+			this.TBRed.Maximum = 160;
+			this.TBRed.Minimum = 40;
+			this.TBRed.Name = "TBRed";
+			this.TBRed.Size = new System.Drawing.Size(154, 25);
+			this.TBRed.SmallChange = ((uint)(1u));
+			this.TBRed.TabIndex = 7;
+			this.TBRed.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
+			this.TBRed.ThumbSize = 10;
+			this.TBRed.Value = 100;
+			this.TBRed.Visible = false;
+			this.TBRed.ValueChanged += new System.EventHandler(this.TBRed_ValueChanged);
+			this.TBRed.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
+			// 
+			// TBGreen
+			// 
+			this.TBGreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.TBGreen.BackColor = System.Drawing.Color.Transparent;
+			this.TBGreen.BarInnerColor = System.Drawing.Color.Green;
+			this.TBGreen.BarOuterColor = System.Drawing.Color.DarkGreen;
+			this.TBGreen.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+			this.TBGreen.LargeChange = ((uint)(5u));
+			this.TBGreen.Location = new System.Drawing.Point(63, 78);
+			this.TBGreen.Margin = new System.Windows.Forms.Padding(1);
+			this.TBGreen.Maximum = 160;
+			this.TBGreen.Minimum = 40;
+			this.TBGreen.Name = "TBGreen";
+			this.TBGreen.Size = new System.Drawing.Size(154, 25);
+			this.TBGreen.SmallChange = ((uint)(1u));
+			this.TBGreen.TabIndex = 9;
+			this.TBGreen.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
+			this.TBGreen.ThumbSize = 10;
+			this.TBGreen.Value = 100;
+			this.TBGreen.Visible = false;
+			this.TBGreen.ValueChanged += new System.EventHandler(this.TBGreen_ValueChanged);
+			this.TBGreen.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
+			// 
+			// TbBright
+			// 
+			this.TbBright.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.TbBright.BackColor = System.Drawing.Color.Transparent;
+			this.TbBright.BarInnerColor = System.Drawing.Color.DimGray;
+			this.TbBright.BarOuterColor = System.Drawing.Color.Black;
+			this.TbBright.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+			this.TbBright.ElapsedInnerColor = System.Drawing.Color.White;
+			this.TbBright.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.TbBright.LargeChange = ((uint)(5u));
+			this.TbBright.Location = new System.Drawing.Point(63, 132);
+			this.TbBright.Margin = new System.Windows.Forms.Padding(1);
+			this.TbBright.Maximum = 160;
+			this.TbBright.Minimum = 40;
+			this.TbBright.Name = "TbBright";
+			this.TbBright.Size = new System.Drawing.Size(154, 25);
+			this.TbBright.SmallChange = ((uint)(1u));
+			this.TbBright.TabIndex = 3;
+			this.TbBright.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
+			this.TbBright.ThumbSize = 10;
+			this.TbBright.Value = 100;
+			this.TbBright.ValueChanged += new System.EventHandler(this.TbBright_ValueChanged);
+			this.TbBright.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
+			// 
+			// TBBlue
+			// 
+			this.TBBlue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.TBBlue.BackColor = System.Drawing.Color.Transparent;
+			this.TBBlue.BarInnerColor = System.Drawing.Color.MediumBlue;
+			this.TBBlue.BarOuterColor = System.Drawing.Color.DarkBlue;
+			this.TBBlue.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+			this.TBBlue.ElapsedInnerColor = System.Drawing.Color.DodgerBlue;
+			this.TBBlue.ElapsedOuterColor = System.Drawing.Color.SteelBlue;
+			this.TBBlue.LargeChange = ((uint)(5u));
+			this.TBBlue.Location = new System.Drawing.Point(63, 105);
+			this.TBBlue.Margin = new System.Windows.Forms.Padding(1);
+			this.TBBlue.Maximum = 160;
+			this.TBBlue.Minimum = 40;
+			this.TBBlue.Name = "TBBlue";
+			this.TBBlue.Size = new System.Drawing.Size(154, 25);
+			this.TBBlue.SmallChange = ((uint)(1u));
+			this.TBBlue.TabIndex = 10;
+			this.TBBlue.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
+			this.TBBlue.ThumbSize = 10;
+			this.TBBlue.Value = 100;
+			this.TBBlue.Visible = false;
+			this.TBBlue.ValueChanged += new System.EventHandler(this.TBBlue_ValueChanged);
+			this.TBBlue.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
+			// 
+			// TbContrast
+			// 
+			this.TbContrast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.TbContrast.BackColor = System.Drawing.Color.Transparent;
+			this.TbContrast.BarInnerColor = System.Drawing.Color.DimGray;
+			this.TbContrast.BarOuterColor = System.Drawing.Color.Black;
+			this.TbContrast.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+			this.TbContrast.ElapsedInnerColor = System.Drawing.Color.White;
+			this.TbContrast.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.TbContrast.LargeChange = ((uint)(5u));
+			this.TbContrast.Location = new System.Drawing.Point(63, 159);
+			this.TbContrast.Margin = new System.Windows.Forms.Padding(1);
+			this.TbContrast.Maximum = 160;
+			this.TbContrast.Minimum = 40;
+			this.TbContrast.Name = "TbContrast";
+			this.TbContrast.Size = new System.Drawing.Size(154, 25);
+			this.TbContrast.SmallChange = ((uint)(1u));
+			this.TbContrast.TabIndex = 5;
+			this.TbContrast.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
+			this.TbContrast.ThumbSize = 10;
+			this.TbContrast.Value = 100;
+			this.TbContrast.ValueChanged += new System.EventHandler(this.TbContrast_ValueChanged);
+			this.TbContrast.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
+			// 
+			// TbThreshold
+			// 
+			this.TbThreshold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.TbThreshold.BackColor = System.Drawing.Color.Transparent;
+			this.TbThreshold.BarInnerColor = System.Drawing.Color.DimGray;
+			this.TbThreshold.BarOuterColor = System.Drawing.Color.Black;
+			this.TbThreshold.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+			this.TbThreshold.ElapsedInnerColor = System.Drawing.Color.White;
+			this.TbThreshold.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.TbThreshold.LargeChange = ((uint)(5u));
+			this.TbThreshold.Location = new System.Drawing.Point(63, 186);
+			this.TbThreshold.Margin = new System.Windows.Forms.Padding(1);
+			this.TbThreshold.Name = "TbThreshold";
+			this.TbThreshold.Size = new System.Drawing.Size(154, 25);
+			this.TbThreshold.SmallChange = ((uint)(1u));
+			this.TbThreshold.TabIndex = 14;
+			this.TbThreshold.ThumbRoundRectSize = new System.Drawing.Size(6, 6);
+			this.TbThreshold.ThumbSize = 10;
+			this.TbThreshold.Visible = false;
+			this.TbThreshold.ValueChanged += new System.EventHandler(this.TbThreshold_ValueChanged);
+			this.TbThreshold.DoubleClick += new System.EventHandler(this.OnThresholdDoubleClick);
 			// 
 			// RasterToLaserForm
 			// 

@@ -127,10 +127,7 @@ namespace CsPotrace
 		{
 			//turn off laser
 			if (Curves.Count > 0)
-			{
-				rv.Add(String.Format("G1 X{0} Y{1}", formatnumber(Curves[Curves.Count - 1].A.X + oX, scale), formatnumber(Curves[Curves.Count - 1].A.Y + oY, scale)));
 				rv.Add(lOff);
-			}
 		}
 
 		private static string GetArcGC(Arc arc, double oX, double oY, int scale, Graphics g)
