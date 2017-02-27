@@ -42,7 +42,7 @@ namespace LaserGRBL
 			BtnStop.Enabled = Core.CanFeedHold;
 			BtnResume.Enabled = Core.CanResumeHold;
 
-			CustomButtonArea.Enabled = Core.CanSendManualCommand;
+			//CustomButtonArea.Enabled = Core.CanSendManualCommand;
 
 			ResumeLayout();
 		}
