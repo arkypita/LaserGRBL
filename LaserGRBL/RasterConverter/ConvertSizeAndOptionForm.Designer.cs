@@ -78,10 +78,6 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.IIOffsetX = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IIOffsetY = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IISizeH = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IISizeW = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
@@ -90,11 +86,8 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblBorderTracing = new System.Windows.Forms.Label();
 			this.LblBorderTracingmm = new System.Windows.Forms.Label();
-			this.IIBorderTracing = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label20 = new System.Windows.Forms.Label();
 			this.label19 = new System.Windows.Forms.Label();
-			this.IILinearFilling = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IITravelSpeed = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.LblLinearFillingmm = new System.Windows.Forms.Label();
 			this.LblLinearFilling = new System.Windows.Forms.Label();
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -102,14 +95,21 @@ namespace LaserGRBL.RasterConverter
 			this.TxtLaserOff = new System.Windows.Forms.TextBox();
 			this.label26 = new System.Windows.Forms.Label();
 			this.label21 = new System.Windows.Forms.Label();
-			this.IIMinPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label25 = new System.Windows.Forms.Label();
-			this.IIMaxPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label18 = new System.Windows.Forms.Label();
 			this.TxtLaserOn = new System.Windows.Forms.TextBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnCreate = new System.Windows.Forms.Button();
 			this.BtnCancel = new System.Windows.Forms.Button();
+			this.BtnCreate = new System.Windows.Forms.Button();
+			this.IIOffsetX = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IIOffsetY = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IISizeH = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IISizeW = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IIBorderTracing = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IILinearFilling = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IITravelSpeed = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IIMinPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IIMaxPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -204,65 +204,6 @@ namespace LaserGRBL.RasterConverter
 			this.label4.TabIndex = 1;
 			this.label4.Text = "Size";
 			// 
-			// IIOffsetX
-			// 
-			this.IIOffsetX.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.IIOffsetX.ForcedText = null;
-			this.IIOffsetX.ForceMinMax = false;
-			this.IIOffsetX.Location = new System.Drawing.Point(61, 24);
-			this.IIOffsetX.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-			this.IIOffsetX.MaxValue = 1000;
-			this.IIOffsetX.MinValue = 0;
-			this.IIOffsetX.Name = "IIOffsetX";
-			this.IIOffsetX.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IIOffsetX.Size = new System.Drawing.Size(55, 15);
-			this.IIOffsetX.TabIndex = 17;
-			this.IIOffsetX.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIOffsetXYCurrentValueChanged);
-			// 
-			// IIOffsetY
-			// 
-			this.IIOffsetY.ForcedText = null;
-			this.IIOffsetY.ForceMinMax = false;
-			this.IIOffsetY.Location = new System.Drawing.Point(139, 24);
-			this.IIOffsetY.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-			this.IIOffsetY.MaxValue = 1000;
-			this.IIOffsetY.MinValue = 0;
-			this.IIOffsetY.Name = "IIOffsetY";
-			this.IIOffsetY.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IIOffsetY.Size = new System.Drawing.Size(55, 15);
-			this.IIOffsetY.TabIndex = 18;
-			this.IIOffsetY.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIOffsetXYCurrentValueChanged);
-			// 
-			// IISizeH
-			// 
-			this.IISizeH.CurrentValue = 100;
-			this.IISizeH.ForcedText = null;
-			this.IISizeH.ForceMinMax = false;
-			this.IISizeH.Location = new System.Drawing.Point(139, 3);
-			this.IISizeH.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-			this.IISizeH.MaxValue = 1000;
-			this.IISizeH.MinValue = 10;
-			this.IISizeH.Name = "IISizeH";
-			this.IISizeH.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IISizeH.Size = new System.Drawing.Size(55, 15);
-			this.IISizeH.TabIndex = 20;
-			this.IISizeH.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeH_CurrentValueChanged);
-			// 
-			// IISizeW
-			// 
-			this.IISizeW.CurrentValue = 100;
-			this.IISizeW.ForcedText = null;
-			this.IISizeW.ForceMinMax = false;
-			this.IISizeW.Location = new System.Drawing.Point(61, 3);
-			this.IISizeW.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-			this.IISizeW.MaxValue = 1000;
-			this.IISizeW.MinValue = 10;
-			this.IISizeW.Name = "IISizeW";
-			this.IISizeW.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IISizeW.Size = new System.Drawing.Size(55, 15);
-			this.IISizeW.TabIndex = 19;
-			this.IISizeW.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeW_CurrentValueChanged);
-			// 
 			// label6
 			// 
 			this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -320,7 +261,7 @@ namespace LaserGRBL.RasterConverter
 			this.groupBox3.Location = new System.Drawing.Point(3, 3);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Size = new System.Drawing.Size(259, 82);
-			this.groupBox3.TabIndex = 5;
+			this.groupBox3.TabIndex = 3;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Speed";
 			// 
@@ -372,22 +313,6 @@ namespace LaserGRBL.RasterConverter
 			this.LblBorderTracingmm.TabIndex = 22;
 			this.LblBorderTracingmm.Text = "mm/min";
 			// 
-			// IIBorderTracing
-			// 
-			this.IIBorderTracing.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.IIBorderTracing.CurrentValue = 1000;
-			this.IIBorderTracing.ForcedText = null;
-			this.IIBorderTracing.ForceMinMax = false;
-			this.IIBorderTracing.Location = new System.Drawing.Point(84, 3);
-			this.IIBorderTracing.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-			this.IIBorderTracing.MaxValue = 4000;
-			this.IIBorderTracing.MinValue = 1;
-			this.IIBorderTracing.Name = "IIBorderTracing";
-			this.IIBorderTracing.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IIBorderTracing.Size = new System.Drawing.Size(55, 15);
-			this.IIBorderTracing.TabIndex = 21;
-			this.IIBorderTracing.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIBorderTracingCurrentValueChanged);
-			// 
 			// label20
 			// 
 			this.label20.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -407,38 +332,6 @@ namespace LaserGRBL.RasterConverter
 			this.label19.Size = new System.Drawing.Size(78, 13);
 			this.label19.TabIndex = 17;
 			this.label19.Text = "Jogging Speed";
-			// 
-			// IILinearFilling
-			// 
-			this.IILinearFilling.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.IILinearFilling.CurrentValue = 1000;
-			this.IILinearFilling.ForcedText = null;
-			this.IILinearFilling.ForceMinMax = false;
-			this.IILinearFilling.Location = new System.Drawing.Point(84, 24);
-			this.IILinearFilling.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-			this.IILinearFilling.MaxValue = 4000;
-			this.IILinearFilling.MinValue = 1;
-			this.IILinearFilling.Name = "IILinearFilling";
-			this.IILinearFilling.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IILinearFilling.Size = new System.Drawing.Size(55, 15);
-			this.IILinearFilling.TabIndex = 16;
-			this.IILinearFilling.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMarkSpeedCurrentValueChanged);
-			// 
-			// IITravelSpeed
-			// 
-			this.IITravelSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.IITravelSpeed.CurrentValue = 4000;
-			this.IITravelSpeed.ForcedText = null;
-			this.IITravelSpeed.ForceMinMax = false;
-			this.IITravelSpeed.Location = new System.Drawing.Point(84, 45);
-			this.IITravelSpeed.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-			this.IITravelSpeed.MaxValue = 4000;
-			this.IITravelSpeed.MinValue = 1;
-			this.IITravelSpeed.Name = "IITravelSpeed";
-			this.IITravelSpeed.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IITravelSpeed.Size = new System.Drawing.Size(55, 15);
-			this.IITravelSpeed.TabIndex = 18;
-			this.IITravelSpeed.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IITravelSpeedCurrentValueChanged);
 			// 
 			// LblLinearFillingmm
 			// 
@@ -469,7 +362,7 @@ namespace LaserGRBL.RasterConverter
 			this.groupBox5.Location = new System.Drawing.Point(3, 91);
 			this.groupBox5.Name = "groupBox5";
 			this.groupBox5.Size = new System.Drawing.Size(259, 66);
-			this.groupBox5.TabIndex = 6;
+			this.groupBox5.TabIndex = 4;
 			this.groupBox5.TabStop = false;
 			this.groupBox5.Text = "Laser Options";
 			// 
@@ -506,7 +399,7 @@ namespace LaserGRBL.RasterConverter
 			this.TxtLaserOff.MaxLength = 3;
 			this.TxtLaserOff.Name = "TxtLaserOff";
 			this.TxtLaserOff.Size = new System.Drawing.Size(35, 20);
-			this.TxtLaserOff.TabIndex = 22;
+			this.TxtLaserOff.TabIndex = 10;
 			this.TxtLaserOff.Text = "M5";
 			this.TxtLaserOff.TextChanged += new System.EventHandler(this.TxtLaserOffTextChanged);
 			// 
@@ -530,20 +423,6 @@ namespace LaserGRBL.RasterConverter
 			this.label21.TabIndex = 13;
 			this.label21.Text = "MIN";
 			// 
-			// IIMinPower
-			// 
-			this.IIMinPower.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.IIMinPower.ForcedText = null;
-			this.IIMinPower.ForceMinMax = false;
-			this.IIMinPower.Location = new System.Drawing.Point(61, 29);
-			this.IIMinPower.MaxValue = 1000;
-			this.IIMinPower.MinValue = 0;
-			this.IIMinPower.Name = "IIMinPower";
-			this.IIMinPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IIMinPower.Size = new System.Drawing.Size(37, 15);
-			this.IIMinPower.TabIndex = 16;
-			this.IIMinPower.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMinPowerCurrentValueChanged);
-			// 
 			// label25
 			// 
 			this.label25.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -553,21 +432,6 @@ namespace LaserGRBL.RasterConverter
 			this.label25.Size = new System.Drawing.Size(30, 13);
 			this.label25.TabIndex = 17;
 			this.label25.Text = "MAX";
-			// 
-			// IIMaxPower
-			// 
-			this.IIMaxPower.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.IIMaxPower.CurrentValue = 255;
-			this.IIMaxPower.ForcedText = null;
-			this.IIMaxPower.ForceMinMax = false;
-			this.IIMaxPower.Location = new System.Drawing.Point(166, 29);
-			this.IIMaxPower.MaxValue = 1000;
-			this.IIMaxPower.MinValue = 1;
-			this.IIMaxPower.Name = "IIMaxPower";
-			this.IIMaxPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IIMaxPower.Size = new System.Drawing.Size(37, 15);
-			this.IIMaxPower.TabIndex = 18;
-			this.IIMaxPower.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMaxPowerCurrentValueChanged);
 			// 
 			// label18
 			// 
@@ -585,7 +449,7 @@ namespace LaserGRBL.RasterConverter
 			this.TxtLaserOn.MaxLength = 3;
 			this.TxtLaserOn.Name = "TxtLaserOn";
 			this.TxtLaserOn.Size = new System.Drawing.Size(37, 20);
-			this.TxtLaserOn.TabIndex = 20;
+			this.TxtLaserOn.TabIndex = 9;
 			this.TxtLaserOn.Text = "M3";
 			this.TxtLaserOn.TextChanged += new System.EventHandler(this.TxtLaserOnTextChanged);
 			// 
@@ -605,7 +469,17 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel1.RowCount = 1;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(259, 33);
-			this.tableLayoutPanel1.TabIndex = 7;
+			this.tableLayoutPanel1.TabIndex = 2;
+			// 
+			// BtnCancel
+			// 
+			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.BtnCancel.Location = new System.Drawing.Point(102, 3);
+			this.BtnCancel.Name = "BtnCancel";
+			this.BtnCancel.Size = new System.Drawing.Size(74, 27);
+			this.BtnCancel.TabIndex = 13;
+			this.BtnCancel.Text = "Cancel";
+			this.BtnCancel.UseVisualStyleBackColor = true;
 			// 
 			// BtnCreate
 			// 
@@ -617,15 +491,139 @@ namespace LaserGRBL.RasterConverter
 			this.BtnCreate.Text = "Create!";
 			this.BtnCreate.UseVisualStyleBackColor = true;
 			// 
-			// BtnCancel
+			// IIOffsetX
 			// 
-			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.BtnCancel.Location = new System.Drawing.Point(102, 3);
-			this.BtnCancel.Name = "BtnCancel";
-			this.BtnCancel.Size = new System.Drawing.Size(74, 27);
-			this.BtnCancel.TabIndex = 6;
-			this.BtnCancel.Text = "Cancel";
-			this.BtnCancel.UseVisualStyleBackColor = true;
+			this.IIOffsetX.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IIOffsetX.ForcedText = null;
+			this.IIOffsetX.ForceMinMax = false;
+			this.IIOffsetX.Location = new System.Drawing.Point(61, 24);
+			this.IIOffsetX.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IIOffsetX.MaxValue = 1000;
+			this.IIOffsetX.MinValue = 0;
+			this.IIOffsetX.Name = "IIOffsetX";
+			this.IIOffsetX.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIOffsetX.Size = new System.Drawing.Size(55, 15);
+			this.IIOffsetX.TabIndex = 3;
+			this.IIOffsetX.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIOffsetXYCurrentValueChanged);
+			// 
+			// IIOffsetY
+			// 
+			this.IIOffsetY.ForcedText = null;
+			this.IIOffsetY.ForceMinMax = false;
+			this.IIOffsetY.Location = new System.Drawing.Point(139, 24);
+			this.IIOffsetY.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IIOffsetY.MaxValue = 1000;
+			this.IIOffsetY.MinValue = 0;
+			this.IIOffsetY.Name = "IIOffsetY";
+			this.IIOffsetY.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIOffsetY.Size = new System.Drawing.Size(55, 15);
+			this.IIOffsetY.TabIndex = 4;
+			this.IIOffsetY.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIOffsetXYCurrentValueChanged);
+			// 
+			// IISizeH
+			// 
+			this.IISizeH.ForcedText = null;
+			this.IISizeH.ForceMinMax = false;
+			this.IISizeH.Location = new System.Drawing.Point(139, 3);
+			this.IISizeH.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IISizeH.MaxValue = 1000;
+			this.IISizeH.MinValue = 10;
+			this.IISizeH.Name = "IISizeH";
+			this.IISizeH.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IISizeH.Size = new System.Drawing.Size(55, 15);
+			this.IISizeH.TabIndex = 2;
+			this.IISizeH.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeH_CurrentValueChanged);
+			// 
+			// IISizeW
+			// 
+			this.IISizeW.ForcedText = null;
+			this.IISizeW.ForceMinMax = false;
+			this.IISizeW.Location = new System.Drawing.Point(61, 3);
+			this.IISizeW.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IISizeW.MaxValue = 1000;
+			this.IISizeW.MinValue = 10;
+			this.IISizeW.Name = "IISizeW";
+			this.IISizeW.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IISizeW.Size = new System.Drawing.Size(55, 15);
+			this.IISizeW.TabIndex = 1;
+			this.IISizeW.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeW_CurrentValueChanged);
+			// 
+			// IIBorderTracing
+			// 
+			this.IIBorderTracing.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IIBorderTracing.CurrentValue = 1000;
+			this.IIBorderTracing.ForcedText = null;
+			this.IIBorderTracing.ForceMinMax = false;
+			this.IIBorderTracing.Location = new System.Drawing.Point(84, 3);
+			this.IIBorderTracing.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IIBorderTracing.MaxValue = 4000;
+			this.IIBorderTracing.MinValue = 1;
+			this.IIBorderTracing.Name = "IIBorderTracing";
+			this.IIBorderTracing.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIBorderTracing.Size = new System.Drawing.Size(55, 15);
+			this.IIBorderTracing.TabIndex = 6;
+			this.IIBorderTracing.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIBorderTracingCurrentValueChanged);
+			// 
+			// IILinearFilling
+			// 
+			this.IILinearFilling.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IILinearFilling.CurrentValue = 1000;
+			this.IILinearFilling.ForcedText = null;
+			this.IILinearFilling.ForceMinMax = false;
+			this.IILinearFilling.Location = new System.Drawing.Point(84, 24);
+			this.IILinearFilling.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IILinearFilling.MaxValue = 4000;
+			this.IILinearFilling.MinValue = 1;
+			this.IILinearFilling.Name = "IILinearFilling";
+			this.IILinearFilling.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IILinearFilling.Size = new System.Drawing.Size(55, 15);
+			this.IILinearFilling.TabIndex = 7;
+			this.IILinearFilling.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMarkSpeedCurrentValueChanged);
+			// 
+			// IITravelSpeed
+			// 
+			this.IITravelSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IITravelSpeed.CurrentValue = 4000;
+			this.IITravelSpeed.ForcedText = null;
+			this.IITravelSpeed.ForceMinMax = false;
+			this.IITravelSpeed.Location = new System.Drawing.Point(84, 45);
+			this.IITravelSpeed.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+			this.IITravelSpeed.MaxValue = 4000;
+			this.IITravelSpeed.MinValue = 1;
+			this.IITravelSpeed.Name = "IITravelSpeed";
+			this.IITravelSpeed.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IITravelSpeed.Size = new System.Drawing.Size(55, 15);
+			this.IITravelSpeed.TabIndex = 8;
+			this.IITravelSpeed.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IITravelSpeedCurrentValueChanged);
+			// 
+			// IIMinPower
+			// 
+			this.IIMinPower.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IIMinPower.ForcedText = null;
+			this.IIMinPower.ForceMinMax = false;
+			this.IIMinPower.Location = new System.Drawing.Point(61, 29);
+			this.IIMinPower.MaxValue = 1000;
+			this.IIMinPower.MinValue = 0;
+			this.IIMinPower.Name = "IIMinPower";
+			this.IIMinPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIMinPower.Size = new System.Drawing.Size(37, 15);
+			this.IIMinPower.TabIndex = 11;
+			this.IIMinPower.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMinPowerCurrentValueChanged);
+			// 
+			// IIMaxPower
+			// 
+			this.IIMaxPower.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IIMaxPower.CurrentValue = 255;
+			this.IIMaxPower.ForcedText = null;
+			this.IIMaxPower.ForceMinMax = false;
+			this.IIMaxPower.Location = new System.Drawing.Point(166, 29);
+			this.IIMaxPower.MaxValue = 1000;
+			this.IIMaxPower.MinValue = 1;
+			this.IIMaxPower.Name = "IIMaxPower";
+			this.IIMaxPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIMaxPower.Size = new System.Drawing.Size(37, 15);
+			this.IIMaxPower.TabIndex = 12;
+			this.IIMaxPower.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMaxPowerCurrentValueChanged);
 			// 
 			// ConvertSizeAndOptionForm
 			// 

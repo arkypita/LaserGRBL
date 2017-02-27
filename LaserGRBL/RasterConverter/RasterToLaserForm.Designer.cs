@@ -54,6 +54,9 @@
 			this.LblFillingQuality = new System.Windows.Forms.Label();
 			this.UDFillingQuality = new System.Windows.Forms.NumericUpDown();
 			this.LblFillingLineLbl = new System.Windows.Forms.Label();
+			this.UDDownSample = new System.Windows.Forms.NumericUpDown();
+			this.label1 = new System.Windows.Forms.Label();
+			this.CbDownSample = new System.Windows.Forms.CheckBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.CbResize = new System.Windows.Forms.ComboBox();
@@ -84,9 +87,6 @@
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.WT = new System.Windows.Forms.Timer(this.components);
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
-			this.label1 = new System.Windows.Forms.Label();
-			this.UDDownSample = new System.Windows.Forms.NumericUpDown();
-			this.CbDownSample = new System.Windows.Forms.CheckBox();
 			this.WB = new LaserGRBL.UserControls.WaitingProgressBar();
 			this.BtFlipV = new LaserGRBL.UserControls.ImageButton();
 			this.BtFlipH = new LaserGRBL.UserControls.ImageButton();
@@ -114,6 +114,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.UDOptimize)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDSmoothing)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDFillingQuality)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.UDDownSample)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.GbLineToLineOptions.SuspendLayout();
@@ -122,7 +123,6 @@
 			this.groupBox4.SuspendLayout();
 			this.tableLayoutPanel4.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.UDDownSample)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// RightGrid
@@ -143,7 +143,7 @@
 			this.RightGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.RightGrid.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.RightGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.RightGrid.Size = new System.Drawing.Size(912, 558);
+			this.RightGrid.Size = new System.Drawing.Size(1008, 729);
 			this.RightGrid.TabIndex = 0;
 			// 
 			// TCOriginalPreview
@@ -155,7 +155,7 @@
 			this.TCOriginalPreview.Location = new System.Drawing.Point(239, 3);
 			this.TCOriginalPreview.Name = "TCOriginalPreview";
 			this.TCOriginalPreview.SelectedIndex = 0;
-			this.TCOriginalPreview.Size = new System.Drawing.Size(670, 513);
+			this.TCOriginalPreview.Size = new System.Drawing.Size(766, 684);
 			this.TCOriginalPreview.TabIndex = 3;
 			// 
 			// TpPreview
@@ -165,7 +165,7 @@
 			this.TpPreview.Location = new System.Drawing.Point(4, 22);
 			this.TpPreview.Name = "TpPreview";
 			this.TpPreview.Padding = new System.Windows.Forms.Padding(3);
-			this.TpPreview.Size = new System.Drawing.Size(662, 487);
+			this.TpPreview.Size = new System.Drawing.Size(758, 658);
 			this.TpPreview.TabIndex = 0;
 			this.TpPreview.Text = "Preview";
 			this.TpPreview.UseVisualStyleBackColor = true;
@@ -176,7 +176,7 @@
 			this.PbConverted.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PbConverted.Location = new System.Drawing.Point(3, 3);
 			this.PbConverted.Name = "PbConverted";
-			this.PbConverted.Size = new System.Drawing.Size(656, 481);
+			this.PbConverted.Size = new System.Drawing.Size(752, 652);
 			this.PbConverted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.PbConverted.TabIndex = 0;
 			this.PbConverted.TabStop = false;
@@ -190,7 +190,7 @@
 			this.TpOriginal.Location = new System.Drawing.Point(4, 22);
 			this.TpOriginal.Name = "TpOriginal";
 			this.TpOriginal.Padding = new System.Windows.Forms.Padding(3);
-			this.TpOriginal.Size = new System.Drawing.Size(662, 487);
+			this.TpOriginal.Size = new System.Drawing.Size(833, 630);
 			this.TpOriginal.TabIndex = 1;
 			this.TpOriginal.Text = "Original";
 			this.TpOriginal.UseVisualStyleBackColor = true;
@@ -201,7 +201,7 @@
 			this.PbOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PbOriginal.Location = new System.Drawing.Point(3, 3);
 			this.PbOriginal.Name = "PbOriginal";
-			this.PbOriginal.Size = new System.Drawing.Size(656, 481);
+			this.PbOriginal.Size = new System.Drawing.Size(827, 624);
 			this.PbOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.PbOriginal.TabIndex = 0;
 			this.PbOriginal.TabStop = false;
@@ -226,7 +226,7 @@
 			this.FlipControl.Controls.Add(this.BtnCrop, 6, 0);
 			this.FlipControl.Controls.Add(this.BtnRevert, 0, 0);
 			this.FlipControl.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
-			this.FlipControl.Location = new System.Drawing.Point(239, 522);
+			this.FlipControl.Location = new System.Drawing.Point(239, 693);
 			this.FlipControl.Name = "FlipControl";
 			this.FlipControl.RowCount = 1;
 			this.FlipControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -251,7 +251,7 @@
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel8.Size = new System.Drawing.Size(230, 552);
+			this.tableLayoutPanel8.Size = new System.Drawing.Size(230, 723);
 			this.tableLayoutPanel8.TabIndex = 3;
 			// 
 			// GbVectorizeOptions
@@ -522,6 +522,61 @@
 			this.LblFillingLineLbl.Size = new System.Drawing.Size(53, 13);
 			this.LblFillingLineLbl.TabIndex = 35;
 			this.LblFillingLineLbl.Text = "Lines/mm";
+			// 
+			// UDDownSample
+			// 
+			this.UDDownSample.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.UDDownSample.DecimalPlaces = 1;
+			this.UDDownSample.Enabled = false;
+			this.UDDownSample.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+			this.UDDownSample.Location = new System.Drawing.Point(84, 74);
+			this.UDDownSample.Margin = new System.Windows.Forms.Padding(2);
+			this.UDDownSample.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			this.UDDownSample.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.UDDownSample.Name = "UDDownSample";
+			this.UDDownSample.Size = new System.Drawing.Size(54, 20);
+			this.UDDownSample.TabIndex = 37;
+			this.TT.SetToolTip(this.UDDownSample, "Scale down original image [for HI-Res image]");
+			this.UDDownSample.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.UDDownSample.ValueChanged += new System.EventHandler(this.UDDownSample_ValueChanged);
+			// 
+			// label1
+			// 
+			this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(3, 77);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(76, 13);
+			this.label1.TabIndex = 36;
+			this.label1.Text = "Downsampling";
+			// 
+			// CbDownSample
+			// 
+			this.CbDownSample.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.CbDownSample.AutoSize = true;
+			this.CbDownSample.Location = new System.Drawing.Point(143, 77);
+			this.CbDownSample.Margin = new System.Windows.Forms.Padding(2);
+			this.CbDownSample.Name = "CbDownSample";
+			this.CbDownSample.Size = new System.Drawing.Size(15, 14);
+			this.CbDownSample.TabIndex = 38;
+			this.CbDownSample.UseVisualStyleBackColor = true;
+			this.CbDownSample.CheckedChanged += new System.EventHandler(this.CbDownSample_CheckedChanged);
 			// 
 			// groupBox1
 			// 
@@ -900,7 +955,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.BtnCancel, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.BtnCreate, 1, 0);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(749, 522);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(845, 693);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 1;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -934,61 +989,6 @@
 			this.WT.Interval = 50;
 			this.WT.Tick += new System.EventHandler(this.WTTick);
 			// 
-			// label1
-			// 
-			this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(3, 77);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(76, 13);
-			this.label1.TabIndex = 36;
-			this.label1.Text = "Downsampling";
-			// 
-			// UDDownSample
-			// 
-			this.UDDownSample.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.UDDownSample.DecimalPlaces = 1;
-			this.UDDownSample.Enabled = false;
-			this.UDDownSample.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-			this.UDDownSample.Location = new System.Drawing.Point(84, 74);
-			this.UDDownSample.Margin = new System.Windows.Forms.Padding(2);
-			this.UDDownSample.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-			this.UDDownSample.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.UDDownSample.Name = "UDDownSample";
-			this.UDDownSample.Size = new System.Drawing.Size(54, 20);
-			this.UDDownSample.TabIndex = 37;
-			this.TT.SetToolTip(this.UDDownSample, "Scale down original image [for HI-Res image]");
-			this.UDDownSample.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.UDDownSample.ValueChanged += new System.EventHandler(this.UDDownSample_ValueChanged);
-			// 
-			// CbDownSample
-			// 
-			this.CbDownSample.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.CbDownSample.AutoSize = true;
-			this.CbDownSample.Location = new System.Drawing.Point(143, 77);
-			this.CbDownSample.Margin = new System.Windows.Forms.Padding(2);
-			this.CbDownSample.Name = "CbDownSample";
-			this.CbDownSample.Size = new System.Drawing.Size(15, 14);
-			this.CbDownSample.TabIndex = 38;
-			this.CbDownSample.UseVisualStyleBackColor = true;
-			this.CbDownSample.CheckedChanged += new System.EventHandler(this.CbDownSample_CheckedChanged);
-			// 
 			// WB
 			// 
 			this.WB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -999,7 +999,7 @@
 			this.WB.FillColor = System.Drawing.Color.White;
 			this.WB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
 			this.WB.Interval = 25D;
-			this.WB.Location = new System.Drawing.Point(589, 465);
+			this.WB.Location = new System.Drawing.Point(685, 636);
 			this.WB.Maximum = 20D;
 			this.WB.Minimum = 0D;
 			this.WB.Name = "WB";
@@ -1249,7 +1249,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(912, 558);
+			this.ClientSize = new System.Drawing.Size(1008, 729);
 			this.Controls.Add(this.RightGrid);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
@@ -1278,6 +1278,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.UDOptimize)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDSmoothing)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDFillingQuality)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.UDDownSample)).EndInit();
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
@@ -1292,7 +1293,6 @@
 			this.tableLayoutPanel4.ResumeLayout(false);
 			this.tableLayoutPanel4.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.UDDownSample)).EndInit();
 			this.ResumeLayout(false);
 
 		}

@@ -38,13 +38,13 @@ namespace LaserGRBL.RasterConverter
 			
 			if (IP.Original.Height < IP.Original.Width)
 			{
-				IISizeW.CurrentValue = 50;
-				IISizeH.CurrentValue = IP.WidthToHeight(50);
+				IISizeW.CurrentValue = 100;
+				IISizeH.CurrentValue = IP.WidthToHeight(100);
 			}
 			else
 			{
-				IISizeH.CurrentValue = 50;
-				IISizeW.CurrentValue = IP.HeightToWidht(50);
+				IISizeH.CurrentValue = 100;
+				IISizeW.CurrentValue = IP.HeightToWidht(100);
 			}
 		
 
