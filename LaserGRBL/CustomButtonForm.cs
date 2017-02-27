@@ -17,6 +17,9 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
 
+			CbEStyles.DataSource = Enum.GetValues(typeof(CustomButton.EnableStyles));
+			CbEStyles.SelectedItem = CustomButton.EnableStyles.Always;
+
 			buttons = (List<CustomButton>)Settings.GetObject("Custom Buttons", new List<CustomButton>());
 		}
 
@@ -37,6 +40,8 @@ namespace LaserGRBL
 			TBGCode.Text = cb.GCode;
 			BTOpenImage.Image = cb.Image;
 			TbToolTip.Text = cb.ToolTip;
+			CbEStyles.SelectedItem = cb.EnableStyle;
+
 			BtnCreate.Text = "Save";
 			inedit = cb;
 
@@ -51,6 +56,7 @@ namespace LaserGRBL
 				cb.GCode = TBGCode.Text;
 				cb.Image = BTOpenImage.Image;
 				cb.ToolTip = TbToolTip.Text;
+				cb.EnableStyle = (CustomButton.EnableStyles)CbEStyles.SelectedItem;
 				buttons.Add(cb);
 			}
 			else
@@ -58,6 +64,7 @@ namespace LaserGRBL
 				inedit.GCode = TBGCode.Text;
 				inedit.Image = BTOpenImage.Image;
 				inedit.ToolTip = TbToolTip.Text;
+				inedit.EnableStyle = (CustomButton.EnableStyles)CbEStyles.SelectedItem;
 			}
 			Settings.SetObject("Custom Buttons", buttons);
 

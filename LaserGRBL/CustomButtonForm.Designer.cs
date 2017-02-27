@@ -35,13 +35,15 @@
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.label1 = new System.Windows.Forms.Label();
-			this.TBGCode = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.TbToolTip = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
+			this.TbToolTip = new System.Windows.Forms.TextBox();
+			this.label7 = new System.Windows.Forms.Label();
+			this.CbEStyles = new System.Windows.Forms.ComboBox();
+			this.TBGCode = new System.Windows.Forms.TextBox();
 			this.BTOpenImage = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -114,20 +116,23 @@
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-			this.tableLayoutPanel2.Controls.Add(this.TBGCode, 1, 1);
 			this.tableLayoutPanel2.Controls.Add(this.BTOpenImage, 0, 1);
 			this.tableLayoutPanel2.Controls.Add(this.label2, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.label3, 2, 4);
-			this.tableLayoutPanel2.Controls.Add(this.label4, 1, 4);
-			this.tableLayoutPanel2.Controls.Add(this.label5, 1, 3);
+			this.tableLayoutPanel2.Controls.Add(this.label3, 2, 5);
+			this.tableLayoutPanel2.Controls.Add(this.label4, 1, 5);
+			this.tableLayoutPanel2.Controls.Add(this.label5, 1, 4);
 			this.tableLayoutPanel2.Controls.Add(this.label6, 0, 2);
 			this.tableLayoutPanel2.Controls.Add(this.TbToolTip, 1, 2);
+			this.tableLayoutPanel2.Controls.Add(this.label7, 0, 3);
+			this.tableLayoutPanel2.Controls.Add(this.CbEStyles, 1, 3);
+			this.tableLayoutPanel2.Controls.Add(this.TBGCode, 1, 1);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-			this.tableLayoutPanel2.RowCount = 7;
+			this.tableLayoutPanel2.RowCount = 8;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -146,18 +151,6 @@
 			this.label1.Size = new System.Drawing.Size(36, 13);
 			this.label1.TabIndex = 9;
 			this.label1.Text = "Image";
-			// 
-			// TBGCode
-			// 
-			this.TBGCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tableLayoutPanel2.SetColumnSpan(this.TBGCode, 2);
-			this.TBGCode.Location = new System.Drawing.Point(58, 22);
-			this.TBGCode.Multiline = true;
-			this.TBGCode.Name = "TBGCode";
-			this.TBGCode.Size = new System.Drawing.Size(250, 137);
-			this.TBGCode.TabIndex = 11;
 			// 
 			// label2
 			// 
@@ -191,26 +184,6 @@
 			this.label4.Text = "- Image Left: [left]\r\n- Image Right: [right]\r\n- Image Top: [top]\r\n- Image Bottom:" +
     " [bottom]";
 			// 
-			// TbToolTip
-			// 
-			this.TbToolTip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tableLayoutPanel2.SetColumnSpan(this.TbToolTip, 2);
-			this.TbToolTip.Location = new System.Drawing.Point(58, 165);
-			this.TbToolTip.Name = "TbToolTip";
-			this.TbToolTip.Size = new System.Drawing.Size(250, 20);
-			this.TbToolTip.TabIndex = 15;
-			// 
-			// label6
-			// 
-			this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(3, 168);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(46, 13);
-			this.label6.TabIndex = 16;
-			this.label6.Text = "Tool Tip";
-			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
@@ -220,6 +193,57 @@
 			this.label5.Size = new System.Drawing.Size(84, 13);
 			this.label5.TabIndex = 14;
 			this.label5.Text = "GCode shortcut:";
+			// 
+			// label6
+			// 
+			this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(3, 141);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(46, 13);
+			this.label6.TabIndex = 16;
+			this.label6.Text = "Tool Tip";
+			// 
+			// TbToolTip
+			// 
+			this.TbToolTip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tableLayoutPanel2.SetColumnSpan(this.TbToolTip, 2);
+			this.TbToolTip.Location = new System.Drawing.Point(58, 138);
+			this.TbToolTip.Name = "TbToolTip";
+			this.TbToolTip.Size = new System.Drawing.Size(250, 20);
+			this.TbToolTip.TabIndex = 15;
+			// 
+			// label7
+			// 
+			this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(3, 168);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(46, 13);
+			this.label7.TabIndex = 17;
+			this.label7.Text = "Enabled";
+			// 
+			// CbEStyles
+			// 
+			this.CbEStyles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tableLayoutPanel2.SetColumnSpan(this.CbEStyles, 2);
+			this.CbEStyles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbEStyles.FormattingEnabled = true;
+			this.CbEStyles.Location = new System.Drawing.Point(58, 164);
+			this.CbEStyles.Name = "CbEStyles";
+			this.CbEStyles.Size = new System.Drawing.Size(250, 21);
+			this.CbEStyles.TabIndex = 18;
+			// 
+			// TBGCode
+			// 
+			this.tableLayoutPanel2.SetColumnSpan(this.TBGCode, 2);
+			this.TBGCode.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.TBGCode.Location = new System.Drawing.Point(58, 22);
+			this.TBGCode.Multiline = true;
+			this.TBGCode.Name = "TBGCode";
+			this.TBGCode.Size = new System.Drawing.Size(250, 110);
+			this.TBGCode.TabIndex = 19;
 			// 
 			// BTOpenImage
 			// 
@@ -266,11 +290,13 @@
 		private UserControls.ImageButton BTOpenImage;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox TBGCode;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox TbToolTip;
 		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.ComboBox CbEStyles;
+		private System.Windows.Forms.TextBox TBGCode;
 	}
 }

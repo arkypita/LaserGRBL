@@ -65,7 +65,6 @@ namespace LaserGRBL
 				OnFileLoaded(elapsed, filename);
 		}
 
-
 		private abstract class ColorSegment
 		{
 			protected int  mColor;

@@ -121,7 +121,7 @@ namespace Tools
 					if ((StopWaitTimeout > 0))
 						TH.Join(StopWaitTimeout);
 
-					if (TH.ThreadState != System.Threading.ThreadState.Stopped) {
+					if (TH != null && TH.ThreadState != System.Threading.ThreadState.Stopped) {
 						System.Diagnostics.Debug.WriteLine(string.Format("Devo forzare la terminazione del Thread '{0}'", TH.Name));
 						TH.Abort();
 					}

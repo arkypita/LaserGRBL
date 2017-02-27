@@ -42,7 +42,8 @@ namespace LaserGRBL
 			BtnStop.Enabled = Core.CanFeedHold;
 			BtnResume.Enabled = Core.CanResumeHold;
 
-			//CustomButtonArea.Enabled = Core.CanSendManualCommand;
+			foreach (CustomButtonIB ib in CustomButtonArea.Controls)
+				ib.RefreshEnabled();
 
 			ResumeLayout();
 		}
@@ -79,48 +80,89 @@ namespace LaserGRBL
 		{
 			List<CustomButton> buttons = (List<CustomButton>)Settings.GetObject("Custom Buttons", new List<CustomButton>());
 
-			foreach (UserControls.ImageButton ib in CustomButtonArea.Controls)
-			{
-				ib.Click -= OnCustomButtonClick;
-				TT.SetToolTip(ib, null);
-			}
-
 			CustomButtonArea.Controls.Clear();
-
 			foreach (CustomButton cb in buttons)
 			{
-				UserControls.ImageButton ib = new UserControls.ImageButton();
-				ib.Image = cb.Image;
-				ib.Tag = cb;
-				ib.Click += OnCustomButtonClick;
-				ib.ContextMenuStrip = MNRemEditCB;
-				ib.SizingMode = UserControls.ImageButton.SizingModes.FixedSize;
-				ib.BorderStyle = BorderStyle.FixedSingle;
-				ib.Size = new Size(49, 49);
-				TT.SetToolTip(ib, cb.ToolTip);
+				CustomButtonIB ib = new CustomButtonIB(Core, cb, this);
 				CustomButtonArea.Controls.Add(ib);
 			}
 
 		}
 
-		private void OnCustomButtonClick(object sender, EventArgs e)
+		private class CustomButtonIB : UserControls.ImageButton
 		{
-			UserControls.ImageButton ib = sender as UserControls.ImageButton;
-			if (ib != null)
+			private GrblCore Core;
+			private LaserGRBL.CustomButton cb;
+			PreviewForm form;
+			private ToolTip tt;
+			private ContextMenuStrip cms;
+			private bool mDrawDisabled = true;
+
+			public CustomButtonIB(GrblCore Core, LaserGRBL.CustomButton cb, PreviewForm form)
 			{
-				CustomButton cb = ib.Tag as CustomButton;
+				// TODO: Complete member initialization
+				this.Core = Core;
+				this.cb = cb;
+				this.form = form;
+				this.tt = new ToolTip();
+
+				Image = cb.Image;
+				Tag = cb;
+
+				//ContextMenuStrip = MNRemEditCB;
+				SizingMode = UserControls.ImageButton.SizingModes.FixedSize;
+				BorderStyle = BorderStyle.FixedSingle;
+				Size = new Size(49, 49);
+				tt.SetToolTip(this, cb.ToolTip);
+
+
+				cms = new ContextMenuStrip();
+				cms.Items.Add("Remove button", null, RemoveButton_Click);
+				cms.Items.Add("Edit button", null, EditButton_Click);
+
+				this.ContextMenuStrip = cms;
+			}
+
+
+			protected override void Dispose(bool disposing)
+			{
+				tt.SetToolTip(this, null);
+				base.Dispose(disposing);
+			}
+
+			public CustomButton CustomButton
+			{ get { return Tag as CustomButton; } }
+
+			internal void RefreshEnabled()
+			{
+				bool disabled = !CustomButton.EnabledNow(Core);
+				if (mDrawDisabled != disabled)
+				{
+					mDrawDisabled = disabled;
+					Refresh();
+				}
+			}
+
+			protected override bool DrawDisabled()
+			{
+				return mDrawDisabled;
+			}
+
+			protected override void OnClick(EventArgs e)
+			{
+				if (mDrawDisabled || !CustomButton.EnabledNow(Core))
+					return;
 
 				string[] arr = cb.GCode.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-
 				foreach (string str in arr)
 				{
 					string command = str;
 					if (command.Trim().Length > 0)
 					{
-						decimal left = Core.LoadedFile != null ? Core.LoadedFile.Range.DrawingRange.X.Min : 0;
-						decimal right = Core.LoadedFile != null ? Core.LoadedFile.Range.DrawingRange.X.Max : 0;
-						decimal top = Core.LoadedFile != null ? Core.LoadedFile.Range.DrawingRange.Y.Max : 0;
-						decimal bottom = Core.LoadedFile != null ? Core.LoadedFile.Range.DrawingRange.Y.Min : 0;
+						decimal left = Core.LoadedFile != null && Core.LoadedFile.Range.MovingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.X.Min : 0;
+						decimal right = Core.LoadedFile != null && Core.LoadedFile.Range.MovingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.X.Max : 0;
+						decimal top = Core.LoadedFile != null && Core.LoadedFile.Range.MovingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.Y.Max : 0;
+						decimal bottom = Core.LoadedFile != null && Core.LoadedFile.Range.MovingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.Y.Min : 0;
 
 						decimal width = right - left;
 						decimal height = top - bottom;
@@ -136,48 +178,36 @@ namespace LaserGRBL
 						Core.EnqueueCommand(new GrblCommand(command));
 					}
 				}
+				base.OnClick(e);
 			}
-		}
 
-		static string FormatNumber(decimal value)
-		{
-			return string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.000}", value);
-		}
-
-		private void RemoveButton_Click(object sender, EventArgs e)
-		{
-			ToolStripMenuItem mi = sender as ToolStripMenuItem;
-			ContextMenuStrip cms = mi.Owner as ContextMenuStrip;
-			UserControls.ImageButton ib = cms.SourceControl as UserControls.ImageButton;
-			if (ib != null)
+			static string FormatNumber(decimal value)
 			{
-				CustomButton cb = ib.Tag as CustomButton;
+				return string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.000}", value);
+			}
 
+
+			private void RemoveButton_Click(object sender, EventArgs e)
+			{
 				List<CustomButton> buttons = (List<CustomButton>)Settings.GetObject("Custom Buttons", new List<CustomButton>());
 				for (int i = 0; i < buttons.Count; i++)
 				{
-					if (buttons[i].guid == cb.guid)
+					if (buttons[i].guid == CustomButton.guid)
 						buttons.Remove(buttons[i]);
 				}
 				Settings.Save();
 
-				RefreshCustomButtons();
+				form.RefreshCustomButtons();
 			}
 
-		}
-
-		private void editButtonToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			ToolStripMenuItem mi = sender as ToolStripMenuItem;
-			ContextMenuStrip cms = mi.Owner as ContextMenuStrip;
-			UserControls.ImageButton ib = cms.SourceControl as UserControls.ImageButton;
-			if (ib != null)
+			private void EditButton_Click(object sender, EventArgs e)
 			{
-				CustomButton cb = ib.Tag as CustomButton;
-				CustomButtonForm.CreateAndShowDialog(cb);
-				RefreshCustomButtons();
+				CustomButtonForm.CreateAndShowDialog(CustomButton);
+				form.RefreshCustomButtons();
 			}
+
 		}
+
 	}
 
 }

@@ -223,14 +223,12 @@ namespace LaserGRBL
 			this.RemoveButton.Name = "RemoveButton";
 			this.RemoveButton.Size = new System.Drawing.Size(156, 22);
 			this.RemoveButton.Text = "Remove Button";
-			this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
 			// 
 			// editButtonToolStripMenuItem
 			// 
 			this.editButtonToolStripMenuItem.Name = "editButtonToolStripMenuItem";
 			this.editButtonToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
 			this.editButtonToolStripMenuItem.Text = "Edit Button";
-			this.editButtonToolStripMenuItem.Click += new System.EventHandler(this.editButtonToolStripMenuItem_Click);
 			// 
 			// PreviewForm
 			// 

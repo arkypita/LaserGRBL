@@ -133,7 +133,7 @@ namespace LaserGRBL.UserControls
 				}
 
 
-				if (this.Enabled == false)
+				if (DrawDisabled())
 				{
 					//Disabilitato
 					Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
@@ -177,6 +177,11 @@ namespace LaserGRBL.UserControls
 
 			}
 
+		}
+
+		protected virtual bool DrawDisabled()
+		{
+			return !Enabled;
 		}
 
 		private void ImageButtonMouseEnter(object sender, System.EventArgs e)
