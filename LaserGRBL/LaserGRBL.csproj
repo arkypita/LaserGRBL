@@ -111,7 +111,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RasterConverter\ConvertSizeAndOptionForm.cs" />
+    <Compile Include="RasterConverter\ConvertSizeAndOptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="RasterConverter\ConvertSizeAndOptionForm.Designer.cs">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </Compile>
@@ -425,9 +427,7 @@
     <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_OptionOverflow.bmp" />
     <Content Include="UserControls\DockingManager\license.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="RasterConverter\Dithering" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
