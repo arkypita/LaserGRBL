@@ -58,6 +58,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -81,6 +82,13 @@
     <Compile Include="CsPotrace\CsPotrace.cs" />
     <Compile Include="CsPotrace\CsPotraceExportGCODE.cs" />
     <Compile Include="CsPotrace\CsPtoraceExport.cs" />
+    <Compile Include="CustomButton.cs" />
+    <Compile Include="CustomButtonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomButtonForm.Designer.cs">
+      <DependentUpon>CustomButtonForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GrblCore.cs" />
     <Compile Include="CSV\CsvDictionary.cs" />
     <Compile Include="CSV\FormattedMessage.cs" />
@@ -315,6 +323,9 @@
     </Compile>
     <EmbeddedResource Include="ConnectLogForm.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomButtonForm.resx">
+      <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JogForm.resx">
       <DependentUpon>JogForm.cs</DependentUpon>

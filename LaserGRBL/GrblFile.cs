@@ -665,6 +665,8 @@ namespace LaserGRBL
 
 		public System.Collections.IEnumerator GetEnumerator()
 		{ return list.GetEnumerator(); }
+
+		public ProgramRange Range { get { return mRange; } }
 	}
 
 

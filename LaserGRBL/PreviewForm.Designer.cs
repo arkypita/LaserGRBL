@@ -46,8 +46,16 @@ namespace LaserGRBL
 			this.BtnStop = new LaserGRBL.UserControls.ImageButton();
 			this.BtnResume = new LaserGRBL.UserControls.ImageButton();
 			this.BtnUnlock = new LaserGRBL.UserControls.ImageButton();
+			this.CustomButtonArea = new System.Windows.Forms.FlowLayoutPanel();
+			this.MNAddCB = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.addCustomButtonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
+			this.MNRemEditCB = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.RemoveButton = new System.Windows.Forms.ToolStripMenuItem();
+			this.editButtonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tableLayoutPanel8.SuspendLayout();
+			this.MNAddCB.SuspendLayout();
+			this.MNRemEditCB.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// Preview
@@ -63,18 +71,20 @@ namespace LaserGRBL
 			// 
 			this.tableLayoutPanel8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.tableLayoutPanel8.BackColor = System.Drawing.SystemColors.Control;
-			this.tableLayoutPanel8.ColumnCount = 6;
+			this.tableLayoutPanel8.ColumnCount = 7;
 			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel8.Controls.Add(this.BtnGoHome, 1, 0);
 			this.tableLayoutPanel8.Controls.Add(this.BtnReset, 0, 0);
-			this.tableLayoutPanel8.Controls.Add(this.BtnStop, 5, 0);
-			this.tableLayoutPanel8.Controls.Add(this.BtnResume, 4, 0);
+			this.tableLayoutPanel8.Controls.Add(this.BtnStop, 6, 0);
+			this.tableLayoutPanel8.Controls.Add(this.BtnResume, 5, 0);
 			this.tableLayoutPanel8.Controls.Add(this.BtnUnlock, 2, 0);
+			this.tableLayoutPanel8.Controls.Add(this.CustomButtonArea, 4, 0);
 			this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 307);
 			this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(1);
@@ -174,6 +184,54 @@ namespace LaserGRBL
 			this.BtnUnlock.UseAltImage = false;
 			this.BtnUnlock.Click += new System.EventHandler(this.BtnUnlockClick);
 			// 
+			// CustomButtonArea
+			// 
+			this.CustomButtonArea.AutoSize = true;
+			this.CustomButtonArea.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.CustomButtonArea.ContextMenuStrip = this.MNAddCB;
+			this.CustomButtonArea.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.CustomButtonArea.Location = new System.Drawing.Point(185, 0);
+			this.CustomButtonArea.Margin = new System.Windows.Forms.Padding(0);
+			this.CustomButtonArea.Name = "CustomButtonArea";
+			this.CustomButtonArea.Size = new System.Drawing.Size(322, 56);
+			this.CustomButtonArea.TabIndex = 8;
+			// 
+			// MNAddCB
+			// 
+			this.MNAddCB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addCustomButtonToolStripMenuItem});
+			this.MNAddCB.Name = "CMM";
+			this.MNAddCB.Size = new System.Drawing.Size(181, 26);
+			// 
+			// addCustomButtonToolStripMenuItem
+			// 
+			this.addCustomButtonToolStripMenuItem.Name = "addCustomButtonToolStripMenuItem";
+			this.addCustomButtonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.addCustomButtonToolStripMenuItem.Text = "Add Custom Button";
+			this.addCustomButtonToolStripMenuItem.Click += new System.EventHandler(this.addCustomButtonToolStripMenuItem_Click);
+			// 
+			// MNRemEditCB
+			// 
+			this.MNRemEditCB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.RemoveButton,
+            this.editButtonToolStripMenuItem});
+			this.MNRemEditCB.Name = "CMM";
+			this.MNRemEditCB.Size = new System.Drawing.Size(157, 70);
+			// 
+			// RemoveButton
+			// 
+			this.RemoveButton.Name = "RemoveButton";
+			this.RemoveButton.Size = new System.Drawing.Size(156, 22);
+			this.RemoveButton.Text = "Remove Button";
+			this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
+			// 
+			// editButtonToolStripMenuItem
+			// 
+			this.editButtonToolStripMenuItem.Name = "editButtonToolStripMenuItem";
+			this.editButtonToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+			this.editButtonToolStripMenuItem.Text = "Edit Button";
+			this.editButtonToolStripMenuItem.Click += new System.EventHandler(this.editButtonToolStripMenuItem_Click);
+			// 
 			// PreviewForm
 			// 
 			this.ClientSize = new System.Drawing.Size(617, 363);
@@ -187,6 +245,9 @@ namespace LaserGRBL
 			this.Text = "Preview";
 			this.ToolTipText = "Preview";
 			this.tableLayoutPanel8.ResumeLayout(false);
+			this.tableLayoutPanel8.PerformLayout();
+			this.MNAddCB.ResumeLayout(false);
+			this.MNRemEditCB.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -198,5 +259,11 @@ namespace LaserGRBL
 		private UserControls.ImageButton BtnResume;
 		private UserControls.ImageButton BtnUnlock;
 		private System.Windows.Forms.ToolTip TT;
+		private System.Windows.Forms.FlowLayoutPanel CustomButtonArea;
+		private System.Windows.Forms.ContextMenuStrip MNAddCB;
+		private System.Windows.Forms.ToolStripMenuItem addCustomButtonToolStripMenuItem;
+		private System.Windows.Forms.ContextMenuStrip MNRemEditCB;
+		private System.Windows.Forms.ToolStripMenuItem RemoveButton;
+		private System.Windows.Forms.ToolStripMenuItem editButtonToolStripMenuItem;
 	}
 }
