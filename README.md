@@ -17,6 +17,7 @@ Do you like LaserGRBL? Support development with your donation!
 - Image import (jpg, bmp...) with line by line GCode generation (horizontal, vertical, and diagonal).
 - Image import (jpg, bmp...) with Vectorization! [Experimental]
 - Image import (jpg, bmp...) with 1bit dithering, best result with low power laser
+- User defined buttons, power to you!
 - Grbl Configuration Import/Export
 - Configuration, Alarm and Error codes decoding for Grbl v1.1 (with description tooltip)
 - Homing button, Feed Hold button, Resume button and Grbl Reset button
@@ -41,6 +42,8 @@ Development status and roadmap can be found here: [Roadmap](https://github.com/a
 ![Alpha](https://cloud.githubusercontent.com/assets/8782035/21351296/1df460c2-c6bc-11e6-8eee-4612bb7978fa.jpg)
 
 ![FinalWork](https://cloud.githubusercontent.com/assets/8782035/21907662/bbe988be-d910-11e6-9bdb-75b6e3404e0a.jpg)
+
+![UserDefinedButtons](https://cloud.githubusercontent.com/assets/8782035/23375844/238e5f70-fd2a-11e6-8826-5ff7743bbea0.jpg)
 
 ### Compiling
 
