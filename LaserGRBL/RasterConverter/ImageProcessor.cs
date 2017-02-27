@@ -48,6 +48,8 @@ namespace LaserGRBL.RasterConverter
 		private bool mUseOptimize;
 		private decimal mSmoothing;
 		private bool mUseSmootihing;
+		private decimal mDownSampling;
+		private bool mUseDownSampling;
 		private Direction mDirection;
 		private Direction mFillingDirection;
 		private int mFillingQuality;
@@ -69,6 +71,7 @@ namespace LaserGRBL.RasterConverter
 		private ImageProcessor Current; 		//current instance of processor thread/class - used to call abort
 		Thread TH;								//processing thread
 		protected ManualResetEvent MustExit;	//exit condition
+
 		
 		public enum Tool
 		{ Line2Line, Dithering, Vectorize }
@@ -449,6 +452,33 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
+
+		public bool UseDownSampling
+		{
+			get { return mUseDownSampling; }
+			set
+			{
+				if (value != mUseDownSampling)
+				{
+					mUseDownSampling = value;
+					Refresh();
+				}
+			}
+		}
+
+		public decimal DownSampling
+		{
+			get { return mDownSampling; }
+			set
+			{
+				if (value != mDownSampling)
+				{
+					mDownSampling = value;
+					Refresh();
+				}
+			}
+		}
+
 		public bool UseSmoothing
 		{
 			get { return mUseSmootihing; }
@@ -643,6 +673,19 @@ namespace LaserGRBL.RasterConverter
 
 		private Bitmap ProduceBitmap(Image img, Size size)
 		{
+			if (SelectedTool == Tool.Vectorize && UseDownSampling && DownSampling > 1) //if downsampling
+			{
+				using (Image downsampled = ImageTransform.ResizeImage(img, new Size((int)(size.Width * 1 / DownSampling), (int)(size.Height * 1 / DownSampling)), false, InterpolationMode.HighQualityBicubic))
+					return ProduceBitmap2(downsampled, ref size);
+			}
+			else
+			{
+				return ProduceBitmap2(img, ref size);
+			}
+		}
+
+		private Bitmap ProduceBitmap2(Image img, ref Size size)
+		{
 			using (Bitmap resized = ImageTransform.ResizeImage(img, size, false, Interpolation))
 			{
 				using (Bitmap grayscale = ImageTransform.GrayScale(resized, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), IsGrayScale ? ImageTransform.Formula.SimpleAverage : Formula))
@@ -766,7 +809,6 @@ namespace LaserGRBL.RasterConverter
 
 
 		public Bitmap Original { get {return mResized;}}
-
 
 	}
 }

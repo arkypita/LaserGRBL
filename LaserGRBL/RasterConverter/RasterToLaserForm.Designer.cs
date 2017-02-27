@@ -84,6 +84,9 @@
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.WT = new System.Windows.Forms.Timer(this.components);
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
+			this.label1 = new System.Windows.Forms.Label();
+			this.UDDownSample = new System.Windows.Forms.NumericUpDown();
+			this.CbDownSample = new System.Windows.Forms.CheckBox();
 			this.WB = new LaserGRBL.UserControls.WaitingProgressBar();
 			this.BtFlipV = new LaserGRBL.UserControls.ImageButton();
 			this.BtFlipH = new LaserGRBL.UserControls.ImageButton();
@@ -119,6 +122,7 @@
 			this.groupBox4.SuspendLayout();
 			this.tableLayoutPanel4.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.UDDownSample)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// RightGrid
@@ -258,7 +262,7 @@
 			this.GbVectorizeOptions.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.GbVectorizeOptions.Location = new System.Drawing.Point(3, 423);
 			this.GbVectorizeOptions.Name = "GbVectorizeOptions";
-			this.GbVectorizeOptions.Size = new System.Drawing.Size(224, 140);
+			this.GbVectorizeOptions.Size = new System.Drawing.Size(224, 164);
 			this.GbVectorizeOptions.TabIndex = 4;
 			this.GbVectorizeOptions.TabStop = false;
 			this.GbVectorizeOptions.Text = "Vectorize! Options";
@@ -283,22 +287,26 @@
 			this.tableLayoutPanel5.Controls.Add(this.UDSmoothing, 1, 1);
 			this.tableLayoutPanel5.Controls.Add(this.CbOptimize, 2, 2);
 			this.tableLayoutPanel5.Controls.Add(this.CbSmoothing, 2, 1);
-			this.tableLayoutPanel5.Controls.Add(this.label14, 0, 3);
-			this.tableLayoutPanel5.Controls.Add(this.CbFillingDirection, 1, 3);
-			this.tableLayoutPanel5.Controls.Add(this.LblFillingQuality, 0, 4);
-			this.tableLayoutPanel5.Controls.Add(this.UDFillingQuality, 1, 4);
-			this.tableLayoutPanel5.Controls.Add(this.LblFillingLineLbl, 2, 4);
+			this.tableLayoutPanel5.Controls.Add(this.label14, 0, 4);
+			this.tableLayoutPanel5.Controls.Add(this.CbFillingDirection, 1, 4);
+			this.tableLayoutPanel5.Controls.Add(this.LblFillingQuality, 0, 5);
+			this.tableLayoutPanel5.Controls.Add(this.UDFillingQuality, 1, 5);
+			this.tableLayoutPanel5.Controls.Add(this.LblFillingLineLbl, 2, 5);
+			this.tableLayoutPanel5.Controls.Add(this.UDDownSample, 1, 3);
+			this.tableLayoutPanel5.Controls.Add(this.label1, 0, 3);
+			this.tableLayoutPanel5.Controls.Add(this.CbDownSample, 2, 3);
 			this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
 			this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-			this.tableLayoutPanel5.RowCount = 5;
+			this.tableLayoutPanel5.RowCount = 6;
+			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-			this.tableLayoutPanel5.Size = new System.Drawing.Size(218, 121);
+			this.tableLayoutPanel5.Size = new System.Drawing.Size(218, 145);
 			this.tableLayoutPanel5.TabIndex = 0;
 			// 
 			// label22
@@ -315,7 +323,7 @@
 			// 
 			this.UDSpotRemoval.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.UDSpotRemoval.Enabled = false;
-			this.UDSpotRemoval.Location = new System.Drawing.Point(82, 2);
+			this.UDSpotRemoval.Location = new System.Drawing.Point(84, 2);
 			this.UDSpotRemoval.Margin = new System.Windows.Forms.Padding(2);
 			this.UDSpotRemoval.Minimum = new decimal(new int[] {
             2,
@@ -337,7 +345,7 @@
 			// 
 			this.CbSpotRemoval.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.CbSpotRemoval.AutoSize = true;
-			this.CbSpotRemoval.Location = new System.Drawing.Point(141, 5);
+			this.CbSpotRemoval.Location = new System.Drawing.Point(143, 5);
 			this.CbSpotRemoval.Margin = new System.Windows.Forms.Padding(2);
 			this.CbSpotRemoval.Name = "CbSpotRemoval";
 			this.CbSpotRemoval.Size = new System.Drawing.Size(15, 14);
@@ -375,10 +383,10 @@
             0,
             0,
             65536});
-			this.UDOptimize.Location = new System.Drawing.Point(82, 50);
+			this.UDOptimize.Location = new System.Drawing.Point(84, 50);
 			this.UDOptimize.Margin = new System.Windows.Forms.Padding(2);
 			this.UDOptimize.Maximum = new decimal(new int[] {
-            10,
+            50,
             0,
             0,
             0});
@@ -408,13 +416,8 @@
             0,
             0,
             65536});
-			this.UDSmoothing.Location = new System.Drawing.Point(82, 26);
+			this.UDSmoothing.Location = new System.Drawing.Point(84, 26);
 			this.UDSmoothing.Margin = new System.Windows.Forms.Padding(2);
-			this.UDSmoothing.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
 			this.UDSmoothing.Name = "UDSmoothing";
 			this.UDSmoothing.Size = new System.Drawing.Size(54, 20);
 			this.UDSmoothing.TabIndex = 20;
@@ -430,7 +433,7 @@
 			// 
 			this.CbOptimize.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.CbOptimize.AutoSize = true;
-			this.CbOptimize.Location = new System.Drawing.Point(141, 53);
+			this.CbOptimize.Location = new System.Drawing.Point(143, 53);
 			this.CbOptimize.Margin = new System.Windows.Forms.Padding(2);
 			this.CbOptimize.Name = "CbOptimize";
 			this.CbOptimize.Size = new System.Drawing.Size(15, 14);
@@ -442,7 +445,7 @@
 			// 
 			this.CbSmoothing.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.CbSmoothing.AutoSize = true;
-			this.CbSmoothing.Location = new System.Drawing.Point(141, 29);
+			this.CbSmoothing.Location = new System.Drawing.Point(143, 29);
 			this.CbSmoothing.Margin = new System.Windows.Forms.Padding(2);
 			this.CbSmoothing.Name = "CbSmoothing";
 			this.CbSmoothing.Size = new System.Drawing.Size(15, 14);
@@ -454,7 +457,7 @@
 			// 
 			this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(3, 78);
+			this.label14.Location = new System.Drawing.Point(3, 102);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(33, 13);
 			this.label14.TabIndex = 33;
@@ -466,10 +469,10 @@
 			this.tableLayoutPanel5.SetColumnSpan(this.CbFillingDirection, 2);
 			this.CbFillingDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbFillingDirection.FormattingEnabled = true;
-			this.CbFillingDirection.Location = new System.Drawing.Point(82, 74);
+			this.CbFillingDirection.Location = new System.Drawing.Point(84, 98);
 			this.CbFillingDirection.Margin = new System.Windows.Forms.Padding(2);
 			this.CbFillingDirection.Name = "CbFillingDirection";
-			this.CbFillingDirection.Size = new System.Drawing.Size(134, 21);
+			this.CbFillingDirection.Size = new System.Drawing.Size(132, 21);
 			this.CbFillingDirection.TabIndex = 31;
 			this.TT.SetToolTip(this.CbFillingDirection, "Enable path filling / set filling direction");
 			this.CbFillingDirection.SelectedIndexChanged += new System.EventHandler(this.CbFillingDirection_SelectedIndexChanged);
@@ -478,7 +481,7 @@
 			// 
 			this.LblFillingQuality.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.LblFillingQuality.AutoSize = true;
-			this.LblFillingQuality.Location = new System.Drawing.Point(3, 102);
+			this.LblFillingQuality.Location = new System.Drawing.Point(3, 126);
 			this.LblFillingQuality.Name = "LblFillingQuality";
 			this.LblFillingQuality.Size = new System.Drawing.Size(68, 13);
 			this.LblFillingQuality.TabIndex = 34;
@@ -487,7 +490,7 @@
 			// UDFillingQuality
 			// 
 			this.UDFillingQuality.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.UDFillingQuality.Location = new System.Drawing.Point(82, 99);
+			this.UDFillingQuality.Location = new System.Drawing.Point(84, 123);
 			this.UDFillingQuality.Margin = new System.Windows.Forms.Padding(2);
 			this.UDFillingQuality.Maximum = new decimal(new int[] {
             10,
@@ -514,7 +517,7 @@
 			// 
 			this.LblFillingLineLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.LblFillingLineLbl.AutoSize = true;
-			this.LblFillingLineLbl.Location = new System.Drawing.Point(142, 102);
+			this.LblFillingLineLbl.Location = new System.Drawing.Point(144, 126);
 			this.LblFillingLineLbl.Name = "LblFillingLineLbl";
 			this.LblFillingLineLbl.Size = new System.Drawing.Size(53, 13);
 			this.LblFillingLineLbl.TabIndex = 35;
@@ -931,6 +934,61 @@
 			this.WT.Interval = 50;
 			this.WT.Tick += new System.EventHandler(this.WTTick);
 			// 
+			// label1
+			// 
+			this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(3, 77);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(76, 13);
+			this.label1.TabIndex = 36;
+			this.label1.Text = "Downsampling";
+			// 
+			// UDDownSample
+			// 
+			this.UDDownSample.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.UDDownSample.DecimalPlaces = 1;
+			this.UDDownSample.Enabled = false;
+			this.UDDownSample.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+			this.UDDownSample.Location = new System.Drawing.Point(84, 74);
+			this.UDDownSample.Margin = new System.Windows.Forms.Padding(2);
+			this.UDDownSample.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			this.UDDownSample.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.UDDownSample.Name = "UDDownSample";
+			this.UDDownSample.Size = new System.Drawing.Size(54, 20);
+			this.UDDownSample.TabIndex = 37;
+			this.TT.SetToolTip(this.UDDownSample, "Scale down original image [for HI-Res image]");
+			this.UDDownSample.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.UDDownSample.ValueChanged += new System.EventHandler(this.UDDownSample_ValueChanged);
+			// 
+			// CbDownSample
+			// 
+			this.CbDownSample.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.CbDownSample.AutoSize = true;
+			this.CbDownSample.Location = new System.Drawing.Point(143, 77);
+			this.CbDownSample.Margin = new System.Windows.Forms.Padding(2);
+			this.CbDownSample.Name = "CbDownSample";
+			this.CbDownSample.Size = new System.Drawing.Size(15, 14);
+			this.CbDownSample.TabIndex = 38;
+			this.CbDownSample.UseVisualStyleBackColor = true;
+			this.CbDownSample.CheckedChanged += new System.EventHandler(this.CbDownSample_CheckedChanged);
+			// 
 			// WB
 			// 
 			this.WB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1234,6 +1292,7 @@
 			this.tableLayoutPanel4.ResumeLayout(false);
 			this.tableLayoutPanel4.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.UDDownSample)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1307,5 +1366,8 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.Button BtnCancel;
 		private System.Windows.Forms.RadioButton RbDithering;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.NumericUpDown UDDownSample;
+		private System.Windows.Forms.CheckBox CbDownSample;
 	}
 }
