@@ -268,10 +268,11 @@ namespace LaserGRBL
 			foreach (ColorSegment seg in segments)
 			{
 				bool changespeed = (fast != seg.Fast); //se veloce != dafareveloce
-				fast = seg.Fast;
 
-				if (seg.IsSeparator)
+				if (seg.IsSeparator && !fast) //fast = previous segment contains S0 color
 					list.Add(new GrblCommand("S0"));
+
+				fast = seg.Fast;
 
 				if (changespeed)
 					list.Add(new GrblCommand(String.Format("{0} F{1} {2}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, seg.ToString())));
