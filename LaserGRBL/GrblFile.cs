@@ -169,8 +169,8 @@ namespace LaserGRBL
 							list.Add(new GrblCommand(String.Format("F{0}", travelSpeed)));
 							//move fast to offset
 							list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY))));
-							//laser off and power to maxPower						
-							list.Add(new GrblCommand(String.Format("{0} S{1}", lOff, maxPower)));
+							//laser on and power to zero						
+							list.Add(new GrblCommand(String.Format("{0} S0", lOn)));
 							//set speed to markspeed						
 							list.Add(new GrblCommand(String.Format("G1 F{0}", markSpeed)));
 							//relative
@@ -180,7 +180,7 @@ namespace LaserGRBL
 							ImageLine2Line(resampled, fres, markSpeed, travelSpeed, minPower, maxPower, lOn, lOff, fdir);
 
 							//laser off
-							list.Add(new GrblCommand(String.Format("{0}", lOff)));
+							list.Add(new GrblCommand(lOff));
 						}
 					}
 				}
@@ -238,19 +238,17 @@ namespace LaserGRBL
 			list.Add(new GrblCommand(String.Format("F{0}", travelSpeed)));
 			//move fast to offset
 			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(oX), formatnumber(oY))));
-			//laser off and power to maxPower						
-			list.Add(new GrblCommand(String.Format("{0} S{1}", lOff, maxPower)));
+			//laser on and power to zero						
+			list.Add(new GrblCommand(String.Format("{0} S0", lOn)));
 			//set speed to markspeed						
 			list.Add(new GrblCommand(String.Format("G1 F{0}", markSpeed)));
 			//relative
 			list.Add(new GrblCommand("G91"));
 			
-			
-			
 			ImageLine2Line(bmp, res, markSpeed, travelSpeed, minPower, maxPower, lOn, lOff, dir);
 
 			//laser off
-			list.Add(new GrblCommand(String.Format("{0}", lOff)));
+			list.Add(new GrblCommand(lOff));
 			//absolute
 			list.Add(new GrblCommand("G90"));
 			//move fast to origin
@@ -273,15 +271,15 @@ namespace LaserGRBL
 				fast = seg.Fast;
 
 				if (seg.IsSeparator)
-					list.Add(new GrblCommand(lOff));
+					list.Add(new GrblCommand("S0"));
 
 				if (changespeed)
 					list.Add(new GrblCommand(String.Format("{0} F{1} {2}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, seg.ToString())));
 				else
 					list.Add(new GrblCommand(seg.ToString()));
 
-				if (seg.IsSeparator)
-					list.Add(new GrblCommand(lOn));
+				//if (seg.IsSeparator)
+				//	list.Add(new GrblCommand(lOn));
 			}
 		}
 
