@@ -73,7 +73,7 @@ namespace LaserGRBL
 			{
 				TimerUpdate();
 				//TTTFile.Text = System.IO.Path.GetFileName(filename);
-				TTLines.Text = String.Format("Lines: {0}", Core.LoadedFile.Count);
+				TTTLines.Text = Core.LoadedFile.Count.ToString();
 				//TTTLoadedIn.Text = elapsed.ToString() + " ms";
 				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, " ,", true);
 			}
@@ -101,7 +101,7 @@ namespace LaserGRBL
 		private void TimerUpdate()
 		{
 			SuspendLayout();
-			TTStatus.Text = string.Format("Status: {0}", Core.MachineStatus);
+			TTTStatus.Text = Core.MachineStatus.ToString();
 
 			if (Core.InProgram)
 				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.ProjectedTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, " ,", true);
@@ -137,23 +137,23 @@ namespace LaserGRBL
 				//Disconnected, Connecting, Idle, *Run, *Hold, *Door, Home, *Alarm, *Check, *Jog
 					
 				case GrblCore.MacStatus.Alarm:
-					TTStatus.BackColor = Color.Red;
-					TTStatus.ForeColor = Color.White;
+					TTLStatus.BackColor = Color.Red;
+					TTLStatus.ForeColor = Color.White;
 					break;
 				case GrblCore.MacStatus.Door:
 				case GrblCore.MacStatus.Hold: 					
-					TTStatus.BackColor = Color.DarkOrange;
-					TTStatus.ForeColor = Color.Black;
+					TTLStatus.BackColor = Color.DarkOrange;
+					TTLStatus.ForeColor = Color.Black;
 					break;
 				case GrblCore.MacStatus.Jog:
 				case GrblCore.MacStatus.Run:
 				case GrblCore.MacStatus.Check:
-					TTStatus.BackColor = Color.LightGreen;
-					TTStatus.ForeColor = Color.Black;
+					TTLStatus.BackColor = Color.LightGreen;
+					TTLStatus.ForeColor = Color.Black;
 					break;
 				default:
-					TTStatus.BackColor = DefaultBackColor;
-					TTStatus.ForeColor = DefaultForeColor;
+					TTLStatus.BackColor = DefaultBackColor;
+					TTLStatus.ForeColor = DefaultForeColor;
 					break;
 					
 

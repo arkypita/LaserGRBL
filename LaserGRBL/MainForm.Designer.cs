@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			LaserGRBL.UserControls.DockingManager.DockPanelSkin dockPanelSkin1 = new LaserGRBL.UserControls.DockingManager.DockPanelSkin();
 			LaserGRBL.UserControls.DockingManager.AutoHideStripSkin autoHideStripSkin1 = new LaserGRBL.UserControls.DockingManager.AutoHideStripSkin();
 			LaserGRBL.UserControls.DockingManager.DockPanelGradient dockPanelGradient1 = new LaserGRBL.UserControls.DockingManager.DockPanelGradient();
@@ -44,9 +45,9 @@
 			LaserGRBL.UserControls.DockingManager.DockPanelGradient dockPanelGradient3 = new LaserGRBL.UserControls.DockingManager.DockPanelGradient();
 			LaserGRBL.UserControls.DockingManager.TabGradient tabGradient6 = new LaserGRBL.UserControls.DockingManager.TabGradient();
 			LaserGRBL.UserControls.DockingManager.TabGradient tabGradient7 = new LaserGRBL.UserControls.DockingManager.TabGradient();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
-			this.TTLines = new System.Windows.Forms.ToolStripStatusLabel();
+			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
+			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTLEstimated = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTEstimated = new System.Windows.Forms.ToolStripStatusLabel();
 			this.spring = new System.Windows.Forms.ToolStripStatusLabel();
@@ -54,8 +55,8 @@
 			this.TTOvG1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTOvS = new System.Windows.Forms.ToolStripStatusLabel();
 			this.spacer = new System.Windows.Forms.ToolStripStatusLabel();
-			this.TTStatus = new System.Windows.Forms.ToolStripStatusLabel();
-			this.spacer2 = new System.Windows.Forms.ToolStripStatusLabel();
+			this.TTLStatus = new System.Windows.Forms.ToolStripStatusLabel();
+			this.TTTStatus = new System.Windows.Forms.ToolStripStatusLabel();
 			this.UpdateTimer = new System.Windows.Forms.Timer(this.components);
 			this.MMn = new System.Windows.Forms.MenuStrip();
 			this.grblToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,103 +85,90 @@
 			// 
 			// StatusBar
 			// 
+			resources.ApplyResources(this.StatusBar, "StatusBar");
 			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.TTLines,
-			this.TTLEstimated,
-			this.TTTEstimated,
-			this.spring,
-			this.TTOvG0,
-			this.TTOvG1,
-			this.TTOvS,
-			this.spacer,
-			this.TTStatus,
-			this.spacer2});
-			this.StatusBar.Location = new System.Drawing.Point(0, 459);
+            this.TTLLines,
+            this.TTTLines,
+            this.TTLEstimated,
+            this.TTTEstimated,
+            this.spring,
+            this.TTOvG0,
+            this.TTOvG1,
+            this.TTOvS,
+            this.spacer,
+            this.TTLStatus,
+            this.TTTStatus});
 			this.StatusBar.Name = "StatusBar";
-			this.StatusBar.Size = new System.Drawing.Size(856, 24);
-			this.StatusBar.TabIndex = 1;
-			this.StatusBar.Text = "statusStrip1";
 			// 
-			// TTLines
+			// TTLLines
 			// 
-			this.TTLines.Name = "TTLines";
-			this.TTLines.Size = new System.Drawing.Size(46, 19);
-			this.TTLines.Text = "Lines: 0";
+			resources.ApplyResources(this.TTLLines, "TTLLines");
+			this.TTLLines.Name = "TTLLines";
+			// 
+			// TTTLines
+			// 
+			resources.ApplyResources(this.TTTLines, "TTTLines");
+			this.TTTLines.Name = "TTTLines";
 			// 
 			// TTLEstimated
 			// 
+			resources.ApplyResources(this.TTLEstimated, "TTLEstimated");
 			this.TTLEstimated.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
 			this.TTLEstimated.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
 			this.TTLEstimated.Name = "TTLEstimated";
-			this.TTLEstimated.Size = new System.Drawing.Size(96, 19);
-			this.TTLEstimated.Text = "Estimated Time:";
 			// 
 			// TTTEstimated
 			// 
+			resources.ApplyResources(this.TTTEstimated, "TTTEstimated");
 			this.TTTEstimated.Name = "TTTEstimated";
-			this.TTTEstimated.Size = new System.Drawing.Size(57, 19);
-			this.TTTEstimated.Text = "unknown";
 			// 
 			// spring
 			// 
+			resources.ApplyResources(this.spring, "spring");
 			this.spring.Name = "spring";
-			this.spring.Size = new System.Drawing.Size(506, 19);
 			this.spring.Spring = true;
 			// 
 			// TTOvG0
 			// 
-			this.TTOvG0.AutoSize = false;
+			resources.ApplyResources(this.TTOvG0, "TTOvG0");
 			this.TTOvG0.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
 			this.TTOvG0.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
 			this.TTOvG0.Name = "TTOvG0";
-			this.TTOvG0.Size = new System.Drawing.Size(60, 19);
-			this.TTOvG0.Text = "G0: 100%";
-			this.TTOvG0.Visible = false;
 			this.TTOvG0.Click += new System.EventHandler(this.TTOvClick);
 			// 
 			// TTOvG1
 			// 
-			this.TTOvG1.AutoSize = false;
+			resources.ApplyResources(this.TTOvG1, "TTOvG1");
 			this.TTOvG1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
 			this.TTOvG1.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
 			this.TTOvG1.Name = "TTOvG1";
-			this.TTOvG1.Size = new System.Drawing.Size(60, 19);
-			this.TTOvG1.Text = "G1: 100%";
-			this.TTOvG1.Visible = false;
 			this.TTOvG1.Click += new System.EventHandler(this.TTOvClick);
 			// 
 			// TTOvS
 			// 
-			this.TTOvS.AutoSize = false;
+			resources.ApplyResources(this.TTOvS, "TTOvS");
 			this.TTOvS.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
 			this.TTOvS.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
 			this.TTOvS.Name = "TTOvS";
-			this.TTOvS.Size = new System.Drawing.Size(55, 19);
-			this.TTOvS.Text = "S: 100%";
-			this.TTOvS.Visible = false;
 			this.TTOvS.Click += new System.EventHandler(this.TTOvClick);
 			// 
 			// spacer
 			// 
-			this.spacer.AutoSize = false;
+			resources.ApplyResources(this.spacer, "spacer");
 			this.spacer.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
 			this.spacer.Name = "spacer";
-			this.spacer.Size = new System.Drawing.Size(10, 19);
 			// 
-			// TTStatus
+			// TTLStatus
 			// 
-			this.TTStatus.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-			this.TTStatus.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-			this.TTStatus.Name = "TTStatus";
-			this.TTStatus.Size = new System.Drawing.Size(121, 19);
-			this.TTStatus.Text = "Status: Disconnected";
+			resources.ApplyResources(this.TTLStatus, "TTLStatus");
+			this.TTLStatus.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+			this.TTLStatus.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+			this.TTLStatus.Name = "TTLStatus";
 			// 
-			// spacer2
+			// TTTStatus
 			// 
-			this.spacer2.AutoSize = false;
-			this.spacer2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-			this.spacer2.Name = "spacer2";
-			this.spacer2.Size = new System.Drawing.Size(5, 19);
+			resources.ApplyResources(this.TTTStatus, "TTTStatus");
+			this.TTTStatus.Name = "TTTStatus";
 			// 
 			// UpdateTimer
 			// 
@@ -188,164 +176,144 @@
 			// 
 			// MMn
 			// 
+			resources.ApplyResources(this.MMn, "MMn");
 			this.MMn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.grblToolStripMenuItem,
-			this.fileToolStripMenuItem,
-			this.windowsToolStripMenuItem});
-			this.MMn.Location = new System.Drawing.Point(0, 0);
+            this.grblToolStripMenuItem,
+            this.fileToolStripMenuItem,
+            this.windowsToolStripMenuItem});
 			this.MMn.Name = "MMn";
-			this.MMn.Size = new System.Drawing.Size(856, 24);
-			this.MMn.TabIndex = 2;
-			this.MMn.Text = "menuStrip1";
 			// 
 			// grblToolStripMenuItem
 			// 
+			resources.ApplyResources(this.grblToolStripMenuItem, "grblToolStripMenuItem");
 			this.grblToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.MnConnect,
-			this.MnDisconnect,
-			this.toolStripMenuItem2,
-			this.MnGrblReset,
-			this.MnGoHome,
-			this.MnUnlock,
-			this.toolStripSeparator1,
-			this.MnExportConfig,
-			this.MnImportConfig,
-			this.toolStripMenuItem3,
-			this.MnExit});
+            this.MnConnect,
+            this.MnDisconnect,
+            this.toolStripMenuItem2,
+            this.MnGrblReset,
+            this.MnGoHome,
+            this.MnUnlock,
+            this.toolStripSeparator1,
+            this.MnExportConfig,
+            this.MnImportConfig,
+            this.toolStripMenuItem3,
+            this.MnExit});
 			this.grblToolStripMenuItem.Name = "grblToolStripMenuItem";
-			this.grblToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-			this.grblToolStripMenuItem.Text = "&Grbl";
 			// 
 			// MnConnect
 			// 
+			resources.ApplyResources(this.MnConnect, "MnConnect");
 			this.MnConnect.Name = "MnConnect";
-			this.MnConnect.Size = new System.Drawing.Size(149, 22);
-			this.MnConnect.Text = "&Connect";
 			this.MnConnect.Click += new System.EventHandler(this.MnConnect_Click);
 			// 
 			// MnDisconnect
 			// 
+			resources.ApplyResources(this.MnDisconnect, "MnDisconnect");
 			this.MnDisconnect.Name = "MnDisconnect";
-			this.MnDisconnect.Size = new System.Drawing.Size(149, 22);
-			this.MnDisconnect.Text = "&Disconnect";
 			this.MnDisconnect.Click += new System.EventHandler(this.MnDisconnect_Click);
 			// 
 			// toolStripMenuItem2
 			// 
+			resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
 			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(146, 6);
 			// 
 			// MnGrblReset
 			// 
+			resources.ApplyResources(this.MnGrblReset, "MnGrblReset");
 			this.MnGrblReset.Name = "MnGrblReset";
-			this.MnGrblReset.Size = new System.Drawing.Size(149, 22);
-			this.MnGrblReset.Text = "&Reset";
 			this.MnGrblReset.Click += new System.EventHandler(this.MnGrblReset_Click);
 			// 
 			// MnGoHome
 			// 
+			resources.ApplyResources(this.MnGoHome, "MnGoHome");
 			this.MnGoHome.Name = "MnGoHome";
-			this.MnGoHome.Size = new System.Drawing.Size(149, 22);
-			this.MnGoHome.Text = "&Homing";
 			this.MnGoHome.Click += new System.EventHandler(this.MnGoHome_Click);
 			// 
 			// MnUnlock
 			// 
+			resources.ApplyResources(this.MnUnlock, "MnUnlock");
 			this.MnUnlock.Name = "MnUnlock";
-			this.MnUnlock.Size = new System.Drawing.Size(149, 22);
-			this.MnUnlock.Text = "&Unlock";
 			this.MnUnlock.Click += new System.EventHandler(this.MnUnlock_Click);
 			// 
 			// toolStripSeparator1
 			// 
+			resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
 			// 
 			// MnExportConfig
 			// 
+			resources.ApplyResources(this.MnExportConfig, "MnExportConfig");
 			this.MnExportConfig.Name = "MnExportConfig";
-			this.MnExportConfig.Size = new System.Drawing.Size(149, 22);
-			this.MnExportConfig.Text = "E&xport Config";
 			this.MnExportConfig.Click += new System.EventHandler(this.MnExportConfigClick);
 			// 
 			// MnImportConfig
 			// 
+			resources.ApplyResources(this.MnImportConfig, "MnImportConfig");
 			this.MnImportConfig.Name = "MnImportConfig";
-			this.MnImportConfig.Size = new System.Drawing.Size(149, 22);
-			this.MnImportConfig.Text = "&Import Config";
 			this.MnImportConfig.Click += new System.EventHandler(this.MnImportConfigClick);
 			// 
 			// toolStripMenuItem3
 			// 
+			resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
 			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(146, 6);
 			// 
 			// MnExit
 			// 
+			resources.ApplyResources(this.MnExit, "MnExit");
 			this.MnExit.Name = "MnExit";
-			this.MnExit.Size = new System.Drawing.Size(149, 22);
-			this.MnExit.Text = "&Exit";
 			this.MnExit.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
 			// fileToolStripMenuItem
 			// 
+			resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.MnFileOpen,
-			this.MnSaveProgram,
-			this.toolStripMenuItem1,
-			this.MnFileSend});
+            this.MnFileOpen,
+            this.MnSaveProgram,
+            this.toolStripMenuItem1,
+            this.MnFileSend});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-			this.fileToolStripMenuItem.Text = "&File";
 			// 
 			// MnFileOpen
 			// 
+			resources.ApplyResources(this.MnFileOpen, "MnFileOpen");
 			this.MnFileOpen.Name = "MnFileOpen";
-			this.MnFileOpen.Size = new System.Drawing.Size(165, 22);
-			this.MnFileOpen.Text = "&Open File";
 			this.MnFileOpen.Click += new System.EventHandler(this.MnFileOpen_Click);
 			// 
 			// MnSaveProgram
 			// 
+			resources.ApplyResources(this.MnSaveProgram, "MnSaveProgram");
 			this.MnSaveProgram.Name = "MnSaveProgram";
-			this.MnSaveProgram.Size = new System.Drawing.Size(165, 22);
-			this.MnSaveProgram.Text = "&Save Program";
 			this.MnSaveProgram.Click += new System.EventHandler(this.MnSaveProgramClick);
 			// 
 			// toolStripMenuItem1
 			// 
+			resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(162, 6);
 			// 
 			// MnFileSend
 			// 
+			resources.ApplyResources(this.MnFileSend, "MnFileSend");
 			this.MnFileSend.Name = "MnFileSend";
-			this.MnFileSend.Size = new System.Drawing.Size(165, 22);
-			this.MnFileSend.Text = "Send To &Machine";
 			this.MnFileSend.Click += new System.EventHandler(this.MnFileSend_Click);
 			// 
 			// windowsToolStripMenuItem
 			// 
+			resources.ApplyResources(this.windowsToolStripMenuItem, "windowsToolStripMenuItem");
 			this.windowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.joggingToolStripMenuItem});
+            this.joggingToolStripMenuItem});
 			this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
-			this.windowsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-			this.windowsToolStripMenuItem.Text = "&Windows";
 			// 
 			// joggingToolStripMenuItem
 			// 
+			resources.ApplyResources(this.joggingToolStripMenuItem, "joggingToolStripMenuItem");
 			this.joggingToolStripMenuItem.Name = "joggingToolStripMenuItem";
-			this.joggingToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-			this.joggingToolStripMenuItem.Text = "&Jogging";
 			this.joggingToolStripMenuItem.Click += new System.EventHandler(this.joggingToolStripMenuItem_Click);
 			// 
 			// DockArea
 			// 
-			this.DockArea.Dock = System.Windows.Forms.DockStyle.Fill;
+			resources.ApplyResources(this.DockArea, "DockArea");
 			this.DockArea.DockBackColor = System.Drawing.SystemColors.Control;
-			this.DockArea.Location = new System.Drawing.Point(0, 0);
 			this.DockArea.Name = "DockArea";
-			this.DockArea.Size = new System.Drawing.Size(856, 483);
 			dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
 			dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
 			autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
@@ -392,21 +360,17 @@
 			dockPaneStripSkin1.ToolWindowGradient = dockPaneStripToolWindowGradient1;
 			dockPanelSkin1.DockPaneStripSkin = dockPaneStripSkin1;
 			this.DockArea.Skin = dockPanelSkin1;
-			this.DockArea.TabIndex = 3;
 			// 
 			// MainForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(856, 483);
 			this.Controls.Add(this.StatusBar);
 			this.Controls.Add(this.MMn);
 			this.Controls.Add(this.DockArea);
 			this.Cursor = System.Windows.Forms.Cursors.Default;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.IsMdiContainer = true;
 			this.Name = "MainForm";
-			this.Text = "Laser GRBL";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
@@ -420,7 +384,7 @@
 		}
 		
 		private System.Windows.Forms.StatusStrip StatusBar;
-		private System.Windows.Forms.ToolStripStatusLabel TTLines;
+		private System.Windows.Forms.ToolStripStatusLabel TTLLines;
 		private System.Windows.Forms.ToolStripStatusLabel TTLEstimated;
 		private System.Windows.Forms.ToolStripStatusLabel TTTEstimated;
 		private System.Windows.Forms.MenuStrip MMn;
@@ -436,13 +400,12 @@
 		private System.Windows.Forms.ToolStripMenuItem joggingToolStripMenuItem;
 		private System.Windows.Forms.Timer UpdateTimer;
 		private System.Windows.Forms.ToolStripStatusLabel spring;
-		private System.Windows.Forms.ToolStripStatusLabel TTStatus;
+		private System.Windows.Forms.ToolStripStatusLabel TTLStatus;
 		private LaserGRBL.UserControls.DockingManager.DockPanel DockArea;
 		private System.Windows.Forms.ToolStripStatusLabel TTOvG0;
 		private System.Windows.Forms.ToolStripStatusLabel TTOvG1;
 		private System.Windows.Forms.ToolStripStatusLabel TTOvS;
 		private System.Windows.Forms.ToolStripStatusLabel spacer;
-		private System.Windows.Forms.ToolStripStatusLabel spacer2;
 
 		#endregion
 		private System.Windows.Forms.ToolStripMenuItem MnConnect;
@@ -454,6 +417,8 @@
 		private System.Windows.Forms.ToolStripMenuItem MnExit;
 		private System.Windows.Forms.ToolStripMenuItem MnSaveProgram;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+		private System.Windows.Forms.ToolStripStatusLabel TTTLines;
+		private System.Windows.Forms.ToolStripStatusLabel TTTStatus;
 	}
 }
 
