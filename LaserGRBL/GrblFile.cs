@@ -265,23 +265,75 @@ namespace LaserGRBL
 		{
 			bool fast = false;
 			List<ColorSegment> segments = GetSegments(bmp, dir, minPower, maxPower, res);
+			List<GrblCommand> temp = new List<GrblCommand>();
 			foreach (ColorSegment seg in segments)
 			{
 				bool changespeed = (fast != seg.Fast); //se veloce != dafareveloce
 
 				if (seg.IsSeparator && !fast) //fast = previous segment contains S0 color
-					list.Add(new GrblCommand("S0"));
+					temp.Add(new GrblCommand("S0"));
 
 				fast = seg.Fast;
 
 				if (changespeed)
-					list.Add(new GrblCommand(String.Format("{0} F{1} {2}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, seg.ToString())));
+					temp.Add(new GrblCommand(String.Format("{0} F{1} {2}", fast ? "G0" : "G1", fast ? travelSpeed : markSpeed, seg.ToString())));
 				else
-					list.Add(new GrblCommand(seg.ToString()));
+					temp.Add(new GrblCommand(seg.ToString()));
 
 				//if (seg.IsSeparator)
 				//	list.Add(new GrblCommand(lOn));
 			}
+
+			temp = OptimizeLine2Line(temp);
+			list.AddRange(temp);
+		}
+
+		private List<GrblCommand> OptimizeLine2Line(List<GrblCommand> temp)
+		{
+			List<GrblCommand> rv = new List<GrblCommand>();
+
+			decimal cumX = 0;
+			decimal cumY = 0;
+			bool cumulate = false;
+
+			foreach (GrblCommand cmd in temp)
+			{
+				bool oldcumulate = cumulate;
+				if (cmd.S != null) //is S command
+				{
+					if (cmd.S.Number == 0) //is S command with zero power
+						cumulate = true;   //begin cumulate
+					else
+						cumulate = false;  //end cumulate
+				}
+
+				if (oldcumulate && !cumulate) //cumulate down front -> flush
+				{
+					rv.Add(new GrblCommand(string.Format("G1 X{0} Y{1} S0", formatnumber((double)cumX), formatnumber((double)cumY))));
+					cumX = cumY = 0;
+				}
+
+				if (cumulate) //cumulate
+				{
+					if (cmd.IsMovement)					
+					{
+						if (cmd.X != null)
+							cumX += cmd.X.Number;
+						if (cmd.Y != null)
+							cumY += cmd.Y.Number;
+					}
+					else
+					{
+						rv.Add(cmd);
+					}
+				}
+				else //emit line normally
+				{
+					rv.Add(cmd);
+				}
+			}
+
+			return rv;
 		}
 
 		private List<ColorSegment> GetSegments(Bitmap bmp, RasterConverter.ImageProcessor.Direction dir, int minPower, int maxPower, int res)

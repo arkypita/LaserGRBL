@@ -137,23 +137,23 @@ namespace LaserGRBL
 				//Disconnected, Connecting, Idle, *Run, *Hold, *Door, Home, *Alarm, *Check, *Jog
 					
 				case GrblCore.MacStatus.Alarm:
-					TTLStatus.BackColor = Color.Red;
-					TTLStatus.ForeColor = Color.White;
+					TTTStatus.BackColor = Color.Red;
+					TTTStatus.ForeColor = Color.White;
 					break;
 				case GrblCore.MacStatus.Door:
-				case GrblCore.MacStatus.Hold: 					
-					TTLStatus.BackColor = Color.DarkOrange;
-					TTLStatus.ForeColor = Color.Black;
+				case GrblCore.MacStatus.Hold:
+					TTTStatus.BackColor = Color.DarkOrange;
+					TTTStatus.ForeColor = Color.Black;
 					break;
 				case GrblCore.MacStatus.Jog:
 				case GrblCore.MacStatus.Run:
 				case GrblCore.MacStatus.Check:
-					TTLStatus.BackColor = Color.LightGreen;
-					TTLStatus.ForeColor = Color.Black;
+					TTTStatus.BackColor = Color.LightGreen;
+					TTTStatus.ForeColor = Color.Black;
 					break;
 				default:
-					TTLStatus.BackColor = DefaultBackColor;
-					TTLStatus.ForeColor = DefaultForeColor;
+					TTTStatus.BackColor = DefaultBackColor;
+					TTTStatus.ForeColor = DefaultForeColor;
 					break;
 					
 
