@@ -284,11 +284,11 @@ namespace LaserGRBL
 				//	list.Add(new GrblCommand(lOn));
 			}
 
-			temp = OptimizeLine2Line(temp);
+			temp = OptimizeLine2Line(temp, travelSpeed);
 			list.AddRange(temp);
 		}
 
-		private List<GrblCommand> OptimizeLine2Line(List<GrblCommand> temp)
+		private List<GrblCommand> OptimizeLine2Line(List<GrblCommand> temp, int travelSpeed)
 		{
 			List<GrblCommand> rv = new List<GrblCommand>();
 
@@ -309,7 +309,7 @@ namespace LaserGRBL
 
 				if (oldcumulate && !cumulate) //cumulate down front -> flush
 				{
-					rv.Add(new GrblCommand(string.Format("G1 X{0} Y{1} S0", formatnumber((double)cumX), formatnumber((double)cumY))));
+					rv.Add(new GrblCommand(string.Format("G1 X{0} Y{1} F{2} S0", formatnumber((double)cumX), formatnumber((double)cumY), travelSpeed)));
 					cumX = cumY = 0;
 				}
 
