@@ -60,188 +60,144 @@ namespace LaserGRBL
 			// 
 			// Preview
 			// 
+			resources.ApplyResources(this.Preview, "Preview");
 			this.Preview.BackColor = System.Drawing.SystemColors.Info;
-			this.Preview.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Preview.Location = new System.Drawing.Point(0, 0);
 			this.Preview.Name = "Preview";
-			this.Preview.Size = new System.Drawing.Size(617, 307);
-			this.Preview.TabIndex = 0;
+			this.TT.SetToolTip(this.Preview, resources.GetString("Preview.ToolTip"));
 			// 
 			// tableLayoutPanel8
 			// 
-			this.tableLayoutPanel8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			resources.ApplyResources(this.tableLayoutPanel8, "tableLayoutPanel8");
 			this.tableLayoutPanel8.BackColor = System.Drawing.SystemColors.Control;
-			this.tableLayoutPanel8.ColumnCount = 7;
-			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel8.Controls.Add(this.BtnGoHome, 1, 0);
 			this.tableLayoutPanel8.Controls.Add(this.BtnReset, 0, 0);
 			this.tableLayoutPanel8.Controls.Add(this.BtnStop, 6, 0);
 			this.tableLayoutPanel8.Controls.Add(this.BtnResume, 5, 0);
 			this.tableLayoutPanel8.Controls.Add(this.BtnUnlock, 2, 0);
 			this.tableLayoutPanel8.Controls.Add(this.CustomButtonArea, 4, 0);
-			this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 307);
-			this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(1);
 			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-			this.tableLayoutPanel8.RowCount = 1;
-			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel8.Size = new System.Drawing.Size(617, 56);
-			this.tableLayoutPanel8.TabIndex = 5;
+			this.TT.SetToolTip(this.tableLayoutPanel8, resources.GetString("tableLayoutPanel8.ToolTip"));
 			// 
 			// BtnGoHome
 			// 
+			resources.ApplyResources(this.BtnGoHome, "BtnGoHome");
 			this.BtnGoHome.AltImage = null;
-			this.BtnGoHome.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.BtnGoHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnGoHome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BtnGoHome.Coloration = System.Drawing.Color.Empty;
-			this.BtnGoHome.Enabled = false;
 			this.BtnGoHome.Image = ((System.Drawing.Image)(resources.GetObject("BtnGoHome.Image")));
-			this.BtnGoHome.Location = new System.Drawing.Point(58, 3);
 			this.BtnGoHome.Name = "BtnGoHome";
-			this.BtnGoHome.Size = new System.Drawing.Size(49, 49);
 			this.BtnGoHome.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnGoHome.TabIndex = 3;
-			this.TT.SetToolTip(this.BtnGoHome, "Homing ($H)");
+			this.TT.SetToolTip(this.BtnGoHome, resources.GetString("BtnGoHome.ToolTip"));
 			this.BtnGoHome.UseAltImage = false;
 			this.BtnGoHome.Click += new System.EventHandler(this.BtnGoHomeClick);
 			// 
 			// BtnReset
 			// 
+			resources.ApplyResources(this.BtnReset, "BtnReset");
 			this.BtnReset.AltImage = null;
-			this.BtnReset.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.BtnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnReset.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BtnReset.Coloration = System.Drawing.Color.Empty;
-			this.BtnReset.Enabled = false;
 			this.BtnReset.Image = ((System.Drawing.Image)(resources.GetObject("BtnReset.Image")));
-			this.BtnReset.Location = new System.Drawing.Point(3, 3);
 			this.BtnReset.Name = "BtnReset";
-			this.BtnReset.Size = new System.Drawing.Size(49, 49);
 			this.BtnReset.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnReset.TabIndex = 4;
-			this.TT.SetToolTip(this.BtnReset, "Grbl Reset (ctrl-x)");
+			this.TT.SetToolTip(this.BtnReset, resources.GetString("BtnReset.ToolTip"));
 			this.BtnReset.UseAltImage = false;
 			this.BtnReset.Click += new System.EventHandler(this.BtnResetClick);
 			// 
 			// BtnStop
 			// 
+			resources.ApplyResources(this.BtnStop, "BtnStop");
 			this.BtnStop.AltImage = ((System.Drawing.Image)(resources.GetObject("BtnStop.AltImage")));
-			this.BtnStop.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.BtnStop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnStop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BtnStop.Coloration = System.Drawing.Color.Empty;
-			this.BtnStop.Enabled = false;
 			this.BtnStop.Image = ((System.Drawing.Image)(resources.GetObject("BtnStop.Image")));
-			this.BtnStop.Location = new System.Drawing.Point(565, 3);
 			this.BtnStop.Name = "BtnStop";
-			this.BtnStop.Size = new System.Drawing.Size(49, 49);
 			this.BtnStop.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnStop.TabIndex = 5;
-			this.TT.SetToolTip(this.BtnStop, "Feed Hold");
+			this.TT.SetToolTip(this.BtnStop, resources.GetString("BtnStop.ToolTip"));
 			this.BtnStop.UseAltImage = false;
 			this.BtnStop.Click += new System.EventHandler(this.BtnStopClick);
 			// 
 			// BtnResume
 			// 
+			resources.ApplyResources(this.BtnResume, "BtnResume");
 			this.BtnResume.AltImage = null;
-			this.BtnResume.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.BtnResume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnResume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BtnResume.Coloration = System.Drawing.Color.Empty;
-			this.BtnResume.Enabled = false;
 			this.BtnResume.Image = ((System.Drawing.Image)(resources.GetObject("BtnResume.Image")));
-			this.BtnResume.Location = new System.Drawing.Point(510, 3);
 			this.BtnResume.Name = "BtnResume";
-			this.BtnResume.Size = new System.Drawing.Size(49, 49);
 			this.BtnResume.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnResume.TabIndex = 6;
-			this.TT.SetToolTip(this.BtnResume, "Resume");
+			this.TT.SetToolTip(this.BtnResume, resources.GetString("BtnResume.ToolTip"));
 			this.BtnResume.UseAltImage = false;
 			this.BtnResume.Click += new System.EventHandler(this.BtnResumeClick);
 			// 
 			// BtnUnlock
 			// 
+			resources.ApplyResources(this.BtnUnlock, "BtnUnlock");
 			this.BtnUnlock.AltImage = null;
-			this.BtnUnlock.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.BtnUnlock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnUnlock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BtnUnlock.Coloration = System.Drawing.Color.Empty;
-			this.BtnUnlock.Enabled = false;
 			this.BtnUnlock.Image = ((System.Drawing.Image)(resources.GetObject("BtnUnlock.Image")));
-			this.BtnUnlock.Location = new System.Drawing.Point(113, 3);
 			this.BtnUnlock.Name = "BtnUnlock";
-			this.BtnUnlock.Size = new System.Drawing.Size(49, 49);
 			this.BtnUnlock.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnUnlock.TabIndex = 7;
-			this.TT.SetToolTip(this.BtnUnlock, "Grbl Unlock ($X)");
+			this.TT.SetToolTip(this.BtnUnlock, resources.GetString("BtnUnlock.ToolTip"));
 			this.BtnUnlock.UseAltImage = false;
 			this.BtnUnlock.Click += new System.EventHandler(this.BtnUnlockClick);
 			// 
 			// CustomButtonArea
 			// 
-			this.CustomButtonArea.AutoSize = true;
-			this.CustomButtonArea.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			resources.ApplyResources(this.CustomButtonArea, "CustomButtonArea");
 			this.CustomButtonArea.ContextMenuStrip = this.MNAddCB;
-			this.CustomButtonArea.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.CustomButtonArea.Location = new System.Drawing.Point(185, 0);
-			this.CustomButtonArea.Margin = new System.Windows.Forms.Padding(0);
 			this.CustomButtonArea.Name = "CustomButtonArea";
-			this.CustomButtonArea.Size = new System.Drawing.Size(322, 56);
-			this.CustomButtonArea.TabIndex = 8;
+			this.TT.SetToolTip(this.CustomButtonArea, resources.GetString("CustomButtonArea.ToolTip"));
 			// 
 			// MNAddCB
 			// 
+			resources.ApplyResources(this.MNAddCB, "MNAddCB");
 			this.MNAddCB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addCustomButtonToolStripMenuItem});
 			this.MNAddCB.Name = "CMM";
-			this.MNAddCB.Size = new System.Drawing.Size(181, 26);
+			this.TT.SetToolTip(this.MNAddCB, resources.GetString("MNAddCB.ToolTip"));
 			// 
 			// addCustomButtonToolStripMenuItem
 			// 
+			resources.ApplyResources(this.addCustomButtonToolStripMenuItem, "addCustomButtonToolStripMenuItem");
 			this.addCustomButtonToolStripMenuItem.Name = "addCustomButtonToolStripMenuItem";
-			this.addCustomButtonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.addCustomButtonToolStripMenuItem.Text = "Add Custom Button";
 			this.addCustomButtonToolStripMenuItem.Click += new System.EventHandler(this.addCustomButtonToolStripMenuItem_Click);
 			// 
 			// MNRemEditCB
 			// 
+			resources.ApplyResources(this.MNRemEditCB, "MNRemEditCB");
 			this.MNRemEditCB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.RemoveButton,
             this.editButtonToolStripMenuItem});
 			this.MNRemEditCB.Name = "CMM";
-			this.MNRemEditCB.Size = new System.Drawing.Size(157, 70);
+			this.TT.SetToolTip(this.MNRemEditCB, resources.GetString("MNRemEditCB.ToolTip"));
 			// 
 			// RemoveButton
 			// 
+			resources.ApplyResources(this.RemoveButton, "RemoveButton");
 			this.RemoveButton.Name = "RemoveButton";
-			this.RemoveButton.Size = new System.Drawing.Size(156, 22);
-			this.RemoveButton.Text = "Remove Button";
 			// 
 			// editButtonToolStripMenuItem
 			// 
+			resources.ApplyResources(this.editButtonToolStripMenuItem, "editButtonToolStripMenuItem");
 			this.editButtonToolStripMenuItem.Name = "editButtonToolStripMenuItem";
-			this.editButtonToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-			this.editButtonToolStripMenuItem.Text = "Edit Button";
 			// 
 			// PreviewForm
 			// 
-			this.ClientSize = new System.Drawing.Size(617, 363);
+			resources.ApplyResources(this, "$this");
 			this.CloseButton = false;
 			this.CloseButtonVisible = false;
 			this.Controls.Add(this.Preview);
 			this.Controls.Add(this.tableLayoutPanel8);
 			this.DockAreas = LaserGRBL.UserControls.DockingManager.DockAreas.Document;
-			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Name = "PreviewForm";
-			this.Text = "Preview";
-			this.ToolTipText = "Preview";
+			this.TT.SetToolTip(this, resources.GetString("$this.ToolTip"));
 			this.tableLayoutPanel8.ResumeLayout(false);
 			this.tableLayoutPanel8.PerformLayout();
 			this.MNAddCB.ResumeLayout(false);

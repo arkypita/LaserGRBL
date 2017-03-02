@@ -91,315 +91,207 @@ namespace LaserGRBL
 			// 
 			// tableLayoutPanel1
 			// 
+			resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
 			this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlDark;
-			this.tableLayoutPanel1.ColumnCount = 1;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel1.Controls.Add(this.GBCommands, 0, 2);
 			this.tableLayoutPanel1.Controls.Add(this.GBFile, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.GBConnection, 0, 0);
-			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 3;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(333, 468);
-			this.tableLayoutPanel1.TabIndex = 1;
+			this.TT.SetToolTip(this.tableLayoutPanel1, resources.GetString("tableLayoutPanel1.ToolTip"));
 			// 
 			// GBCommands
 			// 
+			resources.ApplyResources(this.GBCommands, "GBCommands");
 			this.GBCommands.BackColor = System.Drawing.SystemColors.Control;
 			this.GBCommands.Controls.Add(this.tableLayoutPanel6);
-			this.GBCommands.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.GBCommands.Location = new System.Drawing.Point(1, 93);
-			this.GBCommands.Margin = new System.Windows.Forms.Padding(1);
 			this.GBCommands.Name = "GBCommands";
-			this.GBCommands.Size = new System.Drawing.Size(331, 374);
-			this.GBCommands.TabIndex = 2;
+			this.TT.SetToolTip(this.GBCommands, resources.GetString("GBCommands.ToolTip"));
 			// 
 			// tableLayoutPanel6
 			// 
-			this.tableLayoutPanel6.ColumnCount = 1;
-			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			resources.ApplyResources(this.tableLayoutPanel6, "tableLayoutPanel6");
 			this.tableLayoutPanel6.Controls.Add(this.TxtManualCommand, 0, 0);
 			this.tableLayoutPanel6.Controls.Add(this.CmdLog, 0, 1);
-			this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-			this.tableLayoutPanel6.RowCount = 2;
-			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel6.Size = new System.Drawing.Size(331, 374);
-			this.tableLayoutPanel6.TabIndex = 0;
+			this.TT.SetToolTip(this.tableLayoutPanel6, resources.GetString("tableLayoutPanel6.ToolTip"));
 			// 
 			// TxtManualCommand
 			// 
+			resources.ApplyResources(this.TxtManualCommand, "TxtManualCommand");
 			this.TxtManualCommand.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.TxtManualCommand.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TxtManualCommand.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.TxtManualCommand.Location = new System.Drawing.Point(1, 1);
-			this.TxtManualCommand.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
 			this.TxtManualCommand.Name = "TxtManualCommand";
-			this.TxtManualCommand.Size = new System.Drawing.Size(329, 22);
-			this.TxtManualCommand.TabIndex = 4;
+			this.TT.SetToolTip(this.TxtManualCommand, resources.GetString("TxtManualCommand.ToolTip"));
 			this.TxtManualCommand.CommandEntered += new LaserGRBL.UserControls.GrblTextBox.CommandEnteredDlg(this.TxtManualCommandCommandEntered);
 			// 
 			// CmdLog
 			// 
+			resources.ApplyResources(this.CmdLog, "CmdLog");
 			this.CmdLog.BackColor = System.Drawing.Color.White;
 			this.CmdLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.CmdLog.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.CmdLog.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.CmdLog.Location = new System.Drawing.Point(3, 26);
 			this.CmdLog.Name = "CmdLog";
-			this.CmdLog.Size = new System.Drawing.Size(325, 345);
-			this.CmdLog.TabIndex = 5;
+			this.TT.SetToolTip(this.CmdLog, resources.GetString("CmdLog.ToolTip"));
 			// 
 			// GBFile
 			// 
-			this.GBFile.AutoSize = true;
-			this.GBFile.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			resources.ApplyResources(this.GBFile, "GBFile");
 			this.GBFile.BackColor = System.Drawing.SystemColors.Control;
 			this.GBFile.Controls.Add(this.tableLayoutPanel5);
-			this.GBFile.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.GBFile.Location = new System.Drawing.Point(1, 47);
-			this.GBFile.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
 			this.GBFile.Name = "GBFile";
-			this.GBFile.Size = new System.Drawing.Size(331, 45);
-			this.GBFile.TabIndex = 1;
+			this.TT.SetToolTip(this.GBFile, resources.GetString("GBFile.ToolTip"));
 			// 
 			// tableLayoutPanel5
 			// 
-			this.tableLayoutPanel5.AutoSize = true;
-			this.tableLayoutPanel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.tableLayoutPanel5.ColumnCount = 4;
-			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
 			this.tableLayoutPanel5.Controls.Add(this.label5, 0, 1);
 			this.tableLayoutPanel5.Controls.Add(this.label3, 0, 0);
 			this.tableLayoutPanel5.Controls.Add(this.TbFileName, 1, 0);
 			this.tableLayoutPanel5.Controls.Add(this.PB, 1, 1);
 			this.tableLayoutPanel5.Controls.Add(this.BtnOpen, 3, 0);
 			this.tableLayoutPanel5.Controls.Add(this.BtnRunProgram, 3, 1);
-			this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-			this.tableLayoutPanel5.RowCount = 2;
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel5.Size = new System.Drawing.Size(331, 45);
-			this.tableLayoutPanel5.TabIndex = 0;
+			this.TT.SetToolTip(this.tableLayoutPanel5, resources.GetString("tableLayoutPanel5.ToolTip"));
 			// 
 			// label5
 			// 
-			this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(1, 27);
-			this.label5.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
+			resources.ApplyResources(this.label5, "label5");
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(48, 13);
-			this.label5.TabIndex = 8;
-			this.label5.Text = "Progress";
+			this.TT.SetToolTip(this.label5, resources.GetString("label5.ToolTip"));
 			// 
 			// label3
 			// 
-			this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(1, 4);
-			this.label3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
+			resources.ApplyResources(this.label3, "label3");
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(49, 13);
-			this.label3.TabIndex = 0;
-			this.label3.Text = "Filename";
+			this.TT.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
 			// 
 			// TbFileName
 			// 
+			resources.ApplyResources(this.TbFileName, "TbFileName");
 			this.tableLayoutPanel5.SetColumnSpan(this.TbFileName, 2);
-			this.TbFileName.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TbFileName.Location = new System.Drawing.Point(52, 1);
-			this.TbFileName.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
 			this.TbFileName.Name = "TbFileName";
 			this.TbFileName.ReadOnly = true;
-			this.TbFileName.Size = new System.Drawing.Size(259, 20);
-			this.TbFileName.TabIndex = 1;
+			this.TT.SetToolTip(this.TbFileName, resources.GetString("TbFileName.ToolTip"));
 			// 
 			// PB
 			// 
+			resources.ApplyResources(this.PB, "PB");
 			this.PB.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			this.PB.BorderColor = System.Drawing.Color.Black;
 			this.tableLayoutPanel5.SetColumnSpan(this.PB, 2);
-			this.PB.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PB.DrawProgressString = true;
 			this.PB.FillColor = System.Drawing.Color.White;
 			this.PB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
-			this.PB.Location = new System.Drawing.Point(52, 22);
-			this.PB.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
 			this.PB.Maximum = 100D;
 			this.PB.Minimum = 0D;
 			this.PB.Name = "PB";
 			this.PB.PercString = null;
 			this.PB.ProgressStringDecimals = 0;
 			this.PB.Reverse = false;
-			this.PB.Size = new System.Drawing.Size(259, 23);
 			this.PB.Step = 10D;
-			this.PB.TabIndex = 7;
 			this.PB.ThrowExceprion = false;
+			this.TT.SetToolTip(this.PB, resources.GetString("PB.ToolTip"));
 			this.PB.Value = 0D;
 			// 
 			// BtnOpen
 			// 
+			resources.ApplyResources(this.BtnOpen, "BtnOpen");
 			this.BtnOpen.AltImage = null;
-			this.BtnOpen.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.BtnOpen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnOpen.Coloration = System.Drawing.Color.Empty;
 			this.BtnOpen.Image = ((System.Drawing.Image)(resources.GetObject("BtnOpen.Image")));
-			this.BtnOpen.Location = new System.Drawing.Point(313, 2);
-			this.BtnOpen.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
 			this.BtnOpen.Name = "BtnOpen";
-			this.BtnOpen.Size = new System.Drawing.Size(17, 17);
 			this.BtnOpen.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnOpen.TabIndex = 2;
-			this.TT.SetToolTip(this.BtnOpen, "Open File");
+			this.TT.SetToolTip(this.BtnOpen, resources.GetString("BtnOpen.ToolTip"));
 			this.BtnOpen.UseAltImage = false;
 			this.BtnOpen.Click += new System.EventHandler(this.BtnOpenClick);
 			// 
 			// BtnRunProgram
 			// 
+			resources.ApplyResources(this.BtnRunProgram, "BtnRunProgram");
 			this.BtnRunProgram.AltImage = null;
-			this.BtnRunProgram.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.BtnRunProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnRunProgram.Coloration = System.Drawing.Color.Empty;
-			this.BtnRunProgram.Enabled = false;
 			this.BtnRunProgram.Image = ((System.Drawing.Image)(resources.GetObject("BtnRunProgram.Image")));
-			this.BtnRunProgram.Location = new System.Drawing.Point(313, 25);
-			this.BtnRunProgram.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
 			this.BtnRunProgram.Name = "BtnRunProgram";
-			this.BtnRunProgram.Size = new System.Drawing.Size(17, 17);
 			this.BtnRunProgram.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnRunProgram.TabIndex = 3;
-			this.TT.SetToolTip(this.BtnRunProgram, "Run Program");
+			this.TT.SetToolTip(this.BtnRunProgram, resources.GetString("BtnRunProgram.ToolTip"));
 			this.BtnRunProgram.UseAltImage = false;
 			this.BtnRunProgram.Click += new System.EventHandler(this.BtnRunProgramClick);
 			// 
 			// GBConnection
 			// 
-			this.GBConnection.AutoSize = true;
-			this.GBConnection.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			resources.ApplyResources(this.GBConnection, "GBConnection");
 			this.GBConnection.BackColor = System.Drawing.SystemColors.Control;
 			this.GBConnection.Controls.Add(this.tableLayoutPanel4);
-			this.GBConnection.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.GBConnection.Location = new System.Drawing.Point(1, 1);
-			this.GBConnection.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
 			this.GBConnection.Name = "GBConnection";
-			this.GBConnection.Size = new System.Drawing.Size(331, 45);
-			this.GBConnection.TabIndex = 0;
+			this.TT.SetToolTip(this.GBConnection, resources.GetString("GBConnection.ToolTip"));
 			// 
 			// tableLayoutPanel4
 			// 
-			this.tableLayoutPanel4.AutoSize = true;
-			this.tableLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.tableLayoutPanel4.ColumnCount = 3;
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
 			this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
 			this.tableLayoutPanel4.Controls.Add(this.label2, 0, 1);
 			this.tableLayoutPanel4.Controls.Add(this.CBPort, 1, 0);
 			this.tableLayoutPanel4.Controls.Add(this.CBSpeed, 1, 1);
 			this.tableLayoutPanel4.Controls.Add(this.BtnConnectDisconnect, 2, 0);
-			this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-			this.tableLayoutPanel4.RowCount = 2;
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel4.Size = new System.Drawing.Size(331, 45);
-			this.tableLayoutPanel4.TabIndex = 0;
+			this.TT.SetToolTip(this.tableLayoutPanel4, resources.GetString("tableLayoutPanel4.ToolTip"));
 			// 
 			// label1
 			// 
-			this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(1, 5);
-			this.label1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
+			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(53, 13);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "COM Port";
+			this.TT.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
 			// 
 			// label2
 			// 
-			this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(1, 27);
-			this.label2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
+			resources.ApplyResources(this.label2, "label2");
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(58, 13);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "Baud Rate";
+			this.TT.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
 			// 
 			// CBPort
 			// 
-			this.CBPort.Dock = System.Windows.Forms.DockStyle.Fill;
+			resources.ApplyResources(this.CBPort, "CBPort");
 			this.CBPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CBPort.FormattingEnabled = true;
-			this.CBPort.Location = new System.Drawing.Point(61, 1);
-			this.CBPort.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
 			this.CBPort.Name = "CBPort";
-			this.CBPort.Size = new System.Drawing.Size(223, 21);
-			this.CBPort.TabIndex = 2;
+			this.TT.SetToolTip(this.CBPort, resources.GetString("CBPort.ToolTip"));
 			this.CBPort.SelectedIndexChanged += new System.EventHandler(this.CBPort_SelectedIndexChanged);
 			// 
 			// CBSpeed
 			// 
-			this.CBSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
+			resources.ApplyResources(this.CBSpeed, "CBSpeed");
 			this.CBSpeed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CBSpeed.FormattingEnabled = true;
-			this.CBSpeed.Location = new System.Drawing.Point(61, 23);
-			this.CBSpeed.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
 			this.CBSpeed.Name = "CBSpeed";
-			this.CBSpeed.Size = new System.Drawing.Size(223, 21);
-			this.CBSpeed.TabIndex = 3;
+			this.TT.SetToolTip(this.CBSpeed, resources.GetString("CBSpeed.ToolTip"));
 			this.CBSpeed.SelectedIndexChanged += new System.EventHandler(this.CBSpeed_SelectedIndexChanged);
 			// 
 			// BtnConnectDisconnect
 			// 
+			resources.ApplyResources(this.BtnConnectDisconnect, "BtnConnectDisconnect");
 			this.BtnConnectDisconnect.AltImage = ((System.Drawing.Image)(resources.GetObject("BtnConnectDisconnect.AltImage")));
 			this.BtnConnectDisconnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnConnectDisconnect.Coloration = System.Drawing.Color.Empty;
-			this.BtnConnectDisconnect.Dock = System.Windows.Forms.DockStyle.Left;
 			this.BtnConnectDisconnect.Image = ((System.Drawing.Image)(resources.GetObject("BtnConnectDisconnect.Image")));
-			this.BtnConnectDisconnect.Location = new System.Drawing.Point(286, 1);
-			this.BtnConnectDisconnect.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
 			this.BtnConnectDisconnect.Name = "BtnConnectDisconnect";
 			this.tableLayoutPanel4.SetRowSpan(this.BtnConnectDisconnect, 2);
-			this.BtnConnectDisconnect.Size = new System.Drawing.Size(44, 44);
 			this.BtnConnectDisconnect.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
-			this.BtnConnectDisconnect.TabIndex = 4;
-			this.TT.SetToolTip(this.BtnConnectDisconnect, "Connect");
+			this.TT.SetToolTip(this.BtnConnectDisconnect, resources.GetString("BtnConnectDisconnect.ToolTip"));
 			this.BtnConnectDisconnect.UseAltImage = false;
 			this.BtnConnectDisconnect.Click += new System.EventHandler(this.BtnConnectDisconnectClick);
 			// 
 			// ConnectLogForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(333, 468);
 			this.CloseButton = false;
 			this.CloseButtonVisible = false;
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.DockAreas = ((LaserGRBL.UserControls.DockingManager.DockAreas)(((LaserGRBL.UserControls.DockingManager.DockAreas.Float | LaserGRBL.UserControls.DockingManager.DockAreas.DockLeft) 
-			| LaserGRBL.UserControls.DockingManager.DockAreas.DockRight)));
-			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            | LaserGRBL.UserControls.DockingManager.DockAreas.DockRight)));
 			this.Name = "ConnectLogForm";
 			this.ShowHint = LaserGRBL.UserControls.DockingManager.DockState.DockLeft;
-			this.Text = "Connection";
-			this.ToolTipText = "Connection";
+			this.TT.SetToolTip(this, resources.GetString("$this.ToolTip"));
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.GBCommands.ResumeLayout(false);

@@ -327,15 +327,6 @@
   <data name="BtnRevert.ToolTip" xml:space="preserve">
     <value>Annulla le modifiche</value>
   </data>
-  <data name="GbVectorizeOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 164</value>
-  </data>
-  <data name="GbVectorizeOptions.Text" xml:space="preserve">
-    <value>Opzioni Vettorizza!</value>
-  </data>
-  <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 145</value>
-  </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 13</value>
   </data>
@@ -426,14 +417,14 @@
   <data name="CbDownSample.Location" type="System.Drawing.Point, System.Drawing">
     <value>155, 77</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 231</value>
+  <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 145</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Parametri</value>
+  <data name="GbVectorizeOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 164</value>
   </data>
-  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 212</value>
+  <data name="GbVectorizeOptions.Text" xml:space="preserve">
+    <value>Opzioni Vettorizza!</value>
   </data>
   <data name="CbResize.Location" type="System.Drawing.Point, System.Drawing">
     <value>65, 2</value>
@@ -516,14 +507,14 @@
   <data name="TbThreshold.Location" type="System.Drawing.Point, System.Drawing">
     <value>64, 186</value>
   </data>
-  <data name="GbLineToLineOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 89</value>
+  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 212</value>
   </data>
-  <data name="GbLineToLineOptions.Text" xml:space="preserve">
-    <value>Opzioni linea per linea</value>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 231</value>
   </data>
-  <data name="TLP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 70</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Parametri</value>
   </data>
   <data name="CbDirections.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 2</value>
@@ -564,14 +555,14 @@
   <data name="label8.Text" xml:space="preserve">
     <value>Linee/mm</value>
   </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 82</value>
+  <data name="TLP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 70</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Strumento di conversione</value>
+  <data name="GbLineToLineOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 89</value>
   </data>
-  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 63</value>
+  <data name="GbLineToLineOptions.Text" xml:space="preserve">
+    <value>Opzioni linea per linea</value>
   </data>
   <data name="RbDithering.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 17</value>
@@ -600,11 +591,20 @@
   <data name="RbLineToLineTracing.ToolTip" xml:space="preserve">
     <value>Produce delle linee in toni di grigio</value>
   </data>
+  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 63</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 82</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Strumento di conversione</value>
+  </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Annulla</value>
   </data>
   <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Prossimo</value>
+    <value>Avanti</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Importa immagine raster</value>
