@@ -37,6 +37,8 @@ Development status and roadmap can be found here: [Roadmap](https://github.com/a
 
 #### Screenshot
 
+[<img src="https://cloud.githubusercontent.com/assets/8782035/23531060/cf643988-ffa4-11e6-945e-f3058ede4464.jpg">](http://www.youtube.com/watch?v=S_btjHC1np0)
+
 ![Galeon](https://cloud.githubusercontent.com/assets/8782035/21349915/dba84a5a-c6b4-11e6-965f-a74fd283267a.jpg)
 
 ![Raster2Laser](https://cloud.githubusercontent.com/assets/8782035/21425748/34400d46-c84b-11e6-99e5-6eb529a98f8f.jpg)
