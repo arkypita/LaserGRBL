@@ -37,7 +37,7 @@ Development status and roadmap can be found here: [Roadmap](https://github.com/a
 
 #### Screenshot
 
-[<img src="https://cloud.githubusercontent.com/assets/8782035/23531060/cf643988-ffa4-11e6-945e-f3058ede4464.jpg">](http://www.youtube.com/watch?v=S_btjHC1np0)
+[<img src="https://cloud.githubusercontent.com/assets/8782035/23578353/fba95768-00d4-11e7-9357-99c00a30631d.jpg">](https://www.youtube.com/watch?v=Uk2fGoNL3Yk)
 
 ![Galeon](https://cloud.githubusercontent.com/assets/8782035/21349915/dba84a5a-c6b4-11e6-965f-a74fd283267a.jpg)
 
