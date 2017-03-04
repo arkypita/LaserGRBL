@@ -117,8 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Preview.ToolTip" xml:space="preserve">
-    <value />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Preview.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnGoHome.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -203,6 +204,9 @@
         BuoDDx7W++0/qPfffzDVyCkSZuSIwOfhHLef47fTnq1835UsJV/yWgx/jwwmbYmZgP8JC2JNbIiEUJDr
         7uQ50p/0e0z+YsSOmOYxzSnzdySt2dAMf/XflTl3Tx/EvToAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="BtnGoHome.ToolTip" xml:space="preserve">
+    <value>Inicio ($H)</value>
   </data>
   <data name="BtnReset.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -599,19 +603,25 @@
         7okvi38IE3IQWfnDAH5CTJL+A7x5O+ClaLW4AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="MNAddCB.ToolTip" xml:space="preserve">
-    <value />
+  <data name="BtnUnlock.ToolTip" xml:space="preserve">
+    <value>Grbl Desbloquear ($X)</value>
   </data>
-  <data name="CustomButtonArea.ToolTip" xml:space="preserve">
-    <value />
+  <data name="addCustomButtonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 26</value>
   </data>
-  <data name="tableLayoutPanel8.ToolTip" xml:space="preserve">
-    <value />
+  <data name="MNAddCB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 30</value>
   </data>
-  <data name="MNRemEditCB.ToolTip" xml:space="preserve">
-    <value />
+  <data name="RemoveButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 26</value>
   </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
+  <data name="editButtonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 26</value>
+  </data>
+  <data name="MNRemEditCB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 56</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Previo</value>
   </data>
 </root>

@@ -118,23 +118,57 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="GBCommands.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 114</value>
+  <data name="TxtManualCommand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 25</value>
   </data>
-  <data name="GBCommands.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 353</value>
+  <data name="CmdLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 31</value>
   </data>
-  <data name="GBFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 68</value>
-  </data>
-  <data name="GBConnection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 66</value>
-  </data>
-  <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 353</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="CmdLog.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
   </data>
   <data name="CmdLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 324</value>
+    <value>432, 451</value>
+  </data>
+  <data name="tableLayoutPanel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>442, 487</value>
+  </data>
+  <data name="GBCommands.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 124</value>
+  </data>
+  <data name="GBCommands.Size" type="System.Drawing.Size, System.Drawing">
+    <value>442, 487</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 31</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Progreso</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 17</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Nombre de Archivo</value>
+  </data>
+  <data name="TbFileName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 1</value>
+  </data>
+  <data name="TbFileName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 23</value>
+  </data>
+  <data name="PB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 25</value>
+  </data>
+  <data name="PB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 30</value>
   </data>
   <data name="BtnOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -154,6 +188,12 @@
         QmCC
 </value>
   </data>
+  <data name="BtnOpen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>424, 4</value>
+  </data>
+  <data name="BtnOpen.ToolTip" xml:space="preserve">
+    <value>Abrir Archivo</value>
+  </data>
   <data name="BtnRunProgram.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAK
@@ -170,17 +210,50 @@
         TkSuQmCC
 </value>
   </data>
-  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 66</value>
+  <data name="BtnRunProgram.Location" type="System.Drawing.Point, System.Drawing">
+    <value>424, 31</value>
+  </data>
+  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
+    <value>Correr Programa</value>
+  </data>
+  <data name="tableLayoutPanel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>442, 55</value>
+  </data>
+  <data name="GBFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 68</value>
+  </data>
+  <data name="GBFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>442, 55</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 17</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Puerto COMM</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 38</value>
   </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 17</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Tasa de Transmisión</value>
+  </data>
+  <data name="CBPort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 1</value>
+  </data>
   <data name="CBPort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 21</value>
+    <value>230, 25</value>
+  </data>
+  <data name="CBSpeed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 27</value>
   </data>
   <data name="CBSpeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 21</value>
+    <value>230, 25</value>
   </data>
   <data name="BtnConnectDisconnect.AltImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -325,9 +398,39 @@
 </value>
   </data>
   <data name="BtnConnectDisconnect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 1</value>
+    <value>376, 1</value>
   </data>
   <data name="BtnConnectDisconnect.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 65</value>
+  </data>
+  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
+    <value>Conectar</value>
+  </data>
+  <data name="tableLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>442, 66</value>
+  </data>
+  <data name="GBConnection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>442, 66</value>
+  </data>
+  <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>444, 612</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 17</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>444, 612</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Conexión</value>
   </data>
 </root>

@@ -117,118 +117,311 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;DockArea.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="MMn.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;MMn.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
+  <metadata name="StatusBar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>194, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="MnDisconnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+  <data name="StatusBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 459</value>
   </data>
-  <data name="TTOvG1.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;TTTLines.Name" xml:space="preserve">
-    <value>TTTLines</value>
-  </data>
-  <data name="&gt;&gt;MnExportConfig.Name" xml:space="preserve">
-    <value>MnExportConfig</value>
-  </data>
-  <data name="&gt;&gt;UpdateTimer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="MnConnect.Text" xml:space="preserve">
-    <value>&amp;Connect</value>
-  </data>
-  <data name="&gt;&gt;MnFileOpen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MnGrblReset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="windowsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Windows</value>
-  </data>
-  <data name="&gt;&gt;TTLLines.Name" xml:space="preserve">
-    <value>TTLLines</value>
-  </data>
-  <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="TTLEstimated.Text" xml:space="preserve">
-    <value>Estimated Time:</value>
-  </data>
-  <data name="MnFileOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="spacer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 19</value>
-  </data>
-  <data name="&gt;&gt;windowsToolStripMenuItem.Name" xml:space="preserve">
-    <value>windowsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;StatusBar.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="TTTStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 19</value>
-  </data>
-  <data name="&gt;&gt;TTOvG0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;StatusBar.Name" xml:space="preserve">
-    <value>StatusBar</value>
-  </data>
-  <data name="MnFileOpen.Text" xml:space="preserve">
-    <value>&amp;Open File</value>
-  </data>
-  <data name="&gt;&gt;StatusBar.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;MnUnlock.Name" xml:space="preserve">
-    <value>MnUnlock</value>
-  </data>
-  <data name="&gt;&gt;spring.Name" xml:space="preserve">
-    <value>spring</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Laser GRBL</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="StatusBar.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 19, 0</value>
   </data>
   <data name="StatusBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>856, 24</value>
   </data>
-  <data name="&gt;&gt;MnExit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="StatusBar.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;UpdateTimer.Name" xml:space="preserve">
-    <value>UpdateTimer</value>
+  <data name="StatusBar.Text" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;StatusBar.Name" xml:space="preserve">
+    <value>StatusBar</value>
+  </data>
+  <data name="&gt;&gt;StatusBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StatusBar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;StatusBar.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TTLLines.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 19</value>
+  </data>
+  <data name="TTLLines.Text" xml:space="preserve">
+    <value>Lines:</value>
+  </data>
+  <data name="TTTLines.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 19</value>
+  </data>
+  <data name="TTTLines.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TTLEstimated.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 19</value>
+  </data>
+  <data name="TTLEstimated.Text" xml:space="preserve">
+    <value>Estimated Time:</value>
+  </data>
+  <data name="TTTEstimated.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 19</value>
+  </data>
+  <data name="TTTEstimated.Text" xml:space="preserve">
+    <value>unknown</value>
+  </data>
+  <data name="spring.Size" type="System.Drawing.Size, System.Drawing">
+    <value>498, 19</value>
+  </data>
+  <data name="TTOvG0.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TTOvG0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 19</value>
+  </data>
+  <data name="TTOvG0.Text" xml:space="preserve">
+    <value>G0: 100%</value>
+  </data>
+  <data name="TTOvG0.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TTOvG1.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TTOvG1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 19</value>
+  </data>
+  <data name="TTOvG1.Text" xml:space="preserve">
+    <value>G1: 100%</value>
+  </data>
+  <data name="TTOvG1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TTOvS.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TTOvS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 19</value>
+  </data>
+  <data name="TTOvS.Text" xml:space="preserve">
+    <value>S: 100%</value>
+  </data>
+  <data name="TTOvS.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="spacer.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="spacer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 19</value>
+  </data>
+  <data name="TTLStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 19</value>
+  </data>
+  <data name="TTLStatus.Text" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="TTTStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 19</value>
+  </data>
+  <data name="TTTStatus.Text" xml:space="preserve">
+    <value>Disconnected</value>
+  </data>
+  <metadata name="UpdateTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>295, 17</value>
+  </metadata>
+  <metadata name="MMn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>118, 17</value>
+  </metadata>
+  <data name="grblToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 20</value>
+  </data>
+  <data name="grblToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Grbl</value>
+  </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="windowsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 20</value>
+  </data>
+  <data name="windowsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Windows</value>
+  </data>
+  <data name="MNEnglish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="MNEnglish.Text" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="MNItalian.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="MNItalian.Text" xml:space="preserve">
+    <value>Italian</value>
+  </data>
+  <data name="MNSpanish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="MNSpanish.Text" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="linguaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 20</value>
+  </data>
+  <data name="linguaToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Language</value>
+  </data>
+  <data name="MMn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MMn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>856, 24</value>
+  </data>
+  <data name="MMn.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="MMn.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;MMn.Name" xml:space="preserve">
+    <value>MMn</value>
+  </data>
+  <data name="&gt;&gt;MMn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MMn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MMn.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="MnConnect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="MnConnect.Text" xml:space="preserve">
+    <value>&amp;Connect</value>
+  </data>
+  <data name="MnDisconnect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="MnDisconnect.Text" xml:space="preserve">
+    <value>&amp;Disconnect</value>
+  </data>
+  <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 6</value>
+  </data>
+  <data name="MnGrblReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="MnGrblReset.Text" xml:space="preserve">
+    <value>&amp;Reset</value>
+  </data>
+  <data name="MnGoHome.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="MnGoHome.Text" xml:space="preserve">
+    <value>&amp;Homing</value>
+  </data>
+  <data name="MnUnlock.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="MnUnlock.Text" xml:space="preserve">
+    <value>&amp;Unlock</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 6</value>
+  </data>
+  <data name="MnExportConfig.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="MnExportConfig.Text" xml:space="preserve">
+    <value>E&amp;xport Config</value>
+  </data>
+  <data name="MnImportConfig.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="MnImportConfig.Text" xml:space="preserve">
+    <value>&amp;Import Config</value>
+  </data>
+  <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 6</value>
+  </data>
+  <data name="MnExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="MnExit.Text" xml:space="preserve">
+    <value>&amp;Exit</value>
+  </data>
+  <data name="MnFileOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="MnFileOpen.Text" xml:space="preserve">
+    <value>&amp;Open File</value>
+  </data>
+  <data name="MnSaveProgram.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="MnSaveProgram.Text" xml:space="preserve">
+    <value>&amp;Save Program</value>
+  </data>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 6</value>
+  </data>
+  <data name="MnFileSend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="MnFileSend.Text" xml:space="preserve">
+    <value>Send To &amp;Machine</value>
   </data>
   <data name="joggingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 22</value>
   </data>
-  <data name="&gt;&gt;MnGoHome.Name" xml:space="preserve">
-    <value>MnGoHome</value>
+  <data name="joggingToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Jogging</value>
   </data>
-  <data name="&gt;&gt;grblToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="DockArea.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;TTOvG0.Name" xml:space="preserve">
-    <value>TTOvG0</value>
+  <data name="DockArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
+  <data name="DockArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>856, 483</value>
+  </data>
+  <data name="DockArea.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;DockArea.Name" xml:space="preserve">
+    <value>DockArea</value>
+  </data>
+  <data name="&gt;&gt;DockArea.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.DockingManager.DockPanel, LaserGRBL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;DockArea.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DockArea.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>51</value>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>856, 483</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -306,371 +499,226 @@
         AD//4AD//+AB///gAf//4AH///AD///wA/8=
 </value>
   </data>
-  <data name="MMn.Text" xml:space="preserve">
-    <value>menuStrip1</value>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
-  <data name="&gt;&gt;TTLStatus.Type" xml:space="preserve">
+  <data name="$this.Text" xml:space="preserve">
+    <value>Laser GRBL</value>
+  </data>
+  <data name="&gt;&gt;TTLLines.Name" xml:space="preserve">
+    <value>TTLLines</value>
+  </data>
+  <data name="&gt;&gt;TTLLines.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;TTTEstimated.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;TTTLines.Name" xml:space="preserve">
+    <value>TTTLines</value>
   </data>
-  <data name="&gt;&gt;windowsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 6</value>
-  </data>
-  <data name="&gt;&gt;MnExit.Name" xml:space="preserve">
-    <value>MnExit</value>
-  </data>
-  <data name="&gt;&gt;StatusBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="MnExit.Text" xml:space="preserve">
-    <value>&amp;Exit</value>
-  </data>
-  <data name="MnSaveProgram.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="TTOvG0.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;MnSaveProgram.Name" xml:space="preserve">
-    <value>MnSaveProgram</value>
-  </data>
-  <data name="MnFileSend.Text" xml:space="preserve">
-    <value>Send To &amp;Machine</value>
-  </data>
-  <data name="&gt;&gt;MnConnect.Name" xml:space="preserve">
-    <value>MnConnect</value>
-  </data>
-  <data name="TTLLines.Text" xml:space="preserve">
-    <value>Lines:</value>
-  </data>
-  <data name="spacer.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem2.Name" xml:space="preserve">
-    <value>toolStripMenuItem2</value>
-  </data>
-  <data name="MMn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>856, 24</value>
-  </data>
-  <data name="MnSaveProgram.Text" xml:space="preserve">
-    <value>&amp;Save Program</value>
-  </data>
-  <data name="MnFileSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="&gt;&gt;MnFileOpen.Name" xml:space="preserve">
-    <value>MnFileOpen</value>
-  </data>
-  <data name="MnDisconnect.Text" xml:space="preserve">
-    <value>&amp;Disconnect</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="TTOvS.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
-    <value>toolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="MnExportConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="TTOvS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 19</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>MainForm</value>
-  </data>
-  <data name="TTOvG1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 19</value>
-  </data>
-  <data name="MnUnlock.Text" xml:space="preserve">
-    <value>&amp;Unlock</value>
-  </data>
-  <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
-    <value>fileToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;DockArea.Name" xml:space="preserve">
-    <value>DockArea</value>
-  </data>
-  <data name="&gt;&gt;MMn.Name" xml:space="preserve">
-    <value>MMn</value>
-  </data>
-  <data name="&gt;&gt;TTOvG1.Name" xml:space="preserve">
-    <value>TTOvG1</value>
-  </data>
-  <data name="&gt;&gt;DockArea.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.DockingManager.DockPanel, LaserGRBL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;MnImportConfig.Name" xml:space="preserve">
-    <value>MnImportConfig</value>
-  </data>
-  <data name="&gt;&gt;grblToolStripMenuItem.Name" xml:space="preserve">
-    <value>grblToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;TTOvS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TTOvG1.Type" xml:space="preserve">
+  <data name="&gt;&gt;TTTLines.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TTLEstimated.Name" xml:space="preserve">
     <value>TTLEstimated</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TTTStatus.Name" xml:space="preserve">
-    <value>TTTStatus</value>
-  </data>
-  <data name="MnGrblReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="&gt;&gt;MnConnect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="TTTStatus.Text" xml:space="preserve">
-    <value>Disconnected</value>
-  </data>
-  <data name="&gt;&gt;spacer.Name" xml:space="preserve">
-    <value>spacer</value>
-  </data>
-  <data name="TTOvG1.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="MnUnlock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem3.Name" xml:space="preserve">
-    <value>toolStripMenuItem3</value>
-  </data>
-  <data name="MnGoHome.Text" xml:space="preserve">
-    <value>&amp;Homing</value>
-  </data>
-  <data name="DockArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TTTEstimated.Text" xml:space="preserve">
-    <value>unknown</value>
-  </data>
-  <data name="TTTEstimated.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 19</value>
-  </data>
-  <data name="TTTLines.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TTOvG1.Text" xml:space="preserve">
-    <value>G1: 100%</value>
-  </data>
-  <data name="DockArea.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;joggingToolStripMenuItem.Name" xml:space="preserve">
-    <value>joggingToolStripMenuItem</value>
-  </data>
-  <data name="spring.Size" type="System.Drawing.Size, System.Drawing">
-    <value>503, 19</value>
-  </data>
-  <data name="TTLStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 19</value>
-  </data>
-  <data name="MnGrblReset.Text" xml:space="preserve">
-    <value>&amp;Reset</value>
-  </data>
-  <data name="&gt;&gt;TTLStatus.Name" xml:space="preserve">
-    <value>TTLStatus</value>
-  </data>
-  <data name="StatusBar.Text" xml:space="preserve">
-    <value>statusStrip1</value>
-  </data>
-  <data name="TTOvS.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;MMn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="grblToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Grbl</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;File</value>
-  </data>
-  <data name="windowsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 20</value>
-  </data>
-  <data name="&gt;&gt;MnGrblReset.Name" xml:space="preserve">
-    <value>MnGrblReset</value>
-  </data>
-  <data name="MMn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;MnUnlock.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 6</value>
-  </data>
-  <data name="TTOvG0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 19</value>
-  </data>
-  <data name="MnGoHome.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="&gt;&gt;MnFileSend.Name" xml:space="preserve">
-    <value>MnFileSend</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TTLLines.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="MnConnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="&gt;&gt;MMn.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;spring.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="MnImportConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 6</value>
-  </data>
-  <data name="TTOvS.Text" xml:space="preserve">
-    <value>S: 100%</value>
-  </data>
-  <data name="&gt;&gt;TTTLines.Type" xml:space="preserve">
+  <data name="&gt;&gt;TTLEstimated.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TTTEstimated.Name" xml:space="preserve">
     <value>TTTEstimated</value>
   </data>
-  <data name="&gt;&gt;MnFileSend.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DockArea.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;MnExportConfig.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DockArea.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 6</value>
-  </data>
-  <data name="StatusBar.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="MnExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
-    <value>toolStripSeparator1</value>
-  </data>
-  <data name="TTLStatus.Text" xml:space="preserve">
-    <value>Status:</value>
-  </data>
-  <data name="joggingToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Jogging</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>856, 483</value>
-  </data>
-  <data name="&gt;&gt;MnDisconnect.Name" xml:space="preserve">
-    <value>MnDisconnect</value>
-  </data>
-  <data name="&gt;&gt;spacer.Type" xml:space="preserve">
+  <data name="&gt;&gt;TTTEstimated.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="StatusBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 459</value>
+  <data name="&gt;&gt;spring.Name" xml:space="preserve">
+    <value>spring</value>
   </data>
-  <data name="&gt;&gt;MnDisconnect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;spring.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="MnExportConfig.Text" xml:space="preserve">
-    <value>E&amp;xport Config</value>
+  <data name="&gt;&gt;TTOvG0.Name" xml:space="preserve">
+    <value>TTOvG0</value>
   </data>
-  <data name="MnImportConfig.Text" xml:space="preserve">
-    <value>&amp;Import Config</value>
+  <data name="&gt;&gt;TTOvG0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TTOvG0.Text" xml:space="preserve">
-    <value>G0: 100%</value>
+  <data name="&gt;&gt;TTOvG1.Name" xml:space="preserve">
+    <value>TTOvG1</value>
   </data>
-  <data name="TTOvG0.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;TTOvG1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TTOvS.Name" xml:space="preserve">
     <value>TTOvS</value>
   </data>
-  <data name="TTLEstimated.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 19</value>
-  </data>
-  <data name="&gt;&gt;MnSaveProgram.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TTLEstimated.Type" xml:space="preserve">
+  <data name="&gt;&gt;TTOvS.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;spacer.Name" xml:space="preserve">
+    <value>spacer</value>
+  </data>
+  <data name="&gt;&gt;spacer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TTLStatus.Name" xml:space="preserve">
+    <value>TTLStatus</value>
+  </data>
+  <data name="&gt;&gt;TTLStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TTTStatus.Name" xml:space="preserve">
+    <value>TTTStatus</value>
   </data>
   <data name="&gt;&gt;TTTStatus.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TTLLines.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 19</value>
+  <data name="&gt;&gt;UpdateTimer.Name" xml:space="preserve">
+    <value>UpdateTimer</value>
+  </data>
+  <data name="&gt;&gt;UpdateTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grblToolStripMenuItem.Name" xml:space="preserve">
+    <value>grblToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;grblToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MnConnect.Name" xml:space="preserve">
+    <value>MnConnect</value>
+  </data>
+  <data name="&gt;&gt;MnConnect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MnDisconnect.Name" xml:space="preserve">
+    <value>MnDisconnect</value>
+  </data>
+  <data name="&gt;&gt;MnDisconnect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem2.Name" xml:space="preserve">
+    <value>toolStripMenuItem2</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MnGrblReset.Name" xml:space="preserve">
+    <value>MnGrblReset</value>
+  </data>
+  <data name="&gt;&gt;MnGrblReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MnGoHome.Name" xml:space="preserve">
+    <value>MnGoHome</value>
   </data>
   <data name="&gt;&gt;MnGoHome.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="grblToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 20</value>
+  <data name="&gt;&gt;MnUnlock.Name" xml:space="preserve">
+    <value>MnUnlock</value>
   </data>
-  <data name="TTTLines.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 19</value>
-  </data>
-  <data name="DockArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>856, 483</value>
-  </data>
-  <data name="&gt;&gt;joggingToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;MnUnlock.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MnExportConfig.Name" xml:space="preserve">
+    <value>MnExportConfig</value>
+  </data>
+  <data name="&gt;&gt;MnExportConfig.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MnImportConfig.Name" xml:space="preserve">
+    <value>MnImportConfig</value>
   </data>
   <data name="&gt;&gt;MnImportConfig.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <metadata name="StatusBar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>194, 17</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>it</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="MMn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>118, 17</value>
-  </metadata>
-  <metadata name="UpdateTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>295, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>51</value>
-  </metadata>
+  <data name="&gt;&gt;toolStripMenuItem3.Name" xml:space="preserve">
+    <value>toolStripMenuItem3</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MnExit.Name" xml:space="preserve">
+    <value>MnExit</value>
+  </data>
+  <data name="&gt;&gt;MnExit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
+    <value>fileToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MnFileOpen.Name" xml:space="preserve">
+    <value>MnFileOpen</value>
+  </data>
+  <data name="&gt;&gt;MnFileOpen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MnSaveProgram.Name" xml:space="preserve">
+    <value>MnSaveProgram</value>
+  </data>
+  <data name="&gt;&gt;MnSaveProgram.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
+    <value>toolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MnFileSend.Name" xml:space="preserve">
+    <value>MnFileSend</value>
+  </data>
+  <data name="&gt;&gt;MnFileSend.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;windowsToolStripMenuItem.Name" xml:space="preserve">
+    <value>windowsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;windowsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;joggingToolStripMenuItem.Name" xml:space="preserve">
+    <value>joggingToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;joggingToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linguaToolStripMenuItem.Name" xml:space="preserve">
+    <value>linguaToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;linguaToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MNEnglish.Name" xml:space="preserve">
+    <value>MNEnglish</value>
+  </data>
+  <data name="&gt;&gt;MNEnglish.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MNItalian.Name" xml:space="preserve">
+    <value>MNItalian</value>
+  </data>
+  <data name="&gt;&gt;MNItalian.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MNSpanish.Name" xml:space="preserve">
+    <value>MNSpanish</value>
+  </data>
+  <data name="&gt;&gt;MNSpanish.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

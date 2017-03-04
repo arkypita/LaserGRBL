@@ -295,7 +295,36 @@ namespace LaserGRBL
 			if (filename != null)
 			{Core.SaveProgram(filename);}
 		}
-		
+
+		private void MNEnglish_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("en"));
+		}
+
+		private void MNItalian_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("it"));
+		}
+
+		private void MNSpanish_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("es"));
+		}
+
+		private void SetLanguage(System.Globalization.CultureInfo ci)
+		{
+			if (ci != null)
+				Settings.SetObject("User Language", ci);
+			else
+				Settings.DeleteObject("User Language");
+
+			Settings.Save();
+
+			if (System.Windows.Forms.MessageBox.Show("Require application restart, restart now?", "Restart required", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+				Application.Restart();
+		}
+
+
 		
 	}
 }

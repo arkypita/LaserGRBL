@@ -356,7 +356,7 @@
     <Compile Include="UserControls\WaitingProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <EmbeddedResource Include="ConnectLogForm.en.resx">
+    <EmbeddedResource Include="ConnectLogForm.es.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectLogForm.it.resx">
@@ -371,7 +371,7 @@
     <EmbeddedResource Include="JogForm.resx">
       <DependentUpon>JogForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.en.resx">
+    <EmbeddedResource Include="MainForm.es.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.it.resx">
@@ -380,7 +380,7 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PreviewForm.en.resx">
+    <EmbeddedResource Include="PreviewForm.es.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.it.resx">
@@ -393,13 +393,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.es.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.it.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RasterConverter\RasterToLaserForm.en.resx">
+    <EmbeddedResource Include="RasterConverter\RasterToLaserForm.es.resx">
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\RasterToLaserForm.it.resx">

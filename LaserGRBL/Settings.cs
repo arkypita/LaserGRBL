@@ -61,5 +61,11 @@ namespace LaserGRBL
 				fs.Close();
 			}
 		}
+
+		internal static void DeleteObject(string key)
+		{
+			if (dic.ContainsKey(key))
+				dic.Remove(key);
+		}
 	}
 }

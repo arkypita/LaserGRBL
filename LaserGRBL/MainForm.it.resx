@@ -131,7 +131,7 @@
     <value>Tempo stimato:</value>
   </data>
   <data name="spring.Size" type="System.Drawing.Size, System.Drawing">
-    <value>303, 19</value>
+    <value>504, 19</value>
   </data>
   <data name="TTLStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 19</value>
@@ -214,6 +214,21 @@
   <data name="windowsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Finestre</value>
   </data>
+  <data name="linguaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 20</value>
+  </data>
+  <data name="linguaToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Lingua</value>
+  </data>
+  <data name="MNEnglish.Text" xml:space="preserve">
+    <value>Inglese</value>
+  </data>
+  <data name="MNItalian.Text" xml:space="preserve">
+    <value>Italiano</value>
+  </data>
+  <data name="MNSpanish.Text" xml:space="preserve">
+    <value>Spagnolo</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -289,9 +304,5 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAD4AAAA/AAAAPwAAAD/AAAA//wAAP/+AAH//g
         AD//4AD//+AB///gAf//4AH///AD///wA/8=
 </value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Inherit</value>
   </data>
 </root>
