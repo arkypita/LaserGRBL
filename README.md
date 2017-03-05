@@ -49,7 +49,7 @@ Development status and roadmap can be found here: [Roadmap](https://github.com/a
 
 ### Compiling
 
-LaserGRBL is written in C# for .NET Framework 2.0 (or higher) and can be compiled with [SharpDevelop](http://www.icsharpcode.net/opensource/sd/) and of course with [Microsoft Visual Studio](https://www.visualstudio.com) IDE/Compiler
+LaserGRBL is written in C# for .NET Framework 3.5 (or higher) and can be compiled with [SharpDevelop](http://www.icsharpcode.net/opensource/sd/) and of course with [Microsoft Visual Studio](https://www.visualstudio.com) IDE/Compiler
 
 ### Licensing
 
