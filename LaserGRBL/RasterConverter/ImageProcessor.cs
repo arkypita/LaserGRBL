@@ -775,7 +775,7 @@ namespace LaserGRBL.RasterConverter
 				g.Clear(Color.White); //remove original image
 
 				using (Brush fill = new SolidBrush(Color.FromArgb(FillingDirection != Direction.None ? 255 : 30, Color.Black)))
-					Potrace.Export2GDIPlus(plist, g, fill, null); //trace filling
+					Potrace.Export2GDIPlus(plist, g, fill, null, 1); //trace filling
 
 				if (MustExitTH)
 					return;
@@ -785,7 +785,7 @@ namespace LaserGRBL.RasterConverter
 				if (MustExitTH)
 					return;
 
-				Potrace.Export2GDIPlus(plist, g, null, Pens.Red); //trace borders
+				Potrace.Export2GDIPlus(plist, g, null, Pens.Red, 0); //trace borders
 
 				if (MustExitTH)
 					return;
