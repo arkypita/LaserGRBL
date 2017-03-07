@@ -160,7 +160,7 @@ namespace LaserGRBL
 				{
 					using (Graphics g = Graphics.FromImage(ptb))
 					{
-						Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, Math.Max(res/fres, 1) + 1);
+						Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, (Math.Max(res/fres, 1) + 1) / 2.0f);
 						using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size(bmp.Width * fres / res, bmp.Height * fres / res), true, InterpolationMode.HighQualityBicubic))
 						{
 							//absolute

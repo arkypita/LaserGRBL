@@ -31,7 +31,7 @@ namespace CsPotrace
        /// <param name="Width">Width of the Bitmap</param>
         /// <param name="Height">Height of the Bitmap</param>
        /// <returns></returns>
-		public static void Export2GDIPlus(List<List<CsPotrace.Curve>> Fig, Graphics g, Brush fill, Pen border, int inset)
+		public static void Export2GDIPlus(List<List<CsPotrace.Curve>> Fig, Graphics g, Brush fill, Pen border, float inset)
         {
 			g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
 			g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -65,7 +65,7 @@ namespace CsPotrace
 				g.DrawPath(border, gp);
 
 
-			if (inset != 0)
+			if (inset > 0)
 			{
 				using (Pen p = new Pen(Color.White, inset))
 					g.DrawPath(p, gp);
