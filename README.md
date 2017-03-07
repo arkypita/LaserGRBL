@@ -25,6 +25,10 @@ Do you like LaserGRBL? Support development with your donation!
 - Jogging (for any Grbl version)
 - Feed overrides (for Grbl > v1.1) with easy-to-use interface
 
+### Documentation 
+
+LaserGRBL functions documentation available at http://lasergrbl.com/usage/
+
 ### Development Roadmap
 
 Development status and roadmap can be found here: [Roadmap](https://github.com/arkypita/LaserGRBL/issues/10)
