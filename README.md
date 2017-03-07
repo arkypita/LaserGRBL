@@ -37,7 +37,7 @@ Development status and roadmap can be found here: [Roadmap](https://github.com/a
 
 - No Z axis control! (LaserGRBL is for XY machine)
 
-#### Screenshot
+#### Screenshot and videos
 
 [<img src="https://cloud.githubusercontent.com/assets/8782035/23578353/fba95768-00d4-11e7-9357-99c00a30631d.jpg">](https://www.youtube.com/watch?v=Uk2fGoNL3Yk)
 
