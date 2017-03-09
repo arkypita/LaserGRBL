@@ -25,9 +25,20 @@ Do you like LaserGRBL? Support development with your donation!
 - Jogging (for any Grbl version)
 - Feed overrides (for Grbl > v1.1) with easy-to-use interface
 
-### Documentation 
+### Usage
 
-LaserGRBL functions documentation available at http://lasergrbl.com/usage/
+* [LaserGRBL User Interface](http://lasergrbl.com/usage/user-interface/)
+* [Connect to arduino-grbl](http://lasergrbl.com/usage/arduino-connection/)
+* [Load G-Code and send to machine](http://lasergrbl.com/usage/load-and-send/)
+* [Speed and power overrides](http://lasergrbl.com/usage/overrides/)
+* [Jogging](http://lasergrbl.com/usage/jogging/)
+
+* [Custom buttons](http://lasergrbl.com/usage/custom-buttons/)
+* [Raster Image Import](http://lasergrbl.com/usage/raster-image-import/)
+* [Grayscale conversion parameters](http://lasergrbl.com/usage/raster-image-import/import-parameters/)
+* [Line 2 line grayscale conversion](http://lasergrbl.com/usage/raster-image-import/line-to-line-tool/)
+* [1bit dithering conversion](http://lasergrbl.com/usage/raster-image-import/dithering-tool/)
+* [Image vectorization](http://lasergrbl.com/usage/raster-image-import/vectorization-tool/)
 
 ### Development Roadmap
 
