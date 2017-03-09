@@ -32,7 +32,6 @@ Do you like LaserGRBL? Support development with your donation!
 * [Load G-Code and send to machine](http://lasergrbl.com/usage/load-and-send/)
 * [Speed and power overrides](http://lasergrbl.com/usage/overrides/)
 * [Jogging](http://lasergrbl.com/usage/jogging/)
-
 * [Custom buttons](http://lasergrbl.com/usage/custom-buttons/)
 * [Raster Image Import](http://lasergrbl.com/usage/raster-image-import/)
 * [Grayscale conversion parameters](http://lasergrbl.com/usage/raster-image-import/import-parameters/)
