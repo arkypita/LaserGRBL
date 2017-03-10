@@ -37,6 +37,7 @@ namespace CsPotrace
 
 			List<string> rv = new List<string>();
 
+			list.Reverse();
 			foreach (List<CsPotrace.Curve> Curves in list)
 				rv.AddRange(GetPathGC(Curves, lOn, lOff, oX * scale, oY * scale, scale, g));
 
