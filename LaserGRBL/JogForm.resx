@@ -584,7 +584,7 @@
         l+h7WoW8TA8v+We79QKPW/wZHgL4HuX2fppG838x3VpQgUFfhwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="TT.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="TT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 31</value>
-  </data>
+  </metadata>
 </root>

@@ -21,8 +21,6 @@ namespace LaserGRBL
 		private LaserGRBL.UserControls.CommandLog CmdLog;
 		private System.Windows.Forms.Panel GBFile;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox TbFileName;
 		private LaserGRBL.UserControls.DoubleProgressBar PB;
 		private LaserGRBL.UserControls.ImageButton BtnOpen;
@@ -146,8 +144,8 @@ namespace LaserGRBL
 			this.tableLayoutPanel5.Controls.Add(this.label3, 0, 0);
 			this.tableLayoutPanel5.Controls.Add(this.TbFileName, 1, 0);
 			this.tableLayoutPanel5.Controls.Add(this.PB, 1, 1);
-			this.tableLayoutPanel5.Controls.Add(this.BtnOpen, 3, 0);
-			this.tableLayoutPanel5.Controls.Add(this.BtnRunProgram, 3, 1);
+			this.tableLayoutPanel5.Controls.Add(this.BtnOpen, 2, 0);
+			this.tableLayoutPanel5.Controls.Add(this.BtnRunProgram, 2, 1);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
 			this.TT.SetToolTip(this.tableLayoutPanel5, resources.GetString("tableLayoutPanel5.ToolTip"));
 			// 
@@ -166,7 +164,6 @@ namespace LaserGRBL
 			// TbFileName
 			// 
 			resources.ApplyResources(this.TbFileName, "TbFileName");
-			this.tableLayoutPanel5.SetColumnSpan(this.TbFileName, 2);
 			this.TbFileName.Name = "TbFileName";
 			this.TbFileName.ReadOnly = true;
 			this.TT.SetToolTip(this.TbFileName, resources.GetString("TbFileName.ToolTip"));
@@ -176,7 +173,6 @@ namespace LaserGRBL
 			resources.ApplyResources(this.PB, "PB");
 			this.PB.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			this.PB.BorderColor = System.Drawing.Color.Black;
-			this.tableLayoutPanel5.SetColumnSpan(this.PB, 2);
 			this.PB.DrawProgressString = true;
 			this.PB.FillColor = System.Drawing.Color.White;
 			this.PB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
@@ -284,13 +280,8 @@ namespace LaserGRBL
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.CloseButton = false;
-			this.CloseButtonVisible = false;
 			this.Controls.Add(this.tableLayoutPanel1);
-			this.DockAreas = ((LaserGRBL.UserControls.DockingManager.DockAreas)(((LaserGRBL.UserControls.DockingManager.DockAreas.Float | LaserGRBL.UserControls.DockingManager.DockAreas.DockLeft) 
-            | LaserGRBL.UserControls.DockingManager.DockAreas.DockRight)));
 			this.Name = "ConnectLogForm";
-			this.ShowHint = LaserGRBL.UserControls.DockingManager.DockState.DockLeft;
 			this.TT.SetToolTip(this, resources.GetString("$this.ToolTip"));
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
@@ -308,5 +299,8 @@ namespace LaserGRBL
 			this.ResumeLayout(false);
 
 		}
+
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label label3;
 	}
 }

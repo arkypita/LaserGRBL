@@ -9,6 +9,8 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
 			this.DoubleBuffered = true;
+			Version current = typeof(GitHub).Assembly.GetName().Version;
+			LblVersion.Text = "v" + current.ToString(3);
 		}
 
 		private void SplashScreenForm_Load(object sender, EventArgs e)

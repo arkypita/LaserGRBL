@@ -928,6 +928,7 @@
 			this.TpOriginal.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).EndInit();
 			this.FlipControl.ResumeLayout(false);
+			this.FlipControl.PerformLayout();
 			this.tableLayoutPanel8.ResumeLayout(false);
 			this.tableLayoutPanel8.PerformLayout();
 			this.GbVectorizeOptions.ResumeLayout(false);

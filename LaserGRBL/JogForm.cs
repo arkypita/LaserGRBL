@@ -3,25 +3,21 @@ using System.Windows.Forms;
 
 namespace LaserGRBL
 {
-	public partial class JogForm : LaserGRBL.UserControls.DockingManager.DockContent
+	public partial class JogForm : System.Windows.Forms.UserControl
 	{
 		GrblCore Core;
 
-		public JogForm(GrblCore core)
+		public JogForm()
+		{
+			InitializeComponent();
+		}
+
+		public void SetCore(GrblCore core)
 		{
 			InitializeComponent();
 			Core = core;
 			TbSpeed_ValueChanged(null, null); //set tooltip
 			TbStep_ValueChanged(null, null); //set tooltip
-			TimerUpdate();
-		}
-
-		public void TimerUpdate()
-		{
-			SuspendLayout();
-			foreach (Control ctr in tlp.Controls)
-					ctr.Enabled = Core.JogEnabled;
-			ResumeLayout();
 		}
 
 		private void OnJogButtonMouseDown(object sender, MouseEventArgs e)

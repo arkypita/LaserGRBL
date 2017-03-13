@@ -119,65 +119,36 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="WB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>913, 781</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="WB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>609, 636</value>
   </data>
   <data name="WB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 20</value>
-  </data>
-  <data name="PbConverted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
-  </data>
-  <data name="PbConverted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>57, 16</value>
   </data>
   <data name="PbConverted.Size" type="System.Drawing.Size, System.Drawing">
-    <value>900, 803</value>
-  </data>
-  <data name="TpPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="TpPreview.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="TpPreview.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>669, 652</value>
   </data>
   <data name="TpPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>908, 811</value>
-  </data>
-  <data name="PbOriginal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
-  </data>
-  <data name="PbOriginal.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>675, 658</value>
   </data>
   <data name="PbOriginal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>900, 803</value>
-  </data>
-  <data name="TpOriginal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="TpOriginal.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="TpOriginal.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>669, 652</value>
   </data>
   <data name="TpOriginal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>908, 811</value>
+    <value>675, 658</value>
   </data>
   <data name="TCOriginalPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>424, 4</value>
-  </data>
-  <data name="TCOriginalPreview.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>265, 3</value>
   </data>
   <data name="TCOriginalPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>916, 840</value>
+    <value>683, 684</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BtFlipV.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BtFlipV.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -216,10 +187,19 @@
 </value>
   </data>
   <data name="BtFlipV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 4</value>
+    <value>138, 3</value>
   </data>
-  <data name="BtFlipV.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="BtFlipV.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="BtFlipV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="BtFlipH.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BtFlipH.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="BtFlipH.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -257,10 +237,19 @@
 </value>
   </data>
   <data name="BtFlipH.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 4</value>
+    <value>108, 3</value>
   </data>
-  <data name="BtFlipH.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="BtFlipH.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="BtFlipH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="BtRotateCW.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BtRotateCW.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="BtRotateCW.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -294,10 +283,19 @@
 </value>
   </data>
   <data name="BtRotateCW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 4</value>
+    <value>48, 3</value>
   </data>
-  <data name="BtRotateCW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="BtRotateCW.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="BtRotateCW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="BtRotateCCW.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BtRotateCCW.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="BtRotateCCW.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -332,10 +330,19 @@
 </value>
   </data>
   <data name="BtRotateCCW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 4</value>
+    <value>78, 3</value>
   </data>
-  <data name="BtRotateCCW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="BtRotateCCW.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="BtRotateCCW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="BtnCrop.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BtnCrop.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="BtnCrop.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -362,10 +369,19 @@
 </value>
   </data>
   <data name="BtnCrop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 4</value>
+    <value>168, 3</value>
   </data>
-  <data name="BtnCrop.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="BtnCrop.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="BtnCrop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="BtnRevert.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BtnRevert.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="BtnRevert.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -394,563 +410,293 @@
         MeUfOCax7MmlbbQAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="BtnRevert.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
+  <data name="BtnRevert.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
   </data>
-  <data name="BtnRevert.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="BtnRevert.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
   </data>
   <data name="FlipControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>424, 852</value>
-  </data>
-  <data name="FlipControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>265, 693</value>
   </data>
   <data name="FlipControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 33</value>
+    <value>195, 30</value>
   </data>
-  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
+  <data name="tableLayoutPanel8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="label22.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+  <data name="tableLayoutPanel8.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 17</value>
+    <value>106, 13</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Eliminación manchas</value>
   </data>
   <data name="UDSpotRemoval.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 2</value>
-  </data>
-  <data name="UDSpotRemoval.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="UDSpotRemoval.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 22</value>
+    <value>114, 2</value>
   </data>
   <data name="CbSpotRemoval.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 4</value>
-  </data>
-  <data name="CbSpotRemoval.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="CbSpotRemoval.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 17</value>
-  </data>
-  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 56</value>
-  </data>
-  <data name="label24.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>173, 5</value>
   </data>
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 17</value>
+    <value>50, 13</value>
   </data>
-  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 30</value>
-  </data>
-  <data name="label23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Optimizar</value>
   </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 17</value>
+    <value>32, 13</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Alisar</value>
   </data>
   <data name="UDOptimize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 54</value>
-  </data>
-  <data name="UDOptimize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="UDOptimize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 22</value>
+    <value>114, 50</value>
   </data>
   <data name="UDSmoothing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 28</value>
-  </data>
-  <data name="UDSmoothing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="UDSmoothing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 22</value>
+    <value>114, 26</value>
   </data>
   <data name="CbOptimize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 56</value>
-  </data>
-  <data name="CbOptimize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="CbOptimize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 17</value>
+    <value>173, 53</value>
   </data>
   <data name="CbSmoothing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 30</value>
-  </data>
-  <data name="CbSmoothing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="CbSmoothing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 17</value>
-  </data>
-  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 109</value>
-  </data>
-  <data name="label14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>173, 29</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 17</value>
+    <value>43, 13</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Relleno</value>
   </data>
   <data name="CbFillingDirection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 106</value>
-  </data>
-  <data name="CbFillingDirection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>114, 98</value>
   </data>
   <data name="CbFillingDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 24</value>
-  </data>
-  <data name="LblFillingQuality.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 136</value>
-  </data>
-  <data name="LblFillingQuality.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>128, 21</value>
   </data>
   <data name="LblFillingQuality.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 17</value>
+    <value>42, 13</value>
+  </data>
+  <data name="LblFillingQuality.Text" xml:space="preserve">
+    <value>Calidad</value>
   </data>
   <data name="UDFillingQuality.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 134</value>
-  </data>
-  <data name="UDFillingQuality.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="UDFillingQuality.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 22</value>
+    <value>114, 123</value>
   </data>
   <data name="LblFillingLineLbl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>190, 136</value>
-  </data>
-  <data name="LblFillingLineLbl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>174, 126</value>
   </data>
   <data name="LblFillingLineLbl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 17</value>
+    <value>59, 13</value>
+  </data>
+  <data name="LblFillingLineLbl.Text" xml:space="preserve">
+    <value>Lineas/mm</value>
   </data>
   <data name="UDDownSample.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 80</value>
-  </data>
-  <data name="UDDownSample.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="UDDownSample.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 22</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 82</value>
-  </data>
-  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 17</value>
+    <value>114, 74</value>
   </data>
   <data name="CbDownSample.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 82</value>
-  </data>
-  <data name="CbDownSample.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="CbDownSample.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 17</value>
-  </data>
-  <data name="tableLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 19</value>
-  </data>
-  <data name="tableLayoutPanel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>173, 77</value>
   </data>
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>433, 158</value>
-  </data>
-  <data name="GbVectorizeOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 505</value>
-  </data>
-  <data name="GbVectorizeOptions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="GbVectorizeOptions.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>244, 145</value>
   </data>
   <data name="GbVectorizeOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 181</value>
+    <value>250, 164</value>
+  </data>
+  <data name="GbVectorizeOptions.Text" xml:space="preserve">
+    <value>Opciones Vectorizar!</value>
   </data>
   <data name="CbResize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 2</value>
-  </data>
-  <data name="CbResize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>92, 2</value>
   </data>
   <data name="CbResize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 24</value>
-  </data>
-  <data name="LblGrayscale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 33</value>
-  </data>
-  <data name="LblGrayscale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>150, 21</value>
   </data>
   <data name="LblGrayscale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 17</value>
+    <value>84, 13</value>
   </data>
   <data name="LblGrayscale.Text" xml:space="preserve">
     <value>Escala de grises</value>
   </data>
   <data name="CbMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 30</value>
-  </data>
-  <data name="CbMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>92, 27</value>
   </data>
   <data name="CbMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 24</value>
+    <value>150, 21</value>
   </data>
   <data name="TBRed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 57</value>
+    <value>91, 51</value>
   </data>
   <data name="TBRed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 31</value>
-  </data>
-  <data name="LblRed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 64</value>
-  </data>
-  <data name="LblRed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>152, 25</value>
   </data>
   <data name="LblRed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 17</value>
+    <value>29, 13</value>
   </data>
   <data name="LblRed.Text" xml:space="preserve">
     <value>Rojo</value>
   </data>
-  <data name="LblBlue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 130</value>
-  </data>
-  <data name="LblBlue.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
   <data name="LblBlue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 17</value>
+    <value>27, 13</value>
   </data>
   <data name="LblBlue.Text" xml:space="preserve">
     <value>Azul</value>
   </data>
-  <data name="LblGreen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 97</value>
-  </data>
-  <data name="LblGreen.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
   <data name="LblGreen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 17</value>
+    <value>35, 13</value>
   </data>
   <data name="LblGreen.Text" xml:space="preserve">
     <value>Verde</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 163</value>
-  </data>
-  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 17</value>
+    <value>29, 13</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Brillo</value>
   </data>
   <data name="TBGreen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 90</value>
+    <value>91, 78</value>
   </data>
   <data name="TBGreen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 31</value>
+    <value>152, 25</value>
   </data>
   <data name="TbBright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 156</value>
+    <value>91, 132</value>
   </data>
   <data name="TbBright.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 31</value>
+    <value>152, 25</value>
   </data>
   <data name="TBBlue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 123</value>
+    <value>91, 105</value>
   </data>
   <data name="TBBlue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 31</value>
+    <value>152, 25</value>
   </data>
   <data name="TbContrast.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 189</value>
+    <value>91, 159</value>
   </data>
   <data name="TbContrast.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 31</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 196</value>
-  </data>
-  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>152, 25</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 17</value>
+    <value>52, 13</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Contraste</value>
   </data>
-  <data name="CbThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 227</value>
-  </data>
-  <data name="CbThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
   <data name="CbThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 21</value>
+    <value>47, 17</value>
   </data>
   <data name="CbThreshold.Text" xml:space="preserve">
     <value>B&amp;&amp;N</value>
   </data>
-  <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 5</value>
-  </data>
-  <data name="label28.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
   <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 17</value>
+    <value>77, 13</value>
   </data>
   <data name="label28.Text" xml:space="preserve">
     <value>Redimensionar</value>
   </data>
   <data name="TbThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 222</value>
+    <value>91, 186</value>
   </data>
   <data name="TbThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 31</value>
-  </data>
-  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 19</value>
-  </data>
-  <data name="tableLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>152, 25</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>433, 254</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
-  </data>
-  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>244, 212</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 277</value>
+    <value>250, 231</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Parametros</value>
   </data>
   <data name="CbDirections.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 2</value>
-  </data>
-  <data name="CbDirections.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>60, 2</value>
   </data>
   <data name="CbDirections.Size" type="System.Drawing.Size, System.Drawing">
-    <value>352, 24</value>
+    <value>182, 21</value>
   </data>
   <data name="UDQuality.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 30</value>
-  </data>
-  <data name="UDQuality.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="UDQuality.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 22</value>
-  </data>
-  <data name="CbLinePreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 56</value>
-  </data>
-  <data name="CbLinePreview.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>60, 27</value>
   </data>
   <data name="CbLinePreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 21</value>
+    <value>86, 17</value>
   </data>
   <data name="CbLinePreview.Text" xml:space="preserve">
     <value>LInea Previa</value>
   </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 32</value>
-  </data>
-  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 17</value>
+    <value>42, 13</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Calidad</value>
   </data>
-  <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 5</value>
-  </data>
-  <data name="label27.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
   <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 17</value>
+    <value>52, 13</value>
   </data>
   <data name="label27.Text" xml:space="preserve">
     <value>Dirección</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 32</value>
-  </data>
-  <data name="label8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>120, 30</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 17</value>
+    <value>59, 13</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Lineas/mm</value>
   </data>
-  <data name="TLP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 19</value>
-  </data>
-  <data name="TLP.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
   <data name="TLP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>433, 79</value>
-  </data>
-  <data name="GbLineToLineOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 395</value>
-  </data>
-  <data name="GbLineToLineOptions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="GbLineToLineOptions.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>244, 70</value>
   </data>
   <data name="GbLineToLineOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 102</value>
+    <value>250, 89</value>
   </data>
   <data name="GbLineToLineOptions.Text" xml:space="preserve">
     <value>Opciones Linea a Linea</value>
   </data>
-  <data name="RbDithering.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 27</value>
-  </data>
-  <data name="RbDithering.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="RbDithering.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 21</value>
-  </data>
-  <data name="RbVectorize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 52</value>
-  </data>
-  <data name="RbVectorize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
   <data name="RbVectorize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 21</value>
+    <value>167, 17</value>
   </data>
   <data name="RbVectorize.Text" xml:space="preserve">
     <value>Vectorizar! [EXPERIMENTAL]</value>
   </data>
-  <data name="RbLineToLineTracing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 2</value>
-  </data>
-  <data name="RbLineToLineTracing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
   <data name="RbLineToLineTracing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 21</value>
+    <value>89, 17</value>
   </data>
-  <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 19</value>
-  </data>
-  <data name="tableLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="RbLineToLineTracing.Text" xml:space="preserve">
+    <value>Linea a Linea</value>
   </data>
   <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>433, 75</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 289</value>
-  </data>
-  <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>244, 63</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 98</value>
+    <value>250, 82</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Herramienta de conversión</value>
   </data>
-  <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
-  </data>
-  <data name="tableLayoutPanel8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
   <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>412, 889</value>
+    <value>256, 723</value>
   </data>
-  <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Cancelar</value>
   </data>
-  <data name="BtnCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 33</value>
-  </data>
-  <data name="BtnCreate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 4</value>
-  </data>
-  <data name="BtnCreate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="BtnCreate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 33</value>
+  <data name="BtnCreate.Text" xml:space="preserve">
+    <value>Próximo</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1126, 852</value>
-  </data>
-  <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 41</value>
-  </data>
-  <data name="RightGrid.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>788, 693</value>
   </data>
   <data name="RightGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1344, 897</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>951, 729</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1344, 897</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
+    <value>951, 729</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Importar Imagen Rasterizada</value>

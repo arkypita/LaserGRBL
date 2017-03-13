@@ -30,21 +30,6 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			LaserGRBL.UserControls.DockingManager.DockPanelSkin dockPanelSkin4 = new LaserGRBL.UserControls.DockingManager.DockPanelSkin();
-			LaserGRBL.UserControls.DockingManager.AutoHideStripSkin autoHideStripSkin4 = new LaserGRBL.UserControls.DockingManager.AutoHideStripSkin();
-			LaserGRBL.UserControls.DockingManager.DockPanelGradient dockPanelGradient10 = new LaserGRBL.UserControls.DockingManager.DockPanelGradient();
-			LaserGRBL.UserControls.DockingManager.TabGradient tabGradient22 = new LaserGRBL.UserControls.DockingManager.TabGradient();
-			LaserGRBL.UserControls.DockingManager.DockPaneStripSkin dockPaneStripSkin4 = new LaserGRBL.UserControls.DockingManager.DockPaneStripSkin();
-			LaserGRBL.UserControls.DockingManager.DockPaneStripGradient dockPaneStripGradient4 = new LaserGRBL.UserControls.DockingManager.DockPaneStripGradient();
-			LaserGRBL.UserControls.DockingManager.TabGradient tabGradient23 = new LaserGRBL.UserControls.DockingManager.TabGradient();
-			LaserGRBL.UserControls.DockingManager.DockPanelGradient dockPanelGradient11 = new LaserGRBL.UserControls.DockingManager.DockPanelGradient();
-			LaserGRBL.UserControls.DockingManager.TabGradient tabGradient24 = new LaserGRBL.UserControls.DockingManager.TabGradient();
-			LaserGRBL.UserControls.DockingManager.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient4 = new LaserGRBL.UserControls.DockingManager.DockPaneStripToolWindowGradient();
-			LaserGRBL.UserControls.DockingManager.TabGradient tabGradient25 = new LaserGRBL.UserControls.DockingManager.TabGradient();
-			LaserGRBL.UserControls.DockingManager.TabGradient tabGradient26 = new LaserGRBL.UserControls.DockingManager.TabGradient();
-			LaserGRBL.UserControls.DockingManager.DockPanelGradient dockPanelGradient12 = new LaserGRBL.UserControls.DockingManager.DockPanelGradient();
-			LaserGRBL.UserControls.DockingManager.TabGradient tabGradient27 = new LaserGRBL.UserControls.DockingManager.TabGradient();
-			LaserGRBL.UserControls.DockingManager.TabGradient tabGradient28 = new LaserGRBL.UserControls.DockingManager.TabGradient();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
@@ -76,15 +61,24 @@
 			this.MnSaveProgram = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnFileSend = new System.Windows.Forms.ToolStripMenuItem();
-			this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.joggingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.linguaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNEnglish = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNItalian = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNSpanish = new System.Windows.Forms.ToolStripMenuItem();
-			this.DockArea = new LaserGRBL.UserControls.DockingManager.DockPanel();
+			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+			this.helpOnLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.autoUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
+			this.JogForm = new LaserGRBL.JogForm();
+			this.PreviewForm = new LaserGRBL.PreviewForm();
 			this.StatusBar.SuspendLayout();
 			this.MMn.SuspendLayout();
+			this.splitContainer1.Panel1.SuspendLayout();
+			this.splitContainer1.Panel2.SuspendLayout();
+			this.splitContainer1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// StatusBar
@@ -183,8 +177,8 @@
 			this.MMn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.grblToolStripMenuItem,
             this.fileToolStripMenuItem,
-            this.windowsToolStripMenuItem,
-            this.linguaToolStripMenuItem});
+            this.linguaToolStripMenuItem,
+            this.toolStripMenuItem4});
 			resources.ApplyResources(this.MMn, "MMn");
 			this.MMn.Name = "MMn";
 			// 
@@ -301,19 +295,6 @@
 			resources.ApplyResources(this.MnFileSend, "MnFileSend");
 			this.MnFileSend.Click += new System.EventHandler(this.MnFileSend_Click);
 			// 
-			// windowsToolStripMenuItem
-			// 
-			this.windowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.joggingToolStripMenuItem});
-			this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
-			resources.ApplyResources(this.windowsToolStripMenuItem, "windowsToolStripMenuItem");
-			// 
-			// joggingToolStripMenuItem
-			// 
-			this.joggingToolStripMenuItem.Name = "joggingToolStripMenuItem";
-			resources.ApplyResources(this.joggingToolStripMenuItem, "joggingToolStripMenuItem");
-			this.joggingToolStripMenuItem.Click += new System.EventHandler(this.joggingToolStripMenuItem_Click);
-			// 
 			// linguaToolStripMenuItem
 			// 
 			this.linguaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -341,67 +322,79 @@
 			resources.ApplyResources(this.MNSpanish, "MNSpanish");
 			this.MNSpanish.Click += new System.EventHandler(this.MNSpanish_Click);
 			// 
-			// DockArea
+			// toolStripMenuItem4
 			// 
-			resources.ApplyResources(this.DockArea, "DockArea");
-			this.DockArea.DockBackColor = System.Drawing.SystemColors.Control;
-			this.DockArea.Name = "DockArea";
-			dockPanelGradient10.EndColor = System.Drawing.SystemColors.ControlLight;
-			dockPanelGradient10.StartColor = System.Drawing.SystemColors.ControlLight;
-			autoHideStripSkin4.DockStripGradient = dockPanelGradient10;
-			tabGradient22.EndColor = System.Drawing.SystemColors.Control;
-			tabGradient22.StartColor = System.Drawing.SystemColors.Control;
-			tabGradient22.TextColor = System.Drawing.SystemColors.ControlDarkDark;
-			autoHideStripSkin4.TabGradient = tabGradient22;
-			autoHideStripSkin4.TextFont = new System.Drawing.Font("Segoe UI", 9F);
-			dockPanelSkin4.AutoHideStripSkin = autoHideStripSkin4;
-			tabGradient23.EndColor = System.Drawing.SystemColors.ControlLightLight;
-			tabGradient23.StartColor = System.Drawing.SystemColors.ControlLightLight;
-			tabGradient23.TextColor = System.Drawing.SystemColors.ControlText;
-			dockPaneStripGradient4.ActiveTabGradient = tabGradient23;
-			dockPanelGradient11.EndColor = System.Drawing.SystemColors.Control;
-			dockPanelGradient11.StartColor = System.Drawing.SystemColors.Control;
-			dockPaneStripGradient4.DockStripGradient = dockPanelGradient11;
-			tabGradient24.EndColor = System.Drawing.SystemColors.ControlLight;
-			tabGradient24.StartColor = System.Drawing.SystemColors.ControlLight;
-			tabGradient24.TextColor = System.Drawing.SystemColors.ControlText;
-			dockPaneStripGradient4.InactiveTabGradient = tabGradient24;
-			dockPaneStripSkin4.DocumentGradient = dockPaneStripGradient4;
-			dockPaneStripSkin4.TextFont = new System.Drawing.Font("Segoe UI", 9F);
-			tabGradient25.EndColor = System.Drawing.SystemColors.ActiveCaption;
-			tabGradient25.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-			tabGradient25.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
-			tabGradient25.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-			dockPaneStripToolWindowGradient4.ActiveCaptionGradient = tabGradient25;
-			tabGradient26.EndColor = System.Drawing.SystemColors.Control;
-			tabGradient26.StartColor = System.Drawing.SystemColors.Control;
-			tabGradient26.TextColor = System.Drawing.SystemColors.ControlText;
-			dockPaneStripToolWindowGradient4.ActiveTabGradient = tabGradient26;
-			dockPanelGradient12.EndColor = System.Drawing.SystemColors.ControlLight;
-			dockPanelGradient12.StartColor = System.Drawing.SystemColors.ControlLight;
-			dockPaneStripToolWindowGradient4.DockStripGradient = dockPanelGradient12;
-			tabGradient27.EndColor = System.Drawing.SystemColors.GradientInactiveCaption;
-			tabGradient27.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-			tabGradient27.StartColor = System.Drawing.SystemColors.GradientInactiveCaption;
-			tabGradient27.TextColor = System.Drawing.SystemColors.ControlText;
-			dockPaneStripToolWindowGradient4.InactiveCaptionGradient = tabGradient27;
-			tabGradient28.EndColor = System.Drawing.Color.Transparent;
-			tabGradient28.StartColor = System.Drawing.Color.Transparent;
-			tabGradient28.TextColor = System.Drawing.SystemColors.ControlDarkDark;
-			dockPaneStripToolWindowGradient4.InactiveTabGradient = tabGradient28;
-			dockPaneStripSkin4.ToolWindowGradient = dockPaneStripToolWindowGradient4;
-			dockPanelSkin4.DockPaneStripSkin = dockPaneStripSkin4;
-			this.DockArea.Skin = dockPanelSkin4;
+			this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpOnLineToolStripMenuItem,
+            this.autoUpdateToolStripMenuItem,
+            this.toolStripMenuItem5,
+            this.aboutToolStripMenuItem});
+			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+			resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
+			// 
+			// helpOnLineToolStripMenuItem
+			// 
+			this.helpOnLineToolStripMenuItem.Name = "helpOnLineToolStripMenuItem";
+			resources.ApplyResources(this.helpOnLineToolStripMenuItem, "helpOnLineToolStripMenuItem");
+			this.helpOnLineToolStripMenuItem.Click += new System.EventHandler(this.helpOnLineToolStripMenuItem_Click);
+			// 
+			// autoUpdateToolStripMenuItem
+			// 
+			this.autoUpdateToolStripMenuItem.Checked = true;
+			this.autoUpdateToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.autoUpdateToolStripMenuItem.Name = "autoUpdateToolStripMenuItem";
+			resources.ApplyResources(this.autoUpdateToolStripMenuItem, "autoUpdateToolStripMenuItem");
+			this.autoUpdateToolStripMenuItem.Click += new System.EventHandler(this.autoUpdateToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem5
+			// 
+			this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+			resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
+			// 
+			// aboutToolStripMenuItem
+			// 
+			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+			resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
+			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+			// 
+			// splitContainer1
+			// 
+			this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			resources.ApplyResources(this.splitContainer1, "splitContainer1");
+			this.splitContainer1.Name = "splitContainer1";
+			// 
+			// splitContainer1.Panel1
+			// 
+			this.splitContainer1.Panel1.Controls.Add(this.ConnectionForm);
+			this.splitContainer1.Panel1.Controls.Add(this.JogForm);
+			// 
+			// splitContainer1.Panel2
+			// 
+			this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
+			// 
+			// ConnectionForm
+			// 
+			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
+			this.ConnectionForm.Name = "ConnectionForm";
+			// 
+			// JogForm
+			// 
+			resources.ApplyResources(this.JogForm, "JogForm");
+			this.JogForm.Name = "JogForm";
+			// 
+			// PreviewForm
+			// 
+			resources.ApplyResources(this.PreviewForm, "PreviewForm");
+			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.splitContainer1);
 			this.Controls.Add(this.StatusBar);
 			this.Controls.Add(this.MMn);
-			this.Controls.Add(this.DockArea);
 			this.Cursor = System.Windows.Forms.Cursors.Default;
-			this.IsMdiContainer = true;
 			this.Name = "MainForm";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
@@ -410,6 +403,9 @@
 			this.StatusBar.PerformLayout();
 			this.MMn.ResumeLayout(false);
 			this.MMn.PerformLayout();
+			this.splitContainer1.Panel1.ResumeLayout(false);
+			this.splitContainer1.Panel2.ResumeLayout(false);
+			this.splitContainer1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -428,12 +424,9 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripMenuItem MnExportConfig;
 		private System.Windows.Forms.ToolStripMenuItem MnImportConfig;
-		private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem joggingToolStripMenuItem;
 		private System.Windows.Forms.Timer UpdateTimer;
 		private System.Windows.Forms.ToolStripStatusLabel spring;
 		private System.Windows.Forms.ToolStripStatusLabel TTLStatus;
-		private LaserGRBL.UserControls.DockingManager.DockPanel DockArea;
 		private System.Windows.Forms.ToolStripStatusLabel TTOvG0;
 		private System.Windows.Forms.ToolStripStatusLabel TTOvG1;
 		private System.Windows.Forms.ToolStripStatusLabel TTOvS;
@@ -455,6 +448,15 @@
 		private System.Windows.Forms.ToolStripMenuItem MNEnglish;
 		private System.Windows.Forms.ToolStripMenuItem MNItalian;
 		private System.Windows.Forms.ToolStripMenuItem MNSpanish;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+		private System.Windows.Forms.ToolStripMenuItem helpOnLineToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem autoUpdateToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+		private System.Windows.Forms.SplitContainer splitContainer1;
+		private PreviewForm PreviewForm;
+		private JogForm JogForm;
+		private ConnectLogForm ConnectionForm;
 	}
 }
 

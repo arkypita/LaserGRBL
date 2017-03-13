@@ -191,11 +191,8 @@ namespace LaserGRBL
 			// PreviewForm
 			// 
 			resources.ApplyResources(this, "$this");
-			this.CloseButton = false;
-			this.CloseButtonVisible = false;
 			this.Controls.Add(this.Preview);
 			this.Controls.Add(this.tableLayoutPanel8);
-			this.DockAreas = LaserGRBL.UserControls.DockingManager.DockAreas.Document;
 			this.Name = "PreviewForm";
 			this.TT.SetToolTip(this, resources.GetString("$this.ToolTip"));
 			this.tableLayoutPanel8.ResumeLayout(false);

@@ -32,6 +32,7 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashScreenForm));
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.LblVersion = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -53,6 +54,17 @@
 			this.pictureBox1.TabStop = false;
 			this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
 			// 
+			// LblVersion
+			// 
+			this.LblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.LblVersion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.LblVersion.Location = new System.Drawing.Point(320, 178);
+			this.LblVersion.Name = "LblVersion";
+			this.LblVersion.Size = new System.Drawing.Size(108, 16);
+			this.LblVersion.TabIndex = 1;
+			this.LblVersion.Text = "v0.0.0";
+			this.LblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
 			// SplashScreenForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -60,6 +72,7 @@
 			this.BackColor = System.Drawing.Color.White;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.ClientSize = new System.Drawing.Size(429, 195);
+			this.Controls.Add(this.LblVersion);
 			this.Controls.Add(this.pictureBox1);
 			this.DoubleBuffered = true;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -77,6 +90,7 @@
 
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.Label LblVersion;
 
 	}
 }

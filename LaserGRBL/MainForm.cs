@@ -7,60 +7,50 @@ namespace LaserGRBL
 	public partial class MainForm : Form
 	{
 		private GrblCore Core;
-		private ConnectLogForm ConnectionForm;
-		private PreviewForm PreviewForm;
-		private JogForm JogForm;
 
 		public MainForm()
 		{
 			InitializeComponent();
 
+			autoUpdateToolStripMenuItem.Checked = (bool)Settings.GetObject("Auto Update", true);
+
 			if (System.Threading.Thread.CurrentThread.Name == null)
 				System.Threading.Thread.CurrentThread.Name = "Main Thread";
 			
-			SplashScreenForm f = new SplashScreenForm();
-			f.ShowDialog();
-			f.Dispose();
+			using (SplashScreenForm f = new SplashScreenForm())
+				f.ShowDialog();
 
 			//build main communication object
 			Core = new GrblCore(this);
 			Core.MachineStatusChanged += OnMachineStatus;
 			Core.OnFileLoaded += OnFileLoaded;
 			Core.OnOverrideChange += ComPort_OnOverrideChange;
+
 			ComPort_OnOverrideChange();
-			
-						
-			PreviewForm = new PreviewForm(Core);
-			ConnectionForm = new ConnectLogForm(Core);
-			JogForm = new JogForm(Core);
+
+			PreviewForm.SetCore(Core);
+			ConnectionForm.SetCore(Core);
+			JogForm.SetCore(Core);
+
+			GitHub.NewVersion += GitHub_NewVersion;
+		}
+
+		void GitHub_NewVersion(Version current, Version latest, string name, string url)
+		{
+			if (InvokeRequired)
+			{
+				Invoke(new GitHub.NewVersionDlg(GitHub_NewVersion), current, latest, name, url);
+			}
+			else
+			{
+				NewVersionForm.CreateAndShowDialog(current, latest, name, url);
+			}
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			if (System.IO.File.Exists("LaserGRBL.Docking.xml"))
-			{
-				DockArea.LoadFromXml("LaserGRBL.Docking.xml", new LaserGRBL.UserControls.DockingManager.DeserializeDockContent(this.GetContentFromPersistString));
-			}
-			else
-			{
-				PreviewForm.Show(DockArea, LaserGRBL.UserControls.DockingManager.DockState.Document);
-				ConnectionForm.Show(DockArea, LaserGRBL.UserControls.DockingManager.DockState.DockLeft);
-				JogForm.Show(ConnectionForm.Pane, LaserGRBL.UserControls.DockingManager.DockAlignment.Bottom, 0.2);
-			}
-			
 			UpdateTimer.Enabled = true;
-		}
-
-		private LaserGRBL.UserControls.DockingManager.IDockContent GetContentFromPersistString(string persistString)
-		{
-			if (persistString == typeof(ConnectLogForm).ToString())
-				return ConnectionForm;
-			else if (persistString == typeof(PreviewForm).ToString())
-				return PreviewForm;
-			else if (persistString == typeof(JogForm).ToString())
-				return JogForm;
-			else
-				return null;
+			GitHub.CheckVersion();
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -85,7 +75,6 @@ namespace LaserGRBL
 		}
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
-			DockArea.SaveAsXml("LaserGRBL.Docking.xml");
 			Core.CloseCom();
 		}
 		
@@ -95,7 +84,8 @@ namespace LaserGRBL
 			TimerUpdate();
 			ConnectionForm.TimerUpdate();
 			PreviewForm.TimerUpdate();
-			JogForm.TimerUpdate();
+			
+			JogForm.Enabled = Core.JogEnabled;
 		}
 		
 		private void TimerUpdate()
@@ -214,11 +204,6 @@ namespace LaserGRBL
 			Core.GrblReset();
 		}
 
-		private void joggingToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			JogForm.Show(DockArea);
-		}
-		
 		void ComPort_OnOverrideChange()
 		{
 			SuspendLayout();
@@ -322,6 +307,26 @@ namespace LaserGRBL
 
 			if (System.Windows.Forms.MessageBox.Show("Require application restart, restart now?", "Restart required", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
 				Application.Restart();
+		}
+
+		private void helpOnLineToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/");
+		}
+
+		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"http://lasergrbl.com/");
+		}
+
+		private void autoUpdateToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			autoUpdateToolStripMenuItem.Checked = !autoUpdateToolStripMenuItem.Checked;
+			Settings.SetObject("Auto Update", autoUpdateToolStripMenuItem.Checked);
+			Settings.Save();
+
+			if (autoUpdateToolStripMenuItem.Checked)
+				GitHub.CheckVersion();
 		}
 
 

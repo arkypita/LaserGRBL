@@ -14,15 +14,19 @@ namespace LaserGRBL
 	/// <summary>
 	/// Description of ConnectLogForm.
 	/// </summary>
-	public partial class ConnectLogForm : LaserGRBL.UserControls.DockingManager.DockContent
+	public partial class ConnectLogForm : System.Windows.Forms.UserControl
 	{
 		private object[] baudRates = { 4800, 9600, 19200, 38400, 57600, 115200, 230400 };
 		
 		GrblCore Core;
-		
-		public ConnectLogForm(GrblCore core)
+
+		public ConnectLogForm()
 		{
 			InitializeComponent();
+		}
+
+		public void SetCore(GrblCore core)
+		{
 			Core = core;
 			Core.OnFileLoaded += OnFileLoaded;
 			CmdLog.SetCom(core);

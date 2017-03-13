@@ -48,7 +48,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.TbSpeed)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// tlp2
+			// tlp
 			// 
 			this.tlp.ColumnCount = 7;
 			this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -71,14 +71,14 @@
 			this.tlp.Controls.Add(this.imageButton3, 4, 3);
 			this.tlp.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tlp.Location = new System.Drawing.Point(0, 0);
-			this.tlp.Name = "tlp2";
+			this.tlp.Name = "tlp";
 			this.tlp.RowCount = 5;
 			this.tlp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlp.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tlp.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tlp.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tlp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlp.Size = new System.Drawing.Size(246, 146);
+			this.tlp.Size = new System.Drawing.Size(234, 125);
 			this.tlp.TabIndex = 0;
 			// 
 			// BtnHome
@@ -87,10 +87,9 @@
 			this.BtnHome.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.BtnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnHome.Coloration = System.Drawing.Color.Empty;
-			this.BtnHome.Enabled = false;
 			this.BtnHome.Image = ((System.Drawing.Image)(resources.GetObject("BtnHome.Image")));
 			this.BtnHome.JogDirection = LaserGRBL.GrblCore.JogDirection.N;
-			this.BtnHome.Location = new System.Drawing.Point(106, 55);
+			this.BtnHome.Location = new System.Drawing.Point(100, 45);
 			this.BtnHome.MaximumSize = new System.Drawing.Size(48, 48);
 			this.BtnHome.Name = "BtnHome";
 			this.BtnHome.Size = new System.Drawing.Size(33, 33);
@@ -102,9 +101,8 @@
 			// TbStep
 			// 
 			this.TbStep.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TbStep.Enabled = false;
 			this.TbStep.LargeChange = 10;
-			this.TbStep.Location = new System.Drawing.Point(187, 16);
+			this.TbStep.Location = new System.Drawing.Point(181, 6);
 			this.TbStep.Maximum = 200;
 			this.TbStep.Minimum = 1;
 			this.TbStep.Name = "TbStep";
@@ -120,9 +118,8 @@
 			// TbSpeed
 			// 
 			this.TbSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TbSpeed.Enabled = false;
 			this.TbSpeed.LargeChange = 100;
-			this.TbSpeed.Location = new System.Drawing.Point(13, 16);
+			this.TbSpeed.Location = new System.Drawing.Point(7, 6);
 			this.TbSpeed.Maximum = 4000;
 			this.TbSpeed.Minimum = 10;
 			this.TbSpeed.Name = "TbSpeed";
@@ -142,10 +139,9 @@
 			this.imageButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.imageButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.imageButton1.Coloration = System.Drawing.Color.Empty;
-			this.imageButton1.Enabled = false;
 			this.imageButton1.Image = ((System.Drawing.Image)(resources.GetObject("imageButton1.Image")));
 			this.imageButton1.JogDirection = LaserGRBL.GrblCore.JogDirection.W;
-			this.imageButton1.Location = new System.Drawing.Point(65, 55);
+			this.imageButton1.Location = new System.Drawing.Point(59, 45);
 			this.imageButton1.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton1.Name = "imageButton1";
 			this.imageButton1.Size = new System.Drawing.Size(33, 33);
@@ -160,10 +156,9 @@
 			this.imageButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.imageButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.imageButton2.Coloration = System.Drawing.Color.Empty;
-			this.imageButton2.Enabled = false;
 			this.imageButton2.Image = ((System.Drawing.Image)(resources.GetObject("imageButton2.Image")));
 			this.imageButton2.JogDirection = LaserGRBL.GrblCore.JogDirection.N;
-			this.imageButton2.Location = new System.Drawing.Point(106, 16);
+			this.imageButton2.Location = new System.Drawing.Point(100, 6);
 			this.imageButton2.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton2.Name = "imageButton2";
 			this.imageButton2.Size = new System.Drawing.Size(33, 33);
@@ -178,10 +173,9 @@
 			this.imageButton4.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.imageButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.imageButton4.Coloration = System.Drawing.Color.Empty;
-			this.imageButton4.Enabled = false;
 			this.imageButton4.Image = ((System.Drawing.Image)(resources.GetObject("imageButton4.Image")));
 			this.imageButton4.JogDirection = LaserGRBL.GrblCore.JogDirection.E;
-			this.imageButton4.Location = new System.Drawing.Point(147, 55);
+			this.imageButton4.Location = new System.Drawing.Point(141, 45);
 			this.imageButton4.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton4.Name = "imageButton4";
 			this.imageButton4.Size = new System.Drawing.Size(33, 33);
@@ -196,10 +190,9 @@
 			this.imageButton6.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.imageButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.imageButton6.Coloration = System.Drawing.Color.Empty;
-			this.imageButton6.Enabled = false;
 			this.imageButton6.Image = ((System.Drawing.Image)(resources.GetObject("imageButton6.Image")));
 			this.imageButton6.JogDirection = LaserGRBL.GrblCore.JogDirection.NW;
-			this.imageButton6.Location = new System.Drawing.Point(65, 16);
+			this.imageButton6.Location = new System.Drawing.Point(59, 6);
 			this.imageButton6.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton6.Name = "imageButton6";
 			this.imageButton6.Size = new System.Drawing.Size(33, 33);
@@ -214,10 +207,9 @@
 			this.imageButton5.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.imageButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.imageButton5.Coloration = System.Drawing.Color.Empty;
-			this.imageButton5.Enabled = false;
 			this.imageButton5.Image = ((System.Drawing.Image)(resources.GetObject("imageButton5.Image")));
 			this.imageButton5.JogDirection = LaserGRBL.GrblCore.JogDirection.NE;
-			this.imageButton5.Location = new System.Drawing.Point(147, 16);
+			this.imageButton5.Location = new System.Drawing.Point(141, 6);
 			this.imageButton5.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton5.Name = "imageButton5";
 			this.imageButton5.Size = new System.Drawing.Size(33, 33);
@@ -232,10 +224,9 @@
 			this.imageButton8.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.imageButton8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.imageButton8.Coloration = System.Drawing.Color.Empty;
-			this.imageButton8.Enabled = false;
 			this.imageButton8.Image = ((System.Drawing.Image)(resources.GetObject("imageButton8.Image")));
 			this.imageButton8.JogDirection = LaserGRBL.GrblCore.JogDirection.S;
-			this.imageButton8.Location = new System.Drawing.Point(105, 94);
+			this.imageButton8.Location = new System.Drawing.Point(99, 84);
 			this.imageButton8.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton8.Name = "imageButton8";
 			this.imageButton8.Size = new System.Drawing.Size(35, 35);
@@ -250,10 +241,9 @@
 			this.imageButton7.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.imageButton7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.imageButton7.Coloration = System.Drawing.Color.Empty;
-			this.imageButton7.Enabled = false;
 			this.imageButton7.Image = ((System.Drawing.Image)(resources.GetObject("imageButton7.Image")));
 			this.imageButton7.JogDirection = LaserGRBL.GrblCore.JogDirection.SW;
-			this.imageButton7.Location = new System.Drawing.Point(64, 94);
+			this.imageButton7.Location = new System.Drawing.Point(58, 84);
 			this.imageButton7.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton7.Name = "imageButton7";
 			this.imageButton7.Size = new System.Drawing.Size(35, 35);
@@ -268,10 +258,9 @@
 			this.imageButton3.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.imageButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.imageButton3.Coloration = System.Drawing.Color.Empty;
-			this.imageButton3.Enabled = false;
 			this.imageButton3.Image = ((System.Drawing.Image)(resources.GetObject("imageButton3.Image")));
 			this.imageButton3.JogDirection = LaserGRBL.GrblCore.JogDirection.SE;
-			this.imageButton3.Location = new System.Drawing.Point(146, 94);
+			this.imageButton3.Location = new System.Drawing.Point(140, 84);
 			this.imageButton3.MaximumSize = new System.Drawing.Size(48, 48);
 			this.imageButton3.Name = "imageButton3";
 			this.imageButton3.Size = new System.Drawing.Size(35, 35);
@@ -284,16 +273,10 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(246, 146);
 			this.Controls.Add(this.tlp);
-			this.DockAreas = ((LaserGRBL.UserControls.DockingManager.DockAreas)(((LaserGRBL.UserControls.DockingManager.DockAreas.Float | LaserGRBL.UserControls.DockingManager.DockAreas.DockLeft) 
-            | LaserGRBL.UserControls.DockingManager.DockAreas.DockRight)));
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.HideOnClose = true;
 			this.Name = "JogForm";
-			this.ShowHint = LaserGRBL.UserControls.DockingManager.DockState.Float;
-			this.Text = "Jogging";
-			this.ToolTipText = "Jogging";
+			this.Size = new System.Drawing.Size(234, 125);
 			this.tlp.ResumeLayout(false);
 			this.tlp.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.TbStep)).EndInit();

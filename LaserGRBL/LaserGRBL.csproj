@@ -88,20 +88,14 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectLogForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ConnectLogForm.Designer.cs">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
@@ -124,13 +118,14 @@
     <Compile Include="CustomButtonForm.Designer.cs">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GitHub.cs" />
     <Compile Include="GrblCore.cs" />
     <Compile Include="CSV\CsvDictionary.cs" />
     <Compile Include="CSV\FormattedMessage.cs" />
     <Compile Include="GrblCommand.cs" />
     <Compile Include="GrblFile.cs" />
     <Compile Include="JogForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="JogForm.Designer.cs">
       <DependentUpon>JogForm.cs</DependentUpon>
@@ -141,8 +136,14 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PreviewForm.cs">
+    <Compile Include="NewVersionForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewVersionForm.Designer.cs">
+      <DependentUpon>NewVersionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreviewForm.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="PreviewForm.Designer.cs">
       <DependentUpon>PreviewForm.cs</DependentUpon>
@@ -211,108 +212,6 @@
     <Compile Include="UserControls\CommandLog.Designer.cs">
       <DependentUpon>CommandLog.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\AutoHideStripBase.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockAreasEditor.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\DockContent.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockContentCollection.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\DockContentEventArgs.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\DockContentHandler.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\DockOutlineBase.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\DockPane.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockPane.SplitterControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockPaneCaptionBase.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockPaneCollection.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\DockPanel.Appearance.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockPanel.AutoHideWindow.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockPanel.DockDragHandler.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockPanel.DragHandler.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockPanel.FocusManager.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockPanel.MdiClientController.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockPanel.Persistor.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockPanel.SplitterDragHandler.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockPanelExtender.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\DockPanelSkin.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\DockPaneStripBase.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockWindow.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockWindow.SplitterControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DockWindowCollection.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\DragForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\DummyControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\Enums.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\FloatWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\FloatWindowCollection.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\Helpers\DockHelper.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\Helpers\DrawHelper.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\Helpers\ResourceHelper.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\Helpers\Win32Helper.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\InertButtonBase.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\Interfaces.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\Localization.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\Measures.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\NestedDockingStatus.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\NestedPaneCollection.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\Resources.Designer.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\Skins\DockPanelSkinBuilder.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\Skins\Style.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\SplitterBase.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\Strings.Designer.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\VisibleNestedPaneCollection.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\VS2005AutoHideStrip.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\VS2005DockPaneCaption.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\VS2005DockPaneStrip.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\DockingManager\Docking\Win32\Enums.cs" />
-    <Compile Include="UserControls\DockingManager\Docking\Win32\NativeMethods.cs" />
     <Compile Include="UserControls\DoubleProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -380,6 +279,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewVersionForm.resx">
+      <DependentUpon>NewVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.es.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -420,10 +322,6 @@
     <EmbeddedResource Include="UserControls\CommandLog.resx">
       <DependentUpon>CommandLog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\DockingManager\Resources.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\DockingManager\Strings.resx" />
     <EmbeddedResource Include="UserControls\GrblPanel.resx">
       <DependentUpon>GrblPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -477,31 +375,6 @@
     <Content Include="Grafica\stop.png" />
     <Content Include="Grafica\text_align_left.png" />
     <Content Include="Grafica\warning.png" />
-    <Content Include="UserControls\DockingManager\Docking\DockPanel.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Bottom.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\Dockindicator_PaneDiamond_Fill.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Hotspot.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_HotspotIndex.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Left.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Right.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PaneDiamond_Top.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelBottom.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelBottom_Active.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelFill.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelFill_Active.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelLeft.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelLeft_Active.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelRight.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelRight_Active.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelTop.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockIndicator_PanelTop_Active.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_AutoHide.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_Close.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_Dock.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_Option.bmp" />
-    <EmbeddedResource Include="UserControls\DockingManager\Resources\DockPane_OptionOverflow.bmp" />
-    <Content Include="UserControls\DockingManager\license.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

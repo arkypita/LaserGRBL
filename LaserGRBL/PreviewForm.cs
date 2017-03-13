@@ -17,14 +17,17 @@ namespace LaserGRBL
 	/// <summary>
 	/// Description of PreviewForm.
 	/// </summary>
-	public partial class PreviewForm : LaserGRBL.UserControls.DockingManager.DockContent
+	public partial class PreviewForm : System.Windows.Forms.UserControl
 	{
 		GrblCore Core;
 
-		public PreviewForm(GrblCore core)
+		public PreviewForm()
 		{
 			InitializeComponent();
+		}
 
+		public void SetCore(GrblCore core)
+		{
 			Core = core;
 			Preview.SetComProgram(core);
 
