@@ -100,17 +100,17 @@
     <Compile Include="ConnectLogForm.Designer.cs">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CsPotrace\BezierToBiarc\Algorithm.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\Arc.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\BiArc.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\Complex.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\CubicBezier.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\Line.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\Tuple.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\Vector2.cs" />
-    <Compile Include="CsPotrace\CsPotrace.cs" />
-    <Compile Include="CsPotrace\CsPotraceExportGCODE.cs" />
-    <Compile Include="CsPotrace\CsPtoraceExport.cs" />
+    <Compile Include="Potrace\BezierToBiarc\Algorithm.cs" />
+    <Compile Include="Potrace\BezierToBiarc\Arc.cs" />
+    <Compile Include="Potrace\BezierToBiarc\BiArc.cs" />
+    <Compile Include="Potrace\BezierToBiarc\Complex.cs" />
+    <Compile Include="Potrace\BezierToBiarc\CubicBezier.cs" />
+    <Compile Include="Potrace\BezierToBiarc\Line.cs" />
+    <Compile Include="Potrace\BezierToBiarc\Tuple.cs" />
+    <Compile Include="Potrace\BezierToBiarc\Vector2.cs" />
+    <Compile Include="Potrace\CsPotrace.cs" />
+    <Compile Include="Potrace\CsPotraceExportGCODE.cs" />
+    <Compile Include="Potrace\CsPtoraceExport.cs" />
     <Compile Include="CustomButton.cs" />
     <Compile Include="CustomButtonForm.cs">
       <SubType>Form</SubType>
