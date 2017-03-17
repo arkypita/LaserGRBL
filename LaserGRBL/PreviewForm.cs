@@ -211,6 +211,35 @@ namespace LaserGRBL
 
 		}
 
+		private class MyFlowPanel : FlowLayoutPanel
+		{
+			public MyFlowPanel()
+			{
+				ResizeRedraw = true;
+			}
+
+			protected override void OnControlAdded(ControlEventArgs e)
+			{
+				base.OnControlAdded(e);
+				Invalidate();
+			}
+			protected override void OnControlRemoved(ControlEventArgs e)
+			{
+				base.OnControlRemoved(e);
+				Invalidate();
+			}
+
+			protected override void OnPaintBackground(PaintEventArgs e)
+			{
+				e.Graphics.Clear(BackColor);
+				if (Controls.Count == 0)
+				{
+					SizeF size = e.Graphics.MeasureString("Right click here to add custom buttons", Font);
+					e.Graphics.DrawString("Right click here to add custom buttons", Font, Brushes.DarkGray, (Width - size.Width) / 2, (Height - size.Height) / 2);
+				}
+			}
+		}
+
 	}
 
 }

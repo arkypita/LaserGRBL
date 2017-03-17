@@ -46,7 +46,7 @@ namespace LaserGRBL
 			this.BtnStop = new LaserGRBL.UserControls.ImageButton();
 			this.BtnResume = new LaserGRBL.UserControls.ImageButton();
 			this.BtnUnlock = new LaserGRBL.UserControls.ImageButton();
-			this.CustomButtonArea = new System.Windows.Forms.FlowLayoutPanel();
+			this.CustomButtonArea = new MyFlowPanel();
 			this.MNAddCB = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.addCustomButtonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
@@ -210,7 +210,7 @@ namespace LaserGRBL
 		private UserControls.ImageButton BtnResume;
 		private UserControls.ImageButton BtnUnlock;
 		private System.Windows.Forms.ToolTip TT;
-		private System.Windows.Forms.FlowLayoutPanel CustomButtonArea;
+		private MyFlowPanel CustomButtonArea;
 		private System.Windows.Forms.ContextMenuStrip MNAddCB;
 		private System.Windows.Forms.ToolStripMenuItem addCustomButtonToolStripMenuItem;
 		private System.Windows.Forms.ContextMenuStrip MNRemEditCB;
