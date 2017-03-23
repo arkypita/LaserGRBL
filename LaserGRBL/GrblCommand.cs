@@ -300,8 +300,16 @@ namespace LaserGRBL
 			return new PointF(curX + oX, curY + oY);
 		}
 
+		//public bool TrueMovement(decimal curX, decimal curY, bool abs)
+		//{ return (X != null || Y != null) && ((X == null || X.Number != curX) || (Y == null || Y.Number != curY)); }
+
 		public bool TrueMovement(decimal curX, decimal curY, bool abs)
-		{ return (X != null || Y != null) && ((X == null || X.Number != curX) || (Y == null || Y.Number != curY)); }
+		{
+			if (abs) //spostamenti assoluti
+				return ((X != null && X.Number != curX) || (Y != null && Y.Number != curY));
+			else //spostamenti relativi
+				return ((X != null && X.Number != 0) || (Y != null && Y.Number != 0));
+		}
 
 		public string LeftString
 		{ get { return Command; } }
