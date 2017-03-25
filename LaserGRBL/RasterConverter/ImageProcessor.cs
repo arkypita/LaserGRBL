@@ -98,6 +98,13 @@ namespace LaserGRBL.RasterConverter
 			ResizeRecalc();
 			mGrayScale = TestGrayScale(mOriginal);
 		}
+
+		internal void FormResize(Size size)
+		{
+			mBoxSize = size;
+			ResizeRecalc();
+			Refresh();
+		}
 		
 		public object Clone()
 		{

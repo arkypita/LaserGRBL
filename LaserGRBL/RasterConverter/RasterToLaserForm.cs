@@ -184,6 +184,10 @@ namespace LaserGRBL.RasterConverter
 			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", IP.MinPower);
 			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", IP.MaxPower);
 
+			Settings.SetObject("GrayScaleConversion.Gcode.Offset.X", IP.TargetOffset.X);
+			Settings.SetObject("GrayScaleConversion.Gcode.Offset.Y", IP.TargetOffset.Y);
+			Settings.SetObject("GrayScaleConversion.Gcode.BiggestDimension", Math.Max(IP.TargetSize.Width, IP.TargetSize.Height));
+
 			Settings.Save(); // Saves settings in application configuration file
 		}
 
@@ -506,6 +510,11 @@ namespace LaserGRBL.RasterConverter
 		{
 			IP.DownSampling = UDDownSample.Value;
 		}
-	
+
+		private void PbConverted_Resize(object sender, EventArgs e)
+		{
+			IP.FormResize(PbConverted.Size);
+		}
+
 	}
 }

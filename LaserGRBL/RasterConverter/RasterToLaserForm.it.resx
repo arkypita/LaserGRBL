@@ -117,13 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="WB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>457, 468</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="PbConverted.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="TpPreview.Text" xml:space="preserve">
     <value>Anteprima</value>
+  </data>
+  <data name="PbOriginal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="TpOriginal.Text" xml:space="preserve">
     <value>Originale</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
@@ -327,6 +337,9 @@
   <data name="BtnRevert.ToolTip" xml:space="preserve">
     <value>Annulla le modifiche</value>
   </data>
+  <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 13</value>
   </data>
@@ -339,14 +352,23 @@
   <data name="UDSpotRemoval.ToolTip" xml:space="preserve">
     <value>Rimuovi tutti i piccoli disturbi</value>
   </data>
+  <data name="CbSpotRemoval.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="CbSpotRemoval.Location" type="System.Drawing.Point, System.Drawing">
     <value>155, 5</value>
+  </data>
+  <data name="label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 13</value>
   </data>
   <data name="label24.Text" xml:space="preserve">
     <value>Ottimizza</value>
+  </data>
+  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 13</value>
@@ -366,11 +388,20 @@
   <data name="UDSmoothing.ToolTip" xml:space="preserve">
     <value>Arrotonda gli spigoli vivi</value>
   </data>
+  <data name="CbOptimize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="CbOptimize.Location" type="System.Drawing.Point, System.Drawing">
     <value>155, 53</value>
   </data>
+  <data name="CbSmoothing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="CbSmoothing.Location" type="System.Drawing.Point, System.Drawing">
     <value>155, 29</value>
+  </data>
+  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 13</value>
@@ -382,10 +413,13 @@
     <value>96, 98</value>
   </data>
   <data name="CbFillingDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
+    <value>127, 21</value>
   </data>
   <data name="CbFillingDirection.ToolTip" xml:space="preserve">
     <value>Abilita il riempimento / imposta la direzione</value>
+  </data>
+  <data name="LblFillingQuality.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="LblFillingQuality.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -398,6 +432,9 @@
   </data>
   <data name="UDFillingQuality.ToolTip" xml:space="preserve">
     <value>Imposta la risoluzione del riempimento (linee/mm)</value>
+  </data>
+  <data name="LblFillingLineLbl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="LblFillingLineLbl.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 126</value>
@@ -414,14 +451,20 @@
   <data name="UDDownSample.ToolTip" xml:space="preserve">
     <value>Riscala l'immagine [per immagini con risoluzioni troppo elevate]</value>
   </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CbDownSample.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="CbDownSample.Location" type="System.Drawing.Point, System.Drawing">
     <value>155, 77</value>
   </data>
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 145</value>
+    <value>225, 145</value>
   </data>
   <data name="GbVectorizeOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 164</value>
+    <value>231, 164</value>
   </data>
   <data name="GbVectorizeOptions.Text" xml:space="preserve">
     <value>Opzioni Vettorizza!</value>
@@ -431,6 +474,9 @@
   </data>
   <data name="CbResize.ToolTip" xml:space="preserve">
     <value>Controlla il tipo di scalatura</value>
+  </data>
+  <data name="LblGrayscale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="LblGrayscale.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 13</value>
@@ -447,11 +493,17 @@
   <data name="TBRed.Location" type="System.Drawing.Point, System.Drawing">
     <value>64, 51</value>
   </data>
+  <data name="LblRed.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="LblRed.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 13</value>
   </data>
   <data name="LblRed.Text" xml:space="preserve">
     <value>Rosso</value>
+  </data>
+  <data name="LblBlue.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="LblBlue.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 13</value>
@@ -459,11 +511,17 @@
   <data name="LblBlue.Text" xml:space="preserve">
     <value>Blu</value>
   </data>
+  <data name="LblGreen.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="LblGreen.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
   </data>
   <data name="LblGreen.Text" xml:space="preserve">
     <value>Verde</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 13</value>
@@ -472,22 +530,28 @@
     <value>Luminosità</value>
   </data>
   <data name="TBGreen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 78</value>
+    <value>64, 75</value>
   </data>
   <data name="TbBright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 132</value>
+    <value>64, 123</value>
   </data>
   <data name="TBBlue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 105</value>
+    <value>64, 99</value>
   </data>
   <data name="TbContrast.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 159</value>
+    <value>64, 147</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Contrasto</value>
+  </data>
+  <data name="CbThreshold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="CbThreshold.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 17</value>
@@ -498,6 +562,9 @@
   <data name="CbThreshold.ToolTip" xml:space="preserve">
     <value>Applica un filtro di soglia</value>
   </data>
+  <data name="label28.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 13</value>
   </data>
@@ -505,13 +572,13 @@
     <value>Scala</value>
   </data>
   <data name="TbThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 186</value>
+    <value>64, 171</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 212</value>
+    <value>225, 194</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 231</value>
+    <value>231, 213</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Parametri</value>
@@ -528,11 +595,17 @@
   <data name="UDQuality.ToolTip" xml:space="preserve">
     <value>Imposta la risoluzione di stampa (linee/mm)</value>
   </data>
+  <data name="CbLinePreview.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="CbLinePreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 17</value>
   </data>
   <data name="CbLinePreview.Text" xml:space="preserve">
     <value>Anteprima linee</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -540,11 +613,17 @@
   <data name="label5.Text" xml:space="preserve">
     <value>Qualità</value>
   </data>
+  <data name="label27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 13</value>
   </data>
   <data name="label27.Text" xml:space="preserve">
     <value>Direzione</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>119, 30</value>
@@ -555,14 +634,21 @@
   <data name="label8.Text" xml:space="preserve">
     <value>Linee/mm</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TLP.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
   <data name="TLP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 70</value>
+    <value>225, 70</value>
   </data>
   <data name="GbLineToLineOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 89</value>
+    <value>231, 89</value>
   </data>
   <data name="GbLineToLineOptions.Text" xml:space="preserve">
     <value>Opzioni linea per linea</value>
+  </data>
+  <data name="RbDithering.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="RbDithering.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 17</value>
@@ -573,6 +659,9 @@
   <data name="RbDithering.ToolTip" xml:space="preserve">
     <value>Produce un immagine BN che simula i toni di grigio</value>
   </data>
+  <data name="RbVectorize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="RbVectorize.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 17</value>
   </data>
@@ -581,6 +670,9 @@
   </data>
   <data name="RbVectorize.ToolTip" xml:space="preserve">
     <value>Produce percorsi vettoriali sui bordi</value>
+  </data>
+  <data name="RbLineToLineTracing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="RbLineToLineTracing.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 17</value>
@@ -592,16 +684,22 @@
     <value>Produce delle linee in toni di grigio</value>
   </data>
   <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 63</value>
+    <value>225, 63</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 82</value>
+    <value>231, 82</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Strumento di conversione</value>
   </data>
+  <data name="BtnCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Annulla</value>
+  </data>
+  <data name="BtnCreate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="BtnCreate.Text" xml:space="preserve">
     <value>Avanti</value>

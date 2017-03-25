@@ -38,13 +38,13 @@ namespace LaserGRBL.RasterConverter
 			
 			if (IP.Original.Height < IP.Original.Width)
 			{
-				IISizeW.CurrentValue = 100;
-				IISizeH.CurrentValue = IP.WidthToHeight(100);
+				IISizeW.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100);
+				IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
 			}
 			else
 			{
-				IISizeH.CurrentValue = 100;
-				IISizeW.CurrentValue = IP.HeightToWidht(100);
+				IISizeH.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100);
+				IISizeW.CurrentValue = IP.HeightToWidht(IISizeH.CurrentValue);
 			}
 		
 
@@ -60,7 +60,10 @@ namespace LaserGRBL.RasterConverter
 			IILinearFilling.Visible = LblLinearFilling.Visible = LblLinearFillingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Line2Line || IP.SelectedTool == ImageProcessor.Tool.Dithering || (IP.SelectedTool == ImageProcessor.Tool.Vectorize && (IP.FillingDirection != ImageProcessor.Direction.None)));
 			IIBorderTracing.Visible = LblBorderTracing.Visible = LblBorderTracingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Vectorize);
 			LblLinearFilling.Text = IP.SelectedTool == ImageProcessor.Tool.Vectorize ? "Filling Speed" : "Engraving Speed";
-			
+
+			IIOffsetX.CurrentValue = IP.TargetOffset.X = (int)Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0);
+			IIOffsetY.CurrentValue = IP.TargetOffset.Y = (int)Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0);
+
 			ShowDialog();
 		}
 		

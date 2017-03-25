@@ -116,6 +116,11 @@ namespace LaserGRBL
 			string filename = null;
 			using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
 			{
+				//pre-select last file if exist
+				string lastFN = (string)Settings.GetObject("Core.LastOpenFile", null);
+				if (lastFN != null && System.IO.File.Exists(lastFN))
+					ofd.FileName = lastFN;
+
 				ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.bmp;*.png;*.jpg;*.gif|GCODE Files|*.nc;*.cnc;*.tap;*.gcode|Raster Image|*.bmp;*.png;*.jpg;*.gif";
 				ofd.CheckFileExists = true;
 				ofd.Multiselect = false;
@@ -126,7 +131,7 @@ namespace LaserGRBL
 
 			if (filename != null)
 			{
-
+				Settings.SetObject("Core.LastOpenFile", filename);
 
 				if (ImageExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant())) //import raster image
 				{
