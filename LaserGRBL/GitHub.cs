@@ -68,7 +68,7 @@ namespace LaserGRBL
 					Version current = typeof(GitHub).Assembly.GetName().Version;
 					Version latest = new Version(versionstr);
 
-					if (current.Major < latest.Major || current.Minor < latest.Minor || current.Revision < latest.Revision)
+					if (current < latest)
 					{
 						if (NewVersion != null)
 							NewVersion(current, latest, name, url);
