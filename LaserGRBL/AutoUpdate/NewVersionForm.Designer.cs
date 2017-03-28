@@ -36,8 +36,8 @@
 			this.LblLatestVersion = new System.Windows.Forms.Label();
 			this.TxtNewV = new System.Windows.Forms.Label();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnUpdate = new System.Windows.Forms.Button();
 			this.BtnCancel = new System.Windows.Forms.Button();
+			this.BtnUpdate = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -151,17 +151,6 @@
 			this.tableLayoutPanel3.Size = new System.Drawing.Size(305, 33);
 			this.tableLayoutPanel3.TabIndex = 1;
 			// 
-			// BtnUpdate
-			// 
-			this.BtnUpdate.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.BtnUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnUpdate.Location = new System.Drawing.Point(228, 3);
-			this.BtnUpdate.Name = "BtnUpdate";
-			this.BtnUpdate.Size = new System.Drawing.Size(74, 27);
-			this.BtnUpdate.TabIndex = 6;
-			this.BtnUpdate.Text = "Download!";
-			this.BtnUpdate.UseVisualStyleBackColor = true;
-			// 
 			// BtnCancel
 			// 
 			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -172,6 +161,17 @@
 			this.BtnCancel.TabIndex = 7;
 			this.BtnCancel.Text = "Cancel";
 			this.BtnCancel.UseVisualStyleBackColor = true;
+			// 
+			// BtnUpdate
+			// 
+			this.BtnUpdate.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.BtnUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.BtnUpdate.Location = new System.Drawing.Point(228, 3);
+			this.BtnUpdate.Name = "BtnUpdate";
+			this.BtnUpdate.Size = new System.Drawing.Size(74, 27);
+			this.BtnUpdate.TabIndex = 6;
+			this.BtnUpdate.Text = "Update!";
+			this.BtnUpdate.UseVisualStyleBackColor = true;
 			// 
 			// NewVersionForm
 			// 

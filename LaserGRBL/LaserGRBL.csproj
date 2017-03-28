@@ -94,6 +94,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoUpdate\ZipStorer.cs" />
     <Compile Include="ConnectLogForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -118,7 +119,7 @@
     <Compile Include="CustomButtonForm.Designer.cs">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GitHub.cs" />
+    <Compile Include="AutoUpdate\GitHub.cs" />
     <Compile Include="GrblCore.cs" />
     <Compile Include="CSV\CsvDictionary.cs" />
     <Compile Include="CSV\FormattedMessage.cs" />
@@ -136,10 +137,10 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewVersionForm.cs">
+    <Compile Include="AutoUpdate\NewVersionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewVersionForm.Designer.cs">
+    <Compile Include="AutoUpdate\NewVersionForm.Designer.cs">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PreviewForm.cs">
@@ -279,7 +280,7 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewVersionForm.resx">
+    <EmbeddedResource Include="AutoUpdate\NewVersionForm.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.es.resx">

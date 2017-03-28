@@ -23,7 +23,7 @@ namespace LaserGRBL
 				f.LblCurrentVersion.Text = current.ToString(3);
 				f.LblLatestVersion.Text = latest.ToString(3);
 				if (f.ShowDialog() == DialogResult.OK)
-					System.Diagnostics.Process.Start(url);
+					GitHub.Update(url); //System.Diagnostics.Process.Start(url);
 			}
 
 			
