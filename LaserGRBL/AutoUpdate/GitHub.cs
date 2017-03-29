@@ -9,9 +9,6 @@ namespace LaserGRBL
 		public delegate void NewVersionDlg(Version current, Version latest, string name, string url);
 		public static event NewVersionDlg NewVersion;
 
-		public delegate void UpdateResultDlg(bool result);
-		public static event UpdateResultDlg UpdateResult;
-
 		public static void CheckVersion()
 		{
 			Cleanup();
@@ -76,8 +73,9 @@ namespace LaserGRBL
 
 					client = new System.Net.WebClient();
 					client.DownloadProgressChanged += onprogr;
-					client.DownloadFileCompleted += oncomplete;
 					client.DownloadFileCompleted += disposeclient;
+					client.DownloadFileCompleted += oncomplete;
+
 					client.DownloadFileAsync(new System.Uri(url), zipfile);
 				}
 				else
@@ -87,7 +85,7 @@ namespace LaserGRBL
 			}
 			catch (Exception ex)
 			{
-
+				oncomplete(null, new System.ComponentModel.AsyncCompletedEventArgs(new InvalidOperationException("Error downloading!"), true, null));
 			}
 		}
 
@@ -100,7 +98,7 @@ namespace LaserGRBL
 			}
 		}
 
-		internal static bool ApplyUpdate()
+		public static bool ApplyUpdate()
 		{
 			try
 			{

@@ -12,11 +12,12 @@ namespace LaserGRBL
 	public partial class NewVersionForm : Form
 	{
 		private string mUrl;
-
+		private bool mClosing;
 		public NewVersionForm(string url)
 		{
 			InitializeComponent();
 			mUrl = url;
+			mClosing = false;
 		}
 
 		internal static void CreateAndShowDialog(Version current, Version latest, string name, string url, Form parent)
@@ -39,13 +40,28 @@ namespace LaserGRBL
 
 		private void BtnUpdate_Click(object sender, EventArgs e)
 		{
-			//if (f.ShowDialog() == DialogResult.OK)
 			BtnUpdate.Enabled = false;
 			BtnCancel.Enabled = false;
-			GitHub.DownloadUpdateA(mUrl, dprog, dcomplete); //System.Diagnostics.Process.Start(url);
+			GitHub.DownloadUpdateA(mUrl, dprog, dcomplete); //start download progress
 		}
 
-		private void dcomplete(object sender, AsyncCompletedEventArgs e)
+		private void dprog(object sender, System.Net.DownloadProgressChangedEventArgs e)
+		{
+			if (InvokeRequired)
+			{
+				Invoke(new System.Net.DownloadProgressChangedEventHandler(dprog), sender, e);
+			}
+			else
+			{
+				if (mClosing)
+					return;
+
+				PB.Value = e.ProgressPercentage;
+			}
+		}
+
+
+		private void dcomplete(object sender, AsyncCompletedEventArgs e) //on download end (good or error)
 		{
 			if (InvokeRequired)
 			{
@@ -53,6 +69,9 @@ namespace LaserGRBL
 			}
 			else
 			{
+				if (mClosing)
+					return;
+
 				if (e.Error == null && !e.Cancelled && GitHub.ApplyUpdate())
 					DialogResult = System.Windows.Forms.DialogResult.OK;
 				else
@@ -62,17 +81,11 @@ namespace LaserGRBL
 			}
 		}
 
-		private void dprog(object sender, System.Net.DownloadProgressChangedEventArgs e)
-		{
 
-			if (InvokeRequired)
-			{
-				Invoke(new System.Net.DownloadProgressChangedEventHandler(dprog), sender, e);
-			}
-			else
-			{
-				PB.Value = e.ProgressPercentage;
-			}
+
+		private void NewVersionForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			mClosing = true;
 		}
 
 

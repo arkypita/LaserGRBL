@@ -35,10 +35,10 @@
 			this.TxtCurrentV = new System.Windows.Forms.Label();
 			this.LblLatestVersion = new System.Windows.Forms.Label();
 			this.TxtNewV = new System.Windows.Forms.Label();
+			this.PB = new System.Windows.Forms.ProgressBar();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnUpdate = new System.Windows.Forms.Button();
-			this.PB = new System.Windows.Forms.ProgressBar();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -105,8 +105,8 @@
 			this.TxtHeader.Name = "TxtHeader";
 			this.TxtHeader.Size = new System.Drawing.Size(299, 26);
 			this.TxtHeader.TabIndex = 0;
-			this.TxtHeader.Text = "A new version has been found. We suggest you update LaserGRBL to take advantage o" +
-    "f new features and bugfix.";
+			this.TxtHeader.Text = "A new version has been found. We suggest to update LaserGRBL to take advantage of" +
+    " new features and bugfix.";
 			// 
 			// TxtCurrentV
 			// 
@@ -137,6 +137,15 @@
 			this.TxtNewV.Size = new System.Drawing.Size(67, 13);
 			this.TxtNewV.TabIndex = 3;
 			this.TxtNewV.Text = "Last version:";
+			// 
+			// PB
+			// 
+			this.tableLayoutPanel2.SetColumnSpan(this.PB, 2);
+			this.PB.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.PB.Location = new System.Drawing.Point(3, 73);
+			this.PB.Name = "PB";
+			this.PB.Size = new System.Drawing.Size(299, 15);
+			this.PB.TabIndex = 5;
 			// 
 			// tableLayoutPanel3
 			// 
@@ -179,15 +188,6 @@
 			this.BtnUpdate.UseVisualStyleBackColor = true;
 			this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
 			// 
-			// PB
-			// 
-			this.tableLayoutPanel2.SetColumnSpan(this.PB, 2);
-			this.PB.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PB.Location = new System.Drawing.Point(3, 73);
-			this.PB.Name = "PB";
-			this.PB.Size = new System.Drawing.Size(299, 15);
-			this.PB.TabIndex = 5;
-			// 
 			// NewVersionForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,6 +199,7 @@
 			this.Name = "NewVersionForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "New version available";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewVersionForm_FormClosing);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
