@@ -35,27 +35,6 @@ namespace LaserGRBL
 			JogForm.SetCore(Core);
 
 			GitHub.NewVersion += GitHub_NewVersion;
-			GitHub.UpdateResult += GitHub_UpdateResult;
-		}
-
-		void GitHub_UpdateResult(bool result)
-		{
-			if (InvokeRequired)
-			{
-				Invoke(new GitHub.UpdateResultDlg(GitHub_UpdateResult), result);
-			}
-			else
-			{
-				if (result)
-				{
-					if (System.Windows.Forms.MessageBox.Show("Update success! Please restart LaserGRBL to apply update.\r\nRestart now?", "Update result", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
-						System.Windows.Forms.Application.Restart();
-				}
-				else
-				{
-					System.Windows.Forms.MessageBox.Show("Update fail!\r\nPlease download the new version from lasergrbl site.", "Update result", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-				}
-			}
 		}
 
 		void GitHub_NewVersion(Version current, Version latest, string name, string url)
@@ -66,7 +45,7 @@ namespace LaserGRBL
 			}
 			else
 			{
-				NewVersionForm.CreateAndShowDialog(current, latest, name, url);
+				NewVersionForm.CreateAndShowDialog(current, latest, name, url, this);
 			}
 		}
 

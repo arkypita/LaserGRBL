@@ -60,68 +60,83 @@ namespace LaserGRBL
 			}
 		}
 
-		public static void Update(string url)
-		{
-			System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(GitHub.AsyncUpdate), url);
-		}
+		public static string zipfile = "lasergrblupdate.package";
+		public static string mainpath = @"LaserGRBL/";
+		public static string delext = ".todelete";
 
-		static string zipfile = "lasergrblupdate.package";
-		static string mainpath = @"LaserGRBL/";
-		static string delext = ".todelete";
-
-		private static void AsyncUpdate(object foo)
+		private static System.Net.WebClient client;
+		public static void DownloadUpdateA(string url, System.Net.DownloadProgressChangedEventHandler onprogr, System.ComponentModel.AsyncCompletedEventHandler oncomplete)
 		{
-			string url = foo as string;
-			bool done = false;
 			try
 			{
-				using (var client = new System.Net.WebClient())
+				if (client == null)
 				{
 					if (System.IO.File.Exists(zipfile))
 						System.IO.File.Delete(zipfile);
 
-					client.DownloadFile(url, zipfile);
-					System.IO.Compression.ZipStorer zs = System.IO.Compression.ZipStorer.Open(zipfile, System.IO.FileAccess.Read);
-
-					foreach (System.IO.Compression.ZipStorer.ZipFileEntry ze in zs.ReadCentralDir())
-					{
-						string fname = ze.FilenameInZip;
-						if (fname.StartsWith(mainpath))
-							fname = fname.Substring(mainpath.Length);
-
-						if (System.IO.File.Exists(fname))
-						{
-							if (System.IO.File.Exists(fname + delext))
-								System.IO.File.Delete(fname + delext);
-
-							System.IO.File.Move(fname, fname + delext);
-							System.IO.File.SetAttributes(fname + delext, System.IO.FileAttributes.Hidden);
-						}
-
-						zs.ExtractFile(ze, "./" + fname);
-					}
-
-					zs.Close();
-					done = true;
+					client = new System.Net.WebClient();
+					client.DownloadProgressChanged += onprogr;
+					client.DownloadFileCompleted += oncomplete;
+					client.DownloadFileCompleted += disposeclient;
+					client.DownloadFileAsync(new System.Uri(url), zipfile);
+				}
+				else
+				{
+					oncomplete(null, new System.ComponentModel.AsyncCompletedEventArgs(new InvalidOperationException("Download already in progress!"), true, null));
 				}
 			}
 			catch (Exception ex)
 			{
-				
-			}
-			finally
-			{
-				try
-				{
-					if (System.IO.File.Exists(zipfile))
-						System.IO.File.Delete(zipfile);
-				}
-				catch { }
-			}
 
-			if (UpdateResult != null)
-				UpdateResult(done);
+			}
 		}
+
+		private static void disposeclient(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+		{
+			if (client != null)
+			{
+				client.Dispose();
+				client = null;
+			}
+		}
+
+		internal static bool ApplyUpdate()
+		{
+			try
+			{
+				if (System.IO.File.Exists(zipfile)) //il download ha fatto il suo lavoro
+				{
+					using (System.IO.Compression.ZipStorer zs = System.IO.Compression.ZipStorer.Open(zipfile, System.IO.FileAccess.Read))
+					{
+						foreach (System.IO.Compression.ZipStorer.ZipFileEntry ze in zs.ReadCentralDir())
+						{
+							string fname = ze.FilenameInZip;
+							if (fname.StartsWith(mainpath))
+								fname = fname.Substring(mainpath.Length);
+
+							if (System.IO.File.Exists(fname))
+							{
+								if (System.IO.File.Exists(fname + delext))
+									System.IO.File.Delete(fname + delext);
+
+								System.IO.File.Move(fname, fname + delext);
+								System.IO.File.SetAttributes(fname + delext, System.IO.FileAttributes.Hidden);
+							}
+
+							zs.ExtractFile(ze, "./" + fname);
+						}
+
+						zs.Close();
+						System.IO.File.Delete(zipfile);
+						return true;
+					}
+				}
+			}
+			catch (Exception ex){}
+
+			return false;
+		}
+
 
 		public static void Cleanup()
 		{
@@ -139,6 +154,5 @@ namespace LaserGRBL
 			}
 			catch { }
 		}
-
 	}
 }

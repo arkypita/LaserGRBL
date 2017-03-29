@@ -38,6 +38,7 @@
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnUpdate = new System.Windows.Forms.Button();
+			this.PB = new System.Windows.Forms.ProgressBar();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -45,6 +46,8 @@
 			// 
 			// tableLayoutPanel1
 			// 
+			this.tableLayoutPanel1.AutoSize = true;
+			this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.tableLayoutPanel1.ColumnCount = 1;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
@@ -60,6 +63,8 @@
 			// 
 			// tableLayoutPanel2
 			// 
+			this.tableLayoutPanel2.AutoSize = true;
+			this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.tableLayoutPanel2.ColumnCount = 2;
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -68,6 +73,7 @@
 			this.tableLayoutPanel2.Controls.Add(this.TxtCurrentV, 0, 1);
 			this.tableLayoutPanel2.Controls.Add(this.LblLatestVersion, 1, 2);
 			this.tableLayoutPanel2.Controls.Add(this.TxtNewV, 0, 2);
+			this.tableLayoutPanel2.Controls.Add(this.PB, 0, 3);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -164,7 +170,6 @@
 			// 
 			// BtnUpdate
 			// 
-			this.BtnUpdate.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.BtnUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.BtnUpdate.Location = new System.Drawing.Point(228, 3);
 			this.BtnUpdate.Name = "BtnUpdate";
@@ -172,11 +177,22 @@
 			this.BtnUpdate.TabIndex = 6;
 			this.BtnUpdate.Text = "Update!";
 			this.BtnUpdate.UseVisualStyleBackColor = true;
+			this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
+			// 
+			// PB
+			// 
+			this.tableLayoutPanel2.SetColumnSpan(this.PB, 2);
+			this.PB.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.PB.Location = new System.Drawing.Point(3, 73);
+			this.PB.Name = "PB";
+			this.PB.Size = new System.Drawing.Size(299, 15);
+			this.PB.TabIndex = 5;
 			// 
 			// NewVersionForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.ClientSize = new System.Drawing.Size(311, 136);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -189,6 +205,7 @@
 			this.tableLayoutPanel2.PerformLayout();
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -204,5 +221,6 @@
 		private System.Windows.Forms.Label LblLatestVersion;
 		private System.Windows.Forms.Button BtnUpdate;
 		private System.Windows.Forms.Button BtnCancel;
+		private System.Windows.Forms.ProgressBar PB;
 	}
 }
