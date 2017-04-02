@@ -111,7 +111,7 @@ namespace LaserGRBL
 
 
 		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
-		public void OpenFile()
+		public void OpenFile(System.Windows.Forms.Form parent)
 		{
 			string filename = null;
 			using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
@@ -135,7 +135,7 @@ namespace LaserGRBL
 
 				if (ImageExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant())) //import raster image
 				{
-					RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename);
+					RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent);
 				}
 				else //load GCODE file
 				{

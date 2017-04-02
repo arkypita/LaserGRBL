@@ -30,6 +30,10 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
+			this.JogForm = new LaserGRBL.JogForm();
+			this.PreviewForm = new LaserGRBL.PreviewForm();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
@@ -55,6 +59,8 @@
 			this.MnExportConfig = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnImportConfig = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnFileOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,16 +76,43 @@
 			this.autoUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
-			this.JogForm = new LaserGRBL.JogForm();
-			this.PreviewForm = new LaserGRBL.PreviewForm();
-			this.StatusBar.SuspendLayout();
-			this.MMn.SuspendLayout();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
+			this.StatusBar.SuspendLayout();
+			this.MMn.SuspendLayout();
 			this.SuspendLayout();
+			// 
+			// splitContainer1
+			// 
+			this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			resources.ApplyResources(this.splitContainer1, "splitContainer1");
+			this.splitContainer1.Name = "splitContainer1";
+			// 
+			// splitContainer1.Panel1
+			// 
+			this.splitContainer1.Panel1.Controls.Add(this.ConnectionForm);
+			this.splitContainer1.Panel1.Controls.Add(this.JogForm);
+			// 
+			// splitContainer1.Panel2
+			// 
+			this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
+			this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+			// 
+			// ConnectionForm
+			// 
+			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
+			this.ConnectionForm.Name = "ConnectionForm";
+			// 
+			// JogForm
+			// 
+			resources.ApplyResources(this.JogForm, "JogForm");
+			this.JogForm.Name = "JogForm";
+			// 
+			// PreviewForm
+			// 
+			resources.ApplyResources(this.PreviewForm, "PreviewForm");
+			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// StatusBar
 			// 
@@ -195,20 +228,22 @@
             this.MnExportConfig,
             this.MnImportConfig,
             this.toolStripMenuItem3,
+            this.settingsToolStripMenuItem,
+            this.toolStripMenuItem6,
             this.MnExit});
 			this.grblToolStripMenuItem.Name = "grblToolStripMenuItem";
 			resources.ApplyResources(this.grblToolStripMenuItem, "grblToolStripMenuItem");
 			// 
 			// MnConnect
 			// 
-			this.MnConnect.Name = "MnConnect";
 			resources.ApplyResources(this.MnConnect, "MnConnect");
+			this.MnConnect.Name = "MnConnect";
 			this.MnConnect.Click += new System.EventHandler(this.MnConnect_Click);
 			// 
 			// MnDisconnect
 			// 
-			this.MnDisconnect.Name = "MnDisconnect";
 			resources.ApplyResources(this.MnDisconnect, "MnDisconnect");
+			this.MnDisconnect.Name = "MnDisconnect";
 			this.MnDisconnect.Click += new System.EventHandler(this.MnDisconnect_Click);
 			// 
 			// toolStripMenuItem2
@@ -218,20 +253,20 @@
 			// 
 			// MnGrblReset
 			// 
-			this.MnGrblReset.Name = "MnGrblReset";
 			resources.ApplyResources(this.MnGrblReset, "MnGrblReset");
+			this.MnGrblReset.Name = "MnGrblReset";
 			this.MnGrblReset.Click += new System.EventHandler(this.MnGrblReset_Click);
 			// 
 			// MnGoHome
 			// 
-			this.MnGoHome.Name = "MnGoHome";
 			resources.ApplyResources(this.MnGoHome, "MnGoHome");
+			this.MnGoHome.Name = "MnGoHome";
 			this.MnGoHome.Click += new System.EventHandler(this.MnGoHome_Click);
 			// 
 			// MnUnlock
 			// 
-			this.MnUnlock.Name = "MnUnlock";
 			resources.ApplyResources(this.MnUnlock, "MnUnlock");
+			this.MnUnlock.Name = "MnUnlock";
 			this.MnUnlock.Click += new System.EventHandler(this.MnUnlock_Click);
 			// 
 			// toolStripSeparator1
@@ -241,14 +276,14 @@
 			// 
 			// MnExportConfig
 			// 
-			this.MnExportConfig.Name = "MnExportConfig";
 			resources.ApplyResources(this.MnExportConfig, "MnExportConfig");
+			this.MnExportConfig.Name = "MnExportConfig";
 			this.MnExportConfig.Click += new System.EventHandler(this.MnExportConfigClick);
 			// 
 			// MnImportConfig
 			// 
-			this.MnImportConfig.Name = "MnImportConfig";
 			resources.ApplyResources(this.MnImportConfig, "MnImportConfig");
+			this.MnImportConfig.Name = "MnImportConfig";
 			this.MnImportConfig.Click += new System.EventHandler(this.MnImportConfigClick);
 			// 
 			// toolStripMenuItem3
@@ -256,10 +291,21 @@
 			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
 			resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
 			// 
+			// settingsToolStripMenuItem
+			// 
+			resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
+			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+			this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem6
+			// 
+			this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+			resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
+			// 
 			// MnExit
 			// 
-			this.MnExit.Name = "MnExit";
 			resources.ApplyResources(this.MnExit, "MnExit");
+			this.MnExit.Name = "MnExit";
 			this.MnExit.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
 			// fileToolStripMenuItem
@@ -274,14 +320,14 @@
 			// 
 			// MnFileOpen
 			// 
-			this.MnFileOpen.Name = "MnFileOpen";
 			resources.ApplyResources(this.MnFileOpen, "MnFileOpen");
+			this.MnFileOpen.Name = "MnFileOpen";
 			this.MnFileOpen.Click += new System.EventHandler(this.MnFileOpen_Click);
 			// 
 			// MnSaveProgram
 			// 
-			this.MnSaveProgram.Name = "MnSaveProgram";
 			resources.ApplyResources(this.MnSaveProgram, "MnSaveProgram");
+			this.MnSaveProgram.Name = "MnSaveProgram";
 			this.MnSaveProgram.Click += new System.EventHandler(this.MnSaveProgramClick);
 			// 
 			// toolStripMenuItem1
@@ -291,8 +337,8 @@
 			// 
 			// MnFileSend
 			// 
-			this.MnFileSend.Name = "MnFileSend";
 			resources.ApplyResources(this.MnFileSend, "MnFileSend");
+			this.MnFileSend.Name = "MnFileSend";
 			this.MnFileSend.Click += new System.EventHandler(this.MnFileSend_Click);
 			// 
 			// linguaToolStripMenuItem
@@ -306,20 +352,20 @@
 			// 
 			// MNEnglish
 			// 
-			this.MNEnglish.Name = "MNEnglish";
 			resources.ApplyResources(this.MNEnglish, "MNEnglish");
+			this.MNEnglish.Name = "MNEnglish";
 			this.MNEnglish.Click += new System.EventHandler(this.MNEnglish_Click);
 			// 
 			// MNItalian
 			// 
-			this.MNItalian.Name = "MNItalian";
 			resources.ApplyResources(this.MNItalian, "MNItalian");
+			this.MNItalian.Name = "MNItalian";
 			this.MNItalian.Click += new System.EventHandler(this.MNItalian_Click);
 			// 
 			// MNSpanish
 			// 
-			this.MNSpanish.Name = "MNSpanish";
 			resources.ApplyResources(this.MNSpanish, "MNSpanish");
+			this.MNSpanish.Name = "MNSpanish";
 			this.MNSpanish.Click += new System.EventHandler(this.MNSpanish_Click);
 			// 
 			// toolStripMenuItem4
@@ -357,37 +403,6 @@
 			resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
 			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
 			// 
-			// splitContainer1
-			// 
-			this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			resources.ApplyResources(this.splitContainer1, "splitContainer1");
-			this.splitContainer1.Name = "splitContainer1";
-			// 
-			// splitContainer1.Panel1
-			// 
-			this.splitContainer1.Panel1.Controls.Add(this.ConnectionForm);
-			this.splitContainer1.Panel1.Controls.Add(this.JogForm);
-			// 
-			// splitContainer1.Panel2
-			// 
-			this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
-			this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
-			// 
-			// ConnectionForm
-			// 
-			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
-			this.ConnectionForm.Name = "ConnectionForm";
-			// 
-			// JogForm
-			// 
-			resources.ApplyResources(this.JogForm, "JogForm");
-			this.JogForm.Name = "JogForm";
-			// 
-			// PreviewForm
-			// 
-			resources.ApplyResources(this.PreviewForm, "PreviewForm");
-			this.PreviewForm.Name = "PreviewForm";
-			// 
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -400,13 +415,13 @@
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
+			this.splitContainer1.Panel1.ResumeLayout(false);
+			this.splitContainer1.Panel2.ResumeLayout(false);
+			this.splitContainer1.ResumeLayout(false);
 			this.StatusBar.ResumeLayout(false);
 			this.StatusBar.PerformLayout();
 			this.MMn.ResumeLayout(false);
 			this.MMn.PerformLayout();
-			this.splitContainer1.Panel1.ResumeLayout(false);
-			this.splitContainer1.Panel2.ResumeLayout(false);
-			this.splitContainer1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -458,6 +473,8 @@
 		private PreviewForm PreviewForm;
 		private JogForm JogForm;
 		private ConnectLogForm ConnectionForm;
+		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
 	}
 }
 

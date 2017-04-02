@@ -17,16 +17,16 @@ namespace LaserGRBL.RasterConverter
 	/// </summary>
 	public partial class ConvertSizeAndOptionForm : Form
 	{
+		bool supportPWM = (bool)Settings.GetObject("Support Hardware PWM", true);
+
 		public ConvertSizeAndOptionForm()
 		{
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
 			//
 			InitializeComponent();
-			
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
+
+			LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
 		}
 		
 		ImageProcessor IP;
@@ -52,9 +52,21 @@ namespace LaserGRBL.RasterConverter
 			IILinearFilling.CurrentValue = IP.MarkSpeed = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Mark", 1000);
 			IITravelSpeed.CurrentValue = IP.TravelSpeed = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Travel", 4000);
 
-			TxtLaserOn.Text = IP.LaserOn = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
-			TxtLaserOff.Text = IP.LaserOff = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
-			IIMinPower.CurrentValue = IP.MinPower = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
+			IP.LaserOn = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
+
+			if (CBLaserON.Items.Contains(IP.LaserOn))
+				CBLaserON.SelectedItem = IP.LaserOn;
+			else
+				CBLaserON.SelectedIndex = 0;
+
+			IP.LaserOff = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
+
+			if (CBLaserOFF.Items.Contains(IP.LaserOff))
+				CBLaserOFF.SelectedItem = IP.LaserOff;
+			else
+				CBLaserOFF.SelectedIndex = 0;
+
+			IIMinPower.CurrentValue = IP.MinPower = 0;//(int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
 			IIMaxPower.CurrentValue = IP.MaxPower = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
 
 			IILinearFilling.Visible = LblLinearFilling.Visible = LblLinearFillingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Line2Line || IP.SelectedTool == ImageProcessor.Tool.Dithering || (IP.SelectedTool == ImageProcessor.Tool.Vectorize && (IP.FillingDirection != ImageProcessor.Direction.None)));
@@ -84,14 +96,6 @@ namespace LaserGRBL.RasterConverter
 			IP.TargetSize = new Size(IISizeW.CurrentValue, IISizeH.CurrentValue);
 		}
 		
-		void TxtLaserOnTextChanged(object sender, EventArgs e)
-		{
-			IP.LaserOn = TxtLaserOn.Text;
-		}
-		void TxtLaserOffTextChanged(object sender, EventArgs e)
-		{
-			IP.LaserOff = TxtLaserOff.Text;
-		}
 		void IIOffsetXYCurrentValueChanged(object sender, int NewValue, bool ByUser)
 		{
 			IP.TargetOffset = new Point(IIOffsetX.CurrentValue, IIOffsetY.CurrentValue);
@@ -117,6 +121,26 @@ namespace LaserGRBL.RasterConverter
 		void IIMaxPowerCurrentValueChanged(object sender, int NewValue, bool ByUser)
 		{
 			IP.MaxPower = NewValue;
+		}
+
+		private void BtnOnOffInfo_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void BtnModulationInfo_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void CBLaserON_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			IP.LaserOn = (string)CBLaserON.SelectedItem;
+		}
+
+		private void CBLaserOFF_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			IP.LaserOff = (string)CBLaserOFF.SelectedItem;
 		}
 		
 	}

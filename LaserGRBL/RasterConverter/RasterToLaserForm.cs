@@ -11,7 +11,9 @@ namespace LaserGRBL.RasterConverter
 	{
 		ImageProcessor IP;
 		bool preventClose;
-		
+
+		bool supportPWM = (bool)Settings.GetObject("Support Hardware PWM", true);
+	
 		private RasterToLaserForm(GrblCore core, string filename)
 		{
 			InitializeComponent();
@@ -45,7 +47,9 @@ namespace LaserGRBL.RasterConverter
 				CbFillingDirection.Items.Add(direction);
 			CbFillingDirection.SelectedIndex = 0;
 			CbFillingDirection.ResumeLayout();
-			
+
+			RbLineToLineTracing.Visible = supportPWM;
+
 			LoadSettings();
 			RefreshVE();
 		}
@@ -88,7 +92,7 @@ namespace LaserGRBL.RasterConverter
 		{
 			if (InvokeRequired)
 			{
-				Invoke(new ImageProcessor.GenerationCompleteDlg(OnGenerationComplete), ex);
+				BeginInvoke(new ImageProcessor.GenerationCompleteDlg(OnGenerationComplete), ex);
 			}
 			else
 			{
@@ -96,6 +100,8 @@ namespace LaserGRBL.RasterConverter
 				if (ex != null)
 					System.Windows.Forms.MessageBox.Show(ex.Message);
 				preventClose = false;
+				WT.Enabled = false;
+				IP.Dispose();
 				Close();
 			}
 		}
@@ -107,10 +113,10 @@ namespace LaserGRBL.RasterConverter
 			WB.Running = true;
 		}
 		
-		internal static void CreateAndShowDialog(GrblCore core, string filename)
+		internal static void CreateAndShowDialog(GrblCore core, string filename, Form parent)
 		{
 			using (RasterToLaserForm f = new RasterToLaserForm(core, filename))
-				f.ShowDialog();
+				f.ShowDialog(parent);
 		}
 
 		void GoodInput(object sender, KeyPressEventArgs e)
@@ -227,6 +233,9 @@ namespace LaserGRBL.RasterConverter
 			TbContrast.Value = IP.Contrast = (int)Settings.GetObject("GrayScaleConversion.Parameters.Contrast", 100);
 			CbThreshold.Checked = IP.UseThreshold = (bool)Settings.GetObject("GrayScaleConversion.Parameters.Threshold.Enabled", false);
 			TbThreshold.Value = IP.Threshold = (int)Settings.GetObject("GrayScaleConversion.Parameters.Threshold.Value", 50);
+
+			if (RbLineToLineTracing.Checked && !supportPWM)
+				RbDithering.Checked = true;
 		}
 
 		void OnRGBCBDoubleClick(object sender, EventArgs e)

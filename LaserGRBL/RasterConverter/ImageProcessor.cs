@@ -651,10 +651,26 @@ namespace LaserGRBL.RasterConverter
 				{
 					using (Bitmap bmp = CreateTarget(pixelSize))
 					{
+
+						GrblFile.L2LConf conf = new GrblFile.L2LConf();
+						conf.res = res;
+						conf.fres = fres;
+						conf.markSpeed = MarkSpeed;
+						conf.travelSpeed = TravelSpeed;
+						conf.minPower = MinPower;
+						conf.maxPower = MaxPower;
+						conf.lOn = LaserOn;
+						conf.lOff = LaserOff;
+						conf.dir = SelectedTool == ImageProcessor.Tool.Vectorize ? FillingDirection : LineDirection;
+						conf.oX = TargetOffset.X;
+						conf.oY = TargetOffset.Y;
+						conf.borderSpeed = BorderSpeed;
+						conf.pwm = (bool)Settings.GetObject("Support Hardware PWM", true);
+
 						if (SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering)
-							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, res, TargetOffset.X, TargetOffset.Y, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, LineDirection);
+							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf);
 						else if (SelectedTool == ImageProcessor.Tool.Vectorize)
-							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, res, TargetOffset.X, TargetOffset.Y, BorderSpeed, MarkSpeed, TravelSpeed, MinPower, MaxPower, LaserOn, LaserOff, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, FillingDirection, fres);
+							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, conf);
 					}
 					
 					if (GenerationComplete != null)

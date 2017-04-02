@@ -35,6 +35,7 @@
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.label1 = new System.Windows.Forms.Label();
+			this.BTOpenImage = new LaserGRBL.UserControls.ImageButton();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
@@ -44,7 +45,6 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.CbEStyles = new System.Windows.Forms.ComboBox();
 			this.TBGCode = new System.Windows.Forms.TextBox();
-			this.BTOpenImage = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
@@ -89,7 +89,6 @@
 			// 
 			// BtnCancel
 			// 
-			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.BtnCancel.Location = new System.Drawing.Point(154, 3);
 			this.BtnCancel.Name = "BtnCancel";
 			this.BtnCancel.Size = new System.Drawing.Size(74, 27);
@@ -151,6 +150,21 @@
 			this.label1.Size = new System.Drawing.Size(36, 13);
 			this.label1.TabIndex = 9;
 			this.label1.Text = "Image";
+			// 
+			// BTOpenImage
+			// 
+			this.BTOpenImage.AltImage = null;
+			this.BTOpenImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BTOpenImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BTOpenImage.Coloration = System.Drawing.Color.Empty;
+			this.BTOpenImage.Image = ((System.Drawing.Image)(resources.GetObject("BTOpenImage.Image")));
+			this.BTOpenImage.Location = new System.Drawing.Point(3, 22);
+			this.BTOpenImage.Name = "BTOpenImage";
+			this.BTOpenImage.Size = new System.Drawing.Size(49, 49);
+			this.BTOpenImage.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BTOpenImage.TabIndex = 8;
+			this.BTOpenImage.UseAltImage = false;
+			this.BTOpenImage.Click += new System.EventHandler(this.BTOpenImage_Click);
 			// 
 			// label2
 			// 
@@ -244,21 +258,6 @@
 			this.TBGCode.Name = "TBGCode";
 			this.TBGCode.Size = new System.Drawing.Size(250, 110);
 			this.TBGCode.TabIndex = 19;
-			// 
-			// BTOpenImage
-			// 
-			this.BTOpenImage.AltImage = null;
-			this.BTOpenImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BTOpenImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.BTOpenImage.Coloration = System.Drawing.Color.Empty;
-			this.BTOpenImage.Image = ((System.Drawing.Image)(resources.GetObject("BTOpenImage.Image")));
-			this.BTOpenImage.Location = new System.Drawing.Point(3, 22);
-			this.BTOpenImage.Name = "BTOpenImage";
-			this.BTOpenImage.Size = new System.Drawing.Size(49, 49);
-			this.BTOpenImage.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BTOpenImage.TabIndex = 8;
-			this.BTOpenImage.UseAltImage = false;
-			this.BTOpenImage.Click += new System.EventHandler(this.BTOpenImage_Click);
 			// 
 			// CustomButtonForm
 			// 

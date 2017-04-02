@@ -193,7 +193,7 @@ namespace LaserGRBL
 
 		private void MnFileOpen_Click(object sender, EventArgs e)
 		{
-			Core.OpenFile();
+			Core.OpenFile(this);
 		}
 
 		private void MnFileSend_Click(object sender, EventArgs e)
@@ -335,6 +335,11 @@ namespace LaserGRBL
 		{
 			Settings.SetObject("MainForm Splitter Position", splitContainer1.SplitterDistance);
 			Settings.Save();
+		}
+
+		private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SettingsForm.CreateAndShowDialog();
 		}
 	}
 }

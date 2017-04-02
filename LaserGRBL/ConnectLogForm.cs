@@ -90,7 +90,7 @@ namespace LaserGRBL
 		
 		void BtnOpenClick(object sender, EventArgs e)
 		{
-			Core.OpenFile();
+			Core.OpenFile(ParentForm);
 		}
 
 		void BtnRunProgramClick(object sender, EventArgs e)
