@@ -328,11 +328,11 @@ namespace LaserGRBL
 				//	list.Add(new GrblCommand(lOn));
 			}
 
-			temp = OptimizeLine2Line(temp, c.travelSpeed);
+			temp = OptimizeLine2Line(temp, c);
 			list.AddRange(temp);
 		}
 
-		private List<GrblCommand> OptimizeLine2Line(List<GrblCommand> temp, int travelSpeed)
+		private List<GrblCommand> OptimizeLine2Line(List<GrblCommand> temp, L2LConf c)
 		{
 			List<GrblCommand> rv = new List<GrblCommand>();
 
@@ -343,17 +343,33 @@ namespace LaserGRBL
 			foreach (GrblCommand cmd in temp)
 			{
 				bool oldcumulate = cumulate;
-				if (cmd.S != null) //is S command
+
+				if (c.pwm)
 				{
-					if (cmd.S.Number == 0) //is S command with zero power
+					if (cmd.S != null) //is S command
+					{
+						if (cmd.S.Number == 0) //is S command with zero power
+							cumulate = true;   //begin cumulate
+						else
+							cumulate = false;  //end cumulate
+					}
+				}
+				else
+				{
+					if (cmd.IsLaserOFF)
 						cumulate = true;   //begin cumulate
-					else
+					else if (cmd.IsLaserON)
 						cumulate = false;  //end cumulate
 				}
 
+
 				if (oldcumulate && !cumulate) //cumulate down front -> flush
 				{
-					rv.Add(new GrblCommand(string.Format("G1 X{0} Y{1} F{2} S0", formatnumber((double)cumX), formatnumber((double)cumY), travelSpeed)));
+					if (c.pwm)
+						rv.Add(new GrblCommand(string.Format("G1 X{0} Y{1} F{2} S0", formatnumber((double)cumX), formatnumber((double)cumY), c.travelSpeed)));
+					else
+						rv.Add(new GrblCommand(string.Format("G1 X{0} Y{1} F{2} {3}", formatnumber((double)cumX), formatnumber((double)cumY), c.travelSpeed, c.lOff)));
+
 					cumX = cumY = 0;
 				}
 
