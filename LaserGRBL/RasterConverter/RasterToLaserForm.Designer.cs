@@ -90,6 +90,8 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label27 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
+			this.LblDitherMode = new System.Windows.Forms.Label();
+			this.CbDither = new System.Windows.Forms.ComboBox();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.RbDithering = new System.Windows.Forms.RadioButton();
@@ -133,22 +135,25 @@
 			this.RightGrid.Controls.Add(this.tableLayoutPanel8, 0, 0);
 			this.RightGrid.Controls.Add(this.tableLayoutPanel1, 3, 1);
 			this.RightGrid.Name = "RightGrid";
+			this.TT.SetToolTip(this.RightGrid, resources.GetString("RightGrid.ToolTip"));
 			// 
 			// TCOriginalPreview
 			// 
+			resources.ApplyResources(this.TCOriginalPreview, "TCOriginalPreview");
 			this.RightGrid.SetColumnSpan(this.TCOriginalPreview, 3);
 			this.TCOriginalPreview.Controls.Add(this.TpPreview);
 			this.TCOriginalPreview.Controls.Add(this.TpOriginal);
-			resources.ApplyResources(this.TCOriginalPreview, "TCOriginalPreview");
 			this.TCOriginalPreview.Name = "TCOriginalPreview";
 			this.TCOriginalPreview.SelectedIndex = 0;
+			this.TT.SetToolTip(this.TCOriginalPreview, resources.GetString("TCOriginalPreview.ToolTip"));
 			// 
 			// TpPreview
 			// 
+			resources.ApplyResources(this.TpPreview, "TpPreview");
 			this.TpPreview.Controls.Add(this.WB);
 			this.TpPreview.Controls.Add(this.PbConverted);
-			resources.ApplyResources(this.TpPreview, "TpPreview");
 			this.TpPreview.Name = "TpPreview";
+			this.TT.SetToolTip(this.TpPreview, resources.GetString("TpPreview.ToolTip"));
 			this.TpPreview.UseVisualStyleBackColor = true;
 			// 
 			// WB
@@ -169,14 +174,16 @@
 			this.WB.Running = false;
 			this.WB.Step = 1D;
 			this.WB.ThrowExceprion = false;
+			this.TT.SetToolTip(this.WB, resources.GetString("WB.ToolTip"));
 			this.WB.Value = 0D;
 			// 
 			// PbConverted
 			// 
-			this.PbConverted.BackColor = System.Drawing.Color.White;
 			resources.ApplyResources(this.PbConverted, "PbConverted");
+			this.PbConverted.BackColor = System.Drawing.Color.White;
 			this.PbConverted.Name = "PbConverted";
 			this.PbConverted.TabStop = false;
+			this.TT.SetToolTip(this.PbConverted, resources.GetString("PbConverted.ToolTip"));
 			this.PbConverted.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PbConvertedMouseDown);
 			this.PbConverted.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PbConvertedMouseMove);
 			this.PbConverted.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PbConvertedMouseUp);
@@ -184,17 +191,19 @@
 			// 
 			// TpOriginal
 			// 
-			this.TpOriginal.Controls.Add(this.PbOriginal);
 			resources.ApplyResources(this.TpOriginal, "TpOriginal");
+			this.TpOriginal.Controls.Add(this.PbOriginal);
 			this.TpOriginal.Name = "TpOriginal";
+			this.TT.SetToolTip(this.TpOriginal, resources.GetString("TpOriginal.ToolTip"));
 			this.TpOriginal.UseVisualStyleBackColor = true;
 			// 
 			// PbOriginal
 			// 
-			this.PbOriginal.BackColor = System.Drawing.Color.White;
 			resources.ApplyResources(this.PbOriginal, "PbOriginal");
+			this.PbOriginal.BackColor = System.Drawing.Color.White;
 			this.PbOriginal.Name = "PbOriginal";
 			this.PbOriginal.TabStop = false;
+			this.TT.SetToolTip(this.PbOriginal, resources.GetString("PbOriginal.ToolTip"));
 			// 
 			// FlipControl
 			// 
@@ -207,14 +216,15 @@
 			this.FlipControl.Controls.Add(this.BtnRevert, 0, 0);
 			this.FlipControl.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
 			this.FlipControl.Name = "FlipControl";
+			this.TT.SetToolTip(this.FlipControl, resources.GetString("FlipControl.ToolTip"));
 			// 
 			// BtFlipV
 			// 
+			resources.ApplyResources(this.BtFlipV, "BtFlipV");
 			this.BtFlipV.AltImage = null;
 			this.BtFlipV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtFlipV.Coloration = System.Drawing.Color.Empty;
 			this.BtFlipV.Image = ((System.Drawing.Image)(resources.GetObject("BtFlipV.Image")));
-			resources.ApplyResources(this.BtFlipV, "BtFlipV");
 			this.BtFlipV.Name = "BtFlipV";
 			this.BtFlipV.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.TT.SetToolTip(this.BtFlipV, resources.GetString("BtFlipV.ToolTip"));
@@ -223,11 +233,11 @@
 			// 
 			// BtFlipH
 			// 
+			resources.ApplyResources(this.BtFlipH, "BtFlipH");
 			this.BtFlipH.AltImage = null;
 			this.BtFlipH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtFlipH.Coloration = System.Drawing.Color.Empty;
 			this.BtFlipH.Image = ((System.Drawing.Image)(resources.GetObject("BtFlipH.Image")));
-			resources.ApplyResources(this.BtFlipH, "BtFlipH");
 			this.BtFlipH.Name = "BtFlipH";
 			this.BtFlipH.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.TT.SetToolTip(this.BtFlipH, resources.GetString("BtFlipH.ToolTip"));
@@ -236,11 +246,11 @@
 			// 
 			// BtRotateCW
 			// 
+			resources.ApplyResources(this.BtRotateCW, "BtRotateCW");
 			this.BtRotateCW.AltImage = null;
 			this.BtRotateCW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtRotateCW.Coloration = System.Drawing.Color.Empty;
 			this.BtRotateCW.Image = ((System.Drawing.Image)(resources.GetObject("BtRotateCW.Image")));
-			resources.ApplyResources(this.BtRotateCW, "BtRotateCW");
 			this.BtRotateCW.Name = "BtRotateCW";
 			this.BtRotateCW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.TT.SetToolTip(this.BtRotateCW, resources.GetString("BtRotateCW.ToolTip"));
@@ -249,11 +259,11 @@
 			// 
 			// BtRotateCCW
 			// 
+			resources.ApplyResources(this.BtRotateCCW, "BtRotateCCW");
 			this.BtRotateCCW.AltImage = null;
 			this.BtRotateCCW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtRotateCCW.Coloration = System.Drawing.Color.Empty;
 			this.BtRotateCCW.Image = ((System.Drawing.Image)(resources.GetObject("BtRotateCCW.Image")));
-			resources.ApplyResources(this.BtRotateCCW, "BtRotateCCW");
 			this.BtRotateCCW.Name = "BtRotateCCW";
 			this.BtRotateCCW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.TT.SetToolTip(this.BtRotateCCW, resources.GetString("BtRotateCCW.ToolTip"));
@@ -262,11 +272,11 @@
 			// 
 			// BtnCrop
 			// 
+			resources.ApplyResources(this.BtnCrop, "BtnCrop");
 			this.BtnCrop.AltImage = null;
 			this.BtnCrop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnCrop.Coloration = System.Drawing.Color.Empty;
 			this.BtnCrop.Image = ((System.Drawing.Image)(resources.GetObject("BtnCrop.Image")));
-			resources.ApplyResources(this.BtnCrop, "BtnCrop");
 			this.BtnCrop.Name = "BtnCrop";
 			this.BtnCrop.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.TT.SetToolTip(this.BtnCrop, resources.GetString("BtnCrop.ToolTip"));
@@ -275,11 +285,11 @@
 			// 
 			// BtnRevert
 			// 
+			resources.ApplyResources(this.BtnRevert, "BtnRevert");
 			this.BtnRevert.AltImage = null;
 			this.BtnRevert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnRevert.Coloration = System.Drawing.Color.Empty;
 			this.BtnRevert.Image = ((System.Drawing.Image)(resources.GetObject("BtnRevert.Image")));
-			resources.ApplyResources(this.BtnRevert, "BtnRevert");
 			this.BtnRevert.Name = "BtnRevert";
 			this.BtnRevert.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.TT.SetToolTip(this.BtnRevert, resources.GetString("BtnRevert.ToolTip"));
@@ -295,6 +305,7 @@
 			this.tableLayoutPanel8.Controls.Add(this.groupBox4, 0, 1);
 			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
 			this.RightGrid.SetRowSpan(this.tableLayoutPanel8, 2);
+			this.TT.SetToolTip(this.tableLayoutPanel8, resources.GetString("tableLayoutPanel8.ToolTip"));
 			// 
 			// GbVectorizeOptions
 			// 
@@ -302,6 +313,7 @@
 			this.GbVectorizeOptions.Controls.Add(this.tableLayoutPanel5);
 			this.GbVectorizeOptions.Name = "GbVectorizeOptions";
 			this.GbVectorizeOptions.TabStop = false;
+			this.TT.SetToolTip(this.GbVectorizeOptions, resources.GetString("GbVectorizeOptions.ToolTip"));
 			// 
 			// tableLayoutPanel5
 			// 
@@ -324,11 +336,13 @@
 			this.tableLayoutPanel5.Controls.Add(this.label1, 0, 3);
 			this.tableLayoutPanel5.Controls.Add(this.CbDownSample, 2, 3);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+			this.TT.SetToolTip(this.tableLayoutPanel5, resources.GetString("tableLayoutPanel5.ToolTip"));
 			// 
 			// label22
 			// 
 			resources.ApplyResources(this.label22, "label22");
 			this.label22.Name = "label22";
+			this.TT.SetToolTip(this.label22, resources.GetString("label22.ToolTip"));
 			// 
 			// UDSpotRemoval
 			// 
@@ -351,6 +365,7 @@
 			// 
 			resources.ApplyResources(this.CbSpotRemoval, "CbSpotRemoval");
 			this.CbSpotRemoval.Name = "CbSpotRemoval";
+			this.TT.SetToolTip(this.CbSpotRemoval, resources.GetString("CbSpotRemoval.ToolTip"));
 			this.CbSpotRemoval.UseVisualStyleBackColor = true;
 			this.CbSpotRemoval.CheckedChanged += new System.EventHandler(this.CbSpotRemoval_CheckedChanged);
 			// 
@@ -358,11 +373,13 @@
 			// 
 			resources.ApplyResources(this.label24, "label24");
 			this.label24.Name = "label24";
+			this.TT.SetToolTip(this.label24, resources.GetString("label24.ToolTip"));
 			// 
 			// label23
 			// 
 			resources.ApplyResources(this.label23, "label23");
 			this.label23.Name = "label23";
+			this.TT.SetToolTip(this.label23, resources.GetString("label23.ToolTip"));
 			// 
 			// UDOptimize
 			// 
@@ -414,6 +431,7 @@
 			// 
 			resources.ApplyResources(this.CbOptimize, "CbOptimize");
 			this.CbOptimize.Name = "CbOptimize";
+			this.TT.SetToolTip(this.CbOptimize, resources.GetString("CbOptimize.ToolTip"));
 			this.CbOptimize.UseVisualStyleBackColor = true;
 			this.CbOptimize.CheckedChanged += new System.EventHandler(this.CbOptimize_CheckedChanged);
 			// 
@@ -421,6 +439,7 @@
 			// 
 			resources.ApplyResources(this.CbSmoothing, "CbSmoothing");
 			this.CbSmoothing.Name = "CbSmoothing";
+			this.TT.SetToolTip(this.CbSmoothing, resources.GetString("CbSmoothing.ToolTip"));
 			this.CbSmoothing.UseVisualStyleBackColor = true;
 			this.CbSmoothing.CheckedChanged += new System.EventHandler(this.CbSmoothing_CheckedChanged);
 			// 
@@ -428,6 +447,7 @@
 			// 
 			resources.ApplyResources(this.label14, "label14");
 			this.label14.Name = "label14";
+			this.TT.SetToolTip(this.label14, resources.GetString("label14.ToolTip"));
 			// 
 			// CbFillingDirection
 			// 
@@ -443,6 +463,7 @@
 			// 
 			resources.ApplyResources(this.LblFillingQuality, "LblFillingQuality");
 			this.LblFillingQuality.Name = "LblFillingQuality";
+			this.TT.SetToolTip(this.LblFillingQuality, resources.GetString("LblFillingQuality.ToolTip"));
 			// 
 			// UDFillingQuality
 			// 
@@ -470,6 +491,7 @@
 			// 
 			resources.ApplyResources(this.LblFillingLineLbl, "LblFillingLineLbl");
 			this.LblFillingLineLbl.Name = "LblFillingLineLbl";
+			this.TT.SetToolTip(this.LblFillingLineLbl, resources.GetString("LblFillingLineLbl.ToolTip"));
 			// 
 			// UDDownSample
 			// 
@@ -503,11 +525,13 @@
 			// 
 			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
+			this.TT.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
 			// 
 			// CbDownSample
 			// 
 			resources.ApplyResources(this.CbDownSample, "CbDownSample");
 			this.CbDownSample.Name = "CbDownSample";
+			this.TT.SetToolTip(this.CbDownSample, resources.GetString("CbDownSample.ToolTip"));
 			this.CbDownSample.UseVisualStyleBackColor = true;
 			this.CbDownSample.CheckedChanged += new System.EventHandler(this.CbDownSample_CheckedChanged);
 			// 
@@ -517,6 +541,7 @@
 			this.groupBox1.Controls.Add(this.tableLayoutPanel2);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.TabStop = false;
+			this.TT.SetToolTip(this.groupBox1, resources.GetString("groupBox1.ToolTip"));
 			// 
 			// tableLayoutPanel2
 			// 
@@ -538,6 +563,7 @@
 			this.tableLayoutPanel2.Controls.Add(this.label28, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.TbThreshold, 1, 7);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			this.TT.SetToolTip(this.tableLayoutPanel2, resources.GetString("tableLayoutPanel2.ToolTip"));
 			// 
 			// CbResize
 			// 
@@ -552,6 +578,7 @@
 			// 
 			resources.ApplyResources(this.LblGrayscale, "LblGrayscale");
 			this.LblGrayscale.Name = "LblGrayscale";
+			this.TT.SetToolTip(this.LblGrayscale, resources.GetString("LblGrayscale.ToolTip"));
 			// 
 			// CbMode
 			// 
@@ -578,6 +605,7 @@
 			this.TBRed.SmallChange = ((uint)(1u));
 			this.TBRed.ThumbRoundRectSize = new System.Drawing.Size(4, 4);
 			this.TBRed.ThumbSize = 8;
+			this.TT.SetToolTip(this.TBRed, resources.GetString("TBRed.ToolTip"));
 			this.TBRed.Value = 100;
 			this.TBRed.ValueChanged += new System.EventHandler(this.TBRed_ValueChanged);
 			this.TBRed.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
@@ -586,21 +614,25 @@
 			// 
 			resources.ApplyResources(this.LblRed, "LblRed");
 			this.LblRed.Name = "LblRed";
+			this.TT.SetToolTip(this.LblRed, resources.GetString("LblRed.ToolTip"));
 			// 
 			// LblBlue
 			// 
 			resources.ApplyResources(this.LblBlue, "LblBlue");
 			this.LblBlue.Name = "LblBlue";
+			this.TT.SetToolTip(this.LblBlue, resources.GetString("LblBlue.ToolTip"));
 			// 
 			// LblGreen
 			// 
 			resources.ApplyResources(this.LblGreen, "LblGreen");
 			this.LblGreen.Name = "LblGreen";
+			this.TT.SetToolTip(this.LblGreen, resources.GetString("LblGreen.ToolTip"));
 			// 
 			// label2
 			// 
 			resources.ApplyResources(this.label2, "label2");
 			this.label2.Name = "label2";
+			this.TT.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
 			// 
 			// TBGreen
 			// 
@@ -616,6 +648,7 @@
 			this.TBGreen.SmallChange = ((uint)(1u));
 			this.TBGreen.ThumbRoundRectSize = new System.Drawing.Size(4, 4);
 			this.TBGreen.ThumbSize = 8;
+			this.TT.SetToolTip(this.TBGreen, resources.GetString("TBGreen.ToolTip"));
 			this.TBGreen.Value = 100;
 			this.TBGreen.ValueChanged += new System.EventHandler(this.TBGreen_ValueChanged);
 			this.TBGreen.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
@@ -636,6 +669,7 @@
 			this.TbBright.SmallChange = ((uint)(1u));
 			this.TbBright.ThumbRoundRectSize = new System.Drawing.Size(4, 4);
 			this.TbBright.ThumbSize = 8;
+			this.TT.SetToolTip(this.TbBright, resources.GetString("TbBright.ToolTip"));
 			this.TbBright.Value = 100;
 			this.TbBright.ValueChanged += new System.EventHandler(this.TbBright_ValueChanged);
 			this.TbBright.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
@@ -656,6 +690,7 @@
 			this.TBBlue.SmallChange = ((uint)(1u));
 			this.TBBlue.ThumbRoundRectSize = new System.Drawing.Size(4, 4);
 			this.TBBlue.ThumbSize = 8;
+			this.TT.SetToolTip(this.TBBlue, resources.GetString("TBBlue.ToolTip"));
 			this.TBBlue.Value = 100;
 			this.TBBlue.ValueChanged += new System.EventHandler(this.TBBlue_ValueChanged);
 			this.TBBlue.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
@@ -676,6 +711,7 @@
 			this.TbContrast.SmallChange = ((uint)(1u));
 			this.TbContrast.ThumbRoundRectSize = new System.Drawing.Size(4, 4);
 			this.TbContrast.ThumbSize = 8;
+			this.TT.SetToolTip(this.TbContrast, resources.GetString("TbContrast.ToolTip"));
 			this.TbContrast.Value = 100;
 			this.TbContrast.ValueChanged += new System.EventHandler(this.TbContrast_ValueChanged);
 			this.TbContrast.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
@@ -684,6 +720,7 @@
 			// 
 			resources.ApplyResources(this.label3, "label3");
 			this.label3.Name = "label3";
+			this.TT.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
 			// 
 			// CbThreshold
 			// 
@@ -697,6 +734,7 @@
 			// 
 			resources.ApplyResources(this.label28, "label28");
 			this.label28.Name = "label28";
+			this.TT.SetToolTip(this.label28, resources.GetString("label28.ToolTip"));
 			// 
 			// TbThreshold
 			// 
@@ -712,6 +750,7 @@
 			this.TbThreshold.SmallChange = ((uint)(1u));
 			this.TbThreshold.ThumbRoundRectSize = new System.Drawing.Size(4, 4);
 			this.TbThreshold.ThumbSize = 8;
+			this.TT.SetToolTip(this.TbThreshold, resources.GetString("TbThreshold.ToolTip"));
 			this.TbThreshold.ValueChanged += new System.EventHandler(this.TbThreshold_ValueChanged);
 			this.TbThreshold.DoubleClick += new System.EventHandler(this.OnThresholdDoubleClick);
 			// 
@@ -721,17 +760,21 @@
 			this.GbLineToLineOptions.Controls.Add(this.TLP);
 			this.GbLineToLineOptions.Name = "GbLineToLineOptions";
 			this.GbLineToLineOptions.TabStop = false;
+			this.TT.SetToolTip(this.GbLineToLineOptions, resources.GetString("GbLineToLineOptions.ToolTip"));
 			// 
 			// TLP
 			// 
 			resources.ApplyResources(this.TLP, "TLP");
-			this.TLP.Controls.Add(this.CbDirections, 1, 0);
-			this.TLP.Controls.Add(this.UDQuality, 1, 1);
-			this.TLP.Controls.Add(this.CbLinePreview, 0, 2);
-			this.TLP.Controls.Add(this.label5, 0, 1);
-			this.TLP.Controls.Add(this.label27, 0, 0);
-			this.TLP.Controls.Add(this.label8, 2, 1);
+			this.TLP.Controls.Add(this.CbDirections, 1, 1);
+			this.TLP.Controls.Add(this.UDQuality, 1, 2);
+			this.TLP.Controls.Add(this.CbLinePreview, 0, 3);
+			this.TLP.Controls.Add(this.label5, 0, 2);
+			this.TLP.Controls.Add(this.label27, 0, 1);
+			this.TLP.Controls.Add(this.label8, 2, 2);
+			this.TLP.Controls.Add(this.LblDitherMode, 0, 0);
+			this.TLP.Controls.Add(this.CbDither, 1, 0);
 			this.TLP.Name = "TLP";
+			this.TT.SetToolTip(this.TLP, resources.GetString("TLP.ToolTip"));
 			// 
 			// CbDirections
 			// 
@@ -780,16 +823,35 @@
 			// 
 			resources.ApplyResources(this.label5, "label5");
 			this.label5.Name = "label5";
+			this.TT.SetToolTip(this.label5, resources.GetString("label5.ToolTip"));
 			// 
 			// label27
 			// 
 			resources.ApplyResources(this.label27, "label27");
 			this.label27.Name = "label27";
+			this.TT.SetToolTip(this.label27, resources.GetString("label27.ToolTip"));
 			// 
 			// label8
 			// 
 			resources.ApplyResources(this.label8, "label8");
 			this.label8.Name = "label8";
+			this.TT.SetToolTip(this.label8, resources.GetString("label8.ToolTip"));
+			// 
+			// LblDitherMode
+			// 
+			resources.ApplyResources(this.LblDitherMode, "LblDitherMode");
+			this.LblDitherMode.Name = "LblDitherMode";
+			this.TT.SetToolTip(this.LblDitherMode, resources.GetString("LblDitherMode.ToolTip"));
+			// 
+			// CbDither
+			// 
+			resources.ApplyResources(this.CbDither, "CbDither");
+			this.TLP.SetColumnSpan(this.CbDither, 2);
+			this.CbDither.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbDither.FormattingEnabled = true;
+			this.CbDither.Name = "CbDither";
+			this.TT.SetToolTip(this.CbDither, resources.GetString("CbDither.ToolTip"));
+			this.CbDither.SelectedIndexChanged += new System.EventHandler(this.CbDither_SelectedIndexChanged);
 			// 
 			// groupBox4
 			// 
@@ -797,6 +859,7 @@
 			this.groupBox4.Controls.Add(this.tableLayoutPanel4);
 			this.groupBox4.Name = "groupBox4";
 			this.groupBox4.TabStop = false;
+			this.TT.SetToolTip(this.groupBox4, resources.GetString("groupBox4.ToolTip"));
 			// 
 			// tableLayoutPanel4
 			// 
@@ -805,6 +868,7 @@
 			this.tableLayoutPanel4.Controls.Add(this.RbVectorize, 0, 2);
 			this.tableLayoutPanel4.Controls.Add(this.RbLineToLineTracing, 0, 0);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+			this.TT.SetToolTip(this.tableLayoutPanel4, resources.GetString("tableLayoutPanel4.ToolTip"));
 			// 
 			// RbDithering
 			// 
@@ -841,11 +905,13 @@
 			this.tableLayoutPanel1.Controls.Add(this.BtnCancel, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.BtnCreate, 1, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.TT.SetToolTip(this.tableLayoutPanel1, resources.GetString("tableLayoutPanel1.ToolTip"));
 			// 
 			// BtnCancel
 			// 
 			resources.ApplyResources(this.BtnCancel, "BtnCancel");
 			this.BtnCancel.Name = "BtnCancel";
+			this.TT.SetToolTip(this.BtnCancel, resources.GetString("BtnCancel.ToolTip"));
 			this.BtnCancel.UseVisualStyleBackColor = true;
 			this.BtnCancel.Click += new System.EventHandler(this.BtnCancelClick);
 			// 
@@ -853,6 +919,7 @@
 			// 
 			resources.ApplyResources(this.BtnCreate, "BtnCreate");
 			this.BtnCreate.Name = "BtnCreate";
+			this.TT.SetToolTip(this.BtnCreate, resources.GetString("BtnCreate.ToolTip"));
 			this.BtnCreate.UseVisualStyleBackColor = true;
 			this.BtnCreate.Click += new System.EventHandler(this.BtnCreateClick);
 			// 
@@ -869,6 +936,7 @@
 			this.MinimizeBox = false;
 			this.Name = "RasterToLaserForm";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+			this.TT.SetToolTip(this, resources.GetString("$this.ToolTip"));
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RasterToLaserFormFormClosing);
 			this.Load += new System.EventHandler(this.RasterToLaserForm_Load);
 			this.RightGrid.ResumeLayout(false);
@@ -980,5 +1048,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.NumericUpDown UDDownSample;
 		private System.Windows.Forms.CheckBox CbDownSample;
+		private System.Windows.Forms.Label LblDitherMode;
+		private System.Windows.Forms.ComboBox CbDither;
 	}
 }

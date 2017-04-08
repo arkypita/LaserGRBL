@@ -320,6 +320,9 @@
     <EmbeddedResource Include="RasterConverter\RasterToLaserForm.resx">
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.it.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>

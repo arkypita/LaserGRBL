@@ -544,6 +544,7 @@ namespace LaserGRBL
 
 		private void Process(Graphics g, Size s)
 		{
+			bool supportPWM = (bool)Settings.GetObject("Support Hardware PWM", true);
 			Boolean analyze = (g == null);
 			Boolean drawing = (g != null);
 
@@ -637,7 +638,11 @@ namespace LaserGRBL
 
 							if (!laser)
 							{
-								pen.Color = Color.FromArgb(150, pen.Color);
+								if (supportPWM)
+									pen.Color = Color.FromArgb(150, pen.Color);
+								else
+									pen.Color = Color.FromArgb(50, pen.Color);
+
 								pen.DashStyle = DashStyle.Dash;
 								pen.DashPattern = new float[] { 1f, 1f };
 							}

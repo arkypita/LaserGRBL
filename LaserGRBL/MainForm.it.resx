@@ -139,33 +139,6 @@
   <data name="TTLStatus.Text" xml:space="preserve">
     <value>Stato:</value>
   </data>
-  <data name="settingsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAALUSURBVDhPlZJtSFNhFMef2VBn4aYybepmQZoKa+le
-        TDemM2jmy8y1qWmQaRrMDw6JXkAFBQn74IfAyBCCPtaHiRgTqdAwStQQUlG5OhPd271ubq5tZnB67kpI
-        0KIDf+7huZzf8z//e1FR0WWsS0ijuXLXaLxv6+rqCbS2PqBKSsqeKhTy5IICJVKp8o8UUquLcHMRVVRU
-        DpjNH2BlxQ1TU6tgNk9AXd2tOYUij3/Y4L7om+9otfoBfJuwsrJ6aHBwDKanV2F52Q7j458Bv3+pUilR
-        YWH+oUJG4z1qdPQT6PXVgyLROUF5+dWh4eExIAg72Gzb0N7eTUql4rNyeR76U9hZ6Ina2roDBOGGoaEx
-        KC4ufZ2entbS3/8CSNIHHk8QenufeEUioUomkyIMQhJJNhKLs1FW1vmQkMFgdE1OEjAzswIm01vo63sO
-        c3MWcLt3wO/fg56exz6BIFnH5ycjHi8BxcZyEJvNRnQxmWEIKZX5z0ymN3hnBw7QAU6nD1yuHfD5/HgF
-        F1gsVmhublnj8XjyxMSTiMuNw5BYPHwMRUaGI5SRkcYvK9N+GRn5CJubHmx7Fw/v4Z4Kia6tLS80NhrI
-        +HhuTlxczEEA3g+lpp5JkUhkrwyGVltn56Ptjo6HuwsLa6Hh/SJJNzQ03KawfXFMDOcgIDMzE6WkCFBS
-        Ei8VW1RFRx+/Xlt7c9Nud/0e/1Uulwf/G00OFouVGxbGOAg4ffpUSDSI3jMqiiXT6WrsVisZGvb7g1jf
-        cbheqK9vsuEM5RERzMMBCQlcxOFEIxYrUqrX11IbGyTO4RusrzshGNwLBVxTc4MKD2deOBJA78lmn0AM
-        BpJpNDqKIBwhyOLiV1ha2oBA4AdUVV1z/RVAu6DDou1qtdU2i8WJXVAYYIX5eQKUStXEPwHYJg2gKxd/
-        bofN5oXZ2WUQCkXv8RnvfwB0idXqUionR/4O9zwGg4F+Aqurkl4bTDemAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Impostazioni</value>
-  </data>
-  <data name="toolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 6</value>
-  </data>
   <data name="MnConnect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
@@ -342,6 +315,33 @@
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 6</value>
   </data>
+  <data name="settingsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAALUSURBVDhPlZJtSFNhFMef2VBn4aYybepmQZoKa+le
+        TDemM2jmy8y1qWmQaRrMDw6JXkAFBQn74IfAyBCCPtaHiRgTqdAwStQQUlG5OhPd271ubq5tZnB67kpI
+        0KIDf+7huZzf8z//e1FR0WWsS0ijuXLXaLxv6+rqCbS2PqBKSsqeKhTy5IICJVKp8o8UUquLcHMRVVRU
+        DpjNH2BlxQ1TU6tgNk9AXd2tOYUij3/Y4L7om+9otfoBfJuwsrJ6aHBwDKanV2F52Q7j458Bv3+pUilR
+        YWH+oUJG4z1qdPQT6PXVgyLROUF5+dWh4eExIAg72Gzb0N7eTUql4rNyeR76U9hZ6Ina2roDBOGGoaEx
+        KC4ufZ2entbS3/8CSNIHHk8QenufeEUioUomkyIMQhJJNhKLs1FW1vmQkMFgdE1OEjAzswIm01vo63sO
+        c3MWcLt3wO/fg56exz6BIFnH5ycjHi8BxcZyEJvNRnQxmWEIKZX5z0ymN3hnBw7QAU6nD1yuHfD5/HgF
+        F1gsVmhublnj8XjyxMSTiMuNw5BYPHwMRUaGI5SRkcYvK9N+GRn5CJubHmx7Fw/v4Z4Kia6tLS80NhrI
+        +HhuTlxczEEA3g+lpp5JkUhkrwyGVltn56Ptjo6HuwsLa6Hh/SJJNzQ03KawfXFMDOcgIDMzE6WkCFBS
+        Ei8VW1RFRx+/Xlt7c9Nud/0e/1Uulwf/G00OFouVGxbGOAg4ffpUSDSI3jMqiiXT6WrsVisZGvb7g1jf
+        cbheqK9vsuEM5RERzMMBCQlcxOFEIxYrUqrX11IbGyTO4RusrzshGNwLBVxTc4MKD2deOBJA78lmn0AM
+        BpJpNDqKIBwhyOLiV1ha2oBA4AdUVV1z/RVAu6DDou1qtdU2i8WJXVAYYIX5eQKUStXEPwHYJg2gKxd/
+        bofN5oXZ2WUQCkXv8RnvfwB0idXqUionR/4O9zwGg4F+Aqurkl4bTDemAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Impostazioni</value>
+  </data>
+  <data name="toolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 6</value>
+  </data>
   <data name="MnExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAJxAIA3kywAAACBjSFJNAABu
@@ -446,12 +446,6 @@
   <data name="MnFileSend.Text" xml:space="preserve">
     <value>Invia alla &amp;macchina</value>
   </data>
-  <data name="linguaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 20</value>
-  </data>
-  <data name="linguaToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Lingua</value>
-  </data>
   <data name="MNEnglish.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAhNJREFUOE/N
@@ -508,6 +502,12 @@
   </data>
   <data name="MNSpanish.Text" xml:space="preserve">
     <value>Spagnolo</value>
+  </data>
+  <data name="linguaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 20</value>
+  </data>
+  <data name="linguaToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Lingua</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

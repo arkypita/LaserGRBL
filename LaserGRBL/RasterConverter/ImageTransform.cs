@@ -108,7 +108,44 @@ namespace LaserGRBL.RasterConverter
 			Custom = 3
 		}
 
-		public static Bitmap DitherImage(Bitmap img)
+		public enum DitheringMode
+		{
+			Atkinson,
+			FloydSteinberg,
+			Burks,
+			Jarvis,
+			Random,
+			Sierra2,
+			Sierra3,
+			SierraLight,
+			Stucki
+		}
+
+		private static Cyotek.Drawing.Imaging.ColorReduction.IErrorDiffusion GetDitheringMode(DitheringMode mode)
+		{
+ 			if (mode == DitheringMode.FloydSteinberg)
+				return new Cyotek.Drawing.Imaging.ColorReduction.FloydSteinbergDithering();
+			else if (mode == DitheringMode.Atkinson)
+				return new Cyotek.Drawing.Imaging.ColorReduction.AtkinsonDithering();
+			else if (mode == DitheringMode.Burks)
+				return new Cyotek.Drawing.Imaging.ColorReduction.BurksDithering();
+			else if (mode == DitheringMode.Jarvis)
+				return new Cyotek.Drawing.Imaging.ColorReduction.JarvisJudiceNinkeDithering();
+			else if (mode == DitheringMode.Random)
+				return new Cyotek.Drawing.Imaging.ColorReduction.RandomDithering();
+			else if (mode == DitheringMode.Sierra2)
+				return new Cyotek.Drawing.Imaging.ColorReduction.Sierra2Dithering();
+			else if (mode == DitheringMode.Sierra3)
+				return new Cyotek.Drawing.Imaging.ColorReduction.Sierra3Dithering();
+			else if (mode == DitheringMode.SierraLight)
+				return new Cyotek.Drawing.Imaging.ColorReduction.SierraLiteDithering();
+			else if (mode == DitheringMode.Stucki)
+				return new Cyotek.Drawing.Imaging.ColorReduction.StuckiDithering();
+			else
+				return new Cyotek.Drawing.Imaging.ColorReduction.FloydSteinbergDithering(); 
+		}
+
+		public static Bitmap DitherImage(Bitmap img, DitheringMode dithering)
 		{
 			Bitmap image;
 			Cyotek.Drawing.ArgbColor[] originalData;
@@ -120,7 +157,7 @@ namespace LaserGRBL.RasterConverter
 
 			originalData = Cyotek.DitheringTest.Helpers.ImageUtilities.GetPixelsFrom32BitArgbImage(image);
 
-			dither = new Cyotek.Drawing.Imaging.ColorReduction.FloydSteinbergDithering();
+			dither = GetDitheringMode(dithering);// new Cyotek.Drawing.Imaging.ColorReduction.FloydSteinbergDithering();
 
 			for (int row = 0; row < size.Height; row++)
 			{
@@ -153,9 +190,7 @@ namespace LaserGRBL.RasterConverter
 
 		private static Cyotek.Drawing.ArgbColor TransformPixel(Cyotek.Drawing.ArgbColor pixel)
 		{
-			byte gray;
-
-			gray = (byte)(0.299 * pixel.R + 0.587 * pixel.G + 0.114 * pixel.B);
+			byte gray = (byte)(0.299 * pixel.R + 0.587 * pixel.G + 0.114 * pixel.B);
 
 			/*
 			 * I'm leaving the alpha channel untouched instead of making it fully opaque

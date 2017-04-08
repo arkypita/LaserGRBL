@@ -52,6 +52,7 @@ namespace LaserGRBL.RasterConverter
 		private bool mUseDownSampling;
 		private Direction mDirection;
 		private Direction mFillingDirection;
+		private ImageTransform.DitheringMode mDithering;
 		private int mFillingQuality;
 
 		//option for gcode generator
@@ -271,6 +272,20 @@ namespace LaserGRBL.RasterConverter
 				if (value != mFormula)
 				{
 					mFormula = value;
+					Refresh();
+				}
+			}
+		}
+
+
+		public ImageTransform.DitheringMode DitheringMode
+		{
+			get { return mDithering; }
+			set
+			{
+				if (value != mDithering)
+				{
+					mDithering = value;
 					Refresh();
 				}
 			}
@@ -714,7 +729,7 @@ namespace LaserGRBL.RasterConverter
 				using (Bitmap grayscale = ImageTransform.GrayScale(resized, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), IsGrayScale ? ImageTransform.Formula.SimpleAverage : Formula))
 				{
 					if (SelectedTool == Tool.Dithering)
-						return ImageTransform.DitherImage(grayscale);
+						return ImageTransform.DitherImage(grayscale, mDithering);
 					else
 						return ImageTransform.Threshold(grayscale, Threshold / 100.0F, UseThreshold);
 				}
@@ -832,6 +847,5 @@ namespace LaserGRBL.RasterConverter
 
 
 		public Bitmap Original { get {return mResized;}}
-
 	}
 }

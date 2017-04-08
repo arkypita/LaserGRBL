@@ -30,12 +30,21 @@ namespace LaserGRBL.RasterConverter
 			CbResize.Items.Add(InterpolationMode.HighQualityBicubic);
 			CbResize.Items.Add(InterpolationMode.NearestNeighbor);
 			CbResize.ResumeLayout();
+
+			CbDither.SuspendLayout();
+			foreach (ImageTransform.DitheringMode formula in Enum.GetValues(typeof(ImageTransform.DitheringMode)))
+				CbDither.Items.Add(formula);
+			CbDither.SelectedIndex = 0;
+			CbDither.ResumeLayout();
+			CbDither.SuspendLayout();
+
 			CbMode.SuspendLayout();
 			foreach (ImageTransform.Formula formula in Enum.GetValues(typeof(ImageTransform.Formula)))
 				CbMode.Items.Add(formula);
 			CbMode.SelectedIndex = 0;
 			CbMode.ResumeLayout();
 			CbDirections.SuspendLayout();
+
 			foreach (ImageProcessor.Direction direction in Enum.GetValues(typeof(ImageProcessor.Direction)))
 				if (direction != ImageProcessor.Direction.None)
 					CbDirections.Items.Add(direction);
@@ -171,6 +180,8 @@ namespace LaserGRBL.RasterConverter
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", (ImageProcessor.Direction)CbFillingDirection.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", UDFillingQuality.Value);
 
+			Settings.SetObject("GrayScaleConversion.DitheringOptions.DitheringMode", (ImageTransform.DitheringMode)CbDither.SelectedItem);
+
 			Settings.SetObject("GrayScaleConversion.Parameters.Interpolation", (InterpolationMode)CbResize.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.Parameters.Mode", (ImageTransform.Formula)CbMode.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.Parameters.R", TBRed.Value);
@@ -193,6 +204,7 @@ namespace LaserGRBL.RasterConverter
 			Settings.SetObject("GrayScaleConversion.Gcode.Offset.X", IP.TargetOffset.X);
 			Settings.SetObject("GrayScaleConversion.Gcode.Offset.Y", IP.TargetOffset.Y);
 			Settings.SetObject("GrayScaleConversion.Gcode.BiggestDimension", Math.Max(IP.TargetSize.Width, IP.TargetSize.Height));
+
 
 			Settings.Save(); // Saves settings in application configuration file
 		}
@@ -233,6 +245,8 @@ namespace LaserGRBL.RasterConverter
 			TbContrast.Value = IP.Contrast = (int)Settings.GetObject("GrayScaleConversion.Parameters.Contrast", 100);
 			CbThreshold.Checked = IP.UseThreshold = (bool)Settings.GetObject("GrayScaleConversion.Parameters.Threshold.Enabled", false);
 			TbThreshold.Value = IP.Threshold = (int)Settings.GetObject("GrayScaleConversion.Parameters.Threshold.Value", 50);
+
+			CbDither.SelectedItem = (ImageTransform.DitheringMode)Settings.GetObject("GrayScaleConversion.DitheringOptions.DitheringMode", ImageTransform.DitheringMode.FloydSteinberg);
 
 			if (RbLineToLineTracing.Checked && !supportPWM)
 				RbDithering.Checked = true;
@@ -283,6 +297,8 @@ namespace LaserGRBL.RasterConverter
 
 			CbThreshold.Visible = !RbDithering.Checked;
 			TbThreshold.Visible = !RbDithering.Checked && CbThreshold.Checked;
+
+			LblDitherMode.Visible = CbDither.Visible = RbDithering.Checked;
 		}
 
 		private void TbThreshold_ValueChanged(object sender, EventArgs e)
@@ -524,6 +540,9 @@ namespace LaserGRBL.RasterConverter
 		{
 			IP.FormResize(PbConverted.Size);
 		}
+
+		private void CbDither_SelectedIndexChanged(object sender, EventArgs e)
+		{ IP.DitheringMode = (ImageTransform.DitheringMode)CbDither.SelectedItem; }
 
 	}
 }
