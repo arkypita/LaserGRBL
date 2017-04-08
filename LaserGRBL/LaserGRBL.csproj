@@ -79,8 +79,9 @@
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
     <StartAction>Project</StartAction>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -344,6 +345,7 @@
     <EmbeddedResource Include="UserControls\LabelTB.resx">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="Grafica\Actions-transform-crop-and-resize-icon.png" />
     <None Include="Grafica\Crop-tool-icon.png" />
     <None Include="Grafica\document-revert.png" />
