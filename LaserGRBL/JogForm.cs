@@ -14,7 +14,6 @@ namespace LaserGRBL
 
 		public void SetCore(GrblCore core)
 		{
-			InitializeComponent();
 			Core = core;
 			TbSpeed_ValueChanged(null, null); //set tooltip
 			TbStep_ValueChanged(null, null); //set tooltip
