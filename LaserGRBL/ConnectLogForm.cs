@@ -75,15 +75,9 @@ namespace LaserGRBL
 		void BtnConnectDisconnectClick(object sender, EventArgs e)
 		{
 			if (Core.MachineStatus == GrblCore.MacStatus.Disconnected && CBSpeed.SelectedItem != null && CBPort.SelectedItem != null)
-			{
-				try{Core.OpenCom();}
-				catch { }
-			}
+				Core.OpenCom();
 			else
-			{
-				try{Core.CloseCom();}
-				catch { }
-			}
+				Core.CloseCom(false);
 
 			TimerUpdate();
 		}

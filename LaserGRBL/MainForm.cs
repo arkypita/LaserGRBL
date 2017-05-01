@@ -77,7 +77,7 @@ namespace LaserGRBL
 		}
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
-			Core.CloseCom();
+			Core.CloseCom(false);
 		}
 		
 
@@ -265,7 +265,7 @@ namespace LaserGRBL
 
 		private void MnDisconnect_Click(object sender, EventArgs e)
 		{
-			Core.CloseCom();
+			Core.CloseCom(false);
 		}
 		void MnSaveProgramClick(object sender, EventArgs e)
 		{
@@ -340,6 +340,17 @@ namespace LaserGRBL
 		private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SettingsForm.CreateAndShowDialog();
+		}
+
+		private void openSessionLogToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (System.IO.File.Exists("sessionlog.txt"))
+				System.Diagnostics.Process.Start("sessionlog.txt");
+		}
+
+		private void toolStripMenuItem4_DropDownOpening(object sender, EventArgs e)
+		{
+			openSessionLogToolStripMenuItem.Enabled = System.IO.File.Exists("sessionlog.txt");
 		}
 	}
 }

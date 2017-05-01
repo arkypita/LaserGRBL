@@ -11,6 +11,8 @@ namespace LaserGRBL
 		[STAThread]
 		static void Main()
 		{
+			Logger.Start();
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
@@ -21,6 +23,8 @@ namespace LaserGRBL
 				System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
 
 			Application.Run(new MainForm());
+
+			Logger.Stop();
 		}
 	}
 }

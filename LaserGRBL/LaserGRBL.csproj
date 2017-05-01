@@ -132,6 +132,7 @@
     <Compile Include="JogForm.Designer.cs">
       <DependentUpon>JogForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logger\Logger.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
