@@ -40,7 +40,7 @@ namespace LaserGRBL.RasterConverter
 		private int mBrightness;
 		private int mThreshold;
 		private bool mUseThreshold;
-		private int mQuality;
+		private double mQuality;
 		private bool mLinePreview;
 		private decimal mSpotRemoval;
 		private bool mUseSpotRemoval;
@@ -53,7 +53,7 @@ namespace LaserGRBL.RasterConverter
 		private Direction mDirection;
 		private Direction mFillingDirection;
 		private ImageTransform.DitheringMode mDithering;
-		private int mFillingQuality;
+		private double mFillingQuality;
 
 		//option for gcode generator
 		public Size TargetSize;
@@ -382,7 +382,7 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-		public int Quality
+		public double Quality
 		{
 			get { return mQuality; }
 			set
@@ -540,7 +540,7 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-		public int FillingQuality
+		public double FillingQuality
 		{
 			get { return mFillingQuality; }
 			set
@@ -655,10 +655,9 @@ namespace LaserGRBL.RasterConverter
 			try
 			{
 				int maxSize = 6000*7000; //testato con immagini da 600*700 con res 10ppm
-				int maxRes = (int)Math.Sqrt((maxSize / (TargetSize.Width * TargetSize.Height))); //limit res if resultimg bmp size is to big
-
-				int res = Math.Min(maxRes, SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering ? (int)Quality : 10); //use a fixed resolution of 10ppmm
-				int fres = Math.Min(maxRes, FillingQuality);
+				double maxRes = Math.Sqrt((maxSize / (TargetSize.Width * TargetSize.Height))); //limit res if resultimg bmp size is to big
+				double res = Math.Min(maxRes, SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering ? (double)Quality : 10.0); //use a fixed resolution of 10ppmm
+				double fres = Math.Min(maxRes, FillingQuality);
 
 				Size pixelSize = new Size((int)(TargetSize.Width * res), (int)(TargetSize.Height * res));
 				
@@ -666,7 +665,6 @@ namespace LaserGRBL.RasterConverter
 				{
 					using (Bitmap bmp = CreateTarget(pixelSize))
 					{
-
 						GrblFile.L2LConf conf = new GrblFile.L2LConf();
 						conf.res = res;
 						conf.fres = fres;

@@ -219,7 +219,7 @@ namespace LaserGRBL.RasterConverter
 				RbVectorize.Checked = true;
 
 			CbDirections.SelectedItem = IP.LineDirection = (ImageProcessor.Direction)Settings.GetObject("GrayScaleConversion.Line2LineOptions.Direction", ImageProcessor.Direction.Horizontal);
-			UDQuality.Value = IP.Quality = Convert.ToInt32(Settings.GetObject("GrayScaleConversion.Line2LineOptions.Quality", 3));
+			UDQuality.Value = (decimal)(IP.Quality = Convert.ToDouble(Settings.GetObject("GrayScaleConversion.Line2LineOptions.Quality", 3.0)));
 			CbLinePreview.Checked = IP.LinePreview = (bool)Settings.GetObject("GrayScaleConversion.Line2LineOptions.Preview", false);
 
 			CbSpotRemoval.Checked = IP.UseSpotRemoval = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.SpotRemoval.Enabled", false);
@@ -234,7 +234,7 @@ namespace LaserGRBL.RasterConverter
 			//CbShowDots.Checked = IP.ShowDots = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowDots.Enabled", false);
 			//CbShowImage.Checked = IP.ShowImage = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", true);
 			CbFillingDirection.SelectedItem = IP.FillingDirection = (ImageProcessor.Direction)Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", ImageProcessor.Direction.None);
-			UDFillingQuality.Value = IP.FillingQuality = Convert.ToInt32(Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", 3));
+			UDFillingQuality.Value = (decimal)(IP.FillingQuality = Convert.ToDouble(Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", 3.0)));
 
 			CbResize.SelectedItem = IP.Interpolation = (InterpolationMode)Settings.GetObject("GrayScaleConversion.Parameters.Interpolation", InterpolationMode.HighQualityBicubic);
 			CbMode.SelectedItem = IP.Formula = (ImageTransform.Formula)Settings.GetObject("GrayScaleConversion.Parameters.Mode", ImageTransform.Formula.SimpleAverage);
@@ -319,7 +319,7 @@ namespace LaserGRBL.RasterConverter
 		}
 
 		private void UDQuality_ValueChanged(object sender, EventArgs e)
-		{ IP.Quality = (int)UDQuality.Value; }
+		{ IP.Quality = (double)UDQuality.Value; }
 
 		private void CbLinePreview_CheckedChanged(object sender, EventArgs e)
 		{ IP.LinePreview = CbLinePreview.Checked; }
@@ -412,7 +412,7 @@ namespace LaserGRBL.RasterConverter
 
 		private void UDFillingQuality_ValueChanged(object sender, EventArgs e)
 		{
-			IP.FillingQuality = (int)UDFillingQuality.Value;
+			IP.FillingQuality = (double)UDFillingQuality.Value;
 		}
 		
 		
@@ -543,6 +543,18 @@ namespace LaserGRBL.RasterConverter
 
 		private void CbDither_SelectedIndexChanged(object sender, EventArgs e)
 		{ IP.DitheringMode = (ImageTransform.DitheringMode)CbDither.SelectedItem; }
+
+		private void BtnQualityInfo_Click(object sender, EventArgs e)
+		{
+			UDQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog((double)UDQuality.Value);
+			//System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
+		}
+
+		private void BtnFillingQualityInfo_Click(object sender, EventArgs e)
+		{
+			UDFillingQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog((double)UDFillingQuality.Value);
+			//System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
+		}
 
 	}
 }

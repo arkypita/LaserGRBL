@@ -20,7 +20,7 @@ namespace CsPotrace
 		/// <param name="Width">Width of the exportd cvg-File</param>
 		/// <param name="Height">Height of the exportd cvg-File</param>
 		/// <returns></returns>
-		public static List<string> Export2GCode(List<List<CsPotrace.Curve>> list, int oX, int oY, int scale, string lOn, string lOff, Size originalImageSize)
+		public static List<string> Export2GCode(List<List<CsPotrace.Curve>> list, int oX, int oY, double scale, string lOn, string lOff, Size originalImageSize)
 		{
 			bool debug = false;
 
@@ -51,7 +51,7 @@ namespace CsPotrace
 			return rv;
 		}
 
-		private static List<string> GetPathGC(List<CsPotrace.Curve> Curves, string lOn, string lOff, double oX, double oY, int scale, Graphics g)
+		private static List<string> GetPathGC(List<CsPotrace.Curve> Curves, string lOn, string lOff, double oX, double oY, double scale, Graphics g)
 		{
 			List<string> rv = new List<string>();
 
@@ -65,7 +65,7 @@ namespace CsPotrace
 			return rv;
 		}
 
-		private static void OnPathSegment(CsPotrace.Curve Curve, double oX, double oY, int scale, List<string> rv, Graphics g)
+		private static void OnPathSegment(CsPotrace.Curve Curve, double oX, double oY, double scale, List<string> rv, Graphics g)
 		{
 			if (double.IsNaN(Curve.LinearLenght)) // problem?
 				return;
@@ -113,7 +113,7 @@ namespace CsPotrace
 			}
 		}
 
-		private static void OnPathBegin(List<CsPotrace.Curve> Curves, string lOn, double oX, double oY, int scale, List<string> rv)
+		private static void OnPathBegin(List<CsPotrace.Curve> Curves, string lOn, double oX, double oY, double scale, List<string> rv)
 		{
 			if (Curves.Count > 0)
 			{
@@ -124,14 +124,14 @@ namespace CsPotrace
 			}
 		}
 
-		private static void OnPathEnd(List<CsPotrace.Curve> Curves, string lOff, double oX, double oY, int scale, List<string> rv)
+		private static void OnPathEnd(List<CsPotrace.Curve> Curves, string lOff, double oX, double oY, double scale, List<string> rv)
 		{
 			//turn off laser
 			if (Curves.Count > 0)
 				rv.Add(lOff);
 		}
 
-		private static string GetArcGC(Arc arc, double oX, double oY, int scale, Graphics g)
+		private static string GetArcGC(Arc arc, double oX, double oY, double scale, Graphics g)
 		{
 			//http://www.cnccookbook.com/CCCNCGCodeArcsG02G03.htm
 			//https://www.tormach.com/g02_g03.html
@@ -150,7 +150,7 @@ namespace CsPotrace
 
 		}
 
-		private static string formatnumber(double number, int scale)
+		private static string formatnumber(double number, double scale)
 		{
 			double num = number / scale;
 			if (!double.IsNaN(num))

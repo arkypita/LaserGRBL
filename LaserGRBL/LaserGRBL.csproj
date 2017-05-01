@@ -185,6 +185,12 @@
     <Compile Include="RasterConverter\RasterToLaserForm.Designer.cs">
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RasterConverter\ResolutionHelperForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RasterConverter\ResolutionHelperForm.Designer.cs">
+      <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
@@ -321,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\RasterToLaserForm.resx">
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.resx">
+      <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.it.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

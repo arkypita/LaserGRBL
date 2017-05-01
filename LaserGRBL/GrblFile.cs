@@ -75,7 +75,7 @@ namespace LaserGRBL
 			public ColorSegment(int col, int len, bool rev, L2LConf c)
 			{
 				mColor = col;
-				mLen = (double)len / (c.vectorfilling ? (double)c.fres : (double)c.res);
+				mLen = len / (c.vectorfilling ? c.fres : c.res);
 				mReverse = rev;
 				mConf = c;
 			}
@@ -178,8 +178,9 @@ namespace LaserGRBL
 				{
 					using (Graphics g = Graphics.FromImage(ptb))
 					{
-						Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, (Math.Max(c.res/c.fres, 1) + 1) / 2.0f);
-						using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size(bmp.Width * c.fres / c.res, bmp.Height * c.fres / c.res), true, InterpolationMode.HighQualityBicubic))
+						//Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, (Math.Max(c.res/c.fres, 1) + 1) / 2.0f);
+						Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, Math.Max(1, c.res / c.fres));
+						using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size((int)(bmp.Width * c.fres / c.res), (int)(bmp.Height * c.fres / c.res)), true, InterpolationMode.HighQualityBicubic))
 						{
 							//absolute
 							list.Add(new GrblCommand("G90"));
@@ -240,7 +241,7 @@ namespace LaserGRBL
 
 		public class L2LConf
 		{
- 			public int res;
+ 			public double res;
 			public int oX;
 			public int oY;
 			public int markSpeed;
@@ -252,7 +253,7 @@ namespace LaserGRBL
 			public string lOff;
 			public RasterConverter.ImageProcessor.Direction dir;
 			public bool pwm;
-			public int fres;
+			public double fres;
 			public bool vectorfilling;
 		}
 
