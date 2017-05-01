@@ -35,41 +35,45 @@ namespace LaserGRBL
 		{
 			try
 			{
-				int MAXLINE = 1000;
-				String tmp = System.IO.Path.GetTempFileName();
-				bool written = false;
 
-				using (System.IO.StreamReader reader = new System.IO.StreamReader("sessionlog.txt"))
+				if (System.IO.File.Exists("sessionlog.txt"))
 				{
-					int linecount = 0;
-					while (reader.ReadLine() != null)
-						linecount++;
+					int MAXLINE = 1000;
+					String tmp = System.IO.Path.GetTempFileName();
+					bool written = false;
 
-					reader.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
-
-					if (linecount > MAXLINE)
+					using (System.IO.StreamReader reader = new System.IO.StreamReader("sessionlog.txt"))
 					{
-						int lines_to_delete = linecount - MAXLINE;
-						using (System.IO.StreamWriter writer = new System.IO.StreamWriter(tmp))
-						{
-							string line;
-							while (lines_to_delete-- > 0)
-								reader.ReadLine();
-							while ((line = reader.ReadLine()) != null)
-								writer.WriteLine(line);
-						}
-						written = true;
-					}
-				}
+						int linecount = 0;
+						while (reader.ReadLine() != null)
+							linecount++;
 
-				if (written)
-				{
-					System.IO.File.Delete("sessionlog.txt");
-					System.IO.File.Move(tmp, "sessionlog.txt");
-				}
-				else
-				{
-					System.IO.File.Delete(tmp); 
+						reader.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
+
+						if (linecount > MAXLINE)
+						{
+							int lines_to_delete = linecount - MAXLINE;
+							using (System.IO.StreamWriter writer = new System.IO.StreamWriter(tmp))
+							{
+								string line;
+								while (lines_to_delete-- > 0)
+									reader.ReadLine();
+								while ((line = reader.ReadLine()) != null)
+									writer.WriteLine(line);
+							}
+							written = true;
+						}
+					}
+
+					if (written)
+					{
+						System.IO.File.Delete("sessionlog.txt");
+						System.IO.File.Move(tmp, "sessionlog.txt");
+					}
+					else
+					{
+						System.IO.File.Delete(tmp);
+					}
 				}
 			}
 			catch { }
