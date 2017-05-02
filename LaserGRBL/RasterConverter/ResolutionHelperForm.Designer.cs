@@ -128,6 +128,11 @@
 			this.UDHardware.DecimalPlaces = 3;
 			this.UDHardware.Location = new System.Drawing.Point(141, 67);
 			this.UDHardware.Margin = new System.Windows.Forms.Padding(2);
+			this.UDHardware.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
 			this.UDHardware.Minimum = new decimal(new int[] {
             1,
             0,

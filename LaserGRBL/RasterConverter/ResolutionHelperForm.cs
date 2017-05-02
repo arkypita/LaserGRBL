@@ -74,13 +74,6 @@ namespace LaserGRBL.RasterConverter
 			return Math.Max(UDComputed.Minimum, minRes);
 		}
 
-
-		//private decimal Resolution(decimal pitch, decimal steps)
-		//{
-		//	decimal rv = 1.0m / (pitch * steps);
-		//	return rv;
-		//}
-
 		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
