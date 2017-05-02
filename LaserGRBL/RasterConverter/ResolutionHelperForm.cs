@@ -26,7 +26,7 @@ namespace LaserGRBL.RasterConverter
 			{
 				f.UDDesired.Value = (decimal)oldval;
 				f.UDHardware.Value = (decimal)Settings.GetObject("Hardware Resolution", 100.0m);
-
+				f.Compute(null, null);
 
 				if (f.ShowDialog() == DialogResult.OK)
 					rv = f.mRetVal;
@@ -44,27 +44,42 @@ namespace LaserGRBL.RasterConverter
 
 		private void Compute(object sender, EventArgs e)
 		{
-			//decimal newresolution = UDHardware.Value / Math.Round((UDHardware.Value / UDDesired.Value), 0);
+			try
+			{
+				decimal newRes = UDHardware.Value / Math.Round((UDHardware.Value / UDDesired.Value), 0);
 
-
-			decimal hardwarePitch = 1.0m / UDHardware.Value;
-			decimal desiredPitch = 1.0m / UDDesired.Value;
-
-			decimal fullSteps = Math.Round(desiredPitch / hardwarePitch);
-
-			if (Resolution(hardwarePitch, fullSteps) > UDComputed.Maximum)
-				UDComputed.Value = UDComputed.Maximum; //todo... use a better computation
-			else if (Resolution(hardwarePitch, fullSteps) < UDComputed.Minimum)
-				UDComputed.Value = UDComputed.Minimum; //todo... use a better computation
-			else
-				UDComputed.Value = Resolution(hardwarePitch, fullSteps);
+				if (newRes > UDComputed.Maximum)
+					UDComputed.Value = MaxRes();
+				else if (newRes < UDComputed.Minimum)
+					UDComputed.Value = MinRes();
+				else
+					UDComputed.Value = newRes;
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("ResolutionHelper", "Ex with data [{0}]HW [{1}]DV", UDHardware.Value, UDDesired.Value);
+				Logger.LogException("ResolutionHelper", ex); 
+			}
 		}
 
-		private decimal Resolution(decimal pitch, decimal steps)
+		private decimal MaxRes()
 		{
-			decimal rv = 1.0m / (pitch * steps);
-			return rv;
+			decimal maxRes = UDHardware.Value / Math.Ceiling(UDHardware.Value / UDComputed.Maximum);
+			return Math.Min(UDComputed.Maximum, maxRes);
 		}
+
+		private decimal MinRes()
+		{
+			decimal minRes = UDHardware.Value / Math.Floor(UDHardware.Value / UDComputed.Minimum);
+			return Math.Max(UDComputed.Minimum, minRes);
+		}
+
+
+		//private decimal Resolution(decimal pitch, decimal steps)
+		//{
+		//	decimal rv = 1.0m / (pitch * steps);
+		//	return rv;
+		//}
 
 		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
