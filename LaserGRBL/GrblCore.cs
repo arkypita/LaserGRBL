@@ -342,16 +342,18 @@ namespace LaserGRBL
 			{ mQueuePtr.Enqueue(cmd.Clone() as GrblCommand); }
 		}
 
+		private string mPortName;
 		public string PortName
 		{
-			get { return com.PortName; }
-			set { com.PortName = value; }
+			get { return mPortName; }
+			set { mPortName = value; }
 		}
 
+		private int mBaudRate;
 		public int BaudRate
 		{
-			get { return com.BaudRate; }
-			set { com.BaudRate = value; }
+			get { return mBaudRate; }
+			set { mBaudRate = value; }
 		}
 
 		public void OpenCom()
@@ -359,11 +361,34 @@ namespace LaserGRBL
 			try
 			{
 				SetStatus(MacStatus.Connecting);
+				com.PortName = mPortName;
+				com.BaudRate = mBaudRate;
+
 				Logger.LogMessage("OpenCom", "Open {0} @ {1} baud", com.PortName.ToUpper(), com.BaudRate);
 
 				if (!com.IsOpen)
 				{
-					com.Open();
+					try
+					{
+						com.Open();
+					}
+					catch (System.IO.IOException ioex)
+					{
+
+						if (char.IsDigit(mPortName[mPortName.Length - 1]) && char.IsDigit(mPortName[mPortName.Length - 2])) //two digits port like COM23
+						{
+							//FIX https://github.com/arkypita/LaserGRBL/issues/31
+							com.PortName = mPortName.Substring(0, mPortName.Length - 1); //remove last digit and try again
+
+							Logger.LogMessage("OpenCom", "Retry open {0} @ {1} baud", com.PortName.ToUpper(), com.BaudRate);
+							com.Open();
+						}
+						else
+						{
+							throw ioex;
+						}
+					}
+
 					com.DiscardOutBuffer();
 					com.DiscardInBuffer();
 				}

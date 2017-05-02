@@ -64,7 +64,19 @@ namespace LaserGRBL
 			string currentport = CBPort.SelectedItem as string;
 			CBPort.BeginUpdate();
 			CBPort.Items.Clear();
-			CBPort.Items.AddRange(System.IO.Ports.SerialPort.GetPortNames());
+
+			foreach (string portname in System.IO.Ports.SerialPort.GetPortNames())
+			{
+				string purgename = portname;
+
+				//FIX https://github.com/arkypita/LaserGRBL/issues/31
+
+				if (!char.IsDigit(purgename[purgename.Length - 1]))
+					purgename = purgename.Substring(0, purgename.Length - 1);
+
+				CBPort.Items.Add(purgename);
+			}
+
 			if (currentport != null && CBPort.Items.Contains(currentport))
 				CBPort.SelectedItem = currentport;
 			else if (CBPort.Items.Count > 0)
