@@ -109,6 +109,7 @@ namespace LaserGRBL
 						sb.AppendFormat("{0}\t{1}\t{2}\r\n", dt, context.PadRight(12, ' '), line);
 
 					System.IO.File.AppendAllText("sessionlog.txt", sb.ToString());
+					System.Diagnostics.Debug.Write(sb.ToString());
 				}
 				catch { }
 			}
