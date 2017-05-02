@@ -44,15 +44,26 @@ namespace LaserGRBL.RasterConverter
 
 		private void Compute(object sender, EventArgs e)
 		{
-			decimal pitch = 1.0m / UDHardware.Value;
-			decimal steps = Math.Round(UDDesired.Value / pitch);
-			
-			if (steps * pitch > UDComputed.Maximum)
-				steps -= 1;
-			else if (steps * pitch < UDComputed.Minimum)
-				steps += 1;
+			//decimal newresolution = UDHardware.Value / Math.Round((UDHardware.Value / UDDesired.Value), 0);
 
-			UDComputed.Value = steps * pitch;
+
+			decimal hardwarePitch = 1.0m / UDHardware.Value;
+			decimal desiredPitch = 1.0m / UDDesired.Value;
+
+			decimal fullSteps = Math.Round(desiredPitch / hardwarePitch);
+
+			if (Resolution(hardwarePitch, fullSteps) > UDComputed.Maximum)
+				UDComputed.Value = UDComputed.Maximum; //todo... use a better computation
+			else if (Resolution(hardwarePitch, fullSteps) < UDComputed.Minimum)
+				UDComputed.Value = UDComputed.Minimum; //todo... use a better computation
+			else
+				UDComputed.Value = Resolution(hardwarePitch, fullSteps);
+		}
+
+		private decimal Resolution(decimal pitch, decimal steps)
+		{
+			decimal rv = 1.0m / (pitch * steps);
+			return rv;
 		}
 
 		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
