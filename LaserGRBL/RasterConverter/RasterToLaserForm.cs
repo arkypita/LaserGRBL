@@ -259,34 +259,40 @@ namespace LaserGRBL.RasterConverter
 		{((UserControls.ColorSlider)sender).Value = 50;}
 
 		private void CbMode_SelectedIndexChanged(object sender, EventArgs e)
-		{ 
-			IP.Formula = (ImageTransform.Formula)CbMode.SelectedItem;
+		{
+			if (IP != null)
+			{
+				IP.Formula = (ImageTransform.Formula)CbMode.SelectedItem;
 
-			SuspendLayout();
-			TBRed.Visible = TBGreen.Visible = TBBlue.Visible = (IP.Formula == ImageTransform.Formula.Custom && !IP.IsGrayScale);
-			LblRed.Visible = LblGreen.Visible = LblBlue.Visible = (IP.Formula == ImageTransform.Formula.Custom && !IP.IsGrayScale);
-			ResumeLayout();
+				SuspendLayout();
+				TBRed.Visible = TBGreen.Visible = TBBlue.Visible = (IP.Formula == ImageTransform.Formula.Custom && !IP.IsGrayScale);
+				LblRed.Visible = LblGreen.Visible = LblBlue.Visible = (IP.Formula == ImageTransform.Formula.Custom && !IP.IsGrayScale);
+				ResumeLayout();
+			}
 		}
 
 		private void TBRed_ValueChanged(object sender, EventArgs e)
-		{ IP.Red = TBRed.Value; }
+		{if (IP != null) IP.Red = TBRed.Value; }
 
 		private void TBGreen_ValueChanged(object sender, EventArgs e)
-		{ IP.Green = TBGreen.Value; }
+		{ if (IP != null) IP.Green = TBGreen.Value; }
 
 		private void TBBlue_ValueChanged(object sender, EventArgs e)
-		{ IP.Blue = TBBlue.Value; }
+		{ if (IP != null) IP.Blue = TBBlue.Value; }
 
 		private void TbBright_ValueChanged(object sender, EventArgs e)
-		{ IP.Brightness = TbBright.Value; }
+		{ if (IP != null) IP.Brightness = TbBright.Value; }
 
 		private void TbContrast_ValueChanged(object sender, EventArgs e)
-		{ IP.Contrast = TbContrast.Value; }
+		{ if (IP != null) IP.Contrast = TbContrast.Value; }
 
 		private void CbThreshold_CheckedChanged(object sender, EventArgs e)
-		{ 
-			IP.UseThreshold = CbThreshold.Checked;
-			RefreshVE();
+		{
+			if (IP != null)
+			{
+				IP.UseThreshold = CbThreshold.Checked;
+				RefreshVE();
+			}
 		}
 
 		private void RefreshVE()
@@ -302,57 +308,64 @@ namespace LaserGRBL.RasterConverter
 		}
 
 		private void TbThreshold_ValueChanged(object sender, EventArgs e)
-		{ IP.Threshold = TbThreshold.Value; }
+		{ if (IP != null) IP.Threshold = TbThreshold.Value; }
 
 		private void RbLineToLineTracing_CheckedChanged(object sender, EventArgs e)
 		{
-			if (RbLineToLineTracing.Checked)
-				IP.SelectedTool = ImageProcessor.Tool.Line2Line;
-			RefreshVE();
+			if (IP != null)
+			{
+				if (RbLineToLineTracing.Checked)
+					IP.SelectedTool = ImageProcessor.Tool.Line2Line;
+				RefreshVE();
+			}
 		}
 		
 		private void RbVectorize_CheckedChanged(object sender, EventArgs e)
 		{
-			if (RbVectorize.Checked)
-				IP.SelectedTool = ImageProcessor.Tool.Vectorize;
-			RefreshVE();
+			if (IP != null)
+			{
+				if (RbVectorize.Checked)
+					IP.SelectedTool = ImageProcessor.Tool.Vectorize;
+				RefreshVE();
+			}
 		}
 
 		private void UDQuality_ValueChanged(object sender, EventArgs e)
-		{ IP.Quality = (double)UDQuality.Value; }
+		{ if (IP != null)  IP.Quality = (double)UDQuality.Value;  }
 
 		private void CbLinePreview_CheckedChanged(object sender, EventArgs e)
-		{ IP.LinePreview = CbLinePreview.Checked; }
+		{ if (IP != null) IP.LinePreview = CbLinePreview.Checked; }
 
 		private void UDSpotRemoval_ValueChanged(object sender, EventArgs e)
-		{ IP.SpotRemoval = (int)UDSpotRemoval.Value; }
+		{ if (IP != null) IP.SpotRemoval = (int)UDSpotRemoval.Value; }
 
 		private void CbSpotRemoval_CheckedChanged(object sender, EventArgs e)
-		{ 
-			IP.UseSpotRemoval = CbSpotRemoval.Checked;
+		{
+			if (IP != null)
+				IP.UseSpotRemoval = CbSpotRemoval.Checked;
 			UDSpotRemoval.Enabled = CbSpotRemoval.Checked;
 		}
 
 		private void UDSmoothing_ValueChanged(object sender, EventArgs e)
-		{ IP.Smoothing = UDSmoothing.Value; }
+		{ if (IP != null) IP.Smoothing = UDSmoothing.Value; }
 
 		private void CbSmoothing_CheckedChanged(object sender, EventArgs e)
-		{ 
-			IP.UseSmoothing = CbSmoothing.Checked;
+		{
+			if (IP != null) IP.UseSmoothing = CbSmoothing.Checked;
 			UDSmoothing.Enabled = CbSmoothing.Checked;
 		}
 
 		private void UDOptimize_ValueChanged(object sender, EventArgs e)
-		{ IP.Optimize = UDOptimize.Value; }
+		{ if (IP != null) IP.Optimize = UDOptimize.Value; }
 
 		private void CbOptimize_CheckedChanged(object sender, EventArgs e)
 		{
-			IP.UseOptimize = CbOptimize.Checked;
+			if (IP != null) IP.UseOptimize = CbOptimize.Checked;
 			UDOptimize.Enabled = CbOptimize.Checked;
 		}
 
 		private void RasterToLaserForm_Load(object sender, EventArgs e)
-		{IP.Resume();}
+		{ if (IP != null) IP.Resume(); }
 		
 		void RasterToLaserFormFormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -365,54 +378,76 @@ namespace LaserGRBL.RasterConverter
 				ImageProcessor.PreviewReady -= OnPreviewReady;
 				ImageProcessor.PreviewBegin -= OnPreviewBegin;
 				ImageProcessor.GenerationComplete -= OnGenerationComplete;
-				IP.Dispose();
+				if (IP != null) IP.Dispose();
 			}
 		}
 
 		void CbDirectionsSelectedIndexChanged(object sender, EventArgs e)
-		{ IP.LineDirection = (ImageProcessor.Direction)CbDirections.SelectedItem; }
+		{ if (IP != null)IP.LineDirection = (ImageProcessor.Direction)CbDirections.SelectedItem; }
 
 		void CbResizeSelectedIndexChanged(object sender, EventArgs e)
-		{ 
-			IP.Interpolation = (InterpolationMode)CbResize.SelectedItem;
-			PbOriginal.Image = IP.Original;
+		{
+			if (IP != null)
+			{
+				IP.Interpolation = (InterpolationMode)CbResize.SelectedItem;
+				PbOriginal.Image = IP.Original;
+			}
 		}
 		void BtRotateCWClick(object sender, EventArgs e)
 		{
-			IP.RotateCW();
-			PbOriginal.Image = IP.Original;
+			if (IP != null)
+			{
+				IP.RotateCW();
+				PbOriginal.Image = IP.Original;
+			}
 		}
 		void BtRotateCCWClick(object sender, EventArgs e)
 		{
-			IP.RotateCCW();
-			PbOriginal.Image = IP.Original;
+			if (IP != null)
+			{
+				IP.RotateCCW();
+				PbOriginal.Image = IP.Original;
+			}
 		}
 		void BtFlipHClick(object sender, EventArgs e)
 		{
-			IP.FlipH();
-			PbOriginal.Image = IP.Original;
+			if (IP != null)
+			{
+				IP.FlipH();
+				PbOriginal.Image = IP.Original;
+			}
 		}
 		void BtFlipVClick(object sender, EventArgs e)
 		{
-			IP.FlipV();
-			PbOriginal.Image = IP.Original;	
+			if (IP != null)
+			{
+				IP.FlipV();
+				PbOriginal.Image = IP.Original;
+			}
 		}
 		
 		void BtnRevertClick(object sender, EventArgs e)
 		{
-			IP.Revert();
-			PbOriginal.Image = IP.Original;	
+			if (IP != null)
+			{
+				IP.Revert();
+				PbOriginal.Image = IP.Original;
+			}
 		}
 
 		private void CbFillingDirection_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			IP.FillingDirection = (ImageProcessor.Direction)CbFillingDirection.SelectedItem;
-			LblFillingLineLbl.Visible = LblFillingQuality.Visible = UDFillingQuality.Visible = ((ImageProcessor.Direction)CbFillingDirection.SelectedItem != ImageProcessor.Direction.None);
+			if (IP != null)
+			{
+				IP.FillingDirection = (ImageProcessor.Direction)CbFillingDirection.SelectedItem;
+				LblFillingLineLbl.Visible = LblFillingQuality.Visible = UDFillingQuality.Visible = ((ImageProcessor.Direction)CbFillingDirection.SelectedItem != ImageProcessor.Direction.None);
+			}
 		}
 
 		private void UDFillingQuality_ValueChanged(object sender, EventArgs e)
 		{
-			IP.FillingQuality = (double)UDFillingQuality.Value;
+			if (IP != null)
+				IP.FillingQuality = (double)UDFillingQuality.Value;
 		}
 		
 		
@@ -520,29 +555,37 @@ namespace LaserGRBL.RasterConverter
 
 		private void RbDithering_CheckedChanged(object sender, EventArgs e)
 		{
-			if (RbDithering.Checked)
-				IP.SelectedTool = ImageProcessor.Tool.Dithering;
-			RefreshVE();
+			if (IP != null)
+			{
+				if (RbDithering.Checked)
+					IP.SelectedTool = ImageProcessor.Tool.Dithering;
+				RefreshVE();
+			}
 		}
 
 		private void CbDownSample_CheckedChanged(object sender, EventArgs e)
 		{
-			IP.UseDownSampling = CbDownSample.Checked;
-			UDDownSample.Enabled = CbDownSample.Checked;
+			if (IP != null)
+			{
+				IP.UseDownSampling = CbDownSample.Checked;
+				UDDownSample.Enabled = CbDownSample.Checked;
+			}
 		}
 
 		private void UDDownSample_ValueChanged(object sender, EventArgs e)
 		{
-			IP.DownSampling = UDDownSample.Value;
+			if (IP != null)
+				IP.DownSampling = UDDownSample.Value;
 		}
 
 		private void PbConverted_Resize(object sender, EventArgs e)
 		{
-			IP.FormResize(PbConverted.Size);
+			if (IP != null)
+				IP.FormResize(PbConverted.Size);
 		}
 
 		private void CbDither_SelectedIndexChanged(object sender, EventArgs e)
-		{ IP.DitheringMode = (ImageTransform.DitheringMode)CbDither.SelectedItem; }
+		{ if (IP != null) IP.DitheringMode = (ImageTransform.DitheringMode)CbDither.SelectedItem; }
 
 		private void BtnQualityInfo_Click(object sender, EventArgs e)
 		{
