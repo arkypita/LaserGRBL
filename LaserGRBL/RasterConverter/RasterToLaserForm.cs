@@ -440,7 +440,7 @@ namespace LaserGRBL.RasterConverter
 			if (IP != null)
 			{
 				IP.FillingDirection = (ImageProcessor.Direction)CbFillingDirection.SelectedItem;
-				LblFillingLineLbl.Visible = LblFillingQuality.Visible = UDFillingQuality.Visible = ((ImageProcessor.Direction)CbFillingDirection.SelectedItem != ImageProcessor.Direction.None);
+				BtnFillingQualityInfo.Visible = LblFillingLineLbl.Visible = LblFillingQuality.Visible = UDFillingQuality.Visible = ((ImageProcessor.Direction)CbFillingDirection.SelectedItem != ImageProcessor.Direction.None);
 			}
 		}
 

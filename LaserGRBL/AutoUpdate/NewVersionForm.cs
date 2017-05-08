@@ -32,7 +32,7 @@ namespace LaserGRBL
 				if (rv == DialogResult.OK && System.Windows.Forms.MessageBox.Show("Update success! Please restart LaserGRBL to apply update.\r\nRestart now?", "Update result", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
 					System.Windows.Forms.Application.Restart();
 				else if (rv == DialogResult.Abort)
-					System.Windows.Forms.MessageBox.Show("Update fail!\r\nPlease download the new version from lasergrbl site.", "Update result", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+					System.Windows.Forms.MessageBox.Show("Automatic update failed!\r\nPlease manually download the new version from lasergrbl site.", "Update result", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
 			}
 
 
