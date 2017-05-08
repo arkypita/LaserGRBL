@@ -19,42 +19,41 @@ namespace LaserGRBL
 
 		private static void AsyncCheckVersion(object foo)
 		{
-			//try
-			//{ CheckSite(@"https://api.github.com/repos/arkypita/LaserGRBL/releases/latest"); } //official https
-			//catch
-			{ CheckSite(@"http://lasergrbl.com/latest.php"); } //http mirror
-		}
-
-		private static void CheckSite(string site)
-		{
-			using (System.Net.WebClient wc = new System.Net.WebClient())
+			try
 			{
-				wc.Headers.Add("User-Agent: .Net WebClient");
-				string json = wc.DownloadString(site);
-
-				string url = null;
-				string versionstr = null;
-				string name = null;
-
-				foreach (Match m in Regex.Matches(json, @"""browser_download_url"":""([^""]+)"""))
-					if (url == null)
-						url = m.Groups[1].Value;
-				foreach (Match m in Regex.Matches(json, @"""tag_name"":""v([^""]+)"""))
-					if (versionstr == null)
-						versionstr = m.Groups[1].Value;
-				foreach (Match m in Regex.Matches(json, @"""name"":""([^""]+)"""))
-					if (name == null)
-						name = m.Groups[1].Value;
-
-				Version current = typeof(GitHub).Assembly.GetName().Version;
-				Version latest = new Version(versionstr);
-
-				if (current < latest)
+				using (System.Net.WebClient wc = new System.Net.WebClient())
 				{
-					if (NewVersion != null)
-						NewVersion(current, latest, name, url);
-				}
+					wc.Headers.Add("User-Agent: .Net WebClient");
+					string json = wc.DownloadString(@"https://api.github.com/repos/arkypita/LaserGRBL/releases/latest");
 
+					string url = null;
+					string versionstr = null;
+					string name = null;
+
+					foreach (Match m in Regex.Matches(json, @"""browser_download_url"":""([^""]+)"""))
+						if (url == null) 
+						url = m.Groups[1].Value;
+					foreach (Match m in Regex.Matches(json, @"""tag_name"":""v([^""]+)"""))
+						if (versionstr == null)
+						versionstr = m.Groups[1].Value;
+					foreach (Match m in Regex.Matches(json, @"""name"":""([^""]+)"""))
+						if (name == null)
+							name = m.Groups[1].Value;
+
+					Version current = typeof(GitHub).Assembly.GetName().Version;
+					Version latest = new Version(versionstr);
+
+					if (current < latest)
+					{
+						if (NewVersion != null)
+							NewVersion(current, latest, name, url);
+					}
+
+				}
+			}
+			catch (Exception ex) 
+			{
+ 
 			}
 		}
 
