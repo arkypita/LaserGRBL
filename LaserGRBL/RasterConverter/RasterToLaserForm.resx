@@ -139,7 +139,7 @@
     <value>WB</value>
   </data>
   <data name="&gt;&gt;WB.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.WaitingProgressBar, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.WaitingProgressBar, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;WB.Parent" xml:space="preserve">
     <value>TpPreview</value>
@@ -214,7 +214,7 @@
     <value>3, 3</value>
   </data>
   <data name="PbOriginal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>522, 484</value>
+    <value>512, 484</value>
   </data>
   <data name="PbOriginal.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -241,7 +241,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpOriginal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>528, 490</value>
+    <value>518, 490</value>
   </data>
   <data name="TpOriginal.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -349,7 +349,7 @@
     <value>BtFlipV</value>
   </data>
   <data name="&gt;&gt;BtFlipV.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtFlipV.Parent" xml:space="preserve">
     <value>FlipControl</value>
@@ -408,7 +408,7 @@
     <value>BtFlipH</value>
   </data>
   <data name="&gt;&gt;BtFlipH.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtFlipH.Parent" xml:space="preserve">
     <value>FlipControl</value>
@@ -463,7 +463,7 @@
     <value>BtRotateCW</value>
   </data>
   <data name="&gt;&gt;BtRotateCW.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtRotateCW.Parent" xml:space="preserve">
     <value>FlipControl</value>
@@ -519,7 +519,7 @@
     <value>BtRotateCCW</value>
   </data>
   <data name="&gt;&gt;BtRotateCCW.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtRotateCCW.Parent" xml:space="preserve">
     <value>FlipControl</value>
@@ -567,7 +567,7 @@
     <value>BtnCrop</value>
   </data>
   <data name="&gt;&gt;BtnCrop.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCrop.Parent" xml:space="preserve">
     <value>FlipControl</value>
@@ -618,7 +618,7 @@
     <value>BtnRevert</value>
   </data>
   <data name="&gt;&gt;BtnRevert.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnRevert.Parent" xml:space="preserve">
     <value>FlipControl</value>
@@ -1260,7 +1260,7 @@
     <value>BtnFillingQualityInfo</value>
   </data>
   <data name="&gt;&gt;BtnFillingQualityInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnFillingQualityInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -1302,7 +1302,7 @@
     <value>Fill</value>
   </data>
   <data name="GbVectorizeOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 432</value>
+    <value>3, 456</value>
   </data>
   <data name="GbVectorizeOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 164</value>
@@ -1458,7 +1458,7 @@
     <value>TBRed</value>
   </data>
   <data name="&gt;&gt;TBRed.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TBRed.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1629,7 +1629,7 @@
     <value>TBGreen</value>
   </data>
   <data name="&gt;&gt;TBGreen.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TBGreen.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1656,7 +1656,7 @@
     <value>TbBright</value>
   </data>
   <data name="&gt;&gt;TbBright.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TbBright.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1686,7 +1686,7 @@
     <value>TBBlue</value>
   </data>
   <data name="&gt;&gt;TBBlue.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TBBlue.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1713,7 +1713,7 @@
     <value>TbContrast</value>
   </data>
   <data name="&gt;&gt;TbContrast.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TbContrast.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1764,7 +1764,7 @@
     <value>NoControl</value>
   </data>
   <data name="CbThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 173</value>
+    <value>2, 197</value>
   </data>
   <data name="CbThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1830,7 +1830,7 @@
     <value>Left, Right</value>
   </data>
   <data name="TbThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 171</value>
+    <value>63, 195</value>
   </data>
   <data name="TbThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -1848,13 +1848,73 @@
     <value>TbThreshold</value>
   </data>
   <data name="&gt;&gt;TbThreshold.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TbThreshold.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;TbThreshold.ZOrder" xml:space="preserve">
     <value>15</value>
+  </data>
+  <data name="TBWhiteClip.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="TBWhiteClip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 171</value>
+  </data>
+  <data name="TBWhiteClip.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="TBWhiteClip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 22</value>
+  </data>
+  <data name="TBWhiteClip.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;TBWhiteClip.Name" xml:space="preserve">
+    <value>TBWhiteClip</value>
+  </data>
+  <data name="&gt;&gt;TBWhiteClip.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;TBWhiteClip.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;TBWhiteClip.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 175</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>White Clip</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>17</value>
   </data>
   <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1863,10 +1923,10 @@
     <value>3, 16</value>
   </data>
   <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 194</value>
+    <value>234, 218</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1884,7 +1944,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbResize" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LblGrayscale" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbMode" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TBRed" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LblRed" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LblBlue" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LblGreen" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TBGreen" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TbBright" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TBBlue" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TbContrast" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbThreshold" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label28" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TbThreshold" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,16" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbResize" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LblGrayscale" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbMode" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TBRed" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LblRed" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LblBlue" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LblGreen" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TBGreen" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TbBright" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TBBlue" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TbContrast" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbThreshold" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label28" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TbThreshold" Row="8" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TBWhiteClip" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1893,7 +1953,7 @@
     <value>3, 3</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 213</value>
+    <value>240, 237</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2211,7 +2271,7 @@
     <value>BtnQualityInfo</value>
   </data>
   <data name="&gt;&gt;BtnQualityInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.1.32847, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.38109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnQualityInfo.Parent" xml:space="preserve">
     <value>TLP</value>
@@ -2253,7 +2313,7 @@
     <value>Fill</value>
   </data>
   <data name="GbLineToLineOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 310</value>
+    <value>3, 334</value>
   </data>
   <data name="GbLineToLineOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 116</value>
@@ -2433,7 +2493,7 @@
     <value>Fill</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 222</value>
+    <value>3, 246</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 82</value>

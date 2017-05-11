@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
+using System.Runtime.InteropServices;
+using System.IO;
 
 
 namespace LaserGRBL.RasterConverter
@@ -26,18 +28,18 @@ namespace LaserGRBL.RasterConverter
 			{
 				if (killalfa)
 					g.Clear(Color.White);
-				
-				
+
+
 				if (killalfa)
 					g.CompositingMode = CompositingMode.SourceOver;
 				else
 					g.CompositingMode = CompositingMode.SourceCopy;
-				
+
 				g.CompositingQuality = CompositingQuality.HighQuality;
 				g.SmoothingMode = SmoothingMode.HighQuality;
 				g.InterpolationMode = interpolation;
 
-				
+
 				g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
 
 				using (System.Drawing.Imaging.ImageAttributes wrapMode = new System.Drawing.Imaging.ImageAttributes())
@@ -57,14 +59,14 @@ namespace LaserGRBL.RasterConverter
 			using (Graphics g = Graphics.FromImage(bmp))
 			{
 				g.Clear(Color.White); //Threshold is the final transformation 
-				g.DrawImage(img, 0,0); //so clear any transparent color and apply threshold
-				
+				g.DrawImage(img, 0, 0); //so clear any transparent color and apply threshold
+
 				// Create an ImageAttributes object, and set its color threshold.
 				ImageAttributes imageAttr = new ImageAttributes();
 				imageAttr.SetThreshold(threshold);
 
 				if (apply)
-					g.DrawImage(bmp, new Rectangle(0,0, bmp.Width, bmp.Height), 0,0, bmp.Width, bmp.Height,	GraphicsUnit.Pixel, imageAttr);
+					g.DrawImage(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, bmp.Width, bmp.Height, GraphicsUnit.Pixel, imageAttr);
 			}
 			return bmp;
 		}
@@ -72,10 +74,12 @@ namespace LaserGRBL.RasterConverter
 		private static Bitmap draw_adjusted_image(Image img, ColorMatrix cm)
 		{
 
-			try {
+			try
+			{
 				Bitmap tmp = new Bitmap(img.Width, img.Height);
 				// create a copy of the source image 
-				using (Graphics g = Graphics.FromImage(tmp)) {
+				using (Graphics g = Graphics.FromImage(tmp))
+				{
 					g.Clear(Color.Transparent);
 
 					ImageAttributes imgattr = new ImageAttributes();
@@ -89,14 +93,13 @@ namespace LaserGRBL.RasterConverter
 					g.DrawImage(img, rc, 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, imgattr);
 				}
 				return tmp;
-			} catch {
+			}
+			catch
+			{
 				return null;
 			}
 
 		}
-
-
-
 
 		//**************************
 
@@ -123,7 +126,7 @@ namespace LaserGRBL.RasterConverter
 
 		private static Cyotek.Drawing.Imaging.ColorReduction.IErrorDiffusion GetDitheringMode(DitheringMode mode)
 		{
- 			if (mode == DitheringMode.FloydSteinberg)
+			if (mode == DitheringMode.FloydSteinberg)
 				return new Cyotek.Drawing.Imaging.ColorReduction.FloydSteinbergDithering();
 			else if (mode == DitheringMode.Atkinson)
 				return new Cyotek.Drawing.Imaging.ColorReduction.AtkinsonDithering();
@@ -142,7 +145,7 @@ namespace LaserGRBL.RasterConverter
 			else if (mode == DitheringMode.Stucki)
 				return new Cyotek.Drawing.Imaging.ColorReduction.StuckiDithering();
 			else
-				return new Cyotek.Drawing.Imaging.ColorReduction.FloydSteinbergDithering(); 
+				return new Cyotek.Drawing.Imaging.ColorReduction.FloydSteinbergDithering();
 		}
 
 		public static Bitmap DitherImage(Bitmap img, DitheringMode dithering)
@@ -207,11 +210,11 @@ namespace LaserGRBL.RasterConverter
 			ColorMatrix cm = default(ColorMatrix);
 
 			// Apply selected grayscale formula
-			
+
 			float RedFactor = 0;
 			float GreenFactor = 0;
 			float BlueFactor = 0;
-			
+
 			if (formula == Formula.SimpleAverage)
 			{
 				RedFactor = 0.333F;
@@ -225,22 +228,22 @@ namespace LaserGRBL.RasterConverter
 				BlueFactor = 0.222F;
 			}
 			else if (formula == Formula.OpticalCorrect) // Reference: http://www.had2know.com/technology/rgb-to-gray-scale-converter.html
-            {
+			{
 				RedFactor = 0.299F;
 				GreenFactor = 0.587F;
-				BlueFactor = 0.114F;				
-            }
+				BlueFactor = 0.114F;
+			}
 			else if (formula == Formula.Custom)
 			{
-				RedFactor =	 0.333F * R;
+				RedFactor = 0.333F * R;
 				GreenFactor = 0.333F * G;
 				BlueFactor = 0.333F * B;
 			}
-			
+
 			RedFactor = RedFactor * contrast;
 			GreenFactor = GreenFactor * contrast;
 			BlueFactor = BlueFactor * contrast;
-			
+
 			cm = new ColorMatrix(new float[][] {
 				new float[] {RedFactor,RedFactor,RedFactor,0F,0F},
 				new float[] {GreenFactor,GreenFactor,GreenFactor,0F,0F},
@@ -248,11 +251,146 @@ namespace LaserGRBL.RasterConverter
 				new float[] {0F,0F,0F,1F,0F},
 				new float[] {brightness,brightness,brightness,0F,1F}
 			});
-		
-            
+
+
 			return draw_adjusted_image(img, cm);
 
 		}
+
+
+		public static Bitmap Whitenize(Bitmap src, int threshold)
+		{
+			ColorSubstitutionFilter f = new ColorSubstitutionFilter();
+			f.ThresholdValue = threshold;
+			f.SourceColor = Color.White;
+			f.NewColor = Color.Transparent;
+			return ColorSubstitution(src, f);
+		}
+
+		private static Bitmap ColorSubstitution(Bitmap sourceBitmap, ColorSubstitutionFilter filterData)
+		{
+			Bitmap resultBitmap = new Bitmap(sourceBitmap.Width, sourceBitmap.Height, PixelFormat.Format32bppArgb);
+
+			BitmapData sourceData = sourceBitmap.LockBits(new Rectangle(0, 0, sourceBitmap.Width, sourceBitmap.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+			BitmapData resultData = resultBitmap.LockBits(new Rectangle(0, 0, resultBitmap.Width, resultBitmap.Height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+
+			byte[] resultBuffer = new byte[resultData.Stride * resultData.Height];
+			Marshal.Copy(sourceData.Scan0, resultBuffer, 0, resultBuffer.Length);
+
+			sourceBitmap.UnlockBits(sourceData);
+
+			byte sourceRed = 0, sourceGreen = 0, sourceBlue = 0, sourceAlpha = 0;
+			int resultRed = 0, resultGreen = 0, resultBlue = 0;
+
+			byte newRedValue = filterData.NewColor.R;
+			byte newGreenValue = filterData.NewColor.G;
+			byte newBlueValue = filterData.NewColor.B;
+			byte newAlphaValue = filterData.NewColor.A;
+
+			byte redFilter = filterData.SourceColor.R;
+			byte greenFilter = filterData.SourceColor.G;
+			byte blueFilter = filterData.SourceColor.B;
+
+			byte minValue = 0;
+			byte maxValue = 255;
+
+			for (int k = 0; k < resultBuffer.Length; k += 4)
+			{
+				sourceAlpha = resultBuffer[k + 3];
+
+				if (sourceAlpha != 0)
+				{
+					sourceBlue = resultBuffer[k];
+					sourceGreen = resultBuffer[k + 1];
+					sourceRed = resultBuffer[k + 2];
+
+					if ((sourceBlue < blueFilter + filterData.ThresholdValue &&
+							sourceBlue > blueFilter - filterData.ThresholdValue) &&
+
+						(sourceGreen < greenFilter + filterData.ThresholdValue &&
+							sourceGreen > greenFilter - filterData.ThresholdValue) &&
+
+						(sourceRed < redFilter + filterData.ThresholdValue &&
+							sourceRed > redFilter - filterData.ThresholdValue))
+					{
+						resultBlue = blueFilter - sourceBlue + newBlueValue;
+
+						if (resultBlue > maxValue)
+						{ resultBlue = maxValue; }
+						else if (resultBlue < minValue)
+						{ resultBlue = minValue; }
+
+						resultGreen = greenFilter - sourceGreen + newGreenValue;
+
+						if (resultGreen > maxValue)
+						{ resultGreen = maxValue; }
+						else if (resultGreen < minValue)
+						{ resultGreen = minValue; }
+
+						resultRed = redFilter - sourceRed + newRedValue;
+
+						if (resultRed > maxValue)
+						{ resultRed = maxValue; }
+						else if (resultRed < minValue)
+						{ resultRed = minValue; }
+
+						resultBuffer[k] = (byte)resultBlue;
+						resultBuffer[k + 1] = (byte)resultGreen;
+						resultBuffer[k + 2] = (byte)resultRed;
+						resultBuffer[k + 3] = newAlphaValue;
+					}
+				}
+			}
+
+			Marshal.Copy(resultBuffer, 0, resultData.Scan0, resultBuffer.Length);
+			resultBitmap.UnlockBits(resultData);
+
+			return resultBitmap;
+		}
+
+		private static Bitmap Format32bppArgbCopy(Bitmap sourceBitmap)
+		{
+			Bitmap copyBitmap = new Bitmap(sourceBitmap.Width, sourceBitmap.Height, PixelFormat.Format32bppArgb);
+
+			using (Graphics graphicsObject = Graphics.FromImage(copyBitmap))
+			{
+				graphicsObject.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+				graphicsObject.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+				graphicsObject.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+				graphicsObject.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+
+				graphicsObject.DrawImage(sourceBitmap, new Rectangle(0, 0, sourceBitmap.Width, sourceBitmap.Height), new Rectangle(0, 0, sourceBitmap.Width, sourceBitmap.Height), GraphicsUnit.Pixel);
+			}
+
+			return copyBitmap;
+		}
+
+		private class ColorSubstitutionFilter
+		{
+			private int thresholdValue = 10;
+			public int ThresholdValue
+			{
+				get { return thresholdValue; }
+				set { thresholdValue = value; }
+			}
+
+			private Color sourceColor = Color.White;
+			public Color SourceColor
+			{
+				get { return sourceColor; }
+				set { sourceColor = value; }
+			}
+
+			private Color newColor = Color.White;
+			public Color NewColor
+			{
+				get { return newColor; }
+				set { newColor = value; }
+			}
+		}
+
+
+
 	}
 
 }

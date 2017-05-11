@@ -66,7 +66,7 @@ namespace LaserGRBL.RasterConverter
 			else
 				CBLaserOFF.SelectedIndex = 0;
 
-			IIMinPower.CurrentValue = IP.MinPower = 0;//(int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
+			IIMinPower.CurrentValue = IP.MinPower = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
 			IIMaxPower.CurrentValue = IP.MaxPower = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
 
 			IILinearFilling.Visible = LblLinearFilling.Visible = LblLinearFillingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Line2Line || IP.SelectedTool == ImageProcessor.Tool.Dithering || (IP.SelectedTool == ImageProcessor.Tool.Vectorize && (IP.FillingDirection != ImageProcessor.Direction.None)));

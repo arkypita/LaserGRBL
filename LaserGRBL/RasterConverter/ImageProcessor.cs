@@ -37,6 +37,7 @@ namespace LaserGRBL.RasterConverter
 		private int mGreen;
 		private int mBlue;
 		private int mContrast;
+		private int mWhitePoint;
 		private int mBrightness;
 		private int mThreshold;
 		private bool mUseThreshold;
@@ -351,6 +352,19 @@ namespace LaserGRBL.RasterConverter
 				if (value != mBrightness)
 				{
 					mBrightness = value;
+					Refresh();
+				}
+			}
+		}
+
+		public int WhiteClip
+		{
+			get { return mWhitePoint; }
+			set
+			{
+				if (value != mWhitePoint)
+				{
+					mWhitePoint = value;
 					Refresh();
 				}
 			}
@@ -726,10 +740,13 @@ namespace LaserGRBL.RasterConverter
 			{
 				using (Bitmap grayscale = ImageTransform.GrayScale(resized, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), IsGrayScale ? ImageTransform.Formula.SimpleAverage : Formula))
 				{
-					if (SelectedTool == Tool.Dithering)
-						return ImageTransform.DitherImage(grayscale, mDithering);
-					else
-						return ImageTransform.Threshold(grayscale, Threshold / 100.0F, UseThreshold);
+					using (Bitmap whiten = ImageTransform.Whitenize(grayscale, mWhitePoint))
+					{
+						if (SelectedTool == Tool.Dithering)
+							return ImageTransform.DitherImage(whiten, mDithering);
+						else
+							return ImageTransform.Threshold(whiten, Threshold / 100.0F, UseThreshold);
+					}
 				}
 			}
 		}

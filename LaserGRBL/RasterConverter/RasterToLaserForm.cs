@@ -191,6 +191,7 @@ namespace LaserGRBL.RasterConverter
 			Settings.SetObject("GrayScaleConversion.Parameters.Contrast", TbContrast.Value);
 			Settings.SetObject("GrayScaleConversion.Parameters.Threshold.Enabled", CbThreshold.Checked);
 			Settings.SetObject("GrayScaleConversion.Parameters.Threshold.Value", TbThreshold.Value);
+			Settings.SetObject("GrayScaleConversion.Parameters.WhiteClip", TBWhiteClip.Value);
 
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", IP.BorderSpeed);
 			Settings.SetObject("GrayScaleConversion.Gcode.Speed.Mark", IP.MarkSpeed);
@@ -245,8 +246,11 @@ namespace LaserGRBL.RasterConverter
 			TbContrast.Value = IP.Contrast = (int)Settings.GetObject("GrayScaleConversion.Parameters.Contrast", 100);
 			CbThreshold.Checked = IP.UseThreshold = (bool)Settings.GetObject("GrayScaleConversion.Parameters.Threshold.Enabled", false);
 			TbThreshold.Value = IP.Threshold = (int)Settings.GetObject("GrayScaleConversion.Parameters.Threshold.Value", 50);
+			TBWhiteClip.Value = IP.WhiteClip = (int)Settings.GetObject("GrayScaleConversion.Parameters.WhiteClip", 5);
 
 			CbDither.SelectedItem = (ImageTransform.DitheringMode)Settings.GetObject("GrayScaleConversion.DitheringOptions.DitheringMode", ImageTransform.DitheringMode.FloydSteinberg);
+
+			
 
 			if (RbLineToLineTracing.Checked && !supportPWM)
 				RbDithering.Checked = true;
@@ -598,6 +602,9 @@ namespace LaserGRBL.RasterConverter
 			UDFillingQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog((double)UDFillingQuality.Value);
 			//System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
 		}
+
+		private void TBWhiteClip_ValueChanged(object sender, EventArgs e)
+		{ if (IP != null) IP.WhiteClip = TBWhiteClip.Value; }
 
 	}
 }

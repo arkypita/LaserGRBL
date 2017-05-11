@@ -523,7 +523,11 @@ namespace LaserGRBL
 		{
 			Color C = I.GetPixel(X, Y);
 			int rv = (255 - C.R) * C.A / 255;
-			return rv * (max - min) / 255 + min; //scale to range
+
+			if (rv == 0)
+				return 0; //zero is always zero
+			else
+				return rv * (max - min) / 255 + min; //scale to range
 		}
 
 		public string formatnumber(double number)

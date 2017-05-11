@@ -83,6 +83,8 @@
 			this.CbThreshold = new System.Windows.Forms.CheckBox();
 			this.label28 = new System.Windows.Forms.Label();
 			this.TbThreshold = new LaserGRBL.UserControls.ColorSlider();
+			this.TBWhiteClip = new LaserGRBL.UserControls.ColorSlider();
+			this.label4 = new System.Windows.Forms.Label();
 			this.GbLineToLineOptions = new System.Windows.Forms.GroupBox();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
 			this.CbDirections = new System.Windows.Forms.ComboBox();
@@ -553,9 +555,11 @@
 			this.tableLayoutPanel2.Controls.Add(this.TBBlue, 1, 4);
 			this.tableLayoutPanel2.Controls.Add(this.TbContrast, 1, 6);
 			this.tableLayoutPanel2.Controls.Add(this.label3, 0, 6);
-			this.tableLayoutPanel2.Controls.Add(this.CbThreshold, 0, 7);
+			this.tableLayoutPanel2.Controls.Add(this.CbThreshold, 0, 8);
 			this.tableLayoutPanel2.Controls.Add(this.label28, 0, 0);
-			this.tableLayoutPanel2.Controls.Add(this.TbThreshold, 1, 7);
+			this.tableLayoutPanel2.Controls.Add(this.TbThreshold, 1, 8);
+			this.tableLayoutPanel2.Controls.Add(this.TBWhiteClip, 1, 7);
+			this.tableLayoutPanel2.Controls.Add(this.label4, 0, 7);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			// 
 			// CbResize
@@ -733,6 +737,28 @@
 			this.TbThreshold.ThumbSize = 8;
 			this.TbThreshold.ValueChanged += new System.EventHandler(this.TbThreshold_ValueChanged);
 			this.TbThreshold.DoubleClick += new System.EventHandler(this.OnThresholdDoubleClick);
+			// 
+			// TBWhiteClip
+			// 
+			resources.ApplyResources(this.TBWhiteClip, "TBWhiteClip");
+			this.TBWhiteClip.BackColor = System.Drawing.Color.Transparent;
+			this.TBWhiteClip.BarInnerColor = System.Drawing.Color.DimGray;
+			this.TBWhiteClip.BarOuterColor = System.Drawing.Color.Black;
+			this.TBWhiteClip.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+			this.TBWhiteClip.ElapsedInnerColor = System.Drawing.Color.White;
+			this.TBWhiteClip.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.TBWhiteClip.LargeChange = ((uint)(5u));
+			this.TBWhiteClip.Name = "TBWhiteClip";
+			this.TBWhiteClip.SmallChange = ((uint)(1u));
+			this.TBWhiteClip.ThumbRoundRectSize = new System.Drawing.Size(4, 4);
+			this.TBWhiteClip.ThumbSize = 8;
+			this.TBWhiteClip.Value = 5;
+			this.TBWhiteClip.ValueChanged += new System.EventHandler(this.TBWhiteClip_ValueChanged);
+			// 
+			// label4
+			// 
+			resources.ApplyResources(this.label4, "label4");
+			this.label4.Name = "label4";
 			// 
 			// GbLineToLineOptions
 			// 
@@ -1034,5 +1060,7 @@
 		private System.Windows.Forms.ComboBox CbDither;
 		private UserControls.ImageButton BtnQualityInfo;
 		private UserControls.ImageButton BtnFillingQualityInfo;
+		private UserControls.ColorSlider TBWhiteClip;
+		private System.Windows.Forms.Label label4;
 	}
 }
