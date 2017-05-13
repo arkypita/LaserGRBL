@@ -250,8 +250,6 @@ namespace LaserGRBL.RasterConverter
 
 			CbDither.SelectedItem = (ImageTransform.DitheringMode)Settings.GetObject("GrayScaleConversion.DitheringOptions.DitheringMode", ImageTransform.DitheringMode.FloydSteinberg);
 
-			
-
 			if (RbLineToLineTracing.Checked && !supportPWM)
 				RbDithering.Checked = true;
 		}
@@ -605,6 +603,12 @@ namespace LaserGRBL.RasterConverter
 
 		private void TBWhiteClip_ValueChanged(object sender, EventArgs e)
 		{ if (IP != null) IP.WhiteClip = TBWhiteClip.Value; }
+
+		private void TBWhiteClip_MouseDown(object sender, MouseEventArgs e)
+		{ if (IP != null) IP.Demo = true; }
+
+		private void TBWhiteClip_MouseUp(object sender, MouseEventArgs e)
+		{ if (IP != null) IP.Demo = false; }
 
 	}
 }

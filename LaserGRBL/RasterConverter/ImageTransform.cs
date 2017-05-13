@@ -258,12 +258,13 @@ namespace LaserGRBL.RasterConverter
 		}
 
 
-		public static Bitmap Whitenize(Bitmap src, int threshold)
+		public static Bitmap Whitenize(Bitmap src, int threshold, bool demo)
 		{
 			ColorSubstitutionFilter f = new ColorSubstitutionFilter();
 			f.ThresholdValue = threshold;
 			f.SourceColor = Color.White;
-			f.NewColor = Color.Transparent;
+			
+			f.NewColor = demo ? Color.LightPink : Color.Transparent;
 			return ColorSubstitution(src, f);
 		}
 

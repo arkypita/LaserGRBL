@@ -28,15 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // ColorSlider
-            // 
-            this.Size = new System.Drawing.Size(200, 30);            
-            this.ResumeLayout(false);
+			this.components = new System.ComponentModel.Container();
+			this.TT = new System.Windows.Forms.ToolTip(this.components);
+			this.SuspendLayout();
+			// 
+			// ColorSlider
+			// 
+			this.Size = new System.Drawing.Size(200, 30);
+			this.ResumeLayout(false);
 
         }
 
         #endregion
+
+		private System.Windows.Forms.ToolTip TT;
     }
 }

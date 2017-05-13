@@ -183,7 +183,7 @@ namespace LaserGRBL.UserControls
                 if (value >= barMinimum & value <= barMaximum)
                 {
                     trackerValue = value;
-                    if (ValueChanged != null) ValueChanged(this, new EventArgs());
+					RiseChanged();
                     Invalidate();
                 }
                 else throw new ArgumentOutOfRangeException("Value is outside appropriate range (min, max)");
@@ -211,7 +211,7 @@ namespace LaserGRBL.UserControls
                     if (trackerValue < barMinimum)
                     {
                         trackerValue = barMinimum;
-                        if (ValueChanged != null) ValueChanged(this, new EventArgs());
+						RiseChanged();
                     }
                     Invalidate();
                 }
@@ -240,7 +240,7 @@ namespace LaserGRBL.UserControls
                     if (trackerValue > barMaximum)
                     {
                         trackerValue = barMaximum;
-                        if (ValueChanged != null) ValueChanged(this, new EventArgs());
+						RiseChanged();
                     }
                     Invalidate();
                 }
@@ -832,7 +832,7 @@ namespace LaserGRBL.UserControls
             {
                 Capture = true;
                 if (Scroll != null) Scroll(this, new ScrollEventArgs(ScrollEventType.ThumbTrack, trackerValue));
-                if (ValueChanged != null) ValueChanged(this, new EventArgs());
+				RiseChanged();
                 OnMouseMove(e);
             }
         }
@@ -872,7 +872,7 @@ namespace LaserGRBL.UserControls
                 }
 
                 if (Scroll != null) Scroll(this, new ScrollEventArgs(set, trackerValue));
-                if (ValueChanged != null) ValueChanged(this, new EventArgs());
+				RiseChanged();
             }
             Invalidate();
         }
@@ -887,7 +887,7 @@ namespace LaserGRBL.UserControls
             Capture = false;
             mouseInThumbRegion = IsPointInRect(e.Location, thumbRect);
             if (Scroll != null) Scroll(this, new ScrollEventArgs(ScrollEventType.EndScroll, trackerValue));
-            if (ValueChanged != null) ValueChanged(this, new EventArgs());
+			RiseChanged();
             Invalidate();
         }
 
@@ -1067,5 +1067,17 @@ namespace LaserGRBL.UserControls
         }
 
         #endregion
+
+
+		private void RiseChanged()
+		{
+			string tooltip = Value.ToString();
+			if (tooltip != TT.GetToolTip(this))
+				TT.SetToolTip(this, tooltip);
+
+
+			if (ValueChanged != null)
+				ValueChanged(this, new EventArgs());
+		}
     }
 }

@@ -55,6 +55,7 @@ namespace LaserGRBL.RasterConverter
 		private Direction mFillingDirection;
 		private ImageTransform.DitheringMode mDithering;
 		private double mFillingQuality;
+		public bool mDemo;
 
 		//option for gcode generator
 		public Size TargetSize;
@@ -567,6 +568,19 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
+		public bool Demo	
+		{
+			get { return mDemo; }
+			set
+			{
+				if (value != mDemo)
+				{
+					mDemo = value;
+					Refresh();
+				}
+			}
+		}
+
 		private void Refresh()
 		{
 			if (mSuspended)
@@ -623,7 +637,7 @@ namespace LaserGRBL.RasterConverter
 		{
 			try
 			{
-				using (Bitmap bmp = ProduceBitmap(mResized, mResized.Size))
+				using (Bitmap bmp = ProduceBitmap(mResized, mResized.Size, mDemo))
 				{
 					if (!MustExitTH)
 					{
@@ -718,29 +732,29 @@ namespace LaserGRBL.RasterConverter
 		
 		private Bitmap CreateTarget(Size size)
 		{
-			return ProduceBitmap(mOriginal, size); //non usare using perché poi viene assegnato al postprocessing 
+			return ProduceBitmap(mOriginal, size, false); //non usare using perché poi viene assegnato al postprocessing 
 		}
 
-		private Bitmap ProduceBitmap(Image img, Size size)
+		private Bitmap ProduceBitmap(Image img, Size size, bool demo)
 		{
 			if (SelectedTool == Tool.Vectorize && UseDownSampling && DownSampling > 1) //if downsampling
 			{
 				using (Image downsampled = ImageTransform.ResizeImage(img, new Size((int)(size.Width * 1 / DownSampling), (int)(size.Height * 1 / DownSampling)), false, InterpolationMode.HighQualityBicubic))
-					return ProduceBitmap2(downsampled, ref size);
+					return ProduceBitmap2(downsampled, ref size, demo);
 			}
 			else
 			{
-				return ProduceBitmap2(img, ref size);
+				return ProduceBitmap2(img, ref size, demo);
 			}
 		}
 
-		private Bitmap ProduceBitmap2(Image img, ref Size size)
+		private Bitmap ProduceBitmap2(Image img, ref Size size, bool demo)
 		{
 			using (Bitmap resized = ImageTransform.ResizeImage(img, size, false, Interpolation))
 			{
 				using (Bitmap grayscale = ImageTransform.GrayScale(resized, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), IsGrayScale ? ImageTransform.Formula.SimpleAverage : Formula))
 				{
-					using (Bitmap whiten = ImageTransform.Whitenize(grayscale, mWhitePoint))
+					using (Bitmap whiten = ImageTransform.Whitenize(grayscale, mWhitePoint, demo))
 					{
 						if (SelectedTool == Tool.Dithering)
 							return ImageTransform.DitherImage(whiten, mDithering);
