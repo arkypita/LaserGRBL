@@ -78,6 +78,10 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.IIOffsetX = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IIOffsetY = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IISizeH = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IISizeW = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
@@ -86,33 +90,29 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblBorderTracing = new System.Windows.Forms.Label();
 			this.LblBorderTracingmm = new System.Windows.Forms.Label();
+			this.IIBorderTracing = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label20 = new System.Windows.Forms.Label();
 			this.label19 = new System.Windows.Forms.Label();
+			this.IILinearFilling = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IITravelSpeed = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.LblLinearFillingmm = new System.Windows.Forms.Label();
 			this.LblLinearFilling = new System.Windows.Forms.Label();
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
 			this.label26 = new System.Windows.Forms.Label();
 			this.LblSmin = new System.Windows.Forms.Label();
+			this.IIMinPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.LblSmax = new System.Windows.Forms.Label();
+			this.IIMaxPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label18 = new System.Windows.Forms.Label();
+			this.BtnOnOffInfo = new LaserGRBL.UserControls.ImageButton();
 			this.CBLaserON = new System.Windows.Forms.ComboBox();
 			this.CBLaserOFF = new System.Windows.Forms.ComboBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
-			this.IIOffsetX = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IIOffsetY = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IISizeH = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IISizeW = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IIBorderTracing = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IILinearFilling = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IITravelSpeed = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
-			this.IIMinPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IIMaxPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.BtnOnOffInfo = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -131,6 +131,7 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel9.Controls.Add(this.groupBox5, 0, 1);
 			this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel1, 0, 3);
 			this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+			this.TT.SetToolTip(this.tableLayoutPanel9, resources.GetString("tableLayoutPanel9.ToolTip"));
 			// 
 			// groupBox2
 			// 
@@ -138,6 +139,7 @@ namespace LaserGRBL.RasterConverter
 			this.groupBox2.Controls.Add(this.tableLayoutPanel3);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.TabStop = false;
+			this.TT.SetToolTip(this.groupBox2, resources.GetString("groupBox2.ToolTip"));
 			// 
 			// tableLayoutPanel3
 			// 
@@ -153,36 +155,91 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel3.Controls.Add(this.label7, 3, 0);
 			this.tableLayoutPanel3.Controls.Add(this.label11, 3, 1);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+			this.TT.SetToolTip(this.tableLayoutPanel3, resources.GetString("tableLayoutPanel3.ToolTip"));
 			// 
 			// label9
 			// 
 			resources.ApplyResources(this.label9, "label9");
 			this.label9.Name = "label9";
+			this.TT.SetToolTip(this.label9, resources.GetString("label9.ToolTip"));
 			// 
 			// label4
 			// 
 			resources.ApplyResources(this.label4, "label4");
 			this.label4.Name = "label4";
+			this.TT.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
+			// 
+			// IIOffsetX
+			// 
+			resources.ApplyResources(this.IIOffsetX, "IIOffsetX");
+			this.IIOffsetX.ForcedText = null;
+			this.IIOffsetX.ForceMinMax = false;
+			this.IIOffsetX.MaxValue = 1000;
+			this.IIOffsetX.MinValue = 0;
+			this.IIOffsetX.Name = "IIOffsetX";
+			this.IIOffsetX.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.TT.SetToolTip(this.IIOffsetX, resources.GetString("IIOffsetX.ToolTip"));
+			this.IIOffsetX.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIOffsetXYCurrentValueChanged);
+			// 
+			// IIOffsetY
+			// 
+			resources.ApplyResources(this.IIOffsetY, "IIOffsetY");
+			this.IIOffsetY.ForcedText = null;
+			this.IIOffsetY.ForceMinMax = false;
+			this.IIOffsetY.MaxValue = 1000;
+			this.IIOffsetY.MinValue = 0;
+			this.IIOffsetY.Name = "IIOffsetY";
+			this.IIOffsetY.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.TT.SetToolTip(this.IIOffsetY, resources.GetString("IIOffsetY.ToolTip"));
+			this.IIOffsetY.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIOffsetXYCurrentValueChanged);
+			// 
+			// IISizeH
+			// 
+			resources.ApplyResources(this.IISizeH, "IISizeH");
+			this.IISizeH.ForcedText = null;
+			this.IISizeH.ForceMinMax = false;
+			this.IISizeH.MaxValue = 1000;
+			this.IISizeH.MinValue = 10;
+			this.IISizeH.Name = "IISizeH";
+			this.IISizeH.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.TT.SetToolTip(this.IISizeH, resources.GetString("IISizeH.ToolTip"));
+			this.IISizeH.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeH_CurrentValueChanged);
+			// 
+			// IISizeW
+			// 
+			resources.ApplyResources(this.IISizeW, "IISizeW");
+			this.IISizeW.ForcedText = null;
+			this.IISizeW.ForceMinMax = false;
+			this.IISizeW.MaxValue = 1000;
+			this.IISizeW.MinValue = 10;
+			this.IISizeW.Name = "IISizeW";
+			this.IISizeW.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.TT.SetToolTip(this.IISizeW, resources.GetString("IISizeW.ToolTip"));
+			this.IISizeW.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeW_CurrentValueChanged);
 			// 
 			// label6
 			// 
 			resources.ApplyResources(this.label6, "label6");
 			this.label6.Name = "label6";
+			this.TT.SetToolTip(this.label6, resources.GetString("label6.ToolTip"));
 			// 
 			// label10
 			// 
 			resources.ApplyResources(this.label10, "label10");
 			this.label10.Name = "label10";
+			this.TT.SetToolTip(this.label10, resources.GetString("label10.ToolTip"));
 			// 
 			// label7
 			// 
 			resources.ApplyResources(this.label7, "label7");
 			this.label7.Name = "label7";
+			this.TT.SetToolTip(this.label7, resources.GetString("label7.ToolTip"));
 			// 
 			// label11
 			// 
 			resources.ApplyResources(this.label11, "label11");
 			this.label11.Name = "label11";
+			this.TT.SetToolTip(this.label11, resources.GetString("label11.ToolTip"));
 			// 
 			// groupBox3
 			// 
@@ -190,6 +247,7 @@ namespace LaserGRBL.RasterConverter
 			this.groupBox3.Controls.Add(this.tableLayoutPanel6);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.TabStop = false;
+			this.TT.SetToolTip(this.groupBox3, resources.GetString("groupBox3.ToolTip"));
 			// 
 			// tableLayoutPanel6
 			// 
@@ -204,36 +262,82 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel6.Controls.Add(this.LblLinearFillingmm, 2, 1);
 			this.tableLayoutPanel6.Controls.Add(this.LblLinearFilling, 0, 1);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+			this.TT.SetToolTip(this.tableLayoutPanel6, resources.GetString("tableLayoutPanel6.ToolTip"));
 			// 
 			// LblBorderTracing
 			// 
 			resources.ApplyResources(this.LblBorderTracing, "LblBorderTracing");
 			this.LblBorderTracing.Name = "LblBorderTracing";
+			this.TT.SetToolTip(this.LblBorderTracing, resources.GetString("LblBorderTracing.ToolTip"));
 			// 
 			// LblBorderTracingmm
 			// 
 			resources.ApplyResources(this.LblBorderTracingmm, "LblBorderTracingmm");
 			this.LblBorderTracingmm.Name = "LblBorderTracingmm";
+			this.TT.SetToolTip(this.LblBorderTracingmm, resources.GetString("LblBorderTracingmm.ToolTip"));
+			// 
+			// IIBorderTracing
+			// 
+			resources.ApplyResources(this.IIBorderTracing, "IIBorderTracing");
+			this.IIBorderTracing.CurrentValue = 1000;
+			this.IIBorderTracing.ForcedText = null;
+			this.IIBorderTracing.ForceMinMax = false;
+			this.IIBorderTracing.MaxValue = 4000;
+			this.IIBorderTracing.MinValue = 1;
+			this.IIBorderTracing.Name = "IIBorderTracing";
+			this.IIBorderTracing.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.TT.SetToolTip(this.IIBorderTracing, resources.GetString("IIBorderTracing.ToolTip"));
+			this.IIBorderTracing.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIBorderTracingCurrentValueChanged);
 			// 
 			// label20
 			// 
 			resources.ApplyResources(this.label20, "label20");
 			this.label20.Name = "label20";
+			this.TT.SetToolTip(this.label20, resources.GetString("label20.ToolTip"));
 			// 
 			// label19
 			// 
 			resources.ApplyResources(this.label19, "label19");
 			this.label19.Name = "label19";
+			this.TT.SetToolTip(this.label19, resources.GetString("label19.ToolTip"));
+			// 
+			// IILinearFilling
+			// 
+			resources.ApplyResources(this.IILinearFilling, "IILinearFilling");
+			this.IILinearFilling.CurrentValue = 1000;
+			this.IILinearFilling.ForcedText = null;
+			this.IILinearFilling.ForceMinMax = false;
+			this.IILinearFilling.MaxValue = 4000;
+			this.IILinearFilling.MinValue = 1;
+			this.IILinearFilling.Name = "IILinearFilling";
+			this.IILinearFilling.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.TT.SetToolTip(this.IILinearFilling, resources.GetString("IILinearFilling.ToolTip"));
+			this.IILinearFilling.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMarkSpeedCurrentValueChanged);
+			// 
+			// IITravelSpeed
+			// 
+			resources.ApplyResources(this.IITravelSpeed, "IITravelSpeed");
+			this.IITravelSpeed.CurrentValue = 4000;
+			this.IITravelSpeed.ForcedText = null;
+			this.IITravelSpeed.ForceMinMax = false;
+			this.IITravelSpeed.MaxValue = 4000;
+			this.IITravelSpeed.MinValue = 1;
+			this.IITravelSpeed.Name = "IITravelSpeed";
+			this.IITravelSpeed.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.TT.SetToolTip(this.IITravelSpeed, resources.GetString("IITravelSpeed.ToolTip"));
+			this.IITravelSpeed.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IITravelSpeedCurrentValueChanged);
 			// 
 			// LblLinearFillingmm
 			// 
 			resources.ApplyResources(this.LblLinearFillingmm, "LblLinearFillingmm");
 			this.LblLinearFillingmm.Name = "LblLinearFillingmm";
+			this.TT.SetToolTip(this.LblLinearFillingmm, resources.GetString("LblLinearFillingmm.ToolTip"));
 			// 
 			// LblLinearFilling
 			// 
 			resources.ApplyResources(this.LblLinearFilling, "LblLinearFilling");
 			this.LblLinearFilling.Name = "LblLinearFilling";
+			this.TT.SetToolTip(this.LblLinearFilling, resources.GetString("LblLinearFilling.ToolTip"));
 			// 
 			// groupBox5
 			// 
@@ -241,6 +345,7 @@ namespace LaserGRBL.RasterConverter
 			this.groupBox5.Controls.Add(this.tableLayoutPanel7);
 			this.groupBox5.Name = "groupBox5";
 			this.groupBox5.TabStop = false;
+			this.TT.SetToolTip(this.groupBox5, resources.GetString("groupBox5.ToolTip"));
 			// 
 			// tableLayoutPanel7
 			// 
@@ -256,159 +361,12 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel7.Controls.Add(this.CBLaserON, 1, 0);
 			this.tableLayoutPanel7.Controls.Add(this.CBLaserOFF, 3, 0);
 			this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-			// 
-			// label26
-			// 
-			resources.ApplyResources(this.label26, "label26");
-			this.label26.Name = "label26";
-			// 
-			// LblSmin
-			// 
-			resources.ApplyResources(this.LblSmin, "LblSmin");
-			this.LblSmin.Name = "LblSmin";
-			// 
-			// LblSmax
-			// 
-			resources.ApplyResources(this.LblSmax, "LblSmax");
-			this.LblSmax.Name = "LblSmax";
-			// 
-			// label18
-			// 
-			resources.ApplyResources(this.label18, "label18");
-			this.label18.Name = "label18";
-			// 
-			// CBLaserON
-			// 
-			this.CBLaserON.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CBLaserON.FormattingEnabled = true;
-			this.CBLaserON.Items.AddRange(new object[] {
-            resources.GetString("CBLaserON.Items"),
-            resources.GetString("CBLaserON.Items1")});
-			resources.ApplyResources(this.CBLaserON, "CBLaserON");
-			this.CBLaserON.Name = "CBLaserON";
-			this.CBLaserON.SelectedIndexChanged += new System.EventHandler(this.CBLaserON_SelectedIndexChanged);
-			// 
-			// CBLaserOFF
-			// 
-			this.CBLaserOFF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CBLaserOFF.FormattingEnabled = true;
-			this.CBLaserOFF.Items.AddRange(new object[] {
-            resources.GetString("CBLaserOFF.Items")});
-			resources.ApplyResources(this.CBLaserOFF, "CBLaserOFF");
-			this.CBLaserOFF.Name = "CBLaserOFF";
-			this.CBLaserOFF.SelectedIndexChanged += new System.EventHandler(this.CBLaserOFF_SelectedIndexChanged);
-			// 
-			// tableLayoutPanel1
-			// 
-			resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-			this.tableLayoutPanel1.Controls.Add(this.BtnCancel, 1, 0);
-			this.tableLayoutPanel1.Controls.Add(this.BtnCreate, 2, 0);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			// 
-			// BtnCancel
-			// 
-			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			resources.ApplyResources(this.BtnCancel, "BtnCancel");
-			this.BtnCancel.Name = "BtnCancel";
-			this.BtnCancel.UseVisualStyleBackColor = true;
-			// 
-			// BtnCreate
-			// 
-			this.BtnCreate.DialogResult = System.Windows.Forms.DialogResult.OK;
-			resources.ApplyResources(this.BtnCreate, "BtnCreate");
-			this.BtnCreate.Name = "BtnCreate";
-			this.BtnCreate.UseVisualStyleBackColor = true;
-			// 
-			// TT
-			// 
-			this.TT.AutoPopDelay = 10000;
-			this.TT.InitialDelay = 500;
-			this.TT.ReshowDelay = 100;
-			// 
-			// IIOffsetX
-			// 
-			resources.ApplyResources(this.IIOffsetX, "IIOffsetX");
-			this.IIOffsetX.ForcedText = null;
-			this.IIOffsetX.ForceMinMax = false;
-			this.IIOffsetX.MaxValue = 1000;
-			this.IIOffsetX.MinValue = 0;
-			this.IIOffsetX.Name = "IIOffsetX";
-			this.IIOffsetX.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IIOffsetX.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIOffsetXYCurrentValueChanged);
-			// 
-			// IIOffsetY
-			// 
-			this.IIOffsetY.ForcedText = null;
-			this.IIOffsetY.ForceMinMax = false;
-			resources.ApplyResources(this.IIOffsetY, "IIOffsetY");
-			this.IIOffsetY.MaxValue = 1000;
-			this.IIOffsetY.MinValue = 0;
-			this.IIOffsetY.Name = "IIOffsetY";
-			this.IIOffsetY.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IIOffsetY.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIOffsetXYCurrentValueChanged);
-			// 
-			// IISizeH
-			// 
-			this.IISizeH.ForcedText = null;
-			this.IISizeH.ForceMinMax = false;
-			resources.ApplyResources(this.IISizeH, "IISizeH");
-			this.IISizeH.MaxValue = 1000;
-			this.IISizeH.MinValue = 10;
-			this.IISizeH.Name = "IISizeH";
-			this.IISizeH.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IISizeH.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeH_CurrentValueChanged);
-			// 
-			// IISizeW
-			// 
-			this.IISizeW.ForcedText = null;
-			this.IISizeW.ForceMinMax = false;
-			resources.ApplyResources(this.IISizeW, "IISizeW");
-			this.IISizeW.MaxValue = 1000;
-			this.IISizeW.MinValue = 10;
-			this.IISizeW.Name = "IISizeW";
-			this.IISizeW.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IISizeW.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeW_CurrentValueChanged);
-			// 
-			// IIBorderTracing
-			// 
-			resources.ApplyResources(this.IIBorderTracing, "IIBorderTracing");
-			this.IIBorderTracing.CurrentValue = 1000;
-			this.IIBorderTracing.ForcedText = null;
-			this.IIBorderTracing.ForceMinMax = false;
-			this.IIBorderTracing.MaxValue = 4000;
-			this.IIBorderTracing.MinValue = 1;
-			this.IIBorderTracing.Name = "IIBorderTracing";
-			this.IIBorderTracing.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IIBorderTracing.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIBorderTracingCurrentValueChanged);
-			// 
-			// IILinearFilling
-			// 
-			resources.ApplyResources(this.IILinearFilling, "IILinearFilling");
-			this.IILinearFilling.CurrentValue = 1000;
-			this.IILinearFilling.ForcedText = null;
-			this.IILinearFilling.ForceMinMax = false;
-			this.IILinearFilling.MaxValue = 4000;
-			this.IILinearFilling.MinValue = 1;
-			this.IILinearFilling.Name = "IILinearFilling";
-			this.IILinearFilling.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IILinearFilling.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMarkSpeedCurrentValueChanged);
-			// 
-			// IITravelSpeed
-			// 
-			resources.ApplyResources(this.IITravelSpeed, "IITravelSpeed");
-			this.IITravelSpeed.CurrentValue = 4000;
-			this.IITravelSpeed.ForcedText = null;
-			this.IITravelSpeed.ForceMinMax = false;
-			this.IITravelSpeed.MaxValue = 4000;
-			this.IITravelSpeed.MinValue = 1;
-			this.IITravelSpeed.Name = "IITravelSpeed";
-			this.IITravelSpeed.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IITravelSpeed.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IITravelSpeedCurrentValueChanged);
+			this.TT.SetToolTip(this.tableLayoutPanel7, resources.GetString("tableLayoutPanel7.ToolTip"));
 			// 
 			// BtnModulationInfo
 			// 
-			this.BtnModulationInfo.AltImage = null;
 			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
+			this.BtnModulationInfo.AltImage = null;
 			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
@@ -417,6 +375,18 @@ namespace LaserGRBL.RasterConverter
 			this.TT.SetToolTip(this.BtnModulationInfo, resources.GetString("BtnModulationInfo.ToolTip"));
 			this.BtnModulationInfo.UseAltImage = false;
 			this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
+			// 
+			// label26
+			// 
+			resources.ApplyResources(this.label26, "label26");
+			this.label26.Name = "label26";
+			this.TT.SetToolTip(this.label26, resources.GetString("label26.ToolTip"));
+			// 
+			// LblSmin
+			// 
+			resources.ApplyResources(this.LblSmin, "LblSmin");
+			this.LblSmin.Name = "LblSmin";
+			this.TT.SetToolTip(this.LblSmin, resources.GetString("LblSmin.ToolTip"));
 			// 
 			// IIMinPower
 			// 
@@ -427,7 +397,14 @@ namespace LaserGRBL.RasterConverter
 			this.IIMinPower.MinValue = 0;
 			this.IIMinPower.Name = "IIMinPower";
 			this.IIMinPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.TT.SetToolTip(this.IIMinPower, resources.GetString("IIMinPower.ToolTip"));
 			this.IIMinPower.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMinPowerCurrentValueChanged);
+			// 
+			// LblSmax
+			// 
+			resources.ApplyResources(this.LblSmax, "LblSmax");
+			this.LblSmax.Name = "LblSmax";
+			this.TT.SetToolTip(this.LblSmax, resources.GetString("LblSmax.ToolTip"));
 			// 
 			// IIMaxPower
 			// 
@@ -439,12 +416,19 @@ namespace LaserGRBL.RasterConverter
 			this.IIMaxPower.MinValue = 1;
 			this.IIMaxPower.Name = "IIMaxPower";
 			this.IIMaxPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.TT.SetToolTip(this.IIMaxPower, resources.GetString("IIMaxPower.ToolTip"));
 			this.IIMaxPower.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMaxPowerCurrentValueChanged);
+			// 
+			// label18
+			// 
+			resources.ApplyResources(this.label18, "label18");
+			this.label18.Name = "label18";
+			this.TT.SetToolTip(this.label18, resources.GetString("label18.ToolTip"));
 			// 
 			// BtnOnOffInfo
 			// 
-			this.BtnOnOffInfo.AltImage = null;
 			resources.ApplyResources(this.BtnOnOffInfo, "BtnOnOffInfo");
+			this.BtnOnOffInfo.AltImage = null;
 			this.BtnOnOffInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnOnOffInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnOnOffInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnOnOffInfo.Image")));
@@ -454,6 +438,59 @@ namespace LaserGRBL.RasterConverter
 			this.BtnOnOffInfo.UseAltImage = false;
 			this.BtnOnOffInfo.Click += new System.EventHandler(this.BtnOnOffInfo_Click);
 			// 
+			// CBLaserON
+			// 
+			resources.ApplyResources(this.CBLaserON, "CBLaserON");
+			this.CBLaserON.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CBLaserON.FormattingEnabled = true;
+			this.CBLaserON.Items.AddRange(new object[] {
+            resources.GetString("CBLaserON.Items"),
+            resources.GetString("CBLaserON.Items1")});
+			this.CBLaserON.Name = "CBLaserON";
+			this.TT.SetToolTip(this.CBLaserON, resources.GetString("CBLaserON.ToolTip"));
+			this.CBLaserON.SelectedIndexChanged += new System.EventHandler(this.CBLaserON_SelectedIndexChanged);
+			// 
+			// CBLaserOFF
+			// 
+			resources.ApplyResources(this.CBLaserOFF, "CBLaserOFF");
+			this.CBLaserOFF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CBLaserOFF.FormattingEnabled = true;
+			this.CBLaserOFF.Items.AddRange(new object[] {
+            resources.GetString("CBLaserOFF.Items")});
+			this.CBLaserOFF.Name = "CBLaserOFF";
+			this.TT.SetToolTip(this.CBLaserOFF, resources.GetString("CBLaserOFF.ToolTip"));
+			this.CBLaserOFF.SelectedIndexChanged += new System.EventHandler(this.CBLaserOFF_SelectedIndexChanged);
+			// 
+			// tableLayoutPanel1
+			// 
+			resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+			this.tableLayoutPanel1.Controls.Add(this.BtnCancel, 1, 0);
+			this.tableLayoutPanel1.Controls.Add(this.BtnCreate, 2, 0);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.TT.SetToolTip(this.tableLayoutPanel1, resources.GetString("tableLayoutPanel1.ToolTip"));
+			// 
+			// BtnCancel
+			// 
+			resources.ApplyResources(this.BtnCancel, "BtnCancel");
+			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.BtnCancel.Name = "BtnCancel";
+			this.TT.SetToolTip(this.BtnCancel, resources.GetString("BtnCancel.ToolTip"));
+			this.BtnCancel.UseVisualStyleBackColor = true;
+			// 
+			// BtnCreate
+			// 
+			resources.ApplyResources(this.BtnCreate, "BtnCreate");
+			this.BtnCreate.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.BtnCreate.Name = "BtnCreate";
+			this.TT.SetToolTip(this.BtnCreate, resources.GetString("BtnCreate.ToolTip"));
+			this.BtnCreate.UseVisualStyleBackColor = true;
+			// 
+			// TT
+			// 
+			this.TT.AutoPopDelay = 10000;
+			this.TT.InitialDelay = 500;
+			this.TT.ReshowDelay = 100;
+			// 
 			// ConvertSizeAndOptionForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -461,6 +498,7 @@ namespace LaserGRBL.RasterConverter
 			this.Controls.Add(this.tableLayoutPanel9);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "ConvertSizeAndOptionForm";
+			this.TT.SetToolTip(this, resources.GetString("$this.ToolTip"));
 			this.tableLayoutPanel9.ResumeLayout(false);
 			this.tableLayoutPanel9.PerformLayout();
 			this.groupBox2.ResumeLayout(false);

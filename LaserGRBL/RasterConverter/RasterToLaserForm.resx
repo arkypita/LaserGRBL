@@ -132,7 +132,7 @@
     <value>Left</value>
   </data>
   <data name="&gt;&gt;TbContrast.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -286,7 +286,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="&gt;&gt;BtFlipV.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="CbDownSample.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
@@ -361,7 +361,7 @@
     <value>201, 31</value>
   </data>
   <data name="&gt;&gt;TBWhiteClip.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="TLP.Size" type="System.Drawing.Size, System.Drawing">
     <value>234, 97</value>
@@ -475,7 +475,7 @@
     <value>Control resizing mode (Smooth or Hard edges)</value>
   </data>
   <data name="&gt;&gt;BtnRevert.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>RasterToLaserForm</value>
@@ -636,7 +636,7 @@
     <value>Select color conversion formula</value>
   </data>
   <data name="&gt;&gt;BtFlipH.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -720,7 +720,7 @@
     <value />
   </data>
   <data name="&gt;&gt;TbBright.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="TpOriginal.Text" xml:space="preserve">
     <value>Original</value>
@@ -879,7 +879,7 @@
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;BtRotateCW.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="RbVectorize.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1101,7 +1101,7 @@
     <value>Show preview</value>
   </data>
   <data name="&gt;&gt;TBGreen.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="TbContrast.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -1200,7 +1200,7 @@
     <value>TpPreview</value>
   </data>
   <data name="&gt;&gt;TBRed.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1458,7 +1458,7 @@
     <value>LblGrayscale</value>
   </data>
   <data name="&gt;&gt;TbThreshold.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label28.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1482,7 +1482,7 @@
     <value>CenterScreen</value>
   </data>
   <data name="&gt;&gt;BtnCrop.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="RbDithering.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1647,7 +1647,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;WB.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.WaitingProgressBar, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.WaitingProgressBar, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="UDQuality.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1729,9 +1729,6 @@
   </data>
   <data name="CbLinePreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 17</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="tableLayoutPanel2.ToolTip" xml:space="preserve">
     <value />
@@ -1893,7 +1890,7 @@
     <value>14</value>
   </data>
   <data name="&gt;&gt;BtRotateCCW.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;LblRed.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2159,7 +2156,7 @@
     <value>4</value>
   </data>
   <data name="&gt;&gt;BtnFillingQualityInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="TbContrast.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 22</value>
@@ -2627,7 +2624,7 @@
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;BtnQualityInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -2682,7 +2679,7 @@
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TBBlue.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.4.29980, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtFlipH.ZOrder" xml:space="preserve">
     <value>1</value>

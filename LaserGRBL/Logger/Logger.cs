@@ -79,8 +79,8 @@ namespace LaserGRBL
 			catch { }
 
 
-
-			LogMultiLine("Program", "------------ PROGRAM START ------------");
+			Version current = typeof(GitHub).Assembly.GetName().Version;
+			LogMultiLine("Program", String.Format("------- LaserGRBL {0} START -------", "v" + current.ToString(3)));
 		}
 
 		internal static void Stop()

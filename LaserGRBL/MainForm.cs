@@ -352,5 +352,10 @@ namespace LaserGRBL
 		{
 			openSessionLogToolStripMenuItem.Enabled = System.IO.File.Exists("sessionlog.txt");
 		}
+
+		private void MNFrench_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("fr"));
+		}
 	}
 }
