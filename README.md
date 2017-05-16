@@ -69,10 +69,14 @@ LaserGRBL is written in C# for .NET Framework 3.5 (or higher) and can be compile
 
 LaserGRBL is free software, released under the [GPLv3 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
-### Credits
+### Credits and Contribution
 
 LaserGRBL contains some code from:
 - [ColorSlider](https://www.codeproject.com/articles/17395/owner-drawn-trackbar-slider) - Copyright Michal Brylka
 - [CsPotrace](https://drawing3d.de/Downloads.aspx) - Copyright Peter Selinger, port by Wolfgang Nagl
 - [Bezier2Biarc](https://github.com/domoszlai/bezier2biarc) - Copyright Laszlo
 - [ZipStorer](https://github.com/jaime-olivares/zipstorer) - Copyright Jaime Olivares
+
+Thanks to:
+- Fernando Luna, for spanish translation
+- Olivier Salvador, for french translation
