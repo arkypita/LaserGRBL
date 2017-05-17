@@ -37,6 +37,7 @@
 			this.TxtNewV = new System.Windows.Forms.Label();
 			this.PB = new System.Windows.Forms.ProgressBar();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.BtnWebsite = new System.Windows.Forms.Button();
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnUpdate = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -58,7 +59,7 @@
 			this.tableLayoutPanel1.RowCount = 2;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(311, 136);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(329, 136);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// tableLayoutPanel2
@@ -82,7 +83,7 @@
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(305, 91);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(323, 91);
 			this.tableLayoutPanel2.TabIndex = 0;
 			// 
 			// LblCurrentVersion
@@ -103,7 +104,7 @@
 			this.TxtHeader.Location = new System.Drawing.Point(3, 3);
 			this.TxtHeader.Margin = new System.Windows.Forms.Padding(3);
 			this.TxtHeader.Name = "TxtHeader";
-			this.TxtHeader.Size = new System.Drawing.Size(299, 26);
+			this.TxtHeader.Size = new System.Drawing.Size(317, 26);
 			this.TxtHeader.TabIndex = 0;
 			this.TxtHeader.Text = "A new version has been found. We suggest to update LaserGRBL to take advantage of" +
     " new features and bugfix.";
@@ -144,33 +145,46 @@
 			this.PB.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PB.Location = new System.Drawing.Point(3, 73);
 			this.PB.Name = "PB";
-			this.PB.Size = new System.Drawing.Size(299, 15);
+			this.PB.Size = new System.Drawing.Size(317, 15);
 			this.PB.TabIndex = 5;
 			// 
 			// tableLayoutPanel3
 			// 
 			this.tableLayoutPanel3.AutoSize = true;
 			this.tableLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.tableLayoutPanel3.ColumnCount = 3;
+			this.tableLayoutPanel3.ColumnCount = 4;
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel3.Controls.Add(this.BtnCancel, 1, 0);
-			this.tableLayoutPanel3.Controls.Add(this.BtnUpdate, 2, 0);
+			this.tableLayoutPanel3.Controls.Add(this.BtnWebsite, 0, 0);
+			this.tableLayoutPanel3.Controls.Add(this.BtnCancel, 2, 0);
+			this.tableLayoutPanel3.Controls.Add(this.BtnUpdate, 3, 0);
 			this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 100);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
 			this.tableLayoutPanel3.RowCount = 1;
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(305, 33);
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(323, 33);
 			this.tableLayoutPanel3.TabIndex = 1;
+			// 
+			// BtnWebsite
+			// 
+			this.BtnWebsite.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.BtnWebsite.Location = new System.Drawing.Point(3, 3);
+			this.BtnWebsite.Name = "BtnWebsite";
+			this.BtnWebsite.Size = new System.Drawing.Size(74, 27);
+			this.BtnWebsite.TabIndex = 8;
+			this.BtnWebsite.Text = "Website";
+			this.BtnWebsite.UseVisualStyleBackColor = true;
+			this.BtnWebsite.Click += new System.EventHandler(this.BtnWebsite_Click);
 			// 
 			// BtnCancel
 			// 
 			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.BtnCancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnCancel.Location = new System.Drawing.Point(148, 3);
+			this.BtnCancel.Location = new System.Drawing.Point(166, 3);
 			this.BtnCancel.Name = "BtnCancel";
 			this.BtnCancel.Size = new System.Drawing.Size(74, 27);
 			this.BtnCancel.TabIndex = 7;
@@ -180,7 +194,7 @@
 			// BtnUpdate
 			// 
 			this.BtnUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnUpdate.Location = new System.Drawing.Point(228, 3);
+			this.BtnUpdate.Location = new System.Drawing.Point(246, 3);
 			this.BtnUpdate.Name = "BtnUpdate";
 			this.BtnUpdate.Size = new System.Drawing.Size(74, 27);
 			this.BtnUpdate.TabIndex = 6;
@@ -193,7 +207,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.ClientSize = new System.Drawing.Size(311, 136);
+			this.ClientSize = new System.Drawing.Size(329, 136);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "NewVersionForm";
@@ -223,5 +237,6 @@
 		private System.Windows.Forms.Button BtnUpdate;
 		private System.Windows.Forms.Button BtnCancel;
 		private System.Windows.Forms.ProgressBar PB;
+		private System.Windows.Forms.Button BtnWebsite;
 	}
 }

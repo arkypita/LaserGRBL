@@ -88,6 +88,13 @@ namespace LaserGRBL
 			mClosing = true;
 		}
 
+		private void BtnWebsite_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"https://github.com/arkypita/LaserGRBL/releases/latest");
+		}
+
+
+
 
 
 

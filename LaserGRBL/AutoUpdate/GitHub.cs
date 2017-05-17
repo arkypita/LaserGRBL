@@ -22,7 +22,10 @@ namespace LaserGRBL
 			try
 			{ CheckSite(@"https://api.github.com/repos/arkypita/LaserGRBL/releases/latest"); } //official https
 			catch
-			{ CheckSite(@"http://lasergrbl.com/latest.php"); } //http mirror
+			{
+				try { CheckSite(@"http://lasergrbl.com/latest.php"); }//http mirror
+				catch { }
+			} 
 		}
 
 		private static void CheckSite(string site)
