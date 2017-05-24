@@ -270,6 +270,9 @@
     <Compile Include="UserControls\WaitingProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <EmbeddedResource Include="ConnectLogForm.de.resx">
+      <DependentUpon>ConnectLogForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConnectLogForm.es.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -288,6 +291,9 @@
     <EmbeddedResource Include="JogForm.resx">
       <DependentUpon>JogForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.de.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.es.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AutoUpdate\NewVersionForm.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreviewForm.de.resx">
+      <DependentUpon>PreviewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.es.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
@@ -351,6 +360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.resx">
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.de.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.fr.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

@@ -548,6 +548,20 @@
   <data name="MNFrench.Text" xml:space="preserve">
     <value>Français</value>
   </data>
+  <data name="MNGerman.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAD8SURBVDhPpZO/asJQHEYDgiCt
+        CKKpSEVRkOJQCQ5NHRIyOiXkFfIEyYMJbo7diji1W/0L0pfI9PX3hXpFcbjRwCHcm++cLQaAu+BTFKpC
+        Iyd06Bp1z/NwC3QZ6DiOgziOtUiSJHvToctAz7ZtRFGEIAjO8H0/4/KeWzp0s4BlWQjDEK7rasEtHRX4
+        eRnh15ngMBzj8Pp+4vL8D7d0VOCrPcC+2cf2oaEFt3RUYPHUxc7sYlMyteCWjgqsPppIN22kq7oesqWj
+        At/zGtJ1Sz6aesiWjgosZxW5fM4FnWOg9Tkt4xboMlARBsJbTujQNQpCSXjMCZ3C1V9UHxh/X8PG8++V
+        I34AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="MNGerman.Text" xml:space="preserve">
+    <value>Allemand</value>
+  </data>
   <data name="helpOnLineToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>272, 22</value>
   </data>
