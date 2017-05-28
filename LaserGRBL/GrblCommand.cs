@@ -201,6 +201,14 @@ namespace LaserGRBL
 		public bool IsLinearMovement
 		{ get { return (X != null || Y != null) && (I == null && J == null && R == null); } }
 
+        public bool IsRapidMovement
+        {
+            get
+            {
+                return (G != null && G.Number == 0);
+            }
+        }
+
 		public bool IsArcMovement
 		{ get { return I != null || J != null || R != null; } }
 

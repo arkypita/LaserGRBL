@@ -652,7 +652,15 @@ namespace LaserGRBL
 								pen.DashPattern = new float[] { 1f, 1f };
 							}
 
-							if (cmd.IsLinearMovement)
+                            if (cmd.IsRapidMovement)
+                            {
+                                pen.Color = Color.CornflowerBlue;
+                                pen.DashStyle = DashStyle.Dot;
+                                pen.DashPattern = new float[] { .5f, .5f };
+                                pen.CustomEndCap = new AdjustableArrowCap(0.5f, 0.5f, false);
+                                g.DrawLine(pen, new PointF((float)curX, (float)curY), new PointF((float)newX, (float)newY));
+                            }
+                            else if (cmd.IsLinearMovement)
 							{
 								g.DrawLine(pen, new PointF((float)curX, (float)curY), new PointF((float)newX, (float)newY));
 							}
