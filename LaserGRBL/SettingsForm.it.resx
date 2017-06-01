@@ -156,4 +156,7 @@ Se la tua configurazione non lo prevede, disabilita la modalità PWM.</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Configurazione</value>
   </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>La modalità Laser è attivata su GRBL 1.1 o superiore. Ciò provoca il disinserimento del laser durante le mosse veloci. LaserGRBL renderà veloci mosse in modo diverso rispetto alle mosse tagliate.</value>
+  </data>
 </root>

@@ -16,6 +16,7 @@ namespace LaserGRBL
 			InitializeComponent();
 
 			CBSupportPWM.Checked = (bool)Settings.GetObject("Support Hardware PWM", true);
+            CBLaserMode.Checked = (bool)Settings.GetObject("Laser Mode", false);
 		}
 
 		internal static void CreateAndShowDialog()
@@ -27,6 +28,7 @@ namespace LaserGRBL
 		private void BtnSave_Click(object sender, EventArgs e)
 		{
 			Settings.SetObject("Support Hardware PWM", CBSupportPWM.Checked);
+            Settings.SetObject("Laser Mode", CBLaserMode.Checked);
 			Settings.Save();
 
 			Close();
@@ -41,5 +43,5 @@ namespace LaserGRBL
 		{
 
 		}
-	}
+    }
 }
