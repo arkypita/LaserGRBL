@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tableLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -132,7 +129,7 @@
     <value>Left</value>
   </data>
   <data name="&gt;&gt;TbContrast.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -140,11 +137,11 @@
   <data name="LblRed.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="CbResize.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="UDSmoothing.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="LblFillingLineLbl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -155,10 +152,43 @@
   <data name="&gt;&gt;RightGrid.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="BtnFillingQualityInfo.ToolTip" xml:space="preserve">
-    <value>If resolution does not match with stepper pitch some artifacts may appear! Click to compute a reliable resolution...</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        AWP/z+qVgM7oAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="BtnRevert.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
@@ -171,11 +201,14 @@
   <data name="BtnQualityInfo.ToolTip" xml:space="preserve">
     <value>If resolution does not match with stepper pitch some artifacts may appear! Click to compute a reliable resolution...</value>
   </data>
+  <data name="&gt;&gt;TbBright.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <data name="BtFlipV.ToolTip" xml:space="preserve">
     <value>Flip image vertical</value>
   </data>
-  <data name="UDDownSample.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 20</value>
+  <data name="label27.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -185,9 +218,6 @@
   </data>
   <data name="&gt;&gt;label27.Name" xml:space="preserve">
     <value>label27</value>
-  </data>
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;CbDownSample.Name" xml:space="preserve">
     <value>CbDownSample</value>
@@ -203,6 +233,9 @@
   </data>
   <data name="&gt;&gt;UDFillingQuality.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="TpPreview.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;LblGreen.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -227,6 +260,9 @@
   </data>
   <data name="GbVectorizeOptions.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
+  </data>
+  <data name="label28.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
   </data>
   <data name="BtRotateCCW.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 3</value>
@@ -255,14 +291,14 @@
   <data name="CbResize.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="CbDirections.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 21</value>
   </data>
   <data name="TbThreshold.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Conversion Tool</value>
   </data>
   <data name="&gt;&gt;UDDownSample.Name" xml:space="preserve">
     <value>UDDownSample</value>
@@ -279,14 +315,20 @@
   <data name="TpPreview.Text" xml:space="preserve">
     <value>Preview</value>
   </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>784, 561</value>
+  </data>
   <data name="TBBlue.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="RbDithering.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="GbLineToLineOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 334</value>
   </data>
   <data name="&gt;&gt;BtFlipV.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="label27.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="CbDownSample.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
@@ -296,9 +338,6 @@
   </data>
   <data name="&gt;&gt;GbLineToLineOptions.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -330,11 +369,14 @@
   <data name="&gt;&gt;TBGreen.Name" xml:space="preserve">
     <value>TBGreen</value>
   </data>
-  <data name="UDSmoothing.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;TCOriginalPreview.Name" xml:space="preserve">
     <value>TCOriginalPreview</value>
+  </data>
+  <data name="GbLineToLineOptions.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="CbThreshold.ToolTip" xml:space="preserve">
     <value>Apply threshold filtering</value>
@@ -345,8 +387,8 @@
   <data name="label8.Text" xml:space="preserve">
     <value>Lines/mm</value>
   </data>
-  <data name="&gt;&gt;BtnQualityInfo.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;UDQuality.Name" xml:space="preserve">
+    <value>UDQuality</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Name" xml:space="preserve">
     <value>BtnCancel</value>
@@ -354,14 +396,17 @@
   <data name="tableLayoutPanel5.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="TbBright.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
+  <data name="PbConverted.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
   <data name="FlipControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 31</value>
   </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 33</value>
+  </data>
   <data name="&gt;&gt;TBWhiteClip.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="TLP.Size" type="System.Drawing.Size, System.Drawing">
     <value>234, 97</value>
@@ -375,14 +420,17 @@
   <data name="BtnCreate.Location" type="System.Drawing.Point, System.Drawing">
     <value>83, 3</value>
   </data>
+  <data name="RbDithering.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
   <data name="tableLayoutPanel8.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="GbVectorizeOptions" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="groupBox1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GbLineToLineOptions" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="groupBox4" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="PbConverted.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
-    <value>14</value>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Brightness</value>
@@ -390,14 +438,17 @@
   <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="BtnCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
   <data name="&gt;&gt;LblBlue.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="CbDownSample.Location" type="System.Drawing.Point, System.Drawing">
     <value>143, 77</value>
   </data>
-  <data name="&gt;&gt;CbSpotRemoval.Name" xml:space="preserve">
-    <value>CbSpotRemoval</value>
+  <data name="&gt;&gt;label28.Name" xml:space="preserve">
+    <value>label28</value>
   </data>
   <data name="TBGreen.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -414,14 +465,11 @@
   <data name="&gt;&gt;BtnCreate.Name" xml:space="preserve">
     <value>BtnCreate</value>
   </data>
-  <data name="&gt;&gt;CbMode.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
   <data name="RbLineToLineTracing.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 17</value>
   </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 151</value>
+  <data name="LblBlue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -431,6 +479,9 @@
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>117, 57</value>
+  </data>
+  <data name="BtRotateCW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
   </data>
   <data name="UDSpotRemoval.ToolTip" xml:space="preserve">
     <value>Remove small details</value>
@@ -444,23 +495,20 @@
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="TBWhiteClip.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="BtnCreate.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="&gt;&gt;BtnCancel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CbDirections.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+  <data name="tableLayoutPanel5.RowCount" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
   <data name="RightGrid.RowCount" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="&gt;&gt;LblRed.Name" xml:space="preserve">
-    <value>LblRed</value>
-  </data>
-  <data name="tableLayoutPanel5.RowCount" type="System.Int32, mscorlib">
-    <value>6</value>
   </data>
   <data name="label24.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -468,14 +516,14 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Downsampling</value>
   </data>
-  <data name="TBRed.ToolTip" xml:space="preserve">
-    <value />
+  <data name="groupBox4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="CbResize.ToolTip" xml:space="preserve">
     <value>Control resizing mode (Smooth or Hard edges)</value>
   </data>
   <data name="&gt;&gt;BtnRevert.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>RasterToLaserForm</value>
@@ -525,8 +573,8 @@
   <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="TpPreview.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;TBRed.Name" xml:space="preserve">
+    <value>TBRed</value>
   </data>
   <data name="CbDownSample.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
@@ -566,8 +614,8 @@
         AElFTkSuQmCC
 </value>
   </data>
-  <data name="TpOriginal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>518, 490</value>
+  <data name="&gt;&gt;TpPreview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;UDOptimize.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -584,11 +632,14 @@
   <data name="&gt;&gt;RbVectorize.Name" xml:space="preserve">
     <value>RbVectorize</value>
   </data>
-  <data name="CbMode.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnCancel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnCreate" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="TbContrast.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LblFillingQuality.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 126</value>
   </data>
   <data name="BtRotateCCW.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -636,13 +687,13 @@
     <value>Select color conversion formula</value>
   </data>
   <data name="&gt;&gt;BtFlipH.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="BtRotateCW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 25</value>
+  <data name="&gt;&gt;UDSmoothing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
@@ -689,14 +740,14 @@
   <data name="&gt;&gt;tableLayoutPanel4.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;CbOptimize.Parent" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="LblRed.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;LblGreen.Name" xml:space="preserve">
     <value>LblGreen</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="UDDownSample.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -713,14 +764,17 @@
   <data name="&gt;&gt;label22.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 151</value>
+  </data>
   <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="CbFillingDirection.ToolTip" xml:space="preserve">
+    <value>Enable path filling / set filling direction</value>
   </data>
   <data name="&gt;&gt;TbBright.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="TpOriginal.Text" xml:space="preserve">
     <value>Original</value>
@@ -728,14 +782,14 @@
   <data name="LblGrayscale.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="TbBright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 123</value>
+  <data name="label28.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="FlipControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>255, 525</value>
+  <data name="GbVectorizeOptions.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;label23.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -745,9 +799,6 @@
   </data>
   <data name="&gt;&gt;WT.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TbThreshold.ZOrder" xml:space="preserve">
-    <value>15</value>
   </data>
   <data name="LblBlue.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -763,6 +814,9 @@
   </data>
   <data name="&gt;&gt;label14.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;RbLineToLineTracing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label23.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -782,11 +836,8 @@
   <data name="CbMode.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
   </data>
-  <data name="LblDitherMode.Text" xml:space="preserve">
-    <value>Dithering</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>12</value>
+  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
+    <value>14</value>
   </data>
   <data name="LblGrayscale.ToolTip" xml:space="preserve">
     <value />
@@ -806,8 +857,8 @@
   <data name="&gt;&gt;label28.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TLP.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;RbDithering.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -824,8 +875,8 @@
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>234, 145</value>
   </data>
-  <data name="&gt;&gt;RbLineToLineTracing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>12</value>
   </data>
   <data name="tableLayoutPanel4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -844,6 +895,9 @@
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="TpOriginal.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="LblDitherMode.ToolTip" xml:space="preserve">
     <value />
@@ -872,14 +926,11 @@
   <data name="TBRed.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="groupBox4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="CbOptimize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;BtRotateCW.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="RbVectorize.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -899,14 +950,11 @@
   <data name="&gt;&gt;WB.Name" xml:space="preserve">
     <value>WB</value>
   </data>
-  <data name="label27.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="LblFillingQuality.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
   </data>
   <data name="&gt;&gt;CbDirections.Parent" xml:space="preserve">
     <value>TLP</value>
-  </data>
-  <data name="&gt;&gt;LblFillingLineLbl.Name" xml:space="preserve">
-    <value>LblFillingLineLbl</value>
   </data>
   <data name="RightGrid.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -929,9 +977,6 @@
         2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 77</value>
-  </data>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbResize" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LblGrayscale" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbMode" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TBRed" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LblRed" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LblBlue" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LblGreen" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TBGreen" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TbBright" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TBBlue" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TbContrast" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbThreshold" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label28" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TbThreshold" Row="8" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TBWhiteClip" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
@@ -953,13 +998,10 @@
   <data name="label22.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Import Raster Image</value>
+  <data name="BtnCreate.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="BtnCrop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 25</value>
-  </data>
-  <data name="BtRotateCCW.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 25</value>
   </data>
   <data name="BtnFillingQualityInfo.TabIndex" type="System.Int32, mscorlib">
@@ -968,17 +1010,14 @@
   <data name="BtnCreate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="RbVectorize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 17</value>
-  </data>
-  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="&gt;&gt;WB.Parent" xml:space="preserve">
     <value>TpPreview</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="UDFillingQuality.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -986,8 +1025,8 @@
   <data name="CbOptimize.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 33</value>
+  <data name="TBRed.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="CbLinePreview.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -1003,6 +1042,9 @@
   </data>
   <data name="LblGreen.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 13</value>
+  </data>
+  <data name="BtnCrop.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="TCOriginalPreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>526, 516</value>
@@ -1024,6 +1066,9 @@
   </data>
   <data name="RbDithering.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;BtnQualityInfo.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="UDSpotRemoval.Location" type="System.Drawing.Point, System.Drawing">
     <value>84, 2</value>
@@ -1061,9 +1106,6 @@
   <data name="&gt;&gt;GbLineToLineOptions.Name" xml:space="preserve">
     <value>GbLineToLineOptions</value>
   </data>
-  <data name="CbFillingDirection.ToolTip" xml:space="preserve">
-    <value>Enable path filling / set filling direction</value>
-  </data>
   <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
     <value>RightGrid</value>
   </data>
@@ -1072,6 +1114,9 @@
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Contrast</value>
+  </data>
+  <data name="TLP.RowCount" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="CbDownSample.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1084,9 +1129,6 @@
   </data>
   <data name="&gt;&gt;BtnFillingQualityInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;CbResize.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel8.Name" xml:space="preserve">
     <value>tableLayoutPanel8</value>
@@ -1101,7 +1143,7 @@
     <value>Show preview</value>
   </data>
   <data name="&gt;&gt;TBGreen.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="TbContrast.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -1112,9 +1154,6 @@
   <data name="&gt;&gt;CbFillingDirection.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LblRed.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
   <data name="LblBlue.Text" xml:space="preserve">
     <value>Blue</value>
   </data>
@@ -1123,6 +1162,9 @@
   </data>
   <data name="&gt;&gt;LblFillingQuality.ZOrder" xml:space="preserve">
     <value>11</value>
+  </data>
+  <data name="&gt;&gt;BtnCrop.Parent" xml:space="preserve">
+    <value>FlipControl</value>
   </data>
   <data name="CbSmoothing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1133,50 +1175,14 @@
   <data name="tableLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-        AWP/z+qVgM7oAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="&gt;&gt;CbSpotRemoval.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="PbOriginal.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
+  <data name="UDDownSample.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
   </data>
   <data name="&gt;&gt;TpOriginal.Name" xml:space="preserve">
     <value>TpOriginal</value>
@@ -1200,13 +1206,10 @@
     <value>TpPreview</value>
   </data>
   <data name="&gt;&gt;TBRed.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
-  </data>
-  <data name="CbDownSample.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -1216,6 +1219,9 @@
   </data>
   <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -1229,8 +1235,8 @@
   <data name="&gt;&gt;label27.Parent" xml:space="preserve">
     <value>TLP</value>
   </data>
-  <data name="&gt;&gt;UDSmoothing.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;CbDither.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;FlipControl.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1244,8 +1250,8 @@
   <data name="label24.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>784, 561</value>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Direction</value>
   </data>
   <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 29</value>
@@ -1262,17 +1268,11 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Parameters</value>
   </data>
-  <data name="TBRed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 51</value>
-  </data>
   <data name="label14.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="TBGreen.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
-  </data>
-  <data name="TBWhiteClip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 22</value>
   </data>
   <data name="PbOriginal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1310,38 +1310,41 @@
   <data name="TCOriginalPreview.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="&gt;&gt;RbDithering.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;TpOriginal.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 82</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;RightGrid.Name" xml:space="preserve">
-    <value>RightGrid</value>
+  <data name="TbThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="&gt;&gt;CbFillingDirection.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
   </data>
-  <data name="label27.Text" xml:space="preserve">
-    <value>Direction</value>
-  </data>
   <data name="RbVectorize.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 44</value>
-  </data>
-  <data name="CbThreshold.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="BtnRevert.ToolTip" xml:space="preserve">
     <value>Revert all changes</value>
   </data>
-  <data name="LblRed.Text" xml:space="preserve">
-    <value>Red</value>
+  <data name="groupBox4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;TbBright.Name" xml:space="preserve">
-    <value>TbBright</value>
+  <data name="TpPreview.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 13</value>
@@ -1370,23 +1373,23 @@
   <data name="CbDownSample.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="UDDownSample.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
-  </data>
-  <data name="&gt;&gt;CbFillingDirection.ZOrder" xml:space="preserve">
-    <value>10</value>
+  <data name="TLP.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="CbMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="&gt;&gt;TBRed.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;BtnQualityInfo.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="&gt;&gt;BtFlipH.Parent" xml:space="preserve">
     <value>FlipControl</value>
+  </data>
+  <data name="TBWhiteClip.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
   </data>
   <data name="&gt;&gt;CbThreshold.Name" xml:space="preserve">
     <value>CbThreshold</value>
@@ -1403,20 +1406,29 @@
   <data name="label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="tableLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="TBBlue.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="LblRed.Text" xml:space="preserve">
+    <value>Red</value>
   </data>
   <data name="&gt;&gt;label23.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Conversion Tool</value>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;BtnCreate.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="&gt;&gt;UDQuality.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RightGrid.Name" xml:space="preserve">
+    <value>RightGrid</value>
+  </data>
+  <data name="TpOriginal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>518, 490</value>
   </data>
   <data name="&gt;&gt;CbLinePreview.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1451,14 +1463,8 @@
   <data name="LblRed.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="LblFillingQuality.Text" xml:space="preserve">
-    <value>Filling Quality</value>
-  </data>
   <data name="&gt;&gt;LblGrayscale.Name" xml:space="preserve">
     <value>LblGrayscale</value>
-  </data>
-  <data name="&gt;&gt;TbThreshold.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label28.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1468,6 +1474,9 @@
   </data>
   <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
   </data>
   <data name="GbLineToLineOptions.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1482,7 +1491,7 @@
     <value>CenterScreen</value>
   </data>
   <data name="&gt;&gt;BtnCrop.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="RbDithering.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1490,14 +1499,11 @@
   <data name="&gt;&gt;UDOptimize.Name" xml:space="preserve">
     <value>UDOptimize</value>
   </data>
-  <data name="BtnQualityInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 55</value>
-  </data>
   <data name="&gt;&gt;LblDitherMode.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;CbDither.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;BtFlipV.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;UDFillingQuality.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1526,17 +1532,20 @@
   <data name="&gt;&gt;UDSpotRemoval.Name" xml:space="preserve">
     <value>UDSpotRemoval</value>
   </data>
+  <data name="RightGrid.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="RbLineToLineTracing.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 13</value>
   </data>
-  <data name="label27.ToolTip" xml:space="preserve">
-    <value />
+  <data name="LblFillingLineLbl.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
   </data>
-  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 16</value>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 13</value>
   </data>
   <data name="RbVectorize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1547,17 +1556,11 @@
   <data name="FlipControl.ColumnCount" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="LblGrayscale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 31</value>
-  </data>
   <data name="BtnCancel.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="LblFillingQuality.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 13</value>
-  </data>
-  <data name="&gt;&gt;BtFlipV.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;BtnFillingQualityInfo.ZOrder" xml:space="preserve">
     <value>17</value>
@@ -1568,11 +1571,11 @@
   <data name="LblRed.Size" type="System.Drawing.Size, System.Drawing">
     <value>27, 13</value>
   </data>
-  <data name="&gt;&gt;TpPreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 57</value>
   </data>
   <data name="TbBright.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1588,9 +1591,6 @@
   </data>
   <data name="TBBlue.Location" type="System.Drawing.Point, System.Drawing">
     <value>63, 99</value>
-  </data>
-  <data name="&gt;&gt;TBRed.Name" xml:space="preserve">
-    <value>TBRed</value>
   </data>
   <data name="&gt;&gt;CbFillingDirection.Name" xml:space="preserve">
     <value>CbFillingDirection</value>
@@ -1610,14 +1610,23 @@
   <data name="CbLinePreview.Text" xml:space="preserve">
     <value>Line Preview</value>
   </data>
+  <data name="&gt;&gt;BtnCrop.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="&gt;&gt;GbVectorizeOptions.Name" xml:space="preserve">
     <value>GbVectorizeOptions</value>
   </data>
-  <data name="GbLineToLineOptions.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;UDSmoothing.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
   </data>
   <data name="label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
+  </data>
+  <data name="CbOptimize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>143, 53</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="UDSmoothing.ToolTip" xml:space="preserve">
     <value>Smooth hard edges</value>
@@ -1625,8 +1634,8 @@
   <data name="LblFillingLineLbl.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 13</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;CbOptimize.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
   </data>
   <data name="tableLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
@@ -1637,17 +1646,26 @@
   <data name="FlipControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="LblBlue.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="LblGrayscale.Text" xml:space="preserve">
     <value>Grayscale</value>
   </data>
+  <data name="tableLayoutPanel2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="LblBlue.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="&gt;&gt;WB.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.WaitingProgressBar, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.WaitingProgressBar, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="UDQuality.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1664,14 +1682,14 @@
   <data name="&gt;&gt;LblBlue.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;UDSmoothing.Parent" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
+  <data name="&gt;&gt;LblRed.Name" xml:space="preserve">
+    <value>LblRed</value>
   </data>
   <data name="&gt;&gt;LblFillingLineLbl.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LblFillingLineLbl.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel2.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1684,9 +1702,6 @@
   </data>
   <data name="UDQuality.Location" type="System.Drawing.Point, System.Drawing">
     <value>57, 54</value>
-  </data>
-  <data name="&gt;&gt;TLP.Parent" xml:space="preserve">
-    <value>GbLineToLineOptions</value>
   </data>
   <data name="RbDithering.ToolTip" xml:space="preserve">
     <value>Produce grayscale emulated BW image</value>
@@ -1718,19 +1733,19 @@
   <data name="TCOriginalPreview.Location" type="System.Drawing.Point, System.Drawing">
     <value>255, 3</value>
   </data>
-  <data name="BtnQualityInfo.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
   <data name="&gt;&gt;BtRotateCW.Parent" xml:space="preserve">
     <value>FlipControl</value>
   </data>
   <data name="&gt;&gt;label4.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="tableLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="CbLinePreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 17</value>
   </data>
-  <data name="tableLayoutPanel2.ToolTip" xml:space="preserve">
+  <data name="label3.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="&gt;&gt;BtnCrop.Name" xml:space="preserve">
@@ -1741,6 +1756,9 @@
   </data>
   <data name="&gt;&gt;BtnCreate.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
+  </data>
+  <data name="CbDirections.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
   </data>
   <data name="CbMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 21</value>
@@ -1763,8 +1781,17 @@
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="&gt;&gt;CbMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UDSmoothing.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
+  </data>
+  <data name="LblDitherMode.Text" xml:space="preserve">
+    <value>Dithering</value>
   </data>
   <data name="&gt;&gt;PbOriginal.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1778,11 +1805,17 @@
   <data name="TBGreen.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
   </data>
-  <data name="label24.ToolTip" xml:space="preserve">
-    <value />
+  <data name="CbFillingDirection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="TbBright.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
   </data>
   <data name="&gt;&gt;TCOriginalPreview.Parent" xml:space="preserve">
     <value>RightGrid</value>
+  </data>
+  <data name="RightGrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
   <data name="&gt;&gt;TbContrast.Name" xml:space="preserve">
     <value>TbContrast</value>
@@ -1799,14 +1832,11 @@
   <data name="CbThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="tableLayoutPanel4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
   </data>
-  <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 27</value>
+  <data name="CbDirections.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="LblFillingQuality.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1817,8 +1847,11 @@
   <data name="TBBlue.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 22</value>
   </data>
-  <data name="PbConverted.ToolTip" xml:space="preserve">
-    <value />
+  <data name="$this.Text" xml:space="preserve">
+    <value>Import Raster Image</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
   </data>
   <data name="LblBlue.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1826,23 +1859,17 @@
   <data name="CbLinePreview.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 78</value>
   </data>
-  <data name="UDOptimize.ToolTip" xml:space="preserve">
-    <value>Optimize path (produce less segments)</value>
-  </data>
   <data name="&gt;&gt;FlipControl.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="&gt;&gt;CbLinePreview.Name" xml:space="preserve">
     <value>CbLinePreview</value>
   </data>
-  <data name="&gt;&gt;BtRotateCCW.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="CbMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 27</value>
   </data>
   <data name="&gt;&gt;PbOriginal.Parent" xml:space="preserve">
     <value>TpOriginal</value>
-  </data>
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="groupBox4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1853,17 +1880,14 @@
   <data name="LblGrayscale.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;CbResize.Name" xml:space="preserve">
-    <value>CbResize</value>
-  </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 127</value>
   </data>
   <data name="TLP.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;CbMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="TBWhiteClip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 22</value>
   </data>
   <data name="&gt;&gt;TT.Name" xml:space="preserve">
     <value>TT</value>
@@ -1874,11 +1898,11 @@
   <data name="&gt;&gt;CbDirections.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;CbSpotRemoval.Name" xml:space="preserve">
+    <value>CbSpotRemoval</value>
+  </data>
   <data name="FlipControl.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="UDOptimize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 20</value>
   </data>
   <data name="UDFillingQuality.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1890,7 +1914,7 @@
     <value>14</value>
   </data>
   <data name="&gt;&gt;BtRotateCCW.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;LblRed.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1928,9 +1952,6 @@
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 13</value>
   </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
   <data name="&gt;&gt;UDFillingQuality.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
   </data>
@@ -1952,6 +1973,9 @@
   <data name="groupBox1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="CbResize.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
   <data name="&gt;&gt;TpPreview.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
@@ -1966,6 +1990,9 @@
   </data>
   <data name="UDQuality.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 20</value>
+  </data>
+  <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 27</value>
   </data>
   <data name="BtFlipH.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2011,11 +2038,11 @@
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 13</value>
   </data>
+  <data name="TBRed.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="TCOriginalPreview.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="UDDownSample.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
   </data>
   <data name="LblGrayscale.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2029,20 +2056,20 @@
   <data name="GbLineToLineOptions.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="CbDither.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
   <data name="LblGreen.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
+  </data>
+  <data name="&gt;&gt;CbDirections.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="label24.Text" xml:space="preserve">
     <value>Optimize</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="BtFlipV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 3</value>
   </data>
-  <data name="BtnCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="CbMode.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="CbResize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2056,12 +2083,6 @@
   <data name="&gt;&gt;CbThreshold.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;CbDownSample.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -2071,17 +2092,11 @@
   <data name="TCOriginalPreview.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label22.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="RbDithering.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 17</value>
   </data>
   <data name="&gt;&gt;CbLinePreview.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="&gt;&gt;label28.Name" xml:space="preserve">
-    <value>label28</value>
   </data>
   <data name="FlipControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2095,6 +2110,9 @@
   <data name="PbOriginal.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="&gt;&gt;CbDownSample.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
   <data name="CbSpotRemoval.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -2107,20 +2125,14 @@
   <data name="&gt;&gt;LblBlue.Name" xml:space="preserve">
     <value>LblBlue</value>
   </data>
-  <data name="CbFillingDirection.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="RbDithering" Row="1" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="RbVectorize" Row="2" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="RbLineToLineTracing" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,16" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
   <data name="tableLayoutPanel5.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="&gt;&gt;CbSmoothing.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
   </data>
-  <data name="&gt;&gt;TbContrast.ZOrder" xml:space="preserve">
-    <value>11</value>
+  <data name="PbConverted.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;TbThreshold.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -2128,8 +2140,11 @@
   <data name="&gt;&gt;LblGreen.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="LblFillingQuality.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 126</value>
+  <data name="BtnCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LblDitherMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="TBBlue.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2137,8 +2152,8 @@
   <data name="CbDirections.Location" type="System.Drawing.Point, System.Drawing">
     <value>57, 29</value>
   </data>
-  <data name="RightGrid.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;LblDitherMode.Parent" xml:space="preserve">
     <value>TLP</value>
@@ -2152,11 +2167,11 @@
   <data name="&gt;&gt;BtRotateCW.Name" xml:space="preserve">
     <value>BtRotateCW</value>
   </data>
-  <data name="BtnCrop.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="&gt;&gt;TbBright.Name" xml:space="preserve">
+    <value>TbBright</value>
   </data>
   <data name="&gt;&gt;BtnFillingQualityInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="TbContrast.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 22</value>
@@ -2164,8 +2179,8 @@
   <data name="&gt;&gt;tableLayoutPanel5.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="BtnCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="BtRotateCCW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
   </data>
   <data name="&gt;&gt;GbVectorizeOptions.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2176,8 +2191,11 @@
   <data name="&gt;&gt;UDOptimize.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
   </data>
-  <data name="BtFlipV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>142, 3</value>
+  <data name="FlipControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>255, 525</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;CbDirections.Name" xml:space="preserve">
     <value>CbDirections</value>
@@ -2185,8 +2203,8 @@
   <data name="&gt;&gt;UDQuality.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="UDDownSample.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="TbBright.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 22</value>
@@ -2194,17 +2212,11 @@
   <data name="CbThreshold.Text" xml:space="preserve">
     <value>B&amp;&amp;W</value>
   </data>
-  <data name="TpOriginal.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <data name="&gt;&gt;TBBlue.Name" xml:space="preserve">
     <value>TBBlue</value>
   </data>
-  <data name="GbLineToLineOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 334</value>
-  </data>
-  <data name="CbDirections.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="&gt;&gt;TLP.Parent" xml:space="preserve">
+    <value>GbLineToLineOptions</value>
   </data>
   <data name="WB.Location" type="System.Drawing.Point, System.Drawing">
     <value>445, 468</value>
@@ -2212,8 +2224,8 @@
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="TBWhiteClip.ToolTip" xml:space="preserve">
-    <value />
+  <data name="TpOriginal.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="UDFillingQuality.Location" type="System.Drawing.Point, System.Drawing">
     <value>84, 123</value>
@@ -2221,17 +2233,17 @@
   <data name="BtFlipH.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="BtnFillingQualityInfo.ToolTip" xml:space="preserve">
+    <value>If resolution does not match with stepper pitch some artifacts may appear! Click to compute a reliable resolution...</value>
+  </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
-  </data>
-  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="UDSmoothing.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
+  <data name="LblRed.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
   <data name="BtFlipH.Location" type="System.Drawing.Point, System.Drawing">
     <value>111, 3</value>
@@ -2251,8 +2263,8 @@
   <data name="&gt;&gt;BtnFillingQualityInfo.Name" xml:space="preserve">
     <value>BtnFillingQualityInfo</value>
   </data>
-  <data name="CbOptimize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 53</value>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="label23.ToolTip" xml:space="preserve">
     <value />
@@ -2263,11 +2275,11 @@
   <data name="GbVectorizeOptions.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 456</value>
   </data>
-  <data name="CbMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 27</value>
+  <data name="&gt;&gt;UDDownSample.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LblFillingQuality.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
+  <data name="CbThreshold.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -2278,11 +2290,8 @@
   <data name="&gt;&gt;RightGrid.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="LblDitherMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="TBBlue.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
+  <data name="&gt;&gt;CbMode.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="CbDirections.ToolTip" xml:space="preserve">
     <value>Engraving direction</value>
@@ -2302,11 +2311,14 @@
   <data name="&gt;&gt;GbLineToLineOptions.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
   </data>
-  <data name="&gt;&gt;BtnCrop.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="tableLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="GbVectorizeOptions.ToolTip" xml:space="preserve">
-    <value />
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 77</value>
+  </data>
+  <data name="&gt;&gt;CbResize.Name" xml:space="preserve">
+    <value>CbResize</value>
   </data>
   <data name="GbLineToLineOptions.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2341,8 +2353,8 @@
   <data name="TpOriginal.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 57</value>
+  <data name="&gt;&gt;LblFillingLineLbl.Name" xml:space="preserve">
+    <value>LblFillingLineLbl</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value />
@@ -2356,20 +2368,20 @@
   <data name="LblRed.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;CbDirections.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="BtnQualityInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 55</value>
   </data>
-  <data name="TpOriginal.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="LblRed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 55</value>
   </data>
-  <data name="TbThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
+  <data name="&gt;&gt;BtRotateCCW.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="BtnCreate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;TbBright.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="&gt;&gt;CbResize.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;BtRotateCCW.Name" xml:space="preserve">
     <value>BtRotateCCW</value>
@@ -2380,14 +2392,14 @@
   <data name="&gt;&gt;WB.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="TBWhiteClip.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
+  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="TbContrast.ToolTip" xml:space="preserve">
-    <value />
+  <data name="CbFillingDirection.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
   </data>
-  <data name="tableLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;TbThreshold.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;WT.Name" xml:space="preserve">
     <value>WT</value>
@@ -2431,14 +2443,14 @@
         MeUfOCax7MmlbbQAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="&gt;&gt;CbDownSample.ZOrder" xml:space="preserve">
-    <value>16</value>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="UDFillingQuality.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="CbFillingDirection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
+  <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="&gt;&gt;TCOriginalPreview.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2446,8 +2458,8 @@
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
   </data>
-  <data name="&gt;&gt;BtnCrop.Parent" xml:space="preserve">
-    <value>FlipControl</value>
+  <data name="BtnRevert.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="GbVectorizeOptions.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2455,17 +2467,17 @@
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 13</value>
   </data>
-  <data name="TBRed.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="TbThreshold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 195</value>
   </data>
   <data name="TLP.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbDirections" Row="1" RowSpan="1" Column="1" ColumnSpan="3" /&gt;&lt;Control Name="UDQuality" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CbLinePreview" Row="3" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="label5" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label27" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label8" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="LblDitherMode" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbDither" Row="0" RowSpan="1" Column="1" ColumnSpan="3" /&gt;&lt;Control Name="BtnQualityInfo" Row="2" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,Percent,50" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,16" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;BtnRevert.Name" xml:space="preserve">
+    <value>BtnRevert</value>
   </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 82</value>
+  <data name="LblGrayscale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 31</value>
   </data>
   <data name="PbConverted.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2485,17 +2497,23 @@
   <data name="&gt;&gt;LblFillingQuality.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="RbVectorize.ToolTip" xml:space="preserve">
+    <value>Produce vector path</value>
+  </data>
   <data name="UDQuality.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel8.Parent" xml:space="preserve">
     <value>RightGrid</value>
   </data>
-  <data name="TLP.RowCount" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="label22.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBox1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="&gt;&gt;label14.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2506,14 +2524,11 @@
   <data name="CbDownSample.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;RbDithering.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="UDDownSample.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
   </data>
   <data name="TpPreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>518, 490</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="&gt;&gt;BtnRevert.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -2536,23 +2551,23 @@
   <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
     <value>groupBox4</value>
   </data>
+  <data name="&gt;&gt;TLP.Name" xml:space="preserve">
+    <value>TLP</value>
+  </data>
   <data name="UDSpotRemoval.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
-  </data>
-  <data name="groupBox4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
   </data>
   <data name="CbSmoothing.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
   </data>
-  <data name="&gt;&gt;UDSmoothing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="TbThreshold.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value />
+  <data name="BtnQualityInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
   </data>
   <data name="BtRotateCW.ToolTip" xml:space="preserve">
     <value>Rotate 90° clockwise</value>
@@ -2569,8 +2584,8 @@
   <data name="tableLayoutPanel5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="groupBox1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="UDOptimize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
   </data>
   <data name="CbSmoothing.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2578,20 +2593,20 @@
   <data name="PbConverted.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;UDDownSample.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="UDOptimize.ToolTip" xml:space="preserve">
+    <value>Optimize path (produce less segments)</value>
   </data>
   <data name="UDSmoothing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="TBRed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 51</value>
   </data>
   <data name="BtFlipH.ToolTip" xml:space="preserve">
     <value>Flip image horizontal</value>
   </data>
-  <data name="label28.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
+  <data name="CbDither.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
   </data>
   <data name="&gt;&gt;label24.Name" xml:space="preserve">
     <value>label24</value>
@@ -2611,8 +2626,8 @@
   <data name="CbSpotRemoval.Location" type="System.Drawing.Point, System.Drawing">
     <value>143, 5</value>
   </data>
-  <data name="BtnCreate.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
   <data name="&gt;&gt;CbOptimize.Name" xml:space="preserve">
     <value>CbOptimize</value>
@@ -2623,8 +2638,8 @@
   <data name="&gt;&gt;TBGreen.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
   </data>
-  <data name="&gt;&gt;BtnQualityInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
   </data>
   <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -2679,7 +2694,7 @@
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TBBlue.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.6.16816, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=2.6.7.29567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtFlipH.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -2690,20 +2705,14 @@
   <data name="label23.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
   </data>
-  <data name="LblBlue.ToolTip" xml:space="preserve">
-    <value />
+  <data name="TbBright.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 123</value>
   </data>
   <data name="RbDithering.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 23</value>
   </data>
-  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 53</value>
-  </data>
   <data name="&gt;&gt;CbMode.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="PbConverted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
   </data>
   <data name="PbOriginal.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2714,20 +2723,20 @@
   <data name="PbConverted.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
   </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
+  <data name="&gt;&gt;TBRed.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="RbVectorize.ToolTip" xml:space="preserve">
-    <value>Produce vector path</value>
+  <data name="LblFillingQuality.Text" xml:space="preserve">
+    <value>Filling Quality</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="RightGrid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="RbVectorize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 17</value>
   </data>
   <data name="LblGreen.Text" xml:space="preserve">
     <value>Green</value>
@@ -2756,14 +2765,11 @@
   <data name="GbVectorizeOptions.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;TLP.Name" xml:space="preserve">
-    <value>TLP</value>
+  <data name="label3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
-  <data name="LblBlue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
-  <data name="BtnRevert.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="&gt;&gt;TbThreshold.ZOrder" xml:space="preserve">
+    <value>15</value>
   </data>
   <data name="&gt;&gt;CbDownSample.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -2771,8 +2777,8 @@
   <data name="BtnCreate.Text" xml:space="preserve">
     <value>Next</value>
   </data>
-  <data name="label28.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 53</value>
   </data>
   <data name="label23.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -2798,17 +2804,17 @@
   <data name="&gt;&gt;tableLayoutPanel8.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="LblRed.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="CbDownSample.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
-  <data name="&gt;&gt;UDQuality.Name" xml:space="preserve">
-    <value>UDQuality</value>
+  <data name="&gt;&gt;TbContrast.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="&gt;&gt;CbResize.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TpPreview.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="LblGreen.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2822,17 +2828,11 @@
   <data name="&gt;&gt;TBWhiteClip.Name" xml:space="preserve">
     <value>TBWhiteClip</value>
   </data>
-  <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <data name="&gt;&gt;LblFillingQuality.Name" xml:space="preserve">
     <value>LblFillingQuality</value>
   </data>
-  <data name="TbThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 195</value>
-  </data>
-  <data name="&gt;&gt;BtnRevert.Name" xml:space="preserve">
-    <value>BtnRevert</value>
+  <data name="tableLayoutPanel4.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;LblGrayscale.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2858,11 +2858,14 @@
   <data name="CbFillingDirection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="LblRed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 55</value>
+  <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="RbDithering" Row="1" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="RbVectorize" Row="2" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="RbLineToLineTracing" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,16" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="WT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>15, 8</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>de</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

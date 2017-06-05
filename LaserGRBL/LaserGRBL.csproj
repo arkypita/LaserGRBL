@@ -328,6 +328,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.de.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.es.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -340,6 +343,9 @@
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\RasterToLaserForm.de.resx">
+      <DependentUpon>RasterToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\RasterToLaserForm.es.resx">
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -351,6 +357,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\RasterToLaserForm.resx">
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.de.resx">
+      <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.fr.resx">
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
@@ -391,7 +400,9 @@
     <EmbeddedResource Include="UserControls\LabelTB.resx">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.manifest" />
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Grafica\Actions-transform-crop-and-resize-icon.png" />
     <None Include="Grafica\Crop-tool-icon.png" />
     <None Include="Grafica\document-revert.png" />

@@ -345,7 +345,7 @@ namespace LaserGRBL
 			{
 				bool oldcumulate = cumulate;
 
-				if (c.pwm)
+				if (true || c.pwm)
 				{
 					if (cmd.S != null) //is S command
 					{
