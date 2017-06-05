@@ -362,5 +362,10 @@ namespace LaserGRBL
 		{
 			SetLanguage(new System.Globalization.CultureInfo("de"));
 		}
+
+		private void MNDanish_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("da"));
+		}
 	}
 }
