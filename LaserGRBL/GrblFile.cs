@@ -191,7 +191,8 @@ namespace LaserGRBL
 							if (c.pwm)
 								list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
 							else
-								list.Add(new GrblCommand(c.lOff)); //laser off
+								list.Add(new GrblCommand(String.Format("{0} S255", c.lOff))); //laser off and power to max power
+
 							//set speed to markspeed						
 							list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
 							//relative
@@ -279,7 +280,8 @@ namespace LaserGRBL
 			if (c.pwm)
 				list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
 			else
-				list.Add(new GrblCommand(c.lOff)); //laser off
+				list.Add(new GrblCommand(String.Format("{0} S255", c.lOff))); //laser off and power to maxpower
+
 			//set speed to markspeed						
 			list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
 			//relative
@@ -367,9 +369,9 @@ namespace LaserGRBL
 				if (oldcumulate && !cumulate) //cumulate down front -> flush
 				{
 					if (c.pwm)
-						rv.Add(new GrblCommand(string.Format("G1 X{0} Y{1} F{2} S0", formatnumber((double)cumX), formatnumber((double)cumY), c.travelSpeed)));
+						rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} F{2} S0", formatnumber((double)cumX), formatnumber((double)cumY), c.travelSpeed)));
 					else
-						rv.Add(new GrblCommand(string.Format("G1 X{0} Y{1} F{2} {3}", formatnumber((double)cumX), formatnumber((double)cumY), c.travelSpeed, c.lOff)));
+						rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} F{2} {3}", formatnumber((double)cumX), formatnumber((double)cumY), c.travelSpeed, c.lOff)));
 
 					cumX = cumY = 0;
 				}
