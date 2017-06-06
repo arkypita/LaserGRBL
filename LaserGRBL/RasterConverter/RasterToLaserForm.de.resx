@@ -117,26 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="WB.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="PbConverted.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="TpPreview.Text" xml:space="preserve">
     <value>Vorschau</value>
-  </data>
-  <data name="TpPreview.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="PbOriginal.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TpOriginal.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TCOriginalPreview.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -342,17 +324,11 @@
   <data name="BtnRevert.ToolTip" xml:space="preserve">
     <value>Alle Änderungen zurücksetzen</value>
   </data>
-  <data name="FlipControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 13</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
     <value>Fleckentfernung</value>
-  </data>
-  <data name="label22.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="UDSpotRemoval.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 2</value>
@@ -363,26 +339,17 @@
   <data name="CbSpotRemoval.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 5</value>
   </data>
-  <data name="CbSpotRemoval.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 13</value>
   </data>
   <data name="label24.Text" xml:space="preserve">
     <value>optimieren</value>
   </data>
-  <data name="label24.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 13</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
     <value>Glätten</value>
-  </data>
-  <data name="label23.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="UDOptimize.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 50</value>
@@ -399,23 +366,14 @@
   <data name="CbOptimize.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 53</value>
   </data>
-  <data name="CbOptimize.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="CbSmoothing.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 29</value>
-  </data>
-  <data name="CbSmoothing.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 13</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Füllung</value>
-  </data>
-  <data name="label14.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="CbFillingDirection.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 98</value>
@@ -432,9 +390,6 @@
   <data name="LblFillingQuality.Text" xml:space="preserve">
     <value>Füllqualität</value>
   </data>
-  <data name="LblFillingQuality.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="UDFillingQuality.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 123</value>
   </data>
@@ -450,23 +405,14 @@
   <data name="LblFillingLineLbl.Text" xml:space="preserve">
     <value>Linien/mm</value>
   </data>
-  <data name="LblFillingLineLbl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="UDDownSample.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 74</value>
   </data>
   <data name="UDDownSample.ToolTip" xml:space="preserve">
     <value>Skalierung des Originalbildes (für HI-RES-Bild)</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="CbDownSample.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 77</value>
-  </data>
-  <data name="CbDownSample.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="BtnFillingQualityInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -489,14 +435,8 @@
   <data name="BtnFillingQualityInfo.ToolTip" xml:space="preserve">
     <value>Wenn die Auflösung nicht mit der Stepper-Pitch übereinstimmt, können einige Artefakte erscheinen! Klicken Sie, um eine zuverlässige Auflösung zu berechnen ...</value>
   </data>
-  <data name="tableLayoutPanel5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="GbVectorizeOptions.Text" xml:space="preserve">
     <value>Vektorisieren Optionen</value>
-  </data>
-  <data name="GbVectorizeOptions.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="CbResize.Location" type="System.Drawing.Point, System.Drawing">
     <value>83, 2</value>
@@ -513,9 +453,6 @@
   <data name="LblGrayscale.Text" xml:space="preserve">
     <value>Graustufen</value>
   </data>
-  <data name="LblGrayscale.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="CbMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>83, 27</value>
   </data>
@@ -531,23 +468,14 @@
   <data name="TBRed.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 22</value>
   </data>
-  <data name="TBRed.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="LblRed.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 13</value>
   </data>
   <data name="LblRed.Text" xml:space="preserve">
     <value>Rot</value>
   </data>
-  <data name="LblRed.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="LblBlue.Text" xml:space="preserve">
     <value>Blau</value>
-  </data>
-  <data name="LblBlue.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="LblGreen.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 13</value>
@@ -555,17 +483,11 @@
   <data name="LblGreen.Text" xml:space="preserve">
     <value>Grün</value>
   </data>
-  <data name="LblGreen.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 13</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Helligkeit</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="TBGreen.Location" type="System.Drawing.Point, System.Drawing">
     <value>82, 75</value>
@@ -573,17 +495,11 @@
   <data name="TBGreen.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 22</value>
   </data>
-  <data name="TBGreen.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="TbBright.Location" type="System.Drawing.Point, System.Drawing">
     <value>82, 123</value>
   </data>
   <data name="TbBright.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 22</value>
-  </data>
-  <data name="TbBright.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="TBBlue.Location" type="System.Drawing.Point, System.Drawing">
     <value>82, 99</value>
@@ -591,23 +507,14 @@
   <data name="TBBlue.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 22</value>
   </data>
-  <data name="TBBlue.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="TbContrast.Location" type="System.Drawing.Point, System.Drawing">
     <value>82, 147</value>
   </data>
   <data name="TbContrast.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 22</value>
   </data>
-  <data name="TbContrast.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Kontrast</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="CbThreshold.ToolTip" xml:space="preserve">
     <value>Schwellenfilter anwenden</value>
@@ -618,17 +525,11 @@
   <data name="label28.Text" xml:space="preserve">
     <value>Größe ändern</value>
   </data>
-  <data name="label28.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="TbThreshold.Location" type="System.Drawing.Point, System.Drawing">
     <value>82, 195</value>
   </data>
   <data name="TbThreshold.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 22</value>
-  </data>
-  <data name="TbThreshold.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="TBWhiteClip.Location" type="System.Drawing.Point, System.Drawing">
     <value>82, 171</value>
@@ -636,26 +537,14 @@
   <data name="TBWhiteClip.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 22</value>
   </data>
-  <data name="TBWhiteClip.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 13</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Weißsättigung</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tableLayoutPanel2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Parameter</value>
-  </data>
-  <data name="groupBox1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="CbDirections.Location" type="System.Drawing.Point, System.Drawing">
     <value>58, 29</value>
@@ -687,17 +576,11 @@
   <data name="label5.Text" xml:space="preserve">
     <value>Qualität</value>
   </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 13</value>
   </data>
   <data name="label27.Text" xml:space="preserve">
     <value>Richtung</value>
-  </data>
-  <data name="label27.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>118, 57</value>
@@ -708,26 +591,17 @@
   <data name="label8.Text" xml:space="preserve">
     <value>Linien/mm</value>
   </data>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="LblDitherMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 13</value>
   </data>
   <data name="LblDitherMode.Text" xml:space="preserve">
     <value>Unruhe</value>
   </data>
-  <data name="LblDitherMode.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="CbDither.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 3</value>
   </data>
   <data name="CbDither.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 21</value>
-  </data>
-  <data name="CbDither.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="BtnQualityInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -750,14 +624,8 @@
   <data name="BtnQualityInfo.ToolTip" xml:space="preserve">
     <value>Wenn die Auflösung nicht mit der Stepper-Pitch übereinstimmt, können einige Artefakte erscheinen! Klicken Sie, um eine zuverlässige Auflösung zu berechnen ...</value>
   </data>
-  <data name="TLP.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="GbLineToLineOptions.Text" xml:space="preserve">
     <value>Linie zu Linie Option</value>
-  </data>
-  <data name="GbLineToLineOptions.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="RbDithering.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 17</value>
@@ -786,40 +654,16 @@
   <data name="RbLineToLineTracing.ToolTip" xml:space="preserve">
     <value>erzeuge Graustufenbild</value>
   </data>
-  <data name="tableLayoutPanel4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Umwandlungswerkzeug</value>
-  </data>
-  <data name="groupBox4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tableLayoutPanel8.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>abbrechen</value>
   </data>
-  <data name="BtnCancel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="BtnCreate.Text" xml:space="preserve">
     <value>Weiter</value>
   </data>
-  <data name="BtnCreate.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="RightGrid.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Rasterbild importieren</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>
