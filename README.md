@@ -78,7 +78,7 @@ LaserGRBL contains some code from:
 - [ZipStorer](https://github.com/jaime-olivares/zipstorer) - Copyright Jaime Olivares
 
 Thanks to:
-- Myself, for italian translation
+- Myself, for italian and english language
 - Fernando Luna, for spanish translation
 - Olivier Salvador, for french translation
 - Gerd Vogel, for german translation
