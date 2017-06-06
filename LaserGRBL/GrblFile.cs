@@ -550,6 +550,7 @@ namespace LaserGRBL
 		private void Process(Graphics g, Size s)
 		{
 			bool supportPWM = (bool)Settings.GetObject("Support Hardware PWM", true);
+            bool laserMode = (bool)Settings.GetObject("Laser Mode", false);
 			Boolean analyze = (g == null);
 			Boolean drawing = (g != null);
 
@@ -558,7 +559,8 @@ namespace LaserGRBL
 
 			float zoom = drawing ? DrawJobRange(g, ref s) : 1;
 			bool firstline = true;
-			bool laser = false;
+			bool isLaserCutting = false;
+            bool isLaserActive = false;
 			decimal curX = 0;
 			decimal curY = 0;
 			decimal speed = 0;
@@ -583,11 +585,29 @@ namespace LaserGRBL
 			{
 				TimeSpan delay = TimeSpan.Zero;
 
-				if (cmd.IsLaserON)
-					laser = true;
-				else if (cmd.IsLaserOFF)
-					laser = false;
+                if (cmd.IsLaserON)
+                {
+                    isLaserActive = true;
+                    isLaserCutting = true;
+                }
+                else if (cmd.IsLaserOFF)
+                {
+                    isLaserActive = false;
+                    isLaserCutting = false;
+                }
 
+                if (laserMode == true && isLaserActive == true)
+                {
+                    if (cmd.IsRapidMovement == true)
+                    {
+                        isLaserCutting = false;
+                    }
+                    else
+                    {
+                        isLaserCutting = true;
+                    }
+                }
+                
 				if (cmd.IsRelativeCoord)
 					abs = false;
 				if (cmd.IsAbsoluteCoord)
@@ -614,7 +634,7 @@ namespace LaserGRBL
 
 					if (analyze)
 					{
-						mRange.UpdateXYRange(newX, newY, laser);
+						mRange.UpdateXYRange(newX, newY, isLaserCutting);
 
 						decimal distance = 0;
 
@@ -623,7 +643,7 @@ namespace LaserGRBL
 						else if (cmd.IsArcMovement) //arc of given radius
 							distance = Tools.MathHelper.ArcDistance(curX, curY, newX, newY, cmd.GetArcRadius());
 
-						if (laser)
+						if (isLaserCutting)
 							mTotalTravelOn += distance;
 						else
 							mTotalTravelOff += distance;
@@ -634,14 +654,14 @@ namespace LaserGRBL
 
 					if (drawing)
 					{
-						Pen colorpen = firstline ? Pens.Blue : laser ? Pens.Red : Pens.LightGray;
+						Pen colorpen = firstline ? Pens.Blue : isLaserCutting ? Pens.Red : Pens.LightGray;
 						using (Pen pen = colorpen.Clone() as Pen)
 						{
 							pen.ScaleTransform(1 / zoom, 1 / zoom);
-							if (laser)
+							if (isLaserCutting)
 								pen.Color = Color.FromArgb(curAlpha, pen.Color);
 
-							if (!laser)
+							if (!isLaserCutting)
 							{
 								if (supportPWM)
 									pen.Color = Color.FromArgb(150, pen.Color);
@@ -652,7 +672,8 @@ namespace LaserGRBL
 								pen.DashPattern = new float[] { 1f, 1f };
 							}
 
-							if (cmd.IsLinearMovement)
+                            
+                            if (cmd.IsLinearMovement)
 							{
 								g.DrawLine(pen, new PointF((float)curX, (float)curY), new PointF((float)newX, (float)newY));
 							}
@@ -705,7 +726,7 @@ namespace LaserGRBL
 					}
 				}
 
-				if (laser)
+				if (isLaserCutting)
 					mEstimatedTimeOn += delay;
 				else
 					mEstimatedTimeOff += delay;

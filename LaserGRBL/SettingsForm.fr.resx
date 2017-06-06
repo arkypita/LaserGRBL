@@ -135,4 +135,7 @@
   <data name="label1.Text" xml:space="preserve">
     <value>LaserGRBL intégre la modulation de puissance au travers du G-Code "S", afin de générer différents tons de gris. Votre Laser, matériel doit supporter le mode TTL, et être connecter à la broche PIN D11 de l'arduino.</value>
   </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Le mode laser est activé sur GRBL 1.1 ou supérieur. Il en résulte que le laser est éteint pendant les mouvements rapides. LaserGRBL rendra les mouvements rapides différemment des mouvements coupés.</value>
+  </data>
 </root>

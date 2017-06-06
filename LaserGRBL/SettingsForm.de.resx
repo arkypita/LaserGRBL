@@ -135,4 +135,7 @@
   <data name="BtnSave.Text" xml:space="preserve">
     <value>speichern</value>
   </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Der Laser-Modus ist auf GRBL 1.1 oder höher aktiviert. Dies führt dazu, dass der Laser bei schnellen Bewegungen ausgeschaltet wird. LaserGRBL macht schnelle Bewegungen anders als Schnittbewegungen.</value>
+  </data>
 </root>
