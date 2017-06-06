@@ -499,7 +499,7 @@ namespace LaserGRBL
 		private void ExtractSegment(Bitmap image, int x, int y, bool reverse, ref int len, ref int prevCol, List<ColorSegment> rv, L2LConf c)
 		{
 			len++;
-			int col = GetColor(image, x, y, c.minPower, c.maxPower);
+			int col = GetColor(image, x, y, c.minPower, c.maxPower, c.pwm);
 			if (prevCol == -1)
 				prevCol = col;
 
@@ -519,15 +519,17 @@ namespace LaserGRBL
 		}
 
 
-		private int GetColor(Bitmap I, int X, int Y, int min, int max)
+		private int GetColor(Bitmap I, int X, int Y, int min, int max, bool pwm)
 		{
 			Color C = I.GetPixel(X, Y);
 			int rv = (255 - C.R) * C.A / 255;
 
 			if (rv == 0)
 				return 0; //zero is always zero
-			else
+			else if (pwm)
 				return rv * (max - min) / 255 + min; //scale to range
+			else
+				return rv;
 		}
 
 		public string formatnumber(double number)

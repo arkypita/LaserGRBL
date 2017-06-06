@@ -131,7 +131,7 @@
     <value>131, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 91</value>
+    <value>286, 78</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>LaserGRBL usa la modulazione di potenza attraverso il comando G-Code "S" per produrre immagini in toni di grigio.
@@ -153,10 +153,16 @@ Se la tua configurazione non lo prevede, disabilita la modalità PWM.</value>
         2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Configurazione</value>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 90</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>289, 52</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>La modalità Laser è attivata su GRBL 1.1 o superiore. Ciò provoca il disinserimento del laser durante le mosse veloci. LaserGRBL renderà veloci mosse in modo diverso rispetto alle mosse tagliate.</value>
+    <value>La modalità Laser è disponibile in GRBL v1.1 e successive. Ciò provoca il disinserimento del laser durante i movimenti veloci. LaserGRBL disegnerà i movimenti veloci in modo diverso rispetto ai movimenti traccianti.</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Configurazione</value>
   </data>
 </root>

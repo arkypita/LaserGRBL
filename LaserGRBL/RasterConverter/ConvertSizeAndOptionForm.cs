@@ -116,10 +116,16 @@ namespace LaserGRBL.RasterConverter
 		}
 		void IIMinPowerCurrentValueChanged(object sender, int NewValue, bool ByUser)
 		{
+			if (ByUser && IIMaxPower.CurrentValue <= NewValue)
+				IIMaxPower.CurrentValue = NewValue + 1;
+
 			IP.MinPower = NewValue;
 		}
 		void IIMaxPowerCurrentValueChanged(object sender, int NewValue, bool ByUser)
 		{
+			if (ByUser && IIMinPower.CurrentValue >= NewValue)
+				IIMinPower.CurrentValue = NewValue - 1;
+
 			IP.MaxPower = NewValue;
 		}
 
