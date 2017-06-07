@@ -83,3 +83,4 @@ Thanks to:
 - Olivier Salvador, for french translation
 - Gerd Vogel, for german translation
 - Anders Lassen, for danish translation
+- Gerson Koppe, for brasilian translation
