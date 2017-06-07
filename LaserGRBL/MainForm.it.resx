@@ -543,6 +543,25 @@
   <data name="MNDanish.Text" xml:space="preserve">
     <value>Danese</value>
   </data>
+  <data name="brazilianToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAInSURBVDhPpZNPSNNhHIcHQmK1
+        BFchLcsS0YZUw0CCyoMmNcOYf3Lmn81IUOriTGu0nI7ApJ9NhTnmoTSY/TFTybyY5BQvRiaRRVkjgiCM
+        AukPVIen9x00UTs0euE5fT/Pc3tVwH8h3ypBjCA2TKQjXdWG3H4HyzEKDHcaBU6Md1feJdKVgfijfXbq
+        J66FsI13c368i6FXVxiea8E+0cU5f/eSjXSkKwMJhl4b1aNuSoeaKRhUsI05ePSmksDzKgKzVUwHKrGP
+        OygYUCgTG7mVjnSDgYyeGorvKaJaT9fjCj5/yKWhRSHd1EN6vo/qRoX5d3n4Zk5i7LsQ3EonFNh79TQ1
+        D87wNHAIvusZHq2n7OIIde0jmB0D7My5jfOyFX6m8uJtFmdHrUgnFCjymVj4uAO+aGBhI0csVtaktBO7
+        vxW9qRND7S0qGi7xaz4Wvmr49imJ8pvHFgPJrmKK+vOZfpkIP9TYmwqJSvaiTlVQ6xWidF46rleL2zpm
+        X2/HMphLsuv4YmBbUx6bPeXEdZho8qfxfm4rOZZTRCa5iNS1YTDXEHi2hbbJPcR7CtF6TiCdUEDryCbR
+        W4rWXUR0aymZN7K5/ySFqbFdTD3czciMjuzew8HbJrEJboUTCqy3HSTBWxJC6zYTL0ZO/wGaJ/eR0Fki
+        RPOSjXT+BOI0dRksJ0aw2poVJKY2c8VdIl0ZiBboBGlhIh3pqiIEUYK1YSKdiL9+0X8H1W+6ZNsaXjRM
+        MAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="brazilianToolStripMenuItem.Text" xml:space="preserve">
+    <value>Brasiliano</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

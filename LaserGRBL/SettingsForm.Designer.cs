@@ -37,9 +37,9 @@
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.CBSupportPWM = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
 			this.CBLaserMode = new System.Windows.Forms.CheckBox();
 			this.label2 = new System.Windows.Forms.Label();
+			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
@@ -76,8 +76,8 @@
 			// 
 			// groupBox1
 			// 
-			resources.ApplyResources(this.groupBox1, "groupBox1");
 			this.groupBox1.Controls.Add(this.tableLayoutPanel3);
+			resources.ApplyResources(this.groupBox1, "groupBox1");
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.TabStop = false;
 			// 
@@ -102,18 +102,6 @@
 			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
 			// 
-			// BtnModulationInfo
-			// 
-			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
-			this.BtnModulationInfo.AltImage = null;
-			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
-			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
-			this.BtnModulationInfo.Name = "BtnModulationInfo";
-			this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnModulationInfo.UseAltImage = false;
-			this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
-			// 
 			// CBLaserMode
 			// 
 			resources.ApplyResources(this.CBLaserMode, "CBLaserMode");
@@ -124,6 +112,18 @@
 			// 
 			resources.ApplyResources(this.label2, "label2");
 			this.label2.Name = "label2";
+			// 
+			// BtnModulationInfo
+			// 
+			this.BtnModulationInfo.AltImage = null;
+			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
+			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
+			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
+			this.BtnModulationInfo.Name = "BtnModulationInfo";
+			this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnModulationInfo.UseAltImage = false;
+			this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
 			// 
 			// SettingsForm
 			// 
@@ -151,8 +151,8 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
 		private System.Windows.Forms.CheckBox CBSupportPWM;
 		private System.Windows.Forms.Label label1;
-		private UserControls.ImageButton BtnModulationInfo;
         private System.Windows.Forms.CheckBox CBLaserMode;
         private System.Windows.Forms.Label label2;
+		private UserControls.ImageButton BtnModulationInfo;
     }
 }

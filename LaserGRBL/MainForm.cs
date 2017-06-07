@@ -367,5 +367,10 @@ namespace LaserGRBL
 		{
 			SetLanguage(new System.Globalization.CultureInfo("da"));
 		}
+
+		private void MNBrazilian_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("pt-BR"));
+		}
 	}
 }
