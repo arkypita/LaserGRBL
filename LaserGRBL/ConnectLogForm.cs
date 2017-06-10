@@ -33,10 +33,22 @@ namespace LaserGRBL
 			
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(Color.LightSkyBlue));
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(Color.Pink));
-			
+
+			InitProtocolCB();
 			InitSpeedCB();
 			InitPortCB();
+
+			RestoreConf();
+
 			TimerUpdate();
+		}
+
+		private void RestoreConf()
+		{
+			CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
+			CBSpeed.SelectedItem = Settings.GetObject("Serial Speed", 115200);
+			TxtHostName.Text = (string)Settings.GetObject("Ethernet HostName", "");
+			ITcpPort.CurrentValue = (int)Settings.GetObject("Ethernet Port", 0);
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -51,11 +63,18 @@ namespace LaserGRBL
 			}
 		}
 
+		private void InitProtocolCB()
+		{
+			CBProtocol.BeginUpdate();
+			CBProtocol.Items.Add(ComWrapper.WrapperType.UsbSerial);
+			CBProtocol.Items.Add(ComWrapper.WrapperType.Ethernet);
+			CBProtocol.EndUpdate();
+		}
+
 		private void InitSpeedCB() //Baud Rates combo box
 		{
 			CBSpeed.BeginUpdate();
 			CBSpeed.Items.AddRange(baudRates);
-			CBSpeed.SelectedItem = 115200;
 			CBSpeed.EndUpdate();
 		}
 
@@ -86,7 +105,7 @@ namespace LaserGRBL
 		
 		void BtnConnectDisconnectClick(object sender, EventArgs e)
 		{
-			if (Core.MachineStatus == GrblCore.MacStatus.Disconnected && CBSpeed.SelectedItem != null && CBPort.SelectedItem != null)
+			if (Core.MachineStatus == GrblCore.MacStatus.Disconnected)
 				Core.OpenCom();
 			else
 				Core.CloseCom(false);
@@ -152,9 +171,12 @@ namespace LaserGRBL
 			TxtManualCommand.Enabled = Core.CanSendManualCommand;
 			if (old == false && TxtManualCommand.Enabled == true)
 				TxtManualCommand.Focus();
-			
+
+			CBProtocol.Enabled = !Core.IsOpen;
 			CBPort.Enabled = !Core.IsOpen;
 			CBSpeed.Enabled = !Core.IsOpen;
+			TxtHostName.Enabled = !Core.IsOpen;
+			ITcpPort.Enabled = !Core.IsOpen;
 
 			CmdLog.TimerUpdate();
 
@@ -162,9 +184,54 @@ namespace LaserGRBL
 		}
 
 		private void CBPort_SelectedIndexChanged(object sender, EventArgs e)
-		{Core.PortName = (string)CBPort.SelectedItem;}
+		{
+			UpdateConf();
+		}
 
 		private void CBSpeed_SelectedIndexChanged(object sender, EventArgs e)
-		{Core.BaudRate = (int)CBSpeed.SelectedItem;}
+		{
+			UpdateConf();
+		}
+
+		private void UpdateConf()
+		{
+			if (CBProtocol.SelectedItem != null)
+			{
+				if (((ComWrapper.WrapperType)CBProtocol.SelectedItem == ComWrapper.WrapperType.UsbSerial) && CBPort.SelectedItem != null && CBSpeed.SelectedItem != null)
+					Core.Configure((ComWrapper.WrapperType)CBProtocol.SelectedItem, (string)CBPort.SelectedItem, (int)CBSpeed.SelectedItem);
+				else if (((ComWrapper.WrapperType)CBProtocol.SelectedItem == ComWrapper.WrapperType.Ethernet))
+					Core.Configure((ComWrapper.WrapperType)CBProtocol.SelectedItem, (string)TxtHostName.Text, (int)ITcpPort.CurrentValue);
+			}
+
+			if (CBProtocol.SelectedItem != null)
+				Settings.SetObject("ComWrapper Protocol", CBProtocol.SelectedItem);
+			if (CBSpeed.SelectedItem != null)
+				Settings.SetObject("Serial Speed", CBSpeed.SelectedItem);
+
+			if (TxtHostName.Text != "")
+				Settings.SetObject("Ethernet HostName", TxtHostName.Text);
+			if (ITcpPort.CurrentValue != 0)
+				Settings.SetObject("Ethernet Port", ITcpPort.CurrentValue);
+
+			Settings.Save();
+		}
+
+		private void CBProtocol_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			CBPort.Visible = CBSpeed.Visible = LblComPort.Visible = LblBaudRate.Visible = ((ComWrapper.WrapperType)CBProtocol.SelectedItem == ComWrapper.WrapperType.UsbSerial);
+			ITcpPort.Visible = TxtHostName.Visible = LblHostName.Visible = LblTcpPort.Visible = ((ComWrapper.WrapperType)CBProtocol.SelectedItem == ComWrapper.WrapperType.Ethernet);
+
+			UpdateConf();
+		}
+
+		private void TxtHostName_TextChanged(object sender, EventArgs e)
+		{
+			UpdateConf();
+		}
+
+		private void ITcpPort_CurrentValueChanged(object sender, int NewValue, bool ByUser)
+		{
+			UpdateConf();
+		}
 	}
 }

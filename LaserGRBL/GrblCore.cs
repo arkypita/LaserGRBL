@@ -22,7 +22,7 @@ namespace LaserGRBL
 		public event dlgOnOverrideChange OnOverrideChange;
 
 		private System.Windows.Forms.Control syncro;
-		private System.IO.Ports.SerialPort com;
+		private ComWrapper.IComWrapper com;
 		private GrblFile file;
 		private System.Collections.Generic.Queue<GrblCommand> mQueue;
 		private System.Collections.Generic.List<IGrblRow> mSent;
@@ -56,7 +56,7 @@ namespace LaserGRBL
 			SetStatus(MacStatus.Disconnected);
 
 			syncro = syncroObject;
-			com = new System.IO.Ports.SerialPort();
+			com = new ComWrapper.UsbSerial();
 
 			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", null);
 			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null);
@@ -342,18 +342,28 @@ namespace LaserGRBL
 			{ mQueuePtr.Enqueue(cmd.Clone() as GrblCommand); }
 		}
 
-		private string mPortName;
-		public string PortName
-		{
-			get { return mPortName; }
-			set { mPortName = value; }
-		}
+		//private string mPortName;
+		//public string PortName
+		//{
+		//	get { return mPortName; }
+		//	set { mPortName = value; }
+		//}
 
-		private int mBaudRate;
-		public int BaudRate
+		//private int mBaudRate;
+		//public int BaudRate
+		//{
+		//	get { return mBaudRate; }
+		//	set { mBaudRate = value; }
+		//}
+
+		public void Configure(ComWrapper.WrapperType wraptype, params object[] conf)
 		{
-			get { return mBaudRate; }
-			set { mBaudRate = value; }
+			if (wraptype == ComWrapper.WrapperType.UsbSerial && (com == null || com.GetType() != typeof(ComWrapper.UsbSerial)))
+				com = new ComWrapper.UsbSerial();
+			else if (wraptype == ComWrapper.WrapperType.Ethernet && (com == null || com.GetType() != typeof(ComWrapper.Ethernet)))
+				com = new ComWrapper.Ethernet();
+
+			com.Configure(conf); 
 		}
 
 		public void OpenCom()
@@ -361,36 +371,10 @@ namespace LaserGRBL
 			try
 			{
 				SetStatus(MacStatus.Connecting);
-				com.PortName = mPortName;
-				com.BaudRate = mBaudRate;
-
-				Logger.LogMessage("OpenCom", "Open {0} @ {1} baud", com.PortName.ToUpper(), com.BaudRate);
 
 				if (!com.IsOpen)
 				{
-					try
-					{
-						com.Open();
-					}
-					catch (System.IO.IOException ioex)
-					{
-
-						if (char.IsDigit(mPortName[mPortName.Length - 1]) && char.IsDigit(mPortName[mPortName.Length - 2])) //two digits port like COM23
-						{
-							//FIX https://github.com/arkypita/LaserGRBL/issues/31
-							com.PortName = mPortName.Substring(0, mPortName.Length - 1); //remove last digit and try again
-
-							Logger.LogMessage("OpenCom", "Retry open {0} @ {1} baud", com.PortName.ToUpper(), com.BaudRate);
-							com.Open();
-						}
-						else
-						{
-							throw ioex;
-						}
-					}
-
-					com.DiscardOutBuffer();
-					com.DiscardInBuffer();
+					com.Open();
 				}
 
 				lock (this)
@@ -399,11 +383,12 @@ namespace LaserGRBL
 					RX.Start();
 					TX.Start();
 				}
-
 			}
 			catch (Exception ex)
 			{
 				Logger.LogException("OpenCom", ex);
+				SetStatus(MacStatus.Disconnected);
+				System.Windows.Forms.MessageBox.Show("Cannot connect to device","Connection failed", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 			}
 		}
 
@@ -412,13 +397,7 @@ namespace LaserGRBL
 			try
 			{
 				if (com.IsOpen)
-				{
-					Logger.LogMessage("CloseCom", "Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER");
-
-					com.DiscardOutBuffer();
-					com.DiscardInBuffer();
-					com.Close();
-				}
+					com.Close(auto);
 
 				mBuffer = 0;
 
@@ -476,7 +455,7 @@ namespace LaserGRBL
 				if (!mute) Logger.LogMessage("SendImmediate", "Send Immediate Command [{0}]", b);
 
 				lock (this)
-				{ if (com.IsOpen) com.Write(new byte[] { b }, 0, 1); }
+				{ if (com.IsOpen) com.Write(b); }
 			}
 			catch (Exception ex)
 			{Logger.LogException("SendImmediate", ex);}
