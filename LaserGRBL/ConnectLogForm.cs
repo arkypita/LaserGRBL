@@ -218,9 +218,10 @@ namespace LaserGRBL
 
 		private void CBProtocol_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			tableLayoutPanel4.SuspendLayout();
 			CBPort.Visible = CBSpeed.Visible = LblComPort.Visible = LblBaudRate.Visible = ((ComWrapper.WrapperType)CBProtocol.SelectedItem == ComWrapper.WrapperType.UsbSerial);
 			ITcpPort.Visible = TxtHostName.Visible = LblHostName.Visible = LblTcpPort.Visible = ((ComWrapper.WrapperType)CBProtocol.SelectedItem == ComWrapper.WrapperType.Ethernet);
-
+			tableLayoutPanel4.ResumeLayout();
 			UpdateConf();
 		}
 
