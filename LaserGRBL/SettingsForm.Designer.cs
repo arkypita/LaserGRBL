@@ -39,6 +39,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.CBLaserMode = new System.Windows.Forms.CheckBox();
 			this.label2 = new System.Windows.Forms.Label();
+			this.BtnLaserMode = new LaserGRBL.UserControls.ImageButton();
 			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
@@ -84,6 +85,7 @@
 			// tableLayoutPanel3
 			// 
 			resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
+			this.tableLayoutPanel3.Controls.Add(this.BtnLaserMode, 0, 1);
 			this.tableLayoutPanel3.Controls.Add(this.CBSupportPWM, 1, 0);
 			this.tableLayoutPanel3.Controls.Add(this.label1, 2, 0);
 			this.tableLayoutPanel3.Controls.Add(this.BtnModulationInfo, 0, 0);
@@ -112,6 +114,18 @@
 			// 
 			resources.ApplyResources(this.label2, "label2");
 			this.label2.Name = "label2";
+			// 
+			// BtnLaserMode
+			// 
+			this.BtnLaserMode.AltImage = null;
+			this.BtnLaserMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnLaserMode.Coloration = System.Drawing.Color.Empty;
+			this.BtnLaserMode.Image = ((System.Drawing.Image)(resources.GetObject("BtnLaserMode.Image")));
+			resources.ApplyResources(this.BtnLaserMode, "BtnLaserMode");
+			this.BtnLaserMode.Name = "BtnLaserMode";
+			this.BtnLaserMode.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnLaserMode.UseAltImage = false;
+			this.BtnLaserMode.Click += new System.EventHandler(this.BtnLaserMode_Click);
 			// 
 			// BtnModulationInfo
 			// 
@@ -154,5 +168,6 @@
         private System.Windows.Forms.CheckBox CBLaserMode;
         private System.Windows.Forms.Label label2;
 		private UserControls.ImageButton BtnModulationInfo;
+		private UserControls.ImageButton BtnLaserMode;
     }
 }

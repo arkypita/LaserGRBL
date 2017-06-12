@@ -41,7 +41,12 @@ namespace LaserGRBL
 
 		private void BtnModulationInfo_Click(object sender, EventArgs e)
 		{
+			System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#pwm-support");
+		}
 
+		private void BtnLaserMode_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#laser-mode");
 		}
     }
 }
