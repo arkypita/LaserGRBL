@@ -637,20 +637,31 @@ namespace LaserGRBL.RasterConverter
 		{
 			try
 			{
-				using (Bitmap bmp = ProduceBitmap(mResized, mResized.Size, mDemo))
+				if (mDemo)
 				{
-					if (!MustExitTH)
+					using (Bitmap bmp = ProduceWhitepointDemo(mResized, mResized.Size))
 					{
-						if (SelectedTool == Tool.Line2Line)
-							PreviewLineByLine(bmp);
-						else if (SelectedTool == Tool.Dithering)
-							PreviewDithering(bmp);
-						else if (SelectedTool == Tool.Vectorize)
-							PreviewVector(bmp);
+						if (!MustExitTH && PreviewReady != null)
+							PreviewReady(bmp);
 					}
-					
-					if (!MustExitTH && PreviewReady != null)
-						PreviewReady(bmp);
+				}
+				else
+				{
+					using (Bitmap bmp = ProduceBitmap(mResized, mResized.Size))
+					{
+						if (!MustExitTH)
+						{
+							if (SelectedTool == Tool.Line2Line)
+								PreviewLineByLine(bmp);
+							else if (SelectedTool == Tool.Dithering)
+								PreviewDithering(bmp);
+							else if (SelectedTool == Tool.Vectorize)
+								PreviewVector(bmp);
+						}
+
+						if (!MustExitTH && PreviewReady != null)
+							PreviewReady(bmp);
+					}
 				}
 			}
 			catch(Exception ex) 
@@ -732,29 +743,37 @@ namespace LaserGRBL.RasterConverter
 		
 		private Bitmap CreateTarget(Size size)
 		{
-			return ProduceBitmap(mOriginal, size, false); //non usare using perché poi viene assegnato al postprocessing 
+			return ProduceBitmap(mOriginal, size); //non usare using perché poi viene assegnato al postprocessing 
 		}
 
-		private Bitmap ProduceBitmap(Image img, Size size, bool demo)
+		private Bitmap ProduceBitmap(Image img, Size size)
 		{
 			if (SelectedTool == Tool.Vectorize && UseDownSampling && DownSampling > 1) //if downsampling
 			{
 				using (Image downsampled = ImageTransform.ResizeImage(img, new Size((int)(size.Width * 1 / DownSampling), (int)(size.Height * 1 / DownSampling)), false, InterpolationMode.HighQualityBicubic))
-					return ProduceBitmap2(downsampled, ref size, demo);
+					return ProduceBitmap2(downsampled, ref size);
 			}
 			else
 			{
-				return ProduceBitmap2(img, ref size, demo);
+				return ProduceBitmap2(img, ref size);
 			}
 		}
 
-		private Bitmap ProduceBitmap2(Image img, ref Size size, bool demo)
+		private Bitmap ProduceWhitepointDemo(Image img, Size size)
+		{
+ 			using (Bitmap resized = ImageTransform.ResizeImage(mResized, mResized.Size, false, Interpolation))
+				using (Bitmap grayscale = ImageTransform.GrayScale(resized, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), IsGrayScale ? ImageTransform.Formula.SimpleAverage : Formula))
+					return ImageTransform.Whitenize(grayscale, mWhitePoint, true);
+		}
+
+
+		private Bitmap ProduceBitmap2(Image img, ref Size size)
 		{
 			using (Bitmap resized = ImageTransform.ResizeImage(img, size, false, Interpolation))
 			{
 				using (Bitmap grayscale = ImageTransform.GrayScale(resized, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), IsGrayScale ? ImageTransform.Formula.SimpleAverage : Formula))
 				{
-					using (Bitmap whiten = ImageTransform.Whitenize(grayscale, mWhitePoint, demo))
+					using (Bitmap whiten = ImageTransform.Whitenize(grayscale, mWhitePoint, false))
 					{
 						if (SelectedTool == Tool.Dithering)
 							return ImageTransform.DitherImage(whiten, mDithering);
