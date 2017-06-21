@@ -174,15 +174,6 @@
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Лазер Вкл : М3 это стандартный режим . GRBL v1.1 поддерживает новыую команду М4 " Динамическое управление мощностью лазера". Лазер Выкл :только поддерживается М5. Нажмите для детальной информации .</value>
   </data>
-  <data name="CBLaserON.Items" xml:space="preserve">
-    <value>М3</value>
-  </data>
-  <data name="CBLaserON.Items1" xml:space="preserve">
-    <value>М4</value>
-  </data>
-  <data name="CBLaserOFF.Items" xml:space="preserve">
-    <value>М5</value>
-  </data>
   <data name="groupBox5.Text" xml:space="preserve">
     <value>Опции лазера</value>
   </data>

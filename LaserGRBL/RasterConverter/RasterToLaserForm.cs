@@ -86,6 +86,7 @@ namespace LaserGRBL.RasterConverter
 			else
 			{
 				Image old = PbConverted.Image;
+				PbOriginal.Image = IP.Original;
 				PbConverted.Image = img.Clone() as Image;
 				if (old != null)
 					old.Dispose();
