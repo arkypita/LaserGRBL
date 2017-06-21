@@ -84,3 +84,4 @@ Thanks to:
 - Gerd Vogel, for german translation
 - Anders Lassen, for danish translation
 - Gerson Koppe, for brasilian translation
+- Alexey Golovin, for russian translation
