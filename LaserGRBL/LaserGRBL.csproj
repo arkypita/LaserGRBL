@@ -96,6 +96,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoUpdate\ZipStorer.cs" />
+    <Compile Include="ComWrapper\IComWrapper.cs" />
+    <Compile Include="ComWrapper\UsbSerial.cs" />
+    <Compile Include="ComWrapper\Ethernet.cs" />
     <Compile Include="ConnectLogForm.cs">
       <SubType>UserControl</SubType>
     </Compile>

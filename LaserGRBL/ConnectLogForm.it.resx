@@ -118,17 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="GBCommands.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 255</value>
+  </data>
+  <data name="GBFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 45</value>
+  </data>
+  <data name="GBConnection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 44</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>283, 348</value>
+  </data>
+  <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 255</value>
+  </data>
   <data name="TxtManualCommand.Size" type="System.Drawing.Size, System.Drawing">
     <value>279, 22</value>
   </data>
   <data name="CmdLog.Size" type="System.Drawing.Size, System.Drawing">
     <value>275, 226</value>
   </data>
-  <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 255</value>
-  </data>
-  <data name="GBCommands.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 255</value>
+  <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 45</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 13</value>
@@ -203,11 +215,8 @@
   <data name="BtnRunProgram.ToolTip" xml:space="preserve">
     <value>Esegui il programma</value>
   </data>
-  <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 45</value>
-  </data>
-  <data name="GBFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 45</value>
+  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 44</value>
   </data>
   <data name="CBPort.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 21</value>
@@ -378,15 +387,6 @@
   </data>
   <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
     <value>Connetti</value>
-  </data>
-  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 44</value>
-  </data>
-  <data name="GBConnection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 44</value>
-  </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 348</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>283, 348</value>

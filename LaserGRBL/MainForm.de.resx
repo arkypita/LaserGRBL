@@ -564,7 +564,7 @@
   <data name="MNDanish.Text" xml:space="preserve">
     <value>Dänisch</value>
   </data>
-  <data name="brazilianToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="MNBrazilian.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
         MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAInSURBVDhPpZNPSNNhHIcHQmK1
@@ -580,7 +580,7 @@
         MAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="brazilianToolStripMenuItem.Text" xml:space="preserve">
+  <data name="MNBrazilian.Text" xml:space="preserve">
     <value>Brasilianisch</value>
   </data>
   <data name="helpOnLineToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
