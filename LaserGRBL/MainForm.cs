@@ -372,5 +372,10 @@ namespace LaserGRBL
 		{
 			SetLanguage(new System.Globalization.CultureInfo("pt-BR"));
 		}
+
+		private void russianToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("ru"));
+		}
 	}
 }

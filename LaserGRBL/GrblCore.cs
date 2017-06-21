@@ -342,20 +342,6 @@ namespace LaserGRBL
 			{ mQueuePtr.Enqueue(cmd.Clone() as GrblCommand); }
 		}
 
-		//private string mPortName;
-		//public string PortName
-		//{
-		//	get { return mPortName; }
-		//	set { mPortName = value; }
-		//}
-
-		//private int mBaudRate;
-		//public int BaudRate
-		//{
-		//	get { return mBaudRate; }
-		//	set { mBaudRate = value; }
-		//}
-
 		public void Configure(ComWrapper.WrapperType wraptype, params object[] conf)
 		{
 			if (wraptype == ComWrapper.WrapperType.UsbSerial && (com == null || com.GetType() != typeof(ComWrapper.UsbSerial)))
