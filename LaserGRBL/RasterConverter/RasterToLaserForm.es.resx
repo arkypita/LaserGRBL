@@ -118,26 +118,44 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="TCOriginalPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>259, 3</value>
+  </data>
+  <data name="TCOriginalPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>522, 516</value>
+  </data>
+  <data name="FlipControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>259, 525</value>
+  </data>
   <data name="FlipControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 30</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tableLayoutPanel8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 555</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tableLayoutPanel8.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="TpPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>514, 490</value>
   </data>
   <data name="WB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>465, 467</value>
+    <value>451, 468</value>
   </data>
   <data name="WB.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 16</value>
   </data>
+  <data name="PbConverted.Size" type="System.Drawing.Size, System.Drawing">
+    <value>508, 484</value>
+  </data>
+  <data name="TpOriginal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>514, 490</value>
+  </data>
+  <data name="PbOriginal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>508, 484</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="BtFlipV.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="BtFlipV.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -408,13 +426,16 @@
     <value>24, 24</value>
   </data>
   <data name="GbVectorizeOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 423</value>
+    <value>3, 474</value>
+  </data>
+  <data name="GbVectorizeOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 164</value>
   </data>
   <data name="GbVectorizeOptions.Text" xml:space="preserve">
     <value>Opciones Vectorizar!</value>
   </data>
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 147</value>
+    <value>238, 145</value>
   </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 13</value>
@@ -462,10 +483,7 @@
     <value>114, 98</value>
   </data>
   <data name="CbFillingDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 21</value>
-  </data>
-  <data name="LblFillingQuality.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 127</value>
+    <value>122, 21</value>
   </data>
   <data name="LblFillingQuality.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 13</value>
@@ -474,13 +492,13 @@
     <value>Calidad</value>
   </data>
   <data name="UDFillingQuality.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 124</value>
+    <value>114, 123</value>
   </data>
   <data name="LblFillingLineLbl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 121</value>
+    <value>174, 126</value>
   </data>
   <data name="LblFillingLineLbl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 26</value>
+    <value>59, 13</value>
   </data>
   <data name="LblFillingLineLbl.Text" xml:space="preserve">
     <value>Lineas/mm</value>
@@ -491,20 +509,38 @@
   <data name="CbDownSample.Location" type="System.Drawing.Point, System.Drawing">
     <value>173, 77</value>
   </data>
+  <data name="BtnFillingQualityInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="BtnFillingQualityInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 124</value>
+  </data>
+  <data name="BtnFillingQualityInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1, 17</value>
+  </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 231</value>
+    <value>244, 255</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Parametros</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 212</value>
+    <value>238, 236</value>
   </data>
   <data name="CbResize.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 2</value>
-  </data>
-  <data name="CbResize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 21</value>
   </data>
   <data name="LblGrayscale.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 13</value>
@@ -515,14 +551,11 @@
   <data name="CbMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 27</value>
   </data>
-  <data name="CbMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 21</value>
-  </data>
   <data name="TBRed.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 51</value>
   </data>
   <data name="TBRed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 25</value>
+    <value>170, 25</value>
   </data>
   <data name="LblRed.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 57</value>
@@ -564,25 +597,25 @@
     <value>67, 78</value>
   </data>
   <data name="TBGreen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 25</value>
+    <value>170, 25</value>
   </data>
   <data name="TbBright.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 132</value>
   </data>
   <data name="TbBright.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 25</value>
+    <value>170, 25</value>
   </data>
   <data name="TBBlue.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 105</value>
   </data>
   <data name="TBBlue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 25</value>
+    <value>170, 25</value>
   </data>
   <data name="TbContrast.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 159</value>
   </data>
   <data name="TbContrast.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 25</value>
+    <value>170, 25</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 165</value>
@@ -594,7 +627,7 @@
     <value>Contraste</value>
   </data>
   <data name="CbThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 190</value>
+    <value>2, 214</value>
   </data>
   <data name="CbThreshold.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 17</value>
@@ -609,25 +642,37 @@
     <value>Adjuste</value>
   </data>
   <data name="TbThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>67, 186</value>
+    <value>67, 210</value>
   </data>
   <data name="TbThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 25</value>
+    <value>170, 25</value>
+  </data>
+  <data name="TBWhiteClip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 186</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 190</value>
   </data>
   <data name="GbLineToLineOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 328</value>
+    <value>3, 352</value>
+  </data>
+  <data name="GbLineToLineOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 116</value>
   </data>
   <data name="GbLineToLineOptions.Text" xml:space="preserve">
     <value>Opciones Linea a Linea</value>
   </data>
+  <data name="TLP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 97</value>
+  </data>
   <data name="CbDirections.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 2</value>
+    <value>60, 29</value>
   </data>
   <data name="CbDirections.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 21</value>
+    <value>176, 21</value>
   </data>
   <data name="UDQuality.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 27</value>
+    <value>60, 54</value>
   </data>
   <data name="CbLinePreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 17</value>
@@ -648,7 +693,7 @@
     <value>Dirección</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 30</value>
+    <value>120, 57</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 13</value>
@@ -656,11 +701,41 @@
   <data name="label8.Text" xml:space="preserve">
     <value>Lineas/mm</value>
   </data>
+  <data name="CbDither.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 3</value>
+  </data>
+  <data name="CbDither.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 21</value>
+  </data>
+  <data name="BtnQualityInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="BtnQualityInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 55</value>
+  </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 240</value>
+    <value>3, 264</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 82</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Herramienta de conversión</value>
+  </data>
+  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 63</value>
   </data>
   <data name="RbVectorize.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 17</value>

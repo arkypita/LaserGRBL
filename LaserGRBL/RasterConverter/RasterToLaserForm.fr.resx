@@ -117,10 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="WB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>443, 468</value>
+  </data>
+  <data name="PbConverted.Size" type="System.Drawing.Size, System.Drawing">
+    <value>508, 484</value>
+  </data>
+  <data name="TpPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>514, 490</value>
+  </data>
   <data name="TpPreview.Text" xml:space="preserve">
     <value>Aperçu</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="PbOriginal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>508, 484</value>
+  </data>
+  <data name="TpOriginal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>514, 490</value>
+  </data>
+  <data name="TCOriginalPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>259, 3</value>
+  </data>
+  <data name="TCOriginalPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>522, 516</value>
+  </data>
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
@@ -323,6 +344,9 @@
   </data>
   <data name="BtnRevert.ToolTip" xml:space="preserve">
     <value>Annule les modifications</value>
+  </data>
+  <data name="FlipControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>259, 525</value>
   </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 13</value>
@@ -665,6 +689,9 @@
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Types de conversion</value>
+  </data>
+  <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 555</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Abandon</value>

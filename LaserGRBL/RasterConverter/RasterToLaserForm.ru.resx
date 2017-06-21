@@ -136,17 +136,20 @@
   <data name="TpPreview.Text" xml:space="preserve">
     <value>Предпросмотр</value>
   </data>
+  <data name="WB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>432, 468</value>
+  </data>
   <data name="PbConverted.Size" type="System.Drawing.Size, System.Drawing">
     <value>497, 484</value>
   </data>
   <data name="TpOriginal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>475, 490</value>
+    <value>503, 490</value>
   </data>
   <data name="TpOriginal.Text" xml:space="preserve">
     <value>Оригинал</value>
   </data>
   <data name="PbOriginal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>469, 484</value>
+    <value>497, 484</value>
   </data>
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
