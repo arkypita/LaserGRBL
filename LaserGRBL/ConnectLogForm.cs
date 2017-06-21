@@ -17,11 +17,13 @@ namespace LaserGRBL
 	public partial class ConnectLogForm : System.Windows.Forms.UserControl
 	{
 		private object[] baudRates = { 4800, 9600, 19200, 38400, 57600, 115200, 230400 };
-		
+		public ComWrapper.WrapperType currentWrapper;
+
 		GrblCore Core;
 
 		public ConnectLogForm()
 		{
+			currentWrapper = (ComWrapper.WrapperType)Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			InitializeComponent();
 		}
 
@@ -34,7 +36,6 @@ namespace LaserGRBL
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(Color.LightSkyBlue));
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(Color.Pink));
 
-			InitProtocolCB();
 			InitSpeedCB();
 			InitPortCB();
 
@@ -45,7 +46,6 @@ namespace LaserGRBL
 
 		private void RestoreConf()
 		{
-			CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			CBSpeed.SelectedItem = Settings.GetObject("Serial Speed", 115200);
 			TxtHostName.Text = (string)Settings.GetObject("Ethernet HostName", "");
 			ITcpPort.CurrentValue = (int)Settings.GetObject("Ethernet Port", 0);
@@ -61,14 +61,6 @@ namespace LaserGRBL
 			{
 				TbFileName.Text = filename;
 			}
-		}
-
-		private void InitProtocolCB()
-		{
-			CBProtocol.BeginUpdate();
-			CBProtocol.Items.Add(ComWrapper.WrapperType.UsbSerial);
-			CBProtocol.Items.Add(ComWrapper.WrapperType.Ethernet);
-			CBProtocol.EndUpdate();
 		}
 
 		private void InitSpeedCB() //Baud Rates combo box
@@ -172,13 +164,23 @@ namespace LaserGRBL
 			if (old == false && TxtManualCommand.Enabled == true)
 				TxtManualCommand.Focus();
 
-			CBProtocol.Enabled = !Core.IsOpen;
+			//CBProtocol.Enabled = !Core.IsOpen;
 			CBPort.Enabled = !Core.IsOpen;
 			CBSpeed.Enabled = !Core.IsOpen;
 			TxtHostName.Enabled = !Core.IsOpen;
 			ITcpPort.Enabled = !Core.IsOpen;
 
 			CmdLog.TimerUpdate();
+
+			if (!Core.IsOpen)
+			{
+				ComWrapper.WrapperType actualWrapper = (ComWrapper.WrapperType)Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
+				if (actualWrapper != currentWrapper)
+				{
+					currentWrapper = actualWrapper;
+					UpdateConf();
+				}
+			}
 
 			ResumeLayout();
 		}
@@ -193,18 +195,19 @@ namespace LaserGRBL
 			UpdateConf();
 		}
 
+		
 		private void UpdateConf()
 		{
-			if (CBProtocol.SelectedItem != null)
-			{
-				if (((ComWrapper.WrapperType)CBProtocol.SelectedItem == ComWrapper.WrapperType.UsbSerial) && CBPort.SelectedItem != null && CBSpeed.SelectedItem != null)
-					Core.Configure((ComWrapper.WrapperType)CBProtocol.SelectedItem, (string)CBPort.SelectedItem, (int)CBSpeed.SelectedItem);
-				else if (((ComWrapper.WrapperType)CBProtocol.SelectedItem == ComWrapper.WrapperType.Ethernet))
-					Core.Configure((ComWrapper.WrapperType)CBProtocol.SelectedItem, (string)TxtHostName.Text, (int)ITcpPort.CurrentValue);
-			}
+			tableLayoutPanel4.SuspendLayout();
+			CBPort.Visible = CBSpeed.Visible = LblComPort.Visible = LblBaudRate.Visible = (currentWrapper == ComWrapper.WrapperType.UsbSerial);
+			ITcpPort.Visible = TxtHostName.Visible = LblHostName.Visible = LblTcpPort.Visible = (currentWrapper == ComWrapper.WrapperType.Ethernet);
+			tableLayoutPanel4.ResumeLayout();
 
-			if (CBProtocol.SelectedItem != null)
-				Settings.SetObject("ComWrapper Protocol", CBProtocol.SelectedItem);
+			if (currentWrapper == ComWrapper.WrapperType.UsbSerial && CBPort.SelectedItem != null && CBSpeed.SelectedItem != null)
+				Core.Configure(currentWrapper, (string)CBPort.SelectedItem, (int)CBSpeed.SelectedItem);
+			else if (currentWrapper == ComWrapper.WrapperType.Ethernet)
+				Core.Configure(currentWrapper, (string)TxtHostName.Text, (int)ITcpPort.CurrentValue);
+
 			if (CBSpeed.SelectedItem != null)
 				Settings.SetObject("Serial Speed", CBSpeed.SelectedItem);
 
@@ -218,10 +221,6 @@ namespace LaserGRBL
 
 		private void CBProtocol_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			tableLayoutPanel4.SuspendLayout();
-			CBPort.Visible = CBSpeed.Visible = LblComPort.Visible = LblBaudRate.Visible = ((ComWrapper.WrapperType)CBProtocol.SelectedItem == ComWrapper.WrapperType.UsbSerial);
-			ITcpPort.Visible = TxtHostName.Visible = LblHostName.Visible = LblTcpPort.Visible = ((ComWrapper.WrapperType)CBProtocol.SelectedItem == ComWrapper.WrapperType.Ethernet);
-			tableLayoutPanel4.ResumeLayout();
 			UpdateConf();
 		}
 

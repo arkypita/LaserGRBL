@@ -6,7 +6,7 @@ using System.Text;
 namespace LaserGRBL.ComWrapper
 {
 	public enum WrapperType
-	{ UsbSerial, Ethernet }
+	{ UsbSerial, Ethernet, LaserWebESP8266 }
 
 	interface IComWrapper
 	{

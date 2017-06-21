@@ -67,14 +67,12 @@ namespace LaserGRBL
 			this.TbFileName = new System.Windows.Forms.TextBox();
 			this.GBConnection = new System.Windows.Forms.Panel();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-			this.CBProtocol = new System.Windows.Forms.ComboBox();
 			this.LblTcpPort = new System.Windows.Forms.Label();
 			this.LblComPort = new System.Windows.Forms.Label();
 			this.LblBaudRate = new System.Windows.Forms.Label();
 			this.CBPort = new System.Windows.Forms.ComboBox();
 			this.CBSpeed = new System.Windows.Forms.ComboBox();
 			this.LblHostName = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
 			this.TxtHostName = new System.Windows.Forms.TextBox();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
 			this.TxtManualCommand = new LaserGRBL.UserControls.GrblTextBox();
@@ -161,27 +159,16 @@ namespace LaserGRBL
 			// tableLayoutPanel4
 			// 
 			resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
-			this.tableLayoutPanel4.Controls.Add(this.CBProtocol, 1, 0);
-			this.tableLayoutPanel4.Controls.Add(this.LblTcpPort, 0, 4);
-			this.tableLayoutPanel4.Controls.Add(this.LblComPort, 0, 1);
-			this.tableLayoutPanel4.Controls.Add(this.LblBaudRate, 0, 2);
-			this.tableLayoutPanel4.Controls.Add(this.CBPort, 1, 1);
-			this.tableLayoutPanel4.Controls.Add(this.CBSpeed, 1, 2);
-			this.tableLayoutPanel4.Controls.Add(this.BtnConnectDisconnect, 2, 1);
-			this.tableLayoutPanel4.Controls.Add(this.LblHostName, 0, 3);
-			this.tableLayoutPanel4.Controls.Add(this.label6, 0, 0);
-			this.tableLayoutPanel4.Controls.Add(this.ITcpPort, 1, 4);
-			this.tableLayoutPanel4.Controls.Add(this.TxtHostName, 1, 3);
+			this.tableLayoutPanel4.Controls.Add(this.LblTcpPort, 0, 3);
+			this.tableLayoutPanel4.Controls.Add(this.LblComPort, 0, 0);
+			this.tableLayoutPanel4.Controls.Add(this.LblBaudRate, 0, 1);
+			this.tableLayoutPanel4.Controls.Add(this.CBPort, 1, 0);
+			this.tableLayoutPanel4.Controls.Add(this.CBSpeed, 1, 1);
+			this.tableLayoutPanel4.Controls.Add(this.BtnConnectDisconnect, 2, 0);
+			this.tableLayoutPanel4.Controls.Add(this.LblHostName, 0, 2);
+			this.tableLayoutPanel4.Controls.Add(this.ITcpPort, 1, 3);
+			this.tableLayoutPanel4.Controls.Add(this.TxtHostName, 1, 2);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-			// 
-			// CBProtocol
-			// 
-			this.tableLayoutPanel4.SetColumnSpan(this.CBProtocol, 2);
-			resources.ApplyResources(this.CBProtocol, "CBProtocol");
-			this.CBProtocol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CBProtocol.FormattingEnabled = true;
-			this.CBProtocol.Name = "CBProtocol";
-			this.CBProtocol.SelectedIndexChanged += new System.EventHandler(this.CBProtocol_SelectedIndexChanged);
 			// 
 			// LblTcpPort
 			// 
@@ -218,11 +205,6 @@ namespace LaserGRBL
 			// 
 			resources.ApplyResources(this.LblHostName, "LblHostName");
 			this.LblHostName.Name = "LblHostName";
-			// 
-			// label6
-			// 
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.Name = "label6";
 			// 
 			// TxtHostName
 			// 
@@ -342,8 +324,6 @@ namespace LaserGRBL
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label LblTcpPort;
 		private System.Windows.Forms.Label LblHostName;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.ComboBox CBProtocol;
 		private UserControls.IntegerInput.IntegerInputRanged ITcpPort;
 		private System.Windows.Forms.TextBox TxtHostName;
 	}

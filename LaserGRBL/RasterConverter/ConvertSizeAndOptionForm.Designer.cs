@@ -422,7 +422,7 @@ namespace LaserGRBL.RasterConverter
 			// 
 			resources.ApplyResources(this.IIMinPower, "IIMinPower");
 			this.IIMinPower.ForcedText = null;
-			this.IIMinPower.ForceMinMax = true;
+			this.IIMinPower.ForceMinMax = false;
 			this.IIMinPower.MaxValue = 999;
 			this.IIMinPower.MinValue = 0;
 			this.IIMinPower.Name = "IIMinPower";
@@ -434,7 +434,7 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.IIMaxPower, "IIMaxPower");
 			this.IIMaxPower.CurrentValue = 255;
 			this.IIMaxPower.ForcedText = null;
-			this.IIMaxPower.ForceMinMax = true;
+			this.IIMaxPower.ForceMinMax = false;
 			this.IIMaxPower.MaxValue = 1000;
 			this.IIMaxPower.MinValue = 1;
 			this.IIMaxPower.Name = "IIMaxPower";
