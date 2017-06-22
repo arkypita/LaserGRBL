@@ -200,12 +200,12 @@ namespace LaserGRBL
 		{
 			tableLayoutPanel4.SuspendLayout();
 			CBPort.Visible = CBSpeed.Visible = LblComPort.Visible = LblBaudRate.Visible = (currentWrapper == ComWrapper.WrapperType.UsbSerial);
-			ITcpPort.Visible = TxtHostName.Visible = LblHostName.Visible = LblTcpPort.Visible = (currentWrapper == ComWrapper.WrapperType.Ethernet);
+			ITcpPort.Visible = TxtHostName.Visible = LblHostName.Visible = LblTcpPort.Visible = (currentWrapper == ComWrapper.WrapperType.Ethernet || currentWrapper == ComWrapper.WrapperType.LaserWebESP8266);
 			tableLayoutPanel4.ResumeLayout();
 
 			if (currentWrapper == ComWrapper.WrapperType.UsbSerial && CBPort.SelectedItem != null && CBSpeed.SelectedItem != null)
 				Core.Configure(currentWrapper, (string)CBPort.SelectedItem, (int)CBSpeed.SelectedItem);
-			else if (currentWrapper == ComWrapper.WrapperType.Ethernet)
+			else if (currentWrapper == ComWrapper.WrapperType.Ethernet || currentWrapper == ComWrapper.WrapperType.LaserWebESP8266)
 				Core.Configure(currentWrapper, (string)TxtHostName.Text, (int)ITcpPort.CurrentValue);
 
 			if (CBSpeed.SelectedItem != null)

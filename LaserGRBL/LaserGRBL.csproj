@@ -97,6 +97,7 @@
   <ItemGroup>
     <Compile Include="AutoUpdate\ZipStorer.cs" />
     <Compile Include="ComWrapper\IComWrapper.cs" />
+    <Compile Include="ComWrapper\LaserWebESP8266.cs" />
     <Compile Include="ComWrapper\UsbSerial.cs" />
     <Compile Include="ComWrapper\Ethernet.cs" />
     <Compile Include="ConnectLogForm.cs">
