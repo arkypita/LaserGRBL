@@ -96,6 +96,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoUpdate\ZipStorer.cs" />
+    <Compile Include="GrblEmulator\Console.cs" />
+    <Compile Include="GrblEmulator\GrblEmulator.cs" />
     <Compile Include="ComWrapper\IComWrapper.cs" />
     <Compile Include="ComWrapper\LaserWebESP8266.cs" />
     <Compile Include="ComWrapper\UsbSerial.cs" />
