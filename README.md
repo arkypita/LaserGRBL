@@ -76,6 +76,7 @@ LaserGRBL contains some code from:
 - [CsPotrace](https://drawing3d.de/Downloads.aspx) - Copyright Peter Selinger, port by Wolfgang Nagl
 - [Bezier2Biarc](https://github.com/domoszlai/bezier2biarc) - Copyright Laszlo
 - [ZipStorer](https://github.com/jaime-olivares/zipstorer) - Copyright Jaime Olivares
+- [websocket-sharp](https://github.com/sta/websocket-sharp) - Copyright sta.blockhead
 
 Thanks to:
 - Myself, for italian and english language
