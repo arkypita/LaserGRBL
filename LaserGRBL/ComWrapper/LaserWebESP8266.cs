@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using WebSocketSharp;
 
 namespace LaserGRBL.ComWrapper
 {
 	class LaserWebESP8266 : IComWrapper
 	{
+
 		private string mAddress;
 		private int mPort;
+		private WebSocket cln;
 
-		private System.Net.Sockets.TcpClient cln;
-		BinaryWriter bwriter;
-		StreamReader sreader;
-		StreamWriter swriter;
+		private Queue<string> buffer = new Queue<string>();
 
 		public void Configure(params object[] param)
 		{
@@ -31,14 +31,12 @@ namespace LaserGRBL.ComWrapper
 				else if (mPort == 0)
 					throw new MissingFieldException("Missing Port");
 
-				cln = new System.Net.Sockets.TcpClient();
+				buffer.Clear();
+				cln = new WebSocketSharp.WebSocket(string.Format("ws://{0}:{1}", mAddress, mPort));
 				Logger.LogMessage("OpenCom", "Open {0}:{1}", mAddress, mPort);
-				cln.Connect(mAddress, mPort);
+				cln.OnMessage += cln_OnMessage;
+				cln.Connect();
 
-				Stream cst = cln.GetStream();
-				bwriter = new BinaryWriter(cst);
-				sreader = new StreamReader(cst, Encoding.ASCII);
-				swriter = new StreamWriter(cst, Encoding.ASCII);
 			}
 			else
 			{
@@ -54,36 +52,47 @@ namespace LaserGRBL.ComWrapper
 				{
 					Logger.LogMessage("CloseCom", "Close {0} [{1}]", mAddress, auto ? "CORE" : "USER");
 					cln.Close();
+					cln.OnMessage -= cln_OnMessage;
+					buffer.Clear();
 				}
 				catch { }
 
 				cln = null;
-				bwriter = null;
-				sreader = null;
-				swriter = null;
 			}
 		}
 
 		public bool IsOpen
 		{
-			get { return cln != null && cln.Connected; }
+			get { return cln != null && cln.IsConnected; }
 		}
 
 		public void Write(byte b)
 		{
-			bwriter.Write(b);
-			bwriter.Flush();
+			if (IsOpen)
+				cln.Send(new byte[] { b });
 		}
 
 		public void WriteLine(string text)
 		{
-			swriter.WriteLine(text);
-			swriter.Flush();
+			if (IsOpen)
+				cln.Send(text);
 		}
+
+		void cln_OnMessage(object sender, MessageEventArgs e)
+		{ buffer.Enqueue(e.Data); }
 
 		public string ReadLine()
 		{
-			return sreader.ReadLine();
+			string rv = null;
+			while (IsOpen && rv == null) //wait for disconnect or data
+			{
+				if (buffer.Count > 0)
+					rv = buffer.Dequeue();
+				else
+					System.Threading.Thread.Sleep(10);
+			}
+
+			return rv;
 		}
 	}
 }
