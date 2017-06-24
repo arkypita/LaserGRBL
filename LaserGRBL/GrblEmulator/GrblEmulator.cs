@@ -13,7 +13,7 @@ namespace LaserGRBL
 		public static void Start()
 		{
 			ConsoleAPI.HaveConsole = true;
-			srv = new WebSocketServer("ws://127.0.0.1:8181");
+			srv = new WebSocketServer("ws://127.0.0.1:81");
 			srv.AddWebSocketService<GrblWebSocketEmulator>("/");
 			Console.WriteLine("Run Grbl emulator");
 			srv.Start();
@@ -55,10 +55,15 @@ namespace LaserGRBL
 					Console.WriteLine("Client connected!");
 					buffer.Clear();
 					QueueManager.Start();
-
+					SendConnected();
 					SendVersion();
 					SendStatus();
 				}
+			}
+
+			private void SendConnected()
+			{
+				Send("Connected\r\n");
 			}
 
 			protected override void OnMessage(MessageEventArgs e)
