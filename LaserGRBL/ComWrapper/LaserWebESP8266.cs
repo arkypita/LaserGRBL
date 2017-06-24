@@ -69,17 +69,20 @@ namespace LaserGRBL.ComWrapper
 		public void Write(byte b)
 		{
 			if (IsOpen)
-				cln.Send(new byte[] { b });
+				cln.Send(new string((char)b,1));
 		}
 
 		public void WriteLine(string text)
 		{
 			if (IsOpen)
-				cln.Send(text);
+				cln.Send(text + "\r\n");
 		}
 
 		void cln_OnMessage(object sender, MessageEventArgs e)
-		{ buffer.Enqueue(e.Data); }
+		{
+			foreach (string line in e.Data.Split(new string[] {"\n", "\r\n"}, StringSplitOptions.RemoveEmptyEntries))
+				buffer.Enqueue(line); 
+		}
 
 		public string ReadLine()
 		{
