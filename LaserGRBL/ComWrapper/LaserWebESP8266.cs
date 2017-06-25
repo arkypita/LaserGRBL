@@ -24,24 +24,21 @@ namespace LaserGRBL.ComWrapper
 
 		public void Open()
 		{
-			if (cln == null)
-			{
-				if (string.IsNullOrEmpty(mAddress))
-					throw new MissingFieldException("Missing HostName");
-				else if (mPort == 0)
-					throw new MissingFieldException("Missing Port");
+			if (cln != null)
+				Close(true);
 
-				buffer.Clear();
-				cln = new WebSocketSharp.WebSocket(string.Format("ws://{0}:{1}", mAddress, mPort));
-				Logger.LogMessage("OpenCom", "Open {0}:{1}", mAddress, mPort);
-				cln.OnMessage += cln_OnMessage;
-				cln.Connect();
 
-			}
-			else
-			{
-				throw new InvalidOperationException("Port already opened");
-			}
+			if (string.IsNullOrEmpty(mAddress))
+				throw new MissingFieldException("Missing HostName");
+			else if (mPort == 0)
+				throw new MissingFieldException("Missing Port");
+
+			buffer.Clear();
+			cln = new WebSocketSharp.WebSocket(string.Format("ws://{0}:{1}", mAddress, mPort));
+			Logger.LogMessage("OpenCom", "Open {0}:{1}", mAddress, mPort);
+			cln.OnMessage += cln_OnMessage;
+			cln.Connect();
+
 		}
 
 		public void Close(bool auto)
@@ -51,12 +48,13 @@ namespace LaserGRBL.ComWrapper
 				try
 				{
 					Logger.LogMessage("CloseCom", "Close {0} [{1}]", mAddress, auto ? "CORE" : "USER");
-					cln.Close();
 					cln.OnMessage -= cln_OnMessage;
-					buffer.Clear();
+
+					cln.Close();
 				}
 				catch { }
 
+				buffer.Clear();
 				cln = null;
 			}
 		}
@@ -76,6 +74,7 @@ namespace LaserGRBL.ComWrapper
 		{
 			if (IsOpen)
 				cln.Send(text + "\r\n");
+			//System.Threading.Thread.Sleep(10);
 		}
 
 		void cln_OnMessage(object sender, MessageEventArgs e)

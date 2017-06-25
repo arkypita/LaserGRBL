@@ -12,17 +12,24 @@ namespace LaserGRBL
 		private static WebSocketServer srv;
 		public static void Start()
 		{
-			ConsoleAPI.HaveConsole = true;
-			srv = new WebSocketServer("ws://127.0.0.1:81");
-			srv.AddWebSocketService<GrblWebSocketEmulator>("/");
-			Console.WriteLine("Run Grbl emulator");
-			srv.Start();
+			if (srv == null)
+			{
+				ConsoleAPI.HaveConsole = true;
+				Console.WriteLine("ESP266 Grbl emulator (127.0.0.1:81)");
+
+				srv = new WebSocketServer("ws://127.0.0.1:81");
+				srv.AddWebSocketService<GrblWebSocketEmulator>("/");
+				srv.Start();
+			}
 		}
 
 		public static void Stop()
 		{
 			if (srv != null)
+			{
 				srv.Stop();
+				srv = null;
+			}
 		}
 
 
@@ -68,33 +75,14 @@ namespace LaserGRBL
 
 			protected override void OnMessage(MessageEventArgs e)
 			{
-				if (e.IsBinary)
-				{
-					if (e.RawData.Length == 1)
-					{
-						if (e.RawData[0] == 24)
-							GrblReset();
-						else if (e.RawData[0] == 63)
-							SendStatus();
-						else
-							PrintArray(e.RawData);
-					}
-					else
-					{
-						PrintArray(e.RawData);
-					}
-				}
-				else if (e.IsText)
-				{
-					if (e.Data == "?")
-						SendStatus();
-					else if (e.Data == "version\n")
-						;
-					else if (e.Data == "{fb:n}\n")
-						;
-					else
-						EnqueueCommand(e);
-				}
+				if (e.Data == "?")
+					SendStatus();
+				else if (e.Data == "version\n")
+					;
+				else if (e.Data == "{fb:n}\n")
+					;
+				else
+					EnqueueCommand(e);
 			}
 
 			private void EnqueueCommand(MessageEventArgs e)
@@ -137,27 +125,32 @@ namespace LaserGRBL
 				{
 					if (buffer.Count > 0)
 					{
-						string line = buffer.Dequeue();
-
-
-						LaserGRBL.GrblCommand C = new GrblCommand(line);
-
-						if (C.IsAbsoluteCoord)
-							absolute = true;
-						else if (C.IsRelativeCoord)
-							absolute = false;
-
-						if (C.TrueMovement(x,y, absolute))
+						try
 						{
-							x = C.X != null ? C.X.Number : x;
-							y = C.Y != null ? C.Y.Number : y;
-							//z = C.Z != null ? C.Z.Number : z;
-							System.Threading.Thread.Sleep(30);
-						}
+							string line = buffer.Dequeue();
 
-						Console.WriteLine(C.Command.Trim("\r\n".ToCharArray()));
-						
-						Send("OK\r\n");
+
+							LaserGRBL.GrblCommand C = new GrblCommand(line);
+
+							if (C.IsAbsoluteCoord)
+								absolute = true;
+							else if (C.IsRelativeCoord)
+								absolute = false;
+
+							if (C.TrueMovement(x, y, absolute))
+							{
+								x = C.X != null ? C.X.Number : x;
+								y = C.Y != null ? C.Y.Number : y;
+								//z = C.Z != null ? C.Z.Number : z;
+								System.Threading.Thread.Sleep(30);
+							}
+
+							Console.WriteLine(C.Command.Trim("\r\n".ToCharArray()));
+							Send("OK\r\n");
+						}
+						catch (Exception ex)
+						{
+						}
 					}
 				}
 			}

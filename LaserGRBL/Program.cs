@@ -19,16 +19,9 @@ namespace LaserGRBL
 			System.Globalization.CultureInfo ci = (System.Globalization.CultureInfo)Settings.GetObject("User Language", null);
 			if (ci != null) System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
 
-			foreach (string arg in args)
-			{
-				if (arg == "WsEmu")
-					LaserGRBL.GrblEmulator.Start();
-			}
-
 			Application.Run(new MainForm());
 
 			LaserGRBL.GrblEmulator.Stop();
-
 			Logger.Stop();
 		}
 	}

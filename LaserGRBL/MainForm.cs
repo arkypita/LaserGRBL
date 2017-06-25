@@ -377,5 +377,10 @@ namespace LaserGRBL
 		{
 			SetLanguage(new System.Globalization.CultureInfo("ru"));
 		}
+
+		private void grblEmulatorToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			LaserGRBL.GrblEmulator.Start();
+		}
 	}
 }
