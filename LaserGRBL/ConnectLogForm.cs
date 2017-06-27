@@ -47,7 +47,7 @@ namespace LaserGRBL
 		private void RestoreConf()
 		{
 			CBSpeed.SelectedItem = Settings.GetObject("Serial Speed", 115200);
-			TxtAddress.Text = (string)Settings.GetObject("Address/URL", "ws://127.0.0.1:81/ws");
+			TxtAddress.Text = (string)Settings.GetObject("Address/URL", "ws://127.0.0.1:81/");
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
