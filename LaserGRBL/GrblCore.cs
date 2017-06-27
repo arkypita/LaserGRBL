@@ -376,7 +376,8 @@ namespace LaserGRBL
 			{
 				Logger.LogException("OpenCom", ex);
 				SetStatus(MacStatus.Disconnected);
-				System.Windows.Forms.MessageBox.Show("Cannot connect to device","Connection failed", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				System.Windows.Forms.MessageBox.Show(ex.Message, "Cannot connect to device", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				com.Close(true);
 			}
 		}
 

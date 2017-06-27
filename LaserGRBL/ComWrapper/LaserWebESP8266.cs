@@ -11,7 +11,6 @@ namespace LaserGRBL.ComWrapper
 	{
 
 		private string mAddress;
-		private int mPort;
 		private WebSocket cln;
 
 		private Queue<string> buffer = new Queue<string>();
@@ -19,7 +18,6 @@ namespace LaserGRBL.ComWrapper
 		public void Configure(params object[] param)
 		{
 			mAddress = (string)param[0];
-			mPort = (int)param[1];
 		}
 
 		public void Open()
@@ -29,16 +27,13 @@ namespace LaserGRBL.ComWrapper
 
 
 			if (string.IsNullOrEmpty(mAddress))
-				throw new MissingFieldException("Missing HostName");
-			else if (mPort == 0)
-				throw new MissingFieldException("Missing Port");
+				throw new MissingFieldException("Missing Address");
 
 			buffer.Clear();
-			cln = new WebSocketSharp.WebSocket(string.Format("ws://{0}:{1}", mAddress, mPort));
-			Logger.LogMessage("OpenCom", "Open {0}:{1}", mAddress, mPort);
+			cln = new WebSocketSharp.WebSocket(mAddress);
+			Logger.LogMessage("OpenCom", "Open {0}", mAddress);
 			cln.OnMessage += cln_OnMessage;
 			cln.Connect();
-
 		}
 
 		public void Close(bool auto)
