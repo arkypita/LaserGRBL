@@ -36,13 +36,13 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.CBProtocol = new System.Windows.Forms.ComboBox();
-			this.BtnLaserMode = new LaserGRBL.UserControls.ImageButton();
 			this.CBSupportPWM = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
 			this.CBLaserMode = new System.Windows.Forms.CheckBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
+			this.BtnLaserMode = new LaserGRBL.UserControls.ImageButton();
+			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
 			this.BtnProtocol = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
@@ -107,18 +107,6 @@
 			this.CBProtocol.Name = "CBProtocol";
 			this.CBProtocol.SelectedIndexChanged += new System.EventHandler(this.CBProtocol_SelectedIndexChanged);
 			// 
-			// BtnLaserMode
-			// 
-			this.BtnLaserMode.AltImage = null;
-			this.BtnLaserMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnLaserMode.Coloration = System.Drawing.Color.Empty;
-			this.BtnLaserMode.Image = ((System.Drawing.Image)(resources.GetObject("BtnLaserMode.Image")));
-			resources.ApplyResources(this.BtnLaserMode, "BtnLaserMode");
-			this.BtnLaserMode.Name = "BtnLaserMode";
-			this.BtnLaserMode.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnLaserMode.UseAltImage = false;
-			this.BtnLaserMode.Click += new System.EventHandler(this.BtnLaserMode_Click);
-			// 
 			// CBSupportPWM
 			// 
 			resources.ApplyResources(this.CBSupportPWM, "CBSupportPWM");
@@ -129,18 +117,6 @@
 			// 
 			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
-			// 
-			// BtnModulationInfo
-			// 
-			this.BtnModulationInfo.AltImage = null;
-			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
-			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
-			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
-			this.BtnModulationInfo.Name = "BtnModulationInfo";
-			this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnModulationInfo.UseAltImage = false;
-			this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
 			// 
 			// CBLaserMode
 			// 
@@ -157,6 +133,30 @@
 			// 
 			resources.ApplyResources(this.label3, "label3");
 			this.label3.Name = "label3";
+			// 
+			// BtnLaserMode
+			// 
+			this.BtnLaserMode.AltImage = null;
+			this.BtnLaserMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnLaserMode.Coloration = System.Drawing.Color.Empty;
+			this.BtnLaserMode.Image = ((System.Drawing.Image)(resources.GetObject("BtnLaserMode.Image")));
+			resources.ApplyResources(this.BtnLaserMode, "BtnLaserMode");
+			this.BtnLaserMode.Name = "BtnLaserMode";
+			this.BtnLaserMode.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnLaserMode.UseAltImage = false;
+			this.BtnLaserMode.Click += new System.EventHandler(this.BtnLaserMode_Click);
+			// 
+			// BtnModulationInfo
+			// 
+			this.BtnModulationInfo.AltImage = null;
+			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
+			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
+			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
+			this.BtnModulationInfo.Name = "BtnModulationInfo";
+			this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnModulationInfo.UseAltImage = false;
+			this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
 			// 
 			// BtnProtocol
 			// 
