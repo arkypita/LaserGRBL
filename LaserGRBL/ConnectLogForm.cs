@@ -47,8 +47,7 @@ namespace LaserGRBL
 		private void RestoreConf()
 		{
 			CBSpeed.SelectedItem = Settings.GetObject("Serial Speed", 115200);
-			TxtHostName.Text = (string)Settings.GetObject("Ethernet HostName", "");
-			ITcpPort.CurrentValue = (int)Settings.GetObject("Ethernet Port", 0);
+			TxtAddress.Text = (string)Settings.GetObject("Address/URL", "ws://127.0.0.1:81/");
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -167,8 +166,7 @@ namespace LaserGRBL
 			//CBProtocol.Enabled = !Core.IsOpen;
 			CBPort.Enabled = !Core.IsOpen;
 			CBSpeed.Enabled = !Core.IsOpen;
-			TxtHostName.Enabled = !Core.IsOpen;
-			ITcpPort.Enabled = !Core.IsOpen;
+			TxtAddress.Enabled = !Core.IsOpen;
 
 			CmdLog.TimerUpdate();
 
@@ -200,21 +198,22 @@ namespace LaserGRBL
 		{
 			tableLayoutPanel4.SuspendLayout();
 			CBPort.Visible = CBSpeed.Visible = LblComPort.Visible = LblBaudRate.Visible = (currentWrapper == ComWrapper.WrapperType.UsbSerial);
-			ITcpPort.Visible = TxtHostName.Visible = LblHostName.Visible = LblTcpPort.Visible = (currentWrapper == ComWrapper.WrapperType.Ethernet);
+			TxtAddress.Visible = LblAddress.Visible = (currentWrapper == ComWrapper.WrapperType.Ethernet || currentWrapper == ComWrapper.WrapperType.LaserWebESP8266);
+
+			LblAddress.Text = (currentWrapper == ComWrapper.WrapperType.Ethernet ? "IP:PORT" : "Socket URL");
+
 			tableLayoutPanel4.ResumeLayout();
 
 			if (currentWrapper == ComWrapper.WrapperType.UsbSerial && CBPort.SelectedItem != null && CBSpeed.SelectedItem != null)
 				Core.Configure(currentWrapper, (string)CBPort.SelectedItem, (int)CBSpeed.SelectedItem);
-			else if (currentWrapper == ComWrapper.WrapperType.Ethernet)
-				Core.Configure(currentWrapper, (string)TxtHostName.Text, (int)ITcpPort.CurrentValue);
+			else if (currentWrapper == ComWrapper.WrapperType.Ethernet || currentWrapper == ComWrapper.WrapperType.LaserWebESP8266)
+				Core.Configure(currentWrapper, (string)TxtAddress.Text);
 
 			if (CBSpeed.SelectedItem != null)
 				Settings.SetObject("Serial Speed", CBSpeed.SelectedItem);
 
-			if (TxtHostName.Text != "")
-				Settings.SetObject("Ethernet HostName", TxtHostName.Text);
-			if (ITcpPort.CurrentValue != 0)
-				Settings.SetObject("Ethernet Port", ITcpPort.CurrentValue);
+			if (TxtAddress.Text != "")
+				Settings.SetObject("Address/URL", TxtAddress.Text);
 
 			Settings.Save();
 		}

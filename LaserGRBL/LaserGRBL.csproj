@@ -96,9 +96,89 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoUpdate\ZipStorer.cs" />
+    <Compile Include="GrblEmulator\Console.cs" />
+    <Compile Include="GrblEmulator\GrblEmulator.cs" />
     <Compile Include="ComWrapper\IComWrapper.cs" />
+    <Compile Include="ComWrapper\LaserWebESP8266.cs" />
     <Compile Include="ComWrapper\UsbSerial.cs" />
     <Compile Include="ComWrapper\Ethernet.cs" />
+    <Compile Include="ComWrapper\WebSocket\ByteOrder.cs" />
+    <Compile Include="ComWrapper\WebSocket\CloseEventArgs.cs" />
+    <Compile Include="ComWrapper\WebSocket\CloseStatusCode.cs" />
+    <Compile Include="ComWrapper\WebSocket\CompressionMethod.cs" />
+    <Compile Include="ComWrapper\WebSocket\ErrorEventArgs.cs" />
+    <Compile Include="ComWrapper\WebSocket\Ext.cs" />
+    <Compile Include="ComWrapper\WebSocket\Fin.cs" />
+    <Compile Include="ComWrapper\WebSocket\HttpBase.cs" />
+    <Compile Include="ComWrapper\WebSocket\HttpRequest.cs" />
+    <Compile Include="ComWrapper\WebSocket\HttpResponse.cs" />
+    <Compile Include="ComWrapper\WebSocket\LogData.cs" />
+    <Compile Include="ComWrapper\WebSocket\Logger.cs" />
+    <Compile Include="ComWrapper\WebSocket\LogLevel.cs" />
+    <Compile Include="ComWrapper\WebSocket\Mask.cs" />
+    <Compile Include="ComWrapper\WebSocket\MessageEventArgs.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\AuthenticationBase.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\AuthenticationChallenge.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\AuthenticationResponse.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\AuthenticationSchemes.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\Chunk.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\ChunkedRequestStream.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\ChunkStream.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\ClientSslConfiguration.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\Cookie.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\CookieCollection.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\CookieException.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\EndPointListener.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\EndPointManager.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpBasicIdentity.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpConnection.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpDigestIdentity.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpHeaderInfo.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpHeaderType.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpListener.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpListenerAsyncResult.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpListenerContext.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpListenerException.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpListenerPrefix.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpListenerPrefixCollection.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpListenerRequest.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpListenerResponse.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpRequestHeader.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpResponseHeader.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpStatusCode.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpStreamAsyncResult.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpUtility.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\HttpVersion.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\InputChunkState.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\InputState.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\LineState.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\NetworkCredential.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\QueryStringCollection.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\ReadBufferState.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\RequestStream.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\ResponseStream.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\ServerSslConfiguration.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\WebHeaderCollection.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\WebSockets\HttpListenerWebSocketContext.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\WebSockets\TcpListenerWebSocketContext.cs" />
+    <Compile Include="ComWrapper\WebSocket\Net\WebSockets\WebSocketContext.cs" />
+    <Compile Include="ComWrapper\WebSocket\Opcode.cs" />
+    <Compile Include="ComWrapper\WebSocket\PayloadData.cs" />
+    <Compile Include="ComWrapper\WebSocket\Rsv.cs" />
+    <Compile Include="ComWrapper\WebSocket\Server\HttpRequestEventArgs.cs" />
+    <Compile Include="ComWrapper\WebSocket\Server\HttpServer.cs" />
+    <Compile Include="ComWrapper\WebSocket\Server\IWebSocketSession.cs" />
+    <Compile Include="ComWrapper\WebSocket\Server\ServerState.cs" />
+    <Compile Include="ComWrapper\WebSocket\Server\WebSocketBehavior.cs" />
+    <Compile Include="ComWrapper\WebSocket\Server\WebSocketServer.cs" />
+    <Compile Include="ComWrapper\WebSocket\Server\WebSocketServiceHost.cs" />
+    <Compile Include="ComWrapper\WebSocket\Server\WebSocketServiceHost`1.cs" />
+    <Compile Include="ComWrapper\WebSocket\Server\WebSocketServiceManager.cs" />
+    <Compile Include="ComWrapper\WebSocket\Server\WebSocketSessionManager.cs" />
+    <Compile Include="ComWrapper\WebSocket\WebSocket.cs" />
+    <Compile Include="ComWrapper\WebSocket\WebSocketException.cs" />
+    <Compile Include="ComWrapper\WebSocket\WebSocketFrame.cs" />
+    <Compile Include="ComWrapper\WebSocket\WebSocketState.cs" />
     <Compile Include="ConnectLogForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -520,6 +600,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

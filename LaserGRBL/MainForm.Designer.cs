@@ -31,6 +31,9 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
+			this.JogForm = new LaserGRBL.JogForm();
+			this.PreviewForm = new LaserGRBL.PreviewForm();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
@@ -72,6 +75,7 @@
 			this.MNGerman = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNDanish = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNBrazilian = new System.Windows.Forms.ToolStripMenuItem();
+			this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpOnLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.autoUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,10 +83,8 @@
 			this.openSessionLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
-			this.JogForm = new LaserGRBL.JogForm();
-			this.PreviewForm = new LaserGRBL.PreviewForm();
+			this.MNEsp8266 = new System.Windows.Forms.ToolStripMenuItem();
+			this.MNGrblEmulator = new System.Windows.Forms.ToolStripMenuItem();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -105,6 +107,21 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
 			this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+			// 
+			// ConnectionForm
+			// 
+			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
+			this.ConnectionForm.Name = "ConnectionForm";
+			// 
+			// JogForm
+			// 
+			resources.ApplyResources(this.JogForm, "JogForm");
+			this.JogForm.Name = "JogForm";
+			// 
+			// PreviewForm
+			// 
+			resources.ApplyResources(this.PreviewForm, "PreviewForm");
+			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// StatusBar
 			// 
@@ -203,6 +220,7 @@
             this.grblToolStripMenuItem,
             this.fileToolStripMenuItem,
             this.linguaToolStripMenuItem,
+            this.MNEsp8266,
             this.toolStripMenuItem4});
 			resources.ApplyResources(this.MMn, "MMn");
 			this.MMn.Name = "MMn";
@@ -389,6 +407,12 @@
 			this.MNBrazilian.Name = "MNBrazilian";
 			this.MNBrazilian.Click += new System.EventHandler(this.MNBrazilian_Click);
 			// 
+			// russianToolStripMenuItem
+			// 
+			resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
+			this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
+			this.russianToolStripMenuItem.Click += new System.EventHandler(this.russianToolStripMenuItem_Click);
+			// 
 			// toolStripMenuItem4
 			// 
 			this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -438,26 +462,18 @@
 			resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
 			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
 			// 
-			// russianToolStripMenuItem
+			// MNEsp8266
 			// 
-			resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
-			this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
-			this.russianToolStripMenuItem.Click += new System.EventHandler(this.russianToolStripMenuItem_Click);
+			this.MNEsp8266.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MNGrblEmulator});
+			this.MNEsp8266.Name = "MNEsp8266";
+			resources.ApplyResources(this.MNEsp8266, "MNEsp8266");
 			// 
-			// ConnectionForm
+			// MNGrblEmulator
 			// 
-			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
-			this.ConnectionForm.Name = "ConnectionForm";
-			// 
-			// JogForm
-			// 
-			resources.ApplyResources(this.JogForm, "JogForm");
-			this.JogForm.Name = "JogForm";
-			// 
-			// PreviewForm
-			// 
-			resources.ApplyResources(this.PreviewForm, "PreviewForm");
-			this.PreviewForm.Name = "PreviewForm";
+			this.MNGrblEmulator.Name = "MNGrblEmulator";
+			resources.ApplyResources(this.MNGrblEmulator, "MNGrblEmulator");
+			this.MNGrblEmulator.Click += new System.EventHandler(this.MNGrblEmulator_Click);
 			// 
 			// MainForm
 			// 
@@ -538,6 +554,8 @@
 		private System.Windows.Forms.ToolStripMenuItem MNDanish;
 		private System.Windows.Forms.ToolStripMenuItem MNBrazilian;
 		private System.Windows.Forms.ToolStripMenuItem russianToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem MNEsp8266;
+		private System.Windows.Forms.ToolStripMenuItem MNGrblEmulator;
 	}
 }
 

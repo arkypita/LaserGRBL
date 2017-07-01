@@ -9,21 +9,19 @@ namespace LaserGRBL
 		/// Punto di ingresso principale dell'applicazione.
 		/// </summary>
 		[STAThread]
-		static void Main()
+		static void Main(string[] args)
 		{
 			Logger.Start();
 
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
-
 			System.Globalization.CultureInfo ci = (System.Globalization.CultureInfo)Settings.GetObject("User Language", null);
-
-			if (ci != null)
-				System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+			if (ci != null) System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
 
 			Application.Run(new MainForm());
 
+			LaserGRBL.GrblEmulator.Stop();
 			Logger.Stop();
 		}
 	}

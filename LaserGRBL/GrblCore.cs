@@ -348,6 +348,8 @@ namespace LaserGRBL
 				com = new ComWrapper.UsbSerial();
 			else if (wraptype == ComWrapper.WrapperType.Ethernet && (com == null || com.GetType() != typeof(ComWrapper.Ethernet)))
 				com = new ComWrapper.Ethernet();
+			else if (wraptype == ComWrapper.WrapperType.LaserWebESP8266 && (com == null || com.GetType() != typeof(ComWrapper.LaserWebESP8266)))
+				com = new ComWrapper.LaserWebESP8266();
 
 			com.Configure(conf); 
 		}
@@ -374,7 +376,8 @@ namespace LaserGRBL
 			{
 				Logger.LogException("OpenCom", ex);
 				SetStatus(MacStatus.Disconnected);
-				System.Windows.Forms.MessageBox.Show("Cannot connect to device","Connection failed", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				System.Windows.Forms.MessageBox.Show(ex.Message, "Cannot connect to device", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				com.Close(true);
 			}
 		}
 
@@ -591,7 +594,7 @@ namespace LaserGRBL
 		private bool CanSend()
 		{
 			GrblCommand next = mQueuePtr.Count > 0 ? mQueuePtr.Peek() : null;
-			return next != null && (mBuffer + next.Command.Length + 2) <= BUFFER_SIZE; //+2 for /r/n
+			return next != null && (mBuffer + next.SerialData.Length) <= BUFFER_SIZE;
 		}
 
 		private void SendLine()
@@ -608,8 +611,8 @@ namespace LaserGRBL
 					mPending.Enqueue(tosend);
 					mQueuePtr.Dequeue();
 
-					mBuffer += (tosend.Command.Length + 2); //+2 for \r\n
-					com.WriteLine(tosend.Command);
+					mBuffer += tosend.SerialData.Length;
+					com.Write(tosend.SerialData);
 
 					if (mTP.InProgram)
 						mTP.JobSent();
@@ -723,7 +726,7 @@ namespace LaserGRBL
 					GrblCommand pending = mPending.Dequeue();
 
 					pending.SetResult(rline, SupportCSV);
-					mBuffer -= (pending.Command.Length + 2); //+2 for \r\n
+					mBuffer -= pending.SerialData.Length;
 
 					if (mTP.InProgram)
 						mTP.JobExecuted(pending.TimeOffset);
@@ -736,7 +739,7 @@ namespace LaserGRBL
 			}
 		}
 
-		private char[] trimarray = new char[] { '\r', '\n', ' ' };
+		private static char[] trimarray = new char[] { '\r', '\n', ' ' };
 		private string GetComLineOrDisconnect()
 		{
 			try
