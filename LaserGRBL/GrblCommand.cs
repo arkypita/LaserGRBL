@@ -81,7 +81,12 @@ namespace LaserGRBL
 		private static char[] trimarray = new char[] { '\r', '\n', ' ' };
 
 		public string SerialData
-		{ get { return mLine.Trim(trimarray).Replace(" ","") + '\n'; } }
+		{ 
+			get
+			{
+				else
+			} 
+		}
 
 		public string Result
 		{ get { return mResult; } }
