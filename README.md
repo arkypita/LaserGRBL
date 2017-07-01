@@ -24,6 +24,7 @@ Do you like LaserGRBL? Support development with your donation!
 - Job time preview and realtime projection
 - Jogging (for any Grbl version)
 - Feed overrides (for Grbl > v1.1) with easy-to-use interface
+- Support for [WiFi connection via ESP8266 WebSocket](http://lasergrbl.com/en/usage/wifi-with-esp8266/)
 
 ### Usage
 
