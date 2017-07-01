@@ -112,6 +112,8 @@ namespace LaserGRBL
 			MnImportConfig.Enabled = Core.CanImportExport;
 			MnGrblReset.Enabled = Core.CanResetGrbl;
 
+			MNEsp8266.Visible = ((ComWrapper.WrapperType)Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial)) == ComWrapper.WrapperType.LaserWebESP8266;
+
 			MnConnect.Visible = !Core.IsOpen;
 			MnDisconnect.Visible = Core.IsOpen;
 
@@ -378,7 +380,7 @@ namespace LaserGRBL
 			SetLanguage(new System.Globalization.CultureInfo("ru"));
 		}
 
-		private void grblEmulatorToolStripMenuItem_Click(object sender, EventArgs e)
+		private void MNGrblEmulator_Click(object sender, EventArgs e)
 		{
 			LaserGRBL.GrblEmulator.Start();
 		}

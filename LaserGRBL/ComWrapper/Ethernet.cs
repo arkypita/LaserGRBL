@@ -70,9 +70,9 @@ namespace LaserGRBL.ComWrapper
 			bwriter.Flush();
 		}
 
-		public void WriteLine(string text)
+		public void Write(string text)
 		{
-			swriter.WriteLine(text);
+			swriter.Write(text);
 			swriter.Flush();
 		}
 

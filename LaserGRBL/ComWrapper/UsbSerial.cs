@@ -23,6 +23,7 @@ namespace LaserGRBL.ComWrapper
 			{
 				try
 				{
+					com.NewLine = "\n";
 					com.PortName = mPortName;
 					com.BaudRate = mBaudRate;
 					Logger.LogMessage("OpenCom", "Open {0} @ {1} baud", com.PortName.ToUpper(), com.BaudRate);
@@ -63,23 +64,15 @@ namespace LaserGRBL.ComWrapper
 		}
 
 		public bool IsOpen
-		{
-			get { return com.IsOpen; }
-		}
+		{get { return com.IsOpen; }}
 
 		public void Write(byte b)
-		{
-			com.Write(new byte[]{ b } , 0, 1);
-		}
+		{com.Write(new byte[]{ b } , 0, 1);}
 
-		public void WriteLine(string text)
-		{
-			com.WriteLine(text);
-		}
+		public void Write(string text)
+		{com.Write(text);}
 
 		public string ReadLine()
-		{
-			return com.ReadLine();
-		}
+		{return com.ReadLine();}
 	}
 }

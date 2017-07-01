@@ -18,7 +18,7 @@ namespace LaserGRBL.ComWrapper
 		bool IsOpen { get; }
 		
 		void Write(byte b);
-		void WriteLine(string text);
+		void Write(string text);
 
 		string ReadLine();
 	}

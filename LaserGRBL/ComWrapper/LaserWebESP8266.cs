@@ -55,26 +55,17 @@ namespace LaserGRBL.ComWrapper
 		}
 
 		public bool IsOpen
-		{
-			get { return cln != null && cln.IsConnected; }
-		}
+		{get { return cln != null && cln.IsConnected; }}
 
 		public void Write(byte b)
-		{
-			if (IsOpen)
-				cln.Send(new string((char)b,1));
-		}
+		{if (IsOpen) cln.Send(new string((char)b,1));}
 
-		public void WriteLine(string text)
-		{
-			if (IsOpen)
-				cln.Send(text + "\r\n");
-			//System.Threading.Thread.Sleep(10);
-		}
+		public void Write(string text)
+		{if (IsOpen) cln.Send(text);}
 
 		void cln_OnMessage(object sender, MessageEventArgs e)
 		{
-			foreach (string line in e.Data.Split(new string[] {"\n", "\r\n"}, StringSplitOptions.RemoveEmptyEntries))
+			foreach (string line in e.Data.Split(new string[] {"\n"}, StringSplitOptions.RemoveEmptyEntries))
 				buffer.Enqueue(line); 
 		}
 

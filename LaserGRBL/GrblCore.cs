@@ -594,7 +594,7 @@ namespace LaserGRBL
 		private bool CanSend()
 		{
 			GrblCommand next = mQueuePtr.Count > 0 ? mQueuePtr.Peek() : null;
-			return next != null && (mBuffer + next.Command.Length + 2) <= BUFFER_SIZE; //+2 for /r/n
+			return next != null && (mBuffer + next.SerialData.Length) <= BUFFER_SIZE;
 		}
 
 		private void SendLine()
@@ -611,8 +611,8 @@ namespace LaserGRBL
 					mPending.Enqueue(tosend);
 					mQueuePtr.Dequeue();
 
-					mBuffer += (tosend.Command.Length + 2); //+2 for \r\n
-					com.WriteLine(tosend.Command);
+					mBuffer += tosend.SerialData.Length;
+					com.Write(tosend.SerialData);
 
 					if (mTP.InProgram)
 						mTP.JobSent();
@@ -726,7 +726,7 @@ namespace LaserGRBL
 					GrblCommand pending = mPending.Dequeue();
 
 					pending.SetResult(rline, SupportCSV);
-					mBuffer -= (pending.Command.Length + 2); //+2 for \r\n
+					mBuffer -= pending.SerialData.Length;
 
 					if (mTP.InProgram)
 						mTP.JobExecuted(pending.TimeOffset);
@@ -739,7 +739,7 @@ namespace LaserGRBL
 			}
 		}
 
-		private char[] trimarray = new char[] { '\r', '\n', ' ' };
+		private static char[] trimarray = new char[] { '\r', '\n', ' ' };
 		private string GetComLineOrDisconnect()
 		{
 			try

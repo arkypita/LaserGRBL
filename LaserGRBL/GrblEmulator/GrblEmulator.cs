@@ -15,7 +15,7 @@ namespace LaserGRBL
 			if (srv == null)
 			{
 				ConsoleAPI.HaveConsole = true;
-				Console.WriteLine("ESP266 Grbl emulator (127.0.0.1:81)");
+				Console.WriteLine("ESP266 Grbl emulator (listening as ws://127.0.0.1:81/)");
 
 				srv = new WebSocketServer("ws://127.0.0.1:81");
 				srv.AddWebSocketService<GrblWebSocketEmulator>("/");
@@ -70,7 +70,7 @@ namespace LaserGRBL
 
 			private void SendConnected()
 			{
-				Send("Connected\r\n");
+				Send("Connected\n");
 			}
 
 			protected override void OnMessage(MessageEventArgs e)
@@ -114,10 +114,10 @@ namespace LaserGRBL
 			}
 
 			private void SendVersion()
-			{ Send("Grbl 1.1f ['$' for help]\r\n"); }
+			{ Send("Grbl 1.1f ['$' for help]\n"); }
 
 			private void SendStatus()
-			{Send(String.Format(System.Globalization.CultureInfo.InvariantCulture, "<{0}|MPos:{1:0.000},{2:0.000},{3:0.000}>\r\n", s,x,y,z));}
+			{Send(String.Format(System.Globalization.CultureInfo.InvariantCulture, "<{0}|MPos:{1:0.000},{2:0.000},{3:0.000}>\n", s,x,y,z));}
 
 			private void ManageQueue()
 			{
@@ -145,8 +145,8 @@ namespace LaserGRBL
 								System.Threading.Thread.Sleep(30);
 							}
 
-							Console.WriteLine(C.Command.Trim("\r\n".ToCharArray()));
-							Send("OK\r\n");
+							Console.WriteLine(C.Command.Trim("\n".ToCharArray()));
+							Send("ok\n");
 						}
 						catch (Exception ex)
 						{

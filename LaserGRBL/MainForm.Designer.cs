@@ -83,7 +83,8 @@
 			this.openSessionLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.grblEmulatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.MNEsp8266 = new System.Windows.Forms.ToolStripMenuItem();
+			this.MNGrblEmulator = new System.Windows.Forms.ToolStripMenuItem();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -219,6 +220,7 @@
             this.grblToolStripMenuItem,
             this.fileToolStripMenuItem,
             this.linguaToolStripMenuItem,
+            this.MNEsp8266,
             this.toolStripMenuItem4});
 			resources.ApplyResources(this.MMn, "MMn");
 			this.MMn.Name = "MMn";
@@ -418,7 +420,6 @@
             this.autoUpdateToolStripMenuItem,
             this.toolStripMenuItem5,
             this.openSessionLogToolStripMenuItem,
-            this.grblEmulatorToolStripMenuItem,
             this.toolStripMenuItem7,
             this.aboutToolStripMenuItem});
 			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
@@ -461,11 +462,18 @@
 			resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
 			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
 			// 
-			// grblEmulatorToolStripMenuItem
+			// MNEsp8266
 			// 
-			this.grblEmulatorToolStripMenuItem.Name = "grblEmulatorToolStripMenuItem";
-			resources.ApplyResources(this.grblEmulatorToolStripMenuItem, "grblEmulatorToolStripMenuItem");
-			this.grblEmulatorToolStripMenuItem.Click += new System.EventHandler(this.grblEmulatorToolStripMenuItem_Click);
+			this.MNEsp8266.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MNGrblEmulator});
+			this.MNEsp8266.Name = "MNEsp8266";
+			resources.ApplyResources(this.MNEsp8266, "MNEsp8266");
+			// 
+			// MNGrblEmulator
+			// 
+			this.MNGrblEmulator.Name = "MNGrblEmulator";
+			resources.ApplyResources(this.MNGrblEmulator, "MNGrblEmulator");
+			this.MNGrblEmulator.Click += new System.EventHandler(this.MNGrblEmulator_Click);
 			// 
 			// MainForm
 			// 
@@ -546,7 +554,8 @@
 		private System.Windows.Forms.ToolStripMenuItem MNDanish;
 		private System.Windows.Forms.ToolStripMenuItem MNBrazilian;
 		private System.Windows.Forms.ToolStripMenuItem russianToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem grblEmulatorToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem MNEsp8266;
+		private System.Windows.Forms.ToolStripMenuItem MNGrblEmulator;
 	}
 }
 
