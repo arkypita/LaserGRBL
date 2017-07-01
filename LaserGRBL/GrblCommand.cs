@@ -84,7 +84,10 @@ namespace LaserGRBL
 		{ 
 			get
 			{
+				if (IsMovement)
+					return mLine.Trim(trimarray).Replace(" ","") + '\n';  //strip spaces
 				else
+					return mLine.Trim(trimarray) + '\n';  //send it "as is"
 			} 
 		}
 
