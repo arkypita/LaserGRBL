@@ -36,7 +36,7 @@ namespace LaserGRBL
 
 		private class GrblWebSocketEmulator : WebSocketBehavior
 		{
-			private bool mPaused;
+			private bool mPaused = false;
 			decimal curX = 0.0M, curY = 0.0M, curZ = 0.0M, speed = 0.0M;
 			bool abs = true;
 			TimeSpan toSleep = TimeSpan.Zero;
@@ -114,7 +114,13 @@ namespace LaserGRBL
 				{
 					rxBuf.Clear();
 					System.Threading.Thread.Sleep(50);
+					
 					mPaused = false;
+					curX = curY = curZ = speed = 0.0M;
+					abs = true;
+					toSleep = TimeSpan.Zero;
+
+
 					Console.Clear();
 					Console.WriteLine("Grbl Reset");
 					SendVersion();
