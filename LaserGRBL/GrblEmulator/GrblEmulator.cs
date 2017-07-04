@@ -10,6 +10,7 @@ namespace LaserGRBL
 	class GrblEmulator
 	{
 		private static WebSocketServer srv;
+
 		public static void Start()
 		{
 			if (srv == null)
@@ -35,7 +36,7 @@ namespace LaserGRBL
 
 		private class GrblWebSocketEmulator : WebSocketBehavior
 		{
-			string s = "Idle";
+			private bool mPaused;
 			decimal x = 0.0M, y = 0.0M, z = 0.0M;
 			bool absolute;
 
@@ -61,10 +62,11 @@ namespace LaserGRBL
 				{
 					Console.WriteLine("Client connected!");
 					buffer.Clear();
+					mPaused = false;
 					QueueManager.Start();
 					SendConnected();
-					SendVersion();
-					SendStatus();
+					//SendVersion();
+					//SendStatus();
 				}
 			}
 
@@ -81,6 +83,12 @@ namespace LaserGRBL
 					;
 				else if (e.Data == "{fb:n}\n")
 					;
+				else if (e.Data == "!")
+					{mPaused = true; SendStatus();}
+				else if (e.Data == "~")
+					{ mPaused = false; SendStatus(); }
+				else if (e.RawData.Length == 1 && e.RawData[0] == 24)
+					GrblReset();
 				else
 					EnqueueCommand(e);
 			}
@@ -97,8 +105,10 @@ namespace LaserGRBL
 				{
 					buffer.Clear();
 					System.Threading.Thread.Sleep(50);
+					mPaused = false;
 					Console.Clear();
 					Console.WriteLine("Grbl Reset");
+					SendVersion();
 				}
 			}
 
@@ -117,13 +127,24 @@ namespace LaserGRBL
 			{ Send("Grbl 1.1f ['$' for help]\n"); }
 
 			private void SendStatus()
-			{Send(String.Format(System.Globalization.CultureInfo.InvariantCulture, "<{0}|MPos:{1:0.000},{2:0.000},{3:0.000}>\n", s,x,y,z));}
+			{Send(String.Format(System.Globalization.CultureInfo.InvariantCulture, "<{0}|MPos:{1:0.000},{2:0.000},{3:0.000}>\n", Status ,x,y,z));}
+
+			private string Status
+			{
+				get 
+				{
+					if (mPaused)
+						return "Hold";
+					else
+						return "Idle";
+				}
+			}
 
 			private void ManageQueue()
 			{
 				lock (buffer)
 				{
-					if (buffer.Count > 0)
+					if (buffer.Count > 0 && !mPaused)
 					{
 						try
 						{
