@@ -346,8 +346,8 @@ namespace LaserGRBL
 		{
 			if (wraptype == ComWrapper.WrapperType.UsbSerial && (com == null || com.GetType() != typeof(ComWrapper.UsbSerial)))
 				com = new ComWrapper.UsbSerial();
-			else if (wraptype == ComWrapper.WrapperType.Ethernet && (com == null || com.GetType() != typeof(ComWrapper.Ethernet)))
-				com = new ComWrapper.Ethernet();
+			else if (wraptype == ComWrapper.WrapperType.Telnet && (com == null || com.GetType() != typeof(ComWrapper.Telnet)))
+				com = new ComWrapper.Telnet();
 			else if (wraptype == ComWrapper.WrapperType.LaserWebESP8266 && (com == null || com.GetType() != typeof(ComWrapper.LaserWebESP8266)))
 				com = new ComWrapper.LaserWebESP8266();
 

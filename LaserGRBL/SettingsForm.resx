@@ -467,8 +467,8 @@ If not, please disable PWM support.</value>
   <data name="label3.Text" xml:space="preserve">
     <value>Connection Protocol:
 - UsbSerial, is the most common protocol. Should be used if your engraver is connected to USB or COM port.
-- Ethernet, if you have a WiFi-Ethernet bridge. Communication is implemented like a "telnet" session.
-- LaserWebESP8266 support WiFi connection via WebSocket, like LaserWeb software.</value>
+- Telnet, if you have a WiFi-Telnet bridge. Communication is implemented like a simple telnet client-server.
+- LaserWebESP8266 support WiFi connection via WebSocket. Compatible with LaserWeb-ESP8266 software.</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>

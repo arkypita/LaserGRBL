@@ -101,7 +101,7 @@
     <Compile Include="ComWrapper\IComWrapper.cs" />
     <Compile Include="ComWrapper\LaserWebESP8266.cs" />
     <Compile Include="ComWrapper\UsbSerial.cs" />
-    <Compile Include="ComWrapper\Ethernet.cs" />
+    <Compile Include="ComWrapper\Telnet.cs" />
     <Compile Include="ComWrapper\WebSocket\ByteOrder.cs" />
     <Compile Include="ComWrapper\WebSocket\CloseEventArgs.cs" />
     <Compile Include="ComWrapper\WebSocket\CloseStatusCode.cs" />
@@ -518,6 +518,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.ru.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

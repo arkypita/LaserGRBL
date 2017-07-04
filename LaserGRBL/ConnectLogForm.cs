@@ -47,7 +47,11 @@ namespace LaserGRBL
 		private void RestoreConf()
 		{
 			CBSpeed.SelectedItem = Settings.GetObject("Serial Speed", 115200);
-			TxtAddress.Text = (string)Settings.GetObject("Address/URL", "ws://127.0.0.1:81/");
+
+			if (currentWrapper == ComWrapper.WrapperType.Telnet)
+				TxtAddress.Text = (string)Settings.GetObject("Telnet Address", "127.0.0.1:23");	
+			else if (currentWrapper == ComWrapper.WrapperType.LaserWebESP8266)
+				TxtAddress.Text = (string)Settings.GetObject("Websocket URL", "ws://127.0.0.1:81/"); 
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -198,22 +202,27 @@ namespace LaserGRBL
 		{
 			tableLayoutPanel4.SuspendLayout();
 			CBPort.Visible = CBSpeed.Visible = LblComPort.Visible = LblBaudRate.Visible = (currentWrapper == ComWrapper.WrapperType.UsbSerial);
-			TxtAddress.Visible = LblAddress.Visible = (currentWrapper == ComWrapper.WrapperType.Ethernet || currentWrapper == ComWrapper.WrapperType.LaserWebESP8266);
+			TxtAddress.Visible = LblAddress.Visible = (currentWrapper == ComWrapper.WrapperType.Telnet || currentWrapper == ComWrapper.WrapperType.LaserWebESP8266);
 
-			LblAddress.Text = (currentWrapper == ComWrapper.WrapperType.Ethernet ? "IP:PORT" : "Socket URL");
+			LblAddress.Text = (currentWrapper == ComWrapper.WrapperType.Telnet ? "IP:PORT" : "Socket URL");
 
 			tableLayoutPanel4.ResumeLayout();
 
 			if (currentWrapper == ComWrapper.WrapperType.UsbSerial && CBPort.SelectedItem != null && CBSpeed.SelectedItem != null)
 				Core.Configure(currentWrapper, (string)CBPort.SelectedItem, (int)CBSpeed.SelectedItem);
-			else if (currentWrapper == ComWrapper.WrapperType.Ethernet || currentWrapper == ComWrapper.WrapperType.LaserWebESP8266)
+			else if (currentWrapper == ComWrapper.WrapperType.Telnet || currentWrapper == ComWrapper.WrapperType.LaserWebESP8266)
 				Core.Configure(currentWrapper, (string)TxtAddress.Text);
 
 			if (CBSpeed.SelectedItem != null)
 				Settings.SetObject("Serial Speed", CBSpeed.SelectedItem);
 
 			if (TxtAddress.Text != "")
-				Settings.SetObject("Address/URL", TxtAddress.Text);
+			{
+				if (currentWrapper == ComWrapper.WrapperType.Telnet)
+					Settings.SetObject("Telnet Address", TxtAddress.Text);
+				else if (currentWrapper == ComWrapper.WrapperType.LaserWebESP8266)
+					Settings.SetObject("Websocket URL", TxtAddress.Text);
+			}
 
 			Settings.Save();
 		}

@@ -7,7 +7,7 @@ using System.Net;
 
 namespace LaserGRBL.ComWrapper
 {
-	class Ethernet : IComWrapper
+	class Telnet : IComWrapper
 	{
 		private string mAddress;
 
@@ -38,7 +38,6 @@ namespace LaserGRBL.ComWrapper
 			bwriter = new BinaryWriter(cst);
 			sreader = new StreamReader(cst, Encoding.ASCII);
 			swriter = new StreamWriter(cst, Encoding.ASCII);
-
 		}
 
 		public void Close(bool auto)
