@@ -66,8 +66,8 @@ namespace LaserGRBL
 		public TimeSpan TimeOffset
 		{get {return mTimeOffset;}}
 		
-		public decimal DistanceOffset
-		{get {return mDistanceOffset;}}
+		//public decimal DistanceOffset
+		//{get {return mDistanceOffset;}}
 		
 		public enum CommandStatus
 		{ Queued, WaitingResponse, ResponseGood, ResponseBad }

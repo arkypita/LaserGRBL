@@ -37,33 +37,44 @@ namespace LaserGRBL
 		private class GrblWebSocketEmulator : WebSocketBehavior
 		{
 			private bool mPaused;
-			decimal x = 0.0M, y = 0.0M, z = 0.0M;
-			bool absolute;
+			decimal curX = 0.0M, curY = 0.0M, curZ = 0.0M, speed = 0.0M;
+			bool abs = true;
+			TimeSpan toSleep = TimeSpan.Zero;
 
-			private Tools.ThreadObject QueueManager;
-			private Queue<string> buffer = new Queue<string>();
+			private Tools.ThreadObject rxThread;
+			private Tools.ThreadObject txThread;
+			private Queue<string> rxBuf = new Queue<string>();
+			private Queue<string> txBuf = new Queue<string>();
 
 			public GrblWebSocketEmulator()
-			{ QueueManager = new Tools.ThreadObject(ManageQueue, 1, true, "WebSocket Emulator", null); }
+			{
+				rxThread = new Tools.ThreadObject(ManageRX, 1, true, "WebSocket Emulator RX", null);
+				txThread = new Tools.ThreadObject(ManageTX, 1, true, "WebSocket Emulator TX", null); 
+			}
 
 			protected override void OnClose(CloseEventArgs e)
 			{
-				lock (buffer)
+				lock (rxBuf)
 				{
 					Console.WriteLine("Connection lost!");
-					QueueManager.Stop();
-					buffer.Clear();
+					rxThread.Stop();
+					rxBuf.Clear();
+
+					txThread.Stop();
+					txBuf.Clear();
 				}
 			}
 
 			protected override void OnOpen()
 			{
-				lock (buffer)
+				lock (rxBuf)
 				{
 					Console.WriteLine("Client connected!");
-					buffer.Clear();
+					rxBuf.Clear();
+					txBuf.Clear();
 					mPaused = false;
-					QueueManager.Start();
+					rxThread.Start();
+					txThread.Start();
 					SendConnected();
 					//SendVersion();
 					//SendStatus();
@@ -71,9 +82,7 @@ namespace LaserGRBL
 			}
 
 			private void SendConnected()
-			{
-				Send("Connected\n");
-			}
+			{ImmediateTX("Connected");}
 
 			protected override void OnMessage(MessageEventArgs e)
 			{
@@ -90,20 +99,20 @@ namespace LaserGRBL
 				else if (e.RawData.Length == 1 && e.RawData[0] == 24)
 					GrblReset();
 				else
-					EnqueueCommand(e);
+					EnqueueRX(e);
 			}
 
-			private void EnqueueCommand(MessageEventArgs e)
+			private void EnqueueRX(MessageEventArgs e)
 			{
-				lock (buffer)
-				{ buffer.Enqueue(e.Data); }
+				lock (rxBuf)
+				{ rxBuf.Enqueue(e.Data); }
 			}
 
 			private void GrblReset()
 			{
-				lock (buffer)
+				lock (rxBuf)
 				{
-					buffer.Clear();
+					rxBuf.Clear();
 					System.Threading.Thread.Sleep(50);
 					mPaused = false;
 					Console.Clear();
@@ -124,10 +133,10 @@ namespace LaserGRBL
 			}
 
 			private void SendVersion()
-			{ Send("Grbl 1.1f ['$' for help]\n"); }
+			{ ImmediateTX("Grbl 1.1f ['$' for help]"); }
 
 			private void SendStatus()
-			{Send(String.Format(System.Globalization.CultureInfo.InvariantCulture, "<{0}|MPos:{1:0.000},{2:0.000},{3:0.000}>\n", Status ,x,y,z));}
+			{ ImmediateTX(String.Format(System.Globalization.CultureInfo.InvariantCulture, "<{0}|MPos:{1:0.000},{2:0.000},{3:0.000}>\n", Status, curX, curY, curZ)); }
 
 			private string Status
 			{
@@ -135,39 +144,30 @@ namespace LaserGRBL
 				{
 					if (mPaused)
 						return "Hold";
+					else if (rxBuf.Count > 0)
+						return "Run";
 					else
 						return "Idle";
 				}
 			}
 
-			private void ManageQueue()
+			private void ManageRX()
 			{
-				lock (buffer)
+				lock (rxBuf)
 				{
-					if (buffer.Count > 0 && !mPaused)
+					if (rxBuf.Count > 0 && !mPaused)
 					{
 						try
 						{
-							string line = buffer.Dequeue();
+							string line = rxBuf.Dequeue();
 
 
 							LaserGRBL.GrblCommand C = new GrblCommand(line);
-
-							if (C.IsAbsoluteCoord)
-								absolute = true;
-							else if (C.IsRelativeCoord)
-								absolute = false;
-
-							if (C.TrueMovement(x, y, absolute))
-							{
-								x = C.X != null ? C.X.Number : x;
-								y = C.Y != null ? C.Y.Number : y;
-								//z = C.Z != null ? C.Z.Number : z;
-								System.Threading.Thread.Sleep(30);
-							}
+							EmulateCommand(C);
 
 							Console.WriteLine(C.Command.Trim("\n".ToCharArray()));
-							Send("ok\n");
+
+							EnqueueTX("ok");
 						}
 						catch (Exception ex)
 						{
@@ -176,7 +176,75 @@ namespace LaserGRBL
 				}
 			}
 
+			private void ManageTX()
+			{
+				lock (txBuf)
+				{
+					if (txBuf.Count > 0)
+					{
+						try
+						{
+							string line = txBuf.Dequeue();
+							Send(line);
+						}
+						catch (Exception ex)
+						{
+						}
+					}
+				}
+			}
+
+			private void EnqueueTX(String response)
+			{
+				lock (txBuf)
+				{ txBuf.Enqueue(response + "\n"); }
+			}
+
+			private void ImmediateTX(String response)
+			{
+				lock (txBuf)
+				{ Send(response + "\n"); }
+			}
+
+			private void EmulateCommand(GrblCommand cmd)
+			{
+				if (cmd.IsRelativeCoord)
+					abs = false;
+				if (cmd.IsAbsoluteCoord)
+					abs = true;
+
+				if (cmd.F != null)
+					speed = cmd.F.Number;
+
+				decimal newX = cmd.X != null ? (abs ? cmd.X.Number : curX + cmd.X.Number) : curX;
+				decimal newY = cmd.Y != null ? (abs ? cmd.Y.Number : curY + cmd.Y.Number) : curY;
+
+				decimal distance = 0;
+
+				if (cmd.IsLinearMovement)
+					distance = Tools.MathHelper.LinearDistance(curX, curY, newX, newY);
+				else if (cmd.IsArcMovement) //arc of given radius
+					distance = Tools.MathHelper.ArcDistance(curX, curY, newX, newY, cmd.GetArcRadius());
+
+				if (distance != 0 && speed != 0)
+					toSleep += TimeSpan.FromMinutes((double)distance / (double)speed);
+
+				if (toSleep.TotalMilliseconds > 15) //execute sleep
+				{
+					long start = Tools.HiResTimer.TotalNano;
+					System.Threading.Thread.Sleep(toSleep);
+					long stop = Tools.HiResTimer.TotalNano;
+
+					toSleep -= TimeSpan.FromMilliseconds((double)(stop - start) / 1000.0 / 1000.0);
+				}
+
+				curX = newX;
+				curY = newY;
+			}
+
 		}
+
+
 
 	}
 }
