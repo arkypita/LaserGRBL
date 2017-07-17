@@ -214,40 +214,48 @@ namespace LaserGRBL
 
 			private void EmulateCommand(GrblCommand cmd)
 			{
-				if (cmd.IsRelativeCoord)
-					abs = false;
-				if (cmd.IsAbsoluteCoord)
-					abs = true;
-
-				if (cmd.F != null)
-					speed = cmd.F.Number;
-
-				decimal newX = cmd.X != null ? (abs ? cmd.X.Number : curX + cmd.X.Number) : curX;
-				decimal newY = cmd.Y != null ? (abs ? cmd.Y.Number : curY + cmd.Y.Number) : curY;
-
-				decimal distance = 0;
-
-				if (cmd.IsLinearMovement)
-					distance = Tools.MathHelper.LinearDistance(curX, curY, newX, newY);
-				else if (cmd.IsArcMovement) //arc of given radius
-					distance = Tools.MathHelper.ArcDistance(curX, curY, newX, newY, cmd.GetArcRadius());
-
-				if (distance != 0 && speed != 0)
-					toSleep += TimeSpan.FromMinutes((double)distance / (double)speed);
-
-				if (toSleep.TotalMilliseconds > 15) //execute sleep
+				try
 				{
-					long start = Tools.HiResTimer.TotalNano;
-					System.Threading.Thread.Sleep(toSleep);
-					long stop = Tools.HiResTimer.TotalNano;
 
-					toSleep -= TimeSpan.FromMilliseconds((double)(stop - start) / 1000.0 / 1000.0);
+					cmd.BuildHelper();
+
+					if (cmd.IsRelativeCoord)
+						abs = false;
+					if (cmd.IsAbsoluteCoord)
+						abs = true;
+
+					if (cmd.F != null)
+						speed = cmd.F.Number;
+
+					decimal newX = cmd.X != null ? (abs ? cmd.X.Number : curX + cmd.X.Number) : curX;
+					decimal newY = cmd.Y != null ? (abs ? cmd.Y.Number : curY + cmd.Y.Number) : curY;
+
+					decimal distance = 0;
+
+					if (cmd.IsLinearMovement)
+						distance = Tools.MathHelper.LinearDistance(curX, curY, newX, newY);
+					else if (cmd.IsArcMovement) //arc of given radius
+						distance = Tools.MathHelper.ArcDistance(curX, curY, newX, newY, cmd.GetArcRadius());
+
+					if (distance != 0 && speed != 0)
+						toSleep += TimeSpan.FromMinutes((double)distance / (double)speed);
+
+					if (toSleep.TotalMilliseconds > 15) //execute sleep
+					{
+						long start = Tools.HiResTimer.TotalNano;
+						System.Threading.Thread.Sleep(toSleep);
+						long stop = Tools.HiResTimer.TotalNano;
+
+						toSleep -= TimeSpan.FromMilliseconds((double)(stop - start) / 1000.0 / 1000.0);
+					}
+
+					curX = newX;
+					curY = newY;
 				}
 
-				curX = newX;
-				curY = newY;
+				catch (Exception ex) { throw ex; }
+				finally { cmd.DeleteHelper(); }
 			}
-
 		}
 
 

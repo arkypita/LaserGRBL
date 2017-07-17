@@ -158,7 +158,7 @@ namespace LaserGRBL
 					if (ImageExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant())) //import raster image
 					{
 						try
-						{RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent);}
+						{ RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent); }
 						catch (Exception ex)
 						{ Logger.LogException("RasterImport", ex); }
 					}
@@ -167,7 +167,7 @@ namespace LaserGRBL
 						System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
 
 						try
-						{file.LoadFile(filename);}
+						{ file.LoadFile(filename); }
 						catch (Exception ex)
 						{ Logger.LogException("GCodeImport", ex); }
 
@@ -233,9 +233,9 @@ namespace LaserGRBL
 						catch (Exception ex)
 						{
 							Logger.LogException("ExportConfig", ex);
-							System.Windows.Forms.MessageBox.Show("Error exporting config!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error); 
+							System.Windows.Forms.MessageBox.Show("Error exporting config!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 						}
-					
+
 
 						lock (this)
 						{
@@ -247,7 +247,7 @@ namespace LaserGRBL
 				catch (Exception ex)
 				{
 					Logger.LogException("ExportConfig", ex);
-					System.Windows.Forms.MessageBox.Show("Error exporting config!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error); 
+					System.Windows.Forms.MessageBox.Show("Error exporting config!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 				}
 			}
 		}
@@ -300,7 +300,7 @@ namespace LaserGRBL
 						catch (Exception ex)
 						{
 							Logger.LogException("ImportConfig", ex);
-							System.Windows.Forms.MessageBox.Show("Error reading file!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error); 
+							System.Windows.Forms.MessageBox.Show("Error reading file!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 						}
 
 						lock (this)
@@ -313,7 +313,7 @@ namespace LaserGRBL
 				catch (Exception ex)
 				{
 					Logger.LogException("ImportConfig", ex);
-					System.Windows.Forms.MessageBox.Show("Error reading file!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error); 
+					System.Windows.Forms.MessageBox.Show("Error reading file!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 				}
 			}
 		}
@@ -351,7 +351,7 @@ namespace LaserGRBL
 			else if (wraptype == ComWrapper.WrapperType.LaserWebESP8266 && (com == null || com.GetType() != typeof(ComWrapper.LaserWebESP8266)))
 				com = new ComWrapper.LaserWebESP8266();
 
-			com.Configure(conf); 
+			com.Configure(conf);
 		}
 
 		public void OpenCom()
@@ -447,7 +447,7 @@ namespace LaserGRBL
 				{ if (com.IsOpen) com.Write(b); }
 			}
 			catch (Exception ex)
-			{Logger.LogException("SendImmediate", ex);}
+			{ Logger.LogException("SendImmediate", ex); }
 		}
 
 		#endregion
@@ -587,7 +587,7 @@ namespace LaserGRBL
 					}
 				}
 				catch (Exception ex)
-				{Logger.LogException("ThreadTX", ex);}
+				{ Logger.LogException("ThreadTX", ex); }
 			}
 		}
 
@@ -599,13 +599,14 @@ namespace LaserGRBL
 
 		private void SendLine()
 		{
-			GrblCommand tosend = null;
-
-			try
+			GrblCommand tosend = mQueuePtr.Count > 0 ? mQueuePtr.Peek() : null;
+			if (tosend != null)
 			{
-				tosend = mQueuePtr.Count > 0 ? mQueuePtr.Peek() : null;
-				if (tosend != null)
+				try
 				{
+
+					tosend.BuildHelper();
+
 					tosend.SetSending();
 					mSentPtr.Add(tosend);
 					mPending.Enqueue(tosend);
@@ -617,11 +618,12 @@ namespace LaserGRBL
 					if (mTP.InProgram)
 						mTP.JobSent();
 				}
-			}
-			catch (Exception ex)
-			{
-				if (tosend != null) Logger.LogMessage("SendLine", "Error sending [{0}] command", tosend.Command);
-				Logger.LogException("SendLine", ex); 
+				catch (Exception ex)
+				{
+					if (tosend != null) Logger.LogMessage("SendLine", "Error sending [{0}] command", tosend.Command);
+					Logger.LogException("SendLine", ex);
+				}
+				finally { tosend.DeleteHelper(); }
 			}
 		}
 
@@ -658,10 +660,10 @@ namespace LaserGRBL
 		private void ManageGenericMessage(string rline)
 		{
 			try { mSentPtr.Add(new GrblMessage(rline, SupportCSV)); }
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
 				Logger.LogMessage("GenericMessage", "Ex on [{0}] message", rline);
-				Logger.LogException("GenericMessage", ex); 
+				Logger.LogException("GenericMessage", ex);
 			}
 		}
 
@@ -675,10 +677,10 @@ namespace LaserGRBL
 				int build = (int)(rline.Substring(8, 1).ToCharArray()[0]);
 				mGrblVersion = new Version(maj, min, build);
 			}
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
 				Logger.LogMessage("VersionInfo", "Ex on [{0}] message", rline);
-				Logger.LogException("VersionInfo", ex); 
+				Logger.LogException("VersionInfo", ex);
 			}
 			mSentPtr.Add(new GrblMessage(rline, false));
 		}
@@ -710,10 +712,10 @@ namespace LaserGRBL
 					mLaserPosition = new System.Drawing.PointF(float.Parse(arr[1].Substring(5, arr[1].Length - 5), System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[2], System.Globalization.NumberFormatInfo.InvariantInfo));
 				}
 			}
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
 				Logger.LogMessage("RealTimeStatus", "Ex on [{0}] message", rline);
-				Logger.LogException("RealTimeStatus", ex); 
+				Logger.LogException("RealTimeStatus", ex);
 			}
 		}
 
@@ -732,10 +734,10 @@ namespace LaserGRBL
 						mTP.JobExecuted(pending.TimeOffset);
 				}
 			}
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
 				Logger.LogMessage("CommandResponse", "Ex on [{0}] message", rline);
-				Logger.LogException("CommandResponse", ex); 
+				Logger.LogException("CommandResponse", ex);
 			}
 		}
 

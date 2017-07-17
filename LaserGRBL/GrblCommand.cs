@@ -26,16 +26,6 @@ namespace LaserGRBL
 
 	public class GrblCommand : ICloneable, IGrblRow
 	{
-		private string mLine;
-		private string mResult;
-		private CommandStatus mStatus;
-		private Dictionary<char, GrblCommand.Element> list;
-		private string mToolTip;
-		
-		private decimal mDistanceOffset;
-		private TimeSpan mTimeOffset;
-		private bool mIsGrbl;
-		
 		public class Element
 		{
 			private Char mCommand;
@@ -57,68 +47,30 @@ namespace LaserGRBL
 
 		}
 
-		public void SetOffset(decimal Distance, TimeSpan Time)
-		{
-			mDistanceOffset = Distance;
-			mTimeOffset = Time;
-		}
-		
-		public TimeSpan TimeOffset
-		{get {return mTimeOffset;}}
-		
-		//public decimal DistanceOffset
-		//{get {return mDistanceOffset;}}
-		
-		public enum CommandStatus
-		{ Queued, WaitingResponse, ResponseGood, ResponseBad }
-
-		public object Clone()
-		{ return MemberwiseClone(); }
-
-		public string Command
-		{ get { return mLine; } }
-
-		private static char[] trimarray = new char[] { '\r', '\n', ' ' };
-
-		public string SerialData
-		{ 
-			get
-			{
-				if (IsMovement)
-					return mLine.Trim(trimarray).Replace(" ","") + '\n';  //strip spaces
-				else
-					return mLine.Trim(trimarray) + '\n';  //send it "as is"
-			} 
-		}
-
-		public string Result
-		{ get { return mResult; } }
-
-		public CommandStatus Status
-		{ get { return mStatus; } }
+		private string mLine;
+		private string mCodedResult;
+		private TimeSpan mTimeOffset;
+		private Dictionary<char, GrblCommand.Element> mHelper;
 
 		public GrblCommand(string line)
+		{ mLine = line.ToUpper().Trim(); }
+
+		public void BuildHelper()
 		{
-			list = new Dictionary<char, Element>();
-			mStatus = CommandStatus.Queued;
+			if (mHelper != null) //just built!
+				return;
 
 			try
 			{
-				mLine = line.ToUpper().Trim();
-
+				mHelper = new Dictionary<char, Element>();
 				char cmd = '\0';
 				string num = "";
 				bool comment = false;
 				bool oldspace = false;
 				System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
-				if (mLine.StartsWith("$")) //do not parse grbl commands
+				if (!IsGrblCommand) //do not parse grbl command set
 				{
-					mIsGrbl = true;
-				}
-				else //parse only gcodes
-				{
-					mIsGrbl = false;
 					foreach (char c in mLine)
 					{
 						if (c == ';') //dal punto e virgola fino a fine riga -> commento!
@@ -163,42 +115,93 @@ namespace LaserGRBL
 						Add(new Element(cmd, Decimal.Parse(num, System.Globalization.NumberFormatInfo.InvariantInfo))); //aggiungi l'ultimo
 				}
 			}
-			catch {}
+			catch { }
 		}
 
-		private void Add(Element element)
-		{ list.Add(element.Command, element); }
+		public void DeleteHelper()
+		{mHelper = null;}
+		
+		public void SetOffset(decimal Distance, TimeSpan Time)
+		{mTimeOffset = Time;}
+		
+		public TimeSpan TimeOffset
+		{get {return mTimeOffset;}}
+		
+		public enum CommandStatus
+		{ Queued, WaitingResponse, ResponseGood, ResponseBad, InvalidResponse }
 
-		public void SetResult(string result, bool decode) //ERROR:NUM
-		{
-			mResult = result.ToUpper().Trim();
+		public object Clone()
+		{ return MemberwiseClone(); }
 
-			if (mResult.Length == 0)
-				mStatus = CommandStatus.WaitingResponse;
-			else if (mResult.StartsWith("OK"))
-				mStatus = CommandStatus.ResponseGood;
-			else if (mResult.StartsWith("ERROR"))
-				mStatus = CommandStatus.ResponseBad;
-			
-			if (decode && mStatus == CommandStatus.ResponseBad)
+		public string Command
+		{ get { return mLine; } }
+
+		private static char[] trimarray = new char[] { '\r', '\n', ' ' };
+
+		public string SerialData
+		{ 
+			get
 			{
-				try
+				if (CanCompress)
+					return mLine.Trim(trimarray).Replace(" ","") + '\n';  //strip spaces
+				else
+					return mLine.Trim(trimarray) + '\n';  //send it "as is"
+			} 
+		}
+
+		private bool CanCompress
+		{ get { return !IsGrblCommand; } }
+
+		public string Result
+		{
+			get
+			{
+				if (Status == CommandStatus.ResponseBad)
 				{
-					string key = result.Substring(result.IndexOf(':') + 1);
-					string brief = CSVD.Errors.GetItem(key, 0);
-					string desc = CSVD.Errors.GetItem(key, 1);
-					
-					if (brief != null)
-						mResult = brief;
-					
-					if (desc != null)
-						mToolTip = desc;
-				} catch {}
+					try
+					{
+						string key = mCodedResult.Substring(mCodedResult.IndexOf(':') + 1);
+						string brief = CSVD.Errors.GetItem(key, 0);
+						if (brief != null) return brief;
+					}
+					catch { }
+
+					return mCodedResult; //if ex or null
+				}
+
+				return mCodedResult;
 			}
 		}
 
+		public CommandStatus Status
+		{
+			get
+			{
+				if (mCodedResult == null)
+					return CommandStatus.Queued;
+				else if (mCodedResult.Length == 0)
+					return CommandStatus.WaitingResponse;
+				else if (mCodedResult.StartsWith("OK"))
+					return CommandStatus.ResponseGood;
+				else if (mCodedResult.StartsWith("ERROR"))
+					return CommandStatus.ResponseBad;
+				else
+					return CommandStatus.InvalidResponse;
+			}
+		}
+
+
+
+		private void Add(Element element)
+		{ mHelper.Add(element.Command, element); }
+
+		public void SetResult(string result, bool decode) //ERROR:NUM
+		{
+			mCodedResult = result.ToUpper().Trim();
+		}
+
 		public bool IsGrblCommand
-		{ get { return mIsGrbl; } }
+		{ get { return mLine.StartsWith("$"); } }
 		
 		public bool IsEmpty
 		{get{return mLine.Length == 0;}}
@@ -305,7 +308,7 @@ namespace LaserGRBL
 		#endregion
 
 		private Element GetElement(char key)
-		{ return list.ContainsKey(key) ? list[key] : null; }
+		{ return mHelper.ContainsKey(key) ? mHelper[key] : null; }
 
 		public double GetArcRadius()
 		{
@@ -320,9 +323,6 @@ namespace LaserGRBL
 
 			return new PointF(curX + oX, curY + oY);
 		}
-
-		//public bool TrueMovement(decimal curX, decimal curY, bool abs)
-		//{ return (X != null || Y != null) && ((X == null || X.Number != curX) || (Y == null || Y.Number != curY)); }
 
 		public bool TrueMovement(decimal curX, decimal curY, bool abs)
 		{
@@ -339,7 +339,25 @@ namespace LaserGRBL
 		{ get { return Result; } }
 
 		public string ToolTip
-		{ get { return mToolTip; } }
+		{
+			get
+			{
+				if (Status == CommandStatus.ResponseBad)
+				{
+					try
+					{
+						string key = mCodedResult.Substring(mCodedResult.IndexOf(':') + 1);
+						string tooltip = CSVD.Errors.GetItem(key, 1);
+						if (tooltip != null) return tooltip;
+					}
+					catch { }
+
+					return mCodedResult; //if ex or null
+				}
+
+				return "";
+			}
+		}
 		
 		public Color LeftColor
 		{ get { return Color.Black; } }
@@ -348,7 +366,7 @@ namespace LaserGRBL
 		{ get { return Status == CommandStatus.ResponseGood ? Color.DarkBlue : Status == CommandStatus.ResponseBad ? Color.Red : Color.Black; } }
 
 		internal void SetSending()
-		{mStatus = CommandStatus.WaitingResponse;}
+		{mCodedResult = "";}
 
 		public int ImageIndex
 		{ get { return Status == CommandStatus.Queued || Status == CommandStatus.WaitingResponse ? 0 : Status == CommandStatus.ResponseGood ? 1 : 2; } }

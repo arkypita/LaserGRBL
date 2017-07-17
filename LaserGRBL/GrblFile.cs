@@ -345,55 +345,62 @@ namespace LaserGRBL
 
 			foreach (GrblCommand cmd in temp)
 			{
-				bool oldcumulate = cumulate;
-
-				if (c.pwm)
+				try
 				{
-					if (cmd.S != null) //is S command
+					cmd.BuildHelper();
+
+					bool oldcumulate = cumulate;
+
+					if (c.pwm)
 					{
-						if (cmd.S.Number == 0) //is S command with zero power
+						if (cmd.S != null) //is S command
+						{
+							if (cmd.S.Number == 0) //is S command with zero power
+								cumulate = true;   //begin cumulate
+							else
+								cumulate = false;  //end cumulate
+						}
+					}
+					else
+					{
+						if (cmd.IsLaserOFF)
 							cumulate = true;   //begin cumulate
-						else
+						else if (cmd.IsLaserON)
 							cumulate = false;  //end cumulate
 					}
-				}
-				else
-				{
-					if (cmd.IsLaserOFF)
-						cumulate = true;   //begin cumulate
-					else if (cmd.IsLaserON)
-						cumulate = false;  //end cumulate
-				}
 
 
-				if (oldcumulate && !cumulate) //cumulate down front -> flush
-				{
-					if (c.pwm)
-						rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} F{2} S0", formatnumber((double)cumX), formatnumber((double)cumY), c.travelSpeed)));
-					else
-						rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} F{2} {3}", formatnumber((double)cumX), formatnumber((double)cumY), c.travelSpeed, c.lOff)));
-
-					cumX = cumY = 0;
-				}
-
-				if (cumulate) //cumulate
-				{
-					if (cmd.IsMovement)					
+					if (oldcumulate && !cumulate) //cumulate down front -> flush
 					{
-						if (cmd.X != null)
-							cumX += cmd.X.Number;
-						if (cmd.Y != null)
-							cumY += cmd.Y.Number;
+						if (c.pwm)
+							rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} F{2} S0", formatnumber((double)cumX), formatnumber((double)cumY), c.travelSpeed)));
+						else
+							rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} F{2} {3}", formatnumber((double)cumX), formatnumber((double)cumY), c.travelSpeed, c.lOff)));
+
+						cumX = cumY = 0;
 					}
-					else
+
+					if (cumulate) //cumulate
+					{
+						if (cmd.IsMovement)
+						{
+							if (cmd.X != null)
+								cumX += cmd.X.Number;
+							if (cmd.Y != null)
+								cumY += cmd.Y.Number;
+						}
+						else
+						{
+							rv.Add(cmd);
+						}
+					}
+					else //emit line normally
 					{
 						rv.Add(cmd);
 					}
 				}
-				else //emit line normally
-				{
-					rv.Add(cmd);
-				}
+				catch (Exception ex) { throw ex; }
+				finally { cmd.DeleteHelper(); }
 			}
 
 			return rv;
@@ -587,157 +594,165 @@ namespace LaserGRBL
 
 			foreach (GrblCommand cmd in list)
 			{
-				TimeSpan delay = TimeSpan.Zero;
-
-                if (cmd.IsLaserON)
-                {
-                    isLaserActive = true;
-                    isLaserCutting = true;
-                }
-                else if (cmd.IsLaserOFF)
-                {
-                    isLaserActive = false;
-                    isLaserCutting = false;
-                }
-
-                if (laserMode == true && isLaserActive == true)
-                {
-                    if (cmd.IsRapidMovement == true)
-                    {
-                        isLaserCutting = false;
-                    }
-                    else
-                    {
-                        isLaserCutting = true;
-                    }
-                }
-                
-				if (cmd.IsRelativeCoord)
-					abs = false;
-				if (cmd.IsAbsoluteCoord)
-					abs = true;
-
-				if (cmd.F != null)
-					speed = cmd.F.Number;
-
-				if (drawing && cmd.S != null)
+				try
 				{
-					if (mRange.SpindleRange.ValidRange)
-						curAlpha = (int)((cmd.S.Number - mRange.SpindleRange.S.Min) * 255 / (mRange.SpindleRange.S.Max - mRange.SpindleRange.S.Min));
-					else
-						curAlpha = 255;
-				}
+					cmd.BuildHelper();
 
-				if (analyze && cmd.S != null)
-					mRange.UpdateSRange(cmd.S.Number);
+					TimeSpan delay = TimeSpan.Zero;
 
-				if (cmd.IsMovement && cmd.TrueMovement(curX, curY, abs))
-				{
-					decimal newX = cmd.X != null ? (abs ? cmd.X.Number : curX + cmd.X.Number) : curX;
-					decimal newY = cmd.Y != null ? (abs ? cmd.Y.Number : curY + cmd.Y.Number) : curY;
-
-					if (analyze)
+					if (cmd.IsLaserON)
 					{
-						mRange.UpdateXYRange(newX, newY, isLaserCutting);
-
-						decimal distance = 0;
-
-						if (cmd.IsLinearMovement)
-							distance = Tools.MathHelper.LinearDistance(curX, curY, newX, newY);
-						else if (cmd.IsArcMovement) //arc of given radius
-							distance = Tools.MathHelper.ArcDistance(curX, curY, newX, newY, cmd.GetArcRadius());
-
-						if (isLaserCutting)
-							mTotalTravelOn += distance;
-						else
-							mTotalTravelOff += distance;
-
-						if (distance != 0 && speed != 0)
-							delay = TimeSpan.FromMinutes((double)distance / (double)speed);
+						isLaserActive = true;
+						isLaserCutting = true;
+					}
+					else if (cmd.IsLaserOFF)
+					{
+						isLaserActive = false;
+						isLaserCutting = false;
 					}
 
-					if (drawing)
+					if (laserMode == true && isLaserActive == true)
 					{
-						Pen colorpen = firstline ? Pens.Blue : isLaserCutting ? Pens.Red : Pens.LightGray;
-						using (Pen pen = colorpen.Clone() as Pen)
+						if (cmd.IsRapidMovement == true)
 						{
-							pen.ScaleTransform(1 / zoom, 1 / zoom);
+							isLaserCutting = false;
+						}
+						else
+						{
+							isLaserCutting = true;
+						}
+					}
+
+					if (cmd.IsRelativeCoord)
+						abs = false;
+					if (cmd.IsAbsoluteCoord)
+						abs = true;
+
+					if (cmd.F != null)
+						speed = cmd.F.Number;
+
+					if (drawing && cmd.S != null)
+					{
+						if (mRange.SpindleRange.ValidRange)
+							curAlpha = (int)((cmd.S.Number - mRange.SpindleRange.S.Min) * 255 / (mRange.SpindleRange.S.Max - mRange.SpindleRange.S.Min));
+						else
+							curAlpha = 255;
+					}
+
+					if (analyze && cmd.S != null)
+						mRange.UpdateSRange(cmd.S.Number);
+
+					if (cmd.IsMovement && cmd.TrueMovement(curX, curY, abs))
+					{
+						decimal newX = cmd.X != null ? (abs ? cmd.X.Number : curX + cmd.X.Number) : curX;
+						decimal newY = cmd.Y != null ? (abs ? cmd.Y.Number : curY + cmd.Y.Number) : curY;
+
+						if (analyze)
+						{
+							mRange.UpdateXYRange(newX, newY, isLaserCutting);
+
+							decimal distance = 0;
+
+							if (cmd.IsLinearMovement)
+								distance = Tools.MathHelper.LinearDistance(curX, curY, newX, newY);
+							else if (cmd.IsArcMovement) //arc of given radius
+								distance = Tools.MathHelper.ArcDistance(curX, curY, newX, newY, cmd.GetArcRadius());
+
 							if (isLaserCutting)
-								pen.Color = Color.FromArgb(curAlpha, pen.Color);
+								mTotalTravelOn += distance;
+							else
+								mTotalTravelOff += distance;
 
-							if (!isLaserCutting)
-							{
-								if (supportPWM)
-									pen.Color = Color.FromArgb(150, pen.Color);
-								else
-									pen.Color = Color.FromArgb(50, pen.Color);
-
-								pen.DashStyle = DashStyle.Dash;
-								pen.DashPattern = new float[] { 1f, 1f };
-							}
-
-                            
-                            if (cmd.IsLinearMovement)
-							{
-								g.DrawLine(pen, new PointF((float)curX, (float)curY), new PointF((float)newX, (float)newY));
-							}
-							else if (cmd.IsArcMovement)
-							{
-								cw = cmd.IsCW(cw);
-
-								PointF center = cmd.GetCenter((float)curX, (float)curY);
-								double cX = center.X;
-								double cY = center.Y;
-								double aX = (double)curX;
-								double aY = (double)curY;
-								double bX = (double)newX;
-								double bY = (double)newY;
-
-								double ray = cmd.GetArcRadius();
-								double rectX = cX - ray;
-								double rectY = cY - ray;
-								double rectW = 2 * ray;
-								double rectH = 2 * ray;
-
-								double aA = Tools.MathHelper.CalculateAngle(cX, cY, aX, aY);	//180/Math.PI*Math.Atan2(y1-y0, x1-x0);
-								double bA = Tools.MathHelper.CalculateAngle(cX, cY, bX, bY);	//180/Math.PI*Math.Atan2(y2-y0, x2-x0);
-
-								double sA = aA;	//start angle
-								double wA = Tools.MathHelper.AngularDistance(aA, bA, cw);
-
-								if (rectW > 0 && rectH > 0)
-								{
-									try{g.DrawArc(pen, (float)rectX, (float)rectY, (float)rectW, (float)rectH, (float)sA, (float)wA);}
-									catch{System.Diagnostics.Debug.WriteLine(String.Format("Ex drwing arc: W{0} H{1}", rectW, rectH));}
-								}
-							}
-
+							if (distance != 0 && speed != 0)
+								delay = TimeSpan.FromMinutes((double)distance / (double)speed);
 						}
 
-						firstline = false;
-					}
+						if (drawing)
+						{
+							Pen colorpen = firstline ? Pens.Blue : isLaserCutting ? Pens.Red : Pens.LightGray;
+							using (Pen pen = colorpen.Clone() as Pen)
+							{
+								pen.ScaleTransform(1 / zoom, 1 / zoom);
+								if (isLaserCutting)
+									pen.Color = Color.FromArgb(curAlpha, pen.Color);
 
-					curX = newX;
-					curY = newY;
-				}
-				else if (cmd.IsPause)
-				{
-					if (analyze)
+								if (!isLaserCutting)
+								{
+									if (supportPWM)
+										pen.Color = Color.FromArgb(150, pen.Color);
+									else
+										pen.Color = Color.FromArgb(50, pen.Color);
+
+									pen.DashStyle = DashStyle.Dash;
+									pen.DashPattern = new float[] { 1f, 1f };
+								}
+
+
+								if (cmd.IsLinearMovement)
+								{
+									g.DrawLine(pen, new PointF((float)curX, (float)curY), new PointF((float)newX, (float)newY));
+								}
+								else if (cmd.IsArcMovement)
+								{
+									cw = cmd.IsCW(cw);
+
+									PointF center = cmd.GetCenter((float)curX, (float)curY);
+									double cX = center.X;
+									double cY = center.Y;
+									double aX = (double)curX;
+									double aY = (double)curY;
+									double bX = (double)newX;
+									double bY = (double)newY;
+
+									double ray = cmd.GetArcRadius();
+									double rectX = cX - ray;
+									double rectY = cY - ray;
+									double rectW = 2 * ray;
+									double rectH = 2 * ray;
+
+									double aA = Tools.MathHelper.CalculateAngle(cX, cY, aX, aY);	//180/Math.PI*Math.Atan2(y1-y0, x1-x0);
+									double bA = Tools.MathHelper.CalculateAngle(cX, cY, bX, bY);	//180/Math.PI*Math.Atan2(y2-y0, x2-x0);
+
+									double sA = aA;	//start angle
+									double wA = Tools.MathHelper.AngularDistance(aA, bA, cw);
+
+									if (rectW > 0 && rectH > 0)
+									{
+										try { g.DrawArc(pen, (float)rectX, (float)rectY, (float)rectW, (float)rectH, (float)sA, (float)wA); }
+										catch { System.Diagnostics.Debug.WriteLine(String.Format("Ex drwing arc: W{0} H{1}", rectW, rectH)); }
+									}
+								}
+
+							}
+
+							firstline = false;
+						}
+
+						curX = newX;
+						curY = newY;
+					}
+					else if (cmd.IsPause)
 					{
-						//TimeSpan delay = cmd.P != null ? TimeSpan.FromMilliseconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
-						//grbl seem to use both P and S as number of seconds
-						delay = cmd.P != null ? TimeSpan.FromSeconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
+						if (analyze)
+						{
+							//TimeSpan delay = cmd.P != null ? TimeSpan.FromMilliseconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
+							//grbl seem to use both P and S as number of seconds
+							delay = cmd.P != null ? TimeSpan.FromSeconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
+						}
 					}
+
+					if (isLaserCutting)
+						mEstimatedTimeOn += delay;
+					else
+						mEstimatedTimeOff += delay;
+
+					if (analyze)
+						cmd.SetOffset(mTotalTravelOn + mTotalTravelOff, mEstimatedTimeOn + mEstimatedTimeOff);
 				}
-
-				if (isLaserCutting)
-					mEstimatedTimeOn += delay;
-				else
-					mEstimatedTimeOff += delay;
-
-				if (analyze)
-					cmd.SetOffset(mTotalTravelOn + mTotalTravelOff, mEstimatedTimeOn + mEstimatedTimeOff);
+				catch (Exception ex) { throw ex; }
+				finally { cmd.DeleteHelper(); }
 			}
+			
 		}
 
 		private float DrawJobRange(Graphics g, ref Size s)
