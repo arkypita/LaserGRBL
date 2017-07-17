@@ -71,10 +71,10 @@ namespace LaserGRBL.UserControls
 				{
 					IGrblRow cmd = mDraw[i];
 
-					if (cmd.LeftString != null)
+					if (cmd.GetMessage() != null)
 					{
 						using (Brush b = new SolidBrush(cmd.LeftColor))
-							e.Graphics.DrawString(cmd.LeftString, Font, b, mUseImages && cmd.ImageIndex >= 0 ? RowHeight + 1 : 1, RowHeight * i + 1);
+							e.Graphics.DrawString(cmd.GetMessage(), Font, b, mUseImages && cmd.ImageIndex >= 0 ? RowHeight + 1 : 1, RowHeight * i + 1);
 					}
 
 					if (mUseImages && cmd.ImageIndex >= 0)
@@ -84,10 +84,10 @@ namespace LaserGRBL.UserControls
 						int iH = RowHeight - 2;
 						e.Graphics.DrawImage(I, /*Width - ScrollBar.Width - iW - 2*/ 1, RowHeight * i + (RowHeight - iH) / 2, iW, iH );
 					}
-					if (!mUseImages && cmd.RightString != null)
+					if (!mUseImages && cmd.GetResult(mCom.SupportCSV) != null)
 					{
 						using (Brush b = new SolidBrush(cmd.RightColor))
-							e.Graphics.DrawString(cmd.RightString, Font, b, Width - ScrollBar.Width - 1, RowHeight * i + 2, new StringFormat(StringFormatFlags.DirectionRightToLeft));
+							e.Graphics.DrawString(cmd.GetResult(mCom.SupportCSV), Font, b, Width - ScrollBar.Width - 1, RowHeight * i + 2, new StringFormat(StringFormatFlags.DirectionRightToLeft));
 					}
 
 
@@ -116,7 +116,7 @@ namespace LaserGRBL.UserControls
 			if (mPosition != position)
 			{
 				if (mDraw != null && position >= 0 && position < mDraw.Count)
-					TT.SetToolTip(this, Tools.WordWrap.WrapString(mDraw[position].ToolTip, 60));
+					TT.SetToolTip(this, Tools.WordWrap.WrapString(mDraw[position].GetToolTip(mCom.SupportCSV), 60));
 				else
 					TT.SetToolTip(this, null);
 			

@@ -7,9 +7,10 @@ namespace LaserGRBL
 {
 	public interface IGrblRow
 	{
-		string LeftString { get; }
-		string RightString { get; }
-		string ToolTip { get ;}
+		string GetMessage();
+
+		string GetResult(bool decode);
+		string GetToolTip(bool decode);
 
 		Color LeftColor { get; }
 		Color RightColor { get; }
@@ -152,11 +153,9 @@ namespace LaserGRBL
 		private bool CanCompress
 		{ get { return !IsGrblCommand; } }
 
-		public string Result
+		public string GetResult(bool decode)
 		{
-			get
-			{
-				if (Status == CommandStatus.ResponseBad)
+				if (Status == CommandStatus.ResponseBad && decode)
 				{
 					try
 					{
@@ -170,7 +169,6 @@ namespace LaserGRBL
 				}
 
 				return mCodedResult;
-			}
 		}
 
 		public CommandStatus Status
@@ -332,31 +330,22 @@ namespace LaserGRBL
 				return ((X != null && X.Number != 0) || (Y != null && Y.Number != 0));
 		}
 
-		public string LeftString
-		{ get { return Command; } }
+		public string GetMessage()
+		{  return Command; } 
 
-		public string RightString
-		{ get { return Result; } }
-
-		public string ToolTip
+		public string GetToolTip(bool decode)
 		{
-			get
+			if (Status == CommandStatus.ResponseBad && decode)
 			{
-				if (Status == CommandStatus.ResponseBad)
+				try
 				{
-					try
-					{
-						string key = mCodedResult.Substring(mCodedResult.IndexOf(':') + 1);
-						string tooltip = CSVD.Errors.GetItem(key, 1);
-						if (tooltip != null) return tooltip;
-					}
-					catch { }
-
-					return mCodedResult; //if ex or null
+					string key = mCodedResult.Substring(mCodedResult.IndexOf(':') + 1);
+					string tooltip = CSVD.Errors.GetItem(key, 1);
+					if (tooltip != null) return tooltip;
 				}
-
-				return "";
+				catch { }
 			}
+			return "";
 		}
 		
 		public Color LeftColor
@@ -433,14 +422,14 @@ namespace LaserGRBL
 		public string Message
 		{get { return mMessage; ; }}
 		
-		public string LeftString
-		{get { return mMessage; ; }}
+		public string GetMessage()
+		{return mMessage; }
 
-		public string RightString
-		{get { return ""; }}
+		public string GetResult(bool decode)
+		{return ""; }
 		
-		public string ToolTip
-		{get { return mToolTip; }}
+		public string GetToolTip(bool decode) //already decoded on build
+		{ return mToolTip; }
 		
 		public Color LeftColor
 		{

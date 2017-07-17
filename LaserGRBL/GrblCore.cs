@@ -206,10 +206,10 @@ namespace LaserGRBL
 						try
 						{
 
-							while (cmd.Result == null) //resta in attesa della risposta
+							while (cmd.Status == GrblCommand.CommandStatus.WaitingResponse) //resta in attesa della risposta
 								;
 
-							if (cmd.Result != "OK")
+							if (cmd.Status != GrblCommand.CommandStatus.ResponseGood)
 							{
 								System.Windows.Forms.MessageBox.Show("Error exporting config!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 							}
@@ -288,7 +288,7 @@ namespace LaserGRBL
 							foreach (IGrblRow row in mSentPtr)
 							{
 								if (row is GrblCommand)
-									if (((GrblCommand)row).Result != "OK")
+									if (((GrblCommand)row).Status != GrblCommand.CommandStatus.ResponseGood)
 										errors++;
 							}
 
