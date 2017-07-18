@@ -83,7 +83,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -543,7 +543,7 @@
     <EmbeddedResource Include="UserControls\LabelTB.resx">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.manifest">
+    <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
     </None>
     <None Include="Grafica\Actions-transform-crop-and-resize-icon.png" />
