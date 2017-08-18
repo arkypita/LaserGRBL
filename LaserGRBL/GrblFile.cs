@@ -84,7 +84,15 @@ namespace LaserGRBL
 			{get {return false;}}
 			
 			public bool Fast
-			{get {return mColor == 0;}}
+			{
+				get 
+				{
+					if (mConf.pwm)
+						return (mColor <= 125);
+					else
+						return mColor == 0;
+				}
+			}
 			
 			public string formatnumber(double number)
 			{ return number.ToString("#.###", System.Globalization.CultureInfo.InvariantCulture); }
@@ -99,7 +107,7 @@ namespace LaserGRBL
 				if (mConf.pwm)
 					return string.Format("X{0} S{1}", formatnumber(mReverse ? -mLen : mLen), mColor);
 				else
-					return string.Format("X{0} {1}", formatnumber(mReverse ? -mLen : mLen), mColor > 125 ? mConf.lOn : mConf.lOff);
+					return string.Format("X{0} {1}", formatnumber(mReverse ? -mLen : mLen), Fast ? mConf.lOff : mConf.lOn);
 			}
 		}
 
@@ -112,7 +120,7 @@ namespace LaserGRBL
 				if (mConf.pwm)
 					return string.Format("Y{0} S{1}", formatnumber(mReverse ? -mLen : mLen), mColor);
 				else
-					return string.Format("Y{0} {1}", formatnumber(mReverse ? -mLen : mLen), mColor > 125 ? mConf.lOn : mConf.lOff);
+					return string.Format("Y{0} {1}", formatnumber(mReverse ? -mLen : mLen), Fast ? mConf.lOff : mConf.lOn);
 			}
 		}
 		
@@ -125,7 +133,7 @@ namespace LaserGRBL
 				if (mConf.pwm)
 					return string.Format("X{0} Y{1} S{2}", formatnumber(mReverse ? - mLen : mLen), formatnumber(mReverse ? mLen : -mLen), mColor);
 				else
-					return string.Format("X{0} Y{1} {2}", formatnumber(mReverse ? -mLen : mLen), formatnumber(mReverse ? mLen : -mLen), mColor > 125 ? mConf.lOn : mConf.lOff);
+					return string.Format("X{0} Y{1} {2}", formatnumber(mReverse ? -mLen : mLen), formatnumber(mReverse ? mLen : -mLen), Fast ? mConf.lOff : mConf.lOn);
 			}
 		}	
 
