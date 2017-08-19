@@ -58,20 +58,21 @@ namespace LaserGRBL
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.GBCommands = new System.Windows.Forms.Panel();
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+			this.GBFile = new System.Windows.Forms.Panel();
+			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.TbFileName = new System.Windows.Forms.TextBox();
 			this.GBConnection = new System.Windows.Forms.Panel();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblComPort = new System.Windows.Forms.Label();
-			this.LblBaudRate = new System.Windows.Forms.Label();
 			this.CBPort = new System.Windows.Forms.ComboBox();
+			this.LblBaudRate = new System.Windows.Forms.Label();
 			this.CBSpeed = new System.Windows.Forms.ComboBox();
 			this.LblAddress = new System.Windows.Forms.Label();
 			this.TxtAddress = new System.Windows.Forms.TextBox();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
-			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-			this.GBFile = new System.Windows.Forms.Panel();
+			this.UDLoopCounter = new System.Windows.Forms.NumericUpDown();
 			this.TxtManualCommand = new LaserGRBL.UserControls.GrblTextBox();
 			this.CmdLog = new LaserGRBL.UserControls.CommandLog();
 			this.PB = new LaserGRBL.UserControls.DoubleProgressBar();
@@ -81,10 +82,11 @@ namespace LaserGRBL
 			this.tableLayoutPanel1.SuspendLayout();
 			this.GBCommands.SuspendLayout();
 			this.tableLayoutPanel6.SuspendLayout();
+			this.GBFile.SuspendLayout();
+			this.tableLayoutPanel5.SuspendLayout();
 			this.GBConnection.SuspendLayout();
 			this.tableLayoutPanel4.SuspendLayout();
-			this.tableLayoutPanel5.SuspendLayout();
-			this.GBFile.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.UDLoopCounter)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -110,6 +112,25 @@ namespace LaserGRBL
 			this.tableLayoutPanel6.Controls.Add(this.CmdLog, 0, 1);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
 			// 
+			// GBFile
+			// 
+			resources.ApplyResources(this.GBFile, "GBFile");
+			this.GBFile.BackColor = System.Drawing.SystemColors.Control;
+			this.GBFile.Controls.Add(this.tableLayoutPanel5);
+			this.GBFile.Name = "GBFile";
+			// 
+			// tableLayoutPanel5
+			// 
+			resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
+			this.tableLayoutPanel5.Controls.Add(this.label5, 0, 1);
+			this.tableLayoutPanel5.Controls.Add(this.label3, 0, 0);
+			this.tableLayoutPanel5.Controls.Add(this.TbFileName, 1, 0);
+			this.tableLayoutPanel5.Controls.Add(this.PB, 1, 1);
+			this.tableLayoutPanel5.Controls.Add(this.BtnOpen, 3, 0);
+			this.tableLayoutPanel5.Controls.Add(this.BtnRunProgram, 3, 1);
+			this.tableLayoutPanel5.Controls.Add(this.UDLoopCounter, 2, 1);
+			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+			// 
 			// label5
 			// 
 			resources.ApplyResources(this.label5, "label5");
@@ -122,6 +143,7 @@ namespace LaserGRBL
 			// 
 			// TbFileName
 			// 
+			this.tableLayoutPanel5.SetColumnSpan(this.TbFileName, 2);
 			resources.ApplyResources(this.TbFileName, "TbFileName");
 			this.TbFileName.Name = "TbFileName";
 			this.TbFileName.ReadOnly = true;
@@ -151,11 +173,6 @@ namespace LaserGRBL
 			resources.ApplyResources(this.LblComPort, "LblComPort");
 			this.LblComPort.Name = "LblComPort";
 			// 
-			// LblBaudRate
-			// 
-			resources.ApplyResources(this.LblBaudRate, "LblBaudRate");
-			this.LblBaudRate.Name = "LblBaudRate";
-			// 
 			// CBPort
 			// 
 			resources.ApplyResources(this.CBPort, "CBPort");
@@ -163,6 +180,11 @@ namespace LaserGRBL
 			this.CBPort.FormattingEnabled = true;
 			this.CBPort.Name = "CBPort";
 			this.CBPort.SelectedIndexChanged += new System.EventHandler(this.CBPort_SelectedIndexChanged);
+			// 
+			// LblBaudRate
+			// 
+			resources.ApplyResources(this.LblBaudRate, "LblBaudRate");
+			this.LblBaudRate.Name = "LblBaudRate";
 			// 
 			// CBSpeed
 			// 
@@ -184,23 +206,27 @@ namespace LaserGRBL
 			this.TxtAddress.Name = "TxtAddress";
 			this.TxtAddress.TextChanged += new System.EventHandler(this.TxtHostName_TextChanged);
 			// 
-			// tableLayoutPanel5
+			// UDLoopCounter
 			// 
-			resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
-			this.tableLayoutPanel5.Controls.Add(this.label5, 0, 1);
-			this.tableLayoutPanel5.Controls.Add(this.label3, 0, 0);
-			this.tableLayoutPanel5.Controls.Add(this.TbFileName, 1, 0);
-			this.tableLayoutPanel5.Controls.Add(this.PB, 1, 1);
-			this.tableLayoutPanel5.Controls.Add(this.BtnOpen, 2, 0);
-			this.tableLayoutPanel5.Controls.Add(this.BtnRunProgram, 2, 1);
-			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-			// 
-			// GBFile
-			// 
-			resources.ApplyResources(this.GBFile, "GBFile");
-			this.GBFile.BackColor = System.Drawing.SystemColors.Control;
-			this.GBFile.Controls.Add(this.tableLayoutPanel5);
-			this.GBFile.Name = "GBFile";
+			resources.ApplyResources(this.UDLoopCounter, "UDLoopCounter");
+			this.UDLoopCounter.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+			this.UDLoopCounter.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.UDLoopCounter.Name = "UDLoopCounter";
+			this.TT.SetToolTip(this.UDLoopCounter, resources.GetString("UDLoopCounter.ToolTip"));
+			this.UDLoopCounter.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.UDLoopCounter.ValueChanged += new System.EventHandler(this.UDLoopCounter_ValueChanged);
 			// 
 			// TxtManualCommand
 			// 
@@ -289,14 +315,15 @@ namespace LaserGRBL
 			this.GBCommands.ResumeLayout(false);
 			this.tableLayoutPanel6.ResumeLayout(false);
 			this.tableLayoutPanel6.PerformLayout();
+			this.GBFile.ResumeLayout(false);
+			this.GBFile.PerformLayout();
+			this.tableLayoutPanel5.ResumeLayout(false);
+			this.tableLayoutPanel5.PerformLayout();
 			this.GBConnection.ResumeLayout(false);
 			this.GBConnection.PerformLayout();
 			this.tableLayoutPanel4.ResumeLayout(false);
 			this.tableLayoutPanel4.PerformLayout();
-			this.tableLayoutPanel5.ResumeLayout(false);
-			this.tableLayoutPanel5.PerformLayout();
-			this.GBFile.ResumeLayout(false);
-			this.GBFile.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.UDLoopCounter)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -307,5 +334,6 @@ namespace LaserGRBL
 		private System.Windows.Forms.TextBox TxtAddress;
 		private System.Windows.Forms.Panel GBFile;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+		private System.Windows.Forms.NumericUpDown UDLoopCounter;
 	}
 }

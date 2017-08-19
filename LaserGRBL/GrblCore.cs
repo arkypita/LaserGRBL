@@ -16,10 +16,12 @@ namespace LaserGRBL
 
 		public delegate void dlgOnMachineStatus();
 		public delegate void dlgOnOverrideChange();
+		public delegate void dlgOnLoopCountChange(decimal current);
 
 		public event dlgOnMachineStatus MachineStatusChanged;
 		public event GrblFile.OnFileLoadedDlg OnFileLoaded;
 		public event dlgOnOverrideChange OnOverrideChange;
+		public event dlgOnLoopCountChange OnLoopCountChange;
 
 		private System.Windows.Forms.Control syncro;
 		private ComWrapper.IComWrapper com;
@@ -47,6 +49,8 @@ namespace LaserGRBL
 		private int mTarOvFeed;
 		private int mTarOvRapids;
 		private int mTarOvSpindle;
+
+		private decimal mLoopCount = 1;
 
 		private Tools.ThreadObject TX;
 		private Tools.ThreadObject RX;
@@ -853,12 +857,21 @@ namespace LaserGRBL
 			catch (Exception ex) { Logger.LogException("ParseMachineStatus", ex); }
 
 			if (var == MacStatus.Idle && mQueuePtr.Count == 0 && mPending.Count == 0)
-				mTP.JobEnd();
+				OnProgramEnd();
 
 			if (mTP.InProgram && var == MacStatus.Idle) //bugfix for grbl sending Idle on G4
 				var = MacStatus.Run;
 
 			SetStatus(var);
+		}
+
+		private void OnProgramEnd()
+		{
+			if (mTP.JobEnd() && mLoopCount > 1)
+			{
+				LoopCount--;
+				EnqueueProgram();
+			}
 		}
 
 		private bool InPause
@@ -870,10 +883,6 @@ namespace LaserGRBL
 			mPending.Clear();
 			if (sent) mSent.Clear();
 		}
-
-
-
-
 
 		public bool CanLoadNewFile
 		{ get { return !InProgram; } }
@@ -898,6 +907,9 @@ namespace LaserGRBL
 
 		public bool CanResumeHold
 		{ get { return IsOpen && (MachineStatus == MacStatus.Door || MachineStatus == MacStatus.Hold); } }
+
+		public decimal LoopCount 
+		{ get { return mLoopCount; } set { mLoopCount = value; if (OnLoopCountChange != null) OnLoopCountChange(mLoopCount); } }
 	}
 
 	public class TimeProjection
@@ -1044,7 +1056,7 @@ namespace LaserGRBL
 			}
 		}
 
-		public void JobEnd()
+		public bool JobEnd()
 		{
 			if (mStarted && !mCompleted)
 			{
@@ -1052,7 +1064,10 @@ namespace LaserGRBL
 				mEnd = Tools.HiResTimer.TotalMilliseconds;
 				mCompleted = true;
 				mStarted = false;
+				return true;
 			}
+
+			return false;
 		}
 
 		private long now

@@ -31,6 +31,8 @@ namespace LaserGRBL
 		{
 			Core = core;
 			Core.OnFileLoaded += OnFileLoaded;
+			Core.OnLoopCountChange += OnLoopCountChanged;
+
 			CmdLog.SetCom(core);
 			
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(Color.LightSkyBlue));
@@ -42,6 +44,19 @@ namespace LaserGRBL
 			RestoreConf();
 
 			TimerUpdate();
+		}
+
+		void OnLoopCountChanged(decimal current)
+		{
+			if (InvokeRequired)
+			{
+				Invoke(new GrblCore.dlgOnLoopCountChange(OnLoopCountChanged), current);
+			}
+			else
+			{
+				if (UDLoopCounter.Value != current)
+					UDLoopCounter.Value = current;
+			}
 		}
 
 		private void RestoreConf()
@@ -240,6 +255,11 @@ namespace LaserGRBL
 		private void ITcpPort_CurrentValueChanged(object sender, int NewValue, bool ByUser)
 		{
 			UpdateConf();
+		}
+
+		private void UDLoopCounter_ValueChanged(object sender, EventArgs e)
+		{
+			Core.LoopCount = UDLoopCounter.Value;
 		}
 	}
 }

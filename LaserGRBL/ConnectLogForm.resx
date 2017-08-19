@@ -148,7 +148,7 @@
     <value>TxtManualCommand</value>
   </data>
   <data name="&gt;&gt;TxtManualCommand.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblTextBox, LaserGRBL, Version=2.6.12.25781, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblTextBox, LaserGRBL, Version=2.7.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TxtManualCommand.Parent" xml:space="preserve">
     <value>tableLayoutPanel6</value>
@@ -166,7 +166,7 @@
     <value>3, 26</value>
   </data>
   <data name="CmdLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 343</value>
+    <value>239, 342</value>
   </data>
   <data name="CmdLog.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -175,7 +175,7 @@
     <value>CmdLog</value>
   </data>
   <data name="&gt;&gt;CmdLog.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.CommandLog, LaserGRBL, Version=2.6.12.25781, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.CommandLog, LaserGRBL, Version=2.7.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CmdLog.Parent" xml:space="preserve">
     <value>tableLayoutPanel6</value>
@@ -193,7 +193,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 372</value>
+    <value>245, 371</value>
   </data>
   <data name="tableLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -217,13 +217,13 @@
     <value>Fill</value>
   </data>
   <data name="GBCommands.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 95</value>
+    <value>1, 96</value>
   </data>
   <data name="GBCommands.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
   <data name="GBCommands.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 372</value>
+    <value>245, 371</value>
   </data>
   <data name="GBCommands.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -253,7 +253,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="tableLayoutPanel5.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -364,7 +364,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="PB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 23</value>
+    <value>128, 24</value>
   </data>
   <data name="PB.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -373,7 +373,7 @@
     <value>PB</value>
   </data>
   <data name="&gt;&gt;PB.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.DoubleProgressBar, LaserGRBL, Version=2.6.12.25781, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.DoubleProgressBar, LaserGRBL, Version=2.7.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;PB.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -427,7 +427,7 @@
     <value>BtnOpen</value>
   </data>
   <data name="&gt;&gt;BtnOpen.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.12.25781, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.7.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnOpen.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -476,13 +476,37 @@
     <value>BtnRunProgram</value>
   </data>
   <data name="&gt;&gt;BtnRunProgram.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.12.25781, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.7.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnRunProgram.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
   </data>
   <data name="&gt;&gt;BtnRunProgram.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="UDLoopCounter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 25</value>
+  </data>
+  <data name="UDLoopCounter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
+  </data>
+  <data name="UDLoopCounter.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
+    <value>Perform multiple passes</value>
+  </data>
+  <data name="&gt;&gt;UDLoopCounter.Name" xml:space="preserve">
+    <value>UDLoopCounter</value>
+  </data>
+  <data name="&gt;&gt;UDLoopCounter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UDLoopCounter.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;UDLoopCounter.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="tableLayoutPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -494,7 +518,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 47</value>
+    <value>245, 48</value>
   </data>
   <data name="tableLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -512,7 +536,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel5.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label5" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TbFileName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="PB" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnOpen" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnRunProgram" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label5" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TbFileName" Row="0" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="PB" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnOpen" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="BtnRunProgram" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="UDLoopCounter" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,20,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="GBFile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -524,7 +548,7 @@
     <value>1, 1, 1, 0</value>
   </data>
   <data name="GBFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 47</value>
+    <value>245, 48</value>
   </data>
   <data name="GBFile.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -798,7 +822,7 @@
     <value>BtnConnectDisconnect</value>
   </data>
   <data name="&gt;&gt;BtnConnectDisconnect.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.6.12.25781, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.7.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnConnectDisconnect.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
