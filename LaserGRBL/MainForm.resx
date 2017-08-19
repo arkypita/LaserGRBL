@@ -148,7 +148,7 @@
     <value>ConnectionForm</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Type" xml:space="preserve">
-    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=2.7.0.32068, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=2.7.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -175,7 +175,7 @@
     <value>JogForm</value>
   </data>
   <data name="&gt;&gt;JogForm.Type" xml:space="preserve">
-    <value>LaserGRBL.JogForm, LaserGRBL, Version=2.7.0.32068, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.JogForm, LaserGRBL, Version=2.7.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;JogForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -217,7 +217,7 @@
     <value>PreviewForm</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Type" xml:space="preserve">
-    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=2.7.0.32068, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=2.7.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -285,8 +285,26 @@
   <data name="TTTEstimated.Text" xml:space="preserve">
     <value>unknown</value>
   </data>
-  <data name="spring.Size" type="System.Drawing.Size, System.Drawing">
-    <value>525, 19</value>
+  <data name="spring1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>413, 19</value>
+  </data>
+  <data name="LblX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 19</value>
+  </data>
+  <data name="LblX.Text" xml:space="preserve">
+    <value>X: 0.000</value>
+  </data>
+  <data name="LblY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 19</value>
+  </data>
+  <data name="LblY.Text" xml:space="preserve">
+    <value>Y: 0.000</value>
+  </data>
+  <data name="spacer2.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="spacer2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 19</value>
   </data>
   <data name="TTOvG0.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -704,7 +722,7 @@
     <value>&amp;File</value>
   </data>
   <data name="MNGrblEmulator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="MNGrblEmulator.Text" xml:space="preserve">
     <value>&amp;Grbl Emulator</value>
@@ -1046,10 +1064,22 @@
   <data name="&gt;&gt;TTTEstimated.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;spring.Name" xml:space="preserve">
-    <value>spring</value>
+  <data name="&gt;&gt;spring1.Name" xml:space="preserve">
+    <value>spring1</value>
   </data>
-  <data name="&gt;&gt;spring.Type" xml:space="preserve">
+  <data name="&gt;&gt;spring1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblX.Name" xml:space="preserve">
+    <value>LblX</value>
+  </data>
+  <data name="&gt;&gt;LblX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblY.Name" xml:space="preserve">
+    <value>LblY</value>
+  </data>
+  <data name="&gt;&gt;LblY.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TTOvG0.Name" xml:space="preserve">
@@ -1208,6 +1238,18 @@
   <data name="&gt;&gt;MnFileSend.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;MNEsp8266.Name" xml:space="preserve">
+    <value>MNEsp8266</value>
+  </data>
+  <data name="&gt;&gt;MNEsp8266.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MNGrblEmulator.Name" xml:space="preserve">
+    <value>MNGrblEmulator</value>
+  </data>
+  <data name="&gt;&gt;MNGrblEmulator.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;linguaToolStripMenuItem.Name" xml:space="preserve">
     <value>linguaToolStripMenuItem</value>
   </data>
@@ -1262,18 +1304,6 @@
   <data name="&gt;&gt;russianToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MNEsp8266.Name" xml:space="preserve">
-    <value>MNEsp8266</value>
-  </data>
-  <data name="&gt;&gt;MNEsp8266.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MNGrblEmulator.Name" xml:space="preserve">
-    <value>MNGrblEmulator</value>
-  </data>
-  <data name="&gt;&gt;MNGrblEmulator.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;toolStripMenuItem4.Name" xml:space="preserve">
     <value>toolStripMenuItem4</value>
   </data>
@@ -1315,6 +1345,12 @@
   </data>
   <data name="&gt;&gt;aboutToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;spacer2.Name" xml:space="preserve">
+    <value>spacer2</value>
+  </data>
+  <data name="&gt;&gt;spacer2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

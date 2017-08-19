@@ -86,7 +86,6 @@ namespace LaserGRBL
 			TimerUpdate();
 			ConnectionForm.TimerUpdate();
 			PreviewForm.TimerUpdate();
-			
 			JogForm.Enabled = Core.JogEnabled;
 		}
 		
@@ -149,10 +148,11 @@ namespace LaserGRBL
 					TTTStatus.BackColor = DefaultBackColor;
 					TTTStatus.ForeColor = DefaultForeColor;
 					break;
-					
-
-					
 			}
+
+			LblX.Text = string.Format("X: {0:0.000}", Core.LaserPosition.X);
+			LblY.Text = string.Format("Y: {0:0.000}", Core.LaserPosition.Y);
+
 			ResumeLayout();
 		}
 
