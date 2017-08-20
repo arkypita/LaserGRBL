@@ -84,15 +84,7 @@ namespace LaserGRBL
 			{get {return false;}}
 			
 			public bool Fast
-			{
-				get 
-				{
-					if (mConf.pwm)
-						return (mColor <= 125);
-					else
-						return mColor == 0;
-				}
-			}
+			{get {return mConf.pwm ? mColor == 0 : mColor <= 125;}}
 			
 			public string formatnumber(double number)
 			{ return number.ToString("#.###", System.Globalization.CultureInfo.InvariantCulture); }
