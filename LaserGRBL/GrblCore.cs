@@ -209,16 +209,35 @@ namespace LaserGRBL
 
 						try
 						{
+							Tools.AutoResetTimer WaitResponseTimeout = new Tools.AutoResetTimer(TimeSpan.FromSeconds(10), true);
 
-							while (cmd.Status == GrblCommand.CommandStatus.WaitingResponse) //resta in attesa della risposta
-								;
+							//resta in attesa dell'invio del comando e della risposta
+							while (cmd.Status == GrblCommand.CommandStatus.Queued || cmd.Status == GrblCommand.CommandStatus.WaitingResponse)
+								if (WaitResponseTimeout.Expired)
+									throw new TimeoutException("No response received from grbl!");
+								else
+									System.Threading.Thread.Sleep(10);
 
-							if (cmd.Status != GrblCommand.CommandStatus.ResponseGood)
+							if (cmd.Status == GrblCommand.CommandStatus.ResponseGood)
 							{
-								System.Windows.Forms.MessageBox.Show("Error exporting config!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-							}
-							else
-							{
+								//attendi la ricezione di tutti i parametri
+								long tStart = Tools.HiResTimer.TotalMilliseconds;
+								long tLast = tStart;
+								int counter = mSentPtr.Count;
+
+								//finché l'ultima risposta è più recente di 1s e non sono passati più di 10s totali
+								while (Tools.HiResTimer.TotalMilliseconds - tLast < 1000 && Tools.HiResTimer.TotalMilliseconds - tStart < 10000)
+								{
+									if (mSentPtr.Count != counter)
+									{
+										tLast = Tools.HiResTimer.TotalMilliseconds;
+										counter = mSentPtr.Count;
+									}
+									else
+									{
+										System.Threading.Thread.Sleep(10);
+									}
+								}
 
 								int msg = 0;
 								foreach (IGrblRow row in mSentPtr)
@@ -232,6 +251,10 @@ namespace LaserGRBL
 
 								sw.Close();
 								System.Windows.Forms.MessageBox.Show(String.Format("{0} Config exported with success!", msg), "Success", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+							}
+							else
+							{
+								System.Windows.Forms.MessageBox.Show("Error exporting config!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 							}
 						}
 						catch (Exception ex)

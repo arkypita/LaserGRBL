@@ -289,6 +289,7 @@
     <Compile Include="SplashScreenForm.Designer.cs">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\Cronometro.cs" />
     <Compile Include="Tools\HiResTimer.cs" />
     <Compile Include="Tools\MathHelper.cs" />
     <Compile Include="Tools\ThreadClass.cs" />

@@ -170,8 +170,8 @@ namespace LaserGRBL
 
 			if (filename != null)
 			{Core.ExportConfig(filename);}
-			
 		}
+
 		void MnImportConfigClick(object sender, EventArgs e)
 		{
 			string filename = null;

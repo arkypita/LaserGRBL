@@ -93,13 +93,64 @@ namespace LaserGRBL
 				else if (e.Data == "{fb:n}\n")
 					;
 				else if (e.Data == "!")
-					{mPaused = true; SendStatus();}
+				{ mPaused = true; SendStatus(); }
 				else if (e.Data == "~")
-					{ mPaused = false; SendStatus(); }
+				{ mPaused = false; SendStatus(); }
 				else if (e.RawData.Length == 1 && e.RawData[0] == 24)
 					GrblReset();
+				else if (e.Data == "$$\n")
+					SendConfig();
+				else if (IsSetConf(e.Data))
+					SetConfig(e.Data);
 				else
 					EnqueueRX(e);
+			}
+
+			System.Text.RegularExpressions.Regex confRegEX = new System.Text.RegularExpressions.Regex(@"^[$](\d+) *= *(\d+\.?\d*)");
+			private bool IsSetConf(string p)
+			{return confRegEX.IsMatch(p);}
+
+			private void SetConfig(string p)
+			{
+				try
+				{
+					System.Text.RegularExpressions.MatchCollection matches = confRegEX.Matches(p);
+					int key = int.Parse(matches[0].Groups[1].Value);
+
+					if (configTable.Keys.Contains(key))
+					{
+						if (configTable[key] is int)
+							configTable[key] = int.Parse(matches[0].Groups[2].Value, System.Globalization.CultureInfo.InvariantCulture);
+						else if (configTable[key] is decimal)
+							configTable[key] = decimal.Parse(matches[0].Groups[2].Value, System.Globalization.CultureInfo.InvariantCulture);
+						else if (configTable[key] is bool)
+							configTable[key] = int.Parse(matches[0].Groups[2].Value) == 0 ? false : true;
+
+						ImmediateTX("ok");
+					}
+					else
+						ImmediateTX("error"); 
+				}
+				catch(Exception ex)
+				{
+					ImmediateTX("error"); 
+				}
+			}
+
+			private Dictionary<int, object> configTable = new Dictionary<int, object> { { 0, 10 }, { 1, 25 }, { 2, 0 }, { 3, 0 }, { 4, false }, { 5, false }, { 6, false }, { 10, 1 }, { 11, 0.010m }, { 12, 0.002m }, { 13, false }, { 20, false }, { 21, false }, { 22, false }, { 23, 0 }, { 24, 25.000m }, { 25, 500.000m }, { 26, 250 }, { 27, 1.000m }, { 30, 1000.0m }, { 31, 0.0m }, { 32, false }, { 100, 250.000m }, { 101, 250.000m }, { 102, 250.000m }, { 110, 500.000m }, { 111, 500.000m }, { 112, 500.000m }, { 120, 10.000m }, { 121, 10.000m }, { 122, 10.000m }, { 130, 200.000m }, { 131, 200.000m }, { 132, 200.000m } };
+
+			private void SendConfig()
+			{
+				ImmediateTX("ok");
+				foreach (KeyValuePair<int, object> kvp in configTable)
+				{
+					if (kvp.Value is decimal)
+						ImmediateTX(string.Format(System.Globalization.CultureInfo.InvariantCulture, "${0}={1:0.000}", kvp.Key, kvp.Value));
+					else if (kvp.Value is bool)
+						ImmediateTX(string.Format(System.Globalization.CultureInfo.InvariantCulture, "${0}={1}", kvp.Key, ((bool)kvp.Value) ? 1 : 0));
+					else
+						ImmediateTX(string.Format(System.Globalization.CultureInfo.InvariantCulture, "${0}={1}", kvp.Key, kvp.Value));
+				}
 			}
 
 			private void EnqueueRX(MessageEventArgs e)
