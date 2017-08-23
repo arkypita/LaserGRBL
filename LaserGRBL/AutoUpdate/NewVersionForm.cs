@@ -29,10 +29,10 @@ namespace LaserGRBL
 
 				DialogResult rv = f.ShowDialog(parent);
 
-				if (rv == DialogResult.OK && System.Windows.Forms.MessageBox.Show("Update success! Please restart LaserGRBL to apply update.\r\nRestart now?", "Update result", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
-					System.Windows.Forms.Application.Restart();
+				if (rv == DialogResult.OK)
+					System.Windows.Forms.Application.Exit(); //exit (spawned process will apply update)
 				else if (rv == DialogResult.Abort)
-					System.Windows.Forms.MessageBox.Show("Automatic update failed!\r\nPlease manually download the new version from lasergrbl site.", "Update result", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+					System.Windows.Forms.MessageBox.Show("Automatic update failed!\r\nPlease manually download the new version from lasergrbl site.", "Update result", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
 
@@ -72,7 +72,7 @@ namespace LaserGRBL
 				if (mClosing)
 					return;
 
-				if (e.Error == null && !e.Cancelled && GitHub.ApplyUpdate())
+				if (e.Error == null && !e.Cancelled && GitHub.ApplyUpdateS1())
 					DialogResult = System.Windows.Forms.DialogResult.OK;
 				else
 					DialogResult = System.Windows.Forms.DialogResult.Abort;

@@ -17,14 +17,28 @@ namespace LaserGRBL
 	{
 		private static System.Collections.Generic.Dictionary<string, object> dic;
 
+		static string filename
+		{ 
+			get 
+			{
+				string basename = "LaserGRBL.Settings.bin";
+				string fullname = System.IO.Path.Combine(GrblCore.DataPath, basename);
+
+				if (!System.IO.File.Exists(fullname) && System.IO.File.Exists(basename))
+					System.IO.File.Copy(basename, fullname);
+
+				return fullname;
+			} 
+		}
+
 		static Settings()
 		{
 			try 
 			{
-				if (System.IO.File.Exists("LaserGRBL.Settings.bin"))
+				if (System.IO.File.Exists(filename))
 				{
 					System.Runtime.Serialization.Formatters.Binary.BinaryFormatter f = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-					using (System.IO.FileStream fs = new System.IO.FileStream("LaserGRBL.Settings.bin", System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.None))
+					using (System.IO.FileStream fs = new System.IO.FileStream(filename, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.None))
 					{
 						dic = (System.Collections.Generic.Dictionary<string, object>)f.Deserialize(fs);
 						fs.Close();
@@ -55,7 +69,7 @@ namespace LaserGRBL
 		public static void Save()
 		{
 			System.Runtime.Serialization.Formatters.Binary.BinaryFormatter f = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-			using (System.IO.FileStream fs = new System.IO.FileStream("LaserGRBL.Settings.bin", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
+			using (System.IO.FileStream fs = new System.IO.FileStream(filename, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
 			{
 				f.Serialize(fs, dic);
 				fs.Close();

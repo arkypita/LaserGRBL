@@ -346,13 +346,13 @@ namespace LaserGRBL
 
 		private void openSessionLogToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (System.IO.File.Exists("sessionlog.txt"))
-				System.Diagnostics.Process.Start("sessionlog.txt");
+			if (Logger.ExistLog)
+				Logger.ShowLog();
 		}
 
 		private void toolStripMenuItem4_DropDownOpening(object sender, EventArgs e)
 		{
-			openSessionLogToolStripMenuItem.Enabled = System.IO.File.Exists("sessionlog.txt");
+			openSessionLogToolStripMenuItem.Enabled = Logger.ExistLog;
 		}
 
 		private void MNFrench_Click(object sender, EventArgs e)

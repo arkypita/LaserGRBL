@@ -11,8 +11,6 @@ namespace LaserGRBL
 
 		public static void CheckVersion()
 		{
-			Cleanup();
-
 			if ((bool)Settings.GetObject("Auto Update", true))
 				System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(GitHub.AsyncCheckVersion));
 		}
@@ -61,7 +59,7 @@ namespace LaserGRBL
 			}
 		}
 
-		public static string zipfile = "lasergrblupdate.package";
+		public static string zipfile {get{return System.IO.Path.Combine(GrblCore.TempPath, "lasergrblupdate.package");}}
 		public static string mainpath = @"LaserGRBL/";
 		public static string delext = ".todelete";
 
@@ -102,7 +100,22 @@ namespace LaserGRBL
 			}
 		}
 
-		public static bool ApplyUpdate()
+		public static string UpdaterExeName = "LaserGRBL Updater.exe";
+
+		public static bool ApplyUpdateS1() //step one, create the updater and run elevated with AU switch
+		{
+			string lasergrbl = System.Windows.Forms.Application.ExecutablePath;
+			string updater = System.IO.Path.Combine(GrblCore.TempPath, UpdaterExeName);
+			if (System.IO.File.Exists(updater))
+				System.IO.File.Delete(updater);
+			System.IO.File.Copy(lasergrbl, updater);
+
+			System.Diagnostics.ProcessStartInfo p = new System.Diagnostics.ProcessStartInfo { UseShellExecute = true, WorkingDirectory = Environment.CurrentDirectory, FileName = updater, Verb = "runas", Arguments = String.Format("AU {0} \"{1}\"", System.Diagnostics.Process.GetCurrentProcess().Id, lasergrbl) };
+			try { System.Diagnostics.Process.Start(p); return true; }
+			catch { return false; }	
+		}
+
+		public static bool ApplyUpdateS2() //step two, real apply update, if elevated
 		{
 			try
 			{
@@ -117,13 +130,7 @@ namespace LaserGRBL
 								fname = fname.Substring(mainpath.Length);
 
 							if (System.IO.File.Exists(fname))
-							{
-								if (System.IO.File.Exists(fname + delext))
-									System.IO.File.Delete(fname + delext);
-
-								System.IO.File.Move(fname, fname + delext);
-								System.IO.File.SetAttributes(fname + delext, System.IO.FileAttributes.Hidden);
-							}
+								System.IO.File.Delete(fname);
 
 							zs.ExtractFile(ze, "./" + fname);
 						}
@@ -140,19 +147,16 @@ namespace LaserGRBL
 		}
 
 
-		public static void Cleanup()
-		{
-			System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(GitHub.AsyncCleanup));
-		}
-
-		private static void AsyncCleanup(object foo)
+		public static void CleanupOldVersion()
 		{
 			try
 			{
 				foreach (string filePath in System.IO.Directory.GetFiles("./", "*" + delext, System.IO.SearchOption.AllDirectories))
 					System.IO.File.Delete(filePath);
-				if (System.IO.File.Exists(zipfile))
-					System.IO.File.Delete(zipfile);
+				if (System.IO.File.Exists("sessionlog.txt")) //old session log in program file
+					System.IO.File.Delete("sessionlog.txt");
+				if (System.IO.File.Exists("LaserGRBL.Settings.bin")) //old setting in program file
+					System.IO.File.Delete("LaserGRBL.Settings.bin");
 			}
 			catch { }
 		}

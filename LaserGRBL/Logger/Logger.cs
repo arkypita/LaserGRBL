@@ -36,13 +36,13 @@ namespace LaserGRBL
 			try
 			{
 
-				if (System.IO.File.Exists("sessionlog.txt"))
+				if (System.IO.File.Exists(filename))
 				{
 					int MAXLINE = 1000;
 					String tmp = System.IO.Path.GetTempFileName();
 					bool written = false;
 
-					using (System.IO.StreamReader reader = new System.IO.StreamReader("sessionlog.txt"))
+					using (System.IO.StreamReader reader = new System.IO.StreamReader(filename))
 					{
 						int linecount = 0;
 						while (reader.ReadLine() != null)
@@ -67,8 +67,8 @@ namespace LaserGRBL
 
 					if (written)
 					{
-						System.IO.File.Delete("sessionlog.txt");
-						System.IO.File.Move(tmp, "sessionlog.txt");
+						System.IO.File.Delete(filename);
+						System.IO.File.Move(tmp, filename);
 					}
 					else
 					{
@@ -90,7 +90,7 @@ namespace LaserGRBL
 				try
 				{
 					LogMultiLine("Program", "------------ PROGRAM STOP ------------");
-					System.IO.File.AppendAllText("sessionlog.txt", "\r\n");
+					System.IO.File.AppendAllText(filename, "\r\n");
 				}
 				catch { }
 			}
@@ -108,13 +108,34 @@ namespace LaserGRBL
 					foreach (string line in text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None))
 						sb.AppendFormat("{0}\t{1}\t{2}\r\n", dt, context.PadRight(12, ' '), line);
 
-					System.IO.File.AppendAllText("sessionlog.txt", sb.ToString());
+					System.IO.File.AppendAllText(filename, sb.ToString());
 					System.Diagnostics.Debug.Write(sb.ToString());
 				}
 				catch { }
 			}
 		}
 
+		static string filename
+		{
+			get
+			{
+				string basename = "sessionlog.txt";
+				string fullname = System.IO.Path.Combine(GrblCore.DataPath, basename);
 
+				if (!System.IO.File.Exists(fullname) && System.IO.File.Exists(basename))
+					System.IO.File.Copy(basename, fullname);
+
+				return fullname;
+			}
+		}
+
+		public static bool ExistLog
+		{ get { return System.IO.File.Exists(filename); } }
+
+
+		internal static void ShowLog()
+		{
+			System.Diagnostics.Process.Start(filename);
+		}
 	}
 }

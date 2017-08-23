@@ -82,9 +82,7 @@
     <StartAction>Project</StartAction>
   </PropertyGroup>
   <PropertyGroup />
-  <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -544,9 +542,6 @@
     <EmbeddedResource Include="UserControls\LabelTB.resx">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Properties\app.manifest">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Grafica\Actions-transform-crop-and-resize-icon.png" />
     <None Include="Grafica\Crop-tool-icon.png" />
     <None Include="Grafica\document-revert.png" />

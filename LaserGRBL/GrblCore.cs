@@ -933,6 +933,38 @@ namespace LaserGRBL
 
 		public decimal LoopCount 
 		{ get { return mLoopCount; } set { mLoopCount = value; if (OnLoopCountChange != null) OnLoopCountChange(mLoopCount); } }
+
+		private static string mDataPath;
+		public static string DataPath
+		{
+			get
+			{
+				if (mDataPath == null)
+				{
+ 					mDataPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LaserGRBL");
+					if (!System.IO.Directory.Exists(mDataPath))
+						System.IO.Directory.CreateDirectory(mDataPath);
+				}
+
+				return mDataPath;
+			}
+		}
+
+		private static string mTempPath;
+		public static string TempPath
+		{
+			get
+			{
+				if (mTempPath == null)
+				{
+					mTempPath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "LaserGRBL");
+					if (!System.IO.Directory.Exists(mTempPath))
+						System.IO.Directory.CreateDirectory(mTempPath);
+				}
+
+				return mTempPath;
+			}
+		}
 	}
 
 	public class TimeProjection
