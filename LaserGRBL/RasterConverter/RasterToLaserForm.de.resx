@@ -666,4 +666,13 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Rasterbild importieren</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Downsampling</value>
+  </data>
+  <data name="TpOriginal.Text" xml:space="preserve">
+    <value>Original</value>
+  </data>
+  <data name="CbThreshold.Text" xml:space="preserve">
+    <value>B&amp;&amp;W</value>
+  </data>
 </root>

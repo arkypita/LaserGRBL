@@ -325,7 +325,7 @@
     <value>209, 22</value>
   </data>
   <data name="MnImportConfig.Text" xml:space="preserve">
-    <value>&amp;Konfiguration einlesen</value>
+    <value>&amp;Konfiguration importieren</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
     <value>206, 6</value>
@@ -691,5 +691,23 @@
   </data>
   <data name="russianToolStripMenuItem.Text" xml:space="preserve">
     <value>Russisch</value>
+  </data>
+  <data name="TTLStatus.Text" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="grblToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Grbl</value>
+  </data>
+  <data name="MNGrblEmulator.Text" xml:space="preserve">
+    <value>&amp;Grbl Emulator</value>
+  </data>
+  <data name="MNEsp8266.Text" xml:space="preserve">
+    <value>&amp;ESP8266</value>
+  </data>
+  <data name="toolStripMenuItem4.Text" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Laser GRBL</value>
   </data>
 </root>

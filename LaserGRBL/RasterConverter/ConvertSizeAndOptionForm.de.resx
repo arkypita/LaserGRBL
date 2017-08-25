@@ -320,12 +320,39 @@ Klicken Sie für mehr Informationen ...</value>
     <value>239, 3</value>
   </data>
   <data name="BtnCreate.Text" xml:space="preserve">
-    <value>erzeuge !</value>
+    <value>erzeuge</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>322, 266</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Soll Bild</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="LblBorderTracingmm.Text" xml:space="preserve">
+    <value>mm/min</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>mm/min</value>
+  </data>
+  <data name="LblLinearFillingmm.Text" xml:space="preserve">
+    <value>mm/min</value>
+  </data>
+  <data name="CBLaserON.Items" xml:space="preserve">
+    <value>M3</value>
+  </data>
+  <data name="CBLaserON.Items1" xml:space="preserve">
+    <value>M4</value>
+  </data>
+  <data name="CBLaserOFF.Items" xml:space="preserve">
+    <value>M5</value>
   </data>
 </root>

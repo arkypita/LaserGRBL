@@ -138,4 +138,13 @@
   <data name="BtnOpen.ToolTip" xml:space="preserve">
     <value>Datei geöffnet</value>
   </data>
+  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
+    <value>Anzahl der Durchläufe</value>
+  </data>
+  <data name="LblComPort.Text" xml:space="preserve">
+    <value>COM</value>
+  </data>
+  <data name="LblBaudRate.Text" xml:space="preserve">
+    <value>Baud</value>
+  </data>
 </root>
