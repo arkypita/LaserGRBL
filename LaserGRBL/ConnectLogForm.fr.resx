@@ -144,4 +144,7 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Vitesse en Baud</value>
   </data>
+  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
+    <value>Effectuer des passes multiples</value>
+  </data>
 </root>
