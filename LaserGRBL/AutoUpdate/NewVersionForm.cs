@@ -34,8 +34,6 @@ namespace LaserGRBL
 				else if (rv == DialogResult.Abort)
 					System.Windows.Forms.MessageBox.Show("Automatic update failed!\r\nPlease manually download the new version from lasergrbl site.", "Update result", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-
-
 		}
 
 		private void BtnUpdate_Click(object sender, EventArgs e)

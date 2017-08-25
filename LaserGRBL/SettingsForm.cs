@@ -16,10 +16,12 @@ namespace LaserGRBL
 			InitializeComponent();
 
 			InitProtocolCB();
+			InitStreamingCB();
 
 			CBSupportPWM.Checked = (bool)Settings.GetObject("Support Hardware PWM", true);
             CBLaserMode.Checked = (bool)Settings.GetObject("Laser Mode", false);
 			CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
+			CBStreamingMode.SelectedItem = Settings.GetObject("Streaming Mode", GrblCore.StreamingMode.Buffered);
 		}
 
 		private void InitProtocolCB()
@@ -29,6 +31,15 @@ namespace LaserGRBL
 			CBProtocol.Items.Add(ComWrapper.WrapperType.Telnet);
 			CBProtocol.Items.Add(ComWrapper.WrapperType.LaserWebESP8266);
 			CBProtocol.EndUpdate();
+		}
+
+		private void InitStreamingCB()
+		{
+			CBStreamingMode.BeginUpdate();
+			CBStreamingMode.Items.Add(GrblCore.StreamingMode.Buffered);
+			CBStreamingMode.Items.Add(GrblCore.StreamingMode.Synchronous);
+			CBStreamingMode.Items.Add(GrblCore.StreamingMode.RepeatOnError);
+			CBStreamingMode.EndUpdate();
 		}
 
 		internal static void CreateAndShowDialog()
@@ -42,6 +53,7 @@ namespace LaserGRBL
 			Settings.SetObject("Support Hardware PWM", CBSupportPWM.Checked);
             Settings.SetObject("Laser Mode", CBLaserMode.Checked);
 			Settings.SetObject("ComWrapper Protocol", CBProtocol.SelectedItem);
+			Settings.SetObject("Streaming Mode", CBStreamingMode.SelectedItem);
 
 			Settings.Save();
 
@@ -75,6 +87,11 @@ namespace LaserGRBL
 			//	System.Windows.Forms.MessageBox.Show("LaserWeb ESP8266 compatible protocol is under development.\r\nWill be available in a future version.");
 			//	CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			//}
+		}
+
+		private void BtnStreamingMode_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#streaming-mode");
 		}
     }
 }

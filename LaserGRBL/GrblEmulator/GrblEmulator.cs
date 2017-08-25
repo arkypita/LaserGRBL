@@ -224,7 +224,11 @@ namespace LaserGRBL
 
 							Console.WriteLine(C.Command.Trim("\n".ToCharArray()));
 
-							EnqueueTX("ok");
+							//System.Random rnd = new Random();
+							//if (rnd.Next(10) == 5)
+							//	EnqueueTX("error");
+							//else
+								EnqueueTX("ok");
 						}
 						catch (Exception ex)
 						{

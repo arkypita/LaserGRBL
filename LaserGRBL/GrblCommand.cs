@@ -53,8 +53,13 @@ namespace LaserGRBL
 		private TimeSpan mTimeOffset;
 		private Dictionary<char, GrblCommand.Element> mHelper;
 
+		private int mRepeatCount;
+
 		public GrblCommand(string line)
-		{ mLine = line.ToUpper().Trim(); }
+		{ mLine = line.ToUpper().Trim(); mRepeatCount = 0; }
+
+		public GrblCommand(string line, int repeat)
+		{ mLine = line.ToUpper().Trim(); mRepeatCount = repeat; }
 
 		public void BuildHelper()
 		{
@@ -118,6 +123,9 @@ namespace LaserGRBL
 			}
 			catch { }
 		}
+
+		public int RepeatCount
+		{ get { return mRepeatCount; } }
 
 		public void DeleteHelper()
 		{mHelper = null;}
@@ -330,8 +338,8 @@ namespace LaserGRBL
 				return ((X != null && X.Number != 0) || (Y != null && Y.Number != 0));
 		}
 
-		public string GetMessage()
-		{  return Command; } 
+		public string GetMessage() //per la visualizzazione
+		{  return mRepeatCount == 0 ? Command : String.Format("{0} (Retry {1})", Command, mRepeatCount); } 
 
 		public string GetToolTip(bool decode)
 		{

@@ -14,6 +14,9 @@ namespace LaserGRBL
 		public enum JogDirection
 		{ N, S, W, E, NW, NE, SW, SE }
 
+		public enum StreamingMode
+		{ Buffered, Synchronous, RepeatOnError }
+
 		public delegate void dlgOnMachineStatus();
 		public delegate void dlgOnOverrideChange();
 		public delegate void dlgOnLoopCountChange(decimal current);
@@ -26,12 +29,15 @@ namespace LaserGRBL
 		private System.Windows.Forms.Control syncro;
 		private ComWrapper.IComWrapper com;
 		private GrblFile file;
-		private System.Collections.Generic.Queue<GrblCommand> mQueue;
-		private System.Collections.Generic.List<IGrblRow> mSent;
-		private System.Collections.Generic.Queue<GrblCommand> mPending;
+		private System.Collections.Generic.Queue<GrblCommand> mQueue; //vera coda di quelli da mandare
+		private GrblCommand mRetryQueue; //coda[1] di quelli in attesa di risposta
+		private System.Collections.Generic.Queue<GrblCommand> mPending; //coda di quelli in attesa di risposta
+		private System.Collections.Generic.List<IGrblRow> mSent; //lista di quelli mandati
+		
+		private System.Collections.Generic.Queue<GrblCommand> mQueuePtr; //puntatore a coda di quelli da mandare (normalmente punta a mQueue, salvo per import/export configurazione)
+		private System.Collections.Generic.List<IGrblRow> mSentPtr; //puntatore a lista di quelli mandati (normalmente punta a mSent, salvo per import/export configurazione)
 
-		private System.Collections.Generic.List<IGrblRow> mSentPtr;
-		private System.Collections.Generic.Queue<GrblCommand> mQueuePtr;
+		//private StreamingMode mStreamingMode = StreamingMode.Buffered;
 
 		private int mBuffer;
 		private System.Drawing.PointF mLaserPosition;
@@ -620,13 +626,36 @@ namespace LaserGRBL
 
 		private bool CanSend()
 		{
-			GrblCommand next = mQueuePtr.Count > 0 ? mQueuePtr.Peek() : null;
-			return next != null && (mBuffer + next.SerialData.Length) <= BUFFER_SIZE;
+			GrblCommand next = PeekNextCommand();
+			return next != null && HasSpaceInBuffer(next);
 		}
+
+		private GrblCommand PeekNextCommand()
+		{
+			if (CurrentStreamingMode == StreamingMode.Buffered && mQueuePtr.Count > 0) //sono buffered e ho roba da trasmettere
+				return mQueuePtr.Peek();
+			else if (CurrentStreamingMode != StreamingMode.Buffered && mPending.Count == 0) //sono sync e sono vuoto
+				if (mRetryQueue != null) return mRetryQueue;
+				else if (mQueuePtr.Count > 0) return mQueuePtr.Peek();
+				else return null;
+			else
+				return null;
+		}
+
+		private void RemoveManagedCommand()
+		{
+			if (mRetryQueue != null)
+				mRetryQueue = null;
+			else
+				mQueuePtr.Dequeue(); 
+		}
+
+		private bool HasSpaceInBuffer(GrblCommand command)
+		{return (mBuffer + command.SerialData.Length) <= BUFFER_SIZE;}
 
 		private void SendLine()
 		{
-			GrblCommand tosend = mQueuePtr.Count > 0 ? mQueuePtr.Peek() : null;
+			GrblCommand tosend = PeekNextCommand();
 			if (tosend != null)
 			{
 				try
@@ -637,7 +666,7 @@ namespace LaserGRBL
 					tosend.SetSending();
 					mSentPtr.Add(tosend);
 					mPending.Enqueue(tosend);
-					mQueuePtr.Dequeue();
+					RemoveManagedCommand();
 
 					mBuffer += tosend.SerialData.Length;
 					com.Write(tosend.SerialData);
@@ -757,8 +786,12 @@ namespace LaserGRBL
 					pending.SetResult(rline, SupportCSV);
 					mBuffer -= pending.SerialData.Length;
 
-					if (mTP.InProgram)
+					if (mTP.InProgram && pending.RepeatCount == 0) //solo se non è una ripetizione aggiorna il tempo
 						mTP.JobExecuted(pending.TimeOffset);
+
+					//ripeti errori programma && non ho una coda (magari mi sto allineando per cambio conf buff/sync) && ho un errore && non l'ho già ripetuto troppe volte
+					if (InProgram && CurrentStreamingMode == StreamingMode.RepeatOnError && mPending.Count == 0 && pending.Status == GrblCommand.CommandStatus.ResponseBad && pending.RepeatCount < 3) //il comando eseguito ha dato errore
+						mRetryQueue = new GrblCommand(pending.Command, pending.RepeatCount + 1); //repeat on error
 				}
 			}
 			catch (Exception ex)
@@ -905,6 +938,7 @@ namespace LaserGRBL
 			mQueue.Clear();
 			mPending.Clear();
 			if (sent) mSent.Clear();
+			mRetryQueue = null;
 		}
 
 		public bool CanLoadNewFile
@@ -933,6 +967,9 @@ namespace LaserGRBL
 
 		public decimal LoopCount 
 		{ get { return mLoopCount; } set { mLoopCount = value; if (OnLoopCountChange != null) OnLoopCountChange(mLoopCount); } }
+
+		private StreamingMode CurrentStreamingMode
+		{ get { return (StreamingMode)Settings.GetObject("Streaming Mode", StreamingMode.Buffered); } }
 
 		private static string mDataPath;
 		public static string DataPath
