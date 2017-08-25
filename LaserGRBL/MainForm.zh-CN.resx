@@ -118,32 +118,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="JogForm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 436</value>
+  </data>
+  <data name="JogForm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>351, 118</value>
+  </data>
+  <data name="ConnectionForm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>351, 554</value>
+  </data>
+  <data name="PreviewForm.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Imprint MT Shadow, 8.25pt</value>
+  </data>
+  <data name="PreviewForm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>782, 554</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1141, 556</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>353</value>
+  </data>
   <data name="TTLLines.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 19</value>
+    <value>23, 21</value>
   </data>
   <data name="TTLLines.Text" xml:space="preserve">
-    <value>Zeile</value>
+    <value>行:</value>
   </data>
   <data name="TTLEstimated.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 19</value>
+    <value>72, 21</value>
   </data>
   <data name="TTLEstimated.Text" xml:space="preserve">
-    <value>geschätzte Zeit</value>
+    <value>估计时间：</value>
   </data>
-  <data name="TTTEstimated.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 19</value>
+  <data name="spring1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>680, 21</value>
   </data>
-  <data name="TTTEstimated.Text" xml:space="preserve">
-    <value>unbekannt</value>
+  <data name="StatusBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 581</value>
   </data>
-  <data name="spring.Size" type="System.Drawing.Size, System.Drawing">
-    <value>512, 19</value>
-  </data>
-  <data name="TTTStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 19</value>
-  </data>
-  <data name="TTTStatus.Text" xml:space="preserve">
-    <value>Nicht verbunden</value>
+  <data name="StatusBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1141, 26</value>
   </data>
   <data name="MnConnect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -168,10 +184,10 @@
 </value>
   </data>
   <data name="MnConnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="MnConnect.Text" xml:space="preserve">
-    <value>&amp;Verbinden</value>
+    <value>连接</value>
   </data>
   <data name="MnDisconnect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -195,13 +211,13 @@
 </value>
   </data>
   <data name="MnDisconnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="MnDisconnect.Text" xml:space="preserve">
-    <value>&amp;Trennen</value>
+    <value>断开</value>
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="MnGrblReset.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -223,10 +239,10 @@
 </value>
   </data>
   <data name="MnGrblReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="MnGrblReset.Text" xml:space="preserve">
-    <value>&amp;Zurücksetzten</value>
+    <value>复位</value>
   </data>
   <data name="MnGoHome.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -251,10 +267,10 @@
 </value>
   </data>
   <data name="MnGoHome.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="MnGoHome.Text" xml:space="preserve">
-    <value>&amp;nach Hause</value>
+    <value>归位</value>
   </data>
   <data name="MnUnlock.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -277,18 +293,18 @@
 </value>
   </data>
   <data name="MnUnlock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="MnUnlock.Text" xml:space="preserve">
-    <value>&amp;Entsperren</value>
+    <value>解锁</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="MnExportConfig.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAK
-        7gAACu4BrzForAAAAAd0SU1FB9MDBg4mKihOhtUAAAIISURBVDhPzZFPSFNxAMff6A++JIpq/YHAc4cu
+        8AAACvABQqw0mAAAAAd0SU1FB9MDBg4mKihOhtUAAAIISURBVDhPzZFPSFNxAMff6A++JIpq/YHAc4cu
         mh48dZKC0SGkUwwvncLiebIdWqERyXJ7pst4SM94bxvpJJtKBG4uV9bmnMwObZPXxmP4ctl8VtqU7dtz
         /bDi6TX63H7w+X75/n4/6p9huE+9NtioIDluj802WWe1+jwOR+B9d3cwx7L+tcHBmUJVx6mNqidGnHx8
         uETf2R8guh5RnPleLAKqCigKkE5v4JxwEZvhu0uNuJk14Th3AIYOykUif+NyzRVTKSAcXkYkksOZh2ex
@@ -301,15 +317,15 @@
 </value>
   </data>
   <data name="MnExportConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="MnExportConfig.Text" xml:space="preserve">
-    <value>Konfiguration exportieren</value>
+    <value>输出</value>
   </data>
   <data name="MnImportConfig.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAK
-        7gAACu4BrzForAAAAAd0SU1FB9MDBg4jFJRYbzsAAAIjSURBVDhPzZBdSFNxGMb/MLSy1WalQXQZFEHQ
+        8AAACvABQqw0mAAAAAd0SU1FB9MDBg4jFJRYbzsAAAIjSURBVDhPzZBdSFNxGMb/MLSy1WalQXQZFEHQ
         hTRQu/Ii6aJdCRFd2FXQx8UuBiqh0AEjFDZhrGhMttyZS4e5/NicsByNWPvQWq10s8PWITtz+XHKnDO2
         p4P9IeLQRdBFv7sXfs/D+77k/6K399mZrq4xl9H49I3JFMz39QUKPT3+AsN4VtrbXW9bW01urfZ2A9Xl
         sOzst1IJEEVAEIBM5jtSqSKSyQJCoRzc7ndobr6Vp7ocp/N1KZ0GIpF1eL08xsezGBhIwGAIoLNzBFot
@@ -322,13 +338,13 @@
 </value>
   </data>
   <data name="MnImportConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="MnImportConfig.Text" xml:space="preserve">
-    <value>&amp;Konfiguration importieren</value>
+    <value>输入</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="settingsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -349,18 +365,18 @@
 </value>
   </data>
   <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Einstellungen</value>
+    <value>设置</value>
   </data>
   <data name="toolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="MnExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAJxAIA3kywAAACBjSFJNAABu
-        lQAAdA4AAPGBAACFRgAAZO0AAPeGAABJ4gAAHljF0QxvAAAACXBIWXMAAAsRAAALEQF/ZF+RAAADS0lE
+        lQAAdA4AAPGBAACFRgAAZO0AAPeGAABJ4gAAHljF0QxvAAAACXBIWXMAAAsTAAALEwEAmpwYAAADS0lE
         QVQ4T6WTWUwTYRDHt6WlLdCWbelWoBR6UUBrKSmHSLlSQJBDQUSKBuEBAkIIBBGFRETReCQKiUEaBW2C
         BS3BiA8IUjUeqDEeiYLXAxI1PmAMii1XGXeXVn33YTZfZr7/b+abfxYBgP8KRMKmk+HPRJAIsRCNCPTF
         JBwGIuUy3Fw1sacbIuN5MrRycZCCz3aXoSwanqcQNeICJYBFQaJlIsWw+eKz2wOX36Zq1bEynheFgAQS
@@ -379,21 +395,15 @@
 </value>
   </data>
   <data name="MnExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="MnExit.Text" xml:space="preserve">
-    <value>&amp;Ende</value>
-  </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 20</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Datei</value>
+    <value>退出</value>
   </data>
   <data name="MnFileOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAJxAIA3kywAAACBjSFJNAABu
-        lQAAdA4AAPGBAACFRgAAZO0AAPeGAABJ4gAAHljF0QxvAAAACXBIWXMAAAsRAAALEQF/ZF+RAAADQElE
+        lQAAdA4AAPGBAACFRgAAZO0AAPeGAABJ4gAAHljF0QxvAAAACXBIWXMAAAsTAAALEwEAmpwYAAADQElE
         QVQ4T3WTW0hTcRzHf12o16KnLrq5s013ph4921ymS/M6yyyzmuKclaJGN1pE2kP1UBRdhS4kUVBgF4LC
         ktIkIy1tF1dTj7u5uemmWallZhbhr7NZRkkPXw7n4fPhx//3/YFMIgOlMgMyM9fBlsKtUFpSCkmrkkAR
         p4AYaQzIZXKIjqIhRiafX1RUrBSLyNn8EB4ICX4g/xXExcYBzYJSWgpUBDX3/PmLJ0dGPn3PydmUGLR4
@@ -412,10 +422,10 @@
 </value>
   </data>
   <data name="MnFileOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="MnFileOpen.Text" xml:space="preserve">
-    <value>Datei &amp;Öffnen</value>
+    <value>打开文件</value>
   </data>
   <data name="MnSaveProgram.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -437,18 +447,18 @@
 </value>
   </data>
   <data name="MnSaveProgram.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="MnSaveProgram.Text" xml:space="preserve">
-    <value>Datei &amp;speichern</value>
+    <value>保存程序</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="MnFileSend.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAK
-        7gAACu4BrzForAAAAAd0SU1FB9MCGhU2KcxZSDgAAAIpSURBVDhPtdJfSNNRFAfws5L+DNrcJkGEL0aK
+        8AAACvABQqw0mAAAAAd0SU1FB9MCGhU2KcxZSDgAAAIpSURBVDhPtdJfSNNRFAfws5L+DNrcJkGEL0aK
         abq2oZWUhRGVYFbDCh3OzOafbWxuWi1nrnItM5FNiAZR9JAvBZHpcoqxFKc2beiwKUQvSUlP0mQv5bcf
         cmEIYj7U5/Ge873ncLn075SSPuVm8gJVUIA0lMNO109ojJ+f/DaOzo9PIL239zd3iZvqSczKf5dgSlh4
         GXqOtsE7aBlqQPkLJfi1W77TNSphLWsT1YoWnk50oLHfAOPbUtR4lNB485HhSlwiM/XRbdrNWlcnNsX/
@@ -462,16 +472,22 @@
 </value>
   </data>
   <data name="MnFileSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="MnFileSend.Text" xml:space="preserve">
-    <value>an Maschine senden</value>
+    <value>发送到机器</value>
   </data>
-  <data name="linguaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 20</value>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
   </data>
-  <data name="linguaToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Sprache</value>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="MNGrblEmulator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="MNGrblEmulator.Text" xml:space="preserve">
+    <value>Grbl模拟器</value>
   </data>
   <data name="MNEnglish.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -489,7 +505,7 @@
 </value>
   </data>
   <data name="MNEnglish.Text" xml:space="preserve">
-    <value>Englisch</value>
+    <value>英语</value>
   </data>
   <data name="MNItalian.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -504,7 +520,7 @@
 </value>
   </data>
   <data name="MNItalian.Text" xml:space="preserve">
-    <value>Italienisch</value>
+    <value>意大利</value>
   </data>
   <data name="MNSpanish.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -519,12 +535,12 @@
 </value>
   </data>
   <data name="MNSpanish.Text" xml:space="preserve">
-    <value>Spanisch</value>
+    <value>西班牙</value>
   </data>
   <data name="MNFrench.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAFYSURBVDhPpdO/SwJhHMfxUyHv
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAFYSURBVDhPpdO/SwJhHMfxUyHv
         MDwzOk0QpSuzH2gOotOZRDkmkji0JUQpkUq5NOUUZGvtLYFba1tj4FJnRaQUBP0bn55H4TnusSHpAy+e
         6fveHgHAv9CNEW7COyJ6Q2+FqXT6Ajx+vUxhCL2lgaCmnaNabZnw+z4+Hag3+m93bYsGgjSgJpNnKBav
         kc1eMvw+8kXma+8I79omDaj9QCzWQC53hVSqyfDrreeZz8IuXpMZIxAOn0DTmohGG4hEBvi9xTeYLok8
@@ -534,12 +550,12 @@
 </value>
   </data>
   <data name="MNFrench.Text" xml:space="preserve">
-    <value>Französich</value>
+    <value>法语</value>
   </data>
   <data name="MNGerman.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAD8SURBVDhPpZO/asJQHEYDgiCt
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAD8SURBVDhPpZO/asJQHEYDgiCt
         CKKpSEVRkOJQCQ5NHRIyOiXkFfIEyYMJbo7diji1W/0L0pfI9PX3hXpFcbjRwCHcm++cLQaAu+BTFKpC
         Iyd06Bp1z/NwC3QZ6DiOgziOtUiSJHvToctAz7ZtRFGEIAjO8H0/4/KeWzp0s4BlWQjDEK7rasEtHRX4
         eRnh15ngMBzj8Pp+4vL8D7d0VOCrPcC+2cf2oaEFt3RUYPHUxc7sYlMyteCWjgqsPppIN22kq7oesqWj
@@ -548,12 +564,12 @@
 </value>
   </data>
   <data name="MNGerman.Text" xml:space="preserve">
-    <value>Deutsch</value>
+    <value>德语</value>
   </data>
   <data name="MNDanish.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAEHSURBVDhPpZOxasJQGIUDglAo
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAEHSURBVDhPpZOxasJQGIUDglAo
         FLSCUhQlVai69wEclC6iKG4WWnAvdBbsEwndHDvnFbSCyi1VyJb1957b5HqQDgke+Aic+39niyMiF4Gk
         NRlNPiFw4Dq5XX8kDOf8jYGLgfK2O5D9dGbhcA8O0w/zhQMXA+7mqSu/b++inl8NHDX+6xjcwoFrBtat
         jvy8TGTXGxo4Ucfgdt1qnwaCIAjP4weOHfB9P6zjB44dUEqFdfzAsQNflZp815qyLLoGTtQxuIVjBxZ3
@@ -562,12 +578,12 @@
 </value>
   </data>
   <data name="MNDanish.Text" xml:space="preserve">
-    <value>Dänisch</value>
+    <value>丹麦语</value>
   </data>
   <data name="MNBrazilian.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAInSURBVDhPpZNPSNNhHIcHQmK1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAInSURBVDhPpZNPSNNhHIcHQmK1
         BFchLcsS0YZUw0CCyoMmNcOYf3Lmn81IUOriTGu0nI7ApJ9NhTnmoTSY/TFTybyY5BQvRiaRRVkjgiCM
         AukPVIen9x00UTs0euE5fT/Pc3tVwH8h3ypBjCA2TKQjXdWG3H4HyzEKDHcaBU6Md1feJdKVgfijfXbq
         J66FsI13c368i6FXVxiea8E+0cU5f/eSjXSkKwMJhl4b1aNuSoeaKRhUsI05ePSmksDzKgKzVUwHKrGP
@@ -581,37 +597,96 @@
 </value>
   </data>
   <data name="MNBrazilian.Text" xml:space="preserve">
-    <value>Brasilianisch</value>
+    <value>巴西</value>
+  </data>
+  <data name="russianToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAADYSURBVDhPpZM7CsJAFEUDAUEQ
+        xU9UCIkhSgQbK3UF7kGtBK0s7V2KpaBFLAStUrqP6D4C17mSDCIWM/HBKd7wzunGAPAXnIKgJmhrQoeu
+        YYlSrqHLgJfu2kOXgW66aw/ddyBJkvRJfejIwHATYrqLMN7eMPrge8/gLR0ZCFYH+Osz6ouTErylIwPO
+        fA9nGaI6OyrBWzoycLd9PL0+4qarBG/pyEBk2Xi4AeJWRwne0pGBa8VC7PS0oJMFnEu5gTzQZaAiGAgm
+        mtCha5iCoqCkCR3z5xdVB8YLUzQS+cRV8xUAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="russianToolStripMenuItem.Text" xml:space="preserve">
+    <value>俄语</value>
+  </data>
+  <data name="chinexeToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        /9j/4AAQSkZJRgABAQEASABIAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwz
+        Oko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09P
+        T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCABaAIsDASIAAhEBAxEB/8QA
+        GgABAAMBAQEAAAAAAAAAAAAAAAIDBAUBBv/EAC4QAAIBAwEGBQQCAwAAAAAAAAABAwIEEQUVITFRVJIS
+        M0FysRMUYYEGkSJCcf/EABoBAQADAQEBAAAAAAAAAAAAAAABAgMEBQf/xAAmEQACAgAFAwQDAAAAAAAA
+        AAAAAQIRAxITIVEEMZEiMkFhFHGh/9oADAMBAAIRAxEAPwDmTaheqeRK6mS8T3eJ8yO0b7q5u5lE/nye
+        5/JA8hyfJ9CjhQrsjVtG+6ubuZKO91CWSmOO5nqrqeKaVW8tv0RjOjouo06bd1TVx/UToaVOFvfpvfD9
+        FZTmotx3ZXGgowbhFNlFWoX1NTpd1MmnhrxviNo33VzdzLtRuXqupuu3hadeFTQks8N63cf+nP4PBMZy
+        aV7MYcYyis0Unwato33VzdzG0b7q5u5mUE5nyaaUOF4NW0b7q5u5jaN91c3czKBmfI0ocLwato33Vzdz
+        G0b7q5u5mUDM+RpQ4Xg1bRvurm7mNo33VzdzMoGZ8jShwvBq2jfdXN3MbRvurm7mZQMz5GlDheDVtG+6
+        ubuY2jfdXN3MygZnyNKHC8E5/Pk9z+Sy1s7i8kdFtE5KkstLGcFc/nye5/IhlkhlpkhqdNdLzTVS8NMi
+        V70Q7yenufR2v8em2FdOa3aunUnHTuykvT95f9I4l1pl7ZxqS5t64qW8Zqa3v+z7yDUYYvoWl5cx/eVU
+        LxLGN7S/Sf4PiteruXq09F1K5Ko6mqc7klxWF6bjz+lxsWeI1Lt3+f4eV0PUY+JiyUqp7/P62+j3RNTp
+        0yeSSuJyZpxTSkuPPL3rdngZ9TuaLu/lnjp8NFT/AMV4UsL0WEadC0ujU7px1zKimheJ0+rX49ORk1C1
+        +yvJLdy0SOh4bpzhP1W/1R1LT1XXuo7YaP5Dr30ZgMjJqdoAyMgADIyAAMjIAAAAAABOfz5Pc/kim000
+        8NPKZKfz5Pc/kgSysexKuuqut111N1N5bb3t8yddU1zI6q3VJWqd7e94S4v8JLiVHc0DVLPT4pldwqt1
+        tJOmNN+F8cvlw3FMSTjG4q2Y48nhwzQjbOPHNLEqvpSVUKpYq8LayuJGWSuWRyS1uqt8am8tk7uSmW6k
+        kopoVNVTaVNOEl6YXoVFvs0gk/VW4AANQAAAAAAAAAAAQAAATn8+T3P5IE5/Pk9z+SBLKx7AAEFg+ID4
+        oAAAAkAAAAAAAAAAAEAAAE5/Pk9z+SBOfz5Pc/kgSysewABBYMAYAAGBgAAYGAABgYAB4uJ7gAAAAAAA
+        E5/Pk9z+SBfMl9eTd/u/khhckWaKRexWCzC5IYXJCi1lYLMLkhhckKFlYLMLkhhckKFlYLMLkhhckKFl
+        YLMLkhhckKFlYLMLkhhckKFlYLMLkhhckKFlYLMLkhhckKFn/9k=
+</value>
+  </data>
+  <data name="chinexeToolStripMenuItem.Text" xml:space="preserve">
+    <value>中文</value>
+  </data>
+  <data name="linguaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
+  </data>
+  <data name="linguaToolStripMenuItem.Text" xml:space="preserve">
+    <value>语言</value>
   </data>
   <data name="helpOnLineToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="helpOnLineToolStripMenuItem.Text" xml:space="preserve">
-    <value>Hilfe</value>
+    <value>在线帮助</value>
   </data>
   <data name="autoUpdateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="autoUpdateToolStripMenuItem.Text" xml:space="preserve">
-    <value>automatisch aktualisieren</value>
+    <value>自动更新</value>
   </data>
   <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="openSessionLogToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="openSessionLogToolStripMenuItem.Text" xml:space="preserve">
-    <value>öffne Session log</value>
+    <value>打开会话日志</value>
   </data>
   <data name="toolStripMenuItem7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>Web Seite</value>
+    <value>网站</value>
+  </data>
+  <data name="toolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
+  </data>
+  <data name="toolStripMenuItem4.Text" xml:space="preserve">
+    <value>其它</value>
+  </data>
+  <data name="MMn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1141, 25</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1141, 607</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -688,29 +763,5 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAD4AAAA/AAAAPwAAAD/AAAA//wAAP/+AAH//g
         AD//4AD//+AB///gAf//4AH///AD///wA/8=
 </value>
-  </data>
-  <data name="russianToolStripMenuItem.Text" xml:space="preserve">
-    <value>Russisch</value>
-  </data>
-  <data name="TTLStatus.Text" xml:space="preserve">
-    <value>Status:</value>
-  </data>
-  <data name="grblToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Grbl</value>
-  </data>
-  <data name="MNGrblEmulator.Text" xml:space="preserve">
-    <value>&amp;Grbl Emulator</value>
-  </data>
-  <data name="MNEsp8266.Text" xml:space="preserve">
-    <value>&amp;ESP8266</value>
-  </data>
-  <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>?</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Laser GRBL</value>
-  </data>
-  <data name="chinexeToolStripMenuItem.Text" xml:space="preserve">
-    <value>Chinesisch</value>
   </data>
 </root>

@@ -384,5 +384,10 @@ namespace LaserGRBL
 		{
 			LaserGRBL.GrblEmulator.Start();
 		}
+
+		private void chinexeToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("zh-CN"));
+		}
 	}
 }
