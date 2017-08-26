@@ -46,7 +46,7 @@ namespace LaserGRBL
 			this.BtnStop = new LaserGRBL.UserControls.ImageButton();
 			this.BtnResume = new LaserGRBL.UserControls.ImageButton();
 			this.BtnUnlock = new LaserGRBL.UserControls.ImageButton();
-			this.CustomButtonArea = new MyFlowPanel();
+			this.CustomButtonArea = new LaserGRBL.PreviewForm.MyFlowPanel();
 			this.MNAddCB = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.addCustomButtonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
@@ -61,14 +61,13 @@ namespace LaserGRBL
 			// Preview
 			// 
 			resources.ApplyResources(this.Preview, "Preview");
-			this.Preview.BackColor = System.Drawing.SystemColors.Info;
+			this.Preview.BackColor = System.Drawing.Color.DimGray;
 			this.Preview.Name = "Preview";
 			this.TT.SetToolTip(this.Preview, resources.GetString("Preview.ToolTip"));
 			// 
 			// tableLayoutPanel8
 			// 
 			resources.ApplyResources(this.tableLayoutPanel8, "tableLayoutPanel8");
-			this.tableLayoutPanel8.BackColor = System.Drawing.SystemColors.Control;
 			this.tableLayoutPanel8.Controls.Add(this.BtnGoHome, 1, 0);
 			this.tableLayoutPanel8.Controls.Add(this.BtnReset, 0, 0);
 			this.tableLayoutPanel8.Controls.Add(this.BtnStop, 6, 0);

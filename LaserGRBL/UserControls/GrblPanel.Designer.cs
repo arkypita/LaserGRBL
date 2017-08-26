@@ -36,6 +36,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Name = "GrblPanel";
 			this.Size = new System.Drawing.Size(548, 400);
+			this.Load += new System.EventHandler(this.GrblPanel_Load);
 			this.ResumeLayout(false);
 
 		}

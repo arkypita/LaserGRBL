@@ -18,6 +18,10 @@ namespace LaserGRBL.RasterConverter
 		{
 			InitializeComponent();
 
+			BackColor = ColorScheme.FormBackColor;
+			GbConversionTool.ForeColor = GbLineToLineOptions.ForeColor = GbParameters.ForeColor = GbVectorizeOptions.ForeColor = ForeColor = ColorScheme.FormForeColor;
+			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
+
 			IP = new ImageProcessor(core, filename, PbConverted.Size);
 			PbOriginal.Image = IP.Original;
 			ImageProcessor.PreviewReady += OnPreviewReady;

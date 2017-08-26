@@ -357,10 +357,10 @@ namespace LaserGRBL
 		}
 		
 		public Color LeftColor
-		{ get { return Color.Black; } }
+		{ get { return ColorScheme.LogLeftCOMMAND; } }
 
 		public Color RightColor
-		{ get { return Status == CommandStatus.ResponseGood ? Color.DarkBlue : Status == CommandStatus.ResponseBad ? Color.Red : Color.Black; } }
+		{ get { return Status == CommandStatus.ResponseGood ? ColorScheme.LogRightGOOD : Status == CommandStatus.ResponseBad ? ColorScheme.LogRightBAD : ColorScheme.LogRightOTHERS; } }
 
 		internal void SetSending()
 		{mCodedResult = "";}
@@ -444,24 +444,24 @@ namespace LaserGRBL
 			get 
 			{
 				if (mType == MessageType.Startup)
-					return Color.DarkGreen;
+					return ColorScheme.LogLeftSTARTUP;
 				else if (mType == MessageType.Alarm)
-					return Color.Crimson;
+					return ColorScheme.LogLeftALARM;
 				else if (mType == MessageType.Config)
-					return Color.DimGray;
+					return ColorScheme.LogLeftCONFIG;
 				else if (mType == MessageType.Feedback)
-					return Color.DodgerBlue;
+					return ColorScheme.LogLeftFEEDBACK;
 				else if (mType == MessageType.Position)
-					return Color.OrangeRed;
+					return ColorScheme.LogLeftPOSITION;
 				else if (mType == MessageType.Others)
-					return Color.Purple;
+					return ColorScheme.LogLeftOTHERS;
 				else
-					return Color.Purple;
+					return ColorScheme.LogLeftOTHERS;
 			}
 		}
 
 		public Color RightColor
-		{get { return Color.Black; }}
+		{get { return Color.Black; }} //normalmente per questi messaggi non c'è un right
 
 		public int ImageIndex
 		{ get { return -1; } }

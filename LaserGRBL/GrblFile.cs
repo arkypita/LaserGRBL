@@ -669,8 +669,8 @@ namespace LaserGRBL
 
 						if (drawing)
 						{
-							Pen colorpen = firstline ? Pens.Blue : isLaserCutting ? Pens.Red : Pens.LightGray;
-							using (Pen pen = colorpen.Clone() as Pen)
+							Color linecolor = firstline ? ColorScheme.PreviewFirstMovement : isLaserCutting ? ColorScheme.PreviewLaserPower : ColorScheme.PreviewOtherMovement;
+							using (Pen pen = GetPen(linecolor))
 							{
 								pen.ScaleTransform(1 / zoom, 1 / zoom);
 								if (isLaserCutting)
@@ -766,7 +766,7 @@ namespace LaserGRBL
 			zoom = Math.Min(ctrW / proW, ctrH / proH);
 			g.ScaleTransform(zoom, zoom);
 
-			using (Pen pen = Pens.LightGray.Clone() as Pen)
+			using (Pen pen = GetPen(ColorScheme.PreviewJobRange))
 			{
 				pen.ScaleTransform(1 / zoom, 1 / zoom);
 				pen.DashStyle = DashStyle.Dash;
@@ -784,6 +784,12 @@ namespace LaserGRBL
 			}
 			return zoom;
 		}
+
+		private Pen GetPen(Color color)
+		{ return new Pen(color); }
+
+		private static Brush GetBrush(Color color)
+		{ return new SolidBrush(color); }
 
 		private static void DrawString(Graphics g, float zoom, decimal curX, decimal curY, string text, bool centerX, bool centerY, bool subtractX, bool subtractY)
 		{
@@ -809,7 +815,8 @@ namespace LaserGRBL
 				if (subtractY)
 					offsetX += ms.Height;
 
-				g.DrawString(text, f, Brushes.Black, (float)curX - offsetX, (float)-curY - offsetY);
+				using (Brush b = GetBrush(ColorScheme.PreviewText))
+				{ g.DrawString(text, f, b, (float)curX - offsetX, (float)-curY - offsetY); }
 
 			}
 			g.Restore(state);

@@ -17,6 +17,7 @@ namespace LaserGRBL.UserControls
 		public GrblPanel()
 		{
 			InitializeComponent();
+
 			SetStyle(ControlStyles.UserPaint, true);
 			SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 			SetStyle(ControlStyles.AllPaintingInWmPaint, true);
@@ -26,18 +27,23 @@ namespace LaserGRBL.UserControls
 		
 		protected override void OnPaint(PaintEventArgs e)
 		{
-			base.OnPaint(e);
-		
 			if (mBitmap != null)
 				e.Graphics.DrawImage(mBitmap, 0, 0, Width, Height);
 
 
 			PointF p = TranslatePoint(mLastPosition);
 			e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-			e.Graphics.DrawLine(Pens.Blue, (int)p.X, (int)p.Y - 3, (int)p.X, (int)p.Y - 3 + 7);
-			e.Graphics.DrawLine(Pens.Blue, (int)p.X - 3, (int)p.Y, (int)p.X - 3 + 7, (int)p.Y);
+			e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+			using (Pen px = GetPen(ColorScheme.PreviewCross))
+			{
+				e.Graphics.DrawLine(px, (int)p.X, (int)p.Y - 3, (int)p.X, (int)p.Y - 3 + 7);
+				e.Graphics.DrawLine(px, (int)p.X - 3, (int)p.Y, (int)p.X - 3 + 7, (int)p.Y);
+			}
 		}
-		
+
+		private Pen GetPen(Color color)
+		{ return new Pen(color); }
 			
 
 		public void SetComProgram(GrblCore core)
@@ -84,7 +90,7 @@ namespace LaserGRBL.UserControls
 				g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 				g.PixelOffsetMode = PixelOffsetMode.HighQuality;
 				g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-				
+
 				g.ScaleTransform(1.0F, -1.0F);
 				g.TranslateTransform(0.0F, -(float)wSize.Height);
 
@@ -94,7 +100,7 @@ namespace LaserGRBL.UserControls
 				g.ScaleTransform(scaleX, scaleY);
 				g.TranslateTransform(25, 15);
 
-				g.DrawLines(Pens.Black, new PointF[] { new PointF(0, wSize.Height), new PointF(0, 0), new PointF(wSize.Width, 0) });
+				g.DrawLines(GetPen(ColorScheme.PreviewText), new PointF[] { new PointF(0, wSize.Height), new PointF(0, 0), new PointF(wSize.Width, 0) });
 
 				if (Core != null && Core.HasProgram)
 					Core.LoadedFile.DrawOnGraphics(g, wSize);
@@ -135,6 +141,11 @@ namespace LaserGRBL.UserControls
 				mLastPosition = Core.LaserPosition;
 				Invalidate();
 			}
+		}
+
+		private void GrblPanel_Load(object sender, EventArgs e)
+		{
+			BackColor = ColorScheme.PreviewBackColor; //only for first render
 		}
 
 	}

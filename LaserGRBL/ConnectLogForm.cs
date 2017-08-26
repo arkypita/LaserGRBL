@@ -25,6 +25,8 @@ namespace LaserGRBL
 		{
 			currentWrapper = (ComWrapper.WrapperType)Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			InitializeComponent();
+
+			CmdLog.BackColor = ColorScheme.LogBackColor;
 		}
 
 		public void SetCore(GrblCore core)

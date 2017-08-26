@@ -12,6 +12,11 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
 
+			ColorScheme.CurrentScheme = (ColorScheme.Scheme)Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser); ;
+			RefreshColorSchema();
+
+			MMn.Renderer = new MMnRenderer();
+
 			splitContainer1.FixedPanel = FixedPanel.Panel1;
 			splitContainer1.SplitterDistance = (int)Settings.GetObject("MainForm Splitter Position", 260);
 			autoUpdateToolStripMenuItem.Checked = (bool)Settings.GetObject("Auto Update", true);
@@ -35,6 +40,16 @@ namespace LaserGRBL
 			JogForm.SetCore(Core);
 
 			GitHub.NewVersion += GitHub_NewVersion;
+		}
+
+		private void RefreshColorSchema()
+		{
+					MMn.BackColor = BackColor = StatusBar.BackColor = ColorScheme.FormBackColor;
+					MMn.ForeColor = ForeColor = ColorScheme.FormForeColor;
+			blueLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.BlueLaser;
+			redLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.RedLaser;
+			darkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Dark;
+			hackerToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Hacker;
 		}
 
 		void GitHub_NewVersion(Version current, Version latest, string name, string url)
@@ -153,8 +168,8 @@ namespace LaserGRBL
 					TTTStatus.ForeColor = Color.Black;
 					break;
 				default:
-					TTTStatus.BackColor = DefaultBackColor;
-					TTTStatus.ForeColor = DefaultForeColor;
+					TTTStatus.BackColor = ColorScheme.FormBackColor;
+					TTTStatus.ForeColor = ColorScheme.FormBackColor;
 					break;
 			}
 
@@ -397,5 +412,100 @@ namespace LaserGRBL
 		{
 			SetLanguage(new System.Globalization.CultureInfo("zh-CN"));
 		}
+
+		private void blueLaserToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetSchema(ColorScheme.Scheme.BlueLaser);
+		}
+
+		private void redLaserToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetSchema(ColorScheme.Scheme.RedLaser);
+		}
+
+		private void darkToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetSchema(ColorScheme.Scheme.Dark);
+		}
+
+		private void hackerToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetSchema(ColorScheme.Scheme.Hacker);
+		}
+
+		private void SetSchema(ColorScheme.Scheme schema)
+		{
+			Settings.SetObject("Color Schema", schema);
+			ColorScheme.CurrentScheme = schema;
+			Settings.Save();
+
+			RefreshColorSchema();
+		}
+	}
+
+
+	public class MMnRenderer : ToolStripProfessionalRenderer
+	{
+		public MMnRenderer() : base(new BrowserColors()) { }
+
+		protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs e)
+		{
+			Color c = e.Item.Selected ? ColorScheme.MenuHighlightColor : ColorScheme.FormBackColor;
+			e.Graphics.Clear(c);
+		}
+
+		protected override void OnRenderImageMargin(ToolStripRenderEventArgs e)
+		{
+			e.Graphics.Clear(ColorScheme.FormBackColor);
+		}
+
+		protected override void OnRenderItemBackground(ToolStripItemRenderEventArgs e)
+		{
+			e.Graphics.Clear(ColorScheme.FormBackColor);
+		}
+
+		protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
+		{
+			Color c = e.Item.Selected ? ColorScheme.FormForeColor : ColorScheme.FormForeColor;
+			TextRenderer.DrawText(e.Graphics, e.Text, e.TextFont, e.TextRectangle, c, e.TextFormat);
+		}
+
+		protected override void OnRenderSeparator(ToolStripSeparatorRenderEventArgs e)
+		{
+			e.Graphics.Clear(ColorScheme.FormBackColor);
+			//using (Brush b = new SolidBrush(ColorScheme.FormBackColor))
+			//	e.Graphics.FillRectangle(b, new Rectangle(0, 0, e.Item.Width, e.Item.Height));
+			using (Pen p = new Pen(ColorScheme.MenuSeparatorColor))
+				e.Graphics.DrawLine(p, 4, 1, e.Item.Width -4, 1);
+		}
+
+		protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
+		{
+			e.Graphics.Clear(ColorScheme.FormBackColor);
+		}
+
+		protected override void OnRenderToolStripContentPanelBackground(ToolStripContentPanelRenderEventArgs e)
+		{
+			e.Graphics.Clear(ColorScheme.FormBackColor);
+		}
+
+		protected override void OnRenderToolStripPanelBackground(ToolStripPanelRenderEventArgs e)
+		{
+			e.Graphics.Clear(ColorScheme.FormBackColor);
+		}
+
+		protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
+		{
+			base.OnRenderToolStripBorder(e);
+
+			using (Brush b = new SolidBrush(ColorScheme.FormBackColor))
+				e.Graphics.FillRectangle(b, e.ConnectedArea);
+		}
+
+	}
+	public class BrowserColors : ProfessionalColorTable
+	{
+	
+
 	}
 }

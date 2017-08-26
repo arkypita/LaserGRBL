@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoUpdate\ZipStorer.cs" />
+    <Compile Include="ColorScheme.cs" />
     <Compile Include="GrblEmulator\Console.cs" />
     <Compile Include="GrblEmulator\GrblEmulator.cs" />
     <Compile Include="ComWrapper\IComWrapper.cs" />

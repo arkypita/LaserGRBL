@@ -16,6 +16,10 @@ namespace LaserGRBL.RasterConverter
 		public ResolutionHelperForm()
 		{
 			InitializeComponent();
+
+			BackColor = ColorScheme.FormBackColor;
+			ForeColor = ColorScheme.FormForeColor;
+			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
 		}
 
 		public static double CreateAndShowDialog(double oldval)

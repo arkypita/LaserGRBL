@@ -32,10 +32,8 @@ namespace LaserGRBL.UserControls
 
 			if (mCom != null)
 			{
-				//e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-				//e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-				//e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
-				e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+				e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+				e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 				
 				RowHeight = Font.Height +2;
 

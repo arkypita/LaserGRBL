@@ -602,10 +602,7 @@
         7okvi38IE3IQWfnDAH5CTJL+A7x5O+ClaLW4AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Anteprima</value>
-  </data>
-  <data name="$this.ToolTipText" xml:space="preserve">
-    <value>Anteprima</value>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>617, 363</value>
   </data>
 </root>

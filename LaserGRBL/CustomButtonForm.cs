@@ -17,6 +17,10 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
 
+			BackColor = ColorScheme.FormBackColor;
+			ForeColor = ColorScheme.FormForeColor;
+			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
+
 			CbEStyles.DataSource = Enum.GetValues(typeof(CustomButton.EnableStyles));
 			CbEStyles.SelectedItem = CustomButton.EnableStyles.Always;
 
