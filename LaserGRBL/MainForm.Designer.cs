@@ -516,7 +516,6 @@
 			this.Controls.Add(this.MMn);
 			this.Cursor = System.Windows.Forms.Cursors.Default;
 			this.Name = "MainForm";
-			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.splitContainer1.Panel1.ResumeLayout(false);

@@ -53,6 +53,12 @@ namespace LaserGRBL
 		{
 			UpdateTimer.Enabled = true;
 			GitHub.CheckVersion();
+
+			//restore last size and position
+			Object[] msp = (Object[])Settings.GetObject("Mainform Size and Position", null);
+			WindowState = msp == null ? FormWindowState.Maximized : (FormWindowState)msp[2] != FormWindowState.Minimized ? (FormWindowState)msp[2] : FormWindowState.Maximized;
+			if (WindowState == FormWindowState.Normal)
+			{ Size = (Size)msp[0]; Location = (Point)msp[1]; }
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -78,6 +84,8 @@ namespace LaserGRBL
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
 			Core.CloseCom(false);
+			Settings.SetObject("Mainform Size and Position", new object[] { Size, Location, WindowState});
+			Settings.Save();
 		}
 		
 
