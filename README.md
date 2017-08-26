@@ -87,4 +87,4 @@ Thanks to:
 - Anders Lassen, for danish translation
 - Gerson Koppe, for brasilian translation
 - Alexey Golovin, for russian translation
-- SMG2383, for chinese translation
+- Yang Haiqiang, for chinese translation
