@@ -52,6 +52,7 @@ namespace LaserGRBL
 			hackerToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Hacker;
 			ConnectionForm.Invalidate();
 			PreviewForm.Invalidate();
+			ComPort_OnOverrideChange();
 		}
 
 		void GitHub_NewVersion(Version current, Version latest, string name, string url)
