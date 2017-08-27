@@ -146,4 +146,7 @@
 - Telnet, wenn man eine WiFi-Telnet-Brücke hat. Die Kommunikation ist wie ein einfacher Telnet-Client-Server implementiert.
 -LaserWebESP8266 unterstützt WiFi-Verbindung via WebSocket. Kompatibel mit LaserWeb-ESP8266</value>
   </data>
+  <data name="GB.Text" xml:space="preserve">
+    <value>Hardware Fähigkeiten</value>
+  </data>
 </root>

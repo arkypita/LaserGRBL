@@ -135,4 +135,7 @@
   <data name="BtnSave.Text" xml:space="preserve">
     <value>Gem</value>
   </data>
+  <data name="GB.Text" xml:space="preserve">
+    <value>Hardware egenskaber</value>
+  </data>
 </root>

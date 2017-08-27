@@ -182,6 +182,7 @@ namespace LaserGRBL
 			// 
 			this.BtnOpen.AltImage = null;
 			resources.ApplyResources(this.BtnOpen, "BtnOpen");
+			this.BtnOpen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnOpen.Coloration = System.Drawing.Color.Empty;
 			this.BtnOpen.Image = ((System.Drawing.Image)(resources.GetObject("BtnOpen.Image")));
 			this.BtnOpen.Name = "BtnOpen";
@@ -195,6 +196,7 @@ namespace LaserGRBL
 			// 
 			this.BtnRunProgram.AltImage = null;
 			resources.ApplyResources(this.BtnRunProgram, "BtnRunProgram");
+			this.BtnRunProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnRunProgram.Coloration = System.Drawing.Color.Empty;
 			this.BtnRunProgram.Image = ((System.Drawing.Image)(resources.GetObject("BtnRunProgram.Image")));
 			this.BtnRunProgram.Name = "BtnRunProgram";
@@ -261,6 +263,7 @@ namespace LaserGRBL
 			// 
 			this.BtnConnectDisconnect.AltImage = ((System.Drawing.Image)(resources.GetObject("BtnConnectDisconnect.AltImage")));
 			resources.ApplyResources(this.BtnConnectDisconnect, "BtnConnectDisconnect");
+			this.BtnConnectDisconnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnConnectDisconnect.Coloration = System.Drawing.Color.Empty;
 			this.BtnConnectDisconnect.Image = ((System.Drawing.Image)(resources.GetObject("BtnConnectDisconnect.Image")));
 			this.BtnConnectDisconnect.Name = "BtnConnectDisconnect";

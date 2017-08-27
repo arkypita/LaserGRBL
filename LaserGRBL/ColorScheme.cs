@@ -75,7 +75,7 @@ namespace LaserGRBL
 				Color.FromArgb(29,44,75),	//form backcolor
 				Color.White,				//form forecolor
 
-				Color.FromArgb(229,229,229),//preview background
+				Color.FromArgb(220,220,220),//preview background
 				Color.Black,				//preview text
 				Color.Empty,				//preview grid?
 				Color.DimGray,				//preview reference line
@@ -102,13 +102,13 @@ namespace LaserGRBL
 				Color.FromArgb(0,10,35),	//form backcolor
 				Color.LimeGreen,			//form forecolor
 
-				Color.FromArgb(200,200,200),//preview background
+				Color.FromArgb(220,220,220),//preview background
 				Color.Black,				//preview text
 				Color.Empty,				//preview grid?
 				Color.DimGray,				//preview reference line
 				Color.Blue,					//preview first line
 				Color.FromArgb(180,118,0),  //preview other line
-				Color.DarkBlue,					//preview laser
+				Color.DarkGreen,			//preview laser
 				Color.DarkMagenta,			//preview cross position
 
 				Color.FromArgb(20,20,20),	//log background
@@ -128,6 +128,9 @@ namespace LaserGRBL
 			CurrentScheme = Scheme.RedLaser;
 		}
 
+		public static bool DarkScheme
+		{ get { return CurrentScheme == Scheme.Dark || CurrentScheme == Scheme.Hacker; } }
+
 		public static Scheme CurrentScheme { get; set; }
 
 		public static Color FormBackColor
@@ -139,7 +142,7 @@ namespace LaserGRBL
 		{ 
 			get 
 			{
-				if (CurrentScheme == Scheme.Dark || CurrentScheme == Scheme.Hacker)
+				if (DarkScheme)
 					return ChangeColorBrightness(FormBackColor, +0.1f);
 				else
 					return ChangeColorBrightness(FormBackColor, -0.1f); 
@@ -149,8 +152,8 @@ namespace LaserGRBL
 		public static Color MenuHighlightColor
 		{ 
 			get 
-			{ 
-				if (CurrentScheme == Scheme.Dark || CurrentScheme == Scheme.Hacker)
+			{
+				if (DarkScheme)
 					return ChangeColorBrightness(FormBackColor, +0.2f); 
 				else
 					return ChangeColorBrightness(FormBackColor, -0.1f); 
@@ -161,7 +164,7 @@ namespace LaserGRBL
 		{
 			get 
 			{
-				if (CurrentScheme == Scheme.Dark || CurrentScheme == Scheme.Hacker)
+				if (DarkScheme)
 					return ChangeColorBrightness(FormBackColor, +0.15f);
 				else
 					return ChangeColorBrightness(FormBackColor, -0.1f); 
@@ -212,7 +215,7 @@ namespace LaserGRBL
 		private static Color GetColor(int index)
 		{return mData[CurrentScheme][index];}
 
-		public static Color ChangeColorBrightness(Color color, float correctionFactor)
+		private static Color ChangeColorBrightness(Color color, float correctionFactor)
 		{
 			float red = (float)color.R;
 			float green = (float)color.G;
@@ -234,6 +237,8 @@ namespace LaserGRBL
 
 			return Color.FromArgb(color.A, (int)red, (int)green, (int)blue);
 		}
+
+
 	}
 }
 

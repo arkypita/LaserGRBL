@@ -225,4 +225,7 @@ UsbSerial，是最常见的协议。应使用如果你的雕刻机连接到USB�
   <data name="groupBox1.Text" xml:space="preserve">
     <value>硬件能力</value>
   </data>
+  <data name="GB.Text" xml:space="preserve">
+    <value>硬件能力</value>
+  </data>
 </root>

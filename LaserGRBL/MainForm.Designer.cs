@@ -31,6 +31,9 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
+			this.JogForm = new LaserGRBL.JogForm();
+			this.PreviewForm = new LaserGRBL.PreviewForm();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
@@ -69,6 +72,11 @@
 			this.MnFileSend = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNEsp8266 = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNGrblEmulator = new System.Windows.Forms.ToolStripMenuItem();
+			this.schemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.blueLaserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.redLaserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.hackerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.linguaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNEnglish = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNItalian = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,11 +87,6 @@
 			this.MNBrazilian = new System.Windows.Forms.ToolStripMenuItem();
 			this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.chinexeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.schemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.blueLaserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.redLaserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.hackerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpOnLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.autoUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,9 +94,6 @@
 			this.openSessionLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
-			this.JogForm = new LaserGRBL.JogForm();
-			this.PreviewForm = new LaserGRBL.PreviewForm();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -116,6 +116,21 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
 			this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+			// 
+			// ConnectionForm
+			// 
+			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
+			this.ConnectionForm.Name = "ConnectionForm";
+			// 
+			// JogForm
+			// 
+			resources.ApplyResources(this.JogForm, "JogForm");
+			this.JogForm.Name = "JogForm";
+			// 
+			// PreviewForm
+			// 
+			resources.ApplyResources(this.PreviewForm, "PreviewForm");
+			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// StatusBar
 			// 
@@ -380,6 +395,40 @@
 			resources.ApplyResources(this.MNGrblEmulator, "MNGrblEmulator");
 			this.MNGrblEmulator.Click += new System.EventHandler(this.MNGrblEmulator_Click);
 			// 
+			// schemaToolStripMenuItem
+			// 
+			this.schemaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.blueLaserToolStripMenuItem,
+            this.redLaserToolStripMenuItem,
+            this.darkToolStripMenuItem,
+            this.hackerToolStripMenuItem});
+			this.schemaToolStripMenuItem.Name = "schemaToolStripMenuItem";
+			resources.ApplyResources(this.schemaToolStripMenuItem, "schemaToolStripMenuItem");
+			// 
+			// blueLaserToolStripMenuItem
+			// 
+			this.blueLaserToolStripMenuItem.Name = "blueLaserToolStripMenuItem";
+			resources.ApplyResources(this.blueLaserToolStripMenuItem, "blueLaserToolStripMenuItem");
+			this.blueLaserToolStripMenuItem.Click += new System.EventHandler(this.blueLaserToolStripMenuItem_Click);
+			// 
+			// redLaserToolStripMenuItem
+			// 
+			this.redLaserToolStripMenuItem.Name = "redLaserToolStripMenuItem";
+			resources.ApplyResources(this.redLaserToolStripMenuItem, "redLaserToolStripMenuItem");
+			this.redLaserToolStripMenuItem.Click += new System.EventHandler(this.redLaserToolStripMenuItem_Click);
+			// 
+			// darkToolStripMenuItem
+			// 
+			this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
+			resources.ApplyResources(this.darkToolStripMenuItem, "darkToolStripMenuItem");
+			this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
+			// 
+			// hackerToolStripMenuItem
+			// 
+			this.hackerToolStripMenuItem.Name = "hackerToolStripMenuItem";
+			resources.ApplyResources(this.hackerToolStripMenuItem, "hackerToolStripMenuItem");
+			this.hackerToolStripMenuItem.Click += new System.EventHandler(this.hackerToolStripMenuItem_Click);
+			// 
 			// linguaToolStripMenuItem
 			// 
 			this.linguaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -449,40 +498,6 @@
 			this.chinexeToolStripMenuItem.Name = "chinexeToolStripMenuItem";
 			this.chinexeToolStripMenuItem.Click += new System.EventHandler(this.chinexeToolStripMenuItem_Click);
 			// 
-			// schemaToolStripMenuItem
-			// 
-			this.schemaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.blueLaserToolStripMenuItem,
-            this.redLaserToolStripMenuItem,
-            this.darkToolStripMenuItem,
-            this.hackerToolStripMenuItem});
-			this.schemaToolStripMenuItem.Name = "schemaToolStripMenuItem";
-			resources.ApplyResources(this.schemaToolStripMenuItem, "schemaToolStripMenuItem");
-			// 
-			// blueLaserToolStripMenuItem
-			// 
-			this.blueLaserToolStripMenuItem.Name = "blueLaserToolStripMenuItem";
-			resources.ApplyResources(this.blueLaserToolStripMenuItem, "blueLaserToolStripMenuItem");
-			this.blueLaserToolStripMenuItem.Click += new System.EventHandler(this.blueLaserToolStripMenuItem_Click);
-			// 
-			// redLaserToolStripMenuItem
-			// 
-			this.redLaserToolStripMenuItem.Name = "redLaserToolStripMenuItem";
-			resources.ApplyResources(this.redLaserToolStripMenuItem, "redLaserToolStripMenuItem");
-			this.redLaserToolStripMenuItem.Click += new System.EventHandler(this.redLaserToolStripMenuItem_Click);
-			// 
-			// darkToolStripMenuItem
-			// 
-			this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
-			resources.ApplyResources(this.darkToolStripMenuItem, "darkToolStripMenuItem");
-			this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
-			// 
-			// hackerToolStripMenuItem
-			// 
-			this.hackerToolStripMenuItem.Name = "hackerToolStripMenuItem";
-			resources.ApplyResources(this.hackerToolStripMenuItem, "hackerToolStripMenuItem");
-			this.hackerToolStripMenuItem.Click += new System.EventHandler(this.hackerToolStripMenuItem_Click);
-			// 
 			// toolStripMenuItem4
 			// 
 			this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -531,21 +546,6 @@
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
 			resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
 			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-			// 
-			// ConnectionForm
-			// 
-			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
-			this.ConnectionForm.Name = "ConnectionForm";
-			// 
-			// JogForm
-			// 
-			resources.ApplyResources(this.JogForm, "JogForm");
-			this.JogForm.Name = "JogForm";
-			// 
-			// PreviewForm
-			// 
-			resources.ApplyResources(this.PreviewForm, "PreviewForm");
-			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// MainForm
 			// 

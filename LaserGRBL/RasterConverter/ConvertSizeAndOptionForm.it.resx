@@ -329,4 +329,13 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Immagine finale</value>
   </data>
+  <data name="GbSize.Text" xml:space="preserve">
+    <value>Dimensioni e posizione immagine [mm]</value>
+  </data>
+  <data name="GbSpeed.Text" xml:space="preserve">
+    <value>Velocità</value>
+  </data>
+  <data name="GbLaser.Text" xml:space="preserve">
+    <value>Opzioni laser</value>
+  </data>
 </root>

@@ -141,4 +141,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Настройки</value>
   </data>
+  <data name="GB.Text" xml:space="preserve">
+    <value>Аппаратные возможности</value>
+  </data>
 </root>

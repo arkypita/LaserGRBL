@@ -347,4 +347,13 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>274, 266</value>
   </data>
+  <data name="GbSize.Text" xml:space="preserve">
+    <value>Tamaño de Imagen y Posición [mm]</value>
+  </data>
+  <data name="GbSpeed.Text" xml:space="preserve">
+    <value>Velocidad</value>
+  </data>
+  <data name="GbLaser.Text" xml:space="preserve">
+    <value>Opciones de Laser</value>
+  </data>
 </root>

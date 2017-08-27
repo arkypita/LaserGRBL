@@ -165,4 +165,7 @@ Se la tua configurazione non lo prevede, disabilita la modalità PWM.</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Configurazione</value>
   </data>
+  <data name="GB.Text" xml:space="preserve">
+    <value>Capacità Hardware</value>
+  </data>
 </root>

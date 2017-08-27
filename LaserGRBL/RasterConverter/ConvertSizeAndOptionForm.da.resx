@@ -198,4 +198,13 @@
   <data name="CBLaserON.Items1" xml:space="preserve">
     <value>M4</value>
   </data>
+  <data name="GbSize.Text" xml:space="preserve">
+    <value>Billed størrelse og position [mm]</value>
+  </data>
+  <data name="GbSpeed.Text" xml:space="preserve">
+    <value>Hastighed</value>
+  </data>
+  <data name="GbLaser.Text" xml:space="preserve">
+    <value>Laser muligheder</value>
+  </data>
 </root>

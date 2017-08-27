@@ -192,4 +192,10 @@
 
 Нажмите для получения дополнительной информации ...</value>
   </data>
+  <data name="GbSize.Text" xml:space="preserve">
+    <value>Размер изображения и позиция</value>
+  </data>
+  <data name="GbSpeed.Text" xml:space="preserve">
+    <value>Скорость</value>
+  </data>
 </root>

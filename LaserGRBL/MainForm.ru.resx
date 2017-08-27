@@ -210,4 +210,7 @@
   <data name="chinexeToolStripMenuItem.Text" xml:space="preserve">
     <value>китайский</value>
   </data>
+  <data name="schemaToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;цвета</value>
+  </data>
 </root>

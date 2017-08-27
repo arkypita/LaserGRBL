@@ -24,7 +24,12 @@ namespace LaserGRBL.UserControls
 			SetStyle(ControlStyles.ResizeRedraw, true);
 			mLastPosition = new PointF(0, 0);
 		}
-		
+
+		protected override void OnPaintBackground(PaintEventArgs e)
+		{
+			e.Graphics.Clear(ColorScheme.PreviewBackColor);
+		}
+
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			if (mBitmap != null)
@@ -141,11 +146,6 @@ namespace LaserGRBL.UserControls
 				mLastPosition = Core.LaserPosition;
 				Invalidate();
 			}
-		}
-
-		private void GrblPanel_Load(object sender, EventArgs e)
-		{
-			BackColor = ColorScheme.PreviewBackColor; //only for first render
 		}
 
 	}

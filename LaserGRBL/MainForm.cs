@@ -44,12 +44,14 @@ namespace LaserGRBL
 
 		private void RefreshColorSchema()
 		{
-					MMn.BackColor = BackColor = StatusBar.BackColor = ColorScheme.FormBackColor;
-					MMn.ForeColor = ForeColor = ColorScheme.FormForeColor;
+			MMn.BackColor = BackColor = StatusBar.BackColor = ColorScheme.FormBackColor;
+			MMn.ForeColor = ForeColor = ColorScheme.FormForeColor;
 			blueLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.BlueLaser;
 			redLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.RedLaser;
 			darkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Dark;
 			hackerToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Hacker;
+			ConnectionForm.Invalidate();
+			PreviewForm.Invalidate();
 		}
 
 		void GitHub_NewVersion(Version current, Version latest, string name, string url)
@@ -169,7 +171,7 @@ namespace LaserGRBL
 					break;
 				default:
 					TTTStatus.BackColor = ColorScheme.FormBackColor;
-					TTTStatus.ForeColor = ColorScheme.FormBackColor;
+					TTTStatus.ForeColor = ColorScheme.FormForeColor;
 					break;
 			}
 
@@ -236,10 +238,14 @@ namespace LaserGRBL
 			SuspendLayout();
 			TTOvG0.Text = string.Format("G0 [{0:0.00}x]", Core.OverrideG0 / 100.0);
 			TTOvG0.BackColor = Core.OverrideG0 > 100 ? Color.LightPink : (Core.OverrideG0 < 100 ? Color.LightBlue : SystemColors.Control) ;
+			TTOvG0.ForeColor = Core.OverrideG0 != 100 ? Color.Black : ColorScheme.FormForeColor;
 			TTOvG1.Text = string.Format("G1 [{0:0.00}x]", Core.OverrideG1 / 100.0);
 			TTOvG1.BackColor = Core.OverrideG1 > 100 ? Color.LightPink : (Core.OverrideG1 < 100 ? Color.LightBlue : SystemColors.Control) ;
+			TTOvG1.ForeColor = Core.OverrideG1 != 100 ? Color.Black : ColorScheme.FormForeColor;
 			TTOvS.Text = string.Format("S [{0:0.00}x]", Core.OverrideS / 100.0);
 			TTOvS.BackColor = Core.OverrideS > 100 ? Color.LightPink : (Core.OverrideS < 100 ? Color.LightBlue : SystemColors.Control) ;
+			TTOvS.ForeColor = Core.OverrideS != 100 ? Color.Black : ColorScheme.FormForeColor;
+
 			ResumeLayout();
 		}
 		void TTOvClick(object sender, EventArgs e)

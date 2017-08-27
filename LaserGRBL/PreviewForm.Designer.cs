@@ -61,7 +61,6 @@ namespace LaserGRBL
 			// Preview
 			// 
 			resources.ApplyResources(this.Preview, "Preview");
-			this.Preview.BackColor = System.Drawing.Color.DimGray;
 			this.Preview.Name = "Preview";
 			this.TT.SetToolTip(this.Preview, resources.GetString("Preview.ToolTip"));
 			// 

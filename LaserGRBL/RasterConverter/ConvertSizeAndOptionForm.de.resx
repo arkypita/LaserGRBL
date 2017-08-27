@@ -355,4 +355,13 @@ Klicken Sie für mehr Informationen ...</value>
   <data name="CBLaserOFF.Items" xml:space="preserve">
     <value>M5</value>
   </data>
+  <data name="GbSize.Text" xml:space="preserve">
+    <value>Bild Größe und Position (mm)</value>
+  </data>
+  <data name="GbSpeed.Text" xml:space="preserve">
+    <value>Geschwindigkeit</value>
+  </data>
+  <data name="GbLaser.Text" xml:space="preserve">
+    <value>Laser Optionen</value>
+  </data>
 </root>

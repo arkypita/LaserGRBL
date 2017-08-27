@@ -26,6 +26,11 @@ namespace LaserGRBL.UserControls
 		public void SetCom(GrblCore core)
 		{ mCom = core; }
 
+		protected override void OnPaintBackground(PaintEventArgs e)
+		{
+			e.Graphics.Clear(ColorScheme.LogBackColor);
+		}
+
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);

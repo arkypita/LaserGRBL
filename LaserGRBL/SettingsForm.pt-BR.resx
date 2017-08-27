@@ -137,4 +137,7 @@ Caso contrário, desabilite a opção "Suporte PWM"</value>
   <data name="BtnSave.Text" xml:space="preserve">
     <value>Salvar</value>
   </data>
+  <data name="GB.Text" xml:space="preserve">
+    <value>Hardware Compativel</value>
+  </data>
 </root>
