@@ -12,9 +12,6 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
 
-			ColorScheme.CurrentScheme = (ColorScheme.Scheme)Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser); ;
-			RefreshColorSchema();
-
 			MMn.Renderer = new MMnRenderer();
 
 			splitContainer1.FixedPanel = FixedPanel.Panel1;
@@ -31,15 +28,16 @@ namespace LaserGRBL
 			Core = new GrblCore(this);
 			Core.MachineStatusChanged += OnMachineStatus;
 			Core.OnFileLoaded += OnFileLoaded;
-			Core.OnOverrideChange += ComPort_OnOverrideChange;
-
-			ComPort_OnOverrideChange();
+			Core.OnOverrideChange += RefreshOverride;
 
 			PreviewForm.SetCore(Core);
 			ConnectionForm.SetCore(Core);
 			JogForm.SetCore(Core);
 
 			GitHub.NewVersion += GitHub_NewVersion;
+
+			ColorScheme.CurrentScheme = (ColorScheme.Scheme)Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser); ;
+			RefreshColorSchema(); //include RefreshOverride();
 		}
 
 		private void RefreshColorSchema()
@@ -52,7 +50,7 @@ namespace LaserGRBL
 			hackerToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Hacker;
 			ConnectionForm.Invalidate();
 			PreviewForm.Invalidate();
-			ComPort_OnOverrideChange();
+			RefreshOverride();
 		}
 
 		void GitHub_NewVersion(Version current, Version latest, string name, string url)
@@ -234,7 +232,7 @@ namespace LaserGRBL
 			Core.GrblReset();
 		}
 
-		void ComPort_OnOverrideChange()
+		void RefreshOverride()
 		{
 			SuspendLayout();
 			TTOvG0.Text = string.Format("G0 [{0:0.00}x]", Core.OverrideG0 / 100.0);

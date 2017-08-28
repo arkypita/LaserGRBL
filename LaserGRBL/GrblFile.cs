@@ -317,7 +317,7 @@ namespace LaserGRBL
 					if (c.pwm)
 						temp.Add(new GrblCommand("S0"));
 					else
-						list.Add(new GrblCommand(c.lOff)); //laser off
+						temp.Add(new GrblCommand(c.lOff)); //laser off
 				}
 
 				fast = seg.Fast;
