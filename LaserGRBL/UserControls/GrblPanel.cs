@@ -148,5 +148,10 @@ namespace LaserGRBL.UserControls
 			}
 		}
 
+
+		internal void OnColorChange()
+		{
+			RecreateBMP();
+		}
 	}
 }

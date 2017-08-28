@@ -48,8 +48,8 @@ namespace LaserGRBL
 			redLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.RedLaser;
 			darkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Dark;
 			hackerToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Hacker;
-			ConnectionForm.Invalidate();
-			PreviewForm.Invalidate();
+			ConnectionForm.OnColorChange();
+			PreviewForm.OnColorChange();
 			RefreshOverride();
 		}
 
@@ -451,7 +451,7 @@ namespace LaserGRBL
 
 	public class MMnRenderer : ToolStripProfessionalRenderer
 	{
-		public MMnRenderer() : base(new BrowserColors()) { }
+		public MMnRenderer() : base(new CustomMenuColor()) { }
 
 		protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs e)
 		{
@@ -471,17 +471,8 @@ namespace LaserGRBL
 
 		protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
 		{
-			Color c = e.Item.Selected ? ColorScheme.FormForeColor : ColorScheme.FormForeColor;
+			Color c = e.Item.Enabled ? ColorScheme.FormForeColor : Color.Gray;
 			TextRenderer.DrawText(e.Graphics, e.Text, e.TextFont, e.TextRectangle, c, e.TextFormat);
-		}
-
-		protected override void OnRenderSeparator(ToolStripSeparatorRenderEventArgs e)
-		{
-			e.Graphics.Clear(ColorScheme.FormBackColor);
-			//using (Brush b = new SolidBrush(ColorScheme.FormBackColor))
-			//	e.Graphics.FillRectangle(b, new Rectangle(0, 0, e.Item.Width, e.Item.Height));
-			using (Pen p = new Pen(ColorScheme.MenuSeparatorColor))
-				e.Graphics.DrawLine(p, 4, 1, e.Item.Width -4, 1);
 		}
 
 		protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
@@ -508,9 +499,12 @@ namespace LaserGRBL
 		}
 
 	}
-	public class BrowserColors : ProfessionalColorTable
+	public class CustomMenuColor : ProfessionalColorTable
 	{
-	
+		public override Color SeparatorDark
+		{get{return ColorScheme.MenuSeparatorColor;}}
 
+		public override Color SeparatorLight
+		{get{return ColorScheme.MenuSeparatorColor;}}
 	}
 }

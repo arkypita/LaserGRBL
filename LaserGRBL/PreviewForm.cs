@@ -240,6 +240,11 @@ namespace LaserGRBL
 			}
 		}
 
+
+		internal void OnColorChange()
+		{
+			Preview.OnColorChange();
+		}
 	}
 
 }
