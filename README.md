@@ -17,6 +17,7 @@ Do you like LaserGRBL? Support development with your donation!
 - Image import (jpg, bmp...) with line by line GCode generation (horizontal, vertical, and diagonal).
 - Image import (jpg, bmp...) with Vectorization! [Experimental]
 - Image import (jpg, bmp...) with 1bit dithering, best result with low power laser
+- Different color scheme optimized for different safety glasses
 - User defined buttons, power to you!
 - Grbl Configuration Import/Export
 - Configuration, Alarm and Error codes decoding for Grbl v1.1 (with description tooltip)
