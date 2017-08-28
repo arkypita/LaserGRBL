@@ -168,6 +168,7 @@ namespace LaserGRBL
 			this.PB.DrawProgressString = true;
 			this.PB.FillColor = System.Drawing.Color.White;
 			this.PB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
+			this.PB.ForeColor = System.Drawing.Color.Black;
 			this.PB.Maximum = 100D;
 			this.PB.Minimum = 0D;
 			this.PB.Name = "PB";
