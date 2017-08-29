@@ -135,7 +135,6 @@
 			this.CBProtocol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CBProtocol.FormattingEnabled = true;
 			this.CBProtocol.Name = "CBProtocol";
-			this.CBProtocol.SelectedIndexChanged += new System.EventHandler(this.CBProtocol_SelectedIndexChanged);
 			// 
 			// BtnLaserMode
 			// 

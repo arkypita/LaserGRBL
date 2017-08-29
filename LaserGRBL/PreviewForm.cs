@@ -120,8 +120,8 @@ namespace LaserGRBL
 
 
 				cms = new ContextMenuStrip();
-				cms.Items.Add("Remove button", null, RemoveButton_Click);
-				cms.Items.Add("Edit button", null, EditButton_Click);
+				cms.Items.Add(Strings.CustomButtonRemove, null, RemoveButton_Click);
+				cms.Items.Add(Strings.CustomButtonEdit, null, EditButton_Click);
 
 				this.ContextMenuStrip = cms;
 			}

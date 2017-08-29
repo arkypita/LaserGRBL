@@ -309,6 +309,9 @@
     <Compile Include="UserControls\ColorSlider.Designer.cs">
       <DependentUpon>ColorSlider.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ComboBoxEnumItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\CommandLog.cs">
       <SubType>UserControl</SubType>
     </Compile>

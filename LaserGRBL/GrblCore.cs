@@ -256,17 +256,17 @@ namespace LaserGRBL
 								}
 
 								sw.Close();
-								System.Windows.Forms.MessageBox.Show(String.Format("{0} Config exported with success!", msg), "Success", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+								System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxExportConfigSuccess, msg), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 							}
 							else
 							{
-								System.Windows.Forms.MessageBox.Show("Error exporting config!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+								System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 							}
 						}
 						catch (Exception ex)
 						{
 							Logger.LogException("ExportConfig", ex);
-							System.Windows.Forms.MessageBox.Show("Error exporting config!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+							System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 						}
 
 
@@ -280,7 +280,7 @@ namespace LaserGRBL
 				catch (Exception ex)
 				{
 					Logger.LogException("ExportConfig", ex);
-					System.Windows.Forms.MessageBox.Show("Error exporting config!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+					System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 				}
 			}
 		}
@@ -290,7 +290,7 @@ namespace LaserGRBL
 
 			if (!System.IO.File.Exists(filename))
 			{
-				System.Windows.Forms.MessageBox.Show("File does not exist!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigFileNotFound, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 				return;
 			}
 
@@ -326,14 +326,14 @@ namespace LaserGRBL
 							}
 
 							if (errors > 0)
-								System.Windows.Forms.MessageBox.Show(String.Format("{0} Config imported with {1} errors!", mSentPtr.Count, errors), "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+								System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxImportConfigWithError, mSentPtr.Count, errors), Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 							else
-								System.Windows.Forms.MessageBox.Show(String.Format("{0} Config imported with success!", mSentPtr.Count), "Success", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+								System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxImportConfigWithoutError, mSentPtr.Count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 						}
 						catch (Exception ex)
 						{
 							Logger.LogException("ImportConfig", ex);
-							System.Windows.Forms.MessageBox.Show("Error reading file!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+							System.Windows.Forms.MessageBox.Show(Strings.BoxImportConfigFileError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 						}
 
 						lock (this)
@@ -346,7 +346,7 @@ namespace LaserGRBL
 				catch (Exception ex)
 				{
 					Logger.LogException("ImportConfig", ex);
-					System.Windows.Forms.MessageBox.Show("Error reading file!", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+					System.Windows.Forms.MessageBox.Show(Strings.BoxImportConfigFileError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 				}
 			}
 		}
@@ -409,7 +409,7 @@ namespace LaserGRBL
 			{
 				Logger.LogException("OpenCom", ex);
 				SetStatus(MacStatus.Disconnected);
-				System.Windows.Forms.MessageBox.Show(ex.Message, "Cannot connect to device", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				System.Windows.Forms.MessageBox.Show(ex.Message, Strings.BoxConnectErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 				com.Close(true);
 			}
 		}
@@ -1002,7 +1002,21 @@ namespace LaserGRBL
 				return mTempPath;
 			}
 		}
+
+
+		public static string TranslateEnum(Enum value)
+		{
+			try
+			{
+				string rv = Strings.ResourceManager.GetString(value.GetType().Name + value.ToString());
+				return string.IsNullOrEmpty(rv) ? value.ToString() : rv;
+			}
+			catch { return value.ToString(); }
+		}
+
 	}
+
+
 
 	public class TimeProjection
 	{

@@ -84,15 +84,6 @@ namespace LaserGRBL
 			System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#protocol");
 		}
 
-		private void CBProtocol_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			//if (((ComWrapper.WrapperType)CBProtocol.SelectedItem) == ComWrapper.WrapperType.LaserWebESP8266)
-			//{
-			//	System.Windows.Forms.MessageBox.Show("LaserWeb ESP8266 compatible protocol is under development.\r\nWill be available in a future version.");
-			//	CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
-			//}
-		}
-
 		private void BtnStreamingMode_Click(object sender, EventArgs e)
 		{
 			System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#streaming-mode");

@@ -116,7 +116,7 @@ namespace LaserGRBL
 		private void TimerUpdate()
 		{
 			SuspendLayout();
-			TTTStatus.Text = TranslateEnum(Core.MachineStatus);
+			TTTStatus.Text = GrblCore.TranslateEnum(Core.MachineStatus);
 
 			if (Core.InProgram)
 				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.ProjectedTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, " ,", true);
@@ -178,16 +178,6 @@ namespace LaserGRBL
 			LblY.Text = string.Format("Y: {0:0.000}", Core.LaserPosition.Y);
 
 			ResumeLayout();
-		}
-
-		private string TranslateEnum(GrblCore.MacStatus macStatus)
-		{
-			try
-			{
-				string rv = Strings.ResourceManager.GetString(macStatus.GetType().Name + macStatus.ToString());
-				return string.IsNullOrEmpty(rv) ? macStatus.ToString() : rv;
-			}
-			catch { return macStatus.ToString(); }
 		}
 
 		void MnExportConfigClick(object sender, EventArgs e)

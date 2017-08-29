@@ -32,7 +32,7 @@ namespace LaserGRBL
 				if (rv == DialogResult.OK)
 					System.Windows.Forms.Application.Exit(); //exit (spawned process will apply update)
 				else if (rv == DialogResult.Abort)
-					System.Windows.Forms.MessageBox.Show("Automatic update failed!\r\nPlease manually download the new version from lasergrbl site.", "Update result", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					System.Windows.Forms.MessageBox.Show(Strings.BoxAutoUpdateFailed, Strings.BoxAutoUpdateResult, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 

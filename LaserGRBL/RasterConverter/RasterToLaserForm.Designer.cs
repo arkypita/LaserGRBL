@@ -57,7 +57,7 @@
 			this.CbOptimize = new System.Windows.Forms.CheckBox();
 			this.CbSmoothing = new System.Windows.Forms.CheckBox();
 			this.label14 = new System.Windows.Forms.Label();
-			this.CbFillingDirection = new System.Windows.Forms.ComboBox();
+			this.CbFillingDirection = new UserControls.ComboBox<ImageProcessor.Direction>();
 			this.LblFillingQuality = new System.Windows.Forms.Label();
 			this.UDFillingQuality = new System.Windows.Forms.NumericUpDown();
 			this.LblFillingLineLbl = new System.Windows.Forms.Label();
@@ -67,9 +67,9 @@
 			this.BtnFillingQualityInfo = new LaserGRBL.UserControls.ImageButton();
 			this.GbParameters = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.CbResize = new System.Windows.Forms.ComboBox();
+			this.CbResize = new UserControls.ComboBox<System.Drawing.Drawing2D.InterpolationMode>();
 			this.LblGrayscale = new System.Windows.Forms.Label();
-			this.CbMode = new System.Windows.Forms.ComboBox();
+			this.CbMode = new UserControls.ComboBox<ImageTransform.Formula>();
 			this.TBRed = new LaserGRBL.UserControls.ColorSlider();
 			this.LblRed = new System.Windows.Forms.Label();
 			this.LblBlue = new System.Windows.Forms.Label();
@@ -87,7 +87,7 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.GbLineToLineOptions = new System.Windows.Forms.GroupBox();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
-			this.CbDirections = new System.Windows.Forms.ComboBox();
+			this.CbDirections = new UserControls.ComboBox<ImageProcessor.Direction>();
 			this.UDQuality = new System.Windows.Forms.NumericUpDown();
 			this.CbLinePreview = new System.Windows.Forms.CheckBox();
 			this.label5 = new System.Windows.Forms.Label();
@@ -998,7 +998,7 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Label LblGrayscale;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.ComboBox CbMode;
+		private UserControls.ComboBox<ImageTransform.Formula> CbMode;
 		private UserControls.ColorSlider TbBright;
 		private UserControls.ColorSlider TbContrast;
 		private System.Windows.Forms.Label label3;
@@ -1033,9 +1033,9 @@
 		private System.Windows.Forms.CheckBox CbOptimize;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
 		private System.Windows.Forms.Label label27;
-		private System.Windows.Forms.ComboBox CbDirections;
+		private UserControls.ComboBox<ImageProcessor.Direction> CbDirections;
 		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.ComboBox CbResize;
+		private UserControls.ComboBox<System.Drawing.Drawing2D.InterpolationMode> CbResize;
 		private System.Windows.Forms.Label label28;
 		private LaserGRBL.UserControls.WaitingProgressBar WB;
 		private System.Windows.Forms.Timer WT;
@@ -1045,7 +1045,7 @@
 		private LaserGRBL.UserControls.ImageButton BtRotateCW;
 		private LaserGRBL.UserControls.ImageButton BtRotateCCW;
 		private System.Windows.Forms.NumericUpDown UDFillingQuality;
-		private System.Windows.Forms.ComboBox CbFillingDirection;
+		private UserControls.ComboBox<ImageProcessor.Direction> CbFillingDirection;
 		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.Label LblFillingQuality;
 		private System.Windows.Forms.Label LblFillingLineLbl;

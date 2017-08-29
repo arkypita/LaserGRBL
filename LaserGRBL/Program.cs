@@ -24,7 +24,7 @@ namespace LaserGRBL
 
 			if (!IsRunAsAdmin())
 			{
-				System.Windows.Forms.MessageBox.Show("Update require administrator privilege!", "Cannot update LaserGRBL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				System.Windows.Forms.MessageBox.Show(Strings.BoxAutoUpdateRequireAdmin, Strings.BoxAutoUpdateResult, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 			}
 
@@ -56,9 +56,9 @@ namespace LaserGRBL
 			catch { }
 
 			if (GitHub.ApplyUpdateS2()) //at this moment LaserGRBL is not running!
-				System.Windows.Forms.MessageBox.Show("Update success!", "Update result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				System.Windows.Forms.MessageBox.Show(Strings.BoxAutoUpdateSuccess, Strings.BoxAutoUpdateResult, MessageBoxButtons.OK, MessageBoxIcon.Information);
 			else
-				System.Windows.Forms.MessageBox.Show("Automatic update failed!\r\nPlease manually download the new version from lasergrbl site.", "Update result", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+				System.Windows.Forms.MessageBox.Show(Strings.BoxAutoUpdateFailed, Strings.BoxAutoUpdateResult, MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
 
 			if (System.IO.File.Exists(lasergrblpath))
 			{

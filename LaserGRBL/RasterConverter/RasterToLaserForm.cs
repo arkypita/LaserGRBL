@@ -31,8 +31,8 @@ namespace LaserGRBL.RasterConverter
 			LblGrayscale.Visible = CbMode.Visible = !IP.IsGrayScale;
 			
 			CbResize.SuspendLayout();
-			CbResize.Items.Add(InterpolationMode.HighQualityBicubic);
-			CbResize.Items.Add(InterpolationMode.NearestNeighbor);
+			CbResize.AddItem(InterpolationMode.HighQualityBicubic);
+			CbResize.AddItem(InterpolationMode.NearestNeighbor);
 			CbResize.ResumeLayout();
 
 			CbDither.SuspendLayout();
@@ -44,20 +44,20 @@ namespace LaserGRBL.RasterConverter
 
 			CbMode.SuspendLayout();
 			foreach (ImageTransform.Formula formula in Enum.GetValues(typeof(ImageTransform.Formula)))
-				CbMode.Items.Add(formula);
+				CbMode.AddItem(formula);
 			CbMode.SelectedIndex = 0;
 			CbMode.ResumeLayout();
 			CbDirections.SuspendLayout();
 
 			foreach (ImageProcessor.Direction direction in Enum.GetValues(typeof(ImageProcessor.Direction)))
 				if (direction != ImageProcessor.Direction.None)
-					CbDirections.Items.Add(direction);
+					CbDirections.AddItem(direction);
 			CbDirections.SelectedIndex = 0;
 			CbDirections.ResumeLayout();
 
 			CbFillingDirection.SuspendLayout();
 			foreach (ImageProcessor.Direction direction in Enum.GetValues(typeof(ImageProcessor.Direction)))
-				CbFillingDirection.Items.Add(direction);
+				CbFillingDirection.AddItem(direction);
 			CbFillingDirection.SelectedIndex = 0;
 			CbFillingDirection.ResumeLayout();
 
