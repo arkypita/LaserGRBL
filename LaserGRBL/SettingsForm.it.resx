@@ -176,8 +176,8 @@ Se la tua configurazione non lo prevede, disabilita la modalità PWM.</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Modalità di invio:
-- Buffered: ottimizza l'invio dei comandi G-Code saturando il buffer di ricezione di grbl [raccomandato]
-- Synchronous: attende l'esecuzione di ciascun comando prima di inviare il comando successivo [più lento ma sicuro]
+- Buffered: ottimizza l'invio di comandi  saturando il buffer di grbl [raccomandato]
+- Synchronous: attende l'esecuzione di ciascun comando prima di inviare il successivo [lento ma sicuro]
 - RepeatOnError: come Synchronous ma ripete i comandi se intercetta errori [sperimentale]</value>
   </data>
   <data name="CBLaserMode.Text" xml:space="preserve">
@@ -185,8 +185,8 @@ Se la tua configurazione non lo prevede, disabilita la modalità PWM.</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Protocollo di connessione:
-- UsbSerial, è il protocollo più comune. Deve essere usato le la tua marcatrice laser è connessa via porta USB o SERIALE.
-- Telnet, se hai un collegamento WiFi-Telnet. La comunicazione è implementata come un semplice client-server telnet.
-- LaserWebESP8266 fornisce la connessione WiFi con tecnologia WebSocket. Modalità compatible con il software LaserWeb-ESP8266.</value>
+- UsbSerial, il protocollo più comune. Da usare se la tua marcatrice è connessa via porta USB o COM.
+- Telnet, se hai un collegamento WiFi-Telnet. Implementa un semplice client-server telnet.
+- LaserWebESP8266 fornisce la connessione WiFi via WebSocket. Modalità compatible con LaserWeb-ESP8266.</value>
   </data>
 </root>
