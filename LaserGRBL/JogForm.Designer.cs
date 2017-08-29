@@ -114,6 +114,7 @@
 			this.TbStep.TickStyle = System.Windows.Forms.TickStyle.Both;
 			this.TbStep.Value = 10;
 			this.TbStep.ValueChanged += new System.EventHandler(this.TbStep_ValueChanged);
+			this.TbStep.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnSliderMouseUP);
 			// 
 			// TbSpeed
 			// 
@@ -132,6 +133,7 @@
 			this.TbSpeed.TickStyle = System.Windows.Forms.TickStyle.Both;
 			this.TbSpeed.Value = 1000;
 			this.TbSpeed.ValueChanged += new System.EventHandler(this.TbSpeed_ValueChanged);
+			this.TbSpeed.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnSliderMouseUP);
 			// 
 			// imageButton1
 			// 

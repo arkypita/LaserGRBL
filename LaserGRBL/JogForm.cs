@@ -15,6 +15,10 @@ namespace LaserGRBL
 		public void SetCore(GrblCore core)
 		{
 			Core = core;
+
+			TbSpeed.Value = (int)Settings.GetObject("Jog Speed", 1000);
+			TbStep.Value = (int)Settings.GetObject("Jog Step", 10);
+
 			TbSpeed_ValueChanged(null, null); //set tooltip
 			TbStep_ValueChanged(null, null); //set tooltip
 		}
@@ -27,16 +31,30 @@ namespace LaserGRBL
 		private void TbSpeed_ValueChanged(object sender, EventArgs e)
 		{
 			TT.SetToolTip(TbSpeed, string.Format("Speed: {0}", TbSpeed.Value));
+			Settings.SetObject("Jog Speed", TbSpeed.Value);
+			needsave = true;
 		}
 
 		private void TbStep_ValueChanged(object sender, EventArgs e)
 		{
 			TT.SetToolTip(TbStep, string.Format("Step: {0}", TbStep.Value));
+			Settings.SetObject("Jog Step", TbStep.Value);
+			needsave = true;
 		}
 
 		private void BtnHome_Click(object sender, EventArgs e)
 		{
 			Core.JogHome(TbSpeed.Value);
+		}
+
+		bool needsave = false;
+		private void OnSliderMouseUP(object sender, MouseEventArgs e)
+		{
+			if (needsave)
+			{
+				needsave = false;
+				Settings.Save();
+			}
 		}
 	}
 
