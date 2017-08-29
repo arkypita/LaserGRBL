@@ -117,4 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="MacStatusAlarm" xml:space="preserve">
+    <value>Allarme</value>
+  </data>
+  <data name="MacStatusCheck" xml:space="preserve">
+    <value>Verifica</value>
+  </data>
+  <data name="MacStatusConnecting" xml:space="preserve">
+    <value>In connessione</value>
+  </data>
+  <data name="MacStatusDisconnected" xml:space="preserve">
+    <value>Disconnesso</value>
+  </data>
+  <data name="MacStatusDoor" xml:space="preserve">
+    <value>Porta</value>
+  </data>
+  <data name="MacStatusHold" xml:space="preserve">
+    <value>In pausa</value>
+  </data>
+  <data name="MacStatusHome" xml:space="preserve">
+    <value>Homing</value>
+  </data>
+  <data name="MacStatusIdle" xml:space="preserve">
+    <value>Inattivo</value>
+  </data>
+  <data name="MacStatusJog" xml:space="preserve">
+    <value>Posizionamento</value>
+  </data>
+  <data name="MacStatusRun" xml:space="preserve">
+    <value>In esecuzione</value>
+  </data>
+  <data name="MacStatusUnknown" xml:space="preserve">
+    <value>Sconosciuto</value>
+  </data>
+  <data name="MainFormEstimatedTime" xml:space="preserve">
+    <value>Tempo Stimato:</value>
+  </data>
+  <data name="MainFormProjectedTime" xml:space="preserve">
+    <value>Proiezione:</value>
+  </data>
+  <data name="UpdateRequireRestart" xml:space="preserve">
+    <value>Riavvio richiesto</value>
+  </data>
+  <data name="UpdateRequireRestartNow" xml:space="preserve">
+    <value>E' necessario riavviare il programma. Riavviare ora?</value>
+  </data>
+  <data name="LanguageRequireRestart" xml:space="preserve">
+    <value>Riavvio richiesto</value>
+  </data>
+  <data name="LanguageRequireRestartNow" xml:space="preserve">
+    <value>E' necessario riavviare l'applicazione. Riavviare ora?</value>
+  </data>
 </root>

@@ -116,7 +116,7 @@ namespace LaserGRBL
 		private void TimerUpdate()
 		{
 			SuspendLayout();
-			TTTStatus.Text = Core.MachineStatus.ToString();
+			TTTStatus.Text = TranslateEnum(Core.MachineStatus);
 
 			if (Core.InProgram)
 				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.ProjectedTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, " ,", true);
@@ -124,9 +124,9 @@ namespace LaserGRBL
 				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, " ,", true);
 
 			if (Core.InProgram)
-				TTLEstimated.Text = "Projected Time:";
+				TTLEstimated.Text = Strings.MainFormProjectedTime;
 			else
-				TTLEstimated.Text = "Estimated Time:";
+				TTLEstimated.Text = Strings.MainFormEstimatedTime;
 
 			MnFileOpen.Enabled = Core.CanLoadNewFile;
 			MnSaveProgram.Enabled = Core.HasProgram;
@@ -178,6 +178,16 @@ namespace LaserGRBL
 			LblY.Text = string.Format("Y: {0:0.000}", Core.LaserPosition.Y);
 
 			ResumeLayout();
+		}
+
+		private string TranslateEnum(GrblCore.MacStatus macStatus)
+		{
+			try
+			{
+				string rv = Strings.ResourceManager.GetString(macStatus.GetType().Name + macStatus.ToString());
+				return string.IsNullOrEmpty(rv) ? macStatus.ToString() : rv;
+			}
+			catch { return macStatus.ToString(); }
 		}
 
 		void MnExportConfigClick(object sender, EventArgs e)
@@ -337,7 +347,7 @@ namespace LaserGRBL
 
 			Settings.Save();
 
-			if (System.Windows.Forms.MessageBox.Show("Require application restart, restart now?", "Restart required", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+			if (System.Windows.Forms.MessageBox.Show(Strings.LanguageRequireRestartNow, Strings.LanguageRequireRestart, MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
 				Application.Restart();
 		}
 
