@@ -300,10 +300,6 @@ namespace LaserGRBL
 			this.TxtAddress.Name = "TxtAddress";
 			this.TxtAddress.TextChanged += new System.EventHandler(this.TxtHostName_TextChanged);
 			// 
-			// TT
-			// 
-			this.TT.BackColor = System.Drawing.Color.Empty;
-			// 
 			// ConnectLogForm
 			// 
 			resources.ApplyResources(this, "$this");
