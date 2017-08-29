@@ -61,6 +61,223 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Automatic update failed!
+        ///Please manually download the new version from lasergrbl site..
+        /// </summary>
+        internal static string BoxAutoUpdateFailed {
+            get {
+                return ResourceManager.GetString("BoxAutoUpdateFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Update require administrator privilege!.
+        /// </summary>
+        internal static string BoxAutoUpdateRequireAdmin {
+            get {
+                return ResourceManager.GetString("BoxAutoUpdateRequireAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Update result.
+        /// </summary>
+        internal static string BoxAutoUpdateResult {
+            get {
+                return ResourceManager.GetString("BoxAutoUpdateResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Update success!.
+        /// </summary>
+        internal static string BoxAutoUpdateSuccess {
+            get {
+                return ResourceManager.GetString("BoxAutoUpdateSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Cannot connect to device.
+        /// </summary>
+        internal static string BoxConnectErrorTitle {
+            get {
+                return ResourceManager.GetString("BoxConnectErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Error exporting config!.
+        /// </summary>
+        internal static string BoxExportConfigError {
+            get {
+                return ResourceManager.GetString("BoxExportConfigError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Error.
+        /// </summary>
+        internal static string BoxExportConfigErrorTitle {
+            get {
+                return ResourceManager.GetString("BoxExportConfigErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a File does not exist!.
+        /// </summary>
+        internal static string BoxExportConfigFileNotFound {
+            get {
+                return ResourceManager.GetString("BoxExportConfigFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a {0} Config exported with success!.
+        /// </summary>
+        internal static string BoxExportConfigSuccess {
+            get {
+                return ResourceManager.GetString("BoxExportConfigSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Success.
+        /// </summary>
+        internal static string BoxExportConfigSuccessTitle {
+            get {
+                return ResourceManager.GetString("BoxExportConfigSuccessTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Error reading file!.
+        /// </summary>
+        internal static string BoxImportConfigFileError {
+            get {
+                return ResourceManager.GetString("BoxImportConfigFileError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a {0} Config imported with {1} errors!.
+        /// </summary>
+        internal static string BoxImportConfigWithError {
+            get {
+                return ResourceManager.GetString("BoxImportConfigWithError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a {0} Config imported with success!.
+        /// </summary>
+        internal static string BoxImportConfigWithoutError {
+            get {
+                return ResourceManager.GetString("BoxImportConfigWithoutError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Edit button.
+        /// </summary>
+        internal static string CustomButtonEdit {
+            get {
+                return ResourceManager.GetString("CustomButtonEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Remove button.
+        /// </summary>
+        internal static string CustomButtonRemove {
+            get {
+                return ResourceManager.GetString("CustomButtonRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Diagonal.
+        /// </summary>
+        internal static string DirectionDiagonal {
+            get {
+                return ResourceManager.GetString("DirectionDiagonal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Horizontal.
+        /// </summary>
+        internal static string DirectionHorizontal {
+            get {
+                return ResourceManager.GetString("DirectionHorizontal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Vertical.
+        /// </summary>
+        internal static string DirectionVertical {
+            get {
+                return ResourceManager.GetString("DirectionVertical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Custom.
+        /// </summary>
+        internal static string FormulaCustom {
+            get {
+                return ResourceManager.GetString("FormulaCustom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a OpticalCorrect.
+        /// </summary>
+        internal static string FormulaOpticalCorrect {
+            get {
+                return ResourceManager.GetString("FormulaOpticalCorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a SimpleAverage.
+        /// </summary>
+        internal static string FormulaSimpleAverage {
+            get {
+                return ResourceManager.GetString("FormulaSimpleAverage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a WeightAverage.
+        /// </summary>
+        internal static string FormulaWeightAverage {
+            get {
+                return ResourceManager.GetString("FormulaWeightAverage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Smooth (HQ Bicubic).
+        /// </summary>
+        internal static string InterpolationModeHighQualityBicubic {
+            get {
+                return ResourceManager.GetString("InterpolationModeHighQualityBicubic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Sharp (NearestNeighbor).
+        /// </summary>
+        internal static string InterpolationModeNearestNeighbor {
+            get {
+                return ResourceManager.GetString("InterpolationModeNearestNeighbor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Restart required.
         /// </summary>
         internal static string LanguageRequireRestart {

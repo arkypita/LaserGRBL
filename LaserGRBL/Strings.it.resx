@@ -139,7 +139,7 @@
     <value>Homing</value>
   </data>
   <data name="MacStatusIdle" xml:space="preserve">
-    <value>Inattivo</value>
+    <value>Pronto</value>
   </data>
   <data name="MacStatusJog" xml:space="preserve">
     <value>Posizionamento</value>
@@ -167,5 +167,78 @@
   </data>
   <data name="LanguageRequireRestartNow" xml:space="preserve">
     <value>E' necessario riavviare l'applicazione. Riavviare ora?</value>
+  </data>
+  <data name="CustomButtonEdit" xml:space="preserve">
+    <value>Modifica pulsante</value>
+  </data>
+  <data name="CustomButtonRemove" xml:space="preserve">
+    <value>Rimuovi pulsante</value>
+  </data>
+  <data name="DirectionDiagonal" xml:space="preserve">
+    <value>Diagonale</value>
+  </data>
+  <data name="DirectionHorizontal" xml:space="preserve">
+    <value>Orizzontale</value>
+  </data>
+  <data name="DirectionVertical" xml:space="preserve">
+    <value>Verticale</value>
+  </data>
+  <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
+    <value>Bordi netti (NearestNeighbor)</value>
+  </data>
+  <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
+    <value>Sfumato (HQBicubic)</value>
+  </data>
+  <data name="FormulaCustom" xml:space="preserve">
+    <value>Personalizzato</value>
+  </data>
+  <data name="FormulaOpticalCorrect" xml:space="preserve">
+    <value>Percettivo</value>
+  </data>
+  <data name="FormulaSimpleAverage" xml:space="preserve">
+    <value>Media aritmetica</value>
+  </data>
+  <data name="FormulaWeightAverage" xml:space="preserve">
+    <value>Media pesata</value>
+  </data>
+  <data name="BoxAutoUpdateFailed" xml:space="preserve">
+    <value>Aggiornamento fallito!
+Si prega di scaricare manualmente la nuova versione dal sito lasergrbl.com</value>
+  </data>
+  <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
+    <value>L'aggiornamento richiede i privilegi di amministratore!</value>
+  </data>
+  <data name="BoxAutoUpdateResult" xml:space="preserve">
+    <value>Risultato aggiornamento</value>
+  </data>
+  <data name="BoxAutoUpdateSuccess" xml:space="preserve">
+    <value>Aggiornamento completato!</value>
+  </data>
+  <data name="BoxConnectErrorTitle" xml:space="preserve">
+    <value>Impossibile connettersi al dispositivo</value>
+  </data>
+  <data name="BoxExportConfigError" xml:space="preserve">
+    <value>Errore nell'esportare la configurazione!</value>
+  </data>
+  <data name="BoxExportConfigErrorTitle" xml:space="preserve">
+    <value>Errore</value>
+  </data>
+  <data name="BoxExportConfigFileNotFound" xml:space="preserve">
+    <value>Il file non esiste!</value>
+  </data>
+  <data name="BoxExportConfigSuccess" xml:space="preserve">
+    <value>{0} chiavi esportate con successo!</value>
+  </data>
+  <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
+    <value>Successo</value>
+  </data>
+  <data name="BoxImportConfigFileError" xml:space="preserve">
+    <value>Errore di lettura file!</value>
+  </data>
+  <data name="BoxImportConfigWithError" xml:space="preserve">
+    <value>{0} chiavi importate con {1} errori!</value>
+  </data>
+  <data name="BoxImportConfigWithoutError" xml:space="preserve">
+    <value>{0} chiavi importate con successo!</value>
   </data>
 </root>

@@ -117,6 +117,79 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BoxAutoUpdateFailed" xml:space="preserve">
+    <value>Automatic update failed!
+Please manually download the new version from lasergrbl site.</value>
+  </data>
+  <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
+    <value>Update require administrator privilege!</value>
+  </data>
+  <data name="BoxAutoUpdateResult" xml:space="preserve">
+    <value>Update result</value>
+  </data>
+  <data name="BoxAutoUpdateSuccess" xml:space="preserve">
+    <value>Update success!</value>
+  </data>
+  <data name="BoxConnectErrorTitle" xml:space="preserve">
+    <value>Cannot connect to device</value>
+  </data>
+  <data name="BoxExportConfigError" xml:space="preserve">
+    <value>Error exporting config!</value>
+  </data>
+  <data name="BoxExportConfigErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="BoxExportConfigFileNotFound" xml:space="preserve">
+    <value>File does not exist!</value>
+  </data>
+  <data name="BoxExportConfigSuccess" xml:space="preserve">
+    <value>{0} Config exported with success!</value>
+  </data>
+  <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="BoxImportConfigFileError" xml:space="preserve">
+    <value>Error reading file!</value>
+  </data>
+  <data name="BoxImportConfigWithError" xml:space="preserve">
+    <value>{0} Config imported with {1} errors!</value>
+  </data>
+  <data name="BoxImportConfigWithoutError" xml:space="preserve">
+    <value>{0} Config imported with success!</value>
+  </data>
+  <data name="CustomButtonEdit" xml:space="preserve">
+    <value>Edit button</value>
+  </data>
+  <data name="CustomButtonRemove" xml:space="preserve">
+    <value>Remove button</value>
+  </data>
+  <data name="DirectionDiagonal" xml:space="preserve">
+    <value>Diagonal</value>
+  </data>
+  <data name="DirectionHorizontal" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="DirectionVertical" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="FormulaCustom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="FormulaOpticalCorrect" xml:space="preserve">
+    <value>OpticalCorrect</value>
+  </data>
+  <data name="FormulaSimpleAverage" xml:space="preserve">
+    <value>SimpleAverage</value>
+  </data>
+  <data name="FormulaWeightAverage" xml:space="preserve">
+    <value>WeightAverage</value>
+  </data>
+  <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
+    <value>Smooth (HQ Bicubic)</value>
+  </data>
+  <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
+    <value>Sharp (NearestNeighbor)</value>
+  </data>
   <data name="LanguageRequireRestart" xml:space="preserve">
     <value>Restart required</value>
   </data>
