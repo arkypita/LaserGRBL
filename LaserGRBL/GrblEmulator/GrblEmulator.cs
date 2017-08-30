@@ -114,6 +114,8 @@ namespace LaserGRBL
 			{
 				try
 				{
+					Console.Write(p);
+
 					System.Text.RegularExpressions.MatchCollection matches = confRegEX.Matches(p);
 					int key = int.Parse(matches[0].Groups[1].Value);
 
@@ -141,6 +143,7 @@ namespace LaserGRBL
 
 			private void SendConfig()
 			{
+				Console.WriteLine("$$");
 				ImmediateTX("ok");
 				foreach (KeyValuePair<int, object> kvp in configTable)
 				{

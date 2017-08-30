@@ -969,7 +969,17 @@ namespace LaserGRBL
 		{ get { return mLoopCount; } set { mLoopCount = value; if (OnLoopCountChange != null) OnLoopCountChange(mLoopCount); } }
 
 		private StreamingMode CurrentStreamingMode
-		{ get { return (StreamingMode)Settings.GetObject("Streaming Mode", StreamingMode.Buffered); } }
+		{ 
+			get 
+			{
+				if (IsImportExportStream)
+					return StreamingMode.Synchronous;
+				else
+					return (StreamingMode)Settings.GetObject("Streaming Mode", StreamingMode.Buffered); 
+			}
+		}
+
+		public bool IsImportExportStream { get { return !object.ReferenceEquals(mQueue, mQueuePtr); } }
 
 		private static string mDataPath;
 		public static string DataPath
