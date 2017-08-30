@@ -241,4 +241,7 @@ Si prega di scaricare manualmente la nuova versione dal sito lasergrbl.com</valu
   <data name="BoxImportConfigWithoutError" xml:space="preserve">
     <value>{0} chiavi importate con successo!</value>
   </data>
+  <data name="DirectionNone" xml:space="preserve">
+    <value>Nessun riempimento</value>
+  </data>
 </root>

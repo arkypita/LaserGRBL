@@ -118,6 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 33</value>
+  </data>
+  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 265</value>
+  </data>
+  <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 310</value>
+  </data>
+  <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>169, 3</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="BtnCreate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>249, 3</value>
+  </data>
+  <data name="BtnCreate.Text" xml:space="preserve">
+    <value>Crea!</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 13</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Icona</value>
+  </data>
   <data name="BTOpenImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAAJxAIA3kywAAACBjSFJNAABu
@@ -204,13 +231,46 @@
         eAAveOgl62GPIh7jc77X+fkfngB/B9/n/xp3RffP//MEBgt/B3/5nFylj6y3AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="BTOpenImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 49</value>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 3</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>G代码</value>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 210</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>工具提示</value>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 210</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 191</value>
+  </data>
+  <data name="TbToolTip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 138</value>
+  </data>
+  <data name="TbToolTip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 20</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Abilitazione</value>
+  </data>
+  <data name="CbEStyles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 164</value>
+  </data>
+  <data name="CbEStyles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 21</value>
+  </data>
+  <data name="TBGCode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 22</value>
+  </data>
+  <data name="TBGCode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 110</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>332, 310</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Pulsante personalizzato</value>
   </data>
 </root>

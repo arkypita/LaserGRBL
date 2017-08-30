@@ -215,6 +215,15 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a None.
+        /// </summary>
+        internal static string DirectionNone {
+            get {
+                return ResourceManager.GetString("DirectionNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Vertical.
         /// </summary>
         internal static string DirectionVertical {
