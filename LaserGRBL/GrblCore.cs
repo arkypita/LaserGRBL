@@ -632,7 +632,9 @@ namespace LaserGRBL
 
 		private GrblCommand PeekNextCommand()
 		{
-			if (CurrentStreamingMode == StreamingMode.Buffered && mQueuePtr.Count > 0) //sono buffered e ho roba da trasmettere
+			if (mPending.Count > 0 && mPending.Peek().IsWriteEEPROM) //if managing eeprom write act like sync
+				return null;
+			else if (CurrentStreamingMode == StreamingMode.Buffered && mQueuePtr.Count > 0) //sono buffered e ho roba da trasmettere
 				return mQueuePtr.Peek();
 			else if (CurrentStreamingMode != StreamingMode.Buffered && mPending.Count == 0) //sono sync e sono vuoto
 				if (mRetryQueue != null) return mRetryQueue;
@@ -969,17 +971,9 @@ namespace LaserGRBL
 		{ get { return mLoopCount; } set { mLoopCount = value; if (OnLoopCountChange != null) OnLoopCountChange(mLoopCount); } }
 
 		private StreamingMode CurrentStreamingMode
-		{ 
-			get 
-			{
-				if (IsImportExportStream)
-					return StreamingMode.Synchronous;
-				else
-					return (StreamingMode)Settings.GetObject("Streaming Mode", StreamingMode.Buffered); 
-			}
-		}
+		{ get {return (StreamingMode)Settings.GetObject("Streaming Mode", StreamingMode.Buffered); }}
 
-		public bool IsImportExportStream { get { return !object.ReferenceEquals(mQueue, mQueuePtr); } }
+		//public bool IsImportExportStream { get { return !object.ReferenceEquals(mQueue, mQueuePtr); } }
 
 		private static string mDataPath;
 		public static string DataPath

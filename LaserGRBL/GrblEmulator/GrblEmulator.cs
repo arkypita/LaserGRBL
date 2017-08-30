@@ -98,10 +98,6 @@ namespace LaserGRBL
 				{ mPaused = false; SendStatus(); }
 				else if (e.RawData.Length == 1 && e.RawData[0] == 24)
 					GrblReset();
-				else if (e.Data == "$$\n")
-					SendConfig();
-				else if (IsSetConf(e.Data))
-					SetConfig(e.Data);
 				else
 					EnqueueRX(e);
 			}
@@ -114,8 +110,7 @@ namespace LaserGRBL
 			{
 				try
 				{
-					Console.Write(p);
-
+					System.Threading.Thread.Sleep(1000);
 					System.Text.RegularExpressions.MatchCollection matches = confRegEX.Matches(p);
 					int key = int.Parse(matches[0].Groups[1].Value);
 
@@ -128,14 +123,14 @@ namespace LaserGRBL
 						else if (configTable[key] is bool)
 							configTable[key] = int.Parse(matches[0].Groups[2].Value) == 0 ? false : true;
 
-						ImmediateTX("ok");
+						EnqueueTX("ok");
 					}
 					else
-						ImmediateTX("error"); 
+						EnqueueTX("error"); 
 				}
 				catch(Exception ex)
 				{
-					ImmediateTX("error"); 
+					EnqueueTX("error"); 
 				}
 			}
 
@@ -143,8 +138,7 @@ namespace LaserGRBL
 
 			private void SendConfig()
 			{
-				Console.WriteLine("$$");
-				ImmediateTX("ok");
+				EnqueueTX("ok"); //REPLY TO $$
 				foreach (KeyValuePair<int, object> kvp in configTable)
 				{
 					if (kvp.Value is decimal)
@@ -221,17 +215,14 @@ namespace LaserGRBL
 						{
 							string line = rxBuf.Dequeue();
 
-
-							LaserGRBL.GrblCommand C = new GrblCommand(line);
-							EmulateCommand(C);
-
-							Console.WriteLine(C.Command.Trim("\n".ToCharArray()));
-
-							//System.Random rnd = new Random();
-							//if (rnd.Next(10) == 5)
-							//	EnqueueTX("error");
-							//else
-								EnqueueTX("ok");
+							if (line == "$$\n")
+								SendConfig();
+							else if (IsSetConf(line))
+								SetConfig(line);
+							else
+								EmulateCommand(new GrblCommand(line));
+							
+							Console.WriteLine(line.Trim("\n".ToCharArray()));
 						}
 						catch (Exception ex)
 						{
@@ -313,6 +304,8 @@ namespace LaserGRBL
 
 				catch (Exception ex) { throw ex; }
 				finally { cmd.DeleteHelper(); }
+
+				EnqueueTX("ok");
 			}
 		}
 

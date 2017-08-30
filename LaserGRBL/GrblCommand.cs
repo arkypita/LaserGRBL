@@ -211,6 +211,14 @@ namespace LaserGRBL
 		
 		public bool IsEmpty
 		{get{return mLine.Length == 0;}}
+
+		public bool IsWriteEEPROM
+		{ get { return IsGrblCommand && IsSetConf; } } //maybe need to add G10/G28.1/G30.1 ?
+
+		System.Text.RegularExpressions.Regex confRegEX = new System.Text.RegularExpressions.Regex(@"^[$](\d+) *= *(\d+\.?\d*)");
+		private bool IsSetConf
+		{ get { return confRegEX.IsMatch(mLine); } }
+
 		
 		#region G Codes
 
