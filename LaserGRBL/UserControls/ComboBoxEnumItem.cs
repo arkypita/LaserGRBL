@@ -5,37 +5,38 @@ using System.Text;
 
 namespace LaserGRBL.UserControls
 {
-	public class ComboBox<T> : System.Windows.Forms.ComboBox
+	public class EnumComboBox : System.Windows.Forms.ComboBox
 	{
-		public void AddItem(T item)
-		{ Items.Add(new ComboBoxEnumItem<T>(item)); }
 
-		public new T SelectedItem
+		public void AddItem(Enum item)
+		{ Items.Add(new ComboBoxEnumItem(item)); }
+
+		public new Enum SelectedItem
 		{
-			get {return base.SelectedItem != null ? ((ComboBoxEnumItem<T>)base.SelectedItem).Value : default(T);}
-			set { base.SelectedItem = new ComboBoxEnumItem<T>(value); }
+			get {return base.SelectedItem != null ? ((ComboBoxEnumItem)base.SelectedItem).Value : default(Enum) ;}
+			set { base.SelectedItem = new ComboBoxEnumItem(value); }
 		}
 
 		public void Clear()
-		{ Items.Clear(); }
+		{Items.Clear(); }
 
-		private class ComboBoxEnumItem<E>
+		private class ComboBoxEnumItem
 		{
-			private E mValue;
+			private Enum mValue;
 
-			public ComboBoxEnumItem(E value)
+			public ComboBoxEnumItem(Enum value)
 			{ mValue = value; }
 
-			public E Value
+			public Enum Value
 			{ get { return mValue; } }
 
 			public override string ToString()
-			{ return GrblCore.TranslateEnum(mValue as Enum); }
+			{ return GrblCore.TranslateEnum(mValue); }
 
 			public override bool Equals(object obj)
 			{
-				if (obj is ComboBoxEnumItem<E>)
-					return object.Equals((obj as ComboBoxEnumItem<E>).mValue, mValue);
+				if (obj is ComboBoxEnumItem)
+					return object.Equals((obj as ComboBoxEnumItem).mValue, mValue);
 				else
 					return false;
 			}
