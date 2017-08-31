@@ -147,4 +147,10 @@
   <data name="GB.Text" xml:space="preserve">
     <value>Capacités matérielles</value>
   </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Mode de transmission:
+- Bufférisé: Optimise les commandes durant l'envoi en remplissant le tampon du récepteur Grbl [recommandé]
+- Synchrone: Attend l'exécution de chaque commande avant d'envoyer la commande suivante [plus lent mais plus sûr]
+- Répétition en cas d'erreur: Identique aux commandes synchrone mais répété si une erreur est détectée. [expérimental]</value>
+  </data>
 </root>

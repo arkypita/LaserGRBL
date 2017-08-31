@@ -118,124 +118,124 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxAutoUpdateFailed" xml:space="preserve">
-    <value>Automatic update failed!
-Please manually download the new version from lasergrbl site.</value>
+    <value>Автоматическое обновление не удалось!
+Пожалуйста, вручную скачайте новую версию с сайта lasergrbl.</value>
   </data>
   <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
-    <value>Update require administrator privilege!</value>
+    <value>Обновление,  требуются права администратора!</value>
   </data>
   <data name="BoxAutoUpdateResult" xml:space="preserve">
-    <value>Update result</value>
+    <value>Результат обновления</value>
   </data>
   <data name="BoxAutoUpdateSuccess" xml:space="preserve">
-    <value>Update success!</value>
+    <value>Обновление успешно!</value>
   </data>
   <data name="BoxConnectErrorTitle" xml:space="preserve">
-    <value>Cannot connect to device</value>
+    <value>Не удается подключиться к устройству</value>
   </data>
   <data name="BoxExportConfigError" xml:space="preserve">
-    <value>Error exporting config!</value>
+    <value>Ошибка экспорта конфигурации!</value>
   </data>
   <data name="BoxExportConfigErrorTitle" xml:space="preserve">
-    <value>Error</value>
+    <value>Ошибка</value>
   </data>
   <data name="BoxExportConfigFileNotFound" xml:space="preserve">
-    <value>File does not exist!</value>
+    <value>Файл не может быть открыт !</value>
   </data>
   <data name="BoxExportConfigSuccess" xml:space="preserve">
-    <value>{0} Config exported with success!</value>
+    <value>{0} конфигурационный файл экспортирован успешно!</value>
   </data>
   <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
-    <value>Success</value>
+    <value>Успешно</value>
   </data>
   <data name="BoxImportConfigFileError" xml:space="preserve">
-    <value>Error reading file!</value>
+    <value>EОшибка чтения файла!</value>
   </data>
   <data name="BoxImportConfigWithError" xml:space="preserve">
-    <value>{0} Config imported with {1} errors!</value>
+    <value>{0} Конфигурация импортирована с  {1} ошибками!</value>
   </data>
   <data name="BoxImportConfigWithoutError" xml:space="preserve">
-    <value>{0} Config imported with success!</value>
+    <value>{0} Конфигурация импортирована успешно!</value>
   </data>
   <data name="CustomButtonEdit" xml:space="preserve">
-    <value>Edit button</value>
+    <value>Редактирование</value>
   </data>
   <data name="CustomButtonRemove" xml:space="preserve">
-    <value>Remove button</value>
+    <value>Удаление</value>
   </data>
   <data name="DirectionDiagonal" xml:space="preserve">
-    <value>Diagonal</value>
+    <value>Диагональ</value>
   </data>
   <data name="DirectionHorizontal" xml:space="preserve">
-    <value>Horizontal</value>
+    <value>Горизонталь</value>
   </data>
   <data name="DirectionNone" xml:space="preserve">
-    <value>None</value>
+    <value>Ничего</value>
   </data>
   <data name="DirectionVertical" xml:space="preserve">
-    <value>Vertical</value>
+    <value>Вертикаль</value>
   </data>
   <data name="FormulaCustom" xml:space="preserve">
-    <value>Custom</value>
+    <value>Настраиваемый</value>
   </data>
   <data name="FormulaOpticalCorrect" xml:space="preserve">
-    <value>OpticalCorrect</value>
+    <value>Оптическая корреция</value>
   </data>
   <data name="FormulaSimpleAverage" xml:space="preserve">
-    <value>SimpleAverage</value>
+    <value>Простое среднее</value>
   </data>
   <data name="FormulaWeightAverage" xml:space="preserve">
-    <value>WeightAverage</value>
+    <value>Среднее значение</value>
   </data>
   <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
-    <value>Smooth (HQ Bicubic)</value>
+    <value>Сглаживание (HQ Бикубическое)</value>
   </data>
   <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
-    <value>Sharp (NearestNeighbor)</value>
+    <value>Острое (Блжайшее Соседнее)</value>
   </data>
   <data name="LanguageRequireRestart" xml:space="preserve">
-    <value>Restart required</value>
+    <value>Требуется перезагрузка</value>
   </data>
   <data name="LanguageRequireRestartNow" xml:space="preserve">
-    <value>Require application restart, restart now?</value>
+    <value>Требует перезапустить программу, перезагрузить сейчас?</value>
   </data>
   <data name="MacStatusAlarm" xml:space="preserve">
-    <value>Alarm</value>
+    <value>Тревога</value>
   </data>
   <data name="MacStatusCheck" xml:space="preserve">
-    <value>Check</value>
+    <value>Проверить</value>
   </data>
   <data name="MacStatusConnecting" xml:space="preserve">
-    <value>Connecting</value>
+    <value>Соединение</value>
   </data>
   <data name="MacStatusDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>Разъединение</value>
   </data>
   <data name="MacStatusDoor" xml:space="preserve">
-    <value>Door</value>
+    <value>Дверь</value>
   </data>
   <data name="MacStatusHold" xml:space="preserve">
-    <value>Hold</value>
+    <value>Удержание</value>
   </data>
   <data name="MacStatusHome" xml:space="preserve">
-    <value>Home</value>
+    <value>Дом</value>
   </data>
   <data name="MacStatusIdle" xml:space="preserve">
-    <value>Idle</value>
+    <value>Работа в холостую</value>
   </data>
   <data name="MacStatusJog" xml:space="preserve">
-    <value>Jog</value>
+    <value>Переместить</value>
   </data>
   <data name="MacStatusRun" xml:space="preserve">
-    <value>Run</value>
+    <value>Запуск</value>
   </data>
   <data name="MacStatusUnknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>Неизвестно</value>
   </data>
   <data name="MainFormEstimatedTime" xml:space="preserve">
-    <value>Estimated Time:</value>
+    <value>Расчетное Время:</value>
   </data>
   <data name="MainFormProjectedTime" xml:space="preserve">
-    <value>Projected Time:</value>
+    <value>Планируемое время :</value>
   </data>
 </root>

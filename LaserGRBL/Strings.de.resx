@@ -118,50 +118,50 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxAutoUpdateFailed" xml:space="preserve">
-    <value>Automatic update failed!
-Please manually download the new version from lasergrbl site.</value>
+    <value>Automatisches Update fehlgeschlagen!
+Bitte laden Sie die neue Version manuell von lasergrbl herunter.</value>
   </data>
   <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
-    <value>Update require administrator privilege!</value>
+    <value>Update erfordert Administratorrechte</value>
   </data>
   <data name="BoxAutoUpdateResult" xml:space="preserve">
-    <value>Update result</value>
+    <value>Update Ergebnis </value>
   </data>
   <data name="BoxAutoUpdateSuccess" xml:space="preserve">
-    <value>Update success!</value>
+    <value>Update erfolgreich!</value>
   </data>
   <data name="BoxConnectErrorTitle" xml:space="preserve">
-    <value>Cannot connect to device</value>
+    <value>Kann nicht mit dem Gerät verbunden werden</value>
   </data>
   <data name="BoxExportConfigError" xml:space="preserve">
-    <value>Error exporting config!</value>
+    <value>Fehler beim Exportieren der Konfiguration!</value>
   </data>
   <data name="BoxExportConfigErrorTitle" xml:space="preserve">
-    <value>Error</value>
+    <value>Fehler </value>
   </data>
   <data name="BoxExportConfigFileNotFound" xml:space="preserve">
-    <value>File does not exist!</value>
+    <value>Datei existiert nicht!</value>
   </data>
   <data name="BoxExportConfigSuccess" xml:space="preserve">
-    <value>{0} Config exported with success!</value>
+    <value>{0} Konfiguration erfolgreich exportiert!</value>
   </data>
   <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
-    <value>Success</value>
+    <value>Erfolgreich</value>
   </data>
   <data name="BoxImportConfigFileError" xml:space="preserve">
-    <value>Error reading file!</value>
+    <value>Fehler beim lesen der Datei!</value>
   </data>
   <data name="BoxImportConfigWithError" xml:space="preserve">
-    <value>{0} Config imported with {1} errors!</value>
+    <value>{0}  Konfiguration importiert mit {1} Fehlern!</value>
   </data>
   <data name="BoxImportConfigWithoutError" xml:space="preserve">
-    <value>{0} Config imported with success!</value>
+    <value>{0}  Konfiguration erfolgreich importiert!</value>
   </data>
   <data name="CustomButtonEdit" xml:space="preserve">
-    <value>Edit button</value>
+    <value>Schaltfläche Bearbeiten</value>
   </data>
   <data name="CustomButtonRemove" xml:space="preserve">
-    <value>Remove button</value>
+    <value>Schaltfläche Entfernen</value>
   </data>
   <data name="DirectionDiagonal" xml:space="preserve">
     <value>Diagonal</value>
@@ -173,69 +173,69 @@ Please manually download the new version from lasergrbl site.</value>
     <value>None</value>
   </data>
   <data name="DirectionVertical" xml:space="preserve">
-    <value>Vertical</value>
+    <value>Vertikal</value>
   </data>
   <data name="FormulaCustom" xml:space="preserve">
-    <value>Custom</value>
+    <value>Benutzerdefiniert</value>
   </data>
   <data name="FormulaOpticalCorrect" xml:space="preserve">
-    <value>OpticalCorrect</value>
+    <value>Optisch Korrekt</value>
   </data>
   <data name="FormulaSimpleAverage" xml:space="preserve">
-    <value>SimpleAverage</value>
+    <value>Einfache Durchschnitt</value>
   </data>
   <data name="FormulaWeightAverage" xml:space="preserve">
-    <value>WeightAverage</value>
+    <value>Gewicht Durchschnitt</value>
   </data>
   <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
-    <value>Smooth (HQ Bicubic)</value>
+    <value>Sanft (HQ Bicubic)</value>
   </data>
   <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
-    <value>Sharp (NearestNeighbor)</value>
+    <value>Scharf (nächsterNachbar)</value>
   </data>
   <data name="LanguageRequireRestart" xml:space="preserve">
-    <value>Restart required</value>
+    <value>Neustart erforderlich</value>
   </data>
   <data name="LanguageRequireRestartNow" xml:space="preserve">
-    <value>Require application restart, restart now?</value>
+    <value>Neustart der Anwendung erforderlich, jetzt neu starten?</value>
   </data>
   <data name="MacStatusAlarm" xml:space="preserve">
     <value>Alarm</value>
   </data>
   <data name="MacStatusCheck" xml:space="preserve">
-    <value>Check</value>
+    <value>Kontrolle</value>
   </data>
   <data name="MacStatusConnecting" xml:space="preserve">
-    <value>Connecting</value>
+    <value>Verbinden</value>
   </data>
   <data name="MacStatusDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>Trennen</value>
   </data>
   <data name="MacStatusDoor" xml:space="preserve">
-    <value>Door</value>
+    <value>Tür</value>
   </data>
   <data name="MacStatusHold" xml:space="preserve">
-    <value>Hold</value>
+    <value>Halten</value>
   </data>
   <data name="MacStatusHome" xml:space="preserve">
     <value>Home</value>
   </data>
   <data name="MacStatusIdle" xml:space="preserve">
-    <value>Idle</value>
+    <value>Leerlauf</value>
   </data>
   <data name="MacStatusJog" xml:space="preserve">
-    <value>Jog</value>
+    <value>Tippen</value>
   </data>
   <data name="MacStatusRun" xml:space="preserve">
     <value>Run</value>
   </data>
   <data name="MacStatusUnknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>Unbekannt</value>
   </data>
   <data name="MainFormEstimatedTime" xml:space="preserve">
-    <value>Estimated Time:</value>
+    <value>Geschätzte Zeit:</value>
   </data>
   <data name="MainFormProjectedTime" xml:space="preserve">
-    <value>Projected Time:</value>
+    <value>Geplante Zeit:</value>
   </data>
 </root>
