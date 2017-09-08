@@ -117,31 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="TxtManualCommand.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="GBCommands.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 92</value>
-  </data>
-  <data name="GBCommands.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 375</value>
-  </data>
-  <data name="GBFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 46</value>
-  </data>
-  <data name="GBFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 45</value>
-  </data>
-  <data name="GBConnection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 44</value>
-  </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 468</value>
-  </data>
-  <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 375</value>
-  </data>
-  <data name="TxtManualCommand.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 22</value>
-  </data>
   <data name="CmdLog.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
   </data>
@@ -150,89 +129,16 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="CmdLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 344</value>
+    <value>237, 340</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tableLayoutPanel5.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="CmdLog.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 45</value>
+  <data name="tableLayoutPanel6.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="TbFileName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>101, 1</value>
-  </data>
-  <data name="TbFileName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 20</value>
-  </data>
-  <data name="PB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>101, 22</value>
-  </data>
-  <data name="PB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 23</value>
-  </data>
-  <data name="BtnOpen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 2</value>
-  </data>
-  <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Abrir Archivo</value>
-  </data>
-  <data name="BtnRunProgram.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 25</value>
-  </data>
-  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Correr Programa</value>
-  </data>
-  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 44</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 5</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 13</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Puerto COMM</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 27</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 13</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Tasa de Transmisión</value>
-  </data>
-  <data name="CBPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 1</value>
-  </data>
-  <data name="CBPort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 21</value>
-  </data>
-  <data name="CBSpeed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 23</value>
-  </data>
-  <data name="CBSpeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 21</value>
-  </data>
-  <data name="BtnConnectDisconnect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 1</value>
-  </data>
-  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Conectar</value>
-  </data>
-  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 13</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Nombre de Archivo</value>
-  </data>
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="GBCommands.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 13</value>
@@ -240,11 +146,78 @@
   <data name="label5.Text" xml:space="preserve">
     <value>Progreso</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>283, 468</value>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Conexión</value>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Archivo</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TbFileName.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PB.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BtnOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAJxAIA3kywAAACBjSFJNAABu
+        lQAAdA4AAPGBAACFRgAAZO0AAPeGAABJ4gAAHljF0QxvAAAACXBIWXMAAAsTAAALEwEAmpwYAAADQElE
+        QVQ4T3WTW0hTcRzHf12o16KnLrq5s013ph4921ymS/M6yyyzmuKclaJGN1pE2kP1UBRdhS4kUVBgF4LC
+        ktIkIy1tF1dTj7u5uemmWallZhbhr7NZRkkPXw7n4fPhx//3/YFMIgOlMgMyM9fBlsKtUFpSCkmrkkAR
+        p4AYaQzIZXKIjqIhRiafX1RUrBSLyNn8EB4ICX4g/xXExcYBzYJSWgpUBDX3/PmLJ0dGPn3PydmUGLR4
+        CRDckED+K8hQroYN2TmwXB4Lu3ftWfvly/i3sbHxidt37t4XEII5BIcLAh4xU1DyS6BS5UHZ9h1QfqAi
+        +/LlqqvDwyOjXl//YI+n73Nubt6aoCVLZ06gVmtAoykERbwi8H/2XOXu9x+G0Olyo9vTN+7odg31en1j
+        d+7X1pHiyPk8TvAfQVpaBuzbq828ce3qrUK1Ju1AecW2gbeDP3rcvejt70eX241Wm32ys9vz1VhzfaI4
+        W5krkcqnBImJyVC0rTihrfXFkM9pQ8sb42Rrc/Mkw1iwt8/Lwh602R3Y6fSirvY2tpWGYXWx4jUlWb7A
+        /8Kgzi+Q6pqfD/RYO1m4DdsNOjSbTOhyOtFusyPDdGGHw4P6hhrU76LQrKXxSFn+PYGQXAjK1HTqta71
+        Q1+3NQB3GPVoMhrQ5eoJwF0Mg+YuB+oaH6Fpvxwt+yk8qd3aQMXEEwSHAxAfu0JcdenirZfPng5bzSY0
+        vWpBBzuuP79hQ3Mjth9OQNfBCKzUqnXR8pVkiH+NbKHAvw7VZpWopeWVz6DXY2NDPRp0erRZrdjO2NHQ
+        +hKZE+noOxyOV8rVjCwueQXvVwcCAh67S02BZhP74qOjn8fQ3N6B9U8a0NxpRSMrtFSux3fHSLx5KM8Z
+        m5CeEioMnYKnBayNsywIUpJT6erqm/feDr5Di8OFL5qa0FGVjx9Pi/HB0VyvInn12jBhGISLyOk7EPqb
+        6G8Tnw13WTCwRzKLLdLmh0+a3nTUXcHvF0h8dkY1kJSetVEsCgeaigYJex/+7+9MC4SEIDCWfxoqkl5U
+        rt15/PGpfEtWVnYBKYoAOnIK/jd/CUL5UyG4XCBC+ECGS4JJkXheVGQUSKiZsCSKhp+/5brOKZOAhwAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="BtnOpen.ToolTip" xml:space="preserve">
+    <value>Abrir Archivo</value>
+  </data>
+  <data name="BtnRunProgram.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAK
+        8AAACvABQqw0mAAAAAd0SU1FB9MCGhU2KcxZSDgAAAIpSURBVDhPtdJfSNNRFAfws5L+DNrcJkGEL0aK
+        abq2oZWUhRGVYFbDCh3OzOafbWxuWi1nrnItM5FNiAZR9JAvBZHpcoqxFKc2beiwKUQvSUlP0mQv5bcf
+        cmEIYj7U5/Ge873ncLn075SSPuVm8gJVUIA0lMNO109ojJ+f/DaOzo9PIL239zd3iZvqSczKf5dgSlh4
+        GXqOtsE7aBlqQPkLJfi1W77TNSphLWsT1YoWnk50oLHfAOPbUtR4lNB485HhSlwiM/XRbdrNWlcnNsX/
+        7BhrRp33Eip7ClHSdQTnXu/DmZ49KHiTAkkzP8pt00i3aDOLrBR/VRhp9V+H3nseZZ5jKOqWo6A7GUpv
+        Kop96agYk+P4q10gK33irpGxWIzIIog4Rgyo7jsNVW8Ozvam4sJAGlSDGSgflUIzLoNuKht14RzENW2Y
+        ZrEYkVUYsY9qUTVwCqr+LFx8l4YyfyauBOSoDmZBHzoI80wurF/ywLNtDLFYjLhJGLkbqEKN7yTUPgXU
+        w1JUTiigndwPczgXtq8noHyfCZ6DN00tJGWxGIlduHg/qIVhOB+X/dnLk3VTB2D5nAfT7FHsfCxYJAfd
+        4H7HJhZZSeIQRttDRtR/KIQucHh5cgO37iFP0hI9IA89oyTWurrtbaKoO2yBLVgM2wz3kCMybHXGzdEj
+        KmIta9vWyp/vmnPCNatFemfiL2onJz0kASuvg53Uie4dP7h1h8hFCnb6vxH9AcI+9y7kcf/iAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
+    <value>Correr Programa</value>
+  </data>
+  <data name="tableLayoutPanel5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GBFile.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LblComPort.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CBPort.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="BtnConnectDisconnect.AltImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -397,41 +370,31 @@
         /L1c6akckvsMaGrWCl5EGi18kWi08EWi0cIXB8j/A23PXYcEBrEJAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="BtnOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAJxAIA3kywAAACBjSFJNAABu
-        lQAAdA4AAPGBAACFRgAAZO0AAPeGAABJ4gAAHljF0QxvAAAACXBIWXMAAAsTAAALEwEAmpwYAAADQElE
-        QVQ4T3WTW0hTcRzHf12o16KnLrq5s013ph4921ymS/M6yyyzmuKclaJGN1pE2kP1UBRdhS4kUVBgF4LC
-        ktIkIy1tF1dTj7u5uemmWallZhbhr7NZRkkPXw7n4fPhx//3/YFMIgOlMgMyM9fBlsKtUFpSCkmrkkAR
-        p4AYaQzIZXKIjqIhRiafX1RUrBSLyNn8EB4ICX4g/xXExcYBzYJSWgpUBDX3/PmLJ0dGPn3PydmUGLR4
-        CRDckED+K8hQroYN2TmwXB4Lu3ftWfvly/i3sbHxidt37t4XEII5BIcLAh4xU1DyS6BS5UHZ9h1QfqAi
-        +/LlqqvDwyOjXl//YI+n73Nubt6aoCVLZ06gVmtAoykERbwi8H/2XOXu9x+G0Olyo9vTN+7odg31en1j
-        d+7X1pHiyPk8TvAfQVpaBuzbq828ce3qrUK1Ju1AecW2gbeDP3rcvejt70eX241Wm32ys9vz1VhzfaI4
-        W5krkcqnBImJyVC0rTihrfXFkM9pQ8sb42Rrc/Mkw1iwt8/Lwh602R3Y6fSirvY2tpWGYXWx4jUlWb7A
-        /8Kgzi+Q6pqfD/RYO1m4DdsNOjSbTOhyOtFusyPDdGGHw4P6hhrU76LQrKXxSFn+PYGQXAjK1HTqta71
-        Q1+3NQB3GPVoMhrQ5eoJwF0Mg+YuB+oaH6Fpvxwt+yk8qd3aQMXEEwSHAxAfu0JcdenirZfPng5bzSY0
-        vWpBBzuuP79hQ3Mjth9OQNfBCKzUqnXR8pVkiH+NbKHAvw7VZpWopeWVz6DXY2NDPRp0erRZrdjO2NHQ
-        +hKZE+noOxyOV8rVjCwueQXvVwcCAh67S02BZhP74qOjn8fQ3N6B9U8a0NxpRSMrtFSux3fHSLx5KM8Z
-        m5CeEioMnYKnBayNsywIUpJT6erqm/feDr5Di8OFL5qa0FGVjx9Pi/HB0VyvInn12jBhGISLyOk7EPqb
-        6G8Tnw13WTCwRzKLLdLmh0+a3nTUXcHvF0h8dkY1kJSetVEsCgeaigYJex/+7+9MC4SEIDCWfxoqkl5U
-        rt15/PGpfEtWVnYBKYoAOnIK/jd/CUL5UyG4XCBC+ECGS4JJkXheVGQUSKiZsCSKhp+/5brOKZOAhwAA
-        AABJRU5ErkJggg==
-</value>
+  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
+    <value>Conectar</value>
   </data>
-  <data name="BtnRunProgram.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAK
-        8AAACvABQqw0mAAAAAd0SU1FB9MCGhU2KcxZSDgAAAIpSURBVDhPtdJfSNNRFAfws5L+DNrcJkGEL0aK
-        abq2oZWUhRGVYFbDCh3OzOafbWxuWi1nrnItM5FNiAZR9JAvBZHpcoqxFKc2beiwKUQvSUlP0mQv5bcf
-        cmEIYj7U5/Ge873ncLn075SSPuVm8gJVUIA0lMNO109ojJ+f/DaOzo9PIL239zd3iZvqSczKf5dgSlh4
-        GXqOtsE7aBlqQPkLJfi1W77TNSphLWsT1YoWnk50oLHfAOPbUtR4lNB485HhSlwiM/XRbdrNWlcnNsX/
-        7BhrRp33Eip7ClHSdQTnXu/DmZ49KHiTAkkzP8pt00i3aDOLrBR/VRhp9V+H3nseZZ5jKOqWo6A7GUpv
-        Kop96agYk+P4q10gK33irpGxWIzIIog4Rgyo7jsNVW8Ozvam4sJAGlSDGSgflUIzLoNuKht14RzENW2Y
-        ZrEYkVUYsY9qUTVwCqr+LFx8l4YyfyauBOSoDmZBHzoI80wurF/ywLNtDLFYjLhJGLkbqEKN7yTUPgXU
-        w1JUTiigndwPczgXtq8noHyfCZ6DN00tJGWxGIlduHg/qIVhOB+X/dnLk3VTB2D5nAfT7FHsfCxYJAfd
-        4H7HJhZZSeIQRttDRtR/KIQucHh5cgO37iFP0hI9IA89oyTWurrtbaKoO2yBLVgM2wz3kCMybHXGzdEj
-        KmIta9vWyp/vmnPCNatFemfiL2onJz0kASuvg53Uie4dP7h1h8hFCnb6vxH9AcI+9y7kcf/iAAAAAElF
-        TkSuQmCC
-</value>
+  <data name="LblBaudRate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CBSpeed.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LblAddress.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TxtAddress.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tableLayoutPanel4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GBConnection.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>
