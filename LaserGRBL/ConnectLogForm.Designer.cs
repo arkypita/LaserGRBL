@@ -96,14 +96,12 @@ namespace LaserGRBL
 			this.tableLayoutPanel1.Controls.Add(this.GBFile, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.GBConnection, 0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.TT.SetToolTip(this.tableLayoutPanel1, resources.GetString("tableLayoutPanel1.ToolTip"));
 			// 
 			// GBCommands
 			// 
-			resources.ApplyResources(this.GBCommands, "GBCommands");
 			this.GBCommands.Controls.Add(this.tableLayoutPanel6);
+			resources.ApplyResources(this.GBCommands, "GBCommands");
 			this.GBCommands.Name = "GBCommands";
-			this.TT.SetToolTip(this.GBCommands, resources.GetString("GBCommands.ToolTip"));
 			// 
 			// tableLayoutPanel6
 			// 
@@ -111,30 +109,26 @@ namespace LaserGRBL
 			this.tableLayoutPanel6.Controls.Add(this.TxtManualCommand, 0, 0);
 			this.tableLayoutPanel6.Controls.Add(this.CmdLog, 0, 1);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-			this.TT.SetToolTip(this.tableLayoutPanel6, resources.GetString("tableLayoutPanel6.ToolTip"));
 			// 
 			// TxtManualCommand
 			// 
-			resources.ApplyResources(this.TxtManualCommand, "TxtManualCommand");
 			this.TxtManualCommand.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+			resources.ApplyResources(this.TxtManualCommand, "TxtManualCommand");
 			this.TxtManualCommand.Name = "TxtManualCommand";
-			this.TT.SetToolTip(this.TxtManualCommand, resources.GetString("TxtManualCommand.ToolTip"));
 			this.TxtManualCommand.CommandEntered += new LaserGRBL.UserControls.GrblTextBox.CommandEnteredDlg(this.TxtManualCommandCommandEntered);
 			// 
 			// CmdLog
 			// 
-			resources.ApplyResources(this.CmdLog, "CmdLog");
 			this.CmdLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			resources.ApplyResources(this.CmdLog, "CmdLog");
 			this.CmdLog.Name = "CmdLog";
 			this.CmdLog.TabStop = false;
-			this.TT.SetToolTip(this.CmdLog, resources.GetString("CmdLog.ToolTip"));
 			// 
 			// GBFile
 			// 
 			resources.ApplyResources(this.GBFile, "GBFile");
 			this.GBFile.Controls.Add(this.tableLayoutPanel5);
 			this.GBFile.Name = "GBFile";
-			this.TT.SetToolTip(this.GBFile, resources.GetString("GBFile.ToolTip"));
 			// 
 			// tableLayoutPanel5
 			// 
@@ -147,34 +141,30 @@ namespace LaserGRBL
 			this.tableLayoutPanel5.Controls.Add(this.BtnRunProgram, 3, 1);
 			this.tableLayoutPanel5.Controls.Add(this.UDLoopCounter, 2, 1);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-			this.TT.SetToolTip(this.tableLayoutPanel5, resources.GetString("tableLayoutPanel5.ToolTip"));
 			// 
 			// label5
 			// 
 			resources.ApplyResources(this.label5, "label5");
 			this.label5.Name = "label5";
-			this.TT.SetToolTip(this.label5, resources.GetString("label5.ToolTip"));
 			// 
 			// label3
 			// 
 			resources.ApplyResources(this.label3, "label3");
 			this.label3.Name = "label3";
-			this.TT.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
 			// 
 			// TbFileName
 			// 
-			resources.ApplyResources(this.TbFileName, "TbFileName");
 			this.tableLayoutPanel5.SetColumnSpan(this.TbFileName, 2);
+			resources.ApplyResources(this.TbFileName, "TbFileName");
 			this.TbFileName.Name = "TbFileName";
 			this.TbFileName.ReadOnly = true;
 			this.TbFileName.TabStop = false;
-			this.TT.SetToolTip(this.TbFileName, resources.GetString("TbFileName.ToolTip"));
 			// 
 			// PB
 			// 
-			resources.ApplyResources(this.PB, "PB");
 			this.PB.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			this.PB.BorderColor = System.Drawing.Color.Black;
+			resources.ApplyResources(this.PB, "PB");
 			this.PB.DrawProgressString = true;
 			this.PB.FillColor = System.Drawing.Color.White;
 			this.PB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
@@ -187,13 +177,12 @@ namespace LaserGRBL
 			this.PB.Reverse = false;
 			this.PB.Step = 10D;
 			this.PB.ThrowExceprion = false;
-			this.TT.SetToolTip(this.PB, resources.GetString("PB.ToolTip"));
 			this.PB.Value = 0D;
 			// 
 			// BtnOpen
 			// 
-			resources.ApplyResources(this.BtnOpen, "BtnOpen");
 			this.BtnOpen.AltImage = null;
+			resources.ApplyResources(this.BtnOpen, "BtnOpen");
 			this.BtnOpen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnOpen.Coloration = System.Drawing.Color.Empty;
 			this.BtnOpen.Image = ((System.Drawing.Image)(resources.GetObject("BtnOpen.Image")));
@@ -206,8 +195,8 @@ namespace LaserGRBL
 			// 
 			// BtnRunProgram
 			// 
-			resources.ApplyResources(this.BtnRunProgram, "BtnRunProgram");
 			this.BtnRunProgram.AltImage = null;
+			resources.ApplyResources(this.BtnRunProgram, "BtnRunProgram");
 			this.BtnRunProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnRunProgram.Coloration = System.Drawing.Color.Empty;
 			this.BtnRunProgram.Image = ((System.Drawing.Image)(resources.GetObject("BtnRunProgram.Image")));
@@ -245,7 +234,6 @@ namespace LaserGRBL
 			resources.ApplyResources(this.GBConnection, "GBConnection");
 			this.GBConnection.Controls.Add(this.tableLayoutPanel4);
 			this.GBConnection.Name = "GBConnection";
-			this.TT.SetToolTip(this.GBConnection, resources.GetString("GBConnection.ToolTip"));
 			// 
 			// tableLayoutPanel4
 			// 
@@ -258,13 +246,11 @@ namespace LaserGRBL
 			this.tableLayoutPanel4.Controls.Add(this.LblAddress, 0, 1);
 			this.tableLayoutPanel4.Controls.Add(this.TxtAddress, 1, 1);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-			this.TT.SetToolTip(this.tableLayoutPanel4, resources.GetString("tableLayoutPanel4.ToolTip"));
 			// 
 			// LblComPort
 			// 
 			resources.ApplyResources(this.LblComPort, "LblComPort");
 			this.LblComPort.Name = "LblComPort";
-			this.TT.SetToolTip(this.LblComPort, resources.GetString("LblComPort.ToolTip"));
 			// 
 			// CBPort
 			// 
@@ -272,13 +258,12 @@ namespace LaserGRBL
 			this.CBPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CBPort.FormattingEnabled = true;
 			this.CBPort.Name = "CBPort";
-			this.TT.SetToolTip(this.CBPort, resources.GetString("CBPort.ToolTip"));
 			this.CBPort.SelectedIndexChanged += new System.EventHandler(this.CBPort_SelectedIndexChanged);
 			// 
 			// BtnConnectDisconnect
 			// 
-			resources.ApplyResources(this.BtnConnectDisconnect, "BtnConnectDisconnect");
 			this.BtnConnectDisconnect.AltImage = ((System.Drawing.Image)(resources.GetObject("BtnConnectDisconnect.AltImage")));
+			resources.ApplyResources(this.BtnConnectDisconnect, "BtnConnectDisconnect");
 			this.BtnConnectDisconnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnConnectDisconnect.Coloration = System.Drawing.Color.Empty;
 			this.BtnConnectDisconnect.Image = ((System.Drawing.Image)(resources.GetObject("BtnConnectDisconnect.Image")));
@@ -294,7 +279,6 @@ namespace LaserGRBL
 			// 
 			resources.ApplyResources(this.LblBaudRate, "LblBaudRate");
 			this.LblBaudRate.Name = "LblBaudRate";
-			this.TT.SetToolTip(this.LblBaudRate, resources.GetString("LblBaudRate.ToolTip"));
 			// 
 			// CBSpeed
 			// 
@@ -302,21 +286,18 @@ namespace LaserGRBL
 			this.CBSpeed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CBSpeed.FormattingEnabled = true;
 			this.CBSpeed.Name = "CBSpeed";
-			this.TT.SetToolTip(this.CBSpeed, resources.GetString("CBSpeed.ToolTip"));
 			this.CBSpeed.SelectedIndexChanged += new System.EventHandler(this.CBSpeed_SelectedIndexChanged);
 			// 
 			// LblAddress
 			// 
 			resources.ApplyResources(this.LblAddress, "LblAddress");
 			this.LblAddress.Name = "LblAddress";
-			this.TT.SetToolTip(this.LblAddress, resources.GetString("LblAddress.ToolTip"));
 			// 
 			// TxtAddress
 			// 
 			resources.ApplyResources(this.TxtAddress, "TxtAddress");
 			this.tableLayoutPanel4.SetColumnSpan(this.TxtAddress, 3);
 			this.TxtAddress.Name = "TxtAddress";
-			this.TT.SetToolTip(this.TxtAddress, resources.GetString("TxtAddress.ToolTip"));
 			this.TxtAddress.TextChanged += new System.EventHandler(this.TxtHostName_TextChanged);
 			// 
 			// ConnectLogForm
@@ -325,7 +306,6 @@ namespace LaserGRBL
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Name = "ConnectLogForm";
-			this.TT.SetToolTip(this, resources.GetString("$this.ToolTip"));
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.GBCommands.ResumeLayout(false);
