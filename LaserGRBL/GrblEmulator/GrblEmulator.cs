@@ -102,7 +102,7 @@ namespace LaserGRBL
 					EnqueueRX(e);
 			}
 
-			System.Text.RegularExpressions.Regex confRegEX = new System.Text.RegularExpressions.Regex(@"^[$](\d+) *= *(\d+\.?\d*)");
+			static System.Text.RegularExpressions.Regex confRegEX = new System.Text.RegularExpressions.Regex(@"^[$](\d+) *= *(\d+\.?\d*)");
 			private bool IsSetConf(string p)
 			{return confRegEX.IsMatch(p);}
 
