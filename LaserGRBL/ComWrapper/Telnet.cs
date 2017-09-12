@@ -75,9 +75,18 @@ namespace LaserGRBL.ComWrapper
 			swriter.Flush();
 		}
 
-		public string ReadLine()
+		public string ReadLineBlocking()
 		{
-			return sreader.ReadLine();
+			string rv = null;
+			while (IsOpen && rv == null) //wait for disconnect or data
+			{
+				rv = sreader.ReadLine();
+
+				if (rv == null)
+					System.Threading.Thread.Sleep(1);
+			}
+
+			return rv;
 		}
 	}
 

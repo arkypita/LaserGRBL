@@ -69,7 +69,7 @@ namespace LaserGRBL.ComWrapper
 				buffer.Enqueue(line); 
 		}
 
-		public string ReadLine()
+		public string ReadLineBlocking()
 		{
 			string rv = null;
 			while (IsOpen && rv == null) //wait for disconnect or data
@@ -77,7 +77,7 @@ namespace LaserGRBL.ComWrapper
 				if (buffer.Count > 0)
 					rv = buffer.Dequeue();
 				else
-					System.Threading.Thread.Sleep(10);
+					System.Threading.Thread.Sleep(1);
 			}
 
 			return rv;

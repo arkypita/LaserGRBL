@@ -618,6 +618,8 @@ namespace LaserGRBL
 						QueryPosition();
 						lastPosRequest = now;
 					}
+
+					TX.SleepTime = CanSend() ? 0 : 1; //sleep only if no more data to send
 				}
 				catch (Exception ex)
 				{ Logger.LogException("ThreadTX", ex); }
@@ -693,7 +695,7 @@ namespace LaserGRBL
 			try
 			{
 				string rline = null;
-				if ((rline = GetComLineOrDisconnect()) != null)
+				if ((rline = WaitComLineOrDisconnect()) != null)
 				{
 					if (rline.Length > 0)
 					{
@@ -804,11 +806,11 @@ namespace LaserGRBL
 		}
 
 		private static char[] trimarray = new char[] { '\r', '\n', ' ' };
-		private string GetComLineOrDisconnect()
+		private string WaitComLineOrDisconnect()
 		{
 			try
 			{
-				string rv = com.ReadLine();
+				string rv = com.ReadLineBlocking();
 				rv = rv.TrimEnd(trimarray); //rimuovi ritorno a capo
 				rv = rv.Trim(); //rimuovi spazi iniziali e finali
 				return rv.Length > 0 ? rv : null;

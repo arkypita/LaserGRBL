@@ -72,7 +72,7 @@ namespace LaserGRBL.ComWrapper
 		public void Write(string text)
 		{com.Write(text);}
 
-		public string ReadLine()
-		{return com.ReadLine();}
+		public string ReadLineBlocking()
+		{return com.ReadLine();} //la lettura della com è bloccante per natura
 	}
 }

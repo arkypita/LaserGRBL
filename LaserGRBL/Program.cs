@@ -78,6 +78,8 @@ namespace LaserGRBL
 			System.Globalization.CultureInfo ci = (System.Globalization.CultureInfo)Settings.GetObject("User Language", null);
 			if (ci != null) System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
 
+			Tools.TaskScheduler.SetClockResolution(1); //use a fast clock
+
 			Application.Run(new MainForm());
 
 			LaserGRBL.GrblEmulator.Stop();

@@ -294,6 +294,7 @@
     <Compile Include="Tools\Cronometro.cs" />
     <Compile Include="Tools\HiResTimer.cs" />
     <Compile Include="Tools\MathHelper.cs" />
+    <Compile Include="Tools\TaskScheduler.cs" />
     <Compile Include="Tools\ThreadClass.cs" />
     <Compile Include="Tools\WordWrap.cs" />
     <Compile Include="UserControls\ColorProgressBar.cs">

@@ -41,15 +41,15 @@ namespace LaserGRBL
 			bool abs = true;
 			TimeSpan toSleep = TimeSpan.Zero;
 
-			private Tools.ThreadObject rxThread;
-			private Tools.ThreadObject txThread;
+			private Tools.ThreadObject RX;
+			private Tools.ThreadObject TX;
 			private Queue<string> rxBuf = new Queue<string>();
 			private Queue<string> txBuf = new Queue<string>();
 
 			public GrblWebSocketEmulator()
 			{
-				rxThread = new Tools.ThreadObject(ManageRX, 1, true, "WebSocket Emulator RX", null);
-				txThread = new Tools.ThreadObject(ManageTX, 1, true, "WebSocket Emulator TX", null); 
+				RX = new Tools.ThreadObject(ManageRX, 0, true, "WebSocket Emulator RX", null);
+				TX = new Tools.ThreadObject(ManageTX, 0, true, "WebSocket Emulator TX", null); 
 			}
 
 			protected override void OnClose(CloseEventArgs e)
@@ -57,10 +57,10 @@ namespace LaserGRBL
 				lock (rxBuf)
 				{
 					Console.WriteLine("Connection lost!");
-					rxThread.Stop();
+					RX.Stop();
 					rxBuf.Clear();
 
-					txThread.Stop();
+					TX.Stop();
 					txBuf.Clear();
 				}
 			}
@@ -73,8 +73,8 @@ namespace LaserGRBL
 					rxBuf.Clear();
 					txBuf.Clear();
 					mPaused = false;
-					rxThread.Start();
-					txThread.Start();
+					RX.Start();
+					TX.Start();
 					SendConnected();
 					//SendVersion();
 					//SendStatus();
@@ -228,6 +228,8 @@ namespace LaserGRBL
 						{
 						}
 					}
+
+					RX.SleepTime = rxBuf.Count > 0 ? 0 : 1;
 				}
 			}
 
@@ -246,6 +248,8 @@ namespace LaserGRBL
 						{
 						}
 					}
+
+					TX.SleepTime = txBuf.Count > 0 ? 0 : 1;
 				}
 			}
 

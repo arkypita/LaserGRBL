@@ -20,6 +20,6 @@ namespace LaserGRBL.ComWrapper
 		void Write(byte b);
 		void Write(string text);
 
-		string ReadLine();
+		string ReadLineBlocking();
 	}
 }
