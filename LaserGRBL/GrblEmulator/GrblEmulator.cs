@@ -110,7 +110,7 @@ namespace LaserGRBL
 			{
 				try
 				{
-					System.Threading.Thread.Sleep(1000);
+					System.Threading.Thread.Sleep(10);
 					System.Text.RegularExpressions.MatchCollection matches = confRegEX.Matches(p);
 					int key = int.Parse(matches[0].Groups[1].Value);
 
