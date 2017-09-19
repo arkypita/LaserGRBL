@@ -392,6 +392,9 @@
     <EmbeddedResource Include="ConnectLogForm.zh-CN.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomButtonForm.de.resx">
+      <DependentUpon>CustomButtonForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.it.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>

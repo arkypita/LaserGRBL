@@ -149,4 +149,11 @@
   <data name="GB.Text" xml:space="preserve">
     <value>Hardware Fähigkeiten</value>
   </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Streaming-Modus:
+- Buffered: Optimieren Sie Befehle, die grbl Empfangspuffer auffüllen[empfohlen].
+- Synchronous: Warten Sie auf die Ausführung jedes Befehls, bevor Sie den nächsten Befehl senden [langsamer, aber sicherer].
+- RepeatOnError: wie Synchronous, aber wiederholte Befehle wenn Fehler erkannt wird [experimentell].
+</value>
+  </data>
 </root>
