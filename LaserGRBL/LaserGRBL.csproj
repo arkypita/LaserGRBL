@@ -18,7 +18,7 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <RunCodeAnalysis>False</RunCodeAnalysis>
     <SourceAnalysisOverrideSettingsFile>C:\Users\Diego\AppData\Roaming\ICSharpCode\SharpDevelop5\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
-    <ApplicationIcon>Grafica\LaserGrbl.ico</ApplicationIcon>
+    <ApplicationIcon>LaserGrbl.ico</ApplicationIcon>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <FileUpgradeFlags>
@@ -86,6 +86,7 @@
   <PropertyGroup>
     <StartupObject>LaserGRBL.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -607,50 +608,6 @@
     <EmbeddedResource Include="UserControls\LabelTB.resx">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Grafica\Actions-transform-crop-and-resize-icon.png" />
-    <None Include="Grafica\Crop-tool-icon.png" />
-    <None Include="Grafica\document-revert.png" />
-    <None Include="Grafica\flipH.png" />
-    <None Include="Grafica\flipV.png" />
-    <None Include="Grafica\LaserGrbl.ico" />
-    <None Include="Grafica\rotCCW.png" />
-    <None Include="Grafica\rotCW.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Grafica\add2.png" />
-    <Content Include="Grafica\aE.png" />
-    <Content Include="Grafica\aN.png" />
-    <Content Include="Grafica\aNE.png" />
-    <Content Include="Grafica\aNW.png" />
-    <Content Include="Grafica\aS.png" />
-    <Content Include="Grafica\aSE.png" />
-    <Content Include="Grafica\aSW.png" />
-    <Content Include="Grafica\aW.png" />
-    <Content Include="Grafica\GcodeQueue.png" />
-    <Content Include="Grafica\GcodeOK.png" />
-    <Content Include="Grafica\check2.png" />
-    <Content Include="Grafica\checks.png" />
-    <Content Include="Grafica\closeall.png" />
-    <Content Include="Grafica\configure.png" />
-    <Content Include="Grafica\connect_creating.png" />
-    <Content Include="Grafica\control_end.png" />
-    <Content Include="Grafica\control_forward.png" />
-    <Content Include="Grafica\control_repeat.png" />
-    <Content Include="Grafica\control_rewind.png" />
-    <Content Include="Grafica\control_start.png" />
-    <Content Include="Grafica\document_check.png" />
-    <Content Include="Grafica\document_delete.png" />
-    <Content Include="Grafica\document_error.png" />
-    <Content Include="Grafica\document_new.png" />
-    <Content Include="Grafica\error.png" />
-    <Content Include="Grafica\fileopen.png" />
-    <Content Include="Grafica\flash.png" />
-    <Content Include="Grafica\GcodeKO.png" />
-    <Content Include="Grafica\media_play_green.png" />
-    <Content Include="Grafica\media_stop_red.png" />
-    <Content Include="Grafica\stop.png" />
-    <Content Include="Grafica\text_align_left.png" />
-    <Content Include="Grafica\warning.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -666,6 +623,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LaserGrbl.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
