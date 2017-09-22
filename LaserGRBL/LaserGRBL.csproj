@@ -184,6 +184,7 @@
     <Compile Include="Core\ComWrapper\WebSocket\WebSocketException.cs" />
     <Compile Include="Core\ComWrapper\WebSocket\WebSocketFrame.cs" />
     <Compile Include="Core\ComWrapper\WebSocket\WebSocketState.cs" />
+    <Compile Include="Core\RasterToGcode\Configuration.cs" />
     <Compile Include="UI\Forms\MainForm\ConnectLogForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
