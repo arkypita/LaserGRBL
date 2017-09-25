@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace LaserGRBL.RasterConverter
+namespace LaserGRBL.RasterToGcode
 {
 	public partial class ResolutionHelperForm : Form
 	{

@@ -168,7 +168,7 @@ namespace LaserGRBL
 					if (ImageExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant())) //import raster image
 					{
 						try
-						{ RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent); }
+						{ RasterToGcode.RasterToLaserForm.CreateAndShowDialog(this, filename, parent); }
 						catch (Exception ex)
 						{ Logger.LogException("RasterImport", ex); }
 					}

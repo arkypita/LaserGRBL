@@ -1,4 +1,4 @@
-﻿namespace LaserGRBL.RasterConverter
+﻿namespace LaserGRBL.RasterToGcode
 {
 	partial class RasterToLaserForm
 	{

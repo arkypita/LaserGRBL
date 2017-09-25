@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
-using System.IO;
 
 
-namespace LaserGRBL.RasterConverter
+namespace LaserGRBL.Core.RasterToGcode
 {
 	public class ImageTransform
 	{
@@ -69,6 +64,24 @@ namespace LaserGRBL.RasterConverter
 					g.DrawImage(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, bmp.Width, bmp.Height, GraphicsUnit.Pixel, imageAttr);
 			}
 			return bmp;
+		}
+
+		public static bool IsGrayScaleImage(Bitmap bmp)
+		{
+			int maxdiff = 0;
+
+			for (int x = 0; x < bmp.Width; x += 10)
+			{
+				for (int y = 0; y < bmp.Height; y += 10)
+				{
+					Color c = bmp.GetPixel(x, y);
+					maxdiff = Math.Max(maxdiff, Math.Abs(c.R - c.G));
+					maxdiff = Math.Max(maxdiff, Math.Abs(c.G - c.B));
+					maxdiff = Math.Max(maxdiff, Math.Abs(c.R - c.B));
+				}
+			}
+
+			return (maxdiff < 20);
 		}
 
 		private static Bitmap draw_adjusted_image(Image img, ColorMatrix cm)

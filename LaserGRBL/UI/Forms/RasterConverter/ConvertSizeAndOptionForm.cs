@@ -10,7 +10,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace LaserGRBL.RasterConverter
+namespace LaserGRBL.RasterToGcode
 {
 	/// <summary>
 	/// Description of ConvertSizeAndOptionForm.
@@ -32,10 +32,10 @@ namespace LaserGRBL.RasterConverter
 
 			LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
 		}
-		
-		ImageProcessor IP;
-		
-		public void ShowDialog(ImageProcessor processor)
+
+		Core.RasterToGcode.PreviewGenerator IP;
+
+		public void ShowDialog(Core.RasterToGcode.PreviewGenerator processor)
 		{
 			IP = processor;
 			
@@ -73,9 +73,9 @@ namespace LaserGRBL.RasterConverter
 			IIMinPower.CurrentValue = IP.MinPower = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
 			IIMaxPower.CurrentValue = IP.MaxPower = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
 
-			IILinearFilling.Visible = LblLinearFilling.Visible = LblLinearFillingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Line2Line || IP.SelectedTool == ImageProcessor.Tool.Dithering || (IP.SelectedTool == ImageProcessor.Tool.Vectorize && (IP.FillingDirection != ImageProcessor.Direction.None)));
-			IIBorderTracing.Visible = LblBorderTracing.Visible = LblBorderTracingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Vectorize);
-			LblLinearFilling.Text = IP.SelectedTool == ImageProcessor.Tool.Vectorize ? "Filling Speed" : "Engraving Speed";
+			IILinearFilling.Visible = LblLinearFilling.Visible = LblLinearFillingmm.Visible = (IP.SelectedTool == Core.RasterToGcode.PreviewGenerator.Tool.Line2Line || IP.SelectedTool == Core.RasterToGcode.PreviewGenerator.Tool.Dithering || (IP.SelectedTool == Core.RasterToGcode.PreviewGenerator.Tool.Vectorize && (IP.FillingDirection != Core.RasterToGcode.ConversionTool.EngravingDirection.None)));
+			IIBorderTracing.Visible = LblBorderTracing.Visible = LblBorderTracingmm.Visible = (IP.SelectedTool == Core.RasterToGcode.PreviewGenerator.Tool.Vectorize);
+			LblLinearFilling.Text = IP.SelectedTool == Core.RasterToGcode.PreviewGenerator.Tool.Vectorize ? "Filling Speed" : "Engraving Speed";
 
 			IIOffsetX.CurrentValue = IP.TargetOffset.X = (int)Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0);
 			IIOffsetY.CurrentValue = IP.TargetOffset.Y = (int)Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0);

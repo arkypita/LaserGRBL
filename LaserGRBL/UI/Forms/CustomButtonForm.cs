@@ -94,7 +94,7 @@ namespace LaserGRBL
 				if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 				{
 					using (System.Drawing.Image newicon = Bitmap.FromFile(ofd.FileName))
-						BTOpenImage.Image = LaserGRBL.RasterConverter.ImageTransform.ResizeImage(newicon, new Size(48, 48), false, System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic);
+						BTOpenImage.Image = LaserGRBL.Core.RasterToGcode.ImageTransform.ResizeImage(newicon, new Size(48, 48), false, System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic);
 				}
 			}
 		}

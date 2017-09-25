@@ -266,8 +266,8 @@
     <Compile Include="UI\Forms\RasterConverter\Dithering\Sierra3Dithering.cs" />
     <Compile Include="UI\Forms\RasterConverter\Dithering\SierraLiteDithering.cs" />
     <Compile Include="UI\Forms\RasterConverter\Dithering\StuckiDithering.cs" />
-    <Compile Include="UI\Forms\RasterConverter\ImageProcessor.cs" />
-    <Compile Include="UI\Forms\RasterConverter\ImageTransform.cs" />
+    <Compile Include="Core\RasterToGcode\PreviewGenerator.cs" />
+    <Compile Include="Core\RasterToGcode\ImageTransform.cs" />
     <Compile Include="UI\Forms\RasterConverter\RasterToLaserForm.cs">
       <SubType>Form</SubType>
     </Compile>

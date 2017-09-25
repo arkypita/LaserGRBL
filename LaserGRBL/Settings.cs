@@ -35,7 +35,7 @@ namespace LaserGRBL
 		{
 			try 
 			{
-				if (System.IO.File.Exists(filename))
+				if (false/*;System.IO.File.Exists(filename)*/)
 				{
 					System.Runtime.Serialization.Formatters.Binary.BinaryFormatter f = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 					f.AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple;
@@ -71,6 +71,8 @@ namespace LaserGRBL
 		{
 			try
 			{
+				return;
+
 				System.Runtime.Serialization.Formatters.Binary.BinaryFormatter f = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 				f.AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple;
 				using (System.IO.FileStream fs = new System.IO.FileStream(filename, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))

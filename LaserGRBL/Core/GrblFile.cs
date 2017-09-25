@@ -172,7 +172,7 @@ namespace LaserGRBL
 
 			List<List<CsPotrace.Curve>> plist = Potrace.PotraceTrace(bmp);
 
-			if (c.dir != RasterConverter.ImageProcessor.Direction.None)
+			if (c.dir != Core.RasterToGcode.ConversionTool.EngravingDirection.None)
 			{
 				using (Bitmap ptb = new Bitmap(bmp.Width, bmp.Height))
 				{
@@ -180,7 +180,7 @@ namespace LaserGRBL
 					{
 						//Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, (Math.Max(c.res/c.fres, 1) + 1) / 2.0f);
 						Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, Math.Max(1, c.res / c.fres));
-						using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size((int)(bmp.Width * c.fres / c.res), (int)(bmp.Height * c.fres / c.res)), true, InterpolationMode.HighQualityBicubic))
+						using (Bitmap resampled = Core.RasterToGcode.ImageTransform.ResizeImage(ptb, new Size((int)(bmp.Width * c.fres / c.res), (int)(bmp.Height * c.fres / c.res)), true, InterpolationMode.HighQualityBicubic))
 						{
 							//absolute
 							list.Add(new GrblCommand("G90"));
@@ -252,7 +252,7 @@ namespace LaserGRBL
 			public int maxPower;
 			public string lOn;
 			public string lOff;
-			public RasterConverter.ImageProcessor.Direction dir;
+			public Core.RasterToGcode.ConversionTool.EngravingDirection dir;
 			public bool pwm;
 			public double fres;
 			public bool vectorfilling;
@@ -409,9 +409,9 @@ namespace LaserGRBL
 		private List<ColorSegment> GetSegments(Bitmap bmp, L2LConf c)
 		{
 			List<ColorSegment> rv = new List<ColorSegment>();
-			if (c.dir == RasterConverter.ImageProcessor.Direction.Horizontal || c.dir == RasterConverter.ImageProcessor.Direction.Vertical)
+			if (c.dir == Core.RasterToGcode.ConversionTool.EngravingDirection.Horizontal || c.dir == Core.RasterToGcode.ConversionTool.EngravingDirection.Vertical)
 			{
-				bool h = (c.dir == RasterConverter.ImageProcessor.Direction.Horizontal); //horizontal/vertical
+				bool h = (c.dir == Core.RasterToGcode.ConversionTool.EngravingDirection.Horizontal); //horizontal/vertical
 				
 				for (int i = 0; i < (h ? bmp.Height : bmp.Width); i++)
 				{
@@ -436,7 +436,7 @@ namespace LaserGRBL
 					}
 				}
 			}
-			else if (c.dir == RasterConverter.ImageProcessor.Direction.Diagonal)
+			else if (c.dir == Core.RasterToGcode.ConversionTool.EngravingDirection.Diagonal)
 			{
 				//based on: http://stackoverflow.com/questions/1779199/traverse-matrix-in-diagonal-strips
 				//based on: http://stackoverflow.com/questions/2112832/traverse-rectangular-matrix-in-diagonal-strips
@@ -514,11 +514,11 @@ namespace LaserGRBL
 
 			if (prevCol != col)
 			{
-				if (c.dir == RasterConverter.ImageProcessor.Direction.Horizontal)
+				if (c.dir == Core.RasterToGcode.ConversionTool.EngravingDirection.Horizontal)
 					rv.Add(new XSegment(prevCol, len, reverse, c));
-				else if (c.dir == RasterConverter.ImageProcessor.Direction.Vertical)
+				else if (c.dir == Core.RasterToGcode.ConversionTool.EngravingDirection.Vertical)
 					rv.Add(new YSegment(prevCol, len, reverse, c));
-				else if (c.dir == RasterConverter.ImageProcessor.Direction.Diagonal)
+				else if (c.dir == Core.RasterToGcode.ConversionTool.EngravingDirection.Diagonal)
 					rv.Add(new DSegment(prevCol, len, reverse, c));
 				
 				len = 0;
