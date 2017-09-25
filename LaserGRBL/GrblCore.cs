@@ -797,6 +797,9 @@ namespace LaserGRBL
 					if (InProgram && CurrentStreamingMode == StreamingMode.RepeatOnError && mPending.Count == 0 && pending.Status == GrblCommand.CommandStatus.ResponseBad && pending.RepeatCount < 3) //il comando eseguito ha dato errore
 						mRetryQueue = new GrblCommand(pending.Command, pending.RepeatCount + 1); //repeat on error
 				}
+
+				if (InProgram && mQueuePtr.Count == 0 && mPending.Count == 0)
+					OnProgramEnd();
 			}
 			catch (Exception ex)
 			{
@@ -916,9 +919,6 @@ namespace LaserGRBL
 			try { var = (MacStatus)Enum.Parse(typeof(MacStatus), data); }
 			catch (Exception ex) { Logger.LogException("ParseMachineStatus", ex); }
 
-			if (InProgram && mQueuePtr.Count == 0 && mPending.Count == 0)
-				OnProgramEnd();
-
 			if (InProgram && var == MacStatus.Idle) //bugfix for grbl sending Idle on G4
 				var = MacStatus.Run;
 
@@ -927,7 +927,7 @@ namespace LaserGRBL
 
 		private void OnProgramEnd()
 		{
-			if (mTP.JobEnd() && mLoopCount > 1)
+			if (mTP.JobEnd() && mLoopCount > 1 && mMachineStatus != MacStatus.Check)
 			{
 				LoopCount--;
 				EnqueueProgram();
@@ -958,7 +958,7 @@ namespace LaserGRBL
 		{ get { return IsOpen && MachineStatus != MacStatus.Disconnected; } }
 
 		public bool CanSendManualCommand
-		{ get { return IsOpen && MachineStatus != MacStatus.Disconnected; } }
+		{ get { return IsOpen && MachineStatus != MacStatus.Disconnected && !InProgram; } }
 
 		public bool CanGoHome
 		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm); } }
