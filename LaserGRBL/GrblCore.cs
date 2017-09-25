@@ -916,10 +916,10 @@ namespace LaserGRBL
 			try { var = (MacStatus)Enum.Parse(typeof(MacStatus), data); }
 			catch (Exception ex) { Logger.LogException("ParseMachineStatus", ex); }
 
-			if (var == MacStatus.Idle && mQueuePtr.Count == 0 && mPending.Count == 0)
+			if (InProgram && mQueuePtr.Count == 0 && mPending.Count == 0)
 				OnProgramEnd();
 
-			if (mTP.InProgram && var == MacStatus.Idle) //bugfix for grbl sending Idle on G4
+			if (InProgram && var == MacStatus.Idle) //bugfix for grbl sending Idle on G4
 				var = MacStatus.Run;
 
 			SetStatus(var);
@@ -949,7 +949,7 @@ namespace LaserGRBL
 		{ get { return !InProgram; } }
 
 		public bool CanSendFile
-		{ get { return IsOpen && MachineStatus == MacStatus.Idle && HasProgram; } }
+		{ get { return IsOpen && IdleOrCheck && HasProgram; } }
 
 		public bool CanImportExport
 		{ get { return IsOpen && MachineStatus == MacStatus.Idle; } }
@@ -975,7 +975,8 @@ namespace LaserGRBL
 		private StreamingMode CurrentStreamingMode
 		{ get {return (StreamingMode)Settings.GetObject("Streaming Mode", StreamingMode.Buffered); }}
 
-		//public bool IsImportExportStream { get { return !object.ReferenceEquals(mQueue, mQueuePtr); } }
+		private bool IdleOrCheck
+		{ get { return MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Check; } }
 
 		private static string mDataPath;
 		public static string DataPath

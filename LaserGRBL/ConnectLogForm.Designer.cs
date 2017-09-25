@@ -115,6 +115,10 @@ namespace LaserGRBL
 			this.TxtManualCommand.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			resources.ApplyResources(this.TxtManualCommand, "TxtManualCommand");
 			this.TxtManualCommand.Name = "TxtManualCommand";
+			this.TxtManualCommand.WaterMark = "type gcode here";
+			this.TxtManualCommand.WaterMarkActiveForeColor = System.Drawing.Color.Gray;
+			this.TxtManualCommand.WaterMarkFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.TxtManualCommand.WaterMarkForeColor = System.Drawing.Color.LightGray;
 			this.TxtManualCommand.CommandEntered += new LaserGRBL.UserControls.GrblTextBox.CommandEnteredDlg(this.TxtManualCommandCommandEntered);
 			// 
 			// CmdLog

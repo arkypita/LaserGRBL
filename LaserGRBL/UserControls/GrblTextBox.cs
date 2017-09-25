@@ -17,7 +17,7 @@ namespace LaserGRBL.UserControls
 	/// <summary>
 	/// Description of GrblTextBox.
 	/// </summary>
-	public partial class GrblTextBox : TextBox
+	public partial class GrblTextBox : PlaceholderTextBox
 	{
 		public delegate void CommandEnteredDlg(string command);
 		public event CommandEnteredDlg CommandEntered;
