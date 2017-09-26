@@ -18,16 +18,18 @@ namespace LaserGRBL.Core.RasterToGcode
 		public bool IsGrayScale;		//image has no color
 		
 		public bool ShowWClipDemo;
-		public bool ShowLinePreviw;
+		public bool ShowLinePreview;
 
-		private ColorToGrayscale BWC;
-		private ConversionTool CT;
-		private GrblCore C;
+		private Configuration C;
+		private GrblCore GC;
 		private PictureBox PB;
+
+		bool mStarted = false;
 
 		public PreviewGenerator(GrblCore core, System.Windows.Forms.PictureBox target, string filename)
 		{
-			C = core;
+			C = new Configuration();
+			GC = core;
 			FileName = filename;
 			PB = target;
 			
@@ -41,9 +43,35 @@ namespace LaserGRBL.Core.RasterToGcode
 			IsGrayScale = ImageTransform.IsGrayScaleImage(BaseImage);
 		}
 
+		public Configuration Configuration
+		{ get { return C; } }
+
+		public void Start()
+		{
+			mStarted = true;
+			ResizeRecalc();
+			Refresh();
+		}
+
 		public void Refresh()
 		{
+			if (mStarted)
+			{
+				GeneratorThread TH = new GeneratorThread(ResizedImage, C, OnImageReady, ShowWClipDemo, ShowLinePreview, IsGrayScale);
+			}
+		}
 
+		private void OnImageReady(Bitmap result)
+		{
+			if (PB.InvokeRequired)
+				PB.BeginInvoke(new GeneratorThread.OnGeneratorComplete(OnImageReady), result);
+			else
+			{
+				Image old = PB.Image;
+				PB.Image = result;
+				if (old != null)
+					old.Dispose();
+			}
 		}
 
 		public void Resize()
@@ -127,7 +155,7 @@ namespace LaserGRBL.Core.RasterToGcode
 				if (ResizedImage != null)
 					ResizedImage.Dispose();
 				
-				ResizedImage = ImageTransform.ResizeImage(BaseImage, CalculateResizeToFit(BaseImage.Size, PB.Size), false, BWC.InterpolationMode);
+				ResizedImage = ImageTransform.ResizeImage(BaseImage, CalculateResizeToFit(BaseImage.Size, PB.Size), false, C.ColorToGrayscale.InterpolationMode);
 			}
 		}
 		
@@ -139,22 +167,23 @@ namespace LaserGRBL.Core.RasterToGcode
 			private ManualResetEvent EV;
 
 			Bitmap SRC;
-			ColorToGrayscale CTG; 
-			ConversionTool CT;
+			Configuration C;
 			OnGeneratorComplete DLG;
 			bool CLIP;
 			bool LINE;
 			bool GRAY;
 
-			public GeneratorThread(Bitmap source, ColorToGrayscale ctg, ConversionTool ct, OnGeneratorComplete dlg, bool clip, bool line, bool grayscale)
+			public GeneratorThread(Bitmap source, Configuration conf, OnGeneratorComplete dlg, bool clip, bool line, bool grayscale)
 			{
-				SRC = (Bitmap)source.Clone();
-				CTG = (ColorToGrayscale)ctg.Clone();
-				CT = (ConversionTool)ct.Clone();
+				EV = new ManualResetEvent(false);
+				TH = new Thread(CreatePreview);
 				DLG = dlg;
 				CLIP = clip;
 				LINE = line;
 				GRAY = grayscale;
+				C = conf;
+				SRC = (Bitmap)source.Clone();
+				TH.Start();
 			}
 
 			private bool MustExit
@@ -168,7 +197,7 @@ namespace LaserGRBL.Core.RasterToGcode
 					{
 						using (Bitmap bmp = ProduceWhitepointDemo(SRC, SRC.Size))
 						{
-							if (!MustExit) DLG(bmp);
+							if (!MustExit) DLG((Bitmap)bmp.Clone());
 						}
 					}
 					else
@@ -177,12 +206,12 @@ namespace LaserGRBL.Core.RasterToGcode
 						{
 							if (!MustExit)
 							{
-								if (CT is LineToLine) PreviewLineByLine(bmp);
-								else if (CT is Dithering) PreviewDithering(bmp);
-								else if (CT is Vectorization) PreviewVector(bmp);
+								if (C.SelectedTool is LineToLine) PreviewLineByLine(bmp);
+								else if (C.SelectedTool is Dithering) PreviewDithering(bmp);
+								else if (C.SelectedTool is Vectorization) PreviewVector(bmp);
 							}
 
-							if (!MustExit) DLG(bmp);
+							if (!MustExit) DLG((Bitmap)bmp.Clone());
 						}
 					}
 				}
@@ -203,9 +232,9 @@ namespace LaserGRBL.Core.RasterToGcode
 
 			private Bitmap ProduceBitmap(Image img, Size size)
 			{
-				if (CT is Vectorization && ((Vectorization)CT).DownSampling.Enabled && ((Vectorization)CT).DownSampling.Value > 1) //if downsampling
+				if (C.SelectedTool is Vectorization && ((Vectorization)C.SelectedTool).DownSampling.Enabled && ((Vectorization)C.SelectedTool).DownSampling.Value > 1) //if downsampling
 				{
-					using (Image downsampled = ImageTransform.ResizeImage(img, new Size((int)(size.Width * 1 / ((Vectorization)CT).DownSampling.Value), (int)(size.Height * 1 / ((Vectorization)CT).DownSampling.Value)), false, InterpolationMode.HighQualityBicubic))
+					using (Image downsampled = ImageTransform.ResizeImage(img, new Size((int)(size.Width * 1 / ((Vectorization)C.SelectedTool).DownSampling.Value), (int)(size.Height * 1 / ((Vectorization)C.SelectedTool).DownSampling.Value)), false, InterpolationMode.HighQualityBicubic))
 						return ProduceBitmap2(downsampled, size);
 				}
 				else
@@ -216,24 +245,24 @@ namespace LaserGRBL.Core.RasterToGcode
 
 			private Bitmap ProduceWhitepointDemo(Image img, Size size)
 			{
-				using (Bitmap resized = ImageTransform.ResizeImage(img, size, false, CTG.InterpolationMode))
-				using (Bitmap grayscale = ImageTransform.GrayScale(resized, CTG.Red / 100.0F, CTG.Green / 100.0F, CTG.Blue / 100.0F, -((100 - CTG.Brightness) / 100.0F), (CTG.Contrast / 100.0F), GRAY ? ImageTransform.Formula.SimpleAverage : CTG.Formula))
-					return ImageTransform.Whitenize(grayscale, CTG.WhitePoint, true);
+				using (Bitmap resized = ImageTransform.ResizeImage(img, size, false, C.ColorToGrayscale.InterpolationMode))
+				using (Bitmap grayscale = ImageTransform.GrayScale(resized, C.ColorToGrayscale.Red / 100.0F, C.ColorToGrayscale.Green / 100.0F, C.ColorToGrayscale.Blue / 100.0F, -((100 - C.ColorToGrayscale.Brightness) / 100.0F), (C.ColorToGrayscale.Contrast / 100.0F), GRAY ? ImageTransform.Formula.SimpleAverage : C.ColorToGrayscale.Formula))
+					return ImageTransform.Whitenize(grayscale, C.ColorToGrayscale.WhitePoint, true);
 			}
 
 
 			private Bitmap ProduceBitmap2(Image img, Size size)
 			{
-				using (Bitmap resized = ImageTransform.ResizeImage(img, size, false, CTG.InterpolationMode))
+				using (Bitmap resized = ImageTransform.ResizeImage(img, size, false, C.ColorToGrayscale.InterpolationMode))
 				{
-					using (Bitmap grayscale = ImageTransform.GrayScale(resized, CTG.Red / 100.0F, CTG.Green / 100.0F, CTG.Blue / 100.0F, -((100 - CTG.Brightness) / 100.0F), (CTG.Contrast / 100.0F), GRAY ? ImageTransform.Formula.SimpleAverage : CTG.Formula))
+					using (Bitmap grayscale = ImageTransform.GrayScale(resized, C.ColorToGrayscale.Red / 100.0F, C.ColorToGrayscale.Green / 100.0F, C.ColorToGrayscale.Blue / 100.0F, -((100 - C.ColorToGrayscale.Brightness) / 100.0F), (C.ColorToGrayscale.Contrast / 100.0F), GRAY ? ImageTransform.Formula.SimpleAverage : C.ColorToGrayscale.Formula))
 					{
-						using (Bitmap whiten = ImageTransform.Whitenize(grayscale, CTG.WhitePoint, false))
+						using (Bitmap whiten = ImageTransform.Whitenize(grayscale, C.ColorToGrayscale.WhitePoint, false))
 						{
-							if (CT is Dithering)
-								return ImageTransform.DitherImage(whiten, ((Dithering)CT).Mode);
+							if (C.SelectedTool is Dithering)
+								return ImageTransform.DitherImage(whiten, ((Dithering)C.SelectedTool).Mode);
 							else
-								return ImageTransform.Threshold(whiten, CTG.Threshold.Value / 100.0F, CTG.Threshold.Enabled);
+								return ImageTransform.Threshold(whiten, C.ColorToGrayscale.Threshold.Value / 100.0F, C.ColorToGrayscale.Threshold.Enabled);
 						}
 					}
 				}
@@ -241,14 +270,14 @@ namespace LaserGRBL.Core.RasterToGcode
 
 			private void PreviewLineByLine(Bitmap bmp)
 			{
-				if (!MustExit && LINE && CT.Direction != ConversionTool.EngravingDirection.None)
+				if (!MustExit && LINE && C.SelectedTool.Direction != ConversionTool.EngravingDirection.None)
 				{
 					using (Graphics g = Graphics.FromImage(bmp))
 					{
 						g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-						if (CT.Direction == ConversionTool.EngravingDirection.Horizontal)
+						if (C.SelectedTool.Direction == ConversionTool.EngravingDirection.Horizontal)
 						{
-							int alpha = CT is Dithering ? 100 : 200;
+							int alpha = C.SelectedTool is Dithering ? 100 : 200;
 							for (int Y = 0; Y < bmp.Height && !MustExit; Y++)
 							{
 								using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
@@ -258,9 +287,9 @@ namespace LaserGRBL.Core.RasterToGcode
 								}
 							}
 						}
-						else if (CT.Direction == ConversionTool.EngravingDirection.Vertical)
+						else if (C.SelectedTool.Direction == ConversionTool.EngravingDirection.Vertical)
 						{
-							int alpha = CT is Dithering ? 100 : 200;
+							int alpha = C.SelectedTool is Dithering ? 100 : 200;
 							for (int X = 0; X < bmp.Width && !MustExit; X++)
 							{
 								using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
@@ -270,9 +299,9 @@ namespace LaserGRBL.Core.RasterToGcode
 								}
 							}
 						}
-						else if (CT.Direction == ConversionTool.EngravingDirection.Diagonal)
+						else if (C.SelectedTool.Direction == ConversionTool.EngravingDirection.Diagonal)
 						{
-							int alpha = CT is Dithering ? 150 : 255;
+							int alpha = C.SelectedTool is Dithering ? 150 : 255;
 							for (int I = 0; I < bmp.Width + bmp.Height - 1 && !MustExit; I++)
 							{
 								using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
@@ -290,7 +319,7 @@ namespace LaserGRBL.Core.RasterToGcode
 
 			private void PreviewVector(Bitmap bmp)
 			{
-				Vectorization V = CT as Vectorization;
+				Vectorization V = C.SelectedTool as Vectorization;
 
 				Potrace.turdsize = (int)(V.SpotRemoval.Enabled ? V.SpotRemoval.Value : 2.0m);
 				Potrace.alphamax = V.Smoothing.Enabled ? (double)V.Smoothing.Value : 0.0;
@@ -309,7 +338,7 @@ namespace LaserGRBL.Core.RasterToGcode
 				{
 					g.Clear(Color.White); //remove original image
 
-					using (Brush fill = new SolidBrush(Color.FromArgb(CT.Direction != ConversionTool.EngravingDirection.None ? 255 : 30, Color.Black)))
+					using (Brush fill = new SolidBrush(Color.FromArgb(C.SelectedTool.Direction != ConversionTool.EngravingDirection.None ? 255 : 30, Color.Black)))
 						Potrace.Export2GDIPlus(plist, g, fill, null, 1); //trace filling
 
 					if (MustExit)

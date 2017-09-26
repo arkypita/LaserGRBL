@@ -67,7 +67,7 @@
 			this.BtnFillingQualityInfo = new LaserGRBL.UserControls.ImageButton();
 			this.GbParameters = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.CbResize = new LaserGRBL.UserControls.EnumComboBox();
+			this.CbInterpolation = new LaserGRBL.UserControls.EnumComboBox();
 			this.LblGrayscale = new System.Windows.Forms.Label();
 			this.CbMode = new LaserGRBL.UserControls.EnumComboBox();
 			this.TBRed = new LaserGRBL.UserControls.ColorSlider();
@@ -566,7 +566,7 @@
 			// tableLayoutPanel2
 			// 
 			resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
-			this.tableLayoutPanel2.Controls.Add(this.CbResize, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.CbInterpolation, 1, 0);
 			this.tableLayoutPanel2.Controls.Add(this.LblGrayscale, 0, 1);
 			this.tableLayoutPanel2.Controls.Add(this.CbMode, 1, 1);
 			this.tableLayoutPanel2.Controls.Add(this.TBRed, 1, 2);
@@ -589,13 +589,13 @@
 			// 
 			// CbResize
 			// 
-			resources.ApplyResources(this.CbResize, "CbResize");
-			this.CbResize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CbResize.FormattingEnabled = true;
-			this.CbResize.Name = "CbResize";
-			this.CbResize.SelectedItem = null;
-			this.TT.SetToolTip(this.CbResize, resources.GetString("CbResize.ToolTip"));
-			this.CbResize.SelectedIndexChanged += new System.EventHandler(this.CbResizeSelectedIndexChanged);
+			resources.ApplyResources(this.CbInterpolation, "CbResize");
+			this.CbInterpolation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbInterpolation.FormattingEnabled = true;
+			this.CbInterpolation.Name = "CbResize";
+			this.CbInterpolation.SelectedItem = null;
+			this.TT.SetToolTip(this.CbInterpolation, resources.GetString("CbResize.ToolTip"));
+			this.CbInterpolation.SelectedIndexChanged += new System.EventHandler(this.CbInterpolationSelectedIndexChanged);
 			// 
 			// LblGrayscale
 			// 
@@ -1091,7 +1091,7 @@
 		private System.Windows.Forms.Label label27;
 		private UserControls.EnumComboBox CbDirections;
 		private System.Windows.Forms.Label label8;
-		private UserControls.EnumComboBox CbResize;
+		private UserControls.EnumComboBox CbInterpolation;
 		private System.Windows.Forms.Label label28;
 		private LaserGRBL.UserControls.WaitingProgressBar WB;
 		private System.Windows.Forms.Timer WT;
