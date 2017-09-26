@@ -797,6 +797,9 @@ namespace LaserGRBL
 					if (InProgram && CurrentStreamingMode == StreamingMode.RepeatOnError && mPending.Count == 0 && pending.Status == GrblCommand.CommandStatus.ResponseBad && pending.RepeatCount < 3) //il comando eseguito ha dato errore
 						mRetryQueue = new GrblCommand(pending.Command, pending.RepeatCount + 1); //repeat on error
 				}
+
+				if (InProgram && mQueuePtr.Count == 0 && mPending.Count == 0)
+					OnProgramEnd();
 			}
 			catch (Exception ex)
 			{
@@ -916,10 +919,7 @@ namespace LaserGRBL
 			try { var = (MacStatus)Enum.Parse(typeof(MacStatus), data); }
 			catch (Exception ex) { Logger.LogException("ParseMachineStatus", ex); }
 
-			if (var == MacStatus.Idle && mQueuePtr.Count == 0 && mPending.Count == 0)
-				OnProgramEnd();
-
-			if (mTP.InProgram && var == MacStatus.Idle) //bugfix for grbl sending Idle on G4
+			if (InProgram && var == MacStatus.Idle) //bugfix for grbl sending Idle on G4
 				var = MacStatus.Run;
 
 			SetStatus(var);
@@ -927,7 +927,7 @@ namespace LaserGRBL
 
 		private void OnProgramEnd()
 		{
-			if (mTP.JobEnd() && mLoopCount > 1)
+			if (mTP.JobEnd() && mLoopCount > 1 && mMachineStatus != MacStatus.Check)
 			{
 				LoopCount--;
 				EnqueueProgram();
@@ -949,7 +949,7 @@ namespace LaserGRBL
 		{ get { return !InProgram; } }
 
 		public bool CanSendFile
-		{ get { return IsOpen && MachineStatus == MacStatus.Idle && HasProgram; } }
+		{ get { return IsOpen && IdleOrCheck && HasProgram; } }
 
 		public bool CanImportExport
 		{ get { return IsOpen && MachineStatus == MacStatus.Idle; } }
@@ -958,7 +958,7 @@ namespace LaserGRBL
 		{ get { return IsOpen && MachineStatus != MacStatus.Disconnected; } }
 
 		public bool CanSendManualCommand
-		{ get { return IsOpen && MachineStatus != MacStatus.Disconnected; } }
+		{ get { return IsOpen && MachineStatus != MacStatus.Disconnected && !InProgram; } }
 
 		public bool CanGoHome
 		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm); } }
@@ -975,7 +975,8 @@ namespace LaserGRBL
 		private StreamingMode CurrentStreamingMode
 		{ get {return (StreamingMode)Settings.GetObject("Streaming Mode", StreamingMode.Buffered); }}
 
-		//public bool IsImportExportStream { get { return !object.ReferenceEquals(mQueue, mQueuePtr); } }
+		private bool IdleOrCheck
+		{ get { return MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Check; } }
 
 		private static string mDataPath;
 		public static string DataPath

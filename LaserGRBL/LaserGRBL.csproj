@@ -360,6 +360,9 @@
     <Compile Include="UI\UserControls\LabelTB.Designer.cs">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </Compile>
+	    <Compile Include="UserControls\PlaceholderTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\UserControls\ProgressBar\WaitingProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>

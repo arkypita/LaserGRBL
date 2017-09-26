@@ -35,7 +35,6 @@ namespace LaserGRBL
 		{
 			try
 			{
-
 				if (System.IO.File.Exists(filename))
 				{
 					int MAXLINE = 1000;
@@ -63,6 +62,8 @@ namespace LaserGRBL
 							}
 							written = true;
 						}
+
+						reader.Close();
 					}
 
 					if (written)
@@ -116,18 +117,7 @@ namespace LaserGRBL
 		}
 
 		static string filename
-		{
-			get
-			{
-				string basename = "sessionlog.txt";
-				string fullname = System.IO.Path.Combine(GrblCore.DataPath, basename);
-
-				if (!System.IO.File.Exists(fullname) && System.IO.File.Exists(basename))
-					System.IO.File.Copy(basename, fullname);
-
-				return fullname;
-			}
-		}
+		{get{return System.IO.Path.Combine(GrblCore.DataPath, "sessionlog.txt");}}
 
 		public static bool ExistLog
 		{ get { return System.IO.File.Exists(filename); } }
