@@ -66,22 +66,26 @@ namespace LaserGRBL.Core.RasterToGcode
 			return bmp;
 		}
 
-		public static bool IsGrayScaleImage(Bitmap bmp)
+		public static unsafe bool IsGrayScaleImage(Bitmap bmp) 
 		{
-			int maxdiff = 0;
+			//test if image "look like" grayscale by sampling some pixels and check if is quite gray
+			//assume bmp has 32bppArgb PixelFormat
 
-			for (int x = 0; x < bmp.Width; x += 10)
+			int maxdiff = 0;
+			BitmapData data = bmp.LockBits(new Rectangle(new Point(0, 0), bmp.Size), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+			byte* scan0 = (byte*)data.Scan0.ToPointer();
+			for (int i = 0; i < data.Height && maxdiff < 20; i += 10)
 			{
-				for (int y = 0; y < bmp.Height; y += 10)
+				for (int j = 0; j < data.Width && maxdiff < 20; j += 10)
 				{
-					Color c = bmp.GetPixel(x, y);
-					maxdiff = Math.Max(maxdiff, Math.Abs(c.R - c.G));
-					maxdiff = Math.Max(maxdiff, Math.Abs(c.G - c.B));
-					maxdiff = Math.Max(maxdiff, Math.Abs(c.R - c.B));
+					byte* color = scan0 + i * data.Stride + j * 4; //BGRA
+					maxdiff = Math.Max(maxdiff, Math.Abs(color[2] - color[1])); //r-g
+					maxdiff = Math.Max(maxdiff, Math.Abs(color[1] - color[0])); //g-b
+					maxdiff = Math.Max(maxdiff, Math.Abs(color[2] - color[0])); //r-b
 				}
 			}
-
-			return (maxdiff < 20);
+			bmp.UnlockBits(data);
+			return maxdiff < 20;
 		}
 
 		private static Bitmap draw_adjusted_image(Image img, ColorMatrix cm)
