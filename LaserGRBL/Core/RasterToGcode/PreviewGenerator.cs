@@ -26,6 +26,8 @@ namespace LaserGRBL.Core.RasterToGcode
 
 		bool mStarted = false;
 
+		GeneratorThread CurrentThread;
+
 		public PreviewGenerator(GrblCore core, System.Windows.Forms.PictureBox target, string filename)
 		{
 			C = new Configuration();
@@ -57,7 +59,8 @@ namespace LaserGRBL.Core.RasterToGcode
 		{
 			if (mStarted)
 			{
-				GeneratorThread TH = new GeneratorThread(ResizedImage, C, OnImageReady, ShowWClipDemo, ShowLinePreview, IsGrayScale);
+				if (CurrentThread != null) CurrentThread.Abort(); //requested generation is no
+				CurrentThread = new GeneratorThread(ResizedImage, C, OnImageReady, ShowWClipDemo, ShowLinePreview, IsGrayScale);
 			}
 		}
 
@@ -356,6 +359,11 @@ namespace LaserGRBL.Core.RasterToGcode
 				}
 			}
 
+
+			internal void Abort()
+			{
+				EV.Set();
+			}
 		}
 
 	

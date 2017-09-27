@@ -303,7 +303,8 @@ namespace LaserGRBL.RasterToGcode
 
 		private void TbContrast_ValueChanged(object sender, EventArgs e)
 		{
-			Conf.ColorToGrayscale.Contrast = (byte)TbContrast.Value; 
+			Conf.ColorToGrayscale.Contrast = (byte)TbContrast.Value;
+			PG.Refresh();
 		}
 
 		private void CbThreshold_CheckedChanged(object sender, EventArgs e)
@@ -340,14 +341,14 @@ namespace LaserGRBL.RasterToGcode
 		
 		private void RbVectorize_CheckedChanged(object sender, EventArgs e)
 		{
-			if (RbLineToLineTracing.Checked) Conf.SelectedTool = new Core.RasterToGcode.Vectorization();
+			if (RbVectorize.Checked) Conf.SelectedTool = new Core.RasterToGcode.Vectorization();
 			PG.Refresh();
 			RefreshVE();
 		}
 
 		private void RbDithering_CheckedChanged(object sender, EventArgs e)
 		{
-			if (RbLineToLineTracing.Checked) Conf.SelectedTool = new Core.RasterToGcode.Dithering();
+			if (RbDithering.Checked) Conf.SelectedTool = new Core.RasterToGcode.Dithering();
 			PG.Refresh();
 			RefreshVE();
 		}
