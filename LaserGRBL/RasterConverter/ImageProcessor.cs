@@ -67,8 +67,9 @@ namespace LaserGRBL.RasterConverter
 		public int MarkSpeed;
 		public int MinPower;
 		public int MaxPower;
-		
-		private string mFileName;
+        public int StartDelay;
+
+        private string mFileName;
 		GrblCore mCore;
 		
 		private ImageProcessor Current; 		//current instance of processor thread/class - used to call abort
@@ -713,7 +714,8 @@ namespace LaserGRBL.RasterConverter
 						conf.maxPower = MaxPower;
 						conf.lOn = LaserOn;
 						conf.lOff = LaserOff;
-						conf.dir = SelectedTool == ImageProcessor.Tool.Vectorize ? FillingDirection : LineDirection;
+                        conf.startDelay = StartDelay;
+                        conf.dir = SelectedTool == ImageProcessor.Tool.Vectorize ? FillingDirection : LineDirection;
 						conf.oX = TargetOffset.X;
 						conf.oY = TargetOffset.Y;
 						conf.borderSpeed = BorderSpeed;

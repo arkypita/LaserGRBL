@@ -252,7 +252,8 @@ namespace LaserGRBL
 			public int maxPower;
 			public string lOn;
 			public string lOff;
-			public RasterConverter.ImageProcessor.Direction dir;
+            public int startDelay;
+            public RasterConverter.ImageProcessor.Direction dir;
 			public bool pwm;
 			public double fres;
 			public bool vectorfilling;
@@ -341,7 +342,7 @@ namespace LaserGRBL
 
 			decimal cumX = 0;
 			decimal cumY = 0;
-			bool cumulate = false;
+			bool cumulate = false, isLaserOn = false;
 
 			foreach (GrblCommand cmd in temp)
 			{
@@ -372,7 +373,8 @@ namespace LaserGRBL
 
 					if (oldcumulate && !cumulate) //cumulate down front -> flush
 					{
-						if (c.pwm)
+                        isLaserOn = false;
+                        if (c.pwm)
 							rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} F{2} S0", formatnumber((double)cumX), formatnumber((double)cumY), c.travelSpeed)));
 						else
 							rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} F{2} {3}", formatnumber((double)cumX), formatnumber((double)cumY), c.travelSpeed, c.lOff)));
@@ -396,8 +398,14 @@ namespace LaserGRBL
 					}
 					else //emit line normally
 					{
-						rv.Add(cmd);
-					}
+                        if (c.startDelay >= 1 && !isLaserOn)
+                        {
+                            rv.Add(new GrblCommand(String.Format("{0} {1}", c.lOn, c.pwm ? String.Format("S{0}", cmd.S.Number) : "")));
+                            rv.Add(new GrblCommand(String.Format("G4 P{0}", c.startDelay)));
+                        }
+                        rv.Add(cmd);
+                        isLaserOn = true;
+                    }
 				}
 				catch (Exception ex) { throw ex; }
 				finally { cmd.DeleteHelper(); }
