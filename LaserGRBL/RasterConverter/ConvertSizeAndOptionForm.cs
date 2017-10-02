@@ -55,8 +55,9 @@ namespace LaserGRBL.RasterConverter
 			IIBorderTracing.CurrentValue = IP.BorderSpeed = (int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
 			IILinearFilling.CurrentValue = IP.MarkSpeed = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Mark", 1000);
 			IITravelSpeed.CurrentValue = IP.TravelSpeed = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Travel", 4000);
+            IIStartDelay.CurrentValue = IP.StartDelay = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.StartDelay", 0);
 
-			IP.LaserOn = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
+            IP.LaserOn = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
 
 			if (CBLaserON.Items.Contains(IP.LaserOn))
 				CBLaserON.SelectedItem = IP.LaserOn;
@@ -152,6 +153,10 @@ namespace LaserGRBL.RasterConverter
 		{
 			IP.LaserOff = (string)CBLaserOFF.SelectedItem;
 		}
-		
-	}
+
+        private void IIStartDelay_CurrentValueChanged(object sender, int NewValue, bool ByUser)
+        {
+            IP.StartDelay = NewValue;
+        }
+    }
 }
