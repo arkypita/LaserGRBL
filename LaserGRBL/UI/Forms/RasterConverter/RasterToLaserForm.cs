@@ -5,7 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Threading;
 
-namespace LaserGRBL.RasterToGcode
+namespace LaserGRBL.UI.Forms.RasterConverter
 {
 	public partial class RasterToLaserForm : Form
 	{
@@ -19,49 +19,34 @@ namespace LaserGRBL.RasterToGcode
 			InitializeComponent();
 
 			BackColor = ColorScheme.FormBackColor;
-			GbConversionTool.ForeColor = GbLineToLineOptions.ForeColor = GbParameters.ForeColor = GbVectorizeOptions.ForeColor = ForeColor = ColorScheme.FormForeColor;
+			//GbConversionTool.ForeColor = GbLineToLineOptions.ForeColor = GbParameters.ForeColor = GbVectorizeOptions.ForeColor = ForeColor = ColorScheme.FormForeColor;
 			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
 
 			PG = new Core.RasterToGcode.PreviewGenerator(core, PbConverted, filename);
+			GS.Start(PG.Configuration, PG.IsGrayScale);
+			ST.Start(PG.Configuration);
+
 			PbOriginal.Image = PG.OriginalImage;
-			LblGrayscale.Visible = CbMode.Visible = !PG.IsGrayScale;
+			//
 			
-			CbInterpolation.SuspendLayout();
-			CbInterpolation.AddItem(InterpolationMode.HighQualityBicubic);
-			CbInterpolation.AddItem(InterpolationMode.NearestNeighbor);
-			CbInterpolation.ResumeLayout();
+			//CbInterpolation.SuspendLayout();
+			//CbInterpolation.AddItem(InterpolationMode.HighQualityBicubic);
+			//CbInterpolation.AddItem(InterpolationMode.NearestNeighbor);
+			//CbInterpolation.ResumeLayout();
 
-			CbDither.SuspendLayout();
-			foreach (Core.RasterToGcode.ImageTransform.DitheringMode formula in Enum.GetValues(typeof(Core.RasterToGcode.ImageTransform.DitheringMode)))
-				CbDither.Items.Add(formula);
-			CbDither.SelectedIndex = 0;
-			CbDither.ResumeLayout();
-			CbDither.SuspendLayout();
+			System.Windows.Forms.Application.Idle += Application_Idle;
 
-			CbMode.SuspendLayout();
-			foreach (Core.RasterToGcode.ImageTransform.Formula formula in Enum.GetValues(typeof(Core.RasterToGcode.ImageTransform.Formula)))
-				CbMode.AddItem(formula);
-			CbMode.SelectedIndex = 0;
-			CbMode.ResumeLayout();
-			CbDirections.SuspendLayout();
 
-			foreach (Core.RasterToGcode.ConversionTool.EngravingDirection direction in Enum.GetValues(typeof(Core.RasterToGcode.ConversionTool.EngravingDirection)))
-				if (direction != Core.RasterToGcode.ConversionTool.EngravingDirection.None)
-					CbDirections.AddItem(direction);
-			CbDirections.SelectedIndex = 0;
-			CbDirections.ResumeLayout();
 
-			CbFillingDirection.SuspendLayout();
-			foreach (Core.RasterToGcode.ConversionTool.EngravingDirection direction in Enum.GetValues(typeof(Core.RasterToGcode.ConversionTool.EngravingDirection)))
-				CbFillingDirection.AddItem(direction);
-			CbFillingDirection.SelectedIndex = 0;
-			CbFillingDirection.ResumeLayout();
 
-			RbLineToLineTracing.Visible = supportPWM;
+
+
+			//RbLineToLineTracing.Visible = supportPWM;
 
 			LoadSettings();
 			RefreshVE();
 		}
+
 
 		public LaserGRBL.Core.RasterToGcode.Configuration Conf
 		{ get { return PG.Configuration; } }
@@ -264,162 +249,26 @@ namespace LaserGRBL.RasterToGcode
 		void OnThresholdDoubleClick(object sender, EventArgs e)
 		{((UserControls.ColorSlider)sender).Value = 50;}
 
-		private void CbMode_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			SuspendLayout();
-			Conf.ColorToGrayscale.Formula = (Core.RasterToGcode.ImageTransform.Formula)CbMode.SelectedItem;
-			TBRed.Visible = TBGreen.Visible = TBBlue.Visible = (Conf.ColorToGrayscale.Formula == Core.RasterToGcode.ImageTransform.Formula.Custom && !PG.IsGrayScale);
-			LblRed.Visible = LblGreen.Visible = LblBlue.Visible = (Conf.ColorToGrayscale.Formula == Core.RasterToGcode.ImageTransform.Formula.Custom && !PG.IsGrayScale);
-			ResumeLayout();
-
-			PG.Refresh();
-		}
-
-		private void TBRed_ValueChanged(object sender, EventArgs e)
-		{ 
-			Conf.ColorToGrayscale.Red = (byte)TBRed.Value;
-			PG.Refresh();
-		}
-
-
-		private void TBGreen_ValueChanged(object sender, EventArgs e)
-		{
-			Conf.ColorToGrayscale.Green = (byte)TBGreen.Value;
-			PG.Refresh();
-		}
-
-		private void TBBlue_ValueChanged(object sender, EventArgs e)
-		{
-			Conf.ColorToGrayscale.Blue = (byte)TBBlue.Value;
-			PG.Refresh();
-		}
-
-
-		private void TbBright_ValueChanged(object sender, EventArgs e)
-		{
-			Conf.ColorToGrayscale.Brightness = (byte)TbBright.Value;
-			PG.Refresh();
-		}
-
-		private void TbContrast_ValueChanged(object sender, EventArgs e)
-		{
-			Conf.ColorToGrayscale.Contrast = (byte)TbContrast.Value;
-			PG.Refresh();
-		}
-
-		private void CbThreshold_CheckedChanged(object sender, EventArgs e)
-		{
-			Conf.ColorToGrayscale.Threshold.Enabled = CbThreshold.Checked;
-			PG.Refresh();
-			RefreshVE();
-		}
+	
 
 		private void RefreshVE()
 		{
-			GbVectorizeOptions.Visible = RbVectorize.Checked;
-			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
-			GbLineToLineOptions.Text = RbLineToLineTracing.Checked ? "Line To Line Options" : "Dithering Options";
+			//GbVectorizeOptions.Visible = RbVectorize.Checked;
+			//GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
+			//GbLineToLineOptions.Text = RbLineToLineTracing.Checked ? "Line To Line Options" : "Dithering Options";
 
-			CbThreshold.Visible = !RbDithering.Checked;
-			TbThreshold.Visible = !RbDithering.Checked && CbThreshold.Checked;
+			//CbThreshold.Visible = !RbDithering.Checked;
+			//TbThreshold.Visible = !RbDithering.Checked && CbThreshold.Checked;
 
-			LblDitherMode.Visible = CbDither.Visible = RbDithering.Checked;
+			//LblDitherMode.Visible = CbDither.Visible = RbDithering.Checked;
 		}
 
-		private void TbThreshold_ValueChanged(object sender, EventArgs e)
-		{ 
-			Conf.ColorToGrayscale.Threshold.Value = (byte)TbThreshold.Value;
-			PG.Refresh();
-		}
 
-		private void RbLineToLineTracing_CheckedChanged(object sender, EventArgs e)
-		{
-			if (RbLineToLineTracing.Checked) Conf.SelectedTool = new Core.RasterToGcode.LineToLine();
-			PG.Refresh();
-			RefreshVE();
-		}
-		
-		private void RbVectorize_CheckedChanged(object sender, EventArgs e)
-		{
-			if (RbVectorize.Checked) Conf.SelectedTool = new Core.RasterToGcode.Vectorization();
-			PG.Refresh();
-			RefreshVE();
-		}
+	
 
-		private void RbDithering_CheckedChanged(object sender, EventArgs e)
-		{
-			if (RbDithering.Checked) Conf.SelectedTool = new Core.RasterToGcode.Dithering();
-			PG.Refresh();
-			RefreshVE();
-		}
+	
 
-		private void UDQuality_ValueChanged(object sender, EventArgs e)
-		{
-			Conf.SelectedTool.Quality = (double)UDQuality.Value;  
-		}
-
-		private void CbLinePreview_CheckedChanged(object sender, EventArgs e)
-		{
-			PG.ShowLinePreview = CbLinePreview.Checked;
-			PG.Refresh();
-		}
-
-		private void UDSpotRemoval_ValueChanged(object sender, EventArgs e)
-		{
-			if (Conf.SelectedTool is Core.RasterToGcode.Vectorization)
-			{
-				((Core.RasterToGcode.Vectorization)Conf.SelectedTool).SpotRemoval.Value = UDSpotRemoval.Value;
-				PG.Refresh();
-			}
-		}
-
-		private void CbSpotRemoval_CheckedChanged(object sender, EventArgs e)
-		{
-			if (Conf.SelectedTool is Core.RasterToGcode.Vectorization)
-			{
-				((Core.RasterToGcode.Vectorization)Conf.SelectedTool).SpotRemoval.Enabled = CbSpotRemoval.Checked;
-				UDSpotRemoval.Enabled = CbSpotRemoval.Checked;
-				PG.Refresh();
-			}
-		}
-
-		private void UDSmoothing_ValueChanged(object sender, EventArgs e)
-		{
-			if (Conf.SelectedTool is Core.RasterToGcode.Vectorization)
-			{
-				((Core.RasterToGcode.Vectorization)Conf.SelectedTool).Smoothing.Value = UDSmoothing.Value;
-				PG.Refresh();
-			}
-		}
-
-		private void CbSmoothing_CheckedChanged(object sender, EventArgs e)
-		{
-			if (Conf.SelectedTool is Core.RasterToGcode.Vectorization)
-			{
-				((Core.RasterToGcode.Vectorization)Conf.SelectedTool).Smoothing.Enabled = CbSmoothing.Checked;
-				UDSmoothing.Enabled = CbSmoothing.Checked;
-				PG.Refresh();
-			}
-		}
-
-		private void UDOptimize_ValueChanged(object sender, EventArgs e)
-		{
-			if (Conf.SelectedTool is Core.RasterToGcode.Vectorization)
-			{
-				((Core.RasterToGcode.Vectorization)Conf.SelectedTool).Optimize.Value = UDOptimize.Value;
-				PG.Refresh();
-			}
-		}
-
-		private void CbOptimize_CheckedChanged(object sender, EventArgs e)
-		{
-			if (Conf.SelectedTool is Core.RasterToGcode.Vectorization)
-			{
-				((Core.RasterToGcode.Vectorization)Conf.SelectedTool).Optimize.Enabled = CbOptimize.Checked;
-				UDOptimize.Enabled = CbOptimize.Checked;
-				PG.Refresh();
-			}
-		}
+	
 
 		private void RasterToLaserForm_Load(object sender, EventArgs e)
 		{
@@ -441,17 +290,13 @@ namespace LaserGRBL.RasterToGcode
 			}
 		}
 
-		void CbDirectionsSelectedIndexChanged(object sender, EventArgs e)
-		{
-			Conf.SelectedTool.Direction = (Core.RasterToGcode.ConversionTool.EngravingDirection)CbDirections.SelectedItem;
-			PG.Refresh();
-		}
 
-		void CbInterpolationSelectedIndexChanged(object sender, EventArgs e)
-		{
-			Conf.ColorToGrayscale.InterpolationMode = (InterpolationMode)CbInterpolation.SelectedItem;
-			PG.Refresh();
-		}
+
+		//void CbInterpolationSelectedIndexChanged(object sender, EventArgs e)
+		//{
+		//	Conf.ColorToGrayscale.InterpolationMode = (InterpolationMode)CbInterpolation.SelectedItem;
+		//	PG.Refresh();
+		//}
 
 		void BtRotateCWClick(object sender, EventArgs e)
 		{PG.RotateCW();}
@@ -468,17 +313,7 @@ namespace LaserGRBL.RasterToGcode
 		void BtnRevertClick(object sender, EventArgs e)
 		{PG.Revert();}
 
-		private void CbFillingDirection_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			Conf.SelectedTool.Direction = (Core.RasterToGcode.ConversionTool.EngravingDirection)CbFillingDirection.SelectedItem;
-			BtnFillingQualityInfo.Visible = LblFillingLineLbl.Visible = LblFillingQuality.Visible = UDFillingQuality.Visible = ((Core.RasterToGcode.ConversionTool.EngravingDirection)CbFillingDirection.SelectedItem != Core.RasterToGcode.ConversionTool.EngravingDirection.None);
-			PG.Refresh();
-		}
-
-		private void UDFillingQuality_ValueChanged(object sender, EventArgs e)
-		{
-			Conf.SelectedTool.Quality = (double)UDFillingQuality.Value;  
-		}
+	
 		
 		
 		bool isDrag = false;
@@ -585,68 +420,40 @@ namespace LaserGRBL.RasterToGcode
 
 
 
-		private void CbDownSample_CheckedChanged(object sender, EventArgs e)
-		{
-			if (Conf.SelectedTool is Core.RasterToGcode.Vectorization)
-			{
-				((Core.RasterToGcode.Vectorization)Conf.SelectedTool).DownSampling.Enabled = CbDownSample.Checked;
-				UDDownSample.Enabled = CbDownSample.Checked;
-				PG.Refresh();
-			}
-		}
-
-		private void UDDownSample_ValueChanged(object sender, EventArgs e)
-		{
-			if (Conf.SelectedTool is Core.RasterToGcode.Vectorization)
-			{
-				((Core.RasterToGcode.Vectorization)Conf.SelectedTool).DownSampling.Value = UDDownSample.Value;
-				PG.Refresh();
-			}
-		}
+	
 
 		private void PbConverted_Resize(object sender, EventArgs e)
 		{
 			PG.Resize();
 		}
 
-		private void CbDither_SelectedIndexChanged(object sender, EventArgs e)
+		bool requireRefresh;
+		private void GS_ValueChanged(object sender, EventArgs e)
 		{
-			if (Conf.SelectedTool is Core.RasterToGcode.Dithering)
-			{
-				((Core.RasterToGcode.Dithering)Conf.SelectedTool).Mode = (Core.RasterToGcode.ImageTransform.DitheringMode)CbDither.SelectedItem;
+			PG.ShowWClipDemo = GS.ClipPreview;
+			requireRefresh = true;
+		}
+
+		private void ST_ValueChanged(object sender, EventArgs e)
+		{
+			PG.ShowLinePreview = ST.ShowLinePreview;
+			requireRefresh = true;
+		}
+
+		void Application_Idle(object sender, EventArgs e)
+		{
+			if (requireRefresh)
 				PG.Refresh();
-			}
+			requireRefresh = false;
 		}
 
-		private void BtnQualityInfo_Click(object sender, EventArgs e)
-		{
-			UDQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog((double)UDQuality.Value);
-			//System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
-		}
 
-		private void BtnFillingQualityInfo_Click(object sender, EventArgs e)
-		{
-			UDFillingQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog((double)UDFillingQuality.Value);
-			//System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
-		}
 
-		private void TBWhiteClip_ValueChanged(object sender, EventArgs e)
-		{ 
-			Conf.ColorToGrayscale.WhitePoint = (byte)TBWhiteClip.Value;
-			PG.Refresh();
-		}
 
-		private void TBWhiteClip_MouseDown(object sender, MouseEventArgs e)
-		{
-			PG.ShowWClipDemo = true;
-			PG.Refresh();
-		}
+	
 
-		private void TBWhiteClip_MouseUp(object sender, MouseEventArgs e)
-		{
-			PG.ShowWClipDemo = false;
-			PG.Refresh();	
-		}
+	
+
 
 	}
 }

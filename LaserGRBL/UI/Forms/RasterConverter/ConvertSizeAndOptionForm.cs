@@ -10,7 +10,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace LaserGRBL.RasterToGcode
+namespace LaserGRBL.UI.Forms.RasterConverter
 {
 	/// <summary>
 	/// Description of ConvertSizeAndOptionForm.

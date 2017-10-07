@@ -253,6 +253,12 @@
     <Compile Include="UI\Forms\RasterConverter\ConvertSizeAndOptionForm.Designer.cs">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Forms\RasterConverter\SetupDithering.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\RasterConverter\SetupDithering.Designer.cs">
+      <DependentUpon>SetupDithering.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Forms\RasterConverter\Dithering\ArgbColor.cs" />
     <Compile Include="UI\Forms\RasterConverter\Dithering\AtkinsonDithering.cs" />
     <Compile Include="UI\Forms\RasterConverter\Dithering\BurkesDithering.cs" />
@@ -281,6 +287,30 @@
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="UI\Forms\RasterConverter\SetupGrayscale.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\RasterConverter\SetupGrayscale.Designer.cs">
+      <DependentUpon>SetupGrayscale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\RasterConverter\SetupLineToLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\RasterConverter\SetupLineToLine.Designer.cs">
+      <DependentUpon>SetupLineToLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\RasterConverter\SetupTool.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\RasterConverter\SetupTool.Designer.cs">
+      <DependentUpon>SetupTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\RasterConverter\SetupVectorization.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\RasterConverter\SetupVectorization.Designer.cs">
+      <DependentUpon>SetupVectorization.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Forms\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -360,7 +390,7 @@
     <Compile Include="UI\UserControls\LabelTB.Designer.cs">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </Compile>
-	    <Compile Include="UserControls\PlaceholderTextbox.cs">
+    <Compile Include="UserControls\PlaceholderTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\UserControls\ProgressBar\WaitingProgressBar.cs">
@@ -517,6 +547,9 @@
     <EmbeddedResource Include="UI\Forms\RasterConverter\ConvertSizeAndOptionForm.zh-CN.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\RasterConverter\SetupDithering.resx">
+      <DependentUpon>SetupDithering.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\RasterConverter\RasterToLaserForm.da.resx">
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -567,6 +600,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\RasterConverter\ResolutionHelperForm.zh-CN.resx">
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\RasterConverter\SetupGrayscale.resx">
+      <DependentUpon>SetupGrayscale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\RasterConverter\SetupLineToLine.resx">
+      <DependentUpon>SetupLineToLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\RasterConverter\SetupTool.resx">
+      <DependentUpon>SetupTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\RasterConverter\SetupVectorization.resx">
+      <DependentUpon>SetupVectorization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\SettingsForm.da.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

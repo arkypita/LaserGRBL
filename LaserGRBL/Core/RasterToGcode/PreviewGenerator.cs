@@ -16,7 +16,7 @@ namespace LaserGRBL.Core.RasterToGcode
 		private Bitmap BaseImage;		//base image (cropped or rotated)
 		private Bitmap ResizedImage;	//resized for preview (smaller = faster preview)
 		public bool IsGrayScale;		//image has no color
-		
+
 		public bool ShowWClipDemo;
 		public bool ShowLinePreview;
 
@@ -34,13 +34,13 @@ namespace LaserGRBL.Core.RasterToGcode
 			GC = core;
 			FileName = filename;
 			PB = target;
-			
+
 			//this double pass is needed to normalize loaded image pixelformat
 			//http://stackoverflow.com/questions/2016406/converting-bitmap-pixelformats-in-c-sharp
 			using (Bitmap loadedBmp = new Bitmap(filename))
-				using (Bitmap tmpBmp = new Bitmap(loadedBmp))
-					BaseImage = tmpBmp.Clone(new Rectangle(0, 0, tmpBmp.Width, tmpBmp.Height), PixelFormat.Format32bppArgb); 
-			
+			using (Bitmap tmpBmp = new Bitmap(loadedBmp))
+				BaseImage = tmpBmp.Clone(new Rectangle(0, 0, tmpBmp.Width, tmpBmp.Height), PixelFormat.Format32bppArgb);
+
 			OriginalImage = BaseImage.Clone() as Bitmap;
 			IsGrayScale = ImageTransform.IsGrayScaleImage(BaseImage);
 		}
@@ -80,7 +80,7 @@ namespace LaserGRBL.Core.RasterToGcode
 		public void Resize()
 		{
 			ResizeRecalc();
-			Refresh(); 
+			Refresh();
 		}
 
 		public void Dispose()
@@ -89,30 +89,30 @@ namespace LaserGRBL.Core.RasterToGcode
 			BaseImage.Dispose();
 			ResizedImage.Dispose();
 		}
-		
+
 		public void CropImage(Rectangle rect, Size rsize)
 		{
 			if (rect.Width <= 0 || rect.Height <= 0)
 				return;
-			
+
 			Rectangle scaled = new Rectangle(rect.X * BaseImage.Width / rsize.Width,
-			                                 rect.Y * BaseImage.Height / rsize.Height,
+											 rect.Y * BaseImage.Height / rsize.Height,
 											 rect.Width * BaseImage.Width / rsize.Width,
 											 rect.Height * BaseImage.Height / rsize.Height);
-			
+
 			if (scaled.Width <= 0 || scaled.Height <= 0)
 				return;
-			
+
 			Bitmap newBmp = BaseImage.Clone(scaled, BaseImage.PixelFormat);
 			Bitmap oldBmp = BaseImage;
-		
+
 			BaseImage = newBmp;
 			oldBmp.Dispose();
 
 			ResizeRecalc();
 			Refresh();
 		}
-		
+
 		public void RotateCW()
 		{
 			BaseImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
@@ -124,44 +124,44 @@ namespace LaserGRBL.Core.RasterToGcode
 		{
 			BaseImage.RotateFlip(RotateFlipType.Rotate270FlipNone);
 			ResizeRecalc();
-			Refresh();			
+			Refresh();
 		}
-		
+
 		public void FlipH()
 		{
 			BaseImage.RotateFlip(RotateFlipType.RotateNoneFlipY);
 			ResizeRecalc();
 			Refresh();
 		}
-		
+
 		public void Revert()
 		{
 			Bitmap tmp = BaseImage;
 			BaseImage = OriginalImage.Clone() as Bitmap;
 			tmp.Dispose();
-			
+
 			ResizeRecalc();
-			Refresh();		
+			Refresh();
 		}
-		
+
 		public void FlipV()
 		{
 			BaseImage.RotateFlip(RotateFlipType.RotateNoneFlipX);
 			ResizeRecalc();
-			Refresh();			
+			Refresh();
 		}
-		
+
 		private void ResizeRecalc()
 		{
 			lock (this)
 			{
 				if (ResizedImage != null)
 					ResizedImage.Dispose();
-				
+
 				ResizedImage = ImageTransform.ResizeImage(BaseImage, CalculateResizeToFit(BaseImage.Size, PB.Size), false, C.ColorToGrayscale.InterpolationMode);
 			}
 		}
-		
+
 		private class GeneratorThread
 		{
 			public delegate void OnGeneratorComplete(Bitmap result);
@@ -366,8 +366,8 @@ namespace LaserGRBL.Core.RasterToGcode
 			}
 		}
 
-	
-	
+
+
 
 
 		//void DoTrueWork()
@@ -380,7 +380,7 @@ namespace LaserGRBL.Core.RasterToGcode
 		//		double fres = Math.Min(maxRes, FillingQuality);
 
 		//		Size pixelSize = new Size((int)(TargetSize.Width * res), (int)(TargetSize.Height * res));
-				
+
 		//		if (res > 0)
 		//		{
 		//			using (Bitmap bmp = CreateTarget(pixelSize))
@@ -405,7 +405,7 @@ namespace LaserGRBL.Core.RasterToGcode
 		//				else if (SelectedTool == PreviewGenerator.Tool.Vectorize)
 		//					C.LoadedFile.LoadImagePotrace(bmp, FileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, conf);
 		//			}
-					
+
 		//			if (GenerationComplete != null)
 		//				GenerationComplete(null);
 		//		}
@@ -421,13 +421,13 @@ namespace LaserGRBL.Core.RasterToGcode
 		//			GenerationComplete(ex);
 		//	}
 		//}
-		
+
 		//private Bitmap CreateTarget(Size size)
 		//{
 		//	return ProduceBitmap(BaseImage, size); //non usare using perché poi viene assegnato al postprocessing 
 		//}
 
-	
+
 
 		public int WidthToHeight(int Width)
 		{ return Width * BaseImage.Height / BaseImage.Width; }
@@ -441,7 +441,7 @@ namespace LaserGRBL.Core.RasterToGcode
 			double widthScale = boxSize.Width / (double)imageSize.Width;
 			double heightScale = boxSize.Height / (double)imageSize.Height;
 			double scale = Math.Min(widthScale, heightScale);
-			return new Size((int)Math.Round((imageSize.Width * scale)),(int)Math.Round((imageSize.Height * scale)));
+			return new Size((int)Math.Round((imageSize.Width * scale)), (int)Math.Round((imageSize.Height * scale)));
 		}
 	}
 }

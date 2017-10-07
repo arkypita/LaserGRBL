@@ -1,4 +1,4 @@
-﻿namespace LaserGRBL.RasterToGcode
+﻿namespace LaserGRBL.UI.Forms.RasterConverter
 {
 	partial class ResolutionHelperForm
 	{
