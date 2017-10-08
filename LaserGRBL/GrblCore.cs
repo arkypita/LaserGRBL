@@ -71,7 +71,8 @@ namespace LaserGRBL
 			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", null);
 			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null);
 
-			file = new GrblFile();
+			file = new GrblFile(0, 0, 200, 300);  //create a fake range to use with manual movements
+
 			file.OnFileLoaded += RiseOnFileLoaded;
 
 			mQueue = new System.Collections.Generic.Queue<GrblCommand>();

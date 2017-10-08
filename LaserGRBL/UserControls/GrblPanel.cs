@@ -34,8 +34,7 @@ namespace LaserGRBL.UserControls
 		{
 			if (mBitmap != null)
 				e.Graphics.DrawImage(mBitmap, 0, 0, Width, Height);
-
-
+			
 			PointF p = TranslatePoint(mLastPosition);
 			e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
@@ -96,18 +95,7 @@ namespace LaserGRBL.UserControls
 				g.PixelOffsetMode = PixelOffsetMode.HighQuality;
 				g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
 
-				g.ScaleTransform(1.0F, -1.0F);
-				g.TranslateTransform(0.0F, -(float)wSize.Height);
-
-				float scaleX = (float)(wSize.Width - 25 - 5) / (float)wSize.Width;
-				float scaleY = (float)(wSize.Height - 15 - 5) / (float)wSize.Height;
-
-				g.ScaleTransform(scaleX, scaleY);
-				g.TranslateTransform(25, 15);
-
-				g.DrawLines(GetPen(ColorScheme.PreviewText), new PointF[] { new PointF(0, wSize.Height), new PointF(0, 0), new PointF(wSize.Width, 0) });
-
-				if (Core != null && Core.HasProgram)
+				if (Core != null /*&& Core.HasProgram*/)
 					Core.LoadedFile.DrawOnGraphics(g, wSize);
 
 				mLastMatrix = g.Transform;

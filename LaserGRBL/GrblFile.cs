@@ -21,6 +21,17 @@ namespace LaserGRBL
 		private TimeSpan mEstimatedTimeOn;
 		private TimeSpan mEstimatedTimeOff;
 
+		public GrblFile()
+		{
+ 
+		}
+
+		public GrblFile(decimal x, decimal y, decimal x1, decimal y1)
+		{
+			mRange.UpdateXYRange(x, y, false);
+			mRange.UpdateXYRange(x1, y1, false);
+		}
+
 		public void SaveProgram(string filename)
 		{
 			try
@@ -565,10 +576,13 @@ namespace LaserGRBL
 			Boolean analyze = (g == null);
 			Boolean drawing = (g != null);
 
-			if (drawing && !mRange.DrawingRange.ValidRange)
+			if (drawing && !mRange.MovingRange.ValidRange)
 				return;
 
-			float zoom = drawing ? DrawJobRange(g, ref s) : 1;
+			ProgramRange.XYRange scaleRange = mRange.MovingRange;
+
+			//Get scale factors for both directions. To preserve the aspect ratio, use the smaller scale factor.
+			float zoom = drawing ? Math.Min((float)s.Width / (float)scaleRange.Width, (float)s.Height / (float)scaleRange.Height) * 0.95f : 1;
 			bool firstline = true;
 			bool isLaserCutting = false;
             bool isLaserActive = false;
@@ -587,6 +601,20 @@ namespace LaserGRBL
 				mTotalTravelOff = 0;
 				mEstimatedTimeOn = TimeSpan.Zero;
 				mEstimatedTimeOff = TimeSpan.Zero;
+			}
+
+			if (drawing)
+			{
+				g.ResetTransform();
+
+				//Translate to center of gravity of the image
+				g.TranslateTransform(-scaleRange.Center.X, -scaleRange.Center.Y, MatrixOrder.Append);
+				//Scale and invert Y
+				g.ScaleTransform(zoom, -zoom, MatrixOrder.Append); 
+				//Translate to center over the drawing area.
+				g.TranslateTransform(s.Width / 2, s.Height / 2, MatrixOrder.Append);
+
+				DrawJobRange(g, s, zoom);
 			}
 
 			if (drawing && !mRange.SpindleRange.ValidRange) //assign max alpha if no S range available
@@ -755,34 +783,40 @@ namespace LaserGRBL
 			
 		}
 
-		private float DrawJobRange(Graphics g, ref Size s)
+		private void DrawJobRange(Graphics g, Size s, float zoom)
 		{
-			Size wSize = s;
-			float zoom = 1;
-			float ctrW = wSize.Width - 10;
-			float ctrH = wSize.Height - 10;
-			float proW = (float)mRange.DrawingRange.X.Max;
-			float proH = (float)mRange.DrawingRange.Y.Max;
-			zoom = Math.Min(ctrW / proW, ctrH / proH);
-			g.ScaleTransform(zoom, zoom);
+			//RectangleF frame = new RectangleF(-s.Width / zoom, -s.Height / zoom, s.Width / zoom, s.Height / zoom);
 
-			using (Pen pen = GetPen(ColorScheme.PreviewJobRange))
+			SizeF wSize = new SizeF(s.Width / zoom, s.Height / zoom);
+
+			//draw cartesian plane
+			using (Pen pen = GetPen(ColorScheme.PreviewText))
 			{
 				pen.ScaleTransform(1 / zoom, 1 / zoom);
-				pen.DashStyle = DashStyle.Dash;
-				pen.DashPattern = new float[] { 1f, 2f };
-
-				g.DrawLine(pen, 0, (float)mRange.DrawingRange.Y.Min, wSize.Width, (float)mRange.DrawingRange.Y.Min);
-				DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString("0"), false, true, true, false);
-				g.DrawLine(pen, 0, (float)mRange.DrawingRange.Y.Max, wSize.Width, (float)mRange.DrawingRange.Y.Max);
-				DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString("0"), false, true, true, false);
-
-				g.DrawLine(pen, (float)mRange.DrawingRange.X.Min, 0, (float)mRange.DrawingRange.X.Min, wSize.Height);
-				DrawString(g, zoom, mRange.DrawingRange.X.Min, 0, mRange.DrawingRange.X.Min.ToString("0"), true, false, false, false);
-				g.DrawLine(pen, (float)mRange.DrawingRange.X.Max, 0, (float)mRange.DrawingRange.X.Max, wSize.Height);
-				DrawString(g, zoom, mRange.DrawingRange.X.Max, 0, mRange.DrawingRange.X.Max.ToString("0"), true, false, false, false);
+				g.DrawLine(pen, -wSize.Width, 0.0f, wSize.Width, 0.0f);
+				g.DrawLine(pen, 0, -wSize.Height, 0, wSize.Height);
 			}
-			return zoom;
+
+			//draw job range
+			if (mRange.DrawingRange.ValidRange)
+			{
+				using (Pen pen = GetPen(ColorScheme.PreviewJobRange))
+				{
+					pen.DashStyle = DashStyle.Dash;
+					pen.DashPattern = new float[] { 1.0f / zoom, 2.0f / zoom }; //pen.DashPattern = new float[] { 1f / zoom, 2f / zoom};
+					pen.ScaleTransform(1.0f / zoom, 1.0f / zoom);
+
+					g.DrawLine(pen, -wSize.Width, (float)mRange.DrawingRange.Y.Min, wSize.Width, (float)mRange.DrawingRange.Y.Min);
+					g.DrawLine(pen, -wSize.Width, (float)mRange.DrawingRange.Y.Max, wSize.Width, (float)mRange.DrawingRange.Y.Max);
+					g.DrawLine(pen, (float)mRange.DrawingRange.X.Min, -wSize.Height, (float)mRange.DrawingRange.X.Min, wSize.Height);
+					g.DrawLine(pen, (float)mRange.DrawingRange.X.Max, -wSize.Height, (float)mRange.DrawingRange.X.Max, wSize.Height);
+
+					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString("0"), false, true, true, false);
+					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString("0"), false, true, true, false);
+					DrawString(g, zoom, mRange.DrawingRange.X.Min, 0, mRange.DrawingRange.X.Min.ToString("0"), true, false, false, false);
+					DrawString(g, zoom, mRange.DrawingRange.X.Max, 0, mRange.DrawingRange.X.Max.ToString("0"), true, false, false, false);
+				}
+			}
 		}
 
 		private Pen GetPen(Color color)
@@ -884,6 +918,23 @@ namespace LaserGRBL
 
 			public bool ValidRange
 			{ get { return X.ValidRange && Y.ValidRange; } }
+
+			public decimal Width
+			{ get { return X.Max - X.Min; } }
+
+			public decimal Height
+			{ get { return Y.Max - Y.Min; } }
+
+				public PointF Center
+				{
+					get
+					{
+						if (ValidRange)
+							return new PointF((float)X.Min + (float)Width / 2.0f, (float)Y.Min + (float)Height / 2.0f);
+						else
+							return new PointF(0, 0);
+					}
+				}
 		}
 
 		public class SRange
