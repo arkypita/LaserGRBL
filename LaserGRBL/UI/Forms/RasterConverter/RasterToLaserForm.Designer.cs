@@ -53,6 +53,7 @@
 			this.BtnRevert = new LaserGRBL.UserControls.ImageButton();
 			this.GS = new LaserGRBL.UI.Forms.RasterConverter.SetupGrayscale();
 			this.ST = new LaserGRBL.UI.Forms.RasterConverter.SetupTool();
+			this.setupOutput1 = new LaserGRBL.UI.Forms.RasterConverter.SetupOutput();
 			this.RightGrid.SuspendLayout();
 			this.TCOriginalPreview.SuspendLayout();
 			this.TpPreview.SuspendLayout();
@@ -130,9 +131,10 @@
 			// tableLayoutPanel8
 			// 
 			resources.ApplyResources(this.tableLayoutPanel8, "tableLayoutPanel8");
-			this.tableLayoutPanel8.Controls.Add(this.CbLinePreview, 0, 3);
+			this.tableLayoutPanel8.Controls.Add(this.CbLinePreview, 0, 4);
 			this.tableLayoutPanel8.Controls.Add(this.GS, 0, 0);
 			this.tableLayoutPanel8.Controls.Add(this.ST, 0, 1);
+			this.tableLayoutPanel8.Controls.Add(this.setupOutput1, 0, 2);
 			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
 			this.RightGrid.SetRowSpan(this.tableLayoutPanel8, 2);
 			// 
@@ -280,6 +282,11 @@
 			this.ST.Name = "ST";
 			this.ST.ValueChanged += new System.EventHandler(this.OnSomeValueChanged);
 			// 
+			// setupOutput1
+			// 
+			resources.ApplyResources(this.setupOutput1, "setupOutput1");
+			this.setupOutput1.Name = "setupOutput1";
+			// 
 			// RasterToLaserForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -330,5 +337,6 @@
 		private SetupGrayscale GS;
 		private SetupTool ST;
 		private System.Windows.Forms.CheckBox CbLinePreview;
+		private SetupOutput setupOutput1;
 	}
 }

@@ -299,6 +299,12 @@
     <Compile Include="UI\Forms\RasterConverter\SetupLineToLine.Designer.cs">
       <DependentUpon>SetupLineToLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Forms\RasterConverter\SetupOutput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\RasterConverter\SetupOutput.Designer.cs">
+      <DependentUpon>SetupOutput.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Forms\RasterConverter\SetupTool.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -606,6 +612,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\RasterConverter\SetupLineToLine.resx">
       <DependentUpon>SetupLineToLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\RasterConverter\SetupOutput.resx">
+      <DependentUpon>SetupOutput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\RasterConverter\SetupTool.resx">
       <DependentUpon>SetupTool.cs</DependentUpon>
