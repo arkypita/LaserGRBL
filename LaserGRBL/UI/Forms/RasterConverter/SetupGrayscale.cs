@@ -78,7 +78,7 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 		private void CbThreshold_CheckedChanged(object sender, EventArgs e)
 		{
 			ColorToGrayscale.Threshold.Enabled = CbThreshold.Checked;
-			TbThreshold.Enabled = ColorToGrayscale.Threshold.Enabled;
+			TbThreshold.Visible = ColorToGrayscale.Threshold.Enabled;
 			Change();
 		}
 

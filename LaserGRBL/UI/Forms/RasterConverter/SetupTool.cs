@@ -91,9 +91,6 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 				ValueChanged(sender, e);
 		}
 
-		public bool ShowLinePreview
-		{ get { return CbLinePreview.Checked; } }
-
 		private void CbLinePreview_CheckedChanged(object sender, EventArgs e)
 		{Instance_ValueChanged(sender, e);}
 	}

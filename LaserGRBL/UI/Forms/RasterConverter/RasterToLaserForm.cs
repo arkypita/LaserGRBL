@@ -428,15 +428,10 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 		}
 
 		bool requireRefresh;
-		private void GS_ValueChanged(object sender, EventArgs e)
+		private void OnSomeValueChanged(object sender, EventArgs e)
 		{
 			PG.ShowWClipDemo = GS.ClipPreview;
-			requireRefresh = true;
-		}
-
-		private void ST_ValueChanged(object sender, EventArgs e)
-		{
-			PG.ShowLinePreview = ST.ShowLinePreview;
+			PG.ShowLinePreview = CbLinePreview.Checked;
 			requireRefresh = true;
 		}
 
@@ -446,6 +441,7 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 				PG.Refresh();
 			requireRefresh = false;
 		}
+
 
 
 

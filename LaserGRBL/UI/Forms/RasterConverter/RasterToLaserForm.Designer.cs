@@ -38,6 +38,7 @@
 			this.PbOriginal = new System.Windows.Forms.PictureBox();
 			this.FlipControl = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+			this.CbLinePreview = new System.Windows.Forms.CheckBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnCreate = new System.Windows.Forms.Button();
@@ -129,10 +130,18 @@
 			// tableLayoutPanel8
 			// 
 			resources.ApplyResources(this.tableLayoutPanel8, "tableLayoutPanel8");
+			this.tableLayoutPanel8.Controls.Add(this.CbLinePreview, 0, 3);
 			this.tableLayoutPanel8.Controls.Add(this.GS, 0, 0);
 			this.tableLayoutPanel8.Controls.Add(this.ST, 0, 1);
 			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
 			this.RightGrid.SetRowSpan(this.tableLayoutPanel8, 2);
+			// 
+			// CbLinePreview
+			// 
+			resources.ApplyResources(this.CbLinePreview, "CbLinePreview");
+			this.CbLinePreview.Name = "CbLinePreview";
+			this.CbLinePreview.UseVisualStyleBackColor = true;
+			this.CbLinePreview.CheckedChanged += new System.EventHandler(this.OnSomeValueChanged);
 			// 
 			// tableLayoutPanel1
 			// 
@@ -263,13 +272,13 @@
 			resources.ApplyResources(this.GS, "GS");
 			this.GS.ClipPreview = false;
 			this.GS.Name = "GS";
-			this.GS.ValueChanged += new System.EventHandler(this.GS_ValueChanged);
+			this.GS.ValueChanged += new System.EventHandler(this.OnSomeValueChanged);
 			// 
 			// ST
 			// 
 			resources.ApplyResources(this.ST, "ST");
 			this.ST.Name = "ST";
-			this.ST.ValueChanged += new System.EventHandler(this.ST_ValueChanged);
+			this.ST.ValueChanged += new System.EventHandler(this.OnSomeValueChanged);
 			// 
 			// RasterToLaserForm
 			// 
@@ -320,5 +329,6 @@
 		private System.Windows.Forms.Button BtnCancel;
 		private SetupGrayscale GS;
 		private SetupTool ST;
+		private System.Windows.Forms.CheckBox CbLinePreview;
 	}
 }

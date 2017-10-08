@@ -662,6 +662,39 @@
   <data name="tableLayoutPanel8.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="CbLinePreview.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CbLinePreview.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CbLinePreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 536</value>
+  </data>
+  <data name="CbLinePreview.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="CbLinePreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 17</value>
+  </data>
+  <data name="CbLinePreview.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="CbLinePreview.Text" xml:space="preserve">
+    <value>Line Preview</value>
+  </data>
+  <data name="&gt;&gt;CbLinePreview.Name" xml:space="preserve">
+    <value>CbLinePreview</value>
+  </data>
+  <data name="&gt;&gt;CbLinePreview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CbLinePreview.Parent" xml:space="preserve">
+    <value>tableLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;CbLinePreview.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="GS.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -675,7 +708,7 @@
     <value>3, 3</value>
   </data>
   <data name="GS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 140</value>
+    <value>222, 137</value>
   </data>
   <data name="GS.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -690,7 +723,7 @@
     <value>tableLayoutPanel8</value>
   </data>
   <data name="&gt;&gt;GS.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="ST.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -702,7 +735,7 @@
     <value>Fill</value>
   </data>
   <data name="ST.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 149</value>
+    <value>3, 146</value>
   </data>
   <data name="ST.Size" type="System.Drawing.Size, System.Drawing">
     <value>222, 94</value>
@@ -720,7 +753,7 @@
     <value>tableLayoutPanel8</value>
   </data>
   <data name="&gt;&gt;ST.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="tableLayoutPanel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -729,7 +762,7 @@
     <value>3, 3</value>
   </data>
   <data name="tableLayoutPanel8.RowCount" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
     <value>228, 555</value>
@@ -750,7 +783,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel8.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="GS" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ST" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbLinePreview" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GS" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ST" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -895,6 +928,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>865, 561</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>

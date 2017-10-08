@@ -336,6 +336,7 @@
 			this.TbThreshold.TabIndex = 14;
 			this.TbThreshold.ThumbRoundRectSize = new System.Drawing.Size(4, 4);
 			this.TbThreshold.ThumbSize = 8;
+			this.TbThreshold.Visible = false;
 			this.TbThreshold.ValueChanged += new System.EventHandler(this.TbThreshold_ValueChanged);
 			this.TbThreshold.DoubleClick += new System.EventHandler(this.OnThresholdDoubleClick);
 			// 
