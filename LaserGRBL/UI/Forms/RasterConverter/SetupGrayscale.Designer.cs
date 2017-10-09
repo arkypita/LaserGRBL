@@ -30,25 +30,24 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupGrayscale));
 			this.GbParameters = new System.Windows.Forms.GroupBox();
+			this.BtnRepo = new LaserGRBL.UserControls.ImageButton();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
 			this.LblGrayscale = new System.Windows.Forms.Label();
+			this.CbMode = new LaserGRBL.UserControls.EnumComboBox();
+			this.TBRed = new LaserGRBL.UserControls.ColorSlider();
 			this.LblRed = new System.Windows.Forms.Label();
 			this.LblBlue = new System.Windows.Forms.Label();
 			this.LblGreen = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.CbThreshold = new System.Windows.Forms.CheckBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.BtnRepo = new LaserGRBL.UserControls.ImageButton();
-			this.CbMode = new LaserGRBL.UserControls.EnumComboBox();
-			this.TBRed = new LaserGRBL.UserControls.ColorSlider();
 			this.TBGreen = new LaserGRBL.UserControls.ColorSlider();
 			this.TbBright = new LaserGRBL.UserControls.ColorSlider();
 			this.TBBlue = new LaserGRBL.UserControls.ColorSlider();
 			this.TbContrast = new LaserGRBL.UserControls.ColorSlider();
+			this.label3 = new System.Windows.Forms.Label();
+			this.CbThreshold = new System.Windows.Forms.CheckBox();
 			this.TbThreshold = new LaserGRBL.UserControls.ColorSlider();
 			this.TBWhiteClip = new LaserGRBL.UserControls.ColorSlider();
-			this.BtnAddBM = new LaserGRBL.UserControls.ImageButton();
+			this.label4 = new System.Windows.Forms.Label();
 			this.GbParameters.SuspendLayout();
 			this.TLP.SuspendLayout();
 			this.SuspendLayout();
@@ -57,7 +56,6 @@
 			// 
 			this.GbParameters.AutoSize = true;
 			this.GbParameters.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.GbParameters.Controls.Add(this.BtnAddBM);
 			this.GbParameters.Controls.Add(this.BtnRepo);
 			this.GbParameters.Controls.Add(this.TLP);
 			this.GbParameters.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -67,6 +65,20 @@
 			this.GbParameters.TabIndex = 1;
 			this.GbParameters.TabStop = false;
 			this.GbParameters.Text = "Image";
+			// 
+			// BtnRepo
+			// 
+			this.BtnRepo.AltImage = null;
+			this.BtnRepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.BtnRepo.BackColor = System.Drawing.Color.Transparent;
+			this.BtnRepo.Coloration = System.Drawing.Color.Empty;
+			this.BtnRepo.Image = ((System.Drawing.Image)(resources.GetObject("BtnRepo.Image")));
+			this.BtnRepo.Location = new System.Drawing.Point(200, 0);
+			this.BtnRepo.Name = "BtnRepo";
+			this.BtnRepo.Size = new System.Drawing.Size(17, 17);
+			this.BtnRepo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnRepo.TabIndex = 1;
+			this.BtnRepo.UseAltImage = false;
 			// 
 			// TLP
 			// 
@@ -117,6 +129,44 @@
 			this.LblGrayscale.TabIndex = 0;
 			this.LblGrayscale.Text = "Grayscale";
 			// 
+			// CbMode
+			// 
+			this.CbMode.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.CbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbMode.FormattingEnabled = true;
+			this.CbMode.Location = new System.Drawing.Point(64, 2);
+			this.CbMode.Margin = new System.Windows.Forms.Padding(2);
+			this.CbMode.Name = "CbMode";
+			this.CbMode.SelectedItem = null;
+			this.CbMode.Size = new System.Drawing.Size(150, 21);
+			this.CbMode.TabIndex = 2;
+			this.CbMode.SelectedIndexChanged += new System.EventHandler(this.CbMode_SelectedIndexChanged);
+			// 
+			// TBRed
+			// 
+			this.TBRed.BackColor = System.Drawing.Color.Transparent;
+			this.TBRed.BarInnerColor = System.Drawing.Color.Firebrick;
+			this.TBRed.BarOuterColor = System.Drawing.Color.DarkRed;
+			this.TBRed.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+			this.TBRed.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.TBRed.ElapsedInnerColor = System.Drawing.Color.Red;
+			this.TBRed.ElapsedOuterColor = System.Drawing.Color.DarkRed;
+			this.TBRed.LargeChange = ((uint)(5u));
+			this.TBRed.Location = new System.Drawing.Point(62, 25);
+			this.TBRed.Margin = new System.Windows.Forms.Padding(0);
+			this.TBRed.Maximum = 160;
+			this.TBRed.Minimum = 40;
+			this.TBRed.Name = "TBRed";
+			this.TBRed.Size = new System.Drawing.Size(154, 22);
+			this.TBRed.SmallChange = ((uint)(1u));
+			this.TBRed.TabIndex = 7;
+			this.TBRed.ThumbRoundRectSize = new System.Drawing.Size(4, 4);
+			this.TBRed.ThumbSize = 8;
+			this.TBRed.Value = 100;
+			this.TBRed.Visible = false;
+			this.TBRed.ValueChanged += new System.EventHandler(this.TBRed_ValueChanged);
+			this.TBRed.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
+			// 
 			// LblRed
 			// 
 			this.LblRed.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -163,94 +213,6 @@
 			this.label2.Size = new System.Drawing.Size(56, 13);
 			this.label2.TabIndex = 1;
 			this.label2.Text = "Brightness";
-			// 
-			// label3
-			// 
-			this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label3.AutoSize = true;
-			this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.label3.Location = new System.Drawing.Point(3, 117);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(46, 13);
-			this.label3.TabIndex = 4;
-			this.label3.Text = "Contrast";
-			// 
-			// CbThreshold
-			// 
-			this.CbThreshold.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.CbThreshold.AutoSize = true;
-			this.CbThreshold.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.CbThreshold.Location = new System.Drawing.Point(3, 159);
-			this.CbThreshold.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-			this.CbThreshold.Name = "CbThreshold";
-			this.CbThreshold.Size = new System.Drawing.Size(50, 17);
-			this.CbThreshold.TabIndex = 15;
-			this.CbThreshold.Text = "B&&W";
-			this.CbThreshold.UseVisualStyleBackColor = true;
-			this.CbThreshold.CheckedChanged += new System.EventHandler(this.CbThreshold_CheckedChanged);
-			// 
-			// label4
-			// 
-			this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label4.AutoSize = true;
-			this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.label4.Location = new System.Drawing.Point(3, 139);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(55, 13);
-			this.label4.TabIndex = 19;
-			this.label4.Text = "White Clip";
-			// 
-			// BtnRepo
-			// 
-			this.BtnRepo.AltImage = null;
-			this.BtnRepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BtnRepo.BackColor = System.Drawing.Color.Transparent;
-			this.BtnRepo.Coloration = System.Drawing.Color.Empty;
-			this.BtnRepo.Image = ((System.Drawing.Image)(resources.GetObject("BtnRepo.Image")));
-			this.BtnRepo.Location = new System.Drawing.Point(200, 0);
-			this.BtnRepo.Name = "BtnRepo";
-			this.BtnRepo.Size = new System.Drawing.Size(17, 17);
-			this.BtnRepo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnRepo.TabIndex = 1;
-			this.BtnRepo.UseAltImage = false;
-			// 
-			// CbMode
-			// 
-			this.CbMode.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.CbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CbMode.FormattingEnabled = true;
-			this.CbMode.Location = new System.Drawing.Point(64, 2);
-			this.CbMode.Margin = new System.Windows.Forms.Padding(2);
-			this.CbMode.Name = "CbMode";
-			this.CbMode.SelectedItem = null;
-			this.CbMode.Size = new System.Drawing.Size(150, 21);
-			this.CbMode.TabIndex = 2;
-			this.CbMode.SelectedIndexChanged += new System.EventHandler(this.CbMode_SelectedIndexChanged);
-			// 
-			// TBRed
-			// 
-			this.TBRed.BackColor = System.Drawing.Color.Transparent;
-			this.TBRed.BarInnerColor = System.Drawing.Color.Firebrick;
-			this.TBRed.BarOuterColor = System.Drawing.Color.DarkRed;
-			this.TBRed.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-			this.TBRed.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TBRed.ElapsedInnerColor = System.Drawing.Color.Red;
-			this.TBRed.ElapsedOuterColor = System.Drawing.Color.DarkRed;
-			this.TBRed.LargeChange = ((uint)(5u));
-			this.TBRed.Location = new System.Drawing.Point(62, 25);
-			this.TBRed.Margin = new System.Windows.Forms.Padding(0);
-			this.TBRed.Maximum = 160;
-			this.TBRed.Minimum = 40;
-			this.TBRed.Name = "TBRed";
-			this.TBRed.Size = new System.Drawing.Size(154, 22);
-			this.TBRed.SmallChange = ((uint)(1u));
-			this.TBRed.TabIndex = 7;
-			this.TBRed.ThumbRoundRectSize = new System.Drawing.Size(4, 4);
-			this.TBRed.ThumbSize = 8;
-			this.TBRed.Value = 100;
-			this.TBRed.Visible = false;
-			this.TBRed.ValueChanged += new System.EventHandler(this.TBRed_ValueChanged);
-			this.TBRed.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
 			// 
 			// TBGreen
 			// 
@@ -348,6 +310,31 @@
 			this.TbContrast.ValueChanged += new System.EventHandler(this.TbContrast_ValueChanged);
 			this.TbContrast.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
 			// 
+			// label3
+			// 
+			this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label3.AutoSize = true;
+			this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label3.Location = new System.Drawing.Point(3, 117);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(46, 13);
+			this.label3.TabIndex = 4;
+			this.label3.Text = "Contrast";
+			// 
+			// CbThreshold
+			// 
+			this.CbThreshold.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.CbThreshold.AutoSize = true;
+			this.CbThreshold.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.CbThreshold.Location = new System.Drawing.Point(3, 159);
+			this.CbThreshold.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+			this.CbThreshold.Name = "CbThreshold";
+			this.CbThreshold.Size = new System.Drawing.Size(50, 17);
+			this.CbThreshold.TabIndex = 15;
+			this.CbThreshold.Text = "B&&W";
+			this.CbThreshold.UseVisualStyleBackColor = true;
+			this.CbThreshold.CheckedChanged += new System.EventHandler(this.CbThreshold_CheckedChanged);
+			// 
 			// TbThreshold
 			// 
 			this.TbThreshold.BackColor = System.Drawing.Color.Transparent;
@@ -393,19 +380,16 @@
 			this.TBWhiteClip.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TBWhiteClip_MouseDown);
 			this.TBWhiteClip.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TBWhiteClip_MouseUp);
 			// 
-			// BtnAddBM
+			// label4
 			// 
-			this.BtnAddBM.AltImage = null;
-			this.BtnAddBM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BtnAddBM.BackColor = System.Drawing.Color.Transparent;
-			this.BtnAddBM.Coloration = System.Drawing.Color.Empty;
-			this.BtnAddBM.Image = ((System.Drawing.Image)(resources.GetObject("BtnAddBM.Image")));
-			this.BtnAddBM.Location = new System.Drawing.Point(178, 0);
-			this.BtnAddBM.Name = "BtnAddBM";
-			this.BtnAddBM.Size = new System.Drawing.Size(17, 17);
-			this.BtnAddBM.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnAddBM.TabIndex = 4;
-			this.BtnAddBM.UseAltImage = false;
+			this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label4.AutoSize = true;
+			this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label4.Location = new System.Drawing.Point(3, 139);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(55, 13);
+			this.label4.TabIndex = 19;
+			this.label4.Text = "White Clip";
 			// 
 			// SetupGrayscale
 			// 
@@ -446,6 +430,5 @@
 		private UserControls.ColorSlider TBWhiteClip;
 		private System.Windows.Forms.Label label4;
 		private UserControls.ImageButton BtnRepo;
-		private UserControls.ImageButton BtnAddBM;
 	}
 }

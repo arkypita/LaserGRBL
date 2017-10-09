@@ -30,31 +30,30 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupLaser));
 			this.GbSpeed = new System.Windows.Forms.GroupBox();
-			this.BtnRepo = new LaserGRBL.UserControls.ImageButton();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
 			this.label26 = new System.Windows.Forms.Label();
 			this.label18 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.LblWhatModulate = new System.Windows.Forms.Label();
-			this.CbTools = new LaserGRBL.UserControls.EnumComboBox();
 			this.LblModMin = new System.Windows.Forms.Label();
 			this.LblFP2 = new System.Windows.Forms.Label();
 			this.LblFP1 = new System.Windows.Forms.Label();
 			this.LblModMax = new System.Windows.Forms.Label();
-			this.IIModMin = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label2 = new System.Windows.Forms.Label();
-			this.IIModMax = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.LblFP1u = new System.Windows.Forms.Label();
-			this.IIFixedParam = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
-			this.IILinearFilling = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.LblLFP2u = new System.Windows.Forms.Label();
 			this.CBLaserON = new System.Windows.Forms.ComboBox();
 			this.CBLaserOFF = new System.Windows.Forms.ComboBox();
+			this.CbTools = new LaserGRBL.UserControls.EnumComboBox();
+			this.IIModMin = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IIModMax = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IIFixedParam = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+			this.IILinearFilling = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.BtnOnOffInfo = new LaserGRBL.UserControls.ImageButton();
 			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
-			this.BtnAddBM = new LaserGRBL.UserControls.ImageButton();
+			this.BtnRepo = new LaserGRBL.UserControls.ImageButton();
 			this.GbSpeed.SuspendLayout();
 			this.TLP.SuspendLayout();
 			this.SuspendLayout();
@@ -63,7 +62,6 @@
 			// 
 			this.GbSpeed.AutoSize = true;
 			this.GbSpeed.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.GbSpeed.Controls.Add(this.BtnAddBM);
 			this.GbSpeed.Controls.Add(this.BtnRepo);
 			this.GbSpeed.Controls.Add(this.TLP);
 			this.GbSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -73,20 +71,6 @@
 			this.GbSpeed.TabIndex = 3;
 			this.GbSpeed.TabStop = false;
 			this.GbSpeed.Text = "Laser";
-			// 
-			// BtnRepo
-			// 
-			this.BtnRepo.AltImage = null;
-			this.BtnRepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BtnRepo.BackColor = System.Drawing.Color.Transparent;
-			this.BtnRepo.Coloration = System.Drawing.Color.Empty;
-			this.BtnRepo.Image = ((System.Drawing.Image)(resources.GetObject("BtnRepo.Image")));
-			this.BtnRepo.Location = new System.Drawing.Point(168, 0);
-			this.BtnRepo.Name = "BtnRepo";
-			this.BtnRepo.Size = new System.Drawing.Size(17, 17);
-			this.BtnRepo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnRepo.TabIndex = 2;
-			this.BtnRepo.UseAltImage = false;
 			// 
 			// TLP
 			// 
@@ -178,19 +162,6 @@
 			this.LblWhatModulate.TabIndex = 25;
 			this.LblWhatModulate.Text = "Modulate";
 			// 
-			// CbTools
-			// 
-			this.TLP.SetColumnSpan(this.CbTools, 3);
-			this.CbTools.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.CbTools.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CbTools.FormattingEnabled = true;
-			this.CbTools.Location = new System.Drawing.Point(64, 2);
-			this.CbTools.Margin = new System.Windows.Forms.Padding(2);
-			this.CbTools.Name = "CbTools";
-			this.CbTools.SelectedItem = null;
-			this.CbTools.Size = new System.Drawing.Size(118, 21);
-			this.CbTools.TabIndex = 24;
-			// 
 			// LblModMin
 			// 
 			this.LblModMin.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -235,19 +206,6 @@
 			this.LblModMax.TabIndex = 17;
 			this.LblModMax.Text = "Black";
 			// 
-			// IIModMin
-			// 
-			this.IIModMin.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.IIModMin.ForcedText = null;
-			this.IIModMin.ForceMinMax = false;
-			this.IIModMin.Location = new System.Drawing.Point(79, 28);
-			this.IIModMin.MaxValue = 999;
-			this.IIModMin.MinValue = 0;
-			this.IIModMin.Name = "IIModMin";
-			this.IIModMin.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IIModMin.Size = new System.Drawing.Size(52, 15);
-			this.IIModMin.TabIndex = 11;
-			// 
 			// label2
 			// 
 			this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -260,20 +218,6 @@
 			this.label2.TabIndex = 27;
 			this.label2.Text = "S";
 			// 
-			// IIModMax
-			// 
-			this.IIModMax.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.IIModMax.CurrentValue = 255;
-			this.IIModMax.ForcedText = null;
-			this.IIModMax.ForceMinMax = false;
-			this.IIModMax.Location = new System.Drawing.Point(79, 49);
-			this.IIModMax.MaxValue = 1000;
-			this.IIModMax.MinValue = 1;
-			this.IIModMax.Name = "IIModMax";
-			this.IIModMax.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IIModMax.Size = new System.Drawing.Size(52, 15);
-			this.IIModMax.TabIndex = 12;
-			// 
 			// LblFP1u
 			// 
 			this.LblFP1u.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -284,20 +228,6 @@
 			this.LblFP1u.Size = new System.Drawing.Size(44, 13);
 			this.LblFP1u.TabIndex = 22;
 			this.LblFP1u.Text = "mm/min";
-			// 
-			// IIFixedParam
-			// 
-			this.IIFixedParam.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.IIFixedParam.CurrentValue = 1000;
-			this.IIFixedParam.ForcedText = null;
-			this.IIFixedParam.ForceMinMax = false;
-			this.IIFixedParam.Location = new System.Drawing.Point(79, 69);
-			this.IIFixedParam.MaxValue = 4000;
-			this.IIFixedParam.MinValue = 1;
-			this.IIFixedParam.Name = "IIFixedParam";
-			this.IIFixedParam.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IIFixedParam.Size = new System.Drawing.Size(52, 15);
-			this.IIFixedParam.TabIndex = 6;
 			// 
 			// label3
 			// 
@@ -322,20 +252,6 @@
 			this.label5.Size = new System.Drawing.Size(13, 13);
 			this.label5.TabIndex = 29;
 			this.label5.Text = "F";
-			// 
-			// IILinearFilling
-			// 
-			this.IILinearFilling.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.IILinearFilling.CurrentValue = 1000;
-			this.IILinearFilling.ForcedText = null;
-			this.IILinearFilling.ForceMinMax = false;
-			this.IILinearFilling.Location = new System.Drawing.Point(79, 89);
-			this.IILinearFilling.MaxValue = 4000;
-			this.IILinearFilling.MinValue = 1;
-			this.IILinearFilling.Name = "IILinearFilling";
-			this.IILinearFilling.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IILinearFilling.Size = new System.Drawing.Size(52, 15);
-			this.IILinearFilling.TabIndex = 7;
 			// 
 			// LblLFP2u
 			// 
@@ -375,6 +291,74 @@
 			this.CBLaserOFF.Size = new System.Drawing.Size(66, 21);
 			this.CBLaserOFF.TabIndex = 25;
 			// 
+			// CbTools
+			// 
+			this.TLP.SetColumnSpan(this.CbTools, 3);
+			this.CbTools.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.CbTools.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbTools.FormattingEnabled = true;
+			this.CbTools.Location = new System.Drawing.Point(64, 2);
+			this.CbTools.Margin = new System.Windows.Forms.Padding(2);
+			this.CbTools.Name = "CbTools";
+			this.CbTools.SelectedItem = null;
+			this.CbTools.Size = new System.Drawing.Size(118, 21);
+			this.CbTools.TabIndex = 24;
+			// 
+			// IIModMin
+			// 
+			this.IIModMin.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IIModMin.ForcedText = null;
+			this.IIModMin.ForceMinMax = false;
+			this.IIModMin.Location = new System.Drawing.Point(79, 28);
+			this.IIModMin.MaxValue = 999;
+			this.IIModMin.MinValue = 0;
+			this.IIModMin.Name = "IIModMin";
+			this.IIModMin.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIModMin.Size = new System.Drawing.Size(52, 15);
+			this.IIModMin.TabIndex = 11;
+			// 
+			// IIModMax
+			// 
+			this.IIModMax.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IIModMax.CurrentValue = 255;
+			this.IIModMax.ForcedText = null;
+			this.IIModMax.ForceMinMax = false;
+			this.IIModMax.Location = new System.Drawing.Point(79, 49);
+			this.IIModMax.MaxValue = 1000;
+			this.IIModMax.MinValue = 1;
+			this.IIModMax.Name = "IIModMax";
+			this.IIModMax.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIModMax.Size = new System.Drawing.Size(52, 15);
+			this.IIModMax.TabIndex = 12;
+			// 
+			// IIFixedParam
+			// 
+			this.IIFixedParam.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IIFixedParam.CurrentValue = 1000;
+			this.IIFixedParam.ForcedText = null;
+			this.IIFixedParam.ForceMinMax = false;
+			this.IIFixedParam.Location = new System.Drawing.Point(79, 69);
+			this.IIFixedParam.MaxValue = 4000;
+			this.IIFixedParam.MinValue = 1;
+			this.IIFixedParam.Name = "IIFixedParam";
+			this.IIFixedParam.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIFixedParam.Size = new System.Drawing.Size(52, 15);
+			this.IIFixedParam.TabIndex = 6;
+			// 
+			// IILinearFilling
+			// 
+			this.IILinearFilling.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.IILinearFilling.CurrentValue = 1000;
+			this.IILinearFilling.ForcedText = null;
+			this.IILinearFilling.ForceMinMax = false;
+			this.IILinearFilling.Location = new System.Drawing.Point(79, 89);
+			this.IILinearFilling.MaxValue = 4000;
+			this.IILinearFilling.MinValue = 1;
+			this.IILinearFilling.Name = "IILinearFilling";
+			this.IILinearFilling.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IILinearFilling.Size = new System.Drawing.Size(52, 15);
+			this.IILinearFilling.TabIndex = 7;
+			// 
 			// BtnOnOffInfo
 			// 
 			this.BtnOnOffInfo.AltImage = null;
@@ -403,19 +387,19 @@
 			this.BtnModulationInfo.TabIndex = 23;
 			this.BtnModulationInfo.UseAltImage = false;
 			// 
-			// BtnAddBM
+			// BtnRepo
 			// 
-			this.BtnAddBM.AltImage = null;
-			this.BtnAddBM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BtnAddBM.BackColor = System.Drawing.Color.Transparent;
-			this.BtnAddBM.Coloration = System.Drawing.Color.Empty;
-			this.BtnAddBM.Image = ((System.Drawing.Image)(resources.GetObject("BtnAddBM.Image")));
-			this.BtnAddBM.Location = new System.Drawing.Point(146, 0);
-			this.BtnAddBM.Name = "BtnAddBM";
-			this.BtnAddBM.Size = new System.Drawing.Size(17, 17);
-			this.BtnAddBM.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnAddBM.TabIndex = 4;
-			this.BtnAddBM.UseAltImage = false;
+			this.BtnRepo.AltImage = null;
+			this.BtnRepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.BtnRepo.BackColor = System.Drawing.Color.Transparent;
+			this.BtnRepo.Coloration = System.Drawing.Color.Empty;
+			this.BtnRepo.Image = ((System.Drawing.Image)(resources.GetObject("BtnRepo.Image")));
+			this.BtnRepo.Location = new System.Drawing.Point(168, 0);
+			this.BtnRepo.Name = "BtnRepo";
+			this.BtnRepo.Size = new System.Drawing.Size(17, 17);
+			this.BtnRepo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnRepo.TabIndex = 2;
+			this.BtnRepo.UseAltImage = false;
 			// 
 			// SetupLaser
 			// 
@@ -462,7 +446,6 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label5;
 		private UserControls.ImageButton BtnRepo;
-		private UserControls.ImageButton BtnAddBM;
 
 	}
 }
