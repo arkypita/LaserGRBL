@@ -253,6 +253,12 @@
     <Compile Include="UI\Forms\RasterConverter\ConvertSizeAndOptionForm.Designer.cs">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Forms\RasterConverter\SetupOutput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\RasterConverter\SetupOutput.Designer.cs">
+      <DependentUpon>SetupOutput.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Forms\RasterConverter\SetupDithering.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -299,11 +305,11 @@
     <Compile Include="UI\Forms\RasterConverter\SetupLineToLine.Designer.cs">
       <DependentUpon>SetupLineToLine.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Forms\RasterConverter\SetupOutput.cs">
+    <Compile Include="UI\Forms\RasterConverter\SetupLaser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Forms\RasterConverter\SetupOutput.Designer.cs">
-      <DependentUpon>SetupOutput.cs</DependentUpon>
+    <Compile Include="UI\Forms\RasterConverter\SetupLaser.Designer.cs">
+      <DependentUpon>SetupLaser.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Forms\RasterConverter\SetupTool.cs">
       <SubType>UserControl</SubType>
@@ -553,6 +559,9 @@
     <EmbeddedResource Include="UI\Forms\RasterConverter\ConvertSizeAndOptionForm.zh-CN.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\RasterConverter\SetupOutput.resx">
+      <DependentUpon>SetupOutput.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\RasterConverter\SetupDithering.resx">
       <DependentUpon>SetupDithering.cs</DependentUpon>
     </EmbeddedResource>
@@ -613,8 +622,8 @@
     <EmbeddedResource Include="UI\Forms\RasterConverter\SetupLineToLine.resx">
       <DependentUpon>SetupLineToLine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Forms\RasterConverter\SetupOutput.resx">
-      <DependentUpon>SetupOutput.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Forms\RasterConverter\SetupLaser.resx">
+      <DependentUpon>SetupLaser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\RasterConverter\SetupTool.resx">
       <DependentUpon>SetupTool.cs</DependentUpon>

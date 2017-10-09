@@ -30,53 +30,54 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RasterToLaserForm));
-			this.RightGrid = new System.Windows.Forms.TableLayoutPanel();
+			this.TLPMain = new System.Windows.Forms.TableLayoutPanel();
 			this.TCOriginalPreview = new System.Windows.Forms.TabControl();
 			this.TpPreview = new System.Windows.Forms.TabPage();
+			this.WB = new LaserGRBL.UserControls.WaitingProgressBar();
 			this.PbConverted = new System.Windows.Forms.PictureBox();
 			this.TpOriginal = new System.Windows.Forms.TabPage();
 			this.PbOriginal = new System.Windows.Forms.PictureBox();
-			this.FlipControl = new System.Windows.Forms.TableLayoutPanel();
-			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-			this.CbLinePreview = new System.Windows.Forms.CheckBox();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnCancel = new System.Windows.Forms.Button();
-			this.BtnCreate = new System.Windows.Forms.Button();
-			this.WT = new System.Windows.Forms.Timer(this.components);
-			this.TT = new System.Windows.Forms.ToolTip(this.components);
-			this.WB = new LaserGRBL.UserControls.WaitingProgressBar();
+			this.TLPFlipControl = new System.Windows.Forms.TableLayoutPanel();
 			this.BtFlipV = new LaserGRBL.UserControls.ImageButton();
 			this.BtFlipH = new LaserGRBL.UserControls.ImageButton();
 			this.BtRotateCW = new LaserGRBL.UserControls.ImageButton();
 			this.BtRotateCCW = new LaserGRBL.UserControls.ImageButton();
 			this.BtnCrop = new LaserGRBL.UserControls.ImageButton();
 			this.BtnRevert = new LaserGRBL.UserControls.ImageButton();
+			this.TLPConfig = new System.Windows.Forms.TableLayoutPanel();
+			this.CbLinePreview = new System.Windows.Forms.CheckBox();
 			this.GS = new LaserGRBL.UI.Forms.RasterConverter.SetupGrayscale();
 			this.ST = new LaserGRBL.UI.Forms.RasterConverter.SetupTool();
-			this.setupOutput1 = new LaserGRBL.UI.Forms.RasterConverter.SetupOutput();
-			this.RightGrid.SuspendLayout();
+			this.setupOutput1 = new LaserGRBL.UI.Forms.RasterConverter.SetupLaser();
+			this.TLPButtons = new System.Windows.Forms.TableLayoutPanel();
+			this.BtnCreate = new System.Windows.Forms.Button();
+			this.BtnCancel = new System.Windows.Forms.Button();
+			this.WT = new System.Windows.Forms.Timer(this.components);
+			this.TT = new System.Windows.Forms.ToolTip(this.components);
+			this.setupOutput2 = new LaserGRBL.UI.Forms.RasterConverter.SetupOutput();
+			this.TLPMain.SuspendLayout();
 			this.TCOriginalPreview.SuspendLayout();
 			this.TpPreview.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PbConverted)).BeginInit();
 			this.TpOriginal.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).BeginInit();
-			this.FlipControl.SuspendLayout();
-			this.tableLayoutPanel8.SuspendLayout();
-			this.tableLayoutPanel1.SuspendLayout();
+			this.TLPFlipControl.SuspendLayout();
+			this.TLPConfig.SuspendLayout();
+			this.TLPButtons.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// RightGrid
+			// TLPMain
 			// 
-			resources.ApplyResources(this.RightGrid, "RightGrid");
-			this.RightGrid.Controls.Add(this.TCOriginalPreview, 1, 0);
-			this.RightGrid.Controls.Add(this.FlipControl, 1, 1);
-			this.RightGrid.Controls.Add(this.tableLayoutPanel8, 0, 0);
-			this.RightGrid.Controls.Add(this.tableLayoutPanel1, 3, 1);
-			this.RightGrid.Name = "RightGrid";
+			resources.ApplyResources(this.TLPMain, "TLPMain");
+			this.TLPMain.Controls.Add(this.TCOriginalPreview, 1, 0);
+			this.TLPMain.Controls.Add(this.TLPFlipControl, 1, 1);
+			this.TLPMain.Controls.Add(this.TLPConfig, 0, 0);
+			this.TLPMain.Controls.Add(this.TLPButtons, 3, 1);
+			this.TLPMain.Name = "TLPMain";
 			// 
 			// TCOriginalPreview
 			// 
-			this.RightGrid.SetColumnSpan(this.TCOriginalPreview, 3);
+			this.TLPMain.SetColumnSpan(this.TCOriginalPreview, 3);
 			this.TCOriginalPreview.Controls.Add(this.TpPreview);
 			this.TCOriginalPreview.Controls.Add(this.TpOriginal);
 			resources.ApplyResources(this.TCOriginalPreview, "TCOriginalPreview");
@@ -90,6 +91,26 @@
 			resources.ApplyResources(this.TpPreview, "TpPreview");
 			this.TpPreview.Name = "TpPreview";
 			this.TpPreview.UseVisualStyleBackColor = true;
+			// 
+			// WB
+			// 
+			resources.ApplyResources(this.WB, "WB");
+			this.WB.BarColor = System.Drawing.Color.SteelBlue;
+			this.WB.BorderColor = System.Drawing.Color.Black;
+			this.WB.BouncingMode = LaserGRBL.UserControls.WaitingProgressBar.BouncingModeEnum.PingPong;
+			this.WB.DrawProgressString = false;
+			this.WB.FillColor = System.Drawing.Color.White;
+			this.WB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
+			this.WB.Interval = 25D;
+			this.WB.Maximum = 20D;
+			this.WB.Minimum = 0D;
+			this.WB.Name = "WB";
+			this.WB.ProgressStringDecimals = 0;
+			this.WB.Reverse = true;
+			this.WB.Running = false;
+			this.WB.Step = 1D;
+			this.WB.ThrowExceprion = false;
+			this.WB.Value = 0D;
 			// 
 			// PbConverted
 			// 
@@ -116,80 +137,17 @@
 			this.PbOriginal.Name = "PbOriginal";
 			this.PbOriginal.TabStop = false;
 			// 
-			// FlipControl
+			// TLPFlipControl
 			// 
-			resources.ApplyResources(this.FlipControl, "FlipControl");
-			this.FlipControl.Controls.Add(this.BtFlipV, 5, 0);
-			this.FlipControl.Controls.Add(this.BtFlipH, 4, 0);
-			this.FlipControl.Controls.Add(this.BtRotateCW, 2, 0);
-			this.FlipControl.Controls.Add(this.BtRotateCCW, 3, 0);
-			this.FlipControl.Controls.Add(this.BtnCrop, 6, 0);
-			this.FlipControl.Controls.Add(this.BtnRevert, 0, 0);
-			this.FlipControl.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
-			this.FlipControl.Name = "FlipControl";
-			// 
-			// tableLayoutPanel8
-			// 
-			resources.ApplyResources(this.tableLayoutPanel8, "tableLayoutPanel8");
-			this.tableLayoutPanel8.Controls.Add(this.CbLinePreview, 0, 4);
-			this.tableLayoutPanel8.Controls.Add(this.GS, 0, 0);
-			this.tableLayoutPanel8.Controls.Add(this.ST, 0, 1);
-			this.tableLayoutPanel8.Controls.Add(this.setupOutput1, 0, 2);
-			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-			this.RightGrid.SetRowSpan(this.tableLayoutPanel8, 2);
-			// 
-			// CbLinePreview
-			// 
-			resources.ApplyResources(this.CbLinePreview, "CbLinePreview");
-			this.CbLinePreview.Name = "CbLinePreview";
-			this.CbLinePreview.UseVisualStyleBackColor = true;
-			this.CbLinePreview.CheckedChanged += new System.EventHandler(this.OnSomeValueChanged);
-			// 
-			// tableLayoutPanel1
-			// 
-			resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-			this.tableLayoutPanel1.Controls.Add(this.BtnCancel, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.BtnCreate, 1, 0);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			// 
-			// BtnCancel
-			// 
-			resources.ApplyResources(this.BtnCancel, "BtnCancel");
-			this.BtnCancel.Name = "BtnCancel";
-			this.BtnCancel.UseVisualStyleBackColor = true;
-			this.BtnCancel.Click += new System.EventHandler(this.BtnCancelClick);
-			// 
-			// BtnCreate
-			// 
-			resources.ApplyResources(this.BtnCreate, "BtnCreate");
-			this.BtnCreate.Name = "BtnCreate";
-			this.BtnCreate.UseVisualStyleBackColor = true;
-			this.BtnCreate.Click += new System.EventHandler(this.BtnCreateClick);
-			// 
-			// WT
-			// 
-			this.WT.Interval = 50;
-			this.WT.Tick += new System.EventHandler(this.WTTick);
-			// 
-			// WB
-			// 
-			resources.ApplyResources(this.WB, "WB");
-			this.WB.BarColor = System.Drawing.Color.SteelBlue;
-			this.WB.BorderColor = System.Drawing.Color.Black;
-			this.WB.BouncingMode = LaserGRBL.UserControls.WaitingProgressBar.BouncingModeEnum.PingPong;
-			this.WB.DrawProgressString = false;
-			this.WB.FillColor = System.Drawing.Color.White;
-			this.WB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
-			this.WB.Interval = 25D;
-			this.WB.Maximum = 20D;
-			this.WB.Minimum = 0D;
-			this.WB.Name = "WB";
-			this.WB.ProgressStringDecimals = 0;
-			this.WB.Reverse = true;
-			this.WB.Running = false;
-			this.WB.Step = 1D;
-			this.WB.ThrowExceprion = false;
-			this.WB.Value = 0D;
+			resources.ApplyResources(this.TLPFlipControl, "TLPFlipControl");
+			this.TLPFlipControl.Controls.Add(this.BtFlipV, 5, 0);
+			this.TLPFlipControl.Controls.Add(this.BtFlipH, 4, 0);
+			this.TLPFlipControl.Controls.Add(this.BtRotateCW, 2, 0);
+			this.TLPFlipControl.Controls.Add(this.BtRotateCCW, 3, 0);
+			this.TLPFlipControl.Controls.Add(this.BtnCrop, 6, 0);
+			this.TLPFlipControl.Controls.Add(this.BtnRevert, 0, 0);
+			this.TLPFlipControl.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
+			this.TLPFlipControl.Name = "TLPFlipControl";
 			// 
 			// BtFlipV
 			// 
@@ -269,6 +227,24 @@
 			this.BtnRevert.UseAltImage = false;
 			this.BtnRevert.Click += new System.EventHandler(this.BtnRevertClick);
 			// 
+			// TLPConfig
+			// 
+			resources.ApplyResources(this.TLPConfig, "TLPConfig");
+			this.TLPConfig.Controls.Add(this.CbLinePreview, 0, 5);
+			this.TLPConfig.Controls.Add(this.GS, 0, 0);
+			this.TLPConfig.Controls.Add(this.ST, 0, 1);
+			this.TLPConfig.Controls.Add(this.setupOutput1, 0, 2);
+			this.TLPConfig.Controls.Add(this.setupOutput2, 0, 3);
+			this.TLPConfig.Name = "TLPConfig";
+			this.TLPMain.SetRowSpan(this.TLPConfig, 2);
+			// 
+			// CbLinePreview
+			// 
+			resources.ApplyResources(this.CbLinePreview, "CbLinePreview");
+			this.CbLinePreview.Name = "CbLinePreview";
+			this.CbLinePreview.UseVisualStyleBackColor = true;
+			this.CbLinePreview.CheckedChanged += new System.EventHandler(this.OnSomeValueChanged);
+			// 
 			// GS
 			// 
 			resources.ApplyResources(this.GS, "GS");
@@ -287,44 +263,75 @@
 			resources.ApplyResources(this.setupOutput1, "setupOutput1");
 			this.setupOutput1.Name = "setupOutput1";
 			// 
+			// TLPButtons
+			// 
+			resources.ApplyResources(this.TLPButtons, "TLPButtons");
+			this.TLPButtons.Controls.Add(this.BtnCreate, 1, 0);
+			this.TLPButtons.Controls.Add(this.BtnCancel, 0, 0);
+			this.TLPButtons.Name = "TLPButtons";
+			// 
+			// BtnCreate
+			// 
+			resources.ApplyResources(this.BtnCreate, "BtnCreate");
+			this.BtnCreate.Name = "BtnCreate";
+			this.BtnCreate.UseVisualStyleBackColor = true;
+			this.BtnCreate.Click += new System.EventHandler(this.BtnCreateClick);
+			// 
+			// BtnCancel
+			// 
+			resources.ApplyResources(this.BtnCancel, "BtnCancel");
+			this.BtnCancel.Name = "BtnCancel";
+			this.BtnCancel.UseVisualStyleBackColor = true;
+			this.BtnCancel.Click += new System.EventHandler(this.BtnCancelClick);
+			// 
+			// WT
+			// 
+			this.WT.Interval = 50;
+			this.WT.Tick += new System.EventHandler(this.WTTick);
+			// 
+			// setupOutput2
+			// 
+			resources.ApplyResources(this.setupOutput2, "setupOutput2");
+			this.setupOutput2.Name = "setupOutput2";
+			// 
 			// RasterToLaserForm
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.RightGrid);
+			this.Controls.Add(this.TLPMain);
 			this.MinimizeBox = false;
 			this.Name = "RasterToLaserForm";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RasterToLaserFormFormClosing);
 			this.Load += new System.EventHandler(this.RasterToLaserForm_Load);
-			this.RightGrid.ResumeLayout(false);
-			this.RightGrid.PerformLayout();
+			this.TLPMain.ResumeLayout(false);
+			this.TLPMain.PerformLayout();
 			this.TCOriginalPreview.ResumeLayout(false);
 			this.TpPreview.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.PbConverted)).EndInit();
 			this.TpOriginal.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).EndInit();
-			this.FlipControl.ResumeLayout(false);
-			this.tableLayoutPanel8.ResumeLayout(false);
-			this.tableLayoutPanel8.PerformLayout();
-			this.tableLayoutPanel1.ResumeLayout(false);
+			this.TLPFlipControl.ResumeLayout(false);
+			this.TLPConfig.ResumeLayout(false);
+			this.TLPConfig.PerformLayout();
+			this.TLPButtons.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.TableLayoutPanel RightGrid;
+		private System.Windows.Forms.TableLayoutPanel TLPMain;
 		private System.Windows.Forms.TabControl TCOriginalPreview;
 		private System.Windows.Forms.TabPage TpPreview;
 		private System.Windows.Forms.PictureBox PbConverted;
 		private System.Windows.Forms.TabPage TpOriginal;
 		private System.Windows.Forms.PictureBox PbOriginal;
 		private System.Windows.Forms.Button BtnCreate;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+		private System.Windows.Forms.TableLayoutPanel TLPConfig;
 		private LaserGRBL.UserControls.WaitingProgressBar WB;
 		private System.Windows.Forms.Timer WT;
-		private System.Windows.Forms.TableLayoutPanel FlipControl;
+		private System.Windows.Forms.TableLayoutPanel TLPFlipControl;
 		private LaserGRBL.UserControls.ImageButton BtFlipV;
 		private LaserGRBL.UserControls.ImageButton BtFlipH;
 		private LaserGRBL.UserControls.ImageButton BtRotateCW;
@@ -332,11 +339,12 @@
 		private LaserGRBL.UserControls.ImageButton BtnCrop;
 		private LaserGRBL.UserControls.ImageButton BtnRevert;
 		private System.Windows.Forms.ToolTip TT;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.TableLayoutPanel TLPButtons;
 		private System.Windows.Forms.Button BtnCancel;
 		private SetupGrayscale GS;
 		private SetupTool ST;
 		private System.Windows.Forms.CheckBox CbLinePreview;
-		private SetupOutput setupOutput1;
+		private SetupLaser setupOutput1;
+		private SetupOutput setupOutput2;
 	}
 }

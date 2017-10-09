@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupVectorization));
-			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+			this.TLP = new System.Windows.Forms.TableLayoutPanel();
 			this.label22 = new System.Windows.Forms.Label();
 			this.UDSpotRemoval = new System.Windows.Forms.NumericUpDown();
 			this.CbSpotRemoval = new System.Windows.Forms.CheckBox();
@@ -48,7 +48,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.CbDownSample = new System.Windows.Forms.CheckBox();
 			this.BtnFillingQualityInfo = new LaserGRBL.UserControls.ImageButton();
-			this.tableLayoutPanel5.SuspendLayout();
+			this.TLP.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.UDSpotRemoval)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDOptimize)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDSmoothing)).BeginInit();
@@ -56,48 +56,48 @@
 			((System.ComponentModel.ISupportInitialize)(this.UDDownSample)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// tableLayoutPanel5
+			// TLP
 			// 
-			this.tableLayoutPanel5.AutoSize = true;
-			this.tableLayoutPanel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.tableLayoutPanel5.ColumnCount = 4;
-			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-			this.tableLayoutPanel5.Controls.Add(this.label22, 0, 0);
-			this.tableLayoutPanel5.Controls.Add(this.UDSpotRemoval, 1, 0);
-			this.tableLayoutPanel5.Controls.Add(this.CbSpotRemoval, 2, 0);
-			this.tableLayoutPanel5.Controls.Add(this.label24, 0, 2);
-			this.tableLayoutPanel5.Controls.Add(this.label23, 0, 1);
-			this.tableLayoutPanel5.Controls.Add(this.UDOptimize, 1, 2);
-			this.tableLayoutPanel5.Controls.Add(this.UDSmoothing, 1, 1);
-			this.tableLayoutPanel5.Controls.Add(this.CbOptimize, 2, 2);
-			this.tableLayoutPanel5.Controls.Add(this.CbSmoothing, 2, 1);
-			this.tableLayoutPanel5.Controls.Add(this.label14, 0, 4);
-			this.tableLayoutPanel5.Controls.Add(this.CbFillingDirection, 1, 4);
-			this.tableLayoutPanel5.Controls.Add(this.LblFillingQuality, 0, 5);
-			this.tableLayoutPanel5.Controls.Add(this.UDFillingQuality, 1, 5);
-			this.tableLayoutPanel5.Controls.Add(this.LblFillingLineLbl, 2, 5);
-			this.tableLayoutPanel5.Controls.Add(this.UDDownSample, 1, 3);
-			this.tableLayoutPanel5.Controls.Add(this.label1, 0, 3);
-			this.tableLayoutPanel5.Controls.Add(this.CbDownSample, 2, 3);
-			this.tableLayoutPanel5.Controls.Add(this.BtnFillingQualityInfo, 3, 5);
-			this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
-			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-			this.tableLayoutPanel5.RowCount = 6;
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
-			this.tableLayoutPanel5.Size = new System.Drawing.Size(223, 145);
-			this.tableLayoutPanel5.TabIndex = 1;
+			this.TLP.AutoSize = true;
+			this.TLP.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.TLP.ColumnCount = 4;
+			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+			this.TLP.Controls.Add(this.label22, 0, 0);
+			this.TLP.Controls.Add(this.UDSpotRemoval, 1, 0);
+			this.TLP.Controls.Add(this.CbSpotRemoval, 2, 0);
+			this.TLP.Controls.Add(this.label24, 0, 2);
+			this.TLP.Controls.Add(this.label23, 0, 1);
+			this.TLP.Controls.Add(this.UDOptimize, 1, 2);
+			this.TLP.Controls.Add(this.UDSmoothing, 1, 1);
+			this.TLP.Controls.Add(this.CbOptimize, 2, 2);
+			this.TLP.Controls.Add(this.CbSmoothing, 2, 1);
+			this.TLP.Controls.Add(this.label14, 0, 4);
+			this.TLP.Controls.Add(this.CbFillingDirection, 1, 4);
+			this.TLP.Controls.Add(this.LblFillingQuality, 0, 5);
+			this.TLP.Controls.Add(this.UDFillingQuality, 1, 5);
+			this.TLP.Controls.Add(this.LblFillingLineLbl, 2, 5);
+			this.TLP.Controls.Add(this.UDDownSample, 1, 3);
+			this.TLP.Controls.Add(this.label1, 0, 3);
+			this.TLP.Controls.Add(this.CbDownSample, 2, 3);
+			this.TLP.Controls.Add(this.BtnFillingQualityInfo, 3, 5);
+			this.TLP.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.TLP.Location = new System.Drawing.Point(0, 0);
+			this.TLP.Name = "TLP";
+			this.TLP.RowCount = 6;
+			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
+			this.TLP.Size = new System.Drawing.Size(223, 145);
+			this.TLP.TabIndex = 1;
 			// 
 			// label22
 			// 
@@ -260,7 +260,7 @@
 			// CbFillingDirection
 			// 
 			this.CbFillingDirection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tableLayoutPanel5.SetColumnSpan(this.CbFillingDirection, 3);
+			this.TLP.SetColumnSpan(this.CbFillingDirection, 3);
 			this.CbFillingDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbFillingDirection.FormattingEnabled = true;
 			this.CbFillingDirection.Location = new System.Drawing.Point(84, 98);
@@ -315,9 +315,9 @@
 			this.LblFillingLineLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.LblFillingLineLbl.Location = new System.Drawing.Point(144, 126);
 			this.LblFillingLineLbl.Name = "LblFillingLineLbl";
-			this.LblFillingLineLbl.Size = new System.Drawing.Size(53, 13);
+			this.LblFillingLineLbl.Size = new System.Drawing.Size(49, 13);
 			this.LblFillingLineLbl.TabIndex = 35;
-			this.LblFillingLineLbl.Text = "Lines/mm";
+			this.LblFillingLineLbl.Text = "lines/mm";
 			// 
 			// UDDownSample
 			// 
@@ -382,7 +382,7 @@
 			this.BtnFillingQualityInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnFillingQualityInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnFillingQualityInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnFillingQualityInfo.Image")));
-			this.BtnFillingQualityInfo.Location = new System.Drawing.Point(203, 124);
+			this.BtnFillingQualityInfo.Location = new System.Drawing.Point(199, 124);
 			this.BtnFillingQualityInfo.Name = "BtnFillingQualityInfo";
 			this.BtnFillingQualityInfo.Size = new System.Drawing.Size(17, 17);
 			this.BtnFillingQualityInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -395,11 +395,11 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.Controls.Add(this.tableLayoutPanel5);
+			this.Controls.Add(this.TLP);
 			this.Name = "SetupVectorization";
 			this.Size = new System.Drawing.Size(223, 145);
-			this.tableLayoutPanel5.ResumeLayout(false);
-			this.tableLayoutPanel5.PerformLayout();
+			this.TLP.ResumeLayout(false);
+			this.TLP.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.UDSpotRemoval)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDOptimize)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDSmoothing)).EndInit();
@@ -412,7 +412,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+		private System.Windows.Forms.TableLayoutPanel TLP;
 		private System.Windows.Forms.Label label22;
 		private System.Windows.Forms.NumericUpDown UDSpotRemoval;
 		private System.Windows.Forms.CheckBox CbSpotRemoval;

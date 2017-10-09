@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="RightGrid.ColumnCount" type="System.Int32, mscorlib">
+  <data name="TLPMain.ColumnCount" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -157,7 +157,7 @@
     <value>3, 3</value>
   </data>
   <data name="PbConverted.Size" type="System.Drawing.Size, System.Drawing">
-    <value>751, 652</value>
+    <value>754, 652</value>
   </data>
   <data name="PbConverted.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -184,7 +184,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>757, 658</value>
+    <value>760, 658</value>
   </data>
   <data name="TpPreview.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -214,7 +214,7 @@
     <value>3, 3</value>
   </data>
   <data name="PbOriginal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>751, 652</value>
+    <value>754, 652</value>
   </data>
   <data name="PbOriginal.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -241,7 +241,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpOriginal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>757, 658</value>
+    <value>760, 658</value>
   </data>
   <data name="TpOriginal.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -265,10 +265,10 @@
     <value>Fill</value>
   </data>
   <data name="TCOriginalPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 3</value>
+    <value>237, 3</value>
   </data>
   <data name="TCOriginalPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>765, 684</value>
+    <value>768, 684</value>
   </data>
   <data name="TCOriginalPreview.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -280,18 +280,18 @@
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TCOriginalPreview.Parent" xml:space="preserve">
-    <value>RightGrid</value>
+    <value>TLPMain</value>
   </data>
   <data name="&gt;&gt;TCOriginalPreview.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="FlipControl.AutoSize" type="System.Boolean, mscorlib">
+  <data name="TLPFlipControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="FlipControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="TLPFlipControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="FlipControl.ColumnCount" type="System.Int32, mscorlib">
+  <data name="TLPFlipControl.ColumnCount" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -352,7 +352,7 @@
     <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtFlipV.Parent" xml:space="preserve">
-    <value>FlipControl</value>
+    <value>TLPFlipControl</value>
   </data>
   <data name="&gt;&gt;BtFlipV.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -411,7 +411,7 @@
     <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtFlipH.Parent" xml:space="preserve">
-    <value>FlipControl</value>
+    <value>TLPFlipControl</value>
   </data>
   <data name="&gt;&gt;BtFlipH.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -466,7 +466,7 @@
     <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtRotateCW.Parent" xml:space="preserve">
-    <value>FlipControl</value>
+    <value>TLPFlipControl</value>
   </data>
   <data name="&gt;&gt;BtRotateCW.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -522,7 +522,7 @@
     <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtRotateCCW.Parent" xml:space="preserve">
-    <value>FlipControl</value>
+    <value>TLPFlipControl</value>
   </data>
   <data name="&gt;&gt;BtRotateCCW.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -570,7 +570,7 @@
     <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCrop.Parent" xml:space="preserve">
-    <value>FlipControl</value>
+    <value>TLPFlipControl</value>
   </data>
   <data name="&gt;&gt;BtnCrop.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -621,45 +621,45 @@
     <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnRevert.Parent" xml:space="preserve">
-    <value>FlipControl</value>
+    <value>TLPFlipControl</value>
   </data>
   <data name="&gt;&gt;BtnRevert.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="FlipControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 693</value>
+  <data name="TLPFlipControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>237, 693</value>
   </data>
-  <data name="FlipControl.RowCount" type="System.Int32, mscorlib">
+  <data name="TLPFlipControl.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="FlipControl.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="TLPFlipControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 31</value>
   </data>
-  <data name="FlipControl.TabIndex" type="System.Int32, mscorlib">
+  <data name="TLPFlipControl.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;FlipControl.Name" xml:space="preserve">
-    <value>FlipControl</value>
+  <data name="&gt;&gt;TLPFlipControl.Name" xml:space="preserve">
+    <value>TLPFlipControl</value>
   </data>
-  <data name="&gt;&gt;FlipControl.Type" xml:space="preserve">
+  <data name="&gt;&gt;TLPFlipControl.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;FlipControl.Parent" xml:space="preserve">
-    <value>RightGrid</value>
+  <data name="&gt;&gt;TLPFlipControl.Parent" xml:space="preserve">
+    <value>TLPMain</value>
   </data>
-  <data name="&gt;&gt;FlipControl.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;TLPFlipControl.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="FlipControl.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+  <data name="TLPFlipControl.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtFlipV" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="BtFlipH" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="BtRotateCW" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtRotateCCW" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="BtnCrop" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="BtnRevert" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Absolute,15,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,15" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="tableLayoutPanel8.AutoSize" type="System.Boolean, mscorlib">
+  <data name="TLPConfig.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="tableLayoutPanel8.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="TLPConfig.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="tableLayoutPanel8.ColumnCount" type="System.Int32, mscorlib">
+  <data name="TLPConfig.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="CbLinePreview.AutoSize" type="System.Boolean, mscorlib">
@@ -690,7 +690,7 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CbLinePreview.Parent" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
+    <value>TLPConfig</value>
   </data>
   <data name="&gt;&gt;CbLinePreview.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -708,7 +708,7 @@
     <value>3, 3</value>
   </data>
   <data name="GS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 129</value>
+    <value>222, 129</value>
   </data>
   <data name="GS.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -720,7 +720,7 @@
     <value>LaserGRBL.UI.Forms.RasterConverter.SetupGrayscale, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GS.Parent" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
+    <value>TLPConfig</value>
   </data>
   <data name="&gt;&gt;GS.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -738,7 +738,7 @@
     <value>3, 138</value>
   </data>
   <data name="ST.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 94</value>
+    <value>222, 94</value>
   </data>
   <data name="ST.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -750,7 +750,7 @@
     <value>LaserGRBL.UI.Forms.RasterConverter.SetupTool, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ST.Parent" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
+    <value>TLPConfig</value>
   </data>
   <data name="&gt;&gt;ST.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -761,11 +761,14 @@
   <data name="setupOutput1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="setupOutput1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="setupOutput1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 238</value>
   </data>
   <data name="setupOutput1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 257</value>
+    <value>222, 179</value>
   </data>
   <data name="setupOutput1.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -774,82 +777,82 @@
     <value>setupOutput1</value>
   </data>
   <data name="&gt;&gt;setupOutput1.Type" xml:space="preserve">
-    <value>LaserGRBL.UI.Forms.RasterConverter.SetupOutput, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UI.Forms.RasterConverter.SetupLaser, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;setupOutput1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
+    <value>TLPConfig</value>
   </data>
   <data name="&gt;&gt;setupOutput1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tableLayoutPanel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="tableLayoutPanel8.RowCount" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 723</value>
-  </data>
-  <data name="tableLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel8.Name" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel8.Parent" xml:space="preserve">
-    <value>RightGrid</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel8.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tableLayoutPanel8.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbLinePreview" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GS" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ST" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="setupOutput1" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="setupOutput2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="tableLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="setupOutput2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="setupOutput2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="BtnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Right</value>
+  <data name="setupOutput2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 423</value>
   </data>
-  <data name="BtnCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="setupOutput2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 59</value>
   </data>
-  <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="setupOutput2.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;setupOutput2.Name" xml:space="preserve">
+    <value>setupOutput2</value>
+  </data>
+  <data name="&gt;&gt;setupOutput2.Type" xml:space="preserve">
+    <value>LaserGRBL.UI.Forms.RasterConverter.SetupOutput, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;setupOutput2.Parent" xml:space="preserve">
+    <value>TLPConfig</value>
+  </data>
+  <data name="&gt;&gt;setupOutput2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="TLPConfig.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="TLPConfig.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 27</value>
+  <data name="TLPConfig.RowCount" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="BtnCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="TLPConfig.Size" type="System.Drawing.Size, System.Drawing">
+    <value>228, 723</value>
   </data>
-  <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="TLPConfig.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;BtnCancel.Name" xml:space="preserve">
-    <value>BtnCancel</value>
+  <data name="&gt;&gt;TLPConfig.Name" xml:space="preserve">
+    <value>TLPConfig</value>
   </data>
-  <data name="&gt;&gt;BtnCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;TLPConfig.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;BtnCancel.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="&gt;&gt;TLPConfig.Parent" xml:space="preserve">
+    <value>TLPMain</value>
   </data>
-  <data name="&gt;&gt;BtnCancel.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;TLPConfig.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TLPConfig.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbLinePreview" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GS" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ST" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="setupOutput1" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="setupOutput2" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,65,Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="TLPButtons.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TLPButtons.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="TLPButtons.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="BtnCreate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Right</value>
@@ -876,70 +879,100 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;BtnCreate.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+    <value>TLPButtons</value>
   </data>
   <data name="&gt;&gt;BtnCreate.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BtnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="BtnCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 27</value>
+  </data>
+  <data name="BtnCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;BtnCancel.Name" xml:space="preserve">
+    <value>BtnCancel</value>
+  </data>
+  <data name="&gt;&gt;BtnCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnCancel.Parent" xml:space="preserve">
+    <value>TLPButtons</value>
+  </data>
+  <data name="&gt;&gt;BtnCancel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="TLPButtons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="TLPButtons.Location" type="System.Drawing.Point, System.Drawing">
     <value>845, 693</value>
   </data>
-  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+  <data name="TLPButtons.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="TLPButtons.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 33</value>
   </data>
-  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+  <data name="TLPButtons.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="&gt;&gt;TLPButtons.Name" xml:space="preserve">
+    <value>TLPButtons</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;TLPButtons.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
-    <value>RightGrid</value>
+  <data name="&gt;&gt;TLPButtons.Parent" xml:space="preserve">
+    <value>TLPMain</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;TLPButtons.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnCancel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnCreate" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="TLPButtons.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnCreate" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnCancel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="RightGrid.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="TLPMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="RightGrid.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="TLPMain.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="RightGrid.RowCount" type="System.Int32, mscorlib">
+  <data name="TLPMain.RowCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="RightGrid.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="TLPMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>1008, 729</value>
   </data>
-  <data name="RightGrid.TabIndex" type="System.Int32, mscorlib">
+  <data name="TLPMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;RightGrid.Name" xml:space="preserve">
-    <value>RightGrid</value>
+  <data name="&gt;&gt;TLPMain.Name" xml:space="preserve">
+    <value>TLPMain</value>
   </data>
-  <data name="&gt;&gt;RightGrid.Type" xml:space="preserve">
+  <data name="&gt;&gt;TLPMain.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;RightGrid.Parent" xml:space="preserve">
+  <data name="&gt;&gt;TLPMain.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;RightGrid.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;TLPMain.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="RightGrid.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="TCOriginalPreview" Row="0" RowSpan="1" Column="1" ColumnSpan="3" /&gt;&lt;Control Name="FlipControl" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel8" Row="0" RowSpan="2" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel1" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="TLPMain.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="TCOriginalPreview" Row="0" RowSpan="1" Column="1" ColumnSpan="3" /&gt;&lt;Control Name="TLPFlipControl" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TLPConfig" Row="0" RowSpan="2" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TLPButtons" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="WT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>15, 8</value>

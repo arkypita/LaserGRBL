@@ -104,7 +104,6 @@ namespace LaserGRBL.Core.RasterToGcode
 		public enum ModulationType {Power, Speed};
 		public ModulationType WhatModulate = ModulationType.Power;
 
-		public int JumpSpeed = 2000;
 		public int MarkSpeed = 1000;
 		public int TraceSpeed = 1000;
 

@@ -134,7 +134,7 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 					Cursor = Cursors.WaitCursor;
 					SuspendLayout();
 					TCOriginalPreview.SelectedIndex = 0;
-					FlipControl.Enabled = false;
+					TLPFlipControl.Enabled = false;
 					BtnCreate.Enabled = false;
 					WB.Visible = true;
 					WB.Running = true;
