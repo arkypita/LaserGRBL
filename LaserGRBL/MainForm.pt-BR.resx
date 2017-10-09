@@ -450,7 +450,7 @@
     <value>186, 22</value>
   </data>
   <data name="MnFileSend.Text" xml:space="preserve">
-    <value>Emviar para &amp;Maquina</value>
+    <value>Enviar para &amp;Maquina</value>
   </data>
   <data name="linguaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 20</value>
