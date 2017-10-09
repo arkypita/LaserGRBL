@@ -11,6 +11,8 @@ namespace LaserGRBL
 {
 	public class GrblFile : IEnumerable<GrblCommand>
 	{
+		public enum CartesianQuadrant { I, II, III, IV, Mix, Unknown}
+
 		public delegate void OnFileLoadedDlg(long elapsed, string filename);
 		public event OnFileLoadedDlg OnFileLoaded;
 
@@ -569,6 +571,29 @@ namespace LaserGRBL
 		public void DrawOnGraphics(Graphics g, Size s)
 		{ Process(g, s); }
 
+
+		//  II | I
+		// ---------
+		// III | IV
+		private CartesianQuadrant Quadrant
+		{
+			get 
+			{
+				if (!mRange.DrawingRange.ValidRange)
+					return CartesianQuadrant.Unknown;
+				else if (mRange.DrawingRange.X.Min >= 0 && mRange.DrawingRange.Y.Min >= 0)
+					return CartesianQuadrant.I;
+				else if (mRange.DrawingRange.X.Max <= 0 && mRange.DrawingRange.Y.Min >= 0)
+					return CartesianQuadrant.II;
+				else if (mRange.DrawingRange.X.Max <= 0 && mRange.DrawingRange.Y.Max <= 0)
+					return CartesianQuadrant.III;
+				else if (mRange.DrawingRange.X.Min >= 0 && mRange.DrawingRange.Y.Max <= 0)
+					return CartesianQuadrant.IV;
+				else
+					return CartesianQuadrant.Mix;
+			}
+		}
+
 		private void Process(Graphics g, Size s)
 		{
 			bool supportPWM = (bool)Settings.GetObject("Support Hardware PWM", true);
@@ -582,7 +607,7 @@ namespace LaserGRBL
 			ProgramRange.XYRange scaleRange = mRange.MovingRange;
 
 			//Get scale factors for both directions. To preserve the aspect ratio, use the smaller scale factor.
-			float zoom = drawing ? Math.Min((float)s.Width / (float)scaleRange.Width, (float)s.Height / (float)scaleRange.Height) * 0.95f : 1;
+			float zoom = drawing && scaleRange.Width > 0 && scaleRange.Height > 0 ? Math.Min((float)s.Width / (float)scaleRange.Width, (float)s.Height / (float)scaleRange.Height) *0.95f : 1;
 			bool firstline = true;
 			bool isLaserCutting = false;
             bool isLaserActive = false;
@@ -604,18 +629,7 @@ namespace LaserGRBL
 			}
 
 			if (drawing)
-			{
-				g.ResetTransform();
-
-				//Translate to center of gravity of the image
-				g.TranslateTransform(-scaleRange.Center.X, -scaleRange.Center.Y, MatrixOrder.Append);
-				//Scale and invert Y
-				g.ScaleTransform(zoom, -zoom, MatrixOrder.Append); 
-				//Translate to center over the drawing area.
-				g.TranslateTransform(s.Width / 2, s.Height / 2, MatrixOrder.Append);
-
-				DrawJobRange(g, s, zoom);
-			}
+				ScaleAndPosition(g, s, scaleRange, zoom);
 
 			if (drawing && !mRange.SpindleRange.ValidRange) //assign max alpha if no S range available
 				curAlpha = 255;
@@ -780,7 +794,55 @@ namespace LaserGRBL
 				catch (Exception ex) { throw ex; }
 				finally { cmd.DeleteHelper(); }
 			}
+
+			if (drawing)
+				DrawJobRange(g, s, zoom);
 			
+		}
+
+		private void ScaleAndPosition(Graphics g, Size s, ProgramRange.XYRange scaleRange, float zoom)
+		{
+			g.ResetTransform();
+			float margin = 10;
+			CartesianQuadrant q = Quadrant;
+			if (q == CartesianQuadrant.Unknown || q == CartesianQuadrant.I)
+			{
+				//Scale and invert Y
+				g.ScaleTransform(zoom, -zoom, MatrixOrder.Append);
+				//Translate to position bottom-left
+				g.TranslateTransform(margin, s.Height - margin, MatrixOrder.Append);
+			}
+			else if (q == CartesianQuadrant.II)
+			{
+				//Scale and invert Y
+				g.ScaleTransform(zoom, -zoom, MatrixOrder.Append);
+				//Translate to position bottom-left
+				g.TranslateTransform(s.Width - margin, s.Height - margin, MatrixOrder.Append);
+			}
+			else if (q == CartesianQuadrant.III)
+			{
+				//Scale and invert Y
+				g.ScaleTransform(zoom, -zoom, MatrixOrder.Append);
+				//Translate to position bottom-left
+				g.TranslateTransform(s.Width - margin, margin, MatrixOrder.Append);
+			}
+			else if (q == CartesianQuadrant.IV)
+			{
+				//Scale and invert Y
+				g.ScaleTransform(zoom, -zoom, MatrixOrder.Append);
+				//Translate to position bottom-left
+				g.TranslateTransform(margin, margin, MatrixOrder.Append);
+			}
+			else
+			{
+				//Translate to center of gravity of the image
+				g.TranslateTransform(-scaleRange.Center.X, -scaleRange.Center.Y, MatrixOrder.Append);
+				//Scale and invert Y
+				g.ScaleTransform(zoom, -zoom, MatrixOrder.Append);
+				//Translate to center over the drawing area.
+				g.TranslateTransform(s.Width / 2, s.Height / 2, MatrixOrder.Append);
+			}
+
 		}
 
 		private void DrawJobRange(Graphics g, Size s, float zoom)
@@ -811,10 +873,14 @@ namespace LaserGRBL
 					g.DrawLine(pen, (float)mRange.DrawingRange.X.Min, -wSize.Height, (float)mRange.DrawingRange.X.Min, wSize.Height);
 					g.DrawLine(pen, (float)mRange.DrawingRange.X.Max, -wSize.Height, (float)mRange.DrawingRange.X.Max, wSize.Height);
 
-					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString("0"), false, true, true, false);
-					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString("0"), false, true, true, false);
-					DrawString(g, zoom, mRange.DrawingRange.X.Min, 0, mRange.DrawingRange.X.Min.ToString("0"), true, false, false, false);
-					DrawString(g, zoom, mRange.DrawingRange.X.Max, 0, mRange.DrawingRange.X.Max.ToString("0"), true, false, false, false);
+					CartesianQuadrant q = Quadrant;
+					bool right = q == CartesianQuadrant.I || q == CartesianQuadrant.IV;
+					bool top = q == CartesianQuadrant.I || q == CartesianQuadrant.II;
+
+					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString("0"), false, true, !right, false);
+					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString("0"), false, true, !right, false);
+					DrawString(g, zoom, mRange.DrawingRange.X.Min, 0, mRange.DrawingRange.X.Min.ToString("0"), true, false, false, top);
+					DrawString(g, zoom, mRange.DrawingRange.X.Max, 0, mRange.DrawingRange.X.Max.ToString("0"), true, false, false, top);
 				}
 			}
 		}
@@ -847,7 +913,7 @@ namespace LaserGRBL
 					offsetX += ms.Width;
 
 				if (subtractY)
-					offsetX += ms.Height;
+					offsetY += ms.Height;
 
 				using (Brush b = GetBrush(ColorScheme.PreviewText))
 				{ g.DrawString(text, f, b, (float)curX - offsetX, (float)-curY - offsetY); }
