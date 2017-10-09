@@ -162,10 +162,10 @@ namespace LaserGRBL
 					string command = str;
 					if (command.Trim().Length > 0)
 					{
-						decimal left = Core.LoadedFile != null && Core.LoadedFile.Range.MovingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.X.Min : 0;
-						decimal right = Core.LoadedFile != null && Core.LoadedFile.Range.MovingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.X.Max : 0;
-						decimal top = Core.LoadedFile != null && Core.LoadedFile.Range.MovingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.Y.Max : 0;
-						decimal bottom = Core.LoadedFile != null && Core.LoadedFile.Range.MovingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.Y.Min : 0;
+						decimal left = Core.LoadedFile != null && Core.LoadedFile.Range.DrawingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.X.Min : 0;
+						decimal right = Core.LoadedFile != null && Core.LoadedFile.Range.DrawingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.X.Max : 0;
+						decimal top = Core.LoadedFile != null && Core.LoadedFile.Range.DrawingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.Y.Max : 0;
+						decimal bottom = Core.LoadedFile != null && Core.LoadedFile.Range.DrawingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.Y.Min : 0;
 
 						decimal width = right - left;
 						decimal height = top - bottom;
