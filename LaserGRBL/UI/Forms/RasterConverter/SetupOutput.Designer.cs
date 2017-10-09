@@ -30,6 +30,7 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupOutput));
 			this.GbSize = new System.Windows.Forms.GroupBox();
+			this.BtnRepo = new LaserGRBL.UserControls.ImageButton();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
@@ -41,7 +42,7 @@
 			this.label10 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
-			this.BtnRepo = new LaserGRBL.UserControls.ImageButton();
+			this.BtnAddBM = new LaserGRBL.UserControls.ImageButton();
 			this.GbSize.SuspendLayout();
 			this.TLP.SuspendLayout();
 			this.SuspendLayout();
@@ -50,6 +51,7 @@
 			// 
 			this.GbSize.AutoSize = true;
 			this.GbSize.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.GbSize.Controls.Add(this.BtnAddBM);
 			this.GbSize.Controls.Add(this.BtnRepo);
 			this.GbSize.Controls.Add(this.TLP);
 			this.GbSize.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -59,6 +61,20 @@
 			this.GbSize.TabIndex = 1;
 			this.GbSize.TabStop = false;
 			this.GbSize.Text = "Image Size and Position [mm]";
+			// 
+			// BtnRepo
+			// 
+			this.BtnRepo.AltImage = null;
+			this.BtnRepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.BtnRepo.BackColor = System.Drawing.Color.Transparent;
+			this.BtnRepo.Coloration = System.Drawing.Color.Empty;
+			this.BtnRepo.Image = ((System.Drawing.Image)(resources.GetObject("BtnRepo.Image")));
+			this.BtnRepo.Location = new System.Drawing.Point(171, 0);
+			this.BtnRepo.Name = "BtnRepo";
+			this.BtnRepo.Size = new System.Drawing.Size(17, 17);
+			this.BtnRepo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnRepo.TabIndex = 2;
+			this.BtnRepo.UseAltImage = false;
 			// 
 			// TLP
 			// 
@@ -217,19 +233,19 @@
 			this.label11.Text = "Y";
 			this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// BtnRepo
+			// BtnAddBM
 			// 
-			this.BtnRepo.AltImage = null;
-			this.BtnRepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BtnRepo.BackColor = System.Drawing.Color.Transparent;
-			this.BtnRepo.Coloration = System.Drawing.Color.Empty;
-			this.BtnRepo.Image = ((System.Drawing.Image)(resources.GetObject("BtnRepo.Image")));
-			this.BtnRepo.Location = new System.Drawing.Point(171, 0);
-			this.BtnRepo.Name = "BtnRepo";
-			this.BtnRepo.Size = new System.Drawing.Size(17, 17);
-			this.BtnRepo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnRepo.TabIndex = 2;
-			this.BtnRepo.UseAltImage = false;
+			this.BtnAddBM.AltImage = null;
+			this.BtnAddBM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.BtnAddBM.BackColor = System.Drawing.Color.Transparent;
+			this.BtnAddBM.Coloration = System.Drawing.Color.Empty;
+			this.BtnAddBM.Image = ((System.Drawing.Image)(resources.GetObject("BtnAddBM.Image")));
+			this.BtnAddBM.Location = new System.Drawing.Point(149, 0);
+			this.BtnAddBM.Name = "BtnAddBM";
+			this.BtnAddBM.Size = new System.Drawing.Size(17, 17);
+			this.BtnAddBM.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnAddBM.TabIndex = 4;
+			this.BtnAddBM.UseAltImage = false;
 			// 
 			// SetupOutput
 			// 
@@ -264,6 +280,7 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label11;
 		private UserControls.ImageButton BtnRepo;
+		private UserControls.ImageButton BtnAddBM;
 
 	}
 }

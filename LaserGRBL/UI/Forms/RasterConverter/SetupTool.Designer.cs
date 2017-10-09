@@ -35,6 +35,7 @@
 			this.PNL = new System.Windows.Forms.Panel();
 			this.GB = new System.Windows.Forms.GroupBox();
 			this.BtnRepo = new LaserGRBL.UserControls.ImageButton();
+			this.BtnAddBM = new LaserGRBL.UserControls.ImageButton();
 			this.TLP.SuspendLayout();
 			this.GB.SuspendLayout();
 			this.SuspendLayout();
@@ -99,6 +100,7 @@
 			// 
 			this.GB.AutoSize = true;
 			this.GB.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.GB.Controls.Add(this.BtnAddBM);
 			this.GB.Controls.Add(this.BtnRepo);
 			this.GB.Controls.Add(this.TLP);
 			this.GB.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -122,6 +124,20 @@
 			this.BtnRepo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.BtnRepo.TabIndex = 2;
 			this.BtnRepo.UseAltImage = false;
+			// 
+			// BtnAddBM
+			// 
+			this.BtnAddBM.AltImage = null;
+			this.BtnAddBM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.BtnAddBM.BackColor = System.Drawing.Color.Transparent;
+			this.BtnAddBM.Coloration = System.Drawing.Color.Empty;
+			this.BtnAddBM.Image = ((System.Drawing.Image)(resources.GetObject("BtnAddBM.Image")));
+			this.BtnAddBM.Location = new System.Drawing.Point(169, 0);
+			this.BtnAddBM.Name = "BtnAddBM";
+			this.BtnAddBM.Size = new System.Drawing.Size(17, 17);
+			this.BtnAddBM.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnAddBM.TabIndex = 3;
+			this.BtnAddBM.UseAltImage = false;
 			// 
 			// SetupTool
 			// 
@@ -149,5 +165,6 @@
 		private System.Windows.Forms.GroupBox GB;
 		private System.Windows.Forms.Panel PNL;
 		private UserControls.ImageButton BtnRepo;
+		private UserControls.ImageButton BtnAddBM;
 	}
 }
