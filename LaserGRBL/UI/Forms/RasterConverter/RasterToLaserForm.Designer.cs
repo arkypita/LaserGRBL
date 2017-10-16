@@ -45,16 +45,15 @@
 			this.BtnCrop = new LaserGRBL.UserControls.ImageButton();
 			this.BtnRevert = new LaserGRBL.UserControls.ImageButton();
 			this.TLPConfig = new System.Windows.Forms.TableLayoutPanel();
-			this.CbLinePreview = new System.Windows.Forms.CheckBox();
 			this.GS = new LaserGRBL.UI.Forms.RasterConverter.SetupGrayscale();
 			this.ST = new LaserGRBL.UI.Forms.RasterConverter.SetupTool();
-			this.setupOutput1 = new LaserGRBL.UI.Forms.RasterConverter.SetupLaser();
+			this.SL = new LaserGRBL.UI.Forms.RasterConverter.SetupLaser();
+			this.setupOutput2 = new LaserGRBL.UI.Forms.RasterConverter.SetupOutput();
 			this.TLPButtons = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.WT = new System.Windows.Forms.Timer(this.components);
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
-			this.setupOutput2 = new LaserGRBL.UI.Forms.RasterConverter.SetupOutput();
 			this.TLPMain.SuspendLayout();
 			this.TCOriginalPreview.SuspendLayout();
 			this.TpPreview.SuspendLayout();
@@ -230,20 +229,12 @@
 			// TLPConfig
 			// 
 			resources.ApplyResources(this.TLPConfig, "TLPConfig");
-			this.TLPConfig.Controls.Add(this.CbLinePreview, 0, 5);
 			this.TLPConfig.Controls.Add(this.GS, 0, 0);
 			this.TLPConfig.Controls.Add(this.ST, 0, 1);
-			this.TLPConfig.Controls.Add(this.setupOutput1, 0, 2);
+			this.TLPConfig.Controls.Add(this.SL, 0, 2);
 			this.TLPConfig.Controls.Add(this.setupOutput2, 0, 3);
 			this.TLPConfig.Name = "TLPConfig";
 			this.TLPMain.SetRowSpan(this.TLPConfig, 2);
-			// 
-			// CbLinePreview
-			// 
-			resources.ApplyResources(this.CbLinePreview, "CbLinePreview");
-			this.CbLinePreview.Name = "CbLinePreview";
-			this.CbLinePreview.UseVisualStyleBackColor = true;
-			this.CbLinePreview.CheckedChanged += new System.EventHandler(this.OnSomeValueChanged);
 			// 
 			// GS
 			// 
@@ -256,12 +247,17 @@
 			// 
 			resources.ApplyResources(this.ST, "ST");
 			this.ST.Name = "ST";
-			this.ST.ValueChanged += new System.EventHandler(this.OnSomeValueChanged);
+			this.ST.ValueChanged += new System.EventHandler(this.OnConversionToolChanged);
 			// 
-			// setupOutput1
+			// SL
 			// 
-			resources.ApplyResources(this.setupOutput1, "setupOutput1");
-			this.setupOutput1.Name = "setupOutput1";
+			resources.ApplyResources(this.SL, "SL");
+			this.SL.Name = "SL";
+			// 
+			// setupOutput2
+			// 
+			resources.ApplyResources(this.setupOutput2, "setupOutput2");
+			this.setupOutput2.Name = "setupOutput2";
 			// 
 			// TLPButtons
 			// 
@@ -288,11 +284,6 @@
 			// 
 			this.WT.Interval = 50;
 			this.WT.Tick += new System.EventHandler(this.WTTick);
-			// 
-			// setupOutput2
-			// 
-			resources.ApplyResources(this.setupOutput2, "setupOutput2");
-			this.setupOutput2.Name = "setupOutput2";
 			// 
 			// RasterToLaserForm
 			// 
@@ -343,8 +334,7 @@
 		private System.Windows.Forms.Button BtnCancel;
 		private SetupGrayscale GS;
 		private SetupTool ST;
-		private System.Windows.Forms.CheckBox CbLinePreview;
-		private SetupLaser setupOutput1;
+		private SetupLaser SL;
 		private SetupOutput setupOutput2;
 	}
 }

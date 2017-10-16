@@ -60,6 +60,15 @@ namespace LaserGRBL.Core.RasterToGcode
 
 	public class LineToLine : ConversionTool, ICloneable
 	{
+		public override bool UseFilling
+		{ get { return true; } }
+
+		public override bool UseBorders
+		{ get { return false; } }
+
+		public override bool RequireModulation
+		{ get { return true; } }
+
 		public object Clone() { return MemberwiseClone(); }
 	}
 
@@ -67,6 +76,15 @@ namespace LaserGRBL.Core.RasterToGcode
 	public class Dithering : ConversionTool, ICloneable
 	{
 		public ImageTransform.DitheringMode Mode = ImageTransform.DitheringMode.FloydSteinberg;
+
+		public override bool UseFilling
+		{get { return true; }}
+
+		public override bool UseBorders
+		{ get { return false; } }
+
+		public override bool RequireModulation
+		{ get { return false; } }
 
 		public object Clone() { return MemberwiseClone(); }
 	}
@@ -77,6 +95,15 @@ namespace LaserGRBL.Core.RasterToGcode
 		public EnabledDecimal Optimize = new EnabledDecimal (false, 0.2m);
 		public EnabledDecimal Smoothing = new EnabledDecimal (false, 1.0m);
 		public EnabledDecimal DownSampling = new EnabledDecimal(false, 2.0m);
+
+		public override bool UseFilling
+		{ get { return Direction != EngravingDirection.None; } }
+
+		public override bool UseBorders
+		{ get { return true; } }
+
+		public override bool RequireModulation
+		{ get { return false; } }
 
 		public object Clone() {return MemberwiseClone();}
 	}
@@ -97,6 +124,11 @@ namespace LaserGRBL.Core.RasterToGcode
 		public double Quality = 5.0;
 
 		public object Clone() { return MemberwiseClone(); }
+
+		public abstract bool UseFilling { get; }
+		public abstract bool UseBorders { get; }
+
+		public abstract bool RequireModulation { get; }
 	}
 
 	public class LaserSetting
@@ -109,6 +141,12 @@ namespace LaserGRBL.Core.RasterToGcode
 
 		public ModulationRange SpeedRange = new ModulationRange(1000, 4000);
 		public ModulationRange PowerRange = new ModulationRange(0, 255);
+
+		public string WhatModulateCode { get { return WhatModulate == ModulationType.Power ? "S" : "F"; } }
+		public string WhatFixedCode { get { return WhatModulate == ModulationType.Power ? "F" : "S"; } }
+
+		public string WhatModulateUM { get { return WhatModulate == ModulationType.Power ? "PWM" : "mm/min"; } }
+		public string WhatFixedUM { get { return WhatModulate == ModulationType.Power ? "mm/min" : "PWM"; } }
 	}
 
 	public struct EnabledDecimal

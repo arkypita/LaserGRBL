@@ -24,6 +24,7 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 
 			PG = new Core.RasterToGcode.PreviewGenerator(core, PbConverted, filename);
 			GS.Start(PG.Configuration, PG.IsGrayScale);
+			SL.Start(PG.Configuration);
 			ST.Start(PG.Configuration);
 
 			PbOriginal.Image = PG.OriginalImage;
@@ -431,7 +432,7 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 		private void OnSomeValueChanged(object sender, EventArgs e)
 		{
 			PG.ShowWClipDemo = GS.ClipPreview;
-			PG.ShowLinePreview = CbLinePreview.Checked;
+			PG.ShowLinePreview = ST.LinePreview;
 			requireRefresh = true;
 		}
 
@@ -440,6 +441,12 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 			if (requireRefresh)
 				PG.Refresh();
 			requireRefresh = false;
+		}
+
+		private void OnConversionToolChanged(object sender, EventArgs e)
+		{
+			SL.RefreshOnToolChange();
+			OnSomeValueChanged(sender, e);
 		}
 
 

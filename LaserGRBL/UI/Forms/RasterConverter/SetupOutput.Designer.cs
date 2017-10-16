@@ -30,6 +30,7 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupOutput));
 			this.GbSize = new System.Windows.Forms.GroupBox();
+			this.BtnRepo = new LaserGRBL.UserControls.ImageButton();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
 			this.label10 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
-			this.BtnRepo = new LaserGRBL.UserControls.ImageButton();
 			this.GbSize.SuspendLayout();
 			this.TLP.SuspendLayout();
 			this.SuspendLayout();
@@ -58,7 +58,21 @@
 			this.GbSize.Size = new System.Drawing.Size(193, 61);
 			this.GbSize.TabIndex = 1;
 			this.GbSize.TabStop = false;
-			this.GbSize.Text = "Image Size and Position [mm]";
+			this.GbSize.Text = "Size and Position [mm]";
+			// 
+			// BtnRepo
+			// 
+			this.BtnRepo.AltImage = null;
+			this.BtnRepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.BtnRepo.BackColor = System.Drawing.Color.Transparent;
+			this.BtnRepo.Coloration = System.Drawing.Color.Empty;
+			this.BtnRepo.Image = ((System.Drawing.Image)(resources.GetObject("BtnRepo.Image")));
+			this.BtnRepo.Location = new System.Drawing.Point(171, 0);
+			this.BtnRepo.Name = "BtnRepo";
+			this.BtnRepo.Size = new System.Drawing.Size(17, 17);
+			this.BtnRepo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnRepo.TabIndex = 2;
+			this.BtnRepo.UseAltImage = false;
 			// 
 			// TLP
 			// 
@@ -216,20 +230,6 @@
 			this.label11.TabIndex = 12;
 			this.label11.Text = "Y";
 			this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// BtnRepo
-			// 
-			this.BtnRepo.AltImage = null;
-			this.BtnRepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BtnRepo.BackColor = System.Drawing.Color.Transparent;
-			this.BtnRepo.Coloration = System.Drawing.Color.Empty;
-			this.BtnRepo.Image = ((System.Drawing.Image)(resources.GetObject("BtnRepo.Image")));
-			this.BtnRepo.Location = new System.Drawing.Point(171, 0);
-			this.BtnRepo.Name = "BtnRepo";
-			this.BtnRepo.Size = new System.Drawing.Size(17, 17);
-			this.BtnRepo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnRepo.TabIndex = 2;
-			this.BtnRepo.UseAltImage = false;
 			// 
 			// SetupOutput
 			// 

@@ -662,39 +662,6 @@
   <data name="TLPConfig.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="CbLinePreview.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CbLinePreview.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CbLinePreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 704</value>
-  </data>
-  <data name="CbLinePreview.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="CbLinePreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 17</value>
-  </data>
-  <data name="CbLinePreview.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="CbLinePreview.Text" xml:space="preserve">
-    <value>Line Preview</value>
-  </data>
-  <data name="&gt;&gt;CbLinePreview.Name" xml:space="preserve">
-    <value>CbLinePreview</value>
-  </data>
-  <data name="&gt;&gt;CbLinePreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CbLinePreview.Parent" xml:space="preserve">
-    <value>TLPConfig</value>
-  </data>
-  <data name="&gt;&gt;CbLinePreview.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="GS.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -723,7 +690,7 @@
     <value>TLPConfig</value>
   </data>
   <data name="&gt;&gt;GS.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="ST.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -738,7 +705,7 @@
     <value>3, 138</value>
   </data>
   <data name="ST.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 94</value>
+    <value>222, 114</value>
   </data>
   <data name="ST.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -753,37 +720,37 @@
     <value>TLPConfig</value>
   </data>
   <data name="&gt;&gt;ST.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
-  <data name="setupOutput1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="SL.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="setupOutput1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="SL.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="setupOutput1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="SL.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="setupOutput1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 238</value>
+  <data name="SL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 258</value>
   </data>
-  <data name="setupOutput1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="SL.Size" type="System.Drawing.Size, System.Drawing">
     <value>222, 179</value>
   </data>
-  <data name="setupOutput1.TabIndex" type="System.Int32, mscorlib">
+  <data name="SL.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
-  <data name="&gt;&gt;setupOutput1.Name" xml:space="preserve">
-    <value>setupOutput1</value>
+  <data name="&gt;&gt;SL.Name" xml:space="preserve">
+    <value>SL</value>
   </data>
-  <data name="&gt;&gt;setupOutput1.Type" xml:space="preserve">
+  <data name="&gt;&gt;SL.Type" xml:space="preserve">
     <value>LaserGRBL.UI.Forms.RasterConverter.SetupLaser, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;setupOutput1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;SL.Parent" xml:space="preserve">
     <value>TLPConfig</value>
   </data>
-  <data name="&gt;&gt;setupOutput1.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;SL.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="setupOutput2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -795,7 +762,7 @@
     <value>Fill</value>
   </data>
   <data name="setupOutput2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 423</value>
+    <value>3, 443</value>
   </data>
   <data name="setupOutput2.Size" type="System.Drawing.Size, System.Drawing">
     <value>222, 59</value>
@@ -813,7 +780,7 @@
     <value>TLPConfig</value>
   </data>
   <data name="&gt;&gt;setupOutput2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="TLPConfig.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -822,7 +789,7 @@
     <value>3, 3</value>
   </data>
   <data name="TLPConfig.RowCount" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="TLPConfig.Size" type="System.Drawing.Size, System.Drawing">
     <value>228, 723</value>
@@ -843,7 +810,7 @@
     <value>2</value>
   </data>
   <data name="TLPConfig.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbLinePreview" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GS" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ST" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="setupOutput1" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="setupOutput2" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,65,Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="GS" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ST" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="SL" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="setupOutput2" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,65,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="TLPButtons.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

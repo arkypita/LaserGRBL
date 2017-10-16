@@ -30,6 +30,7 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupTool));
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
+			this.CbLinePreview = new System.Windows.Forms.CheckBox();
 			this.label27 = new System.Windows.Forms.Label();
 			this.CbTools = new LaserGRBL.UserControls.EnumComboBox();
 			this.PNL = new System.Windows.Forms.Panel();
@@ -46,17 +47,33 @@
 			this.TLP.ColumnCount = 2;
 			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.TLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.TLP.Controls.Add(this.CbLinePreview, 0, 2);
 			this.TLP.Controls.Add(this.label27, 0, 0);
 			this.TLP.Controls.Add(this.CbTools, 1, 0);
 			this.TLP.Controls.Add(this.PNL, 0, 1);
 			this.TLP.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.TLP.Location = new System.Drawing.Point(3, 16);
 			this.TLP.Name = "TLP";
-			this.TLP.RowCount = 2;
+			this.TLP.RowCount = 3;
 			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.TLP.Size = new System.Drawing.Size(207, 75);
+			this.TLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.TLP.Size = new System.Drawing.Size(164, 95);
 			this.TLP.TabIndex = 0;
+			// 
+			// CbLinePreview
+			// 
+			this.CbLinePreview.AutoSize = true;
+			this.TLP.SetColumnSpan(this.CbLinePreview, 2);
+			this.CbLinePreview.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.CbLinePreview.Location = new System.Drawing.Point(2, 77);
+			this.CbLinePreview.Margin = new System.Windows.Forms.Padding(2);
+			this.CbLinePreview.Name = "CbLinePreview";
+			this.CbLinePreview.Size = new System.Drawing.Size(87, 16);
+			this.CbLinePreview.TabIndex = 18;
+			this.CbLinePreview.Text = "Line Preview";
+			this.CbLinePreview.UseVisualStyleBackColor = true;
+			this.CbLinePreview.CheckedChanged += new System.EventHandler(this.CbLinePreview_CheckedChanged);
 			// 
 			// label27
 			// 
@@ -78,7 +95,7 @@
 			this.CbTools.Margin = new System.Windows.Forms.Padding(2);
 			this.CbTools.Name = "CbTools";
 			this.CbTools.SelectedItem = null;
-			this.CbTools.Size = new System.Drawing.Size(169, 21);
+			this.CbTools.Size = new System.Drawing.Size(126, 21);
 			this.CbTools.TabIndex = 3;
 			this.CbTools.SelectedIndexChanged += new System.EventHandler(this.CbTools_SelectedIndexChanged);
 			// 
@@ -92,7 +109,7 @@
 			this.PNL.Margin = new System.Windows.Forms.Padding(0);
 			this.PNL.MinimumSize = new System.Drawing.Size(0, 50);
 			this.PNL.Name = "PNL";
-			this.PNL.Size = new System.Drawing.Size(207, 50);
+			this.PNL.Size = new System.Drawing.Size(164, 50);
 			this.PNL.TabIndex = 15;
 			// 
 			// GB
@@ -104,7 +121,7 @@
 			this.GB.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.GB.Location = new System.Drawing.Point(0, 0);
 			this.GB.Name = "GB";
-			this.GB.Size = new System.Drawing.Size(213, 94);
+			this.GB.Size = new System.Drawing.Size(170, 114);
 			this.GB.TabIndex = 1;
 			this.GB.TabStop = false;
 			this.GB.Text = "Conversion tool";
@@ -116,7 +133,7 @@
 			this.BtnRepo.BackColor = System.Drawing.Color.Transparent;
 			this.BtnRepo.Coloration = System.Drawing.Color.Empty;
 			this.BtnRepo.Image = ((System.Drawing.Image)(resources.GetObject("BtnRepo.Image")));
-			this.BtnRepo.Location = new System.Drawing.Point(191, 0);
+			this.BtnRepo.Location = new System.Drawing.Point(148, 0);
 			this.BtnRepo.Name = "BtnRepo";
 			this.BtnRepo.Size = new System.Drawing.Size(17, 17);
 			this.BtnRepo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -131,7 +148,7 @@
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.Controls.Add(this.GB);
 			this.Name = "SetupTool";
-			this.Size = new System.Drawing.Size(213, 94);
+			this.Size = new System.Drawing.Size(170, 114);
 			this.TLP.ResumeLayout(false);
 			this.TLP.PerformLayout();
 			this.GB.ResumeLayout(false);
@@ -149,5 +166,6 @@
 		private System.Windows.Forms.GroupBox GB;
 		private System.Windows.Forms.Panel PNL;
 		private UserControls.ImageButton BtnRepo;
+		private System.Windows.Forms.CheckBox CbLinePreview;
 	}
 }
