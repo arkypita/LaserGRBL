@@ -421,7 +421,7 @@ namespace LaserGRBL
 
 		private List<ColorSegment> GetSegments(Bitmap bmp, L2LConf c)
 		{
-			bool uni = true;
+			bool uni = (bool)Settings.GetObject("Unidirectional Engraving", false);
 
 			List<ColorSegment> rv = new List<ColorSegment>();
 			if (c.dir == RasterConverter.ImageProcessor.Direction.Horizontal || c.dir == RasterConverter.ImageProcessor.Direction.Vertical)
