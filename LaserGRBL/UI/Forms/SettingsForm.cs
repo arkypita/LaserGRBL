@@ -26,6 +26,7 @@ namespace LaserGRBL
             CBLaserMode.Checked = (bool)Settings.GetObject("Laser Mode", false);
 			CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			CBStreamingMode.SelectedItem = Settings.GetObject("Streaming Mode", GrblCore.StreamingMode.Buffered);
+			CbUnidirectional.Checked = (bool)Settings.GetObject("Unidirectional Engraving", false);
 		}
 
 		private void InitProtocolCB()
@@ -58,7 +59,7 @@ namespace LaserGRBL
             Settings.SetObject("Laser Mode", CBLaserMode.Checked);
 			Settings.SetObject("ComWrapper Protocol", CBProtocol.SelectedItem);
 			Settings.SetObject("Streaming Mode", CBStreamingMode.SelectedItem);
-
+			Settings.SetObject("Unidirectional Engraving", CbUnidirectional.Checked);
 			Settings.Save();
 
 			Close();

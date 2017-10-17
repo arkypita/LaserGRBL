@@ -421,6 +421,8 @@ namespace LaserGRBL
 
 		private List<ColorSegment> GetSegments(Bitmap bmp, L2LConf c)
 		{
+			bool uni = (bool)Settings.GetObject("Unidirectional Engraving", false);
+
 			List<ColorSegment> rv = new List<ColorSegment>();
 			if (c.dir == Core.RasterToGcode.ConversionTool.EngravingDirection.Horizontal || c.dir == Core.RasterToGcode.ConversionTool.EngravingDirection.Vertical)
 			{
@@ -428,7 +430,7 @@ namespace LaserGRBL
 				
 				for (int i = 0; i < (h ? bmp.Height : bmp.Width); i++)
 				{
-					bool d = IsEven(i); //direct/reverse
+					bool d = uni || IsEven(i); //direct/reverse
 					int prevCol = -1;
 					int len = -1;
 
@@ -439,6 +441,12 @@ namespace LaserGRBL
 						rv.Add(new XSegment(prevCol, len + 1, !d, c)); //close last segment
 					else
 						rv.Add(new YSegment(prevCol, len + 1, !d, c)); //close last segment
+
+					if (uni) // add "go back"
+					{
+						if (h) rv.Add(new XSegment(0, bmp.Width, true, c)); 
+						else rv.Add(new YSegment(0, bmp.Height, true, c));
+					}
 
 					if (i < (h ? bmp.Height-1 : bmp.Width-1))
 					{
@@ -477,7 +485,7 @@ namespace LaserGRBL
 				int h = bmp.Height;
 			    for (int slice = 0; slice < w + h - 1; ++slice) 
 			    {
-					bool d = IsEven(slice); //direct/reverse
+					bool d = uni || IsEven(slice); //direct/reverse
 
 			    	int prevCol = -1;
 					int len = -1;
@@ -491,16 +499,23 @@ namespace LaserGRBL
 
 					//System.Diagnostics.Debug.WriteLine(String.Format("sl:{0} z1:{1} z2:{2}", slice, z1, z2));
 
+					if (uni) // add "go back"
+					{
+						int slen = (slice - z1 - z2) + 1;
+						rv.Add(new DSegment(0, slen, true, c));
+						//System.Diagnostics.Debug.WriteLine(slen);
+					}
+
 					if (slice < Math.Min(w, h)-1) //first part of the image
 					{
-						if (d)
+						if (d && !uni)
 							rv.Add(new HSeparator(c)); //new line
 						else
 							rv.Add(new VSeparator(c)); //new line
 					}
 					else if (slice >= Math.Max(w, h)-1) //third part of image
 					{
-						if (d)
+						if (d && !uni)
 							rv.Add(new VSeparator(c)); //new line
 						else
 							rv.Add(new HSeparator(c)); //new line
