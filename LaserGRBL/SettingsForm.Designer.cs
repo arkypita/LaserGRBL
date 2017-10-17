@@ -47,6 +47,8 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.BtnProtocol = new LaserGRBL.UserControls.ImageButton();
+			this.CbUnidirectional = new System.Windows.Forms.CheckBox();
+			this.label5 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.GB.SuspendLayout();
@@ -103,6 +105,8 @@
 			this.tableLayoutPanel3.Controls.Add(this.label2, 2, 1);
 			this.tableLayoutPanel3.Controls.Add(this.label3, 2, 2);
 			this.tableLayoutPanel3.Controls.Add(this.BtnProtocol, 0, 2);
+			this.tableLayoutPanel3.Controls.Add(this.CbUnidirectional, 1, 4);
+			this.tableLayoutPanel3.Controls.Add(this.label5, 2, 4);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
 			// 
 			// label4
@@ -199,6 +203,17 @@
 			this.BtnProtocol.UseAltImage = false;
 			this.BtnProtocol.Click += new System.EventHandler(this.BtnProtocol_Click);
 			// 
+			// CbUnidirectional
+			// 
+			resources.ApplyResources(this.CbUnidirectional, "CbUnidirectional");
+			this.CbUnidirectional.Name = "CbUnidirectional";
+			this.CbUnidirectional.UseVisualStyleBackColor = true;
+			// 
+			// label5
+			// 
+			resources.ApplyResources(this.label5, "label5");
+			this.label5.Name = "label5";
+			// 
 			// SettingsForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -235,5 +250,7 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.ComboBox CBStreamingMode;
 		private UserControls.ImageButton BtnStreamingMode;
+		private System.Windows.Forms.CheckBox CbUnidirectional;
+		private System.Windows.Forms.Label label5;
     }
 }
