@@ -688,16 +688,12 @@ namespace LaserGRBL.RasterConverter
 			TH.Name = "GCode Generator";
 			TH.Start();
 		}
-
-		private static bool Is32Bit
-		{ get { return IntPtr.Size == 4; } }
-
+		
 		void DoTrueWork()
 		{
 			try
 			{
-				int maxSize = Is32Bit ? 6000 * 7000 : 22000 * 22000; //on 32bit OS we have memory limit - allow Higher value on 64bit
-
+				int maxSize = 6000*7000; //testato con immagini da 600*700 con res 10ppm
 				double maxRes = Math.Sqrt((maxSize / (TargetSize.Width * TargetSize.Height))); //limit res if resultimg bmp size is to big
 				double res = Math.Min(maxRes, SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering ? (double)Quality : 10.0); //use a fixed resolution of 10ppmm
 				double fres = Math.Min(maxRes, FillingQuality);
