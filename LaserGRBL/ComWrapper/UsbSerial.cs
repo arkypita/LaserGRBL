@@ -23,9 +23,15 @@ namespace LaserGRBL.ComWrapper
 			{
 				try
 				{
+					com.DataBits = 8;
+					com.Handshake = System.IO.Ports.Handshake.None;
+					com.Parity = System.IO.Ports.Parity.None;
+					com.StopBits = System.IO.Ports.StopBits.One;
+
 					com.NewLine = "\n";
 					com.PortName = mPortName;
 					com.BaudRate = mBaudRate;
+
 					Logger.LogMessage("OpenCom", "Open {0} @ {1} baud", com.PortName.ToUpper(), com.BaudRate);
 
 					com.Open();
