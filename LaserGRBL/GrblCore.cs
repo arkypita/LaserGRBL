@@ -507,6 +507,7 @@ namespace LaserGRBL
 			try
 			{
 				SetStatus(MacStatus.Connecting);
+				connectStart = Tools.HiResTimer.TotalMilliseconds;
 
 				if (!com.IsOpen)
 				{
@@ -536,6 +537,7 @@ namespace LaserGRBL
 				if (com.IsOpen)
 					com.Close(auto);
 
+				mGrblVersion = null;
 				mBuffer = 0;
 
 				TX.Stop();
@@ -717,6 +719,7 @@ namespace LaserGRBL
 			}
 		}
 
+		private long connectStart;
 		private long lastPosRequest;
 		protected void ThreadTX()
 		{
@@ -724,6 +727,9 @@ namespace LaserGRBL
 			{
 				try
 				{
+					if (MachineStatus == MacStatus.Connecting && Tools.HiResTimer.TotalMilliseconds - connectStart > 10000)
+						OnConnectTimeout();
+
 					if (!TX.MustExitTH() && CanSend())
 						SendLine();
 
@@ -739,6 +745,12 @@ namespace LaserGRBL
 				catch (Exception ex)
 				{ Logger.LogException("ThreadTX", ex); }
 			}
+		}
+
+		private void OnConnectTimeout()
+		{
+			Logger.LogMessage("OpenCom", "Connection timeout!");
+			CloseCom(true);
 		}
 
 		private bool CanSend()
@@ -883,8 +895,10 @@ namespace LaserGRBL
 				{
 					string[] arr = rline.Split(",".ToCharArray());
 
-					ParseMachineStatus(arr[0]);
-					mLaserPosition = new System.Drawing.PointF(float.Parse(arr[1].Substring(5, arr[1].Length - 5), System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[2], System.Globalization.NumberFormatInfo.InvariantInfo));
+					if (arr.Length > 0)
+						ParseMachineStatus(arr[0]);
+					if (arr.Length > 2)
+						mLaserPosition = new System.Drawing.PointF(float.Parse(arr[1].Substring(5, arr[1].Length - 5), System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[2], System.Globalization.NumberFormatInfo.InvariantInfo));
 				}
 			}
 			catch (Exception ex)
