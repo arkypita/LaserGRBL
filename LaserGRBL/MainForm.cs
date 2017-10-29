@@ -175,9 +175,6 @@ namespace LaserGRBL
 					break;
 			}
 
-			LblX.Text = string.Format("X: {0:0.000}", Core.LaserPosition.X);
-			LblY.Text = string.Format("Y: {0:0.000}", Core.LaserPosition.Y);
-
 			ResumeLayout();
 		}
 
