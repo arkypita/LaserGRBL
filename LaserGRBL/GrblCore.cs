@@ -9,7 +9,7 @@ namespace LaserGRBL
 	public class GrblCore
 	{
 		public enum MacStatus
-		{ Unknown, Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog }
+		{ Unknown, Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue }
 
 		public enum JogDirection
 		{ N, S, W, E, NW, NE, SW, SE }
