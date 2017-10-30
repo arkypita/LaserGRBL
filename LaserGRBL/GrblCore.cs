@@ -749,8 +749,11 @@ namespace LaserGRBL
 
 		private void OnConnectTimeout()
 		{
-			Logger.LogMessage("OpenCom", "Connection timeout!");
-			CloseCom(true);
+			if (com.IsOpen)
+			{
+				Logger.LogMessage("OpenCom", "Connection timeout!");
+				com.Close(true); //this cause disconnection from RX thread ("ReadLineOrDisconnect")
+			}
 		}
 
 		private bool CanSend()
