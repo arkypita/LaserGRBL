@@ -590,7 +590,7 @@ namespace LaserGRBL
 		//  II | I
 		// ---------
 		// III | IV
-		private CartesianQuadrant Quadrant
+		public CartesianQuadrant Quadrant
 		{
 			get 
 			{

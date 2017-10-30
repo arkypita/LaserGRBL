@@ -34,21 +34,43 @@ namespace LaserGRBL.UserControls
 		{
 			if (mBitmap != null)
 				e.Graphics.DrawImage(mBitmap, 0, 0, Width, Height);
-			
-			PointF p = TranslatePoint(mLastPosition);
-			e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-			e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-			using (Pen px = GetPen(ColorScheme.PreviewCross))
+			if (Core != null)
 			{
-				e.Graphics.DrawLine(px, (int)p.X, (int)p.Y - 3, (int)p.X, (int)p.Y - 3 + 7);
-				e.Graphics.DrawLine(px, (int)p.X - 3, (int)p.Y, (int)p.X - 3 + 7, (int)p.Y);
+				PointF p = TranslatePoint(mLastPosition);
+				e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+				e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+				using (Pen px = GetPen(ColorScheme.PreviewCross))
+				{
+					e.Graphics.DrawLine(px, (int)p.X, (int)p.Y - 3, (int)p.X, (int)p.Y - 3 + 7);
+					e.Graphics.DrawLine(px, (int)p.X - 3, (int)p.Y, (int)p.X - 3 + 7, (int)p.Y);
+
+					using (Brush b = GetBrush(ColorScheme.PreviewText))
+					{
+						Rectangle r = ClientRectangle;
+						r.Inflate(-5, -5);
+						StringFormat sf = new StringFormat();
+
+						//  II | I
+						// ---------
+						// III | IV
+						GrblFile.CartesianQuadrant q = Core != null && Core.LoadedFile != null ? Core.LoadedFile.Quadrant : GrblFile.CartesianQuadrant.Unknown;
+						sf.Alignment = q == GrblFile.CartesianQuadrant.II || q == GrblFile.CartesianQuadrant.III ? StringAlignment.Near : StringAlignment.Far;
+						sf.LineAlignment = q == GrblFile.CartesianQuadrant.III || q == GrblFile.CartesianQuadrant.IV ? StringAlignment.Far : StringAlignment.Near;
+
+						String position = string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? Core.LaserPosition.X : 0, Core != null ? Core.LaserPosition.Y : 0);
+						e.Graphics.DrawString(position, Font, b, r, sf);
+					}
+				}
 			}
 		}
 
 		private Pen GetPen(Color color)
 		{ return new Pen(color); }
-			
+
+		private Brush GetBrush(Color color)
+		{ return new SolidBrush(color); }	
 
 		public void SetComProgram(GrblCore core)
 		{

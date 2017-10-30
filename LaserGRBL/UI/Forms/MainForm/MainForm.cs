@@ -38,6 +38,7 @@ namespace LaserGRBL
 
 			ColorScheme.CurrentScheme = (ColorScheme.Scheme)Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser); ;
 			RefreshColorSchema(); //include RefreshOverride();
+			RefreshFormTitle();
 		}
 
 		private void RefreshColorSchema()
@@ -174,10 +175,14 @@ namespace LaserGRBL
 					break;
 			}
 
-			LblX.Text = string.Format("X: {0:0.000}", Core.LaserPosition.X);
-			LblY.Text = string.Format("Y: {0:0.000}", Core.LaserPosition.Y);
-
 			ResumeLayout();
+		}
+
+		private void RefreshFormTitle()
+		{
+			Version current = typeof(GitHub).Assembly.GetName().Version;
+			string FormTitle = string.Format("LaserGRBL v{0}", current.ToString(3));
+			if (Text != FormTitle) Text = FormTitle;
 		}
 
 		void MnExportConfigClick(object sender, EventArgs e)
