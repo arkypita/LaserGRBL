@@ -175,6 +175,12 @@ Please manually download the new version from lasergrbl site.</value>
   <data name="DirectionVertical" xml:space="preserve">
     <value>Vertical</value>
   </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>File transfer in progress. Disconnect anyway?</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>File transfer in progress. Exit anyway?</value>
+  </data>
   <data name="FormulaCustom" xml:space="preserve">
     <value>Custom</value>
   </data>

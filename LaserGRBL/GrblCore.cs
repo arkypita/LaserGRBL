@@ -538,6 +538,7 @@ namespace LaserGRBL
 
 				mGrblVersion = null;
 				mBuffer = 0;
+				mTP.JobEnd();
 
 				TX.Stop();
 				RX.Stop();
