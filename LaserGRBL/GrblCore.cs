@@ -169,7 +169,7 @@ namespace LaserGRBL
 			syncro = syncroObject;
 			com = new ComWrapper.UsbSerial();
 
-			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", null);
+			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX);
 			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null);
 
 			file = new GrblFile(0, 0, 200, 300);  //create a fake range to use with manual movements
@@ -516,7 +516,6 @@ namespace LaserGRBL
 
 				lock (this)
 				{
-					GrblReset();
 					RX.Start();
 					TX.Start();
 				}
@@ -569,7 +568,10 @@ namespace LaserGRBL
 		{ SendImmediate(64); }
 
 		private void QueryPosition()
-		{ SendImmediate(63, true); }
+		{
+			SendImmediate(63, true);
+			lastPosRequest = Tools.HiResTimer.TotalMilliseconds; 
+		}
 
 		public void GrblReset()
 		{
@@ -719,6 +721,15 @@ namespace LaserGRBL
 			}
 		}
 
+		private void StartTX()
+		{
+			lock (this)
+			{
+				GrblReset();
+				QueryPosition();
+			}
+		}
+
 		private long connectStart;
 		private long lastPosRequest;
 		protected void ThreadTX()
@@ -729,16 +740,12 @@ namespace LaserGRBL
 				{
 					if (MachineStatus == MacStatus.Connecting && Tools.HiResTimer.TotalMilliseconds - connectStart > 10000)
 						OnConnectTimeout();
-
+					
 					if (!TX.MustExitTH() && CanSend())
 						SendLine();
 
-					long now = Tools.HiResTimer.TotalMilliseconds;
-					if (now - lastPosRequest > 200)
-					{
+					if (Tools.HiResTimer.TotalMilliseconds - lastPosRequest > 200)
 						QueryPosition();
-						lastPosRequest = now;
-					}
 
 					TX.SleepTime = CanSend() ? 0 : 1; //sleep only if no more data to send
 				}
