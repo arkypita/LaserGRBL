@@ -233,6 +233,24 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a File transfer in progress. Disconnect anyway?.
+        /// </summary>
+        internal static string DisconnectAnyway {
+            get {
+                return ResourceManager.GetString("DisconnectAnyway", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a File transfer in progress. Exit anyway?.
+        /// </summary>
+        internal static string ExitAnyway {
+            get {
+                return ResourceManager.GetString("ExitAnyway", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Custom.
         /// </summary>
         internal static string FormulaCustom {

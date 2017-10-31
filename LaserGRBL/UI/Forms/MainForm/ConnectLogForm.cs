@@ -8,6 +8,7 @@
  */
 using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace LaserGRBL
 {
@@ -117,7 +118,7 @@ namespace LaserGRBL
 		{
 			if (Core.MachineStatus == GrblCore.MacStatus.Disconnected)
 				Core.OpenCom();
-			else
+			else if (!(Core.InProgram && System.Windows.Forms.MessageBox.Show(Strings.DisconnectAnyway, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes))
 				Core.CloseCom(false);
 
 			TimerUpdate();
