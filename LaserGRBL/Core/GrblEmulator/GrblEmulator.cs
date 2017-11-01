@@ -40,6 +40,7 @@ namespace LaserGRBL
 			decimal curX = 0.0M, curY = 0.0M, curZ = 0.0M, speed = 0.0M;
 			bool abs = true;
 			TimeSpan toSleep = TimeSpan.Zero;
+			private bool mCheck = false;
 
 			private Tools.ThreadObject RX;
 			private Tools.ThreadObject TX;
@@ -73,6 +74,7 @@ namespace LaserGRBL
 					rxBuf.Clear();
 					txBuf.Clear();
 					mPaused = false;
+					mCheck = false;
 					RX.Start();
 					TX.Start();
 					SendConnected();
@@ -196,7 +198,9 @@ namespace LaserGRBL
 			{
 				get 
 				{
-					if (mPaused)
+					if (mCheck)
+						return "Check";
+					else if (mPaused)
 						return "Hold";
 					else if (rxBuf.Count > 0)
 						return "Run";
@@ -219,6 +223,8 @@ namespace LaserGRBL
 								SendConfig();
 							else if (IsSetConf(line))
 								SetConfig(line);
+							else if (line == "$C\n")
+								SwapCheck();
 							else
 								EmulateCommand(new GrblCommand(line));
 							
@@ -231,6 +237,16 @@ namespace LaserGRBL
 
 					RX.SleepTime = rxBuf.Count > 0 ? 0 : 1;
 				}
+			}
+
+			private void SwapCheck()
+			{
+				mCheck = !mCheck;
+				EnqueueTX("ok");
+				EnqueueTX(mCheck ? "[Enabled]" : "[Disabled]");
+				
+				if (!mCheck)
+					GrblReset();
 			}
 
 			private void ManageTX()
@@ -267,47 +283,48 @@ namespace LaserGRBL
 
 			private void EmulateCommand(GrblCommand cmd)
 			{
-				try
+				if (!mCheck)
 				{
-
-					cmd.BuildHelper();
-
-					if (cmd.IsRelativeCoord)
-						abs = false;
-					if (cmd.IsAbsoluteCoord)
-						abs = true;
-
-					if (cmd.F != null)
-						speed = cmd.F.Number;
-
-					decimal newX = cmd.X != null ? (abs ? cmd.X.Number : curX + cmd.X.Number) : curX;
-					decimal newY = cmd.Y != null ? (abs ? cmd.Y.Number : curY + cmd.Y.Number) : curY;
-
-					decimal distance = 0;
-
-					if (cmd.IsLinearMovement)
-						distance = Tools.MathHelper.LinearDistance(curX, curY, newX, newY);
-					else if (cmd.IsArcMovement) //arc of given radius
-						distance = Tools.MathHelper.ArcDistance(curX, curY, newX, newY, cmd.GetArcRadius());
-
-					if (distance != 0 && speed != 0)
-						toSleep += TimeSpan.FromMinutes((double)distance / (double)speed);
-
-					if (toSleep.TotalMilliseconds > 15) //execute sleep
+					try
 					{
-						long start = Tools.HiResTimer.TotalNano;
-						System.Threading.Thread.Sleep(toSleep);
-						long stop = Tools.HiResTimer.TotalNano;
+						cmd.BuildHelper();
 
-						toSleep -= TimeSpan.FromMilliseconds((double)(stop - start) / 1000.0 / 1000.0);
+						if (cmd.IsRelativeCoord)
+							abs = false;
+						if (cmd.IsAbsoluteCoord)
+							abs = true;
+
+						if (cmd.F != null)
+							speed = cmd.F.Number;
+
+						decimal newX = cmd.X != null ? (abs ? cmd.X.Number : curX + cmd.X.Number) : curX;
+						decimal newY = cmd.Y != null ? (abs ? cmd.Y.Number : curY + cmd.Y.Number) : curY;
+
+						decimal distance = 0;
+
+						if (cmd.IsLinearMovement)
+							distance = Tools.MathHelper.LinearDistance(curX, curY, newX, newY);
+						else if (cmd.IsArcMovement) //arc of given radius
+							distance = Tools.MathHelper.ArcDistance(curX, curY, newX, newY, cmd.GetArcRadius());
+
+						if (distance != 0 && speed != 0)
+							toSleep += TimeSpan.FromMinutes((double)distance / (double)speed);
+
+						if (toSleep.TotalMilliseconds > 15) //execute sleep
+						{
+							long start = Tools.HiResTimer.TotalNano;
+							System.Threading.Thread.Sleep(toSleep);
+							long stop = Tools.HiResTimer.TotalNano;
+
+							toSleep -= TimeSpan.FromMilliseconds((double)(stop - start) / 1000.0 / 1000.0);
+						}
+
+						curX = newX;
+						curY = newY;
 					}
-
-					curX = newX;
-					curY = newY;
+					catch (Exception ex) { throw ex; }
+					finally { cmd.DeleteHelper(); }
 				}
-
-				catch (Exception ex) { throw ex; }
-				finally { cmd.DeleteHelper(); }
 
 				EnqueueTX("ok");
 			}

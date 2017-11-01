@@ -594,7 +594,7 @@ namespace LaserGRBL
 		{
 			try
 			{
-				if (!mute) Logger.LogMessage("SendImmediate", "Send Immediate Command [{0}]", b);
+				if (!mute) Logger.LogMessage("SendImmediate", "Send Immediate Command [0x{0:X}]", b);
 
 				lock (this)
 				{ if (com.IsOpen) com.Write(b); }
