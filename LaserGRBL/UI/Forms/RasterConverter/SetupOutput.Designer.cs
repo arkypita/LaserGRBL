@@ -28,9 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupOutput));
 			this.GbSize = new System.Windows.Forms.GroupBox();
-			this.BtnRepo = new LaserGRBL.UserControls.ImageButton();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
@@ -50,7 +48,6 @@
 			// 
 			this.GbSize.AutoSize = true;
 			this.GbSize.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.GbSize.Controls.Add(this.BtnRepo);
 			this.GbSize.Controls.Add(this.TLP);
 			this.GbSize.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.GbSize.Location = new System.Drawing.Point(0, 0);
@@ -59,20 +56,6 @@
 			this.GbSize.TabIndex = 1;
 			this.GbSize.TabStop = false;
 			this.GbSize.Text = "Size and Position [mm]";
-			// 
-			// BtnRepo
-			// 
-			this.BtnRepo.AltImage = null;
-			this.BtnRepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BtnRepo.BackColor = System.Drawing.Color.Transparent;
-			this.BtnRepo.Coloration = System.Drawing.Color.Empty;
-			this.BtnRepo.Image = ((System.Drawing.Image)(resources.GetObject("BtnRepo.Image")));
-			this.BtnRepo.Location = new System.Drawing.Point(171, 0);
-			this.BtnRepo.Name = "BtnRepo";
-			this.BtnRepo.Size = new System.Drawing.Size(17, 17);
-			this.BtnRepo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnRepo.TabIndex = 2;
-			this.BtnRepo.UseAltImage = false;
 			// 
 			// TLP
 			// 
@@ -263,7 +246,6 @@
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label11;
-		private UserControls.ImageButton BtnRepo;
 
 	}
 }

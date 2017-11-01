@@ -48,7 +48,6 @@
 			this.GS = new LaserGRBL.UI.Forms.RasterConverter.SetupGrayscale();
 			this.ST = new LaserGRBL.UI.Forms.RasterConverter.SetupTool();
 			this.SL = new LaserGRBL.UI.Forms.RasterConverter.SetupLaser();
-			this.setupOutput2 = new LaserGRBL.UI.Forms.RasterConverter.SetupOutput();
 			this.TLPButtons = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.BtnCancel = new System.Windows.Forms.Button();
@@ -232,7 +231,6 @@
 			this.TLPConfig.Controls.Add(this.GS, 0, 0);
 			this.TLPConfig.Controls.Add(this.ST, 0, 1);
 			this.TLPConfig.Controls.Add(this.SL, 0, 2);
-			this.TLPConfig.Controls.Add(this.setupOutput2, 0, 3);
 			this.TLPConfig.Name = "TLPConfig";
 			this.TLPMain.SetRowSpan(this.TLPConfig, 2);
 			// 
@@ -253,11 +251,6 @@
 			// 
 			resources.ApplyResources(this.SL, "SL");
 			this.SL.Name = "SL";
-			// 
-			// setupOutput2
-			// 
-			resources.ApplyResources(this.setupOutput2, "setupOutput2");
-			this.setupOutput2.Name = "setupOutput2";
 			// 
 			// TLPButtons
 			// 
@@ -335,6 +328,5 @@
 		private SetupGrayscale GS;
 		private SetupTool ST;
 		private SetupLaser SL;
-		private SetupOutput setupOutput2;
 	}
 }

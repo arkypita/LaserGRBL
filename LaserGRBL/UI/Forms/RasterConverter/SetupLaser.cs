@@ -53,7 +53,7 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 			LblWhatModulate.Visible = CbModulate.Visible = Config.SelectedTool.RequireModulation;
 			LblModWhite.Visible = LblModWhiteCode.Visible = IIModWhite.Visible = LblModWhiteUM.Visible = Config.SelectedTool.RequireModulation;
 			LblModBlack.Visible = LblModBlackCode.Visible = IIModBlack.Visible = LblModBlackUM.Visible = Config.SelectedTool.RequireModulation;
-			LblBorder.Visible = LblBorderCode.Visible = LblBorderUM.Visible = IIBorder.Visible = Config.SelectedTool.UseBorders;
+			LblBorders.Visible = LblBorderCode.Visible = LblBorderUM.Visible = IIBorder.Visible = Config.SelectedTool.UseBorders;
 			LblFilling.Visible = LblFillingCode.Visible = LblFillingUM.Visible = IIFilling.Visible = Config.SelectedTool.UseFilling;
 			ResumeLayout();
 		}

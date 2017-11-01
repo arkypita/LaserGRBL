@@ -29,8 +29,7 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupLaser));
-			this.GbLaser = new System.Windows.Forms.GroupBox();
-			this.BtnRepo = new LaserGRBL.UserControls.ImageButton();
+			this.GB = new System.Windows.Forms.GroupBox();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
 			this.label26 = new System.Windows.Forms.Label();
 			this.label18 = new System.Windows.Forms.Label();
@@ -39,7 +38,7 @@
 			this.CbModulate = new LaserGRBL.UserControls.EnumComboBox();
 			this.LblModWhite = new System.Windows.Forms.Label();
 			this.LblFilling = new System.Windows.Forms.Label();
-			this.LblBorder = new System.Windows.Forms.Label();
+			this.LblBorders = new System.Windows.Forms.Label();
 			this.LblModBlack = new System.Windows.Forms.Label();
 			this.IIModWhite = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
 			this.LblModBlackCode = new System.Windows.Forms.Label();
@@ -56,37 +55,22 @@
 			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
 			this.LblModWhiteUM = new System.Windows.Forms.Label();
 			this.LblModBlackUM = new System.Windows.Forms.Label();
-			this.GbLaser.SuspendLayout();
+			this.GB.SuspendLayout();
 			this.TLP.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// GbLaser
+			// GB
 			// 
-			this.GbLaser.AutoSize = true;
-			this.GbLaser.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.GbLaser.Controls.Add(this.BtnRepo);
-			this.GbLaser.Controls.Add(this.TLP);
-			this.GbLaser.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.GbLaser.Location = new System.Drawing.Point(0, 0);
-			this.GbLaser.Name = "GbLaser";
-			this.GbLaser.Size = new System.Drawing.Size(212, 182);
-			this.GbLaser.TabIndex = 3;
-			this.GbLaser.TabStop = false;
-			this.GbLaser.Text = "Laser";
-			// 
-			// BtnRepo
-			// 
-			this.BtnRepo.AltImage = null;
-			this.BtnRepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BtnRepo.BackColor = System.Drawing.Color.Transparent;
-			this.BtnRepo.Coloration = System.Drawing.Color.Empty;
-			this.BtnRepo.Image = ((System.Drawing.Image)(resources.GetObject("BtnRepo.Image")));
-			this.BtnRepo.Location = new System.Drawing.Point(189, 0);
-			this.BtnRepo.Name = "BtnRepo";
-			this.BtnRepo.Size = new System.Drawing.Size(17, 17);
-			this.BtnRepo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnRepo.TabIndex = 2;
-			this.BtnRepo.UseAltImage = false;
+			this.GB.AutoSize = true;
+			this.GB.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.GB.Controls.Add(this.TLP);
+			this.GB.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.GB.Location = new System.Drawing.Point(0, 0);
+			this.GB.Name = "GB";
+			this.GB.Size = new System.Drawing.Size(212, 182);
+			this.GB.TabIndex = 3;
+			this.GB.TabStop = false;
+			this.GB.Text = "Laser";
 			// 
 			// TLP
 			// 
@@ -104,7 +88,7 @@
 			this.TLP.Controls.Add(this.CbModulate, 1, 0);
 			this.TLP.Controls.Add(this.LblModWhite, 0, 1);
 			this.TLP.Controls.Add(this.LblFilling, 0, 4);
-			this.TLP.Controls.Add(this.LblBorder, 0, 3);
+			this.TLP.Controls.Add(this.LblBorders, 0, 3);
 			this.TLP.Controls.Add(this.LblModBlack, 0, 2);
 			this.TLP.Controls.Add(this.IIModWhite, 2, 1);
 			this.TLP.Controls.Add(this.LblModBlackCode, 1, 2);
@@ -216,16 +200,16 @@
 			this.LblFilling.TabIndex = 13;
 			this.LblFilling.Text = "Filling";
 			// 
-			// LblBorder
+			// LblBorders
 			// 
-			this.LblBorder.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.LblBorder.AutoSize = true;
-			this.LblBorder.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.LblBorder.Location = new System.Drawing.Point(3, 71);
-			this.LblBorder.Name = "LblBorder";
-			this.LblBorder.Size = new System.Drawing.Size(38, 13);
-			this.LblBorder.TabIndex = 23;
-			this.LblBorder.Text = "Border";
+			this.LblBorders.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.LblBorders.AutoSize = true;
+			this.LblBorders.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.LblBorders.Location = new System.Drawing.Point(3, 71);
+			this.LblBorders.Name = "LblBorders";
+			this.LblBorders.Size = new System.Drawing.Size(38, 13);
+			this.LblBorders.TabIndex = 23;
+			this.LblBorders.Text = "Border";
 			// 
 			// LblModBlack
 			// 
@@ -432,11 +416,11 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.Controls.Add(this.GbLaser);
+			this.Controls.Add(this.GB);
 			this.Name = "SetupLaser";
 			this.Size = new System.Drawing.Size(212, 182);
-			this.GbLaser.ResumeLayout(false);
-			this.GbLaser.PerformLayout();
+			this.GB.ResumeLayout(false);
+			this.GB.PerformLayout();
 			this.TLP.ResumeLayout(false);
 			this.TLP.PerformLayout();
 			this.ResumeLayout(false);
@@ -446,9 +430,9 @@
 
 		#endregion
 
-		private System.Windows.Forms.GroupBox GbLaser;
+		private System.Windows.Forms.GroupBox GB;
 		private System.Windows.Forms.TableLayoutPanel TLP;
-		private System.Windows.Forms.Label LblBorder;
+		private System.Windows.Forms.Label LblBorders;
 		private System.Windows.Forms.Label LblBorderUM;
 		private UserControls.IntegerInput.IntegerInputRanged IIBorder;
 		private UserControls.IntegerInput.IntegerInputRanged IIFilling;
@@ -470,7 +454,6 @@
 		private System.Windows.Forms.Label LblModBlackCode;
 		private System.Windows.Forms.Label LblBorderCode;
 		private System.Windows.Forms.Label LblFillingCode;
-		private UserControls.ImageButton BtnRepo;
 		private System.Windows.Forms.Label LblModWhiteUM;
 		private System.Windows.Forms.Label LblModBlackUM;
 

@@ -139,7 +139,7 @@
     <value>WB</value>
   </data>
   <data name="&gt;&gt;WB.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.WaitingProgressBar, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.WaitingProgressBar, LaserGRBL, Version=2.8.10.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;WB.Parent" xml:space="preserve">
     <value>TpPreview</value>
@@ -349,7 +349,7 @@
     <value>BtFlipV</value>
   </data>
   <data name="&gt;&gt;BtFlipV.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.10.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtFlipV.Parent" xml:space="preserve">
     <value>TLPFlipControl</value>
@@ -408,7 +408,7 @@
     <value>BtFlipH</value>
   </data>
   <data name="&gt;&gt;BtFlipH.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.10.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtFlipH.Parent" xml:space="preserve">
     <value>TLPFlipControl</value>
@@ -463,7 +463,7 @@
     <value>BtRotateCW</value>
   </data>
   <data name="&gt;&gt;BtRotateCW.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.10.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtRotateCW.Parent" xml:space="preserve">
     <value>TLPFlipControl</value>
@@ -519,7 +519,7 @@
     <value>BtRotateCCW</value>
   </data>
   <data name="&gt;&gt;BtRotateCCW.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.10.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtRotateCCW.Parent" xml:space="preserve">
     <value>TLPFlipControl</value>
@@ -567,7 +567,7 @@
     <value>BtnCrop</value>
   </data>
   <data name="&gt;&gt;BtnCrop.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.10.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCrop.Parent" xml:space="preserve">
     <value>TLPFlipControl</value>
@@ -618,7 +618,7 @@
     <value>BtnRevert</value>
   </data>
   <data name="&gt;&gt;BtnRevert.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.10.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnRevert.Parent" xml:space="preserve">
     <value>TLPFlipControl</value>
@@ -684,7 +684,7 @@
     <value>GS</value>
   </data>
   <data name="&gt;&gt;GS.Type" xml:space="preserve">
-    <value>LaserGRBL.UI.Forms.RasterConverter.SetupGrayscale, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UI.Forms.RasterConverter.SetupGrayscale, LaserGRBL, Version=2.8.10.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GS.Parent" xml:space="preserve">
     <value>TLPConfig</value>
@@ -714,7 +714,7 @@
     <value>ST</value>
   </data>
   <data name="&gt;&gt;ST.Type" xml:space="preserve">
-    <value>LaserGRBL.UI.Forms.RasterConverter.SetupTool, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UI.Forms.RasterConverter.SetupTool, LaserGRBL, Version=2.8.10.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ST.Parent" xml:space="preserve">
     <value>TLPConfig</value>
@@ -735,7 +735,7 @@
     <value>3, 258</value>
   </data>
   <data name="SL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 179</value>
+    <value>222, 182</value>
   </data>
   <data name="SL.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -744,43 +744,13 @@
     <value>SL</value>
   </data>
   <data name="&gt;&gt;SL.Type" xml:space="preserve">
-    <value>LaserGRBL.UI.Forms.RasterConverter.SetupLaser, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UI.Forms.RasterConverter.SetupLaser, LaserGRBL, Version=2.8.10.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;SL.Parent" xml:space="preserve">
     <value>TLPConfig</value>
   </data>
   <data name="&gt;&gt;SL.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="setupOutput2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="setupOutput2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="setupOutput2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="setupOutput2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 443</value>
-  </data>
-  <data name="setupOutput2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 59</value>
-  </data>
-  <data name="setupOutput2.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;setupOutput2.Name" xml:space="preserve">
-    <value>setupOutput2</value>
-  </data>
-  <data name="&gt;&gt;setupOutput2.Type" xml:space="preserve">
-    <value>LaserGRBL.UI.Forms.RasterConverter.SetupOutput, LaserGRBL, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;setupOutput2.Parent" xml:space="preserve">
-    <value>TLPConfig</value>
-  </data>
-  <data name="&gt;&gt;setupOutput2.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="TLPConfig.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -789,7 +759,7 @@
     <value>3, 3</value>
   </data>
   <data name="TLPConfig.RowCount" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="TLPConfig.Size" type="System.Drawing.Size, System.Drawing">
     <value>228, 723</value>
@@ -810,7 +780,7 @@
     <value>2</value>
   </data>
   <data name="TLPConfig.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="GS" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ST" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="SL" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="setupOutput2" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,65,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="GS" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ST" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="SL" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="TLPButtons.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

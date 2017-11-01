@@ -28,14 +28,12 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupTool));
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
 			this.CbLinePreview = new System.Windows.Forms.CheckBox();
 			this.label27 = new System.Windows.Forms.Label();
 			this.CbTools = new LaserGRBL.UserControls.EnumComboBox();
 			this.PNL = new System.Windows.Forms.Panel();
 			this.GB = new System.Windows.Forms.GroupBox();
-			this.BtnRepo = new LaserGRBL.UserControls.ImageButton();
 			this.TLP.SuspendLayout();
 			this.GB.SuspendLayout();
 			this.SuspendLayout();
@@ -116,7 +114,6 @@
 			// 
 			this.GB.AutoSize = true;
 			this.GB.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.GB.Controls.Add(this.BtnRepo);
 			this.GB.Controls.Add(this.TLP);
 			this.GB.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.GB.Location = new System.Drawing.Point(0, 0);
@@ -125,20 +122,6 @@
 			this.GB.TabIndex = 1;
 			this.GB.TabStop = false;
 			this.GB.Text = "Conversion tool";
-			// 
-			// BtnRepo
-			// 
-			this.BtnRepo.AltImage = null;
-			this.BtnRepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BtnRepo.BackColor = System.Drawing.Color.Transparent;
-			this.BtnRepo.Coloration = System.Drawing.Color.Empty;
-			this.BtnRepo.Image = ((System.Drawing.Image)(resources.GetObject("BtnRepo.Image")));
-			this.BtnRepo.Location = new System.Drawing.Point(148, 0);
-			this.BtnRepo.Name = "BtnRepo";
-			this.BtnRepo.Size = new System.Drawing.Size(17, 17);
-			this.BtnRepo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnRepo.TabIndex = 2;
-			this.BtnRepo.UseAltImage = false;
 			// 
 			// SetupTool
 			// 
@@ -165,7 +148,6 @@
 		private System.Windows.Forms.Label label27;
 		private System.Windows.Forms.GroupBox GB;
 		private System.Windows.Forms.Panel PNL;
-		private UserControls.ImageButton BtnRepo;
 		private System.Windows.Forms.CheckBox CbLinePreview;
 	}
 }
