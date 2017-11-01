@@ -143,10 +143,23 @@ namespace LaserGRBL.Core.RasterToGcode
 		public ModulationRange PowerRange = new ModulationRange(0, 255);
 
 		public string WhatModulateCode { get { return WhatModulate == ModulationType.Power ? "S" : "F"; } }
-		public string WhatFixedCode { get { return WhatModulate == ModulationType.Power ? "F" : "S"; } }
-
 		public string WhatModulateUM { get { return WhatModulate == ModulationType.Power ? "PWM" : "mm/min"; } }
-		public string WhatFixedUM { get { return WhatModulate == ModulationType.Power ? "mm/min" : "PWM"; } }
+
+		public string WhatFillingCode(ConversionTool tool)
+		{ return tool.RequireModulation && WhatModulate == ModulationType.Speed ? "S" : "F"; }
+
+		public string WhatFillingUM(ConversionTool tool)
+		{ return tool.RequireModulation && WhatModulate == ModulationType.Speed ? "PWM" : "mm/min"; }
+
+		public string WhatFillingLabel(ConversionTool tool)
+		{
+			if (tool.RequireModulation && WhatModulate == ModulationType.Speed)
+				return "Power";
+			else if (tool is Vectorization)
+				return "Filling";
+			else
+				return "Speed";
+		} 
 	}
 
 	public struct EnabledDecimal

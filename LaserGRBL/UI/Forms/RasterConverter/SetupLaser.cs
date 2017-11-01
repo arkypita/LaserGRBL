@@ -29,32 +29,40 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 			CbModulate.SelectedIndex = 0;
 			LblWhatModulate.Visible = CbModulate.Visible = SupportPWM;
 			CbModulate.ResumeLayout();
-			RefreshOnToolChange();
+			RefreshAll();
 		}
 
 		private void CbModulate_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			SuspendLayout();
-			Laser.WhatModulate = (Core.RasterToGcode.LaserSetting.ModulationType)CbModulate.SelectedItem;
-			LblModBlackCode.Text = LblModWhiteCode.Text = Laser.WhatModulateCode;
-			LblBorderCode.Text = LblFillingCode.Text = Laser.WhatFixedCode;
-			LblModBlackUM.Text = LblModWhiteUM.Text = Laser.WhatModulateUM;
-			LblBorderUM.Text = LblFillingUM.Text = Laser.WhatFixedUM;
-			ResumeLayout();
+			RefreshAll();
 		}
 
 		
 		public void RefreshOnToolChange()
 		{
+			RefreshAll();
+		}
+
+		private void RefreshAll()
+		{
 			if (Config == null || Config.SelectedTool == null)
 				return;
 
 			SuspendLayout();
+			PbLink.Visible = Config.SelectedTool.RequireModulation;
 			LblWhatModulate.Visible = CbModulate.Visible = Config.SelectedTool.RequireModulation;
 			LblModWhite.Visible = LblModWhiteCode.Visible = IIModWhite.Visible = LblModWhiteUM.Visible = Config.SelectedTool.RequireModulation;
 			LblModBlack.Visible = LblModBlackCode.Visible = IIModBlack.Visible = LblModBlackUM.Visible = Config.SelectedTool.RequireModulation;
+			LblPower.Visible = LblPowerCode.Visible = LblPowerUM.Visible = IIPower.Visible = !Config.SelectedTool.RequireModulation && SupportPWM;
 			LblBorders.Visible = LblBorderCode.Visible = LblBorderUM.Visible = IIBorder.Visible = Config.SelectedTool.UseBorders;
 			LblFilling.Visible = LblFillingCode.Visible = LblFillingUM.Visible = IIFilling.Visible = Config.SelectedTool.UseFilling;
+
+			Laser.WhatModulate = (Core.RasterToGcode.LaserSetting.ModulationType)CbModulate.SelectedItem;
+			LblModBlackCode.Text = LblModWhiteCode.Text = Laser.WhatModulateCode;
+			LblModBlackUM.Text = LblModWhiteUM.Text = Laser.WhatModulateUM;
+			LblBorderCode.Text = LblFillingCode.Text = Laser.WhatFillingCode(Config.SelectedTool);
+			LblBorderUM.Text = LblFillingUM.Text = Laser.WhatFillingUM(Config.SelectedTool);
+			LblFilling.Text = Laser.WhatFillingLabel(Config.SelectedTool);
 			ResumeLayout();
 		}
 
