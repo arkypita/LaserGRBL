@@ -213,6 +213,12 @@
     <Compile Include="CSV\FormattedMessage.cs" />
     <Compile Include="GrblCommand.cs" />
     <Compile Include="GrblFile.cs" />
+    <Compile Include="IssueDetectorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IssueDetectorForm.Designer.cs">
+      <DependentUpon>IssueDetectorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="JogForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -403,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IssueDetectorForm.resx">
+      <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JogForm.resx">
       <DependentUpon>JogForm.cs</DependentUpon>

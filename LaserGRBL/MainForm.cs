@@ -29,6 +29,7 @@ namespace LaserGRBL
 			Core.MachineStatusChanged += OnMachineStatus;
 			Core.OnFileLoaded += OnFileLoaded;
 			Core.OnOverrideChange += RefreshOverride;
+			Core.IssueDetected += OnIssueDetected;
 
 			PreviewForm.SetCore(Core);
 			ConnectionForm.SetCore(Core);
@@ -39,6 +40,11 @@ namespace LaserGRBL
 			ColorScheme.CurrentScheme = (ColorScheme.Scheme)Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser); ;
 			RefreshColorSchema(); //include RefreshOverride();
 			RefreshFormTitle();
+		}
+
+		void OnIssueDetected(GrblCore.DetectedIssue issue)
+		{
+			IssueDetectorForm.CreateAndShowDialog(issue);
 		}
 
 		private void RefreshColorSchema()
