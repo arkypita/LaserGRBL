@@ -835,7 +835,7 @@ namespace LaserGRBL
 					cur.DeleteHelper();
 				}
 
-				bool noQueryResponse = debugLastStatusDelay.ElapsedTime > TimeSpan.FromTicks(QueryTimer.Period.Ticks * 10);
+				bool noQueryResponse = debugLastStatusDelay.ElapsedTime > TimeSpan.FromTicks(QueryTimer.Period.Ticks * 10) && debugLastStatusDelay.ElapsedTime > TimeSpan.FromSeconds(5);
 				bool noMovement = !executingM4 && debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(10);
 
 				if (noQueryResponse)
@@ -1047,6 +1047,9 @@ namespace LaserGRBL
 					if (mTP.InProgram && pending.RepeatCount == 0) //solo se non è una ripetizione aggiorna il tempo
 						mTP.JobExecuted(pending.TimeOffset);
 
+					if (mTP.InProgram && pending.Status == GrblCommand.CommandStatus.ResponseBad)
+						mTP.JobError(); //incrementa il contatore
+
 					//ripeti errori programma && non ho una coda (magari mi sto allineando per cambio conf buff/sync) && ho un errore && non l'ho già ripetuto troppe volte
 					if (InProgram && CurrentStreamingMode == StreamingMode.RepeatOnError && mPending.Count == 0 && pending.Status == GrblCommand.CommandStatus.ResponseBad && pending.RepeatCount < 3) //il comando eseguito ha dato errore
 						mRetryQueue = new GrblCommand(pending.Command, pending.RepeatCount + 1); //repeat on error
@@ -1181,6 +1184,9 @@ namespace LaserGRBL
 
 		private void OnProgramEnd()
 		{
+			Logger.LogMessage("ProgramEnd", "Job Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true));
+			mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true)), false));
+
 			if (mTP.JobEnd() && mLoopCount > 1 && mMachineStatus != MacStatus.Check)
 			{
 				LoopCount--;
@@ -1300,6 +1306,7 @@ namespace LaserGRBL
 		private int mTargetCount;
 		private int mExecutedCount;
 		private int mSentCount;
+		private int mErrorCount;
 
 		public TimeProjection()
 		{ Reset(); }
@@ -1391,6 +1398,7 @@ namespace LaserGRBL
 				mStarted = true;
 				mExecutedCount = 0;
 				mSentCount = 0;
+				mErrorCount = 0;
 			}
 		}
 
@@ -1398,6 +1406,12 @@ namespace LaserGRBL
 		{
 			if (mStarted && !mCompleted)
 				mSentCount++;
+		}
+
+		public void JobError()
+		{
+			if (mStarted && !mCompleted)
+				mErrorCount++;
 		}
 
 		public void JobExecuted(TimeSpan EstimatedProgress)
@@ -1443,6 +1457,9 @@ namespace LaserGRBL
 
 		private long now
 		{ get { return Tools.HiResTimer.TotalMilliseconds; } }
+
+		public int ErrorCount
+		{ get { return mErrorCount; } }
 	}
 }
 
