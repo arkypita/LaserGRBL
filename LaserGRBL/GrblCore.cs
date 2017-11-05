@@ -8,6 +8,35 @@ namespace LaserGRBL
 	/// </summary>
 	public class GrblCore
 	{
+		[Serializable]
+		public struct ThreadingMode
+		{
+			public int StatusQuery;
+			public int LongSleep;
+			public int ShortSleep;
+			private string Name;
+
+			public static ThreadingMode Slow
+			{ get { return new ThreadingMode { StatusQuery = 2000, LongSleep = 15, ShortSleep = 4, Name = "Slow"}; } }
+
+			public static ThreadingMode Quiet
+			{ get { return new ThreadingMode { StatusQuery = 1000, LongSleep = 10, ShortSleep = 2, Name = "Quiet" }; } }
+
+			public static ThreadingMode Fast
+			{ get { return new ThreadingMode { StatusQuery = 500, LongSleep = 5, ShortSleep = 1, Name = "Fast" }; } }
+
+			public static ThreadingMode UltraFast
+			{ get { return new ThreadingMode { StatusQuery = 200, LongSleep = 1, ShortSleep = 0, Name = "UltraFast" }; } }
+
+			public static ThreadingMode Insane
+			{ get { return new ThreadingMode { StatusQuery = 100, LongSleep = 0, ShortSleep = 0, Name = "Insane" }; } }
+
+			public override string ToString()
+			{return Name;}
+		}
+
+		
+
 		public enum DetectedIssue
 		{ NoIssue, StopResponding, StopMoving, UnexpectedReset }
 
@@ -175,6 +204,7 @@ namespace LaserGRBL
 		private Tools.ElapsedFromEvent debugLastMoveDelay;
 		private DetectedIssue debugDetectedIssue;
 
+		private ThreadingMode mThreadingMode = ThreadingMode.UltraFast;
 
 		public GrblCore(System.Windows.Forms.Control syncroObject)
 		{
@@ -185,7 +215,9 @@ namespace LaserGRBL
 
 			debugLastStatusDelay = new Tools.ElapsedFromEvent();
 			debugLastMoveDelay = new Tools.ElapsedFromEvent();
-			QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(200), false);
+
+			mThreadingMode = (ThreadingMode)Settings.GetObject("Threading Mode", ThreadingMode.UltraFast);
+			QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(mThreadingMode.StatusQuery), false);
 			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX);
 			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null);
 
@@ -287,7 +319,6 @@ namespace LaserGRBL
 
 		public GrblFile LoadedFile
 		{ get { return file; } }
-
 
 		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
 		public void OpenFile(System.Windows.Forms.Form parent)
@@ -783,7 +814,8 @@ namespace LaserGRBL
 
 					HangDetector();
 
-					TX.SleepTime = CanSend() ? 0 : 1; //sleep only if no more data to send
+					TX.SleepTime = CanSend() ? CurrentThreadingMode.ShortSleep : CurrentThreadingMode.LongSleep;
+					QueryTimer.Period = TimeSpan.FromMilliseconds(CurrentThreadingMode.StatusQuery);
 				}
 				catch (Exception ex)
 				{ Logger.LogException("ThreadTX", ex); }
@@ -1194,8 +1226,11 @@ namespace LaserGRBL
 		public decimal LoopCount 
 		{ get { return mLoopCount; } set { mLoopCount = value; if (OnLoopCountChange != null) OnLoopCountChange(mLoopCount); } }
 
+		private ThreadingMode CurrentThreadingMode
+		{ get { return (ThreadingMode)Settings.GetObject("Threading Mode", ThreadingMode.UltraFast); } }
+
 		private StreamingMode CurrentStreamingMode
-		{ get {return (StreamingMode)Settings.GetObject("Streaming Mode", StreamingMode.Buffered); }}
+		{ get { return (StreamingMode)Settings.GetObject("Streaming Mode", StreamingMode.Buffered); } }
 
 		private bool IdleOrCheck
 		{ get { return MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Check; } }
@@ -1242,6 +1277,8 @@ namespace LaserGRBL
 			}
 			catch { return value.ToString(); }
 		}
+
+
 	}
 
 

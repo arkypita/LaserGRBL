@@ -109,11 +109,14 @@ namespace Tools
 		private long m_periodcount;
 		public PeriodicEventTimer(TimeSpan Period, bool start = false)
 		{
+			ReInit(Period, start);
+		}
+
+		private void ReInit(TimeSpan Period, bool start)
+		{
 			m_period = Period;
 			crono = new ElapsedFromEvent();
-
-			if (start)
-				Start();
+			if (start) Start();
 		}
 
 		public void Start()
@@ -123,7 +126,14 @@ namespace Tools
 		{get { return crono.Running; }}
 
 		public TimeSpan Period
-		{get { return m_period; }}
+		{
+			get { return m_period; }
+			set 
+			{
+				if (m_period != value)
+					ReInit(value, crono.Running);
+			}
+		}
 
 		public bool Expired
 		{

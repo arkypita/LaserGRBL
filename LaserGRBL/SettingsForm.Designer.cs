@@ -49,6 +49,8 @@
 			this.BtnProtocol = new LaserGRBL.UserControls.ImageButton();
 			this.CbUnidirectional = new System.Windows.Forms.CheckBox();
 			this.label5 = new System.Windows.Forms.Label();
+			this.CbThreadingMode = new System.Windows.Forms.ComboBox();
+			this.label6 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.GB.SuspendLayout();
@@ -93,6 +95,7 @@
 			// tableLayoutPanel3
 			// 
 			resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
+			this.tableLayoutPanel3.Controls.Add(this.CbThreadingMode, 1, 4);
 			this.tableLayoutPanel3.Controls.Add(this.label4, 2, 3);
 			this.tableLayoutPanel3.Controls.Add(this.CBStreamingMode, 1, 3);
 			this.tableLayoutPanel3.Controls.Add(this.BtnStreamingMode, 0, 3);
@@ -105,8 +108,9 @@
 			this.tableLayoutPanel3.Controls.Add(this.label2, 2, 1);
 			this.tableLayoutPanel3.Controls.Add(this.label3, 2, 2);
 			this.tableLayoutPanel3.Controls.Add(this.BtnProtocol, 0, 2);
-			this.tableLayoutPanel3.Controls.Add(this.CbUnidirectional, 1, 4);
-			this.tableLayoutPanel3.Controls.Add(this.label5, 2, 4);
+			this.tableLayoutPanel3.Controls.Add(this.CbUnidirectional, 1, 5);
+			this.tableLayoutPanel3.Controls.Add(this.label5, 2, 5);
+			this.tableLayoutPanel3.Controls.Add(this.label6, 2, 4);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
 			// 
 			// label4
@@ -214,6 +218,18 @@
 			resources.ApplyResources(this.label5, "label5");
 			this.label5.Name = "label5";
 			// 
+			// CbThreadingMode
+			// 
+			resources.ApplyResources(this.CbThreadingMode, "CbThreadingMode");
+			this.CbThreadingMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbThreadingMode.FormattingEnabled = true;
+			this.CbThreadingMode.Name = "CbThreadingMode";
+			// 
+			// label6
+			// 
+			resources.ApplyResources(this.label6, "label6");
+			this.label6.Name = "label6";
+			// 
 			// SettingsForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -252,5 +268,7 @@
 		private UserControls.ImageButton BtnStreamingMode;
 		private System.Windows.Forms.CheckBox CbUnidirectional;
 		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.ComboBox CbThreadingMode;
+		private System.Windows.Forms.Label label6;
     }
 }
