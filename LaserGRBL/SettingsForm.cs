@@ -103,5 +103,10 @@ namespace LaserGRBL
 		{
 			System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#streaming-mode");
 		}
+
+		private void BtnThreadingModel_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#threading-mode");
+		}
     }
 }

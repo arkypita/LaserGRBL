@@ -51,6 +51,7 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.CbThreadingMode = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
+			this.BtnThreadingModel = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.GB.SuspendLayout();
@@ -111,6 +112,7 @@
 			this.tableLayoutPanel3.Controls.Add(this.CbUnidirectional, 1, 5);
 			this.tableLayoutPanel3.Controls.Add(this.label5, 2, 5);
 			this.tableLayoutPanel3.Controls.Add(this.label6, 2, 4);
+			this.tableLayoutPanel3.Controls.Add(this.BtnThreadingModel, 0, 4);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
 			// 
 			// label4
@@ -230,6 +232,18 @@
 			resources.ApplyResources(this.label6, "label6");
 			this.label6.Name = "label6";
 			// 
+			// BtnThreadingModel
+			// 
+			this.BtnThreadingModel.AltImage = null;
+			this.BtnThreadingModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnThreadingModel.Coloration = System.Drawing.Color.Empty;
+			this.BtnThreadingModel.Image = ((System.Drawing.Image)(resources.GetObject("BtnThreadingModel.Image")));
+			resources.ApplyResources(this.BtnThreadingModel, "BtnThreadingModel");
+			this.BtnThreadingModel.Name = "BtnThreadingModel";
+			this.BtnThreadingModel.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnThreadingModel.UseAltImage = false;
+			this.BtnThreadingModel.Click += new System.EventHandler(this.BtnThreadingModel_Click);
+			// 
 			// SettingsForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -270,5 +284,6 @@
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.ComboBox CbThreadingMode;
 		private System.Windows.Forms.Label label6;
+		private UserControls.ImageButton BtnThreadingModel;
     }
 }
