@@ -184,6 +184,7 @@ namespace LaserGRBL
 
 		private int mBuffer;
 		private System.Drawing.PointF mLaserPosition;
+		private System.Drawing.PointF mWCO;
 
 		private TimeProjection mTP = new TimeProjection();
 
@@ -701,7 +702,7 @@ namespace LaserGRBL
 		public bool InProgram
 		{ get { return mTP.InProgram; } }
 
-		public System.Drawing.PointF LaserPosition
+		public System.Drawing.PointF MachinePosition
 		{ get { return mLaserPosition; } }
 
 		public int Executed
@@ -1008,18 +1009,25 @@ namespace LaserGRBL
 
 				rline = rline.Substring(1, rline.Length - 2);
 				//System.Diagnostics.Debug.WriteLine(rline);
-				if (rline.Contains("|")) //grbl > 1.1
+				if (rline.Contains("|")) //grbl > 1.1 - https://github.com/gnea/grbl/wiki/Grbl-v1.1-Interface#real-time-status-reports
 				{
 					string[] arr = rline.Split("|".ToCharArray());
 
 					ParseMachineStatus(arr[0]);
-					string mpos = arr[1].Substring(5, arr[1].Length - 5);
-					string[] xyz = mpos.Split(",".ToCharArray());
-					SetPosition(new System.Drawing.PointF(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo)));
 
 					for (int i = 1; i < arr.Length; i++)
+					{
 						if (arr[i].StartsWith("Ov"))
 							ParseOverrides(arr[i]);
+						if (arr[i].StartsWith("Bf"))
+							ParseBf(arr[i]);
+						if (arr[i].StartsWith("WPos"))
+							ParseWPos(arr[i]);
+						if (arr[i].StartsWith("MPos"))
+							ParseMPos(arr[i]);
+						if (arr[i].StartsWith("WCO"))
+							ParseWCO(arr[i]);
+					}
 				}
 				else //<Idle,MPos:0.000,0.000,0.000,WPos:0.000,0.000,0.000>
 				{
@@ -1028,7 +1036,9 @@ namespace LaserGRBL
 					if (arr.Length > 0)
 						ParseMachineStatus(arr[0]);
 					if (arr.Length > 2)
-						SetPosition(new System.Drawing.PointF(float.Parse(arr[1].Substring(5, arr[1].Length - 5), System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[2], System.Globalization.NumberFormatInfo.InvariantInfo)));
+						SetMPosition(new System.Drawing.PointF(float.Parse(arr[1].Substring(5, arr[1].Length - 5), System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[2], System.Globalization.NumberFormatInfo.InvariantInfo)));
+
+					//todo: compute WCO for v < 1.1
 				}
 			}
 			catch (Exception ex)
@@ -1038,13 +1048,44 @@ namespace LaserGRBL
 			}
 		}
 
-		private void SetPosition(System.Drawing.PointF pos)
+		private void ParseWCO(string p)
+		{
+			string wco = p.Substring(4, p.Length - 4);
+			string[] xyz = wco.Split(",".ToCharArray());
+			SetWCO(new System.Drawing.PointF(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo)));
+		}
+
+		private void ParseWPos(string p)
+		{
+			string wpos = p.Substring(5, p.Length - 5);
+			string[] xyz = wpos.Split(",".ToCharArray());
+			SetMPosition(new System.Drawing.PointF(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo) + mWCO.X, float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo) + mWCO.Y));
+		}
+
+		private void ParseMPos(string p)
+		{
+			string mpos = p.Substring(5, p.Length - 5);
+			string[] xyz = mpos.Split(",".ToCharArray());
+			SetMPosition(new System.Drawing.PointF(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo)));
+		}
+
+		private void ParseBf(string p)
+		{
+			
+		}
+
+		private void SetMPosition(System.Drawing.PointF pos)
 		{
 			if (pos != mLaserPosition)
 			{
 				mLaserPosition = pos;
 				debugLastMoveDelay.Start();
 			}
+		}
+
+		private void SetWCO(System.Drawing.PointF wco)
+		{
+			mWCO = wco;
 		}
 
 		private void ManageCommandResponse(string rline)

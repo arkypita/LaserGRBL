@@ -59,7 +59,7 @@ namespace LaserGRBL.UserControls
 						sf.Alignment = q == GrblFile.CartesianQuadrant.II || q == GrblFile.CartesianQuadrant.III ? StringAlignment.Near : StringAlignment.Far;
 						sf.LineAlignment = q == GrblFile.CartesianQuadrant.III || q == GrblFile.CartesianQuadrant.IV ? StringAlignment.Far : StringAlignment.Near;
 
-						String position = string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? Core.LaserPosition.X : 0, Core != null ? Core.LaserPosition.Y : 0);
+						String position = string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? Core.MachinePosition.X : 0, Core != null ? Core.MachinePosition.Y : 0);
 						e.Graphics.DrawString(position, Font, b, r, sf);
 					}
 				}
@@ -151,9 +151,9 @@ namespace LaserGRBL.UserControls
 
 		public void TimerUpdate()
 		{
-			if (Core != null && mLastPosition != Core.LaserPosition)
+			if (Core != null && mLastPosition != Core.MachinePosition)
 			{
-				mLastPosition = Core.LaserPosition;
+				mLastPosition = Core.MachinePosition;
 				Invalidate();
 			}
 		}
