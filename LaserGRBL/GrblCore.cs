@@ -9,30 +9,38 @@ namespace LaserGRBL
 	public class GrblCore
 	{
 		[Serializable]
-		public struct ThreadingMode
+		public class ThreadingMode
 		{
-			public int StatusQuery;
-			public int LongSleep;
-			public int ShortSleep;
-			private string Name;
+			public readonly int StatusQuery;
+			public readonly int TxLong;
+			public readonly int TxShort;
+			public readonly int RxLong;
+			public readonly int RxShort;
+			private readonly string Name;
+
+			public ThreadingMode(int query, int txlong, int txshort, int rxlong, int rxshort, string name)
+			{ StatusQuery = query; TxLong = txlong; TxShort = txshort; RxLong = rxlong; RxShort = rxshort; Name = name; }
 
 			public static ThreadingMode Slow
-			{ get { return new ThreadingMode { StatusQuery = 2000, LongSleep = 15, ShortSleep = 4, Name = "Slow"}; } }
+			{ get { return new ThreadingMode ( 2000, 15, 4, 2, 1, "Slow" ); } }
 
 			public static ThreadingMode Quiet
-			{ get { return new ThreadingMode { StatusQuery = 1000, LongSleep = 10, ShortSleep = 2, Name = "Quiet" }; } }
+			{ get { return new ThreadingMode ( 1000, 10, 2, 1, 1, "Quiet" ); } }
 
 			public static ThreadingMode Fast
-			{ get { return new ThreadingMode { StatusQuery = 500, LongSleep = 5, ShortSleep = 1, Name = "Fast" }; } }
+			{ get { return new ThreadingMode ( 500, 5, 1, 1, 0, "Fast" ); } }
 
 			public static ThreadingMode UltraFast
-			{ get { return new ThreadingMode { StatusQuery = 200, LongSleep = 1, ShortSleep = 0, Name = "UltraFast" }; } }
+			{ get { return new ThreadingMode ( 200, 1, 0, 0, 0, "UltraFast" ); } }
 
 			public static ThreadingMode Insane
-			{ get { return new ThreadingMode { StatusQuery = 100, LongSleep = 0, ShortSleep = 0, Name = "Insane" }; } }
+			{ get { return new ThreadingMode ( 100, 1, 0, 0, 0, "Insane" ); } }
 
 			public override string ToString()
 			{return Name;}
+
+			public override bool Equals(object obj)
+			{return obj != null && obj is ThreadingMode && ((ThreadingMode)obj).Name == Name;}
 		}
 
 		
@@ -814,7 +822,7 @@ namespace LaserGRBL
 
 					HangDetector();
 
-					TX.SleepTime = CanSend() ? CurrentThreadingMode.ShortSleep : CurrentThreadingMode.LongSleep;
+					TX.SleepTime = CanSend() ? CurrentThreadingMode.TxShort : CurrentThreadingMode.TxLong;
 					QueryTimer.Period = TimeSpan.FromMilliseconds(CurrentThreadingMode.StatusQuery);
 				}
 				catch (Exception ex)
@@ -943,6 +951,8 @@ namespace LaserGRBL
 						}
 					}
 				}
+
+				RX.SleepTime = HasIncomingData() ? CurrentThreadingMode.RxShort : CurrentThreadingMode.RxLong;
 			}
 			catch (Exception ex)
 			{ Logger.LogException("ThreadRX", ex); }
@@ -1080,6 +1090,20 @@ namespace LaserGRBL
 				try { CloseCom(true); }
 				catch { }
 				return null;
+			}
+		}
+
+		private bool HasIncomingData()
+		{
+			try
+			{
+				return com.HasData();
+			}
+			catch
+			{
+				try { CloseCom(true); }
+				catch { }
+				return false;
 			}
 		}
 

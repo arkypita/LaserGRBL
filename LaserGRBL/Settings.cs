@@ -56,7 +56,7 @@ namespace LaserGRBL
 		
 		public static object GetObject(string key, object defval)
 		{
-			return dic.ContainsKey(key) ? dic[key] : defval;
+			return dic.ContainsKey(key) && dic[key] != null ? dic[key] : defval;
 		}
 		
 		public static void SetObject(string key, object value)

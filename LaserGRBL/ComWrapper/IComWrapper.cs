@@ -21,5 +21,7 @@ namespace LaserGRBL.ComWrapper
 		void Write(string text);
 
 		string ReadLineBlocking();
+
+		bool HasData();
 	}
 }

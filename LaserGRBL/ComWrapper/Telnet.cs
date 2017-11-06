@@ -88,6 +88,9 @@ namespace LaserGRBL.ComWrapper
 
 			return rv;
 		}
+
+		public bool HasData()
+		{ return IsOpen && ((System.Net.Sockets.NetworkStream)sreader.BaseStream).DataAvailable; }
 	}
 
 

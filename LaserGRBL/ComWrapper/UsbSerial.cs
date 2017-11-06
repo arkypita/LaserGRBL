@@ -79,5 +79,8 @@ namespace LaserGRBL.ComWrapper
 
 		public string ReadLineBlocking()
 		{return com.ReadLine();} //la lettura della com è bloccante per natura
+
+		public bool HasData()
+		{ return com.BytesToRead > 0; }
 	}
 }

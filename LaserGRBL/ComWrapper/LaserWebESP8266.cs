@@ -82,5 +82,8 @@ namespace LaserGRBL.ComWrapper
 
 			return rv;
 		}
+
+		public bool HasData()
+		{ return IsOpen && buffer.Count > 0; }
 	}
 }
