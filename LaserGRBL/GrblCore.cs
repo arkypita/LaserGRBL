@@ -183,8 +183,10 @@ namespace LaserGRBL
 		//private StreamingMode mStreamingMode = StreamingMode.Buffered;
 
 		private int mBuffer;
-		private System.Drawing.PointF mLaserPosition;
+		private System.Drawing.PointF mMPos;
 		private System.Drawing.PointF mWCO;
+		private int mGrblBlocks = -1;
+		private int mGrblBuffer = -1;
 
 		private TimeProjection mTP = new TimeProjection();
 
@@ -282,7 +284,7 @@ namespace LaserGRBL
 		private void SetIssue(DetectedIssue issue)
 		{
 			debugDetectedIssue = issue;
-			Logger.LogMessage("Issue detector", issue.ToString());
+			Logger.LogMessage("Issue detector", "{0} [{1},{2},{3}]", issue, FreeBuffer, GrblBuffer, GrblBlock);
 			RiseIssueDetected(issue);
 		}
 
@@ -703,7 +705,7 @@ namespace LaserGRBL
 		{ get { return mTP.InProgram; } }
 
 		public System.Drawing.PointF MachinePosition
-		{ get { return mLaserPosition; } }
+		{ get { return mMPos; } }
 
 		public int Executed
 		{ get { return mSent.Count; } }
@@ -821,7 +823,7 @@ namespace LaserGRBL
 					if (QueryTimer.Expired)
 						QueryPosition();
 
-					HangDetector();
+					DetectHang();
 
 					TX.SleepTime = CanSend() ? CurrentThreadingMode.TxShort : CurrentThreadingMode.TxLong;
 					QueryTimer.Period = TimeSpan.FromMilliseconds(CurrentThreadingMode.StatusQuery);
@@ -831,7 +833,7 @@ namespace LaserGRBL
 			}
 		}
 
-		private void HangDetector()
+		private void DetectHang()
 		{
 			if (debugDetectedIssue == DetectedIssue.NoIssue && MachineStatus == MacStatus.Run && InProgram)
 			{
@@ -936,6 +938,12 @@ namespace LaserGRBL
 		public int BufferSize
 		{ get { return BUFFER_SIZE; } }
 
+		public int GrblBlock
+		{ get { return mGrblBlocks; } }
+
+		public int GrblBuffer
+		{ get { return mGrblBuffer; } }
+
 		void ThreadRX()
 		{
 			try
@@ -985,7 +993,7 @@ namespace LaserGRBL
 				char build = rline.Substring(8, 1).ToCharArray()[0];
 				GrblVersion = new GrblVersionInfo(maj, min, build);
 
-				ResetDetector();
+				DetectUnexpectedReset();
 			}
 			catch (Exception ex)
 			{
@@ -995,7 +1003,7 @@ namespace LaserGRBL
 			mSentPtr.Add(new GrblMessage(rline, false));
 		}
 
-		private void ResetDetector()
+		private void DetectUnexpectedReset()
 		{
 			if (debugDetectedIssue == DetectedIssue.NoIssue && MachineStatus == MacStatus.Run && InProgram)
 				SetIssue(DetectedIssue.UnexpectedReset);
@@ -1037,8 +1045,8 @@ namespace LaserGRBL
 						ParseMachineStatus(arr[0]);
 					if (arr.Length > 2)
 						SetMPosition(new System.Drawing.PointF(float.Parse(arr[1].Substring(5, arr[1].Length - 5), System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[2], System.Globalization.NumberFormatInfo.InvariantInfo)));
-
-					//todo: compute WCO for v < 1.1
+					if (arr.Length > 6)
+						ComputeWCO(new System.Drawing.PointF(float.Parse(arr[4].Substring(5, arr[4].Length - 5), System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[5], System.Globalization.NumberFormatInfo.InvariantInfo)));
 				}
 			}
 			catch (Exception ex)
@@ -1046,6 +1054,11 @@ namespace LaserGRBL
 				Logger.LogMessage("RealTimeStatus", "Ex on [{0}] message", rline);
 				Logger.LogException("RealTimeStatus", ex);
 			}
+		}
+
+		private void ComputeWCO(System.Drawing.PointF wpos) //WCO = MPos - WPos
+		{
+			mWCO = new System.Drawing.PointF(mMPos.X - wpos.X, mMPos.Y - wpos.Y);
 		}
 
 		private void ParseWCO(string p)
@@ -1071,14 +1084,18 @@ namespace LaserGRBL
 
 		private void ParseBf(string p)
 		{
-			
+			string bf = p.Substring(3, p.Length - 3);
+			string[] ab = bf.Split(",".ToCharArray());
+
+			mGrblBlocks = int.Parse(ab[0]);
+			mGrblBuffer = int.Parse(ab[1]);
 		}
 
 		private void SetMPosition(System.Drawing.PointF pos)
 		{
-			if (pos != mLaserPosition)
+			if (pos != mMPos)
 			{
-				mLaserPosition = pos;
+				mMPos = pos;
 				debugLastMoveDelay.Start();
 			}
 		}
