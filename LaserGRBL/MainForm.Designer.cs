@@ -34,6 +34,8 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
+			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+			this.PbBuffer = new System.Windows.Forms.ToolStripProgressBar();
 			this.TTLEstimated = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTEstimated = new System.Windows.Forms.ToolStripStatusLabel();
 			this.spring1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -119,6 +121,8 @@
 			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TTLLines,
             this.TTTLines,
+            this.toolStripStatusLabel1,
+            this.PbBuffer,
             this.TTLEstimated,
             this.TTTEstimated,
             this.spring1,
@@ -140,6 +144,19 @@
 			// 
 			this.TTTLines.Name = "TTTLines";
 			resources.ApplyResources(this.TTTLines, "TTTLines");
+			// 
+			// toolStripStatusLabel1
+			// 
+			this.toolStripStatusLabel1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+			this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+			resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
+			// 
+			// PbBuffer
+			// 
+			this.PbBuffer.Margin = new System.Windows.Forms.Padding(0, 3, 5, 3);
+			this.PbBuffer.Maximum = 127;
+			this.PbBuffer.Name = "PbBuffer";
+			resources.ApplyResources(this.PbBuffer, "PbBuffer");
 			// 
 			// TTLEstimated
 			// 
@@ -608,6 +625,8 @@
 		private System.Windows.Forms.ToolStripMenuItem redLaserToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem hackerToolStripMenuItem;
+		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+		private System.Windows.Forms.ToolStripProgressBar PbBuffer;
 	}
 }
 

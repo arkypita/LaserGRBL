@@ -188,7 +188,7 @@ namespace LaserGRBL
 		private TimeProjection mTP = new TimeProjection();
 
 		private MacStatus mMachineStatus;
-		private const int BUFFER_SIZE = 120;
+		private const int BUFFER_SIZE = 127;
 		private GrblVersionInfo mGrblVersion;
 
 		private int mCurOvFeed;
@@ -926,8 +926,14 @@ namespace LaserGRBL
 			}
 		}
 
-		public int Buffer
+		public int UsedBuffer
+		{ get { return mBuffer; } }
+
+		public int FreeBuffer
 		{ get { return BUFFER_SIZE - mBuffer; } }
+
+		public int BufferSize
+		{ get { return BUFFER_SIZE; } }
 
 		void ThreadRX()
 		{

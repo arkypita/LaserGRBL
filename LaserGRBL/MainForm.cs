@@ -187,6 +187,9 @@ namespace LaserGRBL
 					break;
 			}
 
+			PbBuffer.Maximum = Core.BufferSize;
+			PbBuffer.Value = Core.UsedBuffer;
+
 			ResumeLayout();
 		}
 
