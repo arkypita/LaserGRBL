@@ -8,6 +8,46 @@ namespace LaserGRBL
 	/// </summary>
 	public class GrblCore
 	{
+		[Serializable]
+		public class ThreadingMode
+		{
+			public readonly int StatusQuery;
+			public readonly int TxLong;
+			public readonly int TxShort;
+			public readonly int RxLong;
+			public readonly int RxShort;
+			private readonly string Name;
+
+			public ThreadingMode(int query, int txlong, int txshort, int rxlong, int rxshort, string name)
+			{ StatusQuery = query; TxLong = txlong; TxShort = txshort; RxLong = rxlong; RxShort = rxshort; Name = name; }
+
+			public static ThreadingMode Slow
+			{ get { return new ThreadingMode ( 2000, 15, 4, 2, 1, "Slow" ); } }
+
+			public static ThreadingMode Quiet
+			{ get { return new ThreadingMode ( 1000, 10, 2, 1, 1, "Quiet" ); } }
+
+			public static ThreadingMode Fast
+			{ get { return new ThreadingMode ( 500, 5, 1, 1, 0, "Fast" ); } }
+
+			public static ThreadingMode UltraFast
+			{ get { return new ThreadingMode ( 200, 1, 0, 0, 0, "UltraFast" ); } }
+
+			public static ThreadingMode Insane
+			{ get { return new ThreadingMode ( 100, 1, 0, 0, 0, "Insane" ); } }
+
+			public override string ToString()
+			{return Name;}
+
+			public override bool Equals(object obj)
+			{return obj != null && obj is ThreadingMode && ((ThreadingMode)obj).Name == Name;}
+		}
+
+		
+
+		public enum DetectedIssue
+		{ NoIssue, StopResponding, StopMoving, UnexpectedReset }
+
 		public enum MacStatus
 		{ Unknown, Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue }
 
@@ -118,10 +158,12 @@ namespace LaserGRBL
 			}
 		}
 
+		public delegate void dlgIssueDetector(DetectedIssue issue);
 		public delegate void dlgOnMachineStatus();
 		public delegate void dlgOnOverrideChange();
 		public delegate void dlgOnLoopCountChange(decimal current);
 
+		public event dlgIssueDetector IssueDetected;
 		public event dlgOnMachineStatus MachineStatusChanged;
 		public event GrblFile.OnFileLoadedDlg OnFileLoaded;
 		public event dlgOnOverrideChange OnOverrideChange;
@@ -141,12 +183,15 @@ namespace LaserGRBL
 		//private StreamingMode mStreamingMode = StreamingMode.Buffered;
 
 		private int mBuffer;
-		private System.Drawing.PointF mLaserPosition;
+		private System.Drawing.PointF mMPos;
+		private System.Drawing.PointF mWCO;
+		private int mGrblBlocks = -1;
+		private int mGrblBuffer = -1;
 
 		private TimeProjection mTP = new TimeProjection();
 
 		private MacStatus mMachineStatus;
-		private const int BUFFER_SIZE = 120;
+		private const int BUFFER_SIZE = 127;
 		private GrblVersionInfo mGrblVersion;
 
 		private int mCurOvFeed;
@@ -159,8 +204,18 @@ namespace LaserGRBL
 
 		private decimal mLoopCount = 1;
 
+		private Tools.PeriodicEventTimer QueryTimer;
 		private Tools.ThreadObject TX;
 		private Tools.ThreadObject RX;
+
+		private long connectStart;
+
+
+		private Tools.ElapsedFromEvent debugLastStatusDelay;
+		private Tools.ElapsedFromEvent debugLastMoveDelay;
+		private DetectedIssue debugDetectedIssue;
+
+		private ThreadingMode mThreadingMode = ThreadingMode.UltraFast;
 
 		public GrblCore(System.Windows.Forms.Control syncroObject)
 		{
@@ -169,6 +224,11 @@ namespace LaserGRBL
 			syncro = syncroObject;
 			com = new ComWrapper.UsbSerial();
 
+			debugLastStatusDelay = new Tools.ElapsedFromEvent();
+			debugLastMoveDelay = new Tools.ElapsedFromEvent();
+
+			mThreadingMode = (ThreadingMode)Settings.GetObject("Threading Mode", ThreadingMode.UltraFast);
+			QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(mThreadingMode.StatusQuery), false);
 			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX);
 			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null);
 
@@ -221,6 +281,24 @@ namespace LaserGRBL
 			}
 		}
 
+		private void SetIssue(DetectedIssue issue)
+		{
+			debugDetectedIssue = issue;
+			Logger.LogMessage("Issue detector", "{0} [{1},{2},{3}]", issue, FreeBuffer, GrblBuffer, GrblBlock);
+			RiseIssueDetected(issue);
+		}
+
+		void RiseIssueDetected(DetectedIssue issue)
+		{
+			if (IssueDetected != null)
+			{
+				if (syncro.InvokeRequired)
+					syncro.BeginInvoke(new dlgIssueDetector(RiseIssueDetected), issue);
+				else
+					IssueDetected(issue);
+			}
+		}
+
 
 		void RiseMachineStatusChanged()
 		{
@@ -252,7 +330,6 @@ namespace LaserGRBL
 
 		public GrblFile LoadedFile
 		{ get { return file; } }
-
 
 		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
 		public void OpenFile(System.Windows.Forms.Form parent)
@@ -330,7 +407,7 @@ namespace LaserGRBL
 
 						try
 						{
-							Tools.AutoResetTimer WaitResponseTimeout = new Tools.AutoResetTimer(TimeSpan.FromSeconds(10), true);
+							Tools.PeriodicEventTimer WaitResponseTimeout = new Tools.PeriodicEventTimer(TimeSpan.FromSeconds(10), true);
 
 							//resta in attesa dell'invio del comando e della risposta
 							while (cmd.Status == GrblCommand.CommandStatus.Queued || cmd.Status == GrblCommand.CommandStatus.WaitingResponse)
@@ -571,7 +648,6 @@ namespace LaserGRBL
 		private void QueryPosition()
 		{
 			SendImmediate(63, true);
-			lastPosRequest = Tools.HiResTimer.TotalMilliseconds; 
 		}
 
 		public void GrblReset()
@@ -628,8 +704,8 @@ namespace LaserGRBL
 		public bool InProgram
 		{ get { return mTP.InProgram; } }
 
-		public System.Drawing.PointF LaserPosition
-		{ get { return mLaserPosition; } }
+		public System.Drawing.PointF MachinePosition
+		{ get { return mMPos; } }
 
 		public int Executed
 		{ get { return mSent.Count; } }
@@ -728,11 +804,10 @@ namespace LaserGRBL
 			{
 				GrblReset();
 				QueryPosition();
+				QueryTimer.Start();
 			}
 		}
 
-		private long connectStart;
-		private long lastPosRequest;
 		protected void ThreadTX()
 		{
 			lock (this)
@@ -745,15 +820,42 @@ namespace LaserGRBL
 					if (!TX.MustExitTH() && CanSend())
 						SendLine();
 
-					if (Tools.HiResTimer.TotalMilliseconds - lastPosRequest > 200)
+					if (QueryTimer.Expired)
 						QueryPosition();
 
-					TX.SleepTime = CanSend() ? 0 : 1; //sleep only if no more data to send
+					DetectHang();
+
+					TX.SleepTime = CanSend() ? CurrentThreadingMode.TxShort : CurrentThreadingMode.TxLong;
+					QueryTimer.Period = TimeSpan.FromMilliseconds(CurrentThreadingMode.StatusQuery);
 				}
 				catch (Exception ex)
 				{ Logger.LogException("ThreadTX", ex); }
 			}
 		}
+
+		private void DetectHang()
+		{
+			if (debugDetectedIssue == DetectedIssue.NoIssue && MachineStatus == MacStatus.Run && InProgram)
+			{
+				bool executingM4 = false;
+				if (mPending.Count > 0)
+				{
+					GrblCommand cur = mPending.Peek();
+					cur.BuildHelper();
+					executingM4 = cur.IsPause;
+					cur.DeleteHelper();
+				}
+
+				bool noQueryResponse = debugLastStatusDelay.ElapsedTime > TimeSpan.FromTicks(QueryTimer.Period.Ticks * 10) && debugLastStatusDelay.ElapsedTime > TimeSpan.FromSeconds(5);
+				bool noMovement = !executingM4 && debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(10);
+
+				if (noQueryResponse)
+					SetIssue(DetectedIssue.StopResponding);
+				else if (noMovement)
+					SetIssue(DetectedIssue.StopMoving);
+			}
+		}
+
 
 		private void OnConnectTimeout()
 		{
@@ -815,6 +917,8 @@ namespace LaserGRBL
 
 					if (mTP.InProgram)
 						mTP.JobSent();
+
+					debugLastMoveDelay.Start();
 				}
 				catch (Exception ex)
 				{
@@ -825,8 +929,20 @@ namespace LaserGRBL
 			}
 		}
 
-		public int Buffer
+		public int UsedBuffer
+		{ get { return mBuffer; } }
+
+		public int FreeBuffer
 		{ get { return BUFFER_SIZE - mBuffer; } }
+
+		public int BufferSize
+		{ get { return BUFFER_SIZE; } }
+
+		public int GrblBlock
+		{ get { return mGrblBlocks; } }
+
+		public int GrblBuffer
+		{ get { return mGrblBuffer; } }
 
 		void ThreadRX()
 		{
@@ -850,6 +966,8 @@ namespace LaserGRBL
 						}
 					}
 				}
+
+				RX.SleepTime = HasIncomingData() ? CurrentThreadingMode.RxShort : CurrentThreadingMode.RxLong;
 			}
 			catch (Exception ex)
 			{ Logger.LogException("ThreadRX", ex); }
@@ -874,6 +992,8 @@ namespace LaserGRBL
 				int min = int.Parse(rline.Substring(7, 1));
 				char build = rline.Substring(8, 1).ToCharArray()[0];
 				GrblVersion = new GrblVersionInfo(maj, min, build);
+
+				DetectUnexpectedReset();
 			}
 			catch (Exception ex)
 			{
@@ -883,24 +1003,39 @@ namespace LaserGRBL
 			mSentPtr.Add(new GrblMessage(rline, false));
 		}
 
+		private void DetectUnexpectedReset()
+		{
+			if (debugDetectedIssue == DetectedIssue.NoIssue && MachineStatus == MacStatus.Run && InProgram)
+				SetIssue(DetectedIssue.UnexpectedReset);
+		}
+
 		private void ManageRealTimeStatus(string rline)
 		{
 			try
 			{
+				debugLastStatusDelay.Start();
+
 				rline = rline.Substring(1, rline.Length - 2);
 				//System.Diagnostics.Debug.WriteLine(rline);
-				if (rline.Contains("|")) //grbl > 1.1
+				if (rline.Contains("|")) //grbl > 1.1 - https://github.com/gnea/grbl/wiki/Grbl-v1.1-Interface#real-time-status-reports
 				{
 					string[] arr = rline.Split("|".ToCharArray());
 
 					ParseMachineStatus(arr[0]);
-					string mpos = arr[1].Substring(5, arr[1].Length - 5);
-					string[] xyz = mpos.Split(",".ToCharArray());
-					mLaserPosition = new System.Drawing.PointF(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo));
 
 					for (int i = 1; i < arr.Length; i++)
+					{
 						if (arr[i].StartsWith("Ov"))
 							ParseOverrides(arr[i]);
+						if (arr[i].StartsWith("Bf"))
+							ParseBf(arr[i]);
+						if (arr[i].StartsWith("WPos"))
+							ParseWPos(arr[i]);
+						if (arr[i].StartsWith("MPos"))
+							ParseMPos(arr[i]);
+						if (arr[i].StartsWith("WCO"))
+							ParseWCO(arr[i]);
+					}
 				}
 				else //<Idle,MPos:0.000,0.000,0.000,WPos:0.000,0.000,0.000>
 				{
@@ -909,7 +1044,9 @@ namespace LaserGRBL
 					if (arr.Length > 0)
 						ParseMachineStatus(arr[0]);
 					if (arr.Length > 2)
-						mLaserPosition = new System.Drawing.PointF(float.Parse(arr[1].Substring(5, arr[1].Length - 5), System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[2], System.Globalization.NumberFormatInfo.InvariantInfo));
+						SetMPosition(new System.Drawing.PointF(float.Parse(arr[1].Substring(5, arr[1].Length - 5), System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[2], System.Globalization.NumberFormatInfo.InvariantInfo)));
+					if (arr.Length > 6)
+						ComputeWCO(new System.Drawing.PointF(float.Parse(arr[4].Substring(5, arr[4].Length - 5), System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[5], System.Globalization.NumberFormatInfo.InvariantInfo)));
 				}
 			}
 			catch (Exception ex)
@@ -919,10 +1056,61 @@ namespace LaserGRBL
 			}
 		}
 
+		private void ComputeWCO(System.Drawing.PointF wpos) //WCO = MPos - WPos
+		{
+			mWCO = new System.Drawing.PointF(mMPos.X - wpos.X, mMPos.Y - wpos.Y);
+		}
+
+		private void ParseWCO(string p)
+		{
+			string wco = p.Substring(4, p.Length - 4);
+			string[] xyz = wco.Split(",".ToCharArray());
+			SetWCO(new System.Drawing.PointF(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo)));
+		}
+
+		private void ParseWPos(string p)
+		{
+			string wpos = p.Substring(5, p.Length - 5);
+			string[] xyz = wpos.Split(",".ToCharArray());
+			SetMPosition(new System.Drawing.PointF(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo) + mWCO.X, float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo) + mWCO.Y));
+		}
+
+		private void ParseMPos(string p)
+		{
+			string mpos = p.Substring(5, p.Length - 5);
+			string[] xyz = mpos.Split(",".ToCharArray());
+			SetMPosition(new System.Drawing.PointF(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo)));
+		}
+
+		private void ParseBf(string p)
+		{
+			string bf = p.Substring(3, p.Length - 3);
+			string[] ab = bf.Split(",".ToCharArray());
+
+			mGrblBlocks = int.Parse(ab[0]);
+			mGrblBuffer = int.Parse(ab[1]);
+		}
+
+		private void SetMPosition(System.Drawing.PointF pos)
+		{
+			if (pos != mMPos)
+			{
+				mMPos = pos;
+				debugLastMoveDelay.Start();
+			}
+		}
+
+		private void SetWCO(System.Drawing.PointF wco)
+		{
+			mWCO = wco;
+		}
+
 		private void ManageCommandResponse(string rline)
 		{
 			try
 			{
+				debugLastMoveDelay.Start(); //add a reset to prevent HangDetector trigger on G4
+
 				if (mPending.Count > 0)
 				{
 					GrblCommand pending = mPending.Dequeue();
@@ -932,6 +1120,9 @@ namespace LaserGRBL
 
 					if (mTP.InProgram && pending.RepeatCount == 0) //solo se non è una ripetizione aggiorna il tempo
 						mTP.JobExecuted(pending.TimeOffset);
+
+					if (mTP.InProgram && pending.Status == GrblCommand.CommandStatus.ResponseBad)
+						mTP.JobError(); //incrementa il contatore
 
 					//ripeti errori programma && non ho una coda (magari mi sto allineando per cambio conf buff/sync) && ho un errore && non l'ho già ripetuto troppe volte
 					if (InProgram && CurrentStreamingMode == StreamingMode.RepeatOnError && mPending.Count == 0 && pending.Status == GrblCommand.CommandStatus.ResponseBad && pending.RepeatCount < 3) //il comando eseguito ha dato errore
@@ -963,6 +1154,20 @@ namespace LaserGRBL
 				try { CloseCom(true); }
 				catch { }
 				return null;
+			}
+		}
+
+		private bool HasIncomingData()
+		{
+			try
+			{
+				return com.HasData();
+			}
+			catch
+			{
+				try { CloseCom(true); }
+				catch { }
+				return false;
 			}
 		}
 
@@ -1067,6 +1272,9 @@ namespace LaserGRBL
 
 		private void OnProgramEnd()
 		{
+			Logger.LogMessage("ProgramEnd", "Job Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true));
+			mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true)), false));
+
 			if (mTP.JobEnd() && mLoopCount > 1 && mMachineStatus != MacStatus.Check)
 			{
 				LoopCount--;
@@ -1112,8 +1320,11 @@ namespace LaserGRBL
 		public decimal LoopCount 
 		{ get { return mLoopCount; } set { mLoopCount = value; if (OnLoopCountChange != null) OnLoopCountChange(mLoopCount); } }
 
+		private ThreadingMode CurrentThreadingMode
+		{ get { return (ThreadingMode)Settings.GetObject("Threading Mode", ThreadingMode.UltraFast); } }
+
 		private StreamingMode CurrentStreamingMode
-		{ get {return (StreamingMode)Settings.GetObject("Streaming Mode", StreamingMode.Buffered); }}
+		{ get { return (StreamingMode)Settings.GetObject("Streaming Mode", StreamingMode.Buffered); } }
 
 		private bool IdleOrCheck
 		{ get { return MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Check; } }
@@ -1160,6 +1371,8 @@ namespace LaserGRBL
 			}
 			catch { return value.ToString(); }
 		}
+
+
 	}
 
 
@@ -1181,6 +1394,7 @@ namespace LaserGRBL
 		private int mTargetCount;
 		private int mExecutedCount;
 		private int mSentCount;
+		private int mErrorCount;
 
 		public TimeProjection()
 		{ Reset(); }
@@ -1272,6 +1486,7 @@ namespace LaserGRBL
 				mStarted = true;
 				mExecutedCount = 0;
 				mSentCount = 0;
+				mErrorCount = 0;
 			}
 		}
 
@@ -1279,6 +1494,12 @@ namespace LaserGRBL
 		{
 			if (mStarted && !mCompleted)
 				mSentCount++;
+		}
+
+		public void JobError()
+		{
+			if (mStarted && !mCompleted)
+				mErrorCount++;
 		}
 
 		public void JobExecuted(TimeSpan EstimatedProgress)
@@ -1324,6 +1545,9 @@ namespace LaserGRBL
 
 		private long now
 		{ get { return Tools.HiResTimer.TotalMilliseconds; } }
+
+		public int ErrorCount
+		{ get { return mErrorCount; } }
 	}
 }
 

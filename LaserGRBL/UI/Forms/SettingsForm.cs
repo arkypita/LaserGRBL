@@ -21,12 +21,25 @@ namespace LaserGRBL
 
 			InitProtocolCB();
 			InitStreamingCB();
+			InitThreadingCB();
 
 			CBSupportPWM.Checked = (bool)Settings.GetObject("Support Hardware PWM", true);
             CBLaserMode.Checked = (bool)Settings.GetObject("Laser Mode", false);
 			CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			CBStreamingMode.SelectedItem = Settings.GetObject("Streaming Mode", GrblCore.StreamingMode.Buffered);
 			CbUnidirectional.Checked = (bool)Settings.GetObject("Unidirectional Engraving", false);
+			CbThreadingMode.SelectedItem = Settings.GetObject("Threading Mode", GrblCore.ThreadingMode.UltraFast); 
+		}
+
+		private void InitThreadingCB()
+		{
+			CbThreadingMode.BeginUpdate();
+			CbThreadingMode.Items.Add(GrblCore.ThreadingMode.Insane);
+			CbThreadingMode.Items.Add(GrblCore.ThreadingMode.UltraFast);
+			CbThreadingMode.Items.Add(GrblCore.ThreadingMode.Fast);
+			CbThreadingMode.Items.Add(GrblCore.ThreadingMode.Quiet);
+			CbThreadingMode.Items.Add(GrblCore.ThreadingMode.Slow);
+			CbThreadingMode.EndUpdate();
 		}
 
 		private void InitProtocolCB()
@@ -60,6 +73,7 @@ namespace LaserGRBL
 			Settings.SetObject("ComWrapper Protocol", CBProtocol.SelectedItem);
 			Settings.SetObject("Streaming Mode", CBStreamingMode.SelectedItem);
 			Settings.SetObject("Unidirectional Engraving", CbUnidirectional.Checked);
+			Settings.SetObject("Threading Mode", CbThreadingMode.SelectedItem);
 			Settings.Save();
 
 			Close();
@@ -88,6 +102,11 @@ namespace LaserGRBL
 		private void BtnStreamingMode_Click(object sender, EventArgs e)
 		{
 			System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#streaming-mode");
+		}
+
+		private void BtnThreadingModel_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#threading-mode");
 		}
     }
 }
