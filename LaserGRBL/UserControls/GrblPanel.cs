@@ -60,6 +60,9 @@ namespace LaserGRBL.UserControls
 						sf.LineAlignment = q == GrblFile.CartesianQuadrant.III || q == GrblFile.CartesianQuadrant.IV ? StringAlignment.Far : StringAlignment.Near;
 
 						String position = string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? Core.MachinePosition.X : 0, Core != null ? Core.MachinePosition.Y : 0);
+						if ( Core != null && Core.WorkingOffset != PointF.Empty)
+							position = position + "\n" + string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? Core.WorkPosition.X : 0, Core != null ? Core.WorkPosition.Y : 0);
+
 						e.Graphics.DrawString(position, Font, b, r, sf);
 					}
 				}

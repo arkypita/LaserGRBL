@@ -707,6 +707,12 @@ namespace LaserGRBL
 		public System.Drawing.PointF MachinePosition
 		{ get { return mMPos; } }
 
+		public System.Drawing.PointF WorkPosition //WCO = MPos - WPos
+		{ get { return new System.Drawing.PointF (mMPos.X - mWCO.X, mMPos.Y - mWCO.Y); } }
+
+		public System.Drawing.PointF WorkingOffset
+		{ get { return mWCO; } }
+
 		public int Executed
 		{ get { return mSent.Count; } }
 
