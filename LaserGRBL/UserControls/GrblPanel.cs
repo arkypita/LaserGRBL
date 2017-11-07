@@ -32,40 +32,48 @@ namespace LaserGRBL.UserControls
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
-			if (mBitmap != null)
-				e.Graphics.DrawImage(mBitmap, 0, 0, Width, Height);
-
-			if (Core != null)
+			try
 			{
-				PointF p = TranslatePoint(mLastPosition);
-				e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-				e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-				using (Pen px = GetPen(ColorScheme.PreviewCross))
+				if (mBitmap != null)
+					e.Graphics.DrawImage(mBitmap, 0, 0, Width, Height);
+
+				if (Core != null)
 				{
-					e.Graphics.DrawLine(px, (int)p.X, (int)p.Y - 3, (int)p.X, (int)p.Y - 3 + 7);
-					e.Graphics.DrawLine(px, (int)p.X - 3, (int)p.Y, (int)p.X - 3 + 7, (int)p.Y);
+					PointF p = TranslatePoint(mLastPosition);
+					e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+					e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-					using (Brush b = GetBrush(ColorScheme.PreviewText))
+					using (Pen px = GetPen(ColorScheme.PreviewCross))
 					{
-						Rectangle r = ClientRectangle;
-						r.Inflate(-5, -5);
-						StringFormat sf = new StringFormat();
+						e.Graphics.DrawLine(px, (int)p.X, (int)p.Y - 3, (int)p.X, (int)p.Y - 3 + 7);
+						e.Graphics.DrawLine(px, (int)p.X - 3, (int)p.Y, (int)p.X - 3 + 7, (int)p.Y);
 
-						//  II | I
-						// ---------
-						// III | IV
-						GrblFile.CartesianQuadrant q = Core != null && Core.LoadedFile != null ? Core.LoadedFile.Quadrant : GrblFile.CartesianQuadrant.Unknown;
-						sf.Alignment = q == GrblFile.CartesianQuadrant.II || q == GrblFile.CartesianQuadrant.III ? StringAlignment.Near : StringAlignment.Far;
-						sf.LineAlignment = q == GrblFile.CartesianQuadrant.III || q == GrblFile.CartesianQuadrant.IV ? StringAlignment.Far : StringAlignment.Near;
+						using (Brush b = GetBrush(ColorScheme.PreviewText))
+						{
+							Rectangle r = ClientRectangle;
+							r.Inflate(-5, -5);
+							StringFormat sf = new StringFormat();
 
-						String position = string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? Core.MachinePosition.X : 0, Core != null ? Core.MachinePosition.Y : 0);
-						if ( Core != null && Core.WorkingOffset != PointF.Empty)
-							position = position + "\n" + string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? Core.WorkPosition.X : 0, Core != null ? Core.WorkPosition.Y : 0);
+							//  II | I
+							// ---------
+							// III | IV
+							GrblFile.CartesianQuadrant q = Core != null && Core.LoadedFile != null ? Core.LoadedFile.Quadrant : GrblFile.CartesianQuadrant.Unknown;
+							sf.Alignment = q == GrblFile.CartesianQuadrant.II || q == GrblFile.CartesianQuadrant.III ? StringAlignment.Near : StringAlignment.Far;
+							sf.LineAlignment = q == GrblFile.CartesianQuadrant.III || q == GrblFile.CartesianQuadrant.IV ? StringAlignment.Far : StringAlignment.Near;
 
-						e.Graphics.DrawString(position, Font, b, r, sf);
+							String position = string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? Core.MachinePosition.X : 0, Core != null ? Core.MachinePosition.Y : 0);
+							if (Core != null && Core.WorkingOffset != PointF.Empty)
+								position = position + "\n" + string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? Core.WorkPosition.X : 0, Core != null ? Core.WorkPosition.Y : 0);
+
+							e.Graphics.DrawString(position, Font, b, r, sf);
+						}
 					}
 				}
+			}
+			catch (Exception ex)
+			{
+				Logger.LogException("GrblPanel Paint", ex);
 			}
 		}
 
