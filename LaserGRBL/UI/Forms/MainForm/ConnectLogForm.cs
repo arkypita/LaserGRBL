@@ -131,7 +131,7 @@ namespace LaserGRBL
 
 		void BtnRunProgramClick(object sender, EventArgs e)
 		{
-			Core.EnqueueProgram();
+			Core.RunProgram();
 		}
 		void TxtManualCommandCommandEntered(string command)
 		{

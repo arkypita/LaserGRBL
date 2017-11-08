@@ -244,7 +244,7 @@ namespace LaserGRBL
 
 		private void MnFileSend_Click(object sender, EventArgs e)
 		{
-			Core.EnqueueProgram();
+			Core.RunProgram();
 		}
 
 		private void MnGrblReset_Click(object sender, EventArgs e)

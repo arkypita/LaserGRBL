@@ -543,7 +543,25 @@ namespace LaserGRBL
 			}
 		}
 
-		public void EnqueueProgram()
+		public void RunProgram()
+		{
+			if (BrokenProgram() && UserWantToContinue())
+				ContinueProgramFromKnown();
+			else
+				RunProgramFromStart();
+		}
+
+		private bool UserWantToContinue()
+		{
+			return false;
+		}
+
+		private bool BrokenProgram()
+		{
+			return false;
+		}
+
+		private void RunProgramFromStart()
 		{
 			lock (this)
 			{
@@ -555,6 +573,14 @@ namespace LaserGRBL
 
 				foreach (GrblCommand cmd in file)
 					mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
+			}
+		}
+
+		private void ContinueProgramFromKnown()
+		{
+			lock (this)
+			{
+ 
 			}
 		}
 
@@ -706,6 +732,12 @@ namespace LaserGRBL
 
 		public System.Drawing.PointF MachinePosition
 		{ get { return mMPos; } }
+
+		public System.Drawing.PointF WorkPosition //WCO = MPos - WPos
+		{ get { return new System.Drawing.PointF (mMPos.X - mWCO.X, mMPos.Y - mWCO.Y); } }
+
+		public System.Drawing.PointF WorkingOffset
+		{ get { return mWCO; } }
 
 		public int Executed
 		{ get { return mSent.Count; } }
@@ -1278,7 +1310,7 @@ namespace LaserGRBL
 			if (mTP.JobEnd() && mLoopCount > 1 && mMachineStatus != MacStatus.Check)
 			{
 				LoopCount--;
-				EnqueueProgram();
+				RunProgram();
 			}
 		}
 
