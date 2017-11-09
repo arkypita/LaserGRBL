@@ -947,6 +947,59 @@ namespace LaserGRBL
 		{ return list.GetEnumerator(); }
 
 		public ProgramRange Range { get { return mRange; } }
+
+		public GrblCommand this[int index]
+		{get{return list[index];}}
+
+		internal List<GrblCommand> BuildContinueFromIV(int position) //create an initialization vector for re-run the file
+		{
+			List<GrblCommand> rv = new List<GrblCommand>() ;
+
+			GrblCommand.Element AR = null;
+			GrblCommand.Element M = null;
+			GrblCommand.Element F = null;
+			GrblCommand.Element S = null;
+			decimal curX = 0;
+			decimal curY = 0;
+			bool abs = false;
+
+			for (int i = 0; i < position; i++) //find last M,F,S sent
+			{
+				GrblCommand cmd = this[i].Clone() as GrblCommand;
+
+				cmd.BuildHelper();
+				if (cmd.IsAbsoluteCoord || cmd.IsRelativeCoord) AR = cmd.G;
+				if (cmd.M != null && cmd.M.Number > 2 && cmd.M.Number < 6) M = cmd.M;
+				if (cmd.F != null) F = cmd.F;
+				if (cmd.S != null) S = cmd.S;
+
+				if (cmd.IsRelativeCoord)
+					abs = false;
+				if (cmd.IsAbsoluteCoord)
+					abs = true;
+
+				if (cmd.IsMovement && cmd.TrueMovement(curX, curY, abs))
+				{
+					curX = cmd.X != null ? (abs ? cmd.X.Number : curX + cmd.X.Number) : curX;
+					curY = cmd.Y != null ? (abs ? cmd.Y.Number : curY + cmd.Y.Number) : curY;
+				}
+
+				cmd.DeleteHelper();
+			}
+
+			rv.Add(new GrblCommand("G90")); //absolute coordinate
+			rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} M5", formatnumber((double)curX), formatnumber((double)curY)))); //fast go to the computed position with laser off
+
+			StringBuilder sb = new StringBuilder();
+			if (AR != null) sb.Append(AR.ToString() + " ");
+			if (M != null) sb.Append(M.ToString() + " ");
+			if (F != null) sb.Append(F.ToString() + " ");
+			if (S != null) sb.Append(S.ToString());
+			if (!string.IsNullOrEmpty(sb.ToString()))
+				rv.Add(new GrblCommand(sb.ToString()));
+
+			return rv;
+		}
 	}
 
 

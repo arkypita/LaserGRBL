@@ -248,6 +248,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="ResumeJobForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResumeJobForm.Designer.cs">
+      <DependentUpon>ResumeJobForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -512,6 +518,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\MainForm\PreviewForm.zh-CN.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResumeJobForm.resx">
+      <DependentUpon>ResumeJobForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
