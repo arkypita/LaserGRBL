@@ -21,16 +21,20 @@ namespace LaserGRBL
 			return rv;
 		}
 
-		int mExec, mSent;
+		int mExec, mSent, mSomeLine;
 		private ResumeJobForm(int exec, int sent, int target)
 		{
 			InitializeComponent();
+			mSomeLine = Math.Max(0, exec - 17);
 			mExec = exec;
 			mSent = sent;
+			LblSomeLines.Text = mSomeLine.ToString();
 			LblManaged.Text = exec.ToString();
 			LblSent.Text = sent.ToString();
 			UdSpecific.Maximum = sent;
 			UdSpecific.Value = sent;
+
+			RbSomeLines.Enabled = LblSomeLines.Visible = mSomeLine > 0;
 		}
 
 		public int Position 
@@ -39,6 +43,8 @@ namespace LaserGRBL
 			{
 				if (RbFromBeginning.Checked)
 					return 0;
+				if (RbSomeLines.Checked)
+					return mSomeLine;
 				if (RbFromSent.Checked)
 					return mSent;
 				if (RbFromManaged.Checked)

@@ -48,6 +48,8 @@
 			this.LblDetected = new System.Windows.Forms.Label();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.LblBrief = new System.Windows.Forms.Label();
+			this.RbSomeLines = new System.Windows.Forms.RadioButton();
+			this.LblSomeLines = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -70,7 +72,7 @@
 			this.tableLayoutPanel1.RowCount = 2;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(405, 284);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(405, 298);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
 			// tableLayoutPanel2
@@ -84,7 +86,7 @@
 			this.tableLayoutPanel2.Controls.Add(this.BtnOK, 2, 0);
 			this.tableLayoutPanel2.Controls.Add(this.button1, 1, 0);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 248);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 262);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 1;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -133,7 +135,7 @@
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(399, 239);
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(399, 253);
 			this.tableLayoutPanel3.TabIndex = 1;
 			// 
 			// tableLayoutPanel4
@@ -145,27 +147,31 @@
 			this.tableLayoutPanel3.SetColumnSpan(this.tableLayoutPanel4, 2);
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel4.Controls.Add(this.LblSomeLines, 1, 2);
+			this.tableLayoutPanel4.Controls.Add(this.RbSomeLines, 0, 2);
 			this.tableLayoutPanel4.Controls.Add(this.label2, 1, 0);
-			this.tableLayoutPanel4.Controls.Add(this.RbFromSpecific, 0, 4);
+			this.tableLayoutPanel4.Controls.Add(this.RbFromSpecific, 0, 5);
 			this.tableLayoutPanel4.Controls.Add(this.RbFromBeginning, 0, 1);
 			this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
 			this.tableLayoutPanel4.Controls.Add(this.LblBegin, 1, 1);
-			this.tableLayoutPanel4.Controls.Add(this.UdSpecific, 1, 4);
-			this.tableLayoutPanel4.Controls.Add(this.RbFromSent, 0, 3);
-			this.tableLayoutPanel4.Controls.Add(this.RbFromManaged, 0, 2);
-			this.tableLayoutPanel4.Controls.Add(this.LblSent, 1, 3);
-			this.tableLayoutPanel4.Controls.Add(this.LblManaged, 1, 2);
+			this.tableLayoutPanel4.Controls.Add(this.UdSpecific, 1, 5);
+			this.tableLayoutPanel4.Controls.Add(this.RbFromSent, 0, 4);
+			this.tableLayoutPanel4.Controls.Add(this.RbFromManaged, 0, 3);
+			this.tableLayoutPanel4.Controls.Add(this.LblSent, 1, 4);
+			this.tableLayoutPanel4.Controls.Add(this.LblManaged, 1, 3);
 			this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel4.Location = new System.Drawing.Point(5, 95);
 			this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(5);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-			this.tableLayoutPanel4.RowCount = 5;
+			this.tableLayoutPanel4.RowCount = 6;
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel4.Size = new System.Drawing.Size(389, 139);
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel4.Size = new System.Drawing.Size(389, 153);
 			this.tableLayoutPanel4.TabIndex = 0;
 			// 
 			// label2
@@ -185,8 +191,9 @@
 			// 
 			// RbFromSpecific
 			// 
+			this.RbFromSpecific.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.RbFromSpecific.AutoSize = true;
-			this.RbFromSpecific.Location = new System.Drawing.Point(4, 97);
+			this.RbFromSpecific.Location = new System.Drawing.Point(4, 126);
 			this.RbFromSpecific.Name = "RbFromSpecific";
 			this.RbFromSpecific.Size = new System.Drawing.Size(145, 17);
 			this.RbFromSpecific.TabIndex = 3;
@@ -196,12 +203,13 @@
 			// 
 			// RbFromBeginning
 			// 
+			this.RbFromBeginning.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.RbFromBeginning.AutoSize = true;
 			this.RbFromBeginning.Location = new System.Drawing.Point(4, 25);
 			this.RbFromBeginning.Name = "RbFromBeginning";
 			this.RbFromBeginning.Size = new System.Drawing.Size(177, 17);
 			this.RbFromBeginning.TabIndex = 0;
-			this.RbFromBeginning.Text = "Start again from beginning (safe)";
+			this.RbFromBeginning.Text = "Start again from beginning [safe]";
 			this.RbFromBeginning.UseVisualStyleBackColor = true;
 			this.RbFromBeginning.CheckedChanged += new System.EventHandler(this.RbCheckedChanged);
 			// 
@@ -232,16 +240,18 @@
 			// 
 			// UdSpecific
 			// 
+			this.UdSpecific.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.UdSpecific.Enabled = false;
-			this.UdSpecific.Location = new System.Drawing.Point(299, 97);
+			this.UdSpecific.Location = new System.Drawing.Point(299, 125);
 			this.UdSpecific.Name = "UdSpecific";
 			this.UdSpecific.Size = new System.Drawing.Size(86, 20);
 			this.UdSpecific.TabIndex = 9;
 			// 
 			// RbFromSent
 			// 
+			this.RbFromSent.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.RbFromSent.AutoSize = true;
-			this.RbFromSent.Location = new System.Drawing.Point(4, 73);
+			this.RbFromSent.Location = new System.Drawing.Point(4, 97);
 			this.RbFromSent.Name = "RbFromSent";
 			this.RbFromSent.Size = new System.Drawing.Size(178, 17);
 			this.RbFromSent.TabIndex = 2;
@@ -251,8 +261,9 @@
 			// 
 			// RbFromManaged
 			// 
+			this.RbFromManaged.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.RbFromManaged.AutoSize = true;
-			this.RbFromManaged.Location = new System.Drawing.Point(4, 49);
+			this.RbFromManaged.Location = new System.Drawing.Point(4, 73);
 			this.RbFromManaged.Name = "RbFromManaged";
 			this.RbFromManaged.Size = new System.Drawing.Size(202, 17);
 			this.RbFromManaged.TabIndex = 1;
@@ -264,7 +275,7 @@
 			// 
 			this.LblSent.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.LblSent.AutoSize = true;
-			this.LblSent.Location = new System.Drawing.Point(299, 75);
+			this.LblSent.Location = new System.Drawing.Point(299, 99);
 			this.LblSent.Name = "LblSent";
 			this.LblSent.Size = new System.Drawing.Size(13, 13);
 			this.LblSent.TabIndex = 7;
@@ -274,7 +285,7 @@
 			// 
 			this.LblManaged.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.LblManaged.AutoSize = true;
-			this.LblManaged.Location = new System.Drawing.Point(299, 51);
+			this.LblManaged.Location = new System.Drawing.Point(299, 75);
 			this.LblManaged.Name = "LblManaged";
 			this.LblManaged.Size = new System.Drawing.Size(13, 13);
 			this.LblManaged.TabIndex = 8;
@@ -311,6 +322,28 @@
 			this.LblBrief.TabIndex = 4;
 			this.LblBrief.Text = resources.GetString("LblBrief.Text");
 			// 
+			// RbSomeLines
+			// 
+			this.RbSomeLines.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.RbSomeLines.AutoSize = true;
+			this.RbSomeLines.Location = new System.Drawing.Point(4, 49);
+			this.RbSomeLines.Name = "RbSomeLines";
+			this.RbSomeLines.Size = new System.Drawing.Size(219, 17);
+			this.RbSomeLines.TabIndex = 10;
+			this.RbSomeLines.Text = "Resume some lines before the stop [safe]";
+			this.RbSomeLines.UseVisualStyleBackColor = true;
+			this.RbSomeLines.CheckedChanged += new System.EventHandler(this.RbCheckedChanged);
+			// 
+			// LblSomeLines
+			// 
+			this.LblSomeLines.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.LblSomeLines.AutoSize = true;
+			this.LblSomeLines.Location = new System.Drawing.Point(299, 51);
+			this.LblSomeLines.Name = "LblSomeLines";
+			this.LblSomeLines.Size = new System.Drawing.Size(13, 13);
+			this.LblSomeLines.TabIndex = 11;
+			this.LblSomeLines.Text = "0";
+			// 
 			// ResumeJobForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -318,7 +351,7 @@
 			this.AutoSize = true;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.CancelButton = this.button1;
-			this.ClientSize = new System.Drawing.Size(405, 284);
+			this.ClientSize = new System.Drawing.Size(405, 298);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "ResumeJobForm";
@@ -359,5 +392,7 @@
 		private System.Windows.Forms.Label LblBegin;
 		private System.Windows.Forms.NumericUpDown UdSpecific;
 		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.RadioButton RbSomeLines;
+		private System.Windows.Forms.Label LblSomeLines;
 	}
 }
