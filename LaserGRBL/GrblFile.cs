@@ -947,6 +947,9 @@ namespace LaserGRBL
 		{ return list.GetEnumerator(); }
 
 		public ProgramRange Range { get { return mRange; } }
+
+		public GrblCommand this[int index]
+		{get{return list[index];}}
 	}
 
 

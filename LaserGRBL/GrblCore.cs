@@ -545,20 +545,20 @@ namespace LaserGRBL
 
 		public void RunProgram()
 		{
-			if (BrokenProgram() && UserWantToContinue())
-				ContinueProgramFromKnown();
-			else
+			if (mTP.Executed == 0)
 				RunProgramFromStart();
+			else
+				UserWantToContinue();
 		}
 
-		private bool UserWantToContinue()
+		private void UserWantToContinue()
 		{
-			return false;
-		}
+			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target);
 
-		private bool BrokenProgram()
-		{
-			return false;
+			if (position == 0)
+				RunProgramFromStart();
+			if (position > 0)
+				ContinueProgramFromKnown(position);
 		}
 
 		private void RunProgramFromStart()
@@ -576,11 +576,37 @@ namespace LaserGRBL
 			}
 		}
 
-		private void ContinueProgramFromKnown()
+		private void ContinueProgramFromKnown(int position)
 		{
 			lock (this)
 			{
- 
+
+				ClearQueue(false); //lascia l'eventuale lista delle cose già mandate, se ce l'hai ancora
+
+				mSentPtr.Add(new GrblMessage(string.Format("[resume from #{0}]", position), false));
+				Logger.LogMessage("ResumeProgram", "Resume program from #{0}", position);
+
+				mTP.JobContinue(position);
+				
+				decimal lastM = 3;
+				decimal lastF = 1000;
+				decimal lastS = 255;
+
+				for (int i = 0; i < position; i++) //find last M,F,S sent
+				{
+					GrblCommand cmd = file[i].Clone() as GrblCommand;
+					cmd.BuildHelper();
+					if (cmd.M != null && cmd.M.Number > 2 && cmd.M.Number < 6) lastM = cmd.M.Number;
+					if (cmd.F != null) lastF = cmd.F.Number;
+					if (cmd.S != null) lastS = cmd.S.Number;
+					cmd.DeleteHelper();
+				}
+
+				Logger.LogMessage("ResumeProgram", "Found state: M{0} F{1} S{2}", lastM, lastF, lastS);
+				mQueuePtr.Enqueue(new GrblCommand(string.Format("M{0} F{1} S{2}", lastM, lastF, lastS)));
+
+				for (int i = position; i < file.Count; i++) //enqueue remaining commands
+					mQueuePtr.Enqueue(file[i].Clone() as GrblCommand); 
 			}
 		}
 
@@ -647,7 +673,7 @@ namespace LaserGRBL
 				RX.Stop();
 
 				lock (this)
-				{ ClearQueue(false); }
+				{ ClearQueue(false); } //non resettare l'elenco delle cose mandate così da non sbiancare la lista
 
 				SetStatus(MacStatus.Disconnected);
 			}
@@ -1519,6 +1545,24 @@ namespace LaserGRBL
 				mExecutedCount = 0;
 				mSentCount = 0;
 				mErrorCount = 0;
+			}
+		}
+
+		public void JobContinue(int position)
+		{
+			if (!mStarted)
+			{
+			//	mETarget = EstimatedTarget;
+			//	mTargetCount = LineCount;
+			//	mEProgress = TimeSpan.Zero;
+			//	mStart = Tools.HiResTimer.TotalMilliseconds;
+				mPauseBegin = 0;
+				mInPause = false;
+				mCompleted = false;
+				mStarted = true;
+				mExecutedCount = position;
+				mSentCount = position;
+			//	mErrorCount = 0;
 			}
 		}
 
