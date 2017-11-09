@@ -547,7 +547,7 @@ namespace LaserGRBL
 
 		public void RunProgram()
 		{
-			if (mTP.Executed == 0)
+			if (mTP.Executed == 0 || mTP.Executed == mTP.Target) //mai iniziato oppure correttamente finito
 				RunProgramFromStart();
 			else
 				UserWantToContinue();
@@ -1449,6 +1449,8 @@ namespace LaserGRBL
 
 		public void Reset()
 		{
+			mETarget = TimeSpan.Zero;
+			mEProgress = TimeSpan.Zero;
 			mStart = 0;
 			mEnd = 0;
 			mPauseBegin = 0;
@@ -1456,6 +1458,10 @@ namespace LaserGRBL
 			mInPause = false;
 			mCompleted = false;
 			mStarted = false;
+			mExecutedCount = 0;
+			mSentCount = 0;
+			mErrorCount = 0;
+			mTargetCount = 0;
 		}
 
 		public TimeSpan EstimatedTarget
