@@ -324,6 +324,8 @@ namespace LaserGRBL
 
 		void RiseOnFileLoaded(long elapsed, string filename)
 		{
+			mTP.Reset();
+
 			if (OnFileLoaded != null)
 				OnFileLoaded(elapsed, filename);
 		}
@@ -369,7 +371,7 @@ namespace LaserGRBL
 						System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
 
 						try
-						{ file.LoadFile(filename); }
+						{file.LoadFile(filename);}
 						catch (Exception ex)
 						{ Logger.LogException("GCodeImport", ex); }
 
@@ -587,23 +589,11 @@ namespace LaserGRBL
 				Logger.LogMessage("ResumeProgram", "Resume program from #{0}", position);
 
 				mTP.JobContinue(position);
-				
-				decimal lastM = 3;
-				decimal lastF = 1000;
-				decimal lastS = 255;
 
-				for (int i = 0; i < position; i++) //find last M,F,S sent
-				{
-					GrblCommand cmd = file[i].Clone() as GrblCommand;
-					cmd.BuildHelper();
-					if (cmd.M != null && cmd.M.Number > 2 && cmd.M.Number < 6) lastM = cmd.M.Number;
-					if (cmd.F != null) lastF = cmd.F.Number;
-					if (cmd.S != null) lastS = cmd.S.Number;
-					cmd.DeleteHelper();
-				}
+				System.Collections.Generic.List<GrblCommand> rvector = file.BuildContinueFromIV(position);
 
-				Logger.LogMessage("ResumeProgram", "Found state: M{0} F{1} S{2}", lastM, lastF, lastS);
-				mQueuePtr.Enqueue(new GrblCommand(string.Format("M{0} F{1} S{2}", lastM, lastF, lastS)));
+				foreach (GrblCommand cmd in rvector)
+					mQueuePtr.Enqueue(cmd);
 
 				for (int i = position; i < file.Count; i++) //enqueue remaining commands
 					mQueuePtr.Enqueue(file[i].Clone() as GrblCommand); 

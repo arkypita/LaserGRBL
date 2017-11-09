@@ -35,16 +35,16 @@
 			this.button1 = new System.Windows.Forms.Button();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-			this.LblManaged = new System.Windows.Forms.Label();
-			this.LblSent = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.RbFromSpecific = new System.Windows.Forms.RadioButton();
 			this.RbFromBeginning = new System.Windows.Forms.RadioButton();
-			this.RbFromSent = new System.Windows.Forms.RadioButton();
-			this.RbFromManaged = new System.Windows.Forms.RadioButton();
 			this.label1 = new System.Windows.Forms.Label();
 			this.LblBegin = new System.Windows.Forms.Label();
 			this.UdSpecific = new System.Windows.Forms.NumericUpDown();
+			this.RbFromSent = new System.Windows.Forms.RadioButton();
+			this.RbFromManaged = new System.Windows.Forms.RadioButton();
+			this.LblSent = new System.Windows.Forms.Label();
+			this.LblManaged = new System.Windows.Forms.Label();
 			this.LblDetected = new System.Windows.Forms.Label();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.LblBrief = new System.Windows.Forms.Label();
@@ -168,26 +168,6 @@
 			this.tableLayoutPanel4.Size = new System.Drawing.Size(389, 139);
 			this.tableLayoutPanel4.TabIndex = 0;
 			// 
-			// LblManaged
-			// 
-			this.LblManaged.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.LblManaged.AutoSize = true;
-			this.LblManaged.Location = new System.Drawing.Point(299, 51);
-			this.LblManaged.Name = "LblManaged";
-			this.LblManaged.Size = new System.Drawing.Size(13, 13);
-			this.LblManaged.TabIndex = 8;
-			this.LblManaged.Text = "0";
-			// 
-			// LblSent
-			// 
-			this.LblSent.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.LblSent.AutoSize = true;
-			this.LblSent.Location = new System.Drawing.Point(299, 75);
-			this.LblSent.Name = "LblSent";
-			this.LblSent.Size = new System.Drawing.Size(13, 13);
-			this.LblSent.TabIndex = 7;
-			this.LblSent.Text = "0";
-			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
@@ -225,28 +205,6 @@
 			this.RbFromBeginning.UseVisualStyleBackColor = true;
 			this.RbFromBeginning.CheckedChanged += new System.EventHandler(this.RbCheckedChanged);
 			// 
-			// RbFromSent
-			// 
-			this.RbFromSent.AutoSize = true;
-			this.RbFromSent.Location = new System.Drawing.Point(4, 73);
-			this.RbFromSent.Name = "RbFromSent";
-			this.RbFromSent.Size = new System.Drawing.Size(178, 17);
-			this.RbFromSent.TabIndex = 2;
-			this.RbFromSent.Text = "Resume from last command sent";
-			this.RbFromSent.UseVisualStyleBackColor = true;
-			this.RbFromSent.CheckedChanged += new System.EventHandler(this.RbCheckedChanged);
-			// 
-			// RbFromManaged
-			// 
-			this.RbFromManaged.AutoSize = true;
-			this.RbFromManaged.Location = new System.Drawing.Point(4, 49);
-			this.RbFromManaged.Name = "RbFromManaged";
-			this.RbFromManaged.Size = new System.Drawing.Size(231, 17);
-			this.RbFromManaged.TabIndex = 1;
-			this.RbFromManaged.Text = "Resume from last command managed (safe)";
-			this.RbFromManaged.UseVisualStyleBackColor = true;
-			this.RbFromManaged.CheckedChanged += new System.EventHandler(this.RbCheckedChanged);
-			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
@@ -279,6 +237,48 @@
 			this.UdSpecific.Name = "UdSpecific";
 			this.UdSpecific.Size = new System.Drawing.Size(86, 20);
 			this.UdSpecific.TabIndex = 9;
+			// 
+			// RbFromSent
+			// 
+			this.RbFromSent.AutoSize = true;
+			this.RbFromSent.Location = new System.Drawing.Point(4, 73);
+			this.RbFromSent.Name = "RbFromSent";
+			this.RbFromSent.Size = new System.Drawing.Size(178, 17);
+			this.RbFromSent.TabIndex = 2;
+			this.RbFromSent.Text = "Resume from last command sent";
+			this.RbFromSent.UseVisualStyleBackColor = true;
+			this.RbFromSent.CheckedChanged += new System.EventHandler(this.RbCheckedChanged);
+			// 
+			// RbFromManaged
+			// 
+			this.RbFromManaged.AutoSize = true;
+			this.RbFromManaged.Location = new System.Drawing.Point(4, 49);
+			this.RbFromManaged.Name = "RbFromManaged";
+			this.RbFromManaged.Size = new System.Drawing.Size(202, 17);
+			this.RbFromManaged.TabIndex = 1;
+			this.RbFromManaged.Text = "Resume from last command managed";
+			this.RbFromManaged.UseVisualStyleBackColor = true;
+			this.RbFromManaged.CheckedChanged += new System.EventHandler(this.RbCheckedChanged);
+			// 
+			// LblSent
+			// 
+			this.LblSent.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.LblSent.AutoSize = true;
+			this.LblSent.Location = new System.Drawing.Point(299, 75);
+			this.LblSent.Name = "LblSent";
+			this.LblSent.Size = new System.Drawing.Size(13, 13);
+			this.LblSent.TabIndex = 7;
+			this.LblSent.Text = "0";
+			// 
+			// LblManaged
+			// 
+			this.LblManaged.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.LblManaged.AutoSize = true;
+			this.LblManaged.Location = new System.Drawing.Point(299, 51);
+			this.LblManaged.Name = "LblManaged";
+			this.LblManaged.Size = new System.Drawing.Size(13, 13);
+			this.LblManaged.TabIndex = 8;
+			this.LblManaged.Text = "0";
 			// 
 			// LblDetected
 			// 
@@ -322,6 +322,7 @@
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "ResumeJobForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Resume Job";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();

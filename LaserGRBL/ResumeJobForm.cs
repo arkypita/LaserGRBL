@@ -29,7 +29,7 @@ namespace LaserGRBL
 			mSent = sent;
 			LblManaged.Text = exec.ToString();
 			LblSent.Text = sent.ToString();
-			UdSpecific.Maximum = target;
+			UdSpecific.Maximum = sent;
 			UdSpecific.Value = sent;
 		}
 

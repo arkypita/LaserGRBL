@@ -31,13 +31,11 @@ namespace LaserGRBL
 		{
 			private Char mCommand;
 			private Decimal mNumber;
-			private string mString;
 
 			public Element(Char Command, Decimal Number)
 			{
 				mCommand = Command;
 				mNumber = Number;
-				mString = Command + Number.ToString();
 			}
 
 			public Char Command
@@ -46,6 +44,9 @@ namespace LaserGRBL
 			public Decimal Number
 			{ get { return mNumber; } }
 
+			public override string ToString()
+			{ return Command + Number.ToString(System.Globalization.CultureInfo.InvariantCulture); }
+			
 		}
 
 		private string mLine;
@@ -375,6 +376,9 @@ namespace LaserGRBL
 
 		public int ImageIndex
 		{ get { return Status == CommandStatus.Queued || Status == CommandStatus.WaitingResponse ? 0 : Status == CommandStatus.ResponseGood ? 1 : 2; } }
+
+		public override string ToString()
+		{ return this.mLine; }
 	}
 
 	public class GrblMessage : IGrblRow
