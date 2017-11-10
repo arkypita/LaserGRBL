@@ -9,7 +9,7 @@ namespace LaserGRBL
 	{
 		string GetMessage();
 
-		string GetResult(bool decode);
+		string GetResult(bool decode, bool erroronly);
 		string GetToolTip(bool decode);
 
 		Color LeftColor { get; }
@@ -162,7 +162,7 @@ namespace LaserGRBL
 		private bool CanCompress
 		{ get { return !IsGrblCommand; } }
 
-		public string GetResult(bool decode)
+		public string GetResult(bool decode, bool erroronly)
 		{
 				if (Status == CommandStatus.ResponseBad && decode)
 				{
@@ -177,7 +177,7 @@ namespace LaserGRBL
 					return mCodedResult; //if ex or null
 				}
 
-				return mCodedResult;
+				return erroronly ? null : mCodedResult;
 		}
 
 		public CommandStatus Status
@@ -445,8 +445,8 @@ namespace LaserGRBL
 		public string GetMessage()
 		{return mMessage; }
 
-		public string GetResult(bool decode)
-		{return ""; }
+		public string GetResult(bool decode, bool erroronly)
+		{return null; }
 		
 		public string GetToolTip(bool decode) //already decoded on build
 		{ return mToolTip; }
@@ -476,6 +476,6 @@ namespace LaserGRBL
 		{get { return Color.Black; }} //normalmente per questi messaggi non c'è un right
 
 		public int ImageIndex
-		{ get { return -1; } }
+		{ get { return 3; } }
 	}
 }

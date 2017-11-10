@@ -52,6 +52,7 @@
 			this.IL.Images.SetKeyName(0, "GcodeQueue.png");
 			this.IL.Images.SetKeyName(1, "GcodeOK.png");
 			this.IL.Images.SetKeyName(2, "GcodeKO.png");
+			this.IL.Images.SetKeyName(3, "GCodeInfo.png");
 			// 
 			// CommandLog
 			// 
