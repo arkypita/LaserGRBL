@@ -660,8 +660,8 @@ namespace LaserGRBL
 
 		public void CloseCom(bool user)
 		{
-			if (user && mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
-				SetIssue(DetectedIssue.ManualDisconnect);
+			if (mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
+				SetIssue(user ? DetectedIssue.ManualDisconnect : DetectedIssue.UnexpectedDisconnect);
 
 			try
 			{
