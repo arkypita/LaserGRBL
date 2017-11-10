@@ -30,6 +30,7 @@ namespace LaserGRBL.ComWrapper
 					com.PortName = mPortName;
 					com.BaudRate = mBaudRate;
 					com.NewLine = "\n";
+					com.WriteTimeout = 1000; //se si blocca in write
 
 					Logger.LogMessage("OpenCom", "Open {0} @ {1} baud", com.PortName.ToUpper(), com.BaudRate);
 

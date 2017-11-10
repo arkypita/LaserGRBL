@@ -25,12 +25,15 @@ namespace LaserGRBL
 		public static CsvDictionary Errors = new CSV.CsvDictionary("LaserGRBL.CSV.error_codes.csv", 2);
 	}
 
-	public class GrblCommand : ICloneable, IGrblRow
+	public partial class GrblCommand : ICloneable, IGrblRow
 	{
 		public class Element
 		{
-			private Char mCommand;
-			private Decimal mNumber;
+			protected Char mCommand;
+			protected Decimal mNumber;
+
+			public static implicit operator Element(string value)
+			{return new Element(value[0], decimal.Parse(value.Substring(1), System.Globalization.CultureInfo.InvariantCulture));}
 
 			public Element(Char Command, Decimal Number)
 			{
@@ -46,7 +49,18 @@ namespace LaserGRBL
 
 			public override string ToString()
 			{ return Command + Number.ToString(System.Globalization.CultureInfo.InvariantCulture); }
-			
+
+			public override bool Equals(object obj)
+			{
+				Element o = obj as Element;
+				return o != null && o.mCommand == mCommand && o.mNumber == mNumber;
+			}
+
+			public override int GetHashCode()
+			{return mCommand.GetHashCode() ^ mNumber.GetHashCode();}
+
+			internal void SetNumber(decimal p)
+			{mNumber = p;}
 		}
 
 		private string mLine;
@@ -62,9 +76,12 @@ namespace LaserGRBL
 		public GrblCommand(string line, int repeat)
 		{ mLine = line.ToUpper().Trim(); mRepeatCount = repeat; }
 
+		public bool JustBuilt
+		{ get { return mHelper != null; } }
+
 		public void BuildHelper()
 		{
-			if (mHelper != null) //just built!
+			if (JustBuilt) //just built!
 				return;
 
 			try

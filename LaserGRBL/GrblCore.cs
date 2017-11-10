@@ -603,7 +603,6 @@ namespace LaserGRBL
 
 				foreach (GrblCommand cmd in rvector)
 					mQueuePtr.Enqueue(cmd);
-
 				for (int i = position; i < file.Count; i++) //enqueue remaining commands
 					mQueuePtr.Enqueue(file[i].Clone() as GrblCommand); 
 			}
@@ -715,10 +714,9 @@ namespace LaserGRBL
 				ClearQueue(true);
 				mBuffer = 0;
 				mTP.JobEnd();
-				SendImmediate(24);
-
 				mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
 				mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
+				SendImmediate(24);
 			}
 
 			RiseOverrideChanged();
@@ -1060,6 +1058,7 @@ namespace LaserGRBL
 				GrblVersion = new GrblVersionInfo(maj, min, build);
 
 				DetectUnexpectedReset();
+				OnStartupMessage();
 			}
 			catch (Exception ex)
 			{
@@ -1067,6 +1066,19 @@ namespace LaserGRBL
 				Logger.LogException("VersionInfo", ex);
 			}
 			mSentPtr.Add(new GrblMessage(rline, false));
+		}
+
+		private void OnStartupMessage() //resetta tutto, così funziona anche nel caso di hard-unexpected reset
+		{
+			lock (this)
+			{
+				ClearQueue(false);
+				mBuffer = 0;
+				mTP.JobEnd();
+				mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
+				mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
+			}
+			RiseOverrideChanged();
 		}
 
 		private void DetectUnexpectedReset()
