@@ -119,7 +119,7 @@ namespace LaserGRBL
 			if (Core.MachineStatus == GrblCore.MacStatus.Disconnected)
 				Core.OpenCom();
 			else if (!(Core.InProgram && System.Windows.Forms.MessageBox.Show(Strings.DisconnectAnyway, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes))
-				Core.CloseCom(false);
+				Core.CloseCom(true);
 
 			TimerUpdate();
 		}

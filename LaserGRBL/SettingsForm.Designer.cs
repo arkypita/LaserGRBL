@@ -35,6 +35,7 @@
 			this.BtnSave = new System.Windows.Forms.Button();
 			this.GB = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.CbThreadingMode = new System.Windows.Forms.ComboBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.CBStreamingMode = new System.Windows.Forms.ComboBox();
 			this.BtnStreamingMode = new LaserGRBL.UserControls.ImageButton();
@@ -49,9 +50,10 @@
 			this.BtnProtocol = new LaserGRBL.UserControls.ImageButton();
 			this.CbUnidirectional = new System.Windows.Forms.CheckBox();
 			this.label5 = new System.Windows.Forms.Label();
-			this.CbThreadingMode = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.BtnThreadingModel = new LaserGRBL.UserControls.ImageButton();
+			this.CbIssueDetector = new System.Windows.Forms.CheckBox();
+			this.label7 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.GB.SuspendLayout();
@@ -113,7 +115,16 @@
 			this.tableLayoutPanel3.Controls.Add(this.label5, 2, 5);
 			this.tableLayoutPanel3.Controls.Add(this.label6, 2, 4);
 			this.tableLayoutPanel3.Controls.Add(this.BtnThreadingModel, 0, 4);
+			this.tableLayoutPanel3.Controls.Add(this.CbIssueDetector, 1, 6);
+			this.tableLayoutPanel3.Controls.Add(this.label7, 2, 6);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+			// 
+			// CbThreadingMode
+			// 
+			resources.ApplyResources(this.CbThreadingMode, "CbThreadingMode");
+			this.CbThreadingMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbThreadingMode.FormattingEnabled = true;
+			this.CbThreadingMode.Name = "CbThreadingMode";
 			// 
 			// label4
 			// 
@@ -220,13 +231,6 @@
 			resources.ApplyResources(this.label5, "label5");
 			this.label5.Name = "label5";
 			// 
-			// CbThreadingMode
-			// 
-			resources.ApplyResources(this.CbThreadingMode, "CbThreadingMode");
-			this.CbThreadingMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CbThreadingMode.FormattingEnabled = true;
-			this.CbThreadingMode.Name = "CbThreadingMode";
-			// 
 			// label6
 			// 
 			resources.ApplyResources(this.label6, "label6");
@@ -243,6 +247,17 @@
 			this.BtnThreadingModel.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.BtnThreadingModel.UseAltImage = false;
 			this.BtnThreadingModel.Click += new System.EventHandler(this.BtnThreadingModel_Click);
+			// 
+			// checkBox1
+			// 
+			resources.ApplyResources(this.CbIssueDetector, "checkBox1");
+			this.CbIssueDetector.Name = "checkBox1";
+			this.CbIssueDetector.UseVisualStyleBackColor = true;
+			// 
+			// label7
+			// 
+			resources.ApplyResources(this.label7, "label7");
+			this.label7.Name = "label7";
 			// 
 			// SettingsForm
 			// 
@@ -285,5 +300,7 @@
 		private System.Windows.Forms.ComboBox CbThreadingMode;
 		private System.Windows.Forms.Label label6;
 		private UserControls.ImageButton BtnThreadingModel;
+		private System.Windows.Forms.CheckBox CbIssueDetector;
+		private System.Windows.Forms.Label label7;
     }
 }

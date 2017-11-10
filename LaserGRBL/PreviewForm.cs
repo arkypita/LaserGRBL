@@ -57,7 +57,7 @@ namespace LaserGRBL
 		}
 		void BtnResetClick(object sender, EventArgs e)
 		{
-			Core.GrblReset();
+			Core.GrblReset(true);
 		}
 		void BtnStopClick(object sender, EventArgs e)
 		{

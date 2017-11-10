@@ -117,6 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="LblBrief.Text" xml:space="preserve">
+    <value>LaserGRBL can start this job again from beginning or try to resume from last known position.
+As it is not always possible to determine the best restart position we let you to take the final decision.
+Last speed, power and laser state are recovered automatically.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -139,8 +144,5 @@
         ndPwExQAhu4g0eYIJjHs8gp3h8ngRwiylng6aIsVEjeip+Lz+UKogClvOtmAWx2ef8aafxNs0y26jtkC
         XtjGdrzFysdqlo/ECOHHInieZWiDtvJZD7RH5EmibTw5DPkDqNV2ZjoWTs0AAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="LblBrief.Text" xml:space="preserve">
-    <value>LaserGRBL can start this job again from beginning or try to resume from last know position. As it is not always possible to determine automatically what line you must restart so LaserGRBL ask you to decide. Last speed, power and laser state are recovered automatically.</value>
   </data>
 </root>

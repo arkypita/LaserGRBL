@@ -28,7 +28,8 @@ namespace LaserGRBL
 			CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			CBStreamingMode.SelectedItem = Settings.GetObject("Streaming Mode", GrblCore.StreamingMode.Buffered);
 			CbUnidirectional.Checked = (bool)Settings.GetObject("Unidirectional Engraving", false);
-			CbThreadingMode.SelectedItem = Settings.GetObject("Threading Mode", GrblCore.ThreadingMode.UltraFast); 
+			CbThreadingMode.SelectedItem = Settings.GetObject("Threading Mode", GrblCore.ThreadingMode.UltraFast);
+			CbIssueDetector.Checked = !(bool)Settings.GetObject("Do not show Issue Detector", false);
 		}
 
 		private void InitThreadingCB()
@@ -74,6 +75,7 @@ namespace LaserGRBL
 			Settings.SetObject("Streaming Mode", CBStreamingMode.SelectedItem);
 			Settings.SetObject("Unidirectional Engraving", CbUnidirectional.Checked);
 			Settings.SetObject("Threading Mode", CbThreadingMode.SelectedItem);
+			Settings.SetObject("Do not show Issue Detector", !CbIssueDetector.Checked);
 			Settings.Save();
 
 			Close();

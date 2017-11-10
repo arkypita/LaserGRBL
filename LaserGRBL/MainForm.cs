@@ -44,7 +44,8 @@ namespace LaserGRBL
 
 		void OnIssueDetected(GrblCore.DetectedIssue issue)
 		{
-			IssueDetectorForm.CreateAndShowDialog(issue);
+			if (!(bool)Settings.GetObject("Do not show Issue Detector", false))
+				IssueDetectorForm.CreateAndShowDialog(issue);
 		}
 
 		private void RefreshColorSchema()
@@ -111,7 +112,7 @@ namespace LaserGRBL
 
 			if (!e.Cancel)
 			{
-				Core.CloseCom(false);
+				Core.CloseCom(true);
 				Settings.SetObject("Mainform Size and Position", new object[] { Size, Location, WindowState });
 				Settings.Save();
 			}
@@ -249,7 +250,7 @@ namespace LaserGRBL
 
 		private void MnGrblReset_Click(object sender, EventArgs e)
 		{
-			Core.GrblReset();
+			Core.GrblReset(true);
 		}
 
 		void RefreshOverride()
@@ -316,7 +317,7 @@ namespace LaserGRBL
 		private void MnDisconnect_Click(object sender, EventArgs e)
 		{
 			if (!(Core.InProgram && System.Windows.Forms.MessageBox.Show(Strings.DisconnectAnyway, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes))
-				Core.CloseCom(false);
+				Core.CloseCom(true);
 		}
 		void MnSaveProgramClick(object sender, EventArgs e)
 		{
