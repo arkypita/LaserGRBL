@@ -957,7 +957,7 @@ namespace LaserGRBL
 
 			GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
 
-			for (int i = 0; i < position; i++) //find last M,F,S sent
+			for (int i = 0; i < position && i < Count; i++) //find last M,F,S sent
 				spb.Update(this[i]);
 
 			rv.Add(new GrblCommand("G90")); //absolute coordinate

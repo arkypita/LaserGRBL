@@ -265,9 +265,19 @@
 			this.UdSpecific.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.UdSpecific.Enabled = false;
 			this.UdSpecific.Location = new System.Drawing.Point(384, 97);
+			this.UdSpecific.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
 			this.UdSpecific.Name = "UdSpecific";
 			this.UdSpecific.Size = new System.Drawing.Size(86, 20);
 			this.UdSpecific.TabIndex = 9;
+			this.UdSpecific.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
 			// 
 			// RbFromSent
 			// 

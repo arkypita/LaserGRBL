@@ -601,14 +601,15 @@ namespace LaserGRBL
 				mSentPtr.Add(new GrblMessage(string.Format("[resume from #{0}]", position+1), false));
 				Logger.LogMessage("ResumeProgram", "Resume program from #{0}", position+1);
 
-				mTP.JobContinue(position);
-
 				System.Collections.Generic.List<GrblCommand> rvector = file.BuildContinueFromIV(position);
 
 				if (homing)
 					mQueuePtr.Enqueue(new GrblCommand("$H"));
 				foreach (GrblCommand cmd in rvector)
 					mQueuePtr.Enqueue(cmd);
+
+				mTP.JobContinue(position, mQueuePtr.Count);
+
 				for (int i = position; i < file.Count; i++) //enqueue remaining commands
 					mQueuePtr.Enqueue(file[i].Clone() as GrblCommand); 
 			}
@@ -1478,9 +1479,10 @@ namespace LaserGRBL
 		private int mExecutedCount;
 		private int mSentCount;
 		private int mErrorCount;
+		private int mContinueCorrection;
 
 		GrblCore.DetectedIssue mLastIssue;
-
+		
 		public TimeProjection()
 		{ Reset(); }
 
@@ -1499,6 +1501,7 @@ namespace LaserGRBL
 			mSentCount = 0;
 			mErrorCount = 0;
 			mTargetCount = 0;
+			mContinueCorrection = 0;
 			mLastIssue = GrblCore.DetectedIssue.Unknown;
 		}
 
@@ -1512,10 +1515,10 @@ namespace LaserGRBL
 		{ get { return mTargetCount; } }
 
 		public int Sent
-		{ get { return mSentCount; } }
+		{ get { return mSentCount - mContinueCorrection; } }
 
 		public int Executed
-		{ get { return mExecutedCount; } }
+		{ get { return mExecutedCount - mContinueCorrection; } }
 
 		public TimeSpan ProjectedTarget
 		{
@@ -1579,11 +1582,12 @@ namespace LaserGRBL
 				mExecutedCount = 0;
 				mSentCount = 0;
 				mErrorCount = 0;
+				mContinueCorrection = 0;
 				mLastIssue = GrblCore.DetectedIssue.Unknown;
 			}
 		}
 
-		public void JobContinue(int position)
+		public void JobContinue(int position, int added)
 		{
 			if (!mStarted)
 			{
@@ -1599,6 +1603,7 @@ namespace LaserGRBL
 				mSentCount = position;
 				mLastIssue = GrblCore.DetectedIssue.Unknown;
 			//	mErrorCount = 0;
+				mContinueCorrection = added;
 			}
 		}
 

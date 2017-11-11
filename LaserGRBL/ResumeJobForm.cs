@@ -34,6 +34,7 @@ namespace LaserGRBL
 			UdSpecific.Maximum = mSent;
 			UdSpecific.Value = mSent;
 			RbSomeLines.Enabled = LblSomeLines.Enabled = mSomeLine > 1;
+			RbFromSent.Enabled = LblSent.Enabled = sent < target;
 
 			TxtCause.Text = issue.ToString();
 
@@ -51,7 +52,10 @@ namespace LaserGRBL
 			{
 				//if issue is a disconnect all sent lines could be already executed
 				//so restart from sent
-				RbFromSent.Checked = true;
+				if (RbFromSent.Enabled)
+					RbFromSent.Checked = true;
+				else
+					RbFromSpecific.Checked = true;
 			}
 
 			CbRedoHoming.Checked = homing;
