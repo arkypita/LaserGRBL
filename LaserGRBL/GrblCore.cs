@@ -51,7 +51,7 @@ namespace LaserGRBL
 			ManualReset = -1,
 			ManualDisconnect = -2, 
 			StopResponding = 1,
-			StopMoving = 2,
+			//StopMoving = 2, 
 			UnexpectedReset = 3,
 			UnexpectedDisconnect = 4 
 		}
@@ -906,24 +906,22 @@ namespace LaserGRBL
 		{
 			if (mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
 			{
-				//todo: invece che testare se non è un M4 testare se è un movimento!
-
-				bool executingM4 = false;
-				if (mPending.Count > 0)
-				{
-					GrblCommand cur = mPending.Peek();
-					cur.BuildHelper();
-					executingM4 = cur.IsPause;
-					cur.DeleteHelper();
-				}
+				//bool executingM4 = false;
+				//if (mPending.Count > 0)
+				//{
+				//	GrblCommand cur = mPending.Peek();
+				//	cur.BuildHelper();
+				//	executingM4 = cur.IsPause;
+				//	cur.DeleteHelper();
+				//}
 
 				bool noQueryResponse = debugLastStatusDelay.ElapsedTime > TimeSpan.FromTicks(QueryTimer.Period.Ticks * 10) && debugLastStatusDelay.ElapsedTime > TimeSpan.FromSeconds(5);
-				bool noMovement = !executingM4 && debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(10);
+				//bool noMovement = !executingM4 && debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(10);
 
 				if (noQueryResponse)
 					SetIssue(DetectedIssue.StopResponding);
-				else if (noMovement)
-					SetIssue(DetectedIssue.StopMoving);
+				//else if (noMovement)
+				//	SetIssue(DetectedIssue.StopMoving);
 			}
 		}
 
