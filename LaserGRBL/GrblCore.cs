@@ -557,22 +557,23 @@ namespace LaserGRBL
 		public void RunProgram()
 		{
 			if (mTP.Executed == 0 || mTP.Executed == mTP.Target) //mai iniziato oppure correttamente finito
-				RunProgramFromStart();
+				RunProgramFromStart(false);
 			else
 				UserWantToContinue();
 		}
 
 		private void UserWantToContinue()
 		{
-			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue);
+			bool homing = MachinePosition == System.Drawing.PointF.Empty; //potrebbe essere dovuto ad un hard reset -> posizione non affidabile
+			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, homing, out homing);
 
 			if (position == 0)
-				RunProgramFromStart();
+				RunProgramFromStart(homing);
 			if (position > 0)
-				ContinueProgramFromKnown(position);
+				ContinueProgramFromKnown(position, homing);
 		}
 
-		private void RunProgramFromStart()
+		private void RunProgramFromStart(bool homing)
 		{
 			lock (this)
 			{
@@ -582,25 +583,30 @@ namespace LaserGRBL
 				mTP.JobStart(file.EstimatedTime, file.Count);
 				Logger.LogMessage("EnqueueProgram", "Running program, {0} lines", file.Count);
 
+				if (homing)
+					mQueuePtr.Enqueue(new GrblCommand("$H"));
+
 				foreach (GrblCommand cmd in file)
 					mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
 			}
 		}
 
-		private void ContinueProgramFromKnown(int position)
+		private void ContinueProgramFromKnown(int position, bool homing)
 		{
 			lock (this)
 			{
 
 				ClearQueue(false); //lascia l'eventuale lista delle cose già mandate, se ce l'hai ancora
 
-				mSentPtr.Add(new GrblMessage(string.Format("[resume from #{0}]", position), false));
-				Logger.LogMessage("ResumeProgram", "Resume program from #{0}", position);
+				mSentPtr.Add(new GrblMessage(string.Format("[resume from #{0}]", position+1), false));
+				Logger.LogMessage("ResumeProgram", "Resume program from #{0}", position+1);
 
 				mTP.JobContinue(position);
 
 				System.Collections.Generic.List<GrblCommand> rvector = file.BuildContinueFromIV(position);
 
+				if (homing)
+					mQueuePtr.Enqueue(new GrblCommand("$H"));
 				foreach (GrblCommand cmd in rvector)
 					mQueuePtr.Enqueue(cmd);
 				for (int i = position; i < file.Count; i++) //enqueue remaining commands

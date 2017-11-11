@@ -45,12 +45,13 @@
 			this.UdSpecific = new System.Windows.Forms.NumericUpDown();
 			this.RbFromSent = new System.Windows.Forms.RadioButton();
 			this.LblSent = new System.Windows.Forms.Label();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.LblBrief = new System.Windows.Forms.Label();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-			this.LblDetected = new System.Windows.Forms.Label();
-			this.TxtCause = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.TxtCause = new System.Windows.Forms.Label();
+			this.LblDetected = new System.Windows.Forms.Label();
+			this.CbRedoHoming = new System.Windows.Forms.CheckBox();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -85,6 +86,7 @@
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel2.Controls.Add(this.CbRedoHoming, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.BtnOK, 2, 0);
 			this.tableLayoutPanel2.Controls.Add(this.button1, 1, 0);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -256,7 +258,7 @@
 			this.LblBegin.Name = "LblBegin";
 			this.LblBegin.Size = new System.Drawing.Size(13, 13);
 			this.LblBegin.TabIndex = 6;
-			this.LblBegin.Text = "0";
+			this.LblBegin.Text = "1";
 			// 
 			// UdSpecific
 			// 
@@ -289,17 +291,6 @@
 			this.LblSent.TabIndex = 7;
 			this.LblSent.Text = "0";
 			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-			this.pictureBox1.Location = new System.Drawing.Point(3, 4);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.pictureBox1.TabIndex = 3;
-			this.pictureBox1.TabStop = false;
-			// 
 			// LblBrief
 			// 
 			this.LblBrief.AutoSize = true;
@@ -310,6 +301,17 @@
 			this.LblBrief.Size = new System.Drawing.Size(476, 39);
 			this.LblBrief.TabIndex = 4;
 			this.LblBrief.Text = resources.GetString("LblBrief.Text");
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Location = new System.Drawing.Point(3, 4);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.pictureBox1.TabIndex = 3;
+			this.pictureBox1.TabStop = false;
 			// 
 			// tableLayoutPanel5
 			// 
@@ -330,17 +332,16 @@
 			this.tableLayoutPanel5.Size = new System.Drawing.Size(440, 34);
 			this.tableLayoutPanel5.TabIndex = 5;
 			// 
-			// LblDetected
+			// label4
 			// 
-			this.LblDetected.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.LblDetected.AutoSize = true;
-			this.tableLayoutPanel5.SetColumnSpan(this.LblDetected, 2);
-			this.LblDetected.Location = new System.Drawing.Point(2, 2);
-			this.LblDetected.Margin = new System.Windows.Forms.Padding(2);
-			this.LblDetected.Name = "LblDetected";
-			this.LblDetected.Size = new System.Drawing.Size(238, 13);
-			this.LblDetected.TabIndex = 3;
-			this.LblDetected.Text = "LaserGRBL detected last job was not completed!\r\n";
+			this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(2, 19);
+			this.label4.Margin = new System.Windows.Forms.Padding(2);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(40, 13);
+			this.label4.TabIndex = 5;
+			this.label4.Text = "Cause:";
 			// 
 			// TxtCause
 			// 
@@ -354,16 +355,28 @@
 			this.TxtCause.TabIndex = 4;
 			this.TxtCause.Text = "Unknown";
 			// 
-			// label4
+			// LblDetected
 			// 
-			this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(2, 19);
-			this.label4.Margin = new System.Windows.Forms.Padding(2);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(40, 13);
-			this.label4.TabIndex = 5;
-			this.label4.Text = "Cause:";
+			this.LblDetected.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.LblDetected.AutoSize = true;
+			this.tableLayoutPanel5.SetColumnSpan(this.LblDetected, 2);
+			this.LblDetected.Location = new System.Drawing.Point(2, 2);
+			this.LblDetected.Margin = new System.Windows.Forms.Padding(2);
+			this.LblDetected.Name = "LblDetected";
+			this.LblDetected.Size = new System.Drawing.Size(238, 13);
+			this.LblDetected.TabIndex = 3;
+			this.LblDetected.Text = "LaserGRBL detected last job was not completed!\r\n";
+			// 
+			// CbRedoHoming
+			// 
+			this.CbRedoHoming.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.CbRedoHoming.AutoSize = true;
+			this.CbRedoHoming.Location = new System.Drawing.Point(3, 13);
+			this.CbRedoHoming.Name = "CbRedoHoming";
+			this.CbRedoHoming.Size = new System.Drawing.Size(114, 17);
+			this.CbRedoHoming.TabIndex = 16;
+			this.CbRedoHoming.Text = "Redo Homing [$H]";
+			this.CbRedoHoming.UseVisualStyleBackColor = true;
 			// 
 			// ResumeJobForm
 			// 
@@ -381,6 +394,7 @@
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.tableLayoutPanel3.PerformLayout();
 			this.tableLayoutPanel4.ResumeLayout(false);
@@ -418,5 +432,6 @@
 		private System.Windows.Forms.Label LblDetected;
 		private System.Windows.Forms.Label TxtCause;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.CheckBox CbRedoHoming;
 	}
 }

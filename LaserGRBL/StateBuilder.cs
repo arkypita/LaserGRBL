@@ -34,7 +34,7 @@ namespace LaserGRBL
 			}
 
 			private bool Absolute
-			{ get { return PlaneSelect.Number == 90; } }
+			{ get { return DistanceMode.Number == 90; } }
 
 		}
 
