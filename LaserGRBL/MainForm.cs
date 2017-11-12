@@ -470,6 +470,11 @@ namespace LaserGRBL
 
 			RefreshColorSchema();
 		}
+
+		private void grblConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			GrblConfig.CreateAndShowDialog(Core);
+		}
 	}
 
 

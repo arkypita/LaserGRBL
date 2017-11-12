@@ -93,6 +93,7 @@
 			this.openSessionLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.grblConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -262,6 +263,7 @@
             this.MnExportConfig,
             this.MnImportConfig,
             this.toolStripMenuItem3,
+            this.grblConfigurationToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.toolStripMenuItem6,
             this.MnExit});
@@ -540,6 +542,12 @@
 			resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
 			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
 			// 
+			// grblConfigurationToolStripMenuItem
+			// 
+			this.grblConfigurationToolStripMenuItem.Name = "grblConfigurationToolStripMenuItem";
+			resources.ApplyResources(this.grblConfigurationToolStripMenuItem, "grblConfigurationToolStripMenuItem");
+			this.grblConfigurationToolStripMenuItem.Click += new System.EventHandler(this.grblConfigurationToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -628,6 +636,7 @@
 		private System.Windows.Forms.ToolStripMenuItem hackerToolStripMenuItem;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
 		private System.Windows.Forms.ToolStripProgressBar PbBuffer;
+		private System.Windows.Forms.ToolStripMenuItem grblConfigurationToolStripMenuItem;
 	}
 }
 

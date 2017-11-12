@@ -256,6 +256,17 @@ namespace LaserGRBL
 			mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
 		}
 
+		public GrblConf GrblConfiguration
+		{
+			get 
+			{
+				return mConf;
+			}
+			set 
+			{
+			}
+		}
+
 		private void SetStatus(MacStatus value)
 		{
 			if (mMachineStatus != value)
@@ -398,6 +409,90 @@ namespace LaserGRBL
 		{
 			if (HasProgram)
 				file.SaveProgram(filename);
+		}
+
+		GrblConf mConf;
+		public void ReadConfig()
+		{
+			GrblConf newConf = new GrblConf();
+			if (mMachineStatus == MacStatus.Idle)
+			{
+				try
+				{
+						GrblCommand cmd = new GrblCommand("$$");
+						lock (this)
+						{
+							mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
+							mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
+							mQueuePtr.Enqueue(cmd);
+						}
+
+						try
+						{
+							Tools.PeriodicEventTimer WaitResponseTimeout = new Tools.PeriodicEventTimer(TimeSpan.FromSeconds(10), true);
+
+							//resta in attesa dell'invio del comando e della risposta
+							while (cmd.Status == GrblCommand.CommandStatus.Queued || cmd.Status == GrblCommand.CommandStatus.WaitingResponse)
+								if (WaitResponseTimeout.Expired)
+									throw new TimeoutException("No response received from grbl!");
+								else
+									System.Threading.Thread.Sleep(10);
+
+							if (cmd.Status == GrblCommand.CommandStatus.ResponseGood)
+							{
+								//attendi la ricezione di tutti i parametri
+								long tStart = Tools.HiResTimer.TotalMilliseconds;
+								long tLast = tStart;
+								int counter = mSentPtr.Count;
+
+								//finché l'ultima risposta è più recente di 1s e non sono passati più di 10s totali
+								while (Tools.HiResTimer.TotalMilliseconds - tLast < 1000 && Tools.HiResTimer.TotalMilliseconds - tStart < 10000)
+								{
+									if (mSentPtr.Count != counter)
+									{
+										tLast = Tools.HiResTimer.TotalMilliseconds;
+										counter = mSentPtr.Count;
+									}
+									else
+									{
+										System.Threading.Thread.Sleep(10);
+									}
+								}
+
+								foreach (IGrblRow row in mSentPtr)
+								{
+									if (row is GrblMessage)
+									{
+										string msg = row.GetMessage(); //"$0=10 (Step pulse time)"
+										int num = int.Parse(msg.Split('=')[0].Substring(1));
+										decimal val = decimal.Parse(msg.Split('=')[1].Split(' ')[0], System.Globalization.NumberFormatInfo.InvariantInfo);
+										newConf.Add(new GrblConf.GrblConfParam(num, val));
+									}
+								}
+
+								mConf = newConf;
+							}
+
+						}
+						catch (Exception ex)
+						{
+							Logger.LogException("ExportConfig", ex);
+							System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+						}
+
+
+						lock (this)
+						{
+							mQueuePtr = mQueue;
+							mSentPtr = mSent; //restore queue
+						}
+					}
+				catch (Exception ex)
+				{
+					Logger.LogException("ExportConfig", ex);
+					System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				}
+			}
 		}
 
 		public void ExportConfig(string filename)
@@ -1479,8 +1574,6 @@ namespace LaserGRBL
 
 	}
 
-
-
 	public class TimeProjection
 	{
 		private TimeSpan mETarget;
@@ -1691,6 +1784,36 @@ namespace LaserGRBL
 
 		public GrblCore.DetectedIssue LastIssue
 		{ get { return mLastIssue; } }
+	}
+
+	public class GrblConf : System.Collections.Generic.List<GrblConf.GrblConfParam>
+	{
+		public class GrblConfParam
+		{
+			private int mNumber;
+			private decimal mValue;
+
+			public GrblConfParam(int number, decimal value)
+			{ mNumber = number; mValue = value; }
+
+			public int Number
+			{ get { return mNumber; } }
+
+			public string Parameter
+			{ get { return CSVD.Settings.GetItem(mNumber.ToString(), 0); } }
+
+			public decimal Value
+			{ 
+				get { return mValue; } 
+				set { mValue = value; } 
+			}
+
+			public string Unit
+			{ get { return CSVD.Settings.GetItem(mNumber.ToString(), 1); } }
+
+			public string Description
+			{ get { return CSVD.Settings.GetItem(mNumber.ToString(), 2); } }
+		}
 	}
 }
 

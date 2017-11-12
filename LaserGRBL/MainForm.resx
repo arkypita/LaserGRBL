@@ -148,7 +148,7 @@
     <value>ConnectionForm</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Type" xml:space="preserve">
-    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=2.8.11.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=2.8.15.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -175,7 +175,7 @@
     <value>JogForm</value>
   </data>
   <data name="&gt;&gt;JogForm.Type" xml:space="preserve">
-    <value>LaserGRBL.JogForm, LaserGRBL, Version=2.8.11.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.JogForm, LaserGRBL, Version=2.8.15.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;JogForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -217,7 +217,7 @@
     <value>PreviewForm</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Type" xml:space="preserve">
-    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=2.8.11.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=2.8.15.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -295,7 +295,7 @@
     <value>unknown</value>
   </data>
   <data name="spring1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 19</value>
+    <value>441, 19</value>
   </data>
   <data name="TTOvG0.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -407,7 +407,7 @@
 </value>
   </data>
   <data name="MnConnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnConnect.Text" xml:space="preserve">
     <value>&amp;Connect</value>
@@ -434,13 +434,13 @@
 </value>
   </data>
   <data name="MnDisconnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnDisconnect.Text" xml:space="preserve">
     <value>&amp;Disconnect</value>
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 6</value>
+    <value>170, 6</value>
   </data>
   <data name="MnGrblReset.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -462,7 +462,7 @@
 </value>
   </data>
   <data name="MnGrblReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnGrblReset.Text" xml:space="preserve">
     <value>&amp;Reset</value>
@@ -490,7 +490,7 @@
 </value>
   </data>
   <data name="MnGoHome.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnGoHome.Text" xml:space="preserve">
     <value>&amp;Homing</value>
@@ -516,13 +516,13 @@
 </value>
   </data>
   <data name="MnUnlock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnUnlock.Text" xml:space="preserve">
     <value>&amp;Unlock</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 6</value>
+    <value>170, 6</value>
   </data>
   <data name="MnExportConfig.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -540,7 +540,7 @@
 </value>
   </data>
   <data name="MnExportConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnExportConfig.Text" xml:space="preserve">
     <value>E&amp;xport Config</value>
@@ -561,13 +561,19 @@
 </value>
   </data>
   <data name="MnImportConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnImportConfig.Text" xml:space="preserve">
     <value>&amp;Import Config</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 6</value>
+    <value>170, 6</value>
+  </data>
+  <data name="grblConfigurationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 22</value>
+  </data>
+  <data name="grblConfigurationToolStripMenuItem.Text" xml:space="preserve">
+    <value>Grbl Configuration</value>
   </data>
   <data name="settingsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -588,13 +594,13 @@
 </value>
   </data>
   <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="toolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 6</value>
+    <value>170, 6</value>
   </data>
   <data name="MnExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -618,7 +624,7 @@
 </value>
   </data>
   <data name="MnExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnExit.Text" xml:space="preserve">
     <value>&amp;Exit</value>
@@ -1419,6 +1425,12 @@
     <value>aboutToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;aboutToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grblConfigurationToolStripMenuItem.Name" xml:space="preserve">
+    <value>grblConfigurationToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;grblConfigurationToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

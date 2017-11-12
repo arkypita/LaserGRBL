@@ -100,6 +100,12 @@
   <ItemGroup>
     <Compile Include="AutoUpdate\ZipStorer.cs" />
     <Compile Include="ColorScheme.cs" />
+    <Compile Include="GrblConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GrblConfig.Designer.cs">
+      <DependentUpon>GrblConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="GrblEmulator\Console.cs" />
     <Compile Include="GrblEmulator\GrblEmulator.cs" />
     <Compile Include="ComWrapper\IComWrapper.cs" />
@@ -408,6 +414,10 @@
     <EmbeddedResource Include="ConnectLogForm.zh-CN.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GrblConfig.resx">
+      <DependentUpon>GrblConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.de.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -637,6 +647,7 @@
     <None Include="Grafica\LaserGrbl.ico" />
     <None Include="Grafica\rotCCW.png" />
     <None Include="Grafica\rotCW.png" />
+    <None Include="Properties\DataSources\GrblConf.datasource" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Grafica\add2.png" />
@@ -686,9 +697,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
