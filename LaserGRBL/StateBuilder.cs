@@ -83,8 +83,8 @@ namespace LaserGRBL
 
 				UpdateModalsNB(cmd);
 
-				mCurX.Update(cmd.X, Absolute);
-				mCurY.Update(cmd.Y, Absolute);
+				mCurX.Update(cmd.X, ABS);
+				mCurY.Update(cmd.Y, ABS);
 
 				mCurF.Update(cmd.F);
 				mCurS.Update(cmd.S);
@@ -94,21 +94,6 @@ namespace LaserGRBL
 
 				return rv;
 			}
-
-			public bool G0
-			{ get {return MotionMode.Number == 0; }}
-
-			public bool G123
-			{ get { return MotionMode.Number == 1 || MotionMode.Number == 2 || MotionMode.Number == 3; } }
-
-			public bool Absolute
-			{ get { return DistanceMode.Number == 90; } }
-
-			public bool LaserON
-			{ get { return SpindleState.Number == 3 || SpindleState.Number == 4; } }
-
-			public bool LaserBurning
-			{ get { return (!supportPWM || S.Number > 0) && (SpindleState.Number == 3 || (SpindleState.Number == 4 && MotionMode.Number != 0)); } }
 
 			public LastValueElement F
 			{ get { return mCurF; } }
@@ -130,7 +115,7 @@ namespace LaserGRBL
 			{
 				if (G0 && cmd.IsLinearMovement)
 					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)4000); //use a default 4000 for fast move: change with a detected value
-				else if (G123 && cmd.IsMovement && mCurF.Number != 0)
+				else if (G1G2G3 && cmd.IsMovement && mCurF.Number != 0)
 					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)mCurF.Number);
 				else if (cmd.IsPause)
 					return cmd.P != null ? TimeSpan.FromSeconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
@@ -157,6 +142,30 @@ namespace LaserGRBL
 				else
 					return 255;
 			}
+
+			public bool G2
+			{ get { return MotionMode.Number == 2; } }
+
+			public bool G2G3
+			{ get { return MotionMode.Number == 2 || MotionMode.Number == 3; } }
+
+			public bool G0G1
+			{ get { return MotionMode.Number == 0 || MotionMode.Number == 1; } }
+
+			public bool G0
+			{ get { return MotionMode.Number == 0; } }
+
+			public bool G1G2G3
+			{ get { return MotionMode.Number == 1 || MotionMode.Number == 2 || MotionMode.Number == 3; } }
+
+			public bool ABS
+			{ get { return DistanceMode.Number == 90; } }
+
+			public bool M3M4
+			{ get { return SpindleState.Number == 3 || SpindleState.Number == 4; } }
+
+			public bool LaserBurning
+			{ get { return (!supportPWM || S.Number > 0) && (SpindleState.Number == 3 || (SpindleState.Number == 4 && MotionMode.Number != 0)); } }
 		}
 
 		public class StateBuilder

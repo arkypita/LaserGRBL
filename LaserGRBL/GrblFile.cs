@@ -597,7 +597,6 @@ namespace LaserGRBL
 			//Get scale factors for both directions. To preserve the aspect ratio, use the smaller scale factor.
 			float zoom = scaleRange.Width > 0 && scaleRange.Height > 0 ? Math.Min((float)s.Width / (float)scaleRange.Width, (float)s.Height / (float)scaleRange.Height) * 0.95f : 1;
 			bool firstline = true; //used to draw the first line in a different color
-			bool cw = false; //cw-ccw memo
 
 			ScaleAndPosition(g, s, scaleRange, zoom);
 
@@ -622,15 +621,12 @@ namespace LaserGRBL
 								pen.DashPattern = new float[] { 1f, 1f };
 							}
 
-
-							if (cmd.IsLinearMovement)
+							if (spb.G0G1 && cmd.IsLinearMovement && pen.Color.A > 0)
 							{
 								g.DrawLine(pen, new PointF((float)spb.X.Previous, (float)spb.Y.Previous), new PointF((float)spb.X.Number, (float)spb.Y.Number));
 							}
-							else if (cmd.IsArcMovement)
+							else if (spb.G2G3 && cmd.IsArcMovement && pen.Color.A > 0)
 							{
-								cw = cmd.IsCW(cw);
-
 								PointF center = cmd.GetCenter((float)spb.X.Previous, (float)spb.Y.Previous);
 								double cX = center.X;
 								double cY = center.Y;
@@ -649,7 +645,7 @@ namespace LaserGRBL
 								double bA = Tools.MathHelper.CalculateAngle(cX, cY, bX, bY);	//180/Math.PI*Math.Atan2(y2-y0, x2-x0);
 
 								double sA = aA;	//start angle
-								double wA = Tools.MathHelper.AngularDistance(aA, bA, cw);
+								double wA = Tools.MathHelper.AngularDistance(aA, bA, spb.G2);
 
 								if (rectW > 0 && rectH > 0)
 								{
