@@ -9,33 +9,154 @@ namespace LaserGRBL
 	{
 		public class StatePositionBuilder : StateBuilder
 		{
-			public Element X = "X0";
-			public Element Y = "Y0";
-			public Element F = "F0";
-			public Element S = "S0";
+			bool supportPWM = (bool)Settings.GetObject("Support Hardware PWM", true);
 
-			public override void Update(GrblCommand cmd)
+			public class CumulativeElement : Element
+			{
+				Element mDefault = null;
+				bool mSettled = false;
+				decimal mPrevious = 0;
+
+				public CumulativeElement(Element defval) : base(defval.Command, defval.Number)
+				{mDefault = defval;}
+
+				public bool IsDefault
+				{ get { return base.Equals(mDefault); } }
+
+				public bool IsSettled
+				{ get { return mSettled; } }
+
+				public void Update(Element e, bool Absolute)
+				{
+					mPrevious = mNumber;
+
+					if (e != null)
+					{
+						mNumber = Absolute ? e.Number : mNumber + e.Number;
+						mSettled = true;
+					}
+				}
+
+				public decimal Previous
+				{ get { return mPrevious; } }
+			}
+
+			public class LastValueElement : Element
+			{
+				Element mDefault = null;
+				bool mSettled = false;
+
+				public LastValueElement(Element defval) : base(defval.Command, defval.Number)
+				{ mDefault = defval; }
+
+				public bool IsDefault
+				{ get { return base.Equals(mDefault); } }
+
+				public bool IsSettled
+				{ get { return mSettled; } }
+
+				public void Update(Element e)
+				{
+					if (e != null)
+					{
+						mNumber = e.Number;
+						mSettled = true;
+					}
+				}
+			}
+
+			private CumulativeElement mCurX = new CumulativeElement("X0");
+			private CumulativeElement mCurY = new CumulativeElement("Y0");
+			private LastValueElement mCurF = new LastValueElement("F0");
+			private LastValueElement mCurS = new LastValueElement("S0");
+
+			public class AnalyzeCommandRV
+			{
+				public decimal Distance;
+				public TimeSpan Delay;
+			}
+
+			public TimeSpan AnalyzeCommand(GrblCommand cmd, bool compute)
 			{
 				bool delete = !cmd.JustBuilt;
 				if (!cmd.JustBuilt) cmd.BuildHelper();
 
-				UpdateModals(cmd);
+				UpdateModalsNB(cmd);
 
-				if (cmd.TrueMovement(X.Number, Y.Number, Absolute))
-				{
-					if (cmd.X != null) X.SetNumber(Absolute ? cmd.X.Number : X.Number + cmd.X.Number);
-					if (cmd.Y != null) Y.SetNumber(Absolute ? cmd.Y.Number : Y.Number + cmd.Y.Number);
-				}
+				mCurX.Update(cmd.X, Absolute);
+				mCurY.Update(cmd.Y, Absolute);
 
-				if (cmd.F != null) F.SetNumber(cmd.F.Number);
-				if (cmd.S != null) S.SetNumber(cmd.S.Number);
+				mCurF.Update(cmd.F);
+				mCurS.Update(cmd.S);
 
+				TimeSpan rv = compute ? ComputeExecutionTime(cmd) : TimeSpan.Zero;
 				if (delete) cmd.DeleteHelper();
+
+				return rv;
 			}
 
-			private bool Absolute
+			public bool G0
+			{ get {return MotionMode.Number == 0; }}
+
+			public bool G123
+			{ get { return MotionMode.Number == 1 || MotionMode.Number == 2 || MotionMode.Number == 3; } }
+
+			public bool Absolute
 			{ get { return DistanceMode.Number == 90; } }
 
+			public bool LaserON
+			{ get { return SpindleState.Number == 3 || SpindleState.Number == 4; } }
+
+			public bool LaserBurning
+			{ get { return (!supportPWM || S.Number > 0) && (SpindleState.Number == 3 || (SpindleState.Number == 4 && MotionMode.Number != 0)); } }
+
+			public LastValueElement F
+			{ get { return mCurF; } }
+
+			public LastValueElement S
+			{ get { return mCurS; } }
+
+			public CumulativeElement X
+			{ get { return mCurX; } }
+
+			public CumulativeElement Y
+			{ get { return mCurY; } }
+
+			internal bool TrueMovement()
+			{ return (mCurX.Number != mCurX.Previous || mCurY.Number != mCurY.Previous); }
+
+
+			private TimeSpan ComputeExecutionTime(GrblCommand cmd)
+			{
+				if (G0 && cmd.IsLinearMovement)
+					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)4000); //use a default 4000 for fast move: change with a detected value
+				else if (G123 && cmd.IsMovement && mCurF.Number != 0)
+					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)mCurF.Number);
+				else if (cmd.IsPause)
+					return cmd.P != null ? TimeSpan.FromSeconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
+				else
+					return TimeSpan.Zero;
+			}
+
+			private decimal GetSegmentLenght(GrblCommand cmd)
+			{
+				if (cmd.IsLinearMovement)
+					return Tools.MathHelper.LinearDistance(mCurX.Previous, mCurY.Previous, mCurX.Number, mCurY.Number);
+				else if (cmd.IsArcMovement) //arc of given radius
+					return Tools.MathHelper.ArcDistance(mCurX.Previous, mCurY.Previous, mCurX.Number, mCurY.Number, cmd.GetArcRadius());
+				else
+					return 0;
+			}
+
+			internal int GetCurrentAlpha(ProgramRange.SRange range)
+			{
+				if (!LaserBurning)
+					return 150; //supportPWM ? 150 : 50
+				else if (supportPWM && range.ValidRange && S.IsSettled)
+					return (int)((S.Number - range.S.Min) * 255 / (range.S.Max - range.S.Min));
+				else
+					return 255;
+			}
 		}
 
 		public class StateBuilder
@@ -58,10 +179,10 @@ namespace LaserGRBL
 			Coolant State				M7, M8, [M9]
 			*/
 
-			public class ModalElement : Element
+			protected class ModalElement : Element
 			{
 				List<Element> mOptions = new List<Element>();
-				Element mDefault = "G0";
+				Element mDefault = null;
 				bool mSettled = false;
 				
 
@@ -79,7 +200,7 @@ namespace LaserGRBL
 				public bool IsSettled
 				{ get { return mSettled; } }
 
-				private void Update(Element e)
+				public void Update(Element e)
 				{
 					if (e != null && mOptions.Contains(e))
 					{ 
@@ -87,12 +208,6 @@ namespace LaserGRBL
 						mNumber = e.Number;
 						mSettled = true;
 					}
-				}
-
-				public void Update(Element G, Element M)
-				{
-					Update(G);
-					Update(M);
 				}
 			}
 
@@ -109,37 +224,35 @@ namespace LaserGRBL
 			protected ModalElement CoolantState = new ModalElement("M9", "M7", "M8");
 			protected ModalElement SpindleState = new ModalElement("M5", "M3", "M4");
 
-			public virtual void Update(GrblCommand cmd)
+			//private void UpdateModals(GrblCommand cmd) //update modals - BUILD IF NEEDED
+			//{
+			//	bool delete = !cmd.JustBuilt;
+			//	if (!cmd.JustBuilt) cmd.BuildHelper();
+
+			//	UpdateModalsNB(cmd);
+
+			//	if (delete) cmd.DeleteHelper();
+			//}
+
+			protected void UpdateModalsNB(GrblCommand cmd) //update modals - EXTERNAL BUILD
 			{
-				bool delete = !cmd.JustBuilt;
-				if (!cmd.JustBuilt) cmd.BuildHelper();
+				MotionMode.Update(cmd.G);
+				CoordinateSelect.Update(cmd.G);
+				PlaneSelect.Update(cmd.G);
+				DistanceMode.Update(cmd.G);
+				ArcDistanceMode.Update(cmd.G);
+				FeedRateMode.Update(cmd.G);
+				CutterRadiusCompensation.Update(cmd.G);
+				ToolLengthOffset.Update(cmd.G);
 
-				UpdateModals(cmd);
-
-				if (delete) cmd.DeleteHelper();
+				ProgramMode.Update(cmd.M);
+				CoolantState.Update(cmd.M);
+				SpindleState.Update(cmd.M);
 			}
 
-			protected void UpdateModals(GrblCommand cmd)
+			public IEnumerable<Element> GetSettledModals()
 			{
-				Element G = cmd.GetElement('G');
-				Element M = cmd.GetElement('M');
-
-				MotionMode.Update(G, M);
-				CoordinateSelect.Update(G, M);
-				PlaneSelect.Update(G, M);
-				DistanceMode.Update(G, M);
-				ArcDistanceMode.Update(G, M);
-				FeedRateMode.Update(G, M);
-				CutterRadiusCompensation.Update(G, M);
-				ToolLengthOffset.Update(G, M);
-				ProgramMode.Update(G, M);
-				SpindleState.Update(G, M);
-				CoolantState.Update(G, M);
-			}
-
-			public IEnumerable<ModalElement> GetSettledModals()
-			{
- 				List<ModalElement> rv = new List<ModalElement>();
+				List<Element> rv = new List<Element>();
 
 				AddSettled(rv, MotionMode);
 				AddSettled(rv, CoordinateSelect);
@@ -156,7 +269,7 @@ namespace LaserGRBL
 				return rv;
 			}
 
-			private void AddSettled(List<ModalElement> list, ModalElement element)
+			private void AddSettled(List<Element> list, ModalElement element)
 			{if (element.IsSettled) list.Add(element);}
 
 		}

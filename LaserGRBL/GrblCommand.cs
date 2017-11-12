@@ -59,8 +59,8 @@ namespace LaserGRBL
 			public override int GetHashCode()
 			{return mCommand.GetHashCode() ^ mNumber.GetHashCode();}
 
-			internal void SetNumber(decimal p)
-			{mNumber = p;}
+			//internal void SetNumber(decimal p)
+			//{mNumber = p;}
 		}
 
 		private string mLine;
@@ -148,7 +148,7 @@ namespace LaserGRBL
 		public void DeleteHelper()
 		{mHelper = null;}
 		
-		public void SetOffset(decimal Distance, TimeSpan Time)
+		public void SetOffset(TimeSpan Time)
 		{mTimeOffset = Time;}
 		
 		public TimeSpan TimeOffset
@@ -249,13 +249,13 @@ namespace LaserGRBL
 		public bool IsLinearMovement
 		{ get { return (X != null || Y != null) && (I == null && J == null && R == null); } }
 
-        public bool IsRapidMovement
-        {
-            get
-            {
-                return (G != null && G.Number == 0);
-            }
-        }
+		//public bool IsRapidMovement
+		//{
+		//	get
+		//	{
+		//		return (G != null && G.Number == 0);
+		//	}
+		//}
 
 		public bool IsArcMovement
 		{ get { return I != null || J != null || R != null; } }
@@ -348,20 +348,12 @@ namespace LaserGRBL
 			double oY = (double)(J != null ? J.Number : 0);
 			return Math.Sqrt(oX * oX + oY * oY);
 		}
-		public PointF GetCenter(float curX, float curY)
+		public PointF GetCenter(float startX, float startY)
 		{
 			float oX = I != null ? (float)I.Number : 0;
 			float oY = J != null ? (float)J.Number : 0;
 
-			return new PointF(curX + oX, curY + oY);
-		}
-
-		public bool TrueMovement(decimal curX, decimal curY, bool abs)
-		{
-			if (abs) //spostamenti assoluti
-				return ((X != null && X.Number != curX) || (Y != null && Y.Number != curY));
-			else //spostamenti relativi
-				return ((X != null && X.Number != 0) || (Y != null && Y.Number != 0));
+			return new PointF(startX + oX, startY + oY);
 		}
 
 		public string GetMessage() //per la visualizzazione
