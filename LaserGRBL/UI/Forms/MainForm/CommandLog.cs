@@ -12,7 +12,7 @@ namespace LaserGRBL.UserControls
 		int RowHeight = 16;
 		System.Collections.Generic.List<IGrblRow> mDraw;
 		int mPosition = -1;
-		bool mUseImages = false;
+		bool mUseImages = true;
 
 		public CommandLog()
 		{
@@ -47,7 +47,7 @@ namespace LaserGRBL.UserControls
 
 				if (queueCount > controlCapacity)
 				{
-					bool keepScrolling = (ScrollBar.Value == ScrollBar.Maximum);
+					bool keepScrolling = (ScrollBar.Value >= ScrollBar.Maximum - 10);
 
 					ScrollBar.Minimum = 0;
 					ScrollBar.Maximum = (queueCount - controlCapacity);
@@ -70,32 +70,36 @@ namespace LaserGRBL.UserControls
 				int index = ScrollBar.Value;
 				mDraw = mCom.SentCommand(index, howmany);
 
-				for (int i = 0; i < mDraw.Count; i++)
+				using (StringFormat esf = new StringFormat(StringFormat.GenericTypographic))
 				{
-					IGrblRow cmd = mDraw[i];
+					esf.Trimming = StringTrimming.EllipsisCharacter;
 
-					if (cmd.GetMessage() != null)
+					for (int i = 0; i < mDraw.Count; i++)
 					{
-						using (Brush b = new SolidBrush(cmd.LeftColor))
-							e.Graphics.DrawString(cmd.GetMessage(), Font, b, mUseImages && cmd.ImageIndex >= 0 ? RowHeight + 1 : 1, RowHeight * i + 1);
+						IGrblRow cmd = mDraw[i];
+						float respectX = 0;
+						if (cmd.GetResult(mCom.SupportCSV, mUseImages) != null)
+						{
+							respectX = e.Graphics.MeasureString(cmd.GetResult(mCom.SupportCSV, mUseImages), Font).Width;
+							using (Brush b = new SolidBrush(cmd.RightColor))
+								e.Graphics.DrawString(cmd.GetResult(mCom.SupportCSV, mUseImages), Font, b, Width - ScrollBar.Width - 1, RowHeight * i + 2, new StringFormat(StringFormatFlags.DirectionRightToLeft));
+						}
+						if (cmd.GetMessage() != null)
+						{
+							using (Brush b = new SolidBrush(cmd.LeftColor))
+								e.Graphics.DrawString(cmd.GetMessage(), Font, b, new RectangleF(mUseImages && cmd.ImageIndex >= 0 ? RowHeight + 1 : 1, RowHeight * i + 1, Width - ScrollBar.Width - (mUseImages ? IL.ImageSize.Width + 2 : 2) - respectX, RowHeight - 2), esf);
+							//e.Graphics.DrawString(cmd.GetMessage(), Font, b, mUseImages && cmd.ImageIndex >= 0 ? RowHeight + 1 : 1, RowHeight * i + 1);
+						}
+						if (mUseImages && cmd.ImageIndex >= 0)
+						{
+							System.Drawing.Image I = IL.Images[cmd.ImageIndex];
+							int iW = RowHeight - 2;
+							int iH = RowHeight - 2;
+							e.Graphics.DrawImage(I, /*Width - ScrollBar.Width - iW - 2*/ 1, RowHeight * i + (RowHeight - iH) / 2, iW, iH);
+						}
+
+						e.Graphics.DrawLine(Pens.LightGray, 0, RowHeight * (i + 1), Width, RowHeight * (i + 1));
 					}
-
-					if (mUseImages && cmd.ImageIndex >= 0)
-					{
-						System.Drawing.Image I = IL.Images[cmd.ImageIndex];
-						int iW = RowHeight -2;
-						int iH = RowHeight - 2;
-						e.Graphics.DrawImage(I, /*Width - ScrollBar.Width - iW - 2*/ 1, RowHeight * i + (RowHeight - iH) / 2, iW, iH );
-					}
-					if (!mUseImages && cmd.GetResult(mCom.SupportCSV) != null)
-					{
-						using (Brush b = new SolidBrush(cmd.RightColor))
-							e.Graphics.DrawString(cmd.GetResult(mCom.SupportCSV), Font, b, Width - ScrollBar.Width - 1, RowHeight * i + 2, new StringFormat(StringFormatFlags.DirectionRightToLeft));
-					}
-
-
-
-					e.Graphics.DrawLine(Pens.LightGray, 0, RowHeight * (i + 1), Width, RowHeight * (i + 1));
 				}
 			}
 		}

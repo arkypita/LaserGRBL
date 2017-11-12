@@ -46,7 +46,15 @@ namespace LaserGRBL
 		
 
 		public enum DetectedIssue
-		{ NoIssue, StopResponding, StopMoving, UnexpectedReset }
+		{ 
+			Unknown = 0,
+			ManualReset = -1,
+			ManualDisconnect = -2, 
+			StopResponding = 1,
+			//StopMoving = 2, 
+			UnexpectedReset = 3,
+			UnexpectedDisconnect = 4 
+		}
 
 		public enum MacStatus
 		{ Unknown, Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue }
@@ -213,7 +221,6 @@ namespace LaserGRBL
 
 		private Tools.ElapsedFromEvent debugLastStatusDelay;
 		private Tools.ElapsedFromEvent debugLastMoveDelay;
-		private DetectedIssue debugDetectedIssue;
 
 		private ThreadingMode mThreadingMode = ThreadingMode.UltraFast;
 
@@ -283,9 +290,11 @@ namespace LaserGRBL
 
 		private void SetIssue(DetectedIssue issue)
 		{
-			debugDetectedIssue = issue;
+			mTP.JobIssue(issue);
 			Logger.LogMessage("Issue detector", "{0} [{1},{2},{3}]", issue, FreeBuffer, GrblBuffer, GrblBlock);
-			RiseIssueDetected(issue);
+
+			if (issue > 0) //negative numbers indicate issue caused by the user, so must not be report to UI
+				RiseIssueDetected(issue);
 		}
 
 		void RiseIssueDetected(DetectedIssue issue)
@@ -548,22 +557,23 @@ namespace LaserGRBL
 		public void RunProgram()
 		{
 			if (mTP.Executed == 0 || mTP.Executed == mTP.Target) //mai iniziato oppure correttamente finito
-				RunProgramFromStart();
+				RunProgramFromStart(false);
 			else
 				UserWantToContinue();
 		}
 
 		private void UserWantToContinue()
 		{
-			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target);
+			bool homing = MachinePosition == System.Drawing.PointF.Empty; //potrebbe essere dovuto ad un hard reset -> posizione non affidabile
+			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, homing, out homing);
 
 			if (position == 0)
-				RunProgramFromStart();
+				RunProgramFromStart(homing);
 			if (position > 0)
-				ContinueProgramFromKnown(position);
+				ContinueProgramFromKnown(position, homing);
 		}
 
-		private void RunProgramFromStart()
+		private void RunProgramFromStart(bool homing)
 		{
 			lock (this)
 			{
@@ -573,27 +583,32 @@ namespace LaserGRBL
 				mTP.JobStart(file.EstimatedTime, file.Count);
 				Logger.LogMessage("EnqueueProgram", "Running program, {0} lines", file.Count);
 
+				if (homing)
+					mQueuePtr.Enqueue(new GrblCommand("$H"));
+
 				foreach (GrblCommand cmd in file)
 					mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
 			}
 		}
 
-		private void ContinueProgramFromKnown(int position)
+		private void ContinueProgramFromKnown(int position, bool homing)
 		{
 			lock (this)
 			{
 
 				ClearQueue(false); //lascia l'eventuale lista delle cose già mandate, se ce l'hai ancora
 
-				mSentPtr.Add(new GrblMessage(string.Format("[resume from #{0}]", position), false));
-				Logger.LogMessage("ResumeProgram", "Resume program from #{0}", position);
-
-				mTP.JobContinue(position);
+				mSentPtr.Add(new GrblMessage(string.Format("[resume from #{0}]", position+1), false));
+				Logger.LogMessage("ResumeProgram", "Resume program from #{0}", position+1);
 
 				System.Collections.Generic.List<GrblCommand> rvector = file.BuildContinueFromIV(position);
 
+				if (homing)
+					mQueuePtr.Enqueue(new GrblCommand("$H"));
 				foreach (GrblCommand cmd in rvector)
 					mQueuePtr.Enqueue(cmd);
+
+				mTP.JobContinue(position, mQueuePtr.Count);
 
 				for (int i = position; i < file.Count; i++) //enqueue remaining commands
 					mQueuePtr.Enqueue(file[i].Clone() as GrblCommand); 
@@ -641,19 +656,23 @@ namespace LaserGRBL
 			}
 			catch (Exception ex)
 			{
-				Logger.LogException("OpenCom", ex);
+				Logger.LogMessage("OpenCom", "Error: {0}", ex.Message);
 				SetStatus(MacStatus.Disconnected);
-				System.Windows.Forms.MessageBox.Show(ex.Message, Strings.BoxConnectErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 				com.Close(true);
+
+				System.Windows.Forms.MessageBox.Show(ex.Message, Strings.BoxConnectErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 			}
 		}
 
-		public void CloseCom(bool auto)
+		public void CloseCom(bool user)
 		{
+			if (mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
+				SetIssue(user ? DetectedIssue.ManualDisconnect : DetectedIssue.UnexpectedDisconnect);
+
 			try
 			{
 				if (com.IsOpen)
-					com.Close(auto);
+					com.Close(!user);
 
 				mGrblVersion = null;
 				mBuffer = 0;
@@ -692,17 +711,19 @@ namespace LaserGRBL
 			SendImmediate(63, true);
 		}
 
-		public void GrblReset()
+		public void GrblReset(bool user)
 		{
+			if (user && mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
+				SetIssue(DetectedIssue.ManualReset);
+
 			lock (this)
 			{
 				ClearQueue(true);
 				mBuffer = 0;
 				mTP.JobEnd();
-				SendImmediate(24);
-
 				mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
 				mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
+				SendImmediate(24);
 			}
 
 			RiseOverrideChanged();
@@ -850,7 +871,7 @@ namespace LaserGRBL
 		{
 			lock (this)
 			{
-				GrblReset();
+				GrblReset(false);
 				QueryPosition();
 				QueryTimer.Start();
 			}
@@ -883,24 +904,24 @@ namespace LaserGRBL
 
 		private void DetectHang()
 		{
-			if (debugDetectedIssue == DetectedIssue.NoIssue && MachineStatus == MacStatus.Run && InProgram)
+			if (mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
 			{
-				bool executingM4 = false;
-				if (mPending.Count > 0)
-				{
-					GrblCommand cur = mPending.Peek();
-					cur.BuildHelper();
-					executingM4 = cur.IsPause;
-					cur.DeleteHelper();
-				}
+				//bool executingM4 = false;
+				//if (mPending.Count > 0)
+				//{
+				//	GrblCommand cur = mPending.Peek();
+				//	cur.BuildHelper();
+				//	executingM4 = cur.IsPause;
+				//	cur.DeleteHelper();
+				//}
 
 				bool noQueryResponse = debugLastStatusDelay.ElapsedTime > TimeSpan.FromTicks(QueryTimer.Period.Ticks * 10) && debugLastStatusDelay.ElapsedTime > TimeSpan.FromSeconds(5);
-				bool noMovement = !executingM4 && debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(10);
+				//bool noMovement = !executingM4 && debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(10);
 
 				if (noQueryResponse)
 					SetIssue(DetectedIssue.StopResponding);
-				else if (noMovement)
-					SetIssue(DetectedIssue.StopMoving);
+				//else if (noMovement)
+				//	SetIssue(DetectedIssue.StopMoving);
 			}
 		}
 
@@ -970,8 +991,8 @@ namespace LaserGRBL
 				}
 				catch (Exception ex)
 				{
-					if (tosend != null) Logger.LogMessage("SendLine", "Error sending [{0}] command", tosend.Command);
-					Logger.LogException("SendLine", ex);
+					if (tosend != null) Logger.LogMessage("SendLine", "Error sending [{0}] command: {1}", tosend.Command, ex.Message);
+					//Logger.LogException("SendLine", ex);
 				}
 				finally { tosend.DeleteHelper(); }
 			}
@@ -1042,6 +1063,7 @@ namespace LaserGRBL
 				GrblVersion = new GrblVersionInfo(maj, min, build);
 
 				DetectUnexpectedReset();
+				OnStartupMessage();
 			}
 			catch (Exception ex)
 			{
@@ -1051,9 +1073,22 @@ namespace LaserGRBL
 			mSentPtr.Add(new GrblMessage(rline, false));
 		}
 
+		private void OnStartupMessage() //resetta tutto, così funziona anche nel caso di hard-unexpected reset
+		{
+			lock (this)
+			{
+				ClearQueue(false);
+				mBuffer = 0;
+				mTP.JobEnd();
+				mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
+				mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
+			}
+			RiseOverrideChanged();
+		}
+
 		private void DetectUnexpectedReset()
 		{
-			if (debugDetectedIssue == DetectedIssue.NoIssue && MachineStatus == MacStatus.Run && InProgram)
+			if (mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
 				SetIssue(DetectedIssue.UnexpectedReset);
 		}
 
@@ -1199,7 +1234,7 @@ namespace LaserGRBL
 			}
 			catch
 			{
-				try { CloseCom(true); }
+				try { CloseCom(false); }
 				catch { }
 				return null;
 			}
@@ -1213,7 +1248,7 @@ namespace LaserGRBL
 			}
 			catch
 			{
-				try { CloseCom(true); }
+				try { CloseCom(false); }
 				catch { }
 				return false;
 			}
@@ -1420,7 +1455,6 @@ namespace LaserGRBL
 			catch { return value.ToString(); }
 		}
 
-
 	}
 
 
@@ -1443,7 +1477,10 @@ namespace LaserGRBL
 		private int mExecutedCount;
 		private int mSentCount;
 		private int mErrorCount;
+		private int mContinueCorrection;
 
+		GrblCore.DetectedIssue mLastIssue;
+		
 		public TimeProjection()
 		{ Reset(); }
 
@@ -1462,6 +1499,8 @@ namespace LaserGRBL
 			mSentCount = 0;
 			mErrorCount = 0;
 			mTargetCount = 0;
+			mContinueCorrection = 0;
+			mLastIssue = GrblCore.DetectedIssue.Unknown;
 		}
 
 		public TimeSpan EstimatedTarget
@@ -1474,10 +1513,10 @@ namespace LaserGRBL
 		{ get { return mTargetCount; } }
 
 		public int Sent
-		{ get { return mSentCount; } }
+		{ get { return mSentCount - mContinueCorrection; } }
 
 		public int Executed
-		{ get { return mExecutedCount; } }
+		{ get { return mExecutedCount - mContinueCorrection; } }
 
 		public TimeSpan ProjectedTarget
 		{
@@ -1541,10 +1580,12 @@ namespace LaserGRBL
 				mExecutedCount = 0;
 				mSentCount = 0;
 				mErrorCount = 0;
+				mContinueCorrection = 0;
+				mLastIssue = GrblCore.DetectedIssue.Unknown;
 			}
 		}
 
-		public void JobContinue(int position)
+		public void JobContinue(int position, int added)
 		{
 			if (!mStarted)
 			{
@@ -1558,7 +1599,9 @@ namespace LaserGRBL
 				mStarted = true;
 				mExecutedCount = position;
 				mSentCount = position;
+				mLastIssue = GrblCore.DetectedIssue.Unknown;
 			//	mErrorCount = 0;
+				mContinueCorrection = added;
 			}
 		}
 
@@ -1615,11 +1658,17 @@ namespace LaserGRBL
 			return false;
 		}
 
+		public void JobIssue(GrblCore.DetectedIssue issue)
+		{ mLastIssue = issue; }
+
 		private long now
 		{ get { return Tools.HiResTimer.TotalMilliseconds; } }
 
 		public int ErrorCount
 		{ get { return mErrorCount; } }
+
+		public GrblCore.DetectedIssue LastIssue
+		{ get { return mLastIssue; } }
 	}
 }
 

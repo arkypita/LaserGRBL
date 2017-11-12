@@ -223,7 +223,7 @@
     <value>Fill</value>
   </data>
   <data name="CbThreadingMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 194</value>
+    <value>24, 162</value>
   </data>
   <data name="CbThreadingMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 0</value>
@@ -253,7 +253,7 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 138</value>
+    <value>173, 106</value>
   </data>
   <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -286,7 +286,7 @@
     <value>Fill</value>
   </data>
   <data name="CBStreamingMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 136</value>
+    <value>24, 104</value>
   </data>
   <data name="CBStreamingMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 0</value>
@@ -325,7 +325,7 @@
 </value>
   </data>
   <data name="BtnStreamingMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 138</value>
+    <value>3, 106</value>
   </data>
   <data name="BtnStreamingMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 17</value>
@@ -337,7 +337,7 @@
     <value>BtnStreamingMode</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.11.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.15.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -349,7 +349,7 @@
     <value>Fill</value>
   </data>
   <data name="CBProtocol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 78</value>
+    <value>24, 46</value>
   </data>
   <data name="CBProtocol.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 0</value>
@@ -371,42 +371,6 @@
   </data>
   <data name="&gt;&gt;CBProtocol.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="BtnLaserMode.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
-        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
-        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
-        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
-        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
-        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
-        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
-        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
-        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
-        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="BtnLaserMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 48</value>
-  </data>
-  <data name="BtnLaserMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 17</value>
-  </data>
-  <data name="BtnLaserMode.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="&gt;&gt;BtnLaserMode.Name" xml:space="preserve">
-    <value>BtnLaserMode</value>
-  </data>
-  <data name="&gt;&gt;BtnLaserMode.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.11.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;BtnLaserMode.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;BtnLaserMode.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="CBSupportPWM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -436,7 +400,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;CBSupportPWM.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -471,7 +435,7 @@ If not, please disable PWM support.</value>
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="BtnModulationInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -501,76 +465,13 @@ If not, please disable PWM support.</value>
     <value>BtnModulationInfo</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.11.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.15.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="CBLaserMode.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CBLaserMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CBLaserMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 48</value>
-  </data>
-  <data name="CBLaserMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 17</value>
-  </data>
-  <data name="CBLaserMode.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="CBLaserMode.Text" xml:space="preserve">
-    <value>Laser Mode</value>
-  </data>
-  <data name="&gt;&gt;CBLaserMode.Name" xml:space="preserve">
-    <value>CBLaserMode</value>
-  </data>
-  <data name="&gt;&gt;CBLaserMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CBLaserMode.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;CBLaserMode.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 48</value>
-  </data>
-  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>517, 26</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Laser Mode is enabled on GRBL 1.1 or higher.  This results in the laser being turned off during rapid moves.  LaserGRBL will render rapid moves differently than cut/mark moves.</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>7</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -579,7 +480,7 @@ If not, please disable PWM support.</value>
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 80</value>
+    <value>173, 48</value>
   </data>
   <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -606,7 +507,7 @@ If not, please disable PWM support.</value>
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>8</value>
   </data>
   <data name="BtnProtocol.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -624,7 +525,7 @@ If not, please disable PWM support.</value>
 </value>
   </data>
   <data name="BtnProtocol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 80</value>
+    <value>3, 48</value>
   </data>
   <data name="BtnProtocol.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 17</value>
@@ -636,13 +537,13 @@ If not, please disable PWM support.</value>
     <value>BtnProtocol</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.11.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.15.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>9</value>
   </data>
   <data name="CbUnidirectional.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -651,7 +552,7 @@ If not, please disable PWM support.</value>
     <value>NoControl</value>
   </data>
   <data name="CbUnidirectional.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 241</value>
+    <value>26, 209</value>
   </data>
   <data name="CbUnidirectional.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 17</value>
@@ -672,7 +573,7 @@ If not, please disable PWM support.</value>
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;CbUnidirectional.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>10</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -681,19 +582,19 @@ If not, please disable PWM support.</value>
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 241</value>
+    <value>173, 209</value>
   </data>
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 13</value>
+    <value>154, 13</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>[EXPERIMENTAL] Disable bidirectional engraving.</value>
+    <value>Disable bidirectional engraving.</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -705,7 +606,7 @@ If not, please disable PWM support.</value>
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>11</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -714,7 +615,7 @@ If not, please disable PWM support.</value>
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 196</value>
+    <value>173, 164</value>
   </data>
   <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -739,7 +640,7 @@ This setting affect the speed of sending thread and the frequency of status repo
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>12</value>
   </data>
   <data name="BtnThreadingModel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -757,7 +658,7 @@ This setting affect the speed of sending thread and the frequency of status repo
 </value>
   </data>
   <data name="BtnThreadingModel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 196</value>
+    <value>3, 164</value>
   </data>
   <data name="BtnThreadingModel.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 17</value>
@@ -769,13 +670,77 @@ This setting affect the speed of sending thread and the frequency of status repo
     <value>BtnThreadingModel</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.11.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.15.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>13</value>
+  </data>
+  <data name="CbIssueDetector.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CbIssueDetector.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CbIssueDetector.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 232</value>
+  </data>
+  <data name="CbIssueDetector.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 17</value>
+  </data>
+  <data name="CbIssueDetector.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>Issue detector</value>
+  </data>
+  <data name="&gt;&gt;CbIssueDetector.Name" xml:space="preserve">
+    <value>CbIssueDetector</value>
+  </data>
+  <data name="&gt;&gt;CbIssueDetector.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CbIssueDetector.Parent" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;CbIssueDetector.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 232</value>
+  </data>
+  <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>424, 26</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>LaserGRBL can detect issues and warn the user providing info about how to solve them.
+If disabled all the issues are silently managed without warning.</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>15</value>
   </data>
   <data name="tableLayoutPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -805,7 +770,7 @@ This setting affect the speed of sending thread and the frequency of status repo
     <value>0</value>
   </data>
   <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbThreadingMode" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CBStreamingMode" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnStreamingMode" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CBProtocol" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnLaserMode" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CBSupportPWM" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnModulationInfo" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CBLaserMode" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnProtocol" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbUnidirectional" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label5" Row="5" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label6" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnThreadingModel" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,50,AutoSize,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbThreadingMode" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CBStreamingMode" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnStreamingMode" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CBProtocol" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CBSupportPWM" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnModulationInfo" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnProtocol" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbUnidirectional" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label5" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label6" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnThreadingModel" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbIssueDetector" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label7" Row="5" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,50,AutoSize,20,AutoSize,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="GB.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

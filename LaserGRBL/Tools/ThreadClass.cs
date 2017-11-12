@@ -110,29 +110,32 @@ namespace Tools
 			set { _sleeptime = Math.Max(value, 0); }
 		}
 
-
 		public virtual void Stop()
 		{
+			if (TH != null && TH.ThreadState != System.Threading.ThreadState.Stopped)
+			{
+				if (MustExit != null)
+					MustExit.Set();
 
-			if ((TH != null) && TH.ThreadState != System.Threading.ThreadState.Stopped) {
-				MustExit.Set();
-
-				if (!object.ReferenceEquals(System.Threading.Thread.CurrentThread, TH)) {
-					if ((StopWaitTimeout > 0))
+				if (!object.ReferenceEquals(System.Threading.Thread.CurrentThread, TH))
+				{
+					if (TH != null && StopWaitTimeout > 0)
 						TH.Join(StopWaitTimeout);
 
-					if (TH != null && TH.ThreadState != System.Threading.ThreadState.Stopped) {
+					if (TH != null && TH.ThreadState != System.Threading.ThreadState.Stopped)
+					{
 						System.Diagnostics.Debug.WriteLine(string.Format("Devo forzare la terminazione del Thread '{0}'", TH.Name));
 						TH.Abort();
 					}
-				} else {
+				}
+				else
+				{
 					System.Diagnostics.Debug.WriteLine(string.Format("ATTENZIONE! Chiamata rientrante a thread stop '{0}'", TH.Name));
 				}
 
 				TH = null;
 				MustExit = null;
 			}
-
 		}
 
 		private void AutoDispose(object sender, System.EventArgs e)

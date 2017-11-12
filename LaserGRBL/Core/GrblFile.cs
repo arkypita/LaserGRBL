@@ -11,27 +11,24 @@ namespace LaserGRBL
 {
 	public class GrblFile : IEnumerable<GrblCommand>
 	{
-		public enum CartesianQuadrant { I, II, III, IV, Mix, Unknown}
+		public enum CartesianQuadrant { I, II, III, IV, Mix, Unknown }
 
 		public delegate void OnFileLoadedDlg(long elapsed, string filename);
 		public event OnFileLoadedDlg OnFileLoaded;
 
 		private List<GrblCommand> list = new List<GrblCommand>();
 		private ProgramRange mRange = new ProgramRange();
-		private decimal mTotalTravelOn;
-		private decimal mTotalTravelOff;
-		private TimeSpan mEstimatedTimeOn;
-		private TimeSpan mEstimatedTimeOff;
+		private TimeSpan mEstimatedTotalTime;
 
 		public GrblFile()
 		{
- 
+
 		}
 
 		public GrblFile(decimal x, decimal y, decimal x1, decimal y1)
 		{
-			mRange.UpdateXYRange(x, y, false);
-			mRange.UpdateXYRange(x1, y1, false);
+			mRange.UpdateXYRange(new GrblCommand.Element('X', x), new GrblCommand.Element('Y', y), false);
+			mRange.UpdateXYRange(new GrblCommand.Element('X', x1), new GrblCommand.Element('Y', y1), false);
 		}
 
 		public void SaveProgram(string filename)
@@ -51,10 +48,6 @@ namespace LaserGRBL
 		public void LoadFile(string filename)
 		{
 			long start = Tools.HiResTimer.TotalMilliseconds;
-			mTotalTravelOff = 0;
-			mTotalTravelOn = 0;
-			mEstimatedTimeOff = TimeSpan.Zero;
-			mEstimatedTimeOn = TimeSpan.Zero;
 			list.Clear();
 			mRange.ResetRange();
 			if (System.IO.File.Exists(filename))
@@ -80,7 +73,7 @@ namespace LaserGRBL
 
 		private abstract class ColorSegment
 		{
-			protected int  mColor;
+			protected int mColor;
 			protected double mLen;
 			protected bool mReverse;
 			protected L2LConf mConf;
@@ -92,21 +85,21 @@ namespace LaserGRBL
 				mReverse = rev;
 				mConf = c;
 			}
-			
+
 			public virtual bool IsSeparator
-			{get {return false;}}
-			
+			{ get { return false; } }
+
 			public bool Fast
-			{get {return mConf.pwm ? mColor == 0 : mColor <= 125;}}
-			
+			{ get { return mConf.pwm ? mColor == 0 : mColor <= 125; } }
+
 			public string formatnumber(double number)
 			{ return number.ToString("#.###", System.Globalization.CultureInfo.InvariantCulture); }
 		}
-		
+
 		private class XSegment : ColorSegment
 		{
-			public XSegment(int col, int len, bool rev, L2LConf c) : base(col, len, rev, c) {}
-			
+			public XSegment(int col, int len, bool rev, L2LConf c) : base(col, len, rev, c) { }
+
 			public override string ToString()
 			{
 				if (mConf.pwm)
@@ -119,7 +112,7 @@ namespace LaserGRBL
 		private class YSegment : ColorSegment
 		{
 			public YSegment(int col, int len, bool rev, L2LConf c) : base(col, len, rev, c) { }
-			
+
 			public override string ToString()
 			{
 				if (mConf.pwm)
@@ -128,40 +121,40 @@ namespace LaserGRBL
 					return string.Format("Y{0} {1}", formatnumber(mReverse ? -mLen : mLen), Fast ? mConf.lOff : mConf.lOn);
 			}
 		}
-		
+
 		private class DSegment : ColorSegment
 		{
 			public DSegment(int col, int len, bool rev, L2LConf c) : base(col, len, rev, c) { }
-			
+
 			public override string ToString()
 			{
 				if (mConf.pwm)
-					return string.Format("X{0} Y{1} S{2}", formatnumber(mReverse ? - mLen : mLen), formatnumber(mReverse ? mLen : -mLen), mColor);
+					return string.Format("X{0} Y{1} S{2}", formatnumber(mReverse ? -mLen : mLen), formatnumber(mReverse ? mLen : -mLen), mColor);
 				else
 					return string.Format("X{0} Y{1} {2}", formatnumber(mReverse ? -mLen : mLen), formatnumber(mReverse ? mLen : -mLen), Fast ? mConf.lOff : mConf.lOn);
 			}
-		}	
+		}
 
 		private class VSeparator : ColorSegment
 		{
-			public VSeparator(L2LConf c) : base(0, 1, false, c) {}
-			
+			public VSeparator(L2LConf c) : base(0, 1, false, c) { }
+
 			public override string ToString()
-			{return string.Format("Y{0}", formatnumber(mLen));}
-			
+			{ return string.Format("Y{0}", formatnumber(mLen)); }
+
 			public override bool IsSeparator
-			{get {return true;}}
-		}		
+			{ get { return true; } }
+		}
 
 		private class HSeparator : ColorSegment
 		{
-			public HSeparator(L2LConf c) : base(0, 1, false, c) {}
-			
+			public HSeparator(L2LConf c) : base(0, 1, false, c) { }
+
 			public override string ToString()
-			{return string.Format("X{0}", formatnumber(mLen));}
-			
+			{ return string.Format("X{0}", formatnumber(mLen)); }
+
 			public override bool IsSeparator
-			{get {return true;}}
+			{ get { return true; } }
 		}
 
 
@@ -169,12 +162,7 @@ namespace LaserGRBL
 		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, L2LConf c)
 		{
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
-
 			long start = Tools.HiResTimer.TotalMilliseconds;
-			mTotalTravelOff = 0;
-			mTotalTravelOn = 0;
-			mEstimatedTimeOff = TimeSpan.Zero;
-			mEstimatedTimeOn = TimeSpan.Zero;
 			list.Clear();
 			mRange.ResetRange();
 
@@ -229,20 +217,20 @@ namespace LaserGRBL
 			//move fast to offset
 			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(c.oX), formatnumber(c.oY))));
 			//laser off and power to maxPower
-			list.Add(new GrblCommand(String.Format("{0} S{1}", c.lOff, c.maxPower))); 
+			list.Add(new GrblCommand(String.Format("{0} S{1}", c.lOff, c.maxPower)));
 			//set speed to borderspeed
 			list.Add(new GrblCommand(String.Format("G1 F{0}", c.borderSpeed)));
-	
+
 			//trace borders
 			List<string> gc = Potrace.Export2GCode(plist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size);
-			
+
 			foreach (string code in gc)
 				list.Add(new GrblCommand(code));
-			
+
 
 			//laser off
 			list.Add(new GrblCommand(String.Format("{0}", c.lOff)));
-			
+
 			//move fast to origin
 			list.Add(new GrblCommand("G0 X0 Y0"));
 
@@ -255,7 +243,7 @@ namespace LaserGRBL
 
 		public class L2LConf
 		{
- 			public double res;
+			public double res;
 			public int oX;
 			public int oY;
 			public int markSpeed;
@@ -277,10 +265,6 @@ namespace LaserGRBL
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
 			long start = Tools.HiResTimer.TotalMilliseconds;
-			mTotalTravelOff = 0;
-			mTotalTravelOn = 0;
-			mEstimatedTimeOff = TimeSpan.Zero;
-			mEstimatedTimeOn = TimeSpan.Zero;
 			list.Clear();
 			mRange.ResetRange();
 
@@ -427,14 +411,13 @@ namespace LaserGRBL
 			if (c.dir == Core.RasterToGcode.ConversionTool.EngravingDirection.Horizontal || c.dir == Core.RasterToGcode.ConversionTool.EngravingDirection.Vertical)
 			{
 				bool h = (c.dir == Core.RasterToGcode.ConversionTool.EngravingDirection.Horizontal); //horizontal/vertical
-				
 				for (int i = 0; i < (h ? bmp.Height : bmp.Width); i++)
 				{
 					bool d = uni || IsEven(i); //direct/reverse
 					int prevCol = -1;
 					int len = -1;
 
-					for (int j = d ? 0 : (h ? bmp.Width - 1 : bmp.Height -1) ; d ? (j < (h ? bmp.Width : bmp.Height)) : (j >= 0) ; j = (d ? j+1 : j-1) )
+					for (int j = d ? 0 : (h ? bmp.Width - 1 : bmp.Height - 1); d ? (j < (h ? bmp.Width : bmp.Height)) : (j >= 0); j = (d ? j + 1 : j - 1))
 						ExtractSegment(bmp, h ? j : i, h ? i : j, !d, ref len, ref prevCol, rv, c); //extract different segments
 
 					if (h)
@@ -444,11 +427,11 @@ namespace LaserGRBL
 
 					if (uni) // add "go back"
 					{
-						if (h) rv.Add(new XSegment(0, bmp.Width, true, c)); 
+						if (h) rv.Add(new XSegment(0, bmp.Width, true, c));
 						else rv.Add(new YSegment(0, bmp.Height, true, c));
 					}
 
-					if (i < (h ? bmp.Height-1 : bmp.Width-1))
+					if (i < (h ? bmp.Height - 1 : bmp.Width - 1))
 					{
 						if (h)
 							rv.Add(new VSeparator(c)); //new line
@@ -480,22 +463,22 @@ namespace LaserGRBL
 				//my modified version of algorithm reverses travel direction each slice
 
 				rv.Add(new VSeparator(c)); //new line
-				
+
 				int w = bmp.Width;
 				int h = bmp.Height;
-			    for (int slice = 0; slice < w + h - 1; ++slice) 
-			    {
+				for (int slice = 0; slice < w + h - 1; ++slice)
+				{
 					bool d = uni || IsEven(slice); //direct/reverse
 
-			    	int prevCol = -1;
+					int prevCol = -1;
 					int len = -1;
-			    	
-			        int z1 = slice < h ? 0 : slice - h + 1;
-			        int z2 = slice < w ? 0 : slice - w + 1;
-			        
-					for (int j = (d ? z1 : slice - z2); d ? j <= slice - z2 : j >= z1 ; j = (d ? j+1 : j-1))
+
+					int z1 = slice < h ? 0 : slice - h + 1;
+					int z2 = slice < w ? 0 : slice - w + 1;
+
+					for (int j = (d ? z1 : slice - z2); d ? j <= slice - z2 : j >= z1; j = (d ? j + 1 : j - 1))
 						ExtractSegment(bmp, j, slice - j, !d, ref len, ref prevCol, rv, c); //extract different segments
-			        rv.Add(new DSegment(prevCol, len + 1, !d, c)); //close last segment
+					rv.Add(new DSegment(prevCol, len + 1, !d, c)); //close last segment
 
 					//System.Diagnostics.Debug.WriteLine(String.Format("sl:{0} z1:{1} z2:{2}", slice, z1, z2));
 
@@ -506,14 +489,14 @@ namespace LaserGRBL
 						//System.Diagnostics.Debug.WriteLine(slen);
 					}
 
-					if (slice < Math.Min(w, h)-1) //first part of the image
+					if (slice < Math.Min(w, h) - 1) //first part of the image
 					{
 						if (d && !uni)
 							rv.Add(new HSeparator(c)); //new line
 						else
 							rv.Add(new VSeparator(c)); //new line
 					}
-					else if (slice >= Math.Max(w, h)-1) //third part of image
+					else if (slice >= Math.Max(w, h) - 1) //third part of image
 					{
 						if (d && !uni)
 							rv.Add(new VSeparator(c)); //new line
@@ -527,12 +510,12 @@ namespace LaserGRBL
 						else
 							rv.Add(new VSeparator(c)); //new line
 					}
-			    }
+				}
 			}
 
 			return rv;
 		}
-		
+
 		private void ExtractSegment(Bitmap image, int x, int y, bool reverse, ref int len, ref int prevCol, List<ColorSegment> rv, L2LConf c)
 		{
 			len++;
@@ -548,7 +531,7 @@ namespace LaserGRBL
 					rv.Add(new YSegment(prevCol, len, reverse, c));
 				else if (c.dir == Core.RasterToGcode.ConversionTool.EngravingDirection.Diagonal)
 					rv.Add(new DSegment(prevCol, len, reverse, c));
-				
+
 				len = 0;
 			}
 
@@ -578,13 +561,7 @@ namespace LaserGRBL
 		public int Count
 		{ get { return list.Count; } }
 
-		public TimeSpan EstimatedTime { get { return mEstimatedTimeOff + mEstimatedTimeOn; } }
-
-		private void Analyze()
-		{ Process(null, Size.Empty); } //analyze only
-
-		public void DrawOnGraphics(Graphics g, Size s)
-		{ Process(g, s); }
+		public TimeSpan EstimatedTime { get { return mEstimatedTotalTime; } }
 
 
 		//  II | I
@@ -592,7 +569,7 @@ namespace LaserGRBL
 		// III | IV
 		public CartesianQuadrant Quadrant
 		{
-			get 
+			get
 			{
 				if (!mRange.DrawingRange.ValidRange)
 					return CartesianQuadrant.Unknown;
@@ -609,210 +586,110 @@ namespace LaserGRBL
 			}
 		}
 
-		private void Process(Graphics g, Size s)
+		internal void DrawOnGraphics(Graphics g, Size s)
 		{
-			bool supportPWM = (bool)Settings.GetObject("Support Hardware PWM", true);
-            bool laserMode = (bool)Settings.GetObject("Laser Mode", false);
-			Boolean analyze = (g == null);
-			Boolean drawing = (g != null);
+			if (!mRange.MovingRange.ValidRange) return;
 
-			if (drawing && !mRange.MovingRange.ValidRange)
-				return;
-
+			GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
 			ProgramRange.XYRange scaleRange = mRange.MovingRange;
 
 			//Get scale factors for both directions. To preserve the aspect ratio, use the smaller scale factor.
-			float zoom = drawing && scaleRange.Width > 0 && scaleRange.Height > 0 ? Math.Min((float)s.Width / (float)scaleRange.Width, (float)s.Height / (float)scaleRange.Height) *0.95f : 1;
-			bool firstline = true;
-			bool isLaserCutting = false;
-            bool isLaserActive = false;
-			decimal curX = 0;
-			decimal curY = 0;
-			decimal speed = 0;
-			int curAlpha = 0;
-			bool cw = false; //cw-ccw memo
-			bool abs = false; //absolute-relative memo
+			float zoom = scaleRange.Width > 0 && scaleRange.Height > 0 ? Math.Min((float)s.Width / (float)scaleRange.Width, (float)s.Height / (float)scaleRange.Height) * 0.95f : 1;
+			bool firstline = true; //used to draw the first line in a different color
 
-			if (analyze)
-			{
-				mRange.ResetRange();
-				mRange.UpdateXYRange(0, 0, false);
-				mTotalTravelOn = 0;
-				mTotalTravelOff = 0;
-				mEstimatedTimeOn = TimeSpan.Zero;
-				mEstimatedTimeOff = TimeSpan.Zero;
-			}
-
-			if (drawing)
-				ScaleAndPosition(g, s, scaleRange, zoom);
-
-			if (drawing && !mRange.SpindleRange.ValidRange) //assign max alpha if no S range available
-				curAlpha = 255;
+			ScaleAndPosition(g, s, scaleRange, zoom);
 
 			foreach (GrblCommand cmd in list)
 			{
 				try
 				{
 					cmd.BuildHelper();
+					spb.AnalyzeCommand(cmd, false);
 
-					TimeSpan delay = TimeSpan.Zero;
 
-					if (cmd.IsLaserON)
+					if (spb.TrueMovement())
 					{
-						isLaserActive = true;
-						isLaserCutting = true;
-					}
-					else if (cmd.IsLaserOFF)
-					{
-						isLaserActive = false;
-						isLaserCutting = false;
-					}
-
-					if (laserMode == true && isLaserActive == true)
-					{
-						if (cmd.IsRapidMovement == true)
+						Color linecolor = Color.FromArgb(spb.GetCurrentAlpha(mRange.SpindleRange), firstline ? ColorScheme.PreviewFirstMovement : spb.LaserBurning ? ColorScheme.PreviewLaserPower : ColorScheme.PreviewOtherMovement);
+						using (Pen pen = GetPen(linecolor))
 						{
-							isLaserCutting = false;
-						}
-						else
-						{
-							isLaserCutting = true;
-						}
-					}
+							pen.ScaleTransform(1 / zoom, 1 / zoom);
 
-					if (cmd.IsRelativeCoord)
-						abs = false;
-					if (cmd.IsAbsoluteCoord)
-						abs = true;
-
-					if (cmd.F != null)
-						speed = cmd.F.Number;
-
-					if (drawing && cmd.S != null)
-					{
-						if (mRange.SpindleRange.ValidRange)
-							curAlpha = (int)((cmd.S.Number - mRange.SpindleRange.S.Min) * 255 / (mRange.SpindleRange.S.Max - mRange.SpindleRange.S.Min));
-						else
-							curAlpha = 255;
-					}
-
-					if (analyze && cmd.S != null)
-						mRange.UpdateSRange(cmd.S.Number);
-
-					if (cmd.IsMovement && cmd.TrueMovement(curX, curY, abs))
-					{
-						decimal newX = cmd.X != null ? (abs ? cmd.X.Number : curX + cmd.X.Number) : curX;
-						decimal newY = cmd.Y != null ? (abs ? cmd.Y.Number : curY + cmd.Y.Number) : curY;
-
-						if (analyze)
-						{
-							mRange.UpdateXYRange(newX, newY, isLaserCutting);
-
-							decimal distance = 0;
-
-							if (cmd.IsLinearMovement)
-								distance = Tools.MathHelper.LinearDistance(curX, curY, newX, newY);
-							else if (cmd.IsArcMovement) //arc of given radius
-								distance = Tools.MathHelper.ArcDistance(curX, curY, newX, newY, cmd.GetArcRadius());
-
-							if (isLaserCutting)
-								mTotalTravelOn += distance;
-							else
-								mTotalTravelOff += distance;
-
-							if (distance != 0 && speed != 0)
-								delay = TimeSpan.FromMinutes((double)distance / (double)speed);
-						}
-
-						if (drawing)
-						{
-							Color linecolor = firstline ? ColorScheme.PreviewFirstMovement : isLaserCutting ? ColorScheme.PreviewLaserPower : ColorScheme.PreviewOtherMovement;
-							using (Pen pen = GetPen(linecolor))
+							if (!spb.LaserBurning)
 							{
-								pen.ScaleTransform(1 / zoom, 1 / zoom);
-								if (isLaserCutting)
-									pen.Color = Color.FromArgb(curAlpha, pen.Color);
-
-								if (!isLaserCutting)
-								{
-									if (supportPWM)
-										pen.Color = Color.FromArgb(150, pen.Color);
-									else
-										pen.Color = Color.FromArgb(50, pen.Color);
-
-									pen.DashStyle = DashStyle.Dash;
-									pen.DashPattern = new float[] { 1f, 1f };
-								}
-
-
-								if (cmd.IsLinearMovement)
-								{
-									g.DrawLine(pen, new PointF((float)curX, (float)curY), new PointF((float)newX, (float)newY));
-								}
-								else if (cmd.IsArcMovement)
-								{
-									cw = cmd.IsCW(cw);
-
-									PointF center = cmd.GetCenter((float)curX, (float)curY);
-									double cX = center.X;
-									double cY = center.Y;
-									double aX = (double)curX;
-									double aY = (double)curY;
-									double bX = (double)newX;
-									double bY = (double)newY;
-
-									double ray = cmd.GetArcRadius();
-									double rectX = cX - ray;
-									double rectY = cY - ray;
-									double rectW = 2 * ray;
-									double rectH = 2 * ray;
-
-									double aA = Tools.MathHelper.CalculateAngle(cX, cY, aX, aY);	//180/Math.PI*Math.Atan2(y1-y0, x1-x0);
-									double bA = Tools.MathHelper.CalculateAngle(cX, cY, bX, bY);	//180/Math.PI*Math.Atan2(y2-y0, x2-x0);
-
-									double sA = aA;	//start angle
-									double wA = Tools.MathHelper.AngularDistance(aA, bA, cw);
-
-									if (rectW > 0 && rectH > 0)
-									{
-										try { g.DrawArc(pen, (float)rectX, (float)rectY, (float)rectW, (float)rectH, (float)sA, (float)wA); }
-										catch { System.Diagnostics.Debug.WriteLine(String.Format("Ex drwing arc: W{0} H{1}", rectW, rectH)); }
-									}
-								}
-
+								pen.DashStyle = DashStyle.Dash;
+								pen.DashPattern = new float[] { 1f, 1f };
 							}
 
-							firstline = false;
+							if (spb.G0G1 && cmd.IsLinearMovement && pen.Color.A > 0)
+							{
+								g.DrawLine(pen, new PointF((float)spb.X.Previous, (float)spb.Y.Previous), new PointF((float)spb.X.Number, (float)spb.Y.Number));
+							}
+							else if (spb.G2G3 && cmd.IsArcMovement && pen.Color.A > 0)
+							{
+								PointF center = cmd.GetCenter((float)spb.X.Previous, (float)spb.Y.Previous);
+								double cX = center.X;
+								double cY = center.Y;
+								double aX = (double)spb.X.Previous;
+								double aY = (double)spb.Y.Previous;
+								double bX = (double)spb.X.Number;
+								double bY = (double)spb.Y.Number;
+
+								double ray = cmd.GetArcRadius();
+								double rectX = cX - ray;
+								double rectY = cY - ray;
+								double rectW = 2 * ray;
+								double rectH = 2 * ray;
+
+								double aA = Tools.MathHelper.CalculateAngle(cX, cY, aX, aY);	//180/Math.PI*Math.Atan2(y1-y0, x1-x0);
+								double bA = Tools.MathHelper.CalculateAngle(cX, cY, bX, bY);	//180/Math.PI*Math.Atan2(y2-y0, x2-x0);
+
+								double sA = aA;	//start angle
+								double wA = Tools.MathHelper.AngularDistance(aA, bA, spb.G2);
+
+								if (rectW > 0 && rectH > 0)
+								{
+									try { g.DrawArc(pen, (float)rectX, (float)rectY, (float)rectW, (float)rectH, (float)sA, (float)wA); }
+									catch { System.Diagnostics.Debug.WriteLine(String.Format("Ex drwing arc: W{0} H{1}", rectW, rectH)); }
+								}
+							}
+
 						}
 
-						curX = newX;
-						curY = newY;
+						firstline = false;
 					}
-					else if (cmd.IsPause)
-					{
-						if (analyze)
-						{
-							//TimeSpan delay = cmd.P != null ? TimeSpan.FromMilliseconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
-							//grbl seem to use both P and S as number of seconds
-							delay = cmd.P != null ? TimeSpan.FromSeconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
-						}
-					}
-
-					if (isLaserCutting)
-						mEstimatedTimeOn += delay;
-					else
-						mEstimatedTimeOff += delay;
-
-					if (analyze)
-						cmd.SetOffset(mTotalTravelOn + mTotalTravelOff, mEstimatedTimeOn + mEstimatedTimeOff);
 				}
 				catch (Exception ex) { throw ex; }
 				finally { cmd.DeleteHelper(); }
 			}
 
-			if (drawing)
-				DrawJobRange(g, s, zoom);
-			
+			DrawJobRange(g, s, zoom);
+
+		}
+
+
+
+		private void Analyze() //analyze the file and build global range and timing for each command
+		{
+			GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
+
+			mRange.ResetRange();
+			mRange.UpdateXYRange("X0", "Y0", false);
+			mEstimatedTotalTime = TimeSpan.Zero;
+
+			foreach (GrblCommand cmd in list)
+			{
+				try
+				{
+					TimeSpan delay = spb.AnalyzeCommand(cmd, true);
+
+					mRange.UpdateSRange(spb.S);
+					mRange.UpdateXYRange(spb.X, spb.Y, spb.LaserBurning);
+					mEstimatedTotalTime += delay;
+					cmd.SetOffset(mEstimatedTotalTime);
+				}
+				catch (Exception ex) { throw ex; }
+				finally { cmd.DeleteHelper(); }
+			}
 		}
 
 		private void ScaleAndPosition(Graphics g, Size s, ProgramRange.XYRange scaleRange, float zoom)
@@ -949,54 +826,22 @@ namespace LaserGRBL
 		public ProgramRange Range { get { return mRange; } }
 
 		public GrblCommand this[int index]
-		{get{return list[index];}}
+		{ get { return list[index]; } }
 
 		internal List<GrblCommand> BuildContinueFromIV(int position) //create an initialization vector for re-run the file
 		{
-			List<GrblCommand> rv = new List<GrblCommand>() ;
+			List<GrblCommand> rv = new List<GrblCommand>();
 
-			GrblCommand.Element AR = null;
-			GrblCommand.Element M = null;
-			GrblCommand.Element F = null;
-			GrblCommand.Element S = null;
-			decimal curX = 0;
-			decimal curY = 0;
-			bool abs = false;
+			GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
 
-			for (int i = 0; i < position; i++) //find last M,F,S sent
-			{
-				GrblCommand cmd = this[i].Clone() as GrblCommand;
-
-				cmd.BuildHelper();
-				if (cmd.IsAbsoluteCoord || cmd.IsRelativeCoord) AR = cmd.G;
-				if (cmd.M != null && cmd.M.Number > 2 && cmd.M.Number < 6) M = cmd.M;
-				if (cmd.F != null) F = cmd.F;
-				if (cmd.S != null) S = cmd.S;
-
-				if (cmd.IsRelativeCoord)
-					abs = false;
-				if (cmd.IsAbsoluteCoord)
-					abs = true;
-
-				if (cmd.IsMovement && cmd.TrueMovement(curX, curY, abs))
-				{
-					curX = cmd.X != null ? (abs ? cmd.X.Number : curX + cmd.X.Number) : curX;
-					curY = cmd.Y != null ? (abs ? cmd.Y.Number : curY + cmd.Y.Number) : curY;
-				}
-
-				cmd.DeleteHelper();
-			}
+			for (int i = 0; i < position && i < Count; i++) //find last M,F,S sent
+				spb.AnalyzeCommand(this[i], false);
 
 			rv.Add(new GrblCommand("G90")); //absolute coordinate
-			rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} M5", formatnumber((double)curX), formatnumber((double)curY)))); //fast go to the computed position with laser off
+			rv.Add(new GrblCommand(string.Format("M5 G0 {0} {1} {2} {3}", spb.X, spb.Y, spb.F, spb.S))); //fast go to the computed position with laser off and set speed and power
 
-			StringBuilder sb = new StringBuilder();
-			if (AR != null) sb.Append(AR.ToString() + " ");
-			if (M != null) sb.Append(M.ToString() + " ");
-			if (F != null) sb.Append(F.ToString() + " ");
-			if (S != null) sb.Append(S.ToString());
-			if (!string.IsNullOrEmpty(sb.ToString()))
-				rv.Add(new GrblCommand(sb.ToString()));
+			foreach (GrblCommand.Element e in spb.GetSettledModals()) //restore modal state
+				rv.Add(new GrblCommand(e.ToString()));
 
 			return rv;
 		}
@@ -1038,10 +883,10 @@ namespace LaserGRBL
 			public Range X = new Range();
 			public Range Y = new Range();
 
-			public void UpdateRange(decimal x, decimal y)
+			public void UpdateRange(GrblCommand.Element x, GrblCommand.Element y)
 			{
-				X.UpdateRange(x);
-				Y.UpdateRange(y);
+				if (x != null) X.UpdateRange(x.Number);
+				if (y != null) Y.UpdateRange(y.Number);
 			}
 
 			public void ResetRange()
@@ -1059,16 +904,16 @@ namespace LaserGRBL
 			public decimal Height
 			{ get { return Y.Max - Y.Min; } }
 
-				public PointF Center
+			public PointF Center
+			{
+				get
 				{
-					get
-					{
-						if (ValidRange)
-							return new PointF((float)X.Min + (float)Width / 2.0f, (float)Y.Min + (float)Height / 2.0f);
-						else
-							return new PointF(0, 0);
-					}
+					if (ValidRange)
+						return new PointF((float)X.Min + (float)Width / 2.0f, (float)Y.Min + (float)Height / 2.0f);
+					else
+						return new PointF(0, 0);
 				}
+			}
 		}
 
 		public class SRange
@@ -1117,15 +962,14 @@ namespace LaserGRBL
 		public XYRange MovingRange = new XYRange();
 		public SRange SpindleRange = new SRange();
 
-		public void UpdateXYRange(decimal x, decimal y, bool drawing)
+		public void UpdateXYRange(GrblCommand.Element X, GrblCommand.Element Y, bool drawing)
 		{
-			if (drawing)
-				DrawingRange.UpdateRange(x, y);
-			MovingRange.UpdateRange(x, y);
+			if (drawing) DrawingRange.UpdateRange(X, Y);
+			MovingRange.UpdateRange(X, Y);
 		}
 
-		public void UpdateSRange(decimal s)
-		{ SpindleRange.UpdateRange(s); }
+		public void UpdateSRange(GrblCommand.Element S)
+		{ if (S != null) SpindleRange.UpdateRange(S.Number); }
 
 		public void ResetRange()
 		{

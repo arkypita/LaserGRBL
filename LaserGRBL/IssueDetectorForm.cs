@@ -19,7 +19,7 @@ namespace LaserGRBL
 		internal static void CreateAndShowDialog(GrblCore.DetectedIssue issue)
 		{
 			IssueDetectorForm f = new IssueDetectorForm();
-			f.LblDetected.Text = f.LblDetected.Text + " " + issue.ToString();
+			f.TxtCause.Text = issue.ToString();
 			f.ShowDialog();
 			f.Dispose();
 		}
@@ -27,6 +27,12 @@ namespace LaserGRBL
 		private void LL_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			System.Diagnostics.Process.Start(@"http://lasergrbl.com/faq#issues");
+		}
+
+		private void BtnOK_Click(object sender, EventArgs e)
+		{
+			if (CbDoNotShow.Checked)
+				Settings.SetObject("Do not show Issue Detector", true);
 		}
 	}
 }

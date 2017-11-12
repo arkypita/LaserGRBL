@@ -94,7 +94,7 @@ namespace LaserGRBL
 				Color.Pink,					//others
 				
 				Color.Lime,					//response good
-				Color.Red,					//response bad
+				Color.OrangeRed,			//response bad
 				Color.White,				//response others
 			});
 			mData.Add(Scheme.Hacker, new Color[] 
