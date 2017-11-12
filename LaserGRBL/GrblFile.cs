@@ -829,23 +829,6 @@ namespace LaserGRBL
 		public GrblCommand this[int index]
 		{ get { return list[index]; } }
 
-		internal List<GrblCommand> BuildContinueFromIV(int position) //create an initialization vector for re-run the file
-		{
-			List<GrblCommand> rv = new List<GrblCommand>();
-
-			GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
-
-			for (int i = 0; i < position && i < Count; i++) //find last M,F,S sent
-				spb.AnalyzeCommand(this[i], false);
-
-			rv.Add(new GrblCommand("G90")); //absolute coordinate
-			rv.Add(new GrblCommand(string.Format("M5 G0 {0} {1} {2} {3}", spb.X, spb.Y, spb.F, spb.S))); //fast go to the computed position with laser off and set speed and power
-
-			foreach (GrblCommand.Element e in spb.GetSettledModals()) //restore modal state
-				rv.Add(new GrblCommand(e.ToString()));
-
-			return rv;
-		}
 	}
 
 

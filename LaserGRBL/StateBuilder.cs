@@ -188,7 +188,7 @@ namespace LaserGRBL
 			Coolant State				M7, M8, [M9]
 			*/
 
-			protected class ModalElement : Element
+			public class ModalElement : Element
 			{
 				List<Element> mOptions = new List<Element>();
 				Element mDefault = null;
@@ -220,7 +220,7 @@ namespace LaserGRBL
 				}
 			}
 
-			protected ModalElement MotionMode = new ModalElement("G0", "G1", "G2", "G3", "G38.2", "G38.3", "G38.4", "G38.5", "G80");
+			public ModalElement MotionMode = new ModalElement("G0", "G1", "G2", "G3", "G38.2", "G38.3", "G38.4", "G38.5", "G80");
 			protected ModalElement CoordinateSelect = new ModalElement("G54", "G55", "G56", "G57", "G58", "G59");
 			protected ModalElement PlaneSelect = new ModalElement("G17", "G18", "G19");
 			protected ModalElement DistanceMode = new ModalElement("G90", "G91");
@@ -263,7 +263,6 @@ namespace LaserGRBL
 			{
 				List<Element> rv = new List<Element>();
 
-				AddSettled(rv, MotionMode);
 				AddSettled(rv, CoordinateSelect);
 				AddSettled(rv, PlaneSelect);
 				AddSettled(rv, DistanceMode);

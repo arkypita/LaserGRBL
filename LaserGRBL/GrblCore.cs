@@ -601,17 +601,39 @@ namespace LaserGRBL
 				mSentPtr.Add(new GrblMessage(string.Format("[resume from #{0}]", position+1), false));
 				Logger.LogMessage("ResumeProgram", "Resume program from #{0}", position+1);
 
-				System.Collections.Generic.List<GrblCommand> rvector = file.BuildContinueFromIV(position);
+				GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
 
 				if (homing)
 					mQueuePtr.Enqueue(new GrblCommand("$H"));
-				foreach (GrblCommand cmd in rvector)
-					mQueuePtr.Enqueue(cmd);
 
+
+				for (int i = 0; i < position && i < file.Count; i++) //analizza fino alla posizione
+					spb.AnalyzeCommand(file[i], false);
+
+				mQueuePtr.Enqueue(new GrblCommand("G90")); //absolute coordinate
+				mQueuePtr.Enqueue(new GrblCommand(string.Format("M5 G0 {0} {1} {2} {3}", spb.X, spb.Y, spb.F, spb.S))); //fast go to the computed position with laser off and set speed and power
+				mQueuePtr.Enqueue(new GrblCommand(spb.GetSettledModals()));
+				
 				mTP.JobContinue(position, mQueuePtr.Count);
 
 				for (int i = position; i < file.Count; i++) //enqueue remaining commands
-					mQueuePtr.Enqueue(file[i].Clone() as GrblCommand); 
+				{
+					if (spb != null) //check the very first movement command and ensure modal MotionMode is settled
+					{
+						GrblCommand cmd = file[i].Clone() as GrblCommand;
+						cmd.BuildHelper();
+						if (cmd.IsMovement && cmd.G == null)
+							mQueuePtr.Enqueue(new GrblCommand(spb.MotionMode, cmd));
+						else
+							mQueuePtr.Enqueue(cmd);
+						cmd.DeleteHelper();
+						spb = null; //only the first time
+					}
+					else
+					{
+						mQueuePtr.Enqueue(file[i].Clone() as GrblCommand);
+					}
+				}
 			}
 		}
 
