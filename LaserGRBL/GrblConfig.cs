@@ -50,6 +50,8 @@ namespace LaserGRBL
 		{
 			BtnRead.Enabled = BtnWrite.Enabled = Core.MachineStatus == GrblCore.MacStatus.Idle;
 			BtnExport.Enabled = mLocalCopy.Count > 0;
+
+			LblConnect.Visible = !BtnRead.Enabled;
 		}
 
 		internal static void CreateAndShowDialog(GrblCore core)
@@ -65,7 +67,7 @@ namespace LaserGRBL
 
 		private void BtnRead_Click(object sender, EventArgs e)
 		{
-			
+
 			try
 			{
 				Cursor = Cursors.WaitCursor;
@@ -82,7 +84,7 @@ namespace LaserGRBL
 				Cursor = DefaultCursor;
 				System.Windows.Forms.MessageBox.Show(Strings.BoxReadConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 			}
-			
+
 		}
 
 		private void BtnWrite_Click(object sender, EventArgs e)
@@ -98,7 +100,12 @@ namespace LaserGRBL
 			catch (GrblCore.WriteConfigException ex)
 			{
 				Cursor = DefaultCursor;
-				System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxWriteConfigWithError, mLocalCopy.Count, ex.ErrorCount), Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+
+				string errLines = "\n";
+				foreach (IGrblRow r in ex.Errors)
+					errLines += string.Format("{0} {1}\n", r.GetMessage(), r.GetResult(true, false));
+
+				System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxWriteConfigWithError, mLocalCopy.Count, ex.Errors.Count) + errLines, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 			}
 			catch (Exception ex)
 			{
@@ -123,7 +130,7 @@ namespace LaserGRBL
 			{ ExportConfig(filename); }
 		}
 
-		public void ExportConfig(string filename)
+		private void ExportConfig(string filename)
 		{
 			if (mLocalCopy.Count > 0)
 			{
@@ -144,37 +151,29 @@ namespace LaserGRBL
 					System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 				}
 			}
+
+			RefreshEnabledButtons();
 		}
-	}
+
+		private void BtnImport_Click(object sender, EventArgs e)
+		{
+			string filename = null;
+			using (System.Windows.Forms.OpenFileDialog ofd = new OpenFileDialog())
+			{
+				ofd.Filter = "GCODE Files|*.nc;*.gcode";
+				ofd.CheckFileExists = true;
+				ofd.Multiselect = false;
+				ofd.RestoreDirectory = true;
+				if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+					filename = ofd.FileName;
+			}
+
+			if (filename != null)
+			{ ImportConfig(filename); }
+		}
 
 
-}
-
-
-/*
-void MnImportConfigClick(object sender, EventArgs e)
-{
-	string filename = null;
-	using (System.Windows.Forms.OpenFileDialog ofd = new OpenFileDialog())
-	{
-		ofd.Filter = "GCODE Files|*.nc;*.gcode";
-		ofd.CheckFileExists = true;
-		ofd.Multiselect = false;
-		ofd.RestoreDirectory = true;
-		if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-			filename = ofd.FileName;
-	}
-	
-	Core.ImportConfig(filename);
-}
-*/
-
-
-/*
-
-	
-
-		public void ImportConfig(string filename)
+		private void ImportConfig(string filename)
 		{
 
 			if (!System.IO.File.Exists(filename))
@@ -183,61 +182,44 @@ void MnImportConfigClick(object sender, EventArgs e)
 				return;
 			}
 
-			if (mMachineStatus == MacStatus.Idle)
+			try
 			{
-				try
+				GrblConf conf = new GrblConf();
+
+				using (System.IO.StreamReader sr = new System.IO.StreamReader(filename))
 				{
-					using (System.IO.StreamReader sr = new System.IO.StreamReader(filename))
+					string rline = null;
+					while ((rline = sr.ReadLine()) != null)
 					{
-						lock (this)
-						{
-							mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
-							mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
-
-							string rline = null;
-							while ((rline = sr.ReadLine()) != null)
-								if (rline.StartsWith("$"))
-									mQueuePtr.Enqueue(new GrblCommand(rline));
-						}
-
-						try
-						{
-							sr.Close();
-							while (com.IsOpen && (mQueuePtr.Count > 0 || mPending.Count > 0)) //resta in attesa del completamento della comunicazione
-								;
-
-							int errors = 0;
-							foreach (IGrblRow row in mSentPtr)
-							{
-								if (row is GrblCommand)
-									if (((GrblCommand)row).Status != GrblCommand.CommandStatus.ResponseGood)
-										errors++;
-							}
-
-							if (errors > 0)
-								System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxImportConfigWithError, mSentPtr.Count, errors), Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-							else
-								System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxImportConfigWithoutError, mSentPtr.Count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-						}
-						catch (Exception ex)
-						{
-							Logger.LogException("ImportConfig", ex);
-							System.Windows.Forms.MessageBox.Show(Strings.BoxImportConfigFileError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-						}
-
-						lock (this)
-						{
-							mQueuePtr = mQueue;
-							mSentPtr = mSent; //restore queue
-						}
+						string msg = rline; //"$0=10 (Step pulse time)"
+						int num = int.Parse(msg.Split('=')[0].Substring(1));
+						decimal val = decimal.Parse(msg.Split('=')[1].Split(' ')[0], System.Globalization.NumberFormatInfo.InvariantInfo);
+						conf.Add(new GrblConf.GrblConfParam(num, val));
 					}
 				}
-				catch (Exception ex)
-				{
-					Logger.LogException("ImportConfig", ex);
-					System.Windows.Forms.MessageBox.Show(Strings.BoxImportConfigFileError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-				}
+
+				mLocalCopy = conf;
+				DGV.DataSource = mLocalCopy;
+
+				System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxImportConfigWithoutError, mLocalCopy.Count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 			}
+			catch (Exception ex)
+			{
+				Logger.LogException("ImportConfig", ex);
+				System.Windows.Forms.MessageBox.Show(Strings.BoxImportConfigFileError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+			}
+
+			RefreshEnabledButtons();
 		}
 
-*/
+		private void DGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
+		{
+			e.Cancel = true;
+			e.ThrowException = false;
+			DGV.CancelEdit();
+		}
+
+	}
+
+
+}

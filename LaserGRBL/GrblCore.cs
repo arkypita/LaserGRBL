@@ -505,8 +505,8 @@ namespace LaserGRBL
 							ErrorLines.Add(row);
 			}
 
-			public int ErrorCount
-			{ get { return ErrorLines.Count; } }
+			public System.Collections.Generic.List<IGrblRow> Errors	
+			{ get { return ErrorLines; } }
 		}
 
 		public void WriteConfig(GrblConf config)

@@ -33,6 +33,7 @@
 			this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.BS = new System.Windows.Forms.BindingSource(this.components);
+			this.LblConnect = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.GB.SuspendLayout();
@@ -55,6 +56,7 @@
 			this.tableLayoutPanel2.Controls.Add(this.BtnCancel, 6, 0);
 			this.tableLayoutPanel2.Controls.Add(this.BtnImport, 3, 0);
 			this.tableLayoutPanel2.Controls.Add(this.BtnExport, 4, 0);
+			this.tableLayoutPanel2.Controls.Add(this.LblConnect, 2, 0);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			// 
 			// BtnWrite
@@ -83,6 +85,7 @@
 			resources.ApplyResources(this.BtnImport, "BtnImport");
 			this.BtnImport.Name = "BtnImport";
 			this.BtnImport.UseVisualStyleBackColor = true;
+			this.BtnImport.Click += new System.EventHandler(this.BtnImport_Click);
 			// 
 			// BtnExport
 			// 
@@ -111,6 +114,7 @@
             this.descriptionDataGridViewTextBoxColumn});
 			resources.ApplyResources(this.DGV, "DGV");
 			this.DGV.Name = "DGV";
+			this.DGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DGV_DataError);
 			// 
 			// numberDataGridViewTextBoxColumn
 			// 
@@ -155,6 +159,12 @@
 			// 
 			this.BS.DataSource = typeof(LaserGRBL.GrblConf);
 			// 
+			// LblConnect
+			// 
+			resources.ApplyResources(this.LblConnect, "LblConnect");
+			this.LblConnect.ForeColor = System.Drawing.Color.Red;
+			this.LblConnect.Name = "LblConnect";
+			// 
 			// GrblConfig
 			// 
 			resources.ApplyResources(this, "$this");
@@ -164,6 +174,7 @@
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
 			this.GB.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.BS)).EndInit();
@@ -188,5 +199,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
 		private System.Windows.Forms.BindingSource BS;
+		private System.Windows.Forms.Label LblConnect;
     }
 }

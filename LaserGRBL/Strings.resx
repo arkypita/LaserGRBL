@@ -143,7 +143,7 @@ Please manually download the new version from lasergrbl site.</value>
     <value>File does not exist!</value>
   </data>
   <data name="BoxExportConfigSuccess" xml:space="preserve">
-    <value>{0} Config exported with success!</value>
+    <value>{0} Config exported successfully!</value>
   </data>
   <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
     <value>Success</value>
@@ -155,19 +155,19 @@ Please manually download the new version from lasergrbl site.</value>
     <value>{0} Config imported with {1} errors!</value>
   </data>
   <data name="BoxImportConfigWithoutError" xml:space="preserve">
-    <value>{0} Config imported with success!</value>
+    <value>{0} Config imported successfully!</value>
   </data>
   <data name="BoxReadConfigError" xml:space="preserve">
     <value>Error reading config!</value>
   </data>
   <data name="BoxReadConfigSuccess" xml:space="preserve">
-    <value>{0} Config read with success!</value>
+    <value>{0} Config readed successfully!</value>
   </data>
   <data name="BoxWriteConfigWithError" xml:space="preserve">
     <value>{0} Config written with {1} errors!</value>
   </data>
   <data name="BoxWriteConfigWithoutError" xml:space="preserve">
-    <value>{0} Config written with success!</value>
+    <value>{0} Config written successfully!</value>
   </data>
   <data name="CustomButtonEdit" xml:space="preserve">
     <value>Edit button</value>

@@ -134,7 +134,7 @@ namespace LaserGRBL {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a {0} Config exported with success!.
+        ///   Cerca una stringa localizzata simile a {0} Config exported successfully!.
         /// </summary>
         internal static string BoxExportConfigSuccess {
             get {
@@ -170,7 +170,7 @@ namespace LaserGRBL {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a {0} Config imported with success!.
+        ///   Cerca una stringa localizzata simile a {0} Config imported successfully!.
         /// </summary>
         internal static string BoxImportConfigWithoutError {
             get {
@@ -188,7 +188,7 @@ namespace LaserGRBL {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a {0} Config read with success!.
+        ///   Cerca una stringa localizzata simile a {0} Config readed successfully!.
         /// </summary>
         internal static string BoxReadConfigSuccess {
             get {
@@ -206,7 +206,7 @@ namespace LaserGRBL {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a {0} Config written with success!.
+        ///   Cerca una stringa localizzata simile a {0} Config written successfully!.
         /// </summary>
         internal static string BoxWriteConfigWithoutError {
             get {
