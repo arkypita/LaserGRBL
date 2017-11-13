@@ -179,6 +179,42 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Error reading config!.
+        /// </summary>
+        internal static string BoxReadConfigError {
+            get {
+                return ResourceManager.GetString("BoxReadConfigError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a {0} Config read with success!.
+        /// </summary>
+        internal static string BoxReadConfigSuccess {
+            get {
+                return ResourceManager.GetString("BoxReadConfigSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a {0} Config written with {1} errors!.
+        /// </summary>
+        internal static string BoxWriteConfigWithError {
+            get {
+                return ResourceManager.GetString("BoxWriteConfigWithError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a {0} Config written with success!.
+        /// </summary>
+        internal static string BoxWriteConfigWithoutError {
+            get {
+                return ResourceManager.GetString("BoxWriteConfigWithoutError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Edit button.
         /// </summary>
         internal static string CustomButtonEdit {

@@ -72,17 +72,45 @@ namespace LaserGRBL
 
 		private void BtnRead_Click(object sender, EventArgs e)
 		{
-			Cursor = Cursors.WaitCursor;
-			mLocalCopy = Core.ReadConfig();
-			DGV.DataSource = mLocalCopy;
-			Cursor = DefaultCursor;
+			
+			try
+			{
+				Cursor = Cursors.WaitCursor;
+				mLocalCopy = Core.ReadConfig();
+				DGV.DataSource = mLocalCopy;
+				Core.GrblConfiguration = mLocalCopy.Clone() as GrblConf;
+				Cursor = DefaultCursor;
+
+				System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxReadConfigSuccess, mLocalCopy.Count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+			}
+			catch (Exception ex)
+			{
+				Cursor = DefaultCursor;
+				System.Windows.Forms.MessageBox.Show(Strings.BoxReadConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+			}
+			
 		}
 
 		private void BtnWrite_Click(object sender, EventArgs e)
 		{
-			Cursor = Cursors.WaitCursor;
-			Core.WriteConfig(mLocalCopy);
-			Cursor = DefaultCursor;
+			try
+			{
+				Cursor = Cursors.WaitCursor;
+				Core.WriteConfig(mLocalCopy);
+				Cursor = DefaultCursor;
+
+				System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxWriteConfigWithoutError, mLocalCopy.Count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+			}
+			catch (GrblCore.WriteConfigException ex)
+			{
+				Cursor = DefaultCursor;
+				System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxWriteConfigWithError, mLocalCopy.Count, ex.ErrorCount), Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+			}
+			catch (Exception ex)
+			{
+				Cursor = DefaultCursor;
+				System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxWriteConfigWithError, mLocalCopy.Count, "unknown"), Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+			}
 		}
 
 

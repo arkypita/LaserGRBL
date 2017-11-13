@@ -157,6 +157,18 @@ Please manually download the new version from lasergrbl site.</value>
   <data name="BoxImportConfigWithoutError" xml:space="preserve">
     <value>{0} Config imported with success!</value>
   </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>Error reading config!</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} Config read with success!</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} Config written with {1} errors!</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} Config written with success!</value>
+  </data>
   <data name="CustomButtonEdit" xml:space="preserve">
     <value>Edit button</value>
   </data>

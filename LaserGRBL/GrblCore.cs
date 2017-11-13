@@ -457,7 +457,6 @@ namespace LaserGRBL
 								}
 							}
 
-							int count = 0;
 							foreach (IGrblRow row in mSentPtr)
 							{
 								if (row is GrblMessage)
@@ -466,35 +465,48 @@ namespace LaserGRBL
 									int num = int.Parse(msg.Split('=')[0].Substring(1));
 									decimal val = decimal.Parse(msg.Split('=')[1].Split(' ')[0], System.Globalization.NumberFormatInfo.InvariantInfo);
 									rv.Add(new GrblConf.GrblConfParam(num, val));
-									count++;
 								}
 							}
-
-							System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxExportConfigSuccess, count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 						}
-
 					}
 					catch (Exception ex)
 					{
-						Logger.LogException("ExportConfig", ex);
-						System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+						Logger.LogException("Read Config", ex);
+						throw (ex);
 					}
-
-
-					lock (this)
+					finally
 					{
-						mQueuePtr = mQueue;
-						mSentPtr = mSent; //restore queue
+						lock (this)
+						{
+							mQueuePtr = mQueue;
+							mSentPtr = mSent; //restore queue
+						}
 					}
 				}
 				catch (Exception ex)
 				{
-					Logger.LogException("ExportConfig", ex);
-					System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+					Logger.LogException("Read Config", ex);
+					throw (ex);
 				}
 			}
 
 			return rv;
+		}
+
+		public class WriteConfigException : Exception
+		{
+			private System.Collections.Generic.List<IGrblRow> ErrorLines = new System.Collections.Generic.List<IGrblRow>();
+
+			public WriteConfigException(System.Collections.Generic.List<IGrblRow> mSentPtr)
+			{
+				foreach (IGrblRow row in mSentPtr)
+					if (row is GrblCommand)
+						if (((GrblCommand)row).Status != GrblCommand.CommandStatus.ResponseGood)
+							ErrorLines.Add(row);
+			}
+
+			public int ErrorCount
+			{ get { return ErrorLines.Count; } }
 		}
 
 		public void WriteConfig(GrblConf config)
@@ -529,27 +541,28 @@ namespace LaserGRBL
 						}
 
 						if (errors > 0)
-							System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxImportConfigWithError, mSentPtr.Count, errors), Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-						else
-							System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxImportConfigWithoutError, mSentPtr.Count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+							throw new WriteConfigException(mSentPtr);
+
 					}
 					catch (Exception ex)
 					{
-						Logger.LogException("ImportConfig", ex);
-						System.Windows.Forms.MessageBox.Show(Strings.BoxImportConfigFileError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+						Logger.LogException("Write Config", ex);
+						throw (ex);
 					}
-
-					lock (this)
+					finally
 					{
-						mQueuePtr = mQueue;
-						mSentPtr = mSent; //restore queue
+						lock (this)
+						{
+							mQueuePtr = mQueue;
+							mSentPtr = mSent; //restore queue
+						}
 					}
 
 				}
 				catch (Exception ex)
 				{
-					Logger.LogException("ImportConfig", ex);
-					System.Windows.Forms.MessageBox.Show(Strings.BoxImportConfigFileError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+					Logger.LogException("Write Config", ex);
+					throw ex;
 				}
 			}
 		}
