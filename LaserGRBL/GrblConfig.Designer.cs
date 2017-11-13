@@ -7,18 +7,6 @@
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
 
 		#region Windows Form Designer generated code
 
@@ -32,8 +20,11 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GrblConfig));
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.BtnWrite = new System.Windows.Forms.Button();
+			this.BtnRead = new System.Windows.Forms.Button();
 			this.BtnCancel = new System.Windows.Forms.Button();
-			this.BtnSave = new System.Windows.Forms.Button();
+			this.BtnImport = new System.Windows.Forms.Button();
+			this.BtnExport = new System.Windows.Forms.Button();
 			this.GB = new System.Windows.Forms.GroupBox();
 			this.DGV = new System.Windows.Forms.DataGridView();
 			this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,9 +50,26 @@
 			// tableLayoutPanel2
 			// 
 			resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
-			this.tableLayoutPanel2.Controls.Add(this.BtnCancel, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.BtnSave, 2, 0);
+			this.tableLayoutPanel2.Controls.Add(this.BtnWrite, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.BtnRead, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.BtnCancel, 6, 0);
+			this.tableLayoutPanel2.Controls.Add(this.BtnImport, 3, 0);
+			this.tableLayoutPanel2.Controls.Add(this.BtnExport, 4, 0);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			// 
+			// BtnWrite
+			// 
+			resources.ApplyResources(this.BtnWrite, "BtnWrite");
+			this.BtnWrite.Name = "BtnWrite";
+			this.BtnWrite.UseVisualStyleBackColor = true;
+			this.BtnWrite.Click += new System.EventHandler(this.BtnWrite_Click);
+			// 
+			// BtnRead
+			// 
+			resources.ApplyResources(this.BtnRead, "BtnRead");
+			this.BtnRead.Name = "BtnRead";
+			this.BtnRead.UseVisualStyleBackColor = true;
+			this.BtnRead.Click += new System.EventHandler(this.BtnRead_Click);
 			// 
 			// BtnCancel
 			// 
@@ -70,12 +78,17 @@
 			this.BtnCancel.UseVisualStyleBackColor = true;
 			this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
 			// 
-			// BtnSave
+			// BtnImport
 			// 
-			resources.ApplyResources(this.BtnSave, "BtnSave");
-			this.BtnSave.Name = "BtnSave";
-			this.BtnSave.UseVisualStyleBackColor = true;
-			this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
+			resources.ApplyResources(this.BtnImport, "BtnImport");
+			this.BtnImport.Name = "BtnImport";
+			this.BtnImport.UseVisualStyleBackColor = true;
+			// 
+			// BtnExport
+			// 
+			resources.ApplyResources(this.BtnExport, "BtnExport");
+			this.BtnExport.Name = "BtnExport";
+			this.BtnExport.UseVisualStyleBackColor = true;
 			// 
 			// GB
 			// 
@@ -88,7 +101,6 @@
 			// 
 			this.DGV.AllowUserToAddRows = false;
 			this.DGV.AllowUserToDeleteRows = false;
-			this.DGV.AutoGenerateColumns = false;
 			this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numberDataGridViewTextBoxColumn,
@@ -96,7 +108,6 @@
             this.valueDataGridViewTextBoxColumn,
             this.unitDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn});
-			this.DGV.DataSource = this.BS;
 			resources.ApplyResources(this.DGV, "DGV");
 			this.DGV.Name = "DGV";
 			// 
@@ -164,14 +175,17 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Button BtnCancel;
-		private System.Windows.Forms.Button BtnSave;
 		private System.Windows.Forms.GroupBox GB;
 		private System.Windows.Forms.DataGridView DGV;
-		private System.Windows.Forms.BindingSource BS;
+		private System.Windows.Forms.Button BtnWrite;
+		private System.Windows.Forms.Button BtnRead;
+		private System.Windows.Forms.Button BtnImport;
+		private System.Windows.Forms.Button BtnExport;
 		private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn parameterDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+		private System.Windows.Forms.BindingSource BS;
     }
 }

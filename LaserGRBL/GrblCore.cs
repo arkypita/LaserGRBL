@@ -22,38 +22,38 @@ namespace LaserGRBL
 			{ StatusQuery = query; TxLong = txlong; TxShort = txshort; RxLong = rxlong; RxShort = rxshort; Name = name; }
 
 			public static ThreadingMode Slow
-			{ get { return new ThreadingMode ( 2000, 15, 4, 2, 1, "Slow" ); } }
+			{ get { return new ThreadingMode(2000, 15, 4, 2, 1, "Slow"); } }
 
 			public static ThreadingMode Quiet
-			{ get { return new ThreadingMode ( 1000, 10, 2, 1, 1, "Quiet" ); } }
+			{ get { return new ThreadingMode(1000, 10, 2, 1, 1, "Quiet"); } }
 
 			public static ThreadingMode Fast
-			{ get { return new ThreadingMode ( 500, 5, 1, 1, 0, "Fast" ); } }
+			{ get { return new ThreadingMode(500, 5, 1, 1, 0, "Fast"); } }
 
 			public static ThreadingMode UltraFast
-			{ get { return new ThreadingMode ( 200, 1, 0, 0, 0, "UltraFast" ); } }
+			{ get { return new ThreadingMode(200, 1, 0, 0, 0, "UltraFast"); } }
 
 			public static ThreadingMode Insane
-			{ get { return new ThreadingMode ( 100, 1, 0, 0, 0, "Insane" ); } }
+			{ get { return new ThreadingMode(100, 1, 0, 0, 0, "Insane"); } }
 
 			public override string ToString()
-			{return Name;}
+			{ return Name; }
 
 			public override bool Equals(object obj)
-			{return obj != null && obj is ThreadingMode && ((ThreadingMode)obj).Name == Name;}
+			{ return obj != null && obj is ThreadingMode && ((ThreadingMode)obj).Name == Name; }
 		}
 
-		
+
 
 		public enum DetectedIssue
-		{ 
+		{
 			Unknown = 0,
 			ManualReset = -1,
-			ManualDisconnect = -2, 
+			ManualDisconnect = -2,
 			StopResponding = 1,
 			//StopMoving = 2, 
 			UnexpectedReset = 3,
-			UnexpectedDisconnect = 4 
+			UnexpectedDisconnect = 4
 		}
 
 		public enum MacStatus
@@ -103,10 +103,10 @@ namespace LaserGRBL
 			}
 
 			public static bool operator >(GrblVersionInfo a, GrblVersionInfo b)
-			{return (b < a);}
+			{ return (b < a); }
 
 			public static bool operator >=(GrblVersionInfo a, GrblVersionInfo b)
-			{return (b <= a);}
+			{ return (b <= a); }
 
 			public override string ToString()
 			{
@@ -119,9 +119,9 @@ namespace LaserGRBL
 			public override bool Equals(object obj)
 			{
 				GrblVersionInfo v = obj as GrblVersionInfo;
-				return v != null && this.mMajor == v.mMajor && this.mMinor == v.mMinor && this.mBuild == v.mBuild; 
+				return v != null && this.mMajor == v.mMajor && this.mMinor == v.mMinor && this.mBuild == v.mBuild;
 			}
-		
+
 			public override int GetHashCode()
 			{
 				unchecked
@@ -184,7 +184,7 @@ namespace LaserGRBL
 		private GrblCommand mRetryQueue; //coda[1] di quelli in attesa di risposta
 		private System.Collections.Generic.Queue<GrblCommand> mPending; //coda di quelli in attesa di risposta
 		private System.Collections.Generic.List<IGrblRow> mSent; //lista di quelli mandati
-		
+
 		private System.Collections.Generic.Queue<GrblCommand> mQueuePtr; //puntatore a coda di quelli da mandare (normalmente punta a mQueue, salvo per import/export configurazione)
 		private System.Collections.Generic.List<IGrblRow> mSentPtr; //puntatore a lista di quelli mandati (normalmente punta a mSent, salvo per import/export configurazione)
 
@@ -258,12 +258,11 @@ namespace LaserGRBL
 
 		public GrblConf GrblConfiguration
 		{
-			get 
+			get { return (GrblConf)Settings.GetObject("Grbl Configuration", new GrblConf()); }
+			set
 			{
-				return mConf;
-			}
-			set 
-			{
+				Settings.SetObject("Grbl Configuration", value);
+				Settings.Save();
 			}
 		}
 
@@ -289,7 +288,7 @@ namespace LaserGRBL
 		public GrblVersionInfo GrblVersion
 		{
 			get { return mGrblVersion; }
-			set 
+			set
 			{
 				if (mGrblVersion == null || !mGrblVersion.Equals(value))
 				{
@@ -391,7 +390,7 @@ namespace LaserGRBL
 						System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
 
 						try
-						{file.LoadFile(filename);}
+						{ file.LoadFile(filename); }
 						catch (Exception ex)
 						{ Logger.LogException("GCodeImport", ex); }
 
@@ -411,235 +410,141 @@ namespace LaserGRBL
 				file.SaveProgram(filename);
 		}
 
-		GrblConf mConf;
-		public void ReadConfig()
+		public GrblConf ReadConfig()
 		{
-			GrblConf newConf = new GrblConf();
+			GrblConf rv = new GrblConf();
 			if (mMachineStatus == MacStatus.Idle)
 			{
 				try
 				{
-						GrblCommand cmd = new GrblCommand("$$");
-						lock (this)
-						{
-							mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
-							mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
-							mQueuePtr.Enqueue(cmd);
-						}
-
-						try
-						{
-							Tools.PeriodicEventTimer WaitResponseTimeout = new Tools.PeriodicEventTimer(TimeSpan.FromSeconds(10), true);
-
-							//resta in attesa dell'invio del comando e della risposta
-							while (cmd.Status == GrblCommand.CommandStatus.Queued || cmd.Status == GrblCommand.CommandStatus.WaitingResponse)
-								if (WaitResponseTimeout.Expired)
-									throw new TimeoutException("No response received from grbl!");
-								else
-									System.Threading.Thread.Sleep(10);
-
-							if (cmd.Status == GrblCommand.CommandStatus.ResponseGood)
-							{
-								//attendi la ricezione di tutti i parametri
-								long tStart = Tools.HiResTimer.TotalMilliseconds;
-								long tLast = tStart;
-								int counter = mSentPtr.Count;
-
-								//finché l'ultima risposta è più recente di 1s e non sono passati più di 10s totali
-								while (Tools.HiResTimer.TotalMilliseconds - tLast < 1000 && Tools.HiResTimer.TotalMilliseconds - tStart < 10000)
-								{
-									if (mSentPtr.Count != counter)
-									{
-										tLast = Tools.HiResTimer.TotalMilliseconds;
-										counter = mSentPtr.Count;
-									}
-									else
-									{
-										System.Threading.Thread.Sleep(10);
-									}
-								}
-
-								foreach (IGrblRow row in mSentPtr)
-								{
-									if (row is GrblMessage)
-									{
-										string msg = row.GetMessage(); //"$0=10 (Step pulse time)"
-										int num = int.Parse(msg.Split('=')[0].Substring(1));
-										decimal val = decimal.Parse(msg.Split('=')[1].Split(' ')[0], System.Globalization.NumberFormatInfo.InvariantInfo);
-										newConf.Add(new GrblConf.GrblConfParam(num, val));
-									}
-								}
-
-								mConf = newConf;
-							}
-
-						}
-						catch (Exception ex)
-						{
-							Logger.LogException("ExportConfig", ex);
-							System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-						}
-
-
-						lock (this)
-						{
-							mQueuePtr = mQueue;
-							mSentPtr = mSent; //restore queue
-						}
-					}
-				catch (Exception ex)
-				{
-					Logger.LogException("ExportConfig", ex);
-					System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-				}
-			}
-		}
-
-		public void ExportConfig(string filename)
-		{
-			if (mMachineStatus == MacStatus.Idle)
-			{
-				try
-				{
-					using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filename))
+					GrblCommand cmd = new GrblCommand("$$");
+					lock (this)
 					{
-						GrblCommand cmd = new GrblCommand("$$");
-						lock (this)
-						{
-							mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
-							mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
-							mQueuePtr.Enqueue(cmd);
-						}
+						mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
+						mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
+						mQueuePtr.Enqueue(cmd);
+					}
 
-						try
-						{
-							Tools.PeriodicEventTimer WaitResponseTimeout = new Tools.PeriodicEventTimer(TimeSpan.FromSeconds(10), true);
+					try
+					{
+						Tools.PeriodicEventTimer WaitResponseTimeout = new Tools.PeriodicEventTimer(TimeSpan.FromSeconds(10), true);
 
-							//resta in attesa dell'invio del comando e della risposta
-							while (cmd.Status == GrblCommand.CommandStatus.Queued || cmd.Status == GrblCommand.CommandStatus.WaitingResponse)
-								if (WaitResponseTimeout.Expired)
-									throw new TimeoutException("No response received from grbl!");
-								else
-									System.Threading.Thread.Sleep(10);
-
-							if (cmd.Status == GrblCommand.CommandStatus.ResponseGood)
-							{
-								//attendi la ricezione di tutti i parametri
-								long tStart = Tools.HiResTimer.TotalMilliseconds;
-								long tLast = tStart;
-								int counter = mSentPtr.Count;
-
-								//finché l'ultima risposta è più recente di 1s e non sono passati più di 10s totali
-								while (Tools.HiResTimer.TotalMilliseconds - tLast < 1000 && Tools.HiResTimer.TotalMilliseconds - tStart < 10000)
-								{
-									if (mSentPtr.Count != counter)
-									{
-										tLast = Tools.HiResTimer.TotalMilliseconds;
-										counter = mSentPtr.Count;
-									}
-									else
-									{
-										System.Threading.Thread.Sleep(10);
-									}
-								}
-
-								int msg = 0;
-								foreach (IGrblRow row in mSentPtr)
-								{
-									if (row is GrblMessage)
-									{
-										sw.WriteLine(((GrblMessage)row).Message);
-										msg++;
-									}
-								}
-
-								sw.Close();
-								System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxExportConfigSuccess, msg), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-							}
+						//resta in attesa dell'invio del comando e della risposta
+						while (cmd.Status == GrblCommand.CommandStatus.Queued || cmd.Status == GrblCommand.CommandStatus.WaitingResponse)
+							if (WaitResponseTimeout.Expired)
+								throw new TimeoutException("No response received from grbl!");
 							else
+								System.Threading.Thread.Sleep(10);
+
+						if (cmd.Status == GrblCommand.CommandStatus.ResponseGood)
+						{
+							//attendi la ricezione di tutti i parametri
+							long tStart = Tools.HiResTimer.TotalMilliseconds;
+							long tLast = tStart;
+							int counter = mSentPtr.Count;
+
+							//finché l'ultima risposta è più recente di 1s e non sono passati più di 10s totali
+							while (Tools.HiResTimer.TotalMilliseconds - tLast < 1000 && Tools.HiResTimer.TotalMilliseconds - tStart < 10000)
 							{
-								System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+								if (mSentPtr.Count != counter)
+								{
+									tLast = Tools.HiResTimer.TotalMilliseconds;
+									counter = mSentPtr.Count;
+								}
+								else
+								{
+									System.Threading.Thread.Sleep(10);
+								}
 							}
-						}
-						catch (Exception ex)
-						{
-							Logger.LogException("ExportConfig", ex);
-							System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-						}
 
-
-						lock (this)
-						{
-							mQueuePtr = mQueue;
-							mSentPtr = mSent; //restore queue
-						}
-					}
-				}
-				catch (Exception ex)
-				{
-					Logger.LogException("ExportConfig", ex);
-					System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-				}
-			}
-		}
-
-		public void ImportConfig(string filename)
-		{
-
-			if (!System.IO.File.Exists(filename))
-			{
-				System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigFileNotFound, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-				return;
-			}
-
-			if (mMachineStatus == MacStatus.Idle)
-			{
-				try
-				{
-					using (System.IO.StreamReader sr = new System.IO.StreamReader(filename))
-					{
-						lock (this)
-						{
-							mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
-							mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
-
-							string rline = null;
-							while ((rline = sr.ReadLine()) != null)
-								if (rline.StartsWith("$"))
-									mQueuePtr.Enqueue(new GrblCommand(rline));
-						}
-
-						try
-						{
-							sr.Close();
-							while (com.IsOpen && (mQueuePtr.Count > 0 || mPending.Count > 0)) //resta in attesa del completamento della comunicazione
-								;
-
-							int errors = 0;
+							int count = 0;
 							foreach (IGrblRow row in mSentPtr)
 							{
-								if (row is GrblCommand)
-									if (((GrblCommand)row).Status != GrblCommand.CommandStatus.ResponseGood)
-										errors++;
+								if (row is GrblMessage)
+								{
+									string msg = row.GetMessage(); //"$0=10 (Step pulse time)"
+									int num = int.Parse(msg.Split('=')[0].Substring(1));
+									decimal val = decimal.Parse(msg.Split('=')[1].Split(' ')[0], System.Globalization.NumberFormatInfo.InvariantInfo);
+									rv.Add(new GrblConf.GrblConfParam(num, val));
+									count++;
+								}
 							}
 
-							if (errors > 0)
-								System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxImportConfigWithError, mSentPtr.Count, errors), Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-							else
-								System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxImportConfigWithoutError, mSentPtr.Count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-						}
-						catch (Exception ex)
-						{
-							Logger.LogException("ImportConfig", ex);
-							System.Windows.Forms.MessageBox.Show(Strings.BoxImportConfigFileError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+							System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxExportConfigSuccess, count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 						}
 
-						lock (this)
-						{
-							mQueuePtr = mQueue;
-							mSentPtr = mSent; //restore queue
-						}
 					}
+					catch (Exception ex)
+					{
+						Logger.LogException("ExportConfig", ex);
+						System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+					}
+
+
+					lock (this)
+					{
+						mQueuePtr = mQueue;
+						mSentPtr = mSent; //restore queue
+					}
+				}
+				catch (Exception ex)
+				{
+					Logger.LogException("ExportConfig", ex);
+					System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				}
+			}
+
+			return rv;
+		}
+
+		public void WriteConfig(GrblConf config)
+		{
+			if (mMachineStatus == MacStatus.Idle)
+			{
+				try
+				{
+
+					lock (this)
+					{
+						mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
+						mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
+
+						string rline = null;
+
+						foreach (GrblConf.GrblConfParam p in config)
+							mQueuePtr.Enqueue(new GrblCommand(string.Format("${0}={1}", p.Number, p.Value.ToString(System.Globalization.NumberFormatInfo.InvariantInfo))));
+					}
+
+					try
+					{
+						while (com.IsOpen && (mQueuePtr.Count > 0 || mPending.Count > 0)) //resta in attesa del completamento della comunicazione
+							;
+
+						int errors = 0;
+						foreach (IGrblRow row in mSentPtr)
+						{
+							if (row is GrblCommand)
+								if (((GrblCommand)row).Status != GrblCommand.CommandStatus.ResponseGood)
+									errors++;
+						}
+
+						if (errors > 0)
+							System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxImportConfigWithError, mSentPtr.Count, errors), Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+						else
+							System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxImportConfigWithoutError, mSentPtr.Count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+					}
+					catch (Exception ex)
+					{
+						Logger.LogException("ImportConfig", ex);
+						System.Windows.Forms.MessageBox.Show(Strings.BoxImportConfigFileError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+					}
+
+					lock (this)
+					{
+						mQueuePtr = mQueue;
+						mSentPtr = mSent; //restore queue
+					}
+
 				}
 				catch (Exception ex)
 				{
@@ -693,8 +598,8 @@ namespace LaserGRBL
 
 				ClearQueue(false); //lascia l'eventuale lista delle cose già mandate, se ce l'hai ancora
 
-				mSentPtr.Add(new GrblMessage(string.Format("[resume from #{0}]", position+1), false));
-				Logger.LogMessage("ResumeProgram", "Resume program from #{0}", position+1);
+				mSentPtr.Add(new GrblMessage(string.Format("[resume from #{0}]", position + 1), false));
+				Logger.LogMessage("ResumeProgram", "Resume program from #{0}", position + 1);
 
 				GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
 
@@ -708,7 +613,7 @@ namespace LaserGRBL
 				mQueuePtr.Enqueue(new GrblCommand("G90")); //absolute coordinate
 				mQueuePtr.Enqueue(new GrblCommand(string.Format("M5 G0 {0} {1} {2} {3}", spb.X, spb.Y, spb.F, spb.S))); //fast go to the computed position with laser off and set speed and power
 				mQueuePtr.Enqueue(new GrblCommand(spb.GetSettledModals()));
-				
+
 				mTP.JobContinue(position, mQueuePtr.Count);
 
 				for (int i = position; i < file.Count; i++) //enqueue remaining commands
@@ -888,7 +793,7 @@ namespace LaserGRBL
 		{ get { return mMPos; } }
 
 		public System.Drawing.PointF WorkPosition //WCO = MPos - WPos
-		{ get { return new System.Drawing.PointF (mMPos.X - mWCO.X, mMPos.Y - mWCO.Y); } }
+		{ get { return new System.Drawing.PointF(mMPos.X - mWCO.X, mMPos.Y - mWCO.Y); } }
 
 		public System.Drawing.PointF WorkingOffset
 		{ get { return mWCO; } }
@@ -1002,7 +907,7 @@ namespace LaserGRBL
 				{
 					if (MachineStatus == MacStatus.Connecting && Tools.HiResTimer.TotalMilliseconds - connectStart > 10000)
 						OnConnectTimeout();
-					
+
 					if (!TX.MustExitTH() && CanSend())
 						SendLine();
 
@@ -1077,11 +982,11 @@ namespace LaserGRBL
 			if (mRetryQueue != null)
 				mRetryQueue = null;
 			else
-				mQueuePtr.Dequeue(); 
+				mQueuePtr.Dequeue();
 		}
 
 		private bool HasSpaceInBuffer(GrblCommand command)
-		{return (mBuffer + command.SerialData.Length) <= BUFFER_SIZE;}
+		{ return (mBuffer + command.SerialData.Length) <= BUFFER_SIZE; }
 
 		private void SendLine()
 		{
@@ -1517,7 +1422,7 @@ namespace LaserGRBL
 		public bool CanResumeHold
 		{ get { return IsOpen && (MachineStatus == MacStatus.Door || MachineStatus == MacStatus.Hold); } }
 
-		public decimal LoopCount 
+		public decimal LoopCount
 		{ get { return mLoopCount; } set { mLoopCount = value; if (OnLoopCountChange != null) OnLoopCountChange(mLoopCount); } }
 
 		private ThreadingMode CurrentThreadingMode
@@ -1536,7 +1441,7 @@ namespace LaserGRBL
 			{
 				if (mDataPath == null)
 				{
- 					mDataPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LaserGRBL");
+					mDataPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LaserGRBL");
 					if (!System.IO.Directory.Exists(mDataPath))
 						System.IO.Directory.CreateDirectory(mDataPath);
 				}
@@ -1595,7 +1500,7 @@ namespace LaserGRBL
 		private int mContinueCorrection;
 
 		GrblCore.DetectedIssue mLastIssue;
-		
+
 		public TimeProjection()
 		{ Reset(); }
 
@@ -1704,10 +1609,10 @@ namespace LaserGRBL
 		{
 			if (!mStarted)
 			{
-			//	mETarget = EstimatedTarget;
-			//	mTargetCount = LineCount;
-			//	mEProgress = TimeSpan.Zero;
-			//	mStart = Tools.HiResTimer.TotalMilliseconds;
+				//	mETarget = EstimatedTarget;
+				//	mTargetCount = LineCount;
+				//	mEProgress = TimeSpan.Zero;
+				//	mStart = Tools.HiResTimer.TotalMilliseconds;
 				mPauseBegin = 0;
 				mInPause = false;
 				mCompleted = false;
@@ -1715,7 +1620,7 @@ namespace LaserGRBL
 				mExecutedCount = position;
 				mSentCount = position;
 				mLastIssue = GrblCore.DetectedIssue.Unknown;
-			//	mErrorCount = 0;
+				//	mErrorCount = 0;
 				mContinueCorrection = added;
 			}
 		}
@@ -1786,9 +1691,11 @@ namespace LaserGRBL
 		{ get { return mLastIssue; } }
 	}
 
-	public class GrblConf : System.Collections.Generic.List<GrblConf.GrblConfParam>
+	[Serializable]
+	public class GrblConf : System.Collections.Generic.List<GrblConf.GrblConfParam>, ICloneable
 	{
-		public class GrblConfParam
+		[Serializable]
+		public class GrblConfParam : ICloneable
 		{
 			private int mNumber;
 			private decimal mValue;
@@ -1803,9 +1710,9 @@ namespace LaserGRBL
 			{ get { return CSVD.Settings.GetItem(mNumber.ToString(), 0); } }
 
 			public decimal Value
-			{ 
-				get { return mValue; } 
-				set { mValue = value; } 
+			{
+				get { return mValue; }
+				set { mValue = value; }
 			}
 
 			public string Unit
@@ -1813,6 +1720,17 @@ namespace LaserGRBL
 
 			public string Description
 			{ get { return CSVD.Settings.GetItem(mNumber.ToString(), 2); } }
+
+			public object Clone()
+			{ return new GrblConfParam(mNumber, mValue); }
+		}
+
+		public object Clone()
+		{
+			GrblConf rv = new GrblConf();
+			foreach (GrblConfParam p in this)
+				rv.Add((GrblConfParam)p.Clone());
+			return rv;
 		}
 	}
 }

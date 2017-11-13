@@ -146,9 +146,10 @@ namespace LaserGRBL
 
 			MnFileOpen.Enabled = Core.CanLoadNewFile;
 			MnSaveProgram.Enabled = Core.HasProgram;
-			MnFileSend.Enabled = Core.CanSendFile; 
-			MnExportConfig.Enabled = Core.CanImportExport;
-			MnImportConfig.Enabled = Core.CanImportExport;
+			MnFileSend.Enabled = Core.CanSendFile;
+			MnGrblConfig.Enabled = true;
+			//MnExportConfig.Enabled = Core.CanImportExport;
+			//MnImportConfig.Enabled = Core.CanImportExport;
 			MnGrblReset.Enabled = Core.CanResetGrbl;
 
 			MNEsp8266.Visible = ((ComWrapper.WrapperType)Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial)) == ComWrapper.WrapperType.LaserWebESP8266;
@@ -201,38 +202,6 @@ namespace LaserGRBL
 			Version current = typeof(GitHub).Assembly.GetName().Version;
 			string FormTitle = string.Format("LaserGRBL v{0}", current.ToString(3));
 			if (Text != FormTitle) Text = FormTitle;
-		}
-
-		void MnExportConfigClick(object sender, EventArgs e)
-		{
-			string filename = null;
-			using (System.Windows.Forms.SaveFileDialog ofd = new SaveFileDialog())
-			{
-				ofd.Filter = "GCODE Files|*.nc";
-				ofd.AddExtension = true;
-				ofd.RestoreDirectory = true;
-				if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-					filename = ofd.FileName;
-			}
-
-			if (filename != null)
-			{Core.ExportConfig(filename);}
-		}
-
-		void MnImportConfigClick(object sender, EventArgs e)
-		{
-			string filename = null;
-			using (System.Windows.Forms.OpenFileDialog ofd = new OpenFileDialog())
-			{
-				ofd.Filter = "GCODE Files|*.nc;*.gcode";
-				ofd.CheckFileExists = true;
-				ofd.Multiselect = false;
-				ofd.RestoreDirectory = true;
-				if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-					filename = ofd.FileName;
-			}
-			
-			Core.ImportConfig(filename);
 		}
 
 		void ExitToolStripMenuItemClick(object sender, EventArgs e)
