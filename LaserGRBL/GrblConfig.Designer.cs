@@ -89,6 +89,7 @@
 			resources.ApplyResources(this.BtnExport, "BtnExport");
 			this.BtnExport.Name = "BtnExport";
 			this.BtnExport.UseVisualStyleBackColor = true;
+			this.BtnExport.Click += new System.EventHandler(this.BtnExport_Click);
 			// 
 			// GB
 			// 

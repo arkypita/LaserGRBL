@@ -49,20 +49,13 @@ namespace LaserGRBL
 		void RefreshEnabledButtons()
 		{
 			BtnRead.Enabled = BtnWrite.Enabled = Core.MachineStatus == GrblCore.MacStatus.Idle;
+			BtnExport.Enabled = mLocalCopy.Count > 0;
 		}
 
 		internal static void CreateAndShowDialog(GrblCore core)
 		{
 			using (GrblConfig sf = new GrblConfig(core))
 				sf.ShowDialog();
-		}
-
-		private void BtnSave_Click(object sender, EventArgs e)
-		{
-
-			Settings.Save();
-
-			Close();
 		}
 
 		private void BtnCancel_Click(object sender, EventArgs e)
@@ -79,6 +72,7 @@ namespace LaserGRBL
 				mLocalCopy = Core.ReadConfig();
 				DGV.DataSource = mLocalCopy;
 				Core.GrblConfiguration = mLocalCopy.Clone() as GrblConf;
+				RefreshEnabledButtons();
 				Cursor = DefaultCursor;
 
 				System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxReadConfigSuccess, mLocalCopy.Count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
@@ -113,7 +107,44 @@ namespace LaserGRBL
 			}
 		}
 
+		private void BtnExport_Click(object sender, EventArgs e)
+		{
+			string filename = null;
+			using (System.Windows.Forms.SaveFileDialog ofd = new SaveFileDialog())
+			{
+				ofd.Filter = "GCODE Files|*.nc";
+				ofd.AddExtension = true;
+				ofd.RestoreDirectory = true;
+				if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+					filename = ofd.FileName;
+			}
 
+			if (filename != null)
+			{ ExportConfig(filename); }
+		}
+
+		public void ExportConfig(string filename)
+		{
+			if (mLocalCopy.Count > 0)
+			{
+				try
+				{
+					using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filename))
+					{
+						foreach (GrblConf.GrblConfParam p in mLocalCopy)
+							sw.WriteLine(string.Format("${0}={1} ({2})", p.Number, p.Value.ToString(System.Globalization.NumberFormatInfo.InvariantInfo), p.Parameter));
+
+						sw.Close();
+						System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxExportConfigSuccess, mLocalCopy.Count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+					}
+				}
+				catch (Exception ex)
+				{
+					Logger.LogException("ExportConfig", ex);
+					System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				}
+			}
+		}
 	}
 
 
@@ -121,22 +152,6 @@ namespace LaserGRBL
 
 
 /*
-void MnExportConfigClick(object sender, EventArgs e)
-{
-	string filename = null;
-	using (System.Windows.Forms.SaveFileDialog ofd = new SaveFileDialog())
-	{
-		ofd.Filter = "GCODE Files|*.nc";
-		ofd.AddExtension = true;
-		ofd.RestoreDirectory = true;
-		if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-			filename = ofd.FileName;
-	}
-
-	if (filename != null)
-	{Core.ExportConfig(filename);}
-}
-
 void MnImportConfigClick(object sender, EventArgs e)
 {
 	string filename = null;
@@ -157,93 +172,7 @@ void MnImportConfigClick(object sender, EventArgs e)
 
 /*
 
-	public void ExportConfig(string filename)
-		{
-			if (mMachineStatus == MacStatus.Idle)
-			{
-				try
-				{
-					using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filename))
-					{
-						GrblCommand cmd = new GrblCommand("$$");
-						lock (this)
-						{
-							mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
-							mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
-							mQueuePtr.Enqueue(cmd);
-						}
-
-						try
-						{
-							Tools.PeriodicEventTimer WaitResponseTimeout = new Tools.PeriodicEventTimer(TimeSpan.FromSeconds(10), true);
-
-							//resta in attesa dell'invio del comando e della risposta
-							while (cmd.Status == GrblCommand.CommandStatus.Queued || cmd.Status == GrblCommand.CommandStatus.WaitingResponse)
-								if (WaitResponseTimeout.Expired)
-									throw new TimeoutException("No response received from grbl!");
-								else
-									System.Threading.Thread.Sleep(10);
-
-							if (cmd.Status == GrblCommand.CommandStatus.ResponseGood)
-							{
-								//attendi la ricezione di tutti i parametri
-								long tStart = Tools.HiResTimer.TotalMilliseconds;
-								long tLast = tStart;
-								int counter = mSentPtr.Count;
-
-								//finché l'ultima risposta è più recente di 1s e non sono passati più di 10s totali
-								while (Tools.HiResTimer.TotalMilliseconds - tLast < 1000 && Tools.HiResTimer.TotalMilliseconds - tStart < 10000)
-								{
-									if (mSentPtr.Count != counter)
-									{
-										tLast = Tools.HiResTimer.TotalMilliseconds;
-										counter = mSentPtr.Count;
-									}
-									else
-									{
-										System.Threading.Thread.Sleep(10);
-									}
-								}
-
-								int msg = 0;
-								foreach (IGrblRow row in mSentPtr)
-								{
-									if (row is GrblMessage)
-									{
-										sw.WriteLine(((GrblMessage)row).Message);
-										msg++;
-									}
-								}
-
-								sw.Close();
-								System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxExportConfigSuccess, msg), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-							}
-							else
-							{
-								System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-							}
-						}
-						catch (Exception ex)
-						{
-							Logger.LogException("ExportConfig", ex);
-							System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-						}
-
-
-						lock (this)
-						{
-							mQueuePtr = mQueue;
-							mSentPtr = mSent; //restore queue
-						}
-					}
-				}
-				catch (Exception ex)
-				{
-					Logger.LogException("ExportConfig", ex);
-					System.Windows.Forms.MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-				}
-			}
-		}
+	
 
 		public void ImportConfig(string filename)
 		{
