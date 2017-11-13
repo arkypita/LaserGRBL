@@ -65,6 +65,7 @@ namespace LaserGRBL
 		public enum StreamingMode
 		{ Buffered, Synchronous, RepeatOnError }
 
+		[Serializable]
 		public class GrblVersionInfo : IComparable
 		{
 			int mMajor;
@@ -412,7 +413,7 @@ namespace LaserGRBL
 
 		public GrblConf ReadConfig()
 		{
-			GrblConf rv = new GrblConf();
+			GrblConf rv = new GrblConf(GrblVersion);
 			if (mMachineStatus == MacStatus.Idle)
 			{
 				try
@@ -1738,13 +1739,61 @@ namespace LaserGRBL
 			{ return new GrblConfParam(mNumber, mValue); }
 		}
 
+		decimal mMaxRateX = decimal.MinValue;
+		decimal mMaxRateY = decimal.MinValue;
+		public GrblCore.GrblVersionInfo mVersion = null; //must set when read
+
+		public GrblConf(GrblCore.GrblVersionInfo GrblVersion)
+		{mVersion = GrblVersion;}
+
+		public GrblConf()
+		{ mVersion = new GrblCore.GrblVersionInfo(0, 0); }
+
+		public decimal MaxRateX 
+		{
+			get
+			{
+				if (mMaxRateX == decimal.MinValue)
+				{
+					int number = mVersion >= new GrblCore.GrblVersionInfo(1, 1) ? 110 : 4; //$4 v0.8, $110 v0.9+
+					mMaxRateX = ReadWithDefault(number, 4000);
+				}
+				return mMaxRateX;
+			}
+		}
+
+		public decimal MaxRateY 
+		{
+			get
+			{
+				if (mMaxRateY == decimal.MinValue)
+				{
+					int number = mVersion >= new GrblCore.GrblVersionInfo(1, 1) ? 111 : 5; //$5 v0.8, $111 v0.9+
+					mMaxRateY = ReadWithDefault(number, 4000);
+				}
+				return mMaxRateY;
+			}
+		}
+
+		private decimal ReadWithDefault(int number, decimal defval)
+		{
+			foreach (GrblConf.GrblConfParam p in this)
+				if (p.Number == number)
+					return p.Value;
+			return defval;
+		}
+
 		public object Clone()
 		{
 			GrblConf rv = new GrblConf();
+			rv.mVersion = mVersion;
+			rv.mMaxRateX = mMaxRateX;
+			rv.mMaxRateY = mMaxRateY;
 			foreach (GrblConfParam p in this)
 				rv.Add((GrblConfParam)p.Clone());
 			return rv;
 		}
+	
 	}
 }
 

@@ -681,7 +681,8 @@ namespace LaserGRBL
 			{
 				try
 				{
-					TimeSpan delay = spb.AnalyzeCommand(cmd, true);
+					GrblConf conf = (GrblConf)Settings.GetObject("Grbl Configuration", new GrblConf());
+					TimeSpan delay = spb.AnalyzeCommand(cmd, true, conf);
 
 					mRange.UpdateSRange(spb.S);
 					mRange.UpdateXYRange(spb.X, spb.Y, spb.LaserBurning);

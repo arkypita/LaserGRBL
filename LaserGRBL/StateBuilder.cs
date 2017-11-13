@@ -76,7 +76,7 @@ namespace LaserGRBL
 				public TimeSpan Delay;
 			}
 
-			public TimeSpan AnalyzeCommand(GrblCommand cmd, bool compute)
+			public TimeSpan AnalyzeCommand(GrblCommand cmd, bool compute, GrblConf conf = null)
 			{
 				bool delete = !cmd.JustBuilt;
 				if (!cmd.JustBuilt) cmd.BuildHelper();
@@ -89,7 +89,7 @@ namespace LaserGRBL
 				mCurF.Update(cmd.F);
 				mCurS.Update(cmd.S);
 
-				TimeSpan rv = compute ? ComputeExecutionTime(cmd) : TimeSpan.Zero;
+				TimeSpan rv = compute ? ComputeExecutionTime(cmd, conf) : TimeSpan.Zero;
 				if (delete) cmd.DeleteHelper();
 
 				return rv;
@@ -111,12 +111,12 @@ namespace LaserGRBL
 			{ return (mCurX.Number != mCurX.Previous || mCurY.Number != mCurY.Previous); }
 
 
-			private TimeSpan ComputeExecutionTime(GrblCommand cmd)
+			private TimeSpan ComputeExecutionTime(GrblCommand cmd, GrblConf conf)
 			{
 				if (G0 && cmd.IsLinearMovement)
-					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)4000); //use a default 4000 for fast move: change with a detected value
+					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)conf.MaxRateX); //todo: use a better computation of xy if different speed
 				else if (G1G2G3 && cmd.IsMovement && mCurF.Number != 0)
-					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)mCurF.Number);
+					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)Math.Min(mCurF.Number, conf.MaxRateX));
 				else if (cmd.IsPause)
 					return cmd.P != null ? TimeSpan.FromSeconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
 				else
