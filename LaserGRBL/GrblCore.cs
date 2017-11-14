@@ -66,7 +66,7 @@ namespace LaserGRBL
 		{ Buffered, Synchronous, RepeatOnError }
 
 		[Serializable]
-		public class GrblVersionInfo : IComparable
+		public class GrblVersionInfo : IComparable, ICloneable
 		{
 			int mMajor;
 			int mMinor;
@@ -165,6 +165,9 @@ namespace LaserGRBL
 
 				return 0;
 			}
+
+			public object Clone()
+			{return this.MemberwiseClone();}
 		}
 
 		public delegate void dlgIssueDetector(DetectedIssue issue);
@@ -522,8 +525,6 @@ namespace LaserGRBL
 						mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
 						mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
 
-						string rline = null;
-
 						foreach (GrblConf.GrblConfParam p in config)
 							mQueuePtr.Enqueue(new GrblCommand(string.Format("${0}={1}", p.Number, p.Value.ToString(System.Globalization.NumberFormatInfo.InvariantInfo))));
 					}
@@ -579,7 +580,7 @@ namespace LaserGRBL
 		private void UserWantToContinue()
 		{
 			bool homing = MachinePosition == System.Drawing.PointF.Empty; //potrebbe essere dovuto ad un hard reset -> posizione non affidabile
-			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, homing, out homing);
+			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, GrblConfiguration.HomingEnabled, homing, out homing);
 
 			if (position == 0)
 				RunProgramFromStart(homing);
@@ -1428,6 +1429,9 @@ namespace LaserGRBL
 		{ get { return IsOpen && MachineStatus != MacStatus.Disconnected && !InProgram; } }
 
 		public bool CanGoHome
+		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm) && GrblConfiguration.HomingEnabled; } }
+
+		public bool CanUnlock
 		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm); } }
 
 		public bool CanFeedHold
@@ -1736,9 +1740,10 @@ namespace LaserGRBL
 			{ get { return CSVD.Settings.GetItem(mNumber.ToString(), 2); } }
 
 			public object Clone()
-			{ return new GrblConfParam(mNumber, mValue); }
+			{return this.MemberwiseClone();}
 		}
 
+		decimal mHoming = 1;
 		decimal mMaxRateX = 4000;
 		decimal mMaxRateY = 4000;
 		public GrblCore.GrblVersionInfo mVersion = null; //must set when read
@@ -1749,17 +1754,24 @@ namespace LaserGRBL
 		public GrblConf()
 		{ mVersion = null; }
 
-		private bool NewVersion
+		private bool Version11
 		{ get { return mVersion >= new GrblCore.GrblVersionInfo(1, 1); } }
+
+		private bool Version9
+		{ get { return mVersion >= new GrblCore.GrblVersionInfo(0, 9); } }
 
 		public void CacheValues()
 		{
 			if (mVersion != null)
 			{
-				mMaxRateX = ReadWithDefault(NewVersion ? 110 : 4, 4000);
-				mMaxRateY = ReadWithDefault(NewVersion ? 111 : 5, 4000);
+				mMaxRateX = ReadWithDefault(Version11 ? 110 : 4, 4000);
+				mMaxRateY = ReadWithDefault(Version11 ? 111 : 5, 4000);
+				mHoming = ReadWithDefault(Version9 ? 22 : 17, 1);
 			}
 		}
+
+		public bool HomingEnabled
+		{ get { return mHoming != 0; } }
 
 		public decimal MaxRateX 
 		{get{return mMaxRateX;}}
@@ -1781,11 +1793,12 @@ namespace LaserGRBL
 		public object Clone()
 		{
 			GrblConf rv = new GrblConf();
-			rv.mVersion = mVersion;
+			rv.mHoming = mHoming;
 			rv.mMaxRateX = mMaxRateX;
 			rv.mMaxRateY = mMaxRateY;
+			rv.mVersion = mVersion != null ? mVersion.Clone() as GrblCore.GrblVersionInfo : null;
 			foreach (GrblConfParam p in this)
-				rv.Add((GrblConfParam)p.Clone());
+				rv.Add(p.Clone() as GrblConfParam);
 			return rv;
 		}
 	

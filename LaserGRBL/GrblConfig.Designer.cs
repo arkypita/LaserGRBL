@@ -23,9 +23,9 @@
 			this.BtnWrite = new System.Windows.Forms.Button();
 			this.BtnRead = new System.Windows.Forms.Button();
 			this.BtnCancel = new System.Windows.Forms.Button();
-			this.BtnImport = new System.Windows.Forms.Button();
-			this.BtnExport = new System.Windows.Forms.Button();
 			this.LblConnect = new System.Windows.Forms.Label();
+			this.BtnExport = new System.Windows.Forms.Button();
+			this.BtnImport = new System.Windows.Forms.Button();
 			this.GB = new System.Windows.Forms.GroupBox();
 			this.DGV = new System.Windows.Forms.DataGridView();
 			this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,9 +54,9 @@
 			this.tableLayoutPanel2.Controls.Add(this.BtnWrite, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.BtnRead, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.BtnCancel, 6, 0);
-			this.tableLayoutPanel2.Controls.Add(this.BtnImport, 3, 0);
-			this.tableLayoutPanel2.Controls.Add(this.BtnExport, 4, 0);
-			this.tableLayoutPanel2.Controls.Add(this.LblConnect, 2, 0);
+			this.tableLayoutPanel2.Controls.Add(this.LblConnect, 5, 0);
+			this.tableLayoutPanel2.Controls.Add(this.BtnExport, 3, 0);
+			this.tableLayoutPanel2.Controls.Add(this.BtnImport, 4, 0);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			// 
 			// BtnWrite
@@ -75,17 +75,17 @@
 			// 
 			// BtnCancel
 			// 
+			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			resources.ApplyResources(this.BtnCancel, "BtnCancel");
 			this.BtnCancel.Name = "BtnCancel";
 			this.BtnCancel.UseVisualStyleBackColor = true;
 			this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
 			// 
-			// BtnImport
+			// LblConnect
 			// 
-			resources.ApplyResources(this.BtnImport, "BtnImport");
-			this.BtnImport.Name = "BtnImport";
-			this.BtnImport.UseVisualStyleBackColor = true;
-			this.BtnImport.Click += new System.EventHandler(this.BtnImport_Click);
+			resources.ApplyResources(this.LblConnect, "LblConnect");
+			this.LblConnect.ForeColor = System.Drawing.Color.Red;
+			this.LblConnect.Name = "LblConnect";
 			// 
 			// BtnExport
 			// 
@@ -94,11 +94,12 @@
 			this.BtnExport.UseVisualStyleBackColor = true;
 			this.BtnExport.Click += new System.EventHandler(this.BtnExport_Click);
 			// 
-			// LblConnect
+			// BtnImport
 			// 
-			resources.ApplyResources(this.LblConnect, "LblConnect");
-			this.LblConnect.ForeColor = System.Drawing.Color.Red;
-			this.LblConnect.Name = "LblConnect";
+			resources.ApplyResources(this.BtnImport, "BtnImport");
+			this.BtnImport.Name = "BtnImport";
+			this.BtnImport.UseVisualStyleBackColor = true;
+			this.BtnImport.Click += new System.EventHandler(this.BtnImport_Click);
 			// 
 			// GB
 			// 
@@ -169,6 +170,7 @@
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.BtnCancel;
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Name = "GrblConfig";
 			this.tableLayoutPanel1.ResumeLayout(false);

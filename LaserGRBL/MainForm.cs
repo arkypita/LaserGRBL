@@ -157,8 +157,9 @@ namespace LaserGRBL
 			MnConnect.Visible = !Core.IsOpen;
 			MnDisconnect.Visible = Core.IsOpen;
 
+			MnGoHome.Visible = Core.GrblConfiguration.HomingEnabled;
 			MnGoHome.Enabled = Core.CanGoHome;
-			MnUnlock.Enabled = Core.CanGoHome;
+			MnUnlock.Enabled = Core.CanUnlock;
 			
 			TTOvG0.Visible = Core.SupportOverride;
 			TTOvG1.Visible = Core.SupportOverride;

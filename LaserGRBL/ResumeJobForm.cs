@@ -11,9 +11,9 @@ namespace LaserGRBL
 {
 	public partial class ResumeJobForm : Form
 	{
-		internal static int CreateAndShowDialog(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool suggestHoming, out bool homing)
+		internal static int CreateAndShowDialog(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, out bool homing)
 		{
-			ResumeJobForm f = new ResumeJobForm(exec, sent, target, issue, suggestHoming);
+			ResumeJobForm f = new ResumeJobForm(exec, sent, target, issue, allowHoming, suggestHoming);
 
 			int rv = f.ShowDialog() == DialogResult.OK ? f.Position : -1;
 			homing = f.CbRedoHoming.Checked;
@@ -23,7 +23,7 @@ namespace LaserGRBL
 		}
 
 		int mExec, mSent, mSomeLine;
-		private ResumeJobForm(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool homing)
+		private ResumeJobForm(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming)
 		{
 			InitializeComponent();
 			mSomeLine = Math.Max(0, exec - 17) +1;
@@ -58,7 +58,8 @@ namespace LaserGRBL
 					RbFromSpecific.Checked = true;
 			}
 
-			CbRedoHoming.Checked = homing;
+			CbRedoHoming.Visible = allowHoming;
+			CbRedoHoming.Checked = allowHoming && suggestHoming;
 		}
 
 		public int Position 
@@ -82,6 +83,11 @@ namespace LaserGRBL
 		{
 			BtnOK.Enabled = Position >= 0;
 			UdSpecific.Enabled = RbFromSpecific.Checked;
+		}
+
+		private void BtnCancel_Click(object sender, EventArgs e)
+		{
+			Close();
 		}
 	}
 }
