@@ -490,7 +490,7 @@ namespace LaserGRBL
 					throw (ex);
 				}
 			}
-
+			rv.CacheValues();
 			return rv;
 		}
 
@@ -1739,44 +1739,39 @@ namespace LaserGRBL
 			{ return new GrblConfParam(mNumber, mValue); }
 		}
 
-		decimal mMaxRateX = decimal.MinValue;
-		decimal mMaxRateY = decimal.MinValue;
+		decimal mMaxRateX = 4000;
+		decimal mMaxRateY = 4000;
 		public GrblCore.GrblVersionInfo mVersion = null; //must set when read
 
 		public GrblConf(GrblCore.GrblVersionInfo GrblVersion)
 		{mVersion = GrblVersion;}
 
 		public GrblConf()
-		{ mVersion = new GrblCore.GrblVersionInfo(0, 0); }
+		{ mVersion = null; }
+
+		private bool NewVersion
+		{ get { return mVersion >= new GrblCore.GrblVersionInfo(1, 1); } }
+
+		public void CacheValues()
+		{
+			if (mVersion != null)
+			{
+				mMaxRateX = ReadWithDefault(NewVersion ? 110 : 4, 4000);
+				mMaxRateY = ReadWithDefault(NewVersion ? 111 : 5, 4000);
+			}
+		}
 
 		public decimal MaxRateX 
-		{
-			get
-			{
-				if (mMaxRateX == decimal.MinValue)
-				{
-					int number = mVersion >= new GrblCore.GrblVersionInfo(1, 1) ? 110 : 4; //$4 v0.8, $110 v0.9+
-					mMaxRateX = ReadWithDefault(number, 4000);
-				}
-				return mMaxRateX;
-			}
-		}
+		{get{return mMaxRateX;}}
 
 		public decimal MaxRateY 
-		{
-			get
-			{
-				if (mMaxRateY == decimal.MinValue)
-				{
-					int number = mVersion >= new GrblCore.GrblVersionInfo(1, 1) ? 111 : 5; //$5 v0.8, $111 v0.9+
-					mMaxRateY = ReadWithDefault(number, 4000);
-				}
-				return mMaxRateY;
-			}
-		}
+		{get{return mMaxRateY;}}
 
 		private decimal ReadWithDefault(int number, decimal defval)
 		{
+			if (mVersion == null)
+				return defval;
+
 			foreach (GrblConf.GrblConfParam p in this)
 				if (p.Number == number)
 					return p.Value;

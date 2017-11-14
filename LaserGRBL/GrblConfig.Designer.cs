@@ -25,6 +25,7 @@
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnImport = new System.Windows.Forms.Button();
 			this.BtnExport = new System.Windows.Forms.Button();
+			this.LblConnect = new System.Windows.Forms.Label();
 			this.GB = new System.Windows.Forms.GroupBox();
 			this.DGV = new System.Windows.Forms.DataGridView();
 			this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -33,7 +34,6 @@
 			this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.BS = new System.Windows.Forms.BindingSource(this.components);
-			this.LblConnect = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.GB.SuspendLayout();
@@ -93,6 +93,12 @@
 			this.BtnExport.Name = "BtnExport";
 			this.BtnExport.UseVisualStyleBackColor = true;
 			this.BtnExport.Click += new System.EventHandler(this.BtnExport_Click);
+			// 
+			// LblConnect
+			// 
+			resources.ApplyResources(this.LblConnect, "LblConnect");
+			this.LblConnect.ForeColor = System.Drawing.Color.Red;
+			this.LblConnect.Name = "LblConnect";
 			// 
 			// GB
 			// 
@@ -158,12 +164,6 @@
 			// BS
 			// 
 			this.BS.DataSource = typeof(LaserGRBL.GrblConf);
-			// 
-			// LblConnect
-			// 
-			resources.ApplyResources(this.LblConnect, "LblConnect");
-			this.LblConnect.ForeColor = System.Drawing.Color.Red;
-			this.LblConnect.Name = "LblConnect";
 			// 
 			// GrblConfig
 			// 
