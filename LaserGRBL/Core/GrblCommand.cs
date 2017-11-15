@@ -76,6 +76,19 @@ namespace LaserGRBL
 		public GrblCommand(string line, int repeat)
 		{ mLine = line.ToUpper().Trim(); mRepeatCount = repeat; }
 
+		public GrblCommand(IEnumerable<Element> elements)
+		{
+			mLine = "";
+			foreach (GrblCommand.Element e in elements)
+				mLine = mLine + e.ToString() + " ";
+			mLine = mLine.TrimEnd().ToUpper();
+		}
+
+		public GrblCommand(Element first, GrblCommand toappend)
+		{
+			mLine = string.Format("{0} {1}", first, toappend.mLine);
+		}
+
 		public bool JustBuilt
 		{ get { return mHelper != null; } }
 

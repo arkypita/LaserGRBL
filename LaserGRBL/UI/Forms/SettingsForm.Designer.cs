@@ -73,6 +73,7 @@
 			// 
 			// BtnCancel
 			// 
+			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			resources.ApplyResources(this.BtnCancel, "BtnCancel");
 			this.BtnCancel.Name = "BtnCancel";
 			this.BtnCancel.UseVisualStyleBackColor = true;
@@ -234,6 +235,7 @@
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.BtnCancel;
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Name = "SettingsForm";
 			this.tableLayoutPanel1.ResumeLayout(false);

@@ -34,18 +34,18 @@
 			this.BtnOK = new System.Windows.Forms.Button();
 			this.CbDoNotShow = new System.Windows.Forms.CheckBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.LblBrief = new System.Windows.Forms.Label();
-			this.LL = new System.Windows.Forms.LinkLabel();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
 			this.label4 = new System.Windows.Forms.Label();
 			this.TxtCause = new System.Windows.Forms.Label();
 			this.LblDetected = new System.Windows.Forms.Label();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.LblBrief = new System.Windows.Forms.Label();
+			this.LL = new System.Windows.Forms.LinkLabel();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.tableLayoutPanel5.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -127,44 +127,6 @@
 			this.tableLayoutPanel3.Size = new System.Drawing.Size(421, 104);
 			this.tableLayoutPanel3.TabIndex = 1;
 			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-			this.pictureBox1.Location = new System.Drawing.Point(3, 4);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.pictureBox1.TabIndex = 3;
-			this.pictureBox1.TabStop = false;
-			// 
-			// LblBrief
-			// 
-			this.LblBrief.AutoSize = true;
-			this.tableLayoutPanel3.SetColumnSpan(this.LblBrief, 2);
-			this.LblBrief.Location = new System.Drawing.Point(3, 43);
-			this.LblBrief.Margin = new System.Windows.Forms.Padding(3);
-			this.LblBrief.MaximumSize = new System.Drawing.Size(400, 0);
-			this.LblBrief.Name = "LblBrief";
-			this.LblBrief.Size = new System.Drawing.Size(388, 26);
-			this.LblBrief.TabIndex = 4;
-			this.LblBrief.Text = "It would appear that grbl has problems executing this job. Causes of this situati" +
-    "on can be multiple, please read the FAQ for information on how to resolve this i" +
-    "ssue.\r\n";
-			// 
-			// LL
-			// 
-			this.LL.AutoSize = true;
-			this.tableLayoutPanel3.SetColumnSpan(this.LL, 2);
-			this.LL.Location = new System.Drawing.Point(3, 76);
-			this.LL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
-			this.LL.Name = "LL";
-			this.LL.Size = new System.Drawing.Size(125, 13);
-			this.LL.TabIndex = 5;
-			this.LL.TabStop = true;
-			this.LL.Text = "http://lasergrbl.com/faq/";
-			this.LL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LL_LinkClicked);
-			// 
 			// tableLayoutPanel5
 			// 
 			this.tableLayoutPanel5.AutoSize = true;
@@ -220,12 +182,51 @@
 			this.LblDetected.TabIndex = 3;
 			this.LblDetected.Text = "LaserGRBL detected some problem with your board!";
 			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Location = new System.Drawing.Point(3, 4);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.pictureBox1.TabIndex = 3;
+			this.pictureBox1.TabStop = false;
+			// 
+			// LblBrief
+			// 
+			this.LblBrief.AutoSize = true;
+			this.tableLayoutPanel3.SetColumnSpan(this.LblBrief, 2);
+			this.LblBrief.Location = new System.Drawing.Point(3, 43);
+			this.LblBrief.Margin = new System.Windows.Forms.Padding(3);
+			this.LblBrief.MaximumSize = new System.Drawing.Size(400, 0);
+			this.LblBrief.Name = "LblBrief";
+			this.LblBrief.Size = new System.Drawing.Size(388, 26);
+			this.LblBrief.TabIndex = 4;
+			this.LblBrief.Text = "It would appear that grbl has problems executing this job. Causes of this situati" +
+    "on can be multiple, please read the FAQ for information on how to resolve this i" +
+    "ssue.\r\n";
+			// 
+			// LL
+			// 
+			this.LL.AutoSize = true;
+			this.tableLayoutPanel3.SetColumnSpan(this.LL, 2);
+			this.LL.Location = new System.Drawing.Point(3, 76);
+			this.LL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
+			this.LL.Name = "LL";
+			this.LL.Size = new System.Drawing.Size(125, 13);
+			this.LL.TabIndex = 5;
+			this.LL.TabStop = true;
+			this.LL.Text = "http://lasergrbl.com/faq/";
+			this.LL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LL_LinkClicked);
+			// 
 			// IssueDetectorForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.CancelButton = this.BtnOK;
 			this.ClientSize = new System.Drawing.Size(427, 149);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -238,9 +239,9 @@
 			this.tableLayoutPanel2.PerformLayout();
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.tableLayoutPanel3.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.tableLayoutPanel5.ResumeLayout(false);
 			this.tableLayoutPanel5.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

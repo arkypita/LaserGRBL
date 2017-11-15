@@ -31,8 +31,9 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResumeJobForm));
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.CbRedoHoming = new System.Windows.Forms.CheckBox();
 			this.BtnOK = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
+			this.BtnCancel = new System.Windows.Forms.Button();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblSomeLines = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.TxtCause = new System.Windows.Forms.Label();
 			this.LblDetected = new System.Windows.Forms.Label();
-			this.CbRedoHoming = new System.Windows.Forms.CheckBox();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -88,7 +88,7 @@
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel2.Controls.Add(this.CbRedoHoming, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.BtnOK, 2, 0);
-			this.tableLayoutPanel2.Controls.Add(this.button1, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.BtnCancel, 1, 0);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 220);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -97,9 +97,19 @@
 			this.tableLayoutPanel2.Size = new System.Drawing.Size(484, 33);
 			this.tableLayoutPanel2.TabIndex = 0;
 			// 
+			// CbRedoHoming
+			// 
+			this.CbRedoHoming.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.CbRedoHoming.AutoSize = true;
+			this.CbRedoHoming.Location = new System.Drawing.Point(3, 13);
+			this.CbRedoHoming.Name = "CbRedoHoming";
+			this.CbRedoHoming.Size = new System.Drawing.Size(114, 17);
+			this.CbRedoHoming.TabIndex = 16;
+			this.CbRedoHoming.Text = "Redo Homing [$H]";
+			this.CbRedoHoming.UseVisualStyleBackColor = true;
+			// 
 			// BtnOK
 			// 
-			this.BtnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.BtnOK.Enabled = false;
 			this.BtnOK.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.BtnOK.Location = new System.Drawing.Point(407, 3);
@@ -108,17 +118,19 @@
 			this.BtnOK.TabIndex = 14;
 			this.BtnOK.Text = "OK";
 			this.BtnOK.UseVisualStyleBackColor = true;
+			this.BtnOK.Click += new System.EventHandler(this.BtnOK_Click);
 			// 
-			// button1
+			// BtnCancel
 			// 
-			this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.button1.Location = new System.Drawing.Point(327, 3);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(74, 27);
-			this.button1.TabIndex = 15;
-			this.button1.Text = "Cancel";
-			this.button1.UseVisualStyleBackColor = true;
+			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.BtnCancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.BtnCancel.Location = new System.Drawing.Point(327, 3);
+			this.BtnCancel.Name = "BtnCancel";
+			this.BtnCancel.Size = new System.Drawing.Size(74, 27);
+			this.BtnCancel.TabIndex = 15;
+			this.BtnCancel.Text = "Cancel";
+			this.BtnCancel.UseVisualStyleBackColor = true;
+			this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
 			// 
 			// tableLayoutPanel3
 			// 
@@ -377,24 +389,13 @@
 			this.LblDetected.TabIndex = 3;
 			this.LblDetected.Text = "LaserGRBL detected last job was not completed!\r\n";
 			// 
-			// CbRedoHoming
-			// 
-			this.CbRedoHoming.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.CbRedoHoming.AutoSize = true;
-			this.CbRedoHoming.Location = new System.Drawing.Point(3, 13);
-			this.CbRedoHoming.Name = "CbRedoHoming";
-			this.CbRedoHoming.Size = new System.Drawing.Size(114, 17);
-			this.CbRedoHoming.TabIndex = 16;
-			this.CbRedoHoming.Text = "Redo Homing [$H]";
-			this.CbRedoHoming.UseVisualStyleBackColor = true;
-			// 
 			// ResumeJobForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.CancelButton = this.button1;
+			this.CancelButton = this.BtnCancel;
 			this.ClientSize = new System.Drawing.Size(490, 256);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -435,7 +436,7 @@
 		private System.Windows.Forms.Label LblSent;
 		private System.Windows.Forms.Label LblBegin;
 		private System.Windows.Forms.NumericUpDown UdSpecific;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button BtnCancel;
 		private System.Windows.Forms.RadioButton RbSomeLines;
 		private System.Windows.Forms.Label LblSomeLines;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;

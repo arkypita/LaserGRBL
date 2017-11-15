@@ -185,6 +185,12 @@
     <Compile Include="Core\ComWrapper\WebSocket\WebSocketFrame.cs" />
     <Compile Include="Core\ComWrapper\WebSocket\WebSocketState.cs" />
     <Compile Include="Core\RasterToGcode\Configuration.cs" />
+    <Compile Include="GrblConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GrblConfig.Designer.cs">
+      <DependentUpon>GrblConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Forms\MainForm\ConnectLogForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -421,6 +427,9 @@
     <Compile Include="UI\UserControls\ProgressBar\WaitingProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <EmbeddedResource Include="GrblConfig.resx">
+      <DependentUpon>GrblConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\NewVersionForm.zh-CN.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -463,7 +472,7 @@
     <EmbeddedResource Include="IssueDetectorForm.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
-	<EmbeddedResource Include="UI\Forms\MainForm\JogForm.resx">
+    <EmbeddedResource Include="UI\Forms\MainForm\JogForm.resx">
       <DependentUpon>JogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\MainForm\JogForm.zh-CN.resx">

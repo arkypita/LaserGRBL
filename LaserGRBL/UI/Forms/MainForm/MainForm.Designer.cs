@@ -58,9 +58,7 @@
 			this.MnGoHome = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnUnlock = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.MnExportConfig = new System.Windows.Forms.ToolStripMenuItem();
-			this.MnImportConfig = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+			this.MnGrblConfig = new System.Windows.Forms.ToolStripMenuItem();
 			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -259,9 +257,7 @@
             this.MnGoHome,
             this.MnUnlock,
             this.toolStripSeparator1,
-            this.MnExportConfig,
-            this.MnImportConfig,
-            this.toolStripMenuItem3,
+            this.MnGrblConfig,
             this.settingsToolStripMenuItem,
             this.toolStripMenuItem6,
             this.MnExit});
@@ -308,22 +304,11 @@
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
 			resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
 			// 
-			// MnExportConfig
+			// MnGrblConfig
 			// 
-			resources.ApplyResources(this.MnExportConfig, "MnExportConfig");
-			this.MnExportConfig.Name = "MnExportConfig";
-			this.MnExportConfig.Click += new System.EventHandler(this.MnExportConfigClick);
-			// 
-			// MnImportConfig
-			// 
-			resources.ApplyResources(this.MnImportConfig, "MnImportConfig");
-			this.MnImportConfig.Name = "MnImportConfig";
-			this.MnImportConfig.Click += new System.EventHandler(this.MnImportConfigClick);
-			// 
-			// toolStripMenuItem3
-			// 
-			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
+			resources.ApplyResources(this.MnGrblConfig, "MnGrblConfig");
+			this.MnGrblConfig.Name = "MnGrblConfig";
+			this.MnGrblConfig.Click += new System.EventHandler(this.grblConfigurationToolStripMenuItem_Click);
 			// 
 			// settingsToolStripMenuItem
 			// 
@@ -574,8 +559,6 @@
 		private System.Windows.Forms.ToolStripMenuItem grblToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem MnGrblReset;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-		private System.Windows.Forms.ToolStripMenuItem MnExportConfig;
-		private System.Windows.Forms.ToolStripMenuItem MnImportConfig;
 		private System.Windows.Forms.Timer UpdateTimer;
 		private System.Windows.Forms.ToolStripStatusLabel spring1;
 		private System.Windows.Forms.ToolStripStatusLabel TTLStatus;
@@ -590,7 +573,6 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
 		private System.Windows.Forms.ToolStripMenuItem MnGoHome;
 		private System.Windows.Forms.ToolStripMenuItem MnUnlock;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
 		private System.Windows.Forms.ToolStripMenuItem MnExit;
 		private System.Windows.Forms.ToolStripMenuItem MnSaveProgram;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
@@ -628,6 +610,7 @@
 		private System.Windows.Forms.ToolStripMenuItem hackerToolStripMenuItem;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
 		private System.Windows.Forms.ToolStripProgressBar PbBuffer;
+		private System.Windows.Forms.ToolStripMenuItem MnGrblConfig;
 	}
 }
 
