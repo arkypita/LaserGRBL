@@ -256,4 +256,12 @@ Please manually download the new version from lasergrbl site.</value>
   <data name="MainFormProjectedTime" xml:space="preserve">
     <value>Projected Time:</value>
   </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>It seems that the current position is no longer known by Grbl.
+Without the Homing Procedure ($H) the result may not be reliable.
+Continue anyway?</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>Unknown position</value>
+  </data>
 </root>

@@ -16,16 +16,19 @@ namespace LaserGRBL
 			ResumeJobForm f = new ResumeJobForm(exec, sent, target, issue, allowHoming, suggestHoming);
 
 			int rv = f.ShowDialog() == DialogResult.OK ? f.Position : -1;
-			homing = f.CbRedoHoming.Checked;
+			homing = f.DoHoming;
 			f.Dispose();
 
 			return rv;
 		}
 
+		bool mAllowH, mSuggestH;
 		int mExec, mSent, mSomeLine;
 		private ResumeJobForm(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming)
 		{
 			InitializeComponent();
+			mAllowH = allowHoming;
+			mSuggestH = suggestHoming;
 			mSomeLine = Math.Max(0, exec - 17) +1;
 			mExec = exec +1;
 			mSent = sent +1;
@@ -62,6 +65,9 @@ namespace LaserGRBL
 			CbRedoHoming.Checked = allowHoming && suggestHoming;
 		}
 
+		public bool DoHoming
+		{ get { return CbRedoHoming.Checked; } }
+
 		public int Position 
 		{
 			get
@@ -87,7 +93,17 @@ namespace LaserGRBL
 
 		private void BtnCancel_Click(object sender, EventArgs e)
 		{
+			DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			Close();
+		}
+
+		private void BtnOK_Click(object sender, EventArgs e)
+		{
+			if (Position <= 0 || !mSuggestH || DoHoming || System.Windows.Forms.MessageBox.Show(Strings.ResumeJobHomingRequired,Strings.ResumeJobHomingRequiredTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning,MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.OK)
+			{
+				DialogResult = System.Windows.Forms.DialogResult.OK;
+				Close();
+			}
 		}
 	}
 }

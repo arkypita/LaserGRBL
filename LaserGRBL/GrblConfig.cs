@@ -24,7 +24,7 @@ namespace LaserGRBL
 			DGV.ForeColor = SystemColors.ControlText;
 			BtnRead.BackColor = BtnWrite.BackColor = BtnImport.BackColor = BtnExport.BackColor = BtnCancel.BackColor = ColorScheme.FormButtonsColor;
 
-			mLocalCopy = Core.GrblConfiguration.ToList();
+			mLocalCopy = Core.Configuration.ToList();
 			DGV.DataSource = mLocalCopy;
 			Core.MachineStatusChanged += RefreshEnabledButtons;
 			
@@ -69,7 +69,7 @@ namespace LaserGRBL
 			{
 				Cursor = Cursors.WaitCursor;
 				Core.RefreshConfig();
-				mLocalCopy = Core.GrblConfiguration.ToList();
+				mLocalCopy = Core.Configuration.ToList();
 				DGV.DataSource = mLocalCopy;
 				RefreshEnabledButtons();
 				Cursor = DefaultCursor;
@@ -136,7 +136,7 @@ namespace LaserGRBL
 			if (filename != null)
 			{
 				Core.RefreshConfig();
-				List<GrblConf.GrblConfParam> toexport = Core.GrblConfiguration.ToList();
+				List<GrblConf.GrblConfParam> toexport = Core.Configuration.ToList();
 				if (toexport.Count > 0)
 				{
 					try

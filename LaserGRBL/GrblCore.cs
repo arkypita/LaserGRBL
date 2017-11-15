@@ -260,13 +260,16 @@ namespace LaserGRBL
 			mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
 		}
 
-		public GrblConf GrblConfiguration
+		public GrblConf Configuration
 		{
-			get { return (GrblConf)Settings.GetObject("Grbl Configuration", new GrblConf()); }
+			get {return (GrblConf)Settings.GetObject("Grbl Configuration", new GrblConf());}
 			set
 			{
-				Settings.SetObject("Grbl Configuration", value);
-				Settings.Save();
+				if (value.Count > 0 && value.mVersion != null)
+				{
+					Settings.SetObject("Grbl Configuration", value);
+					Settings.Save();
+				}
 			}
 		}
 
@@ -470,7 +473,7 @@ namespace LaserGRBL
 						}
 
 						if (conf.Count >= conf.ExpectedCount)
-							GrblConfiguration = conf;
+							Configuration = conf;
 						else
 							throw new TimeoutException(string.Format("Wrong number of config param found! ({0}/{1})", conf.Count, conf.ExpectedCount));
 					}
@@ -574,7 +577,7 @@ namespace LaserGRBL
 		private void UserWantToContinue()
 		{
 			bool homing = MachinePosition == System.Drawing.PointF.Empty; //potrebbe essere dovuto ad un hard reset -> posizione non affidabile
-			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, GrblConfiguration.HomingEnabled, homing, out homing);
+			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, Configuration.HomingEnabled, homing, out homing);
 
 			if (position == 0)
 				RunProgramFromStart(homing);
@@ -1423,7 +1426,7 @@ namespace LaserGRBL
 		{ get { return IsOpen && MachineStatus != MacStatus.Disconnected && !InProgram; } }
 
 		public bool CanGoHome
-		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm) && GrblConfiguration.HomingEnabled; } }
+		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm) && Configuration.HomingEnabled; } }
 
 		public bool CanUnlock
 		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm); } }
@@ -1749,10 +1752,10 @@ namespace LaserGRBL
 		{ mData = new System.Collections.Generic.Dictionary<int, decimal>(); }
 
 		private bool Version11
-		{ get { return mVersion >= new GrblCore.GrblVersionInfo(1, 1); } }
+		{ get { return mVersion != null && mVersion >= new GrblCore.GrblVersionInfo(1, 1); } }
 
 		private bool Version9
-		{ get { return mVersion >= new GrblCore.GrblVersionInfo(0, 9); } }
+		{ get { return mVersion != null && mVersion >= new GrblCore.GrblVersionInfo(0, 9); } }
 
 		public int ExpectedCount
 		{ get { return Version11 ? 34 : Version9 ? 31 : 23; } }

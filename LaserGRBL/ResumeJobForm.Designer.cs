@@ -110,7 +110,6 @@
 			// 
 			// BtnOK
 			// 
-			this.BtnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.BtnOK.Enabled = false;
 			this.BtnOK.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.BtnOK.Location = new System.Drawing.Point(407, 3);
@@ -119,6 +118,7 @@
 			this.BtnOK.TabIndex = 14;
 			this.BtnOK.Text = "OK";
 			this.BtnOK.UseVisualStyleBackColor = true;
+			this.BtnOK.Click += new System.EventHandler(this.BtnOK_Click);
 			// 
 			// BtnCancel
 			// 

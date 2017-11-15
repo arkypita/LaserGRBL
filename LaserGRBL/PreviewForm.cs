@@ -40,7 +40,7 @@ namespace LaserGRBL
 			Preview.TimerUpdate();
 			SuspendLayout();
 			BtnReset.Enabled = Core.CanResetGrbl;
-			BtnGoHome.Visible = Core.GrblConfiguration.HomingEnabled;
+			BtnGoHome.Visible = Core.Configuration.HomingEnabled;
 			BtnGoHome.Enabled = Core.CanGoHome;
 			BtnUnlock.Enabled = Core.CanUnlock;
 			BtnStop.Enabled = Core.CanFeedHold;

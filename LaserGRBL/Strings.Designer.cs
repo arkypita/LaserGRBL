@@ -474,5 +474,25 @@ namespace LaserGRBL {
                 return ResourceManager.GetString("MainFormProjectedTime", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a It seems that the current position is no longer known by Grbl.
+        ///Without the Homing Procedure ($H) the result may not be reliable.
+        ///Continue anyway?.
+        /// </summary>
+        internal static string ResumeJobHomingRequired {
+            get {
+                return ResourceManager.GetString("ResumeJobHomingRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Unknown position.
+        /// </summary>
+        internal static string ResumeJobHomingRequiredTitle {
+            get {
+                return ResourceManager.GetString("ResumeJobHomingRequiredTitle", resourceCulture);
+            }
+        }
     }
 }
