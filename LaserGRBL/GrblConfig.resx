@@ -243,7 +243,7 @@
     <value>14</value>
   </data>
   <data name="BtnRead.Text" xml:space="preserve">
-    <value>Read</value>
+    <value>Refresh</value>
   </data>
   <data name="BtnRead.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
@@ -344,17 +344,17 @@
     <value>NoControl</value>
   </data>
   <data name="LblConnect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>515, 11</value>
+    <value>507, 11</value>
   </data>
   <data name="LblConnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 26</value>
+    <value>149, 26</value>
   </data>
   <data name="LblConnect.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
   <data name="LblConnect.Text" xml:space="preserve">
     <value>Read and Write enabled
-only when connected [idle]</value>
+only when connected and idle</value>
   </data>
   <data name="LblConnect.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -655,6 +655,42 @@ only when connected [idle]</value>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnWrite" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnRead" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnCancel" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="LblConnect" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="BtnExport" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="BtnImport" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,Absolute,20,AutoSize,50,AutoSize,0,Percent,50,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <data name="LblAction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="LblAction.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblAction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LblAction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 388</value>
+  </data>
+  <data name="LblAction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 16</value>
+  </data>
+  <data name="LblAction.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="LblAction.Text" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="LblAction.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;LblAction.Name" xml:space="preserve">
+    <value>LblAction</value>
+  </data>
+  <data name="&gt;&gt;LblAction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblAction.Parent" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="&gt;&gt;LblAction.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="numberDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>#</value>
   </data>
@@ -682,6 +718,9 @@ only when connected [idle]</value>
   <data name="descriptionDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Description</value>
   </data>
+  <metadata name="BS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>358, 18</value>
+  </metadata>
   <data name="DGV.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -704,7 +743,7 @@ only when connected [idle]</value>
     <value>GB</value>
   </data>
   <data name="&gt;&gt;DGV.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="GB.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -766,11 +805,14 @@ only when connected [idle]</value>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GB" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <metadata name="BS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <metadata name="ActionTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>241, 18</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>50</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -778,11 +820,20 @@ only when connected [idle]</value>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>811, 469</value>
   </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Grbl</value>
+  </data>
+  <data name="&gt;&gt;ActionTimer.Name" xml:space="preserve">
+    <value>ActionTimer</value>
+  </data>
+  <data name="&gt;&gt;ActionTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;numberDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>numberDataGridViewTextBoxColumn</value>

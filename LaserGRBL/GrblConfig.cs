@@ -12,7 +12,7 @@ namespace LaserGRBL
 	public partial class GrblConfig : Form
 	{
 		private GrblCore Core;
-		private GrblConf mLocalCopy;
+		private List<GrblConf.GrblConfParam> mLocalCopy;
 
 		public GrblConfig(GrblCore core)
 		{
@@ -24,10 +24,10 @@ namespace LaserGRBL
 			DGV.ForeColor = SystemColors.ControlText;
 			BtnRead.BackColor = BtnWrite.BackColor = BtnImport.BackColor = BtnExport.BackColor = BtnCancel.BackColor = ColorScheme.FormButtonsColor;
 
-			mLocalCopy = (GrblConf)Core.GrblConfiguration.Clone();
+			mLocalCopy = Core.GrblConfiguration.ToList();
 			DGV.DataSource = mLocalCopy;
-
 			Core.MachineStatusChanged += RefreshEnabledButtons;
+			
 			RefreshEnabledButtons();
 		}
 
@@ -49,7 +49,7 @@ namespace LaserGRBL
 		void RefreshEnabledButtons()
 		{
 			BtnExport.Enabled = BtnImport.Enabled = BtnRead.Enabled = BtnWrite.Enabled = Core.MachineStatus == GrblCore.MacStatus.Idle;
-			LblConnect.Visible = !BtnRead.Enabled;
+			DGV.ReadOnly = LblConnect.Visible = !BtnRead.Enabled;
 		}
 
 		internal static void CreateAndShowDialog(GrblCore core)
@@ -65,32 +65,31 @@ namespace LaserGRBL
 
 		private void BtnRead_Click(object sender, EventArgs e)
 		{
-
 			try
 			{
 				Cursor = Cursors.WaitCursor;
-				mLocalCopy = Core.ReadConfig();
+				Core.RefreshConfig();
+				mLocalCopy = Core.GrblConfiguration.ToList();
 				DGV.DataSource = mLocalCopy;
-				Core.GrblConfiguration = mLocalCopy.Clone() as GrblConf;
 				RefreshEnabledButtons();
 				Cursor = DefaultCursor;
 
-				System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxReadConfigSuccess, mLocalCopy.Count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+				ActionResult( String.Format(Strings.BoxReadConfigSuccess, mLocalCopy.Count));
 			}
 			catch (Exception ex)
 			{
 				Cursor = DefaultCursor;
-				System.Windows.Forms.MessageBox.Show(Strings.BoxReadConfigError, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				ActionResult(Strings.BoxReadConfigError);
 			}
 
 		}
 
 		private void BtnWrite_Click(object sender, EventArgs e)
 		{
-			WriteConf(mLocalCopy);
+			WriteConf(mLocalCopy, false);
 		}
 
-		private void WriteConf(GrblConf conf)
+		private void WriteConf(List<GrblConf.GrblConfParam> conf, bool import)
 		{
 			try
 			{
@@ -98,7 +97,7 @@ namespace LaserGRBL
 				Core.WriteConfig(conf);
 				Cursor = DefaultCursor;
 
-				System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxWriteConfigWithoutError, conf.Count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+				ActionResult(String.Format(import ? Strings.BoxImportConfigWithoutError :  Strings.BoxWriteConfigWithoutError, conf.Count));
 			}
 			catch (GrblCore.WriteConfigException ex)
 			{
@@ -108,12 +107,17 @@ namespace LaserGRBL
 				foreach (IGrblRow r in ex.Errors)
 					errLines += string.Format("{0} {1}\n", r.GetMessage(), r.GetResult(true, false));
 
-				System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxWriteConfigWithError, conf.Count, ex.Errors.Count) + errLines, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				System.Windows.Forms.MessageBox.Show(String.Format(import ? Strings.BoxImportConfigWithError : Strings.BoxWriteConfigWithError, conf.Count, ex.Errors.Count) + errLines, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 			}
 			catch (Exception ex)
 			{
 				Cursor = DefaultCursor;
-				System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxWriteConfigWithError, conf.Count, "unknown"), Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				System.Windows.Forms.MessageBox.Show(String.Format(import ? Strings.BoxImportConfigWithError : Strings.BoxWriteConfigWithError, conf.Count, "unknown"), Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+			}
+			finally
+			{
+				try{Core.RefreshConfig();}
+				catch{}
 			}
 		}
 
@@ -131,7 +135,8 @@ namespace LaserGRBL
 
 			if (filename != null)
 			{
-				GrblConf toexport = Core.ReadConfig();
+				Core.RefreshConfig();
+				List<GrblConf.GrblConfParam> toexport = Core.GrblConfiguration.ToList();
 				if (toexport.Count > 0)
 				{
 					try
@@ -142,7 +147,7 @@ namespace LaserGRBL
 								sw.WriteLine(string.Format("${0}={1} ({2})", p.Number, p.Value.ToString(System.Globalization.NumberFormatInfo.InvariantInfo), p.Parameter));
 
 							sw.Close();
-							System.Windows.Forms.MessageBox.Show(String.Format(Strings.BoxExportConfigSuccess, toexport.Count), Strings.BoxExportConfigSuccessTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+							ActionResult(String.Format(Strings.BoxExportConfigSuccess, toexport.Count));
 						}
 					}
 					catch (Exception ex)
@@ -179,7 +184,7 @@ namespace LaserGRBL
 				{
 					try
 					{
-						GrblConf conf = new GrblConf();
+						List<GrblConf.GrblConfParam> conf = new List<GrblConf.GrblConfParam>();
 
 						using (System.IO.StreamReader sr = new System.IO.StreamReader(filename))
 						{
@@ -196,7 +201,7 @@ namespace LaserGRBL
 						if (conf.Count == 0)
 							throw new System.IO.InvalidDataException("File does not contain a valid configuration");
 						else
-							WriteConf(conf);
+							WriteConf(conf, true);
 					}
 					catch (Exception ex)
 					{
@@ -216,6 +221,20 @@ namespace LaserGRBL
 			DGV.CancelEdit();
 		}
 
+		private void ActionTimer_Tick(object sender, EventArgs e)
+		{
+			ActionTimer.Stop();
+			LblAction.Visible = false;
+		}
+
+
+		private void ActionResult(string result)
+		{
+			LblAction.Text = result;
+			LblAction.Visible = true;
+			ActionTimer.Start();
+			RefreshEnabledButtons();
+		}
 	}
 
 

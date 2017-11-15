@@ -18,6 +18,7 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GrblConfig));
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnWrite = new System.Windows.Forms.Button();
@@ -27,7 +28,9 @@
 			this.BtnExport = new System.Windows.Forms.Button();
 			this.BtnImport = new System.Windows.Forms.Button();
 			this.GB = new System.Windows.Forms.GroupBox();
+			this.LblAction = new System.Windows.Forms.Label();
 			this.DGV = new System.Windows.Forms.DataGridView();
+			this.ActionTimer = new System.Windows.Forms.Timer(this.components);
 			this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.parameterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.valueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -103,15 +106,25 @@
 			// 
 			// GB
 			// 
+			this.GB.Controls.Add(this.LblAction);
 			this.GB.Controls.Add(this.DGV);
 			resources.ApplyResources(this.GB, "GB");
 			this.GB.Name = "GB";
 			this.GB.TabStop = false;
 			// 
+			// LblAction
+			// 
+			resources.ApplyResources(this.LblAction, "LblAction");
+			this.LblAction.BackColor = System.Drawing.Color.White;
+			this.LblAction.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LblAction.ForeColor = System.Drawing.Color.Red;
+			this.LblAction.Name = "LblAction";
+			// 
 			// DGV
 			// 
 			this.DGV.AllowUserToAddRows = false;
 			this.DGV.AllowUserToDeleteRows = false;
+			this.DGV.AutoGenerateColumns = false;
 			this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numberDataGridViewTextBoxColumn,
@@ -119,14 +132,20 @@
             this.valueDataGridViewTextBoxColumn,
             this.unitDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn});
+			this.DGV.DataSource = this.BS;
 			resources.ApplyResources(this.DGV, "DGV");
 			this.DGV.Name = "DGV";
 			this.DGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DGV_DataError);
 			// 
+			// ActionTimer
+			// 
+			this.ActionTimer.Interval = 5000;
+			this.ActionTimer.Tick += new System.EventHandler(this.ActionTimer_Tick);
+			// 
 			// numberDataGridViewTextBoxColumn
 			// 
 			this.numberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.numberDataGridViewTextBoxColumn.DataPropertyName = "Number";
+			this.numberDataGridViewTextBoxColumn.DataPropertyName = "DollarNumber";
 			resources.ApplyResources(this.numberDataGridViewTextBoxColumn, "numberDataGridViewTextBoxColumn");
 			this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
 			this.numberDataGridViewTextBoxColumn.ReadOnly = true;
@@ -143,6 +162,9 @@
 			// 
 			this.valueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
 			this.valueDataGridViewTextBoxColumn.DataPropertyName = "Value";
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+			dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+			this.valueDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
 			resources.ApplyResources(this.valueDataGridViewTextBoxColumn, "valueDataGridViewTextBoxColumn");
 			this.valueDataGridViewTextBoxColumn.Name = "valueDataGridViewTextBoxColumn";
 			// 
@@ -178,6 +200,7 @@
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel2.PerformLayout();
 			this.GB.ResumeLayout(false);
+			this.GB.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.BS)).EndInit();
 			this.ResumeLayout(false);
@@ -195,12 +218,14 @@
 		private System.Windows.Forms.Button BtnRead;
 		private System.Windows.Forms.Button BtnImport;
 		private System.Windows.Forms.Button BtnExport;
+		private System.Windows.Forms.Label LblConnect;
+		private System.Windows.Forms.Timer ActionTimer;
+		private System.Windows.Forms.Label LblAction;
 		private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn parameterDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
 		private System.Windows.Forms.BindingSource BS;
-		private System.Windows.Forms.Label LblConnect;
     }
 }
