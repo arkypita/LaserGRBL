@@ -31,17 +31,16 @@
 			this.LblAction = new System.Windows.Forms.Label();
 			this.DGV = new System.Windows.Forms.DataGridView();
 			this.ActionTimer = new System.Windows.Forms.Timer(this.components);
-			this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.parameterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.valueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.BS = new System.Windows.Forms.BindingSource(this.components);
+			this.DollarNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Parameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.GB.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.BS)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -124,15 +123,14 @@
 			// 
 			this.DGV.AllowUserToAddRows = false;
 			this.DGV.AllowUserToDeleteRows = false;
-			this.DGV.AutoGenerateColumns = false;
 			this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.numberDataGridViewTextBoxColumn,
-            this.parameterDataGridViewTextBoxColumn,
-            this.valueDataGridViewTextBoxColumn,
-            this.unitDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn});
-			this.DGV.DataSource = this.BS;
+            this.DollarNumber,
+            this.Parameter,
+            this.Value,
+            this.Unit,
+            this.Description,
+            this.Number});
 			resources.ApplyResources(this.DGV, "DGV");
 			this.DGV.Name = "DGV";
 			this.DGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DGV_DataError);
@@ -142,51 +140,54 @@
 			this.ActionTimer.Interval = 5000;
 			this.ActionTimer.Tick += new System.EventHandler(this.ActionTimer_Tick);
 			// 
-			// numberDataGridViewTextBoxColumn
+			// DollarNumber
 			// 
-			this.numberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.numberDataGridViewTextBoxColumn.DataPropertyName = "DollarNumber";
-			resources.ApplyResources(this.numberDataGridViewTextBoxColumn, "numberDataGridViewTextBoxColumn");
-			this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
-			this.numberDataGridViewTextBoxColumn.ReadOnly = true;
+			this.DollarNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.DollarNumber.DataPropertyName = "DollarNumber";
+			resources.ApplyResources(this.DollarNumber, "DollarNumber");
+			this.DollarNumber.Name = "DollarNumber";
+			this.DollarNumber.ReadOnly = true;
 			// 
-			// parameterDataGridViewTextBoxColumn
+			// Parameter
 			// 
-			this.parameterDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.parameterDataGridViewTextBoxColumn.DataPropertyName = "Parameter";
-			resources.ApplyResources(this.parameterDataGridViewTextBoxColumn, "parameterDataGridViewTextBoxColumn");
-			this.parameterDataGridViewTextBoxColumn.Name = "parameterDataGridViewTextBoxColumn";
-			this.parameterDataGridViewTextBoxColumn.ReadOnly = true;
+			this.Parameter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.Parameter.DataPropertyName = "Parameter";
+			resources.ApplyResources(this.Parameter, "Parameter");
+			this.Parameter.Name = "Parameter";
+			this.Parameter.ReadOnly = true;
 			// 
-			// valueDataGridViewTextBoxColumn
+			// Value
 			// 
-			this.valueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.valueDataGridViewTextBoxColumn.DataPropertyName = "Value";
+			this.Value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.Value.DataPropertyName = "Value";
 			dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
 			dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-			this.valueDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-			resources.ApplyResources(this.valueDataGridViewTextBoxColumn, "valueDataGridViewTextBoxColumn");
-			this.valueDataGridViewTextBoxColumn.Name = "valueDataGridViewTextBoxColumn";
+			this.Value.DefaultCellStyle = dataGridViewCellStyle1;
+			resources.ApplyResources(this.Value, "Value");
+			this.Value.Name = "Value";
 			// 
-			// unitDataGridViewTextBoxColumn
+			// Unit
 			// 
-			this.unitDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
-			resources.ApplyResources(this.unitDataGridViewTextBoxColumn, "unitDataGridViewTextBoxColumn");
-			this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
-			this.unitDataGridViewTextBoxColumn.ReadOnly = true;
+			this.Unit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.Unit.DataPropertyName = "Unit";
+			resources.ApplyResources(this.Unit, "Unit");
+			this.Unit.Name = "Unit";
+			this.Unit.ReadOnly = true;
 			// 
-			// descriptionDataGridViewTextBoxColumn
+			// Description
 			// 
-			this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-			resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn, "descriptionDataGridViewTextBoxColumn");
-			this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-			this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+			this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.Description.DataPropertyName = "Description";
+			resources.ApplyResources(this.Description, "Description");
+			this.Description.Name = "Description";
+			this.Description.ReadOnly = true;
 			// 
-			// BS
+			// Number
 			// 
-			this.BS.DataSource = typeof(LaserGRBL.GrblConf);
+			this.Number.DataPropertyName = "Number";
+			resources.ApplyResources(this.Number, "Number");
+			this.Number.Name = "Number";
+			this.Number.ReadOnly = true;
 			// 
 			// GrblConfig
 			// 
@@ -202,7 +203,6 @@
 			this.GB.ResumeLayout(false);
 			this.GB.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.BS)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -226,6 +226,11 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-		private System.Windows.Forms.BindingSource BS;
+		private System.Windows.Forms.DataGridViewTextBoxColumn DollarNumber;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Parameter;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Value;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Number;
     }
 }

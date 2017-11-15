@@ -691,36 +691,57 @@ only when connected and idle</value>
   <data name="&gt;&gt;LblAction.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numberDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+  <metadata name="DollarNumber.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="DollarNumber.HeaderText" xml:space="preserve">
     <value>#</value>
   </data>
-  <data name="numberDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+  <data name="DollarNumber.Width" type="System.Int32, mscorlib">
     <value>39</value>
   </data>
-  <data name="parameterDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+  <metadata name="Parameter.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Parameter.HeaderText" xml:space="preserve">
     <value>Parameter</value>
   </data>
-  <data name="parameterDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+  <data name="Parameter.Width" type="System.Int32, mscorlib">
     <value>95</value>
   </data>
-  <data name="valueDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+  <metadata name="Value.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Value.HeaderText" xml:space="preserve">
     <value>Value</value>
   </data>
-  <data name="valueDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+  <data name="Value.Width" type="System.Int32, mscorlib">
     <value>67</value>
   </data>
-  <data name="unitDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+  <metadata name="Unit.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Unit.HeaderText" xml:space="preserve">
     <value>Unit</value>
   </data>
-  <data name="unitDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+  <data name="Unit.Width" type="System.Int32, mscorlib">
     <value>60</value>
   </data>
-  <data name="descriptionDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+  <metadata name="Description.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Description.HeaderText" xml:space="preserve">
     <value>Description</value>
   </data>
-  <metadata name="BS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>358, 18</value>
+  <metadata name="Number.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
+  <data name="Number.HeaderText" xml:space="preserve">
+    <value>Number</value>
+  </data>
+  <data name="Number.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="DGV.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -820,9 +841,6 @@ only when connected and idle</value>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>811, 469</value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
@@ -835,41 +853,41 @@ only when connected and idle</value>
   <data name="&gt;&gt;ActionTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;numberDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>numberDataGridViewTextBoxColumn</value>
+  <data name="&gt;&gt;DollarNumber.Name" xml:space="preserve">
+    <value>DollarNumber</value>
   </data>
-  <data name="&gt;&gt;numberDataGridViewTextBoxColumn.Type" xml:space="preserve">
+  <data name="&gt;&gt;DollarNumber.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;parameterDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>parameterDataGridViewTextBoxColumn</value>
+  <data name="&gt;&gt;Parameter.Name" xml:space="preserve">
+    <value>Parameter</value>
   </data>
-  <data name="&gt;&gt;parameterDataGridViewTextBoxColumn.Type" xml:space="preserve">
+  <data name="&gt;&gt;Parameter.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;valueDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>valueDataGridViewTextBoxColumn</value>
+  <data name="&gt;&gt;Value.Name" xml:space="preserve">
+    <value>Value</value>
   </data>
-  <data name="&gt;&gt;valueDataGridViewTextBoxColumn.Type" xml:space="preserve">
+  <data name="&gt;&gt;Value.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;unitDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>unitDataGridViewTextBoxColumn</value>
+  <data name="&gt;&gt;Unit.Name" xml:space="preserve">
+    <value>Unit</value>
   </data>
-  <data name="&gt;&gt;unitDataGridViewTextBoxColumn.Type" xml:space="preserve">
+  <data name="&gt;&gt;Unit.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>descriptionDataGridViewTextBoxColumn</value>
+  <data name="&gt;&gt;Description.Name" xml:space="preserve">
+    <value>Description</value>
   </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn.Type" xml:space="preserve">
+  <data name="&gt;&gt;Description.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;BS.Name" xml:space="preserve">
-    <value>BS</value>
+  <data name="&gt;&gt;Number.Name" xml:space="preserve">
+    <value>Number</value>
   </data>
-  <data name="&gt;&gt;BS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;Number.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>GrblConfig</value>

@@ -647,7 +647,6 @@
     <None Include="Grafica\LaserGrbl.ico" />
     <None Include="Grafica\rotCCW.png" />
     <None Include="Grafica\rotCW.png" />
-    <None Include="Properties\DataSources\GrblConf.datasource" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Grafica\add2.png" />
@@ -697,7 +696,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
