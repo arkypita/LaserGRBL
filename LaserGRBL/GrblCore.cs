@@ -262,7 +262,7 @@ namespace LaserGRBL
 
 		public GrblConf Configuration
 		{
-			get {return (GrblConf)Settings.GetObject("Grbl Configuration", new GrblConf());}
+			get { return (GrblConf)Settings.GetObject("Grbl Configuration", new GrblConf()); }
 			set
 			{
 				if (value.Count > 0 && value.mVersion != null)
@@ -498,12 +498,23 @@ namespace LaserGRBL
 		{
 			private System.Collections.Generic.List<IGrblRow> ErrorLines = new System.Collections.Generic.List<IGrblRow>();
 
-			public WriteConfigException(System.Collections.Generic.List<IGrblRow> mSentPtr)
+			public WriteConfigException(System.Collections.Generic.List<IGrblRow> mSentPtr) 
 			{
 				foreach (IGrblRow row in mSentPtr)
 					if (row is GrblCommand)
 						if (((GrblCommand)row).Status != GrblCommand.CommandStatus.ResponseGood)
 							ErrorLines.Add(row);
+			}
+
+			public override string Message
+			{
+				get
+				{
+					string rv = "";
+					foreach (IGrblRow r in ErrorLines)
+						rv += string.Format("{0} {1}\n", r.GetMessage(), r.GetResult(true, false));
+					return rv.Trim();
+				}
 			}
 
 			public System.Collections.Generic.List<IGrblRow> Errors
@@ -514,54 +525,43 @@ namespace LaserGRBL
 		{
 			if (mMachineStatus == MacStatus.Idle)
 			{
+				lock (this)
+				{
+					mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
+					mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
+
+					foreach (GrblConf.GrblConfParam p in config)
+						mQueuePtr.Enqueue(new GrblCommand(string.Format("${0}={1}", p.Number, p.Value.ToString(System.Globalization.NumberFormatInfo.InvariantInfo))));
+				}
+
 				try
 				{
+					while (com.IsOpen && (mQueuePtr.Count > 0 || mPending.Count > 0)) //resta in attesa del completamento della comunicazione
+						;
 
-					lock (this)
+					int errors = 0;
+					foreach (IGrblRow row in mSentPtr)
 					{
-						mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
-						mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
-
-						foreach (GrblConf.GrblConfParam p in config)
-							mQueuePtr.Enqueue(new GrblCommand(string.Format("${0}={1}", p.Number, p.Value.ToString(System.Globalization.NumberFormatInfo.InvariantInfo))));
+						if (row is GrblCommand)
+							if (((GrblCommand)row).Status != GrblCommand.CommandStatus.ResponseGood)
+								errors++;
 					}
 
-					try
-					{
-						while (com.IsOpen && (mQueuePtr.Count > 0 || mPending.Count > 0)) //resta in attesa del completamento della comunicazione
-							;
-
-						int errors = 0;
-						foreach (IGrblRow row in mSentPtr)
-						{
-							if (row is GrblCommand)
-								if (((GrblCommand)row).Status != GrblCommand.CommandStatus.ResponseGood)
-									errors++;
-						}
-
-						if (errors > 0)
-							throw new WriteConfigException(mSentPtr);
-
-					}
-					catch (Exception ex)
-					{
-						Logger.LogException("Write Config", ex);
-						throw (ex);
-					}
-					finally
-					{
-						lock (this)
-						{
-							mQueuePtr = mQueue;
-							mSentPtr = mSent; //restore queue
-						}
-					}
-
+					if (errors > 0)
+						throw new WriteConfigException(mSentPtr);
 				}
 				catch (Exception ex)
 				{
 					Logger.LogException("Write Config", ex);
-					throw ex;
+					throw (ex);
+				}
+				finally
+				{
+					lock (this)
+					{
+						mQueuePtr = mQueue;
+						mSentPtr = mSent; //restore queue
+					}
 				}
 			}
 		}
@@ -1742,10 +1742,11 @@ namespace LaserGRBL
 			{ return this.MemberwiseClone(); }
 		}
 
-	    System.Collections.Generic.Dictionary<int, decimal> mData;
+		System.Collections.Generic.Dictionary<int, decimal> mData;
 		public GrblCore.GrblVersionInfo mVersion;
-		
-		public GrblConf(GrblCore.GrblVersionInfo GrblVersion) : this()
+
+		public GrblConf(GrblCore.GrblVersionInfo GrblVersion)
+			: this()
 		{ mVersion = GrblVersion; }
 
 		public GrblConf()
@@ -1770,7 +1771,7 @@ namespace LaserGRBL
 		{ get { return ReadWithDefault(Version11 ? 111 : 5, 4000); } }
 
 		public bool LaserMode
-		{get {return Version11 ? ReadWithDefault(32, 1) != 0 : false;}}
+		{ get { return Version11 ? ReadWithDefault(32, 1) != 0 : false; } }
 
 		private decimal ReadWithDefault(int number, decimal defval)
 		{
@@ -1805,6 +1806,16 @@ namespace LaserGRBL
 		}
 
 		public int Count { get { return mData.Count; } }
+
+		internal bool HasChanges(GrblConfParam p)
+		{
+			if (!mData.ContainsKey(p.Number))
+				return true;
+			else if (mData[p.Number] != p.Value)
+				return true;
+			else
+				return false;
+		}
 	}
 }
 

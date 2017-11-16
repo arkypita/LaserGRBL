@@ -130,6 +130,13 @@ Please manually download the new version from lasergrbl site.</value>
   <data name="BoxAutoUpdateSuccess" xml:space="preserve">
     <value>Update success!</value>
   </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>There are some changes that have not been applied.
+Do you want to rewrite the configuration?</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>Changes detected!</value>
+  </data>
   <data name="BoxConnectErrorTitle" xml:space="preserve">
     <value>Cannot connect to device</value>
   </data>

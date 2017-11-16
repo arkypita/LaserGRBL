@@ -98,6 +98,25 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a There are some changes that have not been applied.
+        ///Do you want to rewrite the configuration?.
+        /// </summary>
+        internal static string BoxConfigDetectedChanges {
+            get {
+                return ResourceManager.GetString("BoxConfigDetectedChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Changes detected!.
+        /// </summary>
+        internal static string BoxConfigDetectedChangesTitle {
+            get {
+                return ResourceManager.GetString("BoxConfigDetectedChangesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Cannot connect to device.
         /// </summary>
         internal static string BoxConnectErrorTitle {
