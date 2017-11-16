@@ -12,7 +12,8 @@ namespace LaserGRBL.UserControls
 		System.Drawing.Bitmap mBitmap;
 		System.Threading.Thread TH;
 		Matrix mLastMatrix;
-		private PointF mLastPosition;
+		private PointF mLastWPos;
+		private PointF mLastMPos;
 		
 		public GrblPanel()
 		{
@@ -22,7 +23,8 @@ namespace LaserGRBL.UserControls
 			SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 			SetStyle(ControlStyles.AllPaintingInWmPaint, true);
 			SetStyle(ControlStyles.ResizeRedraw, true);
-			mLastPosition = new PointF(0, 0);
+			mLastWPos = new PointF(0, 0);
+			mLastMPos = new PointF(0, 0);
 		}
 
 		protected override void OnPaintBackground(PaintEventArgs e)
@@ -40,7 +42,7 @@ namespace LaserGRBL.UserControls
 
 				if (Core != null)
 				{
-					PointF p = TranslatePoint(mLastPosition);
+					PointF p = TranslatePoint(mLastWPos);
 					e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 					e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
@@ -62,9 +64,9 @@ namespace LaserGRBL.UserControls
 							sf.Alignment = q == GrblFile.CartesianQuadrant.II || q == GrblFile.CartesianQuadrant.III ? StringAlignment.Near : StringAlignment.Far;
 							sf.LineAlignment = q == GrblFile.CartesianQuadrant.III || q == GrblFile.CartesianQuadrant.IV ? StringAlignment.Far : StringAlignment.Near;
 
-							String position = string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? Core.MachinePosition.X : 0, Core != null ? Core.MachinePosition.Y : 0);
+							String position = string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? mLastMPos.X : 0, Core != null ? mLastMPos.Y : 0);
 							if (Core != null && Core.WorkingOffset != PointF.Empty)
-								position = position + "\n" + string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? Core.WorkPosition.X : 0, Core != null ? Core.WorkPosition.Y : 0);
+								position = position + "\n" + string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? mLastWPos.X : 0, Core != null ? mLastWPos.Y : 0);
 
 							e.Graphics.DrawString(position, Font, b, r, sf);
 						}
@@ -162,9 +164,10 @@ namespace LaserGRBL.UserControls
 
 		public void TimerUpdate()
 		{
-			if (Core != null && mLastPosition != Core.MachinePosition)
+			if (Core != null && (mLastWPos != Core.WorkPosition || mLastMPos != Core.MachinePosition))
 			{
-				mLastPosition = Core.MachinePosition;
+				mLastWPos = Core.WorkPosition;
+				mLastMPos = Core.MachinePosition;
 				Invalidate();
 			}
 		}

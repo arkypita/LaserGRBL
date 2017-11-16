@@ -1426,8 +1426,11 @@ namespace LaserGRBL
 		public bool CanSendManualCommand
 		{ get { return IsOpen && MachineStatus != MacStatus.Disconnected && !InProgram; } }
 
-		public bool CanGoHome
+		public bool CanDoHoming
 		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm) && Configuration.HomingEnabled; } }
+
+		public bool CanDoZeroing
+		{ get { return IsOpen && MachineStatus == MacStatus.Idle; } }
 
 		public bool CanUnlock
 		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm); } }

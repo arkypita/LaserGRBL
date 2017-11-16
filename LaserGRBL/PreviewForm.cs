@@ -40,11 +40,12 @@ namespace LaserGRBL
 			Preview.TimerUpdate();
 			SuspendLayout();
 			BtnReset.Enabled = Core.CanResetGrbl;
-			BtnGoHome.Visible = Core.Configuration.HomingEnabled;
-			BtnGoHome.Enabled = Core.CanGoHome;
+			BtnHoming.Visible = Core.Configuration.HomingEnabled;
+			BtnHoming.Enabled = Core.CanDoHoming;
 			BtnUnlock.Enabled = Core.CanUnlock;
 			BtnStop.Enabled = Core.CanFeedHold;
 			BtnResume.Enabled = Core.CanResumeHold;
+			BtnZeroing.Enabled = Core.CanDoZeroing;
 
 			foreach (CustomButtonIB ib in CustomButtonArea.Controls)
 				ib.RefreshEnabled();
@@ -245,6 +246,11 @@ namespace LaserGRBL
 		internal void OnColorChange()
 		{
 			Preview.OnColorChange();
+		}
+
+		private void BtnZeroing_Click(object sender, EventArgs e)
+		{
+			Core.EnqueueCommand(new GrblCommand("G92 X0 Y0"));
 		}
 	}
 
