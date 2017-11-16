@@ -214,6 +214,7 @@ namespace LaserGRBL
 			this.MNAddCB.ResumeLayout(false);
 			this.MNRemEditCB.ResumeLayout(false);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -224,12 +225,12 @@ namespace LaserGRBL
 		private UserControls.ImageButton BtnResume;
 		private UserControls.ImageButton BtnUnlock;
 		private System.Windows.Forms.ToolTip TT;
-		private MyFlowPanel CustomButtonArea;
 		private System.Windows.Forms.ContextMenuStrip MNAddCB;
 		private System.Windows.Forms.ToolStripMenuItem addCustomButtonToolStripMenuItem;
 		private System.Windows.Forms.ContextMenuStrip MNRemEditCB;
 		private System.Windows.Forms.ToolStripMenuItem RemoveButton;
 		private System.Windows.Forms.ToolStripMenuItem editButtonToolStripMenuItem;
 		private UserControls.ImageButton BtnZeroing;
+		private PreviewForm.MyFlowPanel CustomButtonArea;
 	}
 }

@@ -1430,7 +1430,7 @@ namespace LaserGRBL
 		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm) && Configuration.HomingEnabled; } }
 
 		public bool CanDoZeroing
-		{ get { return IsOpen && MachineStatus == MacStatus.Idle; } }
+		{ get { return IsOpen && MachineStatus == MacStatus.Idle && WorkPosition != System.Drawing.PointF.Empty; } }
 
 		public bool CanUnlock
 		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm); } }

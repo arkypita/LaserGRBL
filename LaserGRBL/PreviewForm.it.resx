@@ -117,7 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Preview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>617, 308</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tableLayoutPanel8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="tableLayoutPanel8.ColumnCount" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
@@ -125,7 +132,6 @@
   <data name="BtnZeroing.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnZeroing.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
@@ -192,7 +198,7 @@
     <value>49, 49</value>
   </data>
   <data name="BtnZeroing.ToolTip" xml:space="preserve">
-    <value>Set zero point</value>
+    <value>Set zero point (G92)</value>
   </data>
   <data name="BtnReset.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -546,7 +552,7 @@
     <value>231, 0</value>
   </data>
   <data name="CustomButtonArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>276, 56</value>
+    <value>276, 55</value>
   </data>
   <data name="BtnUnlock.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -694,6 +700,12 @@
   </data>
   <data name="BtnHoming.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 49</value>
+  </data>
+  <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 308</value>
+  </data>
+  <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>617, 55</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>617, 363</value>

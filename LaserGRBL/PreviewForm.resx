@@ -131,9 +131,6 @@
   <data name="addCustomButtonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="&gt;&gt;BtnStop.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="BtnReset.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAANjr9RwUqgAAACBjSFJNAACH
@@ -244,9 +241,6 @@
   </data>
   <data name="&gt;&gt;BtnHoming.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="&gt;&gt;BtnUnlock.Parent" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
   </data>
   <data name="CustomButtonArea.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -501,14 +495,14 @@
   <data name="CustomButtonArea.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;Preview.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;BtnStop.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="BtnStop.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;BtnGoHome.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.7.6.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="tableLayoutPanel8.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnZeroing" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="BtnReset" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnStop" Row="0" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="BtnResume" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="CustomButtonArea" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="BtnUnlock" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnHoming" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,11,AutoSize,0,Percent,33,33333,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="BtnReset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -609,8 +603,8 @@
   <data name="BtnGoHome.Location" type="System.Drawing.Point, System.Drawing">
     <value>58, 3</value>
   </data>
-  <data name="BtnGoHome.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 49</value>
+  <data name="&gt;&gt;BtnGoHome.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.7.6.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="CustomButtonArea.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -697,6 +691,9 @@
         BuoDDx7W++0/qPfffzDVyCkSZuSIwOfhHLef47fTnq1835UsJV/yWgx/jwwmbYmZgP8JC2JNbIiEUJDr
         7uQ50p/0e0z+YsSOmOYxzSnzdySt2dAMf/XflTl3Tx/EvToAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="BtnGoHome.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="Preview.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -909,8 +906,8 @@
   <data name="imageButton1.ToolTip" xml:space="preserve">
     <value>Homing ($H)</value>
   </data>
-  <data name="MNRemEditCB.ToolTip" xml:space="preserve">
-    <value />
+  <data name="BtnGoHome.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
   </data>
   <data name="&gt;&gt;MNRemEditCB.Name" xml:space="preserve">
     <value>MNRemEditCB</value>
@@ -945,8 +942,8 @@
   <data name="&gt;&gt;addCustomButtonToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="BtnGoHome.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+  <data name="&gt;&gt;BtnUnlock.Parent" xml:space="preserve">
+    <value>tableLayoutPanel8</value>
   </data>
   <data name="BtnUnlock.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -969,8 +966,8 @@
   <data name="BtnZeroing.ToolTip" xml:space="preserve">
     <value>Homing ($H)</value>
   </data>
-  <data name="&gt;&gt;editButtonToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="MNRemEditCB.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1013,6 +1010,9 @@
   </data>
   <data name="&gt;&gt;BtnZeroing.Type" xml:space="preserve">
     <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Preview.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;BtnHoming.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
@@ -1240,8 +1240,8 @@
   <data name="BtnUnlock.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="tableLayoutPanel8.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnZeroing" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="BtnReset" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnStop" Row="0" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="BtnResume" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="CustomButtonArea" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="BtnUnlock" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnHoming" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,20,AutoSize,0,Absolute,11,AutoSize,64,Percent,33,33333,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="&gt;&gt;editButtonToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;BtnStop.Type" xml:space="preserve">
     <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
