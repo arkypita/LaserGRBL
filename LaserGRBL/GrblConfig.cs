@@ -86,7 +86,17 @@ namespace LaserGRBL
 
 		private void BtnWrite_Click(object sender, EventArgs e)
 		{
-			WriteConf(mLocalCopy, false);
+			try
+			{
+				Core.RefreshConfig();
+				List<GrblConf.GrblConfParam> changes = GetChanges(); //get changes
+
+				if (changes.Count > 0)
+					WriteConf(changes, false);
+				else
+					ActionResult(Strings.BoxWriteConfigNoChange);
+			}
+			catch { }
 		}
 
 		private bool WriteConf(List<GrblConf.GrblConfParam> conf, bool import)
@@ -239,7 +249,7 @@ namespace LaserGRBL
 
 		private void GrblConfig_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			if (HasChanges && Core.MachineStatus == GrblCore.MacStatus.Idle)
+			if (HasChanges() && Core.MachineStatus == GrblCore.MacStatus.Idle)
 			{
 				DialogResult rv = System.Windows.Forms.MessageBox.Show(Strings.BoxConfigDetectedChanges, Strings.BoxConfigDetectedChangesTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
 
@@ -250,21 +260,36 @@ namespace LaserGRBL
 			}
 		}
 
-		public bool HasChanges 
+		public List<GrblConf.GrblConfParam> GetChanges()
 		{
-			get
-			{
-				GrblConf conf = Core.Configuration;
+			List<GrblConf.GrblConfParam> rv = new List<GrblConf.GrblConfParam>();
+			GrblConf conf = Core.Configuration;
+			foreach (GrblConf.GrblConfParam p in mLocalCopy)
+				if (conf.HasChanges(p))
+					rv.Add(p);
+			return rv;
+		}
 
-				if (conf.Count != mLocalCopy.Count)
+		public bool HasChanges()
+		{
+			GrblConf conf = Core.Configuration;
+
+			if (conf.Count != mLocalCopy.Count)
+				return true;
+
+			foreach(GrblConf.GrblConfParam p in mLocalCopy)
+				if (conf.HasChanges(p))
 					return true;
 
-				foreach(GrblConf.GrblConfParam p in mLocalCopy)
-					if (conf.HasChanges(p))
-						return true;
+			return false;
+		}
 
-				return false;
-			}
+		private void GrblConfig_Load(object sender, EventArgs e)
+		{
+			if (BtnRead.Enabled)
+				BtnRead.PerformClick();
+			else
+				ActionResult(Strings.BoxReadConfigPleaseConnect);
 		}
 	}
 

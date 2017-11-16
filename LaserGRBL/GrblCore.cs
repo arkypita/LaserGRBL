@@ -1230,9 +1230,10 @@ namespace LaserGRBL
 
 				if (mPending.Count > 0)
 				{
-					GrblCommand pending = mPending.Dequeue();
+					GrblCommand pending = mPending.Peek();	//necessario fare peek
+					pending.SetResult(rline, SupportCSV);	//assegnare lo stato
+					mPending.Dequeue();						//solo alla fine rimuoverlo dalla lista (per write config che si aspetta che lo stato sia noto non appena la coda si svuota)
 
-					pending.SetResult(rline, SupportCSV);
 					mBuffer -= pending.SerialData.Length;
 
 					if (mTP.InProgram && pending.RepeatCount == 0) //solo se non è una ripetizione aggiorna il tempo

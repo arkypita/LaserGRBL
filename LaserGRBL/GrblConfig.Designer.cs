@@ -28,6 +28,7 @@
 			this.BtnExport = new System.Windows.Forms.Button();
 			this.BtnImport = new System.Windows.Forms.Button();
 			this.GB = new System.Windows.Forms.GroupBox();
+			this.LblAction = new System.Windows.Forms.Label();
 			this.DGV = new System.Windows.Forms.DataGridView();
 			this.DollarNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Parameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -35,7 +36,6 @@
 			this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.LblAction = new System.Windows.Forms.Label();
 			this.ActionTimer = new System.Windows.Forms.Timer(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
@@ -111,6 +111,14 @@
 			this.GB.Name = "GB";
 			this.GB.TabStop = false;
 			// 
+			// LblAction
+			// 
+			resources.ApplyResources(this.LblAction, "LblAction");
+			this.LblAction.BackColor = System.Drawing.Color.White;
+			this.LblAction.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LblAction.ForeColor = System.Drawing.Color.Red;
+			this.LblAction.Name = "LblAction";
+			// 
 			// DGV
 			// 
 			this.DGV.AllowUserToAddRows = false;
@@ -176,14 +184,6 @@
 			this.Number.Name = "Number";
 			this.Number.ReadOnly = true;
 			// 
-			// LblAction
-			// 
-			resources.ApplyResources(this.LblAction, "LblAction");
-			this.LblAction.BackColor = System.Drawing.Color.White;
-			this.LblAction.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.LblAction.ForeColor = System.Drawing.Color.Red;
-			this.LblAction.Name = "LblAction";
-			// 
 			// ActionTimer
 			// 
 			this.ActionTimer.Interval = 5000;
@@ -197,6 +197,7 @@
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Name = "GrblConfig";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GrblConfig_FormClosing);
+			this.Load += new System.EventHandler(this.GrblConfig_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);

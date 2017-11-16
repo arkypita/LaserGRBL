@@ -167,8 +167,14 @@ Do you want to rewrite the configuration?</value>
   <data name="BoxReadConfigError" xml:space="preserve">
     <value>Error reading config!</value>
   </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>Showing cached values...</value>
+  </data>
   <data name="BoxReadConfigSuccess" xml:space="preserve">
     <value>{0} Config readed successfully!</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>No changes... nothing to write!</value>
   </data>
   <data name="BoxWriteConfigWithError" xml:space="preserve">
     <value>{0} Config written with {1} errors!</value>

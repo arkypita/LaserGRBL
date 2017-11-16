@@ -207,11 +207,29 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Showing cached values....
+        /// </summary>
+        internal static string BoxReadConfigPleaseConnect {
+            get {
+                return ResourceManager.GetString("BoxReadConfigPleaseConnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a {0} Config readed successfully!.
         /// </summary>
         internal static string BoxReadConfigSuccess {
             get {
                 return ResourceManager.GetString("BoxReadConfigSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a No changes... nothing to write!.
+        /// </summary>
+        internal static string BoxWriteConfigNoChange {
+            get {
+                return ResourceManager.GetString("BoxWriteConfigNoChange", resourceCulture);
             }
         }
         
