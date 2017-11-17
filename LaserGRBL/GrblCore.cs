@@ -1749,8 +1749,7 @@ namespace LaserGRBL
 		System.Collections.Generic.Dictionary<int, decimal> mData;
 		public GrblCore.GrblVersionInfo mVersion;
 
-		public GrblConf(GrblCore.GrblVersionInfo GrblVersion)
-			: this()
+		public GrblConf(GrblCore.GrblVersionInfo GrblVersion) : this()
 		{ mVersion = GrblVersion; }
 
 		public GrblConf()
@@ -1775,7 +1774,26 @@ namespace LaserGRBL
 		{ get { return ReadWithDefault(Version11 ? 111 : 5, 4000); } }
 
 		public bool LaserMode
-		{ get { return Version11 ? ReadWithDefault(32, 1) != 0 : false; } }
+		{ get { return ReadWithDefault(Version11 ? 32 : -1, 0) != 0; } }
+
+		public decimal MinPWM
+		{ get { return ReadWithDefault(Version11 ? 31 : -1, 0); } }
+
+		public decimal MaxPWM
+		{ get { return ReadWithDefault(Version11 ? 30 : -1, 1000); } }
+		
+		public decimal ResolutionX
+		{ get { return ReadWithDefault(Version9 ? 100 : 0, 250); } }
+
+		public decimal ResolutionY
+		{ get { return ReadWithDefault(Version9 ? 101 : 1, 250); } }
+
+		public decimal TableWidth
+		{ get { return ReadWithDefault(Version9 ? 130 : -1, 200); } }
+
+		public decimal TableHeight
+		{ get { return ReadWithDefault(Version9 ? 131 : -1, 300); } }
+
 
 		private decimal ReadWithDefault(int number, decimal defval)
 		{
