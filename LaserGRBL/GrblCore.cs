@@ -1914,10 +1914,10 @@ namespace LaserGRBL
 		{ get { return ReadWithDefault(Version9 ? 22 : 17, 1) != 0; } }
 
 		public decimal MaxRateX
-		{ get { return ReadWithDefault(Version11 ? 110 : 4, 4000); } }
+		{ get { return ReadWithDefault(Version9 ? 110 : 4, 4000); } }
 
 		public decimal MaxRateY
-		{ get { return ReadWithDefault(Version11 ? 111 : 5, 4000); } }
+		{ get { return ReadWithDefault(Version9 ? 111 : 5, 4000); } }
 
 		public bool LaserMode
 		{ get { return ReadWithDefault(Version11 ? 32 : -1, 0) != 0; } }
