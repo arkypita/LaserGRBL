@@ -41,15 +41,15 @@ namespace LaserGRBL
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreviewForm));
 			this.Preview = new LaserGRBL.UserControls.GrblPanel();
 			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnZeroing = new LaserGRBL.UserControls.ImageButton();
 			this.BtnReset = new LaserGRBL.UserControls.ImageButton();
-			this.BtnStop = new LaserGRBL.UserControls.ImageButton();
-			this.BtnResume = new LaserGRBL.UserControls.ImageButton();
 			this.CustomButtonArea = new LaserGRBL.PreviewForm.MyFlowPanel();
 			this.MNAddCB = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.addCustomButtonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.BtnUnlock = new LaserGRBL.UserControls.ImageButton();
 			this.BtnHoming = new LaserGRBL.UserControls.ImageButton();
+			this.BtnZeroing = new LaserGRBL.UserControls.ImageButton();
+			this.BtnResume = new LaserGRBL.UserControls.ImageButton();
+			this.BtnStop = new LaserGRBL.UserControls.ImageButton();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
 			this.MNRemEditCB = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.RemoveButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,29 +68,15 @@ namespace LaserGRBL
 			// tableLayoutPanel8
 			// 
 			resources.ApplyResources(this.tableLayoutPanel8, "tableLayoutPanel8");
-			this.tableLayoutPanel8.Controls.Add(this.BtnZeroing, 5, 0);
 			this.tableLayoutPanel8.Controls.Add(this.BtnReset, 0, 0);
-			this.tableLayoutPanel8.Controls.Add(this.BtnStop, 8, 0);
-			this.tableLayoutPanel8.Controls.Add(this.BtnResume, 7, 0);
 			this.tableLayoutPanel8.Controls.Add(this.CustomButtonArea, 6, 0);
 			this.tableLayoutPanel8.Controls.Add(this.BtnUnlock, 2, 0);
 			this.tableLayoutPanel8.Controls.Add(this.BtnHoming, 1, 0);
+			this.tableLayoutPanel8.Controls.Add(this.BtnZeroing, 4, 0);
+			this.tableLayoutPanel8.Controls.Add(this.BtnResume, 8, 0);
+			this.tableLayoutPanel8.Controls.Add(this.BtnStop, 9, 0);
 			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
 			this.TT.SetToolTip(this.tableLayoutPanel8, resources.GetString("tableLayoutPanel8.ToolTip"));
-			// 
-			// BtnZeroing
-			// 
-			resources.ApplyResources(this.BtnZeroing, "BtnZeroing");
-			this.BtnZeroing.AltImage = null;
-			this.BtnZeroing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnZeroing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.BtnZeroing.Coloration = System.Drawing.Color.Empty;
-			this.BtnZeroing.Image = ((System.Drawing.Image)(resources.GetObject("BtnZeroing.Image")));
-			this.BtnZeroing.Name = "BtnZeroing";
-			this.BtnZeroing.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.BtnZeroing, resources.GetString("BtnZeroing.ToolTip"));
-			this.BtnZeroing.UseAltImage = false;
-			this.BtnZeroing.Click += new System.EventHandler(this.BtnZeroing_Click);
 			// 
 			// BtnReset
 			// 
@@ -105,34 +91,6 @@ namespace LaserGRBL
 			this.TT.SetToolTip(this.BtnReset, resources.GetString("BtnReset.ToolTip"));
 			this.BtnReset.UseAltImage = false;
 			this.BtnReset.Click += new System.EventHandler(this.BtnResetClick);
-			// 
-			// BtnStop
-			// 
-			resources.ApplyResources(this.BtnStop, "BtnStop");
-			this.BtnStop.AltImage = ((System.Drawing.Image)(resources.GetObject("BtnStop.AltImage")));
-			this.BtnStop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnStop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.BtnStop.Coloration = System.Drawing.Color.Empty;
-			this.BtnStop.Image = ((System.Drawing.Image)(resources.GetObject("BtnStop.Image")));
-			this.BtnStop.Name = "BtnStop";
-			this.BtnStop.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.BtnStop, resources.GetString("BtnStop.ToolTip"));
-			this.BtnStop.UseAltImage = false;
-			this.BtnStop.Click += new System.EventHandler(this.BtnStopClick);
-			// 
-			// BtnResume
-			// 
-			resources.ApplyResources(this.BtnResume, "BtnResume");
-			this.BtnResume.AltImage = null;
-			this.BtnResume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnResume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.BtnResume.Coloration = System.Drawing.Color.Empty;
-			this.BtnResume.Image = ((System.Drawing.Image)(resources.GetObject("BtnResume.Image")));
-			this.BtnResume.Name = "BtnResume";
-			this.BtnResume.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.BtnResume, resources.GetString("BtnResume.ToolTip"));
-			this.BtnResume.UseAltImage = false;
-			this.BtnResume.Click += new System.EventHandler(this.BtnResumeClick);
 			// 
 			// CustomButtonArea
 			// 
@@ -183,6 +141,48 @@ namespace LaserGRBL
 			this.BtnHoming.UseAltImage = false;
 			this.BtnHoming.Click += new System.EventHandler(this.BtnGoHomeClick);
 			// 
+			// BtnZeroing
+			// 
+			resources.ApplyResources(this.BtnZeroing, "BtnZeroing");
+			this.BtnZeroing.AltImage = null;
+			this.BtnZeroing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnZeroing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BtnZeroing.Coloration = System.Drawing.Color.Empty;
+			this.BtnZeroing.Image = ((System.Drawing.Image)(resources.GetObject("BtnZeroing.Image")));
+			this.BtnZeroing.Name = "BtnZeroing";
+			this.BtnZeroing.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnZeroing, resources.GetString("BtnZeroing.ToolTip"));
+			this.BtnZeroing.UseAltImage = false;
+			this.BtnZeroing.Click += new System.EventHandler(this.BtnZeroing_Click);
+			// 
+			// BtnResume
+			// 
+			resources.ApplyResources(this.BtnResume, "BtnResume");
+			this.BtnResume.AltImage = null;
+			this.BtnResume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnResume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BtnResume.Coloration = System.Drawing.Color.Empty;
+			this.BtnResume.Image = ((System.Drawing.Image)(resources.GetObject("BtnResume.Image")));
+			this.BtnResume.Name = "BtnResume";
+			this.BtnResume.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnResume, resources.GetString("BtnResume.ToolTip"));
+			this.BtnResume.UseAltImage = false;
+			this.BtnResume.Click += new System.EventHandler(this.BtnResumeClick);
+			// 
+			// BtnStop
+			// 
+			resources.ApplyResources(this.BtnStop, "BtnStop");
+			this.BtnStop.AltImage = ((System.Drawing.Image)(resources.GetObject("BtnStop.AltImage")));
+			this.BtnStop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnStop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BtnStop.Coloration = System.Drawing.Color.Empty;
+			this.BtnStop.Image = ((System.Drawing.Image)(resources.GetObject("BtnStop.Image")));
+			this.BtnStop.Name = "BtnStop";
+			this.BtnStop.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnStop, resources.GetString("BtnStop.ToolTip"));
+			this.BtnStop.UseAltImage = false;
+			this.BtnStop.Click += new System.EventHandler(this.BtnStopClick);
+			// 
 			// MNRemEditCB
 			// 
 			resources.ApplyResources(this.MNRemEditCB, "MNRemEditCB");
@@ -214,7 +214,6 @@ namespace LaserGRBL
 			this.MNAddCB.ResumeLayout(false);
 			this.MNRemEditCB.ResumeLayout(false);
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
