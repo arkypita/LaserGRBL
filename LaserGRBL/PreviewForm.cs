@@ -118,6 +118,7 @@ namespace LaserGRBL
 				SizingMode = UserControls.ImageButton.SizingModes.FixedSize;
 				BorderStyle = BorderStyle.FixedSingle;
 				Size = new Size(49, 49);
+				Margin = new Padding(2);
 				tt.SetToolTip(this, cb.ToolTip);
 
 

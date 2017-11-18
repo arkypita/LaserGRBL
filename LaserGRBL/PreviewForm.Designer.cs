@@ -54,34 +54,34 @@ namespace LaserGRBL
 			this.MNRemEditCB = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.RemoveButton = new System.Windows.Forms.ToolStripMenuItem();
 			this.editButtonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel8.SuspendLayout();
 			this.MNAddCB.SuspendLayout();
 			this.MNRemEditCB.SuspendLayout();
+			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// Preview
 			// 
 			resources.ApplyResources(this.Preview, "Preview");
 			this.Preview.Name = "Preview";
-			this.TT.SetToolTip(this.Preview, resources.GetString("Preview.ToolTip"));
 			// 
 			// tableLayoutPanel8
 			// 
 			resources.ApplyResources(this.tableLayoutPanel8, "tableLayoutPanel8");
 			this.tableLayoutPanel8.Controls.Add(this.BtnReset, 0, 0);
-			this.tableLayoutPanel8.Controls.Add(this.CustomButtonArea, 6, 0);
+			this.tableLayoutPanel8.Controls.Add(this.CustomButtonArea, 5, 0);
 			this.tableLayoutPanel8.Controls.Add(this.BtnUnlock, 2, 0);
 			this.tableLayoutPanel8.Controls.Add(this.BtnHoming, 1, 0);
 			this.tableLayoutPanel8.Controls.Add(this.BtnZeroing, 4, 0);
-			this.tableLayoutPanel8.Controls.Add(this.BtnResume, 8, 0);
-			this.tableLayoutPanel8.Controls.Add(this.BtnStop, 9, 0);
+			this.tableLayoutPanel8.Controls.Add(this.BtnResume, 7, 0);
+			this.tableLayoutPanel8.Controls.Add(this.BtnStop, 8, 0);
 			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-			this.TT.SetToolTip(this.tableLayoutPanel8, resources.GetString("tableLayoutPanel8.ToolTip"));
 			// 
 			// BtnReset
 			// 
-			resources.ApplyResources(this.BtnReset, "BtnReset");
 			this.BtnReset.AltImage = null;
+			resources.ApplyResources(this.BtnReset, "BtnReset");
 			this.BtnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnReset.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BtnReset.Coloration = System.Drawing.Color.Empty;
@@ -94,29 +94,27 @@ namespace LaserGRBL
 			// 
 			// CustomButtonArea
 			// 
-			resources.ApplyResources(this.CustomButtonArea, "CustomButtonArea");
 			this.CustomButtonArea.ContextMenuStrip = this.MNAddCB;
+			resources.ApplyResources(this.CustomButtonArea, "CustomButtonArea");
 			this.CustomButtonArea.Name = "CustomButtonArea";
-			this.TT.SetToolTip(this.CustomButtonArea, resources.GetString("CustomButtonArea.ToolTip"));
 			// 
 			// MNAddCB
 			// 
-			resources.ApplyResources(this.MNAddCB, "MNAddCB");
 			this.MNAddCB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addCustomButtonToolStripMenuItem});
 			this.MNAddCB.Name = "CMM";
-			this.TT.SetToolTip(this.MNAddCB, resources.GetString("MNAddCB.ToolTip"));
+			resources.ApplyResources(this.MNAddCB, "MNAddCB");
 			// 
 			// addCustomButtonToolStripMenuItem
 			// 
-			resources.ApplyResources(this.addCustomButtonToolStripMenuItem, "addCustomButtonToolStripMenuItem");
 			this.addCustomButtonToolStripMenuItem.Name = "addCustomButtonToolStripMenuItem";
+			resources.ApplyResources(this.addCustomButtonToolStripMenuItem, "addCustomButtonToolStripMenuItem");
 			this.addCustomButtonToolStripMenuItem.Click += new System.EventHandler(this.addCustomButtonToolStripMenuItem_Click);
 			// 
 			// BtnUnlock
 			// 
-			resources.ApplyResources(this.BtnUnlock, "BtnUnlock");
 			this.BtnUnlock.AltImage = null;
+			resources.ApplyResources(this.BtnUnlock, "BtnUnlock");
 			this.BtnUnlock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnUnlock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BtnUnlock.Coloration = System.Drawing.Color.Empty;
@@ -129,8 +127,8 @@ namespace LaserGRBL
 			// 
 			// BtnHoming
 			// 
-			resources.ApplyResources(this.BtnHoming, "BtnHoming");
 			this.BtnHoming.AltImage = null;
+			resources.ApplyResources(this.BtnHoming, "BtnHoming");
 			this.BtnHoming.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnHoming.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BtnHoming.Coloration = System.Drawing.Color.Empty;
@@ -143,8 +141,8 @@ namespace LaserGRBL
 			// 
 			// BtnZeroing
 			// 
-			resources.ApplyResources(this.BtnZeroing, "BtnZeroing");
 			this.BtnZeroing.AltImage = null;
+			resources.ApplyResources(this.BtnZeroing, "BtnZeroing");
 			this.BtnZeroing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnZeroing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BtnZeroing.Coloration = System.Drawing.Color.Empty;
@@ -157,8 +155,8 @@ namespace LaserGRBL
 			// 
 			// BtnResume
 			// 
-			resources.ApplyResources(this.BtnResume, "BtnResume");
 			this.BtnResume.AltImage = null;
+			resources.ApplyResources(this.BtnResume, "BtnResume");
 			this.BtnResume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnResume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BtnResume.Coloration = System.Drawing.Color.Empty;
@@ -171,8 +169,8 @@ namespace LaserGRBL
 			// 
 			// BtnStop
 			// 
-			resources.ApplyResources(this.BtnStop, "BtnStop");
 			this.BtnStop.AltImage = ((System.Drawing.Image)(resources.GetObject("BtnStop.AltImage")));
+			resources.ApplyResources(this.BtnStop, "BtnStop");
 			this.BtnStop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnStop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BtnStop.Coloration = System.Drawing.Color.Empty;
@@ -185,34 +183,39 @@ namespace LaserGRBL
 			// 
 			// MNRemEditCB
 			// 
-			resources.ApplyResources(this.MNRemEditCB, "MNRemEditCB");
 			this.MNRemEditCB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.RemoveButton,
             this.editButtonToolStripMenuItem});
 			this.MNRemEditCB.Name = "CMM";
-			this.TT.SetToolTip(this.MNRemEditCB, resources.GetString("MNRemEditCB.ToolTip"));
+			resources.ApplyResources(this.MNRemEditCB, "MNRemEditCB");
 			// 
 			// RemoveButton
 			// 
-			resources.ApplyResources(this.RemoveButton, "RemoveButton");
 			this.RemoveButton.Name = "RemoveButton";
+			resources.ApplyResources(this.RemoveButton, "RemoveButton");
 			// 
 			// editButtonToolStripMenuItem
 			// 
-			resources.ApplyResources(this.editButtonToolStripMenuItem, "editButtonToolStripMenuItem");
 			this.editButtonToolStripMenuItem.Name = "editButtonToolStripMenuItem";
+			resources.ApplyResources(this.editButtonToolStripMenuItem, "editButtonToolStripMenuItem");
+			// 
+			// tableLayoutPanel1
+			// 
+			resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel8, 0, 1);
+			this.tableLayoutPanel1.Controls.Add(this.Preview, 0, 0);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			// 
 			// PreviewForm
 			// 
+			this.Controls.Add(this.tableLayoutPanel1);
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.Preview);
-			this.Controls.Add(this.tableLayoutPanel8);
 			this.Name = "PreviewForm";
-			this.TT.SetToolTip(this, resources.GetString("$this.ToolTip"));
 			this.tableLayoutPanel8.ResumeLayout(false);
-			this.tableLayoutPanel8.PerformLayout();
 			this.MNAddCB.ResumeLayout(false);
 			this.MNRemEditCB.ResumeLayout(false);
+			this.tableLayoutPanel1.ResumeLayout(false);
+			this.tableLayoutPanel1.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -231,5 +234,6 @@ namespace LaserGRBL
 		private System.Windows.Forms.ToolStripMenuItem editButtonToolStripMenuItem;
 		private UserControls.ImageButton BtnZeroing;
 		private PreviewForm.MyFlowPanel CustomButtonArea;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 	}
 }
