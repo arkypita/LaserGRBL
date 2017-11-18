@@ -120,6 +120,8 @@ namespace LaserGRBL
 			this.TxtManualCommand.WaterMarkFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TxtManualCommand.WaterMarkForeColor = System.Drawing.Color.LightGray;
 			this.TxtManualCommand.CommandEntered += new LaserGRBL.UserControls.GrblTextBox.CommandEnteredDlg(this.TxtManualCommandCommandEntered);
+			this.TxtManualCommand.Enter += new System.EventHandler(this.TxtManualCommand_Enter);
+			this.TxtManualCommand.Leave += new System.EventHandler(this.TxtManualCommand_Leave);
 			// 
 			// CmdLog
 			// 

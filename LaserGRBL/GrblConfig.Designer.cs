@@ -123,6 +123,7 @@
 			// 
 			this.DGV.AllowUserToAddRows = false;
 			this.DGV.AllowUserToDeleteRows = false;
+			this.DGV.AllowUserToResizeRows = false;
 			this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DollarNumber,

@@ -180,8 +180,8 @@ namespace LaserGRBL
 
 			bool old = TxtManualCommand.Enabled;
 			TxtManualCommand.Enabled = Core.CanSendManualCommand;
-			if (old == false && TxtManualCommand.Enabled == true)
-				TxtManualCommand.Focus();
+			//if (old == false && TxtManualCommand.Enabled == true)
+			//	TxtManualCommand.Focus();
 
 			//CBProtocol.Enabled = !Core.IsOpen;
 			CBPort.Enabled = !Core.IsOpen;
@@ -266,6 +266,16 @@ namespace LaserGRBL
 		internal void OnColorChange()
 		{
 			CmdLog.Invalidate();
+		}
+
+		private void TxtManualCommand_Enter(object sender, EventArgs e)
+		{
+			Core.SuspendHK = true;
+		}
+
+		private void TxtManualCommand_Leave(object sender, EventArgs e)
+		{
+			Core.SuspendHK = false;
 		}
 	}
 }

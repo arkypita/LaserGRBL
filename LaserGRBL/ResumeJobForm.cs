@@ -37,7 +37,7 @@ namespace LaserGRBL
 			UdSpecific.Maximum = mSent;
 			UdSpecific.Value = mSent;
 			RbSomeLines.Enabled = LblSomeLines.Enabled = mSomeLine > 1;
-			RbFromSent.Enabled = LblSent.Enabled = sent < target;
+			RbFromSent.Enabled = true; LblSent.Enabled = sent < target;
 
 			TxtCause.Text = issue.ToString();
 

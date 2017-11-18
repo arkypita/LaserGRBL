@@ -55,7 +55,7 @@ namespace LaserGRBL
 
 		void BtnGoHomeClick(object sender, EventArgs e)
 		{
-			Core.EnqueueCommand(new GrblCommand("$H"));
+			Core.GrblHoming();
 		}
 		void BtnResetClick(object sender, EventArgs e)
 		{
@@ -72,7 +72,7 @@ namespace LaserGRBL
 
 		private void BtnUnlockClick(object sender, EventArgs e)
 		{
-			Core.EnqueueCommand(new GrblCommand("$X"));
+			Core.GrblUnlock();
 		}
 
 		private void addCustomButtonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -159,39 +159,9 @@ namespace LaserGRBL
 				if (mDrawDisabled || !CustomButton.EnabledNow(Core))
 					return;
 
-				string[] arr = cb.GCode.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-				foreach (string str in arr)
-				{
-					string command = str;
-					if (command.Trim().Length > 0)
-					{
-						decimal left = Core.LoadedFile != null && Core.LoadedFile.Range.DrawingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.X.Min : 0;
-						decimal right = Core.LoadedFile != null && Core.LoadedFile.Range.DrawingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.X.Max : 0;
-						decimal top = Core.LoadedFile != null && Core.LoadedFile.Range.DrawingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.Y.Max : 0;
-						decimal bottom = Core.LoadedFile != null && Core.LoadedFile.Range.DrawingRange.ValidRange ? Core.LoadedFile.Range.DrawingRange.Y.Min : 0;
-
-						decimal width = right - left;
-						decimal height = top - bottom;
-
-						command = command.Replace("[left]", FormatNumber(left));
-						command = command.Replace("[right]", FormatNumber(right));
-						command = command.Replace("[top]", FormatNumber(top));
-						command = command.Replace("[bottom]", FormatNumber(bottom));
-
-						command = command.Replace("[width]", FormatNumber(width));
-						command = command.Replace("[height]", FormatNumber(height));
-
-						Core.EnqueueCommand(new GrblCommand(command));
-					}
-				}
+				Core.ExecuteCustombutton(cb.GCode);
 				base.OnClick(e);
 			}
-
-			static string FormatNumber(decimal value)
-			{
-				return string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.000}", value);
-			}
-
 
 			private void RemoveButton_Click(object sender, EventArgs e)
 			{
@@ -251,7 +221,7 @@ namespace LaserGRBL
 
 		private void BtnZeroing_Click(object sender, EventArgs e)
 		{
-			Core.EnqueueCommand(new GrblCommand("G92 X0 Y0"));
+			Core.SetNewZero();
 		}
 	}
 

@@ -87,5 +87,10 @@ namespace LaserGRBL
 			if (dic.ContainsKey(key))
 				dic.Remove(key);
 		}
+
+		internal static bool ExistObject(string key)
+		{
+			return dic.ContainsKey(key);
+		}
 	}
 }

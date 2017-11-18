@@ -222,11 +222,11 @@ namespace LaserGRBL
 
 		private long connectStart;
 
-
 		private Tools.ElapsedFromEvent debugLastStatusDelay;
 		private Tools.ElapsedFromEvent debugLastMoveDelay;
 
 		private ThreadingMode mThreadingMode = ThreadingMode.UltraFast;
+		private HotKeysManager mHotKeyManager;
 
 		public GrblCore(System.Windows.Forms.Control syncroObject)
 		{
@@ -258,6 +258,10 @@ namespace LaserGRBL
 
 			mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
 			mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
+
+			if (!Settings.ExistObject("Hotkey Setup")) Settings.SetObject("Hotkey Setup", new HotKeysManager());
+			mHotKeyManager = (HotKeysManager)Settings.GetObject("Hotkey Setup", null);
+			mHotKeyManager.Init(this);
 		}
 
 		public GrblConf Configuration
@@ -359,27 +363,36 @@ namespace LaserGRBL
 		public GrblFile LoadedFile
 		{ get { return file; } }
 
-		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
-		public void OpenFile(System.Windows.Forms.Form parent)
+		public void ReOpenFile(System.Windows.Forms.Form parent)
 		{
+			if (CanReOpenFile)
+				OpenFile(parent, (string)Settings.GetObject("Core.LastOpenFile", null));
+		}
+
+		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
+		public void OpenFile(System.Windows.Forms.Form parent, string filename = null)
+		{
+			if (!CanLoadNewFile) return;
+
 			try
 			{
-				string filename = null;
-				using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
+				if (filename == null)
 				{
-					//pre-select last file if exist
-					string lastFN = (string)Settings.GetObject("Core.LastOpenFile", null);
-					if (lastFN != null && System.IO.File.Exists(lastFN))
-						ofd.FileName = lastFN;
+					using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
+					{
+						//pre-select last file if exist
+						string lastFN = (string)Settings.GetObject("Core.LastOpenFile", null);
+						if (lastFN != null && System.IO.File.Exists(lastFN))
+							ofd.FileName = lastFN;
 
-					ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.bmp;*.png;*.jpg;*.gif|GCODE Files|*.nc;*.cnc;*.tap;*.gcode|Raster Image|*.bmp;*.png;*.jpg;*.gif";
-					ofd.CheckFileExists = true;
-					ofd.Multiselect = false;
-					ofd.RestoreDirectory = true;
-					if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-						filename = ofd.FileName;
+						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.bmp;*.png;*.jpg;*.gif|GCODE Files|*.nc;*.cnc;*.tap;*.gcode|Raster Image|*.bmp;*.png;*.jpg;*.gif";
+						ofd.CheckFileExists = true;
+						ofd.Multiselect = false;
+						ofd.RestoreDirectory = true;
+						if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+							filename = ofd.FileName;
+					}
 				}
-
 				if (filename != null)
 				{
 					Logger.LogMessage("OpenFile", "Open {0}", filename);
@@ -411,10 +424,23 @@ namespace LaserGRBL
 			}
 		}
 
-		public void SaveProgram(string filename)
+		public void SaveProgram()
 		{
 			if (HasProgram)
-				file.SaveProgram(filename);
+			{
+				string filename = null;
+				using (System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog())
+				{
+					ofd.Filter = "GCODE Files|*.nc";
+					ofd.AddExtension = true;
+					ofd.RestoreDirectory = true;
+					if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+						filename = ofd.FileName;
+				}
+
+				if (filename != null)
+					file.SaveProgram(filename);
+			}
 		}
 
 		public void RefreshConfig()
@@ -568,10 +594,13 @@ namespace LaserGRBL
 
 		public void RunProgram()
 		{
-			if (mTP.Executed == 0 || mTP.Executed == mTP.Target) //mai iniziato oppure correttamente finito
-				RunProgramFromStart(false);
-			else
-				UserWantToContinue();
+			if (CanSendFile)
+			{
+				if (mTP.Executed == 0 || mTP.Executed == mTP.Target) //mai iniziato oppure correttamente finito
+					RunProgramFromStart(false);
+				else
+					UserWantToContinue();
+			}
 		}
 
 		private void UserWantToContinue()
@@ -732,35 +761,36 @@ namespace LaserGRBL
 		#region Comandi immediati
 
 		public void CycleStartResume()
-		{ SendImmediate(126); }
+		{ if (CanResumeHold) SendImmediate(126); }
 
 		public void FeedHold()
-		{ SendImmediate(33); }
+		{ if (CanFeedHold) SendImmediate(33); }
 
 		public void SafetyDoor()
 		{ SendImmediate(64); }
 
 		private void QueryPosition()
-		{
-			SendImmediate(63, true);
-		}
+		{SendImmediate(63, true);}
 
 		public void GrblReset(bool user)
 		{
-			if (user && mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
-				SetIssue(DetectedIssue.ManualReset);
-
-			lock (this)
+			if (CanResetGrbl)
 			{
-				ClearQueue(true);
-				mBuffer = 0;
-				mTP.JobEnd();
-				mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
-				mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
-				SendImmediate(24);
-			}
+				if (user && mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
+					SetIssue(DetectedIssue.ManualReset);
 
-			RiseOverrideChanged();
+				lock (this)
+				{
+					ClearQueue(true);
+					mBuffer = 0;
+					mTP.JobEnd();
+					mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
+					mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
+					SendImmediate(24);
+				}
+
+				RiseOverrideChanged();
+			}
 		}
 
 		public void SendImmediate(byte b, bool mute = false)
@@ -852,10 +882,13 @@ namespace LaserGRBL
 			}
 		}
 
-		public void Jog(JogDirection dir, decimal size, decimal speed)
+		public void Jog(JogDirection dir)
 		{
 			if (JogEnabled)
 			{
+				decimal size = JogStep;
+				decimal speed = JogSpeed;
+
 				string cmd = SupportJogging ? "$J=G91X{1}Y{0}F{2}" : "G0X{1}Y{0}F{2}";
 
 				if (dir == JogDirection.N)
@@ -885,18 +918,18 @@ namespace LaserGRBL
 			}
 		}
 
-		internal void JogHome(decimal speed)
+		internal void JogHome()
 		{
 			if (JogEnabled)
 			{
 				if (SupportJogging)
 				{
-					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", speed)));
+					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", JogSpeed)));
 				}
 				else
 				{
 					EnqueueCommand(new GrblCommand(string.Format("G90")));
-					EnqueueCommand(new GrblCommand(string.Format("G0X0Y0F{0}", speed)));
+					EnqueueCommand(new GrblCommand(string.Format("G0X0Y0F{0}", JogSpeed)));
 				}
 			}
 		}
@@ -1411,6 +1444,15 @@ namespace LaserGRBL
 			mRetryQueue = null;
 		}
 
+		public bool CanReOpenFile
+		{
+			get
+			{
+				string lastFile = (string)Settings.GetObject("Core.LastOpenFile", null);
+				return CanLoadNewFile && lastFile != null && System.IO.File.Exists(lastFile);
+			}
+		}
+
 		public bool CanLoadNewFile
 		{ get { return !InProgram; } }
 
@@ -1496,6 +1538,110 @@ namespace LaserGRBL
 			catch { return value.ToString(); }
 		}
 
+
+		internal bool ManageHotKeys(System.Windows.Forms.Keys keys)
+		{
+			if (SuspendHK)
+				return false;
+			else
+				return mHotKeyManager.ManageHotKeys(keys);
+		}
+
+		internal void HKConnectDisconnect()
+		{
+			if (IsOpen)
+				HKDisconnect();
+			else
+				HKConnect();
+		}
+
+		internal void HKConnect()
+		{
+			if (!IsOpen)
+				OpenCom();
+		}
+
+		internal void HKDisconnect()
+		{
+			if (IsOpen)
+			{
+				if (!(InProgram && System.Windows.Forms.MessageBox.Show(Strings.DisconnectAnyway, "Warning", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Warning, System.Windows.Forms.MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes))
+					CloseCom(true);
+			}
+		}
+
+		internal void HelpOnLine()
+		{System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/");}
+
+		internal void GrblHoming()
+		{if (CanDoHoming)EnqueueCommand(new GrblCommand("$H"));}
+
+		internal void GrblUnlock()
+		{if(CanUnlock) EnqueueCommand(new GrblCommand("$X"));}
+
+		internal void SetNewZero()
+		{if (CanDoZeroing) EnqueueCommand(new GrblCommand("G92 X0 Y0"));}
+
+		public int JogSpeed { get; set; }
+
+		public int JogStep { get; set; }
+
+		public bool SuspendHK { get; set; }
+
+		public HotKeysManager HotKeys { get { return mHotKeyManager; } }
+
+		internal void WriteHotkeys(System.Collections.Generic.List<HotKeysManager.HotKey> mLocalList)
+		{
+			mHotKeyManager.Clear();
+			mHotKeyManager.AddRange(mLocalList);
+			Settings.SetObject("Hotkey Setup", mHotKeyManager);
+			Settings.Save();
+		}
+
+		internal void HKCustomButton(int p)
+		{
+			System.Collections.Generic.List<CustomButton> buttons = (System.Collections.Generic.List<CustomButton>)Settings.GetObject("Custom Buttons", null);
+			if (buttons != null && buttons.Count > p)
+			{
+				CustomButton cb = buttons[p];
+				if (cb.EnabledNow(this))
+					ExecuteCustombutton(cb.GCode);
+			}
+
+		}
+
+		internal void ExecuteCustombutton(string buttoncode)
+		{
+			string[] arr = buttoncode.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+			foreach (string str in arr)
+			{
+				string command = str;
+				if (command.Trim().Length > 0)
+				{
+					decimal left = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.X.Min : 0;
+					decimal right = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.X.Max : 0;
+					decimal top = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.Y.Max : 0;
+					decimal bottom = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.Y.Min : 0;
+
+					decimal width = right - left;
+					decimal height = top - bottom;
+
+					command = command.Replace("[left]", FormatNumber(left));
+					command = command.Replace("[right]", FormatNumber(right));
+					command = command.Replace("[top]", FormatNumber(top));
+					command = command.Replace("[bottom]", FormatNumber(bottom));
+
+					command = command.Replace("[width]", FormatNumber(width));
+					command = command.Replace("[height]", FormatNumber(height));
+
+					EnqueueCommand(new GrblCommand(command));
+				}
+			}
+		}
+
+		static string FormatNumber(decimal value)
+		{return string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0:0.000}", value);}
+				
 	}
 
 	public class TimeProjection
