@@ -98,7 +98,6 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoUpdate\ZipStorer.cs" />
     <Compile Include="ColorScheme.cs" />
     <Compile Include="GrblConfig.cs">
       <SubType>Form</SubType>

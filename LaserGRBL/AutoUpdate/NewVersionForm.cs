@@ -70,7 +70,7 @@ namespace LaserGRBL
 				if (mClosing)
 					return;
 
-				if (e.Error == null && !e.Cancelled && GitHub.ApplyUpdateS1())
+				if (e.Error == null && !e.Cancelled && GitHub.ApplyUpdateEXE())
 					DialogResult = System.Windows.Forms.DialogResult.OK;
 				else
 					DialogResult = System.Windows.Forms.DialogResult.Abort;
@@ -78,8 +78,6 @@ namespace LaserGRBL
 				Close();
 			}
 		}
-
-
 
 		private void NewVersionForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
