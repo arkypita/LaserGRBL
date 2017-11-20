@@ -251,6 +251,9 @@
     <Compile Include="AutoUpdate\NewVersionForm.Designer.cs">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyDatagridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PreviewForm.cs">
       <SubType>UserControl</SubType>
     </Compile>

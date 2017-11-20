@@ -31,13 +31,13 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HotkeyManagerForm));
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.LblConnect = new System.Windows.Forms.Label();
 			this.BtnCancel = new System.Windows.Forms.Button();
+			this.BtnSave = new System.Windows.Forms.Button();
 			this.GB = new System.Windows.Forms.GroupBox();
-			this.DGV = new System.Windows.Forms.DataGridView();
+			this.DGV = new LaserGRBL.MyDatagridView();
 			this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Shortcut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.BtnSave = new System.Windows.Forms.Button();
-			this.LblConnect = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.GB.SuspendLayout();
@@ -76,6 +76,20 @@
 			this.tableLayoutPanel2.Size = new System.Drawing.Size(554, 48);
 			this.tableLayoutPanel2.TabIndex = 3;
 			// 
+			// LblConnect
+			// 
+			this.LblConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.LblConnect.AutoSize = true;
+			this.LblConnect.ForeColor = System.Drawing.Color.Red;
+			this.LblConnect.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.LblConnect.Location = new System.Drawing.Point(48, 11);
+			this.LblConnect.Name = "LblConnect";
+			this.LblConnect.Size = new System.Drawing.Size(232, 26);
+			this.LblConnect.TabIndex = 19;
+			this.LblConnect.Text = "Type any keys combination to set shortcut.\r\nPress \"Canc\" keyboard key to remove s" +
+    "hortcut.";
+			this.LblConnect.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
 			// BtnCancel
 			// 
 			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -88,6 +102,20 @@
 			this.BtnCancel.Text = "Cancel";
 			this.BtnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.BtnCancel.UseVisualStyleBackColor = true;
+			// 
+			// BtnSave
+			// 
+			this.BtnSave.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.BtnSave.Image = ((System.Drawing.Image)(resources.GetObject("BtnSave.Image")));
+			this.BtnSave.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.BtnSave.Location = new System.Drawing.Point(444, 3);
+			this.BtnSave.Name = "BtnSave";
+			this.BtnSave.Size = new System.Drawing.Size(107, 42);
+			this.BtnSave.TabIndex = 14;
+			this.BtnSave.Text = "Save";
+			this.BtnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.BtnSave.UseVisualStyleBackColor = true;
+			this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
 			// 
 			// GB
 			// 
@@ -135,33 +163,6 @@
 			this.Shortcut.Name = "Shortcut";
 			this.Shortcut.ReadOnly = true;
 			// 
-			// BtnSave
-			// 
-			this.BtnSave.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.BtnSave.Image = ((System.Drawing.Image)(resources.GetObject("BtnSave.Image")));
-			this.BtnSave.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnSave.Location = new System.Drawing.Point(444, 3);
-			this.BtnSave.Name = "BtnSave";
-			this.BtnSave.Size = new System.Drawing.Size(107, 42);
-			this.BtnSave.TabIndex = 14;
-			this.BtnSave.Text = "Save";
-			this.BtnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.BtnSave.UseVisualStyleBackColor = true;
-			this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
-			// 
-			// LblConnect
-			// 
-			this.LblConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.LblConnect.AutoSize = true;
-			this.LblConnect.ForeColor = System.Drawing.Color.Red;
-			this.LblConnect.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.LblConnect.Location = new System.Drawing.Point(59, 11);
-			this.LblConnect.Name = "LblConnect";
-			this.LblConnect.Size = new System.Drawing.Size(209, 26);
-			this.LblConnect.TabIndex = 19;
-			this.LblConnect.Text = "Type any keys combination to set shortcut.\r\nPress \"Canc\" key to remove shortcut.";
-			this.LblConnect.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
 			// HotkeyManagerForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,6 +171,7 @@
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.KeyPreview = true;
 			this.Name = "HotkeyManagerForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Hotkey Manager";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel2.ResumeLayout(false);
@@ -186,7 +188,7 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.GroupBox GB;
 		private System.Windows.Forms.Button BtnCancel;
-		private System.Windows.Forms.DataGridView DGV;
+		private MyDatagridView DGV;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Action;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Shortcut;
 		private System.Windows.Forms.Button BtnSave;

@@ -29,7 +29,7 @@
 			this.BtnImport = new System.Windows.Forms.Button();
 			this.GB = new System.Windows.Forms.GroupBox();
 			this.LblAction = new System.Windows.Forms.Label();
-			this.DGV = new System.Windows.Forms.DataGridView();
+			this.DGV = new MyDatagridView();
 			this.DollarNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Parameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -216,7 +216,7 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Button BtnCancel;
 		private System.Windows.Forms.GroupBox GB;
-		private System.Windows.Forms.DataGridView DGV;
+		private MyDatagridView DGV;
 		private System.Windows.Forms.Button BtnWrite;
 		private System.Windows.Forms.Button BtnRead;
 		private System.Windows.Forms.Button BtnImport;
