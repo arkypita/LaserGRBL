@@ -174,7 +174,7 @@ namespace LaserGRBL.UserControls.IntegerInput
 		protected override bool AcceptKeys(char key)
 		{
 			System.Globalization.CultureInfo CI = System.Globalization.CultureInfo.CurrentCulture;
-			return char.IsDigit(key) | char.IsControl(key) | key.ToString() == CI.NumberFormat.NumberDecimalSeparator | (key.ToString() == CI.NumberFormat.NegativeSign & MinValue < 0);
+			return char.IsDigit(key) || char.IsControl(key) || key.ToString() == CI.NumberFormat.NumberDecimalSeparator || (key.ToString() == CI.NumberFormat.NegativeSign & MinValue < 0);
 		}
 
 

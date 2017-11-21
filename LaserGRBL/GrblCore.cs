@@ -1935,10 +1935,10 @@ namespace LaserGRBL
 		{ get { return ReadWithDefault(Version9 ? 101 : 1, 250); } }
 
 		public decimal TableWidth
-		{ get { return ReadWithDefault(Version9 ? 130 : -1, 200); } }
+		{ get { return ReadWithDefault(Version9 ? 130 : -1, 3000); } }
 
 		public decimal TableHeight
-		{ get { return ReadWithDefault(Version9 ? 131 : -1, 300); } }
+		{ get { return ReadWithDefault(Version9 ? 131 : -1, 2000); } }
 
 
 		private decimal ReadWithDefault(int number, decimal defval)

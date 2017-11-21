@@ -9,14 +9,15 @@ namespace LaserGRBL.RasterConverter
 {
 	public partial class RasterToLaserForm : Form
 	{
+		GrblCore mCore;
 		ImageProcessor IP;
 		bool preventClose;
-
 		bool supportPWM = (bool)Settings.GetObject("Support Hardware PWM", true);
 	
 		private RasterToLaserForm(GrblCore core, string filename)
 		{
 			InitializeComponent();
+			mCore = core;
 
 			BackColor = ColorScheme.FormBackColor;
 			GbConversionTool.ForeColor = GbLineToLineOptions.ForeColor = GbParameters.ForeColor = GbVectorizeOptions.ForeColor = ForeColor = ColorScheme.FormForeColor;
@@ -141,7 +142,7 @@ namespace LaserGRBL.RasterConverter
 
 		void BtnCreateClick(object sender, EventArgs e)
 		{
-			using (ConvertSizeAndOptionForm f = new ConvertSizeAndOptionForm())
+			using (ConvertSizeAndOptionForm f = new ConvertSizeAndOptionForm(mCore))
 			{
 				f.ShowDialog(IP);
 				if (f.DialogResult == DialogResult.OK)
@@ -596,13 +597,13 @@ namespace LaserGRBL.RasterConverter
 
 		private void BtnQualityInfo_Click(object sender, EventArgs e)
 		{
-			UDQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog((double)UDQuality.Value);
+			UDQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog(mCore, (double)UDQuality.Value);
 			//System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
 		}
 
 		private void BtnFillingQualityInfo_Click(object sender, EventArgs e)
 		{
-			UDFillingQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog((double)UDFillingQuality.Value);
+			UDFillingQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog(mCore, (double)UDFillingQuality.Value);
 			//System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
 		}
 

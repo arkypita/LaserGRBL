@@ -17,20 +17,34 @@ namespace LaserGRBL.RasterConverter
 	/// </summary>
 	public partial class ConvertSizeAndOptionForm : Form
 	{
+		GrblCore mCore;
 		bool supportPWM = (bool)Settings.GetObject("Support Hardware PWM", true);
 
-		public ConvertSizeAndOptionForm()
+		public ConvertSizeAndOptionForm(GrblCore core)
 		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
 			InitializeComponent();
+			mCore = core;
 
 			BackColor = ColorScheme.FormBackColor;
 			GbLaser.ForeColor = GbSize.ForeColor = GbSpeed.ForeColor = ForeColor = ColorScheme.FormForeColor;
 			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
 
 			LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
+			AssignMinMaxLimit();
+		}
+
+		private void AssignMinMaxLimit()
+		{
+			IISizeW.MaxValue = (int)mCore.Configuration.TableWidth;
+			IISizeH.MaxValue = (int)mCore.Configuration.TableHeight;
+
+			IIOffsetX.MaxValue = (int)mCore.Configuration.TableWidth;
+			IIOffsetY.MaxValue = (int)mCore.Configuration.TableHeight;
+			IIOffsetX.MinValue = -(int)mCore.Configuration.TableWidth;
+			IIOffsetY.MinValue = -(int)mCore.Configuration.TableHeight;
+
+			IIBorderTracing.MaxValue = IILinearFilling.MaxValue = IITravelSpeed.MaxValue = (int)mCore.Configuration.MaxRateX;
+			IIMaxPower.MaxValue = (int)mCore.Configuration.MaxPWM;
 		}
 		
 		ImageProcessor IP;
@@ -82,50 +96,44 @@ namespace LaserGRBL.RasterConverter
 
 			ShowDialog();
 		}
-		
-		
-		private void IISizeW_CurrentValueChanged(object sender, int NewValue, bool ByUser)
+
+
+		private void IISizeW_CurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
 		{
-			if (ByUser)
-				IISizeH.CurrentValue = IP.WidthToHeight(NewValue);
-			
 			IP.TargetSize = new Size(IISizeW.CurrentValue, IISizeH.CurrentValue);
 		}
 
-		private void IISizeH_CurrentValueChanged(object sender, int NewValue, bool ByUser)
+		private void IISizeH_CurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
 		{
-			if (ByUser)
-				IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
-			
 			IP.TargetSize = new Size(IISizeW.CurrentValue, IISizeH.CurrentValue);
 		}
 		
-		void IIOffsetXYCurrentValueChanged(object sender, int NewValue, bool ByUser)
+		void IIOffsetXYCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
 		{
 			IP.TargetOffset = new Point(IIOffsetX.CurrentValue, IIOffsetY.CurrentValue);
 		}
-		
-		void IIBorderTracingCurrentValueChanged(object sender, int NewValue, bool ByUser)
+
+		void IIBorderTracingCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
 		{
 			IP.BorderSpeed = NewValue;
 		}
-		
-		void IIMarkSpeedCurrentValueChanged(object sender, int NewValue, bool ByUser)
+
+		void IIMarkSpeedCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
 		{
 			IP.MarkSpeed = NewValue;
 		}
-		void IITravelSpeedCurrentValueChanged(object sender, int NewValue, bool ByUser)
+		void IITravelSpeedCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
 		{
 			IP.TravelSpeed = NewValue;
 		}
-		void IIMinPowerCurrentValueChanged(object sender, int NewValue, bool ByUser)
+		void IIMinPowerCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
 		{
 			if (ByUser && IIMaxPower.CurrentValue <= NewValue)
 				IIMaxPower.CurrentValue = NewValue + 1;
 
 			IP.MinPower = NewValue;
 		}
-		void IIMaxPowerCurrentValueChanged(object sender, int NewValue, bool ByUser)
+		void IIMaxPowerCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
 		{
 			if (ByUser && IIMinPower.CurrentValue >= NewValue)
 				IIMinPower.CurrentValue = NewValue - 1;
@@ -151,6 +159,17 @@ namespace LaserGRBL.RasterConverter
 		private void CBLaserOFF_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			IP.LaserOff = (string)CBLaserOFF.SelectedItem;
+		}
+
+		private void IISizeW_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+		{
+			if (ByUser)
+				IISizeH.CurrentValue = IP.WidthToHeight(NewValue);
+		}
+
+		private void IISizeH_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+		{
+			if (ByUser) IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
 		}
 		
 	}

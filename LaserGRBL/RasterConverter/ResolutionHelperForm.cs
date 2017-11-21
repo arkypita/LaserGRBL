@@ -22,14 +22,14 @@ namespace LaserGRBL.RasterConverter
 			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
 		}
 
-		public static double CreateAndShowDialog(double oldval)
+		public static double CreateAndShowDialog(GrblCore Core, double oldval)
 		{
 			double rv = oldval;
 
 			using (ResolutionHelperForm f = new ResolutionHelperForm())
 			{
 				f.UDDesired.Value = (decimal)oldval;
-				f.UDHardware.Value = (decimal)Settings.GetObject("Hardware Resolution", 100.0m);
+				f.UDHardware.Value = Core.Configuration.ResolutionX;
 				f.Compute(null, null);
 
 				if (f.ShowDialog() == DialogResult.OK)

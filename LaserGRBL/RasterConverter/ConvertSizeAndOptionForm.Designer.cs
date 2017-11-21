@@ -195,6 +195,7 @@ namespace LaserGRBL.RasterConverter
 			this.IISizeH.MinValue = 10;
 			this.IISizeH.Name = "IISizeH";
 			this.IISizeH.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IISizeH.OnTheFlyValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeH_OnTheFlyValueChanged);
 			this.IISizeH.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeH_CurrentValueChanged);
 			// 
 			// IISizeW
@@ -206,6 +207,7 @@ namespace LaserGRBL.RasterConverter
 			this.IISizeW.MinValue = 10;
 			this.IISizeW.Name = "IISizeW";
 			this.IISizeW.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IISizeW.OnTheFlyValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeW_OnTheFlyValueChanged);
 			this.IISizeW.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IISizeW_CurrentValueChanged);
 			// 
 			// label6
