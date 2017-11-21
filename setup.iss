@@ -24,7 +24,7 @@ DefaultDirName={pf}\{#MyAppName}
 DisableDirPage=yes
 DisableProgramGroupPage=yes
 OutputDir=.\
-OutputBaseFilename=setup
+OutputBaseFilename=install
 Compression=lzma/ultra64
 SolidCompression=yes
 InternalCompressLevel=ultra64
@@ -32,7 +32,7 @@ CompressionThreads=2
 RestartIfNeededByRun=False
 Uninstallable=yes
 UninstallFilesDir={pf}
-SetupIconFile=.\LaserGRBL\Grafica\LaserGrblForm.ico
+SetupIconFile=.\install.ico
 UninstallDisplayIcon={app}\LaserGRBL.exe
 
 [Languages]
