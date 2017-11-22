@@ -7,6 +7,7 @@ namespace LaserGRBL
 	public partial class MainForm : Form
 	{
 		private GrblCore Core;
+		private bool FirstIdle = true;
 
 		public MainForm()
 		{
@@ -102,9 +103,21 @@ namespace LaserGRBL
 				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, " ,", true);
 			}
 		}
+
 		
 		void OnMachineStatus()
 		{
+			if (Core.MachineStatus == GrblCore.MacStatus.Idle && FirstIdle && Core.Configuration.Count == 0)
+			{
+				try
+				{
+					Core.RefreshConfig();
+					FirstIdle = false;
+				}
+				catch { }
+			}
+
+
 			TimerUpdate();
 		}
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
