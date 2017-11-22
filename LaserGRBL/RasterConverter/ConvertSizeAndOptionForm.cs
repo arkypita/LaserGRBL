@@ -47,17 +47,17 @@ namespace LaserGRBL.RasterConverter
 			IIOffsetX.MinValue = -(int)mCore.Configuration.TableWidth;
 			IIOffsetY.MinValue = -(int)mCore.Configuration.TableHeight;
 
-			IIBorderTracing.MaxValue = IILinearFilling.MaxValue = IITravelSpeed.MaxValue = (int)mCore.Configuration.MaxRateX;
+			IIBorderTracing.MaxValue = IILinearFilling.MaxValue = (int)mCore.Configuration.MaxRateX;
 			IIMaxPower.MaxValue = (int)mCore.Configuration.MaxPWM;
 		}
-		
+
 		ImageProcessor IP;
-		
+
 		public void ShowDialog(ImageProcessor processor)
 		{
 			IP = processor;
-			
-			
+
+
 			if (IP.Original.Height < IP.Original.Width)
 			{
 				IISizeW.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100);
@@ -68,11 +68,10 @@ namespace LaserGRBL.RasterConverter
 				IISizeH.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100);
 				IISizeW.CurrentValue = IP.HeightToWidht(IISizeH.CurrentValue);
 			}
-		
+
 
 			IIBorderTracing.CurrentValue = IP.BorderSpeed = (int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
 			IILinearFilling.CurrentValue = IP.MarkSpeed = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Mark", 1000);
-			IITravelSpeed.CurrentValue = IP.TravelSpeed = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Travel", 4000);
 
 			IP.LaserOn = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
 
@@ -111,7 +110,7 @@ namespace LaserGRBL.RasterConverter
 		{
 			IP.TargetSize = new Size(IISizeW.CurrentValue, IISizeH.CurrentValue);
 		}
-		
+
 		void IIOffsetXYCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
 		{
 			IP.TargetOffset = new Point(IIOffsetX.CurrentValue, IIOffsetY.CurrentValue);
@@ -125,10 +124,6 @@ namespace LaserGRBL.RasterConverter
 		void IIMarkSpeedCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
 		{
 			IP.MarkSpeed = NewValue;
-		}
-		void IITravelSpeedCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
-		{
-			IP.TravelSpeed = NewValue;
 		}
 		void IIMinPowerCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
 		{
@@ -175,6 +170,6 @@ namespace LaserGRBL.RasterConverter
 		{
 			if (ByUser) IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
 		}
-		
+
 	}
 }

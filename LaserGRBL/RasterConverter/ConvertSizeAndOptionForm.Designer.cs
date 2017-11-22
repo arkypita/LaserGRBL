@@ -30,13 +30,8 @@ namespace LaserGRBL.RasterConverter
 		private System.Windows.Forms.GroupBox GbSpeed;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
 		private System.Windows.Forms.Label LblBorderTracing;
-		private System.Windows.Forms.Label LblBorderTracingmm;
 		private LaserGRBL.UserControls.IntegerInput.IntegerInputRanged IIBorderTracing;
-		private System.Windows.Forms.Label label20;
-		private System.Windows.Forms.Label label19;
 		private LaserGRBL.UserControls.IntegerInput.IntegerInputRanged IILinearFilling;
-		private LaserGRBL.UserControls.IntegerInput.IntegerInputRanged IITravelSpeed;
-		private System.Windows.Forms.Label LblLinearFillingmm;
 		private System.Windows.Forms.Label LblLinearFilling;
 		private System.Windows.Forms.GroupBox GbLaser;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
@@ -89,13 +84,8 @@ namespace LaserGRBL.RasterConverter
 			this.GbSpeed = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblBorderTracing = new System.Windows.Forms.Label();
-			this.LblBorderTracingmm = new System.Windows.Forms.Label();
 			this.IIBorderTracing = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.label20 = new System.Windows.Forms.Label();
-			this.label19 = new System.Windows.Forms.Label();
 			this.IILinearFilling = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.IITravelSpeed = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
-			this.LblLinearFillingmm = new System.Windows.Forms.Label();
 			this.LblLinearFilling = new System.Windows.Forms.Label();
 			this.GbLaser = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -113,6 +103,8 @@ namespace LaserGRBL.RasterConverter
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
+			this.LblLinearFillingmm = new System.Windows.Forms.Label();
+			this.LblBorderTracingmm = new System.Windows.Forms.Label();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.GbSize.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -243,10 +235,7 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel6.Controls.Add(this.LblBorderTracing, 0, 0);
 			this.tableLayoutPanel6.Controls.Add(this.LblBorderTracingmm, 2, 0);
 			this.tableLayoutPanel6.Controls.Add(this.IIBorderTracing, 1, 0);
-			this.tableLayoutPanel6.Controls.Add(this.label20, 2, 2);
-			this.tableLayoutPanel6.Controls.Add(this.label19, 0, 2);
 			this.tableLayoutPanel6.Controls.Add(this.IILinearFilling, 1, 1);
-			this.tableLayoutPanel6.Controls.Add(this.IITravelSpeed, 1, 2);
 			this.tableLayoutPanel6.Controls.Add(this.LblLinearFillingmm, 2, 1);
 			this.tableLayoutPanel6.Controls.Add(this.LblLinearFilling, 0, 1);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -255,11 +244,6 @@ namespace LaserGRBL.RasterConverter
 			// 
 			resources.ApplyResources(this.LblBorderTracing, "LblBorderTracing");
 			this.LblBorderTracing.Name = "LblBorderTracing";
-			// 
-			// LblBorderTracingmm
-			// 
-			resources.ApplyResources(this.LblBorderTracingmm, "LblBorderTracingmm");
-			this.LblBorderTracingmm.Name = "LblBorderTracingmm";
 			// 
 			// IIBorderTracing
 			// 
@@ -273,16 +257,6 @@ namespace LaserGRBL.RasterConverter
 			this.IIBorderTracing.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIBorderTracing.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIBorderTracingCurrentValueChanged);
 			// 
-			// label20
-			// 
-			resources.ApplyResources(this.label20, "label20");
-			this.label20.Name = "label20";
-			// 
-			// label19
-			// 
-			resources.ApplyResources(this.label19, "label19");
-			this.label19.Name = "label19";
-			// 
 			// IILinearFilling
 			// 
 			resources.ApplyResources(this.IILinearFilling, "IILinearFilling");
@@ -294,23 +268,6 @@ namespace LaserGRBL.RasterConverter
 			this.IILinearFilling.Name = "IILinearFilling";
 			this.IILinearFilling.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IILinearFilling.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMarkSpeedCurrentValueChanged);
-			// 
-			// IITravelSpeed
-			// 
-			resources.ApplyResources(this.IITravelSpeed, "IITravelSpeed");
-			this.IITravelSpeed.CurrentValue = 4000;
-			this.IITravelSpeed.ForcedText = null;
-			this.IITravelSpeed.ForceMinMax = false;
-			this.IITravelSpeed.MaxValue = 4000;
-			this.IITravelSpeed.MinValue = 1;
-			this.IITravelSpeed.Name = "IITravelSpeed";
-			this.IITravelSpeed.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-			this.IITravelSpeed.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IITravelSpeedCurrentValueChanged);
-			// 
-			// LblLinearFillingmm
-			// 
-			resources.ApplyResources(this.LblLinearFillingmm, "LblLinearFillingmm");
-			this.LblLinearFillingmm.Name = "LblLinearFillingmm";
 			// 
 			// LblLinearFilling
 			// 
@@ -453,6 +410,16 @@ namespace LaserGRBL.RasterConverter
 			this.TT.InitialDelay = 500;
 			this.TT.ReshowDelay = 100;
 			// 
+			// LblLinearFillingmm
+			// 
+			resources.ApplyResources(this.LblLinearFillingmm, "LblLinearFillingmm");
+			this.LblLinearFillingmm.Name = "LblLinearFillingmm";
+			// 
+			// LblBorderTracingmm
+			// 
+			resources.ApplyResources(this.LblBorderTracingmm, "LblBorderTracingmm");
+			this.LblBorderTracingmm.Name = "LblBorderTracingmm";
+			// 
 			// ConvertSizeAndOptionForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -485,5 +452,7 @@ namespace LaserGRBL.RasterConverter
 		private System.Windows.Forms.ComboBox CBLaserON;
 		private System.Windows.Forms.ComboBox CBLaserOFF;
 		private System.Windows.Forms.ToolTip TT;
+		private System.Windows.Forms.Label LblBorderTracingmm;
+		private System.Windows.Forms.Label LblLinearFillingmm;
 	}
 }
