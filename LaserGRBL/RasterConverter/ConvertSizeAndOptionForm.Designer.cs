@@ -412,9 +412,6 @@ namespace LaserGRBL.RasterConverter
 			// 
 			this.CBLaserON.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CBLaserON.FormattingEnabled = true;
-			this.CBLaserON.Items.AddRange(new object[] {
-            resources.GetString("CBLaserON.Items"),
-            resources.GetString("CBLaserON.Items1")});
 			resources.ApplyResources(this.CBLaserON, "CBLaserON");
 			this.CBLaserON.Name = "CBLaserON";
 			this.CBLaserON.SelectedIndexChanged += new System.EventHandler(this.CBLaserON_SelectedIndexChanged);

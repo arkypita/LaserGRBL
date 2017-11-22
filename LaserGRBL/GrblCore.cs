@@ -857,9 +857,6 @@ namespace LaserGRBL
 		public bool SupportRTO
 		{ get { return GrblVersion != null && GrblVersion >= new GrblVersionInfo(1, 1); } }
 
-		public bool SupportLaserMode
-		{ get { return GrblVersion != null && GrblVersion >= new GrblVersionInfo(1, 1); } }
-
 		public bool SupportJogging
 		{ get { return GrblVersion != null && GrblVersion >= new GrblVersionInfo(1, 1); } }
 
