@@ -14,17 +14,17 @@ namespace LaserGRBL.RasterConverter
 	{
 		public delegate void PreviewBeginDlg();
 		public static event PreviewBeginDlg PreviewBegin;
-		
+
 		public delegate void PreviewReadyDlg(Image img);
 		public static event PreviewReadyDlg PreviewReady;
 
 		public delegate void GenerationCompleteDlg(Exception ex);
-		public static event GenerationCompleteDlg GenerationComplete;		
+		public static event GenerationCompleteDlg GenerationComplete;
 
 		private Bitmap mTrueOriginal;	//real original image
 		private Bitmap mOriginal;		//original image (cropped or rotated)
 		private Bitmap mResized;		//resized for preview
-		
+
 		private bool mGrayScale;		//image has no color
 		private bool mSuspended;		//image generator suspended for multiple property change
 		private Size mBoxSize;			//size of the picturebox frame
@@ -67,18 +67,18 @@ namespace LaserGRBL.RasterConverter
 		public int MarkSpeed;
 		public int MinPower;
 		public int MaxPower;
-		
+
 		private string mFileName;
 		GrblCore mCore;
-		
+
 		private ImageProcessor Current; 		//current instance of processor thread/class - used to call abort
 		Thread TH;								//processing thread
 		protected ManualResetEvent MustExit;	//exit condition
 
-		
+
 		public enum Tool
 		{ Line2Line, Dithering, Vectorize }
-		
+
 		public enum Direction
 		{ Horizontal, Vertical, Diagonal, None }
 
@@ -88,15 +88,15 @@ namespace LaserGRBL.RasterConverter
 			mFileName = fileName;
 			mSuspended = true;
 			//mOriginal = new Bitmap(fileName);
-			
+
 			//this double pass is needed to normalize loaded image pixelformat
 			//http://stackoverflow.com/questions/2016406/converting-bitmap-pixelformats-in-c-sharp
 			using (Bitmap loadedBmp = new Bitmap(fileName))
-				using (Bitmap tmpBmp = new Bitmap(loadedBmp))
-					mOriginal = tmpBmp.Clone(new Rectangle(0, 0, tmpBmp.Width, tmpBmp.Height), System.Drawing.Imaging.PixelFormat.Format32bppArgb); 
-			
+			using (Bitmap tmpBmp = new Bitmap(loadedBmp))
+				mOriginal = tmpBmp.Clone(new Rectangle(0, 0, tmpBmp.Width, tmpBmp.Height), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
 			mTrueOriginal = mOriginal.Clone() as Bitmap;
-			
+
 			mBoxSize = boxSize;
 			ResizeRecalc();
 			mGrayScale = TestGrayScale(mOriginal);
@@ -108,7 +108,7 @@ namespace LaserGRBL.RasterConverter
 			ResizeRecalc();
 			Refresh();
 		}
-		
+
 		public object Clone()
 		{
 			ImageProcessor rv = this.MemberwiseClone() as ImageProcessor;
@@ -119,25 +119,25 @@ namespace LaserGRBL.RasterConverter
 			rv.mResized = mResized.Clone() as Bitmap;
 			return rv;
 		}
-		
+
 		public bool IsGrayScale
-		{get {return mGrayScale;}}
-		
+		{ get { return mGrayScale; } }
+
 		bool TestGrayScale(Bitmap bmp)
 		{
 			int maxdiff = 0;
-			
-			for(int x = 0; x < bmp.Width; x+=10)
+
+			for (int x = 0; x < bmp.Width; x += 10)
 			{
-				for(int y = 0; y < bmp.Height; y+=10)
+				for (int y = 0; y < bmp.Height; y += 10)
 				{
-					Color c = bmp.GetPixel(x,y);
+					Color c = bmp.GetPixel(x, y);
 					maxdiff = Math.Max(maxdiff, Math.Abs(c.R - c.G));
 					maxdiff = Math.Max(maxdiff, Math.Abs(c.G - c.B));
 					maxdiff = Math.Max(maxdiff, Math.Abs(c.R - c.B));
 				}
 			}
-			
+
 			return (maxdiff < 20);
 		}
 
@@ -146,18 +146,18 @@ namespace LaserGRBL.RasterConverter
 			Suspend();
 			if (Current != null)
 				Current.AbortThread();
-			
+
 			mTrueOriginal.Dispose();
 			mOriginal.Dispose();
 			mResized.Dispose();
 		}
-		
+
 		public void Suspend()
 		{
 			mSuspended = true;
 		}
 
-		
+
 		public void Resume()
 		{
 			if (mSuspended)
@@ -169,8 +169,8 @@ namespace LaserGRBL.RasterConverter
 
 		public InterpolationMode Interpolation
 		{
-			get{return mInterpolation;}
-			set 
+			get { return mInterpolation; }
+			set
 			{
 				if (value != mInterpolation)
 				{
@@ -180,30 +180,30 @@ namespace LaserGRBL.RasterConverter
 				}
 			}
 		}
-		
+
 		public void CropImage(Rectangle rect, Size rsize)
 		{
 			if (rect.Width <= 0 || rect.Height <= 0)
 				return;
-			
+
 			Rectangle scaled = new Rectangle(rect.X * mOriginal.Width / rsize.Width,
-			                                 rect.Y * mOriginal.Height / rsize.Height,
+											 rect.Y * mOriginal.Height / rsize.Height,
 											 rect.Width * mOriginal.Width / rsize.Width,
 											 rect.Height * mOriginal.Height / rsize.Height);
-			
+
 			if (scaled.Width <= 0 || scaled.Height <= 0)
 				return;
-			
+
 			Bitmap newBmp = mOriginal.Clone(scaled, mOriginal.PixelFormat);
 			Bitmap oldBmp = mOriginal;
-		
+
 			mOriginal = newBmp;
 			oldBmp.Dispose();
 
 			ResizeRecalc();
 			Refresh();
 		}
-		
+
 		public void RotateCW()
 		{
 			mOriginal.RotateFlip(RotateFlipType.Rotate90FlipNone);
@@ -215,44 +215,44 @@ namespace LaserGRBL.RasterConverter
 		{
 			mOriginal.RotateFlip(RotateFlipType.Rotate270FlipNone);
 			ResizeRecalc();
-			Refresh();			
+			Refresh();
 		}
-		
+
 		public void FlipH()
 		{
 			mOriginal.RotateFlip(RotateFlipType.RotateNoneFlipY);
 			ResizeRecalc();
 			Refresh();
 		}
-		
+
 		public void Revert()
 		{
 			Bitmap tmp = mOriginal;
 			mOriginal = mTrueOriginal.Clone() as Bitmap;
 			tmp.Dispose();
-			
+
 			ResizeRecalc();
-			Refresh();		
+			Refresh();
 		}
-		
+
 		public void FlipV()
 		{
 			mOriginal.RotateFlip(RotateFlipType.RotateNoneFlipX);
 			ResizeRecalc();
-			Refresh();			
+			Refresh();
 		}
-		
+
 		private void ResizeRecalc()
 		{
 			lock (this)
 			{
 				if (mResized != null)
 					mResized.Dispose();
-				
+
 				mResized = ImageTransform.ResizeImage(mOriginal, CalculateResizeToFit(mOriginal.Size, mBoxSize), false, Interpolation);
 			}
 		}
-		
+
 		public Tool SelectedTool
 		{
 			get { return mTool; }
@@ -544,7 +544,7 @@ namespace LaserGRBL.RasterConverter
 
 		public Direction FillingDirection
 		{
-			get{ return mFillingDirection; }
+			get { return mFillingDirection; }
 			set
 			{
 				if (value != mFillingDirection)
@@ -568,7 +568,7 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-		public bool Demo	
+		public bool Demo
 		{
 			get { return mDemo; }
 			set
@@ -585,54 +585,55 @@ namespace LaserGRBL.RasterConverter
 		{
 			if (mSuspended)
 				return;
-			
+
 			if (Current != null)
 				Current.AbortThread();
-			
+
 			Current = (ImageProcessor)this.Clone();
 			Current.RunThread();
 		}
-		
+
 		private void RunThread()
 		{
 			MustExit = new ManualResetEvent(false);
 			TH = new Thread(CreatePreview);
 			TH.Name = "Image Processor";
-			
+
 			if (PreviewBegin != null)
 				PreviewBegin();
-							
+
 			TH.Start();
 		}
-		
+
 		private void AbortThread()
 		{
-			if ((TH != null) && TH.ThreadState != System.Threading.ThreadState.Stopped) 
+			if ((TH != null) && TH.ThreadState != System.Threading.ThreadState.Stopped)
 			{
 				MustExit.Set();
 
-				if (!object.ReferenceEquals(System.Threading.Thread.CurrentThread, TH)) 
+				if (!object.ReferenceEquals(System.Threading.Thread.CurrentThread, TH))
 				{
 					TH.Join(100);
-					if (TH != null && TH.ThreadState != System.Threading.ThreadState.Stopped) {
+					if (TH != null && TH.ThreadState != System.Threading.ThreadState.Stopped)
+					{
 						System.Diagnostics.Debug.WriteLine(string.Format("Devo forzare la terminazione del Thread '{0}'", TH.Name));
 						TH.Abort();
 					}
 				}
-				else 
+				else
 				{
 					System.Diagnostics.Debug.WriteLine(string.Format("ATTENZIONE! Chiamata rientrante a thread stop '{0}'", TH.Name));
 				}
 			}
-			
+
 			TH = null;
 			MustExit = null;
 			mResized.Dispose();
 		}
-		
+
 		private bool MustExitTH
-		{get{return MustExit != null && MustExit.WaitOne(0, false);}}
-		
+		{ get { return MustExit != null && MustExit.WaitOne(0, false); } }
+
 		void CreatePreview()
 		{
 			try
@@ -664,7 +665,7 @@ namespace LaserGRBL.RasterConverter
 					}
 				}
 			}
-			catch(Exception ex) 
+			catch (Exception ex)
 			{
 				System.Diagnostics.Debug.WriteLine(ex.ToString());
 			}
@@ -688,18 +689,21 @@ namespace LaserGRBL.RasterConverter
 			TH.Name = "GCode Generator";
 			TH.Start();
 		}
-		
+
+		private static bool Is32Bit
+		{ get { return IntPtr.Size == 4; } }
+
 		void DoTrueWork()
 		{
 			try
 			{
-				int maxSize = 6000*7000; //testato con immagini da 600*700 con res 10ppm
+				int maxSize = Is32Bit ? 6000 * 7000 : 22000 * 22000; //on 32bit OS we have memory limit - allow Higher value on 64bit
 				double maxRes = Math.Sqrt((maxSize / (TargetSize.Width * TargetSize.Height))); //limit res if resultimg bmp size is to big
 				double res = Math.Min(maxRes, SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering ? (double)Quality : 10.0); //use a fixed resolution of 10ppmm
 				double fres = Math.Min(maxRes, FillingQuality);
 
 				Size pixelSize = new Size((int)(TargetSize.Width * res), (int)(TargetSize.Height * res));
-				
+
 				if (res > 0)
 				{
 					using (Bitmap bmp = CreateTarget(pixelSize))
@@ -724,7 +728,7 @@ namespace LaserGRBL.RasterConverter
 						else if (SelectedTool == ImageProcessor.Tool.Vectorize)
 							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, conf);
 					}
-					
+
 					if (GenerationComplete != null)
 						GenerationComplete(null);
 				}
@@ -734,13 +738,13 @@ namespace LaserGRBL.RasterConverter
 						GenerationComplete(new System.InvalidOperationException("Target size too big for processing!"));
 				}
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				if (GenerationComplete != null)
 					GenerationComplete(ex);
 			}
 		}
-		
+
 		private Bitmap CreateTarget(Size size)
 		{
 			return ProduceBitmap(mOriginal, size); //non usare using perché poi viene assegnato al postprocessing 
@@ -761,9 +765,9 @@ namespace LaserGRBL.RasterConverter
 
 		private Bitmap ProduceWhitepointDemo(Image img, Size size)
 		{
- 			using (Bitmap resized = ImageTransform.ResizeImage(mResized, mResized.Size, false, Interpolation))
-				using (Bitmap grayscale = ImageTransform.GrayScale(resized, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), IsGrayScale ? ImageTransform.Formula.SimpleAverage : Formula))
-					return ImageTransform.Whitenize(grayscale, mWhitePoint, true);
+			using (Bitmap resized = ImageTransform.ResizeImage(mResized, mResized.Size, false, Interpolation))
+			using (Bitmap grayscale = ImageTransform.GrayScale(resized, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), IsGrayScale ? ImageTransform.Formula.SimpleAverage : Formula))
+				return ImageTransform.Whitenize(grayscale, mWhitePoint, true);
 		}
 
 
@@ -793,7 +797,7 @@ namespace LaserGRBL.RasterConverter
 				dir = LineDirection;
 			else if (SelectedTool == ImageProcessor.Tool.Vectorize && FillingDirection != Direction.None)
 				dir = FillingDirection;
-			
+
 			if (!MustExitTH && dir != Direction.None)
 			{
 				using (Graphics g = Graphics.FromImage(bmp))
@@ -826,16 +830,16 @@ namespace LaserGRBL.RasterConverter
 					else if (dir == Direction.Diagonal)
 					{
 						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 150 : 255;
-						for (int I = 0; I < bmp.Width + bmp.Height -1 && !MustExitTH ; I++)
+						for (int I = 0; I < bmp.Width + bmp.Height - 1 && !MustExitTH; I++)
 						{
 							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
 							{
-									if (I % 3 == 0)
-										g.DrawLine(p, 0, bmp.Height-I, I, bmp.Height);
+								if (I % 3 == 0)
+									g.DrawLine(p, 0, bmp.Height - I, I, bmp.Height);
 							}
-						}						
+						}
 					}
-					
+
 				}
 			}
 		}
@@ -850,12 +854,12 @@ namespace LaserGRBL.RasterConverter
 
 			if (MustExitTH)
 				return;
-			
+
 			List<List<CsPotrace.Curve>> plist = Potrace.PotraceTrace(bmp);
 
 			if (MustExitTH)
 				return;
-			
+
 			using (Graphics g = Graphics.FromImage(bmp))
 			{
 				g.Clear(Color.White); //remove original image
@@ -890,10 +894,10 @@ namespace LaserGRBL.RasterConverter
 			double widthScale = boxSize.Width / (double)imageSize.Width;
 			double heightScale = boxSize.Height / (double)imageSize.Height;
 			double scale = Math.Min(widthScale, heightScale);
-			return new Size((int)Math.Round((imageSize.Width * scale)),(int)Math.Round((imageSize.Height * scale)));
+			return new Size((int)Math.Round((imageSize.Width * scale)), (int)Math.Round((imageSize.Height * scale)));
 		}
 
 
-		public Bitmap Original { get {return mResized;}}
+		public Bitmap Original { get { return mResized; } }
 	}
 }
