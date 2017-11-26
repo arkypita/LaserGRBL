@@ -592,6 +592,7 @@ namespace LaserGRBL
 			}
 		}
 
+
 		public void RunProgram()
 		{
 			if (CanSendFile)
@@ -1426,7 +1427,7 @@ namespace LaserGRBL
 			if (mTP.JobEnd() && mLoopCount > 1 && mMachineStatus != MacStatus.Check)
 			{
 				LoopCount--;
-				RunProgram();
+				RunProgramFromStart(false);
 			}
 		}
 
