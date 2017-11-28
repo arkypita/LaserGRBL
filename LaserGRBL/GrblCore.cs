@@ -1905,6 +1905,9 @@ namespace LaserGRBL
 		private bool Version9
 		{ get { return mVersion != null && mVersion >= new GrblCore.GrblVersionInfo(0, 9); } }
 
+		private bool NoVersionInfo
+		{ get { return mVersion == null; } }
+
 		public int ExpectedCount
 		{ get { return Version11 ? 34 : Version9 ? 31 : 23; } }
 
@@ -1918,7 +1921,15 @@ namespace LaserGRBL
 		{ get { return ReadWithDefault(Version9 ? 111 : 5, 4000); } }
 
 		public bool LaserMode
-		{ get { return ReadWithDefault(Version11 ? 32 : -1, 0) != 0; } }
+		{
+			get 
+			{
+				if (NoVersionInfo)
+					return true;
+				else
+					return ReadWithDefault(Version11 ? 32 : -1, 0) != 0; 
+			}
+		}
 
 		public decimal MinPWM
 		{ get { return ReadWithDefault(Version11 ? 31 : -1, 0); } }
