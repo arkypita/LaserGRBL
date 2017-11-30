@@ -39,7 +39,7 @@ namespace LaserGRBL
 
 		public static void SaveStats(GrblCore Core) //in uscita o alla bisogna
 		{
-			if (GitHub.Updating) //delay update and data saving - skip this session
+			if (GitHub.Updating) //if updating: delay stat processing - skip this session
 				return;
 
 			data.UpdateAndSend(Core); //manda solo se serve
