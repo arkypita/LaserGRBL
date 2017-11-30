@@ -9,6 +9,8 @@ namespace LaserGRBL
 		public delegate void NewVersionDlg(Version current, Version latest, string name, string url);
 		public static event NewVersionDlg NewVersion;
 
+		public static bool Updating = false;
+
 		public static void CheckVersion()
 		{
 			if ((bool)Settings.GetObject("Auto Update", true))

@@ -75,6 +75,7 @@ namespace LaserGRBL
 				else
 					DialogResult = System.Windows.Forms.DialogResult.Abort;
 
+				GitHub.Updating = DialogResult == System.Windows.Forms.DialogResult.OK;
 				Close();
 			}
 		}

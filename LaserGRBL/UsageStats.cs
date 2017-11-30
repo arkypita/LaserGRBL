@@ -39,6 +39,9 @@ namespace LaserGRBL
 
 		public static void SaveStats(GrblCore Core) //in uscita o alla bisogna
 		{
+			if (GitHub.Updating) //delay update and data saving - skip this session
+				return;
+
 			data.UpdateAndSend(Core); //manda solo se serve
 			Tools.Serializer.ObjToFile(data, filename); //salva
 		}
@@ -71,7 +74,6 @@ namespace LaserGRBL
 
 		private bool TrueSend()
 		{
-
 			string urlAddress = "http://stats.lasergrbl.com/handler.php";
 			using (MyWebClient client = new MyWebClient())
 			{
