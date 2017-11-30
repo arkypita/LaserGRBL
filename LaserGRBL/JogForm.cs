@@ -31,6 +31,7 @@ namespace LaserGRBL
 		private void TbSpeed_ValueChanged(object sender, EventArgs e)
 		{
 			TT.SetToolTip(TbSpeed, string.Format("Speed: {0}", TbSpeed.Value));
+			LblSpeed.Text = String.Format("F{0}", TbSpeed.Value);
 			Settings.SetObject("Jog Speed", TbSpeed.Value);
 			Core.JogSpeed = TbSpeed.Value;
 			needsave = true;
@@ -39,6 +40,7 @@ namespace LaserGRBL
 		private void TbStep_ValueChanged(object sender, EventArgs e)
 		{
 			TT.SetToolTip(TbStep, string.Format("Step: {0}", TbStep.Value));
+			LblStep.Text = TbStep.Value.ToString();
 			Settings.SetObject("Jog Step", TbStep.Value);
 			Core.JogStep = TbStep.Value;
 			needsave = true;
