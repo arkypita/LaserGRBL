@@ -15,7 +15,8 @@ namespace LaserGRBL
 
 			Logger.Start();
 			GitHub.CleanupOldVersion();
-			UsageStats.LoadStat();
+			UsageStats.LoadFile();
+			CustomButtons.LoadFile();
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			System.Globalization.CultureInfo ci = (System.Globalization.CultureInfo)Settings.GetObject("User Language", null);

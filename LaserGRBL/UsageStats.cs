@@ -30,14 +30,14 @@ namespace LaserGRBL
 		private static UsageStats data;
 		private static string filename = System.IO.Path.Combine(GrblCore.DataPath, "UsageStats.bin");
 
-		public static void LoadStat() //in ingresso
+		public static void LoadFile() //in ingresso
 		{
 			data = (UsageStats)Tools.Serializer.ObjFromFile(filename);
 			if (data == null) data = new UsageStats();
 			data.UsageCount++;
 		}
 
-		public static void SaveStats(GrblCore Core) //in uscita o alla bisogna
+		public static void SaveFile(GrblCore Core) //in uscita o alla bisogna
 		{
 			if (GitHub.Updating) //if updating: delay stat processing - skip this session
 				return;
@@ -50,7 +50,7 @@ namespace LaserGRBL
 		{
 			//invia i dati solo ogni 7gg o al cambio versione
 			Version current = typeof(GitHub).Assembly.GetName().Version;
-			bool mustsend = DateTime.UtcNow.Subtract(LastSent).TotalDays > 7 || Version != current;
+			bool mustsend = DateTime.UtcNow.Subtract(LastSent).TotalDays > 1 || Version != current;
 			Version = current;
 			GrblVersion = Core.Configuration.GrblVersion != null ? Core.Configuration.GrblVersion : GrblVersion;
 			Locale = System.Threading.Thread.CurrentThread.CurrentCulture.LCID;

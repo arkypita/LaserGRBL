@@ -1596,16 +1596,11 @@ namespace LaserGRBL
 			Settings.Save();
 		}
 
-		internal void HKCustomButton(int p)
+		internal void HKCustomButton(int index)
 		{
-			System.Collections.Generic.List<CustomButton> buttons = (System.Collections.Generic.List<CustomButton>)Settings.GetObject("Custom Buttons", null);
-			if (buttons != null && buttons.Count > p)
-			{
-				CustomButton cb = buttons[p];
-				if (cb.EnabledNow(this))
-					ExecuteCustombutton(cb.GCode);
-			}
-
+			CustomButton cb = CustomButtons.GetButton(index);
+			if (cb != null && cb.EnabledNow(this))
+				ExecuteCustombutton(cb.GCode);
 		}
 
 		internal void ExecuteCustombutton(string buttoncode)

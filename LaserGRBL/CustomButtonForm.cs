@@ -10,7 +10,6 @@ namespace LaserGRBL
 {
 	public partial class CustomButtonForm : Form
 	{
-		List<CustomButton> buttons;
 		CustomButton inedit = null;
 
 		private CustomButtonForm()
@@ -23,8 +22,6 @@ namespace LaserGRBL
 
 			CbEStyles.DataSource = Enum.GetValues(typeof(CustomButton.EnableStyles));
 			CbEStyles.SelectedItem = CustomButton.EnableStyles.Always;
-
-			buttons = (List<CustomButton>)Settings.GetObject("Custom Buttons", new List<CustomButton>());
 		}
 
 		public static void CreateAndShowDialog()
@@ -61,7 +58,7 @@ namespace LaserGRBL
 				cb.Image = BTOpenImage.Image;
 				cb.ToolTip = TbToolTip.Text;
 				cb.EnableStyle = (CustomButton.EnableStyles)CbEStyles.SelectedItem;
-				buttons.Add(cb);
+				CustomButtons.Add(cb);
 			}
 			else
 			{
@@ -70,9 +67,8 @@ namespace LaserGRBL
 				inedit.ToolTip = TbToolTip.Text;
 				inedit.EnableStyle = (CustomButton.EnableStyles)CbEStyles.SelectedItem;
 			}
-			Settings.SetObject("Custom Buttons", buttons);
 
-			Settings.Save();
+			CustomButtons.SaveFile();
 
 			Close();
 		}

@@ -132,7 +132,7 @@ namespace LaserGRBL
 				Settings.Save();
 
 				//if not updating!
-				UsageStats.SaveStats(Core);
+				UsageStats.SaveFile(Core);
 			}
 		}
 		

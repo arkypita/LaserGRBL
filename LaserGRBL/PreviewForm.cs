@@ -83,10 +83,8 @@ namespace LaserGRBL
 
 		private void RefreshCustomButtons()
 		{
-			List<CustomButton> buttons = (List<CustomButton>)Settings.GetObject("Custom Buttons", new List<CustomButton>());
-
 			CustomButtonArea.Controls.Clear();
-			foreach (CustomButton cb in buttons)
+			foreach (CustomButton cb in CustomButtons.Buttons)
 			{
 				CustomButtonIB ib = new CustomButtonIB(Core, cb, this);
 				CustomButtonArea.Controls.Add(ib);
@@ -165,14 +163,8 @@ namespace LaserGRBL
 
 			private void RemoveButton_Click(object sender, EventArgs e)
 			{
-				List<CustomButton> buttons = (List<CustomButton>)Settings.GetObject("Custom Buttons", new List<CustomButton>());
-				for (int i = 0; i < buttons.Count; i++)
-				{
-					if (buttons[i].guid == CustomButton.guid)
-						buttons.Remove(buttons[i]);
-				}
-				Settings.Save();
-
+				CustomButtons.Remove(CustomButton);
+				CustomButtons.SaveFile();
 				form.RefreshCustomButtons();
 			}
 
