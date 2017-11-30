@@ -330,6 +330,7 @@
     <Compile Include="Tools\TaskScheduler.cs" />
     <Compile Include="Tools\ThreadClass.cs" />
     <Compile Include="Tools\WordWrap.cs" />
+    <Compile Include="UsageStats.cs" />
     <Compile Include="UserControls\ColorProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>

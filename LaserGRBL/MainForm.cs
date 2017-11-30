@@ -130,6 +130,9 @@ namespace LaserGRBL
 				Core.CloseCom(true);
 				Settings.SetObject("Mainform Size and Position", new object[] { Size, Location, WindowState });
 				Settings.Save();
+
+
+				UsageStats.SaveStats(Core);
 			}
 		}
 		
@@ -297,6 +300,7 @@ namespace LaserGRBL
 		private void MnConnect_Click(object sender, EventArgs e)
 		{
 			Core.OpenCom();
+			UsageStats.SaveStats(Core);
 		}
 
 		private void MnDisconnect_Click(object sender, EventArgs e)

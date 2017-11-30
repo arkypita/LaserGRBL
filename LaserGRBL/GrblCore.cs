@@ -114,7 +114,7 @@ namespace LaserGRBL
 				if (mBuild == (char)0)
 					return string.Format("{0}.{1}", mMajor, mMinor);
 				else
-					return string.Format("{0}.{1}.{2}", mMajor, mMinor, mBuild);
+					return string.Format("{0}.{1}{2}", mMajor, mMinor, mBuild);
 			}
 
 			public override bool Equals(object obj)
@@ -269,7 +269,7 @@ namespace LaserGRBL
 			get { return (GrblConf)Settings.GetObject("Grbl Configuration", new GrblConf()); }
 			set
 			{
-				if (value.Count > 0 && value.mVersion != null)
+				if (value.Count > 0 && value.GrblVersion != null)
 				{
 					Settings.SetObject("Grbl Configuration", value);
 					Settings.Save();
@@ -1890,14 +1890,17 @@ namespace LaserGRBL
 			{ return this.MemberwiseClone(); }
 		}
 
-		System.Collections.Generic.Dictionary<int, decimal> mData;
-		public GrblCore.GrblVersionInfo mVersion;
+		private System.Collections.Generic.Dictionary<int, decimal> mData;
+		private GrblCore.GrblVersionInfo mVersion;
 
 		public GrblConf(GrblCore.GrblVersionInfo GrblVersion) : this()
 		{ mVersion = GrblVersion; }
 
 		public GrblConf()
 		{ mData = new System.Collections.Generic.Dictionary<int, decimal>(); }
+
+		public GrblCore.GrblVersionInfo GrblVersion
+		{ get { return mVersion; } }
 
 		private bool Version11
 		{ get { return mVersion != null && mVersion >= new GrblCore.GrblVersionInfo(1, 1); } }
