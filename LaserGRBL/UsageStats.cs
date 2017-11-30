@@ -58,7 +58,7 @@ namespace LaserGRBL
  			hUsageTime = tfas;
 			UsageTime = UsageTime.Add(elaps);
 
-			if (mustsend || true )
+			if (mustsend /*|| true */)
 			{
 				try
 				{
