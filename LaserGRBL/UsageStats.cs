@@ -37,7 +37,7 @@ namespace LaserGRBL
 			data.UsageCount++;
 		}
 
-		public static void SaveFile(GrblCore Core) //in uscita o alla bisogna
+		public static void SaveFile(GrblCore Core) //in uscita
 		{
 			if (GitHub.Updating) //if updating: delay stat processing - skip this session
 				return;
@@ -61,7 +61,7 @@ namespace LaserGRBL
  			hUsageTime = tfas;
 			UsageTime = UsageTime.Add(elaps);
 
-			if (mustsend /*|| true */)
+			if (mustsend)
 			{
 				try
 				{

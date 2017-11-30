@@ -130,8 +130,7 @@ namespace LaserGRBL
 				Core.CloseCom(true);
 				Settings.SetObject("Mainform Size and Position", new object[] { Size, Location, WindowState });
 				Settings.Save();
-
-				//if not updating!
+				
 				UsageStats.SaveFile(Core);
 			}
 		}

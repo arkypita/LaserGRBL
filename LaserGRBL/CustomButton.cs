@@ -22,11 +22,8 @@ namespace LaserGRBL
 			}
 		}
 
-		public static void SaveFile() //in uscita o alla bisogna
+		public static void SaveFile()
 		{
-			if (GitHub.Updating) //if updating: delay stat processing - skip this session
-				return;
-
 			Tools.Serializer.ObjToFile(buttons, filename); //salva
 		}
 
