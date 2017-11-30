@@ -58,7 +58,7 @@ namespace LaserGRBL
  			hUsageTime = tfas;
 			UsageTime = UsageTime.Add(elaps);
 
-			if (mustsend /* || true */)
+			if (mustsend || true )
 			{
 				try
 				{
@@ -84,12 +84,12 @@ namespace LaserGRBL
                     { "locale", Locale.ToString() },
                     { "uiLang", UiLang.ToString() },
                     { "usageCount", UsageCount.ToString() },
-					{ "usageTime", ((int)(UsageTime.TotalHours)).ToString() },
+					{ "usageTime", ((int)(UsageTime.TotalMinutes)).ToString() },
                 };
 
 				// client.UploadValues returns page's source as byte array (byte[]) so it must be transformed into a string
 				string rv = System.Text.Encoding.UTF8.GetString(client.UploadValues(urlAddress, postData));
-				return (rv == "success!");
+				return (rv == "Success!");
 			}
 		}
 
