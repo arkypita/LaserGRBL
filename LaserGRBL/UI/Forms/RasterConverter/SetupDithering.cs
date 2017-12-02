@@ -11,12 +11,14 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 {
 	public partial class SetupDithering : ToolConfig
 	{
+		private GrblCore mCore;
 		private Core.RasterToGcode.Dithering mTool;
 
-		public SetupDithering(Core.RasterToGcode.Dithering tool)
+		public SetupDithering(GrblCore core, Core.RasterToGcode.Dithering tool)
 		{
 			InitializeComponent();
 			mTool = tool;
+			mCore = core;
 
 			CbDither.SuspendLayout();
 			foreach (Core.RasterToGcode.ImageTransform.DitheringMode formula in Enum.GetValues(typeof(Core.RasterToGcode.ImageTransform.DitheringMode)))
@@ -52,7 +54,7 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 
 		private void BtnQualityInfo_Click(object sender, EventArgs e)
 		{
-			UDQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog((double)UDQuality.Value);
+			UDQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog(mCore, (double)UDQuality.Value);
 			//System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
 		}
 

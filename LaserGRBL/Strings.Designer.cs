@@ -98,6 +98,25 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a There are some changes that have not been applied.
+        ///Do you want to rewrite the configuration?.
+        /// </summary>
+        internal static string BoxConfigDetectedChanges {
+            get {
+                return ResourceManager.GetString("BoxConfigDetectedChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Changes detected!.
+        /// </summary>
+        internal static string BoxConfigDetectedChangesTitle {
+            get {
+                return ResourceManager.GetString("BoxConfigDetectedChangesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Cannot connect to device.
         /// </summary>
         internal static string BoxConnectErrorTitle {
@@ -188,11 +207,29 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Showing cached values....
+        /// </summary>
+        internal static string BoxReadConfigPleaseConnect {
+            get {
+                return ResourceManager.GetString("BoxReadConfigPleaseConnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a {0} Config readed successfully!.
         /// </summary>
         internal static string BoxReadConfigSuccess {
             get {
                 return ResourceManager.GetString("BoxReadConfigSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a No changes... nothing to write!.
+        /// </summary>
+        internal static string BoxWriteConfigNoChange {
+            get {
+                return ResourceManager.GetString("BoxWriteConfigNoChange", resourceCulture);
             }
         }
         

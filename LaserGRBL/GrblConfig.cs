@@ -86,28 +86,36 @@ namespace LaserGRBL
 
 		private void BtnWrite_Click(object sender, EventArgs e)
 		{
-			WriteConf(mLocalCopy, false);
+			try
+			{
+				Core.RefreshConfig();
+				List<GrblConf.GrblConfParam> changes = GetChanges(); //get changes
+
+				if (changes.Count > 0)
+					WriteConf(changes, false);
+				else
+					ActionResult(Strings.BoxWriteConfigNoChange);
+			}
+			catch { }
 		}
 
-		private void WriteConf(List<GrblConf.GrblConfParam> conf, bool import)
+		private bool WriteConf(List<GrblConf.GrblConfParam> conf, bool import)
 		{
+			bool noerror = false;
+
 			try
 			{
 				Cursor = Cursors.WaitCursor;
 				Core.WriteConfig(conf);
 				Cursor = DefaultCursor;
+				ActionResult(String.Format(import ? Strings.BoxImportConfigWithoutError : Strings.BoxWriteConfigWithoutError, conf.Count));
 
-				ActionResult(String.Format(import ? Strings.BoxImportConfigWithoutError :  Strings.BoxWriteConfigWithoutError, conf.Count));
+				noerror = true;
 			}
 			catch (GrblCore.WriteConfigException ex)
 			{
 				Cursor = DefaultCursor;
-
-				string errLines = "\n";
-				foreach (IGrblRow r in ex.Errors)
-					errLines += string.Format("{0} {1}\n", r.GetMessage(), r.GetResult(true, false));
-
-				System.Windows.Forms.MessageBox.Show(String.Format(import ? Strings.BoxImportConfigWithError : Strings.BoxWriteConfigWithError, conf.Count, ex.Errors.Count) + errLines, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				System.Windows.Forms.MessageBox.Show(String.Format(import ? Strings.BoxImportConfigWithError : Strings.BoxWriteConfigWithError, conf.Count, ex.Errors.Count) + "\n" + ex.Message, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 			}
 			catch (Exception ex)
 			{
@@ -116,9 +124,12 @@ namespace LaserGRBL
 			}
 			finally
 			{
-				try{Core.RefreshConfig();}
-				catch{}
+				try { Core.RefreshConfig(); } //ensure to have the last conf at least in core
+				catch { }
 			}
+
+
+			return noerror;
 		}
 
 		private void BtnExport_Click(object sender, EventArgs e)
@@ -234,6 +245,51 @@ namespace LaserGRBL
 			LblAction.Visible = true;
 			ActionTimer.Start();
 			RefreshEnabledButtons();
+		}
+
+		private void GrblConfig_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			if (HasChanges() && Core.MachineStatus == GrblCore.MacStatus.Idle)
+			{
+				DialogResult rv = System.Windows.Forms.MessageBox.Show(Strings.BoxConfigDetectedChanges, Strings.BoxConfigDetectedChangesTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
+
+				if (rv == System.Windows.Forms.DialogResult.Yes)
+					e.Cancel = !WriteConf(mLocalCopy, false);
+				else if (rv == System.Windows.Forms.DialogResult.Cancel)
+					e.Cancel = true;
+			}
+		}
+
+		public List<GrblConf.GrblConfParam> GetChanges()
+		{
+			List<GrblConf.GrblConfParam> rv = new List<GrblConf.GrblConfParam>();
+			GrblConf conf = Core.Configuration;
+			foreach (GrblConf.GrblConfParam p in mLocalCopy)
+				if (conf.HasChanges(p))
+					rv.Add(p);
+			return rv;
+		}
+
+		public bool HasChanges()
+		{
+			GrblConf conf = Core.Configuration;
+
+			if (conf.Count != mLocalCopy.Count)
+				return true;
+
+			foreach(GrblConf.GrblConfParam p in mLocalCopy)
+				if (conf.HasChanges(p))
+					return true;
+
+			return false;
+		}
+
+		private void GrblConfig_Load(object sender, EventArgs e)
+		{
+			if (BtnRead.Enabled)
+				BtnRead.PerformClick();
+			else
+				ActionResult(Strings.BoxReadConfigPleaseConnect);
 		}
 	}
 

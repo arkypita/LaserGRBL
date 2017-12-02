@@ -13,6 +13,7 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 	{
 		public event EventHandler ValueChanged; 
 
+		private GrblCore mCore;
 		private LaserGRBL.Core.RasterToGcode.Configuration Configuration;
 		private ToolConfig Instance;
 
@@ -21,9 +22,10 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 			InitializeComponent();
 		}
 
-		public void Start(LaserGRBL.Core.RasterToGcode.Configuration setup)
+		public void Start(GrblCore core, LaserGRBL.Core.RasterToGcode.Configuration setup)
 		{
 			Configuration = setup;
+			mCore = core;
 
 			CbTools.SuspendLayout();
 			foreach (Core.RasterToGcode.ConversionTool.AvailableTools tools in Enum.GetValues(typeof(Core.RasterToGcode.ConversionTool.AvailableTools)))
@@ -67,11 +69,11 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 				}
 
 				if (selected == Core.RasterToGcode.ConversionTool.AvailableTools.Dithering)
-					Instance = new SetupDithering((Core.RasterToGcode.Dithering)Configuration.SelectedTool);
+					Instance = new SetupDithering(mCore, (Core.RasterToGcode.Dithering)Configuration.SelectedTool);
 				if (selected == Core.RasterToGcode.ConversionTool.AvailableTools.Line2Line)
-					Instance = new SetupLineToLine((Core.RasterToGcode.LineToLine)Configuration.SelectedTool);
+					Instance = new SetupLineToLine(mCore, (Core.RasterToGcode.LineToLine)Configuration.SelectedTool);
 				if (selected == Core.RasterToGcode.ConversionTool.AvailableTools.Vectorize)
-					Instance = new SetupVectorization((Core.RasterToGcode.Vectorization)Configuration.SelectedTool);
+					Instance = new SetupVectorization(mCore, (Core.RasterToGcode.Vectorization)Configuration.SelectedTool);
 
 				if (Instance != null)
 				{

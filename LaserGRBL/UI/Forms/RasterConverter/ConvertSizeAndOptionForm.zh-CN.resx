@@ -188,9 +188,6 @@
   <data name="IILinearFilling.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 25</value>
   </data>
-  <data name="IITravelSpeed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 47</value>
-  </data>
   <data name="LblLinearFillingmm.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 27</value>
   </data>

@@ -25,7 +25,7 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 			PG = new Core.RasterToGcode.PreviewGenerator(core, PbConverted, filename);
 			GS.Start(PG.Configuration, PG.IsGrayScale);
 			SL.Start(PG.Configuration);
-			ST.Start(PG.Configuration);
+			ST.Start(core, PG.Configuration);
 
 			PbOriginal.Image = PG.OriginalImage;
 			//

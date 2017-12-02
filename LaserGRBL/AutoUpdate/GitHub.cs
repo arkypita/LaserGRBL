@@ -9,6 +9,8 @@ namespace LaserGRBL
 		public delegate void NewVersionDlg(Version current, Version latest, string name, string url);
 		public static event NewVersionDlg NewVersion;
 
+		public static bool Updating = false;
+
 		public static void CheckVersion()
 		{
 			if ((bool)Settings.GetObject("Auto Update", true))
@@ -59,9 +61,9 @@ namespace LaserGRBL
 			}
 		}
 
-		public static string zipfile {get{return System.IO.Path.Combine(GrblCore.TempPath, "lasergrblupdate.package");}}
-		public static string mainpath = @"LaserGRBL/";
-		public static string delext = ".todelete";
+		public static string installer { get { return System.IO.Path.Combine(GrblCore.TempPath, "LaserGRBL Updater.exe"); } }
+		//public static string mainpath = @"LaserGRBL/";
+		//public static string delext = ".todelete";
 
 		private static System.Net.WebClient client;
 		public static void DownloadUpdateA(string url, System.Net.DownloadProgressChangedEventHandler onprogr, System.ComponentModel.AsyncCompletedEventHandler oncomplete)
@@ -70,15 +72,15 @@ namespace LaserGRBL
 			{
 				if (client == null)
 				{
-					if (System.IO.File.Exists(zipfile))
-						System.IO.File.Delete(zipfile);
+					if (System.IO.File.Exists(installer))
+						System.IO.File.Delete(installer);
 
 					client = new System.Net.WebClient();
 					client.DownloadProgressChanged += onprogr;
 					client.DownloadFileCompleted += disposeclient;
 					client.DownloadFileCompleted += oncomplete;
 
-					client.DownloadFileAsync(new System.Uri(url), zipfile);
+					client.DownloadFileAsync(new System.Uri(url), installer);
 				}
 				else
 				{
@@ -100,48 +102,16 @@ namespace LaserGRBL
 			}
 		}
 
-		public static string UpdaterExeName = "LaserGRBL Updater.exe";
-
-		public static bool ApplyUpdateS1() //step one, create the updater and run elevated with AU switch
+	
+		internal static bool ApplyUpdateEXE()
 		{
-			string lasergrbl = System.Windows.Forms.Application.ExecutablePath;
-			string updater = System.IO.Path.Combine(GrblCore.TempPath, UpdaterExeName);
-			if (System.IO.File.Exists(updater))
-				System.IO.File.Delete(updater);
-			System.IO.File.Copy(lasergrbl, updater);
-
-			System.Diagnostics.ProcessStartInfo p = new System.Diagnostics.ProcessStartInfo { UseShellExecute = true, WorkingDirectory = Environment.CurrentDirectory, FileName = updater, Verb = "runas", Arguments = String.Format("AU {0} \"{1}\"", System.Diagnostics.Process.GetCurrentProcess().Id, lasergrbl) };
-			try { System.Diagnostics.Process.Start(p); return true; }
-			catch { return false; }	
-		}
-
-		public static bool ApplyUpdateS2() //step two, real apply update, if elevated
-		{
-			try
+			//run downloaded exe
+			if (System.IO.File.Exists(installer))
 			{
-				if (System.IO.File.Exists(zipfile)) //il download ha fatto il suo lavoro
-				{
-					using (System.IO.Compression.ZipStorer zs = System.IO.Compression.ZipStorer.Open(zipfile, System.IO.FileAccess.Read))
-					{
-						foreach (System.IO.Compression.ZipStorer.ZipFileEntry ze in zs.ReadCentralDir())
-						{
-							string fname = ze.FilenameInZip;
-							if (fname.StartsWith(mainpath))
-								fname = fname.Substring(mainpath.Length);
-
-							if (System.IO.File.Exists(fname))
-								System.IO.File.Delete(fname);
-
-							zs.ExtractFile(ze, "./" + fname);
-						}
-
-						zs.Close();
-						System.IO.File.Delete(zipfile);
-						return true;
-					}
-				}
+				System.Diagnostics.ProcessStartInfo p = new System.Diagnostics.ProcessStartInfo { UseShellExecute = true, WorkingDirectory = Environment.CurrentDirectory, FileName = installer, Verb = "runas" };
+				try { System.Diagnostics.Process.Start(p); return true; }
+				catch { return false; }
 			}
-			catch (Exception ex){}
 
 			return false;
 		}
@@ -151,7 +121,7 @@ namespace LaserGRBL
 		{
 			try
 			{
-				foreach (string filePath in System.IO.Directory.GetFiles("./", "*" + delext, System.IO.SearchOption.AllDirectories))
+				foreach (string filePath in System.IO.Directory.GetFiles("./", "*.todelete", System.IO.SearchOption.AllDirectories))
 					System.IO.File.Delete(filePath);
 				if (System.IO.File.Exists("sessionlog.txt")) //old session log in program file
 					System.IO.File.Delete("sessionlog.txt");
@@ -160,5 +130,6 @@ namespace LaserGRBL
 			}
 			catch { }
 		}
+
 	}
 }

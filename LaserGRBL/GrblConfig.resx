@@ -847,12 +847,6 @@ only when connected and idle</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Grbl</value>
   </data>
-  <data name="&gt;&gt;ActionTimer.Name" xml:space="preserve">
-    <value>ActionTimer</value>
-  </data>
-  <data name="&gt;&gt;ActionTimer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;DollarNumber.Name" xml:space="preserve">
     <value>DollarNumber</value>
   </data>
@@ -888,6 +882,12 @@ only when connected and idle</value>
   </data>
   <data name="&gt;&gt;Number.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ActionTimer.Name" xml:space="preserve">
+    <value>ActionTimer</value>
+  </data>
+  <data name="&gt;&gt;ActionTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>GrblConfig</value>

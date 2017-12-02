@@ -117,32 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;TT.Name" xml:space="preserve">
-    <value>TT</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Preview.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="RemoveButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
+  <data name="Preview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="Preview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>646, 330</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Preview.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="BtnStop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>565, 3</value>
+  <data name="&gt;&gt;Preview.Name" xml:space="preserve">
+    <value>Preview</value>
   </data>
-  <data name="MNAddCB.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;Preview.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.GrblPanel, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tableLayoutPanel8.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnGoHome" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnReset" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnStop" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="BtnResume" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="BtnUnlock" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CustomButtonArea" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,Percent,33.33333,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="&gt;&gt;Preview.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
-  <data name="CustomButtonArea.AutoSize" type="System.Boolean, mscorlib">
+  <data name="&gt;&gt;Preview.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="tableLayoutPanel8.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
+  </data>
+  <data name="tableLayoutPanel8.ColumnCount" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="BtnReset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="BtnReset.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="BtnReset.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -242,226 +257,505 @@
         cxnSOdj5af75f/f0vwWShqaE9j+VqNBYqOYOGgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="BtnReset.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="BtnReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 2</value>
+  </data>
+  <data name="BtnReset.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="BtnReset.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>49, 49</value>
   </data>
-  <data name="MNRemEditCB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 48</value>
+  <data name="BtnReset.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
   </data>
-  <data name="BtnGoHome.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tableLayoutPanel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="&gt;&gt;BtnResume.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.7.6.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="BtnReset.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="CustomButtonArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>322, 56</value>
-  </data>
-  <data name="&gt;&gt;BtnUnlock.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Edit Button</value>
-  </data>
-  <data name="tableLayoutPanel8.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;BtnResume.Name" xml:space="preserve">
-    <value>BtnResume</value>
-  </data>
-  <data name="BtnGoHome.ToolTip" xml:space="preserve">
-    <value>Homing ($H)</value>
-  </data>
-  <data name="BtnUnlock.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="BtnReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 49</value>
   </data>
   <data name="BtnReset.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="BtnUnlock.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 3</value>
+  <metadata name="TT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="BtnReset.ToolTip" xml:space="preserve">
+    <value>Grbl Reset (ctrl-x)</value>
   </data>
-  <data name="MNRemEditCB.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;BtnReset.Name" xml:space="preserve">
+    <value>BtnReset</value>
   </data>
-  <data name="&gt;&gt;RemoveButton.Name" xml:space="preserve">
-    <value>RemoveButton</value>
+  <data name="&gt;&gt;BtnReset.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="&gt;&gt;BtnReset.Parent" xml:space="preserve">
+    <value>tableLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;BtnReset.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="MNAddCB.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>81, 17</value>
+  </metadata>
   <data name="addCustomButtonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="BtnResume.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+  <data name="addCustomButtonToolStripMenuItem.Text" xml:space="preserve">
+    <value>Add Custom Button</value>
   </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
+  <data name="MNAddCB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 26</value>
   </data>
-  <data name="BtnReset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+  <data name="&gt;&gt;MNAddCB.Name" xml:space="preserve">
+    <value>MNAddCB</value>
   </data>
-  <data name="BtnGoHome.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 3</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel8.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CustomButtonArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 0</value>
-  </data>
-  <data name="BtnUnlock.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="BtnResume.Location" type="System.Drawing.Point, System.Drawing">
-    <value>510, 3</value>
-  </data>
-  <data name="BtnGoHome.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
-  </data>
-  <data name="RemoveButton.Text" xml:space="preserve">
-    <value>Remove Button</value>
-  </data>
-  <data name="CustomButtonArea.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;MNRemEditCB.Type" xml:space="preserve">
+  <data name="&gt;&gt;MNAddCB.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tableLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="$this.ToolTipText" xml:space="preserve">
-    <value>Preview</value>
-  </data>
-  <data name="Preview.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;CustomButtonArea.Parent" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;BtnResume.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;BtnReset.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Preview.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;CustomButtonArea.Name" xml:space="preserve">
-    <value>CustomButtonArea</value>
-  </data>
-  <data name="&gt;&gt;CustomButtonArea.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="BtnUnlock.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;addCustomButtonToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tableLayoutPanel8.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="BtnGoHome.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 49</value>
   </data>
   <data name="CustomButtonArea.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;TT.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="CustomButtonArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 0</value>
+  </data>
+  <data name="CustomButtonArea.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="CustomButtonArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>322, 53</value>
+  </data>
+  <data name="CustomButtonArea.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;CustomButtonArea.Name" xml:space="preserve">
+    <value>CustomButtonArea</value>
+  </data>
+  <data name="&gt;&gt;CustomButtonArea.Type" xml:space="preserve">
+    <value>LaserGRBL.PreviewForm+MyFlowPanel, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;CustomButtonArea.Parent" xml:space="preserve">
+    <value>tableLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;CustomButtonArea.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="BtnUnlock.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="BtnUnlock.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="BtnUnlock.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="BtnUnlock.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 2</value>
+  </data>
+  <data name="BtnUnlock.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="BtnUnlock.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="BtnUnlock.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="BtnUnlock.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="BtnUnlock.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="BtnUnlock.ToolTip" xml:space="preserve">
+    <value>Grbl Unlock ($X)</value>
+  </data>
+  <data name="&gt;&gt;BtnUnlock.Name" xml:space="preserve">
+    <value>BtnUnlock</value>
+  </data>
+  <data name="&gt;&gt;BtnUnlock.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BtnUnlock.Parent" xml:space="preserve">
+    <value>tableLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;BtnUnlock.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="BtnHoming.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="BtnHoming.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        JrwGjPUNZP8Pc4u5Pdvqag4AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="BtnHoming.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 2</value>
+  </data>
+  <data name="BtnHoming.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="BtnHoming.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="BtnHoming.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="BtnHoming.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="BtnHoming.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="BtnHoming.ToolTip" xml:space="preserve">
+    <value>Homing ($H)</value>
+  </data>
+  <data name="&gt;&gt;BtnHoming.Name" xml:space="preserve">
+    <value>BtnHoming</value>
+  </data>
+  <data name="&gt;&gt;BtnHoming.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BtnHoming.Parent" xml:space="preserve">
+    <value>tableLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;BtnHoming.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="BtnZeroing.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="BtnZeroing.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        D+6wmwVI/gAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="BtnZeroing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 2</value>
+  </data>
+  <data name="BtnZeroing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="BtnZeroing.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="BtnZeroing.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="BtnZeroing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="BtnZeroing.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="BtnZeroing.ToolTip" xml:space="preserve">
+    <value>Set zero point (G92)</value>
+  </data>
+  <data name="&gt;&gt;BtnZeroing.Name" xml:space="preserve">
+    <value>BtnZeroing</value>
+  </data>
+  <data name="&gt;&gt;BtnZeroing.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BtnZeroing.Parent" xml:space="preserve">
+    <value>tableLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;BtnZeroing.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="BtnResume.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="BtnResume.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="BtnResume.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAA//SURBVGhD1VlpdBXHla636D3t
+        C6B9QRsSkhAgAU/7hoQWtABi1QIYYzYhgwCzhV0YxmAwYOfYJDmHcUJmHCZe4ywzjscxwfHx8SQTQuyx
+        M7Zjk2FsJ15ix/GCu1p3vlvd771+D0EyTvIj75xPX99bVbe+W32ruhsEEf1dQ/2JcjmuQUSIXThsNnHz
+        1GSxuzZLbCzPEIPlmWJt2XhxvC1f7JuZI3qmpIr9jXnivjlF4mRXUdnjKzzrnltfdfqNHY3//u7e5peu
+        3t52WR6effn9/c2vwHfh4lDN/U+sKtt8unty49G2Avvx2QXilunpYmPFeHGy3bjegOvtNVlib122GJie
+        JuIj3CIq1CXiwt3X4P+dwIaKLLHakyF2YIIhTHSwJb/4ucHqw+/tnXWJ7uwgOjXHwPEuoiPtNHJ4Nsnb
+        24juaCc61kl0Em2M45300YGW1y9tqr333rnFdevLMsR2zLG8JFUMVWb+bRLYXDle9GLF5xUlia8vLK59
+        eUv9oyySThhi6VAbyYMtQKsPGqCra8PvtUdubzXG8NhjHXRlV+MzDy0tXTS/MEksKk4WO2uzxb6/VgIr
+        S5LFLqzIvIkJYrBsfNSzA5Wn6ThW+y6s6CGI299Mchg4YLB2oIV05mGD2a9sxS2KjX5GGyE5Fe9kF/1y
+        qOZ7e+pzJiyelCR2VGeJwRnpf3kCfcWJYsWUZPHl9oLZnww3v0knIZwn39dE2v5ZSGAWuIl0gK919u0z
+        /WBlK7+/P7cr22zXEGsETHchkTva9Id7SwbXlKaK/uIkkRQV+sUSiHLZBf9mZcWJJ5ZP20gnODhWfPdM
+        0vc2kgbckPcE2tLEjfrLPTNxR3BX7u6inw5U3NdTmAAFNhETdq34gAQiIdiKaLcDw4zfd3qmHKJ7sOr7
+        McmueiTQQBpgMJIJsJlnBrZjjLa1nPRtlcoOGL+rwTdeMWzJvj0N2B8d9NKGykfDQxxQYRNjI0Kvn0CM
+        2+lDXKhTOO2G/Ae7i/bRCZwmuyFiZx3pX6ojDVC8sx7s90vFSNDbbzdWdmsFaatylHi5eQbpa3IxHgJ5
+        HGAd72czBkDHZ9NL68sfCXNyNdhEQmQoEnH74EsgKSLEh8TwECX+YPX4fjqFk2IXgm6rIX1HLWnba0kH
+        FCub/TXKlsHtt0H8ukLSf3CatHd+Q/r//oq0r21CEhNI2wGB3v7BbI6XiC231WJzz6bvLSq+izXFYHFT
+        otwiOdKl4EsgM8atkBsbqsR35YzJpyOoxd0Qv6UKK1lNEtC3VqEcmKtNDrb9frk8jfRzh0jDBDogTdYO
+        dJK+tgD90Ef15/j+OFLZhl9db6tGEm10oCpjIWvLhsYsIBNg7erPhDERIm9shEjCLYoJc4m31nteoIOo
+        yU2o3S2o3c0VYKwoYNiVypaKuTxMP2C0Y9yyVJK/vmSI1jTSR0aMJB46RtqScWq8EQ9sjjfisN8bh+co
+        RxXgTuyu/XxKQmQEHzB5cWEix5pARmwYMgpTq3+qPmsN/QNOhI1lJIfKSQP0TWXgMh8bftheVn5LP0Bb
+        DJHn/8W/8l4+tYb0pWmIYR1nzsPjAAk/z+GLDy10aCZdWFh4ljWmoowyoi0JpEaGCLfDJvJj3U5to+cP
+        xJvu1hmkbfCQDmi3mqxsrx8c4LcwT74ih7RF8aQ/8xBpVz81xD/1z6T3p5E2ON3oN+r40ecdQVK0p4Y6
+        c+ImcBLp0ZZN7EkIF/HYIGebs7bTPmzMgWmkrZ9G+qDBEtBwrTOvn06S/V4bYpTN/Tlp5gVjSOsfj9eG
+        BaR9fS/pD6JstuL06U8nbXUR+kEUj8dY1V/FZduIZ7DXNtuhifZU08UlRY+n4LApTYjwJ1CdGi0a02PE
+        R6umvk2bIGJdCenrSsGlSCaIg/3oy8FV0gsTSO+MwEOpi/RL5/1l8/vf4ZTB60N7KFYUZWGNw+NHtYP8
+        AyVESIQ2eeiWwvikafGWBNozY8XdNel1tAnZr5mqoK02WHrtUZkngfgelEWrGxsP5/r5BwNrXuoGf/g+
+        6X3jSVs24QbxplzHbzI00W0eeqQ167aW9Gh/ArPTIsWFzpxTnIC8ZTIePpNJB/4kr4X4OTGk3TSR9Mfu
+        DTwypTROH10nDVBJnNlNepMNYnCHR4vnZWgIYECaTLeW0Bu9Bc8szIn1J9CMbC4vmfhLWo8VWDmJdEDx
+        zWBA2cG8spj0uXF4l+kmHSXiW/F/OkL6s4+ThmNTieckcBdU+ztXSJufQHIpnsgqTnHgPF72zjOKn1Yj
+        mZWTZH9ubLQvgZ1T4hPp5iKdbkGnFUVYUWw0ZmBU5vab8DBqdpH+4rOGuDdfw2mBA6BUkPbzHxnJqDtg
+        3gnY6s58eYi0WgExWFFrPF/8wtHnM/3QSbRuMh33JOPNz0zgUGlCE62eRCMsankB6cCf5J4s1H4maW9d
+        NsSeGiQ9C+IHcG6PwGaxfAdQSvwQ017/L6PfW2+Q3uggrQFJLJtoiAuKL4PsYKaByXSuPm2jL4HvNqWv
+        o1XIdClqeVn+dRiTMQOK5yViD+CcZlEsdu980qZC1OFl/nIyV16V02qcJq9cNOz//BEeVNjwDXbSZ7mw
+        sVkcVtgyj/TOwzZgZVpZSC/OyT6GUEYCr87NPkxYfb0/D+d3PgZDNDOg4Vpfavh1ttFHcr9mHIlesbxh
+        1+Bts0SQ/NYxv3i+A9z++3dIq0Zyw73+5Jh/gr2ys4P0duwlFmud1zcfs18Xt9HyfHp7Ye4/IoSRgNaX
+        d6feh7fEvjwcdeis+Do2B2OuQrl845ASI99EWbRGYkUdpD//b4Y47wbGtXbxx6Q3h5FsQtJ8py486k+C
+        x9+9kfR6nE4B812rQ5q2BKDjGxhqJtCTe0z2wglofy63ROLDA2I+eIf0+4dJq0E5LEgl7X9eNcRZ7wC3
+        V+IOsIg6G+nYxNpmfE4+/W3SrryCJ3a/Ea8Xp1PAPIbN2oLn/7xnwllfAr/qzDxI/WjsycXGxKAAxjsN
+        85Igfx9u77xk3HZsrDmJpHeMw1GHh81nnwaWCfMDd5I+BaJ7sYKAhlj6TNR+I06xrnjSOuNRGohjnc87
+        j8nS4ifcgbe7s86wdpXAI9VJq2k5gi9GJ0Bfkm2w114cbINZBPshXC7AE5ZXcAifnV7RH39klAfbn39G
+        cksLSQ+SQOLSO35hJsnuVBVHLrHEx7XGNqD8pi1NHbR0Al1qSz/C2lUCtxePqad+NCzOIrkwC+80OCKD
+        eZGFAcPONtvBvCeOrPKtvNzWQdrRtf478fEfMA4iqlHrPSgDM5404zHz3Nb5lI/bvf1Mppsm0AMVCYOs
+        XSWwJS96rDY/U+MEwKhlnO+AziurGLbymzau2VYr7+03HTV+9rDvDsgVJSQTcSo9YJ5K7L+Mz8pK7IGm
+        KAjBymKctMwnTWbb62eflYnRk013FMfVsHaVQPW4UPF6a8rPCA8nOS8DtZ1BejcYMBgTmbaXA9rno52f
+        wA/fZ4h/77eYEItRH05yMpJ4+iHDz0k8/SBp7OtMQiwjLs+pOBim3zofIemR7oyrSzMjw30JzE0JF+dr
+        Eo5SL1ZyTjrecfB2OQfftIA217SZrTaupemXXUmk8TPgkvla8cJzeF1won+KSkKfgbZfv+hLQp7eZfTn
+        xUIMjiO98TmuhbmN51PXAPWMp180JD5VGReitKs/LQlh4khhTBktQJAuTNqFjQWWYMncaTD72afhWmcf
+        g0VMgpid3f7yefph0ot5lTF2HlZ5GsqrGxv1g3eNBBhYKDkzwozLc5jzMPvmNG3TrwPUk0Fnpsauz8FX
+        JGtXfzyxIaIiziU+bEm8TDgVZDtubzuOyA6sLDPbHSYrO1mx7EDw+kiS5Q6Sv73iL5PBBpIz8FDDGDWO
+        VzQdSXxlt9HO/b60wHhyq1hG3ABW8/G13z/SlUyEu9qbFhHnGWP5pKzA7Yh32cV9k6IHaBESaE0k2WZA
+        D2LZlkCa97odyISIbx71i//+/SRzIXY2znbLOHVHhlr9ZXTPNpL56Ic2Ix5esxXM2AHXQGsCsbZnyuMe
+        SITWshjLHUgNdYgwh12kuh3iw6b431EngjZDAKPFgGZhna/bsCqFELWo0C/+kz+SrInG6jvVIqh+3v4V
+        uEvzcJp88rGRwA/PkT4R45vxHOF2y1zXAG2EhKgrkepjnan8UZ/itvkTyAp3iNwIJ9w2MZwdvoS6kX0T
+        PsybxoLHBvIsMCBr8e3LAv77F4Ygxr4+khnwYbWs43iMrEOp4UEmX3vB6Pvyzw2bS9Db7zrQG8cSzUug
+        f50adQ+Lzwx3KvgSyAlzKKS47cJtt4lXy6N/Qh0YXI+3xJlx2Gx+KJuTQ03LI2t94rULj5FMhq8OZ3zQ
+        GB/wvSAfO2OM+fQTlCDKdbqNZENQP7a9PjC1jsGzY8wHuVEux9gwlyiIcYt86z+rjHPZFLi2+DcjyplC
+        rRjYFIvjMAaigjAdJVKHBD98zxDDrwqV8HNJ8cTB/Rn1ACd4YpMvabl9gZFUcD+LrTfEEnWMocFU9yyu
+        kBxUSyYWm+FLIDnMGQAh7GIo1d1GbTFEddF4l8eq1lhQhEk78VrgFTI0z3jqNqD+rf2CUYjV7sK7kHdc
+        rwcbGb4alNEo/XWA2mPpTF7YLl7YOIcQiSFYaBOsXf2JcTl8iAVCnca/yZ/Kdg3QLATBBFolzuwqC6aE
+        kNzQTnJTJ8lsiK/EU7caQqx9goF9IwvQd20jyYFmkvz8qAnqY0IHeO4ni8O+wuL5F+uwiShI88KXQCgq
+        x4oI1m/+vprr3kiNCFYdTlo5PkoYLLYK4H2QBlSEGnaF2c4cDOU3x/FG57F8zQtTDlaxDSbEJzzkzk8O
+        +6opQ0RCV1gQfAmEI7NghKr/5LCJ0kiH+Faeq5eqQpEEhHrcJMvADI8Jr30jBPTjGIB3PKCZTJVAbSj9
+        sNA93BIDlfjhxBThuAzGDRPg00jYbGLJOKeYHecUW5Odnnenu16gKheRx4WNzIAI5hkWjGYH+TTLNbdp
+        AOGaY1/1uN4/MT5k8dxYm1ga7xDR0ILz5Ysn0B/vFANJTlGFopsfZxdP5DuHyRNCVA7MwD6Ydn3oo/iC
+        /TTdjFUWQv9R6Lh/WYIrvibaKQYT7GJtkkNEQstflECfmUDvWIdoxzGwIM4m7s2wF/2swPG1qyXOz8jj
+        gAgnUSnefUoYOGIBvpalYECiTXptMIHVGDyxaZqDXixyPvrNTFvjYsSehXeyFQlOMZRoF6sT/4oJLEYC
+        feMcYgNWZleSXQzE28XOJHvKUxMcQ7+ZZH9Smwph0+wQxgmB+brETtLn9wI2/FcmOZ7/ab7twB3pzsKV
+        Y+1id6JNrEPMvniXWIY5N/4tEug1EziWahcHUuxiGSYeTraL42l2cSjZlnUu077oyVzbvov59rOvFdie
+        /2Ox/WV9iu2lVwvtFy/l2879OM9++LvZYvnRNMfk4SSbuCvFJlZhtTdD7MlUmyqbni+SwN8vSPwfQ+eI
+        bwl7WeoAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="BtnResume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>546, 2</value>
+  </data>
+  <data name="BtnResume.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="BtnResume.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="BtnResume.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="BtnResume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="BtnResume.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="BtnResume.ToolTip" xml:space="preserve">
+    <value>Resume</value>
+  </data>
+  <data name="&gt;&gt;BtnResume.Name" xml:space="preserve">
+    <value>BtnResume</value>
+  </data>
+  <data name="&gt;&gt;BtnResume.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BtnResume.Parent" xml:space="preserve">
+    <value>tableLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;BtnResume.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="BtnStop.AltImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -518,83 +812,11 @@
         +s/jb8UE4b8naExTkCBOugAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 307</value>
-  </data>
-  <data name="BtnUnlock.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="&gt;&gt;Preview.Name" xml:space="preserve">
-    <value>Preview</value>
-  </data>
-  <data name="&gt;&gt;Preview.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;CustomButtonArea.Type" xml:space="preserve">
-    <value>LaserGRBL.PreviewForm+MyFlowPanel, LaserGRBL, Version=2.7.6.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Preview.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;BtnUnlock.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.7.6.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="editButtonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
-  </data>
-  <data name="Preview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>617, 307</value>
-  </data>
-  <data name="tableLayoutPanel8.ColumnCount" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
   <data name="BtnStop.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="BtnReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="&gt;&gt;BtnStop.Name" xml:space="preserve">
-    <value>BtnStop</value>
-  </data>
-  <data name="&gt;&gt;BtnUnlock.Parent" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
-  </data>
-  <data name="tableLayoutPanel8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="MNAddCB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 26</value>
-  </data>
-  <data name="BtnGoHome.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>617, 56</value>
-  </data>
-  <data name="&gt;&gt;editButtonToolStripMenuItem.Name" xml:space="preserve">
-    <value>editButtonToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;MNAddCB.Name" xml:space="preserve">
-    <value>MNAddCB</value>
-  </data>
-  <data name="BtnResume.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;BtnUnlock.Name" xml:space="preserve">
-    <value>BtnUnlock</value>
-  </data>
   <data name="BtnStop.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="&gt;&gt;BtnGoHome.Parent" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel8.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="BtnStop.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -710,252 +932,169 @@
         Y8afyjsCxn/6aLa1VgCNkaAQDsqNoHcrwPcIep19tdhExPRfk7ZNncIbcQAAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="&gt;&gt;BtnGoHome.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="BtnStop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>599, 2</value>
   </data>
-  <data name="Preview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="BtnStop.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Preview</value>
-  </data>
-  <data name="BtnUnlock.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
-  </data>
-  <data name="BtnReset.ToolTip" xml:space="preserve">
-    <value>Grbl Reset (ctrl-x)</value>
-  </data>
-  <data name="BtnResume.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-        bwl7WeoAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="BtnStop.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="BtnResume.ToolTip" xml:space="preserve">
-    <value>Resume</value>
-  </data>
-  <data name="&gt;&gt;BtnReset.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.7.6.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="CustomButtonArea.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="BtnStop.ToolTip" xml:space="preserve">
-    <value>Feed Hold</value>
-  </data>
-  <data name="&gt;&gt;BtnResume.Parent" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
-  </data>
-  <data name="BtnGoHome.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="BtnUnlock.ToolTip" xml:space="preserve">
-    <value>Grbl Unlock ($X)</value>
-  </data>
-  <data name="&gt;&gt;BtnReset.Parent" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
-  </data>
-  <data name="CustomButtonArea.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;MNRemEditCB.Name" xml:space="preserve">
-    <value>MNRemEditCB</value>
-  </data>
-  <data name="BtnResume.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="BtnResume.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="BtnStop.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>49, 49</value>
   </data>
-  <data name="&gt;&gt;BtnStop.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;BtnGoHome.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.7.6.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;BtnReset.Name" xml:space="preserve">
-    <value>BtnReset</value>
-  </data>
-  <data name="&gt;&gt;addCustomButtonToolStripMenuItem.Name" xml:space="preserve">
-    <value>addCustomButtonToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;editButtonToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="addCustomButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Add Custom Button</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>617, 363</value>
+  <data name="BtnStop.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
   </data>
   <data name="BtnStop.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 49</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>PreviewForm</value>
+  <data name="BtnStop.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;MNAddCB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="BtnStop.ToolTip" xml:space="preserve">
+    <value>Feed Hold</value>
   </data>
-  <data name="&gt;&gt;RemoveButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CustomButtonArea.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;BtnStop.Name" xml:space="preserve">
+    <value>BtnStop</value>
   </data>
   <data name="&gt;&gt;BtnStop.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.7.6.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel8.Name" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnStop.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
   </data>
-  <data name="&gt;&gt;Preview.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblPanel, LaserGRBL, Version=2.7.6.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;BtnStop.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
-  <data name="&gt;&gt;BtnGoHome.Name" xml:space="preserve">
-    <value>BtnGoHome</value>
+  <data name="tableLayoutPanel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 337</value>
+  </data>
+  <data name="tableLayoutPanel8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="tableLayoutPanel8.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>650, 53</value>
+  </data>
+  <data name="tableLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel8.Name" xml:space="preserve">
+    <value>tableLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel8.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel8.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel8.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnReset" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CustomButtonArea" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="BtnUnlock" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnHoming" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnZeroing" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="BtnResume" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="BtnStop" Row="0" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,5,AutoSize,0,Percent,100,Absolute,5,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="MNRemEditCB.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>236, 17</value>
   </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>it</value>
-  </metadata>
+  <data name="RemoveButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 22</value>
+  </data>
+  <data name="RemoveButton.Text" xml:space="preserve">
+    <value>Remove Button</value>
+  </data>
+  <data name="editButtonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 22</value>
+  </data>
+  <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
+    <value>Edit Button</value>
+  </data>
+  <data name="MNRemEditCB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 48</value>
+  </data>
+  <data name="&gt;&gt;MNRemEditCB.Name" xml:space="preserve">
+    <value>MNRemEditCB</value>
+  </data>
+  <data name="&gt;&gt;MNRemEditCB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>652, 391</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel8" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="Preview" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50" /&gt;&lt;Rows Styles="Percent,50,AutoSize,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="TT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>52</value>
   </metadata>
-  <metadata name="MNAddCB.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>81, 17</value>
-  </metadata>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>652, 391</value>
+  </data>
+  <data name="&gt;&gt;addCustomButtonToolStripMenuItem.Name" xml:space="preserve">
+    <value>addCustomButtonToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;addCustomButtonToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TT.Name" xml:space="preserve">
+    <value>TT</value>
+  </data>
+  <data name="&gt;&gt;TT.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RemoveButton.Name" xml:space="preserve">
+    <value>RemoveButton</value>
+  </data>
+  <data name="&gt;&gt;RemoveButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editButtonToolStripMenuItem.Name" xml:space="preserve">
+    <value>editButtonToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;editButtonToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>PreviewForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

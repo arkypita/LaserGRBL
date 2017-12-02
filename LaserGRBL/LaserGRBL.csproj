@@ -99,7 +99,6 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoUpdate\ZipStorer.cs" />
     <Compile Include="ColorScheme.cs" />
     <Compile Include="Core\GrblEmulator\Console.cs" />
     <Compile Include="Core\GrblEmulator\GrblEmulator.cs" />
@@ -191,6 +190,20 @@
     <Compile Include="GrblConfig.Designer.cs">
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="HotkeyManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HotkeyManagerForm.Designer.cs">
+      <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HotKeysManager.cs" />
+    <Compile Include="MyDatagridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tools\InputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\Serializer.cs" />
     <Compile Include="UI\Forms\MainForm\ConnectLogForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -421,6 +434,7 @@
     <Compile Include="UI\UserControls\LabelTB.Designer.cs">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsageStats.cs" />
     <Compile Include="UserControls\PlaceholderTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -429,6 +443,9 @@
     </Compile>
     <EmbeddedResource Include="GrblConfig.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HotkeyManagerForm.resx">
+      <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\NewVersionForm.zh-CN.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>

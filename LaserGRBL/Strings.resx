@@ -130,6 +130,13 @@ Please manually download the new version from lasergrbl site.</value>
   <data name="BoxAutoUpdateSuccess" xml:space="preserve">
     <value>Update success!</value>
   </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>There are some changes that have not been applied.
+Do you want to rewrite the configuration?</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>Changes detected!</value>
+  </data>
   <data name="BoxConnectErrorTitle" xml:space="preserve">
     <value>Cannot connect to device</value>
   </data>
@@ -160,8 +167,14 @@ Please manually download the new version from lasergrbl site.</value>
   <data name="BoxReadConfigError" xml:space="preserve">
     <value>Error reading config!</value>
   </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>Showing cached values...</value>
+  </data>
   <data name="BoxReadConfigSuccess" xml:space="preserve">
     <value>{0} Config readed successfully!</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>No changes... nothing to write!</value>
   </data>
   <data name="BoxWriteConfigWithError" xml:space="preserve">
     <value>{0} Config written with {1} errors!</value>

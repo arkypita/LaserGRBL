@@ -11,12 +11,14 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 {
 	public partial class SetupLineToLine : ToolConfig
 	{
+		private GrblCore mCore;
 		private Core.RasterToGcode.LineToLine mTool;
 
-		public SetupLineToLine(Core.RasterToGcode.LineToLine tool)
+		public SetupLineToLine(GrblCore core, Core.RasterToGcode.LineToLine tool)
 		{
 			InitializeComponent();
 			mTool = tool;
+			mCore = core;
 
 			CbDirections.SuspendLayout();
 			foreach (Core.RasterToGcode.ConversionTool.EngravingDirection direction in Enum.GetValues(typeof(Core.RasterToGcode.ConversionTool.EngravingDirection)))
@@ -39,7 +41,7 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 
 		private void BtnQualityInfo_Click(object sender, EventArgs e)
 		{
-			UDQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog((double)UDQuality.Value);
+			UDQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog(mCore, (double)UDQuality.Value);
 			//System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
 		}
 

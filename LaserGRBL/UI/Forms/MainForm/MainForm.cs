@@ -7,6 +7,7 @@ namespace LaserGRBL
 	public partial class MainForm : Form
 	{
 		private GrblCore Core;
+		private bool FirstIdle = true;
 
 		public MainForm()
 		{
@@ -102,9 +103,21 @@ namespace LaserGRBL
 				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, " ,", true);
 			}
 		}
+
 		
 		void OnMachineStatus()
 		{
+			if (Core.MachineStatus == GrblCore.MacStatus.Idle && FirstIdle && Core.Configuration.Count == 0)
+			{
+				try
+				{
+					Core.RefreshConfig();
+					FirstIdle = false;
+				}
+				catch { }
+			}
+
+
 			TimerUpdate();
 		}
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
@@ -117,6 +130,8 @@ namespace LaserGRBL
 				Core.CloseCom(true);
 				Settings.SetObject("Mainform Size and Position", new object[] { Size, Location, WindowState });
 				Settings.Save();
+				
+				UsageStats.SaveFile(Core);
 			}
 		}
 		
@@ -158,7 +173,7 @@ namespace LaserGRBL
 			MnDisconnect.Visible = Core.IsOpen;
 
 			MnGoHome.Visible = Core.Configuration.HomingEnabled;
-			MnGoHome.Enabled = Core.CanGoHome;
+			MnGoHome.Enabled = Core.CanDoHoming;
 			MnUnlock.Enabled = Core.CanUnlock;
 			
 			TTOvG0.Visible = Core.SupportOverride;
@@ -293,18 +308,7 @@ namespace LaserGRBL
 		}
 		void MnSaveProgramClick(object sender, EventArgs e)
 		{
-			string filename = null;
-			using (System.Windows.Forms.SaveFileDialog ofd = new SaveFileDialog())
-			{
-				ofd.Filter = "GCODE Files|*.nc";
-				ofd.AddExtension = true;
-				ofd.RestoreDirectory = true;
-				if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-					filename = ofd.FileName;
-			}
-
-			if (filename != null)
-			{Core.SaveProgram(filename);}
+			Core.SaveProgram();
 		}
 
 		private void MNEnglish_Click(object sender, EventArgs e)
@@ -337,7 +341,7 @@ namespace LaserGRBL
 
 		private void helpOnLineToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/");
+			Core.HelpOnLine();
 		}
 
 		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -444,6 +448,47 @@ namespace LaserGRBL
 		private void grblConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			GrblConfig.CreateAndShowDialog(Core);
+		}
+
+		private void donateToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=mlpita%40bergamo3%2eit&lc=US&item_name=LaserGRBL&item_number=Support%20development&currency_code=EUR");
+		}
+
+
+		protected override void OnKeyUp(KeyEventArgs e)
+		{
+			mLastkeyData = Keys.None;
+			base.OnKeyUp(e);
+		}
+
+		Keys mLastkeyData = Keys.None;
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+		{
+			if (keyData != mLastkeyData)
+			{
+				mLastkeyData = keyData;
+				return Core.ManageHotKeys(keyData);
+			}
+			else
+			{
+				return base.ProcessCmdKey(ref msg, keyData);
+			}
+		}
+
+		private void MnReOpenFile_Click(object sender, EventArgs e)
+		{
+			Core.ReOpenFile(this);
+		}
+
+		private void fileToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+		{
+			MnReOpenFile.Enabled = Core.CanReOpenFile;
+		}
+
+		private void MnHotkeys_Click(object sender, EventArgs e)
+		{
+			HotkeyManagerForm.CreateAndShowDialog(Core);
 		}
 	}
 

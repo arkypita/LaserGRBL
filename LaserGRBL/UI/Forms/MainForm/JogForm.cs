@@ -25,26 +25,30 @@ namespace LaserGRBL
 
 		private void OnJogButtonMouseDown(object sender, MouseEventArgs e)
 		{
-			Core.Jog((sender as DirectionButton).JogDirection, TbStep.Value, TbSpeed.Value);
+			Core.Jog((sender as DirectionButton).JogDirection);
 		}
 
 		private void TbSpeed_ValueChanged(object sender, EventArgs e)
 		{
 			TT.SetToolTip(TbSpeed, string.Format("Speed: {0}", TbSpeed.Value));
+			LblSpeed.Text = String.Format("F{0}", TbSpeed.Value);
 			Settings.SetObject("Jog Speed", TbSpeed.Value);
+			Core.JogSpeed = TbSpeed.Value;
 			needsave = true;
 		}
 
 		private void TbStep_ValueChanged(object sender, EventArgs e)
 		{
 			TT.SetToolTip(TbStep, string.Format("Step: {0}", TbStep.Value));
+			LblStep.Text = TbStep.Value.ToString();
 			Settings.SetObject("Jog Step", TbStep.Value);
+			Core.JogStep = TbStep.Value;
 			needsave = true;
 		}
 
 		private void BtnHome_Click(object sender, EventArgs e)
 		{
-			Core.JogHome(TbSpeed.Value);
+			Core.JogHome();
 		}
 
 		bool needsave = false;

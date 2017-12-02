@@ -44,10 +44,11 @@ namespace LaserGRBL.UserControls.IntegerInput
 			this.TB.Name = "TB";
 			this.TB.Size = new System.Drawing.Size(77, 13);
 			this.TB.TabIndex = 0;
-			this.TB.KeyDown += TB_KeyDown;
+			this.TB.KeyDown += TBKeyDown;
 			this.TB.KeyPress += TBKeyPress;
 			this.TB.GotFocus += FocusEvent;
 			this.TB.LostFocus += FocusEvent;
+			this.TB.TextChanged += TBTextChanged;
 			//
 			//LB
 			//
@@ -69,36 +70,14 @@ namespace LaserGRBL.UserControls.IntegerInput
 			this.PerformLayout();
 
 		}
-		
-		//protected System.Windows.Forms.TextBox TB {
-		//	get { return withEventsField_TB; }
-		//	set {
-		//		if (withEventsField_TB != null) {
-		//			withEventsField_TB.KeyDown -= TB_KeyDown;
-		//			withEventsField_TB.KeyPress -= TBKeyPress;
-		//			withEventsField_TB.MouseWheel -= TBWheel;
-		//			withEventsField_TB.GotFocus -= FocusEvent;
-		//			withEventsField_TB.LostFocus -= FocusEvent;
-		//		}
-		//		withEventsField_TB = value;
-		//		if (withEventsField_TB != null) {
-		//			withEventsField_TB.KeyDown += TB_KeyDown;
-		//			withEventsField_TB.KeyPress += TBKeyPress;
-		//			withEventsField_TB.MouseWheel += TBWheel;
-		//			withEventsField_TB.GotFocus += FocusEvent;
-		//			withEventsField_TB.LostFocus += FocusEvent;
-		//		}
-		//	}
-		//}
 
 		internal System.Windows.Forms.TextBox TB;
 		internal System.Windows.Forms.Label LB;
 
-		public event CurrentValueChangedEventHandler CurrentValueChanged;
-		public delegate void CurrentValueChangedEventHandler(object sender, int NewValue, bool ByUser);
 		//ok
-		public event CurrentValueChanged1EventHandler CurrentValueChanged1;
-		public delegate void CurrentValueChanged1EventHandler(object sender, int OldValue, int NewValue, bool ByUser);
+		public event CurrentValueChangedEventHandler OnTheFlyValueChanged;
+		public event CurrentValueChangedEventHandler CurrentValueChanged;
+		public delegate void CurrentValueChangedEventHandler(object sender, int OldValue, int NewValue, bool ByUser);
 		//ok
 
 		public event BeginEditEventHandler BeginEdit;
@@ -199,12 +178,8 @@ namespace LaserGRBL.UserControls.IntegerInput
 					_CurrentValue = value;
 					_ForcedText = null;
 					UpdateStatus();
-					if (CurrentValueChanged != null) {
-						CurrentValueChanged(this, value, byuser);
-					}
-					if (CurrentValueChanged1 != null) {
-						CurrentValueChanged1(this, O, value, byuser);
-					}
+					if (CurrentValueChanged != null)
+						CurrentValueChanged(this, O, value, byuser);
 				}
 			}
 		}
@@ -224,7 +199,7 @@ namespace LaserGRBL.UserControls.IntegerInput
 			get { return TB.ContainsFocus; }
 		}
 
-		private void TB_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+		private void TBKeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
 		{
 			if (e.KeyCode == System.Windows.Forms.Keys.Enter)
 			{
@@ -242,11 +217,22 @@ namespace LaserGRBL.UserControls.IntegerInput
 			e.Handled = !AcceptKeys(e.KeyChar);
 		}
 
+		void TBTextChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				int newValue = ParseEditValue();
+				if (OnTheFlyValueChanged != null)
+					OnTheFlyValueChanged(this, OldEditValue, newValue, InEdit);
+			}
+			catch { }
+		}
+
 
 		protected virtual bool AcceptKeys(char key)
 		{
 			System.Globalization.CultureInfo CI = System.Globalization.CultureInfo.CurrentCulture;
-			return char.IsDigit(key) | char.IsControl(key) | key.ToString() == CI.NumberFormat.NegativeSign;
+			return char.IsDigit(key) || char.IsControl(key) || key.ToString() == CI.NumberFormat.NegativeSign;
 		}
 
 		private void FocusEvent(object sender, System.EventArgs e)

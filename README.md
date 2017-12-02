@@ -1,4 +1,4 @@
-# LaserGRBL [![Donation](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=mlpita%40bergamo3%2eit&lc=US&item_name=LaserGRBL&item_number=lasergrbl&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+# LaserGRBL [![Donation](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=mlpita%40bergamo3%2eit&lc=US&item_name=LaserGRBL&item_number=Support%20development&currency_code=EUR)
 Official website [http://lasergrbl.com](http://lasergrbl.com)
 
 LaserGRBL is a Windows GUI for [GRBL](https://github.com/grbl/grbl/wiki). Unlike other GUI LaserGRBL it is specifically developed for use with laser cutter and engraver. In order to use all of LaserGRBL feature, your engraver must supports laser power modulation through gcode "S" command. LaserGRBL is compatible with [Grbl v0.9](https://github.com/grbl/grbl/) and [Grbl v1.1](https://github.com/gnea/grbl/)
@@ -9,7 +9,7 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 
 Do you like LaserGRBL? Support development with your donation!
 
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=mlpita%40bergamo3%2eit&lc=US&item_name=LaserGRBL&item_number=lasergrbl&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=mlpita%40bergamo3%2eit&lc=US&item_name=LaserGRBL&item_number=Support%20development&currency_code=EUR)
 
 ### Existing Features
 

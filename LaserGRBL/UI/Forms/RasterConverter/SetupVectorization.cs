@@ -11,12 +11,14 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 {
 	public partial class SetupVectorization : ToolConfig
 	{
+		private GrblCore mCore;
 		private Core.RasterToGcode.Vectorization mTool;
 
-		public SetupVectorization(Core.RasterToGcode.Vectorization tool)
+		public SetupVectorization(GrblCore core, Core.RasterToGcode.Vectorization tool)
 		{
 			InitializeComponent();
 			mTool = tool;
+			mCore = core;
 
 			CbFillingDirection.SuspendLayout();
 			foreach (Core.RasterToGcode.ConversionTool.EngravingDirection direction in Enum.GetValues(typeof(Core.RasterToGcode.ConversionTool.EngravingDirection)))
@@ -91,7 +93,7 @@ namespace LaserGRBL.UI.Forms.RasterConverter
 
 		private void BtnFillingQualityInfo_Click(object sender, EventArgs e)
 		{
-			UDFillingQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog((double)UDFillingQuality.Value);
+			UDFillingQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog(mCore, (double)UDFillingQuality.Value);
 			//System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
 		}
 	}

@@ -29,14 +29,14 @@
 			this.BtnImport = new System.Windows.Forms.Button();
 			this.GB = new System.Windows.Forms.GroupBox();
 			this.LblAction = new System.Windows.Forms.Label();
-			this.DGV = new System.Windows.Forms.DataGridView();
-			this.ActionTimer = new System.Windows.Forms.Timer(this.components);
+			this.DGV = new MyDatagridView();
 			this.DollarNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Parameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ActionTimer = new System.Windows.Forms.Timer(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.GB.SuspendLayout();
@@ -123,6 +123,7 @@
 			// 
 			this.DGV.AllowUserToAddRows = false;
 			this.DGV.AllowUserToDeleteRows = false;
+			this.DGV.AllowUserToResizeRows = false;
 			this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DollarNumber,
@@ -134,11 +135,6 @@
 			resources.ApplyResources(this.DGV, "DGV");
 			this.DGV.Name = "DGV";
 			this.DGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DGV_DataError);
-			// 
-			// ActionTimer
-			// 
-			this.ActionTimer.Interval = 5000;
-			this.ActionTimer.Tick += new System.EventHandler(this.ActionTimer_Tick);
 			// 
 			// DollarNumber
 			// 
@@ -189,6 +185,11 @@
 			this.Number.Name = "Number";
 			this.Number.ReadOnly = true;
 			// 
+			// ActionTimer
+			// 
+			this.ActionTimer.Interval = 5000;
+			this.ActionTimer.Tick += new System.EventHandler(this.ActionTimer_Tick);
+			// 
 			// GrblConfig
 			// 
 			resources.ApplyResources(this, "$this");
@@ -196,6 +197,8 @@
 			this.CancelButton = this.BtnCancel;
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Name = "GrblConfig";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GrblConfig_FormClosing);
+			this.Load += new System.EventHandler(this.GrblConfig_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
@@ -213,7 +216,7 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Button BtnCancel;
 		private System.Windows.Forms.GroupBox GB;
-		private System.Windows.Forms.DataGridView DGV;
+		private MyDatagridView DGV;
 		private System.Windows.Forms.Button BtnWrite;
 		private System.Windows.Forms.Button BtnRead;
 		private System.Windows.Forms.Button BtnImport;
