@@ -21,6 +21,7 @@ namespace LaserGRBL
 		public ComWrapper.WrapperType currentWrapper;
 
 		GrblCore Core;
+		private string mLoadedFileName;
 
 		public ConnectLogForm()
 		{
@@ -78,7 +79,8 @@ namespace LaserGRBL
 			}
 			else
 			{
-				TbFileName.Text = filename;
+				mLoadedFileName = filename;
+				TbFileName.Text = System.IO.Path.GetFileName(filename);
 			}
 		}
 
@@ -276,6 +278,17 @@ namespace LaserGRBL
 		private void TxtManualCommand_Leave(object sender, EventArgs e)
 		{
 			Core.SuspendHK = false;
+		}
+
+		private void TbFileName_MouseEnter(object sender, EventArgs e)
+		{
+			if (mLoadedFileName != null)
+				TT.Show(mLoadedFileName, TbFileName, 5000);
+		}
+
+		private void TbFileName_MouseLeave(object sender, EventArgs e)
+		{
+			TT.Hide(TbFileName);
 		}
 	}
 }

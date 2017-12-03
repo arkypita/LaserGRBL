@@ -148,7 +148,7 @@
     <value>TxtManualCommand</value>
   </data>
   <data name="&gt;&gt;TxtManualCommand.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblTextBox, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblTextBox, LaserGRBL, Version=2.8.25.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TxtManualCommand.Parent" xml:space="preserve">
     <value>tableLayoutPanel6</value>
@@ -175,7 +175,7 @@
     <value>CmdLog</value>
   </data>
   <data name="&gt;&gt;CmdLog.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.CommandLog, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.CommandLog, LaserGRBL, Version=2.8.25.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CmdLog.Parent" xml:space="preserve">
     <value>tableLayoutPanel6</value>
@@ -373,7 +373,7 @@
     <value>PB</value>
   </data>
   <data name="&gt;&gt;PB.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.DoubleProgressBar, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.DoubleProgressBar, LaserGRBL, Version=2.8.25.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;PB.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -427,7 +427,7 @@
     <value>BtnOpen</value>
   </data>
   <data name="&gt;&gt;BtnOpen.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.25.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnOpen.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -476,7 +476,7 @@
     <value>BtnRunProgram</value>
   </data>
   <data name="&gt;&gt;BtnRunProgram.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.25.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnRunProgram.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -822,7 +822,7 @@
     <value>BtnConnectDisconnect</value>
   </data>
   <data name="&gt;&gt;BtnConnectDisconnect.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.25.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnConnectDisconnect.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
