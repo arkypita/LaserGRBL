@@ -606,13 +606,14 @@ namespace LaserGRBL
 
 		private void UserWantToContinue()
 		{
+			bool setwco = mWCO == System.Drawing.PointF.Empty && mTP.LastKnownWCO != System.Drawing.PointF.Empty;
 			bool homing = MachinePosition == System.Drawing.PointF.Empty; //potrebbe essere dovuto ad un hard reset -> posizione non affidabile
-			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, Configuration.HomingEnabled, homing, out homing);
+			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, Configuration.HomingEnabled, homing, out homing, setwco, setwco, out setwco, mTP.LastKnownWCO);
 
 			if (position == 0)
 				RunProgramFromStart(homing);
 			if (position > 0)
-				ContinueProgramFromKnown(position, homing);
+				ContinueProgramFromKnown(position, homing, setwco);
 		}
 
 		private void RunProgramFromStart(bool homing)
@@ -633,7 +634,7 @@ namespace LaserGRBL
 			}
 		}
 
-		private void ContinueProgramFromKnown(int position, bool homing)
+		private void ContinueProgramFromKnown(int position, bool homing, bool setwco)
 		{
 			lock (this)
 			{
@@ -645,10 +646,14 @@ namespace LaserGRBL
 
 				GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
 
-				if (homing)
-					mQueuePtr.Enqueue(new GrblCommand("$H"));
-
-
+				if (homing) mQueuePtr.Enqueue(new GrblCommand("$H"));
+				if (setwco)
+				{
+					//compute current point and set offset
+					System.Drawing.PointF curPoint = new System.Drawing.PointF(MachinePosition.X - mTP.LastKnownWCO.X, MachinePosition.Y - mTP.LastKnownWCO.Y);
+					mQueue.Enqueue(new GrblCommand(String.Format("G92 X{0} Y{1}", curPoint.X.ToString(System.Globalization.CultureInfo.InvariantCulture), curPoint.Y.ToString(System.Globalization.CultureInfo.InvariantCulture))));
+				}
+				
 				for (int i = 0; i < position && i < file.Count; i++) //analizza fino alla posizione
 					spb.AnalyzeCommand(file[i], false);
 
@@ -1206,7 +1211,7 @@ namespace LaserGRBL
 
 		private void ComputeWCO(System.Drawing.PointF wpos) //WCO = MPos - WPos
 		{
-			mWCO = new System.Drawing.PointF(mMPos.X - wpos.X, mMPos.Y - wpos.Y);
+			SetWCO(new System.Drawing.PointF(mMPos.X - wpos.X, mMPos.Y - wpos.Y));
 		}
 
 		private void ParseWCO(string p)
@@ -1251,6 +1256,7 @@ namespace LaserGRBL
 		private void SetWCO(System.Drawing.PointF wco)
 		{
 			mWCO = wco;
+			mTP.LastKnownWCO = wco; //remember last wco for job resume
 		}
 
 		private void ManageCommandResponse(string rline)
@@ -1658,6 +1664,20 @@ namespace LaserGRBL
 		private int mContinueCorrection;
 
 		GrblCore.DetectedIssue mLastIssue;
+		private System.Drawing.PointF mLastKnownWCO;
+
+		public System.Drawing.PointF LastKnownWCO
+		{
+			get 
+			{
+				return mLastKnownWCO; 
+			}
+			set 
+			{
+				if (value != System.Drawing.PointF.Empty)
+					mLastKnownWCO = value; 
+			}
+		}
 
 		public TimeProjection()
 		{ Reset(); }
@@ -1679,6 +1699,7 @@ namespace LaserGRBL
 			mTargetCount = 0;
 			mContinueCorrection = 0;
 			mLastIssue = GrblCore.DetectedIssue.Unknown;
+			mLastKnownWCO = System.Drawing.PointF.Empty;
 		}
 
 		public TimeSpan EstimatedTarget
@@ -1760,6 +1781,7 @@ namespace LaserGRBL
 				mErrorCount = 0;
 				mContinueCorrection = 0;
 				mLastIssue = GrblCore.DetectedIssue.Unknown;
+				mLastKnownWCO = System.Drawing.PointF.Empty;
 			}
 		}
 
