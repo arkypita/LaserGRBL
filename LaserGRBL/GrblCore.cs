@@ -647,11 +647,14 @@ namespace LaserGRBL
 				GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
 
 				if (homing) mQueuePtr.Enqueue(new GrblCommand("$H"));
+				
 				if (setwco)
 				{
 					//compute current point and set offset
-					System.Drawing.PointF curPoint = new System.Drawing.PointF(MachinePosition.X - mTP.LastKnownWCO.X, MachinePosition.Y - mTP.LastKnownWCO.Y);
-					mQueue.Enqueue(new GrblCommand(String.Format("G92 X{0} Y{1}", curPoint.X.ToString(System.Globalization.CultureInfo.InvariantCulture), curPoint.Y.ToString(System.Globalization.CultureInfo.InvariantCulture))));
+					System.Drawing.PointF pos = homing ? new System.Drawing.PointF(0, 0) : MachinePosition;
+					System.Drawing.PointF wco = mTP.LastKnownWCO;
+					System.Drawing.PointF cur = new System.Drawing.PointF(pos.X - wco.X, pos.Y - wco.Y);
+					mQueue.Enqueue(new GrblCommand(String.Format("G92 X{0} Y{1}", cur.X.ToString(System.Globalization.CultureInfo.InvariantCulture), cur.Y.ToString(System.Globalization.CultureInfo.InvariantCulture))));
 				}
 				
 				for (int i = 0; i < position && i < file.Count; i++) //analizza fino alla posizione

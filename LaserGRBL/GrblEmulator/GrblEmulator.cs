@@ -225,6 +225,8 @@ namespace LaserGRBL
 								SetConfig(line);
 							else if (line == "$C\n")
 								SwapCheck();
+							else if (line == "$H\n")
+								EmulateHoming();
 							else
 								EmulateCommand(new GrblCommand(line));
 							
@@ -237,6 +239,13 @@ namespace LaserGRBL
 
 					RX.SleepTime = rxBuf.Count > 0 ? 0 : 1;
 				}
+			}
+
+			private void EmulateHoming()
+			{
+				System.Threading.Thread.Sleep(2000);
+				curX = curY = curZ = 0.0M;
+				EnqueueTX("ok");
 			}
 
 			private void SwapCheck()
