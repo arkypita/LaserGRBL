@@ -1668,15 +1668,8 @@ namespace LaserGRBL
 
 		public System.Drawing.PointF LastKnownWCO
 		{
-			get 
-			{
-				return mLastKnownWCO; 
-			}
-			set 
-			{
-				if (value != System.Drawing.PointF.Empty)
-					mLastKnownWCO = value; 
-			}
+			get {return mLastKnownWCO;}
+			set {if (InProgram) mLastKnownWCO = value; }
 		}
 
 		public TimeProjection()
