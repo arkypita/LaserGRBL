@@ -160,7 +160,7 @@ namespace LaserGRBL
 				case HotKey.Actions.HelpOnline:
 					mCore.HelpOnLine(); break;
 				case HotKey.Actions.Reset:
-					mCore.GrblReset(true); break;
+					mCore.GrblReset(); break;
 				case HotKey.Actions.Homing:
 					mCore.GrblHoming(); break;
 				case HotKey.Actions.Unlock:

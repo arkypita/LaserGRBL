@@ -237,7 +237,7 @@ namespace LaserGRBL
 
 		private void MnGrblReset_Click(object sender, EventArgs e)
 		{
-			Core.GrblReset(true);
+			Core.GrblReset();
 		}
 
 		void RefreshOverride()

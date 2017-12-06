@@ -781,25 +781,31 @@ namespace LaserGRBL
 		private void QueryPosition()
 		{SendImmediate(63, true);}
 
-		public void GrblReset(bool user)
+		public void GrblReset() //da comando manuale esterno (pulsante)
 		{
 			if (CanResetGrbl)
 			{
-				if (user && mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
+				if (mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
 					SetIssue(DetectedIssue.ManualReset);
-
-				lock (this)
-				{
-					ClearQueue(true);
-					mBuffer = 0;
-					mTP.JobEnd();
-					mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
-					mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
-					SendImmediate(24);
-				}
-
-				RiseOverrideChanged();
+				InternalReset(true);
 			}
+		}
+
+		private void InternalReset(bool grbl)
+		{
+			lock (this)
+			{
+				ClearQueue(true);
+				mBuffer = 0;
+				mTP.JobEnd();
+				mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
+				mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
+
+				if (grbl)
+					SendImmediate(24);
+			}
+
+			RiseOverrideChanged();
 		}
 
 		public void SendImmediate(byte b, bool mute = false)
@@ -944,7 +950,7 @@ namespace LaserGRBL
 		{
 			lock (this)
 			{
-				GrblReset(false);
+				InternalReset((bool)Settings.GetObject("Reset Grbl On Connect", true));
 				QueryPosition();
 				QueryTimer.Start();
 			}

@@ -29,6 +29,7 @@ namespace LaserGRBL
 			CbUnidirectional.Checked = (bool)Settings.GetObject("Unidirectional Engraving", false);
 			CbThreadingMode.SelectedItem = Settings.GetObject("Threading Mode", GrblCore.ThreadingMode.UltraFast);
 			CbIssueDetector.Checked = !(bool)Settings.GetObject("Do not show Issue Detector", false);
+			CbResetOnConnect.Checked = (bool)Settings.GetObject("Reset Grbl On Connect", true);
 		}
 
 		private void InitThreadingCB()
@@ -74,6 +75,7 @@ namespace LaserGRBL
 			Settings.SetObject("Unidirectional Engraving", CbUnidirectional.Checked);
 			Settings.SetObject("Threading Mode", CbThreadingMode.SelectedItem);
 			Settings.SetObject("Do not show Issue Detector", !CbIssueDetector.Checked);
+			Settings.SetObject("Reset Grbl On Connect", CbResetOnConnect.Checked);
 			Settings.Save();
 
 			Close();

@@ -51,6 +51,8 @@
 			this.BtnThreadingModel = new LaserGRBL.UserControls.ImageButton();
 			this.CbIssueDetector = new System.Windows.Forms.CheckBox();
 			this.label7 = new System.Windows.Forms.Label();
+			this.CbResetOnConnect = new System.Windows.Forms.CheckBox();
+			this.label2 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.GB.SuspendLayout();
@@ -112,6 +114,8 @@
 			this.tableLayoutPanel3.Controls.Add(this.BtnThreadingModel, 0, 3);
 			this.tableLayoutPanel3.Controls.Add(this.CbIssueDetector, 1, 5);
 			this.tableLayoutPanel3.Controls.Add(this.label7, 2, 5);
+			this.tableLayoutPanel3.Controls.Add(this.CbResetOnConnect, 1, 6);
+			this.tableLayoutPanel3.Controls.Add(this.label2, 2, 6);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
 			// 
 			// CbThreadingMode
@@ -231,6 +235,17 @@
 			resources.ApplyResources(this.label7, "label7");
 			this.label7.Name = "label7";
 			// 
+			// CbResetOnConnect
+			// 
+			resources.ApplyResources(this.CbResetOnConnect, "CbResetOnConnect");
+			this.CbResetOnConnect.Name = "CbResetOnConnect";
+			this.CbResetOnConnect.UseVisualStyleBackColor = true;
+			// 
+			// label2
+			// 
+			resources.ApplyResources(this.label2, "label2");
+			this.label2.Name = "label2";
+			// 
 			// SettingsForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -272,5 +287,7 @@
 		private UserControls.ImageButton BtnThreadingModel;
 		private System.Windows.Forms.CheckBox CbIssueDetector;
 		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.CheckBox CbResetOnConnect;
+		private System.Windows.Forms.Label label2;
     }
 }
