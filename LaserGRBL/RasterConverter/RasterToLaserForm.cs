@@ -161,6 +161,13 @@ namespace LaserGRBL.RasterConverter
 		
 					ImageProcessor targetProcessor = IP.Clone() as ImageProcessor;
 					IP.GenerateGCode();
+
+					if (IP.SelectedTool == ImageProcessor.Tool.Dithering)
+						mCore.UsageCounters.Dithering++;
+					else if (IP.SelectedTool == ImageProcessor.Tool.Line2Line)
+						mCore.UsageCounters.Line2Line++;
+					else if (IP.SelectedTool == ImageProcessor.Tool.Vectorize)
+						mCore.UsageCounters.Vectorization++;
 				}
 			}
 		}

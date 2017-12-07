@@ -43,8 +43,6 @@ namespace LaserGRBL
 			{ return obj != null && obj is ThreadingMode && ((ThreadingMode)obj).Name == Name; }
 		}
 
-
-
 		public enum DetectedIssue
 		{
 			Unknown = 0,
@@ -228,6 +226,8 @@ namespace LaserGRBL
 		private ThreadingMode mThreadingMode = ThreadingMode.UltraFast;
 		private HotKeysManager mHotKeyManager;
 
+		public UsageStats.UsageCounters UsageCounters;
+
 		public GrblCore(System.Windows.Forms.Control syncroObject)
 		{
 			SetStatus(MacStatus.Disconnected);
@@ -262,6 +262,8 @@ namespace LaserGRBL
 			if (!Settings.ExistObject("Hotkey Setup")) Settings.SetObject("Hotkey Setup", new HotKeysManager());
 			mHotKeyManager = (HotKeysManager)Settings.GetObject("Hotkey Setup", null);
 			mHotKeyManager.Init(this);
+
+			UsageCounters = new UsageStats.UsageCounters();
 		}
 
 		public GrblConf Configuration
@@ -401,7 +403,10 @@ namespace LaserGRBL
 					if (ImageExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant())) //import raster image
 					{
 						try
-						{ RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent); }
+						{
+							RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent);
+							UsageCounters.RasterFile++;
+						}
 						catch (Exception ex)
 						{ Logger.LogException("RasterImport", ex); }
 					}
@@ -410,7 +415,10 @@ namespace LaserGRBL
 						System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
 
 						try
-						{ file.LoadFile(filename); }
+						{
+							file.LoadFile(filename);
+							UsageCounters.GCodeFile++;
+						}
 						catch (Exception ex)
 						{ Logger.LogException("GCodeImport", ex); }
 
