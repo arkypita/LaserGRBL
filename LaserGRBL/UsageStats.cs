@@ -114,11 +114,11 @@ namespace LaserGRBL
                     { "usageCount", UsageCount.ToString() },
 					{ "usageTime", ((int)(UsageTime.TotalMinutes)).ToString() },
 					{ "wrapperType", Wrapper.ToString() },
-					{ "feature.GCodeFile", Counters.GCodeFile.ToString() },
-					{ "feature.RasterFile", Counters.RasterFile.ToString() },
-					{ "feature.Vectorization", Counters.Vectorization.ToString() },
-					{ "feature.Dithering", Counters.Dithering.ToString() },
-					{ "feature.Line2Line", Counters.Line2Line.ToString() },
+					{ "fGCodeFile", Counters.GCodeFile.ToString() },
+					{ "fRasterFile", Counters.RasterFile.ToString() },
+					{ "fVectorization", Counters.Vectorization.ToString() },
+					{ "fDithering", Counters.Dithering.ToString() },
+					{ "fLine2Line", Counters.Line2Line.ToString() },
                 };
 
 				// client.UploadValues returns page's source as byte array (byte[]) so it must be transformed into a string
