@@ -712,6 +712,8 @@ namespace LaserGRBL
 				com = new ComWrapper.Telnet();
 			else if (wraptype == ComWrapper.WrapperType.LaserWebESP8266 && (com == null || com.GetType() != typeof(ComWrapper.LaserWebESP8266)))
 				com = new ComWrapper.LaserWebESP8266();
+			else if (wraptype == ComWrapper.WrapperType.Emulator && (com == null || com.GetType() != typeof(ComWrapper.Emulator)))
+				com = new ComWrapper.Emulator();
 
 			com.Configure(conf);
 		}

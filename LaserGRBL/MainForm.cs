@@ -408,7 +408,7 @@ namespace LaserGRBL
 
 		private void MNGrblEmulator_Click(object sender, EventArgs e)
 		{
-			LaserGRBL.GrblEmulator.Start();
+			LaserGRBL.GrblEmulator.WebSocketEmulator.Start();
 		}
 
 		private void chinexeToolStripMenuItem_Click(object sender, EventArgs e)
