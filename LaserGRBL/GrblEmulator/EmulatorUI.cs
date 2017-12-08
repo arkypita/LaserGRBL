@@ -61,6 +61,8 @@ namespace LaserGRBL.GrblEmulator
 
 		void ManageClearMessage(string message)
 		{
+			lock (sb)
+			{ sb.Length = 0; }
 			RTB.Text = "";
 		}
 

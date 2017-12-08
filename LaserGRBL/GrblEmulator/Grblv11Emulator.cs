@@ -162,12 +162,10 @@ namespace LaserGRBL.GrblEmulator
 			{
 				rxBuf.Clear();
 				System.Threading.Thread.Sleep(50);
-
-				mPaused = false;
+				mCheck = mPaused = false;
 				curX = curY = curZ = speed = 0.0M;
 				abs = true;
 				toSleep = TimeSpan.Zero;
-
 
 				EmuLog(null);
 				EmuLog("Grbl Reset");
