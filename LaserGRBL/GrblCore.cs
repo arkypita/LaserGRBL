@@ -202,7 +202,6 @@ namespace LaserGRBL
 
 		private MacStatus mMachineStatus;
 		private const int BUFFER_SIZE = 127;
-		private GrblVersionInfo mGrblVersion;
 
 		private int mCurOvFeed;
 		private int mCurOvRapids;
@@ -254,7 +253,6 @@ namespace LaserGRBL
 
 			mSentPtr = mSent;
 			mQueuePtr = mQueue;
-			mGrblVersion = null;
 
 			mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
 			mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
@@ -300,13 +298,14 @@ namespace LaserGRBL
 
 		public GrblVersionInfo GrblVersion
 		{
-			get { return mGrblVersion; }
+			get { return (GrblVersionInfo)Settings.GetObject("Last GrblVersion known", null); }
 			set
 			{
-				if (mGrblVersion == null || !mGrblVersion.Equals(value))
+				if (GrblVersion == null || !GrblVersion.Equals(value))
 				{
-					mGrblVersion = value;
-					Logger.LogMessage("VersionInfo", "Detected Grbl v{0}", mGrblVersion);
+					Settings.SetObject("Last GrblVersion known", value);
+					Logger.LogMessage("VersionInfo", "Detected Grbl v{0}", value);
+					Settings.Save();
 				}
 			}
 		}
@@ -756,7 +755,6 @@ namespace LaserGRBL
 				if (com.IsOpen)
 					com.Close(!user);
 
-				mGrblVersion = null;
 				mBuffer = 0;
 				mTP.JobEnd();
 
@@ -1884,7 +1882,7 @@ namespace LaserGRBL
 	}
 
 	[Serializable]
-	public class GrblConf
+	public class GrblConf : System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<int, decimal>>
 	{
 		public class GrblConfParam : ICloneable
 		{
@@ -1917,13 +1915,22 @@ namespace LaserGRBL
 
 			public object Clone()
 			{ return this.MemberwiseClone(); }
+
 		}
 
 		private System.Collections.Generic.Dictionary<int, decimal> mData;
 		private GrblCore.GrblVersionInfo mVersion;
 
 		public GrblConf(GrblCore.GrblVersionInfo GrblVersion) : this()
-		{ mVersion = GrblVersion; }
+		{
+			mVersion = GrblVersion;
+		}
+
+		public GrblConf(GrblCore.GrblVersionInfo GrblVersion, System.Collections.Generic.Dictionary<int, decimal> configTable) : this(GrblVersion)
+		{
+			foreach (System.Collections.Generic.KeyValuePair<int, decimal> kvp in configTable)
+				mData.Add(kvp.Key, kvp.Value);
+		}
 
 		public GrblConf()
 		{ mData = new System.Collections.Generic.Dictionary<int, decimal>(); }
@@ -2024,6 +2031,26 @@ namespace LaserGRBL
 				return true;
 			else
 				return false;
+		}
+
+		internal bool ContainsKey(int key)
+		{
+			return mData.ContainsKey(key);
+		}
+
+		internal void SetValue(int key, decimal value)
+		{
+			mData[key] = value;
+		}
+
+		public System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<int, decimal>> GetEnumerator()
+		{
+			return mData.GetEnumerator();
+		}
+
+		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+		{
+			return mData.GetEnumerator();
 		}
 	}
 }

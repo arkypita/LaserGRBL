@@ -13,6 +13,17 @@ namespace LaserGRBL.GrblEmulator
 	{
 		private static EmulatorUI istance;
 
+		private const int CP_NOCLOSE_BUTTON = 0x200;
+		protected override CreateParams CreateParams
+		{
+			get
+			{
+				CreateParams myCp = base.CreateParams;
+				myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+				return myCp;
+			}
+		}
+
 		public static void ShowUI(string initmessage)
 		{
 			if (istance == null)
@@ -47,7 +58,7 @@ namespace LaserGRBL.GrblEmulator
 			if (message == null)
 			{
 				if (InvokeRequired)
-					Invoke(new Grblv11Emulator.SendMessage(ManageClearMessage), null);
+					Invoke(new Grblv11Emulator.SendMessage(ManageClearMessage), new object [] {null});
 				else
 					ManageClearMessage(null);
 			}

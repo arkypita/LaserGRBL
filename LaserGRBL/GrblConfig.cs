@@ -213,6 +213,11 @@ namespace LaserGRBL
 							throw new System.IO.InvalidDataException("File does not contain a valid configuration");
 						else
 							WriteConf(conf, true);
+
+						//refresh actual conf
+						Core.RefreshConfig();
+						mLocalCopy = Core.Configuration.ToList();
+						DGV.DataSource = mLocalCopy;
 					}
 					catch (Exception ex)
 					{
@@ -254,7 +259,7 @@ namespace LaserGRBL
 				DialogResult rv = System.Windows.Forms.MessageBox.Show(Strings.BoxConfigDetectedChanges, Strings.BoxConfigDetectedChangesTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
 
 				if (rv == System.Windows.Forms.DialogResult.Yes)
-					e.Cancel = !WriteConf(mLocalCopy, false);
+					e.Cancel = !WriteConf(GetChanges(), false);
 				else if (rv == System.Windows.Forms.DialogResult.Cancel)
 					e.Cancel = true;
 			}

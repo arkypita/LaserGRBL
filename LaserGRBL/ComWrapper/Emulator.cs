@@ -53,8 +53,6 @@ namespace LaserGRBL.ComWrapper
 				emu.CloseCom();
 				buffer.Clear();
 				opened = false;
-
-				GrblEmulator.EmulatorUI.HideUI();
 			}
 		}
 

@@ -5,6 +5,13 @@ using System.Text;
 
 namespace LaserGRBL
 {
+	public class JogCommand : GrblCommand
+	{
+		public JogCommand(string line) : base(line.Substring(3))
+		{
+		}
+	}
+
 	public partial class GrblCommand
 	{
 		public class StatePositionBuilder : StateBuilder
@@ -26,13 +33,13 @@ namespace LaserGRBL
 				public bool IsSettled
 				{ get { return mSettled; } }
 
-				public void Update(Element e, bool Absolute)
+				public void Update(Element e, bool Absolute, decimal offset)
 				{
 					mPrevious = mNumber;
 
 					if (e != null)
 					{
-						mNumber = Absolute ? e.Number : mNumber + e.Number;
+						mNumber = Absolute ? offset + e.Number : mNumber + e.Number;
 						mSettled = true;
 					}
 				}
@@ -67,6 +74,12 @@ namespace LaserGRBL
 
 			private CumulativeElement mCurX = new CumulativeElement("X0");
 			private CumulativeElement mCurY = new CumulativeElement("Y0");
+			private CumulativeElement mCurZ = new CumulativeElement("Z0");
+
+			private decimal mWcoX = 0;
+			private decimal mWcoY = 0;
+			private decimal mWcoZ = 0;
+
 			private LastValueElement mCurF = new LastValueElement("F0");
 			private LastValueElement mCurS = new LastValueElement("S0");
 
@@ -82,18 +95,63 @@ namespace LaserGRBL
 				if (!cmd.JustBuilt) cmd.BuildHelper();
 
 				UpdateModalsNB(cmd);
-
-				mCurX.Update(cmd.X, ABS);
-				mCurY.Update(cmd.Y, ABS);
-
-				mCurF.Update(cmd.F);
-				mCurS.Update(cmd.S);
+				UpdateWCO(cmd);
+				UpdateXYZ(cmd);
+				UpdateFS(cmd);
 
 				TimeSpan rv = compute ? ComputeExecutionTime(cmd, conf) : TimeSpan.Zero;
 				if (delete) cmd.DeleteHelper();
 
 				return rv;
 			}
+
+			private void UpdateFS(GrblCommand cmd)
+			{
+				if (cmd is JogCommand)
+					return;
+
+				mCurF.Update(cmd.F);
+				mCurS.Update(cmd.S);
+			}
+
+			private void UpdateXYZ(GrblCommand cmd)
+			{
+				if (cmd is JogCommand)
+				{
+					mCurX.Update(cmd.X, cmd.IsAbsoluteCoord, mWcoX);
+					mCurY.Update(cmd.Y, cmd.IsAbsoluteCoord, mWcoY);
+					mCurZ.Update(cmd.Z, cmd.IsAbsoluteCoord, mWcoZ);
+				}
+				else if (cmd.IsMovement)
+				{
+					mCurX.Update(cmd.X, ABS, mWcoX);
+					mCurY.Update(cmd.Y, ABS, mWcoY);
+					mCurZ.Update(cmd.Z, ABS, mWcoZ);
+				}
+			}
+
+			private void UpdateWCO(GrblCommand cmd)
+			{
+				if (cmd.IsSetWCO)
+				{
+					if (cmd.X != null) mWcoX = mCurX.Number - cmd.X.Number;
+					if (cmd.Y != null) mWcoY = mCurY.Number - cmd.Y.Number;
+					if (cmd.Z != null) mWcoZ = mCurZ.Number - cmd.Z.Number;
+				}
+
+			}
+
+			public bool HasWCO
+			{ get { return mWcoX != 0 || mWcoY != 0 || mWcoZ != 0; } }
+
+			public decimal WcoX
+			{ get { return mWcoX; } }
+
+			public decimal WcoY
+			{ get { return mWcoY; } }
+
+			public decimal WcoZ
+			{ get { return mWcoZ; } }
 
 			public LastValueElement F
 			{ get { return mCurF; } }
@@ -107,16 +165,21 @@ namespace LaserGRBL
 			public CumulativeElement Y
 			{ get { return mCurY; } }
 
+			public CumulativeElement Z
+			{ get { return mCurZ; } }
+
 			internal bool TrueMovement()
 			{ return (mCurX.Number != mCurX.Previous || mCurY.Number != mCurY.Previous); }
 
 
 			private TimeSpan ComputeExecutionTime(GrblCommand cmd, GrblConf conf)
 			{
+				decimal f = cmd is JogCommand && cmd.F != null ? cmd.F.Number : mCurF.Number;
+
 				if (G0 && cmd.IsLinearMovement)
 					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)conf.MaxRateX); //todo: use a better computation of xy if different speed
-				else if (G1G2G3 && cmd.IsMovement && mCurF.Number != 0)
-					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)Math.Min(mCurF.Number, conf.MaxRateX));
+				else if (G1G2G3 && cmd.IsMovement && f != 0)
+					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)Math.Min(f, conf.MaxRateX));
 				else if (cmd.IsPause)
 					return cmd.P != null ? TimeSpan.FromSeconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
 				else
@@ -166,6 +229,13 @@ namespace LaserGRBL
 
 			public bool LaserBurning
 			{ get { return (!supportPWM || S.Number > 0) && (SpindleState.Number == 3 || (SpindleState.Number == 4 && MotionMode.Number != 0)); } }
+
+			internal void Homing()
+			{
+				mCurX = new CumulativeElement("X0");
+				mCurY = new CumulativeElement("Y0");
+				mCurZ = new CumulativeElement("Z0");
+			}
 		}
 
 		public class StateBuilder
@@ -245,6 +315,9 @@ namespace LaserGRBL
 
 			protected void UpdateModalsNB(GrblCommand cmd) //update modals - EXTERNAL BUILD
 			{
+				if (cmd is JogCommand)
+					return;
+
 				MotionMode.Update(cmd.G);
 				CoordinateSelect.Update(cmd.G);
 				PlaneSelect.Update(cmd.G);
@@ -281,5 +354,8 @@ namespace LaserGRBL
 			{if (element.IsSettled) list.Add(element);}
 
 		}
+
+		public bool IsSetWCO
+		{ get { return G != null && G.Number == 92; } }
 	}
 }
