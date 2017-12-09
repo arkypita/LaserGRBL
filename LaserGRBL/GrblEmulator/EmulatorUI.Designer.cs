@@ -63,6 +63,7 @@
 			this.Name = "EmulatorUI";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "EmulatorUI";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EmulatorUI_FormClosing);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

@@ -12,6 +12,7 @@ namespace LaserGRBL.GrblEmulator
 	public partial class EmulatorUI : Form
 	{
 		private static EmulatorUI istance;
+		private bool canclose = false;
 
 		private const int CP_NOCLOSE_BUTTON = 0x200;
 		protected override CreateParams CreateParams
@@ -37,6 +38,7 @@ namespace LaserGRBL.GrblEmulator
 		{
 			if (istance != null)
 			{
+				istance.canclose = true;
 				istance.Hide();
 				istance.Dispose();
 				istance = null;
@@ -99,6 +101,11 @@ namespace LaserGRBL.GrblEmulator
 				RTB.SelectionStart = RTB.TextLength;
 				RTB.ScrollToCaret();
 			}
+		}
+
+		private void EmulatorUI_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			e.Cancel = !canclose;
 		}
 	}
 }

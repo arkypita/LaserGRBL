@@ -26,8 +26,7 @@ namespace LaserGRBL.GrblEmulator
 		public delegate void SendMessage(string message);
 		private SendMessage mSendFunc;
 
-
-
+		private bool opened;
 		private GrblConf conf;
 
 		public Grblv11Emulator(SendMessage sendFunc)
@@ -43,17 +42,22 @@ namespace LaserGRBL.GrblEmulator
 
 		public void CloseCom()
 		{
-			lock (rxBuf)
+			if (opened)
 			{
-				EmuLog("Connection lost!");
+				opened = false;
+
 				RX.Stop();
-				rxBuf.Clear();
-
 				TX.Stop();
-				txBuf.Clear();
-			}
 
-			Tools.Serializer.ObjToFile(conf, filename);
+				lock (rxBuf)
+				{
+					rxBuf.Clear();
+					txBuf.Clear();
+				}
+
+				EmuLog("Connection lost!");
+				Tools.Serializer.ObjToFile(conf, filename);
+			}
 		}
 
 		private void EmuLog(string p)
@@ -68,17 +72,23 @@ namespace LaserGRBL.GrblEmulator
 
 		public void OpenCom()
 		{
-			lock (rxBuf)
+			if (!opened)
 			{
+				opened = true;
 				EmuLog("Client connected!");
-				rxBuf.Clear();
-				txBuf.Clear();
+
+				lock (rxBuf)
+				{
+					rxBuf.Clear();
+					txBuf.Clear();
+				}
+				
 				mPaused = false;
 				mCheck = false;
 				RX.Start();
 				TX.Start();
-				//SendVersion();
-				//SendStatus();
+
+				SendVersion();
 			}
 		}
 
@@ -257,9 +267,6 @@ namespace LaserGRBL.GrblEmulator
 			mCheck = !mCheck;
 			EnqueueTX("ok");
 			EnqueueTX(mCheck ? "[Enabled]" : "[Disabled]");
-
-			if (!mCheck)
-				GrblReset();
 		}
 
 		private void ManageTX()
