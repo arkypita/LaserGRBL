@@ -301,10 +301,12 @@ namespace LaserGRBL
 			get { return (GrblVersionInfo)Settings.GetObject("Last GrblVersion known", null); }
 			set
 			{
+				if (GrblVersion != null)
+					Logger.LogMessage("VersionInfo", "Detected Grbl v{0}", value);
+
 				if (GrblVersion == null || !GrblVersion.Equals(value))
 				{
 					Settings.SetObject("Last GrblVersion known", value);
-					Logger.LogMessage("VersionInfo", "Detected Grbl v{0}", value);
 					Settings.Save();
 				}
 			}
