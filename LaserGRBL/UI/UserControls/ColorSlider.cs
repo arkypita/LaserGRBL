@@ -776,7 +776,7 @@ namespace LaserGRBL.UserControls
             }
             catch (Exception Err)
             {
-                Console.WriteLine("DrawBackGround Error in " + Name + ":" + Err.Message);
+                System.Diagnostics.Debug.WriteLine("DrawBackGround Error in " + Name + ":" + Err.Message);
             }
             finally
             {

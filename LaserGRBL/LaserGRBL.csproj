@@ -100,8 +100,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorScheme.cs" />
-    <Compile Include="Core\GrblEmulator\Console.cs" />
-    <Compile Include="Core\GrblEmulator\GrblEmulator.cs" />
+    <Compile Include="Core\GrblEmulator\EmulatorUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\GrblEmulator\EmulatorUI.designer.cs">
+      <DependentUpon>EmulatorUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Core\ComWrapper\IComWrapper.cs" />
     <Compile Include="Core\ComWrapper\LaserWebESP8266.cs" />
     <Compile Include="Core\ComWrapper\UsbSerial.cs" />
@@ -183,7 +187,10 @@
     <Compile Include="Core\ComWrapper\WebSocket\WebSocketException.cs" />
     <Compile Include="Core\ComWrapper\WebSocket\WebSocketFrame.cs" />
     <Compile Include="Core\ComWrapper\WebSocket\WebSocketState.cs" />
+    <Compile Include="Core\GrblEmulator\Grblv11Emulator.cs" />
+    <Compile Include="Core\GrblEmulator\WebsocketEmulator.cs" />
     <Compile Include="Core\RasterToGcode\Configuration.cs" />
+    <Compile Include="Core\ComWrapper\Emulator.cs" />
     <Compile Include="GrblConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -441,6 +448,9 @@
     <Compile Include="UI\UserControls\ProgressBar\WaitingProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <EmbeddedResource Include="Core\GrblEmulator\EmulatorUI.resx">
+      <DependentUpon>EmulatorUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>

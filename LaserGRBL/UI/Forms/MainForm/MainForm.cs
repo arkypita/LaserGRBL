@@ -237,7 +237,7 @@ namespace LaserGRBL
 
 		private void MnGrblReset_Click(object sender, EventArgs e)
 		{
-			Core.GrblReset(true);
+			Core.GrblReset();
 		}
 
 		void RefreshOverride()
@@ -408,7 +408,7 @@ namespace LaserGRBL
 
 		private void MNGrblEmulator_Click(object sender, EventArgs e)
 		{
-			LaserGRBL.GrblEmulator.Start();
+			LaserGRBL.GrblEmulator.WebSocketEmulator.Start();
 		}
 
 		private void chinexeToolStripMenuItem_Click(object sender, EventArgs e)

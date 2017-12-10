@@ -11,8 +11,27 @@ namespace LaserGRBL
 	// and translation for most used languages
 
 	[Serializable]
-	class UsageStats
+	public class UsageStats
 	{
+		[Serializable]
+		public class UsageCounters
+		{
+			public int GCodeFile;
+			public int RasterFile;
+			public int Vectorization;
+			public int Dithering;
+			public int Line2Line;
+
+			internal void Update(UsageCounters c)
+			{
+				GCodeFile += c.GCodeFile;
+				RasterFile += c.RasterFile;
+				Vectorization += c.Vectorization;
+				Dithering += c.Dithering;
+				Line2Line += c.Line2Line;
+			}
+		}
+
 		private Guid InstallationID = Guid.NewGuid();
 		private DateTime LastSent = DateTime.MinValue;
 		private DateTime InstalledDate = System.IO.Directory.GetCreationTimeUtc(".");
@@ -23,9 +42,11 @@ namespace LaserGRBL
 		private int UsageCount = 0;
 		private TimeSpan UsageTime = TimeSpan.Zero;
 
+		private ComWrapper.WrapperType Wrapper;
+		private UsageCounters Counters;
+
 		[NonSerialized()]
 		private TimeSpan hUsageTime = TimeSpan.Zero;
-
 
 		private static UsageStats data;
 		private static string filename = System.IO.Path.Combine(GrblCore.DataPath, "UsageStats.bin");
@@ -61,6 +82,11 @@ namespace LaserGRBL
  			hUsageTime = tfas;
 			UsageTime = UsageTime.Add(elaps);
 
+			Wrapper = (ComWrapper.WrapperType)Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
+
+			if (Counters == null) Counters = new UsageCounters();
+			Counters.Update(Core.UsageCounters);
+
 			if (mustsend)
 			{
 				try
@@ -87,6 +113,12 @@ namespace LaserGRBL
                     { "uiLang", UiLang.ToString() },
                     { "usageCount", UsageCount.ToString() },
 					{ "usageTime", ((int)(UsageTime.TotalMinutes)).ToString() },
+					{ "wrapperType", Wrapper.ToString() },
+					{ "fGCodeFile", Counters.GCodeFile.ToString() },
+					{ "fRasterFile", Counters.RasterFile.ToString() },
+					{ "fVectorization", Counters.Vectorization.ToString() },
+					{ "fDithering", Counters.Dithering.ToString() },
+					{ "fLine2Line", Counters.Line2Line.ToString() },
                 };
 
 				// client.UploadValues returns page's source as byte array (byte[]) so it must be transformed into a string

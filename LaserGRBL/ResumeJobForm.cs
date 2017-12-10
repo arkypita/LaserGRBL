@@ -11,12 +11,13 @@ namespace LaserGRBL
 {
 	public partial class ResumeJobForm : Form
 	{
-		internal static int CreateAndShowDialog(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, out bool homing)
+		internal static int CreateAndShowDialog(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, out bool homing, bool allowWCO, bool suggestWCO, out bool wco, System.Drawing.PointF wcopos)
 		{
-			ResumeJobForm f = new ResumeJobForm(exec, sent, target, issue, allowHoming, suggestHoming);
+			ResumeJobForm f = new ResumeJobForm(exec, sent, target, issue, allowHoming, suggestHoming, allowWCO, suggestWCO, wcopos);
 
 			int rv = f.ShowDialog() == DialogResult.OK ? f.Position : -1;
 			homing = f.DoHoming;
+			wco = f.RestoreWCO;
 			f.Dispose();
 
 			return rv;
@@ -24,7 +25,7 @@ namespace LaserGRBL
 
 		bool mAllowH, mSuggestH;
 		int mExec, mSent, mSomeLine;
-		private ResumeJobForm(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming)
+		private ResumeJobForm(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, bool allowWCO, bool suggestWCO, System.Drawing.PointF wcopos)
 		{
 			InitializeComponent();
 			mAllowH = allowHoming;
@@ -63,6 +64,9 @@ namespace LaserGRBL
 
 			CbRedoHoming.Visible = allowHoming;
 			CbRedoHoming.Checked = allowHoming && suggestHoming;
+			CbRestoreWCO.Visible = allowWCO;
+			CbRestoreWCO.Checked = allowWCO && suggestWCO;
+			CbRestoreWCO.Text = String.Format("{0} X{1} Y{2}", CbRestoreWCO.Text, wcopos.X, wcopos.Y);
 		}
 
 		public bool DoHoming
@@ -105,5 +109,8 @@ namespace LaserGRBL
 				Close();
 			}
 		}
+
+		public bool RestoreWCO
+		{ get { return CbRestoreWCO.Checked; } }
 	}
 }

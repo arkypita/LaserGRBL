@@ -52,6 +52,7 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.TxtCause = new System.Windows.Forms.Label();
 			this.LblDetected = new System.Windows.Forms.Label();
+			this.CbRestoreWCO = new System.Windows.Forms.CheckBox();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -75,22 +76,24 @@
 			this.tableLayoutPanel1.RowCount = 2;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(490, 256);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(490, 261);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
 			// tableLayoutPanel2
 			// 
 			this.tableLayoutPanel2.AutoSize = true;
 			this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.tableLayoutPanel2.ColumnCount = 3;
+			this.tableLayoutPanel2.ColumnCount = 4;
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel2.Controls.Add(this.CbRestoreWCO, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.BtnOK, 3, 0);
+			this.tableLayoutPanel2.Controls.Add(this.BtnCancel, 2, 0);
 			this.tableLayoutPanel2.Controls.Add(this.CbRedoHoming, 0, 0);
-			this.tableLayoutPanel2.Controls.Add(this.BtnOK, 2, 0);
-			this.tableLayoutPanel2.Controls.Add(this.BtnCancel, 1, 0);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 220);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 225);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 1;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -150,7 +153,7 @@
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(484, 211);
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(484, 216);
 			this.tableLayoutPanel3.TabIndex = 1;
 			// 
 			// tableLayoutPanel4
@@ -389,6 +392,17 @@
 			this.LblDetected.TabIndex = 3;
 			this.LblDetected.Text = "LaserGRBL detected last job was not completed!\r\n";
 			// 
+			// CbRestoreWCO
+			// 
+			this.CbRestoreWCO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.CbRestoreWCO.AutoSize = true;
+			this.CbRestoreWCO.Location = new System.Drawing.Point(123, 13);
+			this.CbRestoreWCO.Name = "CbRestoreWCO";
+			this.CbRestoreWCO.Size = new System.Drawing.Size(68, 17);
+			this.CbRestoreWCO.TabIndex = 17;
+			this.CbRestoreWCO.Text = "Home @";
+			this.CbRestoreWCO.UseVisualStyleBackColor = true;
+			// 
 			// ResumeJobForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,7 +410,7 @@
 			this.AutoSize = true;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.CancelButton = this.BtnCancel;
-			this.ClientSize = new System.Drawing.Size(490, 256);
+			this.ClientSize = new System.Drawing.Size(490, 261);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "ResumeJobForm";
@@ -444,5 +458,6 @@
 		private System.Windows.Forms.Label TxtCause;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.CheckBox CbRedoHoming;
+		private System.Windows.Forms.CheckBox CbRestoreWCO;
 	}
 }
