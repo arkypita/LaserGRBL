@@ -163,9 +163,12 @@ namespace LaserGRBL
 
 			private void RemoveButton_Click(object sender, EventArgs e)
 			{
-				CustomButtons.Remove(CustomButton);
-				CustomButtons.SaveFile();
-				form.RefreshCustomButtons();
+				if (MessageBox.Show(Strings.BoxDeleteCustomButtonText, Strings.BoxDeleteCustomButtonTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+				{
+					CustomButtons.Remove(CustomButton);
+					CustomButtons.SaveFile();
+					form.RefreshCustomButtons();
+				}
 			}
 
 			private void EditButton_Click(object sender, EventArgs e)

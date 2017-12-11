@@ -140,6 +140,12 @@ Do you want to rewrite the configuration?</value>
   <data name="BoxConnectErrorTitle" xml:space="preserve">
     <value>Cannot connect to device</value>
   </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>Are you sure to delete selected button?</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>Delete custom button</value>
+  </data>
   <data name="BoxExportConfigError" xml:space="preserve">
     <value>Error exporting config!</value>
   </data>

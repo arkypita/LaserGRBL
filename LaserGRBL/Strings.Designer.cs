@@ -126,6 +126,24 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Are you sure to delete selected button?.
+        /// </summary>
+        internal static string BoxDeleteCustomButtonText {
+            get {
+                return ResourceManager.GetString("BoxDeleteCustomButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Delete custom button.
+        /// </summary>
+        internal static string BoxDeleteCustomButtonTitle {
+            get {
+                return ResourceManager.GetString("BoxDeleteCustomButtonTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Error exporting config!.
         /// </summary>
         internal static string BoxExportConfigError {
