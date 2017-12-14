@@ -37,8 +37,6 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.BTOpenImage = new LaserGRBL.UserControls.ImageButton();
 			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.TbToolTip = new System.Windows.Forms.TextBox();
@@ -73,8 +71,8 @@
 			// 
 			// BtnCreate
 			// 
-			resources.ApplyResources(this.BtnCreate, "BtnCreate");
 			this.BtnCreate.DialogResult = System.Windows.Forms.DialogResult.OK;
+			resources.ApplyResources(this.BtnCreate, "BtnCreate");
 			this.BtnCreate.Name = "BtnCreate";
 			this.BtnCreate.UseVisualStyleBackColor = true;
 			this.BtnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
@@ -85,14 +83,12 @@
 			this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.BTOpenImage, 0, 1);
 			this.tableLayoutPanel2.Controls.Add(this.label2, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.label3, 2, 5);
-			this.tableLayoutPanel2.Controls.Add(this.label4, 1, 5);
-			this.tableLayoutPanel2.Controls.Add(this.label5, 1, 4);
 			this.tableLayoutPanel2.Controls.Add(this.label6, 0, 2);
 			this.tableLayoutPanel2.Controls.Add(this.TbToolTip, 1, 2);
 			this.tableLayoutPanel2.Controls.Add(this.label7, 0, 3);
 			this.tableLayoutPanel2.Controls.Add(this.CbEStyles, 1, 3);
 			this.tableLayoutPanel2.Controls.Add(this.TBGCode, 1, 1);
+			this.tableLayoutPanel2.Controls.Add(this.label5, 0, 4);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			// 
 			// label1
@@ -102,12 +98,12 @@
 			// 
 			// BTOpenImage
 			// 
-			resources.ApplyResources(this.BTOpenImage, "BTOpenImage");
 			this.BTOpenImage.AltImage = null;
 			this.BTOpenImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BTOpenImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BTOpenImage.Coloration = System.Drawing.Color.Empty;
 			this.BTOpenImage.Image = ((System.Drawing.Image)(resources.GetObject("BTOpenImage.Image")));
+			resources.ApplyResources(this.BTOpenImage, "BTOpenImage");
 			this.BTOpenImage.Name = "BTOpenImage";
 			this.BTOpenImage.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.BTOpenImage.UseAltImage = false;
@@ -118,19 +114,10 @@
 			resources.ApplyResources(this.label2, "label2");
 			this.label2.Name = "label2";
 			// 
-			// label3
-			// 
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
-			// 
-			// label4
-			// 
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
-			// 
 			// label5
 			// 
 			resources.ApplyResources(this.label5, "label5");
+			this.tableLayoutPanel2.SetColumnSpan(this.label5, 3);
 			this.label5.Name = "label5";
 			// 
 			// label6
@@ -159,8 +146,8 @@
 			// 
 			// TBGCode
 			// 
-			resources.ApplyResources(this.TBGCode, "TBGCode");
 			this.tableLayoutPanel2.SetColumnSpan(this.TBGCode, 2);
+			resources.ApplyResources(this.TBGCode, "TBGCode");
 			this.TBGCode.Name = "TBGCode";
 			// 
 			// CustomButtonForm
@@ -190,8 +177,6 @@
 		private UserControls.ImageButton BTOpenImage;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox TbToolTip;
 		private System.Windows.Forms.Label label6;

@@ -87,6 +87,9 @@
     <StartupObject>LaserGRBL.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>Tools\NCalc\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -333,6 +336,26 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tools\MathHelper.cs" />
+    <Compile Include="Tools\NCalc\Domain\BinaryExpression.cs" />
+    <Compile Include="Tools\NCalc\Domain\EvaluationVisitor.cs" />
+    <Compile Include="Tools\NCalc\Domain\Function.cs" />
+    <Compile Include="Tools\NCalc\Domain\LogicalExpression.cs" />
+    <Compile Include="Tools\NCalc\Domain\LogicalExpressionVisitor.cs" />
+    <Compile Include="Tools\NCalc\Domain\Parameter.cs" />
+    <Compile Include="Tools\NCalc\Domain\SerializationVisitor.cs" />
+    <Compile Include="Tools\NCalc\Domain\TernaryExpression.cs" />
+    <Compile Include="Tools\NCalc\Domain\UnaryExpression.cs" />
+    <Compile Include="Tools\NCalc\Domain\Value.cs" />
+    <Compile Include="Tools\NCalc\EvaluateFunctionHandler.cs" />
+    <Compile Include="Tools\NCalc\EvaluateParameterHandler.cs" />
+    <Compile Include="Tools\NCalc\EvaluationException.cs" />
+    <Compile Include="Tools\NCalc\EvaluationOption.cs" />
+    <Compile Include="Tools\NCalc\Expression.cs" />
+    <Compile Include="Tools\NCalc\FunctionArgs.cs" />
+    <Compile Include="Tools\NCalc\NCalcLexer.cs" />
+    <Compile Include="Tools\NCalc\NCalcParser.cs" />
+    <Compile Include="Tools\NCalc\Numbers.cs" />
+    <Compile Include="Tools\NCalc\ParameterArgs.cs" />
     <Compile Include="Tools\Serializer.cs" />
     <Compile Include="Tools\TaskScheduler.cs" />
     <Compile Include="Tools\ThreadClass.cs" />

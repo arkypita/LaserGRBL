@@ -533,7 +533,7 @@ namespace LaserGRBL
 		{
 			private System.Collections.Generic.List<IGrblRow> ErrorLines = new System.Collections.Generic.List<IGrblRow>();
 
-			public WriteConfigException(System.Collections.Generic.List<IGrblRow> mSentPtr) 
+			public WriteConfigException(System.Collections.Generic.List<IGrblRow> mSentPtr)
 			{
 				foreach (IGrblRow row in mSentPtr)
 					if (row is GrblCommand)
@@ -656,7 +656,7 @@ namespace LaserGRBL
 				GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
 
 				if (homing) mQueuePtr.Enqueue(new GrblCommand("$H"));
-				
+
 				if (setwco)
 				{
 					//compute current point and set offset
@@ -665,7 +665,7 @@ namespace LaserGRBL
 					System.Drawing.PointF cur = new System.Drawing.PointF(pos.X - wco.X, pos.Y - wco.Y);
 					mQueue.Enqueue(new GrblCommand(String.Format("G92 X{0} Y{1}", cur.X.ToString(System.Globalization.CultureInfo.InvariantCulture), cur.Y.ToString(System.Globalization.CultureInfo.InvariantCulture))));
 				}
-				
+
 				for (int i = 0; i < position && i < file.Count; i++) //analizza fino alla posizione
 					spb.AnalyzeCommand(file[i], false);
 
@@ -789,7 +789,7 @@ namespace LaserGRBL
 		{ SendImmediate(64); }
 
 		private void QueryPosition()
-		{SendImmediate(63, true);}
+		{ SendImmediate(63, true); }
 
 		public void GrblReset() //da comando manuale esterno (pulsante)
 		{
@@ -1594,16 +1594,16 @@ namespace LaserGRBL
 		}
 
 		internal void HelpOnLine()
-		{System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/");}
+		{ System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/"); }
 
 		internal void GrblHoming()
-		{if (CanDoHoming)EnqueueCommand(new GrblCommand("$H"));}
+		{ if (CanDoHoming)EnqueueCommand(new GrblCommand("$H")); }
 
 		internal void GrblUnlock()
-		{if(CanUnlock) EnqueueCommand(new GrblCommand("$X"));}
+		{ if (CanUnlock) EnqueueCommand(new GrblCommand("$X")); }
 
 		internal void SetNewZero()
-		{if (CanDoZeroing) EnqueueCommand(new GrblCommand("G92 X0 Y0"));}
+		{ if (CanDoZeroing) EnqueueCommand(new GrblCommand("G92 X0 Y0")); }
 
 		public int JogSpeed { get; set; }
 
@@ -1628,38 +1628,50 @@ namespace LaserGRBL
 				ExecuteCustombutton(cb.GCode);
 		}
 
+		static System.Text.RegularExpressions.Regex bracketsRegEx = new System.Text.RegularExpressions.Regex(@"\[(?:[^]]+)\]");
 		internal void ExecuteCustombutton(string buttoncode)
 		{
 			string[] arr = buttoncode.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
 			foreach (string str in arr)
 			{
-				string command = str;
-				if (command.Trim().Length > 0)
+				if (str.Trim().Length > 0)
 				{
-					decimal left = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.X.Min : 0;
-					decimal right = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.X.Max : 0;
-					decimal top = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.Y.Max : 0;
-					decimal bottom = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.Y.Min : 0;
-
-					decimal width = right - left;
-					decimal height = top - bottom;
-
-					command = command.Replace("[left]", FormatNumber(left));
-					command = command.Replace("[right]", FormatNumber(right));
-					command = command.Replace("[top]", FormatNumber(top));
-					command = command.Replace("[bottom]", FormatNumber(bottom));
-
-					command = command.Replace("[width]", FormatNumber(width));
-					command = command.Replace("[height]", FormatNumber(height));
-
-					EnqueueCommand(new GrblCommand(command));
+					string tosend = bracketsRegEx.Replace(str, new System.Text.RegularExpressions.MatchEvaluator(EvaluateCB));
+					EnqueueCommand(new GrblCommand(tosend));
 				}
 			}
 		}
 
+
+		private string EvaluateCB(System.Text.RegularExpressions.Match m)
+		{
+			try
+			{
+				decimal left = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.X.Min : 0;
+				decimal right = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.X.Max : 0;
+				decimal top = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.Y.Max : 0;
+				decimal bottom = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.Y.Min : 0;
+				decimal width = right - left;
+				decimal height = top - bottom;
+
+				String text = m.Value.Substring(1, m.Value.Length - 2);
+				NCalc.Expression exp = new NCalc.Expression(text);
+				exp.Parameters.Add("left", (double)left);
+				exp.Parameters.Add("right", (double)right);
+				exp.Parameters.Add("top", (double)top);
+				exp.Parameters.Add("bottom", (double)bottom);
+				exp.Parameters.Add("width", (double)width);
+				exp.Parameters.Add("height", (double)height);
+				object rv = exp.Evaluate();
+				decimal dval = decimal.Parse(rv.ToString());
+				return m.Result(FormatNumber(dval));
+			}
+			catch { return m.Value; }
+		}
+
 		static string FormatNumber(decimal value)
-		{return string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0:0.000}", value);}
-				
+		{ return string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0:0.000}", value); }
+
 	}
 
 	public class TimeProjection
@@ -1687,8 +1699,8 @@ namespace LaserGRBL
 
 		public System.Drawing.PointF LastKnownWCO
 		{
-			get {return mLastKnownWCO;}
-			set {if (InProgram) mLastKnownWCO = value; }
+			get { return mLastKnownWCO; }
+			set { if (InProgram) mLastKnownWCO = value; }
 		}
 
 		public TimeProjection()
@@ -1923,12 +1935,14 @@ namespace LaserGRBL
 		private System.Collections.Generic.Dictionary<int, decimal> mData;
 		private GrblCore.GrblVersionInfo mVersion;
 
-		public GrblConf(GrblCore.GrblVersionInfo GrblVersion) : this()
+		public GrblConf(GrblCore.GrblVersionInfo GrblVersion)
+			: this()
 		{
 			mVersion = GrblVersion;
 		}
 
-		public GrblConf(GrblCore.GrblVersionInfo GrblVersion, System.Collections.Generic.Dictionary<int, decimal> configTable) : this(GrblVersion)
+		public GrblConf(GrblCore.GrblVersionInfo GrblVersion, System.Collections.Generic.Dictionary<int, decimal> configTable)
+			: this(GrblVersion)
 		{
 			foreach (System.Collections.Generic.KeyValuePair<int, decimal> kvp in configTable)
 				mData.Add(kvp.Key, kvp.Value);
@@ -1963,12 +1977,12 @@ namespace LaserGRBL
 
 		public bool LaserMode
 		{
-			get 
+			get
 			{
 				if (NoVersionInfo)
 					return true;
 				else
-					return ReadWithDefault(Version11 ? 32 : -1, 0) != 0; 
+					return ReadWithDefault(Version11 ? 32 : -1, 0) != 0;
 			}
 		}
 
@@ -1977,7 +1991,7 @@ namespace LaserGRBL
 
 		public decimal MaxPWM
 		{ get { return ReadWithDefault(Version11 ? 30 : -1, 1000); } }
-		
+
 		public decimal ResolutionX
 		{ get { return ReadWithDefault(Version9 ? 100 : 0, 250); } }
 
