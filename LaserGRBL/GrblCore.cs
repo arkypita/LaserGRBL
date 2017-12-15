@@ -1653,6 +1653,8 @@ namespace LaserGRBL
 				decimal bottom = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.Y.Min : 0;
 				decimal width = right - left;
 				decimal height = top - bottom;
+				decimal jogstep = JogStep;
+				decimal jogspeed = JogSpeed;
 
 				String text = m.Value.Substring(1, m.Value.Length - 2);
 				Tools.Expression exp = new Tools.Expression(text);
@@ -1663,6 +1665,8 @@ namespace LaserGRBL
 				exp.AddSetVariable("bottom", (double)bottom);
 				exp.AddSetVariable("width", (double)width);
 				exp.AddSetVariable("height", (double)height);
+				exp.AddSetVariable("jogstep", (double)jogstep);
+				exp.AddSetVariable("jogspeed", (double)jogspeed);
 				double dval = exp.EvaluateD();
 				return m.Result(FormatNumber((decimal)dval));
 			}

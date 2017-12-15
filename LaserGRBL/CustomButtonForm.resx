@@ -142,7 +142,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 3</value>
+    <value>258, 3</value>
   </data>
   <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 27</value>
@@ -169,7 +169,7 @@
     <value>NoControl</value>
   </data>
   <data name="BtnCreate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>320, 3</value>
+    <value>338, 3</value>
   </data>
   <data name="BtnCreate.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 27</value>
@@ -196,13 +196,13 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 274</value>
+    <value>3, 298</value>
   </data>
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>397, 33</value>
+    <value>415, 33</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -420,7 +420,7 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 173</value>
+    <value>3, 181</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>46, 13</value>
@@ -447,10 +447,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="TbToolTip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 170</value>
+    <value>58, 178</value>
   </data>
   <data name="TbToolTip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336, 20</value>
+    <value>354, 20</value>
   </data>
   <data name="TbToolTip.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -477,7 +477,7 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 200</value>
+    <value>3, 208</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>46, 13</value>
@@ -504,10 +504,10 @@
     <value>Left, Right</value>
   </data>
   <data name="CbEStyles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 196</value>
+    <value>58, 204</value>
   </data>
   <data name="CbEStyles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336, 21</value>
+    <value>354, 21</value>
   </data>
   <data name="CbEStyles.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -531,13 +531,13 @@
     <value>58, 22</value>
   </data>
   <data name="TBGCode.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>336, 142</value>
+    <value>350, 150</value>
   </data>
   <data name="TBGCode.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="TBGCode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336, 142</value>
+    <value>354, 150</value>
   </data>
   <data name="TBGCode.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -557,28 +557,28 @@
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 223</value>
+    <value>3, 231</value>
   </data>
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
+  <data name="label5.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>400, 0</value>
+  </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>391, 39</value>
+    <value>361, 39</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>- Support math expression in square brackets:  i.e. G0 X[left-5] Y[bottom-5]
-- Use dot as decimal separator
-- Available variables: left, right, top, bottom, width, height</value>
+    <value>- Use dot as decimal separator
+- Support math expression in square brackets: i.e. G0 X[left-5] Y[bottom-5]
+- Available variables: left, right, top, bottom, width, height, jogstep, jogspeed</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -602,7 +602,7 @@
     <value>5</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>397, 265</value>
+    <value>415, 289</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -632,7 +632,7 @@
     <value>4</value>
   </data>
   <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>403, 310</value>
+    <value>421, 334</value>
   </data>
   <data name="tableLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -665,10 +665,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>403, 310</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+    <value>421, 334</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
