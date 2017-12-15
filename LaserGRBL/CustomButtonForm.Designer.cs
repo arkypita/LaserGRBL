@@ -35,7 +35,6 @@
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.label1 = new System.Windows.Forms.Label();
-			this.BTOpenImage = new LaserGRBL.UserControls.ImageButton();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.TbToolTip = new System.Windows.Forms.TextBox();
@@ -43,6 +42,7 @@
 			this.CbEStyles = new System.Windows.Forms.ComboBox();
 			this.TBGCode = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
+			this.BTOpenImage = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
@@ -96,19 +96,6 @@
 			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
 			// 
-			// BTOpenImage
-			// 
-			this.BTOpenImage.AltImage = null;
-			this.BTOpenImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BTOpenImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.BTOpenImage.Coloration = System.Drawing.Color.Empty;
-			this.BTOpenImage.Image = ((System.Drawing.Image)(resources.GetObject("BTOpenImage.Image")));
-			resources.ApplyResources(this.BTOpenImage, "BTOpenImage");
-			this.BTOpenImage.Name = "BTOpenImage";
-			this.BTOpenImage.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BTOpenImage.UseAltImage = false;
-			this.BTOpenImage.Click += new System.EventHandler(this.BTOpenImage_Click);
-			// 
 			// label2
 			// 
 			resources.ApplyResources(this.label2, "label2");
@@ -149,6 +136,19 @@
 			resources.ApplyResources(this.label5, "label5");
 			this.tableLayoutPanel2.SetColumnSpan(this.label5, 3);
 			this.label5.Name = "label5";
+			// 
+			// BTOpenImage
+			// 
+			this.BTOpenImage.AltImage = null;
+			this.BTOpenImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BTOpenImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BTOpenImage.Coloration = System.Drawing.Color.Empty;
+			this.BTOpenImage.Image = ((System.Drawing.Image)(resources.GetObject("BTOpenImage.Image")));
+			resources.ApplyResources(this.BTOpenImage, "BTOpenImage");
+			this.BTOpenImage.Name = "BTOpenImage";
+			this.BTOpenImage.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BTOpenImage.UseAltImage = false;
+			this.BTOpenImage.Click += new System.EventHandler(this.BTOpenImage_Click);
 			// 
 			// CustomButtonForm
 			// 
