@@ -1655,16 +1655,16 @@ namespace LaserGRBL
 				decimal height = top - bottom;
 
 				String text = m.Value.Substring(1, m.Value.Length - 2);
-				NCalc.Expression exp = new NCalc.Expression(text);
-				exp.Parameters.Add("left", (double)left);
-				exp.Parameters.Add("right", (double)right);
-				exp.Parameters.Add("top", (double)top);
-				exp.Parameters.Add("bottom", (double)bottom);
-				exp.Parameters.Add("width", (double)width);
-				exp.Parameters.Add("height", (double)height);
-				object rv = exp.Evaluate();
-				decimal dval = decimal.Parse(rv.ToString());
-				return m.Result(FormatNumber(dval));
+				Tools.Expression exp = new Tools.Expression(text);
+				
+				exp.AddSetVariable("left", (double)left);
+				exp.AddSetVariable("right", (double)right);
+				exp.AddSetVariable("top", (double)top);
+				exp.AddSetVariable("bottom", (double)bottom);
+				exp.AddSetVariable("width", (double)width);
+				exp.AddSetVariable("height", (double)height);
+				double dval = exp.EvaluateD();
+				return m.Result(FormatNumber((decimal)dval));
 			}
 			catch { return m.Value; }
 		}

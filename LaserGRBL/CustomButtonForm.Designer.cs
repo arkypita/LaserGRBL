@@ -37,12 +37,12 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.BTOpenImage = new LaserGRBL.UserControls.ImageButton();
 			this.label2 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.TbToolTip = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.CbEStyles = new System.Windows.Forms.ComboBox();
 			this.TBGCode = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
@@ -114,12 +114,6 @@
 			resources.ApplyResources(this.label2, "label2");
 			this.label2.Name = "label2";
 			// 
-			// label5
-			// 
-			resources.ApplyResources(this.label5, "label5");
-			this.tableLayoutPanel2.SetColumnSpan(this.label5, 3);
-			this.label5.Name = "label5";
-			// 
 			// label6
 			// 
 			resources.ApplyResources(this.label6, "label6");
@@ -149,6 +143,12 @@
 			this.tableLayoutPanel2.SetColumnSpan(this.TBGCode, 2);
 			resources.ApplyResources(this.TBGCode, "TBGCode");
 			this.TBGCode.Name = "TBGCode";
+			// 
+			// label5
+			// 
+			resources.ApplyResources(this.label5, "label5");
+			this.tableLayoutPanel2.SetColumnSpan(this.label5, 3);
+			this.label5.Name = "label5";
 			// 
 			// CustomButtonForm
 			// 
