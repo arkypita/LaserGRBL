@@ -185,8 +185,7 @@ namespace LaserGRBL
 						{
 							//absolute
 							list.Add(new GrblCommand("G90"));
-							//use travel speed
-							list.Add(new GrblCommand(String.Format("F{0}", c.travelSpeed)));
+
 							//move fast to offset
 							list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(c.oX), formatnumber(c.oY))));
 							if (c.pwm)
@@ -194,11 +193,11 @@ namespace LaserGRBL
 							else
 								list.Add(new GrblCommand(String.Format("{0} S255", c.lOff))); //laser off and power to max power
 
-							//set speed to markspeed						
-							list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
 							//relative
 							list.Add(new GrblCommand("G91"));
 
+							//set speed to markspeed
+							list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
 
 							c.vectorfilling = true;
 							ImageLine2Line(resampled, c);
@@ -212,21 +211,18 @@ namespace LaserGRBL
 
 			//absolute
 			list.Add(new GrblCommand("G90"));
-			//use travel speed
-			list.Add(new GrblCommand(String.Format("F{0}", c.travelSpeed)));
 			//move fast to offset
 			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(c.oX), formatnumber(c.oY))));
 			//laser off and power to maxPower
 			list.Add(new GrblCommand(String.Format("{0} S{1}", c.lOff, c.maxPower)));
 			//set speed to borderspeed
-			list.Add(new GrblCommand(String.Format("G1 F{0}", c.borderSpeed)));
+			list.Add(new GrblCommand(String.Format("F{0}", c.borderSpeed)));
 
 			//trace borders
 			List<string> gc = Potrace.Export2GCode(plist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size);
 
 			foreach (string code in gc)
 				list.Add(new GrblCommand(code));
-
 
 			//laser off
 			list.Add(new GrblCommand(String.Format("{0}", c.lOff)));
@@ -270,8 +266,6 @@ namespace LaserGRBL
 
 			//absolute
 			list.Add(new GrblCommand("G90"));
-			//use travel speed
-			list.Add(new GrblCommand(String.Format("F{0}", c.travelSpeed)));
 			//move fast to offset
 			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(c.oX), formatnumber(c.oY))));
 			if (c.pwm)
@@ -280,7 +274,7 @@ namespace LaserGRBL
 				list.Add(new GrblCommand(String.Format("{0} S255", c.lOff))); //laser off and power to maxpower
 
 			//set speed to markspeed						
-			list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
+			list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
 			//relative
 			list.Add(new GrblCommand("G91"));
 
@@ -307,8 +301,6 @@ namespace LaserGRBL
 			List<GrblCommand> temp = new List<GrblCommand>();
 			foreach (ColorSegment seg in segments)
 			{
-				bool changespeed = (fast != seg.Fast); //se veloce != dafareveloce
-
 				if (seg.IsSeparator && !fast) //fast = previous segment contains S0 color
 				{
 					if (c.pwm)
@@ -318,14 +310,7 @@ namespace LaserGRBL
 				}
 
 				fast = seg.Fast;
-
-				if (changespeed)
-					temp.Add(new GrblCommand(String.Format("{0} F{1} {2}", fast ? "G0" : "G1", fast ? c.travelSpeed : c.markSpeed, seg.ToString())));
-				else
-					temp.Add(new GrblCommand(seg.ToString()));
-
-				//if (seg.IsSeparator)
-				//	list.Add(new GrblCommand(lOn));
+				temp.Add(new GrblCommand(seg.ToString()));
 			}
 
 			temp = OptimizeLine2Line(temp, c);
@@ -370,9 +355,9 @@ namespace LaserGRBL
 					if (oldcumulate && !cumulate) //cumulate down front -> flush
 					{
 						if (c.pwm)
-							rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} F{2} S0", formatnumber((double)cumX), formatnumber((double)cumY), c.travelSpeed)));
+							rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} S0", formatnumber((double)cumX), formatnumber((double)cumY))));
 						else
-							rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} F{2} {3}", formatnumber((double)cumX), formatnumber((double)cumY), c.travelSpeed, c.lOff)));
+							rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} {2}", formatnumber((double)cumX), formatnumber((double)cumY), c.lOff)));
 
 						cumX = cumY = 0;
 					}
