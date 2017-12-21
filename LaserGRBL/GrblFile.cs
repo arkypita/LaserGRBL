@@ -301,6 +301,8 @@ namespace LaserGRBL
 			List<GrblCommand> temp = new List<GrblCommand>();
 			foreach (ColorSegment seg in segments)
 			{
+				bool changeGMode = (fast != seg.Fast); //se veloce != dafareveloce
+
 				if (seg.IsSeparator && !fast) //fast = previous segment contains S0 color
 				{
 					if (c.pwm)
@@ -310,12 +312,20 @@ namespace LaserGRBL
 				}
 
 				fast = seg.Fast;
-				temp.Add(new GrblCommand(seg.ToString()));
+
+				if (changeGMode)
+					temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? "G0" : "G1", seg.ToString())));
+				else
+					temp.Add(new GrblCommand(seg.ToString()));
+
+				//if (seg.IsSeparator)
+				//	list.Add(new GrblCommand(lOn));
 			}
 
 			temp = OptimizeLine2Line(temp, c);
 			list.AddRange(temp);
 		}
+
 
 		private List<GrblCommand> OptimizeLine2Line(List<GrblCommand> temp, L2LConf c)
 		{
