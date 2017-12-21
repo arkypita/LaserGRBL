@@ -214,7 +214,6 @@ namespace LaserGRBL
 		private decimal mLoopCount = 1;
 
 		private Tools.PeriodicEventTimer QueryTimer;
-		private Tools.PeriodicEventTimer ActivityTimer;
 
 		private Tools.ThreadObject TX;
 		private Tools.ThreadObject RX;
@@ -241,7 +240,6 @@ namespace LaserGRBL
 
 			mThreadingMode = (ThreadingMode)Settings.GetObject("Threading Mode", ThreadingMode.UltraFast);
 			QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(mThreadingMode.StatusQuery), false);
-			ActivityTimer = new Tools.PeriodicEventTimer(TimeSpan.FromSeconds(20), false);
 			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX);
 			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null);
 
@@ -966,7 +964,6 @@ namespace LaserGRBL
 				InternalReset((bool)Settings.GetObject("Reset Grbl On Connect", true));
 				QueryPosition();
 				QueryTimer.Start();
-				ActivityTimer.Start();
 			}
 		}
 
@@ -976,9 +973,6 @@ namespace LaserGRBL
 			{
 				try
 				{
-					if (ActivityTimer.Expired && InProgram)
-						Tools.WinAPI.SignalActvity();
-
 					if (MachineStatus == MacStatus.Connecting && Tools.HiResTimer.TotalMilliseconds - connectStart > 10000)
 						OnConnectTimeout();
 
@@ -1460,10 +1454,6 @@ namespace LaserGRBL
 			{
 				LoopCount--;
 				RunProgramFromStart(false);
-			}
-			else //true end
-			{
-				Tools.WinAPI.SignalFree();
 			}
 		}
 

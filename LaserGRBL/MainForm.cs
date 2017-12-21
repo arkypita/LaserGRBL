@@ -143,7 +143,7 @@ namespace LaserGRBL
 			PreviewForm.TimerUpdate();
 			JogForm.Enabled = Core.JogEnabled;
 		}
-		
+
 		private void TimerUpdate()
 		{
 			SuspendLayout();
@@ -489,6 +489,13 @@ namespace LaserGRBL
 		private void MnHotkeys_Click(object sender, EventArgs e)
 		{
 			HotkeyManagerForm.CreateAndShowDialog(Core);
+		}
+
+
+		private void AwakeTimer_Tick(object sender, EventArgs e)
+		{
+			if (Core.InProgram)
+				Tools.WinAPI.SignalActvity();
 		}
 	}
 
