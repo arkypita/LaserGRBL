@@ -96,6 +96,7 @@
 			this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
+			this.MnStartFromPosition = new System.Windows.Forms.ToolStripMenuItem();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -352,7 +353,8 @@
             this.MnReOpenFile,
             this.MnSaveProgram,
             this.toolStripMenuItem1,
-            this.MnFileSend});
+            this.MnFileSend,
+            this.MnStartFromPosition});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
 			this.fileToolStripMenuItem.DropDownOpening += new System.EventHandler(this.fileToolStripMenuItem_DropDownOpening);
@@ -564,6 +566,12 @@
 			this.AwakeTimer.Interval = 20000;
 			this.AwakeTimer.Tick += new System.EventHandler(this.AwakeTimer_Tick);
 			// 
+			// MnStartFromPosition
+			// 
+			this.MnStartFromPosition.Name = "MnStartFromPosition";
+			resources.ApplyResources(this.MnStartFromPosition, "MnStartFromPosition");
+			this.MnStartFromPosition.Click += new System.EventHandler(this.MnStartFromPosition_Click);
+			// 
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -656,6 +664,7 @@
 		private System.Windows.Forms.ToolStripMenuItem MnHotkeys;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.Timer AwakeTimer;
+		private System.Windows.Forms.ToolStripMenuItem MnStartFromPosition;
 	}
 }
 

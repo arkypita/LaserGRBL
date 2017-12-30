@@ -614,11 +614,27 @@ namespace LaserGRBL
 			}
 		}
 
+		public void RunProgramFromPosition()
+		{
+			if (CanSendFile)
+			{
+				bool setwco = false;
+				bool homing = false;
+				
+				int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(0, 0, mTP.Target, DetectedIssue.Unknown, Configuration.HomingEnabled, homing, out homing, setwco, setwco, out setwco, mTP.LastKnownWCO, true);
+
+				if (position == 0)
+					RunProgramFromStart(homing);
+				if (position > 0)
+					ContinueProgramFromKnown(position, homing, setwco);
+			}
+		}
+
 		private void UserWantToContinue()
 		{
 			bool setwco = mWCO == System.Drawing.PointF.Empty && mTP.LastKnownWCO != System.Drawing.PointF.Empty;
 			bool homing = MachinePosition == System.Drawing.PointF.Empty; //potrebbe essere dovuto ad un hard reset -> posizione non affidabile
-			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, Configuration.HomingEnabled, homing, out homing, setwco, setwco, out setwco, mTP.LastKnownWCO);
+			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, Configuration.HomingEnabled, homing, out homing, setwco, setwco, out setwco, mTP.LastKnownWCO, false);
 
 			if (position == 0)
 				RunProgramFromStart(homing);

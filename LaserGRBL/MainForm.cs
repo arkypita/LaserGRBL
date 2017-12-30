@@ -162,6 +162,7 @@ namespace LaserGRBL
 			MnFileOpen.Enabled = Core.CanLoadNewFile;
 			MnSaveProgram.Enabled = Core.HasProgram;
 			MnFileSend.Enabled = Core.CanSendFile;
+			MnStartFromPosition.Enabled = Core.CanSendFile;
 			MnGrblConfig.Enabled = true;
 			//MnExportConfig.Enabled = Core.CanImportExport;
 			//MnImportConfig.Enabled = Core.CanImportExport;
@@ -496,6 +497,11 @@ namespace LaserGRBL
 		{
 			if (Core.InProgram)
 				Tools.WinAPI.SignalActvity();
+		}
+
+		private void MnStartFromPosition_Click(object sender, EventArgs e)
+		{
+			Core.RunProgramFromPosition();
 		}
 	}
 

@@ -11,9 +11,9 @@ namespace LaserGRBL
 {
 	public partial class ResumeJobForm : Form
 	{
-		internal static int CreateAndShowDialog(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, out bool homing, bool allowWCO, bool suggestWCO, out bool wco, System.Drawing.PointF wcopos)
+		internal static int CreateAndShowDialog(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, out bool homing, bool allowWCO, bool suggestWCO, out bool wco, System.Drawing.PointF wcopos, bool freeline)
 		{
-			ResumeJobForm f = new ResumeJobForm(exec, sent, target, issue, allowHoming, suggestHoming, allowWCO, suggestWCO, wcopos);
+			ResumeJobForm f = new ResumeJobForm(exec, sent, target, issue, allowHoming, suggestHoming, allowWCO, suggestWCO, wcopos, freeline);
 
 			int rv = f.ShowDialog() == DialogResult.OK ? f.Position : -1;
 			homing = f.DoHoming;
@@ -25,7 +25,7 @@ namespace LaserGRBL
 
 		bool mAllowH, mSuggestH;
 		int mExec, mSent, mSomeLine;
-		private ResumeJobForm(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, bool allowWCO, bool suggestWCO, System.Drawing.PointF wcopos)
+		private ResumeJobForm(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, bool allowWCO, bool suggestWCO, System.Drawing.PointF wcopos, bool freeline)
 		{
 			InitializeComponent();
 			mAllowH = allowHoming;
@@ -35,7 +35,7 @@ namespace LaserGRBL
 			mSent = sent +1;
 			LblSomeLines.Text = mSomeLine.ToString();
 			LblSent.Text = mSent.ToString();
-			UdSpecific.Maximum = mSent;
+			UdSpecific.Maximum = freeline ? int.MaxValue : mSent;
 			UdSpecific.Value = mSent;
 			RbSomeLines.Enabled = LblSomeLines.Enabled = mSomeLine > 1;
 			RbFromSent.Enabled = true; LblSent.Enabled = sent < target;
