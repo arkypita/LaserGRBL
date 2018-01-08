@@ -618,15 +618,9 @@ namespace LaserGRBL
 		{
 			if (CanSendFile)
 			{
-				bool setwco = false;
 				bool homing = false;
-				
-				int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(0, 0, mTP.Target, DetectedIssue.Unknown, Configuration.HomingEnabled, homing, out homing, setwco, setwco, out setwco, mTP.LastKnownWCO, true);
-
-				if (position == 0)
-					RunProgramFromStart(homing);
-				if (position > 0)
-					ContinueProgramFromKnown(position, homing, setwco);
+				int position = LaserGRBL.RunFromPositionForm.CreateAndShowDialog(LoadedFile.Count, Configuration.HomingEnabled, out homing);
+				ContinueProgramFromKnown(position, homing, false);
 			}
 		}
 
@@ -634,7 +628,7 @@ namespace LaserGRBL
 		{
 			bool setwco = mWCO == System.Drawing.PointF.Empty && mTP.LastKnownWCO != System.Drawing.PointF.Empty;
 			bool homing = MachinePosition == System.Drawing.PointF.Empty; //potrebbe essere dovuto ad un hard reset -> posizione non affidabile
-			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, Configuration.HomingEnabled, homing, out homing, setwco, setwco, out setwco, mTP.LastKnownWCO, false);
+			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, Configuration.HomingEnabled, homing, out homing, setwco, setwco, out setwco, mTP.LastKnownWCO);
 
 			if (position == 0)
 				RunProgramFromStart(homing);
@@ -649,7 +643,7 @@ namespace LaserGRBL
 				ClearQueue(true);
 
 				mTP.Reset();
-				mTP.JobStart(file.EstimatedTime, file.Count);
+				mTP.JobStart(LoadedFile);
 				Logger.LogMessage("EnqueueProgram", "Running program, {0} lines", file.Count);
 
 				if (homing)
@@ -690,7 +684,7 @@ namespace LaserGRBL
 				mQueuePtr.Enqueue(new GrblCommand(string.Format("M5 G0 {0} {1} {2} {3}", spb.X, spb.Y, spb.F, spb.S))); //fast go to the computed position with laser off and set speed and power
 				mQueuePtr.Enqueue(new GrblCommand(spb.GetSettledModals()));
 
-				mTP.JobContinue(position, mQueuePtr.Count);
+				mTP.JobContinue(LoadedFile, position, mQueuePtr.Count);
 
 				for (int i = position; i < file.Count; i++) //enqueue remaining commands
 				{
@@ -1809,12 +1803,12 @@ namespace LaserGRBL
 			}
 		}
 
-		public void JobStart(TimeSpan EstimatedTarget, int LineCount)
+		public void JobStart(GrblFile file)
 		{
 			if (!mStarted)
 			{
-				mETarget = EstimatedTarget;
-				mTargetCount = LineCount;
+				mETarget = file.EstimatedTime;
+				mTargetCount = file.Count;
 				mEProgress = TimeSpan.Zero;
 				mStart = Tools.HiResTimer.TotalMilliseconds;
 				mPauseBegin = 0;
@@ -1830,14 +1824,15 @@ namespace LaserGRBL
 			}
 		}
 
-		public void JobContinue(int position, int added)
+		public void JobContinue(GrblFile file, int position, int added)
 		{
 			if (!mStarted)
 			{
-				//	mETarget = EstimatedTarget;
-				//	mTargetCount = LineCount;
-				//	mEProgress = TimeSpan.Zero;
-				//	mStart = Tools.HiResTimer.TotalMilliseconds;
+				if (mETarget == TimeSpan.Zero) mETarget = file.EstimatedTime;
+				if (mTargetCount == 0) mTargetCount = file.Count;
+				//mEProgress = TimeSpan.Zero;
+				if (mStart == 0) mStart = Tools.HiResTimer.TotalMilliseconds;
+
 				mPauseBegin = 0;
 				mInPause = false;
 				mCompleted = false;

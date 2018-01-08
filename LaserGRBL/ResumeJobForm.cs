@@ -11,9 +11,14 @@ namespace LaserGRBL
 {
 	public partial class ResumeJobForm : Form
 	{
-		internal static int CreateAndShowDialog(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, out bool homing, bool allowWCO, bool suggestWCO, out bool wco, System.Drawing.PointF wcopos, bool freeline)
+
+
+		bool mAllowH, mSuggestH;
+		int mExec, mSent, mSomeLine;
+
+		internal static int CreateAndShowDialog(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, out bool homing, bool allowWCO, bool suggestWCO, out bool wco, System.Drawing.PointF wcopos)
 		{
-			ResumeJobForm f = new ResumeJobForm(exec, sent, target, issue, allowHoming, suggestHoming, allowWCO, suggestWCO, wcopos, freeline);
+			ResumeJobForm f = new ResumeJobForm(exec, sent, target, issue, allowHoming, suggestHoming, allowWCO, suggestWCO, wcopos);
 
 			int rv = f.ShowDialog() == DialogResult.OK ? f.Position : -1;
 			homing = f.DoHoming;
@@ -23,19 +28,17 @@ namespace LaserGRBL
 			return rv;
 		}
 
-		bool mAllowH, mSuggestH;
-		int mExec, mSent, mSomeLine;
-		private ResumeJobForm(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, bool allowWCO, bool suggestWCO, System.Drawing.PointF wcopos, bool freeline)
+		private ResumeJobForm(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, bool allowWCO, bool suggestWCO, System.Drawing.PointF wcopos)
 		{
 			InitializeComponent();
 			mAllowH = allowHoming;
 			mSuggestH = suggestHoming;
-			mSomeLine = Math.Max(0, exec - 17) +1;
-			mExec = exec +1;
-			mSent = sent +1;
+			mSomeLine = Math.Max(0, exec - 17) + 1;
+			mExec = exec + 1;
+			mSent = sent + 1;
 			LblSomeLines.Text = mSomeLine.ToString();
 			LblSent.Text = mSent.ToString();
-			UdSpecific.Maximum = freeline ? int.MaxValue : mSent;
+			UdSpecific.Maximum = mSent;
 			UdSpecific.Value = mSent;
 			RbSomeLines.Enabled = LblSomeLines.Enabled = mSomeLine > 1;
 			RbFromSent.Enabled = true; LblSent.Enabled = sent < target;

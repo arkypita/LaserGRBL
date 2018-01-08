@@ -70,6 +70,7 @@
 			this.MnSaveProgram = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnFileSend = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnStartFromPosition = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNEsp8266 = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNGrblEmulator = new System.Windows.Forms.ToolStripMenuItem();
 			this.schemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,7 +97,6 @@
 			this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
-			this.MnStartFromPosition = new System.Windows.Forms.ToolStripMenuItem();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -388,6 +388,12 @@
 			this.MnFileSend.Name = "MnFileSend";
 			this.MnFileSend.Click += new System.EventHandler(this.MnFileSend_Click);
 			// 
+			// MnStartFromPosition
+			// 
+			resources.ApplyResources(this.MnStartFromPosition, "MnStartFromPosition");
+			this.MnStartFromPosition.Name = "MnStartFromPosition";
+			this.MnStartFromPosition.Click += new System.EventHandler(this.MnStartFromPosition_Click);
+			// 
 			// MNEsp8266
 			// 
 			this.MNEsp8266.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -565,12 +571,6 @@
 			this.AwakeTimer.Enabled = true;
 			this.AwakeTimer.Interval = 20000;
 			this.AwakeTimer.Tick += new System.EventHandler(this.AwakeTimer_Tick);
-			// 
-			// MnStartFromPosition
-			// 
-			this.MnStartFromPosition.Name = "MnStartFromPosition";
-			resources.ApplyResources(this.MnStartFromPosition, "MnStartFromPosition");
-			this.MnStartFromPosition.Click += new System.EventHandler(this.MnStartFromPosition_Click);
 			// 
 			// MainForm
 			// 

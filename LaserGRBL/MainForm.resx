@@ -148,7 +148,7 @@
     <value>ConnectionForm</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Type" xml:space="preserve">
-    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=2.8.35.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=2.8.36.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -175,7 +175,7 @@
     <value>JogForm</value>
   </data>
   <data name="&gt;&gt;JogForm.Type" xml:space="preserve">
-    <value>LaserGRBL.JogForm, LaserGRBL, Version=2.8.35.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.JogForm, LaserGRBL, Version=2.8.36.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;JogForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -217,7 +217,7 @@
     <value>PreviewForm</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Type" xml:space="preserve">
-    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=2.8.35.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=2.8.36.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -650,7 +650,7 @@
 </value>
   </data>
   <data name="MnFileOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>177, 22</value>
   </data>
   <data name="MnFileOpen.Text" xml:space="preserve">
     <value>&amp;Open File</value>
@@ -678,7 +678,7 @@
 </value>
   </data>
   <data name="MnReOpenFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>177, 22</value>
   </data>
   <data name="MnReOpenFile.Text" xml:space="preserve">
     <value>&amp;Reload Last File</value>
@@ -703,13 +703,13 @@
 </value>
   </data>
   <data name="MnSaveProgram.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>177, 22</value>
   </data>
   <data name="MnSaveProgram.Text" xml:space="preserve">
     <value>&amp;Save Program</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 6</value>
+    <value>174, 6</value>
   </data>
   <data name="MnFileSend.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -728,16 +728,36 @@
 </value>
   </data>
   <data name="MnFileSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>177, 22</value>
   </data>
   <data name="MnFileSend.Text" xml:space="preserve">
     <value>Send To &amp;Machine</value>
   </data>
+  <data name="MnStartFromPosition.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EQAACxEBf2RfkQAAAAd0SU1FB9MKBhQLGasV+fsAAAMxSURBVDhPbZNrSJNRGMdfQzBJkTTzk4nTTMsb
+        hmgSmrPyktY+eIH64AL74sQPNqezzOaGCmKQqTPJZrQXF2YaCF3MdjGdipN5xwvLOZ1bTtStFDR9es4Y
+        RJc//Hjfw3P+z3nOOc+h/pZYPFYhkQzbSkraeTj0LCnp5BUUtD1LSLh1GscuiBOZ94/EYqMzfpxqa790
+        7ezsQ2trvzU/v+W9TDZ6qFYvQVaW4AXGgxGS5E/V12uENK2xikS9vTKZ5ofRaAWt1gRjY0aYmjKDUrkI
+        8fG5rxmMGE5KCi8VLUeRI3YzEU1rrfv7B7C9vQuTk2a7UafbhLk5C4yMrMDgoAErUkJz82fg8V7u+PqG
+        J6HNA7Fvx4nLlT2VyxdhZuab3bS8vA29vfMwNGSE2dl1R5Jl/K6BWKyEkJDLjeiLQFyowkI6MS+vie7p
+        mQCNxgirqzYoK5MeRkZmfoiNzXojFsu/j46uglqtB5oeARZLYHV3P0kSJCNuVGVl155Ot4GrbgGZuLS0
+        DdnZldMYlAqFwgatVjdPYiQBng8kJ3MXPD39nmD8EnKMKi/vME9ObsD4uBFLNGDJFtyv6ieLVUQrFBPv
+        EuoSD5mPmNAx9NYek8v1kJpaqkfzNcSDysmpqeZwJFtcrhSTmLGKFbyBNTx5HZhMNoirjQXJxGO421MA
+        uZI7MD23Ad3d/VtoLkZOIZSXj08Qm8+nd8fHTTA8bMDDW8aSDaDXb0JUVTg0aoRQrr4NWZ+C4WJT1G5G
+        UY4KfUKEQRI4p6U9fKRSLUJf3wK0t0+ASrUGCsVXvJF1iKgOBY4yDbLlZ4CjjYbajRsQ3RJoQ989xI8k
+        oJjM4iQ+X7rHZtdDRkapgc/v3B8YWMUmWoHwmrNQNHIVCqfOg8icAdHPgyxUANWGNtLq9i0QuYaFXc9j
+        MGLrsS2a4+LYSqlUi021dBBVF3bQYGbDTVUcnKuIMFLOVDvOFyFXENJMdpGOOoFcQJihoZmC9PSKvY6O
+        j/OBFf6WIIG/xTve+xXGyMqlSAxyHPndzigycEXcEJIsBbmPkNWqkAdIDkIeFJn3/1fpEHmZnog/EoAE
+        Ov69EBJziKJ+AZJwve2nGV+wAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="MnStartFromPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>177, 22</value>
   </data>
   <data name="MnStartFromPosition.Text" xml:space="preserve">
-    <value>Start From Position</value>
+    <value>Send From Position</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 20</value>
