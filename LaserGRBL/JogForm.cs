@@ -16,7 +16,10 @@ namespace LaserGRBL
 		{
 			Core = core;
 
-			TbSpeed.Value = (int)Settings.GetObject("Jog Speed", 1000);
+			UpdateFMax.Enabled = true;
+			UpdateFMax_Tick(null, null);
+
+			TbSpeed.Value = Math.Min((int)Settings.GetObject("Jog Speed", 1000), TbSpeed.Maximum);
 			TbStep.Value = (int)Settings.GetObject("Jog Step", 10);
 
 			TbSpeed_ValueChanged(null, null); //set tooltip
@@ -58,6 +61,20 @@ namespace LaserGRBL
 			{
 				needsave = false;
 				Settings.Save();
+			}
+		}
+
+		int oldVal;
+		private void UpdateFMax_Tick(object sender, EventArgs e)
+		{
+			int curVal = (int)Math.Min(Core.Configuration.MaxRateX, Core.Configuration.MaxRateY);
+			if (oldVal != curVal)
+			{
+				TbSpeed.Value = Math.Min(TbSpeed.Value, curVal);
+				TbSpeed.Maximum = curVal;
+				TbSpeed.LargeChange = curVal / 10;
+				TbSpeed.SmallChange = curVal / 20;
+				oldVal = curVal;
 			}
 		}
 	}

@@ -31,9 +31,15 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JogForm));
 			this.tlp = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnHome = new LaserGRBL.DirectionButton();
-			this.TbStep = new System.Windows.Forms.TrackBar();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.TbSpeed = new System.Windows.Forms.TrackBar();
+			this.LblSpeed = new System.Windows.Forms.Label();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.TbStep = new System.Windows.Forms.TrackBar();
+			this.LblStep = new System.Windows.Forms.Label();
+			this.TT = new System.Windows.Forms.ToolTip(this.components);
+			this.UpdateFMax = new System.Windows.Forms.Timer(this.components);
+			this.BtnHome = new LaserGRBL.DirectionButton();
 			this.imageButton1 = new LaserGRBL.DirectionButton();
 			this.imageButton2 = new LaserGRBL.DirectionButton();
 			this.imageButton4 = new LaserGRBL.DirectionButton();
@@ -42,16 +48,11 @@
 			this.imageButton8 = new LaserGRBL.DirectionButton();
 			this.imageButton7 = new LaserGRBL.DirectionButton();
 			this.imageButton3 = new LaserGRBL.DirectionButton();
-			this.TT = new System.Windows.Forms.ToolTip(this.components);
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.LblSpeed = new System.Windows.Forms.Label();
-			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.LblStep = new System.Windows.Forms.Label();
 			this.tlp.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.TbStep)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.TbSpeed)).BeginInit();
 			this.tableLayoutPanel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.TbSpeed)).BeginInit();
 			this.tableLayoutPanel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.TbStep)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tlp
@@ -87,22 +88,71 @@
 			this.tlp.Size = new System.Drawing.Size(234, 125);
 			this.tlp.TabIndex = 0;
 			// 
-			// BtnHome
+			// tableLayoutPanel1
 			// 
-			this.BtnHome.AltImage = null;
-			this.BtnHome.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.BtnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnHome.Coloration = System.Drawing.Color.Empty;
-			this.BtnHome.Image = ((System.Drawing.Image)(resources.GetObject("BtnHome.Image")));
-			this.BtnHome.JogDirection = LaserGRBL.GrblCore.JogDirection.N;
-			this.BtnHome.Location = new System.Drawing.Point(100, 45);
-			this.BtnHome.MaximumSize = new System.Drawing.Size(48, 48);
-			this.BtnHome.Name = "BtnHome";
-			this.BtnHome.Size = new System.Drawing.Size(33, 33);
-			this.BtnHome.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
-			this.BtnHome.TabIndex = 7;
-			this.BtnHome.UseAltImage = false;
-			this.BtnHome.Click += new System.EventHandler(this.BtnHome_Click);
+			this.tableLayoutPanel1.AutoSize = true;
+			this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.tableLayoutPanel1.ColumnCount = 1;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel1.Controls.Add(this.TbSpeed, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.LblSpeed, 0, 1);
+			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 3);
+			this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.tableLayoutPanel1.RowCount = 2;
+			this.tlp.SetRowSpan(this.tableLayoutPanel1, 3);
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(51, 119);
+			this.tableLayoutPanel1.TabIndex = 18;
+			// 
+			// TbSpeed
+			// 
+			this.TbSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.TbSpeed.LargeChange = 100;
+			this.TbSpeed.Location = new System.Drawing.Point(3, 3);
+			this.TbSpeed.Maximum = 4000;
+			this.TbSpeed.Minimum = 10;
+			this.TbSpeed.Name = "TbSpeed";
+			this.TbSpeed.Orientation = System.Windows.Forms.Orientation.Vertical;
+			this.TbSpeed.Size = new System.Drawing.Size(45, 100);
+			this.TbSpeed.SmallChange = 50;
+			this.TbSpeed.TabIndex = 16;
+			this.TbSpeed.TickFrequency = 200;
+			this.TbSpeed.TickStyle = System.Windows.Forms.TickStyle.Both;
+			this.TbSpeed.Value = 1000;
+			this.TbSpeed.ValueChanged += new System.EventHandler(this.TbSpeed_ValueChanged);
+			this.TbSpeed.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnSliderMouseUP);
+			// 
+			// LblSpeed
+			// 
+			this.LblSpeed.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.LblSpeed.AutoSize = true;
+			this.LblSpeed.Location = new System.Drawing.Point(7, 106);
+			this.LblSpeed.Name = "LblSpeed";
+			this.LblSpeed.Size = new System.Drawing.Size(37, 13);
+			this.LblSpeed.TabIndex = 17;
+			this.LblSpeed.Text = "F1000";
+			// 
+			// tableLayoutPanel2
+			// 
+			this.tableLayoutPanel2.AutoSize = true;
+			this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.tableLayoutPanel2.ColumnCount = 1;
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel2.Controls.Add(this.TbStep, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.LblStep, 0, 1);
+			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(178, 3);
+			this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			this.tableLayoutPanel2.RowCount = 2;
+			this.tlp.SetRowSpan(this.tableLayoutPanel2, 3);
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(51, 119);
+			this.tableLayoutPanel2.TabIndex = 19;
 			// 
 			// TbStep
 			// 
@@ -121,23 +171,37 @@
 			this.TbStep.ValueChanged += new System.EventHandler(this.TbStep_ValueChanged);
 			this.TbStep.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnSliderMouseUP);
 			// 
-			// TbSpeed
+			// LblStep
 			// 
-			this.TbSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TbSpeed.LargeChange = 100;
-			this.TbSpeed.Location = new System.Drawing.Point(3, 3);
-			this.TbSpeed.Maximum = 4000;
-			this.TbSpeed.Minimum = 10;
-			this.TbSpeed.Name = "TbSpeed";
-			this.TbSpeed.Orientation = System.Windows.Forms.Orientation.Vertical;
-			this.TbSpeed.Size = new System.Drawing.Size(45, 100);
-			this.TbSpeed.SmallChange = 50;
-			this.TbSpeed.TabIndex = 16;
-			this.TbSpeed.TickFrequency = 100;
-			this.TbSpeed.TickStyle = System.Windows.Forms.TickStyle.Both;
-			this.TbSpeed.Value = 1000;
-			this.TbSpeed.ValueChanged += new System.EventHandler(this.TbSpeed_ValueChanged);
-			this.TbSpeed.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnSliderMouseUP);
+			this.LblStep.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.LblStep.AutoSize = true;
+			this.LblStep.Location = new System.Drawing.Point(16, 106);
+			this.LblStep.Name = "LblStep";
+			this.LblStep.Size = new System.Drawing.Size(19, 13);
+			this.LblStep.TabIndex = 18;
+			this.LblStep.Text = "10";
+			// 
+			// UpdateFMax
+			// 
+			this.UpdateFMax.Interval = 1000;
+			this.UpdateFMax.Tick += new System.EventHandler(this.UpdateFMax_Tick);
+			// 
+			// BtnHome
+			// 
+			this.BtnHome.AltImage = null;
+			this.BtnHome.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.BtnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnHome.Coloration = System.Drawing.Color.Empty;
+			this.BtnHome.Image = ((System.Drawing.Image)(resources.GetObject("BtnHome.Image")));
+			this.BtnHome.JogDirection = LaserGRBL.GrblCore.JogDirection.N;
+			this.BtnHome.Location = new System.Drawing.Point(100, 45);
+			this.BtnHome.MaximumSize = new System.Drawing.Size(48, 48);
+			this.BtnHome.Name = "BtnHome";
+			this.BtnHome.Size = new System.Drawing.Size(33, 33);
+			this.BtnHome.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
+			this.BtnHome.TabIndex = 7;
+			this.BtnHome.UseAltImage = false;
+			this.BtnHome.Click += new System.EventHandler(this.BtnHome_Click);
 			// 
 			// imageButton1
 			// 
@@ -275,64 +339,6 @@
 			this.imageButton3.UseAltImage = false;
 			this.imageButton3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
 			// 
-			// tableLayoutPanel1
-			// 
-			this.tableLayoutPanel1.AutoSize = true;
-			this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.tableLayoutPanel1.ColumnCount = 1;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel1.Controls.Add(this.TbSpeed, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.LblSpeed, 0, 1);
-			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 3);
-			this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 2;
-			this.tlp.SetRowSpan(this.tableLayoutPanel1, 3);
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(51, 119);
-			this.tableLayoutPanel1.TabIndex = 18;
-			// 
-			// LblSpeed
-			// 
-			this.LblSpeed.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.LblSpeed.AutoSize = true;
-			this.LblSpeed.Location = new System.Drawing.Point(7, 106);
-			this.LblSpeed.Name = "LblSpeed";
-			this.LblSpeed.Size = new System.Drawing.Size(37, 13);
-			this.LblSpeed.TabIndex = 17;
-			this.LblSpeed.Text = "F1000";
-			// 
-			// tableLayoutPanel2
-			// 
-			this.tableLayoutPanel2.AutoSize = true;
-			this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.tableLayoutPanel2.ColumnCount = 1;
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel2.Controls.Add(this.TbStep, 0, 0);
-			this.tableLayoutPanel2.Controls.Add(this.LblStep, 0, 1);
-			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(178, 3);
-			this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-			this.tableLayoutPanel2.RowCount = 2;
-			this.tlp.SetRowSpan(this.tableLayoutPanel2, 3);
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(51, 119);
-			this.tableLayoutPanel2.TabIndex = 19;
-			// 
-			// LblStep
-			// 
-			this.LblStep.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.LblStep.AutoSize = true;
-			this.LblStep.Location = new System.Drawing.Point(16, 106);
-			this.LblStep.Name = "LblStep";
-			this.LblStep.Size = new System.Drawing.Size(19, 13);
-			this.LblStep.TabIndex = 18;
-			this.LblStep.Text = "10";
-			// 
 			// JogForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -343,12 +349,12 @@
 			this.Size = new System.Drawing.Size(234, 125);
 			this.tlp.ResumeLayout(false);
 			this.tlp.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.TbStep)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.TbSpeed)).EndInit();
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.TbSpeed)).EndInit();
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.TbStep)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -372,5 +378,6 @@
 		private System.Windows.Forms.Label LblSpeed;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Label LblStep;
+		private System.Windows.Forms.Timer UpdateFMax;
 	}
 }
