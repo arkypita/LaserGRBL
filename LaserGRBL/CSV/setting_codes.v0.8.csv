@@ -1,0 +1,24 @@
+$-Code, Setting, Units, Setting Description
+0,X-axis travel resolution,step/mm,X-axis travel resolution in steps per millimeter.
+1,Y-axis travel resolution,step/mm,Y-axis travel resolution in steps per millimeter.
+2,Z-axis travel resolution,step/mm,Z-axis travel resolution in steps per millimeter.
+3,Step pulse time,microseconds,Sets time length per step.
+4,Default feed rates,mm/min,This setting sets the default seek rates (G0) after Grbl powers on and initializes
+5,Default seek rates,mm/min,This setting sets the default feed rates(G1 G2 G3) after Grbl powers on and initializes
+6,Step port invert mask,int:00000000,Inverts the step signal.
+7,step idle delay,msec,Sets a short hold delay when stopping to let dynamics settle before disabling steppers. Value 255 keeps motors enabled with no delay.
+8,acceleration,mm/sec^2,Used for motion planning to not exceed motor torque and lose steps.
+9,junction deviation,mm,Sets how fast Grbl travels through consecutive motions. Lower value slows it down.
+10,arc,mm/segment,
+11,n-arc correction,int,This is an advanced setting that shouldn't be changed unless there are circumstances that you need to.
+12,n-decimals,int,Set how many decimal places all of the floating point values Grbl reports.
+13,report inches,bool,Enables inch units when returning any position and rate value that is not a settings value.
+14,auto start,bool,
+15,invert step enable,bool,
+16,hard limits,bool,
+17,homing cycle,bool,
+18,homing dir invert mask,int:00000000,
+19,homing feed,mm/min,
+20,homing seek,mm/min,
+21,homing debounce,msec,
+22,homing pull-off,mm,

@@ -682,10 +682,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CSV\alarm_codes.csv" />
     <EmbeddedResource Include="CSV\error_codes.csv" />
-    <EmbeddedResource Include="CSV\setting_codes.csv" />
+    <EmbeddedResource Include="CSV\setting_codes.v1.1.csv" />
     <EmbeddedResource Include="UserControls\LabelTB.resx">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CSV\setting_codes.v0.9.csv" />
+    <EmbeddedResource Include="CSV\setting_codes.v0.8.csv" />
     <None Include="Grafica\Actions-transform-crop-and-resize-icon.png" />
     <None Include="Grafica\Crop-tool-icon.png" />
     <None Include="Grafica\document-revert.png" />

@@ -166,6 +166,10 @@ namespace LaserGRBL
 
 			public object Clone()
 			{ return this.MemberwiseClone(); }
+
+			public int Major { get { return mMajor; } }
+
+			public int Minor { get { return mMinor; } }
 		}
 
 		public delegate void dlgIssueDetector(DetectedIssue issue);
@@ -263,6 +267,9 @@ namespace LaserGRBL
 			mHotKeyManager.Init(this);
 
 			UsageCounters = new UsageStats.UsageCounters();
+
+			if (GrblVersion != null)
+				CSVD.LoadAppropriateSettings(GrblVersion); //load setting for last known version
 		}
 
 		public GrblConf Configuration
@@ -307,6 +314,8 @@ namespace LaserGRBL
 
 				if (GrblVersion == null || !GrblVersion.Equals(value))
 				{
+					CSVD.LoadAppropriateSettings(value);
+
 					Settings.SetObject("Last GrblVersion known", value);
 					Settings.Save();
 				}
