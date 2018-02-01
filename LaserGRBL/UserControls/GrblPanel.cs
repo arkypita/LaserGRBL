@@ -14,7 +14,7 @@ namespace LaserGRBL.UserControls
 		Matrix mLastMatrix;
 		private PointF mLastWPos;
 		private PointF mLastMPos;
-		
+
 		public GrblPanel()
 		{
 			InitializeComponent();
@@ -46,30 +46,30 @@ namespace LaserGRBL.UserControls
 					e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 					e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-					using (Pen px = GetPen(ColorScheme.PreviewCross))
+					using (Pen px = GetPen(ColorScheme.PreviewCross, 2f))
 					{
-						e.Graphics.DrawLine(px, (int)p.X, (int)p.Y - 3, (int)p.X, (int)p.Y - 3 + 7);
-						e.Graphics.DrawLine(px, (int)p.X - 3, (int)p.Y, (int)p.X - 3 + 7, (int)p.Y);
+						e.Graphics.DrawLine(px, (int)p.X, (int)p.Y - 5, (int)p.X, (int)p.Y - 5 + 10);
+						e.Graphics.DrawLine(px, (int)p.X - 5, (int)p.Y, (int)p.X - 5 + 10, (int)p.Y);
+					}
 
-						using (Brush b = GetBrush(ColorScheme.PreviewText))
-						{
-							Rectangle r = ClientRectangle;
-							r.Inflate(-5, -5);
-							StringFormat sf = new StringFormat();
+					using (Brush b = GetBrush(ColorScheme.PreviewText))
+					{
+						Rectangle r = ClientRectangle;
+						r.Inflate(-5, -5);
+						StringFormat sf = new StringFormat();
 
-							//  II | I
-							// ---------
-							// III | IV
-							GrblFile.CartesianQuadrant q = Core != null && Core.LoadedFile != null ? Core.LoadedFile.Quadrant : GrblFile.CartesianQuadrant.Unknown;
-							sf.Alignment = q == GrblFile.CartesianQuadrant.II || q == GrblFile.CartesianQuadrant.III ? StringAlignment.Near : StringAlignment.Far;
-							sf.LineAlignment = q == GrblFile.CartesianQuadrant.III || q == GrblFile.CartesianQuadrant.IV ? StringAlignment.Far : StringAlignment.Near;
+						//  II | I
+						// ---------
+						// III | IV
+						GrblFile.CartesianQuadrant q = Core != null && Core.LoadedFile != null ? Core.LoadedFile.Quadrant : GrblFile.CartesianQuadrant.Unknown;
+						sf.Alignment = q == GrblFile.CartesianQuadrant.II || q == GrblFile.CartesianQuadrant.III ? StringAlignment.Near : StringAlignment.Far;
+						sf.LineAlignment = q == GrblFile.CartesianQuadrant.III || q == GrblFile.CartesianQuadrant.IV ? StringAlignment.Far : StringAlignment.Near;
 
-							String position = string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? mLastMPos.X : 0, Core != null ? mLastMPos.Y : 0);
-							if (Core != null && Core.WorkingOffset != PointF.Empty)
-								position = position + "\n" + string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? mLastWPos.X : 0, Core != null ? mLastWPos.Y : 0);
+						String position = string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? mLastMPos.X : 0, Core != null ? mLastMPos.Y : 0);
+						if (Core != null && Core.WorkingOffset != PointF.Empty)
+							position = position + "\n" + string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? mLastWPos.X : 0, Core != null ? mLastWPos.Y : 0);
 
-							e.Graphics.DrawString(position, Font, b, r, sf);
-						}
+						e.Graphics.DrawString(position, Font, b, r, sf);
 					}
 				}
 			}
@@ -79,11 +79,15 @@ namespace LaserGRBL.UserControls
 			}
 		}
 
+
+		private Pen GetPen(Color color, float width)
+		{ return new Pen(color, width); }
+
 		private Pen GetPen(Color color)
 		{ return new Pen(color); }
 
 		private Brush GetBrush(Color color)
-		{ return new SolidBrush(color); }	
+		{ return new SolidBrush(color); }
 
 		public void SetComProgram(GrblCore core)
 		{
@@ -95,7 +99,7 @@ namespace LaserGRBL.UserControls
 		{
 			RecreateBMP();
 		}
-		
+
 		public void RecreateBMP()
 		{
 			if (TH != null)
@@ -103,25 +107,25 @@ namespace LaserGRBL.UserControls
 				TH.Abort();
 				TH = null;
 			}
-			
+
 			TH = new System.Threading.Thread(DoTheWork);
 			TH.Name = "GrblPanel Drawing Thread";
 			TH.Start();
 		}
-		
+
 		protected override void OnSizeChanged(EventArgs e)
 		{
 			base.OnSizeChanged(e);
 			RecreateBMP();
 		}
-		
+
 		private void DoTheWork()
 		{
 			Size wSize = Size;
-			
+
 			if (wSize.Width < 1 || wSize.Height < 1)
 				return;
-			
+
 			System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(wSize.Width, wSize.Height);
 			using (System.Drawing.Graphics g = Graphics.FromImage(bmp))
 			{
@@ -152,11 +156,11 @@ namespace LaserGRBL.UserControls
 
 		private void AssignBMP(System.Drawing.Bitmap bmp)
 		{
-			lock(this)
+			lock (this)
 			{
-				if (mBitmap!=null)
+				if (mBitmap != null)
 					mBitmap.Dispose();
-				
+
 				mBitmap = bmp;
 			}
 			Invalidate();
