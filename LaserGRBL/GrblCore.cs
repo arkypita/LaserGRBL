@@ -207,6 +207,9 @@ namespace LaserGRBL
 		private MacStatus mMachineStatus;
 		private const int BUFFER_SIZE = 127;
 
+		private int mCurF;
+		private int mCurS;
+
 		private int mCurOvFeed;
 		private int mCurOvRapids;
 		private int mCurOvSpindle;
@@ -1217,16 +1220,20 @@ namespace LaserGRBL
 
 					for (int i = 1; i < arr.Length; i++)
 					{
-						if (arr[i].StartsWith("Ov"))
+						if (arr[i].StartsWith("Ov:"))
 							ParseOverrides(arr[i]);
-						if (arr[i].StartsWith("Bf"))
+						else if (arr[i].StartsWith("Bf:"))
 							ParseBf(arr[i]);
-						if (arr[i].StartsWith("WPos"))
+						else if (arr[i].StartsWith("WPos:"))
 							ParseWPos(arr[i]);
-						if (arr[i].StartsWith("MPos"))
+						else if (arr[i].StartsWith("MPos:"))
 							ParseMPos(arr[i]);
-						if (arr[i].StartsWith("WCO"))
+						else if (arr[i].StartsWith("WCO:"))
 							ParseWCO(arr[i]);
+						else if (arr[i].StartsWith("FS:"))
+							ParseFS(arr[i]);
+						else if (arr[i].StartsWith("F:"))
+							ParseF(arr[i]);
 					}
 				}
 				else //<Idle,MPos:0.000,0.000,0.000,WPos:0.000,0.000,0.000>
@@ -1281,6 +1288,25 @@ namespace LaserGRBL
 
 			mGrblBlocks = int.Parse(ab[0]);
 			mGrblBuffer = int.Parse(ab[1]);
+		}
+
+		private void ParseFS(string p)
+		{
+			string sfs = p.Substring(3, p.Length - 3);
+			string[] fs = sfs.Split(",".ToCharArray());
+			SetFS(int.Parse(fs[0]), int.Parse(fs[1]));
+		}
+
+		private void ParseF(string p)
+		{
+			string f = p.Substring(2, p.Length - 2);
+			SetFS(int.Parse(f), 0);
+		}
+
+		private void SetFS(int f, int s)
+		{
+			mCurF = f;
+			mCurS = s;
 		}
 
 		private void SetMPosition(System.Drawing.PointF pos)
@@ -1696,6 +1722,9 @@ namespace LaserGRBL
 		static string FormatNumber(decimal value)
 		{ return string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0:0.000}", value); }
 
+
+		public int CurrentF { get { return mCurF; } }
+		public int CurrentS { get { return mCurS; } }
 	}
 
 	public class TimeProjection

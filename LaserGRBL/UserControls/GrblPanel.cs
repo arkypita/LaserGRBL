@@ -14,6 +14,9 @@ namespace LaserGRBL.UserControls
 		Matrix mLastMatrix;
 		private PointF mLastWPos;
 		private PointF mLastMPos;
+		private int mCurF;
+		private int mCurS;
+		private bool mFSTrig;
 
 		public GrblPanel()
 		{
@@ -68,6 +71,13 @@ namespace LaserGRBL.UserControls
 						String position = string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? mLastMPos.X : 0, Core != null ? mLastMPos.Y : 0);
 						if (Core != null && Core.WorkingOffset != PointF.Empty)
 							position = position + "\n" + string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? mLastWPos.X : 0, Core != null ? mLastWPos.Y : 0);
+
+						if (mCurF != 0 || mCurS != 0 || mFSTrig)
+						{
+							mFSTrig = true;
+							String fs = string.Format("F: {0:00000} S: {1:000}", Core != null ? mCurF : 0, Core != null ? mCurS : 0);
+							position = position + "\n" + fs;
+						}
 
 						e.Graphics.DrawString(position, Font, b, r, sf);
 					}
@@ -168,10 +178,12 @@ namespace LaserGRBL.UserControls
 
 		public void TimerUpdate()
 		{
-			if (Core != null && (mLastWPos != Core.WorkPosition || mLastMPos != Core.MachinePosition))
+			if (Core != null && (mLastWPos != Core.WorkPosition || mLastMPos != Core.MachinePosition || mCurF != Core.CurrentF || mCurS != Core.CurrentS))
 			{
 				mLastWPos = Core.WorkPosition;
 				mLastMPos = Core.MachinePosition;
+				mCurF = Core.CurrentF;
+				mCurS = Core.CurrentS;
 				Invalidate();
 			}
 		}
