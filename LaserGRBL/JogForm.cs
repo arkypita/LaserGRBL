@@ -67,7 +67,7 @@ namespace LaserGRBL
 		int oldVal;
 		private void UpdateFMax_Tick(object sender, EventArgs e)
 		{
-			int curVal = (int)Math.Min(Core.Configuration.MaxRateX, Core.Configuration.MaxRateY);
+			int curVal = (int)Math.Max(Core.Configuration.MaxRateX, Core.Configuration.MaxRateY);
 			if (oldVal != curVal)
 			{
 				TbSpeed.Value = Math.Min(TbSpeed.Value, curVal);
