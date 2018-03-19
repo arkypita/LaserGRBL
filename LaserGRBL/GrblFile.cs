@@ -75,95 +75,89 @@ namespace LaserGRBL
 		private abstract class ColorSegment
 		{
 			protected int mColor;
-			protected double mLen;
-			protected bool mReverse;
-			protected L2LConf mConf;
+			protected int mPixLen;
 
-			public ColorSegment(int col, int len, bool rev, L2LConf c)
+			public ColorSegment(int col, int len, bool rev)
 			{
 				mColor = col;
-				mLen = len / (c.vectorfilling ? c.fres : c.res);
-				mReverse = rev;
-				mConf = c;
+				mPixLen = rev ? -len : len;
 			}
 
 			public virtual bool IsSeparator
 			{ get { return false; } }
 
-			public bool Fast
-			{ get { return mConf.pwm ? mColor == 0 : mColor <= 125; } }
+			public bool Fast(L2LConf c)
+			{ return c.pwm ? mColor == 0 : mColor <= 125; }
 
-			static double errX;
-			public string formatnumberX(double number)
+			public string formatnumber(int number, int offset, L2LConf c)
 			{
-				//return number.ToString("#.###", System.Globalization.CultureInfo.InvariantCulture);
-
-				double orig = number + errX;
-				double send = Math.Round(orig, 3);
-				errX = send - orig;
-				return send.ToString(System.Globalization.CultureInfo.InvariantCulture);
+				double dval = Math.Round(number / (c.vectorfilling ? c.fres : c.res) + offset, 3);
+				return dval.ToString(System.Globalization.CultureInfo.InvariantCulture);
 			}
 
-			static double errY;
-			public string formatnumberY(double number)
-			{
-				//return number.ToString("#.###", System.Globalization.CultureInfo.InvariantCulture);
-
-				double orig = number + errY;
-				double send = Math.Round(orig, 3);
-				errY = send - orig;
-				return send.ToString(System.Globalization.CultureInfo.InvariantCulture);
-			}
-
-			public static void ResetRoundingError()
-			{ errX = errY = 0; }
+			public abstract string ToGCodeNumber(ref int cumX, ref int cumY, L2LConf c);
 		}
 
 		private class XSegment : ColorSegment
 		{
-			public XSegment(int col, int len, bool rev, L2LConf c) : base(col, len, rev, c) { }
+			public XSegment(int col, int len, bool rev) : base(col, len, rev) { }
 
-			public override string ToString()
+			public override string ToGCodeNumber(ref int cumX, ref int cumY, L2LConf c)
 			{
-				if (mConf.pwm)
-					return string.Format("X{0} S{1}", formatnumberX(mReverse ? -mLen : mLen), mColor);
+				cumX += mPixLen;
+
+				if (c.pwm)
+					return string.Format("X{0} S{1}", formatnumber(cumX, c.oX, c), mColor);
 				else
-					return string.Format("X{0} {1}", formatnumberX(mReverse ? -mLen : mLen), Fast ? mConf.lOff : mConf.lOn);
+					return string.Format("X{0} {1}", formatnumber(cumX, c.oX, c), Fast(c) ? c.lOff : c.lOn);
 			}
 		}
 
 		private class YSegment : ColorSegment
 		{
-			public YSegment(int col, int len, bool rev, L2LConf c) : base(col, len, rev, c) { }
+			public YSegment(int col, int len, bool rev) : base(col, len, rev) { }
 
-			public override string ToString()
+			public override string ToGCodeNumber(ref int cumX, ref int cumY, L2LConf c)
 			{
-				if (mConf.pwm)
-					return string.Format("Y{0} S{1}", formatnumberY(mReverse ? -mLen : mLen), mColor);
+				cumY += mPixLen;
+
+				if (c.pwm)
+					return string.Format("Y{0} S{1}", formatnumber(cumY, c.oY, c), mColor);
 				else
-					return string.Format("Y{0} {1}", formatnumberY(mReverse ? -mLen : mLen), Fast ? mConf.lOff : mConf.lOn);
+					return string.Format("Y{0} {1}", formatnumber(cumY, c.oY, c), Fast(c) ? c.lOff : c.lOn);
 			}
 		}
 
 		private class DSegment : ColorSegment
 		{
-			public DSegment(int col, int len, bool rev, L2LConf c) : base(col, len, rev, c) { }
+			public DSegment(int col, int len, bool rev) : base(col, len, rev) { }
 
-			public override string ToString()
+			public override string ToGCodeNumber(ref int cumX, ref int cumY, GrblFile.L2LConf c)
 			{
-				if (mConf.pwm)
-					return string.Format("X{0} Y{1} S{2}", formatnumberX(mReverse ? -mLen : mLen), formatnumberY(mReverse ? mLen : -mLen), mColor);
+				cumX += mPixLen;
+				cumY -= mPixLen;
+
+				if (c.pwm)
+					return string.Format("X{0} Y{1} S{2}", formatnumber(cumX, c.oX, c), formatnumber(cumY, c.oY, c), mColor);
 				else
-					return string.Format("X{0} Y{1} {2}", formatnumberX(mReverse ? -mLen : mLen), formatnumberY(mReverse ? mLen : -mLen), Fast ? mConf.lOff : mConf.lOn);
+					return string.Format("X{0} Y{1} {2}", formatnumber(cumX, c.oX, c), formatnumber(cumY, c.oY, c), Fast(c) ? c.lOff : c.lOn);
 			}
+
+
 		}
 
 		private class VSeparator : ColorSegment
 		{
-			public VSeparator(L2LConf c) : base(0, 1, false, c) { }
+			public VSeparator() : base(0, 1, false) { }
 
-			public override string ToString()
-			{ return string.Format("Y{0}", formatnumberY(mLen)); }
+			public override string ToGCodeNumber(ref int cumX, ref int cumY, L2LConf c)
+			{
+				if (mPixLen < 0)
+					throw new Exception();
+
+				cumY += mPixLen;
+				return string.Format("Y{0}", formatnumber(cumY, c.oY, c));
+			}
 
 			public override bool IsSeparator
 			{ get { return true; } }
@@ -171,16 +165,20 @@ namespace LaserGRBL
 
 		private class HSeparator : ColorSegment
 		{
-			public HSeparator(L2LConf c) : base(0, 1, false, c) { }
+			public HSeparator() : base(0, 1, false) { }
 
-			public override string ToString()
-			{ return string.Format("X{0}", formatnumberX(mLen)); }
+			public override string ToGCodeNumber(ref int cumX, ref int cumY, L2LConf c)
+			{
+				if (mPixLen < 0)
+					throw new Exception();
+
+				cumX += mPixLen;
+				return string.Format("X{0}", formatnumber(cumX, c.oX, c));
+			}
 
 			public override bool IsSeparator
 			{ get { return true; } }
 		}
-
-
 
 		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, bool useOptimizeFast, L2LConf c)
 		{
@@ -215,9 +213,6 @@ namespace LaserGRBL
 								list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
 							else
 								list.Add(new GrblCommand(String.Format("{0} S255", c.lOff))); //laser off and power to max power
-
-							//relative
-							list.Add(new GrblCommand("G91"));
 
 							//set speed to markspeed
 							list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
@@ -302,15 +297,12 @@ namespace LaserGRBL
 
 			//set speed to markspeed						
 			list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
-			//relative
-			list.Add(new GrblCommand("G91"));
 
 			ImageLine2Line(bmp, c);
 
 			//laser off
 			list.Add(new GrblCommand(c.lOff));
-			//absolute
-			list.Add(new GrblCommand("G90"));
+
 			//move fast to origin
 			list.Add(new GrblCommand("G0 X0 Y0"));
 
@@ -327,10 +319,12 @@ namespace LaserGRBL
 			List<ColorSegment> segments = GetSegments(bmp, c);
 			List<GrblCommand> temp = new List<GrblCommand>();
 
-			ColorSegment.ResetRoundingError();
+			int cumX = 0;
+			int cumY = 0;
+
 			foreach (ColorSegment seg in segments)
 			{
-				bool changeGMode = (fast != seg.Fast); //se veloce != dafareveloce
+				bool changeGMode = (fast != seg.Fast(c)); //se veloce != dafareveloce
 
 				if (seg.IsSeparator && !fast) //fast = previous segment contains S0 color
 				{
@@ -340,15 +334,13 @@ namespace LaserGRBL
 						temp.Add(new GrblCommand(c.lOff)); //laser off
 				}
 
-				fast = seg.Fast;
+				fast = seg.Fast(c);
+
 
 				if (changeGMode)
-					temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? "G0" : "G1", seg.ToString())));
+					temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? "G0" : "G1", seg.ToGCodeNumber(ref cumX, ref cumY, c))));
 				else
-					temp.Add(new GrblCommand(seg.ToString()));
-
-				//if (seg.IsSeparator)
-				//	list.Add(new GrblCommand(lOn));
+					temp.Add(new GrblCommand(seg.ToGCodeNumber(ref cumX, ref cumY, c)));
 			}
 
 			temp = OptimizeLine2Line(temp, c);
@@ -360,8 +352,8 @@ namespace LaserGRBL
 		{
 			List<GrblCommand> rv = new List<GrblCommand>();
 
-			decimal cumX = 0;
-			decimal cumY = 0;
+			decimal curX = c.oX;
+			decimal curY = c.oY;
 			bool cumulate = false;
 
 			foreach (GrblCommand cmd in temp)
@@ -394,31 +386,21 @@ namespace LaserGRBL
 					if (oldcumulate && !cumulate) //cumulate down front -> flush
 					{
 						if (c.pwm)
-							rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} S0", formatnumber((double)cumX), formatnumber((double)cumY))));
+							rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} S0", formatnumber((double)curX), formatnumber((double)curY))));
 						else
-							rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} {2}", formatnumber((double)cumX), formatnumber((double)cumY), c.lOff)));
+							rv.Add(new GrblCommand(string.Format("G0 X{0} Y{1} {2}", formatnumber((double)curX), formatnumber((double)curY), c.lOff)));
 
-						cumX = cumY = 0;
+						//curX = curY = 0;
 					}
 
-					if (cumulate) //cumulate
+					if (cmd.IsMovement)
 					{
-						if (cmd.IsMovement)
-						{
-							if (cmd.X != null)
-								cumX += cmd.X.Number;
-							if (cmd.Y != null)
-								cumY += cmd.Y.Number;
-						}
-						else
-						{
-							rv.Add(cmd);
-						}
+						if (cmd.X != null) curX = cmd.X.Number;
+						if (cmd.Y != null) curY = cmd.Y.Number;
 					}
-					else //emit line normally
-					{
+
+					if (!cmd.IsMovement || !cumulate)
 						rv.Add(cmd);
-					}
 				}
 				catch (Exception ex) { throw ex; }
 				finally { cmd.DeleteHelper(); }
@@ -446,22 +428,22 @@ namespace LaserGRBL
 						ExtractSegment(bmp, h ? j : i, h ? i : j, !d, ref len, ref prevCol, rv, c); //extract different segments
 
 					if (h)
-						rv.Add(new XSegment(prevCol, len + 1, !d, c)); //close last segment
+						rv.Add(new XSegment(prevCol, len + 1, !d)); //close last segment
 					else
-						rv.Add(new YSegment(prevCol, len + 1, !d, c)); //close last segment
+						rv.Add(new YSegment(prevCol, len + 1, !d)); //close last segment
 
 					if (uni) // add "go back"
 					{
-						if (h) rv.Add(new XSegment(0, bmp.Width, true, c));
-						else rv.Add(new YSegment(0, bmp.Height, true, c));
+						if (h) rv.Add(new XSegment(0, bmp.Width, true));
+						else rv.Add(new YSegment(0, bmp.Height, true));
 					}
 
 					if (i < (h ? bmp.Height - 1 : bmp.Width - 1))
 					{
 						if (h)
-							rv.Add(new VSeparator(c)); //new line
+							rv.Add(new VSeparator()); //new line
 						else
-							rv.Add(new HSeparator(c)); //new line
+							rv.Add(new HSeparator()); //new line
 					}
 				}
 			}
@@ -487,7 +469,7 @@ namespace LaserGRBL
 				//the length of the segment can be determined as "slice - z1 - z2"
 				//my modified version of algorithm reverses travel direction each slice
 
-				rv.Add(new VSeparator(c)); //new line
+				rv.Add(new VSeparator()); //new line
 
 				int w = bmp.Width;
 				int h = bmp.Height;
@@ -503,37 +485,37 @@ namespace LaserGRBL
 
 					for (int j = (d ? z1 : slice - z2); d ? j <= slice - z2 : j >= z1; j = (d ? j + 1 : j - 1))
 						ExtractSegment(bmp, j, slice - j, !d, ref len, ref prevCol, rv, c); //extract different segments
-					rv.Add(new DSegment(prevCol, len + 1, !d, c)); //close last segment
+					rv.Add(new DSegment(prevCol, len + 1, !d)); //close last segment
 
 					//System.Diagnostics.Debug.WriteLine(String.Format("sl:{0} z1:{1} z2:{2}", slice, z1, z2));
 
 					if (uni) // add "go back"
 					{
 						int slen = (slice - z1 - z2) + 1;
-						rv.Add(new DSegment(0, slen, true, c));
+						rv.Add(new DSegment(0, slen, true));
 						//System.Diagnostics.Debug.WriteLine(slen);
 					}
 
 					if (slice < Math.Min(w, h) - 1) //first part of the image
 					{
 						if (d && !uni)
-							rv.Add(new HSeparator(c)); //new line
+							rv.Add(new HSeparator()); //new line
 						else
-							rv.Add(new VSeparator(c)); //new line
+							rv.Add(new VSeparator()); //new line
 					}
 					else if (slice >= Math.Max(w, h) - 1) //third part of image
 					{
 						if (d && !uni)
-							rv.Add(new VSeparator(c)); //new line
+							rv.Add(new VSeparator()); //new line
 						else
-							rv.Add(new HSeparator(c)); //new line
+							rv.Add(new HSeparator()); //new line
 					}
 					else //central part of the image
 					{
 						if (w > h)
-							rv.Add(new HSeparator(c)); //new line
+							rv.Add(new HSeparator()); //new line
 						else
-							rv.Add(new VSeparator(c)); //new line
+							rv.Add(new VSeparator()); //new line
 					}
 				}
 			}
@@ -551,11 +533,11 @@ namespace LaserGRBL
 			if (prevCol != col)
 			{
 				if (c.dir == RasterConverter.ImageProcessor.Direction.Horizontal)
-					rv.Add(new XSegment(prevCol, len, reverse, c));
+					rv.Add(new XSegment(prevCol, len, reverse));
 				else if (c.dir == RasterConverter.ImageProcessor.Direction.Vertical)
-					rv.Add(new YSegment(prevCol, len, reverse, c));
+					rv.Add(new YSegment(prevCol, len, reverse));
 				else if (c.dir == RasterConverter.ImageProcessor.Direction.Diagonal)
-					rv.Add(new DSegment(prevCol, len, reverse, c));
+					rv.Add(new DSegment(prevCol, len, reverse));
 
 				len = 0;
 			}
