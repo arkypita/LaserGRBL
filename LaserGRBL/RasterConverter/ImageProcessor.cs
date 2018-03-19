@@ -525,7 +525,7 @@ namespace LaserGRBL.RasterConverter
 				if (value != mOptimizeFast)
 				{
 					mOptimizeFast = value;
-					Refresh();
+					//Refresh();
 				}
 			}
 		}
@@ -577,7 +577,7 @@ namespace LaserGRBL.RasterConverter
 				if (value != mFillingQuality)
 				{
 					mFillingQuality = value;
-					Refresh();
+					//Refresh();
 				}
 			}
 		}
