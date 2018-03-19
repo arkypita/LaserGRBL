@@ -51,6 +51,7 @@ namespace LaserGRBL.RasterConverter
 		private bool mUseSmootihing;
 		private decimal mDownSampling;
 		private bool mUseDownSampling;
+		private bool mOptimizeFast;
 		private Direction mDirection;
 		private Direction mFillingDirection;
 		private ImageTransform.DitheringMode mDithering;
@@ -516,6 +517,19 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
+		public bool OptimizeFast
+		{
+			get { return mOptimizeFast; }
+			set
+			{
+				if (value != mOptimizeFast)
+				{
+					mOptimizeFast = value;
+					Refresh();
+				}
+			}
+		}
+
 		public bool UseSmoothing
 		{
 			get { return mUseSmootihing; }
@@ -726,7 +740,7 @@ namespace LaserGRBL.RasterConverter
 						if (SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering)
 							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf);
 						else if (SelectedTool == ImageProcessor.Tool.Vectorize)
-							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, conf);
+							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf);
 					}
 
 					if (GenerationComplete != null)
