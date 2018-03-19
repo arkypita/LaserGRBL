@@ -6,6 +6,7 @@ using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace LaserGRBL
 {
@@ -181,7 +182,7 @@ namespace LaserGRBL
 
 
 
-		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, L2LConf c)
+		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, bool useOptimizeFast, L2LConf c)
 		{
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 			long start = Tools.HiResTimer.TotalMilliseconds;
@@ -231,8 +232,12 @@ namespace LaserGRBL
 				}
 			}
 
-			//absolute
-			list.Add(new GrblCommand("G90"));
+            //Optimize fast movement
+            if(useOptimizeFast)
+                plist = OptimizePaths(plist);
+
+            //absolute
+            list.Add(new GrblCommand("G90"));
 			//move fast to offset
 			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(c.oX), formatnumber(c.oY))));
 			//laser off and power to maxPower
@@ -558,8 +563,72 @@ namespace LaserGRBL
 			prevCol = col;
 		}
 
+        private List<List<CsPotrace.Curve>> OptimizePaths(List<List<CsPotrace.Curve>> list)
+        {
+            //Order all paths in list to reduce travel distance
+            //Calculate and store all distances in a matrix
+            var distances = new double[list.Count, list.Count];
+            for (int p1 = 0; p1 < list.Count; p1++)
+            {
+                for (int p2 = 0; p2 < list.Count; p2++)
+                {
+                    var dx = list[p1][0].A.X - list[p2][0].A.X;
+                    var dy = list[p1][0].A.Y - list[p2][0].A.Y;
+                    if (p1 != p2)
+                        distances[p1, p2] = Math.Sqrt((dx * dx) + (dy * dy));
+                    else
+                        distances[p1, p2] = double.MaxValue;
+                }
+            }
 
-		private int GetColor(Bitmap I, int X, int Y, int min, int max, bool pwm)
+            List<List<CsPotrace.Curve>> best = new List<List<Curve>>();
+            var bestTotDistance = double.MaxValue;
+
+            //Test all possibile starting shape
+            for (int first = 0; first < list.Count; first++)
+            {
+                //Create a list of unvisited places
+                List<int> unvisited = Enumerable.Range(0, list.Count).ToList();
+
+                //Pick nearest points
+                List<List<CsPotrace.Curve>> nearest = new List<List<Curve>>();
+
+                //Save starting point index
+                var lastIndex = first;
+                var totDistance = 0.0;
+                while (unvisited.Count > 0)
+                {
+                    var bestIndex = 0;
+                    var bestDistance = double.MaxValue;
+                    foreach (var nextIndex in unvisited)
+                    {
+                        var dist = distances[nextIndex, lastIndex];
+                        if (dist < bestDistance)
+                        {
+                            bestIndex = nextIndex;
+                            bestDistance = dist;
+                        }
+                    }
+
+                    //Save nearest point
+                    lastIndex = bestIndex;
+                    nearest.Add(list[lastIndex]);
+                    unvisited.Remove(lastIndex);
+                    totDistance += bestDistance;
+                }
+
+                //Count traveled distance
+                if (totDistance < bestTotDistance)
+                {
+                    bestTotDistance = totDistance;
+                    //Save best list
+                    best = nearest;
+                }
+            }
+            return best;
+        }
+
+        private int GetColor(Bitmap I, int X, int Y, int min, int max, bool pwm)
 		{
 			Color C = I.GetPixel(X, Y);
 			int rv = (255 - C.R) * C.A / 255;

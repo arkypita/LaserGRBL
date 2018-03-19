@@ -192,6 +192,7 @@ namespace LaserGRBL.RasterConverter
 //			Settings.SetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", CbShowImage.Checked);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", (ImageProcessor.Direction)CbFillingDirection.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", UDFillingQuality.Value);
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.OptimizeFast.Enabled", CbOptimizeFast.Checked);
 
 			Settings.SetObject("GrayScaleConversion.DitheringOptions.DitheringMode", (ImageTransform.DitheringMode)CbDither.SelectedItem);
 
@@ -244,6 +245,7 @@ namespace LaserGRBL.RasterConverter
 			UDOptimize.Value = IP.Optimize = (decimal)Settings.GetObject("GrayScaleConversion.VectorizeOptions.Optimize.Value", 0.2m);
 			CbDownSample.Checked = IP.UseDownSampling = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.DownSample.Enabled", false);
 			UDDownSample.Value = IP.DownSampling = (decimal)Settings.GetObject("GrayScaleConversion.VectorizeOptions.DownSample.Value", 2.0m);
+			CbOptimizeFast.Checked = IP.OptimizeFast = (bool) Settings.GetObject("GrayScaleConversion.VectorizeOptions.OptimizeFast.Enabled", false);
 
 			//CbShowDots.Checked = IP.ShowDots = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowDots.Enabled", false);
 			//CbShowImage.Checked = IP.ShowImage = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", true);
@@ -591,6 +593,14 @@ namespace LaserGRBL.RasterConverter
 		{
 			if (IP != null)
 				IP.DownSampling = UDDownSample.Value;
+		}
+
+		private void CbOptimizeFast_CheckedChanged(object sender, EventArgs e)
+		{
+			if (IP != null)
+			{
+				IP.OptimizeFast = CbOptimizeFast.Checked;
+			}
 		}
 
 		private void PbConverted_Resize(object sender, EventArgs e)

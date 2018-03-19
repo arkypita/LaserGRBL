@@ -64,6 +64,8 @@
 			this.UDDownSample = new System.Windows.Forms.NumericUpDown();
 			this.label1 = new System.Windows.Forms.Label();
 			this.CbDownSample = new System.Windows.Forms.CheckBox();
+			this.lOptimizeFast = new System.Windows.Forms.Label();
+			this.CbOptimizeFast = new System.Windows.Forms.CheckBox();
 			this.BtnFillingQualityInfo = new LaserGRBL.UserControls.ImageButton();
 			this.GbParameters = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -331,15 +333,17 @@
 			this.tableLayoutPanel5.Controls.Add(this.UDSmoothing, 1, 1);
 			this.tableLayoutPanel5.Controls.Add(this.CbOptimize, 2, 2);
 			this.tableLayoutPanel5.Controls.Add(this.CbSmoothing, 2, 1);
-			this.tableLayoutPanel5.Controls.Add(this.label14, 0, 4);
-			this.tableLayoutPanel5.Controls.Add(this.CbFillingDirection, 1, 4);
-			this.tableLayoutPanel5.Controls.Add(this.LblFillingQuality, 0, 5);
-			this.tableLayoutPanel5.Controls.Add(this.UDFillingQuality, 1, 5);
-			this.tableLayoutPanel5.Controls.Add(this.LblFillingLineLbl, 2, 5);
+			this.tableLayoutPanel5.Controls.Add(this.label14, 0, 5);
+			this.tableLayoutPanel5.Controls.Add(this.CbFillingDirection, 1, 5);
+			this.tableLayoutPanel5.Controls.Add(this.LblFillingQuality, 0, 6);
+			this.tableLayoutPanel5.Controls.Add(this.UDFillingQuality, 1, 6);
+			this.tableLayoutPanel5.Controls.Add(this.LblFillingLineLbl, 2, 6);
 			this.tableLayoutPanel5.Controls.Add(this.UDDownSample, 1, 3);
 			this.tableLayoutPanel5.Controls.Add(this.label1, 0, 3);
 			this.tableLayoutPanel5.Controls.Add(this.CbDownSample, 2, 3);
-			this.tableLayoutPanel5.Controls.Add(this.BtnFillingQualityInfo, 3, 5);
+			this.tableLayoutPanel5.Controls.Add(this.lOptimizeFast, 0, 4);
+			this.tableLayoutPanel5.Controls.Add(this.CbOptimizeFast, 2, 4);
+			this.tableLayoutPanel5.Controls.Add(this.BtnFillingQualityInfo, 3, 6);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
 			this.TT.SetToolTip(this.tableLayoutPanel5, resources.GetString("tableLayoutPanel5.ToolTip"));
 			// 
@@ -541,6 +545,18 @@
 			this.TT.SetToolTip(this.CbDownSample, resources.GetString("CbDownSample.ToolTip"));
 			this.CbDownSample.UseVisualStyleBackColor = true;
 			this.CbDownSample.CheckedChanged += new System.EventHandler(this.CbDownSample_CheckedChanged);
+			//
+			// lOptimizeFast
+			//
+			this.lOptimizeFast.Name = "lOptimizeFast";
+			this.lOptimizeFast.Text = "Optimize Fast";
+			this.lOptimizeFast.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			//
+			// CbOptimizeFast
+			//
+			this.CbOptimizeFast.Name = "CbDownSample";
+			this.CbOptimizeFast.UseVisualStyleBackColor = true;
+			this.CbOptimizeFast.CheckedChanged += new System.EventHandler(this.CbOptimizeFast_CheckedChanged);
 			// 
 			// BtnFillingQualityInfo
 			// 
@@ -1120,5 +1136,7 @@
 		private UserControls.ImageButton BtnFillingQualityInfo;
 		private UserControls.ColorSlider TBWhiteClip;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label lOptimizeFast;
+		private System.Windows.Forms.CheckBox CbOptimizeFast;
 	}
 }
