@@ -547,6 +547,9 @@ namespace LaserGRBL
 
         private List<List<CsPotrace.Curve>> OptimizePaths(List<List<CsPotrace.Curve>> list)
         {
+			if (list.Count == 1)
+				return list;
+
             //Order all paths in list to reduce travel distance
             //Calculate and store all distances in a matrix
             var distances = new double[list.Count, list.Count];
