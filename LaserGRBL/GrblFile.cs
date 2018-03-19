@@ -92,8 +92,30 @@ namespace LaserGRBL
 			public bool Fast
 			{ get { return mConf.pwm ? mColor == 0 : mColor <= 125; } }
 
-			public string formatnumber(double number)
-			{ return number.ToString("#.###", System.Globalization.CultureInfo.InvariantCulture); }
+			static double errX;
+			public string formatnumberX(double number)
+			{
+				//return number.ToString("#.###", System.Globalization.CultureInfo.InvariantCulture);
+
+				double orig = number + errX;
+				double send = Math.Round(orig, 3);
+				errX = send - orig;
+				return send.ToString(System.Globalization.CultureInfo.InvariantCulture);
+			}
+
+			static double errY;
+			public string formatnumberY(double number)
+			{
+				//return number.ToString("#.###", System.Globalization.CultureInfo.InvariantCulture);
+
+				double orig = number + errY;
+				double send = Math.Round(orig, 3);
+				errY = send - orig;
+				return send.ToString(System.Globalization.CultureInfo.InvariantCulture);
+			}
+
+			public static void ResetRoundingError()
+			{ errX = errY = 0; }
 		}
 
 		private class XSegment : ColorSegment
@@ -103,9 +125,9 @@ namespace LaserGRBL
 			public override string ToString()
 			{
 				if (mConf.pwm)
-					return string.Format("X{0} S{1}", formatnumber(mReverse ? -mLen : mLen), mColor);
+					return string.Format("X{0} S{1}", formatnumberX(mReverse ? -mLen : mLen), mColor);
 				else
-					return string.Format("X{0} {1}", formatnumber(mReverse ? -mLen : mLen), Fast ? mConf.lOff : mConf.lOn);
+					return string.Format("X{0} {1}", formatnumberX(mReverse ? -mLen : mLen), Fast ? mConf.lOff : mConf.lOn);
 			}
 		}
 
@@ -116,9 +138,9 @@ namespace LaserGRBL
 			public override string ToString()
 			{
 				if (mConf.pwm)
-					return string.Format("Y{0} S{1}", formatnumber(mReverse ? -mLen : mLen), mColor);
+					return string.Format("Y{0} S{1}", formatnumberY(mReverse ? -mLen : mLen), mColor);
 				else
-					return string.Format("Y{0} {1}", formatnumber(mReverse ? -mLen : mLen), Fast ? mConf.lOff : mConf.lOn);
+					return string.Format("Y{0} {1}", formatnumberY(mReverse ? -mLen : mLen), Fast ? mConf.lOff : mConf.lOn);
 			}
 		}
 
@@ -129,9 +151,9 @@ namespace LaserGRBL
 			public override string ToString()
 			{
 				if (mConf.pwm)
-					return string.Format("X{0} Y{1} S{2}", formatnumber(mReverse ? -mLen : mLen), formatnumber(mReverse ? mLen : -mLen), mColor);
+					return string.Format("X{0} Y{1} S{2}", formatnumberX(mReverse ? -mLen : mLen), formatnumberY(mReverse ? mLen : -mLen), mColor);
 				else
-					return string.Format("X{0} Y{1} {2}", formatnumber(mReverse ? -mLen : mLen), formatnumber(mReverse ? mLen : -mLen), Fast ? mConf.lOff : mConf.lOn);
+					return string.Format("X{0} Y{1} {2}", formatnumberX(mReverse ? -mLen : mLen), formatnumberY(mReverse ? mLen : -mLen), Fast ? mConf.lOff : mConf.lOn);
 			}
 		}
 
@@ -140,7 +162,7 @@ namespace LaserGRBL
 			public VSeparator(L2LConf c) : base(0, 1, false, c) { }
 
 			public override string ToString()
-			{ return string.Format("Y{0}", formatnumber(mLen)); }
+			{ return string.Format("Y{0}", formatnumberY(mLen)); }
 
 			public override bool IsSeparator
 			{ get { return true; } }
@@ -151,7 +173,7 @@ namespace LaserGRBL
 			public HSeparator(L2LConf c) : base(0, 1, false, c) { }
 
 			public override string ToString()
-			{ return string.Format("X{0}", formatnumber(mLen)); }
+			{ return string.Format("X{0}", formatnumberX(mLen)); }
 
 			public override bool IsSeparator
 			{ get { return true; } }
@@ -299,6 +321,8 @@ namespace LaserGRBL
 			bool fast = false;
 			List<ColorSegment> segments = GetSegments(bmp, c);
 			List<GrblCommand> temp = new List<GrblCommand>();
+
+			ColorSegment.ResetRoundingError();
 			foreach (ColorSegment seg in segments)
 			{
 				bool changeGMode = (fast != seg.Fast); //se veloce != dafareveloce
