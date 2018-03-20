@@ -71,7 +71,6 @@
 			// 
 			// BtnCreate
 			// 
-			this.BtnCreate.DialogResult = System.Windows.Forms.DialogResult.OK;
 			resources.ApplyResources(this.BtnCreate, "BtnCreate");
 			this.BtnCreate.Name = "BtnCreate";
 			this.BtnCreate.UseVisualStyleBackColor = true;

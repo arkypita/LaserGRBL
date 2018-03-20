@@ -110,6 +110,7 @@ namespace LaserGRBL
             this.importCustomButtonsToolStripMenuItem});
 			this.MNAddCB.Name = "CMM";
 			resources.ApplyResources(this.MNAddCB, "MNAddCB");
+			this.MNAddCB.Opening += new System.ComponentModel.CancelEventHandler(this.MNAddCB_Opening);
 			// 
 			// addCustomButtonToolStripMenuItem
 			// 

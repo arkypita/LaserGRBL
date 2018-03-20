@@ -51,6 +51,20 @@ namespace LaserGRBL
 
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
+			if (TBGCode.Text.Trim().Length == 0)
+			{
+				System.Windows.Forms.MessageBox.Show(Strings.BoxCustomButtonPleaseGCodeText, Strings.BoxCustomButtonPleaseToolTipTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				TBGCode.Focus();
+				return;
+			}
+
+			if (TbToolTip.Text.Trim().Length == 0)
+			{
+				System.Windows.Forms.MessageBox.Show(Strings.BoxCustomButtonPleaseToolTipText, Strings.BoxCustomButtonPleaseToolTipTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				TbToolTip.Focus();
+				return;
+			}
+
 			if (inedit == null)
 			{
 				CustomButton cb = new CustomButton();

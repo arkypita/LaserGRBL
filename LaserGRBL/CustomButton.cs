@@ -70,7 +70,7 @@ namespace LaserGRBL
 					List<CustomButton> list = Tools.Serializer.ObjFromFile(ofd.FileName) as List<CustomButton>;
 					if (list.Count > 0)
 					{
-						System.Windows.Forms.DialogResult rv = buttons.Count == 0 ? System.Windows.Forms.DialogResult.No : System.Windows.Forms.MessageBox.Show(Strings.BoxImportCustomButtonClearText, Strings.BoxImportCustomButtonClearCaption, System.Windows.Forms.MessageBoxButtons.YesNoCancel);
+						System.Windows.Forms.DialogResult rv = buttons.Count == 0 ? System.Windows.Forms.DialogResult.No : System.Windows.Forms.MessageBox.Show(Strings.BoxImportCustomButtonClearText, Strings.BoxImportCustomButtonCaption, System.Windows.Forms.MessageBoxButtons.YesNoCancel);
 
 						if (rv == System.Windows.Forms.DialogResult.Yes || rv == System.Windows.Forms.DialogResult.No)
 						{
@@ -78,7 +78,10 @@ namespace LaserGRBL
 								buttons.Clear();
 
 							foreach (CustomButton cb in list)
-								buttons.Add(cb);
+							{
+								if (System.Windows.Forms.MessageBox.Show(string.Format("Import \"{0}\"?" ,  cb.ToolTip.Trim().Length > 0 ? cb.ToolTip : "[no name]"), Strings.BoxImportCustomButtonCaption, System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+									buttons.Add(cb);
+							}
 
 							return true;
 						}
@@ -88,6 +91,8 @@ namespace LaserGRBL
 
 			return false;
 		}
+
+		public static int Count { get { return buttons.Count; } }
 	}
 
 

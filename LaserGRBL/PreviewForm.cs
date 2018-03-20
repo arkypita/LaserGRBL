@@ -232,6 +232,11 @@ namespace LaserGRBL
 				CustomButtons.SaveFile();
 			}
 		}
+
+		private void MNAddCB_Opening(object sender, CancelEventArgs e)
+		{
+			exportCustomButtonsToolStripMenuItem.Enabled = CustomButtons.Count > 0;
+		}
 	}
 
 }

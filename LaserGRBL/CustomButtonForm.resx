@@ -366,7 +366,7 @@
     <value>BTOpenImage</value>
   </data>
   <data name="&gt;&gt;BTOpenImage.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.31.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.38.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BTOpenImage.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>

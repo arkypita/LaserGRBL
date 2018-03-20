@@ -19,7 +19,7 @@ namespace LaserGRBL {
     // tramite uno strumento quale ResGen o Visual Studio.
     // Per aggiungere o rimuovere un membro, modificare il file con estensione ResX ed eseguire nuovamente ResGen
     // con l'opzione /str oppure ricompilare il progetto VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Strings {
@@ -126,6 +126,33 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Please provide GCode commands.
+        /// </summary>
+        internal static string BoxCustomButtonPleaseGCodeText {
+            get {
+                return ResourceManager.GetString("BoxCustomButtonPleaseGCodeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Please provide tooltip text.
+        /// </summary>
+        internal static string BoxCustomButtonPleaseToolTipText {
+            get {
+                return ResourceManager.GetString("BoxCustomButtonPleaseToolTipText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Missing field.
+        /// </summary>
+        internal static string BoxCustomButtonPleaseToolTipTitle {
+            get {
+                return ResourceManager.GetString("BoxCustomButtonPleaseToolTipTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Are you sure to delete selected button?.
         /// </summary>
         internal static string BoxDeleteCustomButtonText {
@@ -216,20 +243,20 @@ namespace LaserGRBL {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a Confirmation.
-        /// </summary>
-        internal static string BoxImportCustomButtonClearCaption {
-            get {
-                return ResourceManager.GetString("BoxImportCustomButtonClearCaption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Cerca una stringa localizzata simile a Remove actual buttons? Select yes to remove, no to keep..
         /// </summary>
         internal static string BoxImportCustomButtonClearText {
             get {
                 return ResourceManager.GetString("BoxImportCustomButtonClearText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Confirmation.
+        /// </summary>
+        internal static string BoxImportCustomButtonCaption {
+            get {
+                return ResourceManager.GetString("BoxImportCustomButtonrCaption", resourceCulture);
             }
         }
         
