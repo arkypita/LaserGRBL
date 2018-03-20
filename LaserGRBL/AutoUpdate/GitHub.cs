@@ -13,9 +13,25 @@ namespace LaserGRBL
 
 		public static void CheckVersion()
 		{
+			//public enum SecurityProtocolType
+			//{
+			//	Ssl3 = 48,
+			//	Tls = 192,
+			//	Tls11 = 768,
+			//	Tls12 = 3072,
+			//}
+
+			//CONFIGURE SYSTEM FOR TLS 1.2 (Work Only with framework 4.5 installed)
+			try { System.Net.ServicePointManager.SecurityProtocol = (System.Net.SecurityProtocolType)48 | (System.Net.SecurityProtocolType)192 | (System.Net.SecurityProtocolType)768 | (System.Net.SecurityProtocolType)3072; }
+			catch { System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Ssl3 | System.Net.SecurityProtocolType.Tls; } //fallback
+			System.Net.ServicePointManager.ServerCertificateValidationCallback += new System.Net.Security.RemoteCertificateValidationCallback(bypassAllCertificateStuff);
+
 			if ((bool)Settings.GetObject("Auto Update", true))
 				System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(GitHub.AsyncCheckVersion));
 		}
+
+		private static bool bypassAllCertificateStuff(object sender, System.Security.Cryptography.X509Certificates.X509Certificate certificate, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
+		{return true;}
 
 		private static void AsyncCheckVersion(object foo)
 		{
