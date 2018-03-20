@@ -45,6 +45,9 @@ namespace LaserGRBL
 			this.CustomButtonArea = new LaserGRBL.PreviewForm.MyFlowPanel();
 			this.MNAddCB = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.addCustomButtonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+			this.exportCustomButtonsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.importCustomButtonsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.BtnUnlock = new LaserGRBL.UserControls.ImageButton();
 			this.BtnHoming = new LaserGRBL.UserControls.ImageButton();
 			this.BtnZeroing = new LaserGRBL.UserControls.ImageButton();
@@ -101,7 +104,10 @@ namespace LaserGRBL
 			// MNAddCB
 			// 
 			this.MNAddCB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addCustomButtonToolStripMenuItem});
+            this.addCustomButtonToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.exportCustomButtonsToolStripMenuItem,
+            this.importCustomButtonsToolStripMenuItem});
 			this.MNAddCB.Name = "CMM";
 			resources.ApplyResources(this.MNAddCB, "MNAddCB");
 			// 
@@ -110,6 +116,23 @@ namespace LaserGRBL
 			this.addCustomButtonToolStripMenuItem.Name = "addCustomButtonToolStripMenuItem";
 			resources.ApplyResources(this.addCustomButtonToolStripMenuItem, "addCustomButtonToolStripMenuItem");
 			this.addCustomButtonToolStripMenuItem.Click += new System.EventHandler(this.addCustomButtonToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem1
+			// 
+			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+			resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+			// 
+			// exportCustomButtonsToolStripMenuItem
+			// 
+			this.exportCustomButtonsToolStripMenuItem.Name = "exportCustomButtonsToolStripMenuItem";
+			resources.ApplyResources(this.exportCustomButtonsToolStripMenuItem, "exportCustomButtonsToolStripMenuItem");
+			this.exportCustomButtonsToolStripMenuItem.Click += new System.EventHandler(this.exportCustomButtonsToolStripMenuItem_Click);
+			// 
+			// importCustomButtonsToolStripMenuItem
+			// 
+			this.importCustomButtonsToolStripMenuItem.Name = "importCustomButtonsToolStripMenuItem";
+			resources.ApplyResources(this.importCustomButtonsToolStripMenuItem, "importCustomButtonsToolStripMenuItem");
+			this.importCustomButtonsToolStripMenuItem.Click += new System.EventHandler(this.importCustomButtonsToolStripMenuItem_Click);
 			// 
 			// BtnUnlock
 			// 
@@ -235,5 +258,8 @@ namespace LaserGRBL
 		private UserControls.ImageButton BtnZeroing;
 		private PreviewForm.MyFlowPanel CustomButtonArea;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem exportCustomButtonsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem importCustomButtonsToolStripMenuItem;
 	}
 }

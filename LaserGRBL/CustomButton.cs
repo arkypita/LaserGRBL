@@ -43,6 +43,51 @@ namespace LaserGRBL
 			else
 				return null;
 		}
+
+		public static void Export()
+		{
+			using (System.Windows.Forms.SaveFileDialog sfd = new System.Windows.Forms.SaveFileDialog())
+			{
+				sfd.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+				sfd.Filter = "ZippedButton|*.gz";
+				sfd.AddExtension = true;
+				sfd.FileName = "CustomButtons.gz";
+				if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK && sfd.FileName != null)
+					Tools.Serializer.ObjToFile(buttons, sfd.FileName, Tools.Serializer.SerializationMode.Binary, null, true);
+			}
+		}
+
+		public static bool Import()
+		{
+			using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
+			{
+				ofd.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+				ofd.Filter = "ZippedButton|*.gz";
+				ofd.AddExtension = true;
+				ofd.FileName = "CustomButtons.gz";
+				if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK && ofd.FileName != null && System.IO.File.Exists(ofd.FileName))
+				{
+					List<CustomButton> list = Tools.Serializer.ObjFromFile(ofd.FileName) as List<CustomButton>;
+					if (list.Count > 0)
+					{
+						System.Windows.Forms.DialogResult rv = buttons.Count == 0 ? System.Windows.Forms.DialogResult.No : System.Windows.Forms.MessageBox.Show(Strings.BoxImportCustomButtonClearText, Strings.BoxImportCustomButtonClearCaption, System.Windows.Forms.MessageBoxButtons.YesNoCancel);
+
+						if (rv == System.Windows.Forms.DialogResult.Yes || rv == System.Windows.Forms.DialogResult.No)
+						{
+							if (rv == System.Windows.Forms.DialogResult.Yes)
+								buttons.Clear();
+
+							foreach (CustomButton cb in list)
+								buttons.Add(cb);
+
+							return true;
+						}
+					}
+				}
+			}
+
+			return false;
+		}
 	}
 
 

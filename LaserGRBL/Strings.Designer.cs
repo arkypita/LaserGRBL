@@ -19,7 +19,7 @@ namespace LaserGRBL {
     // tramite uno strumento quale ResGen o Visual Studio.
     // Per aggiungere o rimuovere un membro, modificare il file con estensione ResX ed eseguire nuovamente ResGen
     // con l'opzione /str oppure ricompilare il progetto VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Strings {
@@ -212,6 +212,24 @@ namespace LaserGRBL {
         internal static string BoxImportConfigWithoutError {
             get {
                 return ResourceManager.GetString("BoxImportConfigWithoutError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Confirmation.
+        /// </summary>
+        internal static string BoxImportCustomButtonClearCaption {
+            get {
+                return ResourceManager.GetString("BoxImportCustomButtonClearCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Remove actual buttons? Select yes to remove, no to keep..
+        /// </summary>
+        internal static string BoxImportCustomButtonClearText {
+            get {
+                return ResourceManager.GetString("BoxImportCustomButtonClearText", resourceCulture);
             }
         }
         

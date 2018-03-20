@@ -218,6 +218,20 @@ namespace LaserGRBL
 		{
 			Core.SetNewZero();
 		}
+
+		private void exportCustomButtonsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			CustomButtons.Export();
+		}
+
+		private void importCustomButtonsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (CustomButtons.Import())
+			{
+				RefreshCustomButtons();
+				CustomButtons.SaveFile();
+			}
+		}
 	}
 
 }

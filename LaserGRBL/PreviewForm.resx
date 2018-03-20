@@ -136,7 +136,7 @@
     <value>Preview</value>
   </data>
   <data name="&gt;&gt;Preview.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblPanel, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblPanel, LaserGRBL, Version=2.8.38.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Preview.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -285,7 +285,7 @@
     <value>BtnReset</value>
   </data>
   <data name="&gt;&gt;BtnReset.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.38.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnReset.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
@@ -297,13 +297,28 @@
     <value>81, 17</value>
   </metadata>
   <data name="addCustomButtonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="addCustomButtonToolStripMenuItem.Text" xml:space="preserve">
     <value>Add Custom Button</value>
   </data>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 6</value>
+  </data>
+  <data name="exportCustomButtonsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 22</value>
+  </data>
+  <data name="exportCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Export custom buttons</value>
+  </data>
+  <data name="importCustomButtonsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 22</value>
+  </data>
+  <data name="importCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Import custom buttons</value>
+  </data>
   <data name="MNAddCB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 26</value>
+    <value>198, 98</value>
   </data>
   <data name="&gt;&gt;MNAddCB.Name" xml:space="preserve">
     <value>MNAddCB</value>
@@ -330,7 +345,7 @@
     <value>CustomButtonArea</value>
   </data>
   <data name="&gt;&gt;CustomButtonArea.Type" xml:space="preserve">
-    <value>LaserGRBL.PreviewForm+MyFlowPanel, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.PreviewForm+MyFlowPanel, LaserGRBL, Version=2.8.38.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CustomButtonArea.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
@@ -422,7 +437,7 @@
     <value>BtnUnlock</value>
   </data>
   <data name="&gt;&gt;BtnUnlock.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.38.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnUnlock.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
@@ -540,7 +555,7 @@
     <value>BtnHoming</value>
   </data>
   <data name="&gt;&gt;BtnHoming.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.38.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnHoming.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
@@ -635,7 +650,7 @@
     <value>BtnZeroing</value>
   </data>
   <data name="&gt;&gt;BtnZeroing.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.38.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnZeroing.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
@@ -749,7 +764,7 @@
     <value>BtnResume</value>
   </data>
   <data name="&gt;&gt;BtnResume.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.38.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnResume.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
@@ -957,7 +972,7 @@
     <value>BtnStop</value>
   </data>
   <data name="&gt;&gt;BtnStop.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.16.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.38.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnStop.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
@@ -1071,6 +1086,24 @@
     <value>addCustomButtonToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;addCustomButtonToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
+    <value>toolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;exportCustomButtonsToolStripMenuItem.Name" xml:space="preserve">
+    <value>exportCustomButtonsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;exportCustomButtonsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;importCustomButtonsToolStripMenuItem.Name" xml:space="preserve">
+    <value>importCustomButtonsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;importCustomButtonsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TT.Name" xml:space="preserve">
