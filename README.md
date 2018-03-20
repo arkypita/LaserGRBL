@@ -89,4 +89,4 @@ Thanks to:
 - Gerson Koppe, for brasilian translation
 - Alexey Golovin, for russian translation
 - Yang Haiqiang, for chinese translation
-- @effer for code contribution #305
+- Filippo Rivato for code contribution [#305](https://github.com/arkypita/LaserGRBL/pull/305)
