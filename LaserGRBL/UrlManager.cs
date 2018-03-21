@@ -3,7 +3,7 @@
 //Unofficial/fork versions of LaserGRBL should use their own url for stats and update (if they need the feature)
 
 //to leave the file in the repo but ignore future changes to it:
-//git update-index --assume-unchanged LaserGRBL\UrlManager.cs
+//git update-index --skip-worktree LaserGRBL\UrlManager.cs
 
 namespace LaserGRBL
 {
