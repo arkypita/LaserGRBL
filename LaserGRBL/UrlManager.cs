@@ -5,6 +5,9 @@
 //to leave the file in the repo but ignore future changes to it:
 //git update-index --skip-worktree LaserGRBL\UrlManager.cs
 
+//https://fallengamer.livejournal.com/93321.html
+//https://stackoverflow.com/questions/13630849/git-difference-between-assume-unchanged-and-skip-worktree
+
 namespace LaserGRBL
 {
 	public static class UrlManager
