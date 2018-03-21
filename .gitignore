@@ -303,6 +303,3 @@ $RECYCLE.BIN/
 *.lnk
 setup.exe
 install.exe
-
-# Specific code file
-LaserGRBL/UrlManager.cs
