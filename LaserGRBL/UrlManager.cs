@@ -6,8 +6,8 @@ namespace LaserGRBL
 {
 	public static class UrlManager
 	{
-		public static string UpdateMain = null;	//= @"https://api.github.com/repos/arkypita/LaserGRBL/releases/latest";
-		public static string UpdateMirror = null;	//= @"http://lasergrbl.com/latest.php";
-		public static string Statistics = null;	//= @"http://stats.lasergrbl.com/handler.php";
+		public static string UpdateMain = @"https://api.github.com/repos/arkypita/LaserGRBL/releases/latest";
+		public static string UpdateMirror = @"http://lasergrbl.com/latest.php";
+		public static string Statistics = @"http://stats.lasergrbl.com/handler.php";
 	}
 }
