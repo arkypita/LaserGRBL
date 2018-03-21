@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿
+//Usage statistics and Update are for LaserGRBL official version
+//Unofficial/fork versions of LaserGRBL should use their own url for stats and update (if they need the feature)
 
 namespace LaserGRBL
 {
