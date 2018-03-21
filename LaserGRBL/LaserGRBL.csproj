@@ -99,6 +99,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UrlManager.cs" />
     <Compile Include="ColorScheme.cs" />
     <Compile Include="ComWrapper\Emulator.cs" />
     <Compile Include="RunFromPositionForm.cs">

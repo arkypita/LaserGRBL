@@ -63,7 +63,9 @@ namespace LaserGRBL
 			if (GitHub.Updating) //if updating: delay stat processing - skip this session
 				return;
 
-			data.UpdateAndSend(Core); //manda solo se serve
+			if (UrlManager.Statistics != null)
+				data.UpdateAndSend(Core); //manda solo se serve
+
 			Tools.Serializer.ObjToFile(data, filename); //salva
 		}
 
@@ -100,7 +102,10 @@ namespace LaserGRBL
 
 		private bool TrueSend()
 		{
-			string urlAddress = "http://stats.lasergrbl.com/handler.php";
+			if (UrlManager.Statistics == null)
+				return false;
+
+			string urlAddress = UrlManager.Statistics;
 			using (MyWebClient client = new MyWebClient())
 			{
 				NameValueCollection postData = new NameValueCollection()
