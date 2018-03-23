@@ -569,47 +569,44 @@ namespace LaserGRBL
             List<List<CsPotrace.Curve>> best = new List<List<Curve>>();
             var bestTotDistance = double.MaxValue;
 
-            //Test all possibile starting shape
-            for (int first = 0; first < list.Count; first++)
+            //Create a list of unvisited places
+            List<int> unvisited = Enumerable.Range(0, list.Count).ToList();
+
+            //Pick nearest points
+            List<List<CsPotrace.Curve>> nearest = new List<List<Curve>>();
+
+            //Save starting point index
+            var lastIndex = 0;
+            var totDistance = 0.0;
+            while (unvisited.Count > 0)
             {
-                //Create a list of unvisited places
-                List<int> unvisited = Enumerable.Range(0, list.Count).ToList();
-
-                //Pick nearest points
-                List<List<CsPotrace.Curve>> nearest = new List<List<Curve>>();
-
-                //Save starting point index
-                var lastIndex = first;
-                var totDistance = 0.0;
-                while (unvisited.Count > 0)
+                var bestIndex = 0;
+                var bestDistance = double.MaxValue;
+                foreach (var nextIndex in unvisited)
                 {
-                    var bestIndex = 0;
-                    var bestDistance = double.MaxValue;
-                    foreach (var nextIndex in unvisited)
+                    var dist = distances[nextIndex, lastIndex];
+                    if (dist < bestDistance)
                     {
-                        var dist = distances[nextIndex, lastIndex];
-                        if (dist < bestDistance)
-                        {
-                            bestIndex = nextIndex;
-                            bestDistance = dist;
-                        }
+                        bestIndex = nextIndex;
+                        bestDistance = dist;
                     }
-
-                    //Save nearest point
-                    lastIndex = bestIndex;
-                    nearest.Add(list[lastIndex]);
-                    unvisited.Remove(lastIndex);
-                    totDistance += bestDistance;
                 }
 
-                //Count traveled distance
-                if (totDistance < bestTotDistance)
-                {
-                    bestTotDistance = totDistance;
-                    //Save best list
-                    best = nearest;
-                }
+                //Save nearest point
+                lastIndex = bestIndex;
+                nearest.Add(list[lastIndex]);
+                unvisited.Remove(lastIndex);
+                totDistance += bestDistance;
             }
+
+            //Count traveled distance
+            if (totDistance < bestTotDistance)
+            {
+                bestTotDistance = totDistance;
+                //Save best list
+                best = nearest;
+            }
+            
             return best;
         }
 
