@@ -179,6 +179,7 @@ namespace LaserGRBL
 
 		public event dlgIssueDetector IssueDetected;
 		public event dlgOnMachineStatus MachineStatusChanged;
+		public event GrblFile.OnFileLoadedDlg OnFileLoading;
 		public event GrblFile.OnFileLoadedDlg OnFileLoaded;
 		public event dlgOnOverrideChange OnOverrideChange;
 		public event dlgOnLoopCountChange OnLoopCountChange;
@@ -252,6 +253,7 @@ namespace LaserGRBL
 
 			file = new GrblFile(0, 0, 200, 300);  //create a fake range to use with manual movements
 
+			file.OnFileLoading += RiseOnFileLoading;
 			file.OnFileLoaded += RiseOnFileLoaded;
 
 			mQueue = new System.Collections.Generic.Queue<GrblCommand>();
@@ -366,6 +368,14 @@ namespace LaserGRBL
 				else
 					OnOverrideChange();
 			}
+		}
+
+		void RiseOnFileLoading(long elapsed, string filename)
+		{
+			mTP.Reset();
+
+			if (OnFileLoaded != null)
+				OnFileLoading(elapsed, filename);
 		}
 
 		void RiseOnFileLoaded(long elapsed, string filename)

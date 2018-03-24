@@ -15,6 +15,7 @@ namespace LaserGRBL
 		public enum CartesianQuadrant { I, II, III, IV, Mix, Unknown }
 
 		public delegate void OnFileLoadedDlg(long elapsed, string filename);
+		public event OnFileLoadedDlg OnFileLoading;
 		public event OnFileLoadedDlg OnFileLoaded;
 
 		private List<GrblCommand> list = new List<GrblCommand>();
@@ -48,6 +49,8 @@ namespace LaserGRBL
 
 		public void LoadFile(string filename)
 		{
+			RiseOnFileLoading(filename);
+
 			long start = Tools.HiResTimer.TotalMilliseconds;
 			list.Clear();
 			mRange.ResetRange();
@@ -68,8 +71,7 @@ namespace LaserGRBL
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
-			if (OnFileLoaded != null)
-				OnFileLoaded(elapsed, filename);
+			RiseOnFileLoaded(filename, elapsed);
 		}
 
 		private abstract class ColorSegment
@@ -182,6 +184,8 @@ namespace LaserGRBL
 
 		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, bool useOptimizeFast, L2LConf c)
 		{
+			RiseOnFileLoading(filename);
+
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 			long start = Tools.HiResTimer.TotalMilliseconds;
 			list.Clear();
@@ -255,8 +259,19 @@ namespace LaserGRBL
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
+			RiseOnFileLoaded(filename, elapsed);
+		}
+
+		private void RiseOnFileLoaded(string filename, long elapsed)
+		{
 			if (OnFileLoaded != null)
 				OnFileLoaded(elapsed, filename);
+		}
+
+		private void RiseOnFileLoading(string filename)
+		{
+			if (OnFileLoading != null)
+				OnFileLoading(0, filename);
 		}
 
 		public class L2LConf
@@ -279,6 +294,7 @@ namespace LaserGRBL
 
 		public void LoadImageL2L(Bitmap bmp, string filename, L2LConf c)
 		{
+			RiseOnFileLoading(filename);
 
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
@@ -309,8 +325,7 @@ namespace LaserGRBL
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
-			if (OnFileLoaded != null)
-				OnFileLoaded(elapsed, filename);
+			RiseOnFileLoaded(filename, elapsed);
 		}
 
 		private void ImageLine2Line(Bitmap bmp, L2LConf c)

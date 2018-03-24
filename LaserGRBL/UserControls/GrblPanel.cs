@@ -102,7 +102,13 @@ namespace LaserGRBL.UserControls
 		public void SetComProgram(GrblCore core)
 		{
 			Core = core;
+			Core.OnFileLoading += OnFileLoading;
 			Core.OnFileLoaded += OnFileLoaded;
+		}
+
+		void OnFileLoading(long elapsed, string filename)
+		{
+			AbortCreation();
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -112,15 +118,20 @@ namespace LaserGRBL.UserControls
 
 		public void RecreateBMP()
 		{
+			AbortCreation();
+
+			TH = new System.Threading.Thread(DoTheWork);
+			TH.Name = "GrblPanel Drawing Thread";
+			TH.Start();
+		}
+
+		private void AbortCreation()
+		{
 			if (TH != null)
 			{
 				TH.Abort();
 				TH = null;
 			}
-
-			TH = new System.Threading.Thread(DoTheWork);
-			TH.Name = "GrblPanel Drawing Thread";
-			TH.Start();
 		}
 
 		protected override void OnSizeChanged(EventArgs e)
@@ -131,26 +142,37 @@ namespace LaserGRBL.UserControls
 
 		private void DoTheWork()
 		{
-			Size wSize = Size;
-
-			if (wSize.Width < 1 || wSize.Height < 1)
-				return;
-
-			System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(wSize.Width, wSize.Height);
-			using (System.Drawing.Graphics g = Graphics.FromImage(bmp))
+			try
 			{
-				g.SmoothingMode = SmoothingMode.AntiAlias;
-				g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-				g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-				g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+				Size wSize = Size;
 
-				if (Core != null /*&& Core.HasProgram*/)
-					Core.LoadedFile.DrawOnGraphics(g, wSize);
+				if (wSize.Width < 1 || wSize.Height < 1)
+					return;
 
-				mLastMatrix = g.Transform;
+				System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(wSize.Width, wSize.Height);
+				using (System.Drawing.Graphics g = Graphics.FromImage(bmp))
+				{
+					g.SmoothingMode = SmoothingMode.AntiAlias;
+					g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+					g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+					g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+
+					if (Core != null /*&& Core.HasProgram*/)
+						Core.LoadedFile.DrawOnGraphics(g, wSize);
+
+					mLastMatrix = g.Transform;
+				}
+
+				AssignBMP(bmp);
 			}
-
-			AssignBMP(bmp);
+			catch (System.Threading.ThreadAbortException)
+			{
+ 				//standard condition for abort and recreation
+			}
+			catch (Exception ex)
+			{
+				Logger.LogException("Drawing Preview", ex);
+			}
 		}
 
 		public PointF TranslatePoint(PointF p)
