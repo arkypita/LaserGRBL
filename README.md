@@ -43,7 +43,7 @@ Do you like LaserGRBL? Support development with your donation!
 
 ### Development Roadmap
 
-Development status and roadmap can be found here: [Roadmap](https://github.com/arkypita/LaserGRBL/issues/10)
+Development status and roadmap can be found here: [Roadmap](https://github.com/arkypita/LaserGRBL/issues/64)
 
 ### Missing Features
 
