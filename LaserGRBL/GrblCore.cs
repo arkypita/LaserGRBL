@@ -396,7 +396,7 @@ namespace LaserGRBL
 		}
 
 		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
-		public void OpenFile(System.Windows.Forms.Form parent, string filename = null)
+		public void OpenFile(System.Windows.Forms.Form parent, string filename = null, bool append = false)
 		{
 			if (!CanLoadNewFile) return;
 
@@ -428,7 +428,7 @@ namespace LaserGRBL
 					{
 						try
 						{
-							RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent);
+							RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent, append);
 							UsageCounters.RasterFile++;
 						}
 						catch (Exception ex)
@@ -440,7 +440,7 @@ namespace LaserGRBL
 
 						try
 						{
-							file.LoadFile(filename);
+							file.LoadFile(filename, append);
 							UsageCounters.GCodeFile++;
 						}
 						catch (Exception ex)

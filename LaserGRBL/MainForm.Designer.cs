@@ -66,6 +66,7 @@
 			this.MnExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnFileOpen = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnFileAppend = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnReOpenFile = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnSaveProgram = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -350,6 +351,7 @@
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnFileOpen,
+            this.MnFileAppend,
             this.MnReOpenFile,
             this.MnSaveProgram,
             this.toolStripMenuItem1,
@@ -364,6 +366,12 @@
 			resources.ApplyResources(this.MnFileOpen, "MnFileOpen");
 			this.MnFileOpen.Name = "MnFileOpen";
 			this.MnFileOpen.Click += new System.EventHandler(this.MnFileOpen_Click);
+			// 
+			// MnFileAppend
+			// 
+			resources.ApplyResources(this.MnFileAppend, "MnFileAppend");
+			this.MnFileAppend.Name = "MnFileAppend";
+			this.MnFileAppend.Click += new System.EventHandler(this.MnFileAppend_Click);
 			// 
 			// MnReOpenFile
 			// 
@@ -665,6 +673,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.Timer AwakeTimer;
 		private System.Windows.Forms.ToolStripMenuItem MnStartFromPosition;
+		private System.Windows.Forms.ToolStripMenuItem MnFileAppend;
 	}
 }
 

@@ -47,12 +47,15 @@ namespace LaserGRBL
 			catch { }
 		}
 
-		public void LoadFile(string filename)
+		public void LoadFile(string filename, bool append)
 		{
 			RiseOnFileLoading(filename);
 
 			long start = Tools.HiResTimer.TotalMilliseconds;
-			list.Clear();
+
+			if (!append)
+				list.Clear();
+
 			mRange.ResetRange();
 			if (System.IO.File.Exists(filename))
 			{
@@ -182,13 +185,16 @@ namespace LaserGRBL
 			{ get { return true; } }
 		}
 
-		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, bool useOptimizeFast, L2LConf c)
+		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, bool useOptimizeFast, L2LConf c, bool append)
 		{
 			RiseOnFileLoading(filename);
 
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 			long start = Tools.HiResTimer.TotalMilliseconds;
-			list.Clear();
+
+			if (!append)
+				list.Clear();
+
 			mRange.ResetRange();
 
 			Potrace.turdsize = (int)(UseSpotRemoval ? SpotRemoval : 2);
@@ -292,14 +298,17 @@ namespace LaserGRBL
 			public bool vectorfilling;
 		}
 
-		public void LoadImageL2L(Bitmap bmp, string filename, L2LConf c)
+		public void LoadImageL2L(Bitmap bmp, string filename, L2LConf c, bool append)
 		{
 			RiseOnFileLoading(filename);
 
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
 			long start = Tools.HiResTimer.TotalMilliseconds;
-			list.Clear();
+
+			if (!append)
+				list.Clear();
+
 			mRange.ResetRange();
 
 			//absolute

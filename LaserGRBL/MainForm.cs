@@ -503,6 +503,11 @@ namespace LaserGRBL
 		{
 			Core.RunProgramFromPosition();
 		}
+
+		private void MnFileAppend_Click(object sender, EventArgs e)
+		{
+			Core.OpenFile(this, null, true);
+		}
 	}
 
 

@@ -70,6 +70,7 @@ namespace LaserGRBL.RasterConverter
 		public int MaxPower;
 
 		private string mFileName;
+		private bool mAppend;
 		GrblCore mCore;
 
 		private ImageProcessor Current; 		//current instance of processor thread/class - used to call abort
@@ -83,10 +84,11 @@ namespace LaserGRBL.RasterConverter
 		public enum Direction
 		{ Horizontal, Vertical, Diagonal, None }
 
-		public ImageProcessor(GrblCore core, string fileName, Size boxSize)
+		public ImageProcessor(GrblCore core, string fileName, Size boxSize, bool append)
 		{
 			mCore = core;
 			mFileName = fileName;
+			mAppend = append;
 			mSuspended = true;
 			//mOriginal = new Bitmap(fileName);
 
@@ -738,9 +740,9 @@ namespace LaserGRBL.RasterConverter
 						conf.pwm = (bool)Settings.GetObject("Support Hardware PWM", true);
 
 						if (SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering)
-							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf);
+							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf, mAppend);
 						else if (SelectedTool == ImageProcessor.Tool.Vectorize)
-							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf);
+							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf, mAppend);
 					}
 
 					if (GenerationComplete != null)

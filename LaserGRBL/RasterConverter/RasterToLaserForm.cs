@@ -14,7 +14,7 @@ namespace LaserGRBL.RasterConverter
 		bool preventClose;
 		bool supportPWM = (bool)Settings.GetObject("Support Hardware PWM", true);
 	
-		private RasterToLaserForm(GrblCore core, string filename)
+		private RasterToLaserForm(GrblCore core, string filename, bool append)
 		{
 			InitializeComponent();
 			mCore = core;
@@ -23,7 +23,7 @@ namespace LaserGRBL.RasterConverter
 			GbConversionTool.ForeColor = GbLineToLineOptions.ForeColor = GbParameters.ForeColor = GbVectorizeOptions.ForeColor = ForeColor = ColorScheme.FormForeColor;
 			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
 
-			IP = new ImageProcessor(core, filename, PbConverted.Size);
+			IP = new ImageProcessor(core, filename, PbConverted.Size, append);
 			PbOriginal.Image = IP.Original;
 			ImageProcessor.PreviewReady += OnPreviewReady;
 			ImageProcessor.PreviewBegin += OnPreviewBegin;
@@ -128,9 +128,9 @@ namespace LaserGRBL.RasterConverter
 			WB.Running = true;
 		}
 		
-		internal static void CreateAndShowDialog(GrblCore core, string filename, Form parent)
+		internal static void CreateAndShowDialog(GrblCore core, string filename, Form parent, bool append)
 		{
-			using (RasterToLaserForm f = new RasterToLaserForm(core, filename))
+			using (RasterToLaserForm f = new RasterToLaserForm(core, filename, append))
 				f.ShowDialog(parent);
 		}
 
