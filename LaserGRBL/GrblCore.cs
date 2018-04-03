@@ -1214,6 +1214,22 @@ namespace LaserGRBL
 				SetIssue(DetectedIssue.UnexpectedReset);
 		}
 
+		private GrblVersionInfo StatusReportVersion(string rline)
+		{
+			//if version is known -> return version
+			if (GrblVersion != null)
+				return GrblVersion;
+
+			//else guess from rline
+			//the check of Pin: is due to compatibility with 1.0c https://github.com/arkypita/LaserGRBL/issues/317
+			if (rline.Contains("|") && !rline.Contains("Pin:"))
+				return new GrblVersionInfo(1,1);
+			else if (rline.Contains("|") && rline.Contains("Pin:"))
+				return new GrblVersionInfo(1, 0, 'c');
+			else
+				return new GrblVersionInfo(0, 9);
+		}
+
 		private void ManageRealTimeStatus(string rline)
 		{
 			try
@@ -1221,9 +1237,11 @@ namespace LaserGRBL
 				debugLastStatusDelay.Start();
 
 				rline = rline.Substring(1, rline.Length - 2);
-				//System.Diagnostics.Debug.WriteLine(rline);
-				if (rline.Contains("|")) //grbl > 1.1 - https://github.com/gnea/grbl/wiki/Grbl-v1.1-Interface#real-time-status-reports
+
+				GrblVersionInfo rversion = StatusReportVersion(rline);
+				if (rversion > new GrblVersionInfo(1,1))
 				{
+					//grbl > 1.1 - https://github.com/gnea/grbl/wiki/Grbl-v1.1-Interface#real-time-status-reports
 					string[] arr = rline.Split("|".ToCharArray());
 
 					ParseMachineStatus(arr[0]);
