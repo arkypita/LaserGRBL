@@ -207,6 +207,16 @@ namespace LaserGRBL.RasterConverter
 			Refresh();
 		}
 
+		public void Invert()
+		{
+			mOriginal = ImageTransform.InvertingImage(mOriginal);
+			ResizeRecalc();
+			Refresh();
+		}
+
+
+
+
 		public void RotateCW()
 		{
 			mOriginal.RotateFlip(RotateFlipType.Rotate90FlipNone);

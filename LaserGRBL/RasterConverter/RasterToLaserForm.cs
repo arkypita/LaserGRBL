@@ -633,5 +633,13 @@ namespace LaserGRBL.RasterConverter
 		private void TBWhiteClip_MouseUp(object sender, MouseEventArgs e)
 		{ if (IP != null) IP.Demo = false; }
 
+		private void BtnReverse_Click(object sender, EventArgs e)
+		{
+			if (IP != null)
+			{
+				IP.Invert();
+				PbOriginal.Image = IP.Original;
+			}
+		}
 	}
 }

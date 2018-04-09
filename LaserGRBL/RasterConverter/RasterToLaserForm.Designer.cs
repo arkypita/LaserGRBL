@@ -33,10 +33,18 @@
 			this.RightGrid = new System.Windows.Forms.TableLayoutPanel();
 			this.TCOriginalPreview = new System.Windows.Forms.TabControl();
 			this.TpPreview = new System.Windows.Forms.TabPage();
+			this.WB = new LaserGRBL.UserControls.WaitingProgressBar();
 			this.PbConverted = new System.Windows.Forms.PictureBox();
 			this.TpOriginal = new System.Windows.Forms.TabPage();
 			this.PbOriginal = new System.Windows.Forms.PictureBox();
 			this.FlipControl = new System.Windows.Forms.TableLayoutPanel();
+			this.BtFlipV = new LaserGRBL.UserControls.ImageButton();
+			this.BtFlipH = new LaserGRBL.UserControls.ImageButton();
+			this.BtRotateCW = new LaserGRBL.UserControls.ImageButton();
+			this.BtRotateCCW = new LaserGRBL.UserControls.ImageButton();
+			this.BtnRevert = new LaserGRBL.UserControls.ImageButton();
+			this.BtnReverse = new LaserGRBL.UserControls.ImageButton();
+			this.BtnCrop = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
 			this.GbVectorizeOptions = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -50,6 +58,7 @@
 			this.CbOptimize = new System.Windows.Forms.CheckBox();
 			this.CbSmoothing = new System.Windows.Forms.CheckBox();
 			this.label14 = new System.Windows.Forms.Label();
+			this.CbFillingDirection = new LaserGRBL.UserControls.EnumComboBox();
 			this.LblFillingQuality = new System.Windows.Forms.Label();
 			this.UDFillingQuality = new System.Windows.Forms.NumericUpDown();
 			this.LblFillingLineLbl = new System.Windows.Forms.Label();
@@ -57,20 +66,31 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.CbDownSample = new System.Windows.Forms.CheckBox();
 			this.lOptimizeFast = new System.Windows.Forms.Label();
+			this.BtnFillingQualityInfo = new LaserGRBL.UserControls.ImageButton();
 			this.CbOptimizeFast = new System.Windows.Forms.CheckBox();
 			this.GbParameters = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.CbResize = new LaserGRBL.UserControls.EnumComboBox();
 			this.LblGrayscale = new System.Windows.Forms.Label();
+			this.CbMode = new LaserGRBL.UserControls.EnumComboBox();
+			this.TBRed = new LaserGRBL.UserControls.ColorSlider();
 			this.LblRed = new System.Windows.Forms.Label();
 			this.LblBlue = new System.Windows.Forms.Label();
 			this.LblGreen = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
+			this.TBGreen = new LaserGRBL.UserControls.ColorSlider();
+			this.TbBright = new LaserGRBL.UserControls.ColorSlider();
+			this.TBBlue = new LaserGRBL.UserControls.ColorSlider();
+			this.TbContrast = new LaserGRBL.UserControls.ColorSlider();
 			this.label3 = new System.Windows.Forms.Label();
 			this.CbThreshold = new System.Windows.Forms.CheckBox();
 			this.label28 = new System.Windows.Forms.Label();
+			this.TbThreshold = new LaserGRBL.UserControls.ColorSlider();
+			this.TBWhiteClip = new LaserGRBL.UserControls.ColorSlider();
 			this.label4 = new System.Windows.Forms.Label();
 			this.GbLineToLineOptions = new System.Windows.Forms.GroupBox();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
+			this.CbDirections = new LaserGRBL.UserControls.EnumComboBox();
 			this.UDQuality = new System.Windows.Forms.NumericUpDown();
 			this.CbLinePreview = new System.Windows.Forms.CheckBox();
 			this.label5 = new System.Windows.Forms.Label();
@@ -78,6 +98,7 @@
 			this.label8 = new System.Windows.Forms.Label();
 			this.LblDitherMode = new System.Windows.Forms.Label();
 			this.CbDither = new System.Windows.Forms.ComboBox();
+			this.BtnQualityInfo = new LaserGRBL.UserControls.ImageButton();
 			this.GbConversionTool = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.RbDithering = new System.Windows.Forms.RadioButton();
@@ -88,26 +109,6 @@
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.WT = new System.Windows.Forms.Timer(this.components);
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
-			this.WB = new LaserGRBL.UserControls.WaitingProgressBar();
-			this.BtFlipV = new LaserGRBL.UserControls.ImageButton();
-			this.BtFlipH = new LaserGRBL.UserControls.ImageButton();
-			this.BtRotateCW = new LaserGRBL.UserControls.ImageButton();
-			this.BtRotateCCW = new LaserGRBL.UserControls.ImageButton();
-			this.BtnCrop = new LaserGRBL.UserControls.ImageButton();
-			this.BtnRevert = new LaserGRBL.UserControls.ImageButton();
-			this.CbFillingDirection = new LaserGRBL.UserControls.EnumComboBox();
-			this.BtnFillingQualityInfo = new LaserGRBL.UserControls.ImageButton();
-			this.CbResize = new LaserGRBL.UserControls.EnumComboBox();
-			this.CbMode = new LaserGRBL.UserControls.EnumComboBox();
-			this.TBRed = new LaserGRBL.UserControls.ColorSlider();
-			this.TBGreen = new LaserGRBL.UserControls.ColorSlider();
-			this.TbBright = new LaserGRBL.UserControls.ColorSlider();
-			this.TBBlue = new LaserGRBL.UserControls.ColorSlider();
-			this.TbContrast = new LaserGRBL.UserControls.ColorSlider();
-			this.TbThreshold = new LaserGRBL.UserControls.ColorSlider();
-			this.TBWhiteClip = new LaserGRBL.UserControls.ColorSlider();
-			this.CbDirections = new LaserGRBL.UserControls.EnumComboBox();
-			this.BtnQualityInfo = new LaserGRBL.UserControls.ImageButton();
 			this.RightGrid.SuspendLayout();
 			this.TCOriginalPreview.SuspendLayout();
 			this.TpPreview.SuspendLayout();
@@ -159,6 +160,26 @@
 			this.TpPreview.Name = "TpPreview";
 			this.TpPreview.UseVisualStyleBackColor = true;
 			// 
+			// WB
+			// 
+			resources.ApplyResources(this.WB, "WB");
+			this.WB.BarColor = System.Drawing.Color.SteelBlue;
+			this.WB.BorderColor = System.Drawing.Color.Black;
+			this.WB.BouncingMode = LaserGRBL.UserControls.WaitingProgressBar.BouncingModeEnum.PingPong;
+			this.WB.DrawProgressString = false;
+			this.WB.FillColor = System.Drawing.Color.White;
+			this.WB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
+			this.WB.Interval = 25D;
+			this.WB.Maximum = 20D;
+			this.WB.Minimum = 0D;
+			this.WB.Name = "WB";
+			this.WB.ProgressStringDecimals = 0;
+			this.WB.Reverse = true;
+			this.WB.Running = false;
+			this.WB.Step = 1D;
+			this.WB.ThrowExceprion = false;
+			this.WB.Value = 0D;
+			// 
 			// PbConverted
 			// 
 			this.PbConverted.BackColor = System.Drawing.Color.White;
@@ -191,10 +212,102 @@
 			this.FlipControl.Controls.Add(this.BtFlipH, 4, 0);
 			this.FlipControl.Controls.Add(this.BtRotateCW, 2, 0);
 			this.FlipControl.Controls.Add(this.BtRotateCCW, 3, 0);
-			this.FlipControl.Controls.Add(this.BtnCrop, 6, 0);
 			this.FlipControl.Controls.Add(this.BtnRevert, 0, 0);
+			this.FlipControl.Controls.Add(this.BtnReverse, 7, 0);
+			this.FlipControl.Controls.Add(this.BtnCrop, 6, 0);
 			this.FlipControl.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
 			this.FlipControl.Name = "FlipControl";
+			// 
+			// BtFlipV
+			// 
+			this.BtFlipV.AltImage = null;
+			this.BtFlipV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtFlipV.Coloration = System.Drawing.Color.Empty;
+			this.BtFlipV.Image = ((System.Drawing.Image)(resources.GetObject("BtFlipV.Image")));
+			resources.ApplyResources(this.BtFlipV, "BtFlipV");
+			this.BtFlipV.Name = "BtFlipV";
+			this.BtFlipV.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtFlipV, resources.GetString("BtFlipV.ToolTip"));
+			this.BtFlipV.UseAltImage = false;
+			this.BtFlipV.Click += new System.EventHandler(this.BtFlipVClick);
+			// 
+			// BtFlipH
+			// 
+			this.BtFlipH.AltImage = null;
+			this.BtFlipH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtFlipH.Coloration = System.Drawing.Color.Empty;
+			this.BtFlipH.Image = ((System.Drawing.Image)(resources.GetObject("BtFlipH.Image")));
+			resources.ApplyResources(this.BtFlipH, "BtFlipH");
+			this.BtFlipH.Name = "BtFlipH";
+			this.BtFlipH.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtFlipH, resources.GetString("BtFlipH.ToolTip"));
+			this.BtFlipH.UseAltImage = false;
+			this.BtFlipH.Click += new System.EventHandler(this.BtFlipHClick);
+			// 
+			// BtRotateCW
+			// 
+			this.BtRotateCW.AltImage = null;
+			this.BtRotateCW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtRotateCW.Coloration = System.Drawing.Color.Empty;
+			this.BtRotateCW.Image = ((System.Drawing.Image)(resources.GetObject("BtRotateCW.Image")));
+			resources.ApplyResources(this.BtRotateCW, "BtRotateCW");
+			this.BtRotateCW.Name = "BtRotateCW";
+			this.BtRotateCW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtRotateCW, resources.GetString("BtRotateCW.ToolTip"));
+			this.BtRotateCW.UseAltImage = false;
+			this.BtRotateCW.Click += new System.EventHandler(this.BtRotateCWClick);
+			// 
+			// BtRotateCCW
+			// 
+			this.BtRotateCCW.AltImage = null;
+			this.BtRotateCCW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtRotateCCW.Coloration = System.Drawing.Color.Empty;
+			this.BtRotateCCW.Image = ((System.Drawing.Image)(resources.GetObject("BtRotateCCW.Image")));
+			resources.ApplyResources(this.BtRotateCCW, "BtRotateCCW");
+			this.BtRotateCCW.Name = "BtRotateCCW";
+			this.BtRotateCCW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtRotateCCW, resources.GetString("BtRotateCCW.ToolTip"));
+			this.BtRotateCCW.UseAltImage = false;
+			this.BtRotateCCW.Click += new System.EventHandler(this.BtRotateCCWClick);
+			// 
+			// BtnRevert
+			// 
+			this.BtnRevert.AltImage = null;
+			this.BtnRevert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnRevert.Coloration = System.Drawing.Color.Empty;
+			this.BtnRevert.Image = ((System.Drawing.Image)(resources.GetObject("BtnRevert.Image")));
+			resources.ApplyResources(this.BtnRevert, "BtnRevert");
+			this.BtnRevert.Name = "BtnRevert";
+			this.BtnRevert.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnRevert, resources.GetString("BtnRevert.ToolTip"));
+			this.BtnRevert.UseAltImage = false;
+			this.BtnRevert.Click += new System.EventHandler(this.BtnRevertClick);
+			// 
+			// BtnReverse
+			// 
+			this.BtnReverse.AltImage = null;
+			this.BtnReverse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnReverse.Coloration = System.Drawing.Color.Empty;
+			this.BtnReverse.Image = ((System.Drawing.Image)(resources.GetObject("BtnReverse.Image")));
+			resources.ApplyResources(this.BtnReverse, "BtnReverse");
+			this.BtnReverse.Name = "BtnReverse";
+			this.BtnReverse.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnReverse, resources.GetString("BtnReverse.ToolTip"));
+			this.BtnReverse.UseAltImage = false;
+			this.BtnReverse.Click += new System.EventHandler(this.BtnReverse_Click);
+			// 
+			// BtnCrop
+			// 
+			this.BtnCrop.AltImage = null;
+			this.BtnCrop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnCrop.Coloration = System.Drawing.Color.Empty;
+			this.BtnCrop.Image = ((System.Drawing.Image)(resources.GetObject("BtnCrop.Image")));
+			resources.ApplyResources(this.BtnCrop, "BtnCrop");
+			this.BtnCrop.Name = "BtnCrop";
+			this.BtnCrop.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnCrop, resources.GetString("BtnCrop.ToolTip"));
+			this.BtnCrop.UseAltImage = false;
+			this.BtnCrop.Click += new System.EventHandler(this.BtnCropClick);
 			// 
 			// tableLayoutPanel8
 			// 
@@ -342,6 +455,17 @@
 			resources.ApplyResources(this.label14, "label14");
 			this.label14.Name = "label14";
 			// 
+			// CbFillingDirection
+			// 
+			resources.ApplyResources(this.CbFillingDirection, "CbFillingDirection");
+			this.tableLayoutPanel5.SetColumnSpan(this.CbFillingDirection, 3);
+			this.CbFillingDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbFillingDirection.FormattingEnabled = true;
+			this.CbFillingDirection.Name = "CbFillingDirection";
+			this.CbFillingDirection.SelectedItem = null;
+			this.TT.SetToolTip(this.CbFillingDirection, resources.GetString("CbFillingDirection.ToolTip"));
+			this.CbFillingDirection.SelectedIndexChanged += new System.EventHandler(this.CbFillingDirection_SelectedIndexChanged);
+			// 
 			// LblFillingQuality
 			// 
 			resources.ApplyResources(this.LblFillingQuality, "LblFillingQuality");
@@ -420,6 +544,19 @@
 			resources.ApplyResources(this.lOptimizeFast, "lOptimizeFast");
 			this.lOptimizeFast.Name = "lOptimizeFast";
 			// 
+			// BtnFillingQualityInfo
+			// 
+			this.BtnFillingQualityInfo.AltImage = null;
+			resources.ApplyResources(this.BtnFillingQualityInfo, "BtnFillingQualityInfo");
+			this.BtnFillingQualityInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnFillingQualityInfo.Coloration = System.Drawing.Color.Empty;
+			this.BtnFillingQualityInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnFillingQualityInfo.Image")));
+			this.BtnFillingQualityInfo.Name = "BtnFillingQualityInfo";
+			this.BtnFillingQualityInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnFillingQualityInfo, resources.GetString("BtnFillingQualityInfo.ToolTip"));
+			this.BtnFillingQualityInfo.UseAltImage = false;
+			this.BtnFillingQualityInfo.Click += new System.EventHandler(this.BtnFillingQualityInfo_Click);
+			// 
 			// CbOptimizeFast
 			// 
 			resources.ApplyResources(this.CbOptimizeFast, "CbOptimizeFast");
@@ -457,330 +594,6 @@
 			this.tableLayoutPanel2.Controls.Add(this.label4, 0, 7);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			// 
-			// LblGrayscale
-			// 
-			resources.ApplyResources(this.LblGrayscale, "LblGrayscale");
-			this.LblGrayscale.Name = "LblGrayscale";
-			// 
-			// LblRed
-			// 
-			resources.ApplyResources(this.LblRed, "LblRed");
-			this.LblRed.Name = "LblRed";
-			// 
-			// LblBlue
-			// 
-			resources.ApplyResources(this.LblBlue, "LblBlue");
-			this.LblBlue.Name = "LblBlue";
-			// 
-			// LblGreen
-			// 
-			resources.ApplyResources(this.LblGreen, "LblGreen");
-			this.LblGreen.Name = "LblGreen";
-			// 
-			// label2
-			// 
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
-			// 
-			// label3
-			// 
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
-			// 
-			// CbThreshold
-			// 
-			resources.ApplyResources(this.CbThreshold, "CbThreshold");
-			this.CbThreshold.Name = "CbThreshold";
-			this.TT.SetToolTip(this.CbThreshold, resources.GetString("CbThreshold.ToolTip"));
-			this.CbThreshold.UseVisualStyleBackColor = true;
-			this.CbThreshold.CheckedChanged += new System.EventHandler(this.CbThreshold_CheckedChanged);
-			// 
-			// label28
-			// 
-			resources.ApplyResources(this.label28, "label28");
-			this.label28.Name = "label28";
-			// 
-			// label4
-			// 
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
-			// 
-			// GbLineToLineOptions
-			// 
-			resources.ApplyResources(this.GbLineToLineOptions, "GbLineToLineOptions");
-			this.GbLineToLineOptions.Controls.Add(this.TLP);
-			this.GbLineToLineOptions.Name = "GbLineToLineOptions";
-			this.GbLineToLineOptions.TabStop = false;
-			// 
-			// TLP
-			// 
-			resources.ApplyResources(this.TLP, "TLP");
-			this.TLP.Controls.Add(this.CbDirections, 1, 1);
-			this.TLP.Controls.Add(this.UDQuality, 1, 2);
-			this.TLP.Controls.Add(this.CbLinePreview, 0, 3);
-			this.TLP.Controls.Add(this.label5, 0, 2);
-			this.TLP.Controls.Add(this.label27, 0, 1);
-			this.TLP.Controls.Add(this.label8, 2, 2);
-			this.TLP.Controls.Add(this.LblDitherMode, 0, 0);
-			this.TLP.Controls.Add(this.CbDither, 1, 0);
-			this.TLP.Controls.Add(this.BtnQualityInfo, 3, 2);
-			this.TLP.Name = "TLP";
-			// 
-			// UDQuality
-			// 
-			this.UDQuality.DecimalPlaces = 3;
-			resources.ApplyResources(this.UDQuality, "UDQuality");
-			this.UDQuality.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-			this.UDQuality.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.UDQuality.Name = "UDQuality";
-			this.TT.SetToolTip(this.UDQuality, resources.GetString("UDQuality.ToolTip"));
-			this.UDQuality.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-			this.UDQuality.ValueChanged += new System.EventHandler(this.UDQuality_ValueChanged);
-			// 
-			// CbLinePreview
-			// 
-			resources.ApplyResources(this.CbLinePreview, "CbLinePreview");
-			this.CbLinePreview.Checked = true;
-			this.CbLinePreview.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.TLP.SetColumnSpan(this.CbLinePreview, 3);
-			this.CbLinePreview.Name = "CbLinePreview";
-			this.TT.SetToolTip(this.CbLinePreview, resources.GetString("CbLinePreview.ToolTip"));
-			this.CbLinePreview.UseVisualStyleBackColor = true;
-			this.CbLinePreview.CheckedChanged += new System.EventHandler(this.CbLinePreview_CheckedChanged);
-			// 
-			// label5
-			// 
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
-			// 
-			// label27
-			// 
-			resources.ApplyResources(this.label27, "label27");
-			this.label27.Name = "label27";
-			// 
-			// label8
-			// 
-			resources.ApplyResources(this.label8, "label8");
-			this.label8.Name = "label8";
-			// 
-			// LblDitherMode
-			// 
-			resources.ApplyResources(this.LblDitherMode, "LblDitherMode");
-			this.LblDitherMode.Name = "LblDitherMode";
-			// 
-			// CbDither
-			// 
-			resources.ApplyResources(this.CbDither, "CbDither");
-			this.TLP.SetColumnSpan(this.CbDither, 3);
-			this.CbDither.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CbDither.FormattingEnabled = true;
-			this.CbDither.Name = "CbDither";
-			this.CbDither.SelectedIndexChanged += new System.EventHandler(this.CbDither_SelectedIndexChanged);
-			// 
-			// GbConversionTool
-			// 
-			resources.ApplyResources(this.GbConversionTool, "GbConversionTool");
-			this.GbConversionTool.Controls.Add(this.tableLayoutPanel4);
-			this.GbConversionTool.Name = "GbConversionTool";
-			this.GbConversionTool.TabStop = false;
-			// 
-			// tableLayoutPanel4
-			// 
-			resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
-			this.tableLayoutPanel4.Controls.Add(this.RbDithering, 0, 1);
-			this.tableLayoutPanel4.Controls.Add(this.RbVectorize, 0, 2);
-			this.tableLayoutPanel4.Controls.Add(this.RbLineToLineTracing, 0, 0);
-			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-			// 
-			// RbDithering
-			// 
-			resources.ApplyResources(this.RbDithering, "RbDithering");
-			this.tableLayoutPanel4.SetColumnSpan(this.RbDithering, 3);
-			this.RbDithering.Name = "RbDithering";
-			this.TT.SetToolTip(this.RbDithering, resources.GetString("RbDithering.ToolTip"));
-			this.RbDithering.UseVisualStyleBackColor = true;
-			this.RbDithering.CheckedChanged += new System.EventHandler(this.RbDithering_CheckedChanged);
-			// 
-			// RbVectorize
-			// 
-			resources.ApplyResources(this.RbVectorize, "RbVectorize");
-			this.tableLayoutPanel4.SetColumnSpan(this.RbVectorize, 3);
-			this.RbVectorize.Name = "RbVectorize";
-			this.TT.SetToolTip(this.RbVectorize, resources.GetString("RbVectorize.ToolTip"));
-			this.RbVectorize.UseVisualStyleBackColor = true;
-			this.RbVectorize.CheckedChanged += new System.EventHandler(this.RbVectorize_CheckedChanged);
-			// 
-			// RbLineToLineTracing
-			// 
-			resources.ApplyResources(this.RbLineToLineTracing, "RbLineToLineTracing");
-			this.RbLineToLineTracing.Checked = true;
-			this.tableLayoutPanel4.SetColumnSpan(this.RbLineToLineTracing, 3);
-			this.RbLineToLineTracing.Name = "RbLineToLineTracing";
-			this.RbLineToLineTracing.TabStop = true;
-			this.TT.SetToolTip(this.RbLineToLineTracing, resources.GetString("RbLineToLineTracing.ToolTip"));
-			this.RbLineToLineTracing.UseVisualStyleBackColor = true;
-			this.RbLineToLineTracing.CheckedChanged += new System.EventHandler(this.RbLineToLineTracing_CheckedChanged);
-			// 
-			// tableLayoutPanel1
-			// 
-			resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-			this.tableLayoutPanel1.Controls.Add(this.BtnCancel, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.BtnCreate, 1, 0);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			// 
-			// BtnCancel
-			// 
-			resources.ApplyResources(this.BtnCancel, "BtnCancel");
-			this.BtnCancel.Name = "BtnCancel";
-			this.BtnCancel.UseVisualStyleBackColor = true;
-			this.BtnCancel.Click += new System.EventHandler(this.BtnCancelClick);
-			// 
-			// BtnCreate
-			// 
-			resources.ApplyResources(this.BtnCreate, "BtnCreate");
-			this.BtnCreate.Name = "BtnCreate";
-			this.BtnCreate.UseVisualStyleBackColor = true;
-			this.BtnCreate.Click += new System.EventHandler(this.BtnCreateClick);
-			// 
-			// WT
-			// 
-			this.WT.Interval = 50;
-			this.WT.Tick += new System.EventHandler(this.WTTick);
-			// 
-			// WB
-			// 
-			resources.ApplyResources(this.WB, "WB");
-			this.WB.BarColor = System.Drawing.Color.SteelBlue;
-			this.WB.BorderColor = System.Drawing.Color.Black;
-			this.WB.BouncingMode = LaserGRBL.UserControls.WaitingProgressBar.BouncingModeEnum.PingPong;
-			this.WB.DrawProgressString = false;
-			this.WB.FillColor = System.Drawing.Color.White;
-			this.WB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
-			this.WB.Interval = 25D;
-			this.WB.Maximum = 20D;
-			this.WB.Minimum = 0D;
-			this.WB.Name = "WB";
-			this.WB.ProgressStringDecimals = 0;
-			this.WB.Reverse = true;
-			this.WB.Running = false;
-			this.WB.Step = 1D;
-			this.WB.ThrowExceprion = false;
-			this.WB.Value = 0D;
-			// 
-			// BtFlipV
-			// 
-			this.BtFlipV.AltImage = null;
-			this.BtFlipV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtFlipV.Coloration = System.Drawing.Color.Empty;
-			this.BtFlipV.Image = ((System.Drawing.Image)(resources.GetObject("BtFlipV.Image")));
-			resources.ApplyResources(this.BtFlipV, "BtFlipV");
-			this.BtFlipV.Name = "BtFlipV";
-			this.BtFlipV.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.BtFlipV, resources.GetString("BtFlipV.ToolTip"));
-			this.BtFlipV.UseAltImage = false;
-			this.BtFlipV.Click += new System.EventHandler(this.BtFlipVClick);
-			// 
-			// BtFlipH
-			// 
-			this.BtFlipH.AltImage = null;
-			this.BtFlipH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtFlipH.Coloration = System.Drawing.Color.Empty;
-			this.BtFlipH.Image = ((System.Drawing.Image)(resources.GetObject("BtFlipH.Image")));
-			resources.ApplyResources(this.BtFlipH, "BtFlipH");
-			this.BtFlipH.Name = "BtFlipH";
-			this.BtFlipH.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.BtFlipH, resources.GetString("BtFlipH.ToolTip"));
-			this.BtFlipH.UseAltImage = false;
-			this.BtFlipH.Click += new System.EventHandler(this.BtFlipHClick);
-			// 
-			// BtRotateCW
-			// 
-			this.BtRotateCW.AltImage = null;
-			this.BtRotateCW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtRotateCW.Coloration = System.Drawing.Color.Empty;
-			this.BtRotateCW.Image = ((System.Drawing.Image)(resources.GetObject("BtRotateCW.Image")));
-			resources.ApplyResources(this.BtRotateCW, "BtRotateCW");
-			this.BtRotateCW.Name = "BtRotateCW";
-			this.BtRotateCW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.BtRotateCW, resources.GetString("BtRotateCW.ToolTip"));
-			this.BtRotateCW.UseAltImage = false;
-			this.BtRotateCW.Click += new System.EventHandler(this.BtRotateCWClick);
-			// 
-			// BtRotateCCW
-			// 
-			this.BtRotateCCW.AltImage = null;
-			this.BtRotateCCW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtRotateCCW.Coloration = System.Drawing.Color.Empty;
-			this.BtRotateCCW.Image = ((System.Drawing.Image)(resources.GetObject("BtRotateCCW.Image")));
-			resources.ApplyResources(this.BtRotateCCW, "BtRotateCCW");
-			this.BtRotateCCW.Name = "BtRotateCCW";
-			this.BtRotateCCW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.BtRotateCCW, resources.GetString("BtRotateCCW.ToolTip"));
-			this.BtRotateCCW.UseAltImage = false;
-			this.BtRotateCCW.Click += new System.EventHandler(this.BtRotateCCWClick);
-			// 
-			// BtnCrop
-			// 
-			this.BtnCrop.AltImage = null;
-			this.BtnCrop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnCrop.Coloration = System.Drawing.Color.Empty;
-			this.BtnCrop.Image = ((System.Drawing.Image)(resources.GetObject("BtnCrop.Image")));
-			resources.ApplyResources(this.BtnCrop, "BtnCrop");
-			this.BtnCrop.Name = "BtnCrop";
-			this.BtnCrop.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.BtnCrop, resources.GetString("BtnCrop.ToolTip"));
-			this.BtnCrop.UseAltImage = false;
-			this.BtnCrop.Click += new System.EventHandler(this.BtnCropClick);
-			// 
-			// BtnRevert
-			// 
-			this.BtnRevert.AltImage = null;
-			this.BtnRevert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnRevert.Coloration = System.Drawing.Color.Empty;
-			this.BtnRevert.Image = ((System.Drawing.Image)(resources.GetObject("BtnRevert.Image")));
-			resources.ApplyResources(this.BtnRevert, "BtnRevert");
-			this.BtnRevert.Name = "BtnRevert";
-			this.BtnRevert.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.BtnRevert, resources.GetString("BtnRevert.ToolTip"));
-			this.BtnRevert.UseAltImage = false;
-			this.BtnRevert.Click += new System.EventHandler(this.BtnRevertClick);
-			// 
-			// CbFillingDirection
-			// 
-			resources.ApplyResources(this.CbFillingDirection, "CbFillingDirection");
-			this.tableLayoutPanel5.SetColumnSpan(this.CbFillingDirection, 3);
-			this.CbFillingDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CbFillingDirection.FormattingEnabled = true;
-			this.CbFillingDirection.Name = "CbFillingDirection";
-			this.CbFillingDirection.SelectedItem = null;
-			this.TT.SetToolTip(this.CbFillingDirection, resources.GetString("CbFillingDirection.ToolTip"));
-			this.CbFillingDirection.SelectedIndexChanged += new System.EventHandler(this.CbFillingDirection_SelectedIndexChanged);
-			// 
-			// BtnFillingQualityInfo
-			// 
-			this.BtnFillingQualityInfo.AltImage = null;
-			resources.ApplyResources(this.BtnFillingQualityInfo, "BtnFillingQualityInfo");
-			this.BtnFillingQualityInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnFillingQualityInfo.Coloration = System.Drawing.Color.Empty;
-			this.BtnFillingQualityInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnFillingQualityInfo.Image")));
-			this.BtnFillingQualityInfo.Name = "BtnFillingQualityInfo";
-			this.BtnFillingQualityInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.BtnFillingQualityInfo, resources.GetString("BtnFillingQualityInfo.ToolTip"));
-			this.BtnFillingQualityInfo.UseAltImage = false;
-			this.BtnFillingQualityInfo.Click += new System.EventHandler(this.BtnFillingQualityInfo_Click);
-			// 
 			// CbResize
 			// 
 			resources.ApplyResources(this.CbResize, "CbResize");
@@ -790,6 +603,11 @@
 			this.CbResize.SelectedItem = null;
 			this.TT.SetToolTip(this.CbResize, resources.GetString("CbResize.ToolTip"));
 			this.CbResize.SelectedIndexChanged += new System.EventHandler(this.CbResizeSelectedIndexChanged);
+			// 
+			// LblGrayscale
+			// 
+			resources.ApplyResources(this.LblGrayscale, "LblGrayscale");
+			this.LblGrayscale.Name = "LblGrayscale";
 			// 
 			// CbMode
 			// 
@@ -820,6 +638,26 @@
 			this.TBRed.Value = 100;
 			this.TBRed.ValueChanged += new System.EventHandler(this.TBRed_ValueChanged);
 			this.TBRed.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
+			// 
+			// LblRed
+			// 
+			resources.ApplyResources(this.LblRed, "LblRed");
+			this.LblRed.Name = "LblRed";
+			// 
+			// LblBlue
+			// 
+			resources.ApplyResources(this.LblBlue, "LblBlue");
+			this.LblBlue.Name = "LblBlue";
+			// 
+			// LblGreen
+			// 
+			resources.ApplyResources(this.LblGreen, "LblGreen");
+			this.LblGreen.Name = "LblGreen";
+			// 
+			// label2
+			// 
+			resources.ApplyResources(this.label2, "label2");
+			this.label2.Name = "label2";
 			// 
 			// TBGreen
 			// 
@@ -899,6 +737,24 @@
 			this.TbContrast.ValueChanged += new System.EventHandler(this.TbContrast_ValueChanged);
 			this.TbContrast.DoubleClick += new System.EventHandler(this.OnRGBCBDoubleClick);
 			// 
+			// label3
+			// 
+			resources.ApplyResources(this.label3, "label3");
+			this.label3.Name = "label3";
+			// 
+			// CbThreshold
+			// 
+			resources.ApplyResources(this.CbThreshold, "CbThreshold");
+			this.CbThreshold.Name = "CbThreshold";
+			this.TT.SetToolTip(this.CbThreshold, resources.GetString("CbThreshold.ToolTip"));
+			this.CbThreshold.UseVisualStyleBackColor = true;
+			this.CbThreshold.CheckedChanged += new System.EventHandler(this.CbThreshold_CheckedChanged);
+			// 
+			// label28
+			// 
+			resources.ApplyResources(this.label28, "label28");
+			this.label28.Name = "label28";
+			// 
 			// TbThreshold
 			// 
 			resources.ApplyResources(this.TbThreshold, "TbThreshold");
@@ -935,6 +791,32 @@
 			this.TBWhiteClip.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TBWhiteClip_MouseDown);
 			this.TBWhiteClip.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TBWhiteClip_MouseUp);
 			// 
+			// label4
+			// 
+			resources.ApplyResources(this.label4, "label4");
+			this.label4.Name = "label4";
+			// 
+			// GbLineToLineOptions
+			// 
+			resources.ApplyResources(this.GbLineToLineOptions, "GbLineToLineOptions");
+			this.GbLineToLineOptions.Controls.Add(this.TLP);
+			this.GbLineToLineOptions.Name = "GbLineToLineOptions";
+			this.GbLineToLineOptions.TabStop = false;
+			// 
+			// TLP
+			// 
+			resources.ApplyResources(this.TLP, "TLP");
+			this.TLP.Controls.Add(this.CbDirections, 1, 1);
+			this.TLP.Controls.Add(this.UDQuality, 1, 2);
+			this.TLP.Controls.Add(this.CbLinePreview, 0, 3);
+			this.TLP.Controls.Add(this.label5, 0, 2);
+			this.TLP.Controls.Add(this.label27, 0, 1);
+			this.TLP.Controls.Add(this.label8, 2, 2);
+			this.TLP.Controls.Add(this.LblDitherMode, 0, 0);
+			this.TLP.Controls.Add(this.CbDither, 1, 0);
+			this.TLP.Controls.Add(this.BtnQualityInfo, 3, 2);
+			this.TLP.Name = "TLP";
+			// 
 			// CbDirections
 			// 
 			resources.ApplyResources(this.CbDirections, "CbDirections");
@@ -945,6 +827,69 @@
 			this.CbDirections.SelectedItem = null;
 			this.TT.SetToolTip(this.CbDirections, resources.GetString("CbDirections.ToolTip"));
 			this.CbDirections.SelectedIndexChanged += new System.EventHandler(this.CbDirectionsSelectedIndexChanged);
+			// 
+			// UDQuality
+			// 
+			this.UDQuality.DecimalPlaces = 3;
+			resources.ApplyResources(this.UDQuality, "UDQuality");
+			this.UDQuality.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+			this.UDQuality.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.UDQuality.Name = "UDQuality";
+			this.TT.SetToolTip(this.UDQuality, resources.GetString("UDQuality.ToolTip"));
+			this.UDQuality.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.UDQuality.ValueChanged += new System.EventHandler(this.UDQuality_ValueChanged);
+			// 
+			// CbLinePreview
+			// 
+			resources.ApplyResources(this.CbLinePreview, "CbLinePreview");
+			this.CbLinePreview.Checked = true;
+			this.CbLinePreview.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.TLP.SetColumnSpan(this.CbLinePreview, 3);
+			this.CbLinePreview.Name = "CbLinePreview";
+			this.TT.SetToolTip(this.CbLinePreview, resources.GetString("CbLinePreview.ToolTip"));
+			this.CbLinePreview.UseVisualStyleBackColor = true;
+			this.CbLinePreview.CheckedChanged += new System.EventHandler(this.CbLinePreview_CheckedChanged);
+			// 
+			// label5
+			// 
+			resources.ApplyResources(this.label5, "label5");
+			this.label5.Name = "label5";
+			// 
+			// label27
+			// 
+			resources.ApplyResources(this.label27, "label27");
+			this.label27.Name = "label27";
+			// 
+			// label8
+			// 
+			resources.ApplyResources(this.label8, "label8");
+			this.label8.Name = "label8";
+			// 
+			// LblDitherMode
+			// 
+			resources.ApplyResources(this.LblDitherMode, "LblDitherMode");
+			this.LblDitherMode.Name = "LblDitherMode";
+			// 
+			// CbDither
+			// 
+			resources.ApplyResources(this.CbDither, "CbDither");
+			this.TLP.SetColumnSpan(this.CbDither, 3);
+			this.CbDither.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbDither.FormattingEnabled = true;
+			this.CbDither.Name = "CbDither";
+			this.CbDither.SelectedIndexChanged += new System.EventHandler(this.CbDither_SelectedIndexChanged);
 			// 
 			// BtnQualityInfo
 			// 
@@ -958,6 +903,76 @@
 			this.TT.SetToolTip(this.BtnQualityInfo, resources.GetString("BtnQualityInfo.ToolTip"));
 			this.BtnQualityInfo.UseAltImage = false;
 			this.BtnQualityInfo.Click += new System.EventHandler(this.BtnQualityInfo_Click);
+			// 
+			// GbConversionTool
+			// 
+			resources.ApplyResources(this.GbConversionTool, "GbConversionTool");
+			this.GbConversionTool.Controls.Add(this.tableLayoutPanel4);
+			this.GbConversionTool.Name = "GbConversionTool";
+			this.GbConversionTool.TabStop = false;
+			// 
+			// tableLayoutPanel4
+			// 
+			resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
+			this.tableLayoutPanel4.Controls.Add(this.RbDithering, 0, 1);
+			this.tableLayoutPanel4.Controls.Add(this.RbVectorize, 0, 2);
+			this.tableLayoutPanel4.Controls.Add(this.RbLineToLineTracing, 0, 0);
+			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+			// 
+			// RbDithering
+			// 
+			resources.ApplyResources(this.RbDithering, "RbDithering");
+			this.tableLayoutPanel4.SetColumnSpan(this.RbDithering, 3);
+			this.RbDithering.Name = "RbDithering";
+			this.TT.SetToolTip(this.RbDithering, resources.GetString("RbDithering.ToolTip"));
+			this.RbDithering.UseVisualStyleBackColor = true;
+			this.RbDithering.CheckedChanged += new System.EventHandler(this.RbDithering_CheckedChanged);
+			// 
+			// RbVectorize
+			// 
+			resources.ApplyResources(this.RbVectorize, "RbVectorize");
+			this.tableLayoutPanel4.SetColumnSpan(this.RbVectorize, 3);
+			this.RbVectorize.Name = "RbVectorize";
+			this.TT.SetToolTip(this.RbVectorize, resources.GetString("RbVectorize.ToolTip"));
+			this.RbVectorize.UseVisualStyleBackColor = true;
+			this.RbVectorize.CheckedChanged += new System.EventHandler(this.RbVectorize_CheckedChanged);
+			// 
+			// RbLineToLineTracing
+			// 
+			resources.ApplyResources(this.RbLineToLineTracing, "RbLineToLineTracing");
+			this.RbLineToLineTracing.Checked = true;
+			this.tableLayoutPanel4.SetColumnSpan(this.RbLineToLineTracing, 3);
+			this.RbLineToLineTracing.Name = "RbLineToLineTracing";
+			this.RbLineToLineTracing.TabStop = true;
+			this.TT.SetToolTip(this.RbLineToLineTracing, resources.GetString("RbLineToLineTracing.ToolTip"));
+			this.RbLineToLineTracing.UseVisualStyleBackColor = true;
+			this.RbLineToLineTracing.CheckedChanged += new System.EventHandler(this.RbLineToLineTracing_CheckedChanged);
+			// 
+			// tableLayoutPanel1
+			// 
+			resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+			this.tableLayoutPanel1.Controls.Add(this.BtnCancel, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.BtnCreate, 1, 0);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			// 
+			// BtnCancel
+			// 
+			resources.ApplyResources(this.BtnCancel, "BtnCancel");
+			this.BtnCancel.Name = "BtnCancel";
+			this.BtnCancel.UseVisualStyleBackColor = true;
+			this.BtnCancel.Click += new System.EventHandler(this.BtnCancelClick);
+			// 
+			// BtnCreate
+			// 
+			resources.ApplyResources(this.BtnCreate, "BtnCreate");
+			this.BtnCreate.Name = "BtnCreate";
+			this.BtnCreate.UseVisualStyleBackColor = true;
+			this.BtnCreate.Click += new System.EventHandler(this.BtnCreateClick);
+			// 
+			// WT
+			// 
+			this.WT.Interval = 50;
+			this.WT.Tick += new System.EventHandler(this.WTTick);
 			// 
 			// RasterToLaserForm
 			// 
@@ -1086,5 +1101,6 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label lOptimizeFast;
 		private System.Windows.Forms.CheckBox CbOptimizeFast;
+		private UserControls.ImageButton BtnReverse;
 	}
 }
