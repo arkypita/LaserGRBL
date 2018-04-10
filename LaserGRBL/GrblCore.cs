@@ -1753,6 +1753,8 @@ namespace LaserGRBL
 
 		public int CurrentF { get { return mCurF; } }
 		public int CurrentS { get { return mCurS; } }
+
+		public static bool WriteComLog { get; set; }
 	}
 
 	public class TimeProjection

@@ -13,6 +13,11 @@ namespace LaserGRBL
 		{
 			Tools.TimingBase.TimeFromApplicationStartup();
 
+			foreach (string arg in args)
+			{
+				GrblCore.WriteComLog = GrblCore.WriteComLog || arg == "comlog";
+			}
+
 			Logger.Start();
 			GitHub.CleanupOldVersion();
 			UsageStats.LoadFile();

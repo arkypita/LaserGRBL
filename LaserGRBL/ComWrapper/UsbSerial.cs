@@ -32,8 +32,11 @@ namespace LaserGRBL.ComWrapper
 					com.NewLine = "\n";
 					com.WriteTimeout = 1000; //se si blocca in write
 
-					//log("com", string.Format("Open {0} @ {1} baud", com.PortName.ToUpper(), com.BaudRate));
-					Logger.LogMessage("OpenCom", "Open {0} @ {1} baud", com.PortName.ToUpper(), com.BaudRate);
+					com.DtrEnable = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
+					com.RtsEnable = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
+
+					if (GrblCore.WriteComLog) log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, ResetDiagnosticString()));
+					Logger.LogMessage("OpenCom", "Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, ResetDiagnosticString());
 
 					com.Open();
 					com.DiscardOutBuffer();
@@ -59,12 +62,27 @@ namespace LaserGRBL.ComWrapper
 			}
 		}
 
+		private string ResetDiagnosticString()
+		{
+			bool rts = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
+			bool dtr = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
+			bool soft = (bool)Settings.GetObject("Reset Grbl On Connect", false);
+
+			string rv = "";
+
+			if (dtr) rv += "DTR, ";
+			if (rts) rv += "RTS, ";
+			if (soft) rv += "Ctrl-X, ";
+
+			return rv.Trim(", ".ToCharArray());
+		}
+
 		public void Close(bool auto)
 		{
 			if (com.IsOpen)
 			{
 
-				//log("com", string.Format("Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER"));
+				if (GrblCore.WriteComLog) log("com", string.Format("Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER"));
 				Logger.LogMessage("CloseCom", "Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER");
 				com.DiscardOutBuffer();
 				com.DiscardInBuffer();
@@ -73,28 +91,36 @@ namespace LaserGRBL.ComWrapper
 		}
 
 		public bool IsOpen
-		{get { return com.IsOpen; }}
+		{ get { return com.IsOpen; } }
 
 		public void Write(byte b)
 		{
-			//log("tx", string.Format("[0x{0:X}]", b));
-			com.Write(new byte[]{ b } , 0, 1);
+			if (GrblCore.WriteComLog) log("tx", string.Format("[0x{0:X}]", b));
+			com.Write(new byte[] { b }, 0, 1);
 		}
 
 		public void Write(string text)
 		{
-			//log("tx", text);
+			if (GrblCore.WriteComLog) log("tx", text);
 			com.Write(text);
 		}
 
 		int logcnt = 0;
-		
+
 		public string ReadLineBlocking()
 		{
-			return com.ReadLine();
-			//string rv = com.ReadLine();
-			//log("rx", rv);
-			//return rv;
+			if (GrblCore.WriteComLog)
+			{
+				string rv = com.ReadLine();
+				log("rx", rv);
+				return rv;
+			}
+
+			else
+			{
+				return com.ReadLine();
+			}
+
 
 		} //la lettura della com è bloccante per natura
 
