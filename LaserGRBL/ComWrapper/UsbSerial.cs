@@ -35,8 +35,8 @@ namespace LaserGRBL.ComWrapper
 					com.DtrEnable = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
 					com.RtsEnable = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
 
-					if (GrblCore.WriteComLog) log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, ResetDiagnosticString()));
-					Logger.LogMessage("OpenCom", "Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, ResetDiagnosticString());
+					if (GrblCore.WriteComLog) log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
+					Logger.LogMessage("OpenCom", "Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString());
 
 					com.Open();
 					com.DiscardOutBuffer();
@@ -47,22 +47,32 @@ namespace LaserGRBL.ComWrapper
 					if (char.IsDigit(mPortName[mPortName.Length - 1]) && char.IsDigit(mPortName[mPortName.Length - 2])) //two digits port like COM23
 					{
 						//FIX https://github.com/arkypita/LaserGRBL/issues/31
-						com.PortName = mPortName.Substring(0, mPortName.Length - 1); //remove last digit and try again
-						Logger.LogMessage("OpenCom", "Retry open {0} @ {1} baud", com.PortName.ToUpper(), com.BaudRate);
 
-						com.Open();
-						com.DiscardOutBuffer();
-						com.DiscardInBuffer();
+						try
+						{ 
+							com.PortName = mPortName.Substring(0, mPortName.Length - 1); //remove last digit and try again
+
+							if (GrblCore.WriteComLog) log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
+							Logger.LogMessage("OpenCom", "Retry opening {0} as {1} (issue #31)", mPortName.ToUpper(), com.PortName.ToUpper());
+
+							com.Open();
+							com.DiscardOutBuffer();
+							com.DiscardInBuffer();
+						}
+						catch
+						{
+							throw ioex; //throw the original ex - not the new one!
+						}
 					}
 					else
 					{
-						throw ioex;
+						
 					}
 				}
 			}
 		}
 
-		private string ResetDiagnosticString()
+		private string GetResetDiagnosticString()
 		{
 			bool rts = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
 			bool dtr = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
