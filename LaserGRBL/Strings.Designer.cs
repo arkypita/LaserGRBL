@@ -19,7 +19,7 @@ namespace LaserGRBL {
     // tramite uno strumento quale ResGen o Visual Studio.
     // Per aggiungere o rimuovere un membro, modificare il file con estensione ResX ed eseguire nuovamente ResGen
     // con l'opzione /str oppure ricompilare il progetto VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Strings {
@@ -57,6 +57,15 @@ namespace LaserGRBL {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Abort current job?.
+        /// </summary>
+        internal static string BoxAbortProgramConfirm {
+            get {
+                return ResourceManager.GetString("BoxAbortProgramConfirm", resourceCulture);
             }
         }
         
@@ -243,6 +252,15 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Import custom button.
+        /// </summary>
+        internal static string BoxImportCustomButtonCaption {
+            get {
+                return ResourceManager.GetString("BoxImportCustomButtonCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Remove actual buttons? Select yes to remove, no to keep..
         /// </summary>
         internal static string BoxImportCustomButtonClearText {
@@ -254,7 +272,7 @@ namespace LaserGRBL {
         /// <summary>
         ///   Cerca una stringa localizzata simile a Confirmation.
         /// </summary>
-        internal static string BoxImportCustomButtonCaption {
+        internal static string BoxImportCustomButtonrCaption {
             get {
                 return ResourceManager.GetString("BoxImportCustomButtonrCaption", resourceCulture);
             }

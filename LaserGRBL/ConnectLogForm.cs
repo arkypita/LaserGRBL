@@ -178,7 +178,9 @@ namespace LaserGRBL
 			
 			BtnConnectDisconnect.UseAltImage = Core.IsOpen;
 			BtnRunProgram.Enabled = Core.CanSendFile;
-			BtnOpen.Enabled = Core.CanLoadNewFile;
+            BtnRunProgram.Visible = !Core.CanAbortProgram;
+            BtnAbortProgram.Visible = Core.CanAbortProgram;
+            BtnOpen.Enabled = Core.CanLoadNewFile;
 
 			bool old = TxtManualCommand.Enabled;
 			TxtManualCommand.Enabled = Core.CanSendManualCommand;
@@ -291,5 +293,11 @@ namespace LaserGRBL
 		{
 			TT.Hide(TbFileName);
 		}
-	}
+
+        private void BtnAbortProgram_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(Strings.BoxAbortProgramConfirm, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+                Core.AbortProgram();
+        }
+    }
 }

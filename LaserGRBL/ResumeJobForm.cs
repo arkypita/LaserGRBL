@@ -45,25 +45,30 @@ namespace LaserGRBL
 
 			TxtCause.Text = issue.ToString();
 
-			if (/*issue == GrblCore.DetectedIssue.StopMoving ||*/ issue == GrblCore.DetectedIssue.StopResponding || issue == GrblCore.DetectedIssue.UnexpectedReset || issue == GrblCore.DetectedIssue.ManualReset)
-			{
-				//all this causes indicate a situation where grbl does not execute the content of buffers (both planned and rx)
-				//so restart from some line (17 lines) before the last command in planned buffer
+            if (/*issue == GrblCore.DetectedIssue.StopMoving ||*/ issue == GrblCore.DetectedIssue.StopResponding || issue == GrblCore.DetectedIssue.UnexpectedReset || issue == GrblCore.DetectedIssue.ManualReset)
+            {
+                //all this causes indicate a situation where grbl does not execute the content of buffers (both planned and rx)
+                //so restart from some line (17 lines) before the last command in planned buffer
 
-				if (RbSomeLines.Enabled)
-					RbSomeLines.Checked = true;
-				else
-					RbFromBeginning.Checked = true;
-			}
-			else if (issue == GrblCore.DetectedIssue.ManualDisconnect || issue == GrblCore.DetectedIssue.UnexpectedDisconnect)
-			{
-				//if issue is a disconnect all sent lines could be already executed
-				//so restart from sent
-				if (RbFromSent.Enabled)
-					RbFromSent.Checked = true;
-				else
-					RbFromSpecific.Checked = true;
-			}
+                if (RbSomeLines.Enabled)
+                    RbSomeLines.Checked = true;
+                else
+                    RbFromBeginning.Checked = true;
+            }
+            else if (issue == GrblCore.DetectedIssue.ManualDisconnect || issue == GrblCore.DetectedIssue.UnexpectedDisconnect)
+            {
+                //if issue is a disconnect all sent lines could be already executed
+                //so restart from sent
+                if (RbFromSent.Enabled)
+                    RbFromSent.Checked = true;
+                else
+                    RbFromSpecific.Checked = true;
+            }
+            else if (issue == GrblCore.DetectedIssue.ManualAbort)
+            {
+                if (RbFromBeginning.Enabled)
+                    RbFromBeginning.Checked = true;
+            }
 
 			CbRedoHoming.Visible = allowHoming;
 			CbRedoHoming.Checked = allowHoming && suggestHoming;

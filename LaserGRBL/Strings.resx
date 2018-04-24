@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>Abort current job?</value>
+  </data>
   <data name="BoxAutoUpdateFailed" xml:space="preserve">
     <value>Automatic update failed!
 Please manually download the new version from lasergrbl site.</value>
@@ -178,6 +181,9 @@ Do you want to rewrite the configuration?</value>
   </data>
   <data name="BoxImportConfigWithoutError" xml:space="preserve">
     <value>{0} Config imported successfully!</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>Import custom button</value>
   </data>
   <data name="BoxImportCustomButtonClearText" xml:space="preserve">
     <value>Remove actual buttons? Select yes to remove, no to keep.</value>

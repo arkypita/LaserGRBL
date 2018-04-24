@@ -48,10 +48,11 @@ namespace LaserGRBL
 			Unknown = 0,
 			ManualReset = -1,
 			ManualDisconnect = -2,
+            ManualAbort = -3,
 			StopResponding = 1,
 			//StopMoving = 2, 
 			UnexpectedReset = 3,
-			UnexpectedDisconnect = 4
+			UnexpectedDisconnect = 4,
 		}
 
 		public enum MacStatus
@@ -635,6 +636,30 @@ namespace LaserGRBL
 					UserWantToContinue();
 			}
 		}
+
+        public void AbortProgram()
+        {
+            if (CanAbortProgram)
+            {
+                try
+                {
+                    Logger.LogMessage("ManualAbort", "Program aborted by user action!");
+
+                    SetIssue(DetectedIssue.ManualAbort);
+                    mTP.JobEnd();
+
+                    lock (this)
+                    {
+                        mQueue.Clear(); //flush the queue of item to send
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogException("Abort Program", ex);
+                }
+
+            }
+        }
 
 		public void RunProgramFromPosition()
 		{
@@ -1554,9 +1579,12 @@ namespace LaserGRBL
 		{ get { return !InProgram; } }
 
 		public bool CanSendFile
-		{ get { return IsOpen && IdleOrCheck && HasProgram; } }
+		{ get { return IsOpen && HasProgram && IdleOrCheck; } }
 
-		public bool CanImportExport
+        public bool CanAbortProgram
+        { get { return IsOpen && HasProgram && (MachineStatus == MacStatus.Run || MachineStatus == MacStatus.Hold); } }
+
+        public bool CanImportExport
 		{ get { return IsOpen && MachineStatus == MacStatus.Idle; } }
 
 		public bool CanResetGrbl
