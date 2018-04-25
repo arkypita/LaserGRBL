@@ -66,8 +66,7 @@ namespace LaserGRBL
             }
             else if (issue == GrblCore.DetectedIssue.ManualAbort)
             {
-                if (RbFromBeginning.Enabled)
-                    RbFromBeginning.Checked = true;
+                RbFromBeginning.Checked = true;
             }
 
 			CbRedoHoming.Visible = allowHoming;

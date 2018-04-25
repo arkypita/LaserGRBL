@@ -651,6 +651,8 @@ namespace LaserGRBL
                     lock (this)
                     {
                         mQueue.Clear(); //flush the queue of item to send
+                        mQueue.Enqueue(new GrblCommand("M5")); //shut down laser
+                        mQueue.Enqueue(new GrblCommand("G28")); //go home
                     }
                 }
                 catch (Exception ex)
@@ -674,7 +676,7 @@ namespace LaserGRBL
 		private void UserWantToContinue()
 		{
 			bool setwco = mWCO == System.Drawing.PointF.Empty && mTP.LastKnownWCO != System.Drawing.PointF.Empty;
-			bool homing = MachinePosition == System.Drawing.PointF.Empty; //potrebbe essere dovuto ad un hard reset -> posizione non affidabile
+			bool homing = MachinePosition == System.Drawing.PointF.Empty && mTP.LastIssue != DetectedIssue.ManualAbort && mTP.LastIssue != DetectedIssue.ManualReset; //potrebbe essere dovuto ad un hard reset -> posizione non affidabile
 			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, Configuration.HomingEnabled, homing, out homing, setwco, setwco, out setwco, mTP.LastKnownWCO);
 
 			if (position == 0)
