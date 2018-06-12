@@ -212,13 +212,13 @@ namespace LaserGRBL
 		private int mCurF;
 		private int mCurS;
 
-		private int mCurOvFeed;
+		private int mCurOvLinear;
 		private int mCurOvRapids;
-		private int mCurOvSpindle;
+		private int mCurOvPower;
 
-		private int mTarOvFeed;
+		private int mTarOvLinear;
 		private int mTarOvRapids;
-		private int mTarOvSpindle;
+		private int mTarOvPower;
 
 		private decimal mLoopCount = 1;
 
@@ -265,8 +265,8 @@ namespace LaserGRBL
 			mSentPtr = mSent;
 			mQueuePtr = mQueue;
 
-			mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
-			mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
+			mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
+			mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
 
 			if (!Settings.ExistObject("Hotkey Setup")) Settings.SetObject("Hotkey Setup", new HotKeysManager());
 			mHotKeyManager = (HotKeysManager)Settings.GetObject("Hotkey Setup", null);
@@ -276,6 +276,34 @@ namespace LaserGRBL
 
 			if (GrblVersion != null)
 				CSVD.LoadAppropriateSettings(GrblVersion); //load setting for last known version
+		}
+
+		internal void HotKeyOverride(HotKeysManager.HotKey.Actions action)
+		{
+
+			switch (action)
+			{
+				case HotKeysManager.HotKey.Actions.OverridePowerDefault:
+					mTarOvPower = 100; break;
+				case HotKeysManager.HotKey.Actions.OverridePowerUp:
+					mTarOvPower = Math.Min(mTarOvPower + 1, 200); break;
+				case HotKeysManager.HotKey.Actions.OverridePowerDown:
+					mTarOvPower = Math.Max(mTarOvPower - 1, 10); break;
+				case HotKeysManager.HotKey.Actions.OverrideLinearDefault:
+					mTarOvLinear = 100; break;
+				case HotKeysManager.HotKey.Actions.OverrideLinearUp:
+					mTarOvLinear = Math.Min(mTarOvLinear + 1, 200); break;
+				case HotKeysManager.HotKey.Actions.OverrideLinearDown:
+					mTarOvLinear = Math.Max(mTarOvLinear - 1, 10); break;
+				case HotKeysManager.HotKey.Actions.OverrideRapidDefault:
+					mTarOvRapids = 100; break;
+				case HotKeysManager.HotKey.Actions.OverrideRapidUp:
+					mTarOvRapids = Math.Min(mTarOvRapids * 2, 100); break;
+				case HotKeysManager.HotKey.Actions.OverrideRapidDown:
+					mTarOvRapids = Math.Max(mTarOvRapids / 2, 25); break;
+				default:
+					break;
+			}
 		}
 
 		public GrblConf Configuration
@@ -869,8 +897,8 @@ namespace LaserGRBL
 				ClearQueue(true);
 				mBuffer = 0;
 				mTP.JobEnd();
-				mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
-				mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
+				mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
+				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
 
 				if (grbl)
 					SendImmediate(24);
@@ -1230,8 +1258,8 @@ namespace LaserGRBL
 				ClearQueue(false);
 				mBuffer = 0;
 				mTP.JobEnd();
-				mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
-				mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
+				mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
+				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
 			}
 			RiseOverrideChanged();
 		}
@@ -1466,26 +1494,26 @@ namespace LaserGRBL
 
 		public void ManageOverrides()
 		{
-			if (mTarOvFeed == 100 && mCurOvFeed != 100) //devo fare un reset
+			if (mTarOvLinear == 100 && mCurOvLinear != 100) //devo fare un reset
 				SendImmediate(144);
-			else if (mTarOvFeed - mCurOvFeed >= 10) //devo fare un bigstep +
+			else if (mTarOvLinear - mCurOvLinear >= 10) //devo fare un bigstep +
 				SendImmediate(145);
-			else if (mCurOvFeed - mTarOvFeed >= 10) //devo fare un bigstep -
+			else if (mCurOvLinear - mTarOvLinear >= 10) //devo fare un bigstep -
 				SendImmediate(146);
-			else if (mTarOvFeed - mCurOvFeed >= 1) //devo fare uno smallstep +
+			else if (mTarOvLinear - mCurOvLinear >= 1) //devo fare uno smallstep +
 				SendImmediate(147);
-			else if (mCurOvFeed - mTarOvFeed >= 1) //devo fare uno smallstep -
+			else if (mCurOvLinear - mTarOvLinear >= 1) //devo fare uno smallstep -
 				SendImmediate(148);
 
-			if (mTarOvSpindle == 100 && mCurOvSpindle != 100) //devo fare un reset
+			if (mTarOvPower == 100 && mCurOvPower != 100) //devo fare un reset
 				SendImmediate(153);
-			else if (mTarOvSpindle - mCurOvSpindle >= 10) //devo fare un bigstep +
+			else if (mTarOvPower - mCurOvPower >= 10) //devo fare un bigstep +
 				SendImmediate(154);
-			else if (mCurOvSpindle - mTarOvSpindle >= 10) //devo fare un bigstep -
+			else if (mCurOvPower - mTarOvPower >= 10) //devo fare un bigstep -
 				SendImmediate(155);
-			else if (mTarOvSpindle - mCurOvSpindle >= 1) //devo fare uno smallstep +
+			else if (mTarOvPower - mCurOvPower >= 1) //devo fare uno smallstep +
 				SendImmediate(156);
-			else if (mCurOvSpindle - mTarOvSpindle >= 1) //devo fare uno smallstep -
+			else if (mCurOvPower - mTarOvPower >= 1) //devo fare uno smallstep -
 				SendImmediate(157);
 
 			if (mTarOvRapids == 100 && mCurOvRapids != 100)
@@ -1511,28 +1539,28 @@ namespace LaserGRBL
 
 		private void ChangeOverrides(int feed, int rapids, int spindle)
 		{
-			bool notify = (feed != mCurOvFeed || rapids != mCurOvRapids || spindle != mCurOvSpindle);
-			mCurOvFeed = feed;
+			bool notify = (feed != mCurOvLinear || rapids != mCurOvRapids || spindle != mCurOvPower);
+			mCurOvLinear = feed;
 			mCurOvRapids = rapids;
-			mCurOvSpindle = spindle;
+			mCurOvPower = spindle;
 
 			if (notify)
 				RiseOverrideChanged();
 		}
 
 		public int OverrideG1
-		{ get { return mCurOvFeed; } }
+		{ get { return mCurOvLinear; } }
 
 		public int OverrideG0
 		{ get { return mCurOvRapids; } }
 
 		public int OverrideS
-		{ get { return mCurOvSpindle; } }
+		{ get { return mCurOvPower; } }
 
 		public int TOverrideG1
 		{
-			get { return mTarOvFeed; }
-			set { mTarOvFeed = value; }
+			get { return mTarOvLinear; }
+			set { mTarOvLinear = value; }
 		}
 
 		public int TOverrideG0
@@ -1543,8 +1571,8 @@ namespace LaserGRBL
 
 		public int TOverrideS
 		{
-			get { return mTarOvSpindle; }
-			set { mTarOvSpindle = value; }
+			get { return mTarOvPower; }
+			set { mTarOvPower = value; }
 		}
 
 		private void ParseMachineStatus(string data)

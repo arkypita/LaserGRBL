@@ -148,7 +148,7 @@
     <value>ConnectionForm</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Type" xml:space="preserve">
-    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=2.8.46.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=2.8.47.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -175,7 +175,7 @@
     <value>JogForm</value>
   </data>
   <data name="&gt;&gt;JogForm.Type" xml:space="preserve">
-    <value>LaserGRBL.JogForm, LaserGRBL, Version=2.8.46.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.JogForm, LaserGRBL, Version=2.8.47.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;JogForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -217,7 +217,7 @@
     <value>PreviewForm</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Type" xml:space="preserve">
-    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=2.8.46.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=2.8.47.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -297,16 +297,16 @@
   <data name="spring1.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 19</value>
   </data>
-  <data name="TTOvG0.AutoSize" type="System.Boolean, mscorlib">
+  <data name="TTOvS.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="TTOvG0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 19</value>
+  <data name="TTOvS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 19</value>
   </data>
-  <data name="TTOvG0.Text" xml:space="preserve">
-    <value>G0: 100%</value>
+  <data name="TTOvS.Text" xml:space="preserve">
+    <value>S: 100%</value>
   </data>
-  <data name="TTOvG0.Visible" type="System.Boolean, mscorlib">
+  <data name="TTOvS.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="TTOvG1.AutoSize" type="System.Boolean, mscorlib">
@@ -321,16 +321,16 @@
   <data name="TTOvG1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="TTOvS.AutoSize" type="System.Boolean, mscorlib">
+  <data name="TTOvG0.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="TTOvS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 19</value>
+  <data name="TTOvG0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 19</value>
   </data>
-  <data name="TTOvS.Text" xml:space="preserve">
-    <value>S: 100%</value>
+  <data name="TTOvG0.Text" xml:space="preserve">
+    <value>G0: 100%</value>
   </data>
-  <data name="TTOvS.Visible" type="System.Boolean, mscorlib">
+  <data name="TTOvG0.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="spacer.AutoSize" type="System.Boolean, mscorlib">
