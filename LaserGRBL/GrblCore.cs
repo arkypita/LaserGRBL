@@ -207,7 +207,7 @@ namespace LaserGRBL
 		private TimeProjection mTP = new TimeProjection();
 
 		private MacStatus mMachineStatus;
-		public static int BUFFER_SIZE;
+		private static int BUFFER_SIZE = 127;
 
 		private int mCurF;
 		private int mCurS;
@@ -239,8 +239,6 @@ namespace LaserGRBL
 
 		public GrblCore(System.Windows.Forms.Control syncroObject)
 		{
-			BUFFER_SIZE = (int)Settings.GetObject("Serial buffer size", 127);
-
 			SetStatus(MacStatus.Disconnected);
 
 			syncro = syncroObject;
@@ -785,6 +783,7 @@ namespace LaserGRBL
 		{
 			try
 			{
+				BUFFER_SIZE = 127; //reset to default buffer size
 				SetStatus(MacStatus.Connecting);
 				connectStart = Tools.HiResTimer.TotalMilliseconds;
 
@@ -1345,6 +1344,23 @@ namespace LaserGRBL
 
 			mGrblBlocks = int.Parse(ab[0]);
 			mGrblBuffer = int.Parse(ab[1]);
+
+			EnlargeBuffer(mGrblBuffer);
+		}
+
+		private void EnlargeBuffer(int mGrblBuffer)
+		{
+			if (BUFFER_SIZE == 127) //act only to change default value at first event, do not re-act without a new connect
+			{
+				if (mGrblBuffer == 128)
+					BUFFER_SIZE = 128;
+				else if (mGrblBuffer == 256)
+					BUFFER_SIZE = 256;
+				else if (mGrblBuffer == 256)
+					BUFFER_SIZE = 256;
+				else if (mGrblBuffer == 10240)
+					BUFFER_SIZE = 10240;
+			}
 		}
 
 		private void ParseFS(string p)
