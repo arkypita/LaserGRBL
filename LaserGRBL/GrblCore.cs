@@ -207,7 +207,7 @@ namespace LaserGRBL
 		private TimeProjection mTP = new TimeProjection();
 
 		private MacStatus mMachineStatus;
-		private const int BUFFER_SIZE = 127;
+		public static int BUFFER_SIZE;
 
 		private int mCurF;
 		private int mCurS;
@@ -239,6 +239,8 @@ namespace LaserGRBL
 
 		public GrblCore(System.Windows.Forms.Control syncroObject)
 		{
+			BUFFER_SIZE = (int)Settings.GetObject("Serial buffer size", 127);
+
 			SetStatus(MacStatus.Disconnected);
 
 			syncro = syncroObject;

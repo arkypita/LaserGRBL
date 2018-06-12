@@ -15,11 +15,12 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
 
-			BackColor = ColorScheme.FormBackColor;
-			GB.ForeColor = ForeColor = ColorScheme.FormForeColor;
-			BtnCancel.BackColor = BtnSave.BackColor = ColorScheme.FormButtonsColor;
+			//BackColor = ColorScheme.FormBackColor;
+			//ForeColor = ColorScheme.FormForeColor;
+			//TpRasterImport.BackColor = TpHardware.BackColor = BtnCancel.BackColor = BtnSave.BackColor = ColorScheme.FormButtonsColor;
 
 			InitProtocolCB();
+			InitBufferSizeCB();
 			InitStreamingCB();
 			InitThreadingCB();
 
@@ -31,6 +32,15 @@ namespace LaserGRBL
 			CbIssueDetector.Checked = !(bool)Settings.GetObject("Do not show Issue Detector", false);
 			CbSoftReset.Checked = (bool)Settings.GetObject("Reset Grbl On Connect", true);
 			CbHardReset.Checked = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
+			CbBufferSize.SelectedItem = (int)Settings.GetObject("Serial buffer size", 127);
+		}
+
+		private void InitBufferSizeCB()
+		{
+			CbBufferSize.Items.Add(127);
+			CbBufferSize.Items.Add(128);
+			CbBufferSize.Items.Add(256);
+			CbBufferSize.Items.Add(10240);
 		}
 
 		private void InitThreadingCB()
@@ -79,6 +89,8 @@ namespace LaserGRBL
 			Settings.SetObject("Do not show Issue Detector", !CbIssueDetector.Checked);
 			Settings.SetObject("Reset Grbl On Connect", CbSoftReset.Checked);
 			Settings.SetObject("HardReset Grbl On Connect", CbHardReset.Checked);
+			Settings.SetObject("Serial buffer size", CbBufferSize.SelectedItem);
+			GrblCore.BUFFER_SIZE = (int)Settings.GetObject("Serial buffer size", 127);
 			Settings.Save();
 
 			Close();
