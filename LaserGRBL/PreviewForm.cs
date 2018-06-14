@@ -174,6 +174,9 @@ namespace LaserGRBL
 
 			protected override void OnMouseDown(MouseEventArgs e)
 			{
+				if (e.Button != MouseButtons.Left)
+					return;
+
 				if (mDrawDisabled || !CustomButton.EnabledNow(Core))
 					return;
 
@@ -188,6 +191,9 @@ namespace LaserGRBL
 
 			protected override void OnMouseUp(MouseEventArgs e)
 			{
+				if (e.Button != MouseButtons.Left)
+					return;
+
 				if (mDrawDisabled || !CustomButton.EnabledNow(Core))
 					return;
 
