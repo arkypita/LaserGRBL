@@ -35,10 +35,6 @@ namespace LaserGRBL.RasterConverter
 			CBLaserON.Items.Add("M3");
 			if (core.Configuration.LaserMode)
 				CBLaserON.Items.Add("M4");
-			CBLaserON.Items.Add("M106");
-
-			CBLaserOFF.Items.Add("M5");
-			CBLaserOFF.Items.Add("M107");
 		}
 
 		private void AssignMinMaxLimit()
@@ -157,11 +153,6 @@ namespace LaserGRBL.RasterConverter
 		private void CBLaserON_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			IP.LaserOn = (string)CBLaserON.SelectedItem;
-
-			if (CBLaserON.SelectedItem as string == "M3" || CBLaserON.SelectedItem as string == "M4")
-				CBLaserOFF.SelectedItem = "M5";
-			if (CBLaserON.SelectedItem as string == "M106")
-				CBLaserOFF.SelectedItem = "M107";
 		}
 
 		private void CBLaserOFF_SelectedIndexChanged(object sender, EventArgs e)
