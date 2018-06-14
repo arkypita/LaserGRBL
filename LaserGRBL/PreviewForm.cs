@@ -155,6 +155,9 @@ namespace LaserGRBL
 			private bool on;
 			protected override void OnClick(EventArgs e)
 			{
+				if (((MouseEventArgs)e).Button != MouseButtons.Left)
+					return;
+
 				if (mDrawDisabled || !CustomButton.EnabledNow(Core))
 					return;
 
