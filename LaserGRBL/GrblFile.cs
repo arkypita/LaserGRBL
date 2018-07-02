@@ -721,30 +721,12 @@ namespace LaserGRBL
 							}
 							else if (spb.G2G3 && cmd.IsArcMovement && pen.Color.A > 0)
 							{
-								PointF center = cmd.GetCenter((float)spb.X.Previous, (float)spb.Y.Previous);
-								double cX = center.X;
-								double cY = center.Y;
-								double aX = (double)spb.X.Previous;
-								double aY = (double)spb.Y.Previous;
-								double bX = (double)spb.X.Number;
-								double bY = (double)spb.Y.Number;
+								GrblCommand.G2G3Helper ah = spb.GetArcHelper(cmd);
 
-								double ray = cmd.GetArcRadius();
-								double rectX = cX - ray;
-								double rectY = cY - ray;
-								double rectW = 2 * ray;
-								double rectH = 2 * ray;
-
-								double aA = Tools.MathHelper.CalculateAngle(cX, cY, aX, aY);	//180/Math.PI*Math.Atan2(y1-y0, x1-x0);
-								double bA = Tools.MathHelper.CalculateAngle(cX, cY, bX, bY);	//180/Math.PI*Math.Atan2(y2-y0, x2-x0);
-
-								double sA = aA;	//start angle
-								double wA = Tools.MathHelper.AngularDistance(aA, bA, spb.G2);
-
-								if (rectW > 0 && rectH > 0)
+								if (ah.RectW > 0 && ah.RectH > 0)
 								{
-									try { g.DrawArc(pen, (float)rectX, (float)rectY, (float)rectW, (float)rectH, (float)sA, (float)wA); }
-									catch { System.Diagnostics.Debug.WriteLine(String.Format("Ex drwing arc: W{0} H{1}", rectW, rectH)); }
+									try { g.DrawArc(pen, (float)ah.RectX, (float)ah.RectY, (float)ah.RectW, (float)ah.RectH, (float)(ah.StartAngle * 180 / Math.PI), (float)(ah.AngularWidth * 180 / Math.PI)); }
+									catch { System.Diagnostics.Debug.WriteLine(String.Format("Ex drwing arc: W{0} H{1}", ah.RectW, ah.RectH)); }
 								}
 							}
 
