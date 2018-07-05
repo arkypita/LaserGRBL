@@ -958,11 +958,7 @@ namespace LaserGRBL
 		{ get { return mSent.Count; } }
 
 		public System.Collections.Generic.List<IGrblRow> SentCommand(int index, int count)
-		{
-			System.Collections.Generic.List<IGrblRow> rv;
-			rv = mSent.GetRange(index, count);
-			return rv;
-		}
+		{return mSent.GetRange(index, count);}
 
 		#endregion
 
