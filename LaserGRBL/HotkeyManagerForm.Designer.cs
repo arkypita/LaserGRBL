@@ -189,9 +189,9 @@
 		private System.Windows.Forms.GroupBox GB;
 		private System.Windows.Forms.Button BtnCancel;
 		private MyDatagridView DGV;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Action;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Shortcut;
 		private System.Windows.Forms.Button BtnSave;
 		private System.Windows.Forms.Label LblConnect;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Action;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Shortcut;
 	}
 }
