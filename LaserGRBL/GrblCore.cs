@@ -207,18 +207,18 @@ namespace LaserGRBL
 		private TimeProjection mTP = new TimeProjection();
 
 		private MacStatus mMachineStatus;
-		private static int BUFFER_SIZE = 127;
+		private const int BUFFER_SIZE = 127;
 
 		private int mCurF;
 		private int mCurS;
 
-		private int mCurOvLinear;
+		private int mCurOvFeed;
 		private int mCurOvRapids;
-		private int mCurOvPower;
+		private int mCurOvSpindle;
 
-		private int mTarOvLinear;
+		private int mTarOvFeed;
 		private int mTarOvRapids;
-		private int mTarOvPower;
+		private int mTarOvSpindle;
 
 		private decimal mLoopCount = 1;
 
@@ -265,8 +265,8 @@ namespace LaserGRBL
 			mSentPtr = mSent;
 			mQueuePtr = mQueue;
 
-			mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
-			mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
+			mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
+			mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
 
 			if (!Settings.ExistObject("Hotkey Setup")) Settings.SetObject("Hotkey Setup", new HotKeysManager());
 			mHotKeyManager = (HotKeysManager)Settings.GetObject("Hotkey Setup", null);
@@ -276,34 +276,6 @@ namespace LaserGRBL
 
 			if (GrblVersion != null)
 				CSVD.LoadAppropriateSettings(GrblVersion); //load setting for last known version
-		}
-
-		internal void HotKeyOverride(HotKeysManager.HotKey.Actions action)
-		{
-
-			switch (action)
-			{
-				case HotKeysManager.HotKey.Actions.OverridePowerDefault:
-					mTarOvPower = 100; break;
-				case HotKeysManager.HotKey.Actions.OverridePowerUp:
-					mTarOvPower = Math.Min(mTarOvPower + 1, 200); break;
-				case HotKeysManager.HotKey.Actions.OverridePowerDown:
-					mTarOvPower = Math.Max(mTarOvPower - 1, 10); break;
-				case HotKeysManager.HotKey.Actions.OverrideLinearDefault:
-					mTarOvLinear = 100; break;
-				case HotKeysManager.HotKey.Actions.OverrideLinearUp:
-					mTarOvLinear = Math.Min(mTarOvLinear + 1, 200); break;
-				case HotKeysManager.HotKey.Actions.OverrideLinearDown:
-					mTarOvLinear = Math.Max(mTarOvLinear - 1, 10); break;
-				case HotKeysManager.HotKey.Actions.OverrideRapidDefault:
-					mTarOvRapids = 100; break;
-				case HotKeysManager.HotKey.Actions.OverrideRapidUp:
-					mTarOvRapids = Math.Min(mTarOvRapids * 2, 100); break;
-				case HotKeysManager.HotKey.Actions.OverrideRapidDown:
-					mTarOvRapids = Math.Max(mTarOvRapids / 2, 25); break;
-				default:
-					break;
-			}
 		}
 
 		public GrblConf Configuration
@@ -812,7 +784,6 @@ namespace LaserGRBL
 		{
 			try
 			{
-				BUFFER_SIZE = 127; //reset to default buffer size
 				SetStatus(MacStatus.Connecting);
 				connectStart = Tools.HiResTimer.TotalMilliseconds;
 
@@ -898,8 +869,8 @@ namespace LaserGRBL
 				ClearQueue(true);
 				mBuffer = 0;
 				mTP.JobEnd();
-				mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
-				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
+				mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
+				mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
 
 				if (grbl)
 					SendImmediate(24);
@@ -959,7 +930,11 @@ namespace LaserGRBL
 		{ get { return mSent.Count; } }
 
 		public System.Collections.Generic.List<IGrblRow> SentCommand(int index, int count)
-		{return mSent.GetRange(index, count);}
+		{
+			System.Collections.Generic.List<IGrblRow> rv;
+			rv = mSent.GetRange(index, count);
+			return rv;
+		}
 
 		#endregion
 
@@ -1255,8 +1230,8 @@ namespace LaserGRBL
 				ClearQueue(false);
 				mBuffer = 0;
 				mTP.JobEnd();
-				mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
-				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
+				mCurOvFeed = mCurOvRapids = mCurOvSpindle = 100;
+				mTarOvFeed = mTarOvRapids = mTarOvSpindle = 100;
 			}
 			RiseOverrideChanged();
 		}
@@ -1369,23 +1344,6 @@ namespace LaserGRBL
 
 			mGrblBlocks = int.Parse(ab[0]);
 			mGrblBuffer = int.Parse(ab[1]);
-
-			EnlargeBuffer(mGrblBuffer);
-		}
-
-		private void EnlargeBuffer(int mGrblBuffer)
-		{
-			if (BUFFER_SIZE == 127) //act only to change default value at first event, do not re-act without a new connect
-			{
-				if (mGrblBuffer == 128)
-					BUFFER_SIZE = 128;
-				else if (mGrblBuffer == 256)
-					BUFFER_SIZE = 256;
-				else if (mGrblBuffer == 256)
-					BUFFER_SIZE = 256;
-				else if (mGrblBuffer == 10240)
-					BUFFER_SIZE = 10240;
-			}
 		}
 
 		private void ParseFS(string p)
@@ -1491,26 +1449,26 @@ namespace LaserGRBL
 
 		public void ManageOverrides()
 		{
-			if (mTarOvLinear == 100 && mCurOvLinear != 100) //devo fare un reset
+			if (mTarOvFeed == 100 && mCurOvFeed != 100) //devo fare un reset
 				SendImmediate(144);
-			else if (mTarOvLinear - mCurOvLinear >= 10) //devo fare un bigstep +
+			else if (mTarOvFeed - mCurOvFeed >= 10) //devo fare un bigstep +
 				SendImmediate(145);
-			else if (mCurOvLinear - mTarOvLinear >= 10) //devo fare un bigstep -
+			else if (mCurOvFeed - mTarOvFeed >= 10) //devo fare un bigstep -
 				SendImmediate(146);
-			else if (mTarOvLinear - mCurOvLinear >= 1) //devo fare uno smallstep +
+			else if (mTarOvFeed - mCurOvFeed >= 1) //devo fare uno smallstep +
 				SendImmediate(147);
-			else if (mCurOvLinear - mTarOvLinear >= 1) //devo fare uno smallstep -
+			else if (mCurOvFeed - mTarOvFeed >= 1) //devo fare uno smallstep -
 				SendImmediate(148);
 
-			if (mTarOvPower == 100 && mCurOvPower != 100) //devo fare un reset
+			if (mTarOvSpindle == 100 && mCurOvSpindle != 100) //devo fare un reset
 				SendImmediate(153);
-			else if (mTarOvPower - mCurOvPower >= 10) //devo fare un bigstep +
+			else if (mTarOvSpindle - mCurOvSpindle >= 10) //devo fare un bigstep +
 				SendImmediate(154);
-			else if (mCurOvPower - mTarOvPower >= 10) //devo fare un bigstep -
+			else if (mCurOvSpindle - mTarOvSpindle >= 10) //devo fare un bigstep -
 				SendImmediate(155);
-			else if (mTarOvPower - mCurOvPower >= 1) //devo fare uno smallstep +
+			else if (mTarOvSpindle - mCurOvSpindle >= 1) //devo fare uno smallstep +
 				SendImmediate(156);
-			else if (mCurOvPower - mTarOvPower >= 1) //devo fare uno smallstep -
+			else if (mCurOvSpindle - mTarOvSpindle >= 1) //devo fare uno smallstep -
 				SendImmediate(157);
 
 			if (mTarOvRapids == 100 && mCurOvRapids != 100)
@@ -1536,28 +1494,28 @@ namespace LaserGRBL
 
 		private void ChangeOverrides(int feed, int rapids, int spindle)
 		{
-			bool notify = (feed != mCurOvLinear || rapids != mCurOvRapids || spindle != mCurOvPower);
-			mCurOvLinear = feed;
+			bool notify = (feed != mCurOvFeed || rapids != mCurOvRapids || spindle != mCurOvSpindle);
+			mCurOvFeed = feed;
 			mCurOvRapids = rapids;
-			mCurOvPower = spindle;
+			mCurOvSpindle = spindle;
 
 			if (notify)
 				RiseOverrideChanged();
 		}
 
 		public int OverrideG1
-		{ get { return mCurOvLinear; } }
+		{ get { return mCurOvFeed; } }
 
 		public int OverrideG0
 		{ get { return mCurOvRapids; } }
 
 		public int OverrideS
-		{ get { return mCurOvPower; } }
+		{ get { return mCurOvSpindle; } }
 
 		public int TOverrideG1
 		{
-			get { return mTarOvLinear; }
-			set { mTarOvLinear = value; }
+			get { return mTarOvFeed; }
+			set { mTarOvFeed = value; }
 		}
 
 		public int TOverrideG0
@@ -1568,8 +1526,8 @@ namespace LaserGRBL
 
 		public int TOverrideS
 		{
-			get { return mTarOvPower; }
-			set { mTarOvPower = value; }
+			get { return mTarOvSpindle; }
+			set { mTarOvSpindle = value; }
 		}
 
 		private void ParseMachineStatus(string data)

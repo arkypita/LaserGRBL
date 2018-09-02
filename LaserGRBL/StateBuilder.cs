@@ -83,6 +83,12 @@ namespace LaserGRBL
 			private LastValueElement mCurF = new LastValueElement("F0");
 			private LastValueElement mCurS = new LastValueElement("S0");
 
+			public class AnalyzeCommandRV
+			{
+				public decimal Distance;
+				public TimeSpan Delay;
+			}
+
 			public TimeSpan AnalyzeCommand(GrblCommand cmd, bool compute, GrblConf conf = null)
 			{
 				bool delete = !cmd.JustBuilt;
@@ -163,7 +169,7 @@ namespace LaserGRBL
 			{ get { return mCurZ; } }
 
 			internal bool TrueMovement()
-			{ return (mCurX.Number != mCurX.Previous || mCurY.Number != mCurY.Previous || G2G3); }
+			{ return (mCurX.Number != mCurX.Previous || mCurY.Number != mCurY.Previous); }
 
 
 			private TimeSpan ComputeExecutionTime(GrblCommand cmd, GrblConf conf)
@@ -171,7 +177,7 @@ namespace LaserGRBL
 				decimal f = cmd is JogCommand && cmd.F != null ? cmd.F.Number : mCurF.Number;
 
 				if (G0 && cmd.IsLinearMovement)
-					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)conf.MaxRateX); //todo: use a better computation of xy if different x/y max speed
+					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)conf.MaxRateX); //todo: use a better computation of xy if different speed
 				else if (G1G2G3 && cmd.IsMovement && f != 0)
 					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)Math.Min(f, conf.MaxRateX));
 				else if (cmd.IsPause)
@@ -185,7 +191,7 @@ namespace LaserGRBL
 				if (cmd.IsLinearMovement)
 					return Tools.MathHelper.LinearDistance(mCurX.Previous, mCurY.Previous, mCurX.Number, mCurY.Number);
 				else if (cmd.IsArcMovement) //arc of given radius
-					return (decimal)GetArcHelper(cmd).AbsLenght;
+					return Tools.MathHelper.ArcDistance(mCurX.Previous, mCurY.Previous, mCurX.Number, mCurY.Number, cmd.GetArcRadius());
 				else
 					return 0;
 			}
@@ -229,11 +235,6 @@ namespace LaserGRBL
 				mCurX = new CumulativeElement("X0");
 				mCurY = new CumulativeElement("Y0");
 				mCurZ = new CumulativeElement("Z0");
-			}
-
-			internal G2G3Helper GetArcHelper(GrblCommand cmd)
-			{
-				return new G2G3Helper(this, cmd);
 			}
 		}
 
@@ -356,97 +357,5 @@ namespace LaserGRBL
 
 		public bool IsSetWCO
 		{ get { return G != null && G.Number == 92; } }
-
-
-
-		public class G2G3Helper
-		{
-			public double CenterX;
-			public double CenterY;
-			public double Lenght => AngularWidth * Ray;
-			public double AbsLenght => Math.Abs(Lenght);
-			public bool CW;
-
-			public double Ray;
-
-			public double RectX;
-			public double RectY;
-			public double RectW;
-			public double RectH;
-
-			public double StartAngle;
-			public double EndAngle;
-			public double AngularWidth;
-
-			public G2G3Helper(LaserGRBL.GrblCommand.StatePositionBuilder spb, LaserGRBL.GrblCommand cmd)
-			{
-				bool jb = cmd.JustBuilt;
-				if (!jb) cmd.BuildHelper();
-
-				double aX = (double)spb.X.Previous; //startX
-				double aY = (double)spb.Y.Previous; //startY
-				double bX = (double)spb.X.Number;	//endX
-				double bY = (double)spb.Y.Number;	//endY
-
-				double oX = cmd.I != null ? (double)cmd.I.Number : 0.0; //offsetX
-				double oY = cmd.J != null ? (double)cmd.J.Number : 0.0; //offsetY
-
-				CenterX = aX + oX; //centerX
-				CenterY = aY + oY; //centerY
-
-				Ray = Math.Sqrt(oX * oX + oY * oY);  //raggio
-				RectX = CenterX - Ray;
-				RectY = CenterY - Ray;
-				RectW = 2 * Ray;
-				RectH = 2 * Ray;
-
-				StartAngle = CalculateAngle(CenterX, CenterY, aX, aY); //angolo iniziale
-				EndAngle = CalculateAngle(CenterX, CenterY, bX, bY); //angolo finale
-				AngularWidth = AngularDistance(StartAngle, EndAngle, spb.G2);
-
-				if (!jb) cmd.DeleteHelper();
-			}
-
-
-			public static double CalculateAngle(double x1, double y1, double x2, double y2)
-			{
-				// returns Angle of line between 2 points and X axis (according to quadrants)
-				double Angle = 0;
-
-				if (x1 == x2 && y1 == y2) // same points
-					return 0;
-				else if (x1 == x2) // 90 or 270
-				{
-					Angle = Math.PI / 2;
-					if (y1 > y2) Angle += Math.PI;
-				}
-				else if (y1 == y2) // 0 or 180
-				{
-					Angle = 0;
-					if (x1 > x2) Angle += Math.PI;
-				}
-				else
-				{
-					Angle = Math.Atan(Math.Abs((y2 - y1) / (x2 - x1))); // 1. quadrant
-					if (x1 > x2 && y1 < y2) // 2. quadrant
-						Angle = Math.PI - Angle;
-					else if (x1 > x2 && y1 > y2) // 3. quadrant
-						Angle += Math.PI;
-					else if (x1 < x2 && y1 > y2) // 4. quadrant
-						Angle = 2 * Math.PI - Angle;
-				}
-				return Angle;
-			}
-
-			public static double AngularDistance(double aA, double bA, bool cw)
-			{
-				if (cw)
-					return bA >= aA ? (bA - 2 * Math.PI - aA) : bA - aA;
-				else
-					return -(aA >= bA ? (aA - 2 * Math.PI - bA) : aA - bA);
-			}
-
-
-		}
 	}
 }

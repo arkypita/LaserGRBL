@@ -148,7 +148,7 @@
     <value>ConnectionForm</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Type" xml:space="preserve">
-    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=2.8.47.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=2.8.40.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -175,7 +175,7 @@
     <value>JogForm</value>
   </data>
   <data name="&gt;&gt;JogForm.Type" xml:space="preserve">
-    <value>LaserGRBL.JogForm, LaserGRBL, Version=2.8.47.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.JogForm, LaserGRBL, Version=2.8.40.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;JogForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -217,7 +217,7 @@
     <value>PreviewForm</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Type" xml:space="preserve">
-    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=2.8.47.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=2.8.40.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -280,7 +280,7 @@
     <value>Buffer</value>
   </data>
   <data name="PbBuffer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 18</value>
+    <value>50, 18</value>
   </data>
   <data name="TTLEstimated.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 19</value>
@@ -295,18 +295,18 @@
     <value>unknown</value>
   </data>
   <data name="spring1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 19</value>
+    <value>441, 19</value>
   </data>
-  <data name="TTOvS.AutoSize" type="System.Boolean, mscorlib">
+  <data name="TTOvG0.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="TTOvS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 19</value>
+  <data name="TTOvG0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 19</value>
   </data>
-  <data name="TTOvS.Text" xml:space="preserve">
-    <value>S: 100%</value>
+  <data name="TTOvG0.Text" xml:space="preserve">
+    <value>G0: 100%</value>
   </data>
-  <data name="TTOvS.Visible" type="System.Boolean, mscorlib">
+  <data name="TTOvG0.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="TTOvG1.AutoSize" type="System.Boolean, mscorlib">
@@ -321,16 +321,16 @@
   <data name="TTOvG1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="TTOvG0.AutoSize" type="System.Boolean, mscorlib">
+  <data name="TTOvS.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="TTOvG0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 19</value>
+  <data name="TTOvS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 19</value>
   </data>
-  <data name="TTOvG0.Text" xml:space="preserve">
-    <value>G0: 100%</value>
+  <data name="TTOvS.Text" xml:space="preserve">
+    <value>S: 100%</value>
   </data>
-  <data name="TTOvG0.Visible" type="System.Boolean, mscorlib">
+  <data name="TTOvS.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="spacer.AutoSize" type="System.Boolean, mscorlib">
@@ -650,7 +650,7 @@
 </value>
   </data>
   <data name="MnFileOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnFileOpen.Text" xml:space="preserve">
     <value>&amp;Open File</value>
@@ -721,7 +721,7 @@
 </value>
   </data>
   <data name="MnFileAppend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnFileAppend.Text" xml:space="preserve">
     <value>&amp;Append File</value>
@@ -749,7 +749,7 @@
 </value>
   </data>
   <data name="MnReOpenFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnReOpenFile.Text" xml:space="preserve">
     <value>&amp;Reload Last File</value>
@@ -774,13 +774,13 @@
 </value>
   </data>
   <data name="MnSaveProgram.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnSaveProgram.Text" xml:space="preserve">
     <value>&amp;Save Program</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="MnFileSend.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -799,7 +799,7 @@
 </value>
   </data>
   <data name="MnFileSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnFileSend.Text" xml:space="preserve">
     <value>Send To &amp;Machine</value>
@@ -825,7 +825,7 @@
 </value>
   </data>
   <data name="MnStartFromPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnStartFromPosition.Text" xml:space="preserve">
     <value>Send From &amp;Position</value>

@@ -152,61 +152,13 @@ namespace LaserGRBL
 				return mDrawDisabled;
 			}
 
-			private bool on;
 			protected override void OnClick(EventArgs e)
 			{
-				if (((MouseEventArgs)e).Button != MouseButtons.Left)
-					return;
-
 				if (mDrawDisabled || !CustomButton.EnabledNow(Core))
 					return;
 
-				if (cb.ButtonType == CustomButton.ButtonTypes.Button)
-					Core.ExecuteCustombutton(cb.GCode);
-
-				if (cb.ButtonType == CustomButton.ButtonTypes.TwoStateButton)
-				{
-					on = !on;
-					Core.ExecuteCustombutton(on ? cb.GCode : cb.GCode2);
-					BackColor = on ? Color.Orange : Parent.BackColor;
-				}
-
+				Core.ExecuteCustombutton(cb.GCode);
 				base.OnClick(e);
-			}
-
-
-			protected override void OnMouseDown(MouseEventArgs e)
-			{
-				if (e.Button != MouseButtons.Left)
-					return;
-
-				if (mDrawDisabled || !CustomButton.EnabledNow(Core))
-					return;
-
-				if (cb.ButtonType == CustomButton.ButtonTypes.PushButton)
-				{
-					Core.ExecuteCustombutton(cb.GCode);
-					BackColor = Color.LightBlue;
-				}
-
-				base.OnMouseDown(e);
-			}
-
-			protected override void OnMouseUp(MouseEventArgs e)
-			{
-				if (e.Button != MouseButtons.Left)
-					return;
-
-				if (mDrawDisabled || !CustomButton.EnabledNow(Core))
-					return;
-
-				if (cb.ButtonType == CustomButton.ButtonTypes.PushButton)
-				{
-					Core.ExecuteCustombutton(cb.GCode2);
-					BackColor = Parent.BackColor;
-				}
-
-				base.OnMouseUp(e);
 			}
 
 			private void RemoveButton_Click(object sender, EventArgs e)

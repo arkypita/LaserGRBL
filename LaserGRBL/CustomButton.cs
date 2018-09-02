@@ -100,16 +100,13 @@ namespace LaserGRBL
 	public class CustomButton
 	{
 		public enum EnableStyles { Always = 0, Connected = 1, Idle = 3, Run = 4, IdleProgram = 10}
-		public enum ButtonTypes { Button = 0, TwoStateButton = 1, PushButton =2 }
 
 		public System.Guid guid = Guid.NewGuid();
 		public System.Drawing.Image Image;
 		public string GCode;
-		public string GCode2;
 		public string ToolTip;
 
 		public EnableStyles EnableStyle;
-		public ButtonTypes ButtonType;
 
 		public bool EnabledNow(GrblCore core)
 		{

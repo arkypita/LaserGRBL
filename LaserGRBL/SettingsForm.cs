@@ -15,9 +15,9 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
 
-			//BackColor = ColorScheme.FormBackColor;
-			//ForeColor = ColorScheme.FormForeColor;
-			//TpRasterImport.BackColor = TpHardware.BackColor = BtnCancel.BackColor = BtnSave.BackColor = ColorScheme.FormButtonsColor;
+			BackColor = ColorScheme.FormBackColor;
+			GB.ForeColor = ForeColor = ColorScheme.FormForeColor;
+			BtnCancel.BackColor = BtnSave.BackColor = ColorScheme.FormButtonsColor;
 
 			InitProtocolCB();
 			InitStreamingCB();

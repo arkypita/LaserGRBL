@@ -118,19 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tableLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tableLayoutPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -142,7 +136,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>732, 3</value>
+    <value>554, 3</value>
   </data>
   <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 27</value>
@@ -169,7 +163,7 @@
     <value>NoControl</value>
   </data>
   <data name="BtnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>812, 3</value>
+    <value>634, 3</value>
   </data>
   <data name="BtnSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 27</value>
@@ -196,13 +190,13 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 340</value>
+    <value>3, 358</value>
   </data>
   <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>889, 33</value>
+    <value>711, 33</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -222,15 +216,6 @@
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnCancel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnSave" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="tableLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="tableLayoutPanel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="tableLayoutPanel3.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
-    <value>Single</value>
-  </data>
   <data name="tableLayoutPanel3.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -238,13 +223,13 @@
     <value>Fill</value>
   </data>
   <data name="CbThreadingMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 120</value>
+    <value>24, 162</value>
   </data>
   <data name="CbThreadingMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 0</value>
   </data>
   <data name="CbThreadingMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 21</value>
+    <value>145, 21</value>
   </data>
   <data name="CbThreadingMode.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -261,6 +246,9 @@
   <data name="&gt;&gt;CbThreadingMode.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -268,13 +256,10 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 63</value>
+    <value>173, 106</value>
   </data>
   <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
-  </data>
-  <data name="label4.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>690, 0</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>527, 52</value>
@@ -304,13 +289,13 @@
     <value>Fill</value>
   </data>
   <data name="CBStreamingMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 61</value>
+    <value>24, 104</value>
   </data>
   <data name="CBStreamingMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 0</value>
   </data>
   <data name="CBStreamingMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 21</value>
+    <value>145, 21</value>
   </data>
   <data name="CBStreamingMode.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -343,7 +328,7 @@
 </value>
   </data>
   <data name="BtnStreamingMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 63</value>
+    <value>3, 106</value>
   </data>
   <data name="BtnStreamingMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 17</value>
@@ -355,7 +340,7 @@
     <value>BtnStreamingMode</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.46.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.42.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -367,13 +352,13 @@
     <value>Fill</value>
   </data>
   <data name="CBProtocol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 2</value>
+    <value>24, 46</value>
   </data>
   <data name="CBProtocol.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 0</value>
   </data>
   <data name="CBProtocol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 21</value>
+    <value>145, 21</value>
   </data>
   <data name="CBProtocol.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -390,6 +375,113 @@
   <data name="&gt;&gt;CBProtocol.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="CBSupportPWM.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CBSupportPWM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CBSupportPWM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 3</value>
+  </data>
+  <data name="CBSupportPWM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 17</value>
+  </data>
+  <data name="CBSupportPWM.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="CBSupportPWM.Text" xml:space="preserve">
+    <value>Support PWM</value>
+  </data>
+  <data name="&gt;&gt;CBSupportPWM.Name" xml:space="preserve">
+    <value>CBSupportPWM</value>
+  </data>
+  <data name="&gt;&gt;CBSupportPWM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CBSupportPWM.Parent" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;CBSupportPWM.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 3</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>449, 39</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>LaserGRBL use power modulation through G-Code "S command" to produce grayscale tones.
+Your laser must support TTL control connected to arduino PIN D11.
+If not, please disable PWM support.</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="BtnModulationInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="BtnModulationInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="BtnModulationInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 17</value>
+  </data>
+  <data name="BtnModulationInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;BtnModulationInfo.Name" xml:space="preserve">
+    <value>BtnModulationInfo</value>
+  </data>
+  <data name="&gt;&gt;BtnModulationInfo.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.42.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BtnModulationInfo.Parent" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;BtnModulationInfo.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -397,13 +489,10 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 4</value>
+    <value>173, 48</value>
   </data>
   <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
-  </data>
-  <data name="label3.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>690, 0</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>528, 52</value>
@@ -427,7 +516,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="BtnProtocol.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -445,7 +534,7 @@
 </value>
   </data>
   <data name="BtnProtocol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
+    <value>3, 48</value>
   </data>
   <data name="BtnProtocol.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 17</value>
@@ -457,13 +546,82 @@
     <value>BtnProtocol</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.46.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.42.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
+  </data>
+  <data name="CbUnidirectional.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CbUnidirectional.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CbUnidirectional.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 209</value>
+  </data>
+  <data name="CbUnidirectional.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 17</value>
+  </data>
+  <data name="CbUnidirectional.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>Unidirectional Engraving</value>
+  </data>
+  <data name="&gt;&gt;CbUnidirectional.Name" xml:space="preserve">
+    <value>CbUnidirectional</value>
+  </data>
+  <data name="&gt;&gt;CbUnidirectional.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CbUnidirectional.Parent" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;CbUnidirectional.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 211</value>
+  </data>
+  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 13</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Disable bidirectional engraving.</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="label6.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -472,24 +630,20 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 122</value>
+    <value>173, 164</value>
   </data>
   <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="label6.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>690, 0</value>
-  </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>429, 39</value>
+    <value>526, 39</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Threading Mode: UltraFast, Fast, Quiet, Slow. [Default UltraFast]
-This setting affect the speed of sending thread and the frequency of status report request.
-Set slower values if you are experiencing issues.</value>
+    <value>Threading Mode: UltraFast, Fast, Normal, Slow. [Default UltraFast]
+This setting affect the speed of sending thread and the frequency of status report request. Set slower values if you are experiencing issues.</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
@@ -501,7 +655,7 @@ Set slower values if you are experiencing issues.</value>
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>12</value>
   </data>
   <data name="BtnThreadingModel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -519,7 +673,7 @@ Set slower values if you are experiencing issues.</value>
 </value>
   </data>
   <data name="BtnThreadingModel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 122</value>
+    <value>3, 164</value>
   </data>
   <data name="BtnThreadingModel.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 17</value>
@@ -531,13 +685,13 @@ Set slower values if you are experiencing issues.</value>
     <value>BtnThreadingModel</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.46.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.42.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>13</value>
   </data>
   <data name="CbIssueDetector.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -546,7 +700,7 @@ Set slower values if you are experiencing issues.</value>
     <value>NoControl</value>
   </data>
   <data name="CbIssueDetector.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 168</value>
+    <value>26, 232</value>
   </data>
   <data name="CbIssueDetector.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 17</value>
@@ -567,7 +721,10 @@ Set slower values if you are experiencing issues.</value>
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;CbIssueDetector.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>14</value>
+  </data>
+  <data name="label7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -576,13 +733,10 @@ Set slower values if you are experiencing issues.</value>
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 168</value>
+    <value>173, 232</value>
   </data>
   <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
-  </data>
-  <data name="label7.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>690, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>424, 26</value>
@@ -604,7 +758,7 @@ If disabled all the issues are silently managed without warning.</value>
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>15</value>
   </data>
   <data name="CbSoftReset.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -613,7 +767,7 @@ If disabled all the issues are silently managed without warning.</value>
     <value>NoControl</value>
   </data>
   <data name="CbSoftReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 201</value>
+    <value>26, 264</value>
   </data>
   <data name="CbSoftReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 17</value>
@@ -634,7 +788,10 @@ If disabled all the issues are silently managed without warning.</value>
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;CbSoftReset.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>16</value>
+  </data>
+  <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -643,13 +800,10 @@ If disabled all the issues are silently managed without warning.</value>
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 201</value>
+    <value>173, 266</value>
   </data>
   <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
-  </data>
-  <data name="label2.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>690, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>380, 13</value>
@@ -670,7 +824,7 @@ If disabled all the issues are silently managed without warning.</value>
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>17</value>
   </data>
   <data name="CbHardReset.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -679,7 +833,7 @@ If disabled all the issues are silently managed without warning.</value>
     <value>NoControl</value>
   </data>
   <data name="CbHardReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 225</value>
+    <value>26, 287</value>
   </data>
   <data name="CbHardReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 17</value>
@@ -700,7 +854,10 @@ If disabled all the issues are silently managed without warning.</value>
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;CbHardReset.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>18</value>
+  </data>
+  <data name="label8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -709,13 +866,10 @@ If disabled all the issues are silently managed without warning.</value>
     <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 225</value>
+    <value>173, 289</value>
   </data>
   <data name="label8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
-  </data>
-  <data name="label8.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>690, 0</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 13</value>
@@ -736,19 +890,19 @@ If disabled all the issues are silently managed without warning.</value>
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>19</value>
   </data>
   <data name="tableLayoutPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>3, 16</value>
   </data>
   <data name="tableLayoutPanel3.RowCount" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>875, 299</value>
+    <value>705, 330</value>
   </data>
   <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -760,302 +914,39 @@ If disabled all the issues are silently managed without warning.</value>
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel3.Parent" xml:space="preserve">
-    <value>TpHardware</value>
+    <value>GB</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel3.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbThreadingMode" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CBStreamingMode" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnStreamingMode" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CBProtocol" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnProtocol" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label6" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnThreadingModel" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbIssueDetector" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label7" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbSoftReset" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbHardReset" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label8" Row="5" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,Absolute,148,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbThreadingMode" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CBStreamingMode" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnStreamingMode" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CBProtocol" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CBSupportPWM" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnModulationInfo" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnProtocol" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbUnidirectional" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label5" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label6" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnThreadingModel" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbIssueDetector" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label7" Row="5" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbSoftReset" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="6" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbHardReset" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label8" Row="7" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="TpHardware.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TpHardware.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TpHardware.Size" type="System.Drawing.Size, System.Drawing">
-    <value>881, 305</value>
-  </data>
-  <data name="TpHardware.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="TpHardware.Text" xml:space="preserve">
-    <value>Protocol</value>
-  </data>
-  <data name="&gt;&gt;TpHardware.Name" xml:space="preserve">
-    <value>TpHardware</value>
-  </data>
-  <data name="&gt;&gt;TpHardware.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TpHardware.Parent" xml:space="preserve">
-    <value>MainTabPage</value>
-  </data>
-  <data name="&gt;&gt;TpHardware.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="tableLayoutPanel4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="tableLayoutPanel4.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
-    <value>Single</value>
-  </data>
-  <data name="tableLayoutPanel4.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 4</value>
-  </data>
-  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="label1.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>690, 0</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>449, 39</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>LaserGRBL use power modulation through G-Code "S command" to produce grayscale tones.
-Your laser must support TTL control connected to arduino PIN D11.
-If not, please disable PWM support.</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 50</value>
-  </data>
-  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="label5.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>690, 0</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>662, 26</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>By default LaserGRBL produces engraving lines in both travel directions of the laser head. Some tests have shown that this mode (which is faster) produces lower quality results. If the maximum marking quality is desired, activate this option.</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="CbUnidirectional.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CbUnidirectional.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CbUnidirectional.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 50</value>
-  </data>
-  <data name="CbUnidirectional.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 17</value>
-  </data>
-  <data name="CbUnidirectional.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
-  </data>
-  <data name="CbUnidirectional.Text" xml:space="preserve">
-    <value>Unidirectional Engraving</value>
-  </data>
-  <data name="&gt;&gt;CbUnidirectional.Name" xml:space="preserve">
-    <value>CbUnidirectional</value>
-  </data>
-  <data name="&gt;&gt;CbUnidirectional.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CbUnidirectional.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;CbUnidirectional.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="CBSupportPWM.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CBSupportPWM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CBSupportPWM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 4</value>
-  </data>
-  <data name="CBSupportPWM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 17</value>
-  </data>
-  <data name="CBSupportPWM.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="CBSupportPWM.Text" xml:space="preserve">
-    <value>Support PWM</value>
-  </data>
-  <data name="&gt;&gt;CBSupportPWM.Name" xml:space="preserve">
-    <value>CBSupportPWM</value>
-  </data>
-  <data name="&gt;&gt;CBSupportPWM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CBSupportPWM.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;CBSupportPWM.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="BtnModulationInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
-        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
-        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
-        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
-        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
-        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
-        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
-        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
-        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
-        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="BtnModulationInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
-  </data>
-  <data name="BtnModulationInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 17</value>
-  </data>
-  <data name="BtnModulationInfo.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;BtnModulationInfo.Name" xml:space="preserve">
-    <value>BtnModulationInfo</value>
-  </data>
-  <data name="&gt;&gt;BtnModulationInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.46.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;BtnModulationInfo.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;BtnModulationInfo.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tableLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="GB.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="GB.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="tableLayoutPanel4.RowCount" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="GB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>711, 349</value>
   </data>
-  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>875, 378</value>
-  </data>
-  <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Name" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Parent" xml:space="preserve">
-    <value>TpRasterImport</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label5" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbUnidirectional" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CBSupportPWM" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnModulationInfo" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="TpRasterImport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TpRasterImport.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TpRasterImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>881, 384</value>
-  </data>
-  <data name="TpRasterImport.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="TpRasterImport.Text" xml:space="preserve">
-    <value>Raster import</value>
-  </data>
-  <data name="&gt;&gt;TpRasterImport.Name" xml:space="preserve">
-    <value>TpRasterImport</value>
-  </data>
-  <data name="&gt;&gt;TpRasterImport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TpRasterImport.Parent" xml:space="preserve">
-    <value>MainTabPage</value>
-  </data>
-  <data name="&gt;&gt;TpRasterImport.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="MainTabPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="MainTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="MainTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>889, 331</value>
-  </data>
-  <data name="MainTabPage.TabIndex" type="System.Int32, mscorlib">
+  <data name="GB.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;MainTabPage.Name" xml:space="preserve">
-    <value>MainTabPage</value>
+  <data name="GB.Text" xml:space="preserve">
+    <value>Hardware Capabilities</value>
   </data>
-  <data name="&gt;&gt;MainTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;GB.Name" xml:space="preserve">
+    <value>GB</value>
   </data>
-  <data name="&gt;&gt;MainTabPage.Parent" xml:space="preserve">
+  <data name="&gt;&gt;GB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GB.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;MainTabPage.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;GB.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -1068,7 +959,7 @@ If not, please disable PWM support.</value>
     <value>2</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>895, 376</value>
+    <value>717, 394</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1086,7 +977,7 @@ If not, please disable PWM support.</value>
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="MainTabPage" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GB" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1094,14 +985,8 @@ If not, please disable PWM support.</value>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
-  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>895, 376</value>
+    <value>717, 394</value>
   </data>
   <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>

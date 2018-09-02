@@ -117,150 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Annulla</value>
-  </data>
-  <data name="BtnSave.Text" xml:space="preserve">
-    <value>Salva</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Capacità Hardware</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>492, 52</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Modalità di invio:
-- Buffered: ottimizza l'invio di comandi  saturando il buffer di grbl [raccomandato]
-- Synchronous: attende l'esecuzione di ciascun comando prima di inviare il successivo [lento ma sicuro]
-- RepeatOnError: come Synchronous ma ripete i comandi se intercetta errori [sperimentale]</value>
-  </data>
-  <data name="BtnStreamingMode.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
-        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
-        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
-        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
-        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
-        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
-        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
-        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
-        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
-        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>546, 52</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Protocollo di connessione:
-- UsbSerial, il protocollo più comune. Da usare se la tua marcatrice è connessa via porta USB o COM.
-- Telnet, se hai un collegamento WiFi-Telnet. Implementa un semplice client-server telnet.
-- LaserWebESP8266 fornisce la connessione WiFi via WebSocket. Modalità compatible con LaserWeb-ESP8266.</value>
-  </data>
-  <data name="BtnProtocol.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
-        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
-        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
-        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
-        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
-        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
-        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
-        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
-        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
-        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>513, 39</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Modalità Thread: UltraFast, Fast, Quiet, Slow. [Default UltraFast]
-Questa impostazione influisce sulla velocità dei thread di invio e sulla frequenza di aggiornamento degli stati.
-Se rilevi problemi di comunicazione e di stabilità prova a diminuire questo valore.</value>
-  </data>
-  <data name="BtnThreadingModel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
-        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
-        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
-        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
-        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
-        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
-        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
-        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
-        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
-        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="CbIssueDetector.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 17</value>
-  </data>
-  <data name="CbIssueDetector.Text" xml:space="preserve">
-    <value>Intercetta Errori</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>511, 26</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>LaserGRBL può intercettare e riconoscere alcuni problemi e avvisare l'utente suggerento stategie risolutive.
-Se disabilitato tutti i problemi vengono gestiti silenziosamente senza avvisi.</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>395, 13</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Se abilitato LaserGRBL invia un soft-reset nel momento in cui apre la connessione.</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>528, 13</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Se abilitato LaserGRBL invia un hard-reset nel momento in cui apre la connessione. [La posizione viene persa!]</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 65</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Dimensioni buffer: [Default 127] - attenzione: valori sbagliati bloccano grbl!
-- 127 valore di sicurezza: compatibile con mcu atmega328p e grbl v0.9 e v1.1
-- 128 compatibile con atmega328p solo in coppia con grbl v1.1
-- 256 compatibile solo con mcu ATmega2560 e grbl-Mega
-- 10240 compatibile solo con mcu LPC1769 e grbl-LPC</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 4</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>546, 39</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>LaserGRBL usa la modulazione di potenza attraverso il comando G-Code "S" per produrre immagini in toni di grigio.
-Il tuo laser deve supportare il controllo TTL collegato al pin D11 di Arduino.
-Se la tua configurazione non lo prevede, disabilita la modalità PWM.</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 50</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>663, 26</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Di default LaserGRBL produce righe di marcatura in entrambe le direzioni di viaggio della testa laser. Alcuni test hanno mostrato che questa modalità (che è più veloce) produce risultati di qualità inferiore. Se si desidera la massima qualità di marcatura attivare questa opzione.</value>
-  </data>
-  <data name="CbUnidirectional.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 17</value>
-  </data>
-  <data name="CbUnidirectional.Text" xml:space="preserve">
-    <value>Marcatura Monodirezionale</value>
-  </data>
   <data name="CBSupportPWM.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 17</value>
   </data>
   <data name="CBSupportPWM.Text" xml:space="preserve">
     <value>Supporta PWM</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 0</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>286, 78</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>LaserGRBL usa la modulazione di potenza attraverso il comando G-Code "S" per produrre immagini in toni di grigio.
+Il tuo laser deve supportare il controllo TTL collegato al pin D11 di Arduino.
+Se la tua configurazione non lo prevede, disabilita la modalità PWM.</value>
   </data>
   <data name="BtnModulationInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -277,7 +153,40 @@ Se la tua configurazione non lo prevede, disabilita la modalità PWM.</value>
         2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 90</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>289, 52</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>La modalità Laser è disponibile in GRBL v1.1 e successive. Ciò provoca il disinserimento del laser durante i movimenti veloci. LaserGRBL disegnerà i movimenti veloci in modo diverso rispetto ai movimenti traccianti.</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Configurazione</value>
+  </data>
+  <data name="GB.Text" xml:space="preserve">
+    <value>Capacità Hardware</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Modalità di invio:
+- Buffered: ottimizza l'invio di comandi  saturando il buffer di grbl [raccomandato]
+- Synchronous: attende l'esecuzione di ciascun comando prima di inviare il successivo [lento ma sicuro]
+- RepeatOnError: come Synchronous ma ripete i comandi se intercetta errori [sperimentale]</value>
+  </data>
+  <data name="CBLaserMode.Text" xml:space="preserve">
+    <value>Modalità Laser</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Protocollo di connessione:
+- UsbSerial, il protocollo più comune. Da usare se la tua marcatrice è connessa via porta USB o COM.
+- Telnet, se hai un collegamento WiFi-Telnet. Implementa un semplice client-server telnet.
+- LaserWebESP8266 fornisce la connessione WiFi via WebSocket. Modalità compatible con LaserWeb-ESP8266.</value>
   </data>
 </root>

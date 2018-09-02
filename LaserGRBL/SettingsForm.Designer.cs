@@ -33,45 +33,39 @@
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnSave = new System.Windows.Forms.Button();
-			this.MainTabPage = new System.Windows.Forms.TabControl();
-			this.TpHardware = new System.Windows.Forms.TabPage();
+			this.GB = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.CbThreadingMode = new System.Windows.Forms.ComboBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.CBStreamingMode = new System.Windows.Forms.ComboBox();
-			this.BtnStreamingMode = new LaserGRBL.UserControls.ImageButton();
 			this.CBProtocol = new System.Windows.Forms.ComboBox();
+			this.CBSupportPWM = new System.Windows.Forms.CheckBox();
+			this.label1 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
-			this.BtnProtocol = new LaserGRBL.UserControls.ImageButton();
+			this.CbUnidirectional = new System.Windows.Forms.CheckBox();
+			this.label5 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
-			this.BtnThreadingModel = new LaserGRBL.UserControls.ImageButton();
 			this.CbIssueDetector = new System.Windows.Forms.CheckBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.CbSoftReset = new System.Windows.Forms.CheckBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.CbHardReset = new System.Windows.Forms.CheckBox();
 			this.label8 = new System.Windows.Forms.Label();
-			this.TpRasterImport = new System.Windows.Forms.TabPage();
-			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.CbUnidirectional = new System.Windows.Forms.CheckBox();
-			this.CBSupportPWM = new System.Windows.Forms.CheckBox();
+			this.BtnStreamingMode = new LaserGRBL.UserControls.ImageButton();
 			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
+			this.BtnProtocol = new LaserGRBL.UserControls.ImageButton();
+			this.BtnThreadingModel = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
-			this.MainTabPage.SuspendLayout();
-			this.TpHardware.SuspendLayout();
+			this.GB.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
-			this.TpRasterImport.SuspendLayout();
-			this.tableLayoutPanel4.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
 			// 
 			resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
 			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-			this.tableLayoutPanel1.Controls.Add(this.MainTabPage, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.GB, 0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			// 
 			// tableLayoutPanel2
@@ -96,39 +90,36 @@
 			this.BtnSave.UseVisualStyleBackColor = true;
 			this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
 			// 
-			// MainTabPage
+			// GB
 			// 
-			this.MainTabPage.Controls.Add(this.TpHardware);
-			this.MainTabPage.Controls.Add(this.TpRasterImport);
-			resources.ApplyResources(this.MainTabPage, "MainTabPage");
-			this.MainTabPage.Name = "MainTabPage";
-			this.MainTabPage.SelectedIndex = 0;
-			// 
-			// TpHardware
-			// 
-			this.TpHardware.Controls.Add(this.tableLayoutPanel3);
-			resources.ApplyResources(this.TpHardware, "TpHardware");
-			this.TpHardware.Name = "TpHardware";
-			this.TpHardware.UseVisualStyleBackColor = true;
+			this.GB.Controls.Add(this.tableLayoutPanel3);
+			resources.ApplyResources(this.GB, "GB");
+			this.GB.Name = "GB";
+			this.GB.TabStop = false;
 			// 
 			// tableLayoutPanel3
 			// 
 			resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
-			this.tableLayoutPanel3.Controls.Add(this.CbThreadingMode, 1, 2);
-			this.tableLayoutPanel3.Controls.Add(this.label4, 2, 1);
-			this.tableLayoutPanel3.Controls.Add(this.CBStreamingMode, 1, 1);
-			this.tableLayoutPanel3.Controls.Add(this.BtnStreamingMode, 0, 1);
-			this.tableLayoutPanel3.Controls.Add(this.CBProtocol, 1, 0);
-			this.tableLayoutPanel3.Controls.Add(this.label3, 2, 0);
-			this.tableLayoutPanel3.Controls.Add(this.BtnProtocol, 0, 0);
-			this.tableLayoutPanel3.Controls.Add(this.label6, 2, 2);
-			this.tableLayoutPanel3.Controls.Add(this.BtnThreadingModel, 0, 2);
-			this.tableLayoutPanel3.Controls.Add(this.CbIssueDetector, 1, 3);
-			this.tableLayoutPanel3.Controls.Add(this.label7, 2, 3);
-			this.tableLayoutPanel3.Controls.Add(this.CbSoftReset, 1, 4);
-			this.tableLayoutPanel3.Controls.Add(this.label2, 2, 4);
-			this.tableLayoutPanel3.Controls.Add(this.CbHardReset, 1, 5);
-			this.tableLayoutPanel3.Controls.Add(this.label8, 2, 5);
+			this.tableLayoutPanel3.Controls.Add(this.CbThreadingMode, 1, 3);
+			this.tableLayoutPanel3.Controls.Add(this.label4, 2, 2);
+			this.tableLayoutPanel3.Controls.Add(this.CBStreamingMode, 1, 2);
+			this.tableLayoutPanel3.Controls.Add(this.BtnStreamingMode, 0, 2);
+			this.tableLayoutPanel3.Controls.Add(this.CBProtocol, 1, 1);
+			this.tableLayoutPanel3.Controls.Add(this.CBSupportPWM, 1, 0);
+			this.tableLayoutPanel3.Controls.Add(this.label1, 2, 0);
+			this.tableLayoutPanel3.Controls.Add(this.BtnModulationInfo, 0, 0);
+			this.tableLayoutPanel3.Controls.Add(this.label3, 2, 1);
+			this.tableLayoutPanel3.Controls.Add(this.BtnProtocol, 0, 1);
+			this.tableLayoutPanel3.Controls.Add(this.CbUnidirectional, 1, 4);
+			this.tableLayoutPanel3.Controls.Add(this.label5, 2, 4);
+			this.tableLayoutPanel3.Controls.Add(this.label6, 2, 3);
+			this.tableLayoutPanel3.Controls.Add(this.BtnThreadingModel, 0, 3);
+			this.tableLayoutPanel3.Controls.Add(this.CbIssueDetector, 1, 5);
+			this.tableLayoutPanel3.Controls.Add(this.label7, 2, 5);
+			this.tableLayoutPanel3.Controls.Add(this.CbSoftReset, 1, 6);
+			this.tableLayoutPanel3.Controls.Add(this.label2, 2, 6);
+			this.tableLayoutPanel3.Controls.Add(this.CbHardReset, 1, 7);
+			this.tableLayoutPanel3.Controls.Add(this.label8, 2, 7);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
 			// 
 			// CbThreadingMode
@@ -150,18 +141,6 @@
 			this.CBStreamingMode.FormattingEnabled = true;
 			this.CBStreamingMode.Name = "CBStreamingMode";
 			// 
-			// BtnStreamingMode
-			// 
-			this.BtnStreamingMode.AltImage = null;
-			this.BtnStreamingMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnStreamingMode.Coloration = System.Drawing.Color.Empty;
-			this.BtnStreamingMode.Image = ((System.Drawing.Image)(resources.GetObject("BtnStreamingMode.Image")));
-			resources.ApplyResources(this.BtnStreamingMode, "BtnStreamingMode");
-			this.BtnStreamingMode.Name = "BtnStreamingMode";
-			this.BtnStreamingMode.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnStreamingMode.UseAltImage = false;
-			this.BtnStreamingMode.Click += new System.EventHandler(this.BtnStreamingMode_Click);
-			// 
 			// CBProtocol
 			// 
 			resources.ApplyResources(this.CBProtocol, "CBProtocol");
@@ -169,39 +148,37 @@
 			this.CBProtocol.FormattingEnabled = true;
 			this.CBProtocol.Name = "CBProtocol";
 			// 
+			// CBSupportPWM
+			// 
+			resources.ApplyResources(this.CBSupportPWM, "CBSupportPWM");
+			this.CBSupportPWM.Name = "CBSupportPWM";
+			this.CBSupportPWM.UseVisualStyleBackColor = true;
+			// 
+			// label1
+			// 
+			resources.ApplyResources(this.label1, "label1");
+			this.label1.Name = "label1";
+			// 
 			// label3
 			// 
 			resources.ApplyResources(this.label3, "label3");
 			this.label3.Name = "label3";
 			// 
-			// BtnProtocol
+			// CbUnidirectional
 			// 
-			this.BtnProtocol.AltImage = null;
-			this.BtnProtocol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnProtocol.Coloration = System.Drawing.Color.Empty;
-			this.BtnProtocol.Image = ((System.Drawing.Image)(resources.GetObject("BtnProtocol.Image")));
-			resources.ApplyResources(this.BtnProtocol, "BtnProtocol");
-			this.BtnProtocol.Name = "BtnProtocol";
-			this.BtnProtocol.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnProtocol.UseAltImage = false;
-			this.BtnProtocol.Click += new System.EventHandler(this.BtnProtocol_Click);
+			resources.ApplyResources(this.CbUnidirectional, "CbUnidirectional");
+			this.CbUnidirectional.Name = "CbUnidirectional";
+			this.CbUnidirectional.UseVisualStyleBackColor = true;
+			// 
+			// label5
+			// 
+			resources.ApplyResources(this.label5, "label5");
+			this.label5.Name = "label5";
 			// 
 			// label6
 			// 
 			resources.ApplyResources(this.label6, "label6");
 			this.label6.Name = "label6";
-			// 
-			// BtnThreadingModel
-			// 
-			this.BtnThreadingModel.AltImage = null;
-			this.BtnThreadingModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnThreadingModel.Coloration = System.Drawing.Color.Empty;
-			this.BtnThreadingModel.Image = ((System.Drawing.Image)(resources.GetObject("BtnThreadingModel.Image")));
-			resources.ApplyResources(this.BtnThreadingModel, "BtnThreadingModel");
-			this.BtnThreadingModel.Name = "BtnThreadingModel";
-			this.BtnThreadingModel.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnThreadingModel.UseAltImage = false;
-			this.BtnThreadingModel.Click += new System.EventHandler(this.BtnThreadingModel_Click);
 			// 
 			// CbIssueDetector
 			// 
@@ -236,44 +213,17 @@
 			resources.ApplyResources(this.label8, "label8");
 			this.label8.Name = "label8";
 			// 
-			// TpRasterImport
+			// BtnStreamingMode
 			// 
-			this.TpRasterImport.Controls.Add(this.tableLayoutPanel4);
-			resources.ApplyResources(this.TpRasterImport, "TpRasterImport");
-			this.TpRasterImport.Name = "TpRasterImport";
-			this.TpRasterImport.UseVisualStyleBackColor = true;
-			// 
-			// tableLayoutPanel4
-			// 
-			resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
-			this.tableLayoutPanel4.Controls.Add(this.label1, 2, 0);
-			this.tableLayoutPanel4.Controls.Add(this.label5, 2, 1);
-			this.tableLayoutPanel4.Controls.Add(this.CbUnidirectional, 1, 1);
-			this.tableLayoutPanel4.Controls.Add(this.CBSupportPWM, 1, 0);
-			this.tableLayoutPanel4.Controls.Add(this.BtnModulationInfo, 0, 0);
-			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-			// 
-			// label1
-			// 
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
-			// 
-			// label5
-			// 
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
-			// 
-			// CbUnidirectional
-			// 
-			resources.ApplyResources(this.CbUnidirectional, "CbUnidirectional");
-			this.CbUnidirectional.Name = "CbUnidirectional";
-			this.CbUnidirectional.UseVisualStyleBackColor = true;
-			// 
-			// CBSupportPWM
-			// 
-			resources.ApplyResources(this.CBSupportPWM, "CBSupportPWM");
-			this.CBSupportPWM.Name = "CBSupportPWM";
-			this.CBSupportPWM.UseVisualStyleBackColor = true;
+			this.BtnStreamingMode.AltImage = null;
+			this.BtnStreamingMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnStreamingMode.Coloration = System.Drawing.Color.Empty;
+			this.BtnStreamingMode.Image = ((System.Drawing.Image)(resources.GetObject("BtnStreamingMode.Image")));
+			resources.ApplyResources(this.BtnStreamingMode, "BtnStreamingMode");
+			this.BtnStreamingMode.Name = "BtnStreamingMode";
+			this.BtnStreamingMode.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnStreamingMode.UseAltImage = false;
+			this.BtnStreamingMode.Click += new System.EventHandler(this.BtnStreamingMode_Click);
 			// 
 			// BtnModulationInfo
 			// 
@@ -287,28 +237,44 @@
 			this.BtnModulationInfo.UseAltImage = false;
 			this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
 			// 
+			// BtnProtocol
+			// 
+			this.BtnProtocol.AltImage = null;
+			this.BtnProtocol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnProtocol.Coloration = System.Drawing.Color.Empty;
+			this.BtnProtocol.Image = ((System.Drawing.Image)(resources.GetObject("BtnProtocol.Image")));
+			resources.ApplyResources(this.BtnProtocol, "BtnProtocol");
+			this.BtnProtocol.Name = "BtnProtocol";
+			this.BtnProtocol.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnProtocol.UseAltImage = false;
+			this.BtnProtocol.Click += new System.EventHandler(this.BtnProtocol_Click);
+			// 
+			// BtnThreadingModel
+			// 
+			this.BtnThreadingModel.AltImage = null;
+			this.BtnThreadingModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnThreadingModel.Coloration = System.Drawing.Color.Empty;
+			this.BtnThreadingModel.Image = ((System.Drawing.Image)(resources.GetObject("BtnThreadingModel.Image")));
+			resources.ApplyResources(this.BtnThreadingModel, "BtnThreadingModel");
+			this.BtnThreadingModel.Name = "BtnThreadingModel";
+			this.BtnThreadingModel.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnThreadingModel.UseAltImage = false;
+			this.BtnThreadingModel.Click += new System.EventHandler(this.BtnThreadingModel_Click);
+			// 
 			// SettingsForm
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.BtnCancel;
 			this.Controls.Add(this.tableLayoutPanel1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "SettingsForm";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
-			this.MainTabPage.ResumeLayout(false);
-			this.TpHardware.ResumeLayout(false);
-			this.TpHardware.PerformLayout();
+			this.GB.ResumeLayout(false);
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.tableLayoutPanel3.PerformLayout();
-			this.TpRasterImport.ResumeLayout(false);
-			this.TpRasterImport.PerformLayout();
-			this.tableLayoutPanel4.ResumeLayout(false);
-			this.tableLayoutPanel4.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
@@ -318,6 +284,7 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Button BtnCancel;
 		private System.Windows.Forms.Button BtnSave;
+		private System.Windows.Forms.GroupBox GB;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
 		private System.Windows.Forms.CheckBox CBSupportPWM;
 		private System.Windows.Forms.Label label1;
@@ -339,9 +306,5 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.CheckBox CbHardReset;
 		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.TabControl MainTabPage;
-		private System.Windows.Forms.TabPage TpHardware;
-		private System.Windows.Forms.TabPage TpRasterImport;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
 	}
 }
