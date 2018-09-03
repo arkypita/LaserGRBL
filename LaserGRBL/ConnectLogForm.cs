@@ -120,7 +120,7 @@ namespace LaserGRBL
 		//private System.Collections.Generic.SortedDictionary<int, string> GetPortDictionary()
 		//{
 		//	System.Collections.Generic.SortedDictionary<int, string> rv = new System.Collections.Generic.SortedDictionary<int, string>();
-
+		//
 		//	try //add using managment object
 		//	{
 		//		using (System.Management.ManagementObjectSearcher searcher = new System.Management.ManagementObjectSearcher(@"\\.\root\cimv2", "SELECT * FROM Win32_PnPEntity"))
@@ -141,11 +141,11 @@ namespace LaserGRBL
 		//					}
 		//				}
 		//			}
-
+		//
 		//		}
 		//	}
 		//	catch { }
-
+		//
 		//	try //add using SerialPort.GetPortNames 
 		//	{
 		//		foreach (string dirty in System.IO.Ports.SerialPort.GetPortNames())
@@ -153,7 +153,7 @@ namespace LaserGRBL
 		//			string comno = dirty;
 		//			if (!char.IsDigit(comno[comno.Length - 1]))
 		//				comno = comno.Substring(0, comno.Length - 1);
-
+		//
 		//			string caption = comno;
 		//			if (caption != null && ComRX.IsMatch(caption))
 		//			{
@@ -168,8 +168,7 @@ namespace LaserGRBL
 		//		}
 		//	}
 		//	catch { }
-
-
+		//
 		//	return rv;
 		//}
 
