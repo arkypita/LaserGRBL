@@ -697,7 +697,8 @@ namespace LaserGRBL
 			{
 				bool homing = false;
 				int position = LaserGRBL.RunFromPositionForm.CreateAndShowDialog(LoadedFile.Count, Configuration.HomingEnabled, out homing);
-				ContinueProgramFromKnown(position, homing, false);
+                if (position >= 0)
+				    ContinueProgramFromKnown(position, homing, false);
 			}
 		}
 
