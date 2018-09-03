@@ -365,20 +365,6 @@ namespace LaserGRBL
 		private Element GetElement(char key)
 		{ return mHelper.ContainsKey(key) ? mHelper[key] : null; }
 
-		public double GetArcRadius()
-		{
-			double oX = (double)(I != null ? I.Number : 0);
-			double oY = (double)(J != null ? J.Number : 0);
-			return Math.Sqrt(oX * oX + oY * oY);
-		}
-		public PointF GetCenter(float startX, float startY)
-		{
-			float oX = I != null ? (float)I.Number : 0;
-			float oY = J != null ? (float)J.Number : 0;
-
-			return new PointF(startX + oX, startY + oY);
-		}
-
 		public string GetMessage() //per la visualizzazione
 		{  return mRepeatCount == 0 ? Command : String.Format("{0} (Retry {1})", Command, mRepeatCount); } 
 

@@ -146,9 +146,9 @@
             this.TTLEstimated,
             this.TTTEstimated,
             this.spring1,
-            this.TTOvG0,
-            this.TTOvG1,
             this.TTOvS,
+            this.TTOvG1,
+            this.TTOvG0,
             this.spacer,
             this.TTLStatus,
             this.TTTStatus});

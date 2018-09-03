@@ -18,6 +18,7 @@ namespace LaserGRBL.UserControls
 			InitializeComponent();
 			Core = core;
 			fun = function;
+			TB.DoubleClick += TB_DoubleClick;
 			
 			if (function == 0)
 			{
@@ -58,6 +59,11 @@ namespace LaserGRBL.UserControls
 			RefreshText();
 		}
 
+		private void TB_DoubleClick(object sender, EventArgs e)
+		{
+			TB.Value = 100;
+		}
+
 		private void TB_ValueChanged(object sender, EventArgs e)
 		{
 			if (fun == 0)
@@ -94,5 +100,14 @@ namespace LaserGRBL.UserControls
 			Core.ManageOverrides();
 		}
 
+		private void BtnReset_Click(object sender, EventArgs e)
+		{
+			if (fun == 0)
+				TB.Value = 2;
+			if (fun == 1)
+				TB.Value = 100;
+			if (fun == 2)
+				TB.Value = 100;
+		}
 	}
 }
