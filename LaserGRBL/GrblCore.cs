@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Drawing;
 
 namespace LaserGRBL
 {
@@ -199,8 +200,8 @@ namespace LaserGRBL
 		//private StreamingMode mStreamingMode = StreamingMode.Buffered;
 
 		private int mBuffer;
-		private System.Drawing.PointF mMPos;
-		private System.Drawing.PointF mWCO;
+		private GPoint mMPos;
+		private GPoint mWCO;
 		private int mGrblBlocks = -1;
 		private int mGrblBuffer = -1;
 
@@ -704,15 +705,15 @@ namespace LaserGRBL
 
 		private void UserWantToContinue()
 		{
-			bool setwco = mWCO == System.Drawing.PointF.Empty && mTP.LastKnownWCO != System.Drawing.PointF.Empty;
-			bool homing = MachinePosition == System.Drawing.PointF.Empty && mTP.LastIssue != DetectedIssue.ManualAbort && mTP.LastIssue != DetectedIssue.ManualReset; //potrebbe essere dovuto ad un hard reset -> posizione non affidabile
-			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, Configuration.HomingEnabled, homing, out homing, setwco, setwco, out setwco, mTP.LastKnownWCO);
+            bool setwco = mWCO == GPoint.Zero && mTP.LastKnownWCO != GPoint.Zero;
+            bool homing = MachinePosition == GPoint.Zero && mTP.LastIssue != DetectedIssue.ManualAbort && mTP.LastIssue != DetectedIssue.ManualReset; //potrebbe essere dovuto ad un hard reset -> posizione non affidabile
+            int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, Configuration.HomingEnabled, homing, out homing, setwco, setwco, out setwco, mTP.LastKnownWCO);
 
-			if (position == 0)
-				RunProgramFromStart(homing);
-			if (position > 0)
-				ContinueProgramFromKnown(position, homing, setwco);
-		}
+            if (position == 0)
+                RunProgramFromStart(homing);
+            if (position > 0)
+                ContinueProgramFromKnown(position, homing, setwco);
+        }
 
 		private void RunProgramFromStart(bool homing)
 		{
@@ -748,18 +749,18 @@ namespace LaserGRBL
 
 				if (setwco)
 				{
-					//compute current point and set offset
-					System.Drawing.PointF pos = homing ? new System.Drawing.PointF(0, 0) : MachinePosition;
-					System.Drawing.PointF wco = mTP.LastKnownWCO;
-					System.Drawing.PointF cur = new System.Drawing.PointF(pos.X - wco.X, pos.Y - wco.Y);
-					mQueue.Enqueue(new GrblCommand(String.Format("G92 X{0} Y{1}", cur.X.ToString(System.Globalization.CultureInfo.InvariantCulture), cur.Y.ToString(System.Globalization.CultureInfo.InvariantCulture))));
+                    //compute current point and set offset
+                    GPoint pos = homing ? GPoint.Zero : MachinePosition;
+                    GPoint wco = mTP.LastKnownWCO;
+					GPoint cur = pos - wco;
+					mQueue.Enqueue(new GrblCommand(String.Format("G92 X{0} Y{1} Z{2}", cur.X.ToString(System.Globalization.CultureInfo.InvariantCulture), cur.Y.ToString(System.Globalization.CultureInfo.InvariantCulture), cur.Z.ToString(System.Globalization.CultureInfo.InvariantCulture))));
 				}
 
 				for (int i = 0; i < position && i < file.Count; i++) //analizza fino alla posizione
 					spb.AnalyzeCommand(file[i], false);
 
 				mQueuePtr.Enqueue(new GrblCommand("G90")); //absolute coordinate
-				mQueuePtr.Enqueue(new GrblCommand(string.Format("M5 G0 {0} {1} {2} {3}", spb.X, spb.Y, spb.F, spb.S))); //fast go to the computed position with laser off and set speed and power
+				mQueuePtr.Enqueue(new GrblCommand(string.Format("M5 G0 {0} {1} {2} {3} {4}", spb.X, spb.Y, spb.Z, spb.F, spb.S))); //fast go to the computed position with laser off and set speed and power
 				mQueuePtr.Enqueue(new GrblCommand(spb.GetSettledModals()));
 
 				mTP.JobContinue(LoadedFile, position, mQueuePtr.Count);
@@ -946,13 +947,13 @@ namespace LaserGRBL
 		public bool InProgram
 		{ get { return mTP.InProgram; } }
 
-		public System.Drawing.PointF MachinePosition
+		public GPoint MachinePosition
 		{ get { return mMPos; } }
 
-		public System.Drawing.PointF WorkPosition //WCO = MPos - WPos
-		{ get { return new System.Drawing.PointF(mMPos.X - mWCO.X, mMPos.Y - mWCO.Y); } }
+		public GPoint WorkPosition //WCO = MPos - WPos
+		{ get { return mMPos - mWCO; } }
 
-		public System.Drawing.PointF WorkingOffset
+		public GPoint WorkingOffset
 		{ get { return mWCO; } }
 
 		public int Executed
@@ -1032,12 +1033,12 @@ namespace LaserGRBL
 			{
 				if (SupportJogging)
 				{
-					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", JogSpeed)));
+					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0Z0F{0}", JogSpeed)));
 				}
 				else
 				{
 					EnqueueCommand(new GrblCommand(string.Format("G90")));
-					EnqueueCommand(new GrblCommand(string.Format("G0X0Y0F{0}", JogSpeed)));
+					EnqueueCommand(new GrblCommand(string.Format("G0X0Y0Z0F{0}", JogSpeed)));
 				}
 			}
 		}
@@ -1323,10 +1324,10 @@ namespace LaserGRBL
 
 					if (arr.Length > 0)
 						ParseMachineStatus(arr[0]);
-					if (arr.Length > 2)
-						SetMPosition(new System.Drawing.PointF(float.Parse(arr[1].Substring(5, arr[1].Length - 5), System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[2], System.Globalization.NumberFormatInfo.InvariantInfo)));
-					if (arr.Length > 6)
-						ComputeWCO(new System.Drawing.PointF(float.Parse(arr[4].Substring(5, arr[4].Length - 5), System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[5], System.Globalization.NumberFormatInfo.InvariantInfo)));
+					if (arr.Length > 3)
+						SetMPosition(new GPoint(float.Parse(arr[1].Substring(5, arr[1].Length - 5), System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[2], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[3], System.Globalization.NumberFormatInfo.InvariantInfo)));
+					if (arr.Length > 7)
+						ComputeWCO(new GPoint(float.Parse(arr[4].Substring(5, arr[4].Length - 5), System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[5], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(arr[6], System.Globalization.NumberFormatInfo.InvariantInfo)));
 				}
 			}
 			catch (Exception ex)
@@ -1336,30 +1337,30 @@ namespace LaserGRBL
 			}
 		}
 
-		private void ComputeWCO(System.Drawing.PointF wpos) //WCO = MPos - WPos
+		private void ComputeWCO(GPoint wpos) //WCO = MPos - WPos
 		{
-			SetWCO(new System.Drawing.PointF(mMPos.X - wpos.X, mMPos.Y - wpos.Y));
+			SetWCO(mMPos- wpos);
 		}
 
 		private void ParseWCO(string p)
 		{
 			string wco = p.Substring(4, p.Length - 4);
 			string[] xyz = wco.Split(",".ToCharArray());
-			SetWCO(new System.Drawing.PointF(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo)));
+			SetWCO(new GPoint(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[2], System.Globalization.NumberFormatInfo.InvariantInfo)));
 		}
 
 		private void ParseWPos(string p)
 		{
 			string wpos = p.Substring(5, p.Length - 5);
 			string[] xyz = wpos.Split(",".ToCharArray());
-			SetMPosition(new System.Drawing.PointF(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo) + mWCO.X, float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo) + mWCO.Y));
+            SetMPosition(mWCO + new GPoint(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[2], System.Globalization.NumberFormatInfo.InvariantInfo)));
 		}
 
 		private void ParseMPos(string p)
 		{
 			string mpos = p.Substring(5, p.Length - 5);
 			string[] xyz = mpos.Split(",".ToCharArray());
-			SetMPosition(new System.Drawing.PointF(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo)));
+			SetMPosition(new GPoint(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[2], System.Globalization.NumberFormatInfo.InvariantInfo)));
 		}
 
 		private void ParseBf(string p)
@@ -1407,7 +1408,7 @@ namespace LaserGRBL
 			mCurS = s;
 		}
 
-		private void SetMPosition(System.Drawing.PointF pos)
+		private void SetMPosition(GPoint pos)
 		{
 			if (pos != mMPos)
 			{
@@ -1416,7 +1417,7 @@ namespace LaserGRBL
 			}
 		}
 
-		private void SetWCO(System.Drawing.PointF wco)
+		private void SetWCO(GPoint wco)
 		{
 			mWCO = wco;
 			mTP.LastKnownWCO = wco; //remember last wco for job resume
@@ -1642,7 +1643,7 @@ namespace LaserGRBL
 		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm) && Configuration.HomingEnabled; } }
 
 		public bool CanDoZeroing
-		{ get { return IsOpen && MachineStatus == MacStatus.Idle && WorkPosition != System.Drawing.PointF.Empty; } }
+		{ get { return IsOpen && MachineStatus == MacStatus.Idle && WorkPosition != GPoint.Zero; } }
 
 		public bool CanUnlock
 		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm); } }
@@ -1750,7 +1751,7 @@ namespace LaserGRBL
 		{ if (CanUnlock) EnqueueCommand(new GrblCommand("$X")); }
 
 		internal void SetNewZero()
-		{ if (CanDoZeroing) EnqueueCommand(new GrblCommand("G92 X0 Y0")); }
+		{ if (CanDoZeroing) EnqueueCommand(new GrblCommand("G92 X0 Y0 Z0")); }
 
 		public int JogSpeed { get; set; }
 
@@ -1851,9 +1852,9 @@ namespace LaserGRBL
 		private int mContinueCorrection;
 
 		GrblCore.DetectedIssue mLastIssue;
-		private System.Drawing.PointF mLastKnownWCO;
+		private GPoint mLastKnownWCO;
 
-		public System.Drawing.PointF LastKnownWCO
+		public GPoint LastKnownWCO
 		{
 			get { return mLastKnownWCO; }
 			set { if (InProgram) mLastKnownWCO = value; }
@@ -1879,7 +1880,7 @@ namespace LaserGRBL
 			mTargetCount = 0;
 			mContinueCorrection = 0;
 			mLastIssue = GrblCore.DetectedIssue.Unknown;
-			mLastKnownWCO = System.Drawing.PointF.Empty;
+			mLastKnownWCO = GPoint.Zero;
 		}
 
 		public TimeSpan EstimatedTarget
@@ -1961,7 +1962,7 @@ namespace LaserGRBL
 				mErrorCount = 0;
 				mContinueCorrection = 0;
 				mLastIssue = GrblCore.DetectedIssue.Unknown;
-				mLastKnownWCO = System.Drawing.PointF.Empty;
+				mLastKnownWCO = GPoint.Zero;
 			}
 		}
 
@@ -2226,6 +2227,54 @@ namespace LaserGRBL
 			return mData.GetEnumerator();
 		}
 	}
+
+    public struct GPoint
+    {
+        public float X, Y, Z;
+
+        public GPoint(float x, float y, float z)
+        {
+            X = x;
+            Y = y;
+            Z = z;
+        }
+
+        public static GPoint Zero { get { return new GPoint(); } }
+
+        public static bool operator == (GPoint a, GPoint b)
+        {return a.X == b.X && a.Y == b.Y && a.Z == b.Z;}
+
+        public static bool operator != (GPoint a, GPoint b)
+        { return !(a == b); }
+
+        public static GPoint operator - (GPoint a, GPoint b)
+        {return new GPoint(a.X - b.X, a.Y - b.Y, a.Z - b.Z);}
+
+        public static GPoint operator + (GPoint a, GPoint b)
+        { return new GPoint(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
+
+        public override bool Equals(object obj)
+        {
+            return obj is GPoint && ((GPoint)obj) == this;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked // Overflow is fine, just wrap
+            {
+                int hash = 17;
+                hash = hash * 23 + X.GetHashCode();
+                hash = hash * 23 + Y.GetHashCode();
+                hash = hash * 23 + Z.GetHashCode();
+                return hash;
+            }
+        }
+
+        internal PointF ToPointF()
+        {
+            return new PointF(X, Y);
+        }
+    }
 }
 
 /*

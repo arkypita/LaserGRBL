@@ -16,7 +16,7 @@ namespace LaserGRBL
 		bool mAllowH, mSuggestH;
 		int mExec, mSent, mSomeLine;
 
-		internal static int CreateAndShowDialog(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, out bool homing, bool allowWCO, bool suggestWCO, out bool wco, System.Drawing.PointF wcopos)
+		internal static int CreateAndShowDialog(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, out bool homing, bool allowWCO, bool suggestWCO, out bool wco, GPoint wcopos)
 		{
 			ResumeJobForm f = new ResumeJobForm(exec, sent, target, issue, allowHoming, suggestHoming, allowWCO, suggestWCO, wcopos);
 
@@ -28,7 +28,7 @@ namespace LaserGRBL
 			return rv;
 		}
 
-		private ResumeJobForm(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, bool allowWCO, bool suggestWCO, System.Drawing.PointF wcopos)
+		private ResumeJobForm(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, bool allowWCO, bool suggestWCO, GPoint wcopos)
 		{
 			InitializeComponent();
 			mAllowH = allowHoming;
@@ -74,7 +74,9 @@ namespace LaserGRBL
 			CbRestoreWCO.Visible = allowWCO;
 			CbRestoreWCO.Checked = allowWCO && suggestWCO;
 			CbRestoreWCO.Text = String.Format("{0} X{1} Y{2}", CbRestoreWCO.Text, wcopos.X, wcopos.Y);
-		}
+            if (wcopos.Z != 0)
+                CbRestoreWCO.Text += String.Format(" Z{0}", wcopos.Z);
+        }
 
 		public bool DoHoming
 		{ get { return CbRedoHoming.Checked; } }

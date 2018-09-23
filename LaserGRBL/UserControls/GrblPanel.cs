@@ -12,8 +12,8 @@ namespace LaserGRBL.UserControls
 		System.Drawing.Bitmap mBitmap;
 		System.Threading.Thread TH;
 		Matrix mLastMatrix;
-		private PointF mLastWPos;
-		private PointF mLastMPos;
+		private GPoint mLastWPos;
+		private GPoint mLastMPos;
 		private int mCurF;
 		private int mCurS;
 		private bool mFSTrig;
@@ -26,8 +26,8 @@ namespace LaserGRBL.UserControls
 			SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 			SetStyle(ControlStyles.AllPaintingInWmPaint, true);
 			SetStyle(ControlStyles.ResizeRedraw, true);
-			mLastWPos = new PointF(0, 0);
-			mLastMPos = new PointF(0, 0);
+			mLastWPos = GPoint.Zero;
+			mLastMPos = GPoint.Zero;
 		}
 
 		protected override void OnPaintBackground(PaintEventArgs e)
@@ -45,7 +45,7 @@ namespace LaserGRBL.UserControls
 
 				if (Core != null)
 				{
-					PointF p = TranslatePoint(mLastWPos);
+					PointF p = TranslatePoint(mLastWPos.ToPointF());
 					e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 					e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
@@ -69,10 +69,17 @@ namespace LaserGRBL.UserControls
 						sf.LineAlignment = q == GrblFile.CartesianQuadrant.III || q == GrblFile.CartesianQuadrant.IV ? StringAlignment.Far : StringAlignment.Near;
 
 						String position = string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? mLastMPos.X : 0, Core != null ? mLastMPos.Y : 0);
-						if (Core != null && Core.WorkingOffset != PointF.Empty)
+
+                        if (Core != null && (mLastWPos.Z != 0 || mLastMPos.Z != 0))
+                            position = position + string.Format(" Z: {0:0.000}", mLastMPos.Z);
+
+                        if (Core != null && Core.WorkingOffset != GPoint.Zero)
 							position = position + "\n" + string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? mLastWPos.X : 0, Core != null ? mLastWPos.Y : 0);
 
-						if (mCurF != 0 || mCurS != 0 || mFSTrig)
+                        if (Core != null && Core.WorkingOffset != GPoint.Zero  && (mLastWPos.Z != 0 || mLastMPos.Z != 0))
+                            position = position + string.Format(" Z: {0:0.000}", mLastWPos.Z);
+
+                        if (mCurF != 0 || mCurS != 0 || mFSTrig)
 						{
 							mFSTrig = true;
 							String fs = string.Format("F: {0:00000} S: {1:000}", Core != null ? mCurF : 0, Core != null ? mCurS : 0);

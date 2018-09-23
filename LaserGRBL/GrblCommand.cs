@@ -270,7 +270,7 @@ namespace LaserGRBL
 		{ get { return IsLinearMovement || IsArcMovement; } }
 
 		public bool IsLinearMovement
-		{ get { return !IsSetWCO && (X != null || Y != null) && (I == null && J == null && R == null); } }
+		{ get { return !IsSetWCO && (X != null || Y != null || Z != null) && (I == null && J == null && R == null); } }
 
 		//public bool IsRapidMovement
 		//{
