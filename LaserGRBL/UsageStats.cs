@@ -126,6 +126,7 @@ namespace LaserGRBL
 					{ "fVectorization", Counters.Vectorization.ToString() },
 					{ "fDithering", Counters.Dithering.ToString() },
 					{ "fLine2Line", Counters.Line2Line.ToString() },
+                    { "fSvgFile", Counters.SvgFile.ToString() },
                 };
 
 				// client.UploadValues returns page's source as byte array (byte[]) so it must be transformed into a string
