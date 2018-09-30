@@ -258,7 +258,7 @@ namespace GRBL_Plotter
         /// <summary>
         /// Parse SVG dimension (viewbox, width, height)
         /// </summary>
-        private static XNamespace nspace = "http://www.w3.org/2000/svg";
+        private static XNamespace nspace = "";
         private static void parseGlobals(XElement svgCode)
         {   // One px unit is defined to be equal to one user unit. Thus, a length of "5px" is the same as a length of "5".
             Matrix tmp = new Matrix(1, 0, 0, 1, 0, 0); // m11, m12, m21, m22, offsetx, offsety
@@ -271,6 +271,10 @@ namespace GRBL_Plotter
             float scale = 1;
             string tmpString="";
 
+            if (svgCode.Attribute("xmlns") != null)
+                nspace = svgCode.Attribute("xmlns").Value;
+            else
+                nspace = "";
             if (svgCode.Attribute("viewBox") != null)
             {
                 string viewbox = svgCode.Attribute("viewBox").Value.Replace(' ', '|');
