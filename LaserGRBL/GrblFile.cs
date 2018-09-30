@@ -77,7 +77,7 @@ namespace LaserGRBL
 			RiseOnFileLoaded(filename, elapsed);
 		}
 
-        public void LoadSVG(string filename, bool append)
+        public void LoadImportedGcode(string filename, bool append)
         {
             RiseOnFileLoading(filename);
 
@@ -87,22 +87,20 @@ namespace LaserGRBL
                 list.Clear();
 
             mRange.ResetRange();
-            if (System.IO.File.Exists(filename))
-            {
 
-                string gcode = GRBL_Plotter.GCodeFromSVG.convertFromFile(filename);
-                string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                foreach (string l   in lines)
+            string gcode = SvgConverter.GCodeFromSVG.convertFromFile(filename);
+            string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            foreach (string l in lines)
+            {
+                string line = l;
+                if ((line = line.Trim()).Length > 0)
                 {
-                    string line = l;
-                    if ((line = line.Trim()).Length > 0)
-                    {
-                        GrblCommand cmd = new GrblCommand(line);
-                        if (!cmd.IsEmpty)
-                            list.Add(cmd);
-                    }
+                    GrblCommand cmd = new GrblCommand(line);
+                    if (!cmd.IsEmpty)
+                        list.Add(cmd);
                 }
             }
+
             Analyze();
             long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 

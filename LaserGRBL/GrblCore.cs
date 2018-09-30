@@ -441,7 +441,7 @@ namespace LaserGRBL
 						if (lastFN != null && System.IO.File.Exists(lastFN))
 							ofd.FileName = lastFN;
 
-						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.bmp;*.png;*.jpg;*.gif|GCODE Files|*.nc;*.cnc;*.tap;*.gcode|Raster Image|*.bmp;*.png;*.jpg;*.gif|Vector Image (experimental)|*.svg";
+						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.bmp;*.png;*.jpg;*.gif;*.svg|GCODE Files|*.nc;*.cnc;*.tap;*.gcode|Raster Image|*.bmp;*.png;*.jpg;*.gif|Vector Image (experimental)|*.svg";
 						ofd.CheckFileExists = true;
 						ofd.Multiselect = false;
 						ofd.RestoreDirectory = true;
@@ -466,17 +466,13 @@ namespace LaserGRBL
                     }
                     else if (System.IO.Path.GetExtension(filename).ToLowerInvariant() == ".svg")
                     {
-                        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
-
                         try
                         {
-                            file.LoadSVG(filename, append);
-                            UsageCounters.GCodeFile++;
+                            SvgConverter.SvgToGCodeForm.CreateAndShowDialog(this, filename, parent, append);
+                            UsageCounters.SvgFile++;
                         }
                         catch (Exception ex)
-                        { Logger.LogException("GCodeImport", ex); }
-
-                        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+                        { Logger.LogException("SvgImport", ex); }
                     }
                     else //load GCODE file
                     {

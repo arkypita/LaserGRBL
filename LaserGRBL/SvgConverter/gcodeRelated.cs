@@ -29,30 +29,30 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Forms;
 
-namespace GRBL_Plotter
+namespace LaserGRBL.SvgConverter
 {
     public static class gcode
     {   private static string formatCode = "0";
         private static string formatNumber = "0.###";
 
-        private static int gcodeLines = 0;              // counter for GCode lines
-        private static float gcodeDistance = 0;         // counter for GCode move distance
+        //private static int gcodeLines = 0;              // counter for GCode lines
+        //private static float gcodeDistance = 0;         // counter for GCode move distance
 
         //private static int gcodeSubroutineEnable = 0;    // state subroutine
-        private static string gcodeSubroutine = "";    //  subroutine
+        //private static string gcodeSubroutine = "";    //  subroutine
 
         private static bool gcodeDragCompensation = false;
         public static float gcodeDragRadius = 0;
         private static float gcodeDragAngle = 30;
 
-        private static int gcodeDownUp = 0;             // counter for GCode Pen Down / Up
-        private static float gcodeTime = 0;             // counter for GCode work time
-        private static int gcodePauseCounter = 0;       // counter for GCode pause M0 commands
+        //private static int gcodeDownUp = 0;             // counter for GCode Pen Down / Up
+        //private static float gcodeTime = 0;             // counter for GCode work time
+        //private static int gcodePauseCounter = 0;       // counter for GCode pause M0 commands
         //private static int gcodeToolCounter = 0;       // counter for GCode Tools
         //private static string gcodeToolText = "";       // counter for GCode Tools
 
         public static float gcodeXYFeed = 1999;        // XY feed to apply for G1
-        private static bool gcodeComments = true;       // if true insert additional comments into GCode
+        //private static bool gcodeComments = true;       // if true insert additional comments into GCode
 
         //private static bool gcodeToolChange = false;          // Apply tool exchange command
         //private static bool gcodeToolChangeM0 = false;
@@ -63,11 +63,11 @@ namespace GRBL_Plotter
         private static string gcodeSpindleCmd = "3"; // Spindle Command M3 / M4
 
         // Using Spindle-Speed als PWM output to control RC-Servo
-        private static bool gcodePWMEnable = false;     // Change Spindle speed for Pen down/up
-        private static float gcodePWMUp = 199;          // Spindle speed for Pen-up
-        private static float gcodePWMDlyUp = 0;         // Delay to apply after Pen-up (because servo is slow)
-        private static float gcodePWMDown = 799;        // Spindle speed for Pen-down
-        private static float gcodePWMDlyDown = 0;       // Delay to apply after Pen-down (because servo is slow)
+        //private static bool gcodePWMEnable = false;     // Change Spindle speed for Pen down/up
+        //private static float gcodePWMUp = 199;          // Spindle speed for Pen-up
+        //private static float gcodePWMDlyUp = 0;         // Delay to apply after Pen-up (because servo is slow)
+        //private static float gcodePWMDown = 799;        // Spindle speed for Pen-down
+        //private static float gcodePWMDlyDown = 0;       // Delay to apply after Pen-down (because servo is slow)
 
         private static bool gcodeIndividualTool = false;     // Use individual Pen down/up
         private static string gcodeIndividualUp = "";
@@ -80,16 +80,20 @@ namespace GRBL_Plotter
         //private static bool gcodeInsertSubroutine = false;
         //private static int gcodeSubroutineCount = 0;
 
-        private static Stopwatch stopwatch = new Stopwatch();
+        //private static Stopwatch stopwatch = new Stopwatch();
 
         public static void setup()
         {
             setDecimalPlaces((int)Properties.Settings.Default.importGCDecPlaces);
-            gcodeXYFeed = (float)Properties.Settings.Default.importGCXYFeed;
 
-            gcodeComments = Properties.Settings.Default.importGCAddComments;
+            int speed = (int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+            gcodeXYFeed = (float)speed;
+
+            //gcodeComments = Properties.Settings.Default.importGCAddComments;
             gcodeSpindleToggle = Properties.Settings.Default.importGCSpindleToggle;
-            gcodeSpindleSpeed = (float)Properties.Settings.Default.importGCSSpeed;
+
+            int sspeed = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
+            gcodeSpindleSpeed = (float)sspeed;
             if (Properties.Settings.Default.importGCSpindleCmd)
                 gcodeSpindleCmd = "3";
             else
@@ -100,11 +104,11 @@ namespace GRBL_Plotter
             //gcodeZDown = (float)Properties.Settings.Default.importGCZDown;
             //gcodeZFeed = (float)Properties.Settings.Default.importGCZFeed;
 
-            gcodePWMEnable = Properties.Settings.Default.importGCPWMEnable;
-            gcodePWMUp = (float)Properties.Settings.Default.importGCPWMUp;
-            gcodePWMDlyUp = (float)Properties.Settings.Default.importGCPWMDlyUp;
-            gcodePWMDown = (float)Properties.Settings.Default.importGCPWMDown;
-            gcodePWMDlyDown = (float)Properties.Settings.Default.importGCPWMDlyDown;
+            //gcodePWMEnable = Properties.Settings.Default.importGCPWMEnable;
+            //gcodePWMUp = (float)Properties.Settings.Default.importGCPWMUp;
+            //gcodePWMDlyUp = (float)Properties.Settings.Default.importGCPWMDlyUp;
+            //gcodePWMDown = (float)Properties.Settings.Default.importGCPWMDown;
+            //gcodePWMDlyDown = (float)Properties.Settings.Default.importGCPWMDlyDown;
 
             gcodeIndividualTool = Properties.Settings.Default.importGCIndEnable;
             gcodeIndividualUp = Properties.Settings.Default.importGCIndPenUp;
@@ -132,15 +136,15 @@ namespace GRBL_Plotter
             //gcodeSubroutineCount = 0;
             lastMovewasG0 = true;
 
-            gcodeLines = 1;             // counter for GCode lines
-            gcodeDistance = 0;          // counter for GCode move distance
+            //gcodeLines = 1;             // counter for GCode lines
+            //gcodeDistance = 0;          // counter for GCode move distance
             remainingC = (float)Properties.Settings.Default.importGCLineSegmentLength;
 
             //gcodeSubroutineEnable = 0;
-            gcodeSubroutine = "";
-            gcodeDownUp = 0;            // counter for GCode Down/Up
-            gcodeTime = 0;              // counter for GCode work time
-            gcodePauseCounter = 0;      // counter for GCode pause M0 commands
+            //gcodeSubroutine = "";
+            //gcodeDownUp = 0;            // counter for GCode Down/Up
+            //gcodeTime = 0;              // counter for GCode work time
+            //gcodePauseCounter = 0;      // counter for GCode pause M0 commands
             //gcodeToolCounter = 0;
             //gcodeToolText = "";
             lastx = -1; lasty = -1; lastz = 0;
@@ -148,8 +152,8 @@ namespace GRBL_Plotter
             if (gcodeRelative)
             { lastx = 0; lasty = 0; }
 
-            stopwatch = new Stopwatch();
-            stopwatch.Start();
+            //stopwatch = new Stopwatch();
+            //stopwatch.Start();
 
         }
 
@@ -217,27 +221,27 @@ namespace GRBL_Plotter
         private static StringBuilder secondMove = new StringBuilder();
         private static bool applyXYFeedRate = true; // apply XY feed after each Pen-move
 
-        public static void Pause(StringBuilder gcodeString, string cmt="")
-        {
-            if (cmt.Length > 0) cmt = string.Format("({0})", cmt);
-            gcodeString.AppendFormat("M{0:00} {1}\r\n",0,cmt);
-            gcodeLines++;
-            gcodePauseCounter++;
-        }
+        //public static void Pause(StringBuilder gcodeString, string cmt="")
+        //{
+        //    if (cmt.Length > 0) cmt = string.Format("({0})", cmt);
+        //    gcodeString.AppendFormat("M{0:00} {1}\r\n",0,cmt);
+        //    gcodeLines++;
+        //    //gcodePauseCounter++;
+        //}
 
         public static void SpindleOn(StringBuilder gcodeString, string cmt="")
         {
             if (Properties.Settings.Default.importGCTTSSpeed) { cmt += " spindle speed from tool table"; }
             if (cmt.Length > 0) cmt = string.Format("({0})", cmt);
             gcodeString.AppendFormat("M{0} S{1} {2}\r\n", gcodeSpindleCmd, gcodeSpindleSpeed, cmt);
-            gcodeLines++;
+            //gcodeLines++;
         }
 
         public static void SpindleOff(StringBuilder gcodeString, string cmt="")
         {
             if (cmt.Length > 0) cmt = string.Format("({0})", cmt);
             gcodeString.AppendFormat("M{0} {1}\r\n", frmtCode(5), cmt);
-            gcodeLines++;
+            //gcodeLines++;
         }
 
         public static void PenDown(StringBuilder gcodeString, string cmto = "")
@@ -248,7 +252,7 @@ namespace GRBL_Plotter
             drag1stMove = true;
             origFinalX = lastx;
             origFinalY = lasty;
-            if (gcodeComments) { gcodeString.Append("\r\n"); }
+            //if (gcodeComments) { gcodeString.Append("\r\n"); }
             if (gcodeRelative) { cmt += string.Format("rel {0}", lastz); }
             if (cmt.Length >0) { cmt = string.Format("({0})", cmt); }
 
@@ -285,7 +289,7 @@ namespace GRBL_Plotter
             //}
             //if (gcodeComments) gcodeString.Append("\r\n");
 
-            gcodeDownUp++;
+            //gcodeDownUp++;
         }
 
         public static void PenUp(StringBuilder gcodeString, string cmto = "")
@@ -294,7 +298,7 @@ namespace GRBL_Plotter
             drag1stMove = true;
             origFinalX = lastx;
             origFinalY = lasty;
-            if (gcodeComments) { gcodeString.Append("\r\n"); }
+            //if (gcodeComments) { gcodeString.Append("\r\n"); }
             if (gcodeRelative) { cmt += string.Format("rel {0}", lastz); }
             if (cmt.Length >0) { cmt = string.Format("({0})", cmt); }
 
@@ -385,8 +389,8 @@ namespace GRBL_Plotter
 
                 if ((moveLength <= remainingC))//  && !equidistance)           // nothing to split 
                 {
-                    if (gcodeComments)
-                        cmt += string.Format("{0:0.0} until subroutine",remainingC);
+                    //if (gcodeComments)
+                    //    cmt += string.Format("{0:0.0} until subroutine",remainingC);
                     Move(gcodeString, 1, finalx, finaly, z, applyXYFeedRate, cmt);      // remainingC.ToString()
                     remainingC -= moveLength;
                     if (gcodeDragCompensation)
@@ -595,9 +599,9 @@ namespace GRBL_Plotter
                         gcodeString.AppendFormat("G{0} X{1} Y{2} {3} {4}\r\n", frmtCode(gnr), frmtNum(x), frmtNum(y), feed, cmt);
                 }
             }
-            gcodeTime += delta / gcodeXYFeed;
+            //gcodeTime += delta / gcodeXYFeed;
             lastx = x; lasty = y; lastg = gnr; // lastz = tz;
-            gcodeLines++;
+            //gcodeLines++;
         }
 
         public static void splitLine(StringBuilder gcodeString, int gnr, float x1, float y1, float x2, float y2, float maxStep, bool applyFeed, string cmt = "")
@@ -648,9 +652,9 @@ namespace GRBL_Plotter
                     gcodeString.AppendFormat("G{0} X{1} Y{2}  I{3} J{4} {5} {6}\r\n", frmtCode(gnr), frmtNum(x), frmtNum(y), frmtNum(i), frmtNum(j), feed, cmt);
                 lastg = gnr;
             }
-            gcodeTime += fdistance(lastx, lasty, x, y) / gcodeXYFeed;
+            //gcodeTime += fdistance(lastx, lasty, x, y) / gcodeXYFeed;
             lastx = x; lasty = y; lastf = gcodeXYFeed;
-            gcodeLines++;
+            //gcodeLines++;
         }
 
         public static void splitArc(StringBuilder gcodeString, int gnr, float x1, float y1, float x2, float y2, float i, float j, bool applyFeed, string cmt = "")
@@ -792,7 +796,7 @@ namespace GRBL_Plotter
 
         public static string GetHeader(string cmt,string source="")
         {
-            gcodeTime += gcodeDistance / gcodeXYFeed;
+            //gcodeTime += gcodeDistance / gcodeXYFeed;
             string header = ""; //= "( "+cmt+" by GRBL-Plotter )\r\n";
             //if (source.Length>1)
             //    header += string.Format("( Source: {0} )\r\n", source);
@@ -805,7 +809,7 @@ namespace GRBL_Plotter
             //if (gcodeSubroutineCount > 0)
             //    header += string.Format("( Call to subs.: {0} )\r\n", gcodeSubroutineCount);
 
-            stopwatch.Stop();
+            //stopwatch.Stop();
             //header += string.Format("( Conv. time  : {0} )\r\n", stopwatch.Elapsed);
 
             //if (gcodeToolChange)
@@ -820,7 +824,7 @@ namespace GRBL_Plotter
             //    if (cmd.Length > 1)
             //    { header += string.Format("{0} (Setup - GCode-Header)\r\n", cmd.Trim()); gcodeLines++; }
             if (gcodeRelative)
-            { header += string.Format("G91 (Setup relative movement)\r\n"); gcodeLines++; }
+            { header += string.Format("G91 (Setup relative movement)\r\n"); /*gcodeLines++;*/ }
 
             if (Properties.Settings.Default.importUnitGCode)
             {
@@ -838,13 +842,13 @@ namespace GRBL_Plotter
             string[] commands = Properties.Settings.Default.importGCFooter.Split(';');
             foreach (string cmd in commands)
                 if (cmd.Length > 1)
-                { footer += string.Format("{0} (Setup - GCode-Footer)\r\n", cmd.Trim()); gcodeLines++; }
+                { footer += string.Format("{0} (Setup - GCode-Footer)\r\n", cmd.Trim()); /*gcodeLines++; */}
 
             //if (gcodeToolChange && Properties.Settings.Default.ctrlToolChangeEmpty)
             //{ footer += string.Format("T{0} M{1} (Remove tool)\r\n", frmtCode((int)Properties.Settings.Default.ctrlToolChangeEmptyNr), frmtCode(6)); }
 
             footer += "M30 (Program end)\r\n";
-            return footer + gcodeSubroutine;
+            return footer /*+ gcodeSubroutine*/;
         }
 
         //public static void Comment(StringBuilder gcodeString, string cmt)

@@ -103,15 +103,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GCodeCreation\GCodeFromSVG.cs" />
-    <Compile Include="GCodeCreation\gcodeRelated.cs" />
-    <Compile Include="GCodeCreation\toolTable.cs" />
     <Compile Include="Properties\Settings.Designer.cs" />
-    <Compile Include="Properties\Settings1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
+    <Compile Include="SvgConverter\ConvertSizeAndOptionForm.cs">
+      <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SvgConverter\ConvertSizeAndOptionForm.Designer.cs">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SvgConverter\GCodeFromSVG.cs" />
+    <Compile Include="SvgConverter\gcodeRelated.cs" />
     <Compile Include="UrlManager.cs" />
     <Compile Include="ColorScheme.cs" />
     <Compile Include="ComWrapper\Emulator.cs" />
@@ -685,6 +685,39 @@
     <EmbeddedResource Include="SplashScreenForm.resx">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.da.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.de.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.es.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.fr.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.it.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.pt-BR.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.ru.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.zh-CN.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ColorSlider.resx">
       <DependentUpon>ColorSlider.cs</DependentUpon>
     </EmbeddedResource>
@@ -711,10 +744,8 @@
     <None Include="Grafica\LaserGrbl.ico" />
     <None Include="Grafica\rotCCW.png" />
     <None Include="Grafica\rotCW.png" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
-    </None>
+    <None Include="Properties\DataSources\Settings.settings" />
+    <None Include="Properties\Settings.settings" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Grafica\add2.png" />
@@ -764,9 +795,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -22,7 +22,9 @@ namespace LaserGRBL
 			public int Dithering;
 			public int Line2Line;
 
-			internal void Update(UsageCounters c)
+            public int SvgFile { get; internal set; }
+
+            internal void Update(UsageCounters c)
 			{
 				GCodeFile += c.GCodeFile;
 				RasterFile += c.RasterFile;
