@@ -441,7 +441,7 @@ namespace LaserGRBL
 						if (lastFN != null && System.IO.File.Exists(lastFN))
 							ofd.FileName = lastFN;
 
-						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.bmp;*.png;*.jpg;*.gif|GCODE Files|*.nc;*.cnc;*.tap;*.gcode|Raster Image|*.bmp;*.png;*.jpg;*.gif";
+						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.bmp;*.png;*.jpg;*.gif|GCODE Files|*.nc;*.cnc;*.tap;*.gcode|Raster Image|*.bmp;*.png;*.jpg;*.gif|Vector Image (experimental)|*.svg";
 						ofd.CheckFileExists = true;
 						ofd.Multiselect = false;
 						ofd.RestoreDirectory = true;
@@ -454,30 +454,44 @@ namespace LaserGRBL
 					Logger.LogMessage("OpenFile", "Open {0}", filename);
 					Settings.SetObject("Core.LastOpenFile", filename);
 
-					if (ImageExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant())) //import raster image
-					{
-						try
-						{
-							RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent, append);
-							UsageCounters.RasterFile++;
-						}
-						catch (Exception ex)
-						{ Logger.LogException("RasterImport", ex); }
-					}
-					else //load GCODE file
-					{
-						System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+                    if (ImageExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant())) //import raster image
+                    {
+                        try
+                        {
+                            RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent, append);
+                            UsageCounters.RasterFile++;
+                        }
+                        catch (Exception ex)
+                        { Logger.LogException("RasterImport", ex); }
+                    }
+                    else if (System.IO.Path.GetExtension(filename).ToLowerInvariant() == ".svg")
+                    {
+                        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
 
-						try
-						{
-							file.LoadFile(filename, append);
-							UsageCounters.GCodeFile++;
-						}
-						catch (Exception ex)
-						{ Logger.LogException("GCodeImport", ex); }
+                        try
+                        {
+                            file.LoadSVG(filename, append);
+                            UsageCounters.GCodeFile++;
+                        }
+                        catch (Exception ex)
+                        { Logger.LogException("GCodeImport", ex); }
 
-						System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
-					}
+                        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+                    }
+                    else //load GCODE file
+                    {
+                        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+
+                        try
+                        {
+                            file.LoadFile(filename, append);
+                            UsageCounters.GCodeFile++;
+                        }
+                        catch (Exception ex)
+                        { Logger.LogException("GCodeImport", ex); }
+
+                        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+                    }
 				}
 			}
 			catch (Exception ex)

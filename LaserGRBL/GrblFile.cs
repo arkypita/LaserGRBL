@@ -77,7 +77,40 @@ namespace LaserGRBL
 			RiseOnFileLoaded(filename, elapsed);
 		}
 
-		private abstract class ColorSegment
+        public void LoadSVG(string filename, bool append)
+        {
+            RiseOnFileLoading(filename);
+
+            long start = Tools.HiResTimer.TotalMilliseconds;
+
+            if (!append)
+                list.Clear();
+
+            mRange.ResetRange();
+            if (System.IO.File.Exists(filename))
+            {
+
+                string gcode = GRBL_Plotter.GCodeFromSVG.convertFromFile(filename);
+                string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                foreach (string l   in lines)
+                {
+                    string line = l;
+                    if ((line = line.Trim()).Length > 0)
+                    {
+                        GrblCommand cmd = new GrblCommand(line);
+                        if (!cmd.IsEmpty)
+                            list.Add(cmd);
+                    }
+                }
+            }
+            Analyze();
+            long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+
+            RiseOnFileLoaded(filename, elapsed);
+        }
+
+
+        private abstract class ColorSegment
 		{
 			protected int mColor;
 			protected int mPixLen;
