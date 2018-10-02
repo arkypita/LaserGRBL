@@ -32,7 +32,8 @@ using System.Windows.Forms;
 namespace LaserGRBL.SvgConverter
 {
     public static class gcode
-    {   private static string formatCode = "0";
+    {
+        private static string formatCode = "0";
         private static string formatNumber = "0.###";
 
         //private static int gcodeLines = 0;              // counter for GCode lines
@@ -74,7 +75,7 @@ namespace LaserGRBL.SvgConverter
         private static string gcodeIndividualDown = "";
 
         private static bool gcodeCompress = false;      // reduce code by avoiding sending again same G-Nr and unchanged coordinates
-        public static bool gcodeRelative = false;      // calculate relative coordinates for G91
+        //public static bool gcodeRelative = false;      // calculate relative coordinates for G91
         private static bool gcodeNoArcs = false;        // replace arcs by line segments
         private static float gcodeAngleStep = 0.1f;
         //private static bool gcodeInsertSubroutine = false;
@@ -120,8 +121,7 @@ namespace LaserGRBL.SvgConverter
             //gcodeToolChange = Properties.Settings.Default.importGCTool;
             //gcodeToolChangeM0 = Properties.Settings.Default.importGCToolM0;
 
-            gcodeCompress = Properties.Settings.Default.importGCCompress;        // reduce code by 
-            gcodeRelative = Properties.Settings.Default.importGCRelative;        // reduce code by 
+            gcodeCompress = true; // Properties.Settings.Default.importGCCompress;        // reduce code by 
             gcodeNoArcs = Properties.Settings.Default.importGCNoArcs;        // reduce code by 
             gcodeAngleStep = (float)Properties.Settings.Default.importGCSegment;
 
@@ -135,38 +135,23 @@ namespace LaserGRBL.SvgConverter
             //gcodeInsertSubroutine = Properties.Settings.Default.importGCSubEnable;
             //gcodeSubroutineCount = 0;
             lastMovewasG0 = true;
-
-            //gcodeLines = 1;             // counter for GCode lines
-            //gcodeDistance = 0;          // counter for GCode move distance
             remainingC = (float)Properties.Settings.Default.importGCLineSegmentLength;
-
-            //gcodeSubroutineEnable = 0;
-            //gcodeSubroutine = "";
-            //gcodeDownUp = 0;            // counter for GCode Down/Up
-            //gcodeTime = 0;              // counter for GCode work time
-            //gcodePauseCounter = 0;      // counter for GCode pause M0 commands
-            //gcodeToolCounter = 0;
-            //gcodeToolText = "";
             lastx = -1; lasty = -1; lastz = 0;
-
-            if (gcodeRelative)
-            { lastx = 0; lasty = 0; }
-
-            //stopwatch = new Stopwatch();
-            //stopwatch.Start();
-
         }
 
         public static bool reduceGCode
         {
             get { return gcodeCompress; }
-            set {   gcodeCompress = value;
-                    setDecimalPlaces((int)Properties.Settings.Default.importGCDecPlaces);
-                }
+            set
+            {
+                gcodeCompress = value;
+                setDecimalPlaces((int)Properties.Settings.Default.importGCDecPlaces);
+            }
         }
 
         public static void setDecimalPlaces(int num)
-        {   formatNumber = "0.";
+        {
+            formatNumber = "0.";
             if (gcodeCompress)
                 formatNumber = formatNumber.PadRight(num + 2, '#'); //'0'
             else
@@ -175,21 +160,22 @@ namespace LaserGRBL.SvgConverter
 
         // get GCode one or two digits
         public static int getIntGCode(char code, string tmp)
-        {   string cmdG = getStrGCode(code, tmp);       // find number string
+        {
+            string cmdG = getStrGCode(code, tmp);       // find number string
             if (cmdG.Length > 0)
-            {  return Convert.ToInt16(cmdG.Substring(1));  }
+            { return Convert.ToInt16(cmdG.Substring(1)); }
             return -1;
         }
-        public static string getStrGCode(char code,string tmp)
+        public static string getStrGCode(char code, string tmp)
         {
             int cmt = tmp.IndexOf("(");
             if (cmt == 0)
                 return "";                      // nothing to do
             if (cmt >= 0)
-                tmp = tmp.Substring(0,cmt);     // don't check inside comment
-            var cmdG = Regex.Matches(tmp, code+"\\d{1,2}"); // find code and 1 or 2 digits
+                tmp = tmp.Substring(0, cmt);     // don't check inside comment
+            var cmdG = Regex.Matches(tmp, code + "\\d{1,2}"); // find code and 1 or 2 digits
             if (cmdG.Count > 0)
-            {  return cmdG[0].ToString();  }
+            { return cmdG[0].ToString(); }
             return "";
         }
 
@@ -198,23 +184,23 @@ namespace LaserGRBL.SvgConverter
         {
             string cmdG = getStringValue(code, tmp);
             if (cmdG.Length > 0)
-            {  return Convert.ToInt16(cmdG.Substring(1));  }
+            { return Convert.ToInt16(cmdG.Substring(1)); }
             return -1;
         }
         public static string getStringValue(char code, string tmp)
         {
-            var cmdG = Regex.Matches(tmp, code+ "-?\\d+(.\\d+)?");
+            var cmdG = Regex.Matches(tmp, code + "-?\\d+(.\\d+)?");
             if (cmdG.Count > 0)
-            {  return cmdG[cmdG.Count-1].ToString(); }
+            { return cmdG[cmdG.Count - 1].ToString(); }
             return "";
         }
 
         public static string frmtCode(int number)      // convert int to string using format pattern
-        {   return number.ToString(formatCode); }
+        { return number.ToString(formatCode); }
         public static string frmtNum(float number)     // convert float to string using format pattern
-        {   return number.ToString(formatNumber); }
+        { return number.ToString(formatNumber); }
         public static string frmtNum(double number)     // convert double to string using format pattern
-        {   return number.ToString(formatNumber); }
+        { return number.ToString(formatNumber); }
 
         private static bool gcodeReduce = false;        // if true remove G1 commands if distance is < limit
         private static float gcodeReduceVal = 0.1f;     // limit when to remove G1 commands
@@ -229,7 +215,7 @@ namespace LaserGRBL.SvgConverter
         //    //gcodePauseCounter++;
         //}
 
-        public static void SpindleOn(StringBuilder gcodeString, string cmt="")
+        public static void SpindleOn(StringBuilder gcodeString, string cmt = "")
         {
             if (Properties.Settings.Default.importGCTTSSpeed) { cmt += " spindle speed from tool table"; }
             if (cmt.Length > 0) cmt = string.Format("({0})", cmt);
@@ -237,7 +223,7 @@ namespace LaserGRBL.SvgConverter
             //gcodeLines++;
         }
 
-        public static void SpindleOff(StringBuilder gcodeString, string cmt="")
+        public static void SpindleOff(StringBuilder gcodeString, string cmt = "")
         {
             if (cmt.Length > 0) cmt = string.Format("({0})", cmt);
             gcodeString.AppendFormat("M{0} {1}\r\n", frmtCode(5), cmt);
@@ -253,14 +239,13 @@ namespace LaserGRBL.SvgConverter
             origFinalX = lastx;
             origFinalY = lasty;
             //if (gcodeComments) { gcodeString.Append("\r\n"); }
-            if (gcodeRelative) { cmt += string.Format("rel {0}", lastz); }
-            if (cmt.Length >0) { cmt = string.Format("({0})", cmt); }
+            if (cmt.Length > 0) { cmt = string.Format("({0})", cmt); }
 
             applyXYFeedRate = true;     // apply XY Feed Rate after each PenDown command (not just after Z-axis)
 
             //if (gcodeSpindleToggle)
             //{   if (gcodeComments) gcodeString.AppendFormat("({0})\r\n", "Pen down: Spindle-On");
-                SpindleOn(gcodeString, cmto);
+            SpindleOn(gcodeString, cmto);
             //}
             //if (gcodeZApply)
             //{   if (gcodeComments) gcodeString.AppendFormat("({0})\r\n", "Pen down: Z-Axis");
@@ -299,8 +284,7 @@ namespace LaserGRBL.SvgConverter
             origFinalX = lastx;
             origFinalY = lasty;
             //if (gcodeComments) { gcodeString.Append("\r\n"); }
-            if (gcodeRelative) { cmt += string.Format("rel {0}", lastz); }
-            if (cmt.Length >0) { cmt = string.Format("({0})", cmt); }
+            if (cmt.Length > 0) { cmt = string.Format("({0})", cmt); }
 
             //if (gcodeIndividualTool)
             //{   if (gcodeComments) gcodeString.AppendFormat("({0})\r\n", "Pen up: Individual Cmd");
@@ -332,7 +316,7 @@ namespace LaserGRBL.SvgConverter
 
             //if (gcodeSpindleToggle)
             //{   if (gcodeComments) gcodeString.AppendFormat("({0})\r\n", "Pen up: Spindle-Off");
-                SpindleOff(gcodeString, cmto);
+            SpindleOff(gcodeString, cmto);
             //}
             //if (gcodeComments) gcodeString.Append("\r\n");
             dragCompi = 0; dragCompj = 0;
@@ -341,15 +325,15 @@ namespace LaserGRBL.SvgConverter
         public static float lastx, lasty, lastz, lastg, lastf;
         public static bool lastMovewasG0 = true;
         public static void MoveTo(StringBuilder gcodeString, Point coord, string cmt = "")
-        {   MoveSplit(gcodeString, 1, (float)coord.X, (float)coord.Y, applyXYFeedRate, cmt); }
+        { MoveSplit(gcodeString, 1, (float)coord.X, (float)coord.Y, applyXYFeedRate, cmt); }
         public static void MoveTo(StringBuilder gcodeString, float x, float y, string cmt = "")
-        {   MoveSplit(gcodeString, 1, x, y, applyXYFeedRate, cmt); }
+        { MoveSplit(gcodeString, 1, x, y, applyXYFeedRate, cmt); }
         public static void MoveTo(StringBuilder gcodeString, float x, float y, float z, string cmt = "")
-        {   MoveSplit(gcodeString, 1, x, y, z, applyXYFeedRate, cmt); }
+        { MoveSplit(gcodeString, 1, x, y, z, applyXYFeedRate, cmt); }
         public static void MoveToRapid(StringBuilder gcodeString, Point coord, string cmt = "")
-        {   Move(gcodeString, 0, (float)coord.X, (float)coord.Y, false, cmt); lastMovewasG0 = true; }
+        { Move(gcodeString, 0, (float)coord.X, (float)coord.Y, false, cmt); lastMovewasG0 = true; }
         public static void MoveToRapid(StringBuilder gcodeString, float x, float y, string cmt = "")
-        {   Move(gcodeString, 0, x, y, false, cmt); lastMovewasG0 = true; }
+        { Move(gcodeString, 0, x, y, false, cmt); lastMovewasG0 = true; }
 
         // MoveSplit breaks down a line to line segments with given max. length
         private static void MoveSplit(StringBuilder gcodeString, int gnr, float x, float y, bool applyFeed, string cmt)
@@ -363,18 +347,21 @@ namespace LaserGRBL.SvgConverter
             segFinalX = finalx; segFinalY = finaly;
 
             if (gcodeDragCompensation)  // start move with an arc and end with extended move
-            {   Point tmp = dragToolCompensation(gcodeString, finalx, finaly);
+            {
+                Point tmp = dragToolCompensation(gcodeString, finalx, finaly);
                 finalx = (float)tmp.X; finaly = (float)tmp.Y;   // get extended final position
             }
 
             if (Properties.Settings.Default.importGCLineSegmentation)       // apply segmentation
-            {   float segFinalX = finalx, segFinalY = finaly;
+            {
+                float segFinalX = finalx, segFinalY = finaly;
                 if (gcodeDragCompensation)
-                {   lastx = segLastFinalX;// origLastX;
+                {
+                    lastx = segLastFinalX;// origLastX;
                     lasty = segLastFinalY;
                 }
-                float dx = finalx -  lastx;       // remaining distance until full move
-                float dy = finaly -  lasty;       // lastXY is global
+                float dx = finalx - lastx;       // remaining distance until full move
+                float dy = finaly - lasty;       // lastXY is global
                 float moveLength = (float)Math.Sqrt(dx * dx + dy * dy);
                 float segmentLength = (float)Properties.Settings.Default.importGCLineSegmentLength;
                 bool equidistance = Properties.Settings.Default.importGCLineSegmentEquidistant;
@@ -403,8 +390,10 @@ namespace LaserGRBL.SvgConverter
                     gcodeString.AppendFormat("(count {0})\r\n", count.ToString());
                     origX = lastx; origY = lasty;
                     if (equidistance)               // all segments in same length (but shorter than set)
-                    {   for (int i = 1; i < count; i++)
-                        {   deltaX = i * dx / count;
+                    {
+                        for (int i = 1; i < count; i++)
+                        {
+                            deltaX = i * dx / count;
                             deltaY = i * dy / count;
                             tmpX = origX + deltaX;
                             tmpY = origY + deltaY;
@@ -419,7 +408,8 @@ namespace LaserGRBL.SvgConverter
                         remainingX = dx * remainingC / moveLength;
                         remainingY = dy * remainingC / moveLength;
                         for (int i = 0; i < count; i++)
-                        {   deltaX = remainingX + i * segmentLength * dx / moveLength;        // n-1 segments in exact length, last segment is shorter
+                        {
+                            deltaX = remainingX + i * segmentLength * dx / moveLength;        // n-1 segments in exact length, last segment is shorter
                             deltaY = remainingY + i * segmentLength * dy / moveLength;
                             tmpX = origX + deltaX;
                             tmpY = origY + deltaY;
@@ -459,7 +449,7 @@ namespace LaserGRBL.SvgConverter
             if (moveLength == 0)
                 return new Point(finalx, finaly);
 
-// calc arc angle between last move and current move, dragCompx y = lastrealpos, dragCompi j = centerofcircle
+            // calc arc angle between last move and current move, dragCompx y = lastrealpos, dragCompi j = centerofcircle
             float rx = origFinalX + gcodeDragRadius * dx / moveLength;     // calc end-pos of arc
             float ry = origFinalY + gcodeDragRadius * dy / moveLength;
             float[] angle = getAngle(lastx, lasty, rx, ry, dragCompi, dragCompj); // get start-,end- and diff-angle
@@ -470,19 +460,20 @@ namespace LaserGRBL.SvgConverter
                 gcnr = 3;
             dragArc = (Math.Abs(angle[2]) > gcodeDragAngle);
 
-// draw arc before move
+            // draw arc before move
             if (dragArc)        // add arc to connect next move
-            {   
+            {
                 origLastX = lastx; origLastY = lasty;
                 if ((angle[2] != 0) && !drag1stMove)
-                {   MoveArc(gcodeString, gcnr, rx, ry, dragCompi, dragCompj, applyXYFeedRate, "Drag t. comp.");// + angle[2].ToString());
+                {
+                    MoveArc(gcodeString, gcnr, rx, ry, dragCompi, dragCompj, applyXYFeedRate, "Drag t. comp.");// + angle[2].ToString());
                 }
                 lastx = origLastX; lasty = origLastY;
             }
             else
             {               // connect first extend move with end of next extend move
             }
-// calc end-pos with added offset and center of new arc
+            // calc end-pos with added offset and center of new arc
             origLastX = lastx;
             origLastY = lasty;
             origFinalX = finalx;
@@ -520,8 +511,10 @@ namespace LaserGRBL.SvgConverter
         private static void Move(StringBuilder gcodeString, int gnr, float x, float y, bool applyFeed, string cmt)
         { Move(gcodeString, gnr, x, y, null, applyFeed, cmt); }
         private static void Move(StringBuilder gcodeString, int gnr, float x, float y, float? z, bool applyFeed, string cmt)
-        {   if (gnr == 0)
-            {   segLastFinalX = segFinalX; segLastFinalY = segFinalY;
+        {
+            if (gnr == 0)
+            {
+                segLastFinalX = segFinalX; segLastFinalY = segFinalY;
                 segFinalX = x; segFinalY = y;
             }
             string feed = "";
@@ -535,7 +528,8 @@ namespace LaserGRBL.SvgConverter
             float delta = fdistance(lastx, lasty, x, y);
 
             if (z != null)
-            {   z_relative = (float)z - lastz;
+            {
+                z_relative = (float)z - lastz;
                 tz = (float)z;
             }
 
@@ -552,24 +546,14 @@ namespace LaserGRBL.SvgConverter
                 if (((gnr > 0) || (lastx != x) || (lasty != y) || (lastz != tz)))  // else nothing to do
                 {
                     if (lastg != gnr) { gcodeTmp.AppendFormat("G{0}", frmtCode(gnr)); isneeded = true; }
-                    if (gcodeRelative)
+
+                    if (lastx != x) { gcodeTmp.AppendFormat("X{0}", frmtNum(x)); isneeded = true; }
+                    if (lasty != y) { gcodeTmp.AppendFormat("Y{0}", frmtNum(y)); isneeded = true; }
+                    if (z != null)
                     {
-                        if (lastx != x) { gcodeTmp.AppendFormat("X{0}", frmtNum(x_relative)); isneeded = true; }
-                        if (lasty != y) { gcodeTmp.AppendFormat("Y{0}", frmtNum(y_relative)); isneeded = true; }
-                        if (z!=null)
-                        {
-                            if (lastz != z) { gcodeTmp.AppendFormat("Z{0}", frmtNum(z_relative)); isneeded = true; }
-                        }
+                        if (lastz != z) { gcodeTmp.AppendFormat("Z{0}", frmtNum((float)z)); isneeded = true; }
                     }
-                    else
-                    {
-                        if (lastx != x) { gcodeTmp.AppendFormat("X{0}", frmtNum(x)); isneeded = true; }
-                        if (lasty != y) { gcodeTmp.AppendFormat("Y{0}", frmtNum(y)); isneeded = true; }
-                        if (z != null)
-                        {
-                            if (lastz != z) { gcodeTmp.AppendFormat("Z{0}", frmtNum((float)z)); isneeded = true; }
-                        }
-                    }
+
 
                     if ((gnr == 1) && (lastf != gcodeXYFeed) || applyFeed)
                     {
@@ -585,19 +569,10 @@ namespace LaserGRBL.SvgConverter
             else
             {
                 if (z != null)
-                {
-                    if (gcodeRelative)
-                        gcodeString.AppendFormat("G{0} X{1} Y{2} Z{3} {4} {5}\r\n", frmtCode(gnr), frmtNum(x_relative), frmtNum(y_relative), frmtNum(z_relative), feed, cmt);
-                    else
-                        gcodeString.AppendFormat("G{0} X{1} Y{2} Z{3} {4} {5}\r\n", frmtCode(gnr), frmtNum(x), frmtNum(y), frmtNum((float)z), feed, cmt);
-                }
+                    gcodeString.AppendFormat("G{0} X{1} Y{2} Z{3} {4} {5}\r\n", frmtCode(gnr), frmtNum(x), frmtNum(y), frmtNum((float)z), feed, cmt);
                 else
-                {
-                    if (gcodeRelative)
-                        gcodeString.AppendFormat("G{0} X{1} Y{2} {3} {4}\r\n", frmtCode(gnr), frmtNum(x_relative), frmtNum(y_relative), feed, cmt);
-                    else
-                        gcodeString.AppendFormat("G{0} X{1} Y{2} {3} {4}\r\n", frmtCode(gnr), frmtNum(x), frmtNum(y), feed, cmt);
-                }
+                    gcodeString.AppendFormat("G{0} X{1} Y{2} {3} {4}\r\n", frmtCode(gnr), frmtNum(x), frmtNum(y), feed, cmt);
+
             }
             //gcodeTime += delta / gcodeXYFeed;
             lastx = x; lasty = y; lastg = gnr; // lastz = tz;
@@ -609,7 +584,7 @@ namespace LaserGRBL.SvgConverter
             float dx = x2 - x1;
             float dy = y2 - y1;
             float c = (float)Math.Sqrt(dx * dx + dy * dy);
-            float tmpX,tmpY;
+            float tmpX, tmpY;
             int divid = (int)Math.Ceiling(c / maxStep);
             lastg = -1;
             for (int i = 1; i <= divid; i++)
@@ -629,27 +604,25 @@ namespace LaserGRBL.SvgConverter
         { MoveArc(gcodeString, gnr, (float)coordxy.X, (float)coordxy.Y, (float)coordij.X, (float)coordij.Y, applyXYFeedRate, cmt, avoidG23); }
         public static void Arc(StringBuilder gcodeString, int gnr, float x, float y, float i, float j, string cmt = "", bool avoidG23 = false)
         { MoveArc(gcodeString, gnr, x, y, i, j, applyXYFeedRate, cmt, avoidG23); }
-        private static void MoveArc(StringBuilder gcodeString, int gnr, float x, float y, float i, float j, bool applyFeed, string cmt="", bool avoidG23 = false)
+        private static void MoveArc(StringBuilder gcodeString, int gnr, float x, float y, float i, float j, bool applyFeed, string cmt = "", bool avoidG23 = false)
         {
             string feed = "";
             float x_relative = x - lastx;
             float y_relative = y - lasty;
 
             if (applyFeed)
-            {   feed = string.Format("F{0}", gcodeXYFeed);
+            {
+                feed = string.Format("F{0}", gcodeXYFeed);
                 applyXYFeedRate = false;                        // don't set feed next time
             }
             if (cmt.Length > 0) cmt = string.Format("({0})", cmt);
             if (gcodeNoArcs || avoidG23)
             {
-                    splitArc(gcodeString, gnr, lastx, lasty, x, y, i, j, applyFeed, cmt);
+                splitArc(gcodeString, gnr, lastx, lasty, x, y, i, j, applyFeed, cmt);
             }
             else
             {
-                if (gcodeRelative)
-                    gcodeString.AppendFormat("G{0} X{1} Y{2}  I{3} J{4} {5} {6}\r\n", frmtCode(gnr), frmtNum(x_relative), frmtNum(y_relative), frmtNum(i), frmtNum(j), feed, cmt);
-                else
-                    gcodeString.AppendFormat("G{0} X{1} Y{2}  I{3} J{4} {5} {6}\r\n", frmtCode(gnr), frmtNum(x), frmtNum(y), frmtNum(i), frmtNum(j), feed, cmt);
+                gcodeString.AppendFormat("G{0} X{1} Y{2}  I{3} J{4} {5} {6}\r\n", frmtCode(gnr), frmtNum(x), frmtNum(y), frmtNum(i), frmtNum(j), feed, cmt);
                 lastg = gnr;
             }
             //gcodeTime += fdistance(lastx, lasty, x, y) / gcodeXYFeed;
@@ -665,7 +638,7 @@ namespace LaserGRBL.SvgConverter
             float radius = (float)Math.Sqrt(i * i + j * j);					// get radius of circle
             float cx = x1 + i, cy = y1 + j;                                 // get center point of circle
 
-            float[] ret = getAngle(x1,y1,x2,y2,i,j);
+            float[] ret = getAngle(x1, y1, x2, y2, i, j);
             float a1 = ret[0], a2 = ret[1], da = ret[2];
 
             da = -(360 + a1 - a2);
@@ -674,16 +647,18 @@ namespace LaserGRBL.SvgConverter
             if (da < -360) { da += 360; }
 
             if ((x1 == x2) && (y1 == y2))
-            {   if (gnr == 2) { da = -360; }
+            {
+                if (gnr == 2) { da = -360; }
                 else { da = 360; }
             }
             float step = (float)(Math.Asin((double)gcodeAngleStep / (double)radius) * 180 / Math.PI);
 
             applyXYFeedRate = true;
-            float moveLength= remainingC;
+            float moveLength = remainingC;
             int count;
             if (equidistance)
-            {   float circum = radius * da* (float)Math.PI / 180;
+            {
+                float circum = radius * da * (float)Math.PI / 180;
                 count = (int)Math.Ceiling(circum / segmentLength);
                 segmentLength = circum / count;
                 //Comment(gcodeString, circum.ToString() + " " + count.ToString() + " " + segmentLength.ToString() );
@@ -692,7 +667,7 @@ namespace LaserGRBL.SvgConverter
             count = 1;
             if (da > 0)                                             // if delta >0 go counter clock wise
             {
-                for (float angle = (a1+step); angle < (a1+da); angle+= step)
+                for (float angle = (a1 + step); angle < (a1 + da); angle += step)
                 {
                     float x = cx + radius * (float)Math.Cos(Math.PI * angle / 180);
                     float y = cy + radius * (float)Math.Sin(Math.PI * angle / 180);
@@ -700,7 +675,7 @@ namespace LaserGRBL.SvgConverter
 
                     Move(gcodeString, 1, x, y, applyXYFeedRate, cmt);
 
-                    if (moveLength >= (count*segmentLength))
+                    if (moveLength >= (count * segmentLength))
                     {
                         applyXYFeedRate = true;// insertSubroutine(gcodeString, lastx, lasty, lastz, applyXYFeedRate);
                         count++;
@@ -710,7 +685,7 @@ namespace LaserGRBL.SvgConverter
             }
             else                                                       // else go clock wise
             {
-                for (float angle = (a1-step); angle > (a1+da); angle-= step)
+                for (float angle = (a1 - step); angle > (a1 + da); angle -= step)
                 {
                     float x = cx + radius * (float)Math.Cos(Math.PI * angle / 180);
                     float y = cy + radius * (float)Math.Sin(Math.PI * angle / 180);
@@ -743,7 +718,7 @@ namespace LaserGRBL.SvgConverter
             if (cos1 > 1) cos1 = 1;
             if (cos1 < -1) cos1 = -1;
             float a1 = 180 - 180 * (float)(Math.Acos(cos1) / Math.PI);
-            if (j > 0) { a1 = -a1; }										
+            if (j > 0) { a1 = -a1; }
 
             float cos2 = (float)(x1 + i - x2) / radius;                 // get stop angle
             if (cos2 > 1) cos2 = 1;
@@ -792,68 +767,6 @@ namespace LaserGRBL.SvgConverter
 
         //        //if (gcodeZApply) gcode.SpindleOn(gcodeString, "Start spindle - Option Z-Axis");
         //    }
-        //}
-
-        public static string GetHeader(string cmt,string source="")
-        {
-            //gcodeTime += gcodeDistance / gcodeXYFeed;
-            string header = ""; //= "( "+cmt+" by GRBL-Plotter )\r\n";
-            //if (source.Length>1)
-            //    header += string.Format("( Source: {0} )\r\n", source);
-            //if (Properties.Settings.Default.importSVGRepeatEnable)
-            //    header += string.Format("( G-Code repetitions: {0:0} times)\r\n", Properties.Settings.Default.importSVGRepeat);
-            //header += string.Format("( G-Code lines: {0} )\r\n", gcodeLines);
-            //header += string.Format("( Pen Down/Up : {0} times )\r\n", gcodeDownUp);
-            //header += string.Format("( Path length : {0:0.0} units )\r\n", gcodeDistance);
-            //header += string.Format("( Duration ca.: {0:0.0} min. )\r\n", gcodeTime);
-            //if (gcodeSubroutineCount > 0)
-            //    header += string.Format("( Call to subs.: {0} )\r\n", gcodeSubroutineCount);
-
-            //stopwatch.Stop();
-            //header += string.Format("( Conv. time  : {0} )\r\n", stopwatch.Elapsed);
-
-            //if (gcodeToolChange)
-            //{
-            //    header += string.Format("( Tool changes: {0})\r\n", gcodeToolCounter);
-            //    header += gcodeToolText;
-            //}
-            //if (gcodePauseCounter>0)
-            //    header += string.Format("( M0 count    : {0})\r\n", gcodePauseCounter);
-            string[] commands = Properties.Settings.Default.importGCHeader.Split(';');
-            //foreach (string cmd in commands)
-            //    if (cmd.Length > 1)
-            //    { header += string.Format("{0} (Setup - GCode-Header)\r\n", cmd.Trim()); gcodeLines++; }
-            if (gcodeRelative)
-            { header += string.Format("G91 (Setup relative movement)\r\n"); /*gcodeLines++;*/ }
-
-            if (Properties.Settings.Default.importUnitGCode)
-            {
-                if (Properties.Settings.Default.importUnitmm)
-                { header += "G21 (use mm as unit - check setup)"; }
-                else
-                { header += "G20 (use inch as unit - check setup)"; }
-            }
-            return header;
-        }
-
-        public static string GetFooter()
-        {
-            string footer = "";
-            string[] commands = Properties.Settings.Default.importGCFooter.Split(';');
-            foreach (string cmd in commands)
-                if (cmd.Length > 1)
-                { footer += string.Format("{0} (Setup - GCode-Footer)\r\n", cmd.Trim()); /*gcodeLines++; */}
-
-            //if (gcodeToolChange && Properties.Settings.Default.ctrlToolChangeEmpty)
-            //{ footer += string.Format("T{0} M{1} (Remove tool)\r\n", frmtCode((int)Properties.Settings.Default.ctrlToolChangeEmptyNr), frmtCode(6)); }
-
-            footer += "M30 (Program end)\r\n";
-            return footer /*+ gcodeSubroutine*/;
-        }
-
-        //public static void Comment(StringBuilder gcodeString, string cmt)
-        //{   if (cmt.Length>1)
-        //        gcodeString.AppendFormat("({0})\r\n", cmt);
         //}
 
         // helper functions

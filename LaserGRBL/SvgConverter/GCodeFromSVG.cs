@@ -123,22 +123,13 @@ namespace LaserGRBL.SvgConverter
         private static string convertSVG(XElement svgCode, string info)
         {
             finalString = new StringBuilder();
-            gcode.PenUp(finalString, "SVG Start ");
+
             startConvert(svgCode);
 
-            string header = gcode.GetHeader("SVG import",info);
-            string footer = gcode.GetFooter();
+            string header = "G92\r\n";
+            string footer = "G0X0Y0";
 
-            string output = "";
-            if (Properties.Settings.Default.importSVGRepeatEnable)
-            {
-                for (int i = 0; i < Properties.Settings.Default.importSVGRepeat; i++)
-                    output += finalString.ToString().Replace(',', '.');
-
-                return header + output + footer;
-            }
-            else
-                return header + finalString.ToString().Replace(',', '.') +footer;
+            return header + finalString.ToString().Replace(',', '.') +footer;
         }
 
         /// <summary>
