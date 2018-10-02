@@ -21,8 +21,7 @@ namespace LaserGRBL
 			public int Vectorization;
 			public int Dithering;
 			public int Line2Line;
-
-            public int SvgFile { get; internal set; }
+            public int SvgFile;
 
             internal void Update(UsageCounters c)
 			{
@@ -31,7 +30,8 @@ namespace LaserGRBL
 				Vectorization += c.Vectorization;
 				Dithering += c.Dithering;
 				Line2Line += c.Line2Line;
-			}
+                SvgFile += c.SvgFile;
+            }
 		}
 
 		private Guid InstallationID = Guid.NewGuid();
@@ -98,7 +98,9 @@ namespace LaserGRBL
 					if (TrueSend())
 						LastSent = DateTime.UtcNow;
 				}
-				catch { }
+				catch (Exception ex)
+                {
+                }
 			}
 		}
 
@@ -129,8 +131,8 @@ namespace LaserGRBL
                     { "fSvgFile", Counters.SvgFile.ToString() },
                 };
 
-				// client.UploadValues returns page's source as byte array (byte[]) so it must be transformed into a string
-				string rv = System.Text.Encoding.UTF8.GetString(client.UploadValues(urlAddress, postData));
+                // client.UploadValues returns page's source as byte array (byte[]) so it must be transformed into a string
+                string rv = System.Text.Encoding.UTF8.GetString(client.UploadValues(urlAddress, postData));
 				return (rv == "Success!");
 			}
 		}
