@@ -20,7 +20,7 @@ namespace CsPotrace
 		/// <param name="Width">Width of the exportd cvg-File</param>
 		/// <param name="Height">Height of the exportd cvg-File</param>
 		/// <returns></returns>
-		public static List<string> Export2GCode(List<List<CsPotrace.Curve>> list, int oX, int oY, double scale, string lOn, string lOff, Size originalImageSize)
+		public static List<string> Export2GCode(List<List<CsPotrace.Curve>> list, float oX, float oY, double scale, string lOn, string lOff, Size originalImageSize)
 		{
 			bool debug = false;
 

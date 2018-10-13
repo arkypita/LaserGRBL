@@ -744,8 +744,8 @@ namespace LaserGRBL.RasterConverter
 						conf.lOn = LaserOn;
 						conf.lOff = LaserOff;
 						conf.dir = SelectedTool == ImageProcessor.Tool.Vectorize ? FillingDirection : LineDirection;
-						conf.oX = (int)TargetOffset.X;
-						conf.oY = (int)TargetOffset.Y;
+						conf.oX = TargetOffset.X;
+						conf.oY = TargetOffset.Y;
 						conf.borderSpeed = BorderSpeed;
 						conf.pwm = (bool)Settings.GetObject("Support Hardware PWM", true);
 

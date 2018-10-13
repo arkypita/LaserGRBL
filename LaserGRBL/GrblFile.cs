@@ -125,7 +125,7 @@ namespace LaserGRBL
 			public bool Fast(L2LConf c)
 			{ return c.pwm ? mColor == 0 : mColor <= 125; }
 
-			public string formatnumber(int number, int offset, L2LConf c)
+			public string formatnumber(int number, float offset, L2LConf c)
 			{
 				double dval = Math.Round(number / (c.vectorfilling ? c.fres : c.res) + offset, 3);
 				return dval.ToString(System.Globalization.CultureInfo.InvariantCulture);
@@ -314,8 +314,8 @@ namespace LaserGRBL
 		public class L2LConf
 		{
 			public double res;
-			public int oX;
-			public int oY;
+			public float oX;
+			public float oY;
 			public int markSpeed;
 			public int travelSpeed;
 			public int borderSpeed;
@@ -407,8 +407,8 @@ namespace LaserGRBL
 		{
 			List<GrblCommand> rv = new List<GrblCommand>();
 
-			decimal curX = c.oX;
-			decimal curY = c.oY;
+            decimal curX = (decimal)c.oX;
+			decimal curY = (decimal)c.oY;
 			bool cumulate = false;
 
 			foreach (GrblCommand cmd in temp)
@@ -878,10 +878,14 @@ namespace LaserGRBL
 					bool right = q == CartesianQuadrant.I || q == CartesianQuadrant.IV;
 					bool top = q == CartesianQuadrant.I || q == CartesianQuadrant.II;
 
-					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString("0"), false, true, !right, false);
-					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString("0"), false, true, !right, false);
-					DrawString(g, zoom, mRange.DrawingRange.X.Min, 0, mRange.DrawingRange.X.Min.ToString("0"), true, false, false, top);
-					DrawString(g, zoom, mRange.DrawingRange.X.Max, 0, mRange.DrawingRange.X.Max.ToString("0"), true, false, false, top);
+                    string format = "0";
+                    //if (mRange.DrawingRange.Width < 50 && mRange.DrawingRange.Height < 50)
+                    //    format = "0.0";
+
+                    DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString(format), false, true, !right, false);
+					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString(format), false, true, !right, false);
+					DrawString(g, zoom, mRange.DrawingRange.X.Min, 0, mRange.DrawingRange.X.Min.ToString(format), true, false, false, top);
+					DrawString(g, zoom, mRange.DrawingRange.X.Max, 0, mRange.DrawingRange.X.Max.ToString(format), true, false, false, top);
 				}
 			}
 		}
