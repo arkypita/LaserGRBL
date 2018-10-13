@@ -15,8 +15,9 @@ Do you like LaserGRBL? Support development with your donation!
 
 - GCode file loading with engraving/cutting job preview (with alpha blending for grayscale engraving)
 - Image import (jpg, bmp...) with line by line GCode generation (horizontal, vertical, and diagonal).
-- Image import (jpg, bmp...) with Vectorization! [Experimental]
+- Image import (jpg, bmp...) with Vectorization!
 - Image import (jpg, bmp...) with 1bit dithering, best result with low power laser
+- Vector file import (svg only) [Experimental]
 - Different color scheme optimized for different safety glasses
 - User defined buttons, power to you!
 - Grbl Configuration Import/Export
