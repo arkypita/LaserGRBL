@@ -879,8 +879,8 @@ namespace LaserGRBL
 					bool top = q == CartesianQuadrant.I || q == CartesianQuadrant.II;
 
                     string format = "0";
-                    //if (mRange.DrawingRange.Width < 50 && mRange.DrawingRange.Height < 50)
-                    //    format = "0.0";
+                    if (mRange.DrawingRange.Width < 50 && mRange.DrawingRange.Height < 50)
+                        format = "0.0";
 
                     DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString(format), false, true, !right, false);
 					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString(format), false, true, !right, false);
