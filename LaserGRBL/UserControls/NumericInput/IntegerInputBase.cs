@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.ComponentModel;
 
-namespace LaserGRBL.UserControls.IntegerInput
+namespace LaserGRBL.UserControls.NumericInput
 {
 	[DefaultEvent("CurrentValueChanged"), DefaultProperty("CurrentValue")]
 	public class IntegerInputBase : ColoredBorderControl
@@ -222,9 +222,8 @@ namespace LaserGRBL.UserControls.IntegerInput
 			try
 			{
 				int newValue = ParseEditValue();
-				if (OnTheFlyValueChanged != null)
-					OnTheFlyValueChanged(this, OldEditValue, newValue, InEdit);
-			}
+                OnTheFlyValueChanged?.Invoke(this, OldEditValue, newValue, InEdit);
+            }
 			catch { }
 		}
 

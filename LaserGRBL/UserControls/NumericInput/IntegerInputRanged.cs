@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.ComponentModel;
 
-namespace LaserGRBL.UserControls.IntegerInput
+namespace LaserGRBL.UserControls.NumericInput
 {
 
 	public class IntegerInputRanged : IntegerInputBase

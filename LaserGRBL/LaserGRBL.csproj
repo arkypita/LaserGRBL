@@ -407,13 +407,22 @@
       <DependentUpon>ImageButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ImageTransform.cs" />
-    <Compile Include="UserControls\IntegerInput\ColoredBorderControl.cs">
+    <Compile Include="UserControls\NumericInput\ColoredBorderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\IntegerInput\IntegerInputBase.cs">
+    <Compile Include="UserControls\NumericInput\DecimalInputBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\IntegerInput\IntegerInputRanged.cs">
+    <Compile Include="UserControls\NumericInput\DecimalInputBase.Designer.cs">
+      <DependentUpon>DecimalInputBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NumericInput\DecimalInputRanged.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NumericInput\IntegerInputBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NumericInput\IntegerInputRanged.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\LabelTB.cs">

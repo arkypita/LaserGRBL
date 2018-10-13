@@ -60,12 +60,12 @@ namespace LaserGRBL.RasterConverter
 
 			if (IP.Original.Height < IP.Original.Width)
 			{
-				IISizeW.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100);
+				IISizeW.CurrentValue = (float)Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100.0);
 				IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
 			}
 			else
 			{
-				IISizeH.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100);
+				IISizeH.CurrentValue = (float)Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100.0);
 				IISizeW.CurrentValue = IP.HeightToWidht(IISizeH.CurrentValue);
 			}
 
@@ -94,26 +94,26 @@ namespace LaserGRBL.RasterConverter
 			IIBorderTracing.Visible = LblBorderTracing.Visible = LblBorderTracingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Vectorize);
 			LblLinearFilling.Text = IP.SelectedTool == ImageProcessor.Tool.Vectorize ? "Filling Speed" : "Engraving Speed";
 
-			IIOffsetX.CurrentValue = IP.TargetOffset.X = (int)Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0);
-			IIOffsetY.CurrentValue = IP.TargetOffset.Y = (int)Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0);
+			IIOffsetX.CurrentValue = IP.TargetOffset.X = (float)Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0);
+			IIOffsetY.CurrentValue = IP.TargetOffset.Y = (float)Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0);
 
 			ShowDialog();
 		}
 
 
-		private void IISizeW_CurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+		private void IISizeW_CurrentValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
 		{
-			IP.TargetSize = new Size(IISizeW.CurrentValue, IISizeH.CurrentValue);
+			IP.TargetSize = new SizeF(IISizeW.CurrentValue, IISizeH.CurrentValue);
 		}
 
-		private void IISizeH_CurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+		private void IISizeH_CurrentValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
 		{
-			IP.TargetSize = new Size(IISizeW.CurrentValue, IISizeH.CurrentValue);
+			IP.TargetSize = new SizeF(IISizeW.CurrentValue, IISizeH.CurrentValue);
 		}
 
-		void IIOffsetXYCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+		void IIOffsetXYCurrentValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
 		{
-			IP.TargetOffset = new Point(IIOffsetX.CurrentValue, IIOffsetY.CurrentValue);
+			IP.TargetOffset = new PointF(IIOffsetX.CurrentValue, IIOffsetY.CurrentValue);
 		}
 
 		void IIBorderTracingCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
@@ -160,16 +160,15 @@ namespace LaserGRBL.RasterConverter
 			IP.LaserOff = (string)CBLaserOFF.SelectedItem;
 		}
 
-		private void IISizeW_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+		private void IISizeW_OnTheFlyValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
 		{
 			if (ByUser)
 				IISizeH.CurrentValue = IP.WidthToHeight(NewValue);
 		}
 
-		private void IISizeH_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+		private void IISizeH_OnTheFlyValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
 		{
 			if (ByUser) IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
 		}
-
-	}
+    }
 }

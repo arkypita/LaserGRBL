@@ -59,8 +59,8 @@ namespace LaserGRBL.RasterConverter
 		public bool mDemo;
 
 		//option for gcode generator
-		public Size TargetSize;
-		public Point TargetOffset;
+		public SizeF TargetSize;
+		public PointF TargetOffset;
 		public string LaserOn;
 		public string LaserOff;
 		public int TravelSpeed;
@@ -744,8 +744,8 @@ namespace LaserGRBL.RasterConverter
 						conf.lOn = LaserOn;
 						conf.lOff = LaserOff;
 						conf.dir = SelectedTool == ImageProcessor.Tool.Vectorize ? FillingDirection : LineDirection;
-						conf.oX = TargetOffset.X;
-						conf.oY = TargetOffset.Y;
+						conf.oX = (int)TargetOffset.X;
+						conf.oY = (int)TargetOffset.Y;
 						conf.borderSpeed = BorderSpeed;
 						conf.pwm = (bool)Settings.GetObject("Support Hardware PWM", true);
 
@@ -908,10 +908,10 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-		public int WidthToHeight(int Width)
+		public float WidthToHeight(float Width)
 		{ return Width * mOriginal.Height / mOriginal.Width; }
 
-		public int HeightToWidht(int Height)
+		public float HeightToWidht(float Height)
 		{ return Height * mOriginal.Width / mOriginal.Height; }
 
 		private static Size CalculateResizeToFit(Size imageSize, Size boxSize)

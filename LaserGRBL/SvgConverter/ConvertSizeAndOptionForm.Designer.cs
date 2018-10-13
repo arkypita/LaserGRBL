@@ -18,14 +18,14 @@ namespace LaserGRBL.SvgConverter
 		private System.Windows.Forms.GroupBox GbSpeed;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
 		private System.Windows.Forms.Label LblBorderTracing;
-		private LaserGRBL.UserControls.IntegerInput.IntegerInputRanged IIBorderTracing;
+		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IIBorderTracing;
 		private System.Windows.Forms.GroupBox GbLaser;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
 		private System.Windows.Forms.Label label26;
 		private System.Windows.Forms.Label LblSmin;
-		private LaserGRBL.UserControls.IntegerInput.IntegerInputRanged IIMinPower;
+		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IIMinPower;
 		private System.Windows.Forms.Label LblSmax;
-		private LaserGRBL.UserControls.IntegerInput.IntegerInputRanged IIMaxPower;
+		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IIMaxPower;
 		private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.Button BtnCreate;
@@ -59,15 +59,15 @@ namespace LaserGRBL.SvgConverter
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.LblBorderTracing = new System.Windows.Forms.Label();
             this.LblBorderTracingmm = new System.Windows.Forms.Label();
-            this.IIBorderTracing = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+            this.IIBorderTracing = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
             this.GbLaser = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
             this.label26 = new System.Windows.Forms.Label();
             this.LblSmin = new System.Windows.Forms.Label();
-            this.IIMinPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+            this.IIMinPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
             this.LblSmax = new System.Windows.Forms.Label();
-            this.IIMaxPower = new LaserGRBL.UserControls.IntegerInput.IntegerInputRanged();
+            this.IIMaxPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
             this.label18 = new System.Windows.Forms.Label();
             this.BtnOnOffInfo = new LaserGRBL.UserControls.ImageButton();
             this.CBLaserON = new System.Windows.Forms.ComboBox();
@@ -127,7 +127,7 @@ namespace LaserGRBL.SvgConverter
             this.IIBorderTracing.MinValue = 1;
             this.IIBorderTracing.Name = "IIBorderTracing";
             this.IIBorderTracing.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.IIBorderTracing.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIBorderTracingCurrentValueChanged);
+            this.IIBorderTracing.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIBorderTracingCurrentValueChanged);
             // 
             // GbLaser
             // 
@@ -183,7 +183,7 @@ namespace LaserGRBL.SvgConverter
             this.IIMinPower.MinValue = 0;
             this.IIMinPower.Name = "IIMinPower";
             this.IIMinPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.IIMinPower.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMinPowerCurrentValueChanged);
+            this.IIMinPower.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMinPowerCurrentValueChanged);
             // 
             // LblSmax
             // 
@@ -200,7 +200,7 @@ namespace LaserGRBL.SvgConverter
             this.IIMaxPower.MinValue = 1;
             this.IIMaxPower.Name = "IIMaxPower";
             this.IIMaxPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.IIMaxPower.CurrentValueChanged += new LaserGRBL.UserControls.IntegerInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMaxPowerCurrentValueChanged);
+            this.IIMaxPower.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMaxPowerCurrentValueChanged);
             // 
             // label18
             // 
