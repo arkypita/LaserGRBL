@@ -73,18 +73,10 @@ namespace LaserGRBL.SvgConverter
         /// <param name="file">String keeping file-name or URL</param>
         /// <returns>String with GCode of imported data</returns>
         private static XElement svgCode;
-        private static bool fromClipboard = false;
         private static bool importInMM = false;
-        public static string convertFromText(string svgText, bool importMM=false)
-        {
-            svgCode = XElement.Load(svgText, LoadOptions.None);
-            fromClipboard = true;
-            importInMM = importMM;
-            return convertSVG(svgCode, "from Clipboard");                   // startConvert(svgCode);
-        }
+        
         public static string convertFromFile(string file)
         {
-            fromClipboard = false;
             importInMM = Properties.Settings.Default.importUnitmm;
             if (file == "")
             { MessageBox.Show("Empty file name"); return ""; }
@@ -99,8 +91,7 @@ namespace LaserGRBL.SvgConverter
                 if ((content != "") && (content.IndexOf("<?xml") == 0))
                 {
                     svgCode = XElement.Load(content, LoadOptions.None);
-                    System.Windows.Clipboard.SetData("image/svg+xml", content);
-                    return convertSVG(svgCode, file);                   // startConvert(svgCode);
+                    return convertSVG(svgCode, file);
                 }
                 else
                     MessageBox.Show("This is probably not a SVG document.\r\nFirst line: "+ content.Substring(0,50));
@@ -227,8 +218,6 @@ namespace LaserGRBL.SvgConverter
                 float svgWidthUnit = floatParse(tmpString);
 
                 tmp.M11 = scale * svgWidthUnit / svgWidthPx; // get desired scale
-                if (fromClipboard)
-                    tmp.M11 = 1 / 3.543307;         // https://www.w3.org/TR/SVG/coords.html#Units
                 if (vbWidth > 0)
                 {   tmp.M11 = scale * svgWidthPx / vbWidth;
                     tmp.OffsetX = vbOffX * svgWidthUnit / vbWidth;
@@ -254,10 +243,6 @@ namespace LaserGRBL.SvgConverter
                 tmp.M22 = -scale * svgHeightUnit / svgHeightPx;   // get desired scale and flip vertical
                 tmp.OffsetY = scale * svgHeightUnit ;
 
-                if (fromClipboard)
-                {   tmp.M22 = -1 / 3.543307;
-                    tmp.OffsetY = svgHeightUnit / 3.543307;     // https://www.w3.org/TR/SVG/coords.html#Units
-                }
                 if (vbHeight > 0)
                 {   tmp.M22 = -scale * svgHeightPx / vbHeight;
                     tmp.OffsetY = -vbOffX * svgHeightUnit / vbHeight + svgHeightPx;
@@ -807,15 +792,15 @@ namespace LaserGRBL.SvgConverter
                             points[1] = new Point(cx1, cy1);
                             points[2] = new Point(cx2, cy2);
                             points[3] = new Point(cx3, cy3);
-                            var b = GetBezierApproximation(points, svgBezierAccuracy);
+                            Point[] b = GetBezierApproximation(points, svgBezierAccuracy);
                             if (svgNodesOnly)
                             {
                                 gcodeDotOnly(cx3, cy3, command.ToString());
                             }
                             else
                             {
-                                for (int i = 1; i < b.Points.Count; i++)
-                                    gcodeMoveTo((float)b.Points[i].X, (float)b.Points[i].Y, command.ToString());
+                                for (int i = 1; i < b.Length ; i++)
+                                    gcodeMoveTo((float)b[i].X, (float)b[i].Y, command.ToString());
                             }
                             cxMirror = cx3 - (cx2 - cx3); cyMirror = cy3 - (cy2 - cy3);
                             lastX = cx3; lastY = cy3;
@@ -846,15 +831,15 @@ namespace LaserGRBL.SvgConverter
                         points[1] = new Point(cxMirror, cyMirror);
                         points[2] = new Point(cx2, cy2);
                         points[3] = new Point(cx3, cy3);
-                        var b = GetBezierApproximation(points, svgBezierAccuracy);
+                        Point[] b = GetBezierApproximation(points, svgBezierAccuracy);
                         if (svgNodesOnly)
                         {
                             gcodeDotOnly(cx3, cy3, command.ToString());
                         }
                         else
                         {
-                            for (int i = 1; i < b.Points.Count; i++)
-                                gcodeMoveTo((float)b.Points[i].X, (float)b.Points[i].Y, command.ToString());
+                            for (int i = 1; i < b.Length ; i++)
+                                gcodeMoveTo((float)b[i].X, (float)b[i].Y, command.ToString());
                         }
                         cxMirror = cx3 - (cx2 - cx3); cyMirror = cy3 - (cy2 - cy3);
                         lastX = cx3; lastY = cy3;
@@ -889,15 +874,15 @@ namespace LaserGRBL.SvgConverter
                         points[3] = new Point(cx3, cy3);
                         cxMirror = cx3 - (cx2 - cx3); cyMirror = cy3 - (cy2 - cy3);
                         lastX = cx3; lastY = cy3;
-                        var b = GetBezierApproximation(points, svgBezierAccuracy);
+                        Point[] b = GetBezierApproximation(points, svgBezierAccuracy);
                         if (svgNodesOnly)
                         {
                             gcodeDotOnly(cx3, cy3, command.ToString());
                         }
                         else
                         {
-                            for (int i = 1; i < b.Points.Count; i++)
-                                gcodeMoveTo((float)b.Points[i].X, (float)b.Points[i].Y, command.ToString());
+                            for (int i = 1; i < b.Length; i++)
+                                gcodeMoveTo((float)b[i].X, (float)b[i].Y, command.ToString());
                         }
                     }
                     startSubPath = true;
@@ -928,15 +913,15 @@ namespace LaserGRBL.SvgConverter
                         points[3] = new Point(cx3, cy3);
                         cxMirror = cx3; cyMirror = cy3;
                         lastX = cx3; lastY = cy3;
-                        var b = GetBezierApproximation(points, svgBezierAccuracy);
+                        Point[] b = GetBezierApproximation(points, svgBezierAccuracy);
                         if (svgNodesOnly)
                         {
                             gcodeDotOnly(cx3, cy3, command.ToString());
                         }
                         else
                         {
-                            for (int i = 1; i < b.Points.Count; i++)
-                                gcodeMoveTo((float)b.Points[i].X, (float)b.Points[i].Y, command.ToString());
+                            for (int i = 1; i < b.Length; i++)
+                                gcodeMoveTo((float)b[i].X, (float)b[i].Y, command.ToString());
                         }
                     }
                     startSubPath = true;
@@ -1020,9 +1005,9 @@ namespace LaserGRBL.SvgConverter
                 points[1] = new Point((startX + dx1), (startY + dy1));
                 points[2] = new Point((endpointX + dxe), (endpointY + dye));
                 points[3] = new Point(endpointX, endpointY);
-                var b = GetBezierApproximation(points, svgBezierAccuracy);
-                for (int k = 1; k < b.Points.Count; k++)
-                    gcodeMoveTo(b.Points[k], "arc");
+                Point[] b = GetBezierApproximation(points, svgBezierAccuracy);
+                for (int k = 1; k < b.Length; k++)
+                    gcodeMoveTo(b[k], "arc");
 
                 theta1 = theta2;
                 startX = (float)endpointX;
@@ -1047,7 +1032,7 @@ namespace LaserGRBL.SvgConverter
         /// from http://stackoverflow.com/questions/13940983/how-to-draw-bezier-curve-by-several-points
         /// </summary>
         private static Point[] points;
-        private static PolyLineSegment GetBezierApproximation( Point[] controlPoints, int outputSegmentCount)
+        private static Point[] GetBezierApproximation( Point[] controlPoints, int outputSegmentCount)
         {
             Point[] points = new Point[outputSegmentCount + 1];
             for (int i = 0; i <= outputSegmentCount; i++)
@@ -1055,7 +1040,7 @@ namespace LaserGRBL.SvgConverter
                 double t = (double)i / outputSegmentCount;
                 points[i] = GetBezierPoint(t, controlPoints, 0, controlPoints.Length);
             }
-            return new PolyLineSegment(points, true);
+            return points;
         }
         private static Point GetBezierPoint(double t, Point[] controlPoints, int index, int count)
         {
