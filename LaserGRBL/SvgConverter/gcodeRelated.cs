@@ -61,7 +61,7 @@ namespace LaserGRBL.SvgConverter
         // Using Spindle pwr. to switch on/off laser
         private static bool gcodeSpindleToggle = true; // Switch on/off spindle for Pen down/up (M3/M5)
         public static float gcodeSpindleSpeed = 999; // Spindle speed to apply
-        private static string gcodeSpindleCmd = "3"; // Spindle Command M3 / M4
+        private static string gcodeSpindleCmd = "M3"; // Spindle Command M3 / M4
 
         // Using Spindle-Speed als PWM output to control RC-Servo
         //private static bool gcodePWMEnable = false;     // Change Spindle speed for Pen down/up
@@ -95,10 +95,11 @@ namespace LaserGRBL.SvgConverter
 
             int sspeed = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
             gcodeSpindleSpeed = (float)sspeed;
-            if (Properties.Settings.Default.importGCSpindleCmd)
-                gcodeSpindleCmd = "3";
-            else
-                gcodeSpindleCmd = "4";
+            //if (Properties.Settings.Default.importGCSpindleCmd)
+            //    gcodeSpindleCmd = "3";
+            //else
+            //    gcodeSpindleCmd = "4";
+            gcodeSpindleCmd = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
 
             //gcodeZApply = Properties.Settings.Default.importGCZEnable;
             //gcodeZUp = (float)Properties.Settings.Default.importGCZUp;
@@ -219,7 +220,7 @@ namespace LaserGRBL.SvgConverter
         {
             if (Properties.Settings.Default.importGCTTSSpeed) { cmt += " spindle speed from tool table"; }
             if (cmt.Length > 0) cmt = string.Format("({0})", cmt);
-            gcodeString.AppendFormat("M{0} S{1} {2}\r\n", gcodeSpindleCmd, gcodeSpindleSpeed, cmt);
+            gcodeString.AppendFormat("{0} S{1} {2}\r\n", gcodeSpindleCmd, gcodeSpindleSpeed, cmt);
             //gcodeLines++;
         }
 
