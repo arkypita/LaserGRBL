@@ -87,6 +87,9 @@
     <StartupObject>LaserGRBL.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Svg, Version=2.2.1.39233, Culture=neutral, PublicKeyToken=12a0bac221edeae2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Svg.2.3.0\lib\net35\Svg.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -752,10 +755,14 @@
     <None Include="Grafica\LaserGrbl.ico" />
     <None Include="Grafica\rotCCW.png" />
     <None Include="Grafica\rotCW.png" />
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\Settings.settings" />
     <None Include="Properties\Settings.settings" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Autotrace\autotrace32.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Grafica\add2.png" />
     <Content Include="Grafica\aE.png" />
     <Content Include="Grafica\aN.png" />
@@ -790,6 +797,9 @@
     <Content Include="Grafica\stop.png" />
     <Content Include="Grafica\text_align_left.png" />
     <Content Include="Grafica\warning.png" />
+    <Content Include="Autotrace\autotrace64.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

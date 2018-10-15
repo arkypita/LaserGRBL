@@ -315,10 +315,11 @@ namespace LaserGRBL.RasterConverter
 		private void RefreshVE()
 		{
 			GbVectorizeOptions.Visible = RbVectorize.Checked;
-			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
+            GbCenterlineOptions.Visible = RbCenterline.Checked;
+            GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
 			GbLineToLineOptions.Text = RbLineToLineTracing.Checked ? "Line To Line Options" : "Dithering Options";
 
-			CbThreshold.Visible = !RbDithering.Checked;
+            CbThreshold.Visible = !RbDithering.Checked;
 			TbThreshold.Visible = !RbDithering.Checked && CbThreshold.Checked;
 
 			LblDitherMode.Visible = CbDither.Visible = RbDithering.Checked;
@@ -336,8 +337,18 @@ namespace LaserGRBL.RasterConverter
 				RefreshVE();
 			}
 		}
-		
-		private void RbVectorize_CheckedChanged(object sender, EventArgs e)
+
+        private void RbCenterline_CheckedChanged(object sender, EventArgs e)
+        {
+            if (IP != null)
+            {
+                if (RbCenterline.Checked)
+                    IP.SelectedTool = ImageProcessor.Tool.Centerline;
+                RefreshVE();
+            }
+        }
+
+        private void RbVectorize_CheckedChanged(object sender, EventArgs e)
 		{
 			if (IP != null)
 			{
@@ -641,5 +652,6 @@ namespace LaserGRBL.RasterConverter
 				PbOriginal.Image = IP.Original;
 			}
 		}
-	}
+
+    }
 }

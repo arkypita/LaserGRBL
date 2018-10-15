@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Windows.Forms;
 using CsPotrace;
 using System.Threading;
-using Cyotek.DitheringTest.Helpers;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace LaserGRBL.RasterConverter
 {
@@ -79,7 +77,9 @@ namespace LaserGRBL.RasterConverter
 
 
 		public enum Tool
-		{ Line2Line, Dithering, Vectorize }
+		{ Line2Line, Dithering, Vectorize,
+            Centerline
+        }
 
 		public enum Direction
 		{ Horizontal, Vertical, Diagonal, None }
@@ -684,7 +684,9 @@ namespace LaserGRBL.RasterConverter
 								PreviewDithering(bmp);
 							else if (SelectedTool == Tool.Vectorize)
 								PreviewVector(bmp);
-						}
+                            else if (SelectedTool == Tool.Centerline)
+                                PreviewCenterline(bmp);
+                        }
 
 						if (!MustExitTH && PreviewReady != null)
 							PreviewReady(bmp);
@@ -701,13 +703,122 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-		private void PreviewDithering(Bitmap bmp)
+
+        System.Text.RegularExpressions.Regex colorRegex = new System.Text.RegularExpressions.Regex("stroke:#([0-9a-fA-F]+);", System.Text.RegularExpressions.RegexOptions.Compiled);
+        private void PreviewCenterline(Bitmap bmp)
+        {
+           
+            if (MustExitTH)
+                return;
+
+            string fname = $".//Autotrace//{System.IO.Path.GetRandomFileName()}";
+
+            try
+            {
+                if (MustExitTH)
+                    return;
+
+                bmp.Save($"{fname}.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+
+                if (MustExitTH)
+                    return;
+
+                string command = false ? ".//Autotrace//autotrace32.exe" : ".//Autotrace//autotrace64.exe";
+                string param = $"-output-fi {fname}.svg -output-fo svg -centerline -despeckle-l 20 -despeckle-t 0.1 -corner-t 110 -corner-s 30 -line-t 1 {fname}.bmp";
+
+                if (MustExitTH)
+                    return;
+
+                ExecuteCommand(command, param);
+
+                if (MustExitTH)
+                    return;
+
+                string fcontent = System.IO.File.ReadAllText($"{fname}.svg");
+                fcontent = colorRegex.Replace(fcontent, "stroke:#FF0000;");
+
+                if (MustExitTH)
+                    return;
+
+                Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
+
+                if (MustExitTH)
+                    return;
+
+                using (Graphics g = Graphics.FromImage(bmp))
+                {
+                    if (MustExitTH)
+                        return;
+
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(200, Color.White)), g.ClipBounds);
+
+                    if (MustExitTH)
+                        return;
+
+                    svg.Draw(g);
+
+                }
+            }
+            catch
+            {
+
+
+            }
+            finally
+            {
+                try
+                {
+                    if (System.IO.File.Exists($"{fname}.bmp"))
+                        System.IO.File.Delete($"{fname}.bmp");
+                }
+                catch { }
+                try
+                {
+                    if (System.IO.File.Exists($"{fname}.svg"))
+                        System.IO.File.Delete($"{fname}.svg");
+                }
+                catch { }
+            }
+        }
+
+        private bool ExecuteCommand(string exeDir, string args)
+        {
+            try
+            {
+                ProcessStartInfo procStartInfo = new ProcessStartInfo();
+
+                procStartInfo.FileName = exeDir;
+                procStartInfo.Arguments = args;
+                procStartInfo.RedirectStandardOutput = true;
+                procStartInfo.UseShellExecute = false;
+                procStartInfo.CreateNoWindow = true;
+
+                using (Process process = new Process())
+                {
+                    process.StartInfo = procStartInfo;
+                    process.Start();
+
+                    process.WaitForExit();
+
+                    string result = process.StandardOutput.ReadToEnd();
+                    Console.WriteLine(result);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("*** Error occured executing the following commands.");
+                Console.WriteLine(exeDir);
+                Console.WriteLine(args);
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        private void PreviewDithering(Bitmap bmp)
 		{
 			PreviewLineByLine(bmp);
 		}
-
-
-
 
 		public void GenerateGCode()
 		{
