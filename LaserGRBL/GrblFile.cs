@@ -88,7 +88,10 @@ namespace LaserGRBL
 
             mRange.ResetRange();
 
-            string gcode = SvgConverter.GCodeFromSVG.convertFromFile(filename);
+            SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
+            converter.GCodeXYFeed = (float)(int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+
+            string gcode = converter.convertFromFile(filename);
             string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             foreach (string l in lines)
             {
@@ -788,7 +791,13 @@ namespace LaserGRBL
 
 			string content = Autotrace.BitmapToSvgString(bmp, Color.Black, useCornerThreshold, cornerThreshold, useLineThreshold, lineThreshold);
 
-			string gcode = SvgConverter.GCodeFromSVG.convertFromText(content);
+            SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
+            converter.GCodeXYFeed = (float)(int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+            converter.SvgScaleApply = true;
+            converter.SvgMaxSize = (float)Math.Max(bmp.Width /10.0, bmp.Height / 10.0);
+            //converter.SvgConvertToMM = false;
+
+            string gcode = converter.convertFromText(content);
 			string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 			foreach (string l in lines)
 			{

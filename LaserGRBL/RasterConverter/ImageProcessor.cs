@@ -813,7 +813,7 @@ namespace LaserGRBL.RasterConverter
 			{
 				int maxSize = Is32Bit ? 6000 * 7000 : 22000 * 22000; //on 32bit OS we have memory limit - allow Higher value on 64bit
 				double maxRes = Math.Sqrt((maxSize / (TargetSize.Width * TargetSize.Height))); //limit res if resultimg bmp size is to big
-				double res = Math.Min(maxRes, SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering ? (double)Quality : 10.0); //use a fixed resolution of 10ppmm
+				double res = Math.Min(maxRes, SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering ? (double)Quality : 10.0); //use a fixed resolution of 10ppmm for vectorization
 				double fres = Math.Min(maxRes, FillingQuality);
 
 				Size pixelSize = new Size((int)(TargetSize.Width * res), (int)(TargetSize.Height * res));
