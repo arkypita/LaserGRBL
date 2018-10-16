@@ -1,10 +1,10 @@
-﻿using System;
+﻿using CsPotrace;
+
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using CsPotrace;
 using System.Threading;
-using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace LaserGRBL.RasterConverter
 {
@@ -778,7 +778,7 @@ namespace LaserGRBL.RasterConverter
 		//System.Text.RegularExpressions.Regex colorRegex = new System.Text.RegularExpressions.Regex("stroke:#([0-9a-fA-F]+);", System.Text.RegularExpressions.RegexOptions.Compiled);
         private void PreviewCenterline(Bitmap bmp)
         {
-			Svg.SvgDocument svg = Autotrace.BitmapToSVG(bmp, Color.Red, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold);
+			Svg.SvgDocument svg = Autotrace.BitmapToSvgDocument(bmp, Color.Red, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold);
 
 			if (MustExitTH) return;
 
@@ -842,7 +842,7 @@ namespace LaserGRBL.RasterConverter
 						else if (SelectedTool == ImageProcessor.Tool.Vectorize)
 							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf, mAppend);
 						else if (SelectedTool == ImageProcessor.Tool.Centerline)
-							mCore.LoadedFile.LoadImageCenterline(bmp, mFileName, UseLineThreshold, LineThreshold, UseCornerThreshold, CornerThreshold,  conf, mAppend);
+							mCore.LoadedFile.LoadImageCenterline(bmp, mFileName, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold, conf, mAppend);
 					}
 
 					if (GenerationComplete != null)

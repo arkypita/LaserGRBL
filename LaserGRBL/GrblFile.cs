@@ -774,9 +774,38 @@ namespace LaserGRBL
 
 		}
 
-		internal void LoadImageCenterline(Bitmap bmp, string mFileName, bool useLineThreshold, int lineThreshold, bool useCornerThreshold, int cornerThreshold, L2LConf conf, bool mAppend)
+		internal void LoadImageCenterline(Bitmap bmp, string filename, bool useCornerThreshold, int cornerThreshold, bool useLineThreshold, int lineThreshold, L2LConf conf, bool append)
 		{
-			throw new NotImplementedException();
+
+			RiseOnFileLoading(filename);
+
+			long start = Tools.HiResTimer.TotalMilliseconds;
+
+			if (!append)
+				list.Clear();
+
+			mRange.ResetRange();
+
+			string content = Autotrace.BitmapToSvgString(bmp, Color.Black, useCornerThreshold, cornerThreshold, useLineThreshold, lineThreshold);
+
+			string gcode = SvgConverter.GCodeFromSVG.convertFromText(content);
+			string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+			foreach (string l in lines)
+			{
+				string line = l;
+				if ((line = line.Trim()).Length > 0)
+				{
+					GrblCommand cmd = new GrblCommand(line);
+					if (!cmd.IsEmpty)
+						list.Add(cmd);
+				}
+			}
+
+			Analyze();
+			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+
+			RiseOnFileLoaded(filename, elapsed);
+
 		}
 
 		private void Analyze() //analyze the file and build global range and timing for each command

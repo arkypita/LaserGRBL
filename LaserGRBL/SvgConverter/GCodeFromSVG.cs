@@ -80,38 +80,40 @@ namespace LaserGRBL.SvgConverter
             importInMM = Properties.Settings.Default.importUnitmm;
             if (file == "")
             { MessageBox.Show("Empty file name"); return ""; }
-            if (file.Substring(0, 4) == "http")
-            {
-                string content = "";
-                using (var wc = new System.Net.WebClient())
-                {
-                    try { content = wc.DownloadString(file); }
-                    catch { MessageBox.Show("Could not load content from " + file); return ""; }
+          
+            if (File.Exists(file))
+            {   try
+                {   svgCode = XElement.Load(file, LoadOptions.None);    // PreserveWhitespace);
+                    return convertSVG(svgCode, file);                   // startConvert(svgCode);
                 }
-                if ((content != "") && (content.IndexOf("<?xml") == 0))
-                {
-                    svgCode = XElement.Load(content, LoadOptions.None);
-                    return convertSVG(svgCode, file);
-                }
-                else
-                    MessageBox.Show("This is probably not a SVG document.\r\nFirst line: "+ content.Substring(0,50));
+                catch (Exception e)
+                {   MessageBox.Show("Error '" + e.ToString() + "' in XML file " + file + "\r\n\r\nTry to save file with other encoding e.g. UTF-8"); return ""; }
             }
-            else
-            {
-                if (File.Exists(file))
-                {   try
-                    {   svgCode = XElement.Load(file, LoadOptions.None);    // PreserveWhitespace);
-                        return convertSVG(svgCode, file);                   // startConvert(svgCode);
-                    }
-                    catch (Exception e)
-                    {   MessageBox.Show("Error '" + e.ToString() + "' in XML file " + file + "\r\n\r\nTry to save file with other encoding e.g. UTF-8"); return ""; }
-                }
-                else {  MessageBox.Show("File does not exist: " + file); return ""; }
-            }
+            else {  MessageBox.Show("File does not exist: " + file); return ""; }
+          
             return "";
         }
 
-        private static string convertSVG(XElement svgCode, string info)
+
+		public static string convertFromText(string text)
+		{
+			importInMM = Properties.Settings.Default.importUnitmm;
+			if (string.IsNullOrEmpty(text))
+			{ MessageBox.Show("Nothing to convert"); return ""; }
+
+			try
+			{
+				svgCode = XElement.Parse(text, LoadOptions.None);    // PreserveWhitespace);
+				return convertSVG(svgCode, "");                   // startConvert(svgCode);
+			}
+			catch (Exception e)
+			{ MessageBox.Show("Error '" + e.ToString() + "' in XML file " + "" + "\r\n\r\nTry to save file with other encoding e.g. UTF-8"); return ""; }
+
+			return "";
+		}
+
+
+		private static string convertSVG(XElement svgCode, string info)
         {
             finalString = new StringBuilder();
 
