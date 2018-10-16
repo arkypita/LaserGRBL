@@ -19,6 +19,7 @@ namespace LaserGRBL
 			public int GCodeFile;
 			public int RasterFile;
 			public int Vectorization;
+			public int Centerline;
 			public int Dithering;
 			public int Line2Line;
             public int SvgFile;
@@ -28,6 +29,7 @@ namespace LaserGRBL
 				GCodeFile += c.GCodeFile;
 				RasterFile += c.RasterFile;
 				Vectorization += c.Vectorization;
+				Centerline += c.Centerline;
 				Dithering += c.Dithering;
 				Line2Line += c.Line2Line;
                 SvgFile += c.SvgFile;

@@ -774,7 +774,10 @@ namespace LaserGRBL
 
 		}
 
-
+		internal void LoadImageCenterline(Bitmap bmp, string mFileName, bool useLineThreshold, int lineThreshold, bool useCornerThreshold, int cornerThreshold, L2LConf conf, bool mAppend)
+		{
+			throw new NotImplementedException();
+		}
 
 		private void Analyze() //analyze the file and build global range and timing for each command
 		{

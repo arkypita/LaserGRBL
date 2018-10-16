@@ -20,7 +20,7 @@ namespace LaserGRBL.RasterConverter
 			mCore = core;
 
 			BackColor = ColorScheme.FormBackColor;
-			GbConversionTool.ForeColor = GbLineToLineOptions.ForeColor = GbParameters.ForeColor = GbVectorizeOptions.ForeColor = ForeColor = ColorScheme.FormForeColor;
+			GbCenterlineOptions.ForeColor = GbConversionTool.ForeColor = GbLineToLineOptions.ForeColor = GbParameters.ForeColor = GbVectorizeOptions.ForeColor = ForeColor = ColorScheme.FormForeColor;
 			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
 
 			IP = new ImageProcessor(core, filename, PbConverted.Size, append);
@@ -168,6 +168,8 @@ namespace LaserGRBL.RasterConverter
 						mCore.UsageCounters.Line2Line++;
 					else if (IP.SelectedTool == ImageProcessor.Tool.Vectorize)
 						mCore.UsageCounters.Vectorization++;
+					else if (IP.SelectedTool == ImageProcessor.Tool.Centerline)
+						mCore.UsageCounters.Centerline++;
 				}
 			}
 		}
@@ -264,6 +266,12 @@ namespace LaserGRBL.RasterConverter
 			TBWhiteClip.Value = IP.WhiteClip = (int)Settings.GetObject("GrayScaleConversion.Parameters.WhiteClip", 5);
 
 			CbDither.SelectedItem = (ImageTransform.DitheringMode)Settings.GetObject("GrayScaleConversion.DitheringOptions.DitheringMode", ImageTransform.DitheringMode.FloydSteinberg);
+
+			CbLineThreshold.Checked = IP.UseLineThreshold = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.LineThreshold.Enabled", true);
+			TBLineThreshold.Value = IP.LineThreshold = (int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.LineThreshold.Value", 10);
+
+			CbCornerThreshold.Checked = IP.UseCornerThreshold = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.CornerThreshold.Enabled", true);
+			TBCornerThreshold.Value = IP.CornerThreshold = (int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.CornerThreshold.Value", 110);
 
 			if (RbLineToLineTracing.Checked && !supportPWM)
 				RbDithering.Checked = true;
@@ -653,5 +661,28 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-    }
+		private void CbUseLineThreshold_CheckedChanged(object sender, EventArgs e)
+		{
+			if (IP != null) IP.UseLineThreshold = CbLineThreshold.Checked;
+			TBLineThreshold.Enabled = CbLineThreshold.Checked;
+		}
+
+		private void CbCornerThreshold_CheckedChanged(object sender, EventArgs e)
+		{
+			if (IP != null) IP.UseCornerThreshold= CbCornerThreshold.Checked;
+			TBCornerThreshold.Enabled = CbCornerThreshold.Checked;
+		}
+
+		private void TBLineThreshold_ValueChanged(object sender, EventArgs e)
+		{ if (IP != null) IP.LineThreshold = (int)TBLineThreshold.Value; }
+
+		private void TBCornerThreshold_ValueChanged(object sender, EventArgs e)
+		{ if (IP != null) IP.CornerThreshold = (int)TBCornerThreshold.Value; }
+
+		private void TBCornerThreshold_DoubleClick(object sender, EventArgs e)
+		{ TBCornerThreshold.Value = 110; }
+
+		private void TBLineThreshold_DoubleClick(object sender, EventArgs e)
+		{ TBLineThreshold.Value = 10; }
+	}
 }

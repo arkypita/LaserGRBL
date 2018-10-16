@@ -54,6 +54,10 @@ namespace LaserGRBL.RasterConverter
 		private Direction mFillingDirection;
 		private ImageTransform.DitheringMode mDithering;
 		private double mFillingQuality;
+		private bool mUseLineThreshold;
+		private int mLineThreshold;
+		private bool mUseCornerThreshold;
+		private int mCornerThreshold;
 		public bool mDemo;
 
 		//option for gcode generator
@@ -594,6 +598,59 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
+		public int LineThreshold
+		{
+			get { return mLineThreshold; }
+			set
+			{
+				if (value != mLineThreshold)
+				{
+					mLineThreshold = value;
+					Refresh();
+				}
+			}
+		}
+
+		public bool UseLineThreshold
+		{
+			get { return mUseLineThreshold; }
+			set
+			{
+				if (value != mUseLineThreshold)
+				{
+					mUseLineThreshold = value;
+					Refresh();
+				}
+			}
+		}
+
+		public int CornerThreshold
+		{
+			get { return mCornerThreshold; }
+			set
+			{
+				if (value != mCornerThreshold)
+				{
+					mCornerThreshold = value;
+					Refresh();
+				}
+			}
+		}
+
+		public bool UseCornerThreshold
+		{
+			get { return mUseCornerThreshold; }
+			set
+			{
+				if (value != mUseCornerThreshold)
+				{
+					mUseCornerThreshold = value;
+					Refresh();
+				}
+			}
+		}
+
+
 		public bool Demo
 		{
 			get { return mDemo; }
@@ -703,117 +760,37 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
+		/*
+		corner-always-threshold <angle-in-degrees>: if the angle at a pixel is  less than this, it is considered a corner, even if it is within  `corner-surround' pixels of another corner; default is 60.
+		corner-surround <unsigned>: number of pixels on either side of a  point to consider when determining if that point is a corner;  default is 4.
+		corner-threshold <angle-in-degrees>: if a pixel, its predecessor(s),  and its successor(s) meet at an angle smaller than this, it's a  corner; default is 100.
+		despeckle-level <unsigned>: 0..20; default is no despeckling.
+		despeckle-tightness <real>: 0.0..8.0; default is 2.0.
+		imageerror-threshold <real>: subdivide fitted curves that are off by  more pixels than this; default is 2.0.
+		filter-iterations <unsigned>: smooth the curve this many times  before fitting; default is 4.
+		line-reversion-threshold <real>: if a spline is closer to a straight  line than this, weighted by the square of the curve length, keep it a  straight line even if it is a list with curves; default is .01.
+		line-threshold <real>: if the spline is not more than this far away  from the straight line defined by its endpoints,  then output a straight line; default is 1.
+		preserve-width: whether to preserve line width prior to thinning.
+		remove-adjacent-corners: remove corners that are adjacent.
+		tangent-surround <unsigned>: number of points on either side of a  point to consider when computing the tangent at that point; default is 3.
+		*/
 
-        System.Text.RegularExpressions.Regex colorRegex = new System.Text.RegularExpressions.Regex("stroke:#([0-9a-fA-F]+);", System.Text.RegularExpressions.RegexOptions.Compiled);
+		//System.Text.RegularExpressions.Regex colorRegex = new System.Text.RegularExpressions.Regex("stroke:#([0-9a-fA-F]+);", System.Text.RegularExpressions.RegexOptions.Compiled);
         private void PreviewCenterline(Bitmap bmp)
         {
-           
-            if (MustExitTH)
-                return;
+			Svg.SvgDocument svg = Autotrace.BitmapToSVG(bmp, Color.Red, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold);
 
-            string fname = $".//Autotrace//{System.IO.Path.GetRandomFileName()}";
+			if (MustExitTH) return;
 
-            try
-            {
-                if (MustExitTH)
-                    return;
+			using (Graphics g = Graphics.FromImage(bmp))
+			{
+				g.FillRectangle(new SolidBrush(Color.FromArgb(180, Color.White)), g.ClipBounds);
 
-                bmp.Save($"{fname}.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+				if (MustExitTH) return;
 
-                if (MustExitTH)
-                    return;
-
-                string command = false ? ".//Autotrace//autotrace32.exe" : ".//Autotrace//autotrace64.exe";
-                string param = $"-output-fi {fname}.svg -output-fo svg -centerline -despeckle-l 20 -despeckle-t 0.1 -corner-t 110 -corner-s 30 -line-t 1 {fname}.bmp";
-
-                if (MustExitTH)
-                    return;
-
-                ExecuteCommand(command, param);
-
-                if (MustExitTH)
-                    return;
-
-                string fcontent = System.IO.File.ReadAllText($"{fname}.svg");
-                fcontent = colorRegex.Replace(fcontent, "stroke:#FF0000;");
-
-                if (MustExitTH)
-                    return;
-
-                Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
-
-                if (MustExitTH)
-                    return;
-
-                using (Graphics g = Graphics.FromImage(bmp))
-                {
-                    if (MustExitTH)
-                        return;
-
-                    g.FillRectangle(new SolidBrush(Color.FromArgb(200, Color.White)), g.ClipBounds);
-
-                    if (MustExitTH)
-                        return;
-
-                    svg.Draw(g);
-
-                }
-            }
-            catch
-            {
-
-
-            }
-            finally
-            {
-                try
-                {
-                    if (System.IO.File.Exists($"{fname}.bmp"))
-                        System.IO.File.Delete($"{fname}.bmp");
-                }
-                catch { }
-                try
-                {
-                    if (System.IO.File.Exists($"{fname}.svg"))
-                        System.IO.File.Delete($"{fname}.svg");
-                }
-                catch { }
-            }
-        }
-
-        private bool ExecuteCommand(string exeDir, string args)
-        {
-            try
-            {
-                ProcessStartInfo procStartInfo = new ProcessStartInfo();
-
-                procStartInfo.FileName = exeDir;
-                procStartInfo.Arguments = args;
-                procStartInfo.RedirectStandardOutput = true;
-                procStartInfo.UseShellExecute = false;
-                procStartInfo.CreateNoWindow = true;
-
-                using (Process process = new Process())
-                {
-                    process.StartInfo = procStartInfo;
-                    process.Start();
-
-                    process.WaitForExit();
-
-                    string result = process.StandardOutput.ReadToEnd();
-                    Console.WriteLine(result);
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("*** Error occured executing the following commands.");
-                Console.WriteLine(exeDir);
-                Console.WriteLine(args);
-                Console.WriteLine(ex.Message);
-                return false;
-            }
-        }
+				svg.Draw(g);
+			}
+		}
 
         private void PreviewDithering(Bitmap bmp)
 		{
@@ -864,6 +841,8 @@ namespace LaserGRBL.RasterConverter
 							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf, mAppend);
 						else if (SelectedTool == ImageProcessor.Tool.Vectorize)
 							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf, mAppend);
+						else if (SelectedTool == ImageProcessor.Tool.Centerline)
+							mCore.LoadedFile.LoadImageCenterline(bmp, mFileName, UseLineThreshold, LineThreshold, UseCornerThreshold, CornerThreshold,  conf, mAppend);
 					}
 
 					if (GenerationComplete != null)

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Svg.SvgCircle" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAACAAIAGAAAAAAAAAAAAAQAABAAAAAIAgA=</HashCode>
+      <FileName>Basic Shapes\SvgCircle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Svg.SvgEllipse" Collapsed="true">
+    <Position X="5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAgAAAACAAIAGAAgGQAAAAAAAAQAABAAAAAAAgA=</HashCode>
+      <FileName>Basic Shapes\SvgEllipse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Svg.SvgLine" Collapsed="true">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAyAiAAIAAAAAAAAAAAAADAAAAADAAAAAAgA=</HashCode>
+      <FileName>Basic Shapes\SvgLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Svg.SvgPolygon" Collapsed="true">
+    <Position X="2.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACgAIAgAAAAAAAAAAAAAQAAAAAAAAAAgA=</HashCode>
+      <FileName>Basic Shapes\SvgPolygon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Svg.SvgPolyline" Collapsed="true">
+    <Position X="2.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Basic Shapes\SvgPolyline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Svg.SvgRectangle" Collapsed="true">
+    <Position X="9.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIBASCAAIAAAIAAEDAABAAAAQAABAAEAAAYgA=</HashCode>
+      <FileName>Basic Shapes\SvgRectangle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Svg.SvgVisualElement">
+    <Position X="11.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCEAAFAYAAgAKAAABAACABEAgBSsUIABAAAACAIgA=</HashCode>
+      <FileName>Basic Shapes\SvgVisualElement.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FillOpacity" />
+      <Property Name="FillRule" />
+      <Property Name="ClipRule" />
+      <Property Name="Opacity" />
+      <Property Name="StrokeLineCap" />
+      <Property Name="StrokeWidth" />
+    </ShowAsAssociation>
+    <Lollipop Position="1.003" />
+  </Class>
+  <Class Name="Svg.SvgGroup">
+    <Position X="9" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAACAAAABAAAAAAAgA=</HashCode>
+      <FileName>Document Structure\SvgGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Svg.SvgElement">
+    <Position X="6.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAUiAAQAggRkAECBABEQAAREgACAQAAgBIAIAECIBI=</HashCode>
+      <FileName>SvgElement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Svg.SvgDocument">
+    <Position X="10.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAgAgACQIwQAAAQAAAAAQEAAAAAQCAAAAAEAAMA=</HashCode>
+      <FileName>SvgDocument.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Struct Name="System.Single" Collapsed="true">
+    <Position X="16.25" Y="3" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Struct>
+  <Struct Name="Svg.SvgUnit">
+    <Position X="18.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABBAACAAAAAIAAYcgAIAAAAAAEAAAIAQAQAgAAEAAAA=</HashCode>
+      <FileName>DataTypes\SvgUnit.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Type" />
+      <Property Name="Value" />
+    </ShowAsAssociation>
+  </Struct>
+  <Enum Name="Svg.SvgFillRule">
+    <Position X="14" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAACAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Painting\SvgFillRule.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Svg.SvgClipRule">
+    <Position X="14" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Clipping and Masking\SvgClipRule.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Svg.SvgStrokeLineCap">
+    <Position X="14" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAABAAAAAAAAAAAAAAgAAIAAAA=</HashCode>
+      <FileName>Painting\SvgStrokeLineCap.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Svg.SvgUnitType">
+    <Position X="20.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAEAgAAAAAABAAAAAAgAAEAAAAAAACEAAAA=</HashCode>
+      <FileName>DataTypes\SvgUnit.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
