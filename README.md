@@ -80,6 +80,8 @@ LaserGRBL contains some code from:
 - [Bezier2Biarc](https://github.com/domoszlai/bezier2biarc) - Copyright Laszlo
 - [websocket-sharp](https://github.com/sta/websocket-sharp) - Copyright sta.blockhead
 - [Expression Evaluator](https://github.com/vubiostat/expression.cs) - Copyright Will Gray, Jeremy Roberts
+- [GCodeFromSVG](https://github.com/svenhb/GRBL-Plotter) - Copyright Sven Hasemann
+- [MS SVG Library](https://archive.codeplex.com/?p=svg) - Microsoft Public License
 
 Thanks to:
 - Myself, for italian and english language
