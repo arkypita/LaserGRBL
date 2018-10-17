@@ -144,7 +144,7 @@ namespace LaserGRBL
 			protected override WebRequest GetWebRequest(Uri uri)
 			{
 				WebRequest w = base.GetWebRequest(uri);
-				w.Timeout = 10000; //milliseconds
+				w.Timeout = 5000; //milliseconds
 				return w;
 			}
 		}

@@ -30,7 +30,8 @@ namespace LaserGRBL
 
 			Tools.TaskScheduler.SetClockResolution(1); //use a fast clock
 			Application.Run(new MainForm());
-			LaserGRBL.GrblEmulator.WebSocketEmulator.Stop();
+			GrblEmulator.WebSocketEmulator.Stop();
+			Autotrace.CleanupTmpFolder();
 			Logger.Stop();
 		}
 

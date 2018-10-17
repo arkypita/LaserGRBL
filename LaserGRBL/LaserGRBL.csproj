@@ -349,7 +349,6 @@
     <Compile Include="SvgLibrary\Transforms\SvgTransformConverter.cs" />
     <Compile Include="SvgLibrary\Transforms\SvgTranslate.cs" />
     <Compile Include="SvgLibrary\Web\SvgHandler.cs" />
-    <Compile Include="Tools\CommandLine.cs" />
     <Compile Include="UrlManager.cs" />
     <Compile Include="ColorScheme.cs" />
     <Compile Include="ComWrapper\Emulator.cs" />
