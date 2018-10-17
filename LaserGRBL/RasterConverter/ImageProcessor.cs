@@ -778,7 +778,7 @@ namespace LaserGRBL.RasterConverter
 		//System.Text.RegularExpressions.Regex colorRegex = new System.Text.RegularExpressions.Regex("stroke:#([0-9a-fA-F]+);", System.Text.RegularExpressions.RegexOptions.Compiled);
         private void PreviewCenterline(Bitmap bmp)
         {
-			Svg.SvgDocument svg = Autotrace.BitmapToSvgDocument(bmp, Color.Red, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold);
+			Svg.SvgDocument svg = Autotrace.BitmapToSvgDocument(bmp, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold);
 
 			if (MustExitTH) return;
 
@@ -788,7 +788,13 @@ namespace LaserGRBL.RasterConverter
 
 				if (MustExitTH) return;
 
-				svg.Draw(g);
+				//svg.Draw(g);
+
+				GraphicsPath path = new GraphicsPath();
+				svg.Draw(path);
+
+				g.SmoothingMode = SmoothingMode.HighQuality;
+				g.DrawPath(Pens.Red, path);
 			}
 		}
 

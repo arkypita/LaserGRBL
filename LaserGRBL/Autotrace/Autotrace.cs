@@ -6,8 +6,6 @@ namespace LaserGRBL
 {
 	public class Autotrace
 	{
-		static System.Text.RegularExpressions.Regex colorRegex = new System.Text.RegularExpressions.Regex("stroke:#([0-9a-fA-F]+);", System.Text.RegularExpressions.RegexOptions.Compiled);
-
 		public static void CleanupTmpFolder()
 		{
 			try
@@ -19,13 +17,13 @@ namespace LaserGRBL
 		}
 
 
-		public static Svg.SvgDocument BitmapToSvgDocument(Bitmap bmp, Color color, bool uct, int ct, bool ult, int lt)
+		public static Svg.SvgDocument BitmapToSvgDocument(Bitmap bmp, bool uct, int ct, bool ult, int lt)
 		{
-			string content = BitmapToSvgString(bmp, color, uct, ct, ult, lt);
+			string content = BitmapToSvgString(bmp, uct, ct, ult, lt);
 			return content != null ? Svg.SvgDocument.FromSvg<Svg.SvgDocument>(content) : new Svg.SvgDocument();
 		}
 
-		public static string BitmapToSvgString(Bitmap bmp, Color color, bool uct, int ct, bool ult, int lt)
+		public static string BitmapToSvgString(Bitmap bmp, bool uct, int ct, bool ult, int lt)
 		{
 			if (!System.IO.Directory.Exists(".//Autotrace//TempFolder//"))
 				System.IO.Directory.CreateDirectory(".//Autotrace//TempFolder//");
@@ -43,11 +41,7 @@ namespace LaserGRBL
 
 				param += $" {fname}.bmp";
 
-
-				string fcontent = ExecuteAutotrace(param);
-				fcontent = colorRegex.Replace(fcontent, $"stroke:#{ToHexString(color)};");
-
-				return fcontent;
+				return ExecuteAutotrace(param); 
 			}
 			catch
 			{

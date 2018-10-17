@@ -830,6 +830,9 @@
   <data name="TBLineThreshold.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
   </data>
+  <data name="TBLineThreshold.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="TBLineThreshold.Location" type="System.Drawing.Point, System.Drawing">
     <value>95, 25</value>
   </data>
@@ -859,6 +862,9 @@
   </data>
   <data name="TBCornerThreshold.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
+  </data>
+  <data name="TBCornerThreshold.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="TBCornerThreshold.Location" type="System.Drawing.Point, System.Drawing">
     <value>95, 1</value>

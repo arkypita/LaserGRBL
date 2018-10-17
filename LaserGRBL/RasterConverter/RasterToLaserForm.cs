@@ -176,7 +176,7 @@ namespace LaserGRBL.RasterConverter
 
 		private void StoreSettings()
 		{
-			Settings.SetObject("GrayScaleConversion.RasterConversionTool", RbLineToLineTracing.Checked ? ImageProcessor.Tool.Line2Line : RbDithering.Checked ? ImageProcessor.Tool.Dithering : ImageProcessor.Tool.Vectorize);
+			Settings.SetObject("GrayScaleConversion.RasterConversionTool", RbLineToLineTracing.Checked ? ImageProcessor.Tool.Line2Line : RbDithering.Checked ? ImageProcessor.Tool.Dithering : RbCenterline.Checked ? ImageProcessor.Tool.Centerline : ImageProcessor.Tool.Vectorize);
 			
 			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Direction", (ImageProcessor.Direction)CbDirections.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Quality", UDQuality.Value);
@@ -222,6 +222,11 @@ namespace LaserGRBL.RasterConverter
 			Settings.SetObject("GrayScaleConversion.Gcode.Offset.Y", IP.TargetOffset.Y);
 			Settings.SetObject("GrayScaleConversion.Gcode.BiggestDimension", Math.Max(IP.TargetSize.Width, IP.TargetSize.Height));
 
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.LineThreshold.Enabled", IP.UseLineThreshold);
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.LineThreshold.Value", IP.LineThreshold);
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.CornerThreshold.Enabled", IP.UseCornerThreshold);
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.CornerThreshold.Value", IP.CornerThreshold);
+
 
 			Settings.Save(); // Saves settings in application configuration file
 		}
@@ -232,6 +237,8 @@ namespace LaserGRBL.RasterConverter
 				RbLineToLineTracing.Checked = true;
 			else if ((IP.SelectedTool = (ImageProcessor.Tool)Settings.GetObject("GrayScaleConversion.RasterConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Dithering)
 				RbDithering.Checked = true;
+			else if ((IP.SelectedTool = (ImageProcessor.Tool)Settings.GetObject("GrayScaleConversion.RasterConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Centerline)
+				RbCenterline.Checked = true;
 			else
 				RbVectorize.Checked = true;
 

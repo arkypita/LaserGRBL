@@ -363,11 +363,11 @@
 			// 
 			resources.ApplyResources(this.TBLineThreshold, "TBLineThreshold");
 			this.TBLineThreshold.BackColor = System.Drawing.Color.Transparent;
-			this.TBLineThreshold.BarInnerColor = System.Drawing.Color.DimGray;
-			this.TBLineThreshold.BarOuterColor = System.Drawing.Color.Black;
+			this.TBLineThreshold.BarInnerColor = System.Drawing.Color.LightGoldenrodYellow;
+			this.TBLineThreshold.BarOuterColor = System.Drawing.Color.Gold;
 			this.TBLineThreshold.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-			this.TBLineThreshold.ElapsedInnerColor = System.Drawing.Color.White;
-			this.TBLineThreshold.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.TBLineThreshold.ElapsedInnerColor = System.Drawing.Color.Yellow;
+			this.TBLineThreshold.ElapsedOuterColor = System.Drawing.Color.Gold;
 			this.TBLineThreshold.LargeChange = ((uint)(5u));
 			this.TBLineThreshold.Name = "TBLineThreshold";
 			this.TBLineThreshold.SmallChange = ((uint)(1u));
@@ -382,11 +382,11 @@
 			// 
 			resources.ApplyResources(this.TBCornerThreshold, "TBCornerThreshold");
 			this.TBCornerThreshold.BackColor = System.Drawing.Color.Transparent;
-			this.TBCornerThreshold.BarInnerColor = System.Drawing.Color.DimGray;
-			this.TBCornerThreshold.BarOuterColor = System.Drawing.Color.Black;
+			this.TBCornerThreshold.BarInnerColor = System.Drawing.Color.LightGoldenrodYellow;
+			this.TBCornerThreshold.BarOuterColor = System.Drawing.Color.Gold;
 			this.TBCornerThreshold.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-			this.TBCornerThreshold.ElapsedInnerColor = System.Drawing.Color.White;
-			this.TBCornerThreshold.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.TBCornerThreshold.ElapsedInnerColor = System.Drawing.Color.Yellow;
+			this.TBCornerThreshold.ElapsedOuterColor = System.Drawing.Color.Gold;
 			this.TBCornerThreshold.LargeChange = ((uint)(5u));
 			this.TBCornerThreshold.Maximum = 360;
 			this.TBCornerThreshold.Name = "TBCornerThreshold";

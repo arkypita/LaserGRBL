@@ -302,6 +302,7 @@
     <Compile Include="SvgLibrary\Paths\SvgQuadraticCurveSegment.cs" />
     <Compile Include="SvgLibrary\Rendering\IGraphicsProvider.cs" />
     <Compile Include="SvgLibrary\Rendering\ISvgRenderer.cs" />
+    <Compile Include="SvgLibrary\Rendering\SvgPathRenderer.cs" />
     <Compile Include="SvgLibrary\Rendering\SvgRenderer.cs" />
     <Compile Include="SvgLibrary\Rendering\SvgRendering.cs" />
     <Compile Include="SvgLibrary\SvgAttributeAttribute.cs" />

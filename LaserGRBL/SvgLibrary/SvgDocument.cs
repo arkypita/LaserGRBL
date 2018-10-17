@@ -435,11 +435,28 @@ namespace Svg
             this.Render(renderer);
         }
 
-	    /// <summary>
-	    /// Renders the <see cref="SvgDocument"/> and returns the image as a <see cref="Bitmap"/>.
-	    /// </summary>
-	    /// <returns>A <see cref="Bitmap"/> containing the rendered document.</returns>
-	    public virtual Bitmap Draw()
+		/// <summary>
+		/// Renders the <see cref="SvgDocument"/> to the specified <see cref="GraphicsPath"/>.
+		/// </summary>
+		/// <param name="path">The <see cref="GraphicsPath"/> to be rendered to.</param>
+		/// <exception cref="ArgumentNullException">The <paramref name="path"/> parameter cannot be <c>null</c>.</exception>
+		public void Draw(GraphicsPath path)
+		{
+			if (path == null)
+			{
+				throw new ArgumentNullException("path");
+			}
+
+			var renderer = SvgPathRenderer.FromPath(path);
+			renderer.SetBoundable(this);
+			this.Render(renderer);
+		}
+
+		/// <summary>
+		/// Renders the <see cref="SvgDocument"/> and returns the image as a <see cref="Bitmap"/>.
+		/// </summary>
+		/// <returns>A <see cref="Bitmap"/> containing the rendered document.</returns>
+		public virtual Bitmap Draw()
 	    {
 		    //Trace.TraceInformation("Begin Render");
 
