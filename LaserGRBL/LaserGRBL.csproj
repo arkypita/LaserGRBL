@@ -470,7 +470,7 @@
     <Compile Include="CsPotrace\BezierToBiarc\Vector2.cs" />
     <Compile Include="CsPotrace\CsPotrace.cs" />
     <Compile Include="CsPotrace\CsPotraceExportGCODE.cs" />
-    <Compile Include="CsPotrace\CsPtoraceExport.cs" />
+    <Compile Include="CsPotrace\CsPotraceExport.cs" />
     <Compile Include="CustomButton.cs" />
     <Compile Include="CustomButtonForm.cs">
       <SubType>Form</SubType>

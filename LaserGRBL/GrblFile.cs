@@ -236,7 +236,7 @@ namespace LaserGRBL
 			Potrace.opttolerance = UseOptimize ? (double)Optimize : 0.2;
 			Potrace.curveoptimizing = UseOptimize; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
 
-			List<List<CsPotrace.Curve>> plist = Potrace.PotraceTrace(bmp);
+			List<List<Curve>> plist = Potrace.PotraceTrace(bmp);
 
 			if (c.dir != RasterConverter.ImageProcessor.Direction.None)
 			{
@@ -603,7 +603,7 @@ namespace LaserGRBL
 			prevCol = col;
 		}
 
-        private List<List<CsPotrace.Curve>> OptimizePaths(List<List<CsPotrace.Curve>> list)
+        private List<List<Curve>> OptimizePaths(List<List<Curve>> list)
         {
 			if (list.Count == 1)
 				return list;
@@ -789,11 +789,7 @@ namespace LaserGRBL
 
 			mRange.ResetRange();
 
-			//Svg.SvgDocument svg = Autotrace.BitmapToSvgDocument(bmp, useCornerThreshold, cornerThreshold, useLineThreshold, lineThreshold);
-			//GraphicsPath paths = new GraphicsPath();
-			//svg.Draw(paths);
-
-			string content = Autotrace.BitmapToSvgString(bmp, useCornerThreshold, cornerThreshold, useLineThreshold, lineThreshold);
+            string content = Autotrace.BitmapToSvgString(bmp, useCornerThreshold, cornerThreshold, useLineThreshold, lineThreshold);
 
             SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
             converter.GCodeXYFeed = (float)(int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);

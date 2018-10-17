@@ -780,7 +780,7 @@ namespace LaserGRBL.RasterConverter
         {
 			Svg.SvgDocument svg = Autotrace.BitmapToSvgDocument(bmp, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold);
 
-			if (MustExitTH) return;
+            if (MustExitTH) return;
 
 			using (Graphics g = Graphics.FromImage(bmp))
 			{
@@ -788,13 +788,10 @@ namespace LaserGRBL.RasterConverter
 
 				if (MustExitTH) return;
 
-				//svg.Draw(g);
-
-				GraphicsPath path = new GraphicsPath();
-				svg.Draw(path);
-
-				g.SmoothingMode = SmoothingMode.HighQuality;
-				g.DrawPath(Pens.Red, path);
+                GraphicsPath path = new GraphicsPath();
+                svg.Draw(path);
+                g.SmoothingMode = SmoothingMode.HighQuality;
+                g.DrawPath(Pens.Red, path);
 			}
 		}
 
