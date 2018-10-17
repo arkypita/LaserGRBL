@@ -691,7 +691,6 @@ namespace LaserGRBL
                     {
                         mQueue.Clear(); //flush the queue of item to send
                         mQueue.Enqueue(new GrblCommand("M5")); //shut down laser
-                        mQueue.Enqueue(new GrblCommand("G28")); //go home
                     }
                 }
                 catch (Exception ex)

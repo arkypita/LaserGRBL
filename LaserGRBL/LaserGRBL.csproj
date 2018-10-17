@@ -103,10 +103,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutotraceTest.cs">
+    <Compile Include="Autotrace\AutotraceTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AutotraceTest.Designer.cs">
+    <Compile Include="Autotrace\AutotraceTest.Designer.cs">
       <DependentUpon>AutotraceTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Autotrace\Autotrace.cs" />
@@ -674,7 +674,7 @@
     <Compile Include="UserControls\WaitingProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <EmbeddedResource Include="AutotraceTest.resx">
+    <EmbeddedResource Include="Autotrace\AutotraceTest.resx">
       <DependentUpon>AutotraceTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AutoUpdate\NewVersionForm.zh-CN.resx">
