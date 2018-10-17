@@ -113,7 +113,6 @@ namespace LaserGRBL.SvgConverter
         {
             gcode.setup();          // initialize GCode creation (get stored settings for export)
 
-            gcodeUseSpindle = Properties.Settings.Default.importGCZEnable;
             if (gcodeUseSpindle) gcode.SpindleOn(gcodeString, "Start spindle - Option Z-Axis");
             gcode.PenUp(gcodeString, "SVG Start ");
             startConvert(svgCode);
