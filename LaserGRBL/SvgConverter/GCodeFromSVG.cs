@@ -1,34 +1,12 @@
-﻿/*  GRBL-Plotter. Another GCode sender for GRBL.
-    This file is part of the GRBL-Plotter application.
-   
-    Copyright (C) 2015-2018 Sven Hasemann contact: svenhb@web.de
+﻿/*  
+	This code comes from GRBL-Plotter
+	Copyright (C) 2015-2018 Sven Hasemann contact: svenhb@web.de
+	Modified for LaserGRBL by Diego Settimi contact: arkypita@bergamo3.it
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-/*  GCodeFromSVG.cs a class to convert SVG data into G-Code 
-    Not implemented: 
-        Basic-shapes: Text, Image
-        Transform: rotation with offset, skewX, skewY
-
-    GCode will be written to gcodeString where gcodeStringIndex corresponds with color of element to draw
-*/
-/*  2016-07-18  get stroke-color from shapes, use GIMP-palette information to find tool-nr related to stroke-color
-                add gcode for tool change
-    2018-01-02  Bugfix SVG rect transform (G3 in roundrect)
-                Bugfix SVG End GCode Path before next SVG subpath
-                Bugfix Scale to max dimension
-    2018-07     importInMM = Properties.Settings.Default.importUnitmm;
 */
 
 using System;
@@ -47,7 +25,6 @@ namespace LaserGRBL.SvgConverter
 	class GCodeFromSVG
 	{
 		private StringBuilder gcodeString = new StringBuilder();
-
 		private int svgBezierAccuracy = 12;      // applied line segments at bezier curves
 		public bool SvgScaleApply = false;      // try to scale final GCode if true
 		public float SvgMaxSize = 100;          // final GCode size (greater dimension) if scale is applied
@@ -62,6 +39,7 @@ namespace LaserGRBL.SvgConverter
 		private bool gcodeReduce = false;        // if true remove G1 commands if distance is < limit
 		private float gcodeReduceVal = 0.1f;     // limit when to remove G1 commands
 
+		public System.Drawing.PointF UserOffset = new System.Drawing.PointF(0,0);
 		public float GCodeXYFeed = 2000;        // XY feed to apply for G1
 
 		// Using Spindle pwr. to switch on/off laser
@@ -264,9 +242,14 @@ namespace LaserGRBL.SvgConverter
 			else
 				if (svgComments) gcodeString.Append("( SVG Dimension not given )\r\n");
 
+
+			tmp.OffsetX += UserOffset.X;
+			tmp.OffsetY += UserOffset.Y;
+
 			for (int i = 0; i < matrixGroup.Length; i++)
 			{ matrixGroup[i] = tmp; }
 			matrixElement = tmp;
+
 			if (svgComments) gcodeString.AppendFormat("( Inital Matrix {0} )\r\n", tmp.ToString());
 
 			return;
