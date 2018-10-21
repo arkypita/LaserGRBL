@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "LaserGRBL"
-#define MyAppVersion "2.9.2"
-#define MyAppVersionName "Rhydon"
+#define MyAppVersion "3.0.0"
+#define MyAppVersionName "Rhyhorn"
 #define MyAppPublisher "LaserGRBL"
 #define MyAppURL "http://lasergrbl.com"
 #define MyAppExeName "LaserGRBL.exe"
