@@ -6,16 +6,17 @@ namespace LaserGRBL
 {
 	public class Autotrace
 	{
+		public static string TempPath { get => $"{GrblCore.DataPath}//Autotrace//"; }
+
 		public static void CleanupTmpFolder()
 		{
 			try
 			{
-				if (System.IO.Directory.Exists(".//Autotrace//TempFolder//"))
-					System.IO.Directory.Delete(".//Autotrace//TempFolder//", true);
+				if (System.IO.Directory.Exists(TempPath))
+					System.IO.Directory.Delete(TempPath, true);
 			}
 			catch { }
 		}
-
 
 		public static Svg.SvgDocument BitmapToSvgDocument(Bitmap bmp, bool uct, int ct, bool ult, int lt)
 		{
@@ -25,10 +26,10 @@ namespace LaserGRBL
 
 		public static string BitmapToSvgString(Bitmap bmp, bool uct, int ct, bool ult, int lt)
 		{
-			if (!System.IO.Directory.Exists(".//Autotrace//TempFolder//"))
-				System.IO.Directory.CreateDirectory(".//Autotrace//TempFolder//");
+			if (!System.IO.Directory.Exists(TempPath))
+				System.IO.Directory.CreateDirectory(TempPath);
 
-			string fname = $".//Autotrace//TempFolder//{System.IO.Path.GetRandomFileName()}";
+			string fname = $"{TempPath}{System.IO.Path.GetRandomFileName()}";
 
 			try
 			{
@@ -41,7 +42,7 @@ namespace LaserGRBL
 
 				param += $" {fname}.bmp";
 
-				return ExecuteAutotrace(param); 
+				return ExecuteAutotrace(param);
 			}
 			catch
 			{
