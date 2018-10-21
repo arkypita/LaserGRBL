@@ -40,7 +40,7 @@ namespace LaserGRBL
 				if (uct) param += " -corner-t " + ct.ToString(System.Globalization.CultureInfo.InvariantCulture);
 				if (ult) param += " -line-t " + (lt / 10.0).ToString("0.0", System.Globalization.CultureInfo.InvariantCulture);
 
-				param += $" {fname}.bmp";
+				param += $" \"{fname}.bmp\"";
 
 				return ExecuteAutotrace(param);
 			}
