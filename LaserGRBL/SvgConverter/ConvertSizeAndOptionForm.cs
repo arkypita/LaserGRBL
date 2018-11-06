@@ -29,8 +29,11 @@ namespace LaserGRBL.SvgConverter
                 {
                     Settings.SetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", f.IIBorderTracing.CurrentValue);
                     Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", f.IIMaxPower.CurrentValue);
+					Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", f.IIMinPower.CurrentValue);
+					Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", f.CBLaserON.SelectedItem);
+					Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", f.CBLaserOFF.SelectedItem);
 
-                    core.LoadedFile.LoadImportedGcode(filename, append);
+					core.LoadedFile.LoadImportedGcode(filename, append);
                 }
             }
         }
