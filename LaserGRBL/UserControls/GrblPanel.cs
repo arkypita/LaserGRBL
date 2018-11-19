@@ -14,8 +14,8 @@ namespace LaserGRBL.UserControls
 		Matrix mLastMatrix;
 		private GPoint mLastWPos;
 		private GPoint mLastMPos;
-		private int mCurF;
-		private int mCurS;
+		private float mCurF;
+		private float mCurS;
 		private bool mFSTrig;
 
 		public GrblPanel()
@@ -82,7 +82,7 @@ namespace LaserGRBL.UserControls
                         if (mCurF != 0 || mCurS != 0 || mFSTrig)
 						{
 							mFSTrig = true;
-							String fs = string.Format("F: {0:00000} S: {1:000}", Core != null ? mCurF : 0, Core != null ? mCurS : 0);
+							String fs = string.Format("F: {0:00000.##} S: {1:000.##}", Core != null ? mCurF : 0, Core != null ? mCurS : 0);
 							position = position + "\n" + fs;
 						}
 

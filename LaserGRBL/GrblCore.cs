@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Drawing;
+using System.Globalization;
 
 namespace LaserGRBL
 {
@@ -210,8 +211,8 @@ namespace LaserGRBL
 		private MacStatus mMachineStatus;
 		private static int BUFFER_SIZE = 127;
 
-		private int mCurF;
-		private int mCurS;
+		private float mCurF;
+		private float mCurS;
 
 		private int mCurOvLinear;
 		private int mCurOvRapids;
@@ -1355,21 +1356,26 @@ namespace LaserGRBL
 		{
 			string wco = p.Substring(4, p.Length - 4);
 			string[] xyz = wco.Split(",".ToCharArray());
-			SetWCO(new GPoint(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[2], System.Globalization.NumberFormatInfo.InvariantInfo)));
+			SetWCO(new GPoint(ParseFloat(xyz[0]), ParseFloat(xyz[1]), ParseFloat(xyz[2])));
 		}
 
 		private void ParseWPos(string p)
 		{
 			string wpos = p.Substring(5, p.Length - 5);
 			string[] xyz = wpos.Split(",".ToCharArray());
-            SetMPosition(mWCO + new GPoint(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[2], System.Globalization.NumberFormatInfo.InvariantInfo)));
+            SetMPosition(mWCO + new GPoint(ParseFloat(xyz[0]), ParseFloat(xyz[1]), ParseFloat(xyz[2])));
 		}
 
 		private void ParseMPos(string p)
 		{
 			string mpos = p.Substring(5, p.Length - 5);
 			string[] xyz = mpos.Split(",".ToCharArray());
-			SetMPosition(new GPoint(float.Parse(xyz[0], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[1], System.Globalization.NumberFormatInfo.InvariantInfo), float.Parse(xyz[2], System.Globalization.NumberFormatInfo.InvariantInfo)));
+			SetMPosition(new GPoint(ParseFloat(xyz[0]), ParseFloat(xyz[1]), ParseFloat(xyz[2])));
+		}
+
+		private static float ParseFloat(string value)
+		{
+			return float.Parse(value, NumberFormatInfo.InvariantInfo);
 		}
 
 		private void ParseBf(string p)
@@ -1402,16 +1408,16 @@ namespace LaserGRBL
 		{
 			string sfs = p.Substring(3, p.Length - 3);
 			string[] fs = sfs.Split(",".ToCharArray());
-			SetFS(int.Parse(fs[0]), int.Parse(fs[1]));
+			SetFS(ParseFloat(fs[0]), ParseFloat(fs[1]));
 		}
 
 		private void ParseF(string p)
 		{
 			string f = p.Substring(2, p.Length - 2);
-			SetFS(int.Parse(f), 0);
+			SetFS(ParseFloat(f), 0);
 		}
 
-		private void SetFS(int f, int s)
+		private void SetFS(float f, float s)
 		{
 			mCurF = f;
 			mCurS = s;
@@ -1834,8 +1840,8 @@ namespace LaserGRBL
 		{ return string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0:0.000}", value); }
 
 
-		public int CurrentF { get { return mCurF; } }
-		public int CurrentS { get { return mCurS; } }
+		public float CurrentF { get { return mCurF; } }
+		public float CurrentS { get { return mCurS; } }
 
 		public static bool WriteComLog { get; set; }
 	}
