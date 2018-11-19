@@ -33,14 +33,14 @@ namespace LaserGRBL
 
 			try
 			{
-				bmp.Save($"{fname}.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+				bmp.Save($"{fname}.png", System.Drawing.Imaging.ImageFormat.Png);
 
 				string param = $"-output-fo svg -centerline -despeckle-l 20 -despeckle-t 0.1";
 
 				if (uct) param += " -corner-t " + ct.ToString(System.Globalization.CultureInfo.InvariantCulture);
 				if (ult) param += " -line-t " + (lt / 10.0).ToString("0.0", System.Globalization.CultureInfo.InvariantCulture);
 
-				param += $" \"{fname}.bmp\"";
+				param += $" \"{fname}.png\"";
 
 				return ExecuteAutotrace(param);
 			}
@@ -52,8 +52,8 @@ namespace LaserGRBL
 			{
 				try
 				{
-					if (System.IO.File.Exists($"{fname}.bmp"))
-						System.IO.File.Delete($"{fname}.bmp");
+					if (System.IO.File.Exists($"{fname}.png"))
+						System.IO.File.Delete($"{fname}.png");
 				}
 				catch { }
 			}
