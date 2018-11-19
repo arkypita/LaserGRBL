@@ -1830,6 +1830,15 @@ namespace LaserGRBL
 				exp.AddSetVariable("height", (double)height);
 				exp.AddSetVariable("jogstep", (double)jogstep);
 				exp.AddSetVariable("jogspeed", (double)jogspeed);
+				exp.AddSetVariable("WCO.X", WorkingOffset.X);
+				exp.AddSetVariable("WCO.Y", WorkingOffset.Y);
+				exp.AddSetVariable("WCO.Z", WorkingOffset.Z);
+				exp.AddSetVariable("MPos.X", MachinePosition.X);
+				exp.AddSetVariable("MPos.Y", MachinePosition.Y);
+				exp.AddSetVariable("MPos.Z", MachinePosition.Z);
+				exp.AddSetVariable("WPos.X", MachinePosition.X);
+				exp.AddSetVariable("WPos.Y", MachinePosition.Y);
+				exp.AddSetVariable("WPos.Z", MachinePosition.Z);
 				double dval = exp.EvaluateD();
 				return m.Result(FormatNumber((decimal)dval));
 			}

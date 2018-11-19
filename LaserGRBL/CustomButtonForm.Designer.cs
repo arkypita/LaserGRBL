@@ -35,19 +35,19 @@
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
+			this.BTOpenImage = new LaserGRBL.UserControls.ImageButton();
 			this.label6 = new System.Windows.Forms.Label();
 			this.TbToolTip = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.CbEStyles = new System.Windows.Forms.ComboBox();
 			this.label5 = new System.Windows.Forms.Label();
-			this.TBGCode = new System.Windows.Forms.TextBox();
 			this.LblType = new System.Windows.Forms.Label();
 			this.CbByttonType = new System.Windows.Forms.ComboBox();
-			this.BTOpenImage = new LaserGRBL.UserControls.ImageButton();
-			this.TBGCode2 = new System.Windows.Forms.TextBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblGCode2 = new System.Windows.Forms.Label();
+			this.TBGCode = new System.Windows.Forms.TextBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.TBGCode2 = new System.Windows.Forms.TextBox();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
@@ -102,10 +102,18 @@
 			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
 			// 
-			// label2
+			// BTOpenImage
 			// 
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			this.BTOpenImage.AltImage = null;
+			this.BTOpenImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BTOpenImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BTOpenImage.Coloration = System.Drawing.Color.Empty;
+			this.BTOpenImage.Image = ((System.Drawing.Image)(resources.GetObject("BTOpenImage.Image")));
+			resources.ApplyResources(this.BTOpenImage, "BTOpenImage");
+			this.BTOpenImage.Name = "BTOpenImage";
+			this.BTOpenImage.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BTOpenImage.UseAltImage = false;
+			this.BTOpenImage.Click += new System.EventHandler(this.BTOpenImage_Click);
 			// 
 			// label6
 			// 
@@ -135,11 +143,6 @@
 			this.tableLayoutPanel2.SetColumnSpan(this.label5, 2);
 			this.label5.Name = "label5";
 			// 
-			// TBGCode
-			// 
-			resources.ApplyResources(this.TBGCode, "TBGCode");
-			this.TBGCode.Name = "TBGCode";
-			// 
 			// LblType
 			// 
 			resources.ApplyResources(this.LblType, "LblType");
@@ -152,24 +155,6 @@
 			this.CbByttonType.FormattingEnabled = true;
 			this.CbByttonType.Name = "CbByttonType";
 			this.CbByttonType.SelectedIndexChanged += new System.EventHandler(this.CbByttonType_SelectedIndexChanged);
-			// 
-			// BTOpenImage
-			// 
-			this.BTOpenImage.AltImage = null;
-			this.BTOpenImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BTOpenImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.BTOpenImage.Coloration = System.Drawing.Color.Empty;
-			this.BTOpenImage.Image = ((System.Drawing.Image)(resources.GetObject("BTOpenImage.Image")));
-			resources.ApplyResources(this.BTOpenImage, "BTOpenImage");
-			this.BTOpenImage.Name = "BTOpenImage";
-			this.BTOpenImage.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BTOpenImage.UseAltImage = false;
-			this.BTOpenImage.Click += new System.EventHandler(this.BTOpenImage_Click);
-			// 
-			// TBGCode2
-			// 
-			resources.ApplyResources(this.TBGCode2, "TBGCode2");
-			this.TBGCode2.Name = "TBGCode2";
 			// 
 			// tableLayoutPanel3
 			// 
@@ -185,6 +170,21 @@
 			// 
 			resources.ApplyResources(this.LblGCode2, "LblGCode2");
 			this.LblGCode2.Name = "LblGCode2";
+			// 
+			// TBGCode
+			// 
+			resources.ApplyResources(this.TBGCode, "TBGCode");
+			this.TBGCode.Name = "TBGCode";
+			// 
+			// label2
+			// 
+			resources.ApplyResources(this.label2, "label2");
+			this.label2.Name = "label2";
+			// 
+			// TBGCode2
+			// 
+			resources.ApplyResources(this.TBGCode2, "TBGCode2");
+			this.TBGCode2.Name = "TBGCode2";
 			// 
 			// CustomButtonForm
 			// 

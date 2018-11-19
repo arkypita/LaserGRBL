@@ -142,7 +142,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 3</value>
+    <value>216, 3</value>
   </data>
   <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 27</value>
@@ -169,7 +169,7 @@
     <value>NoControl</value>
   </data>
   <data name="BtnCreate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>295, 3</value>
+    <value>296, 3</value>
   </data>
   <data name="BtnCreate.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 27</value>
@@ -196,13 +196,13 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 295</value>
+    <value>3, 308</value>
   </data>
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 33</value>
+    <value>373, 33</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -366,7 +366,7 @@
     <value>BTOpenImage</value>
   </data>
   <data name="&gt;&gt;BTOpenImage.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=2.8.49.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BTOpenImage.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -414,7 +414,7 @@
     <value>58, 155</value>
   </data>
   <data name="TbToolTip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 20</value>
+    <value>312, 20</value>
   </data>
   <data name="TbToolTip.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -471,7 +471,7 @@
     <value>58, 181</value>
   </data>
   <data name="CbEStyles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 21</value>
+    <value>312, 21</value>
   </data>
   <data name="CbEStyles.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -504,7 +504,7 @@
     <value>400, 0</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>361, 39</value>
+    <value>352, 78</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -512,7 +512,11 @@
   <data name="label5.Text" xml:space="preserve">
     <value>- Use dot as decimal separator
 - Support math expression in square brackets: i.e. G0 X[left-5] Y[bottom-5]
-- Available variables: left, right, top, bottom, width, height, jogstep, jogspeed</value>
+- Available variables: left, right, top, bottom, width, height.. (and more)
+
+See http://lasergrbl.com/usage/custom-buttons/
+
+</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -566,7 +570,7 @@
     <value>58, 3</value>
   </data>
   <data name="CbByttonType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 21</value>
+    <value>312, 21</value>
   </data>
   <data name="CbByttonType.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -602,7 +606,7 @@
     <value>NoControl</value>
   </data>
   <data name="LblGCode2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 3</value>
+    <value>162, 3</value>
   </data>
   <data name="LblGCode2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -638,7 +642,7 @@
     <value>True</value>
   </data>
   <data name="TBGCode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 100</value>
+    <value>153, 100</value>
   </data>
   <data name="TBGCode.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -695,7 +699,7 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="TBGCode2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 22</value>
+    <value>162, 22</value>
   </data>
   <data name="TBGCode2.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -734,7 +738,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>317, 125</value>
+    <value>318, 125</value>
   </data>
   <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -764,7 +768,7 @@
     <value>7</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 286</value>
+    <value>373, 299</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -794,7 +798,7 @@
     <value>4</value>
   </data>
   <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>378, 331</value>
+    <value>378, 344</value>
   </data>
   <data name="tableLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -827,7 +831,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>378, 331</value>
+    <value>378, 344</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
