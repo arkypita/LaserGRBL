@@ -900,6 +900,11 @@ namespace LaserGRBL.RasterConverter
 					{
 						if (SelectedTool == Tool.Dithering)
 							return ImageTransform.DitherImage(whiten, mDithering);
+						else if (SelectedTool == Tool.Centerline)
+						{
+							//apply variable threshold (if needed) + 50% threshold (always)
+							return ImageTransform.Threshold(ImageTransform.Threshold(whiten, Threshold / 100.0F, UseThreshold), 50.0F / 100.0F, true);
+						}
 						else
 							return ImageTransform.Threshold(whiten, Threshold / 100.0F, UseThreshold);
 					}

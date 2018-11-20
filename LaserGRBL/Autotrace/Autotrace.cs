@@ -6,7 +6,7 @@ namespace LaserGRBL
 {
 	public class Autotrace
 	{
-		public static string TempPath { get => $"{GrblCore.DataPath}//Autotrace//"; }
+		public static string TempPath { get => $"{GrblCore.DataPath}\\Autotrace\\"; }
 
 		public static void CleanupTmpFolder()
 		{
@@ -35,7 +35,7 @@ namespace LaserGRBL
 			{
 				bmp.Save($"{fname}.png", System.Drawing.Imaging.ImageFormat.Png);
 
-				string param = $"-output-fo svg -centerline -despeckle-l 20 -despeckle-t 0.1";
+				string param = $"-output-fo svg -background-color FFFFFF -centerline";
 
 				if (uct) param += " -corner-t " + ct.ToString(System.Globalization.CultureInfo.InvariantCulture);
 				if (ult) param += " -line-t " + (lt / 10.0).ToString("0.0", System.Globalization.CultureInfo.InvariantCulture);
@@ -70,7 +70,7 @@ namespace LaserGRBL
 			{
 				ProcessStartInfo procStartInfo = new ProcessStartInfo();
 
-				procStartInfo.FileName = ".//Autotrace//autotrace.exe";
+				procStartInfo.FileName = "\\Autotrace\\autotrace.exe";
 				procStartInfo.Arguments = args;
 				procStartInfo.RedirectStandardOutput = true;
 				procStartInfo.UseShellExecute = false;
