@@ -789,7 +789,13 @@ namespace LaserGRBL
 
 			mRange.ResetRange();
 
-            string content = Autotrace.BitmapToSvgString(bmp, useCornerThreshold, cornerThreshold, useLineThreshold, lineThreshold);
+			string content = "";
+
+			try
+			{
+				content = Autotrace.BitmapToSvgString(bmp, useCornerThreshold, cornerThreshold, useLineThreshold, lineThreshold);
+			}
+			catch(Exception ex) { Logger.LogException("Centerline", ex); }
 
             SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
             converter.GCodeXYFeed = (float)(int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);

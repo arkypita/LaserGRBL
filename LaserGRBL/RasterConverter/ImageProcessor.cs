@@ -778,20 +778,44 @@ namespace LaserGRBL.RasterConverter
 		//System.Text.RegularExpressions.Regex colorRegex = new System.Text.RegularExpressions.Regex("stroke:#([0-9a-fA-F]+);", System.Text.RegularExpressions.RegexOptions.Compiled);
         private void PreviewCenterline(Bitmap bmp)
         {
-			Svg.SvgDocument svg = Autotrace.BitmapToSvgDocument(bmp, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold);
-
-            if (MustExitTH) return;
-
-			using (Graphics g = Graphics.FromImage(bmp))
+			try
 			{
-				g.FillRectangle(new SolidBrush(Color.FromArgb(180, Color.White)), g.ClipBounds);
+				if (MustExitTH) return;
+
+				Svg.SvgDocument svg = Autotrace.BitmapToSvgDocument(bmp, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold);
 
 				if (MustExitTH) return;
 
-                GraphicsPath path = new GraphicsPath();
-                svg.Draw(path);
-                g.SmoothingMode = SmoothingMode.HighQuality;
-                g.DrawPath(Pens.Red, path);
+				using (Graphics g = Graphics.FromImage(bmp))
+				{
+					g.FillRectangle(new SolidBrush(Color.FromArgb(180, Color.White)), g.ClipBounds);
+
+					if (MustExitTH) return;
+
+					GraphicsPath path = new GraphicsPath();
+					svg.Draw(path);
+					g.SmoothingMode = SmoothingMode.HighQuality;
+					g.DrawPath(Pens.Red, path);
+				}
+			}
+			catch (Exception ex)
+			{
+				using (Graphics g = Graphics.FromImage(bmp))
+				{
+					if (MustExitTH) return;
+
+					g.FillRectangle(new SolidBrush(Color.FromArgb(180, Color.White)), g.ClipBounds);
+
+					if (MustExitTH) return;
+
+					StringFormat format = new StringFormat();
+					format.LineAlignment = StringAlignment.Center;
+					format.Alignment = StringAlignment.Center;
+
+					g.DrawString(ex.Message, SystemFonts.DefaultFont, Brushes.Red, new RectangleF( 0,0, bmp.Width, bmp.Height), format);
+
+					if (MustExitTH) return;
+				}
 			}
 		}
 

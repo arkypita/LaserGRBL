@@ -44,10 +44,6 @@ namespace LaserGRBL
 
 				return ExecuteAutotrace(param);
 			}
-			catch
-			{
-				return null;
-			}
 			finally
 			{
 				try
@@ -66,28 +62,21 @@ namespace LaserGRBL
 
 		public static string ExecuteAutotrace(string args)
 		{
-			try
-			{
-				ProcessStartInfo procStartInfo = new ProcessStartInfo();
+			ProcessStartInfo procStartInfo = new ProcessStartInfo();
 
-				procStartInfo.FileName = "\\Autotrace\\autotrace.exe";
-				procStartInfo.Arguments = args;
-				procStartInfo.RedirectStandardOutput = true;
-				procStartInfo.UseShellExecute = false;
-				procStartInfo.CreateNoWindow = true;
+			procStartInfo.FileName = ".\\Autotrace\\autotrace.exe";
+			procStartInfo.Arguments = args;
+			procStartInfo.RedirectStandardOutput = true;
+			procStartInfo.UseShellExecute = false;
+			procStartInfo.CreateNoWindow = true;
 
-				using (Process process = new Process())
-				{
-					process.StartInfo = procStartInfo;
-					process.Start();
-					string result = process.StandardOutput.ReadToEnd();
-					process.WaitForExit();
-					return result;
-				}
-			}
-			catch (Exception ex)
+			using (Process process = new Process())
 			{
-				return "";
+				process.StartInfo = procStartInfo;
+				process.Start();
+				string result = process.StandardOutput.ReadToEnd();
+				process.WaitForExit();
+				return result;
 			}
 		}
 
