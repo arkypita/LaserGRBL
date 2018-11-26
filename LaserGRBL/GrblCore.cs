@@ -970,8 +970,15 @@ namespace LaserGRBL
 		{ get { return mSent.Count; } }
 
 		public System.Collections.Generic.List<IGrblRow> SentCommand(int index, int count)
-		{return mSent.GetRange(index, count);}
+		{
+			index = Math.Min(index, mSent.Count - 1);       //force index to be in range
+			count = Math.Min(count, mSent.Count - index);	//force count to be in range
 
+			if (index >= 0 && count > 0)
+				return mSent.GetRange(index, count);
+			else
+				return new System.Collections.Generic.List<IGrblRow>();
+		}
 		#endregion
 
 		#region Grbl Version Support
