@@ -105,6 +105,9 @@ namespace LaserGRBL.RasterConverter
             this.IIMinPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
             this.IIMaxPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
             this.BtnOnOffInfo = new LaserGRBL.UserControls.ImageButton();
+            this.CbAutosize = new System.Windows.Forms.CheckBox();
+            this.IIDpi = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel9.SuspendLayout();
             this.GbSize.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -134,16 +137,19 @@ namespace LaserGRBL.RasterConverter
             // tableLayoutPanel3
             // 
             resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
-            this.tableLayoutPanel3.Controls.Add(this.label9, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.IIOffsetX, 2, 1);
-            this.tableLayoutPanel3.Controls.Add(this.IIOffsetY, 4, 1);
-            this.tableLayoutPanel3.Controls.Add(this.IISizeH, 4, 0);
-            this.tableLayoutPanel3.Controls.Add(this.IISizeW, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label6, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label10, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label7, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label11, 3, 1);
+            this.tableLayoutPanel3.Controls.Add(this.IIDpi, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label9, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.IIOffsetX, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.IIOffsetY, 4, 2);
+            this.tableLayoutPanel3.Controls.Add(this.IISizeH, 4, 1);
+            this.tableLayoutPanel3.Controls.Add(this.IISizeW, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label6, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label10, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label7, 3, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label11, 3, 2);
+            this.tableLayoutPanel3.Controls.Add(this.CbAutosize, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label1, 3, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             // 
             // label9
@@ -424,6 +430,32 @@ namespace LaserGRBL.RasterConverter
             this.BtnOnOffInfo.UseAltImage = false;
             this.BtnOnOffInfo.Click += new System.EventHandler(this.BtnOnOffInfo_Click);
             // 
+            // CbAutosize
+            // 
+            resources.ApplyResources(this.CbAutosize, "CbAutosize");
+            this.tableLayoutPanel3.SetColumnSpan(this.CbAutosize, 2);
+            this.CbAutosize.Name = "CbAutosize";
+            this.CbAutosize.UseVisualStyleBackColor = true;
+            this.CbAutosize.CheckedChanged += new System.EventHandler(this.CbAutosize_CheckedChanged);
+            // 
+            // IIDpi
+            // 
+            resources.ApplyResources(this.IIDpi, "IIDpi");
+            this.IIDpi.CurrentValue = 300;
+            this.IIDpi.ForcedText = null;
+            this.IIDpi.ForceMinMax = false;
+            this.IIDpi.MaxValue = 10000;
+            this.IIDpi.MinValue = 1;
+            this.IIDpi.Name = "IIDpi";
+            this.IIDpi.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.IIDpi.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIDpi_CurrentValueChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.tableLayoutPanel3.SetColumnSpan(this.label1, 2);
+            this.label1.Name = "label1";
+            // 
             // ConvertSizeAndOptionForm
             // 
             resources.ApplyResources(this, "$this");
@@ -458,5 +490,8 @@ namespace LaserGRBL.RasterConverter
 		private System.Windows.Forms.ToolTip TT;
 		private System.Windows.Forms.Label LblBorderTracingmm;
 		private System.Windows.Forms.Label LblLinearFillingmm;
-	}
+        private System.Windows.Forms.CheckBox CbAutosize;
+        private UserControls.NumericInput.IntegerInputRanged IIDpi;
+        private System.Windows.Forms.Label label1;
+    }
 }

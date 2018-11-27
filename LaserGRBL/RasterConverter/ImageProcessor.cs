@@ -22,6 +22,8 @@ namespace LaserGRBL.RasterConverter
 		private Bitmap mTrueOriginal;	//real original image
 		private Bitmap mOriginal;		//original image (cropped or rotated)
 		private Bitmap mResized;		//resized for preview
+        private int mFileDPI;
+        private Size mFileResolution;
 
 		private bool mGrayScale;		//image has no color
 		private bool mSuspended;		//image generator suspended for multiple property change
@@ -94,13 +96,18 @@ namespace LaserGRBL.RasterConverter
 			mFileName = fileName;
 			mAppend = append;
 			mSuspended = true;
-			//mOriginal = new Bitmap(fileName);
+            //mOriginal = new Bitmap(fileName);
 
-			//this double pass is needed to normalize loaded image pixelformat
-			//http://stackoverflow.com/questions/2016406/converting-bitmap-pixelformats-in-c-sharp
-			using (Bitmap loadedBmp = new Bitmap(fileName))
-			using (Bitmap tmpBmp = new Bitmap(loadedBmp))
-				mOriginal = tmpBmp.Clone(new Rectangle(0, 0, tmpBmp.Width, tmpBmp.Height), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            //this double pass is needed to normalize loaded image pixelformat
+            //http://stackoverflow.com/questions/2016406/converting-bitmap-pixelformats-in-c-sharp
+            using (Bitmap loadedBmp = new Bitmap(fileName))
+            {
+                mFileDPI = (int)loadedBmp.HorizontalResolution;
+                mFileResolution = loadedBmp.Size;
+
+                using (Bitmap tmpBmp = new Bitmap(loadedBmp))
+                    mOriginal = tmpBmp.Clone(new Rectangle(0, 0, tmpBmp.Width, tmpBmp.Height), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            }
 
 			mTrueOriginal = mOriginal.Clone() as Bitmap;
 
@@ -1047,5 +1054,8 @@ namespace LaserGRBL.RasterConverter
 
 
 		public Bitmap Original { get { return mResized; } }
-	}
+
+        public int FileDPI { get => mFileDPI; }
+        public Size FileResolution { get => mFileResolution; }
+    }
 }
