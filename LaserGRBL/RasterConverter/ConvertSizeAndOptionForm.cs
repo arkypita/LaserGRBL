@@ -97,8 +97,6 @@ namespace LaserGRBL.RasterConverter
             IIOffsetX.CurrentValue = IP.TargetOffset.X = Convert.ToSingle(Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F));
             IIOffsetY.CurrentValue = IP.TargetOffset.Y = Convert.ToSingle(Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F));
 
-            IIDpi.CurrentValue = IP.FileDPI;
-
             ShowDialog();
         }
 
@@ -193,7 +191,14 @@ namespace LaserGRBL.RasterConverter
                 IISizeW.CurrentValue = Convert.ToSingle(25.4 * IP.FileResolution.Width / IIDpi.CurrentValue);
                 IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
             }
+
+			BtnDPI.Enabled = CbAutosize.Checked && (IIDpi.CurrentValue != IP.FileDPI);
         }
 
-    }
+		private void BtnDPI_Click(object sender, EventArgs e)
+		{
+			if (CbAutosize.Checked)
+				IIDpi.CurrentValue = IP.FileDPI;
+		}
+	}
 }
