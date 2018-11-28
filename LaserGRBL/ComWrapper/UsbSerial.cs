@@ -94,9 +94,9 @@ namespace LaserGRBL.ComWrapper
 
 				if (GrblCore.WriteComLog) log("com", string.Format("Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER"));
 				Logger.LogMessage("CloseCom", "Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER");
-				com.DiscardOutBuffer();
-				com.DiscardInBuffer();
-				com.Close();
+                try { com.DiscardOutBuffer(); } catch { }
+                try { com.DiscardInBuffer(); } catch { }
+                try { com.Close(); } catch { }
 			}
 		}
 
