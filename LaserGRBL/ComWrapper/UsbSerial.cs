@@ -10,6 +10,7 @@ namespace LaserGRBL.ComWrapper
 		private System.IO.Ports.SerialPort com = new System.IO.Ports.SerialPort();
 		private string mPortName;
 		private int mBaudRate;
+		int logcnt = 0;
 
 		public void Configure(params object[] param)
 		{
@@ -115,8 +116,6 @@ namespace LaserGRBL.ComWrapper
 			com.Write(text);
 		}
 
-		int logcnt = 0;
-
 		public string ReadLineBlocking()
 		{
 			if (GrblCore.WriteComLog)
@@ -139,8 +138,8 @@ namespace LaserGRBL.ComWrapper
 
 		private void log(string operation, string line)
 		{
-			line = line.Replace("\r", "\\r");
-			line = line.Replace("\n", "\\n");
+			line = line?.Replace("\r", "\\r");
+			line = line?.Replace("\n", "\\n");
 			try { System.IO.File.AppendAllText(System.IO.Path.Combine(GrblCore.DataPath, string.Format("comlog.txt", operation)), string.Format("{0:00000000}\t{1:00000}\t{2}\t{3}\r\n", Tools.TimingBase.TimeFromApplicationStartup().TotalMilliseconds, logcnt++, operation, line)); }
 			catch { }
 		}
