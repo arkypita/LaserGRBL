@@ -208,10 +208,12 @@ namespace LaserGRBL
 					break;
 			}
 
-			PbBuffer.Maximum = Core.BufferSize;
-			PbBuffer.Value = Core.UsedBuffer;
+            PbBuffer.Maximum = Core.BufferSize;
+            PbBuffer.Value = Core.UsedBuffer;
+            PbBuffer.ToolTipText = $"Buffer: {Core.UsedBuffer}/{Core.BufferSize} Free:{Core.FreeBuffer}";
 
-			ResumeLayout();
+
+            ResumeLayout();
 		}
 
 		private void RefreshFormTitle()
