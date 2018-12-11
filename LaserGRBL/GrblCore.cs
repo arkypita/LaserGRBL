@@ -1408,14 +1408,12 @@ namespace LaserGRBL
 		{
 			if (BUFFER_SIZE == 127) //act only to change default value at first event, do not re-act without a new connect
 			{
-				if (mGrblBuffer == 128)
+				if (mGrblBuffer == 128) //Grbl v1.1 with enabled buffer report
 					BUFFER_SIZE = 128;
-				else if (mGrblBuffer == 256)
-					BUFFER_SIZE = 256;
-				else if (mGrblBuffer == 256)
-					BUFFER_SIZE = 256;
-				else if (mGrblBuffer == 10240)
-					BUFFER_SIZE = 10240;
+				else if (mGrblBuffer == 256) //Grbl-Mega
+                    BUFFER_SIZE = 256;
+				else if (mGrblBuffer == 10240) //Grbl-LPC
+                    BUFFER_SIZE = 10240;
 			}
 		}
 
