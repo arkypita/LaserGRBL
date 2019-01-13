@@ -10,8 +10,10 @@ namespace LaserGRBL
 	public class HotKeysManager : List<HotKeysManager.HotKey>
 	{
 		[NonSerialized] private GrblCore mCore;
+        [NonSerialized] private PreviewForm mPreviewForm;
+        [NonSerialized] List<int> mCustomButtonPressed;
 
-		[Serializable]
+        [Serializable]
 		public class HotKey : ICloneable
 		{
 			public enum Actions
@@ -86,6 +88,11 @@ namespace LaserGRBL
 			
 		}
 
+        public void SetCustomButtonToolbar()
+        {
+
+        }
+
 		private void AddAllFeatures()
 		{
 			AddNew(new HotKey(HotKey.Actions.ConnectDisconnect, Keys.F12));
@@ -150,10 +157,12 @@ namespace LaserGRBL
 			Add(toadd);
 		}
 
-		public void Init(GrblCore core)
+		public void Init(GrblCore core, PreviewForm cbform)
 		{
 			mCore = core;
-			AddAllFeatures();
+            mPreviewForm = cbform;
+            mCustomButtonPressed = new List<int>();
+            AddAllFeatures();
 			Sort(CompareKey);
 		}
 
@@ -164,17 +173,25 @@ namespace LaserGRBL
 
 		internal bool ManageHotKeys(Keys keys)
 		{
-			foreach (HotKey hk in this)
-				if (Match(keys, hk.Combination))
-					return PerformAction(hk.Action);
+            if (keys == Keys.None)
+            {
+                EmulateCustomButtonUp();
+                return false;
+            }
+            else
+            { 
+                foreach (HotKey hk in this)
+                    if (Match(keys, hk.Combination))
+                        return PerformAction(hk.Action);
 
-			return false;
+                return false;
+            }
 		}
 
 		private bool Match(Keys k1, Keys k2)
 		{
 			bool rv = k1 == k2;
-			System.Diagnostics.Debug.WriteLine(String.Format("{0} vs {1} = {2}", k1, k2, rv));
+			//System.Diagnostics.Debug.WriteLine(String.Format("{0} vs {1} = {2}", k1, k2, rv));
 			return rv;	
 		}
 
@@ -241,41 +258,71 @@ namespace LaserGRBL
 				case HotKey.Actions.OverrideRapidDown:
 					mCore.HotKeyOverride(action); break;
 				case HotKey.Actions.CustomButton1:
-					mCore.HKCustomButton(0); break;
+                    EmulateCustomButtonDown(0); break;
 				case HotKey.Actions.CustomButton2:
-					mCore.HKCustomButton(1); break;
+                    EmulateCustomButtonDown(1); break;
 				case HotKey.Actions.CustomButton3:
-					mCore.HKCustomButton(2); break;
+                    EmulateCustomButtonDown(2); break;
 				case HotKey.Actions.CustomButton4:
-					mCore.HKCustomButton(3); break;
+                    EmulateCustomButtonDown(3); break;
 				case HotKey.Actions.CustomButton5:
-					mCore.HKCustomButton(4); break;
+                    EmulateCustomButtonDown(4); break;
 				case HotKey.Actions.CustomButton6:
-					mCore.HKCustomButton(5); break;
+                    EmulateCustomButtonDown(5); break;
 				case HotKey.Actions.CustomButton7:
-					mCore.HKCustomButton(6); break;
+                    EmulateCustomButtonDown(6); break;
 				case HotKey.Actions.CustomButton8:
-					mCore.HKCustomButton(7); break;
+                    EmulateCustomButtonDown(7); break;
 				case HotKey.Actions.CustomButton9:
-					mCore.HKCustomButton(8); break;
+                    EmulateCustomButtonDown(8); break;
 				case HotKey.Actions.CustomButton10:
-					mCore.HKCustomButton(9); break;
+                    EmulateCustomButtonDown(9); break;
 				default:
-					break;
+                    break;
 			}
 
-				//ConnectDisconnect = 10, Connect = 11, Disconnect = 12,
-				//OpenFile = 20, ReopenLastFile = 21, SaveFile = 22, ExecuteFile = 23,
-				//HelpOnline = 30,
-				//Reset = 100, Homing = 101, Unlock = 102,  PauseJob = 103, ResumeJob = 104, SetNewZero = 105,
-				//JogHome = 1000, JogN = 1001, JogNE = 1002, JogE = 1003, JogSE = 1004, JogS = 1005, JogSO = 1006, JogO = 1007, JogNO = 1008,
-				//CustomButton1 = 2000, CustomButton2 = 2001, CustomButton3 = 2002, CustomButton4 = 2003, CustomButton5 = 2004, CustomButton6 = 2005, CustomButton7 = 2006, CustomButton8 = 2007, CustomButton9 = 2008, CustomButton10 = 2009
-
+			//ConnectDisconnect = 10, Connect = 11, Disconnect = 12,
+			//OpenFile = 20, ReopenLastFile = 21, SaveFile = 22, ExecuteFile = 23,
+			//HelpOnline = 30,
+			//Reset = 100, Homing = 101, Unlock = 102,  PauseJob = 103, ResumeJob = 104, SetNewZero = 105,
+			//JogHome = 1000, JogN = 1001, JogNE = 1002, JogE = 1003, JogSE = 1004, JogS = 1005, JogSO = 1006, JogO = 1007, JogNO = 1008,
+			//CustomButton1 = 2000, CustomButton2 = 2001, CustomButton3 = 2002, CustomButton4 = 2003, CustomButton5 = 2004, CustomButton6 = 2005, CustomButton7 = 2006, CustomButton8 = 2007, CustomButton9 = 2008, CustomButton10 = 2009
 
 			return true;
 		}
+        private void EmulateCustomButtonDown(int index)
+        {
+            List<PreviewForm.CustomButtonIB> buttons = mPreviewForm.CustomImageButtons;
+            if (index < buttons.Count)
+            {
+                if (!mCustomButtonPressed.Contains(index))
+                { 
+                    mCustomButtonPressed.Add(index);
+                    buttons[index].EmulateMouseInside = true;
+                    buttons[index].PerformMouseDown(new MouseEventArgs(MouseButtons.Left, 1, 1, 1, 0));
+                }
+            }
+        }
 
-		public List<HotKeysManager.HotKey> GetEditList()
+        private void EmulateCustomButtonUp()
+        {
+            List<PreviewForm.CustomButtonIB> buttons = mPreviewForm.CustomImageButtons;
+
+            foreach (int index in mCustomButtonPressed)
+            {
+                if (index < buttons.Count)
+                {
+                    buttons[index].PerformMouseUp(new MouseEventArgs(MouseButtons.Left, 1, 1, 1, 0));
+                    buttons[index].PerformClick(new MouseEventArgs(MouseButtons.Left, 1, 1, 1, 0));
+                    buttons[index].EmulateMouseInside = false;
+                }
+            }
+
+            mCustomButtonPressed.Clear();
+        }
+
+
+        public List<HotKeysManager.HotKey> GetEditList()
 		{
 			List<HotKeysManager.HotKey> rv = new List<HotKeysManager.HotKey>();
 			foreach (HotKeysManager.HotKey hk in this)

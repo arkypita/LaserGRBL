@@ -239,7 +239,7 @@ namespace LaserGRBL
 
 		public UsageStats.UsageCounters UsageCounters;
 
-		public GrblCore(System.Windows.Forms.Control syncroObject)
+		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform)
 		{
 			SetStatus(MacStatus.Disconnected);
 
@@ -272,7 +272,7 @@ namespace LaserGRBL
 
 			if (!Settings.ExistObject("Hotkey Setup")) Settings.SetObject("Hotkey Setup", new HotKeysManager());
 			mHotKeyManager = (HotKeysManager)Settings.GetObject("Hotkey Setup", null);
-			mHotKeyManager.Init(this);
+			mHotKeyManager.Init(this, cbform);
 
 			UsageCounters = new UsageStats.UsageCounters();
 
@@ -1797,12 +1797,12 @@ namespace LaserGRBL
 			Settings.Save();
 		}
 
-		internal void HKCustomButton(int index)
-		{
-			CustomButton cb = CustomButtons.GetButton(index);
-			if (cb != null && cb.EnabledNow(this))
-				ExecuteCustombutton(cb.GCode);
-		}
+		//internal void HKCustomButton(int index)
+		//{
+		//	CustomButton cb = CustomButtons.GetButton(index);
+		//	if (cb != null && cb.EnabledNow(this))
+		//		ExecuteCustombutton(cb.GCode);
+		//}
 
 		static System.Text.RegularExpressions.Regex bracketsRegEx = new System.Text.RegularExpressions.Regex(@"\[(?:[^]]+)\]");
 		internal void ExecuteCustombutton(string buttoncode)

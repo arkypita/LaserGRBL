@@ -26,7 +26,7 @@ namespace LaserGRBL
 				f.ShowDialog();
 
 			//build main communication object
-			Core = new GrblCore(this);
+			Core = new GrblCore(this, PreviewForm);
 			Core.MachineStatusChanged += OnMachineStatus;
 			Core.OnFileLoaded += OnFileLoaded;
 			Core.OnOverrideChange += RefreshOverride;
@@ -462,7 +462,8 @@ namespace LaserGRBL
 		protected override void OnKeyUp(KeyEventArgs e)
 		{
 			mLastkeyData = Keys.None;
-			base.OnKeyUp(e);
+            Core.ManageHotKeys(Keys.None);
+            base.OnKeyUp(e);
 		}
 
 		Keys mLastkeyData = Keys.None;

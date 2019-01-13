@@ -92,7 +92,19 @@ namespace LaserGRBL
 
 		}
 
-		private class CustomButtonIB : UserControls.ImageButton
+        public List<CustomButtonIB> CustomImageButtons
+        {
+            get
+            {
+                List<CustomButtonIB> rv = new List<CustomButtonIB>();
+                foreach (Control c in CustomButtonArea.Controls)
+                    if (c is CustomButtonIB)
+                        rv.Add(c as CustomButtonIB);
+                return rv;
+            }
+        }
+
+		public class CustomButtonIB : UserControls.ImageButton
 		{
 			private GrblCore Core;
 			private LaserGRBL.CustomButton cb;
@@ -152,64 +164,84 @@ namespace LaserGRBL
 				return mDrawDisabled;
 			}
 
-			private bool on;
 			protected override void OnClick(EventArgs e)
-			{
-				if (((MouseEventArgs)e).Button != MouseButtons.Left)
-					return;
+            {PerformClick(e);}
 
-				if (mDrawDisabled || !CustomButton.EnabledNow(Core))
-					return;
+            private bool mEmulateMouseInside;
+            public bool EmulateMouseInside
+            {
+                get { return mEmulateMouseInside; }
+                set { mEmulateMouseInside = value; Invalidate(); }
+            }
 
-				if (cb.ButtonType == CustomButton.ButtonTypes.Button)
-					Core.ExecuteCustombutton(cb.GCode);
+            public override bool IsMouseInside()
+            {
+                return EmulateMouseInside || base.IsMouseInside();
+            }
 
-				if (cb.ButtonType == CustomButton.ButtonTypes.TwoStateButton)
-				{
-					on = !on;
-					Core.ExecuteCustombutton(on ? cb.GCode : cb.GCode2);
-					BackColor = on ? Color.Orange : Parent.BackColor;
-				}
+            private bool on;
+            public void PerformClick(EventArgs e)
+            {
+                if (((MouseEventArgs)e).Button != MouseButtons.Left)
+                    return;
 
-				base.OnClick(e);
-			}
+                if (mDrawDisabled || !CustomButton.EnabledNow(Core))
+                    return;
 
+                if (cb.ButtonType == CustomButton.ButtonTypes.Button)
+                    Core.ExecuteCustombutton(cb.GCode);
 
-			protected override void OnMouseDown(MouseEventArgs e)
-			{
-				if (e.Button != MouseButtons.Left)
-					return;
+                if (cb.ButtonType == CustomButton.ButtonTypes.TwoStateButton)
+                {
+                    on = !on;
+                    Core.ExecuteCustombutton(on ? cb.GCode : cb.GCode2);
+                    BackColor = on ? Color.Orange : Parent.BackColor;
+                }
 
-				if (mDrawDisabled || !CustomButton.EnabledNow(Core))
-					return;
+                base.OnClick(e);
+            }
 
-				if (cb.ButtonType == CustomButton.ButtonTypes.PushButton)
-				{
-					Core.ExecuteCustombutton(cb.GCode);
-					BackColor = Color.LightBlue;
-				}
+            protected override void OnMouseDown(MouseEventArgs e)
+            {PerformMouseDown(e);}
 
-				base.OnMouseDown(e);
-			}
+            public void PerformMouseDown(MouseEventArgs e)
+            {
+                if (e.Button != MouseButtons.Left)
+                    return;
 
-			protected override void OnMouseUp(MouseEventArgs e)
-			{
-				if (e.Button != MouseButtons.Left)
-					return;
+                if (mDrawDisabled || !CustomButton.EnabledNow(Core))
+                    return;
 
-				if (mDrawDisabled || !CustomButton.EnabledNow(Core))
-					return;
+                if (cb.ButtonType == CustomButton.ButtonTypes.PushButton)
+                {
+                    Core.ExecuteCustombutton(cb.GCode);
+                    BackColor = Color.LightBlue;
+                }
 
-				if (cb.ButtonType == CustomButton.ButtonTypes.PushButton)
-				{
-					Core.ExecuteCustombutton(cb.GCode2);
-					BackColor = Parent.BackColor;
-				}
+                base.OnMouseDown(e);
+            }
 
-				base.OnMouseUp(e);
-			}
+            protected override void OnMouseUp(MouseEventArgs e)
+            {PerformMouseUp(e);}
 
-			private void RemoveButton_Click(object sender, EventArgs e)
+            public void PerformMouseUp(MouseEventArgs e)
+            {
+                if (e.Button != MouseButtons.Left)
+                    return;
+
+                if (mDrawDisabled || !CustomButton.EnabledNow(Core))
+                    return;
+
+                if (cb.ButtonType == CustomButton.ButtonTypes.PushButton)
+                {
+                    Core.ExecuteCustombutton(cb.GCode2);
+                    BackColor = Parent.BackColor;
+                }
+
+                base.OnMouseUp(e);
+            }
+
+            private void RemoveButton_Click(object sender, EventArgs e)
 			{
 				if (MessageBox.Show(Strings.BoxDeleteCustomButtonText, Strings.BoxDeleteCustomButtonTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
 				{

@@ -109,8 +109,7 @@ namespace LaserGRBL.UserControls
 			set { _coloration = value; }
 		}
 
-
-		protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
+        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
 		{
 			base.OnPaint(e);
 
@@ -141,36 +140,36 @@ namespace LaserGRBL.UserControls
 					//Tmp = Base.Drawing.ImageTransform.ChangeAlpha(Tmp, 150);
 				}
 				else
-				{
-					if (!Coloration.Equals(Color.Empty))
-					{
-						Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
-						Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, -0.5F);
-						Tmp = Base.Drawing.ImageTransform.Translate(Tmp, Coloration, 0);
-					}
+                {
+                    if (!Coloration.Equals(Color.Empty))
+                    {
+                        Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
+                        Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, -0.5F);
+                        Tmp = Base.Drawing.ImageTransform.Translate(Tmp, Coloration, 0);
+                    }
 
-					if (RectangleToScreen(ClientRectangle).Contains(System.Windows.Forms.Cursor.Position))
-					{
-						if (MouseButtons == System.Windows.Forms.MouseButtons.Left)
-						{
-							//Contenuto con mouse premuto
-							Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.15F);
-							Point = new Point(1, 1);
-						}
-						else
-						{
-							//Contenuto con mouse non premuto
-							Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.1F);
-						}
-					}
-					else
-					{
-						//Non contenuto
-						Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0);
-					}
-				}
+                    if (IsMouseInside())
+                    {
+                        if (MouseButtons == System.Windows.Forms.MouseButtons.Left)
+                        {
+                            //Contenuto con mouse premuto
+                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.15F);
+                            Point = new Point(1, 1);
+                        }
+                        else
+                        {
+                            //Contenuto con mouse non premuto
+                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.1F);
+                        }
+                    }
+                    else
+                    {
+                        //Non contenuto
+                        Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0);
+                    }
+                }
 
-				if ((Tmp != null))
+                if ((Tmp != null))
 				{
 					e.Graphics.DrawImage(Tmp, new Rectangle(Point, Size));
 				}
@@ -179,7 +178,12 @@ namespace LaserGRBL.UserControls
 
 		}
 
-		protected virtual bool DrawDisabled()
+        public virtual bool IsMouseInside()
+        {
+            return RectangleToScreen(ClientRectangle).Contains(System.Windows.Forms.Cursor.Position);
+        }
+
+        protected virtual bool DrawDisabled()
 		{
 			return !Enabled;
 		}
