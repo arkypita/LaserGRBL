@@ -182,7 +182,18 @@ namespace LaserGRBL
 
 			TimerUpdate();
 		}
-		
+
+
+		void ApplyConfig()
+		{
+			if (currentWrapper == ComWrapper.WrapperType.UsbSerial && CBPort.Text != null && CBSpeed.SelectedItem != null)
+				Core.Configure(currentWrapper, CBPort.Text, (int)CBSpeed.SelectedItem);
+			else if (currentWrapper == ComWrapper.WrapperType.Telnet || currentWrapper == ComWrapper.WrapperType.LaserWebESP8266)
+				Core.Configure(currentWrapper, (string)TxtAddress.Text);
+			else if (currentWrapper == ComWrapper.WrapperType.Emulator)
+				Core.Configure(currentWrapper);
+		}
+
 		void BtnOpenClick(object sender, EventArgs e)
 		{
 			Core.OpenFile(ParentForm);
@@ -269,6 +280,11 @@ namespace LaserGRBL
 			UpdateConf();
 		}
 
+		private void CBPort_TextChanged(object sender, EventArgs e)
+		{
+			UpdateConf();
+		}
+
 		private void CBSpeed_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			UpdateConf();
@@ -284,13 +300,6 @@ namespace LaserGRBL
 			TxtEmulator.Visible = LblEmulator.Visible = (currentWrapper == ComWrapper.WrapperType.Emulator);
 			tableLayoutPanel4.ResumeLayout();
 
-			if (currentWrapper == ComWrapper.WrapperType.UsbSerial && CBPort.SelectedItem != null && CBSpeed.SelectedItem != null)
-				Core.Configure(currentWrapper, (string)CBPort.SelectedItem, (int)CBSpeed.SelectedItem);
-			else if (currentWrapper == ComWrapper.WrapperType.Telnet || currentWrapper == ComWrapper.WrapperType.LaserWebESP8266)
-				Core.Configure(currentWrapper, (string)TxtAddress.Text);
-			else if (currentWrapper == ComWrapper.WrapperType.Emulator)
-				Core.Configure(currentWrapper);
-
 			if (CBSpeed.SelectedItem != null)
 				Settings.SetObject("Serial Speed", CBSpeed.SelectedItem);
 
@@ -301,6 +310,8 @@ namespace LaserGRBL
 				else if (currentWrapper == ComWrapper.WrapperType.LaserWebESP8266)
 					Settings.SetObject("Websocket URL", TxtAddress.Text);
 			}
+
+			ApplyConfig();
 
 			Settings.Save();
 		}
@@ -356,5 +367,6 @@ namespace LaserGRBL
             if (MessageBox.Show(Strings.BoxAbortProgramConfirm, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
                 Core.AbortProgram();
         }
-    }
+
+	}
 }
