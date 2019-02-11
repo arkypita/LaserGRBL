@@ -175,6 +175,8 @@ namespace LaserGRBL
 		{ get { return GetColor(2); } }
 		public static Color PreviewText
 		{ get { return GetColor(3); } }
+		public static Color PreviewRuler
+		{ get { return PreviewText; } }
 		public static Color PreviewGrid
 		{ get { return GetColor(4); } }
 		public static Color PreviewJobRange

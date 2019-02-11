@@ -715,7 +715,7 @@ namespace LaserGRBL
 			}
 		}
 
-		internal void DrawOnGraphics(Graphics g, Size s)
+		internal void DrawOnGraphics(Graphics g, Size size)
 		{
 			if (!mRange.MovingRange.ValidRange) return;
 
@@ -723,11 +723,18 @@ namespace LaserGRBL
 			ProgramRange.XYRange scaleRange = mRange.MovingRange;
 
 			//Get scale factors for both directions. To preserve the aspect ratio, use the smaller scale factor.
-			float zoom = scaleRange.Width > 0 && scaleRange.Height > 0 ? Math.Min((float)s.Width / (float)scaleRange.Width, (float)s.Height / (float)scaleRange.Height) * 0.95f : 1;
+			float zoom = scaleRange.Width > 0 && scaleRange.Height > 0 ? Math.Min((float)size.Width / (float)scaleRange.Width, (float)size.Height / (float)scaleRange.Height) * 0.95f : 1;
+
+
+			ScaleAndPosition(g, size, scaleRange, zoom);
+			DrawJobPreview(g, spb, zoom);
+			DrawJobRange(g, size, zoom);
+
+		}
+
+		private void DrawJobPreview(Graphics g, GrblCommand.StatePositionBuilder spb, float zoom)
+		{
 			bool firstline = true; //used to draw the first line in a different color
-
-			ScaleAndPosition(g, s, scaleRange, zoom);
-
 			foreach (GrblCommand cmd in list)
 			{
 				try
@@ -772,9 +779,6 @@ namespace LaserGRBL
 				catch (Exception ex) { throw ex; }
 				finally { cmd.DeleteHelper(); }
 			}
-
-			DrawJobRange(g, s, zoom);
-
 		}
 
 		internal void LoadImageCenterline(Bitmap bmp, string filename, bool useCornerThreshold, int cornerThreshold, bool useLineThreshold, int lineThreshold, L2LConf conf, bool append)
@@ -930,11 +934,60 @@ namespace LaserGRBL
                     if (mRange.DrawingRange.Width < 50 && mRange.DrawingRange.Height < 50)
                         format = "0.0";
 
-                    DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString(format), false, true, !right, false);
-					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString(format), false, true, !right, false);
-					DrawString(g, zoom, mRange.DrawingRange.X.Min, 0, mRange.DrawingRange.X.Min.ToString(format), true, false, false, top);
-					DrawString(g, zoom, mRange.DrawingRange.X.Max, 0, mRange.DrawingRange.X.Max.ToString(format), true, false, false, top);
+					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString(format), false, true, !right, false, ColorScheme.PreviewText);
+					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString(format), false, true, !right, false, ColorScheme.PreviewText);
+					DrawString(g, zoom, mRange.DrawingRange.X.Min, 0, mRange.DrawingRange.X.Min.ToString(format), true, false, false, top, ColorScheme.PreviewText);
+					DrawString(g, zoom, mRange.DrawingRange.X.Max, 0, mRange.DrawingRange.X.Max.ToString(format), true, false, false, top, ColorScheme.PreviewText);
 				}
+
+				using (Pen pen = GetPen(ColorScheme.PreviewRuler))
+				{
+					//pen.DashStyle = DashStyle.Dash;
+					//pen.DashPattern = new float[] { 1.0f / zoom, 2.0f / zoom }; //pen.DashPattern = new float[] { 1f / zoom, 2f / zoom};
+					pen.ScaleTransform(1.0f / zoom, 1.0f / zoom);
+					CartesianQuadrant q = Quadrant;
+					bool right = q == CartesianQuadrant.I || q == CartesianQuadrant.IV; //l'oggetto si trova a destra
+					bool top = q == CartesianQuadrant.I || q == CartesianQuadrant.II; //l'oggetto si trova in alto
+
+					string format = "0";
+					if (mRange.DrawingRange.Width < 50 && mRange.DrawingRange.Height < 50)
+						format = "0.0";
+
+					//scala orizzontale
+					Tools.RulerStepCalculator vSC = new Tools.RulerStepCalculator(-wSize.Width, wSize.Width, (int)(2*s.Width / 100));
+
+					double h1 = (top ? -4.0 : 4.0) / zoom;
+					double h2 = 1.8*h1;
+					double h3 = (top ? 1.0 : -1.0) / zoom;
+
+					for (float d = (float)vSC.FirstSmall; d < wSize.Width; d += (float)vSC.SmallStep)
+						g.DrawLine(pen, d, 0, d, (float)h1);
+
+					for (float d = (float)vSC.FirstBig; d < wSize.Width; d += (float)vSC.BigStep)
+						g.DrawLine(pen, d, 0, d, (float)h2);
+
+					for (float d = (float)vSC.FirstBig; d < wSize.Width; d += (float)vSC.BigStep)
+						DrawString(g, zoom, (decimal)d, (decimal)h3, d.ToString(format), false, false, !right, !top, ColorScheme.PreviewRuler);
+
+					//scala verticale
+
+					Tools.RulerStepCalculator hSC = new Tools.RulerStepCalculator(-wSize.Height, wSize.Height, (int)(2 * s.Height / 100));
+					double v1 = (right ? -4.0 : 4.0) / zoom;
+					double v2 = 1.8 * v1;
+					double v3 = (right ? 2.5 : 0) / zoom;
+
+					for (float d = (float)hSC.FirstSmall; d < wSize.Height; d += (float)hSC.SmallStep)
+						g.DrawLine(pen, 0, d, (float)v1, d);
+
+					for (float d = (float)hSC.FirstBig; d < wSize.Height; d += (float)hSC.BigStep)
+						g.DrawLine(pen, 0, d, (float)v2, d);
+
+					for (float d = (float)hSC.FirstBig; d < wSize.Height; d += (float)hSC.BigStep)
+						DrawString(g, zoom, (decimal)v3, (decimal)d, d.ToString(format), false, false, right, !top, ColorScheme.PreviewRuler, -90);
+				}
+
+
+
 			}
 		}
 
@@ -944,10 +997,11 @@ namespace LaserGRBL
 		private static Brush GetBrush(Color color)
 		{ return new SolidBrush(color); }
 
-		private static void DrawString(Graphics g, float zoom, decimal curX, decimal curY, string text, bool centerX, bool centerY, bool subtractX, bool subtractY)
+		private static void DrawString(Graphics g, float zoom, decimal curX, decimal curY, string text, bool centerX, bool centerY, bool subtractX, bool subtractY, Color color, float rotation = 0)
 		{
 			GraphicsState state = g.Save();
 			g.ScaleTransform(1.0f, -1.0f);
+			
 
 			using (Font f = new Font(FontFamily.GenericMonospace, 8 * 1 / zoom))
 			{
@@ -963,16 +1017,25 @@ namespace LaserGRBL
 					offsetY = ms.Height / 2;
 
 				if (subtractX)
-					offsetX += ms.Width;
+					offsetX += rotation == 0 ? ms.Width : ms.Height;
 
 				if (subtractY)
-					offsetY += ms.Height;
+					offsetY += rotation == 0 ? ms.Height : -ms.Width;
 
-				using (Brush b = GetBrush(ColorScheme.PreviewText))
-				{ g.DrawString(text, f, b, (float)curX - offsetX, (float)-curY - offsetY); }
+				using (Brush b = GetBrush(color))
+				{ DrawRotatedTextAt(g, rotation, text, f, b, (float)curX - offsetX, (float)-curY - offsetY); }
 
 			}
 			g.Restore(state);
+		}
+
+		private static void DrawRotatedTextAt(Graphics g, float a, string text, Font f, Brush b, float x, float y)
+		{
+			GraphicsState state = g.Save();	// Save the graphics state.
+			g.TranslateTransform(x, y);		//posiziona
+			g.RotateTransform(a);			//ruota
+			g.DrawString(text, f, b, 0, 0); // scrivi a zero, zero
+			g.Restore(state);				// Restore the graphics state.
 		}
 
 
