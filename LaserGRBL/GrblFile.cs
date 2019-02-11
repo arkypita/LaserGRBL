@@ -954,35 +954,35 @@ namespace LaserGRBL
 						format = "0.0";
 
 					//scala orizzontale
-					Tools.RulerStepCalculator vSC = new Tools.RulerStepCalculator(-wSize.Width, wSize.Width, (int)(2*s.Width / 100));
+					Tools.RulerStepCalculator hscale = new Tools.RulerStepCalculator(-wSize.Width, wSize.Width, (int)(2*s.Width / 100));
 
 					double h1 = (top ? -4.0 : 4.0) / zoom;
 					double h2 = 1.8*h1;
 					double h3 = (top ? 1.0 : -1.0) / zoom;
 
-					for (float d = (float)vSC.FirstSmall; d < wSize.Width; d += (float)vSC.SmallStep)
+					for (float d = (float)hscale.FirstSmall; d < wSize.Width; d += (float)hscale.SmallStep)
 						g.DrawLine(pen, d, 0, d, (float)h1);
 
-					for (float d = (float)vSC.FirstBig; d < wSize.Width; d += (float)vSC.BigStep)
+					for (float d = (float)hscale.FirstBig; d < wSize.Width; d += (float)hscale.BigStep)
 						g.DrawLine(pen, d, 0, d, (float)h2);
 
-					for (float d = (float)vSC.FirstBig; d < wSize.Width; d += (float)vSC.BigStep)
+					for (float d = (float)hscale.FirstBig; d < wSize.Width; d += (float)hscale.BigStep)
 						DrawString(g, zoom, (decimal)d, (decimal)h3, d.ToString(format), false, false, !right, !top, ColorScheme.PreviewRuler);
 
 					//scala verticale
 
-					Tools.RulerStepCalculator hSC = new Tools.RulerStepCalculator(-wSize.Height, wSize.Height, (int)(2 * s.Height / 100));
+					Tools.RulerStepCalculator vscale = new Tools.RulerStepCalculator(-wSize.Height, wSize.Height, (int)(2 * s.Height / 100));
 					double v1 = (right ? -4.0 : 4.0) / zoom;
 					double v2 = 1.8 * v1;
 					double v3 = (right ? 2.5 : 0) / zoom;
 
-					for (float d = (float)hSC.FirstSmall; d < wSize.Height; d += (float)hSC.SmallStep)
+					for (float d = (float)vscale.FirstSmall; d < wSize.Height; d += (float)vscale.SmallStep)
 						g.DrawLine(pen, 0, d, (float)v1, d);
 
-					for (float d = (float)hSC.FirstBig; d < wSize.Height; d += (float)hSC.BigStep)
+					for (float d = (float)vscale.FirstBig; d < wSize.Height; d += (float)vscale.BigStep)
 						g.DrawLine(pen, 0, d, (float)v2, d);
 
-					for (float d = (float)hSC.FirstBig; d < wSize.Height; d += (float)hSC.BigStep)
+					for (float d = (float)vscale.FirstBig; d < wSize.Height; d += (float)vscale.BigStep)
 						DrawString(g, zoom, (decimal)v3, (decimal)d, d.ToString(format), false, false, right, !top, ColorScheme.PreviewRuler, -90);
 				}
 
