@@ -373,7 +373,7 @@ namespace LaserGRBL
 
 		private void ImageLine2Line(Bitmap bmp, L2LConf c)
 		{
-			bool fast = false;
+			bool fast = true;
 			List<ColorSegment> segments = GetSegments(bmp, c);
 			List<GrblCommand> temp = new List<GrblCommand>();
 
