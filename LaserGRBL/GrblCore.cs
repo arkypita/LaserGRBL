@@ -1016,6 +1016,26 @@ namespace LaserGRBL
 			}
 		}
 
+		public void Move(Point move)
+		{
+			if (JogEnabled)
+			{
+				decimal speed = JogSpeed;
+
+				string cmd = SupportJogging ? "$J=G91X{0}Y{1}F{2}" : "G0X{0}Y{1}F{2}";
+				cmd = string.Format(cmd, move.X, move.Y, speed);
+
+				if (!SupportJogging)
+					EnqueueCommand(new GrblCommand("G91"));
+
+				EnqueueCommand(new GrblCommand(cmd));
+
+				if (!SupportJogging)
+					EnqueueCommand(new GrblCommand("G90"));
+
+			}
+
+		}
 		public void Jog(JogDirection dir)
 		{
 			if (JogEnabled)

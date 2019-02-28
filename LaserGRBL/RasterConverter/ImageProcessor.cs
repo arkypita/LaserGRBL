@@ -1055,7 +1055,7 @@ namespace LaserGRBL.RasterConverter
 
 		public Bitmap Original { get { return mResized; } }
 
-        public int FileDPI { get => mFileDPI; }
-        public Size FileResolution { get => mFileResolution; }
+        public int FileDPI { get { return mFileDPI; } }
+        public Size FileResolution { get { return mFileResolution; } }
     }
 }

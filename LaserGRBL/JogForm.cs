@@ -20,15 +20,7 @@ namespace LaserGRBL
 			UpdateFMax_Tick(null, null);
 
 			TbSpeed.Value = Math.Min((int)Settings.GetObject("Jog Speed", 1000), TbSpeed.Maximum);
-			TbStep.Value = (int)Settings.GetObject("Jog Step", 10);
-
 			TbSpeed_ValueChanged(null, null); //set tooltip
-			TbStep_ValueChanged(null, null); //set tooltip
-		}
-
-		private void OnJogButtonMouseDown(object sender, MouseEventArgs e)
-		{
-			Core.Jog((sender as DirectionButton).JogDirection);
 		}
 
 		private void TbSpeed_ValueChanged(object sender, EventArgs e)
@@ -40,16 +32,8 @@ namespace LaserGRBL
 			needsave = true;
 		}
 
-		private void TbStep_ValueChanged(object sender, EventArgs e)
-		{
-			TT.SetToolTip(TbStep, string.Format("Step: {0}", TbStep.Value));
-			LblStep.Text = TbStep.Value.ToString();
-			Settings.SetObject("Jog Step", TbStep.Value);
-			Core.JogStep = TbStep.Value;
-			needsave = true;
-		}
 
-		private void BtnHome_Click(object sender, EventArgs e)
+		private void Home_Click(object sender, EventArgs e)
 		{
 			Core.JogHome();
 		}
@@ -77,24 +61,11 @@ namespace LaserGRBL
 				oldVal = curVal;
 			}
 		}
-	}
 
-	public class DirectionButton : UserControls.ImageButton
-	{
-		private GrblCore.JogDirection mDir = GrblCore.JogDirection.N;
-
-		public GrblCore.JogDirection JogDirection
+		private void Move_Click(object sender, UserControls.Move2DControl.MoveEventArgs e)
 		{
-			get { return mDir; }
-			set { mDir = value; }
-		}
-
-		protected override void OnSizeChanged(EventArgs e)
-		{
-			if (Width != Height)
-				Width = Height;
-
-			base.OnSizeChanged(e);
+			var move = e.Move;
+			Core.Move(move.Mouvement);
 		}
 	}
 }
