@@ -110,6 +110,7 @@
       <DependentUpon>AutotraceTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Autotrace\Autotrace.cs" />
+    <Compile Include="SmoothieCore.cs" />
     <Compile Include="SvgConverter\ConvertSizeAndOptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1002,14 +1003,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Grafica\add2.png" />
-    <Content Include="Grafica\aE.png" />
-    <Content Include="Grafica\aN.png" />
-    <Content Include="Grafica\aNE.png" />
-    <Content Include="Grafica\aNW.png" />
-    <Content Include="Grafica\aS.png" />
-    <Content Include="Grafica\aSE.png" />
-    <Content Include="Grafica\aSW.png" />
-    <Content Include="Grafica\aW.png" />
     <Content Include="Grafica\GcodeQueue.png" />
     <Content Include="Grafica\GcodeOK.png" />
     <Content Include="Grafica\check2.png" />
