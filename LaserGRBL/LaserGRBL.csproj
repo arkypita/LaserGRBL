@@ -645,6 +645,9 @@
       <DependentUpon>ImageButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ImageTransform.cs" />
+    <Compile Include="UserControls\Move2DControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControls\NumericInput\ColoredBorderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
