@@ -66,7 +66,12 @@ namespace LaserGRBL.ComWrapper
 			emu.ManageMessage(new byte[] { b });
 		}
 
-		public void Write(string text)
+        public void Write(byte[] arr)
+        {
+            emu.ManageMessage(arr);
+        }
+
+        public void Write(string text)
 		{
 			emu.ManageMessage(Encoding.UTF8.GetBytes(text));
 		}

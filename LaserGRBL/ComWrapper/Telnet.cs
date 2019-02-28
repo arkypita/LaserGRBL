@@ -15,7 +15,7 @@ namespace LaserGRBL.ComWrapper
 		BinaryWriter bwriter;
 		StreamReader sreader;
 		StreamWriter swriter;
-		int logcnt = 0;
+        ComLogger ComLog = new ComLogger("netlog.txt");
 
 		public void Configure(params object[] param)
 		{
@@ -33,7 +33,7 @@ namespace LaserGRBL.ComWrapper
 
 			cln = new System.Net.Sockets.TcpClient();
 			Logger.LogMessage("OpenCom", "Open {0}", mAddress);
-			if (GrblCore.WriteComLog) log("com", string.Format("Open {0} {1}", mAddress, GetResetDiagnosticString()));
+			ComLog.Log("com", string.Format("Open {0} {1}", mAddress, GetResetDiagnosticString()));
 
 			cln.Connect(IPHelper.Parse(mAddress));
 
@@ -64,7 +64,7 @@ namespace LaserGRBL.ComWrapper
 			{
 				try
 				{
-					if (GrblCore.WriteComLog) log("com", string.Format("Close {0} [{1}]", mAddress, auto ? "CORE" : "USER"));
+                    ComLog.Log("com", string.Format("Close {0} [{1}]", mAddress, auto ? "CORE" : "USER"));
 					Logger.LogMessage("CloseCom", "Close {0} [{1}]", mAddress, auto ? "CORE" : "USER");
 					cln.Close();
 				}
@@ -84,14 +84,21 @@ namespace LaserGRBL.ComWrapper
 
 		public void Write(byte b)
 		{
-			if (GrblCore.WriteComLog) log("tx", string.Format("[0x{0:X}]", b));
+            ComLog.Log("tx", b);
 			bwriter.Write(b);
 			bwriter.Flush();
 		}
 
-		public void Write(string text)
+        public void Write(byte[] arr)
+        {
+            ComLog.Log("tx", arr);
+            bwriter.Write(arr);
+            bwriter.Flush();
+        }
+
+        public void Write(string text)
 		{
-			if (GrblCore.WriteComLog) log("tx", text);
+            ComLog.Log("tx", text);
 			swriter.Write(text);
 			swriter.Flush();
 		}
@@ -107,21 +114,13 @@ namespace LaserGRBL.ComWrapper
 					System.Threading.Thread.Sleep(1);
 			}
 
-			if (GrblCore.WriteComLog) log("rx", rv);
+            ComLog.Log("rx", rv);
 			return rv;
 		}
 
 		public bool HasData()
 		{ return IsOpen && ((System.Net.Sockets.NetworkStream)sreader.BaseStream).DataAvailable; }
 
-
-		private void log(string operation, string line)
-		{
-			line = line?.Replace("\r", "\\r");
-			line = line?.Replace("\n", "\\n");
-			try { System.IO.File.AppendAllText(System.IO.Path.Combine(GrblCore.DataPath, string.Format("netlog.txt", operation)), string.Format("{0:00000000}\t{1:00000}\t{2}\t{3}\r\n", Tools.TimingBase.TimeFromApplicationStartup().TotalMilliseconds, logcnt++, operation, line)); }
-			catch { }
-		}
 	}
 
 

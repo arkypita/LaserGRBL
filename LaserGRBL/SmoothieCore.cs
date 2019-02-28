@@ -25,6 +25,19 @@ namespace LaserGRBL
         }
 
         public override bool SupportJogging => false;
+
+        //public override void SendImmediate(byte b, bool mute = false)
+        //{
+        //    try
+        //    {
+        //        if (!mute) Logger.LogMessage("SendImmediate", "Send Immediate Command [0x{0:X}]", b);
+
+        //        lock (this)
+        //        { if (com.IsOpen) com.Write(new byte[] { b, 10 }); }
+        //    }
+        //    catch (Exception ex)
+        //    { Logger.LogException("SendImmediate", ex); }
+        //}
     }
 
 }

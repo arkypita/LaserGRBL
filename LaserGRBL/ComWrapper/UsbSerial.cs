@@ -10,9 +10,9 @@ namespace LaserGRBL.ComWrapper
 		private System.IO.Ports.SerialPort com = new System.IO.Ports.SerialPort();
 		private string mPortName;
 		private int mBaudRate;
-		int logcnt = 0;
+        ComLogger ComLog = new ComLogger("comlog.txt");
 
-		public void Configure(params object[] param)
+        public void Configure(params object[] param)
 		{
 			mPortName = (string)param[0];
 			mBaudRate = (int)param[1];
@@ -36,7 +36,7 @@ namespace LaserGRBL.ComWrapper
 					com.DtrEnable = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
 					com.RtsEnable = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
 
-					if (GrblCore.WriteComLog) log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
+					ComLog.Log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
 					Logger.LogMessage("OpenCom", "Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString());
 
 					com.Open();
@@ -53,7 +53,7 @@ namespace LaserGRBL.ComWrapper
 						{ 
 							com.PortName = mPortName.Substring(0, mPortName.Length - 1); //remove last digit and try again
 
-							if (GrblCore.WriteComLog) log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
+                            ComLog.Log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
 							Logger.LogMessage("OpenCom", "Retry opening {0} as {1} (issue #31)", mPortName.ToUpper(), com.PortName.ToUpper());
 
 							com.Open();
@@ -93,7 +93,7 @@ namespace LaserGRBL.ComWrapper
 			if (com.IsOpen)
 			{
 
-				if (GrblCore.WriteComLog) log("com", string.Format("Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER"));
+                ComLog.Log("com", string.Format("Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER"));
 				Logger.LogMessage("CloseCom", "Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER");
                 try { com.DiscardOutBuffer(); } catch { }
                 try { com.DiscardInBuffer(); } catch { }
@@ -106,13 +106,19 @@ namespace LaserGRBL.ComWrapper
 
 		public void Write(byte b)
 		{
-			if (GrblCore.WriteComLog) log("tx", string.Format("[0x{0:X}]", b));
+            ComLog.Log("tx", b);
 			com.Write(new byte[] { b }, 0, 1);
 		}
 
-		public void Write(string text)
+        public void Write(byte[] arr)
+        {
+            ComLog.Log("tx", arr);
+            com.Write(arr, 0, arr.Length);
+        }
+
+        public void Write(string text)
 		{
-			if (GrblCore.WriteComLog) log("tx", text);
+            ComLog.Log("tx", text);
 			com.Write(text);
 		}
 
@@ -121,7 +127,7 @@ namespace LaserGRBL.ComWrapper
 			if (GrblCore.WriteComLog)
 			{
 				string rv = com.ReadLine();
-				log("rx", rv);
+                ComLog.Log("rx", rv);
 				return rv;
 			}
 
@@ -136,12 +142,5 @@ namespace LaserGRBL.ComWrapper
 		public bool HasData()
 		{ return com.BytesToRead > 0; }
 
-		private void log(string operation, string line)
-		{
-			line = line?.Replace("\r", "\\r");
-			line = line?.Replace("\n", "\\n");
-			try { System.IO.File.AppendAllText(System.IO.Path.Combine(GrblCore.DataPath, string.Format("comlog.txt", operation)), string.Format("{0:00000000}\t{1:00000}\t{2}\t{3}\r\n", Tools.TimingBase.TimeFromApplicationStartup().TotalMilliseconds, logcnt++, operation, line)); }
-			catch { }
-		}
 	}
 }

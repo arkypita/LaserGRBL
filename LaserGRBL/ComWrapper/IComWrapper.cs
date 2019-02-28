@@ -8,7 +8,7 @@ namespace LaserGRBL.ComWrapper
 	public enum WrapperType
 	{ UsbSerial, Telnet, LaserWebESP8266, Emulator }
 
-	interface IComWrapper
+	public interface IComWrapper
 	{
 		void Configure(params object[] param);
 
@@ -18,7 +18,8 @@ namespace LaserGRBL.ComWrapper
 		bool IsOpen { get; }
 		
 		void Write(byte b);
-		void Write(string text);
+        void Write(byte[] arr);
+        void Write(string text);
 
 		string ReadLineBlocking();
 

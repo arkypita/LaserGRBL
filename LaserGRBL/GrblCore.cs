@@ -188,7 +188,7 @@ namespace LaserGRBL
 		public event dlgOnLoopCountChange OnLoopCountChange;
 
 		private System.Windows.Forms.Control syncro;
-		private ComWrapper.IComWrapper com;
+		protected ComWrapper.IComWrapper com;
 		private GrblFile file;
 		private System.Collections.Generic.Queue<GrblCommand> mQueue; //vera coda di quelli da mandare
 		private GrblCommand mRetryQueue; //coda[1] di quelli in attesa di risposta
@@ -927,7 +927,7 @@ namespace LaserGRBL
 			RiseOverrideChanged();
 		}
 
-		public void SendImmediate(byte b, bool mute = false)
+		public virtual void SendImmediate(byte b, bool mute = false)
 		{
 			try
 			{
