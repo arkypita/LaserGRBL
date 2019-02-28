@@ -994,7 +994,7 @@ namespace LaserGRBL
 		public bool SupportRTO
 		{ get { return GrblVersion != null && GrblVersion >= new GrblVersionInfo(1, 1); } }
 
-		public bool SupportJogging
+		public virtual bool SupportJogging
 		{ get { return GrblVersion != null && GrblVersion >= new GrblVersionInfo(1, 1); } }
 
 		public bool SupportCSV
@@ -1093,12 +1093,17 @@ namespace LaserGRBL
 			lock (this)
 			{
 				InternalReset((bool)Settings.GetObject("Reset Grbl On Connect", true));
-				QueryPosition();
+                InitializeBoard();
 				QueryTimer.Start();
 			}
 		}
 
-		protected void ThreadTX()
+        protected virtual void InitializeBoard()
+        {
+            QueryPosition();
+        }
+
+        protected void ThreadTX()
 		{
 			lock (this)
 			{
@@ -1408,7 +1413,7 @@ namespace LaserGRBL
 			SetMPosition(new GPoint(ParseFloat(xyz[0]), ParseFloat(xyz[1]), ParseFloat(xyz[2])));
 		}
 
-		private static float ParseFloat(string value)
+        protected static float ParseFloat(string value)
 		{
 			return float.Parse(value, NumberFormatInfo.InvariantInfo);
 		}
@@ -1444,13 +1449,13 @@ namespace LaserGRBL
 			SetFS(ParseFloat(fs[0]), ParseFloat(fs[1]));
 		}
 
-		private void ParseF(string p)
+        protected virtual void ParseF(string p)
 		{
 			string f = p.Substring(2, p.Length - 2);
 			SetFS(ParseFloat(f), 0);
 		}
 
-		private void SetFS(float f, float s)
+		protected void SetFS(float f, float s)
 		{
 			mCurF = f;
 			mCurS = s;

@@ -120,7 +120,6 @@ namespace LaserGRBL.UserControls
 			g.SmoothingMode = SmoothingMode.AntiAlias;
 			g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
-
 			float outerRadius = rect.Width / 2f;
 			float innerRadius = outerRadius / 3f;
 			PointF center = new PointF(rect.X + rect.Width / 2f, rect.Y + rect.Width / 2f);
@@ -131,7 +130,7 @@ namespace LaserGRBL.UserControls
 			#region Background
 			GraphicsPath bg = new GraphicsPath();
 			bg.AddEllipse(rect);
-			using (var b = new SolidBrush(Color.White))
+			using (var b = new SolidBrush(BackColor))
 				PaintWithShadow(g, bg, b, shadowOffset);
 			#endregion
 
