@@ -19,22 +19,23 @@ namespace LaserGRBL
 			UpdateFMax.Enabled = true;
 			UpdateFMax_Tick(null, null);
 
-			TbSpeed.Value = Math.Min((int)Settings.GetObject("Jog Speed", 1000), TbSpeed.Maximum);
-			TbSpeed_ValueChanged(null, null); //set tooltip
+			move2DControl1.SpeedValue = Math.Min((int)Settings.GetObject("Jog Speed", 1000), move2DControl1.SpeedMaximum);
+			SpeedValueChanged(null, null); //set tooltip
 		}
 
-		private void TbSpeed_ValueChanged(object sender, EventArgs e)
+		private void SpeedValueChanged(object sender, UserControls.Move2DControl.SpeedEventArgs e)
 		{
-			TT.SetToolTip(TbSpeed, string.Format("Speed: {0}", TbSpeed.Value));
-			LblSpeed.Text = String.Format("F{0}", TbSpeed.Value);
-			Settings.SetObject("Jog Speed", TbSpeed.Value);
-			Core.JogSpeed = TbSpeed.Value;
+			int speed = e == null ? Core.JogSpeed : (int)e.F;
+			//TT.SetToolTip(move2DControl1, string.Format("Speed: {0}", speed));
+			Settings.SetObject("Jog Speed", speed);
+			Core.JogSpeed = speed;
 			needsave = true;
 		}
 
 
-		private void Home_Click(object sender, EventArgs e)
+		private void Home_Click(object sender, UserControls.Move2DControl.HomeEventArgs e)
 		{
+			Core.JogSpeed = (int)e.F;
 			Core.JogHome();
 		}
 
@@ -54,10 +55,9 @@ namespace LaserGRBL
 			int curVal = (int)Math.Max(Core.Configuration.MaxRateX, Core.Configuration.MaxRateY);
 			if (oldVal != curVal)
 			{
-				TbSpeed.Value = Math.Min(TbSpeed.Value, curVal);
-				TbSpeed.Maximum = curVal;
-				TbSpeed.LargeChange = curVal / 10;
-				TbSpeed.SmallChange = curVal / 20;
+				var currentSpeed = move2DControl1.SpeedValue;
+				move2DControl1.SpeedMaximum = curVal;
+				move2DControl1.SpeedValue= Math.Min(currentSpeed, curVal);
 				oldVal = curVal;
 			}
 		}
@@ -65,7 +65,8 @@ namespace LaserGRBL
 		private void Move_Click(object sender, UserControls.Move2DControl.MoveEventArgs e)
 		{
 			var move = e.Move;
-			Core.Move(move.Mouvement);
+			Core.JogSpeed = (int)e.F;
+			Core.Move(move);
 		}
 	}
 }
