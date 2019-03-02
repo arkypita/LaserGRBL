@@ -409,6 +409,7 @@ namespace LaserGRBL.UserControls
 						{
 							SpeedValue= ((SpeedPercentZone)z).Speed;
 						}
+						return;
 					}
 				}
 			}
