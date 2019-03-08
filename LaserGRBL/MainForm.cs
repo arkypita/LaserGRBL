@@ -455,7 +455,7 @@ namespace LaserGRBL
 
 		private void donateToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=mlpita%40bergamo3%2eit&lc=US&item_name=LaserGRBL&item_number=Support%20development&currency_code=EUR");
+			System.Diagnostics.Process.Start(@"https://paypal.me/pools/c/8cQ1Lo4sRA");
 		}
 
 
