@@ -9,7 +9,7 @@ All downloads available at https://github.com/arkypita/LaserGRBL/releases
 
 Do you like LaserGRBL? Support development with your donation!
 
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=mlpita%40bergamo3%2eit&lc=US&item_name=LaserGRBL&item_number=Support%20development&currency_code=EUR)
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/pools/c/8cQ1Lo4sRA)
 
 ### Existing Features
 
