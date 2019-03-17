@@ -11,18 +11,24 @@ namespace LaserGRBL
 {
 	public partial class SettingsForm : Form
 	{
-		public SettingsForm()
+        private GrblCore Core;
+
+		public SettingsForm(GrblCore core)
 		{
 			InitializeComponent();
 
-			//BackColor = ColorScheme.FormBackColor;
-			//ForeColor = ColorScheme.FormForeColor;
-			//TpRasterImport.BackColor = TpHardware.BackColor = BtnCancel.BackColor = BtnSave.BackColor = ColorScheme.FormButtonsColor;
+            this.Core = core;
 
+            //BackColor = ColorScheme.FormBackColor;
+            //ForeColor = ColorScheme.FormForeColor;
+            //TpRasterImport.BackColor = TpHardware.BackColor = BtnCancel.BackColor = BtnSave.BackColor = ColorScheme.FormButtonsColor;
+
+            InitCoreCB();
 			InitProtocolCB();
 			InitStreamingCB();
 			InitThreadingCB();
 
+            CBCore.SelectedItem = (Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl);
 			CBSupportPWM.Checked = (bool)Settings.GetObject("Support Hardware PWM", true);
 			CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			CBStreamingMode.SelectedItem = Settings.GetObject("Streaming Mode", GrblCore.StreamingMode.Buffered);
@@ -33,7 +39,15 @@ namespace LaserGRBL
 			CbHardReset.Checked = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
 		}
 
-		private void InitThreadingCB()
+        private void InitCoreCB()
+        {
+            CBCore.BeginUpdate();
+            CBCore.Items.Add(Firmware.Grbl);
+            CBCore.Items.Add(Firmware.Smoothie);
+            CBCore.EndUpdate();
+        }
+
+        private void InitThreadingCB()
 		{
 			CbThreadingMode.BeginUpdate();
 			CbThreadingMode.Items.Add(GrblCore.ThreadingMode.Insane);
@@ -63,15 +77,16 @@ namespace LaserGRBL
 			CBStreamingMode.EndUpdate();
 		}
 
-		internal static void CreateAndShowDialog()
+		internal static void CreateAndShowDialog(GrblCore core)
 		{
-			using (SettingsForm sf = new SettingsForm())
+			using (SettingsForm sf = new SettingsForm(core))
 				sf.ShowDialog();
 		}
 
 		private void BtnSave_Click(object sender, EventArgs e)
 		{
-			Settings.SetObject("Support Hardware PWM", CBSupportPWM.Checked);
+            Settings.SetObject("Firmware Type", CBCore.SelectedItem);
+            Settings.SetObject("Support Hardware PWM", CBSupportPWM.Checked);
 			Settings.SetObject("ComWrapper Protocol", CBProtocol.SelectedItem);
 			Settings.SetObject("Streaming Mode", CBStreamingMode.SelectedItem);
 			Settings.SetObject("Unidirectional Engraving", CbUnidirectional.Checked);
@@ -80,8 +95,10 @@ namespace LaserGRBL
 			Settings.SetObject("Reset Grbl On Connect", CbSoftReset.Checked);
 			Settings.SetObject("HardReset Grbl On Connect", CbHardReset.Checked);
 			Settings.Save();
+            Close();
 
-			Close();
+            if (Core.Type != (Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) && MessageBox.Show(Strings.FirmwareRequireRestartNow, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
+                Application.Restart();
 		}
 
 		private void BtnCancel_Click(object sender, EventArgs e)

@@ -50,7 +50,7 @@
             this.TTTStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.UpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.MMn = new System.Windows.Forms.MenuStrip();
-            this.grblToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnGrbl = new System.Windows.Forms.ToolStripMenuItem();
             this.MnConnect = new System.Windows.Forms.ToolStripMenuItem();
             this.MnDisconnect = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -246,7 +246,7 @@
             // MMn
             // 
             this.MMn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.grblToolStripMenuItem,
+            this.MnGrbl,
             this.fileToolStripMenuItem,
             this.MNEsp8266,
             this.schemaToolStripMenuItem,
@@ -255,9 +255,9 @@
             resources.ApplyResources(this.MMn, "MMn");
             this.MMn.Name = "MMn";
             // 
-            // grblToolStripMenuItem
+            // MnGrbl
             // 
-            this.grblToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MnGrbl.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnConnect,
             this.MnDisconnect,
             this.toolStripMenuItem2,
@@ -271,8 +271,8 @@
             this.MnHotkeys,
             this.toolStripMenuItem6,
             this.MnExit});
-            this.grblToolStripMenuItem.Name = "grblToolStripMenuItem";
-            resources.ApplyResources(this.grblToolStripMenuItem, "grblToolStripMenuItem");
+            this.MnGrbl.Name = "MnGrbl";
+            resources.ApplyResources(this.MnGrbl, "MnGrbl");
             // 
             // MnConnect
             // 
@@ -613,7 +613,7 @@
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem MnFileOpen;
 		private System.Windows.Forms.ToolStripMenuItem MnFileSend;
-		private System.Windows.Forms.ToolStripMenuItem grblToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem MnGrbl;
 		private System.Windows.Forms.ToolStripMenuItem MnGrblReset;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.Timer UpdateTimer;

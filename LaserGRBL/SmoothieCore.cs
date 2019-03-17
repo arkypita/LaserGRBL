@@ -11,6 +11,9 @@ namespace LaserGRBL
         {
         }
 
+        public override Firmware Type
+        { get { return Firmware.Smoothie; } }
+
         protected override void InitializeBoard()
         {
             SendImmediate(10); //send a new line

@@ -36,6 +36,8 @@
             this.MainTabPage = new System.Windows.Forms.TabControl();
             this.TpHardware = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.CBCore = new System.Windows.Forms.ComboBox();
             this.CbThreadingMode = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.CBStreamingMode = new System.Windows.Forms.ComboBox();
@@ -114,22 +116,36 @@
             // tableLayoutPanel3
             // 
             resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
-            this.tableLayoutPanel3.Controls.Add(this.CbThreadingMode, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label4, 2, 1);
-            this.tableLayoutPanel3.Controls.Add(this.CBStreamingMode, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.BtnStreamingMode, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.CBProtocol, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label3, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.BtnProtocol, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label6, 2, 2);
-            this.tableLayoutPanel3.Controls.Add(this.BtnThreadingModel, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.CbIssueDetector, 1, 3);
-            this.tableLayoutPanel3.Controls.Add(this.label7, 2, 3);
-            this.tableLayoutPanel3.Controls.Add(this.CbSoftReset, 1, 4);
-            this.tableLayoutPanel3.Controls.Add(this.label2, 2, 4);
-            this.tableLayoutPanel3.Controls.Add(this.CbHardReset, 1, 5);
-            this.tableLayoutPanel3.Controls.Add(this.label8, 2, 5);
+            this.tableLayoutPanel3.Controls.Add(this.label9, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.CBCore, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.CbThreadingMode, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label4, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.CBStreamingMode, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.BtnStreamingMode, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.CBProtocol, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label3, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.BtnProtocol, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label6, 2, 3);
+            this.tableLayoutPanel3.Controls.Add(this.BtnThreadingModel, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.CbIssueDetector, 1, 4);
+            this.tableLayoutPanel3.Controls.Add(this.label7, 2, 4);
+            this.tableLayoutPanel3.Controls.Add(this.CbSoftReset, 1, 5);
+            this.tableLayoutPanel3.Controls.Add(this.label2, 2, 5);
+            this.tableLayoutPanel3.Controls.Add(this.CbHardReset, 1, 6);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 2, 6);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // CBCore
+            // 
+            resources.ApplyResources(this.CBCore, "CBCore");
+            this.CBCore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBCore.FormattingEnabled = true;
+            this.CBCore.Name = "CBCore";
             // 
             // CbThreadingMode
             // 
@@ -343,5 +359,7 @@
 		private System.Windows.Forms.TabPage TpHardware;
 		private System.Windows.Forms.TabPage TpRasterImport;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-	}
+        private System.Windows.Forms.ComboBox CBCore;
+        private System.Windows.Forms.Label label9;
+    }
 }

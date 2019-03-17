@@ -233,6 +233,12 @@ Do you want to rewrite the configuration?</value>
   <data name="ExitAnyway" xml:space="preserve">
     <value>File transfer in progress. Exit anyway?</value>
   </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>Restart required</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>Restart is required to apply Firmware type changes. Restart now?</value>
+  </data>
   <data name="FormulaCustom" xml:space="preserve">
     <value>Custom</value>
   </data>

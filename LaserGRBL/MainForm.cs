@@ -4,44 +4,53 @@ using System.Windows.Forms;
 
 namespace LaserGRBL
 {
-	public partial class MainForm : Form
-	{
-		private GrblCore Core;
-		private bool FirstIdle = true;
+    public partial class MainForm : Form
+    {
+        private GrblCore Core;
+        private bool FirstIdle = true;
 
-		public MainForm()
-		{
-			InitializeComponent();
+        public MainForm()
+        {
+            InitializeComponent();
 
-			MMn.Renderer = new MMnRenderer();
+            MMn.Renderer = new MMnRenderer();
 
-			splitContainer1.FixedPanel = FixedPanel.Panel1;
-			splitContainer1.SplitterDistance = (int)Settings.GetObject("MainForm Splitter Position", 260);
-			autoUpdateToolStripMenuItem.Checked = (bool)Settings.GetObject("Auto Update", true);
+            splitContainer1.FixedPanel = FixedPanel.Panel1;
+            splitContainer1.SplitterDistance = (int)Settings.GetObject("MainForm Splitter Position", 260);
+            autoUpdateToolStripMenuItem.Checked = (bool)Settings.GetObject("Auto Update", true);
 
-			if (System.Threading.Thread.CurrentThread.Name == null)
-				System.Threading.Thread.CurrentThread.Name = "Main Thread";
-			
-			using (SplashScreenForm f = new SplashScreenForm())
-				f.ShowDialog();
+            if (System.Threading.Thread.CurrentThread.Name == null)
+                System.Threading.Thread.CurrentThread.Name = "Main Thread";
 
-			//build main communication object
-			Core = new GrblCore(this, PreviewForm);
-			Core.MachineStatusChanged += OnMachineStatus;
-			Core.OnFileLoaded += OnFileLoaded;
-			Core.OnOverrideChange += RefreshOverride;
-			Core.IssueDetected += OnIssueDetected;
+            using (SplashScreenForm f = new SplashScreenForm())
+                f.ShowDialog();
 
-			PreviewForm.SetCore(Core);
-			ConnectionForm.SetCore(Core);
-			JogForm.SetCore(Core);
+            //build main communication object
+            if ((Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Smoothie)
+                Core = new SmoothieCore(this, PreviewForm);
+            else
+                Core = new GrblCore(this, PreviewForm);
 
-			GitHub.NewVersion += GitHub_NewVersion;
 
-			ColorScheme.CurrentScheme = (ColorScheme.Scheme)Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser); ;
-			RefreshColorSchema(); //include RefreshOverride();
-			RefreshFormTitle();
-		}
+
+            MnGrblConfig.Visible = Core.Type == Firmware.Grbl;
+            MnGrbl.Text = Core.Type == Firmware.Grbl ? "Grbl" : "Smoothie";
+
+            Core.MachineStatusChanged += OnMachineStatus;
+            Core.OnFileLoaded += OnFileLoaded;
+            Core.OnOverrideChange += RefreshOverride;
+            Core.IssueDetected += OnIssueDetected;
+
+            PreviewForm.SetCore(Core);
+            ConnectionForm.SetCore(Core);
+            JogForm.SetCore(Core);
+
+            GitHub.NewVersion += GitHub_NewVersion;
+
+            ColorScheme.CurrentScheme = (ColorScheme.Scheme)Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser); ;
+            RefreshColorSchema(); //include RefreshOverride();
+            RefreshFormTitle();
+        }
 
 		void OnIssueDetected(GrblCore.DetectedIssue issue)
 		{
@@ -220,7 +229,12 @@ namespace LaserGRBL
 		{
 			Version current = typeof(GitHub).Assembly.GetName().Version;
 			string FormTitle = string.Format("LaserGRBL v{0}", current.ToString(3));
-			if (Text != FormTitle) Text = FormTitle;
+
+            if (Core.Type == Firmware.Smoothie)
+                FormTitle = FormTitle + " (for smoothie)";
+
+
+            if (Text != FormTitle) Text = FormTitle;
 		}
 
 		void ExitToolStripMenuItemClick(object sender, EventArgs e)
@@ -338,7 +352,7 @@ namespace LaserGRBL
 
 			Settings.Save();
 
-			if (System.Windows.Forms.MessageBox.Show(Strings.LanguageRequireRestartNow, Strings.LanguageRequireRestart, MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+			if (MessageBox.Show(Strings.LanguageRequireRestartNow, Strings.LanguageRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
 				Application.Restart();
 		}
 
@@ -370,7 +384,7 @@ namespace LaserGRBL
 
 		private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SettingsForm.CreateAndShowDialog();
+			SettingsForm.CreateAndShowDialog(Core);
 		}
 
 		private void openSessionLogToolStripMenuItem_Click(object sender, EventArgs e)

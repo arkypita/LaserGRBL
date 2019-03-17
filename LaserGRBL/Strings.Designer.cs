@@ -405,6 +405,24 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Restart required.
+        /// </summary>
+        internal static string FirmwareRequireRestart {
+            get {
+                return ResourceManager.GetString("FirmwareRequireRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Restart is required to apply Firmware type changes. Restart now?.
+        /// </summary>
+        internal static string FirmwareRequireRestartNow {
+            get {
+                return ResourceManager.GetString("FirmwareRequireRestartNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Custom.
         /// </summary>
         internal static string FormulaCustom {

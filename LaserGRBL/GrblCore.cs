@@ -5,10 +5,13 @@ using System.Globalization;
 
 namespace LaserGRBL
 {
-	/// <summary>
-	/// Description of CommandThread.
-	/// </summary>
-	public class GrblCore
+    public enum Firmware
+    { Grbl, Smoothie }
+
+    /// <summary>
+    /// Description of CommandThread.
+    /// </summary>
+    public class GrblCore
 	{
 		[Serializable]
 		public class ThreadingMode
@@ -308,7 +311,10 @@ namespace LaserGRBL
 			}
 		}
 
-		public GrblConf Configuration
+        public virtual Firmware Type
+        { get { return Firmware.Grbl; } }
+
+        public GrblConf Configuration
 		{
 			get { return (GrblConf)Settings.GetObject("Grbl Configuration", new GrblConf()); }
 			set
