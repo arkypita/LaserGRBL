@@ -36,7 +36,6 @@
             this.MainTabPage = new System.Windows.Forms.TabControl();
             this.TpHardware = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label9 = new System.Windows.Forms.Label();
             this.CBCore = new System.Windows.Forms.ComboBox();
             this.CbThreadingMode = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -60,6 +59,7 @@
             this.CbUnidirectional = new System.Windows.Forms.CheckBox();
             this.CBSupportPWM = new System.Windows.Forms.CheckBox();
             this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
+            this.label9 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.MainTabPage.SuspendLayout();
@@ -116,7 +116,6 @@
             // tableLayoutPanel3
             // 
             resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
-            this.tableLayoutPanel3.Controls.Add(this.label9, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.CBCore, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.CbThreadingMode, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.label4, 2, 2);
@@ -133,12 +132,8 @@
             this.tableLayoutPanel3.Controls.Add(this.label2, 2, 5);
             this.tableLayoutPanel3.Controls.Add(this.CbHardReset, 1, 6);
             this.tableLayoutPanel3.Controls.Add(this.label8, 2, 6);
+            this.tableLayoutPanel3.Controls.Add(this.label9, 2, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
             // 
             // CBCore
             // 
@@ -302,6 +297,11 @@
             this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
             this.BtnModulationInfo.UseAltImage = false;
             this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
             // 
             // SettingsForm
             // 
