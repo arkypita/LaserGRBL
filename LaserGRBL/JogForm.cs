@@ -19,23 +19,38 @@ namespace LaserGRBL
 			UpdateFMax.Enabled = true;
 			UpdateFMax_Tick(null, null);
 
-			move2DControl1.SpeedValue = Math.Min((int)Settings.GetObject("Jog Speed", 1000), move2DControl1.SpeedMaximum);
-			SpeedValueChanged(null, null); //set tooltip
+			TbSpeed.Value = Math.Min((int)Settings.GetObject("Jog Speed", 1000), TbSpeed.Maximum);
+			TbStep.Value = (int)Settings.GetObject("Jog Step", 10);
+
+			TbSpeed_ValueChanged(null, null); //set tooltip
+			TbStep_ValueChanged(null, null); //set tooltip
 		}
 
-		private void SpeedValueChanged(object sender, UserControls.Move2DControl.SpeedEventArgs e)
+		private void OnJogButtonMouseDown(object sender, MouseEventArgs e)
 		{
-			int speed = e == null ? Core.JogSpeed : (int)e.F;
-			//TT.SetToolTip(move2DControl1, string.Format("Speed: {0}", speed));
-			Settings.SetObject("Jog Speed", speed);
-			Core.JogSpeed = speed;
+			Core.Jog((sender as DirectionButton).JogDirection);
+		}
+
+		private void TbSpeed_ValueChanged(object sender, EventArgs e)
+		{
+			TT.SetToolTip(TbSpeed, string.Format("Speed: {0}", TbSpeed.Value));
+			LblSpeed.Text = String.Format("F{0}", TbSpeed.Value);
+			Settings.SetObject("Jog Speed", TbSpeed.Value);
+			Core.JogSpeed = TbSpeed.Value;
 			needsave = true;
 		}
 
-
-		private void Home_Click(object sender, UserControls.Move2DControl.HomeEventArgs e)
+		private void TbStep_ValueChanged(object sender, EventArgs e)
 		{
-			Core.JogSpeed = (int)e.F;
+			TT.SetToolTip(TbStep, string.Format("Step: {0}", TbStep.Value));
+			LblStep.Text = TbStep.Value.ToString();
+			Settings.SetObject("Jog Step", TbStep.Value);
+			Core.JogStep = TbStep.Value;
+			needsave = true;
+		}
+
+		private void BtnHome_Click(object sender, EventArgs e)
+		{
 			Core.JogHome();
 		}
 
@@ -55,18 +70,31 @@ namespace LaserGRBL
 			int curVal = (int)Math.Max(Core.Configuration.MaxRateX, Core.Configuration.MaxRateY);
 			if (oldVal != curVal)
 			{
-				var currentSpeed = move2DControl1.SpeedValue;
-				move2DControl1.SpeedMaximum = curVal;
-				move2DControl1.SpeedValue= Math.Min(currentSpeed, curVal);
+				TbSpeed.Value = Math.Min(TbSpeed.Value, curVal);
+				TbSpeed.Maximum = curVal;
+				TbSpeed.LargeChange = curVal / 10;
+				TbSpeed.SmallChange = curVal / 20;
 				oldVal = curVal;
 			}
 		}
+	}
 
-		private void Move_Click(object sender, UserControls.Move2DControl.MoveEventArgs e)
+	public class DirectionButton : UserControls.ImageButton
+	{
+		private GrblCore.JogDirection mDir = GrblCore.JogDirection.N;
+
+		public GrblCore.JogDirection JogDirection
 		{
-			var move = e.Move;
-			Core.JogSpeed = (int)e.F;
-			Core.Move(move);
+			get { return mDir; }
+			set { mDir = value; }
+		}
+
+		protected override void OnSizeChanged(EventArgs e)
+		{
+			if (Width != Height)
+				Width = Height;
+
+			base.OnSizeChanged(e);
 		}
 	}
 }
