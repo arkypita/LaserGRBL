@@ -175,6 +175,7 @@ namespace LaserGRBL
 		{
             if (keys == Keys.None)
             {
+				mCore.EndJog();
                 EmulateCustomButtonUp();
                 return false;
             }
@@ -230,23 +231,23 @@ namespace LaserGRBL
 				case HotKey.Actions.SetNewZero:
 					mCore.SetNewZero(); break;
 				case HotKey.Actions.JogHome:
-					mCore.JogHome(); break;
+					mCore.BeginJog(GrblCore.JogDirection.Home); break;
 				case HotKey.Actions.JogN:
-					mCore.Jog(GrblCore.JogDirection.N); break;
+					mCore.BeginJog(GrblCore.JogDirection.N); break;
 				case HotKey.Actions.JogNE:
-					mCore.Jog(GrblCore.JogDirection.NE); break;
+					mCore.BeginJog(GrblCore.JogDirection.NE); break;
 				case HotKey.Actions.JogE:
-					mCore.Jog(GrblCore.JogDirection.E); break;
+					mCore.BeginJog(GrblCore.JogDirection.E); break;
 				case HotKey.Actions.JogSE:
-					mCore.Jog(GrblCore.JogDirection.SE); break;
+					mCore.BeginJog(GrblCore.JogDirection.SE); break;
 				case HotKey.Actions.JogS:
-					mCore.Jog(GrblCore.JogDirection.S); break;
+					mCore.BeginJog(GrblCore.JogDirection.S); break;
 				case HotKey.Actions.JogSW:
-					mCore.Jog(GrblCore.JogDirection.SW); break;
+					mCore.BeginJog(GrblCore.JogDirection.SW); break;
 				case HotKey.Actions.JogW:
-					mCore.Jog(GrblCore.JogDirection.W); break;
+					mCore.BeginJog(GrblCore.JogDirection.W); break;
 				case HotKey.Actions.JogNW:
-					mCore.Jog(GrblCore.JogDirection.NW); break;
+					mCore.BeginJog(GrblCore.JogDirection.NW); break;
 				case HotKey.Actions.OverridePowerDefault:
 				case HotKey.Actions.OverridePowerUp:
 				case HotKey.Actions.OverridePowerDown:

@@ -24,14 +24,26 @@ namespace LaserGRBL
 
 			TbSpeed_ValueChanged(null, null); //set tooltip
 			TbStep_ValueChanged(null, null); //set tooltip
+
+            Core.JogStateChange += Core_JogStateChange;
 		}
 
-		private void OnJogButtonMouseDown(object sender, MouseEventArgs e)
+        private void Core_JogStateChange(bool jog)
+        {
+            BtnHome.Visible = !jog;
+        }
+
+        private void OnJogButtonMouseDown(object sender, MouseEventArgs e)
 		{
-			Core.Jog((sender as DirectionButton).JogDirection);
+			Core.BeginJog((sender as DirectionButton).JogDirection);
 		}
 
-		private void TbSpeed_ValueChanged(object sender, EventArgs e)
+        private void OnJogButtonMouseUp(object sender, MouseEventArgs e)
+        {
+            Core.EndJog();
+        }
+
+        private void TbSpeed_ValueChanged(object sender, EventArgs e)
 		{
 			TT.SetToolTip(TbSpeed, string.Format("Speed: {0}", TbSpeed.Value));
 			LblSpeed.Text = String.Format("F{0}", TbSpeed.Value);
@@ -47,11 +59,6 @@ namespace LaserGRBL
 			Settings.SetObject("Jog Step", TbStep.Value);
 			Core.JogStep = TbStep.Value;
 			needsave = true;
-		}
-
-		private void BtnHome_Click(object sender, EventArgs e)
-		{
-			Core.JogHome();
 		}
 
 		bool needsave = false;
@@ -77,7 +84,8 @@ namespace LaserGRBL
 				oldVal = curVal;
 			}
 		}
-	}
+
+    }
 
     public class StepBar : System.Windows.Forms.TrackBar
     {

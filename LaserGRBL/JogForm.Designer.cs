@@ -95,7 +95,7 @@
             this.BtnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnHome.Coloration = System.Drawing.Color.Empty;
             this.BtnHome.Image = ((System.Drawing.Image)(resources.GetObject("BtnHome.Image")));
-            this.BtnHome.JogDirection = LaserGRBL.GrblCore.JogDirection.N;
+            this.BtnHome.JogDirection = LaserGRBL.GrblCore.JogDirection.Home;
             this.BtnHome.Location = new System.Drawing.Point(100, 45);
             this.BtnHome.MaximumSize = new System.Drawing.Size(48, 48);
             this.BtnHome.Name = "BtnHome";
@@ -103,7 +103,8 @@
             this.BtnHome.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
             this.BtnHome.TabIndex = 7;
             this.BtnHome.UseAltImage = false;
-            this.BtnHome.Click += new System.EventHandler(this.BtnHome_Click);
+            this.BtnHome.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.BtnHome.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
             // imageButton1
             // 
@@ -121,6 +122,7 @@
             this.imageButton1.TabIndex = 8;
             this.imageButton1.UseAltImage = false;
             this.imageButton1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.imageButton1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
             // imageButton2
             // 
@@ -138,6 +140,7 @@
             this.imageButton2.TabIndex = 9;
             this.imageButton2.UseAltImage = false;
             this.imageButton2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.imageButton2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
             // imageButton4
             // 
@@ -155,6 +158,7 @@
             this.imageButton4.TabIndex = 11;
             this.imageButton4.UseAltImage = false;
             this.imageButton4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.imageButton4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
             // imageButton6
             // 
@@ -172,6 +176,7 @@
             this.imageButton6.TabIndex = 13;
             this.imageButton6.UseAltImage = false;
             this.imageButton6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.imageButton6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
             // imageButton5
             // 
@@ -189,6 +194,7 @@
             this.imageButton5.TabIndex = 12;
             this.imageButton5.UseAltImage = false;
             this.imageButton5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.imageButton5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
             // imageButton8
             // 
@@ -206,6 +212,7 @@
             this.imageButton8.TabIndex = 15;
             this.imageButton8.UseAltImage = false;
             this.imageButton8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.imageButton8.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
             // imageButton7
             // 
@@ -223,6 +230,7 @@
             this.imageButton7.TabIndex = 14;
             this.imageButton7.UseAltImage = false;
             this.imageButton7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.imageButton7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
             // imageButton3
             // 
@@ -240,6 +248,7 @@
             this.imageButton3.TabIndex = 10;
             this.imageButton3.UseAltImage = false;
             this.imageButton3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.imageButton3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
             // tableLayoutPanel1
             // 
@@ -310,6 +319,7 @@
             // TbStep
             // 
             this.TbStep.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TbStep.LargeChange = 1;
             this.TbStep.Location = new System.Drawing.Point(3, 3);
             this.TbStep.Name = "TbStep";
             this.TbStep.Orientation = System.Windows.Forms.Orientation.Vertical;
