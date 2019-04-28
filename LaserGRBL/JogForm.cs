@@ -20,7 +20,7 @@ namespace LaserGRBL
 			UpdateFMax_Tick(null, null);
 
 			TbSpeed.Value = Math.Min((int)Settings.GetObject("Jog Speed", 1000), TbSpeed.Maximum);
-			TbStep.Value = (int)Settings.GetObject("Jog Step", 10);
+			TbStep.Value = (decimal)Settings.GetObject("Jog Step", 10M);
 
 			TbSpeed_ValueChanged(null, null); //set tooltip
 			TbStep_ValueChanged(null, null); //set tooltip
@@ -79,7 +79,41 @@ namespace LaserGRBL
 		}
 	}
 
-	public class DirectionButton : UserControls.ImageButton
+    public class StepBar : System.Windows.Forms.TrackBar
+    {
+        decimal[] values = { 0.1M, 0.2M, 0.5M, 1, 2, 5, 10, 20, 50, 100, 200 };
+
+        public StepBar()
+        {
+            Minimum = 0;
+            Maximum = values.Length -1;
+            SmallChange = LargeChange = 1;
+        }
+
+        private int CurIndex { get { return base.Value; } set { base.Value = value; } }
+
+        public new decimal Value
+        {
+            get
+            {
+                return values[CurIndex];
+            }
+            set
+            {
+                int found = 0;
+                for (int index = 0; index < values.Length; index++)
+                {
+                    if (Math.Abs(value - values[index]) < Math.Abs(value - values[found]))
+                        found = index;
+                }
+                CurIndex = found;
+            }
+        }
+
+    }
+
+
+    public class DirectionButton : UserControls.ImageButton
 	{
 		private GrblCore.JogDirection mDir = GrblCore.JogDirection.N;
 

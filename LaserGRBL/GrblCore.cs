@@ -1046,29 +1046,20 @@ namespace LaserGRBL
 		{
 			if (JogEnabled)
 			{
-				decimal size = JogStep;
-				decimal speed = JogSpeed;
+				string cmd = SupportJogging ? "$J=G91" : "G0";
 
-				string cmd = SupportJogging ? "$J=G91X{1}Y{0}F{2}" : "G0X{1}Y{0}F{2}";
+                if (dir == JogDirection.NE || dir == JogDirection.E || dir == JogDirection.SE)
+                    cmd += $"X{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+                if (dir == JogDirection.NW || dir == JogDirection.W || dir == JogDirection.SW)
+                    cmd += $"X-{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+                if (dir == JogDirection.NW || dir == JogDirection.N || dir == JogDirection.NE)
+                    cmd += $"Y{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+                if (dir == JogDirection.SW || dir == JogDirection.S || dir == JogDirection.SE)
+                    cmd += $"Y-{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
 
-				if (dir == JogDirection.N)
-					cmd = string.Format(cmd, size, 0, speed);
-				else if (dir == JogDirection.S)
-					cmd = string.Format(cmd, -size, 0, speed);
-				else if (dir == JogDirection.W)
-					cmd = string.Format(cmd, 0, -size, speed);
-				else if (dir == JogDirection.E)
-					cmd = string.Format(cmd, 0, size, speed);
-				else if (dir == JogDirection.NE)
-					cmd = string.Format(cmd, size, size, speed);
-				else if (dir == JogDirection.NW)
-					cmd = string.Format(cmd, size, -size, speed);
-				else if (dir == JogDirection.SE)
-					cmd = string.Format(cmd, -size, size, speed);
-				else if (dir == JogDirection.SW)
-					cmd = string.Format(cmd, -size, -size, speed);
+                cmd += $"F{JogSpeed}";
 
-				if (!SupportJogging)
+                if (!SupportJogging)
 					EnqueueCommand(new GrblCommand("G91"));
 
 				EnqueueCommand(new GrblCommand(cmd));
@@ -1814,7 +1805,7 @@ namespace LaserGRBL
 
 		public int JogSpeed { get; set; }
 
-		public int JogStep { get; set; }
+		public decimal JogStep { get; set; }
 
 		public bool SuspendHK { get; set; }
 
