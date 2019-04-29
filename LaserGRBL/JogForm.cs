@@ -20,7 +20,8 @@ namespace LaserGRBL
 			UpdateFMax_Tick(null, null);
 
 			TbSpeed.Value = Math.Min((int)Settings.GetObject("Jog Speed", 1000), TbSpeed.Maximum);
-			TbStep.Value = (decimal)Settings.GetObject("Jog Step", 10M);
+            
+			TbStep.Value = Convert.ToDecimal(Settings.GetObject("Jog Step", 10M));
 
 			TbSpeed_ValueChanged(null, null); //set tooltip
 			TbStep_ValueChanged(null, null); //set tooltip
