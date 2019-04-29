@@ -64,7 +64,7 @@ namespace LaserGRBL
 		{ Unknown, Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue }
 
 		public enum JogDirection
-		{ None, Home, N, S, W, E, NW, NE, SW, SE }
+		{ None, Abort, Home, N, S, W, E, NW, NE, SW, SE }
 
 		public enum StreamingMode
 		{ Buffered, Synchronous, RepeatOnError }
@@ -1053,19 +1053,27 @@ namespace LaserGRBL
 
 		public void EndJog() //da chiamare su ButtonUp
 		{
-			mContinuosJogDirection = JogDirection.None;
+			
 			if (SupportContinuosJog)
-				SendImmediate(0x85);
+                mContinuosJogDirection = JogDirection.Abort;
+            else
+                mContinuosJogDirection = JogDirection.None;
 		}
 
 		private void ContinueJog() //da chiamare da thread
 		{
-			if (mContinuosJogDirection != JogDirection.None)
-			{
-				if (SupportContinuosJog)
-					DoJogStep(mContinuosJogDirection, 1.0M);
-			}
-		}
+            if (mContinuosJogDirection > JogDirection.Abort)
+            {
+                if (SupportContinuosJog)
+                    DoJogStep(mContinuosJogDirection, 1.0M);
+            }
+            else if (mContinuosJogDirection == JogDirection.Abort)
+            {
+                mContinuosJogDirection = JogDirection.None;
+                if (SupportContinuosJog)
+                    SendImmediate(0x85);
+            }
+        }
 
 		private void DoJogStep(JogDirection dir, decimal step)
 		{
@@ -1534,7 +1542,7 @@ namespace LaserGRBL
 						mRetryQueue = new GrblCommand(pending.Command, pending.RepeatCount + 1); //repeat on error
 				}
 
-				if (mPending.Count == 0 && rline == "ok") //continuo solo se non mi da errore di limite
+				if (mPending.Count == 0)
 					ContinueJog();
 
 				if (InProgram && mQueuePtr.Count == 0 && mPending.Count == 0)
