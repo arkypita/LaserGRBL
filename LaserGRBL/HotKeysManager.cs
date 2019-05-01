@@ -12,8 +12,9 @@ namespace LaserGRBL
 		[NonSerialized] private GrblCore mCore;
         [NonSerialized] private PreviewForm mPreviewForm;
         [NonSerialized] List<int> mCustomButtonPressed;
+		[NonSerialized] private bool mJogKeyRequested = false;
 
-        [Serializable]
+		[Serializable]
 		public class HotKey : ICloneable
 		{
 			public enum Actions
@@ -175,8 +176,11 @@ namespace LaserGRBL
 		{
             if (keys == Keys.None)
             {
-				mCore.EndJog();
-                EmulateCustomButtonUp();
+				if (mJogKeyRequested)
+					mCore.EndJog();
+				mJogKeyRequested = false;
+
+				EmulateCustomButtonUp();
                 return false;
             }
             else
@@ -231,23 +235,23 @@ namespace LaserGRBL
 				case HotKey.Actions.SetNewZero:
 					mCore.SetNewZero(); break;
 				case HotKey.Actions.JogHome:
-					mCore.BeginJog(GrblCore.JogDirection.Home); break;
+					RequestJog(GrblCore.JogDirection.Home); break;
 				case HotKey.Actions.JogN:
-					mCore.BeginJog(GrblCore.JogDirection.N); break;
+					RequestJog(GrblCore.JogDirection.N); break;
 				case HotKey.Actions.JogNE:
-					mCore.BeginJog(GrblCore.JogDirection.NE); break;
+					RequestJog(GrblCore.JogDirection.NE); break;
 				case HotKey.Actions.JogE:
-					mCore.BeginJog(GrblCore.JogDirection.E); break;
+					RequestJog(GrblCore.JogDirection.E); break;
 				case HotKey.Actions.JogSE:
-					mCore.BeginJog(GrblCore.JogDirection.SE); break;
+					RequestJog(GrblCore.JogDirection.SE); break;
 				case HotKey.Actions.JogS:
-					mCore.BeginJog(GrblCore.JogDirection.S); break;
+					RequestJog(GrblCore.JogDirection.S); break;
 				case HotKey.Actions.JogSW:
-					mCore.BeginJog(GrblCore.JogDirection.SW); break;
+					RequestJog(GrblCore.JogDirection.SW); break;
 				case HotKey.Actions.JogW:
-					mCore.BeginJog(GrblCore.JogDirection.W); break;
+					RequestJog(GrblCore.JogDirection.W); break;
 				case HotKey.Actions.JogNW:
-					mCore.BeginJog(GrblCore.JogDirection.NW); break;
+					RequestJog(GrblCore.JogDirection.NW); break;
 				case HotKey.Actions.OverridePowerDefault:
 				case HotKey.Actions.OverridePowerUp:
 				case HotKey.Actions.OverridePowerDown:
@@ -290,6 +294,12 @@ namespace LaserGRBL
 			//CustomButton1 = 2000, CustomButton2 = 2001, CustomButton3 = 2002, CustomButton4 = 2003, CustomButton5 = 2004, CustomButton6 = 2005, CustomButton7 = 2006, CustomButton8 = 2007, CustomButton9 = 2008, CustomButton10 = 2009
 
 			return true;
+		}
+
+		private void RequestJog(GrblCore.JogDirection dir)
+		{
+			mJogKeyRequested = true;
+			mCore.BeginJog(dir);
 		}
         private void EmulateCustomButtonDown(int index)
         {
