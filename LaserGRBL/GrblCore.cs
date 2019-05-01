@@ -64,7 +64,7 @@ namespace LaserGRBL
 		{ Unknown, Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue }
 
 		public enum JogDirection
-		{ None, Abort, Home, N, S, W, E, NW, NE, SW, SE }
+		{ Home, N, S, W, E, NW, NE, SW, SE }
 
 		public enum StreamingMode
 		{ Buffered, Synchronous, RepeatOnError }
@@ -1010,7 +1010,7 @@ namespace LaserGRBL
 		public bool SupportRTO
 		{ get { return GrblVersion != null && GrblVersion >= new GrblVersionInfo(1, 1); } }
 
-		public virtual bool SupportJogging
+		public virtual bool SupportTrueJogging
 		{ get { return GrblVersion != null && GrblVersion >= new GrblVersionInfo(1, 1); } }
 
 		public bool SupportCSV
@@ -1025,109 +1025,103 @@ namespace LaserGRBL
 		{
 			get
 			{
-				if (SupportJogging)
+				if (SupportTrueJogging)
 					return IsOpen && (MachineStatus == GrblCore.MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Jog);
 				else
 					return IsOpen && (MachineStatus == GrblCore.MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Run) && !InProgram;
 			}
 		}
 
-		private bool mSupportContinuosJog = true;
-		private JogDirection mContinuosJogDirection = JogDirection.None;
+		private bool mContinuosJogEnabled = true;
 		public void BeginJog(JogDirection dir) //da chiamare su ButtonDown
 		{
 			if (JogEnabled)
 			{
-				if (SupportContinuosJog)
-				{
-					mContinuosJogDirection = dir;
-					ContinueJog();
-				}
+				if (SupportTrueJogging)
+					DoJogV11(dir);
 				else
-				{
-					mContinuosJogDirection = JogDirection.None;
-					DoJogStep(dir, JogStep);
-				}
+					EmulateJogV09(dir);
 			}
+		}
+
+		private void EmulateJogV09(JogDirection dir) //emulate jog using plane G-Code
+		{
+			if (dir == JogDirection.Home)
+			{
+				EnqueueCommand(new GrblCommand(string.Format("G90")));
+				EnqueueCommand(new GrblCommand(string.Format("G0X0Y0Z0F{0}", JogSpeed)));
+			}
+			else
+			{
+				string cmd = "G0";
+
+				if (dir == JogDirection.NE || dir == JogDirection.E || dir == JogDirection.SE)
+					cmd += $"X{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+				if (dir == JogDirection.NW || dir == JogDirection.W || dir == JogDirection.SW)
+					cmd += $"X-{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+				if (dir == JogDirection.NW || dir == JogDirection.N || dir == JogDirection.NE)
+					cmd += $"Y{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+				if (dir == JogDirection.SW || dir == JogDirection.S || dir == JogDirection.SE)
+					cmd += $"Y-{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+
+				cmd += $"F{JogSpeed}";
+
+				EnqueueCommand(new GrblCommand("G91"));
+				EnqueueCommand(new GrblCommand(cmd));
+				EnqueueCommand(new GrblCommand("G90"));
+			}
+		}
+
+		private void DoJogV11(JogDirection dir)
+		{
+			if (dir == JogDirection.Home)
+			{
+				EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0Z0F{0}", JogSpeed)));
+			}
+			else
+			{
+				if (ContinuosJogEnabled)
+					EnqueueCommand(GetContinuosJogCommandv11(dir));
+				else
+					EnqueueCommand(GetRelativeJogCommandv11(dir));
+			}
+		}
+
+		private GrblCommand GetRelativeJogCommandv11(JogDirection dir)
+		{
+			string cmd = "$J=G91";
+			if (dir == JogDirection.NE || dir == JogDirection.E || dir == JogDirection.SE)
+				cmd += $"X{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+			if (dir == JogDirection.NW || dir == JogDirection.W || dir == JogDirection.SW)
+				cmd += $"X-{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+			if (dir == JogDirection.NW || dir == JogDirection.N || dir == JogDirection.NE)
+				cmd += $"Y{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+			if (dir == JogDirection.SW || dir == JogDirection.S || dir == JogDirection.SE)
+				cmd += $"Y-{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+			cmd += $"F{JogSpeed}";
+			return new GrblCommand(cmd);
+		}
+
+		private GrblCommand GetContinuosJogCommandv11(JogDirection dir)
+		{
+			string cmd = "$J=G53";
+			if (dir == JogDirection.NE || dir == JogDirection.E || dir == JogDirection.SE)
+				cmd += $"X{Configuration.TableWidth.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+			if (dir == JogDirection.NW || dir == JogDirection.W || dir == JogDirection.SW)
+				cmd += $"X{0.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+			if (dir == JogDirection.NW || dir == JogDirection.N || dir == JogDirection.NE)
+				cmd += $"Y{Configuration.TableHeight.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+			if (dir == JogDirection.SW || dir == JogDirection.S || dir == JogDirection.SE)
+				cmd += $"Y{0.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+			cmd += $"F{JogSpeed}";
+			return new GrblCommand(cmd);
 		}
 
 		public void EndJog() //da chiamare su ButtonUp
 		{
-			
-			if (SupportContinuosJog)
-                mContinuosJogDirection = JogDirection.Abort;
-            else
-                mContinuosJogDirection = JogDirection.None;
-		}
-
-		private void ContinueJog() //da chiamare da thread
-		{
-            if (mContinuosJogDirection > JogDirection.Abort)
-            {
-                if (SupportContinuosJog)
-                    DoJogStep(mContinuosJogDirection, 1.0M);
-            }
-            else if (mContinuosJogDirection == JogDirection.Abort)
-            {
-                mContinuosJogDirection = JogDirection.None;
-                if (SupportContinuosJog)
-                    SendImmediate(0x85);
-            }
-        }
-
-		private void DoJogStep(JogDirection dir, decimal step)
-		{
-			if (dir == JogDirection.Home)
-			{
-				if (SupportJogging)
-				{
-					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0Z0F{0}", JogSpeed)));
-				}
-				else
-				{
-					EnqueueCommand(new GrblCommand(string.Format("G90")));
-					EnqueueCommand(new GrblCommand(string.Format("G0X0Y0Z0F{0}", JogSpeed)));
-				}
-			}
-			else
-			{
-				if (SupportJogging)
-				{
-					string cmd = "$J=G91";
-
-					if (dir == JogDirection.NE || dir == JogDirection.E || dir == JogDirection.SE)
-						cmd += $"X{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-					if (dir == JogDirection.NW || dir == JogDirection.W || dir == JogDirection.SW)
-						cmd += $"X-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-					if (dir == JogDirection.NW || dir == JogDirection.N || dir == JogDirection.NE)
-						cmd += $"Y{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-					if (dir == JogDirection.SW || dir == JogDirection.S || dir == JogDirection.SE)
-						cmd += $"Y-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-
-					cmd += $"F{JogSpeed}";
-
-					EnqueueCommand(new GrblCommand(cmd));
-				}
-				else
-				{
-					string cmd = "G0";
-
-					if (dir == JogDirection.NE || dir == JogDirection.E || dir == JogDirection.SE)
-						cmd += $"X{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-					if (dir == JogDirection.NW || dir == JogDirection.W || dir == JogDirection.SW)
-						cmd += $"X-{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-					if (dir == JogDirection.NW || dir == JogDirection.N || dir == JogDirection.NE)
-						cmd += $"Y{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-					if (dir == JogDirection.SW || dir == JogDirection.S || dir == JogDirection.SE)
-						cmd += $"Y-{JogStep.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-
-					cmd += $"F{JogSpeed}";
-
-					EnqueueCommand(new GrblCommand("G91"));
-					EnqueueCommand(new GrblCommand(cmd));
-					EnqueueCommand(new GrblCommand("G90"));
-				}
-			}
+			if (JogEnabled)
+				if (ContinuosJogEnabled)
+					SendImmediate(0x85);
 		}
 
 		private void StartTX()
@@ -1542,9 +1536,6 @@ namespace LaserGRBL
 						mRetryQueue = new GrblCommand(pending.Command, pending.RepeatCount + 1); //repeat on error
 				}
 
-				if (mPending.Count == 0)
-					ContinueJog();
-
 				if (InProgram && mQueuePtr.Count == 0 && mPending.Count == 0)
 					OnProgramEnd();
 			}
@@ -1853,15 +1844,15 @@ namespace LaserGRBL
 		public int JogSpeed { get; set; }
 		public decimal JogStep { get; set; }
 
-		public bool SupportContinuosJog
+		public bool ContinuosJogEnabled
 		{
-			get { return SupportJogging && mSupportContinuosJog; }
+			get { return SupportTrueJogging && mContinuosJogEnabled; }
 			set
 			{
 				if (value == false)
 					EndJog();
 
-				mSupportContinuosJog = value;
+				mContinuosJogEnabled = value;
 			}
 		}
 		

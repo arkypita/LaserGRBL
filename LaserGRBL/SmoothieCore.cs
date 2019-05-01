@@ -27,7 +27,7 @@ namespace LaserGRBL
             SetFS(ParseFloat(fs[0]), ParseFloat(fs[1]));
         }
 
-        public override bool SupportJogging => false;
+        public override bool SupportTrueJogging => false;
 
         //public override void SendImmediate(byte b, bool mute = false)
         //{

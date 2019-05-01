@@ -19,7 +19,7 @@ namespace LaserGRBL
 			UpdateFMax.Enabled = true;
 			UpdateFMax_Tick(null, null);
 
-			TbSpeed.Value = Math.Min((int)Settings.GetObject("Jog Speed", 1000), TbSpeed.Maximum);
+			TbSpeed.Value = Math.Max(Math.Min((int)Settings.GetObject("Jog Speed", 1000), TbSpeed.Maximum), TbSpeed.Minimum);
             
 			TbStep.Value = Convert.ToDecimal(Settings.GetObject("Jog Step", 10M));
 
