@@ -64,7 +64,7 @@ namespace LaserGRBL
 		{ Unknown, Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue }
 
 		public enum JogDirection
-		{ Home, N, S, W, E, NW, NE, SW, SE }
+		{ None, Abort, Home, N, S, W, E, NW, NE, SW, SE }
 
 		public enum StreamingMode
 		{ Buffered, Synchronous, RepeatOnError }
@@ -208,6 +208,7 @@ namespace LaserGRBL
 		private GPoint mWCO;
 		private int mGrblBlocks = -1;
 		private int mGrblBuffer = -1;
+		private JogDirection mPrenotedJogDirection = JogDirection.None;
 
 		private TimeProjection mTP = new TimeProjection();
 
@@ -245,7 +246,7 @@ namespace LaserGRBL
 		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform)
 		{
 			SetStatus(MacStatus.Disconnected);
-
+			ContinuosJogEnabled = true;
 			syncro = syncroObject;
 			com = new ComWrapper.UsbSerial();
 
@@ -1032,7 +1033,6 @@ namespace LaserGRBL
 			}
 		}
 
-		private bool mContinuosJogEnabled = true;
 		public void BeginJog(JogDirection dir) //da chiamare su ButtonDown
 		{
 			if (JogEnabled)
@@ -1074,17 +1074,22 @@ namespace LaserGRBL
 
 		private void DoJogV11(JogDirection dir)
 		{
-			if (dir == JogDirection.Home)
-			{
-				EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0Z0F{0}", JogSpeed)));
-			}
-			else
-			{
-				if (ContinuosJogEnabled)
-					EnqueueCommand(GetContinuosJogCommandv11(dir));
-				else
-					EnqueueCommand(GetRelativeJogCommandv11(dir));
-			}
+			mPrenotedJogDirection = dir;
+
+			//if (mPending.Count == 0) //do not enqueue a new jog if prev is not ack
+			//{
+			//	if (dir == JogDirection.Home)
+			//	{
+			//		EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0Z0F{0}", JogSpeed)));
+			//	}
+			//	else
+			//	{
+			//		if (ContinuosJogEnabled)
+			//			EnqueueCommand(GetContinuosJogCommandv11(dir));
+			//		else
+			//			EnqueueCommand(GetRelativeJogCommandv11(dir));
+			//	}
+			//}
 		}
 
 		private GrblCommand GetRelativeJogCommandv11(JogDirection dir)
@@ -1117,12 +1122,52 @@ namespace LaserGRBL
 			return new GrblCommand(cmd);
 		}
 
-		public void EndJog() //da chiamare su ButtonUp
+		public void EndJogV11() //da chiamare su ButtonUp
 		{
-			if (JogEnabled)
-				if (ContinuosJogEnabled)
-					SendImmediate(0x85);
+			mPrenotedJogDirection = JogDirection.Abort;
+
+			//if (JogEnabled)
+			//{
+			//	if (ContinuosJogEnabled)
+			//	{
+			//		Tools.SimpleCrono crono = new Tools.SimpleCrono();
+			//		crono.Start();
+
+			//		//wait until no command in queue or disconnect or timeout
+			//		while (mPending.Count > 0 && MachineStatus != MacStatus.Disconnected && crono.ElapsedTime < TimeSpan.FromMilliseconds(1000)) 
+			//			System.Threading.Thread.Sleep(1);
+			//		System.Diagnostics.Debug.WriteLine(crono.ElapsedTime.TotalMilliseconds);
+
+			//		SendImmediate(0x85);
+			//	}
+			//}
 		}
+
+		private void PushJogCommand()
+		{
+			if (SupportTrueJogging && mPrenotedJogDirection != JogDirection.None && mPending.Count == 0)
+			{
+				if (mPrenotedJogDirection == JogDirection.Abort)
+				{
+					if (ContinuosJogEnabled)
+						SendImmediate(0x85);
+				}
+				else if (mPrenotedJogDirection == JogDirection.Home)
+				{
+					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0Z0F{0}", JogSpeed)));
+				}
+				else
+				{
+					if (ContinuosJogEnabled)
+						EnqueueCommand(GetContinuosJogCommandv11(mPrenotedJogDirection));
+					else
+						EnqueueCommand(GetRelativeJogCommandv11(mPrenotedJogDirection));
+				}
+
+				mPrenotedJogDirection = JogDirection.None;
+			}
+		}
+
 
 		private void StartTX()
 		{
@@ -1148,8 +1193,13 @@ namespace LaserGRBL
 					if (MachineStatus == MacStatus.Connecting && Tools.HiResTimer.TotalMilliseconds - connectStart > 10000)
 						OnConnectTimeout();
 
-					if (!TX.MustExitTH() && CanSend())
-						SendLine();
+					if (!TX.MustExitTH())
+					{
+						PushJogCommand();
+
+						if (CanSend())
+							SendLine();
+					}
 
 					if (QueryTimer.Expired)
 						QueryPosition();
@@ -1844,19 +1894,7 @@ namespace LaserGRBL
 		public int JogSpeed { get; set; }
 		public decimal JogStep { get; set; }
 
-		public bool ContinuosJogEnabled
-		{
-			get { return SupportTrueJogging && mContinuosJogEnabled; }
-			set
-			{
-				if (value == false)
-					EndJog();
-
-				mContinuosJogEnabled = value;
-			}
-		}
-		
-
+		public bool ContinuosJogEnabled { get; set; }
 
 		public bool SuspendHK { get; set; }
 

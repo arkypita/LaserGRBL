@@ -41,7 +41,7 @@ namespace LaserGRBL
 
         private void OnJogButtonMouseUp(object sender, MouseEventArgs e)
         {
-            Core.EndJog();
+            Core.EndJogV11();
         }
 
         private void TbSpeed_ValueChanged(object sender, EventArgs e)

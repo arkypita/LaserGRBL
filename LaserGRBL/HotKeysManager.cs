@@ -177,7 +177,7 @@ namespace LaserGRBL
             if (keys == Keys.None)
             {
 				if (mJogKeyRequested)
-					mCore.EndJog();
+					mCore.EndJogV11();
 				mJogKeyRequested = false;
 
 				EmulateCustomButtonUp();
