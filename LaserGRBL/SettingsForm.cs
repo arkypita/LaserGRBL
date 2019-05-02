@@ -12,6 +12,7 @@ namespace LaserGRBL
 	public partial class SettingsForm : Form
 	{
         private GrblCore Core;
+        public static event EventHandler SettingsChanged;
 
 		public SettingsForm(GrblCore core)
 		{
@@ -37,7 +38,10 @@ namespace LaserGRBL
 			CbIssueDetector.Checked = !(bool)Settings.GetObject("Do not show Issue Detector", false);
 			CbSoftReset.Checked = (bool)Settings.GetObject("Reset Grbl On Connect", true);
 			CbHardReset.Checked = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
-		}
+
+            CbContinuosJog.Checked = (bool)Settings.GetObject("Enable Continuous Jog", false);
+            CbEnableZJog.Checked = (bool)Settings.GetObject("Enale Z Jog Control", false);
+        }
 
         private void InitCoreCB()
         {
@@ -94,7 +98,13 @@ namespace LaserGRBL
 			Settings.SetObject("Do not show Issue Detector", !CbIssueDetector.Checked);
 			Settings.SetObject("Reset Grbl On Connect", CbSoftReset.Checked);
 			Settings.SetObject("HardReset Grbl On Connect", CbHardReset.Checked);
+            Settings.SetObject("Enable Continuous Jog", CbContinuosJog.Checked);
+            Settings.SetObject("Enale Z Jog Control", CbEnableZJog.Checked);
 			Settings.Save();
+
+            if (SettingsChanged != null)
+                SettingsChanged(this, null);
+
             Close();
 
             if (Core.Type != (Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) && MessageBox.Show(Strings.FirmwareRequireRestartNow, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)

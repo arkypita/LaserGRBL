@@ -382,7 +382,7 @@
     <value>BtnStreamingMode</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.10.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.11.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -484,7 +484,7 @@
     <value>BtnProtocol</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.10.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.11.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -558,7 +558,7 @@ Set slower values if you are experiencing issues.</value>
     <value>BtnThreadingModel</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.10.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.11.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1025,7 +1025,7 @@ If not, please disable PWM support.</value>
     <value>BtnModulationInfo</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.10.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.11.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -1089,6 +1089,210 @@ If not, please disable PWM support.</value>
   </data>
   <data name="&gt;&gt;TpRasterImport.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="tableLayoutPanel5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanel5.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tableLayoutPanel5.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
+    <value>Single</value>
+  </data>
+  <data name="tableLayoutPanel5.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>179, 4</value>
+  </data>
+  <data name="label10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="label10.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>690, 0</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>685, 91</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Without "Continuous Jog" when jog button is pressed LaserGRBL send Jog request with settled speed and movement; and the jog is fully executed to the final position.
+If you enable "Continuous Jog" jogging is sent with mouse-down and aborted/interrupted on mouse-up, so you can do approximative positioning but in a very comfortable way.
+
+NOTE: "Continuous Jog" only work with Grbl v1.1 or later, and require table size is correctily configured in Grbl Configuration (Menu "Grbl" -&gt; "Grbl Configuration" $130, $131, $132)</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>179, 102</value>
+  </data>
+  <data name="label11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="label11.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>690, 0</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>566, 13</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>LaserGRBL is not designed to support Z axis, but if you have a 3axis hardware maybe you could find this option usefull.</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="CbEnableZJog.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CbEnableZJog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CbEnableZJog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 102</value>
+  </data>
+  <data name="CbEnableZJog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 17</value>
+  </data>
+  <data name="CbEnableZJog.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Show Z up/down control</value>
+  </data>
+  <data name="&gt;&gt;CbEnableZJog.Name" xml:space="preserve">
+    <value>CbEnableZJog</value>
+  </data>
+  <data name="&gt;&gt;CbEnableZJog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CbEnableZJog.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;CbEnableZJog.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="CbContinuosJog.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CbContinuosJog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CbContinuosJog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 4</value>
+  </data>
+  <data name="CbContinuosJog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 17</value>
+  </data>
+  <data name="CbContinuosJog.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>Continuos Jog</value>
+  </data>
+  <data name="&gt;&gt;CbContinuosJog.Name" xml:space="preserve">
+    <value>CbContinuosJog</value>
+  </data>
+  <data name="&gt;&gt;CbContinuosJog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CbContinuosJog.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;CbContinuosJog.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="tableLayoutPanel5.RowCount" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>875, 299</value>
+  </data>
+  <data name="tableLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel5.Name" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel5.Parent" xml:space="preserve">
+    <value>TpJogControl</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel5.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbEnableZJog" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CbContinuosJog" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="TpJogControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="TpJogControl.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TpJogControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>881, 305</value>
+  </data>
+  <data name="TpJogControl.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Jog control</value>
+  </data>
+  <data name="&gt;&gt;TpJogControl.Name" xml:space="preserve">
+    <value>TpJogControl</value>
+  </data>
+  <data name="&gt;&gt;TpJogControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TpJogControl.Parent" xml:space="preserve">
+    <value>MainTabPage</value>
+  </data>
+  <data name="&gt;&gt;TpJogControl.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="MainTabPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

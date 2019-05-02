@@ -32,33 +32,43 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JogForm));
             this.tlp = new System.Windows.Forms.TableLayoutPanel();
             this.BtnHome = new LaserGRBL.DirectionButton();
-            this.imageButton1 = new LaserGRBL.DirectionButton();
-            this.imageButton2 = new LaserGRBL.DirectionButton();
-            this.imageButton4 = new LaserGRBL.DirectionButton();
-            this.imageButton6 = new LaserGRBL.DirectionButton();
-            this.imageButton5 = new LaserGRBL.DirectionButton();
-            this.imageButton8 = new LaserGRBL.DirectionButton();
-            this.imageButton7 = new LaserGRBL.DirectionButton();
-            this.imageButton3 = new LaserGRBL.DirectionButton();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.BtnW = new LaserGRBL.DirectionButton();
+            this.BtnN = new LaserGRBL.DirectionButton();
+            this.BtnE = new LaserGRBL.DirectionButton();
+            this.BtnNW = new LaserGRBL.DirectionButton();
+            this.BtnNE = new LaserGRBL.DirectionButton();
+            this.BtnS = new LaserGRBL.DirectionButton();
+            this.BtnSW = new LaserGRBL.DirectionButton();
+            this.BtnSE = new LaserGRBL.DirectionButton();
+            this.TlpSpeedControl = new System.Windows.Forms.TableLayoutPanel();
             this.TbSpeed = new System.Windows.Forms.TrackBar();
             this.LblSpeed = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.TlpStepControl = new System.Windows.Forms.TableLayoutPanel();
             this.TbStep = new LaserGRBL.StepBar();
             this.LblStep = new System.Windows.Forms.Label();
+            this.TlpZControl = new System.Windows.Forms.TableLayoutPanel();
+            this.BtnZup01 = new LaserGRBL.DirectionStepButton();
+            this.BtnZup1 = new LaserGRBL.DirectionStepButton();
+            this.BtnZup10 = new LaserGRBL.DirectionStepButton();
+            this.BtnZdown10 = new LaserGRBL.DirectionStepButton();
+            this.BtnZdown1 = new LaserGRBL.DirectionStepButton();
+            this.BtnZdown01 = new LaserGRBL.DirectionStepButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.TT = new System.Windows.Forms.ToolTip(this.components);
             this.UpdateFMax = new System.Windows.Forms.Timer(this.components);
             this.tlp.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.TlpSpeedControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TbSpeed)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.TlpStepControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TbStep)).BeginInit();
+            this.TlpZControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlp
             // 
-            this.tlp.ColumnCount = 7;
+            this.tlp.ColumnCount = 8;
             this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -66,16 +76,17 @@
             this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlp.Controls.Add(this.BtnHome, 3, 2);
-            this.tlp.Controls.Add(this.imageButton1, 2, 2);
-            this.tlp.Controls.Add(this.imageButton2, 3, 1);
-            this.tlp.Controls.Add(this.imageButton4, 4, 2);
-            this.tlp.Controls.Add(this.imageButton6, 2, 1);
-            this.tlp.Controls.Add(this.imageButton5, 4, 1);
-            this.tlp.Controls.Add(this.imageButton8, 3, 3);
-            this.tlp.Controls.Add(this.imageButton7, 2, 3);
-            this.tlp.Controls.Add(this.imageButton3, 4, 3);
-            this.tlp.Controls.Add(this.tableLayoutPanel1, 1, 1);
-            this.tlp.Controls.Add(this.tableLayoutPanel2, 5, 1);
+            this.tlp.Controls.Add(this.BtnW, 2, 2);
+            this.tlp.Controls.Add(this.BtnN, 3, 1);
+            this.tlp.Controls.Add(this.BtnE, 4, 2);
+            this.tlp.Controls.Add(this.BtnNW, 2, 1);
+            this.tlp.Controls.Add(this.BtnNE, 4, 1);
+            this.tlp.Controls.Add(this.BtnS, 3, 3);
+            this.tlp.Controls.Add(this.BtnSW, 2, 3);
+            this.tlp.Controls.Add(this.BtnSE, 4, 3);
+            this.tlp.Controls.Add(this.TlpSpeedControl, 1, 1);
+            this.tlp.Controls.Add(this.TlpStepControl, 6, 1);
+            this.tlp.Controls.Add(this.TlpZControl, 5, 1);
             this.tlp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp.Location = new System.Drawing.Point(0, 0);
             this.tlp.Name = "tlp";
@@ -85,7 +96,7 @@
             this.tlp.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlp.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp.Size = new System.Drawing.Size(234, 125);
+            this.tlp.Size = new System.Drawing.Size(267, 125);
             this.tlp.TabIndex = 0;
             // 
             // BtnHome
@@ -96,178 +107,187 @@
             this.BtnHome.Coloration = System.Drawing.Color.Empty;
             this.BtnHome.Image = ((System.Drawing.Image)(resources.GetObject("BtnHome.Image")));
             this.BtnHome.JogDirection = LaserGRBL.GrblCore.JogDirection.Home;
-            this.BtnHome.Location = new System.Drawing.Point(100, 45);
+            this.BtnHome.Location = new System.Drawing.Point(107, 45);
             this.BtnHome.MaximumSize = new System.Drawing.Size(48, 48);
             this.BtnHome.Name = "BtnHome";
             this.BtnHome.Size = new System.Drawing.Size(33, 33);
             this.BtnHome.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
             this.BtnHome.TabIndex = 7;
+            this.BtnHome.TabStop = false;
             this.BtnHome.UseAltImage = false;
             this.BtnHome.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
             this.BtnHome.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
-            // imageButton1
+            // BtnW
             // 
-            this.imageButton1.AltImage = null;
-            this.imageButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.imageButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.imageButton1.Coloration = System.Drawing.Color.Empty;
-            this.imageButton1.Image = ((System.Drawing.Image)(resources.GetObject("imageButton1.Image")));
-            this.imageButton1.JogDirection = LaserGRBL.GrblCore.JogDirection.W;
-            this.imageButton1.Location = new System.Drawing.Point(59, 45);
-            this.imageButton1.MaximumSize = new System.Drawing.Size(48, 48);
-            this.imageButton1.Name = "imageButton1";
-            this.imageButton1.Size = new System.Drawing.Size(33, 33);
-            this.imageButton1.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
-            this.imageButton1.TabIndex = 8;
-            this.imageButton1.UseAltImage = false;
-            this.imageButton1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
-            this.imageButton1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
+            this.BtnW.AltImage = null;
+            this.BtnW.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnW.Coloration = System.Drawing.Color.Empty;
+            this.BtnW.Image = ((System.Drawing.Image)(resources.GetObject("BtnW.Image")));
+            this.BtnW.JogDirection = LaserGRBL.GrblCore.JogDirection.W;
+            this.BtnW.Location = new System.Drawing.Point(66, 45);
+            this.BtnW.MaximumSize = new System.Drawing.Size(48, 48);
+            this.BtnW.Name = "BtnW";
+            this.BtnW.Size = new System.Drawing.Size(33, 33);
+            this.BtnW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
+            this.BtnW.TabIndex = 8;
+            this.BtnW.TabStop = false;
+            this.BtnW.UseAltImage = false;
+            this.BtnW.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.BtnW.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
-            // imageButton2
+            // BtnN
             // 
-            this.imageButton2.AltImage = null;
-            this.imageButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.imageButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.imageButton2.Coloration = System.Drawing.Color.Empty;
-            this.imageButton2.Image = ((System.Drawing.Image)(resources.GetObject("imageButton2.Image")));
-            this.imageButton2.JogDirection = LaserGRBL.GrblCore.JogDirection.N;
-            this.imageButton2.Location = new System.Drawing.Point(100, 6);
-            this.imageButton2.MaximumSize = new System.Drawing.Size(48, 48);
-            this.imageButton2.Name = "imageButton2";
-            this.imageButton2.Size = new System.Drawing.Size(33, 33);
-            this.imageButton2.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
-            this.imageButton2.TabIndex = 9;
-            this.imageButton2.UseAltImage = false;
-            this.imageButton2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
-            this.imageButton2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
+            this.BtnN.AltImage = null;
+            this.BtnN.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnN.Coloration = System.Drawing.Color.Empty;
+            this.BtnN.Image = ((System.Drawing.Image)(resources.GetObject("BtnN.Image")));
+            this.BtnN.JogDirection = LaserGRBL.GrblCore.JogDirection.N;
+            this.BtnN.Location = new System.Drawing.Point(107, 6);
+            this.BtnN.MaximumSize = new System.Drawing.Size(48, 48);
+            this.BtnN.Name = "BtnN";
+            this.BtnN.Size = new System.Drawing.Size(33, 33);
+            this.BtnN.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
+            this.BtnN.TabIndex = 9;
+            this.BtnN.TabStop = false;
+            this.BtnN.UseAltImage = false;
+            this.BtnN.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.BtnN.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
-            // imageButton4
+            // BtnE
             // 
-            this.imageButton4.AltImage = null;
-            this.imageButton4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.imageButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.imageButton4.Coloration = System.Drawing.Color.Empty;
-            this.imageButton4.Image = ((System.Drawing.Image)(resources.GetObject("imageButton4.Image")));
-            this.imageButton4.JogDirection = LaserGRBL.GrblCore.JogDirection.E;
-            this.imageButton4.Location = new System.Drawing.Point(141, 45);
-            this.imageButton4.MaximumSize = new System.Drawing.Size(48, 48);
-            this.imageButton4.Name = "imageButton4";
-            this.imageButton4.Size = new System.Drawing.Size(33, 33);
-            this.imageButton4.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
-            this.imageButton4.TabIndex = 11;
-            this.imageButton4.UseAltImage = false;
-            this.imageButton4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
-            this.imageButton4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
+            this.BtnE.AltImage = null;
+            this.BtnE.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnE.Coloration = System.Drawing.Color.Empty;
+            this.BtnE.Image = ((System.Drawing.Image)(resources.GetObject("BtnE.Image")));
+            this.BtnE.JogDirection = LaserGRBL.GrblCore.JogDirection.E;
+            this.BtnE.Location = new System.Drawing.Point(148, 45);
+            this.BtnE.MaximumSize = new System.Drawing.Size(48, 48);
+            this.BtnE.Name = "BtnE";
+            this.BtnE.Size = new System.Drawing.Size(33, 33);
+            this.BtnE.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
+            this.BtnE.TabIndex = 11;
+            this.BtnE.TabStop = false;
+            this.BtnE.UseAltImage = false;
+            this.BtnE.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.BtnE.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
-            // imageButton6
+            // BtnNW
             // 
-            this.imageButton6.AltImage = null;
-            this.imageButton6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.imageButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.imageButton6.Coloration = System.Drawing.Color.Empty;
-            this.imageButton6.Image = ((System.Drawing.Image)(resources.GetObject("imageButton6.Image")));
-            this.imageButton6.JogDirection = LaserGRBL.GrblCore.JogDirection.NW;
-            this.imageButton6.Location = new System.Drawing.Point(59, 6);
-            this.imageButton6.MaximumSize = new System.Drawing.Size(48, 48);
-            this.imageButton6.Name = "imageButton6";
-            this.imageButton6.Size = new System.Drawing.Size(33, 33);
-            this.imageButton6.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
-            this.imageButton6.TabIndex = 13;
-            this.imageButton6.UseAltImage = false;
-            this.imageButton6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
-            this.imageButton6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
+            this.BtnNW.AltImage = null;
+            this.BtnNW.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnNW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnNW.Coloration = System.Drawing.Color.Empty;
+            this.BtnNW.Image = ((System.Drawing.Image)(resources.GetObject("BtnNW.Image")));
+            this.BtnNW.JogDirection = LaserGRBL.GrblCore.JogDirection.NW;
+            this.BtnNW.Location = new System.Drawing.Point(66, 6);
+            this.BtnNW.MaximumSize = new System.Drawing.Size(48, 48);
+            this.BtnNW.Name = "BtnNW";
+            this.BtnNW.Size = new System.Drawing.Size(33, 33);
+            this.BtnNW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
+            this.BtnNW.TabIndex = 13;
+            this.BtnNW.TabStop = false;
+            this.BtnNW.UseAltImage = false;
+            this.BtnNW.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.BtnNW.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
-            // imageButton5
+            // BtnNE
             // 
-            this.imageButton5.AltImage = null;
-            this.imageButton5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.imageButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.imageButton5.Coloration = System.Drawing.Color.Empty;
-            this.imageButton5.Image = ((System.Drawing.Image)(resources.GetObject("imageButton5.Image")));
-            this.imageButton5.JogDirection = LaserGRBL.GrblCore.JogDirection.NE;
-            this.imageButton5.Location = new System.Drawing.Point(141, 6);
-            this.imageButton5.MaximumSize = new System.Drawing.Size(48, 48);
-            this.imageButton5.Name = "imageButton5";
-            this.imageButton5.Size = new System.Drawing.Size(33, 33);
-            this.imageButton5.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
-            this.imageButton5.TabIndex = 12;
-            this.imageButton5.UseAltImage = false;
-            this.imageButton5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
-            this.imageButton5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
+            this.BtnNE.AltImage = null;
+            this.BtnNE.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnNE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnNE.Coloration = System.Drawing.Color.Empty;
+            this.BtnNE.Image = ((System.Drawing.Image)(resources.GetObject("BtnNE.Image")));
+            this.BtnNE.JogDirection = LaserGRBL.GrblCore.JogDirection.NE;
+            this.BtnNE.Location = new System.Drawing.Point(148, 6);
+            this.BtnNE.MaximumSize = new System.Drawing.Size(48, 48);
+            this.BtnNE.Name = "BtnNE";
+            this.BtnNE.Size = new System.Drawing.Size(33, 33);
+            this.BtnNE.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
+            this.BtnNE.TabIndex = 12;
+            this.BtnNE.TabStop = false;
+            this.BtnNE.UseAltImage = false;
+            this.BtnNE.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.BtnNE.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
-            // imageButton8
+            // BtnS
             // 
-            this.imageButton8.AltImage = null;
-            this.imageButton8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.imageButton8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.imageButton8.Coloration = System.Drawing.Color.Empty;
-            this.imageButton8.Image = ((System.Drawing.Image)(resources.GetObject("imageButton8.Image")));
-            this.imageButton8.JogDirection = LaserGRBL.GrblCore.JogDirection.S;
-            this.imageButton8.Location = new System.Drawing.Point(99, 84);
-            this.imageButton8.MaximumSize = new System.Drawing.Size(48, 48);
-            this.imageButton8.Name = "imageButton8";
-            this.imageButton8.Size = new System.Drawing.Size(35, 35);
-            this.imageButton8.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
-            this.imageButton8.TabIndex = 15;
-            this.imageButton8.UseAltImage = false;
-            this.imageButton8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
-            this.imageButton8.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
+            this.BtnS.AltImage = null;
+            this.BtnS.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnS.Coloration = System.Drawing.Color.Empty;
+            this.BtnS.Image = ((System.Drawing.Image)(resources.GetObject("BtnS.Image")));
+            this.BtnS.JogDirection = LaserGRBL.GrblCore.JogDirection.S;
+            this.BtnS.Location = new System.Drawing.Point(106, 84);
+            this.BtnS.MaximumSize = new System.Drawing.Size(48, 48);
+            this.BtnS.Name = "BtnS";
+            this.BtnS.Size = new System.Drawing.Size(35, 35);
+            this.BtnS.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
+            this.BtnS.TabIndex = 15;
+            this.BtnS.TabStop = false;
+            this.BtnS.UseAltImage = false;
+            this.BtnS.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.BtnS.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
-            // imageButton7
+            // BtnSW
             // 
-            this.imageButton7.AltImage = null;
-            this.imageButton7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.imageButton7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.imageButton7.Coloration = System.Drawing.Color.Empty;
-            this.imageButton7.Image = ((System.Drawing.Image)(resources.GetObject("imageButton7.Image")));
-            this.imageButton7.JogDirection = LaserGRBL.GrblCore.JogDirection.SW;
-            this.imageButton7.Location = new System.Drawing.Point(58, 84);
-            this.imageButton7.MaximumSize = new System.Drawing.Size(48, 48);
-            this.imageButton7.Name = "imageButton7";
-            this.imageButton7.Size = new System.Drawing.Size(35, 35);
-            this.imageButton7.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
-            this.imageButton7.TabIndex = 14;
-            this.imageButton7.UseAltImage = false;
-            this.imageButton7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
-            this.imageButton7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
+            this.BtnSW.AltImage = null;
+            this.BtnSW.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnSW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnSW.Coloration = System.Drawing.Color.Empty;
+            this.BtnSW.Image = ((System.Drawing.Image)(resources.GetObject("BtnSW.Image")));
+            this.BtnSW.JogDirection = LaserGRBL.GrblCore.JogDirection.SW;
+            this.BtnSW.Location = new System.Drawing.Point(65, 84);
+            this.BtnSW.MaximumSize = new System.Drawing.Size(48, 48);
+            this.BtnSW.Name = "BtnSW";
+            this.BtnSW.Size = new System.Drawing.Size(35, 35);
+            this.BtnSW.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
+            this.BtnSW.TabIndex = 14;
+            this.BtnSW.TabStop = false;
+            this.BtnSW.UseAltImage = false;
+            this.BtnSW.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.BtnSW.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
-            // imageButton3
+            // BtnSE
             // 
-            this.imageButton3.AltImage = null;
-            this.imageButton3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.imageButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.imageButton3.Coloration = System.Drawing.Color.Empty;
-            this.imageButton3.Image = ((System.Drawing.Image)(resources.GetObject("imageButton3.Image")));
-            this.imageButton3.JogDirection = LaserGRBL.GrblCore.JogDirection.SE;
-            this.imageButton3.Location = new System.Drawing.Point(140, 84);
-            this.imageButton3.MaximumSize = new System.Drawing.Size(48, 48);
-            this.imageButton3.Name = "imageButton3";
-            this.imageButton3.Size = new System.Drawing.Size(35, 35);
-            this.imageButton3.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
-            this.imageButton3.TabIndex = 10;
-            this.imageButton3.UseAltImage = false;
-            this.imageButton3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
-            this.imageButton3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
+            this.BtnSE.AltImage = null;
+            this.BtnSE.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnSE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnSE.Coloration = System.Drawing.Color.Empty;
+            this.BtnSE.Image = ((System.Drawing.Image)(resources.GetObject("BtnSE.Image")));
+            this.BtnSE.JogDirection = LaserGRBL.GrblCore.JogDirection.SE;
+            this.BtnSE.Location = new System.Drawing.Point(147, 84);
+            this.BtnSE.MaximumSize = new System.Drawing.Size(48, 48);
+            this.BtnSE.Name = "BtnSE";
+            this.BtnSE.Size = new System.Drawing.Size(35, 35);
+            this.BtnSE.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.StretchImage;
+            this.BtnSE.TabIndex = 10;
+            this.BtnSE.TabStop = false;
+            this.BtnSE.UseAltImage = false;
+            this.BtnSE.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseDown);
+            this.BtnSE.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnJogButtonMouseUp);
             // 
-            // tableLayoutPanel1
+            // TlpSpeedControl
             // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.TbSpeed, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.LblSpeed, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 3);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tlp.SetRowSpan(this.tableLayoutPanel1, 3);
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(51, 119);
-            this.tableLayoutPanel1.TabIndex = 18;
+            this.TlpSpeedControl.AutoSize = true;
+            this.TlpSpeedControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.TlpSpeedControl.ColumnCount = 1;
+            this.TlpSpeedControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.TlpSpeedControl.Controls.Add(this.TbSpeed, 0, 0);
+            this.TlpSpeedControl.Controls.Add(this.LblSpeed, 0, 1);
+            this.TlpSpeedControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TlpSpeedControl.Location = new System.Drawing.Point(11, 3);
+            this.TlpSpeedControl.Margin = new System.Windows.Forms.Padding(0);
+            this.TlpSpeedControl.Name = "TlpSpeedControl";
+            this.TlpSpeedControl.RowCount = 2;
+            this.tlp.SetRowSpan(this.TlpSpeedControl, 3);
+            this.TlpSpeedControl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TlpSpeedControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TlpSpeedControl.Size = new System.Drawing.Size(51, 119);
+            this.TlpSpeedControl.TabIndex = 18;
             // 
             // TbSpeed
             // 
@@ -297,24 +317,24 @@
             this.LblSpeed.TabIndex = 17;
             this.LblSpeed.Text = "F1000";
             // 
-            // tableLayoutPanel2
+            // TlpStepControl
             // 
-            this.tableLayoutPanel2.AutoSize = true;
-            this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.Controls.Add(this.TbStep, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.LblStep, 0, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(178, 3);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tlp.SetRowSpan(this.tableLayoutPanel2, 3);
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(51, 119);
-            this.tableLayoutPanel2.TabIndex = 19;
+            this.TlpStepControl.AutoSize = true;
+            this.TlpStepControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.TlpStepControl.ColumnCount = 1;
+            this.TlpStepControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.TlpStepControl.Controls.Add(this.TbStep, 0, 0);
+            this.TlpStepControl.Controls.Add(this.LblStep, 0, 1);
+            this.TlpStepControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TlpStepControl.Location = new System.Drawing.Point(205, 3);
+            this.TlpStepControl.Margin = new System.Windows.Forms.Padding(0);
+            this.TlpStepControl.Name = "TlpStepControl";
+            this.TlpStepControl.RowCount = 2;
+            this.tlp.SetRowSpan(this.TlpStepControl, 3);
+            this.TlpStepControl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TlpStepControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TlpStepControl.Size = new System.Drawing.Size(51, 119);
+            this.TlpStepControl.TabIndex = 19;
             // 
             // TbStep
             // 
@@ -344,6 +364,204 @@
             this.LblStep.TabIndex = 18;
             this.LblStep.Text = "10";
             // 
+            // TlpZControl
+            // 
+            this.TlpZControl.ColumnCount = 1;
+            this.TlpZControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TlpZControl.Controls.Add(this.BtnZup01, 0, 3);
+            this.TlpZControl.Controls.Add(this.BtnZup1, 0, 2);
+            this.TlpZControl.Controls.Add(this.BtnZup10, 0, 1);
+            this.TlpZControl.Controls.Add(this.BtnZdown10, 0, 6);
+            this.TlpZControl.Controls.Add(this.BtnZdown1, 0, 5);
+            this.TlpZControl.Controls.Add(this.BtnZdown01, 0, 5);
+            this.TlpZControl.Controls.Add(this.label1, 0, 4);
+            this.TlpZControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TlpZControl.Location = new System.Drawing.Point(185, 3);
+            this.TlpZControl.Margin = new System.Windows.Forms.Padding(0);
+            this.TlpZControl.Name = "TlpZControl";
+            this.TlpZControl.RowCount = 9;
+            this.tlp.SetRowSpan(this.TlpZControl, 3);
+            this.TlpZControl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TlpZControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TlpZControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TlpZControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TlpZControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TlpZControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TlpZControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TlpZControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TlpZControl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TlpZControl.Size = new System.Drawing.Size(20, 119);
+            this.TlpZControl.TabIndex = 20;
+            this.TlpZControl.Visible = false;
+            // 
+            // BtnZup01
+            // 
+            this.BtnZup01.AltImage = null;
+            this.BtnZup01.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnZup01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnZup01.Coloration = System.Drawing.Color.Empty;
+            this.BtnZup01.Image = ((System.Drawing.Image)(resources.GetObject("BtnZup01.Image")));
+            this.BtnZup01.JogDirection = LaserGRBL.GrblCore.JogDirection.Zup;
+            this.BtnZup01.JogStep = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.BtnZup01.Location = new System.Drawing.Point(2, 37);
+            this.BtnZup01.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnZup01.MaximumSize = new System.Drawing.Size(16, 16);
+            this.BtnZup01.MinimumSize = new System.Drawing.Size(16, 16);
+            this.BtnZup01.Name = "BtnZup01";
+            this.BtnZup01.Size = new System.Drawing.Size(16, 16);
+            this.BtnZup01.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.BtnZup01.TabIndex = 19;
+            this.BtnZup01.TabStop = false;
+            this.TT.SetToolTip(this.BtnZup01, "0.1mm");
+            this.BtnZup01.UseAltImage = false;
+            this.BtnZup01.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnZJogButtonMouseDown);
+            // 
+            // BtnZup1
+            // 
+            this.BtnZup1.AltImage = null;
+            this.BtnZup1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnZup1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnZup1.Coloration = System.Drawing.Color.Empty;
+            this.BtnZup1.Image = ((System.Drawing.Image)(resources.GetObject("BtnZup1.Image")));
+            this.BtnZup1.JogDirection = LaserGRBL.GrblCore.JogDirection.Zup;
+            this.BtnZup1.JogStep = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            this.BtnZup1.Location = new System.Drawing.Point(2, 21);
+            this.BtnZup1.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnZup1.MaximumSize = new System.Drawing.Size(16, 16);
+            this.BtnZup1.MinimumSize = new System.Drawing.Size(16, 16);
+            this.BtnZup1.Name = "BtnZup1";
+            this.BtnZup1.Size = new System.Drawing.Size(16, 16);
+            this.BtnZup1.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.BtnZup1.TabIndex = 18;
+            this.BtnZup1.TabStop = false;
+            this.TT.SetToolTip(this.BtnZup1, "1mm");
+            this.BtnZup1.UseAltImage = false;
+            this.BtnZup1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnZJogButtonMouseDown);
+            // 
+            // BtnZup10
+            // 
+            this.BtnZup10.AltImage = null;
+            this.BtnZup10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnZup10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnZup10.Coloration = System.Drawing.Color.Empty;
+            this.BtnZup10.Image = ((System.Drawing.Image)(resources.GetObject("BtnZup10.Image")));
+            this.BtnZup10.JogDirection = LaserGRBL.GrblCore.JogDirection.Zup;
+            this.BtnZup10.JogStep = new decimal(new int[] {
+            100,
+            0,
+            0,
+            65536});
+            this.BtnZup10.Location = new System.Drawing.Point(2, 5);
+            this.BtnZup10.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnZup10.MaximumSize = new System.Drawing.Size(16, 16);
+            this.BtnZup10.MinimumSize = new System.Drawing.Size(16, 16);
+            this.BtnZup10.Name = "BtnZup10";
+            this.BtnZup10.Size = new System.Drawing.Size(16, 16);
+            this.BtnZup10.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.BtnZup10.TabIndex = 17;
+            this.BtnZup10.TabStop = false;
+            this.TT.SetToolTip(this.BtnZup10, "10mm");
+            this.BtnZup10.UseAltImage = false;
+            this.BtnZup10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnZJogButtonMouseDown);
+            // 
+            // BtnZdown10
+            // 
+            this.BtnZdown10.AltImage = null;
+            this.BtnZdown10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnZdown10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnZdown10.Coloration = System.Drawing.Color.Empty;
+            this.BtnZdown10.Image = ((System.Drawing.Image)(resources.GetObject("BtnZdown10.Image")));
+            this.BtnZdown10.JogDirection = LaserGRBL.GrblCore.JogDirection.Zdown;
+            this.BtnZdown10.JogStep = new decimal(new int[] {
+            100,
+            0,
+            0,
+            65536});
+            this.BtnZdown10.Location = new System.Drawing.Point(2, 98);
+            this.BtnZdown10.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnZdown10.MaximumSize = new System.Drawing.Size(16, 16);
+            this.BtnZdown10.MinimumSize = new System.Drawing.Size(16, 16);
+            this.BtnZdown10.Name = "BtnZdown10";
+            this.BtnZdown10.Size = new System.Drawing.Size(16, 16);
+            this.BtnZdown10.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.BtnZdown10.TabIndex = 16;
+            this.BtnZdown10.TabStop = false;
+            this.TT.SetToolTip(this.BtnZdown10, "10mm");
+            this.BtnZdown10.UseAltImage = false;
+            this.BtnZdown10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnZJogButtonMouseDown);
+            // 
+            // BtnZdown1
+            // 
+            this.BtnZdown1.AltImage = null;
+            this.BtnZdown1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnZdown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnZdown1.Coloration = System.Drawing.Color.Empty;
+            this.BtnZdown1.Image = ((System.Drawing.Image)(resources.GetObject("BtnZdown1.Image")));
+            this.BtnZdown1.JogDirection = LaserGRBL.GrblCore.JogDirection.Zdown;
+            this.BtnZdown1.JogStep = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            this.BtnZdown1.Location = new System.Drawing.Point(2, 82);
+            this.BtnZdown1.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnZdown1.MaximumSize = new System.Drawing.Size(16, 16);
+            this.BtnZdown1.MinimumSize = new System.Drawing.Size(16, 16);
+            this.BtnZdown1.Name = "BtnZdown1";
+            this.BtnZdown1.Size = new System.Drawing.Size(16, 16);
+            this.BtnZdown1.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.BtnZdown1.TabIndex = 15;
+            this.BtnZdown1.TabStop = false;
+            this.TT.SetToolTip(this.BtnZdown1, "1mm");
+            this.BtnZdown1.UseAltImage = false;
+            this.BtnZdown1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnZJogButtonMouseDown);
+            // 
+            // BtnZdown01
+            // 
+            this.BtnZdown01.AltImage = null;
+            this.BtnZdown01.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnZdown01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnZdown01.Coloration = System.Drawing.Color.Empty;
+            this.BtnZdown01.Image = ((System.Drawing.Image)(resources.GetObject("BtnZdown01.Image")));
+            this.BtnZdown01.JogDirection = LaserGRBL.GrblCore.JogDirection.Zdown;
+            this.BtnZdown01.JogStep = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.BtnZdown01.Location = new System.Drawing.Point(2, 66);
+            this.BtnZdown01.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnZdown01.MaximumSize = new System.Drawing.Size(16, 16);
+            this.BtnZdown01.MinimumSize = new System.Drawing.Size(16, 16);
+            this.BtnZdown01.Name = "BtnZdown01";
+            this.BtnZdown01.Size = new System.Drawing.Size(16, 16);
+            this.BtnZdown01.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.BtnZdown01.TabIndex = 14;
+            this.BtnZdown01.TabStop = false;
+            this.TT.SetToolTip(this.BtnZdown01, "0.1mm");
+            this.BtnZdown01.UseAltImage = false;
+            this.BtnZdown01.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnZJogButtonMouseDown);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 53);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Z";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // UpdateFMax
             // 
             this.UpdateFMax.Interval = 1000;
@@ -356,15 +574,17 @@
             this.Controls.Add(this.tlp);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "JogForm";
-            this.Size = new System.Drawing.Size(234, 125);
+            this.Size = new System.Drawing.Size(267, 125);
             this.tlp.ResumeLayout(false);
             this.tlp.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.TlpSpeedControl.ResumeLayout(false);
+            this.TlpSpeedControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TbSpeed)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.TlpStepControl.ResumeLayout(false);
+            this.TlpStepControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TbStep)).EndInit();
+            this.TlpZControl.ResumeLayout(false);
+            this.TlpZControl.PerformLayout();
             this.ResumeLayout(false);
 
 		}
@@ -372,22 +592,30 @@
 		#endregion
 
 		private System.Windows.Forms.TableLayoutPanel tlp;
-		private DirectionButton imageButton8;
-		private DirectionButton imageButton7;
+		private DirectionButton BtnS;
+		private DirectionButton BtnSW;
 		private DirectionButton BtnHome;
-		private DirectionButton imageButton1;
-		private DirectionButton imageButton2;
-		private DirectionButton imageButton3;
-		private DirectionButton imageButton4;
-		private DirectionButton imageButton6;
-		private DirectionButton imageButton5;
+		private DirectionButton BtnW;
+		private DirectionButton BtnN;
+		private DirectionButton BtnSE;
+		private DirectionButton BtnE;
+		private DirectionButton BtnNW;
+		private DirectionButton BtnNE;
 		private System.Windows.Forms.TrackBar TbSpeed;
 		private StepBar TbStep;
 		private System.Windows.Forms.ToolTip TT;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.TableLayoutPanel TlpSpeedControl;
 		private System.Windows.Forms.Label LblSpeed;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+		private System.Windows.Forms.TableLayoutPanel TlpStepControl;
 		private System.Windows.Forms.Label LblStep;
 		private System.Windows.Forms.Timer UpdateFMax;
-	}
+        private System.Windows.Forms.TableLayoutPanel TlpZControl;
+        private DirectionStepButton BtnZdown10;
+        private DirectionStepButton BtnZdown1;
+        private DirectionStepButton BtnZdown01;
+        private DirectionStepButton BtnZup01;
+        private DirectionStepButton BtnZup1;
+        private DirectionStepButton BtnZup10;
+        private System.Windows.Forms.Label label1;
+    }
 }

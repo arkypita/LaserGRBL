@@ -1040,6 +1040,12 @@
     <Content Include="Autotrace\autotrace.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Grafica\zdown01.png" />
+    <Content Include="Grafica\zdown1.png" />
+    <Content Include="Grafica\zdown10.png" />
+    <Content Include="Grafica\zup01.png" />
+    <Content Include="Grafica\zup1.png" />
+    <Content Include="Grafica\zup10.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

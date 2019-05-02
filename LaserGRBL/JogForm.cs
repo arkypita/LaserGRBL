@@ -10,9 +10,10 @@ namespace LaserGRBL
 		public JogForm()
 		{
 			InitializeComponent();
+            SettingsForm.SettingsChanged += SettingsForm_SettingsChanged;
 		}
 
-		public void SetCore(GrblCore core)
+        public void SetCore(GrblCore core)
 		{
 			Core = core;
 
@@ -27,7 +28,14 @@ namespace LaserGRBL
 			TbStep_ValueChanged(null, null); //set tooltip
 
             Core.JogStateChange += Core_JogStateChange;
-		}
+            SettingsForm_SettingsChanged(this, null);
+        }
+
+        private void SettingsForm_SettingsChanged(object sender, EventArgs e)
+        {
+            TlpStepControl.Visible = !(bool)Settings.GetObject("Enable Continuous Jog", false);
+            TlpZControl.Visible = (bool)Settings.GetObject("Enale Z Jog Control", false);
+        }
 
         private void Core_JogStateChange(bool jog)
         {
@@ -42,6 +50,11 @@ namespace LaserGRBL
         private void OnJogButtonMouseUp(object sender, MouseEventArgs e)
         {
             Core.EndJogV11();
+        }
+
+        private void OnZJogButtonMouseDown(object sender, MouseEventArgs e)
+        {
+            Core.EnqueueZJog((sender as DirectionStepButton).JogDirection, (sender as DirectionStepButton).JogStep);
         }
 
         private void TbSpeed_ValueChanged(object sender, EventArgs e)
@@ -86,6 +99,7 @@ namespace LaserGRBL
 			}
 		}
 
+      
     }
 
     public class StepBar : System.Windows.Forms.TrackBar
@@ -140,4 +154,23 @@ namespace LaserGRBL
 			base.OnSizeChanged(e);
 		}
 	}
+
+    public class DirectionStepButton : DirectionButton
+    {
+        private decimal mStep = 1.0M;
+
+        public decimal JogStep
+        {
+            get { return mStep; }
+            set { mStep = value; }
+        }
+
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            if (Width != Height)
+                Width = Height;
+
+            base.OnSizeChanged(e);
+        }
+    }
 }

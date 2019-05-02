@@ -52,6 +52,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.CbHardReset = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.TpRasterImport = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -59,7 +60,12 @@
             this.CbUnidirectional = new System.Windows.Forms.CheckBox();
             this.CBSupportPWM = new System.Windows.Forms.CheckBox();
             this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
-            this.label9 = new System.Windows.Forms.Label();
+            this.TpJogControl = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.CbEnableZJog = new System.Windows.Forms.CheckBox();
+            this.CbContinuosJog = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.MainTabPage.SuspendLayout();
@@ -67,6 +73,8 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.TpRasterImport.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.TpJogControl.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -102,6 +110,7 @@
             // 
             this.MainTabPage.Controls.Add(this.TpHardware);
             this.MainTabPage.Controls.Add(this.TpRasterImport);
+            this.MainTabPage.Controls.Add(this.TpJogControl);
             resources.ApplyResources(this.MainTabPage, "MainTabPage");
             this.MainTabPage.Name = "MainTabPage";
             this.MainTabPage.SelectedIndex = 0;
@@ -247,6 +256,11 @@
             resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
             // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
             // TpRasterImport
             // 
             this.TpRasterImport.Controls.Add(this.tableLayoutPanel4);
@@ -298,10 +312,43 @@
             this.BtnModulationInfo.UseAltImage = false;
             this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
             // 
-            // label9
+            // TpJogControl
             // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
+            this.TpJogControl.Controls.Add(this.tableLayoutPanel5);
+            resources.ApplyResources(this.TpJogControl, "TpJogControl");
+            this.TpJogControl.Name = "TpJogControl";
+            this.TpJogControl.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel5
+            // 
+            resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
+            this.tableLayoutPanel5.Controls.Add(this.label10, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label11, 2, 1);
+            this.tableLayoutPanel5.Controls.Add(this.CbEnableZJog, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.CbContinuosJog, 1, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // CbEnableZJog
+            // 
+            resources.ApplyResources(this.CbEnableZJog, "CbEnableZJog");
+            this.CbEnableZJog.Name = "CbEnableZJog";
+            this.CbEnableZJog.UseVisualStyleBackColor = true;
+            // 
+            // CbContinuosJog
+            // 
+            resources.ApplyResources(this.CbContinuosJog, "CbContinuosJog");
+            this.CbContinuosJog.Name = "CbContinuosJog";
+            this.CbContinuosJog.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -323,6 +370,10 @@
             this.TpRasterImport.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.TpJogControl.ResumeLayout(false);
+            this.TpJogControl.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -361,5 +412,11 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.ComboBox CBCore;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TabPage TpJogControl;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.CheckBox CbEnableZJog;
+        private System.Windows.Forms.CheckBox CbContinuosJog;
     }
 }
