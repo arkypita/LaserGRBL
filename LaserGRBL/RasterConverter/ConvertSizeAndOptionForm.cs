@@ -188,14 +188,14 @@ namespace LaserGRBL.RasterConverter
         {
             if (CbAutosize.Checked)
             {
-                IISizeW.CurrentValue = Convert.ToSingle(25.4 * IP.FileResolution.Width / IIDpi.CurrentValue);
+                IISizeW.CurrentValue = Convert.ToSingle(25.4 * IP.TrueOriginal.Width / IIDpi.CurrentValue);
                 IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
             }
 
 			BtnDPI.Enabled = CbAutosize.Checked && (IIDpi.CurrentValue != IP.FileDPI);
         }
 
-		private void BtnDPI_Click(object sender, EventArgs e)
+        private void BtnDPI_Click(object sender, EventArgs e)
 		{
 			if (CbAutosize.Checked)
 				IIDpi.CurrentValue = IP.FileDPI;
