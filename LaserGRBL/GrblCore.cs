@@ -1059,7 +1059,7 @@ namespace LaserGRBL
 			if (dir == JogDirection.Home)
 			{
 				EnqueueCommand(new GrblCommand(string.Format("G90")));
-				EnqueueCommand(new GrblCommand(string.Format("G0X0Y0Z0F{0}", JogSpeed)));
+				EnqueueCommand(new GrblCommand(string.Format("G0X0Y0F{0}", JogSpeed)));
 			}
 			else
 			{
@@ -1098,7 +1098,7 @@ namespace LaserGRBL
                 mPrenotedJogDirection = JogDirection.None;
 
                 if (dir == JogDirection.Home)
-                    EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0Z0F{0}", JogSpeed)));
+                    EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", JogSpeed)));
                 else
                     EnqueueCommand(GetRelativeJogCommandv11(dir, step));
             }
@@ -1155,7 +1155,7 @@ namespace LaserGRBL
 				}
 				else if (mPrenotedJogDirection == JogDirection.Home)
 				{
-					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0Z0F{0}", JogSpeed)));
+					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", JogSpeed)));
 				}
 				else
 				{
