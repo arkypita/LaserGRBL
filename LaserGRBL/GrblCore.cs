@@ -1074,9 +1074,9 @@ namespace LaserGRBL
 				if (dir == JogDirection.SW || dir == JogDirection.S || dir == JogDirection.SE)
 					cmd += $"Y-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
                 if (dir == JogDirection.Zdown)
-                    cmd += $"Z{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-                if (dir == JogDirection.Zup)
                     cmd += $"Z-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+                if (dir == JogDirection.Zup)
+                    cmd += $"Z{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
 
                 cmd += $"F{JogSpeed}";
 
@@ -1116,9 +1116,9 @@ namespace LaserGRBL
 			if (dir == JogDirection.SW || dir == JogDirection.S || dir == JogDirection.SE)
 				cmd += $"Y-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
             if (dir == JogDirection.Zdown)
-                cmd += $"Z{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-            if (dir == JogDirection.Zup)
                 cmd += $"Z-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+            if (dir == JogDirection.Zup)
+                cmd += $"Z{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
 
             cmd += $"F{JogSpeed}";
 			return new GrblCommand(cmd);
