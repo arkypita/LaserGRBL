@@ -131,8 +131,8 @@ namespace LaserGRBL
             Settings.SetObject("Enale Z Jog Control", CbEnableZJog.Checked);
 
 			Settings.SetObject("AutoCooling", CbAutoCooling.Checked);
-			Settings.SetObject("AutoCooling TOn", new TimeSpan(0, (int)CbOnMin.SelectedItem, (int)CbOnSec.SelectedItem));
-			Settings.SetObject("AutoCooling TOff", new TimeSpan(0, (int)CbOffMin.SelectedItem, (int)CbOffSec.SelectedItem));
+			Settings.SetObject("AutoCooling TOn", MaxTs(TimeSpan.FromSeconds(10), new TimeSpan(0, (int)CbOnMin.SelectedItem, (int)CbOnSec.SelectedItem)));
+			Settings.SetObject("AutoCooling TOff", MaxTs(TimeSpan.FromSeconds(10), new TimeSpan(0, (int)CbOffMin.SelectedItem, (int)CbOffSec.SelectedItem)));
 
 			Settings.Save();
 
@@ -144,6 +144,9 @@ namespace LaserGRBL
             if (Core.Type != (Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) && MessageBox.Show(Strings.FirmwareRequireRestartNow, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
                 Application.Restart();
 		}
+
+		private TimeSpan MaxTs(TimeSpan a, TimeSpan b)
+		{ return TimeSpan.FromTicks(Math.Max(a.Ticks, b.Ticks)); }
 
 		private void BtnCancel_Click(object sender, EventArgs e)
 		{

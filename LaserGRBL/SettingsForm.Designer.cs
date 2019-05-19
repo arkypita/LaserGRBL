@@ -68,14 +68,15 @@
 			this.CbContinuosJog = new System.Windows.Forms.CheckBox();
 			this.TpAutoCooling = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+			this.label20 = new System.Windows.Forms.Label();
 			this.label12 = new System.Windows.Forms.Label();
-			this.CbAutoCooling = new System.Windows.Forms.CheckBox();
 			this.label13 = new System.Windows.Forms.Label();
+			this.CbAutoCooling = new System.Windows.Forms.CheckBox();
 			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+			this.label15 = new System.Windows.Forms.Label();
 			this.CbOnMin = new System.Windows.Forms.ComboBox();
 			this.CbOnSec = new System.Windows.Forms.ComboBox();
 			this.label14 = new System.Windows.Forms.Label();
-			this.label15 = new System.Windows.Forms.Label();
 			this.label16 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
 			this.label17 = new System.Windows.Forms.Label();
@@ -83,7 +84,6 @@
 			this.CbOffSec = new System.Windows.Forms.ComboBox();
 			this.label18 = new System.Windows.Forms.Label();
 			this.label19 = new System.Windows.Forms.Label();
-			this.label20 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.MainTabPage.SuspendLayout();
@@ -391,21 +391,26 @@
 			this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel8, 1, 2);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
 			// 
+			// label20
+			// 
+			resources.ApplyResources(this.label20, "label20");
+			this.label20.Name = "label20";
+			// 
 			// label12
 			// 
 			resources.ApplyResources(this.label12, "label12");
 			this.label12.Name = "label12";
+			// 
+			// label13
+			// 
+			resources.ApplyResources(this.label13, "label13");
+			this.label13.Name = "label13";
 			// 
 			// CbAutoCooling
 			// 
 			resources.ApplyResources(this.CbAutoCooling, "CbAutoCooling");
 			this.CbAutoCooling.Name = "CbAutoCooling";
 			this.CbAutoCooling.UseVisualStyleBackColor = true;
-			// 
-			// label13
-			// 
-			resources.ApplyResources(this.label13, "label13");
-			this.label13.Name = "label13";
 			// 
 			// tableLayoutPanel7
 			// 
@@ -416,6 +421,11 @@
 			this.tableLayoutPanel7.Controls.Add(this.label14, 0, 0);
 			this.tableLayoutPanel7.Controls.Add(this.label16, 4, 0);
 			this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+			// 
+			// label15
+			// 
+			resources.ApplyResources(this.label15, "label15");
+			this.label15.Name = "label15";
 			// 
 			// CbOnMin
 			// 
@@ -435,11 +445,6 @@
 			// 
 			resources.ApplyResources(this.label14, "label14");
 			this.label14.Name = "label14";
-			// 
-			// label15
-			// 
-			resources.ApplyResources(this.label15, "label15");
-			this.label15.Name = "label15";
 			// 
 			// label16
 			// 
@@ -484,11 +489,6 @@
 			// 
 			resources.ApplyResources(this.label19, "label19");
 			this.label19.Name = "label19";
-			// 
-			// label20
-			// 
-			resources.ApplyResources(this.label20, "label20");
-			this.label20.Name = "label20";
 			// 
 			// SettingsForm
 			// 
