@@ -61,7 +61,7 @@ namespace LaserGRBL
 		}
 
         public enum MacStatus
-		{ Unknown, Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue }
+		{ Unknown, Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue, Cooling }
 
 		public enum JogDirection
 		{ None, Abort, Home, N, S, W, E, NW, NE, SW, SE, Zup, Zdown }
@@ -904,11 +904,23 @@ namespace LaserGRBL
 
 		#region Comandi immediati
 
-		public void CycleStartResume()
-		{ if (CanResumeHold) SendImmediate(126); }
+		public void CycleStartResume(bool auto)
+		{
+			if (CanResumeHold)
+			{
+				mHoldByUserRequest = false;
+				SendImmediate(126);
+			}
+		}
 
-		public void FeedHold()
-		{ if (CanFeedHold) SendImmediate(33); }
+		public void FeedHold(bool auto)
+		{
+			if (CanFeedHold)
+			{
+				mHoldByUserRequest = !auto;
+				SendImmediate(33);
+			}
+		}
 
 		public void SafetyDoor()
 		{ SendImmediate(64); }
@@ -1200,6 +1212,8 @@ namespace LaserGRBL
 
 						if (CanSend())
 							SendLine();
+
+						ManageCoolingCycles();
 					}
 
 					if (QueryTimer.Expired)
@@ -1725,6 +1739,9 @@ namespace LaserGRBL
 			if (InProgram && var == MacStatus.Idle) //bugfix for grbl sending Idle on G4
 				var = MacStatus.Run;
 
+			if (var == MacStatus.Hold && !mHoldByUserRequest)
+				var = MacStatus.Cooling;
+
 			SetStatus(var);
 		}
 
@@ -1767,7 +1784,7 @@ namespace LaserGRBL
 		{ get { return IsOpen && HasProgram && IdleOrCheck; } }
 
 		public bool CanAbortProgram
-		{ get { return IsOpen && HasProgram && (MachineStatus == MacStatus.Run || MachineStatus == MacStatus.Hold); } }
+		{ get { return IsOpen && HasProgram && (MachineStatus == MacStatus.Run || MachineStatus == MacStatus.Hold || MachineStatus == MacStatus.Cooling); } }
 
 		public bool CanImportExport
 		{ get { return IsOpen && MachineStatus == MacStatus.Idle; } }
@@ -1791,7 +1808,7 @@ namespace LaserGRBL
 		{ get { return IsOpen && MachineStatus == MacStatus.Run; } }
 
 		public bool CanResumeHold
-		{ get { return IsOpen && (MachineStatus == MacStatus.Door || MachineStatus == MacStatus.Hold); } }
+		{ get { return IsOpen && (MachineStatus == MacStatus.Door || MachineStatus == MacStatus.Hold || MachineStatus == MacStatus.Cooling); } }
 
 		public decimal LoopCount
 		{ get { return mLoopCount; } set { mLoopCount = value; if (OnLoopCountChange != null) OnLoopCountChange(mLoopCount); } }
@@ -1804,6 +1821,40 @@ namespace LaserGRBL
 
 		private bool IdleOrCheck
 		{ get { return MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Check; } }
+
+		public bool AutoCooling
+		{ get { return (bool)Settings.GetObject("AutoCooling", false); } }
+
+		public TimeSpan AutoCoolingOn
+		{ get { return (TimeSpan)Settings.GetObject("AutoCooling TOn", TimeSpan.FromMinutes(10)); } }
+
+		public TimeSpan AutoCoolingOff
+		{ get { return (TimeSpan)Settings.GetObject("AutoCooling TOff", TimeSpan.FromMinutes(1)); } }
+
+		private void ManageCoolingCycles()
+		{
+			if (AutoCooling && InProgram && !mHoldByUserRequest)
+				NowCooling = ((ProgramTime.Ticks % (AutoCoolingOn + AutoCoolingOff).Ticks) > AutoCoolingOn.Ticks);
+		}
+
+		private bool mHoldByUserRequest = false;
+		private bool mNowCooling = false;
+		private bool NowCooling
+		{
+			set
+			{
+				if (mNowCooling != value)
+				{
+					if (value)
+						FeedHold(true);
+					else
+						CycleStartResume(true);
+
+					mNowCooling = value;
+				}
+			}
+		}
+
 
 		private static string mDataPath;
 		public static string DataPath

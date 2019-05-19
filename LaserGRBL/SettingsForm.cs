@@ -41,9 +41,38 @@ namespace LaserGRBL
 
             CbContinuosJog.Checked = (bool)Settings.GetObject("Enable Continuous Jog", false);
             CbEnableZJog.Checked = (bool)Settings.GetObject("Enale Z Jog Control", false);
+
+			InitAutoCoolingTab();
         }
 
-        private void InitCoreCB()
+		private void InitAutoCoolingTab()
+		{
+			CbAutoCooling.Checked = (bool)Settings.GetObject("AutoCooling", false);
+			CbOffMin.Items.Clear();
+			CbOffSec.Items.Clear();
+			CbOnMin.Items.Clear();
+			CbOnSec.Items.Clear();
+
+			for (int i = 0; i <= 60; i++)
+				CbOnMin.Items.Add(i);
+			for (int i = 0; i <= 10; i++)
+				CbOffMin.Items.Add(i);
+
+			for (int i = 0; i <= 59; i++)
+				CbOnSec.Items.Add(i);
+			for (int i = 0; i <= 59; i++)
+				CbOffSec.Items.Add(i);
+
+			TimeSpan CoolingOn = (TimeSpan)Settings.GetObject("AutoCooling TOn", TimeSpan.FromMinutes(10));
+			TimeSpan CoolingOff = (TimeSpan)Settings.GetObject("AutoCooling TOff", TimeSpan.FromMinutes(1));
+
+			CbOnMin.SelectedItem = CoolingOn.Minutes;
+			CbOffMin.SelectedItem = CoolingOff.Minutes;
+			CbOnSec.SelectedItem = CoolingOn.Seconds;
+			CbOffSec.SelectedItem = CoolingOff.Seconds;
+		}
+
+		private void InitCoreCB()
         {
             CBCore.BeginUpdate();
             CBCore.Items.Add(Firmware.Grbl);
@@ -100,6 +129,11 @@ namespace LaserGRBL
 			Settings.SetObject("HardReset Grbl On Connect", CbHardReset.Checked);
             Settings.SetObject("Enable Continuous Jog", CbContinuosJog.Checked);
             Settings.SetObject("Enale Z Jog Control", CbEnableZJog.Checked);
+
+			Settings.SetObject("AutoCooling", CbAutoCooling.Checked);
+			Settings.SetObject("AutoCooling TOn", new TimeSpan(0, (int)CbOnMin.SelectedItem, (int)CbOnSec.SelectedItem));
+			Settings.SetObject("AutoCooling TOff", new TimeSpan(0, (int)CbOffMin.SelectedItem, (int)CbOffSec.SelectedItem));
+
 			Settings.Save();
 
             if (SettingsChanged != null)

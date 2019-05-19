@@ -229,9 +229,9 @@ namespace LaserGRBL
 				case HotKey.Actions.Unlock:
 					mCore.GrblUnlock(); break;
 				case HotKey.Actions.PauseJob:
-					mCore.FeedHold(); break;
+					mCore.FeedHold(false); break;
 				case HotKey.Actions.ResumeJob:
-					mCore.CycleStartResume(); break;
+					mCore.CycleStartResume(false); break;
 				case HotKey.Actions.SetNewZero:
 					mCore.SetNewZero(); break;
 				case HotKey.Actions.JogHome:

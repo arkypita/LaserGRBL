@@ -202,6 +202,7 @@ namespace LaserGRBL
 					break;
 				case GrblCore.MacStatus.Door:
 				case GrblCore.MacStatus.Hold:
+				case GrblCore.MacStatus.Cooling:
 					TTTStatus.BackColor = Color.DarkOrange;
 					TTTStatus.ForeColor = Color.Black;
 					break;

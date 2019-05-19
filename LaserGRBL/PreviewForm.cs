@@ -63,11 +63,11 @@ namespace LaserGRBL
 		}
 		void BtnStopClick(object sender, EventArgs e)
 		{
-			Core.FeedHold();
+			Core.FeedHold(false);
 		}
 		void BtnResumeClick(object sender, EventArgs e)
 		{
-			Core.CycleStartResume();
+			Core.CycleStartResume(false);
 		}
 
 		private void BtnUnlockClick(object sender, EventArgs e)
