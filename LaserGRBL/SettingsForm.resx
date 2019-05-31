@@ -382,7 +382,7 @@
     <value>BtnStreamingMode</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.15.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.14.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -484,7 +484,7 @@
     <value>BtnProtocol</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.15.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.14.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -558,7 +558,7 @@ Set slower values if you are experiencing issues.</value>
     <value>BtnThreadingModel</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.15.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.14.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1025,7 +1025,7 @@ If not, please disable PWM support.</value>
     <value>BtnModulationInfo</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.15.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.14.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -1815,6 +1815,105 @@ After this time LaserGRBL will send an automatic feed hold to cool down the lase
   <data name="tableLayoutPanel8.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label17" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbOffMin" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CbOffSec" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="label18" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label19" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <data name="pictureBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 111</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
+  </data>
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>tableLayoutPanel6</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label21.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label21.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>211, 108</value>
+  </data>
+  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>538, 39</value>
+  </data>
+  <data name="label21.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Warning: this feature will work only with grbl versions &gt; v1.1 with "laser mode" enabled.
+If you use auto-cooling with older grbl version (or with laser mode disabled) the laser will not turn off during pauses
+and burns holes in your work!
+</value>
+  </data>
+  <data name="&gt;&gt;label21.Name" xml:space="preserve">
+    <value>label21</value>
+  </data>
+  <data name="&gt;&gt;label21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
+    <value>tableLayoutPanel6</value>
+  </data>
+  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="tableLayoutPanel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -1843,7 +1942,7 @@ After this time LaserGRBL will send an automatic feed hold to cool down the lase
     <value>0</value>
   </data>
   <data name="tableLayoutPanel6.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label20" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label12" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label13" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbAutoCooling" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel7" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel8" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label20" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label12" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label13" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbAutoCooling" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel7" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel8" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="pictureBox1" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label21" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,20,AutoSize,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="TpAutoCooling.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>

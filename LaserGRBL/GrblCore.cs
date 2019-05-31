@@ -1031,9 +1031,12 @@ namespace LaserGRBL
 		public bool SupportOverride
 		{ get { return GrblVersion != null && GrblVersion >= new GrblVersionInfo(1, 1); } }
 
-		#endregion
+        public bool SupportLaserMode
+        { get { return GrblVersion != null && GrblVersion >= new GrblVersionInfo(1, 1); } }
 
-		public bool JogEnabled
+        #endregion
+
+        public bool JogEnabled
 		{
 			get
 			{
@@ -1845,18 +1848,37 @@ namespace LaserGRBL
 			{
 				if (mNowCooling != value)
 				{
-					if (value)
-						FeedHold(true);
-					else
-						CycleStartResume(true);
+                    if (value)
+                        StartCooling();
+                    else
+                        ResumeCooling();
 
-					mNowCooling = value;
+                    mNowCooling = value;
 				}
 			}
 		}
 
+        private void StartCooling()
+        {
+            if (SupportLaserMode && Configuration.LaserMode)
+            {
+                FeedHold(true);
+            }
+            else //emulate pause by pushing laser off and sleep into stream
+            {
+                
+            }
+        }
 
-		private static string mDataPath;
+        private void ResumeCooling()
+        {
+            if (SupportLaserMode && Configuration.LaserMode)
+            {
+                CycleStartResume(true);
+            }
+        }
+
+        private static string mDataPath;
 		public static string DataPath
 		{
 			get
