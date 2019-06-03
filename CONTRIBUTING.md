@@ -1,16 +1,12 @@
-# Welcome to the translation team!
+# Welcome contibutors!
+First of all thanks to you and to all LaserGRBL contributor!
 
-I am glad to have you here and I hope you will enjoy your time helping LaserGRBL project by translating into your language.
-I know this whole thing may seem a bit hard at first, there is definitely a bit of a learning curve, but below you can find a set of guidelines that should make this process a little bit easier.
+## Submit translation
 
-## Getting Started
+If you want to contribute to the development of LaserGRBL by adding a translation in your language I wrote a tutorial to help you in this work. Please read [how to translate](https://github.com/arkypita/LaserGRBL/blob/master/TRANSLATING.md)
 
-There are some tools that you should definitly have to contribute with translation in a in an effective manner.
-1. A Git client for interact with github (download source code and submit your translation)
-2. A software for edit translation file
+## Submit code contribution
 
-As Git client i suggest to download Github Desktop from here: https://desktop.github.com
-To translate language files I suggest a good tool for editing resx is called ResEx, and could be downloaded here:
-[ResExSetup1.2.zip](https://github.com/arkypita/LaserGRBL/files/909750/ResExSetup1.2.zip)
+Code contibution should be submitted via Git "pull request" on LaserGRBL repository. If you want to contribute to the development of LaserGRBL adding new features and improving existing ones I guess you have some informatic skill that can point you to the right direction.
 
-... to be continued ...
+If you are new to github environment you can find some guidelines here: https://help.github.com/en/desktop/contributing-to-projects
