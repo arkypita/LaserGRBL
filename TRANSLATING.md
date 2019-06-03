@@ -14,3 +14,5 @@ To translate language files I suggest a good tool for editing resx is called Res
 [ResExSetup1.2.zip](https://github.com/arkypita/LaserGRBL/files/909750/ResExSetup1.2.zip)
 
 Moreover you should have or register a github account: https://github.com/join
+
+... to be continued ...
