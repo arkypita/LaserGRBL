@@ -1,5 +1,5 @@
 # Welcome contibutors!
-First of all, thanks to all LaserGRBL contributor!
+Many thanks to LaserGRBL contributors!
 
 ## Submit translation
 
