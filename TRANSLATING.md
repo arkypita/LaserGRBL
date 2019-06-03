@@ -14,7 +14,7 @@ As Git client i suggest to download Github Desktop from here: https://desktop.gi
 To translate language files I suggest a good tool for editing resx is called ResEx, and could be downloaded here:
 [ResExSetup1.2.zip](https://github.com/arkypita/LaserGRBL/files/909750/ResExSetup1.2.zip)
 
-- Step one: login or register to github [(video tutorial)](https://test.com)
+- Step one: login or register to github [(video tutorial)](www.youtube.com/watch?v=qxU4QvoMvkE)
 
 ... to be continue ...
 
