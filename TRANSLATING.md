@@ -15,7 +15,7 @@ To translate language files I suggest a good tool for editing resx is called Res
 [ResExSetup1.2.zip](https://github.com/arkypita/LaserGRBL/files/909750/ResExSetup1.2.zip)
 
 ## Clone and download LaserGRBL source code
-- Step one: login or register to github [(video tutorial)](www.youtube.com/watch?v=qxU4QvoMvkE)
+- Step one: login or register to github [(video tutorial)](https://www.youtube.com/watch?v=qxU4QvoMvkE)
 
 ... to be continue ...
 
