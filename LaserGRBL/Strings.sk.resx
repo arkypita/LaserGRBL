@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>Zrušiť aktuálnu prácu?</value>
+  </data>
+  <data name="BoxAutoUpdateFailed" xml:space="preserve">
+    <value>Automatická aktualizácia zlyhala
+Prosím manuálne stiahnite a nainštalujte program z lasergrbl webu.</value>
+  </data>
+  <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
+    <value>Update vyžadujem administrátorské práva!</value>
+  </data>
+  <data name="BoxAutoUpdateResult" xml:space="preserve">
+    <value>Výsledok updatu</value>
+  </data>
+  <data name="BoxAutoUpdateSuccess" xml:space="preserve">
+    <value>Update úspešný!</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>Existujú niektoré zmeny, ktoré neboli použité.
+Chcete prepísať konfiguráciu?</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>Zmeny zistené</value>
+  </data>
+  <data name="BoxConnectErrorTitle" xml:space="preserve">
+    <value>Nemôžem sa pripojiť k zariadeniu</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>Prosím poskytnite Gkód príkaz
+
+
+Prosím poskytnite Gkód príkaz
+
+Prosím poskytnite Gkód príkaz</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>Prosím zadajte popisný text</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>Chýbajúce pole</value>
+  </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>Určite chcete vymazať vybrané tlačidlo?</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>Vymazať užívateľské tlačidlo</value>
+  </data>
+  <data name="BoxExportConfigError" xml:space="preserve">
+    <value>Chyba exportu nastavení!</value>
+  </data>
+  <data name="BoxExportConfigErrorTitle" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="BoxExportConfigFileNotFound" xml:space="preserve">
+    <value>Súbor neexistuje!</value>
+  </data>
+  <data name="BoxExportConfigSuccess" xml:space="preserve">
+    <value>{0} Export nastavení úspešný</value>
+  </data>
+  <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
+    <value>Úspech</value>
+  </data>
+  <data name="BoxImportConfigFileError" xml:space="preserve">
+    <value>Chyba načítania súboru</value>
+  </data>
+  <data name="BoxImportConfigWithError" xml:space="preserve">
+    <value>{0} Nastavenia importované s {1} chybami!</value>
+  </data>
+  <data name="BoxImportConfigWithoutError" xml:space="preserve">
+    <value>{0} Nastavenia importované!</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>Importovanie užívateľského tlačidla</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>Vymazať aktuálne tlačidla? Výber áno pre vymazanie a nie pre zachovanie.</value>
+  </data>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>Potvrdenie</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>Chyba načítania nastavení!</value>
+  </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>Zobraziť hodnoty v pamäti cache</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} Nastavenia načítané!</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>Žiadne zmeny... nemám čo zapísať!</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} Nastavenie zapísané s {1} chybami!</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} Nastavenie zapísané!</value>
+  </data>
+  <data name="CustomButtonEdit" xml:space="preserve">
+    <value>Uprav tlačidlo</value>
+  </data>
+  <data name="CustomButtonRemove" xml:space="preserve">
+    <value>Vymaž tlačidlo</value>
+  </data>
+  <data name="DirectionDiagonal" xml:space="preserve">
+    <value>Diagonálne</value>
+  </data>
+  <data name="DirectionHorizontal" xml:space="preserve">
+    <value>Horizontálne</value>
+  </data>
+  <data name="DirectionNone" xml:space="preserve">
+    <value>Nič</value>
+  </data>
+  <data name="DirectionVertical" xml:space="preserve">
+    <value>Vertikálne</value>
+  </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>Prebieha prenos súborov. Odpojiť aj tak?</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>Prebieha prenos súborov. Ukončiť aj tak?</value>
+  </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>Požadovaný reštart</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>Reštart je potrebný na zmeny vo firmvér. Reštartovať teraz?</value>
+  </data>
+  <data name="FormulaCustom" xml:space="preserve">
+    <value>Vlastný</value>
+  </data>
+  <data name="FormulaOpticalCorrect" xml:space="preserve">
+    <value>Optická korekcia</value>
+  </data>
+  <data name="FormulaSimpleAverage" xml:space="preserve">
+    <value>Jednoduchý priemer</value>
+  </data>
+  <data name="FormulaWeightAverage" xml:space="preserve">
+    <value>Priemer hmotnosti</value>
+  </data>
+  <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
+    <value>Hladký (HQ Bicubic)</value>
+  </data>
+  <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
+    <value>Ostrý (NearestNeighbor)</value>
+  </data>
+  <data name="LanguageRequireRestart" xml:space="preserve">
+    <value>Požadovaný reštart</value>
+  </data>
+  <data name="LanguageRequireRestartNow" xml:space="preserve">
+    <value>Vyžadovaný reštart aplikácie, reštartovať teraz?</value>
+  </data>
+  <data name="MacStatusCheck" xml:space="preserve">
+    <value>Kontrola</value>
+  </data>
+  <data name="MacStatusConnecting" xml:space="preserve">
+    <value>Pripájanie</value>
+  </data>
+  <data name="MacStatusDisconnected" xml:space="preserve">
+    <value>Odpojiť</value>
+  </data>
+  <data name="MacStatusDoor" xml:space="preserve">
+    <value>Dvere</value>
+  </data>
+  <data name="MacStatusHold" xml:space="preserve">
+    <value>Zastav</value>
+  </data>
+  <data name="MacStatusHome" xml:space="preserve">
+    <value>Domov</value>
+  </data>
+  <data name="MacStatusRun" xml:space="preserve">
+    <value>Bež</value>
+  </data>
+  <data name="MacStatusUnknown" xml:space="preserve">
+    <value>Neznámy</value>
+  </data>
+  <data name="MainFormEstimatedTime" xml:space="preserve">
+    <value>Odhadovaný čas:</value>
+  </data>
+  <data name="MainFormProjectedTime" xml:space="preserve">
+    <value>Plánovaný čas:</value>
+  </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>Zdá sa, že Grbl už nepozná súčasnú pozíciu.
+Bez procedúry Homing ($H) nemusí byť výsledok spoľahlivý.
+Chcete pokračovať?</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>Neznáma pozícia</value>
+  </data>
+</root>

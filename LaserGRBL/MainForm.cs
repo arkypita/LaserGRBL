@@ -424,14 +424,19 @@ namespace LaserGRBL
 			SetLanguage(new System.Globalization.CultureInfo("ru"));
 		}
 
+		private void chineseToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("zh-CN"));
+		}
+
+		private void slovakToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("sk"));
+		}
+
 		private void MNGrblEmulator_Click(object sender, EventArgs e)
 		{
 			LaserGRBL.GrblEmulator.WebSocketEmulator.Start();
-		}
-
-		private void chinexeToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SetLanguage(new System.Globalization.CultureInfo("zh-CN"));
 		}
 
 		private void blueLaserToolStripMenuItem_Click(object sender, EventArgs e)
@@ -526,6 +531,8 @@ namespace LaserGRBL
 		{
 			Core.OpenFile(this, null, true);
 		}
+
+		
 	}
 
 
