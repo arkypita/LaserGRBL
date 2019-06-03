@@ -6,11 +6,11 @@ I know this whole thing may seem a bit hard at first, there is definitely a bit 
 ## Getting Started
 
 There are some tools that you should definitly have to contribute with translation in a in an effective manner.
-1. A Git client for interact with github (download source code and submit your translation)
-2. A software for edit translation file
+- A Git client for interact with github (download source code and submit your translation)
+- A software for edit translation file
 
-As Git client i suggest to download Github Desktop from here: https://desktop.github.com
-To translate language files I suggest a good tool for editing resx is called ResEx, and could be downloaded here:
+- As Git client i suggest to download Github Desktop from here: https://desktop.github.com
+- To translate language files I suggest a good tool for editing resx is called ResEx, and could be downloaded here:
 [ResExSetup1.2.zip](https://github.com/arkypita/LaserGRBL/files/909750/ResExSetup1.2.zip)
 
 Moreover you should have or register a github account: https://github.com/join
