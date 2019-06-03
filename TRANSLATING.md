@@ -16,4 +16,5 @@ To translate language files I suggest a good tool for editing resx is called Res
 
 - Step one: login or register to github [(video tutorial)](https://test.com)
 
-... to be continued ...
+... to be continue ...
+
