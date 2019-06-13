@@ -1864,7 +1864,7 @@ namespace LaserGRBL
             {
                 FeedHold(true);
             }
-            else //emulate pause by pushing laser off and sleep into stream
+            else //TODO: emulate pause by pushing laser off and sleep into stream
             {
                 
             }
