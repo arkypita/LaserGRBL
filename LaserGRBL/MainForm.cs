@@ -431,7 +431,7 @@ namespace LaserGRBL
 
 		private void slovakToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SetLanguage(new System.Globalization.CultureInfo("sk"));
+			SetLanguage(new System.Globalization.CultureInfo("sk-SK"));
 		}
 
 		private void MNGrblEmulator_Click(object sender, EventArgs e)
