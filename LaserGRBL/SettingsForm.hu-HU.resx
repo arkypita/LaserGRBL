@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Mégsem</value>
+  </data>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>592, 52</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Streaming mód: [Alapértelmezetten Buffered]
+- Buffered: a grbl fogadási puffert kitöltő adatfolyamok optimalizálása [ajánlott]
+- Szinkron: várja meg az egyes parancsok végrehajtását, mielőtt elküldi a következő parancsot [lassabb, de biztonságosabb]
+- RepeatOnError: ugyanaz, mint a szinkron, de ismételje meg a parancsokat, ha hibát észlel [kísérleti]</value>
+  </data>
+  <data name="BtnStreamingMode.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 52</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Csatlakozási protokoll:
+- Az UsbSerial, a leggyakoribb protokoll. Ezt akkor kell használni, ha a gravír USB vagy COM porthoz van csatlakoztatva.
+- Telnet, ha van WiFi-Telnet híd. A kommunikáció úgy történik, mint egy egyszerű telnet kliens-szerver.
+- A LaserWebESP8266 támogatja a WiFi kapcsolatot a WebSocket-en keresztül. Kompatibilis a LaserWeb-ESP8266 szoftverrel.</value>
+  </data>
+  <data name="BtnProtocol.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>491, 39</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Menetvágás mód: Rendkívül gyors, gyors, csendes, lassú. [Alapértelmezett UltraFast]
+Ez a beállítás befolyásolja a szál küldésének sebességét és az állapotjelentés kérésének gyakoriságát.
+Állítson be lassabb értékeket, ha problémák merülnek fel.</value>
+  </data>
+  <data name="BtnThreadingModel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="CbIssueDetector.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 17</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>Problémaérzékelő</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>608, 26</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>A LaserGRBL képes észlelni a problémákat, és figyelmeztetheti a felhasználót, hogy információval szolgáljon azok megoldásáról.
+Ha le van tiltva, akkor az összes problémát figyelmeztetés nélkül csendesen kezeli.</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>442, 13</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Ha engedélyezve van a LaserGRBL, küldjön soft reset-et, amikor a grbl-kapcsolat megnyílik.</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>555, 13</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Ha engedélyezve van a LaserGRBL, küldjön egy hard-reset-et, amikor a grbl-kapcsolat megnyílik. [Pozíció elveszik!]</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>442, 39</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Firmware típus
+- Grbl: a fantasztikus firmware, amelyre a LaserGRBL-t kifejlesztették.
+- Smoothie [kísérleti]: a támogatást nemrégiben adták hozzá, és még nem tesztelték teljesen.</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>Protokoll</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 4</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>582, 39</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>A LaserGRBL az energiamodulációt használja a G-kód "S parancs" segítségével szürkeárnyalatos tónusok előállításához.
+A lézerének támogatnia kell az arduino PIN D11-hez csatlakoztatott TTL vezérlést.
+Ha nem, kérjük, tiltsa le a PWM támogatást.</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 50</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>689, 26</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Alapértelmezés szerint a LaserGRBL gravírozási vonalakat készít a lézerfej mindkét menetirányában. Egyes tesztek azt mutatták, hogy ez a mód (ami gyorsabb) alacsonyabb minőségű eredményeket eredményez. Ha a maximális minõséget kívánja, aktiválja ezt az opciót.</value>
+  </data>
+  <data name="CbUnidirectional.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 17</value>
+  </data>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>Egyirányú gravírozás</value>
+  </data>
+  <data name="CBSupportPWM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 17</value>
+  </data>
+  <data name="CBSupportPWM.Text" xml:space="preserve">
+    <value>PWM támogatás</value>
+  </data>
+  <data name="BtnModulationInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>Raszter import</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 4</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>690, 91</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>A "Folyamatos Jog" nélkül, amikor megnyomja a jog gombot, a LaserGRBL elküldi a Jog kérést állandó sebességgel és mozgással; és a kocogás teljesen befejeződött a végső helyzetbe.
+Ha engedélyezi a "Folyamatos Jog" funkciót, akkor a kocogás az egérbomb lenyomásakor történik, és az egérgomb elengedésekor megszakításra kerül, így hozzávetőleges elhelyezést végezhet, de nagyon kényelmes módon.
+
+MEGJEGYZÉS: A "Folyamatos Jog" csak a Grbl v1.1 vagy újabb verziókkal működik, és a táblázat méretét helyesen kell beállítani a Grbl Konfigurációban ("Grbl" menü&gt;&gt; "Grbl konfiguráció" $ 130, 131 $, 132 $)</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 102</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>569, 13</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>A LaserGRBL nem célja a Z tengely támogatása, de ha van 3axis hardvere, talán hasznosnak találhatja ezt a beállítást.</value>
+  </data>
+  <data name="CbEnableZJog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 17</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Mutassa a Z fel / le irányítását</value>
+  </data>
+  <data name="CbContinuosJog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 17</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>Folyamatos Jog</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Jog kontrol</value>
+  </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>222, 113</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>489, 13</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Kikapcsolt idő: e hűtési idő után a LaserGRBL folytatja a parancsot a gravírozás folytatása érdekében.</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>222, 4</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>670, 65</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Néhány lézerdióda nagyon felmelegszik, ha hosszú ideig a legnagyobb teljesítmény mellett működik. A dióda túlmelegedésének megakadályozása és a lézer élettartamának növelése érdekében hozzáadhat néhány automatikus lehűtési ciklust, amelyek néhány szünetet tartalmaznak a gravírozás során.
+Ha az automatikus hűtés engedélyezve van, a LaserGRBL automatikusan "feed hold" -ot és "job resume" -et küld az ON-OFF időzítés konfigurációjának megfelelően.</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>222, 76</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>382, 26</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Idő BE: ez a maximális idő, ameddig a lézer bekapcsol a gravírozás során.
+Ez idő elteltével a LaserGRBL automatikus várakozást küld a lézer lehűléséhez.</value>
+  </data>
+  <data name="CbAutoCooling.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 17</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>Automatikus hűtés engedélyezése</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>77, 7</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>perc</value>
+  </data>
+  <data name="CbOnMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 3</value>
+  </data>
+  <data name="CbOnSec.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 3</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 13</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Be</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 7</value>
+  </data>
+  <data name="tableLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 73</value>
+  </data>
+  <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 27</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 7</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>perc</value>
+  </data>
+  <data name="CbOffMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 3</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Ki</value>
+  </data>
+  <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 106</value>
+  </data>
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>183, 137</value>
+  </data>
+  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>222, 134</value>
+  </data>
+  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>559, 39</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Figyelem: ez a szolgáltatás csak a&gt; v1.1 grbl verziók esetén működik, ha a „lézeres üzemmód” engedélyezve van.
+Ha önhűtést használ egy régebbi grbl verzióval (vagy letiltott lézer üzemmóddal), a lézer szünetek alatt nem kapcsol ki
+és lyukakat éget a munkájában!</value>
+  </data>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>Automata hűtés</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
+</root>

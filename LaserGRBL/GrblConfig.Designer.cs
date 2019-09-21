@@ -77,8 +77,8 @@
             // 
             // BtnCancel
             // 
-            this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.BtnCancel, "BtnCancel");
+            this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.UseVisualStyleBackColor = true;
             this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
@@ -105,9 +105,9 @@
             // 
             // GB
             // 
+            resources.ApplyResources(this.GB, "GB");
             this.GB.Controls.Add(this.LblAction);
             this.GB.Controls.Add(this.DGV);
-            resources.ApplyResources(this.GB, "GB");
             this.GB.Name = "GB";
             this.GB.TabStop = false;
             // 
@@ -121,6 +121,7 @@
             // 
             // DGV
             // 
+            resources.ApplyResources(this.DGV, "DGV");
             this.DGV.AllowUserToAddRows = false;
             this.DGV.AllowUserToDeleteRows = false;
             this.DGV.AllowUserToResizeRows = false;
@@ -132,7 +133,6 @@
             this.Unit,
             this.Description,
             this.Number});
-            resources.ApplyResources(this.DGV, "DGV");
             this.DGV.Name = "DGV";
             this.DGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DGV_DataError);
             // 

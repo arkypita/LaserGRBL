@@ -118,8 +118,8 @@
             // 
             // BtnCancel
             // 
-            this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.BtnCancel, "BtnCancel");
+            this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.UseVisualStyleBackColor = true;
             this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
@@ -133,18 +133,18 @@
             // 
             // MainTabPage
             // 
+            resources.ApplyResources(this.MainTabPage, "MainTabPage");
             this.MainTabPage.Controls.Add(this.TpHardware);
             this.MainTabPage.Controls.Add(this.TpRasterImport);
             this.MainTabPage.Controls.Add(this.TpJogControl);
             this.MainTabPage.Controls.Add(this.TpAutoCooling);
-            resources.ApplyResources(this.MainTabPage, "MainTabPage");
             this.MainTabPage.Name = "MainTabPage";
             this.MainTabPage.SelectedIndex = 0;
             // 
             // TpHardware
             // 
-            this.TpHardware.Controls.Add(this.tableLayoutPanel3);
             resources.ApplyResources(this.TpHardware, "TpHardware");
+            this.TpHardware.Controls.Add(this.tableLayoutPanel3);
             this.TpHardware.Name = "TpHardware";
             this.TpHardware.UseVisualStyleBackColor = true;
             // 
@@ -198,11 +198,11 @@
             // 
             // BtnStreamingMode
             // 
+            resources.ApplyResources(this.BtnStreamingMode, "BtnStreamingMode");
             this.BtnStreamingMode.AltImage = null;
             this.BtnStreamingMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnStreamingMode.Coloration = System.Drawing.Color.Empty;
             this.BtnStreamingMode.Image = ((System.Drawing.Image)(resources.GetObject("BtnStreamingMode.Image")));
-            resources.ApplyResources(this.BtnStreamingMode, "BtnStreamingMode");
             this.BtnStreamingMode.Name = "BtnStreamingMode";
             this.BtnStreamingMode.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
             this.BtnStreamingMode.UseAltImage = false;
@@ -222,11 +222,11 @@
             // 
             // BtnProtocol
             // 
+            resources.ApplyResources(this.BtnProtocol, "BtnProtocol");
             this.BtnProtocol.AltImage = null;
             this.BtnProtocol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnProtocol.Coloration = System.Drawing.Color.Empty;
             this.BtnProtocol.Image = ((System.Drawing.Image)(resources.GetObject("BtnProtocol.Image")));
-            resources.ApplyResources(this.BtnProtocol, "BtnProtocol");
             this.BtnProtocol.Name = "BtnProtocol";
             this.BtnProtocol.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
             this.BtnProtocol.UseAltImage = false;
@@ -239,11 +239,11 @@
             // 
             // BtnThreadingModel
             // 
+            resources.ApplyResources(this.BtnThreadingModel, "BtnThreadingModel");
             this.BtnThreadingModel.AltImage = null;
             this.BtnThreadingModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnThreadingModel.Coloration = System.Drawing.Color.Empty;
             this.BtnThreadingModel.Image = ((System.Drawing.Image)(resources.GetObject("BtnThreadingModel.Image")));
-            resources.ApplyResources(this.BtnThreadingModel, "BtnThreadingModel");
             this.BtnThreadingModel.Name = "BtnThreadingModel";
             this.BtnThreadingModel.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
             this.BtnThreadingModel.UseAltImage = false;
@@ -289,8 +289,8 @@
             // 
             // TpRasterImport
             // 
-            this.TpRasterImport.Controls.Add(this.tableLayoutPanel4);
             resources.ApplyResources(this.TpRasterImport, "TpRasterImport");
+            this.TpRasterImport.Controls.Add(this.tableLayoutPanel4);
             this.TpRasterImport.Name = "TpRasterImport";
             this.TpRasterImport.UseVisualStyleBackColor = true;
             // 
@@ -328,11 +328,11 @@
             // 
             // BtnModulationInfo
             // 
+            resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
             this.BtnModulationInfo.AltImage = null;
             this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
             this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
-            resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
             this.BtnModulationInfo.Name = "BtnModulationInfo";
             this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
             this.BtnModulationInfo.UseAltImage = false;
@@ -340,8 +340,8 @@
             // 
             // TpJogControl
             // 
-            this.TpJogControl.Controls.Add(this.tableLayoutPanel5);
             resources.ApplyResources(this.TpJogControl, "TpJogControl");
+            this.TpJogControl.Controls.Add(this.tableLayoutPanel5);
             this.TpJogControl.Name = "TpJogControl";
             this.TpJogControl.UseVisualStyleBackColor = true;
             // 
@@ -378,8 +378,8 @@
             // 
             // TpAutoCooling
             // 
-            this.TpAutoCooling.Controls.Add(this.tableLayoutPanel6);
             resources.ApplyResources(this.TpAutoCooling, "TpAutoCooling");
+            this.TpAutoCooling.Controls.Add(this.tableLayoutPanel6);
             this.TpAutoCooling.Name = "TpAutoCooling";
             this.TpAutoCooling.UseVisualStyleBackColor = true;
             // 

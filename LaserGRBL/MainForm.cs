@@ -434,7 +434,12 @@ namespace LaserGRBL
 			SetLanguage(new System.Globalization.CultureInfo("sk-SK"));
 		}
 
-		private void MNGrblEmulator_Click(object sender, EventArgs e)
+        private void hungarianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetLanguage(new System.Globalization.CultureInfo("hu-HU"));
+        }
+
+        private void MNGrblEmulator_Click(object sender, EventArgs e)
 		{
 			LaserGRBL.GrblEmulator.WebSocketEmulator.Start();
 		}
@@ -532,11 +537,11 @@ namespace LaserGRBL
 			Core.OpenFile(this, null, true);
 		}
 
-		
-	}
+
+    }
 
 
-	public class MMnRenderer : ToolStripProfessionalRenderer
+    public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 
