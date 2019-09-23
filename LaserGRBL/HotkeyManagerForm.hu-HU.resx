@@ -275,14 +275,15 @@
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Gyorsbillentyű-kezelő</value>
+    <value>Gyorsgomb-kezelő</value>
   </data>
   <data name="LblConnect.Text" xml:space="preserve">
-    <value>Írjon be bármilyen billentyűkombinációt a parancsikon beállításához.
+    <value>Írjon be bármilyen billentyűkombinációt
+a parancsikon beállításához.
 Nyomja meg a "DEL" gombot a parancsikon eltávolításához.</value>
   </data>
   <data name="GB.Text" xml:space="preserve">
-    <value>Elérhető parancsikon</value>
+    <value>Elérhető parancsok</value>
   </data>
   <data name="Action.HeaderText" xml:space="preserve">
     <value>Akció</value>
@@ -291,7 +292,7 @@ Nyomja meg a "DEL" gombot a parancsikon eltávolításához.</value>
     <value>Mégsem</value>
   </data>
   <data name="Shortcut.HeaderText" xml:space="preserve">
-    <value>Parancsikon</value>
+    <value>Parancs</value>
   </data>
   <data name="BtnSave.Text" xml:space="preserve">
     <value>Mentés</value>

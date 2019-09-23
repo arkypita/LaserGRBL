@@ -210,10 +210,10 @@ Felül szeretné írni a konfigurációt?</value>
     <value>{0} konfiguráció sikeresen kiírva!</value>
   </data>
   <data name="CustomButtonEdit" xml:space="preserve">
-    <value>Szerkesztés gomb</value>
+    <value>Egyéni gomb szerkesztse</value>
   </data>
   <data name="CustomButtonRemove" xml:space="preserve">
-    <value>Eltávolítás gomb</value>
+    <value>Egyéni gomb eltávolítása</value>
   </data>
   <data name="DirectionDiagonal" xml:space="preserve">
     <value>Átlós</value>
