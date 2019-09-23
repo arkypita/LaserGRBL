@@ -121,7 +121,7 @@
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAbfSURBVEhLfdULUJNXFgDgs+uO
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAbfSURBVEhLfdULUJNXFgDgs+uO
         49rZXXfp+qjazi52tTtdSy11p62yWrqjq+VRRN5MSIBAgPIKBJZnFAIrCBteEggYUSIgiCCglDrUBQwS
         AREVBCmPEB55EhJDeEjO3lCHmQ7oP/PN/Scz95xzb869P2Rm8t8oI6MQeDkFWwTFlzZvC5vaDW4vqvZG
         TwP7SpfZ6avXNzlUVoBjRdVrQWlp2RuVlVVA3oXi801luQKb1G4AZ6P9kZg+YOffrfHNancPymiHwDcA
@@ -157,7 +157,7 @@
   <data name="BtFlipH.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAa5SURBVEhLpZR7UJNXFsDP7Ky7
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAa5SURBVEhLpZR7UJNXFsDP7Ky7
         2+5acIfZrg67W3GHah8ottMqrWPZKtpRgYABeZNACK8ASYCEvMRIgaoEebjYVnmJaAMUa0VQYUcFdRW2
         O+oWwVLEJITEQB5fXkQCZ2+y3dmdnX203T9+c8+93/fd3z3n3PkgNzePkO8ZV+TkFAzQ6fGC5GTmMwKB
         mKzxgMXKguLiEigqkkB2NhfIO8DnC6GgoAiysvLJupg8F3kRCCTkGy5wucUglR4k81IgL+V5SUhg+B46
@@ -192,7 +192,7 @@
   <data name="BtRotateCW.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADiUAAA4lAQ9WBJEAAAXQSURBVEhLddMJTJN3GMfxJ17T
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADiQAAA4kAd0R5nUAAAXQSURBVEhLddMJTJN3GMfxJ17T
         zDgzt8kIGsdURHQ6dOocDhTE+8JjLprpzLJlHotZYubinNlcFuOReYsyEGqh4gUIRVEQpvO+HQqI0tK3
         b/tebYEKiBN+e94iWpSRfNIG6PN9n//7lsTdgc8544NISehNWmIfciUFkzu536La5N6mp8kBp2oNwZdr
         jAOKH6UOuPUoNfRsbVpodp1p4B4WxajF4/RB1HBo8HNtBtTE4DWupPetSOhw6d/EbuvchrDopv3dwpBE
@@ -223,7 +223,7 @@
   <data name="BtRotateCCW.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADiUAAA4lAQ9WBJEAAAXjSURBVEhLfZJ5TBR3GIa/WLWa
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADiQAAA4kAd0R5nUAAAXjSURBVEhLfZJ5TBR3GIa/WLWa
         GmpqW61RY6mKiFarVq3FQgXxvhCtjaZa07SpR2OamNpYa1qbxnik3qIrCOvCihcgh6KsUK33iUUBOXbZ
         2dmda4djBcQKb7/BLhGP/vFkZ3dmn/f9vvlR4+EhrTxMGUz11kFPE87sqUsOzniQFHzuQdLA27WWgYV1
         5sArjxN6nK5L6GPVE/ov8sYHkhbXlxRTH/LE9iJxd89Wng6YxAFD/hMvYwrrkgfdZGmiLyn4uzpLUCgS
@@ -326,7 +326,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEgAACxIB0t1+/AAAAkFJREFUSEtj+P//P00x
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEQAACxEBf2RfkQAAAkFJREFUSEtj+P//P00x
         VkFqYhRORmpyfVtzw2xKsJeHmzWymSgWzJg6cd/7Ny/+k4tXLl/yPyjALxXZTKpZcOjA3v+WFub4LZg1
         bTJZFjx7fP8/Dw/PfwuQBYH+eCyYPoVkC969fv5fRVkZaBID2IJgvBbMIN0CD3c3sOFwC4ICcFswm0QL
         Ottb4IYTacFUDAuuXr7wv6un579vYMh/FU19MA3ib92y6T8TExOGBSHBgfgsmIZiAcjwjOzc/3IqWihY
@@ -473,10 +473,10 @@
     <value>Raszteres kép importálása</value>
   </data>
   <data name="BtnFillingQualityInfo.ToolTip" xml:space="preserve">
-    <value>If resolution does not match with stepper pitch some artifacts may appear! Click to compute a reliable resolution...</value>
+    <value>Ha a felbontás nem egyezik a léptetőmotor lépéshosszával, hibák jelenhetnek meg! Kattintson egy megbízható felbontás kiszámításához ...</value>
   </data>
   <data name="BtnQualityInfo.ToolTip" xml:space="preserve">
-    <value>If resolution does not match with stepper pitch some artifacts may appear! Click to compute a reliable resolution...</value>
+    <value>Ha a felbontás nem egyezik a léptetőmotor lépéshosszával, hibák jelenhetnek meg! Kattintson egy megbízható felbontás kiszámításához ...</value>
   </data>
   <data name="BtFlipV.ToolTip" xml:space="preserve">
     <value>A kép függőleges tükrözése</value>
@@ -509,10 +509,10 @@
     <value>Átméretezési mód vezérlése (sima vagy kemény élek)</value>
   </data>
   <data name="RbLineToLineTracing.Text" xml:space="preserve">
-    <value>Line To Line Tracing</value>
+    <value>Sorról sorra leképzés</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>White Clip</value>
+    <value>Fehér vágása</value>
   </data>
   <data name="CbMode.ToolTip" xml:space="preserve">
     <value>Válassza ki a színkonverziós képletet</value>
@@ -524,10 +524,10 @@
     <value>Eredeti</value>
   </data>
   <data name="LblDitherMode.Text" xml:space="preserve">
-    <value>Dithering</value>
+    <value>Színkonverzió</value>
   </data>
   <data name="GbVectorizeOptions.Text" xml:space="preserve">
-    <value>Vectorize! Opciók</value>
+    <value>Vectorize! lehetőségek</value>
   </data>
   <data name="TBLineThreshold.ToolTip" xml:space="preserve">
     <value>Ha a spline csak ennél messze van a végpontjai által meghatározott egyenestől, akkor adjon ki egy egyeneset.</value>
@@ -539,7 +539,7 @@
     <value>Sarokküszöb</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
-    <value>Spot Removal</value>
+    <value>Folt eltávolítása</value>
   </data>
   <data name="label28.Text" xml:space="preserve">
     <value>Átméretezés</value>
@@ -575,7 +575,7 @@
     <value>Vörös</value>
   </data>
   <data name="GbLineToLineOptions.Text" xml:space="preserve">
-    <value>Line To Line Options</value>
+    <value>Sorról sorra leképzés lehetőségek</value>
   </data>
   <data name="LblFillingLineLbl.Text" xml:space="preserve">
     <value>Vonal/mm</value>
@@ -605,7 +605,7 @@
     <value>Távolítsa el az apró részleteket</value>
   </data>
   <data name="RbDithering.Text" xml:space="preserve">
-    <value>1bit BW Dithering</value>
+    <value>1bit FF Színkonverzió</value>
   </data>
   <data name="UDOptimize.ToolTip" xml:space="preserve">
     <value>Optimalizálja az utat (kevesebb szegmenst állítson elő)</value>
@@ -614,16 +614,16 @@
     <value>Paraméterek</value>
   </data>
   <data name="lOptimizeFast.Text" xml:space="preserve">
-    <value>Optimalizálja az utazást</value>
+    <value>Optimalizálja a mozgást</value>
   </data>
   <data name="label24.Text" xml:space="preserve">
     <value>Optimalizál</value>
   </data>
   <data name="GbCenterlineOptions.Text" xml:space="preserve">
-    <value>Középvonal beállításai</value>
+    <value>Középvonal lehetőségek</value>
   </data>
   <data name="CbThreshold.Text" xml:space="preserve">
-    <value>B&amp;&amp;W</value>
+    <value>F&amp;&amp;F</value>
   </data>
   <data name="CbDirections.ToolTip" xml:space="preserve">
     <value>Gravírozási irány</value>
