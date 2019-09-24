@@ -183,7 +183,7 @@ Felül szeretné írni a konfigurációt?</value>
     <value>{0} konfiguráció sikeresen importálva!</value>
   </data>
   <data name="BoxImportCustomButtonCaption" xml:space="preserve">
-    <value>Egyéni gomb importálása</value>
+    <value>Egyéni gombok importálása</value>
   </data>
   <data name="BoxImportCustomButtonClearText" xml:space="preserve">
     <value>Eltávolítja az akutális gombokat? Válassza az igen lehetőséget az eltávolításhoz, a nem-et a megtartáshoz.</value>
@@ -210,7 +210,7 @@ Felül szeretné írni a konfigurációt?</value>
     <value>{0} konfiguráció sikeresen kiírva!</value>
   </data>
   <data name="CustomButtonEdit" xml:space="preserve">
-    <value>Egyéni gomb szerkesztse</value>
+    <value>Egyéni gomb szerkesztése</value>
   </data>
   <data name="CustomButtonRemove" xml:space="preserve">
     <value>Egyéni gomb eltávolítása</value>
@@ -228,10 +228,10 @@ Felül szeretné írni a konfigurációt?</value>
     <value>Függőleges</value>
   </data>
   <data name="DisconnectAnyway" xml:space="preserve">
-    <value>A fájlátvitel folyamatban van. Húzza le a kapcsolatot?</value>
+    <value>A fájlátvitel folyamatban van. Megszakítja a kapcsolatot?</value>
   </data>
   <data name="ExitAnyway" xml:space="preserve">
-    <value>A fájlátvitel folyamatban van. Kilépsz egyébként?</value>
+    <value>A fájlátvitel folyamatban van. Biztos, hogy kilépsz?</value>
   </data>
   <data name="FirmwareRequireRestart" xml:space="preserve">
     <value>Újraindítás szükséges</value>
@@ -261,7 +261,7 @@ Felül szeretné írni a konfigurációt?</value>
     <value>Újraindítás szükséges</value>
   </data>
   <data name="LanguageRequireRestartNow" xml:space="preserve">
-    <value>Igényel az alkalmazás újraindítását, indítsa újra most?</value>
+    <value>Az alkalmazás újraindítást igényel, újraindítja most?</value>
   </data>
   <data name="MacStatusAlarm" xml:space="preserve">
     <value>Riasztás</value>
@@ -291,7 +291,7 @@ Felül szeretné írni a konfigurációt?</value>
     <value>Jog</value>
   </data>
   <data name="MacStatusRun" xml:space="preserve">
-    <value>Run</value>
+    <value>Fut</value>
   </data>
   <data name="MacStatusUnknown" xml:space="preserve">
     <value>Ismeretlen</value>
