@@ -151,6 +151,6 @@
     <value>Emulated Grbl v1.1#</value>
   </data>
   <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Connect</value>
+    <value>Csatlakozás</value>
   </data>
 </root>

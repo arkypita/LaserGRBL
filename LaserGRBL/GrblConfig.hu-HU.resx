@@ -121,7 +121,7 @@
   <data name="BtnWrite.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAaCSURBVFhHxVcJUFNHGEZAQG4U
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADsIAAA7CARUoSoAAAAaCSURBVFhHxVcJUFNHGEZAQG4U
         lAAGCgqKXBFEFAgIchOCiE69KojjiEAEkiigJoAggoAio47YMgIKKFo8EauC9QSPesxota3aVq1XtS2K
         U23r190H4pGto50O/Wa+bPLt/v/37+57b1/UAPyvZIq9SabYm2SLb4OvpjV37tx5CkW2YsGCBYrcvDzF
         nqYmRVNzs6KpqVmxa88eRW5uHunLUNAxcxITk63UrLS7o3vA9GKKb0EoDPCJnzUbaWlSpEhSkUrajVU1
@@ -155,7 +155,7 @@
   <data name="BtnRead.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAZTSURBVFhHxVd7UFRlFFdEIVPB
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADsIAAA7CARUoSoAAAAZTSURBVFhHxVd7UFRlFFdEIVPB
         ERSClIEGFBUQlRCWhxAPgWURN6dIE8QxiWUFdxdEbRcYBFFxRZrRYcpEFHQwX4NApdj4AMy3aZPvwibf
         poimhv4632W57WVvqP1Bv5kfl3Pud77f+b5zvnvv9gLwv1LU2ZMUdfYkxZ1dMbxXv3nz5n2q1eZoMzMz
         tXn5+dqa2lptbX29tra2Xru7pkabl5dP9xZq2Zi5KSkKx16OFoZoHqJaos4uCAwMkSTNnoOMDBXSlOlI
@@ -280,7 +280,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAAOwwAADsMBx2+oZAAACpdJREFUWEfdmAlUFEca
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAAOwgAADsIBFShKgAAACpdJREFUWEfdmAlUFEca
         x/EEj0TzgI2urHEhTyMo4BkPBIUIBAQ80EVNjKAJKDhyiucQXMQTlSOCrA6XCgnIkR0ONUIUBAw3UQMi
         aECFGVAEEQMC//2qmQEZATXvZfdl/+/9u4vuqur6dX1fVQ9yAP4v3HmQ1Xi5oXZ2dpv5/K/527Zt4+/1
         8uILk5L4SSkp/KSkFP73QiF/714vuredz+p8tWmTg4qcirykdZdkH/ZHuvMgI11dfR1rm41wcnLBFp4j
@@ -376,7 +376,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAAOwwAADsMBx2+oZAAACx9JREFUWEfdmHk8V9kb
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAAOwgAADsIBFShKgAAACx9JREFUWEfdmHk8V9kb
         x+9IWmQbmkipYaYmSpRpzNjaLBNipEaZpqiZKClbkfqqRgtFodIqW1EpKcQ0GEOW7F4tVFqJ71eILEX5
         zDmXrzCY6jfzx/ye1+tzz3HvOec+7/s857nXlwHwfyH2EBgYWHL8eBDvRFA49/CRMO6hwFDuoUNEB0O5
         Bw50yj+ElT/V/mCu/75grl9f8qUiY/1CuYEHg3iBgYdLet/03xB7IBAt0bF/4EpKFY4EP4L3/nvYvbcM
@@ -526,8 +526,8 @@
   </data>
   <data name="LblConnect.Text" xml:space="preserve">
     <value>Az olvasás és az írás csak 
-csatlakoztatva és tétlen 
-állapotban van engedélyezve</value>
+Csatlakoztatott ÉS Tétlen 
+állapotban engedélyezett.</value>
   </data>
   <data name="Description.HeaderText" xml:space="preserve">
     <value>Leírás</value>
@@ -543,5 +543,8 @@ csatlakoztatva és tétlen
   </data>
   <data name="Value.HeaderText" xml:space="preserve">
     <value>Érték</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Grbl</value>
   </data>
 </root>

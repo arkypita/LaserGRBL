@@ -278,9 +278,9 @@
     <value>Gyorsgomb-kezelő</value>
   </data>
   <data name="LblConnect.Text" xml:space="preserve">
-    <value>Írjon be bármilyen billentyűkombinációt
-a parancsikon beállításához.
-Nyomja meg a "DEL" gombot a parancsikon eltávolításához.</value>
+    <value>Nyomjon le bármilyen billentyűkombinációt
+a Gyorsgomb beállításához.
+Nyomja meg a "DEL" gombot a Gyorsgomb eltávolításához.</value>
   </data>
   <data name="GB.Text" xml:space="preserve">
     <value>Elérhető parancsok</value>
@@ -292,7 +292,7 @@ Nyomja meg a "DEL" gombot a parancsikon eltávolításához.</value>
     <value>Mégsem</value>
   </data>
   <data name="Shortcut.HeaderText" xml:space="preserve">
-    <value>Parancs</value>
+    <value>Gyorsgomb</value>
   </data>
   <data name="BtnSave.Text" xml:space="preserve">
     <value>Mentés</value>
