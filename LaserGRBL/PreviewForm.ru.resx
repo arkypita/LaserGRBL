@@ -147,4 +147,16 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Предварительный просмотр</value>
   </data>
+  <data name="exportCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Экспорт пользовательских кнопок</value>
+  </data>
+  <data name="importCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Импорт пользовательских кнопок</value>
+  </data>
+  <data name="BtnHoming.ToolTip" xml:space="preserve">
+    <value>Нулевая позиция ($H)</value>
+  </data>
+  <data name="BtnZeroing.ToolTip" xml:space="preserve">
+    <value>Установить нулевую точку (G92)</value>
+  </data>
 </root>

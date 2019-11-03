@@ -149,7 +149,7 @@
     <value>Успешно</value>
   </data>
   <data name="BoxImportConfigFileError" xml:space="preserve">
-    <value>EОшибка чтения файла!</value>
+    <value>Ошибка чтения файла!</value>
   </data>
   <data name="BoxImportConfigWithError" xml:space="preserve">
     <value>{0} Конфигурация импортирована с  {1} ошибками!</value>
@@ -237,5 +237,77 @@
   </data>
   <data name="MainFormProjectedTime" xml:space="preserve">
     <value>Планируемое время :</value>
+  </data>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>Прервать текущую работу?</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>Есть некоторые изменения, которые не были применены.
+Хотите переписать конфигурацию?</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>Обнаружены изменения!</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>Пожалуйста, предоставьте команды G-кода</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>Просьба представить текст всплывающей подсказки</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>Отсутствует поле</value>
+  </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить выбранную кнопку?</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>Удалить пользовательскую кнопку</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>Импорт пользовательской кнопки</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>Удалить актуальные кнопки? Выберите да, чтобы удалить, нет, чтобы сохранить.</value>
+  </data>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>подтверждение</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>Ошибка чтения конфигурации!</value>
+  </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>Отображение кэшированных значений ...</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} Конфигурация успешно прочитана!</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>Без изменений ... нечего писать!</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} Конфигурация записана с ошибками {1}!</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} Конфигурация успешно записана!</value>
+  </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>Идет передача файла. Отключить в любом случае?</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>Идет передача файла. Выход в любом случае?</value>
+  </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>Требуется перезагрузка</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>Для применения изменений типа прошивки требуется перезагрузка. Перезагрузить сейчас?</value>
+  </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>Кажется, что текущая позиция больше не известна Grbl.
+Без процедуры возврата в исходное положение ($ H) результат может быть ненадежным.
+Продолжить в любом случае?</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>Неизвестная позиция</value>
   </data>
 </root>

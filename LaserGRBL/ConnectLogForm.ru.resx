@@ -144,4 +144,25 @@
   <data name="BtnOpen.ToolTip" xml:space="preserve">
     <value>Открыть файл</value>
   </data>
+  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
+    <value>Выполнить несколько проходов</value>
+  </data>
+  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
+    <value>Прервать программу</value>
+  </data>
+  <data name="LblEmulator.Text" xml:space="preserve">
+    <value>Эмулятор</value>
+  </data>
+  <data name="LblComPort.Text" xml:space="preserve">
+    <value>COM</value>
+  </data>
+  <data name="LblBaudRate.Text" xml:space="preserve">
+    <value>скорость передачи</value>
+  </data>
+  <data name="LblAddress.Text" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="TxtEmulator.Text" xml:space="preserve">
+    <value>Эмулятор Grbl v1.1 #</value>
+  </data>
 </root>
