@@ -532,7 +532,10 @@ namespace LaserGRBL
 			Core.OpenFile(this, null, true);
 		}
 
-		
+		private void hungarianToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("hu-HU"));
+		}
 	}
 
 

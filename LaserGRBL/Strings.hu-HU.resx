@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>Megszakítja az aktuális munkát?</value>
+  </data>
+  <data name="BoxAutoUpdateFailed" xml:space="preserve">
+    <value>Az automatikus frissítés sikertelen!
+Kérjük, manuálisan töltse le az új verziót a lasergrbl webhelyről.</value>
+  </data>
+  <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
+    <value>A frissítéshez rendszergazdai jogosultság szükséges!</value>
+  </data>
+  <data name="BoxAutoUpdateResult" xml:space="preserve">
+    <value>Frissítés eredménye</value>
+  </data>
+  <data name="BoxAutoUpdateSuccess" xml:space="preserve">
+    <value>Frissítés sikeres!</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>Vannak olyan módosítások, amelyeket nem alkalmaztak.
+Felül szeretné írni a konfigurációt?</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>A változások észlelve!</value>
+  </data>
+  <data name="BoxConnectErrorTitle" xml:space="preserve">
+    <value>Nem lehet csatlakozni az eszközhöz</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>Kérjük, adja meg a GCode parancsokat</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>Kérjük, adja meg az eszköztipp szövegét</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>Hiányzó mező</value>
+  </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>Biztosan törli a kiválasztott gombot?</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>Az egyéni gomb törlése</value>
+  </data>
+  <data name="BoxExportConfigError" xml:space="preserve">
+    <value>Hiba a konfiguráció exportálásakor!</value>
+  </data>
+  <data name="BoxExportConfigErrorTitle" xml:space="preserve">
+    <value>Hiba</value>
+  </data>
+  <data name="BoxExportConfigFileNotFound" xml:space="preserve">
+    <value>A fájl nem létezik!</value>
+  </data>
+  <data name="BoxExportConfigSuccess" xml:space="preserve">
+    <value>{0} konfiguráció sikeresen exportálva!</value>
+  </data>
+  <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
+    <value>Siker</value>
+  </data>
+  <data name="BoxImportConfigFileError" xml:space="preserve">
+    <value>Hiba a fájl olvasása közben!</value>
+  </data>
+  <data name="BoxImportConfigWithError" xml:space="preserve">
+    <value>{0} konfiguráció importálása {1} hibával történt!</value>
+  </data>
+  <data name="BoxImportConfigWithoutError" xml:space="preserve">
+    <value>{0} konfiguráció sikeresen importálva!</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>Egyéni gombok importálása</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>Eltávolítja az akutális gombokat? Válassza az igen lehetőséget az eltávolításhoz, a nem-et a megtartáshoz.</value>
+  </data>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>Megerősítés</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>Hiba a konfiguráció olvasásakor!</value>
+  </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>Tárolt értékek megjelenítése</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} konfiguráció sikeresen beolvasva!</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>Nincs változás ... nincs mit írni!</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} konfiguráció kiírva {1} hibával!</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} konfiguráció sikeresen kiírva!</value>
+  </data>
+  <data name="CustomButtonEdit" xml:space="preserve">
+    <value>Egyéni gomb szerkesztése</value>
+  </data>
+  <data name="CustomButtonRemove" xml:space="preserve">
+    <value>Egyéni gomb eltávolítása</value>
+  </data>
+  <data name="DirectionDiagonal" xml:space="preserve">
+    <value>Átlós</value>
+  </data>
+  <data name="DirectionHorizontal" xml:space="preserve">
+    <value>Vízszintes</value>
+  </data>
+  <data name="DirectionNone" xml:space="preserve">
+    <value>Egyik sem</value>
+  </data>
+  <data name="DirectionVertical" xml:space="preserve">
+    <value>Függőleges</value>
+  </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>A fájlátvitel folyamatban van. Megszakítja a kapcsolatot?</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>A fájlátvitel folyamatban van. Biztos, hogy kilépsz?</value>
+  </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>Újraindítás szükséges</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>Újraindítás szükséges a firmware-típusú változások végrehajtásához. Újraindítás most?</value>
+  </data>
+  <data name="FormulaCustom" xml:space="preserve">
+    <value>Egyedi</value>
+  </data>
+  <data name="FormulaOpticalCorrect" xml:space="preserve">
+    <value>OpticalCorrect</value>
+  </data>
+  <data name="FormulaSimpleAverage" xml:space="preserve">
+    <value>SimpleAverage</value>
+  </data>
+  <data name="FormulaWeightAverage" xml:space="preserve">
+    <value>WeightAverage</value>
+  </data>
+  <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
+    <value>Smooth (HQ Bicubic)</value>
+  </data>
+  <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
+    <value>Sharp (NearestNeighbor)</value>
+  </data>
+  <data name="LanguageRequireRestart" xml:space="preserve">
+    <value>Újraindítás szükséges</value>
+  </data>
+  <data name="LanguageRequireRestartNow" xml:space="preserve">
+    <value>Az alkalmazás újraindítást igényel, újraindítja most?</value>
+  </data>
+  <data name="MacStatusAlarm" xml:space="preserve">
+    <value>Riasztás</value>
+  </data>
+  <data name="MacStatusCheck" xml:space="preserve">
+    <value>Jelölje be</value>
+  </data>
+  <data name="MacStatusConnecting" xml:space="preserve">
+    <value>Csatlakozás</value>
+  </data>
+  <data name="MacStatusDisconnected" xml:space="preserve">
+    <value>Lecsatlakozva</value>
+  </data>
+  <data name="MacStatusDoor" xml:space="preserve">
+    <value>Ajtó</value>
+  </data>
+  <data name="MacStatusHold" xml:space="preserve">
+    <value>Tartásban</value>
+  </data>
+  <data name="MacStatusHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="MacStatusIdle" xml:space="preserve">
+    <value>Tétlen</value>
+  </data>
+  <data name="MacStatusJog" xml:space="preserve">
+    <value>Jog</value>
+  </data>
+  <data name="MacStatusRun" xml:space="preserve">
+    <value>Fut</value>
+  </data>
+  <data name="MacStatusUnknown" xml:space="preserve">
+    <value>Ismeretlen</value>
+  </data>
+  <data name="MainFormEstimatedTime" xml:space="preserve">
+    <value>Becsült idő:</value>
+  </data>
+  <data name="MainFormProjectedTime" xml:space="preserve">
+    <value>Tervezett idő:</value>
+  </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>Úgy tűnik, hogy Grbl már nem ismeri a jelenlegi helyzetet.
+Home eljárás nélkül ($ H) az eredmény nem biztos, hogy megbízható.
+Mindenképp folytatni?</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>Ismeretlen helyzet</value>
+  </data>
+</root>
