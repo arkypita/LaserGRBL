@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "LaserGRBL"
-#define MyAppVersion "3.0.17"
+#define MyAppVersion "3.0.18"
 #define MyAppVersionName "Rhyhorn"
 #define MyAppPublisher "LaserGRBL"
 #define MyAppURL "http://lasergrbl.com"
@@ -54,6 +54,7 @@ Source: ".\LaserGRBL\bin\Release\pt-BR\LaserGRBL.resources.dll"; DestDir: "{app}
 Source: ".\LaserGRBL\bin\Release\ru\LaserGRBL.resources.dll"; DestDir: "{app}\ru"; Flags: ignoreversion
 Source: ".\LaserGRBL\bin\Release\zh-CN\LaserGRBL.resources.dll"; DestDir: "{app}\zh-CN"; Flags: ignoreversion
 Source: ".\LaserGRBL\bin\Release\sk-SK\LaserGRBL.resources.dll"; DestDir: "{app}\sk-SK"; Flags: ignoreversion
+Source: ".\LaserGRBL\bin\Release\hu-HU\LaserGRBL.resources.dll"; DestDir: "{app}\hu-HU"; Flags: ignoreversion
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
