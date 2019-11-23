@@ -539,7 +539,7 @@ namespace LaserGRBL
 
 		private void czechToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SetLanguage(new System.Globalization.CultureInfo("cz-CZ"));
+			SetLanguage(new System.Globalization.CultureInfo("cs-CZ"));
 		}
 	}
 
