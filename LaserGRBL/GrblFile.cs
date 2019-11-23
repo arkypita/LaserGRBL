@@ -283,8 +283,8 @@ namespace LaserGRBL
 			foreach (string code in gc)
 				list.Add(new GrblCommand(code));
 
-			//laser off
-			list.Add(new GrblCommand(String.Format("{0}", c.lOff)));
+			//laser off (superflua??)
+			//list.Add(new GrblCommand(String.Format("{0}", c.lOff)));
 
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;

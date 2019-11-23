@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 
@@ -695,7 +696,7 @@ namespace LaserGRBL
 			if (CanSendFile)
 			{
 				if (mTP.Executed == 0 || mTP.Executed == mTP.Target) //mai iniziato oppure correttamente finito
-					RunProgramFromStart(false);
+					RunProgramFromStart(false, true);
 				else
 					UserWantToContinue();
 			}
@@ -749,21 +750,41 @@ namespace LaserGRBL
 				ContinueProgramFromKnown(position, homing, setwco);
 		}
 
-		private void RunProgramFromStart(bool homing)
+		private void RunProgramFromStart(bool homing, bool first = false, bool pass = false)
 		{
 			lock (this)
 			{
 				ClearQueue(true);
 
 				mTP.Reset();
-				mTP.JobStart(LoadedFile);
-				Logger.LogMessage("EnqueueProgram", "Running program, {0} lines", file.Count);
 
 				if (homing)
+				{
+					Logger.LogMessage("EnqueueProgram", "Push Homing ($H)");
 					mQueuePtr.Enqueue(new GrblCommand("$H"));
+				}
 
+				if (first)
+				{
+					Logger.LogMessage("EnqueueProgram", "Push Header");
+					foreach (GrblCommand cmd in Header)
+						mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
+				}
+
+				if (pass)
+				{
+					Logger.LogMessage("EnqueueProgram", "Push Passes");
+					foreach (GrblCommand cmd in Passes)
+						mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
+				}
+				
+
+				Logger.LogMessage("EnqueueProgram", "Push File, {0} lines", file.Count);
 				foreach (GrblCommand cmd in file)
 					mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
+
+				mTP.JobStart(LoadedFile, mQueuePtr);
+				Logger.LogMessage("EnqueueProgram", "Running program, {0} lines", file.Count);
 			}
 		}
 
@@ -1750,13 +1771,23 @@ namespace LaserGRBL
 
 		private void OnProgramEnd()
 		{
-			Logger.LogMessage("ProgramEnd", "Job Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true));
-			mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true)), false));
-
 			if (mTP.JobEnd() && mLoopCount > 1 && mMachineStatus != MacStatus.Check)
 			{
+				Logger.LogMessage("CycleEnd", "Cycle Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true));
+				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true)), false));
+
 				LoopCount--;
-				RunProgramFromStart(false);
+				RunProgramFromStart(false, false, true);
+			}
+			else
+			{
+
+				Logger.LogMessage("EnqueueProgram", "Push Footer");
+				foreach (GrblCommand cmd in Footer)
+					mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
+
+				Logger.LogMessage("ProgramEnd", "Job Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true));
+				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true)), false));
 			}
 		}
 
@@ -2051,6 +2082,47 @@ namespace LaserGRBL
 		public float CurrentS { get { return mCurS; } }
 
 		public static bool WriteComLog { get; set; }
+		public IEnumerable<GrblCommand> Header
+		{
+			get
+			{
+				string code = (string)Settings.GetObject("GrayScaleConversion.GCode.CustomHeader", "");
+				return StringToGCode(code);
+			}
+		}
+
+		public IEnumerable<GrblCommand> Footer
+		{
+			get
+			{
+				string code = (string)Settings.GetObject("GrayScaleConversion.GCode.CustomFooter", "G90 X0 Y0");
+				return StringToGCode(code);
+			}
+		}
+
+		public IEnumerable<GrblCommand> Passes
+		{
+			get
+			{
+				string code = (string)Settings.GetObject("GrayScaleConversion.GCode.CustomPasses", "");
+				return StringToGCode(code);
+			}
+		}
+
+
+		private static IEnumerable<GrblCommand> StringToGCode(string input)
+		{
+			if (string.IsNullOrEmpty(input))
+				yield break;
+
+			using (System.IO.StringReader reader = new System.IO.StringReader(input))
+			{
+				string line;
+				while (!string.IsNullOrEmpty(line = reader.ReadLine()))
+					yield return new GrblCommand(line);
+			}
+		}
+
 	}
 
 	public class TimeProjection
@@ -2167,12 +2239,12 @@ namespace LaserGRBL
 			}
 		}
 
-		public void JobStart(GrblFile file)
+		public void JobStart(GrblFile file, Queue<GrblCommand> mQueuePtr)
 		{
 			if (!mStarted)
 			{
 				mETarget = file.EstimatedTime;
-				mTargetCount = file.Count;
+				mTargetCount = mQueuePtr.Count;
 				mEProgress = TimeSpan.Zero;
 				mStart = Tools.HiResTimer.TotalMilliseconds;
 				mPauseBegin = 0;
