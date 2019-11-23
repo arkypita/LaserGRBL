@@ -536,6 +536,11 @@ namespace LaserGRBL
 		{
 			SetLanguage(new System.Globalization.CultureInfo("hu-HU"));
 		}
+
+		private void czechToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("cz-CZ"));
+		}
 	}
 
 
