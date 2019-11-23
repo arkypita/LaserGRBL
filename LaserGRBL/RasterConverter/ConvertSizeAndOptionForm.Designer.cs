@@ -27,11 +27,13 @@ namespace LaserGRBL.RasterConverter
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.GroupBox GbSpeed;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
 		private System.Windows.Forms.Label LblBorderTracing;
 		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IIBorderTracing;
 		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IILinearFilling;
 		private System.Windows.Forms.Label LblLinearFilling;
+		private System.Windows.Forms.GroupBox GbLaser;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
 		private System.Windows.Forms.Label label26;
 		private System.Windows.Forms.Label LblSmin;
@@ -75,14 +77,14 @@ namespace LaserGRBL.RasterConverter
 			this.label10 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
-			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.label1 = new System.Windows.Forms.Label();
 			this.CbAutosize = new System.Windows.Forms.CheckBox();
+			this.GbSpeed = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblBorderTracing = new System.Windows.Forms.Label();
 			this.LblBorderTracingmm = new System.Windows.Forms.Label();
 			this.LblLinearFillingmm = new System.Windows.Forms.Label();
 			this.LblLinearFilling = new System.Windows.Forms.Label();
+			this.GbLaser = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
 			this.label26 = new System.Windows.Forms.Label();
 			this.LblSmin = new System.Windows.Forms.Label();
@@ -94,13 +96,8 @@ namespace LaserGRBL.RasterConverter
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
-			this.TPGCode = new System.Windows.Forms.TabControl();
-			this.TpLaser = new System.Windows.Forms.TabPage();
-			this.TpSpeed = new System.Windows.Forms.TabPage();
-			this.TpHeader = new System.Windows.Forms.TabPage();
-			this.TpFooter = new System.Windows.Forms.TabPage();
-			this.TpPasses = new System.Windows.Forms.TabPage();
-			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.label1 = new System.Windows.Forms.Label();
 			this.IIOffsetX = new LaserGRBL.UserControls.NumericInput.DecimalInputRanged();
 			this.IIOffsetY = new LaserGRBL.UserControls.NumericInput.DecimalInputRanged();
 			this.IISizeH = new LaserGRBL.UserControls.NumericInput.DecimalInputRanged();
@@ -109,41 +106,27 @@ namespace LaserGRBL.RasterConverter
 			this.BtnDPI = new LaserGRBL.UserControls.ImageButton();
 			this.IIBorderTracing = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
 			this.IILinearFilling = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
+			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
 			this.IIMinPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
 			this.IIMaxPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
 			this.BtnOnOffInfo = new LaserGRBL.UserControls.ImageButton();
-			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-			this.TBHeader = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-			this.TBFooter = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-			this.TBPasses = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.GbSize.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
-			this.tableLayoutPanel2.SuspendLayout();
+			this.GbSpeed.SuspendLayout();
 			this.tableLayoutPanel6.SuspendLayout();
+			this.GbLaser.SuspendLayout();
 			this.tableLayoutPanel7.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
-			this.TPGCode.SuspendLayout();
-			this.TpLaser.SuspendLayout();
-			this.TpSpeed.SuspendLayout();
-			this.TpHeader.SuspendLayout();
-			this.TpFooter.SuspendLayout();
-			this.TpPasses.SuspendLayout();
-			this.tableLayoutPanel4.SuspendLayout();
-			this.tableLayoutPanel5.SuspendLayout();
-			this.tableLayoutPanel8.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel9
 			// 
 			resources.ApplyResources(this.tableLayoutPanel9, "tableLayoutPanel9");
-			this.tableLayoutPanel9.Controls.Add(this.TPGCode, 0, 1);
-			this.tableLayoutPanel9.Controls.Add(this.GbSize, 0, 0);
+			this.tableLayoutPanel9.Controls.Add(this.GbSize, 0, 2);
+			this.tableLayoutPanel9.Controls.Add(this.GbSpeed, 0, 0);
+			this.tableLayoutPanel9.Controls.Add(this.GbLaser, 0, 1);
 			this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel1, 0, 3);
 			this.tableLayoutPanel9.Name = "tableLayoutPanel9";
 			// 
@@ -200,27 +183,19 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.label11, "label11");
 			this.label11.Name = "label11";
 			// 
-			// tableLayoutPanel2
-			// 
-			resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
-			this.tableLayoutPanel3.SetColumnSpan(this.tableLayoutPanel2, 5);
-			this.tableLayoutPanel2.Controls.Add(this.label1, 2, 0);
-			this.tableLayoutPanel2.Controls.Add(this.CbAutosize, 0, 0);
-			this.tableLayoutPanel2.Controls.Add(this.IIDpi, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.BtnDPI, 3, 0);
-			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-			// 
-			// label1
-			// 
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
-			// 
 			// CbAutosize
 			// 
 			resources.ApplyResources(this.CbAutosize, "CbAutosize");
 			this.CbAutosize.Name = "CbAutosize";
 			this.CbAutosize.UseVisualStyleBackColor = true;
 			this.CbAutosize.CheckedChanged += new System.EventHandler(this.CbAutosize_CheckedChanged);
+			// 
+			// GbSpeed
+			// 
+			resources.ApplyResources(this.GbSpeed, "GbSpeed");
+			this.GbSpeed.Controls.Add(this.tableLayoutPanel6);
+			this.GbSpeed.Name = "GbSpeed";
+			this.GbSpeed.TabStop = false;
 			// 
 			// tableLayoutPanel6
 			// 
@@ -252,6 +227,13 @@ namespace LaserGRBL.RasterConverter
 			// 
 			resources.ApplyResources(this.LblLinearFilling, "LblLinearFilling");
 			this.LblLinearFilling.Name = "LblLinearFilling";
+			// 
+			// GbLaser
+			// 
+			resources.ApplyResources(this.GbLaser, "GbLaser");
+			this.GbLaser.Controls.Add(this.tableLayoutPanel7);
+			this.GbLaser.Name = "GbLaser";
+			this.GbLaser.TabStop = false;
 			// 
 			// tableLayoutPanel7
 			// 
@@ -333,64 +315,20 @@ namespace LaserGRBL.RasterConverter
 			this.TT.InitialDelay = 500;
 			this.TT.ReshowDelay = 100;
 			// 
-			// TPGCode
+			// tableLayoutPanel2
 			// 
-			this.TPGCode.Controls.Add(this.TpLaser);
-			this.TPGCode.Controls.Add(this.TpSpeed);
-			this.TPGCode.Controls.Add(this.TpHeader);
-			this.TPGCode.Controls.Add(this.TpFooter);
-			this.TPGCode.Controls.Add(this.TpPasses);
-			resources.ApplyResources(this.TPGCode, "TPGCode");
-			this.TPGCode.Name = "TPGCode";
-			this.TPGCode.SelectedIndex = 0;
+			resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+			this.tableLayoutPanel3.SetColumnSpan(this.tableLayoutPanel2, 5);
+			this.tableLayoutPanel2.Controls.Add(this.label1, 2, 0);
+			this.tableLayoutPanel2.Controls.Add(this.CbAutosize, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.IIDpi, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.BtnDPI, 3, 0);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			// 
-			// TpLaser
+			// label1
 			// 
-			this.TpLaser.Controls.Add(this.tableLayoutPanel7);
-			resources.ApplyResources(this.TpLaser, "TpLaser");
-			this.TpLaser.Name = "TpLaser";
-			this.TpLaser.UseVisualStyleBackColor = true;
-			// 
-			// TpSpeed
-			// 
-			this.TpSpeed.Controls.Add(this.tableLayoutPanel6);
-			resources.ApplyResources(this.TpSpeed, "TpSpeed");
-			this.TpSpeed.Name = "TpSpeed";
-			this.TpSpeed.UseVisualStyleBackColor = true;
-			// 
-			// TpHeader
-			// 
-			this.TpHeader.Controls.Add(this.tableLayoutPanel4);
-			resources.ApplyResources(this.TpHeader, "TpHeader");
-			this.TpHeader.Name = "TpHeader";
-			this.TpHeader.UseVisualStyleBackColor = true;
-			// 
-			// TpFooter
-			// 
-			this.TpFooter.Controls.Add(this.tableLayoutPanel5);
-			resources.ApplyResources(this.TpFooter, "TpFooter");
-			this.TpFooter.Name = "TpFooter";
-			this.TpFooter.UseVisualStyleBackColor = true;
-			// 
-			// TpPasses
-			// 
-			this.TpPasses.Controls.Add(this.tableLayoutPanel8);
-			resources.ApplyResources(this.TpPasses, "TpPasses");
-			this.TpPasses.Name = "TpPasses";
-			this.TpPasses.UseVisualStyleBackColor = true;
-			// 
-			// BtnModulationInfo
-			// 
-			this.BtnModulationInfo.AltImage = null;
-			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
-			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
-			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
-			this.BtnModulationInfo.Name = "BtnModulationInfo";
-			this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.BtnModulationInfo, resources.GetString("BtnModulationInfo.ToolTip"));
-			this.BtnModulationInfo.UseAltImage = false;
-			this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
+			resources.ApplyResources(this.label1, "label1");
+			this.label1.Name = "label1";
 			// 
 			// IIOffsetX
 			// 
@@ -491,6 +429,19 @@ namespace LaserGRBL.RasterConverter
 			this.IILinearFilling.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IILinearFilling.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMarkSpeedCurrentValueChanged);
 			// 
+			// BtnModulationInfo
+			// 
+			this.BtnModulationInfo.AltImage = null;
+			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
+			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
+			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
+			this.BtnModulationInfo.Name = "BtnModulationInfo";
+			this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnModulationInfo, resources.GetString("BtnModulationInfo.ToolTip"));
+			this.BtnModulationInfo.UseAltImage = false;
+			this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
+			// 
 			// IIMinPower
 			// 
 			resources.ApplyResources(this.IIMinPower, "IIMinPower");
@@ -527,57 +478,6 @@ namespace LaserGRBL.RasterConverter
 			this.BtnOnOffInfo.UseAltImage = false;
 			this.BtnOnOffInfo.Click += new System.EventHandler(this.BtnOnOffInfo_Click);
 			// 
-			// tableLayoutPanel4
-			// 
-			resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
-			this.tableLayoutPanel4.Controls.Add(this.TBHeader, 0, 0);
-			this.tableLayoutPanel4.Controls.Add(this.label2, 0, 1);
-			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-			// 
-			// TBHeader
-			// 
-			resources.ApplyResources(this.TBHeader, "TBHeader");
-			this.TBHeader.Name = "TBHeader";
-			// 
-			// label2
-			// 
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
-			// 
-			// tableLayoutPanel5
-			// 
-			resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
-			this.tableLayoutPanel5.Controls.Add(this.TBFooter, 0, 0);
-			this.tableLayoutPanel5.Controls.Add(this.label3, 0, 1);
-			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-			// 
-			// TBFooter
-			// 
-			resources.ApplyResources(this.TBFooter, "TBFooter");
-			this.TBFooter.Name = "TBFooter";
-			// 
-			// label3
-			// 
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
-			// 
-			// tableLayoutPanel8
-			// 
-			resources.ApplyResources(this.tableLayoutPanel8, "tableLayoutPanel8");
-			this.tableLayoutPanel8.Controls.Add(this.TBPasses, 0, 0);
-			this.tableLayoutPanel8.Controls.Add(this.label5, 0, 1);
-			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-			// 
-			// TBPasses
-			// 
-			resources.ApplyResources(this.TBPasses, "TBPasses");
-			this.TBPasses.Name = "TBPasses";
-			// 
-			// label5
-			// 
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
-			// 
 			// ConvertSizeAndOptionForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -591,30 +491,17 @@ namespace LaserGRBL.RasterConverter
 			this.GbSize.PerformLayout();
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.tableLayoutPanel3.PerformLayout();
-			this.tableLayoutPanel2.ResumeLayout(false);
-			this.tableLayoutPanel2.PerformLayout();
+			this.GbSpeed.ResumeLayout(false);
+			this.GbSpeed.PerformLayout();
 			this.tableLayoutPanel6.ResumeLayout(false);
 			this.tableLayoutPanel6.PerformLayout();
+			this.GbLaser.ResumeLayout(false);
+			this.GbLaser.PerformLayout();
 			this.tableLayoutPanel7.ResumeLayout(false);
 			this.tableLayoutPanel7.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
-			this.TPGCode.ResumeLayout(false);
-			this.TpLaser.ResumeLayout(false);
-			this.TpLaser.PerformLayout();
-			this.TpSpeed.ResumeLayout(false);
-			this.TpSpeed.PerformLayout();
-			this.TpHeader.ResumeLayout(false);
-			this.TpHeader.PerformLayout();
-			this.TpFooter.ResumeLayout(false);
-			this.TpFooter.PerformLayout();
-			this.TpPasses.ResumeLayout(false);
-			this.TpPasses.PerformLayout();
-			this.tableLayoutPanel4.ResumeLayout(false);
-			this.tableLayoutPanel4.PerformLayout();
-			this.tableLayoutPanel5.ResumeLayout(false);
-			this.tableLayoutPanel5.PerformLayout();
-			this.tableLayoutPanel8.ResumeLayout(false);
-			this.tableLayoutPanel8.PerformLayout();
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -632,20 +519,5 @@ namespace LaserGRBL.RasterConverter
 		private UserControls.ImageButton BtnDPI;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TabControl TPGCode;
-		private System.Windows.Forms.TabPage TpLaser;
-		private System.Windows.Forms.TabPage TpSpeed;
-		private System.Windows.Forms.TabPage TpHeader;
-		private System.Windows.Forms.TabPage TpFooter;
-		private System.Windows.Forms.TabPage TpPasses;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-		private System.Windows.Forms.TextBox TBHeader;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-		private System.Windows.Forms.TextBox TBFooter;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-		private System.Windows.Forms.TextBox TBPasses;
-		private System.Windows.Forms.Label label5;
 	}
 }

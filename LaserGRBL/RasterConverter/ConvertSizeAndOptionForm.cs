@@ -26,9 +26,8 @@ namespace LaserGRBL.RasterConverter
             mCore = core;
 
             BackColor = ColorScheme.FormBackColor;
-			TpLaser.ForeColor = TpSpeed.ForeColor = TpHeader.ForeColor = TpFooter.ForeColor = TpPasses.ForeColor = GbSize.ForeColor = ForeColor = ColorScheme.FormForeColor;
-			TpLaser.BackColor = TpSpeed.BackColor = TpHeader.BackColor = TpFooter.BackColor = TpPasses.BackColor = GbSize.BackColor = BackColor = ColorScheme.FormBackColor;
-			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
+            GbLaser.ForeColor = GbSize.ForeColor = GbSpeed.ForeColor = ForeColor = ColorScheme.FormForeColor;
+            BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
 
             LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
             AssignMinMaxLimit();
@@ -98,11 +97,7 @@ namespace LaserGRBL.RasterConverter
             IIOffsetX.CurrentValue = IP.TargetOffset.X = Convert.ToSingle(Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F));
             IIOffsetY.CurrentValue = IP.TargetOffset.Y = Convert.ToSingle(Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F));
 
-			TBHeader.Text = (string)Settings.GetObject("GrayScaleConversion.GCode.CustomHeader", "");
-			TBFooter.Text = (string)Settings.GetObject("GrayScaleConversion.GCode.CustomFooter", "G0 X0 Y0");
-			TBPasses.Text = (string)Settings.GetObject("GrayScaleConversion.GCode.CustomPasses", "");
-
-			ShowDialog();
+            ShowDialog();
         }
 
 
