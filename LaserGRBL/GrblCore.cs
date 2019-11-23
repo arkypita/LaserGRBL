@@ -14,6 +14,10 @@ namespace LaserGRBL
 	/// </summary>
 	public class GrblCore
 	{
+		public static string GCODE_STD_HEADER = "G90 (use absolute coordinates)";
+		public static string GCODE_STD_PASSES = "G91\r\nG0 Z-1 (sinks the Z axis)\r\nG90";
+		public static string GCODE_STD_FOOTER = "G0 X0 Y0 Z0 (move back to origin)";
+
 		[Serializable]
 		public class ThreadingMode
 		{
@@ -767,15 +771,13 @@ namespace LaserGRBL
 				if (first)
 				{
 					Logger.LogMessage("EnqueueProgram", "Push Header");
-					foreach (GrblCommand cmd in Header)
-						mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
+					ExecuteCustombutton((string)Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
 				}
 
 				if (pass)
 				{
 					Logger.LogMessage("EnqueueProgram", "Push Passes");
-					foreach (GrblCommand cmd in Passes)
-						mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
+					ExecuteCustombutton((string)Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
 				}
 				
 
@@ -1781,13 +1783,11 @@ namespace LaserGRBL
 			}
 			else
 			{
-
-				Logger.LogMessage("EnqueueProgram", "Push Footer");
-				foreach (GrblCommand cmd in Footer)
-					mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
-
 				Logger.LogMessage("ProgramEnd", "Job Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true));
 				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true)), false));
+
+				Logger.LogMessage("EnqueueProgram", "Push Footer");
+				ExecuteCustombutton((string)Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
 			}
 		}
 
@@ -2023,15 +2023,54 @@ namespace LaserGRBL
 		static System.Text.RegularExpressions.Regex bracketsRegEx = new System.Text.RegularExpressions.Regex(@"\[(?:[^]]+)\]");
 		internal void ExecuteCustombutton(string buttoncode)
 		{
+			buttoncode = buttoncode.Trim();
 			string[] arr = buttoncode.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
 			foreach (string str in arr)
 			{
 				if (str.Trim().Length > 0)
 				{
-					string tosend = bracketsRegEx.Replace(str, new System.Text.RegularExpressions.MatchEvaluator(EvaluateCB));
-					EnqueueCommand(new GrblCommand(tosend));
+					string tosend = bracketsRegEx.Replace(str, new System.Text.RegularExpressions.MatchEvaluator(EvaluateCB)).Trim();
+
+					if (IsImmediate(tosend))
+						SendImmediate(GetImmediate(tosend));
+					else
+						EnqueueCommand(new GrblCommand(tosend));
 				}
 			}
+		}
+
+		bool IsImmediate(string code)
+		{
+			if (code.ToLower() == "ctrl-x")
+				return true;
+			if (code == "?")
+				return true;
+			if (code == "!")
+				return true;
+			if (code == "~")
+				return true;
+
+			try
+			{
+				byte value = Convert.ToByte(code, 16);
+				return true;
+			}
+			catch { return false; }
+		}
+
+		byte GetImmediate(string code)
+		{
+			if (code.ToLower() == "ctrl-x")
+				return 24;
+			if (code == "?")
+				return 63;
+			if (code == "!")
+				return 33;
+			if (code == "~")
+				return 126;
+
+			byte value = Convert.ToByte(code, 16);
+			return value;
 		}
 
 
@@ -2082,32 +2121,6 @@ namespace LaserGRBL
 		public float CurrentS { get { return mCurS; } }
 
 		public static bool WriteComLog { get; set; }
-		public IEnumerable<GrblCommand> Header
-		{
-			get
-			{
-				string code = (string)Settings.GetObject("GrayScaleConversion.GCode.CustomHeader", "");
-				return StringToGCode(code);
-			}
-		}
-
-		public IEnumerable<GrblCommand> Footer
-		{
-			get
-			{
-				string code = (string)Settings.GetObject("GrayScaleConversion.GCode.CustomFooter", "G90 X0 Y0");
-				return StringToGCode(code);
-			}
-		}
-
-		public IEnumerable<GrblCommand> Passes
-		{
-			get
-			{
-				string code = (string)Settings.GetObject("GrayScaleConversion.GCode.CustomPasses", "");
-				return StringToGCode(code);
-			}
-		}
 
 
 		private static IEnumerable<GrblCommand> StringToGCode(string input)

@@ -382,7 +382,7 @@
     <value>BtnStreamingMode</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.14.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.18.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -484,7 +484,7 @@
     <value>BtnProtocol</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.14.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.18.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -558,7 +558,7 @@ Set slower values if you are experiencing issues.</value>
     <value>BtnThreadingModel</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.14.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.18.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1025,7 +1025,7 @@ If not, please disable PWM support.</value>
     <value>BtnModulationInfo</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.14.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.0.18.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -1820,41 +1820,41 @@ After this time LaserGRBL will send an automatic feed hold to cool down the lase
   </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAB9VJREFUWEfV
+        V2lQVFcWvg3dbO2CsmpwGbBAgwRQUAwCIrhSAY2mwDhCxERHE+NSBpQgsigRERqaRrqRHdkFQ3CNGSdO
+        oibj6GSSyQxOnJJm0SBqpBUa6H7vm/Pg5cdUzWJMtGq+qlNQ7913vu8s99zb7P8WighH+UX1b+Y2JS6f
+        +aqMScXHzwcvMyZr2jwzo+f8tt6blau7VMvGrRVfPR8cmC0N/io3rAdX3oTxs/X4NHHOtbcc2CTx9bPF
+        Ksas6mNn1vee3QB8GgVcXIM7Dau4gjDbeHHJs0X6XKvwr1SrdcZP1oL7OAI4Hw7uQiR+v9e39Z3JzFVc
+        9mwQbcHG1m/yOXv/5EYMtkTAeCoM/JmlwMdh6K6PgPoV23RaJhlZ/Qzwwfyx0X8qWKvXfRiJvuPLMXRi
+        MbjmYPAnF4A/vwKfJflqtzszL3H5L4u3xjOH+rf9L3c1vYme6mXorQ2Fvi4IhgZ/8I1+QEsgeurCoAm3
+        OzKKPYNt+cECu3eva2IMXVURuF0WgnvlAegtn4OBylkw1niDb5gF/tQiXEr2ubvDlQWIn/0y2OjIftWw
+        LeibzvoYaI8uRHthILrKlqO7cT16GqPx+NjL4KtmAA1euF+3BOoI++pAxizFz38+DoZOTP66OIbvKlsK
+        rSYQbep50H3bBJ4zgjMaMPSHwzAWO4OvnAZ8OA+Xk2fpdrixV8TPfx62TmUezfEht27XRVHkAWgncq3K
+        F49vnMWPGLp+BIPqKeCKpgCVLvihOlDIwplw2jWim6fDdMZMs8Mm57WW/Rq3S4LRQeTt+bOhVXqTgNMi
+        PaC/moe+vBdgKHgBfOEEoMIFXya46He9KIkRXT0ddroy/zN7F3d3V0egS+OHzgIfdCg9oc31QF/rSZEe
+        6PsiFw+z7DGQbQNjugWQbgKdyglFEdZXosYzR9HdT0M4Yxb5K12q/lEeie+L/NGl9kGXyhOdue7ozJmB
+        /tYWkR549HkWehKtoHvPBEO7Gfh9DFDIce39ScbdL5luF13+NMR7SMMupC7qvXtsMe4Q+Z0CT3TnuaM7
+        141sGvStzSI9oDuXhu63GXp3MAzGM3CJJGA/o7I4ovRV62+jHZmL6PbJsMaSjSmMcj3dXrECPUd90aPx
+        wr0CdzxQueGHPGeyqRi8cUKkpxKcS8G9rQyPdrLhDHB7KQupJCLbAl8nTuTf9zZNI7dPPqITZ1usu5Qe
+        on9QEYQHhV54WOiOXrUbHh9xRr9qEvoybGD4plakp13wSeowef8uBoNQAhIAQUCGKfQqexx7zbptgxPz
+        FN3/d6y3YQ7l69wu3ylfgofF3nh0dCb6jrpBr3HBUK4jDGmWMCZIwH+pAgx6Yu8Hd3YnjEQskHMJYg+k
+        jQiAUo6/JU9E0mzZEb8nGdEpfqO3XcsINOoq5uJxiQcGimfAoJkKY6Y1OTYZjo5PJsudDGN5EFkA+Gx7
+        IGWE+Mf32C8ZEZBtjqF8W9RGWd/dNOV/jOgtTsy5Ltb1L/fLAtBX+hIGSqbDmDcR3H5zMSpymi4FDpqh
+        L9OBDqU1dCasgD5zHHCIth89RzqRCuS0FXGI1maZA3ly3EyxR8ocWc3Kcf95REsyg8ak/fXwHF5f5o1B
+        zTQYDo0lYkq3UM+DgjNLIGc0OJUt+q/mg+M4GIf00P82DrxqPKXbmiKWEzEJyaD1mbLhRkQulU1ljca1
+        Y3RbXFiEyPeveG8682rZ7KzVlXhjQDEBhhQZOCGlBygawWHOKCDfBtBMAF8+Hfz3X4gtCPDfNYAvdQaK
+        nAA1lSNvLBGTWCF6UQDyrKBNtcb+edJzr09g1iLtCFbLmUy1WK6+mToVfamjMEiNxCUROe3l4SiUo0cc
+        lwiz3g2o8QSuHaD9d4eGQBvw+Xag1guoehEoIyHCOFZRWRRWJJwEiMap5PhoneXAVje2QaQewT5PFnw2
+        UnbvQZwU/dTJRoFc6OJMSqOSItfYkeOpQLU7cHwO0BwEnKKr2EXhYvoGcHoZ8NFCoGkeUEfiKuhULCIR
+        +ZSJHIpeQZkQTGmO2ykWyPA3uRrjxJyGyXd5yuSli0zq/76RQRdHk4ymGCd09EFKvaBcTbUtnUTkFF3j
+        XOBkKN0BVwAX1hD5OhIRDfxuLV1OV5EQEnVi/oiIciETQjmoJ7KphFmUSYUUPNn5GCm3Z7ZZ3LCAo294
+        +Px5r3vXPWGQ7BGjF1J/mLo5n6IvdqTUulJ0vkRA5BeI6FIscPVd4HocWTzwxx3AlU0khq7p5ygbzf5U
+        EspWOQnXUClyKfos8pdFOyNLgkeHrXEudcnlzb42Dqw41iPoekZwT+s75vhuiwRt203RHi9DR5IcHQds
+        0Zk5mQ6gGXQS+qKzOAidlWHorIlEZ0MMOhs3km2i/2PRUfs6Oioj0F4cCm0B3RnoxGzLdIY23RHafWPR
+        lmCBW7tluEVl7kqzxSXFyht7lrm4slR/czvVKsckRahl6SE/VpTlLynMmS8pUAaZ5quCTfPyF0pzCxZK
+        c9QhMoV6kWBmZOY5I2aRU7DIQnEk1FyRH2KuUC00UygXyBQ5gTJFdqA0JyvAVFkSalLWEGbSWL9ccqJ2
+        qaS5ZilrOf6a1SlluO2+SBezMcNlsGPMhH5XSW3J6EZrakJGj+nPsAmHyFMZfWyS4M5kx4KZRRVZZTCz
+        LFvArJQ+TB5r/5x/0P57MPZPH5NE5L/2oD0AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
@@ -1970,6 +1970,356 @@ and burns holes in your work!
   </data>
   <data name="&gt;&gt;TpAutoCooling.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="tableLayoutPanel9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanel9.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tableLayoutPanel9.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
+    <value>Single</value>
+  </data>
+  <data name="tableLayoutPanel9.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="LblHeader.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="LblHeader.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblHeader.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LblHeader.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 19</value>
+  </data>
+  <data name="LblHeader.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="LblHeader.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>690, 0</value>
+  </data>
+  <data name="LblHeader.Size" type="System.Drawing.Size, System.Drawing">
+    <value>431, 65</value>
+  </data>
+  <data name="LblHeader.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBL will append this GCode before starting any job.
+You can customize this code, for example adding M8 to turn on fan.
+
+Here you can use the same syntax of custom buttons if you need to push some positioning
+related to the specific job is going to be executed.</value>
+  </data>
+  <data name="&gt;&gt;LblHeader.Name" xml:space="preserve">
+    <value>LblHeader</value>
+  </data>
+  <data name="&gt;&gt;LblHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblHeader.Parent" xml:space="preserve">
+    <value>tableLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;LblHeader.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TBHeader.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="TBHeader.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
+  </data>
+  <data name="TBHeader.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TBHeader.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 61</value>
+  </data>
+  <data name="TBHeader.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;TBHeader.Name" xml:space="preserve">
+    <value>TBHeader</value>
+  </data>
+  <data name="&gt;&gt;TBHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TBHeader.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;TBHeader.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 4</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 80</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Header</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>tableLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TBFooter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="TBFooter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
+  </data>
+  <data name="TBFooter.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TBFooter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 61</value>
+  </data>
+  <data name="TBFooter.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;TBFooter.Name" xml:space="preserve">
+    <value>TBFooter</value>
+  </data>
+  <data name="&gt;&gt;TBFooter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TBFooter.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;TBFooter.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 178</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 80</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Footer</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>tableLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TBPasses.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="TBPasses.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
+  </data>
+  <data name="TBPasses.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TBPasses.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 61</value>
+  </data>
+  <data name="TBPasses.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;TBPasses.Name" xml:space="preserve">
+    <value>TBPasses</value>
+  </data>
+  <data name="&gt;&gt;TBPasses.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TBPasses.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;TBPasses.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 91</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 80</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Multiple Passes</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>tableLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="LblFooter.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="LblFooter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblFooter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LblFooter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 193</value>
+  </data>
+  <data name="LblFooter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="LblFooter.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>690, 0</value>
+  </data>
+  <data name="LblFooter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>421, 65</value>
+  </data>
+  <data name="LblFooter.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBL will enqueue this GCode at the end of any job.
+Can be used to push back your engraver in a initial state like going back to zero position
+or sending M9 to turn off fan etc.
+
+Here you can use the same syntax of custom buttons.</value>
+  </data>
+  <data name="&gt;&gt;LblFooter.Name" xml:space="preserve">
+    <value>LblFooter</value>
+  </data>
+  <data name="&gt;&gt;LblFooter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblFooter.Parent" xml:space="preserve">
+    <value>tableLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;LblFooter.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="LblPasses.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="LblPasses.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblPasses.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LblPasses.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 119</value>
+  </data>
+  <data name="LblPasses.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="LblPasses.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>690, 0</value>
+  </data>
+  <data name="LblPasses.Size" type="System.Drawing.Size, System.Drawing">
+    <value>469, 52</value>
+  </data>
+  <data name="LblPasses.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>When performing multiple passes LaserGRBL will push this GCode in the between of each passes.
+Can be used to move Z down to perform deeper cuts.
+
+Here you can use the same syntax of custom buttons.</value>
+  </data>
+  <data name="&gt;&gt;LblPasses.Name" xml:space="preserve">
+    <value>LblPasses</value>
+  </data>
+  <data name="&gt;&gt;LblPasses.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblPasses.Parent" xml:space="preserve">
+    <value>tableLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;LblPasses.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tableLayoutPanel9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="tableLayoutPanel9.RowCount" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>875, 299</value>
+  </data>
+  <data name="tableLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel9.Name" xml:space="preserve">
+    <value>tableLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel9.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel9.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel9.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LblHeader" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="groupBox1" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="groupBox2" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="groupBox3" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LblFooter" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="LblPasses" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,20,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>881, 305</value>
+  </data>
+  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
+    <value>MainTabPage</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="MainTabPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
