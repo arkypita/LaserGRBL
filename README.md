@@ -94,5 +94,6 @@ Thanks to:
 - Yang Haiqiang, for chinese translation
 - 00alkskodi00, for slovak translation [#670](https://github.com/arkypita/LaserGRBL/issues/670)
 - ddogman, for hungarian translation [#735](https://github.com/arkypita/LaserGRBL/issues/735)
+- Petr Bitnar, for czech translation
 - Filippo Rivato for code contribution [#305](https://github.com/arkypita/LaserGRBL/pull/305)
 - Fabio Ferretti for code contribution [#592](https://github.com/arkypita/LaserGRBL/pull/592)
