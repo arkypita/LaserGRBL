@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
@@ -133,8 +133,8 @@
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>352, 33</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Abbild</value>
+  <data name="LblEnabled.Text" xml:space="preserve">
+    <value>Freigeben</value>
   </data>
   <data name="BTOpenImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -240,7 +240,7 @@
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 13</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
+  <data name="LblToolTip.Text" xml:space="preserve">
     <value>Werkzeugspitze</value>
   </data>
   <data name="TbToolTip.Location" type="System.Drawing.Point, System.Drawing">
@@ -252,8 +252,8 @@
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 13</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Freigeben</value>
+  <data name="LblImage.Text" xml:space="preserve">
+    <value>Abbild</value>
   </data>
   <data name="CbEStyles.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 164</value>
@@ -278,5 +278,21 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Benutzerdefinierte Schaltfläche</value>
+  </data>
+  <data name="LblDescription.Text" xml:space="preserve">
+    <value>- Verwenden Sie Punkt als Dezimaltrennzeichen
+- Unterstützt mathematische Ausdrücke in eckigen Klammern: d. H. G0 X[left-5] Y[bottom-5]
+- Verfügbare Variablen: left, right, top, bottom, width, height.. .. (und mehr)
+
+Siehe http://lasergrbl.com/usage/custom-buttons/</value>
+  </data>
+  <data name="LblType.Text" xml:space="preserve">
+    <value>Art:</value>
+  </data>
+  <data name="LblGCode2.Text" xml:space="preserve">
+    <value>GCode2</value>
+  </data>
+  <data name="LblGCode.Text" xml:space="preserve">
+    <value>GCode</value>
   </data>
 </root>

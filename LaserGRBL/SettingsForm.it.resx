@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Annulla</value>
@@ -272,5 +272,107 @@ Se la tua configurazione non lo prevede, disabilita la modalità PWM.</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Configurazione</value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>Soft Reset [Ctrl-X]</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>Hard Reset [DTR+RTS]</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Tipo di Firmware
+- Grbl: il fantastico firmware per cui LaserGRBL è stato creato.
+- Smoothie [sperimentale]: il supporto è sperimentale e non testato.</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>Protocollo</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>Importa immagini raster</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Senza "Jog continuo" quando si preme una freccia di direzione LaserGRBL invia una richiesta di movimento con velocità e passo impostati; e il movimento viene eseguito.
+Se abiliti "Jog continuo" LaserGRBL invia tanti piccoli movimenti fino a che il mouse è premuto, quindi avrai un posizionamento più approssimativo ma molto comodo da usare.
+
+NOTA: "Jog continuo" funziona solo su Grbl v1.1 o successivi, e richiede di configurare correttamente le dimensioni di lavoro (Menu "Grbl" -&gt; "Configurazione Grbl" $130, $131, $132)</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>LaserGRBL non è pensato per supportare l'asse Z, ma se hai il terzo asse forse potresti trovare comoda questa opzione.</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Mostra controlli asse Z</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>Jog Continuo</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Controlli Spostamento</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Tempo OFF: dopo questo tempo di raffreddamento il lavoro viene fatto ripartire.</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Alcuni diodi possono scaldarsi troppo se lavorano per molto tempo alla massima potenza. Per prevenire il surriscaldamento puoi programmare dei cicli di raffreddamento automatico".</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Tempo ON: tempo massimo di funzionamento del laser. Dopo questo tempo LaserGRBL comanda una pausa per permettere al laser di raffreddarsi.</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>Abilita raffreddamento automatico</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Acceso</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>sec</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Spento</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>sec</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Attenzione! Questa funzionalità è disponibile solo con versioni di Grbl &gt; v1.1 e con il "laser mode" abilitato.
+Se utilizzata con versioni più vecchie il laser non si spegnerà durante le pause e potrebbe fare "buchi" nel tuo lavoro.</value>
+  </data>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>Raffreddamento automatico</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBL aggiunge questo codice prima di eseguire ogni lavoro.
+
+Puoi personalizzare questo codice per aggiungere cose come M8 per accendere la ventola etc.
+
+E' possibile usare la stessa sintassi dei "custom button".</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Header</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Footer</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Multiple Passes</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBL aggiunge questo codice al termine di ogni lavoro.
+
+Puoi personalizzare questo codice per aggiungere cose come M9 per spegnere la ventola, per ritornare alla posizione di zero etc.
+
+E' possibile usare la stessa sintassi dei "custom button".</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Quando si eseguono passate multiple LaserGRBL inserisce questo codice tra una passata e l'altra.
+E' utile per esempio per affondare l'asse Z ed eseguire tagli più profondi.</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>GCode</value>
   </data>
 </root>

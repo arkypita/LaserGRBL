@@ -112,16 +112,13 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
     <value>редактировать</value>
-  </data>
-  <data name="BtnGoHome.ToolTip" xml:space="preserve">
-    <value>Домой</value>
   </data>
   <data name="RemoveButton.Text" xml:space="preserve">
     <value>Удалить</value>
@@ -143,9 +140,6 @@
   </data>
   <data name="addCustomButtonToolStripMenuItem.Text" xml:space="preserve">
     <value>Добавить кнопку</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Предварительный просмотр</value>
   </data>
   <data name="exportCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
     <value>Экспорт пользовательских кнопок</value>

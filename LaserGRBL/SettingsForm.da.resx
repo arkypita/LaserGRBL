@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
     <value>LaserGRBL bruger effektmodulering via G-Codes "S kommando" til at lave gråtone farver.\n Din laser skal understøtte TTL kontrol på arduino PIN D11. Hvis ikke, skal du deaktivere PWN understøttelse.</value>
@@ -134,8 +134,5 @@
   </data>
   <data name="BtnSave.Text" xml:space="preserve">
     <value>Gem</value>
-  </data>
-  <data name="GB.Text" xml:space="preserve">
-    <value>Hardware egenskaber</value>
   </data>
 </root>

@@ -112,29 +112,29 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>268, 61</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Dimensioni e posizione immagine [mm]</value>
+  <data name="CbAutosize.Text" xml:space="preserve">
+    <value>Autosize</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>268, 82</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Velocità</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>DPI</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>268, 69</value>
   </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Opzioni laser</value>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Y</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>268, 30</value>
@@ -220,8 +220,8 @@
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
     <value>27, 13</value>
   </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Salti</value>
+  <data name="label10.Text" xml:space="preserve">
+    <value>X</value>
   </data>
   <data name="IILinearFilling.Location" type="System.Drawing.Point, System.Drawing">
     <value>74, 24</value>
@@ -334,5 +334,41 @@
   </data>
   <data name="GbLaser.Text" xml:space="preserve">
     <value>Opzioni laser</value>
+  </data>
+  <data name="BtnDPI.ToolTip" xml:space="preserve">
+    <value>Carica DPI dal file</value>
+  </data>
+  <data name="LblBorderTracingmm.Text" xml:space="preserve">
+    <value>mm/min</value>
+  </data>
+  <data name="LblLinearFillingmm.Text" xml:space="preserve">
+    <value>mm/min</value>
+  </data>
+  <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
+    <value>Grbl può variare la potenza in uscita per produrre scale di grigio. E' necessario che l'hardware abbia il controllo TTL.
+
+Clicca per maggiori informazioni...</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Laser OFF</value>
+  </data>
+  <data name="LblSmin.Text" xml:space="preserve">
+    <value>S-MIN</value>
+  </data>
+  <data name="LblSmax.Text" xml:space="preserve">
+    <value>S-MAX</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Laser ON</value>
+  </data>
+  <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
+    <value>Laser ON: M3 è il modo standard.
+Grbl v1.1 supporta una modalità M4 ottimizzata per i Laser.
+Laser OFF: è supportato solo il comando M5.
+
+Clicca per maggiori informazioni...</value>
+  </data>
+  <data name="CBLaserOFF.Items" xml:space="preserve">
+    <value>M5</value>
   </data>
 </root>

@@ -117,34 +117,59 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Linien/mm</value>
+  <data name="CbRestoreWCO.Text" xml:space="preserve">
+    <value>Home @</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Auflösungshelfer</value>
-  </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>$100 Hardware Auflösung</value>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>abbrechen</value>
+    <value>Annulla</value>
   </data>
-  <data name="LblLinearFillingmm.Text" xml:space="preserve">
-    <value>Schritte/mm</value>
+  <data name="CbRedoHoming.Text" xml:space="preserve">
+    <value>Rifai l'Homing [$H]</value>
   </data>
-  <data name="LblBorderTracingmm.Text" xml:space="preserve">
-    <value>Linien/mm</value>
+  <data name="LblSomeLines.Text" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="BtnCreate.Text" xml:space="preserve">
-    <value>setzen</value>
+  <data name="RbSomeLines.Text" xml:space="preserve">
+    <value>Ricomincia alcune linee prima dell'interruzione</value>
   </data>
-  <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>Gewünschte Auflösung</value>
+  <data name="LblLineNumber.Text" xml:space="preserve">
+    <value>Linea #</value>
   </data>
-  <data name="linkLabel1.Text" xml:space="preserve">
-    <value>Wenn die Auflösung nicht durch volle Motorschritte erreicht werden könnte, können Artefacte entstehen. Klicken Sie hier für mehr Informationen ...</value>
+  <data name="RbFromSpecific.Text" xml:space="preserve">
+    <value>Ricomincia da una linea specifica</value>
   </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Berechnete Auflösung</value>
+  <data name="RbFromBeginning.Text" xml:space="preserve">
+    <value>Riparti dall'inizio [sicuro]</value>
+  </data>
+  <data name="LblOptions.Text" xml:space="preserve">
+    <value>Opzioni</value>
+  </data>
+  <data name="LblBegin.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="RbFromSent.Text" xml:space="preserve">
+    <value>Ricomincia dall'ultimo comando inviato</value>
+  </data>
+  <data name="LblSent.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LblBrief.Text" xml:space="preserve">
+    <value>LaserGRBL può ricominciare questo lavoro dall'inizio, oppure provare a riprenderlo dall'ultima posizione nota.
+Siccome non è sempre possibile determinare la miglior posizione è tuo compito prendere la decisione migliore.</value>
+  </data>
+  <data name="LblCause.Text" xml:space="preserve">
+    <value>Causa:</value>
+  </data>
+  <data name="TxtCause.Text" xml:space="preserve">
+    <value>Sconosciuta</value>
+  </data>
+  <data name="LblDetected.Text" xml:space="preserve">
+    <value>LaserGRBL ha rilevato che l'ultimo lavoro era incompleto!</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Riprendi il lavoro</value>
   </data>
 </root>

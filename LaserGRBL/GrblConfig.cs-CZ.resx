@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnWrite.Text" xml:space="preserve">
     <value>Zápis</value>
@@ -147,5 +147,11 @@ pouze po připojení a v klidovém stavu</value>
   </data>
   <data name="GB.Text" xml:space="preserve">
     <value>Grbl $$ konfigurace</value>
+  </data>
+  <data name="DollarNumber.HeaderText" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Grbl</value>
   </data>
 </root>

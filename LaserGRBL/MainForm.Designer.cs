@@ -37,7 +37,7 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
-			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+			this.TTLBuffer = new System.Windows.Forms.ToolStripStatusLabel();
 			this.PbBuffer = new System.Windows.Forms.ToolStripProgressBar();
 			this.TTLEstimated = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTEstimated = new System.Windows.Forms.ToolStripStatusLabel();
@@ -92,7 +92,7 @@
 			this.slovakianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.hungarianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.czechToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+			this.questionMarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpOnLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.autoUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
@@ -144,7 +144,7 @@
 			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TTLLines,
             this.TTTLines,
-            this.toolStripStatusLabel1,
+            this.TTLBuffer,
             this.PbBuffer,
             this.TTLEstimated,
             this.TTTEstimated,
@@ -169,11 +169,11 @@
 			this.TTTLines.Name = "TTTLines";
 			resources.ApplyResources(this.TTTLines, "TTTLines");
 			// 
-			// toolStripStatusLabel1
+			// TTLBuffer
 			// 
-			this.toolStripStatusLabel1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-			this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-			resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
+			this.TTLBuffer.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+			this.TTLBuffer.Name = "TTLBuffer";
+			resources.ApplyResources(this.TTLBuffer, "TTLBuffer");
 			// 
 			// PbBuffer
 			// 
@@ -254,7 +254,7 @@
             this.MNEsp8266,
             this.schemaToolStripMenuItem,
             this.linguaToolStripMenuItem,
-            this.toolStripMenuItem4});
+            this.questionMarkToolStripMenuItem});
 			resources.ApplyResources(this.MMn, "MMn");
 			this.MMn.Name = "MMn";
 			// 
@@ -543,9 +543,9 @@
 			this.czechToolStripMenuItem.Name = "czechToolStripMenuItem";
 			this.czechToolStripMenuItem.Click += new System.EventHandler(this.czechToolStripMenuItem_Click);
 			// 
-			// toolStripMenuItem4
+			// questionMarkToolStripMenuItem
 			// 
-			this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.questionMarkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.helpOnLineToolStripMenuItem,
             this.autoUpdateToolStripMenuItem,
             this.toolStripMenuItem5,
@@ -553,9 +553,9 @@
             this.toolStripMenuItem7,
             this.donateToolStripMenuItem,
             this.aboutToolStripMenuItem});
-			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-			resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
-			this.toolStripMenuItem4.DropDownOpening += new System.EventHandler(this.toolStripMenuItem4_DropDownOpening);
+			this.questionMarkToolStripMenuItem.Name = "questionMarkToolStripMenuItem";
+			resources.ApplyResources(this.questionMarkToolStripMenuItem, "questionMarkToolStripMenuItem");
+			this.questionMarkToolStripMenuItem.DropDownOpening += new System.EventHandler(this.toolStripMenuItem4_DropDownOpening);
 			// 
 			// helpOnLineToolStripMenuItem
 			// 
@@ -663,7 +663,7 @@
 		private System.Windows.Forms.ToolStripMenuItem MNEnglish;
 		private System.Windows.Forms.ToolStripMenuItem MNItalian;
 		private System.Windows.Forms.ToolStripMenuItem MNSpanish;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+		private System.Windows.Forms.ToolStripMenuItem questionMarkToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem helpOnLineToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem autoUpdateToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
@@ -689,7 +689,7 @@
 		private System.Windows.Forms.ToolStripMenuItem redLaserToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem hackerToolStripMenuItem;
-		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+		private System.Windows.Forms.ToolStripStatusLabel TTLBuffer;
 		private System.Windows.Forms.ToolStripProgressBar PbBuffer;
 		private System.Windows.Forms.ToolStripMenuItem MnGrblConfig;
 		private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
