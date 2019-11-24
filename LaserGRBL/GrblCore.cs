@@ -2050,12 +2050,17 @@ namespace LaserGRBL
 			if (code == "~")
 				return true;
 
-			try
+			if (code.ToLower().StartsWith("0x"))
 			{
-				byte value = Convert.ToByte(code, 16);
-				return true;
+				try
+				{
+					byte value = Convert.ToByte(code, 16);
+					return true;
+				}
+				catch { return false; }
 			}
-			catch { return false; }
+
+			return false;
 		}
 
 		byte GetImmediate(string code)
