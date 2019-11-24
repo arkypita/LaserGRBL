@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>取消</value>
@@ -180,9 +180,6 @@
   <data name="CBLaserMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 16</value>
   </data>
-  <data name="CBLaserMode.Text" xml:space="preserve">
-    <value>激光模式</value>
-  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>521, 24</value>
   </data>
@@ -223,9 +220,6 @@ UsbSerial，是最常见的协议。应使用如果你的雕刻机连接到USB�
     <value>17, 17</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>硬件能力</value>
-  </data>
-  <data name="GB.Text" xml:space="preserve">
     <value>硬件能力</value>
   </data>
 </root>

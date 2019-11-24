@@ -144,12 +144,6 @@
   <data name="MnUnlock.Text" xml:space="preserve">
     <value>отпереть</value>
   </data>
-  <data name="MnExportConfig.Text" xml:space="preserve">
-    <value>Конфигурация экспорта</value>
-  </data>
-  <data name="MnImportConfig.Text" xml:space="preserve">
-    <value>Конфигурация импорта</value>
-  </data>
   <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
     <value>настройки</value>
   </data>

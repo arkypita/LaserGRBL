@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label9.Text" xml:space="preserve">
     <value>Смещение</value>
@@ -135,29 +135,17 @@
   <data name="label11.Text" xml:space="preserve">
     <value>Y</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Размер изображения и позиция</value>
-  </data>
   <data name="LblBorderTracing.Text" xml:space="preserve">
     <value>Ограничение скорости</value>
   </data>
   <data name="LblBorderTracingmm.Text" xml:space="preserve">
     <value>мм/мин</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>мм/мин</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Скорость бега</value>
-  </data>
   <data name="LblLinearFillingmm.Text" xml:space="preserve">
     <value>мм/мин</value>
   </data>
   <data name="LblLinearFilling.Text" xml:space="preserve">
     <value>Скорость заполнения</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Скорость</value>
   </data>
   <data name="label26.Text" xml:space="preserve">
     <value>Лазер Выкл.</value>
@@ -173,9 +161,6 @@
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Лазер Вкл : М3 это стандартный режим . GRBL v1.1 поддерживает новыую команду М4 " Динамическое управление мощностью лазера". Лазер Выкл :только поддерживается М5. Нажмите для детальной информации .</value>
-  </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Опции лазера</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Сброс</value>

@@ -319,9 +319,6 @@
   <data name="MnExportConfig.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
   </data>
-  <data name="MnExportConfig.Text" xml:space="preserve">
-    <value>输出</value>
-  </data>
   <data name="MnImportConfig.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAK
@@ -339,9 +336,6 @@
   </data>
   <data name="MnImportConfig.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
-  </data>
-  <data name="MnImportConfig.Text" xml:space="preserve">
-    <value>输入</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 6</value>

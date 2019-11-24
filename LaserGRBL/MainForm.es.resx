@@ -327,9 +327,6 @@
   <data name="MnExportConfig.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 22</value>
   </data>
-  <data name="MnExportConfig.Text" xml:space="preserve">
-    <value>E&amp;xportar Configuración</value>
-  </data>
   <data name="MnImportConfig.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAK
@@ -347,9 +344,6 @@
   </data>
   <data name="MnImportConfig.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 22</value>
-  </data>
-  <data name="MnImportConfig.Text" xml:space="preserve">
-    <value>&amp;Importar Configuración</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 6</value>

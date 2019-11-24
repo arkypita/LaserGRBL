@@ -892,4 +892,79 @@
   <data name="czechToolStripMenuItem.Text" xml:space="preserve">
     <value>Ceco</value>
   </data>
+  <data name="TTTLines.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TTLBuffer.Text" xml:space="preserve">
+    <value>Buffer</value>
+  </data>
+  <data name="TTTEstimated.Text" xml:space="preserve">
+    <value>sconosciuto</value>
+  </data>
+  <data name="TTOvS.Text" xml:space="preserve">
+    <value>S: 100%</value>
+  </data>
+  <data name="TTOvG1.Text" xml:space="preserve">
+    <value>G1: 100%</value>
+  </data>
+  <data name="TTOvG0.Text" xml:space="preserve">
+    <value>G0: 100%</value>
+  </data>
+  <data name="TTTStatus.Text" xml:space="preserve">
+    <value>Disconnesso</value>
+  </data>
+  <data name="MnGrblReset.Text" xml:space="preserve">
+    <value>&amp;Reset</value>
+  </data>
+  <data name="MnGoHome.Text" xml:space="preserve">
+    <value>&amp;Homing</value>
+  </data>
+  <data name="MnUnlock.Text" xml:space="preserve">
+    <value>&amp;Sblocca</value>
+  </data>
+  <data name="MnGrblConfig.Text" xml:space="preserve">
+    <value>Configura Grbl</value>
+  </data>
+  <data name="MnHotkeys.Text" xml:space="preserve">
+    <value>Scorciatoie Tastiera</value>
+  </data>
+  <data name="MnGrbl.Text" xml:space="preserve">
+    <value>&amp;Grbl</value>
+  </data>
+  <data name="MnFileAppend.Text" xml:space="preserve">
+    <value>A&amp;ccoda file</value>
+  </data>
+  <data name="MnReOpenFile.Text" xml:space="preserve">
+    <value>&amp;Ricarica ultimo file</value>
+  </data>
+  <data name="MnStartFromPosition.Text" xml:space="preserve">
+    <value>Invia dalla &amp;Posizione</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="MNGrblEmulator.Text" xml:space="preserve">
+    <value>Emulatore &amp;Grbl</value>
+  </data>
+  <data name="MNEsp8266.Text" xml:space="preserve">
+    <value>&amp;ESP8266</value>
+  </data>
+  <data name="blueLaserToolStripMenuItem.Text" xml:space="preserve">
+    <value>Laser Blu</value>
+  </data>
+  <data name="redLaserToolStripMenuItem.Text" xml:space="preserve">
+    <value>Laser Rosso</value>
+  </data>
+  <data name="darkToolStripMenuItem.Text" xml:space="preserve">
+    <value>Tema scuro</value>
+  </data>
+  <data name="hackerToolStripMenuItem.Text" xml:space="preserve">
+    <value>Tema Hacker</value>
+  </data>
+  <data name="donateToolStripMenuItem.Text" xml:space="preserve">
+    <value>Fai una donazione!</value>
+  </data>
+  <data name="questionMarkToolStripMenuItem.Text" xml:space="preserve">
+    <value>?</value>
+  </data>
 </root>

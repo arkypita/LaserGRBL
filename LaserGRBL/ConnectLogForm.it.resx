@@ -412,4 +412,7 @@
   <data name="TxtEmulator.Text" xml:space="preserve">
     <value>Emulated Grbl v1.1#</value>
   </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Connect control</value>
+  </data>
 </root>

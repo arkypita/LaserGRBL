@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
     <value>LaserGRBL usa energia modulada em seu G-Code "Comando S" para produzir gravação em tons de cinza
@@ -136,8 +136,5 @@ Caso contrário, desabilite a opção "Suporte PWM"</value>
   </data>
   <data name="BtnSave.Text" xml:space="preserve">
     <value>Salvar</value>
-  </data>
-  <data name="GB.Text" xml:space="preserve">
-    <value>Hardware Compativel</value>
   </data>
 </root>
