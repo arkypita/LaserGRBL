@@ -129,7 +129,6 @@ namespace LaserGRBL.ComWrapper
                 ComLog.Log("rx", rv);
 				return rv;
 			}
-
 			else
 			{
 				return com.ReadLine();

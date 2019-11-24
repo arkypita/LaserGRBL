@@ -27,6 +27,19 @@ namespace LaserGRBL
 			Tools.Serializer.ObjToFile(buttons, filename); //salva
 		}
 
+		internal static void Reorder(int oldindex, int newindex)
+		{
+			CustomButton item = buttons[oldindex];
+			buttons.RemoveAt(oldindex);
+
+			if (newindex < 0 || newindex > buttons.Count)
+				buttons.Add(item);
+			else
+				buttons.Insert(newindex, item);
+
+			SaveFile();
+		}
+
 		internal static void Add(CustomButton cb)
 		{buttons.Add(cb);}
 
