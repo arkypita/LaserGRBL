@@ -1123,6 +1123,21 @@
     <EmbeddedResource Include="CSV\setting_codes.v0.9.csv" />
     <EmbeddedResource Include="CSV\setting_codes.v0.8.csv" />
     <None Include="app.config" />
+    <Content Include="Driver\CH341SER.EXE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Firmware\avrdude.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Firmware\grbl_v1.1h.20190825.hex">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Firmware\avrdude.conf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Firmware\grbl_v1.1f.20170801.hex">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Grafica\Actions-transform-crop-and-resize-icon.png" />
     <None Include="Grafica\Crop-tool-icon.png" />
     <None Include="Grafica\document-revert.png" />
