@@ -112,16 +112,16 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnWrite.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADsIAAA7CARUoSoAAAAaCSURBVFhHxVcJUFNHGEZAQG4U
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAaCSURBVFhHxVcJUFNHGEZAQG4U
         lAAGCgqKXBFEFAgIchOCiE69KojjiEAEkiigJoAggoAio47YMgIKKFo8EauC9QSPesxota3aVq1XtS2K
         U23r190H4pGto50O/Wa+bPLt/v/37+57b1/UAPyvZIq9SabYm2SLb4OvpjV37tx5CkW2YsGCBYrcvDzF
         nqYmRVNzs6KpqVmxa88eRW5uHunLUNAxcxITk63UrLS7o3vA9GKKb0EoDPCJnzUbaWlSpEhSkUrajVU1
@@ -152,10 +152,13 @@
         lhPQPxnJhMr3JL3q//0fk94kU+xNMsXeI9T+BsKW0q3oiCvnAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="BtnWrite.Text" xml:space="preserve">
+    <value>Scrivi</value>
+  </data>
   <data name="BtnRead.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADsIAAA7CARUoSoAAAAZTSURBVFhHxVd7UFRlFFdEIVPB
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAZTSURBVFhHxVd7UFRlFFdEIVPB
         ERSClIEGFBUQlRCWhxAPgWURN6dIE8QxiWUFdxdEbRcYBFFxRZrRYcpEFHQwX4NApdj4AMy3aZPvwibf
         poimhv4632W57WVvqP1Bv5kfl3Pud77f+b5zvnvv9gLwv1LU2ZMUdfYkxZ1dMbxXv3nz5n2q1eZoMzMz
         tXn5+dqa2lptbX29tra2Xru7pkabl5dP9xZq2Zi5KSkKx16OFoZoHqJaos4uCAwMkSTNnoOMDBXSlOlI
@@ -185,6 +188,9 @@
         ur7zhwmfhJ+fH5eEQMvYeFX+B4ygJE7Y2NjQR43vy3egJynq7Dmi199bYuhJMsooywAAAABJRU5ErkJg
         gg==
 </value>
+  </data>
+  <data name="BtnRead.Text" xml:space="preserve">
+    <value>Leggi</value>
   </data>
   <data name="BtnCancel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -231,7 +237,17 @@
 </value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Bezár</value>
+    <value>Chiudi</value>
+  </data>
+  <data name="LblConnect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>489, 11</value>
+  </data>
+  <data name="LblConnect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 26</value>
+  </data>
+  <data name="LblConnect.Text" xml:space="preserve">
+    <value>Lettura e scrittura sono disponibili solo
+quando connesso e "idle"</value>
   </data>
   <data name="BtnExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -280,7 +296,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAAOwgAADsIBFShKgAAACpdJREFUWEfdmAlUFEca
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAAOxAAADsQBlSsOGwAACpdJREFUWEfdmAlUFEca
         x/EEj0TzgI2urHEhTyMo4BkPBIUIBAQ80EVNjKAJKDhyiucQXMQTlSOCrA6XCgnIkR0ONUIUBAw3UQMi
         aECFGVAEEQMC//2qmQEZATXvZfdl/+/9u4vuqur6dX1fVQ9yAP4v3HmQ1Xi5oXZ2dpv5/K/527Zt4+/1
         8uILk5L4SSkp/KSkFP73QiF/714vuredz+p8tWmTg4qcirykdZdkH/ZHuvMgI11dfR1rm41wcnLBFp4j
@@ -329,6 +345,9 @@
         ZXxXjuGBAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="BtnExport.Text" xml:space="preserve">
+    <value>Esporta</value>
+  </data>
   <data name="BtnImport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAgCAYAAABQISshAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAACH
@@ -376,7 +395,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAAOwgAADsIBFShKgAAACx9JREFUWEfdmHk8V9kb
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAAOxAAADsQBlSsOGwAACx9JREFUWEfdmHk8V9kb
         x+9IWmQbmkipYaYmSpRpzNjaLBNipEaZpqiZKClbkfqqRgtFodIqW1EpKcQ0GEOW7F4tVFqJ71eILEX5
         zDmXrzCY6jfzx/ye1+tzz3HvOec+7/s857nXlwHwfyH2EBgYWHL8eBDvRFA49/CRMO6hwFDuoUNEB0O5
         Bw50yj+ElT/V/mCu/75grl9f8qUiY/1CuYEHg3iBgYdLet/03xB7IBAt0bF/4EpKFY4EP4L3/nvYvbcM
@@ -426,6 +445,37 @@
         uX7U/89B/5R6gwxelMpXNrPkvgQBId9bb0GI0R/b7Ig83lG0SvX/A90/pe4gzHdt3SVIQJjeIAIuVX2u
         8yHq8+R/UX2e/O8JzJ8EC4PzSOsUcQAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="BtnImport.Text" xml:space="preserve">
+    <value>Importa</value>
+  </data>
+  <data name="LblAction.Text" xml:space="preserve">
+    <value>Azione</value>
+  </data>
+  <data name="Parameter.HeaderText" xml:space="preserve">
+    <value>Parametro</value>
+  </data>
+  <data name="Value.HeaderText" xml:space="preserve">
+    <value>Valore</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Value.Width" type="System.Int32, mscorlib">
+    <value>74</value>
+  </data>
+  <data name="Unit.HeaderText" xml:space="preserve">
+    <value>Unità</value>
+  </data>
+  <data name="Unit.Width" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="Description.HeaderText" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="Number.HeaderText" xml:space="preserve">
+    <value>Numero</value>
+  </data>
+  <data name="GB.Text" xml:space="preserve">
+    <value>Configurazione di Grbl $$</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -502,49 +552,5 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAD4AAAA/AAAAPwAAAD/AAAA//wAAP/+AAH//g
         AD//4AD//+AB///gAf//4AH///AD///wA/8=
 </value>
-  </data>
-  <data name="Number.HeaderText" xml:space="preserve">
-    <value>Szám</value>
-  </data>
-  <data name="Parameter.HeaderText" xml:space="preserve">
-    <value>Paraméter</value>
-  </data>
-  <data name="GB.Text" xml:space="preserve">
-    <value>Grbl $$ konfiguráció</value>
-  </data>
-  <data name="BtnRead.Text" xml:space="preserve">
-    <value>Kiolvas</value>
-  </data>
-  <data name="LblAction.Text" xml:space="preserve">
-    <value>Akció</value>
-  </data>
-  <data name="BtnWrite.Text" xml:space="preserve">
-    <value>Beír</value>
-  </data>
-  <data name="Unit.HeaderText" xml:space="preserve">
-    <value>Egység</value>
-  </data>
-  <data name="LblConnect.Text" xml:space="preserve">
-    <value>Az olvasás és az írás csak 
-Csatlakoztatott ÉS Tétlen 
-állapotban engedélyezett.</value>
-  </data>
-  <data name="Description.HeaderText" xml:space="preserve">
-    <value>Leírás</value>
-  </data>
-  <data name="BtnImport.Text" xml:space="preserve">
-    <value>Import</value>
-  </data>
-  <data name="BtnExport.Text" xml:space="preserve">
-    <value>Export</value>
-  </data>
-  <data name="DollarNumber.HeaderText" xml:space="preserve">
-    <value>#</value>
-  </data>
-  <data name="Value.HeaderText" xml:space="preserve">
-    <value>Érték</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Grbl</value>
   </data>
 </root>

@@ -686,6 +686,9 @@
     <EmbeddedResource Include="AutoUpdate\NewVersionForm.hu-HU.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AutoUpdate\NewVersionForm.it.resx">
+      <DependentUpon>NewVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AutoUpdate\NewVersionForm.zh-CN.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -739,6 +742,9 @@
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.hu-HU.resx">
+      <DependentUpon>GrblConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GrblConfig.it.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.ru.resx">
@@ -898,9 +904,9 @@
     <EmbeddedResource Include="SettingsForm.sk-SK.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-	<EmbeddedResource Include="Strings.cs-CZ.resx" >
-		<DependentUpon>Strings.resx</DependentUpon>
-	</EmbeddedResource>
+    <EmbeddedResource Include="Strings.cs-CZ.resx">
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Strings.hu-HU.resx">
       <DependentUpon>Strings.resx</DependentUpon>
     </EmbeddedResource>

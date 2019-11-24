@@ -112,31 +112,22 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Соединение</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Имя файла</value>
-  </data>
   <data name="$this.ToolTipText" xml:space="preserve">
     <value>Соединение</value>
   </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Прогресс</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Скорость</value>
+  <data name="LblFilename.Text" xml:space="preserve">
+    <value>Имя файла</value>
   </data>
   <data name="BtnRunProgram.ToolTip" xml:space="preserve">
     <value>Запуск программы</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>COM порт</value>
+  <data name="LblProgress.Text" xml:space="preserve">
+    <value>Прогресс</value>
   </data>
   <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
     <value>Соединение</value>
@@ -154,7 +145,7 @@
     <value>Эмулятор</value>
   </data>
   <data name="LblComPort.Text" xml:space="preserve">
-    <value>COM</value>
+    <value>COM порт</value>
   </data>
   <data name="LblBaudRate.Text" xml:space="preserve">
     <value>скорость передачи</value>

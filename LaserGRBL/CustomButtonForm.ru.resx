@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Отмена</value>
@@ -123,26 +123,32 @@
   <data name="BtnCreate.Text" xml:space="preserve">
     <value>Создать!</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Картинка</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Всплывающая подсказка</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Включить</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
+  <data name="LblDescription.Text" xml:space="preserve">
     <value>- Используйте точку в качестве десятичного разделителя
 - Поддерживать математическое выражение в квадратных скобках: то есть G0 X [left-5] Y [bottom-5]
 - Доступные переменные: слева, справа, сверху, снизу, ширины, высоты .. (и многое другое)
 
 Смотрите http://lasergrbl.com/usage/custom-buttons/</value>
   </data>
+  <data name="LblEnabled.Text" xml:space="preserve">
+    <value>Включить</value>
+  </data>
+  <data name="LblToolTip.Text" xml:space="preserve">
+    <value>Всплывающая подсказка</value>
+  </data>
+  <data name="LblImage.Text" xml:space="preserve">
+    <value>Картинка</value>
+  </data>
   <data name="LblType.Text" xml:space="preserve">
     <value>Тип:</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Пользовательская кнопка</value>
+  </data>
+  <data name="LblGCode2.Text" xml:space="preserve">
+    <value>GCode2</value>
+  </data>
+  <data name="LblGCode.Text" xml:space="preserve">
+    <value>GCode</value>
   </data>
 </root>

@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -148,7 +148,7 @@
     <value>ConnectionForm</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Type" xml:space="preserve">
-    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=3.0.18.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=3.0.19.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -175,7 +175,7 @@
     <value>JogForm</value>
   </data>
   <data name="&gt;&gt;JogForm.Type" xml:space="preserve">
-    <value>LaserGRBL.JogForm, LaserGRBL, Version=3.0.18.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.JogForm, LaserGRBL, Version=3.0.19.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;JogForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -217,7 +217,7 @@
     <value>PreviewForm</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Type" xml:space="preserve">
-    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=3.0.18.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=3.0.19.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -258,9 +258,6 @@
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="StatusBar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>194, 17</value>
-  </metadata>
   <data name="TTLLines.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 19</value>
   </data>
@@ -273,10 +270,10 @@
   <data name="TTTLines.Text" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="TTLBuffer.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 19</value>
   </data>
-  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+  <data name="TTLBuffer.Text" xml:space="preserve">
     <value>Buffer</value>
   </data>
   <data name="PbBuffer.Size" type="System.Drawing.Size, System.Drawing">
@@ -378,12 +375,6 @@
   <data name="&gt;&gt;StatusBar.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="UpdateTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>295, 17</value>
-  </metadata>
-  <metadata name="MMn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>118, 17</value>
-  </metadata>
   <data name="MnConnect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
@@ -849,25 +840,25 @@
     <value>&amp;ESP8266</value>
   </data>
   <data name="blueLaserToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="blueLaserToolStripMenuItem.Text" xml:space="preserve">
     <value>Blue Laser</value>
   </data>
   <data name="redLaserToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="redLaserToolStripMenuItem.Text" xml:space="preserve">
     <value>Red Laser</value>
   </data>
   <data name="darkToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="darkToolStripMenuItem.Text" xml:space="preserve">
     <value>Dark</value>
   </data>
   <data name="hackerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="hackerToolStripMenuItem.Text" xml:space="preserve">
     <value>Hacker</value>
@@ -1126,19 +1117,19 @@
 </value>
   </data>
   <data name="helpOnLineToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="helpOnLineToolStripMenuItem.Text" xml:space="preserve">
     <value>Help on line</value>
   </data>
   <data name="autoUpdateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="autoUpdateToolStripMenuItem.Text" xml:space="preserve">
     <value>Auto update</value>
   </data>
   <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="openSessionLogToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1158,13 +1149,13 @@
 </value>
   </data>
   <data name="openSessionLogToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="openSessionLogToolStripMenuItem.Text" xml:space="preserve">
     <value>Open session log</value>
   </data>
   <data name="toolStripMenuItem7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="donateToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1180,7 +1171,7 @@
 </value>
   </data>
   <data name="donateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="donateToolStripMenuItem.Text" xml:space="preserve">
     <value>Donate!</value>
@@ -1207,15 +1198,15 @@
 </value>
   </data>
   <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
     <value>Web Site</value>
   </data>
-  <data name="toolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="questionMarkToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 20</value>
   </data>
-  <data name="toolStripMenuItem4.Text" xml:space="preserve">
+  <data name="questionMarkToolStripMenuItem.Text" xml:space="preserve">
     <value>?</value>
   </data>
   <data name="MMn.Location" type="System.Drawing.Point, System.Drawing">
@@ -1226,9 +1217,6 @@
   </data>
   <data name="MMn.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="MMn.Text" xml:space="preserve">
-    <value>menuStrip1</value>
   </data>
   <data name="&gt;&gt;MMn.Name" xml:space="preserve">
     <value>MMn</value>
@@ -1242,15 +1230,6 @@
   <data name="&gt;&gt;MMn.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="AwakeTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>415, 18</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>51</value>
-  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
@@ -1336,9 +1315,6 @@
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Laser GRBL</value>
-  </data>
   <data name="&gt;&gt;TTLLines.Name" xml:space="preserve">
     <value>TTLLines</value>
   </data>
@@ -1351,10 +1327,10 @@
   <data name="&gt;&gt;TTTLines.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
-    <value>toolStripStatusLabel1</value>
+  <data name="&gt;&gt;TTLBuffer.Name" xml:space="preserve">
+    <value>TTLBuffer</value>
   </data>
-  <data name="&gt;&gt;toolStripStatusLabel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;TTLBuffer.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;PbBuffer.Name" xml:space="preserve">
@@ -1675,10 +1651,10 @@
   <data name="&gt;&gt;czechToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem4.Name" xml:space="preserve">
-    <value>toolStripMenuItem4</value>
+  <data name="&gt;&gt;questionMarkToolStripMenuItem.Name" xml:space="preserve">
+    <value>questionMarkToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem4.Type" xml:space="preserve">
+  <data name="&gt;&gt;questionMarkToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;helpOnLineToolStripMenuItem.Name" xml:space="preserve">
@@ -1735,4 +1711,28 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="MnExportConfig.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MnImportConfig.Text" xml:space="preserve">
+    <value />
+  </data>
+  <metadata name="StatusBar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>194, 17</value>
+  </metadata>
+  <metadata name="UpdateTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>295, 17</value>
+  </metadata>
+  <metadata name="MMn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>118, 17</value>
+  </metadata>
+  <metadata name="AwakeTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>415, 18</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>51</value>
+  </metadata>
 </root>
