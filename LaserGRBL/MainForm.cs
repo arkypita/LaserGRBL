@@ -551,6 +551,14 @@ namespace LaserGRBL
 		{
 			FlashGrbl form = new FlashGrbl();
 			form.ShowDialog(this);
+			if (form.retval != int.MinValue)
+			{
+				if (form.retval == 0)
+					MessageBox.Show("Firmware flashed succesfull!");
+				else
+					MessageBox.Show("Error: cannot flash firmware.");
+			}
+
 			form.Dispose();
 		}
 	}
