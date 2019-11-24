@@ -111,6 +111,12 @@
     </Compile>
     <Compile Include="Autotrace\Autotrace.cs" />
     <Compile Include="ComWrapper\ComLogger.cs" />
+    <Compile Include="Firmware\FlashGrbl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Firmware\FlashGrbl.Designer.cs">
+      <DependentUpon>FlashGrbl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SmoothieCore.cs" />
     <Compile Include="SvgConverter\ConvertSizeAndOptionForm.cs">
       <SubType>Form</SubType>
@@ -738,6 +744,9 @@
     <EmbeddedResource Include="CustomButtonForm.ru.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Firmware\FlashGrbl.resx">
+      <DependentUpon>FlashGrbl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.cs-CZ.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -1150,6 +1159,9 @@
     <EmbeddedResource Include="SvgLibrary\Resources\svg11.dtd" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Firmware\libusb0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Grafica\add2.png" />
     <Content Include="Grafica\aE.png" />
     <Content Include="Grafica\aN.png" />

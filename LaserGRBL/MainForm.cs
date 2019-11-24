@@ -542,30 +542,16 @@ namespace LaserGRBL
 			SetLanguage(new System.Globalization.CultureInfo("cs-CZ"));
 		}
 
-		private void toolsToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+		private void installCH340DriverToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (!flashGrblFirmwareToolStripMenuItem.HasDropDownItems)
-			{
-				foreach (string filename in System.IO.Directory.GetFiles(".\\Firmware\\"))
-				{
-					if (filename.ToLower().EndsWith(".hex"))
-					{
-						string path = System.IO.Path.GetFullPath(filename);
-						string file = System.IO.Path.GetFileName(filename);
-						ToolStripItem item = flashGrblFirmwareToolStripMenuItem.DropDownItems.Add(file);
-						item.Tag = path;
-						item.Click += UploadFirmware;
-					}
-				}
-			}
-
-			if (!flashGrblFirmwareToolStripMenuItem.HasDropDownItems)
-				flashGrblFirmwareToolStripMenuItem.Visible = false;
+			System.Diagnostics.Process.Start(".\\Driver\\CH341SER.EXE");
 		}
 
-		private void UploadFirmware(object sender, EventArgs e)
+		private void flashGrblFirmwareToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			//throw new NotImplementedException();
+			FlashGrbl form = new FlashGrbl();
+			form.ShowDialog(this);
+			form.Dispose();
 		}
 	}
 

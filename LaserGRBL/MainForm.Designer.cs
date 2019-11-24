@@ -421,17 +421,18 @@
             this.configurationWizardToolStripMenuItem});
 			this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
 			resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
-			this.toolsToolStripMenuItem.DropDownOpening += new System.EventHandler(this.toolsToolStripMenuItem_DropDownOpening);
 			// 
 			// installCH340DriverToolStripMenuItem
 			// 
 			resources.ApplyResources(this.installCH340DriverToolStripMenuItem, "installCH340DriverToolStripMenuItem");
 			this.installCH340DriverToolStripMenuItem.Name = "installCH340DriverToolStripMenuItem";
+			this.installCH340DriverToolStripMenuItem.Click += new System.EventHandler(this.installCH340DriverToolStripMenuItem_Click);
 			// 
 			// flashGrblFirmwareToolStripMenuItem
 			// 
 			resources.ApplyResources(this.flashGrblFirmwareToolStripMenuItem, "flashGrblFirmwareToolStripMenuItem");
 			this.flashGrblFirmwareToolStripMenuItem.Name = "flashGrblFirmwareToolStripMenuItem";
+			this.flashGrblFirmwareToolStripMenuItem.Click += new System.EventHandler(this.flashGrblFirmwareToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator3
 			// 
