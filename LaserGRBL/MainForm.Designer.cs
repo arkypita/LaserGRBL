@@ -73,6 +73,7 @@
 			this.MnFileSend = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnStartFromPosition = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.installCH340DriverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.flashGrblFirmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.configurationWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,7 +106,6 @@
 			this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
-			this.installCH340DriverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -423,6 +423,11 @@
 			resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
 			this.toolsToolStripMenuItem.DropDownOpening += new System.EventHandler(this.toolsToolStripMenuItem_DropDownOpening);
 			// 
+			// installCH340DriverToolStripMenuItem
+			// 
+			resources.ApplyResources(this.installCH340DriverToolStripMenuItem, "installCH340DriverToolStripMenuItem");
+			this.installCH340DriverToolStripMenuItem.Name = "installCH340DriverToolStripMenuItem";
+			// 
 			// flashGrblFirmwareToolStripMenuItem
 			// 
 			resources.ApplyResources(this.flashGrblFirmwareToolStripMenuItem, "flashGrblFirmwareToolStripMenuItem");
@@ -636,11 +641,6 @@
 			this.AwakeTimer.Enabled = true;
 			this.AwakeTimer.Interval = 20000;
 			this.AwakeTimer.Tick += new System.EventHandler(this.AwakeTimer_Tick);
-			// 
-			// installCH340DriverToolStripMenuItem
-			// 
-			resources.ApplyResources(this.installCH340DriverToolStripMenuItem, "installCH340DriverToolStripMenuItem");
-			this.installCH340DriverToolStripMenuItem.Name = "installCH340DriverToolStripMenuItem";
 			// 
 			// MainForm
 			// 
