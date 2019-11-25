@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Сброс</value>
@@ -129,9 +129,6 @@
   <data name="label1.Text" xml:space="preserve">
     <value>LaserGRBL использует модуляцию мощности через G-Code "S командой" для получения оттенков серого.Ваш лазер должен поддерживать подключение к ардуино к PIN D11. Если нет , пожалуйста отключите поддержку ШИМ</value>
   </data>
-  <data name="CBLaserMode.Text" xml:space="preserve">
-    <value>Режим лазера</value>
-  </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Режим лазера поддерживается  в версии GRBL1.1 и выше. Это приводит к отключению лазера во время быстрых ходов.Будет делать быстрые ходы , чем при резке/маркеровке</value>
   </data>
@@ -140,9 +137,6 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Настройки</value>
-  </data>
-  <data name="GB.Text" xml:space="preserve">
-    <value>Аппаратные возможности</value>
   </data>
   <data name="CbAutoCooling.Text" xml:space="preserve">
     <value>Включить автоматичейское охлаждение</value>

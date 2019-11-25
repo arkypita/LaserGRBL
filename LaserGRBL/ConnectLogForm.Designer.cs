@@ -58,12 +58,18 @@ namespace LaserGRBL
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.GBCommands = new System.Windows.Forms.Panel();
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+			this.TxtManualCommand = new LaserGRBL.UserControls.GrblTextBox();
+			this.CmdLog = new LaserGRBL.UserControls.CommandLog();
 			this.GBFile = new System.Windows.Forms.Panel();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
+			this.LblProgress = new System.Windows.Forms.Label();
+			this.LblFilename = new System.Windows.Forms.Label();
 			this.TbFileName = new System.Windows.Forms.TextBox();
+			this.PB = new LaserGRBL.UserControls.DoubleProgressBar();
+			this.BtnOpen = new LaserGRBL.UserControls.ImageButton();
+			this.BtnRunProgram = new LaserGRBL.UserControls.ImageButton();
 			this.UDLoopCounter = new System.Windows.Forms.NumericUpDown();
+			this.BtnAbortProgram = new LaserGRBL.UserControls.ImageButton();
 			this.GBConnection = new System.Windows.Forms.Panel();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblEmulator = new System.Windows.Forms.Label();
@@ -74,14 +80,8 @@ namespace LaserGRBL
 			this.LblAddress = new System.Windows.Forms.Label();
 			this.TxtAddress = new System.Windows.Forms.TextBox();
 			this.TxtEmulator = new System.Windows.Forms.TextBox();
-			this.TT = new System.Windows.Forms.ToolTip(this.components);
-			this.TxtManualCommand = new LaserGRBL.UserControls.GrblTextBox();
-			this.CmdLog = new LaserGRBL.UserControls.CommandLog();
-			this.PB = new LaserGRBL.UserControls.DoubleProgressBar();
-			this.BtnOpen = new LaserGRBL.UserControls.ImageButton();
-			this.BtnRunProgram = new LaserGRBL.UserControls.ImageButton();
-			this.BtnAbortProgram = new LaserGRBL.UserControls.ImageButton();
 			this.BtnConnectDisconnect = new LaserGRBL.UserControls.ImageButton();
+			this.TT = new System.Windows.Forms.ToolTip(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			this.GBCommands.SuspendLayout();
 			this.tableLayoutPanel6.SuspendLayout();
@@ -113,6 +113,26 @@ namespace LaserGRBL
 			this.tableLayoutPanel6.Controls.Add(this.CmdLog, 0, 1);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
 			// 
+			// TxtManualCommand
+			// 
+			this.TxtManualCommand.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+			resources.ApplyResources(this.TxtManualCommand, "TxtManualCommand");
+			this.TxtManualCommand.Name = "TxtManualCommand";
+			this.TxtManualCommand.WaterMark = "type gcode here";
+			this.TxtManualCommand.WaterMarkActiveForeColor = System.Drawing.Color.Gray;
+			this.TxtManualCommand.WaterMarkFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.TxtManualCommand.WaterMarkForeColor = System.Drawing.Color.LightGray;
+			this.TxtManualCommand.CommandEntered += new LaserGRBL.UserControls.GrblTextBox.CommandEnteredDlg(this.TxtManualCommandCommandEntered);
+			this.TxtManualCommand.Enter += new System.EventHandler(this.TxtManualCommand_Enter);
+			this.TxtManualCommand.Leave += new System.EventHandler(this.TxtManualCommand_Leave);
+			// 
+			// CmdLog
+			// 
+			this.CmdLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			resources.ApplyResources(this.CmdLog, "CmdLog");
+			this.CmdLog.Name = "CmdLog";
+			this.CmdLog.TabStop = false;
+			// 
 			// GBFile
 			// 
 			resources.ApplyResources(this.GBFile, "GBFile");
@@ -122,8 +142,8 @@ namespace LaserGRBL
 			// tableLayoutPanel5
 			// 
 			resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
-			this.tableLayoutPanel5.Controls.Add(this.label5, 0, 1);
-			this.tableLayoutPanel5.Controls.Add(this.label3, 0, 0);
+			this.tableLayoutPanel5.Controls.Add(this.LblProgress, 0, 1);
+			this.tableLayoutPanel5.Controls.Add(this.LblFilename, 0, 0);
 			this.tableLayoutPanel5.Controls.Add(this.TbFileName, 1, 0);
 			this.tableLayoutPanel5.Controls.Add(this.PB, 1, 1);
 			this.tableLayoutPanel5.Controls.Add(this.BtnOpen, 3, 0);
@@ -132,15 +152,15 @@ namespace LaserGRBL
 			this.tableLayoutPanel5.Controls.Add(this.BtnAbortProgram, 4, 1);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
 			// 
-			// label5
+			// LblProgress
 			// 
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
+			resources.ApplyResources(this.LblProgress, "LblProgress");
+			this.LblProgress.Name = "LblProgress";
 			// 
-			// label3
+			// LblFilename
 			// 
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			resources.ApplyResources(this.LblFilename, "LblFilename");
+			this.LblFilename.Name = "LblFilename";
 			// 
 			// TbFileName
 			// 
@@ -151,6 +171,54 @@ namespace LaserGRBL
 			this.TbFileName.TabStop = false;
 			this.TbFileName.MouseEnter += new System.EventHandler(this.TbFileName_MouseEnter);
 			this.TbFileName.MouseLeave += new System.EventHandler(this.TbFileName_MouseLeave);
+			// 
+			// PB
+			// 
+			this.PB.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			this.PB.BorderColor = System.Drawing.Color.Black;
+			resources.ApplyResources(this.PB, "PB");
+			this.PB.DrawProgressString = true;
+			this.PB.FillColor = System.Drawing.Color.White;
+			this.PB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
+			this.PB.ForeColor = System.Drawing.Color.Black;
+			this.PB.Maximum = 100D;
+			this.PB.Minimum = 0D;
+			this.PB.Name = "PB";
+			this.PB.PercString = null;
+			this.PB.ProgressStringDecimals = 0;
+			this.PB.Reverse = false;
+			this.PB.Step = 10D;
+			this.PB.ThrowExceprion = false;
+			this.PB.Value = 0D;
+			// 
+			// BtnOpen
+			// 
+			this.BtnOpen.AltImage = null;
+			resources.ApplyResources(this.BtnOpen, "BtnOpen");
+			this.BtnOpen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnOpen.Coloration = System.Drawing.Color.Empty;
+			this.tableLayoutPanel5.SetColumnSpan(this.BtnOpen, 2);
+			this.BtnOpen.Image = ((System.Drawing.Image)(resources.GetObject("BtnOpen.Image")));
+			this.BtnOpen.Name = "BtnOpen";
+			this.BtnOpen.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnOpen.TabStop = false;
+			this.TT.SetToolTip(this.BtnOpen, resources.GetString("BtnOpen.ToolTip"));
+			this.BtnOpen.UseAltImage = false;
+			this.BtnOpen.Click += new System.EventHandler(this.BtnOpenClick);
+			// 
+			// BtnRunProgram
+			// 
+			this.BtnRunProgram.AltImage = null;
+			resources.ApplyResources(this.BtnRunProgram, "BtnRunProgram");
+			this.BtnRunProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnRunProgram.Coloration = System.Drawing.Color.Empty;
+			this.BtnRunProgram.Image = ((System.Drawing.Image)(resources.GetObject("BtnRunProgram.Image")));
+			this.BtnRunProgram.Name = "BtnRunProgram";
+			this.BtnRunProgram.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnRunProgram.TabStop = false;
+			this.TT.SetToolTip(this.BtnRunProgram, resources.GetString("BtnRunProgram.ToolTip"));
+			this.BtnRunProgram.UseAltImage = false;
+			this.BtnRunProgram.Click += new System.EventHandler(this.BtnRunProgramClick);
 			// 
 			// UDLoopCounter
 			// 
@@ -173,6 +241,20 @@ namespace LaserGRBL
             0,
             0});
 			this.UDLoopCounter.ValueChanged += new System.EventHandler(this.UDLoopCounter_ValueChanged);
+			// 
+			// BtnAbortProgram
+			// 
+			this.BtnAbortProgram.AltImage = null;
+			resources.ApplyResources(this.BtnAbortProgram, "BtnAbortProgram");
+			this.BtnAbortProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnAbortProgram.Coloration = System.Drawing.Color.Empty;
+			this.BtnAbortProgram.Image = ((System.Drawing.Image)(resources.GetObject("BtnAbortProgram.Image")));
+			this.BtnAbortProgram.Name = "BtnAbortProgram";
+			this.BtnAbortProgram.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnAbortProgram.TabStop = false;
+			this.TT.SetToolTip(this.BtnAbortProgram, resources.GetString("BtnAbortProgram.ToolTip"));
+			this.BtnAbortProgram.UseAltImage = false;
+			this.BtnAbortProgram.Click += new System.EventHandler(this.BtnAbortProgram_Click);
 			// 
 			// GBConnection
 			// 
@@ -243,88 +325,6 @@ namespace LaserGRBL
 			this.tableLayoutPanel4.SetColumnSpan(this.TxtEmulator, 3);
 			this.TxtEmulator.Name = "TxtEmulator";
 			// 
-			// TxtManualCommand
-			// 
-			this.TxtManualCommand.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			resources.ApplyResources(this.TxtManualCommand, "TxtManualCommand");
-			this.TxtManualCommand.Name = "TxtManualCommand";
-			this.TxtManualCommand.WaterMark = "type gcode here";
-			this.TxtManualCommand.WaterMarkActiveForeColor = System.Drawing.Color.Gray;
-			this.TxtManualCommand.WaterMarkFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.TxtManualCommand.WaterMarkForeColor = System.Drawing.Color.LightGray;
-			this.TxtManualCommand.CommandEntered += new LaserGRBL.UserControls.GrblTextBox.CommandEnteredDlg(this.TxtManualCommandCommandEntered);
-			this.TxtManualCommand.Enter += new System.EventHandler(this.TxtManualCommand_Enter);
-			this.TxtManualCommand.Leave += new System.EventHandler(this.TxtManualCommand_Leave);
-			// 
-			// CmdLog
-			// 
-			this.CmdLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			resources.ApplyResources(this.CmdLog, "CmdLog");
-			this.CmdLog.Name = "CmdLog";
-			this.CmdLog.TabStop = false;
-			// 
-			// PB
-			// 
-			this.PB.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			this.PB.BorderColor = System.Drawing.Color.Black;
-			resources.ApplyResources(this.PB, "PB");
-			this.PB.DrawProgressString = true;
-			this.PB.FillColor = System.Drawing.Color.White;
-			this.PB.FillStyle = LaserGRBL.UserControls.FillStyles.Solid;
-			this.PB.ForeColor = System.Drawing.Color.Black;
-			this.PB.Maximum = 100D;
-			this.PB.Minimum = 0D;
-			this.PB.Name = "PB";
-			this.PB.PercString = null;
-			this.PB.ProgressStringDecimals = 0;
-			this.PB.Reverse = false;
-			this.PB.Step = 10D;
-			this.PB.ThrowExceprion = false;
-			this.PB.Value = 0D;
-			// 
-			// BtnOpen
-			// 
-			this.BtnOpen.AltImage = null;
-			resources.ApplyResources(this.BtnOpen, "BtnOpen");
-			this.BtnOpen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnOpen.Coloration = System.Drawing.Color.Empty;
-			this.tableLayoutPanel5.SetColumnSpan(this.BtnOpen, 2);
-			this.BtnOpen.Image = ((System.Drawing.Image)(resources.GetObject("BtnOpen.Image")));
-			this.BtnOpen.Name = "BtnOpen";
-			this.BtnOpen.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnOpen.TabStop = false;
-			this.TT.SetToolTip(this.BtnOpen, resources.GetString("BtnOpen.ToolTip"));
-			this.BtnOpen.UseAltImage = false;
-			this.BtnOpen.Click += new System.EventHandler(this.BtnOpenClick);
-			// 
-			// BtnRunProgram
-			// 
-			this.BtnRunProgram.AltImage = null;
-			resources.ApplyResources(this.BtnRunProgram, "BtnRunProgram");
-			this.BtnRunProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnRunProgram.Coloration = System.Drawing.Color.Empty;
-			this.BtnRunProgram.Image = ((System.Drawing.Image)(resources.GetObject("BtnRunProgram.Image")));
-			this.BtnRunProgram.Name = "BtnRunProgram";
-			this.BtnRunProgram.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnRunProgram.TabStop = false;
-			this.TT.SetToolTip(this.BtnRunProgram, resources.GetString("BtnRunProgram.ToolTip"));
-			this.BtnRunProgram.UseAltImage = false;
-			this.BtnRunProgram.Click += new System.EventHandler(this.BtnRunProgramClick);
-			// 
-			// BtnAbortProgram
-			// 
-			this.BtnAbortProgram.AltImage = null;
-			resources.ApplyResources(this.BtnAbortProgram, "BtnAbortProgram");
-			this.BtnAbortProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnAbortProgram.Coloration = System.Drawing.Color.Empty;
-			this.BtnAbortProgram.Image = ((System.Drawing.Image)(resources.GetObject("BtnAbortProgram.Image")));
-			this.BtnAbortProgram.Name = "BtnAbortProgram";
-			this.BtnAbortProgram.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnAbortProgram.TabStop = false;
-			this.TT.SetToolTip(this.BtnAbortProgram, resources.GetString("BtnAbortProgram.ToolTip"));
-			this.BtnAbortProgram.UseAltImage = false;
-			this.BtnAbortProgram.Click += new System.EventHandler(this.BtnAbortProgram_Click);
-			// 
 			// BtnConnectDisconnect
 			// 
 			this.BtnConnectDisconnect.AltImage = ((System.Drawing.Image)(resources.GetObject("BtnConnectDisconnect.AltImage")));
@@ -364,8 +364,8 @@ namespace LaserGRBL
 
 		}
 
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label LblProgress;
+		private System.Windows.Forms.Label LblFilename;
 		private System.Windows.Forms.Label LblAddress;
 		private System.Windows.Forms.TextBox TxtAddress;
 		private System.Windows.Forms.Panel GBFile;

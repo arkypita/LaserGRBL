@@ -34,19 +34,19 @@
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.label1 = new System.Windows.Forms.Label();
+			this.LblImage = new System.Windows.Forms.Label();
 			this.BTOpenImage = new LaserGRBL.UserControls.ImageButton();
-			this.label6 = new System.Windows.Forms.Label();
+			this.LblToolTip = new System.Windows.Forms.Label();
 			this.TbToolTip = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
+			this.LblEnabled = new System.Windows.Forms.Label();
 			this.CbEStyles = new System.Windows.Forms.ComboBox();
-			this.label5 = new System.Windows.Forms.Label();
+			this.LblDescription = new System.Windows.Forms.Label();
 			this.LblType = new System.Windows.Forms.Label();
 			this.CbByttonType = new System.Windows.Forms.ComboBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblGCode2 = new System.Windows.Forms.Label();
 			this.TBGCode = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
+			this.LblGCode = new System.Windows.Forms.Label();
 			this.TBGCode2 = new System.Windows.Forms.TextBox();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -85,22 +85,22 @@
 			// tableLayoutPanel2
 			// 
 			resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
-			this.tableLayoutPanel2.Controls.Add(this.label1, 0, 1);
+			this.tableLayoutPanel2.Controls.Add(this.LblImage, 0, 1);
 			this.tableLayoutPanel2.Controls.Add(this.BTOpenImage, 0, 2);
-			this.tableLayoutPanel2.Controls.Add(this.label6, 0, 4);
+			this.tableLayoutPanel2.Controls.Add(this.LblToolTip, 0, 4);
 			this.tableLayoutPanel2.Controls.Add(this.TbToolTip, 1, 4);
-			this.tableLayoutPanel2.Controls.Add(this.label7, 0, 5);
+			this.tableLayoutPanel2.Controls.Add(this.LblEnabled, 0, 5);
 			this.tableLayoutPanel2.Controls.Add(this.CbEStyles, 1, 5);
-			this.tableLayoutPanel2.Controls.Add(this.label5, 0, 6);
+			this.tableLayoutPanel2.Controls.Add(this.LblDescription, 0, 6);
 			this.tableLayoutPanel2.Controls.Add(this.LblType, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.CbByttonType, 1, 0);
 			this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 1);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			// 
-			// label1
+			// LblImage
 			// 
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(this.LblImage, "LblImage");
+			this.LblImage.Name = "LblImage";
 			// 
 			// BTOpenImage
 			// 
@@ -115,20 +115,20 @@
 			this.BTOpenImage.UseAltImage = false;
 			this.BTOpenImage.Click += new System.EventHandler(this.BTOpenImage_Click);
 			// 
-			// label6
+			// LblToolTip
 			// 
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.Name = "label6";
+			resources.ApplyResources(this.LblToolTip, "LblToolTip");
+			this.LblToolTip.Name = "LblToolTip";
 			// 
 			// TbToolTip
 			// 
 			resources.ApplyResources(this.TbToolTip, "TbToolTip");
 			this.TbToolTip.Name = "TbToolTip";
 			// 
-			// label7
+			// LblEnabled
 			// 
-			resources.ApplyResources(this.label7, "label7");
-			this.label7.Name = "label7";
+			resources.ApplyResources(this.LblEnabled, "LblEnabled");
+			this.LblEnabled.Name = "LblEnabled";
 			// 
 			// CbEStyles
 			// 
@@ -137,11 +137,11 @@
 			this.CbEStyles.FormattingEnabled = true;
 			this.CbEStyles.Name = "CbEStyles";
 			// 
-			// label5
+			// LblDescription
 			// 
-			resources.ApplyResources(this.label5, "label5");
-			this.tableLayoutPanel2.SetColumnSpan(this.label5, 2);
-			this.label5.Name = "label5";
+			resources.ApplyResources(this.LblDescription, "LblDescription");
+			this.tableLayoutPanel2.SetColumnSpan(this.LblDescription, 2);
+			this.LblDescription.Name = "LblDescription";
 			// 
 			// LblType
 			// 
@@ -161,7 +161,7 @@
 			resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
 			this.tableLayoutPanel3.Controls.Add(this.LblGCode2, 1, 0);
 			this.tableLayoutPanel3.Controls.Add(this.TBGCode, 0, 1);
-			this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
+			this.tableLayoutPanel3.Controls.Add(this.LblGCode, 0, 0);
 			this.tableLayoutPanel3.Controls.Add(this.TBGCode2, 1, 1);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
 			this.tableLayoutPanel2.SetRowSpan(this.tableLayoutPanel3, 2);
@@ -176,10 +176,10 @@
 			resources.ApplyResources(this.TBGCode, "TBGCode");
 			this.TBGCode.Name = "TBGCode";
 			// 
-			// label2
+			// LblGCode
 			// 
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			resources.ApplyResources(this.LblGCode, "LblGCode");
+			this.LblGCode.Name = "LblGCode";
 			// 
 			// TBGCode2
 			// 
@@ -213,12 +213,12 @@
 		private System.Windows.Forms.Button BtnCreate;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private UserControls.ImageButton BTOpenImage;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label LblImage;
+		private System.Windows.Forms.Label LblGCode;
+		private System.Windows.Forms.Label LblDescription;
 		private System.Windows.Forms.TextBox TbToolTip;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label LblToolTip;
+		private System.Windows.Forms.Label LblEnabled;
 		private System.Windows.Forms.ComboBox CbEStyles;
 		private System.Windows.Forms.TextBox TBGCode;
 		private System.Windows.Forms.Label LblType;

@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
     <value>Laser GRBL nutzt die Leistungsmodulation über den G-Code "S Befehl", um Graustufen zu erzeugen. Ihr Laser muss die TTL-Steuerung an Arduino PIN D11 unterstützen. Wenn nicht, deaktiviere bitte die PWM-Unterstützung.</value>
@@ -138,16 +138,10 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Der Laser-Modus ist auf GRBL 1.1 oder höher aktiviert. Dies führt dazu, dass der Laser bei schnellen Bewegungen ausgeschaltet wird. LaserGRBL macht schnelle Bewegungen anders als Schnittbewegungen.</value>
   </data>
-  <data name="CBLaserMode.Text" xml:space="preserve">
-    <value>Laser Mode</value>
-  </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Verbindungsprotokoll: - USB Serial, ist das häufigste Protokoll. Sollte verwendet werden, wenn Ihr Graveur an USB oder COM-Port angeschlossen ist.
 - Telnet, wenn man eine WiFi-Telnet-Brücke hat. Die Kommunikation ist wie ein einfacher Telnet-Client-Server implementiert.
 -LaserWebESP8266 unterstützt WiFi-Verbindung via WebSocket. Kompatibel mit LaserWeb-ESP8266</value>
-  </data>
-  <data name="GB.Text" xml:space="preserve">
-    <value>Hardware Fähigkeiten</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Streaming-Modus:

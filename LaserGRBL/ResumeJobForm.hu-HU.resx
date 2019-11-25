@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="PBWarn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -173,8 +173,8 @@
   <data name="LblSomeLines.Text" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Sor #</value>
+  <data name="LblOptions.Text" xml:space="preserve">
+    <value>Opciók</value>
   </data>
   <data name="LblDetected.Text" xml:space="preserve">
     <value>A LaserGRBL észlelte, hogy a legutolsó munka nem fejeződött be!</value>
@@ -184,8 +184,8 @@
 Mivel a legjobb újraindítási helyzet meghatározása automatikusan nem mindig lehetséges, hagyjuk, hogy Ön meghozza a végső döntést.
 Az utolsó sebesség, teljesítmény és lézerállapot automatikusan helyreáll.</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Opciók</value>
+  <data name="LblLineNumber.Text" xml:space="preserve">
+    <value>Sor #</value>
   </data>
   <data name="BtnOK.Text" xml:space="preserve">
     <value>OK</value>

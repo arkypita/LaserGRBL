@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
@@ -163,9 +163,6 @@
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>287, 61</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Taille et Emplacement de l'image [mm]</value>
-  </data>
   <data name="LblBorderTracing.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 13</value>
   </data>
@@ -184,9 +181,6 @@
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 13</value>
   </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Vitesse de déplacement</value>
-  </data>
   <data name="IILinearFilling.Location" type="System.Drawing.Point, System.Drawing">
     <value>165, 24</value>
   </data>
@@ -204,9 +198,6 @@
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>287, 82</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Vitesse</value>
   </data>
   <data name="BtnModulationInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -249,9 +240,6 @@
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>287, 69</value>
-  </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Options Laser</value>
   </data>
   <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>130, 3</value>

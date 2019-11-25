@@ -42,6 +42,10 @@ namespace LaserGRBL
             CbContinuosJog.Checked = (bool)Settings.GetObject("Enable Continuous Jog", false);
             CbEnableZJog.Checked = (bool)Settings.GetObject("Enale Z Jog Control", false);
 
+			TBHeader.Text = (string)Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER);
+			TBPasses.Text = (string)Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES);
+			TBFooter.Text = (string)Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER);
+
 			InitAutoCoolingTab();
         }
 
@@ -133,6 +137,10 @@ namespace LaserGRBL
 			Settings.SetObject("AutoCooling", CbAutoCooling.Checked);
 			Settings.SetObject("AutoCooling TOn", MaxTs(TimeSpan.FromSeconds(10), new TimeSpan(0, (int)CbOnMin.SelectedItem, (int)CbOnSec.SelectedItem)));
 			Settings.SetObject("AutoCooling TOff", MaxTs(TimeSpan.FromSeconds(10), new TimeSpan(0, (int)CbOffMin.SelectedItem, (int)CbOffSec.SelectedItem)));
+
+			Settings.SetObject("GCode.CustomHeader", TBHeader.Text.Trim());
+			Settings.SetObject("GCode.CustomPasses", TBPasses.Text.Trim());
+			Settings.SetObject("GCode.CustomFooter", TBFooter.Text.Trim());
 
 			Settings.Save();
 

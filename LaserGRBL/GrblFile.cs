@@ -229,6 +229,8 @@ namespace LaserGRBL
 			if (!append)
 				list.Clear();
 
+			//list.Add(new GrblCommand("G90")); //absolute (Moved to custom Header)
+
 			mRange.ResetRange();
 
 			Potrace.turdsize = (int)(UseSpotRemoval ? SpotRemoval : 2);
@@ -248,11 +250,6 @@ namespace LaserGRBL
 						Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, Math.Max(1, c.res / c.fres));
 						using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size((int)(bmp.Width * c.fres / c.res), (int)(bmp.Height * c.fres / c.res)), true, InterpolationMode.HighQualityBicubic))
 						{
-							//absolute
-							list.Add(new GrblCommand("G90"));
-
-							//move fast to offset
-							list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(c.oX), formatnumber(c.oY))));
 							if (c.pwm)
 								list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
 							else
@@ -275,10 +272,6 @@ namespace LaserGRBL
             if(useOptimizeFast)
                 plist = OptimizePaths(plist);
 
-            //absolute
-            list.Add(new GrblCommand("G90"));
-			//move fast to offset
-			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(c.oX), formatnumber(c.oY))));
 			//laser off and power to maxPower
 			list.Add(new GrblCommand(String.Format("{0} S{1}", c.lOff, c.maxPower)));
 			//set speed to borderspeed
@@ -290,11 +283,8 @@ namespace LaserGRBL
 			foreach (string code in gc)
 				list.Add(new GrblCommand(code));
 
-			//laser off
-			list.Add(new GrblCommand(String.Format("{0}", c.lOff)));
-
-			//move fast to origin
-			list.Add(new GrblCommand("G0 X0 Y0"));
+			//laser off (superflua??)
+			//list.Add(new GrblCommand(String.Format("{0}", c.lOff)));
 
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
@@ -346,7 +336,8 @@ namespace LaserGRBL
 			mRange.ResetRange();
 
 			//absolute
-			list.Add(new GrblCommand("G90"));
+			//list.Add(new GrblCommand("G90")); //(Moved to custom Header)
+
 			//move fast to offset
 			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(c.oX), formatnumber(c.oY))));
 			if (c.pwm)

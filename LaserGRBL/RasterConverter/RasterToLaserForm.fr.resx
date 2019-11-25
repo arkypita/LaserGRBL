@@ -112,23 +112,17 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="WB.Location" type="System.Drawing.Point, System.Drawing">
     <value>444, 468</value>
   </data>
-  <data name="WB.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="PbConverted.Size" type="System.Drawing.Size, System.Drawing">
     <value>508, 484</value>
-  </data>
-  <data name="PbConverted.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="TpPreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>514, 490</value>
@@ -136,29 +130,17 @@
   <data name="TpPreview.Text" xml:space="preserve">
     <value>Aperçu</value>
   </data>
-  <data name="TpPreview.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="PbOriginal.Size" type="System.Drawing.Size, System.Drawing">
     <value>508, 484</value>
   </data>
-  <data name="PbOriginal.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="TpOriginal.Size" type="System.Drawing.Size, System.Drawing">
     <value>514, 490</value>
-  </data>
-  <data name="TpOriginal.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="TCOriginalPreview.Location" type="System.Drawing.Point, System.Drawing">
     <value>259, 3</value>
   </data>
   <data name="TCOriginalPreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>522, 516</value>
-  </data>
-  <data name="TCOriginalPreview.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -366,17 +348,11 @@
   <data name="FlipControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>259, 525</value>
   </data>
-  <data name="FlipControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 13</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
     <value>Supprimer pointillés</value>
-  </data>
-  <data name="label22.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="UDSpotRemoval.Location" type="System.Drawing.Point, System.Drawing">
     <value>105, 2</value>
@@ -387,26 +363,17 @@
   <data name="CbSpotRemoval.Location" type="System.Drawing.Point, System.Drawing">
     <value>164, 5</value>
   </data>
-  <data name="CbSpotRemoval.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 13</value>
   </data>
   <data name="label24.Text" xml:space="preserve">
     <value>Optimisation</value>
   </data>
-  <data name="label24.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 13</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
     <value>Lissage</value>
-  </data>
-  <data name="label23.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="UDOptimize.Location" type="System.Drawing.Point, System.Drawing">
     <value>105, 50</value>
@@ -423,23 +390,14 @@
   <data name="CbOptimize.Location" type="System.Drawing.Point, System.Drawing">
     <value>164, 53</value>
   </data>
-  <data name="CbOptimize.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="CbSmoothing.Location" type="System.Drawing.Point, System.Drawing">
     <value>164, 29</value>
-  </data>
-  <data name="CbSmoothing.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 13</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Remplissage</value>
-  </data>
-  <data name="label14.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="CbFillingDirection.Location" type="System.Drawing.Point, System.Drawing">
     <value>105, 98</value>
@@ -456,9 +414,6 @@
   <data name="LblFillingQuality.Text" xml:space="preserve">
     <value>Qualité</value>
   </data>
-  <data name="LblFillingQuality.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="UDFillingQuality.Location" type="System.Drawing.Point, System.Drawing">
     <value>105, 123</value>
   </data>
@@ -474,9 +429,6 @@
   <data name="LblFillingLineLbl.Text" xml:space="preserve">
     <value>Lig./mm</value>
   </data>
-  <data name="LblFillingLineLbl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="UDDownSample.Location" type="System.Drawing.Point, System.Drawing">
     <value>105, 74</value>
   </data>
@@ -489,14 +441,8 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Baisse la résolution</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="CbDownSample.Location" type="System.Drawing.Point, System.Drawing">
     <value>164, 77</value>
-  </data>
-  <data name="CbDownSample.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="BtnFillingQualityInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -522,17 +468,11 @@
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>238, 145</value>
   </data>
-  <data name="tableLayoutPanel5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="GbVectorizeOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 164</value>
   </data>
   <data name="GbVectorizeOptions.Text" xml:space="preserve">
     <value>Options de Vectorisation</value>
-  </data>
-  <data name="GbVectorizeOptions.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="CbResize.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 2</value>
@@ -546,9 +486,6 @@
   <data name="LblGrayscale.Text" xml:space="preserve">
     <value>Gris</value>
   </data>
-  <data name="LblGrayscale.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="CbMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 27</value>
   </data>
@@ -558,23 +495,14 @@
   <data name="TBRed.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 51</value>
   </data>
-  <data name="TBRed.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="LblRed.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 13</value>
   </data>
   <data name="LblRed.Text" xml:space="preserve">
     <value>Rouge</value>
   </data>
-  <data name="LblRed.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="LblBlue.Text" xml:space="preserve">
     <value>Bleu</value>
-  </data>
-  <data name="LblBlue.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="LblGreen.Size" type="System.Drawing.Size, System.Drawing">
     <value>26, 13</value>
@@ -582,50 +510,29 @@
   <data name="LblGreen.Text" xml:space="preserve">
     <value>Vert</value>
   </data>
-  <data name="LblGreen.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 13</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Luminosité</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="TBGreen.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 75</value>
-  </data>
-  <data name="TBGreen.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="TbBright.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 123</value>
   </data>
-  <data name="TbBright.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="TBBlue.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 99</value>
   </data>
-  <data name="TBBlue.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="TbContrast.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 147</value>
-  </data>
-  <data name="TbContrast.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Contraste</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="CbThreshold.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 17</value>
@@ -642,20 +549,11 @@
   <data name="label28.Text" xml:space="preserve">
     <value>Redimens.</value>
   </data>
-  <data name="label28.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="TbThreshold.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 195</value>
   </data>
-  <data name="TbThreshold.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="TBWhiteClip.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 171</value>
-  </data>
-  <data name="TBWhiteClip.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 13</value>
@@ -663,23 +561,14 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Point blanc</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>238, 218</value>
-  </data>
-  <data name="tableLayoutPanel2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="GbParameters.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 237</value>
   </data>
   <data name="GbParameters.Text" xml:space="preserve">
     <value>Paramètres</value>
-  </data>
-  <data name="GbParameters.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="CbDirections.Location" type="System.Drawing.Point, System.Drawing">
     <value>66, 29</value>
@@ -711,12 +600,6 @@
   <data name="label5.Text" xml:space="preserve">
     <value>Qualité</value>
   </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label27.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 57</value>
   </data>
@@ -726,26 +609,17 @@
   <data name="label8.Text" xml:space="preserve">
     <value>Nb Lig./mm</value>
   </data>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="LblDitherMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 13</value>
   </data>
   <data name="LblDitherMode.Text" xml:space="preserve">
     <value>Pointillisme</value>
   </data>
-  <data name="LblDitherMode.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="CbDither.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 3</value>
   </data>
   <data name="CbDither.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 21</value>
-  </data>
-  <data name="CbDither.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="BtnQualityInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -771,17 +645,11 @@
   <data name="TLP.Size" type="System.Drawing.Size, System.Drawing">
     <value>238, 97</value>
   </data>
-  <data name="TLP.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="GbLineToLineOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 116</value>
   </data>
   <data name="GbLineToLineOptions.Text" xml:space="preserve">
     <value>Option Ligne par Ligne</value>
-  </data>
-  <data name="GbLineToLineOptions.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="RbDithering.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 17</value>
@@ -813,41 +681,20 @@
   <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>238, 63</value>
   </data>
-  <data name="tableLayoutPanel4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="GbConversionTool.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 82</value>
   </data>
   <data name="GbConversionTool.Text" xml:space="preserve">
     <value>Types de conversion</value>
   </data>
-  <data name="GbConversionTool.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 555</value>
-  </data>
-  <data name="tableLayoutPanel8.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Abandon</value>
   </data>
-  <data name="BtnCancel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="BtnCreate.Text" xml:space="preserve">
     <value>Suivant</value>
-  </data>
-  <data name="BtnCreate.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="RightGrid.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Importe l'image Raster</value>

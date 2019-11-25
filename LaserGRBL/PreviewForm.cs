@@ -24,6 +24,13 @@ namespace LaserGRBL
 		public PreviewForm()
 		{
 			InitializeComponent();
+			CustomButtonArea.OrderChanged += CustomButtonArea_OrderChanged;
+		}
+
+		private void CustomButtonArea_OrderChanged(int oldindex, int newindex)
+		{
+			CustomButtons.Reorder(oldindex, newindex);
+			RefreshCustomButtons();
 		}
 
 		public void SetCore(GrblCore core)
@@ -136,7 +143,8 @@ namespace LaserGRBL
 				cms.Items.Add(Strings.CustomButtonRemove, null, RemoveButton_Click);
 				cms.Items.Add(Strings.CustomButtonEdit, null, EditButton_Click);
 
-				this.ContextMenuStrip = cms;
+				ContextMenuStrip = cms;
+				AllowDrag = true;
 			}
 
 
@@ -202,7 +210,13 @@ namespace LaserGRBL
             }
 
             protected override void OnMouseDown(MouseEventArgs e)
-            {PerformMouseDown(e);}
+            {
+				_mX = e.X;
+				_mY = e.Y;
+				this._isDragging = false;
+
+				PerformMouseDown(e);
+			}
 
             public void PerformMouseDown(MouseEventArgs e)
             {
@@ -222,7 +236,10 @@ namespace LaserGRBL
             }
 
             protected override void OnMouseUp(MouseEventArgs e)
-            {PerformMouseUp(e);}
+            {
+				_isDragging = false;
+				PerformMouseUp(e);
+			}
 
             public void PerformMouseUp(MouseEventArgs e)
             {
@@ -257,12 +274,50 @@ namespace LaserGRBL
 				form.RefreshCustomButtons();
 			}
 
+
+			#region DragDrop
+
+
+			//Check radius for begin drag n drop
+			public bool AllowDrag { get; set; }
+			private bool _isDragging = false;
+			private int _DDradius = 40;
+			private int _mX = 0;
+			private int _mY = 0;
+
+			protected override void OnMouseMove(MouseEventArgs e)
+			{
+				if (!_isDragging)
+				{
+					// This is a check to see if the mouse is moving while pressed.
+					// Without this, the DragDrop is fired directly when the control is clicked, now you have to drag a few pixels first.
+					if (e.Button == MouseButtons.Left && _DDradius > 0 && this.AllowDrag)
+					{
+						int num1 = _mX - e.X;
+						int num2 = _mY - e.Y;
+						if (((num1 * num1) + (num2 * num2)) > _DDradius)
+						{
+							DoDragDrop(this, DragDropEffects.Move);
+							_isDragging = true;
+							return;
+						}
+					}
+					base.OnMouseMove(e);
+				}
+			}
+
+			#endregion
+
 		}
 
 		private class MyFlowPanel : FlowLayoutPanel
 		{
+			public delegate void OrderChangedDlg(int oldindex, int newindex);
+			public event OrderChangedDlg OrderChanged;
+
 			public MyFlowPanel()
 			{
+				AllowDrop = true;
 				ResizeRedraw = true;
 			}
 
@@ -286,6 +341,43 @@ namespace LaserGRBL
 					e.Graphics.DrawString("Right click here to add custom buttons", Font, Brushes.DarkGray, (Width - size.Width) / 2, (Height - size.Height) / 2);
 				}
 			}
+
+			protected override void OnDragEnter(DragEventArgs drgevent)
+			{
+				CustomButtonIB btn = (CustomButtonIB)drgevent.Data.GetData(typeof(CustomButtonIB));
+				if (btn != null)
+					drgevent.Effect = DragDropEffects.Move;
+				else
+					drgevent.Effect = DragDropEffects.None;
+
+				base.OnDragEnter(drgevent);
+			}
+
+			protected override void OnDragDrop(DragEventArgs drgevent)
+			{
+				CustomButtonIB btn = (CustomButtonIB)drgevent.Data.GetData(typeof(CustomButtonIB));
+				MyFlowPanel dst = this;
+				MyFlowPanel src = btn?.Parent as MyFlowPanel;
+
+				if (btn != null && src != null && dst != null &&  src == dst)
+				{
+					drgevent.Effect = DragDropEffects.Move;
+
+					Point p = dst.PointToClient(new Point(drgevent.X, drgevent.Y));
+					Control item = dst.GetChildAtPoint(p);
+					int oldindex = dst.Controls.GetChildIndex(btn);
+					int newindex = dst.Controls.GetChildIndex(item, false);
+					
+					OrderChanged?.Invoke(oldindex, newindex);
+				}
+				else
+				{
+					drgevent.Effect = DragDropEffects.None;
+				}
+
+				base.OnDragDrop(drgevent);
+			}
+
 		}
 
 

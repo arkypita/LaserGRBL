@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Storno</value>
+  </data>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>Detekce problémů</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>Protokol</value>
+  </data>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>Grvírování v jednom směru</value>
+  </data>
+  <data name="CBSupportPWM.Text" xml:space="preserve">
+    <value>Podpora PWM</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>Import rastrových obrázků</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>LaserGRBL není navržen pro ovládání osy Z, ale pokud máte stroj se 3 osami, může být tato možnost užitečná.</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Zobrazení ovládání osy Z (nahoru a dolů)</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>Povolení automatického chlazení</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Zap</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Vyp</value>
+  </data>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>Automatické chlazení</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Protokol připojení:
+- UsbSerial, ije nejběžnější protokol. Měl by být použit, pokud je Váš stroj připojen přes USB nebo COM port.
+- Telnet, pokud máte WiFi-Telnet bridge. Komunikace je implementována jako jednoduchý telnet klient-server.
+- LaserWebESP8266 podporuje WiFi připojení via WebSocket. Kompatibilní s LaserWeb-ESP8266 software.</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>LaserGRBL může detekovat problémy a varovat uživatele poskytnutím informací o tom, jak je vyřešit.
+Pokud je zakázáno, jsou všechny problémy tiše řešeny bez varování.</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Upozornění: tato funkce je funkční pouze u verze grbl &gt; v1.1 s povoleným "laser režimem".
+Pokud používáte automatické chlazení se starší verzí grbl (nebo s deaktivovaným "laser režimem"), laser se
+během pauzy nevypne a vypálí díry ve Vaší matrici!</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Režim streamování: [výchozí Bufferování]
+- Bufferování: optimalizace streamování příkazů podle zaplnění grbl přijímacího bufferu [doporučeno]
+- Synchronní: čekání na provedení každého příkazu, než se odešle další příkaz [pomalejší, ale bezpečnější]
+- Opakování při chybě: stejné jako Synchronní režim, ale příkazy jsou opakovány pokud je detekována chyba [experimentální]</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Threading Mode: UltraFast, Fast, Quiet, Slow. [Default UltraFast]
+This setting affect the speed of sending thread and the frequency of status report request.
+Set slower values if you are experiencing issues.</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Pokud je povoleno, LaserGRBL odešle soft-reset při otevření připojení k grbl.</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Pokud je povoleno, LaserGRBL odešle hard-reset při otevření připojení k grbl [ztráta pozice!].</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Váš kontrolér laseru musí podporovat TTL řízení na pinu D11 Arduina.
+Pokud tomu tak není, prosíme deaktuvujte podporu PWM.</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Standardně LaserGRBL vytváří dráhy pro gravírování v obou směrech pohyby laserové hlavy. Některé testy ukázaly, že tento režim (který je rychlejší) přináší nižší kvalitu výsledků. Pokud je požadována maximální kvalita, aktivujte tuto možnost.</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Čas VYP: po této době odešle LaserGRBL příkaz pro pokračování v gravírování.</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Některé laserové diody se mohou zahřát příliš mnoho, pokud běží dlouhou dobu na nejvyšší výkon. Chcete-li zabránit přehřátí a prodloužit životnost laseru, můžete přidat několik cyklů automatického ochlazování, které v průběhu gravírování vloží pauzu.
+Pokud je povoleno automatické chlazení, LaserGRBL odešle automaticky příkazy pro „pozastavení“ a „obnovení“ podle nastavení časů ZAP-VYP.</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Čas ZAP: Toto je maximální doba, po kterou laser zůstane během gravírování zapnutý.
+Po uplynutí této doby LaserGRBL odešle automaticky příkaz přerušní, aby vychladl laser.</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Typ firmware kontroléru
+- Grbl: skvělý firmware, pro který byl LaserGRBL vyvinut.
+- Smoothie [experimentálně]: podpora byla přidána nedávno a není plně otestována.</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>Plynulé polohování</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Polohování</value>
+  </data>
+</root>

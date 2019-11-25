@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Mégsem</value>
@@ -123,18 +123,18 @@
   <data name="BtnCreate.Text" xml:space="preserve">
     <value>Léterhoz!</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Kép</value>
+  <data name="LblGCode.Text" xml:space="preserve">
+    <value>GCode</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Bekapcsolva</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
+  <data name="LblDescription.Text" xml:space="preserve">
     <value>- Használjon pontot decimális elválasztóként
 - Támogatja a matematikai kifejezést szögletes zárójelben: azaz G0 X [left-5] Y [bottom-5]
 - Elérhető változók: left, right, top, bottom, width, height.. (stb.)
 
 Lásd: http://lasergrbl.com/usage/custom-buttons/</value>
+  </data>
+  <data name="LblEnabled.Text" xml:space="preserve">
+    <value>Bekapcsolva</value>
   </data>
   <data name="LblType.Text" xml:space="preserve">
     <value>Típus:</value>
@@ -142,13 +142,13 @@ Lásd: http://lasergrbl.com/usage/custom-buttons/</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Egyéni Gomb</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
+  <data name="LblToolTip.Text" xml:space="preserve">
     <value>Eszköz tipp</value>
   </data>
   <data name="LblGCode2.Text" xml:space="preserve">
     <value>GCode2</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>GCode</value>
+  <data name="LblImage.Text" xml:space="preserve">
+    <value>Kép</value>
   </data>
 </root>

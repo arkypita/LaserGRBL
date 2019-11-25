@@ -112,23 +112,23 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 13</value>
   </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Progreso</value>
+  <data name="LblFilename.Text" xml:space="preserve">
+    <value>Archivio</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 13</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Archivio</value>
+  <data name="LblProgress.Text" xml:space="preserve">
+    <value>Progreso</value>
   </data>
   <data name="BtnOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -328,5 +328,35 @@
         UaWLbFGxZhAuqHSy+ay1Uq68o/x8rvw/2l+hqVkreB4GRisGOHmDO3SWbFamjP0/MSTDWC8h3UB1jsLf
         /L1c6akckvsMaGrWCl5EGi18kWi08EWi0cIXB8j/A23PXYcEBrEJAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="BtnOpen.ToolTip" xml:space="preserve">
+    <value>Abrir</value>
+  </data>
+  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
+    <value>Ejecute</value>
+  </data>
+  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
+    <value>Realizar múltiples pases</value>
+  </data>
+  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
+    <value>Anular programa</value>
+  </data>
+  <data name="LblEmulator.Text" xml:space="preserve">
+    <value>Emulador</value>
+  </data>
+  <data name="LblComPort.Text" xml:space="preserve">
+    <value>COM</value>
+  </data>
+  <data name="LblBaudRate.Text" xml:space="preserve">
+    <value>Baud</value>
+  </data>
+  <data name="LblAddress.Text" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="TxtEmulator.Text" xml:space="preserve">
+    <value>Emulated Grbl v1.1#</value>
+  </data>
+  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
+    <value>Conectar</value>
   </data>
 </root>

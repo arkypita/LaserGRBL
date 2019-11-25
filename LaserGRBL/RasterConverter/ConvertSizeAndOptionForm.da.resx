@@ -112,14 +112,11 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Jogging hastighed</value>
-  </data>
   <data name="label7.Text" xml:space="preserve">
     <value>H</value>
   </data>
@@ -140,9 +137,6 @@
   </data>
   <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
     <value>Grbl understøtter variabel udgangs effekt til at generere gråtone. Dette kræver at din laser understøtter TTL kontrol.\n\nKlik for mere information...</value>
-  </data>
-  <data name="CBLaserON.Items" xml:space="preserve">
-    <value>M3</value>
   </data>
   <data name="LblLinearFillingmm.Text" xml:space="preserve">
     <value>mm/min</value>
@@ -165,23 +159,11 @@
   <data name="LblSmax.Text" xml:space="preserve">
     <value>S-MAX</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Billed størrelse og position [mm]</value>
-  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>W</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>mm/min</value>
-  </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Laser ON: M3 er standard tilstand. Grbl v1.1 understøtter en ny M4 "Dynamisk Laser strømtilstand". Laser OFF: kun M5 kommando er understøttet.\n\nKlik for mere information...</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Hastighed</value>
-  </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Laser muligheder</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>X</value>
@@ -194,9 +176,6 @@
   </data>
   <data name="LblBorderTracing.Text" xml:space="preserve">
     <value>Grænse hastighed</value>
-  </data>
-  <data name="CBLaserON.Items1" xml:space="preserve">
-    <value>M4</value>
   </data>
   <data name="GbSize.Text" xml:space="preserve">
     <value>Billed størrelse og position [mm]</value>
