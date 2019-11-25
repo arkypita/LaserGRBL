@@ -401,4 +401,13 @@
   <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
     <value>连接 </value>
   </data>
+  <data name="LblAddress.Text" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="TxtEmulator.Text" xml:space="preserve">
+    <value>Emulated Grbl v1.1#</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Connect control</value>
+  </data>
 </root>

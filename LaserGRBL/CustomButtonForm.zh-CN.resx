@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
@@ -139,8 +139,8 @@
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>图片</value>
+  <data name="LblGCode.Text" xml:space="preserve">
+    <value>GCode</value>
   </data>
   <data name="BTOpenImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -234,8 +234,12 @@
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>提示</value>
+  <data name="LblDescription.Text" xml:space="preserve">
+    <value>- 使用点作为小数分隔符
+- 支持方括号中的数学表达式:即 G0 X[left-5] Y[bottom-5]
+- 可用变量: left, right, top, bottom, width, height.. (及 more)
+
+参考 http://lasergrbl.com/usage/custom-buttons/</value>
   </data>
   <data name="TbToolTip.Location" type="System.Drawing.Point, System.Drawing">
     <value>58, 146</value>
@@ -243,7 +247,7 @@
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
+  <data name="LblEnabled.Text" xml:space="preserve">
     <value>启用</value>
   </data>
   <data name="CbEStyles.Location" type="System.Drawing.Point, System.Drawing">
@@ -252,14 +256,8 @@
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>383, 72</value>
   </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>- 使用点作为小数分隔符
-- 支持方括号中的数学表达式:即 G0 X[left-5] Y[bottom-5]
-- 可用变量: left, right, top, bottom, width, height.. (及 more)
-
-参考 http://lasergrbl.com/usage/custom-buttons/
-
-</value>
+  <data name="LblToolTip.Text" xml:space="preserve">
+    <value>提示</value>
   </data>
   <data name="LblType.Text" xml:space="preserve">
     <value>类型:</value>
@@ -279,8 +277,8 @@
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 12</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>GCode代码</value>
+  <data name="LblImage.Text" xml:space="preserve">
+    <value>图片</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>自定义按钮
