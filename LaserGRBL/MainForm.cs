@@ -560,6 +560,12 @@ namespace LaserGRBL
 			}
 
 			form.Dispose();
+			
+		}
+
+		private void toolsToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+		{
+			flashGrblFirmwareToolStripMenuItem.Enabled = (Core.MachineStatus == GrblCore.MacStatus.Disconnected);
 		}
 	}
 

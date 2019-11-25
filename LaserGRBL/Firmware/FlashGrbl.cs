@@ -78,16 +78,22 @@ namespace LaserGRBL
 			public override string ToString()
 			{
 				string fname = System.IO.Path.GetFileNameWithoutExtension(path);
-				string[] arr = fname.Split(new char[] { '-' });
 
-				string order = arr[0];
-				string grblversion = arr[1];
-				string source = arr[2];
-				string date = arr[3];
+				try
+				{
+					string[] arr = fname.Split(new char[] { '-' });
 
-				date = DateTime.ParseExact(date, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture).ToShortDateString();
+					string order = arr[0];
+					string grblversion = arr[1];
+					string source = arr[2];
+					string date = arr[3];
 
-				return $"{grblversion} {source} [{date}]";
+					date = DateTime.ParseExact(date, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture).ToShortDateString();
+
+					return $"{grblversion} {source} [{date}]";
+				}
+				catch
+				{ return fname; }
 			}
 		}
 
