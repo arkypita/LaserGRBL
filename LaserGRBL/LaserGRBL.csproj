@@ -722,11 +722,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectLogForm.zh-CN.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.hu-HU.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.ru.resx">
+      <DependentUpon>CustomButtonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomButtonForm.zh-CN.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.hu-HU.resx">
@@ -736,6 +740,9 @@
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.sk-SK.resx">
+      <DependentUpon>GrblConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GrblConfig.zh-CN.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HotkeyManagerForm.hu-HU.resx">
@@ -778,6 +785,9 @@
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResumeJobForm.sk-SK.resx">
+      <DependentUpon>ResumeJobForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResumeJobForm.zh-CN.resx">
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RunFromPositionForm.hu-HU.resx">
@@ -843,6 +853,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.zh-CN.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.de.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
@@ -864,9 +875,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.zh-CN.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ResumeJobForm.resx">
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RunFromPositionForm.zh-CN.resx">
+      <DependentUpon>RunFromPositionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.hu-HU.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
@@ -907,6 +922,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Strings.zh-CN.resx">
       <DependentUpon>Strings.resx</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.da.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
@@ -967,6 +983,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\RasterToLaserForm.zh-CN.resx">
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.da.resx">
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
@@ -1017,6 +1034,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.zh-CN.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashScreenForm.resx">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>

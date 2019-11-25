@@ -124,108 +124,150 @@
     <value>保存</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="CBProtocol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 73</value>
-  </data>
-  <data name="BtnLaserMode.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="BtnStreamingMode.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
-        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
-        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
-        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
-        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
-        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
-        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
-        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
-        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
-        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
-</value>
+      iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+      dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+      FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+      /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+      uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+      +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+      MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+      65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+      4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+      Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+      2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+    </value>
   </data>
-  <data name="BtnLaserMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 17</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>连接协议：
+- UsbSerial，是最常见的协议。应使用如果你的雕刻机连接到USB或串口。
+- Telnet，如果你有一个WiFi登录桥。通信实现像一个简单的客户端-服务器的telnet。
+- laserwebesp8266支持WIFI连接通过WebSocket。与laserweb-esp8266软件兼容。</value>
   </data>
-  <data name="CBSupportPWM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 16</value>
+  <data name="BtnProtocol.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+      iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+      dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+      FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+      /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+      uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+      +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+      MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+      65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+      4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+      Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+      2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+    </value>
   </data>
-  <data name="CBSupportPWM.Text" xml:space="preserve">
-    <value>支持PWM</value>
+  <data name="BtnThreadingModel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+      iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+      dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+      FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+      /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+      uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+      +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+      MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+      65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+      4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+      Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+      2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+    </value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>329, 36</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>激光模式是1.1或更高版本的GRBL。这一结果在激光被关闭在快速移动。lasergrbl将呈现快速移动不同于切/标志动作。</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>固件类型
+- Grbl: the awesome firmware for which LaserGRBL was developed for.
+- Smoothie [实验]: 最近添加了支持，没有经过全面测试。</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>协议</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>lasergrbl使用功率调制通过G代码的指令”产生的灰度色调。
 你的激光必须支持TTL控制连接到Arduino引脚D11。
 如果不是，请禁用PWM支持。</value>
   </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>默认情况下，LaserGRBL会在激光头的两个行进方向上进行雕刻。一些测试表明，这种模式（速度更快）会产生较低质量的结果。如果需要最好的雕刻质量，激活此选项。</value>
+  </data>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>单向雕刻</value>
+  </data>
+  <data name="CBSupportPWM.Text" xml:space="preserve">
+    <value>支持PWM</value>
+  </data>
   <data name="BtnModulationInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
-        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
-        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
-        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
-        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
-        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
-        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
-        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
-        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
-        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+      iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+      dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+      FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+      /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+      uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+      +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+      MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+      65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+      4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+      Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+      2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+    </value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>LaserGRBL并非设计为支持Z轴，但是如果您拥有3轴的机器，也许您会发现此选项很有用。</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>显示Z轴 向上/向下 控件</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>启用自动冷却
 </value>
   </data>
-  <data name="BtnModulationInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 17</value>
-  </data>
-  <data name="CBLaserMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
-  </data>
-  <data name="CBLaserMode.Text" xml:space="preserve">
-    <value>激光模式</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>521, 24</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>激光模式是1.1或更高版本的GRBL。这一结果在激光被关闭在快速移动。lasergrbl将呈现快速移动不同于切/标志动作。</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 75</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>473, 48</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>连接协议：
-UsbSerial，是最常见的协议。应使用如果你的雕刻机连接到USB或串口。
--远程登录，如果你有一个WiFi登录桥。通信实现像一个简单的客户端-服务器的telnet。
-- laserwebesp8266支持WIFI连接通过WebSocket。与laserweb-esp8266软件兼容。</value>
-  </data>
-  <data name="BtnProtocol.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
-        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
-        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
-        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
-        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
-        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
-        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
-        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
-        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
-        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
-</value>
+      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
+    </value>
   </data>
-  <data name="BtnProtocol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 75</value>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>自动冷却</value>
   </data>
-  <data name="BtnProtocol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 17</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>硬件能力</value>
-  </data>
-  <data name="GB.Text" xml:space="preserve">
-    <value>硬件能力</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>设置</value>
   </data>
 </root>
