@@ -118,18 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="CmdLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 341</value>
-  </data>
-  <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 370</value>
-  </data>
-  <data name="GBCommands.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 97</value>
-  </data>
-  <data name="GBCommands.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 370</value>
-  </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 13</value>
   </data>
@@ -146,13 +134,13 @@
     <value>46, 1</value>
   </data>
   <data name="TbFileName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 20</value>
+    <value>160, 20</value>
   </data>
   <data name="PB.Location" type="System.Drawing.Point, System.Drawing">
     <value>46, 23</value>
   </data>
   <data name="PB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 24</value>
+    <value>115, 24</value>
   </data>
   <data name="BtnOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -200,11 +188,25 @@
   <data name="UDLoopCounter.ToolTip" xml:space="preserve">
     <value>执行多遍</value>
   </data>
-  <data name="GBFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 48</value>
+  <data name="BtnAbortProgram.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAASZJREFUOE/d
+        zk9LAlEUBfD7FFHHhYh+CMGVoGs3rt24cqdLobKVumpmoAb7btE/k6IyEhQao8Sosd4Et/MkdxJ33eI3
+        M3c477xLO0pN3UQidFIp7ViWDLJuMhnuKeWTE49/LxoNXvV6/NHpiKy6XX5rtXhgWaEp0Mtmk7XrcoCS
+        oN//GzLatjlot3mATciOxfS0UuF5vc6zWk3ER/apWmUPl5MdjepxPs+TcpnHxaLIY6nEk0KBPVxOB0rp
+        UTrNo1yOh9msyBWy15kMe5EINiDSZ0R8CidCJnsBhzi7Ljj//bktvM1/LLjEsCmRMNkhHJkCB49bDPdw
+        I3QHD+BtNvAxLGAu9AovsC7ABuESwxe8C31CAAOcpV0i33wcow1vEZOFcJ/o+QfCRu7aUgB2SwAAAABJ
+        RU5ErkJggg==
+</value>
   </data>
-  <data name="LblComPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 4</value>
+  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
+    <value>中止程序</value>
+  </data>
+  <data name="LblEmulator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 13</value>
+  </data>
+  <data name="LblEmulator.Text" xml:space="preserve">
+    <value>仿真器</value>
   </data>
   <data name="LblComPort.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 13</value>
@@ -219,7 +221,7 @@
     <value>63, 21</value>
   </data>
   <data name="LblBaudRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 4</value>
+    <value>111, 5</value>
   </data>
   <data name="LblBaudRate.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 13</value>
@@ -233,13 +235,16 @@
   <data name="CBSpeed.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 21</value>
   </data>
-  <data name="LblAddress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 26</value>
-  </data>
   <data name="TxtAddress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>46, 23</value>
+    <value>46, 24</value>
   </data>
   <data name="TxtAddress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 20</value>
+  </data>
+  <data name="TxtEmulator.Location" type="System.Drawing.Point, System.Drawing">
+    <value>46, 46</value>
+  </data>
+  <data name="TxtEmulator.Size" type="System.Drawing.Size, System.Drawing">
     <value>173, 20</value>
   </data>
   <data name="BtnConnectDisconnect.AltImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -393,22 +398,7 @@
         /L1c6akckvsMaGrWCl5EGi18kWi08EWi0cIXB8j/A23PXYcEBrEJAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="BtnConnectDisconnect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>221, 23</value>
-  </data>
   <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
     <value>连接 </value>
-  </data>
-  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 46</value>
-  </data>
-  <data name="GBConnection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 46</value>
-  </data>
-  <data name="LblAddress.Text" xml:space="preserve">
-    <value>网址</value>
-  </data>
-  <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Emulated Grbl v1.1#</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,8 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+  <data name="GbSize.Text" xml:space="preserve">
+    <value>图像大小和位置 [mm]</value>
+  </data>
+  <data name="GbSpeed.Text" xml:space="preserve">
+    <value>速度</value>
+  </data>
+  <data name="GbLaser.Text" xml:space="preserve">
+    <value>激光选项</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>偏移</value>
@@ -127,35 +133,37 @@
   <data name="label4.Text" xml:space="preserve">
     <value>大小</value>
   </data>
-  <data name="IIOffsetX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 25</value>
+  <data name="CbAutosize.Text" xml:space="preserve">
+    <value>自动调整大小</value>
   </data>
-  <data name="IIOffsetY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 25</value>
+  <data name="BtnDPI.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+      iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+      xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAASXSURBVEhLrZVt
+      UFRVGMd32ru7OjXT1JTThyKEWt6SonQIhxBaZF/u7rKAu8suyJu7oEOCu7wvlEGgfig1m/rQZB9smsk+
+      WAwY4O4qllOSJVmZJKI5pGIBM8UM8v7vnHPvcjeyb56Z/9zzPPec8/zuOc95rkxm7DPJ+MCkzBC8c+8V
+      +H/xgQkZ7+dltKPIvwhl4RUot16Dsug6lMWjUJbcILoFVekY0W2oyv4QRfrEVhK/suQmGUvG0fF03tar
+      wjoFv0LhvARF/s9Q2H+EwjYIhfU7KLYMgMv9GlzOGciz+yEz+CcIgH9WWThCJv8mBS4lgWmgsj+h2jZB
+      NAmVK0zUR98RIAEkBEHWoBAFw1A6h6Bw/EIgfiIAPxCA7wnAt+DyvmEAnOU0aGwBgEyM0zWgoLIdOa7X
+      oXfWwFzaAkdlB9Kzy6HQH0NmbjmsFa14zHECKvdfDCLZ2gpLcS3i+GY8ZWiHfUcb7NvbEKNvwdOGNlhK
+      m6HLryaqQm5pI6xldSgor0Pky7XhAIFZSp+S14i7tYGBAaze0ICu473Mrmx8C6sKhxBl6MDwlWvMl2Zt
+      QiLfwPq0rTfX4Tm+RrT+25L0O1cC/I4NFgFgaWkJeocHGc7d0DiakGnz4MHsY7C7fez9/Pw88bfg3cNH
+      mX1paBhR5oNIMNQzm7Zn+VrEZnlFC3BW+JBsqUWqpZqtp870rgAgZ5hkFgAWFxcRv6kYEcZDiNB2IMpE
+      vnj7NB629uDQ+x+zMbOzs+xJYV40VrIciNNJAPHaGkRrPKIFpBrdiMhswRNpHkSmV4MzB8DRJAwHSOSl
+      I5iensbk5CTThat/E4A7TDGmvRgbuy2OAjyvHcRq+3l2G9RZdaIXUG/2knOux8zMDLPpk641NTWFU/2n
+      oXjpbQJwMvwICIBROsPBwUH4/X4Eg0FYi14hCTcOVfkU1CsAdrUcgMp2jt2AWG2t6AViNnvwpKaefQht
+      4+PjGBkZYerp7QWX9g7ZhWA4wCheMAsAc3NzeHwjyXy+i2T/Z3jA0sOu3kO5XTjw3hE2JnQE9Lle52Z3
+      f51eAojN8mBthgcLCwvMTtzkwKOafViT5kNk3gfg+OPgTP4QAL2G15GcI+1AuXcPWj8ZRbZ7L8zFPkTo
+      9sBSJASggBsN2/BpZ4DZQ0OXEa3djSSjBBCv3YXojCrRAp7nq5bvPpd9iuWA3NhHAE6IAKR4pOZJAOGN
+      buMjCSZ0dvcwu6KmHau2nIFa34wbN28xn8bhQ9G+s6xP2zpdNdSanaIFaMveJMG/lIKb+iDnvwgDKLiM
+      Z4yvkq/0Lsvm8qGs+g0YbS7cn74fJY0fwuZuxhrzEaHckkqXktuEvJI6JPA+pLiPwu4Sis3azHpEZJGi
+      5GrA/sPd0Oz4aDk4JwaXG7olAFa3yYK0hlMYVkppkJCozUTeOWmdD5VZUutpqbVfEOt9qNyeFWv+V+K2
+      n1ze9lBwub4zBBCY4KxkMl3McVFY2EGBwsR8VOR9eFA7qfG28+KP5hwJLP1shC3vZ9lOE05u7BWDd5Hg
+      n+M+IpneP053gKcQd/1l3lP5/y0a3BTU/wOqQun/rUfNRgAAAABJRU5ErkJggg==
+    </value>
   </data>
-  <data name="IISizeH.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 3</value>
-  </data>
-  <data name="IISizeW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 3</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 5</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 27</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 5</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 27</value>
-  </data>
-  <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 44</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 170</value>
+  <data name="BtnDPI.ToolTip" xml:space="preserve">
+    <value>从 Exif 信息加载 DPI</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 64</value>
@@ -165,6 +173,9 @@
   </data>
   <data name="LblBorderTracing.Text" xml:space="preserve">
     <value>边界速度</value>
+  </data>
+  <data name="LblLinearFilling.Text" xml:space="preserve">
+    <value>填充速度</value>
   </data>
   <data name="LblBorderTracingmm.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 5</value>
@@ -196,86 +207,51 @@
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 86</value>
   </data>
+  >>>>>>> master
   <data name="BtnModulationInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
-        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
-        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
-        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
-        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
-        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
-        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
-        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
-        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
-        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="BtnModulationInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>207, 29</value>
-  </data>
-  <data name="BtnModulationInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 17</value>
+      iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+      dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+      FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+      /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+      uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+      +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+      MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+      65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+      4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+      Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+      2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+    </value>
   </data>
   <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
     <value>GRBL支持可变的输出功率产生灰度。</value>
   </data>
-  <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 7</value>
-  </data>
-  <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 12</value>
-  </data>
   <data name="label26.Text" xml:space="preserve">
     <value>激光关</value>
-  </data>
-  <data name="LblSmin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 12</value>
   </data>
   <data name="LblSmin.Text" xml:space="preserve">
     <value>最小S值</value>
   </data>
-  <data name="IIMinPower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 29</value>
-  </data>
-  <data name="LblSmax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 31</value>
-  </data>
-  <data name="LblSmax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 12</value>
-  </data>
   <data name="LblSmax.Text" xml:space="preserve">
     <value>最大S值</value>
-  </data>
-  <data name="IIMaxPower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 29</value>
-  </data>
-  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 12</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
     <value>激光开</value>
   </data>
   <data name="BtnOnOffInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
-        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
-        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
-        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
-        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
-        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
-        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
-        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
-        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
-        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="BtnOnOffInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>207, 4</value>
-  </data>
-  <data name="BtnOnOffInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 17</value>
+      iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+      dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+      FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+      /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+      uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+      +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+      MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+      65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+      4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+      Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+      2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+    </value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>激光：M3的标准模式。</value>
@@ -298,23 +274,8 @@
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>取消</value>
   </data>
-  <data name="BtnCreate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 3</value>
-  </data>
   <data name="BtnCreate.Text" xml:space="preserve">
     <value>创建</value>
-  </data>
-  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 240</value>
-  </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>285, 33</value>
-  </data>
-  <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 276</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>291, 276</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>目标图像</value>
