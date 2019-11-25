@@ -114,7 +114,7 @@ namespace LaserGRBL
 					pProcess.StartInfo.FileName = ".\\Firmware\\avrdude.exe";
 
 					//strCommandParameters are parameters to pass to program
-					pProcess.StartInfo.Arguments = $"-patmega328p -b{CbBaudRate.SelectedItem} -P{com} -carduino -Uflash:w:{firmware}:i";
+					pProcess.StartInfo.Arguments = $"-patmega328p -b{CbBaudRate.SelectedItem} -P{com} -carduino -Uflash:w:\"{firmware}\":i";
 
 					//Start the process
 					pProcess.Start();

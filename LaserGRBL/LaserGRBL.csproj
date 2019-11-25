@@ -1141,10 +1141,13 @@
     <Content Include="Firmware\01-v1.1h-original-20190825.hex">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Firmware\02-v1.1h-custom, XY Homing-20190830.hex">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Firmware\avrdude.conf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Firmware\02-v1.1f-original-20170801.hex">
+    <None Include="Firmware\03-v1.1f-original-20170801.hex">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Grafica\Actions-transform-crop-and-resize-icon.png" />
