@@ -554,9 +554,9 @@ namespace LaserGRBL
 			if (form.retval != int.MinValue)
 			{
 				if (form.retval == 0)
-					MessageBox.Show("Firmware flashed succesfull!");
+					MessageBox.Show("Firmware flashed succesfull!", "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				else
-					MessageBox.Show("Error: cannot flash firmware.");
+					MessageBox.Show("Error: cannot flash firmware.", "Result", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
 			form.Dispose();

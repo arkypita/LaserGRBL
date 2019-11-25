@@ -33,6 +33,7 @@ namespace LaserGRBL
 
 			InitPortCB();
 
+			CbTarget.SelectedIndex = 0;
 			//CbTarget.Items.Add(new Arduino("Arduino UNO", "atmega328p"));
 			//CbTarget.Items.Add(new Arduino("Arduino Nano", "atmega328p"));
 			//CbTarget.SelectedIndex = 0;
@@ -76,26 +77,19 @@ namespace LaserGRBL
 
 			public override string ToString()
 			{
-				return System.IO.Path.GetFileNameWithoutExtension(path);
+				string fname = System.IO.Path.GetFileNameWithoutExtension(path);
+				string[] arr = fname.Split(new char[] { '-' });
+
+				string order = arr[0];
+				string grblversion = arr[1];
+				string source = arr[2];
+				string date = arr[3];
+
+				date = DateTime.ParseExact(date, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture).ToShortDateString();
+
+				return $"{grblversion} {source} [{date}]";
 			}
 		}
-
-		//private class Arduino
-		//{
-		//	private string descrittivo;
-		//	private string commandline;
-
-		//	public Arduino(string descrittivo, string commandline)
-		//	{
-		//		this.descrittivo = descrittivo;
-		//		this.commandline = commandline;
-		//	}
-
-		//	public override string ToString()
-		//	{
-		//		return descrittivo;
-		//	}
-		//}
 
 		private void BtnOK_Click(object sender, EventArgs e)
 		{
@@ -130,5 +124,12 @@ namespace LaserGRBL
 			{ DialogResult = DialogResult.Cancel; }
 		}
 
+		private void CbTarget_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (CbTarget.SelectedIndex == 0)
+				CbBaudRate.SelectedItem = 115200;
+			else if (CbTarget.SelectedIndex == 1)
+				CbBaudRate.SelectedItem = 57600;
+		}
 	}
 }
