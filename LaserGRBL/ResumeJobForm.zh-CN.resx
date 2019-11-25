@@ -112,130 +112,115 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BoxAutoUpdateFailed" xml:space="preserve">
-    <value>自动更新失败!
-请从 lasergrbl 站点手动下载新版本.</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="CbRestoreWCO.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 12</value>
   </data>
-  <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
-    <value>更新需要管理员权限!</value>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>确认</value>
   </data>
-  <data name="BoxAutoUpdateResult" xml:space="preserve">
-    <value>更新结果</value>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>取消</value>
   </data>
-  <data name="BoxAutoUpdateSuccess" xml:space="preserve">
-    <value>更新成功!</value>
+  <data name="CbRedoHoming.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 16</value>
   </data>
-  <data name="BoxConnectErrorTitle" xml:space="preserve">
-    <value>无法连接到设备</value>
+  <data name="CbRedoHoming.Text" xml:space="preserve">
+    <value>重新做归位 [$H]</value>
   </data>
-  <data name="BoxExportConfigError" xml:space="preserve">
-    <value>导出配置时出错!</value>
+  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>474, 117</value>
   </data>
-  <data name="BoxExportConfigErrorTitle" xml:space="preserve">
-    <value>错误</value>
+  <data name="LblSomeLines.Location" type="System.Drawing.Point, System.Drawing">
+    <value>384, 48</value>
   </data>
-  <data name="BoxExportConfigFileNotFound" xml:space="preserve">
-    <value>文件不存在!</value>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>381, 1</value>
   </data>
-  <data name="BoxExportConfigSuccess" xml:space="preserve">
-    <value>{0} 成功导出配置!</value>
+  <data name="RbFromSpecific.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 16</value>
   </data>
-  <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
-    <value>成功</value>
+  <data name="RbFromSpecific.Text" xml:space="preserve">
+    <value>从特定行恢复</value>
   </data>
-  <data name="BoxImportConfigFileError" xml:space="preserve">
-    <value>读取文件时出错!</value>
+  <data name="RbFromBeginning.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 16</value>
   </data>
-  <data name="BoxImportConfigWithError" xml:space="preserve">
-    <value>{0} Config imported with {1} errors!</value>
+  <data name="RbFromBeginning.Text" xml:space="preserve">
+    <value>重新开始任务 [安全]</value>
   </data>
-  <data name="BoxImportConfigWithoutError" xml:space="preserve">
-    <value>{0} 配置导入成功!</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>379, 18</value>
   </data>
-  <data name="CustomButtonEdit" xml:space="preserve">
-    <value>编辑按钮</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>选项</value>
   </data>
-  <data name="CustomButtonRemove" xml:space="preserve">
-    <value>删除按钮</value>
+  <data name="LblBegin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>384, 25</value>
   </data>
-  <data name="DirectionDiagonal" xml:space="preserve">
-    <value>Diagonal</value>
+  <data name="UdSpecific.Location" type="System.Drawing.Point, System.Drawing">
+    <value>384, 92</value>
   </data>
-  <data name="DirectionHorizontal" xml:space="preserve">
-    <value>水平</value>
+  <data name="RbFromSent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 16</value>
   </data>
-  <data name="DirectionNone" xml:space="preserve">
-    <value>无</value>
+  <data name="RbFromSent.Text" xml:space="preserve">
+    <value>从上次发送的命令恢复</value>
   </data>
-  <data name="DirectionVertical" xml:space="preserve">
-    <value>垂直</value>
+  <data name="LblSent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>384, 71</value>
   </data>
-  <data name="FormulaCustom" xml:space="preserve">
-    <value>自定义</value>
+  <data name="LblBrief.Size" type="System.Drawing.Size, System.Drawing">
+    <value>383, 36</value>
   </data>
-  <data name="FormulaOpticalCorrect" xml:space="preserve">
-    <value>OpticalCorrect</value>
+  <data name="LblBrief.Text" xml:space="preserve">
+    <value>LaserGRBL可以从头开始此工作，也可以尝试从最后一个已知位置恢复。
+由于无法确定最佳重启位置，我们让您做出最终决定。
+最后的速度、功率和激光状态自动恢复。</value>
   </data>
-  <data name="FormulaSimpleAverage" xml:space="preserve">
-    <value>SimpleAverage</value>
+  <data name="PBWarn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAO6SURBVFhHxZbLT1NBFMbPQqNu
+        lY3+B0aNUdfGFejeGBe4MhBcEhIeJTwC5VHe7zeFAqW2IiQsYAE0sbWViCRujAkxbmBh3AgqCbrQ6/dN
+        esntZWhvjcXFL/feuTNzvjnnzJkRwzD+K9rGk0QqKyszoqKiQurq6mR2dvbU4OCga2BgoDIQCJxubm6W
+        6upqqampkdraWsdIWVlZRpSWlkpVVZVMTEwU9PT07Hd3d+9PTk4Wud1uKSkpkeLiYvV0irS1tWVES0uL
+        NDQ0XO3o6Pjd29trkPb2dgMeuL6wsCArKyuyvLzsGJmamnLM9PS0jI+PS19fX7y/v18ZJ/CC0dnZub67
+        u6uNcyrUipzQ2tqqPADDBRBwaJwgFAY8YoRCoSeRSETW1tZkdXXVEeLxeBzBJGtsbDyP1e7ZBfCbIpqa
+        mr7ifw4SU5CgjpDR0dG0eL1eGRkZERgL2I1b4T+EIsj+fr9fG0Y7avJUIMOViKGhoVxMblhjb4cCGIqx
+        sbF7QI1nzqRCELeUzM/PU8BpGP+QavVWEIaPXV1dZ/EU7BCBqGMRKtVBdXQ734eHh6sxod3Qd8T9AbgP
+        vln/0VNoq1tcXFRbbWlp6VgEnbVQOSYj12D8l2b168Ds8zLRpmBCUnA4HL6xsbEhsVhM4vG4Fq1xwsxH
+        uWUco9iGKr5WIyAOTAEvEm0K9qUAuJj1grtHlV2WcDsCtVowASd+yAnxbTVs8hqYAmKJtiQSQh4xjHNz
+        cxIMBo/AwpIEBpnvFzH4C41rVk/SCuBYrHIvGo1e0lVBwrqeRH19vap8EODVTWohrQDC8OG09G1ubqpc
+        sHOk4jFeGJQLAdoJLTgSgKqoagOO8bs8TcvLy5OQmZmZJBCvM3DdO91kNl4BU0Ak0aaFIQTvkdzneKZw
+        h5kc7ntWO5522PNuKj4m7lbizBcmLN6TdoEOehSFycMDjSJM1OWC8LYDw5dxQBxwC6USkEjMPUyah0nz
+        0LZr76MD/X+g/xXa483K5XKJijnhjQYuCdOwg9X/FfQCbERYZ8xKy0NGgWR5rBv0r8FOM1CeC3d2dmRr
+        a0vMZLgAdZ90A1LA+l8EChPvuj5aEMLPqLA5ygNMCsTcn6nbMclbPM1d8MZsTwftIA9YIYP4VgJuI/G0
+        ndPwExQAhu4g0eYIJjHs8gp3h8ngRwiylng6aIsVEjeip+Lz+UKogClvOtmAWx2ef8aafxNs0y26jtkC
+        XtjGdrzFysdqlo/ECOHHInieZWiDtvJZD7RH5EmibTw5DPkDqNV2ZjoWTs0AAAAASUVORK5CYII=
+</value>
   </data>
-  <data name="FormulaWeightAverage" xml:space="preserve">
-    <value>WeightAverage</value>
+  <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 32</value>
   </data>
-  <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
-    <value>Smooth (HQ Bicubic)</value>
+  <data name="LblCause.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 12</value>
   </data>
-  <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
-    <value>Sharp (NearestNeighbor)</value>
+  <data name="LblCause.Text" xml:space="preserve">
+    <value>原因:</value>
   </data>
-  <data name="LanguageRequireRestart" xml:space="preserve">
-    <value>需要重新启动</value>
+  <data name="TxtCause.Location" type="System.Drawing.Point, System.Drawing">
+    <value>41, 18</value>
   </data>
-  <data name="LanguageRequireRestartNow" xml:space="preserve">
-    <value>需要重新启动应用程序,现在重新启动吗?</value>
+  <data name="LblDetected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 12</value>
   </data>
-  <data name="MacStatusAlarm" xml:space="preserve">
-    <value>警告</value>
-  </data>
-  <data name="MacStatusCheck" xml:space="preserve">
-    <value>检查</value>
-  </data>
-  <data name="MacStatusConnecting" xml:space="preserve">
-    <value>连接</value>
-  </data>
-  <data name="MacStatusDisconnected" xml:space="preserve">
-    <value>断开</value>
-  </data>
-  <data name="MacStatusDoor" xml:space="preserve">
-    <value>Door</value>
-  </data>
-  <data name="MacStatusHold" xml:space="preserve">
-    <value>Hold</value>
-  </data>
-  <data name="MacStatusHome" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="MacStatusIdle" xml:space="preserve">
-    <value>空闲</value>
-  </data>
-  <data name="MacStatusJog" xml:space="preserve">
-    <value>Jog</value>
-  </data>
-  <data name="MacStatusRun" xml:space="preserve">
-    <value>运行</value>
-  </data>
-  <data name="MacStatusUnknown" xml:space="preserve">
-    <value>未知</value>
-  </data>
-  <data name="MainFormEstimatedTime" xml:space="preserve">
-    <value>估计时间:</value>
-  </data>
-  <data name="MainFormProjectedTime" xml:space="preserve">
-    <value>预计时间:</value>
+  <data name="LblDetected.Text" xml:space="preserve">
+    <value>LaserGRBL检测到上一个作业任务未完成！</value>
   </data>
 </root>
