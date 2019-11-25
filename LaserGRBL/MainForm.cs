@@ -541,6 +541,32 @@ namespace LaserGRBL
 		{
 			SetLanguage(new System.Globalization.CultureInfo("cs-CZ"));
 		}
+
+		private void installCH340DriverToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(".\\Driver\\CH341SER.EXE");
+		}
+
+		private void flashGrblFirmwareToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			FlashGrbl form = new FlashGrbl();
+			form.ShowDialog(this);
+			if (form.retval != int.MinValue)
+			{
+				if (form.retval == 0)
+					MessageBox.Show("Firmware flashed succesfull!", "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				else
+					MessageBox.Show("Error: cannot flash firmware.", "Result", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+
+			form.Dispose();
+			
+		}
+
+		private void toolsToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+		{
+			flashGrblFirmwareToolStripMenuItem.Enabled = (Core.MachineStatus == GrblCore.MacStatus.Disconnected);
+		}
 	}
 
 

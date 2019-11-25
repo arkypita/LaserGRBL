@@ -111,6 +111,12 @@
     </Compile>
     <Compile Include="Autotrace\Autotrace.cs" />
     <Compile Include="ComWrapper\ComLogger.cs" />
+    <Compile Include="Firmware\FlashGrbl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Firmware\FlashGrbl.Designer.cs">
+      <DependentUpon>FlashGrbl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SmoothieCore.cs" />
     <Compile Include="SvgConverter\ConvertSizeAndOptionForm.cs">
       <SubType>Form</SubType>
@@ -739,9 +745,12 @@
     <EmbeddedResource Include="CustomButtonForm.ru.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Firmware\FlashGrbl.resx">
+      <DependentUpon>FlashGrbl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.zh-CN.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
-</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.cs-CZ.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -921,7 +930,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RunFromPositionForm.zh-CN.resx">
       <DependentUpon>RunFromPositionForm.cs</DependentUpon>
-</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.cs-CZ.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1141,6 +1150,24 @@
     <EmbeddedResource Include="CSV\setting_codes.v0.9.csv" />
     <EmbeddedResource Include="CSV\setting_codes.v0.8.csv" />
     <None Include="app.config" />
+    <Content Include="Driver\CH341SER.EXE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Firmware\avrdude.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Firmware\01-v1.1h-original-20190825.hex">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Firmware\02-v1.1h-custom, XY Homing-20190830.hex">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Firmware\avrdude.conf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Firmware\03-v1.1f-original-20170801.hex">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Grafica\Actions-transform-crop-and-resize-icon.png" />
     <None Include="Grafica\Crop-tool-icon.png" />
     <None Include="Grafica\document-revert.png" />
@@ -1153,6 +1180,9 @@
     <EmbeddedResource Include="SvgLibrary\Resources\svg11.dtd" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Firmware\libusb0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Grafica\add2.png" />
     <Content Include="Grafica\aE.png" />
     <Content Include="Grafica\aN.png" />
