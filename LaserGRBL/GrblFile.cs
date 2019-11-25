@@ -354,7 +354,7 @@ namespace LaserGRBL
 			list.Add(new GrblCommand(c.lOff));
 
 			//move fast to origin
-			list.Add(new GrblCommand("G0 X0 Y0"));
+			//list.Add(new GrblCommand("G0 X0 Y0")); //moved to custom footer
 
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
