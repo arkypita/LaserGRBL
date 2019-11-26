@@ -23,7 +23,7 @@ namespace LaserGRBL
 			InitCbBaudRate();
 			InitPortCB();
 
-			CbTarget.SelectedIndex = 0;
+			BtnOK.Enabled = CbFirmware.SelectedIndex >= 0 && CbTarget.SelectedIndex >= 0;
 		}
 
 		private void InitCbBaudRate()
@@ -44,8 +44,6 @@ namespace LaserGRBL
 					CbFirmware.Items.Add(new Firmware(System.IO.Path.GetFullPath(filename)));
 			}
 			CbFirmware.Items.Add(SELECT);
-
-			CbFirmware.SelectedIndex = 0;
 			CbFirmware.SelectedIndexChanged += CbFirmware_SelectedIndexChanged;
 			CbFirmware.EndUpdate();
 		}
@@ -133,6 +131,7 @@ namespace LaserGRBL
 
 					retval = pProcess.ExitCode; //zero se ok
 				}
+				catch { }
 				finally { DialogResult = DialogResult.OK; }
 			}
 			else
@@ -145,6 +144,8 @@ namespace LaserGRBL
 				CbBaudRate.SelectedItem = 115200;
 			else if (CbTarget.SelectedIndex == 1)
 				CbBaudRate.SelectedItem = 57600;
+
+			BtnOK.Enabled = CbFirmware.SelectedIndex >= 0 && CbTarget.SelectedIndex >= 0;
 		}
 
 		private void BtnTarget_Click(object sender, EventArgs e)
@@ -159,7 +160,6 @@ namespace LaserGRBL
 
 		private void CbFirmware_SelectedIndexChanged(object sender, EventArgs e)
 		{
-
 			if ((CbFirmware.SelectedItem as string) == SELECT)
 			{
 				CbFirmware.SelectedIndexChanged -= CbFirmware_SelectedIndexChanged;
@@ -201,6 +201,7 @@ namespace LaserGRBL
 				CbFirmware.SelectedIndexChanged += CbFirmware_SelectedIndexChanged;
 			}
 
+			BtnOK.Enabled = CbFirmware.SelectedIndex >= 0 && CbTarget.SelectedIndex >= 0;
 		}
 	}
 }
