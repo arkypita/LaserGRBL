@@ -28,9 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FlashGrbl));
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnOK = new System.Windows.Forms.Button();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -45,7 +47,9 @@
 			this.CbPort = new System.Windows.Forms.ComboBox();
 			this.LblSpeed = new System.Windows.Forms.Label();
 			this.CbBaudRate = new System.Windows.Forms.ComboBox();
-			this.BtnCancel = new System.Windows.Forms.Button();
+			this.TT = new System.Windows.Forms.ToolTip(this.components);
+			this.BtnTarget = new LaserGRBL.UserControls.ImageButton();
+			this.BtnFirmware = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -68,7 +72,7 @@
 			this.tableLayoutPanel1.RowCount = 2;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(350, 203);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(317, 208);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
 			// tableLayoutPanel2
@@ -82,18 +86,29 @@
 			this.tableLayoutPanel2.Controls.Add(this.BtnCancel, 1, 0);
 			this.tableLayoutPanel2.Controls.Add(this.BtnOK, 2, 0);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 167);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 172);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 1;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(344, 33);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(311, 33);
 			this.tableLayoutPanel2.TabIndex = 0;
+			// 
+			// BtnCancel
+			// 
+			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.BtnCancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.BtnCancel.Location = new System.Drawing.Point(154, 3);
+			this.BtnCancel.Name = "BtnCancel";
+			this.BtnCancel.Size = new System.Drawing.Size(74, 27);
+			this.BtnCancel.TabIndex = 4;
+			this.BtnCancel.Text = "Cancel";
+			this.BtnCancel.UseVisualStyleBackColor = true;
 			// 
 			// BtnOK
 			// 
 			this.BtnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.BtnOK.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnOK.Location = new System.Drawing.Point(267, 3);
+			this.BtnOK.Location = new System.Drawing.Point(234, 3);
 			this.BtnOK.Name = "BtnOK";
 			this.BtnOK.Size = new System.Drawing.Size(74, 27);
 			this.BtnOK.TabIndex = 5;
@@ -117,7 +132,7 @@
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(344, 158);
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(311, 163);
 			this.tableLayoutPanel3.TabIndex = 1;
 			// 
 			// tableLayoutPanel4
@@ -133,7 +148,7 @@
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
 			this.tableLayoutPanel4.RowCount = 1;
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel4.Size = new System.Drawing.Size(338, 38);
+			this.tableLayoutPanel4.Size = new System.Drawing.Size(305, 38);
 			this.tableLayoutPanel4.TabIndex = 4;
 			// 
 			// LblWarning
@@ -142,7 +157,7 @@
 			this.LblWarning.AutoSize = true;
 			this.LblWarning.ForeColor = System.Drawing.Color.Red;
 			this.LblWarning.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.LblWarning.Location = new System.Drawing.Point(60, 6);
+			this.LblWarning.Location = new System.Drawing.Point(44, 6);
 			this.LblWarning.Margin = new System.Windows.Forms.Padding(2);
 			this.LblWarning.Name = "LblWarning";
 			this.LblWarning.Size = new System.Drawing.Size(255, 26);
@@ -165,8 +180,9 @@
 			// tableLayoutPanel5
 			// 
 			this.tableLayoutPanel5.AutoSize = true;
-			this.tableLayoutPanel5.ColumnCount = 2;
+			this.tableLayoutPanel5.ColumnCount = 3;
 			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -178,6 +194,8 @@
 			this.tableLayoutPanel5.Controls.Add(this.CbPort, 1, 2);
 			this.tableLayoutPanel5.Controls.Add(this.LblSpeed, 0, 3);
 			this.tableLayoutPanel5.Controls.Add(this.CbBaudRate, 1, 3);
+			this.tableLayoutPanel5.Controls.Add(this.BtnTarget, 2, 0);
+			this.tableLayoutPanel5.Controls.Add(this.BtnFirmware, 2, 1);
 			this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 47);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -187,11 +205,12 @@
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel5.Size = new System.Drawing.Size(338, 128);
+			this.tableLayoutPanel5.Size = new System.Drawing.Size(305, 128);
 			this.tableLayoutPanel5.TabIndex = 5;
 			// 
 			// CbTarget
 			// 
+			this.CbTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.CbTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbTarget.FormattingEnabled = true;
 			this.CbTarget.Items.AddRange(new object[] {
@@ -199,7 +218,7 @@
             "Arduino Nano"});
 			this.CbTarget.Location = new System.Drawing.Point(70, 3);
 			this.CbTarget.Name = "CbTarget";
-			this.CbTarget.Size = new System.Drawing.Size(262, 21);
+			this.CbTarget.Size = new System.Drawing.Size(209, 21);
 			this.CbTarget.TabIndex = 0;
 			this.CbTarget.SelectedIndexChanged += new System.EventHandler(this.CbTarget_SelectedIndexChanged);
 			// 
@@ -215,11 +234,12 @@
 			// 
 			// CbFirmware
 			// 
+			this.CbFirmware.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.CbFirmware.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbFirmware.FormattingEnabled = true;
 			this.CbFirmware.Location = new System.Drawing.Point(70, 30);
 			this.CbFirmware.Name = "CbFirmware";
-			this.CbFirmware.Size = new System.Drawing.Size(262, 21);
+			this.CbFirmware.Size = new System.Drawing.Size(209, 21);
 			this.CbFirmware.TabIndex = 1;
 			// 
 			// LblFirmware
@@ -269,23 +289,52 @@
 			this.CbBaudRate.Size = new System.Drawing.Size(115, 21);
 			this.CbBaudRate.TabIndex = 3;
 			// 
-			// BtnCancel
+			// TT
 			// 
-			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.BtnCancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnCancel.Location = new System.Drawing.Point(187, 3);
-			this.BtnCancel.Name = "BtnCancel";
-			this.BtnCancel.Size = new System.Drawing.Size(74, 27);
-			this.BtnCancel.TabIndex = 4;
-			this.BtnCancel.Text = "Cancel";
-			this.BtnCancel.UseVisualStyleBackColor = true;
+			this.TT.AutoPopDelay = 10000;
+			this.TT.InitialDelay = 500;
+			this.TT.ReshowDelay = 100;
+			// 
+			// BtnTarget
+			// 
+			this.BtnTarget.AltImage = null;
+			this.BtnTarget.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.BtnTarget.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnTarget.Coloration = System.Drawing.Color.Empty;
+			this.BtnTarget.Image = ((System.Drawing.Image)(resources.GetObject("BtnTarget.Image")));
+			this.BtnTarget.Location = new System.Drawing.Point(285, 5);
+			this.BtnTarget.Name = "BtnTarget";
+			this.BtnTarget.Size = new System.Drawing.Size(17, 17);
+			this.BtnTarget.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnTarget.TabIndex = 23;
+			this.TT.SetToolTip(this.BtnTarget, "Select exact kind of arduino board you want to upgrade.\r\nClick here for more info" +
+        "...");
+			this.BtnTarget.UseAltImage = false;
+			this.BtnTarget.Click += new System.EventHandler(this.BtnTarget_Click);
+			// 
+			// BtnFirmware
+			// 
+			this.BtnFirmware.AltImage = null;
+			this.BtnFirmware.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.BtnFirmware.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnFirmware.Coloration = System.Drawing.Color.Empty;
+			this.BtnFirmware.Image = ((System.Drawing.Image)(resources.GetObject("BtnFirmware.Image")));
+			this.BtnFirmware.Location = new System.Drawing.Point(285, 32);
+			this.BtnFirmware.Name = "BtnFirmware";
+			this.BtnFirmware.Size = new System.Drawing.Size(17, 17);
+			this.BtnFirmware.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnFirmware.TabIndex = 24;
+			this.TT.SetToolTip(this.BtnFirmware, "Select the firmware you want to flash on your board\r\nClick here if you need more " +
+        "info about available versions...");
+			this.BtnFirmware.UseAltImage = false;
+			this.BtnFirmware.Click += new System.EventHandler(this.BtnFirmware_Click);
 			// 
 			// FlashGrbl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.BtnCancel;
-			this.ClientSize = new System.Drawing.Size(350, 203);
+			this.ClientSize = new System.Drawing.Size(317, 208);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "FlashGrbl";
@@ -325,5 +374,8 @@
 		private System.Windows.Forms.Label LblTarget;
 		private System.Windows.Forms.ComboBox CbTarget;
 		private System.Windows.Forms.Button BtnCancel;
+		private UserControls.ImageButton BtnTarget;
+		private UserControls.ImageButton BtnFirmware;
+		private System.Windows.Forms.ToolTip TT;
 	}
 }

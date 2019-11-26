@@ -137,5 +137,15 @@ namespace LaserGRBL
 			else if (CbTarget.SelectedIndex == 1)
 				CbBaudRate.SelectedItem = 57600;
 		}
+
+		private void BtnTarget_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/flash/#target");
+		}
+
+		private void BtnFirmware_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/flash/#firmware");
+		}
 	}
 }
