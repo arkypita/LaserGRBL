@@ -11,35 +11,44 @@ namespace LaserGRBL
 {
 	public partial class FlashGrbl : Form
 	{
+		private const string SELECT = "--- add custom firmware ---";
+
 		public int retval = int.MinValue;
 		private object[] baudRates = { 4800, 9600, 19200, 38400, 57600, 115200, 230400, 460800, 921600 };
 		public FlashGrbl()
 		{
 			InitializeComponent();
 
+			InitCBFirmware();
+			InitCbBaudRate();
+			InitPortCB();
 
+			CbTarget.SelectedIndex = 0;
+		}
+
+		private void InitCbBaudRate()
+		{
+			CbBaudRate.BeginUpdate();
+			CbBaudRate.Items.AddRange(baudRates);
+			CbBaudRate.EndUpdate();
+			CbBaudRate.SelectedItem = 115200;
+		}
+
+		private void InitCBFirmware()
+		{
+			CbFirmware.BeginUpdate();
+			CbFirmware.Items.Clear();
 			foreach (string filename in System.IO.Directory.GetFiles(".\\Firmware\\"))
 			{
 				if (filename.ToLower().EndsWith(".hex"))
 					CbFirmware.Items.Add(new Firmware(System.IO.Path.GetFullPath(filename)));
 			}
+			CbFirmware.Items.Add(SELECT);
+
 			CbFirmware.SelectedIndex = 0;
-
-
-			CbBaudRate.BeginUpdate();
-			CbBaudRate.Items.AddRange(baudRates);
-			CbBaudRate.EndUpdate();
-			CbBaudRate.SelectedItem = 115200;
-
-			InitPortCB();
-
-			CbTarget.SelectedIndex = 0;
-			//CbTarget.Items.Add(new Arduino("Arduino UNO", "atmega328p"));
-			//CbTarget.Items.Add(new Arduino("Arduino Nano", "atmega328p"));
-			//CbTarget.SelectedIndex = 0;
+			CbFirmware.SelectedIndexChanged += CbFirmware_SelectedIndexChanged;
+			CbFirmware.EndUpdate();
 		}
-
-
 
 		private void InitPortCB() //Availabe Ports combo box
 		{
@@ -146,6 +155,52 @@ namespace LaserGRBL
 		private void BtnFirmware_Click(object sender, EventArgs e)
 		{
 			System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/flash/#firmware");
+		}
+
+		private void CbFirmware_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+			if ((CbFirmware.SelectedItem as string) == SELECT)
+			{
+				CbFirmware.SelectedIndexChanged -= CbFirmware_SelectedIndexChanged;
+				int index = -1;
+				using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
+				{
+					ofd.FileName = null;
+					ofd.Filter = "Precompiled .hex firmware|*.hex";
+					ofd.CheckFileExists = true;
+					ofd.Multiselect = false;
+					ofd.RestoreDirectory = true;
+					if (ofd.ShowDialog() == DialogResult.OK)
+					{
+						try
+						{
+							string src = ofd.FileName;
+							string dst = $".\\Firmware\\{System.IO.Path.GetFileName(ofd.FileName)}";
+							bool confirm = !System.IO.File.Exists(dst) || MessageBox.Show("A firmware file with this name already exists.\r\nOverwrite?", "Confirm overwrite", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK;
+							if (confirm)
+							{
+								System.IO.File.Copy(src, dst, true);
+
+								InitCBFirmware();
+
+								foreach (object o in CbFirmware.Items)
+								{
+									if (o is Firmware)
+									{
+										if (System.IO.Path.GetFileName((o as Firmware).path).ToLower() == System.IO.Path.GetFileName(dst).ToLower())
+											index = CbFirmware.Items.IndexOf(o);
+									}
+								}
+							}
+						}
+						catch { }
+					}
+				}
+				CbFirmware.SelectedIndex = index;
+				CbFirmware.SelectedIndexChanged += CbFirmware_SelectedIndexChanged;
+			}
+
 		}
 	}
 }

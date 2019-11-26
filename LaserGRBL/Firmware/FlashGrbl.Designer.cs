@@ -47,9 +47,9 @@
 			this.CbPort = new System.Windows.Forms.ComboBox();
 			this.LblSpeed = new System.Windows.Forms.Label();
 			this.CbBaudRate = new System.Windows.Forms.ComboBox();
-			this.TT = new System.Windows.Forms.ToolTip(this.components);
 			this.BtnTarget = new LaserGRBL.UserControls.ImageButton();
 			this.BtnFirmware = new LaserGRBL.UserControls.ImageButton();
+			this.TT = new System.Windows.Forms.ToolTip(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -289,12 +289,6 @@
 			this.CbBaudRate.Size = new System.Drawing.Size(115, 21);
 			this.CbBaudRate.TabIndex = 3;
 			// 
-			// TT
-			// 
-			this.TT.AutoPopDelay = 10000;
-			this.TT.InitialDelay = 500;
-			this.TT.ReshowDelay = 100;
-			// 
 			// BtnTarget
 			// 
 			this.BtnTarget.AltImage = null;
@@ -328,6 +322,12 @@
         "info about available versions...");
 			this.BtnFirmware.UseAltImage = false;
 			this.BtnFirmware.Click += new System.EventHandler(this.BtnFirmware_Click);
+			// 
+			// TT
+			// 
+			this.TT.AutoPopDelay = 10000;
+			this.TT.InitialDelay = 500;
+			this.TT.ReshowDelay = 100;
 			// 
 			// FlashGrbl
 			// 
