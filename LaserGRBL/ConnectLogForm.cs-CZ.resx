@@ -133,7 +133,7 @@
     <value>Počet průchodů (opakování)</value>
   </data>
   <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>O programu</value>
+    <value>Přerušit úlohu</value>
   </data>
   <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
     <value>Připojit</value>
@@ -145,6 +145,9 @@
     <value>URL</value>
   </data>
   <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Emulated Grbl v1.1#</value>
+    <value>Emulované Grbl v1.1#</value>
+  </data>
+  <data name="LblEmulator.Text" xml:space="preserve">
+    <value>Emulátor</value>
   </data>
 </root>

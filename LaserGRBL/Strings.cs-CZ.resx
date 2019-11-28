@@ -135,7 +135,7 @@ Stáhněte manuálně novou verzi programu z lasergrbml webu.</value>
   </data>
   <data name="BoxConfigDetectedChanges" xml:space="preserve">
     <value>Existují některé změny, které nebyly použité.
-Chcete přepsat konfiguracii?</value>
+Chcete přepsat konfiguraci?</value>
   </data>
   <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
     <value>Zjištěné změny</value>
@@ -144,7 +144,7 @@ Chcete přepsat konfiguracii?</value>
     <value>Nelze se spojit se zařízením</value>
   </data>
   <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
-    <value>Prosím zadejte G-kód příkazy</value>
+    <value>Prosím zadejte příkaz G-kódu</value>
   </data>
   <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
     <value>Prosím zadejte popisek</value>
@@ -156,7 +156,7 @@ Chcete přepsat konfiguracii?</value>
     <value>Opravdu chcete vymazat vybrané tlačítko?</value>
   </data>
   <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
-    <value>Odstranit vlastní tlačítko</value>
+    <value>Odstranění vlastního tlačítka</value>
   </data>
   <data name="BoxExportConfigError" xml:space="preserve">
     <value>Chyba exportu nastavení!</value>
@@ -171,7 +171,7 @@ Chcete přepsat konfiguracii?</value>
     <value>{0} Konfigurace úspěšně exportována!</value>
   </data>
   <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
-    <value>Úspěšné</value>
+    <value>Úspěch</value>
   </data>
   <data name="BoxImportConfigFileError" xml:space="preserve">
     <value>Chyba načítání souboru</value>
@@ -222,7 +222,7 @@ Chcete přepsat konfiguracii?</value>
     <value>Horizontálně</value>
   </data>
   <data name="DirectionNone" xml:space="preserve">
-    <value>Žádné</value>
+    <value>Žádná</value>
   </data>
   <data name="DirectionVertical" xml:space="preserve">
     <value>Vertikálně</value>
@@ -279,7 +279,7 @@ Chcete přepsat konfiguracii?</value>
     <value>Dveře</value>
   </data>
   <data name="MacStatusHold" xml:space="preserve">
-    <value>Zastavit</value>
+    <value>Zastaveno</value>
   </data>
   <data name="MacStatusHome" xml:space="preserve">
     <value>Domů</value>

@@ -117,37 +117,71 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnReset.ToolTip" xml:space="preserve">
-    <value>Resetovat Grbl (CTRL-X)</value>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Ofset</value>
   </data>
-  <data name="addCustomButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Přidat vlastní tlačítko</value>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Rozměr</value>
   </data>
-  <data name="exportCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Exportovat vlastní tlačítka</value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Š</value>
   </data>
-  <data name="importCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Importovat vlastní tlačítka</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>V</value>
   </data>
-  <data name="BtnUnlock.ToolTip" xml:space="preserve">
-    <value>Odemknout Grbl ($X)</value>
+  <data name="CbAutosize.Text" xml:space="preserve">
+    <value>Automatický rozměr</value>
   </data>
-  <data name="BtnHoming.ToolTip" xml:space="preserve">
-    <value>Domů ($H)</value>
+  <data name="BtnDPI.ToolTip" xml:space="preserve">
+    <value>Nastavit DPI podle EXIFu</value>
   </data>
-  <data name="BtnZeroing.ToolTip" xml:space="preserve">
-    <value>Nastavení nulového bodu (G92)</value>
+  <data name="GbSize.Text" xml:space="preserve">
+    <value>Rozměr a pozice obrázku</value>
   </data>
-  <data name="BtnResume.ToolTip" xml:space="preserve">
-    <value>Obnovit úlohu</value>
+  <data name="LblBorderTracing.Text" xml:space="preserve">
+    <value>Rychlost kontury</value>
   </data>
-  <data name="BtnStop.ToolTip" xml:space="preserve">
-    <value>Přerušit úlohu</value>
+  <data name="LblLinearFilling.Text" xml:space="preserve">
+    <value>Rychlost výplně</value>
   </data>
-  <data name="RemoveButton.Text" xml:space="preserve">
-    <value>Odstranit tlačítko</value>
+  <data name="GbSpeed.Text" xml:space="preserve">
+    <value>Rychlost</value>
   </data>
-  <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Upravit tlačítko</value>
+  <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
+    <value>Grbl podporuje řízení výkonu laseru pro vytvoření odstínů šedi.
+To vyžaduje, aby váš hardware měl podporu TTL řízení laseru.
+
+Klikněte pro více informací...</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Laser VYP</value>
+  </data>
+  <data name="LblSmin.Text" xml:space="preserve">
+    <value>Výkon MIN</value>
+  </data>
+  <data name="LblSmax.Text" xml:space="preserve">
+    <value>Výkon MAX</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Laser ZAP</value>
+  </data>
+  <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
+    <value>Laser ZAP: M3 je standardní příkaz.
+Grbl v1.1 podporuje nový M4 "Dynamic Laser Power Mode".
+Laser VYP: M5 je jediný příkaz, který je podporován.
+
+Klikněte pro více informací...</value>
+  </data>
+  <data name="GbLaser.Text" xml:space="preserve">
+    <value>Možnosti</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Storno</value>
+  </data>
+  <data name="BtnCreate.Text" xml:space="preserve">
+    <value>Vytvořit</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Cílový obrázek</value>
   </data>
 </root>

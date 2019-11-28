@@ -117,37 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnReset.ToolTip" xml:space="preserve">
-    <value>Resetovat Grbl (CTRL-X)</value>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="addCustomButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Přidat vlastní tlačítko</value>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Storno</value>
   </data>
-  <data name="exportCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Exportovat vlastní tlačítka</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Řádek #</value>
   </data>
-  <data name="importCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Importovat vlastní tlačítka</value>
+  <data name="RbFromSpecific.Text" xml:space="preserve">
+    <value>Spustit z daného řádku</value>
   </data>
-  <data name="BtnUnlock.ToolTip" xml:space="preserve">
-    <value>Odemknout Grbl ($X)</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Možnosti</value>
   </data>
-  <data name="BtnHoming.ToolTip" xml:space="preserve">
-    <value>Domů ($H)</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Spustit z pozice</value>
   </data>
-  <data name="BtnZeroing.ToolTip" xml:space="preserve">
-    <value>Nastavení nulového bodu (G92)</value>
+  <data name="LblBrief.Text" xml:space="preserve">
+    <value>Tato funkce umožňuje spustit úlohu od konkrétního řádku a přeskočit předchozí.
+LaserGRBL vypočítá přesnou polohu a stav, a poté uvede stroj do správného stavu.</value>
   </data>
-  <data name="BtnResume.ToolTip" xml:space="preserve">
-    <value>Obnovit úlohu</value>
-  </data>
-  <data name="BtnStop.ToolTip" xml:space="preserve">
-    <value>Přerušit úlohu</value>
-  </data>
-  <data name="RemoveButton.Text" xml:space="preserve">
-    <value>Odstranit tlačítko</value>
-  </data>
-  <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Upravit tlačítko</value>
+  <data name="CbRedoHoming.Text" xml:space="preserve">
+    <value>Návrat domů [$H]</value>
   </data>
 </root>

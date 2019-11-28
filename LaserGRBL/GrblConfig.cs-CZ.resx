@@ -121,7 +121,7 @@
     <value>Zápis</value>
   </data>
   <data name="BtnRead.Text" xml:space="preserve">
-    <value>Obnovit</value>
+    <value>Čtení</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Zavřít</value>
@@ -153,5 +153,8 @@ pouze po připojení a v klidovém stavu</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Grbl</value>
+  </data>
+  <data name="LblAction.Text" xml:space="preserve">
+    <value>Akce</value>
   </data>
 </root>

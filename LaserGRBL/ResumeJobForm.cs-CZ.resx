@@ -118,7 +118,46 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="LblBrief.Text" xml:space="preserve">
-    <value>LaserGRBL může spustit tuto úlohu znova od začátku nebo se jí pokusit obnovit z poslední známé pozície.
-Protože ne vždy je možné určit nejlepší pozici po restartovaní, konečné rozhodnutí je na Vás.</value>
+    <value>LaserGRBL může spustit tuto úlohu znova od začátku nebo se jí pokusit obnovit z poslední známé pozice.
+Protože ne vždy je po restartovaní možné určit nejlepší pozici, konečné rozhodnutí je na Vás.</value>
+  </data>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Storno</value>
+  </data>
+  <data name="RbSomeLines.Text" xml:space="preserve">
+    <value>Obnovit některé řádky před zastavením</value>
+  </data>
+  <data name="LblLineNumber.Text" xml:space="preserve">
+    <value>Řádek #</value>
+  </data>
+  <data name="RbFromSpecific.Text" xml:space="preserve">
+    <value>Obnovit z daného řádku</value>
+  </data>
+  <data name="RbFromBeginning.Text" xml:space="preserve">
+    <value>Spustit znovu od začátku [bezpečné]</value>
+  </data>
+  <data name="LblOptions.Text" xml:space="preserve">
+    <value>Možnosti</value>
+  </data>
+  <data name="RbFromSent.Text" xml:space="preserve">
+    <value>Obnovit od posledního poslaného příkazu</value>
+  </data>
+  <data name="LblCause.Text" xml:space="preserve">
+    <value>Důvod:</value>
+  </data>
+  <data name="TxtCause.Text" xml:space="preserve">
+    <value>Neznámý</value>
+  </data>
+  <data name="LblDetected.Text" xml:space="preserve">
+    <value>LaserGRBL detekoval, že poslední úloha nebyla dokončena!</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Pokračovat</value>
+  </data>
+  <data name="CbRestoreWCO.Text" xml:space="preserve">
+    <value>Domů @</value>
   </data>
 </root>

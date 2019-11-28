@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -689,6 +689,9 @@
     <EmbeddedResource Include="Autotrace\AutotraceTest.resx">
       <DependentUpon>AutotraceTest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AutoUpdate\NewVersionForm.cs-CZ.resx">
+      <DependentUpon>NewVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AutoUpdate\NewVersionForm.hu-HU.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -769,11 +772,17 @@
     <EmbeddedResource Include="GrblConfig.zh-CN.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HotkeyManagerForm.cs-CZ.resx">
+      <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HotkeyManagerForm.hu-HU.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HotkeyManagerForm.it.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IssueDetectorForm.cs-CZ.resx">
+      <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IssueDetectorForm.hu-HU.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
@@ -799,17 +808,26 @@
     <EmbeddedResource Include="PreviewForm.sk-SK.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.cs-CZ.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.hu-HU.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.sk-SK.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\RasterToLaserForm.cs-CZ.resx">
+      <DependentUpon>RasterToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\RasterToLaserForm.hu-HU.resx">
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\RasterToLaserForm.sk-SK.resx">
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.cs-CZ.resx">
+      <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.hu-HU.resx">
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
@@ -834,6 +852,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ResumeJobForm.zh-CN.resx">
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RunFromPositionForm.cs-CZ.resx">
+      <DependentUpon>RunFromPositionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RunFromPositionForm.hu-HU.resx">
       <DependentUpon>RunFromPositionForm.cs</DependentUpon>
@@ -1092,6 +1113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SplashScreenForm.resx">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.cs-CZ.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.da.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>

@@ -126,7 +126,7 @@
   <data name="LblDescription.Text" xml:space="preserve">
     <value>- Tečka "." jako desetinný oddělovač
 - Podpora matematický výrazů v hranatých závorkách: např. GOX[left-5] Y[bottom-5]
-- Možnosti : vlevo, vpravo, nahoře, dole, šířka, výška... (a další)
+- Možnosti : left, right, top, bottom, width, height.. (a další)
 
 Viz. http://lasergrbl.com/usage/custom-buttons/</value>
   </data>
@@ -137,18 +137,18 @@ Viz. http://lasergrbl.com/usage/custom-buttons/</value>
     <value>Popisek</value>
   </data>
   <data name="LblImage.Text" xml:space="preserve">
-    <value>Obrázek</value>
+    <value>Ikona</value>
   </data>
   <data name="LblType.Text" xml:space="preserve">
     <value>Typ:</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Vlastní tlačítka</value>
+    <value>Vlastní tlačítko</value>
   </data>
   <data name="LblGCode2.Text" xml:space="preserve">
-    <value>GCode2</value>
+    <value>G-kód2</value>
   </data>
   <data name="LblGCode.Text" xml:space="preserve">
-    <value>GCode</value>
+    <value>G-kód</value>
   </data>
 </root>

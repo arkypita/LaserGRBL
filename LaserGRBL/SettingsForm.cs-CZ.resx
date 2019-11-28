@@ -130,7 +130,7 @@
     <value>Protokol</value>
   </data>
   <data name="CbUnidirectional.Text" xml:space="preserve">
-    <value>Grvírování v jednom směru</value>
+    <value>Gravírování v jednom směru</value>
   </data>
   <data name="CBSupportPWM.Text" xml:space="preserve">
     <value>Podpora PWM</value>
@@ -145,7 +145,7 @@
     <value>Zobrazení ovládání osy Z (nahoru a dolů)</value>
   </data>
   <data name="CbAutoCooling.Text" xml:space="preserve">
-    <value>Povolení automatického chlazení</value>
+    <value>Automatické chlazení</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Zap</value>
@@ -170,7 +170,7 @@
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>LaserGRBL může detekovat problémy a varovat uživatele poskytnutím informací o tom, jak je vyřešit.
-Pokud je zakázáno, jsou všechny problémy tiše řešeny bez varování.</value>
+Pokud je deaktivováno, jsou všechny problémy řešeny tiše bez varování.</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>s</value>
@@ -178,7 +178,7 @@ Pokud je zakázáno, jsou všechny problémy tiše řešeny bez varování.</val
   <data name="label21.Text" xml:space="preserve">
     <value>Upozornění: tato funkce je funkční pouze u verze grbl &gt; v1.1 s povoleným "laser režimem".
 Pokud používáte automatické chlazení se starší verzí grbl (nebo s deaktivovaným "laser režimem"), laser se
-během pauzy nevypne a vypálí díry ve Vaší matrici!</value>
+během pauzy nevypne a vypálí díru ve Vaší matrici!</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Režim streamování: [výchozí Bufferování]
@@ -187,33 +187,34 @@ během pauzy nevypne a vypálí díry ve Vaší matrici!</value>
 - Opakování při chybě: stejné jako Synchronní režim, ale příkazy jsou opakovány pokud je detekována chyba [experimentální]</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Threading Mode: UltraFast, Fast, Quiet, Slow. [Default UltraFast]
-This setting affect the speed of sending thread and the frequency of status report request.
-Set slower values if you are experiencing issues.</value>
+    <value>Threading Mode: [Výchozí UltraFast]
+Ultrarychlý, Rychlý, Klidný, Pomalý.
+Toto nastavení ovlivňuje rychlost odesílání a frekvenci žádostí o hlášení stavu zařízení.
+Pokud máte problémy, nastavte pomalejší hodnoty.</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Pokud je povoleno, LaserGRBL odešle soft-reset při otevření připojení k grbl.</value>
+    <value>Pokud je aktivováno, LaserGRBL odešle soft-reset při otevření připojení k grbl.</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>Pokud je povoleno, LaserGRBL odešle hard-reset při otevření připojení k grbl [ztráta pozice!].</value>
+    <value>Pokud je aktivováno, LaserGRBL odešle hard-reset při otevření připojení k grbl [ztráta pozice!].</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Váš kontrolér laseru musí podporovat TTL řízení na pinu D11 Arduina.
-Pokud tomu tak není, prosíme deaktuvujte podporu PWM.</value>
+Pokud tomu tak není, prosím deaktivujte podporu PWM.</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Standardně LaserGRBL vytváří dráhy pro gravírování v obou směrech pohyby laserové hlavy. Některé testy ukázaly, že tento režim (který je rychlejší) přináší nižší kvalitu výsledků. Pokud je požadována maximální kvalita, aktivujte tuto možnost.</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
-    <value>Čas VYP: po této době odešle LaserGRBL příkaz pro pokračování v gravírování.</value>
+    <value>Čas VYP: po této době odešle LaserGRBL příkaz pro pokračování úlohy (gravírování).</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
-    <value>Některé laserové diody se mohou zahřát příliš mnoho, pokud běží dlouhou dobu na nejvyšší výkon. Chcete-li zabránit přehřátí a prodloužit životnost laseru, můžete přidat několik cyklů automatického ochlazování, které v průběhu gravírování vloží pauzu.
-Pokud je povoleno automatické chlazení, LaserGRBL odešle automaticky příkazy pro „pozastavení“ a „obnovení“ podle nastavení časů ZAP-VYP.</value>
+    <value>Některé laserové diody se mohou zahřát příliš mnoho, pokud pracují dlouhou dobu na nejvyšší výkon. Chcete-li zabránit přehřátí a prodloužit životnost laseru, může být automaticky vložen cyklus pro přerušení úlohy, během této pauzy dojde k ochlazení.
+Pokud je aktivováno automatické chlazení, LaserGRBL odešle automaticky příkazy pro "pozastavení" a "obnovení" podle nastavení časů ZAP-VYP.</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>Čas ZAP: Toto je maximální doba, po kterou laser zůstane během gravírování zapnutý.
-Po uplynutí této doby LaserGRBL odešle automaticky příkaz přerušní, aby vychladl laser.</value>
+    <value>Čas ZAP: maximální doba, po kterou zůstane laser zapnutý.
+Po uplynutí této doby LaserGRBL odešle automaticky příkaz pro přerušení úlohy, aby vychladl laser.</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Typ firmware kontroléru
@@ -225,5 +226,36 @@ Po uplynutí této doby LaserGRBL odešle automaticky příkaz přerušní, aby 
   </data>
   <data name="TpJogControl.Text" xml:space="preserve">
     <value>Polohování</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Hlavička</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Patička</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Opakované průchody
+(vykonání kódu)</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>G-kód</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBL provede tento G-kód na začátku jakékoli úlohy.
+Tento kód můžete upravit, například přidání M8 zapne ventilátor nebo pokud potřebujete provést specifické polohování související s konkrétní úlohou.
+
+Syntaxe kódu je stejná jako u vlastních tlačítek.</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBL provede tento G-kód na konci jakékoli úlohy.
+Například lze použít k nastavení stroje do výchozího stavu, návrat do nulové polohy nebo odeslání M9 pro vypnutí ventilátoru, apod.
+
+Syntaxe kódu je stejná jako u vlastních tlačítek.</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Při provádění více průchodů LaserGRBL provede tento G-kód mezi každým průchodem.
+Například lze použít k posunutí osy Z dolů při provádění řezů hlouběji.
+
+Syntaxe kódu je stejná jako u vlastních tlačítek.</value>
   </data>
 </root>

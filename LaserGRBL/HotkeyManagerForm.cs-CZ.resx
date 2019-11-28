@@ -117,37 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnReset.ToolTip" xml:space="preserve">
-    <value>Resetovat Grbl (CTRL-X)</value>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Storno</value>
   </data>
-  <data name="addCustomButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Přidat vlastní tlačítko</value>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Uložit</value>
   </data>
-  <data name="exportCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Exportovat vlastní tlačítka</value>
+  <data name="Action.HeaderText" xml:space="preserve">
+    <value>Akce</value>
   </data>
-  <data name="importCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Importovat vlastní tlačítka</value>
+  <data name="Shortcut.HeaderText" xml:space="preserve">
+    <value>Kl. zkratka</value>
   </data>
-  <data name="BtnUnlock.ToolTip" xml:space="preserve">
-    <value>Odemknout Grbl ($X)</value>
+  <data name="GB.Text" xml:space="preserve">
+    <value>Dostupné kl. zkratky</value>
   </data>
-  <data name="BtnHoming.ToolTip" xml:space="preserve">
-    <value>Domů ($H)</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Správce horkých kláves</value>
   </data>
-  <data name="BtnZeroing.ToolTip" xml:space="preserve">
-    <value>Nastavení nulového bodu (G92)</value>
-  </data>
-  <data name="BtnResume.ToolTip" xml:space="preserve">
-    <value>Obnovit úlohu</value>
-  </data>
-  <data name="BtnStop.ToolTip" xml:space="preserve">
-    <value>Přerušit úlohu</value>
-  </data>
-  <data name="RemoveButton.Text" xml:space="preserve">
-    <value>Odstranit tlačítko</value>
-  </data>
-  <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Upravit tlačítko</value>
+  <data name="LblConnect.Text" xml:space="preserve">
+    <value>Zadejte libovolnou kombinaci kláves pro nastavení zkratky.
+Klávesovou zkratku odstraníte stisknutím klávesy "Storno".</value>
   </data>
 </root>
