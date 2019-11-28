@@ -59,7 +59,9 @@ namespace LaserGRBL
 
         private void TbSpeed_ValueChanged(object sender, EventArgs e)
 		{
-			TT.SetToolTip(TbSpeed, string.Format("Speed: {0}", TbSpeed.Value));
+
+			
+			TT.SetToolTip(TbSpeed, $"{Strings.SpeedSliderToolTip} {TbSpeed.Value}");
 			LblSpeed.Text = String.Format("F{0}", TbSpeed.Value);
 			Settings.SetObject("Jog Speed", TbSpeed.Value);
 			Core.JogSpeed = TbSpeed.Value;
@@ -68,7 +70,7 @@ namespace LaserGRBL
 
 		private void TbStep_ValueChanged(object sender, EventArgs e)
 		{
-			TT.SetToolTip(TbStep, string.Format("Step: {0}", TbStep.Value));
+			TT.SetToolTip(TbStep, $"{Strings.StepSliderToolTip} {TbStep.Value}");
 			LblStep.Text = TbStep.Value.ToString();
 			Settings.SetObject("Jog Step", TbStep.Value);
 			Core.JogStep = TbStep.Value;

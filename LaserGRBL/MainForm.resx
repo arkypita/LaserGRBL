@@ -836,90 +836,6 @@
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File</value>
   </data>
-  <data name="installCH340DriverToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJfSURBVDhPpZNdSNNRGMafbTlNN/efbmurbM1vRHQp
-        VDg0E520BSPRMkwrLUgpiozM8EasjCykDJtFyirpQ+yDSEiFQim8Cqsr6yLMQPMiKaIPlns6zuwi1vcD
-        v4vznpfnnPd9zwHJ/yJg8G8AShVAkRzIkwFWFZCjBWymEEXekr64ncm+kBTDICAPBcS+PgJIjwN0OsBo
-        BMKkAAZZkiHYIQ1vv7qeExzhytrlM8fsEQBazW8MUlQIcmrvF17L5sbrdh64t4uLi80+kbXPb2AxAGmx
-        PxhsUphQKPMgF4cQL7fbjlu9Be1ZRCQmoMMzhMzrQqxKhWQ1kLDAAmu0GxERDuiFQagwCNohHy7pdnJD
-        u4uSS/N+W28BE/bGUJOiGVUvUw9JmZFDWpf5gZRvGQhfZRqzNa9g0m7rtDJ+4V2ZRpuMVHfUlwGe52P2
-        sf31CfZ+usLLE23snDzLi2PneGHUzc7xM/SMn6Z7rJH9Xg/vsIlr+2xUWo0vEd1geNfxoY6tU/vp6Mhk
-        TpONzlO5XHMyh20vjrLqdhnzj9h9zsP5085mOxtfVbHm0RYmVCZSrg97ClkSDpqrdV5TuTSNUAxCjnpB
-        HYLhKb25zrf1VjExHyNQogcaWa++KOqjMk49JcbaMtNWQIxWaLVgsyDcv/qmmDLz80tvW1nRVeKr6qlg
-        amXapAiXCxLF2/DnQHQ7sIIEejgy6tM/93u7xaMjGx7WUtzy2GyCGLtfPzNQChYJVHAlVcS+aXnSyOya
-        DJ84uNq//12/MlgqmC3RKjPihrjVTN2zkTnNfYp/JWDwzyG+AqyoiSit9RmQAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="installCH340DriverToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="installCH340DriverToolStripMenuItem.Text" xml:space="preserve">
-    <value>Install CH340 Driver</value>
-  </data>
-  <data name="flashGrblFirmwareToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKlSURBVDhPpdNdSJNRGAfw11xaObTCcpQfJDM/1trc
-        JraxWYE6MTdzbtPXfWumrVkWdmETm3XhB1IUc1IUEnkTQSRd9EGFJYJdWEYEEVJGWEEaelOhzX/PWVeC
-        UdADPzgP5zznPed9n5cD8F/+FGqj0Tij0+ne0lhK1pIoNvHXSE5ODjY3Ny+GQiEEg0G4XK4f8fHx3TS1
-        gURHFq0UQqEwr6io6H0gEEBrayt8Pl+E3++P5Eql8rVAIFDS0jVk+WnEYnGf2+3+6fV6YbFYwPM8KIfH
-        44HdbofD4YhsRnMLIpGoh0o2EkGk2FhR+bHR1wStVov8/Hzo9XqYzWbYbLZIMRsXFxdDoVBE5uoPHUZW
-        juQllaaSWO7mpQt4MDiAem8TlCoV9LTYarXCZDKBrgSNRgO5XA5tQQFsDjfaamtQqFaFqbiUbObG3Kq5
-        +dFjuH/+HHo6e1FqMEBFG8lkMkgkEkilUhgqKlDLuxDgyzE73oDavJQvVOwhadyEZc+buSEjnh+X4dWt
-        DvSe6kK1zYnMrCzIFbkwW2yoM/EYvurE6NEMfH/iQuG2FHYFO0nhPjTmfXvRKcHT06al6St7cc+rxmD3
-        CRysb4CtqgYhvxXXHZmYfVSNOwe04a8Du9CuSZul4iqyheuI4krbBdztT/37l0Zb0jF52bE0ESyBpawS
-        ZdrdmH7IY8SvD0/15WK4SbeYHcONUDN0UTF7B5sIJyQ5F0WCu4FEweTMDTeu1YkWhML1Y9vXxY1PnN2B
-        Z2eMYacoekqSEP2Y1h4h+0gGYR3KrSKsOVJ30lcdNyTNG9Jj3lHeQqqH1HGf23SJ7KWdJE6iJVtJLFnW
-        UKsJaxDW++WkhIhJJikjBpJNEsjvJloh2I7sWEmE3Y89hWE5w8bLY6Vf9N+B+wX7F2tzpcmRyAAAAABJ
-        RU5ErkJggg==
-</value>
-  </data>
-  <data name="flashGrblFirmwareToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="flashGrblFirmwareToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Flash Grbl Firmware</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 6</value>
-  </data>
-  <data name="toolStripSeparator3.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="configurationWizardToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKQSURBVDhPnZJdSBRRFMfPnWFmV9fV2dbAhdUMLXVt
-        NSMlSqJvfKm3yrTUNszoxcrU/XIjCokKkughtKStaNfUfUlLMwyrh0qjoJBQIqm1FCyVpLVW53RGKUyU
-        Pv7wY+7MPf//vZwz8BxA7AJIbwdIbAIAD+EF2NK6OHSgXifevqHiwKPmwDsP0MlYZu+GRHyVZf5MASVu
-        gO0P1sV/HLlfgI0J4T1ukXGXQjg4T1yYA3gIkNy9dfnwd/8j9F8sx64dqRh4dx2HOw9hTThXc4Ju5CLK
-        iPI5gFYAdocDm7+2AhEnUQ48pmcDvq1Nx1M8NJQAqBWzYx6gngHQtXc+y06dlMefIsoNiN/yMDiQhi/P
-        xGD1stAPThUrtgFo7FQ/G7gJsKljbXz/155rUyfjeD7iyErEwXT80pmC76ti0B3HYwXAxpNUPxu4Gxc2
-        NNphwU9PjmCfOwPlwTSU+9OwZVck+nK3oSslrm9vuCo/MyIicoUgQCp5ZgI+vepeY5LUWy2B+7QITa/P
-        xSJ2r8ZcPYf5BcV4q6V9bE3GqhytJFE31Irld9WF8KxWxbgqWh+nf+KyWTM0WpOAB43SGyaqxkrLSrG1
-        rU1OMJsLpx2zVBfKg1vDw1laHyOcIhy+soSTjy7U5ZiWJmUzQQg6bDZsbm6eNBqN+6ZMM6UEXKUAZd5W
-        grrN09iyCjWSfrMpGRYYDLvpc9DhcKDP55P1ev0BxfdLPwOUjpJ5ajROoihMgvVJJoiJjQUyWRhjE0qI
-        1+ud0Ol0RVQyrT8FLKIAg8FA/VMr1w/a7XYlBClkP73/XUBUVBRotVrged5CW0GXy4Uej0fpieWfAkRR
-        pB3YQwQrKyvRarVO/E+AojxBEALR0dEvfgCWnxmadPmERwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="configurationWizardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="configurationWizardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Configuration &amp;Wizard</value>
-  </data>
-  <data name="configurationWizardToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 20</value>
-  </data>
-  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Tools</value>
-  </data>
   <data name="MNGrblEmulator.Size" type="System.Drawing.Size, System.Drawing">
     <value>147, 22</value>
   </data>
@@ -1186,6 +1102,90 @@
   </data>
   <data name="linguaToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Language</value>
+  </data>
+  <data name="installCH340DriverToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJfSURBVDhPpZNdSNNRGMafbTlNN/efbmurbM1vRHQp
+        VDg0E520BSPRMkwrLUgpiozM8EasjCykDJtFyirpQ+yDSEiFQim8Cqsr6yLMQPMiKaIPlns6zuwi1vcD
+        v4vznpfnnPd9zwHJ/yJg8G8AShVAkRzIkwFWFZCjBWymEEXekr64ncm+kBTDICAPBcS+PgJIjwN0OsBo
+        BMKkAAZZkiHYIQ1vv7qeExzhytrlM8fsEQBazW8MUlQIcmrvF17L5sbrdh64t4uLi80+kbXPb2AxAGmx
+        PxhsUphQKPMgF4cQL7fbjlu9Be1ZRCQmoMMzhMzrQqxKhWQ1kLDAAmu0GxERDuiFQagwCNohHy7pdnJD
+        u4uSS/N+W28BE/bGUJOiGVUvUw9JmZFDWpf5gZRvGQhfZRqzNa9g0m7rtDJ+4V2ZRpuMVHfUlwGe52P2
+        sf31CfZ+usLLE23snDzLi2PneGHUzc7xM/SMn6Z7rJH9Xg/vsIlr+2xUWo0vEd1geNfxoY6tU/vp6Mhk
+        TpONzlO5XHMyh20vjrLqdhnzj9h9zsP5085mOxtfVbHm0RYmVCZSrg97ClkSDpqrdV5TuTSNUAxCjnpB
+        HYLhKb25zrf1VjExHyNQogcaWa++KOqjMk49JcbaMtNWQIxWaLVgsyDcv/qmmDLz80tvW1nRVeKr6qlg
+        amXapAiXCxLF2/DnQHQ7sIIEejgy6tM/93u7xaMjGx7WUtzy2GyCGLtfPzNQChYJVHAlVcS+aXnSyOya
+        DJ84uNq//12/MlgqmC3RKjPihrjVTN2zkTnNfYp/JWDwzyG+AqyoiSit9RmQAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="installCH340DriverToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="installCH340DriverToolStripMenuItem.Text" xml:space="preserve">
+    <value>Install CH340 Driver</value>
+  </data>
+  <data name="flashGrblFirmwareToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKlSURBVDhPpdNdSJNRGAfw11xaObTCcpQfJDM/1trc
+        JraxWYE6MTdzbtPXfWumrVkWdmETm3XhB1IUc1IUEnkTQSRd9EGFJYJdWEYEEVJGWEEaelOhzX/PWVeC
+        UdADPzgP5zznPed9n5cD8F/+FGqj0Tij0+ne0lhK1pIoNvHXSE5ODjY3Ny+GQiEEg0G4XK4f8fHx3TS1
+        gURHFq0UQqEwr6io6H0gEEBrayt8Pl+E3++P5Eql8rVAIFDS0jVk+WnEYnGf2+3+6fV6YbFYwPM8KIfH
+        44HdbofD4YhsRnMLIpGoh0o2EkGk2FhR+bHR1wStVov8/Hzo9XqYzWbYbLZIMRsXFxdDoVBE5uoPHUZW
+        juQllaaSWO7mpQt4MDiAem8TlCoV9LTYarXCZDKBrgSNRgO5XA5tQQFsDjfaamtQqFaFqbiUbObG3Kq5
+        +dFjuH/+HHo6e1FqMEBFG8lkMkgkEkilUhgqKlDLuxDgyzE73oDavJQvVOwhadyEZc+buSEjnh+X4dWt
+        DvSe6kK1zYnMrCzIFbkwW2yoM/EYvurE6NEMfH/iQuG2FHYFO0nhPjTmfXvRKcHT06al6St7cc+rxmD3
+        CRysb4CtqgYhvxXXHZmYfVSNOwe04a8Du9CuSZul4iqyheuI4krbBdztT/37l0Zb0jF52bE0ESyBpawS
+        ZdrdmH7IY8SvD0/15WK4SbeYHcONUDN0UTF7B5sIJyQ5F0WCu4FEweTMDTeu1YkWhML1Y9vXxY1PnN2B
+        Z2eMYacoekqSEP2Y1h4h+0gGYR3KrSKsOVJ30lcdNyTNG9Jj3lHeQqqH1HGf23SJ7KWdJE6iJVtJLFnW
+        UKsJaxDW++WkhIhJJikjBpJNEsjvJloh2I7sWEmE3Y89hWE5w8bLY6Vf9N+B+wX7F2tzpcmRyAAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
+  <data name="flashGrblFirmwareToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="flashGrblFirmwareToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Flash Grbl Firmware</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 6</value>
+  </data>
+  <data name="toolStripSeparator3.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="configurationWizardToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKQSURBVDhPnZJdSBRRFMfPnWFmV9fV2dbAhdUMLXVt
+        NSMlSqJvfKm3yrTUNszoxcrU/XIjCokKkughtKStaNfUfUlLMwyrh0qjoJBQIqm1FCyVpLVW53RGKUyU
+        Pv7wY+7MPf//vZwz8BxA7AJIbwdIbAIAD+EF2NK6OHSgXifevqHiwKPmwDsP0MlYZu+GRHyVZf5MASVu
+        gO0P1sV/HLlfgI0J4T1ukXGXQjg4T1yYA3gIkNy9dfnwd/8j9F8sx64dqRh4dx2HOw9hTThXc4Ju5CLK
+        iPI5gFYAdocDm7+2AhEnUQ48pmcDvq1Nx1M8NJQAqBWzYx6gngHQtXc+y06dlMefIsoNiN/yMDiQhi/P
+        xGD1stAPThUrtgFo7FQ/G7gJsKljbXz/155rUyfjeD7iyErEwXT80pmC76ti0B3HYwXAxpNUPxu4Gxc2
+        NNphwU9PjmCfOwPlwTSU+9OwZVck+nK3oSslrm9vuCo/MyIicoUgQCp5ZgI+vepeY5LUWy2B+7QITa/P
+        xSJ2r8ZcPYf5BcV4q6V9bE3GqhytJFE31Irld9WF8KxWxbgqWh+nf+KyWTM0WpOAB43SGyaqxkrLSrG1
+        rU1OMJsLpx2zVBfKg1vDw1laHyOcIhy+soSTjy7U5ZiWJmUzQQg6bDZsbm6eNBqN+6ZMM6UEXKUAZd5W
+        grrN09iyCjWSfrMpGRYYDLvpc9DhcKDP55P1ev0BxfdLPwOUjpJ5ajROoihMgvVJJoiJjQUyWRhjE0qI
+        1+ud0Ol0RVQyrT8FLKIAg8FA/VMr1w/a7XYlBClkP73/XUBUVBRotVrged5CW0GXy4Uej0fpieWfAkRR
+        pB3YQwQrKyvRarVO/E+AojxBEALR0dEvfgCWnxmadPmERwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="configurationWizardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="configurationWizardToolStripMenuItem.Text" xml:space="preserve">
+    <value>Configuration &amp;Wizard</value>
+  </data>
+  <data name="configurationWizardToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 20</value>
+  </data>
+  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Tools</value>
   </data>
   <data name="helpOnLineToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

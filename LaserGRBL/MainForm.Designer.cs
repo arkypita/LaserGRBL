@@ -256,10 +256,10 @@
 			this.MMn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnGrbl,
             this.fileToolStripMenuItem,
-            this.toolsToolStripMenuItem,
             this.MNEsp8266,
             this.schemaToolStripMenuItem,
             this.linguaToolStripMenuItem,
+            this.toolsToolStripMenuItem,
             this.questionMarkToolStripMenuItem});
 			resources.ApplyResources(this.MMn, "MMn");
 			this.MMn.Name = "MMn";

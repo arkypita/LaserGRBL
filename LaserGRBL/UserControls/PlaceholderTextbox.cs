@@ -200,6 +200,7 @@ namespace LaserGRBL.UserControls
 		#endregion
 
 		#region Properties
+		[Localizable(true)]
 		[Category("Watermark attribtues")]
 		[Description("Sets the text of the watermark")]
 		public string WaterMark

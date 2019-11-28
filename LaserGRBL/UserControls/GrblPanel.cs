@@ -28,6 +28,19 @@ namespace LaserGRBL.UserControls
 			SetStyle(ControlStyles.ResizeRedraw, true);
 			mLastWPos = GPoint.Zero;
 			mLastMPos = GPoint.Zero;
+
+			forcez = (bool)Settings.GetObject("Enale Z Jog Control", false);
+			SettingsForm.SettingsChanged += SettingsForm_SettingsChanged;
+		}
+
+		private void SettingsForm_SettingsChanged(object sender, EventArgs e)
+		{
+			bool newforce = (bool)Settings.GetObject("Enale Z Jog Control", false);
+			if (newforce != forcez)
+			{
+				forcez = newforce;
+				Invalidate();
+			}
 		}
 
 		protected override void OnPaintBackground(PaintEventArgs e)
@@ -35,10 +48,12 @@ namespace LaserGRBL.UserControls
 			e.Graphics.Clear(ColorScheme.PreviewBackColor);
 		}
 
+		bool forcez = false;
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			try
 			{
+
 
 				if (mBitmap != null)
 					e.Graphics.DrawImage(mBitmap, 0, 0, Width, Height);
@@ -70,13 +85,13 @@ namespace LaserGRBL.UserControls
 
 						String position = string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? mLastMPos.X : 0, Core != null ? mLastMPos.Y : 0);
 
-                        if (Core != null && (mLastWPos.Z != 0 || mLastMPos.Z != 0))
+                        if (Core != null && (mLastWPos.Z != 0 || mLastMPos.Z != 0 || forcez))
                             position = position + string.Format(" Z: {0:0.000}", mLastMPos.Z);
 
                         if (Core != null && Core.WorkingOffset != GPoint.Zero)
 							position = position + "\n" + string.Format("X: {0:0.000} Y: {1:0.000}", Core != null ? mLastWPos.X : 0, Core != null ? mLastWPos.Y : 0);
 
-                        if (Core != null && Core.WorkingOffset != GPoint.Zero  && (mLastWPos.Z != 0 || mLastMPos.Z != 0))
+                        if (Core != null && Core.WorkingOffset != GPoint.Zero  && (mLastWPos.Z != 0 || mLastMPos.Z != 0 || forcez))
                             position = position + string.Format(" Z: {0:0.000}", mLastWPos.Z);
 
                         if (mCurF != 0 || mCurS != 0 || mFSTrig)

@@ -229,9 +229,9 @@ namespace LaserGRBL
 				PB.PercString = "";
 			
 			PB.Invalidate();
-			
-			
-			
+
+
+
 			/*
 			Idle: All systems are go, no motions queued, and it's ready for anything.
 			Run: Indicates a cycle is running.
@@ -242,7 +242,7 @@ namespace LaserGRBL
 			Check: Grbl is in check G-code mode. It will process and respond to all G-code commands, but not motion or turn on anything. Once toggled off with another '$C' command, Grbl will reset itself.
 			*/
 
-			TT.SetToolTip(BtnConnectDisconnect, Core.IsOpen ? "Disconnect" : "Connect");
+			TT.SetToolTip(BtnConnectDisconnect, Core.IsOpen ? Strings.BtnDisconnectTT : Strings.BtnConnectTT);
 			
 			BtnConnectDisconnect.UseAltImage = Core.IsOpen;
 			BtnRunProgram.Enabled = Core.CanSendFile;
