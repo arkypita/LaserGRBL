@@ -72,11 +72,6 @@
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnFileSend = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnStartFromPosition = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.installCH340DriverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.flashGrblFirmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.configurationWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNEsp8266 = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNGrblEmulator = new System.Windows.Forms.ToolStripMenuItem();
 			this.schemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,6 +92,11 @@
 			this.slovakianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.hungarianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.czechToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.installCH340DriverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.flashGrblFirmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+			this.configurationWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.questionMarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpOnLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.autoUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,6 +106,7 @@
 			this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
+			this.activateExtendedLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -412,39 +413,6 @@
 			this.MnStartFromPosition.Name = "MnStartFromPosition";
 			this.MnStartFromPosition.Click += new System.EventHandler(this.MnStartFromPosition_Click);
 			// 
-			// toolsToolStripMenuItem
-			// 
-			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.installCH340DriverToolStripMenuItem,
-            this.flashGrblFirmwareToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.configurationWizardToolStripMenuItem});
-			this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-			resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
-			this.toolsToolStripMenuItem.DropDownOpening += new System.EventHandler(this.toolsToolStripMenuItem_DropDownOpening);
-			// 
-			// installCH340DriverToolStripMenuItem
-			// 
-			resources.ApplyResources(this.installCH340DriverToolStripMenuItem, "installCH340DriverToolStripMenuItem");
-			this.installCH340DriverToolStripMenuItem.Name = "installCH340DriverToolStripMenuItem";
-			this.installCH340DriverToolStripMenuItem.Click += new System.EventHandler(this.installCH340DriverToolStripMenuItem_Click);
-			// 
-			// flashGrblFirmwareToolStripMenuItem
-			// 
-			resources.ApplyResources(this.flashGrblFirmwareToolStripMenuItem, "flashGrblFirmwareToolStripMenuItem");
-			this.flashGrblFirmwareToolStripMenuItem.Name = "flashGrblFirmwareToolStripMenuItem";
-			this.flashGrblFirmwareToolStripMenuItem.Click += new System.EventHandler(this.flashGrblFirmwareToolStripMenuItem_Click);
-			// 
-			// toolStripSeparator3
-			// 
-			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
-			// 
-			// configurationWizardToolStripMenuItem
-			// 
-			resources.ApplyResources(this.configurationWizardToolStripMenuItem, "configurationWizardToolStripMenuItem");
-			this.configurationWizardToolStripMenuItem.Name = "configurationWizardToolStripMenuItem";
-			// 
 			// MNEsp8266
 			// 
 			this.MNEsp8266.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -582,6 +550,39 @@
 			this.czechToolStripMenuItem.Name = "czechToolStripMenuItem";
 			this.czechToolStripMenuItem.Click += new System.EventHandler(this.czechToolStripMenuItem_Click);
 			// 
+			// toolsToolStripMenuItem
+			// 
+			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.installCH340DriverToolStripMenuItem,
+            this.flashGrblFirmwareToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.configurationWizardToolStripMenuItem});
+			this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+			resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
+			this.toolsToolStripMenuItem.DropDownOpening += new System.EventHandler(this.toolsToolStripMenuItem_DropDownOpening);
+			// 
+			// installCH340DriverToolStripMenuItem
+			// 
+			resources.ApplyResources(this.installCH340DriverToolStripMenuItem, "installCH340DriverToolStripMenuItem");
+			this.installCH340DriverToolStripMenuItem.Name = "installCH340DriverToolStripMenuItem";
+			this.installCH340DriverToolStripMenuItem.Click += new System.EventHandler(this.installCH340DriverToolStripMenuItem_Click);
+			// 
+			// flashGrblFirmwareToolStripMenuItem
+			// 
+			resources.ApplyResources(this.flashGrblFirmwareToolStripMenuItem, "flashGrblFirmwareToolStripMenuItem");
+			this.flashGrblFirmwareToolStripMenuItem.Name = "flashGrblFirmwareToolStripMenuItem";
+			this.flashGrblFirmwareToolStripMenuItem.Click += new System.EventHandler(this.flashGrblFirmwareToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+			// 
+			// configurationWizardToolStripMenuItem
+			// 
+			resources.ApplyResources(this.configurationWizardToolStripMenuItem, "configurationWizardToolStripMenuItem");
+			this.configurationWizardToolStripMenuItem.Name = "configurationWizardToolStripMenuItem";
+			// 
 			// questionMarkToolStripMenuItem
 			// 
 			this.questionMarkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -589,6 +590,7 @@
             this.autoUpdateToolStripMenuItem,
             this.toolStripMenuItem5,
             this.openSessionLogToolStripMenuItem,
+            this.activateExtendedLogToolStripMenuItem,
             this.toolStripMenuItem7,
             this.donateToolStripMenuItem,
             this.aboutToolStripMenuItem});
@@ -643,6 +645,12 @@
 			this.AwakeTimer.Enabled = true;
 			this.AwakeTimer.Interval = 20000;
 			this.AwakeTimer.Tick += new System.EventHandler(this.AwakeTimer_Tick);
+			// 
+			// activateExtendedLogToolStripMenuItem
+			// 
+			this.activateExtendedLogToolStripMenuItem.Name = "activateExtendedLogToolStripMenuItem";
+			resources.ApplyResources(this.activateExtendedLogToolStripMenuItem, "activateExtendedLogToolStripMenuItem");
+			this.activateExtendedLogToolStripMenuItem.Click += new System.EventHandler(this.activateExtendedLogToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -746,6 +754,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripMenuItem configurationWizardToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem installCH340DriverToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem activateExtendedLogToolStripMenuItem;
 	}
 }
 

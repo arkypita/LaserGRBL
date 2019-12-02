@@ -10,7 +10,6 @@ namespace LaserGRBL.ComWrapper
 		private System.IO.Ports.SerialPort com = new System.IO.Ports.SerialPort();
 		private string mPortName;
 		private int mBaudRate;
-        ComLogger ComLog = new ComLogger("comlog.txt");
 
         public void Configure(params object[] param)
 		{
@@ -36,7 +35,7 @@ namespace LaserGRBL.ComWrapper
 					com.DtrEnable = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
 					com.RtsEnable = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
 
-					ComLog.Log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
+					ComLogger.Log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
 					Logger.LogMessage("OpenCom", "Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString());
 
 					com.Open();
@@ -53,7 +52,7 @@ namespace LaserGRBL.ComWrapper
 						{ 
 							com.PortName = mPortName.Substring(0, mPortName.Length - 1); //remove last digit and try again
 
-                            ComLog.Log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
+                            ComLogger.Log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
 							Logger.LogMessage("OpenCom", "Retry opening {0} as {1} (issue #31)", mPortName.ToUpper(), com.PortName.ToUpper());
 
 							com.Open();
@@ -92,7 +91,7 @@ namespace LaserGRBL.ComWrapper
 		{
 			if (com.IsOpen)
 			{
-                ComLog.Log("com", string.Format("Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER"));
+                ComLogger.Log("com", string.Format("Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER"));
 				Logger.LogMessage("CloseCom", "Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER");
                 try { com.DiscardOutBuffer(); } catch { }
                 try { com.DiscardInBuffer(); } catch { }
@@ -105,28 +104,28 @@ namespace LaserGRBL.ComWrapper
 
 		public void Write(byte b)
 		{
-            ComLog.Log("tx", b);
+            ComLogger.Log("tx", b);
 			com.Write(new byte[] { b }, 0, 1);
 		}
 
         public void Write(byte[] arr)
         {
-            ComLog.Log("tx", arr);
+            ComLogger.Log("tx", arr);
             com.Write(arr, 0, arr.Length);
         }
 
         public void Write(string text)
 		{
-            ComLog.Log("tx", text);
+            ComLogger.Log("tx", text);
 			com.Write(text);
 		}
 
 		public string ReadLineBlocking()
 		{
-			if (GrblCore.WriteComLog)
+			if (ComLogger.Enabled)
 			{
 				string rv = com.ReadLine();
-                ComLog.Log("rx", rv);
+                ComLogger.Log("rx", rv);
 				return rv;
 			}
 			else

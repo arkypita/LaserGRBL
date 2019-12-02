@@ -12,8 +12,6 @@ namespace LaserGRBL.ComWrapper
 
 		private string mAddress;
 		private WebSocket cln;
-        ComLogger ComLog = new ComLogger("socketlog.txt");
-
 		private Queue<string> buffer = new Queue<string>();
 
 		public void Configure(params object[] param)
@@ -34,7 +32,7 @@ namespace LaserGRBL.ComWrapper
 			cln = new WebSocketSharp.WebSocket(mAddress);
 
 			Logger.LogMessage("OpenCom", "Open {0}", mAddress);
-            ComLog.Log("com", string.Format("Open {0} {1}", mAddress, GetResetDiagnosticString()));
+            ComLogger.Log("com", string.Format("Open {0} {1}", mAddress, GetResetDiagnosticString()));
 
 			cln.OnMessage += cln_OnMessage;
 			cln.Connect();
@@ -61,7 +59,7 @@ namespace LaserGRBL.ComWrapper
 			{
 				try
 				{
-                    ComLog.Log("com", string.Format("Close {0} [{1}]", mAddress, auto ? "CORE" : "USER"));
+					ComLogger.Log("com", string.Format("Close {0} [{1}]", mAddress, auto ? "CORE" : "USER"));
 					Logger.LogMessage("CloseCom", "Close {0} [{1}]", mAddress, auto ? "CORE" : "USER");
 					cln.OnMessage -= cln_OnMessage;
 
@@ -81,7 +79,7 @@ namespace LaserGRBL.ComWrapper
 		{
 			if (IsOpen)
 			{
-                ComLog.Log("tx", b);
+				ComLogger.Log("tx", b);
 				cln.Send(new string((char)b, 1));
 			}
 		}
@@ -90,7 +88,7 @@ namespace LaserGRBL.ComWrapper
         {
             if (IsOpen)
             {
-                ComLog.Log("tx", arr);
+                ComLogger.Log("tx", arr);
                 cln.Send(arr);
             }
         }
@@ -99,7 +97,7 @@ namespace LaserGRBL.ComWrapper
 		{
 			if (IsOpen)
 			{
-                ComLog.Log("tx", text);
+                ComLogger.Log("tx", text);
 				cln.Send(text);
 			}
 		}
@@ -121,7 +119,7 @@ namespace LaserGRBL.ComWrapper
 					System.Threading.Thread.Sleep(1);
 			}
 
-            ComLog.Log("rx", rv);
+            ComLogger.Log("rx", rv);
 			return rv;
 		}
 

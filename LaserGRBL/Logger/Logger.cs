@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LaserGRBL
 {
-	class Logger
+	static class Logger
 	{
 
 		private static string LockString = "--- LOCK LOGGER CALL ---";

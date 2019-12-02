@@ -15,7 +15,6 @@ namespace LaserGRBL.ComWrapper
 		BinaryWriter bwriter;
 		StreamReader sreader;
 		StreamWriter swriter;
-        ComLogger ComLog = new ComLogger("netlog.txt");
 
 		public void Configure(params object[] param)
 		{
@@ -33,7 +32,7 @@ namespace LaserGRBL.ComWrapper
 
 			cln = new System.Net.Sockets.TcpClient();
 			Logger.LogMessage("OpenCom", "Open {0}", mAddress);
-			ComLog.Log("com", string.Format("Open {0} {1}", mAddress, GetResetDiagnosticString()));
+			ComLogger.Log("com", string.Format("Open {0} {1}", mAddress, GetResetDiagnosticString()));
 
 			cln.Connect(IPHelper.Parse(mAddress));
 
@@ -64,7 +63,7 @@ namespace LaserGRBL.ComWrapper
 			{
 				try
 				{
-                    ComLog.Log("com", string.Format("Close {0} [{1}]", mAddress, auto ? "CORE" : "USER"));
+                    ComLogger.Log("com", string.Format("Close {0} [{1}]", mAddress, auto ? "CORE" : "USER"));
 					Logger.LogMessage("CloseCom", "Close {0} [{1}]", mAddress, auto ? "CORE" : "USER");
 					cln.Close();
 				}
@@ -84,21 +83,21 @@ namespace LaserGRBL.ComWrapper
 
 		public void Write(byte b)
 		{
-            ComLog.Log("tx", b);
+            ComLogger.Log("tx", b);
 			bwriter.Write(b);
 			bwriter.Flush();
 		}
 
         public void Write(byte[] arr)
         {
-            ComLog.Log("tx", arr);
+            ComLogger.Log("tx", arr);
             bwriter.Write(arr);
             bwriter.Flush();
         }
 
         public void Write(string text)
 		{
-            ComLog.Log("tx", text);
+            ComLogger.Log("tx", text);
 			swriter.Write(text);
 			swriter.Flush();
 		}
@@ -114,7 +113,7 @@ namespace LaserGRBL.ComWrapper
 					System.Threading.Thread.Sleep(1);
 			}
 
-            ComLog.Log("rx", rv);
+            ComLogger.Log("rx", rv);
 			return rv;
 		}
 

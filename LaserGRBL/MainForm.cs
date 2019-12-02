@@ -397,6 +397,7 @@ namespace LaserGRBL
 		private void toolStripMenuItem4_DropDownOpening(object sender, EventArgs e)
 		{
 			openSessionLogToolStripMenuItem.Enabled = Logger.ExistLog;
+			activateExtendedLogToolStripMenuItem.Checked = ComWrapper.ComLogger.Enabled;
 		}
 
 		private void MNFrench_Click(object sender, EventArgs e)
@@ -566,6 +567,27 @@ namespace LaserGRBL
 		private void toolsToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
 		{
 			flashGrblFirmwareToolStripMenuItem.Enabled = (Core.MachineStatus == GrblCore.MacStatus.Disconnected);
+		}
+
+		private void activateExtendedLogToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (!ComWrapper.ComLogger.Enabled)
+			{
+				using (SaveFileDialog sfd = new System.Windows.Forms.SaveFileDialog())
+				{
+					sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+					sfd.Filter = "Communication log|*.txt";
+					sfd.AddExtension = true;
+					sfd.FileName = "comlog.txt";
+					sfd.Title = "Select extended log filename";
+					if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName != null)
+						ComWrapper.ComLogger.FileName = sfd.FileName;
+				}
+			}
+			else
+			{
+				ComWrapper.ComLogger.FileName = null;
+			}
 		}
 	}
 
