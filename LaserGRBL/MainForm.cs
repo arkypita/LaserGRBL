@@ -578,6 +578,7 @@ namespace LaserGRBL
 					sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 					sfd.Filter = "Communication log|*.txt";
 					sfd.AddExtension = true;
+					sfd.OverwritePrompt = false;
 					sfd.FileName = "comlog.txt";
 					sfd.Title = "Select extended log filename";
 					if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName != null)
