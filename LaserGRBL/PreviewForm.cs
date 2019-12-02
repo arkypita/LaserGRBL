@@ -337,8 +337,9 @@ namespace LaserGRBL
 				e.Graphics.Clear(BackColor);
 				if (Controls.Count == 0)
 				{
-					SizeF size = e.Graphics.MeasureString("Right click here to add custom buttons", Font);
-					e.Graphics.DrawString("Right click here to add custom buttons", Font, Brushes.DarkGray, (Width - size.Width) / 2, (Height - size.Height) / 2);
+					string text = Strings.AddCustomButtonsHint;
+					SizeF size = e.Graphics.MeasureString(text, Font);
+					e.Graphics.DrawString(text, Font, Brushes.DarkGray, (Width - size.Width) / 2, (Height - size.Height) / 2);
 				}
 			}
 

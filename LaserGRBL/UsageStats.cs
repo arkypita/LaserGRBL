@@ -49,9 +49,6 @@ namespace LaserGRBL
 		private ComWrapper.WrapperType Wrapper;
 		private UsageCounters Counters;
 
-		[NonSerialized()]
-		private TimeSpan hUsageTime = TimeSpan.Zero;
-
 		private static UsageStats data;
 		private static string filename = System.IO.Path.Combine(GrblCore.DataPath, "UsageStats.bin");
 
@@ -83,10 +80,11 @@ namespace LaserGRBL
 			Locale = System.Threading.Thread.CurrentThread.CurrentCulture.LCID;
 			UiLang = System.Threading.Thread.CurrentThread.CurrentUICulture.LCID;
 
-			TimeSpan tfas = Tools.TimingBase.TimeFromApplicationStartup();
-			TimeSpan elaps = tfas - hUsageTime;
- 			hUsageTime = tfas;
-			UsageTime = UsageTime.Add(elaps);
+			if (UsageTime < TimeSpan.Zero)
+				UsageTime = TimeSpan.Zero; //fix wrong values
+
+			if (Tools.TimingBase.TimeFromApplicationStartup() > TimeSpan.Zero) //prevent wrong values
+				UsageTime = UsageTime.Add(Tools.TimingBase.TimeFromApplicationStartup());
 
 			Wrapper = (ComWrapper.WrapperType)Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 

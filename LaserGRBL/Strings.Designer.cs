@@ -61,6 +61,15 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Right click here to add custom buttons.
+        /// </summary>
+        internal static string AddCustomButtonsHint {
+            get {
+                return ResourceManager.GetString("AddCustomButtonsHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Abort current job?.
         /// </summary>
         internal static string BoxAbortProgramConfirm {
@@ -329,6 +338,24 @@ namespace LaserGRBL {
         internal static string BoxWriteConfigWithoutError {
             get {
                 return ResourceManager.GetString("BoxWriteConfigWithoutError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Connect.
+        /// </summary>
+        internal static string BtnConnectTT {
+            get {
+                return ResourceManager.GetString("BtnConnectTT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Disconnect.
+        /// </summary>
+        internal static string BtnDisconnectTT {
+            get {
+                return ResourceManager.GetString("BtnDisconnectTT", resourceCulture);
             }
         }
         
@@ -628,6 +655,24 @@ namespace LaserGRBL {
         internal static string ResumeJobHomingRequiredTitle {
             get {
                 return ResourceManager.GetString("ResumeJobHomingRequiredTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Speed:.
+        /// </summary>
+        internal static string SpeedSliderToolTip {
+            get {
+                return ResourceManager.GetString("SpeedSliderToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Step:.
+        /// </summary>
+        internal static string StepSliderToolTip {
+            get {
+                return ResourceManager.GetString("StepSliderToolTip", resourceCulture);
             }
         }
     }

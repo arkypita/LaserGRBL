@@ -112,11 +112,14 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>Right click here to add custom buttons</value>
+  </data>
   <data name="BoxAbortProgramConfirm" xml:space="preserve">
     <value>Abort current job?</value>
   </data>
@@ -208,6 +211,12 @@ Do you want to rewrite the configuration?</value>
   </data>
   <data name="BoxWriteConfigWithoutError" xml:space="preserve">
     <value>{0} Config written successfully!</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>Disconnect</value>
   </data>
   <data name="CustomButtonEdit" xml:space="preserve">
     <value>Edit button</value>
@@ -309,5 +318,11 @@ Continue anyway?</value>
   </data>
   <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
     <value>Unknown position</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>Speed:</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>Step:</value>
   </data>
 </root>
