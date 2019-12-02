@@ -13,49 +13,42 @@ using System.Runtime.InteropServices;
 namespace Tools
 {
 
+
 	//
 	// Contiene una logica di correzione della frequenza dell' HiResTimer (QPF) che prende il LowResTimer (GetTickCount64) come riferimento.
 	// La frequenza dell'HiResTimer potrebbe essere sbagliata di poco (ie. perché deviata rispetto al LowResTimer) oppure potrebbe essere
 	// sbagliata di molto. Abbiamo infatti notato su UNA macchina (portatile DELL VOSTRO 3750 - i5-2450M w7-64bit) che la funzione QPC può dare
 	// delle tempistiche incoerenti con la relativa QPF, cambiando la sua velocità anche in corso di esecuzione del programma, senza variazioni di QPF
 	//
-	// La logica di correzione usa una finestra temporare ampia (now - LastReset) per il calcolo fine della frequenza sul lungo periodo
-	// ed una stretta finestra temporale mobile (now - MobileWindow) per intercettare il cambio di frequenza a runtime, e resettare la finestra lunga
-	//
 	public static class HiResTimer
 	{
 
 		//16ms è la risoluzione tipica del timer low-res (tra 10 e 16msec)
-		private const int LowResResolution = 16;
-		private const int SafeTrigger = LowResResolution + 8; //aggiungi 8ms di margine -> 24
+		//16ms + 8ms di margine -> 24ms
+		private const long ErrorThreshold = 24 * NANO_IN_MILLI;
 
 		private const long MILLI_IN_SECOND = 1000;
 		private const long NANO_IN_MILLI = 1000 * 1000;
 		private const double NANO_IN_SECOND = 1.0e9;
-		private static string TimingLock = "Timing-Lock-String";
+		private const string TimingLock = "Timing-Lock-String";
 
-		private static bool mPerfCounterSupported = true;
+		private static readonly bool mPerfCounterSupported = true;
 		private static long mCurrentFrequency = 0;
 		private static long mOriginalFrequency = 0;
 
-		private static TimeReference LastReset; //TimeReference di partenza per la finestra ampia
-		private static TimeReference MobileWindow; //TimeReference di partenza per la finestra stretta
-
-		private static long cambioNano; //nanoSecondi misurati all'ultimo cambio di frequenza
-		private static long cambioCount; //performanceCounter raggiunto all'ultimo cambio di frequenza
+		private static TimeReference mLastReference;    //TimeReference dell'ultima chiamata a TotalNano
+		private static long mTotalNano;                 //Parzializzatore dei Nanosecondi
+		private static TimeReference LongWindow;        //TimeReference di partenza per la finestra di controllo frequenza
+		private static int mCorrectionCount = 0;        //contatore di quante volte ho corretto la frequenza
 
 #if timedebug
 		//variabili di appoggio necessarie a simulare il cambio di frequenza dell'HiResTimer
-		private static long startQPC = 0; // performanceCounter al cambio di moltiplicatore
-		private static long startEPC = 0; // emulated-performanceCounter al cambio di moltiplicatore
-		private static double testmultiplier = 1.0; //moltiplicatore di frequenza
-		public static double MaxCycleError = 0;
-		public static double TotalError = 0;
-		public static int Samples = 0;
-		public static long mDebugFrequency = 0;
-		public static int AlignmentCount = 0;
-		public static int ShortWTrigger = 0;
+		private static DateTime startDT;			//orario a cui viene cambiato il moltiplicatore, così da avere una diagnostica di quanto tempo impiega a convergere
+		private static long startQPC = 0;			// performanceCounter al cambio di moltiplicatore
+		private static long startEPC = 0;			// emulated-performanceCounter al cambio di moltiplicatore
+		private static double testmultiplier = 1.0;	//moltiplicatore di frequenza
 #endif
+
 
 		[DllImport("Kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
 		private static extern bool QueryPerformanceCounter(ref long count);
@@ -65,12 +58,16 @@ namespace Tools
 		private static extern int GetTickCount();
 
 
+		//emulo la GetTickCount64 perché non esiste su WindowsXP
 		private static long mTickCount64 = 0;
-		private static long GetTickCount64() //emulo la GetTickCount64 perché non esiste su WindowsXP
+		private static long GetTickCount64()
 		{
 			long Current = GetTickCount();
 			if ((mTickCount64 & 0x80000000) != 0 && (Current & 0x80000000) == 0)
+			{
 				mTickCount64 += 0x100000000L;
+			}
+
 			mTickCount64 = (mTickCount64 & 0x0FFFFFFF00000000L) | (Current & 0x00000000FFFFFFFFL);
 
 			return mTickCount64;
@@ -84,92 +81,109 @@ namespace Tools
 		//
 		private struct TimeReference
 		{
-			private long mLowRes; //in millisecondi, come tornati dalla GetTickCount64 - con risoluzione 16mS
-			private long mHiRes; //in tick @ frequenza QPF come tornati da QueryPerformanceCounter - con risoluzione dei uS
+			private long mLowRes;       //in millisecondi, come tornati dalla GetTickCount64 - con risoluzione 16mS
+			private long mHiRes;        //in tick @ frequenza QPF come tornati da QueryPerformanceCounter - con risoluzione dei uS
+
+#if timedebug
+			private long mReference;    //preso da hires reale e non faked dal multiplier
+			internal long ReferenceNano => (long)(mReference * NANO_IN_SECOND / mOriginalFrequency);
+#endif
+
+#if timedebug
+			internal static TimeReference Zero
+			{ get { return new TimeReference(0, 0, 0); } }
+#else
+			internal static TimeReference Zero
+			{ get { return new TimeReference(0, 0); } }
+#endif
 
 			internal static TimeReference Now
 			{
 				get
 				{
-					TimeReference rv;
+#if timedebug
+					TimeReference rv = new TimeReference(0,0,0);
+#else
+					TimeReference rv = new TimeReference(0, 0);
+#endif
+					bool TaskSwitch = false;
+					do
+					{
+						rv.mLowRes = GetTickCount64();                  //leggi LowResTimer
+						if (mPerfCounterSupported)
+							QueryPerformanceCounter(ref rv.mHiRes);     //leggi HiResTimer
+						else
+							rv.mHiRes = rv.mLowRes;                     //emula HiResTimer come LowResTimer
 
-					long hr = 0;
+						TaskSwitch = GetTickCount64() != rv.mLowRes;    //verifica che non ci sia stato un Task Switch tra le due letture
 
-					long lr = GetTickCount64(); //leggi LowResTimer
-					if (mPerfCounterSupported)
-						QueryPerformanceCounter(ref hr); //leggi HiResTimer
-					else
-						hr = lr; //emula HiResTimer come LowResTimer
-
-					rv.mLowRes = lr;
+						//if (TaskSwitch) System.Diagnostics.Debug.WriteLine("Switch!");
+					}
+					while (TaskSwitch);                                 //ripeti la lettura se c'è stato un Task Switch
 
 #if timedebug
-					rv.mHiRes = (long)(startEPC + (hr - startQPC) * testmultiplier);
-#else
-					rv.mHiRes = hr;
+					rv.mReference = rv.HiRes;
+					rv.mHiRes = (long)(startEPC + (rv.mHiRes - startQPC) * testmultiplier);
 #endif
-
 					return rv;
 				}
 			}
 
+
+#if timedebug
+			private TimeReference(long LowRes, long HiRes, long Ref)
+			{
+				this.mLowRes = LowRes;
+				this.mHiRes = HiRes;
+				this.mReference = Ref;
+			}
+#else
 			private TimeReference(long LowRes, long HiRes)
 			{
 				this.mLowRes = LowRes;
 				this.mHiRes = HiRes;
 			}
-
-			internal TimeReference Subtract(TimeReference t)
-			{ return new TimeReference(mLowRes - t.mLowRes, mHiRes - t.mHiRes); }
-
-			internal long LowRes
-			{ get { return mLowRes; } }
-
-			internal long HiRes
-			{ get { return mHiRes; } }
-
-			private double HiResMsecD() //converte un intervallo tra due tempi, espressi in HiRes @ freq - nel rispettivo tempo in mSec (per il confronto con LowRes)
-			{ return (double)mHiRes / (double)CurrentFrequency * MILLI_IN_SECOND; }
-
-			internal long CalculateHiResFrequency() //da usare su un time-interval calcolato come subtract tra due TimeReference
-			{ return (mHiRes * MILLI_IN_SECOND + mLowRes / 2) / mLowRes; }
-
-			internal bool IsLowResZero //da usare su un time-interval calcolato come subtract tra due TimeReference
-			{ get { return mLowRes == 0; } } //evita che due chiamate successive diano un Delta-LowRes pari a Zero
-
-			internal bool InError() //da usare su un time-interval calcolato come subtract tra due TimeReference
-			{
-				double TimeError = Error; // calcola il TimeError come il delta tra i due orologi, sul periodo a cui si riferisce
-
-#if timedebug
-				if (Math.Abs(TimeError) > Math.Abs(MaxCycleError))
-					MaxCycleError = TimeError;
 #endif
 
-				return !IsLowResZero && (Math.Abs(TimeError) > SafeTrigger); //se si è cumulato TimeError > SafeTrigger allora siamo sicuri che deriva: si deve fare una correzione di frequenza
+#if timedebug
+			internal TimeReference Subtract(TimeReference t)
+			{ return new TimeReference(mLowRes - t.mLowRes, mHiRes - t.mHiRes, mReference - t.mReference); }
+#else
+			internal TimeReference Subtract(TimeReference t)
+			{ return new TimeReference(mLowRes - t.mLowRes, mHiRes - t.mHiRes); }
+#endif
+
+			internal long LowRes => mLowRes;
+			internal long LowResNano => mLowRes * NANO_IN_MILLI;
+
+			internal long HiRes => mHiRes;
+			internal long HiResNano => (long)(mHiRes * NANO_IN_SECOND / mCurrentFrequency);
+
+			//da usare su un time-interval calcolato come subtract tra due TimeReference
+			internal long CalculateHiResFrequency() => mHiRes * MILLI_IN_SECOND / mLowRes;
+
+			//da usare su un time-interval calcolato come subtract tra due TimeReference
+			internal bool IsGoodHiRes()
+			{
+				if (mCurrentFrequency == 0)
+					return false;
+
+				long error = HiResNano - LowResNano;        // calcola error come il delta tra i due orologi
+				return Math.Abs(error) < ErrorThreshold;
 			}
 
-			internal double Error
-			{ get { return HiResMsecD() - LowRes; } }
-
+			internal bool ShouldAdjustFreqency() => mLowRes > 24 && !IsGoodHiRes();
 		}
 
 		static HiResTimer() //costruttore static, viene chiamato prima del primo utilizzo della classe
 		{
-			mPerfCounterSupported = QueryPerformanceFrequency(ref mOriginalFrequency); //verifica se è disponibile l'HiResTimer (true a partire da WinXP)
-			if (!mPerfCounterSupported) //se non è supportato lo emuliamo con il LowRes
-				mOriginalFrequency = MILLI_IN_SECOND;
-
-#if timedebug
-			mCurrentFrequency = (long)Math.Round(mOriginalFrequency * testmultiplier);
-#else
+			//verifica se è disponibile l'HiResTimer (true a partire da WinXP) e si fa restituire l' original frequency
+			mPerfCounterSupported = QueryPerformanceFrequency(ref mOriginalFrequency);
+			//se non è supportato lo emuliamo con il LowRes
+			if (!mPerfCounterSupported) mOriginalFrequency = MILLI_IN_SECOND;
+			//assegna la frequenza corrente
 			mCurrentFrequency = mOriginalFrequency;
-#endif
 
-			// per testare il caso più complicato di allinemento a cambio lowres
-			//long old = GetTickCount64();
-			//while (old == GetTickCount64()) // allineati all'inizio della variazione
-			//	;
 
 			TimeReference now = TimeReference.Now;
 
@@ -177,18 +191,11 @@ namespace Tools
 			startQPC = startEPC = now.HiRes;
 #endif
 
-			LastReset = MobileWindow = now; //avvia le finestre fissa e mobile a partire da adesso
-			cambioNano = 0; // assegna il cambioNano iniziale - nessun cambio
-			cambioCount = 0; // assegna il cambioCount iniziale - nessun cambio
+			mLastReference = now;
+			mTotalNano = now.LowResNano;
+
+			LongWindow = now;               //inizia a monitorare la frequenza da adesso
 		}
-
-#if timedebug
-		public static long TotalMillisecondsLR
-		{ get { return TimeReference.Now.LowRes; } }
-#endif
-
-		public static long TotalMilliseconds
-		{ get { return TotalNano / NANO_IN_MILLI; } }
 
 		public static long TotalNano
 		{
@@ -198,124 +205,101 @@ namespace Tools
 				{
 					TimeReference now = TimeReference.Now;
 
-					if (true/*LibConfig.HRTFrequencyCorrection*/)
+					if (true /*LibConfig.HRTFrequencyCorrection*/)
 						ComputeFrequency(now);
 
-					return cambioNano + (long)((now.HiRes - cambioCount) * NANO_IN_SECOND / mCurrentFrequency);
+					TimeReference delta = now.Subtract(mLastReference);
+
+					if (delta.IsGoodHiRes())
+						mTotalNano = mTotalNano + Math.Max(0, delta.HiResNano);
+					else
+						mTotalNano = mTotalNano + Math.Max(0, delta.LowResNano);
+
+					mLastReference = now;
+
+					return mTotalNano;
 				}
 			}
 		}
 
-		public static long CurrentFrequency
-		{ get { return HiResTimer.mCurrentFrequency; } }
-		public static long OriginalFrequency
-		{ get { return HiResTimer.mOriginalFrequency; } }
+		public static long TotalMilliseconds => TotalNano / NANO_IN_MILLI;
+		public static long CurrentFrequency => mCurrentFrequency;
+		public static long OriginalFrequency => mOriginalFrequency;
+
 
 		private static void ComputeFrequency(TimeReference now)
 		{
-			TimeReference longWindow = now.Subtract(LastReset);
-			TimeReference smallWindow = now.Subtract(MobileWindow);
-
-#if timedebug
-			MaxCycleError = 0;
-#endif
-
-#if timedebug
-			CalcolaFrequenzaDebug(longWindow, now);
-#endif
-
-			if (longWindow.InError()) //verifica la bontà dell' ActualFrequency sull'intervallo lungo (orologio derivante)
+			TimeReference longWindow = now.Subtract(LongWindow);
+			if (longWindow.ShouldAdjustFreqency()) //verifica la bontà dell' ActualFrequency sull'intervallo lungo (orologio derivante)
 			{
-				ApplicaNuovaFrequenza(longWindow, now);
+				ApplicaNuovaFrequenza(longWindow);
+				LongWindow = now;
 			}
-
-			if (smallWindow.LowRes >= 2000) //verifica la bontà dell' ActualFrequency sull'intervallo piccolo (orologio impazzito) - tolleranza 24ms/2000ms = 1.2%
-			{
-				if (smallWindow.InError())
-				{
-#if timedebug
-					ShortWTrigger++;
-#endif
-
-					System.Diagnostics.Debug.Write("SWC: ");
-					ApplicaNuovaFrequenza(smallWindow, now);
-					LastReset = now;
-				}
-				MobileWindow = now;
-			}
-
-#if timedebug
-			TotalError += MaxCycleError;
-			Samples++;
-#endif
-
 		}
 
 
-		private static void ApplicaNuovaFrequenza(TimeReference elapsed, TimeReference now)
+		private static void ApplicaNuovaFrequenza(TimeReference delta)
 		{
-			long newfreq = elapsed.CalculateHiResFrequency();
+			long mNewFrequency = delta.CalculateHiResFrequency();
+
+			//applica la media geometrica tra vecchia e nuova frequenza
+			//compensa l'oscillazione del valore dovuta al fatto che la mNewFrequency una volta viene in eccesso e una volta viene in difetto
+			//ed è ugualmente veloce verso numeri grossi e verso numeri piccoli (a differenza della media aritmetica)
+			long mCompFrequency = mCurrentFrequency == 0 ? mNewFrequency : (long)(Math.Sign(mNewFrequency) * Math.Sqrt(Math.Abs((double)mCurrentFrequency * mNewFrequency)));
 
 #if timedebug
-			long target = (long)Math.Round(mOriginalFrequency * testmultiplier);
-			System.Diagnostics.Debug.WriteLine(String.Format("{0} -> {1} target {2} err {3:+0.00000;-0.00000}% trigger with {4:+00.000;-00.000}", mCurrentFrequency, newfreq, target, (newfreq - target) * 100.0 / target, elapsed.Error));
+			double TimeError = (delta.HiResNano - delta.LowResNano) / (double)NANO_IN_MILLI;
+			long TargetFrequency = (long)Math.Round(mOriginalFrequency * testmultiplier);
+			long anew = Math.Abs(mCompFrequency);
+			long atar = Math.Abs(TargetFrequency);
+			double PercError = (anew > atar) ? (anew-atar) * 100.0 / anew : -(atar - anew) * 100.0 / atar;
+
+			if (mCorrectionCount == 0)
+				System.Diagnostics.Debug.WriteLine(" TIME \t  ERROR  \t   OLD   \t   NEW   \t   COM   \t  TARGET  \t DELAY \tWINDOW SIZE");
+
+			System.Diagnostics.Debug.WriteLine(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+			"{0:00.000}\t{1:+00.00000;-00.00000}\t{2:000000000}\t{3:000000000}\t{4:000000000}\t{5:000000000}\t{6:+00.0;-00.0}ms\t[LR {7}ms HR {8:0.00}ms REF {9:0.00}ms]", DateTime.Now.Subtract(startDT).TotalSeconds, PercError, mCurrentFrequency, mNewFrequency, mCompFrequency, TargetFrequency, TimeError, delta.LowRes, delta.HiResNano / (double)NANO_IN_MILLI, delta.ReferenceNano / (double)NANO_IN_MILLI));
 #else
-			System.Diagnostics.Debug.WriteLine(String.Format("{0} -> {1}", mCurrentFrequency, newfreq));
+			double TimeError = (delta.HiResNano - delta.LowResNano) / (double)NANO_IN_MILLI;
+			System.Diagnostics.Debug.WriteLine($"CLOCK CORRECTION:\t{mCurrentFrequency:000000000}\t{mNewFrequency:000000000}\t{mCompFrequency:000000000}\t{TimeError:0.00}ms\tΔHiRes\t{delta.HiRes}\tΔLowRes\t{delta.LowRes}");
 #endif
-
-			AssignFrequency(newfreq, now.HiRes);
-
-#if timedebug
-			AlignmentCount++;
-#endif
-		}
-
-		private static void AssignFrequency(long newfreq, long countHR)
-		{
-			cambioNano = cambioNano + (long)((countHR - cambioCount) * NANO_IN_SECOND / mCurrentFrequency);
-			cambioCount = countHR;
-
-			mCurrentFrequency = newfreq;
-
-#if timedebug
-			TotalError = 0;
-			Samples = 0;
-#endif
+			mCurrentFrequency = mCompFrequency;
+			mCorrectionCount++;
 		}
 
 
-#if timedebug
-		private static void CalcolaFrequenzaDebug(TimeReference elapsed, TimeReference now)
-		{
-			if (!elapsed.IsLowResZero)
-				mDebugFrequency = elapsed.CalculateHiResFrequency();
-		}
-#endif
 
-#if timedebug
+
 		public static double TestMultiplier //codice per simulare un HiResTimer a frequenza variabile
 		{
 			get
 			{
+#if timedebug
 				return testmultiplier;
+#else
+				return 1;
+#endif
 			}
 			set
 			{
-				startEPC = TimeReference.Now.HiRes; //memorizza l'HiRes emulato a cui siamo arrivati
-				if (mPerfCounterSupported)
-					QueryPerformanceCounter(ref startQPC); //memorizza l'HiRes reale a cui siamo arrivati
-				else
-					startQPC = GetTickCount64(); //memorizza l'HiRes reale a cui siamo arrivati (usa il LowRes se HiRes non supportato)
+#if timedebug
+				lock (TimingLock) //previene l'accesso multithread alle variabili static
+				{
+					if (mCorrectionCount > 0) System.Diagnostics.Debug.WriteLine("");
 
-				testmultiplier = value; //assegna il nuovo moltiplicatore
+					startDT = DateTime.Now;
+					startEPC = TimeReference.Now.HiRes; //memorizza l'HiRes emulato a cui siamo arrivati
+					if (mPerfCounterSupported)
+						QueryPerformanceCounter(ref startQPC); //memorizza l'HiRes reale a cui siamo arrivati
+					else
+						startQPC = GetTickCount64(); //memorizza l'HiRes reale a cui siamo arrivati (usa il LowRes se HiRes non supportato)
+
+					testmultiplier = value; //assegna il nuovo moltiplicatore
+				}
+#endif
 			}
 		}
-#endif
 
-#if timedebug
-		public static int ErrorThreshold
-		{ get { return SafeTrigger; } }
-#endif
 	}
 
 
