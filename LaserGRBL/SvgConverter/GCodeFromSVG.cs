@@ -92,10 +92,11 @@ namespace LaserGRBL.SvgConverter
 
 			if (gcodeUseSpindle) gcode.SpindleOff(gcodeString, "Stop spindle - Option Z-Axis");
 
-			string header = "G90\r\n";
-			string footer = "G0X0Y0";
+			//string header = "G90\r\n";
+			//string footer = "G0X0Y0";
 
-			return header + gcodeString.ToString().Replace(',', '.') + footer;
+			//return header + gcodeString.ToString().Replace(',', '.') + footer;
+			return gcodeString.ToString().Replace(',', '.');
 		}
 
 		/// <summary>
