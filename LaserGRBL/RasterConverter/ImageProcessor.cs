@@ -870,6 +870,7 @@ namespace LaserGRBL.RasterConverter
 						conf.oY = TargetOffset.Y;
 						conf.borderSpeed = BorderSpeed;
 						conf.pwm = (bool)Settings.GetObject("Support Hardware PWM", true);
+						conf.firmwareType = (Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl);
 
 						if (SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering)
 							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf, mAppend);
