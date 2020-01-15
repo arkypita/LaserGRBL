@@ -147,7 +147,7 @@ namespace LaserGRBL
 						return string.Format(System.Globalization.CultureInfo.InvariantCulture, "S{0:0.00}", dval);
 					}
 					else
-						return String.Concat("S", color.ToString(System.Globalization.CultureInfo.InvariantCulture));
+						return string.Format(System.Globalization.CultureInfo.InvariantCulture, "S{0}", color);
 				else if (color > 125)
 					return c.lOn;
 				else 
