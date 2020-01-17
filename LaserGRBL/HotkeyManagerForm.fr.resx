@@ -117,35 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Lignes/mm</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Aide au choix de la résolution</value>
-  </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>$100 Résolution du matériel</value>
+  <data name="LblConnect.Text" xml:space="preserve">
+    <value>Entrer une combinaison de touche pour définir le raccourci
+Appuyer sur "Echap" pour supprimer le raccourci</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Abandonner</value>
+    <value>Annuler</value>
   </data>
-  <data name="LblLinearFillingmm.Text" xml:space="preserve">
-    <value>Pas/mm</value>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Sauvegarder</value>
   </data>
-  <data name="LblBorderTracingmm.Text" xml:space="preserve">
-    <value>Lignes/mm</value>
+  <data name="Action.HeaderText" xml:space="preserve">
+    <value>Action</value>
   </data>
-  <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Appliquer</value>
+  <data name="Shortcut.HeaderText" xml:space="preserve">
+    <value>Raccourci</value>
   </data>
-  <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>Résolution désirée</value>
+  <data name="GB.Text" xml:space="preserve">
+    <value>Raccourci disponible</value>
   </data>
-  <data name="linkLabel1.Text" xml:space="preserve">
-    <value>Si la résolution ne pouvait pas être atteinte malgré les étapes complètes, certains artefacts peuvent apparaître. Cliquez ici pour plus d'informations ...
-</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Résolution calculée</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Gestionnaire de raccourci clavier</value>
   </data>
 </root>

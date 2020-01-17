@@ -117,35 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Lignes/mm</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Aide au choix de la résolution</value>
-  </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>$100 Résolution du matériel</value>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Abandonner</value>
+    <value>Annuler</value>
   </data>
-  <data name="LblLinearFillingmm.Text" xml:space="preserve">
-    <value>Pas/mm</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Ligne #</value>
   </data>
-  <data name="LblBorderTracingmm.Text" xml:space="preserve">
-    <value>Lignes/mm</value>
+  <data name="RbFromSpecific.Text" xml:space="preserve">
+    <value>Executer depuis une ligne spécifique</value>
   </data>
-  <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Appliquer</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Options</value>
   </data>
-  <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>Résolution désirée</value>
+  <data name="LblBrief.Text" xml:space="preserve">
+    <value>Cette fonctionnalité vous permet de lancer la tache depuis une ligne spécifique, ignorant les mouvements précédents.
+LaserGRBL calcul la position et l'état exacte puis place le graveur dans l'état correct.</value>
   </data>
-  <data name="linkLabel1.Text" xml:space="preserve">
-    <value>Si la résolution ne pouvait pas être atteinte malgré les étapes complètes, certains artefacts peuvent apparaître. Cliquez ici pour plus d'informations ...
-</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Executer depuis une position</value>
   </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Résolution calculée</value>
+  <data name="CbRedoHoming.Text" xml:space="preserve">
+    <value>Faire Homing [$H]</value>
   </data>
 </root>

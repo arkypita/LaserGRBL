@@ -179,7 +179,7 @@
 </value>
   </data>
   <data name="BtFlipV.ToolTip" xml:space="preserve">
-    <value>Symétrie verticale de l'image </value>
+    <value>Symétrie verticale de l'image</value>
   </data>
   <data name="BtFlipH.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -217,7 +217,7 @@
 </value>
   </data>
   <data name="BtFlipH.ToolTip" xml:space="preserve">
-    <value>Symétrie horizontale de l'image </value>
+    <value>Symétrie horizontale de l'image</value>
   </data>
   <data name="BtRotateCW.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -701,5 +701,38 @@
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="lOptimizeFast.Text" xml:space="preserve">
+    <value>Optimise le chemin</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Direction</value>
+  </data>
+  <data name="BtnReverse.ToolTip" xml:space="preserve">
+    <value>Inversion des couleurs</value>
+  </data>
+  <data name="TBLineThreshold.ToolTip" xml:space="preserve">
+    <value>Si la spline n'est pas trop éloignée d'une ligne droite définie par ses extrémités, alors exporte une ligne droite.</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Seuil des coins</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Seuil de la ligne</value>
+  </data>
+  <data name="TpOriginal.Text" xml:space="preserve">
+    <value>Original</value>
+  </data>
+  <data name="TBCornerThreshold.ToolTip" xml:space="preserve">
+    <value>Angle en degrés: si un pixel, ses prédécesseurs et ses successeurs se rencontrent à un angle inférieur à celui-ci, c'est un coin.</value>
+  </data>
+  <data name="RbCenterline.ToolTip" xml:space="preserve">
+    <value>Centerline vectorisation</value>
+  </data>
+  <data name="RbCenterline.Text" xml:space="preserve">
+    <value>Centerline</value>
+  </data>
+  <data name="GbCenterlineOptions.Text" xml:space="preserve">
+    <value>Centerline Options</value>
   </data>
 </root>

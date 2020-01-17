@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxAutoUpdateFailed" xml:space="preserve">
     <value>Mise à jour automatique échouée!
@@ -134,7 +134,7 @@ Téléchargez manuellement la nouvelle version à partir du site Lasergrbl.</val
     <value>Impossible de se connecter à l'appareil</value>
   </data>
   <data name="BoxExportConfigError" xml:space="preserve">
-    <value>Echec de l'exportation de la config!</value>
+    <value>Echec de l'exportation de la config !</value>
   </data>
   <data name="BoxExportConfigErrorTitle" xml:space="preserve">
     <value>Erreur</value>
@@ -143,19 +143,19 @@ Téléchargez manuellement la nouvelle version à partir du site Lasergrbl.</val
     <value>Fichier inexistant!</value>
   </data>
   <data name="BoxExportConfigSuccess" xml:space="preserve">
-    <value>{0} Config exportée avec succès!</value>
+    <value>{0} Config exportée avec succès !</value>
   </data>
   <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
     <value>Succès</value>
   </data>
   <data name="BoxImportConfigFileError" xml:space="preserve">
-    <value>Erreur lors de la lecture du fichier!</value>
+    <value>Erreur lors de la lecture du fichier !</value>
   </data>
   <data name="BoxImportConfigWithError" xml:space="preserve">
-    <value>{0} Configuration importée avec {1} erreurs!</value>
+    <value>{0} Configuration importée avec {1} erreurs !</value>
   </data>
   <data name="BoxImportConfigWithoutError" xml:space="preserve">
-    <value>{0} Configuration importée avec succès!</value>
+    <value>{0} Configuration importée avec succès !</value>
   </data>
   <data name="CustomButtonEdit" xml:space="preserve">
     <value>Editer le boutton</value>
@@ -230,12 +230,98 @@ Téléchargez manuellement la nouvelle version à partir du site Lasergrbl.</val
     <value>Inconnu</value>
   </data>
   <data name="MainFormEstimatedTime" xml:space="preserve">
-    <value>Temps estimé:</value>
+    <value>Temps estimé :</value>
   </data>
   <data name="MainFormProjectedTime" xml:space="preserve">
-    <value>Temps prévu:</value>
+    <value>Temps prévu :</value>
   </data>
   <data name="MacStatusHold" xml:space="preserve">
     <value>Emprise</value>
+  </data>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>Clique droit ici pour ajouter des boutons personnalisés</value>
+  </data>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>Annuler le programme en cours ?</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>Certains changements n'ont pas été appliqués. Voulez-vous réécrire la configuration ?</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>Changements détectés !</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>Veuiller fournir les commandes GCode</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>Veuiller entrer le texte d'aide</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>Champs manquant</value>
+  </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>Etes-vous sur de vouloir supprimer le bouton sélectionné ?</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>Suppression bouton personnalisé</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>Importer bouton personnalisé</value>
+  </data>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>Pas de changement... rien à écrire !</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>Déconnexion</value>
+  </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>Redémarrage requis</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>Position inconnue</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>Vitesse :</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>Supprimer les bouttons ? Sélectionner oui pour supprimer, non pour les conserver.</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>Erreur durant la lecture de la configuration !</value>
+  </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>Affichage des valeurs en cache...</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} Configuration lue avec succès !</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} Configuration écrite avec {1} erreurs !</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} Configuration écrite avec succès !</value>
+  </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>Transfert de fichier en cours. Déconnexion quand même ?</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>Transfert de fichier en cours. Quitter quand même ?</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>Un redémarrage est requis pour appliquer le changement de type de firmware. Redémarrer maintenant ?</value>
+  </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>Il semble que la position actuelle ne soit plus connue par Grbl.
+Sans réaliser une Homin Procédure ($H) le résultat pourrait ne pas être fiable.
+Continuer quand même ?</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>Pas :</value>
   </data>
 </root>
