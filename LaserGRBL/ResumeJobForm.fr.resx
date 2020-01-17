@@ -117,35 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Lignes/mm</value>
+  <data name="CbRestoreWCO.Text" xml:space="preserve">
+    <value>Home @</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Aide au choix de la résolution</value>
-  </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>$100 Résolution du matériel</value>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Abandonner</value>
+    <value>Annuler</value>
   </data>
-  <data name="LblLinearFillingmm.Text" xml:space="preserve">
-    <value>Pas/mm</value>
+  <data name="CbRedoHoming.Text" xml:space="preserve">
+    <value>Refaire le homing [$H]</value>
   </data>
-  <data name="LblBorderTracingmm.Text" xml:space="preserve">
-    <value>Lignes/mm</value>
+  <data name="LblSomeLines.Text" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Appliquer</value>
+  <data name="RbSomeLines.Text" xml:space="preserve">
+    <value>Reprendre quelques lignes avant le stop</value>
   </data>
-  <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>Résolution désirée</value>
+  <data name="LblLineNumber.Text" xml:space="preserve">
+    <value>Ligne #</value>
   </data>
-  <data name="linkLabel1.Text" xml:space="preserve">
-    <value>Si la résolution ne pouvait pas être atteinte malgré les étapes complètes, certains artefacts peuvent apparaître. Cliquez ici pour plus d'informations ...
+  <data name="RbFromSpecific.Text" xml:space="preserve">
+    <value>Reprendre à partir d'une ligne spécifique</value>
+  </data>
+  <data name="RbFromBeginning.Text" xml:space="preserve">
+    <value>Redémarrer depuis le début (Sûr)</value>
+  </data>
+  <data name="LblOptions.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="LblBegin.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="RbFromSent.Text" xml:space="preserve">
+    <value>Reprendre depuis la dernière commande</value>
+  </data>
+  <data name="LblSent.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LblBrief.Text" xml:space="preserve">
+    <value>LaserGRBL peut redémarrer cette tache depuis le début ou depuis la dernière position connue.
+Comme il n'est pas possible de définir la meilleur position pour redémarrer, vous devez prendre la décision finale.
+Les derniers paramètres de vitesse, puissance et état du laser seront récupérés automatiquement.</value>
+  </data>
+  <data name="LblCause.Text" xml:space="preserve">
+    <value>Cause :</value>
+  </data>
+  <data name="TxtCause.Text" xml:space="preserve">
+    <value>Inconnu</value>
+  </data>
+  <data name="LblDetected.Text" xml:space="preserve">
+    <value>LaserGRBL a détecté la dernière tache comme non terminée !
 </value>
   </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Résolution calculée</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Reprendre la tache</value>
   </data>
 </root>

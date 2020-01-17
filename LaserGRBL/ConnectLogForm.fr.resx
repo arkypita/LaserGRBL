@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="$this.ToolTipText" xml:space="preserve">
     <value>Connexion</value>
@@ -149,5 +149,14 @@
   </data>
   <data name="TxtEmulator.Text" xml:space="preserve">
     <value>Emulated Grbl v1.1#</value>
+  </data>
+  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
+    <value>Entrer le gcode ici</value>
+  </data>
+  <data name="LblEmulator.Text" xml:space="preserve">
+    <value>Emulateur</value>
+  </data>
+  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
+    <value>Annuler le programme</value>
   </data>
 </root>

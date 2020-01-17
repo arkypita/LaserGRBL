@@ -215,7 +215,10 @@
 </value>
   </data>
   <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
-    <value>LaserGRBL intégre la modulation de puissance au travers du G-Code "S". Ce la nécessite que votre laser, matériel supporte le mode TTL. Cliquez pour plus d'information</value>
+    <value>LaserGRBL intègre la modulation de puissance au travers du G-Code "S".
+Cela nécessite que votre laser supporte le mode TTL.
+
+Cliquez pour plus d'information...</value>
   </data>
   <data name="BtnOnOffInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -233,7 +236,11 @@
 </value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
-    <value>Laser ON: le mode standard est M3. Grbl v1.1 permet un nouveau mode M4 " Mode Puissance  Laser Dynamique". Laser OFF: seule la commande M5 est supportée.Cliquez pour plus d'information</value>
+    <value>Laser ON: le mode standard est M3.
+Grbl v1.1 permet un nouveau mode M4 " Mode Puissance  Laser Dynamique".
+Laser OFF: seule la commande M5 est supportée.
+
+Cliquez pour plus d'information...</value>
   </data>
   <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
     <value>281, 50</value>
@@ -251,7 +258,7 @@
     <value>210, 3</value>
   </data>
   <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Créer</value>
+    <value>Créer !</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>287, 30</value>
@@ -273,5 +280,44 @@
   </data>
   <data name="GbLaser.Text" xml:space="preserve">
     <value>Options Laser</value>
+  </data>
+  <data name="LblSmax.Text" xml:space="preserve">
+    <value>S-MAX</value>
+  </data>
+  <data name="LblSmin.Text" xml:space="preserve">
+    <value>S-MIN</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Laser OFF</value>
+  </data>
+  <data name="LblLinearFillingmm.Text" xml:space="preserve">
+    <value>mm/min</value>
+  </data>
+  <data name="LblBorderTracingmm.Text" xml:space="preserve">
+    <value>mm/min</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="CBLaserOFF.Items" xml:space="preserve">
+    <value>M5</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>DPI</value>
+  </data>
+  <data name="CbAutosize.Text" xml:space="preserve">
+    <value>Taille automatique</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Laser ON</value>
+  </data>
+  <data name="BtnDPI.ToolTip" xml:space="preserve">
+    <value>Charger DPI depuis les infos Exif</value>
   </data>
 </root>

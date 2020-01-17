@@ -112,13 +112,13 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Capacités matérielles</value>
+    <value>Tête</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Paramétres</value>
@@ -149,5 +149,129 @@
 - Bufférisé: Optimise les commandes durant l'envoi en remplissant le tampon du récepteur Grbl [recommandé]
 - Synchrone: Attend l'exécution de chaque commande avant d'envoyer la commande suivante [plus lent mais plus sûr]
 - Répétition en cas d'erreur: Identique aux commandes synchrone mais répété si une erreur est détectée. [expérimental]</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>LaserGRBL peut détecter des problèmes et prévenir l'utilisateur avec des informations pour les résoudres.
+Si désactivé, les problèmes seront gérés silencieusement sans avertissement.</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>SI activé, LaserGRBL envoie un hard-reset quand la connexion à grbl est ouverte. [La position est perdue]</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Type de firmware :
+- Grbl : l'incroyable firmware pour lequel LaserGRBL a été dévellopé
+- Smoothieware [Expériemental] : le support a été ajouté récemment et n'est pas encore completement testé.</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>Protocole</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Par défaut, LaserGRBL crée des lignes de gravures dans les deux directions. Des tests ont montrés que ce mode (plus rapide) produit une gravure de moins bonne qualité. Si l'objectif est une gravure maximisant la qualité, activer cette option.</value>
+  </data>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>Gravure unidirectionnelle</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>LaserGRBL n'a pas été conçu pour gérer l'axe Z. Mais si vous avez une machine 3 axes peut être que vous trouverez cette option utile.</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>Activer refroidissement automatique</value>
+  </data>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>Refroidissement automatique</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Pied</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Passes multiples</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Mode d'envoi : UltraFast, Fast, Quiet, SLow (Par défaut UltraFast)
+Ce parametre modifie la vitesse d'envoie et la fréquence des requetes de statut.
+Baisser cette valeur si vous avez des problèmes.</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>Détecteur d'erreur</value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>Redémarrage logiciel  [Ctrl+X]</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>Redémarrage physique [DTR+RTS]</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>sec</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>sec</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Afficher le contrôle Z haut/bas</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Lors de l'exécution de plusieurs passes, LaserGRBL insère ce GCode entre chaque passe.
+Peut être utilisé pour déplacer Z vers le bas afin d'effectuer des coupes plus profondes.
+
+Ici, vous pouvez utiliser la même syntaxe que pour les boutons personnalisés.</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBL ajoutera ce GCode avant de commencer tout travail.
+Vous pouvez personnaliser ce code, par exemple en ajoutant M8 pour allumer le ventilateur.
+Ici, vous pouvez utiliser la même syntaxe que pour les boutons personnalisés.
+Si vous devez ajouter un code spécifique pour le positionnement du travail, il faut l'ajouter ici.</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Sans "Jog continu" lorsque le bouton Jog est enfoncé LaserGRBL envoie une demande Jog avec une vitesse et un mouvement définis, et le déplacement est entièrement exécuté jusqu'à la position finale.
+Si vous activez le "jogging continu", le déplacement est envoyé en déplaçant la souris vers le bas et abandonné / interrompu en déplaçant la souris vers le haut.
+
+REMARQUE: "Continuous Jog" fonctionne uniquement avec Grbl v1.1 ou version ultérieure, et nécessite que la taille de la table soit correctement configurée dans la configuration Grbl (Menu "Grbl" -&gt; "Grbl Configuration" 130 $, 131 $, 132 $)</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>Déplacement continu</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Contrôle du déplacement</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Time OFF: après ce temps de refroidissement, LaserGRBL enverra une commande de reprise pour continuer le travail de gravure.</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBL positionnera ce GCode en file d'attente à la fin de tout travail.
+Peut être utilisé pour repousser votre graveur dans un état initial comme revenir à la position zéro
+ou envoyer M9 pour éteindre le ventilateur, etc.
+
+Vous pouvez utiliser la même syntaxe des boutons personnalisés.</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Attention: cette fonctionnalité ne fonctionnera qu'avec les versions grbl &gt; v1.1 avec le "mode laser" activé.
+Si vous utilisez le refroidissement automatique avec une ancienne version grbl (ou avec le mode laser désactivé), le laser ne s'éteindra pas pendant les pauses
+et créera des trous dans votre travail !</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Certaines diodes laser peuvent chauffer beaucoup si elles fonctionnent longtemps à la puissance maximale. Pour éviter la surchauffe des diodes et augmenter la durée de vie de votre laser, vous pouvez ajouter des cycles de refroidissement automatiques qui insèrent une pause pendant le processus de gravure.
+Si le refroidissement automatique est activé, LaserGRBL enverra automatiquement le «maintien de l'alimentation» et la «reprise du travail» selon la configuration de temporisation ON-OFF.</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Time ON: il s'agit de la durée maximale pendant laquelle le laser restera allumé pour graver.
+Après ce temps, LaserGRBL enverra extinction d'alimentation automatique pour refroidir le laser.</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>Import matriciel</value>
   </data>
 </root>
