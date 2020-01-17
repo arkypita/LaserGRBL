@@ -972,7 +972,16 @@ namespace LaserGRBL
 				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
 
 				if (grbl)
-					SendImmediate(24);
+				{
+					if ((Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Smoothie)
+					{
+						com.Write("reset\r\n"); 
+					} else
+					{
+						// GRBL Firmware
+						SendImmediate(24);
+					}
+				}	
 			}
 
 			RiseOverrideChanged();
@@ -1212,7 +1221,9 @@ namespace LaserGRBL
 		{
 			lock (this)
 			{
-				InternalReset((bool)Settings.GetObject("Reset Grbl On Connect", true));
+				// No soft reset when opening COM port for smoothieware
+				if ((Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) != Firmware.Smoothie)
+					InternalReset((bool)Settings.GetObject("Reset Grbl On Connect", true));
 				InitializeBoard();
 				QueryTimer.Start();
 			}
