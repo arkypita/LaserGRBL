@@ -139,6 +139,7 @@
     <value>Problème détecté !</value>
   </data>
   <data name="LblBrief.Text" xml:space="preserve">
-    <value>Il apparait que grbl a des difficultés pour executer ce travail. Les causes de cette situation peuvent être multiples. Veuiller lire la FAQ pour obtenir des information sur la manière de résoudre ces problèmes.</value>
+    <value>Il apparait que GRBL a des difficultés pour exécuter ce travail. Les causes de cette situation peuvent être multiples. Veuillez lire la FAQ pour obtenir des information sur la manière de résoudre ces problèmes.
+</value>
   </data>
 </root>

@@ -170,7 +170,7 @@
     <value>159, 13</value>
   </data>
   <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>Vitesse de traçage des bordures</value>
+    <value>Vitesse de travail</value>
   </data>
   <data name="LblBorderTracingmm.Location" type="System.Drawing.Point, System.Drawing">
     <value>226, 4</value>
@@ -258,7 +258,7 @@ Cliquez pour plus d'information...</value>
     <value>287, 69</value>
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
-    <value>Options Laser</value>
+    <value>Options du Laser</value>
   </data>
   <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>130, 3</value>
@@ -291,7 +291,7 @@ Cliquez pour plus d'information...</value>
     <value>Vitesse</value>
   </data>
   <data name="GbLaser.Text" xml:space="preserve">
-    <value>Options Laser</value>
+    <value>Options du Laser</value>
   </data>
   <data name="LblBorderTracingmm.Text" xml:space="preserve">
     <value>mm/min</value>

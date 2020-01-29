@@ -158,7 +158,7 @@
   </data>
   <data name="LblBrief.Text" xml:space="preserve">
     <value>LaserGRBL peut redémarrer cette tache depuis le début ou depuis la dernière position connue.
-Comme il n'est pas possible de définir la meilleur position pour redémarrer, vous devez prendre la décision finale.
+Comme il n'est pas possible de définir la option de redémarrage, vous devez prendre la décision finale.
 Les derniers paramètres de vitesse, puissance et état du laser seront récupérés automatiquement.</value>
   </data>
   <data name="LblCause.Text" xml:space="preserve">

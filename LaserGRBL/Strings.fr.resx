@@ -140,7 +140,7 @@ Téléchargez manuellement la nouvelle version à partir du site Lasergrbl.</val
     <value>Erreur</value>
   </data>
   <data name="BoxExportConfigFileNotFound" xml:space="preserve">
-    <value>Fichier inexistant!</value>
+    <value>Fichier inexistant !</value>
   </data>
   <data name="BoxExportConfigSuccess" xml:space="preserve">
     <value>{0} Config exportée avec succès !</value>
@@ -158,7 +158,7 @@ Téléchargez manuellement la nouvelle version à partir du site Lasergrbl.</val
     <value>{0} Configuration importée avec succès !</value>
   </data>
   <data name="CustomButtonEdit" xml:space="preserve">
-    <value>Editer le boutton</value>
+    <value>Editer le bouton</value>
   </data>
   <data name="CustomButtonRemove" xml:space="preserve">
     <value>Retirer le boutton</value>
@@ -197,7 +197,7 @@ Téléchargez manuellement la nouvelle version à partir du site Lasergrbl.</val
     <value>Redémarrage requis</value>
   </data>
   <data name="LanguageRequireRestartNow" xml:space="preserve">
-    <value>Nécessite un redémarrage de l'application, redémarrer maintenant?</value>
+    <value>Nécessite un redémarrage de l'application, redémarrer maintenant ?</value>
   </data>
   <data name="MacStatusAlarm" xml:space="preserve">
     <value>Alarme</value>
