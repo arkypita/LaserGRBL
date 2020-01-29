@@ -134,6 +134,17 @@ namespace LaserGRBL
 				return dval.ToString(System.Globalization.CultureInfo.InvariantCulture);
 			}
 
+			// Format laser power value
+			// grbl                    with pwm : color can be between 0 and configured SMax - S128
+			// smoothiware             with pwm : Value between 0.00 and 1.00    - S0.50
+			public string FormatLaserPower(int color, L2LConf c)
+			{
+                if (c.firmwareType == Firmware.Smoothie)
+                    return string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0:0.00}", color / 255.0); //maybe scaling to UI maxpower VS config maxpower instead of fixed / 255.0 ?
+                else
+                    return string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", color);
+			}
+
 			public abstract string ToGCodeNumber(ref int cumX, ref int cumY, L2LConf c);
 		}
 
@@ -145,10 +156,10 @@ namespace LaserGRBL
 			{
 				cumX += mPixLen;
 
-				if (c.pwm)
-					return string.Format("X{0} S{1}", formatnumber(cumX, c.oX, c), mColor);
-				else
-					return string.Format("X{0} {1}", formatnumber(cumX, c.oX, c), Fast(c) ? c.lOff : c.lOn);
+                if (c.pwm)
+                    return string.Format("X{0} S{1}", formatnumber(cumX, c.oX, c), FormatLaserPower(mColor, c));
+                else
+                    return string.Format("X{0} {1}", formatnumber(cumX, c.oX, c), Fast(c) ? c.lOff : c.lOn);
 			}
 		}
 
@@ -160,10 +171,10 @@ namespace LaserGRBL
 			{
 				cumY += mPixLen;
 
-				if (c.pwm)
-					return string.Format("Y{0} S{1}", formatnumber(cumY, c.oY, c), mColor);
-				else
-					return string.Format("Y{0} {1}", formatnumber(cumY, c.oY, c), Fast(c) ? c.lOff : c.lOn);
+                if (c.pwm)
+                    return string.Format("Y{0} S{1}", formatnumber(cumY, c.oY, c), FormatLaserPower(mColor, c));
+                else
+                    return string.Format("Y{0} {1}", formatnumber(cumY, c.oY, c), Fast(c) ? c.lOff : c.lOn);
 			}
 		}
 
@@ -176,13 +187,11 @@ namespace LaserGRBL
 				cumX += mPixLen;
 				cumY -= mPixLen;
 
-				if (c.pwm)
-					return string.Format("X{0} Y{1} S{2}", formatnumber(cumX, c.oX, c), formatnumber(cumY, c.oY, c), mColor);
-				else
-					return string.Format("X{0} Y{1} {2}", formatnumber(cumX, c.oX, c), formatnumber(cumY, c.oY, c), Fast(c) ? c.lOff : c.lOn);
+                if (c.pwm)
+                    return string.Format("X{0} Y{1} S{2}", formatnumber(cumX, c.oX, c), formatnumber(cumY, c.oY, c), FormatLaserPower(mColor, c));
+                else
+                    return string.Format("X{0} Y{1} {2}", formatnumber(cumX, c.oX, c), formatnumber(cumY, c.oY, c), Fast(c) ? c.lOff : c.lOn);
 			}
-
-
 		}
 
 		private class VSeparator : ColorSegment
@@ -320,6 +329,7 @@ namespace LaserGRBL
 			public bool pwm;
 			public double fres;
 			public bool vectorfilling;
+			public Firmware firmwareType;
 		}
 
 		public void LoadImageL2L(Bitmap bmp, string filename, L2LConf c, bool append)
