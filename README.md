@@ -86,7 +86,7 @@ LaserGRBL contains some code from:
 Thanks to:
 - Myself, for italian and english language
 - Fernando Luna, for spanish translation
-- Olivier Salvador, for french translation
+- Olivier Salvador, guillaume-rico [#848](https://github.com/arkypita/LaserGRBL/pull/848) for french translation
 - Gerd Vogel, for german translation
 - Anders Lassen, for danish translation
 - Gerson Koppe, for brasilian translation
