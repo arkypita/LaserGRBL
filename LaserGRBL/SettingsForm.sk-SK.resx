@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Zrušiť</value>
+    <value>Storno</value>
   </data>
   <data name="BtnSave.Text" xml:space="preserve">
     <value>Uložiť</value>
@@ -129,16 +129,133 @@
   <data name="TpHardware.Text" xml:space="preserve">
     <value>Protokol</value>
   </data>
-  <data name="CbEnableZJog.Text" xml:space="preserve">
-    <value>Zobraz ovladanie Z nahor a nadol</value>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>Gravírovanie v jednom smere</value>
   </data>
-  <data name="TpJogControl.Text" xml:space="preserve">
-    <value>Ovladanie pohybu</value>
+  <data name="CBSupportPWM.Text" xml:space="preserve">
+    <value>Podpora PWM</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>Import rastrových obrázkov</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>LaserGRBL nieje navrhnutý pre ovládanie osi Z, ale pokiaľ máte stroj s 3. osami, môže byť táto možnosť užitočná.</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Zobrazenie ovládania osi Z (nahor a nadol)</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>Automatické chladenie</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Zap</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Vyp</value>
   </data>
   <data name="TpAutoCooling.Text" xml:space="preserve">
     <value>Automatické chladenie</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Nastavenia</value>
+    <value>Nastavenie</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Protokol pripojenia:
+- UsbSerial, je najbežnejší protokol. Mal by byť použitý pokiaľ je Váš stroj pripojený cez USB alebo COM port.
+- Telnet, pokiaľ máte Wifi-Telnet bridge. Komunikácia je implementovaná ako jednoduchý telnet klient-server.
+- LaserWebESP8266 podporuje Wifi pripojenie cez WebSocket. Kompatibilný s LaserWeb-ESP8266 software.</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>LaserGRBL môže detekovať problémy a varovať užívateľa poskytnutím informácií o tom, ako ich vyriešiť.
+Pokiaľ je detekovaný, sú všetky problémy riešené ticho bez varovania.</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Upozornenie: táto funkcia je funkčná iba pri verzii grbl &gt; v1.1 s povoleným "laser režimom".
+Pokiaľ používate automatické chladenie so staršou verziou grbl (slebo s deaktivovaným "laser režimom"), laser sa
+ behom pauzy nevypne a vypáli dieru do materiálu!</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Režim streamovanie: [východzí Bufferovanie]
+- Bufferovanie: optimalizácia streamovania príkazov podľa zaplnenia grbl primajúceho bufferu [doporučené]
+- Synchrónny: čakanie na prevedenie každého príkazu, kým sa odošle ďalší príkaz [pomalšie, ale bezpečnejšie]
+- Opakovanie pri chybe: rovnaké ako Synchrónny režim, ale príkazy sú opakovane pokiaľ je detekovaná chyba [experimentálne]</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Threading Mode: [východzí UltraFast]
+Ultrarýchly, Rýchly, Kľudný, Pomalý.
+Toto nastavenie ovplyvňuje rýchlosť a frekvenciu žiadostí o hlásení stavu zariadenia.
+Pokiaľ máte problémy, nastavte pomalšie hodnoty.</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Pokiaľ je aktivovaný, LaserGRBL odošle soft-reset pri otvorení pripojenia k grbl.</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Pokiaľ je aktivovaný, LaserGRBL odošle hard-reset pri otvorení pripojenia k grbl  [strata pozície!].</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Váš kontrolér musí podporovať TTL riadenie na pine D11 Arduina.
+Pokiaľ to tak nieje, prosím deaktivujte podporu PWM.</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Štandardne LaserGRBL vytvára dráhy pre gravírovanie v obidvoch smeroch laserovej hlavy. Niektoré testy ukázali, že tento režim (ktorý je rýchlejší) prináša nižšiu kvalitu výsledkov. Pokiaľ je požadovaná maximálna kvalita, aktivujte túto možnosť.</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Čas VYP: po tejto dobe odošle LaserGRBL príkaz pre pokračovanie úlohy (gravírovanie).</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Niektoré laserové diódy sa môžu zahriať príliš moc, pokiaľ pracujú nejakú dobu na najvyšší výkon. Ak chcete zabrániť prehriatiu a predĺžiť životnosť lasera, môže byt automaticky vložený cyklus pre prerušenie úlohy, behom tejto pauzy dôjde k ochladeniu.
+Pokiaľ je aktivovane automatické chladenie, LaserGRBL odošle automaticky príkazy pre "pozastavenie" a "obnovanie" podľa nastavenia časov ZAP-VYP.</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Čas ZAP: maximálna doba, počas ktorej zostane laser zapnutý.
+Po uplynutí tejto doby LaserGRBL odošle automaticky príkaz pre prerušenie úlohy, aby vychladol laser.</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Typ firmware kontroléra
+- Grbl: skvelý firmware, pre ktorý bol LaserGRBL vyvinutý.
+- Smoothie [experimentálny]: podpora bola pridaná nedávno a nieje úplne otestovaná.</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>Plynule polohovanie</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Polohovanie</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Hlavička</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Päta</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Opakované prechody
+(vykonanie kódu)</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>G-kód</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBL spustí tento G-kód na začiatku akejkoľvek úlohy.
+Tento kód môžete upraviť, napríklad pridanie M8 zapne ventilátor alebo pokiaľ potrebujete urobiť špecifické polohovanie súvisiace s konkrétnou úlohou.
+
+Syntax kódu je rovnaká ako pri vlastných tlačidlách.</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBL spusti tento G-kód na konci akejkoľvek úlohy.
+Napríklad sa da použiť na nastavenie stroja do východzieho stavu, návrat do nulovej polohy alebo odoslanie M9 pre vypnutie ventilátora a pod.
+
+Syntax kódu je rovnaká ako pri vlastných tlačidlách.</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Pri prevedení  viacerých prechodov LaserGRBL spusti tento G-kód medzi každým prechodom.
+Napríklad sa môže použiť k posunutiu osi Z nadol pri prevedení rezu hlbšie.
+
+Syntax kódu je rovnaká ako pri vlastných tlačidlách.</value>
   </data>
 </root>

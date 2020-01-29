@@ -117,44 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnWrite.Text" xml:space="preserve">
-    <value>Zápis</value>
-  </data>
-  <data name="BtnRead.Text" xml:space="preserve">
-    <value>Čítanie</value>
-  </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Zatvoriť</value>
+    <value>Storno</value>
   </data>
-  <data name="LblConnect.Text" xml:space="preserve">
-    <value>Čítanie a zápis je povolený
-iba pri pripojení v kľudnom stave</value>
+  <data name="BtnCreate.Text" xml:space="preserve">
+    <value>Vytvořit!</value>
   </data>
-  <data name="Parameter.HeaderText" xml:space="preserve">
-    <value>Parameter</value>
+  <data name="LblDescription.Text" xml:space="preserve">
+    <value>- Bodka "." ako desatinný oddeľovač
+- Podpora matematických výrazov v hranatých zátvorkách: napr. GOX[left-5] Y[bottom-5]
+- Možnosti : left, right, top, bottom, width, height.. (a dalšie)
+
+Viz. http://lasergrbl.com/usage/custom-buttons/</value>
   </data>
-  <data name="Value.HeaderText" xml:space="preserve">
-    <value>Hodnota</value>
+  <data name="LblEnabled.Text" xml:space="preserve">
+    <value>Povolene</value>
   </data>
-  <data name="Unit.HeaderText" xml:space="preserve">
-    <value>Jednotka</value>
+  <data name="LblToolTip.Text" xml:space="preserve">
+    <value>Popis</value>
   </data>
-  <data name="Description.HeaderText" xml:space="preserve">
-    <value>Poznámka</value>
+  <data name="LblImage.Text" xml:space="preserve">
+    <value>Ikona</value>
   </data>
-  <data name="Number.HeaderText" xml:space="preserve">
-    <value>Číslo</value>
-  </data>
-  <data name="GB.Text" xml:space="preserve">
-    <value>Grbl $$ konfiguracia</value>
-  </data>
-  <data name="DollarNumber.HeaderText" xml:space="preserve">
-    <value>#</value>
+  <data name="LblType.Text" xml:space="preserve">
+    <value>Typ:</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Grbl</value>
+    <value>Vlastné tlačítko</value>
   </data>
-  <data name="LblAction.Text" xml:space="preserve">
-    <value>Akcia</value>
+  <data name="LblGCode2.Text" xml:space="preserve">
+    <value>G-kód2</value>
+  </data>
+  <data name="LblGCode.Text" xml:space="preserve">
+    <value>G-kód</value>
   </data>
 </root>

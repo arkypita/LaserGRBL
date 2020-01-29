@@ -117,29 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="LblFilename.Text" xml:space="preserve">
+    <value>Soubor</value>
+  </data>
   <data name="LblProgress.Text" xml:space="preserve">
-    <value>Vývoj</value>
+    <value>Průběh</value>
   </data>
   <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Otvoriť súbor</value>
+    <value>Otevřít soubor</value>
   </data>
   <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Spustiť program</value>
+    <value>Spustit úlohu</value>
   </data>
   <data name="UDLoopCounter.ToolTip" xml:space="preserve">
-    <value>Vykonať viac fáz</value>
+    <value>Počet průchodů (opakování)</value>
   </data>
   <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>Prerušiť program</value>
-  </data>
-  <data name="LblEmulator.Text" xml:space="preserve">
-    <value>Emulátor</value>
+    <value>Přerušit úlohu</value>
   </data>
   <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Pripojiť</value>
-  </data>
-  <data name="LblFilename.Text" xml:space="preserve">
-    <value>Názov súboru</value>
+    <value>Připojit</value>
   </data>
   <data name="LblBaudRate.Text" xml:space="preserve">
     <value>Baud</value>
@@ -148,6 +145,9 @@
     <value>URL</value>
   </data>
   <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Emulated Grbl v1.1#</value>
+    <value>Emulované Grbl v1.1#</value>
+  </data>
+  <data name="LblEmulator.Text" xml:space="preserve">
+    <value>Emulátor</value>
   </data>
 </root>

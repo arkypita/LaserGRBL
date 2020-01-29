@@ -972,7 +972,12 @@ namespace LaserGRBL
 				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
 
 				if (grbl)
-					SendImmediate(24);
+				{
+					if ((Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Smoothie)
+						com.Write("reset\r\n"); // Smoothie firmware (is it possible to write directly without push into queue???)
+                    else
+						SendImmediate(24); // GRBL Firmware
+				}	
 			}
 
 			RiseOverrideChanged();
@@ -1212,7 +1217,9 @@ namespace LaserGRBL
 		{
 			lock (this)
 			{
-				InternalReset((bool)Settings.GetObject("Reset Grbl On Connect", true));
+				// No soft reset when opening COM port for smoothieware
+				if ((Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) != Firmware.Smoothie)
+					InternalReset((bool)Settings.GetObject("Reset Grbl On Connect", true));
 				InitializeBoard();
 				QueryTimer.Start();
 			}

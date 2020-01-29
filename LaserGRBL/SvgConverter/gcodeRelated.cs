@@ -53,17 +53,22 @@ namespace LaserGRBL.SvgConverter
 
 		private static int mDecimalPlaces = 2;
 
+		private static Firmware firmwareType = (Firmware) Settings.GetObject("Firmware Type", Firmware.Grbl);
+
 
 		public static void setup()
 		{
 			setDecimalPlaces(mDecimalPlaces);
 
 			gcodeXYFeed = (float)(int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
-			gcodeSpindleSpeed = (float)(int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255); ;
+			gcodeSpindleSpeed = (float)(int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
+			// Smoothieware firmware need a value between 0.0 and 1.1
+			if (firmwareType == Firmware.Smoothie)
+				gcodeSpindleSpeed /= 255.0f;
 			gcodeSpindleCmd = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
 
 			lastMovewasG0 = true;
-			lastx = -1; lasty = -1; lastz = 0;
+			lastx = -1; lasty = -1; lastz = 0; lasts = -1 ; lastg = -1;
 		}
 
 		public static bool reduceGCode
@@ -234,7 +239,7 @@ namespace LaserGRBL.SvgConverter
 			dragCompi = 0; dragCompj = 0;
 		}
 
-		public static float lastx, lasty, lastz, lastg, lastf;
+		public static float lastx, lasty, lastz, lastg = -1, lastf, lasts;
 		public static bool lastMovewasG0 = true;
 		public static void MoveTo(StringBuilder gcodeString, Point coord, string cmt = "")
 		{ MoveSplit(gcodeString, 1, (float)coord.X, (float)coord.Y, applyXYFeedRate, cmt); }
@@ -469,8 +474,15 @@ namespace LaserGRBL.SvgConverter
 
 					if ((gnr == 1) && (lastf != gcodeXYFeed) || applyFeed)
 					{
-						gcodeTmp.AppendFormat("F{0} ", gcodeXYFeed);
+						gcodeTmp.AppendFormat("F{0}", gcodeXYFeed);
 						lastf = gcodeXYFeed;
+						isneeded = true;
+					}
+					// Smothieware firmware need to know laserpower when G1 command is run
+					if ((gnr == 1) && (lasts != gcodeSpindleSpeed) && firmwareType == Firmware.Smoothie)
+					{
+						gcodeTmp.AppendFormat("S{0}", frmtNum(gcodeSpindleSpeed));
+						lasts = gcodeSpindleSpeed;
 						isneeded = true;
 					}
 					gcodeTmp.AppendFormat("{0}\r\n", cmt);
