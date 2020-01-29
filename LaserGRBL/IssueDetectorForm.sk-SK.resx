@@ -117,44 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnWrite.Text" xml:space="preserve">
-    <value>Zápis</value>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="BtnRead.Text" xml:space="preserve">
-    <value>Čítanie</value>
+  <data name="CbDoNotShow.Text" xml:space="preserve">
+    <value>Znova nezobrazovať</value>
   </data>
-  <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Zatvoriť</value>
+  <data name="LblCause.Text" xml:space="preserve">
+    <value>Dôvod:</value>
   </data>
-  <data name="LblConnect.Text" xml:space="preserve">
-    <value>Čítanie a zápis je povolený
-iba pri pripojení v kľudnom stave</value>
+  <data name="TxtCause.Text" xml:space="preserve">
+    <value>Neznámy</value>
   </data>
-  <data name="Parameter.HeaderText" xml:space="preserve">
-    <value>Parameter</value>
+  <data name="LblDetected.Text" xml:space="preserve">
+    <value>LaserGRBL detekoval problém s Vaším hardvérom!</value>
   </data>
-  <data name="Value.HeaderText" xml:space="preserve">
-    <value>Hodnota</value>
+  <data name="LblBrief.Text" xml:space="preserve">
+    <value>Zdá sa, že grbl má s prevedením tejto úlohy problém. Príčiny tejto situácie môžu byť rôzne, prečítajte si prosím FAQ, kde nájdete informácie o tom, ako tento problém vyriešiť.</value>
   </data>
-  <data name="Unit.HeaderText" xml:space="preserve">
-    <value>Jednotka</value>
-  </data>
-  <data name="Description.HeaderText" xml:space="preserve">
-    <value>Poznámka</value>
-  </data>
-  <data name="Number.HeaderText" xml:space="preserve">
-    <value>Číslo</value>
-  </data>
-  <data name="GB.Text" xml:space="preserve">
-    <value>Grbl $$ konfiguracia</value>
-  </data>
-  <data name="DollarNumber.HeaderText" xml:space="preserve">
-    <value>#</value>
+  <data name="LL.Text" xml:space="preserve">
+    <value>http://lasergrbl.com/faq/</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Grbl</value>
-  </data>
-  <data name="LblAction.Text" xml:space="preserve">
-    <value>Akcia</value>
+    <value>Detekovaný problém!</value>
   </data>
 </root>

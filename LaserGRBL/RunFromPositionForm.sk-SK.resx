@@ -117,44 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnWrite.Text" xml:space="preserve">
-    <value>Zápis</value>
-  </data>
-  <data name="BtnRead.Text" xml:space="preserve">
-    <value>Čítanie</value>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Zatvoriť</value>
+    <value>Storno</value>
   </data>
-  <data name="LblConnect.Text" xml:space="preserve">
-    <value>Čítanie a zápis je povolený
-iba pri pripojení v kľudnom stave</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Riadok #</value>
   </data>
-  <data name="Parameter.HeaderText" xml:space="preserve">
-    <value>Parameter</value>
+  <data name="RbFromSpecific.Text" xml:space="preserve">
+    <value>Spustiť z daného riadku</value>
   </data>
-  <data name="Value.HeaderText" xml:space="preserve">
-    <value>Hodnota</value>
-  </data>
-  <data name="Unit.HeaderText" xml:space="preserve">
-    <value>Jednotka</value>
-  </data>
-  <data name="Description.HeaderText" xml:space="preserve">
-    <value>Poznámka</value>
-  </data>
-  <data name="Number.HeaderText" xml:space="preserve">
-    <value>Číslo</value>
-  </data>
-  <data name="GB.Text" xml:space="preserve">
-    <value>Grbl $$ konfiguracia</value>
-  </data>
-  <data name="DollarNumber.HeaderText" xml:space="preserve">
-    <value>#</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Možnosti</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Grbl</value>
+    <value>Spustiť z pozície</value>
   </data>
-  <data name="LblAction.Text" xml:space="preserve">
-    <value>Akcia</value>
+  <data name="LblBrief.Text" xml:space="preserve">
+    <value>Táto funkcia umožňuje spustiť úlohu od konkrétneho riadku a preskočiť predchádzajúci.
+LaserGRBL vypočíta presnú polohu a stav, a potom uvedie stroj do správneho stavu.</value>
+  </data>
+  <data name="CbRedoHoming.Text" xml:space="preserve">
+    <value>Návrat domov [$H]</value>
   </data>
 </root>

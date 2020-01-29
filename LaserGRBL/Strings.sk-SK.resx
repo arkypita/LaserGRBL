@@ -118,50 +118,45 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxAbortProgramConfirm" xml:space="preserve">
-    <value>Zrušiť aktuálnu prácu?</value>
+    <value>Zrušiť aktuálnu polohu?</value>
   </data>
   <data name="BoxAutoUpdateFailed" xml:space="preserve">
-    <value>Automatická aktualizácia zlyhala
-Prosím manuálne stiahnite a nainštalujte program z lasergrbl webu.</value>
+    <value>Automatická aktualizácia sa nepodarila!
+Stiahnite si aktuálnu verziu LaserGRBL z webu.</value>
   </data>
   <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
-    <value>Update vyžadujem administrátorské práva!</value>
+    <value>Aktualizácia požaduje administrátorské práva!</value>
   </data>
   <data name="BoxAutoUpdateResult" xml:space="preserve">
-    <value>Výsledok updatu</value>
+    <value>Výsledok aktualizácie</value>
   </data>
   <data name="BoxAutoUpdateSuccess" xml:space="preserve">
-    <value>Update úspešný!</value>
+    <value>Aktualizácia úspešná!</value>
   </data>
   <data name="BoxConfigDetectedChanges" xml:space="preserve">
     <value>Existujú niektoré zmeny, ktoré neboli použité.
 Chcete prepísať konfiguráciu?</value>
   </data>
   <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
-    <value>Zmeny zistené</value>
+    <value>Zistené zmeny</value>
   </data>
   <data name="BoxConnectErrorTitle" xml:space="preserve">
-    <value>Nemôžem sa pripojiť k zariadeniu</value>
+    <value>Nedá sa spojiť so zariadením</value>
   </data>
   <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
-    <value>Prosím poskytnite Gkód príkaz
-
-
-Prosím poskytnite Gkód príkaz
-
-Prosím poskytnite Gkód príkaz</value>
+    <value>Prosím zadajte príkaz G-kódu</value>
   </data>
   <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
-    <value>Prosím zadajte popisný text</value>
+    <value>Prosím zadajte popis</value>
   </data>
   <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
-    <value>Chýbajúce pole</value>
+    <value>Chýbajúca položka</value>
   </data>
   <data name="BoxDeleteCustomButtonText" xml:space="preserve">
-    <value>Určite chcete vymazať vybrané tlačidlo?</value>
+    <value>Naozaj chcete vymazať chýbajúce tlačidlo?</value>
   </data>
   <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
-    <value>Vymazať užívateľské tlačidlo</value>
+    <value>Odstránenie vlastného tlačidla</value>
   </data>
   <data name="BoxExportConfigError" xml:space="preserve">
     <value>Chyba exportu nastavení!</value>
@@ -173,7 +168,7 @@ Prosím poskytnite Gkód príkaz</value>
     <value>Súbor neexistuje!</value>
   </data>
   <data name="BoxExportConfigSuccess" xml:space="preserve">
-    <value>{0} Export nastavení úspešný</value>
+    <value>{0} Konfigurácia úspešne exportovaná!</value>
   </data>
   <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
     <value>Úspech</value>
@@ -182,43 +177,43 @@ Prosím poskytnite Gkód príkaz</value>
     <value>Chyba načítania súboru</value>
   </data>
   <data name="BoxImportConfigWithError" xml:space="preserve">
-    <value>{0} Nastavenia importované s {1} chybami!</value>
+    <value>{0} Konfigurácia naimportovaná s {1} chybami!</value>
   </data>
   <data name="BoxImportConfigWithoutError" xml:space="preserve">
-    <value>{0} Nastavenia importované!</value>
+    <value>{0} Konfigurácia úspešne importovaná!</value>
   </data>
   <data name="BoxImportCustomButtonCaption" xml:space="preserve">
-    <value>Importovanie užívateľského tlačidla</value>
+    <value>Import vlastných tlačidiel</value>
   </data>
   <data name="BoxImportCustomButtonClearText" xml:space="preserve">
-    <value>Vymazať aktuálne tlačidla? Výber áno pre vymazanie a nie pre zachovanie.</value>
+    <value>Odstrániť aktuálne tlačidla? ANO pre odstránenie, NIE pre ponechanie.</value>
   </data>
   <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
     <value>Potvrdenie</value>
   </data>
   <data name="BoxReadConfigError" xml:space="preserve">
-    <value>Chyba načítania nastavení!</value>
+    <value>Chyba čítania konfigurácie!</value>
   </data>
   <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
     <value>Zobraziť hodnoty v pamäti cache</value>
   </data>
   <data name="BoxReadConfigSuccess" xml:space="preserve">
-    <value>{0} Nastavenia načítané!</value>
+    <value>{0} Konfigurácia úspešne načítaná!</value>
   </data>
   <data name="BoxWriteConfigNoChange" xml:space="preserve">
-    <value>Žiadne zmeny... nemám čo zapísať!</value>
+    <value>Žiadne zmeny... nič na uloženie!</value>
   </data>
   <data name="BoxWriteConfigWithError" xml:space="preserve">
-    <value>{0} Nastavenie zapísané s {1} chybami!</value>
+    <value>{0} Konfigurácia uložená s {1} chybami!</value>
   </data>
   <data name="BoxWriteConfigWithoutError" xml:space="preserve">
-    <value>{0} Nastavenie zapísané!</value>
+    <value>{0} Konfigurácia úspešne uložená!</value>
   </data>
   <data name="CustomButtonEdit" xml:space="preserve">
-    <value>Uprav tlačidlo</value>
+    <value>Upraviť tlačidlo</value>
   </data>
   <data name="CustomButtonRemove" xml:space="preserve">
-    <value>Vymaž tlačidlo</value>
+    <value>Odstrániť tlačidlo</value>
   </data>
   <data name="DirectionDiagonal" xml:space="preserve">
     <value>Diagonálne</value>
@@ -227,22 +222,22 @@ Prosím poskytnite Gkód príkaz</value>
     <value>Horizontálne</value>
   </data>
   <data name="DirectionNone" xml:space="preserve">
-    <value>Nič</value>
+    <value>Žiadna</value>
   </data>
   <data name="DirectionVertical" xml:space="preserve">
     <value>Vertikálne</value>
   </data>
   <data name="DisconnectAnyway" xml:space="preserve">
-    <value>Prebieha prenos súborov. Odpojiť aj tak?</value>
+    <value>Prebieha prenos súboru. Napriek tomu odpojiť?</value>
   </data>
   <data name="ExitAnyway" xml:space="preserve">
-    <value>Prebieha prenos súborov. Ukončiť aj tak?</value>
+    <value>Prebieha prenos súboru. Napriek tomu ukončiť?</value>
   </data>
   <data name="FirmwareRequireRestart" xml:space="preserve">
-    <value>Požadovaný reštart</value>
+    <value>Vyžadovaný reštart</value>
   </data>
   <data name="FirmwareRequireRestartNow" xml:space="preserve">
-    <value>Reštart je potrebný na zmeny vo firmvér. Reštartovať teraz?</value>
+    <value>Reštart je potrebný pre zmenu typu firmwaru kontroléra. Reštartovať teraz?</value>
   </data>
   <data name="FormulaCustom" xml:space="preserve">
     <value>Vlastný</value>
@@ -254,7 +249,7 @@ Prosím poskytnite Gkód príkaz</value>
     <value>Jednoduchý priemer</value>
   </data>
   <data name="FormulaWeightAverage" xml:space="preserve">
-    <value>Priemer hmotnosti</value>
+    <value>Váhový priemer</value>
   </data>
   <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
     <value>Hladký (HQ Bicubic)</value>
@@ -263,31 +258,37 @@ Prosím poskytnite Gkód príkaz</value>
     <value>Ostrý (NearestNeighbor)</value>
   </data>
   <data name="LanguageRequireRestart" xml:space="preserve">
-    <value>Požadovaný reštart</value>
+    <value>Vyžadovaný reštart</value>
   </data>
   <data name="LanguageRequireRestartNow" xml:space="preserve">
-    <value>Vyžadovaný reštart aplikácie, reštartovať teraz?</value>
+    <value>Vyžadovaný reštart splikacie, Reštartovať teraz?</value>
+  </data>
+  <data name="MacStatusAlarm" xml:space="preserve">
+    <value>Alarm</value>
   </data>
   <data name="MacStatusCheck" xml:space="preserve">
     <value>Kontrola</value>
   </data>
   <data name="MacStatusConnecting" xml:space="preserve">
-    <value>Pripájanie</value>
+    <value>Pripojovanie</value>
   </data>
   <data name="MacStatusDisconnected" xml:space="preserve">
-    <value>Odpojiť</value>
+    <value>Odpojené</value>
   </data>
   <data name="MacStatusDoor" xml:space="preserve">
     <value>Dvere</value>
   </data>
   <data name="MacStatusHold" xml:space="preserve">
-    <value>Zastav</value>
+    <value>Zastavené</value>
   </data>
   <data name="MacStatusHome" xml:space="preserve">
     <value>Domov</value>
   </data>
+  <data name="MacStatusIdle" xml:space="preserve">
+    <value>Kľud</value>
+  </data>
   <data name="MacStatusRun" xml:space="preserve">
-    <value>Bež</value>
+    <value>Beží</value>
   </data>
   <data name="MacStatusUnknown" xml:space="preserve">
     <value>Neznámy</value>
@@ -299,11 +300,14 @@ Prosím poskytnite Gkód príkaz</value>
     <value>Plánovaný čas:</value>
   </data>
   <data name="ResumeJobHomingRequired" xml:space="preserve">
-    <value>Zdá sa, že Grbl už nepozná súčasnú pozíciu.
-Bez procedúry Homing ($H) nemusí byť výsledok spoľahlivý.
-Chcete pokračovať?</value>
+    <value>Zdá sa, že už nepozná súčasnú pozíciu.
+Bez príkazu domov ($H) nemusí byť výsledok spoľahlivý.
+Napriek tomu pokračovať?</value>
   </data>
   <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
-    <value>Neznáma pozícia</value>
+    <value>Neznámá pozícia</value>
+  </data>
+  <data name="MacStatusJog" xml:space="preserve">
+    <value>Polohovanie</value>
   </data>
 </root>

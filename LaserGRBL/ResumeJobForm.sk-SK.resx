@@ -118,7 +118,46 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="LblBrief.Text" xml:space="preserve">
-    <value>LaserGRBL môže začať túto úlohu znova od začiatku alebo sa pokúsiť obnoviť z poslednej známej pozície.
-Keďže nie je vždy možné určiť najlepšiu pozíciu pri reštartovaní, dáme vám konečné rozhodnutie.</value>
+    <value>LaserGRBL môže spustiť túto úlohu znova od začiatku alebo sa ju pokúsi obnoviť z poslednej známej
+     pozície. Pretože nie vždy je po reštartovaní možné určiť najlepšiu pozíciu, konečné rozhodnutie je na Vás.</value>
+  </data>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Storno</value>
+  </data>
+  <data name="RbSomeLines.Text" xml:space="preserve">
+    <value>Obnoviť niektoré riadky pred zastavením</value>
+  </data>
+  <data name="LblLineNumber.Text" xml:space="preserve">
+    <value>Riadok #</value>
+  </data>
+  <data name="RbFromSpecific.Text" xml:space="preserve">
+    <value>Obnoviť z daného riadku</value>
+  </data>
+  <data name="RbFromBeginning.Text" xml:space="preserve">
+    <value>Spustiť znovu od začiatku [bezpečné]</value>
+  </data>
+  <data name="LblOptions.Text" xml:space="preserve">
+    <value>Možnosti</value>
+  </data>
+  <data name="RbFromSent.Text" xml:space="preserve">
+    <value>Obnoviť od posledného odoslaného príkazu</value>
+  </data>
+  <data name="LblCause.Text" xml:space="preserve">
+    <value>Dôvod:</value>
+  </data>
+  <data name="TxtCause.Text" xml:space="preserve">
+    <value>Neznámý</value>
+  </data>
+  <data name="LblDetected.Text" xml:space="preserve">
+    <value>LaserGRBL detekoval, že posledná úloha nebola dokončená!</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Pokračovať</value>
+  </data>
+  <data name="CbRestoreWCO.Text" xml:space="preserve">
+    <value>Domov @</value>
   </data>
 </root>

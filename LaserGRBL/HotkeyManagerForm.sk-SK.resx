@@ -117,44 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnWrite.Text" xml:space="preserve">
-    <value>Zápis</value>
-  </data>
-  <data name="BtnRead.Text" xml:space="preserve">
-    <value>Čítanie</value>
-  </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Zatvoriť</value>
+    <value>Storno</value>
   </data>
-  <data name="LblConnect.Text" xml:space="preserve">
-    <value>Čítanie a zápis je povolený
-iba pri pripojení v kľudnom stave</value>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Uložiť</value>
   </data>
-  <data name="Parameter.HeaderText" xml:space="preserve">
-    <value>Parameter</value>
+  <data name="Action.HeaderText" xml:space="preserve">
+    <value>Akcia</value>
   </data>
-  <data name="Value.HeaderText" xml:space="preserve">
-    <value>Hodnota</value>
-  </data>
-  <data name="Unit.HeaderText" xml:space="preserve">
-    <value>Jednotka</value>
-  </data>
-  <data name="Description.HeaderText" xml:space="preserve">
-    <value>Poznámka</value>
-  </data>
-  <data name="Number.HeaderText" xml:space="preserve">
-    <value>Číslo</value>
+  <data name="Shortcut.HeaderText" xml:space="preserve">
+    <value>Kl. skratka</value>
   </data>
   <data name="GB.Text" xml:space="preserve">
-    <value>Grbl $$ konfiguracia</value>
-  </data>
-  <data name="DollarNumber.HeaderText" xml:space="preserve">
-    <value>#</value>
+    <value>Dostupné kl. skratky</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Grbl</value>
+    <value>Správca HOT KEYS</value>
   </data>
-  <data name="LblAction.Text" xml:space="preserve">
-    <value>Akcia</value>
+  <data name="LblConnect.Text" xml:space="preserve">
+    <value>Zadajte ľubovoľnú kombináciu kláves pre nastavenie skratky.
+Klávesovú skratku odstránite stlačením klávesy "Storno".</value>
   </data>
 </root>
