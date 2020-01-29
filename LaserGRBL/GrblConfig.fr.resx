@@ -117,35 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Lignes/mm</value>
+  <data name="Number.HeaderText" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Parameter.HeaderText" xml:space="preserve">
+    <value>Paramètre</value>
+  </data>
+  <data name="GB.Text" xml:space="preserve">
+    <value>Grbl $$ configuration</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Aide au choix de la résolution</value>
+    <value>Grbl</value>
   </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>$100 Résolution du matériel</value>
+  <data name="BtnRead.Text" xml:space="preserve">
+    <value>Rafraichir</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Abandonner</value>
+    <value>Fermer</value>
   </data>
-  <data name="LblLinearFillingmm.Text" xml:space="preserve">
-    <value>Pas/mm</value>
+  <data name="LblAction.Text" xml:space="preserve">
+    <value>Action</value>
   </data>
-  <data name="LblBorderTracingmm.Text" xml:space="preserve">
-    <value>Lignes/mm</value>
+  <data name="BtnExport.Text" xml:space="preserve">
+    <value>Exporter</value>
   </data>
-  <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Appliquer</value>
+  <data name="BtnWrite.Text" xml:space="preserve">
+    <value>Ecrire</value>
   </data>
-  <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>Résolution désirée</value>
+  <data name="Unit.HeaderText" xml:space="preserve">
+    <value>Unité</value>
   </data>
-  <data name="linkLabel1.Text" xml:space="preserve">
-    <value>Si la résolution ne pouvait pas être atteinte malgré les étapes complètes, certains artefacts peuvent apparaître. Cliquez ici pour plus d'informations ...
-</value>
+  <data name="LblConnect.Text" xml:space="preserve">
+    <value>Lire et Ecrire activés seulement quand connecté et en attente</value>
   </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Résolution calculée</value>
+  <data name="Description.HeaderText" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="BtnImport.Text" xml:space="preserve">
+    <value>Importer</value>
+  </data>
+  <data name="DollarNumber.HeaderText" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="Value.HeaderText" xml:space="preserve">
+    <value>Valeur</value>
   </data>
 </root>

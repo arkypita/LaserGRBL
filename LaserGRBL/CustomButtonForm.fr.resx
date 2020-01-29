@@ -112,40 +112,43 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Lignes/mm</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Aide au choix de la résolution</value>
-  </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>$100 Résolution du matériel</value>
-  </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Abandonner</value>
-  </data>
-  <data name="LblLinearFillingmm.Text" xml:space="preserve">
-    <value>Pas/mm</value>
-  </data>
-  <data name="LblBorderTracingmm.Text" xml:space="preserve">
-    <value>Lignes/mm</value>
+    <value>Annuler</value>
   </data>
   <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Appliquer</value>
+    <value>Créer !</value>
   </data>
-  <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>Résolution désirée</value>
+  <data name="LblToolTip.Text" xml:space="preserve">
+    <value>Info-bulle</value>
   </data>
-  <data name="linkLabel1.Text" xml:space="preserve">
-    <value>Si la résolution ne pouvait pas être atteinte malgré les étapes complètes, certains artefacts peuvent apparaître. Cliquez ici pour plus d'informations ...
-</value>
+  <data name="LblEnabled.Text" xml:space="preserve">
+    <value>Activé</value>
   </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Résolution calculée</value>
+  <data name="LblDescription.Text" xml:space="preserve">
+    <value>- Utiliser le point comme séparateur décimal
+- Accepte les expression mathématique entre crochets : i.e. G0 X[left-5] Y[bottom-5]
+- Variables disponibles : left, right, top, bottom, width, height... (Et plus) 
+
+Voir : http://lasergrbl.com/usage/custom-buttons/</value>
+  </data>
+  <data name="LblType.Text" xml:space="preserve">
+    <value>Entrer :</value>
+  </data>
+  <data name="LblGCode2.Text" xml:space="preserve">
+    <value>GCode2</value>
+  </data>
+  <data name="LblGCode.Text" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Bouton Personnalisé</value>
+  </data>
+  <data name="LblImage.Text" xml:space="preserve">
+    <value>Image</value>
   </data>
 </root>

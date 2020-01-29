@@ -117,35 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Lignes/mm</value>
+  <data name="LblCurrentVersion.Text" xml:space="preserve">
+    <value>0.0.0</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Aide au choix de la résolution</value>
+  <data name="TxtCurrentV.Text" xml:space="preserve">
+    <value>Version actuelle :</value>
   </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>$100 Résolution du matériel</value>
+  <data name="LblLatestVersion.Text" xml:space="preserve">
+    <value>0.0.0</value>
+  </data>
+  <data name="TxtNewV.Text" xml:space="preserve">
+    <value>Dernière version :</value>
+  </data>
+  <data name="BtnWebsite.Text" xml:space="preserve">
+    <value>Site web</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Abandonner</value>
+    <value>Annuler</value>
   </data>
-  <data name="LblLinearFillingmm.Text" xml:space="preserve">
-    <value>Pas/mm</value>
+  <data name="BtnUpdate.Text" xml:space="preserve">
+    <value>Télécharger !</value>
   </data>
-  <data name="LblBorderTracingmm.Text" xml:space="preserve">
-    <value>Lignes/mm</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Nouvelle version dsiponible</value>
   </data>
-  <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Appliquer</value>
-  </data>
-  <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>Résolution désirée</value>
-  </data>
-  <data name="linkLabel1.Text" xml:space="preserve">
-    <value>Si la résolution ne pouvait pas être atteinte malgré les étapes complètes, certains artefacts peuvent apparaître. Cliquez ici pour plus d'informations ...
-</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Résolution calculée</value>
+  <data name="TxtHeader.Text" xml:space="preserve">
+    <value>Une nouvelle version est disponible. Il est conseillé de mettre à jour LaserGRBL pour bénéficier des avantages.</value>
   </data>
 </root>
