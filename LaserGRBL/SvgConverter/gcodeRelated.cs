@@ -531,6 +531,7 @@ namespace LaserGRBL.SvgConverter
 		private static void MoveArc(StringBuilder gcodeString, int gnr, float x, float y, float i, float j, bool applyFeed, string cmt = "", bool avoidG23 = false)
 		{
 			string feed = "";
+			string splindleSpeed = "";
 			float x_relative = x - lastx;
 			float y_relative = y - lasty;
 
@@ -540,13 +541,18 @@ namespace LaserGRBL.SvgConverter
 				applyXYFeedRate = false;                        // don't set feed next time
 			}
 			if (cmt.Length > 0) cmt = string.Format("({0})", cmt);
+			// Smothieware firmware need to know laserpower when G2-G3 command is run
+			if (firmwareType == Firmware.Smoothie)
+			{
+				splindleSpeed = string.Format("S{0}", frmtNum(gcodeSpindleSpeed));
+			}
 			if (gcodeNoArcs || avoidG23)
 			{
 				splitArc(gcodeString, gnr, lastx, lasty, x, y, i, j, applyFeed, cmt);
 			}
 			else
 			{
-				gcodeString.AppendFormat("G{0} X{1} Y{2}  I{3} J{4} {5} {6}\r\n", frmtCode(gnr), frmtNum(x), frmtNum(y), frmtNum(i), frmtNum(j), feed, cmt);
+				gcodeString.AppendFormat("G{0}X{1}Y{2}I{3}J{4}{5}{6}{7}\r\n", frmtCode(gnr), frmtNum(x), frmtNum(y), frmtNum(i), frmtNum(j), feed, splindleSpeed, cmt);
 				lastg = gnr;
 			}
 			//gcodeTime += fdistance(lastx, lasty, x, y) / gcodeXYFeed;

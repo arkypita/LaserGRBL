@@ -311,7 +311,8 @@ namespace LaserGRBL
 
 		private void MnUnlock_Click(object sender, EventArgs e)
 		{
-			Core.EnqueueCommand(new GrblCommand("$X"));
+			if ((Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) != Firmware.Smoothie)
+				Core.EnqueueCommand(new GrblCommand("$X"));
 		}
 
 		private void MnConnect_Click(object sender, EventArgs e)
