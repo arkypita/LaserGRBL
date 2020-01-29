@@ -974,13 +974,9 @@ namespace LaserGRBL
 				if (grbl)
 				{
 					if ((Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Smoothie)
-					{
-						com.Write("reset\r\n"); 
-					} else
-					{
-						// GRBL Firmware
-						SendImmediate(24);
-					}
+						com.Write("reset\r\n"); // Smoothie firmware (is it possible to write directly without push into queue???)
+                    else
+						SendImmediate(24); // GRBL Firmware
 				}	
 			}
 
