@@ -961,7 +961,7 @@ namespace LaserGRBL
 			}
 		}
 
-		private void InternalReset(bool grbl)
+		private void InternalReset(bool device)
 		{
 			lock (this)
 			{
@@ -971,19 +971,19 @@ namespace LaserGRBL
 				mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
 				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
 
-				if (grbl)
-				{
-					if ((Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Smoothie)
-						com.Write("reset\r\n"); // Smoothie firmware (is it possible to write directly without push into queue???)
-                    else
-						SendImmediate(24); // GRBL Firmware
-				}	
-			}
+				if (device)
+                    DeviceReset();
+            }
 
 			RiseOverrideChanged();
 		}
 
-		public virtual void SendImmediate(byte b, bool mute = false)
+        protected virtual void DeviceReset()
+        {
+            SendImmediate(24);
+        }
+
+        public virtual void SendImmediate(byte b, bool mute = false)
 		{
 			try
 			{
@@ -1218,8 +1218,9 @@ namespace LaserGRBL
 			lock (this)
 			{
 				// No soft reset when opening COM port for smoothieware
-				if ((Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) != Firmware.Smoothie)
+				if (Type != Firmware.Smoothie)
 					InternalReset((bool)Settings.GetObject("Reset Grbl On Connect", true));
+
 				InitializeBoard();
 				QueryTimer.Start();
 			}
@@ -1857,7 +1858,7 @@ namespace LaserGRBL
 		private ThreadingMode CurrentThreadingMode
 		{ get { return (ThreadingMode)Settings.GetObject("Threading Mode", ThreadingMode.UltraFast); } }
 
-		private StreamingMode CurrentStreamingMode
+		public virtual StreamingMode CurrentStreamingMode
 		{ get { return (StreamingMode)Settings.GetObject("Streaming Mode", StreamingMode.Buffered); } }
 
 		private bool IdleOrCheck

@@ -33,7 +33,9 @@ namespace LaserGRBL
 
 
 
-            MnGrblConfig.Visible = Core.Type == Firmware.Grbl;
+            MnGrblConfig.Visible = Core.Type != Firmware.Smoothie;
+            MnUnlock.Visible = Core.Type != Firmware.Smoothie;
+
             MnGrbl.Text = Core.Type == Firmware.Grbl ? "Grbl" : "Smoothie";
 
             Core.MachineStatusChanged += OnMachineStatus;
@@ -311,7 +313,7 @@ namespace LaserGRBL
 
 		private void MnUnlock_Click(object sender, EventArgs e)
 		{
-			if ((Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) != Firmware.Smoothie)
+			if (Core.Type != Firmware.Smoothie)
 				Core.EnqueueCommand(new GrblCommand("$X"));
 		}
 
