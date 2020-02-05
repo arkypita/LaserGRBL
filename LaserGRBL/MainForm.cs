@@ -26,17 +26,18 @@ namespace LaserGRBL
                 f.ShowDialog();
 
             //build main communication object
-            if ((Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Smoothie)
+            Firmware ftype = (Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl);
+            if (ftype == Firmware.Smoothie)
                 Core = new SmoothieCore(this, PreviewForm);
+            else if (ftype == Firmware.Marlin)
+                Core = new MarlinCore(this, PreviewForm);
             else
                 Core = new GrblCore(this, PreviewForm);
 
+            MnGrblConfig.Visible = Core.UIShowGrblConfig;
+            MnUnlock.Visible = Core.UIShowUnlockButtons;
 
-
-            MnGrblConfig.Visible = Core.Type != Firmware.Smoothie;
-            MnUnlock.Visible = Core.Type != Firmware.Smoothie;
-
-            MnGrbl.Text = Core.Type == Firmware.Grbl ? "Grbl" : "Smoothie";
+            MnGrbl.Text = Core.Type.ToString();
 
             Core.MachineStatusChanged += OnMachineStatus;
             Core.OnFileLoaded += OnFileLoaded;
@@ -233,8 +234,8 @@ namespace LaserGRBL
 			Version current = typeof(GitHub).Assembly.GetName().Version;
 			string FormTitle = string.Format("LaserGRBL v{0}", current.ToString(3));
 
-            if (Core.Type == Firmware.Smoothie)
-                FormTitle = FormTitle + " (for smoothie)";
+            if (Core.Type != Firmware.Grbl)
+                FormTitle = FormTitle + $" (for {Core.Type})";
 
 
             if (Text != FormTitle) Text = FormTitle;
@@ -308,13 +309,12 @@ namespace LaserGRBL
 
 		private void MnGoHome_Click(object sender, EventArgs e)
 		{
-			Core.EnqueueCommand(new GrblCommand("$H"));
+            Core.SendHomingCommand();
 		}
 
 		private void MnUnlock_Click(object sender, EventArgs e)
 		{
-			if (Core.Type != Firmware.Smoothie)
-				Core.EnqueueCommand(new GrblCommand("$X"));
+            Core.SendUnlockCommand();
 		}
 
 		private void MnConnect_Click(object sender, EventArgs e)

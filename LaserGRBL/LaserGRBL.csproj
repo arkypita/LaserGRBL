@@ -117,6 +117,7 @@
     <Compile Include="Firmware\FlashGrbl.Designer.cs">
       <DependentUpon>FlashGrbl.cs</DependentUpon>
     </Compile>
+    <Compile Include="MarlinCore.cs" />
     <Compile Include="SmoothieCore.cs" />
     <Compile Include="SvgConverter\ConvertSizeAndOptionForm.cs">
       <SubType>Form</SubType>

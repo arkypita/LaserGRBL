@@ -7,7 +7,7 @@ using System.Globalization;
 namespace LaserGRBL
 {
 	public enum Firmware
-	{ Grbl, Smoothie }
+	{ Grbl, Smoothie, Marlin }
 
 	/// <summary>
 	/// Description of CommandThread.
@@ -250,7 +250,9 @@ namespace LaserGRBL
 
 		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform)
 		{
-			SetStatus(MacStatus.Disconnected);
+            if (Type != Firmware.Grbl) Logger.LogMessage("Program", "Load {0} core", Type);
+
+            SetStatus(MacStatus.Disconnected);
 			syncro = syncroObject;
 			com = new ComWrapper.UsbSerial();
 
@@ -351,7 +353,17 @@ namespace LaserGRBL
 			}
 		}
 
-		public GrblVersionInfo GrblVersion
+        internal virtual void SendHomingCommand()
+        {
+            EnqueueCommand(new GrblCommand("$H"));
+        }
+
+        internal virtual void SendUnlockCommand()
+        {
+            EnqueueCommand(new GrblCommand("$X"));
+        }
+
+        public GrblVersionInfo GrblVersion
 		{
 			get { return (GrblVersionInfo)Settings.GetObject("Last GrblVersion known", null); }
 			set
@@ -2131,7 +2143,7 @@ namespace LaserGRBL
 		public float CurrentF { get { return mCurF; } }
 		public float CurrentS { get { return mCurS; } }
 
-		private static IEnumerable<GrblCommand> StringToGCode(string input)
+        private static IEnumerable<GrblCommand> StringToGCode(string input)
 		{
 			if (string.IsNullOrEmpty(input))
 				yield break;
@@ -2144,7 +2156,9 @@ namespace LaserGRBL
 			}
 		}
 
-	}
+        public virtual bool UIShowGrblConfig => true;
+        public virtual bool UIShowUnlockButtons => true;
+    }
 
 	public class TimeProjection
 	{
