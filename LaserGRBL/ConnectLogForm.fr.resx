@@ -121,10 +121,10 @@
     <value>Connexion</value>
   </data>
   <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Demarrer le Programme</value>
+    <value>Démarrer le Programme</value>
   </data>
   <data name="LblFilename.Text" xml:space="preserve">
-    <value>Nom de Fichier</value>
+    <value>Nom du Fichier</value>
   </data>
   <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
     <value>Connecté</value>
@@ -148,7 +148,7 @@
     <value>URL</value>
   </data>
   <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Emulated Grbl v1.1#</value>
+    <value>Emuler Grbl v1.1#</value>
   </data>
   <data name="TxtManualCommand.WaterMark" xml:space="preserve">
     <value>Entrer le gcode ici</value>

@@ -133,14 +133,14 @@
     <value>Sauver</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>LaserGRBL intégre la modulation de puissance au travers du G-Code "S", afin de générer différents tons de gris. Votre Laser, matériel doit supporter le mode TTL, et être connecter à la broche PIN D11 de l'arduino.</value>
+    <value>LaserGRBL intègre la modulation de puissance au travers du G-Code "S", afin de générer différents tons de gris. Votre Laser, doit supporter le mode TTL, et être connecté à la PIN D11 de l'Arduino.</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Le mode laser est activé sur GRBL 1.1 ou supérieur. Il en résulte que le laser est éteint pendant les mouvements rapides. LaserGRBL rendra les mouvements rapides différemment des mouvements coupés.</value>
+    <value>Si l'option est cochée, LaserGRBL réalisera un redémarrage logiciel à l'ouverture de la communication.</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Protocoles de Connection:
-- Usb Série, est le protocole le plus commun. Il suffit de connecter votre machine à graver en Usb ou sur le port Com.
+- Usb Série, est le protocole le plus commun. Il suffit de connecter votre graveur laser en Usb ou sur le port Com.
 - Telnet, si vous avez un pont Wifi-Telnet. La communication est établie tout simplement en mode Telnet Client-Serveur.
 - LaserWebESP8266, pour une connection Wifi via WebSocket. Compatible avec les protocoles logiciels LaserWeb-ESP8266.</value>
   </data>
@@ -151,11 +151,11 @@
 - Répétition en cas d'erreur: Identique aux commandes synchrone mais répété si une erreur est détectée. [expérimental]</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>LaserGRBL peut détecter des problèmes et prévenir l'utilisateur avec des informations pour les résoudres.
-Si désactivé, les problèmes seront gérés silencieusement sans avertissement.</value>
+    <value>LaserGRBL peut détecter des problèmes et prévenir l'utilisateur avec des informations pour les résoudre.
+Si cette option est désactivée, les problèmes seront gérés silencieusement sans avertissement.</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>SI activé, LaserGRBL envoie un hard-reset quand la connexion à grbl est ouverte. [La position est perdue]</value>
+    <value>Si activé, LaserGRBL envoie un hard-reset quand la connexion à grbl est ouverte. [La position est perdue]</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Type de firmware :
@@ -188,7 +188,7 @@ Si désactivé, les problèmes seront gérés silencieusement sans avertissement
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Mode d'envoi : UltraFast, Fast, Quiet, SLow (Par défaut UltraFast)
-Ce parametre modifie la vitesse d'envoie et la fréquence des requetes de statut.
+Ce paramètre modifie la vitesse d'envoie et la fréquence des requêtes de statut.
 Baisser cette valeur si vous avez des problèmes.</value>
   </data>
   <data name="CbIssueDetector.Text" xml:space="preserve">

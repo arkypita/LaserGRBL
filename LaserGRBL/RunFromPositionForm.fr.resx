@@ -127,7 +127,7 @@
     <value>Ligne #</value>
   </data>
   <data name="RbFromSpecific.Text" xml:space="preserve">
-    <value>Executer depuis une ligne spécifique</value>
+    <value>Exécuter depuis une ligne spécifique</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Options</value>
@@ -137,7 +137,7 @@
 LaserGRBL calcul la position et l'état exacte puis place le graveur dans l'état correct.</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Executer depuis une position</value>
+    <value>Exécuter depuis une position</value>
   </data>
   <data name="CbRedoHoming.Text" xml:space="preserve">
     <value>Faire Homing [$H]</value>

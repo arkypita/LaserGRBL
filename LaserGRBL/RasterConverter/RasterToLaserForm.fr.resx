@@ -406,7 +406,7 @@
     <value>131, 21</value>
   </data>
   <data name="CbFillingDirection.ToolTip" xml:space="preserve">
-    <value>Désactive remplissage contour/ Active remplissage intérieur suivant Direction</value>
+    <value>Activation / Désactivation du remplissage à l'intérieur des contours. Définition du sens de remplissage</value>
   </data>
   <data name="LblFillingQuality.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -433,7 +433,7 @@
     <value>105, 74</value>
   </data>
   <data name="UDDownSample.ToolTip" xml:space="preserve">
-    <value>Réduire l'échelle originale de l'image [for HI-Res image]</value>
+    <value>Réduire l'échelle originale de l'image [Pour des images haute résolution]</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 13</value>
@@ -478,7 +478,7 @@
     <value>68, 2</value>
   </data>
   <data name="CbResize.ToolTip" xml:space="preserve">
-    <value>Mode de controle du redimentionnement (Lisse ou bord grossier)</value>
+    <value>Mode de contrôle du redimensionnement (Lisse ou bord grossier)</value>
   </data>
   <data name="LblGrayscale.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 13</value>
@@ -649,7 +649,7 @@
     <value>244, 116</value>
   </data>
   <data name="GbLineToLineOptions.Text" xml:space="preserve">
-    <value>Option Ligne par Ligne</value>
+    <value>Option de génération Ligne par Ligne</value>
   </data>
   <data name="RbDithering.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 17</value>
@@ -664,7 +664,7 @@
     <value>75, 17</value>
   </data>
   <data name="RbVectorize.Text" xml:space="preserve">
-    <value>Vectorise !</value>
+    <value>Vectorisation</value>
   </data>
   <data name="RbVectorize.ToolTip" xml:space="preserve">
     <value>Génération du contour vectorisé</value>
@@ -703,7 +703,7 @@
     <value />
   </data>
   <data name="lOptimizeFast.Text" xml:space="preserve">
-    <value>Optimise le chemin</value>
+    <value>Optimiser le chemin</value>
   </data>
   <data name="label27.Text" xml:space="preserve">
     <value>Direction</value>
@@ -727,12 +727,12 @@
     <value>Angle en degrés: si un pixel, ses prédécesseurs et ses successeurs se rencontrent à un angle inférieur à celui-ci, c'est un coin.</value>
   </data>
   <data name="RbCenterline.ToolTip" xml:space="preserve">
-    <value>Centerline vectorisation</value>
+    <value>Vectorisation de la ligne centrale</value>
   </data>
   <data name="RbCenterline.Text" xml:space="preserve">
-    <value>Centerline</value>
+    <value>Vectorisation Ligne Centrale</value>
   </data>
   <data name="GbCenterlineOptions.Text" xml:space="preserve">
-    <value>Centerline Options</value>
+    <value>Options de vectorisation par la ligne centrale</value>
   </data>
 </root>
