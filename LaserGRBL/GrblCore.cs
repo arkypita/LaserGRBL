@@ -971,14 +971,12 @@ namespace LaserGRBL
 				mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
 				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
 
-				if (device)
-                    DeviceReset();
-            }
-
+				if (device) SendBoardResetCommand();
+			}
 			RiseOverrideChanged();
 		}
 
-        protected virtual void DeviceReset()
+        protected virtual void SendBoardResetCommand()
         {
             SendImmediate(24);
         }
