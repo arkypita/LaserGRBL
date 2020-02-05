@@ -971,19 +971,18 @@ namespace LaserGRBL
 				mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
 				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
 
-				if (grbl)
-				{
-					if ((Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Smoothie)
-						com.Write("reset\r\n"); // Smoothie firmware (is it possible to write directly without push into queue???)
-                    else
-						SendImmediate(24); // GRBL Firmware
-				}	
+				if (grbl) SendBoardResetCommand();
 			}
 
 			RiseOverrideChanged();
 		}
 
-		public virtual void SendImmediate(byte b, bool mute = false)
+        protected virtual void SendBoardResetCommand()
+        {
+            SendImmediate(24);
+        }
+
+        public virtual void SendImmediate(byte b, bool mute = false)
 		{
 			try
 			{

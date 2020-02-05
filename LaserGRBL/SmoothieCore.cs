@@ -29,6 +29,11 @@ namespace LaserGRBL
 
         public override bool SupportTrueJogging => false;
 
+        protected override void SendBoardResetCommand()
+        {
+            com.Write("reset\r\n"); //is it possible to write directly without push into queue??? please verify!!
+        }
+
         //public override void SendImmediate(byte b, bool mute = false)
         //{
         //    try
