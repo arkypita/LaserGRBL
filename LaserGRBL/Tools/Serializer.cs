@@ -13,7 +13,7 @@ namespace Tools
 
 	public class Serializer
 	{
-		private static int counter = 0;
+		//private static int counter = 0;
 		private const string DataStartString = "<!-- OBJECT DATA BEGIN HERE-->\r\n";
 		private static string ThreadLock = "ThreadLock-String";
 
@@ -444,7 +444,7 @@ namespace Tools
 					Log.WriteEmptyLine();
 
 				}
-				catch (Exception e)
+				catch (Exception)
 				{
 					Log.WriteLogLines("Non è stato possibile creare una copia del file in oggetto");
 					Log.WriteEmptyLine();
@@ -455,7 +455,7 @@ namespace Tools
 					File.Move(FileName + ".bak", FileName);
 					Log.WriteLogLines(string.Format("Il file è stato rinominato in: {0} per permettere la rilettura", FileName));
 				}
-				catch (Exception ex)
+				catch (Exception)
 				{
 					Log.WriteLogLines(string.Format("Impossibile rinominare il file {0} in {0}", FileName + ".bak", FileName));
 				}
@@ -557,7 +557,7 @@ namespace Tools
 						Log.WriteEmptyLine();
 
 					}
-					catch (Exception e)
+					catch (Exception)
 					{
 						Log.WriteLogLines("Non è stato possibile creare una copia del file in oggetto");
 						Log.WriteEmptyLine();

@@ -224,11 +224,11 @@
 		private System.Windows.Forms.Label LblConnect;
 		private System.Windows.Forms.Timer ActionTimer;
 		private System.Windows.Forms.Label LblAction;
-		private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn parameterDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+		//private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
+		//private System.Windows.Forms.DataGridViewTextBoxColumn parameterDataGridViewTextBoxColumn;
+		//private System.Windows.Forms.DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;
+		//private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
+		//private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn DollarNumber;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Parameter;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Value;

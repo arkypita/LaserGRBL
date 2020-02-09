@@ -51,7 +51,12 @@ namespace LaserGRBL
 
 			public override bool Equals(object obj)
 			{ return obj != null && obj is ThreadingMode && ((ThreadingMode)obj).Name == Name; }
-		}
+
+            public override int GetHashCode()
+            {
+                return base.GetHashCode();
+            }
+        }
 
 		public enum DetectedIssue
 		{

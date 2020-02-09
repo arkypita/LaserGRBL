@@ -107,14 +107,14 @@ namespace LaserGRBL.GrblEmulator
 			}
 			else
 			{
-				string message = Encoding.UTF8.GetString(data); 
+				string message = Encoding.UTF8.GetString(data);
 
-				if (message == "version\n")
-					;
-				else if (message == "{fb:n}\n")
-					;
-				else
-					EnqueueRX(message);
+                if (message == "version\n")
+                { }
+                else if (message == "{fb:n}\n")
+                { }
+                else
+                    EnqueueRX(message);
 			}
 		}
 
@@ -144,7 +144,7 @@ namespace LaserGRBL.GrblEmulator
 				else
 					EnqueueTX("error");
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				EnqueueTX("error");
 			}
@@ -245,7 +245,7 @@ namespace LaserGRBL.GrblEmulator
 
 						EmuLog(line.Trim("\n".ToCharArray()));
 					}
-					catch (Exception ex)
+					catch (Exception)
 					{
 					}
 				}
@@ -280,7 +280,7 @@ namespace LaserGRBL.GrblEmulator
 						string line = txBuf.Dequeue();
 						mSendFunc(line);
 					}
-					catch (Exception ex)
+					catch (Exception)
 					{
 					}
 				}

@@ -76,7 +76,7 @@ namespace LaserGRBL
 
 				ActionResult( String.Format(Strings.BoxReadConfigSuccess, mLocalCopy.Count));
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				Cursor = DefaultCursor;
 				ActionResult(Strings.BoxReadConfigError);
@@ -117,7 +117,7 @@ namespace LaserGRBL
 				Cursor = DefaultCursor;
 				System.Windows.Forms.MessageBox.Show(String.Format(import ? Strings.BoxImportConfigWithError : Strings.BoxWriteConfigWithError, conf.Count, ex.Errors.Count) + "\n" + ex.Message, Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				Cursor = DefaultCursor;
 				System.Windows.Forms.MessageBox.Show(String.Format(import ? Strings.BoxImportConfigWithError : Strings.BoxWriteConfigWithError, conf.Count, "unknown"), Strings.BoxExportConfigErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);

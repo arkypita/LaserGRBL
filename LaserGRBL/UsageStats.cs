@@ -100,7 +100,7 @@ namespace LaserGRBL
                     if (TrueSend())
                         LastSent = DateTime.UtcNow;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             }

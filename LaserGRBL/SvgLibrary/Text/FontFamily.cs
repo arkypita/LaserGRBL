@@ -132,8 +132,7 @@ namespace Svg.Text
                 return new FontFamily(FontName, FontSubFamily, fontFilePath);
             }
         }
-
-        [CLSCompliant(false)]
+        
         public struct TT_OFFSET_TABLE
         {
             public ushort uMajorVersion;
@@ -143,8 +142,7 @@ namespace Svg.Text
             public ushort uEntrySelector;
             public ushort uRangeShift;
         }
-
-        [CLSCompliant(false)]
+        
         public struct TT_TABLE_DIRECTORY
         {
             public byte[] szTag;
@@ -156,16 +154,14 @@ namespace Svg.Text
                 szTag = new byte[4];
             }
         }
-
-        [CLSCompliant(false)]
+        
         public struct TT_NAME_TABLE_HEADER
         {
             public ushort uFSelector;
             public ushort uNRCount;
             public ushort uStorageOffset;
         }
-
-        [CLSCompliant(false)]
+        
         public struct TT_NAME_RECORD
         {
             public ushort uPlatformID;

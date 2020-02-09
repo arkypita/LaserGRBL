@@ -273,7 +273,7 @@ namespace LaserGRBL.UserControls.NumericInput
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 this.UpdateStatus();
             }
