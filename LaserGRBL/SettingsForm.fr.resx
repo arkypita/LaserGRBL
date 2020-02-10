@@ -121,7 +121,7 @@
     <value>Tête</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Paramétres</value>
+    <value>Paramètres</value>
   </data>
   <data name="CBSupportPWM.Text" xml:space="preserve">
     <value>Mode PWM</value>

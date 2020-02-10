@@ -217,7 +217,7 @@ namespace LaserGRBL
 
 		private TimeProjection mTP = new TimeProjection();
 
-		private MacStatus mMachineStatus;
+		protected MacStatus mMachineStatus;
 		private static int BUFFER_SIZE = 127;
 
 		private float mCurF;
@@ -240,7 +240,7 @@ namespace LaserGRBL
 
 		private long connectStart;
 
-		private Tools.ElapsedFromEvent debugLastStatusDelay;
+		protected Tools.ElapsedFromEvent debugLastStatusDelay;
 		private Tools.ElapsedFromEvent debugLastMoveDelay;
 
 		private ThreadingMode mThreadingMode = ThreadingMode.UltraFast;
@@ -334,7 +334,7 @@ namespace LaserGRBL
 			}
 		}
 
-		private void SetStatus(MacStatus value)
+		protected void SetStatus(MacStatus value)
 		{
 			if (mMachineStatus != value)
 			{
@@ -557,7 +557,7 @@ namespace LaserGRBL
 			}
 		}
 
-		public void RefreshConfig()
+		public virtual void RefreshConfig()
 		{
 			if (mMachineStatus == MacStatus.Idle)
 			{
@@ -960,7 +960,9 @@ namespace LaserGRBL
 		public void SafetyDoor()
 		{ SendImmediate(64); }
 
-		private void QueryPosition()
+		// GRBL & smoothie : Send "?" to retrieve position
+		// MarlinCore : Override : Send "M114\n"
+		protected virtual void QueryPosition()
 		{ SendImmediate(63, true); }
 
 		public void GrblReset() //da comando manuale esterno (pulsante)
@@ -1397,7 +1399,7 @@ namespace LaserGRBL
 						{
 							if (rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error"))
 								ManageCommandResponse(rline);
-							else if (rline.StartsWith("<") && rline.EndsWith(">"))
+							else if ((rline.StartsWith("<") && rline.EndsWith(">")) || (rline.StartsWith("X:") && Type == Firmware.Marlin))
 								ManageRealTimeStatus(rline);
 							else if (rline.StartsWith("Grbl "))
 								ManageVersionInfo(rline);
@@ -1479,7 +1481,7 @@ namespace LaserGRBL
 				return new GrblVersionInfo(0, 9);
 		}
 
-		private void ManageRealTimeStatus(string rline)
+		protected virtual void ManageRealTimeStatus(string rline)
 		{
 			try
 			{
@@ -1606,7 +1608,7 @@ namespace LaserGRBL
 			mCurS = s;
 		}
 
-		private void SetMPosition(GPoint pos)
+		protected void SetMPosition(GPoint pos)
 		{
 			if (pos != mMPos)
 			{
@@ -1655,7 +1657,7 @@ namespace LaserGRBL
 			}
 		}
 
-		private static char[] trimarray = new char[] { '\r', '\n', ' ' };
+		protected static char[] trimarray = new char[] { '\r', '\n', ' ' };
 		private string WaitComLineOrDisconnect()
 		{
 			try
@@ -1665,8 +1667,9 @@ namespace LaserGRBL
 				rv = rv.Trim(); //rimuovi spazi iniziali e finali
 				return rv.Length > 0 ? rv : null;
 			}
-			catch
+			catch (Exception ex)
 			{
+				//Logger.LogMessage("WaitComLineOrDisconnect", "Ex on [{0}] message", ex);
 				try { CloseCom(false); }
 				catch { }
 				return null;
@@ -1770,7 +1773,7 @@ namespace LaserGRBL
 			set { mTarOvPower = value; }
 		}
 
-		private void ParseMachineStatus(string data)
+		protected virtual void ParseMachineStatus(string data)
 		{
 			MacStatus var = MacStatus.Disconnected;
 
@@ -1889,7 +1892,7 @@ namespace LaserGRBL
 				NowCooling = ((ProgramTime.Ticks % (AutoCoolingOn + AutoCoolingOff).Ticks) > AutoCoolingOn.Ticks);
 		}
 
-		private bool mHoldByUserRequest = false;
+		protected bool mHoldByUserRequest = false;
 		private bool mNowCooling = false;
 		private bool NowCooling
 		{

@@ -14,11 +14,12 @@ namespace LaserGRBL
         public override Firmware Type
         { get { return Firmware.Marlin; } }
 
-        //protected override void InitializeBoard()
-        //{
-        //    SendImmediate(10); //send a new line
-        //    base.InitializeBoard();
-        //}
+        // Send "M114\n" to retrieve position
+        // Typical response : "X:10.00 Y:0.00 Z:0.00 E:0.00 Count X:1600 Y:0 Z:0"
+        protected override void QueryPosition()
+        {
+            com.Write("M114\n");
+        }
 
         //protected override void ParseF(string p)
         //{
@@ -27,14 +28,69 @@ namespace LaserGRBL
         //    SetFS(ParseFloat(fs[0]), ParseFloat(fs[1]));
         //}
 
-        //public override bool SupportTrueJogging => false;
+        public override StreamingMode CurrentStreamingMode => StreamingMode.Synchronous;
+        public override bool UIShowGrblConfig => false;
+        public override bool UIShowUnlockButtons => false;
+        public override bool SupportTrueJogging => false;
+        internal override void SendUnlockCommand() { } //do nothing (should not be called because UI does not show unlock button)
+        protected override void SendBoardResetCommand() { }
 
-        //public override StreamingMode CurrentStreamingMode => StreamingMode.Synchronous;
+        protected override void ParseMachineStatus(string data)
+        {
+            MacStatus var = MacStatus.Disconnected;
 
-        //protected override void SendBoardResetCommand()
-        //{
-        //    com.Write("reset\r\n"); //is it possible to write directly without push into queue??? please verify!!
-        //}
+            if (data.Contains("ok"))
+                var = MacStatus.Idle;
+
+            //try { var = (MacStatus)Enum.Parse(typeof(MacStatus), data); }
+            //catch (Exception ex) { Logger.LogException("ParseMachineStatus", ex); }
+
+            if (InProgram && var == MacStatus.Idle) //bugfix for grbl sending Idle on G4
+                var = MacStatus.Run;
+
+            if (var == MacStatus.Hold && !mHoldByUserRequest)
+                var = MacStatus.Cooling;
+
+            SetStatus(var);
+        }
+
+        public override void RefreshConfig()
+        {
+
+        }
+
+        protected override void ManageRealTimeStatus(string rline)
+        {
+            try
+            {
+                debugLastStatusDelay.Start();
+
+                // Remove EOL
+                rline = rline.Trim(trimarray);
+
+                // Marlin M114 response : 
+                // X:10.00 Y:0.00 Z:0.00 E:0.00 Count X:1600 Y:0 Z:0
+                // Split by space
+                string[] arr = rline.Split(" ".ToCharArray());
+
+                if (arr.Length > 0)
+                {
+                    // Force update of status 
+                    ParseMachineStatus("ok");
+
+                    // Retrieve position from data send by marlin
+                    float x = float.Parse(arr[0].Split(":".ToCharArray())[1], System.Globalization.NumberFormatInfo.InvariantInfo);
+                    float y = float.Parse(arr[1].Split(":".ToCharArray())[1], System.Globalization.NumberFormatInfo.InvariantInfo);
+                    float z = float.Parse(arr[2].Split(":".ToCharArray())[1], System.Globalization.NumberFormatInfo.InvariantInfo);
+                    SetMPosition(new GPoint(x, y, z));
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMessage("ManageRealTimeStatus", "Ex on [{0}] message", rline);
+                Logger.LogException("ManageRealTimeStatus", ex);
+            }
+        }
 
         ////public override void SendImmediate(byte b, bool mute = false)
         ////{

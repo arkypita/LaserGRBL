@@ -38,7 +38,7 @@ namespace LaserGRBL
 			Core = core;
 			Preview.SetComProgram(core);
 
-            BtnUnlock.Visible = Core.Type != Firmware.Smoothie;
+            BtnUnlock.Visible = Core.Type == Firmware.Grbl;
 
             RefreshCustomButtons();
 			TimerUpdate();

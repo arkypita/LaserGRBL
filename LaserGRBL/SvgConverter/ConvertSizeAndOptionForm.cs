@@ -50,9 +50,17 @@ namespace LaserGRBL.SvgConverter
 			LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
 			AssignMinMaxLimit();
 
-			CBLaserON.Items.Add("M3");
-			if (core.Configuration.LaserMode)
-				CBLaserON.Items.Add("M4");
+			if (core.Type != Firmware.Marlin)
+			{
+				CBLaserON.Items.Add("M3");
+				if (core.Configuration.LaserMode)
+					CBLaserON.Items.Add("M4");
+			}
+			else
+			{
+				CBLaserON.Items.Add("M106 P1");
+				CBLaserOFF.Items.Add("M107 P1");
+			}
 		}
 
 		private void AssignMinMaxLimit()
