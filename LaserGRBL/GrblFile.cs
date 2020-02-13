@@ -137,13 +137,13 @@ namespace LaserGRBL
 			// Format laser power value
 			// grbl                    with pwm : color can be between 0 and configured SMax - S128
 			// smoothiware             with pwm : Value between 0.00 and 1.00    - S0.50
-			// Marlin : Laser power can not be defined as switch
+			// Marlin : Laser power can not be defined as switch (Add in comment hard coded changes)
 			public string FormatLaserPower(int color, L2LConf c)
 			{
 				if (c.firmwareType == Firmware.Smoothie)
 					return string.Format(System.Globalization.CultureInfo.InvariantCulture, "S{0:0.00}", color / 255.0); //maybe scaling to UI maxpower VS config maxpower instead of fixed / 255.0 ?
-				else if (c.firmwareType == Firmware.Marlin)
-					return "";
+				//else if (c.firmwareType == Firmware.Marlin)
+				//	return "";
 				else
 					return string.Format(System.Globalization.CultureInfo.InvariantCulture, "S{0}", color);
 			}
@@ -268,7 +268,9 @@ namespace LaserGRBL
 								list.Add(new GrblCommand(String.Format("{0} S255", c.lOff))); //laser off and power to max power
 
 							//set speed to markspeed
-							list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
+							// For marlin, need to specify G1 each time :
+							// list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
+							list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
 
 							c.vectorfilling = true;
 							ImageLine2Line(resampled, c);
@@ -287,7 +289,9 @@ namespace LaserGRBL
 			//laser off and power to maxPower
 			list.Add(new GrblCommand(String.Format("{0} S{1}", c.lOff, c.maxPower)));
 			//set speed to borderspeed
-			list.Add(new GrblCommand(String.Format("G1 F{0}", c.borderSpeed)));
+			// For marlin, need to specify G1 each time :
+			//list.Add(new GrblCommand(String.Format("G1 F{0}", c.borderSpeed)));
+			list.Add(new GrblCommand(String.Format("F{0}", c.borderSpeed)));
 
 			//trace borders
 			List<string> gc = Potrace.Export2GCode(plist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size);
@@ -359,7 +363,9 @@ namespace LaserGRBL
 				list.Add(new GrblCommand(String.Format("{0} S255", c.lOff))); //laser off and power to maxpower
 
 			//set speed to markspeed						
-			list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
+			// For marlin, need to specify G1 each time :
+			//list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
+			list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
 
 			ImageLine2Line(bmp, c);
 
@@ -375,7 +381,8 @@ namespace LaserGRBL
 			RiseOnFileLoaded(filename, elapsed);
 		}
 
-		private int lastColorSend = 0;
+		// For Marlin, as we sen M106 command, we need to know last color send
+		//private int lastColorSend = 0;
 		private void ImageLine2Line(Bitmap bmp, L2LConf c)
 		{
 			bool fast = true;
@@ -401,21 +408,23 @@ namespace LaserGRBL
 
 				// For marlin firmware, we must defined laser power before moving (unsing M106 or M107)
 				// So we have to speficy gcode (G0 or G1) each time....
-				if (c.firmwareType == Firmware.Marlin)
-				{
-					// Add M106 only if color has changed
-					if (lastColorSend != seg.mColor)
-						temp.Add(new GrblCommand(String.Format("M106 P1 S{0}", fast ? 0 : seg.mColor)));
-					lastColorSend = seg.mColor;
+				//if (c.firmwareType == Firmware.Marlin)
+				//{
+				//	// Add M106 only if color has changed
+				//	if (lastColorSend != seg.mColor)
+				//		temp.Add(new GrblCommand(String.Format("M106 P1 S{0}", fast ? 0 : seg.mColor)));
+				//	lastColorSend = seg.mColor;
+				//	temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? "G0" : "G1", seg.ToGCodeNumber(ref cumX, ref cumY, c))));
+				//}
+				//else
+				//{
+
+				if (changeGMode)
 					temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? "G0" : "G1", seg.ToGCodeNumber(ref cumX, ref cumY, c))));
-				}
 				else
-				{
-					if (changeGMode)
-						temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? "G0" : "G1", seg.ToGCodeNumber(ref cumX, ref cumY, c))));
-					else
-						temp.Add(new GrblCommand(seg.ToGCodeNumber(ref cumX, ref cumY, c)));
-				}
+					temp.Add(new GrblCommand(seg.ToGCodeNumber(ref cumX, ref cumY, c)));
+
+				//}
 
 			}
 

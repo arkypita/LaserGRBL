@@ -215,7 +215,7 @@ namespace LaserGRBL
 		private int mGrblBuffer = -1;
 		private JogDirection mPrenotedJogDirection = JogDirection.None;
 
-		private TimeProjection mTP = new TimeProjection();
+		protected TimeProjection mTP = new TimeProjection();
 
 		protected MacStatus mMachineStatus;
 		private static int BUFFER_SIZE = 127;
@@ -233,7 +233,7 @@ namespace LaserGRBL
 
 		private decimal mLoopCount = 1;
 
-		private Tools.PeriodicEventTimer QueryTimer;
+		protected Tools.PeriodicEventTimer QueryTimer;
 
 		private Tools.ThreadObject TX;
 		private Tools.ThreadObject RX;
@@ -241,7 +241,7 @@ namespace LaserGRBL
 		private long connectStart;
 
 		protected Tools.ElapsedFromEvent debugLastStatusDelay;
-		private Tools.ElapsedFromEvent debugLastMoveDelay;
+		protected Tools.ElapsedFromEvent debugLastMoveDelay;
 
 		private ThreadingMode mThreadingMode = ThreadingMode.UltraFast;
 		private HotKeysManager mHotKeyManager;
@@ -381,7 +381,7 @@ namespace LaserGRBL
 			}
 		}
 
-		private void SetIssue(DetectedIssue issue)
+		protected void SetIssue(DetectedIssue issue)
 		{
 			mTP.JobIssue(issue);
 			Logger.LogMessage("Issue detector", "{0} [{1},{2},{3}]", issue, FreeBuffer, GrblBuffer, GrblBlock);
@@ -1275,7 +1275,8 @@ namespace LaserGRBL
 			}
 		}
 
-		private void DetectHang()
+		// Override by Marlin
+		protected virtual void DetectHang()
 		{
 			if (mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
 			{
@@ -1399,7 +1400,7 @@ namespace LaserGRBL
 						{
 							if (rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error"))
 								ManageCommandResponse(rline);
-							else if ((rline.StartsWith("<") && rline.EndsWith(">")) || (rline.StartsWith("X:") && Type == Firmware.Marlin))
+							else if (DetectRealTimeStatus(rline))
 								ManageRealTimeStatus(rline);
 							else if (rline.StartsWith("Grbl "))
 								ManageVersionInfo(rline);
@@ -1413,6 +1414,13 @@ namespace LaserGRBL
 			}
 			catch (Exception ex)
 			{ Logger.LogException("ThreadRX", ex); }
+		}
+
+		// Return true if message received start with < and finish by >
+		// Overrided by Marlin
+		protected virtual bool DetectRealTimeStatus(string rline)
+		{
+			return rline.StartsWith("<") && rline.EndsWith(">");
 		}
 
 		private void ManageGenericMessage(string rline)
@@ -1667,9 +1675,8 @@ namespace LaserGRBL
 				rv = rv.Trim(); //rimuovi spazi iniziali e finali
 				return rv.Length > 0 ? rv : null;
 			}
-			catch (Exception ex)
+			catch
 			{
-				//Logger.LogMessage("WaitComLineOrDisconnect", "Ex on [{0}] message", ex);
 				try { CloseCom(false); }
 				catch { }
 				return null;

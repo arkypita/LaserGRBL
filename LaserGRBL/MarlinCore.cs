@@ -18,7 +18,8 @@ namespace LaserGRBL
         // Typical response : "X:10.00 Y:0.00 Z:0.00 E:0.00 Count X:1600 Y:0 Z:0"
         protected override void QueryPosition()
         {
-            com.Write("M114\n");
+            if (MachineStatus != MacStatus.Run)
+                com.Write("M114\n");
         }
 
         //protected override void ParseF(string p)
@@ -91,19 +92,31 @@ namespace LaserGRBL
                 Logger.LogException("ManageRealTimeStatus", ex);
             }
         }
+        protected override void DetectHang()
+        {
+            if (mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
+            {
+                // Marlin does not answer to immediate command
+                // So we can not rise an issue if there is too many time before last call of ManageRealTimeStatus
+                // We rise the issue if the last response from the board was too long
 
-        ////public override void SendImmediate(byte b, bool mute = false)
-        ////{
-        ////    try
-        ////    {
-        ////        if (!mute) Logger.LogMessage("SendImmediate", "Send Immediate Command [0x{0:X}]", b);
+                // Original line :
+                //bool noQueryResponse = debugLastMoveDelay.ElapsedTime > TimeSpan.FromTicks(QueryTimer.Period.Ticks * 10) && debugLastStatusDelay.ElapsedTime > TimeSpan.FromSeconds(5);
+                // Marlin version :
+                bool noQueryResponse = debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(10) && debugLastMoveDelay.ElapsedTime > TimeSpan.FromTicks(QueryTimer.Period.Ticks * 10) && debugLastStatusDelay.ElapsedTime > TimeSpan.FromSeconds(5);
 
-        ////        lock (this)
-        ////        { if (com.IsOpen) com.Write(new byte[] { b, 10 }); }
-        ////    }
-        ////    catch (Exception ex)
-        ////    { Logger.LogException("SendImmediate", ex); }
-        ////}
+                if (noQueryResponse)
+                    SetIssue(DetectedIssue.StopResponding);
+
+            }
+        }
+
+        // Return true if message received start with X:
+        protected override bool DetectRealTimeStatus(string rline)
+        {
+            return rline.StartsWith("X:");
+        }
+
     }
 
 }
