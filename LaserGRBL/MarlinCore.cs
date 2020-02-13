@@ -117,6 +117,13 @@ namespace LaserGRBL
             return rline.StartsWith("X:");
         }
 
+        // LaserGRBL don't ask status to marlin during code execution because there is no immediate command
+        // So LaserGRBL has to force the status at the end of programm execution
+        protected override void ForceStatusIdle ()
+        {
+            SetStatus(MacStatus.Idle);
+        }
+
     }
 
 }

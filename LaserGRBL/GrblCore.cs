@@ -1799,6 +1799,8 @@ namespace LaserGRBL
 			SetStatus(var);
 		}
 
+		// Used by Marlin to update status to Idle (As Marlin has no immediate message)
+		protected virtual void ForceStatusIdle() {}
 		private void OnProgramEnd()
 		{
 			if (mTP.JobEnd() && mLoopCount > 1 && mMachineStatus != MacStatus.Check)
@@ -1816,6 +1818,8 @@ namespace LaserGRBL
 
 				Logger.LogMessage("EnqueueProgram", "Push Footer");
 				ExecuteCustombutton((string)Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
+
+				ForceStatusIdle();
 			}
 		}
 
