@@ -112,7 +112,7 @@ namespace LaserGRBL
         }
 
         // Return true if message received start with X:
-        protected override bool DetectRealTimeStatus(string rline)
+        protected override bool IsRealtimeStatusMessage(string rline)
         {
             return rline.StartsWith("X:");
         }

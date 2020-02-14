@@ -217,7 +217,7 @@ namespace LaserGRBL
 
 		protected TimeProjection mTP = new TimeProjection();
 
-		protected MacStatus mMachineStatus;
+		private MacStatus mMachineStatus;
 		private static int BUFFER_SIZE = 127;
 
 		private float mCurF;
@@ -1397,17 +1397,17 @@ namespace LaserGRBL
 					if (rline.Length > 0)
 					{
 						lock (this)
-						{
-							if (rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error"))
-								ManageCommandResponse(rline);
-							else if (DetectRealTimeStatus(rline))
-								ManageRealTimeStatus(rline);
-							else if (rline.StartsWith("Grbl "))
-								ManageVersionInfo(rline);
-							else
-								ManageGenericMessage(rline);
-						}
-					}
+                        {
+                            if (IsCommandReplyMessage(rline))
+                                ManageCommandResponse(rline);
+                            else if (IsRealtimeStatusMessage(rline))
+                                ManageRealTimeStatus(rline);
+                            else if (IsWelcomeMessage(rline))
+                                ManageWelcomeMessage(rline);
+                            else
+                                ManageGenericMessage(rline);
+                        }
+                    }
 				}
 
 				RX.SleepTime = HasIncomingData() ? CurrentThreadingMode.RxShort : CurrentThreadingMode.RxLong;
@@ -1416,9 +1416,19 @@ namespace LaserGRBL
 			{ Logger.LogException("ThreadRX", ex); }
 		}
 
-		// Return true if message received start with < and finish by >
-		// Overrided by Marlin
-		protected virtual bool DetectRealTimeStatus(string rline)
+        private bool IsCommandReplyMessage(string rline)
+        {
+            return rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error");
+        }
+
+        private bool IsWelcomeMessage(string rline)
+        {
+            return rline.StartsWith("Grbl ");
+        }
+
+        // Return true if message received start with < and finish by >
+        // Overrided by Marlin
+        protected virtual bool IsRealtimeStatusMessage(string rline)
 		{
 			return rline.StartsWith("<") && rline.EndsWith(">");
 		}
@@ -1433,7 +1443,7 @@ namespace LaserGRBL
 			}
 		}
 
-		private void ManageVersionInfo(string rline)
+		private void ManageWelcomeMessage(string rline)
 		{
 			//Grbl vX.Xx ['$' for help]
 			try
