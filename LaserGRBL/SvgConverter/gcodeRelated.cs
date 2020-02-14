@@ -44,7 +44,8 @@ namespace LaserGRBL.SvgConverter
 
 		//private static bool gcodeSpindleToggle = true; // Switch on/off spindle for Pen down/up (M3/M5)
 		private static float gcodeSpindleSpeed = 999; // Spindle speed to apply
-		private static string gcodeSpindleCmd = "M3"; // Spindle Command M3 / M4
+		private static string gcodeSpindleCmdOn = "M3"; // Spindle Command M3 / M4
+		private static string gcodeSpindleCmdOff = "M4"; // Spindle Command M3 / M4
 
 		private static bool gcodeCompress = true;      // reduce code by avoiding sending again same G-Nr and unchanged coordinates
 													   //public static bool gcodeRelative = false;      // calculate relative coordinates for G91
@@ -65,7 +66,8 @@ namespace LaserGRBL.SvgConverter
 			// Smoothieware firmware need a value between 0.0 and 1.1
 			if (firmwareType == Firmware.Smoothie)
 				gcodeSpindleSpeed /= 255.0f;
-			gcodeSpindleCmd = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
+			gcodeSpindleCmdOn = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
+			gcodeSpindleCmdOff = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
 
 			lastMovewasG0 = true;
 			lastx = -1; lasty = -1; lastz = 0; lasts = -1 ; lastg = -1;
@@ -140,13 +142,13 @@ namespace LaserGRBL.SvgConverter
 		public static void SpindleOn(StringBuilder gcodeString, string cmt = "")
 		{
 			if (cmt.Length > 0) cmt = string.Format("({0})", cmt);
-			gcodeString.AppendFormat("{0} S{1} {2}\r\n", gcodeSpindleCmd, gcodeSpindleSpeed, cmt);
+			gcodeString.AppendFormat("{0} S{1} {2}\r\n", gcodeSpindleCmdOn, gcodeSpindleSpeed, cmt);
 		}
 
 		public static void SpindleOff(StringBuilder gcodeString, string cmt = "")
 		{
 			if (cmt.Length > 0) cmt = string.Format("({0})", cmt);
-			gcodeString.AppendFormat("M{0} {1}\r\n", frmtCode(5), cmt);
+			gcodeString.AppendFormat("{0} {1}\r\n", gcodeSpindleCmdOff, cmt);
 		}
 
 		public static void PenDown(StringBuilder gcodeString, string cmto = "")
@@ -462,6 +464,8 @@ namespace LaserGRBL.SvgConverter
 			{
 				if (((gnr > 0) || (lastx != x) || (lasty != y) || (lastz != tz)))  // else nothing to do
 				{
+					// For Marlin, we must change this line to :
+					// if (lastg != gnr || firmwareType == Firmware.Marlin) { gcodeTmp.AppendFormat("G{0}", frmtCode(gnr)); isneeded = true; }
 					if (lastg != gnr) { gcodeTmp.AppendFormat("G{0}", frmtCode(gnr)); isneeded = true; }
 
 					if (lastx != x) { gcodeTmp.AppendFormat("X{0}", frmtNum(x)); isneeded = true; }
