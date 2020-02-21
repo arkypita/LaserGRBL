@@ -94,7 +94,7 @@ namespace LaserGRBL.GrblEmulator
 
 		public void ManageMessage(byte[] data)
 		{
-			if (data.Length == 1)
+			if (data.Length == 1 && data[0] != '\n')
 			{
 				if (data[0] == 24)
 					GrblReset();
