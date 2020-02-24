@@ -11,7 +11,7 @@ namespace LaserGRBL
 {
 	public partial class FlashGrbl : Form
 	{
-		private const string SELECT = "--- add custom firmware ---";
+		private const string SELECT = "--- select custom firmware ---";
 
 		public int retval = int.MinValue;
 		private object[] baudRates = { 4800, 9600, 19200, 38400, 57600, 115200, 230400, 460800, 921600 };
@@ -23,7 +23,7 @@ namespace LaserGRBL
 			InitCbBaudRate();
 			InitPortCB();
 
-			BtnOK.Enabled = CbFirmware.SelectedIndex >= 0 && CbTarget.SelectedIndex >= 0;
+			UpdateBtnOK();
 		}
 
 		private void InitCbBaudRate()
@@ -145,7 +145,7 @@ namespace LaserGRBL
 			else if (CbTarget.SelectedIndex == 1)
 				CbBaudRate.SelectedItem = 57600;
 
-			BtnOK.Enabled = CbFirmware.SelectedIndex >= 0 && CbTarget.SelectedIndex >= 0;
+			UpdateBtnOK();
 		}
 
 		private void BtnTarget_Click(object sender, EventArgs e)
@@ -162,46 +162,41 @@ namespace LaserGRBL
 		{
 			if ((CbFirmware.SelectedItem as string) == SELECT)
 			{
-				CbFirmware.SelectedIndexChanged -= CbFirmware_SelectedIndexChanged;
-				int index = -1;
-				using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
+				using (OpenFileDialog ofd = new OpenFileDialog())
 				{
 					ofd.FileName = null;
 					ofd.Filter = "Precompiled .hex firmware|*.hex";
 					ofd.CheckFileExists = true;
 					ofd.Multiselect = false;
 					ofd.RestoreDirectory = true;
-					if (ofd.ShowDialog() == DialogResult.OK)
-					{
-						try
-						{
-							string src = ofd.FileName;
-							string dst = $".\\Firmware\\{System.IO.Path.GetFileName(ofd.FileName)}";
-							bool confirm = !System.IO.File.Exists(dst) || MessageBox.Show("A firmware file with this name already exists.\r\nOverwrite?", "Confirm overwrite", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK;
-							if (confirm)
-							{
-								System.IO.File.Copy(src, dst, true);
 
-								InitCBFirmware();
-
-								foreach (object o in CbFirmware.Items)
-								{
-									if (o is Firmware)
-									{
-										if (System.IO.Path.GetFileName((o as Firmware).path).ToLower() == System.IO.Path.GetFileName(dst).ToLower())
-											index = CbFirmware.Items.IndexOf(o);
-									}
-								}
-							}
-						}
-						catch { }
-					}
+					if (ofd.ShowDialog() == DialogResult.OK && System.IO.File.Exists(ofd.FileName))
+						CbFirmware.SelectedIndex = AddOrSelect(ofd.FileName);
+					else
+						CbFirmware.SelectedIndex = -1;
 				}
-				CbFirmware.SelectedIndex = index;
-				CbFirmware.SelectedIndexChanged += CbFirmware_SelectedIndexChanged;
 			}
 
-			BtnOK.Enabled = CbFirmware.SelectedIndex >= 0 && CbTarget.SelectedIndex >= 0;
+			UpdateBtnOK();
+		}
+
+		private int AddOrSelect(string path)
+		{
+			for (int i = 0; i < CbFirmware.Items.Count; i++)
+				if (CbFirmware.Items[i] is Firmware && ((Firmware)CbFirmware.Items[i]).path.ToLower() == path.ToLower())
+					return i;
+
+			return CbFirmware.Items.Add(new Firmware(path));
+		}
+
+		private void UpdateBtnOK()
+		{
+			BtnOK.Enabled = CbPort.Text.Trim().Length > 0 && CbFirmware.SelectedIndex >= 0 && CbTarget.SelectedIndex >= 0;
+		}
+
+		private void CbPort_TextChanged(object sender, EventArgs e)
+		{
+			UpdateBtnOK();
 		}
 	}
 }

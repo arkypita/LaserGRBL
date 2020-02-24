@@ -163,7 +163,7 @@
 			this.LblWarning.Size = new System.Drawing.Size(255, 26);
 			this.LblWarning.TabIndex = 3;
 			this.LblWarning.Text = "Warning! This operation can damage your hardware.\r\nThe operation can be irreversi" +
-    "ble: use at your risk.";
+	"ble: use at your risk.";
 			// 
 			// pictureBox1
 			// 
@@ -214,8 +214,8 @@
 			this.CbTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbTarget.FormattingEnabled = true;
 			this.CbTarget.Items.AddRange(new object[] {
-            "Arduino Uno",
-            "Arduino Nano"});
+			"Arduino Uno",
+			"Arduino Nano"});
 			this.CbTarget.Location = new System.Drawing.Point(70, 3);
 			this.CbTarget.Name = "CbTarget";
 			this.CbTarget.Size = new System.Drawing.Size(209, 21);
@@ -269,6 +269,7 @@
 			this.CbPort.Name = "CbPort";
 			this.CbPort.Size = new System.Drawing.Size(115, 21);
 			this.CbPort.TabIndex = 2;
+			this.CbPort.TextChanged += new System.EventHandler(this.CbPort_TextChanged);
 			// 
 			// LblSpeed
 			// 
@@ -302,7 +303,7 @@
 			this.BtnTarget.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.BtnTarget.TabIndex = 23;
 			this.TT.SetToolTip(this.BtnTarget, "Select exact kind of arduino board you want to upgrade.\r\nClick here for more info" +
-        "...");
+		"...");
 			this.BtnTarget.UseAltImage = false;
 			this.BtnTarget.Click += new System.EventHandler(this.BtnTarget_Click);
 			// 
@@ -319,7 +320,7 @@
 			this.BtnFirmware.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.BtnFirmware.TabIndex = 24;
 			this.TT.SetToolTip(this.BtnFirmware, "Select the firmware you want to flash on your board\r\nClick here if you need more " +
-        "info about available versions...");
+		"info about available versions...");
 			this.BtnFirmware.UseAltImage = false;
 			this.BtnFirmware.Click += new System.EventHandler(this.BtnFirmware_Click);
 			// 
