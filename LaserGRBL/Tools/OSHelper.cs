@@ -45,7 +45,7 @@ namespace Tools
 			string rv;
 	
 			if (OSVersionInfo.ServicePack != string.Empty)
-				rv = $"{OSVersionInfo.Name}|{OSVersionInfo.Edition}|{OSVersionInfo.VersionString}|SP{OSVersionInfo.ServicePack}";
+				rv = $"{OSVersionInfo.Name}|{OSVersionInfo.Edition}|{OSVersionInfo.VersionString}|{OSVersionInfo.ServicePack}";
 			else
 				rv = $"{OSVersionInfo.Name}|{OSVersionInfo.Edition}|{OSVersionInfo.VersionString}";
 
@@ -516,6 +516,9 @@ namespace Tools
 										break;
 									case PRODUCT_WEB_SERVER_CORE:
 										edition = "Web Server (core installation)";
+										break;
+									default:
+										edition = ed.ToString();
 										break;
 								}
 							}
