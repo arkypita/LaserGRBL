@@ -27,14 +27,15 @@ namespace LaserGRBL
             SetFS(ParseFloat(fs[0]), ParseFloat(fs[1]));
         }
 
-        public override bool SupportTrueJogging => false;
-
         public override StreamingMode CurrentStreamingMode => StreamingMode.Synchronous;
 
-        protected override void SendBoardResetCommand()
-        {
-            com.Write("reset\r\n"); //is it possible to write directly without push into queue??? please verify!!
-        }
+        public override bool UIShowGrblConfig => false;
+        public override bool UIShowUnlockButtons => false;
+
+        public override bool SupportTrueJogging => false;
+
+        internal override void SendUnlockCommand() { } //do nothing (should not be called because UI does not show unlock button)
+        protected override void SendBoardResetCommand() { com.Write("reset\r\n"); } //is it possible to write directly without push into queue??? please verify!!
 
         //public override void SendImmediate(byte b, bool mute = false)
         //{

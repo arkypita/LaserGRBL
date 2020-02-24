@@ -35,6 +35,9 @@ namespace LaserGRBL.ComWrapper
 					com.DtrEnable = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
 					com.RtsEnable = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
 
+					if ((Firmware) Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin)
+						com.DtrEnable = true;
+
 					ComLogger.Log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
 					Logger.LogMessage("OpenCom", "Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString());
 

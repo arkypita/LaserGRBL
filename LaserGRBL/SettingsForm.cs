@@ -81,6 +81,7 @@ namespace LaserGRBL
             CBCore.BeginUpdate();
             CBCore.Items.Add(Firmware.Grbl);
             CBCore.Items.Add(Firmware.Smoothie);
+            CBCore.Items.Add(Firmware.Marlin);
             CBCore.EndUpdate();
         }
 
@@ -144,8 +145,7 @@ namespace LaserGRBL
 
 			Settings.Save();
 
-            if (SettingsChanged != null)
-                SettingsChanged(this, null);
+            SettingsChanged?.Invoke(this, null);
 
             Close();
 
