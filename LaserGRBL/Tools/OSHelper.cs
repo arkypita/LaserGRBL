@@ -45,9 +45,9 @@ namespace Tools
 			string rv;
 	
 			if (OSVersionInfo.ServicePack != string.Empty)
-				rv = $"{OSVersionInfo.Name} {OSVersionInfo.Edition} SP{OSVersionInfo.ServicePack} {OSVersionInfo.VersionString}";
+				rv = $"{OSVersionInfo.Name}|{OSVersionInfo.Edition}|{OSVersionInfo.VersionString}|SP{OSVersionInfo.ServicePack}";
 			else
-				rv = $"{OSVersionInfo.Name} {OSVersionInfo.Edition} {OSVersionInfo.VersionString}";
+				rv = $"{OSVersionInfo.Name}|{OSVersionInfo.Edition}|{OSVersionInfo.VersionString}";
 
 			return rv;
 		}
