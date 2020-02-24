@@ -43,11 +43,15 @@ namespace Tools
 		public static string GetOSInfo()
 		{
 			string rv;
-	
-			if (OSVersionInfo.ServicePack != string.Empty)
-				rv = $"{OSVersionInfo.Name}|{OSVersionInfo.Edition}|{OSVersionInfo.VersionString}|{OSVersionInfo.ServicePack}";
-			else
-				rv = $"{OSVersionInfo.Name}|{OSVersionInfo.Edition}|{OSVersionInfo.VersionString}";
+
+			try
+			{
+				if (OSVersionInfo.ServicePack != string.Empty)
+					rv = $"{OSVersionInfo.Name}|{OSVersionInfo.Edition}|{OSVersionInfo.VersionString}|{OSVersionInfo.ServicePack}";
+				else
+					rv = $"{OSVersionInfo.Name}|{OSVersionInfo.Edition}|{OSVersionInfo.VersionString}";
+			}
+			catch { rv = ""; }
 
 			return rv;
 		}
@@ -56,12 +60,16 @@ namespace Tools
 		{
 			byte rv = 0;
 
-			if (OSVersionInfo.ProgramBits == OSVersionInfo.SoftwareArchitecture.Bit64)
-				rv = SetBit(rv, 0);
-			if (OSVersionInfo.OSBits == OSVersionInfo.SoftwareArchitecture.Bit64)
-				rv = SetBit(rv, 1);
-			if (OSVersionInfo.ProcessorBits == OSVersionInfo.ProcessorArchitecture.Bit64 || OSVersionInfo.ProcessorBits == OSVersionInfo.ProcessorArchitecture.Itanium64)
-				rv = SetBit(rv, 2);
+			try
+			{
+				if (OSVersionInfo.ProgramBits == OSVersionInfo.SoftwareArchitecture.Bit64)
+					rv = SetBit(rv, 0);
+				if (OSVersionInfo.OSBits == OSVersionInfo.SoftwareArchitecture.Bit64)
+					rv = SetBit(rv, 1);
+				if (OSVersionInfo.ProcessorBits == OSVersionInfo.ProcessorArchitecture.Bit64 || OSVersionInfo.ProcessorBits == OSVersionInfo.ProcessorArchitecture.Itanium64)
+					rv = SetBit(rv, 2);
+			}
+			catch { rv = 99; }
 
 			return rv;
 		}
@@ -108,23 +116,25 @@ namespace Tools
 				{
 					SoftwareArchitecture pbits = SoftwareArchitecture.Unknown;
 
-					System.Collections.IDictionary test = Environment.GetEnvironmentVariables();
-
-					switch (IntPtr.Size * 8)
+					try
 					{
-						case 64:
-							pbits = SoftwareArchitecture.Bit64;
-							break;
 
-						case 32:
-							pbits = SoftwareArchitecture.Bit32;
-							break;
+						switch (IntPtr.Size * 8)
+						{
+							case 64:
+								pbits = SoftwareArchitecture.Bit64;
+								break;
 
-						default:
-							pbits = SoftwareArchitecture.Unknown;
-							break;
+							case 32:
+								pbits = SoftwareArchitecture.Bit32;
+								break;
+
+							default:
+								pbits = SoftwareArchitecture.Unknown;
+								break;
+						}
 					}
-
+					catch { }
 					return pbits;
 				}
 			}
@@ -134,24 +144,27 @@ namespace Tools
 				get
 				{
 					SoftwareArchitecture osbits = SoftwareArchitecture.Unknown;
-
-					switch (IntPtr.Size * 8)
+					try
 					{
-						case 64:
-							osbits = SoftwareArchitecture.Bit64;
-							break;
-
-						case 32:
-							if (Is32BitProcessOn64BitProcessor())
+						switch (IntPtr.Size * 8)
+						{
+							case 64:
 								osbits = SoftwareArchitecture.Bit64;
-							else
-								osbits = SoftwareArchitecture.Bit32;
-							break;
+								break;
 
-						default:
-							osbits = SoftwareArchitecture.Unknown;
-							break;
+							case 32:
+								if (Is32BitProcessOn64BitProcessor())
+									osbits = SoftwareArchitecture.Bit64;
+								else
+									osbits = SoftwareArchitecture.Bit32;
+								break;
+
+							default:
+								osbits = SoftwareArchitecture.Unknown;
+								break;
+						}
 					}
+					catch { }
 
 					return osbits;
 				}
@@ -187,11 +200,7 @@ namespace Tools
 								break;
 						}
 					}
-					catch
-					{
-						// Ignore        
-					}
-
+					catch { }
 					return pbits;
 				}
 			}
@@ -209,124 +218,129 @@ namespace Tools
 					if (s_Edition != null)
 						return s_Edition;  //***** RETURN *****//
 
-					string edition = String.Empty;
-
-					OperatingSystem osVersion = Environment.OSVersion;
-					OSVERSIONINFOEX osVersionInfo = new OSVERSIONINFOEX();
-					osVersionInfo.dwOSVersionInfoSize = Marshal.SizeOf(typeof(OSVERSIONINFOEX));
-
-					if (GetVersionEx(ref osVersionInfo))
+					try
 					{
-						int majorVersion = osVersion.Version.Major;
-						int minorVersion = osVersion.Version.Minor;
-						byte productType = osVersionInfo.wProductType;
-						short suiteMask = osVersionInfo.wSuiteMask;
 
-						#region VERSION 4
-						if (majorVersion == 4)
-						{
-							if (productType == VER_NT_WORKSTATION)
-							{
-								// Windows NT 4.0 Workstation
-								edition = "Workstation";
-							}
-							else if (productType == VER_NT_SERVER)
-							{
-								if ((suiteMask & VER_SUITE_ENTERPRISE) != 0)
-								{
-									// Windows NT 4.0 Server Enterprise
-									edition = "Enterprise Server";
-								}
-								else
-								{
-									// Windows NT 4.0 Server
-									edition = "Standard Server";
-								}
-							}
-						}
-						#endregion VERSION 4
+						string edition = String.Empty;
 
-						#region VERSION 5
-						else if (majorVersion == 5)
+						OperatingSystem osVersion = Environment.OSVersion;
+						OSVERSIONINFOEX osVersionInfo = new OSVERSIONINFOEX();
+						osVersionInfo.dwOSVersionInfoSize = Marshal.SizeOf(typeof(OSVERSIONINFOEX));
+
+						if (GetVersionEx(ref osVersionInfo))
 						{
-							if (productType == VER_NT_WORKSTATION)
+							int majorVersion = osVersion.Version.Major;
+							int minorVersion = osVersion.Version.Minor;
+							byte productType = osVersionInfo.wProductType;
+							short suiteMask = osVersionInfo.wSuiteMask;
+
+							#region VERSION 4
+							if (majorVersion == 4)
 							{
-								if ((suiteMask & VER_SUITE_PERSONAL) != 0)
+								if (productType == VER_NT_WORKSTATION)
 								{
-									edition = "Home";
+									// Windows NT 4.0 Workstation
+									edition = "Workstation";
 								}
-								else
+								else if (productType == VER_NT_SERVER)
 								{
-									if (GetSystemMetrics(86) == 0) // 86 == SM_TABLETPC
-										edition = "Professional";
-									else
-										edition = "Tablet Edition";
-								}
-							}
-							else if (productType == VER_NT_SERVER)
-							{
-								if (minorVersion == 0)
-								{
-									if ((suiteMask & VER_SUITE_DATACENTER) != 0)
+									if ((suiteMask & VER_SUITE_ENTERPRISE) != 0)
 									{
-										// Windows 2000 Datacenter Server
-										edition = "Datacenter Server";
-									}
-									else if ((suiteMask & VER_SUITE_ENTERPRISE) != 0)
-									{
-										// Windows 2000 Advanced Server
-										edition = "Advanced Server";
+										// Windows NT 4.0 Server Enterprise
+										edition = "Enterprise Server";
 									}
 									else
 									{
-										// Windows 2000 Server
-										edition = "Server";
+										// Windows NT 4.0 Server
+										edition = "Standard Server";
 									}
 								}
-								else
+							}
+							#endregion VERSION 4
+
+							#region VERSION 5
+							else if (majorVersion == 5)
+							{
+								if (productType == VER_NT_WORKSTATION)
 								{
-									if ((suiteMask & VER_SUITE_DATACENTER) != 0)
+									if ((suiteMask & VER_SUITE_PERSONAL) != 0)
 									{
-										// Windows Server 2003 Datacenter Edition
-										edition = "Datacenter";
-									}
-									else if ((suiteMask & VER_SUITE_ENTERPRISE) != 0)
-									{
-										// Windows Server 2003 Enterprise Edition
-										edition = "Enterprise";
-									}
-									else if ((suiteMask & VER_SUITE_BLADE) != 0)
-									{
-										// Windows Server 2003 Web Edition
-										edition = "Web Edition";
+										edition = "Home";
 									}
 									else
 									{
-										// Windows Server 2003 Standard Edition
-										edition = "Standard";
+										if (GetSystemMetrics(86) == 0) // 86 == SM_TABLETPC
+											edition = "Professional";
+										else
+											edition = "Tablet Edition";
+									}
+								}
+								else if (productType == VER_NT_SERVER)
+								{
+									if (minorVersion == 0)
+									{
+										if ((suiteMask & VER_SUITE_DATACENTER) != 0)
+										{
+											// Windows 2000 Datacenter Server
+											edition = "Datacenter Server";
+										}
+										else if ((suiteMask & VER_SUITE_ENTERPRISE) != 0)
+										{
+											// Windows 2000 Advanced Server
+											edition = "Advanced Server";
+										}
+										else
+										{
+											// Windows 2000 Server
+											edition = "Server";
+										}
+									}
+									else
+									{
+										if ((suiteMask & VER_SUITE_DATACENTER) != 0)
+										{
+											// Windows Server 2003 Datacenter Edition
+											edition = "Datacenter";
+										}
+										else if ((suiteMask & VER_SUITE_ENTERPRISE) != 0)
+										{
+											// Windows Server 2003 Enterprise Edition
+											edition = "Enterprise";
+										}
+										else if ((suiteMask & VER_SUITE_BLADE) != 0)
+										{
+											// Windows Server 2003 Web Edition
+											edition = "Web Edition";
+										}
+										else
+										{
+											// Windows Server 2003 Standard Edition
+											edition = "Standard";
+										}
 									}
 								}
 							}
-						}
-						#endregion VERSION 5
+							#endregion VERSION 5
 
-						#region VERSION 6
-						else if (majorVersion == 6)
-						{
-							int ed;
-							if (GetProductInfo(majorVersion, minorVersion, osVersionInfo.wServicePackMajor, osVersionInfo.wServicePackMinor, out ed))
+							#region VERSION 6
+							else if (majorVersion == 6)
 							{
-								if (pdic.ContainsKey(ed))
-									edition = pdic[ed];
-								else
-									edition = ed.ToString();
+								int ed;
+								if (GetProductInfo(majorVersion, minorVersion, osVersionInfo.wServicePackMajor, osVersionInfo.wServicePackMinor, out ed))
+								{
+									if (pdic.ContainsKey(ed))
+										edition = pdic[ed];
+									else
+										edition = ed.ToString();
+								}
 							}
+							#endregion VERSION 6
 						}
-						#endregion VERSION 6
+
+						s_Edition = edition;
 					}
-
-					s_Edition = edition;
-					return edition;
+					catch { }
+					return s_Edition;
 				}
 			}
 			#endregion EDITION
@@ -342,182 +356,185 @@ namespace Tools
 				{
 					if (s_Name != null)
 						return s_Name;  //***** RETURN *****//
-
-					string name = "unknown";
-
-					OperatingSystem osVersion = Environment.OSVersion;
-					OSVERSIONINFOEX osVersionInfo = new OSVERSIONINFOEX();
-					osVersionInfo.dwOSVersionInfoSize = Marshal.SizeOf(typeof(OSVERSIONINFOEX));
-
-					if (GetVersionEx(ref osVersionInfo))
+					try
 					{
-						int majorVersion = osVersion.Version.Major;
-						int minorVersion = osVersion.Version.Minor;
+						string name = "unknown";
 
-						if (majorVersion == 6 && minorVersion == 2)
+						OperatingSystem osVersion = Environment.OSVersion;
+						OSVERSIONINFOEX osVersionInfo = new OSVERSIONINFOEX();
+						osVersionInfo.dwOSVersionInfoSize = Marshal.SizeOf(typeof(OSVERSIONINFOEX));
+
+						if (GetVersionEx(ref osVersionInfo))
 						{
-							//The registry read workaround is by Scott Vickery. Thanks a lot for the help!
+							int majorVersion = osVersion.Version.Major;
+							int minorVersion = osVersion.Version.Minor;
 
-							//http://msdn.microsoft.com/en-us/library/windows/desktop/ms724832(v=vs.85).aspx
-
-							// For applications that have been manifested for Windows 8.1 & Windows 10. Applications not manifested for 8.1 or 10 will return the Windows 8 OS version value (6.2). 
-							// By reading the registry, we'll get the exact version - meaning we can even compare against  Win 8 and Win 8.1.
-							string exactVersion = RegistryRead(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentVersion", "");
-							if (!string.IsNullOrEmpty(exactVersion))
+							if (majorVersion == 6 && minorVersion == 2)
 							{
-								string[] splitResult = exactVersion.Split('.');
-								majorVersion = Convert.ToInt32(splitResult[0]);
-								minorVersion = Convert.ToInt32(splitResult[1]);
-							}
-							if (IsWindows10())
-							{
-								majorVersion = 10;
-								minorVersion = 0;
-							}
-						}
+								//The registry read workaround is by Scott Vickery. Thanks a lot for the help!
 
-						switch (osVersion.Platform)
-						{
-							case PlatformID.Win32S:
-								name = "Win 3.1";
-								break;
-							case PlatformID.WinCE:
-								name = "Win CE";
-								break;
-							case PlatformID.Win32Windows:
+								//http://msdn.microsoft.com/en-us/library/windows/desktop/ms724832(v=vs.85).aspx
+
+								// For applications that have been manifested for Windows 8.1 & Windows 10. Applications not manifested for 8.1 or 10 will return the Windows 8 OS version value (6.2). 
+								// By reading the registry, we'll get the exact version - meaning we can even compare against  Win 8 and Win 8.1.
+								string exactVersion = RegistryRead(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentVersion", "");
+								if (!string.IsNullOrEmpty(exactVersion))
 								{
-									if (majorVersion == 4)
+									string[] splitResult = exactVersion.Split('.');
+									majorVersion = Convert.ToInt32(splitResult[0]);
+									minorVersion = Convert.ToInt32(splitResult[1]);
+								}
+								if (IsWindows10())
+								{
+									majorVersion = 10;
+									minorVersion = 0;
+								}
+							}
+
+							switch (osVersion.Platform)
+							{
+								case PlatformID.Win32S:
+									name = "Win 3.1";
+									break;
+								case PlatformID.WinCE:
+									name = "Win CE";
+									break;
+								case PlatformID.Win32Windows:
 									{
-										string csdVersion = osVersionInfo.szCSDVersion;
-										switch (minorVersion)
+										if (majorVersion == 4)
 										{
-											case 0:
-												if (csdVersion == "B" || csdVersion == "C")
-													name = "Win 95 OSR2";
-												else
-													name = "Win 95";
+											string csdVersion = osVersionInfo.szCSDVersion;
+											switch (minorVersion)
+											{
+												case 0:
+													if (csdVersion == "B" || csdVersion == "C")
+														name = "Win 95 OSR2";
+													else
+														name = "Win 95";
+													break;
+												case 10:
+													if (csdVersion == "A")
+														name = "Win 98 SE";
+													else
+														name = "Win 98";
+													break;
+												case 90:
+													name = "Win Me";
+													break;
+											}
+										}
+										break;
+									}
+								case PlatformID.Win32NT:
+									{
+										byte productType = osVersionInfo.wProductType;
+
+										switch (majorVersion)
+										{
+											case 3:
+												name = "Win NT 3.51";
+												break;
+											case 4:
+												switch (productType)
+												{
+													case 1:
+														name = "Win NT 4.0";
+														break;
+													case 3:
+														name = "Win NT 4.0 Server";
+														break;
+												}
+												break;
+											case 5:
+												switch (minorVersion)
+												{
+													case 0:
+														name = "Win 2000";
+														break;
+													case 1:
+														name = "Win XP";
+														break;
+													case 2:
+														name = "Win Server 2003";
+														break;
+												}
+												break;
+											case 6:
+												switch (minorVersion)
+												{
+													case 0:
+														switch (productType)
+														{
+															case 1:
+																name = "Win Vista";
+																break;
+															case 3:
+																name = "Win Server 2008";
+																break;
+														}
+														break;
+
+													case 1:
+														switch (productType)
+														{
+															case 1:
+																name = "Win 7";
+																break;
+															case 3:
+																name = "Win Server 2008 R2";
+																break;
+														}
+														break;
+													case 2:
+														switch (productType)
+														{
+															case 1:
+																name = "Win 8";
+																break;
+															case 3:
+																name = "Win Server 2012";
+																break;
+														}
+														break;
+													case 3:
+														switch (productType)
+														{
+															case 1:
+																name = "Win 8.1";
+																break;
+															case 3:
+																name = "Win Server 2012 R2";
+																break;
+														}
+														break;
+												}
 												break;
 											case 10:
-												if (csdVersion == "A")
-													name = "Win 98 SE";
-												else
-													name = "Win 98";
-												break;
-											case 90:
-												name = "Win Me";
+												switch (minorVersion)
+												{
+													case 0:
+														switch (productType)
+														{
+															case 1:
+																name = "Win 10";
+																break;
+															case 3:
+																name = "Win Server 2016";
+																break;
+														}
+														break;
+												}
 												break;
 										}
+										break;
 									}
-									break;
-								}
-							case PlatformID.Win32NT:
-								{
-									byte productType = osVersionInfo.wProductType;
-
-									switch (majorVersion)
-									{
-										case 3:
-											name = "Win NT 3.51";
-											break;
-										case 4:
-											switch (productType)
-											{
-												case 1:
-													name = "Win NT 4.0";
-													break;
-												case 3:
-													name = "Win NT 4.0 Server";
-													break;
-											}
-											break;
-										case 5:
-											switch (minorVersion)
-											{
-												case 0:
-													name = "Win 2000";
-													break;
-												case 1:
-													name = "Win XP";
-													break;
-												case 2:
-													name = "Win Server 2003";
-													break;
-											}
-											break;
-										case 6:
-											switch (minorVersion)
-											{
-												case 0:
-													switch (productType)
-													{
-														case 1:
-															name = "Win Vista";
-															break;
-														case 3:
-															name = "Win Server 2008";
-															break;
-													}
-													break;
-
-												case 1:
-													switch (productType)
-													{
-														case 1:
-															name = "Win 7";
-															break;
-														case 3:
-															name = "Win Server 2008 R2";
-															break;
-													}
-													break;
-												case 2:
-													switch (productType)
-													{
-														case 1:
-															name = "Win 8";
-															break;
-														case 3:
-															name = "Win Server 2012";
-															break;
-													}
-													break;
-												case 3:
-													switch (productType)
-													{
-														case 1:
-															name = "Win 8.1";
-															break;
-														case 3:
-															name = "Win Server 2012 R2";
-															break;
-													}
-													break;
-											}
-											break;
-										case 10:
-											switch (minorVersion)
-											{
-												case 0:
-													switch (productType)
-													{
-														case 1:
-															name = "Win 10";
-															break;
-														case 3:
-															name = "Win Server 2016";
-															break;
-													}
-													break;
-											}
-											break;
-									}
-									break;
-								}
+							}
 						}
-					}
 
-					s_Name = name;
-					return name;
+						s_Name = name;
+					}
+					catch { }
+					return s_Name;
 				}
 			}
 			#endregion NAME
@@ -740,17 +757,21 @@ namespace Tools
 			{
 				get
 				{
-					string servicePack = String.Empty;
-					OSVERSIONINFOEX osVersionInfo = new OSVERSIONINFOEX();
-
-					osVersionInfo.dwOSVersionInfoSize = Marshal.SizeOf(typeof(OSVERSIONINFOEX));
-
-					if (GetVersionEx(ref osVersionInfo))
+					try
 					{
-						servicePack = osVersionInfo.szCSDVersion;
-					}
+						string servicePack = String.Empty;
+						OSVERSIONINFOEX osVersionInfo = new OSVERSIONINFOEX();
 
-					return servicePack;
+						osVersionInfo.dwOSVersionInfoSize = Marshal.SizeOf(typeof(OSVERSIONINFOEX));
+
+						if (GetVersionEx(ref osVersionInfo))
+						{
+							servicePack = osVersionInfo.szCSDVersion;
+						}
+
+						return servicePack;
+					}
+					catch { return ""; }
 				}
 			}
 			#endregion SERVICE PACK
@@ -778,7 +799,11 @@ namespace Tools
 			{
 				get
 				{
-					return Version.ToString();
+					try
+					{
+						return Version.ToString();
+					}
+					catch { return ""; }
 				}
 			}
 			#endregion STRING
