@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="LblFilename.Text" xml:space="preserve">
     <value>Fájlnév</value>
@@ -124,10 +124,10 @@
     <value>Folyamat</value>
   </data>
   <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Fájl megnyitása</value>
+    <value>Fájl Megnyitása</value>
   </data>
   <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Program futtatása</value>
+    <value>Program Futtatása</value>
   </data>
   <data name="UDLoopCounter.ToolTip" xml:space="preserve">
     <value>Műveletek száma</value>
@@ -152,5 +152,8 @@
   </data>
   <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
     <value>Csatlakozás</value>
+  </data>
+  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
+    <value>Írjon ide GCode parancsot</value>
   </data>
 </root>

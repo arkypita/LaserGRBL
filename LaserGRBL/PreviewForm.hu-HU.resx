@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnReset.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -164,7 +164,7 @@
         akcvvKkZO/e2fLzwXeZE1Ps1k0unGFPDHy5OH5hZN6s+O/ix+lM5ln9hvygYog7cKG4cy9VhJfx/R3RU
         Ant+pUGNZ0iMz1r0KYn1orE8D6wXlkfbcnAALkShLQ5Y4IqOVs7tWcCe/yYCOOgThP2s4H+PCXAc63eh
         wbz7H/fmhWwT9IwO3NjkuIiwcB7LDnXzISwHbnRsAi8kTpflEsPW12UZGRoaAwD8C6JOktGJ7q1EAAAA
-        CXBIWXMAAAsSAAALEgHS3X78AAALeklEQVRoQ7VZCViVZRr9WS7IdmUVAUsz0UpcptJGSS2ryV0fm9TG
+        CXBIWXMAAAsRAAALEQF/ZF+RAAALeklEQVRoQ7VZCViVZRr9WS7IdmUVAUsz0UpcptJGSS2ryV0fm9TG
         NB/bS7NSk3KZcBt1nClARcll3Al3BNkucFlkUwQBw0oUKhu30kmnUtEz57v/xS6Xl4nKzvOc53Lf+9/v
         P+d/3/dbLhqAFlHCo6EGA9b6zUCU7/LrH/hENmJUQOT16LZk4Lzr0W3+Vh8duIZcTcZaGBUQWx8TFFu/
         JjS2Pq5LbP3Gh1YgZ1h6ytQ7XlZjSxokikGJEkZ00Xoj+RHA/BaQ/ipgegPIepvv3wEKFgKH/gmURgNl
@@ -272,7 +272,7 @@
   <data name="BtnHoming.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAABGvSURBVGhDtVkJXFTl+h7cKrPb
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxEAAAsRAX9kX5EAABGvSURBVGhDtVkJXFTl+h7cKrPb
         /ectu5my7wi4gJBXBcuSlpuWdjGtXLLUIL2SZgkKpCJalhkq7nuiFgiIayr7Nuy77MMIDJssgrvP/32/
         mTOMCt3wdvn9Xs43Z86ceZ7vfb7nfb8zMmN9A3UYGslMKIwNDMVRGkuvHzzf7TUUhkOGymwsrWUj7OzF
         a1NDI73uPvvgWGD5nbGpkbEI6Zz6DQ46oXsjaay9wQPnu7rGiO7DgM1NTGUu412fmTHjgxGmxiZ9+H36
@@ -354,7 +354,7 @@
   <data name="BtnZeroing.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAxBSURBVGhDvZkJdFTVGcdJyAIE
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAxBSURBVGhDvZkJdFTVGcdJyAIE
         kEWggkAVWSooHglrAJEEk8wSQmBmEjJZ2ALZiC1oCCAgiVBRaiUIGJBz8JyCsgehsWAAG6WiFi2aCFIo
         0KDIIqiASIDp73vcN52ZvEmiPaf/c34n8757373/77777rvvpdHP1WXbyE5gBhsMghBVpKm6ujpA/fz/
         yOVyualLGA2HcrgNLp1LjqiLF52moqMvFraqqKhocvjwYb8JUBZ48ODB0AMHDoTu378/tKysrMHJevr0
@@ -413,7 +413,7 @@
   <data name="BtnResume.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAA//SURBVGhD1VlpdBXHla636D3t
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxEAAAsRAX9kX5EAAA//SURBVGhD1VlpdBXHla636D3t
         C6B9QRsSkhAgAU/7hoQWtABi1QIYYzYhgwCzhV0YxmAwYOfYJDmHcUJmHCZe4ywzjscxwfHx8SQTQuyx
         M7Zjk2FsJ15ix/GCu1p3vlvd771+D0EyTvIj75xPX99bVbe+W32ruhsEEf1dQ/2JcjmuQUSIXThsNnHz
         1GSxuzZLbCzPEIPlmWJt2XhxvC1f7JuZI3qmpIr9jXnivjlF4mRXUdnjKzzrnltfdfqNHY3//u7e5peu
@@ -587,7 +587,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEgAACxIB0t1+/AAADvVJREFUaEPVWmdYVNcW
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEQAACxEBf2RfkQAADvVJREFUaEPVWmdYVNcW
         HWxA4nsvYkKaBZQmzd41xvTee++9gd00o8bYUzSJNVHsMYkhMZYoitGoFI2YxJgYhaEzMDAMMJSZcb+1
         zr0XBgQF3q+3v29xz23nrLX3PvucO2oSkf9r/E/Wu337zlFeXpeGmUwXhwI89moAXjPAZ3gtum1bhSFt
         2lzezWRqr3fnpR+bba0X4OVlmt6ly2u2nj0L8kJCijN69rSc7N7dkhEYaMkKCrJk9uihAefmgACLGfeI
@@ -658,7 +658,7 @@
     <value>Felfüggeszt</value>
   </data>
   <data name="RemoveButton.Text" xml:space="preserve">
-    <value>Eltávolít gomb</value>
+    <value>Gomb eltávolítása</value>
   </data>
   <data name="exportCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
     <value>Egyéni gombok exportálása</value>
@@ -670,19 +670,19 @@
     <value>Grbl Reset (ctrl-x)</value>
   </data>
   <data name="BtnZeroing.ToolTip" xml:space="preserve">
-    <value>Set zero point (G92)</value>
+    <value>Null-pont beállítása (G92)</value>
   </data>
   <data name="BtnHoming.ToolTip" xml:space="preserve">
     <value>Homing ($H)</value>
   </data>
   <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Szerkeszt gomb</value>
+    <value>Gomb Szerkesztése</value>
   </data>
   <data name="addCustomButtonToolStripMenuItem.Text" xml:space="preserve">
     <value>Egyéni gomb hozzáadása</value>
   </data>
   <data name="BtnResume.ToolTip" xml:space="preserve">
-    <value>Visszatér</value>
+    <value>Folytatás</value>
   </data>
   <data name="importCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
     <value>Egyéni gombok importálása</value>

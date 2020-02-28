@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Mégsem</value>
@@ -239,7 +239,7 @@ Ha le van tiltva, akkor az összes problémát figyelmeztetés nélkül csendese
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>A LaserGRBL az energiamodulációt használja a G-kód "S parancs" segítségével szürkeárnyalatos tónusok előállításához.
-A lézerének támogatnia kell az arduino PIN D11-hez csatlakoztatott TTL vezérlést.
+A lézerének támogatnia kell az arduino D11-es kimenetéhez csatlakoztatott TTL vezérlést.
 Ha nem, kérjük, tiltsa le a PWM támogatást.</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
@@ -297,7 +297,7 @@ MEGJEGYZÉS: A "Folyamatos Mozgatás" csak a Grbl v1.1 vagy újabb verziókkal m
     <value>599, 13</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
-    <value>A LaserGRBL nem célja a Z tengely támogatása, de ha van 3 tengelyes hardvere, talán hasznosnak találhatja ezt a beállítást.</value>
+    <value>A LaserGRBL-nek nem célja a Z tengely támogatása, de ha van 3 tengelyes hardvere, talán hasznosnak találhatja ezt a beállítást.</value>
   </data>
   <data name="CbEnableZJog.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 17</value>
@@ -312,7 +312,7 @@ MEGJEGYZÉS: A "Folyamatos Mozgatás" csak a Grbl v1.1 vagy újabb verziókkal m
     <value>Folyamatos Mozgatás</value>
   </data>
   <data name="TpJogControl.Text" xml:space="preserve">
-    <value>Mozgatás kontrol</value>
+    <value>Mozgás Irányítás</value>
   </data>
   <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
     <value>222, 113</value>
@@ -331,7 +331,7 @@ MEGJEGYZÉS: A "Folyamatos Mozgatás" csak a Grbl v1.1 vagy újabb verziókkal m
   </data>
   <data name="label12.Text" xml:space="preserve">
     <value>Néhány lézerdióda nagyon felmelegszik, ha hosszú ideig a legnagyobb teljesítmény mellett működik. A dióda túlmelegedésének megakadályozása és a lézer élettartamának növelése érdekében hozzáadhat néhány automatikus lehűtési ciklust, amelyek néhány szünetet tartalmaznak a gravírozás során.
-Ha az automatikus hűtés engedélyezve van, a LaserGRBL automatikusan "feed hold" -ot és "job resume" -et küld az ON-OFF időzítés konfigurációjának megfelelően.</value>
+Ha az automatikus hűtés engedélyezve van, a LaserGRBL automatikusan "feed hold" -ot és "job resume" -ot küld az ON-OFF időzítés konfigurációjának megfelelően.</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
     <value>222, 76</value>
@@ -340,7 +340,7 @@ Ha az automatikus hűtés engedélyezve van, a LaserGRBL automatikusan "feed hol
     <value>382, 26</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>Idő BE: ez a maximális idő, ameddig a lézer bekapcsol a gravírozás során.
+    <value>Bekapcsolt idő: ez a maximális idő, ameddig a lézer bekapcsol a gravírozás során.
 Ez idő elteltével a LaserGRBL automatikus várakozást küld a lézer lehűléséhez.</value>
   </data>
   <data name="CbAutoCooling.Size" type="System.Drawing.Size, System.Drawing">
@@ -449,14 +449,55 @@ Ez idő elteltével a LaserGRBL automatikus várakozást küld a lézer lehűlé
     <value>559, 39</value>
   </data>
   <data name="label21.Text" xml:space="preserve">
-    <value>Figyelem: ez a szolgáltatás csak a&gt; v1.1 grbl verziók esetén működik, ha a „laser mode” engedélyezve van.
-Ha önhűtést használ egy régebbi grbl verzióval (vagy letiltott lézer üzemmóddal), a lézer szünetek alatt nem kapcsol ki
-és lyukakat éget a munkájában!</value>
+    <value>Figyelem: ez a szolgáltatás csak a grbl v1.1 vagy újabb verziók esetén működik, ha a „laser mode” engedélyezve van.
+Ha önhűtést használ egy régebbi grbl verzióval (vagy letiltott lézer üzemmóddal), a lézer szünetek alatt nem kapcsol ki és lyukakat éget a munkájában!</value>
   </data>
   <data name="TpAutoCooling.Text" xml:space="preserve">
     <value>Automata hűtés</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Beállítások</value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>Soft Reset [Ctrl-X]</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>Hard Reset [DTR+RTS]</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>másodperc</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>másoperc</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBL beszúrja az alábbi GCode-ot minden mukna megkezdése elé
+Szerkesztheti ezt a kódot, például beírhatja az M8 parancsot a ventillátor bekapcsolásához
+
+Itt ugyanazt a szintaxist használhatja, mint az egyéni gomboknál, ha valamiféle pozíció-beállítást szeretne beszúrni a munka megkezdése előtt</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Fejléc</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Lábléc</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Többszöri végrehajtás</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBL hozzáfűzi ezt a kódrészt bármely munka végéhez.
+Használható pélául, hogy a gravírozót visszaküldje egy kezdő pozícióba, például a null-pontba, vagy elküldheti az M9 parancsot a ventillátor kikapcsolásához
+
+Itt ugyanazt a szintaxist használhatja, mint az egyéni gomboknál</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Amikor egy munkát többször hajt végre, a LaserGRBL beszúrja az alábbi kódot minden végrehajtás közé
+Használható a Z tengely lefelé mozgatására, mélyebb vágás érdekében
+
+Itt ugyanazt a szintaxist használhatja, mint az egyéni gomboknál</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>GCode</value>
   </data>
 </root>
