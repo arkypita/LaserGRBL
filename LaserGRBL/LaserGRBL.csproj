@@ -117,7 +117,7 @@
     <Compile Include="Firmware\FlashGrbl.Designer.cs">
       <DependentUpon>FlashGrbl.cs</DependentUpon>
     </Compile>
-	<Compile Include="MarlinCore.cs" />
+    <Compile Include="MarlinCore.cs" />
     <Compile Include="SmoothieCore.cs" />
     <Compile Include="SvgConverter\ConvertSizeAndOptionForm.cs">
       <SubType>Form</SubType>
@@ -359,7 +359,7 @@
     <Compile Include="SvgLibrary\Transforms\SvgTransformConverter.cs" />
     <Compile Include="SvgLibrary\Transforms\SvgTranslate.cs" />
     <Compile Include="SvgLibrary\Web\SvgHandler.cs" />
-	<Compile Include="Tools\OSHelper.cs" />
+    <Compile Include="Tools\OSHelper.cs" />
     <Compile Include="UrlManager.cs" />
     <Compile Include="ColorScheme.cs" />
     <Compile Include="ComWrapper\Emulator.cs" />
