@@ -53,6 +53,19 @@ namespace LaserGRBL.SvgConverter
 			CBLaserON.Items.Add("M3");
 			if (core.Configuration.LaserMode)
 				CBLaserON.Items.Add("M4");
+
+			// For Marlin, we must change LaserOn & Laser Off command :
+			//if (core.Type != Firmware.Marlin)
+			//{
+			//	CBLaserON.Items.Add("M3");
+			//	if (core.Configuration.LaserMode)
+			//		CBLaserON.Items.Add("M4");
+			//}
+			//else
+			//{
+			//	CBLaserON.Items.Add("M106 P1");
+			//	CBLaserOFF.Items.Add("M107 P1");
+			//}
 		}
 
 		private void AssignMinMaxLimit()

@@ -133,6 +133,8 @@ namespace LaserGRBL
                     { "fSvgFile", Counters.SvgFile.ToString() },
                     { "fCenterline", Counters.Centerline.ToString() },
                     { "firmware", Firmware.ToString() },
+                    { "osinfo", Tools.OSHelper.GetOSInfo() },
+                    { "bitflag", Tools.OSHelper.GetBitFlag().ToString() },
                 };
 
                 // client.UploadValues returns page's source as byte array (byte[]) so it must be transformed into a string
