@@ -372,7 +372,7 @@ E' possibile usare la stessa sintassi dei "custom button".</value>
     <value>Quando si eseguono passate multiple LaserGRBL inserisce questo codice tra una passata e l'altra.
 E' utile per esempio per affondare l'asse Z ed eseguire tagli più profondi.</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
     <value>GCode</value>
   </data>
 </root>

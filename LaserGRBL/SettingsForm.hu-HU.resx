@@ -497,7 +497,7 @@ Használható a Z tengely lefelé mozgatására, mélyebb vágás érdekében
 
 Itt ugyanazt a szintaxist használhatja, mint az egyéni gomboknál</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
     <value>GCode</value>
   </data>
 </root>

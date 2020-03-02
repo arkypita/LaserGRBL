@@ -20,13 +20,21 @@ namespace LaserGRBL
 			Core = core;
 			BackColor = ColorScheme.FormBackColor;
 			GB.ForeColor = ForeColor = ColorScheme.FormForeColor;
-			DGV.BackgroundColor = SystemColors.Control;
-			DGV.ForeColor = SystemColors.ControlText;
-			BtnRead.BackColor = BtnWrite.BackColor = BtnImport.BackColor = BtnExport.BackColor = BtnCancel.BackColor = ColorScheme.FormButtonsColor;
+            DGV.EnableHeadersVisualStyles = false;
+            DGV.BackgroundColor = ColorScheme.FormBackColor; //SystemColors.Control;
+            DGV.ForeColor = ColorScheme.FormForeColor; //SystemColors.ControlText;
+            DGV.DefaultCellStyle.BackColor = ColorScheme.FormBackColor;
+            DGV.ColumnHeadersDefaultCellStyle.BackColor = ColorScheme.FormBackColor;
+            DGV.ColumnHeadersDefaultCellStyle.ForeColor = ColorScheme.FormForeColor;
+            DGV.RowHeadersDefaultCellStyle.BackColor = ColorScheme.FormBackColor;
+            DGV.RowHeadersDefaultCellStyle.ForeColor = ColorScheme.FormForeColor;
+            DGV.Columns["Value"].DefaultCellStyle.ForeColor = ColorScheme.FormForeColor;
+            DGV.Columns["Value"].DefaultCellStyle.BackColor = ColorScheme.FormBackColor;
+            BtnRead.BackColor = BtnWrite.BackColor = BtnImport.BackColor = BtnExport.BackColor = BtnCancel.BackColor = ColorScheme.FormButtonsColor;
 
 			mLocalCopy = Core.Configuration.ToList();
 			DGV.DataSource = mLocalCopy;
-			Core.MachineStatusChanged += RefreshEnabledButtons;
+            Core.MachineStatusChanged += RefreshEnabledButtons;
 			
 			RefreshEnabledButtons();
 		}
