@@ -20,14 +20,21 @@ namespace LaserGRBL
 
 			BackColor = ColorScheme.FormBackColor;
 			GB.ForeColor = ForeColor = ColorScheme.FormForeColor;
-			DGV.BackgroundColor = SystemColors.Control;
-			DGV.ForeColor = SystemColors.ControlText;
-			BtnSave.BackColor = BtnCancel.BackColor = ColorScheme.FormButtonsColor;
+            GB.BackColor = ColorScheme.FormBackColor;
+            DGV.EnableHeadersVisualStyles = false;
+            DGV.BackgroundColor = ColorScheme.FormBackColor; //SystemColors.Control;
+			DGV.ForeColor = ColorScheme.FormForeColor; //SystemColors.ControlText;
+            DGV.DefaultCellStyle.BackColor = ColorScheme.FormBackColor;
+            DGV.ColumnHeadersDefaultCellStyle.BackColor = ColorScheme.FormBackColor;
+            DGV.ColumnHeadersDefaultCellStyle.ForeColor = ColorScheme.FormForeColor;
+            DGV.RowHeadersDefaultCellStyle.BackColor = ColorScheme.FormBackColor;
+            DGV.RowHeadersDefaultCellStyle.ForeColor = ColorScheme.FormForeColor;
+            BtnSave.BackColor = BtnCancel.BackColor = ColorScheme.FormButtonsColor;
 
 
 			mLocalList = core.HotKeys.GetEditList();
 			DGV.DataSource = mLocalList;
-			ComputeErrors();
+            ComputeErrors();
 		}
 
 		internal static void CreateAndShowDialog(GrblCore core)

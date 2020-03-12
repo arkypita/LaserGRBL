@@ -218,7 +218,7 @@ Baisser cette valeur si vous avez des problèmes.</value>
   <data name="label19.Text" xml:space="preserve">
     <value>sec</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
     <value>GCode</value>
   </data>
   <data name="CbEnableZJog.Text" xml:space="preserve">

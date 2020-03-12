@@ -115,7 +115,7 @@ namespace LaserGRBL
 					oncomplete(null, new System.ComponentModel.AsyncCompletedEventArgs(new InvalidOperationException("Download already in progress!"), true, null));
 				}
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				oncomplete(null, new System.ComponentModel.AsyncCompletedEventArgs(new InvalidOperationException("Error downloading!"), true, null));
 			}

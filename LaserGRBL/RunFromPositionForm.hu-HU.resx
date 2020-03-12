@@ -112,16 +112,16 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="PBWarn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAO6SURBVFhHxZbLT1NBFMbPQqNu
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAO6SURBVFhHxZbLT1NBFMbPQqNu
         lY3+B0aNUdfGFejeGBe4MhBcEhIeJTwC5VHe7zeFAqW2IiQsYAE0sbWViCRujAkxbmBh3AgqCbrQ6/dN
         esntZWhvjcXFL/feuTNzvjnnzJkRwzD+K9rGk0QqKyszoqKiQurq6mR2dvbU4OCga2BgoDIQCJxubm6W
         6upqqampkdraWsdIWVlZRpSWlkpVVZVMTEwU9PT07Hd3d+9PTk4Wud1uKSkpkeLiYvV0irS1tWVES0uL
@@ -163,6 +163,6 @@ mozgások kihagyásával. A LaserGRBL kiszámítja a pontos helyzetet és állap
     <value>OK</value>
   </data>
   <data name="CbRedoHoming.Text" xml:space="preserve">
-    <value>Do Homing [$H]</value>
+    <value>Homing beállítása [$H]</value>
   </data>
 </root>

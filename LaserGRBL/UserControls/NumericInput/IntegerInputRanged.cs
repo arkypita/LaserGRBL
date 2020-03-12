@@ -15,17 +15,17 @@ namespace LaserGRBL.UserControls.NumericInput
 		//Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
 		protected override void Dispose(bool disposing)
 		{
-			if (disposing) {
+			/*if (disposing) {
 				if ((components != null)) {
 					components.Dispose();
 				}
-			}
+			}*/
 			base.Dispose(disposing);
 		}
 
 		//Richiesto da Progettazione Windows Form
 
-		private System.ComponentModel.IContainer components;
+		//private IContainer components;
 		//NOTA: la procedura che segue è richiesta da Progettazione Windows Form
 		//Può essere modificata in Progettazione Windows Form.  
 		//Non modificarla nell'editor del codice.

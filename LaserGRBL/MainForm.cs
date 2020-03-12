@@ -69,6 +69,7 @@ namespace LaserGRBL
 			redLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.RedLaser;
 			darkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Dark;
 			hackerToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Hacker;
+            nightyToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Nighty;
 			ConnectionForm.OnColorChange();
 			PreviewForm.OnColorChange();
 			RefreshOverride();
@@ -463,7 +464,12 @@ namespace LaserGRBL
 			SetSchema(ColorScheme.Scheme.Hacker);
 		}
 
-		private void SetSchema(ColorScheme.Scheme schema)
+        private void nightyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetSchema(ColorScheme.Scheme.Nighty);
+        }
+
+        private void SetSchema(ColorScheme.Scheme schema)
 		{
 			Settings.SetObject("Color Schema", schema);
 			ColorScheme.CurrentScheme = schema;
@@ -593,10 +599,10 @@ namespace LaserGRBL
 				ComWrapper.ComLogger.FileName = null;
 			}
 		}
-	}
+    }
 
 
-	public class MMnRenderer : ToolStripProfessionalRenderer
+    public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 

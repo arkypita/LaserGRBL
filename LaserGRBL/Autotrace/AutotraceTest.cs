@@ -118,7 +118,7 @@ namespace LaserGRBL
 					svg.Draw(g);
 				}
 			}
-			catch(Exception ex)
+			catch(Exception)
 			{
 
 

@@ -425,7 +425,6 @@ namespace LaserGRBL
 					temp.Add(new GrblCommand(seg.ToGCodeNumber(ref cumX, ref cumY, c)));
 
 				//}
-
 			}
 
 			temp = OptimizeLine2Line(temp, c);

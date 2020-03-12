@@ -20,9 +20,9 @@ namespace LaserGRBL
 
             this.Core = core;
 
-            //BackColor = ColorScheme.FormBackColor;
-            //ForeColor = ColorScheme.FormForeColor;
-            //TpRasterImport.BackColor = TpHardware.BackColor = BtnCancel.BackColor = BtnSave.BackColor = ColorScheme.FormButtonsColor;
+            BackColor = ColorScheme.FormBackColor;
+            ForeColor = ColorScheme.FormForeColor;
+            TpRasterImport.BackColor = TpHardware.BackColor = TpJogControl.BackColor = TpAutoCooling.BackColor  = TpGCodeSettings.BackColor = BtnCancel.BackColor = BtnSave.BackColor = ColorScheme.FormBackColor;
 
             InitCoreCB();
 			InitProtocolCB();
@@ -43,10 +43,18 @@ namespace LaserGRBL
             CbEnableZJog.Checked = (bool)Settings.GetObject("Enale Z Jog Control", false);
 
 			TBHeader.Text = (string)Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER);
-			TBPasses.Text = (string)Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES);
-			TBFooter.Text = (string)Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER);
+            TBHeader.ForeColor = ColorScheme.FormForeColor;
+            TBHeader.BackColor = ColorScheme.FormBackColor;
+            TBPasses.Text = (string)Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES);
+            TBPasses.ForeColor = ColorScheme.FormForeColor;
+            TBPasses.BackColor = ColorScheme.FormBackColor;
+            TBFooter.Text = (string)Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER);
+            TBFooter.ForeColor = ColorScheme.FormForeColor;
+            TBFooter.BackColor = ColorScheme.FormBackColor;
 
-			InitAutoCoolingTab();
+            groupBox1.ForeColor = groupBox2.ForeColor = groupBox3.ForeColor = ColorScheme.FormForeColor;
+
+            InitAutoCoolingTab();
         }
 
 		private void InitAutoCoolingTab()

@@ -9,7 +9,7 @@ namespace LaserGRBL
 	class ColorScheme
 	{
 		public enum Scheme
-		{ BlueLaser, RedLaser, Dark, Hacker }
+		{ BlueLaser, RedLaser, Dark, Hacker, Nighty }
 
 		public static Dictionary<Scheme, Color[]> mData;
 
@@ -124,12 +124,41 @@ namespace LaserGRBL
 				Color.Red,					//response bad
 				Color.White,				//response others
 			});
-			
-			CurrentScheme = Scheme.RedLaser;
+            mData.Add(Scheme.Nighty, new Color[]
+            {
+                Color.FromArgb(25,25,25),	//form backcolor
+				Color.Aqua,			        //form forecolor
+
+				Color.FromArgb(25,25,25),   //preview background
+				Color.Aqua,		    		//preview text
+				Color.FromArgb(25,25,25),	//preview grid?
+				Color.DimGray,				//preview reference line
+				Color.DarkOrange,			//preview first line
+				Color.FromArgb(150,0,120),  //preview other line
+				Color.FromArgb(0,125,140),	//preview laser
+				Color.Pink,	                //preview cross position
+
+				Color.FromArgb(25,25,25),	//log background
+				Color.Aqua,		        	//command text
+				Color.FromArgb(220,30,220),	//startup
+				Color.FromArgb(0,127,139),	//alarm
+				Color.FromArgb(25,25,25),  	//config
+				Color.MediumVioletRed,		//feedback
+				Color.MediumPurple,			//position
+				Color.Purple,				//others
+				
+				Color.DarkGreen,			//response good
+				Color.Red,		    		//response bad
+				Color.LimeGreen,	    	//response others
+
+                Color.FromArgb(25,25,25),   //TextBox
+            });
+
+            CurrentScheme = Scheme.RedLaser;
 		}
 
 		public static bool DarkScheme
-		{ get { return CurrentScheme == Scheme.Dark || CurrentScheme == Scheme.Hacker; } }
+		{ get { return CurrentScheme == Scheme.Dark || CurrentScheme == Scheme.Hacker || CurrentScheme == Scheme.Nighty; } }
 
 		public static Scheme CurrentScheme { get; set; }
 
@@ -212,9 +241,11 @@ namespace LaserGRBL
 		{ get { return GetColor(19); } }
 		public static Color LogRightOTHERS
 		{ get { return GetColor(20); } }
-		
+        public static Color TextBoxColorOverride
+        { get { return GetColor(20); } }
 
-		private static Color GetColor(int index)
+
+        private static Color GetColor(int index)
 		{return mData[CurrentScheme][index];}
 
 		private static Color ChangeColorBrightness(Color color, float correctionFactor)

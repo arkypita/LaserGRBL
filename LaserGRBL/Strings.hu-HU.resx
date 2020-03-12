@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxAbortProgramConfirm" xml:space="preserve">
     <value>Megszakítja az aktuális munkát?</value>
@@ -177,7 +177,7 @@ Felül szeretné írni a konfigurációt?</value>
     <value>Hiba a fájl olvasása közben!</value>
   </data>
   <data name="BoxImportConfigWithError" xml:space="preserve">
-    <value>{0} konfiguráció importálása {1} hibával történt!</value>
+    <value>{0} konfiguráció importálása {1} hibával megtörtént!</value>
   </data>
   <data name="BoxImportConfigWithoutError" xml:space="preserve">
     <value>{0} konfiguráció sikeresen importálva!</value>
@@ -231,13 +231,13 @@ Felül szeretné írni a konfigurációt?</value>
     <value>A fájlátvitel folyamatban van. Megszakítja a kapcsolatot?</value>
   </data>
   <data name="ExitAnyway" xml:space="preserve">
-    <value>A fájlátvitel folyamatban van. Biztos, hogy kilépsz?</value>
+    <value>A fájlátvitel folyamatban van. Biztosan kilép?</value>
   </data>
   <data name="FirmwareRequireRestart" xml:space="preserve">
     <value>Újraindítás szükséges</value>
   </data>
   <data name="FirmwareRequireRestartNow" xml:space="preserve">
-    <value>Újraindítás szükséges a firmware-típusú változások végrehajtásához. Újraindítás most?</value>
+    <value>Újraindítás szükséges a firmware változások végrehajtásához. Újraindítás most?</value>
   </data>
   <data name="FormulaCustom" xml:space="preserve">
     <value>Egyedi</value>
@@ -267,7 +267,7 @@ Felül szeretné írni a konfigurációt?</value>
     <value>Riasztás</value>
   </data>
   <data name="MacStatusCheck" xml:space="preserve">
-    <value>Jelölje be</value>
+    <value>Ellenőrzés</value>
   </data>
   <data name="MacStatusConnecting" xml:space="preserve">
     <value>Csatlakozás</value>
@@ -276,10 +276,10 @@ Felül szeretné írni a konfigurációt?</value>
     <value>Lecsatlakozva</value>
   </data>
   <data name="MacStatusDoor" xml:space="preserve">
-    <value>Ajtó</value>
+    <value>Ajtó nyitva</value>
   </data>
   <data name="MacStatusHold" xml:space="preserve">
-    <value>Tartásban</value>
+    <value>Szünetel</value>
   </data>
   <data name="MacStatusHome" xml:space="preserve">
     <value>Home</value>
@@ -288,7 +288,7 @@ Felül szeretné írni a konfigurációt?</value>
     <value>Tétlen</value>
   </data>
   <data name="MacStatusJog" xml:space="preserve">
-    <value>Jog</value>
+    <value>Mozgásban</value>
   </data>
   <data name="MacStatusRun" xml:space="preserve">
     <value>Fut</value>
@@ -304,10 +304,25 @@ Felül szeretné írni a konfigurációt?</value>
   </data>
   <data name="ResumeJobHomingRequired" xml:space="preserve">
     <value>Úgy tűnik, hogy Grbl már nem ismeri a jelenlegi helyzetet.
-Home eljárás nélkül ($ H) az eredmény nem biztos, hogy megbízható.
-Mindenképp folytatni?</value>
+Home eljárás nélkül ($H) az eredmény nem biztos, hogy megbízható.
+Mindenképp folytatja?</value>
   </data>
   <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
-    <value>Ismeretlen helyzet</value>
+    <value>Ismeretlen pozíció</value>
+  </data>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>Kattintson ide jobb kattintással az egyedi gomb hozzáadásához</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>Csatlakozás</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>Lecsatlakozás</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>Sebesség:</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>Lépés:</value>
   </data>
 </root>

@@ -51,7 +51,11 @@ namespace LaserGRBL
 
 			public override bool Equals(object obj)
 			{ return obj != null && obj is ThreadingMode && ((ThreadingMode)obj).Name == Name; }
-		}
+            public override int GetHashCode()
+            {
+                return base.GetHashCode();
+            }
+        }
 
 		public enum DetectedIssue
 		{
@@ -209,6 +213,7 @@ namespace LaserGRBL
 		private System.Collections.Generic.List<IGrblRow> mSentPtr; //puntatore a lista di quelli mandati (normalmente punta a mSent, salvo per import/export configurazione)
 
 		private int mBuffer;
+        private int stuckBufferCounter = 0;
 		private GPoint mMPos;
 		private GPoint mWCO;
 		private int mGrblBlocks = -1;
@@ -1113,8 +1118,8 @@ namespace LaserGRBL
 		{
 			if (dir == JogDirection.Home)
 			{
-				EnqueueCommand(new GrblCommand(string.Format("G90")));
-				EnqueueCommand(new GrblCommand(string.Format("G0X0Y0F{0}", JogSpeed)));
+                EnqueueCommand(new GrblCommand(string.Format("G90")));
+                EnqueueCommand(new GrblCommand(string.Format("G0X0Y0Z0F{0}", JogSpeed)));
 			}
 			else
 			{
@@ -1153,7 +1158,7 @@ namespace LaserGRBL
                 mPrenotedJogDirection = JogDirection.None;
 
                 if (dir == JogDirection.Home)
-                    EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", JogSpeed)));
+                    EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0Z0F{0}", JogSpeed)));
                 else
                     EnqueueCommand(GetRelativeJogCommandv11(dir, step));
             }
@@ -1210,7 +1215,7 @@ namespace LaserGRBL
 				}
 				else if (mPrenotedJogDirection == JogDirection.Home)
 				{
-					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", JogSpeed)));
+                    EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0Z0F{0}", JogSpeed)));
 				}
 				else
 				{
@@ -1397,17 +1402,17 @@ namespace LaserGRBL
 					if (rline.Length > 0)
 					{
 						lock (this)
-                        {
-                            if (IsCommandReplyMessage(rline))
-                                ManageCommandResponse(rline);
-                            else if (IsRealtimeStatusMessage(rline))
-                                ManageRealTimeStatus(rline);
-                            else if (IsWelcomeMessage(rline))
-                                ManageWelcomeMessage(rline);
-                            else
-                                ManageGenericMessage(rline);
-                        }
-                    }
+						{
+							if (IsCommandReplyMessage(rline))
+								ManageCommandResponse(rline);
+							else if (IsRealtimeStatusMessage(rline))
+								ManageRealTimeStatus(rline);
+							else if (IsWelcomeMessage(rline))
+								ManageWelcomeMessage(rline);
+							else
+								ManageGenericMessage(rline);
+						}
+					}
 				}
 
 				RX.SleepTime = HasIncomingData() ? CurrentThreadingMode.RxShort : CurrentThreadingMode.RxLong;
@@ -1591,7 +1596,14 @@ namespace LaserGRBL
 			mGrblBlocks = int.Parse(ab[0]);
 			mGrblBuffer = int.Parse(ab[1]);
 
-			EnlargeBuffer(mGrblBuffer);
+            if (stuckBufferCounter > 10 && mPending.Count > 0)
+                ManageCommandResponse("ok");
+            if (mGrblBuffer == BUFFER_SIZE && mPending.Count > 0)
+                stuckBufferCounter++;
+            if ((mGrblBuffer != BUFFER_SIZE) ||( mPending.Count == 0 && mGrblBuffer == BUFFER_SIZE))
+                stuckBufferCounter = 0;
+
+            EnlargeBuffer(mGrblBuffer);
 		}
 
 		private void EnlargeBuffer(int mGrblBuffer)
@@ -1600,7 +1612,9 @@ namespace LaserGRBL
 			{
 				if (mGrblBuffer == 128) //Grbl v1.1 with enabled buffer report
 					BUFFER_SIZE = 128;
-				else if (mGrblBuffer == 256) //Grbl-Mega
+                else if (mGrblBuffer == 255) //Grbl-Mega fixed
+                    BUFFER_SIZE = 255;
+                else if (mGrblBuffer == 256) //Grbl-Mega
 					BUFFER_SIZE = 256;
 				else if (mGrblBuffer == 10240) //Grbl-LPC
 					BUFFER_SIZE = 10240;

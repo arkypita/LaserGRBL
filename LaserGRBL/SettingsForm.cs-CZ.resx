@@ -237,7 +237,7 @@ Po uplynutí této doby LaserGRBL odešle automaticky příkaz pro přerušení 
     <value>Opakované průchody
 (vykonání kódu)</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
     <value>G-kód</value>
   </data>
   <data name="LblHeader.Text" xml:space="preserve">

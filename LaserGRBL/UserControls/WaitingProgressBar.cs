@@ -36,16 +36,16 @@ namespace LaserGRBL.UserControls
 				Stop();
 				TIM.Close();
 
-				if ((components != null)) {
+				/*if ((components != null)) {
 					components.Dispose();
-				}
+				}*/
 			}
 			base.Dispose(disposing);
 		}
 
 		//Richiesto da Progettazione Windows Form
 
-		private System.ComponentModel.IContainer components;
+		//private IContainer components;
 		//NOTA: la procedura che segue è richiesta da Progettazione Windows Form.
 		//Può essere modificata in Progettazione Windows Form.  
 		//Non modificarla nell'editor del codice.
