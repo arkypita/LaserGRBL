@@ -87,17 +87,18 @@ namespace LaserGRBL
 			}
 		}
 
-		int oldVal;
+		int oldMax;
 		private void UpdateFMax_Tick(object sender, EventArgs e)
 		{
-			int curVal = (int)Math.Max(Core.Configuration.MaxRateX, Core.Configuration.MaxRateY);
-			if (oldVal != curVal)
+			int curMax = (int)Math.Max(TbSpeed.Minimum, Math.Max(Core.Configuration.MaxRateX, Core.Configuration.MaxRateY));
+
+			if (oldMax != curMax)
 			{
-				TbSpeed.Value = Math.Min(TbSpeed.Value, curVal);
-				TbSpeed.Maximum = curVal;
-				TbSpeed.LargeChange = curVal / 10;
-				TbSpeed.SmallChange = curVal / 20;
-				oldVal = curVal;
+				oldMax = curMax;
+				TbSpeed.Maximum = curMax;
+				
+				TbSpeed.LargeChange = Math.Max(1, curMax / 10);
+				TbSpeed.SmallChange = Math.Max(1, curMax / 20);
 			}
 		}
 
