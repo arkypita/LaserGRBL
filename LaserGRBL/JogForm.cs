@@ -59,8 +59,6 @@ namespace LaserGRBL
 
         private void TbSpeed_ValueChanged(object sender, EventArgs e)
 		{
-
-			
 			TT.SetToolTip(TbSpeed, $"{Strings.SpeedSliderToolTip} {TbSpeed.Value}");
 			LblSpeed.Text = String.Format("F{0}", TbSpeed.Value);
 			Settings.SetObject("Jog Speed", TbSpeed.Value);
