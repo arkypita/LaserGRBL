@@ -34,7 +34,9 @@ namespace LaserGRBL
             else
                 Core = new GrblCore(this, PreviewForm);
 
-            MnGrblConfig.Visible = Core.UIShowGrblConfig;
+			ExceptionManager.Core = Core;
+
+			MnGrblConfig.Visible = Core.UIShowGrblConfig;
             MnUnlock.Visible = Core.UIShowUnlockButtons;
 
             MnGrbl.Text = Core.Type.ToString();

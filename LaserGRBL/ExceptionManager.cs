@@ -1,0 +1,132 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
+
+namespace LaserGRBL
+{
+	public partial class ExceptionManager : Form
+	{
+		public static GrblCore Core;
+
+		public bool UserClose = false;
+
+		private ExceptionManager()
+		{
+			InitializeComponent();
+		}
+
+		public static void RegisterHandler()
+		{
+			AppDomain.CurrentDomain.UnhandledException += OnUnhandledThreadException;
+			Application.ThreadException += OnUnhandledMainException;
+		}
+
+		private static void OnUnhandledMainException(object sender, ThreadExceptionEventArgs e)
+		{
+			CreateAndShow(e?.Exception, true, false);
+		}
+
+		private static void OnUnhandledThreadException(object sender, UnhandledExceptionEventArgs e)
+		{
+			CreateAndShow(e?.ExceptionObject as Exception, false, false);
+		}
+
+		public static void CreateAndShow(Exception ex, bool cancontinue, bool manual = true)
+		{
+			bool close;
+			using (ExceptionManager f = new ExceptionManager())
+			{
+				StringBuilder sb = new StringBuilder();
+
+				try
+				{
+					sb.AppendFormat("LaserGrbl v{0}", typeof(GitHub).Assembly.GetName().Version);
+					sb.AppendLine();
+					sb.AppendFormat("{0} v{1}", Core?.Type, Core?.Configuration?.GrblVersion);
+					sb.AppendLine();
+					sb.AppendFormat("Wrapper: {0}", (ComWrapper.WrapperType)Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial));
+					sb.AppendLine();
+					sb.AppendFormat("{0} ({1})", Tools.OSHelper.GetOSInfo()?.Replace("|", ", "), Tools.OSHelper.GetBitFlag());
+					sb.AppendLine();
+					sb.AppendLine();
+				}
+				catch { }
+
+				AppendExceptionData(sb, ex);
+
+				f.TbExMessage.Text = sb.ToString();
+				f.BtnContinue.Visible = cancontinue;
+				f.ShowDialog();
+				close = f.UserClose;
+			}
+
+			if (close)
+				Application.Exit();
+		}
+
+		private void BtnAbort_Click(object sender, EventArgs e)
+		{
+			UserClose = true;
+			Close();
+		}
+
+		private void BtnContinue_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
+
+		private static void AppendExceptionData(StringBuilder sb, Exception e)
+		{
+			if (e != null)
+			{
+				try
+				{
+					sb.AppendFormat("TypeOf exception  [{0}]", e.GetType());
+					sb.AppendLine();
+					sb.AppendFormat("Exception message [{0}]", e.Message);
+					sb.AppendLine();
+					sb.AppendFormat("Exception source  [{0}], thread [{1}]", e.Source, Thread.CurrentThread.Name);
+					sb.AppendLine();
+					sb.AppendFormat("Exception method  [{0}]", e.TargetSite);
+					sb.AppendLine();
+					sb.AppendFormat("");
+					sb.AppendLine();
+				}
+				catch { }
+
+				try
+				{
+					if (e.StackTrace != null)
+					{
+						sb.AppendFormat("   ----------- stack trace -----------");
+						sb.AppendLine();
+						sb.AppendFormat(e.StackTrace);
+						sb.AppendLine();
+						sb.AppendFormat("");
+					}
+				}
+				catch { }
+
+				try
+				{
+					sb.AppendLine();
+					if (e.InnerException != null)
+					{
+						sb.AppendFormat("Inner exception data");
+						sb.AppendLine();
+						AppendExceptionData(sb, e.InnerException);
+						sb.AppendLine();
+					}
+				}
+				catch { }
+			}
+		}
+
+	}
+}
