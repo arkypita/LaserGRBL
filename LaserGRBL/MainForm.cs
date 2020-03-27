@@ -7,6 +7,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace LaserGRBL
 {
@@ -607,10 +608,48 @@ namespace LaserGRBL
 				ComWrapper.ComLogger.FileName = null;
 			}
 		}
-    }
+
+		private DispatcherTimer timer;
+		private string droppedFile;
+
+		private void MainForm_DragEnter(object sender, DragEventArgs e)
+		{
+			if (droppedFile == null)
+			{
+				if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+			}
+		}
 
 
-    public class MMnRenderer : ToolStripProfessionalRenderer
+		private void MainForm_DragDrop(object sender, DragEventArgs e)
+		{
+			if (droppedFile == null)
+			{
+				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+				if (files.Length == 1)
+				{
+					droppedFile = files[0];
+					this.timer = new DispatcherTimer();
+					this.timer.Interval = TimeSpan.FromSeconds(0.5);
+					this.timer.Tick += new EventHandler(timer_Tick);
+					this.timer.Start();
+				}
+			}
+		}
+
+		void timer_Tick(object sender, EventArgs e)
+		{
+			if (this.droppedFile != null)
+			{
+				Core.OpenFile(this, this.droppedFile);
+				this.droppedFile = null;
+				timer.Stop();
+			}
+		}
+	}
+
+
+	public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 
