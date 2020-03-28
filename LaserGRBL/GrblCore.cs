@@ -470,6 +470,7 @@ namespace LaserGRBL
 		}
 
 		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
+		public static readonly System.Collections.Generic.List<string> GCodeExtensions = new System.Collections.Generic.List<string>(new string[] { ".nc", ".cnc", ".tap", ".gcode", ".ngc" });
 		public void OpenFile(System.Windows.Forms.Form parent, string filename = null, bool append = false)
 		{
 			if (!CanLoadNewFile) return;
@@ -518,7 +519,7 @@ namespace LaserGRBL
 						catch (Exception ex)
 						{ Logger.LogException("SvgImport", ex); }
 					}
-					else //load GCODE file
+					else if (GCodeExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load GCODE file
 					{
 						System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
 
