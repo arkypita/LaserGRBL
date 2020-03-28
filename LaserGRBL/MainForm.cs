@@ -35,11 +35,11 @@ namespace LaserGRBL
             //build main communication object
             Firmware ftype = (Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl);
             if (ftype == Firmware.Smoothie)
-                Core = new SmoothieCore(this, PreviewForm);
+                Core = new SmoothieCore(this, PreviewForm, JogForm);
             else if (ftype == Firmware.Marlin)
-                Core = new MarlinCore(this, PreviewForm);
+                Core = new MarlinCore(this, PreviewForm, JogForm);
             else
-                Core = new GrblCore(this, PreviewForm);
+                Core = new GrblCore(this, PreviewForm, JogForm);
 
 			ExceptionManager.Core = Core;
 

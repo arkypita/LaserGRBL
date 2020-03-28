@@ -81,7 +81,12 @@ namespace LaserGRBL
 			needsave = true;
 		}
 
-		bool needsave = false;
+        public void ChangeJogStepIndexBy(int value)
+        {
+            TbStep.ChangeIndexBy(value);
+        }
+
+        bool needsave = false;
 		private void OnSliderMouseUP(object sender, MouseEventArgs e)
 		{
 			if (needsave)
@@ -140,6 +145,10 @@ namespace LaserGRBL
             }
         }
 
+        public void ChangeIndexBy(int value)
+        {
+            CurIndex = Math.Max(Math.Min(CurIndex + value, Maximum), Minimum);
+        }
     }
 
 

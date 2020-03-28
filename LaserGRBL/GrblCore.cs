@@ -258,7 +258,7 @@ namespace LaserGRBL
 
 		public UsageStats.UsageCounters UsageCounters;
 
-		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform)
+		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
 		{
             if (Type != Firmware.Grbl) Logger.LogMessage("Program", "Load {0} core", Type);
 
@@ -292,7 +292,7 @@ namespace LaserGRBL
 
 			if (!Settings.ExistObject("Hotkey Setup")) Settings.SetObject("Hotkey Setup", new HotKeysManager());
 			mHotKeyManager = (HotKeysManager)Settings.GetObject("Hotkey Setup", null);
-			mHotKeyManager.Init(this, cbform);
+			mHotKeyManager.Init(this, cbform, jogform);
 
 			UsageCounters = new UsageStats.UsageCounters();
 

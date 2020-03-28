@@ -13,7 +13,7 @@ namespace LaserGRBL
 {
     public class MarlinCore : GrblCore
     {
-        public MarlinCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform) : base(syncroObject, cbform)
+        public MarlinCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform) : base(syncroObject, cbform, jogform)
         {
         }
 
