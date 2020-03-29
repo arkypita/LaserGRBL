@@ -7,6 +7,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace LaserGRBL
 {
@@ -34,11 +35,11 @@ namespace LaserGRBL
             //build main communication object
             Firmware ftype = (Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl);
             if (ftype == Firmware.Smoothie)
-                Core = new SmoothieCore(this, PreviewForm);
+                Core = new SmoothieCore(this, PreviewForm, JogForm);
             else if (ftype == Firmware.Marlin)
-                Core = new MarlinCore(this, PreviewForm);
+                Core = new MarlinCore(this, PreviewForm, JogForm);
             else
-                Core = new GrblCore(this, PreviewForm);
+                Core = new GrblCore(this, PreviewForm, JogForm);
 
 			ExceptionManager.Core = Core;
 
@@ -607,10 +608,52 @@ namespace LaserGRBL
 				ComWrapper.ComLogger.FileName = null;
 			}
 		}
-    }
+
+		private DispatcherTimer dropDispatcherTimer;
+		private string droppedFile;
+
+		private void MainForm_DragEnter(object sender, DragEventArgs e)
+		{
+			if (droppedFile == null)
+			{
+				if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+			}
+		}
+
+		private void MainForm_DragDrop(object sender, DragEventArgs e)
+		{
+			if (droppedFile == null)
+			{
+				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+				if (files.Length == 1)
+				{
+					droppedFile = files[0];
+
+					// call via DispatcherTimer to unblock the source of the drag-event (e.g. Explorer-Window)
+					if (dropDispatcherTimer == null)
+					{
+						this.dropDispatcherTimer = new DispatcherTimer();
+						this.dropDispatcherTimer.Interval = TimeSpan.FromSeconds(0.5);
+						this.dropDispatcherTimer.Tick += new EventHandler(dropDispatcherTimer_Tick);
+					}
+					this.dropDispatcherTimer.Start();
+				}
+			}
+		}
+
+		void dropDispatcherTimer_Tick(object sender, EventArgs e)
+		{
+			if (this.droppedFile != null)
+			{
+				Core.OpenFile(this, this.droppedFile);
+				this.droppedFile = null;
+				dropDispatcherTimer.Stop();
+			}
+		}
+	}
 
 
-    public class MMnRenderer : ToolStripProfessionalRenderer
+	public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 

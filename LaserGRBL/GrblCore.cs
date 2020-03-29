@@ -258,7 +258,7 @@ namespace LaserGRBL
 
 		public UsageStats.UsageCounters UsageCounters;
 
-		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform)
+		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
 		{
             if (Type != Firmware.Grbl) Logger.LogMessage("Program", "Load {0} core", Type);
 
@@ -292,7 +292,7 @@ namespace LaserGRBL
 
 			if (!Settings.ExistObject("Hotkey Setup")) Settings.SetObject("Hotkey Setup", new HotKeysManager());
 			mHotKeyManager = (HotKeysManager)Settings.GetObject("Hotkey Setup", null);
-			mHotKeyManager.Init(this, cbform);
+			mHotKeyManager.Init(this, cbform, jogform);
 
 			UsageCounters = new UsageStats.UsageCounters();
 
@@ -470,6 +470,7 @@ namespace LaserGRBL
 		}
 
 		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
+		public static readonly System.Collections.Generic.List<string> GCodeExtensions = new System.Collections.Generic.List<string>(new string[] { ".nc", ".cnc", ".tap", ".gcode", ".ngc" });
 		public void OpenFile(System.Windows.Forms.Form parent, string filename = null, bool append = false)
 		{
 			if (!CanLoadNewFile) return;
@@ -518,7 +519,7 @@ namespace LaserGRBL
 						catch (Exception ex)
 						{ Logger.LogException("SvgImport", ex); }
 					}
-					else //load GCODE file
+					else if (GCodeExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load GCODE file
 					{
 						System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
 
@@ -531,6 +532,10 @@ namespace LaserGRBL
 						{ Logger.LogException("GCodeImport", ex); }
 
 						System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+					}
+					else
+					{
+						System.Windows.Forms.MessageBox.Show(Strings.UnsupportedFiletype, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 					}
 				}
 			}

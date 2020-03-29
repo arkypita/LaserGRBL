@@ -13,7 +13,7 @@ namespace LaserGRBL
 {
     public class SmoothieCore : GrblCore
     {
-        public SmoothieCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform) : base(syncroObject, cbform)
+        public SmoothieCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform) : base(syncroObject, cbform, jogform)
         {
         }
 

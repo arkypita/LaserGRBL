@@ -17,7 +17,8 @@ namespace LaserGRBL
 	{
 		[NonSerialized] private GrblCore mCore;
         [NonSerialized] private PreviewForm mPreviewForm;
-        [NonSerialized] List<int> mCustomButtonPressed;
+		[NonSerialized] private JogForm mJogForm;
+		[NonSerialized] List<int> mCustomButtonPressed;
 		[NonSerialized] private bool mJogKeyRequested = false;
 
 		[Serializable]
@@ -30,6 +31,7 @@ namespace LaserGRBL
 				HelpOnline = 30,
 				Reset = 100, Homing = 101, Unlock = 102,  PauseJob = 103, ResumeJob = 104, SetNewZero = 105,
                 JogHome = 1000, JogN = 1001, JogNE = 1002, JogE = 1003, JogSE = 1004, JogS = 1005, JogSW = 1006, JogW = 1007, JogNW = 1008, JogUp = 1009, JogDown = 1010,
+				JogStepIncrease = 1020, JogStepDecrease = 1021,
                 OverridePowerDefault = 1100, OverridePowerUp = 1101, OverridePowerDown = 1102,
 				OverrideLinearDefault = 1110, OverrideLinearUp = 1111, OverrideLinearDown = 1112,
 				OverrideRapidDefault = 1120, OverrideRapidUp = 1121, OverrideRapidDown = 1122,
@@ -133,7 +135,10 @@ namespace LaserGRBL
             AddNew(new HotKey(HotKey.Actions.JogUp, (Keys)107));
             AddNew(new HotKey(HotKey.Actions.JogDown, (Keys)109));
 
-            AddNew(new HotKey(HotKey.Actions.OverridePowerDefault, Keys.None));
+			AddNew(new HotKey(HotKey.Actions.JogStepIncrease, Keys.Multiply));
+			AddNew(new HotKey(HotKey.Actions.JogStepDecrease, Keys.Divide));
+
+			AddNew(new HotKey(HotKey.Actions.OverridePowerDefault, Keys.None));
             AddNew(new HotKey(HotKey.Actions.OverridePowerUp, Keys.None));
 			AddNew(new HotKey(HotKey.Actions.OverridePowerDown, Keys.None));
 
@@ -166,10 +171,11 @@ namespace LaserGRBL
 			Add(toadd);
 		}
 
-		public void Init(GrblCore core, PreviewForm cbform)
+		public void Init(GrblCore core, PreviewForm cbform, JogForm jogform)
 		{
 			mCore = core;
             mPreviewForm = cbform;
+			mJogForm = jogform;
             mCustomButtonPressed = new List<int>();
             AddAllFeatures();
 			Sort(CompareKey);
@@ -259,13 +265,19 @@ namespace LaserGRBL
 				case HotKey.Actions.JogW:
 					RequestJog(GrblCore.JogDirection.W); break;
 				case HotKey.Actions.JogNW:
-                    RequestJog(GrblCore.JogDirection.NW); break;
-                case HotKey.Actions.JogUp:
-                    RequestJog(GrblCore.JogDirection.Zup); break;
-                case HotKey.Actions.JogDown:
-                    RequestJog(GrblCore.JogDirection.Zdown); break;
-                case HotKey.Actions.OverridePowerDefault:
-                case HotKey.Actions.OverridePowerUp:
+					RequestJog(GrblCore.JogDirection.NW); break;
+				case HotKey.Actions.JogUp:
+					RequestJog(GrblCore.JogDirection.Zup); break;
+				case HotKey.Actions.JogDown:
+					RequestJog(GrblCore.JogDirection.Zdown); break;
+				case HotKey.Actions.JogStepIncrease:
+					ChangeJogStep(true);
+					break;
+				case HotKey.Actions.JogStepDecrease:
+					ChangeJogStep(false);
+					break;
+				case HotKey.Actions.OverridePowerDefault:
+				case HotKey.Actions.OverridePowerUp:
 				case HotKey.Actions.OverridePowerDown:
 				case HotKey.Actions.OverrideLinearDefault:
 				case HotKey.Actions.OverrideLinearUp:
@@ -275,27 +287,27 @@ namespace LaserGRBL
 				case HotKey.Actions.OverrideRapidDown:
 					mCore.HotKeyOverride(action); break;
 				case HotKey.Actions.CustomButton1:
-                    EmulateCustomButtonDown(0); break;
+					EmulateCustomButtonDown(0); break;
 				case HotKey.Actions.CustomButton2:
-                    EmulateCustomButtonDown(1); break;
+					EmulateCustomButtonDown(1); break;
 				case HotKey.Actions.CustomButton3:
-                    EmulateCustomButtonDown(2); break;
+					EmulateCustomButtonDown(2); break;
 				case HotKey.Actions.CustomButton4:
-                    EmulateCustomButtonDown(3); break;
+					EmulateCustomButtonDown(3); break;
 				case HotKey.Actions.CustomButton5:
-                    EmulateCustomButtonDown(4); break;
+					EmulateCustomButtonDown(4); break;
 				case HotKey.Actions.CustomButton6:
-                    EmulateCustomButtonDown(5); break;
+					EmulateCustomButtonDown(5); break;
 				case HotKey.Actions.CustomButton7:
-                    EmulateCustomButtonDown(6); break;
+					EmulateCustomButtonDown(6); break;
 				case HotKey.Actions.CustomButton8:
-                    EmulateCustomButtonDown(7); break;
+					EmulateCustomButtonDown(7); break;
 				case HotKey.Actions.CustomButton9:
-                    EmulateCustomButtonDown(8); break;
+					EmulateCustomButtonDown(8); break;
 				case HotKey.Actions.CustomButton10:
-                    EmulateCustomButtonDown(9); break;
+					EmulateCustomButtonDown(9); break;
 				default:
-                    break;
+					break;
 			}
 
 			//ConnectDisconnect = 10, Connect = 11, Disconnect = 12,
@@ -306,6 +318,14 @@ namespace LaserGRBL
 			//CustomButton1 = 2000, CustomButton2 = 2001, CustomButton3 = 2002, CustomButton4 = 2003, CustomButton5 = 2004, CustomButton6 = 2005, CustomButton7 = 2006, CustomButton8 = 2007, CustomButton9 = 2008, CustomButton10 = 2009
 
 			return true;
+		}
+
+		private void ChangeJogStep(bool increase)
+		{
+			if (mCore.JogEnabled)
+			{
+				mJogForm.ChangeJogStepIndexBy(increase ? 1 : -1);
+			}
 		}
 
 		private void RequestJog(GrblCore.JogDirection dir)
