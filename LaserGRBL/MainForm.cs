@@ -609,7 +609,7 @@ namespace LaserGRBL
 			}
 		}
 
-		private DispatcherTimer timer;
+		private DispatcherTimer dropDispatcherTimer;
 		private string droppedFile;
 
 		private void MainForm_DragEnter(object sender, DragEventArgs e)
@@ -620,7 +620,6 @@ namespace LaserGRBL
 			}
 		}
 
-
 		private void MainForm_DragDrop(object sender, DragEventArgs e)
 		{
 			if (droppedFile == null)
@@ -629,21 +628,26 @@ namespace LaserGRBL
 				if (files.Length == 1)
 				{
 					droppedFile = files[0];
-					this.timer = new DispatcherTimer();
-					this.timer.Interval = TimeSpan.FromSeconds(0.5);
-					this.timer.Tick += new EventHandler(timer_Tick);
-					this.timer.Start();
+
+					// call via DispatcherTimer to unblock the source of the drag-event (e.g. Explorer-Window)
+					if (dropDispatcherTimer == null)
+					{
+						this.dropDispatcherTimer = new DispatcherTimer();
+						this.dropDispatcherTimer.Interval = TimeSpan.FromSeconds(0.5);
+						this.dropDispatcherTimer.Tick += new EventHandler(dropDispatcherTimer_Tick);
+					}
+					this.dropDispatcherTimer.Start();
 				}
 			}
 		}
 
-		void timer_Tick(object sender, EventArgs e)
+		void dropDispatcherTimer_Tick(object sender, EventArgs e)
 		{
 			if (this.droppedFile != null)
 			{
 				Core.OpenFile(this, this.droppedFile);
 				this.droppedFile = null;
-				timer.Stop();
+				dropDispatcherTimer.Stop();
 			}
 		}
 	}

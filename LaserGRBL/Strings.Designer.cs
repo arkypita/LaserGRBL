@@ -675,5 +675,16 @@ namespace LaserGRBL {
                 return ResourceManager.GetString("StepSliderToolTip", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a This file type is not supported..
+        /// </summary>
+        internal static string UnsupportedFiletype
+        {
+            get
+            {
+                return ResourceManager.GetString("UnsupportedFiletype", resourceCulture);
+            }
+        }
     }
 }

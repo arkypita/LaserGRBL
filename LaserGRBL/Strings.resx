@@ -325,4 +325,7 @@ Continue anyway?</value>
   <data name="StepSliderToolTip" xml:space="preserve">
     <value>Step:</value>
   </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>This file type is not supported.</value>
+  </data>
 </root>

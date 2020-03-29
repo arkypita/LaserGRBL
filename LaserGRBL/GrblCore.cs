@@ -533,6 +533,10 @@ namespace LaserGRBL
 
 						System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
 					}
+					else
+					{
+						System.Windows.Forms.MessageBox.Show(Strings.UnsupportedFiletype, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+					}
 				}
 			}
 			catch (Exception ex)
