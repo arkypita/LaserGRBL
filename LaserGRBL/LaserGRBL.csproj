@@ -124,6 +124,12 @@
       <DependentUpon>FlashGrbl.cs</DependentUpon>
     </Compile>
     <Compile Include="MarlinCore.cs" />
+    <Compile Include="SaveOptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaveOptionForm.Designer.cs">
+      <DependentUpon>SaveOptionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SmoothieCore.cs" />
     <Compile Include="SvgConverter\ConvertSizeAndOptionForm.cs">
       <SubType>Form</SubType>
@@ -995,6 +1001,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RunFromPositionForm.zh-CN.resx">
       <DependentUpon>RunFromPositionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveOptionForm.resx">
+      <DependentUpon>SaveOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.cs-CZ.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

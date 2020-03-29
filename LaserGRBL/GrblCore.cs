@@ -545,7 +545,7 @@ namespace LaserGRBL
 			}
 		}
 
-		public void SaveProgram()
+		public void SaveProgram(bool header, bool footer, bool between, int cycles)
 		{
 			if (HasProgram)
 			{
@@ -568,7 +568,7 @@ namespace LaserGRBL
 				}
 
 				if (filename != null)
-					file.SaveProgram(filename);
+					file.SaveProgram(filename, header, footer, between, cycles);
 			}
 		}
 

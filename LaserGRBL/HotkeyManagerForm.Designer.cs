@@ -74,7 +74,7 @@
 			// 
 			// BtnSave
 			// 
-			this.BtnSave.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.BtnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
 			resources.ApplyResources(this.BtnSave, "BtnSave");
 			this.BtnSave.Name = "BtnSave";
 			this.BtnSave.UseVisualStyleBackColor = true;

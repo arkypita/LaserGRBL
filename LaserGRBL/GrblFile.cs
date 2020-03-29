@@ -39,14 +39,28 @@ namespace LaserGRBL
 			mRange.UpdateXYRange(new GrblCommand.Element('X', x1), new GrblCommand.Element('Y', y1), false);
 		}
 
-		public void SaveProgram(string filename)
+		public void SaveProgram(string filename, bool header, bool footer, bool between, int cycles)
 		{
 			try
 			{
 				using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filename))
 				{
-					foreach (GrblCommand cmd in list)
-						sw.WriteLine(cmd.Command);
+					if (header)
+						sw.WriteLine((string)Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
+
+					for (int i = 0; i < cycles; i++)
+					{
+						foreach (GrblCommand cmd in list)
+							sw.WriteLine(cmd.Command);
+
+						
+						if (between && i < cycles-1)
+							sw.WriteLine((string)Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
+					}
+
+					if (footer)
+						sw.WriteLine((string)Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
+
 					sw.Close();
 				}
 			}

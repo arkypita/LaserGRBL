@@ -182,7 +182,7 @@ namespace LaserGRBL
 				TTLEstimated.Text = Strings.MainFormEstimatedTime;
 
 			MnFileOpen.Enabled = Core.CanLoadNewFile;
-			MnSaveProgram.Enabled = Core.HasProgram;
+			MnAdvancedSave.Enabled = MnSaveProgram.Enabled = Core.HasProgram;
 			MnFileSend.Enabled = Core.CanSendFile;
 			MnStartFromPosition.Enabled = Core.CanSendFile;
 			MnGrblConfig.Enabled = true;
@@ -339,7 +339,7 @@ namespace LaserGRBL
 		}
 		void MnSaveProgramClick(object sender, EventArgs e)
 		{
-			Core.SaveProgram();
+			Core.SaveProgram(false, false, false, 1);
 		}
 
 		private void MNEnglish_Click(object sender, EventArgs e)
@@ -649,6 +649,11 @@ namespace LaserGRBL
 				this.droppedFile = null;
 				dropDispatcherTimer.Stop();
 			}
+		}
+
+		private void MnAdvancedSave_Click(object sender, EventArgs e)
+		{
+			SaveOptionForm.CreateAndShowDialog(Core);
 		}
 	}
 
