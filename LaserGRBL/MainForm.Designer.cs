@@ -109,6 +109,8 @@
 			this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
+			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -609,7 +611,9 @@
             this.activateExtendedLogToolStripMenuItem,
             this.toolStripMenuItem7,
             this.donateToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.licenseToolStripMenuItem});
 			this.questionMarkToolStripMenuItem.Name = "questionMarkToolStripMenuItem";
 			resources.ApplyResources(this.questionMarkToolStripMenuItem, "questionMarkToolStripMenuItem");
 			this.questionMarkToolStripMenuItem.DropDownOpening += new System.EventHandler(this.toolStripMenuItem4_DropDownOpening);
@@ -667,6 +671,17 @@
 			this.AwakeTimer.Enabled = true;
 			this.AwakeTimer.Interval = 20000;
 			this.AwakeTimer.Tick += new System.EventHandler(this.AwakeTimer_Tick);
+			// 
+			// licenseToolStripMenuItem
+			// 
+			this.licenseToolStripMenuItem.Name = "licenseToolStripMenuItem";
+			resources.ApplyResources(this.licenseToolStripMenuItem, "licenseToolStripMenuItem");
+			this.licenseToolStripMenuItem.Click += new System.EventHandler(this.licenseToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem3
+			// 
+			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+			resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
 			// 
 			// MainForm
 			// 
@@ -776,6 +791,8 @@
 		private System.Windows.Forms.ToolStripMenuItem activateExtendedLogToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nightyToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem MnAdvancedSave;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+		private System.Windows.Forms.ToolStripMenuItem licenseToolStripMenuItem;
 	}
 }
 

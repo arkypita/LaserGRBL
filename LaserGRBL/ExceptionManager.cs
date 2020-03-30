@@ -134,5 +134,9 @@ namespace LaserGRBL
 			}
 		}
 
+		private void LblFormDescription_LinkClicked(object sender, LinkClickedEventArgs e)
+		{
+			System.Diagnostics.Process.Start(e.LinkText);
+		}
 	}
 }

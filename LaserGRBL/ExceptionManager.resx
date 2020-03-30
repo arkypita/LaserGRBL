@@ -328,6 +328,11 @@
         0ZatrMCAe49EMdY1YqUXJLU8ALuNz8Rnv7EQo3SQyf8BhPtS6RPJVvQAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="LblFormDescription.Text" xml:space="preserve">
+    <value>But don't worry, it's not your fault! There was a program error due to some unexpected condition. You can report it to the developers by opening an issue on https://github.com/arkypita/LaserGRBL/issues
+
+Please copy following message in your report.</value>
+  </data>
   <data name="BtnContinue.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -392,10 +397,5 @@
         mCGKnFLP3gXUClAVgcuxQIuWhKD0i8/4Xw9nygQqxvrR1Y7+qyI/XaWRLyt6iq86AWRMWsmBhCh/WSPn
         6XB1fqwv68+M0TeqPrMJmG6zAX/LWNgMqKoBgMb/ABKeL43Qvc1XAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="LblFormDescription.Text" xml:space="preserve">
-    <value>But don't worry, it's not your fault! There was a program error due to some unexpected condition. You can report it to the developers by writing an email to info@lasergrbl.com or better by opening an issue on https://github.com/arkypita/LaserGRBL
-
-Please copy following message in your report.</value>
   </data>
 </root>

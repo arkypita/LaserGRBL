@@ -30,10 +30,10 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExceptionManager));
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.TbExMessage = new System.Windows.Forms.RichTextBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.TbExMessage = new System.Windows.Forms.TextBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.LblFormDescription = new System.Windows.Forms.Label();
+			this.LblFormDescription = new System.Windows.Forms.RichTextBox();
 			this.LblOOPS = new System.Windows.Forms.Label();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnContinue = new System.Windows.Forms.Button();
@@ -49,8 +49,8 @@
 			this.tableLayoutPanel1.ColumnCount = 2;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.25F));
-			this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.TbExMessage, 0, 1);
+			this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -60,30 +60,31 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.22222F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(643, 441);
 			this.tableLayoutPanel1.TabIndex = 0;
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-			this.pictureBox1.Location = new System.Drawing.Point(3, 6);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(114, 100);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.pictureBox1.TabIndex = 0;
-			this.pictureBox1.TabStop = false;
 			// 
 			// TbExMessage
 			// 
 			this.tableLayoutPanel1.SetColumnSpan(this.TbExMessage, 2);
 			this.TbExMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TbExMessage.Location = new System.Drawing.Point(3, 116);
-			this.TbExMessage.Multiline = true;
+			this.TbExMessage.Location = new System.Drawing.Point(3, 109);
 			this.TbExMessage.Name = "TbExMessage";
 			this.TbExMessage.ReadOnly = true;
-			this.TbExMessage.Size = new System.Drawing.Size(637, 268);
-			this.TbExMessage.TabIndex = 2;
+			this.TbExMessage.Size = new System.Drawing.Size(637, 275);
+			this.TbExMessage.TabIndex = 5;
+			this.TbExMessage.Text = "";
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(114, 100);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.pictureBox1.TabIndex = 0;
+			this.pictureBox1.TabStop = false;
 			// 
 			// tableLayoutPanel2
 			// 
@@ -98,20 +99,21 @@
 			this.tableLayoutPanel2.RowCount = 2;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(517, 107);
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(517, 100);
 			this.tableLayoutPanel2.TabIndex = 3;
 			// 
 			// LblFormDescription
 			// 
-			this.LblFormDescription.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.LblFormDescription.AutoSize = true;
-			this.LblFormDescription.ForeColor = System.Drawing.Color.Black;
-			this.LblFormDescription.Location = new System.Drawing.Point(5, 37);
-			this.LblFormDescription.Margin = new System.Windows.Forms.Padding(5);
+			this.LblFormDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.LblFormDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.LblFormDescription.Location = new System.Drawing.Point(3, 35);
 			this.LblFormDescription.Name = "LblFormDescription";
-			this.LblFormDescription.Size = new System.Drawing.Size(504, 65);
-			this.LblFormDescription.TabIndex = 1;
+			this.LblFormDescription.ReadOnly = true;
+			this.LblFormDescription.Size = new System.Drawing.Size(511, 62);
+			this.LblFormDescription.TabIndex = 3;
 			this.LblFormDescription.Text = resources.GetString("LblFormDescription.Text");
+			this.LblFormDescription.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.LblFormDescription_LinkClicked);
 			// 
 			// LblOOPS
 			// 
@@ -193,12 +195,12 @@
 
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.TextBox TbExMessage;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-		private System.Windows.Forms.Label LblFormDescription;
 		private System.Windows.Forms.Label LblOOPS;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
 		private System.Windows.Forms.Button BtnAbort;
 		private System.Windows.Forms.Button BtnContinue;
+		private System.Windows.Forms.RichTextBox LblFormDescription;
+		private System.Windows.Forms.RichTextBox TbExMessage;
 	}
 }

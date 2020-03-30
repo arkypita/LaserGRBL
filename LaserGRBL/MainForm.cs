@@ -655,6 +655,11 @@ namespace LaserGRBL
 		{
 			SaveOptionForm.CreateAndShowDialog(Core);
 		}
+
+		private void licenseToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			LicenseForm.CreateAndShowDialog();
+		}
 	}
 
 
