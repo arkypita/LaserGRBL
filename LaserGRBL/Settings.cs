@@ -52,9 +52,21 @@ namespace LaserGRBL
 		}
 
 		
-		public static object GetObject(string key, object defval)
+		public static T GetObject<T>(string key, T defval)
 		{
-			return dic.ContainsKey(key) && dic[key] != null ? dic[key] : defval;
+			try
+			{
+				if (dic.ContainsKey(key))
+				{
+					object obj = dic[key];
+					if (obj != null && obj.GetType() == typeof(T))
+						return (T)obj;
+				}
+			}
+			catch
+			{
+			}
+			return defval;
 		}
 
 		public static object GetAndDeleteObject(string key, object defval)

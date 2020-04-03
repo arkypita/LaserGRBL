@@ -64,9 +64,9 @@ namespace LaserGRBL
 			CBSpeed.SelectedItem = Settings.GetObject("Serial Speed", 115200);
 
 			if (currentWrapper == ComWrapper.WrapperType.Telnet)
-				TxtAddress.Text = (string)Settings.GetObject("Telnet Address", "127.0.0.1:23");	
+				TxtAddress.Text = Settings.GetObject("Telnet Address", "127.0.0.1:23");	
 			else if (currentWrapper == ComWrapper.WrapperType.LaserWebESP8266)
-				TxtAddress.Text = (string)Settings.GetObject("Websocket URL", "ws://127.0.0.1:81/"); 
+				TxtAddress.Text = Settings.GetObject("Websocket URL", "ws://127.0.0.1:81/"); 
 		}
 
 		void OnFileLoaded(long elapsed, string filename)

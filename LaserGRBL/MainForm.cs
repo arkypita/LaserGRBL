@@ -103,7 +103,7 @@ namespace LaserGRBL
 
 			SuspendLayout();
 			//restore last size and position
-			Object[] msp = (Object[])Settings.GetObject("Mainform Size and Position", null);
+			Object[] msp = Settings.GetObject<Object[]>("Mainform Size and Position", null);
 			FormWindowState state = msp == null ? FormWindowState.Maximized : (FormWindowState)msp[2] != FormWindowState.Minimized ? (FormWindowState)msp[2] : FormWindowState.Maximized;
 			if (state == FormWindowState.Normal)
 			{ WindowState = state; Size = (Size)msp[0]; Location = (Point)msp[1]; }

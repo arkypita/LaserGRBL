@@ -28,7 +28,7 @@ namespace LaserGRBL
 			CustomButtons.LoadFile();
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			System.Globalization.CultureInfo ci = (System.Globalization.CultureInfo)Settings.GetObject("User Language", null);
+			System.Globalization.CultureInfo ci = Settings.GetObject<System.Globalization.CultureInfo>("User Language", null);
 			if (ci != null)
 				Thread.CurrentThread.CurrentUICulture = ci;
 

@@ -291,7 +291,7 @@ namespace LaserGRBL
 			mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
 
 			if (!Settings.ExistObject("Hotkey Setup")) Settings.SetObject("Hotkey Setup", new HotKeysManager());
-			mHotKeyManager = (HotKeysManager)Settings.GetObject("Hotkey Setup", null);
+			mHotKeyManager = Settings.GetObject<HotKeysManager>("Hotkey Setup", null);
 			mHotKeyManager.Init(this, cbform, jogform);
 
 			UsageCounters = new UsageStats.UsageCounters();
@@ -375,7 +375,7 @@ namespace LaserGRBL
 
         public GrblVersionInfo GrblVersion
 		{
-			get { return (GrblVersionInfo)Settings.GetObject("Last GrblVersion known", null); }
+			get { return Settings.GetObject<GrblVersionInfo>("Last GrblVersion known", null); }
 			set
 			{
 				if (GrblVersion != null)
@@ -466,7 +466,7 @@ namespace LaserGRBL
 		public void ReOpenFile(System.Windows.Forms.Form parent)
 		{
 			if (CanReOpenFile)
-				OpenFile(parent, (string)Settings.GetObject("Core.LastOpenFile", null));
+				OpenFile(parent, Settings.GetObject<string>("Core.LastOpenFile", null));
 		}
 
 		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
@@ -482,7 +482,7 @@ namespace LaserGRBL
 					using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
 					{
 						//pre-select last file if exist
-						string lastFN = (string)Settings.GetObject("Core.LastOpenFile", null);
+						string lastFN = Settings.GetObject<string>("Core.LastOpenFile", null);
 						if (lastFN != null && System.IO.File.Exists(lastFN))
 							ofd.FileName = lastFN;
 
@@ -552,7 +552,7 @@ namespace LaserGRBL
 				string filename = null;
 				using (System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog())
 				{
-					string lastFN = (string)Settings.GetObject("Core.LastOpenFile", null);
+					string lastFN = Settings.GetObject<string>("Core.LastOpenFile", null);
 					if (lastFN != null)
 					{
 						string fn = System.IO.Path.GetFileNameWithoutExtension(lastFN);
@@ -1872,7 +1872,7 @@ namespace LaserGRBL
 		{
 			get
 			{
-				string lastFile = (string)Settings.GetObject("Core.LastOpenFile", null);
+				string lastFile = Settings.GetObject<string>("Core.LastOpenFile", null);
 				return CanLoadNewFile && lastFile != null && System.IO.File.Exists(lastFile);
 			}
 		}
