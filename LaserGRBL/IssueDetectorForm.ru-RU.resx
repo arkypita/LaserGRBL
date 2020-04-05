@@ -117,42 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LblBrief.Text" xml:space="preserve">
-    <value>LaserGRBL может начать эту работу заново или попытаться возобновить с последней известной позиции.
-Поскольку не всегда возможно определить наилучшую позицию перезапуска, мы позволяем вам принять окончательное решение.
-Последняя скорость, мощность и состояние лазера восстанавливаются автоматически.</value>
-  </data>
-  <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="CbRedoHoming.Text" xml:space="preserve">
-    <value>Повторить хоуминг [$H]</value>
-  </data>
-  <data name="RbSomeLines.Text" xml:space="preserve">
-    <value>Продолжить, повторив несколько последних строк</value>
-  </data>
-  <data name="LblLineNumber.Text" xml:space="preserve">
-    <value>№ строки</value>
-  </data>
-  <data name="RbFromSpecific.Text" xml:space="preserve">
-    <value>Продолжить с заданной строки</value>
-  </data>
-  <data name="RbFromBeginning.Text" xml:space="preserve">
-    <value>Начать с начала (безопасно)</value>
-  </data>
-  <data name="LblOptions.Text" xml:space="preserve">
-    <value>Параметры</value>
-  </data>
-  <data name="RbFromSent.Text" xml:space="preserve">
-    <value>Продолжить с последеней отправленой команды</value>
+  <data name="CbDoNotShow.Text" xml:space="preserve">
+    <value>Больше не показывать</value>
   </data>
   <data name="LblCause.Text" xml:space="preserve">
     <value>Причина:</value>
   </data>
+  <data name="TxtCause.Text" xml:space="preserve">
+    <value>Неизвестна</value>
+  </data>
   <data name="LblDetected.Text" xml:space="preserve">
-    <value>LaserGRBL обнаружил, что последняя работа не была завершена!</value>
+    <value>LaserGRBL обнаружил проблему с Вашей платой</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Возобновление работы</value>
+    <value>Обнаружена ошибка!</value>
   </data>
 </root>
