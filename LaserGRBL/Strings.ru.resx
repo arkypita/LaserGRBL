@@ -203,7 +203,7 @@
     <value>тревога</value>
   </data>
   <data name="MacStatusCheck" xml:space="preserve">
-    <value>Проверить</value>
+    <value>проверка</value>
   </data>
   <data name="MacStatusConnecting" xml:space="preserve">
     <value>устанавливается соединение</value>
@@ -218,7 +218,7 @@
     <value>удержание</value>
   </data>
   <data name="MacStatusHome" xml:space="preserve">
-    <value>Дом</value>
+    <value>хоуминг</value>
   </data>
   <data name="MacStatusIdle" xml:space="preserve">
     <value>ожидает команд</value>
