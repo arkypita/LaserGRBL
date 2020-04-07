@@ -712,6 +712,9 @@
     <EmbeddedResource Include="AutoUpdate\NewVersionForm.cs-CZ.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AutoUpdate\NewVersionForm.es.resx">
+      <DependentUpon>NewVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AutoUpdate\NewVersionForm.fr.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -765,6 +768,9 @@
     <EmbeddedResource Include="CustomButtonForm.cs-CZ.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomButtonForm.es.resx">
+      <DependentUpon>CustomButtonForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.fr.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -789,6 +795,9 @@
     <EmbeddedResource Include="GrblConfig.cs-CZ.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GrblConfig.es.resx">
+      <DependentUpon>GrblConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.fr.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -810,6 +819,9 @@
     <EmbeddedResource Include="HotkeyManagerForm.cs-CZ.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HotkeyManagerForm.es.resx">
+      <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HotkeyManagerForm.fr.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -819,10 +831,16 @@
     <EmbeddedResource Include="HotkeyManagerForm.it.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HotkeyManagerForm.ru.resx">
+      <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HotkeyManagerForm.sk-SK.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IssueDetectorForm.cs-CZ.resx">
+      <DependentUpon>IssueDetectorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IssueDetectorForm.es.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IssueDetectorForm.fr.resx">
@@ -832,6 +850,9 @@
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IssueDetectorForm.it.resx">
+      <DependentUpon>IssueDetectorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IssueDetectorForm.ru.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IssueDetectorForm.sk-SK.resx">
@@ -879,6 +900,9 @@
     <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.cs-CZ.resx">
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.es.resx">
+      <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.hu-HU.resx">
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -886,6 +910,9 @@
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResumeJobForm.cs-CZ.resx">
+      <DependentUpon>ResumeJobForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResumeJobForm.es.resx">
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResumeJobForm.fr.resx">
@@ -907,6 +934,9 @@
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RunFromPositionForm.cs-CZ.resx">
+      <DependentUpon>RunFromPositionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RunFromPositionForm.es.resx">
       <DependentUpon>RunFromPositionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RunFromPositionForm.fr.resx">
@@ -1005,16 +1035,25 @@
     <EmbeddedResource Include="ResumeJobForm.resx">
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RunFromPositionForm.ru.resx">
+      <DependentUpon>RunFromPositionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RunFromPositionForm.sk-SK.resx">
       <DependentUpon>RunFromPositionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RunFromPositionForm.zh-CN.resx">
       <DependentUpon>RunFromPositionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SaveOptionForm.es.resx">
+      <DependentUpon>SaveOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SaveOptionForm.resx">
       <DependentUpon>SaveOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.cs-CZ.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.es.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.hu-HU.resx">
