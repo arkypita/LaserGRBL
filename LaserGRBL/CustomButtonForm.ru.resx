@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Отмена</value>
@@ -125,8 +125,8 @@
   </data>
   <data name="LblDescription.Text" xml:space="preserve">
     <value>- Используйте точку в качестве десятичного разделителя
-- Поддерживать математическое выражение в квадратных скобках: то есть G0 X [left-5] Y [bottom-5]
-- Доступные переменные: слева, справа, сверху, снизу, ширины, высоты .. (и многое другое)
+- Поддерживаются математические выражения в квадратных скобках: то есть G0 X [left-5] Y [bottom-5]
+- Доступные переменные: left, right, top, bottom, width, height.. (и многое другое)
 
 Смотрите http://lasergrbl.com/usage/custom-buttons/</value>
   </data>

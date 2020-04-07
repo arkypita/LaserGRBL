@@ -112,17 +112,17 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxAutoUpdateFailed" xml:space="preserve">
     <value>Автоматическое обновление не удалось!
 Пожалуйста, вручную скачайте новую версию с сайта lasergrbl.</value>
   </data>
   <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
-    <value>Обновление,  требуются права администратора!</value>
+    <value>Обновление, требуются права администратора!</value>
   </data>
   <data name="BoxAutoUpdateResult" xml:space="preserve">
     <value>Результат обновления</value>
@@ -140,7 +140,7 @@
     <value>Ошибка</value>
   </data>
   <data name="BoxExportConfigFileNotFound" xml:space="preserve">
-    <value>Файл не может быть открыт !</value>
+    <value>Файл не может быть открыт!</value>
   </data>
   <data name="BoxExportConfigSuccess" xml:space="preserve">
     <value>{0} конфигурационный файл экспортирован успешно!</value>
@@ -152,16 +152,16 @@
     <value>Ошибка чтения файла!</value>
   </data>
   <data name="BoxImportConfigWithError" xml:space="preserve">
-    <value>{0} Конфигурация импортирована с  {1} ошибками!</value>
+    <value>{0} Конфигурация импортирована с {1} ошибками!</value>
   </data>
   <data name="BoxImportConfigWithoutError" xml:space="preserve">
     <value>{0} Конфигурация импортирована успешно!</value>
   </data>
   <data name="CustomButtonEdit" xml:space="preserve">
-    <value>Редактирование</value>
+    <value>Редактировать кнопку</value>
   </data>
   <data name="CustomButtonRemove" xml:space="preserve">
-    <value>Удаление</value>
+    <value>Удалить кнопку</value>
   </data>
   <data name="DirectionDiagonal" xml:space="preserve">
     <value>Диагональ</value>
@@ -200,43 +200,43 @@
     <value>Требует перезапустить программу, перезагрузить сейчас?</value>
   </data>
   <data name="MacStatusAlarm" xml:space="preserve">
-    <value>Тревога</value>
+    <value>тревога</value>
   </data>
   <data name="MacStatusCheck" xml:space="preserve">
-    <value>Проверить</value>
+    <value>проверка</value>
   </data>
   <data name="MacStatusConnecting" xml:space="preserve">
-    <value>Соединение</value>
+    <value>устанавливается соединение</value>
   </data>
   <data name="MacStatusDisconnected" xml:space="preserve">
-    <value>Разъединение</value>
+    <value>отключен</value>
   </data>
   <data name="MacStatusDoor" xml:space="preserve">
-    <value>Дверь</value>
+    <value>дверь открыта</value>
   </data>
   <data name="MacStatusHold" xml:space="preserve">
-    <value>Удержание</value>
+    <value>удержание</value>
   </data>
   <data name="MacStatusHome" xml:space="preserve">
-    <value>Дом</value>
+    <value>хоуминг</value>
   </data>
   <data name="MacStatusIdle" xml:space="preserve">
-    <value>Работа в холостую</value>
+    <value>ожидает команд</value>
   </data>
   <data name="MacStatusJog" xml:space="preserve">
-    <value>Переместить</value>
+    <value>перемещается</value>
   </data>
   <data name="MacStatusRun" xml:space="preserve">
-    <value>Запуск</value>
+    <value>работает</value>
   </data>
   <data name="MacStatusUnknown" xml:space="preserve">
-    <value>Неизвестно</value>
+    <value>неизвестно</value>
   </data>
   <data name="MainFormEstimatedTime" xml:space="preserve">
     <value>Расчетное Время:</value>
   </data>
   <data name="MainFormProjectedTime" xml:space="preserve">
-    <value>Планируемое время :</value>
+    <value>Планируемое время:</value>
   </data>
   <data name="BoxAbortProgramConfirm" xml:space="preserve">
     <value>Прервать текущую работу?</value>
@@ -264,25 +264,25 @@
     <value>Удалить пользовательскую кнопку</value>
   </data>
   <data name="BoxImportCustomButtonCaption" xml:space="preserve">
-    <value>Импорт пользовательской кнопки</value>
+    <value>Импортировать пользовательскую кнопку</value>
   </data>
   <data name="BoxImportCustomButtonClearText" xml:space="preserve">
     <value>Удалить актуальные кнопки? Выберите да, чтобы удалить, нет, чтобы сохранить.</value>
   </data>
   <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
-    <value>подтверждение</value>
+    <value>Подтверждение</value>
   </data>
   <data name="BoxReadConfigError" xml:space="preserve">
     <value>Ошибка чтения конфигурации!</value>
   </data>
   <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
-    <value>Отображение кэшированных значений ...</value>
+    <value>Отображение кэшированных значений...</value>
   </data>
   <data name="BoxReadConfigSuccess" xml:space="preserve">
     <value>{0} Конфигурация успешно прочитана!</value>
   </data>
   <data name="BoxWriteConfigNoChange" xml:space="preserve">
-    <value>Без изменений ... нечего писать!</value>
+    <value>Без изменений... нечего писать!</value>
   </data>
   <data name="BoxWriteConfigWithError" xml:space="preserve">
     <value>{0} Конфигурация записана с ошибками {1}!</value>
@@ -294,7 +294,7 @@
     <value>Идет передача файла. Отключить в любом случае?</value>
   </data>
   <data name="ExitAnyway" xml:space="preserve">
-    <value>Идет передача файла. Выход в любом случае?</value>
+    <value>Идет передача файла. Выйти в любом случае?</value>
   </data>
   <data name="FirmwareRequireRestart" xml:space="preserve">
     <value>Требуется перезагрузка</value>
@@ -308,6 +308,24 @@
 Продолжить в любом случае?</value>
   </data>
   <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
-    <value>Неизвестная позиция</value>
+    <value>Позиция неизвестна</value>
+  </data>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>Щёлкните правой кнопкой мыши чтобы добавить пользовательскую кнопку</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>Подключиться</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>Отключиться</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>Скорость:</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>Шаг:</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>Неподдерживаемый тип файла.</value>
   </data>
 </root>

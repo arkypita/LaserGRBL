@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Сброс</value>
@@ -133,7 +133,7 @@
     <value>Режим лазера поддерживается  в версии GRBL1.1 и выше. Это приводит к отключению лазера во время быстрых ходов.Будет делать быстрые ходы , чем при резке/маркеровке</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Аппаратные возможности</value>
+    <value>Перед началом</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Настройки</value>
@@ -164,16 +164,16 @@
 Если автоматическое охлаждение включено, LaserGRBL будет отправлять автоматическое «удержание подачи» и «возобновление работы» в соответствии с конфигурацией синхронизации ВКЛ-ВЫКЛ.</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>Время ВКЛ .: это максимальное время, в течение которого лазер остается в процессе гравировки.
-По истечении этого времени LaserGRBL отправит автоматическое удержание подачи для охлаждения лазера.</value>
+    <value>Время ВКЛ .: это максимальное время, в течение которого лазер остается включённым в процессе гравировки.
+По истечении этого времени LaserGRBL автоматически приостановит работу для охлаждения лазера.</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>Время ВЫКЛ: после этого времени охлаждения LaserGRBL отправит команду возобновления, чтобы продолжить гравировку.</value>
   </data>
   <data name="label21.Text" xml:space="preserve">
-    <value>Предупреждение: эта функция будет работать только с версиями grbl&gt; v1.1 с включенным «лазерным режимом».
+    <value>Предупреждение: эта функция будет работать только с версиями grbl &gt; v1.1 с включенным «лазерным режимом».
 Если вы используете автоматическое охлаждение с более старой версией grbl (или с отключенным лазерным режимом), лазер не выключится во время пауз
-и прожигает дыры в вашей работе!</value>
+ы и прожжёт дыры в обрабатываемом материале!</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Протокол соединения:
@@ -182,8 +182,8 @@
 - LaserWebESP8266 поддерживает Wi-Fi соединение через WebSocket. Совместим с программным обеспечением LaserWeb-ESP8266.</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Режим потоковой передачи: [Буферизованный по умолчанию]
-- Buffered: оптимизировать потоковую передачу команд, заполняя приемный буфер grbl [рекомендуется]
+    <value>Режим потоковой передачи:
+- Buffered (по умолчанию): оптимизировать потоковую передачу команд, заполняя приемный буфер grbl [рекомендуется]
 - Синхронный: дождитесь выполнения каждой команды перед отправкой следующей команды [медленнее, но безопаснее]
 - RepeatOnError: то же самое, что и синхронный, но повторять команды, если обнаружена ошибка [экспериментальная]</value>
   </data>
@@ -223,21 +223,45 @@
     <value>Детектор проблем</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
-    <value>min</value>
+    <value>мин.</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
-    <value>On</value>
+    <value>Вкл.</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
-    <value>sec</value>
+    <value>сек.</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
-    <value>min</value>
+    <value>мин.</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
-    <value>Off</value>
+    <value>Выкл.</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
-    <value>sec</value>
+    <value>сек.</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBL выполнит этот код перед началом любой работы.
+Вы можете настроить его под себя, к примеру, добавив M8, чтобы включить вентилятор.
+
+Можно использовать тот же синтаксис, что и в пользовательских кнопках.</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>После окончания</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Между проходами</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBL отправит этот код в конце работы.
+Можно использовать это для восстановления начального состояния гравёра, например, отправив M9 чтобы отключить вентилятор.
+
+Можно использовать тот же синтаксис, что и в пользовательских кнопках.</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Код, который будет выполнен между проходами.
+Можно использовать, чтобы опустить лазер по оси Z для резки на большей глубине.
+
+Можно использовать тот же синтаксис, что и в пользовательских кнопках.</value>
   </data>
 </root>
