@@ -90,7 +90,7 @@ Thanks to:
 - Gerd Vogel, for german translation
 - Anders Lassen, for danish translation
 - Gerson Koppe, for brasilian translation
-- Alexey Golovin, Newcomere, for russian translation
+- Alexey Golovin, Newcomere, AlexeyBond, for russian translation
 - Yang Haiqiang, for chinese translation
 - 00alkskodi00, for slovak translation [#670](https://github.com/arkypita/LaserGRBL/issues/670)
 - ddogman, for hungarian translation [#735](https://github.com/arkypita/LaserGRBL/issues/735)
