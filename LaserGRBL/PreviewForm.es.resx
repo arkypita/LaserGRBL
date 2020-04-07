@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Preview.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -125,7 +125,7 @@
   <data name="BtnGoHome.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAABH9SURBVGhD1Zd5WNXltsffRE1B
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAABH9SURBVGhD1Zd5WNXltsffRE1B
         RJxSys4xj6eOlj1OpaXlSc9xePQ4ZN1rWU/DrZNKWVoOqYiCA6aIYygosyCJKIrABhHFCRncOIAo87yZ
         MYdE5Xu/68fexAbserv9c3meD7/p/b3v+q613rV+WwH4f42Kefrp3yT2mWfMOEFiSJSdnYo0YjauTx8V
         y2td164DY3r23H7czm6vztb2vZhevRqeGccdJzqOO8b3w3r3Vgf5/KeePVVQjx7Kv3t35d2tm9pD3Lt2
@@ -251,7 +251,7 @@
         akcvvKkZO/e2fLzwXeZE1Ps1k0unGFPDHy5OH5hZN6s+O/ix+lM5ln9hvygYog7cKG4cy9VhJfx/R3RU
         Ant+pUGNZ0iMz1r0KYn1orE8D6wXlkfbcnAALkShLQ5Y4IqOVs7tWcCe/yYCOOgThP2s4H+PCXAc63eh
         wbz7H/fmhWwT9IwO3NjkuIiwcB7LDnXzISwHbnRsAi8kTpflEsPW12UZGRoaAwD8C6JOktGJ7q1EAAAA
-        CXBIWXMAAAsTAAALEwEAmpwYAAALeklEQVRoQ7VZCViVZRr9WS7IdmUVAUsz0UpcptJGSS2ryV0fm9TG
+        CXBIWXMAAAsSAAALEgHS3X78AAALeklEQVRoQ7VZCViVZRr9WS7IdmUVAUsz0UpcptJGSS2ryV0fm9TG
         NB/bS7NSk3KZcBt1nClARcll3Al3BNkucFlkUwQBw0oUKhu30kmnUtEz57v/xS6Xl4nKzvOc53Lf+9/v
         P+d/3/dbLhqAFlHCo6EGA9b6zUCU7/LrH/hENmJUQOT16LZk4Lzr0W3+Vh8duIZcTcZaGBUQWx8TFFu/
         JjS2Pq5LbP3Gh1YgZ1h6ytQ7XlZjSxokikGJEkZ00Xoj+RHA/BaQ/ipgegPIepvv3wEKFgKH/gmURgNl
@@ -405,7 +405,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEwAACxMBAJqcGAAADvVJREFUaEPVWmdYVNcW
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEgAACxIB0t1+/AAADvVJREFUaEPVWmdYVNcW
         HWxA4nsvYkKaBZQmzd41xvTee++9gd00o8bYUzSJNVHsMYkhMZYoitGoFI2YxJgYhaEzMDAMMJSZcb+1
         zr0XBgQF3q+3v29xz23nrLX3PvucO2oSkf9r/E/Wu337zlFeXpeGmUwXhwI89moAXjPAZ3gtum1bhSFt
         2lzezWRqr3fnpR+bba0X4OVlmt6ly2u2nj0L8kJCijN69rSc7N7dkhEYaMkKCrJk9uihAefmgACLGfeI
@@ -475,7 +475,7 @@
   <data name="BtnResume.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAA//SURBVGhD1VlpdBXHla636D3t
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAA//SURBVGhD1VlpdBXHla636D3t
         C6B9QRsSkhAgAU/7hoQWtABi1QIYYzYhgwCzhV0YxmAwYOfYJDmHcUJmHCZe4ywzjscxwfHx8SQTQuyx
         M7Zjk2FsJ15ix/GCu1p3vlvd771+D0EyTvIj75xPX99bVbe+W32ruhsEEf1dQ/2JcjmuQUSIXThsNnHz
         1GSxuzZLbCzPEIPlmWJt2XhxvC1f7JuZI3qmpIr9jXnivjlF4mRXUdnjKzzrnltfdfqNHY3//u7e5peu
@@ -617,5 +617,35 @@
   </data>
   <data name="MNRemEditCB.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 56</value>
+  </data>
+  <data name="BtnReset.ToolTip" xml:space="preserve">
+    <value>Reiniciar Grbl (ctrl-x)</value>
+  </data>
+  <data name="addCustomButtonToolStripMenuItem.Text" xml:space="preserve">
+    <value>Agregar Botón Peronalizado</value>
+  </data>
+  <data name="exportCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exportar botones personalizados</value>
+  </data>
+  <data name="importCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Importar botones personalizados</value>
+  </data>
+  <data name="BtnHoming.ToolTip" xml:space="preserve">
+    <value>Punto de partida ($H)</value>
+  </data>
+  <data name="BtnZeroing.ToolTip" xml:space="preserve">
+    <value>Definir punto cero (G92)</value>
+  </data>
+  <data name="BtnResume.ToolTip" xml:space="preserve">
+    <value>Reanudar</value>
+  </data>
+  <data name="BtnStop.ToolTip" xml:space="preserve">
+    <value>Detener</value>
+  </data>
+  <data name="RemoveButton.Text" xml:space="preserve">
+    <value>Eliminar Botón</value>
+  </data>
+  <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
+    <value>Editar Botón</value>
   </data>
 </root>

@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
@@ -340,5 +340,63 @@
   </data>
   <data name="GbLaser.Text" xml:space="preserve">
     <value>Opciones de Laser</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>W</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>DPI</value>
+  </data>
+  <data name="CbAutosize.Text" xml:space="preserve">
+    <value>Tamaño Automático</value>
+  </data>
+  <data name="BtnDPI.ToolTip" xml:space="preserve">
+    <value>Cargar DPI desde información Exif</value>
+  </data>
+  <data name="LblBorderTracingmm.Text" xml:space="preserve">
+    <value>mm/min</value>
+  </data>
+  <data name="LblLinearFillingmm.Text" xml:space="preserve">
+    <value>mm/min</value>
+  </data>
+  <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
+    <value>Grbl soporta potencia de salida variable para producir escalas de grises.
+Esto requiere que tu hardware tenga control TTL en el laser.
+
+Click aquí para más información...</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Laser OFF</value>
+  </data>
+  <data name="LblSmin.Text" xml:space="preserve">
+    <value>S-MIN</value>
+  </data>
+  <data name="LblSmax.Text" xml:space="preserve">
+    <value>S-MAX</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Laser ON</value>
+  </data>
+  <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
+    <value>Laser ON: M3 es el modo estándar.
+Grbl v1.1 soporta un nuevo M4 "Modo Dinámico de Potencia de Laser"
+Laser OFF: solamente el commando M5 está soportado.
+
+Click aquí para más información...</value>
+  </data>
+  <data name="CBLaserOFF.Items" xml:space="preserve">
+    <value>M5</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Imagen objetivo</value>
   </data>
 </root>
