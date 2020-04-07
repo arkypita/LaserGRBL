@@ -325,4 +325,7 @@ Sin el procedimineto de volver al punto de partida ($H) el resultado puede ser n
   <data name="StepSliderToolTip" xml:space="preserve">
     <value>Paso:</value>
   </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>Este archivo no está soportado.</value>
+  </data>
 </root>
