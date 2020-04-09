@@ -286,73 +286,86 @@ namespace LaserGRBL.SvgConverter
 			if (element.Attribute("transform") != null)
 			{
 				transf = true;
-				string transform = element.Attribute("transform").Value;
-				if ((transform != null) && (transform.IndexOf("translate") >= 0))
+				string tstring = element.Attribute("transform").Value;
+				if (!string.IsNullOrEmpty(tstring))
 				{
-					var coord = getTextBetween(transform, "translate(", ")");
-					var split = coord.Split(',');
-					if (coord.IndexOf(',') < 0)
-						split = coord.Split(' ');
-
-					//MessageBox.Show(transform+"\r\n>"+coord + "< "+ split[0]);
-					tmp.OffsetX = floatParse(split[0]);
-					if (split.Length > 1)
-						tmp.OffsetY = floatParse(split[1].TrimEnd(')'));
-					if (svgComments) gcodeString.Append(string.Format("( SVG-Translate {0} {1} )\r\n", tmp.OffsetX, tmp.OffsetY));
-				}
-				if ((transform != null) && (transform.IndexOf("scale") >= 0))
-				{
-					var coord = getTextBetween(transform, "scale(", ")");
-					var split = coord.Split(',');
-					if (coord.IndexOf(',') < 0)
-						split = coord.Split(' ');
-					tmp.M11 = floatParse(split[0]);
-					if (split.Length > 1)
-					{ tmp.M22 = floatParse(split[1]); }
-					else
+					System.Collections.Generic.List<string> tlist = new System.Collections.Generic.List<string>( Regex.Split(tstring, @"(?<=[\)])"));
+					tlist.Reverse();
+					foreach (string tr in tlist)
 					{
-						tmp.M11 = floatParse(coord);
-						tmp.M22 = floatParse(coord);
+						if (tr != null && tr.Trim().Length > 0)
+						{
+							if (tr.IndexOf("translate") >= 0)
+							{
+								var coord = getTextBetween(tr, "translate(", ")");
+								var split = coord.Split(',');
+								if (coord.IndexOf(',') < 0)
+									split = coord.Split(' ');
+
+								float ox = floatParse(split[0]);
+								float oy = (split.Length > 1) ? floatParse(split[1].TrimEnd(')')) : 0.0f;
+								tmp.Translate(ox, oy);
+
+								if (svgComments) gcodeString.Append(string.Format("( SVG-Translate {0} {1} )\r\n", ox, oy));
+							}
+							else if (tr.IndexOf("scale") >= 0)
+							{
+								var coord = getTextBetween(tr, "scale(", ")");
+								var split = coord.Split(',');
+								if (coord.IndexOf(',') < 0)
+									split = coord.Split(' ');
+								tmp.M11 = floatParse(split[0]);
+								if (split.Length > 1)
+								{ tmp.M22 = floatParse(split[1]); }
+								else
+								{
+									tmp.M11 = floatParse(coord);
+									tmp.M22 = floatParse(coord);
+								}
+								if (svgComments) gcodeString.Append(string.Format("( SVG-Scale {0} {1} )\r\n", tmp.M11, tmp.M22));
+							}
+							else if (tr.IndexOf("rotate") >= 0)
+							{
+								var coord = getTextBetween(tr, "rotate(", ")");
+								var split = coord.Split(',');
+								if (coord.IndexOf(',') < 0)
+									split = coord.Split(' ');
+
+								//Original code from https://github.com/svenhb/GRBL-Plotter
+								//float angle = floatParse(split[0]) * (float)Math.PI / 180;
+								//tmp.OffsetX = px;
+								//tmp.OffsetY = py;
+								//tmp.M11 = Math.Cos(angle); tmp.M12 = Math.Sin(angle);
+								//tmp.M21 = -Math.Sin(angle); tmp.M22 = Math.Cos(angle);
+
+								//current code from https://github.com/arkypita/LaserGRBL now support rotation with offset
+								float angle = floatParse(split[0]); //no need to convert in radiant
+								float px = split.Length == 3 ? floatParse(split[1]) : 0.0f; //<--- this read rotation offset point x
+								float py = split.Length == 3 ? floatParse(split[2]) : 0.0f; //<--- this read rotation offset point y
+								tmp.RotateAt(angle, px, py); // <--- this apply RotateAt matrix
+
+								if (svgComments) gcodeString.Append(string.Format("( SVG-Rotate {0} )\r\n", angle));
+							}
+							else if (tr.IndexOf("matrix") >= 0)
+							{
+								var coord = getTextBetween(tr, "matrix(", ")");
+								var split = coord.Split(',');
+								if (coord.IndexOf(',') < 0)
+									split = coord.Split(' ');
+								tmp.M11 = floatParse(split[0]);     // a    scale x         a c e
+								tmp.M12 = floatParse(split[1]);     // b                    b d f
+								tmp.M21 = floatParse(split[2]);     // c                    0 0 1
+								tmp.M22 = floatParse(split[3]);     // d    scale y
+								tmp.OffsetX = floatParse(split[4]); // e    offset x
+								tmp.OffsetY = floatParse(split[5]); // f    offset y
+								if (svgComments) gcodeString.Append(string.Format("\r\n( SVG-Matrix {0} {1} {2} )\r\n", coord.Replace(',', '|'), level, isGroup));
+							}
+						}
 					}
-					if (svgComments) gcodeString.Append(string.Format("( SVG-Scale {0} {1} )\r\n", tmp.M11, tmp.M22));
 				}
-				if ((transform != null) && (transform.IndexOf("rotate") >= 0))
-				{
-					var coord = getTextBetween(transform, "rotate(", ")");
-					var split = coord.Split(',');
-					if (coord.IndexOf(',') < 0)
-						split = coord.Split(' ');
 
-					//Original code from https://github.com/svenhb/GRBL-Plotter
-					//float angle = floatParse(split[0]) * (float)Math.PI / 180;
-					//tmp.OffsetX = px;
-					//tmp.OffsetY = py;
-					//tmp.M11 = Math.Cos(angle); tmp.M12 = Math.Sin(angle);
-					//tmp.M21 = -Math.Sin(angle); tmp.M22 = Math.Cos(angle);
 
-					//current code from https://github.com/arkypita/LaserGRBL now support rotation with offset
-					float angle = floatParse(split[0]); //no need to convert in radiant
-					float px = split.Length == 3 ? floatParse(split[1]) : 0.0f; //<--- this read rotation offset point x
-					float py = split.Length == 3 ? floatParse(split[2]) : 0.0f; //<--- this read rotation offset point y
-					tmp.RotateAt(angle, px, py); // <--- this apply RotateAt matrix
 
-					if (svgComments) gcodeString.Append(string.Format("( SVG-Rotate {0} )\r\n", angle));
-				}
-				if ((transform != null) && (transform.IndexOf("matrix") >= 0))
-				{
-					var coord = getTextBetween(transform, "matrix(", ")");
-					var split = coord.Split(',');
-					if (coord.IndexOf(',') < 0)
-						split = coord.Split(' ');
-					tmp.M11 = floatParse(split[0]);     // a    scale x         a c e
-					tmp.M12 = floatParse(split[1]);     // b                    b d f
-					tmp.M21 = floatParse(split[2]);     // c                    0 0 1
-					tmp.M22 = floatParse(split[3]);     // d    scale y
-					tmp.OffsetX = floatParse(split[4]); // e    offset x
-					tmp.OffsetY = floatParse(split[5]); // f    offset y
-					if (svgComments) gcodeString.Append(string.Format("\r\n( SVG-Matrix {0} {1} {2} )\r\n", coord.Replace(',', '|'), level, isGroup));
-				}
-				//}
 				if (isGroup)
 				{
 					matrixGroup[level].SetIdentity();
