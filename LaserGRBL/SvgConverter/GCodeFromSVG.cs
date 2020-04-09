@@ -344,7 +344,7 @@ namespace LaserGRBL.SvgConverter
 								float py = split.Length == 3 ? floatParse(split[2]) : 0.0f; //<--- this read rotation offset point y
 								tmp.RotateAt(angle, px, py); // <--- this apply RotateAt matrix
 
-								if (svgComments) gcodeString.Append(string.Format("( SVG-Rotate {0} )\r\n", angle));
+								if (svgComments) gcodeString.Append(string.Format("( SVG-Rotate {0} {1} {2} )\r\n", angle, px, py));
 							}
 							else if (tr.IndexOf("matrix") >= 0)
 							{
