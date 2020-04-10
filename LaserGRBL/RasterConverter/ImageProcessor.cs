@@ -916,15 +916,17 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-		private static double GetVectorQuality(double filesize, bool adaptive)
+		private static double GetVectorQuality(double size, bool adaptive)
 		{
 			if (!adaptive) return 10.0; //compatibilità versione precedente
 
 			//inserisce un fattore di qualità inversamente proporzionale alle dimensioni del file
-			//su dimensioni output piccole aumenta la qualità, su dimensioni grandi la diminuisce (per rendere più veloce il calcolo)
+			//su dimensioni output molto piccole aumenta la qualità, su dimensioni molto grandi la diminuisce (per rendere più veloce il calcolo)
 
-			double fqual = 1024.0 / Math.Sqrt(filesize);
-			fqual = Math.Min(fqual, 512);	//valore limite verso l'alto
+			double lato = Math.Sqrt(size);
+			double fqual = 255 * Math.Pow(lato, -0.5);
+
+			fqual = Math.Min(fqual, 255);	//valore limite verso l'alto
 			fqual = Math.Max(fqual, 4);		//valore limite verso il basso
 
 			return fqual;
