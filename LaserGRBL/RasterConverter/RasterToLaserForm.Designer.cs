@@ -56,6 +56,9 @@
 			this.CbCornerThreshold = new System.Windows.Forms.CheckBox();
 			this.GbVectorizeOptions = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+			this.BtnAdaptiveQualityInfo = new LaserGRBL.UserControls.ImageButton();
+			this.CbAdaptiveQuality = new System.Windows.Forms.CheckBox();
+			this.LAdaptiveQuality = new System.Windows.Forms.Label();
 			this.label22 = new System.Windows.Forms.Label();
 			this.UDSpotRemoval = new System.Windows.Forms.NumericUpDown();
 			this.CbSpotRemoval = new System.Windows.Forms.CheckBox();
@@ -422,6 +425,9 @@
 			// tableLayoutPanel5
 			// 
 			resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
+			this.tableLayoutPanel5.Controls.Add(this.BtnAdaptiveQualityInfo, 3, 4);
+			this.tableLayoutPanel5.Controls.Add(this.CbAdaptiveQuality, 1, 4);
+			this.tableLayoutPanel5.Controls.Add(this.LAdaptiveQuality, 0, 4);
 			this.tableLayoutPanel5.Controls.Add(this.label22, 0, 0);
 			this.tableLayoutPanel5.Controls.Add(this.UDSpotRemoval, 1, 0);
 			this.tableLayoutPanel5.Controls.Add(this.CbSpotRemoval, 2, 0);
@@ -431,18 +437,43 @@
 			this.tableLayoutPanel5.Controls.Add(this.UDSmoothing, 1, 1);
 			this.tableLayoutPanel5.Controls.Add(this.CbOptimize, 2, 2);
 			this.tableLayoutPanel5.Controls.Add(this.CbSmoothing, 2, 1);
-			this.tableLayoutPanel5.Controls.Add(this.label14, 0, 5);
-			this.tableLayoutPanel5.Controls.Add(this.CbFillingDirection, 1, 5);
-			this.tableLayoutPanel5.Controls.Add(this.LblFillingQuality, 0, 6);
-			this.tableLayoutPanel5.Controls.Add(this.UDFillingQuality, 1, 6);
-			this.tableLayoutPanel5.Controls.Add(this.LblFillingLineLbl, 2, 6);
+			this.tableLayoutPanel5.Controls.Add(this.label14, 0, 6);
+			this.tableLayoutPanel5.Controls.Add(this.CbFillingDirection, 1, 6);
+			this.tableLayoutPanel5.Controls.Add(this.LblFillingQuality, 0, 7);
+			this.tableLayoutPanel5.Controls.Add(this.UDFillingQuality, 1, 7);
+			this.tableLayoutPanel5.Controls.Add(this.LblFillingLineLbl, 2, 7);
 			this.tableLayoutPanel5.Controls.Add(this.UDDownSample, 1, 3);
 			this.tableLayoutPanel5.Controls.Add(this.label1, 0, 3);
 			this.tableLayoutPanel5.Controls.Add(this.CbDownSample, 2, 3);
-			this.tableLayoutPanel5.Controls.Add(this.lOptimizeFast, 0, 4);
-			this.tableLayoutPanel5.Controls.Add(this.BtnFillingQualityInfo, 3, 6);
-			this.tableLayoutPanel5.Controls.Add(this.CbOptimizeFast, 1, 4);
+			this.tableLayoutPanel5.Controls.Add(this.lOptimizeFast, 0, 5);
+			this.tableLayoutPanel5.Controls.Add(this.BtnFillingQualityInfo, 3, 7);
+			this.tableLayoutPanel5.Controls.Add(this.CbOptimizeFast, 1, 5);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+			// 
+			// BtnAdaptiveQualityInfo
+			// 
+			this.BtnAdaptiveQualityInfo.AltImage = null;
+			resources.ApplyResources(this.BtnAdaptiveQualityInfo, "BtnAdaptiveQualityInfo");
+			this.BtnAdaptiveQualityInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnAdaptiveQualityInfo.Coloration = System.Drawing.Color.Empty;
+			this.BtnAdaptiveQualityInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnAdaptiveQualityInfo.Image")));
+			this.BtnAdaptiveQualityInfo.Name = "BtnAdaptiveQualityInfo";
+			this.BtnAdaptiveQualityInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnAdaptiveQualityInfo, resources.GetString("BtnAdaptiveQualityInfo.ToolTip"));
+			this.BtnAdaptiveQualityInfo.UseAltImage = false;
+			this.BtnAdaptiveQualityInfo.Click += new System.EventHandler(this.BtnAdaptiveQualityInfo_Click);
+			// 
+			// CbAdaptiveQuality
+			// 
+			resources.ApplyResources(this.CbAdaptiveQuality, "CbAdaptiveQuality");
+			this.CbAdaptiveQuality.Name = "CbAdaptiveQuality";
+			this.CbAdaptiveQuality.UseVisualStyleBackColor = true;
+			this.CbAdaptiveQuality.CheckedChanged += new System.EventHandler(this.CbAdaptiveQuality_CheckedChanged);
+			// 
+			// LAdaptiveQuality
+			// 
+			resources.ApplyResources(this.LAdaptiveQuality, "LAdaptiveQuality");
+			this.LAdaptiveQuality.Name = "LAdaptiveQuality";
 			// 
 			// label22
 			// 
@@ -1218,5 +1249,8 @@
 		private System.Windows.Forms.CheckBox CbCornerThreshold;
 		private UserControls.ColorSlider TBLineThreshold;
 		private UserControls.ColorSlider TBCornerThreshold;
+		private System.Windows.Forms.CheckBox CbAdaptiveQuality;
+		private System.Windows.Forms.Label LAdaptiveQuality;
+		private UserControls.ImageButton BtnAdaptiveQualityInfo;
 	}
 }

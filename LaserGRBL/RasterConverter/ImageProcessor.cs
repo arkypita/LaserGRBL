@@ -53,6 +53,7 @@ namespace LaserGRBL.RasterConverter
 		private bool mUseSpotRemoval;
 		private decimal mOptimize;
 		private bool mUseOptimize;
+		private bool mUseAdaptiveQuality;
 		private decimal mSmoothing;
 		private bool mUseSmootihing;
 		private decimal mDownSampling;
@@ -506,6 +507,12 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
+		public bool UseAdaptiveQuality
+		{
+			get => mUseAdaptiveQuality;
+			set => mUseAdaptiveQuality = value;
+		}
+
 		public decimal Smoothing
 		{
 			get { return mSmoothing; }
@@ -849,9 +856,19 @@ namespace LaserGRBL.RasterConverter
 			try
 			{
 				int maxSize = Tools.OSHelper.Is64BitProcess ? 22000 * 22000 : 6000 * 7000; //on 32bit OS we have memory limit - allow Higher value on 64bit
-				double maxRes = Math.Sqrt((maxSize / (TargetSize.Width * TargetSize.Height))); //limit res if resultimg bmp size is to big
-				double res = Math.Min(maxRes, SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering ? (double)Quality : 10.0); //use a fixed resolution of 10ppmm for vectorization
+
+				double filesize = TargetSize.Width * TargetSize.Height;
+				double maxRes = Math.Sqrt(maxSize / filesize); //limit res if resultimg bmp size is to big
 				double fres = Math.Min(maxRes, FillingQuality);
+
+				double res = 10.0;
+
+				if (SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering)
+					res = Math.Min(maxRes, (double)Quality);
+				else
+					res = Math.Min(maxRes, GetVectorQuality(filesize, UseAdaptiveQuality));
+
+				System.Diagnostics.Debug.WriteLine(res);
 
 				Size pixelSize = new Size((int)(TargetSize.Width * res), (int)(TargetSize.Height * res));
 
@@ -897,6 +914,20 @@ namespace LaserGRBL.RasterConverter
 				if (GenerationComplete != null)
 					GenerationComplete(ex);
 			}
+		}
+
+		private static double GetVectorQuality(double filesize, bool adaptive)
+		{
+			if (!adaptive) return 10.0; //compatibilità versione precedente
+
+			//inserisce un fattore di qualità inversamente proporzionale alle dimensioni del file
+			//su dimensioni output piccole aumenta la qualità, su dimensioni grandi la diminuisce (per rendere più veloce il calcolo)
+
+			double fqual = 1024.0 / Math.Sqrt(filesize);
+			fqual = Math.Min(fqual, 512);	//valore limite verso l'alto
+			fqual = Math.Max(fqual, 4);		//valore limite verso il basso
+
+			return fqual;
 		}
 
 		private Bitmap CreateTarget(Size size)
@@ -1060,6 +1091,8 @@ namespace LaserGRBL.RasterConverter
 		public Bitmap Original { get { return mResized; } }
         public Bitmap TrueOriginal { get { return mOriginal; } } //originale eventualmente croppata e ruotata
         public int FileDPI { get { return mFileDPI; } }
-        //public Size FileResolution { get { return mFileResolution; } }
-    }
+
+		
+		//public Size FileResolution { get { return mFileResolution; } }
+	}
 }

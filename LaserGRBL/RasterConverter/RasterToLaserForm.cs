@@ -193,6 +193,7 @@ namespace LaserGRBL.RasterConverter
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Smooting.Enabled", CbSmoothing.Checked);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Smooting.Value", UDSmoothing.Value);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Optimize.Enabled", CbOptimize.Checked);
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.UseAdaptiveQuality.Enabled", CbAdaptiveQuality.Checked);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Optimize.Value", UDOptimize.Value);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.DownSample.Enabled", CbDownSample.Checked);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.DownSample.Value", UDDownSample.Value);
@@ -257,6 +258,7 @@ namespace LaserGRBL.RasterConverter
 			CbSmoothing.Checked = IP.UseSmoothing = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.Smooting.Enabled", false);
 			UDSmoothing.Value = IP.Smoothing = (decimal)Settings.GetObject("GrayScaleConversion.VectorizeOptions.Smooting.Value", 1.0m);
 			CbOptimize.Checked = IP.UseOptimize = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.Optimize.Enabled", false);
+			CbAdaptiveQuality.Checked = IP.UseAdaptiveQuality = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.UseAdaptiveQuality.Enabled", false);
 			UDOptimize.Value = IP.Optimize = (decimal)Settings.GetObject("GrayScaleConversion.VectorizeOptions.Optimize.Value", 0.2m);
 			CbDownSample.Checked = IP.UseDownSampling = (bool)Settings.GetObject("GrayScaleConversion.VectorizeOptions.DownSample.Enabled", false);
 			UDDownSample.Value = IP.DownSampling = (decimal)Settings.GetObject("GrayScaleConversion.VectorizeOptions.DownSample.Value", 2.0m);
@@ -697,5 +699,11 @@ namespace LaserGRBL.RasterConverter
 
 		private void TBLineThreshold_DoubleClick(object sender, EventArgs e)
 		{ TBLineThreshold.Value = 10; }
+
+		private void CbAdaptiveQuality_CheckedChanged(object sender, EventArgs e)
+		{ if (IP != null) IP.UseAdaptiveQuality = CbAdaptiveQuality.Checked; }
+
+		private void BtnAdaptiveQualityInfo_Click(object sender, EventArgs e)
+		{System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/vectorization-tool/#adaptive-quality");}
 	}
 }
