@@ -31,7 +31,7 @@ namespace LaserGRBL.SvgConverter
 					Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", f.CBLaserON.SelectedItem);
 					Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", f.CBLaserOFF.SelectedItem);
 
-					core.LoadedFile.LoadImportedGcode(filename, append);
+					core.LoadedFile.LoadImportedSVG(filename, append);
                 }
             }
         }

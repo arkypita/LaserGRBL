@@ -97,7 +97,7 @@ namespace LaserGRBL
 			RiseOnFileLoaded(filename, elapsed);
 		}
 
-        public void LoadImportedGcode(string filename, bool append)
+        public void LoadImportedSVG(string filename, bool append)
         {
             RiseOnFileLoading(filename);
 
