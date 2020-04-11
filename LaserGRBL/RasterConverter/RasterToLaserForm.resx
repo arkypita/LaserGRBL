@@ -292,7 +292,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="FlipControl.ColumnCount" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -578,6 +578,54 @@
   <data name="&gt;&gt;BtnRevert.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="BtnCrop.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAABFFJREFUSEut
+        le9PU1cYx8n+gC17sZmR7ZXuR0xMlm2+4IWDGWGgkizOJZAsQRgwxE2zjMqGwjCTlYmUgoBcoA0gQqkC
+        oUXs79IKlZYqLRSGoFJGaYFBIQjhZ59n59TLKBQWO/dJTs65955+v/d8+5x7gv5Puo3dh8Yd47GOsbGY
+        HrM5Wi2Xv8M+enmMXcb4Ufuo3el02vssFrtWoeggBtHs45ejy9B15Mnwk5UJ1wQM2GzQrlKBsq3Nrtdq
+        Y4IymiGUtvO34TV2fkDo2/UfDA4Muqn44MAA6DUakLW2glalsncZDLFBSTWIabcRvypdDmV/88JcL6l8
+        vVPf+YfL6YJHg4N4r70d70okoJLLoUOvtz8wm2ODgjkIezMQI3Psx1P5Xfkp/O7EqpYHOfm1RomwuVtU
+        LzEIuEK9pLBGIyqpahVklSokOdclosKKRmFjo2zINe7C/t5e0CqVeKelBeVtbaDTasFkNNolUumX3jc5
+        mdv/7imedS9pwaS91ay0lj9bWPTMzz+Dubk5mHG7YWbGDdPTMzA59RdMTk6BTncPng4/hf6+PhDX1kJu
+        djY0kF6tVIKhsxNkMlnvteLiN7wGKXzT5wk8yyeneL17aCMGzNraGi4vL+Pi4iLMz88jMcLZ2Vl0E7NH
+        Q0MYEhoGmdmX8FZdHf6WlQU5mZl4jcdDKY1IrV4h4puRn+Yb4xJ4PWG+BgCAHo8HV1dXYWlpCRcWFpAa
+        jY6MQH3NDfwsPAIOfHwQjx6LxoscDuRzuVjJMCgQCCCNw0lkpZ+TXGB+P55n2ReXb32TNtbgH9bX14Ea
+        zc3OgkwqhfrqasjjciEi6hgc+OgghB4+Aldyc0EgFEJiUlIeK7vJThEhC+uBNDLLw4dIyg9IpeCtm3XA
+        v3oVvzhxEslKIOTTMIj/JrEyKirqFVZ2k42IdlsBxeFwQK/VCqb790GnVntXQvKHCz//BIcjwuH41+cM
+        rJw/GxHttoLp6WkcfvwYbTYbmk0m0Gk0WFpcBN+mJOHvV7jY09MD5XUyISvnz79FNDU1BVTYarEg2ZnI
+        MGXw3dkzWF5RBmNjf9IiQFIEwKtSiVk5f3aqIirucjrp7gS1QoFFhXw898P3KGqoB7d7xrsyOod2tAgu
+        V2ilrJw/O1XRhMsF4pu18OulX4AIg7RVCnRP7EZFnfzFI2q4YxJcyEj3vrFSpYCVlRX6sl6omG9PoeOA
+        IuKVN4p1+nYPWfoWIcrGte99siE9AUVUKLYm0JiaFBZG1Gpiqps6mAqRhimpvsvwKlqYvLImpoD0RUIp
+        udfGlNXKmYJq9WVWzp/tEVGTnca+19vnnOabzrBy/myP6L8YkE89j5XbSkaTJ+SswBGewLftIyaHSFQf
+        0k93oONUZuRoungpJL0RXmWln5N8A5FDTrQY/nhkKt+YTOKKJP/J/kDGcbz+/Rs6J0ph68n49nnE9y4i
+        BqetB3xk+rKhs+dHX4OgoL8BZRdCPwzt1XkAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="BtnCrop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 3</value>
+  </data>
+  <data name="BtnCrop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="BtnCrop.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="BtnCrop.ToolTip" xml:space="preserve">
+    <value>Crop image</value>
+  </data>
+  <data name="&gt;&gt;BtnCrop.Name" xml:space="preserve">
+    <value>BtnCrop</value>
+  </data>
+  <data name="&gt;&gt;BtnCrop.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.1.6.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BtnCrop.Parent" xml:space="preserve">
+    <value>FlipControl</value>
+  </data>
+  <data name="&gt;&gt;BtnCrop.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="BtnReverse.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGOfPtRkwAAACBjSFJNAACH
@@ -639,7 +687,7 @@
 </value>
   </data>
   <data name="BtnReverse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 3</value>
+    <value>235, 3</value>
   </data>
   <data name="BtnReverse.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 25</value>
@@ -660,55 +708,51 @@
     <value>FlipControl</value>
   </data>
   <data name="&gt;&gt;BtnReverse.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
-  <data name="BtnCrop.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="BtnAutoTrim.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
+        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
 </value>
   </data>
-  <data name="BtnCrop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 3</value>
+  <data name="BtnAutoTrim.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 3</value>
   </data>
-  <data name="BtnCrop.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="BtnAutoTrim.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 25</value>
   </data>
-  <data name="BtnCrop.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="BtnAutoTrim.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
-  <data name="BtnCrop.ToolTip" xml:space="preserve">
-    <value>Crop image</value>
+  <data name="BtnAutoTrim.ToolTip" xml:space="preserve">
+    <value>Auto Trim Image</value>
   </data>
-  <data name="&gt;&gt;BtnCrop.Name" xml:space="preserve">
-    <value>BtnCrop</value>
+  <data name="&gt;&gt;BtnAutoTrim.Name" xml:space="preserve">
+    <value>BtnAutoTrim</value>
   </data>
-  <data name="&gt;&gt;BtnCrop.Type" xml:space="preserve">
+  <data name="&gt;&gt;BtnAutoTrim.Type" xml:space="preserve">
     <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.1.6.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;BtnCrop.Parent" xml:space="preserve">
+  <data name="&gt;&gt;BtnAutoTrim.Parent" xml:space="preserve">
     <value>FlipControl</value>
   </data>
-  <data name="&gt;&gt;BtnCrop.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;BtnAutoTrim.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="FlipControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>255, 525</value>
@@ -717,7 +761,7 @@
     <value>1</value>
   </data>
   <data name="FlipControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 31</value>
+    <value>263, 31</value>
   </data>
   <data name="FlipControl.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -735,7 +779,7 @@
     <value>1</value>
   </data>
   <data name="FlipControl.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtFlipV" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="BtFlipH" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="BtRotateCW" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtRotateCCW" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="BtnRevert" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnReverse" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="BtnCrop" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Absolute,15,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtFlipV" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="BtFlipH" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="BtRotateCW" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtRotateCCW" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="BtnRevert" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnCrop" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="BtnReverse" Row="0" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="BtnAutoTrim" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Absolute,15,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2841,7 +2885,7 @@
     <value>0</value>
   </data>
   <data name="TLP.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbDirections" Row="1" RowSpan="1" Column="1" ColumnSpan="3" /&gt;&lt;Control Name="UDQuality" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CbLinePreview" Row="3" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="label5" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label27" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label8" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="LblDitherMode" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbDither" Row="0" RowSpan="1" Column="1" ColumnSpan="3" /&gt;&lt;Control Name="BtnQualityInfo" Row="2" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,Percent,50,AutoSize,50" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,16" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbDirections" Row="1" RowSpan="1" Column="1" ColumnSpan="3" /&gt;&lt;Control Name="UDQuality" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CbLinePreview" Row="3" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="label5" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label27" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label8" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="LblDitherMode" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbDither" Row="0" RowSpan="1" Column="1" ColumnSpan="3" /&gt;&lt;Control Name="BtnQualityInfo" Row="2" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,Percent,50,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,16" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="GbLineToLineOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

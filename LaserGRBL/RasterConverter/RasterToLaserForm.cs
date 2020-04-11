@@ -705,5 +705,11 @@ namespace LaserGRBL.RasterConverter
 
 		private void BtnAdaptiveQualityInfo_Click(object sender, EventArgs e)
 		{System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/vectorization-tool/#adaptive-quality");}
+
+		private void BtnAutoTrim_Click(object sender, EventArgs e)
+		{
+			if (IP != null)
+				IP.AutoTrim();
+		}
 	}
 }

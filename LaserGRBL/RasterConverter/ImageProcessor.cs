@@ -202,6 +202,121 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
+		public void AutoTrim()
+		{
+			//if (rect.Width <= 0 || rect.Height <= 0)
+			//	return;
+
+			//Rectangle scaled = new Rectangle(rect.X * mOriginal.Width / rsize.Width,
+			//								 rect.Y * mOriginal.Height / rsize.Height,
+			//								 rect.Width * mOriginal.Width / rsize.Width,
+			//								 rect.Height * mOriginal.Height / rsize.Height);
+
+			Color bgcolor = GuessTrimColor();
+
+			if (!bgcolor.IsEmpty)
+			{
+				int[] trim = new int[4];
+				for (int i = 0; i < trim.Length; i++)
+					trim[i] = FindLimit(bgcolor, i);
+				//mode: 0 = top, 1 = bottom, 2 = left, 3 = right
+
+				Rectangle scaled = new Rectangle(trim[2], trim[0], mOriginal.Width - trim[2] - trim[3], mOriginal.Height - trim[0] - trim[1]);
+
+				if (scaled.Width <= 0 || scaled.Height <= 0)
+					return;
+
+				Bitmap newBmp = mOriginal.Clone(scaled, mOriginal.PixelFormat);
+				Bitmap oldBmp = mOriginal;
+
+				mOriginal = newBmp;
+				oldBmp.Dispose();
+
+				ResizeRecalc();
+				Refresh();
+			}
+		}
+
+		//mode: 0 = top, 1 = bottom, 2 = left, 3 = right
+		private int FindLimit(Color bgcolor, int mode)
+		{
+			int limit = (mode == 0 || mode == 1) ? mOriginal.Height : mOriginal.Width;
+
+			int i = 0;
+			while (!GetLineColor(mode, 1, i, bgcolor).IsEmpty)
+				i++;
+
+			return i;
+		}
+
+		private Color GuessTrimColor()
+		{
+			Color[] colors = new Color[4];
+
+			for (int i = 0; i < colors.Length; i++)
+				colors[i] = GetLineColor(i, 1, 0, Color.Empty);
+
+			Color rv = Color.Empty;
+			for (int i = 0; i < colors.Length; i++)
+			{
+				if (!colors[i].IsEmpty) //skippa i bordi non omogenei
+				{
+					if (rv.IsEmpty)
+						rv = colors[i];
+					else if (IsSimilarColor(rv, colors[i]))
+						rv = ColorAVG(rv, colors[i]);
+					else
+						return Color.Empty;
+				}
+			}
+			return rv;
+		}
+
+		//mode: 0 = top, 1 = bottom, 2 = left, 3 = right
+		//step: numero di pixel da skippare nel test, per fare più veloci
+		//check: colore da verificare, se empty verifica il primo pixel della riga/colonna
+		private Color GetLineColor(int mode, int step, int line, Color check)
+		{
+			Color primopixel = Color.Empty;
+			Color rv = Color.Empty;
+
+			int limit = (mode == 0 || mode == 1) ? mOriginal.Width : mOriginal.Height;
+			int limit2 = (mode == 0 || mode == 1) ? mOriginal.Height : mOriginal.Width;
+			for (int i = 0; i < limit; i+=step)
+			{
+				Color pixel;
+
+				if (mode == 0) pixel = mOriginal.GetPixel(i, line);
+				else if (mode == 1) pixel = mOriginal.GetPixel(i, limit2 - 1 - line);
+				else if (mode == 2) pixel = mOriginal.GetPixel(line, i);
+				else pixel = mOriginal.GetPixel(limit2 - 1 - line, i); //(mode == 3)
+
+				if (primopixel.IsEmpty)
+					primopixel = pixel;
+
+				if (rv.IsEmpty)									//il primo lo mettiamo via come valore di base per la media
+					rv = pixel;
+				else if (IsSimilarColor(pixel, primopixel)) //confrontiamo i successivi con il primo
+					rv = ColorAVG(rv, pixel);					//li mediamo nel valore di ritorno
+				else
+					return Color.Empty;
+			}
+			return rv;
+		}
+
+		private Color ColorAVG(Color c1, Color c2)
+		{
+			return Color.FromArgb((c1.A + c2.A) / 2, (c1.R + c2.R) / 2, (c1.G + c2.G) / 2, (c1.B + c2.B) / 2);
+		}
+
+		private bool IsSimilarColor(Color c1, Color c2, int tolerance = 20)
+		{
+			return Math.Abs(c1.A - c2.A) < tolerance &&
+				Math.Abs(c1.R - c2.R) < tolerance &&
+				Math.Abs(c1.G - c2.G) < tolerance &&
+				Math.Abs(c1.B - c2.B) < tolerance;	
+		}
+
 		public void CropImage(Rectangle rect, Size rsize)
 		{
 			if (rect.Width <= 0 || rect.Height <= 0)
