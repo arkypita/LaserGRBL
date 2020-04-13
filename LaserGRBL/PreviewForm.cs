@@ -362,6 +362,7 @@ namespace LaserGRBL
 
 				Point p = dst.PointToClient(new Point(drgevent.X, drgevent.Y));
 				Control item = dst.GetChildAtPoint(p);
+
 				if (item == null) // move the point a bit to the left, if the cursor is between two buttons
 				{
 					p.X -= 6;
@@ -391,18 +392,20 @@ namespace LaserGRBL
 
 					if (item != null && (dragInsertIndex == -1 || currentIndex != dragInsertIndex))
 					{
-
-						Graphics g = this.CreateGraphics();
-						g.Clear(this.BackColor);
-						dragInsertIndex = currentIndex;
-						int xPos = item.Location.X - 3;
-						if (isLastItem)
+						using (Graphics g = CreateGraphics())
 						{
-							xPos = item.Location.X + item.Width + 1;
+							g.Clear(this.BackColor);
+							dragInsertIndex = currentIndex;
+							int xPos = item.Location.X - 3;
+							if (isLastItem)
+							{
+								xPos = item.Location.X + item.Width + 1;
+							}
+							g.FillRectangle(Brushes.CornflowerBlue, xPos, 2, 2, item.Height);
 						}
-						g.FillRectangle(Brushes.CornflowerBlue, xPos, 2, 2, item.Height);
 					}
 				}
+
 
 				base.OnDragOver(drgevent);
 			}
@@ -417,16 +420,28 @@ namespace LaserGRBL
 				{
 					drgevent.Effect = DragDropEffects.Move;
 
-					int oldindex = dst.Controls.GetChildIndex(btn);					
+					int oldindex = dst.Controls.GetChildIndex(btn);		
 					OrderChanged?.Invoke(oldindex, dragInsertIndex);
 					dragInsertIndex = -1;
 				}
 				else
 				{
 					drgevent.Effect = DragDropEffects.None;
+					dragInsertIndex = -1;
 				}
 
 				base.OnDragDrop(drgevent);
+			}
+
+			protected override void OnDragLeave(EventArgs e)
+			{
+				dragInsertIndex = -1;
+				using (Graphics g = CreateGraphics())
+				{
+					g.Clear(this.BackColor);
+				}
+
+				base.OnDragLeave(e);
 			}
 
 		}
