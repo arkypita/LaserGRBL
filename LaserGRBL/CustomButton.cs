@@ -37,7 +37,10 @@ namespace LaserGRBL
 		{
 			CustomButton item = buttons[oldindex];
 			buttons.RemoveAt(oldindex);
-
+			if(oldindex < newindex && newindex > 0)
+			{
+				newindex--; // removing the element from the list, has impact on the index
+			}
 			if (newindex < 0 || newindex > buttons.Count)
 				buttons.Add(item);
 			else
@@ -125,6 +128,7 @@ namespace LaserGRBL
 		public System.Drawing.Image Image;
 		public string GCode;
 		public string GCode2;
+		public string Caption;
 		public string ToolTip;
 
 		public EnableStyles EnableStyle;

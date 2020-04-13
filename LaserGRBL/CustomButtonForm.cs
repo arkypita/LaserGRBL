@@ -50,6 +50,7 @@ namespace LaserGRBL
 			TBGCode.Text = cb.GCode;
 			TBGCode2.Text = cb.GCode2;
 			BTOpenImage.Image = cb.Image;
+			TbCaption.Text = cb.Caption;
 			TbToolTip.Text = cb.ToolTip;
 			CbEStyles.SelectedItem = cb.EnableStyle;
 			CbByttonType.SelectedItem = cb.ButtonType;
@@ -96,6 +97,7 @@ namespace LaserGRBL
 				cb.GCode = TBGCode.Text;
 				cb.GCode2 = TBGCode2.Text;
 				cb.Image = BTOpenImage.Image;
+				cb.Caption = TbCaption.Text;
 				cb.ToolTip = TbToolTip.Text;
 				cb.EnableStyle = (CustomButton.EnableStyles)CbEStyles.SelectedItem;
 				CustomButtons.Add(cb);
@@ -105,6 +107,7 @@ namespace LaserGRBL
 				inedit.GCode = TBGCode.Text;
 				inedit.GCode2 = TBGCode2.Text;
 				inedit.Image = BTOpenImage.Image;
+				inedit.Caption = TbCaption.Text;
 				inedit.ToolTip = TbToolTip.Text;
 				inedit.EnableStyle = (CustomButton.EnableStyles)CbEStyles.SelectedItem;
 				inedit.ButtonType = (CustomButton.ButtonTypes)CbByttonType.SelectedItem;
@@ -143,6 +146,15 @@ namespace LaserGRBL
 			LblGCode2.Visible = TBGCode2.Visible = ((CustomButton.ButtonTypes)CbByttonType.SelectedItem) != CustomButton.ButtonTypes.Button;
 			tableLayoutPanel3.SetColumnSpan(TBGCode, TBGCode2.Visible ? 1 : 2);
 			ResumeLayout();
+		}
+
+		private void LblDescription_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			string link = (sender as LinkLabel).Tag.ToString();
+			if (!string.IsNullOrEmpty(link))
+			{
+				System.Diagnostics.Process.Start(link);
+			}
 		}
 	}
 }

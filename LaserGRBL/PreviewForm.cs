@@ -136,6 +136,7 @@ namespace LaserGRBL
 				BorderStyle = BorderStyle.FixedSingle;
 				Size = new Size(49, 49);
 				Margin = new Padding(2);
+				this.Caption = cb.Caption;
 				tt.SetToolTip(this, cb.ToolTip);
 
 
@@ -354,6 +355,58 @@ namespace LaserGRBL
 				base.OnDragEnter(drgevent);
 			}
 
+			int dragInsertIndex = -1;
+			protected override void OnDragOver(DragEventArgs drgevent)
+			{
+				MyFlowPanel dst = this;
+
+				Point p = dst.PointToClient(new Point(drgevent.X, drgevent.Y));
+				Control item = dst.GetChildAtPoint(p);
+				if (item == null) // move the point a bit to the left, if the cursor is between two buttons
+				{
+					p.X -= 6;
+					item = dst.GetChildAtPoint(p);
+				}
+
+				if (item != null)
+				{
+					int currentIndex = dst.Controls.GetChildIndex(item, false);
+
+					Point pRelativeToControl = item.PointToClient(new Point(drgevent.X, drgevent.Y));
+					double xInPercent = pRelativeToControl.X / (double)item.Width * 100.0;
+					bool isLastItem = false;
+
+					if (xInPercent > 50.0)
+					{
+						if (++currentIndex >= dst.Controls.Count)
+						{
+							item = dst.Controls[dst.Controls.Count - 1];
+							isLastItem = true;
+						}
+						else
+						{
+							item = dst.Controls[currentIndex];
+						}
+					}
+
+					if (item != null && (dragInsertIndex == -1 || currentIndex != dragInsertIndex))
+					{
+
+						Graphics g = this.CreateGraphics();
+						g.Clear(this.BackColor);
+						dragInsertIndex = currentIndex;
+						int xPos = item.Location.X - 3;
+						if (isLastItem)
+						{
+							xPos = item.Location.X + item.Width + 1;
+						}
+						g.FillRectangle(Brushes.CornflowerBlue, xPos, 2, 2, item.Height);
+					}
+				}
+
+				base.OnDragOver(drgevent);
+			}
+
 			protected override void OnDragDrop(DragEventArgs drgevent)
 			{
 				CustomButtonIB btn = (CustomButtonIB)drgevent.Data.GetData(typeof(CustomButtonIB));
@@ -364,12 +417,9 @@ namespace LaserGRBL
 				{
 					drgevent.Effect = DragDropEffects.Move;
 
-					Point p = dst.PointToClient(new Point(drgevent.X, drgevent.Y));
-					Control item = dst.GetChildAtPoint(p);
-					int oldindex = dst.Controls.GetChildIndex(btn);
-					int newindex = dst.Controls.GetChildIndex(item, false);
-					
-					OrderChanged?.Invoke(oldindex, newindex);
+					int oldindex = dst.Controls.GetChildIndex(btn);					
+					OrderChanged?.Invoke(oldindex, dragInsertIndex);
+					dragInsertIndex = -1;
 				}
 				else
 				{

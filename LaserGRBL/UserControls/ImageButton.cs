@@ -18,6 +18,9 @@ namespace LaserGRBL.UserControls
 	[System.ComponentModel.DefaultEvent("Click")]
 	public partial class ImageButton : System.Windows.Forms.UserControl
 	{
+		private const float CAPTION_FONTSIZE = 7f;
+		private const int CAPTION_HEIGHT = 12;
+		private const int CLICK_SCALE_IN_PIXEL = 1;
 
 		#region " Codice generato da Progettazione Windows Form "
 
@@ -61,6 +64,13 @@ namespace LaserGRBL.UserControls
 				SizingMode = SizingMode;
 				Invalidate();
 			}
+		}
+
+		public string Caption { get; set; }
+
+		private bool HasCaption
+		{
+			get { return !string.IsNullOrEmpty(Caption); }
 		}
 
 		private Image _altimage;
@@ -136,6 +146,13 @@ namespace LaserGRBL.UserControls
 					Size = new Size(this.Width - 1, this.Height - 1);
 				}
 
+				if (this.HasCaption)
+				{
+					Size.Height -= CAPTION_HEIGHT;
+					Size.Width -= CAPTION_HEIGHT;
+					Point.X += (Image.Width - Size.Width) / 2;
+				}
+
 
 				if (DrawDisabled())
 				{
@@ -159,8 +176,10 @@ namespace LaserGRBL.UserControls
                         {
                             //Contenuto con mouse premuto
                             Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.15F);
-                            Point = new Point(1, 1);
-                        }
+                            Point = new Point(Point.X + CLICK_SCALE_IN_PIXEL, CLICK_SCALE_IN_PIXEL);
+							Size.Width -= CLICK_SCALE_IN_PIXEL * 2;
+							Size.Height -= CLICK_SCALE_IN_PIXEL * 2;
+						}
                         else
                         {
                             //Contenuto con mouse non premuto
@@ -179,6 +198,21 @@ namespace LaserGRBL.UserControls
 					e.Graphics.DrawImage(Tmp, new Rectangle(Point, Size));
 				}
 
+				if (this.HasCaption)
+				{
+					StringFormat sf = new StringFormat()
+					{
+						Alignment = StringAlignment.Center,
+						LineAlignment = StringAlignment.Center,
+						FormatFlags = StringFormatFlags.LineLimit
+					};
+
+					using (Font captionFont = new Font("Microsoft Sans Serif", CAPTION_FONTSIZE))
+					{
+						float textY = this.Height - CAPTION_HEIGHT - 4;
+						e.Graphics.DrawString(this.Caption, captionFont, Brushes.Black, new RectangleF(0f, textY, this.Width, this.Height - textY), sf);
+					}
+				}
 			}
 
 		}
