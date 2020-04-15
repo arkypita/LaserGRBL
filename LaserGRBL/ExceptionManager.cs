@@ -56,7 +56,7 @@ namespace LaserGRBL
 					sb.AppendLine();
 					sb.AppendFormat("{0} v{1}", Core?.Type, Core?.Configuration?.GrblVersion);
 					sb.AppendLine();
-					sb.AppendFormat("Wrapper: {0}", (ComWrapper.WrapperType)Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial));
+					sb.AppendFormat("Wrapper: {0}", Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial));
 					sb.AppendLine();
 					sb.AppendFormat("{0} ({1})", Tools.OSHelper.GetOSInfo()?.Replace("|", ", "), Tools.OSHelper.GetBitFlag());
 					sb.AppendLine();

@@ -26,7 +26,7 @@ namespace LaserGRBL
 			UpdateFMax.Enabled = true;
 			UpdateFMax_Tick(null, null);
 
-			TbSpeed.Value = Math.Max(Math.Min((int)Settings.GetObject("Jog Speed", 1000), TbSpeed.Maximum), TbSpeed.Minimum);
+			TbSpeed.Value = Math.Max(Math.Min(Settings.GetObject("Jog Speed", 1000), TbSpeed.Maximum), TbSpeed.Minimum);
             
 			TbStep.Value = Convert.ToDecimal(Settings.GetObject("Jog Step", 10M));
 
@@ -39,8 +39,8 @@ namespace LaserGRBL
 
         private void SettingsForm_SettingsChanged(object sender, EventArgs e)
         {
-            TlpStepControl.Visible = !(bool)Settings.GetObject("Enable Continuous Jog", false);
-            TlpZControl.Visible = (bool)Settings.GetObject("Enale Z Jog Control", false);
+            TlpStepControl.Visible = !Settings.GetObject("Enable Continuous Jog", false);
+            TlpZControl.Visible = Settings.GetObject("Enale Z Jog Control", false);
         }
 
         private void Core_JogStateChange(bool jog)

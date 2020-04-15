@@ -23,8 +23,8 @@ namespace LaserGRBL
             MMn.Renderer = new MMnRenderer();
 
             splitContainer1.FixedPanel = FixedPanel.Panel1;
-            splitContainer1.SplitterDistance = (int)Settings.GetObject("MainForm Splitter Position", 260);
-            autoUpdateToolStripMenuItem.Checked = (bool)Settings.GetObject("Auto Update", true);
+            splitContainer1.SplitterDistance = Settings.GetObject("MainForm Splitter Position", 260);
+            autoUpdateToolStripMenuItem.Checked = Settings.GetObject("Auto Update", true);
 
             if (System.Threading.Thread.CurrentThread.Name == null)
                 System.Threading.Thread.CurrentThread.Name = "Main Thread";
@@ -33,7 +33,7 @@ namespace LaserGRBL
                 f.ShowDialog();
 
             //build main communication object
-            Firmware ftype = (Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl);
+            Firmware ftype = Settings.GetObject("Firmware Type", Firmware.Grbl);
             if (ftype == Firmware.Smoothie)
                 Core = new SmoothieCore(this, PreviewForm, JogForm);
             else if (ftype == Firmware.Marlin)
@@ -59,14 +59,14 @@ namespace LaserGRBL
 
             GitHub.NewVersion += GitHub_NewVersion;
 
-            ColorScheme.CurrentScheme = (ColorScheme.Scheme)Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser); ;
+            ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser); ;
             RefreshColorSchema(); //include RefreshOverride();
             RefreshFormTitle();
         }
 
 		void OnIssueDetected(GrblCore.DetectedIssue issue)
 		{
-			if (!(bool)Settings.GetObject("Do not show Issue Detector", false))
+			if (!Settings.GetObject("Do not show Issue Detector", false))
 				IssueDetectorForm.CreateAndShowDialog(issue);
 		}
 
@@ -190,7 +190,7 @@ namespace LaserGRBL
 			//MnImportConfig.Enabled = Core.CanImportExport;
 			MnGrblReset.Enabled = Core.CanResetGrbl;
 
-			MNEsp8266.Visible = ((ComWrapper.WrapperType)Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial)) == ComWrapper.WrapperType.LaserWebESP8266;
+			MNEsp8266.Visible = (Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial)) == ComWrapper.WrapperType.LaserWebESP8266;
 
 			MnConnect.Visible = !Core.IsOpen;
 			MnDisconnect.Visible = Core.IsOpen;

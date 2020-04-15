@@ -269,7 +269,7 @@ namespace LaserGRBL
 			debugLastStatusDelay = new Tools.ElapsedFromEvent();
 			debugLastMoveDelay = new Tools.ElapsedFromEvent();
 
-			mThreadingMode = (ThreadingMode)Settings.GetObject("Threading Mode", ThreadingMode.UltraFast);
+			mThreadingMode = Settings.GetObject("Threading Mode", ThreadingMode.UltraFast);
 			QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(mThreadingMode.StatusQuery), false);
 			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX);
 			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null);
@@ -333,7 +333,7 @@ namespace LaserGRBL
 
 		public GrblConf Configuration
 		{
-			get { return (GrblConf)Settings.GetObject("Grbl Configuration", new GrblConf()); }
+			get { return Settings.GetObject("Grbl Configuration", new GrblConf()); }
 			set
 			{
 				if (value.Count > 0 && value.GrblVersion != null)
@@ -798,13 +798,13 @@ namespace LaserGRBL
 				if (first)
 				{
 					Logger.LogMessage("EnqueueProgram", "Push Header");
-					ExecuteCustombutton((string)Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
+					ExecuteCustombutton(Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
 				}
 
 				if (pass)
 				{
 					Logger.LogMessage("EnqueueProgram", "Push Passes");
-					ExecuteCustombutton((string)Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
+					ExecuteCustombutton(Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
 				}
 				
 
@@ -1246,7 +1246,7 @@ namespace LaserGRBL
 			{
 				// No soft reset when opening COM port for smoothieware
 				if (Type != Firmware.Smoothie)
-					InternalReset((bool)Settings.GetObject("Reset Grbl On Connect", true));
+					InternalReset(Settings.GetObject("Reset Grbl On Connect", true));
 
 				InitializeBoard();
 				QueryTimer.Start();
@@ -1851,7 +1851,7 @@ namespace LaserGRBL
 				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true)), false));
 
 				Logger.LogMessage("EnqueueProgram", "Push Footer");
-				ExecuteCustombutton((string)Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
+				ExecuteCustombutton(Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
 
 				ForceStatusIdle();
 			}
@@ -1914,22 +1914,22 @@ namespace LaserGRBL
 		{ get { return mLoopCount; } set { mLoopCount = value; if (OnLoopCountChange != null) OnLoopCountChange(mLoopCount); } }
 
 		private ThreadingMode CurrentThreadingMode
-		{ get { return (ThreadingMode)Settings.GetObject("Threading Mode", ThreadingMode.UltraFast); } }
+		{ get { return Settings.GetObject("Threading Mode", ThreadingMode.UltraFast); } }
 
 		public virtual StreamingMode CurrentStreamingMode
-		{ get { return (StreamingMode)Settings.GetObject("Streaming Mode", StreamingMode.Buffered); } }
+		{ get { return Settings.GetObject("Streaming Mode", StreamingMode.Buffered); } }
 
 		private bool IdleOrCheck
 		{ get { return MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Check; } }
 
 		public bool AutoCooling
-		{ get { return (bool)Settings.GetObject("AutoCooling", false); } }
+		{ get { return Settings.GetObject("AutoCooling", false); } }
 
 		public TimeSpan AutoCoolingOn
-		{ get { return (TimeSpan)Settings.GetObject("AutoCooling TOn", TimeSpan.FromMinutes(10)); } }
+		{ get { return Settings.GetObject("AutoCooling TOn", TimeSpan.FromMinutes(10)); } }
 
 		public TimeSpan AutoCoolingOff
-		{ get { return (TimeSpan)Settings.GetObject("AutoCooling TOff", TimeSpan.FromMinutes(1)); } }
+		{ get { return Settings.GetObject("AutoCooling TOff", TimeSpan.FromMinutes(1)); } }
 
 		private void ManageCoolingCycles()
 		{
@@ -2065,7 +2065,7 @@ namespace LaserGRBL
 		public int JogSpeed { get; set; }
 		public decimal JogStep { get; set; }
 
-		public bool ContinuosJogEnabled { get { return (bool)Settings.GetObject("Enable Continuous Jog", false); } }
+		public bool ContinuosJogEnabled { get { return Settings.GetObject("Enable Continuous Jog", false); } }
 
 		public bool SuspendHK { get; set; }
 

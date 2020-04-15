@@ -27,7 +27,7 @@ namespace LaserGRBL
 			//	Tls12 = 3072,
 			//}
 
-			if ((UrlManager.UpdateMain != null || UrlManager.UpdateMirror != null) && (bool)Settings.GetObject("Auto Update", true))
+			if ((UrlManager.UpdateMain != null || UrlManager.UpdateMirror != null) && Settings.GetObject("Auto Update", true))
 			{
 				//https://developer.github.com/changes/2018-02-01-weak-crypto-removal-notice/
 				try { System.Net.ServicePointManager.SecurityProtocol = (System.Net.SecurityProtocolType)3072; } //CONFIGURE SYSTEM FOR TLS 1.2 (Required since 22-02-2018) May work only if .net 4.5 is installed?

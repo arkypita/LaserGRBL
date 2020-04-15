@@ -16,7 +16,7 @@ namespace LaserGRBL.SvgConverter
 	public partial class SvgToGCodeForm : Form
 	{
 		GrblCore mCore;
-		bool supportPWM = (bool)Settings.GetObject("Support Hardware PWM", true);
+		bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
         internal static void CreateAndShowDialog(GrblCore core, string filename, Form parent, bool append)
         {
@@ -74,24 +74,24 @@ namespace LaserGRBL.SvgConverter
 
 		public void ShowDialogForm(Form parent)
         {
-			IIBorderTracing.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+			IIBorderTracing.CurrentValue = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
 
-			string LaserOn = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
+			string LaserOn = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
 
 			if (CBLaserON.Items.Contains(LaserOn))
 				CBLaserON.SelectedItem = LaserOn;
 			else
 				CBLaserON.SelectedIndex = 0;
 
-			string LaserOff = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
+			string LaserOff = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
 
 			if (CBLaserOFF.Items.Contains(LaserOff))
 				CBLaserOFF.SelectedItem = LaserOff;
 			else
 				CBLaserOFF.SelectedIndex = 0;
 
-			IIMinPower.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
-			IIMaxPower.CurrentValue = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
+			IIMinPower.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
+			IIMaxPower.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
 
 			IIBorderTracing.Visible = LblBorderTracing.Visible = LblBorderTracingmm.Visible = true;
 

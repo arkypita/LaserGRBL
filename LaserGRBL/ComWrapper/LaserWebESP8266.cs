@@ -46,9 +46,9 @@ namespace LaserGRBL.ComWrapper
 
 		private string GetResetDiagnosticString()
 		{
-			//bool rts = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
-			//bool dtr = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
-			bool soft = (bool)Settings.GetObject("Reset Grbl On Connect", false);
+			//bool rts = Settings.GetObject("HardReset Grbl On Connect", false);
+			//bool dtr = Settings.GetObject("HardReset Grbl On Connect", false);
+			bool soft = Settings.GetObject("Reset Grbl On Connect", false);
 
 			string rv = "";
 

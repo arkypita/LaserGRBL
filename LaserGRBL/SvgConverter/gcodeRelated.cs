@@ -54,20 +54,20 @@ namespace LaserGRBL.SvgConverter
 
 		private static int mDecimalPlaces = 2;
 
-		private static Firmware firmwareType = (Firmware) Settings.GetObject("Firmware Type", Firmware.Grbl);
+		private static Firmware firmwareType = Settings.GetObject("Firmware Type", Firmware.Grbl);
 
 
 		public static void setup()
 		{
 			setDecimalPlaces(mDecimalPlaces);
 
-			gcodeXYFeed = (float)(int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
-			gcodeSpindleSpeed = (float)(int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
+			gcodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+			gcodeSpindleSpeed = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
 			// Smoothieware firmware need a value between 0.0 and 1.1
 			if (firmwareType == Firmware.Smoothie)
 				gcodeSpindleSpeed /= 255.0f;
-			gcodeSpindleCmdOn = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
-			gcodeSpindleCmdOff = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
+			gcodeSpindleCmdOn = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
+			gcodeSpindleCmdOff = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
 
 			lastMovewasG0 = true;
 			lastx = -1; lasty = -1; lastz = 0; lasts = -1 ; lastg = -1;

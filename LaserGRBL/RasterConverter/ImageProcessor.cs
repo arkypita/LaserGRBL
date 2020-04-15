@@ -47,7 +47,7 @@ namespace LaserGRBL.RasterConverter
 		private int mBrightness;
 		private int mThreshold;
 		private bool mUseThreshold;
-		private double mQuality;
+		private decimal mQuality;
 		private bool mLinePreview;
 		private decimal mSpotRemoval;
 		private bool mUseSpotRemoval;
@@ -62,7 +62,7 @@ namespace LaserGRBL.RasterConverter
 		private Direction mDirection;
 		private Direction mFillingDirection;
 		private ImageTransform.DitheringMode mDithering;
-		private double mFillingQuality;
+		private decimal mFillingQuality;
 		private bool mUseLineThreshold;
 		private int mLineThreshold;
 		private bool mUseCornerThreshold;
@@ -543,7 +543,7 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-		public double Quality
+		public decimal Quality
 		{
 			get { return mQuality; }
 			set
@@ -720,7 +720,7 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-		public double FillingQuality
+		public decimal FillingQuality
 		{
 			get { return mFillingQuality; }
 			set
@@ -974,7 +974,7 @@ namespace LaserGRBL.RasterConverter
 
 				double filesize = TargetSize.Width * TargetSize.Height;
 				double maxRes = Math.Sqrt(maxSize / filesize); //limit res if resultimg bmp size is to big
-				double fres = Math.Min(maxRes, FillingQuality);
+				double fres = Math.Min(maxRes, (double)FillingQuality);
 
 				double res = 10.0;
 
@@ -1004,8 +1004,8 @@ namespace LaserGRBL.RasterConverter
 						conf.oX = TargetOffset.X;
 						conf.oY = TargetOffset.Y;
 						conf.borderSpeed = BorderSpeed;
-						conf.pwm = (bool)Settings.GetObject("Support Hardware PWM", true);
-						conf.firmwareType = (Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl);
+						conf.pwm = Settings.GetObject("Support Hardware PWM", true);
+						conf.firmwareType = Settings.GetObject("Firmware Type", Firmware.Grbl);
 
 						if (SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering)
 							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf, mAppend);

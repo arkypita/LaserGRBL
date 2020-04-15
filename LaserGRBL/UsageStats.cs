@@ -93,8 +93,8 @@ namespace LaserGRBL
             if (Tools.TimingBase.TimeFromApplicationStartup() > TimeSpan.Zero) //prevent wrong values
                 UsageTime = UsageTime.Add(Tools.TimingBase.TimeFromApplicationStartup());
 
-            Wrapper = (ComWrapper.WrapperType)Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
-            Firmware = (Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl);
+            Wrapper = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
+            Firmware = Settings.GetObject("Firmware Type", Firmware.Grbl);
 
             if (Counters == null) Counters = new UsageCounters();
             Counters.Update(Core.UsageCounters);

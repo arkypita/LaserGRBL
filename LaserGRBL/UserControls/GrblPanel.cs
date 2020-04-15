@@ -35,13 +35,13 @@ namespace LaserGRBL.UserControls
 			mLastWPos = GPoint.Zero;
 			mLastMPos = GPoint.Zero;
 
-			forcez = (bool)Settings.GetObject("Enale Z Jog Control", false);
+			forcez = Settings.GetObject("Enale Z Jog Control", false);
 			SettingsForm.SettingsChanged += SettingsForm_SettingsChanged;
 		}
 
 		private void SettingsForm_SettingsChanged(object sender, EventArgs e)
 		{
-			bool newforce = (bool)Settings.GetObject("Enale Z Jog Control", false);
+			bool newforce = Settings.GetObject("Enale Z Jog Control", false);
 			if (newforce != forcez)
 			{
 				forcez = newforce;

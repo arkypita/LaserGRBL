@@ -16,7 +16,7 @@ namespace LaserGRBL.RasterConverter
     public partial class ConvertSizeAndOptionForm : Form
     {
         GrblCore mCore;
-        bool supportPWM = (bool)Settings.GetObject("Support Hardware PWM", true);
+        bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
         public ConvertSizeAndOptionForm(GrblCore core)
         {
@@ -71,42 +71,42 @@ namespace LaserGRBL.RasterConverter
 
             if (IP.Original.Height < IP.Original.Width)
             {
-                IISizeW.CurrentValue = Convert.ToSingle(Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100F));
+                IISizeW.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100F);
                 IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
             }
             else
             {
-                IISizeH.CurrentValue = Convert.ToSingle(Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100F));
+                IISizeH.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100F);
                 IISizeW.CurrentValue = IP.HeightToWidht(IISizeH.CurrentValue);
             }
 
 
-            IIBorderTracing.CurrentValue = IP.BorderSpeed = (int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
-            IILinearFilling.CurrentValue = IP.MarkSpeed = (int)Settings.GetObject("GrayScaleConversion.Gcode.Speed.Mark", 1000);
+            IIBorderTracing.CurrentValue = IP.BorderSpeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+            IILinearFilling.CurrentValue = IP.MarkSpeed = Settings.GetObject("GrayScaleConversion.Gcode.Speed.Mark", 1000);
 
-            IP.LaserOn = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
+            IP.LaserOn = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
 
             if (CBLaserON.Items.Contains(IP.LaserOn))
                 CBLaserON.SelectedItem = IP.LaserOn;
             else
                 CBLaserON.SelectedIndex = 0;
 
-            IP.LaserOff = (string)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
+            IP.LaserOff = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
 
             if (CBLaserOFF.Items.Contains(IP.LaserOff))
                 CBLaserOFF.SelectedItem = IP.LaserOff;
             else
                 CBLaserOFF.SelectedIndex = 0;
 
-            IIMinPower.CurrentValue = IP.MinPower = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
-            IIMaxPower.CurrentValue = IP.MaxPower = (int)Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
+            IIMinPower.CurrentValue = IP.MinPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
+            IIMaxPower.CurrentValue = IP.MaxPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
 
             IILinearFilling.Visible = LblLinearFilling.Visible = LblLinearFillingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Line2Line || IP.SelectedTool == ImageProcessor.Tool.Dithering || (IP.SelectedTool == ImageProcessor.Tool.Vectorize && (IP.FillingDirection != ImageProcessor.Direction.None)));
             IIBorderTracing.Visible = LblBorderTracing.Visible = LblBorderTracingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Vectorize || IP.SelectedTool == ImageProcessor.Tool.Centerline);
             LblLinearFilling.Text = IP.SelectedTool == ImageProcessor.Tool.Vectorize ? "Filling Speed" : "Engraving Speed";
 
-            IIOffsetX.CurrentValue = IP.TargetOffset.X = Convert.ToSingle(Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F));
-            IIOffsetY.CurrentValue = IP.TargetOffset.Y = Convert.ToSingle(Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F));
+            IIOffsetX.CurrentValue = IP.TargetOffset.X = Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F);
+            IIOffsetY.CurrentValue = IP.TargetOffset.Y = Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F);
 
             ShowDialog();
         }

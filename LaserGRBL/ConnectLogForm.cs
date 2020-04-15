@@ -23,7 +23,7 @@ namespace LaserGRBL
 
 		public ConnectLogForm()
 		{
-			currentWrapper = (ComWrapper.WrapperType)Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
+			currentWrapper = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			InitializeComponent();
 		}
 
@@ -262,7 +262,7 @@ namespace LaserGRBL
 
 			if (!Core.IsOpen)
 			{
-				ComWrapper.WrapperType actualWrapper = (ComWrapper.WrapperType)Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
+				ComWrapper.WrapperType actualWrapper = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 				if (actualWrapper != currentWrapper)
 				{
 					currentWrapper = actualWrapper;

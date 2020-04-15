@@ -46,7 +46,7 @@ namespace LaserGRBL
 				using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filename))
 				{
 					if (header)
-						sw.WriteLine((string)Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
+						sw.WriteLine(Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
 
 					for (int i = 0; i < cycles; i++)
 					{
@@ -55,11 +55,11 @@ namespace LaserGRBL
 
 						
 						if (between && i < cycles-1)
-							sw.WriteLine((string)Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
+							sw.WriteLine(Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
 					}
 
 					if (footer)
-						sw.WriteLine((string)Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
+						sw.WriteLine(Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
 
 					sw.Close();
 				}
@@ -109,7 +109,7 @@ namespace LaserGRBL
             mRange.ResetRange();
 
             SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
-            converter.GCodeXYFeed = (float)(int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+            converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
 
             string gcode = converter.convertFromFile(filename);
             string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
@@ -515,7 +515,7 @@ namespace LaserGRBL
 
 		private List<ColorSegment> GetSegments(Bitmap bmp, L2LConf c)
 		{
-			bool uni = (bool)Settings.GetObject("Unidirectional Engraving", false);
+			bool uni = Settings.GetObject("Unidirectional Engraving", false);
 
 			List<ColorSegment> rv = new List<ColorSegment>();
 			if (c.dir == RasterConverter.ImageProcessor.Direction.Horizontal || c.dir == RasterConverter.ImageProcessor.Direction.Vertical)
@@ -848,11 +848,11 @@ namespace LaserGRBL
 			catch(Exception ex) { Logger.LogException("Centerline", ex); }
 
             SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
-            converter.GCodeXYFeed = (float)(int)Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+            converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
             converter.SvgScaleApply = true;
             converter.SvgMaxSize = (float)Math.Max(bmp.Width /10.0, bmp.Height / 10.0);
-			converter.UserOffset.X = Convert.ToSingle(Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F));
-			converter.UserOffset.Y = Convert.ToSingle(Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F));
+			converter.UserOffset.X = Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F);
+			converter.UserOffset.Y = Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F);
 
 			string gcode = converter.convertFromText(content);
 			string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
@@ -886,7 +886,7 @@ namespace LaserGRBL
 			{
 				try
 				{
-					GrblConf conf = (GrblConf)Settings.GetObject("Grbl Configuration", new GrblConf());
+					GrblConf conf = Settings.GetObject("Grbl Configuration", new GrblConf());
 					TimeSpan delay = spb.AnalyzeCommand(cmd, true, conf);
 
 					mRange.UpdateSRange(spb.S);

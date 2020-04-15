@@ -35,26 +35,26 @@ namespace LaserGRBL
 			InitStreamingCB();
 			InitThreadingCB();
 
-            CBCore.SelectedItem = (Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl);
-			CBSupportPWM.Checked = (bool)Settings.GetObject("Support Hardware PWM", true);
+            CBCore.SelectedItem = Settings.GetObject("Firmware Type", Firmware.Grbl);
+			CBSupportPWM.Checked = Settings.GetObject("Support Hardware PWM", true);
 			CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			CBStreamingMode.SelectedItem = Settings.GetObject("Streaming Mode", GrblCore.StreamingMode.Buffered);
-			CbUnidirectional.Checked = (bool)Settings.GetObject("Unidirectional Engraving", false);
+			CbUnidirectional.Checked = Settings.GetObject("Unidirectional Engraving", false);
 			CbThreadingMode.SelectedItem = Settings.GetObject("Threading Mode", GrblCore.ThreadingMode.UltraFast);
-			CbIssueDetector.Checked = !(bool)Settings.GetObject("Do not show Issue Detector", false);
-			CbSoftReset.Checked = (bool)Settings.GetObject("Reset Grbl On Connect", true);
-			CbHardReset.Checked = (bool)Settings.GetObject("HardReset Grbl On Connect", false);
+			CbIssueDetector.Checked = !Settings.GetObject("Do not show Issue Detector", false);
+			CbSoftReset.Checked = Settings.GetObject("Reset Grbl On Connect", true);
+			CbHardReset.Checked = Settings.GetObject("HardReset Grbl On Connect", false);
 
-            CbContinuosJog.Checked = (bool)Settings.GetObject("Enable Continuous Jog", false);
-            CbEnableZJog.Checked = (bool)Settings.GetObject("Enale Z Jog Control", false);
+            CbContinuosJog.Checked = Settings.GetObject("Enable Continuous Jog", false);
+            CbEnableZJog.Checked = Settings.GetObject("Enale Z Jog Control", false);
 
-			TBHeader.Text = (string)Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER);
+			TBHeader.Text = Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER);
             TBHeader.ForeColor = ColorScheme.FormForeColor;
             TBHeader.BackColor = ColorScheme.FormBackColor;
-            TBPasses.Text = (string)Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES);
+            TBPasses.Text = Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES);
             TBPasses.ForeColor = ColorScheme.FormForeColor;
             TBPasses.BackColor = ColorScheme.FormBackColor;
-            TBFooter.Text = (string)Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER);
+            TBFooter.Text = Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER);
             TBFooter.ForeColor = ColorScheme.FormForeColor;
             TBFooter.BackColor = ColorScheme.FormBackColor;
 
@@ -65,7 +65,7 @@ namespace LaserGRBL
 
 		private void InitAutoCoolingTab()
 		{
-			CbAutoCooling.Checked = (bool)Settings.GetObject("AutoCooling", false);
+			CbAutoCooling.Checked = Settings.GetObject("AutoCooling", false);
 			CbOffMin.Items.Clear();
 			CbOffSec.Items.Clear();
 			CbOnMin.Items.Clear();
@@ -81,8 +81,8 @@ namespace LaserGRBL
 			for (int i = 0; i <= 59; i++)
 				CbOffSec.Items.Add(i);
 
-			TimeSpan CoolingOn = (TimeSpan)Settings.GetObject("AutoCooling TOn", TimeSpan.FromMinutes(10));
-			TimeSpan CoolingOff = (TimeSpan)Settings.GetObject("AutoCooling TOff", TimeSpan.FromMinutes(1));
+			TimeSpan CoolingOn = Settings.GetObject("AutoCooling TOn", TimeSpan.FromMinutes(10));
+			TimeSpan CoolingOff = Settings.GetObject("AutoCooling TOff", TimeSpan.FromMinutes(1));
 
 			CbOnMin.SelectedItem = CoolingOn.Minutes;
 			CbOffMin.SelectedItem = CoolingOff.Minutes;
@@ -163,7 +163,7 @@ namespace LaserGRBL
 
             Close();
 
-            if (Core.Type != (Firmware)Settings.GetObject("Firmware Type", Firmware.Grbl) && MessageBox.Show(Strings.FirmwareRequireRestartNow, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (Core.Type != Settings.GetObject("Firmware Type", Firmware.Grbl) && MessageBox.Show(Strings.FirmwareRequireRestartNow, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
                 Application.Restart();
 		}
 
