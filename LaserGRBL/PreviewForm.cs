@@ -145,7 +145,15 @@ namespace LaserGRBL
 				cms.Items.Add(Strings.CustomButtonEdit, null, EditButton_Click);
 
 				ContextMenuStrip = cms;
-				AllowDrag = true;
+			}
+
+			private bool PositionUnlocked
+			{
+				get
+				{
+					MyFlowPanel panel = Parent as MyFlowPanel;
+					return panel != null && panel.ButtonPositionUnlocked;
+				}
 			}
 
 
@@ -160,11 +168,29 @@ namespace LaserGRBL
 
 			internal void RefreshEnabled()
 			{
-				bool disabled = !CustomButton.EnabledNow(Core);
+				bool disabled = !CustomButton.EnabledNow(Core) || PositionUnlocked;
 				if (mDrawDisabled != disabled)
 				{
 					mDrawDisabled = disabled;
 					Refresh();
+				}
+			}
+
+			protected override void OnPaint(PaintEventArgs e)
+			{
+				base.OnPaint(e);
+
+
+				Rectangle r = new Rectangle(0, 0, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1);
+
+				if (PositionUnlocked)
+				{
+					using (Pen p = new Pen(Color.FromArgb(150, 135, 206, 250)))
+					{
+						e.Graphics.DrawRectangle(p, r);
+						for (int i = 0; i < 2 * Math.Max(r.Width, r.Height); i += 5)
+							e.Graphics.DrawLine(p, i, 0, 0, i);
+					}
 				}
 			}
 
@@ -197,10 +223,10 @@ namespace LaserGRBL
                 if (mDrawDisabled || !CustomButton.EnabledNow(Core))
                     return;
 
-                if (cb.ButtonType == CustomButton.ButtonTypes.Button)
+                if (cb.ButtonType == CustomButton.ButtonTypes.Button && !PositionUnlocked)
                     Core.ExecuteCustombutton(cb.GCode);
 
-                if (cb.ButtonType == CustomButton.ButtonTypes.TwoStateButton)
+                if (cb.ButtonType == CustomButton.ButtonTypes.TwoStateButton && !PositionUnlocked)
                 {
                     on = !on;
                     Core.ExecuteCustombutton(on ? cb.GCode : cb.GCode2);
@@ -227,7 +253,7 @@ namespace LaserGRBL
                 if (mDrawDisabled || !CustomButton.EnabledNow(Core))
                     return;
 
-                if (cb.ButtonType == CustomButton.ButtonTypes.PushButton)
+                if (cb.ButtonType == CustomButton.ButtonTypes.PushButton && !PositionUnlocked)
                 {
                     Core.ExecuteCustombutton(cb.GCode);
                     BackColor = Color.LightBlue;
@@ -250,7 +276,7 @@ namespace LaserGRBL
                 if (mDrawDisabled || !CustomButton.EnabledNow(Core))
                     return;
 
-                if (cb.ButtonType == CustomButton.ButtonTypes.PushButton)
+                if (cb.ButtonType == CustomButton.ButtonTypes.PushButton && !PositionUnlocked)
                 {
                     Core.ExecuteCustombutton(cb.GCode2);
                     BackColor = Parent.BackColor;
@@ -280,7 +306,7 @@ namespace LaserGRBL
 
 
 			//Check radius for begin drag n drop
-			public bool AllowDrag { get; set; }
+			//public bool AllowDrag { get; set; }
 			private bool _isDragging = false;
 			private int _DDradius = 40;
 			private int _mX = 0;
@@ -292,7 +318,7 @@ namespace LaserGRBL
 				{
 					// This is a check to see if the mouse is moving while pressed.
 					// Without this, the DragDrop is fired directly when the control is clicked, now you have to drag a few pixels first.
-					if (e.Button == MouseButtons.Left && _DDradius > 0 && this.AllowDrag)
+					if (e.Button == MouseButtons.Left && _DDradius > 0 && PositionUnlocked)
 					{
 						int num1 = _mX - e.X;
 						int num2 = _mY - e.Y;
@@ -356,6 +382,9 @@ namespace LaserGRBL
 			}
 
 			int dragInsertIndex = -1;
+
+			public bool ButtonPositionUnlocked { get; internal set; }
+
 			protected override void OnDragOver(DragEventArgs drgevent)
 			{
 				MyFlowPanel dst = this;
@@ -475,6 +504,15 @@ namespace LaserGRBL
 		{
 			exportCustomButtonsToolStripMenuItem.Enabled = CustomButtons.Count > 0;
 		}
+
+		private void MnUnlockButtonClick(object sender, EventArgs e)
+		{
+			MnLockButton.Checked = !MnLockButton.Checked;
+			CustomButtonArea.ButtonPositionUnlocked = !MnLockButton.Checked;
+			Refresh();
+		}
+
+		
 	}
 
 }

@@ -45,6 +45,7 @@ namespace LaserGRBL
 			this.CustomButtonArea = new LaserGRBL.PreviewForm.MyFlowPanel();
 			this.MNAddCB = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.addCustomButtonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnLockButton = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.exportCustomButtonsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.importCustomButtonsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,6 +88,7 @@ namespace LaserGRBL
 			resources.ApplyResources(this.BtnReset, "BtnReset");
 			this.BtnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnReset.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BtnReset.Caption = null;
 			this.BtnReset.Coloration = System.Drawing.Color.Empty;
 			this.BtnReset.Image = ((System.Drawing.Image)(resources.GetObject("BtnReset.Image")));
 			this.BtnReset.Name = "BtnReset";
@@ -97,6 +99,7 @@ namespace LaserGRBL
 			// 
 			// CustomButtonArea
 			// 
+			this.CustomButtonArea.AllowDrop = true;
 			this.CustomButtonArea.ContextMenuStrip = this.MNAddCB;
 			resources.ApplyResources(this.CustomButtonArea, "CustomButtonArea");
 			this.CustomButtonArea.Name = "CustomButtonArea";
@@ -105,6 +108,7 @@ namespace LaserGRBL
 			// 
 			this.MNAddCB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addCustomButtonToolStripMenuItem,
+            this.MnLockButton,
             this.toolStripMenuItem1,
             this.exportCustomButtonsToolStripMenuItem,
             this.importCustomButtonsToolStripMenuItem});
@@ -117,6 +121,14 @@ namespace LaserGRBL
 			this.addCustomButtonToolStripMenuItem.Name = "addCustomButtonToolStripMenuItem";
 			resources.ApplyResources(this.addCustomButtonToolStripMenuItem, "addCustomButtonToolStripMenuItem");
 			this.addCustomButtonToolStripMenuItem.Click += new System.EventHandler(this.addCustomButtonToolStripMenuItem_Click);
+			// 
+			// MnLockButton
+			// 
+			this.MnLockButton.Checked = true;
+			this.MnLockButton.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.MnLockButton.Name = "MnLockButton";
+			resources.ApplyResources(this.MnLockButton, "MnLockButton");
+			this.MnLockButton.Click += new System.EventHandler(this.MnUnlockButtonClick);
 			// 
 			// toolStripMenuItem1
 			// 
@@ -141,6 +153,7 @@ namespace LaserGRBL
 			resources.ApplyResources(this.BtnUnlock, "BtnUnlock");
 			this.BtnUnlock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnUnlock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BtnUnlock.Caption = null;
 			this.BtnUnlock.Coloration = System.Drawing.Color.Empty;
 			this.BtnUnlock.Image = ((System.Drawing.Image)(resources.GetObject("BtnUnlock.Image")));
 			this.BtnUnlock.Name = "BtnUnlock";
@@ -155,6 +168,7 @@ namespace LaserGRBL
 			resources.ApplyResources(this.BtnHoming, "BtnHoming");
 			this.BtnHoming.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnHoming.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BtnHoming.Caption = null;
 			this.BtnHoming.Coloration = System.Drawing.Color.Empty;
 			this.BtnHoming.Image = ((System.Drawing.Image)(resources.GetObject("BtnHoming.Image")));
 			this.BtnHoming.Name = "BtnHoming";
@@ -169,6 +183,7 @@ namespace LaserGRBL
 			resources.ApplyResources(this.BtnZeroing, "BtnZeroing");
 			this.BtnZeroing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnZeroing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BtnZeroing.Caption = null;
 			this.BtnZeroing.Coloration = System.Drawing.Color.Empty;
 			this.BtnZeroing.Image = ((System.Drawing.Image)(resources.GetObject("BtnZeroing.Image")));
 			this.BtnZeroing.Name = "BtnZeroing";
@@ -183,6 +198,7 @@ namespace LaserGRBL
 			resources.ApplyResources(this.BtnResume, "BtnResume");
 			this.BtnResume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnResume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BtnResume.Caption = null;
 			this.BtnResume.Coloration = System.Drawing.Color.Empty;
 			this.BtnResume.Image = ((System.Drawing.Image)(resources.GetObject("BtnResume.Image")));
 			this.BtnResume.Name = "BtnResume";
@@ -197,6 +213,7 @@ namespace LaserGRBL
 			resources.ApplyResources(this.BtnStop, "BtnStop");
 			this.BtnStop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnStop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BtnStop.Caption = null;
 			this.BtnStop.Coloration = System.Drawing.Color.Empty;
 			this.BtnStop.Image = ((System.Drawing.Image)(resources.GetObject("BtnStop.Image")));
 			this.BtnStop.Name = "BtnStop";
@@ -262,5 +279,6 @@ namespace LaserGRBL
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
 		private System.Windows.Forms.ToolStripMenuItem exportCustomButtonsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem importCustomButtonsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem MnLockButton;
 	}
 }

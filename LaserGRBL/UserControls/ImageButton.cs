@@ -146,7 +146,7 @@ namespace LaserGRBL.UserControls
 					Size = new Size(this.Width - 1, this.Height - 1);
 				}
 
-				if (this.HasCaption)
+				if (HasCaption)
 				{
 					Size.Height -= CAPTION_HEIGHT;
 					Size.Width -= CAPTION_HEIGHT;
@@ -209,8 +209,10 @@ namespace LaserGRBL.UserControls
 
 					using (Font captionFont = new Font("Microsoft Sans Serif", CAPTION_FONTSIZE))
 					{
-						float textY = this.Height - CAPTION_HEIGHT - 4;
-						e.Graphics.DrawString(this.Caption, captionFont, Brushes.Black, new RectangleF(0f, textY, this.Width, this.Height - textY), sf);
+						float textY = Height - CAPTION_HEIGHT - 4;
+
+						using (Brush b = new SolidBrush(ForeColor))
+							e.Graphics.DrawString(Caption, captionFont, b, new RectangleF(0f, textY, Width, Height - textY), sf);
 					}
 				}
 			}
