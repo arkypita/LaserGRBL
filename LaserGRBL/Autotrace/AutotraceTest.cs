@@ -109,7 +109,7 @@ namespace LaserGRBL
 
 				string param = $"-output-fi {fname}.svg -output-fo svg -centerline {rparam} {fname}.bmp";
 				label1.Text = rparam;
-				Debug.WriteLine(param);
+				//Debug.WriteLine(param);
 				ExecuteCommand(command, param);
 
 				string fcontent = System.IO.File.ReadAllText($"{fname}.svg");
@@ -162,11 +162,11 @@ namespace LaserGRBL
 				{
 					process.StartInfo = procStartInfo;
 
-					System.Diagnostics.Stopwatch stopwatch = new Stopwatch();
-					stopwatch.Start();
+					//System.Diagnostics.Stopwatch stopwatch = new Stopwatch();
+					//stopwatch.Start();
 					process.Start();
 					process.WaitForExit();
-					System.Diagnostics.Debug.WriteLine(stopwatch.ElapsedMilliseconds);
+					//System.Diagnostics.Debug.WriteLine(stopwatch.ElapsedMilliseconds);
 
 					string result = process.StandardOutput.ReadToEnd();
 					Console.WriteLine(result);
