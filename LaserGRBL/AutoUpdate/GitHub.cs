@@ -88,8 +88,11 @@ namespace LaserGRBL
 
 				if (current < latest)
 				{
-					if (NewVersion != null)
-						NewVersion(current, latest, name, url);
+					bool minor = Settings.GetObject("Auto Update", false);
+					bool build = Settings.GetObject("Auto Update Build", false);
+
+					if ((current.Major != latest.Major) || (current.Minor != latest.Minor && minor) || (current.Build != latest.Build && build))
+						NewVersion?.Invoke(current, latest, name, url);
 				}
 
 			}
@@ -150,8 +153,12 @@ namespace LaserGRBL
 			return false;
 		}
 
+		public static void InitUpdate()
+		{
+			CleanupOldVersion();
+		}
 
-		public static void CleanupOldVersion()
+		private static void CleanupOldVersion()
 		{
 			try
 			{
