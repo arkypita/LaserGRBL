@@ -24,9 +24,12 @@ namespace LaserGRBL
 
             splitContainer1.FixedPanel = FixedPanel.Panel1;
             splitContainer1.SplitterDistance = Settings.GetObject("MainForm Splitter Position", 260);
-            autoUpdateToolStripMenuItem.Checked = Settings.GetObject("Auto Update", true);
+            MnNotifyNewVersion.Checked = Settings.GetObject("Auto Update", true);
+			MnNotifyMinorVersion.Checked = Settings.GetObject("Auto Update Build", false);
 
-            if (System.Threading.Thread.CurrentThread.Name == null)
+			MnAutoUpdate.DropDown.Closing += MnAutoUpdateDropDown_Closing;
+
+			if (System.Threading.Thread.CurrentThread.Name == null)
                 System.Threading.Thread.CurrentThread.Name = "Main Thread";
 
             using (SplashScreenForm f = new SplashScreenForm())
@@ -63,6 +66,14 @@ namespace LaserGRBL
             RefreshColorSchema(); //include RefreshOverride();
             RefreshFormTitle();
         }
+
+		private void MnAutoUpdateDropDown_Closing(object sender, ToolStripDropDownClosingEventArgs e)
+		{
+			if (e.CloseReason == ToolStripDropDownCloseReason.ItemClicked)
+			{
+				e.Cancel = true;
+			}
+		}
 
 		void OnIssueDetected(GrblCore.DetectedIssue issue)
 		{
@@ -380,16 +391,6 @@ namespace LaserGRBL
 			System.Diagnostics.Process.Start(@"http://lasergrbl.com/");
 		}
 
-		private void autoUpdateToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			autoUpdateToolStripMenuItem.Checked = !autoUpdateToolStripMenuItem.Checked;
-			Settings.SetObject("Auto Update", autoUpdateToolStripMenuItem.Checked);
-			Settings.Save();
-
-			if (autoUpdateToolStripMenuItem.Checked)
-				GitHub.CheckVersion();
-		}
-
 		private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
 		{
 			Settings.SetObject("MainForm Splitter Position", splitContainer1.SplitterDistance);
@@ -659,6 +660,41 @@ namespace LaserGRBL
 		private void licenseToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			LicenseForm.CreateAndShowDialog();
+		}
+
+		private void MnNotifyNewVersion_Click(object sender, EventArgs e)
+		{
+			MnNotifyNewVersion.Checked = !MnNotifyNewVersion.Checked;
+			Settings.SetObject("Auto Update", MnNotifyNewVersion.Checked);
+			Settings.Save();
+
+			if (MnNotifyNewVersion.Checked)
+				GitHub.CheckVersion();
+		}
+
+		private void MnNotifyNewVersion_CheckedChanged(object sender, EventArgs e)
+		{
+			if (!MnNotifyNewVersion.Checked) //disabilita il minor update
+			{
+				MnNotifyMinorVersion.Enabled = false;
+				MnNotifyMinorVersion.Checked = false;
+				Settings.SetObject("Auto Update Build", false);
+			}
+			else
+			{
+				MnNotifyMinorVersion.Enabled = true;
+				MnNotifyMinorVersion.Checked = Settings.GetObject("Auto Update Build", false);
+			}
+		}
+
+		private void MnNotifyMinorVersion_Click(object sender, EventArgs e)
+		{
+			MnNotifyMinorVersion.Checked = !MnNotifyMinorVersion.Checked;
+			Settings.SetObject("Auto Update Build", MnNotifyMinorVersion.Checked);
+			Settings.Save();
+
+			if (MnNotifyNewVersion.Checked && MnNotifyMinorVersion.Checked)
+				GitHub.CheckVersion();
 		}
 	}
 

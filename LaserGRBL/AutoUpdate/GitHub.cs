@@ -88,8 +88,11 @@ namespace LaserGRBL
 
 				if (current < latest)
 				{
-					if (NewVersion != null)
-						NewVersion(current, latest, name, url);
+					bool minor = Settings.GetObject("Auto Update", false);
+					bool build = Settings.GetObject("Auto Update Build", false);
+
+					if ((current.Major != latest.Major) || (current.Minor != latest.Minor && minor) || (current.Build != latest.Build && build))
+						NewVersion?.Invoke(current, latest, name, url);
 				}
 
 			}
@@ -150,8 +153,25 @@ namespace LaserGRBL
 			return false;
 		}
 
+		public static void InitUpdate()
+		{
+			InitFlags();
+			CleanupOldVersion();
+		}
 
-		public static void CleanupOldVersion()
+		private static void InitFlags()
+		{
+			if (!Settings.ExistObject("Auto Update Build"))
+			{
+				int percentage = 2; //enable "auto update build" on 2% of installation to be used as test platform
+
+				Random rng = new Random();
+				Settings.SetObject("Auto Update Build", Settings.GetObject("Auto Update", true) && rng.Next(0, 100) < percentage); 
+				Settings.Save();
+			}
+		}
+
+		private static void CleanupOldVersion()
 		{
 			try
 			{

@@ -101,16 +101,18 @@
 			this.configurationWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.questionMarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpOnLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.autoUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnAutoUpdate = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnNotifyNewVersion = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnNotifyMinorVersion = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
 			this.openSessionLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.activateExtendedLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
 			this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
-			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -605,7 +607,7 @@
 			// 
 			this.questionMarkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.helpOnLineToolStripMenuItem,
-            this.autoUpdateToolStripMenuItem,
+            this.MnAutoUpdate,
             this.toolStripMenuItem5,
             this.openSessionLogToolStripMenuItem,
             this.activateExtendedLogToolStripMenuItem,
@@ -624,13 +626,28 @@
 			this.helpOnLineToolStripMenuItem.Name = "helpOnLineToolStripMenuItem";
 			this.helpOnLineToolStripMenuItem.Click += new System.EventHandler(this.helpOnLineToolStripMenuItem_Click);
 			// 
-			// autoUpdateToolStripMenuItem
+			// MnAutoUpdate
 			// 
-			this.autoUpdateToolStripMenuItem.Checked = true;
-			this.autoUpdateToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.autoUpdateToolStripMenuItem.Name = "autoUpdateToolStripMenuItem";
-			resources.ApplyResources(this.autoUpdateToolStripMenuItem, "autoUpdateToolStripMenuItem");
-			this.autoUpdateToolStripMenuItem.Click += new System.EventHandler(this.autoUpdateToolStripMenuItem_Click);
+			this.MnAutoUpdate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MnNotifyNewVersion,
+            this.MnNotifyMinorVersion});
+			this.MnAutoUpdate.Name = "MnAutoUpdate";
+			resources.ApplyResources(this.MnAutoUpdate, "MnAutoUpdate");
+			// 
+			// MnNotifyNewVersion
+			// 
+			this.MnNotifyNewVersion.Checked = true;
+			this.MnNotifyNewVersion.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.MnNotifyNewVersion.Name = "MnNotifyNewVersion";
+			resources.ApplyResources(this.MnNotifyNewVersion, "MnNotifyNewVersion");
+			this.MnNotifyNewVersion.CheckedChanged += new System.EventHandler(this.MnNotifyNewVersion_CheckedChanged);
+			this.MnNotifyNewVersion.Click += new System.EventHandler(this.MnNotifyNewVersion_Click);
+			// 
+			// MnNotifyMinorVersion
+			// 
+			this.MnNotifyMinorVersion.Name = "MnNotifyMinorVersion";
+			resources.ApplyResources(this.MnNotifyMinorVersion, "MnNotifyMinorVersion");
+			this.MnNotifyMinorVersion.Click += new System.EventHandler(this.MnNotifyMinorVersion_Click);
 			// 
 			// toolStripMenuItem5
 			// 
@@ -666,11 +683,10 @@
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
 			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
 			// 
-			// AwakeTimer
+			// toolStripMenuItem3
 			// 
-			this.AwakeTimer.Enabled = true;
-			this.AwakeTimer.Interval = 20000;
-			this.AwakeTimer.Tick += new System.EventHandler(this.AwakeTimer_Tick);
+			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+			resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
 			// 
 			// licenseToolStripMenuItem
 			// 
@@ -678,10 +694,11 @@
 			resources.ApplyResources(this.licenseToolStripMenuItem, "licenseToolStripMenuItem");
 			this.licenseToolStripMenuItem.Click += new System.EventHandler(this.licenseToolStripMenuItem_Click);
 			// 
-			// toolStripMenuItem3
+			// AwakeTimer
 			// 
-			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
+			this.AwakeTimer.Enabled = true;
+			this.AwakeTimer.Interval = 20000;
+			this.AwakeTimer.Tick += new System.EventHandler(this.AwakeTimer_Tick);
 			// 
 			// MainForm
 			// 
@@ -746,7 +763,6 @@
 		private System.Windows.Forms.ToolStripMenuItem MNSpanish;
 		private System.Windows.Forms.ToolStripMenuItem questionMarkToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem helpOnLineToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem autoUpdateToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 		private System.Windows.Forms.SplitContainer splitContainer1;
@@ -793,6 +809,9 @@
 		private System.Windows.Forms.ToolStripMenuItem MnAdvancedSave;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
 		private System.Windows.Forms.ToolStripMenuItem licenseToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem MnAutoUpdate;
+		private System.Windows.Forms.ToolStripMenuItem MnNotifyMinorVersion;
+		private System.Windows.Forms.ToolStripMenuItem MnNotifyNewVersion;
 	}
 }
 

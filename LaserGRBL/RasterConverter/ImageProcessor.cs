@@ -978,12 +978,14 @@ namespace LaserGRBL.RasterConverter
 
 				double res = 10.0;
 
-				if (SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering)
+				if (SelectedTool == Tool.Line2Line || SelectedTool == Tool.Dithering)
 					res = Math.Min(maxRes, (double)Quality);
+				else if (SelectedTool == Tool.Centerline)
+					res = 10.0;
 				else
 					res = Math.Min(maxRes, GetVectorQuality(filesize, UseAdaptiveQuality));
 
-				System.Diagnostics.Debug.WriteLine(res);
+				//System.Diagnostics.Debug.WriteLine(res);
 
 				Size pixelSize = new Size((int)(TargetSize.Width * res), (int)(TargetSize.Height * res));
 

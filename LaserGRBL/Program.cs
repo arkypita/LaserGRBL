@@ -23,7 +23,7 @@ namespace LaserGRBL
 			Tools.TimingBase.TimeFromApplicationStartup();
 
 			Logger.Start();
-			GitHub.CleanupOldVersion();
+			GitHub.InitUpdate();
 			UsageStats.LoadFile();
 			CustomButtons.LoadFile();
 			Application.EnableVisualStyles();
