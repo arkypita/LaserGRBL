@@ -334,7 +334,7 @@ namespace LaserGRBL.RasterConverter
 			// 
 			resources.ApplyResources(this.IIOffsetX, "IIOffsetX");
 			this.IIOffsetX.CurrentValue = 0F;
-			this.IIOffsetX.DecimalPositions = 1;
+			this.IIOffsetX.DecimalPositions = 2;
 			this.IIOffsetX.ForceMinMax = false;
 			this.IIOffsetX.MaxValue = 1000F;
 			this.IIOffsetX.MinValue = 0F;
@@ -345,7 +345,7 @@ namespace LaserGRBL.RasterConverter
 			// IIOffsetY
 			// 
 			this.IIOffsetY.CurrentValue = 0F;
-			this.IIOffsetY.DecimalPositions = 1;
+			this.IIOffsetY.DecimalPositions = 2;
 			this.IIOffsetY.ForceMinMax = false;
 			resources.ApplyResources(this.IIOffsetY, "IIOffsetY");
 			this.IIOffsetY.MaxValue = 1000F;
