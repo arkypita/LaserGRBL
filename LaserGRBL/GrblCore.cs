@@ -257,6 +257,7 @@ namespace LaserGRBL
 		private HotKeysManager mHotKeyManager;
 
 		public UsageStats.UsageCounters UsageCounters;
+ 
 
 		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
 		{
@@ -904,7 +905,8 @@ namespace LaserGRBL
 				if (!com.IsOpen)
 				{
 					com.Open();
-				}
+                    new Sound.SoundEvent().PlaySound(3); //connected
+                }
 
 				lock (this)
 				{
@@ -917,8 +919,9 @@ namespace LaserGRBL
 				Logger.LogMessage("OpenCom", "Error: {0}", ex.Message);
 				SetStatus(MacStatus.Disconnected);
 				com.Close(true);
+                new Sound.SoundEvent().PlaySound(4); //disconnected
 
-				System.Windows.Forms.MessageBox.Show(ex.Message, Strings.BoxConnectErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show(ex.Message, Strings.BoxConnectErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 			}
 		}
 
@@ -942,7 +945,8 @@ namespace LaserGRBL
 				{ ClearQueue(false); } //non resettare l'elenco delle cose mandate così da non sbiancare la lista
 
 				SetStatus(MacStatus.Disconnected);
-			}
+                new Sound.SoundEvent().PlaySound(4); //disconnected
+            }
 			catch (Exception ex)
 			{
 				Logger.LogException("CloseCom", ex);
@@ -1305,10 +1309,13 @@ namespace LaserGRBL
 				//}
 
 				bool noQueryResponse = debugLastStatusDelay.ElapsedTime > TimeSpan.FromTicks(QueryTimer.Period.Ticks * 10) && debugLastStatusDelay.ElapsedTime > TimeSpan.FromSeconds(5);
-				//bool noMovement = !executingM4 && debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(10);
+                //bool noMovement = !executingM4 && debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(10);
 
-				if (noQueryResponse)
-					SetIssue(DetectedIssue.StopResponding);
+                if (noQueryResponse)
+                {
+                    SetIssue(DetectedIssue.StopResponding);
+                    new Sound.SoundEvent().PlaySound(3);
+                }
 				//else if (noMovement)
 				//	SetIssue(DetectedIssue.StopMoving);
 			}
@@ -1321,7 +1328,8 @@ namespace LaserGRBL
 			{
 				Logger.LogMessage("OpenCom", "Connection timeout!");
 				com.Close(true); //this cause disconnection from RX thread ("ReadLineOrDisconnect")
-			}
+                new Sound.SoundEvent().PlaySound(4); //disconnected
+            }
 		}
 
 		private bool CanSend()
@@ -1853,6 +1861,8 @@ namespace LaserGRBL
 				Logger.LogMessage("EnqueueProgram", "Push Footer");
 				ExecuteCustombutton(Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
 
+                new Sound.SoundEvent().PlaySound(0);
+
 				ForceStatusIdle();
 			}
 		}
@@ -2228,7 +2238,7 @@ namespace LaserGRBL
 		private int mErrorCount;
 		private int mContinueCorrection;
 
-		GrblCore.DetectedIssue mLastIssue;
+        GrblCore.DetectedIssue mLastIssue;
 		private GPoint mLastKnownWCO;
 
 		public GPoint LastKnownWCO
@@ -2372,8 +2382,11 @@ namespace LaserGRBL
 
 		public void JobError()
 		{
-			if (mStarted && !mCompleted)
-				mErrorCount++;
+            if (mStarted && !mCompleted)
+            {
+                new Sound.SoundEvent().PlaySound(1);
+                mErrorCount++;
+            }
 		}
 
 		public void JobExecuted(TimeSpan EstimatedProgress)
