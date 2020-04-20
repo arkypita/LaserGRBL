@@ -127,7 +127,8 @@
     <value>Cerrar</value>
   </data>
   <data name="LblConnect.Text" xml:space="preserve">
-    <value>Lectura y Escritura habiltada solamente cuando está conectado y sin trabajos.</value>
+    <value>Lectura y Escritura habiltada
+solamente cuando está conectado y sin trabajos.</value>
   </data>
   <data name="BtnExport.Text" xml:space="preserve">
     <value>Exportar</value>
@@ -157,7 +158,7 @@
     <value>Número</value>
   </data>
   <data name="GB.Text" xml:space="preserve">
-    <value>Grbl $$ configuración</value>
+    <value>Configuración Grbl $$</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Grbl</value>
