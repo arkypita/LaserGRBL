@@ -130,30 +130,18 @@ namespace LaserGRBL.GrblEmulator
 			SendStatus();
 		}
 
-		static System.Text.RegularExpressions.Regex confRegEX = new System.Text.RegularExpressions.Regex(@"^[$](\d+) *= *(\d+\.?\d*)");
+		
 		private bool IsSetConf(string p)
-		{ return confRegEX.IsMatch(p); }
+		{ return GrblConf.IsSetConf(p); }
 
 		private void SetConfig(string p)
 		{
-			try
-			{
-				System.Threading.Thread.Sleep(10);
-				System.Text.RegularExpressions.MatchCollection matches = confRegEX.Matches(p);
-				int key = int.Parse(matches[0].Groups[1].Value);
+			System.Threading.Thread.Sleep(10);
 
-				if (conf.ContainsKey(key))
-				{
-					conf.SetValue(key, decimal.Parse(matches[0].Groups[2].Value, System.Globalization.CultureInfo.InvariantCulture));
-					EnqueueTX("ok");
-				}
-				else
-					EnqueueTX("error");
-			}
-			catch (Exception)
-			{
+			if (conf.SetValueIfKeyExist(p))
+				EnqueueTX("ok");
+			else
 				EnqueueTX("error");
-			}
 		}
 
 		private void SendConfig()

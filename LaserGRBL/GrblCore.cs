@@ -619,12 +619,7 @@ namespace LaserGRBL
 						foreach (IGrblRow row in mSentPtr)
 						{
 							if (row is GrblMessage)
-							{
-								string msg = row.GetMessage(); //"$0=10 (Step pulse time)"
-								int num = int.Parse(msg.Split('=')[0].Substring(1));
-								decimal val = decimal.Parse(msg.Split('=')[1].Split(' ')[0], System.Globalization.NumberFormatInfo.InvariantInfo);
-								conf.Add(num, val);
-							}
+								conf.AddOrUpdate(row.GetMessage());
 						}
 
 						if (conf.Count >= conf.ExpectedCount)
@@ -1684,6 +1679,9 @@ namespace LaserGRBL
 					if (mTP.InProgram && pending.Status == GrblCommand.CommandStatus.ResponseBad)
 						mTP.JobError(); //incrementa il contatore
 
+					if (pending.IsWriteEEPROM && pending.Status == GrblCommand.CommandStatus.ResponseGood)
+						Configuration.AddOrUpdate(pending.GetMessage());
+
 					//ripeti errori programma && non ho una coda (magari mi sto allineando per cambio conf buff/sync) && ho un errore && non l'ho già ripetuto troppe volte
 					if (InProgram && CurrentStreamingMode == StreamingMode.RepeatOnError && mPending.Count == 0 && pending.Status == GrblCommand.CommandStatus.ResponseBad && pending.RepeatCount < 3) //il comando eseguito ha dato errore
 						mRetryQueue = new GrblCommand(pending.Command, pending.RepeatCount + 1); //repeat on error
@@ -2567,7 +2565,7 @@ namespace LaserGRBL
 			return rv;
 		}
 
-		internal void Add(int num, decimal val)
+		private void Add(int num, decimal val)
 		{
 			mData.Add(num, val);
 		}
@@ -2584,12 +2582,12 @@ namespace LaserGRBL
 				return false;
 		}
 
-		internal bool ContainsKey(int key)
+		private bool ContainsKey(int key)
 		{
 			return mData.ContainsKey(key);
 		}
 
-		internal void SetValue(int key, decimal value)
+		private void SetValue(int key, decimal value)
 		{
 			mData[key] = value;
 		}
@@ -2602,6 +2600,59 @@ namespace LaserGRBL
 		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
 		{
 			return mData.GetEnumerator();
+		}
+
+
+		private static System.Text.RegularExpressions.Regex ConfRegEX = new System.Text.RegularExpressions.Regex(@"^[$](\d+) *= *(\d+\.?\d*)");
+
+		public static bool IsSetConf(string p)
+		{ return ConfRegEX.IsMatch(p); }
+
+		public void AddOrUpdate(string p)
+		{
+			try
+			{
+				if (IsSetConf(p))
+				{
+					System.Text.RegularExpressions.MatchCollection matches = ConfRegEX.Matches(p);
+					int key = int.Parse(matches[0].Groups[1].Value);
+					decimal val = decimal.Parse(matches[0].Groups[2].Value, System.Globalization.CultureInfo.InvariantCulture);
+
+					if (ContainsKey(key))
+						SetValue(key, val);
+					else
+						Add(key, val);
+				}
+			}
+			catch (Exception)
+			{
+				
+			}
+		}
+
+		internal bool SetValueIfKeyExist(string p)
+		{
+			try
+			{
+				if (IsSetConf(p))
+				{
+					System.Text.RegularExpressions.MatchCollection matches = ConfRegEX.Matches(p);
+					int key = int.Parse(matches[0].Groups[1].Value);
+					decimal val = decimal.Parse(matches[0].Groups[2].Value, System.Globalization.CultureInfo.InvariantCulture);
+
+					if (!ContainsKey(key))
+						return false;
+
+					SetValue(key, val);
+					return true;
+				}
+			}
+			catch (Exception)
+			{
+
+			}
+
+			return false;
 		}
 	}
 
