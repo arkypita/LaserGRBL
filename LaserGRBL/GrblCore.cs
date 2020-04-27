@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
 
 namespace LaserGRBL
@@ -511,13 +512,52 @@ namespace LaserGRBL
 					}
 					else if (System.IO.Path.GetExtension(filename).ToLowerInvariant() == ".svg")
 					{
-						try
+						SvgConverter.SvgModeForm.Mode mode = SvgConverter.SvgModeForm.Mode.Vector;// SvgConverter.SvgModeForm.CreateAndShow(filename);
+						if (mode == SvgConverter.SvgModeForm.Mode.Vector)
 						{
-							SvgConverter.SvgToGCodeForm.CreateAndShowDialog(this, filename, parent, append);
-							UsageCounters.SvgFile++;
+							try
+							{
+								SvgConverter.SvgToGCodeForm.CreateAndShowDialog(this, filename, parent, append);
+								UsageCounters.SvgFile++;
+							}
+							catch (Exception ex)
+							{ Logger.LogException("SvgImport", ex); }
 						}
-						catch (Exception ex)
-						{ Logger.LogException("SvgImport", ex); }
+						else if (mode == SvgConverter.SvgModeForm.Mode.Raster)
+						{
+							string bmpname = filename + ".png";
+							string fcontent = System.IO.File.ReadAllText(filename);
+							Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
+							svg.Ppi = 600;
+
+							using (Bitmap bmp = svg.Draw())
+							{
+								bmp.SetResolution(600, 600);
+
+								//codec options not supported in C# png encoder https://efundies.com/c-sharp-save-png/
+								//quality always 100%
+
+								//ImageCodecInfo codecinfo = GetEncoder(ImageFormat.Png);
+								//EncoderParameters paramlist = new EncoderParameters(1);
+								//paramlist.Param[0] = new EncoderParameter(Encoder.Quality, 30L); 
+
+
+								if (System.IO.File.Exists(bmpname))
+									System.IO.File.Delete(bmpname);
+
+								bmp.Save(bmpname/*, codecinfo, paramlist*/);
+							}
+
+							try
+							{
+								RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, bmpname, parent, append);
+								UsageCounters.RasterFile++;
+								if (System.IO.File.Exists(bmpname))
+									System.IO.File.Delete(bmpname);
+							}
+							catch (Exception ex)
+							{ Logger.LogException("SvgBmpImport", ex); }
+						}
 					}
 					else if (GCodeExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load GCODE file
 					{
@@ -543,6 +583,19 @@ namespace LaserGRBL
 			{
 				Logger.LogException("OpenFile", ex);
 			}
+		}
+
+		private ImageCodecInfo GetEncoder(ImageFormat format)
+		{
+			ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();
+			foreach (ImageCodecInfo codec in codecs)
+			{
+				if (codec.FormatID == format.Guid)
+				{
+					return codec;
+				}
+			}
+			return null;
 		}
 
 		public void SaveProgram(bool header, bool footer, bool between, int cycles)

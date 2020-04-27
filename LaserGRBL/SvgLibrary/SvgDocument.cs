@@ -456,7 +456,7 @@ namespace Svg
 		/// Renders the <see cref="SvgDocument"/> and returns the image as a <see cref="Bitmap"/>.
 		/// </summary>
 		/// <returns>A <see cref="Bitmap"/> containing the rendered document.</returns>
-		public virtual Bitmap Draw()
+		public virtual Bitmap Draw(bool wireframe = false)
 	    {
 		    //Trace.TraceInformation("Begin Render");
 
@@ -475,7 +475,7 @@ namespace Svg
 	    // 	bitmap.SetResolution(300, 300);
             try
             {
-                Draw(bitmap);
+                Draw(bitmap, wireframe);
             }
             catch
             {
@@ -490,7 +490,7 @@ namespace Svg
         /// <summary>
         /// Renders the <see cref="SvgDocument"/> into a given Bitmap <see cref="Bitmap"/>.
         /// </summary>
-        public virtual void Draw(Bitmap bitmap)
+        public virtual void Draw(Bitmap bitmap, bool wireframe = false)
         {
             //Trace.TraceInformation("Begin Render");
 
@@ -498,6 +498,7 @@ namespace Svg
             {
 				using (var renderer = SvgRenderer.FromImage(bitmap))
 				{
+					renderer.Wireframe = wireframe;
 					renderer.SetBoundable(new GenericBoundable(0, 0, bitmap.Width, bitmap.Height));
 
 					//EO, 2014-12-05: Requested to ensure proper zooming out (reduce size). Otherwise it clip the image.

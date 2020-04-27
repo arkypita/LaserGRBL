@@ -145,6 +145,12 @@
     </Compile>
     <Compile Include="SvgConverter\GCodeFromSVG.cs" />
     <Compile Include="SvgConverter\gcodeRelated.cs" />
+    <Compile Include="SvgConverter\SvgModeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SvgConverter\SvgModeForm.Designer.cs">
+      <DependentUpon>SvgModeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SvgLibrary\Basic Shapes\SvgCircle.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgEllipse.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgImage.cs" />
@@ -1256,6 +1262,9 @@
     <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.zh-CN.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SvgConverter\SvgModeForm.resx">
+      <DependentUpon>SvgModeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ColorSlider.resx">
       <DependentUpon>ColorSlider.cs</DependentUpon>
