@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
 
 namespace LaserGRBL
@@ -512,13 +513,52 @@ namespace LaserGRBL
 					}
 					else if (System.IO.Path.GetExtension(filename).ToLowerInvariant() == ".svg")
 					{
-						try
+						SvgConverter.SvgModeForm.Mode mode = SvgConverter.SvgModeForm.Mode.Vector;// SvgConverter.SvgModeForm.CreateAndShow(filename);
+						if (mode == SvgConverter.SvgModeForm.Mode.Vector)
 						{
-							SvgConverter.SvgToGCodeForm.CreateAndShowDialog(this, filename, parent, append);
-							UsageCounters.SvgFile++;
+							try
+							{
+								SvgConverter.SvgToGCodeForm.CreateAndShowDialog(this, filename, parent, append);
+								UsageCounters.SvgFile++;
+							}
+							catch (Exception ex)
+							{ Logger.LogException("SvgImport", ex); }
 						}
-						catch (Exception ex)
-						{ Logger.LogException("SvgImport", ex); }
+						else if (mode == SvgConverter.SvgModeForm.Mode.Raster)
+						{
+							string bmpname = filename + ".png";
+							string fcontent = System.IO.File.ReadAllText(filename);
+							Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
+							svg.Ppi = 600;
+
+							using (Bitmap bmp = svg.Draw())
+							{
+								bmp.SetResolution(600, 600);
+
+								//codec options not supported in C# png encoder https://efundies.com/c-sharp-save-png/
+								//quality always 100%
+
+								//ImageCodecInfo codecinfo = GetEncoder(ImageFormat.Png);
+								//EncoderParameters paramlist = new EncoderParameters(1);
+								//paramlist.Param[0] = new EncoderParameter(Encoder.Quality, 30L); 
+
+
+								if (System.IO.File.Exists(bmpname))
+									System.IO.File.Delete(bmpname);
+
+								bmp.Save(bmpname/*, codecinfo, paramlist*/);
+							}
+
+							try
+							{
+								RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, bmpname, parent, append);
+								UsageCounters.RasterFile++;
+								if (System.IO.File.Exists(bmpname))
+									System.IO.File.Delete(bmpname);
+							}
+							catch (Exception ex)
+							{ Logger.LogException("SvgBmpImport", ex); }
+						}
 					}
 					else if (GCodeExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load GCODE file
 					{
@@ -544,6 +584,19 @@ namespace LaserGRBL
 			{
 				Logger.LogException("OpenFile", ex);
 			}
+		}
+
+		private ImageCodecInfo GetEncoder(ImageFormat format)
+		{
+			ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();
+			foreach (ImageCodecInfo codec in codecs)
+			{
+				if (codec.FormatID == format.Guid)
+				{
+					return codec;
+				}
+			}
+			return null;
 		}
 
 		public void SaveProgram(bool header, bool footer, bool between, int cycles)
@@ -620,12 +673,7 @@ namespace LaserGRBL
 						foreach (IGrblRow row in mSentPtr)
 						{
 							if (row is GrblMessage)
-							{
-								string msg = row.GetMessage(); //"$0=10 (Step pulse time)"
-								int num = int.Parse(msg.Split('=')[0].Substring(1));
-								decimal val = decimal.Parse(msg.Split('=')[1].Split(' ')[0], System.Globalization.NumberFormatInfo.InvariantInfo);
-								conf.Add(num, val);
-							}
+								conf.AddOrUpdate(row.GetMessage());
 						}
 
 						if (conf.Count >= conf.ExpectedCount)
@@ -1692,6 +1740,9 @@ namespace LaserGRBL
 					if (mTP.InProgram && pending.Status == GrblCommand.CommandStatus.ResponseBad)
 						mTP.JobError(); //incrementa il contatore
 
+					if (pending.IsWriteEEPROM && pending.Status == GrblCommand.CommandStatus.ResponseGood)
+						Configuration.AddOrUpdate(pending.GetMessage());
+
 					//ripeti errori programma && non ho una coda (magari mi sto allineando per cambio conf buff/sync) && ho un errore && non l'ho già ripetuto troppe volte
 					if (InProgram && CurrentStreamingMode == StreamingMode.RepeatOnError && mPending.Count == 0 && pending.Status == GrblCommand.CommandStatus.ResponseBad && pending.RepeatCount < 3) //il comando eseguito ha dato errore
 						mRetryQueue = new GrblCommand(pending.Command, pending.RepeatCount + 1); //repeat on error
@@ -2580,7 +2631,7 @@ namespace LaserGRBL
 			return rv;
 		}
 
-		internal void Add(int num, decimal val)
+		private void Add(int num, decimal val)
 		{
 			mData.Add(num, val);
 		}
@@ -2597,12 +2648,12 @@ namespace LaserGRBL
 				return false;
 		}
 
-		internal bool ContainsKey(int key)
+		private bool ContainsKey(int key)
 		{
 			return mData.ContainsKey(key);
 		}
 
-		internal void SetValue(int key, decimal value)
+		private void SetValue(int key, decimal value)
 		{
 			mData[key] = value;
 		}
@@ -2615,6 +2666,59 @@ namespace LaserGRBL
 		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
 		{
 			return mData.GetEnumerator();
+		}
+
+
+		private static System.Text.RegularExpressions.Regex ConfRegEX = new System.Text.RegularExpressions.Regex(@"^[$](\d+) *= *(\d+\.?\d*)");
+
+		public static bool IsSetConf(string p)
+		{ return ConfRegEX.IsMatch(p); }
+
+		public void AddOrUpdate(string p)
+		{
+			try
+			{
+				if (IsSetConf(p))
+				{
+					System.Text.RegularExpressions.MatchCollection matches = ConfRegEX.Matches(p);
+					int key = int.Parse(matches[0].Groups[1].Value);
+					decimal val = decimal.Parse(matches[0].Groups[2].Value, System.Globalization.CultureInfo.InvariantCulture);
+
+					if (ContainsKey(key))
+						SetValue(key, val);
+					else
+						Add(key, val);
+				}
+			}
+			catch (Exception)
+			{
+				
+			}
+		}
+
+		internal bool SetValueIfKeyExist(string p)
+		{
+			try
+			{
+				if (IsSetConf(p))
+				{
+					System.Text.RegularExpressions.MatchCollection matches = ConfRegEX.Matches(p);
+					int key = int.Parse(matches[0].Groups[1].Value);
+					decimal val = decimal.Parse(matches[0].Groups[2].Value, System.Globalization.CultureInfo.InvariantCulture);
+
+					if (!ContainsKey(key))
+						return false;
+
+					SetValue(key, val);
+					return true;
+				}
+			}
+			catch (Exception)
+			{
+
+			}
+
+			return false;
 		}
 	}
 

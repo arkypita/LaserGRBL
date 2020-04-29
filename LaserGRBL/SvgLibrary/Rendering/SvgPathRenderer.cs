@@ -95,6 +95,8 @@ namespace Svg
 			set { /*this._innerPath.Transform = value;*/ }
 		}
 
+		public bool Wireframe { get ; set ; }
+
 		public void Dispose()
 		{
 			this._innerPath.Dispose();

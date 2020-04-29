@@ -82,7 +82,7 @@ namespace Svg
             // http://www.w3.org/TR/SVG11/coords.html#Units
 
             const float cmInInch = 2.54f;
-            int ppi = SvgDocument.PointsPerInch;
+			int ppi = owner != null ? owner.OwnerDocument.Ppi : SvgDocument.PointsPerInch;
 
             var type = this.Type;
             var value = this.Value;

@@ -212,7 +212,7 @@ Por favor decarga manualmente la nueva versión desde el sitio de lasergrbl.</va
     <value>Desconectado</value>
   </data>
   <data name="MacStatusDoor" xml:space="preserve">
-    <value>Door</value>
+    <value>Puerta</value>
   </data>
   <data name="MacStatusHold" xml:space="preserve">
     <value>Detener</value>
@@ -294,7 +294,7 @@ Por favor decarga manualmente la nueva versión desde el sitio de lasergrbl.</va
     <value>{0} Configuración escrita correctamente!</value>
   </data>
   <data name="BtnConnectTT" xml:space="preserve">
-    <value>Connectar</value>
+    <value>Conectar</value>
   </data>
   <data name="BtnDisconnectTT" xml:space="preserve">
     <value>Desconectar</value>

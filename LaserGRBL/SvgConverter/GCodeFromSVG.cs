@@ -24,10 +24,17 @@ namespace LaserGRBL.SvgConverter
 {
 	class GCodeFromSVG
 	{
+		private static float factor_In2Px = 96;
+		private static float factor_Mm2Px = 96f / 25.4f;
+		private static float factor_Cm2Px = 96f / 2.54f;
+		private static float factor_Pt2Px = 96f / 72f;
+		private static float factor_Pc2Px = 12 * 96f / 72f;
+		private static float factor_Em2Px = 150;
+
 		private StringBuilder gcodeString = new StringBuilder();
 		private int svgBezierAccuracy = 12;      // applied line segments at bezier curves
-		public bool SvgScaleApply = false;      // try to scale final GCode if true
-		public float SvgMaxSize = 100;          // final GCode size (greater dimension) if scale is applied
+		private bool svgScaleApply = false;      // try to scale final GCode if true
+		private float svgMaxSize = 100;          // final GCode size (greater dimension) if scale is applied
 		private bool svgClosePathExtend = true;  // not working if true move to first and second point of path to get overlap
 
 		private bool svgNodesOnly = false;        // if true only do pen-down -up on given coordinates
@@ -45,9 +52,9 @@ namespace LaserGRBL.SvgConverter
 		// Using Spindle pwr. to switch on/off laser
 		private bool gcodeUseSpindle = false; // Switch on/off spindle for Pen down/up (M3/M5)
 
-		public bool SvgConvertToMM = true;
+		public bool svgConvertToMM = true;
 
-		private float mGcodeScale = 1;                    // finally scale with this factor if svgScaleApply and svgMaxSize
+		private float gcodeScale = 1;                    // finally scale with this factor if svgScaleApply and svgMaxSize
 		private Matrix[] matrixGroup = new Matrix[10];   // store SVG-Group transformation matrixes
 		private Matrix matrixElement = new Matrix();     // store finally applied matrix
 		private Matrix oldMatrixElement = new Matrix();     // store finally applied matrix
@@ -106,7 +113,7 @@ namespace LaserGRBL.SvgConverter
 		{
 			countSubPath = 0;
 			startFirstElement = true;
-			mGcodeScale = 1;
+			gcodeScale = 1;
 			svgWidthPx = 0; svgHeightPx = 0;
 			currentX = 0; currentY = 0;
 			offsetX = 0; offsetY = 0;
@@ -133,7 +140,8 @@ namespace LaserGRBL.SvgConverter
 		/// </summary>
 		private XNamespace nspace = "http://www.w3.org/2000/svg";
 		private void parseGlobals(XElement svgCode)
-		{   // One px unit is defined to be equal to one user unit. Thus, a length of "5px" is the same as a length of "5".
+		{  
+			// One px unit is defined to be equal to one user unit. Thus, a length of "5px" is the same as a length of "5".
 			Matrix tmp = new Matrix(1, 0, 0, 1, 0, 0); // m11, m12, m21, m22, offsetx, offsety
 			svgWidthPx = 0;
 			svgHeightPx = 0;
@@ -149,77 +157,59 @@ namespace LaserGRBL.SvgConverter
 			else
 				nspace = "";
 
-			if (svgCode.Attribute("viewBox") != null)
+			if (svgCode.Attribute("viewBox") != null)   // viewBox unit always in px
 			{
-				string viewbox = svgCode.Attribute("viewBox").Value.Replace(' ', '|');
+				string viewbox = svgCode.Attribute("viewBox").Value;
+				viewbox = Regex.Replace(viewbox, @"\s+", " ").Replace(' ', '|');    // remove double space
 				var split = viewbox.Split('|');
-				vbOffX = -floatParse(split[0]);
-				vbOffY = -floatParse(split[1]);
-				vbWidth = floatParse(split[2]);
-				vbHeight = floatParse(split[3].TrimEnd(')'));
+				vbOffX = -convertToPixel(split[0]);
+				vbOffY = -convertToPixel(split[1]);
+				vbWidth = convertToPixel(split[2]);
+				vbHeight = convertToPixel(split[3].TrimEnd(')'));
 				tmp.M11 = 1; tmp.M22 = -1;      // flip Y
 				tmp.OffsetY = vbHeight;
-				if (svgComments) gcodeString.AppendLine("( SVG viewbox :" + viewbox + " )");
 			}
+
+			scale = 1;
+			if (svgConvertToMM)                 // convert back from px to mm 
+				scale = (1 / factor_Mm2Px);
+			else                                // convert back from px to inch
+				scale = (1 / factor_In2Px);
+
+			//if (unitIsPixel)                    // got svg-text from clipboard perhaps from maker.js
+			//	scale = 1;
 
 			if (svgCode.Attribute("width") != null)
 			{
 				tmpString = svgCode.Attribute("width").Value;
-				svgWidthPx = floatParse(tmpString);
-				if (importInMM)
-				{
-					if ((tmpString.IndexOf("mm") > 0) && (vbWidth > 0))
-						svgWidthPx = svgWidthPx / 3.543307f;
-				}
-				scale = 1;
-				if (SvgConvertToMM && tmpString.IndexOf("in") > 0)
-					scale = 25.4f;
-				if (!SvgConvertToMM && tmpString.IndexOf("mm") > 0)
-					scale = (1 / 25.4f);
-				tmpString = removeUnit(tmpString);
-				float svgWidthUnit = floatParse(tmpString);//floatParse(svgCode.Attribute("width").Value.Replace("mm", ""));
+				svgWidthPx = convertToPixel(tmpString);             // convert in px
 
-				if (svgComments) gcodeString.AppendLine("( SVG width :" + svgCode.Attribute("width").Value + " )");
-				tmp.M11 = scale * svgWidthUnit / svgWidthPx; // get desired scale
-				if (fromText)
-					tmp.M11 = 1 / 3.543307;         // https://www.w3.org/TR/SVG/coords.html#Units
+				tmp.M11 = scale; // get desired scale
+								 //if (fromClipboard)
+								 //    tmp.M11 = 1 / factor_Mm2Px; // 3.543307;         // https://www.w3.org/TR/SVG/coords.html#Units
 				if (vbWidth > 0)
 				{
 					tmp.M11 = scale * svgWidthPx / vbWidth;
-					tmp.OffsetX = vbOffX * svgWidthUnit / vbWidth;
+					tmp.OffsetX = vbOffX * scale;   // svgWidthUnit / vbWidth;
 				}
 			}
 
 			if (svgCode.Attribute("height") != null)
 			{
 				tmpString = svgCode.Attribute("height").Value;
-				svgHeightPx = floatParse(tmpString);
-				if (importInMM)
-				{
-					if ((tmpString.IndexOf("mm") > 0) && (vbHeight > 0))
-						svgHeightPx = svgHeightPx / 3.543307f;
-				}
-				scale = 1;
-				if (SvgConvertToMM && tmpString.IndexOf("in") > 0)
-					scale = 25.4f;
-				if (!SvgConvertToMM && tmpString.IndexOf("mm") > 0)
-					scale = (1 / 25.4f);
-				tmpString = removeUnit(tmpString);
-				float svgHeightUnit = floatParse(tmpString);// svgCode.Attribute("height").Value.Replace("mm", ""));
+				svgHeightPx = convertToPixel(tmpString);
 
-				if (svgComments) gcodeString.AppendLine("( SVG height :" + svgCode.Attribute("height").Value + " )");
-				tmp.M22 = -scale * svgHeightUnit / svgHeightPx;   // get desired scale and flip vertical
-				tmp.OffsetY = scale * svgHeightUnit;
+				tmp.M22 = -scale;   // get desired scale and flip vertical
+				tmp.OffsetY = scale * svgHeightPx;  // svgHeightUnit;
 
-				if (fromText)
-				{
-					tmp.M22 = -1 / 3.543307;
-					tmp.OffsetY = svgHeightUnit / 3.543307;     // https://www.w3.org/TR/SVG/coords.html#Units
-				}
+				//if (fromClipboard)
+				//{   tmp.M22 = -1 / factor_Mm2Px;// 3.543307;
+				//    tmp.OffsetY = svgHeightPx / factor_Mm2Px; // 3.543307;     // https://www.w3.org/TR/SVG/coords.html#Units
+				//}
 				if (vbHeight > 0)
 				{
 					tmp.M22 = -scale * svgHeightPx / vbHeight;
-					tmp.OffsetY = -vbOffX * svgHeightUnit / vbHeight + svgHeightPx;
+					tmp.OffsetY = -vbOffY * svgHeightPx / vbHeight + (svgHeightPx * scale);
 				}
 			}
 
@@ -229,30 +219,39 @@ namespace LaserGRBL.SvgConverter
 			{
 				if (SvgScaleApply)
 				{
-					mGcodeScale = SvgMaxSize / Math.Max(newWidth, newHeight);        // calc. factor to get desired max. size
-					tmp.Scale((double)mGcodeScale, (double)mGcodeScale);
-					if (SvgConvertToMM)                         // https://www.w3.org/TR/SVG/coords.html#Units
-						tmp.Scale(3.543307, 3.543307);
+					gcodeScale = SvgMaxSize / Math.Max(newWidth, newHeight);        // calc. factor to get desired max. size
+					tmp.Scale((double)gcodeScale, (double)gcodeScale);
+					if (svgConvertToMM)                         // https://www.w3.org/TR/SVG/coords.html#Units
+						tmp.Scale(factor_Mm2Px, factor_Mm2Px);  // 3.543307, 3.543307);
 					else
-						tmp.Scale(90, 90);
-
-					if (svgComments)
-						gcodeString.AppendFormat("( Scale to X={0} Y={1} f={2} )\r\n", newWidth * mGcodeScale, newHeight * mGcodeScale, mGcodeScale);
+						tmp.Scale(factor_In2Px, factor_In2Px);
 				}
 			}
-			else
-				if (svgComments) gcodeString.Append("( SVG Dimension not given )\r\n");
-
-
-			tmp.OffsetX += UserOffset.X;
-			tmp.OffsetY += UserOffset.Y;
+			//else error! dimension not given
 
 			for (int i = 0; i < matrixGroup.Length; i++)
 			{ matrixGroup[i] = tmp; }
 			matrixElement = tmp;
 
-			if (svgComments) gcodeString.AppendFormat("( Inital Matrix {0} )\r\n", tmp.ToString());
+			//var element = svgCode.Element(nspace + "title");
+			////if (element != null)
+			////    Plotter.DocTitle = element.Value;
 
+			//var xtmp = svgCode.Element(nspace + "metadata");
+			//if ((xtmp) != null)
+			//{
+			//	XNamespace ccspace = "http://creativecommons.org/ns#";
+			//	XNamespace rdfspace = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+			//	XNamespace dcspace = "http://purl.org/dc/elements/1.1/";
+			//	if ((xtmp = xtmp.Element(rdfspace + "RDF")) != null)
+			//	{
+			//		if ((xtmp = xtmp.Element(ccspace + "Work")) != null)
+			//		{
+			//			//if ((xtmp = xtmp.Element(dcspace + "description")) != null)
+			//			//                      Plotter.DocDescription = xtmp.Value;
+			//		}
+			//	}
+			//}
 			return;
 		}
 
@@ -406,30 +405,42 @@ namespace LaserGRBL.SvgConverter
 			}
 			return source.Substring(start, source.Length - start - 1);
 		}
-		private float floatParse(string str, float ext = 1)
-		{       // https://www.w3.org/TR/SVG/coords.html#Units
-			bool percent = false;
-			float factor = 1;
-			if (str.IndexOf("pt") > 0) { factor = 1.25f; }
-			if (str.IndexOf("pc") > 0) { factor = 15f; }
-			if (str.IndexOf("mm") > 0) { factor = 3.543307f; }
-			if (str.IndexOf("cm") > 0) { factor = 35.43307f; }
-			if (str.IndexOf("in") > 0) { factor = 90f; }
-			if (str.IndexOf("em") > 0) { factor = 150f; }
-			if (str.IndexOf("%") > 0) { percent = true; }
-			str = str.Replace("pt", "").Replace("pc", "").Replace("mm", "").Replace("cm", "").Replace("in", "").Replace("em ", "").Replace("%", "").Replace("px", "");
 
+		private float convertToPixel(string str, float ext = 1) => floatParse(str, ext = 1);
+		private float floatParse(string str, float ext = 1)
+		{
+			bool percent = false;
+			float factor = 1;   // no unit = px
+			if (str.IndexOf("mm") > 0) { factor = factor_Mm2Px; }               // Millimeter
+			else if (str.IndexOf("cm") > 0) { factor = factor_Cm2Px; }          // Centimeter
+			else if (str.IndexOf("in") > 0) { factor = factor_In2Px; }          // Inch    72, 90 or 96?
+			else if (str.IndexOf("pt") > 0) { factor = factor_Pt2Px; }          // Point
+			else if (str.IndexOf("pc") > 0) { factor = factor_Pc2Px; }          // Pica
+			else if (str.IndexOf("em") > 0) { factor = factor_Em2Px; }          // Font size
+			else if (str.IndexOf("%") > 0) { percent = true; }
+			string nstr = removeUnit(str);
+			str = nstr;
+			float test;
 			if (str.Length > 0)
 			{
 				if (percent)
-					return float.Parse(str, CultureInfo.InvariantCulture.NumberFormat) * ext / 100;
+				{
+					if (float.TryParse(str, NumberStyles.Float, NumberFormatInfo.InvariantInfo, out test))
+					{ return (test * ext / 100); }
+				}
 				else
-					return float.Parse(str, CultureInfo.InvariantCulture.NumberFormat) * factor;
+				{
+					if (float.TryParse(str, NumberStyles.Float, NumberFormatInfo.InvariantInfo, out test))
+					{ return (test * factor); }
+				}
 			}
-			else return 0f;
+
+			//else error!
+			return 0f;
 		}
-		private string removeUnit(string str)
-		{ return str.Replace("pt", "").Replace("pc", "").Replace("mm", "").Replace("cm", "").Replace("in", "").Replace("em ", "").Replace("%", "").Replace("px", ""); }
+
+		private static string removeUnit(string str)
+		{ return Regex.Replace(str, @"[^0-9.\-+]", ""); }
 
 		private string getColor(XElement pathElement)
 		{
@@ -1208,6 +1219,10 @@ namespace LaserGRBL.SvgConverter
 		private bool isReduceOk = false;
 		private bool rejectPoint = false;
 		private double lastGCX = 0, lastGCY = 0, lastSetGCX = 0, lastSetGCY = 0, distance;
+
+		public bool SvgScaleApply { get => svgScaleApply; set => svgScaleApply = value; }
+		public float SvgMaxSize { get => svgMaxSize; set => svgMaxSize = value; }
+
 		/// <summary>
 		/// Insert G1 gcode command
 		/// </summary>

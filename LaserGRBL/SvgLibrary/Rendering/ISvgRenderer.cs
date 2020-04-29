@@ -22,5 +22,6 @@ namespace Svg
         SmoothingMode SmoothingMode { get; set; }
         Matrix Transform { get; set; }
         void TranslateTransform(float dx, float dy, MatrixOrder order = MatrixOrder.Append);
+		bool Wireframe { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace Svg
     /// <summary>
     /// Convenience wrapper around a graphics object
     /// </summary>
-    public sealed class SvgRenderer : IDisposable, IGraphicsProvider, ISvgRenderer
+    public class SvgRenderer : IDisposable, IGraphicsProvider, ISvgRenderer
     {
         private Graphics _innerGraphics;
         private Stack<ISvgBoundable> _boundables = new Stack<ISvgBoundable>();
@@ -37,12 +37,14 @@ namespace Svg
         /// <summary>
         /// Initializes a new instance of the <see cref="ISvgRenderer"/> class.
         /// </summary>
-        private SvgRenderer(Graphics graphics)
+        protected SvgRenderer(Graphics graphics)
         {
             this._innerGraphics = graphics;
         }
 
-        public void DrawImage(Image image, RectangleF destRect, RectangleF srcRect, GraphicsUnit graphicsUnit)
+		public bool Wireframe { get; set; }
+
+		public void DrawImage(Image image, RectangleF destRect, RectangleF srcRect, GraphicsUnit graphicsUnit)
         {
             _innerGraphics.DrawImage(image, destRect, srcRect, graphicsUnit);
         }
@@ -52,11 +54,20 @@ namespace Svg
         }
         public void DrawPath(Pen pen, GraphicsPath path)
         {
-            this._innerGraphics.DrawPath(pen, path);
+			if (Wireframe)
+			{
+				pen.Width = 1;
+				pen.Color = Color.Red;
+			}
+			
+			_innerGraphics.DrawPath(pen, path);
         }
         public void FillPath(Brush brush, GraphicsPath path)
         {
-            this._innerGraphics.FillPath(brush, path);
+			if (Wireframe)
+				_innerGraphics.DrawPath(Pens.Red, path);
+			else
+				_innerGraphics.FillPath(brush, path);
         }
         public Region GetClip()
         {
