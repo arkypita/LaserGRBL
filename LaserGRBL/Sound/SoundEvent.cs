@@ -24,23 +24,23 @@ namespace Sound
             switch (eventId)
             {
                 case 0:
-                    player = new SoundPlayer(@"Sound\success.wav");
+                    player = new SoundPlayer(LaserGRBL.Settings.GetObject("Sound.Success", "Sound\\success.wav")); //since it is saved as a setting, we can now read it from there
                     player.Play();
                     break;
                 case 1:
-                    player = new SoundPlayer(@"Sound\non-fatal.wav");
+                    player = new SoundPlayer(LaserGRBL.Settings.GetObject("Sound.Warning", "Sound\\non-fatal.wav"));
                     player.Play();
                     break;
                 case 2:
-                    player = new SoundPlayer(@"Sound\fatal.wav");
+                    player = new SoundPlayer(LaserGRBL.Settings.GetObject("Sound.Fatal", "Sound\\fatal.wav"));
                     player.Play();
                     break;
                 case 3:
-                    player = new SoundPlayer(@"Sound\connect.wav");
+                    player = new SoundPlayer(LaserGRBL.Settings.GetObject("Sound.Connect", "Sound\\connect.wav"));
                     player.Play();
                     break;
                 case 4:
-                    player = new SoundPlayer(@"Sound\disconnect.wav");
+                    player = new SoundPlayer(LaserGRBL.Settings.GetObject("Sound.Disconnect", "Sound\\disconnect.wav"));
                     player.Play();
                     break;
                 default:

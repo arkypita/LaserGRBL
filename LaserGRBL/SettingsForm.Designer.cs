@@ -93,6 +93,44 @@
             this.TBPasses = new System.Windows.Forms.TextBox();
             this.LblFooter = new System.Windows.Forms.Label();
             this.LblPasses = new System.Windows.Forms.Label();
+            this.TpSoundSettings = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.label33 = new System.Windows.Forms.Label();
+            this.changeSucBtn = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.successSoundLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.label26 = new System.Windows.Forms.Label();
+            this.changeWarBtn = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
+            this.warningSoundLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.label29 = new System.Windows.Forms.Label();
+            this.changeFatBtn = new System.Windows.Forms.Button();
+            this.label30 = new System.Windows.Forms.Label();
+            this.fatalSoundLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.label34 = new System.Windows.Forms.Label();
+            this.changeConBtn = new System.Windows.Forms.Button();
+            this.label35 = new System.Windows.Forms.Label();
+            this.connectSoundLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.label37 = new System.Windows.Forms.Label();
+            this.changeDconBtn = new System.Windows.Forms.Button();
+            this.label38 = new System.Windows.Forms.Label();
+            this.disconnectSoundLabel = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
+            this.SuccesFullLabel = new System.Windows.Forms.Label();
+            this.WarningFullLabel = new System.Windows.Forms.Label();
+            this.ErrorFullLabel = new System.Windows.Forms.Label();
+            this.ConnectFullLabel = new System.Windows.Forms.Label();
+            this.DisconnectFullLabel = new System.Windows.Forms.Label();
             this.BtnStreamingMode = new LaserGRBL.UserControls.ImageButton();
             this.BtnProtocol = new LaserGRBL.UserControls.ImageButton();
             this.BtnThreadingModel = new LaserGRBL.UserControls.ImageButton();
@@ -117,6 +155,13 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.TpSoundSettings.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
+            this.tableLayoutPanel12.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
+            this.tableLayoutPanel15.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -155,6 +200,7 @@
             this.MainTabPage.Controls.Add(this.TpJogControl);
             this.MainTabPage.Controls.Add(this.TpAutoCooling);
             this.MainTabPage.Controls.Add(this.TpGCodeSettings);
+            this.MainTabPage.Controls.Add(this.TpSoundSettings);
             resources.ApplyResources(this.MainTabPage, "MainTabPage");
             this.MainTabPage.Name = "MainTabPage";
             this.MainTabPage.SelectedIndex = 0;
@@ -547,10 +593,247 @@
             resources.ApplyResources(this.LblPasses, "LblPasses");
             this.LblPasses.Name = "LblPasses";
             // 
+            // TpSoundSettings
+            // 
+            this.TpSoundSettings.Controls.Add(this.tableLayoutPanel10);
+            resources.ApplyResources(this.TpSoundSettings, "TpSoundSettings");
+            this.TpSoundSettings.Name = "TpSoundSettings";
+            this.TpSoundSettings.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel10
+            // 
+            resources.ApplyResources(this.tableLayoutPanel10, "tableLayoutPanel10");
+            this.tableLayoutPanel10.Controls.Add(this.DisconnectFullLabel, 0, 4);
+            this.tableLayoutPanel10.Controls.Add(this.ConnectFullLabel, 0, 3);
+            this.tableLayoutPanel10.Controls.Add(this.ErrorFullLabel, 0, 2);
+            this.tableLayoutPanel10.Controls.Add(this.WarningFullLabel, 0, 1);
+            this.tableLayoutPanel10.Controls.Add(this.SuccesFullLabel, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.label23, 2, 0);
+            this.tableLayoutPanel10.Controls.Add(this.label24, 2, 1);
+            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel11, 1, 1);
+            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel12, 1, 2);
+            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel14, 1, 3);
+            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel15, 1, 4);
+            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel13, 1, 0);
+            this.tableLayoutPanel10.Controls.Add(this.label32, 2, 3);
+            this.tableLayoutPanel10.Controls.Add(this.label36, 2, 4);
+            this.tableLayoutPanel10.Controls.Add(this.label28, 2, 2);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            // 
+            // label23
+            // 
+            resources.ApplyResources(this.label23, "label23");
+            this.label23.Name = "label23";
+            // 
+            // label24
+            // 
+            resources.ApplyResources(this.label24, "label24");
+            this.label24.Name = "label24";
+            // 
+            // tableLayoutPanel13
+            // 
+            resources.ApplyResources(this.tableLayoutPanel13, "tableLayoutPanel13");
+            this.tableLayoutPanel13.Controls.Add(this.label33, 0, 0);
+            this.tableLayoutPanel13.Controls.Add(this.changeSucBtn, 0, 1);
+            this.tableLayoutPanel13.Controls.Add(this.label25, 1, 0);
+            this.tableLayoutPanel13.Controls.Add(this.successSoundLabel, 1, 1);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            // 
+            // label33
+            // 
+            resources.ApplyResources(this.label33, "label33");
+            this.label33.Name = "label33";
+            // 
+            // changeSucBtn
+            // 
+            resources.ApplyResources(this.changeSucBtn, "changeSucBtn");
+            this.changeSucBtn.Name = "changeSucBtn";
+            this.changeSucBtn.UseVisualStyleBackColor = true;
+            this.changeSucBtn.Click += new System.EventHandler(this.changeSucBtn_Click);
+            // 
+            // label25
+            // 
+            resources.ApplyResources(this.label25, "label25");
+            this.label25.Name = "label25";
+            // 
+            // successSoundLabel
+            // 
+            resources.ApplyResources(this.successSoundLabel, "successSoundLabel");
+            this.successSoundLabel.Name = "successSoundLabel";
+            // 
+            // tableLayoutPanel11
+            // 
+            resources.ApplyResources(this.tableLayoutPanel11, "tableLayoutPanel11");
+            this.tableLayoutPanel11.Controls.Add(this.label26, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.changeWarBtn, 0, 1);
+            this.tableLayoutPanel11.Controls.Add(this.label27, 1, 0);
+            this.tableLayoutPanel11.Controls.Add(this.warningSoundLabel, 1, 1);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            // 
+            // label26
+            // 
+            resources.ApplyResources(this.label26, "label26");
+            this.label26.Name = "label26";
+            // 
+            // changeWarBtn
+            // 
+            resources.ApplyResources(this.changeWarBtn, "changeWarBtn");
+            this.changeWarBtn.Name = "changeWarBtn";
+            this.changeWarBtn.UseVisualStyleBackColor = true;
+            this.changeWarBtn.Click += new System.EventHandler(this.changeWarBtn_Click);
+            // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
+            // warningSoundLabel
+            // 
+            resources.ApplyResources(this.warningSoundLabel, "warningSoundLabel");
+            this.warningSoundLabel.Name = "warningSoundLabel";
+            // 
+            // tableLayoutPanel12
+            // 
+            resources.ApplyResources(this.tableLayoutPanel12, "tableLayoutPanel12");
+            this.tableLayoutPanel12.Controls.Add(this.label29, 0, 0);
+            this.tableLayoutPanel12.Controls.Add(this.changeFatBtn, 0, 1);
+            this.tableLayoutPanel12.Controls.Add(this.label30, 1, 0);
+            this.tableLayoutPanel12.Controls.Add(this.fatalSoundLabel, 1, 1);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            // 
+            // label29
+            // 
+            resources.ApplyResources(this.label29, "label29");
+            this.label29.Name = "label29";
+            // 
+            // changeFatBtn
+            // 
+            resources.ApplyResources(this.changeFatBtn, "changeFatBtn");
+            this.changeFatBtn.Name = "changeFatBtn";
+            this.changeFatBtn.UseVisualStyleBackColor = true;
+            this.changeFatBtn.Click += new System.EventHandler(this.changeFatBtn_Click);
+            // 
+            // label30
+            // 
+            resources.ApplyResources(this.label30, "label30");
+            this.label30.Name = "label30";
+            // 
+            // fatalSoundLabel
+            // 
+            resources.ApplyResources(this.fatalSoundLabel, "fatalSoundLabel");
+            this.fatalSoundLabel.Name = "fatalSoundLabel";
+            // 
+            // tableLayoutPanel14
+            // 
+            resources.ApplyResources(this.tableLayoutPanel14, "tableLayoutPanel14");
+            this.tableLayoutPanel14.Controls.Add(this.label34, 0, 0);
+            this.tableLayoutPanel14.Controls.Add(this.changeConBtn, 0, 1);
+            this.tableLayoutPanel14.Controls.Add(this.label35, 1, 0);
+            this.tableLayoutPanel14.Controls.Add(this.connectSoundLabel, 1, 1);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            // 
+            // label34
+            // 
+            resources.ApplyResources(this.label34, "label34");
+            this.label34.Name = "label34";
+            // 
+            // changeConBtn
+            // 
+            resources.ApplyResources(this.changeConBtn, "changeConBtn");
+            this.changeConBtn.Name = "changeConBtn";
+            this.changeConBtn.UseVisualStyleBackColor = true;
+            this.changeConBtn.Click += new System.EventHandler(this.changeConBtn_Click);
+            // 
+            // label35
+            // 
+            resources.ApplyResources(this.label35, "label35");
+            this.label35.Name = "label35";
+            // 
+            // connectSoundLabel
+            // 
+            resources.ApplyResources(this.connectSoundLabel, "connectSoundLabel");
+            this.connectSoundLabel.Name = "connectSoundLabel";
+            // 
+            // tableLayoutPanel15
+            // 
+            resources.ApplyResources(this.tableLayoutPanel15, "tableLayoutPanel15");
+            this.tableLayoutPanel15.Controls.Add(this.label37, 0, 0);
+            this.tableLayoutPanel15.Controls.Add(this.changeDconBtn, 0, 1);
+            this.tableLayoutPanel15.Controls.Add(this.label38, 1, 0);
+            this.tableLayoutPanel15.Controls.Add(this.disconnectSoundLabel, 1, 1);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            // 
+            // label37
+            // 
+            resources.ApplyResources(this.label37, "label37");
+            this.label37.Name = "label37";
+            // 
+            // changeDconBtn
+            // 
+            resources.ApplyResources(this.changeDconBtn, "changeDconBtn");
+            this.changeDconBtn.Name = "changeDconBtn";
+            this.changeDconBtn.UseVisualStyleBackColor = true;
+            this.changeDconBtn.Click += new System.EventHandler(this.changeDconBtn_Click);
+            // 
+            // label38
+            // 
+            resources.ApplyResources(this.label38, "label38");
+            this.label38.Name = "label38";
+            // 
+            // disconnectSoundLabel
+            // 
+            resources.ApplyResources(this.disconnectSoundLabel, "disconnectSoundLabel");
+            this.disconnectSoundLabel.Name = "disconnectSoundLabel";
+            // 
+            // label32
+            // 
+            resources.ApplyResources(this.label32, "label32");
+            this.label32.Name = "label32";
+            // 
+            // label36
+            // 
+            resources.ApplyResources(this.label36, "label36");
+            this.label36.Name = "label36";
+            // 
+            // label28
+            // 
+            resources.ApplyResources(this.label28, "label28");
+            this.label28.Name = "label28";
+            // 
+            // SoundBrowserDialog
+            // 
+            resources.ApplyResources(this.SoundBrowserDialog, "SoundBrowserDialog");
+            // 
+            // SuccesFullLabel
+            // 
+            resources.ApplyResources(this.SuccesFullLabel, "SuccesFullLabel");
+            this.SuccesFullLabel.Name = "SuccesFullLabel";
+            // 
+            // WarningFullLabel
+            // 
+            resources.ApplyResources(this.WarningFullLabel, "WarningFullLabel");
+            this.WarningFullLabel.Name = "WarningFullLabel";
+            // 
+            // ErrorFullLabel
+            // 
+            resources.ApplyResources(this.ErrorFullLabel, "ErrorFullLabel");
+            this.ErrorFullLabel.Name = "ErrorFullLabel";
+            // 
+            // ConnectFullLabel
+            // 
+            resources.ApplyResources(this.ConnectFullLabel, "ConnectFullLabel");
+            this.ConnectFullLabel.Name = "ConnectFullLabel";
+            // 
+            // DisconnectFullLabel
+            // 
+            resources.ApplyResources(this.DisconnectFullLabel, "DisconnectFullLabel");
+            this.DisconnectFullLabel.Name = "DisconnectFullLabel";
+            // 
             // BtnStreamingMode
             // 
             this.BtnStreamingMode.AltImage = null;
             this.BtnStreamingMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnStreamingMode.Caption = null;
             this.BtnStreamingMode.Coloration = System.Drawing.Color.Empty;
             this.BtnStreamingMode.Image = ((System.Drawing.Image)(resources.GetObject("BtnStreamingMode.Image")));
             resources.ApplyResources(this.BtnStreamingMode, "BtnStreamingMode");
@@ -563,6 +846,7 @@
             // 
             this.BtnProtocol.AltImage = null;
             this.BtnProtocol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnProtocol.Caption = null;
             this.BtnProtocol.Coloration = System.Drawing.Color.Empty;
             this.BtnProtocol.Image = ((System.Drawing.Image)(resources.GetObject("BtnProtocol.Image")));
             resources.ApplyResources(this.BtnProtocol, "BtnProtocol");
@@ -575,6 +859,7 @@
             // 
             this.BtnThreadingModel.AltImage = null;
             this.BtnThreadingModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnThreadingModel.Caption = null;
             this.BtnThreadingModel.Coloration = System.Drawing.Color.Empty;
             this.BtnThreadingModel.Image = ((System.Drawing.Image)(resources.GetObject("BtnThreadingModel.Image")));
             resources.ApplyResources(this.BtnThreadingModel, "BtnThreadingModel");
@@ -587,6 +872,7 @@
             // 
             this.BtnFType.AltImage = null;
             this.BtnFType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnFType.Caption = null;
             this.BtnFType.Coloration = System.Drawing.Color.Empty;
             this.BtnFType.Image = ((System.Drawing.Image)(resources.GetObject("BtnFType.Image")));
             resources.ApplyResources(this.BtnFType, "BtnFType");
@@ -599,6 +885,7 @@
             // 
             this.BtnModulationInfo.AltImage = null;
             this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnModulationInfo.Caption = null;
             this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
             this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
             resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
@@ -650,6 +937,20 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.TpSoundSettings.ResumeLayout(false);
+            this.TpSoundSettings.PerformLayout();
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel10.PerformLayout();
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel13.PerformLayout();
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.tableLayoutPanel11.PerformLayout();
+            this.tableLayoutPanel12.ResumeLayout(false);
+            this.tableLayoutPanel12.PerformLayout();
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
+            this.tableLayoutPanel15.ResumeLayout(false);
+            this.tableLayoutPanel15.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -726,5 +1027,43 @@
 		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.TextBox TBPasses;
         private UserControls.ImageButton BtnFType;
+        private System.Windows.Forms.TabPage TpSoundSettings;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Button changeSucBtn;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label successSoundLabel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button changeWarBtn;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label warningSoundLabel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button changeFatBtn;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label fatalSoundLabel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Button changeConBtn;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label connectSoundLabel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Button changeDconBtn;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label disconnectSoundLabel;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.OpenFileDialog SoundBrowserDialog;
+        private System.Windows.Forms.Label SuccesFullLabel;
+        private System.Windows.Forms.Label DisconnectFullLabel;
+        private System.Windows.Forms.Label ConnectFullLabel;
+        private System.Windows.Forms.Label ErrorFullLabel;
+        private System.Windows.Forms.Label WarningFullLabel;
     }
 }

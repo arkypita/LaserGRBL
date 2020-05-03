@@ -500,4 +500,88 @@ Itt ugyanazt a szintaxist használhatja, mint az egyéni gomboknál</value>
   <data name="TpGCodeSettings.Text" xml:space="preserve">
     <value>GCode</value>
   </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Itt tudja beállítani a sikeres műveletek hangját, mint például amikor egy munka befejeződik.</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Itt tudja beállítani a figyelmeztető hangjelzést.
+Ez általában hibás GCode parancsot jelent, és a gép folytatni tudja a működést.</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Figyelmeztető hangjelzés</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>Lecserél</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Hangfájl</value>
+  </data>
+  <data name="warningSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\non-fatal.wav</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Hiba hangjelzés</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>Lecserél</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Hangfájl</value>
+  </data>
+  <data name="fatalSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\fatal.wav</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Kapcsolódási hangjelzés</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>Lecserél</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Hangfájl</value>
+  </data>
+  <data name="connectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\connect.wav</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Szétkapcsolás hangjelzés</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>Lecserél</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Hangfájl</value>
+  </data>
+  <data name="disconnectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\disconnect.wav</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Siker hangjelzés</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>Lecserél</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Hangfájl</value>
+  </data>
+  <data name="successSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\success.wav</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Itt állíthatja be a sikeres kapcsolódás hangjelzését.</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Itt állíthatja be a szétkapcsolás hangjelzését.
+Néhány WiFi kapcsolat esetén hasznos lehet.</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Itt állíthaja be a végzetes hiba hangjelzését.
+Ez olyan hibát jelent, ahol a munka megszakad, és a LaserGRBL nem tudja folytatni.</value>
+  </data>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>Hangbeállítások</value>
+  </data>
+  <data name="SoundBrowserDialog.Filter" xml:space="preserve">
+    <value>Waveform Audio Fájl|*.wav</value>
+  </data>
 </root>
