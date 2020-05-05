@@ -3361,7 +3361,7 @@ This usually fired on a bad GCode command, but your machine can continue operati
     <value>3, 0</value>
   </data>
   <data name="label33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 13</value>
+    <value>134, 20</value>
   </data>
   <data name="label33.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3388,7 +3388,7 @@ This usually fired on a bad GCode command, but your machine can continue operati
     <value>NoControl</value>
   </data>
   <data name="changeSucBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 16</value>
+    <value>3, 23</value>
   </data>
   <data name="changeSucBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 23</value>
@@ -3424,10 +3424,10 @@ This usually fired on a bad GCode command, but your machine can continue operati
     <value>NoControl</value>
   </data>
   <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 0</value>
+    <value>229, 2</value>
   </data>
   <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 13</value>
+    <value>82, 16</value>
   </data>
   <data name="label25.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3457,7 +3457,7 @@ This usually fired on a bad GCode command, but your machine can continue operati
     <value>NoControl</value>
   </data>
   <data name="successSoundLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 13</value>
+    <value>229, 28</value>
   </data>
   <data name="successSoundLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 13</value>
@@ -3744,9 +3744,6 @@ This means, your job most likely stopped, and LaserGRBL can not continue the ope
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>895, 376</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
