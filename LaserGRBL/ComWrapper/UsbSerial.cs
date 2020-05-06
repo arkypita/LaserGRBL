@@ -13,7 +13,7 @@ namespace LaserGRBL.ComWrapper
 {
 	class UsbSerial : IComWrapper
 	{
-		private System.IO.Ports.SerialPort com = new System.IO.Ports.SerialPort();
+		private MySerial com = new MySerial();
 		private string mPortName;
 		private int mBaudRate;
 
@@ -148,5 +148,32 @@ namespace LaserGRBL.ComWrapper
 		public bool HasData()
 		{ return com.BytesToRead > 0; }
 
+	}
+
+
+	//se MySerial non dovesse bastare a calmare il problema riportato qui: https://github.com/arkypita/LaserGRBL/issues/990
+	//provare i seguenti suggerimenti:
+	//- Always call Close() followed by Dispose().
+	//- Never reuse a SerialPort object, always create a new one when a port needs to be reopened
+	class MySerial : System.IO.Ports.SerialPort
+	{
+		protected override void Dispose(bool disposing)
+		{
+			try
+			{
+				Type mytype = typeof(System.IO.Ports.SerialPort);
+				System.Reflection.FieldInfo field = mytype.GetField("internalSerialStream", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+				System.IO.Stream stream = field.GetValue(this) as System.IO.Stream;
+
+				if (stream != null)
+				{
+					try { stream.Dispose(); }
+					catch { }
+				}
+			}
+			catch { }
+
+			base.Dispose(disposing);
+		}
 	}
 }

@@ -11,61 +11,62 @@ using System.Windows.Threading;
 
 namespace LaserGRBL
 {
-    public partial class MainForm : Form
-    {
-        private GrblCore Core;
-        private bool FirstIdle = true;
+	public partial class MainForm : Form
+	{
+		private GrblCore Core;
+		private bool FirstIdle = true;
 
-        public MainForm()
-        {
-            InitializeComponent();
+		public MainForm()
+		{
+			InitializeComponent();
 
-            MMn.Renderer = new MMnRenderer();
+			MMn.Renderer = new MMnRenderer();
 
-            splitContainer1.FixedPanel = FixedPanel.Panel1;
-            splitContainer1.SplitterDistance = Settings.GetObject("MainForm Splitter Position", 260);
-            MnNotifyNewVersion.Checked = Settings.GetObject("Auto Update", true);
+			splitContainer1.FixedPanel = FixedPanel.Panel1;
+			splitContainer1.SplitterDistance = Settings.GetObject("MainForm Splitter Position", 260);
+			MnNotifyNewVersion.Checked = Settings.GetObject("Auto Update", true);
 			MnNotifyMinorVersion.Checked = Settings.GetObject("Auto Update Build", false);
+			MnNotifyPreRelease.Checked = Settings.GetObject("Auto Update Pre", false);
 
 			MnAutoUpdate.DropDown.Closing += MnAutoUpdateDropDown_Closing;
 
 			if (System.Threading.Thread.CurrentThread.Name == null)
-                System.Threading.Thread.CurrentThread.Name = "Main Thread";
+				System.Threading.Thread.CurrentThread.Name = "Main Thread";
 
-            using (SplashScreenForm f = new SplashScreenForm())
-                f.ShowDialog();
+			using (SplashScreenForm f = new SplashScreenForm())
+				f.ShowDialog();
 
-            //build main communication object
-            Firmware ftype = Settings.GetObject("Firmware Type", Firmware.Grbl);
-            if (ftype == Firmware.Smoothie)
-                Core = new SmoothieCore(this, PreviewForm, JogForm);
-            else if (ftype == Firmware.Marlin)
-                Core = new MarlinCore(this, PreviewForm, JogForm);
-            else
-                Core = new GrblCore(this, PreviewForm, JogForm);
+			//build main communication object
+			Firmware ftype = Settings.GetObject("Firmware Type", Firmware.Grbl);
+			if (ftype == Firmware.Smoothie)
+				Core = new SmoothieCore(this, PreviewForm, JogForm);
+			else if (ftype == Firmware.Marlin)
+				Core = new MarlinCore(this, PreviewForm, JogForm);
+			else
+				Core = new GrblCore(this, PreviewForm, JogForm);
 
 			ExceptionManager.Core = Core;
 
 			MnGrblConfig.Visible = Core.UIShowGrblConfig;
-            MnUnlock.Visible = Core.UIShowUnlockButtons;
+			MnUnlock.Visible = Core.UIShowUnlockButtons;
 
-            MnGrbl.Text = Core.Type.ToString();
+			MnGrbl.Text = Core.Type.ToString();
 
-            Core.MachineStatusChanged += OnMachineStatus;
-            Core.OnFileLoaded += OnFileLoaded;
-            Core.OnOverrideChange += RefreshOverride;
-            Core.IssueDetected += OnIssueDetected;
+			Core.MachineStatusChanged += OnMachineStatus;
+			Core.OnFileLoaded += OnFileLoaded;
+			Core.OnOverrideChange += RefreshOverride;
+			Core.IssueDetected += OnIssueDetected;
 
-            PreviewForm.SetCore(Core);
-            ConnectionForm.SetCore(Core);
-            JogForm.SetCore(Core);
+			PreviewForm.SetCore(Core);
+			ConnectionForm.SetCore(Core);
+			JogForm.SetCore(Core);
 
-            GitHub.NewVersion += GitHub_NewVersion;
+			GitHub.NewVersion += GitHub_NewVersion;
 
-            ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser); ;
-            RefreshColorSchema(); //include RefreshOverride();
-            RefreshFormTitle();
-        }
+			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser); ;
+			RefreshColorSchema(); //include RefreshOverride();
+			RefreshFormTitle();
+		}
 
 		private void MnAutoUpdateDropDown_Closing(object sender, ToolStripDropDownClosingEventArgs e)
 		{
@@ -89,28 +90,35 @@ namespace LaserGRBL
 			redLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.RedLaser;
 			darkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Dark;
 			hackerToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Hacker;
-            nightyToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Nighty;
+			nightyToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Nighty;
 			ConnectionForm.OnColorChange();
 			PreviewForm.OnColorChange();
 			RefreshOverride();
 		}
 
-		void GitHub_NewVersion(Version current, Version latest, string name, string url)
+		void GitHub_NewVersion(Version current, GitHub.OnlineVersion available)
 		{
 			if (InvokeRequired)
 			{
-				Invoke(new GitHub.NewVersionDlg(GitHub_NewVersion), current, latest, name, url);
+				Invoke(new GitHub.NewVersionDlg(GitHub_NewVersion), current, available);
 			}
 			else
 			{
-				NewVersionForm.CreateAndShowDialog(current, latest, name, url, this);
+				if (available != null)
+					NewVersionForm.CreateAndShowDialog(current, available, this);
+				else
+					MessageBox.Show(this, "You have the most updated version!", "Software info", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1); 
+			
 			}
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			UpdateTimer.Enabled = true;
-			GitHub.CheckVersion();
+
+
+			if (Settings.GetObject("Auto Update", true))
+				GitHub.CheckVersion(false);
 
 			SuspendLayout();
 			//restore last size and position
@@ -137,7 +145,7 @@ namespace LaserGRBL
 			}
 		}
 
-		
+
 		void OnMachineStatus()
 		{
 			if (Core.MachineStatus == GrblCore.MacStatus.Idle && FirstIdle && Core.Configuration.Count == 0)
@@ -163,11 +171,11 @@ namespace LaserGRBL
 				Core.CloseCom(true);
 				Settings.SetObject("Mainform Size and Position", new object[] { Size, Location, WindowState });
 				Settings.Save();
-				
+
 				UsageStats.SaveFile(Core);
 			}
 		}
-		
+
 
 		private void UpdateTimer_Tick(object sender, EventArgs e)
 		{
@@ -209,17 +217,17 @@ namespace LaserGRBL
 			MnGoHome.Visible = Core.Configuration.HomingEnabled;
 			MnGoHome.Enabled = Core.CanDoHoming;
 			MnUnlock.Enabled = Core.CanUnlock;
-			
+
 			TTOvG0.Visible = Core.SupportOverride;
 			TTOvG1.Visible = Core.SupportOverride;
 			TTOvS.Visible = Core.SupportOverride;
 			spacer.Visible = Core.SupportOverride;
-			
-			
+
+
 			switch (Core.MachineStatus)
 			{
 				//Disconnected, Connecting, Idle, *Run, *Hold, *Door, Home, *Alarm, *Check, *Jog
-					
+
 				case GrblCore.MacStatus.Alarm:
 					TTTStatus.BackColor = Color.Red;
 					TTTStatus.ForeColor = Color.White;
@@ -242,12 +250,12 @@ namespace LaserGRBL
 					break;
 			}
 
-            PbBuffer.Maximum = Core.BufferSize;
-            PbBuffer.Value = Core.UsedBuffer;
-            PbBuffer.ToolTipText = $"Buffer: {Core.UsedBuffer}/{Core.BufferSize} Free:{Core.FreeBuffer}";
+			PbBuffer.Maximum = Core.BufferSize;
+			PbBuffer.Value = Core.UsedBuffer;
+			PbBuffer.ToolTipText = $"Buffer: {Core.UsedBuffer}/{Core.BufferSize} Free:{Core.FreeBuffer}";
 
 
-            ResumeLayout();
+			ResumeLayout();
 		}
 
 		private void RefreshFormTitle()
@@ -255,11 +263,11 @@ namespace LaserGRBL
 			Version current = typeof(GitHub).Assembly.GetName().Version;
 			string FormTitle = string.Format("LaserGRBL v{0}", current.ToString(3));
 
-            if (Core.Type != Firmware.Grbl)
-                FormTitle = FormTitle + $" (for {Core.Type})";
+			if (Core.Type != Firmware.Grbl)
+				FormTitle = FormTitle + $" (for {Core.Type})";
 
 
-            if (Text != FormTitle) Text = FormTitle;
+			if (Text != FormTitle) Text = FormTitle;
 		}
 
 		void ExitToolStripMenuItemClick(object sender, EventArgs e)
@@ -292,18 +300,18 @@ namespace LaserGRBL
 			TTOvG1.BackColor = Core.OverrideG1 > 100 ? Color.LightPink : (Core.OverrideG1 < 100 ? Color.LightBlue : ColorScheme.FormBackColor);
 			TTOvG1.ForeColor = Core.OverrideG1 != 100 ? Color.Black : ColorScheme.FormForeColor;
 			TTOvS.Text = string.Format("S [{0:0.00}x]", Core.OverrideS / 100.0);
-			TTOvS.BackColor = Core.OverrideS > 100 ? Color.LightPink : (Core.OverrideS < 100 ? Color.LightBlue : ColorScheme.FormBackColor) ;
+			TTOvS.BackColor = Core.OverrideS > 100 ? Color.LightPink : (Core.OverrideS < 100 ? Color.LightBlue : ColorScheme.FormBackColor);
 			TTOvS.ForeColor = Core.OverrideS != 100 ? Color.Black : ColorScheme.FormForeColor;
 
 			ResumeLayout();
 		}
 		void TTOvClick(object sender, EventArgs e)
 		{
-			GetOvMenu().Show(Cursor.Position,ToolStripDropDownDirection.AboveLeft);
+			GetOvMenu().Show(Cursor.Position, ToolStripDropDownDirection.AboveLeft);
 		}
 
-		
-		
+
+
 		internal virtual System.Windows.Forms.ContextMenuStrip GetOvMenu()
 		{
 			System.Windows.Forms.ContextMenuStrip CM = new System.Windows.Forms.ContextMenuStrip();
@@ -314,7 +322,7 @@ namespace LaserGRBL
 
 			return CM;
 		}
-		
+
 		/// <summary>
 		/// Adds trackbar to toolstrip stuff
 		/// </summary>
@@ -330,12 +338,12 @@ namespace LaserGRBL
 
 		private void MnGoHome_Click(object sender, EventArgs e)
 		{
-            Core.SendHomingCommand();
+			Core.SendHomingCommand();
 		}
 
 		private void MnUnlock_Click(object sender, EventArgs e)
 		{
-            Core.SendUnlockCommand();
+			Core.SendUnlockCommand();
 		}
 
 		private void MnConnect_Click(object sender, EventArgs e)
@@ -474,12 +482,12 @@ namespace LaserGRBL
 			SetSchema(ColorScheme.Scheme.Hacker);
 		}
 
-        private void nightyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SetSchema(ColorScheme.Scheme.Nighty);
-        }
+		private void nightyToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetSchema(ColorScheme.Scheme.Nighty);
+		}
 
-        private void SetSchema(ColorScheme.Scheme schema)
+		private void SetSchema(ColorScheme.Scheme schema)
 		{
 			Settings.SetObject("Color Schema", schema);
 			ColorScheme.CurrentScheme = schema;
@@ -502,8 +510,8 @@ namespace LaserGRBL
 		protected override void OnKeyUp(KeyEventArgs e)
 		{
 			mLastkeyData = Keys.None;
-            Core.ManageHotKeys(Keys.None);
-            base.OnKeyUp(e);
+			Core.ManageHotKeys(Keys.None);
+			base.OnKeyUp(e);
 		}
 
 		Keys mLastkeyData = Keys.None;
@@ -580,7 +588,7 @@ namespace LaserGRBL
 			}
 
 			form.Dispose();
-			
+
 		}
 
 		private void toolsToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
@@ -668,8 +676,8 @@ namespace LaserGRBL
 			Settings.SetObject("Auto Update", MnNotifyNewVersion.Checked);
 			Settings.Save();
 
-			if (MnNotifyNewVersion.Checked)
-				GitHub.CheckVersion();
+			//if (MnNotifyNewVersion.Checked)
+			//	GitHub.CheckVersion();
 		}
 
 		private void MnNotifyNewVersion_CheckedChanged(object sender, EventArgs e)
@@ -678,12 +686,17 @@ namespace LaserGRBL
 			{
 				MnNotifyMinorVersion.Enabled = false;
 				MnNotifyMinorVersion.Checked = false;
+				MnNotifyPreRelease.Enabled = false;
+				MnNotifyPreRelease.Checked = false;
 				Settings.SetObject("Auto Update Build", false);
+				Settings.SetObject("Auto Update Pre", false);
 			}
 			else
 			{
 				MnNotifyMinorVersion.Enabled = true;
 				MnNotifyMinorVersion.Checked = Settings.GetObject("Auto Update Build", false);
+				MnNotifyPreRelease.Enabled = true;
+				MnNotifyPreRelease.Checked = Settings.GetObject("Auto Update Pre", false);
 			}
 		}
 
@@ -693,8 +706,24 @@ namespace LaserGRBL
 			Settings.SetObject("Auto Update Build", MnNotifyMinorVersion.Checked);
 			Settings.Save();
 
-			if (MnNotifyNewVersion.Checked && MnNotifyMinorVersion.Checked)
-				GitHub.CheckVersion();
+			//if (MnNotifyNewVersion.Checked && MnNotifyMinorVersion.Checked)
+			//	GitHub.CheckVersion();
+		}
+
+		private void MnNotifyPreRelease_Click(object sender, EventArgs e)
+		{
+			MnNotifyPreRelease.Checked = !MnNotifyPreRelease.Checked;
+			Settings.SetObject("Auto Update Pre", MnNotifyPreRelease.Checked);
+			Settings.Save();
+
+			//if (MnNotifyNewVersion.Checked && MnNotifyPreRelease.Checked)
+			//	GitHub.CheckVersion();
+		}
+
+		private void MnCheckNow_Click(object sender, EventArgs e)
+		{
+			questionMarkToolStripMenuItem.HideDropDown();
+			GitHub.CheckVersion(true);
 		}
 	}
 
@@ -752,9 +781,9 @@ namespace LaserGRBL
 	public class CustomMenuColor : ProfessionalColorTable
 	{
 		public override Color SeparatorDark
-		{get{return ColorScheme.MenuSeparatorColor;}}
+		{ get { return ColorScheme.MenuSeparatorColor; } }
 
 		public override Color SeparatorLight
-		{get{return ColorScheme.MenuSeparatorColor;}}
+		{ get { return ColorScheme.MenuSeparatorColor; } }
 	}
 }

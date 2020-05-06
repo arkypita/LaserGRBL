@@ -104,6 +104,9 @@
 			this.MnAutoUpdate = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnNotifyNewVersion = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnNotifyMinorVersion = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnNotifyPreRelease = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+			this.MnCheckNow = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
 			this.openSessionLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.activateExtendedLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -630,7 +633,10 @@
 			// 
 			this.MnAutoUpdate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnNotifyNewVersion,
-            this.MnNotifyMinorVersion});
+            this.MnNotifyMinorVersion,
+            this.MnNotifyPreRelease,
+            this.toolStripMenuItem4,
+            this.MnCheckNow});
 			this.MnAutoUpdate.Name = "MnAutoUpdate";
 			resources.ApplyResources(this.MnAutoUpdate, "MnAutoUpdate");
 			// 
@@ -648,6 +654,23 @@
 			this.MnNotifyMinorVersion.Name = "MnNotifyMinorVersion";
 			resources.ApplyResources(this.MnNotifyMinorVersion, "MnNotifyMinorVersion");
 			this.MnNotifyMinorVersion.Click += new System.EventHandler(this.MnNotifyMinorVersion_Click);
+			// 
+			// MnNotifyPreRelease
+			// 
+			this.MnNotifyPreRelease.Name = "MnNotifyPreRelease";
+			resources.ApplyResources(this.MnNotifyPreRelease, "MnNotifyPreRelease");
+			this.MnNotifyPreRelease.Click += new System.EventHandler(this.MnNotifyPreRelease_Click);
+			// 
+			// toolStripMenuItem4
+			// 
+			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+			resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
+			// 
+			// MnCheckNow
+			// 
+			this.MnCheckNow.Name = "MnCheckNow";
+			resources.ApplyResources(this.MnCheckNow, "MnCheckNow");
+			this.MnCheckNow.Click += new System.EventHandler(this.MnCheckNow_Click);
 			// 
 			// toolStripMenuItem5
 			// 
@@ -812,6 +835,9 @@
 		private System.Windows.Forms.ToolStripMenuItem MnAutoUpdate;
 		private System.Windows.Forms.ToolStripMenuItem MnNotifyMinorVersion;
 		private System.Windows.Forms.ToolStripMenuItem MnNotifyNewVersion;
+		private System.Windows.Forms.ToolStripMenuItem MnNotifyPreRelease;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+		private System.Windows.Forms.ToolStripMenuItem MnCheckNow;
 	}
 }
 

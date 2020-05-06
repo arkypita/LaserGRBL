@@ -17,21 +17,25 @@ namespace LaserGRBL
 {
 	public partial class NewVersionForm : Form
 	{
-		private string mUrl;
+		private string mDownloadUrl;
+		private string mPageUrl;
 		private bool mClosing;
-		public NewVersionForm(string url)
+		private NewVersionForm()
 		{
 			InitializeComponent();
-			mUrl = url;
 			mClosing = false;
 		}
 
-		internal static void CreateAndShowDialog(Version current, Version latest, string name, string url, Form parent)
+		internal static void CreateAndShowDialog(Version current, GitHub.OnlineVersion available, Form parent)
 		{
-			using (NewVersionForm f = new NewVersionForm(url))
+			using (NewVersionForm f = new NewVersionForm())
 			{
+				f.mDownloadUrl = available.DownloadUrl;
+				f.mPageUrl = available.HtmlUrl;
 				f.LblCurrentVersion.Text = current.ToString(3);
-				f.LblLatestVersion.Text = latest.ToString(3);
+				f.LblLatestVersion.Text = available.Version.ToString(3);
+				if (available.IsPreRelease)
+					f.LblLatestVersion.Text = f.LblLatestVersion.Text + " pre-release";
 
 				DialogResult rv = f.ShowDialog(parent);
 
@@ -46,7 +50,7 @@ namespace LaserGRBL
 		{
 			BtnUpdate.Enabled = false;
 			BtnCancel.Enabled = false;
-			GitHub.DownloadUpdateA(mUrl, dprog, dcomplete); //start download progress
+			GitHub.DownloadUpdateA(mDownloadUrl, dprog, dcomplete); //start download progress
 		}
 
 		private void dprog(object sender, System.Net.DownloadProgressChangedEventArgs e)
@@ -93,13 +97,8 @@ namespace LaserGRBL
 
 		private void BtnWebsite_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"https://github.com/arkypita/LaserGRBL/releases/latest");
+			System.Diagnostics.Process.Start(mPageUrl);
 		}
-
-
-
-
-
 
 	}
 }
