@@ -26,12 +26,14 @@ namespace LaserGRBL
 			mClosing = false;
 		}
 
-		internal static void CreateAndShowDialog(Version current, Version latest, string name, string url, Form parent)
+		internal static void CreateAndShowDialog(Version current, Version latest, string name, string url, bool ispre, Form parent)
 		{
 			using (NewVersionForm f = new NewVersionForm(url))
 			{
 				f.LblCurrentVersion.Text = current.ToString(3);
 				f.LblLatestVersion.Text = latest.ToString(3);
+				if (ispre)
+					f.LblLatestVersion.Text = f.LblLatestVersion.Text + " pre-release";
 
 				DialogResult rv = f.ShowDialog(parent);
 

@@ -113,6 +113,7 @@
 			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
 			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
+			this.MnNotifyPreRelease = new System.Windows.Forms.ToolStripMenuItem();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -630,7 +631,8 @@
 			// 
 			this.MnAutoUpdate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnNotifyNewVersion,
-            this.MnNotifyMinorVersion});
+            this.MnNotifyMinorVersion,
+            this.MnNotifyPreRelease});
 			this.MnAutoUpdate.Name = "MnAutoUpdate";
 			resources.ApplyResources(this.MnAutoUpdate, "MnAutoUpdate");
 			// 
@@ -699,6 +701,12 @@
 			this.AwakeTimer.Enabled = true;
 			this.AwakeTimer.Interval = 20000;
 			this.AwakeTimer.Tick += new System.EventHandler(this.AwakeTimer_Tick);
+			// 
+			// MnNotifyPreRelease
+			// 
+			this.MnNotifyPreRelease.Name = "MnNotifyPreRelease";
+			resources.ApplyResources(this.MnNotifyPreRelease, "MnNotifyPreRelease");
+			this.MnNotifyPreRelease.Click += new System.EventHandler(this.MnNotifyPreRelease_Click);
 			// 
 			// MainForm
 			// 
@@ -812,6 +820,7 @@
 		private System.Windows.Forms.ToolStripMenuItem MnAutoUpdate;
 		private System.Windows.Forms.ToolStripMenuItem MnNotifyMinorVersion;
 		private System.Windows.Forms.ToolStripMenuItem MnNotifyNewVersion;
+		private System.Windows.Forms.ToolStripMenuItem MnNotifyPreRelease;
 	}
 }
 

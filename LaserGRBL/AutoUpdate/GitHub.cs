@@ -6,13 +6,57 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 
 namespace LaserGRBL
 {
 	class GitHub
 	{
-		public delegate void NewVersionDlg(Version current, Version latest, string name, string url);
+		public class OnlineVersion
+		{
+			public string tag_name = null;
+			public string name = null;
+			public bool prerelease = false;
+			public List<VersionAsset> assets = null;
+
+			public class VersionAsset
+			{
+				public string browser_download_url = null;
+				[IgnoreDataMember] public string Url => browser_download_url;
+			}
+
+			[IgnoreDataMember] public bool IsValid => Version != null && DownloadUrl != null;
+			[IgnoreDataMember] public bool IsPreRelease => prerelease;
+
+			[IgnoreDataMember] public string VersionName => tag_name;
+
+			[IgnoreDataMember]
+			public Version Version
+			{
+				get
+				{
+					try { return new Version(tag_name.TrimStart(new char[] { 'v' })); }
+					catch { return null; }
+				}
+			}
+
+			[IgnoreDataMember]
+			public string DownloadUrl
+			{
+				get
+				{
+					return assets != null && assets.Count > 0 ? assets[0].Url : null;
+				}
+			}
+
+			public override string ToString()
+			{
+				return String.Format("{0}{1}{2}", Version, IsPreRelease ? "-pre" : "", IsValid ? "" : " (not available)");
+			}
+		}
+
+		public delegate void NewVersionDlg(Version current, Version latest, string name, string url, bool ispre);
 		public static event NewVersionDlg NewVersion;
 
 		public static bool Updating = false;
@@ -69,32 +113,33 @@ namespace LaserGRBL
 				wc.Headers.Add("User-Agent: .Net WebClient");
 				string json = wc.DownloadString(site);
 
-				string url = null;
-				string versionstr = null;
-				string name = null;
+				List<OnlineVersion> versions = AutoUpdate.JSONParser.FromJson<List<OnlineVersion>>(json);
 
-				foreach (Match m in Regex.Matches(json, @"""browser_download_url"":""([^""]+)"""))
-					if (url == null)
-						url = m.Groups[1].Value;
-				foreach (Match m in Regex.Matches(json, @"""tag_name"":""v([^""]+)"""))
-					if (versionstr == null)
-						versionstr = m.Groups[1].Value;
-				foreach (Match m in Regex.Matches(json, @"""name"":""([^""]+)"""))
-					if (name == null)
-						name = m.Groups[1].Value;
+				bool minor = Settings.GetObject("Auto Update", false);
+				bool build = Settings.GetObject("Auto Update Build", false);
+				bool pre = Settings.GetObject("Auto Update Pre", false);
 
 				Version current = typeof(GitHub).Assembly.GetName().Version;
-				Version latest = new Version(versionstr);
-
-				if (current < latest)
+				OnlineVersion found = null;
+				foreach (OnlineVersion ov in versions) //version start with higher first
 				{
-					bool minor = Settings.GetObject("Auto Update", false);
-					bool build = Settings.GetObject("Auto Update Build", false);
+					if (!ov.IsValid) //skip invalid
+						continue;
+					if (!pre && ov.IsPreRelease) //skip pre-release
+						continue;
+					if (!build && ov.Version.Build != 0) //skip build version (only update to minor number change)
+						continue;
+					if (found != null && ov.Version < found.Version) //already found a better match
+						continue;
+					if (!minor) //skip if user do not want update at all!
+						continue;
 
-					if ((current.Major != latest.Major) || (current.Minor != latest.Minor && minor) || (current.Build != latest.Build && build))
-						NewVersion?.Invoke(current, latest, name, url);
+					if (ov.Version > current)
+						found = ov;
 				}
 
+				if (found != null)
+					NewVersion?.Invoke(current, found.Version, found.VersionName, found.DownloadUrl, found.IsPreRelease);
 			}
 		}
 

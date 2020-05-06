@@ -26,6 +26,7 @@ namespace LaserGRBL
             splitContainer1.SplitterDistance = Settings.GetObject("MainForm Splitter Position", 260);
             MnNotifyNewVersion.Checked = Settings.GetObject("Auto Update", true);
 			MnNotifyMinorVersion.Checked = Settings.GetObject("Auto Update Build", false);
+			MnNotifyPreRelease.Checked = Settings.GetObject("Auto Update Pre", false);
 
 			MnAutoUpdate.DropDown.Closing += MnAutoUpdateDropDown_Closing;
 
@@ -95,15 +96,15 @@ namespace LaserGRBL
 			RefreshOverride();
 		}
 
-		void GitHub_NewVersion(Version current, Version latest, string name, string url)
+		void GitHub_NewVersion(Version current, Version latest, string name, string url, bool ispre)
 		{
 			if (InvokeRequired)
 			{
-				Invoke(new GitHub.NewVersionDlg(GitHub_NewVersion), current, latest, name, url);
+				Invoke(new GitHub.NewVersionDlg(GitHub_NewVersion), current, latest, name, url, ispre);
 			}
 			else
 			{
-				NewVersionForm.CreateAndShowDialog(current, latest, name, url, this);
+				NewVersionForm.CreateAndShowDialog(current, latest, name, url, ispre, this);
 			}
 		}
 
@@ -678,12 +679,17 @@ namespace LaserGRBL
 			{
 				MnNotifyMinorVersion.Enabled = false;
 				MnNotifyMinorVersion.Checked = false;
+				MnNotifyPreRelease.Enabled = false;
+				MnNotifyPreRelease.Checked = false;
 				Settings.SetObject("Auto Update Build", false);
+				Settings.SetObject("Auto Update Pre", false);
 			}
 			else
 			{
 				MnNotifyMinorVersion.Enabled = true;
 				MnNotifyMinorVersion.Checked = Settings.GetObject("Auto Update Build", false);
+				MnNotifyPreRelease.Enabled = true;
+				MnNotifyPreRelease.Checked = Settings.GetObject("Auto Update Pre", false);
 			}
 		}
 
@@ -694,6 +700,16 @@ namespace LaserGRBL
 			Settings.Save();
 
 			if (MnNotifyNewVersion.Checked && MnNotifyMinorVersion.Checked)
+				GitHub.CheckVersion();
+		}
+
+		private void MnNotifyPreRelease_Click(object sender, EventArgs e)
+		{
+			MnNotifyPreRelease.Checked = !MnNotifyPreRelease.Checked;
+			Settings.SetObject("Auto Update Pre", MnNotifyPreRelease.Checked);
+			Settings.Save();
+
+			if (MnNotifyNewVersion.Checked && MnNotifyPreRelease.Checked)
 				GitHub.CheckVersion();
 		}
 	}
