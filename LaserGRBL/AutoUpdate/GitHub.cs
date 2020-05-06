@@ -61,7 +61,7 @@ namespace LaserGRBL
 
 		public static bool Updating = false;
 
-		public static void CheckVersion()
+		public static void CheckVersion(bool manual)
 		{
 			//public enum SecurityProtocolType
 			//{
@@ -71,14 +71,14 @@ namespace LaserGRBL
 			//	Tls12 = 3072,
 			//}
 
-			if ((UrlManager.UpdateMain != null || UrlManager.UpdateMirror != null) && Settings.GetObject("Auto Update", true))
+			if (UrlManager.UpdateMain != null || UrlManager.UpdateMirror != null)
 			{
 				//https://developer.github.com/changes/2018-02-01-weak-crypto-removal-notice/
 				try { System.Net.ServicePointManager.SecurityProtocol = (System.Net.SecurityProtocolType)3072; } //CONFIGURE SYSTEM FOR TLS 1.2 (Required since 22-02-2018) May work only if .net 4.5 is installed?
 				catch { System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls; } //fallback, but not working with new github API!
 				System.Net.ServicePointManager.ServerCertificateValidationCallback += new System.Net.Security.RemoteCertificateValidationCallback(bypassAllCertificateStuff);
 
-				System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(GitHub.AsyncCheckVersion));
+				System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(GitHub.AsyncCheckVersion), manual);
 			}
 		}
 
@@ -87,26 +87,27 @@ namespace LaserGRBL
 
 		private static void AsyncCheckVersion(object foo)
 		{
+			bool manual = (bool)foo;
 			if (UrlManager.UpdateMain != null)
 			{
-				try { CheckSite(UrlManager.UpdateMain); } //official https 
+				try { CheckSite(UrlManager.UpdateMain, manual); } //official https 
 				catch
 				{
 					if (UrlManager.UpdateMirror != null)
 					{
-						try { CheckSite(UrlManager.UpdateMirror); }	//http mirror
+						try { CheckSite(UrlManager.UpdateMirror, manual); }	//http mirror
 						catch { }
 					}
 				}
 			}
 			else if (UrlManager.UpdateMirror != null) //only mirror configured
 			{
-				try { CheckSite(UrlManager.UpdateMirror); } //http mirror
+				try { CheckSite(UrlManager.UpdateMirror, manual); } //http mirror
 				catch { }
 			}
 		}
 
-		private static void CheckSite(string site)
+		private static void CheckSite(string site, bool manual)
 		{
 			using (System.Net.WebClient wc = new System.Net.WebClient())
 			{
@@ -115,8 +116,7 @@ namespace LaserGRBL
 
 				List<OnlineVersion> versions = AutoUpdate.JSONParser.FromJson<List<OnlineVersion>>(json);
 
-				bool minor = Settings.GetObject("Auto Update", false);
-				bool build = Settings.GetObject("Auto Update Build", false);
+				bool build = Settings.GetObject("Auto Update Build", false) || manual;
 				bool pre = Settings.GetObject("Auto Update Pre", false);
 
 				Version current = typeof(GitHub).Assembly.GetName().Version;
@@ -131,8 +131,6 @@ namespace LaserGRBL
 						continue;
 					if (found != null && ov.Version < found.Version) //already found a better match
 						continue;
-					if (!minor) //skip if user do not want update at all!
-						continue;
 
 					if (ov.Version > current)
 						found = ov;
@@ -140,6 +138,8 @@ namespace LaserGRBL
 
 				if (found != null)
 					NewVersion?.Invoke(current, found.Version, found.VersionName, found.DownloadUrl, found.IsPreRelease);
+				else if (manual) //notify "no new version"
+					NewVersion?.Invoke(current, null, null, null, false);
 			}
 		}
 
