@@ -96,16 +96,16 @@ namespace LaserGRBL
 			RefreshOverride();
 		}
 
-		void GitHub_NewVersion(Version current, Version latest, string name, string url, bool ispre)
+		void GitHub_NewVersion(Version current, GitHub.OnlineVersion available)
 		{
 			if (InvokeRequired)
 			{
-				Invoke(new GitHub.NewVersionDlg(GitHub_NewVersion), current, latest, name, url, ispre);
+				Invoke(new GitHub.NewVersionDlg(GitHub_NewVersion), current, available);
 			}
 			else
 			{
-				if (latest != null)
-					NewVersionForm.CreateAndShowDialog(current, latest, name, url, ispre, this);
+				if (available != null)
+					NewVersionForm.CreateAndShowDialog(current, available, this);
 				else
 					MessageBox.Show(this, "You have the most updated version!", "Software info", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1); 
 			

@@ -15,6 +15,7 @@ namespace LaserGRBL
 	{
 		public class OnlineVersion
 		{
+			public string html_url = null;
 			public string tag_name = null;
 			public string name = null;
 			public bool prerelease = false;
@@ -50,13 +51,22 @@ namespace LaserGRBL
 				}
 			}
 
+			[IgnoreDataMember]
+			public string HtmlUrl
+			{
+				get
+				{
+					return html_url;
+				}
+			}
+
 			public override string ToString()
 			{
 				return String.Format("{0}{1}{2}", Version, IsPreRelease ? "-pre" : "", IsValid ? "" : " (not available)");
 			}
 		}
 
-		public delegate void NewVersionDlg(Version current, Version latest, string name, string url, bool ispre);
+		public delegate void NewVersionDlg(Version current, OnlineVersion available);
 		public static event NewVersionDlg NewVersion;
 
 		public static bool Updating = false;
@@ -137,9 +147,9 @@ namespace LaserGRBL
 				}
 
 				if (found != null)
-					NewVersion?.Invoke(current, found.Version, found.VersionName, found.DownloadUrl, found.IsPreRelease);
+					NewVersion?.Invoke(current, found);
 				else if (manual) //notify "no new version"
-					NewVersion?.Invoke(current, null, null, null, false);
+					NewVersion?.Invoke(current, null);
 			}
 		}
 
