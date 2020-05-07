@@ -132,7 +132,19 @@ namespace LaserGRBL
 				ofd.Multiselect = false;
 				ofd.RestoreDirectory = true;
 
-				if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+				System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+				try
+				{
+					dialogResult = ofd.ShowDialog();
+				}
+				catch (System.Runtime.InteropServices.COMException)
+				{
+					ofd.AutoUpgradeEnabled = false;
+					dialogResult = ofd.ShowDialog();
+				}
+
+
+				if (dialogResult == System.Windows.Forms.DialogResult.OK)
 				{
 					using (System.Drawing.Image newicon = Bitmap.FromFile(ofd.FileName))
 						BTOpenImage.Image = LaserGRBL.RasterConverter.ImageTransform.ResizeImage(newicon, new Size(48, 48), false, System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic);

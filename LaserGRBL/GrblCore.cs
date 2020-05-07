@@ -491,7 +491,19 @@ namespace LaserGRBL
 						ofd.CheckFileExists = true;
 						ofd.Multiselect = false;
 						ofd.RestoreDirectory = true;
-						if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+
+						System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+						try
+						{
+							dialogResult = ofd.ShowDialog();
+						}
+						catch (System.Runtime.InteropServices.COMException)
+						{
+							ofd.AutoUpgradeEnabled = false;
+							dialogResult = ofd.ShowDialog();
+						}
+
+						if (dialogResult == System.Windows.Forms.DialogResult.OK)
 							filename = ofd.FileName;
 					}
 				}
@@ -603,21 +615,33 @@ namespace LaserGRBL
 			if (HasProgram)
 			{
 				string filename = null;
-				using (System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog())
+				using (System.Windows.Forms.SaveFileDialog sfd = new System.Windows.Forms.SaveFileDialog())
 				{
 					string lastFN = Settings.GetObject<string>("Core.LastOpenFile", null);
 					if (lastFN != null)
 					{
 						string fn = System.IO.Path.GetFileNameWithoutExtension(lastFN);
 						string path = System.IO.Path.GetDirectoryName(lastFN);
-						ofd.FileName = System.IO.Path.Combine(path, fn + ".nc");
+						sfd.FileName = System.IO.Path.Combine(path, fn + ".nc");
 					}
 
-					ofd.Filter = "GCODE Files|*.nc";
-					ofd.AddExtension = true;
-					ofd.RestoreDirectory = true;
-					if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-						filename = ofd.FileName;
+					sfd.Filter = "GCODE Files|*.nc";
+					sfd.AddExtension = true;
+					sfd.RestoreDirectory = true;
+
+					System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+					try
+					{
+						dialogResult = sfd.ShowDialog();
+					}
+					catch (System.Runtime.InteropServices.COMException)
+					{
+						sfd.AutoUpgradeEnabled = false;
+						dialogResult = sfd.ShowDialog();
+					}
+
+					if (dialogResult == System.Windows.Forms.DialogResult.OK)
+						filename = sfd.FileName;
 				}
 
 				if (filename != null)

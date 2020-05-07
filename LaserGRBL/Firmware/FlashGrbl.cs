@@ -176,7 +176,19 @@ namespace LaserGRBL
 					ofd.Multiselect = false;
 					ofd.RestoreDirectory = true;
 
-					if (ofd.ShowDialog() == DialogResult.OK && System.IO.File.Exists(ofd.FileName))
+					System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+					try
+					{
+						dialogResult = ofd.ShowDialog();
+					}
+					catch (System.Runtime.InteropServices.COMException)
+					{
+						ofd.AutoUpgradeEnabled = false;
+						dialogResult = ofd.ShowDialog();
+					}
+
+
+					if (dialogResult == DialogResult.OK && System.IO.File.Exists(ofd.FileName))
 						CbFirmware.SelectedIndex = AddOrSelect(ofd.FileName);
 					else
 						CbFirmware.SelectedIndex = -1;

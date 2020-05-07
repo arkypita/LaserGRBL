@@ -608,7 +608,19 @@ namespace LaserGRBL
 					sfd.OverwritePrompt = false;
 					sfd.FileName = "comlog.txt";
 					sfd.Title = "Select extended log filename";
-					if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName != null)
+
+					System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+					try
+					{
+						dialogResult = sfd.ShowDialog();
+					}
+					catch (System.Runtime.InteropServices.COMException)
+					{
+						sfd.AutoUpgradeEnabled = false;
+						dialogResult = sfd.ShowDialog();
+					}
+
+					if (dialogResult == DialogResult.OK && sfd.FileName != null)
 						ComWrapper.ComLogger.FileName = sfd.FileName;
 				}
 			}
