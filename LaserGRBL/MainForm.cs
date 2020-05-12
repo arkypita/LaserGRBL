@@ -96,15 +96,17 @@ namespace LaserGRBL
 			RefreshOverride();
 		}
 
-		void GitHub_NewVersion(Version current, GitHub.OnlineVersion available)
+		void GitHub_NewVersion(Version current, GitHub.OnlineVersion available, Exception error)
 		{
 			if (InvokeRequired)
 			{
-				Invoke(new GitHub.NewVersionDlg(GitHub_NewVersion), current, available);
+				Invoke(new GitHub.NewVersionDlg(GitHub_NewVersion), current, available, error);
 			}
 			else
 			{
-				if (available != null)
+				if (error != null)
+					MessageBox.Show(this, "Cannot check for new version, please verify http://lasergrbl.com manually.", "Software info", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+				else if (available != null)
 					NewVersionForm.CreateAndShowDialog(current, available, this);
 				else
 					MessageBox.Show(this, "You have the most updated version!", "Software info", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1); 
@@ -608,7 +610,19 @@ namespace LaserGRBL
 					sfd.OverwritePrompt = false;
 					sfd.FileName = "comlog.txt";
 					sfd.Title = "Select extended log filename";
-					if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName != null)
+
+					System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+					try
+					{
+						dialogResult = sfd.ShowDialog();
+					}
+					catch (System.Runtime.InteropServices.COMException)
+					{
+						sfd.AutoUpgradeEnabled = false;
+						dialogResult = sfd.ShowDialog();
+					}
+
+					if (dialogResult == DialogResult.OK && sfd.FileName != null)
 						ComWrapper.ComLogger.FileName = sfd.FileName;
 				}
 			}

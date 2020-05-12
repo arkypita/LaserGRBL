@@ -74,7 +74,19 @@ namespace LaserGRBL
 				sfd.Filter = "ZippedButton|*.gz";
 				sfd.AddExtension = true;
 				sfd.FileName = "CustomButtons.gz";
-				if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK && sfd.FileName != null)
+
+				System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+				try
+				{
+					dialogResult = sfd.ShowDialog();
+				}
+				catch (System.Runtime.InteropServices.COMException)
+				{
+					sfd.AutoUpgradeEnabled = false;
+					dialogResult = sfd.ShowDialog();
+				}
+
+				if (dialogResult == System.Windows.Forms.DialogResult.OK && sfd.FileName != null)
 					Tools.Serializer.ObjToFile(buttons, sfd.FileName, Tools.Serializer.SerializationMode.Binary, null, true);
 			}
 		}
@@ -87,7 +99,21 @@ namespace LaserGRBL
 				ofd.Filter = "ZippedButton|*.gz";
 				ofd.AddExtension = true;
 				ofd.FileName = "CustomButtons.gz";
-				if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK && ofd.FileName != null && System.IO.File.Exists(ofd.FileName))
+
+
+
+				System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+				try
+				{
+					dialogResult = ofd.ShowDialog();
+				}
+				catch (System.Runtime.InteropServices.COMException)
+				{
+					ofd.AutoUpgradeEnabled = false;
+					dialogResult = ofd.ShowDialog();
+				}
+
+				if (dialogResult == System.Windows.Forms.DialogResult.OK && ofd.FileName != null && System.IO.File.Exists(ofd.FileName))
 				{
 					List<CustomButton> list = Tools.Serializer.ObjFromFile(ofd.FileName) as List<CustomButton>;
 					if (list.Count > 0)

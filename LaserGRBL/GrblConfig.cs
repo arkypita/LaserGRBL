@@ -149,13 +149,25 @@ namespace LaserGRBL
 		private void BtnExport_Click(object sender, EventArgs e)
 		{
 			string filename = null;
-			using (System.Windows.Forms.SaveFileDialog ofd = new SaveFileDialog())
+			using (System.Windows.Forms.SaveFileDialog sfd = new SaveFileDialog())
 			{
-				ofd.Filter = "GCODE Files|*.nc";
-				ofd.AddExtension = true;
-				ofd.RestoreDirectory = true;
-				if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-					filename = ofd.FileName;
+				sfd.Filter = "GCODE Files|*.nc";
+				sfd.AddExtension = true;
+				sfd.RestoreDirectory = true;
+
+				System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+				try
+				{
+					dialogResult = sfd.ShowDialog();
+				}
+				catch (System.Runtime.InteropServices.COMException)
+				{
+					sfd.AutoUpgradeEnabled = false;
+					dialogResult = sfd.ShowDialog();
+				}
+
+				if (dialogResult == System.Windows.Forms.DialogResult.OK)
+					filename = sfd.FileName;
 			}
 
 			if (filename != null)
@@ -195,7 +207,19 @@ namespace LaserGRBL
 				ofd.CheckFileExists = true;
 				ofd.Multiselect = false;
 				ofd.RestoreDirectory = true;
-				if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+
+				System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+				try
+				{
+					dialogResult = ofd.ShowDialog();
+				}
+				catch (System.Runtime.InteropServices.COMException)
+				{
+					ofd.AutoUpgradeEnabled = false;
+					dialogResult = ofd.ShowDialog();
+				}
+
+				if (dialogResult == System.Windows.Forms.DialogResult.OK)
 					filename = ofd.FileName;
 			}
 

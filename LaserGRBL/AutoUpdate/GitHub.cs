@@ -66,7 +66,7 @@ namespace LaserGRBL
 			}
 		}
 
-		public delegate void NewVersionDlg(Version current, OnlineVersion available);
+		public delegate void NewVersionDlg(Version current, OnlineVersion available, Exception error);
 		public static event NewVersionDlg NewVersion;
 
 		public static bool Updating = false;
@@ -97,24 +97,32 @@ namespace LaserGRBL
 
 		private static void AsyncCheckVersion(object foo)
 		{
+			Exception error = null;
 			bool manual = (bool)foo;
 			if (UrlManager.UpdateMain != null)
 			{
+				error = null;
 				try { CheckSite(UrlManager.UpdateMain, manual); } //official https 
-				catch
+				catch (Exception ex1)
 				{
+					error = ex1;
 					if (UrlManager.UpdateMirror != null)
 					{
+						error = null;
 						try { CheckSite(UrlManager.UpdateMirror, manual); }	//http mirror
-						catch { }
+						catch (Exception ex2) { error = ex2; }
 					}
 				}
 			}
 			else if (UrlManager.UpdateMirror != null) //only mirror configured
 			{
+				error = null;
 				try { CheckSite(UrlManager.UpdateMirror, manual); } //http mirror
-				catch { }
+				catch (Exception ex3) { error = ex3; }
 			}
+
+			if (error != null && manual)
+				NewVersion?.Invoke(null, null, error);
 		}
 
 		private static void CheckSite(string site, bool manual)
@@ -147,9 +155,9 @@ namespace LaserGRBL
 				}
 
 				if (found != null)
-					NewVersion?.Invoke(current, found);
+					NewVersion?.Invoke(current, found, null);
 				else if (manual) //notify "no new version"
-					NewVersion?.Invoke(current, null);
+					NewVersion?.Invoke(current, null, null);
 			}
 		}
 

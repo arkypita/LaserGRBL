@@ -65,7 +65,19 @@ namespace LaserGRBL
 		private void pictureBox1_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
-			if (ofd.ShowDialog() == DialogResult.OK)
+
+			System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+			try
+			{
+				dialogResult = ofd.ShowDialog();
+			}
+			catch (System.Runtime.InteropServices.COMException)
+			{
+				ofd.AutoUpgradeEnabled = false;
+				dialogResult = ofd.ShowDialog();
+			}
+
+			if (dialogResult == DialogResult.OK)
 			{
 				source = Bitmap.FromFile(ofd.FileName);
 				pictureBox1.Image = (Image)source.Clone();
