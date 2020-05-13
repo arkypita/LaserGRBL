@@ -131,6 +131,12 @@
       <DependentUpon>LicenseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MarlinCore.cs" />
+    <Compile Include="PSHelper\PSHelperControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PSHelper\PSHelperControl.Designer.cs">
+      <DependentUpon>PSHelperControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SaveOptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -885,6 +891,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.sk-SK.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSHelperControl.resx">
+      <DependentUpon>PSHelperControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.cs-CZ.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
