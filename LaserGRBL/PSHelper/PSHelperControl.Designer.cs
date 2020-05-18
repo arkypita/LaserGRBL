@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.CbAction = new System.Windows.Forms.ComboBox();
 			this.LblModel = new System.Windows.Forms.Label();
 			this.LblMaterial = new System.Windows.Forms.Label();
 			this.LblThickness = new System.Windows.Forms.Label();
@@ -36,16 +37,15 @@
 			this.CbModel = new System.Windows.Forms.ComboBox();
 			this.CbMaterial = new System.Windows.Forms.ComboBox();
 			this.CbThickness = new System.Windows.Forms.ComboBox();
-			this.CbAction = new System.Windows.Forms.ComboBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.TbPasses = new System.Windows.Forms.TextBox();
+			this.TbSpeed = new System.Windows.Forms.TextBox();
 			this.LblPasses = new System.Windows.Forms.Label();
 			this.LblSpeed = new System.Windows.Forms.Label();
 			this.LblPower = new System.Windows.Forms.Label();
-			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.TbPower = new System.Windows.Forms.TextBox();
-			this.TbSpeed = new System.Windows.Forms.TextBox();
-			this.TbPasses = new System.Windows.Forms.TextBox();
+			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnApply = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
@@ -79,6 +79,16 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(198, 108);
 			this.tableLayoutPanel1.TabIndex = 0;
+			// 
+			// CbAction
+			// 
+			this.CbAction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbAction.FormattingEnabled = true;
+			this.CbAction.Location = new System.Drawing.Point(74, 84);
+			this.CbAction.Name = "CbAction";
+			this.CbAction.Size = new System.Drawing.Size(121, 21);
+			this.CbAction.TabIndex = 8;
+			this.CbAction.SelectedIndexChanged += new System.EventHandler(this.CbAction_SelectedIndexChanged);
 			// 
 			// LblModel
 			// 
@@ -122,35 +132,33 @@
 			// 
 			// CbModel
 			// 
+			this.CbModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbModel.FormattingEnabled = true;
 			this.CbModel.Location = new System.Drawing.Point(74, 3);
 			this.CbModel.Name = "CbModel";
 			this.CbModel.Size = new System.Drawing.Size(121, 21);
 			this.CbModel.TabIndex = 5;
+			this.CbModel.SelectedIndexChanged += new System.EventHandler(this.CbModel_SelectedIndexChanged);
 			// 
 			// CbMaterial
 			// 
+			this.CbMaterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbMaterial.FormattingEnabled = true;
 			this.CbMaterial.Location = new System.Drawing.Point(74, 30);
 			this.CbMaterial.Name = "CbMaterial";
 			this.CbMaterial.Size = new System.Drawing.Size(121, 21);
 			this.CbMaterial.TabIndex = 6;
+			this.CbMaterial.SelectedIndexChanged += new System.EventHandler(this.CbMaterial_SelectedIndexChanged);
 			// 
 			// CbThickness
 			// 
+			this.CbThickness.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbThickness.FormattingEnabled = true;
 			this.CbThickness.Location = new System.Drawing.Point(74, 57);
 			this.CbThickness.Name = "CbThickness";
 			this.CbThickness.Size = new System.Drawing.Size(121, 21);
 			this.CbThickness.TabIndex = 7;
-			// 
-			// CbAction
-			// 
-			this.CbAction.FormattingEnabled = true;
-			this.CbAction.Location = new System.Drawing.Point(74, 84);
-			this.CbAction.Name = "CbAction";
-			this.CbAction.Size = new System.Drawing.Size(121, 21);
-			this.CbAction.TabIndex = 8;
+			this.CbThickness.SelectedIndexChanged += new System.EventHandler(this.CbThickness_SelectedIndexChanged);
 			// 
 			// groupBox1
 			// 
@@ -188,6 +196,24 @@
 			this.tableLayoutPanel2.Size = new System.Drawing.Size(153, 89);
 			this.tableLayoutPanel2.TabIndex = 0;
 			// 
+			// TbPasses
+			// 
+			this.TbPasses.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.TbPasses.Location = new System.Drawing.Point(50, 63);
+			this.TbPasses.Name = "TbPasses";
+			this.TbPasses.ReadOnly = true;
+			this.TbPasses.Size = new System.Drawing.Size(100, 20);
+			this.TbPasses.TabIndex = 9;
+			// 
+			// TbSpeed
+			// 
+			this.TbSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.TbSpeed.Location = new System.Drawing.Point(50, 33);
+			this.TbSpeed.Name = "TbSpeed";
+			this.TbSpeed.ReadOnly = true;
+			this.TbSpeed.Size = new System.Drawing.Size(100, 20);
+			this.TbSpeed.TabIndex = 8;
+			// 
 			// LblPasses
 			// 
 			this.LblPasses.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -218,6 +244,15 @@
 			this.LblPower.TabIndex = 4;
 			this.LblPower.Text = "Power";
 			// 
+			// TbPower
+			// 
+			this.TbPower.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.TbPower.Location = new System.Drawing.Point(50, 4);
+			this.TbPower.Name = "TbPower";
+			this.TbPower.ReadOnly = true;
+			this.TbPower.Size = new System.Drawing.Size(100, 20);
+			this.TbPower.TabIndex = 7;
+			// 
 			// tableLayoutPanel3
 			// 
 			this.tableLayoutPanel3.AutoSize = true;
@@ -236,33 +271,6 @@
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
 			this.tableLayoutPanel3.Size = new System.Drawing.Size(369, 142);
 			this.tableLayoutPanel3.TabIndex = 11;
-			// 
-			// TbPower
-			// 
-			this.TbPower.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.TbPower.Location = new System.Drawing.Point(50, 4);
-			this.TbPower.Name = "TbPower";
-			this.TbPower.ReadOnly = true;
-			this.TbPower.Size = new System.Drawing.Size(100, 20);
-			this.TbPower.TabIndex = 7;
-			// 
-			// TbSpeed
-			// 
-			this.TbSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.TbSpeed.Location = new System.Drawing.Point(50, 33);
-			this.TbSpeed.Name = "TbSpeed";
-			this.TbSpeed.ReadOnly = true;
-			this.TbSpeed.Size = new System.Drawing.Size(100, 20);
-			this.TbSpeed.TabIndex = 8;
-			// 
-			// TbPasses
-			// 
-			this.TbPasses.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.TbPasses.Location = new System.Drawing.Point(50, 63);
-			this.TbPasses.Name = "TbPasses";
-			this.TbPasses.ReadOnly = true;
-			this.TbPasses.Size = new System.Drawing.Size(100, 20);
-			this.TbPasses.TabIndex = 9;
 			// 
 			// BtnApply
 			// 

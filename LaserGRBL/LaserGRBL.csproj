@@ -112,6 +112,7 @@
     <Compile Include="Autotrace\Autotrace.cs" />
     <Compile Include="AutoUpdate\Json.cs" />
     <Compile Include="ComWrapper\ComLogger.cs" />
+    <Compile Include="CSV\CsvList.cs" />
     <Compile Include="ExceptionManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +137,12 @@
     </Compile>
     <Compile Include="PSHelper\PSHelperControl.Designer.cs">
       <DependentUpon>PSHelperControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSHelper\PSHelperForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PSHelper\PSHelperForm.Designer.cs">
+      <DependentUpon>PSHelperForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SaveOptionForm.cs">
       <SubType>Form</SubType>
@@ -894,6 +901,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSHelperControl.resx">
       <DependentUpon>PSHelperControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSHelperForm.resx">
+      <DependentUpon>PSHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.cs-CZ.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
