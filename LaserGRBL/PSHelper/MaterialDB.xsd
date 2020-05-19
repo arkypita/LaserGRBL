@@ -12,7 +12,7 @@
   <xs:element name="MaterialDB" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MaterialDB" msprop:Generator_UserDSName="MaterialDB">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Materials" msprop:Generator_TableClassName="MaterialsDataTable" msprop:Generator_TableVarName="tableMaterials" msprop:Generator_TablePropName="Materials" msprop:Generator_RowDeletingName="MaterialsRowDeleting" msprop:Generator_RowChangingName="MaterialsRowChanging" msprop:Generator_RowEvHandlerName="MaterialsRowChangeEventHandler" msprop:Generator_RowDeletedName="MaterialsRowDeleted" msprop:Generator_UserTableName="Materials" msprop:Generator_RowChangedName="MaterialsRowChanged" msprop:Generator_RowEvArgName="MaterialsRowChangeEvent" msprop:Generator_RowClassName="MaterialsRow">
+        <xs:element name="Materials" msprop:Generator_TableClassName="MaterialsDataTable" msprop:Generator_TableVarName="tableMaterials" msprop:Generator_RowChangedName="MaterialsRowChanged" msprop:Generator_TablePropName="Materials" msprop:Generator_RowDeletingName="MaterialsRowDeleting" msprop:Generator_RowChangingName="MaterialsRowChanging" msprop:Generator_RowEvHandlerName="MaterialsRowChangeEventHandler" msprop:Generator_RowDeletedName="MaterialsRowDeleted" msprop:Generator_RowClassName="MaterialsRow" msprop:Generator_UserTableName="Materials" msprop:Generator_RowEvArgName="MaterialsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" />
@@ -33,6 +33,13 @@
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Materials" />
       <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="RecordUnique">
+      <xs:selector xpath=".//mstns:Materials" />
+      <xs:field xpath="mstns:Model" />
+      <xs:field xpath="mstns:Material" />
+      <xs:field xpath="mstns:Thickness" />
+      <xs:field xpath="mstns:Action" />
     </xs:unique>
   </xs:element>
 </xs:schema>

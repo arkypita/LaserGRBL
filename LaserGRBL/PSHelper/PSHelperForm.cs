@@ -12,6 +12,8 @@ namespace LaserGRBL.PSHelper
 	public partial class PSHelperForm : Form
 	{
 		MaterialDB.MaterialsDataTable data = GrblCore.MaterialDB.Materials;
+		MaterialDB.MaterialsRow current = null;
+		MaterialDB.MaterialsRow result = null;
 
 		private PSHelperForm()
 		{
@@ -19,10 +21,16 @@ namespace LaserGRBL.PSHelper
 			InitModels();
 		}
 
-		public static void CreateAndShowDialog()
+		public static MaterialDB.MaterialsRow CreateAndShowDialog()
 		{
+			MaterialDB.MaterialsRow rv = null;
 			using (PSHelperForm f = new PSHelperForm())
+			{
 				f.ShowDialog();
+				rv = f.result;
+			}
+
+			return rv;
 		}
 
 
@@ -91,12 +99,18 @@ namespace LaserGRBL.PSHelper
 
 		private void CbAction_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			var res = data.GetResult(SelectedModel, SelectedMaterial, SelectedThickness, SelectedAction);
-			TbPower.Text = $"{res.Power} %";
-			TbSpeed.Text = $"{res.Speed} mm/min";
-			TbPasses.Text = $"{res.Cycles} pass";
+			current = data.GetResult(SelectedModel, SelectedMaterial, SelectedThickness, SelectedAction);
+			TbPower.Text = $"{current.Power} %";
+			TbSpeed.Text = $"{current.Speed} mm/min";
+			TbPasses.Text = $"{current.Cycles} pass";
 		}
 
+		
 
+		private void BtnApply_Click(object sender, EventArgs e)
+		{
+			result = current;
+			Close();
+		}
 	}
 }

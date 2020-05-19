@@ -113,7 +113,6 @@
     <Compile Include="Autotrace\Autotrace.cs" />
     <Compile Include="AutoUpdate\Json.cs" />
     <Compile Include="ComWrapper\ComLogger.cs" />
-    <Compile Include="CSV\CsvList.cs" />
     <Compile Include="ExceptionManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,7 +146,6 @@
     <Compile Include="PSHelper\PSEditorForm.Designer.cs">
       <DependentUpon>PSEditorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PSHelper\PSFile.cs" />
     <Compile Include="PSHelper\PSHelperForm.cs">
       <SubType>Form</SubType>
     </Compile>

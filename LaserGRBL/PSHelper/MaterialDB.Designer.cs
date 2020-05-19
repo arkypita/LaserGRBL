@@ -528,6 +528,11 @@ namespace LaserGRBL.PSHelper {
                 base.Columns.Add(this.columnRemarks);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("RecordUnique", new global::System.Data.DataColumn[] {
+                                this.columnModel,
+                                this.columnMaterial,
+                                this.columnThickness,
+                                this.columnAction}, false));
                 this.columnid.AllowDBNull = false;
                 this.columnid.ReadOnly = true;
                 this.columnid.Unique = true;

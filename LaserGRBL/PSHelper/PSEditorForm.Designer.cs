@@ -29,17 +29,18 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PSEditorForm));
 			this.DG = new System.Windows.Forms.DataGridView();
 			this.ColID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColVisible = new System.Windows.Forms.DataGridViewCheckBoxColumn();
 			this.ColModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColMaterial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColThick = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColAct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColPow = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColCycles = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.source = new System.Windows.Forms.BindingSource(this.components);
 			this.materialDB = new LaserGRBL.PSHelper.MaterialDB();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -54,6 +55,7 @@
 			// 
 			// DG
 			// 
+			this.DG.AllowUserToResizeRows = false;
 			this.DG.AutoGenerateColumns = false;
 			this.DG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.DG.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -61,18 +63,22 @@
             this.ColVisible,
             this.ColModel,
             this.ColMaterial,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9});
+            this.ColThick,
+            this.ColAct,
+            this.ColPow,
+            this.ColSpeed,
+            this.ColCycles,
+            this.ColRemarks});
 			this.DG.DataSource = this.source;
 			this.DG.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.DG.Location = new System.Drawing.Point(0, 0);
 			this.DG.Name = "DG";
 			this.DG.Size = new System.Drawing.Size(891, 480);
 			this.DG.TabIndex = 1;
+			this.DG.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.DG_CellValidating);
+			this.DG.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DG_DataError);
+			this.DG.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.DG_RowValidated);
+			this.DG.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DG_RowValidating);
 			// 
 			// ColID
 			// 
@@ -80,12 +86,15 @@
 			this.ColID.HeaderText = "id";
 			this.ColID.Name = "ColID";
 			this.ColID.ReadOnly = true;
+			this.ColID.Visible = false;
 			// 
 			// ColVisible
 			// 
+			this.ColVisible.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
 			this.ColVisible.DataPropertyName = "Visible";
 			this.ColVisible.HeaderText = "Visible";
 			this.ColVisible.Name = "ColVisible";
+			this.ColVisible.Width = 43;
 			// 
 			// ColModel
 			// 
@@ -99,41 +108,41 @@
 			this.ColMaterial.HeaderText = "Material";
 			this.ColMaterial.Name = "ColMaterial";
 			// 
-			// dataGridViewTextBoxColumn4
+			// ColThick
 			// 
-			this.dataGridViewTextBoxColumn4.DataPropertyName = "Thickness";
-			this.dataGridViewTextBoxColumn4.HeaderText = "Thickness";
-			this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+			this.ColThick.DataPropertyName = "Thickness";
+			this.ColThick.HeaderText = "Thickness";
+			this.ColThick.Name = "ColThick";
 			// 
-			// dataGridViewTextBoxColumn5
+			// ColAct
 			// 
-			this.dataGridViewTextBoxColumn5.DataPropertyName = "Action";
-			this.dataGridViewTextBoxColumn5.HeaderText = "Action";
-			this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+			this.ColAct.DataPropertyName = "Action";
+			this.ColAct.HeaderText = "Action";
+			this.ColAct.Name = "ColAct";
 			// 
-			// dataGridViewTextBoxColumn6
+			// ColPow
 			// 
-			this.dataGridViewTextBoxColumn6.DataPropertyName = "Power";
-			this.dataGridViewTextBoxColumn6.HeaderText = "Power";
-			this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+			this.ColPow.DataPropertyName = "Power";
+			this.ColPow.HeaderText = "Power";
+			this.ColPow.Name = "ColPow";
 			// 
-			// dataGridViewTextBoxColumn7
+			// ColSpeed
 			// 
-			this.dataGridViewTextBoxColumn7.DataPropertyName = "Speed";
-			this.dataGridViewTextBoxColumn7.HeaderText = "Speed";
-			this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+			this.ColSpeed.DataPropertyName = "Speed";
+			this.ColSpeed.HeaderText = "Speed";
+			this.ColSpeed.Name = "ColSpeed";
 			// 
-			// dataGridViewTextBoxColumn8
+			// ColCycles
 			// 
-			this.dataGridViewTextBoxColumn8.DataPropertyName = "Cycles";
-			this.dataGridViewTextBoxColumn8.HeaderText = "Cycles";
-			this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+			this.ColCycles.DataPropertyName = "Cycles";
+			this.ColCycles.HeaderText = "Cycles";
+			this.ColCycles.Name = "ColCycles";
 			// 
-			// dataGridViewTextBoxColumn9
+			// ColRemarks
 			// 
-			this.dataGridViewTextBoxColumn9.DataPropertyName = "Remarks";
-			this.dataGridViewTextBoxColumn9.HeaderText = "Remarks";
-			this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+			this.ColRemarks.DataPropertyName = "Remarks";
+			this.ColRemarks.HeaderText = "Remarks";
+			this.ColRemarks.Name = "ColRemarks";
 			// 
 			// source
 			// 
@@ -184,8 +193,11 @@
 			this.ClientSize = new System.Drawing.Size(891, 502);
 			this.Controls.Add(this.DG);
 			this.Controls.Add(this.statusStrip1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MinimizeBox = false;
 			this.Name = "PSEditorForm";
-			this.Text = "PSEditorForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.Text = "Laser & Material Database";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PSEditorForm_FormClosing);
 			((System.ComponentModel.ISupportInitialize)(this.DG)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.source)).EndInit();
@@ -202,19 +214,19 @@
 		private MaterialDB materialDB;
 		private System.Windows.Forms.BindingSource source;
 		private System.Windows.Forms.DataGridView DG;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ColID;
-		private System.Windows.Forms.DataGridViewCheckBoxColumn ColVisible;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ColModel;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ColMaterial;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
 		private System.Windows.Forms.StatusStrip statusStrip1;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
 		private System.Windows.Forms.ToolStripStatusLabel TbNewElement;
 		private System.Windows.Forms.ToolStripStatusLabel BtnImport;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColID;
+		private System.Windows.Forms.DataGridViewCheckBoxColumn ColVisible;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColModel;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColMaterial;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColThick;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColAct;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColPow;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColSpeed;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColCycles;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColRemarks;
 	}
 }

@@ -62,6 +62,7 @@
 			this.BtnApply.TabIndex = 11;
 			this.BtnApply.Text = "Apply";
 			this.BtnApply.UseVisualStyleBackColor = true;
+			this.BtnApply.Click += new System.EventHandler(this.BtnApply_Click);
 			// 
 			// LblPower
 			// 
@@ -290,8 +291,12 @@
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.ClientSize = new System.Drawing.Size(377, 148);
 			this.Controls.Add(this.tableLayoutPanel3);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "PSHelperForm";
-			this.Text = "PSHelperForm";
+			this.ShowInTaskbar = false;
+			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.Text = "Select your configuration";
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel2.PerformLayout();
 			this.groupBox1.ResumeLayout(false);

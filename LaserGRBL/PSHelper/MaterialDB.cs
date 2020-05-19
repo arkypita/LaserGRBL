@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace LaserGRBL.PSHelper
 {
@@ -30,64 +31,35 @@ namespace LaserGRBL.PSHelper
 						target.Material = last.Material;
 					}
 				}
-
 			}
+
+			private IEnumerable<MaterialsRow> EnabledRows { get => this.Where(x => x.Visible); }
+
 
 			internal object[] Models()
 			{
-				List<string> rv = new List<string>();
-
-				foreach (var record in this)
-					if (!rv.Contains(record.Model))
-						rv.Add(record.Model);
-				rv.Sort();
-				return rv.ToArray();
+				return EnabledRows.Select(x => x.Model).Distinct().OrderBy(s => s).ToArray();
 			}
 
 			internal object[] Materials(string model)
 			{
-				List<string> rv = new List<string>();
-
-				foreach (var record in this)
-					if (record.Model == model && !rv.Contains(record.Material))
-						rv.Add(record.Material);
-				rv.Sort();
-				return rv.ToArray();
+				return EnabledRows.Where(x => x.Model == model).Select(x => x.Material).Distinct().OrderBy(s => s).ToArray();
 			}
 
 			internal object[] Thickness(string model, string material)
 			{
-				List<string> rv = new List<string>();
-
-				foreach (var record in this)
-					if (record.Model == model && record.Material == material && !rv.Contains(record.Thickness))
-						rv.Add(record.Thickness);
-
-				rv.Sort();
-				return rv.ToArray();
+				return EnabledRows.Where(x => x.Model == model && x.Material == material).Select(x => x.Thickness).Distinct().OrderBy(s => s).ToArray();
 			}
 
 
 			internal object[] Actions(string model, string material, string thickness)
 			{
-				List<string> rv = new List<string>();
-
-				foreach (var record in this)
-					if (record.Model == model && record.Material == material && record.Thickness == thickness && !rv.Contains(record.Action))
-						rv.Add(record.Action);
-
-				rv.Sort();
-				return rv.ToArray();
+				return EnabledRows.Where(x => x.Model == model && x.Material == material && x.Thickness == thickness).Select(x => x.Action).Distinct().OrderBy(s => s).ToArray();
 			}
 
 			internal MaterialsRow GetResult(string model, string material, string thickness, string action)
 			{
-				foreach (var record in this)
-				{
-					if (record.Model == model && record.Material == material && record.Thickness == thickness && record.Action == action)
-						return record;
-				}
-				return null;
+				return EnabledRows.Where(x => x.Model == model && x.Material == material && x.Thickness == thickness && x.Action == action).First();
 			}
 		}
 
@@ -96,29 +68,33 @@ namespace LaserGRBL.PSHelper
 		public static MaterialDB Load()
 		{
 			MaterialDB rv = new MaterialDB();
-			MaterialsDataTable user = new MaterialsDataTable() { Namespace = rv.Namespace };
-			MaterialsDataTable server = new MaterialsDataTable() { Namespace = rv.Namespace };
-
-			if (System.IO.File.Exists(UserFile))
-				user.ReadXml(UserFile);
-
-			if (System.IO.File.Exists(ServerFile))
-				server.ReadXml(ServerFile);
-
-			foreach (var row in user)
-				rv.Materials.ImportRow(row);
-
-			if (rv.Materials.Rows.Count == 0)
+			try
 			{
-				foreach (var row in server)
+				MaterialsDataTable user = new MaterialsDataTable() { Namespace = rv.Namespace };
+				MaterialsDataTable server = new MaterialsDataTable() { Namespace = rv.Namespace };
+
+				if (System.IO.File.Exists(UserFile))
+					user.ReadXml(UserFile);
+
+				if (System.IO.File.Exists(ServerFile))
+					server.ReadXml(ServerFile);
+
+				foreach (var row in user)
 					rv.Materials.ImportRow(row);
+
+				if (rv.Materials.Rows.Count == 0)
+				{
+					foreach (var row in server)
+						rv.Materials.ImportRow(row);
+				}
+				else
+				{
+					foreach (var row in server)
+						if (rv.Materials.FindByid(row.id) == null)
+							rv.FromServer.ImportRow(row);               //nuove dal server
+				}
 			}
-			else
-			{
-				foreach (var row in server)
-					if (rv.Materials.FindByid(row.id) == null)
-						rv.FromServer.ImportRow(row);               //nuove dal server
-			}
+			catch { }
 
 			rv.Materials.AcceptChanges();
 			return rv;
@@ -126,11 +102,15 @@ namespace LaserGRBL.PSHelper
 
 		internal void SaveChanges()
 		{
-			if (Materials.GetChanges() != null)
+			try
 			{
-				Materials.AcceptChanges();
-				Materials.WriteXml(UserFile);
+				if (Materials.GetChanges() != null)
+				{
+					Materials.AcceptChanges();
+					Materials.WriteXml(UserFile);
+				}
 			}
+			catch { }
 		}
 
 		internal int GetNewCount()
@@ -144,9 +124,13 @@ namespace LaserGRBL.PSHelper
 
 		internal void ImportServer()
 		{
-			foreach (var row in FromServer)
-				if (Materials.FindByid(row.id) == null)
-					Materials.ImportRow(row);               //nuove dal server
+			try
+			{
+				foreach (var row in FromServer)
+					if (Materials.FindByid(row.id) == null)
+						Materials.ImportRow(row);               //nuove dal server
+			}
+			catch { }
 		}
 
 
