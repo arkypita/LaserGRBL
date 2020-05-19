@@ -547,11 +547,11 @@ namespace LaserGRBL.PSHelper {
                 this.columnAction.AllowDBNull = false;
                 this.columnAction.DefaultValue = ((string)(""));
                 this.columnPower.AllowDBNull = false;
-                this.columnPower.DefaultValue = ((int)(0));
+                this.columnPower.DefaultValue = ((int)(100));
                 this.columnSpeed.AllowDBNull = false;
-                this.columnSpeed.DefaultValue = ((int)(0));
+                this.columnSpeed.DefaultValue = ((int)(1000));
                 this.columnCycles.AllowDBNull = false;
-                this.columnCycles.DefaultValue = ((int)(0));
+                this.columnCycles.DefaultValue = ((int)(1));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

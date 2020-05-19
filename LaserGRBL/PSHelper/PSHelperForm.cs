@@ -66,29 +66,16 @@ namespace LaserGRBL.PSHelper
 
 		private string SelectedModel { get => CbModel.SelectedItem as string; }
 		private string SelectedMaterial { get => CbMaterial.SelectedItem as string; }
-		private string SelectedThickness { get => CbThickness.SelectedItem as string; }
 		private string SelectedAction { get => CbAction.SelectedItem as string; }
+		private string SelectedThickness { get => CbThickness.SelectedItem as string; }
+		
 
 		private void CbMaterial_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			string LastThicknessSelection = SelectedThickness;
-			CbThickness.BeginUpdate();
-			CbThickness.Items.Clear();
-			CbThickness.Items.AddRange(data.Thickness(SelectedModel, SelectedMaterial));
-			if (LastThicknessSelection != null && CbModel.Items.Contains(LastThicknessSelection))
-				CbThickness.SelectedItem = LastThicknessSelection;
-			else if (CbThickness.Items.Count > 0)
-				CbThickness.SelectedIndex = 0;
-			CbThickness.Enabled = CbThickness.Items.Count > 1;
-			CbThickness.EndUpdate();
-		}
-
-		private void CbThickness_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			string LastActionSelection = SelectedAction;
 			CbAction.BeginUpdate();
 			CbAction.Items.Clear();
-			CbAction.Items.AddRange(data.Actions(SelectedModel, SelectedMaterial, SelectedThickness));
+			CbAction.Items.AddRange(data.Actions(SelectedModel, SelectedMaterial));
 			if (LastActionSelection != null && CbAction.Items.Contains(LastActionSelection))
 				CbAction.SelectedItem = LastActionSelection;
 			else if (CbAction.Items.Count > 0)
@@ -99,13 +86,27 @@ namespace LaserGRBL.PSHelper
 
 		private void CbAction_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			current = data.GetResult(SelectedModel, SelectedMaterial, SelectedThickness, SelectedAction);
+			string LastThicknessSelection = SelectedThickness;
+			CbThickness.BeginUpdate();
+			CbThickness.Items.Clear();
+			CbThickness.Items.AddRange(data.Thickness(SelectedModel, SelectedMaterial, SelectedAction));
+			if (LastThicknessSelection != null && CbThickness.Items.Contains(LastThicknessSelection))
+				CbThickness.SelectedItem = LastThicknessSelection;
+			else if (CbThickness.Items.Count > 0)
+				CbThickness.SelectedIndex = 0;
+			CbThickness.Enabled = CbThickness.Items.Count > 1;
+			CbThickness.EndUpdate();
+		}
+
+		private void CbThickness_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			current = data.GetResult(SelectedModel, SelectedMaterial, SelectedAction, SelectedThickness);
 			TbPower.Text = $"{current.Power} %";
 			TbSpeed.Text = $"{current.Speed} mm/min";
 			TbPasses.Text = $"{current.Cycles} pass";
 		}
 
-		
+
 
 		private void BtnApply_Click(object sender, EventArgs e)
 		{

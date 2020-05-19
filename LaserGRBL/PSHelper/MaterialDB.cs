@@ -14,11 +14,20 @@ namespace LaserGRBL.PSHelper
 			public override void EndInit()
 			{
 				base.EndInit();
-				TableNewRow += Materials_TableNewRow;
+				TableNewRow += MaterialsDataTable_TableNewRow;
 			}
 
-			private void Materials_TableNewRow(object sender, DataTableNewRowEventArgs e)
+			private void MaterialsDataTable_TableNewRow(object sender, DataTableNewRowEventArgs e)
 			{
+				//throw new NotImplementedException();
+			}
+
+			protected override void OnTableNewRow(DataTableNewRowEventArgs e)
+			{
+
+
+				base.OnTableNewRow(e);
+
 				MaterialsRow target = e.Row as MaterialsRow;
 				MaterialsRow last = Rows.Count > 0 ? Rows[Rows.Count - 1] as MaterialsRow : null;
 				if (target != null)
@@ -31,6 +40,27 @@ namespace LaserGRBL.PSHelper
 						target.Material = last.Material;
 					}
 				}
+			}
+
+			protected override void OnColumnChanging(DataColumnChangeEventArgs e)
+			{
+				if (e.Column == PowerColumn && (int)e.ProposedValue < 5)
+					throw new Exception("Please enter a valid power level (Min 5%)");
+				if (e.Column == PowerColumn && (int)e.ProposedValue > 100)
+					throw new Exception("Please enter a valid power level (Max 100%)");
+
+				if (e.Column == SpeedColumn && (int)e.ProposedValue < 1)
+					throw new Exception("Please enter a valid speed (Min 1 mm/min)");
+				if (e.Column == SpeedColumn && (int)e.ProposedValue > 100000)
+					throw new Exception("Please enter a valid speed (Max 100000 mm/min)");
+
+				if (e.Column == CyclesColumn && (int)e.ProposedValue < 1)
+					throw new Exception("Please enter a valid cycles number (Min 1 cycles)");
+				if (e.Column == CyclesColumn && (int)e.ProposedValue >= 100)
+					throw new Exception("Please enter a valid cycles number (Max 99 cycles)");
+
+
+				base.OnColumnChanging(e);
 			}
 
 			private IEnumerable<MaterialsRow> EnabledRows { get => this.Where(x => x.Visible); }
@@ -46,18 +76,18 @@ namespace LaserGRBL.PSHelper
 				return EnabledRows.Where(x => x.Model == model).Select(x => x.Material).Distinct().OrderBy(s => s).ToArray();
 			}
 
-			internal object[] Thickness(string model, string material)
+			internal object[] Thickness(string model, string material, string action)
 			{
-				return EnabledRows.Where(x => x.Model == model && x.Material == material).Select(x => x.Thickness).Distinct().OrderBy(s => s).ToArray();
+				return EnabledRows.Where(x => x.Model == model && x.Material == material && x.Action == action).Select(x => x.Thickness).Distinct().OrderBy(s => s).ToArray();
 			}
 
 
-			internal object[] Actions(string model, string material, string thickness)
+			internal object[] Actions(string model, string material)
 			{
-				return EnabledRows.Where(x => x.Model == model && x.Material == material && x.Thickness == thickness).Select(x => x.Action).Distinct().OrderBy(s => s).ToArray();
+				return EnabledRows.Where(x => x.Model == model && x.Material == material).Select(x => x.Action).Distinct().OrderBy(s => s).ToArray();
 			}
 
-			internal MaterialsRow GetResult(string model, string material, string thickness, string action)
+			internal MaterialsRow GetResult(string model, string material, string action, string thickness)
 			{
 				return EnabledRows.Where(x => x.Model == model && x.Material == material && x.Thickness == thickness && x.Action == action).First();
 			}

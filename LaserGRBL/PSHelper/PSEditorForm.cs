@@ -43,42 +43,5 @@ namespace LaserGRBL.PSHelper
 				e.ThrowException = false;
 			}
 		}
-
-		private void DG_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
-		{
-			//DataGridViewRow dgRow = DG.Rows[e.RowIndex];
-
-			//if ((dgRow.Cells["yourColumnName"].Value == null) ||
-			//	(dgRow.Cells["yourColumnName"].Value.ToString().Length == 0))
-			//{
-			//	// Set both the row and cell error text at the same time.
-			//	dgRow.ErrorText = dgRow.Cells["dgTxtColTest List"].ErrorText =
-			//		"You must enter a value in the " + yourColumnName + " column."
-		
-
-			//	e.Cancel = true;
-			//}
-		}
-
-		private void DG_RowValidated(object sender, DataGridViewCellEventArgs e)
-		{
-			//// Clear errors from row header and cells in the row
-			//DataGridViewRow row = DG.Rows[e.RowIndex];
-			//row.ErrorText = ""; // Clear the row header error text
-
-			//// Clear all error texts from the row
-			//foreach (DataGridViewCell cell in row.Cells)
-			//	cell.ErrorText = ""; // Clear each cell in the row as now row is valid
-		}
-
-		private void DG_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-		{
-			if (DG.Columns[e.ColumnIndex] == ColCycles) //tra 1 e 100
-			{
-				int val = Convert.ToInt32(e.FormattedValue);
-				if (val < 1) DG[e.ColumnIndex, e.RowIndex].ErrorText = "Please enter positive value";
-			}
-		}
-
 	}
 }

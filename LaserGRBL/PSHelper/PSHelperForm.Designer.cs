@@ -78,7 +78,7 @@
 			// 
 			this.CbAction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbAction.FormattingEnabled = true;
-			this.CbAction.Location = new System.Drawing.Point(74, 84);
+			this.CbAction.Location = new System.Drawing.Point(74, 57);
 			this.CbAction.Name = "CbAction";
 			this.CbAction.Size = new System.Drawing.Size(121, 21);
 			this.CbAction.TabIndex = 8;
@@ -108,7 +108,7 @@
 			// 
 			this.LblThickness.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.LblThickness.AutoSize = true;
-			this.LblThickness.Location = new System.Drawing.Point(3, 61);
+			this.LblThickness.Location = new System.Drawing.Point(3, 88);
 			this.LblThickness.Name = "LblThickness";
 			this.LblThickness.Size = new System.Drawing.Size(56, 13);
 			this.LblThickness.TabIndex = 2;
@@ -118,7 +118,7 @@
 			// 
 			this.LblAction.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.LblAction.AutoSize = true;
-			this.LblAction.Location = new System.Drawing.Point(3, 88);
+			this.LblAction.Location = new System.Drawing.Point(3, 61);
 			this.LblAction.Name = "LblAction";
 			this.LblAction.Size = new System.Drawing.Size(37, 13);
 			this.LblAction.TabIndex = 3;
@@ -177,7 +177,7 @@
 			// 
 			this.CbThickness.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbThickness.FormattingEnabled = true;
-			this.CbThickness.Location = new System.Drawing.Point(74, 57);
+			this.CbThickness.Location = new System.Drawing.Point(74, 84);
 			this.CbThickness.Name = "CbThickness";
 			this.CbThickness.Size = new System.Drawing.Size(121, 21);
 			this.CbThickness.TabIndex = 7;
@@ -244,14 +244,14 @@
 			this.tableLayoutPanel1.ColumnCount = 2;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.Controls.Add(this.CbAction, 1, 3);
 			this.tableLayoutPanel1.Controls.Add(this.LblModel, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.LblMaterial, 0, 1);
-			this.tableLayoutPanel1.Controls.Add(this.LblThickness, 0, 2);
-			this.tableLayoutPanel1.Controls.Add(this.LblAction, 0, 3);
 			this.tableLayoutPanel1.Controls.Add(this.CbModel, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.CbMaterial, 1, 1);
-			this.tableLayoutPanel1.Controls.Add(this.CbThickness, 1, 2);
+			this.tableLayoutPanel1.Controls.Add(this.LblThickness, 0, 3);
+			this.tableLayoutPanel1.Controls.Add(this.LblAction, 0, 2);
+			this.tableLayoutPanel1.Controls.Add(this.CbThickness, 1, 3);
+			this.tableLayoutPanel1.Controls.Add(this.CbAction, 1, 2);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 4;
