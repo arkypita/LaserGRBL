@@ -14,9 +14,8 @@ namespace LaserGRBL.CSV
 	/// <summary>
 	/// Description of CsvDictionary.
 	/// </summary>
-	public class CsvList 
+	public class CsvList : List<List<string>>
 	{
-		protected List<List<string>> mD = new List<List<string>>();
 		private int mLen;
 		
 		public CsvList(string filename, int len)
@@ -27,21 +26,14 @@ namespace LaserGRBL.CSV
       		while ((rline = sr.ReadLine()) != null)
       		{
       			FormattedMessage fm = FormattedMessage.FromStringList(StringList.FromMessage(rline, ";"));
-      			List<string> data = new List<string>();
+      			List<string> row = new List<string>();
       			
       			for (int i = 0; i < mLen; i++)
-      				data.Add(fm.ReadString().Trim());
+      				row.Add(fm.ReadString().Trim());
       			
-				mD.Add(data);
+				Add(row);
       		}
 		}
 		
-		//public string GetItem(string key, int item)
-		//{
-		//	if (mD.ContainsKey(key))
-		//		return mD[key][item];
-		//	else
-		//		return null;
-		//}
 	}
 }

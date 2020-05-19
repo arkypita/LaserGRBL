@@ -211,5 +211,10 @@ namespace LaserGRBL.RasterConverter
 			if (CbAutosize.Checked)
 				IIDpi.CurrentValue = IP.FileDPI;
 		}
+
+		private void BtnPSHelper_Click(object sender, EventArgs e)
+		{
+			PSHelper.PSHelperForm.CreateAndShowDialog();
+		}
 	}
 }

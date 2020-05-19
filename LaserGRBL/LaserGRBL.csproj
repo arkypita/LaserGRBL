@@ -92,6 +92,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
@@ -132,12 +133,21 @@
       <DependentUpon>LicenseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MarlinCore.cs" />
-    <Compile Include="PSHelper\PSHelperControl.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="PSHelper\MaterialDB.cs">
+      <DependentUpon>MaterialDB.xsd</DependentUpon>
     </Compile>
-    <Compile Include="PSHelper\PSHelperControl.Designer.cs">
-      <DependentUpon>PSHelperControl.cs</DependentUpon>
+    <Compile Include="PSHelper\MaterialDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaterialDB.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PSHelper\PSEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PSHelper\PSEditorForm.Designer.cs">
+      <DependentUpon>PSEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSHelper\PSFile.cs" />
     <Compile Include="PSHelper\PSHelperForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -726,6 +736,8 @@
     <Compile Include="UserControls\WaitingProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <None Include="Resources\book_addressHS.png" />
+    <None Include="Resources\book_Thesaurus_32.png" />
     <EmbeddedResource Include="Autotrace\AutotraceTest.resx">
       <DependentUpon>AutotraceTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -899,8 +911,9 @@
     <EmbeddedResource Include="PreviewForm.sk-SK.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PSHelper\PSHelperControl.resx">
-      <DependentUpon>PSHelperControl.cs</DependentUpon>
+    <EmbeddedResource Include="PSHelper\PSEditorForm.resx">
+      <DependentUpon>PSEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSHelperForm.resx">
       <DependentUpon>PSHelperForm.cs</DependentUpon>
@@ -1329,6 +1342,17 @@
     <None Include="Grafica\LaserGrbl.ico" />
     <None Include="Grafica\rotCCW.png" />
     <None Include="Grafica\rotCW.png" />
+    <None Include="PSHelper\MaterialDB.xsc">
+      <DependentUpon>MaterialDB.xsd</DependentUpon>
+    </None>
+    <None Include="PSHelper\MaterialDB.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MaterialDB.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="PSHelper\MaterialDB.xss">
+      <DependentUpon>MaterialDB.xsd</DependentUpon>
+    </None>
     <None Include="SvgLibrary\Basic Shapes\DOM.cd" />
     <EmbeddedResource Include="SvgLibrary\Resources\svg11.dtd" />
   </ItemGroup>
@@ -1393,7 +1417,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <Folder Include="Properties\DataSources\" />
     <Folder Include="SvgLibrary\Web\Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
