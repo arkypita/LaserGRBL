@@ -19,6 +19,18 @@ namespace LaserGRBL.PSHelper
 		{
 			InitializeComponent();
 			InitModels();
+
+			SetDefault("DB Last Used Laser Model", CbModel);
+			SetDefault("DB Last Used Material", CbMaterial);
+			SetDefault("DB Last Used Action", CbAction);
+			SetDefault("DB Last Used Thickness", CbThickness);
+		}
+
+		private void SetDefault(string key, ComboBox target)
+		{
+			string value = Settings.GetObject(key, (string)null);
+			if (value != null && target.Items.Contains(value))
+				target.SelectedItem = value;
 		}
 
 		public static MaterialDB.MaterialsRow CreateAndShowDialog()
@@ -110,7 +122,18 @@ namespace LaserGRBL.PSHelper
 
 		private void BtnApply_Click(object sender, EventArgs e)
 		{
+			if (CbModel.SelectedItem != null) Settings.SetObject("DB Last Used Laser Model", CbModel.SelectedItem);
+			if (CbMaterial.SelectedItem != null) Settings.SetObject("DB Last Used Material", CbMaterial.SelectedItem);
+			if (CbAction.SelectedItem != null) Settings.SetObject("DB Last Used Action", CbAction.SelectedItem);
+			if (CbThickness.SelectedItem != null) Settings.SetObject("DB Last Used Thickness", CbThickness.SelectedItem);
+			Settings.Save();
+
 			result = current;
+			Close();
+		}
+
+		private void BtnCancel_Click(object sender, EventArgs e)
+		{
 			Close();
 		}
 	}

@@ -24,8 +24,6 @@ namespace LaserGRBL.PSHelper
 
 			protected override void OnTableNewRow(DataTableNewRowEventArgs e)
 			{
-
-
 				base.OnTableNewRow(e);
 
 				MaterialsRow target = e.Row as MaterialsRow;
@@ -58,7 +56,6 @@ namespace LaserGRBL.PSHelper
 					throw new Exception("Please enter a valid cycles number (Min 1 cycles)");
 				if (e.Column == CyclesColumn && (int)e.ProposedValue >= 100)
 					throw new Exception("Please enter a valid cycles number (Max 99 cycles)");
-
 
 				base.OnColumnChanging(e);
 			}

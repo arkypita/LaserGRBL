@@ -734,6 +734,9 @@
     <Compile Include="UserControls\WaitingProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <None Include="StandardMaterials.psh">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="App.config" />
     <None Include="Resources\book_addressHS.png" />
     <None Include="Resources\book_Thesaurus_32.png" />

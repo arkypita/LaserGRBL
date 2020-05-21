@@ -47,16 +47,21 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+			this.BtnCancel = new System.Windows.Forms.Button();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
+			this.tableLayoutPanel4.SuspendLayout();
+			this.tableLayoutPanel5.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// BtnApply
 			// 
 			this.BtnApply.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.BtnApply.Location = new System.Drawing.Point(299, 123);
+			this.BtnApply.Location = new System.Drawing.Point(293, 4);
 			this.BtnApply.Name = "BtnApply";
 			this.BtnApply.Size = new System.Drawing.Size(75, 22);
 			this.BtnApply.TabIndex = 11;
@@ -68,7 +73,7 @@
 			// 
 			this.LblPower.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.LblPower.AutoSize = true;
-			this.LblPower.Location = new System.Drawing.Point(3, 9);
+			this.LblPower.Location = new System.Drawing.Point(3, 8);
 			this.LblPower.Name = "LblPower";
 			this.LblPower.Size = new System.Drawing.Size(37, 13);
 			this.LblPower.TabIndex = 4;
@@ -147,7 +152,7 @@
 			// TbSpeed
 			// 
 			this.TbSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.TbSpeed.Location = new System.Drawing.Point(50, 36);
+			this.TbSpeed.Location = new System.Drawing.Point(50, 33);
 			this.TbSpeed.Name = "TbSpeed";
 			this.TbSpeed.ReadOnly = true;
 			this.TbSpeed.Size = new System.Drawing.Size(100, 20);
@@ -157,7 +162,7 @@
 			// 
 			this.LblPasses.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.LblPasses.AutoSize = true;
-			this.LblPasses.Location = new System.Drawing.Point(3, 72);
+			this.LblPasses.Location = new System.Drawing.Point(3, 67);
 			this.LblPasses.Name = "LblPasses";
 			this.LblPasses.Size = new System.Drawing.Size(41, 13);
 			this.LblPasses.TabIndex = 6;
@@ -167,7 +172,7 @@
 			// 
 			this.LblSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.LblSpeed.AutoSize = true;
-			this.LblSpeed.Location = new System.Drawing.Point(3, 40);
+			this.LblSpeed.Location = new System.Drawing.Point(3, 37);
 			this.LblSpeed.Name = "LblSpeed";
 			this.LblSpeed.Size = new System.Drawing.Size(38, 13);
 			this.LblSpeed.TabIndex = 5;
@@ -203,13 +208,13 @@
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(153, 95);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(153, 89);
 			this.tableLayoutPanel2.TabIndex = 0;
 			// 
 			// TbPasses
 			// 
 			this.TbPasses.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.TbPasses.Location = new System.Drawing.Point(50, 68);
+			this.TbPasses.Location = new System.Drawing.Point(50, 63);
 			this.TbPasses.Name = "TbPasses";
 			this.TbPasses.ReadOnly = true;
 			this.TbPasses.Size = new System.Drawing.Size(100, 20);
@@ -218,7 +223,7 @@
 			// TbPower
 			// 
 			this.TbPower.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.TbPower.Location = new System.Drawing.Point(50, 5);
+			this.TbPower.Location = new System.Drawing.Point(50, 4);
 			this.TbPower.Name = "TbPower";
 			this.TbPower.ReadOnly = true;
 			this.TbPower.Size = new System.Drawing.Size(100, 20);
@@ -230,9 +235,9 @@
 			this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.groupBox1.Controls.Add(this.tableLayoutPanel2);
 			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox1.Location = new System.Drawing.Point(215, 3);
+			this.groupBox1.Location = new System.Drawing.Point(207, 3);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(159, 114);
+			this.groupBox1.Size = new System.Drawing.Size(159, 108);
 			this.groupBox1.TabIndex = 10;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Suggested settings";
@@ -273,15 +278,58 @@
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 0, 0);
 			this.tableLayoutPanel3.Controls.Add(this.groupBox1, 1, 0);
-			this.tableLayoutPanel3.Controls.Add(this.BtnApply, 1, 1);
-			this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+			this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-			this.tableLayoutPanel3.RowCount = 2;
+			this.tableLayoutPanel3.RowCount = 1;
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(377, 148);
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(369, 114);
 			this.tableLayoutPanel3.TabIndex = 12;
+			// 
+			// tableLayoutPanel4
+			// 
+			this.tableLayoutPanel4.AutoSize = true;
+			this.tableLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.tableLayoutPanel4.ColumnCount = 1;
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel3, 0, 0);
+			this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 1);
+			this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+			this.tableLayoutPanel4.RowCount = 2;
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel4.Size = new System.Drawing.Size(377, 157);
+			this.tableLayoutPanel4.TabIndex = 13;
+			// 
+			// tableLayoutPanel5
+			// 
+			this.tableLayoutPanel5.AutoSize = true;
+			this.tableLayoutPanel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.tableLayoutPanel5.ColumnCount = 3;
+			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel5.Controls.Add(this.BtnApply, 2, 0);
+			this.tableLayoutPanel5.Controls.Add(this.BtnCancel, 1, 0);
+			this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 123);
+			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+			this.tableLayoutPanel5.RowCount = 1;
+			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel5.Size = new System.Drawing.Size(371, 31);
+			this.tableLayoutPanel5.TabIndex = 13;
+			// 
+			// BtnCancel
+			// 
+			this.BtnCancel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.BtnCancel.Location = new System.Drawing.Point(212, 4);
+			this.BtnCancel.Name = "BtnCancel";
+			this.BtnCancel.Size = new System.Drawing.Size(75, 22);
+			this.BtnCancel.TabIndex = 12;
+			this.BtnCancel.Text = "Cancel";
+			this.BtnCancel.UseVisualStyleBackColor = true;
+			this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
 			// 
 			// PSHelperForm
 			// 
@@ -289,8 +337,8 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.ClientSize = new System.Drawing.Size(377, 148);
-			this.Controls.Add(this.tableLayoutPanel3);
+			this.ClientSize = new System.Drawing.Size(377, 157);
+			this.Controls.Add(this.tableLayoutPanel4);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "PSHelperForm";
 			this.ShowInTaskbar = false;
@@ -305,6 +353,9 @@
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.tableLayoutPanel3.PerformLayout();
+			this.tableLayoutPanel4.ResumeLayout(false);
+			this.tableLayoutPanel4.PerformLayout();
+			this.tableLayoutPanel5.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -331,5 +382,8 @@
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+		private System.Windows.Forms.Button BtnCancel;
 	}
 }
