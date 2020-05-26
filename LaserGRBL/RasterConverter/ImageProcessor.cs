@@ -243,7 +243,7 @@ namespace LaserGRBL.RasterConverter
 			int limit = (mode == 0 || mode == 1) ? mOriginal.Height : mOriginal.Width;
 
 			int i = 0;
-			while (!GetLineColor(mode, 1, i, bgcolor).IsEmpty)
+			while (i < limit && !GetLineColor(mode, 1, i, bgcolor).IsEmpty)
 				i++;
 
 			return i;
