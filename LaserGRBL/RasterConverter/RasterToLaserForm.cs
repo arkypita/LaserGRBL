@@ -25,6 +25,8 @@ namespace LaserGRBL.RasterConverter
 			InitializeComponent();
 			mCore = core;
 
+			UDQuality.Maximum = UDFillingQuality.Maximum = GetMaxQuality();
+
 			BackColor = ColorScheme.FormBackColor;
 			GbCenterlineOptions.ForeColor = GbConversionTool.ForeColor = GbLineToLineOptions.ForeColor = GbParameters.ForeColor = GbVectorizeOptions.ForeColor = ForeColor = ColorScheme.FormForeColor;
 			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
@@ -72,6 +74,11 @@ namespace LaserGRBL.RasterConverter
 
 			LoadSettings();
 			RefreshVE();
+		}
+
+		private decimal GetMaxQuality()
+		{
+			return Settings.GetObject("Raster Hi-Res", false) ? 50 : 20;
 		}
 
 		private Size GetImageSize()
@@ -276,7 +283,7 @@ namespace LaserGRBL.RasterConverter
 				RbVectorize.Checked = true;
 
 			CbDirections.SelectedItem = IP.LineDirection = Settings.GetObject("GrayScaleConversion.Line2LineOptions.Direction", ImageProcessor.Direction.Horizontal);
-			UDQuality.Value = IP.Quality = Settings.GetObject("GrayScaleConversion.Line2LineOptions.Quality", 3.0m);
+			UDQuality.Value = IP.Quality = Math.Min(UDQuality.Maximum, Settings.GetObject("GrayScaleConversion.Line2LineOptions.Quality", 3.0m));
 			CbLinePreview.Checked = IP.LinePreview = Settings.GetObject("GrayScaleConversion.Line2LineOptions.Preview", false);
 
 			CbSpotRemoval.Checked = IP.UseSpotRemoval = Settings.GetObject("GrayScaleConversion.VectorizeOptions.SpotRemoval.Enabled", false);
@@ -293,7 +300,7 @@ namespace LaserGRBL.RasterConverter
 			//CbShowDots.Checked = IP.ShowDots = Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowDots.Enabled", false);
 			//CbShowImage.Checked = IP.ShowImage = Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", true);
 			CbFillingDirection.SelectedItem = IP.FillingDirection = Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", ImageProcessor.Direction.None);
-			UDFillingQuality.Value = IP.FillingQuality = Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", 3.0m);
+			UDFillingQuality.Value = IP.FillingQuality = Math.Min(UDFillingQuality.Maximum, Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", 3.0m));
 
 			CbResize.SelectedItem = IP.Interpolation = Settings.GetObject("GrayScaleConversion.Parameters.Interpolation", InterpolationMode.HighQualityBicubic);
 			CbMode.SelectedItem = IP.Formula = Settings.GetObject("GrayScaleConversion.Parameters.Mode", ImageTransform.Formula.SimpleAverage);
@@ -674,13 +681,13 @@ namespace LaserGRBL.RasterConverter
 
 		private void BtnQualityInfo_Click(object sender, EventArgs e)
 		{
-			UDQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog(mCore, (double)UDQuality.Value);
+			UDQuality.Value = Math.Min(UDQuality.Maximum, (decimal)ResolutionHelperForm.CreateAndShowDialog(mCore, (double)UDQuality.Value));
 			//System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
 		}
 
 		private void BtnFillingQualityInfo_Click(object sender, EventArgs e)
 		{
-			UDFillingQuality.Value = (decimal)ResolutionHelperForm.CreateAndShowDialog(mCore, (double)UDFillingQuality.Value);
+			UDFillingQuality.Value = Math.Min(UDFillingQuality.Maximum, (decimal)ResolutionHelperForm.CreateAndShowDialog(mCore, (double)UDFillingQuality.Value));
 			//System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
 		}
 

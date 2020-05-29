@@ -22,10 +22,15 @@ namespace LaserGRBL.RasterConverter
 		public ResolutionHelperForm()
 		{
 			InitializeComponent();
-
+			UDDesired.Maximum = UDComputed.Maximum = GetMaxQuality();
 			BackColor = ColorScheme.FormBackColor;
 			ForeColor = ColorScheme.FormForeColor;
 			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
+		}
+
+		private decimal GetMaxQuality()
+		{
+			return Settings.GetObject("Raster Hi-Res", false) ? 50 : 20;
 		}
 
 		public static double CreateAndShowDialog(GrblCore Core, double oldval)

@@ -48,6 +48,8 @@ namespace LaserGRBL
             CbContinuosJog.Checked = Settings.GetObject("Enable Continuous Jog", false);
             CbEnableZJog.Checked = Settings.GetObject("Enale Z Jog Control", false);
 
+			CbHiRes.Checked = Settings.GetObject("Raster Hi-Res", false );
+
 			TBHeader.Text = Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER);
             TBHeader.ForeColor = ColorScheme.FormForeColor;
             TBHeader.BackColor = ColorScheme.FormBackColor;
@@ -156,6 +158,8 @@ namespace LaserGRBL
 			Settings.SetObject("GCode.CustomHeader", TBHeader.Text.Trim());
 			Settings.SetObject("GCode.CustomPasses", TBPasses.Text.Trim());
 			Settings.SetObject("GCode.CustomFooter", TBFooter.Text.Trim());
+
+			Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);
 
 			Settings.Save();
 
