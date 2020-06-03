@@ -704,6 +704,12 @@
     <Compile Include="UserControls\Move2DControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UserControls\MyPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\MyPictureBox.designer.cs">
+      <DependentUpon>MyPictureBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\NumericInput\ColoredBorderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
