@@ -624,7 +624,7 @@
 			resources.ApplyResources(this.UDFillingQuality, "UDFillingQuality");
 			this.UDFillingQuality.DecimalPlaces = 3;
 			this.UDFillingQuality.Maximum = new decimal(new int[] {
-            20,
+            50,
             0,
             0,
             0});
@@ -982,7 +982,7 @@
 			this.UDQuality.DecimalPlaces = 3;
 			resources.ApplyResources(this.UDQuality, "UDQuality");
 			this.UDQuality.Maximum = new decimal(new int[] {
-            20,
+            50,
             0,
             0,
             0});

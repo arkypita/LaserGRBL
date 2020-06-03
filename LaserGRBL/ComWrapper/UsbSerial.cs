@@ -5,15 +5,13 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace LaserGRBL.ComWrapper
 {
 	class UsbSerial : IComWrapper
 	{
-		private MySerial com = new MySerial();
+		private MySerial com = null;
+
 		private string mPortName;
 		private int mBaudRate;
 
@@ -25,10 +23,14 @@ namespace LaserGRBL.ComWrapper
 
 		public void Open()
 		{
-			if (!com.IsOpen)
+			if (!IsOpen)
 			{
+				try { Close(true); }
+				catch { }
+
 				try
 				{
+					com = new MySerial();
 					com.DataBits = 8;
 					com.Parity = System.IO.Ports.Parity.None;
 					com.StopBits = System.IO.Ports.StopBits.One;
@@ -41,7 +43,7 @@ namespace LaserGRBL.ComWrapper
 					com.DtrEnable = Settings.GetObject("HardReset Grbl On Connect", false);
 					com.RtsEnable = Settings.GetObject("HardReset Grbl On Connect", false);
 
-					if ((Firmware) Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin)
+					if (Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin)
 						com.DtrEnable = true;
 
 					ComLogger.Log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
@@ -70,12 +72,13 @@ namespace LaserGRBL.ComWrapper
 						}
 						catch
 						{
+							com = null;
 							throw ioex; //throw the original ex - not the new one!
 						}
 					}
 					else
 					{
-						
+						com = null;
 					}
 				}
 			}
@@ -98,55 +101,71 @@ namespace LaserGRBL.ComWrapper
 
 		public void Close(bool auto)
 		{
-			if (com.IsOpen)
+			if (com != null && com.IsOpen)
 			{
-                ComLogger.Log("com", string.Format("Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER"));
+				ComLogger.Log("com", string.Format("Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER"));
 				Logger.LogMessage("CloseCom", "Close {0} [{1}]", com.PortName.ToUpper(), auto ? "CORE" : "USER");
-                try { com.DiscardOutBuffer(); } catch { }
-                try { com.DiscardInBuffer(); } catch { }
-                try { com.Close(); } catch { }
+				try { com.DiscardOutBuffer(); } catch { }
+				try { com.DiscardInBuffer(); } catch { }
+				try { com.Close(); } catch { }
+				try { com.Dispose(); } catch { }
 			}
+			com = null;
 		}
 
 		public bool IsOpen
-		{ get { return com.IsOpen; } }
+		{ get { return com != null && com.IsOpen; } }
 
 		public void Write(byte b)
 		{
-            ComLogger.Log("tx", b);
-			com.Write(new byte[] { b }, 0, 1);
+			if (com != null)
+			{
+				ComLogger.Log("tx", b);
+				com.Write(new byte[] { b }, 0, 1);
+			}
 		}
 
         public void Write(byte[] arr)
         {
-            ComLogger.Log("tx", arr);
-            com.Write(arr, 0, arr.Length);
+			if (com != null)
+			{
+				ComLogger.Log("tx", arr);
+				com.Write(arr, 0, arr.Length);
+			}
         }
 
         public void Write(string text)
 		{
-            ComLogger.Log("tx", text);
-			com.Write(text);
+			if (com != null)
+			{
+				ComLogger.Log("tx", text);
+				com.Write(text);
+			}
 		}
 
-		public string ReadLineBlocking()
+		public string ReadLineBlocking()  //la lettura della com è bloccante per natura
 		{
-			if (ComLogger.Enabled)
+			if (com != null)
 			{
-				string rv = com.ReadLine();
-                ComLogger.Log("rx", rv);
-				return rv;
+				if (ComLogger.Enabled)
+				{
+					string rv = com.ReadLine();
+					ComLogger.Log("rx", rv);
+					return rv;
+				}
+				else
+				{
+					return com.ReadLine();
+				}
 			}
 			else
 			{
-				return com.ReadLine();
+				throw new System.IO.IOException("Cannot read from COM port, port is closed!");
 			}
-
-
-		} //la lettura della com è bloccante per natura
+		}
 
 		public bool HasData()
-		{ return com.BytesToRead > 0; }
+		{ return com != null && com.BytesToRead > 0; }
 
 	}
 

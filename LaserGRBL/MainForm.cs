@@ -739,6 +739,11 @@ namespace LaserGRBL
 			questionMarkToolStripMenuItem.HideDropDown();
 			GitHub.CheckVersion(true);
 		}
+
+		private void MnMaterialDB_Click(object sender, EventArgs e)
+		{
+			PSHelper.PSEditorForm.CreateAndShowDialog();
+		}
 	}
 
 

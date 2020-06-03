@@ -60,6 +60,7 @@
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnGrblConfig = new System.Windows.Forms.ToolStripMenuItem();
 			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnMaterialDB = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnHotkeys = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
@@ -286,6 +287,7 @@
             this.toolStripSeparator1,
             this.MnGrblConfig,
             this.settingsToolStripMenuItem,
+            this.MnMaterialDB,
             this.toolStripSeparator2,
             this.MnHotkeys,
             this.toolStripMenuItem6,
@@ -344,6 +346,13 @@
 			resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
 			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
 			this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+			// 
+			// MnMaterialDB
+			// 
+			this.MnMaterialDB.Image = global::LaserGRBL.Strings.book_addressHS;
+			this.MnMaterialDB.Name = "MnMaterialDB";
+			resources.ApplyResources(this.MnMaterialDB, "MnMaterialDB");
+			this.MnMaterialDB.Click += new System.EventHandler(this.MnMaterialDB_Click);
 			// 
 			// toolStripSeparator2
 			// 
@@ -838,6 +847,7 @@
 		private System.Windows.Forms.ToolStripMenuItem MnNotifyPreRelease;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
 		private System.Windows.Forms.ToolStripMenuItem MnCheckNow;
+		private System.Windows.Forms.ToolStripMenuItem MnMaterialDB;
 	}
 }
 

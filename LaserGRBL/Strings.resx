@@ -117,70 +117,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddCustomButtonsHint" xml:space="preserve">
-    <value>Right click here to add custom buttons</value>
-  </data>
-  <data name="BoxAbortProgramConfirm" xml:space="preserve">
-    <value>Abort current job?</value>
-  </data>
-  <data name="BoxAutoUpdateFailed" xml:space="preserve">
-    <value>Automatic update failed!
-Please manually download the new version from lasergrbl site.</value>
-  </data>
-  <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
-    <value>Update require administrator privilege!</value>
-  </data>
-  <data name="BoxAutoUpdateResult" xml:space="preserve">
-    <value>Update result</value>
-  </data>
-  <data name="BoxAutoUpdateSuccess" xml:space="preserve">
-    <value>Update success!</value>
-  </data>
-  <data name="BoxConfigDetectedChanges" xml:space="preserve">
-    <value>There are some changes that have not been applied.
-Do you want to rewrite the configuration?</value>
-  </data>
-  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
-    <value>Changes detected!</value>
-  </data>
   <data name="BoxConnectErrorTitle" xml:space="preserve">
     <value>Cannot connect to device</value>
   </data>
-  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
-    <value>Please provide GCode commands</value>
+  <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
+    <value>Sharp (NearestNeighbor)</value>
   </data>
-  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
-    <value>Please provide tooltip text</value>
+  <data name="DirectionDiagonal" xml:space="preserve">
+    <value>Diagonal</value>
   </data>
-  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
-    <value>Missing field</value>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>Right click here to add custom buttons</value>
   </data>
-  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
-    <value>Are you sure to delete selected button?</value>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>Restart required</value>
   </data>
-  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
-    <value>Delete custom button</value>
+  <data name="DirectionHorizontal" xml:space="preserve">
+    <value>Horizontal</value>
   </data>
-  <data name="BoxExportConfigError" xml:space="preserve">
-    <value>Error exporting config!</value>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>Confirmation</value>
   </data>
-  <data name="BoxExportConfigErrorTitle" xml:space="preserve">
-    <value>Error</value>
+  <data name="MacStatusUnknown" xml:space="preserve">
+    <value>Unknown</value>
   </data>
-  <data name="BoxExportConfigFileNotFound" xml:space="preserve">
-    <value>File does not exist!</value>
+  <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
+    <value>Smooth (HQ Bicubic)</value>
   </data>
-  <data name="BoxExportConfigSuccess" xml:space="preserve">
-    <value>{0} Config exported successfully!</value>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} Config readed successfully!</value>
   </data>
-  <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
-    <value>Success</value>
+  <data name="FormulaOpticalCorrect" xml:space="preserve">
+    <value>OpticalCorrect</value>
   </data>
-  <data name="BoxImportConfigFileError" xml:space="preserve">
-    <value>Error reading file!</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="book_Thesaurus_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\book_Thesaurus_32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BoxImportConfigWithError" xml:space="preserve">
-    <value>{0} Config imported with {1} errors!</value>
+  <data name="CustomButtonEdit" xml:space="preserve">
+    <value>Edit button</value>
   </data>
   <data name="BoxImportConfigWithoutError" xml:space="preserve">
     <value>{0} Config imported successfully!</value>
@@ -188,144 +163,177 @@ Do you want to rewrite the configuration?</value>
   <data name="BoxImportCustomButtonCaption" xml:space="preserve">
     <value>Import custom button</value>
   </data>
-  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
-    <value>Remove actual buttons? Select yes to remove, no to keep.</value>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} Config written with {1} errors!</value>
   </data>
-  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
-    <value>Confirmation</value>
-  </data>
-  <data name="BoxReadConfigError" xml:space="preserve">
-    <value>Error reading config!</value>
+  <data name="BoxExportConfigErrorTitle" xml:space="preserve">
+    <value>Error</value>
   </data>
   <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
     <value>Showing cached values...</value>
   </data>
-  <data name="BoxReadConfigSuccess" xml:space="preserve">
-    <value>{0} Config readed successfully!</value>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>Please provide tooltip text</value>
   </data>
-  <data name="BoxWriteConfigNoChange" xml:space="preserve">
-    <value>No changes... nothing to write!</value>
-  </data>
-  <data name="BoxWriteConfigWithError" xml:space="preserve">
-    <value>{0} Config written with {1} errors!</value>
-  </data>
-  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
-    <value>{0} Config written successfully!</value>
-  </data>
-  <data name="BtnConnectTT" xml:space="preserve">
-    <value>Connect</value>
-  </data>
-  <data name="BtnDisconnectTT" xml:space="preserve">
-    <value>Disconnect</value>
-  </data>
-  <data name="CustomButtonEdit" xml:space="preserve">
-    <value>Edit button</value>
-  </data>
-  <data name="CustomButtonRemove" xml:space="preserve">
-    <value>Remove button</value>
-  </data>
-  <data name="DirectionDiagonal" xml:space="preserve">
-    <value>Diagonal</value>
-  </data>
-  <data name="DirectionHorizontal" xml:space="preserve">
-    <value>Horizontal</value>
-  </data>
-  <data name="DirectionNone" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="DirectionVertical" xml:space="preserve">
-    <value>Vertical</value>
-  </data>
-  <data name="DisconnectAnyway" xml:space="preserve">
-    <value>File transfer in progress. Disconnect anyway?</value>
-  </data>
-  <data name="ExitAnyway" xml:space="preserve">
-    <value>File transfer in progress. Exit anyway?</value>
-  </data>
-  <data name="FirmwareRequireRestart" xml:space="preserve">
-    <value>Restart required</value>
+  <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
+    <value>Success</value>
   </data>
   <data name="FirmwareRequireRestartNow" xml:space="preserve">
     <value>Restart is required to apply Firmware type changes. Restart now?</value>
   </data>
-  <data name="FormulaCustom" xml:space="preserve">
-    <value>Custom</value>
-  </data>
-  <data name="FormulaOpticalCorrect" xml:space="preserve">
-    <value>OpticalCorrect</value>
-  </data>
   <data name="FormulaSimpleAverage" xml:space="preserve">
     <value>SimpleAverage</value>
   </data>
-  <data name="FormulaWeightAverage" xml:space="preserve">
-    <value>WeightAverage</value>
-  </data>
-  <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
-    <value>Smooth (HQ Bicubic)</value>
-  </data>
-  <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
-    <value>Sharp (NearestNeighbor)</value>
-  </data>
-  <data name="LanguageRequireRestart" xml:space="preserve">
-    <value>Restart required</value>
-  </data>
-  <data name="LanguageRequireRestartNow" xml:space="preserve">
-    <value>Require application restart, restart now?</value>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>No changes... nothing to write!</value>
   </data>
   <data name="MacStatusAlarm" xml:space="preserve">
     <value>Alarm</value>
   </data>
-  <data name="MacStatusCheck" xml:space="preserve">
-    <value>Check</value>
-  </data>
-  <data name="MacStatusConnecting" xml:space="preserve">
-    <value>Connecting</value>
-  </data>
   <data name="MacStatusDisconnected" xml:space="preserve">
     <value>Disconnected</value>
   </data>
-  <data name="MacStatusDoor" xml:space="preserve">
-    <value>Door</value>
-  </data>
-  <data name="MacStatusHold" xml:space="preserve">
-    <value>Hold</value>
+  <data name="LanguageRequireRestartNow" xml:space="preserve">
+    <value>Require application restart, restart now?</value>
   </data>
   <data name="MacStatusHome" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="BoxAutoUpdateSuccess" xml:space="preserve">
+    <value>Update success!</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>Please provide GCode commands</value>
+  </data>
+  <data name="LanguageRequireRestart" xml:space="preserve">
+    <value>Restart required</value>
+  </data>
+  <data name="BoxImportConfigWithError" xml:space="preserve">
+    <value>{0} Config imported with {1} errors!</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>Unknown position</value>
+  </data>
   <data name="MacStatusIdle" xml:space="preserve">
     <value>Idle</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>Speed:</value>
+  </data>
+  <data name="FormulaWeightAverage" xml:space="preserve">
+    <value>WeightAverage</value>
+  </data>
+  <data name="BoxAutoUpdateFailed" xml:space="preserve">
+    <value>Automatic update failed!
+Please manually download the new version from lasergrbl site.</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} Config written successfully!</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>Missing field</value>
+  </data>
+  <data name="DirectionVertical" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="FormulaCustom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>Delete custom button</value>
   </data>
   <data name="MacStatusJog" xml:space="preserve">
     <value>Jog</value>
   </data>
-  <data name="MacStatusRun" xml:space="preserve">
-    <value>Run</value>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>File transfer in progress. Disconnect anyway?</value>
   </data>
-  <data name="MacStatusUnknown" xml:space="preserve">
-    <value>Unknown</value>
+  <data name="MacStatusDoor" xml:space="preserve">
+    <value>Door</value>
+  </data>
+  <data name="BoxAutoUpdateResult" xml:space="preserve">
+    <value>Update result</value>
+  </data>
+  <data name="BoxExportConfigFileNotFound" xml:space="preserve">
+    <value>File does not exist!</value>
+  </data>
+  <data name="BoxImportConfigFileError" xml:space="preserve">
+    <value>Error reading file!</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>File transfer in progress. Exit anyway?</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>Step:</value>
   </data>
   <data name="MainFormEstimatedTime" xml:space="preserve">
     <value>Estimated Time:</value>
   </data>
+  <data name="BoxExportConfigSuccess" xml:space="preserve">
+    <value>{0} Config exported successfully!</value>
+  </data>
+  <data name="BoxExportConfigError" xml:space="preserve">
+    <value>Error exporting config!</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>There are some changes that have not been applied.
+Do you want to rewrite the configuration?</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>Disconnect</value>
+  </data>
+  <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
+    <value>Update require administrator privilege!</value>
+  </data>
+  <data name="MacStatusConnecting" xml:space="preserve">
+    <value>Connecting</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>Remove actual buttons? Select yes to remove, no to keep.</value>
+  </data>
+  <data name="MacStatusHold" xml:space="preserve">
+    <value>Hold</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="CustomButtonRemove" xml:space="preserve">
+    <value>Remove button</value>
+  </data>
+  <data name="MacStatusCheck" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>This file type is not supported.</value>
+  </data>
+  <data name="MacStatusRun" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>Changes detected!</value>
+  </data>
   <data name="MainFormProjectedTime" xml:space="preserve">
     <value>Projected Time:</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>Error reading config!</value>
   </data>
   <data name="ResumeJobHomingRequired" xml:space="preserve">
     <value>It seems that the current position is no longer known by Grbl.
 Without the Homing Procedure ($H) the result may not be reliable.
 Continue anyway?</value>
   </data>
-  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
-    <value>Unknown position</value>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>Are you sure to delete selected button?</value>
   </data>
-  <data name="SpeedSliderToolTip" xml:space="preserve">
-    <value>Speed:</value>
+  <data name="DirectionNone" xml:space="preserve">
+    <value>None</value>
   </data>
-  <data name="StepSliderToolTip" xml:space="preserve">
-    <value>Step:</value>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>Abort current job?</value>
   </data>
-  <data name="UnsupportedFiletype" xml:space="preserve">
-    <value>This file type is not supported.</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="book_addressHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\book_addressHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

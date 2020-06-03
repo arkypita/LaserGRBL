@@ -92,6 +92,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
@@ -131,6 +132,26 @@
       <DependentUpon>LicenseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MarlinCore.cs" />
+    <Compile Include="PSHelper\MaterialDB.cs">
+      <DependentUpon>MaterialDB.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PSHelper\MaterialDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaterialDB.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PSHelper\PSEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PSHelper\PSEditorForm.Designer.cs">
+      <DependentUpon>PSEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSHelper\PSHelperForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PSHelper\PSHelperForm.Designer.cs">
+      <DependentUpon>PSHelperForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SaveOptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -684,6 +705,12 @@
     <Compile Include="UserControls\Move2DControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UserControls\MyPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\MyPictureBox.designer.cs">
+      <DependentUpon>MyPictureBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\NumericInput\ColoredBorderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -729,6 +756,12 @@
     <Content Include="Sound\success.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="StandardMaterials.psh">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="App.config" />
+    <None Include="Resources\book_addressHS.png" />
+    <None Include="Resources\book_Thesaurus_32.png" />
     <EmbeddedResource Include="Autotrace\AutotraceTest.resx">
       <DependentUpon>AutotraceTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -901,6 +934,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.sk-SK.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSEditorForm.resx">
+      <DependentUpon>PSEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSHelperForm.resx">
+      <DependentUpon>PSHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.cs-CZ.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
@@ -1326,6 +1366,17 @@
     <None Include="Grafica\LaserGrbl.ico" />
     <None Include="Grafica\rotCCW.png" />
     <None Include="Grafica\rotCW.png" />
+    <None Include="PSHelper\MaterialDB.xsc">
+      <DependentUpon>MaterialDB.xsd</DependentUpon>
+    </None>
+    <None Include="PSHelper\MaterialDB.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MaterialDB.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="PSHelper\MaterialDB.xss">
+      <DependentUpon>MaterialDB.xsd</DependentUpon>
+    </None>
     <None Include="SvgLibrary\Basic Shapes\DOM.cd" />
     <EmbeddedResource Include="SvgLibrary\Resources\svg11.dtd" />
   </ItemGroup>
@@ -1390,7 +1441,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <Folder Include="Properties\DataSources\" />
     <Folder Include="SvgLibrary\Web\Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

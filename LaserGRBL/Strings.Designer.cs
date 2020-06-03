@@ -70,6 +70,26 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap book_addressHS {
+            get {
+                object obj = ResourceManager.GetObject("book_addressHS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap book_Thesaurus_32 {
+            get {
+                object obj = ResourceManager.GetObject("book_Thesaurus_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Abort current job?.
         /// </summary>
         internal static string BoxAbortProgramConfirm {
@@ -675,14 +695,12 @@ namespace LaserGRBL {
                 return ResourceManager.GetString("StepSliderToolTip", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Cerca una stringa localizzata simile a This file type is not supported..
         /// </summary>
-        internal static string UnsupportedFiletype
-        {
-            get
-            {
+        internal static string UnsupportedFiletype {
+            get {
                 return ResourceManager.GetString("UnsupportedFiletype", resourceCulture);
             }
         }

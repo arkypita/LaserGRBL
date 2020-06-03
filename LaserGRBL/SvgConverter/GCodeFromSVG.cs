@@ -66,12 +66,12 @@ namespace LaserGRBL.SvgConverter
 		/// <returns>String with GCode of imported data</returns>
 		private XElement svgCode;
 		private bool importInMM = false;
-		private bool fromText = false;
+		//private bool fromText = false;
 
 		Regex RemoveInvalidUnicode = new Regex(@"[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-u10FFFF]+", RegexOptions.Compiled);
 		public string convertFromText(string text, bool importMM = false)
 		{
-			fromText = true;
+			//fromText = true;
 			importInMM = importMM;
 
 			// From xml spec valid chars: 
