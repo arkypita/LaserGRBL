@@ -501,11 +501,13 @@ Itt ugyanazt a szintaxist használhatja, mint az egyéni gomboknál</value>
     <value>GCode</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
-    <value>Itt tudja beállítani a sikeres műveletek hangját, mint például amikor egy munka befejeződik.</value>
+    <value>Itt tudja beállítani a sikeres műveletek hangját, mint például amikor egy munka befejeződik.
+Jelölje be a némításhoz.</value>
   </data>
   <data name="label24.Text" xml:space="preserve">
     <value>Itt tudja beállítani a figyelmeztető hangjelzést.
-Ez általában hibás GCode parancsot jelent, és a gép folytatni tudja a működést.</value>
+Ez általában hibás GCode parancsot jelent, és a gép folytatni tudja a működést.
+Jelölje be a némításhoz.</value>
   </data>
   <data name="label26.Text" xml:space="preserve">
     <value>Figyelmeztető hangjelzés</value>
@@ -568,20 +570,31 @@ Ez általában hibás GCode parancsot jelent, és a gép folytatni tudja a műk�
     <value>.\Sound\success.wav</value>
   </data>
   <data name="label32.Text" xml:space="preserve">
-    <value>Itt állíthatja be a sikeres kapcsolódás hangjelzését.</value>
+    <value>Itt állíthatja be a sikeres kapcsolódás hangjelzését.
+Jelölje be a némításhoz.</value>
   </data>
   <data name="label36.Text" xml:space="preserve">
     <value>Itt állíthatja be a szétkapcsolás hangjelzését.
-Néhány WiFi kapcsolat esetén hasznos lehet.</value>
+Néhány WiFi kapcsolat esetén hasznos lehet.
+Jelölje be a némításhoz.</value>
   </data>
   <data name="label28.Text" xml:space="preserve">
     <value>Itt állíthaja be a végzetes hiba hangjelzését.
-Ez olyan hibát jelent, ahol a munka megszakad, és a LaserGRBL nem tudja folytatni.</value>
+Ez olyan hibát jelent, ahol a munka megszakad, és a LaserGRBL nem tudja folytatni.
+Jelölje be a némításhoz.</value>
   </data>
   <data name="TpSoundSettings.Text" xml:space="preserve">
     <value>Hangbeállítások</value>
   </data>
   <data name="SoundBrowserDialog.Filter" xml:space="preserve">
     <value>Waveform Audio Fájl|*.wav</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>HiRes kitöltés</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>A LaserGRBL maximális felbontása 20 vonal/mm (kb 500dpi), ami elég a legtöbb felhasználónak.
+Ha szeretne nagyobb felbontást, engedélyezheti a "HiRes" kitöltést, amely eltávolítja a fenti korlátozást.
+Figyelem: A LaserGRBL így jóval több erőforrást igényel!</value>
   </data>
 </root>

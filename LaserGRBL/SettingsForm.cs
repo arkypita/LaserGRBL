@@ -60,6 +60,12 @@ namespace LaserGRBL
             TBFooter.ForeColor = ColorScheme.FormForeColor;
             TBFooter.BackColor = ColorScheme.FormBackColor;
 
+            CbMuteSuccess.Checked = Settings.GetObject("Sound.Success.IsMuted", false);
+            CbMuteWarn.Checked = Settings.GetObject("Sound.Warning.IsMuted", false);
+            CbMuteFat.Checked = Settings.GetObject("Sound.Fatal.IsMuted", false);
+            CbMuteCon.Checked = Settings.GetObject("Sound.Connect.IsMuted", false);
+            CbMuteDCon.Checked = Settings.GetObject("Sound.Disconnect.IsMuted", false);
+
             successSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject("Sound.Success", "Sound\\success.wav"));
             SuccesFullLabel.Text = Settings.GetObject("Sound.Success", "Sound\\success.wav");
             warningSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject("Sound.Warning", "Sound\\non-fatal.wav"));
@@ -177,7 +183,14 @@ namespace LaserGRBL
             Settings.SetObject("Sound.Fatal", ErrorFullLabel.Text.Trim());
             Settings.SetObject("Sound.Connect", ConnectFullLabel.Text.Trim());
             Settings.SetObject("Sound.Disconnect", DisconnectFullLabel.Text.Trim());
-			Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);
+
+            Settings.SetObject("Sound.Success.IsMuted", CbMuteSuccess.Checked);
+            Settings.SetObject("Sound.Warning.IsMuted", CbMuteWarn.Checked);
+            Settings.SetObject("Sound.Fatal.IsMuted", CbMuteFat.Checked);
+            Settings.SetObject("Sound.Connect.IsMuted", CbMuteCon.Checked);
+            Settings.SetObject("Sound.Disconnect.IsMuted", CbMuteDCon.Checked);
+
+            Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);
 
 			Settings.Save();
 

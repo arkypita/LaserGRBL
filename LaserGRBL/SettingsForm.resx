@@ -382,7 +382,7 @@
     <value>BtnStreamingMode</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.4.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.5.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -484,7 +484,7 @@
     <value>BtnProtocol</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.4.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.5.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -558,7 +558,7 @@ Set slower values if you are experiencing issues.</value>
     <value>BtnThreadingModel</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.4.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.5.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -825,7 +825,7 @@ If disabled all the issues are silently managed without warning.</value>
     <value>BtnFType</value>
   </data>
   <data name="&gt;&gt;BtnFType.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.4.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.5.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnFType.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1064,7 +1064,7 @@ If not, please disable PWM support.</value>
     <value>BtnModulationInfo</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.4.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.5.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -2436,6 +2436,171 @@ Here you can use the same syntax of custom buttons.</value>
   <data name="&gt;&gt;TpGCodeSettings.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="tableLayoutPanel16.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="CbMuteSuccess.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CbMuteSuccess.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CbMuteSuccess.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="CbMuteSuccess.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
+  </data>
+  <data name="CbMuteSuccess.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;CbMuteSuccess.Name" xml:space="preserve">
+    <value>CbMuteSuccess</value>
+  </data>
+  <data name="&gt;&gt;CbMuteSuccess.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CbMuteSuccess.Parent" xml:space="preserve">
+    <value>tableLayoutPanel16</value>
+  </data>
+  <data name="&gt;&gt;CbMuteSuccess.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="CbMuteWarn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CbMuteWarn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CbMuteWarn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 53</value>
+  </data>
+  <data name="CbMuteWarn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
+  </data>
+  <data name="CbMuteWarn.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;CbMuteWarn.Name" xml:space="preserve">
+    <value>CbMuteWarn</value>
+  </data>
+  <data name="&gt;&gt;CbMuteWarn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CbMuteWarn.Parent" xml:space="preserve">
+    <value>tableLayoutPanel16</value>
+  </data>
+  <data name="&gt;&gt;CbMuteWarn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="CbMuteFat.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CbMuteFat.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CbMuteFat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 103</value>
+  </data>
+  <data name="CbMuteFat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
+  </data>
+  <data name="CbMuteFat.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;CbMuteFat.Name" xml:space="preserve">
+    <value>CbMuteFat</value>
+  </data>
+  <data name="&gt;&gt;CbMuteFat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CbMuteFat.Parent" xml:space="preserve">
+    <value>tableLayoutPanel16</value>
+  </data>
+  <data name="&gt;&gt;CbMuteFat.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="CbMuteCon.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CbMuteCon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CbMuteCon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 153</value>
+  </data>
+  <data name="CbMuteCon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
+  </data>
+  <data name="CbMuteCon.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;CbMuteCon.Name" xml:space="preserve">
+    <value>CbMuteCon</value>
+  </data>
+  <data name="&gt;&gt;CbMuteCon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CbMuteCon.Parent" xml:space="preserve">
+    <value>tableLayoutPanel16</value>
+  </data>
+  <data name="&gt;&gt;CbMuteCon.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="CbMuteDCon.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CbMuteDCon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CbMuteDCon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 203</value>
+  </data>
+  <data name="CbMuteDCon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
+  </data>
+  <data name="CbMuteDCon.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;CbMuteDCon.Name" xml:space="preserve">
+    <value>CbMuteDCon</value>
+  </data>
+  <data name="&gt;&gt;CbMuteDCon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CbMuteDCon.Parent" xml:space="preserve">
+    <value>tableLayoutPanel16</value>
+  </data>
+  <data name="&gt;&gt;CbMuteDCon.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tableLayoutPanel16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="tableLayoutPanel16.RowCount" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="tableLayoutPanel16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 250</value>
+  </data>
+  <data name="tableLayoutPanel16.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel16.Name" xml:space="preserve">
+    <value>tableLayoutPanel16</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel16.Parent" xml:space="preserve">
+    <value>TpSoundSettings</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel16.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel16.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbMuteSuccess" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbMuteWarn" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbMuteFat" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbMuteCon" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbMuteDCon" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
   <data name="tableLayoutPanel10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2653,7 +2818,9 @@ Here you can use the same syntax of custom buttons.</value>
     <value>1</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
-    <value>Here you can set another sound for success events, like when a job is finished.</value>
+    <value>Here you can set another sound for success events, like when a job is finished.
+Check to mute.
+</value>
   </data>
   <data name="&gt;&gt;label23.Name" xml:space="preserve">
     <value>label23</value>
@@ -2693,7 +2860,9 @@ Here you can use the same syntax of custom buttons.</value>
   </data>
   <data name="label24.Text" xml:space="preserve">
     <value>Here you can set another warning sound.
-This usually fired on a bad GCode command, but your machine can continue operating.</value>
+This usually fired on a bad GCode command, but your machine can continue operating.
+Check to mute.
+</value>
   </data>
   <data name="&gt;&gt;label24.Name" xml:space="preserve">
     <value>label24</value>
@@ -3596,7 +3765,9 @@ This usually fired on a bad GCode command, but your machine can continue operati
     <value>47</value>
   </data>
   <data name="label32.Text" xml:space="preserve">
-    <value>Here you can set a sound for a successful connection.</value>
+    <value>Here you can set a sound for a successful connection.
+Check to mute.
+</value>
   </data>
   <data name="&gt;&gt;label32.Name" xml:space="preserve">
     <value>label32</value>
@@ -3631,6 +3802,7 @@ This usually fired on a bad GCode command, but your machine can continue operati
   <data name="label36.Text" xml:space="preserve">
     <value>Here you can set a sound for disconnection.
 Useful for some WiFi connections.
+Check to mute.
 </value>
   </data>
   <data name="&gt;&gt;label36.Name" xml:space="preserve">
@@ -3666,6 +3838,7 @@ Useful for some WiFi connections.
   <data name="label28.Text" xml:space="preserve">
     <value>Here you can set an error sound for fatal errors.
 This means, your job most likely stopped, and LaserGRBL can not continue the operation.
+Check to mute.
 </value>
   </data>
   <data name="&gt;&gt;label28.Name" xml:space="preserve">
@@ -3705,7 +3878,7 @@ This means, your job most likely stopped, and LaserGRBL can not continue the ope
     <value>TpSoundSettings</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel10.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="tableLayoutPanel10.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="DisconnectFullLabel" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ConnectFullLabel" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ErrorFullLabel" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="WarningFullLabel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="SuccesFullLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label23" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label24" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel11" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel12" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel14" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel15" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel13" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label32" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label36" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label28" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,Absolute,20,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
