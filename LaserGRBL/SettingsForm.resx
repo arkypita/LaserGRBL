@@ -2803,7 +2803,7 @@ Here you can use the same syntax of custom buttons.</value>
     <value>NoControl</value>
   </data>
   <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 19</value>
+    <value>387, 12</value>
   </data>
   <data name="label23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -2812,7 +2812,7 @@ Here you can use the same syntax of custom buttons.</value>
     <value>690, 0</value>
   </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>380, 13</value>
+    <value>380, 26</value>
   </data>
   <data name="label23.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2844,7 +2844,7 @@ Check to mute.
     <value>NoControl</value>
   </data>
   <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 62</value>
+    <value>387, 56</value>
   </data>
   <data name="label24.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -2853,7 +2853,7 @@ Check to mute.
     <value>690, 0</value>
   </data>
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>417, 26</value>
+    <value>417, 39</value>
   </data>
   <data name="label24.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -3756,10 +3756,10 @@ Check to mute.
     <value>NoControl</value>
   </data>
   <data name="label32.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 169</value>
+    <value>387, 162</value>
   </data>
   <data name="label32.Size" type="System.Drawing.Size, System.Drawing">
-    <value>265, 13</value>
+    <value>265, 26</value>
   </data>
   <data name="label32.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
@@ -3791,10 +3791,10 @@ Check to mute.
     <value>NoControl</value>
   </data>
   <data name="label36.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 212</value>
+    <value>387, 206</value>
   </data>
   <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>216, 39</value>
   </data>
   <data name="label36.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
@@ -3827,10 +3827,10 @@ Check to mute.
     <value>NoControl</value>
   </data>
   <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 112</value>
+    <value>387, 106</value>
   </data>
   <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
-    <value>429, 26</value>
+    <value>429, 39</value>
   </data>
   <data name="label28.TabIndex" type="System.Int32, mscorlib">
     <value>49</value>
