@@ -61,11 +61,11 @@ namespace LaserGRBL
             TBFooter.ForeColor = ColorScheme.FormForeColor;
             TBFooter.BackColor = ColorScheme.FormBackColor;
 
-            CbMuteSuccess.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Success}.IsMuted", false);
-            CbMuteWarn.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Warning}.IsMuted", false);
-            CbMuteFat.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Fatal}.IsMuted", false);
-            CbMuteCon.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Connect}.IsMuted", false);
-            CbMuteDCon.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}.IsMuted", false);
+            CbPlaySuccess.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Success}.Enabled", true);
+            CbPlayWarning.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Warning}.Enabled", true);
+            CbPlayFatal.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Fatal}.Enabled", true);
+            CbPlayConnect.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Connect}.Enabled", true);
+            CbPlayDisconnect.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}.Enabled", true);
 
             successSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Success}", $"Sound\\{SoundEvent.EventId.Success}.wav"));
             SuccesFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Success}", $"Sound\\{SoundEvent.EventId.Success}.wav");
@@ -185,11 +185,11 @@ namespace LaserGRBL
             Settings.SetObject($"Sound.{SoundEvent.EventId.Connect}", ConnectFullLabel.Text.Trim());
             Settings.SetObject($"Sound.{SoundEvent.EventId.Disconnect}", DisconnectFullLabel.Text.Trim());
 
-            Settings.SetObject($"Sound.{SoundEvent.EventId.Success}.IsMuted", CbMuteSuccess.Checked);
-            Settings.SetObject($"Sound.{SoundEvent.EventId.Warning}.IsMuted", CbMuteWarn.Checked);
-            Settings.SetObject($"Sound.{SoundEvent.EventId.Fatal}.IsMuted", CbMuteFat.Checked);
-            Settings.SetObject($"Sound.{SoundEvent.EventId.Connect}.IsMuted", CbMuteCon.Checked);
-            Settings.SetObject($"Sound.{SoundEvent.EventId.Disconnect}.IsMuted", CbMuteDCon.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Success}.Enabled", CbPlaySuccess.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Warning}.Enabled", CbPlayWarning.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Fatal}.Enabled", CbPlayFatal.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Connect}.Enabled", CbPlayConnect.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Disconnect}.Enabled", CbPlayDisconnect.Checked);
 
             Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);
 
