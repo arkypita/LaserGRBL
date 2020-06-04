@@ -750,7 +750,7 @@
     <Content Include="Sound\fatal.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sound\non-fatal.wav">
+    <Content Include="Sound\warning.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Sound\success.wav">

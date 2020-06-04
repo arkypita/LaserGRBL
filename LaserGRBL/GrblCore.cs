@@ -4,6 +4,7 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using Sound;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -351,19 +352,27 @@ namespace LaserGRBL
 
 		protected void SetStatus(MacStatus value)
 		{
-			if (mMachineStatus != value)
+			lock (this)
 			{
-				mMachineStatus = value;
-				Logger.LogMessage("SetStatus", "Machine status [{0}]", mMachineStatus);
-
-				RiseMachineStatusChanged();
-
-				if (mTP != null && mTP.InProgram)
+				if (mMachineStatus != value)
 				{
-					if (InPause)
-						mTP.JobPause();
-					else
-						mTP.JobResume();
+					Logger.LogMessage("SetStatus", "Machine status [{0}]", value);
+
+					if (mMachineStatus == MacStatus.Connecting && value != MacStatus.Disconnected)
+						SoundEvent.PlaySound(SoundEvent.EventId.Connect);
+					if (mMachineStatus != MacStatus.Unknown && value == MacStatus.Disconnected)
+						SoundEvent.PlaySound(SoundEvent.EventId.Disconnect);
+
+					mMachineStatus = value;
+					RiseMachineStatusChanged();
+
+					if (mTP != null && mTP.InProgram)
+					{
+						if (InPause)
+							mTP.JobPause();
+						else
+							mTP.JobResume();
+					}
 				}
 			}
 		}
@@ -978,10 +987,7 @@ namespace LaserGRBL
 				connectStart = Tools.HiResTimer.TotalMilliseconds;
 
 				if (!com.IsOpen)
-				{
 					com.Open();
-                    new Sound.SoundEvent().PlaySound(3); //connected
-                }
 
 				lock (this)
 				{
@@ -994,8 +1000,6 @@ namespace LaserGRBL
 				Logger.LogMessage("OpenCom", "Error: {0}", ex.Message);
 				SetStatus(MacStatus.Disconnected);
 				com.Close(true);
-                new Sound.SoundEvent().PlaySound(4); //disconnected
-
                 System.Windows.Forms.MessageBox.Show(ex.Message, Strings.BoxConnectErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 			}
 		}
@@ -1020,7 +1024,6 @@ namespace LaserGRBL
 				{ ClearQueue(false); } //non resettare l'elenco delle cose mandate così da non sbiancare la lista
 
 				SetStatus(MacStatus.Disconnected);
-                new Sound.SoundEvent().PlaySound(4); //disconnected
             }
 			catch (Exception ex)
 			{
@@ -1389,7 +1392,7 @@ namespace LaserGRBL
                 if (noQueryResponse)
                 {
                     SetIssue(DetectedIssue.StopResponding);
-                    new Sound.SoundEvent().PlaySound(3);
+					SoundEvent.PlaySound(SoundEvent.EventId.Fatal); 
                 }
 				//else if (noMovement)
 				//	SetIssue(DetectedIssue.StopMoving);
@@ -1403,7 +1406,6 @@ namespace LaserGRBL
 			{
 				Logger.LogMessage("OpenCom", "Connection timeout!");
 				com.Close(true); //this cause disconnection from RX thread ("ReadLineOrDisconnect")
-                new Sound.SoundEvent().PlaySound(4); //disconnected
             }
 		}
 
@@ -1939,7 +1941,7 @@ namespace LaserGRBL
 				Logger.LogMessage("EnqueueProgram", "Push Footer");
 				ExecuteCustombutton(Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
 
-                new Sound.SoundEvent().PlaySound(0);
+				SoundEvent.PlaySound(SoundEvent.EventId.Success);
 
 				ForceStatusIdle();
 			}
@@ -2470,8 +2472,8 @@ namespace LaserGRBL
 		{
             if (mStarted && !mCompleted)
             {
-                new Sound.SoundEvent().PlaySound(1);
-                mErrorCount++;
+				SoundEvent.PlaySound(SoundEvent.EventId.Warning);
+				mErrorCount++;
             }
 		}
 
