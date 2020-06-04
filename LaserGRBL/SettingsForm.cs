@@ -4,6 +4,7 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using Sound;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,22 +61,22 @@ namespace LaserGRBL
             TBFooter.ForeColor = ColorScheme.FormForeColor;
             TBFooter.BackColor = ColorScheme.FormBackColor;
 
-            CbMuteSuccess.Checked = Settings.GetObject("Sound.Success.IsMuted", false);
-            CbMuteWarn.Checked = Settings.GetObject("Sound.Warning.IsMuted", false);
-            CbMuteFat.Checked = Settings.GetObject("Sound.Fatal.IsMuted", false);
-            CbMuteCon.Checked = Settings.GetObject("Sound.Connect.IsMuted", false);
-            CbMuteDCon.Checked = Settings.GetObject("Sound.Disconnect.IsMuted", false);
+            CbMuteSuccess.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Success}.IsMuted", false);
+            CbMuteWarn.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Warning}.IsMuted", false);
+            CbMuteFat.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Fatal}.IsMuted", false);
+            CbMuteCon.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Connect}.IsMuted", false);
+            CbMuteDCon.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}.IsMuted", false);
 
-            successSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject("Sound.Success", "Sound\\success.wav"));
-            SuccesFullLabel.Text = Settings.GetObject("Sound.Success", "Sound\\success.wav");
-            warningSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject("Sound.Warning", "Sound\\non-fatal.wav"));
-            WarningFullLabel.Text = Settings.GetObject("Sound.Warning", "Sound\\non-fatal.wav");
-            fatalSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject("Sound.Fatal", "Sound\\fatal.wav"));
-            ErrorFullLabel.Text = Settings.GetObject("Sound.Fatal", "Sound\\fatal.wav");
-            connectSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject("Sound.Connect", "Sound\\connect.wav"));
-            ConnectFullLabel.Text = Settings.GetObject("Sound.Connect", "Sound\\connect.wav");
-            disconnectSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject("Sound.Disconnect", "Sound\\disconnect.wav"));
-            DisconnectFullLabel.Text = Settings.GetObject("Sound.Disconnect", "Sound\\disconnect.wav");
+            successSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Success}", $"Sound\\{SoundEvent.EventId.Success}.wav"));
+            SuccesFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Success}", $"Sound\\{SoundEvent.EventId.Success}.wav");
+            warningSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Warning}", $"Sound\\{SoundEvent.EventId.Warning}.wav"));
+            WarningFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Warning}", $"Sound\\{SoundEvent.EventId.Warning}.wav");
+            fatalSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Fatal}", $"Sound\\{SoundEvent.EventId.Fatal}.wav"));
+            ErrorFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Fatal}", $"Sound\\{SoundEvent.EventId.Fatal}.wav");
+            connectSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Connect}", $"Sound\\{SoundEvent.EventId.Connect}.wav"));
+            ConnectFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Connect}", $"Sound\\{SoundEvent.EventId.Connect}.wav");
+            disconnectSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}", $"Sound\\{SoundEvent.EventId.Disconnect}.wav"));
+            DisconnectFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}", $"Sound\\{SoundEvent.EventId.Disconnect}.wav");
 
             groupBox1.ForeColor = groupBox2.ForeColor = groupBox3.ForeColor = ColorScheme.FormForeColor;
 
@@ -178,17 +179,17 @@ namespace LaserGRBL
 			Settings.SetObject("GCode.CustomPasses", TBPasses.Text.Trim());
 			Settings.SetObject("GCode.CustomFooter", TBFooter.Text.Trim());
 
-            Settings.SetObject("Sound.Success", SuccesFullLabel.Text.Trim());
-            Settings.SetObject("Sound.Warning", WarningFullLabel.Text.Trim());
-            Settings.SetObject("Sound.Fatal", ErrorFullLabel.Text.Trim());
-            Settings.SetObject("Sound.Connect", ConnectFullLabel.Text.Trim());
-            Settings.SetObject("Sound.Disconnect", DisconnectFullLabel.Text.Trim());
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Success}", SuccesFullLabel.Text.Trim());
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Warning}", WarningFullLabel.Text.Trim());
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Fatal}", ErrorFullLabel.Text.Trim());
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Connect}", ConnectFullLabel.Text.Trim());
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Disconnect}", DisconnectFullLabel.Text.Trim());
 
-            Settings.SetObject("Sound.Success.IsMuted", CbMuteSuccess.Checked);
-            Settings.SetObject("Sound.Warning.IsMuted", CbMuteWarn.Checked);
-            Settings.SetObject("Sound.Fatal.IsMuted", CbMuteFat.Checked);
-            Settings.SetObject("Sound.Connect.IsMuted", CbMuteCon.Checked);
-            Settings.SetObject("Sound.Disconnect.IsMuted", CbMuteDCon.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Success}.IsMuted", CbMuteSuccess.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Warning}.IsMuted", CbMuteWarn.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Fatal}.IsMuted", CbMuteFat.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Connect}.IsMuted", CbMuteCon.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Disconnect}.IsMuted", CbMuteDCon.Checked);
 
             Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);
 
