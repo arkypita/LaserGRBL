@@ -2,7 +2,7 @@
 
 namespace LaserGRBL.UserControls
 {
-	partial class MyPictureBox : PictureBox
+	partial class MyPictureBox : Control
 	{
 		/// <summary> 
 		/// Variabile di progettazione necessaria.

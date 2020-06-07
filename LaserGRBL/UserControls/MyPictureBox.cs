@@ -10,8 +10,8 @@ namespace LaserGRBL.UserControls
 	{
 		public MyPictureBox()
 		{
-			//BackgroundImage = Image.FromFile(@"C:\\Users\\UserName\\Desktop\\Picture\\2.jpg");
-			BackgroundImageLayout = ImageLayout.None;
+			ResizeRedraw = true;
+			DoubleBuffered = true;
 		}
 
 		enum MouseStage { Handle = 3, Fence = 2, Outside = 1, NoAction = 0 }
@@ -150,6 +150,113 @@ namespace LaserGRBL.UserControls
 			return GetFenceRectRet;
 		}
 
+		//private Image mBackgroundImage;
+		//public new Image BackgroundImage
+		//{
+		//	get { return mBackgroundImage; }
+		//	set
+		//	{
+		//		if (mBackgroundImage != value)
+		//		{
+		//			mBackgroundImage = value;
+		//			Invalidate();
+		//		}
+		//	}
+		//}
 
+		private Image mImage;
+		public Image Image
+		{
+			get { return mImage; }
+			set
+			{
+				if (mImage != value)
+				{
+					mImage = value;
+					Invalidate();
+				}
+			}
+		}
+
+		protected override void OnPaintBackground(PaintEventArgs pevent)
+		{
+			Graphics g = pevent.Graphics;
+
+			DrawChess(g);
+			DrawPaper(g);
+			DrawImage(g);
+		}
+
+		private void DrawPaper(Graphics g)
+		{
+			Rectangle r = PaperRectangle;
+
+			//ombra
+			r.Offset(5, 5);
+			g.FillRectangle(Brushes.Gray, r);
+
+			//foglio
+			r.Offset(-5, -5);
+			g.FillRectangle(Brushes.White, r);
+			g.DrawRectangle(Pens.LimeGreen, r);
+		}
+
+		private void DrawImage(Graphics g)
+		{
+			Rectangle r = ImageRectangle;
+			//immagine
+			if (mImage != null)
+			{
+				g.DrawImage(mImage, r);
+			}
+		}
+
+		private Rectangle ImageRectangle
+		{
+			get
+			{
+				Rectangle r = PaperRectangle;
+				return new Rectangle(r.Left + 1, r.Top + 1, r.Width - 1, r.Height - 1);
+			}
+		}
+
+		private Rectangle PaperRectangle
+		{
+			get
+			{
+				Rectangle r = ControlRectangle;
+
+				if (mImage != null)
+				{
+					Size s = CalculateResizeToFit(mImage.Size, r.Size);
+					r = new Rectangle(new Point((r.Width - s.Width) / 2, (r.Height - s.Height) / 2), s);
+				}
+
+				r.Inflate(-10, -10);
+				return r;
+			}
+		}
+
+		private static Size CalculateResizeToFit(Size imageSize, Size boxSize)
+		{
+			// TODO: Check for arguments (for null and <=0)
+			double widthScale = boxSize.Width / (double)imageSize.Width;
+			double heightScale = boxSize.Height / (double)imageSize.Height;
+			double scale = Math.Min(widthScale, heightScale);
+			return new Size((int)Math.Round(imageSize.Width * scale), (int)Math.Round(imageSize.Height * scale));
+		}
+
+		private void DrawChess(Graphics g)
+		{
+			Rectangle cr = ControlRectangle; //control rectangle
+			g.Clear(BackColor);
+			if (BackgroundImage != null)
+			{
+				using (TextureBrush b = new TextureBrush(BackgroundImage))
+					g.FillRectangle(b, cr);
+			}
+		}
+
+		private Rectangle ControlRectangle { get => new Rectangle(0, 0, Width, Height); }
 	}
 }
