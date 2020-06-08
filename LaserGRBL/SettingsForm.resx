@@ -2439,139 +2439,139 @@ Here you can use the same syntax of custom buttons.</value>
   <data name="tableLayoutPanel16.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="CbMuteSuccess.AutoSize" type="System.Boolean, mscorlib">
+  <data name="CbPlaySuccess.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="CbMuteSuccess.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="CbPlaySuccess.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="CbMuteSuccess.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="CbPlaySuccess.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="CbMuteSuccess.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="CbPlaySuccess.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="CbMuteSuccess.TabIndex" type="System.Int32, mscorlib">
+  <data name="CbPlaySuccess.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;CbMuteSuccess.Name" xml:space="preserve">
-    <value>CbMuteSuccess</value>
+  <data name="&gt;&gt;CbPlaySuccess.Name" xml:space="preserve">
+    <value>CbPlaySuccess</value>
   </data>
-  <data name="&gt;&gt;CbMuteSuccess.Type" xml:space="preserve">
+  <data name="&gt;&gt;CbPlaySuccess.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;CbMuteSuccess.Parent" xml:space="preserve">
+  <data name="&gt;&gt;CbPlaySuccess.Parent" xml:space="preserve">
     <value>tableLayoutPanel16</value>
   </data>
-  <data name="&gt;&gt;CbMuteSuccess.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;CbPlaySuccess.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="CbMuteWarn.AutoSize" type="System.Boolean, mscorlib">
+  <data name="CbPlayWarning.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="CbMuteWarn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="CbPlayWarning.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="CbMuteWarn.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="CbPlayWarning.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 53</value>
   </data>
-  <data name="CbMuteWarn.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="CbPlayWarning.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="CbMuteWarn.TabIndex" type="System.Int32, mscorlib">
+  <data name="CbPlayWarning.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;CbMuteWarn.Name" xml:space="preserve">
-    <value>CbMuteWarn</value>
+  <data name="&gt;&gt;CbPlayWarning.Name" xml:space="preserve">
+    <value>CbPlayWarning</value>
   </data>
-  <data name="&gt;&gt;CbMuteWarn.Type" xml:space="preserve">
+  <data name="&gt;&gt;CbPlayWarning.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;CbMuteWarn.Parent" xml:space="preserve">
+  <data name="&gt;&gt;CbPlayWarning.Parent" xml:space="preserve">
     <value>tableLayoutPanel16</value>
   </data>
-  <data name="&gt;&gt;CbMuteWarn.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;CbPlayWarning.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="CbMuteFat.AutoSize" type="System.Boolean, mscorlib">
+  <data name="CbPlayFatal.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="CbMuteFat.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="CbPlayFatal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="CbMuteFat.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="CbPlayFatal.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 103</value>
   </data>
-  <data name="CbMuteFat.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="CbPlayFatal.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="CbMuteFat.TabIndex" type="System.Int32, mscorlib">
+  <data name="CbPlayFatal.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;CbMuteFat.Name" xml:space="preserve">
-    <value>CbMuteFat</value>
+  <data name="&gt;&gt;CbPlayFatal.Name" xml:space="preserve">
+    <value>CbPlayFatal</value>
   </data>
-  <data name="&gt;&gt;CbMuteFat.Type" xml:space="preserve">
+  <data name="&gt;&gt;CbPlayFatal.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;CbMuteFat.Parent" xml:space="preserve">
+  <data name="&gt;&gt;CbPlayFatal.Parent" xml:space="preserve">
     <value>tableLayoutPanel16</value>
   </data>
-  <data name="&gt;&gt;CbMuteFat.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;CbPlayFatal.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="CbMuteCon.AutoSize" type="System.Boolean, mscorlib">
+  <data name="CbPlayConnect.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="CbMuteCon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="CbPlayConnect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="CbMuteCon.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="CbPlayConnect.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 153</value>
   </data>
-  <data name="CbMuteCon.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="CbPlayConnect.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="CbMuteCon.TabIndex" type="System.Int32, mscorlib">
+  <data name="CbPlayConnect.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;CbMuteCon.Name" xml:space="preserve">
-    <value>CbMuteCon</value>
+  <data name="&gt;&gt;CbPlayConnect.Name" xml:space="preserve">
+    <value>CbPlayConnect</value>
   </data>
-  <data name="&gt;&gt;CbMuteCon.Type" xml:space="preserve">
+  <data name="&gt;&gt;CbPlayConnect.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;CbMuteCon.Parent" xml:space="preserve">
+  <data name="&gt;&gt;CbPlayConnect.Parent" xml:space="preserve">
     <value>tableLayoutPanel16</value>
   </data>
-  <data name="&gt;&gt;CbMuteCon.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;CbPlayConnect.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="CbMuteDCon.AutoSize" type="System.Boolean, mscorlib">
+  <data name="CbPlayDisconnect.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="CbMuteDCon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="CbPlayDisconnect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="CbMuteDCon.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="CbPlayDisconnect.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 203</value>
   </data>
-  <data name="CbMuteDCon.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="CbPlayDisconnect.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="CbMuteDCon.TabIndex" type="System.Int32, mscorlib">
+  <data name="CbPlayDisconnect.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;CbMuteDCon.Name" xml:space="preserve">
-    <value>CbMuteDCon</value>
+  <data name="&gt;&gt;CbPlayDisconnect.Name" xml:space="preserve">
+    <value>CbPlayDisconnect</value>
   </data>
-  <data name="&gt;&gt;CbMuteDCon.Type" xml:space="preserve">
+  <data name="&gt;&gt;CbPlayDisconnect.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;CbMuteDCon.Parent" xml:space="preserve">
+  <data name="&gt;&gt;CbPlayDisconnect.Parent" xml:space="preserve">
     <value>tableLayoutPanel16</value>
   </data>
-  <data name="&gt;&gt;CbMuteDCon.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;CbPlayDisconnect.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="tableLayoutPanel16.Location" type="System.Drawing.Point, System.Drawing">
@@ -2599,7 +2599,7 @@ Here you can use the same syntax of custom buttons.</value>
     <value>0</value>
   </data>
   <data name="tableLayoutPanel16.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbMuteSuccess" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbMuteWarn" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbMuteFat" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbMuteCon" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbMuteDCon" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbPlaySuccess" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbPlayWarning" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbPlayFatal" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbPlayConnect" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbPlayDisconnect" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2819,7 +2819,7 @@ Here you can use the same syntax of custom buttons.</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
     <value>Here you can set another sound for success events, like when a job is finished.
-Check to mute.
+Check to enable.
 </value>
   </data>
   <data name="&gt;&gt;label23.Name" xml:space="preserve">
@@ -2861,7 +2861,7 @@ Check to mute.
   <data name="label24.Text" xml:space="preserve">
     <value>Here you can set another warning sound.
 This usually fired on a bad GCode command, but your machine can continue operating.
-Check to mute.
+Check to enable.
 </value>
   </data>
   <data name="&gt;&gt;label24.Name" xml:space="preserve">
@@ -3766,7 +3766,7 @@ Check to mute.
   </data>
   <data name="label32.Text" xml:space="preserve">
     <value>Here you can set a sound for a successful connection.
-Check to mute.
+Check to enable.
 </value>
   </data>
   <data name="&gt;&gt;label32.Name" xml:space="preserve">
@@ -3802,7 +3802,7 @@ Check to mute.
   <data name="label36.Text" xml:space="preserve">
     <value>Here you can set a sound for disconnection.
 Useful for some WiFi connections.
-Check to mute.
+Check to enable.
 </value>
   </data>
   <data name="&gt;&gt;label36.Name" xml:space="preserve">
@@ -3838,7 +3838,7 @@ Check to mute.
   <data name="label28.Text" xml:space="preserve">
     <value>Here you can set an error sound for fatal errors.
 This means, your job most likely stopped, and LaserGRBL can not continue the operation.
-Check to mute.
+Check to enable.
 </value>
   </data>
   <data name="&gt;&gt;label28.Name" xml:space="preserve">
