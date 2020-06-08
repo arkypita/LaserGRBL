@@ -99,3 +99,4 @@ Thanks to:
 - Fabio Ferretti for code contribution [#592](https://github.com/arkypita/LaserGRBL/pull/592)
 - guillaume-rico for code contribution on Smoothie support
 - Tobias Falkner, for code contribution [#937](https://github.com/arkypita/LaserGRBL/pull/937)
+- gmmanonymus111, for code contribution [#1032](https://github.com/arkypita/LaserGRBL/pull/1032)
