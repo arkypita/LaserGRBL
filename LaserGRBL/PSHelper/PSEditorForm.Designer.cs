@@ -29,9 +29,9 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PSEditorForm));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PSEditorForm));
 			this.DG = new System.Windows.Forms.DataGridView();
 			this.ColID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColVisible = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -39,7 +39,7 @@
 			this.ColMaterial = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColThick = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ColPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Power = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColCycles = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,71 +67,64 @@
             this.ColMaterial,
             this.ColAction,
             this.ColThick,
-            this.ColPower,
+            this.Power,
             this.ColSpeed,
             this.ColCycles,
             this.ColRemarks});
 			this.DG.DataSource = this.source;
-			this.DG.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.DG.Location = new System.Drawing.Point(0, 0);
+			resources.ApplyResources(this.DG, "DG");
 			this.DG.Name = "DG";
-			this.DG.Size = new System.Drawing.Size(891, 480);
-			this.DG.TabIndex = 1;
 			this.DG.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.DG_CellParsing);
 			this.DG.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DG_DataError);
 			// 
 			// ColID
 			// 
 			this.ColID.DataPropertyName = "id";
-			this.ColID.HeaderText = "id";
+			resources.ApplyResources(this.ColID, "ColID");
 			this.ColID.Name = "ColID";
 			this.ColID.ReadOnly = true;
-			this.ColID.Visible = false;
 			// 
 			// ColVisible
 			// 
 			this.ColVisible.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
 			this.ColVisible.DataPropertyName = "Visible";
-			this.ColVisible.HeaderText = "Visible";
+			resources.ApplyResources(this.ColVisible, "ColVisible");
 			this.ColVisible.Name = "ColVisible";
-			this.ColVisible.Width = 43;
 			// 
 			// ColModel
 			// 
 			this.ColModel.DataPropertyName = "Model";
-			this.ColModel.HeaderText = "Model";
+			resources.ApplyResources(this.ColModel, "ColModel");
 			this.ColModel.Name = "ColModel";
 			// 
 			// ColMaterial
 			// 
 			this.ColMaterial.DataPropertyName = "Material";
-			this.ColMaterial.HeaderText = "Material";
+			resources.ApplyResources(this.ColMaterial, "ColMaterial");
 			this.ColMaterial.Name = "ColMaterial";
 			// 
 			// ColAction
 			// 
 			this.ColAction.DataPropertyName = "Action";
-			this.ColAction.HeaderText = "Action";
+			resources.ApplyResources(this.ColAction, "ColAction");
 			this.ColAction.Name = "ColAction";
 			// 
 			// ColThick
 			// 
 			this.ColThick.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
 			this.ColThick.DataPropertyName = "Thickness";
-			this.ColThick.HeaderText = "Thickness";
+			resources.ApplyResources(this.ColThick, "ColThick");
 			this.ColThick.Name = "ColThick";
-			this.ColThick.Width = 81;
 			// 
 			// Power
 			// 
-			this.ColPower.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.ColPower.DataPropertyName = "Power";
+			this.Power.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.Power.DataPropertyName = "Power";
 			dataGridViewCellStyle1.Format = "0\\%";
 			dataGridViewCellStyle1.NullValue = null;
-			this.ColPower.DefaultCellStyle = dataGridViewCellStyle1;
-			this.ColPower.HeaderText = "Power";
-			this.ColPower.Name = "Power";
-			this.ColPower.Width = 62;
+			this.Power.DefaultCellStyle = dataGridViewCellStyle1;
+			resources.ApplyResources(this.Power, "Power");
+			this.Power.Name = "Power";
 			// 
 			// ColSpeed
 			// 
@@ -139,23 +132,21 @@
 			this.ColSpeed.DataPropertyName = "Speed";
 			dataGridViewCellStyle2.Format = "0 mm/min";
 			this.ColSpeed.DefaultCellStyle = dataGridViewCellStyle2;
-			this.ColSpeed.HeaderText = "Speed";
+			resources.ApplyResources(this.ColSpeed, "ColSpeed");
 			this.ColSpeed.Name = "ColSpeed";
-			this.ColSpeed.Width = 63;
 			// 
 			// ColCycles
 			// 
 			this.ColCycles.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
 			this.ColCycles.DataPropertyName = "Cycles";
-			this.ColCycles.HeaderText = "Cycles";
+			resources.ApplyResources(this.ColCycles, "ColCycles");
 			this.ColCycles.Name = "ColCycles";
-			this.ColCycles.Width = 63;
 			// 
 			// ColRemarks
 			// 
 			this.ColRemarks.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
 			this.ColRemarks.DataPropertyName = "Remarks";
-			this.ColRemarks.HeaderText = "Remarks";
+			resources.ApplyResources(this.ColRemarks, "ColRemarks");
 			this.ColRemarks.Name = "ColRemarks";
 			// 
 			// source
@@ -174,44 +165,34 @@
             this.toolStripStatusLabel1,
             this.TbNewElement,
             this.BtnImport});
-			this.statusStrip1.Location = new System.Drawing.Point(0, 480);
+			resources.ApplyResources(this.statusStrip1, "statusStrip1");
 			this.statusStrip1.Name = "statusStrip1";
-			this.statusStrip1.Size = new System.Drawing.Size(891, 22);
-			this.statusStrip1.TabIndex = 2;
-			this.statusStrip1.Text = "statusStrip1";
 			// 
 			// toolStripStatusLabel1
 			// 
 			this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-			this.toolStripStatusLabel1.Size = new System.Drawing.Size(85, 17);
-			this.toolStripStatusLabel1.Text = "New elements:";
+			resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
 			// 
 			// TbNewElement
 			// 
 			this.TbNewElement.Name = "TbNewElement";
-			this.TbNewElement.Size = new System.Drawing.Size(13, 17);
-			this.TbNewElement.Text = "0";
+			resources.ApplyResources(this.TbNewElement, "TbNewElement");
 			// 
 			// BtnImport
 			// 
 			this.BtnImport.IsLink = true;
 			this.BtnImport.Name = "BtnImport";
-			this.BtnImport.Size = new System.Drawing.Size(43, 17);
-			this.BtnImport.Text = "import";
+			resources.ApplyResources(this.BtnImport, "BtnImport");
 			this.BtnImport.Click += new System.EventHandler(this.BtnImport_Click);
 			// 
 			// PSEditorForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(891, 502);
 			this.Controls.Add(this.DG);
 			this.Controls.Add(this.statusStrip1);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MinimizeBox = false;
 			this.Name = "PSEditorForm";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "Laser & Material Database";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PSEditorForm_FormClosing);
 			((System.ComponentModel.ISupportInitialize)(this.DG)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.source)).EndInit();
@@ -241,5 +222,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColSpeed;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColCycles;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColRemarks;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Power;
 	}
 }
