@@ -4,6 +4,7 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.PSHelper;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -138,6 +139,20 @@ namespace LaserGRBL.SvgConverter
 		private void CBLaserOFF_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			//IP.LaserOff = (string)CBLaserOFF.SelectedItem;
+		}
+
+		private void BtnPSHelper_Click(object sender, EventArgs e)
+		{
+			MaterialDB.MaterialsRow row = PSHelperForm.CreateAndShowDialog();
+			if (row != null)
+			{
+				if (IIBorderTracing.Visible)
+					IIBorderTracing.CurrentValue = row.Speed;
+				//if (IILinearFilling.Visible)
+				//	IILinearFilling.CurrentValue = row.Speed;
+
+				IIMaxPower.CurrentValue = IIMaxPower.MaxValue * row.Power / 100;
+			}
 		}
 
 		//private void IISizeW_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)

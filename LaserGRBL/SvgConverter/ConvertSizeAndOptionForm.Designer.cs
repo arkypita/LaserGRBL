@@ -76,6 +76,7 @@ namespace LaserGRBL.SvgConverter
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
+			this.BtnPSHelper = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.GbSpeed.SuspendLayout();
 			this.tableLayoutPanel6.SuspendLayout();
@@ -105,6 +106,7 @@ namespace LaserGRBL.SvgConverter
 			this.tableLayoutPanel6.Controls.Add(this.LblBorderTracing, 0, 0);
 			this.tableLayoutPanel6.Controls.Add(this.LblBorderTracingmm, 2, 0);
 			this.tableLayoutPanel6.Controls.Add(this.IIBorderTracing, 1, 0);
+			this.tableLayoutPanel6.Controls.Add(this.BtnPSHelper, 3, 0);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
 			// 
 			// LblBorderTracing
@@ -156,6 +158,7 @@ namespace LaserGRBL.SvgConverter
 			this.BtnModulationInfo.AltImage = null;
 			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
 			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnModulationInfo.Caption = null;
 			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
 			this.BtnModulationInfo.Name = "BtnModulationInfo";
@@ -212,6 +215,7 @@ namespace LaserGRBL.SvgConverter
 			this.BtnOnOffInfo.AltImage = null;
 			resources.ApplyResources(this.BtnOnOffInfo, "BtnOnOffInfo");
 			this.BtnOnOffInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnOnOffInfo.Caption = null;
 			this.BtnOnOffInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnOnOffInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnOnOffInfo.Image")));
 			this.BtnOnOffInfo.Name = "BtnOnOffInfo";
@@ -265,6 +269,20 @@ namespace LaserGRBL.SvgConverter
 			this.TT.InitialDelay = 500;
 			this.TT.ReshowDelay = 100;
 			// 
+			// BtnPSHelper
+			// 
+			this.BtnPSHelper.AltImage = null;
+			resources.ApplyResources(this.BtnPSHelper, "BtnPSHelper");
+			this.BtnPSHelper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnPSHelper.Caption = null;
+			this.BtnPSHelper.Coloration = System.Drawing.Color.Empty;
+			this.BtnPSHelper.Image = ((System.Drawing.Image)(resources.GetObject("BtnPSHelper.Image")));
+			this.BtnPSHelper.Name = "BtnPSHelper";
+			this.BtnPSHelper.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnPSHelper, resources.GetString("BtnPSHelper.ToolTip"));
+			this.BtnPSHelper.UseAltImage = false;
+			this.BtnPSHelper.Click += new System.EventHandler(this.BtnPSHelper_Click);
+			// 
 			// SvgToGCodeForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -294,5 +312,6 @@ namespace LaserGRBL.SvgConverter
 		private System.Windows.Forms.ComboBox CBLaserOFF;
 		private System.Windows.Forms.ToolTip TT;
 		private System.Windows.Forms.Label LblBorderTracingmm;
+		private UserControls.ImageButton BtnPSHelper;
 	}
 }
