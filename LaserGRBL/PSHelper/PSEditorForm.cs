@@ -43,5 +43,30 @@ namespace LaserGRBL.PSHelper
 				e.ThrowException = false;
 			}
 		}
+
+		private void DG_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
+		{
+			if (e.ColumnIndex == ColPower.Index || e.ColumnIndex == ColSpeed.Index)
+			{  
+				try
+				{
+					e.Value = Int32.Parse(StripNonNumber(e.Value.ToString()));
+					e.ParsingApplied = true;
+				}
+				catch (FormatException)
+				{
+					e.ParsingApplied = false;
+				}
+			}
+			else
+			{   // parsing any other column, let the system parse it
+				e.ParsingApplied = false;
+			}
+		}
+
+		private string StripNonNumber(string input)
+		{
+			return new string(input.Where(c => char.IsDigit(c)).ToArray());
+		}
 	}
 }
