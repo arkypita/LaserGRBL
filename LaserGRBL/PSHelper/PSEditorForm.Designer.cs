@@ -33,32 +33,22 @@
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PSEditorForm));
 			this.DG = new System.Windows.Forms.DataGridView();
-			this.source = new System.Windows.Forms.BindingSource(this.components);
-			this.materialDB = new LaserGRBL.PSHelper.MaterialDB();
-			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-			this.TbNewElement = new System.Windows.Forms.ToolStripStatusLabel();
-			this.BtnImport = new System.Windows.Forms.ToolStripStatusLabel();
-			this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.visibleDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-			this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.materialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.thicknessDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.actionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.powerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.cyclesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.remarksDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColVisible = new System.Windows.Forms.DataGridViewCheckBoxColumn();
 			this.ColModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColMaterial = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColThick = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Power = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColCycles = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.source = new System.Windows.Forms.BindingSource(this.components);
+			this.materialDB = new LaserGRBL.PSHelper.MaterialDB();
+			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+			this.TbNewElement = new System.Windows.Forms.ToolStripStatusLabel();
+			this.BtnImport = new System.Windows.Forms.ToolStripStatusLabel();
 			((System.ComponentModel.ISupportInitialize)(this.DG)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.source)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.materialDB)).BeginInit();
@@ -77,7 +67,7 @@
             this.ColMaterial,
             this.ColAction,
             this.ColThick,
-            this.Power,
+            this.ColPower,
             this.ColSpeed,
             this.ColCycles,
             this.ColRemarks});
@@ -87,110 +77,8 @@
 			this.DG.Name = "DG";
 			this.DG.Size = new System.Drawing.Size(891, 480);
 			this.DG.TabIndex = 1;
+			this.DG.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.DG_CellParsing);
 			this.DG.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DG_DataError);
-			// 
-			// source
-			// 
-			this.source.DataMember = "Materials";
-			this.source.DataSource = this.materialDB;
-			// 
-			// materialDB
-			// 
-			this.materialDB.DataSetName = "MaterialDB";
-			this.materialDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
-			// statusStrip1
-			// 
-			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.TbNewElement,
-            this.BtnImport});
-			this.statusStrip1.Location = new System.Drawing.Point(0, 480);
-			this.statusStrip1.Name = "statusStrip1";
-			this.statusStrip1.Size = new System.Drawing.Size(891, 22);
-			this.statusStrip1.TabIndex = 2;
-			this.statusStrip1.Text = "statusStrip1";
-			// 
-			// toolStripStatusLabel1
-			// 
-			this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-			this.toolStripStatusLabel1.Size = new System.Drawing.Size(85, 17);
-			this.toolStripStatusLabel1.Text = "New elements:";
-			// 
-			// TbNewElement
-			// 
-			this.TbNewElement.Name = "TbNewElement";
-			this.TbNewElement.Size = new System.Drawing.Size(13, 17);
-			this.TbNewElement.Text = "0";
-			// 
-			// BtnImport
-			// 
-			this.BtnImport.IsLink = true;
-			this.BtnImport.Name = "BtnImport";
-			this.BtnImport.Size = new System.Drawing.Size(43, 17);
-			this.BtnImport.Text = "import";
-			this.BtnImport.Click += new System.EventHandler(this.BtnImport_Click);
-			// 
-			// idDataGridViewTextBoxColumn
-			// 
-			this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-			this.idDataGridViewTextBoxColumn.HeaderText = "id";
-			this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-			this.idDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// visibleDataGridViewCheckBoxColumn
-			// 
-			this.visibleDataGridViewCheckBoxColumn.DataPropertyName = "Visible";
-			this.visibleDataGridViewCheckBoxColumn.HeaderText = "Visible";
-			this.visibleDataGridViewCheckBoxColumn.Name = "visibleDataGridViewCheckBoxColumn";
-			// 
-			// modelDataGridViewTextBoxColumn
-			// 
-			this.modelDataGridViewTextBoxColumn.DataPropertyName = "Model";
-			this.modelDataGridViewTextBoxColumn.HeaderText = "Model";
-			this.modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
-			// 
-			// materialDataGridViewTextBoxColumn
-			// 
-			this.materialDataGridViewTextBoxColumn.DataPropertyName = "Material";
-			this.materialDataGridViewTextBoxColumn.HeaderText = "Material";
-			this.materialDataGridViewTextBoxColumn.Name = "materialDataGridViewTextBoxColumn";
-			// 
-			// thicknessDataGridViewTextBoxColumn
-			// 
-			this.thicknessDataGridViewTextBoxColumn.DataPropertyName = "Thickness";
-			this.thicknessDataGridViewTextBoxColumn.HeaderText = "Thickness";
-			this.thicknessDataGridViewTextBoxColumn.Name = "thicknessDataGridViewTextBoxColumn";
-			// 
-			// actionDataGridViewTextBoxColumn
-			// 
-			this.actionDataGridViewTextBoxColumn.DataPropertyName = "Action";
-			this.actionDataGridViewTextBoxColumn.HeaderText = "Action";
-			this.actionDataGridViewTextBoxColumn.Name = "actionDataGridViewTextBoxColumn";
-			// 
-			// powerDataGridViewTextBoxColumn
-			// 
-			this.powerDataGridViewTextBoxColumn.DataPropertyName = "Power";
-			this.powerDataGridViewTextBoxColumn.HeaderText = "Power";
-			this.powerDataGridViewTextBoxColumn.Name = "powerDataGridViewTextBoxColumn";
-			// 
-			// speedDataGridViewTextBoxColumn
-			// 
-			this.speedDataGridViewTextBoxColumn.DataPropertyName = "Speed";
-			this.speedDataGridViewTextBoxColumn.HeaderText = "Speed";
-			this.speedDataGridViewTextBoxColumn.Name = "speedDataGridViewTextBoxColumn";
-			// 
-			// cyclesDataGridViewTextBoxColumn
-			// 
-			this.cyclesDataGridViewTextBoxColumn.DataPropertyName = "Cycles";
-			this.cyclesDataGridViewTextBoxColumn.HeaderText = "Cycles";
-			this.cyclesDataGridViewTextBoxColumn.Name = "cyclesDataGridViewTextBoxColumn";
-			// 
-			// remarksDataGridViewTextBoxColumn
-			// 
-			this.remarksDataGridViewTextBoxColumn.DataPropertyName = "Remarks";
-			this.remarksDataGridViewTextBoxColumn.HeaderText = "Remarks";
-			this.remarksDataGridViewTextBoxColumn.Name = "remarksDataGridViewTextBoxColumn";
 			// 
 			// ColID
 			// 
@@ -236,14 +124,14 @@
 			// 
 			// Power
 			// 
-			this.Power.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.Power.DataPropertyName = "Power";
+			this.ColPower.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.ColPower.DataPropertyName = "Power";
 			dataGridViewCellStyle1.Format = "0\\%";
 			dataGridViewCellStyle1.NullValue = null;
-			this.Power.DefaultCellStyle = dataGridViewCellStyle1;
-			this.Power.HeaderText = "Power";
-			this.Power.Name = "Power";
-			this.Power.Width = 62;
+			this.ColPower.DefaultCellStyle = dataGridViewCellStyle1;
+			this.ColPower.HeaderText = "Power";
+			this.ColPower.Name = "Power";
+			this.ColPower.Width = 62;
 			// 
 			// ColSpeed
 			// 
@@ -269,6 +157,48 @@
 			this.ColRemarks.DataPropertyName = "Remarks";
 			this.ColRemarks.HeaderText = "Remarks";
 			this.ColRemarks.Name = "ColRemarks";
+			// 
+			// source
+			// 
+			this.source.DataMember = "Materials";
+			this.source.DataSource = this.materialDB;
+			// 
+			// materialDB
+			// 
+			this.materialDB.DataSetName = "MaterialDB";
+			this.materialDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			// 
+			// statusStrip1
+			// 
+			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.TbNewElement,
+            this.BtnImport});
+			this.statusStrip1.Location = new System.Drawing.Point(0, 480);
+			this.statusStrip1.Name = "statusStrip1";
+			this.statusStrip1.Size = new System.Drawing.Size(891, 22);
+			this.statusStrip1.TabIndex = 2;
+			this.statusStrip1.Text = "statusStrip1";
+			// 
+			// toolStripStatusLabel1
+			// 
+			this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+			this.toolStripStatusLabel1.Size = new System.Drawing.Size(85, 17);
+			this.toolStripStatusLabel1.Text = "New elements:";
+			// 
+			// TbNewElement
+			// 
+			this.TbNewElement.Name = "TbNewElement";
+			this.TbNewElement.Size = new System.Drawing.Size(13, 17);
+			this.TbNewElement.Text = "0";
+			// 
+			// BtnImport
+			// 
+			this.BtnImport.IsLink = true;
+			this.BtnImport.Name = "BtnImport";
+			this.BtnImport.Size = new System.Drawing.Size(43, 17);
+			this.BtnImport.Text = "import";
+			this.BtnImport.Click += new System.EventHandler(this.BtnImport_Click);
 			// 
 			// PSEditorForm
 			// 
@@ -300,16 +230,6 @@
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
 		private System.Windows.Forms.ToolStripStatusLabel TbNewElement;
 		private System.Windows.Forms.ToolStripStatusLabel BtnImport;
-		private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewCheckBoxColumn visibleDataGridViewCheckBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn materialDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn thicknessDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn actionDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn powerDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn speedDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn cyclesDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn remarksDataGridViewTextBoxColumn;
 		private MaterialDB materialDB;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColID;
 		private System.Windows.Forms.DataGridViewCheckBoxColumn ColVisible;
@@ -317,7 +237,7 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColMaterial;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColAction;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColThick;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Power;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColPower;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColSpeed;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColCycles;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColRemarks;

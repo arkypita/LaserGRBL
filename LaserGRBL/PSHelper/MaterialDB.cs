@@ -27,7 +27,8 @@ namespace LaserGRBL.PSHelper
 				base.OnTableNewRow(e);
 
 				MaterialsRow target = e.Row as MaterialsRow;
-				MaterialsRow last = Rows.Count > 0 ? Rows[Rows.Count - 1] as MaterialsRow : null;
+				MaterialsRow last = GetLastNotDeleted();
+					
 				if (target != null)
 				{
 					target.id = Guid.NewGuid();
@@ -38,6 +39,15 @@ namespace LaserGRBL.PSHelper
 						target.Material = last.Material;
 					}
 				}
+			}
+
+			private MaterialsRow GetLastNotDeleted()
+			{
+				for (int i = Rows.Count - 1; i >= 0; i--)
+					if (Rows[i].RowState != DataRowState.Deleted)
+						return Rows[i] as MaterialsRow;
+
+				return null;
 			}
 
 			protected override void OnColumnChanging(DataColumnChangeEventArgs e)

@@ -123,6 +123,9 @@
   <data name="BtnSave.Text" xml:space="preserve">
     <value>Mentés</value>
   </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>Protokoll</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>613, 52</value>
@@ -228,8 +231,23 @@ Ha le van tiltva, akkor az összes problémát figyelmeztetés nélkül csendese
 - Grbl: a fantasztikus firmware, amelyre a LaserGRBL-t kifejlesztették.
 - Smoothie [kísérleti]: a támogatást nemrégiben adták hozzá, és még nem tesztelték teljesen.</value>
   </data>
-  <data name="TpHardware.Text" xml:space="preserve">
-    <value>Protokoll</value>
+  <data name="BtnFType.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>Raszter import</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>160, 4</value>
@@ -278,8 +296,25 @@ Ha nem, kérjük, tiltsa le a PWM támogatást.</value>
         2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="TpRasterImport.Text" xml:space="preserve">
-    <value>Raszter import</value>
+  <data name="CbHiRes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 17</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>HiRes kitöltés</value>
+  </data>
+  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 83</value>
+  </data>
+  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>495, 39</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>A LaserGRBL maximális felbontása 20 vonal/mm (kb 500dpi), ami elég a legtöbb felhasználónak.
+Ha szeretne nagyobb felbontást, engedélyezheti a "HiRes" kitöltést, amely eltávolítja a fenti korlátozást.
+Figyelem: A LaserGRBL így jóval több erőforrást igényel!</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Mozgás Irányítás</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
     <value>205, 4</value>
@@ -294,7 +329,7 @@ MEGJEGYZÉS: A "Folyamatos Mozgatás" csak a Grbl v1.1 vagy újabb verziókkal m
     <value>205, 102</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>599, 13</value>
+    <value>620, 13</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>A LaserGRBL-nek nem célja a Z tengely támogatása, de ha van 3 tengelyes hardvere, talán hasznosnak találhatja ezt a beállítást.</value>
@@ -311,11 +346,11 @@ MEGJEGYZÉS: A "Folyamatos Mozgatás" csak a Grbl v1.1 vagy újabb verziókkal m
   <data name="CbContinuosJog.Text" xml:space="preserve">
     <value>Folyamatos Mozgatás</value>
   </data>
-  <data name="TpJogControl.Text" xml:space="preserve">
-    <value>Mozgás Irányítás</value>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>Automata hűtés</value>
   </data>
   <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 113</value>
+    <value>250, 113</value>
   </data>
   <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
     <value>489, 13</value>
@@ -324,7 +359,7 @@ MEGJEGYZÉS: A "Folyamatos Mozgatás" csak a Grbl v1.1 vagy újabb verziókkal m
     <value>Kikapcsolt idő: e hűtési idő után a LaserGRBL folytatja a parancsot a gravírozás folytatása érdekében.</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 4</value>
+    <value>250, 4</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>670, 65</value>
@@ -334,10 +369,10 @@ MEGJEGYZÉS: A "Folyamatos Mozgatás" csak a Grbl v1.1 vagy újabb verziókkal m
 Ha az automatikus hűtés engedélyezve van, a LaserGRBL automatikusan "feed hold" -ot és "job resume" -ot küld az ON-OFF időzítés konfigurációjának megfelelően.</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 76</value>
+    <value>250, 76</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>382, 26</value>
+    <value>393, 26</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>Bekapcsolt idő: ez a maximális idő, ameddig a lézer bekapcsol a gravírozás során.
@@ -348,6 +383,12 @@ Ez idő elteltével a LaserGRBL automatikus várakozást küld a lézer lehűlé
   </data>
   <data name="CbAutoCooling.Text" xml:space="preserve">
     <value>Automatikus hűtés engedélyezése</value>
+  </data>
+  <data name="tableLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 73</value>
+  </data>
+  <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 27</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
     <value>77, 7</value>
@@ -373,11 +414,17 @@ Ez idő elteltével a LaserGRBL automatikus várakozást küld a lézer lehűlé
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
     <value>159, 7</value>
   </data>
-  <data name="tableLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 73</value>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 13</value>
   </data>
-  <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 27</value>
+  <data name="label16.Text" xml:space="preserve">
+    <value>másodperc</value>
+  </data>
+  <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 106</value>
+  </data>
+  <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 27</value>
   </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
     <value>73, 7</value>
@@ -397,8 +444,11 @@ Ez idő elteltével a LaserGRBL automatikus várakozást küld a lézer lehűlé
   <data name="label18.Text" xml:space="preserve">
     <value>Ki</value>
   </data>
-  <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 106</value>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 13</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>másoperc</value>
   </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -440,35 +490,23 @@ Ez idő elteltével a LaserGRBL automatikus várakozást küld a lézer lehűlé
 </value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 137</value>
+    <value>211, 137</value>
   </data>
   <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 134</value>
+    <value>250, 140</value>
   </data>
   <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>559, 39</value>
+    <value>713, 26</value>
   </data>
   <data name="label21.Text" xml:space="preserve">
     <value>Figyelem: ez a szolgáltatás csak a grbl v1.1 vagy újabb verziók esetén működik, ha a „laser mode” engedélyezve van.
 Ha önhűtést használ egy régebbi grbl verzióval (vagy letiltott lézer üzemmóddal), a lézer szünetek alatt nem kapcsol ki és lyukakat éget a munkájában!</value>
   </data>
-  <data name="TpAutoCooling.Text" xml:space="preserve">
-    <value>Automata hűtés</value>
+  <data name="LblHeader.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 32</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Beállítások</value>
-  </data>
-  <data name="CbSoftReset.Text" xml:space="preserve">
-    <value>Soft Reset [Ctrl-X]</value>
-  </data>
-  <data name="CbHardReset.Text" xml:space="preserve">
-    <value>Hard Reset [DTR+RTS]</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>másodperc</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>másoperc</value>
+  <data name="LblHeader.Size" type="System.Drawing.Size, System.Drawing">
+    <value>673, 52</value>
   </data>
   <data name="LblHeader.Text" xml:space="preserve">
     <value>LaserGRBL beszúrja az alábbi GCode-ot minden mukna megkezdése elé
@@ -485,11 +523,17 @@ Itt ugyanazt a szintaxist használhatja, mint az egyéni gomboknál, ha valamif�
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Többszöri végrehajtás</value>
   </data>
+  <data name="LblFooter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>671, 65</value>
+  </data>
   <data name="LblFooter.Text" xml:space="preserve">
     <value>LaserGRBL hozzáfűzi ezt a kódrészt bármely munka végéhez.
 Használható pélául, hogy a gravírozót visszaküldje egy kezdő pozícióba, például a null-pontba, vagy elküldheti az M9 parancsot a ventillátor kikapcsolásához
 
 Itt ugyanazt a szintaxist használhatja, mint az egyéni gomboknál</value>
+  </data>
+  <data name="LblPasses.Size" type="System.Drawing.Size, System.Drawing">
+    <value>498, 52</value>
   </data>
   <data name="LblPasses.Text" xml:space="preserve">
     <value>Amikor egy munkát többször hajt végre, a LaserGRBL beszúrja az alábbi kódot minden végrehajtás közé
@@ -497,17 +541,26 @@ Használható a Z tengely lefelé mozgatására, mélyebb vágás érdekében
 
 Itt ugyanazt a szintaxist használhatja, mint az egyéni gomboknál</value>
   </data>
-  <data name="TpGCodeSettings.Text" xml:space="preserve">
-    <value>GCode</value>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>Hangbeállítások</value>
+  </data>
+  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>434, 26</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
     <value>Itt tudja beállítani a sikeres műveletek hangját, mint például amikor egy munka befejeződik.
-Jelölje be a némításhoz.</value>
+Jelölje be az aktiváláshoz.</value>
+  </data>
+  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>380, 39</value>
   </data>
   <data name="label24.Text" xml:space="preserve">
     <value>Itt tudja beállítani a figyelmeztető hangjelzést.
 Ez általában hibás GCode parancsot jelent, és a gép folytatni tudja a működést.
-Jelölje be a némításhoz.</value>
+Jelölje be az aktiváláshoz.</value>
+  </data>
+  <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 20</value>
   </data>
   <data name="label26.Text" xml:space="preserve">
     <value>Figyelmeztető hangjelzés</value>
@@ -515,11 +568,14 @@ Jelölje be a némításhoz.</value>
   <data name="changeWarBtn.Text" xml:space="preserve">
     <value>Lecserél</value>
   </data>
+  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 16</value>
+  </data>
   <data name="label27.Text" xml:space="preserve">
     <value>Hangfájl</value>
   </data>
-  <data name="warningSoundLabel.Text" xml:space="preserve">
-    <value>.\Sound\non-fatal.wav</value>
+  <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 20</value>
   </data>
   <data name="label29.Text" xml:space="preserve">
     <value>Hiba hangjelzés</value>
@@ -527,11 +583,14 @@ Jelölje be a némításhoz.</value>
   <data name="changeFatBtn.Text" xml:space="preserve">
     <value>Lecserél</value>
   </data>
+  <data name="label30.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 16</value>
+  </data>
   <data name="label30.Text" xml:space="preserve">
     <value>Hangfájl</value>
   </data>
-  <data name="fatalSoundLabel.Text" xml:space="preserve">
-    <value>.\Sound\fatal.wav</value>
+  <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 20</value>
   </data>
   <data name="label34.Text" xml:space="preserve">
     <value>Kapcsolódási hangjelzés</value>
@@ -539,11 +598,14 @@ Jelölje be a némításhoz.</value>
   <data name="changeConBtn.Text" xml:space="preserve">
     <value>Lecserél</value>
   </data>
+  <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 16</value>
+  </data>
   <data name="label35.Text" xml:space="preserve">
     <value>Hangfájl</value>
   </data>
-  <data name="connectSoundLabel.Text" xml:space="preserve">
-    <value>.\Sound\connect.wav</value>
+  <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 20</value>
   </data>
   <data name="label37.Text" xml:space="preserve">
     <value>Szétkapcsolás hangjelzés</value>
@@ -551,11 +613,14 @@ Jelölje be a némításhoz.</value>
   <data name="changeDconBtn.Text" xml:space="preserve">
     <value>Lecserél</value>
   </data>
+  <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 16</value>
+  </data>
   <data name="label38.Text" xml:space="preserve">
     <value>Hangfájl</value>
   </data>
-  <data name="disconnectSoundLabel.Text" xml:space="preserve">
-    <value>.\Sound\disconnect.wav</value>
+  <data name="label33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 20</value>
   </data>
   <data name="label33.Text" xml:space="preserve">
     <value>Siker hangjelzés</value>
@@ -563,38 +628,39 @@ Jelölje be a némításhoz.</value>
   <data name="changeSucBtn.Text" xml:space="preserve">
     <value>Lecserél</value>
   </data>
+  <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 16</value>
+  </data>
   <data name="label25.Text" xml:space="preserve">
     <value>Hangfájl</value>
   </data>
-  <data name="successSoundLabel.Text" xml:space="preserve">
-    <value>.\Sound\success.wav</value>
+  <data name="label32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>247, 26</value>
   </data>
   <data name="label32.Text" xml:space="preserve">
     <value>Itt állíthatja be a sikeres kapcsolódás hangjelzését.
-Jelölje be a némításhoz.</value>
+Jelölje be az aktiváláshoz.</value>
+  </data>
+  <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 39</value>
   </data>
   <data name="label36.Text" xml:space="preserve">
     <value>Itt állíthatja be a szétkapcsolás hangjelzését.
 Néhány WiFi kapcsolat esetén hasznos lehet.
-Jelölje be a némításhoz.</value>
+Jelölje be az aktiváláshoz.</value>
+  </data>
+  <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
+    <value>403, 39</value>
   </data>
   <data name="label28.Text" xml:space="preserve">
     <value>Itt állíthaja be a végzetes hiba hangjelzését.
 Ez olyan hibát jelent, ahol a munka megszakad, és a LaserGRBL nem tudja folytatni.
-Jelölje be a némításhoz.</value>
-  </data>
-  <data name="TpSoundSettings.Text" xml:space="preserve">
-    <value>Hangbeállítások</value>
+Jelölje be az aktiváláshoz.</value>
   </data>
   <data name="SoundBrowserDialog.Filter" xml:space="preserve">
     <value>Waveform Audio Fájl|*.wav</value>
   </data>
-  <data name="CbHiRes.Text" xml:space="preserve">
-    <value>HiRes kitöltés</value>
-  </data>
-  <data name="label22.Text" xml:space="preserve">
-    <value>A LaserGRBL maximális felbontása 20 vonal/mm (kb 500dpi), ami elég a legtöbb felhasználónak.
-Ha szeretne nagyobb felbontást, engedélyezheti a "HiRes" kitöltést, amely eltávolítja a fenti korlátozást.
-Figyelem: A LaserGRBL így jóval több erőforrást igényel!</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Beállítások</value>
   </data>
 </root>
