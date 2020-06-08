@@ -349,9 +349,8 @@
 			// 
 			// MnMaterialDB
 			// 
-			this.MnMaterialDB.Image = global::LaserGRBL.Strings.book_addressHS;
-			this.MnMaterialDB.Name = "MnMaterialDB";
 			resources.ApplyResources(this.MnMaterialDB, "MnMaterialDB");
+			this.MnMaterialDB.Name = "MnMaterialDB";
 			this.MnMaterialDB.Click += new System.EventHandler(this.MnMaterialDB_Click);
 			// 
 			// toolStripSeparator2
