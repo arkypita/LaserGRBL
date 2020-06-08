@@ -325,4 +325,7 @@ Mindenképp folytatja?</value>
   <data name="StepSliderToolTip" xml:space="preserve">
     <value>Lépés:</value>
   </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>Ez a fájltípis nem támogatott.</value>
+  </data>
 </root>

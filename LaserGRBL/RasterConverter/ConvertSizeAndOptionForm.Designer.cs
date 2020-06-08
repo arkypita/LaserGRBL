@@ -497,6 +497,169 @@ namespace LaserGRBL.RasterConverter
 			this.TT.AutoPopDelay = 10000;
 			this.TT.InitialDelay = 500;
 			this.TT.ReshowDelay = 100;
+			//
+			// tableLayoutPanel2
+			// 
+			resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+			this.tableLayoutPanel3.SetColumnSpan(this.tableLayoutPanel2, 5);
+			this.tableLayoutPanel2.Controls.Add(this.label1, 2, 0);
+			this.tableLayoutPanel2.Controls.Add(this.CbAutosize, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.IIDpi, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.BtnDPI, 3, 0);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			// 
+			// label1
+			// 
+			resources.ApplyResources(this.label1, "label1");
+			this.label1.Name = "label1";
+			// 
+			// IIOffsetX
+			// 
+			resources.ApplyResources(this.IIOffsetX, "IIOffsetX");
+			this.IIOffsetX.CurrentValue = 0F;
+			this.IIOffsetX.DecimalPositions = 2;
+			this.IIOffsetX.ForceMinMax = false;
+			this.IIOffsetX.MaxValue = 1000F;
+			this.IIOffsetX.MinValue = 0F;
+			this.IIOffsetX.Name = "IIOffsetX";
+			this.IIOffsetX.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIOffsetX.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.DecimalInputBase.CurrentValueChangedDlg(this.IIOffsetXYCurrentValueChanged);
+			// 
+			// IIOffsetY
+			// 
+			this.IIOffsetY.CurrentValue = 0F;
+			this.IIOffsetY.DecimalPositions = 2;
+			this.IIOffsetY.ForceMinMax = false;
+			resources.ApplyResources(this.IIOffsetY, "IIOffsetY");
+			this.IIOffsetY.MaxValue = 1000F;
+			this.IIOffsetY.MinValue = 0F;
+			this.IIOffsetY.Name = "IIOffsetY";
+			this.IIOffsetY.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIOffsetY.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.DecimalInputBase.CurrentValueChangedDlg(this.IIOffsetXYCurrentValueChanged);
+			// 
+			// IISizeH
+			// 
+			this.IISizeH.CurrentValue = 0F;
+			this.IISizeH.DecimalPositions = 1;
+			this.IISizeH.ForceMinMax = false;
+			resources.ApplyResources(this.IISizeH, "IISizeH");
+			this.IISizeH.MaxValue = 1000F;
+			this.IISizeH.MinValue = 10F;
+			this.IISizeH.Name = "IISizeH";
+			this.IISizeH.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IISizeH.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.DecimalInputBase.CurrentValueChangedDlg(this.IISizeH_CurrentValueChanged);
+			this.IISizeH.OnTheFlyValueChanged += new LaserGRBL.UserControls.NumericInput.DecimalInputBase.CurrentValueChangedDlg(this.IISizeH_OnTheFlyValueChanged);
+			// 
+			// IISizeW
+			// 
+			this.IISizeW.CurrentValue = 0F;
+			this.IISizeW.DecimalPositions = 1;
+			this.IISizeW.ForceMinMax = false;
+			resources.ApplyResources(this.IISizeW, "IISizeW");
+			this.IISizeW.MaxValue = 1000F;
+			this.IISizeW.MinValue = 10F;
+			this.IISizeW.Name = "IISizeW";
+			this.IISizeW.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IISizeW.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.DecimalInputBase.CurrentValueChangedDlg(this.IISizeW_CurrentValueChanged);
+			this.IISizeW.OnTheFlyValueChanged += new LaserGRBL.UserControls.NumericInput.DecimalInputBase.CurrentValueChangedDlg(this.IISizeW_OnTheFlyValueChanged);
+			// 
+			// IIDpi
+			// 
+			resources.ApplyResources(this.IIDpi, "IIDpi");
+			this.IIDpi.CurrentValue = 300;
+			this.IIDpi.ForcedText = null;
+			this.IIDpi.ForceMinMax = false;
+			this.IIDpi.MaxValue = 10000;
+			this.IIDpi.MinValue = 1;
+			this.IIDpi.Name = "IIDpi";
+			this.IIDpi.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIDpi.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIDpi_CurrentValueChanged);
+			// 
+			// BtnDPI
+			// 
+			this.BtnDPI.AltImage = null;
+			resources.ApplyResources(this.BtnDPI, "BtnDPI");
+			this.BtnDPI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnDPI.Coloration = System.Drawing.Color.Empty;
+			this.BtnDPI.Image = ((System.Drawing.Image)(resources.GetObject("BtnDPI.Image")));
+			this.BtnDPI.Name = "BtnDPI";
+			this.BtnDPI.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnDPI, resources.GetString("BtnDPI.ToolTip"));
+			this.BtnDPI.UseAltImage = false;
+			this.BtnDPI.Click += new System.EventHandler(this.BtnDPI_Click);
+			// 
+			// IIBorderTracing
+			// 
+			resources.ApplyResources(this.IIBorderTracing, "IIBorderTracing");
+			this.IIBorderTracing.CurrentValue = 1000;
+			this.IIBorderTracing.ForcedText = null;
+			this.IIBorderTracing.ForceMinMax = false;
+			this.IIBorderTracing.MaxValue = 4000;
+			this.IIBorderTracing.MinValue = 1;
+			this.IIBorderTracing.Name = "IIBorderTracing";
+			this.IIBorderTracing.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIBorderTracing.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIBorderTracingCurrentValueChanged);
+			// 
+			// IILinearFilling
+			// 
+			resources.ApplyResources(this.IILinearFilling, "IILinearFilling");
+			this.IILinearFilling.CurrentValue = 1000;
+			this.IILinearFilling.ForcedText = null;
+			this.IILinearFilling.ForceMinMax = false;
+			this.IILinearFilling.MaxValue = 4000;
+			this.IILinearFilling.MinValue = 1;
+			this.IILinearFilling.Name = "IILinearFilling";
+			this.IILinearFilling.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IILinearFilling.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMarkSpeedCurrentValueChanged);
+			// 
+			// BtnModulationInfo
+			// 
+			this.BtnModulationInfo.AltImage = null;
+			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
+			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
+			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
+			this.BtnModulationInfo.Name = "BtnModulationInfo";
+			this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnModulationInfo, resources.GetString("BtnModulationInfo.ToolTip"));
+			this.BtnModulationInfo.UseAltImage = false;
+			this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
+			// 
+			// IIMinPower
+			// 
+			resources.ApplyResources(this.IIMinPower, "IIMinPower");
+			this.IIMinPower.ForcedText = null;
+			this.IIMinPower.ForceMinMax = false;
+			this.IIMinPower.MaxValue = 999;
+			this.IIMinPower.MinValue = 0;
+			this.IIMinPower.Name = "IIMinPower";
+			this.IIMinPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIMinPower.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMinPowerCurrentValueChanged);
+			// 
+			// IIMaxPower
+			// 
+			resources.ApplyResources(this.IIMaxPower, "IIMaxPower");
+			this.IIMaxPower.CurrentValue = 255;
+			this.IIMaxPower.ForcedText = null;
+			this.IIMaxPower.ForceMinMax = false;
+			this.IIMaxPower.MaxValue = 1000;
+			this.IIMaxPower.MinValue = 1;
+			this.IIMaxPower.Name = "IIMaxPower";
+			this.IIMaxPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+			this.IIMaxPower.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMaxPowerCurrentValueChanged);
+			// 
+			// BtnOnOffInfo
+			// 
+			this.BtnOnOffInfo.AltImage = null;
+			resources.ApplyResources(this.BtnOnOffInfo, "BtnOnOffInfo");
+			this.BtnOnOffInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnOnOffInfo.Coloration = System.Drawing.Color.Empty;
+			this.BtnOnOffInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnOnOffInfo.Image")));
+			this.BtnOnOffInfo.Name = "BtnOnOffInfo";
+			this.BtnOnOffInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnOnOffInfo, resources.GetString("BtnOnOffInfo.ToolTip"));
+			this.BtnOnOffInfo.UseAltImage = false;
+			this.BtnOnOffInfo.Click += new System.EventHandler(this.BtnOnOffInfo_Click);
 			// 
 			// ConvertSizeAndOptionForm
 			// 

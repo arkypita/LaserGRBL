@@ -4,6 +4,7 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using Sound;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +29,7 @@ namespace LaserGRBL
 
             BackColor = ColorScheme.FormBackColor;
             ForeColor = ColorScheme.FormForeColor;
-            TpRasterImport.BackColor = TpHardware.BackColor = TpJogControl.BackColor = TpAutoCooling.BackColor  = TpGCodeSettings.BackColor = BtnCancel.BackColor = BtnSave.BackColor = ColorScheme.FormBackColor;
+            TpRasterImport.BackColor = TpHardware.BackColor = TpJogControl.BackColor = TpAutoCooling.BackColor  = TpGCodeSettings.BackColor = BtnCancel.BackColor = BtnSave.BackColor = TpSoundSettings.BackColor = changeConBtn.BackColor = changeDconBtn.BackColor = changeFatBtn.BackColor = changeSucBtn.BackColor = changeWarBtn.BackColor = ColorScheme.FormBackColor;
 
             InitCoreCB();
 			InitProtocolCB();
@@ -60,7 +61,26 @@ namespace LaserGRBL
             TBFooter.ForeColor = ColorScheme.FormForeColor;
             TBFooter.BackColor = ColorScheme.FormBackColor;
 
+            CbPlaySuccess.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Success}.Enabled", true);
+            CbPlayWarning.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Warning}.Enabled", true);
+            CbPlayFatal.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Fatal}.Enabled", true);
+            CbPlayConnect.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Connect}.Enabled", true);
+            CbPlayDisconnect.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}.Enabled", true);
+
+            successSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Success}", $"Sound\\{SoundEvent.EventId.Success}.wav"));
+            SuccesFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Success}", $"Sound\\{SoundEvent.EventId.Success}.wav");
+            warningSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Warning}", $"Sound\\{SoundEvent.EventId.Warning}.wav"));
+            WarningFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Warning}", $"Sound\\{SoundEvent.EventId.Warning}.wav");
+            fatalSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Fatal}", $"Sound\\{SoundEvent.EventId.Fatal}.wav"));
+            ErrorFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Fatal}", $"Sound\\{SoundEvent.EventId.Fatal}.wav");
+            connectSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Connect}", $"Sound\\{SoundEvent.EventId.Connect}.wav"));
+            ConnectFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Connect}", $"Sound\\{SoundEvent.EventId.Connect}.wav");
+            disconnectSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}", $"Sound\\{SoundEvent.EventId.Disconnect}.wav"));
+            DisconnectFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}", $"Sound\\{SoundEvent.EventId.Disconnect}.wav");
+
             groupBox1.ForeColor = groupBox2.ForeColor = groupBox3.ForeColor = ColorScheme.FormForeColor;
+
+            SuccesFullLabel.Visible = WarningFullLabel.Visible = ErrorFullLabel.Visible = ConnectFullLabel.Visible = DisconnectFullLabel.Visible = false;
 
             InitAutoCoolingTab();
         }
@@ -159,7 +179,19 @@ namespace LaserGRBL
 			Settings.SetObject("GCode.CustomPasses", TBPasses.Text.Trim());
 			Settings.SetObject("GCode.CustomFooter", TBFooter.Text.Trim());
 
-			Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Success}", SuccesFullLabel.Text.Trim());
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Warning}", WarningFullLabel.Text.Trim());
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Fatal}", ErrorFullLabel.Text.Trim());
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Connect}", ConnectFullLabel.Text.Trim());
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Disconnect}", DisconnectFullLabel.Text.Trim());
+
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Success}.Enabled", CbPlaySuccess.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Warning}.Enabled", CbPlayWarning.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Fatal}.Enabled", CbPlayFatal.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Connect}.Enabled", CbPlayConnect.Checked);
+            Settings.SetObject($"Sound.{SoundEvent.EventId.Disconnect}.Enabled", CbPlayDisconnect.Checked);
+
+            Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);
 
 			Settings.Save();
 
@@ -207,6 +239,51 @@ namespace LaserGRBL
         private void BtnFType_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#firmware-type");
+        }
+
+        private void changeSucBtn_Click(object sender, EventArgs e)
+        {
+            if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                successSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
+                SuccesFullLabel.Text = SoundBrowserDialog.FileName;
+            }
+        }
+
+        private void changeWarBtn_Click(object sender, EventArgs e)
+        {
+            if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                warningSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
+                WarningFullLabel.Text = SoundBrowserDialog.FileName;
+            }
+        }
+
+        private void changeFatBtn_Click(object sender, EventArgs e)
+        {
+            if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                fatalSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
+                ErrorFullLabel.Text = SoundBrowserDialog.FileName;
+            }
+        }
+
+        private void changeConBtn_Click(object sender, EventArgs e)
+        {
+            if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                connectSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
+                ConnectFullLabel.Text = SoundBrowserDialog.FileName;
+            }
+        }
+
+        private void changeDconBtn_Click(object sender, EventArgs e)
+        {
+            if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                disconnectSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
+                DisconnectFullLabel.Text = SoundBrowserDialog.FileName;
+            }
         }
     }
 }

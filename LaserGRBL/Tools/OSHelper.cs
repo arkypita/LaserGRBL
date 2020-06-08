@@ -14,31 +14,21 @@ namespace Tools
 		public static bool Is64BitProcess = OSVersionInfo.ProgramBits == OSVersionInfo.SoftwareArchitecture.Bit64;
 		public static bool Is64BitOperatingSystem = OSVersionInfo.OSBits == OSVersionInfo.SoftwareArchitecture.Bit64;
 
-		//[DllImport("kernel32.dll", SetLastError = true, CallingConvention = CallingConvention.Winapi)]
-		//[return: MarshalAs(UnmanagedType.Bool)]
-		//private static extern bool IsWow64Process([In] IntPtr hProcess, [Out] out bool wow64Process);
+		public static string GetClrInfo()
+		{
+			try
+			{
+				Type type = typeof(String);
+				String uri = type.Assembly.CodeBase;
+				FileVersionInfo info = FileVersionInfo.GetVersionInfo(new Uri(uri).LocalPath);
 
-		//private static bool InternalCheckIsWow64()
-		//{
-		//	if ((Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor >= 1) || Environment.OSVersion.Version.Major >= 6)
-		//	{
-		//		try
-		//		{
-		//			using (Process p = Process.GetCurrentProcess())
-		//			{
-		//				bool retVal;
-		//				if (!IsWow64Process(p.Handle, out retVal))
-		//					return false;
-		//				return retVal;
-		//			}
-		//		}
-		//		catch { return false; }
-		//	}
-		//	else
-		//	{
-		//		return false;
-		//	}
-		//}
+				return $"{info.FileName} {info.FileVersion}";
+			}
+			catch
+			{
+				return Environment.Version.ToString();
+			}
+		}
 
 		public static string GetOSInfo()
 		{

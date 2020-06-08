@@ -148,7 +148,7 @@ namespace LaserGRBL
 				Color.Aqua,		        	//command text
 				Color.FromArgb(220,30,220),	//startup
 				Color.FromArgb(0,127,139),	//alarm
-				Color.FromArgb(25,25,25),  	//config
+				Color.MediumVioletRed,      //config
 				Color.MediumVioletRed,		//feedback
 				Color.MediumPurple,			//position
 				Color.Purple,				//others
