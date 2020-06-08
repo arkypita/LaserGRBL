@@ -20,22 +20,45 @@ namespace Sound
 		public enum EventId
 		{ Success = 0, Warning = 1, Fatal = 2, Connect = 3, Disconnect = 4 }
 
+
+		private static bool mBusy = false;
+		private static string mLock = "PLAY LOCK TOKEN";
 		public static void PlaySound(EventId id)
 		{
 			try
 			{
 				string name = id.ToString();
-				if (!LaserGRBL.Settings.GetObject($"Sound.{name}.IsMuted", false))
+				if (LaserGRBL.Settings.GetObject($"Sound.{name}.Enabled", true))
 				{
 					string filename = LaserGRBL.Settings.GetObject($"Sound.{name}", $"Sound\\{name}.wav");
 					if (System.IO.File.Exists(filename))
 					{
-						SoundPlayer player = new SoundPlayer(filename);
-						player.Play();
+						lock (mLock)
+						{
+							if (!mBusy)
+							{
+								mBusy = true;
+								System.Threading.ThreadPool.QueueUserWorkItem(PlayAsync, filename);
+							}
+						}
 					}
 				}
 			}
 			catch (Exception ex) { }
 		}
+
+		private static void PlayAsync(object filename)
+		{
+			try
+			{
+				SoundPlayer player = new SoundPlayer(filename as string);
+				player.PlaySync();
+				player.Dispose();
+			}
+			catch { }
+			mBusy = false;
+		}
 	}
+
+
 }

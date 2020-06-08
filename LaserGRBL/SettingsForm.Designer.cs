@@ -102,11 +102,11 @@
             this.LblPasses = new System.Windows.Forms.Label();
             this.TpSoundSettings = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
-            this.CbMuteSuccess = new System.Windows.Forms.CheckBox();
-            this.CbMuteWarn = new System.Windows.Forms.CheckBox();
-            this.CbMuteFat = new System.Windows.Forms.CheckBox();
-            this.CbMuteCon = new System.Windows.Forms.CheckBox();
-            this.CbMuteDCon = new System.Windows.Forms.CheckBox();
+            this.CbPlaySuccess = new System.Windows.Forms.CheckBox();
+            this.CbPlayWarning = new System.Windows.Forms.CheckBox();
+            this.CbPlayFatal = new System.Windows.Forms.CheckBox();
+            this.CbPlayConnect = new System.Windows.Forms.CheckBox();
+            this.CbPlayDisconnect = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.DisconnectFullLabel = new System.Windows.Forms.Label();
             this.ConnectFullLabel = new System.Windows.Forms.Label();
@@ -691,43 +691,43 @@
             // tableLayoutPanel16
             // 
             resources.ApplyResources(this.tableLayoutPanel16, "tableLayoutPanel16");
-            this.tableLayoutPanel16.Controls.Add(this.CbMuteSuccess, 0, 0);
-            this.tableLayoutPanel16.Controls.Add(this.CbMuteWarn, 0, 1);
-            this.tableLayoutPanel16.Controls.Add(this.CbMuteFat, 0, 2);
-            this.tableLayoutPanel16.Controls.Add(this.CbMuteCon, 0, 3);
-            this.tableLayoutPanel16.Controls.Add(this.CbMuteDCon, 0, 4);
+            this.tableLayoutPanel16.Controls.Add(this.CbPlaySuccess, 0, 0);
+            this.tableLayoutPanel16.Controls.Add(this.CbPlayWarning, 0, 1);
+            this.tableLayoutPanel16.Controls.Add(this.CbPlayFatal, 0, 2);
+            this.tableLayoutPanel16.Controls.Add(this.CbPlayConnect, 0, 3);
+            this.tableLayoutPanel16.Controls.Add(this.CbPlayDisconnect, 0, 4);
             this.tableLayoutPanel16.ForeColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel16.Name = "tableLayoutPanel16";
             // 
             // CbMuteSuccess
             // 
-            resources.ApplyResources(this.CbMuteSuccess, "CbMuteSuccess");
-            this.CbMuteSuccess.Name = "CbMuteSuccess";
-            this.CbMuteSuccess.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.CbPlaySuccess, "CbMuteSuccess");
+            this.CbPlaySuccess.Name = "CbMuteSuccess";
+            this.CbPlaySuccess.UseVisualStyleBackColor = true;
             // 
             // CbMuteWarn
             // 
-            resources.ApplyResources(this.CbMuteWarn, "CbMuteWarn");
-            this.CbMuteWarn.Name = "CbMuteWarn";
-            this.CbMuteWarn.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.CbPlayWarning, "CbMuteWarn");
+            this.CbPlayWarning.Name = "CbMuteWarn";
+            this.CbPlayWarning.UseVisualStyleBackColor = true;
             // 
             // CbMuteFat
             // 
-            resources.ApplyResources(this.CbMuteFat, "CbMuteFat");
-            this.CbMuteFat.Name = "CbMuteFat";
-            this.CbMuteFat.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.CbPlayFatal, "CbMuteFat");
+            this.CbPlayFatal.Name = "CbMuteFat";
+            this.CbPlayFatal.UseVisualStyleBackColor = true;
             // 
             // CbMuteCon
             // 
-            resources.ApplyResources(this.CbMuteCon, "CbMuteCon");
-            this.CbMuteCon.Name = "CbMuteCon";
-            this.CbMuteCon.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.CbPlayConnect, "CbMuteCon");
+            this.CbPlayConnect.Name = "CbMuteCon";
+            this.CbPlayConnect.UseVisualStyleBackColor = true;
             // 
             // CbMuteDCon
             // 
-            resources.ApplyResources(this.CbMuteDCon, "CbMuteDCon");
-            this.CbMuteDCon.Name = "CbMuteDCon";
-            this.CbMuteDCon.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.CbPlayDisconnect, "CbMuteDCon");
+            this.CbPlayDisconnect.Name = "CbMuteDCon";
+            this.CbPlayDisconnect.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel10
             // 
@@ -1134,10 +1134,10 @@
 		private System.Windows.Forms.CheckBox CbHiRes;
 		private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
-        private System.Windows.Forms.CheckBox CbMuteSuccess;
-        private System.Windows.Forms.CheckBox CbMuteWarn;
-        private System.Windows.Forms.CheckBox CbMuteFat;
-        private System.Windows.Forms.CheckBox CbMuteCon;
-        private System.Windows.Forms.CheckBox CbMuteDCon;
+        private System.Windows.Forms.CheckBox CbPlaySuccess;
+        private System.Windows.Forms.CheckBox CbPlayWarning;
+        private System.Windows.Forms.CheckBox CbPlayFatal;
+        private System.Windows.Forms.CheckBox CbPlayConnect;
+        private System.Windows.Forms.CheckBox CbPlayDisconnect;
     }
 }
