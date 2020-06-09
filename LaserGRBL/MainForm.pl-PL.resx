@@ -148,19 +148,19 @@
     <value>Rozłączony</value>
   </data>
   <data name="MnConnect.Text" xml:space="preserve">
-    <value>&amp;amp;Połączenie</value>
+    <value>&amp;Połączenie</value>
   </data>
   <data name="MnDisconnect.Text" xml:space="preserve">
-    <value>&amp;amp;Rozłączenie</value>
+    <value>&amp;Rozłączenie</value>
   </data>
   <data name="MnGrblReset.Text" xml:space="preserve">
-    <value>&amp;amp;Resetowanie</value>
+    <value>&amp;Resetowanie</value>
   </data>
   <data name="MnGoHome.Text" xml:space="preserve">
-    <value>&amp;amp;Bazowanie</value>
+    <value>&amp;Bazowanie</value>
   </data>
   <data name="MnUnlock.Text" xml:space="preserve">
-    <value>&amp;amp;Odblokowanie</value>
+    <value>&amp;Odblokowanie</value>
   </data>
   <data name="MnGrblConfig.Text" xml:space="preserve">
     <value>Konfiguracja Grbl</value>
@@ -175,52 +175,52 @@
     <value>Skróty klawiszowe</value>
   </data>
   <data name="MnExit.Text" xml:space="preserve">
-    <value>&amp;amp;Zakończ</value>
+    <value>&amp;Zakończ</value>
   </data>
   <data name="MnGrbl.Text" xml:space="preserve">
-    <value>&amp;amp;Grbl</value>
+    <value>&amp;Grbl</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;amp;Plik</value>
+    <value>&amp;Plik</value>
   </data>
   <data name="MNEsp8266.Text" xml:space="preserve">
     <value>&amp;ESP8266</value>
   </data>
   <data name="schemaToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;amp;Kolory</value>
+    <value>&amp;Kolory</value>
   </data>
   <data name="linguaToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;amp;Język</value>
+    <value>&amp;Język</value>
   </data>
   <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;amp;Narzędzia</value>
+    <value>&amp;Narzędzia</value>
   </data>
   <data name="questionMarkToolStripMenuItem.Text" xml:space="preserve">
     <value>Pomoc</value>
   </data>
   <data name="MnFileOpen.Text" xml:space="preserve">
-    <value>&amp;amp;Otwórz plik</value>
+    <value>&amp;Otwórz plik</value>
   </data>
   <data name="MnFileAppend.Text" xml:space="preserve">
-    <value>&amp;amp;Dołącz plik</value>
+    <value>&amp;Dołącz plik</value>
   </data>
   <data name="MnReOpenFile.Text" xml:space="preserve">
-    <value>&amp;amp;Załaduj ponownie ostatni plik</value>
+    <value>&amp;Załaduj ponownie ostatni plik</value>
   </data>
   <data name="MnSaveProgram.Text" xml:space="preserve">
-    <value>&amp;amp;Szybki zapis</value>
+    <value>&amp;Szybki zapis</value>
   </data>
   <data name="MnAdvancedSave.Text" xml:space="preserve">
-    <value>&amp;amp;Zapisz (opcja zaawansowana)</value>
+    <value>&amp;Zapisz (opcja zaawansowana)</value>
   </data>
   <data name="MnFileSend.Text" xml:space="preserve">
-    <value>&amp;amp;Wyślij do maszyny</value>
+    <value>&amp;Wyślij do maszyny</value>
   </data>
   <data name="MnStartFromPosition.Text" xml:space="preserve">
-    <value>&amp;amp;Wyślij z pozycji</value>
+    <value>&amp;Wyślij z pozycji</value>
   </data>
   <data name="MNGrblEmulator.Text" xml:space="preserve">
-    <value>&amp;amp;Emulator Grbl</value>
+    <value>&amp;Emulator Grbl</value>
   </data>
   <data name="blueLaserToolStripMenuItem.Text" xml:space="preserve">
     <value>Niebieski laser</value>
@@ -277,10 +277,10 @@
     <value>Zainstaluj sterownik CH340</value>
   </data>
   <data name="flashGrblFirmwareToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;amp;Oprogramowanie Flash Grbl</value>
+    <value>&amp;Oprogramowanie Flash Grbl</value>
   </data>
   <data name="configurationWizardToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;amp;Kreator konfiguracji</value>
+    <value>&amp;Kreator konfiguracji</value>
   </data>
   <data name="helpOnLineToolStripMenuItem.Text" xml:space="preserve">
     <value>Pomoc online</value>

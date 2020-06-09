@@ -241,7 +241,7 @@
     <value>Kontrast</value>
   </data>
   <data name="CbThreshold.Text" xml:space="preserve">
-    <value>B&amp;amp;&amp;amp;W</value>
+    <value>B&amp;&amp;W</value>
   </data>
   <data name="CbThreshold.ToolTip" xml:space="preserve">
     <value>Zastosuj filtrowanie progów</value>

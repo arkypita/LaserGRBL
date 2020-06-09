@@ -160,7 +160,7 @@
     <value>Prędkość wypełniania</value>
   </data>
   <data name="BtnPSHelper.ToolTip" xml:space="preserve">
-    <value>Otwórz Laser &amp;amp; Material DB</value>
+    <value>Otwórz Laser &amp; Material DB</value>
   </data>
   <data name="GbSpeed.Text" xml:space="preserve">
     <value>Prędkość</value>

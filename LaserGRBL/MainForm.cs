@@ -744,6 +744,11 @@ namespace LaserGRBL
 		{
 			PSHelper.PSEditorForm.CreateAndShowDialog();
 		}
+
+		private void polishToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("pl-PL"));
+		}
 	}
 
 
