@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Tryb przesyłania strumieniowego: [domyślne buforowanie]
+- Buforowanie: optymalizacja strumieniowania poleceń zgodnie z wypełnieniem grbl bufora odbiorczego [zalecane]      
+- Synchroniczny: poczekaj na wykonanie każdego polecenia przed wysłaniem następnego polecenia [wolniej, ale bezpieczniej]
+- Powtarzanie błędów: tak samo jak w trybie synchronicznym, ale polecenia są powtarzane, jeśli zostanie wykryty błąd [eksperymentalne]</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Protokół połączenia:
+- USB Serial, jest najczęstszym protokołem. Należy stosować, jeśli engraver jest podłączony do portu USB lub COM.
+- Telnet, jeśli masz most Wifi-Telnet. Komunikacja jest realizowana jako prosty klient-serwer Telnet.
+- LaserWebESP8266 obsługuje połączenie Wi-Fi przez WebSocket. Kompatybilny z oprogramowaniem LaserWeb-ESP8266.</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Tryb wątków: Ultraszybki, Szybki, Spokojny, Wolny [domyślny UltraFast]. 
+To ustawienie wpływa na szybkość i częstotliwość żądań raportowania stanu urządzenia. 
+Jeśli masz problemy, ustaw wolniejsze wartości.</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>Wykrywanie problemu</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>LaserGRBL może wykryć problemy i ostrzegać użytkownika, dostarczając informacji o tym, jak je rozwiązać.
+ Jeśli wyłączone, wszystkie problemy są rozwiązywane w trybie cichym bez ostrzeżenia.</value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>Miękki reset [Ctrl-X]</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Po aktywacji LaserGRBL wysyła miękki reset, gdy połączenie z grbl jest otwarte.</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>Twardy reset [DTR + RTS]</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Po aktywacji LaserGRBL wysyła twardy reset, gdy połączenie z grbl jest otwarte. [Utrata pozycji!].</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Typ oprogramowania kontrolera
+- Grbl: świetne oprogramowanie, dla którego opracowano LaserGRBL.
+- Smoothie [eksperymentalne]: Wsparcie zostało dodane niedawno i nie zostało w pełni przetestowane.</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>Protokół</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>LaserGRBL wykorzystuje modulację mocy za pomocą „polecenia S” G-Code w celu uzyskania odcieni szarości.
+Twój laser musi obsługiwać sterowanie TTL podłączone do arduino PIN D11.
+Jeśli nie, wyłącz obsługę PWM.</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Domyślnie LaserGRBL tworzy ścieżki grawerowania w obu kierunkach głowicy laserowej. Niektóre testy wykazały, że ten tryb (który jest szybszy) daje wyniki niższej jakości. Jeśli wymagana jest maksymalna jakość wykonania, aktywuj tę opcję.</value>
+  </data>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>Grawerowanie jednokierunkowe</value>
+  </data>
+  <data name="CBSupportPWM.Text" xml:space="preserve">
+    <value>Wsparcie PWM</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>Wypełnianie HiRes</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Maksymalna rozdzielczość dostępna w LaserGRBL wynosi 20 linii/mm (około 500 dpi), co jest wystarczającą wartością dla większości użytkowników.
+Jeśli potrzebujesz wyższej rozdzielczości, możesz włączyć „HiRes” i usunąć ten limit. Uwaga: LaserGRBL będzie potrzebował znacznie więcej zasobów!</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>Import rastrowy</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Bez „Continuous Jog” po naciśnięciu przycisku jog LaserGRBL wysyła żądanie Jog z ustaloną prędkością i ruchem; i impuls jest w pełni wykonywany do pozycji końcowej. Jeśli włączysz opcję „Continuous Jog”, impulsowanie jest wysyłane z myszą w dół i przerywane / przerywane z myszą w górę, więc możesz wykonywać przybliżone pozycjonowanie, ale w bardzo wygodny sposób.
+UWAGA: „Continuous Jog” działa tylko z Grbl v1.1 lub nowszym i wymaga poprawnego skonfigurowania rozmiaru tabeli w konfiguracji Grbl (Menu „Grbl” -&gt; „Konfiguracja Grbl” $130, $131, $132)</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>LaserGRBL nie jest przeznaczony do sterowania osią Z, ale jeśli masz maszynę z 3 osiami, być może ta opcja byłaby przydatna.</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Wyświetlacz sterowania osi Z (góra i dół)</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>Płynne pozycjonowanie</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Pozycjonowanie</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Czas Wyłączenia (WYŁ):  po tym czasie chlodzenia LaserGRBL wyśle polecenie wznowienia, aby kontynuować zadanie.</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Niektóre diody laserowe mogą stać się zbyt gorące, jeśli będą działać z maksymalną mocą przez pewien czas. Aby zapobiec przegrzaniu i przedłużyć żywotność lasera, cykl przerywania pracy można wstawić automatycznie, a podczas tej przerwy nastąpi chłodzenie.
+Jeśli aktywowane jest automatyczne chłodzenie, LaserGRBL automatycznie wyśle ​​polecenia „pauza” i „wznów” zgodnie z ustawionym czasem WŁ.-WYŁ.</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Czas Włączenia (WŁ): jest to maksymalny czas, przez który laser pozostanie włączony podczas procesu grawerowania. Po tym czasie LaserGRBL automatycznie wysyła polecenie przerwania zadania w celu schłodzenia lasera.</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>Włącz Automatyczne chłodzenie</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>WŁ.</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>sek</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>WYŁ.</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>sek</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Uwaga: ta funkcja działa tylko z wersją grbl; &gt; v1.1 z włączonym „trybem laserowym”. 
+Jeśli użyjesz automatycznego chłodzenia ze starszą wersją grbl (lub z wyłączonym „trybem laserowym”), laser nie wyłączy się podczas przerw i wypali dziurę w twojej pracy!</value>
+  </data>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>Automatyczne chłodzenie</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBL uruchamia ten GCode na początku każdego zadania.
+Możesz zmodyfikować ten kod, na przykład dodając włączniki M8, aby włączyć wentylator. 
+Tutaj możesz użyć tej samej składni przycisków niestandardowych, jeśli potrzebujesz przesunąć pewne pozycjonowanie związane z konkretnym zadaniem, które ma zostać wykonane.</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Nagłówek</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Stopka</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Wielokrotne przejścia</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBL zapisuje ten GCode pod koniec każdego zadania.
+Można go użyć do cofnięcia grawera w początkowym stanie, jak powrót do pozycji zerowej
+lub wysyłanie M9 w celu wyłączenia wentylatora itp.
+Tutaj możesz użyć tej samej składni przycisków niestandardowych.</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Podczas wykonywania wielu przejść LaserGRBL uruchamia ten GCode między kolejnymi przejściami.
+Może służyć do przesuwania osi Z w dół, aby wykonywać głębsze cięcia. 
+
+Tutaj możesz użyć tej samej składni przycisków niestandardowych.</value>
+  </data>
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Tutaj możesz ustawić inny dźwięk zdarzeń związanych z sukcesem, takich jak zakończenie pracy.
+Zaznacz, aby włączyć.</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Tutaj możesz ustawić kolejny dźwięk ostrzegawczy.
+Zwykle był uruchamiany przy złym poleceniu GCode, ale komputer może nadal działać.
+Zaznacz, aby włączyć.</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Dźwięk ostrzegawczy</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>Zmiana</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Plik dźwiękowy</value>
+  </data>
+  <data name="warningSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\non-fatal.wav</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Błąd dźwięku</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>Zmiana</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Plik dźwiękowy</value>
+  </data>
+  <data name="fatalSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\fatal.wav</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Połącz dźwięk</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>Zmiana</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Plik dźwiękowy</value>
+  </data>
+  <data name="connectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\connect.wav</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Odłącz dźwięk</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>Zmiana</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Plik dźwiękowy</value>
+  </data>
+  <data name="disconnectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\disconnect.wav</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Dźwięk sukcesu</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>Zmiana</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Plik dźwiękowy</value>
+  </data>
+  <data name="successSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\success.wav</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Tutaj możesz ustawić dźwięk udanego połączenia.
+Zaznacz, aby włączyć.</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Tutaj możesz ustawić dźwięk rozłączenia.
+Przydatny w przypadku niektórych połączeń WiFi.
+Zaznacz, aby włączyć.</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Tutaj możesz ustawić dźwięk błędu dla błędów krytycznych.
+Oznacza to, że Twoje zadanie najprawdopodobniej zostało zatrzymane, a LaserGRBL nie może kontynuować operacji.
+Zaznacz, aby włączyć.</value>
+  </data>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>Ustawienia dźwięku</value>
+  </data>
+  <data name="SoundBrowserDialog.Filter" xml:space="preserve">
+    <value>Plik audio Waveform | * .wav</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+</root>
