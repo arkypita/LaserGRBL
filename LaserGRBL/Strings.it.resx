@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MacStatusAlarm" xml:space="preserve">
     <value>Allarme</value>
@@ -307,5 +307,23 @@ Si prega di scaricare manualmente la nuova versione dal sito lasergrbl.com</valu
   </data>
   <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
     <value>Posizione sconosciuta</value>
+  </data>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>Click desto per aggiungere pulsanti personalizzati</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>Velocità:</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>Passo:</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>Disconnetti</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>Connetti</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>Il file non è supportato</value>
   </data>
 </root>

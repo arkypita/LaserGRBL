@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Annulla</value>
@@ -374,5 +374,92 @@ E' utile per esempio per affondare l'asse Z ed eseguire tagli più profondi.</va
   </data>
   <data name="TpGCodeSettings.Text" xml:space="preserve">
     <value>GCode</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>Alta Risoluzione</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>LaserGRBL limita la massima risoluzione a 20 linee/mm, che è un valore più che sufficiente per la maggior parte degli utenti. Se hai bisogno di una risoluzione più alta puoi abilitare questa voce. Attenzione: LaserGRBL avrà bisogno di più risorse e più tempo per elaborare le immagini.</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Imposta il suono per l'evento di fine marcatura.</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Imposta il suono che segnala dei problemi non bloccanti durante la marcatura.</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Segnale di avviso</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>File audio</value>
+  </data>
+  <data name="warningSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\warning.wav</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Segnale di errore</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>File audio</value>
+  </data>
+  <data name="fatalSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\fatal.wav</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Segnale di connessione</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>File audio</value>
+  </data>
+  <data name="connectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\connect.wav</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Segnale di disconnessione</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>File audio</value>
+  </data>
+  <data name="disconnectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\disconnect.wav</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Segnale di fine lavoro</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>File audio</value>
+  </data>
+  <data name="successSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\success.wav</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Imposta il suono che segnala l'avvenuta connessione.</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Imposta il suono che segnala la disconnessione.</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Imposta il suono per i segnali di errore, per esempio quando la macchina smette di rispondere durante un lavoro di marcatura.</value>
+  </data>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>Suoni</value>
+  </data>
+  <data name="SoundBrowserDialog.Filter" xml:space="preserve">
+    <value>File audio Wave|*.wav</value>
   </data>
 </root>

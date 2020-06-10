@@ -117,40 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LblFilename.Text" xml:space="preserve">
-    <value>Soubor</value>
+  <data name="CBHeader.Text" xml:space="preserve">
+    <value>Esporta intestazioni</value>
   </data>
-  <data name="LblProgress.Text" xml:space="preserve">
-    <value>Průběh</value>
+  <data name="CBFooter.Text" xml:space="preserve">
+    <value>Esporta footer</value>
   </data>
-  <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Otevřít soubor</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Numero di passate</value>
   </data>
-  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Spustit úlohu</value>
+  <data name="CBBetween.Text" xml:space="preserve">
+    <value>Esporta gcode tra le passate</value>
   </data>
-  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
-    <value>Počet průchodů (opakování)</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Opzioni di esportazione</value>
   </data>
-  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>Přerušit úlohu</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Se hai bisogno di esportare il G-code per l'uso al di fuori di LaserGRBL (es. per un controller autonomo) puoi trovare utile esportare anche header/footer e il codice tra le passate.
+
+Nota: se esporti il gcode per ri-caricarlo in LaserGRBL è suggerito usare l'esportazione veloce.</value>
   </data>
-  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Připojit</value>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Salva</value>
   </data>
-  <data name="LblBaudRate.Text" xml:space="preserve">
-    <value>Baud</value>
-  </data>
-  <data name="LblAddress.Text" xml:space="preserve">
-    <value>URL</value>
-  </data>
-  <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Emulované Grbl v1.1#</value>
-  </data>
-  <data name="LblEmulator.Text" xml:space="preserve">
-    <value>Emulátor</value>
-  </data>
-  <data name="LblComPort.Text" xml:space="preserve">
-    <value>COM</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Opzioni di esportazione G-code</value>
   </data>
 </root>

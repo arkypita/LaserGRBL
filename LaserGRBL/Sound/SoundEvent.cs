@@ -44,7 +44,7 @@ namespace Sound
 					}
 				}
 			}
-			catch (Exception ex) { }
+			catch { }
 		}
 
 		private static void PlayAsync(object filename)

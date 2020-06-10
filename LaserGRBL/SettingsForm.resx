@@ -3000,13 +3000,13 @@ Check to enable.
     <value>229, 28</value>
   </data>
   <data name="warningSoundLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 13</value>
+    <value>111, 13</value>
   </data>
   <data name="warningSoundLabel.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
   <data name="warningSoundLabel.Text" xml:space="preserve">
-    <value>.\Sound\non-fatal.wav</value>
+    <value>.\Sound\warning.wav</value>
   </data>
   <data name="&gt;&gt;warningSoundLabel.Name" xml:space="preserve">
     <value>warningSoundLabel</value>
@@ -3030,7 +3030,7 @@ Check to enable.
     <value>2</value>
   </data>
   <data name="tableLayoutPanel11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>347, 49</value>
+    <value>343, 49</value>
   </data>
   <data name="tableLayoutPanel11.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>

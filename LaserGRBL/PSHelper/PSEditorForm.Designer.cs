@@ -39,7 +39,7 @@
 			this.ColMaterial = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColThick = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Power = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColCycles = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,7 +67,7 @@
             this.ColMaterial,
             this.ColAction,
             this.ColThick,
-            this.Power,
+            this.ColPower,
             this.ColSpeed,
             this.ColCycles,
             this.ColRemarks});
@@ -116,15 +116,15 @@
 			resources.ApplyResources(this.ColThick, "ColThick");
 			this.ColThick.Name = "ColThick";
 			// 
-			// Power
+			// ColPower
 			// 
-			this.Power.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.Power.DataPropertyName = "Power";
+			this.ColPower.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.ColPower.DataPropertyName = "Power";
 			dataGridViewCellStyle1.Format = "0\\%";
 			dataGridViewCellStyle1.NullValue = null;
-			this.Power.DefaultCellStyle = dataGridViewCellStyle1;
-			resources.ApplyResources(this.Power, "Power");
-			this.Power.Name = "Power";
+			this.ColPower.DefaultCellStyle = dataGridViewCellStyle1;
+			resources.ApplyResources(this.ColPower, "ColPower");
+			this.ColPower.Name = "ColPower";
 			// 
 			// ColSpeed
 			// 
@@ -218,10 +218,9 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColMaterial;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColAction;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColThick;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ColPower;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColSpeed;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColCycles;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColRemarks;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Power;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColPower;
 	}
 }

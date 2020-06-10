@@ -145,10 +145,10 @@
   <data name="ColThick.Width" type="System.Int32, mscorlib">
     <value>81</value>
   </data>
-  <data name="Power.HeaderText" xml:space="preserve">
+  <data name="ColPower.HeaderText" xml:space="preserve">
     <value>Power</value>
   </data>
-  <data name="Power.Width" type="System.Int32, mscorlib">
+  <data name="ColPower.Width" type="System.Int32, mscorlib">
     <value>62</value>
   </data>
   <data name="ColSpeed.HeaderText" xml:space="preserve">
@@ -227,9 +227,6 @@
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="statusStrip1.Text" xml:space="preserve">
-    <value>statusStrip1</value>
   </data>
   <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
     <value>statusStrip1</value>
@@ -349,10 +346,10 @@
   <data name="&gt;&gt;ColThick.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Power.Name" xml:space="preserve">
-    <value>Power</value>
+  <data name="&gt;&gt;ColPower.Name" xml:space="preserve">
+    <value>ColPower</value>
   </data>
-  <data name="&gt;&gt;Power.Type" xml:space="preserve">
+  <data name="&gt;&gt;ColPower.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ColSpeed.Name" xml:space="preserve">

@@ -112,9 +112,42 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BtnApply.Text" xml:space="preserve">
+    <value>Applica</value>
+  </data>
+  <data name="LblPower.Text" xml:space="preserve">
+    <value>Potenza</value>
+  </data>
+  <data name="LblModel.Text" xml:space="preserve">
+    <value>Tipo di laser</value>
+  </data>
+  <data name="LblMaterial.Text" xml:space="preserve">
+    <value>Materiale</value>
+  </data>
+  <data name="LblThickness.Text" xml:space="preserve">
+    <value>Spessore</value>
+  </data>
+  <data name="LblAction.Text" xml:space="preserve">
+    <value>Azione</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Passaggi</value>
+  </data>
+  <data name="LblSpeed.Text" xml:space="preserve">
+    <value>Velocità</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Impostazioni consigliate</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Seleziona la configurazione</value>
+  </data>
 </root>
