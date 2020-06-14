@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label20.Text" xml:space="preserve">
-    <value>Lini/min</value>
+    <value>Linii/min</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Pomocnik rozdzielczości</value>
@@ -133,7 +133,7 @@
     <value>Kroków/min</value>
   </data>
   <data name="LblBorderTracingmm.Text" xml:space="preserve">
-    <value>Lini/min</value>
+    <value>Linii/min</value>
   </data>
   <data name="BtnCreate.Text" xml:space="preserve">
     <value>Zestaw</value>
@@ -142,7 +142,8 @@
     <value>Pożądana rozdzielczość</value>
   </data>
   <data name="linkLabel1.Text" xml:space="preserve">
-    <value>Jeśli rozdzielczości nie uda się osiągnąć przy pełnej liczbie kroków silnika, mogą pojawić się artefakty. Kliknij tutaj po więcej informacji...</value>
+    <value>Jeśli rozdzielczości nie uda się osiągnąć przy pełnej liczbie 
+	kroków silnika, mogą pojawić się artefakty. Kliknij tutaj po więcej informacji...</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Obliczona rozdzielczość</value>

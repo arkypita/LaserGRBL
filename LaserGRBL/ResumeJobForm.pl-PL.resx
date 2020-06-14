@@ -157,7 +157,10 @@
     <value>0</value>
   </data>
   <data name="LblBrief.Text" xml:space="preserve">
-    <value>LaserGRBL może ponownie rozpocząć to zadanie od początku lub spróbować wznowić od ostatniej znanej pozycji. Ponieważ nie zawsze jest możliwe określenie najlepszej pozycji do ponownego uruchomienia, pozwalamy Ci podjąć ostateczną decyzję. Ostatnia prędkość, moc i stan są odzyskiwane automatycznie.</value>
+    <value>LaserGRBL może ponownie rozpocząć to zadanie od początku lub spróbować 
+	wznowić od ostatniej znanej pozycji. Ponieważ nie zawsze jest możliwe określenie 
+	najlepszej pozycji do ponownego uruchomienia, pozwalamy Ci podjąć ostateczną decyzję. 
+	Ostatnia prędkość, moc i stan są odzyskiwane automatycznie.</value>
   </data>
   <data name="LblCause.Text" xml:space="preserve">
     <value>Powód:</value>

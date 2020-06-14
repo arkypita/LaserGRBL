@@ -133,7 +133,8 @@
     <value>LaserGRBL wykrył problem ze sprzętem!</value>
   </data>
   <data name="LblBrief.Text" xml:space="preserve">
-    <value>Wydaje się, że Grbl ma problem z tym zadaniem. Przyczyny tej sytuacji mogą się różnić. Przeczytaj FAQ, aby uzyskać informacje na temat rozwiązania tego problemu.</value>
+    <value>Wydaje się, że Grbl ma problem z tym zadaniem. Przyczyny tej sytuacji mogą się różnić. 
+	Przeczytaj FAQ, aby uzyskać informacje na temat rozwiązania tego problemu.</value>
   </data>
   <data name="LL.Text" xml:space="preserve">
     <value>http://lasergrbl.com/faq/</value>

@@ -117,43 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
-    <value>wpisz gkod tutaj</value>
+  <data name="ColID.HeaderText" xml:space="preserve">
+    <value>id</value>
   </data>
-  <data name="LblProgress.Text" xml:space="preserve">
-    <value>Postęp</value>
+  <data name="ColVisible.HeaderText" xml:space="preserve">
+    <value>Widoczny</value>
   </data>
-  <data name="LblFilename.Text" xml:space="preserve">
-    <value>Nazwa pliku</value>
+  <data name="ColModel.HeaderText" xml:space="preserve">
+    <value>Model</value>
   </data>
-  <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Otwórz plik</value>
+  <data name="ColMaterial.HeaderText" xml:space="preserve">
+    <value>Materiał</value>
   </data>
-  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Uruchom program</value>
+  <data name="ColAction.HeaderText" xml:space="preserve">
+    <value>Akcja</value>
   </data>
-  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
-    <value>Wykonać wiele przejść</value>
+  <data name="ColThick.HeaderText" xml:space="preserve">
+    <value>Grubość</value>
   </data>
-  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>Przerwanie programu</value>
+  <data name="Power.HeaderText" xml:space="preserve">
+    <value>Moc</value>
   </data>
-  <data name="LblEmulator.Text" xml:space="preserve">
-    <value>Emulator</value>
+  <data name="ColSpeed.HeaderText" xml:space="preserve">
+    <value>Prędkość</value>
   </data>
-  <data name="LblComPort.Text" xml:space="preserve">
-    <value>COM</value>
+  <data name="ColCycles.HeaderText" xml:space="preserve">
+    <value>Cykle</value>
   </data>
-  <data name="LblBaudRate.Text" xml:space="preserve">
-    <value>Baud</value>
+  <data name="ColRemarks.HeaderText" xml:space="preserve">
+    <value>Uwagi</value>
   </data>
-  <data name="LblAddress.Text" xml:space="preserve">
-    <value>URL</value>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>Nowe elementy:</value>
   </data>
-  <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Emulowany Grbl v1.1#</value>
+  <data name="TbNewElement.Text" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Połączyć</value>
+  <data name="BtnImport.Text" xml:space="preserve">
+    <value>import</value>
+  </data>
+  <data name="statusStrip1.Text" xml:space="preserve">
+    <value>statusPasek1</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Laser &amp;amp; Baza danych materiałów</value>
   </data>
 </root>
