@@ -124,7 +124,7 @@
     <value>Anuluj</value>
   </data>
   <data name="CbRedoHoming.Text" xml:space="preserve">
-    <value>Czy bazowanie [$H]</value>
+    <value>Dokonaj bazowania [$H]</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Linia #</value>
@@ -136,7 +136,9 @@
     <value>Opcje</value>
   </data>
   <data name="LblBrief.Text" xml:space="preserve">
-    <value>Ta funkcja umożliwia uruchamianie zadania od określonej linii, pomijając wszelkie poprzednie ruchy. LaserGRBL oblicza dokładną pozycję i stan, a następnie ustawia maszynę we właściwym stanie.</value>
+    <value>Ta funkcja umożliwia uruchamianie zadania od określonej linii, 
+	pomijając wszelkie poprzednie ruchy. LaserGRBL oblicza dokładną pozycję 
+	i stan, a następnie ustawia maszynę we właściwym stanie.</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Uruchom z pozycji</value>

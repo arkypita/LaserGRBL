@@ -160,7 +160,7 @@
     <value>Zaimportuj przyciski</value>
   </data>
   <data name="BoxWriteConfigWithError" xml:space="preserve">
-    <value>{0} Konfiguracja napisana z błędami {1}!</value>
+    <value>{0} Konfiguracja zapisana z błędami {1}!</value>
   </data>
   <data name="BoxExportConfigErrorTitle" xml:space="preserve">
     <value>Błąd</value>

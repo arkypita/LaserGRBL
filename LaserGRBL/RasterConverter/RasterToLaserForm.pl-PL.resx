@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="TpPreview.Text" xml:space="preserve">
-    <value>Prapremiera</value>
+    <value>Podgląd zmian</value>
   </data>
   <data name="TpOriginal.Text" xml:space="preserve">
     <value>Oryginał</value>
@@ -250,7 +250,7 @@
     <value>Zmień rozmiar</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Biały klip</value>
+    <value>Wypełnianie</value>
   </data>
   <data name="GbParameters.Text" xml:space="preserve">
     <value>Parametry</value>

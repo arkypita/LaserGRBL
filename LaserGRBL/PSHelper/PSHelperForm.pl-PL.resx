@@ -117,43 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
-    <value>wpisz gkod tutaj</value>
+  <data name="BtnApply.Text" xml:space="preserve">
+    <value>Zastosować</value>
   </data>
-  <data name="LblProgress.Text" xml:space="preserve">
-    <value>Postęp</value>
+  <data name="LblPower.Text" xml:space="preserve">
+    <value>Moc</value>
   </data>
-  <data name="LblFilename.Text" xml:space="preserve">
-    <value>Nazwa pliku</value>
+  <data name="LblModel.Text" xml:space="preserve">
+    <value>Model Lasera</value>
   </data>
-  <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Otwórz plik</value>
+  <data name="LblMaterial.Text" xml:space="preserve">
+    <value>Materiał</value>
   </data>
-  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Uruchom program</value>
+  <data name="LblThickness.Text" xml:space="preserve">
+    <value>Grubość</value>
   </data>
-  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
-    <value>Wykonać wiele przejść</value>
+  <data name="LblAction.Text" xml:space="preserve">
+    <value>Akcja</value>
   </data>
-  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>Przerwanie programu</value>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Przejścia</value>
   </data>
-  <data name="LblEmulator.Text" xml:space="preserve">
-    <value>Emulator</value>
+  <data name="LblSpeed.Text" xml:space="preserve">
+    <value>Prędkość</value>
   </data>
-  <data name="LblComPort.Text" xml:space="preserve">
-    <value>COM</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Sugerowane ustawienia</value>
   </data>
-  <data name="LblBaudRate.Text" xml:space="preserve">
-    <value>Baud</value>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Anuluj</value>
   </data>
-  <data name="LblAddress.Text" xml:space="preserve">
-    <value>URL</value>
-  </data>
-  <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Emulowany Grbl v1.1#</value>
-  </data>
-  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Połączyć</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Wybierz konfigurację</value>
   </data>
 </root>

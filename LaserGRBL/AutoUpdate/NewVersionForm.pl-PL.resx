@@ -121,7 +121,8 @@
     <value>0.0.0</value>
   </data>
   <data name="TxtHeader.Text" xml:space="preserve">
-    <value>Znaleziono nową wersję. Zalecamy aktualizację LaserGRBL, aby skorzystać z nowych funkcji i poprawki błędów.</value>
+    <value>ZZnaleziono nową wersję. Zalecamy aktualizację LaserGRBL, 
+	aby skorzystać z nowych funkcji i poprawki błędów.</value>
   </data>
   <data name="TxtCurrentV.Text" xml:space="preserve">
     <value>Obecna wersja:</value>

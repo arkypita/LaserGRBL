@@ -148,9 +148,9 @@
     <value>Zatrzymanie posuwu</value>
   </data>
   <data name="RemoveButton.Text" xml:space="preserve">
-    <value>Przycisk Usuń </value>
+    <value>Usuń </value>
   </data>
   <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Przycisk Edytuj</value>
+    <value>Edytuj</value>
   </data>
 </root>

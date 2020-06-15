@@ -173,7 +173,8 @@ Twój laser musi obsługiwać sterowanie TTL podłączone do arduino PIN D11.
 Jeśli nie, wyłącz obsługę PWM.</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Domyślnie LaserGRBL tworzy ścieżki grawerowania w obu kierunkach głowicy laserowej. Niektóre testy wykazały, że ten tryb (który jest szybszy) daje wyniki niższej jakości. Jeśli wymagana jest maksymalna jakość wykonania, aktywuj tę opcję.</value>
+    <value>Domyślnie LaserGRBL tworzy ścieżki grawerowania w obu kierunkach głowicy laserowej. Niektóre testy wykazały, że ten tryb 
+	(który jest szybszy) daje wyniki niższej jakości. Jeśli wymagana jest maksymalna jakość wykonania, aktywuj tę opcję.</value>
   </data>
   <data name="CbUnidirectional.Text" xml:space="preserve">
     <value>Grawerowanie jednokierunkowe</value>
@@ -186,14 +187,18 @@ Jeśli nie, wyłącz obsługę PWM.</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
     <value>Maksymalna rozdzielczość dostępna w LaserGRBL wynosi 20 linii/mm (około 500 dpi), co jest wystarczającą wartością dla większości użytkowników.
-Jeśli potrzebujesz wyższej rozdzielczości, możesz włączyć „HiRes” i usunąć ten limit. Uwaga: LaserGRBL będzie potrzebował znacznie więcej zasobów!</value>
+Jeśli potrzebujesz wyższej rozdzielczości, możesz włączyć „HiRes” i usunąć ten limit. 
+Uwaga: LaserGRBL będzie potrzebował znacznie więcej zasobów!</value>
   </data>
   <data name="TpRasterImport.Text" xml:space="preserve">
     <value>Import rastrowy</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
-    <value>Bez „Continuous Jog” po naciśnięciu przycisku jog LaserGRBL wysyła żądanie Jog z ustaloną prędkością i ruchem; i impuls jest w pełni wykonywany do pozycji końcowej. Jeśli włączysz opcję „Continuous Jog”, impulsowanie jest wysyłane z myszą w dół i przerywane / przerywane z myszą w górę, więc możesz wykonywać przybliżone pozycjonowanie, ale w bardzo wygodny sposób.
-UWAGA: „Continuous Jog” działa tylko z Grbl v1.1 lub nowszym i wymaga poprawnego skonfigurowania rozmiaru tabeli w konfiguracji Grbl (Menu „Grbl” -&gt; „Konfiguracja Grbl” $130, $131, $132)</value>
+    <value>Bez „Continuous Jog” po naciśnięciu przycisku jog LaserGRBL wysyła żądanie Jog z ustaloną prędkością i ruchem; 
+	i impuls jest w pełni wykonywany do pozycji końcowej. Jeśli włączysz opcję „Continuous Jog”, impulsowanie jest wysyłane 
+	z myszą w dół i przerywane / przerywane z myszą w górę, więc możesz wykonywać przybliżone pozycjonowanie, ale w bardzo wygodny sposób.
+UWAGA: „Continuous Jog” działa tylko z Grbl v1.1 lub nowszym i wymaga poprawnego skonfigurowania rozmiaru tabeli w konfiguracji Grbl 
+(Menu „Grbl” -&gt; „Konfiguracja Grbl” $130, $131, $132)</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>LaserGRBL nie jest przeznaczony do sterowania osią Z, ale jeśli masz maszynę z 3 osiami, być może ta opcja byłaby przydatna.</value>
@@ -211,11 +216,14 @@ UWAGA: „Continuous Jog” działa tylko z Grbl v1.1 lub nowszym i wymaga popra
     <value>Czas Wyłączenia (WYŁ):  po tym czasie chlodzenia LaserGRBL wyśle polecenie wznowienia, aby kontynuować zadanie.</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
-    <value>Niektóre diody laserowe mogą stać się zbyt gorące, jeśli będą działać z maksymalną mocą przez pewien czas. Aby zapobiec przegrzaniu i przedłużyć żywotność lasera, cykl przerywania pracy można wstawić automatycznie, a podczas tej przerwy nastąpi chłodzenie.
-Jeśli aktywowane jest automatyczne chłodzenie, LaserGRBL automatycznie wyśle ​​polecenia „pauza” i „wznów” zgodnie z ustawionym czasem WŁ.-WYŁ.</value>
+    <value>Niektóre diody laserowe mogą stać się zbyt gorące, jeśli będą działać z maksymalną mocą przez pewien czas. Aby zapobiec przegrzaniu 
+	i przedłużyć żywotność lasera, cykl przerywania pracy można wstawić automatycznie, a podczas tej przerwy nastąpi chłodzenie.
+Jeśli aktywowane jest automatyczne chłodzenie, LaserGRBL automatycznie wyśle ​​polecenia „pauza” i „wznów” zgodnie z ustawionym 
+czasem WŁ.-WYŁ.</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>Czas Włączenia (WŁ): jest to maksymalny czas, przez który laser pozostanie włączony podczas procesu grawerowania. Po tym czasie LaserGRBL automatycznie wysyła polecenie przerwania zadania w celu schłodzenia lasera.</value>
+    <value>Czas Włączenia (WŁ): jest to maksymalny czas, przez który laser pozostanie włączony podczas procesu grawerowania. 
+	Po tym czasie LaserGRBL automatycznie wysyła polecenie przerwania zadania w celu schłodzenia lasera.</value>
   </data>
   <data name="CbAutoCooling.Text" xml:space="preserve">
     <value>Włącz Automatyczne chłodzenie</value>
@@ -240,7 +248,8 @@ Jeśli aktywowane jest automatyczne chłodzenie, LaserGRBL automatycznie wyśle 
   </data>
   <data name="label21.Text" xml:space="preserve">
     <value>Uwaga: ta funkcja działa tylko z wersją grbl; &gt; v1.1 z włączonym „trybem laserowym”. 
-Jeśli użyjesz automatycznego chłodzenia ze starszą wersją grbl (lub z wyłączonym „trybem laserowym”), laser nie wyłączy się podczas przerw i wypali dziurę w twojej pracy!</value>
+Jeśli użyjesz automatycznego chłodzenia ze starszą wersją grbl (lub z wyłączonym „trybem laserowym”), 
+laser nie wyłączy się podczas przerw i wypali dziurę w twojej pracy!</value>
   </data>
   <data name="TpAutoCooling.Text" xml:space="preserve">
     <value>Automatyczne chłodzenie</value>
@@ -248,7 +257,8 @@ Jeśli użyjesz automatycznego chłodzenia ze starszą wersją grbl (lub z wył�
   <data name="LblHeader.Text" xml:space="preserve">
     <value>LaserGRBL uruchamia ten GCode na początku każdego zadania.
 Możesz zmodyfikować ten kod, na przykład dodając włączniki M8, aby włączyć wentylator. 
-Tutaj możesz użyć tej samej składni przycisków niestandardowych, jeśli potrzebujesz przesunąć pewne pozycjonowanie związane z konkretnym zadaniem, które ma zostać wykonane.</value>
+Tutaj możesz użyć tej samej składni przycisków niestandardowych, jeśli potrzebujesz przesunąć 
+pewne pozycjonowanie związane z konkretnym zadaniem, które ma zostać wykonane.</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Nagłówek</value>
@@ -296,7 +306,7 @@ Zaznacz, aby włączyć.</value>
     <value>.\Sound\non-fatal.wav</value>
   </data>
   <data name="label29.Text" xml:space="preserve">
-    <value>Błąd dźwięku</value>
+    <value>Dźwięk błędu</value>
   </data>
   <data name="changeFatBtn.Text" xml:space="preserve">
     <value>Zmiana</value>
@@ -308,7 +318,7 @@ Zaznacz, aby włączyć.</value>
     <value>.\Sound\fatal.wav</value>
   </data>
   <data name="label34.Text" xml:space="preserve">
-    <value>Połącz dźwięk</value>
+    <value>Dźwięk połączenia</value>
   </data>
   <data name="changeConBtn.Text" xml:space="preserve">
     <value>Zmiana</value>
@@ -320,7 +330,7 @@ Zaznacz, aby włączyć.</value>
     <value>.\Sound\connect.wav</value>
   </data>
   <data name="label37.Text" xml:space="preserve">
-    <value>Odłącz dźwięk</value>
+    <value>Dźwięk rozłączenia</value>
   </data>
   <data name="changeDconBtn.Text" xml:space="preserve">
     <value>Zmiana</value>
@@ -354,7 +364,8 @@ Zaznacz, aby włączyć.</value>
   </data>
   <data name="label28.Text" xml:space="preserve">
     <value>Tutaj możesz ustawić dźwięk błędu dla błędów krytycznych.
-Oznacza to, że Twoje zadanie najprawdopodobniej zostało zatrzymane, a LaserGRBL nie może kontynuować operacji.
+Oznacza to, że Twoje zadanie najprawdopodobniej zostało zatrzymane, 
+a LaserGRBL nie może kontynuować operacji.
 Zaznacz, aby włączyć.</value>
   </data>
   <data name="TpSoundSettings.Text" xml:space="preserve">

@@ -133,9 +133,12 @@
     <value>Opcje Eksportu</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Jeśli musisz wyeksportować gcode, aby użyć go poza LaserGRBL, na przykład z samodzielnym kontrolerem, być może okaże się przydatne, aby móc wyeksportować kod nagłówka / folderu i kod między każdym przebiegiem.
+    <value>Jeśli musisz wyeksportować gcode, aby użyć go poza LaserGRBL, 
+	na przykład z samodzielnym kontrolerem, być może okaże się przydatne, 
+	aby móc wyeksportować kod nagłówka / folderu i kod między każdym przebiegiem.
 
-UWAGA: Jeśli eksportujesz gcode w celu ponownego załadowania do LaserGRBL, lepiej zamiast tego użyć szybkiego eksportu.</value>
+UWAGA: Jeśli eksportujesz gcode w celu ponownego załadowania do LaserGRBL, 
+lepiej zamiast tego użyć szybkiego eksportu.</value>
   </data>
   <data name="BtnSave.Text" xml:space="preserve">
     <value>Zapisz</value>
