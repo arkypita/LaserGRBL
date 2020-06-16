@@ -229,6 +229,9 @@ namespace LaserGRBL.SvgConverter
 			}
 			//else error! dimension not given
 
+			tmp.OffsetX += UserOffset.X; //add user offset for centerline
+			tmp.OffsetY += UserOffset.Y; //add user offset for centerline
+
 			for (int i = 0; i < matrixGroup.Length; i++)
 			{ matrixGroup[i] = tmp; }
 			matrixElement = tmp;
