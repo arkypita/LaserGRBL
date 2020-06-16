@@ -759,7 +759,9 @@
     <None Include="StandardMaterials.psh">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\book_addressHS.png" />
     <None Include="Resources\book_Thesaurus_32.png" />
     <EmbeddedResource Include="Autotrace\AutotraceTest.resx">
@@ -959,11 +961,17 @@
     <EmbeddedResource Include="PSHelper\PSEditorForm.it.resx">
       <DependentUpon>PSEditorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSEditorForm.pl-PL.resx">
+      <DependentUpon>PSEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSEditorForm.resx">
       <DependentUpon>PSEditorForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSHelperForm.it.resx">
+      <DependentUpon>PSHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSHelperForm.pl-PL.resx">
       <DependentUpon>PSHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSHelperForm.resx">
