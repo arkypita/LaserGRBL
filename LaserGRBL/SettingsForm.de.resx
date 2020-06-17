@@ -112,16 +112,16 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
     <value>Laser GRBL nutzt die Leistungsmodulation über den G-Code "S Befehl", um Graustufen zu erzeugen. Ihr Laser muss die TTL-Steuerung an Arduino PIN D11 unterstützen. Wenn nicht, deaktiviere bitte die PWM-Unterstützung.</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Hardware Fähigkeiten</value>
+    <value>Kopfzeile</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Einstellungen</value>
@@ -149,5 +149,230 @@
 - Synchronous: Warten Sie auf die Ausführung jedes Befehls, bevor Sie den nächsten Befehl senden [langsamer, aber sicherer].
 - RepeatOnError: wie Synchronous, aber wiederholte Befehle wenn Fehler erkannt wird [experimentell].
 </value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Einfädelmodus: Ultra-schnell, schnell, leise, langsam. [Standardeinstellung: UltraSchnell]
+Diese Einstellung wirkt sich auf die Geschwindigkeit des Sendens des Threads und die Häufigkeit der Anforderung des Statusberichts aus.
+Stellen Sie langsamere Werte ein, wenn Probleme auftreten.</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>Problem-Detektor</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>LaserGRBL kann Probleme erkennen und den Benutzer mit Informationen darüber warnen, wie diese gelöst werden können.
+Wenn deaktiviert, werden alle Probleme ohne Warnung stillschweigend verwaltet.</value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>Weiches Zurücksetzen [Strg-X]</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>Hartes Zurücksetzen [DTR+RTS]</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Wenn LaserGRBL aktiviert ist, senden Sie einen Hardreset, wenn die Verbindung zu grbl geöffnet wird. Die Position ist verloren!</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Firmware-Typ
+- Grbl: die geniale Firmware, für die LaserGRBL entwickelt wurde.
+- Smoothie [experimentell]: die Unterstützung wurde kürzlich hinzugefügt und ist noch nicht vollständig getestet.</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>Protokoll</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Standardmäßig erzeugt LaserGRBL Gravurlinien in beiden Bewegungsrichtungen des Laserkopfes. Einige Tests haben gezeigt, dass dieser Modus (der schneller ist) qualitativ schlechtere Ergebnisse liefert. Wenn die maximale Markierungsqualität gewünscht wird, aktivieren Sie diese Option.</value>
+  </data>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>Unidirektionale Gravur</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>HiRes Füllung</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Die in LaserGRBL verfügbare maximale Auflösung beträgt 20 Linien/mm (ca. 500 dpi), was für die meisten Benutzer hoch genug ist.
+Wenn Sie eine höhere Auflösung benötigen, können Sie "HiRes" aktivieren und diese Beschränkung aufheben.  Seien Sie vorsichtig: LaserGRBL wird viel mehr Ressourcen benötigen!</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>Raster importieren</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Ohne "Kontinuierlicher Jog", wenn die Jog-Taste gedrückt wird sendet LaserGRBL  die Jog-Anforderung mit festgelegter Geschwindigkeit und Bewegung und der Jog wird vollständig bis zur Endposition ausgeführt.
+Wenn Sie "Kontinuierliches Joggen" aktivieren, wird die Jogging-Anforderung mit der Maus nach unten gesendet und mit der Maus nach oben abgebrochen/unterbrochen, so dass Sie eine ungefähre Positionierung vornehmen können, jedoch auf sehr komfortable Weise.
+
+HINWEIS: "Continuous Jog" funktioniert nur mit Grbl v1.1 oder später und erfordert, dass die Tabellengröße in der Grbl-Konfiguration korrekt konfiguriert ist (Menü "Grbl" -&gt; "Grbl-Konfiguration" $130, $131, $132)
+
+Übersetzt mit www.DeepL.com/Translator (kostenlose Version)</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>LaserGRBL ist nicht für die Unterstützung der Z-Achse ausgelegt, aber wenn Sie eine 3-Achsen-Hardware haben, könnte diese Option für Sie nützlich sein.</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Z-Aufwärts/Abwärts-Steuerung anzeigen</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>Kontinuierliches Joggen</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Jog-Steuerung</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Zeit AUS: nach dieser Abkühlzeit sendet LaserGRBL einen Fortsetzungsbefehl, um den Gravurauftrag fortzusetzen.</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Einige Laserdioden können sich zu stark erwärmen, wenn sie über einen längeren Zeitraum bei höchster Leistung betrieben werden. Um eine Überhitzung der Diode zu verhindern und die Lebensdauer des Lasers zu verlängern, können Sie einige automatische Abkühlzyklen hinzufügen, die eine Pause während des Gravurprozesses einfügen.
+Wenn die automatische Kühlung aktiviert ist, sendet LaserGRBL automatisch "Feed hold" und "Job resume" entsprechend der ON-OFF-Timing-Konfiguration.
+
+Übersetzt mit www.DeepL.com/Translator (kostenlose Version)</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Zeit EIN: Dies ist die maximale Zeit, die der Laser während des Gravurprozesses eingeschaltet bleibt.
+Nach dieser Zeit sendet LaserGRBL einen automatischen Vorschubhalt, um den Laser abzukühlen.</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>Automatische Kühlung aktivieren</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>An</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>sek</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Aus</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>sek</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Warnung: Diese Funktion funktioniert nur mit grbl-Versionen &gt; v1.1 mit aktiviertem "Laser-Modus".
+Wenn Sie die automatische Kühlung mit einer älteren grbl-Version (oder mit deaktiviertem Lasermodus) verwenden, schaltet sich der Laser während der Pausen nicht ab.
+und brennt Löcher in Ihre Arbeit!</value>
+  </data>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>Automatische Kühlung</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBL wird diesen GCode vor Beginn einer Arbeit anhängen.
+Sie können diesen Code anpassen, z.B. M8 hinzufügen, um den Lüfter einzuschalten.
+
+Hier können Sie die gleiche Syntax der benutzerdefinierten Tasten verwenden, wenn Sie eine bestimmte Positionierung drücken müssen.
+die sich auf den spezifischen Auftrag bezieht, ausgeführt wird.</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Fußzeile</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Mehrere Durchläufe</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBL wird diesen GCode am Ende eines jeden Auftrags in eine Warteschlange stellen.
+Kann verwendet werden, um Ihre Graviermaschine in einen Anfangszustand zurückzuschieben, z.B. in die Nullposition
+oder das Senden von M9 zum Ausschalten des Lüfters usw.
+
+Hier können Sie die gleiche Syntax der benutzerdefinierten Schaltflächen verwenden.</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Wenn mehrere Durchläufe durchgeführt werden, schiebt LaserGRBL diesen GCode zwischen die einzelnen Durchläufe.
+Kann verwendet werden, um Z nach unten zu bewegen, um tiefere Schnitte durchzuführen.
+
+Hier können Sie die gleiche Syntax der benutzerdefinierten Tasten verwenden.</value>
+  </data>
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Hier können Sie einen anderen Sound für Erfolgsereignisse einstellen, z.B. wenn eine Arbeit beendet ist.
+Markiere zum Aktivieren.</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Hier können Sie einen weiteren Warnton einstellen.
+Dieser ertönt normalerweise bei einem schlechten GCode-Befehl , aber Ihre Maschine kann weiterarbeiten.
+Markiere zum Aktivieren.</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Warnton</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>ändern</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Sound-Datei</value>
+  </data>
+  <data name="warningSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\warning.wav</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Fehler-Ton</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>ändern</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Sound-Datei</value>
+  </data>
+  <data name="fatalSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\fatal.wav</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Ton bei Verbindung erstellen</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>ändern</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Sound-Datei</value>
+  </data>
+  <data name="connectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\connect.wav</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Ton bei Verbindung trennen</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>ändern</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Sound-Datei</value>
+  </data>
+  <data name="disconnectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\disconnect.wav</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Erfolgs Ton</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>ändern</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Sound-Datei</value>
+  </data>
+  <data name="successSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\success.wav</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Hier können Sie einen Ton für eine erfolgreiche Verbindung einstellen.
+Markiere zum Aktivieren.</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Hier können Sie einen Ton für die Trennung der Verbindung einstellen.
+Nützlich für einige WiFi-Verbindungen.
+Markiere zum Aktivieren.</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Hier können Sie bei fatalen Fehlern einen Fehlerton einstellen.
+Das bedeutet, dass Ihr Auftrag höchstwahrscheinlich abgebrochen wird und LaserGRBL die Operation nicht fortsetzen kann.
+Markiere zum Aktivieren.</value>
+  </data>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>Ton-Einstellungen</value>
+  </data>
+  <data name="SoundBrowserDialog.Filter" xml:space="preserve">
+    <value>Waveform Audio File|*.wav</value>
   </data>
 </root>

@@ -117,43 +117,60 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Schaltfläche ändern</value>
+  <data name="CbRestoreWCO.Text" xml:space="preserve">
+    <value>Startpunkt @</value>
   </data>
-  <data name="RemoveButton.Text" xml:space="preserve">
-    <value>Schaltfläche löschen</value>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="$this.ToolTipText" xml:space="preserve">
-    <value>Vorschau</value>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>abbrechen</value>
   </data>
-  <data name="BtnReset.ToolTip" xml:space="preserve">
-    <value>Grbl zurücksetzten (ctrl-x)</value>
+  <data name="CbRedoHoming.Text" xml:space="preserve">
+    <value>Wiederholen der Zielanfahrt [$H]</value>
   </data>
-  <data name="BtnResume.ToolTip" xml:space="preserve">
-    <value>fortsetzen</value>
+  <data name="LblSomeLines.Text" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="BtnUnlock.ToolTip" xml:space="preserve">
-    <value>Grbl entsperren ($X)</value>
+  <data name="RbSomeLines.Text" xml:space="preserve">
+    <value>Einige Linien vor dem Halt wieder aufnehmen</value>
   </data>
-  <data name="addCustomButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>neue Benutzer Schaltfläche</value>
+  <data name="LblLineNumber.Text" xml:space="preserve">
+    <value>Linien #</value>
   </data>
-  <data name="BtnStop.ToolTip" xml:space="preserve">
-    <value>anhalten</value>
+  <data name="RbFromSpecific.Text" xml:space="preserve">
+    <value>Fortsetzen ab einer bestimmten Zeile</value>
   </data>
-  <data name="MnLockButton.Text" xml:space="preserve">
-    <value>Position sperren (zum Neuordnen anklicken)</value>
+  <data name="RbFromBeginning.Text" xml:space="preserve">
+    <value>Noch einmal von vorne anfangen (sicher)</value>
   </data>
-  <data name="exportCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
-    <value>exporiere Benutzer Schaltflächen</value>
+  <data name="LblOptions.Text" xml:space="preserve">
+    <value>Optionen</value>
   </data>
-  <data name="importCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
-    <value>imporiere Benutzer Schaltflächen</value>
+  <data name="LblBegin.Text" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="BtnHoming.ToolTip" xml:space="preserve">
-    <value>Startpunkt ($H)</value>
+  <data name="RbFromSent.Text" xml:space="preserve">
+    <value>Fortfahren von dem letzten gesendeten Kommando</value>
   </data>
-  <data name="BtnZeroing.ToolTip" xml:space="preserve">
-    <value>setze Null Punkt (G92)</value>
+  <data name="LblSent.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LblBrief.Text" xml:space="preserve">
+    <value>LaserGRBL kann diese Arbeit wieder von vorne beginnen oder versuchen, von der letzten bekannten Position aus fortzufahren.
+Wenn es nicht möglich ist, die beste Wiederaufnahmeposition zu bestimmen, überlassen wir Ihnen die endgültige Entscheidung.
+Letzte Geschwindigkeit, Leistung und Laserzustand werden automatisch wiederhergestellt.</value>
+  </data>
+  <data name="LblCause.Text" xml:space="preserve">
+    <value>Ursache:</value>
+  </data>
+  <data name="TxtCause.Text" xml:space="preserve">
+    <value>unbekannt</value>
+  </data>
+  <data name="LblDetected.Text" xml:space="preserve">
+    <value>LaserGRBL hat festgestellt, dass der letzte Auftrag nicht abgeschlossen wurde!</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Job wieder aufnehmen</value>
   </data>
 </root>

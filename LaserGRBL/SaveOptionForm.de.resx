@@ -117,43 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Schaltfläche ändern</value>
+  <data name="CBHeader.Text" xml:space="preserve">
+    <value>Kopfzeile exportieren</value>
   </data>
-  <data name="RemoveButton.Text" xml:space="preserve">
-    <value>Schaltfläche löschen</value>
+  <data name="CBFooter.Text" xml:space="preserve">
+    <value>Fußzeile exportieren</value>
   </data>
-  <data name="$this.ToolTipText" xml:space="preserve">
-    <value>Vorschau</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Durchläufe</value>
   </data>
-  <data name="BtnReset.ToolTip" xml:space="preserve">
-    <value>Grbl zurücksetzten (ctrl-x)</value>
+  <data name="CBBetween.Text" xml:space="preserve">
+    <value>G-Code zwischen Durchläufen exportieren</value>
   </data>
-  <data name="BtnResume.ToolTip" xml:space="preserve">
-    <value>fortsetzen</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Optionen exportieren</value>
   </data>
-  <data name="BtnUnlock.ToolTip" xml:space="preserve">
-    <value>Grbl entsperren ($X)</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Wenn Sie den gcode exportieren müssen, um ihn außerhalb von LaserGRBL zu verwenden, z.B. für einem Standalone Kontroller, werden Sie es vielleicht nützlich finden, den Kopf-/Fußzeilencode und den Code zwischen den einzelnen Durchläufen exportieren zu können.
+
+Hinweis: Wenn Sie G-Code exportieren, um ihn innerhalb von LaserGBRL wieder zu laden, ist es besser, stattdessen den schnellen Export zu verwenden.
+
+Übersetzt mit www.DeepL.com/Translator (kostenlose Version)</value>
   </data>
-  <data name="addCustomButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>neue Benutzer Schaltfläche</value>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>speichern</value>
   </data>
-  <data name="BtnStop.ToolTip" xml:space="preserve">
-    <value>anhalten</value>
-  </data>
-  <data name="MnLockButton.Text" xml:space="preserve">
-    <value>Position sperren (zum Neuordnen anklicken)</value>
-  </data>
-  <data name="exportCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
-    <value>exporiere Benutzer Schaltflächen</value>
-  </data>
-  <data name="importCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
-    <value>imporiere Benutzer Schaltflächen</value>
-  </data>
-  <data name="BtnHoming.ToolTip" xml:space="preserve">
-    <value>Startpunkt ($H)</value>
-  </data>
-  <data name="BtnZeroing.ToolTip" xml:space="preserve">
-    <value>setze Null Punkt (G92)</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>G-code Optionen speichern</value>
   </data>
 </root>

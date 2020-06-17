@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxAutoUpdateFailed" xml:space="preserve">
     <value>Automatisches Update fehlgeschlagen!
@@ -182,7 +182,7 @@ Bitte laden Sie die neue Version manuell von lasergrbl herunter.</value>
     <value>Optisch Korrekt</value>
   </data>
   <data name="FormulaSimpleAverage" xml:space="preserve">
-    <value>Einfache Durchschnitt</value>
+    <value>Einfacher Durchschnitt</value>
   </data>
   <data name="FormulaWeightAverage" xml:space="preserve">
     <value>Gewicht Durchschnitt</value>
@@ -237,5 +237,95 @@ Bitte laden Sie die neue Version manuell von lasergrbl herunter.</value>
   </data>
   <data name="MainFormProjectedTime" xml:space="preserve">
     <value>Geplante Zeit:</value>
+  </data>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>Klicken Sie hier mit der rechten Maustaste, um benutzerdefinierte Schaltflächen hinzuzufügen</value>
+  </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>Neustart erforderlich</value>
+  </data>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>Bestätigung</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} Konfiguration erfolgreich gelesen!</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>Benutzerdefinierte  Schaltfläche  importieren</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} Konfiguration mit {1} Fehlern geschrieben!</value>
+  </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>Zwischengespeicherte Werte anzeigen...</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>Bitte geben Sie einen Tooltip-Text an</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>Ein Neustart ist erforderlich, um Änderungen des Firmware-Typs anzuwenden. Jetzt neu starten?</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>Keine Änderungen... nichts zu schreiben!</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>Bitte GCode-Befehle angeben</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>Unbekannte Position</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>Geschwindigkeit:</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} Config erfolgreich geschrieben!</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>Fehlendes Feld</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>Benutzerdefinierte Schaltfläche löschen</value>
+  </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>Dateiübertragung läuft. Verbindung trotzdem trennen?</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>Dateiübertragung läuft. Trotzdem beenden?</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>Schritt:</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>Es gibt einige Änderungen, die nicht angewandt wurden.
+Möchten Sie die Konfiguration neu schreiben?</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>Verbindung trennen</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>Aktuelle Schaltflächen entfernen? Wählen Sie Ja zum Entfernen, Nein zum Behalten.</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>verbinden</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>Dieser Dateityp wird nicht unterstützt.</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>Änderungen entdeckt!</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>Fehler beim Lesen der Konfiguration!</value>
+  </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>Es scheint, dass Grbl die aktuelle Position nicht mehr bekannt ist.
+Ohne das Homing-Verfahren ($H) ist das Ergebnis möglicherweise nicht zuverlässig.
+Trotzdem weitermachen?</value>
+  </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie die ausgewählte Schaltfläche löschen wollen?</value>
+  </data>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>Aktuelle Tätigkeit abbrechen?</value>
   </data>
 </root>
