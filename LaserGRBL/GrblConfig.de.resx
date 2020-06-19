@@ -117,43 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Schaltfläche ändern</value>
+  <data name="BtnWrite.Text" xml:space="preserve">
+    <value>schreiben</value>
   </data>
-  <data name="RemoveButton.Text" xml:space="preserve">
-    <value>Schaltfläche löschen</value>
+  <data name="BtnRead.Text" xml:space="preserve">
+    <value>aktualisieren</value>
   </data>
-  <data name="$this.ToolTipText" xml:space="preserve">
-    <value>Vorschau</value>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>schließen</value>
   </data>
-  <data name="BtnReset.ToolTip" xml:space="preserve">
-    <value>Grbl zurücksetzten (ctrl-x)</value>
+  <data name="LblConnect.Text" xml:space="preserve">
+    <value>Lesen und Schreiben ist nur möglich wenn eine Verbindung besteht und im Leelauf ist.</value>
   </data>
-  <data name="BtnResume.ToolTip" xml:space="preserve">
-    <value>fortsetzen</value>
+  <data name="BtnExport.Text" xml:space="preserve">
+    <value>exportieren</value>
   </data>
-  <data name="BtnUnlock.ToolTip" xml:space="preserve">
-    <value>Grbl entsperren ($X)</value>
+  <data name="BtnImport.Text" xml:space="preserve">
+    <value>importieren</value>
   </data>
-  <data name="addCustomButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>neue Benutzer Schaltfläche</value>
+  <data name="LblAction.Text" xml:space="preserve">
+    <value>Aktion</value>
   </data>
-  <data name="BtnStop.ToolTip" xml:space="preserve">
-    <value>anhalten</value>
+  <data name="DollarNumber.HeaderText" xml:space="preserve">
+    <value>#</value>
   </data>
-  <data name="MnLockButton.Text" xml:space="preserve">
-    <value>Position sperren (zum Neuordnen anklicken)</value>
+  <data name="Parameter.HeaderText" xml:space="preserve">
+    <value>Parameter</value>
   </data>
-  <data name="exportCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
-    <value>exporiere Benutzer Schaltflächen</value>
+  <data name="Value.HeaderText" xml:space="preserve">
+    <value>Wert</value>
   </data>
-  <data name="importCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
-    <value>imporiere Benutzer Schaltflächen</value>
+  <data name="Unit.HeaderText" xml:space="preserve">
+    <value>Einheit</value>
   </data>
-  <data name="BtnHoming.ToolTip" xml:space="preserve">
-    <value>Startpunkt ($H)</value>
+  <data name="Description.HeaderText" xml:space="preserve">
+    <value>Beschreibung</value>
   </data>
-  <data name="BtnZeroing.ToolTip" xml:space="preserve">
-    <value>setze Null Punkt (G92)</value>
+  <data name="Number.HeaderText" xml:space="preserve">
+    <value>Nummer</value>
+  </data>
+  <data name="GB.Text" xml:space="preserve">
+    <value>Grbl $$ Konfiguration</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Grbl</value>
   </data>
 </root>
