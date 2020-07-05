@@ -142,7 +142,7 @@
     <value>速度</value>
   </data>
   <data name="ColCycles.HeaderText" xml:space="preserve">
-    <value>腳步</value>
+    <value>循環次數</value>
   </data>
   <data name="ColRemarks.HeaderText" xml:space="preserve">
     <value>注意</value>
