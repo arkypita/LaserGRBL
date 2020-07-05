@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GbSize.Text" xml:space="preserve">
+    <value>圖像大小和位置 [mm]</value>
+  </data>
+  <data name="GbSpeed.Text" xml:space="preserve">
+    <value>速度</value>
+  </data>
+  <data name="GbLaser.Text" xml:space="preserve">
+    <value>激光選項</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>偏移</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>大小</value>
+  </data>
+  <data name="CbAutosize.Text" xml:space="preserve">
+    <value>自動調整大小</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="BtnDPI.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAASXSURBVEhLrZVt
+        UFRVGMd32ru7OjXT1JTThyKEWt6SonQIhxBaZF/u7rKAu8suyJu7oEOCu7wvlEGgfig1m/rQZB9smsk+
+        WAwY4O4qllOSJVmZJKI5pGIBM8UM8v7vnHPvcjeyb56Z/9zzPPec8/zuOc95rkxm7DPJ+MCkzBC8c+8V
+        +H/xgQkZ7+dltKPIvwhl4RUot16Dsug6lMWjUJbcILoFVekY0W2oyv4QRfrEVhK/suQmGUvG0fF03tar
+        wjoFv0LhvARF/s9Q2H+EwjYIhfU7KLYMgMv9GlzOGciz+yEz+CcIgH9WWThCJv8mBS4lgWmgsj+h2jZB
+        NAmVK0zUR98RIAEkBEHWoBAFw1A6h6Bw/EIgfiIAPxCA7wnAt+DyvmEAnOU0aGwBgEyM0zWgoLIdOa7X
+        oXfWwFzaAkdlB9Kzy6HQH0NmbjmsFa14zHECKvdfDCLZ2gpLcS3i+GY8ZWiHfUcb7NvbEKNvwdOGNlhK
+        m6HLryaqQm5pI6xldSgor0Pky7XhAIFZSp+S14i7tYGBAaze0ICu473Mrmx8C6sKhxBl6MDwlWvMl2Zt
+        QiLfwPq0rTfX4Tm+RrT+25L0O1cC/I4NFgFgaWkJeocHGc7d0DiakGnz4MHsY7C7fez9/Pw88bfg3cNH
+        mX1paBhR5oNIMNQzm7Zn+VrEZnlFC3BW+JBsqUWqpZqtp870rgAgZ5hkFgAWFxcRv6kYEcZDiNB2IMpE
+        vnj7NB629uDQ+x+zMbOzs+xJYV40VrIciNNJAPHaGkRrPKIFpBrdiMhswRNpHkSmV4MzB8DRJAwHSOSl
+        I5iensbk5CTThat/E4A7TDGmvRgbuy2OAjyvHcRq+3l2G9RZdaIXUG/2knOux8zMDLPpk641NTWFU/2n
+        oXjpbQJwMvwICIBROsPBwUH4/X4Eg0FYi14hCTcOVfkU1CsAdrUcgMp2jt2AWG2t6AViNnvwpKaefQht
+        4+PjGBkZYerp7QWX9g7ZhWA4wCheMAsAc3NzeHwjyXy+i2T/Z3jA0sOu3kO5XTjw3hE2JnQE9Lle52Z3
+        f51eAojN8mBthgcLCwvMTtzkwKOafViT5kNk3gfg+OPgTP4QAL2G15GcI+1AuXcPWj8ZRbZ7L8zFPkTo
+        9sBSJASggBsN2/BpZ4DZQ0OXEa3djSSjBBCv3YXojCrRAp7nq5bvPpd9iuWA3NhHAE6IAKR4pOZJAOGN
+        buMjCSZ0dvcwu6KmHau2nIFa34wbN28xn8bhQ9G+s6xP2zpdNdSanaIFaMveJMG/lIKb+iDnvwgDKLiM
+        Z4yvkq/0Lsvm8qGs+g0YbS7cn74fJY0fwuZuxhrzEaHckkqXktuEvJI6JPA+pLiPwu4Sis3azHpEZJGi
+        5GrA/sPd0Oz4aDk4JwaXG7olAFa3yYK0hlMYVkppkJCozUTeOWmdD5VZUutpqbVfEOt9qNyeFWv+V+K2
+        n1ze9lBwub4zBBCY4KxkMl3McVFY2EGBwsR8VOR9eFA7qfG28+KP5hwJLP1shC3vZ9lOE05u7BWDd5Hg
+        n+M+IpneP053gKcQd/1l3lP5/y0a3BTU/wOqQun/rUfNRgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="BtnDPI.ToolTip" xml:space="preserve">
+    <value>從Exif信息加載DPI</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>285, 64</value>
+  </data>
+  <data name="LblBorderTracing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="LblBorderTracing.Text" xml:space="preserve">
+    <value>邊框速度</value>
+  </data>
+  <data name="LblLinearFilling.Text" xml:space="preserve">
+    <value>填充速度</value>
+  </data>
+  <data name="LblBorderTracingmm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 5</value>
+  </data>
+  <data name="IIBorderTracing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 3</value>
+  </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 49</value>
+  </data>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="IILinearFilling.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 25</value>
+  </data>
+  <data name="LblLinearFillingmm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 27</value>
+  </data>
+  <data name="LblLinearFilling.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>279, 66</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>285, 86</value>
+  </data>
+  <data name="BtnModulationInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
+    <value>Grbl支持可變的輸出功率以產生灰度。
+這要求您的硬件在激光器上具有TTL或PWM控制。
+
+點擊這裡查看更多信息...</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>激光關閉</value>
+  </data>
+  <data name="LblSmin.Text" xml:space="preserve">
+    <value>最小S值</value>
+  </data>
+  <data name="LblSmax.Text" xml:space="preserve">
+    <value>最大S值</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>激光打開</value>
+  </data>
+  <data name="BtnOnOffInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
+        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
+        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
+        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
+        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
+        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
+        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
+        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
+        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
+        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
+    <value>Laser ON：M3是標準模式。
+Grbl v1.1版本 支持新的 M4“動態激光功率模式”
+激光關閉：僅支持M5命令。
+"M4"需要在Grbl 韌體參數設定$ 32 = 1
+點擊這裡查看更多信息...</value>
+  </data>
+  <data name="CBLaserON.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 3</value>
+  </data>
+  <data name="CBLaserOFF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>158, 3</value>
+  </data>
+  <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>279, 49</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>285, 69</value>
+  </data>
+  <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 3</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="BtnCreate.Text" xml:space="preserve">
+    <value>創建</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>目標圖像</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>寬</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>X軸</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>高</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Y軸</value>
+  </data>
+  <data name="BtnPSHelper.ToolTip" xml:space="preserve">
+    <value>打開激光&amp;材料數據庫</value>
+  </data>
+</root>
