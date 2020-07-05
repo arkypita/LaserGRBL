@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BoxAutoUpdateFailed" xml:space="preserve">
+    <value>自動更新失敗！
+請從lasergrbl手動下載新版本。</value>
+  </data>
+  <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
+    <value>更新需要管理員權限!</value>
+  </data>
+  <data name="BoxAutoUpdateResult" xml:space="preserve">
+    <value>更新結果</value>
+  </data>
+  <data name="BoxAutoUpdateSuccess" xml:space="preserve">
+    <value>更新成功!</value>
+  </data>
+  <data name="BoxConnectErrorTitle" xml:space="preserve">
+    <value>無法連接到設備</value>
+  </data>
+  <data name="BoxExportConfigError" xml:space="preserve">
+    <value>導出配置時出錯!</value>
+  </data>
+  <data name="BoxExportConfigErrorTitle" xml:space="preserve">
+    <value>錯誤</value>
+  </data>
+  <data name="BoxExportConfigFileNotFound" xml:space="preserve">
+    <value>文件不存在!</value>
+  </data>
+  <data name="BoxExportConfigSuccess" xml:space="preserve">
+    <value>{0} 成功導出配置!</value>
+  </data>
+  <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
+    <value>成功</value>
+  </data>
+  <data name="BoxImportConfigFileError" xml:space="preserve">
+    <value>讀取文件時出錯!</value>
+  </data>
+  <data name="BoxImportConfigWithError" xml:space="preserve">
+    <value>{0} 配置導入，出現 {1} 錯誤！</value>
+  </data>
+  <data name="BoxImportConfigWithoutError" xml:space="preserve">
+    <value>{0} 配置導入成功!</value>
+  </data>
+  <data name="CustomButtonEdit" xml:space="preserve">
+    <value>編輯按鈕</value>
+  </data>
+  <data name="CustomButtonRemove" xml:space="preserve">
+    <value>刪除按鈕</value>
+  </data>
+  <data name="DirectionDiagonal" xml:space="preserve">
+    <value>對角線</value>
+  </data>
+  <data name="DirectionHorizontal" xml:space="preserve">
+    <value>水平</value>
+  </data>
+  <data name="DirectionNone" xml:space="preserve">
+    <value>沒有</value>
+  </data>
+  <data name="DirectionVertical" xml:space="preserve">
+    <value>垂直</value>
+  </data>
+  <data name="FormulaCustom" xml:space="preserve">
+    <value>自定義</value>
+  </data>
+  <data name="FormulaOpticalCorrect" xml:space="preserve">
+    <value>光學矯正</value>
+  </data>
+  <data name="FormulaSimpleAverage" xml:space="preserve">
+    <value>簡單平均計算</value>
+  </data>
+  <data name="FormulaWeightAverage" xml:space="preserve">
+    <value>加權平均計算</value>
+  </data>
+  <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
+    <value>平滑 (HQ Bicubic)</value>
+  </data>
+  <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
+    <value>尖銳 (Nearest Neighbor)</value>
+  </data>
+  <data name="LanguageRequireRestart" xml:space="preserve">
+    <value>需要重新啟動</value>
+  </data>
+  <data name="LanguageRequireRestartNow" xml:space="preserve">
+    <value>該軟體必須重新啟動。 現在重啟嗎？</value>
+  </data>
+  <data name="MacStatusAlarm" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="MacStatusCheck" xml:space="preserve">
+    <value>檢查</value>
+  </data>
+  <data name="MacStatusConnecting" xml:space="preserve">
+    <value>連接中</value>
+  </data>
+  <data name="MacStatusDisconnected" xml:space="preserve">
+    <value>斷開</value>
+  </data>
+  <data name="MacStatusDoor" xml:space="preserve">
+    <value>通過</value>
+  </data>
+  <data name="MacStatusHold" xml:space="preserve">
+    <value>停止了</value>
+  </data>
+  <data name="MacStatusHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="MacStatusIdle" xml:space="preserve">
+    <value>空閒</value>
+  </data>
+  <data name="MacStatusJog" xml:space="preserve">
+    <value>定位</value>
+  </data>
+  <data name="MacStatusRun" xml:space="preserve">
+    <value>運行</value>
+  </data>
+  <data name="MacStatusUnknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="MainFormEstimatedTime" xml:space="preserve">
+    <value>預計的時間：</value>
+  </data>
+  <data name="MainFormProjectedTime" xml:space="preserve">
+    <value>預計時間：</value>
+  </data>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>右鍵單擊此處添加自定義按鈕</value>
+  </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>需要重啟</value>
+  </data>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>確認書</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} 配置正確讀取！</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>導入按鈕</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} 配置保存有錯誤 {1}!</value>
+  </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>顯示以前的值</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>輸入提示文字</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>需要重新啟動電腦。 現在重啟嗎？</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>沒有要保存的更改！</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>需要一個命令</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>位置未知</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>速度：</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} 配置成功保存！</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>遺失領域</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>刪除自定義按鈕</value>
+  </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>正在進行文件傳輸。 還是要斷開連接？</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>正在進行文件傳輸。 還是要退出嗎？</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>步：</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>有一些尚未應用的更改。
+您要重寫設置嗎？</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>斷開</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>刪除當前按鈕？ 是，刪除，不保留。</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>連接</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>不支持該文件。</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>檢測到更改！</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>讀取配置錯誤！</value>
+  </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>顯然，Grbl無法識別當前位置。
+如果沒有返回起始點 ($H) 的過程，有可能是不預期的結果。
+還是繼續嗎？</value>
+  </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>您確定要刪除所選按鈕嗎？</value>
+  </data>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>中止當前工作？</value>
+  </data>
+</root>
