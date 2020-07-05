@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="CbRedoHoming.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 16</value>
+  </data>
+  <data name="CbRedoHoming.Text" xml:space="preserve">
+    <value>歸位  [$H]</value>
+  </data>
+  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>502, 55</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>409, 1</value>
+  </data>
+  <data name="RbFromSpecific.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 23</value>
+  </data>
+  <data name="RbFromSpecific.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 28</value>
+  </data>
+  <data name="RbFromSpecific.Text" xml:space="preserve">
+    <value>從特定行數運行</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>407, 18</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>選項</value>
+  </data>
+  <data name="UdSpecific.Location" type="System.Drawing.Point, System.Drawing">
+    <value>412, 26</value>
+  </data>
+  <data name="LblBrief.Size" type="System.Drawing.Size, System.Drawing">
+    <value>347, 24</value>
+  </data>
+  <data name="LblBrief.Text" xml:space="preserve">
+    <value>此功能允許從特定行開始運行作業，跳過之前的任何動作。
+LaserGRBL計算精確的位置和狀態，並將雕刻機置於正確的狀態。</value>
+  </data>
+  <data name="PBWarn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAO6SURBVFhHxZbLT1NBFMbPQqNu
+        lY3+B0aNUdfGFejeGBe4MhBcEhIeJTwC5VHe7zeFAqW2IiQsYAE0sbWViCRujAkxbmBh3AgqCbrQ6/dN
+        esntZWhvjcXFL/feuTNzvjnnzJkRwzD+K9rGk0QqKyszoqKiQurq6mR2dvbU4OCga2BgoDIQCJxubm6W
+        6upqqampkdraWsdIWVlZRpSWlkpVVZVMTEwU9PT07Hd3d+9PTk4Wud1uKSkpkeLiYvV0irS1tWVES0uL
+        NDQ0XO3o6Pjd29trkPb2dgMeuL6wsCArKyuyvLzsGJmamnLM9PS0jI+PS19fX7y/v18ZJ/CC0dnZub67
+        u6uNcyrUipzQ2tqqPADDBRBwaJwgFAY8YoRCoSeRSETW1tZkdXXVEeLxeBzBJGtsbDyP1e7ZBfCbIpqa
+        mr7ifw4SU5CgjpDR0dG0eL1eGRkZERgL2I1b4T+EIsj+fr9fG0Y7avJUIMOViKGhoVxMblhjb4cCGIqx
+        sbF7QI1nzqRCELeUzM/PU8BpGP+QavVWEIaPXV1dZ/EU7BCBqGMRKtVBdXQ734eHh6sxod3Qd8T9AbgP
+        vln/0VNoq1tcXFRbbWlp6VgEnbVQOSYj12D8l2b168Ds8zLRpmBCUnA4HL6xsbEhsVhM4vG4Fq1xwsxH
+        uWUco9iGKr5WIyAOTAEvEm0K9qUAuJj1grtHlV2WcDsCtVowASd+yAnxbTVs8hqYAmKJtiQSQh4xjHNz
+        cxIMBo/AwpIEBpnvFzH4C41rVk/SCuBYrHIvGo1e0lVBwrqeRH19vap8EODVTWohrQDC8OG09G1ubqpc
+        sHOk4jFeGJQLAdoJLTgSgKqoagOO8bs8TcvLy5OQmZmZJBCvM3DdO91kNl4BU0Ak0aaFIQTvkdzneKZw
+        h5kc7ntWO5522PNuKj4m7lbizBcmLN6TdoEOehSFycMDjSJM1OWC8LYDw5dxQBxwC6USkEjMPUyah0nz
+        0LZr76MD/X+g/xXa483K5XKJijnhjQYuCdOwg9X/FfQCbERYZ8xKy0NGgWR5rBv0r8FOM1CeC3d2dmRr
+        a0vMZLgAdZ90A1LA+l8EChPvuj5aEMLPqLA5ygNMCsTcn6nbMclbPM1d8MZsTwftIA9YIYP4VgJuI/G0
+        ndPwExQAhu4g0eYIJjHs8gp3h8ngRwiylng6aIsVEjeip+Lz+UKogClvOtmAWx2ef8aafxNs0y26jtkC
+        XtjGdrzFysdqlo/ECOHHInieZWiDtvJZD7RH5EmibTw5DPkDqNV2ZjoWTs0AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>運行指定位置行數</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>行數 #</value>
+  </data>
+</root>
