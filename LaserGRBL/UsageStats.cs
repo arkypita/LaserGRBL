@@ -53,7 +53,7 @@ namespace LaserGRBL
         private TimeSpan UsageTime = TimeSpan.Zero;
 
         private ComWrapper.WrapperType Wrapper;
-        private Firmware Firmware;
+        private String Firmware;
         private UsageCounters Counters;
 
         private static UsageStats data;
@@ -94,12 +94,17 @@ namespace LaserGRBL
                 UsageTime = UsageTime.Add(Tools.TimingBase.TimeFromApplicationStartup());
 
             Wrapper = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
-            Firmware = Settings.GetObject("Firmware Type", Firmware.Grbl);
+
+			LaserGRBL.Firmware fw = Settings.GetObject("Firmware Type", LaserGRBL.Firmware.Grbl);
+			if (fw == LaserGRBL.Firmware.Grbl && Core.IsOrturBoard)
+				Firmware = "Ortur";
+			else
+				Firmware = fw.ToString();
 
             if (Counters == null) Counters = new UsageCounters();
             Counters.Update(Core.UsageCounters);
 
-            if (mustsend)
+            if (true)
             {
                 try
                 {
@@ -138,7 +143,7 @@ namespace LaserGRBL
                     { "fLine2Line", Counters.Line2Line.ToString() },
                     { "fSvgFile", Counters.SvgFile.ToString() },
                     { "fCenterline", Counters.Centerline.ToString() },
-                    { "firmware", Firmware.ToString() },
+                    { "firmware", Firmware },
                     { "osinfo", Tools.OSHelper.GetOSInfo() },
                     { "bitflag", Tools.OSHelper.GetBitFlag().ToString() },
                 };
