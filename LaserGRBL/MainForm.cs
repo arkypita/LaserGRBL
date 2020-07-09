@@ -760,6 +760,11 @@ namespace LaserGRBL
 		{
 			System.Diagnostics.Process.Start(@"https://lasergrbl.com/orturwebsite/");
 		}
+
+		private void traditionalChineseToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("zh-TW"));
+		}
 	}
 
 

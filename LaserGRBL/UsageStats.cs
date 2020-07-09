@@ -104,7 +104,7 @@ namespace LaserGRBL
             if (Counters == null) Counters = new UsageCounters();
             Counters.Update(Core.UsageCounters);
 
-            if (true)
+            if (mustsend)
             {
                 try
                 {
