@@ -5,7 +5,7 @@
 #define MyAppVersion "3.5.4"
 #define MyAppVersionName "Rhyhorn"
 #define MyAppPublisher "LaserGRBL"
-#define MyAppURL "http://lasergrbl.com"
+#define MyAppURL "https://lasergrbl.com"
 #define MyAppExeName "LaserGRBL.exe"
 
 [Setup]
