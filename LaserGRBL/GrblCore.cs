@@ -1504,6 +1504,8 @@ namespace LaserGRBL
 								ManageRealTimeStatus(rline);
 							else if (IsWelcomeMessage(rline))
 								ManageWelcomeMessage(rline);
+							else if (IsOrturWelcomeMessage(rline))
+								ManageOrturWelcomeMessage(rline);
 							else
 								ManageGenericMessage(rline);
 						}
@@ -1526,9 +1528,14 @@ namespace LaserGRBL
             return rline.StartsWith("Grbl ");
         }
 
-        // Return true if message received start with < and finish by >
-        // Overrided by Marlin
-        protected virtual bool IsRealtimeStatusMessage(string rline)
+		private bool IsOrturWelcomeMessage(string rline)
+		{
+			return rline.StartsWith("Ortur ");
+		}
+
+		// Return true if message received start with < and finish by >
+		// Overrided by Marlin
+		protected virtual bool IsRealtimeStatusMessage(string rline)
 		{
 			return rline.StartsWith("<") && rline.EndsWith(">");
 		}
@@ -1561,6 +1568,28 @@ namespace LaserGRBL
 				Logger.LogMessage("VersionInfo", "Ex on [{0}] message", rline);
 				Logger.LogException("VersionInfo", ex);
 			}
+			mSentPtr.Add(new GrblMessage(rline, false));
+		}
+
+		private void ManageOrturWelcomeMessage(string rline)
+		{
+			//Grbl vX.Xx ['$' for help]
+			try
+			{
+				//int maj = int.Parse(rline.Substring(5, 1));
+				//int min = int.Parse(rline.Substring(7, 1));
+				//char build = rline.Substring(8, 1).ToCharArray()[0];
+				//GrblVersion = new GrblVersionInfo(maj, min, build);
+
+				//DetectUnexpectedReset();
+				//OnStartupMessage();
+			}
+			catch (Exception ex)
+			{
+				//Logger.LogMessage("VersionInfo", "Ex on [{0}] message", rline);
+				//Logger.LogException("VersionInfo", ex);
+			}
+			//mSentPtr.Add(new GrblMessage(rline, false));
 			mSentPtr.Add(new GrblMessage(rline, false));
 		}
 
