@@ -96,6 +96,12 @@ namespace LaserGRBL
 			char mBuild;
 			bool mOrtur;
 
+			public GrblVersionInfo(int major, int minor, char build, string orturwelcome, string orturversion)
+			{
+				mMajor = major; mMinor = minor; mBuild = build;
+				mOrtur = orturwelcome != null;
+			}
+
 			public GrblVersionInfo(int major, int minor, char build)
 			{ mMajor = major; mMinor = minor; mBuild = build; }
 
@@ -144,7 +150,7 @@ namespace LaserGRBL
 			public override bool Equals(object obj)
 			{
 				GrblVersionInfo v = obj as GrblVersionInfo;
-				return v != null && this.mMajor == v.mMajor && this.mMinor == v.mMinor && this.mBuild == v.mBuild;
+				return v != null && this.mMajor == v.mMajor && this.mMinor == v.mMinor && this.mBuild == v.mBuild && this.mOrtur == v.mOrtur;
 			}
 
 			public override int GetHashCode()
@@ -225,6 +231,8 @@ namespace LaserGRBL
 		private System.Collections.Generic.Queue<GrblCommand> mQueuePtr; //puntatore a coda di quelli da mandare (normalmente punta a mQueue, salvo per import/export configurazione)
 		private System.Collections.Generic.List<IGrblRow> mSentPtr; //puntatore a lista di quelli mandati (normalmente punta a mSent, salvo per import/export configurazione)
 
+		private string mOrturWelcomeSeen = null;
+		private string mOrturVersionSeen = null;
 		private int mBuffer;
         private int stuckBufferCounter = 0;
 		private GPoint mMPos;
@@ -1509,6 +1517,8 @@ namespace LaserGRBL
 								ManageWelcomeMessage(rline);
 							else if (IsOrturWelcomeMessage(rline))
 								ManageOrturWelcomeMessage(rline);
+							else if (IsOrturVersionInfo(rline))
+								ManageOrturVersionInfo(rline);
 							else
 								ManageGenericMessage(rline);
 						}
@@ -1536,6 +1546,11 @@ namespace LaserGRBL
 			return rline.StartsWith("Ortur ");
 		}
 
+		private bool IsOrturVersionInfo(string rline)
+		{
+			return rline.StartsWith("OLF");
+		}
+
 		// Return true if message received start with < and finish by >
 		// Overrided by Marlin
 		protected virtual bool IsRealtimeStatusMessage(string rline)
@@ -1561,7 +1576,7 @@ namespace LaserGRBL
 				int maj = int.Parse(rline.Substring(5, 1));
 				int min = int.Parse(rline.Substring(7, 1));
 				char build = rline.Substring(8, 1).ToCharArray()[0];
-				GrblVersion = new GrblVersionInfo(maj, min, build);
+				GrblVersion = new GrblVersionInfo(maj, min, build, mOrturWelcomeSeen, mOrturVersionSeen);
 
 				DetectUnexpectedReset();
 				OnStartupMessage();
@@ -1578,9 +1593,29 @@ namespace LaserGRBL
 		{
 			try
 			{
-				if (GrblVersion != null)
-					GrblVersion.IsOrtur = true;
-				Logger.LogMessage("OrturInfo", "Detected {0}", rline);
+				mOrturWelcomeSeen = rline;
+				mOrturWelcomeSeen = mOrturWelcomeSeen.Replace("Ready", "");
+				mOrturWelcomeSeen = mOrturWelcomeSeen.Replace("!", "");
+				mOrturWelcomeSeen = mOrturWelcomeSeen.Trim();
+				Logger.LogMessage("OrturInfo", "Detected {0}", mOrturWelcomeSeen);
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("OrturInfo", "Ex on [{0}] message", rline);
+				Logger.LogException("OrturInfo", ex);
+			}
+			mSentPtr.Add(new GrblMessage(rline, false));
+		}
+
+		private void ManageOrturVersionInfo(string rline)
+		{
+			try
+			{
+				mOrturVersionSeen = rline;
+				mOrturVersionSeen = mOrturVersionSeen.Replace("OLF", "");
+				mOrturVersionSeen = mOrturVersionSeen.Trim('.');
+				mOrturVersionSeen = mOrturVersionSeen.Trim();
+				Logger.LogMessage("OrturInfo", "Detected OLF {0}", mOrturVersionSeen);
 			}
 			catch (Exception ex)
 			{
