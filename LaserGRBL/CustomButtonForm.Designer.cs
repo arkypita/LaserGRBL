@@ -150,7 +150,7 @@
 			this.tableLayoutPanel2.SetColumnSpan(this.LblDescription, 2);
 			this.LblDescription.Name = "LblDescription";
 			this.LblDescription.TabStop = true;
-			this.LblDescription.Tag = "http://lasergrbl.com/usage/custom-buttons/";
+			this.LblDescription.Tag = "https://lasergrbl.com/usage/custom-buttons/";
 			this.LblDescription.UseCompatibleTextRendering = true;
 			this.LblDescription.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblDescription_LinkClicked);
 			// 

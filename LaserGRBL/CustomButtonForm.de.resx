@@ -284,7 +284,7 @@
 - Unterstützt mathematische Ausdrücke in eckigen Klammern: d. H. G0 X[left-5] Y[bottom-5]
 - Verfügbare Variablen: left, right, top, bottom, width, height.. .. (und mehr)
 
-Siehe http://lasergrbl.com/usage/custom-buttons/</value>
+Siehe https://lasergrbl.com/usage/custom-buttons/</value>
   </data>
   <data name="LblType.Text" xml:space="preserve">
     <value>Art:</value>

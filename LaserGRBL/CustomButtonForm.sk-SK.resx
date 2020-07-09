@@ -128,7 +128,7 @@
 - Podpora matematických výrazov v hranatých zátvorkách: napr. GOX[left-5] Y[bottom-5]
 - Možnosti : left, right, top, bottom, width, height.. (a dalšie)
 
-Viz. http://lasergrbl.com/usage/custom-buttons/</value>
+Viz. https://lasergrbl.com/usage/custom-buttons/</value>
   </data>
   <data name="LblEnabled.Text" xml:space="preserve">
     <value>Povolene</value>

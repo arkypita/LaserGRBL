@@ -137,7 +137,7 @@
 - Expresiones matemáticas soportadas en corchetes cuadrados: ejemplo G0 X[left-5] Y[bottom-5]
 - Variables disponibles: left, right, top, bottom, width, height... (y más)
 
-Más información http://lasergrbl.com/usage/custom-buttons/</value>
+Más información https://lasergrbl.com/usage/custom-buttons/</value>
   </data>
   <data name="LblType.Text" xml:space="preserve">
     <value>Tipo:</value>

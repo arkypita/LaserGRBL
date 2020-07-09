@@ -517,7 +517,7 @@
 - Support math expression in square brackets: i.e. G0 X[left-5] Y[bottom-5]
 - Available variables: left, right, top, bottom, width, height.. (and more)
 
-See http://lasergrbl.com/usage/custom-buttons/
+See https://lasergrbl.com/usage/custom-buttons/
 
 </value>
   </data>

@@ -239,7 +239,7 @@
 - 支持方括号中的数学表达式:即 G0 X[left-5] Y[bottom-5]
 - 可用变量: left, right, top, bottom, width, height.. (及 more)
 
-参考 http://lasergrbl.com/usage/custom-buttons/</value>
+参考 https://lasergrbl.com/usage/custom-buttons/</value>
   </data>
   <data name="TbToolTip.Location" type="System.Drawing.Point, System.Drawing">
     <value>58, 146</value>

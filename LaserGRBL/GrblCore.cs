@@ -94,6 +94,7 @@ namespace LaserGRBL
 			int mMajor;
 			int mMinor;
 			char mBuild;
+			bool mOrtur;
 
 			public GrblVersionInfo(int major, int minor, char build)
 			{ mMajor = major; mMinor = minor; mBuild = build; }
@@ -195,6 +196,8 @@ namespace LaserGRBL
 			public int Major { get { return mMajor; } }
 
 			public int Minor { get { return mMinor; } }
+
+			public bool IsOrtur { get => mOrtur; internal set => mOrtur = value; }
 		}
 
 		public delegate void dlgIssueDetector(DetectedIssue issue);
@@ -1573,23 +1576,17 @@ namespace LaserGRBL
 
 		private void ManageOrturWelcomeMessage(string rline)
 		{
-			//Grbl vX.Xx ['$' for help]
 			try
 			{
-				//int maj = int.Parse(rline.Substring(5, 1));
-				//int min = int.Parse(rline.Substring(7, 1));
-				//char build = rline.Substring(8, 1).ToCharArray()[0];
-				//GrblVersion = new GrblVersionInfo(maj, min, build);
-
-				//DetectUnexpectedReset();
-				//OnStartupMessage();
+				if (GrblVersion != null)
+					GrblVersion.IsOrtur = true;
+				Logger.LogMessage("OrturInfo", "Detected {0}", rline);
 			}
 			catch (Exception ex)
 			{
-				//Logger.LogMessage("VersionInfo", "Ex on [{0}] message", rline);
-				//Logger.LogException("VersionInfo", ex);
+				Logger.LogMessage("OrturInfo", "Ex on [{0}] message", rline);
+				Logger.LogException("OrturInfo", ex);
 			}
-			//mSentPtr.Add(new GrblMessage(rline, false));
 			mSentPtr.Add(new GrblMessage(rline, false));
 		}
 
@@ -2178,7 +2175,7 @@ namespace LaserGRBL
 		}
 
 		internal void HelpOnLine()
-		{ System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/"); }
+		{ System.Diagnostics.Process.Start(@"https://lasergrbl.com/usage/"); }
 
 		internal void GrblHoming()
 		{ if (CanDoHoming) EnqueueCommand(new GrblCommand("$H")); }
@@ -2333,7 +2330,9 @@ namespace LaserGRBL
 
         public virtual bool UIShowGrblConfig => true;
         public virtual bool UIShowUnlockButtons => true;
-    }
+
+		public bool IsOrturBoard { get => GrblVersion != null && GrblVersion.IsOrtur; }
+	}
 
 	public class TimeProjection
 	{

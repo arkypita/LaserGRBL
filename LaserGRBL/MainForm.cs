@@ -20,6 +20,7 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
 
+			MnOrtur.Visible = false;
 			MMn.Renderer = new MMnRenderer();
 
 			splitContainer1.FixedPanel = FixedPanel.Panel1;
@@ -255,7 +256,7 @@ namespace LaserGRBL
 			PbBuffer.Maximum = Core.BufferSize;
 			PbBuffer.Value = Core.UsedBuffer;
 			PbBuffer.ToolTipText = $"Buffer: {Core.UsedBuffer}/{Core.BufferSize} Free:{Core.FreeBuffer}";
-
+			MnOrtur.Visible = Core.IsOrturBoard;
 
 			ResumeLayout();
 		}
@@ -398,7 +399,7 @@ namespace LaserGRBL
 
 		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"http://lasergrbl.com/");
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/faq/");
 		}
 
 		private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
@@ -748,6 +749,16 @@ namespace LaserGRBL
 		private void polishToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SetLanguage(new System.Globalization.CultureInfo("pl-PL"));
+		}
+
+		private void orturSupportGroupToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/orturfacebook/");
+		}
+
+		private void orturWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/orturwebsite/");
 		}
 	}
 

@@ -156,12 +156,12 @@ namespace LaserGRBL
 
 		private void BtnTarget_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/flash/#target");
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/usage/flash/#target");
 		}
 
 		private void BtnFirmware_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/flash/#firmware");
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/usage/flash/#firmware");
 		}
 
 		private void CbFirmware_SelectedIndexChanged(object sender, EventArgs e)

@@ -281,7 +281,7 @@
 - Supporta espressioni tra parentesi quadre: G0 X [left-5] Y [bottom-5]
 - Variabili disponibili: left, right, top, bottom, width, height .. (e altro)
 
-Vedi http://lasergrbl.com/usage/custom-buttons/</value>
+Vedi https://lasergrbl.com/usage/custom-buttons/</value>
   </data>
   <data name="LblType.Text" xml:space="preserve">
     <value>Tipo:</value>

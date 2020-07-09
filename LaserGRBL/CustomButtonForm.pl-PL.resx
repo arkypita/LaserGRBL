@@ -137,7 +137,7 @@
 - Obsługa wyrażeń matematycznych w nawiasach kwadratowych: np. GOX[lewy-5] Y[dolny-5]
 - Opcje: lewy, prawy, górny, dolny, szerokość, wysokość .. (i więcej) 
 
-Zobacz http://lasergrbl.com/usage/custom-buttons/</value>
+Zobacz https://lasergrbl.com/usage/custom-buttons/</value>
   </data>
   <data name="LblType.Text" xml:space="preserve">
     <value>Rodzaj:</value>

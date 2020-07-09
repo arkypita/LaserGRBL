@@ -136,7 +136,7 @@
     <value>Zdá sa, že grbl má s prevedením tejto úlohy problém. Príčiny tejto situácie môžu byť rôzne, prečítajte si prosím FAQ, kde nájdete informácie o tom, ako tento problém vyriešiť.</value>
   </data>
   <data name="LL.Text" xml:space="preserve">
-    <value>http://lasergrbl.com/faq/</value>
+    <value>https://lasergrbl.com/faq/</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Detekovaný problém!</value>

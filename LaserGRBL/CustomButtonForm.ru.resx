@@ -128,7 +128,7 @@
 - Поддерживаются математические выражения в квадратных скобках: то есть G0 X [left-5] Y [bottom-5]
 - Доступные переменные: left, right, top, bottom, width, height.. (и многое другое)
 
-Смотрите http://lasergrbl.com/usage/custom-buttons/</value>
+Смотрите https://lasergrbl.com/usage/custom-buttons/</value>
   </data>
   <data name="LblEnabled.Text" xml:space="preserve">
     <value>Включить</value>

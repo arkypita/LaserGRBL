@@ -213,32 +213,32 @@ namespace LaserGRBL
 
 		private void BtnModulationInfo_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#pwm-support");
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/configuration/#pwm-support");
 		}
 
 		private void BtnLaserMode_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#laser-mode");
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/configuration/#laser-mode");
 		}
 
 		private void BtnProtocol_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#protocol");
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/configuration/#protocol");
 		}
 
 		private void BtnStreamingMode_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#streaming-mode");
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/configuration/#streaming-mode");
 		}
 
 		private void BtnThreadingModel_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#threading-mode");
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/configuration/#threading-mode");
 		}
 
         private void BtnFType_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(@"http://lasergrbl.com/configuration/#firmware-type");
+            System.Diagnostics.Process.Start(@"https://lasergrbl.com/configuration/#firmware-type");
         }
 
         private void changeSucBtn_Click(object sender, EventArgs e)

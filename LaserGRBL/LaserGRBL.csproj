@@ -834,6 +834,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.cs-CZ.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.es.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>

@@ -134,7 +134,7 @@
 - Accepte les expression mathématique entre crochets : i.e. G0 X[left-5] Y[bottom-5]
 - Variables disponibles : left, right, top, bottom, width, height... (Et plus) 
 
-Voir : http://lasergrbl.com/usage/custom-buttons/</value>
+Voir : https://lasergrbl.com/usage/custom-buttons/</value>
   </data>
   <data name="LblType.Text" xml:space="preserve">
     <value>Entrer :</value>

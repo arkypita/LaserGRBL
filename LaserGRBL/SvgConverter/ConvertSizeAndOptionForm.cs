@@ -123,12 +123,12 @@ namespace LaserGRBL.SvgConverter
 
 		private void BtnOnOffInfo_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/target-image-size-and-laser-options/#laser-modes");
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/usage/raster-image-import/target-image-size-and-laser-options/#laser-modes");
 		}
 
 		private void BtnModulationInfo_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"http://lasergrbl.com/usage/raster-image-import/target-image-size-and-laser-options/#power-modulation");
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/usage/raster-image-import/target-image-size-and-laser-options/#power-modulation");
 		}
 
 		private void CBLaserON_SelectedIndexChanged(object sender, EventArgs e)

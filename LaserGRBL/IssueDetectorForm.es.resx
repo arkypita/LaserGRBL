@@ -137,7 +137,7 @@
 las preguntas frecuentes para resolver este inconveniente.</value>
   </data>
   <data name="LL.Text" xml:space="preserve">
-    <value>http://lasergrbl.com/faq/</value>
+    <value>https://lasergrbl.com/faq/</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Problema detectado!</value>

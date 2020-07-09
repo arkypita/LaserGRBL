@@ -136,7 +136,7 @@
     <value>Sembra che grbl abbia avuto un problema nell'eseguire questo lavoro. Le cause possono essere varie, si prega di leggere le FAQ per informazioni su come risolvere questo problema.</value>
   </data>
   <data name="LL.Text" xml:space="preserve">
-    <value>http://lasergrbl.com/faq/</value>
+    <value>https://lasergrbl.com/faq/</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Rilevato problema con la scheda!</value>
