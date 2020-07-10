@@ -144,6 +144,7 @@
 			this.label36 = new System.Windows.Forms.Label();
 			this.label28 = new System.Windows.Forms.Label();
 			this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
+			this.label31 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.MainTabPage.SuspendLayout();
@@ -498,6 +499,7 @@
 			this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel8, 1, 2);
 			this.tableLayoutPanel6.Controls.Add(this.pictureBox1, 1, 3);
 			this.tableLayoutPanel6.Controls.Add(this.label21, 2, 3);
+			this.tableLayoutPanel6.Controls.Add(this.label31, 2, 4);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
 			// 
 			// label20
@@ -958,6 +960,12 @@
 			// 
 			resources.ApplyResources(this.SoundBrowserDialog, "SoundBrowserDialog");
 			// 
+			// label31
+			// 
+			resources.ApplyResources(this.label31, "label31");
+			this.label31.ForeColor = System.Drawing.Color.Red;
+			this.label31.Name = "label31";
+			// 
 			// SettingsForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -1139,5 +1147,6 @@
         private System.Windows.Forms.CheckBox CbPlayFatal;
         private System.Windows.Forms.CheckBox CbPlayConnect;
         private System.Windows.Forms.CheckBox CbPlayDisconnect;
-    }
+		private System.Windows.Forms.Label label31;
+	}
 }
