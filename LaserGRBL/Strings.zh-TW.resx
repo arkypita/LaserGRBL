@@ -167,13 +167,13 @@
     <value>對角線</value>
   </data>
   <data name="DirectionHorizontal" xml:space="preserve">
-    <value>水平</value>
+    <value>水平線</value>
   </data>
   <data name="DirectionNone" xml:space="preserve">
     <value>沒有</value>
   </data>
   <data name="DirectionVertical" xml:space="preserve">
-    <value>垂直</value>
+    <value>垂直線</value>
   </data>
   <data name="FormulaCustom" xml:space="preserve">
     <value>自定義</value>

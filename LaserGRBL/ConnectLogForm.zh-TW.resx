@@ -139,7 +139,7 @@
     <value>終止工作</value>
   </data>
   <data name="LblEmulator.Text" xml:space="preserve">
-    <value>仿真器</value>
+    <value>模擬器</value>
   </data>
   <data name="LblComPort.Text" xml:space="preserve">
     <value>連接埠</value>
@@ -151,7 +151,7 @@
     <value>URL</value>
   </data>
   <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Emulated Grbl v1.1#</value>
+    <value>模擬器 Grbl v1.1版本#</value>
   </data>
   <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
     <value>連線</value>

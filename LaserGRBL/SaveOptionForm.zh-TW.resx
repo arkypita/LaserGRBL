@@ -118,23 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CBHeader.Text" xml:space="preserve">
-    <value>標頭導出</value>
+    <value>導出開始前的工作G代碼</value>
   </data>
   <data name="CBFooter.Text" xml:space="preserve">
-    <value>頁腳導出</value>
+    <value>導出結束後的工作G代碼</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>過渡</value>
+    <value>重復次數</value>
   </data>
   <data name="CBBetween.Text" xml:space="preserve">
-    <value>在通過之間導出G代碼</value>
+    <value>導出重復次數之間的的G代碼</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>導出選項</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>如果您需要導出gcode以便在LaserGRBL之外使用它，例如使用獨立控制器，您可能會發現它很有用以便能夠在每次通過之間導出標頭/文件夾代碼和代碼。
-
+    <value>如果您需要導出gcode以便在LaserGRBL之外使用它，例如使用獨立控制器，您可能會發現它很有用以便能夠在每次通過之間導出"開始前工作代碼"/文件夾代碼和代碼。
+請參這個"開始"與"重復次數之間"和"結束"代碼需在主選單GRBL&gt;&gt;設定&gt;&gt;Gcode中設定
 注意：如果您要導出要重新加載到LaserGRBL的gcode，最好改用快速導出。</value>
   </data>
   <data name="BtnSave.Text" xml:space="preserve">
