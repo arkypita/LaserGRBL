@@ -163,7 +163,7 @@
   <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
     <value>Grbl支持可變的輸出功率以產生灰度。
 這要求您的硬件在激光器上具有TTL或PWM控制。
-
+"最大S值"需要在Grbl 韌體參數設定$ 30 = 255(1000)這裡確認
 點擊這裡查看更多信息...</value>
   </data>
   <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
