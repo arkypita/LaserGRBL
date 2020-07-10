@@ -143,7 +143,8 @@
     <value>連接協議：
 -UsbSerial，是最常見的協議。應使用如果你的雕刻機連接到USB或串口。
 -Telnet，如果您有一個WiFi登錄橋。通信實現像一個簡單的客戶端-服務器的telnet。
--laserwebesp8266支持WIFI連接通過WebSocket。與laserweb-esp8266軟件兼容。</value>
+-LaserWebESP8266支持WIFI連接通過WebSocket。與laserweb-esp8266軟件兼容。
+-Emulator是一個模擬已連接GRBL，可假設已連接主板實際工作的連接模式。</value>
   </data>
   <data name="BtnProtocol.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -370,13 +371,13 @@
 預設 G90 （使用絕對坐標）</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>開始前工作代碼</value>
+    <value>開始前工作G代碼</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
-    <value>結束後工作代碼</value>
+    <value>結束後工作G代碼</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
-    <value>多重轉換</value>
+    <value>重復次數之間的G代碼</value>
   </data>
   <data name="LblFooter.Text" xml:space="preserve">
     <value>LaserGRBL在每個任務結束時運行此GCode(結束後工作代碼)。
@@ -386,7 +387,7 @@
 預設 G0 X0 Y0 Z0 （移回原點）</value>
   </data>
   <data name="LblPasses.Text" xml:space="preserve">
-    <value>執行多次轉換時，LaserGRBL在兩次通過之間運行此GCode。
+    <value>執行重復次數時，LaserGRBL在兩次通過之間運行此GCode。
 可用於向下移動Z軸以進行更深的切割。
 當切割較厚的材質時，在切割面下沉時，激光對焦也隨之變動，利用這個能讓切割效率不減。使用這個前提是需要配置Z軸套件。
 在這裡，您可以使用相同的自定義按鈕語法。
