@@ -105,6 +105,10 @@
 			this.MnOrtur = new System.Windows.Forms.ToolStripMenuItem();
 			this.orturSupportGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.orturWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.youtubeChannelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+			this.manualsDownloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.firmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.questionMarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnAutoUpdate = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnNotifyNewVersion = new System.Windows.Forms.ToolStripMenuItem();
@@ -639,7 +643,11 @@
 			// 
 			this.MnOrtur.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.orturSupportGroupToolStripMenuItem,
-            this.orturWebsiteToolStripMenuItem});
+            this.orturWebsiteToolStripMenuItem,
+            this.youtubeChannelToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.manualsDownloadToolStripMenuItem,
+            this.firmwareToolStripMenuItem});
 			this.MnOrtur.Name = "MnOrtur";
 			resources.ApplyResources(this.MnOrtur, "MnOrtur");
 			// 
@@ -654,6 +662,29 @@
 			resources.ApplyResources(this.orturWebsiteToolStripMenuItem, "orturWebsiteToolStripMenuItem");
 			this.orturWebsiteToolStripMenuItem.Name = "orturWebsiteToolStripMenuItem";
 			this.orturWebsiteToolStripMenuItem.Click += new System.EventHandler(this.orturWebsiteToolStripMenuItem_Click);
+			// 
+			// youtubeChannelToolStripMenuItem
+			// 
+			resources.ApplyResources(this.youtubeChannelToolStripMenuItem, "youtubeChannelToolStripMenuItem");
+			this.youtubeChannelToolStripMenuItem.Name = "youtubeChannelToolStripMenuItem";
+			this.youtubeChannelToolStripMenuItem.Click += new System.EventHandler(this.youtubeChannelToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator4
+			// 
+			this.toolStripSeparator4.Name = "toolStripSeparator4";
+			resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+			// 
+			// manualsDownloadToolStripMenuItem
+			// 
+			resources.ApplyResources(this.manualsDownloadToolStripMenuItem, "manualsDownloadToolStripMenuItem");
+			this.manualsDownloadToolStripMenuItem.Name = "manualsDownloadToolStripMenuItem";
+			this.manualsDownloadToolStripMenuItem.Click += new System.EventHandler(this.manualsDownloadToolStripMenuItem_Click);
+			// 
+			// firmwareToolStripMenuItem
+			// 
+			resources.ApplyResources(this.firmwareToolStripMenuItem, "firmwareToolStripMenuItem");
+			this.firmwareToolStripMenuItem.Name = "firmwareToolStripMenuItem";
+			this.firmwareToolStripMenuItem.Click += new System.EventHandler(this.firmwareToolStripMenuItem_Click);
 			// 
 			// questionMarkToolStripMenuItem
 			// 
@@ -900,6 +931,10 @@
 		private System.Windows.Forms.ToolStripMenuItem orturWebsiteToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem facebookCommunityToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem traditionalChineseToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem youtubeChannelToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+		private System.Windows.Forms.ToolStripMenuItem manualsDownloadToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem firmwareToolStripMenuItem;
 	}
 }
 

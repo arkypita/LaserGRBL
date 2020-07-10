@@ -765,6 +765,21 @@ namespace LaserGRBL
 		{
 			SetLanguage(new System.Globalization.CultureInfo("zh-TW"));
 		}
+
+		private void youtubeChannelToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/orturYTchannel/");
+		}
+
+		private void firmwareToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/ortur-firmware/");
+		}
+
+		private void manualsDownloadToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/ortur-manuals/");
+		}
 	}
 
 
