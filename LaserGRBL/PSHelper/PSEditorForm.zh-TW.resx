@@ -130,7 +130,7 @@
     <value>材料</value>
   </data>
   <data name="ColAction.HeaderText" xml:space="preserve">
-    <value>行動</value>
+    <value>工作類型</value>
   </data>
   <data name="ColThick.HeaderText" xml:space="preserve">
     <value>厚度</value>
@@ -148,13 +148,13 @@
     <value>注意</value>
   </data>
   <data name="toolStripStatusLabel1.Text" xml:space="preserve">
-    <value>新東西：</value>
+    <value>新參數：</value>
   </data>
   <data name="TbNewElement.Text" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="BtnImport.Text" xml:space="preserve">
-    <value>物</value>
+    <value>匯入</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>激光 &amp; 數據庫材料</value>
