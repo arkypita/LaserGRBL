@@ -142,7 +142,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>732, 3</value>
+    <value>743, 3</value>
   </data>
   <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 27</value>
@@ -169,7 +169,7 @@
     <value>NoControl</value>
   </data>
   <data name="BtnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>812, 3</value>
+    <value>823, 3</value>
   </data>
   <data name="BtnSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 27</value>
@@ -196,13 +196,13 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 340</value>
+    <value>3, 381</value>
   </data>
   <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>889, 33</value>
+    <value>900, 33</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -843,7 +843,7 @@ If disabled all the issues are silently managed without warning.</value>
     <value>8</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>875, 299</value>
+    <value>886, 340</value>
   </data>
   <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -870,7 +870,7 @@ If disabled all the issues are silently managed without warning.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpHardware.Size" type="System.Drawing.Size, System.Drawing">
-    <value>881, 305</value>
+    <value>892, 346</value>
   </data>
   <data name="TpHardware.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2076,7 +2076,7 @@ Please do not use Automatic Cooling with Ortur engraver until a new firmware is 
     <value>6</value>
   </data>
   <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>875, 299</value>
+    <value>886, 340</value>
   </data>
   <data name="tableLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2103,7 +2103,7 @@ Please do not use Automatic Cooling with Ortur engraver until a new firmware is 
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpAutoCooling.Size" type="System.Drawing.Size, System.Drawing">
-    <value>881, 305</value>
+    <value>892, 346</value>
   </data>
   <data name="TpAutoCooling.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -3951,7 +3951,7 @@ Check to enable.
     <value>3, 3</value>
   </data>
   <data name="MainTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>889, 331</value>
+    <value>900, 372</value>
   </data>
   <data name="MainTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -3978,7 +3978,7 @@ Check to enable.
     <value>2</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>895, 376</value>
+    <value>906, 417</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4017,7 +4017,7 @@ Check to enable.
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>895, 376</value>
+    <value>906, 417</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

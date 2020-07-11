@@ -89,6 +89,7 @@
 			this.label19 = new System.Windows.Forms.Label();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.label21 = new System.Windows.Forms.Label();
+			this.label31 = new System.Windows.Forms.Label();
 			this.TpGCodeSettings = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblHeader = new System.Windows.Forms.Label();
@@ -144,7 +145,6 @@
 			this.label36 = new System.Windows.Forms.Label();
 			this.label28 = new System.Windows.Forms.Label();
 			this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
-			this.label31 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.MainTabPage.SuspendLayout();
@@ -613,6 +613,12 @@
 			this.label21.ForeColor = System.Drawing.Color.Red;
 			this.label21.Name = "label21";
 			// 
+			// label31
+			// 
+			resources.ApplyResources(this.label31, "label31");
+			this.label31.ForeColor = System.Drawing.Color.Red;
+			this.label31.Name = "label31";
+			// 
 			// TpGCodeSettings
 			// 
 			this.TpGCodeSettings.Controls.Add(this.tableLayoutPanel9);
@@ -959,12 +965,6 @@
 			// SoundBrowserDialog
 			// 
 			resources.ApplyResources(this.SoundBrowserDialog, "SoundBrowserDialog");
-			// 
-			// label31
-			// 
-			resources.ApplyResources(this.label31, "label31");
-			this.label31.ForeColor = System.Drawing.Color.Red;
-			this.label31.Name = "label31";
 			// 
 			// SettingsForm
 			// 
