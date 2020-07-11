@@ -34,7 +34,13 @@ namespace LaserGRBL
 		{
 			try
 			{
-				string ResourceName = String.Format("LaserGRBL.CSV.setting_codes.v{0}.{1}.csv", value.Major, value.Minor);
+				string ResourceName;
+				if (value.IsOrtur)
+					ResourceName = String.Format("LaserGRBL.CSV.setting_codes.ortur.v1.0.csv"); 
+				else
+					ResourceName = String.Format("LaserGRBL.CSV.setting_codes.v{0}.{1}.csv", value.Major, value.Minor);
+
+
 				Settings = new CsvDictionary(ResourceName, 3);
 			}
 			catch { }
