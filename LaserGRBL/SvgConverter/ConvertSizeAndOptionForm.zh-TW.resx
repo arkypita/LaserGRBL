@@ -161,9 +161,9 @@
     <value>17, 17</value>
   </data>
   <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
-    <value>Grbl支持可變的輸出功率以產生灰度。
+    <value>Grbl支持可變的輸出功率以產生灰階圖像。
 這要求您的硬件在激光器上具有TTL或PWM控制。
-"最大S值"需要在Grbl 韌體參數設定$ 30 = 255(1000)這裡確認
+"最大S值"需要在主選單Grbl&gt;&gt; Grbl 韌體參數&gt;&gt;設定$ 30 = 255(1000)這裡確認
 點擊這裡查看更多信息...</value>
   </data>
   <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
@@ -227,7 +227,7 @@
     <value>Laser ON：M3是標準模式。
 Grbl v1.1版本 支持新的 M4“動態激光功率模式”
 激光關閉：僅支持M5命令。
-"M4"需要在Grbl 韌體參數設定$ 32 = 1
+"M4"需要在主選單Grbl&gt;&gt; Grbl 韌體參數&gt;&gt;設定$ 32 = 1
 點擊這裡查看更多信息...</value>
   </data>
   <data name="CBLaserON.Location" type="System.Drawing.Point, System.Drawing">
@@ -270,7 +270,7 @@ Grbl v1.1版本 支持新的 M4“動態激光功率模式”
     <value>291, 276</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>目标图像</value>
+    <value>目標圖片</value>
   </data>
   <data name="BtnPSHelper.ToolTip" xml:space="preserve">
     <value>打開激光&amp;材料數據庫</value>
