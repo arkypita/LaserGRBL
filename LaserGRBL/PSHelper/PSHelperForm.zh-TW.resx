@@ -124,7 +124,7 @@
     <value>功率</value>
   </data>
   <data name="LblModel.Text" xml:space="preserve">
-    <value>激光型號</value>
+    <value>激光頭</value>
   </data>
   <data name="LblMaterial.Text" xml:space="preserve">
     <value>材料</value>
