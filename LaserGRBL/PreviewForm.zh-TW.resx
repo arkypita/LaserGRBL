@@ -133,10 +133,10 @@
     <value>導入自定義按鈕</value>
   </data>
   <data name="BtnUnlock.ToolTip" xml:space="preserve">
-    <value>Grbl解鎖 ($X)</value>
+    <value>Grbl 解鎖 ($X)</value>
   </data>
   <data name="BtnHoming.ToolTip" xml:space="preserve">
-    <value>回起點 ($H)</value>
+    <value>回原點 ($H)</value>
   </data>
   <data name="BtnZeroing.ToolTip" xml:space="preserve">
     <value>設置零點 (G92)</value>
