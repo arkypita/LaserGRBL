@@ -490,7 +490,7 @@
 </value>
   </data>
   <data name="BtnQualityInfo.ToolTip" xml:space="preserve">
-    <value>如果解析度與電機步數不符，則可能會出現雕刻錯誤！
+    <value>如果密度(解析度)與電機步數不符，則可能會出現雕刻錯誤！
 單擊以計算可靠的解析度...</value>
   </data>
   <data name="GbConversionTool.Text" xml:space="preserve">
@@ -588,7 +588,7 @@
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>輸入光柵圖片</value>
+    <value>匯入圖片後進行後製處理</value>
   </data>
   <data name="TpOriginal.Text" xml:space="preserve">
     <value>原始圖片</value>
@@ -630,7 +630,7 @@
     <value>激活填充路徑/設置填充方向</value>
   </data>
   <data name="UDFillingQuality.ToolTip" xml:space="preserve">
-    <value>雕刻解析度（行 / mm）</value>
+    <value>雕刻密度（行 / mm）</value>
   </data>
   <data name="UDDownSample.ToolTip" xml:space="preserve">
     <value>減小原始圖像比例[用於高分辨率圖片]</value>
@@ -639,7 +639,7 @@
     <value>優化路徑</value>
   </data>
   <data name="BtnFillingQualityInfo.ToolTip" xml:space="preserve">
-    <value>如果解析度與電機步數不符，則可能會出現雕刻錯誤！
+    <value>如果密度(解析度)與電機步數不符，則可能會出現雕刻錯誤！
 單擊以計算可靠的解析度...</value>
   </data>
   <data name="CbResize.ToolTip" xml:space="preserve">
@@ -655,7 +655,7 @@
     <value>雕刻方向</value>
   </data>
   <data name="UDQuality.ToolTip" xml:space="preserve">
-    <value>圖片解析度（行 / mm）</value>
+    <value>圖片密度（行 / mm）</value>
   </data>
   <data name="CbLinePreview.ToolTip" xml:space="preserve">
     <value>顯示預覽</value>
