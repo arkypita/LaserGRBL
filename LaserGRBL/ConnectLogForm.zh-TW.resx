@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="TxtManualCommand.WaterMark" xml:space="preserve">
-    <value>輸入gcode代碼</value>
+    <value>輸入Gcode代碼</value>
   </data>
   <data name="LblProgress.Text" xml:space="preserve">
     <value>已工作時間</value>

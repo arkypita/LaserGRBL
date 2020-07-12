@@ -264,16 +264,25 @@
   <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;工具類</value>
   </data>
-  <data name="questionMarkToolStripMenuItem.Text" xml:space="preserve">
-    <value>其它</value>
-  </data>
   <data name="orturSupportGroupToolStripMenuItem.Text" xml:space="preserve">
-    <value>ORTUR用戶組</value>
+    <value>ORTUR 用戶組</value>
   </data>
   <data name="orturWebsiteToolStripMenuItem.Text" xml:space="preserve">
-    <value>ORTUR網站</value>
+    <value>ORTUR 網站</value>
+  </data>
+  <data name="youtubeChannelToolStripMenuItem.Text" xml:space="preserve">
+    <value>YOUTUBE 頻道</value>
+  </data>
+  <data name="manualsDownloadToolStripMenuItem.Text" xml:space="preserve">
+    <value>ORTUR 手冊</value>
+  </data>
+  <data name="firmwareToolStripMenuItem.Text" xml:space="preserve">
+    <value>ORTUR 韌體</value>
   </data>
   <data name="facebookCommunityToolStripMenuItem.Text" xml:space="preserve">
     <value>LASERGRBL 社群討論</value>
+  </data>
+  <data name="questionMarkToolStripMenuItem.Text" xml:space="preserve">
+    <value>其它相關</value>
   </data>
 </root>

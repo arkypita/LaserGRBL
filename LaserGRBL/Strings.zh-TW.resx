@@ -245,7 +245,7 @@
     <value>需要重啟</value>
   </data>
   <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
-    <value>確認書</value>
+    <value>確認</value>
   </data>
   <data name="BoxReadConfigSuccess" xml:space="preserve">
     <value>{0} 配置正確讀取！</value>
