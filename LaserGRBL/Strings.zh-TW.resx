@@ -167,13 +167,13 @@
     <value>對角線</value>
   </data>
   <data name="DirectionHorizontal" xml:space="preserve">
-    <value>水平</value>
+    <value>水平線</value>
   </data>
   <data name="DirectionNone" xml:space="preserve">
     <value>沒有</value>
   </data>
   <data name="DirectionVertical" xml:space="preserve">
-    <value>垂直</value>
+    <value>垂直線</value>
   </data>
   <data name="FormulaCustom" xml:space="preserve">
     <value>自定義</value>
@@ -245,7 +245,7 @@
     <value>需要重啟</value>
   </data>
   <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
-    <value>確認書</value>
+    <value>確認</value>
   </data>
   <data name="BoxReadConfigSuccess" xml:space="preserve">
     <value>{0} 配置正確讀取！</value>
@@ -275,7 +275,7 @@
     <value>位置未知</value>
   </data>
   <data name="SpeedSliderToolTip" xml:space="preserve">
-    <value>速度：</value>
+    <value>移動速度(mm / min)：</value>
   </data>
   <data name="BoxWriteConfigWithoutError" xml:space="preserve">
     <value>{0} 配置成功保存！</value>
@@ -293,7 +293,7 @@
     <value>正在進行文件傳輸。 還是要退出嗎？</value>
   </data>
   <data name="StepSliderToolTip" xml:space="preserve">
-    <value>步：</value>
+    <value>移動距離(mm)：</value>
   </data>
   <data name="BoxConfigDetectedChanges" xml:space="preserve">
     <value>有一些尚未應用的更改。

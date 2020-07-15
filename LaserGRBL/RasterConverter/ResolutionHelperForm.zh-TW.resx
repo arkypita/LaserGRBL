@@ -122,7 +122,7 @@
     <value>77, 12</value>
   </data>
   <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>所需的解析度</value>
+    <value>所需的密度(解析度)</value>
   </data>
   <data name="LblBorderTracingmm.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 12</value>
@@ -140,7 +140,7 @@
     <value>65, 12</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
-    <value>計算解析度</value>
+    <value>計算密度(解析度)</value>
   </data>
   <data name="LblLinearFillingmm.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 12</value>
@@ -152,7 +152,7 @@
     <value>304, 38</value>
   </data>
   <data name="linkLabel1.Text" xml:space="preserve">
-    <value>請直接用"行/mm"後設置參數，因為如果無法通過電機步數來實現解析度，圖像將顯得失真。 點擊這裡查看更多信息...</value>
+    <value>請直接用"行/mm"設置參數，如果無法由電機步數來實現解析度，圖像將顯得失真。 點擊這裡查看更多信息...</value>
   </data>
   <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
     <value>310, 113</value>
@@ -179,7 +179,7 @@
     <value>316, 158</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>解析度助手</value>
+    <value>密度(解析度)助手</value>
   </data>
   <data name="LblLinearFilling.Text" xml:space="preserve">
     <value>$100 電機步數解析度</value>

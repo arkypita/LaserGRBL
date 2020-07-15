@@ -124,7 +124,7 @@
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxAAAAsQAa0jvXUAAAbfSURBVEhLfdULUJNXFgDgs+uO
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACw8AAAsPAZL5A6UAAAbfSURBVEhLfdULUJNXFgDgs+uO
         49rZXXfp+qjazi52tTtdSy11p62yWrqjq+VRRN5MSIBAgPIKBJZnFAIrCBteEggYUSIgiCCglDrUBQwS
         AREVBCmPEB55EhJDeEjO3lCHmQ7oP/PN/Scz95xzb869P2Rm8t8oI6MQeDkFWwTFlzZvC5vaDW4vqvZG
         TwP7SpfZ6avXNzlUVoBjRdVrQWlp2RuVlVVA3oXi801luQKb1G4AZ6P9kZg+YOffrfHNancPymiHwDcA
@@ -163,7 +163,7 @@
   <data name="BtFlipH.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxAAAAsQAa0jvXUAAAa5SURBVEhLpZR7UJNXFsDP7Ky7
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACw8AAAsPAZL5A6UAAAa5SURBVEhLpZR7UJNXFsDP7Ky7
         2+5acIfZrg67W3GHah8ottMqrWPZKtpRgYABeZNACK8ASYCEvMRIgaoEebjYVnmJaAMUa0VQYUcFdRW2
         O+oWwVLEJITEQB5fXkQCZ2+y3dmdnX203T9+c8+93/fd3z3n3PkgNzePkO8ZV+TkFAzQ6fGC5GTmMwKB
         mKzxgMXKguLiEigqkkB2NhfIO8DnC6GgoAiysvLJupg8F3kRCCTkGy5wucUglR4k81IgL+V5SUhg+B46
@@ -344,7 +344,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEQAACxEBf2RfkQAAAkFJREFUSEtj+P//P00x
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEAAACxABrSO9dQAAAkFJREFUSEtj+P//P00x
         VkFqYhRORmpyfVtzw2xKsJeHmzWymSgWzJg6cd/7Ny/+k4tXLl/yPyjALxXZTKpZcOjA3v+WFub4LZg1
         bTJZFjx7fP8/Dw/PfwuQBYH+eCyYPoVkC969fv5fRVkZaBID2IJgvBbMIN0CD3c3sOFwC4ICcFswm0QL
         Ottb4IYTacFUDAuuXr7wv6un579vYMh/FU19MA3ib92y6T8TExOGBSHBgfgsmIZiAcjwjOzc/3IqWihY
@@ -403,7 +403,7 @@
     <value>填充</value>
   </data>
   <data name="LblFillingQuality.Text" xml:space="preserve">
-    <value>填充品質</value>
+    <value>填充密度</value>
   </data>
   <data name="LblFillingLineLbl.Text" xml:space="preserve">
     <value>行/mm</value>
@@ -463,7 +463,7 @@
     <value>預覽</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>品質</value>
+    <value>密度</value>
   </data>
   <data name="label27.Text" xml:space="preserve">
     <value>方向</value>
@@ -490,7 +490,7 @@
 </value>
   </data>
   <data name="BtnQualityInfo.ToolTip" xml:space="preserve">
-    <value>如果解析度與電機步數不符，則可能會出現雕刻錯誤！
+    <value>如果密度(解析度)與電機步數不符，則可能會出現雕刻錯誤！
 單擊以計算可靠的解析度...</value>
   </data>
   <data name="GbConversionTool.Text" xml:space="preserve">
@@ -588,7 +588,7 @@
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>輸入光柵圖片</value>
+    <value>匯入圖片後進行後製處理</value>
   </data>
   <data name="TpOriginal.Text" xml:space="preserve">
     <value>原始圖片</value>
@@ -630,7 +630,7 @@
     <value>激活填充路徑/設置填充方向</value>
   </data>
   <data name="UDFillingQuality.ToolTip" xml:space="preserve">
-    <value>雕刻解析度（行 / mm）</value>
+    <value>雕刻密度（行 / mm）</value>
   </data>
   <data name="UDDownSample.ToolTip" xml:space="preserve">
     <value>減小原始圖像比例[用於高分辨率圖片]</value>
@@ -639,7 +639,7 @@
     <value>優化路徑</value>
   </data>
   <data name="BtnFillingQualityInfo.ToolTip" xml:space="preserve">
-    <value>如果解析度與電機步數不符，則可能會出現雕刻錯誤！
+    <value>如果密度(解析度)與電機步數不符，則可能會出現雕刻錯誤！
 單擊以計算可靠的解析度...</value>
   </data>
   <data name="CbResize.ToolTip" xml:space="preserve">
@@ -655,7 +655,7 @@
     <value>雕刻方向</value>
   </data>
   <data name="UDQuality.ToolTip" xml:space="preserve">
-    <value>圖片解析度（行 / mm）</value>
+    <value>圖片密度（行 / mm）</value>
   </data>
   <data name="CbLinePreview.ToolTip" xml:space="preserve">
     <value>顯示預覽</value>

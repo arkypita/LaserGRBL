@@ -124,13 +124,13 @@
     <value>可見</value>
   </data>
   <data name="ColModel.HeaderText" xml:space="preserve">
-    <value>激光類型</value>
+    <value>激光頭型號</value>
   </data>
   <data name="ColMaterial.HeaderText" xml:space="preserve">
-    <value>材料</value>
+    <value>材料名稱</value>
   </data>
   <data name="ColAction.HeaderText" xml:space="preserve">
-    <value>行動</value>
+    <value>雕刻方式</value>
   </data>
   <data name="ColThick.HeaderText" xml:space="preserve">
     <value>厚度</value>
@@ -142,22 +142,22 @@
     <value>速度</value>
   </data>
   <data name="ColCycles.HeaderText" xml:space="preserve">
-    <value>循環次數</value>
+    <value>重複次數</value>
   </data>
   <data name="ColRemarks.HeaderText" xml:space="preserve">
-    <value>注意</value>
+    <value>注意事項</value>
   </data>
   <data name="toolStripStatusLabel1.Text" xml:space="preserve">
-    <value>新東西：</value>
+    <value>新增的參數：</value>
   </data>
   <data name="TbNewElement.Text" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="BtnImport.Text" xml:space="preserve">
-    <value>物</value>
+    <value>匯入</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>激光 &amp; 數據庫材料</value>
+    <value>激光 &amp; 材料數據庫</value>
   </data>
   <data name="statusStrip1.Text" xml:space="preserve">
     <value>statusStrip1</value>

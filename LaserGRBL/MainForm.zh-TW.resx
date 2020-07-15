@@ -145,7 +145,7 @@
     <value>中文(簡體)</value>
   </data>
   <data name="linguaToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;语言</value>
+    <value>&amp;語言</value>
   </data>
   <data name="MnConnect.Text" xml:space="preserve">
     <value>&amp;連線機器</value>
@@ -226,7 +226,7 @@
     <value>&amp;配置與助手</value>
   </data>
   <data name="helpOnLineToolStripMenuItem.Text" xml:space="preserve">
-    <value>網上幫助</value>
+    <value>官網基本操作方式</value>
   </data>
   <data name="MnAutoUpdate.Text" xml:space="preserve">
     <value>自動更新</value>
@@ -235,13 +235,13 @@
     <value>激活自動更新</value>
   </data>
   <data name="MnNotifyMinorVersion.Text" xml:space="preserve">
-    <value>報告較小的更改</value>
+    <value>提醒測試版更新</value>
   </data>
   <data name="MnNotifyPreRelease.Text" xml:space="preserve">
     <value>通知預發布</value>
   </data>
   <data name="MnCheckNow.Text" xml:space="preserve">
-    <value>現在檢查！</value>
+    <value>現在檢查有無更新版！</value>
   </data>
   <data name="openSessionLogToolStripMenuItem.Text" xml:space="preserve">
     <value>打開工作記錄</value>
@@ -250,12 +250,39 @@
     <value>增加活動記錄</value>
   </data>
   <data name="donateToolStripMenuItem.Text" xml:space="preserve">
-    <value>支持！</value>
+    <value>提供贊助費用支持我們！</value>
   </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>網站</value>
+    <value>LASERGRBL 常問問題</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
     <value>版本說明</value>
+  </data>
+  <data name="traditionalChineseToolStripMenuItem.Text" xml:space="preserve">
+    <value>中文(繁體)</value>
+  </data>
+  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;工具類</value>
+  </data>
+  <data name="orturSupportGroupToolStripMenuItem.Text" xml:space="preserve">
+    <value>ORTUR 用戶組</value>
+  </data>
+  <data name="orturWebsiteToolStripMenuItem.Text" xml:space="preserve">
+    <value>ORTUR 網站</value>
+  </data>
+  <data name="youtubeChannelToolStripMenuItem.Text" xml:space="preserve">
+    <value>YOUTUBE 頻道</value>
+  </data>
+  <data name="manualsDownloadToolStripMenuItem.Text" xml:space="preserve">
+    <value>ORTUR 手冊</value>
+  </data>
+  <data name="firmwareToolStripMenuItem.Text" xml:space="preserve">
+    <value>ORTUR 韌體</value>
+  </data>
+  <data name="facebookCommunityToolStripMenuItem.Text" xml:space="preserve">
+    <value>LASERGRBL 社群討論</value>
+  </data>
+  <data name="questionMarkToolStripMenuItem.Text" xml:space="preserve">
+    <value>其它相關</value>
   </data>
 </root>
