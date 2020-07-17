@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.IO;
 using System.Net;
 
 namespace LaserGRBL
@@ -53,7 +54,8 @@ namespace LaserGRBL
         private TimeSpan UsageTime = TimeSpan.Zero;
 
         private ComWrapper.WrapperType Wrapper;
-        private String Firmware;
+        [Obsolete()] private Firmware Firmware; //non rimuovere, serve per compatibilità!
+        private String FirmwareString;
         private UsageCounters Counters;
 
         private static UsageStats data;
@@ -61,9 +63,63 @@ namespace LaserGRBL
 
         public static void LoadFile() //in ingresso
         {
+            bool exist = File.Exists(filename);
             data = (UsageStats)Tools.Serializer.ObjFromFile(filename);
+
+            if (exist && data == null) //esiste ma non sono riuscito a caricarlo (perché è una versione 3.6.0 con campo Firmware stringa)
+                FixFile();
+
             if (data == null) data = new UsageStats();
             data.UsageCount++;
+        }
+
+        private static void FixFile()
+        {
+            FixFile360();
+        }
+
+        private static void FixFile360()
+        {
+            try
+            {
+                string token = Path.Combine(GrblCore.DataPath, "360fix");
+                if (File.Exists(token))
+                    return;
+
+                File.Create(token).Dispose();
+
+
+                DateTime startissue = new DateTime(2020, 07, 09).ToUniversalTime();
+
+                if (File.Exists(filename)) //posso cancellarlo per certo, perché tanto non sono riuscito a caricarlo!
+                    File.Delete(filename);
+
+                DirectoryInfo folder = new DirectoryInfo(GrblCore.DataPath);
+                FileInfo[] files = folder.GetFiles("*UsageStats.bin.dam");
+                FileInfo older = null;
+                foreach (FileInfo info in files)
+                {
+                    if (info.LastWriteTimeUtc > startissue && info.LastWriteTimeUtc < startissue.AddMonths(2)) //considera di recuperare solo file corrotti dalla versione 3.6.0 rilasciata l' 11/07/2020
+                    {
+                        if (older == null || info.LastWriteTimeUtc < older.LastWriteTimeUtc)
+                            older = info;
+                    }
+                }
+
+                if (older != null)
+                {
+                    File.Move(older.FullName, filename); //carica il file recuperato
+
+                    foreach (FileInfo info in files) //cancella tutto il resto
+                    {
+                        if (File.Exists(info.FullName))
+                            File.Delete(info.FullName);
+                    }
+                }
+            }
+            catch { }
+
+            data = (UsageStats)Tools.Serializer.ObjFromFile(filename); //tenta il caricamento
         }
 
         public static void SaveFile(GrblCore Core) //in uscita
@@ -97,9 +153,9 @@ namespace LaserGRBL
 
 			LaserGRBL.Firmware fw = Settings.GetObject("Firmware Type", LaserGRBL.Firmware.Grbl);
 			if (fw == LaserGRBL.Firmware.Grbl && Core.IsOrturBoard)
-				Firmware = "Ortur";
+				FirmwareString = "Ortur";
 			else
-				Firmware = fw.ToString();
+				FirmwareString = fw.ToString();
 
             if (Counters == null) Counters = new UsageCounters();
             Counters.Update(Core.UsageCounters);
@@ -143,7 +199,7 @@ namespace LaserGRBL
                     { "fLine2Line", Counters.Line2Line.ToString() },
                     { "fSvgFile", Counters.SvgFile.ToString() },
                     { "fCenterline", Counters.Centerline.ToString() },
-                    { "firmware", Firmware },
+                    { "firmware", FirmwareString },
                     { "osinfo", Tools.OSHelper.GetOSInfo() },
                     { "bitflag", Tools.OSHelper.GetBitFlag().ToString() },
                 };
