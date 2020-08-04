@@ -20,7 +20,12 @@ namespace LaserGRBL
     [Serializable]
     public class UsageStats
     {
-        [Serializable]
+#pragma warning disable 0169
+		[Obsolete()] private Firmware Firmware; //non rimuovere, serve per compatibilità!
+#pragma warning restore 0169
+
+
+		[Serializable]
         public class UsageCounters
         {
             public int GCodeFile;
@@ -54,8 +59,7 @@ namespace LaserGRBL
         private TimeSpan UsageTime = TimeSpan.Zero;
 
         private ComWrapper.WrapperType Wrapper;
-        [Obsolete()] private Firmware Firmware; //non rimuovere, serve per compatibilità!
-        private String FirmwareString;
+		private String FirmwareString;
         private UsageCounters Counters;
 
         private static UsageStats data;
