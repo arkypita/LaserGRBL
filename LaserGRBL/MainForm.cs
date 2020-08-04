@@ -166,7 +166,7 @@ namespace LaserGRBL
 		}
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
-			if (Core.InProgram && System.Windows.Forms.MessageBox.Show(Strings.ExitAnyway, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes)
+			if (Core.InProgram && System.Windows.Forms.MessageBox.Show(Strings.ExitAnyway, Strings.WarnMessageBoxHeader, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes)
 				e.Cancel = true;
 
 			if (!e.Cancel)
@@ -356,7 +356,7 @@ namespace LaserGRBL
 
 		private void MnDisconnect_Click(object sender, EventArgs e)
 		{
-			if (!(Core.InProgram && System.Windows.Forms.MessageBox.Show(Strings.DisconnectAnyway, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes))
+			if (!(Core.InProgram && System.Windows.Forms.MessageBox.Show(Strings.DisconnectAnyway, Strings.WarnMessageBoxHeader, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes))
 				Core.CloseCom(true);
 		}
 		void MnSaveProgramClick(object sender, EventArgs e)

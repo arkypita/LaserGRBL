@@ -744,5 +744,23 @@ namespace LaserGRBL.RasterConverter
 			if (IP != null)
 				IP.AutoTrim();
 		}
+
+		private void RbCenterline_Click(object sender, EventArgs e)
+		{
+			if (!Tools.OSHelper.Is64BitProcess)
+			{
+				MessageBox.Show(Strings.WarnCenterline64bit, Strings.WarnMessageBoxHeader, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				//RbVectorize.Checked = true;
+			}
+		}
+
+		private void RbLineToLineTracing_Click(object sender, EventArgs e)
+		{
+			if (!supportPWM)
+			{
+				MessageBox.Show(Strings.WarnLine2LinePWM, Strings.WarnMessageBoxHeader, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				//RbDithering.Checked = true;
+			}
+		}
 	}
 }

@@ -175,7 +175,7 @@ namespace LaserGRBL
 		{
 			if (Core.MachineStatus == GrblCore.MacStatus.Disconnected)
 				Core.OpenCom();
-			else if (!(Core.InProgram && System.Windows.Forms.MessageBox.Show(Strings.DisconnectAnyway, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes))
+			else if (!(Core.InProgram && System.Windows.Forms.MessageBox.Show(Strings.DisconnectAnyway, Strings.WarnMessageBoxHeader, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes))
 				Core.CloseCom(true);
 
 			TimerUpdate();
@@ -362,7 +362,7 @@ namespace LaserGRBL
 
         private void BtnAbortProgram_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(Strings.BoxAbortProgramConfirm, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show(Strings.BoxAbortProgramConfirm, Strings.WarnMessageBoxHeader, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
                 Core.AbortProgram();
         }
 

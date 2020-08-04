@@ -348,7 +348,7 @@ namespace LaserGRBL
 
 					if (error != null)
 					{
-						MessageBox.Show(error, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						MessageBox.Show(error, Strings.WarnMessageBoxHeader, MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
 						e.Cancel = true;
 						DGV.CancelEdit();

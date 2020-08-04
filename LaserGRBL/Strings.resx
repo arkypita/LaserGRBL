@@ -328,4 +328,14 @@ Continue anyway?</value>
   <data name="BoxAbortProgramConfirm" xml:space="preserve">
     <value>Abort current job?</value>
   </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>Centerline option is not compatible with your PC.
+64bit OS is needed!</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>Line2Line option is not compatible with your engraver or with your configuration. PWM-able laser is needed, and PWM support should be enabled in LaserGRBL settings.</value>
+  </data>
 </root>

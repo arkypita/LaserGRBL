@@ -684,5 +684,33 @@ namespace LaserGRBL {
                 return ResourceManager.GetString("UnsupportedFiletype", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Centerline option is not compatible with your PC.
+        ///64bit OS is needed!.
+        /// </summary>
+        internal static string WarnCenterline64bit {
+            get {
+                return ResourceManager.GetString("WarnCenterline64bit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Line2Line option is not compatible with your engraver or with your configuration. PWM-able laser is needed, and PWM support should be enabled in LaserGRBL settings..
+        /// </summary>
+        internal static string WarnLine2LinePWM {
+            get {
+                return ResourceManager.GetString("WarnLine2LinePWM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Warning.
+        /// </summary>
+        internal static string WarnMessageBoxHeader {
+            get {
+                return ResourceManager.GetString("WarnMessageBoxHeader", resourceCulture);
+            }
+        }
     }
 }
