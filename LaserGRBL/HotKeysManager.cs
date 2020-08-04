@@ -32,7 +32,8 @@ namespace LaserGRBL
 				Reset = 100, Homing = 101, Unlock = 102,  PauseJob = 103, ResumeJob = 104, SetNewZero = 105,
                 JogHome = 1000, JogN = 1001, JogNE = 1002, JogE = 1003, JogSE = 1004, JogS = 1005, JogSW = 1006, JogW = 1007, JogNW = 1008, JogUp = 1009, JogDown = 1010,
 				JogStepIncrease = 1020, JogStepDecrease = 1021,
-                OverridePowerDefault = 1100, OverridePowerUp = 1101, OverridePowerDown = 1102,
+				JogSpeedIncrease = 1030, JogSpeedDecrease = 1031,
+				OverridePowerDefault = 1100, OverridePowerUp = 1101, OverridePowerDown = 1102,
 				OverrideLinearDefault = 1110, OverrideLinearUp = 1111, OverrideLinearDown = 1112,
 				OverrideRapidDefault = 1120, OverrideRapidUp = 1121, OverrideRapidDown = 1122,
 				CustomButton1 = 2000, CustomButton2 = 2001, CustomButton3 = 2002, CustomButton4 = 2003, CustomButton5 = 2004, CustomButton6 = 2005, CustomButton7 = 2006, CustomButton8 = 2007, CustomButton9 = 2008, CustomButton10 = 2009
@@ -137,6 +138,9 @@ namespace LaserGRBL
 
 			AddNew(new HotKey(HotKey.Actions.JogStepIncrease, Keys.Multiply));
 			AddNew(new HotKey(HotKey.Actions.JogStepDecrease, Keys.Divide));
+
+			AddNew(new HotKey(HotKey.Actions.JogSpeedIncrease, Keys.None));
+			AddNew(new HotKey(HotKey.Actions.JogSpeedDecrease, Keys.None));
 
 			AddNew(new HotKey(HotKey.Actions.OverridePowerDefault, Keys.None));
             AddNew(new HotKey(HotKey.Actions.OverridePowerUp, Keys.None));
@@ -271,11 +275,13 @@ namespace LaserGRBL
 				case HotKey.Actions.JogDown:
 					RequestJog(GrblCore.JogDirection.Zdown); break;
 				case HotKey.Actions.JogStepIncrease:
-					ChangeJogStep(true);
-					break;
+					ChangeJogStep(true); break;
 				case HotKey.Actions.JogStepDecrease:
-					ChangeJogStep(false);
-					break;
+					ChangeJogStep(false); break;
+				case HotKey.Actions.JogSpeedIncrease:
+					ChangeJogSpeed(true); break;
+				case HotKey.Actions.JogSpeedDecrease:
+					ChangeJogSpeed(false); break;
 				case HotKey.Actions.OverridePowerDefault:
 				case HotKey.Actions.OverridePowerUp:
 				case HotKey.Actions.OverridePowerDown:
@@ -323,9 +329,13 @@ namespace LaserGRBL
 		private void ChangeJogStep(bool increase)
 		{
 			if (mCore.JogEnabled)
-			{
 				mJogForm.ChangeJogStepIndexBy(increase ? 1 : -1);
-			}
+		}
+
+		private void ChangeJogSpeed(bool increase)
+		{
+			if (mCore.JogEnabled)
+				mJogForm.ChangeJogSpeedIndexBy(increase ? 1 : -1);
 		}
 
 		private void RequestJog(GrblCore.JogDirection dir)

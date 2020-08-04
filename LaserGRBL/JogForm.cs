@@ -86,7 +86,12 @@ namespace LaserGRBL
             TbStep.ChangeIndexBy(value);
         }
 
-        bool needsave = false;
+		internal void ChangeJogSpeedIndexBy(int v)
+		{
+			TbSpeed.Value = Math.Max(Math.Min(TbSpeed.Value + (TbSpeed.LargeChange * v), TbSpeed.Maximum), TbSpeed.Minimum);
+		}
+
+		bool needsave = false;
 		private void OnSliderMouseUP(object sender, MouseEventArgs e)
 		{
 			if (needsave)
@@ -111,8 +116,7 @@ namespace LaserGRBL
 			}
 		}
 
-      
-    }
+	}
 
     public class StepBar : System.Windows.Forms.TrackBar
     {
