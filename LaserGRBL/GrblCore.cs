@@ -345,6 +345,14 @@ namespace LaserGRBL
 			}
 		}
 
+		internal string ValidateConfig(int parid, object value)
+		{
+			if (Configuration == null)
+				return null;
+
+			return Configuration.ValidateConfig(parid, value);
+		}
+
 		public virtual Firmware Type
 		{ get { return Firmware.Grbl; } }
 
@@ -2819,6 +2827,14 @@ namespace LaserGRBL
 			}
 
 			return false;
+		}
+
+		internal string ValidateConfig(int parid, object value)
+		{
+			if (parid == 33 && mVersion != null && mVersion.IsOrtur)
+				return "This param control an Ortur safety feature. Please do not change this value!";
+
+			return null;
 		}
 	}
 

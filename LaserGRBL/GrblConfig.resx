@@ -758,7 +758,7 @@ only when connected and idle</value>
     <value>DGV</value>
   </data>
   <data name="&gt;&gt;DGV.Type" xml:space="preserve">
-    <value>LaserGRBL.MyDatagridView, LaserGRBL, Version=3.1.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.MyDatagridView, LaserGRBL, Version=3.7.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;DGV.Parent" xml:space="preserve">
     <value>GB</value>
@@ -827,7 +827,7 @@ only when connected and idle</value>
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GB" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="ActionTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>241, 18</value>
+    <value>12, 16</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

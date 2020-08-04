@@ -334,7 +334,29 @@ namespace LaserGRBL
 			else
 				ActionResult(Strings.BoxReadConfigPleaseConnect);
 		}
+
+		private void DGV_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+		{
+			if (DGV[e.ColumnIndex, e.RowIndex].IsInEditMode)
+			{
+				if (e.ColumnIndex == 3)
+				{
+					object value = DGV[e.ColumnIndex, e.RowIndex].Value;
+					int parid = int.Parse(DGV[1, e.RowIndex].Value.ToString().Trim(new char[] { '$' }));
+
+					string error = Core.ValidateConfig(parid, value);
+
+					if (error != null)
+					{
+						MessageBox.Show(error, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+						e.Cancel = true;
+						DGV.CancelEdit();
+						DGV.EndEdit();
+					}
+				}
+			}
+		}
+
 	}
-
-
 }
