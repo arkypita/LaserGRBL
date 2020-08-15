@@ -152,6 +152,13 @@
     <Compile Include="PSHelper\PSHelperForm.Designer.cs">
       <DependentUpon>PSHelperForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RasterConverter\FontViewModel.cs" />
+    <Compile Include="RasterConverter\TextToLaserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RasterConverter\TextToLaserForm.Designer.cs">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SaveOptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1080,6 +1087,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.zh-TW.resx">
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\TextToLaserForm.cs-CZ.resx">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\TextToLaserForm.da.resx">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\TextToLaserForm.de.resx">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\TextToLaserForm.es.resx">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\TextToLaserForm.fr.resx">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\TextToLaserForm.hu-HU.resx">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\TextToLaserForm.it.resx">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\TextToLaserForm.pl-PL.resx">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\TextToLaserForm.pt-BR.resx">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\TextToLaserForm.resx">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\TextToLaserForm.ru.resx">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\TextToLaserForm.sk-SK.resx">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\TextToLaserForm.zh-CN.resx">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\TextToLaserForm.zh-TW.resx">
+      <DependentUpon>TextToLaserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResumeJobForm.cs-CZ.resx">
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
