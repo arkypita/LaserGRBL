@@ -401,7 +401,6 @@
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\Cronometro.cs" />
-    <Compile Include="Tools\ExpressionEvaluator.cs" />
     <Compile Include="Tools\HiResTimer.cs" />
     <Compile Include="Tools\InputBox.cs">
       <SubType>Form</SubType>
