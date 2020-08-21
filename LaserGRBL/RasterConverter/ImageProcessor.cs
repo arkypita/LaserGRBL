@@ -25,15 +25,15 @@ namespace LaserGRBL.RasterConverter
 		public delegate void GenerationCompleteDlg(Exception ex);
 		public static event GenerationCompleteDlg GenerationComplete;
 
-		private Bitmap mTrueOriginal;	//real original image
-		private Bitmap mOriginal;		//original image (cropped or rotated)
-		private Bitmap mResized;		//resized for preview
-        private int mFileDPI;
-        private Size mFileResolution;
+		private Bitmap mTrueOriginal;   //real original image
+		private Bitmap mOriginal;       //original image (cropped or rotated)
+		private Bitmap mResized;        //resized for preview
+		private int mFileDPI;
+		private Size mFileResolution;
 
-		private bool mGrayScale;		//image has no color
-		private bool mSuspended;		//image generator suspended for multiple property change
-		private Size mBoxSize;			//size of the picturebox frame
+		private bool mGrayScale;        //image has no color
+		private bool mSuspended;        //image generator suspended for multiple property change
+		private Size mBoxSize;          //size of the picturebox frame
 
 		//options for image processing
 		private InterpolationMode mInterpolation = InterpolationMode.HighQualityBicubic;
@@ -84,15 +84,17 @@ namespace LaserGRBL.RasterConverter
 		private bool mAppend;
 		GrblCore mCore;
 
-		private ImageProcessor Current; 		//current instance of processor thread/class - used to call abort
-		Thread TH;								//processing thread
-		protected ManualResetEvent MustExit;	//exit condition
-
+		private ImageProcessor Current;         //current instance of processor thread/class - used to call abort
+		Thread TH;                              //processing thread
+		protected ManualResetEvent MustExit;    //exit condition
 
 		public enum Tool
-		{ Line2Line, Dithering, Vectorize,
-            Centerline
-        }
+		{
+			Line2Line, 
+			Dithering, 
+			Vectorize,
+			Centerline
+		}
 
 		public enum Direction
 		{ Horizontal, Vertical, Diagonal, None }
@@ -103,18 +105,18 @@ namespace LaserGRBL.RasterConverter
 			mFileName = fileName;
 			mAppend = append;
 			mSuspended = true;
-            //mOriginal = new Bitmap(fileName);
+			//mOriginal = new Bitmap(fileName);
 
-            //this double pass is needed to normalize loaded image pixelformat
-            //http://stackoverflow.com/questions/2016406/converting-bitmap-pixelformats-in-c-sharp
-            using (Bitmap loadedBmp = new Bitmap(fileName))
-            {
-                mFileDPI = (int)loadedBmp.HorizontalResolution;
-                mFileResolution = loadedBmp.Size;
+			//this double pass is needed to normalize loaded image pixelformat
+			//http://stackoverflow.com/questions/2016406/converting-bitmap-pixelformats-in-c-sharp
+			using (Bitmap loadedBmp = new Bitmap(fileName))
+			{
+				mFileDPI = (int)loadedBmp.HorizontalResolution;
+				mFileResolution = loadedBmp.Size;
 
-                using (Bitmap tmpBmp = new Bitmap(loadedBmp))
-                    mOriginal = tmpBmp.Clone(new Rectangle(0, 0, tmpBmp.Width, tmpBmp.Height), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-            }
+				using (Bitmap tmpBmp = new Bitmap(loadedBmp))
+					mOriginal = tmpBmp.Clone(new Rectangle(0, 0, tmpBmp.Width, tmpBmp.Height), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+			}
 
 			mTrueOriginal = mOriginal.Clone() as Bitmap;
 
@@ -282,7 +284,7 @@ namespace LaserGRBL.RasterConverter
 
 			int limit = (mode == 0 || mode == 1) ? mOriginal.Width : mOriginal.Height;
 			int limit2 = (mode == 0 || mode == 1) ? mOriginal.Height : mOriginal.Width;
-			for (int i = 0; i < limit; i+=step)
+			for (int i = 0; i < limit; i += step)
 			{
 				Color pixel;
 
@@ -294,10 +296,10 @@ namespace LaserGRBL.RasterConverter
 				if (primopixel.IsEmpty)
 					primopixel = pixel;
 
-				if (rv.IsEmpty)									//il primo lo mettiamo via come valore di base per la media
+				if (rv.IsEmpty)                                 //il primo lo mettiamo via come valore di base per la media
 					rv = pixel;
 				else if (IsSimilarColor(pixel, primopixel)) //confrontiamo i successivi con il primo
-					rv = ColorAVG(rv, pixel);					//li mediamo nel valore di ritorno
+					rv = ColorAVG(rv, pixel);                   //li mediamo nel valore di ritorno
 				else
 					return Color.Empty;
 			}
@@ -314,7 +316,7 @@ namespace LaserGRBL.RasterConverter
 			return Math.Abs(c1.A - c2.A) < tolerance &&
 				Math.Abs(c1.R - c2.R) < tolerance &&
 				Math.Abs(c1.G - c2.G) < tolerance &&
-				Math.Abs(c1.B - c2.B) < tolerance;	
+				Math.Abs(c1.B - c2.B) < tolerance;
 		}
 
 		public void CropImage(Rectangle rect, Size rsize)
@@ -346,9 +348,6 @@ namespace LaserGRBL.RasterConverter
 			ResizeRecalc();
 			Refresh();
 		}
-
-
-
 
 		public void RotateCW()
 		{
@@ -424,7 +423,6 @@ namespace LaserGRBL.RasterConverter
 				}
 			}
 		}
-
 
 		public ImageTransform.DitheringMode DitheringMode
 		{
@@ -569,7 +567,6 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-
 		public decimal SpotRemoval
 		{
 			get { return mSpotRemoval; }
@@ -640,7 +637,6 @@ namespace LaserGRBL.RasterConverter
 				}
 			}
 		}
-
 
 		public bool UseDownSampling
 		{
@@ -785,7 +781,6 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-
 		public bool Demo
 		{
 			get { return mDemo; }
@@ -876,9 +871,9 @@ namespace LaserGRBL.RasterConverter
 								PreviewDithering(bmp);
 							else if (SelectedTool == Tool.Vectorize)
 								PreviewVector(bmp);
-                            else if (SelectedTool == Tool.Centerline)
-                                PreviewCenterline(bmp);
-                        }
+							else if (SelectedTool == Tool.Centerline)
+								PreviewCenterline(bmp);
+						}
 
 						if (!MustExitTH && PreviewReady != null)
 							PreviewReady(bmp);
@@ -911,8 +906,8 @@ namespace LaserGRBL.RasterConverter
 		*/
 
 		//System.Text.RegularExpressions.Regex colorRegex = new System.Text.RegularExpressions.Regex("stroke:#([0-9a-fA-F]+);", System.Text.RegularExpressions.RegexOptions.Compiled);
-        private void PreviewCenterline(Bitmap bmp)
-        {
+		private void PreviewCenterline(Bitmap bmp)
+		{
 			try
 			{
 				if (MustExitTH) return;
@@ -947,14 +942,14 @@ namespace LaserGRBL.RasterConverter
 					format.LineAlignment = StringAlignment.Center;
 					format.Alignment = StringAlignment.Center;
 
-					g.DrawString(ex.Message, SystemFonts.DefaultFont, Brushes.Red, new RectangleF( 0,0, bmp.Width, bmp.Height), format);
+					g.DrawString(ex.Message, SystemFonts.DefaultFont, Brushes.Red, new RectangleF(0, 0, bmp.Width, bmp.Height), format);
 
 					if (MustExitTH) return;
 				}
 			}
 		}
 
-        private void PreviewDithering(Bitmap bmp)
+		private void PreviewDithering(Bitmap bmp)
 		{
 			PreviewLineByLine(bmp);
 		}
@@ -1023,7 +1018,7 @@ namespace LaserGRBL.RasterConverter
 				else
 				{
 					if (GenerationComplete != null)
-						GenerationComplete(new System.InvalidOperationException("Target size too big for processing!"));
+						GenerationComplete(new InvalidOperationException("Target size too big for processing!"));
 				}
 			}
 			catch (Exception ex)
@@ -1043,8 +1038,8 @@ namespace LaserGRBL.RasterConverter
 			double lato = Math.Sqrt(size);
 			double fqual = 255 * Math.Pow(lato, -0.5);
 
-			fqual = Math.Min(fqual, 255);	//valore limite verso l'alto
-			fqual = Math.Max(fqual, 4);		//valore limite verso il basso
+			fqual = Math.Min(fqual, 255);   //valore limite verso l'alto
+			fqual = Math.Max(fqual, 4);     //valore limite verso il basso
 
 			return fqual;
 		}
@@ -1074,7 +1069,6 @@ namespace LaserGRBL.RasterConverter
 				return ImageTransform.Whitenize(grayscale, mWhitePoint, true);
 		}
 
-
 		private Bitmap ProduceBitmap2(Image img, ref Size size)
 		{
 			using (Bitmap resized = ImageTransform.ResizeImage(img, size, false, Interpolation))
@@ -1100,11 +1094,11 @@ namespace LaserGRBL.RasterConverter
 		private void PreviewLineByLine(Bitmap bmp)
 		{
 			Direction dir = Direction.None;
-			if (SelectedTool == ImageProcessor.Tool.Line2Line && LinePreview)
+			if (SelectedTool == Tool.Line2Line && LinePreview)
 				dir = LineDirection;
-			if (SelectedTool == ImageProcessor.Tool.Dithering && LinePreview)
+			if (SelectedTool == Tool.Dithering && LinePreview)
 				dir = LineDirection;
-			else if (SelectedTool == ImageProcessor.Tool.Vectorize && FillingDirection != Direction.None)
+			else if (SelectedTool == Tool.Vectorize && FillingDirection != Direction.None)
 				dir = FillingDirection;
 
 			if (!MustExitTH && dir != Direction.None)
@@ -1153,7 +1147,6 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-
 		private void PreviewVector(Bitmap bmp)
 		{
 			Potrace.turdsize = (int)(UseSpotRemoval ? SpotRemoval : 2);
@@ -1164,7 +1157,7 @@ namespace LaserGRBL.RasterConverter
 			if (MustExitTH)
 				return;
 
-			List<List<CsPotrace.Curve>> plist = Potrace.PotraceTrace(bmp);
+			List<List<Curve>> plist = Potrace.PotraceTrace(bmp);
 
 			if (MustExitTH)
 				return;
@@ -1206,12 +1199,8 @@ namespace LaserGRBL.RasterConverter
 			return new Size((int)Math.Round((imageSize.Width * scale)), (int)Math.Round((imageSize.Height * scale)));
 		}
 
-
 		public Bitmap Original { get { return mResized; } }
-        public Bitmap TrueOriginal { get { return mOriginal; } } //originale eventualmente croppata e ruotata
-        public int FileDPI { get { return mFileDPI; } }
-
-		
-		//public Size FileResolution { get { return mFileResolution; } }
+		public Bitmap TrueOriginal { get { return mOriginal; } } //originale eventualmente croppata e ruotata
+		public int FileDPI { get { return mFileDPI; } }
 	}
 }
