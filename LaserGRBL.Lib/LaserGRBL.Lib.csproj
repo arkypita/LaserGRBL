@@ -57,6 +57,7 @@
     <Compile Include="CSV\CsvDictionary.cs" />
     <Compile Include="CSV\FormattedMessage.cs" />
     <Compile Include="FirmwareEnum.cs" />
+    <Compile Include="GPoint.cs" />
     <Compile Include="GrblElement.cs" />
     <Compile Include="ProgramRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

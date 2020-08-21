@@ -2835,54 +2835,6 @@ namespace LaserGRBL
 			return null;
 		}
 	}
-
-	public struct GPoint
-	{
-		public float X, Y, Z;
-
-		public GPoint(float x, float y, float z)
-		{
-			X = x;
-			Y = y;
-			Z = z;
-		}
-
-		public static GPoint Zero { get { return new GPoint(); } }
-
-		public static bool operator ==(GPoint a, GPoint b)
-		{ return a.X == b.X && a.Y == b.Y && a.Z == b.Z; }
-
-		public static bool operator !=(GPoint a, GPoint b)
-		{ return !(a == b); }
-
-		public static GPoint operator -(GPoint a, GPoint b)
-		{ return new GPoint(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
-
-		public static GPoint operator +(GPoint a, GPoint b)
-		{ return new GPoint(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
-
-		public override bool Equals(object obj)
-		{
-			return obj is GPoint && ((GPoint)obj) == this;
-		}
-
-		public override int GetHashCode()
-		{
-			unchecked // Overflow is fine, just wrap
-			{
-				int hash = 17;
-				hash = hash * 23 + X.GetHashCode();
-				hash = hash * 23 + Y.GetHashCode();
-				hash = hash * 23 + Z.GetHashCode();
-				return hash;
-			}
-		}
-
-		internal PointF ToPointF()
-		{
-			return new PointF(X, Y);
-		}
-	}
 }
 
 /*
