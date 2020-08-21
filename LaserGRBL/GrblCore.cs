@@ -14,10 +14,10 @@ using System.Globalization;
 namespace LaserGRBL
 {
 
-    /// <summary>
-    /// Description of CommandThread.
-    /// </summary>
-    public class GrblCore
+	/// <summary>
+	/// Description of CommandThread.
+	/// </summary>
+	public class GrblCore
 	{
 		//public static PSHelper.PSFile MaterialDB = PSHelper.PSFile.Load();
 		public static PSHelper.MaterialDB MaterialDB = PSHelper.MaterialDB.Load();
@@ -25,45 +25,6 @@ namespace LaserGRBL
 		public static string GCODE_STD_HEADER = "G90 (use absolute coordinates)";
 		public static string GCODE_STD_PASSES = ";(Uncomment if you want to sink Z axis)\r\n;G91 (use relative coordinates)\r\n;G0 Z-1 (sinks the Z axis, 1mm)\r\n;G90 (use absolute coordinates)";
 		public static string GCODE_STD_FOOTER = "G0 X0 Y0 Z0 (move back to origin)";
-
-		[Serializable]
-		public class ThreadingMode
-		{
-			public readonly int StatusQuery;
-			public readonly int TxLong;
-			public readonly int TxShort;
-			public readonly int RxLong;
-			public readonly int RxShort;
-			private readonly string Name;
-
-			public ThreadingMode(int query, int txlong, int txshort, int rxlong, int rxshort, string name)
-			{ StatusQuery = query; TxLong = txlong; TxShort = txshort; RxLong = rxlong; RxShort = rxshort; Name = name; }
-
-			public static ThreadingMode Slow
-			{ get { return new ThreadingMode(2000, 15, 4, 2, 1, "Slow"); } }
-
-			public static ThreadingMode Quiet
-			{ get { return new ThreadingMode(1000, 10, 2, 1, 1, "Quiet"); } }
-
-			public static ThreadingMode Fast
-			{ get { return new ThreadingMode(500, 5, 1, 1, 0, "Fast"); } }
-
-			public static ThreadingMode UltraFast
-			{ get { return new ThreadingMode(200, 1, 0, 0, 0, "UltraFast"); } }
-
-			public static ThreadingMode Insane
-			{ get { return new ThreadingMode(100, 1, 0, 0, 0, "Insane"); } }
-
-			public override string ToString()
-			{ return Name; }
-
-			public override bool Equals(object obj)
-			{ return obj != null && obj is ThreadingMode && ((ThreadingMode)obj).Name == Name; }
-			public override int GetHashCode()
-			{
-				return base.GetHashCode();
-			}
-		}
 
 		public enum DetectedIssue
 		{

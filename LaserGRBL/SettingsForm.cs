@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -41,7 +42,7 @@ namespace LaserGRBL
 			CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			CBStreamingMode.SelectedItem = Settings.GetObject("Streaming Mode", GrblCore.StreamingMode.Buffered);
 			CbUnidirectional.Checked = Settings.GetObject("Unidirectional Engraving", false);
-			CbThreadingMode.SelectedItem = Settings.GetObject("Threading Mode", GrblCore.ThreadingMode.UltraFast);
+			CbThreadingMode.SelectedItem = Settings.GetObject("Threading Mode", ThreadingMode.UltraFast);
 			CbIssueDetector.Checked = !Settings.GetObject("Do not show Issue Detector", false);
 			CbSoftReset.Checked = Settings.GetObject("Reset Grbl On Connect", true);
 			CbHardReset.Checked = Settings.GetObject("HardReset Grbl On Connect", false);
@@ -67,15 +68,15 @@ namespace LaserGRBL
             CbPlayConnect.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Connect}.Enabled", true);
             CbPlayDisconnect.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}.Enabled", true);
 
-            successSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Success}", $"Sound\\{SoundEvent.EventId.Success}.wav"));
+            successSoundLabel.Text = Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Success}", $"Sound\\{SoundEvent.EventId.Success}.wav"));
             SuccesFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Success}", $"Sound\\{SoundEvent.EventId.Success}.wav");
-            warningSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Warning}", $"Sound\\{SoundEvent.EventId.Warning}.wav"));
+            warningSoundLabel.Text = Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Warning}", $"Sound\\{SoundEvent.EventId.Warning}.wav"));
             WarningFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Warning}", $"Sound\\{SoundEvent.EventId.Warning}.wav");
-            fatalSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Fatal}", $"Sound\\{SoundEvent.EventId.Fatal}.wav"));
+            fatalSoundLabel.Text = Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Fatal}", $"Sound\\{SoundEvent.EventId.Fatal}.wav"));
             ErrorFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Fatal}", $"Sound\\{SoundEvent.EventId.Fatal}.wav");
-            connectSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Connect}", $"Sound\\{SoundEvent.EventId.Connect}.wav"));
+            connectSoundLabel.Text = Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Connect}", $"Sound\\{SoundEvent.EventId.Connect}.wav"));
             ConnectFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Connect}", $"Sound\\{SoundEvent.EventId.Connect}.wav");
-            disconnectSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}", $"Sound\\{SoundEvent.EventId.Disconnect}.wav"));
+            disconnectSoundLabel.Text = Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}", $"Sound\\{SoundEvent.EventId.Disconnect}.wav"));
             DisconnectFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}", $"Sound\\{SoundEvent.EventId.Disconnect}.wav");
 
             groupBox1.ForeColor = groupBox2.ForeColor = groupBox3.ForeColor = ColorScheme.FormForeColor;
@@ -124,11 +125,11 @@ namespace LaserGRBL
         private void InitThreadingCB()
 		{
 			CbThreadingMode.BeginUpdate();
-			CbThreadingMode.Items.Add(GrblCore.ThreadingMode.Insane);
-			CbThreadingMode.Items.Add(GrblCore.ThreadingMode.UltraFast);
-			CbThreadingMode.Items.Add(GrblCore.ThreadingMode.Fast);
-			CbThreadingMode.Items.Add(GrblCore.ThreadingMode.Quiet);
-			CbThreadingMode.Items.Add(GrblCore.ThreadingMode.Slow);
+			CbThreadingMode.Items.Add(ThreadingMode.Insane);
+			CbThreadingMode.Items.Add(ThreadingMode.UltraFast);
+			CbThreadingMode.Items.Add(ThreadingMode.Fast);
+			CbThreadingMode.Items.Add(ThreadingMode.Quiet);
+			CbThreadingMode.Items.Add(ThreadingMode.Slow);
 			CbThreadingMode.EndUpdate();
 		}
 
@@ -245,7 +246,7 @@ namespace LaserGRBL
         {
             if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                successSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
+                successSoundLabel.Text = Path.GetFileName(SoundBrowserDialog.FileName);
                 SuccesFullLabel.Text = SoundBrowserDialog.FileName;
             }
         }
@@ -254,7 +255,7 @@ namespace LaserGRBL
         {
             if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                warningSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
+                warningSoundLabel.Text = Path.GetFileName(SoundBrowserDialog.FileName);
                 WarningFullLabel.Text = SoundBrowserDialog.FileName;
             }
         }
@@ -263,7 +264,7 @@ namespace LaserGRBL
         {
             if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                fatalSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
+                fatalSoundLabel.Text = Path.GetFileName(SoundBrowserDialog.FileName);
                 ErrorFullLabel.Text = SoundBrowserDialog.FileName;
             }
         }
@@ -272,7 +273,7 @@ namespace LaserGRBL
         {
             if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                connectSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
+                connectSoundLabel.Text = Path.GetFileName(SoundBrowserDialog.FileName);
                 ConnectFullLabel.Text = SoundBrowserDialog.FileName;
             }
         }
@@ -281,7 +282,7 @@ namespace LaserGRBL
         {
             if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                disconnectSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
+                disconnectSoundLabel.Text = Path.GetFileName(SoundBrowserDialog.FileName);
                 DisconnectFullLabel.Text = SoundBrowserDialog.FileName;
             }
         }

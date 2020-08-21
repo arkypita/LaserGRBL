@@ -298,6 +298,7 @@
     <Compile Include="SvgLibrary\Transforms\SvgTransformConverter.cs" />
     <Compile Include="SvgLibrary\Transforms\SvgTranslate.cs" />
     <Compile Include="SvgLibrary\Web\SvgHandler.cs" />
+    <Compile Include="ThreadingMode.cs" />
     <Compile Include="Tools\ExpressionEvaluator.cs" />
     <Compile Include="Tools\MathHelper.cs" />
     <Compile Include="Tools\WordWrap.cs" />
