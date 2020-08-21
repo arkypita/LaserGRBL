@@ -361,7 +361,6 @@
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RasterConverter\ImageProcessor.cs" />
-    <Compile Include="RasterConverter\ImageTransform.cs" />
     <Compile Include="RasterConverter\RasterToLaserForm.cs">
       <SubType>Form</SubType>
     </Compile>

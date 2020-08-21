@@ -68,6 +68,7 @@
     <Compile Include="RasterConverter\Dithering\Sierra3Dithering.cs" />
     <Compile Include="RasterConverter\Dithering\SierraLiteDithering.cs" />
     <Compile Include="RasterConverter\Dithering\StuckiDithering.cs" />
+    <Compile Include="RasterConverter\ImageTransform.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgCircle.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgEllipse.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgImage.cs" />
