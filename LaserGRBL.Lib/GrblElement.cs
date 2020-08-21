@@ -1,28 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace LaserGRBL
 {
-	public class GrblElement
+    public class GrblElement
 	{
-		protected Char mCommand;
-		protected Decimal mNumber;
+		protected char mCommand;
+		protected decimal mNumber;
 
 		public static implicit operator GrblElement(string value)
 		{ return new GrblElement(value[0], decimal.Parse(value.Substring(1), System.Globalization.CultureInfo.InvariantCulture)); }
 
-		public GrblElement(Char Command, Decimal Number)
+		public GrblElement(char Command, decimal Number)
 		{
 			mCommand = Command;
 			mNumber = Number;
 		}
 
-		public Char Command
+		public char Command
 		{ get { return mCommand; } }
 
-		public Decimal Number
+		public decimal Number
 		{ get { return mNumber; } }
 
 		public override string ToString()
@@ -36,8 +32,5 @@ namespace LaserGRBL
 
 		public override int GetHashCode()
 		{ return mCommand.GetHashCode() ^ mNumber.GetHashCode(); }
-
-		//internal void SetNumber(decimal p)
-		//{mNumber = p;}
 	}
 }

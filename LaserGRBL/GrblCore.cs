@@ -13,13 +13,11 @@ using System.Globalization;
 
 namespace LaserGRBL
 {
-	public enum Firmware
-	{ Grbl, Smoothie, Marlin }
 
-	/// <summary>
-	/// Description of CommandThread.
-	/// </summary>
-	public class GrblCore
+    /// <summary>
+    /// Description of CommandThread.
+    /// </summary>
+    public class GrblCore
 	{
 		//public static PSHelper.PSFile MaterialDB = PSHelper.PSFile.Load();
 		public static PSHelper.MaterialDB MaterialDB = PSHelper.MaterialDB.Load();
