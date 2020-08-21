@@ -24,13 +24,13 @@ namespace LaserGRBL
 		{
 			bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
-			public class CumulativeElement : Element
+			public class CumulativeElement : GrblElement
 			{
-				Element mDefault = null;
+				GrblElement mDefault = null;
 				bool mSettled = false;
 				decimal mPrevious = 0;
 
-				public CumulativeElement(Element defval) : base(defval.Command, defval.Number)
+				public CumulativeElement(GrblElement defval) : base(defval.Command, defval.Number)
 				{mDefault = defval;}
 
 				public bool IsDefault
@@ -39,7 +39,7 @@ namespace LaserGRBL
 				public bool IsSettled
 				{ get { return mSettled; } }
 
-				public void Update(Element e, bool Absolute, decimal offset)
+				public void Update(GrblElement e, bool Absolute, decimal offset)
 				{
 					mPrevious = mNumber;
 
@@ -54,12 +54,12 @@ namespace LaserGRBL
 				{ get { return mPrevious; } }
 			}
 
-			public class LastValueElement : Element
+			public class LastValueElement : GrblElement
 			{
-				Element mDefault = null;
+				GrblElement mDefault = null;
 				bool mSettled = false;
 
-				public LastValueElement(Element defval) : base(defval.Command, defval.Number)
+				public LastValueElement(GrblElement defval) : base(defval.Command, defval.Number)
 				{ mDefault = defval; }
 
 				public bool IsDefault
@@ -68,7 +68,7 @@ namespace LaserGRBL
 				public bool IsSettled
 				{ get { return mSettled; } }
 
-				public void Update(Element e)
+				public void Update(GrblElement e)
 				{
 					if (e != null)
 					{
@@ -263,18 +263,18 @@ namespace LaserGRBL
 			Coolant State				M7, M8, [M9]
 			*/
 
-			public class ModalElement : Element
+			public class ModalElement : GrblElement
 			{
-				List<Element> mOptions = new List<Element>();
-				Element mDefault = null;
+				List<GrblElement> mOptions = new List<GrblElement>();
+				GrblElement mDefault = null;
 				bool mSettled = false;
 				
 
-				public ModalElement(Element defval, params Element[] options) : base(defval.Command, defval.Number)
+				public ModalElement(GrblElement defval, params GrblElement[] options) : base(defval.Command, defval.Number)
 				{
 					mDefault = defval;
 					mOptions.Add(defval);
-					foreach (Element e in options)
+					foreach (GrblElement e in options)
 						mOptions.Add(e);
 				}
 
@@ -284,7 +284,7 @@ namespace LaserGRBL
 				public bool IsSettled
 				{ get { return mSettled; } }
 
-				public void Update(Element e)
+				public void Update(GrblElement e)
 				{
 					if (e != null && mOptions.Contains(e))
 					{ 
@@ -337,9 +337,9 @@ namespace LaserGRBL
 				SpindleState.Update(cmd.M);
 			}
 
-			public IEnumerable<Element> GetSettledModals()
+			public IEnumerable<GrblElement> GetSettledModals()
 			{
-				List<Element> rv = new List<Element>();
+				List<GrblElement> rv = new List<GrblElement>();
 
 				AddSettled(rv, CoordinateSelect);
 				AddSettled(rv, PlaneSelect);
@@ -355,7 +355,7 @@ namespace LaserGRBL
 				return rv;
 			}
 
-			private void AddSettled(List<Element> list, ModalElement element)
+			private void AddSettled(List<GrblElement> list, ModalElement element)
 			{if (element.IsSettled) list.Add(element);}
 
 		}

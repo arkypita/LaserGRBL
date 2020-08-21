@@ -49,46 +49,11 @@ namespace LaserGRBL
 
 	public partial class GrblCommand : ICloneable, IGrblRow
 	{
-		public class Element
-		{
-			protected Char mCommand;
-			protected Decimal mNumber;
-
-			public static implicit operator Element(string value)
-			{return new Element(value[0], decimal.Parse(value.Substring(1), System.Globalization.CultureInfo.InvariantCulture));}
-
-			public Element(Char Command, Decimal Number)
-			{
-				mCommand = Command;
-				mNumber = Number;
-			}
-
-			public Char Command
-			{ get { return mCommand; } }
-
-			public Decimal Number
-			{ get { return mNumber; } }
-
-			public override string ToString()
-			{ return Command + Number.ToString(System.Globalization.CultureInfo.InvariantCulture); }
-
-			public override bool Equals(object obj)
-			{
-				Element o = obj as Element;
-				return o != null && o.mCommand == mCommand && o.mNumber == mNumber;
-			}
-
-			public override int GetHashCode()
-			{return mCommand.GetHashCode() ^ mNumber.GetHashCode();}
-
-			//internal void SetNumber(decimal p)
-			//{mNumber = p;}
-		}
-
+		
 		private string mLine;
 		private string mCodedResult;
 		private TimeSpan mTimeOffset;
-		private Dictionary<char, GrblCommand.Element> mHelper;
+		private Dictionary<char, GrblElement> mHelper;
 
 		private int mRepeatCount;
 
@@ -98,15 +63,15 @@ namespace LaserGRBL
 		public GrblCommand(string line, int repeat)
 		{ mLine = line.ToUpper().Trim(); mRepeatCount = repeat; }
 
-		public GrblCommand(IEnumerable<Element> elements)
+		public GrblCommand(IEnumerable<GrblElement> elements)
 		{
 			mLine = "";
-			foreach (GrblCommand.Element e in elements)
+			foreach (GrblElement e in elements)
 				mLine = mLine + e.ToString() + " ";
 			mLine = mLine.TrimEnd().ToUpper();
 		}
 
-		public GrblCommand(Element first, GrblCommand toappend)
+		public GrblCommand(GrblElement first, GrblCommand toappend)
 		{
 			mLine = string.Format("{0} {1}", first, toappend.mLine);
 		}
@@ -121,7 +86,7 @@ namespace LaserGRBL
 
 			try
 			{
-				mHelper = new Dictionary<char, Element>();
+				mHelper = new Dictionary<char, GrblElement>();
 				char cmd = '\0';
 				string num = "";
 				bool comment = false;
@@ -153,7 +118,7 @@ namespace LaserGRBL
 							if (Char.IsLetter(c))
 							{
 								if (cmd != '\0') //chiudi il comando precedente
-									Add(new Element(cmd, Decimal.Parse(num, System.Globalization.NumberFormatInfo.InvariantInfo)));
+									Add(new GrblElement(cmd, Decimal.Parse(num, System.Globalization.NumberFormatInfo.InvariantInfo)));
 
 								cmd = c; //apri il comando successivo
 								num = "";
@@ -171,7 +136,7 @@ namespace LaserGRBL
 					mLine = sb.ToString();
 
 					if (cmd != '\0')
-						Add(new Element(cmd, Decimal.Parse(num, System.Globalization.NumberFormatInfo.InvariantInfo))); //aggiungi l'ultimo
+						Add(new GrblElement(cmd, Decimal.Parse(num, System.Globalization.NumberFormatInfo.InvariantInfo))); //aggiungi l'ultimo
 				}
 			}
 			catch { }
@@ -251,7 +216,7 @@ namespace LaserGRBL
 
 
 
-		private void Add(Element element)
+		private void Add(GrblElement element)
 		{ mHelper.Add(element.Command, element); }
 
 		public void SetResult(string result, bool decode) //ERROR:NUM
@@ -274,7 +239,7 @@ namespace LaserGRBL
 		
 		#region G Codes
 
-		public Element G
+		public GrblElement G
 		{ get { return GetElement('G'); } }
 
 		public bool IsMovement
@@ -319,7 +284,7 @@ namespace LaserGRBL
 
 		#region M Codes
 
-		public Element M
+		public GrblElement M
 		{ get { return GetElement('M'); } }
 
 		public bool IsLaserON
@@ -341,39 +306,39 @@ namespace LaserGRBL
 
 		#region Parameters
 	
-		public Element T
+		public GrblElement T
 		{ get { return GetElement('T'); } }
 
-		public Element S
+		public GrblElement S
 		{ get { return GetElement('S'); } }
 
-		public Element P
+		public GrblElement P
 		{ get { return GetElement('P'); } }
 
-		public Element X
+		public GrblElement X
 		{ get { return GetElement('X'); } }
 
-		public Element Y
+		public GrblElement Y
 		{ get { return GetElement('Y'); } }
 
-		public Element Z
+		public GrblElement Z
 		{ get { return GetElement('Z'); } }
 
-		public Element I
+		public GrblElement I
 		{ get { return GetElement('I'); } }
 
-		public Element J
+		public GrblElement J
 		{ get { return GetElement('J'); } }
 
-		public Element F
+		public GrblElement F
 		{ get { return GetElement('F'); } }
 
-		public Element R
+		public GrblElement R
 		{ get { return GetElement('R'); } }
 
 		#endregion
 
-		private Element GetElement(char key)
+		private GrblElement GetElement(char key)
 		{ return mHelper.ContainsKey(key) ? mHelper[key] : null; }
 
 		public string GetMessage() //per la visualizzazione

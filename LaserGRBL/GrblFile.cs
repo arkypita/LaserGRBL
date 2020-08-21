@@ -16,7 +16,7 @@ using System.Linq;
 
 namespace LaserGRBL
 {
-	public class GrblFile : IEnumerable<GrblCommand>
+    public class GrblFile : IEnumerable<GrblCommand>
 	{
 		public enum CartesianQuadrant { I, II, III, IV, Mix, Unknown }
 
@@ -35,8 +35,8 @@ namespace LaserGRBL
 
 		public GrblFile(decimal x, decimal y, decimal x1, decimal y1)
 		{
-			mRange.UpdateXYRange(new GrblCommand.Element('X', x), new GrblCommand.Element('Y', y), false);
-			mRange.UpdateXYRange(new GrblCommand.Element('X', x1), new GrblCommand.Element('Y', y1), false);
+			mRange.UpdateXYRange(new GrblElement('X', x), new GrblElement('Y', y), false);
+			mRange.UpdateXYRange(new GrblElement('X', x1), new GrblElement('Y', y1), false);
 		}
 
 		public void SaveProgram(string filename, bool header, bool footer, bool between, int cycles)
@@ -1097,139 +1097,6 @@ namespace LaserGRBL
 
 		public GrblCommand this[int index]
 		{ get { return list[index]; } }
-
-	}
-
-
-
-
-
-
-	public class ProgramRange
-	{
-		public class XYRange
-		{
-			public class Range
-			{
-				public decimal Min;
-				public decimal Max;
-
-				public Range()
-				{ ResetRange(); }
-
-				public void UpdateRange(decimal val)
-				{
-					Min = Math.Min(Min, val);
-					Max = Math.Max(Max, val);
-				}
-
-				public void ResetRange()
-				{
-					Min = decimal.MaxValue;
-					Max = decimal.MinValue;
-				}
-
-				public bool ValidRange
-				{ get { return Min != decimal.MaxValue && Max != decimal.MinValue; } }
-			}
-
-			public Range X = new Range();
-			public Range Y = new Range();
-
-			public void UpdateRange(GrblCommand.Element x, GrblCommand.Element y)
-			{
-				if (x != null) X.UpdateRange(x.Number);
-				if (y != null) Y.UpdateRange(y.Number);
-			}
-
-			public void ResetRange()
-			{
-				X.ResetRange();
-				Y.ResetRange();
-			}
-
-			public bool ValidRange
-			{ get { return X.ValidRange && Y.ValidRange; } }
-
-			public decimal Width
-			{ get { return X.Max - X.Min; } }
-
-			public decimal Height
-			{ get { return Y.Max - Y.Min; } }
-
-			public PointF Center
-			{
-				get
-				{
-					if (ValidRange)
-						return new PointF((float)X.Min + (float)Width / 2.0f, (float)Y.Min + (float)Height / 2.0f);
-					else
-						return new PointF(0, 0);
-				}
-			}
-		}
-
-		public class SRange
-		{
-			public class Range
-			{
-				public decimal Min;
-				public decimal Max;
-
-				public Range()
-				{ ResetRange(); }
-
-				public void UpdateRange(decimal val)
-				{
-					Min = Math.Min(Min, val);
-					Max = Math.Max(Max, val);
-				}
-
-				public void ResetRange()
-				{
-					Min = decimal.MaxValue;
-					Max = decimal.MinValue;
-				}
-
-				public bool ValidRange
-				{ get { return Min != Max && Min != decimal.MaxValue && Max != decimal.MinValue && Max > 0; } }
-			}
-
-			public Range S = new Range();
-
-			public void UpdateRange(decimal s)
-			{
-				S.UpdateRange(s);
-			}
-
-			public void ResetRange()
-			{
-				S.ResetRange();
-			}
-
-			public bool ValidRange
-			{ get { return S.ValidRange; } }
-		}
-
-		public XYRange DrawingRange = new XYRange();
-		public XYRange MovingRange = new XYRange();
-		public SRange SpindleRange = new SRange();
-
-		public void UpdateXYRange(GrblCommand.Element X, GrblCommand.Element Y, bool drawing)
-		{
-			if (drawing) DrawingRange.UpdateRange(X, Y);
-			MovingRange.UpdateRange(X, Y);
-		}
-
-		public void UpdateSRange(GrblCommand.Element S)
-		{ if (S != null) SpindleRange.UpdateRange(S.Number); }
-
-		public void ResetRange()
-		{
-			DrawingRange.ResetRange();
-			MovingRange.ResetRange();
-			SpindleRange.ResetRange();
-		}
 
 	}
 
