@@ -1,4 +1,3 @@
-﻿@@ -1,1408 +0,0 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -35,15 +34,6 @@ namespace Tools
 			public abstract bool EvaluateB(Dictionary<string, double> variables);
 		}
 		protected DynamicFunction dynamicFunction;
-		//protected AppDomain NewAppDomain;
-
-		#region Class variable
-		//class Variable
-		//{
-		//    public string name;
-		//    public double val;
-		//}
-		#endregion
 
 		#region Member data
 		protected string inFunction = string.Empty; // Infix function.
@@ -54,11 +44,6 @@ namespace Tools
 		protected string[] splitPostFunction;
 		private bool compilecode = false;
 		#endregion
-
-		~Expression()
-		{
-			//NewAppDomain.;
-		}
 
 		#region Constructors
 		/// <summary>
@@ -80,24 +65,9 @@ namespace Tools
 		/// <param name="function">The function to be evaluated.</param>
 		public Expression(string function)
 		{
-			this.Function = function;
+			Function = function;
 		}
 
-		///// <summary>
-		///// Copy constructor.
-		///// </summary>
-		///// <remarks><pre>
-		///// 19 Jul 2004 - Jeremy Roberts
-		///// </pre></remarks>
-		///// <param name="function">The function to be evaluated.</param>
-		//public Expression(Expression cloneMe)
-		//{
-		//    this.Function = cloneMe.Function;
-		//    foreach (string key in cloneMe.variables.Keys)
-		//    {
-		//        this.AddSetVariable(key, (double)cloneMe.variables[key]);
-		//    }
-		//}
 		#endregion
 
 		#region properties
@@ -109,19 +79,19 @@ namespace Tools
 		/// </pre></remarks>
 		public string Function
 		{
-			get { return this.inFunction; }
+			get { return inFunction; }
 			set
 			{
 				// This will throw an error if it does not validate.
-				this.Validate(value);
+				Validate(value);
 
 				// Function is valid.
-				this.inFunction = value;
-				this.postFunction = this.Infix2Postfix(this.inFunction);
-				this.splitPostFunction = postFunction.Split(new char[] { ' ' });
-				this.ClearVariables();
-				if (this.compilecode)
-					this.compile();
+				inFunction = value;
+				postFunction = Infix2Postfix(inFunction);
+				splitPostFunction = postFunction.Split(new char[] { ' ' });
+				ClearVariables();
+				if (compilecode)
+					compile();
 			}
 		}
 
@@ -144,13 +114,13 @@ namespace Tools
 		/// </pre></remarks>
 		public string InFix
 		{
-			get { return this.Expand(inFunction); }
+			get { return Expand(inFunction); }
 		}
 
 		public bool Compile
 		{
-			get { return this.compilecode; }
-			set { this.compilecode = value; }
+			get { return compilecode; }
+			set { compilecode = value; }
 		}
 		#endregion
 
@@ -164,7 +134,7 @@ namespace Tools
 		/// <returns>A post fix string.</returns>
 		protected string Infix2Postfix(string func)
 		{
-			func = this.Expand(func);
+			func = Expand(func);
 
 			string[] inFix = func.Split(new char[] { ' ' });
 
@@ -178,7 +148,7 @@ namespace Tools
 			foreach (string token in inFix)
 			{
 				// If the token is an operand
-				if (this.IsOperand(token))
+				if (IsOperand(token))
 				{
 					//push on the postfix vector
 					postFix.Push(token);
@@ -205,12 +175,12 @@ namespace Tools
 					}
 				}
 				// If the token is an operator
-				else if (this.IsOperator(token))
+				else if (IsOperator(token))
 				{
 					// while precedence of the operator is <= precedence of the token
 					while (operators.Count > 0)
 					{
-						if (this.GetPrecedence(token) <= this.GetPrecedence(operators.Peek()))
+						if (GetPrecedence(token) <= GetPrecedence(operators.Peek()))
 						{
 							// pop the operatorVector and store operator
 							currOperator = operators.Pop();
@@ -254,7 +224,7 @@ namespace Tools
 		/// <returns></returns>
 		protected bool IsOperand(string token)
 		{
-			if (!this.IsOperator(token) &&
+			if (!IsOperator(token) &&
 				token != "(" &&
 				token != ")" &&
 				token != "{" &&
@@ -319,9 +289,7 @@ namespace Tools
 			function = function.Replace("==", " == ");
 			function = function.Replace(">=", " >= ");
 			function = function.Replace("<=", " <= ");
-			//function = function.Replace("<", " < ");
 			function = Regex.Replace(function, @"<([^=]|$)", @" < $1");
-			//function = function.Replace(">", " > ");
 			function = Regex.Replace(function, @">([^=]|$)", @" > $1");
 			function = function.Replace("!=", " != ");
 			function = function.Replace("sign", " sign ");
@@ -331,7 +299,7 @@ namespace Tools
 			function = Regex.Replace(function, @"[ ]+", @" ");
 
 			// Find and correct for scientific notation
-			function = Expression.ScientificNotationCorrection(function);
+			function = ScientificNotationCorrection(function);
 
 			// Fix negative real values. Ex:  "1 + - 2" = "1 + -2". "1 + - 2e-1" = "1 + -2e-1".
 			function = Regex.Replace(
@@ -355,15 +323,13 @@ namespace Tools
 			while ((n <= function.Length) && (n > -1))
 			{
 				// Find the previous space.
-				int prevCut = -1;
-				int nextCut = -1;
+				int prevCut;
+				int nextCut;
 
 				if (n - 2 <= 0)
 					prevCut = 0;
 				else
 					prevCut = function.LastIndexOf(" ", n - 2, n - 2) + 1;
-				//prevCut = n-2 <= 0 ? 0 : function.LastIndexOf(" ", n-2, n-2) + 1;
-				//prevSpace = function.LastIndexOf(" ", n-2, n-2);
 
 				if (n + 2 < function.Length)
 					nextCut = function.IndexOf(" ", n + 2);
@@ -375,10 +341,10 @@ namespace Tools
 				string checkMe = checkMeSpace.Replace(" ", string.Empty);
 
 				bool realValue = false;
-				double val = Double.NaN;
+				double val = double.NaN;
 				try
 				{
-					val = Double.Parse(checkMe, System.Globalization.CultureInfo.InvariantCulture);
+					val = double.Parse(checkMe, System.Globalization.CultureInfo.InvariantCulture);
 					realValue = true;
 				}
 				catch { }
@@ -386,7 +352,6 @@ namespace Tools
 				if (realValue)
 				{
 					function = function.Replace(checkMeSpace, checkMe);
-					//n = n - checkMeSpace.Length + checkMe.Length;
 					n = prevCut + checkMe.Length - 1;
 				}
 
@@ -509,10 +474,10 @@ namespace Tools
 			if (token == "true" || token == "false")
 				return false;
 
-			if (!this.IsOperand(token))
+			if (!IsOperand(token))
 				return false;
 
-			if (this.IsNumber(token))
+			if (IsNumber(token))
 				return false;
 
 			return true;
@@ -523,11 +488,11 @@ namespace Tools
 			get
 			{
 				// Check to see that the function is valid.
-				if (this.inFunction.Equals(string.Empty) || this.inFunction == null)
+				if (inFunction.Equals(string.Empty) || inFunction == null)
 					throw new Exception("Function does not exist");
 
 				// Expand the function.
-				string func = this.Expand(inFunction);
+				string func = Expand(inFunction);
 
 				// Tokenize the funcion.
 				string[] inFix = func.Split(new char[] { ' ' });
@@ -538,7 +503,7 @@ namespace Tools
 				// Check each token to see if its a variable.
 				foreach (string token in inFix)
 				{
-					if (this.IsVariable(token))
+					if (IsVariable(token))
 						retVal.Add(token);
 				}
 
@@ -568,7 +533,7 @@ namespace Tools
 
 		protected bool Validate(string inFix)
 		{
-			string inFixClean = this.Expand(inFix);
+			string inFixClean = Expand(inFix);
 			string[] func = inFixClean.Split(new char[] { ' ' });
 
 			// Check parenthesis
@@ -580,19 +545,19 @@ namespace Tools
 				{
 					if (i == func.Length - 1)
 						throw new Exception("Operator error! abs does not have a \"(\"" + inFix);
-					else if ((string)func[i + 1] != "(")
+					else if (func[i + 1] != "(")
 						throw new Exception("Operator error! abs does not have a \"(\"" + inFix);
 				}
 
 				// Make sure the neg function is formatted correctly.
 				if (func[i] == "neg")
 					if (i != 0)
-						if (this.IsOperand(func[i - 1]))
+						if (IsOperand(func[i - 1]))
 							throw new Exception("Operator error! neg used improperly." + inFix);
 
 				if (i > 0 && i < func.Length - 1)
 					if (func[i] == "(" || func[i] == ")")
-						if (this.IsOperand(func[i - 1]) && this.IsOperand(func[i + 1]))
+						if (IsOperand(func[i - 1]) && IsOperand(func[i + 1]))
 							throw new Exception("Operator error!" + func[i] + " used improperly." + inFix);
 
 				if (func[i] == "(")
@@ -611,16 +576,14 @@ namespace Tools
 
 			// Create a temporary vector to hold the secondary stack.
 			Stack<string> workstack = new Stack<string>();
-			func = this.Infix2Postfix(inFix).Split(new char[] { ' ' });
-
-			// loop through the postfix vector
-			string token = string.Empty;
+			func = Infix2Postfix(inFix).Split(new char[] { ' ' });
 			for (int i = 0; i < func.Length; i++)
 			{
-				token = func[i];
+				// loop through the postfix vector
+				string token = func[i];
 
 				// If the current string is an operator
-				if (this.IsOperator(token))
+				if (IsOperator(token))
 				{
 					if (token == "abs" ||
 						token == "neg" ||
@@ -681,21 +644,17 @@ namespace Tools
 			Stack<string> workstack = new Stack<string>();
 			string sLeft;
 			string sRight;
-			double dLeft = 0;
 			double dRight = 0;
 			double dResult = 0;
-
-			//this.splitPostFunction = postFunction.Split(new char[] { ' ' });
-
-			// loop through the postfix vector
-			string token = string.Empty;
-			for (int i = 0, numCount = this.splitPostFunction.Length; i < numCount; i++)
+			for (int i = 0, numCount = splitPostFunction.Length; i < numCount; i++)
 			{
-				token = this.splitPostFunction[i];
+				// loop through the postfix vector
+				string token = splitPostFunction[i];
 
 				// If the current string is an operator
-				if (this.IsOperator(token))
+				if (IsOperator(token))
 				{
+					double dLeft;
 					// Single operand operators.
 					if (token == "abs" ||
 						token == "neg" ||
@@ -705,7 +664,7 @@ namespace Tools
 						sLeft = workstack.Pop();
 
 						// Convert the operands
-						dLeft = this.ConvertString(sLeft);
+						dLeft = ConvertString(sLeft);
 					}
 					// Double operand operators
 					else
@@ -717,8 +676,8 @@ namespace Tools
 						sLeft = workstack.Pop();
 
 						// Convert the operands
-						dLeft = this.ConvertString(sLeft);
-						dRight = this.ConvertString(sRight);
+						dLeft = ConvertString(sLeft);
+						dRight = ConvertString(sRight);
 					}
 
 					// call the operator
@@ -779,7 +738,7 @@ namespace Tools
 			}
 
 			// Check to see if the value on the back is a variable.
-			return this.ConvertString(workstack.Peek());
+			return ConvertString(workstack.Peek());
 		}
 
 		/// <summary>
@@ -806,20 +765,6 @@ namespace Tools
 					// Convert the operand
 					return double.Parse(token, System.Globalization.CultureInfo.InvariantCulture);
 			}
-
-			/*
-			// If operand is a variable
-			if (this.IsVariable(token))
-				// Get variable value
-				return this.GetVariableValue(token);
-			else if (token == "true")
-				return TRUE;
-			else if (token == "false")
-				return FALSE;
-			else
-				// Convert the operand
-				return double.Parse(token);
-			*/
 		}
 
 		/// <summary>
@@ -861,24 +806,19 @@ namespace Tools
 
 			// Create a temporary vector to hold the secondary stack.
 			Stack<string> workstack = new Stack<string>();
-			string sLeft = string.Empty;
-			string sRight = string.Empty;
 			string sResult = string.Empty;
-			double dLeft = 0;
 			double dRight = 0;
-			double dResult = 0;
-
 			string[] func = postFunction.Split(new char[] { ' ' });
-
-			// loop through the postfix vector
-			string token = string.Empty;
 			for (int i = 0; i < func.Length; i++)
 			{
-				token = func[i];
+				// loop through the postfix vector
+				string token = func[i];
 
 				// If the current string is an operator
-				if (this.IsOperator(token))
+				if (IsOperator(token))
 				{
+					string sLeft;
+					double dLeft;
 					// Single operand operators.
 					if (token == "abs" ||
 						token == "neg")
@@ -887,22 +827,23 @@ namespace Tools
 						sLeft = workstack.Pop();
 
 						// Convert the operands
-						dLeft = this.ConvertString(sLeft);
+						dLeft = ConvertString(sLeft);
 					}
 					// Double operand operators
 					else
 					{
 						// Get right operand
-						sRight = workstack.Pop();
+						string sRight = workstack.Pop();
 
 						// Get left operand
 						sLeft = workstack.Pop();
 
 						// Convert the operands
-						dLeft = this.ConvertString(sLeft);
-						dRight = this.ConvertString(sRight);
+						dLeft = ConvertString(sLeft);
+						dRight = ConvertString(sRight);
 					}
 
+					double dResult;
 					// call the operator
 					switch (token)
 					{
@@ -994,14 +935,8 @@ namespace Tools
 				}
 			}
 
-			//if (workstack.back() == "true")
-			//    return true;
-			//else
-			//    return false;
-
-			if (this.ConvertString(workstack.Peek()) == TRUE)
+			if (ConvertString(workstack.Peek()) == TRUE)
 				return true;
-			//if (this.ConvertString(workstack.Peek()) == FALSE)
 			return false;
 		}
 
@@ -1040,17 +975,11 @@ namespace Tools
 			// Create a new AppDomain.
 			// Set up assembly.
 			//
-			//NewAppDomain = System.AppDomain.CreateDomain("NewApplicationDomain");
-			//NewAppDomain = appDomain;
-
 			AssemblyName assemblyName = new AssemblyName();
 			assemblyName.Name = "EmittedAssembly";
 			AssemblyBuilder assembly = Thread.GetDomain().DefineDynamicAssembly(
-				//AssemblyBuilder assembly = NewAppDomain.DefineDynamicAssembly(
 				assemblyName,
-				//AssemblyBuilderAccess.Save);
 				AssemblyBuilderAccess.Run);
-			//AssemblyBuilderAccess.RunAndSave);
 
 			// Add Dynamic Module
 			//
@@ -1088,7 +1017,7 @@ namespace Tools
 				args);
 			ILGenerator methodILD;
 			methodILD = evalMethodD.GetILGenerator();
-			emitFunction(this.PostFix, methodILD);
+			emitFunction(PostFix, methodILD);
 
 			// Define "EvaluateB" function.
 			//
@@ -1099,15 +1028,12 @@ namespace Tools
 				args);
 			ILGenerator methodILB;
 			methodILB = evalMethodB.GetILGenerator();
-			emitFunction(this.PostFix, methodILB);
+			emitFunction(PostFix, methodILB);
 
 			// Create an object to use.
 			//
 			Type dt = dynamicFunctionClass.CreateType();
-			//assembly.Save("assem.dll");
-			//assembly.Save("x.exe");
-			//return (function)Activator.CreateInstance(dt, new Object[] { });
-			this.dynamicFunction = (DynamicFunction)Activator.CreateInstance(dt, new Object[] { });
+			dynamicFunction = (DynamicFunction)Activator.CreateInstance(dt, new Object[] { });
 		}
 
 		protected void emitFunction(string function, ILGenerator ilGen)
@@ -1121,7 +1047,7 @@ namespace Tools
 			foreach (string token in splitFunction)
 			{
 				// If the current string is an operator
-				if (this.IsOperator(token))
+				if (IsOperator(token))
 				{
 					// call the operator
 					switch (token)
@@ -1150,8 +1076,8 @@ namespace Tools
 						case "/":
 							{
 								// Divide the operands
-								System.Reflection.Emit.Label pushNaN = ilGen.DefineLabel();
-								System.Reflection.Emit.Label exit = ilGen.DefineLabel();
+								Label pushNaN = ilGen.DefineLabel();
+								Label exit = ilGen.DefineLabel();
 
 								// Store the two variables.
 								ilGen.Emit(OpCodes.Stloc_0); // store b in 0
@@ -1190,8 +1116,8 @@ namespace Tools
 						case "sign":
 							{
 								// Get the sign.
-								System.Reflection.Emit.Label pushNeg = ilGen.DefineLabel();
-								System.Reflection.Emit.Label exit = ilGen.DefineLabel();
+								Label pushNeg = ilGen.DefineLabel();
+								Label exit = ilGen.DefineLabel();
 
 								// Compare to see if the value is less then 0
 								ilGen.Emit(OpCodes.Stloc_0); // store
@@ -1234,8 +1160,8 @@ namespace Tools
 						case "<=":
 							{
 								// Make the comparison.
-								System.Reflection.Emit.Label pushFalse = ilGen.DefineLabel();
-								System.Reflection.Emit.Label exit = ilGen.DefineLabel();
+								Label pushFalse = ilGen.DefineLabel();
+								Label exit = ilGen.DefineLabel();
 
 								// Compare the two values.
 								ilGen.Emit(OpCodes.Cgt);
@@ -1264,8 +1190,8 @@ namespace Tools
 						case ">=":
 							{
 								// Make the comparison.
-								System.Reflection.Emit.Label pushFalse = ilGen.DefineLabel();
-								System.Reflection.Emit.Label exit = ilGen.DefineLabel();
+								Label pushFalse = ilGen.DefineLabel();
+								Label exit = ilGen.DefineLabel();
 
 								// Compare the two values.
 								ilGen.Emit(OpCodes.Clt);
@@ -1300,8 +1226,8 @@ namespace Tools
 						case "!=":
 							{
 								// Make the comparison.
-								System.Reflection.Emit.Label pushFalse = ilGen.DefineLabel();
-								System.Reflection.Emit.Label exit = ilGen.DefineLabel();
+								Label pushFalse = ilGen.DefineLabel();
+								Label exit = ilGen.DefineLabel();
 
 								// Compare the two values.
 								ilGen.Emit(OpCodes.Ceq);
@@ -1323,8 +1249,8 @@ namespace Tools
 						case "||":
 							{
 								// Make the comparison.
-								System.Reflection.Emit.Label pushTrue = ilGen.DefineLabel();
-								System.Reflection.Emit.Label exit = ilGen.DefineLabel();
+								Label pushTrue = ilGen.DefineLabel();
+								Label exit = ilGen.DefineLabel();
 
 								// Store the two variables.
 								ilGen.Emit(OpCodes.Stloc_0);
@@ -1351,8 +1277,8 @@ namespace Tools
 						case "&&":
 							{
 								// Make the comparison.
-								System.Reflection.Emit.Label pushFalse = ilGen.DefineLabel();
-								System.Reflection.Emit.Label exit = ilGen.DefineLabel();
+								Label pushFalse = ilGen.DefineLabel();
+								Label exit = ilGen.DefineLabel();
 
 								// Store the two variables.
 								ilGen.Emit(OpCodes.Stloc_0);
@@ -1384,9 +1310,8 @@ namespace Tools
 					ilGen.Emit(OpCodes.Ldarg_1);
 					ilGen.Emit(OpCodes.Ldstr, token);
 					ilGen.EmitCall(OpCodes.Callvirt,
-						typeof(System.Collections.Generic.Dictionary<string, double>).GetMethod("get_Item"),
+						typeof(Dictionary<string, double>).GetMethod("get_Item"),
 						null);
-					//ilGen.Emit(OpCodes.Unbox_Any, typeof(System.Double));
 				}
 				else if (token.Equals("true"))
 				{
