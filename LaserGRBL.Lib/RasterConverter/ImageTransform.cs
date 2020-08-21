@@ -4,17 +4,10 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
-using System.IO;
-
 
 namespace LaserGRBL.RasterConverter
 {
@@ -46,11 +39,11 @@ namespace LaserGRBL.RasterConverter
 				g.InterpolationMode = interpolation;
 
 
-				g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+				g.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
-				using (System.Drawing.Imaging.ImageAttributes wrapMode = new System.Drawing.Imaging.ImageAttributes())
+				using (ImageAttributes wrapMode = new System.Drawing.Imaging.ImageAttributes())
 				{
-					wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
+					wrapMode.SetWrapMode(WrapMode.TileFlipXY);
 					g.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
 				}
 			}
@@ -238,13 +231,15 @@ namespace LaserGRBL.RasterConverter
 			 * by this when testing images with large swathes of transparency!
 			 */
 
-			return gray < 128 ? new Cyotek.Drawing.ArgbColor(pixel.A, 0, 0, 0) : new Cyotek.Drawing.ArgbColor(pixel.A, 255, 255, 255);
+			if (gray < 128)
+				return new Cyotek.Drawing.ArgbColor(pixel.A, 0, 0, 0);
+			else
+				return new Cyotek.Drawing.ArgbColor(pixel.A, 255, 255, 255);
 		}
 
 
 		public static Bitmap GrayScale(Image img, float R, float G, float B, float brightness, float contrast, Formula formula)
 		{
-			ColorMatrix cm = default(ColorMatrix);
 
 			// Apply selected grayscale formula
 
@@ -277,11 +272,11 @@ namespace LaserGRBL.RasterConverter
 				BlueFactor = 0.333F * B;
 			}
 
-			RedFactor = RedFactor * contrast;
-			GreenFactor = GreenFactor * contrast;
-			BlueFactor = BlueFactor * contrast;
+			RedFactor *= contrast;
+			GreenFactor *= contrast;
+			BlueFactor *= contrast;
 
-			cm = new ColorMatrix(new float[][] {
+			ColorMatrix cm = new ColorMatrix(new float[][] {
 				new float[] {RedFactor,RedFactor,RedFactor,0F,0F},
 				new float[] {GreenFactor,GreenFactor,GreenFactor,0F,0F},
 				new float[] {BlueFactor,BlueFactor,BlueFactor,0F,0F},
@@ -289,9 +284,7 @@ namespace LaserGRBL.RasterConverter
 				new float[] {brightness,brightness,brightness,0F,1F}
 			});
 
-
 			return draw_adjusted_image(img, cm);
-
 		}
 
 
@@ -300,7 +293,7 @@ namespace LaserGRBL.RasterConverter
 			ColorSubstitutionFilter f = new ColorSubstitutionFilter();
 			f.ThresholdValue = threshold;
 			f.SourceColor = Color.White;
-			
+
 			f.NewColor = demo ? Color.LightPink : Color.Transparent;
 			return ColorSubstitution(src, f);
 		}
@@ -316,10 +309,6 @@ namespace LaserGRBL.RasterConverter
 			Marshal.Copy(sourceData.Scan0, resultBuffer, 0, resultBuffer.Length);
 
 			sourceBitmap.UnlockBits(sourceData);
-
-			byte sourceRed = 0, sourceGreen = 0, sourceBlue = 0, sourceAlpha = 0;
-			int resultRed = 0, resultGreen = 0, resultBlue = 0;
-
 			byte newRedValue = filterData.NewColor.R;
 			byte newGreenValue = filterData.NewColor.G;
 			byte newBlueValue = filterData.NewColor.B;
@@ -334,13 +323,13 @@ namespace LaserGRBL.RasterConverter
 
 			for (int k = 0; k < resultBuffer.Length; k += 4)
 			{
-				sourceAlpha = resultBuffer[k + 3];
+				byte sourceAlpha = resultBuffer[k + 3];
 
 				if (sourceAlpha != 0)
 				{
-					sourceBlue = resultBuffer[k];
-					sourceGreen = resultBuffer[k + 1];
-					sourceRed = resultBuffer[k + 2];
+					byte sourceBlue = resultBuffer[k];
+					byte sourceGreen = resultBuffer[k + 1];
+					byte sourceRed = resultBuffer[k + 2];
 
 					if ((sourceBlue < blueFilter + filterData.ThresholdValue &&
 							sourceBlue > blueFilter - filterData.ThresholdValue) &&
@@ -351,21 +340,21 @@ namespace LaserGRBL.RasterConverter
 						(sourceRed < redFilter + filterData.ThresholdValue &&
 							sourceRed > redFilter - filterData.ThresholdValue))
 					{
-						resultBlue = blueFilter - sourceBlue + newBlueValue;
+						int resultBlue = blueFilter - sourceBlue + newBlueValue;
 
 						if (resultBlue > maxValue)
 						{ resultBlue = maxValue; }
 						else if (resultBlue < minValue)
 						{ resultBlue = minValue; }
 
-						resultGreen = greenFilter - sourceGreen + newGreenValue;
+						int resultGreen = greenFilter - sourceGreen + newGreenValue;
 
 						if (resultGreen > maxValue)
 						{ resultGreen = maxValue; }
 						else if (resultGreen < minValue)
 						{ resultGreen = minValue; }
 
-						resultRed = redFilter - sourceRed + newRedValue;
+						int resultRed = redFilter - sourceRed + newRedValue;
 
 						if (resultRed > maxValue)
 						{ resultRed = maxValue; }
@@ -392,10 +381,10 @@ namespace LaserGRBL.RasterConverter
 
 			using (Graphics graphicsObject = Graphics.FromImage(copyBitmap))
 			{
-				graphicsObject.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-				graphicsObject.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-				graphicsObject.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-				graphicsObject.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+				graphicsObject.CompositingQuality = CompositingQuality.HighQuality;
+				graphicsObject.InterpolationMode = InterpolationMode.HighQualityBicubic;
+				graphicsObject.PixelOffsetMode = PixelOffsetMode.HighQuality;
+				graphicsObject.SmoothingMode = SmoothingMode.HighQuality;
 
 				graphicsObject.DrawImage(sourceBitmap, new Rectangle(0, 0, sourceBitmap.Width, sourceBitmap.Height), new Rectangle(0, 0, sourceBitmap.Width, sourceBitmap.Height), GraphicsUnit.Pixel);
 			}
@@ -405,30 +394,9 @@ namespace LaserGRBL.RasterConverter
 
 		private class ColorSubstitutionFilter
 		{
-			private int thresholdValue = 10;
-			public int ThresholdValue
-			{
-				get { return thresholdValue; }
-				set { thresholdValue = value; }
-			}
-
-			private Color sourceColor = Color.White;
-			public Color SourceColor
-			{
-				get { return sourceColor; }
-				set { sourceColor = value; }
-			}
-
-			private Color newColor = Color.White;
-			public Color NewColor
-			{
-				get { return newColor; }
-				set { newColor = value; }
-			}
+			public int ThresholdValue { get; set; } = 10;
+			public Color SourceColor { get; set; } = Color.White;
+			public Color NewColor { get; set; } = Color.White;
 		}
-
-
-
 	}
-
 }
