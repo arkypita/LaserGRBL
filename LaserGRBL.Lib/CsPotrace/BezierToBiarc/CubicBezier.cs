@@ -58,7 +58,7 @@ namespace CsPotrace.BezierToBiarc
 
             Vector2 dp = p01 + t * (p12 - p01);
 
-            return new Tuple<CubicBezier, CubicBezier> (new CubicBezier(P1, p0, p01, dp), new CubicBezier(dp, p12, p2, P2));
+            return new Tuple<CubicBezier, CubicBezier>(new CubicBezier(P1, p0, p01, dp), new CubicBezier(dp, p12, p2, P2));
         }
 
         /// <summary>

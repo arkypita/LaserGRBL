@@ -117,8 +117,8 @@ namespace CsPotrace.BezierToBiarc
                 float parameterStep = 1f / nrPointsToCheck;
 
                 if (nrPointsToCheck > 1000)
-                	throw new InvalidOperationException("Too many points to process");
-                
+                    throw new InvalidOperationException("Too many points to process");
+
                 for (int i = 0; i <= nrPointsToCheck; i++)
                 {
                     float t = parameterStep * i;

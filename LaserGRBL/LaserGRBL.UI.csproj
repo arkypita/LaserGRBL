@@ -175,6 +175,7 @@
       <DependentUpon>SvgModeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\OSHelper.cs" />
+    <Compile Include="Tools\Serializer.cs" />
     <Compile Include="UrlManager.cs" />
     <Compile Include="ColorScheme.cs" />
     <Compile Include="ComWrapper\Emulator.cs" />
@@ -405,12 +406,9 @@
     <Compile Include="Tools\InputBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tools\MathHelper.cs" />
-    <Compile Include="Tools\Serializer.cs" />
     <Compile Include="Tools\TaskScheduler.cs" />
     <Compile Include="Tools\ThreadClass.cs" />
     <Compile Include="Tools\WinAPI.cs" />
-    <Compile Include="Tools\WordWrap.cs" />
     <Compile Include="UsageStats.cs" />
     <Compile Include="UserControls\ColorProgressBar.cs">
       <SubType>UserControl</SubType>

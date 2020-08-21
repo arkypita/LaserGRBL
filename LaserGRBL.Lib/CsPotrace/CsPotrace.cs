@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Globalization;
 
 
 //Copyright (C) 2001-2016 Peter Selinger
@@ -16,8 +14,8 @@ using System.Globalization;
 namespace CsPotrace
 #region auxiliary classes
 {  /// <summary>
-	/// Kind of Curve : Line or Bezier
-	/// </summary>
+   /// Kind of Curve : Line or Bezier
+   /// </summary>
 	public enum CurveKind
 	{
 		Line,
@@ -119,7 +117,7 @@ namespace CsPotrace
 
 
 	}
-#endregion
+	#endregion
 	public partial class Potrace
 	{
 		#region Potrace classes and contants
@@ -1857,4 +1855,3 @@ namespace CsPotrace
 	}
 
 }
-

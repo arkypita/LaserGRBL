@@ -4,15 +4,8 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
-using Microsoft.VisualBasic;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-
 using System.IO;
-using System.Security.AccessControl;
 
 namespace Tools
 {
@@ -109,7 +102,7 @@ namespace Tools
 				{
 					err = ex;
 					try
-					{ if ((FinalStream != null))FinalStream.Close(); }
+					{ if ((FinalStream != null)) FinalStream.Close(); }
 					catch { }
 					try { ManageWriteError(ObjectToSave, filename, ex); }
 					catch { }
@@ -223,7 +216,7 @@ namespace Tools
 								FinalStream = new System.Security.Cryptography.CryptoStream(FinalStream, EE.CreateDecryptor(CypherKey, EE.IV), System.Security.Cryptography.CryptoStreamMode.Read);
 
 
-							rv = SR.Deserialize(FinalStream); 							//READ DATA
+							rv = SR.Deserialize(FinalStream);                           //READ DATA
 							FinalStream.Close();
 						}
 						else
@@ -264,8 +257,6 @@ namespace Tools
 			return rv;
 		}
 
-
-
 		public enum SerializationMode
 		{
 			Binary,
@@ -275,24 +266,10 @@ namespace Tools
 
 		private static System.Runtime.Serialization.IFormatter CreateFormatterForMode(SerializationMode mode)
 		{
-			System.Runtime.Serialization.IFormatter RET = default(System.Runtime.Serialization.IFormatter);
+			System.Runtime.Serialization.IFormatter RET = default;
 
-			//if (mode == SerializationMode.Xml)
-			//{
-			//	RET = new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
-			//	((System.Runtime.Serialization.Formatters.Soap.SoapFormatter)RET).AssemblyFormat = Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple;
-			//}
-			//else if (mode == SerializationMode.Binary)
-			//{
 			RET = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 			((System.Runtime.Serialization.Formatters.Binary.BinaryFormatter)RET).AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple;
-			//}
-			//else
-			//{
-			//	throw new Exception("Unknown Serialization Mode");
-			//}
-
-			//RET.Binder = Binder;
 
 			return RET;
 		}
@@ -339,7 +316,7 @@ namespace Tools
 				int IB = SS.ReadByte();
 				if (IB < 0)
 					break; // TODO: might not be correct. Was : Exit While
-				//eof
+						   //eof
 
 				byte B = Convert.ToByte(IB);
 				if (B == DATABEGIN[MATCH_PTR])
@@ -424,7 +401,7 @@ namespace Tools
 			//else if (File.ToLower().EndsWith(".bin"))
 			//	return SerializationMode.Binary;
 			//else
-				return SerializationMode.Binary;
+			return SerializationMode.Binary;
 		}
 
 		private static void ManageOrphanTmp(string FileName)
@@ -600,30 +577,7 @@ namespace Tools
 
 		private static void LogFileUsage(LogDatedWriter Log, string FileName)
 		{
-			//try
-			//{
-			//	System.Collections.Generic.List<string> files = new System.Collections.Generic.List<string>();
-			//	files.Add(FileName);
-
-			//	System.Collections.Generic.IList<System.Diagnostics.Process> PA = LockDetector.GetProcessesUsingFiles(files);
-			//	if (PA.Count > 0)
-			//	{
-			//		string Compose = "File locked by: ";
-
-			//		foreach (System.Diagnostics.Process P in PA)
-			//		{
-			//			Compose += string.Format("{0} [{1}] ", P.ProcessName, P.MainModule.FileName);
-			//		}
-			//		Log.WriteLogLines(Compose);
-			//	}
-
-
-			//}
-			//catch (Exception ex)
-			//{
-			//}
 		}
-
 
 
 		private class LogDatedWriter
@@ -652,7 +606,7 @@ namespace Tools
 
 			public void Close()
 			{
-				
+
 			}
 
 		}
@@ -660,7 +614,6 @@ namespace Tools
 
 		public class MissingPasswordException : Exception
 		{
-
 			public MissingPasswordException(string Fname)
 				: base(string.Format("File \"{0}\" is encripted but password was not specified when decrypting.", Fname))
 			{
@@ -670,7 +623,6 @@ namespace Tools
 
 		public class WrongPasswordException : Exception
 		{
-
 			public WrongPasswordException(string Fname)
 				: base(string.Format("File \"{0}\" is encripted but specified password was not valid.", Fname))
 			{
@@ -749,15 +701,5 @@ namespace Tools
 
 			return null;
 		}
-
-
-
 	}
-
-
-
-
-
-
-
 }

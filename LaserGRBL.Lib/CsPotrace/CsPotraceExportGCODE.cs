@@ -7,8 +7,6 @@
 using System;
 using System.Collections.Generic;
 using CsPotrace.BezierToBiarc;
-using System.Collections;
-using CsPotrace;
 using System.Drawing;
 
 namespace CsPotrace
@@ -79,9 +77,9 @@ namespace CsPotrace
 			if (Curve.Kind == CsPotrace.CurveKind.Line)
 			{
 				//trace line
-				if (g != null) 
+				if (g != null)
 					g.DrawLine(Pens.DarkGray, (float)Curve.A.X, (float)Curve.A.Y, (float)Curve.B.X, (float)Curve.B.Y);
-				
+
 				rv.Add(String.Format("G1 X{0} Y{1}", formatnumber(Curve.B.X + oX, scale), formatnumber(Curve.B.Y + oY, scale)));
 			}
 

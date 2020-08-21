@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace CsPotrace.BezierToBiarc
 {
     /// <summary>
@@ -45,11 +44,11 @@ namespace CsPotrace.BezierToBiarc
         /// <returns></returns>
         public Vector2 Intersection(Line l)
         {
-            if(float.IsNaN(this.m))
+            if (float.IsNaN(this.m))
             {
                 return VerticalIntersection(this, l);
             }
-            else if(float.IsNaN(l.m))
+            else if (float.IsNaN(l.m))
             {
                 return VerticalIntersection(l, this);
             }
@@ -89,7 +88,7 @@ namespace CsPotrace.BezierToBiarc
             {
                 return new Line(P, float.NaN);
             }
-            else if(float.IsNaN(m))
+            else if (float.IsNaN(m))
             {
                 return new Line(P, 0);
             }
@@ -101,7 +100,7 @@ namespace CsPotrace.BezierToBiarc
 
         private static float Slope(Vector2 P1, Vector2 P2)
         {
-            if(P2.X == P1.X)
+            if (P2.X == P1.X)
             {
                 return float.NaN;
             }
