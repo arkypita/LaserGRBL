@@ -55,19 +55,6 @@
     <Compile Include="CsPotrace\CsPotraceExport.cs" />
     <Compile Include="CsPotrace\CsPotraceExportGCODE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RasterConverter\Dithering\ArgbColor.cs" />
-    <Compile Include="RasterConverter\Dithering\AtkinsonDithering.cs" />
-    <Compile Include="RasterConverter\Dithering\BurkesDithering.cs" />
-    <Compile Include="RasterConverter\Dithering\ErrorDiffusionDithering.cs" />
-    <Compile Include="RasterConverter\Dithering\FloydSteinbergDithering.cs" />
-    <Compile Include="RasterConverter\Dithering\IErrorDiffusion.cs" />
-    <Compile Include="RasterConverter\Dithering\ImageUtilities.cs" />
-    <Compile Include="RasterConverter\Dithering\JarvisJudiceNinkeDithering.cs" />
-    <Compile Include="RasterConverter\Dithering\RandomDithering.cs" />
-    <Compile Include="RasterConverter\Dithering\Sierra2Dithering.cs" />
-    <Compile Include="RasterConverter\Dithering\Sierra3Dithering.cs" />
-    <Compile Include="RasterConverter\Dithering\SierraLiteDithering.cs" />
-    <Compile Include="RasterConverter\Dithering\StuckiDithering.cs" />
     <Compile Include="RasterConverter\ImageTransform.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgCircle.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgEllipse.cs" />
@@ -308,6 +295,12 @@
   <ItemGroup>
     <None Include="SvgLibrary\Basic Shapes\DOM.cd" />
     <EmbeddedResource Include="SvgLibrary\Resources\svg11.dtd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cyotek.Drawing\Cyotek.Drawing.csproj">
+      <Project>{f2d0fa15-b7f5-4ab0-9df7-44d2b13a3c79}</Project>
+      <Name>Cyotek.Drawing</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

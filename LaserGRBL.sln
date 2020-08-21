@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaserGRBL.UI", "LaserGRBL\L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaserGRBL.Lib", "LaserGRBL.Lib\LaserGRBL.Lib.csproj", "{32D33447-815B-448A-968F-D8810D6440B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyotek.Drawing", "Cyotek.Drawing\Cyotek.Drawing.csproj", "{F2D0FA15-B7F5-4AB0-9DF7-44D2B13A3C79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{32D33447-815B-448A-968F-D8810D6440B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32D33447-815B-448A-968F-D8810D6440B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32D33447-815B-448A-968F-D8810D6440B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2D0FA15-B7F5-4AB0-9DF7-44D2B13A3C79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D0FA15-B7F5-4AB0-9DF7-44D2B13A3C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D0FA15-B7F5-4AB0-9DF7-44D2B13A3C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D0FA15-B7F5-4AB0-9DF7-44D2B13A3C79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

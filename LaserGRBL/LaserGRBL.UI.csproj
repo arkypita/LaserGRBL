@@ -152,6 +152,7 @@
     <Compile Include="PSHelper\PSHelperForm.Designer.cs">
       <DependentUpon>PSHelperForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RasterConverter\ImageProcessor.cs" />
     <Compile Include="SaveOptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -360,7 +361,6 @@
     <Compile Include="RasterConverter\ConvertSizeAndOptionForm.Designer.cs">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RasterConverter\ImageProcessor.cs" />
     <Compile Include="RasterConverter\RasterToLaserForm.cs">
       <SubType>Form</SubType>
     </Compile>
