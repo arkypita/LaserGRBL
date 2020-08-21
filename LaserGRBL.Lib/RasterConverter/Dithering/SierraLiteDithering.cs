@@ -18,23 +18,23 @@ using System.ComponentModel;
 
 namespace Cyotek.Drawing.Imaging.ColorReduction
 {
-  [Description("Sierra Lite")]
-  public sealed class SierraLiteDithering : ErrorDiffusionDithering
-  {
-    #region Constructors
+    [Description("Sierra Lite")]
+    public sealed class SierraLiteDithering : ErrorDiffusionDithering
+    {
+        #region Constructors
 
-    public SierraLiteDithering()
-      : base(new byte[,]
-             {
+        public SierraLiteDithering()
+          : base(new byte[,]
+                 {
                {
                  0, 0, 2
                },
                {
                  1, 1, 0
                }
-             }, 2, true)
-    { }
+                 }, 2, true)
+        { }
 
-    #endregion
-  }
+        #endregion
+    }
 }

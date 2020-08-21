@@ -19,14 +19,14 @@ using System.ComponentModel;
 
 namespace Cyotek.Drawing.Imaging.ColorReduction
 {
-  [Description("Jarvis, Judice & Ninke")]
-  public sealed class JarvisJudiceNinkeDithering : ErrorDiffusionDithering
-  {
-    #region Constructors
+    [Description("Jarvis, Judice & Ninke")]
+    public sealed class JarvisJudiceNinkeDithering : ErrorDiffusionDithering
+    {
+        #region Constructors
 
-    public JarvisJudiceNinkeDithering()
-      : base(new byte[,]
-             {
+        public JarvisJudiceNinkeDithering()
+          : base(new byte[,]
+                 {
                {
                  0, 0, 0, 7, 5
                },
@@ -36,9 +36,9 @@ namespace Cyotek.Drawing.Imaging.ColorReduction
                {
                  1, 3, 5, 3, 1
                }
-             }, 48, false)
-    { }
+                 }, 48, false)
+        { }
 
-    #endregion
-  }
+        #endregion
+    }
 }

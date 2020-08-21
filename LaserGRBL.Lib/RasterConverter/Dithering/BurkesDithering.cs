@@ -18,23 +18,23 @@ using System.ComponentModel;
 
 namespace Cyotek.Drawing.Imaging.ColorReduction
 {
-  [Description("Burkes")]
-  public sealed class BurksDithering : ErrorDiffusionDithering
-  {
-    #region Constructors
+    [Description("Burkes")]
+    public sealed class BurksDithering : ErrorDiffusionDithering
+    {
+        #region Constructors
 
-    public BurksDithering()
-      : base(new byte[,]
-             {
+        public BurksDithering()
+          : base(new byte[,]
+                 {
                {
                  0, 0, 0, 8, 4
                },
                {
                  2, 4, 8, 4, 2
                }
-             }, 5, true)
-    { }
+                 }, 5, true)
+        { }
 
-    #endregion
-  }
+        #endregion
+    }
 }
