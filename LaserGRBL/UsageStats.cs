@@ -52,7 +52,7 @@ namespace LaserGRBL
         private DateTime LastSent = DateTime.MinValue;
         private DateTime InstalledDate = System.IO.Directory.GetCreationTimeUtc(".");
         private Version Version = new Version(0, 0, 0);
-        private GrblCore.GrblVersionInfo GrblVersion = new GrblCore.GrblVersionInfo(0, 0);
+        private GrblVersionInfo GrblVersion = new GrblVersionInfo(0, 0);
         private int Locale = 0;
         private int UiLang = 0;
         private int UsageCount = 0;

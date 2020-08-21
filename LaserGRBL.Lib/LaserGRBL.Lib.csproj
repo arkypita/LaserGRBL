@@ -54,11 +54,15 @@
     <Compile Include="CsPotrace\CsPotrace.cs" />
     <Compile Include="CsPotrace\CsPotraceExport.cs" />
     <Compile Include="CsPotrace\CsPotraceExportGCODE.cs" />
+    <Compile Include="CSVD.cs" />
     <Compile Include="CSV\CsvDictionary.cs" />
     <Compile Include="CSV\FormattedMessage.cs" />
     <Compile Include="FirmwareEnum.cs" />
     <Compile Include="GPoint.cs" />
+    <Compile Include="GrblConf.cs" />
     <Compile Include="GrblElement.cs" />
+    <Compile Include="GrblVersionInfo.cs" />
+    <Compile Include="IGrblRow.cs" />
     <Compile Include="ProgramRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RasterConverter\ImageTransform.cs" />
