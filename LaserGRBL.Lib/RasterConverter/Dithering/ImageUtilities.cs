@@ -12,7 +12,7 @@ using Cyotek.Drawing;
 
 namespace Cyotek.DitheringTest.Helpers
 {
-  internal static class ImageUtilities
+  public static class ImageUtilities
   {
     #region Static Methods
 
@@ -83,7 +83,7 @@ namespace Cyotek.DitheringTest.Helpers
       return result;
     }
 
-    internal static ArgbColor[] GetPixelsFrom32BitArgbImage(Bitmap bitmap)
+    public static ArgbColor[] GetPixelsFrom32BitArgbImage(Bitmap bitmap)
     {
       int width;
       int height;

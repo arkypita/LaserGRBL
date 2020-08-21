@@ -360,19 +360,6 @@
     <Compile Include="RasterConverter\ConvertSizeAndOptionForm.Designer.cs">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RasterConverter\Dithering\ArgbColor.cs" />
-    <Compile Include="RasterConverter\Dithering\AtkinsonDithering.cs" />
-    <Compile Include="RasterConverter\Dithering\BurkesDithering.cs" />
-    <Compile Include="RasterConverter\Dithering\ErrorDiffusionDithering.cs" />
-    <Compile Include="RasterConverter\Dithering\FloydSteinbergDithering.cs" />
-    <Compile Include="RasterConverter\Dithering\IErrorDiffusion.cs" />
-    <Compile Include="RasterConverter\Dithering\ImageUtilities.cs" />
-    <Compile Include="RasterConverter\Dithering\JarvisJudiceNinkeDithering.cs" />
-    <Compile Include="RasterConverter\Dithering\RandomDithering.cs" />
-    <Compile Include="RasterConverter\Dithering\Sierra2Dithering.cs" />
-    <Compile Include="RasterConverter\Dithering\Sierra3Dithering.cs" />
-    <Compile Include="RasterConverter\Dithering\SierraLiteDithering.cs" />
-    <Compile Include="RasterConverter\Dithering\StuckiDithering.cs" />
     <Compile Include="RasterConverter\ImageProcessor.cs" />
     <Compile Include="RasterConverter\ImageTransform.cs" />
     <Compile Include="RasterConverter\RasterToLaserForm.cs">
