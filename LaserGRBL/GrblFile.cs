@@ -130,7 +130,6 @@ namespace LaserGRBL
 			RiseOnFileLoaded(filename, elapsed);
 		}
 
-
 		private abstract class ColorSegment
 		{
 			public int mColor { get; set; }
@@ -205,7 +204,7 @@ namespace LaserGRBL
 		{
 			public DSegment(int col, int len, bool rev) : base(col, len, rev) { }
 
-			public override string ToGCodeNumber(ref int cumX, ref int cumY, GrblFile.L2LConf c)
+			public override string ToGCodeNumber(ref int cumX, ref int cumY, L2LConf c)
 			{
 				cumX += mPixLen;
 				cumY -= mPixLen;
@@ -338,25 +337,6 @@ namespace LaserGRBL
 		{
 			if (OnFileLoading != null)
 				OnFileLoading(0, filename);
-		}
-
-		public class L2LConf
-		{
-			public double res;
-			public float oX;
-			public float oY;
-			public int markSpeed;
-			public int travelSpeed;
-			public int borderSpeed;
-			public int minPower;
-			public int maxPower;
-			public string lOn;
-			public string lOff;
-			public RasterConverter.Direction dir;
-			public bool pwm;
-			public double fres;
-			public bool vectorfilling;
-			public Firmware firmwareType;
 		}
 
 		public void LoadImageL2L(Bitmap bmp, string filename, L2LConf c, bool append)

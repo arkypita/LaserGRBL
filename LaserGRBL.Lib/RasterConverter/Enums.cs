@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace LaserGRBL.RasterConverter
+﻿namespace LaserGRBL.RasterConverter
 {
-	public enum Tool
+    public enum Tool
 	{
 		Line2Line,
 		Dithering,

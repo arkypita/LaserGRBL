@@ -63,6 +63,7 @@
     <Compile Include="GrblElement.cs" />
     <Compile Include="GrblVersionInfo.cs" />
     <Compile Include="IGrblRow.cs" />
+    <Compile Include="L2LConf.cs" />
     <Compile Include="ProgramRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RasterConverter\Enums.cs" />

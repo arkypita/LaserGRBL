@@ -978,7 +978,7 @@ namespace LaserGRBL.RasterConverter
 				{
 					using (Bitmap bmp = CreateTarget(pixelSize))
 					{
-						GrblFile.L2LConf conf = new GrblFile.L2LConf();
+						L2LConf conf = new L2LConf();
 						conf.res = res;
 						conf.fres = fres;
 						conf.markSpeed = MarkSpeed;
