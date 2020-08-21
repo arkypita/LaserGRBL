@@ -16,7 +16,7 @@ using System.Linq;
 
 namespace LaserGRBL
 {
-    public class GrblFile : IEnumerable<GrblCommand>
+	public class GrblFile : IEnumerable<GrblCommand>
 	{
 		public enum CartesianQuadrant { I, II, III, IV, Mix, Unknown }
 
@@ -53,8 +53,8 @@ namespace LaserGRBL
 						foreach (GrblCommand cmd in list)
 							sw.WriteLine(cmd.Command);
 
-						
-						if (between && i < cycles-1)
+
+						if (between && i < cycles - 1)
 							sw.WriteLine(Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
 					}
 
@@ -97,41 +97,41 @@ namespace LaserGRBL
 			RiseOnFileLoaded(filename, elapsed);
 		}
 
-        public void LoadImportedSVG(string filename, bool append)
-        {
-            RiseOnFileLoading(filename);
+		public void LoadImportedSVG(string filename, bool append)
+		{
+			RiseOnFileLoading(filename);
 
-            long start = Tools.HiResTimer.TotalMilliseconds;
+			long start = Tools.HiResTimer.TotalMilliseconds;
 
-            if (!append)
-                list.Clear();
+			if (!append)
+				list.Clear();
 
-            mRange.ResetRange();
+			mRange.ResetRange();
 
-            SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
-            converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+			SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
+			converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
 
-            string gcode = converter.convertFromFile(filename);
-            string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-            foreach (string l in lines)
-            {
-                string line = l;
-                if ((line = line.Trim()).Length > 0)
-                {
-                    GrblCommand cmd = new GrblCommand(line);
-                    if (!cmd.IsEmpty)
-                        list.Add(cmd);
-                }
-            }
+			string gcode = converter.convertFromFile(filename);
+			string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+			foreach (string l in lines)
+			{
+				string line = l;
+				if ((line = line.Trim()).Length > 0)
+				{
+					GrblCommand cmd = new GrblCommand(line);
+					if (!cmd.IsEmpty)
+						list.Add(cmd);
+				}
+			}
 
-            Analyze();
-            long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+			Analyze();
+			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
-            RiseOnFileLoaded(filename, elapsed);
-        }
+			RiseOnFileLoaded(filename, elapsed);
+		}
 
 
-        private abstract class ColorSegment
+		private abstract class ColorSegment
 		{
 			public int mColor { get; set; }
 			protected int mPixLen;
@@ -162,8 +162,8 @@ namespace LaserGRBL
 			{
 				if (c.firmwareType == Firmware.Smoothie)
 					return string.Format(System.Globalization.CultureInfo.InvariantCulture, "S{0:0.00}", color / 255.0); //maybe scaling to UI maxpower VS config maxpower instead of fixed / 255.0 ?
-				//else if (c.firmwareType == Firmware.Marlin)
-				//	return "";
+																														 //else if (c.firmwareType == Firmware.Marlin)
+																														 //	return "";
 				else
 					return string.Format(System.Globalization.CultureInfo.InvariantCulture, "S{0}", color);
 			}
@@ -179,10 +179,10 @@ namespace LaserGRBL
 			{
 				cumX += mPixLen;
 
-                if (c.pwm)
-                    return string.Format("X{0} {1}", formatnumber(cumX, c.oX, c), FormatLaserPower(mColor, c));
-                else
-                    return string.Format("X{0} {1}", formatnumber(cumX, c.oX, c), Fast(c) ? c.lOff : c.lOn);
+				if (c.pwm)
+					return string.Format("X{0} {1}", formatnumber(cumX, c.oX, c), FormatLaserPower(mColor, c));
+				else
+					return string.Format("X{0} {1}", formatnumber(cumX, c.oX, c), Fast(c) ? c.lOff : c.lOn);
 			}
 		}
 
@@ -194,10 +194,10 @@ namespace LaserGRBL
 			{
 				cumY += mPixLen;
 
-                if (c.pwm)
-                    return string.Format("Y{0} {1}", formatnumber(cumY, c.oY, c), FormatLaserPower(mColor, c));
-                else
-                    return string.Format("Y{0} {1}", formatnumber(cumY, c.oY, c), Fast(c) ? c.lOff : c.lOn);
+				if (c.pwm)
+					return string.Format("Y{0} {1}", formatnumber(cumY, c.oY, c), FormatLaserPower(mColor, c));
+				else
+					return string.Format("Y{0} {1}", formatnumber(cumY, c.oY, c), Fast(c) ? c.lOff : c.lOn);
 			}
 		}
 
@@ -210,10 +210,10 @@ namespace LaserGRBL
 				cumX += mPixLen;
 				cumY -= mPixLen;
 
-                if (c.pwm)
-                    return string.Format("X{0} Y{1} {2}", formatnumber(cumX, c.oX, c), formatnumber(cumY, c.oY, c), FormatLaserPower(mColor, c));
-                else
-                    return string.Format("X{0} Y{1} {2}", formatnumber(cumX, c.oX, c), formatnumber(cumY, c.oY, c), Fast(c) ? c.lOff : c.lOn);
+				if (c.pwm)
+					return string.Format("X{0} Y{1} {2}", formatnumber(cumX, c.oX, c), formatnumber(cumY, c.oY, c), FormatLaserPower(mColor, c));
+				else
+					return string.Format("X{0} Y{1} {2}", formatnumber(cumX, c.oX, c), formatnumber(cumY, c.oY, c), Fast(c) ? c.lOff : c.lOn);
 			}
 		}
 
@@ -302,9 +302,9 @@ namespace LaserGRBL
 				}
 			}
 
-            //Optimize fast movement
-            if(useOptimizeFast)
-                plist = OptimizePaths(plist);
+			//Optimize fast movement
+			if (useOptimizeFast)
+				plist = OptimizePaths(plist);
 
 			//laser off and power to maxPower
 			list.Add(new GrblCommand(String.Format("{0} S{1}", c.lOff, c.maxPower)));
@@ -451,12 +451,11 @@ namespace LaserGRBL
 			list.AddRange(temp);
 		}
 
-
 		private List<GrblCommand> OptimizeLine2Line(List<GrblCommand> temp, L2LConf c)
 		{
 			List<GrblCommand> rv = new List<GrblCommand>();
 
-            decimal curX = (decimal)c.oX;
+			decimal curX = (decimal)c.oX;
 			decimal curY = (decimal)c.oY;
 			bool cumulate = false;
 
@@ -649,72 +648,72 @@ namespace LaserGRBL
 			prevCol = col;
 		}
 
-        private List<List<Curve>> OptimizePaths(List<List<Curve>> list)
-        {
+		private List<List<Curve>> OptimizePaths(List<List<Curve>> list)
+		{
 			if (list.Count == 1)
 				return list;
 
-            //Order all paths in list to reduce travel distance
-            //Calculate and store all distances in a matrix
-            var distances = new double[list.Count, list.Count];
-            for (int p1 = 0; p1 < list.Count; p1++)
-            {
-                for (int p2 = 0; p2 < list.Count; p2++)
-                {
-                    var dx = list[p1][0].A.X - list[p2][0].A.X;
-                    var dy = list[p1][0].A.Y - list[p2][0].A.Y;
-                    if (p1 != p2)
-                        distances[p1, p2] = Math.Sqrt((dx * dx) + (dy * dy));
-                    else
-                        distances[p1, p2] = double.MaxValue;
-                }
-            }
+			//Order all paths in list to reduce travel distance
+			//Calculate and store all distances in a matrix
+			var distances = new double[list.Count, list.Count];
+			for (int p1 = 0; p1 < list.Count; p1++)
+			{
+				for (int p2 = 0; p2 < list.Count; p2++)
+				{
+					var dx = list[p1][0].A.X - list[p2][0].A.X;
+					var dy = list[p1][0].A.Y - list[p2][0].A.Y;
+					if (p1 != p2)
+						distances[p1, p2] = Math.Sqrt((dx * dx) + (dy * dy));
+					else
+						distances[p1, p2] = double.MaxValue;
+				}
+			}
 
-            List<List<CsPotrace.Curve>> best = new List<List<Curve>>();
-            var bestTotDistance = double.MaxValue;
+			List<List<CsPotrace.Curve>> best = new List<List<Curve>>();
+			var bestTotDistance = double.MaxValue;
 
-            //Create a list of unvisited places
-            List<int> unvisited = Enumerable.Range(0, list.Count).ToList();
+			//Create a list of unvisited places
+			List<int> unvisited = Enumerable.Range(0, list.Count).ToList();
 
-            //Pick nearest points
-            List<List<CsPotrace.Curve>> nearest = new List<List<Curve>>();
+			//Pick nearest points
+			List<List<Curve>> nearest = new List<List<Curve>>();
 
-            //Save starting point index
-            var lastIndex = 0;
-            var totDistance = 0.0;
-            while (unvisited.Count > 0)
-            {
-                var bestIndex = 0;
-                var bestDistance = double.MaxValue;
-                foreach (var nextIndex in unvisited)
-                {
-                    var dist = distances[nextIndex, lastIndex];
-                    if (dist < bestDistance)
-                    {
-                        bestIndex = nextIndex;
-                        bestDistance = dist;
-                    }
-                }
+			//Save starting point index
+			var lastIndex = 0;
+			var totDistance = 0.0;
+			while (unvisited.Count > 0)
+			{
+				var bestIndex = 0;
+				var bestDistance = double.MaxValue;
+				foreach (var nextIndex in unvisited)
+				{
+					var dist = distances[nextIndex, lastIndex];
+					if (dist < bestDistance)
+					{
+						bestIndex = nextIndex;
+						bestDistance = dist;
+					}
+				}
 
-                //Save nearest point
-                lastIndex = bestIndex;
-                nearest.Add(list[lastIndex]);
-                unvisited.Remove(lastIndex);
-                totDistance += bestDistance;
-            }
+				//Save nearest point
+				lastIndex = bestIndex;
+				nearest.Add(list[lastIndex]);
+				unvisited.Remove(lastIndex);
+				totDistance += bestDistance;
+			}
 
-            //Count traveled distance
-            if (totDistance < bestTotDistance)
-            {
-                bestTotDistance = totDistance;
-                //Save best list
-                best = nearest;
-            }
-            
-            return best;
-        }
+			//Count traveled distance
+			if (totDistance < bestTotDistance)
+			{
+				bestTotDistance = totDistance;
+				//Save best list
+				best = nearest;
+			}
 
-        private int GetColor(Bitmap I, int X, int Y, int min, int max, bool pwm)
+			return best;
+		}
+
+		private int GetColor(Bitmap I, int X, int Y, int min, int max, bool pwm)
 		{
 			Color C = I.GetPixel(X, Y);
 			int rv = (255 - C.R) * C.A / 255;
@@ -845,12 +844,12 @@ namespace LaserGRBL
 			{
 				content = Autotrace.BitmapToSvgString(bmp, useCornerThreshold, cornerThreshold, useLineThreshold, lineThreshold);
 			}
-			catch(Exception ex) { Logger.LogException("Centerline", ex); }
+			catch (Exception ex) { Logger.LogException("Centerline", ex); }
 
-            SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
-            converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
-            converter.SvgScaleApply = true;
-            converter.SvgMaxSize = (float)Math.Max(bmp.Width /10.0, bmp.Height / 10.0);
+			SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
+			converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+			converter.SvgScaleApply = true;
+			converter.SvgMaxSize = (float)Math.Max(bmp.Width / 10.0, bmp.Height / 10.0);
 			converter.UserOffset.X = Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F);
 			converter.UserOffset.Y = Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F);
 
@@ -976,9 +975,9 @@ namespace LaserGRBL
 					bool right = q == CartesianQuadrant.I || q == CartesianQuadrant.IV;
 					bool top = q == CartesianQuadrant.I || q == CartesianQuadrant.II;
 
-                    string format = "0";
-                    if (mRange.DrawingRange.Width < 50 && mRange.DrawingRange.Height < 50)
-                        format = "0.0";
+					string format = "0";
+					if (mRange.DrawingRange.Width < 50 && mRange.DrawingRange.Height < 50)
+						format = "0.0";
 
 					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString(format), false, true, !right, false, ColorScheme.PreviewText);
 					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString(format), false, true, !right, false, ColorScheme.PreviewText);
@@ -1000,10 +999,10 @@ namespace LaserGRBL
 						format = "0.0";
 
 					//scala orizzontale
-					Tools.RulerStepCalculator hscale = new Tools.RulerStepCalculator(-wSize.Width, wSize.Width, (int)(2*s.Width / 100));
+					Tools.RulerStepCalculator hscale = new Tools.RulerStepCalculator(-wSize.Width, wSize.Width, (int)(2 * s.Width / 100));
 
 					double h1 = (top ? -4.0 : 4.0) / zoom;
-					double h2 = 1.8*h1;
+					double h2 = 1.8 * h1;
 					double h3 = (top ? 1.0 : -1.0) / zoom;
 
 					for (float d = (float)hscale.FirstSmall; d < wSize.Width; d += (float)hscale.SmallStep)
@@ -1031,9 +1030,6 @@ namespace LaserGRBL
 					for (float d = (float)vscale.FirstBig; d < wSize.Height; d += (float)vscale.BigStep)
 						DrawString(g, zoom, (decimal)v3, (decimal)d, d.ToString(format), false, false, right, !top, ColorScheme.PreviewRuler, -90);
 				}
-
-
-
 			}
 		}
 
@@ -1047,7 +1043,7 @@ namespace LaserGRBL
 		{
 			GraphicsState state = g.Save();
 			g.ScaleTransform(1.0f, -1.0f);
-			
+
 
 			using (Font f = new Font(FontFamily.GenericMonospace, 8 * 1 / zoom))
 			{
@@ -1077,20 +1073,19 @@ namespace LaserGRBL
 
 		private static void DrawRotatedTextAt(Graphics g, float a, string text, Font f, Brush b, float x, float y)
 		{
-			GraphicsState state = g.Save();	// Save the graphics state.
-			g.TranslateTransform(x, y);		//posiziona
-			g.RotateTransform(a);			//ruota
+			GraphicsState state = g.Save(); // Save the graphics state.
+			g.TranslateTransform(x, y);     //posiziona
+			g.RotateTransform(a);           //ruota
 			g.DrawString(text, f, b, 0, 0); // scrivi a zero, zero
-			g.Restore(state);				// Restore the graphics state.
+			g.Restore(state);               // Restore the graphics state.
 		}
 
 
 
-		System.Collections.Generic.IEnumerator<GrblCommand> IEnumerable<GrblCommand>.GetEnumerator()
+		IEnumerator<GrblCommand> IEnumerable<GrblCommand>.GetEnumerator()
 		{ return list.GetEnumerator(); }
 
-
-		public System.Collections.IEnumerator GetEnumerator()
+		public IEnumerator GetEnumerator()
 		{ return list.GetEnumerator(); }
 
 		public ProgramRange Range { get { return mRange; } }
