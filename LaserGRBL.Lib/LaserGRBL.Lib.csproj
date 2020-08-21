@@ -54,6 +54,8 @@
     <Compile Include="CsPotrace\CsPotrace.cs" />
     <Compile Include="CsPotrace\CsPotraceExport.cs" />
     <Compile Include="CsPotrace\CsPotraceExportGCODE.cs" />
+    <Compile Include="CSV\CsvDictionary.cs" />
+    <Compile Include="CSV\FormattedMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RasterConverter\ImageTransform.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgCircle.cs" />
@@ -293,6 +295,12 @@
     <Compile Include="Tools\WordWrap.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CSV\alarm_codes.csv" />
+    <EmbeddedResource Include="CSV\error_codes.csv" />
+    <EmbeddedResource Include="CSV\setting_codes.ortur.v1.0.csv" />
+    <EmbeddedResource Include="CSV\setting_codes.v0.8.csv" />
+    <EmbeddedResource Include="CSV\setting_codes.v0.9.csv" />
+    <EmbeddedResource Include="CSV\setting_codes.v1.1.csv" />
     <None Include="SvgLibrary\Basic Shapes\DOM.cd" />
     <EmbeddedResource Include="SvgLibrary\Resources\svg11.dtd" />
   </ItemGroup>
@@ -302,5 +310,6 @@
       <Name>Cyotek.Drawing</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

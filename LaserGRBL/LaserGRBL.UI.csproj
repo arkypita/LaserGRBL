@@ -296,8 +296,6 @@
     </Compile>
     <Compile Include="AutoUpdate\GitHub.cs" />
     <Compile Include="GrblCore.cs" />
-    <Compile Include="CSV\CsvDictionary.cs" />
-    <Compile Include="CSV\FormattedMessage.cs" />
     <Compile Include="GrblCommand.cs" />
     <Compile Include="GrblFile.cs" />
     <Compile Include="HotkeyManagerForm.cs">
@@ -496,7 +494,6 @@
     <Content Include="Sound\success.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="CSV\setting_codes.ortur.v1.0.csv" />
     <None Include="StandardMaterials.psh">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -1227,14 +1224,9 @@
     <EmbeddedResource Include="UserControls\GrblPanel.resx">
       <DependentUpon>GrblPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CSV\alarm_codes.csv" />
-    <EmbeddedResource Include="CSV\error_codes.csv" />
-    <EmbeddedResource Include="CSV\setting_codes.v1.1.csv" />
     <EmbeddedResource Include="UserControls\LabelTB.resx">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CSV\setting_codes.v0.9.csv" />
-    <EmbeddedResource Include="CSV\setting_codes.v0.8.csv" />
     <Content Include="Driver\CH341SER.EXE">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -17,10 +17,7 @@ namespace LaserGRBL.CSV
 
 		System.Globalization.CultureInfo dtf = new System.Globalization.CultureInfo("it-IT", false);
 		System.Globalization.CultureInfo nf = new System.Globalization.CultureInfo("en-US", false);
-
-		DTFormat defDTFormat = DTFormat.UnixDT;
-
-		private StringList list;
+        private StringList list;
 		private int i = 0;
 
 		public FormattedMessage()
@@ -53,13 +50,9 @@ namespace LaserGRBL.CSV
 			set { list.NullPlaceholder = value; }
 		}
 
-		public DTFormat DefaultTimeFormat
-		{
-			get { return defDTFormat; }
-			set { defDTFormat = value; }
-		}
+        public DTFormat DefaultTimeFormat { get; set; } = DTFormat.UnixDT;
 
-		public static FormattedMessage FromStringList(StringList msg)
+        public static FormattedMessage FromStringList(StringList msg)
 		{ return msg != null ? new FormattedMessage(msg) : null; }
 
 		public string OriginalMessage
@@ -122,10 +115,6 @@ namespace LaserGRBL.CSV
 		{ return ReadString(i++); }
 		public string ReadString(int index)
 		{ return list[index]; }
-		//public string ReadString(System.Data.DataColumn dest)
-		//{ return Truncate(ReadString(i++), dest); }
-		//public string ReadString(int index, System.Data.DataColumn dest)
-		//{ return Truncate(list[index], dest); }
 		public TimeSpan ReadTimeSpan()
 		{ return ReadTimeSpan(i++); }
 		public TimeSpan ReadTimeSpan(int index)
@@ -143,19 +132,6 @@ namespace LaserGRBL.CSV
 			else
 				return UnixToDotNet(Convert.ToInt32(list[index], dtf));
 		}
-
-		//private string Truncate(string source, System.Data.DataColumn dest)
-		//{
-		//	if (source.Length > dest.MaxLength)
-		//	{
-		//		source = source.Substring(0, dest.MaxLength);
-		//		//TODO: log the event
-		//		System.Diagnostics.Debug.WriteLine(System.String.Format("Tronco il campo {0}", dest.ColumnName));
-		//	}
-
-		//	return source;
-		//}
-
 
 		//**************************************************************
 
