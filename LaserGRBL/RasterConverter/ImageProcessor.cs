@@ -88,16 +88,6 @@ namespace LaserGRBL.RasterConverter
 		Thread TH;                              //processing thread
 		protected ManualResetEvent MustExit;    //exit condition
 
-		public enum Tool
-		{
-			Line2Line, 
-			Dithering, 
-			Vectorize,
-			Centerline
-		}
-
-		public enum Direction
-		{ Horizontal, Vertical, Diagonal, None }
 
 		public ImageProcessor(GrblCore core, string fileName, Size boxSize, bool append)
 		{
@@ -997,18 +987,18 @@ namespace LaserGRBL.RasterConverter
 						conf.maxPower = MaxPower;
 						conf.lOn = LaserOn;
 						conf.lOff = LaserOff;
-						conf.dir = SelectedTool == ImageProcessor.Tool.Vectorize ? FillingDirection : LineDirection;
+						conf.dir = SelectedTool == Tool.Vectorize ? FillingDirection : LineDirection;
 						conf.oX = TargetOffset.X;
 						conf.oY = TargetOffset.Y;
 						conf.borderSpeed = BorderSpeed;
 						conf.pwm = Settings.GetObject("Support Hardware PWM", true);
 						conf.firmwareType = Settings.GetObject("Firmware Type", Firmware.Grbl);
 
-						if (SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering)
+						if (SelectedTool == Tool.Line2Line || SelectedTool == Tool.Dithering)
 							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf, mAppend);
-						else if (SelectedTool == ImageProcessor.Tool.Vectorize)
+						else if (SelectedTool == Tool.Vectorize)
 							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf, mAppend);
-						else if (SelectedTool == ImageProcessor.Tool.Centerline)
+						else if (SelectedTool == Tool.Centerline)
 							mCore.LoadedFile.LoadImageCenterline(bmp, mFileName, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold, conf, mAppend);
 					}
 
@@ -1105,10 +1095,10 @@ namespace LaserGRBL.RasterConverter
 			{
 				using (Graphics g = Graphics.FromImage(bmp))
 				{
-					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+					g.CompositingMode = CompositingMode.SourceOver;
 					if (dir == Direction.Horizontal)
 					{
-						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 100 : 200;
+						int alpha = SelectedTool == Tool.Dithering ? 100 : 200;
 						for (int Y = 0; Y < bmp.Height && !MustExitTH; Y++)
 						{
 							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
@@ -1120,7 +1110,7 @@ namespace LaserGRBL.RasterConverter
 					}
 					else if (dir == Direction.Vertical)
 					{
-						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 100 : 200;
+						int alpha = SelectedTool == Tool.Dithering ? 100 : 200;
 						for (int X = 0; X < bmp.Width && !MustExitTH; X++)
 						{
 							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
@@ -1132,7 +1122,7 @@ namespace LaserGRBL.RasterConverter
 					}
 					else if (dir == Direction.Diagonal)
 					{
-						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 150 : 255;
+						int alpha = SelectedTool == Tool.Dithering ? 150 : 255;
 						for (int I = 0; I < bmp.Width + bmp.Height - 1 && !MustExitTH; I++)
 						{
 							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))

@@ -272,7 +272,7 @@ namespace LaserGRBL
 
 			List<List<Curve>> plist = Potrace.PotraceTrace(bmp);
 
-			if (c.dir != RasterConverter.ImageProcessor.Direction.None)
+			if (c.dir != RasterConverter.Direction.None)
 			{
 				using (Bitmap ptb = new Bitmap(bmp.Width, bmp.Height))
 				{
@@ -352,7 +352,7 @@ namespace LaserGRBL
 			public int maxPower;
 			public string lOn;
 			public string lOff;
-			public RasterConverter.ImageProcessor.Direction dir;
+			public RasterConverter.Direction dir;
 			public bool pwm;
 			public double fres;
 			public bool vectorfilling;
@@ -517,9 +517,9 @@ namespace LaserGRBL
 			bool uni = Settings.GetObject("Unidirectional Engraving", false);
 
 			List<ColorSegment> rv = new List<ColorSegment>();
-			if (c.dir == RasterConverter.ImageProcessor.Direction.Horizontal || c.dir == RasterConverter.ImageProcessor.Direction.Vertical)
+			if (c.dir == RasterConverter.Direction.Horizontal || c.dir == RasterConverter.Direction.Vertical)
 			{
-				bool h = (c.dir == RasterConverter.ImageProcessor.Direction.Horizontal); //horizontal/vertical
+				bool h = (c.dir == RasterConverter.Direction.Horizontal); //horizontal/vertical
 
 				for (int i = 0; i < (h ? bmp.Height : bmp.Width); i++)
 				{
@@ -550,7 +550,7 @@ namespace LaserGRBL
 					}
 				}
 			}
-			else if (c.dir == RasterConverter.ImageProcessor.Direction.Diagonal)
+			else if (c.dir == RasterConverter.Direction.Diagonal)
 			{
 				//based on: http://stackoverflow.com/questions/1779199/traverse-matrix-in-diagonal-strips
 				//based on: http://stackoverflow.com/questions/2112832/traverse-rectangular-matrix-in-diagonal-strips
@@ -635,11 +635,11 @@ namespace LaserGRBL
 
 			if (prevCol != col)
 			{
-				if (c.dir == RasterConverter.ImageProcessor.Direction.Horizontal)
+				if (c.dir == RasterConverter.Direction.Horizontal)
 					rv.Add(new XSegment(prevCol, len, reverse));
-				else if (c.dir == RasterConverter.ImageProcessor.Direction.Vertical)
+				else if (c.dir == RasterConverter.Direction.Vertical)
 					rv.Add(new YSegment(prevCol, len, reverse));
-				else if (c.dir == RasterConverter.ImageProcessor.Direction.Diagonal)
+				else if (c.dir == RasterConverter.Direction.Diagonal)
 					rv.Add(new DSegment(prevCol, len, reverse));
 
 				len = 0;
