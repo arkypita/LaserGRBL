@@ -71,7 +71,7 @@ namespace LaserGRBL
 		{
 			RiseOnFileLoading(filename);
 
-			long start = Tools.HiResTimer.TotalMilliseconds;
+			DateTime start = DateTime.Now;
 
 			if (!append)
 				list.Clear();
@@ -92,7 +92,7 @@ namespace LaserGRBL
 				}
 			}
 			Analyze();
-			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+			long elapsed = (long)(DateTime.Now - start).TotalMilliseconds;
 
 			RiseOnFileLoaded(filename, elapsed);
 		}
@@ -101,7 +101,7 @@ namespace LaserGRBL
 		{
 			RiseOnFileLoading(filename);
 
-			long start = Tools.HiResTimer.TotalMilliseconds;
+			DateTime start = DateTime.Now;
 
 			if (!append)
 				list.Clear();
@@ -125,7 +125,7 @@ namespace LaserGRBL
 			}
 
 			Analyze();
-			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+			long elapsed = (long)(DateTime.Now - start).TotalMilliseconds;
 
 			RiseOnFileLoaded(filename, elapsed);
 		}
@@ -216,7 +216,7 @@ namespace LaserGRBL
 			RiseOnFileLoading(filename);
 
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
-			long start = Tools.HiResTimer.TotalMilliseconds;
+			DateTime start = DateTime.Now;
 
 			if (!append)
 				list.Clear();
@@ -283,7 +283,7 @@ namespace LaserGRBL
 			//list.Add(new GrblCommand(String.Format("{0}", c.lOff)));
 
 			Analyze();
-			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+			long elapsed = (long)(DateTime.Now - start).TotalMilliseconds;
 
 			RiseOnFileLoaded(filename, elapsed);
 		}
@@ -306,7 +306,7 @@ namespace LaserGRBL
 
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
-			long start = Tools.HiResTimer.TotalMilliseconds;
+			DateTime start = DateTime.Now;
 
 			if (!append)
 				list.Clear();
@@ -337,7 +337,7 @@ namespace LaserGRBL
 			//list.Add(new GrblCommand("G0 X0 Y0")); //moved to custom footer
 
 			Analyze();
-			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+			long elapsed = (long)(DateTime.Now - start).TotalMilliseconds;
 
 			RiseOnFileLoaded(filename, elapsed);
 		}
@@ -772,7 +772,7 @@ namespace LaserGRBL
 
 			RiseOnFileLoading(filename);
 
-			long start = Tools.HiResTimer.TotalMilliseconds;
+			DateTime start = DateTime.Now;
 
 			if (!append)
 				list.Clear();
@@ -808,7 +808,7 @@ namespace LaserGRBL
 			}
 
 			Analyze();
-			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+			long elapsed = (long)(DateTime.Now - start).TotalMilliseconds;
 
 			RiseOnFileLoaded(filename, elapsed);
 
