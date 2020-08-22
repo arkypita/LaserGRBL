@@ -10,20 +10,17 @@ namespace Tools
 {
     public class TimingBase
 	{
-
-		private static long mStartup;
-
+		static DateTime start;
 		static TimingBase()
 		{
-			mStartup = HiResTimer.TotalNano;
+			start = DateTime.Now;
 		}
 
 		public static TimeSpan TimeFromApplicationStartup()
 		{
-			// Un singolo Tick rappresenta cento nanosecondi 
-			return TimeSpan.FromTicks((HiResTimer.TotalNano - mStartup) / 100);
+			// Noneed to nanosecond precision
+			return DateTime.Now - start;
 		}
-
 	}
 
 	public class ElapsedFromEvent
