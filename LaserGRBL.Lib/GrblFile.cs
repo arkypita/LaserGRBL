@@ -11,7 +11,6 @@ using CsPotrace;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Windows.Forms;
 using System.Linq;
 
 namespace LaserGRBL
@@ -701,7 +700,7 @@ namespace LaserGRBL
 			}
 		}
 
-		internal void DrawOnGraphics(Graphics g, Size size)
+		public void DrawOnGraphics(Graphics g, Size size)
 		{
 			if (!mRange.MovingRange.ValidRange) return;
 
@@ -781,11 +780,12 @@ namespace LaserGRBL
 
 			string content = "";
 
-			try
-			{
+			// Should throw
+			//try
+			//{
 				content = Autotrace.BitmapToSvgString(bmp, useCornerThreshold, cornerThreshold, useLineThreshold, lineThreshold);
-			}
-			catch (Exception ex) { Logger.LogException("Centerline", ex); }
+			//}
+			//catch (Exception ex) { Logger.LogException("Centerline", ex); }
 
 			SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
 			converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);

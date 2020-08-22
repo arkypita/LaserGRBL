@@ -151,7 +151,6 @@
     <Compile Include="PSHelper\PSHelperForm.Designer.cs">
       <DependentUpon>PSHelperForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RasterConverter\ImageProcessor.cs" />
     <Compile Include="SaveOptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,7 +291,6 @@
     </Compile>
     <Compile Include="AutoUpdate\GitHub.cs" />
     <Compile Include="GrblCore.cs" />
-    <Compile Include="GrblFile.cs" />
     <Compile Include="HotkeyManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>

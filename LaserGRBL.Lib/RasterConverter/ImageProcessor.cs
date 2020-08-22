@@ -82,16 +82,16 @@ namespace LaserGRBL.RasterConverter
 
 		private string mFileName;
 		private bool mAppend;
-		GrblCore mCore;
+		GrblFile mFile;
 
 		private ImageProcessor Current;         //current instance of processor thread/class - used to call abort
 		Thread TH;                              //processing thread
 		protected ManualResetEvent MustExit;    //exit condition
 
 
-		public ImageProcessor(GrblCore core, string fileName, Size boxSize, bool append)
+		public ImageProcessor(GrblFile file, string fileName, Size boxSize, bool append)
 		{
-			mCore = core;
+			mFile = file;
 			mFileName = fileName;
 			mAppend = append;
 			mSuspended = true;
@@ -115,7 +115,7 @@ namespace LaserGRBL.RasterConverter
 			mGrayScale = TestGrayScale(mOriginal);
 		}
 
-		internal void FormResize(Size size)
+		public void FormResize(Size size)
 		{
 			mBoxSize = size;
 			ResizeRecalc();
@@ -955,7 +955,8 @@ namespace LaserGRBL.RasterConverter
 		{
 			try
 			{
-				int maxSize = Tools.OSHelper.Is64BitProcess ? 22000 * 22000 : 6000 * 7000; //on 32bit OS we have memory limit - allow Higher value on 64bit
+				// Kepp 64bits
+				int maxSize = 22000 * 22000; //Tools.OSHelper.Is64BitProcess ? 22000 * 22000 : 6000 * 7000; //on 32bit OS we have memory limit - allow Higher value on 64bit
 
 				double filesize = TargetSize.Width * TargetSize.Height;
 				double maxRes = Math.Sqrt(maxSize / filesize); //limit res if resultimg bmp size is to big
@@ -969,8 +970,6 @@ namespace LaserGRBL.RasterConverter
 					res = 10.0;
 				else
 					res = Math.Min(maxRes, GetVectorQuality(filesize, UseAdaptiveQuality));
-
-				//System.Diagnostics.Debug.WriteLine(res);
 
 				Size pixelSize = new Size((int)(TargetSize.Width * res), (int)(TargetSize.Height * res));
 
@@ -995,11 +994,11 @@ namespace LaserGRBL.RasterConverter
 						conf.firmwareType = Settings.GetObject("Firmware Type", Firmware.Grbl);
 
 						if (SelectedTool == Tool.Line2Line || SelectedTool == Tool.Dithering)
-							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf, mAppend);
+							mFile.LoadImageL2L(bmp, mFileName, conf, mAppend);
 						else if (SelectedTool == Tool.Vectorize)
-							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf, mAppend);
+							mFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf, mAppend);
 						else if (SelectedTool == Tool.Centerline)
-							mCore.LoadedFile.LoadImageCenterline(bmp, mFileName, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold, conf, mAppend);
+							mFile.LoadImageCenterline(bmp, mFileName, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold, conf, mAppend);
 					}
 
 					if (GenerationComplete != null)

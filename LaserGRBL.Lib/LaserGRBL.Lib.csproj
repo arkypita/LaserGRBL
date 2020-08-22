@@ -67,9 +67,11 @@
     <Compile Include="GPoint.cs" />
     <Compile Include="GrblConf.cs" />
     <Compile Include="GrblElement.cs" />
+    <Compile Include="GrblFile.cs" />
     <Compile Include="GrblMessage.cs" />
     <Compile Include="GrblVersionInfo.cs" />
     <Compile Include="IGrblRow.cs" />
+    <Compile Include="RasterConverter\ImageProcessor.cs" />
     <Compile Include="L2LConf.cs" />
     <Compile Include="ModalElement.cs" />
     <Compile Include="ProgramRange.cs" />
