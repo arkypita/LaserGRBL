@@ -9,16 +9,37 @@
 //#define timedebug
 
 using System;
+using System.Diagnostics;
 
 namespace Tools
 {
-    //
-    // Contiene una logica di correzione della frequenza dell' HiResTimer (QPF) che prende il LowResTimer (GetTickCount64) come riferimento.
-    // La frequenza dell'HiResTimer potrebbe essere sbagliata di poco (ie. perché deviata rispetto al LowResTimer) oppure potrebbe essere
-    // sbagliata di molto. Abbiamo infatti notato su UNA macchina (portatile DELL VOSTRO 3750 - i5-2450M w7-64bit) che la funzione QPC può dare
-    // delle tempistiche incoerenti con la relativa QPF, cambiando la sua velocità anche in corso di esecuzione del programma, senza variazioni di QPF
-    //
-    public static class HiResTimer
+	// https://github.com/arkypita/LaserGRBL/issues/5
+	public static class HiResTimer
+	{
+		private const long NANO_IN_MILLI = 1000 * 1000;
+		private static Stopwatch watch = new Stopwatch();
+
+		static HiResTimer() //costruttore static, viene chiamato prima del primo utilizzo della classe
+		{ watch.Start(); }
+
+		public static long TotalMilliseconds => watch.ElapsedMilliseconds;
+
+		public static long TotalNano
+		{
+			get
+			{
+				return (long)((double)watch.ElapsedTicks / (double)Stopwatch.Frequency * 1000000000.0);
+			}
+		}
+	}
+
+	//
+	// Contiene una logica di correzione della frequenza dell' HiResTimer (QPF) che prende il LowResTimer (GetTickCount64) come riferimento.
+	// La frequenza dell'HiResTimer potrebbe essere sbagliata di poco (ie. perché deviata rispetto al LowResTimer) oppure potrebbe essere
+	// sbagliata di molto. Abbiamo infatti notato su UNA macchina (portatile DELL VOSTRO 3750 - i5-2450M w7-64bit) che la funzione QPC può dare
+	// delle tempistiche incoerenti con la relativa QPF, cambiando la sua velocità anche in corso di esecuzione del programma, senza variazioni di QPF
+	//
+	public static class HiResTimer_Windows
 	{
 
 		//16ms è la risoluzione tipica del timer low-res (tra 10 e 16msec)
@@ -143,7 +164,7 @@ namespace Tools
 			internal bool ShouldAdjustFreqency() => mLowRes > 24 && !IsGoodHiRes();
 		}
 
-		static HiResTimer() //costruttore static, viene chiamato prima del primo utilizzo della classe
+		static HiResTimer_Windows() //costruttore static, viene chiamato prima del primo utilizzo della classe
 		{
 			//verifica se è disponibile l'HiResTimer (true a partire da WinXP) e si fa restituire l' original frequency
 			mPerfCounterSupported = WinAPI.QueryPerformanceFrequency(ref mOriginalFrequency);
