@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ColorScheme.cs" />
     <Compile Include="ColorSegments\ColorSegment.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="CsPotrace\BezierToBiarc\Algorithm.cs" />
     <Compile Include="CsPotrace\BezierToBiarc\Arc.cs" />
     <Compile Include="CsPotrace\BezierToBiarc\BiArc.cs" />

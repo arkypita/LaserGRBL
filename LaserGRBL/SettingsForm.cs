@@ -52,13 +52,13 @@ namespace LaserGRBL
 
 			CbHiRes.Checked = Settings.GetObject("Raster Hi-Res", false );
 
-			TBHeader.Text = Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER);
+			TBHeader.Text = Settings.GetObject("GCode.CustomHeader", Constants.GCODE_STD_HEADER);
             TBHeader.ForeColor = ColorScheme.FormForeColor;
             TBHeader.BackColor = ColorScheme.FormBackColor;
-            TBPasses.Text = Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES);
+            TBPasses.Text = Settings.GetObject("GCode.CustomPasses", Constants.GCODE_STD_PASSES);
             TBPasses.ForeColor = ColorScheme.FormForeColor;
             TBPasses.BackColor = ColorScheme.FormBackColor;
-            TBFooter.Text = Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER);
+            TBFooter.Text = Settings.GetObject("GCode.CustomFooter", Constants.GCODE_STD_FOOTER);
             TBFooter.ForeColor = ColorScheme.FormForeColor;
             TBFooter.BackColor = ColorScheme.FormBackColor;
 

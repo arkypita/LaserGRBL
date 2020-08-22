@@ -21,10 +21,6 @@ namespace LaserGRBL
 	{
 		public static PSHelper.MaterialDB MaterialDB = PSHelper.MaterialDB.Load();
 
-		public static string GCODE_STD_HEADER = "G90 (use absolute coordinates)";
-		public static string GCODE_STD_PASSES = ";(Uncomment if you want to sink Z axis)\r\n;G91 (use relative coordinates)\r\n;G0 Z-1 (sinks the Z axis, 1mm)\r\n;G90 (use absolute coordinates)";
-		public static string GCODE_STD_FOOTER = "G0 X0 Y0 Z0 (move back to origin)";
-
 		public delegate void dlgIssueDetector(DetectedIssue issue);
 		public delegate void dlgOnMachineStatus();
 		public delegate void dlgOnOverrideChange();
@@ -721,13 +717,13 @@ namespace LaserGRBL
 				if (first)
 				{
 					Logger.LogMessage("EnqueueProgram", "Push Header");
-					ExecuteCustombutton(Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
+					ExecuteCustombutton(Settings.GetObject("GCode.CustomHeader", Constants.GCODE_STD_HEADER));
 				}
 
 				if (pass)
 				{
 					Logger.LogMessage("EnqueueProgram", "Push Passes");
-					ExecuteCustombutton(Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
+					ExecuteCustombutton(Settings.GetObject("GCode.CustomPasses", Constants.GCODE_STD_PASSES));
 				}
 
 
@@ -1827,7 +1823,7 @@ namespace LaserGRBL
 				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true)), false));
 
 				Logger.LogMessage("EnqueueProgram", "Push Footer");
-				ExecuteCustombutton(Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
+				ExecuteCustombutton(Settings.GetObject("GCode.CustomFooter", Constants.GCODE_STD_FOOTER));
 
 				SoundEvent.PlaySound(SoundEvent.EventId.Success);
 
