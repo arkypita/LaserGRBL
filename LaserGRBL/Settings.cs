@@ -4,7 +4,10 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
-using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace LaserGRBL
 {
@@ -13,45 +16,44 @@ namespace LaserGRBL
 	/// </summary>
 	public static class Settings
 	{
-		private static System.Collections.Generic.Dictionary<string, object> dic;
-
+		private static Dictionary<string, object> dic;
+		private static string dataPath = null;
 		static string filename
 		{ 
 			get 
 			{
 				string basename = "LaserGRBL.Settings.bin";
-				string fullname = System.IO.Path.Combine(GrblCore.DataPath, basename);
+				string fullname = Path.Combine(dataPath, basename);
 
-				if (!System.IO.File.Exists(fullname) && System.IO.File.Exists(basename))
-					System.IO.File.Copy(basename, fullname);
+				if (!File.Exists(fullname) && File.Exists(basename))
+					File.Copy(basename, fullname);
 
 				return fullname;
 			} 
 		}
-
-		static Settings()
+		public static void Initialize(string DataPath) 
 		{
-			try 
-			{
-				if (System.IO.File.Exists(filename))
-				{
-					System.Runtime.Serialization.Formatters.Binary.BinaryFormatter f = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-					f.AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple;
-					using (System.IO.FileStream fs = new System.IO.FileStream(filename, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.None))
-					{
-						dic = (System.Collections.Generic.Dictionary<string, object>)f.Deserialize(fs);
-						fs.Close();
-					}
-				}
-				
-			}
-			catch {}
-			
-			if (dic == null)
-				dic = new System.Collections.Generic.Dictionary<string, object>();
-		}
+			dataPath = DataPath;
+            try
+            {
+                if (File.Exists(filename))
+                {
+                    BinaryFormatter f = new BinaryFormatter();
+                    f.AssemblyFormat = FormatterAssemblyStyle.Simple;
+                    using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.None))
+                    {
+                        dic = (Dictionary<string, object>)f.Deserialize(fs);
+                        fs.Close();
+                    }
+                }
 
-		
+            }
+            catch { }
+
+			if (dic == null) dic = new Dictionary<string, object>();
+        }
+
+
 		public static T GetObject<T>(string key, T defval)
 		{
 			try
@@ -88,9 +90,9 @@ namespace LaserGRBL
 		{
 			try
 			{
-				System.Runtime.Serialization.Formatters.Binary.BinaryFormatter f = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-				f.AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple;
-				using (System.IO.FileStream fs = new System.IO.FileStream(filename, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
+				BinaryFormatter f = new BinaryFormatter();
+				f.AssemblyFormat = FormatterAssemblyStyle.Simple;
+				using (FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None))
 				{
 					f.Serialize(fs, dic);
 					fs.Close();
