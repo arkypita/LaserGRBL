@@ -12,7 +12,7 @@ namespace LaserGRBL
 {
 	public partial class GrblCommand : ICloneable, IGrblRow
 	{
-		
+
 		private string mLine;
 		private string mCodedResult;
 		private TimeSpan mTimeOffset;
@@ -109,14 +109,14 @@ namespace LaserGRBL
 		{ get { return mRepeatCount; } }
 
 		public void DeleteHelper()
-		{mHelper = null;}
-		
+		{ mHelper = null; }
+
 		public void SetOffset(TimeSpan Time)
-		{mTimeOffset = Time;}
-		
+		{ mTimeOffset = Time; }
+
 		public TimeSpan TimeOffset
-		{get {return mTimeOffset;}}
-		
+		{ get { return mTimeOffset; } }
+
 		public object Clone()
 		{ return MemberwiseClone(); }
 
@@ -126,14 +126,14 @@ namespace LaserGRBL
 		private static char[] trimarray = new char[] { '\r', '\n', ' ' };
 
 		public string SerialData
-		{ 
+		{
 			get
 			{
 				if (CanCompress)
-					return mLine.Trim(trimarray).Replace(" ","") + '\n';  //strip spaces
+					return mLine.Trim(trimarray).Replace(" ", "") + '\n';  //strip spaces
 				else
 					return mLine.Trim(trimarray) + '\n';  //send it "as is"
-			} 
+			}
 		}
 
 		private bool CanCompress
@@ -141,20 +141,20 @@ namespace LaserGRBL
 
 		public string GetResult(bool decode, bool erroronly)
 		{
-				if (Status == CommandStatus.ResponseBad && decode)
+			if (Status == CommandStatus.ResponseBad && decode)
+			{
+				try
 				{
-					try
-					{
-						string key = mCodedResult.Substring(mCodedResult.IndexOf(':') + 1);
-						string brief = CSVD.Errors.GetItem(key, 0);
-						if (brief != null) return brief;
-					}
-					catch { }
-
-					return mCodedResult; //if ex or null
+					string key = mCodedResult.Substring(mCodedResult.IndexOf(':') + 1);
+					string brief = CSVD.Errors.GetItem(key, 0);
+					if (brief != null) return brief;
 				}
+				catch { }
 
-				return erroronly ? null : mCodedResult;
+				return mCodedResult; //if ex or null
+			}
+
+			return erroronly ? null : mCodedResult;
 		}
 
 		public CommandStatus Status
@@ -185,9 +185,9 @@ namespace LaserGRBL
 
 		public bool IsGrblCommand
 		{ get { return mLine.StartsWith("$"); } }
-		
+
 		public bool IsEmpty
-		{get{return mLine.Length == 0;}}
+		{ get { return mLine.Length == 0; } }
 
 		public bool IsWriteEEPROM
 		{ get { return IsGrblCommand && IsSetConf; } } //maybe need to add G10/G28.1/G30.1 ?
@@ -195,7 +195,7 @@ namespace LaserGRBL
 		private bool IsSetConf
 		{ get { return GrblConf.IsSetConf(mLine); } }
 
-		
+
 		#region G Codes
 
 		public GrblElement G
@@ -250,24 +250,24 @@ namespace LaserGRBL
 		{ get { return GetElement('M'); } }
 
 		public bool IsLaserON
-		{get {return IsM3 || IsM4;}}
-		
+		{ get { return IsM3 || IsM4; } }
+
 		public bool IsM3
 		{ get { return M != null && M.Number == 3; } }
 
 		public bool IsM4
 		{ get { return M != null && M.Number == 4; } }
-		
+
 		public bool IsLaserOFF
-		{get {return IsM5;}}
-		
+		{ get { return IsM5; } }
+
 		public bool IsM5
 		{ get { return M != null && M.Number == 5; } }
 
 		#endregion
 
 		#region Parameters
-	
+
 		public GrblElement T
 		{ get { return GetElement('T'); } }
 
@@ -304,7 +304,7 @@ namespace LaserGRBL
 		{ return mHelper.ContainsKey(key) ? mHelper[key] : null; }
 
 		public string GetMessage() //per la visualizzazione
-		{  return mRepeatCount == 0 ? Command : String.Format("{0} (Retry {1})", Command, mRepeatCount); } 
+		{ return mRepeatCount == 0 ? Command : String.Format("{0} (Retry {1})", Command, mRepeatCount); }
 
 		public string GetToolTip(bool decode)
 		{
@@ -320,7 +320,7 @@ namespace LaserGRBL
 			}
 			return "";
 		}
-		
+
 		public Color LeftColor
 		{ get { return ColorScheme.LogLeftCOMMAND; } }
 
@@ -328,7 +328,7 @@ namespace LaserGRBL
 		{ get { return Status == CommandStatus.ResponseGood ? ColorScheme.LogRightGOOD : Status == CommandStatus.ResponseBad ? ColorScheme.LogRightBAD : ColorScheme.LogRightOTHERS; } }
 
 		internal void SetSending()
-		{mCodedResult = "";}
+		{ mCodedResult = ""; }
 
 		public int ImageIndex
 		{ get { return Status == CommandStatus.Queued || Status == CommandStatus.WaitingResponse ? 0 : Status == CommandStatus.ResponseGood ? 1 : 2; } }

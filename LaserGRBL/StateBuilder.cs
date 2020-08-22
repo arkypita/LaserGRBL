@@ -6,8 +6,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace LaserGRBL
 {
@@ -31,7 +29,7 @@ namespace LaserGRBL
 				decimal mPrevious = 0;
 
 				public CumulativeElement(GrblElement defval) : base(defval.Command, defval.Number)
-				{mDefault = defval;}
+				{ mDefault = defval; }
 
 				public bool IsDefault
 				{ get { return base.Equals(mDefault); } }
@@ -314,10 +312,9 @@ namespace LaserGRBL
 			}
 
 			private void AddSettled(List<GrblElement> list, ModalElement element)
-			{if (element.IsSettled) list.Add(element);}
+			{ if (element.IsSettled) list.Add(element); }
 
 		}
-
 
 		public class G2G3Helper
 		{
@@ -345,8 +342,8 @@ namespace LaserGRBL
 
 				double aX = (double)spb.X.Previous; //startX
 				double aY = (double)spb.Y.Previous; //startY
-				double bX = (double)spb.X.Number;	//endX
-				double bY = (double)spb.Y.Number;	//endY
+				double bX = (double)spb.X.Number;   //endX
+				double bY = (double)spb.Y.Number;   //endY
 
 				double oX = cmd.I != null ? (double)cmd.I.Number : 0.0; //offsetX
 				double oY = cmd.J != null ? (double)cmd.J.Number : 0.0; //offsetY
