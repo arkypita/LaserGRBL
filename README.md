@@ -1,4 +1,4 @@
-! This is the DotNet Core Fork
+! This is the DotNet Core Fork ![.NET Core Desktop](https://github.com/RafaelEstevamReis/LaserGRBL/workflows/.NET%20Core%20Desktop/badge.svg)
 
 # LaserGRBL [![Donation](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/pools/c/8cQ1Lo4sRA)
 Official website [http://lasergrbl.com](http://lasergrbl.com)
