@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorScheme.cs" />
+    <Compile Include="ColorSegments\ColorSegment.cs" />
     <Compile Include="CsPotrace\BezierToBiarc\Algorithm.cs" />
     <Compile Include="CsPotrace\BezierToBiarc\Arc.cs" />
     <Compile Include="CsPotrace\BezierToBiarc\BiArc.cs" />
@@ -57,10 +59,11 @@
     <Compile Include="CSVD.cs" />
     <Compile Include="CSV\CsvDictionary.cs" />
     <Compile Include="CSV\FormattedMessage.cs" />
-    <Compile Include="FirmwareEnum.cs" />
+    <Compile Include="GrblEnums.cs" />
     <Compile Include="GPoint.cs" />
     <Compile Include="GrblConf.cs" />
     <Compile Include="GrblElement.cs" />
+    <Compile Include="GrblMessage.cs" />
     <Compile Include="GrblVersionInfo.cs" />
     <Compile Include="IGrblRow.cs" />
     <Compile Include="L2LConf.cs" />

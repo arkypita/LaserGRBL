@@ -77,7 +77,7 @@ namespace LaserGRBL
 			}
 		}
 
-		void OnIssueDetected(GrblCore.DetectedIssue issue)
+		void OnIssueDetected(DetectedIssue issue)
 		{
 			if (!Settings.GetObject("Do not show Issue Detector", false))
 				IssueDetectorForm.CreateAndShowDialog(issue);
@@ -151,7 +151,7 @@ namespace LaserGRBL
 
 		void OnMachineStatus()
 		{
-			if (Core.MachineStatus == GrblCore.MacStatus.Idle && FirstIdle && Core.Configuration.Count == 0)
+			if (Core.MachineStatus == MacStatus.Idle && FirstIdle && Core.Configuration.Count == 0)
 			{
 				try
 				{
@@ -231,19 +231,19 @@ namespace LaserGRBL
 			{
 				//Disconnected, Connecting, Idle, *Run, *Hold, *Door, Home, *Alarm, *Check, *Jog
 
-				case GrblCore.MacStatus.Alarm:
+				case MacStatus.Alarm:
 					TTTStatus.BackColor = Color.Red;
 					TTTStatus.ForeColor = Color.White;
 					break;
-				case GrblCore.MacStatus.Door:
-				case GrblCore.MacStatus.Hold:
-				case GrblCore.MacStatus.Cooling:
+				case MacStatus.Door:
+				case MacStatus.Hold:
+				case MacStatus.Cooling:
 					TTTStatus.BackColor = Color.DarkOrange;
 					TTTStatus.ForeColor = Color.Black;
 					break;
-				case GrblCore.MacStatus.Jog:
-				case GrblCore.MacStatus.Run:
-				case GrblCore.MacStatus.Check:
+				case MacStatus.Jog:
+				case MacStatus.Run:
+				case MacStatus.Check:
 					TTTStatus.BackColor = Color.LightGreen;
 					TTTStatus.ForeColor = Color.Black;
 					break;
@@ -596,7 +596,7 @@ namespace LaserGRBL
 
 		private void toolsToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
 		{
-			flashGrblFirmwareToolStripMenuItem.Enabled = (Core.MachineStatus == GrblCore.MacStatus.Disconnected);
+			flashGrblFirmwareToolStripMenuItem.Enabled = (Core.MachineStatus == MacStatus.Disconnected);
 		}
 
 		private void activateExtendedLogToolStripMenuItem_Click(object sender, EventArgs e)

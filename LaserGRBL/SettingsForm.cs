@@ -40,7 +40,7 @@ namespace LaserGRBL
             CBCore.SelectedItem = Settings.GetObject("Firmware Type", Firmware.Grbl);
 			CBSupportPWM.Checked = Settings.GetObject("Support Hardware PWM", true);
 			CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
-			CBStreamingMode.SelectedItem = Settings.GetObject("Streaming Mode", GrblCore.StreamingMode.Buffered);
+			CBStreamingMode.SelectedItem = Settings.GetObject("Streaming Mode", StreamingMode.Buffered);
 			CbUnidirectional.Checked = Settings.GetObject("Unidirectional Engraving", false);
 			CbThreadingMode.SelectedItem = Settings.GetObject("Threading Mode", ThreadingMode.UltraFast);
 			CbIssueDetector.Checked = !Settings.GetObject("Do not show Issue Detector", false);
@@ -146,9 +146,9 @@ namespace LaserGRBL
 		private void InitStreamingCB()
 		{
 			CBStreamingMode.BeginUpdate();
-			CBStreamingMode.Items.Add(GrblCore.StreamingMode.Buffered);
-			CBStreamingMode.Items.Add(GrblCore.StreamingMode.Synchronous);
-			CBStreamingMode.Items.Add(GrblCore.StreamingMode.RepeatOnError);
+			CBStreamingMode.Items.Add(StreamingMode.Buffered);
+			CBStreamingMode.Items.Add(StreamingMode.Synchronous);
+			CBStreamingMode.Items.Add(StreamingMode.RepeatOnError);
 			CBStreamingMode.EndUpdate();
 		}
 

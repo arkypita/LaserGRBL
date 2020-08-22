@@ -6,6 +6,30 @@
 
 namespace LaserGRBL
 {
-    public enum Firmware
+	public enum DetectedIssue
+	{
+		Unknown = 0,
+		ManualReset = -1,
+		ManualDisconnect = -2,
+		ManualAbort = -3,
+		StopResponding = 1,
+		//StopMoving = 2, 
+		UnexpectedReset = 3,
+		UnexpectedDisconnect = 4,
+	}
+
+	public enum MacStatus
+	{ Unknown, Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue, Cooling }
+
+	public enum JogDirection
+	{ None, Abort, Home, N, S, W, E, NW, NE, SW, SE, Zup, Zdown }
+
+	public enum StreamingMode
+	{ Buffered, Synchronous, RepeatOnError }
+
+	public enum MessageType
+	{ Startup, Config, Alarm, Feedback, Position, Others }
+
+	public enum Firmware
 	{ Grbl, Smoothie, Marlin }
 }

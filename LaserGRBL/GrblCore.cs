@@ -26,27 +26,6 @@ namespace LaserGRBL
 		public static string GCODE_STD_PASSES = ";(Uncomment if you want to sink Z axis)\r\n;G91 (use relative coordinates)\r\n;G0 Z-1 (sinks the Z axis, 1mm)\r\n;G90 (use absolute coordinates)";
 		public static string GCODE_STD_FOOTER = "G0 X0 Y0 Z0 (move back to origin)";
 
-		public enum DetectedIssue
-		{
-			Unknown = 0,
-			ManualReset = -1,
-			ManualDisconnect = -2,
-			ManualAbort = -3,
-			StopResponding = 1,
-			//StopMoving = 2, 
-			UnexpectedReset = 3,
-			UnexpectedDisconnect = 4,
-		}
-
-		public enum MacStatus
-		{ Unknown, Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue, Cooling }
-
-		public enum JogDirection
-		{ None, Abort, Home, N, S, W, E, NW, NE, SW, SE, Zup, Zdown }
-
-		public enum StreamingMode
-		{ Buffered, Synchronous, RepeatOnError }
-
 		public delegate void dlgIssueDetector(DetectedIssue issue);
 		public delegate void dlgOnMachineStatus();
 		public delegate void dlgOnOverrideChange();
@@ -1038,9 +1017,9 @@ namespace LaserGRBL
 			get
 			{
 				if (SupportTrueJogging)
-					return IsOpen && (MachineStatus == GrblCore.MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Jog);
+					return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Jog);
 				else
-					return IsOpen && (MachineStatus == GrblCore.MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Run) && !InProgram;
+					return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Run) && !InProgram;
 			}
 		}
 
@@ -1896,13 +1875,13 @@ namespace LaserGRBL
 		{ get { return IsOpen && MachineStatus != MacStatus.Disconnected && !InProgram; } }
 
 		public bool CanDoHoming
-		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm) && Configuration.HomingEnabled; } }
+		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Alarm) && Configuration.HomingEnabled; } }
 
 		public bool CanDoZeroing
 		{ get { return IsOpen && MachineStatus == MacStatus.Idle && WorkPosition != GPoint.Zero; } }
 
 		public bool CanUnlock
-		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm); } }
+		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Alarm); } }
 
 		public bool CanFeedHold
 		{ get { return IsOpen && MachineStatus == MacStatus.Run; } }
@@ -2238,7 +2217,7 @@ namespace LaserGRBL
 		private int mErrorCount;
 		private int mContinueCorrection;
 
-		GrblCore.DetectedIssue mLastIssue;
+		DetectedIssue mLastIssue;
 		private GPoint mLastKnownWCO;
 
 		public GPoint LastKnownWCO
@@ -2266,7 +2245,7 @@ namespace LaserGRBL
 			mErrorCount = 0;
 			mTargetCount = 0;
 			mContinueCorrection = 0;
-			mLastIssue = GrblCore.DetectedIssue.Unknown;
+			mLastIssue = DetectedIssue.Unknown;
 			mLastKnownWCO = GPoint.Zero;
 		}
 
@@ -2348,7 +2327,7 @@ namespace LaserGRBL
 				mSentCount = 0;
 				mErrorCount = 0;
 				mContinueCorrection = 0;
-				mLastIssue = GrblCore.DetectedIssue.Unknown;
+				mLastIssue = DetectedIssue.Unknown;
 				mLastKnownWCO = GPoint.Zero;
 			}
 		}
@@ -2368,7 +2347,7 @@ namespace LaserGRBL
 				mStarted = true;
 				mExecutedCount = position;
 				mSentCount = position;
-				mLastIssue = GrblCore.DetectedIssue.Unknown;
+				mLastIssue = DetectedIssue.Unknown;
 				//	mErrorCount = 0;
 				mContinueCorrection = added;
 			}
@@ -2430,7 +2409,7 @@ namespace LaserGRBL
 			return false;
 		}
 
-		public void JobIssue(GrblCore.DetectedIssue issue)
+		public void JobIssue(DetectedIssue issue)
 		{ mLastIssue = issue; }
 
 		private long now
@@ -2439,7 +2418,7 @@ namespace LaserGRBL
 		public int ErrorCount
 		{ get { return mErrorCount; } }
 
-		public GrblCore.DetectedIssue LastIssue
+		public DetectedIssue LastIssue
 		{ get { return mLastIssue; } }
 	}
 }

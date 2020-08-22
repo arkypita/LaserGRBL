@@ -69,29 +69,29 @@ namespace LaserGRBL.UserControls
 
 			public Point Mouvement { get; private set; }
 
-			public GrblCore.JogDirection Direction
+			public JogDirection Direction
 			{
 				get
 				{
 					if (IsUp)
 					{
 						if (IsLeft)
-							return GrblCore.JogDirection.NW;
+							return JogDirection.NW;
 						if (IsRight)
-							return GrblCore.JogDirection.NE;
-						return GrblCore.JogDirection.N;
+							return JogDirection.NE;
+						return JogDirection.N;
 					}
 					if (IsDown)
 					{
 						if (IsLeft)
-							return GrblCore.JogDirection.SW;
+							return JogDirection.SW;
 						if (IsRight)
-							return GrblCore.JogDirection.SE;
-						return GrblCore.JogDirection.S;
+							return JogDirection.SE;
+						return JogDirection.S;
 					}
 					if (IsLeft)
-						return GrblCore.JogDirection.W;
-					return GrblCore.JogDirection.E;
+						return JogDirection.W;
+					return JogDirection.E;
 				}
 			}
 			public int Speed

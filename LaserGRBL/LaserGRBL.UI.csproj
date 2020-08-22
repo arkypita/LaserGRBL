@@ -178,7 +178,6 @@
     <Compile Include="Tools\OSHelper.cs" />
     <Compile Include="Tools\Serializer.cs" />
     <Compile Include="UrlManager.cs" />
-    <Compile Include="ColorScheme.cs" />
     <Compile Include="ComWrapper\Emulator.cs" />
     <Compile Include="RunFromPositionForm.cs">
       <SubType>Form</SubType>

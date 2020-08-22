@@ -62,7 +62,7 @@ namespace LaserGRBL
 
 		void RefreshEnabledButtons()
 		{
-			BtnExport.Enabled = BtnImport.Enabled = BtnRead.Enabled = BtnWrite.Enabled = Core.MachineStatus == GrblCore.MacStatus.Idle;
+			BtnExport.Enabled = BtnImport.Enabled = BtnRead.Enabled = BtnWrite.Enabled = Core.MachineStatus == MacStatus.Idle;
 			DGV.ReadOnly = LblConnect.Visible = !BtnRead.Enabled;
 		}
 
@@ -292,7 +292,7 @@ namespace LaserGRBL
 
 		private void GrblConfig_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			if (HasChanges() && Core.MachineStatus == GrblCore.MacStatus.Idle)
+			if (HasChanges() && Core.MachineStatus == MacStatus.Idle)
 			{
 				DialogResult rv = System.Windows.Forms.MessageBox.Show(Strings.BoxConfigDetectedChanges, Strings.BoxConfigDetectedChangesTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
 

@@ -12,7 +12,7 @@ using System.Drawing;
 
 namespace LaserGRBL
 {
-	class ColorScheme
+	public class ColorScheme
 	{
 		public enum Scheme
 		{ BlueLaser, RedLaser, Dark, Hacker, Nighty }
@@ -22,7 +22,7 @@ namespace LaserGRBL
 		static ColorScheme()
 		{
 			mData = new Dictionary<Scheme, Color[]>();
-			mData.Add(Scheme.BlueLaser, new Color[] 
+			mData.Add(Scheme.BlueLaser, new Color[]
 			{
 				SystemColors.Control,		//form backcolor
 				SystemColors.ControlText,	//form forecolor
@@ -49,7 +49,7 @@ namespace LaserGRBL
 				Color.Red,					//response bad
 				Color.Black,				//response others
 			});
-			mData.Add(Scheme.RedLaser, new Color[] 
+			mData.Add(Scheme.RedLaser, new Color[]
 			{
 				SystemColors.Control,		//form backcolor
 				SystemColors.ControlText,	//form forecolor
@@ -76,7 +76,7 @@ namespace LaserGRBL
 				Color.Red,					//response bad
 				Color.Black,				//response others
 			});
-			mData.Add(Scheme.Dark, new Color[] 
+			mData.Add(Scheme.Dark, new Color[]
 			{
 				Color.FromArgb(29,44,75),	//form backcolor
 				Color.White,				//form forecolor
@@ -103,7 +103,7 @@ namespace LaserGRBL
 				Color.OrangeRed,			//response bad
 				Color.White,				//response others
 			});
-			mData.Add(Scheme.Hacker, new Color[] 
+			mData.Add(Scheme.Hacker, new Color[]
 			{
 				Color.FromArgb(0,10,35),	//form backcolor
 				Color.LimeGreen,			//form forecolor
@@ -130,9 +130,9 @@ namespace LaserGRBL
 				Color.Red,					//response bad
 				Color.White,				//response others
 			});
-            mData.Add(Scheme.Nighty, new Color[]
-            {
-                Color.FromArgb(25,25,25),	//form backcolor
+			mData.Add(Scheme.Nighty, new Color[]
+			{
+				Color.FromArgb(25,25,25),	//form backcolor
 				Color.Aqua,			        //form forecolor
 
 				Color.FromArgb(25,25,25),   //preview background
@@ -160,7 +160,7 @@ namespace LaserGRBL
                 Color.FromArgb(25,25,25),   //TextBox
             });
 
-            CurrentScheme = Scheme.RedLaser;
+			CurrentScheme = Scheme.RedLaser;
 		}
 
 		public static bool DarkScheme
@@ -174,36 +174,36 @@ namespace LaserGRBL
 		{ get { return GetColor(1); } }
 
 		public static Color FormButtonsColor
-		{ 
-			get 
+		{
+			get
 			{
 				if (DarkScheme)
 					return ChangeColorBrightness(FormBackColor, +0.1f);
 				else
-					return ChangeColorBrightness(FormBackColor, -0.1f); 
-			} 
+					return ChangeColorBrightness(FormBackColor, -0.1f);
+			}
 		}
 
 		public static Color MenuHighlightColor
-		{ 
-			get 
+		{
+			get
 			{
 				if (DarkScheme)
-					return ChangeColorBrightness(FormBackColor, +0.2f); 
+					return ChangeColorBrightness(FormBackColor, +0.2f);
 				else
-					return ChangeColorBrightness(FormBackColor, -0.1f); 
-			} 
+					return ChangeColorBrightness(FormBackColor, -0.1f);
+			}
 		}
 
 		public static Color MenuSeparatorColor
 		{
-			get 
+			get
 			{
 				if (DarkScheme)
 					return ChangeColorBrightness(FormBackColor, +0.15f);
 				else
-					return ChangeColorBrightness(FormBackColor, -0.1f); 
-			} 
+					return ChangeColorBrightness(FormBackColor, -0.1f);
+			}
 		}
 
 		public static Color PreviewBackColor
@@ -247,12 +247,12 @@ namespace LaserGRBL
 		{ get { return GetColor(19); } }
 		public static Color LogRightOTHERS
 		{ get { return GetColor(20); } }
-        public static Color TextBoxColorOverride
-        { get { return GetColor(20); } }
+		public static Color TextBoxColorOverride
+		{ get { return GetColor(20); } }
 
 
-        private static Color GetColor(int index)
-		{return mData[CurrentScheme][index];}
+		private static Color GetColor(int index)
+		{ return mData[CurrentScheme][index]; }
 
 		private static Color ChangeColorBrightness(Color color, float correctionFactor)
 		{
