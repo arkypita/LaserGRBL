@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace Tools
 {
-    public static class OSVersionInfo
+    internal static class OSVersionInfo
 	{
 		#region ENUMS
 		public enum SoftwareArchitecture

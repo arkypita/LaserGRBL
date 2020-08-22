@@ -1,22 +1,31 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Tools
 {
     public class OSHelper
 	{
-		public static bool Is64BitProcess = OSVersionInfo.ProgramBits == OSVersionInfo.SoftwareArchitecture.Bit64;
-		public static bool Is64BitOperatingSystem = OSVersionInfo.OSBits == OSVersionInfo.SoftwareArchitecture.Bit64;
+		public static bool Is64BitProcess
+		{
+			get
+			{
+				return OSVersionInfo.ProgramBits == OSVersionInfo.SoftwareArchitecture.Bit64;
+			}
+		}
+		public static bool Is64BitOperatingSystem
+		{
+			get
+			{
+				return OSVersionInfo.OSBits == OSVersionInfo.SoftwareArchitecture.Bit64;
+			}
+		}
 
 		public static string GetClrInfo()
 		{
 			try
 			{
-				Type type = typeof(String);
-				String uri = type.Assembly.CodeBase;
+				Type type = typeof(string);
+				string uri = type.Assembly.CodeBase;
 				FileVersionInfo info = FileVersionInfo.GetVersionInfo(new Uri(uri).LocalPath);
 
 				return $"{info.FileName} {info.FileVersion}";
@@ -42,7 +51,6 @@ namespace Tools
 
 			return rv;
 		}
-
 		public static byte GetBitFlag()
 		{
 			byte rv = 0;
@@ -61,7 +69,7 @@ namespace Tools
 			return rv;
 		}
 
-		public static byte SetBit(byte value, int position)
+		private static byte SetBit(byte value, int position)
 		{
 			if (position < 0 || position > 7)
 				throw new ArgumentOutOfRangeException("position", "position must be in the range 0 - 7");
