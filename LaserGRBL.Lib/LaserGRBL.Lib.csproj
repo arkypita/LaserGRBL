@@ -92,10 +92,6 @@
     <EmbeddedResource Include="CSV\setting_codes.v1.1.csv" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CsPotrace\CsPotrace.csproj">
-      <Project>{f093f8c6-36a4-4346-bb8e-e0650a628cb8}</Project>
-      <Name>CsPotrace</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Cyotek.Drawing\Cyotek.Drawing.csproj">
       <Project>{f2d0fa15-b7f5-4ab0-9df7-44d2b13a3c79}</Project>
       <Name>Cyotek.Drawing</Name>
