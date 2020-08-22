@@ -13,11 +13,10 @@ namespace Tools
 
 	public class ThreadObject : ThreadClass
 	{
+		private ThreadStart _delegatesub;
+		private ThreadStart _firsrunsub;
 
-		private System.Threading.ThreadStart _delegatesub;
-
-		private System.Threading.ThreadStart _firsrunsub;
-		public ThreadObject(System.Threading.ThreadStart DelegateSub, int SleepTime, bool AutoDispose, string Name, System.Threading.ThreadStart FirstRunSub) : base(SleepTime, AutoDispose, Name)
+		public ThreadObject(ThreadStart DelegateSub, int SleepTime, bool AutoDispose, string Name, System.Threading.ThreadStart FirstRunSub) : base(SleepTime, AutoDispose, Name)
 		{
 			_delegatesub = DelegateSub;
 			_firsrunsub = FirstRunSub;
@@ -25,26 +24,26 @@ namespace Tools
 
 		protected override void OnFirstRun()
 		{
-			if ((_firsrunsub != null)) {
+			if ((_firsrunsub != null))
+			{
 				_firsrunsub();
 			}
 		}
 
 		protected override void DoTheWork()
 		{
-			if ((_delegatesub != null)) {
+			if ((_delegatesub != null))
+			{
 				_delegatesub();
 			}
 		}
-
 	}
 
 
 	public abstract class ThreadClass : IDisposable
 	{
-
 		protected ManualResetEvent MustExit;
-			//checked 26/05/2008
+		//checked 26/05/2008
 		protected internal Thread TH;
 
 		protected ThreadClass(int SleepTime, bool AutoDispose, string Name)
@@ -55,14 +54,11 @@ namespace Tools
 			_Name = Name;
 		}
 
-
 		protected virtual bool MustRun()
 		{
 			//return true if must run
 			return (MustExit != null) && !MustExit.WaitOne(SleepTime, false);
 		}
-
-
 
 		protected virtual void OnThreadTerminating()
 		{
@@ -71,12 +67,12 @@ namespace Tools
 		private void Loop()
 		{
 			OnFirstRun();
-			while (MustRun()) {
+			while (MustRun())
+			{
 				DoTheWork();
 			}
 			OnThreadTerminating();
 		}
-
 
 		protected virtual void OnFirstRun()
 		{
@@ -86,7 +82,8 @@ namespace Tools
 
 		public virtual void Start()
 		{
-			if (TH == null) {
+			if (TH == null)
+			{
 				MustExit = new ManualResetEvent(false);
 				TH = new System.Threading.Thread(Loop);
 				TH.Name = this.Name;
@@ -94,23 +91,27 @@ namespace Tools
 			}
 		}
 
-		public bool Running {
+		public bool Running
+		{
 			get { return (TH != null); }
 		}
 
 		private string _Name;
-		public string Name {
+		public string Name
+		{
 			get { return _Name; }
 		}
 
 		private int _timeout = 5000;
-		public int StopWaitTimeout {
+		public int StopWaitTimeout
+		{
 			get { return _timeout; }
 			set { _timeout = Math.Max(value, 0); }
 		}
 
 		private int _sleeptime = 0;
-		public int SleepTime {
+		public int SleepTime
+		{
 			get { return _sleeptime; }
 			set { _sleeptime = Math.Max(value, 0); }
 		}
@@ -163,13 +164,5 @@ namespace Tools
 		{
 			this.Stop();
 		}
-
-
-
-
-
-
 	}
-
 }
-
