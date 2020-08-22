@@ -63,23 +63,16 @@ namespace Tools
 			internal long ReferenceNano => (long)(mReference * NANO_IN_SECOND / mOriginalFrequency);
 #endif
 
-#if timedebug
-			internal static TimeReference Zero
-			{ get { return new TimeReference(0, 0, 0); } }
-#else
+
 			internal static TimeReference Zero
 			{ get { return new TimeReference(0, 0); } }
-#endif
 
 			internal static TimeReference Now
 			{
 				get
 				{
-#if timedebug
-					TimeReference rv = new TimeReference(0,0,0);
-#else
 					TimeReference rv = new TimeReference(0, 0);
-#endif
+
 					bool TaskSwitch = false;
 					do
 					{
@@ -105,7 +98,7 @@ namespace Tools
 
 
 #if timedebug
-			private TimeReference(long LowRes, long HiRes, long Ref)
+			private TimeReference(long LowRes, long HiRes, long Ref = 0)
 			{
 				this.mLowRes = LowRes;
 				this.mHiRes = HiRes;
@@ -119,13 +112,14 @@ namespace Tools
 			}
 #endif
 
+			internal TimeReference Subtract(TimeReference t)
+			{
 #if timedebug
-			internal TimeReference Subtract(TimeReference t)
-			{ return new TimeReference(mLowRes - t.mLowRes, mHiRes - t.mHiRes, mReference - t.mReference); }
+				return new TimeReference(mLowRes - t.mLowRes, mHiRes - t.mHiRes, mReference - t.mReference);
 #else
-			internal TimeReference Subtract(TimeReference t)
-			{ return new TimeReference(mLowRes - t.mLowRes, mHiRes - t.mHiRes); }
+				return new TimeReference(mLowRes - t.mLowRes, mHiRes - t.mHiRes); 
 #endif
+			}
 
 			internal long LowRes => mLowRes;
 			internal long LowResNano => mLowRes * NANO_IN_MILLI;
@@ -238,7 +232,6 @@ namespace Tools
 			mCurrentFrequency = mCompFrequency;
 			mCorrectionCount++;
 		}
-
 
 		public static double TestMultiplier //codice per simulare un HiResTimer a frequenza variabile
 		{
