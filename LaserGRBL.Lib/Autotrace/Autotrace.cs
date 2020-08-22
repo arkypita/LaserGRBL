@@ -63,22 +63,19 @@ namespace LaserGRBL
 			}
 		}
 
-		private static string ToHexString(Color c)
-		{
-			return $"{c.R:X2}{c.G:X2}{c.B:X2}";
-		}
-
 		public static string ExecuteAutotrace(string args)
 		{
 			ProcessStartInfo procStartInfo = new ProcessStartInfo();
 
 			if (AutotracePath == null)
 			{
+				// Use the old way, executable in LGRBL folder
 				var currDir = Path.Combine(new FileInfo(Assembly.GetExecutingAssembly().Location).DirectoryName, "Autotrace");
 				procStartInfo.FileName = Path.Combine(currDir, "autotrace.exe");
 			}
 			else
 			{
+				// Use specified location
 				procStartInfo.FileName = AutotracePath;
 			}
 
