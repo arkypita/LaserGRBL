@@ -46,7 +46,7 @@ namespace LaserGRBL
 				using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filename))
 				{
 					if (header)
-						sw.WriteLine(Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
+						sw.WriteLine(Settings.GetObject("GCode.CustomHeader", Constants.GCODE_STD_HEADER));
 
 					for (int i = 0; i < cycles; i++)
 					{
@@ -55,11 +55,11 @@ namespace LaserGRBL
 
 
 						if (between && i < cycles - 1)
-							sw.WriteLine(Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
+							sw.WriteLine(Settings.GetObject("GCode.CustomPasses", Constants.GCODE_STD_PASSES));
 					}
 
 					if (footer)
-						sw.WriteLine(Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
+						sw.WriteLine(Settings.GetObject("GCode.CustomFooter", Constants.GCODE_STD_FOOTER));
 
 					sw.Close();
 				}
