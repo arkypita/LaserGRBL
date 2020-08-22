@@ -384,38 +384,39 @@ namespace LaserGRBL
 						}
 						else if (mode == SvgConverter.SvgModeForm.Mode.Raster)
 						{
-							string bmpname = filename + ".png";
-							string fcontent = System.IO.File.ReadAllText(filename);
-							Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
-							svg.Ppi = 600;
-
-							using (Bitmap bmp = svg.Draw())
-							{
-								bmp.SetResolution(600, 600);
-
-								//codec options not supported in C# png encoder https://efundies.com/c-sharp-save-png/
-								//quality always 100%
-
-								//ImageCodecInfo codecinfo = GetEncoder(ImageFormat.Png);
-								//EncoderParameters paramlist = new EncoderParameters(1);
-								//paramlist.Param[0] = new EncoderParameter(Encoder.Quality, 30L); 
-
-
-								if (System.IO.File.Exists(bmpname))
-									System.IO.File.Delete(bmpname);
-
-								bmp.Save(bmpname/*, codecinfo, paramlist*/);
-							}
-
-							try
-							{
-								RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, bmpname, parent, append);
-								UsageCounters.RasterFile++;
-								if (System.IO.File.Exists(bmpname))
-									System.IO.File.Delete(bmpname);
-							}
-							catch (Exception ex)
-							{ Logger.LogException("SvgBmpImport", ex); }
+							throw new NotImplementedException();
+							//string bmpname = filename + ".png";
+							//string fcontent = System.IO.File.ReadAllText(filename);
+							//Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
+							//svg.Ppi = 600;
+							//
+							//using (Bitmap bmp = svg.Draw())
+							//{
+							//	bmp.SetResolution(600, 600);
+							//
+							//	//codec options not supported in C# png encoder https://efundies.com/c-sharp-save-png/
+							//	//quality always 100%
+							//
+							//	//ImageCodecInfo codecinfo = GetEncoder(ImageFormat.Png);
+							//	//EncoderParameters paramlist = new EncoderParameters(1);
+							//	//paramlist.Param[0] = new EncoderParameter(Encoder.Quality, 30L); 
+							//
+							//
+							//	if (System.IO.File.Exists(bmpname))
+							//		System.IO.File.Delete(bmpname);
+							//
+							//	bmp.Save(bmpname/*, codecinfo, paramlist*/);
+							//}
+							//
+							//try
+							//{
+							//	RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, bmpname, parent, append);
+							//	UsageCounters.RasterFile++;
+							//	if (System.IO.File.Exists(bmpname))
+							//		System.IO.File.Delete(bmpname);
+							//}
+							//catch (Exception ex)
+							//{ Logger.LogException("SvgBmpImport", ex); }
 						}
 					}
 					else if (GCodeExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load GCODE file

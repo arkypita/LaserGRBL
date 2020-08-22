@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace LaserGRBL.SvgConverter
 {
-	public partial class SvgModeForm : Form
+    public partial class SvgModeForm : Form
 	{
 		public Mode Result { get; private set; } = Mode.None;
 
@@ -35,13 +29,13 @@ namespace LaserGRBL.SvgConverter
 
 		private void CreatePreview(string filename)
 		{
-
-			string fcontent = System.IO.File.ReadAllText(filename);
-			Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
-			svg.Ppi = 600;
-
-			PbImage.Image = svg.Draw();
-			PbVector.Image = svg.Draw(true);
+			throw new NotImplementedException();
+			//string fcontent = System.IO.File.ReadAllText(filename);
+			//Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
+			//svg.Ppi = 600;
+			//
+			//PbImage.Image = svg.Draw();
+			//PbVector.Image = svg.Draw(true);
 		}
 
 		private void PbVector_Click(object sender, EventArgs e)
