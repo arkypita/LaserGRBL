@@ -75,6 +75,7 @@
     <Compile Include="ThreadingMode.cs" />
     <Compile Include="Tools\ExpressionEvaluator.cs" />
     <Compile Include="Tools\MathHelper.cs" />
+    <Compile Include="Tools\OSVersionInfo.cs" />
     <Compile Include="Tools\Utils.cs" />
     <Compile Include="Tools\WordWrap.cs" />
   </ItemGroup>
