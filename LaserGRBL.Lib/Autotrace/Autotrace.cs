@@ -4,22 +4,24 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
-using System;
 using System.Drawing;
 using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 
 namespace LaserGRBL
 {
-	public class Autotrace
+    public class Autotrace
 	{
-		public static string TempPath { get { return $"{Settings.DataPath}\\Autotrace\\"; } }
+		public static string AutotracePath = null;
+		public static string TempPath { get { return Path.Combine(Settings.DataPath, "Autotrace"); } }
 
 		public static void CleanupTmpFolder()
 		{
 			try
 			{
-				if (System.IO.Directory.Exists(TempPath))
-					System.IO.Directory.Delete(TempPath, true);
+				if (Directory.Exists(TempPath))
+					Directory.Delete(TempPath, true);
 			}
 			catch { }
 		}
@@ -32,10 +34,10 @@ namespace LaserGRBL
 
 		public static string BitmapToSvgString(Bitmap bmp, bool uct, int ct, bool ult, int lt)
 		{
-			if (!System.IO.Directory.Exists(TempPath))
-				System.IO.Directory.CreateDirectory(TempPath);
+			if (!Directory.Exists(TempPath))
+				 Directory.CreateDirectory(TempPath);
 
-			string fname = $"{TempPath}{System.IO.Path.GetRandomFileName()}";
+			string fname = $"{TempPath}{Path.GetRandomFileName()}";
 
 			try
 			{
@@ -54,8 +56,8 @@ namespace LaserGRBL
 			{
 				try
 				{
-					if (System.IO.File.Exists($"{fname}.png"))
-						System.IO.File.Delete($"{fname}.png");
+					if (File.Exists($"{fname}.png"))
+						File.Delete($"{fname}.png");
 				}
 				catch { }
 			}
@@ -70,7 +72,16 @@ namespace LaserGRBL
 		{
 			ProcessStartInfo procStartInfo = new ProcessStartInfo();
 
-			procStartInfo.FileName = ".\\Autotrace\\autotrace.exe";
+			if (AutotracePath == null)
+			{
+				var currDir = Path.Combine(new FileInfo(Assembly.GetExecutingAssembly().Location).DirectoryName, "Autotrace");
+				procStartInfo.FileName = Path.Combine(currDir, "autotrace.exe");
+			}
+			else
+			{
+				procStartInfo.FileName = AutotracePath;
+			}
+
 			procStartInfo.Arguments = args;
 			procStartInfo.RedirectStandardOutput = true;
 			procStartInfo.UseShellExecute = false;
