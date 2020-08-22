@@ -48,17 +48,6 @@
     <Compile Include="ColorScheme.cs" />
     <Compile Include="ColorSegments\ColorSegment.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\Algorithm.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\Arc.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\BiArc.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\Complex.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\CubicBezier.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\Line.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\Tuple.cs" />
-    <Compile Include="CsPotrace\BezierToBiarc\Vector2.cs" />
-    <Compile Include="CsPotrace\CsPotrace.cs" />
-    <Compile Include="CsPotrace\CsPotraceExport.cs" />
-    <Compile Include="CsPotrace\CsPotraceExportGCODE.cs" />
     <Compile Include="CSVD.cs" />
     <Compile Include="CSV\CsvDictionary.cs" />
     <Compile Include="CSV\FormattedMessage.cs" />
@@ -330,6 +319,10 @@
     <EmbeddedResource Include="SvgLibrary\Resources\svg11.dtd" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CsPotrace\CsPotrace.csproj">
+      <Project>{f093f8c6-36a4-4346-bb8e-e0650a628cb8}</Project>
+      <Name>CsPotrace</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Cyotek.Drawing\Cyotek.Drawing.csproj">
       <Project>{f2d0fa15-b7f5-4ab0-9df7-44d2b13a3c79}</Project>
       <Name>Cyotek.Drawing</Name>
