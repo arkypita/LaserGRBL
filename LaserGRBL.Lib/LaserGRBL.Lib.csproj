@@ -92,12 +92,6 @@
     <EmbeddedResource Include="CSV\setting_codes.v1.1.csv" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MSSVG\MSSVG.csproj">
-      <Project>{5b2828b8-fc5f-4962-8508-382b914fe67c}</Project>
-      <Name>MSSVG</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Autotrace\autotrace.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
