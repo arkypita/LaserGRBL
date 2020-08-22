@@ -327,7 +327,7 @@ namespace LaserGRBL
 		public Color RightColor
 		{ get { return Status == CommandStatus.ResponseGood ? ColorScheme.LogRightGOOD : Status == CommandStatus.ResponseBad ? ColorScheme.LogRightBAD : ColorScheme.LogRightOTHERS; } }
 
-		internal void SetSending()
+		public void SetSending()
 		{ mCodedResult = ""; }
 
 		public int ImageIndex

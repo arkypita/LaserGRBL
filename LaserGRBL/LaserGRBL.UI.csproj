@@ -293,7 +293,6 @@
     </Compile>
     <Compile Include="AutoUpdate\GitHub.cs" />
     <Compile Include="GrblCore.cs" />
-    <Compile Include="GrblCommand.cs" />
     <Compile Include="GrblFile.cs" />
     <Compile Include="HotkeyManagerForm.cs">
       <SubType>Form</SubType>
@@ -344,7 +343,6 @@
     <Compile Include="ResumeJobForm.Designer.cs">
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StateBuilder.cs" />
     <Compile Include="Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

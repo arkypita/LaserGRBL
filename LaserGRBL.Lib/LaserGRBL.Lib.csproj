@@ -61,6 +61,7 @@
     <Compile Include="CSVD.cs" />
     <Compile Include="CSV\CsvDictionary.cs" />
     <Compile Include="CSV\FormattedMessage.cs" />
+    <Compile Include="GrblCommand.cs" />
     <Compile Include="GrblEnums.cs" />
     <Compile Include="GPoint.cs" />
     <Compile Include="GrblConf.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="RasterConverter\Enums.cs" />
     <Compile Include="RasterConverter\ImageTransform.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="StateBuilder.cs" />
     <Compile Include="SvgConverter\GCodeFromSVG.cs" />
     <Compile Include="SvgConverter\gcodeRelated.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgCircle.cs" />
