@@ -49,7 +49,6 @@ namespace PInovkes
 		[DllImport("Kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
 		private static extern int GetTickCount();
 
-
 		//emulo la GetTickCount64 perché non esiste su WindowsXP
 		private static long mTickCount64 = 0;
 		internal static long GetTickCount64()
@@ -64,5 +63,11 @@ namespace PInovkes
 
 			return mTickCount64;
 		}
+
+		/* Task Switch */
+
+		[DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+		internal static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+
 	}
 }
