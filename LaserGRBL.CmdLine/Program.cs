@@ -20,8 +20,6 @@ namespace LaserGRBL.CmdLine
             {
                 processor.ProcessCommand(args[0], args);
             }
-
-            Console.ReadKey();
         }
     }
 }

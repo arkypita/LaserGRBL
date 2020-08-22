@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace LaserGRBL.CmdLine.Commands
 {
@@ -20,22 +21,22 @@ List of Commands:");
             foreach (var cmd in processor.GetCommands())
             {
                 string cmdText = "";
-                if (cmd.AttendTo != null && cmd.AttendTo.Length > 0) cmdText = args[0];
+                if (cmd.AttendTo != null && cmd.AttendTo.Length > 0) cmdText = cmd.AttendTo[0];
 
                 if (string.IsNullOrEmpty(cmdText)) continue;
 
                 string alises = "";
                 if (cmd.AttendTo != null)
                 {
-                    alises = string.Join(", ", cmd.AttendTo);
+                    alises = string.Join(", ", cmd.AttendTo.Skip(1).ToArray());
                 }
 
                 Console.WriteLine($"Command: {cmdText}");
-                Console.WriteLine($" Alisases: {alises}");
+                if(!string.IsNullOrEmpty(alises)) Console.WriteLine($" Alisases: {alises}");
                 string help = cmd.HelpText();
                 if (!string.IsNullOrEmpty(help))
                 {
-                    Console.WriteLine($" Command Text:");
+                    Console.Write($" Command Text: ");
                     Console.WriteLine(cmd.HelpText());
                 }
                 Console.WriteLine();
