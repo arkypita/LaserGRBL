@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace Tools
 {
-    internal static class OSVersionInfo
+	internal static class OSVersionInfo
 	{
 		#region ENUMS
 		public enum SoftwareArchitecture
@@ -872,37 +872,38 @@ namespace Tools
 
 			try
 			{
-				RegistryKey OurKey = null;
-				string[] split_result = RegistryPath.Split('\\');
-
-				if (split_result.Length > 0)
-				{
-					split_result[0] = split_result[0].ToUpper();        // Make the first entry uppercase...
-
-					if (split_result[0] == "HKEY_CLASSES_ROOT") OurKey = Registry.ClassesRoot;
-					else if (split_result[0] == "HKEY_CURRENT_USER") OurKey = Registry.CurrentUser;
-					else if (split_result[0] == "HKEY_LOCAL_MACHINE") OurKey = Registry.LocalMachine;
-					else if (split_result[0] == "HKEY_USERS") OurKey = Registry.Users;
-					else if (split_result[0] == "HKEY_CURRENT_CONFIG") OurKey = Registry.CurrentConfig;
-
-					if (OurKey != null)
-					{
-						for (int i = 1; i < split_result.Length; i++)
-						{
-							newRegistryPath += backSlash + split_result[i];
-							backSlash = "\\";
-						}
-
-						if (newRegistryPath != "")
-						{
-							//rtn = (string)Registry.GetValue(RegistryPath, "CurrentVersion", DefaultValue);
-
-							OurKey = OurKey.OpenSubKey(newRegistryPath);
-							rtn = (string)OurKey.GetValue(Field, DefaultValue);
-							OurKey.Close();
-						}
-					}
-				}
+				throw new NotImplementedException();
+				//	RegistryKey OurKey = null;
+				//	string[] split_result = RegistryPath.Split('\\');
+				//
+				//	if (split_result.Length > 0)
+				//	{
+				//		split_result[0] = split_result[0].ToUpper();        // Make the first entry uppercase...
+				//
+				//		if (split_result[0] == "HKEY_CLASSES_ROOT") OurKey = Registry.ClassesRoot;
+				//		else if (split_result[0] == "HKEY_CURRENT_USER") OurKey = Registry.CurrentUser;
+				//		else if (split_result[0] == "HKEY_LOCAL_MACHINE") OurKey = Registry.LocalMachine;
+				//		else if (split_result[0] == "HKEY_USERS") OurKey = Registry.Users;
+				//		else if (split_result[0] == "HKEY_CURRENT_CONFIG") OurKey = Registry.CurrentConfig;
+				//
+				//		if (OurKey != null)
+				//		{
+				//			for (int i = 1; i < split_result.Length; i++)
+				//			{
+				//				newRegistryPath += backSlash + split_result[i];
+				//				backSlash = "\\";
+				//			}
+				//
+				//			if (newRegistryPath != "")
+				//			{
+				//				//rtn = (string)Registry.GetValue(RegistryPath, "CurrentVersion", DefaultValue);
+				//
+				//				OurKey = OurKey.OpenSubKey(newRegistryPath);
+				//				rtn = (string)OurKey.GetValue(Field, DefaultValue);
+				//				OurKey.Close();
+				//			}
+				//		}
+				//	}
 			}
 			catch { }
 

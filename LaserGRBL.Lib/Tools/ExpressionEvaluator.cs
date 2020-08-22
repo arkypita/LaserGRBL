@@ -977,9 +977,7 @@ namespace Tools
 			//
 			AssemblyName assemblyName = new AssemblyName();
 			assemblyName.Name = "EmittedAssembly";
-			AssemblyBuilder assembly = Thread.GetDomain().DefineDynamicAssembly(
-				assemblyName,
-				AssemblyBuilderAccess.Run);
+			AssemblyBuilder assembly = AssemblyBuilder.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
 
 			// Add Dynamic Module
 			//

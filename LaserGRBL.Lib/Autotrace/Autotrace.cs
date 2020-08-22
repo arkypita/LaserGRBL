@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System;
 
 namespace LaserGRBL
 {
@@ -26,10 +27,11 @@ namespace LaserGRBL
 			catch { }
 		}
 
-		public static Svg.SvgDocument BitmapToSvgDocument(Bitmap bmp, bool uct, int ct, bool ult, int lt)
+		public static object BitmapToSvgDocument(Bitmap bmp, bool uct, int ct, bool ult, int lt)
 		{
-			string content = BitmapToSvgString(bmp, uct, ct, ult, lt);
-			return content != null ? Svg.SvgDocument.FromSvg<Svg.SvgDocument>(content) : new Svg.SvgDocument();
+			throw new NotImplementedException();
+			//string content = BitmapToSvgString(bmp, uct, ct, ult, lt);
+			//return content != null ? Svg.SvgDocument.FromSvg<Svg.SvgDocument>(content) : new Svg.SvgDocument();
 		}
 
 		public static string BitmapToSvgString(Bitmap bmp, bool uct, int ct, bool ult, int lt)
