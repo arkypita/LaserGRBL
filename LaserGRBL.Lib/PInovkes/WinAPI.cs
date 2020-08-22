@@ -15,7 +15,6 @@ namespace PInovkes
 		//ES_CONTINUOUS. This flag is used to specify that the behaviour of the two previous flags is continuous. Rather than resetting the idle timers once, they are disabled until you specify otherwise. Using this flag means that you do not need to call SetThreadExecutionState repeatedly.
 		//ES_AWAYMODE_REQUIRED. This flag must be combined with ES_CONTINUOUS. If the machine is configured to allow it, this indicates that the thread requires away mode. When in away mode the computer will appear to sleep as normal. However, the thread will continue to execute even though the computer has partially suspended. As this flag gives the false impression that the computer is in a low power state, you should only use it when absolutely necessary.
 
-
 		[DllImport("kernel32.dll", CharSet = CharSet.Auto,SetLastError = true)]
 		private static extern EXECUTION_STATE SetThreadExecutionState(EXECUTION_STATE esFlags);
 
@@ -40,5 +39,32 @@ namespace PInovkes
 		{
 			SetThreadExecutionState(EXECUTION_STATE.ES_CONTINUOUS);
 		}
+
+		/* Time reference */
+
+		[DllImport("Kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
+		public static extern bool QueryPerformanceCounter(ref long count);
+		[DllImport("Kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
+		public static extern bool QueryPerformanceFrequency(ref long timerFrequency);
+		[DllImport("Kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
+		private static extern int GetTickCount();
+
+
+		//emulo la GetTickCount64 perché non esiste su WindowsXP
+		private static long mTickCount64 = 0;
+		public static long GetTickCount64()
+		{
+			long Current = GetTickCount();
+			if ((mTickCount64 & 0x80000000) != 0 && (Current & 0x80000000) == 0)
+			{
+				mTickCount64 += 0x100000000L;
+			}
+
+			mTickCount64 = (mTickCount64 & 0x0FFFFFFF00000000L) | (Current & 0x00000000FFFFFFFFL);
+
+			return mTickCount64;
+		}
+
+
 	}
 }

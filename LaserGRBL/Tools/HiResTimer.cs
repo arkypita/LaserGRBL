@@ -53,30 +53,6 @@ namespace Tools
 		private static double testmultiplier = 1.0;	//moltiplicatore di frequenza
 #endif
 
-
-		[DllImport("Kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
-		private static extern bool QueryPerformanceCounter(ref long count);
-		[DllImport("Kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
-		private static extern bool QueryPerformanceFrequency(ref long timerFrequency);
-		[DllImport("Kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
-		private static extern int GetTickCount();
-
-
-		//emulo la GetTickCount64 perché non esiste su WindowsXP
-		private static long mTickCount64 = 0;
-		private static long GetTickCount64()
-		{
-			long Current = GetTickCount();
-			if ((mTickCount64 & 0x80000000) != 0 && (Current & 0x80000000) == 0)
-			{
-				mTickCount64 += 0x100000000L;
-			}
-
-			mTickCount64 = (mTickCount64 & 0x0FFFFFFF00000000L) | (Current & 0x00000000FFFFFFFFL);
-
-			return mTickCount64;
-		}
-
 		// 
 		// Struttura TimeReference 
 		// Contiene i due valori di tempo misurati con l'HiResTimer e con il LowRes timer
@@ -113,13 +89,13 @@ namespace Tools
 					bool TaskSwitch = false;
 					do
 					{
-						rv.mLowRes = GetTickCount64();                  //leggi LowResTimer
+						rv.mLowRes = PInovkes.WinAPI.GetTickCount64();                  //leggi LowResTimer
 						if (mPerfCounterSupported)
-							QueryPerformanceCounter(ref rv.mHiRes);     //leggi HiResTimer
+							PInovkes.WinAPI.QueryPerformanceCounter(ref rv.mHiRes);     //leggi HiResTimer
 						else
 							rv.mHiRes = rv.mLowRes;                     //emula HiResTimer come LowResTimer
 
-						TaskSwitch = GetTickCount64() != rv.mLowRes;    //verifica che non ci sia stato un Task Switch tra le due letture
+						TaskSwitch = PInovkes.WinAPI.GetTickCount64() != rv.mLowRes;    //verifica che non ci sia stato un Task Switch tra le due letture
 
 						//if (TaskSwitch) System.Diagnostics.Debug.WriteLine("Switch!");
 					}
@@ -182,7 +158,7 @@ namespace Tools
 		static HiResTimer() //costruttore static, viene chiamato prima del primo utilizzo della classe
 		{
 			//verifica se è disponibile l'HiResTimer (true a partire da WinXP) e si fa restituire l' original frequency
-			mPerfCounterSupported = QueryPerformanceFrequency(ref mOriginalFrequency);
+			mPerfCounterSupported = PInovkes.WinAPI.QueryPerformanceFrequency(ref mOriginalFrequency);
 			//se non è supportato lo emuliamo con il LowRes
 			if (!mPerfCounterSupported) mOriginalFrequency = MILLI_IN_SECOND;
 			//assegna la frequenza corrente
@@ -290,9 +266,9 @@ namespace Tools
 					startDT = DateTime.Now;
 					startEPC = TimeReference.Now.HiRes; //memorizza l'HiRes emulato a cui siamo arrivati
 					if (mPerfCounterSupported)
-						QueryPerformanceCounter(ref startQPC); //memorizza l'HiRes reale a cui siamo arrivati
+						PInovkes.WinAPI.QueryPerformanceCounter(ref startQPC); //memorizza l'HiRes reale a cui siamo arrivati
 					else
-						startQPC = GetTickCount64(); //memorizza l'HiRes reale a cui siamo arrivati (usa il LowRes se HiRes non supportato)
+						startQPC = PInovkes.WinAPI.GetTickCount64(); //memorizza l'HiRes reale a cui siamo arrivati (usa il LowRes se HiRes non supportato)
 
 					testmultiplier = value; //assegna il nuovo moltiplicatore
 				}
