@@ -370,7 +370,6 @@
     <Compile Include="RasterConverter\ResolutionHelperForm.Designer.cs">
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>

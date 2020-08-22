@@ -72,6 +72,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RasterConverter\Enums.cs" />
     <Compile Include="RasterConverter\ImageTransform.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgCircle.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgEllipse.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgImage.cs" />
