@@ -60,6 +60,7 @@
     <Compile Include="GrblMessage.cs" />
     <Compile Include="GrblVersionInfo.cs" />
     <Compile Include="IGrblRow.cs" />
+    <Compile Include="PInovkes\WinAPI.cs" />
     <Compile Include="RasterConverter\ImageProcessor.cs" />
     <Compile Include="L2LConf.cs" />
     <Compile Include="ModalElement.cs" />

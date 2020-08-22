@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Runtime.InteropServices;
 
-namespace Tools
+namespace PInovkes
 {
-	class WinAPI
+    public class WinAPI
 	{
-
 
 		//SetThreadExecutionState
 		//The .NET framework classes don't provide a way to disable the screensaver or sleep mode, so we need to use Platform Invocation Services (P/Invoke) to call a Windows API function named, "SetThreadExecutionState". This function tells the operating system that the thread is in use, even if the user is not interacting with the computer. This can prevent the display from being hidden and stop the machine from being suspended automatically.
@@ -22,7 +19,7 @@ namespace Tools
 		[DllImport("kernel32.dll", CharSet = CharSet.Auto,SetLastError = true)]
 		private static extern EXECUTION_STATE SetThreadExecutionState(EXECUTION_STATE esFlags);
 
-		[FlagsAttribute]
+		[Flags]
 		private enum EXECUTION_STATE :uint
 		{
 			 ES_AWAYMODE_REQUIRED = 0x00000040,
@@ -43,8 +40,5 @@ namespace Tools
 		{
 			SetThreadExecutionState(EXECUTION_STATE.ES_CONTINUOUS);
 		}
-
-
-
 	}
 }
