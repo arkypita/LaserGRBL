@@ -117,9 +117,6 @@ namespace LaserGRBL
 		public TimeSpan TimeOffset
 		{get {return mTimeOffset;}}
 		
-		public enum CommandStatus
-		{ Queued, WaitingResponse, ResponseGood, ResponseBad, InvalidResponse }
-
 		public object Clone()
 		{ return MemberwiseClone(); }
 

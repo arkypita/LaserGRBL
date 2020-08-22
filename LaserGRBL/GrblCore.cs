@@ -515,7 +515,7 @@ namespace LaserGRBL
 					Tools.PeriodicEventTimer WaitResponseTimeout = new Tools.PeriodicEventTimer(TimeSpan.FromSeconds(10), true);
 
 					//resta in attesa dell'invio del comando e della risposta
-					while (cmd.Status == GrblCommand.CommandStatus.Queued || cmd.Status == GrblCommand.CommandStatus.WaitingResponse)
+					while (cmd.Status == CommandStatus.Queued || cmd.Status == CommandStatus.WaitingResponse)
 					{
 						if (WaitResponseTimeout.Expired)
 							throw new TimeoutException("No response received from grbl!");
@@ -523,7 +523,7 @@ namespace LaserGRBL
 							System.Threading.Thread.Sleep(10);
 					}
 
-					if (cmd.Status == GrblCommand.CommandStatus.ResponseGood)
+					if (cmd.Status == CommandStatus.ResponseGood)
 					{
 						//attendi la ricezione di tutti i parametri
 						long tStart = Tools.HiResTimer.TotalMilliseconds;
@@ -576,7 +576,7 @@ namespace LaserGRBL
 			{
 				foreach (IGrblRow row in mSentPtr)
 					if (row is GrblCommand)
-						if (((GrblCommand)row).Status != GrblCommand.CommandStatus.ResponseGood)
+						if (((GrblCommand)row).Status != CommandStatus.ResponseGood)
 							ErrorLines.Add(row);
 			}
 
@@ -617,7 +617,7 @@ namespace LaserGRBL
 					foreach (IGrblRow row in mSentPtr)
 					{
 						if (row is GrblCommand)
-							if (((GrblCommand)row).Status != GrblCommand.CommandStatus.ResponseGood)
+							if (((GrblCommand)row).Status != CommandStatus.ResponseGood)
 								errors++;
 					}
 
@@ -1650,14 +1650,14 @@ namespace LaserGRBL
 					if (mTP.InProgram && pending.RepeatCount == 0) //solo se non è una ripetizione aggiorna il tempo
 						mTP.JobExecuted(pending.TimeOffset);
 
-					if (mTP.InProgram && pending.Status == GrblCommand.CommandStatus.ResponseBad)
+					if (mTP.InProgram && pending.Status == CommandStatus.ResponseBad)
 						mTP.JobError(); //incrementa il contatore
 
-					if (pending.IsWriteEEPROM && pending.Status == GrblCommand.CommandStatus.ResponseGood)
+					if (pending.IsWriteEEPROM && pending.Status == CommandStatus.ResponseGood)
 						Configuration.AddOrUpdate(pending.GetMessage());
 
 					//ripeti errori programma && non ho una coda (magari mi sto allineando per cambio conf buff/sync) && ho un errore && non l'ho già ripetuto troppe volte
-					if (InProgram && CurrentStreamingMode == StreamingMode.RepeatOnError && mPending.Count == 0 && pending.Status == GrblCommand.CommandStatus.ResponseBad && pending.RepeatCount < 3) //il comando eseguito ha dato errore
+					if (InProgram && CurrentStreamingMode == StreamingMode.RepeatOnError && mPending.Count == 0 && pending.Status == CommandStatus.ResponseBad && pending.RepeatCount < 3) //il comando eseguito ha dato errore
 						mRetryQueue = new GrblCommand(pending.Command, pending.RepeatCount + 1); //repeat on error
 				}
 

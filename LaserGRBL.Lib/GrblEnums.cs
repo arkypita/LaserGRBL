@@ -6,6 +6,9 @@
 
 namespace LaserGRBL
 {
+	public enum CommandStatus
+	{ Queued, WaitingResponse, ResponseGood, ResponseBad, InvalidResponse }
+
 	public enum DetectedIssue
 	{
 		Unknown = 0,
