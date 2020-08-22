@@ -167,7 +167,6 @@
     <Compile Include="SvgConverter\ConvertSizeAndOptionForm.Designer.cs">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SvgConverter\gcodeRelated.cs" />
     <Compile Include="SvgConverter\SvgModeForm.cs">
       <SubType>Form</SubType>
     </Compile>

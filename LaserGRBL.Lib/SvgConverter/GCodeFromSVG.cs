@@ -91,16 +91,10 @@ namespace LaserGRBL.SvgConverter
 		{
 			gcode.setup();          // initialize GCode creation (get stored settings for export)
 
-			//if (gcodeUseSpindle) gcode.SpindleOn(gcodeString, "Start spindle - Option Z-Axis");
-			//gcode.PenUp(gcodeString, "SVG Start ");
 			startConvert(svgCode);
 
 			if (gcodeUseSpindle) gcode.SpindleOff(gcodeString, "Stop spindle - Option Z-Axis");
 
-			//string header = "G90\r\n";
-			//string footer = "G0X0Y0";
-
-			//return header + gcodeString.ToString().Replace(',', '.') + footer;
 			return gcodeString.ToString().Replace(',', '.');
 		}
 
@@ -200,10 +194,6 @@ namespace LaserGRBL.SvgConverter
 				tmp.M22 = -scale;   // get desired scale and flip vertical
 				tmp.OffsetY = scale * svgHeightPx;  // svgHeightUnit;
 
-				//if (fromClipboard)
-				//{   tmp.M22 = -1 / factor_Mm2Px;// 3.543307;
-				//    tmp.OffsetY = svgHeightPx / factor_Mm2Px; // 3.543307;     // https://www.w3.org/TR/SVG/coords.html#Units
-				//}
 				if (vbHeight > 0)
 				{
 					tmp.M22 = -scale * svgHeightPx / vbHeight;
@@ -234,25 +224,6 @@ namespace LaserGRBL.SvgConverter
 			{ matrixGroup[i] = tmp; }
 			matrixElement = tmp;
 
-			//var element = svgCode.Element(nspace + "title");
-			////if (element != null)
-			////    Plotter.DocTitle = element.Value;
-
-			//var xtmp = svgCode.Element(nspace + "metadata");
-			//if ((xtmp) != null)
-			//{
-			//	XNamespace ccspace = "http://creativecommons.org/ns#";
-			//	XNamespace rdfspace = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-			//	XNamespace dcspace = "http://purl.org/dc/elements/1.1/";
-			//	if ((xtmp = xtmp.Element(rdfspace + "RDF")) != null)
-			//	{
-			//		if ((xtmp = xtmp.Element(ccspace + "Work")) != null)
-			//		{
-			//			//if ((xtmp = xtmp.Element(dcspace + "description")) != null)
-			//			//                      Plotter.DocDescription = xtmp.Value;
-			//		}
-			//	}
-			//}
 			return;
 		}
 

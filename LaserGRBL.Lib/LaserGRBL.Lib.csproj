@@ -76,6 +76,7 @@
     <Compile Include="RasterConverter\ImageTransform.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SvgConverter\GCodeFromSVG.cs" />
+    <Compile Include="SvgConverter\gcodeRelated.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgCircle.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgEllipse.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgImage.cs" />
