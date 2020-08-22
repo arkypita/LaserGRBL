@@ -1,12 +1,11 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace Tools
 {
-	internal static class OSVersionInfo
+    internal static class OSVersionInfo
 	{
 		#region ENUMS
 		public enum SoftwareArchitecture
