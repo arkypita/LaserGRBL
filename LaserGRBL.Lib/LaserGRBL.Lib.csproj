@@ -67,6 +67,7 @@
     <Compile Include="GrblVersionInfo.cs" />
     <Compile Include="IGrblRow.cs" />
     <Compile Include="L2LConf.cs" />
+    <Compile Include="ModalElement.cs" />
     <Compile Include="ProgramRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RasterConverter\Enums.cs" />
@@ -324,6 +325,8 @@
       <Name>Cyotek.Drawing</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

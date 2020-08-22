@@ -1021,7 +1021,6 @@ namespace LaserGRBL
 			g.Restore(state);               // Restore the graphics state.
 		}
 
-
 		IEnumerator<GrblCommand> IEnumerable<GrblCommand>.GetEnumerator()
 		{ return list.GetEnumerator(); }
 

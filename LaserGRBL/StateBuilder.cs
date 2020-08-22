@@ -263,38 +263,6 @@ namespace LaserGRBL
 			Coolant State				M7, M8, [M9]
 			*/
 
-			public class ModalElement : GrblElement
-			{
-				List<GrblElement> mOptions = new List<GrblElement>();
-				GrblElement mDefault = null;
-				bool mSettled = false;
-				
-
-				public ModalElement(GrblElement defval, params GrblElement[] options) : base(defval.Command, defval.Number)
-				{
-					mDefault = defval;
-					mOptions.Add(defval);
-					foreach (GrblElement e in options)
-						mOptions.Add(e);
-				}
-
-				public bool IsDefault
-				{ get { return base.Equals(mDefault); } }
-
-				public bool IsSettled
-				{ get { return mSettled; } }
-
-				public void Update(GrblElement e)
-				{
-					if (e != null && mOptions.Contains(e))
-					{ 
-						mCommand = e.Command;
-						mNumber = e.Number;
-						mSettled = true;
-					}
-				}
-			}
-
 			public ModalElement MotionMode = new ModalElement("G0", "G1", "G2", "G3", "G38.2", "G38.3", "G38.4", "G38.5", "G80");
 			protected ModalElement CoordinateSelect = new ModalElement("G54", "G55", "G56", "G57", "G58", "G59");
 			protected ModalElement PlaneSelect = new ModalElement("G17", "G18", "G19");
@@ -307,16 +275,6 @@ namespace LaserGRBL
 			protected ModalElement ProgramMode = new ModalElement("M0", "M1", "M2", "M30");
 			protected ModalElement CoolantState = new ModalElement("M9", "M7", "M8");
 			protected ModalElement SpindleState = new ModalElement("M5", "M3", "M4");
-
-			//private void UpdateModals(GrblCommand cmd) //update modals - BUILD IF NEEDED
-			//{
-			//	bool delete = !cmd.JustBuilt;
-			//	if (!cmd.JustBuilt) cmd.BuildHelper();
-
-			//	UpdateModalsNB(cmd);
-
-			//	if (delete) cmd.DeleteHelper();
-			//}
 
 			protected void UpdateModalsNB(GrblCommand cmd) //update modals - EXTERNAL BUILD
 			{
@@ -364,7 +322,6 @@ namespace LaserGRBL
 		{ get { return G != null && G.Number == 92; } }
 
 
-
 		public class G2G3Helper
 		{
 			public double CenterX;
@@ -384,7 +341,7 @@ namespace LaserGRBL
 			public double EndAngle;
 			public double AngularWidth;
 
-			public G2G3Helper(LaserGRBL.GrblCommand.StatePositionBuilder spb, LaserGRBL.GrblCommand cmd)
+			public G2G3Helper(StatePositionBuilder spb, GrblCommand cmd)
 			{
 				bool jb = cmd.JustBuilt;
 				if (!jb) cmd.BuildHelper();
