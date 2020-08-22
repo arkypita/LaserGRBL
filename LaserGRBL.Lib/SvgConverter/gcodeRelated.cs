@@ -22,9 +22,9 @@
 */
 
 using System;
+using System.Drawing;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Windows;
 
 namespace LaserGRBL.SvgConverter
 {
@@ -240,13 +240,13 @@ namespace LaserGRBL.SvgConverter
 
 		public static float lastx, lasty, lastz, lastg = -1, lastf, lasts;
 		public static bool lastMovewasG0 = true;
-		public static void MoveTo(StringBuilder gcodeString, Point coord, string cmt = "")
+		public static void MoveTo(StringBuilder gcodeString, PointF coord, string cmt = "")
 		{ MoveSplit(gcodeString, 1, (float)coord.X, (float)coord.Y, applyXYFeedRate, cmt); }
 		public static void MoveTo(StringBuilder gcodeString, float x, float y, string cmt = "")
 		{ MoveSplit(gcodeString, 1, x, y, applyXYFeedRate, cmt); }
 		public static void MoveTo(StringBuilder gcodeString, float x, float y, float z, string cmt = "")
 		{ MoveSplit(gcodeString, 1, x, y, z, applyXYFeedRate, cmt); }
-		public static void MoveToRapid(StringBuilder gcodeString, Point coord, string cmt = "")
+		public static void MoveToRapid(StringBuilder gcodeString, PointF coord, string cmt = "")
 		{ Move(gcodeString, 0, (float)coord.X, (float)coord.Y, false, cmt); lastMovewasG0 = true; }
 		public static void MoveToRapid(StringBuilder gcodeString, float x, float y, string cmt = "")
 		{ Move(gcodeString, 0, x, y, false, cmt); lastMovewasG0 = true; }
@@ -264,7 +264,7 @@ namespace LaserGRBL.SvgConverter
 
 			if (gcodeDragCompensation)  // start move with an arc and end with extended move
 			{
-				Point tmp = dragToolCompensation(gcodeString, finalx, finaly);
+				PointF tmp = dragToolCompensation(gcodeString, finalx, finaly);
 				finalx = (float)tmp.X; finaly = (float)tmp.Y;   // get extended final position
 			}
 
@@ -357,13 +357,13 @@ namespace LaserGRBL.SvgConverter
 		private static bool dragArc = false, drag1stMove = true;
 		private static float origLastX, origLastY, origFinalX, origFinalY;
 		private static float dragCompi = 0, dragCompj = 0;
-		private static Point dragToolCompensation(StringBuilder gcodeString, float finalx, float finaly)
+		private static PointF dragToolCompensation(StringBuilder gcodeString, float finalx, float finaly)
 		{
 			float dx = finalx - origFinalX;// lastx;       // remaining distance until full move
 			float dy = finaly - origFinalY;// lasty;       // lastXY is global
 			float moveLength = (float)Math.Sqrt(dx * dx + dy * dy);
 			if (moveLength == 0)
-				return new Point(finalx, finaly);
+				return new PointF(finalx, finaly);
 
 			// calc arc angle between last move and current move, dragCompx y = lastrealpos, dragCompi j = centerofcircle
 			float rx = origFinalX + gcodeDragRadius * dx / moveLength;     // calc end-pos of arc
@@ -400,7 +400,7 @@ namespace LaserGRBL.SvgConverter
 			dragCompj = origFinalY - finaly;
 
 			drag1stMove = false;
-			return new Point(finalx, finaly);
+			return new PointF(finalx, finaly);
 		}
 
 		//// process subroutine, afterwards move back to last regular position before subroutine        
@@ -525,7 +525,7 @@ namespace LaserGRBL.SvgConverter
 		}
 
 
-		public static void Arc(StringBuilder gcodeString, int gnr, Point coordxy, Point coordij, string cmt = "", bool avoidG23 = false)
+		public static void Arc(StringBuilder gcodeString, int gnr, PointF coordxy, PointF coordij, string cmt = "", bool avoidG23 = false)
 		{ MoveArc(gcodeString, gnr, (float)coordxy.X, (float)coordxy.Y, (float)coordij.X, (float)coordij.Y, applyXYFeedRate, cmt, avoidG23); }
 		public static void Arc(StringBuilder gcodeString, int gnr, float x, float y, float i, float j, string cmt = "", bool avoidG23 = false)
 		{ MoveArc(gcodeString, gnr, x, y, i, j, applyXYFeedRate, cmt, avoidG23); }
