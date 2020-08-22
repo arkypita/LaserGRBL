@@ -41,6 +41,7 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorScheme.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="RasterConverter\Enums.cs" />
     <Compile Include="RasterConverter\ImageTransform.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="SvgConverter\GCodeFromSVG.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgCircle.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgEllipse.cs" />
     <Compile Include="SvgLibrary\Basic Shapes\SvgImage.cs" />

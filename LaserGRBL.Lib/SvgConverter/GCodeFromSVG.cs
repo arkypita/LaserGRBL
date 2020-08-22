@@ -15,14 +15,12 @@ using System.Windows.Media;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 using System.Xml.Linq;
-using System.IO;
 using System.Globalization;
 
 namespace LaserGRBL.SvgConverter
 {
-	class GCodeFromSVG
+    public class GCodeFromSVG
 	{
 		private static float factor_In2Px = 96;
 		private static float factor_Mm2Px = 96f / 25.4f;
