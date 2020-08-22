@@ -228,6 +228,9 @@ namespace LaserGRBL
 				return prev;
 		}
 
+		public bool IsSetWCO
+		{ get { return G != null && G.Number == 92; } }
+
 		public bool IsPause
 		{ get { return G != null && G.Number == 4; } }
 

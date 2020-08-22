@@ -318,9 +318,6 @@ namespace LaserGRBL
 
 		}
 
-		public bool IsSetWCO
-		{ get { return G != null && G.Number == 92; } }
-
 
 		public class G2G3Helper
 		{
