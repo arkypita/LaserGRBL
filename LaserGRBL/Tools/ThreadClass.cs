@@ -131,7 +131,7 @@ namespace Tools
 					if (TH != null && TH.ThreadState != System.Threading.ThreadState.Stopped)
 					{
 						System.Diagnostics.Debug.WriteLine(string.Format("Devo forzare la terminazione del Thread '{0}'", TH.Name));
-						TH.Abort();
+						TH.Interrupt();
 					}
 				}
 				else

@@ -157,7 +157,7 @@ namespace LaserGRBL.UserControls
 		{
 			if (TH != null)
 			{
-				TH.Abort();
+				TH.Interrupt();
 				TH = null;
 			}
 		}

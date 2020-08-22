@@ -127,14 +127,15 @@ namespace LaserGRBL
 				string fcontent = System.IO.File.ReadAllText($"{fname}.svg");
 				fcontent = colorRegex.Replace(fcontent, "stroke:#FF0000;");
 
-				Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
-
-				using (Graphics g = Graphics.FromImage(bmp))
-				{
-					g.FillRectangle(new SolidBrush(Color.FromArgb(200, Color.White)), g.ClipBounds);
-
-					svg.Draw(g);
-				}
+				throw new NotImplementedException();
+				//Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
+				//
+				//using (Graphics g = Graphics.FromImage(bmp))
+				//{
+				//	g.FillRectangle(new SolidBrush(Color.FromArgb(200, Color.White)), g.ClipBounds);
+				//
+				//	svg.Draw(g);
+				//}
 			}
 			catch(Exception)
 			{

@@ -7,7 +7,6 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Windows.Threading;
 
 namespace LaserGRBL
 {
@@ -633,7 +632,7 @@ namespace LaserGRBL
 			}
 		}
 
-		private DispatcherTimer dropDispatcherTimer;
+		private Timer dropDispatcherTimer;
 		private string droppedFile;
 
 		private void MainForm_DragEnter(object sender, DragEventArgs e)
@@ -656,8 +655,8 @@ namespace LaserGRBL
 					// call via DispatcherTimer to unblock the source of the drag-event (e.g. Explorer-Window)
 					if (dropDispatcherTimer == null)
 					{
-						this.dropDispatcherTimer = new DispatcherTimer();
-						this.dropDispatcherTimer.Interval = TimeSpan.FromSeconds(0.5);
+						this.dropDispatcherTimer = new Timer();
+						this.dropDispatcherTimer.Interval = 500;
 						this.dropDispatcherTimer.Tick += new EventHandler(dropDispatcherTimer_Tick);
 					}
 					this.dropDispatcherTimer.Start();
