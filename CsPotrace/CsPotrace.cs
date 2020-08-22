@@ -574,7 +574,7 @@ namespace CsPotrace
 
 			byte[] Result = new byte[bitmap.Width * bitmap.Height];
 			BitmapData SourceData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
-			;
+			
 			unsafe
 			{
 				byte* SourcePtr = (byte*)(void*)SourceData.Scan0;
