@@ -19,7 +19,6 @@ namespace LaserGRBL
 	/// </summary>
 	public class GrblCore
 	{
-		//public static PSHelper.PSFile MaterialDB = PSHelper.PSFile.Load();
 		public static PSHelper.MaterialDB MaterialDB = PSHelper.MaterialDB.Load();
 
 		public static string GCODE_STD_HEADER = "G90 (use absolute coordinates)";
@@ -322,8 +321,8 @@ namespace LaserGRBL
 				OpenFile(parent, Settings.GetObject<string>("Core.LastOpenFile", null));
 		}
 
-		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
-		public static readonly System.Collections.Generic.List<string> GCodeExtensions = new System.Collections.Generic.List<string>(new string[] { ".nc", ".cnc", ".tap", ".gcode", ".ngc" });
+		public static readonly List<string> ImageExtensions = new List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
+		public static readonly List<string> GCodeExtensions = new List<string>(new string[] { ".nc", ".cnc", ".tap", ".gcode", ".ngc" });
 		public void OpenFile(System.Windows.Forms.Form parent, string filename = null, bool append = false)
 		{
 			if (!CanLoadNewFile) return;
@@ -575,7 +574,7 @@ namespace LaserGRBL
 
 		public class WriteConfigException : Exception
 		{
-			private System.Collections.Generic.List<IGrblRow> ErrorLines = new System.Collections.Generic.List<IGrblRow>();
+			private List<IGrblRow> ErrorLines = new List<IGrblRow>();
 
 			public WriteConfigException(System.Collections.Generic.List<IGrblRow> mSentPtr)
 			{
@@ -596,11 +595,11 @@ namespace LaserGRBL
 				}
 			}
 
-			public System.Collections.Generic.List<IGrblRow> Errors
+			public List<IGrblRow> Errors
 			{ get { return ErrorLines; } }
 		}
 
-		public void WriteConfig(System.Collections.Generic.List<GrblConf.GrblConfParam> config)
+		public void WriteConfig(List<GrblConf.GrblConfParam> config)
 		{
 			if (mMachineStatus == MacStatus.Idle)
 			{
@@ -981,7 +980,7 @@ namespace LaserGRBL
 		public int Executed
 		{ get { return mSent.Count; } }
 
-		public System.Collections.Generic.List<IGrblRow> SentCommand(int index, int count)
+		public List<IGrblRow> SentCommand(int index, int count)
 		{
 			index = Math.Min(index, mSent.Count - 1);       //force index to be in range
 			count = Math.Min(count, mSent.Count - index);   //force count to be in range
@@ -2058,7 +2057,7 @@ namespace LaserGRBL
 
 		public HotKeysManager HotKeys { get { return mHotKeyManager; } }
 
-		internal void WriteHotkeys(System.Collections.Generic.List<HotKeysManager.HotKey> mLocalList)
+		internal void WriteHotkeys(List<HotKeysManager.HotKey> mLocalList)
 		{
 			mHotKeyManager.Clear();
 			mHotKeyManager.AddRange(mLocalList);

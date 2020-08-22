@@ -5,8 +5,6 @@ using System.Linq;
 
 namespace LaserGRBL.PSHelper
 {
-
-
 	partial class MaterialDB
 	{
 		partial class MaterialsDataTable
