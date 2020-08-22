@@ -174,7 +174,6 @@
     <Compile Include="SvgConverter\SvgModeForm.Designer.cs">
       <DependentUpon>SvgModeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tools\OSHelper.cs" />
     <Compile Include="Tools\Serializer.cs" />
     <Compile Include="UrlManager.cs" />
     <Compile Include="ComWrapper\Emulator.cs" />

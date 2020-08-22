@@ -43,7 +43,7 @@ namespace Tools
 			return rv;
 		}
 
-		internal static byte GetBitFlag()
+		public static byte GetBitFlag()
 		{
 			byte rv = 0;
 
