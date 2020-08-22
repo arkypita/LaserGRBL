@@ -78,6 +78,7 @@
     <Compile Include="Tools\OSHelper.cs" />
     <Compile Include="Tools\OSVersionInfo.cs" />
     <Compile Include="Tools\Utils.cs" />
+    <Compile Include="Tools\WinAPI.cs" />
     <Compile Include="Tools\WordWrap.cs" />
   </ItemGroup>
   <ItemGroup>

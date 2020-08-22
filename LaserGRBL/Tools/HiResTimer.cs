@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Tools;
 
 namespace Tools
 {
@@ -89,13 +90,13 @@ namespace Tools
 					bool TaskSwitch = false;
 					do
 					{
-						rv.mLowRes = PInovkes.WinAPI.GetTickCount64();                  //leggi LowResTimer
+						rv.mLowRes = WinAPI.GetTickCount64();                  //leggi LowResTimer
 						if (mPerfCounterSupported)
-							PInovkes.WinAPI.QueryPerformanceCounter(ref rv.mHiRes);     //leggi HiResTimer
+							WinAPI.QueryPerformanceCounter(ref rv.mHiRes);     //leggi HiResTimer
 						else
 							rv.mHiRes = rv.mLowRes;                     //emula HiResTimer come LowResTimer
 
-						TaskSwitch = PInovkes.WinAPI.GetTickCount64() != rv.mLowRes;    //verifica che non ci sia stato un Task Switch tra le due letture
+						TaskSwitch = WinAPI.GetTickCount64() != rv.mLowRes;    //verifica che non ci sia stato un Task Switch tra le due letture
 
 						//if (TaskSwitch) System.Diagnostics.Debug.WriteLine("Switch!");
 					}
@@ -158,7 +159,7 @@ namespace Tools
 		static HiResTimer() //costruttore static, viene chiamato prima del primo utilizzo della classe
 		{
 			//verifica se è disponibile l'HiResTimer (true a partire da WinXP) e si fa restituire l' original frequency
-			mPerfCounterSupported = PInovkes.WinAPI.QueryPerformanceFrequency(ref mOriginalFrequency);
+			mPerfCounterSupported = WinAPI.QueryPerformanceFrequency(ref mOriginalFrequency);
 			//se non è supportato lo emuliamo con il LowRes
 			if (!mPerfCounterSupported) mOriginalFrequency = MILLI_IN_SECOND;
 			//assegna la frequenza corrente
@@ -266,9 +267,9 @@ namespace Tools
 					startDT = DateTime.Now;
 					startEPC = TimeReference.Now.HiRes; //memorizza l'HiRes emulato a cui siamo arrivati
 					if (mPerfCounterSupported)
-						PInovkes.WinAPI.QueryPerformanceCounter(ref startQPC); //memorizza l'HiRes reale a cui siamo arrivati
+						WinAPI.QueryPerformanceCounter(ref startQPC); //memorizza l'HiRes reale a cui siamo arrivati
 					else
-						startQPC = PInovkes.WinAPI.GetTickCount64(); //memorizza l'HiRes reale a cui siamo arrivati (usa il LowRes se HiRes non supportato)
+						startQPC = WinAPI.GetTickCount64(); //memorizza l'HiRes reale a cui siamo arrivati (usa il LowRes se HiRes non supportato)
 
 					testmultiplier = value; //assegna il nuovo moltiplicatore
 				}

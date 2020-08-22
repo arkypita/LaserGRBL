@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace PInovkes
 {
-    public class WinAPI
+    internal class WinAPI
 	{
 
 		//SetThreadExecutionState
@@ -29,13 +29,13 @@ namespace PInovkes
 			 // ES_USER_PRESENT = 0x00000004
 		}
 
-		public static void SignalActvity()
+		internal static void SignalActvity()
 		{
 			SetThreadExecutionState(EXECUTION_STATE.ES_SYSTEM_REQUIRED);
 		}
 
 		// Clear EXECUTION_STATE flags to disable away mode and allow the system to idle to sleep normally.
-		public static void SignalFree()
+		internal static void SignalFree()
 		{
 			SetThreadExecutionState(EXECUTION_STATE.ES_CONTINUOUS);
 		}
@@ -43,16 +43,16 @@ namespace PInovkes
 		/* Time reference */
 
 		[DllImport("Kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
-		public static extern bool QueryPerformanceCounter(ref long count);
+		internal static extern bool QueryPerformanceCounter(ref long count);
 		[DllImport("Kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
-		public static extern bool QueryPerformanceFrequency(ref long timerFrequency);
+		internal static extern bool QueryPerformanceFrequency(ref long timerFrequency);
 		[DllImport("Kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
 		private static extern int GetTickCount();
 
 
 		//emulo la GetTickCount64 perché non esiste su WindowsXP
 		private static long mTickCount64 = 0;
-		public static long GetTickCount64()
+		internal static long GetTickCount64()
 		{
 			long Current = GetTickCount();
 			if ((mTickCount64 & 0x80000000) != 0 && (Current & 0x80000000) == 0)
@@ -64,7 +64,5 @@ namespace PInovkes
 
 			return mTickCount64;
 		}
-
-
 	}
 }

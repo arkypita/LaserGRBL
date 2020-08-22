@@ -550,7 +550,7 @@ namespace LaserGRBL
 		private void AwakeTimer_Tick(object sender, EventArgs e)
 		{
 			if (Core.InProgram)
-				PInovkes.WinAPI.SignalActvity();
+				Tools.WinAPI.SignalActvity();
 		}
 
 		private void MnStartFromPosition_Click(object sender, EventArgs e)
