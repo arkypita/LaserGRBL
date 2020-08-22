@@ -105,6 +105,12 @@ namespace LaserGRBL.RasterConverter
 
 				using (Bitmap tmpBmp = new Bitmap(loadedBmp))
 					mOriginal = tmpBmp.Clone(new Rectangle(0, 0, tmpBmp.Width, tmpBmp.Height), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
+				if (boxSize.IsEmpty)
+				{
+					boxSize = loadedBmp.Size;
+					TargetSize = boxSize;
+				}
 			}
 
 			mTrueOriginal = mOriginal.Clone() as Bitmap;
@@ -945,6 +951,10 @@ namespace LaserGRBL.RasterConverter
 			TH = new Thread(DoTrueWork);
 			TH.Name = "GCode Generator";
 			TH.Start();
+		}
+		public void GenerateGCodeSync()
+		{
+			DoTrueWork();
 		}
 
 		void DoTrueWork()

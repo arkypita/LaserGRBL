@@ -330,7 +330,7 @@ namespace LaserGRBL
 			ImageLine2Line(bmp, c);
 
 			//laser off
-			list.Add(new GrblCommand(c.lOff));
+			if(c.lOff != null) list.Add(new GrblCommand(c.lOff));
 
 			//move fast to origin
 			//list.Add(new GrblCommand("G0 X0 Y0")); //moved to custom footer

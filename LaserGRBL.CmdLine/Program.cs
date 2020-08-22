@@ -9,6 +9,8 @@ namespace LaserGRBL.CmdLine
     {
         static void Main(string[] args)
         {
+            Settings.Initialize(null);
+
             var processor = new CommandProcessor();
             if (args.Length == 0)
             {

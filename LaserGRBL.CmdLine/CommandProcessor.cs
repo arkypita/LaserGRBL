@@ -15,7 +15,7 @@ namespace LaserGRBL.CmdLine
             {
                 unknowCommand,
                 new HelpCommand(),
-                
+                new GCodeBitmapCommand(),
             };
 
             foreach (var cmd in commands) cmd.Initialize(this);
