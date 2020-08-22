@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsPotrace", "CsPotrace\CsPo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSSVG", "MSSVG\MSSVG.csproj", "{5B2828B8-FC5F-4962-8508-382B914FE67C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaserGRBL.CmdLine", "LaserGRBL.CmdLine\LaserGRBL.CmdLine.csproj", "{6D4E9909-2352-41E4-A51E-098989C98CAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5B2828B8-FC5F-4962-8508-382B914FE67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B2828B8-FC5F-4962-8508-382B914FE67C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B2828B8-FC5F-4962-8508-382B914FE67C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D4E9909-2352-41E4-A51E-098989C98CAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D4E9909-2352-41E4-A51E-098989C98CAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D4E9909-2352-41E4-A51E-098989C98CAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D4E9909-2352-41E4-A51E-098989C98CAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
