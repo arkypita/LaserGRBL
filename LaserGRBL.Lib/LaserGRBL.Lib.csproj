@@ -74,6 +74,7 @@
     <Compile Include="SvgConverter\gcodeRelated.cs" />
     <Compile Include="ThreadingMode.cs" />
     <Compile Include="Tools\ExpressionEvaluator.cs" />
+    <Compile Include="Tools\HiResTimer.cs" />
     <Compile Include="Tools\MathHelper.cs" />
     <Compile Include="Tools\OSHelper.cs" />
     <Compile Include="Tools\OSVersionInfo.cs" />
