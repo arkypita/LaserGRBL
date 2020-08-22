@@ -1321,6 +1321,10 @@
       <Project>{32d33447-815b-448a-968f-d8810d6440b1}</Project>
       <Name>LaserGRBL.Lib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MSSVG\MSSVG.csproj">
+      <Project>{5b2828b8-fc5f-4962-8508-382b914fe67c}</Project>
+      <Name>MSSVG</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

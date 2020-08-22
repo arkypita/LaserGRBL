@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyotek.Drawing", "Cyotek.Dr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsPotrace", "CsPotrace\CsPotrace.csproj", "{F093F8C6-36A4-4346-BB8E-E0650A628CB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSSVG", "MSSVG\MSSVG.csproj", "{5B2828B8-FC5F-4962-8508-382B914FE67C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F093F8C6-36A4-4346-BB8E-E0650A628CB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F093F8C6-36A4-4346-BB8E-E0650A628CB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F093F8C6-36A4-4346-BB8E-E0650A628CB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B2828B8-FC5F-4962-8508-382B914FE67C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B2828B8-FC5F-4962-8508-382B914FE67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B2828B8-FC5F-4962-8508-382B914FE67C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B2828B8-FC5F-4962-8508-382B914FE67C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
