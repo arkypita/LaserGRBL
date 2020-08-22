@@ -88,7 +88,6 @@ namespace LaserGRBL.RasterConverter
 		Thread TH;                              //processing thread
 		protected ManualResetEvent MustExit;    //exit condition
 
-
 		public ImageProcessor(GrblFile file, string fileName, Size boxSize, bool append)
 		{
 			mFile = file;
@@ -169,8 +168,6 @@ namespace LaserGRBL.RasterConverter
 		{
 			mSuspended = true;
 		}
-
-
 		public void Resume()
 		{
 			if (mSuspended)
@@ -895,7 +892,6 @@ namespace LaserGRBL.RasterConverter
 		tangent-surround <unsigned>: number of points on either side of a  point to consider when computing the tangent at that point; default is 3.
 		*/
 
-		//System.Text.RegularExpressions.Regex colorRegex = new System.Text.RegularExpressions.Regex("stroke:#([0-9a-fA-F]+);", System.Text.RegularExpressions.RegexOptions.Compiled);
 		private void PreviewCenterline(Bitmap bmp)
 		{
 			try
@@ -955,8 +951,9 @@ namespace LaserGRBL.RasterConverter
 		{
 			try
 			{
-				// Kepp 64bits
-				int maxSize = 22000 * 22000; //Tools.OSHelper.Is64BitProcess ? 22000 * 22000 : 6000 * 7000; //on 32bit OS we have memory limit - allow Higher value on 64bit
+				// Keep 64bits
+				int maxSize = 22000 * 22000;
+				//Tools.OSHelper.Is64BitProcess ? 22000 * 22000 : 6000 * 7000; //on 32bit OS we have memory limit - allow Higher value on 64bit
 
 				double filesize = TargetSize.Width * TargetSize.Height;
 				double maxRes = Math.Sqrt(maxSize / filesize); //limit res if resultimg bmp size is to big
@@ -977,21 +974,23 @@ namespace LaserGRBL.RasterConverter
 				{
 					using (Bitmap bmp = CreateTarget(pixelSize))
 					{
-						L2LConf conf = new L2LConf();
-						conf.res = res;
-						conf.fres = fres;
-						conf.markSpeed = MarkSpeed;
-						conf.travelSpeed = TravelSpeed;
-						conf.minPower = MinPower;
-						conf.maxPower = MaxPower;
-						conf.lOn = LaserOn;
-						conf.lOff = LaserOff;
-						conf.dir = SelectedTool == Tool.Vectorize ? FillingDirection : LineDirection;
-						conf.oX = TargetOffset.X;
-						conf.oY = TargetOffset.Y;
-						conf.borderSpeed = BorderSpeed;
-						conf.pwm = Settings.GetObject("Support Hardware PWM", true);
-						conf.firmwareType = Settings.GetObject("Firmware Type", Firmware.Grbl);
+						L2LConf conf = new L2LConf
+						{
+							res = res,
+							fres = fres,
+							markSpeed = MarkSpeed,
+							travelSpeed = TravelSpeed,
+							minPower = MinPower,
+							maxPower = MaxPower,
+							lOn = LaserOn,
+							lOff = LaserOff,
+							dir = SelectedTool == Tool.Vectorize ? FillingDirection : LineDirection,
+							oX = TargetOffset.X,
+							oY = TargetOffset.Y,
+							borderSpeed = BorderSpeed,
+							pwm = Settings.GetObject("Support Hardware PWM", true),
+							firmwareType = Settings.GetObject("Firmware Type", Firmware.Grbl)
+						};
 
 						if (SelectedTool == Tool.Line2Line || SelectedTool == Tool.Dithering)
 							mFile.LoadImageL2L(bmp, mFileName, conf, mAppend);
