@@ -92,10 +92,6 @@
     <EmbeddedResource Include="CSV\setting_codes.v1.1.csv" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cyotek.Drawing\Cyotek.Drawing.csproj">
-      <Project>{f2d0fa15-b7f5-4ab0-9df7-44d2b13a3c79}</Project>
-      <Name>Cyotek.Drawing</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MSSVG\MSSVG.csproj">
       <Project>{5b2828b8-fc5f-4962-8508-382b914fe67c}</Project>
       <Name>MSSVG</Name>
