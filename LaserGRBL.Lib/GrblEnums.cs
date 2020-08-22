@@ -7,7 +7,13 @@
 namespace LaserGRBL
 {
 	public enum CommandStatus
-	{ Queued, WaitingResponse, ResponseGood, ResponseBad, InvalidResponse }
+	{
+		Queued, 
+		WaitingResponse, 
+		ResponseGood,
+		ResponseBad, 
+		InvalidResponse
+	}
 
 	public enum DetectedIssue
 	{
@@ -22,17 +28,58 @@ namespace LaserGRBL
 	}
 
 	public enum MacStatus
-	{ Unknown, Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue, Cooling }
+	{ Unknown,
+		Disconnected,
+		Connecting, 
+		Idle,
+		Run, 
+		Hold, 
+		Door, 
+		Home,
+		Alarm, 
+		Check, 
+		Jog, 
+		Queue, 
+		Cooling }
 
 	public enum JogDirection
-	{ None, Abort, Home, N, S, W, E, NW, NE, SW, SE, Zup, Zdown }
+	{
+		None,
+		Abort,
+		Home,
+		N,
+		S,
+		W,
+		E,
+		NW,
+		NE,
+		SW,
+		SE,
+		Zup,
+		Zdown
+	}
 
 	public enum StreamingMode
-	{ Buffered, Synchronous, RepeatOnError }
+	{
+		Buffered,
+		Synchronous,
+		RepeatOnError
+	}
 
 	public enum MessageType
-	{ Startup, Config, Alarm, Feedback, Position, Others }
+	{
+		Startup,
+		Config,
+		Alarm,
+		Feedback,
+		Position,
+		Others
+	}
 
 	public enum Firmware
-	{ Grbl, Smoothie, Marlin }
+	{
+		Grbl,
+		Smoothie,
+		Marlin
+	}
 }
