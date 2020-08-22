@@ -5,18 +5,18 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using System;
-using System.Diagnostics;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace Tools
 {
-
-	public class ThreadObject : ThreadClass
+    public class ThreadObject : ThreadClass
 	{
 		private ThreadStart _delegatesub;
 		private ThreadStart _firsrunsub;
 
-		public ThreadObject(ThreadStart DelegateSub, int SleepTime, bool AutoDispose, string Name, System.Threading.ThreadStart FirstRunSub) : base(SleepTime, AutoDispose, Name)
+		public ThreadObject(ThreadStart DelegateSub, int SleepTime, bool AutoDispose, string Name, ThreadStart FirstRunSub) 
+			: base(SleepTime, AutoDispose, Name)
 		{
 			_delegatesub = DelegateSub;
 			_firsrunsub = FirstRunSub;
@@ -50,7 +50,7 @@ namespace Tools
 		{
 			this.SleepTime = SleepTime;
 			if (AutoDispose)
-				System.Windows.Forms.Application.ApplicationExit += this.AutoDispose;
+				Application.ApplicationExit += this.AutoDispose;
 			_Name = Name;
 		}
 
@@ -85,7 +85,7 @@ namespace Tools
 			if (TH == null)
 			{
 				MustExit = new ManualResetEvent(false);
-				TH = new System.Threading.Thread(Loop);
+				TH = new Thread(Loop);
 				TH.Name = this.Name;
 				TH.Start();
 			}
@@ -118,12 +118,12 @@ namespace Tools
 
 		public virtual void Stop()
 		{
-			if (TH != null && TH.ThreadState != System.Threading.ThreadState.Stopped)
+			if (TH != null && TH.ThreadState != ThreadState.Stopped)
 			{
 				if (MustExit != null)
 					MustExit.Set();
 
-				if (!object.ReferenceEquals(System.Threading.Thread.CurrentThread, TH))
+				if (!object.ReferenceEquals(Thread.CurrentThread, TH))
 				{
 					if (TH != null && StopWaitTimeout > 0)
 						TH.Join(StopWaitTimeout);
@@ -144,9 +144,9 @@ namespace Tools
 			}
 		}
 
-		private void AutoDispose(object sender, System.EventArgs e)
+		private void AutoDispose(object sender, EventArgs e)
 		{
-			System.Windows.Forms.Application.ApplicationExit -= this.AutoDispose;
+            Application.ApplicationExit -= this.AutoDispose;
 			Dispose();
 		}
 
