@@ -12,7 +12,7 @@ namespace LaserGRBL
 {
 	public class Autotrace
 	{
-		public static string TempPath { get { return $"{GrblCore.DataPath}\\Autotrace\\"; } }
+		public static string TempPath { get { return $"{Settings.DataPath}\\Autotrace\\"; } }
 
 		public static void CleanupTmpFolder()
 		{

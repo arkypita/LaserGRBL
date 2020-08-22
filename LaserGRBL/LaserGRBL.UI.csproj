@@ -110,7 +110,6 @@
     <Compile Include="Autotrace\AutotraceTest.Designer.cs">
       <DependentUpon>AutotraceTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Autotrace\Autotrace.cs" />
     <Compile Include="AutoUpdate\Json.cs" />
     <Compile Include="ComWrapper\ComLogger.cs" />
     <Compile Include="ExceptionManager.cs">
@@ -1297,9 +1296,6 @@
     <Content Include="Grafica\stop.png" />
     <Content Include="Grafica\text_align_left.png" />
     <Content Include="Grafica\warning.png" />
-    <Content Include="Autotrace\autotrace.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Grafica\zdown01.png" />
     <Content Include="Grafica\zdown1.png" />
     <Content Include="Grafica\zdown10.png" />

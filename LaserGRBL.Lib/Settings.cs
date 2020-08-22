@@ -17,13 +17,13 @@ namespace LaserGRBL
     public static class Settings
     {
         private static Dictionary<string, object> dic;
-        private static string dataPath = null;
+        public static string DataPath { get; private set; } = null;
         static string filename
         {
             get
             {
                 string basename = "LaserGRBL.Settings.bin";
-                string fullname = Path.Combine(dataPath, basename);
+                string fullname = Path.Combine(DataPath, basename);
 
                 if (!File.Exists(fullname) && File.Exists(basename))
                     File.Copy(basename, fullname);
@@ -31,9 +31,9 @@ namespace LaserGRBL
                 return fullname;
             }
         }
-        public static void Initialize(string DataPath)
+        public static void Initialize(string dataPath)
         {
-            dataPath = DataPath;
+            DataPath = dataPath;
             try
             {
                 if (File.Exists(filename))
