@@ -226,10 +226,10 @@ namespace LaserGRBL
 
 			mRange.ResetRange();
 
-			Potrace.turdsize = (int)(UseSpotRemoval ? SpotRemoval : 2);
-			Potrace.alphamax = UseSmoothing ? (double)Smoothing : 0.0;
-			Potrace.opttolerance = UseOptimize ? (double)Optimize : 0.2;
-			Potrace.curveoptimizing = UseOptimize; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
+			potrace.turdsize = (int)(UseSpotRemoval ? SpotRemoval : 2);
+			potrace.alphamax = UseSmoothing ? (double)Smoothing : 0.0;
+			potrace.opttolerance = UseOptimize ? (double)Optimize : 0.2;
+			potrace.curveoptimizing = UseOptimize; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
 
 			List<List<Curve>> plist = potrace.PotraceTrace(bmp);
 

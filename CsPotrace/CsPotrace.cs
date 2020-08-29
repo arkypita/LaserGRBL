@@ -15,38 +15,33 @@ namespace CsPotrace
 {
 	public partial class Potrace
 	{
-		#region Potrace classes and contants
-		public static TurnPolicy turnpolicy = TurnPolicy.minority;
-
 		//----------------------Potrace Constants and aux functions
 		const int POTRACE_CORNER = 1;
 		const int POTRACE_CURVETO = 2;
-		//static double COS179 = Math.Cos(179 * Math.PI / 180);
 
+		public TurnPolicy turnpolicy = TurnPolicy.minority;
 		/// <summary>
 		/// area of largest path to be ignored
 		/// </summary>
-		public static int turdsize = 2;
+		public int turdsize = 2;
 		/// <summary>
 		///  corner threshold
 		/// </summary>
-		public static double alphamax = 1.0;
+		public double alphamax = 1.0;
 		/// <summary>
 		///  use curve optimization
 		///  optimize the path p, replacing sequences of Bezier segments by a
 		///  single segment when possible.
 		/// </summary>
-		public static bool curveoptimizing = true;
+		public bool curveoptimizing = true;
 		/// <summary>
 		/// curve optimization tolerance
 		/// </summary>
-		public static double opttolerance = 0.2;
-		public static double Treshold = 0.5;
+		public double opttolerance = 0.2;
+		public double Treshold = 0.5;
 
 		Bitmap_p bm = null;
 		List<Path> pathlist = new List<Path>();
-
-		#endregion
 
 		#region Static function of Potrace
 		/// <summary>
@@ -784,7 +779,7 @@ namespace CsPotrace
 
 		}
 		/* Always succeeds and returns 0 */
-		static void smooth(Path path)
+		static void smooth(Path path, double alphamax)
 		{
 			int m = path.curve.n;
 			privcurve curve = path.curve;
@@ -1011,7 +1006,7 @@ namespace CsPotrace
 		/* optimize the path p, replacing sequences of Bezier segments by a
 	   single segment when possible. Return 0 on success, 1 with errno set
 	   on failure. */
-		static void optiCurve(Path path)
+		static void optiCurve(Path path, double opttolerance)
 		{
 			privcurve curve = path.curve;
 			int m = curve.n;
@@ -1210,9 +1205,9 @@ namespace CsPotrace
 				bestPolygon(pathlist[i]);
 				adjustVertices(pathlist[i]);
 
-				smooth(pathlist[i]);
+				smooth(pathlist[i], alphamax);
 				if (curveoptimizing)
-					optiCurve(pathlist[i]);
+					optiCurve(pathlist[i], opttolerance);
 
 			}
 

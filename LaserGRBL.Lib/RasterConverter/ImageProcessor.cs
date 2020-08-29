@@ -1148,15 +1148,16 @@ namespace LaserGRBL.RasterConverter
 
 		private void PreviewVector(Bitmap bmp)
 		{
-			Potrace.turdsize = (int)(UseSpotRemoval ? SpotRemoval : 2);
-			Potrace.alphamax = UseSmoothing ? (double)Smoothing : 0.0;
-			Potrace.opttolerance = UseOptimize ? (double)Optimize : 0.2;
-			Potrace.curveoptimizing = UseOptimize; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
+			var potrace = new Potrace();
+			potrace.turdsize = (int)(UseSpotRemoval ? SpotRemoval : 2);
+			potrace.alphamax = UseSmoothing ? (double)Smoothing : 0.0;
+			potrace.opttolerance = UseOptimize ? (double)Optimize : 0.2;
+			potrace.curveoptimizing = UseOptimize; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
 
 			if (MustExitTH)
 				return;
 
-			List<List<Curve>> plist = new Potrace().PotraceTrace(bmp);
+			List<List<Curve>> plist = potrace.PotraceTrace(bmp);
 
 			if (MustExitTH)
 				return;
