@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using CsPotrace.BezierToBiarc;
 using System.Drawing;
+using System.Numerics;
 
 namespace CsPotrace
 {
@@ -23,25 +24,25 @@ namespace CsPotrace
 		/// <param name="Width">Width of the exportd cvg-File</param>
 		/// <param name="Height">Height of the exportd cvg-File</param>
 		/// <returns></returns>
-		public static List<string> Export2GCode(List<List<CsPotrace.Curve>> list, float oX, float oY, double scale, string lOn, string lOff, Size originalImageSize)
+		public static List<string> Export2GCode(List<List<Curve>> list, float oX, float oY, double scale, string lOn, string lOff, Size originalImageSize)
 		{
 			bool debug = false;
 
 			Bitmap bmp = null;
-			System.Drawing.Graphics g = null;
+			Graphics g = null;
 
 			if (debug)
 			{
 				bmp = new Bitmap(originalImageSize.Width, originalImageSize.Height);
-				g = System.Drawing.Graphics.FromImage(bmp);
+				g = Graphics.FromImage(bmp);
 				g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-				g.Clear(System.Drawing.Color.White);
+				g.Clear(Color.White);
 			}
 
 			List<string> rv = new List<string>();
 
 			list.Reverse();
-			foreach (List<CsPotrace.Curve> Curves in list)
+			foreach (List<Curve> Curves in list)
 				rv.AddRange(GetPathGC(Curves, lOn, lOff, oX * scale, oY * scale, scale, g));
 
 			if (debug)
@@ -54,13 +55,13 @@ namespace CsPotrace
 			return rv;
 		}
 
-		private static List<string> GetPathGC(List<CsPotrace.Curve> Curves, string lOn, string lOff, double oX, double oY, double scale, Graphics g)
+		private static List<string> GetPathGC(List<Curve> Curves, string lOn, string lOff, double oX, double oY, double scale, Graphics g)
 		{
 			List<string> rv = new List<string>();
 
 			OnPathBegin(Curves, lOn, oX, oY, scale, rv);
 
-			foreach (CsPotrace.Curve Curve in Curves)
+			foreach (Curve Curve in Curves)
 				OnPathSegment(Curve, oX, oY, scale, rv, g);
 
 			OnPathEnd(Curves, lOff, oX, oY, scale, rv);
@@ -68,21 +69,21 @@ namespace CsPotrace
 			return rv;
 		}
 
-		private static void OnPathSegment(CsPotrace.Curve Curve, double oX, double oY, double scale, List<string> rv, Graphics g)
+		private static void OnPathSegment(Curve Curve, double oX, double oY, double scale, List<string> rv, Graphics g)
 		{
 			if (double.IsNaN(Curve.LinearLenght)) // problem?
 				return;
 
-			if (Curve.Kind == CsPotrace.CurveKind.Line)
+			if (Curve.Kind == CurveKind.Line)
 			{
 				//trace line
 				if (g != null)
 					g.DrawLine(Pens.DarkGray, (float)Curve.A.X, (float)Curve.A.Y, (float)Curve.B.X, (float)Curve.B.Y);
 
-				rv.Add(String.Format("G1 X{0} Y{1}", formatnumber(Curve.B.X + oX, scale), formatnumber(Curve.B.Y + oY, scale)));
+				rv.Add(string.Format("G1 X{0} Y{1}", formatnumber(Curve.B.X + oX, scale), formatnumber(Curve.B.Y + oY, scale)));
 			}
 
-			if (Curve.Kind == CsPotrace.CurveKind.Bezier)
+			if (Curve.Kind == CurveKind.Bezier)
 			{
 				CubicBezier cb = new CubicBezier(new Vector2((float)Curve.A.X, (float)Curve.A.Y),
 												 new Vector2((float)Curve.ControlPointA.X, (float)Curve.ControlPointA.Y),
@@ -110,7 +111,7 @@ namespace CsPotrace
 				catch
 				{
 					if (g != null) g.DrawLine(Pens.DarkGray, (float)Curve.A.X, (float)Curve.A.Y, (float)Curve.B.X, (float)Curve.B.Y);
-					rv.Add(String.Format("G1 X{0} Y{1}", formatnumber(Curve.B.X + oX, scale), formatnumber(Curve.B.Y + oY, scale)));
+					rv.Add(string.Format("G1 X{0} Y{1}", formatnumber(Curve.B.X + oX, scale), formatnumber(Curve.B.Y + oY, scale)));
 				}
 
 			}

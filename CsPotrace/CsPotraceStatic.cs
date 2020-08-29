@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.Numerics;
 
 namespace CsPotrace
 {
-    public partial class Potrace
-    {
+	public partial class Potrace
+	{
 		#region auxiliary functions
 		/* range over the straight line segment [a,b] when lambda ranges over [0,1] */
 		static dPoint interval(double lambda, dPoint a, dPoint b)
