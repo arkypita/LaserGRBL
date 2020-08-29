@@ -14,7 +14,6 @@ namespace CsPotrace
 {
     public partial class Potrace
     {
-
         /// <summary>
         /// Exports a figure,  created by Potrace from a Bitmap to a svg-formatted string 
         ///It should be SVG-formattted

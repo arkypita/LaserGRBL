@@ -45,67 +45,6 @@ namespace CsPotrace
 
 		public static double Treshold = 0.5;
 
-
-		// /// <summary>
-		//struct Point
-		//{
-		//	public Point(int x, int y)
-		//	{
-		//		this.X = x;
-		//		this.Y = y;
-		//	}
-		//	public int x;
-		//	public int y;
-		//}
-
-		class Path
-		{
-			public int m = 0;
-			public int area = 0;
-			public int len = 0;
-			public string sign = "?";
-			// curve 
-			public List<Point> pt = new List<Point>();
-			public int minX = 100000;
-			public int minY = 100000;
-			public int maxX = -1;
-			public int maxY = -1;
-			public double x0;
-			public double y0;
-			public int[] po;
-			public int[] lon = null;
-			public List<Potrace.Sum> sums = new List<Potrace.Sum>();
-			public privcurve curve = null;
-
-		}
-
-		class privcurve
-		{
-
-			public int n;                   /* number of segments */
-			public int[] tag;                /* tag[n]: POTRACE_CORNER or POTRACE_CURVETO */
-			//     public dPoint[,] ControlPoints;  /* c[n][i]: control points. 
-			//                      c[n][0] is unused for tag[n]=POTRACE_CORNER */
-			public dPoint[] vertex;          /* for POTRACE_CORNER, this equals c[1] */
-			/* (*c)[3]; /* c[n][i]: control points. 
-			c[n][0] is unused for tag[n]=POTRACE_CORNER */
-			public dPoint[] c = null;        // HelpPoint
-			public double[] alpha;           /* only for POTRACE_CURVETO */
-			public double[] alpha0;          /* "uncropped" alpha parameter - for debug output only */
-			public double[] beta;
-			public int alphacurve = 0;
-			public privcurve(int Count)
-			{
-				n = Count;
-				tag = new int[n];
-				// ControlPoints = new dPoint[n, 3];
-				vertex = new dPoint[n];
-				alpha = new double[n];
-				alpha0 = new double[n];
-				beta = new double[n];
-				c = new dPoint[n * 3];
-			}
-		}
 		#endregion
 		#region auxiliary functions
 		/* range over the straight line segment [a,b] when lambda ranges over [0,1] */
@@ -189,20 +128,7 @@ namespace CsPotrace
 		{
 			return Math.Sqrt((p.X - q.X) * (p.X - q.X) + (p.Y - q.Y) * (p.Y - q.Y));
 		}
-		struct Sum
-		{
-			public Sum(double x, double y, double xy, double x2, double y2)
-			{
-				this.x = x;
-				this.y = y;
-				this.xy = xy;
-				this.x2 = x2;
-				this.y2 = y2;
-			}
-			public double x, y, xy, x2, y2;
-
-		}
-
+		
 		/* calculate p1 x p2 */
 		static double xprod(dPoint p1, dPoint p2)
 		{
