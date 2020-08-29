@@ -18,7 +18,6 @@ namespace CsPotrace
 		#region Potrace classes and contants
 		public static TurnPolicy turnpolicy = TurnPolicy.minority;
 
-
 		//----------------------Potrace Constants and aux functions
 		const int POTRACE_CORNER = 1;
 		const int POTRACE_CURVETO = 2;
@@ -1127,17 +1126,6 @@ namespace CsPotrace
 		}
 		/* ---------------------------------------------------------------------- */
 		/* Stage 5: Curve optimization (Sec. 2.4) */
-
-		/* a private type for the result of opti_penalty */
-		class Opti
-		{
-			public double pen = 0;
-			public dPoint[] c = new dPoint[2];// [new dPoint()    , new dPoint()];
-			public double t = 0;
-			public double s = 0;
-			public double alpha = 0;
-
-		}
 
 		/* calculate best fit from i+.5 to j+.5.  Assume i<j (cyclically).
 				Return 0 and set badness and parameters (alpha, beta), if
