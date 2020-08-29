@@ -51,65 +51,13 @@ namespace CsPotrace
 		//{
 		//	public Point(int x, int y)
 		//	{
-		//		this.x = x;
-		//		this.y = y;
+		//		this.X = x;
+		//		this.Y = y;
 		//	}
 		//	public int x;
 		//	public int y;
 		//}
 
-		//Holds the binaray bitmap
-		class Bitmap_p
-		{
-			public Bitmap_p(int w, int h)
-			{
-				this.w = w;
-				this.h = h;
-				data = new byte[size];
-			}
-			public int w = 0;
-			public int h = 0;
-			public int size
-			{
-				get { return w * h; }
-			}
-			public bool at(int x, int y)
-			{
-				return (x >= 0)
-						&& (x < this.w)
-						&& (y >= 0)
-						&& (y < this.h)
-						&& (this.data[this.w * y + x] == 1);
-			}
-			public byte[] data = null;
-			public Point index(int i)
-			{
-				int y = i / w;
-				return new Point(i - y * w, y);
-			}
-			public void flip(int x, int y)
-			{
-				if (this.at(x, y))
-				{
-					this.data[this.w * y + x] = 0;
-				}
-				else
-				{
-					this.data[this.w * y + x] = 1;
-				}
-			}
-			public Bitmap_p copy()
-			{
-				Bitmap_p Result = new Bitmap_p(w, h);
-				for (int i = 0; i < size; i++)
-				{
-					Result.data[i] = data[i];
-
-				}
-				return Result;
-			}
-
-		}
 		class Path
 		{
 			public int m = 0;
@@ -263,7 +211,7 @@ namespace CsPotrace
 		/* calculate p1 x p2 */
 		static int xprodi(Point p1, Point p2)
 		{
-			return p1.x * p2.y - p1.y * p2.x;
+			return p1.X * p2.Y - p1.Y * p2.X;
 		}
 		/* return 1 if a <= b < c < a, in a cyclic sense (mod n) */
 		static bool cyclic(double a, double b, double c)
@@ -499,7 +447,7 @@ namespace CsPotrace
 		/// <param name="y">y index in the source Matrix</param>
 		static bool findNext(Bitmap_p bm1, Point point, ref Point result)
 		{
-			int i = bm1.w * point.y + point.x;
+			int i = bm1.w * point.Y + point.X;
 			while ((i < bm1.size) && (bm1.data[i] != 1))
 			{
 				i++;
@@ -522,13 +470,13 @@ namespace CsPotrace
 		static Path findPath(Bitmap_p bm1, Point point)
 		{
 			Path path = new Path();
-			int x = point.x;
-			int y = point.y;
+			int x = point.X;
+			int y = point.Y;
 			int dirx = 0;
 			int diry = 1;
 			int tmp = -1;
 
-			path.sign = bm.at(point.x, point.y) ? "+" : "-";
+			path.sign = bm.at(point.X, point.Y) ? "+" : "-";
 
 			while (true)
 			{
@@ -547,7 +495,7 @@ namespace CsPotrace
 				y += diry;
 				path.area -= x * diry;
 
-				if (x == point.x && y == point.y)
+				if (x == point.X && y == point.Y)
 					break;
 
 				bool l = bm1.at(x + (dirx + diry - 1) / 2, y + (diry - dirx - 1) / 2);
@@ -622,13 +570,13 @@ namespace CsPotrace
 		}
 		static void xorPath(Bitmap_p bm1, Path path)
 		{
-			int y1 = path.pt[0].y,
+			int y1 = path.pt[0].Y,
 			  len = path.len,
 			  x, y, maxX, minY, i, j;
 			for (i = 1; i < len; i++)
 			{
-				x = path.pt[i].x;
-				y = path.pt[i].y;
+				x = path.pt[i].X;
+				y = path.pt[i].Y;
 
 				if (y != y1)
 				{
@@ -654,16 +602,16 @@ namespace CsPotrace
 		{
 			double x, y;
 			// origin 
-			path.x0 = path.pt[0].x;
-			path.y0 = path.pt[0].y;
+			path.x0 = path.pt[0].X;
+			path.y0 = path.pt[0].Y;
 
 
 			List<Sum> s = path.sums;
 			s.Add(new Sum(0, 0, 0, 0, 0));
 			for (int i = 0; i < path.len; i++)
 			{
-				x = path.pt[i].x - path.x0;
-				y = path.pt[i].y - path.y0;
+				x = path.pt[i].X - path.x0;
+				y = path.pt[i].Y - path.y0;
 				s.Add(new Sum(s[i].x + x, s[i].y + y, s[i].xy + x * y,
 					s[i].x2 + x * x, s[i].y2 + y * y));
 			}
@@ -711,10 +659,10 @@ namespace CsPotrace
 				k = j + 1 - i + n;
 			}
 
-			px = (pt[i].x + pt[j].x) / 2.0 - pt[0].x;
-			py = (pt[i].y + pt[j].y) / 2.0 - pt[0].y;
-			ey = (pt[j].x - pt[i].x);
-			ex = -(pt[j].y - pt[i].y);
+			px = (pt[i].X + pt[j].X) / 2.0 - pt[0].X;
+			py = (pt[i].Y + pt[j].Y) / 2.0 - pt[0].Y;
+			ey = (pt[j].X - pt[i].X);
+			ex = -(pt[j].Y - pt[i].Y);
 
 			a = ((x2 - 2 * x * px) / k + px * px);
 			b = ((xy - x * py - y * px) / k + px * py);
@@ -760,7 +708,7 @@ namespace CsPotrace
 
 			for (int i = n - 1; i >= 0; i--)
 			{
-				if (pt[i].x != pt[k].x && pt[i].y != pt[k].y)
+				if (pt[i].X != pt[k].X && pt[i].Y != pt[k].Y)
 				{
 					k = i + 1;
 				}
@@ -770,22 +718,22 @@ namespace CsPotrace
 			for (int i = n - 1; i >= 0; i--)
 			{
 				ct[0] = ct[1] = ct[2] = ct[3] = 0;
-				dir = (3 + 3 * (pt[mod(i + 1, n)].x - pt[i].x) +
-					(pt[mod(i + 1, n)].y - pt[i].y)) / 2;
+				dir = (3 + 3 * (pt[mod(i + 1, n)].X - pt[i].X) +
+					(pt[mod(i + 1, n)].Y - pt[i].Y)) / 2;
 				ct[dir]++;
 
-				constraint[0].x = 0;
-				constraint[0].y = 0;
-				constraint[1].x = 0;
-				constraint[1].y = 0;
+				constraint[0].X = 0;
+				constraint[0].Y = 0;
+				constraint[1].X = 0;
+				constraint[1].Y = 0;
 
 				k = nc[i];
 				k1 = i;
 				while (true)
 				{
 					foundk = 0;
-					dir = (3 + 3 * sign(pt[k].x - pt[k1].x) +
-						sign(pt[k].y - pt[k1].y)) / 2;
+					dir = (3 + 3 * sign(pt[k].X - pt[k1].X) +
+						sign(pt[k].Y - pt[k1].Y)) / 2;
 					ct[dir]++;
 
 					if ((ct[0] == 1) && (ct[1] == 1) && (ct[2] == 1) && (ct[3] == 1))
@@ -795,33 +743,33 @@ namespace CsPotrace
 						break;
 					}
 
-					cur.x = pt[k].x - pt[i].x;
-					cur.y = pt[k].y - pt[i].y;
+					cur.X = pt[k].X - pt[i].X;
+					cur.Y = pt[k].Y - pt[i].Y;
 
 					if (xprodi(constraint[0], cur) < 0 || xprodi(constraint[1], cur) > 0)
 					{
 						break;
 					}
 
-					if (Math.Abs(cur.x) <= 1 && Math.Abs(cur.y) <= 1)
+					if (Math.Abs(cur.X) <= 1 && Math.Abs(cur.Y) <= 1)
 					{
 
 					}
 					else
 					{
-						off.x = cur.x + ((cur.y >= 0 && (cur.y > 0 || cur.x < 0)) ? 1 : -1);
-						off.y = cur.y + ((cur.x <= 0 && (cur.x < 0 || cur.y < 0)) ? 1 : -1);
+						off.X = cur.X + ((cur.Y >= 0 && (cur.Y > 0 || cur.X < 0)) ? 1 : -1);
+						off.Y = cur.Y + ((cur.X <= 0 && (cur.X < 0 || cur.Y < 0)) ? 1 : -1);
 						if (xprodi(constraint[0], off) >= 0)
 						{
-							constraint[0].x = off.x;
-							constraint[0].y = off.y;
+							constraint[0].X = off.X;
+							constraint[0].Y = off.Y;
 						}
-						off.x = cur.x + ((cur.y <= 0 && (cur.y < 0 || cur.x < 0)) ? 1 : -1);
-						off.y = cur.y + ((cur.x >= 0 && (cur.x > 0 || cur.y < 0)) ? 1 : -1);
+						off.X = cur.X + ((cur.Y <= 0 && (cur.Y < 0 || cur.X < 0)) ? 1 : -1);
+						off.Y = cur.Y + ((cur.X >= 0 && (cur.X > 0 || cur.Y < 0)) ? 1 : -1);
 						if (xprodi(constraint[1], off) <= 0)
 						{
-							constraint[1].x = off.x;
-							constraint[1].y = off.y;
+							constraint[1].X = off.X;
+							constraint[1].Y = off.Y;
 						}
 					}
 					k1 = k;
@@ -833,10 +781,10 @@ namespace CsPotrace
 				}
 				if (foundk == 0)
 				{
-					dk.x = sign(pt[k].x - pt[k1].x);
-					dk.y = sign(pt[k].y - pt[k1].y);
-					cur.x = pt[k1].x - pt[i].x;
-					cur.y = pt[k1].y - pt[i].y;
+					dk.X = sign(pt[k].X - pt[k1].X);
+					dk.Y = sign(pt[k].Y - pt[k1].Y);
+					cur.X = pt[k1].X - pt[i].X;
+					cur.Y = pt[k1].Y - pt[i].Y;
 
 					a = xprodi(constraint[0], cur);
 					b = xprodi(constraint[0], dk);
@@ -1054,8 +1002,8 @@ namespace CsPotrace
 				Quad Q = new Quad();
 				dPoint w = new dPoint();
 				/* let s be the vertex, in coordinates relative to x0/y0 */
-				s.X = pt[po[i]].x - x0;
-				s.Y = pt[po[i]].y - y0;
+				s.X = pt[po[i]].X - x0;
+				s.Y = pt[po[i]].Y - y0;
 				/* intersect segments i-1 and i */
 				j = mod(i - 1, m);
 				/* add quadratic forms */
