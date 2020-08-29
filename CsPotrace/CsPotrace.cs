@@ -41,8 +41,10 @@ namespace CsPotrace
 		/// curve optimization tolerance
 		/// </summary>
 		public static double opttolerance = 0.2;
-
 		public static double Treshold = 0.5;
+
+		static Bitmap_p bm = null;
+		static List<Path> pathlist = new List<Path>();
 
 		#endregion
 
@@ -1132,8 +1134,6 @@ namespace CsPotrace
 			path.curve = ocurve;
 		}
 		
-		static Bitmap_p bm = null;
-
 		static bool majority(Bitmap_p bm1, int x, int y)
 		{
 			int i;
@@ -1161,7 +1161,6 @@ namespace CsPotrace
 			return false;
 		}
 
-		static List<Path> pathlist = new List<Path>();
 
 		static void tracetoList(List<List<Curve>> ListOfPathes)
 		{
