@@ -12,112 +12,7 @@ using System.Drawing.Imaging;
 // You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. 
 
 namespace CsPotrace
-#region auxiliary classes
-{  /// <summary>
-   /// Kind of Curve : Line or Bezier
-   /// </summary>
-	public enum CurveKind
-	{
-		Line,
-		Bezier
-	}
-	/// <summary>
-	/// Holds the coordinates of a Point
-	/// </summary>
-	public class dPoint
-	{
-		/// <summary>
-		/// x-coordinate
-		/// </summary>
-		public double X;
-		/// <summary>
-		/// y-coordinate
-		/// </summary>
-		public double Y;
-		/// <summary>
-		/// Creates a point
-		/// </summary>
-		/// <param name="x">x-coordinate</param>
-		/// <param name="y">y-coordinate</param>
-		public dPoint(double x, double y)
-		{
-			this.X = x;
-			this.Y = y;
-		}
-		public dPoint copy()
-		{
-			return new dPoint(X, Y);
-		}
-		public dPoint()
-		{ }
-	}
-	/// <summary>
-	/// Holds the information about der produced curves
-	/// </summary>
-	/// 
-	public struct Curve
-	{
-		/// <summary>
-		/// Bezier or Line
-		/// </summary>
-		public CurveKind Kind;
-		/// <summary>
-		/// Startpoint
-		/// </summary>
-		public dPoint A;
-		/// <summary>
-		/// ControlPoint
-		/// </summary>
-		public dPoint ControlPointA;
-		/// <summary>
-		/// ControlPoint
-		/// </summary>
-		public dPoint ControlPointB;
-		/// <summary>
-		/// Endpoint
-		/// </summary>
-		public dPoint B;
-		/// <summary>
-		/// Creates a curve
-		/// </summary>
-		/// <param name="Kind"></param>
-		/// <param name="A">Startpoint</param>
-		/// <param name="ControlPointA">Controlpoint</param>
-		/// <param name="ControlPointB">Controlpoint</param>
-		/// <param name="B">Endpoint</param>
-		public Curve(CurveKind Kind, dPoint A, dPoint ControlPointA, dPoint ControlPointB, dPoint B)
-		{
-
-			this.Kind = Kind;
-			this.A = A;
-			this.B = B;
-			this.ControlPointA = ControlPointA;
-			this.ControlPointB = ControlPointB;
-
-		}
-
-		public double LinearLenght
-		{
-			get
-			{
-				double dX = B.X - A.X;
-				double dY = B.Y - A.Y;
-				return Math.Sqrt(dX * dX + dY * dY);
-			}
-		}
-	}
-	public enum TurnPolicy
-	{
-		minority,
-		majority,
-		right,
-		black,
-		white
-
-
-
-	}
-	#endregion
+{
 	public partial class Potrace
 	{
 		#region Potrace classes and contants
@@ -180,8 +75,11 @@ namespace CsPotrace
 			}
 			public bool at(int x, int y)
 			{
-				return ((x >= 0) && (x < this.w) && (y >= 0) && (y < this.h) &&
-			(this.data[this.w * y + x] == 1));
+				return (x >= 0)
+						&& (x < this.w)
+						&& (y >= 0)
+						&& (y < this.h)
+						&& (this.data[this.w * y + x] == 1);
 			}
 			public byte[] data = null;
 			public Point index(int i)
@@ -460,9 +358,6 @@ namespace CsPotrace
 		}
 
 
-
-
-
 		/* determine the center and slope of the line i..j. Assume i<j. Needs
 			   "sum" components of p to be set. */
 		static void pointslope(Path path, int i, int j, dPoint ctr, dPoint dir)
@@ -574,7 +469,7 @@ namespace CsPotrace
 
 			byte[] Result = new byte[bitmap.Width * bitmap.Height];
 			BitmapData SourceData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
-			
+
 			unsafe
 			{
 				byte* SourcePtr = (byte*)(void*)SourceData.Scan0;
@@ -1705,11 +1600,6 @@ namespace CsPotrace
 
 		static List<Path> pathlist = new List<Path>();
 
-
-
-
-
-
 		static void tracetoList(List<List<Curve>> ListOfPathes)
 		{
 			if (ListOfPathes == null) return;
@@ -1853,5 +1743,4 @@ namespace CsPotrace
 		}
 		#endregion
 	}
-
 }
