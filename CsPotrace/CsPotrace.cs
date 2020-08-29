@@ -43,8 +43,8 @@ namespace CsPotrace
 		public static double opttolerance = 0.2;
 		public static double Treshold = 0.5;
 
-		static Bitmap_p bm = null;
-		static List<Path> pathlist = new List<Path>();
+		Bitmap_p bm = null;
+		List<Path> pathlist = new List<Path>();
 
 		#endregion
 
@@ -57,7 +57,7 @@ namespace CsPotrace
 		/// </summary>
 		/// <param name="bitmap"> A Bitmap, which will be transformed to a binary Matrix</param>
 		/// <returns>Returns a binaray boolean Matrix </returns>
-		static void ConvertBitmap(Bitmap bitmap)
+		void ConvertBitmap(Bitmap bitmap)
 		{
 
 			byte[] Result = new byte[bitmap.Width * bitmap.Height];
@@ -112,7 +112,7 @@ namespace CsPotrace
 		/// <returns></returns>
 		/// <param name="x">x index in the source Matrix</param>
 		/// <param name="y">y index in the source Matrix</param>
-		static Path findPath(Bitmap_p bm1, Point point)
+		Path findPath(Bitmap_p bm1, Point point)
 		{
 			Path path = new Path();
 			int x = point.X;
@@ -186,7 +186,7 @@ namespace CsPotrace
 		/// </summary>
 		/// <param name="bm">A binary bitmap which holds the imageinformations.</param>
 		/// <param name="plistp">List of Path objects</param>
-		static Path bmToPathlist()
+		Path bmToPathlist()
 		{
 
 			Bitmap_p bm1 = bm.copy();
@@ -1162,7 +1162,7 @@ namespace CsPotrace
 		}
 
 
-		static void tracetoList(List<List<Curve>> ListOfPathes)
+		void tracetoList(List<List<Curve>> ListOfPathes)
 		{
 			if (ListOfPathes == null) return;
 			for (int i = 0; i < pathlist.Count; i++)
@@ -1191,13 +1191,13 @@ namespace CsPotrace
 			}
 		}
 
-		public static void Clear()
+		void Clear()
 		{
-			Potrace.bm = null;
-			Potrace.pathlist.Clear();
+			bm = null;
+			pathlist.Clear();
 		}
 
-		public static List<List<Curve>> PotraceTrace(Bitmap Bitmap)
+		public List<List<Curve>> PotraceTrace(Bitmap Bitmap)
 		{
 			Clear();
 

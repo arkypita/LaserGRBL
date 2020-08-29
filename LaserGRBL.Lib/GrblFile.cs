@@ -220,6 +220,8 @@ namespace LaserGRBL
 			if (!append)
 				list.Clear();
 
+			Potrace potrace = new Potrace();
+
 			//list.Add(new GrblCommand("G90")); //absolute (Moved to custom Header)
 
 			mRange.ResetRange();
@@ -229,7 +231,7 @@ namespace LaserGRBL
 			Potrace.opttolerance = UseOptimize ? (double)Optimize : 0.2;
 			Potrace.curveoptimizing = UseOptimize; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
 
-			List<List<Curve>> plist = Potrace.PotraceTrace(bmp);
+			List<List<Curve>> plist = potrace.PotraceTrace(bmp);
 
 			if (c.dir != RasterConverter.Direction.None)
 			{

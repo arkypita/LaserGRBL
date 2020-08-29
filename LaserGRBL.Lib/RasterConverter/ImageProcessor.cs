@@ -1156,7 +1156,7 @@ namespace LaserGRBL.RasterConverter
 			if (MustExitTH)
 				return;
 
-			List<List<Curve>> plist = Potrace.PotraceTrace(bmp);
+			List<List<Curve>> plist = new Potrace().PotraceTrace(bmp);
 
 			if (MustExitTH)
 				return;
