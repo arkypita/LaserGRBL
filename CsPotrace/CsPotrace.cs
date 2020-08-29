@@ -231,7 +231,6 @@ namespace CsPotrace
 			}
 		}
 
-
 		/* determine the center and slope of the line i..j. Assume i<j. Needs
 			   "sum" components of p to be set. */
 		static void pointslope(Path path, int i, int j, dPoint ctr, dPoint dir)
@@ -326,7 +325,6 @@ namespace CsPotrace
 		{
 			return a >= 0 ? a / n : -1 - (-1 - a) / n;
 		}
-
 
 		#endregion
 		#region Static function of Potrace
@@ -1429,19 +1427,7 @@ namespace CsPotrace
 			ocurve.alphacurve = 1;
 			path.curve = ocurve;
 		}
-		class Quad
-		{
-			public Quad()
-			{
-
-			}
-			public double at(int x, int y)
-			{
-				return this.data[x * 3 + y];
-			}
-			public double[] data = new double[9];
-		}
-
+		
 		static Bitmap_p bm = null;
 
 		static bool majority(Bitmap_p bm1, int x, int y)
@@ -1506,7 +1492,6 @@ namespace CsPotrace
 		{
 			Potrace.bm = null;
 			Potrace.pathlist.Clear();
-
 		}
 
 		public static List<List<Curve>> PotraceTrace(Bitmap Bitmap)
