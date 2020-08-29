@@ -22,7 +22,7 @@ namespace CsPotrace
 		//----------------------Potrace Constants and aux functions
 		const int POTRACE_CORNER = 1;
 		const int POTRACE_CURVETO = 2;
-		static double COS179 = Math.Cos(179 * Math.PI / 180);
+		//static double COS179 = Math.Cos(179 * Math.PI / 180);
 
 		/// <summary>
 		/// area of largest path to be ignored
@@ -46,17 +46,17 @@ namespace CsPotrace
 		public static double Treshold = 0.5;
 
 
-		/// <summary>
-		struct Point
-		{
-			public Point(int x, int y)
-			{
-				this.x = x;
-				this.y = y;
-			}
-			public int x;
-			public int y;
-		}
+		// /// <summary>
+		//struct Point
+		//{
+		//	public Point(int x, int y)
+		//	{
+		//		this.x = x;
+		//		this.y = y;
+		//	}
+		//	public int x;
+		//	public int y;
+		//}
 
 		//Holds the binaray bitmap
 		class Bitmap_p
@@ -975,8 +975,7 @@ namespace CsPotrace
 		   if it lies outside. Return 1 with errno set on error; 0 on
 		   success. */
 
-		/* calculate "optimal" point-slope representation for each line
-	 segment */
+		/* calculate "optimal" point-slope representation for each line segment */
 
 
 
@@ -1631,7 +1630,6 @@ namespace CsPotrace
 
 		public static void Clear()
 		{
-
 			Potrace.bm = null;
 			Potrace.pathlist.Clear();
 
@@ -1662,6 +1660,7 @@ namespace CsPotrace
 		}
 		#endregion
 		#region create svg
+		/*
 		static string toString(double value)
 		{
 			return string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0:0.000}", value);
@@ -1741,6 +1740,7 @@ namespace CsPotrace
 			//  svg +="Z \"/></g></svg>";
 			return svg;
 		}
+		*/
 		#endregion
 	}
 }
