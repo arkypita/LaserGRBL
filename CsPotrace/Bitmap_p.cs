@@ -58,13 +58,14 @@ namespace CsPotrace
         }
         public void flip(int x, int y)
         {
-            if (at(x, y))
+            int idx = index(x, y);
+            if(data[idx] == 1)
             {
-                data[index(x, y)] = 0;
+                data[idx] = 0;
             }
             else
             {
-                data[index(x, y)] = 1;
+                data[idx] = 1;
             }
         }
         public Bitmap_p copy()
