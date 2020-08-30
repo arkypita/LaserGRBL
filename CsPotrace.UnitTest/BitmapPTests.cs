@@ -40,7 +40,7 @@ namespace CsPotrace.UnitTest
             Assert.True(b.at(8, 10));
         }
         [Fact]
-        public void CsPotrace_BitmapP_index()
+        public void CsPotrace_BitmapP_indexPoint()
         {
             Bitmap_p b = new Bitmap_p(9, 11);
 
@@ -53,6 +53,21 @@ namespace CsPotrace.UnitTest
             Assert.Equal(new Point(8, 9), b.index(89));
             Assert.Equal(new Point(0, 10), b.index(90));
             Assert.Equal(new Point(8, 10), b.index(98));
+        }
+        [Fact]
+        public void CsPotrace_BitmapP_indexInt()
+        {
+            Bitmap_p b = new Bitmap_p(9, 11);
+
+            Assert.Equal(0, b.index(0, 0)); // zero
+            Assert.Equal(1, b.index(1,0)); // first
+            Assert.Equal(8, b.index(8,0)); // last of first row
+            Assert.Equal(9, b.index(0, 1));
+
+            // Last rows
+            Assert.Equal(89, b.index(8, 9));
+            Assert.Equal(90, b.index(0,10));
+            Assert.Equal(98, b.index(8,10));
         }
         [Fact]
         public void CsPotrace_BitmapP_copy()

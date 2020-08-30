@@ -13,7 +13,6 @@ namespace CsPotrace
     //Holds the binaray bitmap
     public class Bitmap_p
     {
-
         public int w { get; }
         public int h { get; }
 
@@ -42,26 +41,30 @@ namespace CsPotrace
 
         public bool at(int x, int y)
         {
-            return (x >= 0)
-                    && (x < w)
-                    && (y >= 0)
-                    && (y < h)
-                    && (data[w * y + x] == 1);
+            // check bounds
+            if (x < 0 || y < 0) return false;
+            if (x >= w || y >= h) return false;
+            // check content
+            return data[index(x, y)] == 1;
         }
         public Point index(int i)
         {
             int y = i / w;
             return new Point(i - y * w, y);
         }
+        public int index(int x, int y)
+        {
+            return w * y + x;
+        }
         public void flip(int x, int y)
         {
             if (at(x, y))
             {
-                data[w * y + x] = 0;
+                data[index(x, y)] = 0;
             }
             else
             {
-                data[w * y + x] = 1;
+                data[index(x, y)] = 1;
             }
         }
         public Bitmap_p copy()
