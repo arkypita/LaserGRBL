@@ -5,8 +5,8 @@ using Xunit;
 namespace CsPotrace.UnitTest.CsPotraceTests
 {
     // A lot of this tests were implemented long after the library was in-use,
-    // My main first goal is to asssure that what was woking will continue working the SAME way
-    // I any bug appears, it will be frozen broken in this tests and later fixed
+    // My first goal is to asssure that what was woking will continue working the SAME way
+    // If any bug appears, it will be frozen broken in this tests and will be fixed later
 
     public class PotraceTraceTests
     {
