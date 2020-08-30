@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using System.Xml.Schema;
 using Xunit;
 
 namespace CsPotrace.UnitTest
@@ -60,15 +61,44 @@ namespace CsPotrace.UnitTest
             Bitmap_p b = new Bitmap_p(9, 11);
 
             Assert.Equal(0, b.index(0, 0)); // zero
-            Assert.Equal(1, b.index(1,0)); // first
-            Assert.Equal(8, b.index(8,0)); // last of first row
+            Assert.Equal(1, b.index(1, 0)); // first
+            Assert.Equal(8, b.index(8, 0)); // last of first row
             Assert.Equal(9, b.index(0, 1));
 
             // Last rows
             Assert.Equal(89, b.index(8, 9));
-            Assert.Equal(90, b.index(0,10));
-            Assert.Equal(98, b.index(8,10));
+            Assert.Equal(90, b.index(0, 10));
+            Assert.Equal(98, b.index(8, 10));
         }
+        [Fact]
+        public void CsPotrace_BitmapP_flip()
+        {
+            Bitmap_p b = new Bitmap_p(2, 2);
+            b.data = new byte[] { 0, 1, 1, 0 };
+            b.flip(0, 0);
+            Assert.Equal(new byte[] { 1, 1, 1, 0 }, b.data);
+            b.flip(1, 0);
+            Assert.Equal(new byte[] { 1, 0, 1, 0 }, b.data);
+        }
+        [Fact]
+        public void CsPotrace_BitmapP_flipAll()
+        {
+            Bitmap_p b = new Bitmap_p(3, 3);
+            b.data = new byte[9] { 0, 1, 0,
+                                   1, 0, 1,
+                                   0, 1, 0 };
+
+            var inverted = new byte[9] { 1, 0, 1,
+                                         0, 1, 0,
+                                         1, 0, 1 };
+            // Flip all
+            for (int x = 0; x < 3; x++)
+                for (int y = 0; y < 3; y++)
+                    b.flip(x, y);
+
+            Assert.Equal(inverted, b.data);
+        }
+
         [Fact]
         public void CsPotrace_BitmapP_copy()
         {
