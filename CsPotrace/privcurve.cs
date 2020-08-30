@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CsPotrace
+﻿namespace CsPotrace
 {
-	public class privcurve
+    public class privcurve
 	{
 		public int n;                   /* number of segments */
 		public int[] tag;                /* tag[n]: POTRACE_CORNER or POTRACE_CURVETO */

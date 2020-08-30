@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 //Copyright (C) 2001-2016 Peter Selinger
 //Copyright (C) 2009-2016 Wolfgang Nagl
 
