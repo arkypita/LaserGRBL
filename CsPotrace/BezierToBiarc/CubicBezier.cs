@@ -41,7 +41,6 @@ namespace CsPotrace.BezierToBiarc
         /// Implement the parametric equation.
         /// </summary>
         /// <param name="t">Parameter of the curve. Must be in [0,1]</param>
-        /// <returns></returns>
         public Vector2 PointAt(float t)
         {
             return (float)Math.Pow(1 - t, 3) * P1 +
@@ -54,7 +53,6 @@ namespace CsPotrace.BezierToBiarc
         /// Split a bezier curve at a given parameter value. It returns both of the new ones
         /// </summary>
         /// <param name="t">Parameter of the curve. Must be in [0,1]</param>
-        /// <returns></returns>
         public Tuple<CubicBezier, CubicBezier> Split(float t)
         {
             Vector2 p0 = P1 + t * (C1 - P1);
@@ -88,8 +86,6 @@ namespace CsPotrace.BezierToBiarc
         /// <summary>
         /// Inflexion points of the Bezier curve. They only valid if they are real and in the range of [0,1]
         /// </summary>
-        /// <param name="bezier"></param>
-        /// <returns></returns>
         public Tuple<Complex, Complex> InflexionPoints
         {
             get
