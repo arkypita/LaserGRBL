@@ -68,6 +68,49 @@ namespace CsPotrace.UnitTest.BezierToBiarcTests
             Assert.False(cb.IsClockwise);
         }
 
+        [Fact]
+        public void CsPotrace_CubicBezier_InflexionPoints()
+        {
+            var cb = simpleSemiArc();
+            var inflexionPoints = cb.InflexionPoints;
+
+            Assert.Equal(0.5, inflexionPoints.Item1.Real);
+            Assert.Equal(-0.5, inflexionPoints.Item1.Imaginary);
+
+            Assert.Equal(0.5, inflexionPoints.Item2.Real);
+            Assert.Equal(0.5, inflexionPoints.Item2.Imaginary);
+        }
+
+        [Fact]
+        public void CsPotrace_CubicBezier_Split()
+        {
+            var cb = simpleSemiArc();
+            var split = cb.Split(0.5f);
+
+            // Check ends points
+            Assert.Equal(cb.P1, split.Item1.P1);
+            Assert.Equal(cb.P2, split.Item2.P2);
+
+            // Check if the ends match
+            Assert.Equal(split.Item1.P2, split.Item2.P1);
+        }
+
+        [Fact]
+        public void CsPotrace_CubicBezier_PointAt()
+        {
+            var cb = simpleSemiArc();
+            var point0 = cb.PointAt(0);
+            var point25 = cb.PointAt(0.25f);
+            var point50 = cb.PointAt(0.50f);
+            var point75 = cb.PointAt(0.75f);
+            var point1 = cb.PointAt(1);
+
+            Assert.Equal(cb.P1, point0);
+            Assert.Equal(new Vector2(0.15625f, 0.5625f), point25);
+            Assert.Equal(new Vector2(0.5f, 0.75f), point50);
+            Assert.Equal(new Vector2(0.84375f, 0.5625f), point75);
+            Assert.Equal(cb.P2, point1);
+        }
 
         private static CubicBezier simpleSemiArc()
         {
