@@ -11,8 +11,6 @@ using System.Globalization;
 
 namespace CsPotrace.BezierToBiarc
 {
-
-
     /// <summary>Rappresenta un numero complesso.</summary>
 
     [Serializable]
