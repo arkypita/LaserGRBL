@@ -81,7 +81,7 @@ namespace CsPotrace.BezierToBiarc
                 sum += (C2.X - C1.X) * (C2.Y + C1.Y);
                 sum += (P2.X - C2.X) * (P2.Y + C2.Y);
                 sum += (P1.X - P2.X) * (P1.Y + P2.Y);
-                return sum < 0;
+                return sum > 0;
             }
         }
 
