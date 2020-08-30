@@ -18,7 +18,11 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore ./CsPotrace/CsPotrace.csproj
+      run: dotnet restore ./Cyotek.Drawing/Cyotek.Drawing.csproj
+      run: dotnet restore ./LaserGRBL.Lib/LaserGRBL.Lib.csproj
+      run: dotnet restore ./LaserGRBL.CmdLine/LaserGRBL.CmdLine.csproj
+      run: dotnet restore ./CsPotrace.UnitTest/CsPotrace.UnitTest.csproj
     - name: Build
       run: dotnet build LaserGRBL.CmdLine --configuration Release --no-restore
     - name: Test
