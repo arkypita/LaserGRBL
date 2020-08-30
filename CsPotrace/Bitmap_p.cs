@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 //Copyright (C) 2001-2016 Peter Selinger
 //Copyright (C) 2009-2016 Wolfgang Nagl
@@ -12,27 +13,41 @@ namespace CsPotrace
     //Holds the binaray bitmap
     public class Bitmap_p
     {
+
+        public int w { get; }
+        public int h { get; }
+
+        private byte[] _data;
+        public byte[] data
+        {
+            get => _data;
+            set
+            {
+                if (data.Length != value.Length)
+                    throw new InvalidOperationException("Lenght mismatch");
+                _data = value;
+            }
+        }
+
         public Bitmap_p(int w, int h)
         {
             this.w = w;
             this.h = h;
-            data = new byte[size];
+            _data = new byte[size];
         }
-        public int w = 0;
-        public int h = 0;
         public int size
         {
             get { return w * h; }
         }
+
         public bool at(int x, int y)
         {
             return (x >= 0)
-                    && (x < this.w)
+                    && (x < w)
                     && (y >= 0)
-                    && (y < this.h)
-                    && (this.data[this.w * y + x] == 1);
+                    && (y < h)
+                    && (data[w * y + x] == 1);
         }
-        public byte[] data = null;
         public Point index(int i)
         {
             int y = i / w;
@@ -40,23 +55,19 @@ namespace CsPotrace
         }
         public void flip(int x, int y)
         {
-            if (this.at(x, y))
+            if (at(x, y))
             {
-                this.data[this.w * y + x] = 0;
+                data[w * y + x] = 0;
             }
             else
             {
-                this.data[this.w * y + x] = 1;
+                data[w * y + x] = 1;
             }
         }
         public Bitmap_p copy()
         {
             Bitmap_p Result = new Bitmap_p(w, h);
-            for (int i = 0; i < size; i++)
-            {
-                Result.data[i] = data[i];
-
-            }
+            Buffer.BlockCopy(_data, 0, Result._data, 0, _data.Length);
             return Result;
         }
     }
