@@ -117,37 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnApply.Text" xml:space="preserve">
-    <value>Applica</value>
+  <data name="ColID.HeaderText" xml:space="preserve">
+    <value>id</value>
   </data>
-  <data name="LblPower.Text" xml:space="preserve">
-    <value>Potenza</value>
+  <data name="ColVisible.HeaderText" xml:space="preserve">
+    <value>Visible</value>
   </data>
-  <data name="LblModel.Text" xml:space="preserve">
-    <value>Tipo di laser</value>
+  <data name="ColModel.HeaderText" xml:space="preserve">
+    <value>Modelo</value>
   </data>
-  <data name="LblMaterial.Text" xml:space="preserve">
-    <value>Materiale</value>
+  <data name="ColMaterial.HeaderText" xml:space="preserve">
+    <value>Material</value>
   </data>
-  <data name="LblThickness.Text" xml:space="preserve">
-    <value>Spessore</value>
+  <data name="ColAction.HeaderText" xml:space="preserve">
+    <value>Acción</value>
   </data>
-  <data name="LblAction.Text" xml:space="preserve">
-    <value>Azione</value>
+  <data name="ColThick.HeaderText" xml:space="preserve">
+    <value>Grosor</value>
   </data>
-  <data name="LblPasses.Text" xml:space="preserve">
-    <value>Passaggi</value>
+  <data name="ColPower.HeaderText" xml:space="preserve">
+    <value>Potencia</value>
   </data>
-  <data name="LblSpeed.Text" xml:space="preserve">
-    <value>Velocità</value>
+  <data name="ColSpeed.HeaderText" xml:space="preserve">
+    <value>Velocidad</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Impostazioni consigliate</value>
+  <data name="ColCycles.HeaderText" xml:space="preserve">
+    <value>Pasadas</value>
   </data>
-  <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Annulla</value>
+  <data name="ColRemarks.HeaderText" xml:space="preserve">
+    <value>Notas</value>
+  </data>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>Nuevos elementos:</value>
+  </data>
+  <data name="TbNewElement.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BtnImport.Text" xml:space="preserve">
+    <value>importar</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Seleziona la configurazione</value>
+    <value>Base de datos de Laser y Materiales</value>
+  </data>
+  <data name="Power.HeaderText" xml:space="preserve">
+    <value>Potencia</value>
   </data>
 </root>
