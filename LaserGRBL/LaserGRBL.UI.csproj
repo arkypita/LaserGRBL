@@ -2,22 +2,29 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFrameworks>netcoreapp3.1;NET461</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>LaserGRBL</AssemblyName>
     <RootNamespace>LaserGRBL</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
     <PackageReference Include="System.IO.Ports" Version="4.7.0" />
     <PackageReference Include="System.Runtime.WindowsRuntime.UI.Xaml" Version="4.7.0" />
-    <PackageReference Include="WebSocketSharp" Version="1.0.3-rc11" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'NET461'">
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.Data.Common" Version="4.3.0" />
+    <PackageReference Include="System.Windows.Forms" Version="4.0.0" />
+    <PackageReference Include="System.Design" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CsPotrace\CsPotrace.csproj" />
     <ProjectReference Include="..\Cyotek.Drawing\Cyotek.Drawing.csproj" />
     <ProjectReference Include="..\LaserGRBL.Lib\LaserGRBL.Lib.csproj" />
+    <PackageReference Include="WebSocketSharp" Version="1.0.3-rc11" />
   </ItemGroup>
 
   <ItemGroup>
