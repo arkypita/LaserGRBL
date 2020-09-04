@@ -158,9 +158,9 @@ namespace LaserGRBL
 
     public class DirectionButton : UserControls.ImageButton
 	{
-		private GrblCore.JogDirection mDir = GrblCore.JogDirection.N;
+		private JogDirection mDir = JogDirection.N;
 
-		public GrblCore.JogDirection JogDirection
+		public JogDirection JogDirection
 		{
 			get { return mDir; }
 			set { mDir = value; }

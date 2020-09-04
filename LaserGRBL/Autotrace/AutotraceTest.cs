@@ -5,18 +5,14 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 
 namespace LaserGRBL
 {
-	public partial class AutotraceTest : Form
+    public partial class AutotraceTest : Form
 	{
 		public AutotraceTest()
 		{
@@ -127,14 +123,15 @@ namespace LaserGRBL
 				string fcontent = System.IO.File.ReadAllText($"{fname}.svg");
 				fcontent = colorRegex.Replace(fcontent, "stroke:#FF0000;");
 
-				Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
-
-				using (Graphics g = Graphics.FromImage(bmp))
-				{
-					g.FillRectangle(new SolidBrush(Color.FromArgb(200, Color.White)), g.ClipBounds);
-
-					svg.Draw(g);
-				}
+				throw new NotImplementedException();
+				//Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
+				//
+				//using (Graphics g = Graphics.FromImage(bmp))
+				//{
+				//	g.FillRectangle(new SolidBrush(Color.FromArgb(200, Color.White)), g.ClipBounds);
+				//
+				//	svg.Draw(g);
+				//}
 			}
 			catch(Exception)
 			{

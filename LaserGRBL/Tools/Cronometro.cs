@@ -5,28 +5,22 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Tools
 {
-	public class TimingBase
+    public class TimingBase
 	{
-
-		private static long mStartup;
-
+		static DateTime start;
 		static TimingBase()
 		{
-			mStartup = HiResTimer.TotalNano;
+			start = DateTime.Now;
 		}
 
 		public static TimeSpan TimeFromApplicationStartup()
 		{
-			// Un singolo Tick rappresenta cento nanosecondi 
-			return TimeSpan.FromTicks((HiResTimer.TotalNano - mStartup) / 100);
+			// Noneed to nanosecond precision
+			return DateTime.Now - start;
 		}
-
 	}
 
 	public class ElapsedFromEvent

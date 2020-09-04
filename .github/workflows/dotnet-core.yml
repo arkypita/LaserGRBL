@@ -1,0 +1,30 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Install dependencies
+      run: | 
+        dotnet restore ./CsPotrace/CsPotrace.csproj
+        dotnet restore ./Cyotek.Drawing/Cyotek.Drawing.csproj
+        dotnet restore ./LaserGRBL.Lib/LaserGRBL.Lib.csproj
+        dotnet restore ./LaserGRBL.CmdLine/LaserGRBL.CmdLine.csproj
+        dotnet restore ./CsPotrace.UnitTest/CsPotrace.UnitTest.csproj
+    - name: Build
+      run: dotnet build LaserGRBL.CmdLine --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal

@@ -22,6 +22,7 @@ namespace LaserGRBL
 
 			Tools.TimingBase.TimeFromApplicationStartup();
 
+			Settings.Initialize(GrblCore.DataPath);
 			Logger.Start();
 			GitHub.InitUpdate();
 			UsageStats.LoadFile();

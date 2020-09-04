@@ -79,7 +79,7 @@ namespace LaserGRBL.ComWrapper
 		}
 
 		public bool IsOpen
-		{get { return cln != null && cln.IsConnected; }}
+		{get { return cln != null && cln.IsAlive; }}
 
 		public void Write(byte b)
 		{

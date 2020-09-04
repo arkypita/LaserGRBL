@@ -31,7 +31,7 @@ namespace LaserGRBL.RasterConverter
 			GbCenterlineOptions.ForeColor = GbConversionTool.ForeColor = GbLineToLineOptions.ForeColor = GbParameters.ForeColor = GbVectorizeOptions.ForeColor = ForeColor = ColorScheme.FormForeColor;
 			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
 
-			IP = new ImageProcessor(core, filename, GetImageSize(), append);
+			IP = new ImageProcessor(core.LoadedFile, filename, GetImageSize(), append);
 			//PbOriginal.Image = IP.Original;
 			ImageProcessor.PreviewReady += OnPreviewReady;
 			ImageProcessor.PreviewBegin += OnPreviewBegin;
@@ -58,14 +58,14 @@ namespace LaserGRBL.RasterConverter
 			CbMode.ResumeLayout();
 			CbDirections.SuspendLayout();
 
-			foreach (ImageProcessor.Direction direction in Enum.GetValues(typeof(ImageProcessor.Direction)))
-				if (direction != ImageProcessor.Direction.None)
+			foreach (Direction direction in Enum.GetValues(typeof(Direction)))
+				if (direction != Direction.None)
 					CbDirections.AddItem(direction);
 			CbDirections.SelectedIndex = 0;
 			CbDirections.ResumeLayout();
 
 			CbFillingDirection.SuspendLayout();
-			foreach (ImageProcessor.Direction direction in Enum.GetValues(typeof(ImageProcessor.Direction)))
+			foreach (Direction direction in Enum.GetValues(typeof(Direction)))
 				CbFillingDirection.AddItem(direction);
 			CbFillingDirection.SelectedIndex = 0;
 			CbFillingDirection.ResumeLayout();
@@ -201,13 +201,13 @@ namespace LaserGRBL.RasterConverter
 					ImageProcessor targetProcessor = IP.Clone() as ImageProcessor;
 					IP.GenerateGCode();
 
-					if (IP.SelectedTool == ImageProcessor.Tool.Dithering)
+					if (IP.SelectedTool == Tool.Dithering)
 						mCore.UsageCounters.Dithering++;
-					else if (IP.SelectedTool == ImageProcessor.Tool.Line2Line)
+					else if (IP.SelectedTool == Tool.Line2Line)
 						mCore.UsageCounters.Line2Line++;
-					else if (IP.SelectedTool == ImageProcessor.Tool.Vectorize)
+					else if (IP.SelectedTool == Tool.Vectorize)
 						mCore.UsageCounters.Vectorization++;
-					else if (IP.SelectedTool == ImageProcessor.Tool.Centerline)
+					else if (IP.SelectedTool == Tool.Centerline)
 						mCore.UsageCounters.Centerline++;
 				}
 			}
@@ -215,9 +215,9 @@ namespace LaserGRBL.RasterConverter
 
 		private void StoreSettings()
 		{
-			Settings.SetObject("GrayScaleConversion.RasterConversionTool", RbLineToLineTracing.Checked ? ImageProcessor.Tool.Line2Line : RbDithering.Checked ? ImageProcessor.Tool.Dithering : RbCenterline.Checked ? ImageProcessor.Tool.Centerline : ImageProcessor.Tool.Vectorize);
+			Settings.SetObject("GrayScaleConversion.RasterConversionTool", RbLineToLineTracing.Checked ? Tool.Line2Line : RbDithering.Checked ? Tool.Dithering : RbCenterline.Checked ? Tool.Centerline : Tool.Vectorize);
 			
-			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Direction", (ImageProcessor.Direction)CbDirections.SelectedItem);
+			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Direction", (Direction)CbDirections.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Quality", UDQuality.Value);
 			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Preview", CbLinePreview.Checked);
 
@@ -232,7 +232,7 @@ namespace LaserGRBL.RasterConverter
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.DownSample.Value", UDDownSample.Value);
 //			Settings.SetObject("GrayScaleConversion.VectorizeOptions.ShowDots.Enabled", CbShowDots.Checked);
 //			Settings.SetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", CbShowImage.Checked);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", (ImageProcessor.Direction)CbFillingDirection.SelectedItem);
+			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", (Direction)CbFillingDirection.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", UDFillingQuality.Value);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.OptimizeFast.Enabled", CbOptimizeFast.Checked);
 
@@ -267,22 +267,21 @@ namespace LaserGRBL.RasterConverter
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.CornerThreshold.Enabled", IP.UseCornerThreshold);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.CornerThreshold.Value", IP.CornerThreshold);
 
-
 			Settings.Save(); // Saves settings in application configuration file
 		}
 
 		private void LoadSettings()
 		{
-			if ((IP.SelectedTool = Settings.GetObject("GrayScaleConversion.RasterConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Line2Line)
+			if ((IP.SelectedTool = Settings.GetObject("GrayScaleConversion.RasterConversionTool", Tool.Line2Line)) == Tool.Line2Line)
 				RbLineToLineTracing.Checked = true;
-			else if ((IP.SelectedTool = Settings.GetObject("GrayScaleConversion.RasterConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Dithering)
+			else if ((IP.SelectedTool = Settings.GetObject("GrayScaleConversion.RasterConversionTool", Tool.Line2Line)) == Tool.Dithering)
 				RbDithering.Checked = true;
-			else if ((IP.SelectedTool = Settings.GetObject("GrayScaleConversion.RasterConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Centerline)
+			else if ((IP.SelectedTool = Settings.GetObject("GrayScaleConversion.RasterConversionTool", Tool.Line2Line)) == Tool.Centerline)
 				RbCenterline.Checked = true;
 			else
 				RbVectorize.Checked = true;
 
-			CbDirections.SelectedItem = IP.LineDirection = Settings.GetObject("GrayScaleConversion.Line2LineOptions.Direction", ImageProcessor.Direction.Horizontal);
+			CbDirections.SelectedItem = IP.LineDirection = Settings.GetObject("GrayScaleConversion.Line2LineOptions.Direction", Direction.Horizontal);
 			UDQuality.Value = IP.Quality = Math.Min(UDQuality.Maximum, Settings.GetObject("GrayScaleConversion.Line2LineOptions.Quality", 3.0m));
 			CbLinePreview.Checked = IP.LinePreview = Settings.GetObject("GrayScaleConversion.Line2LineOptions.Preview", false);
 
@@ -299,7 +298,7 @@ namespace LaserGRBL.RasterConverter
 
 			//CbShowDots.Checked = IP.ShowDots = Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowDots.Enabled", false);
 			//CbShowImage.Checked = IP.ShowImage = Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", true);
-			CbFillingDirection.SelectedItem = IP.FillingDirection = Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", ImageProcessor.Direction.None);
+			CbFillingDirection.SelectedItem = IP.FillingDirection = Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", Direction.None);
 			UDFillingQuality.Value = IP.FillingQuality = Math.Min(UDFillingQuality.Maximum, Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", 3.0m));
 
 			CbResize.SelectedItem = IP.Interpolation = Settings.GetObject("GrayScaleConversion.Parameters.Interpolation", InterpolationMode.HighQualityBicubic);
@@ -389,7 +388,7 @@ namespace LaserGRBL.RasterConverter
 			if (IP != null)
 			{
 				if (RbLineToLineTracing.Checked)
-					IP.SelectedTool = ImageProcessor.Tool.Line2Line;
+					IP.SelectedTool = Tool.Line2Line;
 				RefreshVE();
 			}
 		}
@@ -399,7 +398,7 @@ namespace LaserGRBL.RasterConverter
             if (IP != null)
             {
                 if (RbCenterline.Checked)
-                    IP.SelectedTool = ImageProcessor.Tool.Centerline;
+                    IP.SelectedTool = Tool.Centerline;
                 RefreshVE();
             }
         }
@@ -409,7 +408,7 @@ namespace LaserGRBL.RasterConverter
 			if (IP != null)
 			{
 				if (RbVectorize.Checked)
-					IP.SelectedTool = ImageProcessor.Tool.Vectorize;
+					IP.SelectedTool = Tool.Vectorize;
 				RefreshVE();
 			}
 		}
@@ -467,7 +466,7 @@ namespace LaserGRBL.RasterConverter
 		}
 
 		void CbDirectionsSelectedIndexChanged(object sender, EventArgs e)
-		{ if (IP != null)IP.LineDirection = (ImageProcessor.Direction)CbDirections.SelectedItem; }
+		{ if (IP != null)IP.LineDirection = (Direction)CbDirections.SelectedItem; }
 
 		void CbResizeSelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -523,8 +522,8 @@ namespace LaserGRBL.RasterConverter
 		{
 			if (IP != null)
 			{
-				IP.FillingDirection = (ImageProcessor.Direction)CbFillingDirection.SelectedItem;
-				BtnFillingQualityInfo.Visible = LblFillingLineLbl.Visible = LblFillingQuality.Visible = UDFillingQuality.Visible = ((ImageProcessor.Direction)CbFillingDirection.SelectedItem != ImageProcessor.Direction.None);
+				IP.FillingDirection = (Direction)CbFillingDirection.SelectedItem;
+				BtnFillingQualityInfo.Visible = LblFillingLineLbl.Visible = LblFillingQuality.Visible = UDFillingQuality.Visible = ((Direction)CbFillingDirection.SelectedItem != Direction.None);
 			}
 		}
 
@@ -642,7 +641,7 @@ namespace LaserGRBL.RasterConverter
 			if (IP != null)
 			{
 				if (RbDithering.Checked)
-					IP.SelectedTool = ImageProcessor.Tool.Dithering;
+					IP.SelectedTool = Tool.Dithering;
 				RefreshVE();
 			}
 		}
