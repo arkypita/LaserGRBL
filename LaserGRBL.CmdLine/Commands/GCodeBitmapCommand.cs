@@ -33,12 +33,39 @@ namespace LaserGRBL.CmdLine.Commands
             if (!fI.Exists)
             {
                 Console.WriteLine("Input file not found");
+                Console.WriteLine($" > current path: {Environment.CurrentDirectory}");
                 return false;
             }
 
+            try
+            {
+                processFile(fI.FullName, fO.FullName);
+            }
+            catch(TypeInitializationException ex)
+            {
+                Console.WriteLine("Unable to initialize a component");
+                Console.WriteLine($" > {ex.Message}");
+                if(ex.InnerException != null) Console.WriteLine($" > {ex.InnerException.Message}");
+                return false;
+            }
+            catch(DllNotFoundException ex)
+            {
+                Console.WriteLine("Unable to load shared library");
+                Console.WriteLine($" > {ex.Message}");
+                if(ex.InnerException != null) Console.WriteLine($" > {ex.InnerException.Message}");
+                return false;
+            }
+
+            Console.WriteLine("Conversion finished");
+
+            return true;
+        }
+
+        private void processFile(string input, string output)
+        {
             var file = new GrblFile(0, 0, 200, 300);
 
-            ImageProcessor IP = new ImageProcessor(file, fI.FullName, Size.Empty, false);
+            ImageProcessor IP = new ImageProcessor(file, input, Size.Empty, false);
             IP.WhiteClip = 5;
             IP.Brightness = 100;
             IP.Contrast = 100;
@@ -50,11 +77,7 @@ namespace LaserGRBL.CmdLine.Commands
             IP.MarkSpeed = 1000;
             IP.MaxPower = 1000;
             IP.GenerateGCodeSync();
-            file.SaveProgram(fO.FullName, true, true, false, 1);
-            
-            Console.WriteLine("Conversion finished");
-
-            return true;
+            file.SaveProgram(output, true, true, false, 1);            
         }
     }
 }
