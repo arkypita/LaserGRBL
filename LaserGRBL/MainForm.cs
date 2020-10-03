@@ -6,6 +6,7 @@
 
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using System.Windows.Threading;
 
@@ -780,10 +781,31 @@ namespace LaserGRBL
 		{
 			System.Diagnostics.Process.Start(@"https://lasergrbl.com/ortur-manuals/");
 		}
-	}
+
+        private void MnCreateText_Click(object sender, EventArgs e)
+        {
+			string fileName = Path.GetTempPath();
+			fileName = Path.Combine(fileName, "image_" + DateTime.Now.ToString("yyyyMMdd_ss") + ".bmp");
+
+			using (Bitmap bmp = new Bitmap(200, 100))
+			{
+
+				using (Graphics g = Graphics.FromImage(bmp))
+				{
+					g.DrawString("Write something", new Font(FontFamily.GenericSansSerif, 22), Brushes.Black, 0, 0);
+					bmp.Save(fileName);
 
 
-	public class MMnRenderer : ToolStripProfessionalRenderer
+
+					RasterConverter.TextToLaserForm form = new RasterConverter.TextToLaserForm(Core, fileName, false);
+					form.ShowDialog();
+				}
+			}
+		}
+    }
+
+
+    public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 

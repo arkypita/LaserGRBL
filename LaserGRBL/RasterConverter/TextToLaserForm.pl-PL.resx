@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TpPreview.Text" xml:space="preserve">
+    <value>Podgląd zmian</value>
+  </data>
+  <data name="TpOriginal.Text" xml:space="preserve">
+    <value>Oryginał</value>
+  </data>
+  <data name="BtFlipV.ToolTip" xml:space="preserve">
+    <value>Odwróć obraz w pionie</value>
+  </data>
+  <data name="BtFlipH.ToolTip" xml:space="preserve">
+    <value>Odwróć obraz w poziomie</value>
+  </data>
+  <data name="BtRotateCW.ToolTip" xml:space="preserve">
+    <value>Obróć o 90 ° zgodnie z ruchem wskazówek zegara</value>
+  </data>
+  <data name="BtRotateCCW.ToolTip" xml:space="preserve">
+    <value>Obróć o 90 ° w lewo</value>
+  </data>
+  <data name="BtnRevert.ToolTip" xml:space="preserve">
+    <value>Cofnij wszystkie zmiany</value>
+  </data>
+  <data name="BtnCrop.ToolTip" xml:space="preserve">
+    <value>Przytnij obraz</value>
+  </data>
+  <data name="BtnReverse.ToolTip" xml:space="preserve">
+    <value>Odwróć kolor</value>
+  </data>
+  <data name="BtnAutoTrim.ToolTip" xml:space="preserve">
+    <value>Automatyczne przycinanie obrazu</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Próg linii</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Próg narożny</value>
+  </data>
+  <data name="TBLineThreshold.ToolTip" xml:space="preserve">
+    <value>Jeśli splajn znajduje się nie dalej niż linia prosta zdefiniowana przez punkty końcowe, to wypisz linię prostą.</value>
+  </data>
+  <data name="TBCornerThreshold.ToolTip" xml:space="preserve">
+    <value>Kąt w stopniach: jeśli piksel, jego poprzednicy i jego następcy spotykają się pod kątem mniejszym niż ten, jest to narożnik.</value>
+  </data>
+  <data name="GbCenterlineOptions.Text" xml:space="preserve">
+    <value>Opcje linii środkowej</value>
+  </data>
+  <data name="BtnAdaptiveQualityInfo.ToolTip" xml:space="preserve">
+    <value>Zwiększ/zmniejsz jakość wektoryzacji proporcjonalnie do wielkości wyjściowej obrazu.</value>
+  </data>
+  <data name="LAdaptiveQuality.Text" xml:space="preserve">
+    <value>Adaptacyjna jakość</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Usuwanie plam</value>
+  </data>
+  <data name="UDSpotRemoval.ToolTip" xml:space="preserve">
+    <value>Usuń małe szczegóły</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Optymalizacja</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Wygładzanie</value>
+  </data>
+  <data name="UDOptimize.ToolTip" xml:space="preserve">
+    <value>Zoptymalizuj ścieżkę (produkuj mniej segmentów)</value>
+  </data>
+  <data name="UDSmoothing.ToolTip" xml:space="preserve">
+    <value>Gładkie twarde krawędzie</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Wypełnienie</value>
+  </data>
+  <data name="CbFillingDirection.ToolTip" xml:space="preserve">
+    <value>Włącz wypełnianie ścieżek / ustaw kierunek napełniania</value>
+  </data>
+  <data name="LblFillingQuality.Text" xml:space="preserve">
+    <value>Jakość wypełniania</value>
+  </data>
+  <data name="UDFillingQuality.ToolTip" xml:space="preserve">
+    <value>Jakość wypełnienia (linii/mm)</value>
+  </data>
+  <data name="LblFillingLineLbl.Text" xml:space="preserve">
+    <value>Linii/mm</value>
+  </data>
+  <data name="UDDownSample.ToolTip" xml:space="preserve">
+    <value>Skaluj oryginalny obraz [dla obrazu w wysokiej rozdzielczości]</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Próbkowanie w dół</value>
+  </data>
+  <data name="lOptimizeFast.Text" xml:space="preserve">
+    <value>Optymalizacja przesuwu</value>
+  </data>
+  <data name="BtnFillingQualityInfo.ToolTip" xml:space="preserve">
+    <value>Jeśli rozdzielczość nie pasuje do kroku, mogą pojawić się niektóre artefakty! Kliknij, aby obliczyć niezawodną rozdzielczość.</value>
+  </data>
+  <data name="GbVectorizeOptions.Text" xml:space="preserve">
+    <value>Wektoryzacja! Opcje</value>
+  </data>
+  <data name="CbResize.ToolTip" xml:space="preserve">
+    <value>Kontroluj tryb zmiany rozmiaru (gładkie lub twarde krawędzie)</value>
+  </data>
+  <data name="LblGrayscale.Text" xml:space="preserve">
+    <value>Skala szarości</value>
+  </data>
+  <data name="CbMode.ToolTip" xml:space="preserve">
+    <value>Wybierz formułę konwersji kolorów</value>
+  </data>
+  <data name="LblRed.Text" xml:space="preserve">
+    <value>Czerwony</value>
+  </data>
+  <data name="LblBlue.Text" xml:space="preserve">
+    <value>Niebieski</value>
+  </data>
+  <data name="LblGreen.Text" xml:space="preserve">
+    <value>Zielony</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Jasność</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Kontrast</value>
+  </data>
+  <data name="CbThreshold.Text" xml:space="preserve">
+    <value>B&amp;&amp;W</value>
+  </data>
+  <data name="CbThreshold.ToolTip" xml:space="preserve">
+    <value>Zastosuj filtrowanie progów</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Zmień rozmiar</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Wypełnianie</value>
+  </data>
+  <data name="GbParameters.Text" xml:space="preserve">
+    <value>Parametry</value>
+  </data>
+  <data name="CbDirections.ToolTip" xml:space="preserve">
+    <value>Kierunek grawerowania</value>
+  </data>
+  <data name="UDQuality.ToolTip" xml:space="preserve">
+    <value>Ustaw rozdzielczość obrazu (linii/mm)</value>
+  </data>
+  <data name="CbLinePreview.Text" xml:space="preserve">
+    <value>Podgląd linii</value>
+  </data>
+  <data name="CbLinePreview.ToolTip" xml:space="preserve">
+    <value>Pokaż podgląd</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Jakość</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Kierunek</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Linii/mm</value>
+  </data>
+  <data name="LblDitherMode.Text" xml:space="preserve">
+    <value>Dithering</value>
+  </data>
+  <data name="BtnQualityInfo.ToolTip" xml:space="preserve">
+    <value>Jeśli rozdzielczość nie pasuje do kroku, mogą pojawić się niektóre artefakty! Kliknij, aby obliczyć niezawodną rozdzielczość...</value>
+  </data>
+  <data name="GbLineToLineOptions.Text" xml:space="preserve">
+    <value>Opcje linii do linii</value>
+  </data>
+  <data name="RbCenterline.Text" xml:space="preserve">
+    <value>Linia środkowa</value>
+  </data>
+  <data name="RbCenterline.ToolTip" xml:space="preserve">
+    <value>Wektoryzacja linii środkowej</value>
+  </data>
+  <data name="RbDithering.Text" xml:space="preserve">
+    <value>1bit BW Dithering</value>
+  </data>
+  <data name="RbDithering.ToolTip" xml:space="preserve">
+    <value>Utwórz obraz BW emulowany w skali szarości</value>
+  </data>
+  <data name="RbVectorize.Text" xml:space="preserve">
+    <value>Wektoryzować!</value>
+  </data>
+  <data name="RbVectorize.ToolTip" xml:space="preserve">
+    <value>Utwórz ścieżkę wektorową</value>
+  </data>
+  <data name="RbLineToLineTracing.Text" xml:space="preserve">
+    <value>Śledzenie linii do linii</value>
+  </data>
+  <data name="RbLineToLineTracing.ToolTip" xml:space="preserve">
+    <value>Utwórz obraz w skali szarości</value>
+  </data>
+  <data name="GbConversionTool.Text" xml:space="preserve">
+    <value>Narzędzie do konwersji</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="BtnCreate.Text" xml:space="preserve">
+    <value>Następny</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Importuj obraz rastrowy</value>
+  </data>
+</root>
