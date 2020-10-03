@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxAutoUpdateFailed" xml:space="preserve">
     <value>Actualización automática fallida!
@@ -327,5 +327,16 @@ Sin el procedimineto de volver al punto de partida ($H) el resultado puede ser n
   </data>
   <data name="UnsupportedFiletype" xml:space="preserve">
     <value>Este archivo no está soportado.</value>
+  </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>La opción Centerline no es compatible con tu PC.
+Es necesario un Sistema Operativo de 64 bits.</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>Alerta</value>
+  </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>La opción Line2Line no es compatible con tu grabadora o configuración. Es necesario que el laser tenga soporte PWM y se encuentre habilitado en la configuración de LaserGrbl.
+</value>
   </data>
 </root>

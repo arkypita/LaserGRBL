@@ -118,36 +118,36 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnApply.Text" xml:space="preserve">
-    <value>Applica</value>
+    <value>Aplicar</value>
   </data>
   <data name="LblPower.Text" xml:space="preserve">
-    <value>Potenza</value>
+    <value>Potencia</value>
   </data>
   <data name="LblModel.Text" xml:space="preserve">
-    <value>Tipo di laser</value>
+    <value>Modelo de Laser</value>
   </data>
   <data name="LblMaterial.Text" xml:space="preserve">
-    <value>Materiale</value>
+    <value>Material</value>
   </data>
   <data name="LblThickness.Text" xml:space="preserve">
-    <value>Spessore</value>
+    <value>Grosor</value>
   </data>
   <data name="LblAction.Text" xml:space="preserve">
-    <value>Azione</value>
+    <value>Acción</value>
   </data>
   <data name="LblPasses.Text" xml:space="preserve">
-    <value>Passaggi</value>
+    <value>Pasadas</value>
   </data>
   <data name="LblSpeed.Text" xml:space="preserve">
-    <value>Velocità</value>
+    <value>Velocidad</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Impostazioni consigliate</value>
+    <value>Configuración Sugerida</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Annulla</value>
+    <value>Cancelar</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Seleziona la configurazione</value>
+    <value>Selecciona tu configuración</value>
   </data>
 </root>
