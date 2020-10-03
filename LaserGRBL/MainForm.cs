@@ -45,8 +45,13 @@ namespace LaserGRBL
 				Core = new MarlinCore(this, PreviewForm, JogForm);
 			else
 				Core = new GrblCore(this, PreviewForm, JogForm);
-
 			ExceptionManager.Core = Core;
+
+			if (true) //use multi instance trigger
+			{
+				SincroStart.StartListen(Core);
+				MultipleInstanceTimer.Enabled = true;
+			}
 
 			MnGrblConfig.Visible = Core.UIShowGrblConfig;
 			MnUnlock.Visible = Core.UIShowUnlockButtons;
@@ -171,6 +176,7 @@ namespace LaserGRBL
 
 			if (!e.Cancel)
 			{
+				SincroStart.StopListen();
 				Core.CloseCom(true);
 				Settings.SetObject("Mainform Size and Position", new object[] { Size, Location, WindowState });
 				Settings.Save();
@@ -779,6 +785,21 @@ namespace LaserGRBL
 		private void manualsDownloadToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			System.Diagnostics.Process.Start(@"https://lasergrbl.com/ortur-manuals/");
+		}
+
+		private void MultipleInstanceTimer_Tick(object sender, EventArgs e)
+		{
+			MnRunMulti.Visible = SincroStart.Running() && System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Length > 1;
+		}
+
+		bool MultiRunShown = false;
+		private void MnRunMulti_Click(object sender, EventArgs e)
+		{
+			if (MultiRunShown || MessageBox.Show(this, "Warning: this command will start all job in any running LaserGRBL instance!", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning ) == DialogResult.OK)
+			{
+				SincroStart.Signal();
+				MultiRunShown = true;
+			}
 		}
 	}
 

@@ -158,6 +158,7 @@
     <Compile Include="SaveOptionForm.Designer.cs">
       <DependentUpon>SaveOptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SincroStart.cs" />
     <Compile Include="SmoothieCore.cs" />
     <Compile Include="Sound\SoundEvent.cs" />
     <Compile Include="SvgConverter\ConvertSizeAndOptionForm.cs">

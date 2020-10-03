@@ -15,6 +15,7 @@ namespace LaserGRBL
 	{
 
 		private static string LockString = "--- LOCK LOGGER CALL ---";
+		private static string pid;
 
 		public static void LogException(string context, Exception ex)
 		{
@@ -41,6 +42,7 @@ namespace LaserGRBL
 		{
 			try
 			{
+				pid = System.Diagnostics.Process.GetCurrentProcess().Id.ToString("00000");
 				if (System.IO.File.Exists(filename))
 				{
 					int MAXLINE = 1000;
@@ -117,7 +119,7 @@ namespace LaserGRBL
 
 					StringBuilder sb = new StringBuilder();
 					foreach (string line in text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None))
-						sb.AppendFormat("{0}\t{1}\t{2}\r\n", dt, context.PadRight(12, ' '), line);
+						sb.AppendFormat("{0}.{1}\t{2}\t{3}\r\n", dt, dt.Millisecond, context.PadRight(12, ' '), line);//sb.AppendFormat("{0}.{1}\t{2}\t{3}\t{4}\r\n", dt, dt.Millisecond, pid, context.PadRight(12, ' '), line);
 
 					System.IO.File.AppendAllText(filename, sb.ToString());
 					System.Diagnostics.Debug.Write(sb.ToString());
