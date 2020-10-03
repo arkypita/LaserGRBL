@@ -96,10 +96,10 @@ namespace LaserGRBL
 			char mBuild;
 			bool mOrtur;
 
-			public GrblVersionInfo(int major, int minor, char build, string orturwelcome, string orturversion)
+			public GrblVersionInfo(int major, int minor, char build, string VendorInfo, string VendorVersion)
 			{
 				mMajor = major; mMinor = minor; mBuild = build;
-				mOrtur = orturwelcome != null;
+				mOrtur = VendorInfo != null && VendorInfo.Contains("Ortur");
 			}
 
 			public GrblVersionInfo(int major, int minor, char build)
@@ -1521,8 +1521,10 @@ namespace LaserGRBL
 								ManageCommandResponse(rline);
 							else if (IsRealtimeStatusMessage(rline))
 								ManageRealTimeStatus(rline);
-							else if (IsWelcomeMessage(rline))
-								ManageWelcomeMessage(rline);
+							else if (IsStandardWelcomeMessage(rline))
+								ManageStandardWelcomeMessage(rline);
+							else if (IsVigoWelcomeMessage(rline))
+								ManageVigoWelcomeMessage(rline);
 							else if (IsOrturWelcomeMessage(rline))
 								ManageOrturWelcomeMessage(rline);
 							else if (IsOrturVersionInfo(rline))
@@ -1544,10 +1546,15 @@ namespace LaserGRBL
             return rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error");
         }
 
-        private bool IsWelcomeMessage(string rline)
+        private bool IsStandardWelcomeMessage(string rline)
         {
             return rline.StartsWith("Grbl ");
         }
+
+		private bool IsVigoWelcomeMessage(string rline)
+		{
+			return rline.StartsWith("Grbl-Vigo");
+		}
 
 		private bool IsOrturWelcomeMessage(string rline)
 		{
@@ -1576,7 +1583,7 @@ namespace LaserGRBL
 			}
 		}
 
-		private void ManageWelcomeMessage(string rline)
+		private void ManageStandardWelcomeMessage(string rline)
 		{
 			//Grbl vX.Xx ['$' for help]
 			try
@@ -1585,6 +1592,29 @@ namespace LaserGRBL
 				int min = int.Parse(rline.Substring(7, 1));
 				char build = rline.Substring(8, 1).ToCharArray()[0];
 				GrblVersion = new GrblVersionInfo(maj, min, build, mOrturWelcomeSeen, mOrturVersionSeen);
+
+				DetectUnexpectedReset();
+				OnStartupMessage();
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("VersionInfo", "Ex on [{0}] message", rline);
+				Logger.LogException("VersionInfo", ex);
+			}
+			mSentPtr.Add(new GrblMessage(rline, false));
+		}
+
+		private void ManageVigoWelcomeMessage(string rline)
+		{
+			//Grbl-Vigo:1.1f|Build:G-20170131-V3.0-20200720
+			try
+			{
+				int maj = int.Parse(rline.Substring(10, 1));
+				int min = int.Parse(rline.Substring(12, 1));
+				char build = rline.Substring(13, 1).ToCharArray()[0];
+				string VendorVersion = rline.Split(':')[2];
+				GrblVersion = new GrblVersionInfo(maj, min, build, "Vigotec", VendorVersion);
+				Logger.LogMessage("VigoInfo", "Detected {0}", VendorVersion);
 
 				DetectUnexpectedReset();
 				OnStartupMessage();
