@@ -8,48 +8,62 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace LaserGRBL
 {
 	static class Logger
 	{
-
-		private static string LockString = "--- LOCK LOGGER CALL ---";
-		private static string pid;
+		private static Queue<string> Q;
+		private static AutoResetEvent EV;
+		private static Thread TH;
+		private static string PID;
+		private static bool Exit = false;
 
 		public static void LogException(string context, Exception ex)
 		{
-			try
-			{
-				//System.Diagnostics.Debug.WriteLine(ex.ToString());
-				LogMultiLine(context, ex.ToString());
-			}
+			try { LogMultiLine(context, ex.ToString()); }
 			catch { }
 		}
 
 		public static void LogMessage(string context, string format, params object[] args)
 		{
-			try
-			{
-				//System.Diagnostics.Debug.WriteLine(string.Format(format, args));
-				LogMultiLine(context, string.Format(format, args));
-			}
+			try { LogMultiLine(context, string.Format(format, args)); }
 			catch { }
 		}
-
 
 		internal static void Start()
 		{
 			try
 			{
-				pid = System.Diagnostics.Process.GetCurrentProcess().Id.ToString("00000");
+				RotateLog();
+				Q = new Queue<string>();
+				EV = new AutoResetEvent(false);
+				TH = new Thread(DoTheWork);
+				PID = System.Diagnostics.Process.GetCurrentProcess().Id.ToString("00000");
+				TH.Start();
+			}
+			catch { }
+
+
+			Version current = typeof(GitHub).Assembly.GetName().Version;
+            bool p64 = Tools.OSHelper.Is64BitProcess;
+            bool o64 = Tools.OSHelper.Is64BitOperatingSystem;
+
+            LogMultiLine("Program", String.Format("------- LaserGRBL v{0} [{1}{2}] START -------", current.ToString(3), p64 ? "64bit" : "32bit" , p64 != o64 ? "!" : ""));
+        }
+
+		private static void RotateLog()
+		{
+			try
+			{
 				if (System.IO.File.Exists(filename))
 				{
 					int MAXLINE = 1000;
 					String tmp = System.IO.Path.GetTempFileName();
 					bool written = false;
 
-					using (System.IO.StreamReader reader = new System.IO.StreamReader(filename))
+					using (System.IO.StreamReader reader = new System.IO.StreamReader(new System.IO.FileStream(filename, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.None)))
 					{
 						int linecount = 0;
 						while (reader.ReadLine() != null)
@@ -81,50 +95,73 @@ namespace LaserGRBL
 					}
 					else
 					{
-						System.IO.File.Delete(tmp);
+						if (System.IO.File.Exists(tmp))
+							System.IO.File.Delete(tmp);
 					}
 				}
 			}
 			catch { }
-
-
-			Version current = typeof(GitHub).Assembly.GetName().Version;
-            bool p64 = Tools.OSHelper.Is64BitProcess;
-            bool o64 = Tools.OSHelper.Is64BitOperatingSystem;
-
-            LogMultiLine("Program", String.Format("------- LaserGRBL v{0} [{1}{2}] START -------", current.ToString(3), p64 ? "64bit" : "32bit" , p64 != o64 ? "!" : ""));
-
-        }
+		}
 
 		internal static void Stop()
 		{
-			lock (LockString)
+			try
 			{
-				try
-				{
-					LogMultiLine("Program", "---------------- PROGRAM STOP -----------------");
-                    System.IO.File.AppendAllText(filename, "\r\n");
-				}
-				catch { }
+				Exit = true;
+				LogMultiLine("Program", "---------------- PROGRAM STOP -----------------");
+                Enqueue("\r\n");
 			}
+			catch { }
 		}
 
 		private static void LogMultiLine(string context, string text)
 		{
-			lock (LockString)
+			try
 			{
-				try
+				DateTime dt = DateTime.Now;
+
+				StringBuilder sb = new StringBuilder();
+				foreach (string line in text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None))
+					sb.AppendFormat("{0}.{1}\t{2}\t{3}\r\n", dt, dt.Millisecond, context.PadRight(12, ' '), line);//sb.AppendFormat("{0}.{1}\t{2}\t{3}\t{4}\r\n", dt, dt.Millisecond, pid, context.PadRight(12, ' '), line);
+
+				Enqueue(sb.ToString());
+			}
+			catch { }
+		}
+
+		private static void Enqueue(string s)
+		{
+			lock (Q)
+			{
+				if (Q.Count < 100)
+					Q.Enqueue(s);	//evita l'aggiunta di elementi se la coda è piena... al peggio non verranno scritti nel log
+			}
+			
+			EV.Set();
+		}
+
+		private static void DoTheWork()
+		{
+			while(!Exit)
+			{
+				EV.WaitOne();
+
+				while(Q.Count > 0)
 				{
-					DateTime dt = DateTime.Now;
+					try
+					{
+						string s;
 
-					StringBuilder sb = new StringBuilder();
-					foreach (string line in text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None))
-						sb.AppendFormat("{0}.{1}\t{2}\t{3}\r\n", dt, dt.Millisecond, context.PadRight(12, ' '), line);//sb.AppendFormat("{0}.{1}\t{2}\t{3}\t{4}\r\n", dt, dt.Millisecond, pid, context.PadRight(12, ' '), line);
+						lock (Q) { s = Q.Peek(); }
 
-					System.IO.File.AppendAllText(filename, sb.ToString());
-					System.Diagnostics.Debug.Write(sb.ToString());
+						System.IO.File.AppendAllText(filename, s);
+						System.Diagnostics.Debug.Write(s);
+
+						lock (Q){ Q.Dequeue(); }
+					}
+					catch { Thread.Sleep(1); }
 				}
-				catch { }
+
 			}
 		}
 
