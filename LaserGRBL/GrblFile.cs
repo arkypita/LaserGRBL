@@ -253,6 +253,8 @@ namespace LaserGRBL
 
 		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, bool useOptimizeFast, L2LConf c, bool append)
 		{
+			skipcmd = Settings.GetObject("Disable G0 fast skip", false) ? "G1" : "G0";
+
 			RiseOnFileLoading(filename);
 
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
@@ -279,7 +281,7 @@ namespace LaserGRBL
 					using (Graphics g = Graphics.FromImage(ptb))
 					{
 						//Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, (Math.Max(c.res/c.fres, 1) + 1) / 2.0f);
-						Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, Math.Max(1, c.res / c.fres));
+						Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, Math.Max(1, c.res / c.fres), skipcmd);
 						using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size((int)(bmp.Width * c.fres / c.res), (int)(bmp.Height * c.fres / c.res)), true, InterpolationMode.HighQualityBicubic))
 						{
 							if (c.pwm)
@@ -314,7 +316,7 @@ namespace LaserGRBL
 			list.Add(new GrblCommand(String.Format("F{0}", c.borderSpeed)));
 
 			//trace borders
-			List<string> gc = Potrace.Export2GCode(plist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size);
+			List<string> gc = Potrace.Export2GCode(plist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd);
 
 			foreach (string code in gc)
 				list.Add(new GrblCommand(code));

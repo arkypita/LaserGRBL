@@ -92,6 +92,7 @@ namespace LaserGRBL.SvgConverter
 		private string convertSVG(XElement svgCode)
 		{
 			gcode.setup();          // initialize GCode creation (get stored settings for export)
+			gcode.setRapidNum(Settings.GetObject("Disable G0 fast skip", false) ? 1 : 0);
 
 			//if (gcodeUseSpindle) gcode.SpindleOn(gcodeString, "Start spindle - Option Z-Axis");
 			//gcode.PenUp(gcodeString, "SVG Start ");

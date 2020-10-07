@@ -26,7 +26,7 @@ namespace CsPotrace
 		/// <param name="Width">Width of the exportd cvg-File</param>
 		/// <param name="Height">Height of the exportd cvg-File</param>
 		/// <returns></returns>
-		public static List<string> Export2GCode(List<List<CsPotrace.Curve>> list, float oX, float oY, double scale, string lOn, string lOff, Size originalImageSize)
+		public static List<string> Export2GCode(List<List<CsPotrace.Curve>> list, float oX, float oY, double scale, string lOn, string lOff, Size originalImageSize, string skipcmd)
 		{
 			bool debug = false;
 
@@ -45,7 +45,7 @@ namespace CsPotrace
 
 			list.Reverse();
 			foreach (List<CsPotrace.Curve> Curves in list)
-				rv.AddRange(GetPathGC(Curves, lOn, lOff, oX * scale, oY * scale, scale, g));
+				rv.AddRange(GetPathGC(Curves, lOn, lOff, oX * scale, oY * scale, scale, g, skipcmd));
 
 			if (debug)
 			{
@@ -57,11 +57,11 @@ namespace CsPotrace
 			return rv;
 		}
 
-		private static List<string> GetPathGC(List<CsPotrace.Curve> Curves, string lOn, string lOff, double oX, double oY, double scale, Graphics g)
+		private static List<string> GetPathGC(List<CsPotrace.Curve> Curves, string lOn, string lOff, double oX, double oY, double scale, Graphics g, string skipcmd)
 		{
 			List<string> rv = new List<string>();
 
-			OnPathBegin(Curves, lOn, oX, oY, scale, rv);
+			OnPathBegin(Curves, lOn, oX, oY, scale, rv, skipcmd);
 
 			foreach (CsPotrace.Curve Curve in Curves)
 				OnPathSegment(Curve, oX, oY, scale, rv, g);
@@ -119,12 +119,12 @@ namespace CsPotrace
 			}
 		}
 
-		private static void OnPathBegin(List<CsPotrace.Curve> Curves, string lOn, double oX, double oY, double scale, List<string> rv)
+		private static void OnPathBegin(List<CsPotrace.Curve> Curves, string lOn, double oX, double oY, double scale, List<string> rv, string skipcmd)
 		{
 			if (Curves.Count > 0)
 			{
 				//fast go to position
-				rv.Add(String.Format("G0 X{0} Y{1}", formatnumber(Curves[0].A.X + oX, scale), formatnumber(Curves[0].A.Y + oY, scale)));
+				rv.Add(String.Format("{0} X{1} Y{2}", skipcmd, formatnumber(Curves[0].A.X + oX, scale), formatnumber(Curves[0].A.Y + oY, scale)));
 				//turn on laser
 				rv.Add(lOn);
 			}

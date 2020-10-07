@@ -54,9 +54,9 @@ namespace LaserGRBL
 
 		private static void SignalEvent()
 		{
-			EV.Set();
-			System.Threading.Thread.Sleep(500);
-			EV.Reset();
+			EV.Set();								//setta l'evento
+			System.Threading.Thread.Sleep(500);		//aspetta 500ms così da assicurarsi che tutti lo vedano
+			EV.Reset();								//resetta l'evento
 		}
 	}
 }

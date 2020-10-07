@@ -55,7 +55,8 @@ namespace LaserGRBL.SvgConverter
 		private static int mDecimalPlaces = 2;
 
 		private static Firmware firmwareType = Settings.GetObject("Firmware Type", Firmware.Grbl);
-
+		
+		private static int rapidnum = 0;
 
 		public static void setup()
 		{
@@ -82,6 +83,9 @@ namespace LaserGRBL.SvgConverter
 				setDecimalPlaces(mDecimalPlaces);
 			}
 		}
+
+		public static void setRapidNum(int num)
+		{ rapidnum = num; }
 
 		public static void setDecimalPlaces(int num)
 		{
@@ -250,9 +254,13 @@ namespace LaserGRBL.SvgConverter
 		public static void MoveTo(StringBuilder gcodeString, float x, float y, float z, string cmt = "")
 		{ MoveSplit(gcodeString, 1, x, y, z, applyXYFeedRate, cmt); }
 		public static void MoveToRapid(StringBuilder gcodeString, Point coord, string cmt = "")
-		{ Move(gcodeString, 0, (float)coord.X, (float)coord.Y, false, cmt); lastMovewasG0 = true; }
+		{
+			Move(gcodeString, rapidnum, (float)coord.X, (float)coord.Y, false, cmt); lastMovewasG0 = true; 
+		}
 		public static void MoveToRapid(StringBuilder gcodeString, float x, float y, string cmt = "")
-		{ Move(gcodeString, 0, x, y, false, cmt); lastMovewasG0 = true; }
+		{ 
+			Move(gcodeString, rapidnum, x, y, false, cmt); lastMovewasG0 = true;
+		}
 
 		// MoveSplit breaks down a line to line segments with given max. length
 		private static void MoveSplit(StringBuilder gcodeString, int gnr, float x, float y, bool applyFeed, string cmt)
