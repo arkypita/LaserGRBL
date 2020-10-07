@@ -111,7 +111,7 @@
       <DependentUpon>AutotraceTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Autotrace\Autotrace.cs" />
-    <Compile Include="AutoUpdate\Json.cs" />
+    <Compile Include="Tools\Json.cs" />
     <Compile Include="ComWrapper\ComLogger.cs" />
     <Compile Include="ExceptionManager.cs">
       <SubType>Form</SubType>

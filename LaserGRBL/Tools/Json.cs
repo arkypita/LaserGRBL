@@ -5,7 +5,7 @@ using System.Collections;
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace LaserGRBL.AutoUpdate
+namespace Tools
 {
 	// Really simple JSON parser in ~300 lines
 	// - Attempts to parse JSON files with minimal GC allocation

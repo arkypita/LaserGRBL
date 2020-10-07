@@ -132,7 +132,7 @@ namespace LaserGRBL
 				wc.Headers.Add("User-Agent: .Net WebClient");
 				string json = wc.DownloadString(site);
 
-				List<OnlineVersion> versions = AutoUpdate.JSONParser.FromJson<List<OnlineVersion>>(json);
+				List<OnlineVersion> versions = Tools.JSONParser.FromJson<List<OnlineVersion>>(json);
 
 				bool build = Settings.GetObject("Auto Update Build", false) || manual;
 				bool pre = Settings.GetObject("Auto Update Pre", false);

@@ -41,7 +41,7 @@
 			this.PbBuffer = new System.Windows.Forms.ToolStripProgressBar();
 			this.TTLEstimated = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTEstimated = new System.Windows.Forms.ToolStripStatusLabel();
-			this.spring1 = new System.Windows.Forms.ToolStripStatusLabel();
+			this.TTLinkToNews = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTOvS = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTOvG1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTOvG0 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -106,8 +106,8 @@
 			this.configurationWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnOrtur = new System.Windows.Forms.ToolStripMenuItem();
 			this.orturSupportGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.orturWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.orturSupportAndFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.orturWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.youtubeChannelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.manualsDownloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -178,7 +178,7 @@
             this.PbBuffer,
             this.TTLEstimated,
             this.TTTEstimated,
-            this.spring1,
+            this.TTLinkToNews,
             this.TTOvS,
             this.TTOvG1,
             this.TTOvG0,
@@ -225,11 +225,12 @@
 			this.TTTEstimated.Name = "TTTEstimated";
 			resources.ApplyResources(this.TTTEstimated, "TTTEstimated");
 			// 
-			// spring1
+			// TTLinkToNews
 			// 
-			this.spring1.Name = "spring1";
-			resources.ApplyResources(this.spring1, "spring1");
-			this.spring1.Spring = true;
+			resources.ApplyResources(this.TTLinkToNews, "TTLinkToNews");
+			this.TTLinkToNews.IsLink = true;
+			this.TTLinkToNews.Name = "TTLinkToNews";
+			this.TTLinkToNews.Spring = true;
 			// 
 			// TTOvS
 			// 
@@ -675,17 +676,17 @@
 			this.orturSupportGroupToolStripMenuItem.Name = "orturSupportGroupToolStripMenuItem";
 			this.orturSupportGroupToolStripMenuItem.Click += new System.EventHandler(this.orturSupportGroupToolStripMenuItem_Click);
 			// 
-			// orturWebsiteToolStripMenuItem
-			// 
-			resources.ApplyResources(this.orturWebsiteToolStripMenuItem, "orturWebsiteToolStripMenuItem");
-			this.orturWebsiteToolStripMenuItem.Name = "orturWebsiteToolStripMenuItem";
-			this.orturWebsiteToolStripMenuItem.Click += new System.EventHandler(this.orturWebsiteToolStripMenuItem_Click);
-			// 
 			// orturSupportAndFeedbackToolStripMenuItem
 			// 
 			resources.ApplyResources(this.orturSupportAndFeedbackToolStripMenuItem, "orturSupportAndFeedbackToolStripMenuItem");
 			this.orturSupportAndFeedbackToolStripMenuItem.Name = "orturSupportAndFeedbackToolStripMenuItem";
 			this.orturSupportAndFeedbackToolStripMenuItem.Click += new System.EventHandler(this.orturSupportAndFeedbackToolStripMenuItem_Click);
+			// 
+			// orturWebsiteToolStripMenuItem
+			// 
+			resources.ApplyResources(this.orturWebsiteToolStripMenuItem, "orturWebsiteToolStripMenuItem");
+			this.orturWebsiteToolStripMenuItem.Name = "orturWebsiteToolStripMenuItem";
+			this.orturWebsiteToolStripMenuItem.Click += new System.EventHandler(this.orturWebsiteToolStripMenuItem_Click);
 			// 
 			// youtubeChannelToolStripMenuItem
 			// 
@@ -877,7 +878,6 @@
 		private System.Windows.Forms.ToolStripMenuItem MnGrblReset;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.Timer UpdateTimer;
-		private System.Windows.Forms.ToolStripStatusLabel spring1;
 		private System.Windows.Forms.ToolStripStatusLabel TTLStatus;
 		private System.Windows.Forms.ToolStripStatusLabel TTOvG0;
 		private System.Windows.Forms.ToolStripStatusLabel TTOvG1;
@@ -968,6 +968,7 @@
 		private System.Windows.Forms.ToolStripMenuItem MnRunMulti;
 		private System.Windows.Forms.ToolStripSeparator MnRunMultiSep;
 		private System.Windows.Forms.ToolStripMenuItem orturSupportAndFeedbackToolStripMenuItem;
+		private System.Windows.Forms.ToolStripStatusLabel TTLinkToNews;
 	}
 }
 

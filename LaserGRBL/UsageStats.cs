@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Net;
+using System.Runtime.Serialization;
 
 namespace LaserGRBL
 {
@@ -209,12 +210,68 @@ namespace LaserGRBL
                 };
 
                 // client.UploadValues returns page's source as byte array (byte[]) so it must be transformed into a string
-                string rv = System.Text.Encoding.UTF8.GetString(client.UploadValues(urlAddress, postData));
-                return (rv == "Success!");
+                string json = System.Text.Encoding.UTF8.GetString(client.UploadValues(urlAddress, postData));
+
+				UsageStatsRV RV = Tools.JSONParser.FromJson<UsageStatsRV>(json);
+				return (RV.Success);
             }
         }
 
-        private class MyWebClient : WebClient
+		public class UsageStatsRV
+		{
+			public string Result = null;
+			public string Message = null;
+			public string Link = null;
+
+			[IgnoreDataMember] public bool Success => Result != null && Result == "Success!";
+
+
+			//public class VersionAsset
+			//{
+			//	public string browser_download_url = null;
+			//	[IgnoreDataMember] public string Url => browser_download_url;
+			//}
+
+			//[IgnoreDataMember] public bool IsValid => Version != null && DownloadUrl != null;
+			//[IgnoreDataMember] public bool IsPreRelease => prerelease;
+
+			//[IgnoreDataMember] public string VersionName => tag_name;
+
+			//[IgnoreDataMember]
+			//public Version Version
+			//{
+			//	get
+			//	{
+			//		try { return new Version(tag_name.TrimStart(new char[] { 'v' })); }
+			//		catch { return null; }
+			//	}
+			//}
+
+			//[IgnoreDataMember]
+			//public string DownloadUrl
+			//{
+			//	get
+			//	{
+			//		return assets != null && assets.Count > 0 ? assets[0].Url : null;
+			//	}
+			//}
+
+			//[IgnoreDataMember]
+			//public string HtmlUrl
+			//{
+			//	get
+			//	{
+			//		return html_url;
+			//	}
+			//}
+
+			//public override string ToString()
+			//{
+			//	return String.Format("{0}{1}{2}", Version, IsPreRelease ? "-pre" : "", IsValid ? "" : " (not available)");
+			//}
+		}
+
+		private class MyWebClient : WebClient
         {
             protected override WebRequest GetWebRequest(Uri uri)
             {
