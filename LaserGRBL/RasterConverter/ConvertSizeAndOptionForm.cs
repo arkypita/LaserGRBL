@@ -226,5 +226,11 @@ namespace LaserGRBL.RasterConverter
 				IIMaxPower.CurrentValue = IIMaxPower.MaxValue * row.Power / 100;
 			}
 		}
+
+		private void BtnCenter_Click(object sender, EventArgs e)
+		{
+			IIOffsetY.CurrentValue = -(IISizeH.CurrentValue / 2);
+			IIOffsetX.CurrentValue = -(IISizeW.CurrentValue / 2);
+		}
 	}
 }
