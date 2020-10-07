@@ -31,6 +31,9 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
+			this.JogForm = new LaserGRBL.JogForm();
+			this.PreviewForm = new LaserGRBL.PreviewForm();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
@@ -71,6 +74,8 @@
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnFileSend = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnStartFromPosition = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnRunMultiSep = new System.Windows.Forms.ToolStripSeparator();
+			this.MnRunMulti = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNEsp8266 = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNGrblEmulator = new System.Windows.Forms.ToolStripMenuItem();
 			this.schemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,6 +107,7 @@
 			this.MnOrtur = new System.Windows.Forms.ToolStripMenuItem();
 			this.orturSupportGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.orturWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.orturSupportAndFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.youtubeChannelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.manualsDownloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,11 +131,6 @@
 			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
 			this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
-			this.MnRunMulti = new System.Windows.Forms.ToolStripMenuItem();
-			this.MnRunMultiSep = new System.Windows.Forms.ToolStripSeparator();
-			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
-			this.JogForm = new LaserGRBL.JogForm();
-			this.PreviewForm = new LaserGRBL.PreviewForm();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -152,6 +153,21 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
 			this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+			// 
+			// ConnectionForm
+			// 
+			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
+			this.ConnectionForm.Name = "ConnectionForm";
+			// 
+			// JogForm
+			// 
+			resources.ApplyResources(this.JogForm, "JogForm");
+			this.JogForm.Name = "JogForm";
+			// 
+			// PreviewForm
+			// 
+			resources.ApplyResources(this.PreviewForm, "PreviewForm");
+			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// StatusBar
 			// 
@@ -438,6 +454,17 @@
 			this.MnStartFromPosition.Name = "MnStartFromPosition";
 			this.MnStartFromPosition.Click += new System.EventHandler(this.MnStartFromPosition_Click);
 			// 
+			// MnRunMultiSep
+			// 
+			this.MnRunMultiSep.Name = "MnRunMultiSep";
+			resources.ApplyResources(this.MnRunMultiSep, "MnRunMultiSep");
+			// 
+			// MnRunMulti
+			// 
+			resources.ApplyResources(this.MnRunMulti, "MnRunMulti");
+			this.MnRunMulti.Name = "MnRunMulti";
+			this.MnRunMulti.Click += new System.EventHandler(this.MnRunMulti_Click);
+			// 
 			// MNEsp8266
 			// 
 			this.MNEsp8266.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -633,6 +660,7 @@
 			// 
 			this.MnOrtur.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.orturSupportGroupToolStripMenuItem,
+            this.orturSupportAndFeedbackToolStripMenuItem,
             this.orturWebsiteToolStripMenuItem,
             this.youtubeChannelToolStripMenuItem,
             this.toolStripSeparator4,
@@ -652,6 +680,12 @@
 			resources.ApplyResources(this.orturWebsiteToolStripMenuItem, "orturWebsiteToolStripMenuItem");
 			this.orturWebsiteToolStripMenuItem.Name = "orturWebsiteToolStripMenuItem";
 			this.orturWebsiteToolStripMenuItem.Click += new System.EventHandler(this.orturWebsiteToolStripMenuItem_Click);
+			// 
+			// orturSupportAndFeedbackToolStripMenuItem
+			// 
+			resources.ApplyResources(this.orturSupportAndFeedbackToolStripMenuItem, "orturSupportAndFeedbackToolStripMenuItem");
+			this.orturSupportAndFeedbackToolStripMenuItem.Name = "orturSupportAndFeedbackToolStripMenuItem";
+			this.orturSupportAndFeedbackToolStripMenuItem.Click += new System.EventHandler(this.orturSupportAndFeedbackToolStripMenuItem_Click);
 			// 
 			// youtubeChannelToolStripMenuItem
 			// 
@@ -804,32 +838,6 @@
 			this.MultipleInstanceTimer.Interval = 1000;
 			this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
 			// 
-			// MnRunMulti
-			// 
-			resources.ApplyResources(this.MnRunMulti, "MnRunMulti");
-			this.MnRunMulti.Name = "MnRunMulti";
-			this.MnRunMulti.Click += new System.EventHandler(this.MnRunMulti_Click);
-			// 
-			// MnRunMultiSep
-			// 
-			this.MnRunMultiSep.Name = "MnRunMultiSep";
-			resources.ApplyResources(this.MnRunMultiSep, "MnRunMultiSep");
-			// 
-			// ConnectionForm
-			// 
-			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
-			this.ConnectionForm.Name = "ConnectionForm";
-			// 
-			// JogForm
-			// 
-			resources.ApplyResources(this.JogForm, "JogForm");
-			this.JogForm.Name = "JogForm";
-			// 
-			// PreviewForm
-			// 
-			resources.ApplyResources(this.PreviewForm, "PreviewForm");
-			this.PreviewForm.Name = "PreviewForm";
-			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -959,6 +967,7 @@
 		private System.Windows.Forms.Timer MultipleInstanceTimer;
 		private System.Windows.Forms.ToolStripMenuItem MnRunMulti;
 		private System.Windows.Forms.ToolStripSeparator MnRunMultiSep;
+		private System.Windows.Forms.ToolStripMenuItem orturSupportAndFeedbackToolStripMenuItem;
 	}
 }
 

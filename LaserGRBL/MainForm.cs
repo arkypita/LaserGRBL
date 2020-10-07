@@ -803,6 +803,11 @@ namespace LaserGRBL
 				MultiRunShown = true;
 			}
 		}
+
+		private void orturSupportAndFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"https://lasergrbl.com/ortursupport/");
+		}
 	}
 
 
