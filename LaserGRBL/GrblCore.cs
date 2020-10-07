@@ -1109,7 +1109,7 @@ namespace LaserGRBL
         protected virtual void SendBoardResetCommand()
         {
             SendImmediate(24);
-        }
+		}
 
         public virtual void SendImmediate(byte b, bool mute = false)
 		{
@@ -1466,7 +1466,6 @@ namespace LaserGRBL
 			{
 				try
 				{
-
 					tosend.BuildHelper();
 
 					tosend.SetSending();
@@ -2112,7 +2111,8 @@ namespace LaserGRBL
 		{ get { return MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Check; } }
 
 		public bool AutoCooling
-		{ get { return Settings.GetObject("AutoCooling", false); } }
+		{ get { return Settings.GetObject("AutoCooling", false) && SupportAutoCooling; } }
+		public bool SupportAutoCooling { get => GrblVersion != null && GrblVersion >= new GrblVersionInfo(1, 1) && Configuration != null && Configuration.LaserMode; }
 
 		public TimeSpan AutoCoolingOn
 		{ get { return Settings.GetObject("AutoCooling TOn", TimeSpan.FromMinutes(10)); } }
@@ -2295,9 +2295,13 @@ namespace LaserGRBL
 					string tosend = bracketsRegEx.Replace(str, new System.Text.RegularExpressions.MatchEvaluator(EvaluateCB)).Trim();
 
 					if (IsImmediate(tosend))
-						SendImmediate(GetImmediate(tosend));
+					{
+						byte b = GetImmediate(tosend);
+						if (b == '!') mHoldByUserRequest = true;
+						SendImmediate(b);
+					}
 					else
-						EnqueueCommand(new GrblCommand(tosend));
+					{ EnqueueCommand(new GrblCommand(tosend)); }
 				}
 			}
 		}
