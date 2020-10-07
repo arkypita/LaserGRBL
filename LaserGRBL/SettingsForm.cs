@@ -41,6 +41,7 @@ namespace LaserGRBL
 			CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			CBStreamingMode.SelectedItem = Settings.GetObject("Streaming Mode", GrblCore.StreamingMode.Buffered);
 			CbUnidirectional.Checked = Settings.GetObject("Unidirectional Engraving", false);
+			CbDisableSkip.Checked = Settings.GetObject("Disable G0 fast skip", false);
 			CbThreadingMode.SelectedItem = Settings.GetObject("Threading Mode", GrblCore.ThreadingMode.UltraFast);
 			CbIssueDetector.Checked = !Settings.GetObject("Do not show Issue Detector", false);
 			CbSoftReset.Checked = Settings.GetObject("Reset Grbl On Connect", true);
@@ -164,6 +165,7 @@ namespace LaserGRBL
 			Settings.SetObject("ComWrapper Protocol", CBProtocol.SelectedItem);
 			Settings.SetObject("Streaming Mode", CBStreamingMode.SelectedItem);
 			Settings.SetObject("Unidirectional Engraving", CbUnidirectional.Checked);
+			Settings.SetObject("Disable G0 fast skip", CbDisableSkip.Checked);
 			Settings.SetObject("Threading Mode", CbThreadingMode.SelectedItem);
 			Settings.SetObject("Do not show Issue Detector", !CbIssueDetector.Checked);
 			Settings.SetObject("Reset Grbl On Connect", CbSoftReset.Checked);

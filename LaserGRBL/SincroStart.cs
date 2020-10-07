@@ -7,13 +7,15 @@ namespace LaserGRBL
 {
 	public static class SincroStart
 	{
-		static System.Threading.EventWaitHandle EV;
+		static System.Threading.ManualResetEvent EX;	//Exit flag
+		static System.Threading.EventWaitHandle EV;		//Event flag
 		static System.Threading.Thread TH;
 		static GrblCore C;
 
 		static public void StartListen(GrblCore Core)
 		{
 			C = Core;
+			EX = new System.Threading.ManualResetEvent(false);
 			EV = new System.Threading.EventWaitHandle(false, System.Threading.EventResetMode.ManualReset, "LaserGRBL syncro event");
 			TH = new System.Threading.Thread(DoTheJob);
 			TH.Start();
@@ -24,21 +26,24 @@ namespace LaserGRBL
 
 		static public void StopListen()
 		{
-			TH.Abort();
+			EX.Set();
 		}
 
 		private static void DoTheJob()
 		{
-			while (true)
+			while (!EX.WaitOne(0))
 			{
-				EV.WaitOne();
+				int handle = System.Threading.WaitHandle.WaitAny(new System.Threading.WaitHandle[] { EV, EX });
 
-				if (C.CanSendFile)
-					C.RunProgram();
-				else if (C.CanResumeHold)
-					C.CycleStartResume(false);
+				if (handle == 0)
+				{
+					if (C.CanSendFile)
+						C.RunProgram();
+					else if (C.CanResumeHold)
+						C.CycleStartResume(false);
 
-				System.Threading.Thread.Sleep(1000); //do not test the flag for 1 sec
+					System.Threading.Thread.Sleep(1000); //do not test the flag for 1 sec
+				}
 			}
 		}
 
