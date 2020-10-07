@@ -126,6 +126,7 @@
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
 			this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
 			this.MnRunMulti = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnRunMultiSep = new System.Windows.Forms.ToolStripSeparator();
 			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
 			this.JogForm = new LaserGRBL.JogForm();
 			this.PreviewForm = new LaserGRBL.PreviewForm();
@@ -383,7 +384,9 @@
             this.MnAdvancedSave,
             this.toolStripMenuItem1,
             this.MnFileSend,
-            this.MnStartFromPosition});
+            this.MnStartFromPosition,
+            this.MnRunMultiSep,
+            this.MnRunMulti});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
 			this.fileToolStripMenuItem.DropDownOpening += new System.EventHandler(this.fileToolStripMenuItem_DropDownOpening);
@@ -599,8 +602,7 @@
             this.installCH340DriverToolStripMenuItem,
             this.flashGrblFirmwareToolStripMenuItem,
             this.toolStripSeparator3,
-            this.configurationWizardToolStripMenuItem,
-            this.MnRunMulti});
+            this.configurationWizardToolStripMenuItem});
 			this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
 			resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
 			this.toolsToolStripMenuItem.DropDownOpening += new System.EventHandler(this.toolsToolStripMenuItem_DropDownOpening);
@@ -748,8 +750,8 @@
 			// 
 			// activateExtendedLogToolStripMenuItem
 			// 
-			this.activateExtendedLogToolStripMenuItem.Name = "activateExtendedLogToolStripMenuItem";
 			resources.ApplyResources(this.activateExtendedLogToolStripMenuItem, "activateExtendedLogToolStripMenuItem");
+			this.activateExtendedLogToolStripMenuItem.Name = "activateExtendedLogToolStripMenuItem";
 			this.activateExtendedLogToolStripMenuItem.Click += new System.EventHandler(this.activateExtendedLogToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem7
@@ -787,8 +789,8 @@
 			// 
 			// licenseToolStripMenuItem
 			// 
-			this.licenseToolStripMenuItem.Name = "licenseToolStripMenuItem";
 			resources.ApplyResources(this.licenseToolStripMenuItem, "licenseToolStripMenuItem");
+			this.licenseToolStripMenuItem.Name = "licenseToolStripMenuItem";
 			this.licenseToolStripMenuItem.Click += new System.EventHandler(this.licenseToolStripMenuItem_Click);
 			// 
 			// AwakeTimer
@@ -799,14 +801,19 @@
 			// 
 			// MultipleInstanceTimer
 			// 
-			this.MultipleInstanceTimer.Interval = 2000;
+			this.MultipleInstanceTimer.Interval = 1000;
 			this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
 			// 
 			// MnRunMulti
 			// 
-			this.MnRunMulti.Name = "MnRunMulti";
 			resources.ApplyResources(this.MnRunMulti, "MnRunMulti");
+			this.MnRunMulti.Name = "MnRunMulti";
 			this.MnRunMulti.Click += new System.EventHandler(this.MnRunMulti_Click);
+			// 
+			// MnRunMultiSep
+			// 
+			this.MnRunMultiSep.Name = "MnRunMultiSep";
+			resources.ApplyResources(this.MnRunMultiSep, "MnRunMultiSep");
 			// 
 			// ConnectionForm
 			// 
@@ -951,6 +958,7 @@
 		private System.Windows.Forms.ToolStripMenuItem firmwareToolStripMenuItem;
 		private System.Windows.Forms.Timer MultipleInstanceTimer;
 		private System.Windows.Forms.ToolStripMenuItem MnRunMulti;
+		private System.Windows.Forms.ToolStripSeparator MnRunMultiSep;
 	}
 }
 

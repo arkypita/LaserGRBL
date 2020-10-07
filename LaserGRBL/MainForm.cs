@@ -213,6 +213,7 @@ namespace LaserGRBL
 			MnAdvancedSave.Enabled = MnSaveProgram.Enabled = Core.HasProgram;
 			MnFileSend.Enabled = Core.CanSendFile;
 			MnStartFromPosition.Enabled = Core.CanSendFile;
+			MnRunMulti.Enabled = Core.CanSendFile || Core.CanResumeHold;
 			MnGrblConfig.Enabled = true;
 			//MnExportConfig.Enabled = Core.CanImportExport;
 			//MnImportConfig.Enabled = Core.CanImportExport;
@@ -789,13 +790,14 @@ namespace LaserGRBL
 
 		private void MultipleInstanceTimer_Tick(object sender, EventArgs e)
 		{
-			MnRunMulti.Visible = SincroStart.Running() && System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Length > 1;
+			MultipleInstanceTimer.Interval = 5000;
+			MnRunMulti.Visible = MnRunMultiSep.Visible = SincroStart.Running() && System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Length > 1;
 		}
 
 		bool MultiRunShown = false;
 		private void MnRunMulti_Click(object sender, EventArgs e)
 		{
-			if (MultiRunShown || MessageBox.Show(this, "Warning: this command will start all job in any running LaserGRBL instance!", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning ) == DialogResult.OK)
+			if (MultiRunShown || MessageBox.Show(this, "Warning: this command will start/resume all job in any running LaserGRBL instance!", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
 			{
 				SincroStart.Signal();
 				MultiRunShown = true;
