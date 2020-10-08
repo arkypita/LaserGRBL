@@ -2248,7 +2248,7 @@ namespace LaserGRBL
 		}
 
 		internal void HelpOnLine()
-		{ System.Diagnostics.Process.Start(@"https://lasergrbl.com/usage/"); }
+		{ Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/"); }
 
 		internal void GrblHoming()
 		{ if (CanDoHoming) EnqueueCommand(new GrblCommand("$H")); }

@@ -32,7 +32,7 @@ namespace LaserGRBL
 
 		private void LL_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"https://lasergrbl.com/faq#issues");
+			Tools.Utils.OpenLink(@"https://lasergrbl.com/faq#issues");
 		}
 
 		private void BtnOK_Click(object sender, EventArgs e)

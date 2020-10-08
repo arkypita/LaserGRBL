@@ -152,7 +152,7 @@ namespace LaserGRBL
 				}
 				if (CurrentMessage.Type == UsageStats.MessageData.MessageTypes.AutoLink && CurrentMessage.Content != null)
 				{
-					System.Diagnostics.Process.Start(CurrentMessage.Content);
+					Tools.Utils.OpenLink(CurrentMessage.Content);
 					UsageStats.ClearMessage(true);
 				}
 			}
@@ -427,7 +427,7 @@ namespace LaserGRBL
 
 		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"https://lasergrbl.com/faq/");
+			Tools.Utils.OpenLink(@"https://lasergrbl.com/faq/");
 		}
 
 		private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
@@ -534,7 +534,7 @@ namespace LaserGRBL
 
 		private void donateToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"https://paypal.me/pools/c/8cQ1Lo4sRA");
+			Tools.Utils.OpenLink(@"https://paypal.me/pools/c/8cQ1Lo4sRA");
 		}
 
 
@@ -781,12 +781,12 @@ namespace LaserGRBL
 
 		private void orturSupportGroupToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"https://lasergrbl.com/orturfacebook/");
+			Tools.Utils.OpenLink(@"https://lasergrbl.com/orturfacebook/");
 		}
 
 		private void orturWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"https://lasergrbl.com/orturwebsite/");
+			Tools.Utils.OpenLink(@"https://lasergrbl.com/orturwebsite/");
 		}
 
 		private void traditionalChineseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -796,17 +796,17 @@ namespace LaserGRBL
 
 		private void youtubeChannelToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"https://lasergrbl.com/orturYTchannel/");
+			Tools.Utils.OpenLink(@"https://lasergrbl.com/orturYTchannel/");
 		}
 
 		private void firmwareToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"https://lasergrbl.com/ortur-firmware/");
+			Tools.Utils.OpenLink(@"https://lasergrbl.com/ortur-firmware/");
 		}
 
 		private void manualsDownloadToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"https://lasergrbl.com/ortur-manuals/");
+			Tools.Utils.OpenLink(@"https://lasergrbl.com/ortur-manuals/");
 		}
 
 		private void MultipleInstanceTimer_Tick(object sender, EventArgs e)
@@ -827,14 +827,14 @@ namespace LaserGRBL
 
 		private void orturSupportAndFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(@"https://lasergrbl.com/ortursupport/");
+			Tools.Utils.OpenLink(@"https://lasergrbl.com/ortursupport/");
 		}
 
 		private void TTLinkToNews_Click(object sender, EventArgs e)
 		{
 			if (CurrentMessage != null && CurrentMessage.Type == UsageStats.MessageData.MessageTypes.ToolbarLink && CurrentMessage.Content != null)
 			{
-				System.Diagnostics.Process.Start(CurrentMessage.Content);
+				Tools.Utils.OpenLink(CurrentMessage.Content);
 				UsageStats.ClearMessage();
 			}
 		}

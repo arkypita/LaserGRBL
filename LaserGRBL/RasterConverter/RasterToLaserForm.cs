@@ -682,13 +682,13 @@ namespace LaserGRBL.RasterConverter
 		private void BtnQualityInfo_Click(object sender, EventArgs e)
 		{
 			UDQuality.Value = Math.Min(UDQuality.Maximum, (decimal)ResolutionHelperForm.CreateAndShowDialog(mCore, (double)UDQuality.Value));
-			//System.Diagnostics.Process.Start(@"https://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
+			//Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
 		}
 
 		private void BtnFillingQualityInfo_Click(object sender, EventArgs e)
 		{
 			UDFillingQuality.Value = Math.Min(UDFillingQuality.Maximum, (decimal)ResolutionHelperForm.CreateAndShowDialog(mCore, (double)UDFillingQuality.Value));
-			//System.Diagnostics.Process.Start(@"https://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
+			//Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
 		}
 
 		private void TBWhiteClip_ValueChanged(object sender, EventArgs e)
@@ -737,7 +737,7 @@ namespace LaserGRBL.RasterConverter
 		{ if (IP != null) IP.UseAdaptiveQuality = CbAdaptiveQuality.Checked; }
 
 		private void BtnAdaptiveQualityInfo_Click(object sender, EventArgs e)
-		{System.Diagnostics.Process.Start(@"https://lasergrbl.com/usage/raster-image-import/vectorization-tool/#adaptive-quality");}
+		{ Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/raster-image-import/vectorization-tool/#adaptive-quality");}
 
 		private void BtnAutoTrim_Click(object sender, EventArgs e)
 		{

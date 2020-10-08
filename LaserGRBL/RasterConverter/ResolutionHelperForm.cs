@@ -90,8 +90,6 @@ namespace LaserGRBL.RasterConverter
 		}
 
 		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			System.Diagnostics.Process.Start(@"https://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
-		}
+		{Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");}
 	}
 }

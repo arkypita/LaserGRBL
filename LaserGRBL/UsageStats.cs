@@ -316,5 +316,10 @@ namespace LaserGRBL
 		{
 			mManager?.ClearMessage(force);
 		}
+
+		internal static string GetID()
+		{
+			return data?.InstallationID.ToString("N");
+		}
 	}
 }

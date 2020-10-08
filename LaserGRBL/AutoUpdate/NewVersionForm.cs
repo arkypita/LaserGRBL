@@ -96,9 +96,7 @@ namespace LaserGRBL
 		}
 
 		private void BtnWebsite_Click(object sender, EventArgs e)
-		{
-			System.Diagnostics.Process.Start(mPageUrl);
-		}
+		{Tools.Utils.OpenLink(mPageUrl);}
 
 	}
 }
