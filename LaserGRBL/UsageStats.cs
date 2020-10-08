@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Runtime.Serialization;
@@ -219,56 +220,38 @@ namespace LaserGRBL
 
 		public class UsageStatsRV
 		{
-			public string Result = null;
-			public string Message = null;
-			public string Link = null;
+			public int UpdateResult = -1;
+			public MessageData Message = null;
 
-			[IgnoreDataMember] public bool Success => Result != null && Result == "Success!";
+			[IgnoreDataMember] public bool Success => UpdateResult == 1;
+
+			public class MessageData
+			{
+
+				public enum MessageTypes
+				{ Unknown = -1, ToolbarLink = 0 }
+
+				public string id;
+				public string date;         //2020-10-08 09:59:47
+				public string type;
+				public string title;
+				public string content;
+				public string date_from;    //2020-10-01
+				public string date_to;
+				public string clearable;
+
+				[IgnoreDataMember] public int ID { get => string.IsNullOrEmpty(id) ? -1 : int.Parse(id); }
+				[IgnoreDataMember] public DateTime Date { get => string.IsNullOrEmpty(date) ? DateTime.Today : DateTime.ParseExact(date, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture); }
+				[IgnoreDataMember] private MessageTypes Type { get => (MessageTypes)iType; }
+				[IgnoreDataMember] public string Title { get => title; }
+				[IgnoreDataMember] public string Content { get => content; }
+				[IgnoreDataMember] public DateTime DateFrom { get => string.IsNullOrEmpty(date_from) ? DateTime.MinValue : DateTime.ParseExact(date_from, "yyyy-MM-dd", CultureInfo.InvariantCulture); }
+				[IgnoreDataMember] public DateTime DateTo { get => string.IsNullOrEmpty(date_to) ? DateTime.MaxValue : DateTime.ParseExact(date_to, "yyyy-MM-dd", CultureInfo.InvariantCulture); }
+				[IgnoreDataMember] public bool Clearable { get => clearable == "1" ? true : false; }
 
 
-			//public class VersionAsset
-			//{
-			//	public string browser_download_url = null;
-			//	[IgnoreDataMember] public string Url => browser_download_url;
-			//}
-
-			//[IgnoreDataMember] public bool IsValid => Version != null && DownloadUrl != null;
-			//[IgnoreDataMember] public bool IsPreRelease => prerelease;
-
-			//[IgnoreDataMember] public string VersionName => tag_name;
-
-			//[IgnoreDataMember]
-			//public Version Version
-			//{
-			//	get
-			//	{
-			//		try { return new Version(tag_name.TrimStart(new char[] { 'v' })); }
-			//		catch { return null; }
-			//	}
-			//}
-
-			//[IgnoreDataMember]
-			//public string DownloadUrl
-			//{
-			//	get
-			//	{
-			//		return assets != null && assets.Count > 0 ? assets[0].Url : null;
-			//	}
-			//}
-
-			//[IgnoreDataMember]
-			//public string HtmlUrl
-			//{
-			//	get
-			//	{
-			//		return html_url;
-			//	}
-			//}
-
-			//public override string ToString()
-			//{
-			//	return String.Format("{0}{1}{2}", Version, IsPreRelease ? "-pre" : "", IsValid ? "" : " (not available)");
-			//}
+				[IgnoreDataMember] private int iType { get => string.IsNullOrEmpty(type) ? -1 : int.Parse(type); }
+			}
 		}
 
 		private class MyWebClient : WebClient
