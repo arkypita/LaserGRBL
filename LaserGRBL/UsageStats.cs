@@ -255,15 +255,15 @@ namespace LaserGRBL
 					return null;
 				if (DateTime.Today > LastMessage.DateTo)
 					return null;
-				if (ClearedID >= LastMessage.ID && LastMessage.Clearable)
+				if (ClearedID >= LastMessage.ID)
 					return null;
 
 				return LastMessage;
 			}
 
-			public void ClearMessage()
+			public void ClearMessage(bool force = false)
 			{
-				if (LastMessage != null && LastMessage.Clearable)
+				if (LastMessage != null && (LastMessage.Clearable || force))
 					ClearedID = LastMessage.ID;
 			}
 
@@ -278,7 +278,7 @@ namespace LaserGRBL
 		{
 
 			public enum MessageTypes
-			{ Unknown = -1, ToolbarLink = 0 }
+			{ Unknown = -1, ToolbarLink = 0, AutoLink = 1  }
 
 			public string id;
 			public string date;         //2020-10-08 09:59:47
@@ -312,9 +312,9 @@ namespace LaserGRBL
             }
         }
 
-		internal static void ClearMessage()
+		internal static void ClearMessage(bool force = false)
 		{
-			mManager?.ClearMessage();
+			mManager?.ClearMessage(force);
 		}
 	}
 }

@@ -145,10 +145,15 @@ namespace LaserGRBL
 			CurrentMessage = UsageStats.GetMessage();
 			if (CurrentMessage != null)
 			{
-				if (CurrentMessage != null && CurrentMessage.Type == UsageStats.MessageData.MessageTypes.ToolbarLink && CurrentMessage.Title != null)
+				if (CurrentMessage.Type == UsageStats.MessageData.MessageTypes.ToolbarLink && CurrentMessage.Title != null && CurrentMessage.Content != null)
 				{
 					TTLinkToNews.Text = CurrentMessage.Title;
 					TTLinkToNews.Enabled = true;
+				}
+				if (CurrentMessage.Type == UsageStats.MessageData.MessageTypes.AutoLink && CurrentMessage.Content != null)
+				{
+					System.Diagnostics.Process.Start(CurrentMessage.Content);
+					UsageStats.ClearMessage(true);
 				}
 			}
 		}
