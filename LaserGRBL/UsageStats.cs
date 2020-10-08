@@ -63,23 +63,30 @@ namespace LaserGRBL
         private ComWrapper.WrapperType Wrapper;
 		private String FirmwareString;
         private UsageCounters Counters;
-
+		
+		private static MessageManager mManager;
         private static UsageStats data;
-        private static string filename = System.IO.Path.Combine(GrblCore.DataPath, "UsageStats.bin");
+        private static string datafilename = System.IO.Path.Combine(GrblCore.DataPath, "UsageStats.bin");
+		private static string messagefilename = System.IO.Path.Combine(GrblCore.DataPath, "Message.bin");
 
-        public static void LoadFile() //in ingresso
+		public static void LoadFile() //in ingresso
         {
-            bool exist = File.Exists(filename);
-            data = (UsageStats)Tools.Serializer.ObjFromFile(filename);
+			bool exist = File.Exists(datafilename);
+            data = (UsageStats)Tools.Serializer.ObjFromFile(datafilename);
 
-            if (exist && data == null) //esiste ma non sono riuscito a caricarlo (perché è una versione 3.6.0 con campo Firmware stringa)
+			if (exist && data == null) //esiste ma non sono riuscito a caricarlo (perché è una versione 3.6.0 con campo Firmware stringa)
                 FixFile();
 
             if (data == null) data = new UsageStats();
             data.UsageCount++;
-        }
 
-        private static void FixFile()
+			if (File.Exists(messagefilename))
+				mManager = (MessageManager)Tools.Serializer.ObjFromFile(messagefilename, "lasergrbl");
+			if (mManager == null)
+				mManager = new MessageManager();
+		}
+
+		private static void FixFile()
         {
             FixFile360();
         }
@@ -97,8 +104,8 @@ namespace LaserGRBL
 
                 DateTime startissue = new DateTime(2020, 07, 09).ToUniversalTime();
 
-                if (File.Exists(filename)) //posso cancellarlo per certo, perché tanto non sono riuscito a caricarlo!
-                    File.Delete(filename);
+                if (File.Exists(datafilename)) //posso cancellarlo per certo, perché tanto non sono riuscito a caricarlo!
+                    File.Delete(datafilename);
 
                 DirectoryInfo folder = new DirectoryInfo(GrblCore.DataPath);
                 FileInfo[] files = folder.GetFiles("*UsageStats.bin.dam");
@@ -114,7 +121,7 @@ namespace LaserGRBL
 
                 if (older != null)
                 {
-                    File.Move(older.FullName, filename); //carica il file recuperato
+                    File.Move(older.FullName, datafilename); //carica il file recuperato
 
                     foreach (FileInfo info in files) //cancella tutto il resto
                     {
@@ -125,10 +132,15 @@ namespace LaserGRBL
             }
             catch { }
 
-            data = (UsageStats)Tools.Serializer.ObjFromFile(filename); //tenta il caricamento
+            data = (UsageStats)Tools.Serializer.ObjFromFile(datafilename); //tenta il caricamento
         }
 
-        public static void SaveFile(GrblCore Core) //in uscita
+		internal static MessageData GetMessage()
+		{
+			return mManager?.GetMessage();
+		}
+
+		public static void SaveFile(GrblCore Core) //in uscita
         {
             if (GitHub.Updating) //if updating: delay stat processing - skip this session
                 return;
@@ -136,8 +148,9 @@ namespace LaserGRBL
             if (UrlManager.Statistics != null)
                 data.UpdateAndSend(Core); //manda solo se serve
 
-            Tools.Serializer.ObjToFile(data, filename); //salva
-        }
+            Tools.Serializer.ObjToFile(data, datafilename); //salva
+			Tools.Serializer.ObjToFile(mManager, messagefilename, "lasergrbl"); //salva
+		}
 
         private void UpdateAndSend(GrblCore Core)
         {
@@ -214,6 +227,8 @@ namespace LaserGRBL
                 string json = System.Text.Encoding.UTF8.GetString(client.UploadValues(urlAddress, postData));
 
 				UsageStatsRV RV = Tools.JSONParser.FromJson<UsageStatsRV>(json);
+				mManager.SetMessage(RV.Message);
+
 				return (RV.Success);
             }
         }
@@ -224,34 +239,67 @@ namespace LaserGRBL
 			public MessageData Message = null;
 
 			[IgnoreDataMember] public bool Success => UpdateResult == 1;
+		}
 
-			public class MessageData
+		[Serializable]
+		public class MessageManager
+		{
+			private MessageData LastMessage;
+			private int ClearedID;
+
+			public MessageData GetMessage()
 			{
+				if (LastMessage == null)
+					return null;
+				if (DateTime.Today < LastMessage.DateFrom)
+					return null;
+				if (DateTime.Today > LastMessage.DateTo)
+					return null;
+				if (ClearedID >= LastMessage.ID && LastMessage.Clearable)
+					return null;
 
-				public enum MessageTypes
-				{ Unknown = -1, ToolbarLink = 0 }
-
-				public string id;
-				public string date;         //2020-10-08 09:59:47
-				public string type;
-				public string title;
-				public string content;
-				public string date_from;    //2020-10-01
-				public string date_to;
-				public string clearable;
-
-				[IgnoreDataMember] public int ID { get => string.IsNullOrEmpty(id) ? -1 : int.Parse(id); }
-				[IgnoreDataMember] public DateTime Date { get => string.IsNullOrEmpty(date) ? DateTime.Today : DateTime.ParseExact(date, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture); }
-				[IgnoreDataMember] private MessageTypes Type { get => (MessageTypes)iType; }
-				[IgnoreDataMember] public string Title { get => title; }
-				[IgnoreDataMember] public string Content { get => content; }
-				[IgnoreDataMember] public DateTime DateFrom { get => string.IsNullOrEmpty(date_from) ? DateTime.MinValue : DateTime.ParseExact(date_from, "yyyy-MM-dd", CultureInfo.InvariantCulture); }
-				[IgnoreDataMember] public DateTime DateTo { get => string.IsNullOrEmpty(date_to) ? DateTime.MaxValue : DateTime.ParseExact(date_to, "yyyy-MM-dd", CultureInfo.InvariantCulture); }
-				[IgnoreDataMember] public bool Clearable { get => clearable == "1" ? true : false; }
-
-
-				[IgnoreDataMember] private int iType { get => string.IsNullOrEmpty(type) ? -1 : int.Parse(type); }
+				return LastMessage;
 			}
+
+			public void ClearMessage()
+			{
+				if (LastMessage != null && LastMessage.Clearable)
+					ClearedID = LastMessage.ID;
+			}
+
+			internal void SetMessage(MessageData message)
+			{
+				LastMessage = message;
+			}
+		}
+
+		[Serializable]
+		public class MessageData
+		{
+
+			public enum MessageTypes
+			{ Unknown = -1, ToolbarLink = 0 }
+
+			public string id;
+			public string date;         //2020-10-08 09:59:47
+			public string type;
+			public string title;
+			public string content;
+			public string date_from;    //2020-10-01
+			public string date_to;
+			public string clearable;
+
+			[IgnoreDataMember] public int ID { get => string.IsNullOrEmpty(id) ? -1 : int.Parse(id); }
+			[IgnoreDataMember] public DateTime Date { get => string.IsNullOrEmpty(date) ? DateTime.Today : DateTime.ParseExact(date, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture); }
+			[IgnoreDataMember] public MessageTypes Type { get => (MessageTypes)iType; }
+			[IgnoreDataMember] public string Title { get => title; }
+			[IgnoreDataMember] public string Content { get => content; }
+			[IgnoreDataMember] public DateTime DateFrom { get => string.IsNullOrEmpty(date_from) ? DateTime.MinValue : DateTime.ParseExact(date_from, "yyyy-MM-dd", CultureInfo.InvariantCulture); }
+			[IgnoreDataMember] public DateTime DateTo { get => string.IsNullOrEmpty(date_to) ? DateTime.MaxValue : DateTime.ParseExact(date_to, "yyyy-MM-dd", CultureInfo.InvariantCulture); }
+			[IgnoreDataMember] public bool Clearable { get => clearable == "1" ? true : false; }
+
+
+			[IgnoreDataMember] private int iType { get => string.IsNullOrEmpty(type) ? -1 : int.Parse(type); }
 		}
 
 		private class MyWebClient : WebClient
@@ -264,5 +312,9 @@ namespace LaserGRBL
             }
         }
 
-    }
+		internal static void ClearMessage()
+		{
+			mManager?.ClearMessage();
+		}
+	}
 }

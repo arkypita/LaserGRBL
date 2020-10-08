@@ -231,6 +231,7 @@
 			this.TTLinkToNews.IsLink = true;
 			this.TTLinkToNews.Name = "TTLinkToNews";
 			this.TTLinkToNews.Spring = true;
+			this.TTLinkToNews.Click += new System.EventHandler(this.TTLinkToNews_Click);
 			// 
 			// TTOvS
 			// 

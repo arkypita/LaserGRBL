@@ -15,6 +15,7 @@ namespace LaserGRBL
 	{
 		private GrblCore Core;
 		private bool FirstIdle = true;
+		private UsageStats.MessageData CurrentMessage;
 
 		public MainForm()
 		{
@@ -135,6 +136,21 @@ namespace LaserGRBL
 			if (state == FormWindowState.Normal)
 			{ WindowState = state; Size = (Size)msp[0]; Location = (Point)msp[1]; }
 			ResumeLayout();
+
+			ManageMessage();
+		}
+
+		private void ManageMessage()
+		{
+			CurrentMessage = UsageStats.GetMessage();
+			if (CurrentMessage != null)
+			{
+				if (CurrentMessage != null && CurrentMessage.Type == UsageStats.MessageData.MessageTypes.ToolbarLink && CurrentMessage.Title != null)
+				{
+					TTLinkToNews.Text = CurrentMessage.Title;
+					TTLinkToNews.Enabled = true;
+				}
+			}
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -807,6 +823,15 @@ namespace LaserGRBL
 		private void orturSupportAndFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			System.Diagnostics.Process.Start(@"https://lasergrbl.com/ortursupport/");
+		}
+
+		private void TTLinkToNews_Click(object sender, EventArgs e)
+		{
+			if (CurrentMessage != null && CurrentMessage.Type == UsageStats.MessageData.MessageTypes.ToolbarLink && CurrentMessage.Content != null)
+			{
+				System.Diagnostics.Process.Start(CurrentMessage.Content);
+				UsageStats.ClearMessage();
+			}
 		}
 	}
 
