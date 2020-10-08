@@ -63,7 +63,9 @@ namespace LaserGRBL
 
         private ComWrapper.WrapperType Wrapper;
 		private String FirmwareString;
-        private UsageCounters Counters;
+		private String VendorString;
+
+		private UsageCounters Counters;
 		
 		private static MessageManager mManager;
         private static UsageStats data;
@@ -169,15 +171,13 @@ namespace LaserGRBL
             Wrapper = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 
 			LaserGRBL.Firmware fw = Settings.GetObject("Firmware Type", LaserGRBL.Firmware.Grbl);
-			if (fw == LaserGRBL.Firmware.Grbl && Core.IsOrturBoard)
-				FirmwareString = "Ortur";
-			else
-				FirmwareString = fw.ToString();
+			FirmwareString = fw.ToString();
+			VendorString = Core?.GrblVersion?.Vendor != null ? Core.GrblVersion.Vendor : "Unknown";
 
-            if (Counters == null) Counters = new UsageCounters();
+			if (Counters == null) Counters = new UsageCounters();
             Counters.Update(Core.UsageCounters);
 
-            if (true)
+            if (mustsend)
             {
                 try
                 {
@@ -219,7 +219,8 @@ namespace LaserGRBL
                     { "firmware", FirmwareString },
                     { "osinfo", Tools.OSHelper.GetOSInfo() },
                     { "bitflag", Tools.OSHelper.GetBitFlag().ToString() },
-                };
+					{ "vendor", VendorString },
+				};
 
                 // client.UploadValues returns page's source as byte array (byte[]) so it must be transformed into a string
                 string json = System.Text.Encoding.UTF8.GetString(client.UploadValues(urlAddress, postData));

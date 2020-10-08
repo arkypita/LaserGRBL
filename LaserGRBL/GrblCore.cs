@@ -95,10 +95,15 @@ namespace LaserGRBL
 			int mMinor;
 			char mBuild;
 			bool mOrtur;
+			string mVendorInfo;
+			string mVendorVersion;
 
 			public GrblVersionInfo(int major, int minor, char build, string VendorInfo, string VendorVersion)
 			{
 				mMajor = major; mMinor = minor; mBuild = build;
+				mVendorInfo = VendorInfo;
+				mVendorVersion = VendorVersion;
+				
 				mOrtur = VendorInfo != null && VendorInfo.Contains("Ortur");
 			}
 
@@ -204,6 +209,21 @@ namespace LaserGRBL
 			public int Minor { get { return mMinor; } }
 
 			public bool IsOrtur { get => mOrtur; internal set => mOrtur = value; }
+
+			public string Vendor
+			{
+				get 
+				{
+					if (mVendorInfo != null && mVendorInfo.ToLower().Contains("ortur"))
+						return "Ortur";
+					else if (mVendorInfo != null && mVendorInfo.ToLower().Contains("Vigotec"))
+						return "Vigotec";
+					else if (mBuild == '#')
+						return "Emulator";
+					else
+						return "Unknown";
+				}
+			}
 		}
 
 		public delegate void dlgIssueDetector(DetectedIssue issue);
@@ -231,8 +251,8 @@ namespace LaserGRBL
 		private System.Collections.Generic.Queue<GrblCommand> mQueuePtr; //puntatore a coda di quelli da mandare (normalmente punta a mQueue, salvo per import/export configurazione)
 		private System.Collections.Generic.List<IGrblRow> mSentPtr; //puntatore a lista di quelli mandati (normalmente punta a mSent, salvo per import/export configurazione)
 
-		private string mOrturWelcomeSeen = null;
-		private string mOrturVersionSeen = null;
+		private string mWelcomeSeen = null;
+		private string mVersionSeen = null;
 		private int mBuffer;
         private int stuckBufferCounter = 0;
 		private GPoint mMPos;
@@ -1590,7 +1610,7 @@ namespace LaserGRBL
 				int maj = int.Parse(rline.Substring(5, 1));
 				int min = int.Parse(rline.Substring(7, 1));
 				char build = rline.Substring(8, 1).ToCharArray()[0];
-				GrblVersion = new GrblVersionInfo(maj, min, build, mOrturWelcomeSeen, mOrturVersionSeen);
+				GrblVersion = new GrblVersionInfo(maj, min, build, mWelcomeSeen, mVersionSeen);
 
 				DetectUnexpectedReset();
 				OnStartupMessage();
@@ -1630,11 +1650,11 @@ namespace LaserGRBL
 		{
 			try
 			{
-				mOrturWelcomeSeen = rline;
-				mOrturWelcomeSeen = mOrturWelcomeSeen.Replace("Ready", "");
-				mOrturWelcomeSeen = mOrturWelcomeSeen.Replace("!", "");
-				mOrturWelcomeSeen = mOrturWelcomeSeen.Trim();
-				Logger.LogMessage("OrturInfo", "Detected {0}", mOrturWelcomeSeen);
+				mWelcomeSeen = rline;
+				mWelcomeSeen = mWelcomeSeen.Replace("Ready", "");
+				mWelcomeSeen = mWelcomeSeen.Replace("!", "");
+				mWelcomeSeen = mWelcomeSeen.Trim();
+				Logger.LogMessage("OrturInfo", "Detected {0}", mWelcomeSeen);
 			}
 			catch (Exception ex)
 			{
@@ -1648,11 +1668,11 @@ namespace LaserGRBL
 		{
 			try
 			{
-				mOrturVersionSeen = rline;
-				mOrturVersionSeen = mOrturVersionSeen.Replace("OLF", "");
-				mOrturVersionSeen = mOrturVersionSeen.Trim('.');
-				mOrturVersionSeen = mOrturVersionSeen.Trim();
-				Logger.LogMessage("OrturInfo", "Detected OLF {0}", mOrturVersionSeen);
+				mVersionSeen = rline;
+				mVersionSeen = mVersionSeen.Replace("OLF", "");
+				mVersionSeen = mVersionSeen.Trim('.');
+				mVersionSeen = mVersionSeen.Trim();
+				Logger.LogMessage("OrturInfo", "Detected OLF {0}", mVersionSeen);
 			}
 			catch (Exception ex)
 			{
