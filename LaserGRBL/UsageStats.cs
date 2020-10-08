@@ -11,6 +11,7 @@ using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Runtime.Serialization;
+using System.Linq;
 
 namespace LaserGRBL
 {
@@ -68,6 +69,8 @@ namespace LaserGRBL
         private static UsageStats data;
         private static string datafilename = System.IO.Path.Combine(GrblCore.DataPath, "UsageStats.bin");
 		private static string messagefilename = System.IO.Path.Combine(GrblCore.DataPath, "Message.bin");
+
+		public static MessageManager Messages { get => mManager;  }
 
 		public static void LoadFile() //in ingresso
         {
@@ -135,11 +138,6 @@ namespace LaserGRBL
             data = (UsageStats)Tools.Serializer.ObjFromFile(datafilename); //tenta il caricamento
         }
 
-		internal static MessageData GetMessage()
-		{
-			return mManager?.GetMessage();
-		}
-
 		public static void SaveFile(GrblCore Core) //in uscita
         {
             if (GitHub.Updating) //if updating: delay stat processing - skip this session
@@ -179,7 +177,7 @@ namespace LaserGRBL
             if (Counters == null) Counters = new UsageCounters();
             Counters.Update(Core.UsageCounters);
 
-            if (mustsend)
+            if (true)
             {
                 try
                 {
@@ -227,7 +225,7 @@ namespace LaserGRBL
                 string json = System.Text.Encoding.UTF8.GetString(client.UploadValues(urlAddress, postData));
 
 				UsageStatsRV RV = Tools.JSONParser.FromJson<UsageStatsRV>(json);
-				mManager.SetMessage(RV.Message);
+				mManager.SetMessages(RV.Messages);
 
 				return (RV.Success);
             }
@@ -236,7 +234,7 @@ namespace LaserGRBL
 		public class UsageStatsRV
 		{
 			public int UpdateResult = -1;
-			public MessageData Message = null;
+			public List<MessageData> Messages = null;
 
 			[IgnoreDataMember] public bool Success => UpdateResult == 1;
 		}
@@ -244,33 +242,25 @@ namespace LaserGRBL
 		[Serializable]
 		public class MessageManager
 		{
-			private MessageData LastMessage;
-			private int ClearedID;
+			private List<MessageData> Messages = new List<MessageData>();
+			private List<int> ClearedIDs = new List<int>();
 
-			public MessageData GetMessage()
+			public IEnumerable<MessageData> GetMessages(MessageData.MessageTypes type)
+			{return Messages.Where(M => M.Type == type && !ClearedIDs.Contains(M.ID));}
+
+			public void ClearMessage(MessageData message)
 			{
-				if (LastMessage == null)
-					return null;
-				if (DateTime.Today < LastMessage.DateFrom)
-					return null;
-				if (DateTime.Today > LastMessage.DateTo)
-					return null;
-				if (ClearedID >= LastMessage.ID)
-					return null;
-
-				return LastMessage;
+				if (!ClearedIDs.Contains(message.ID))
+					ClearedIDs.Add(message.ID);
 			}
 
-			public void ClearMessage(bool force = false)
+			internal void SetMessages(List<MessageData> messages)
 			{
-				if (LastMessage != null && (LastMessage.Clearable || force))
-					ClearedID = LastMessage.ID;
+				Messages = messages != null ? messages : new List<MessageData>();
 			}
 
-			internal void SetMessage(MessageData message)
-			{
-				LastMessage = message;
-			}
+			internal MessageData GetMessage(MessageData.MessageTypes type)
+			{ return Messages.FirstOrDefault(M => M.Type == type && !ClearedIDs.Contains(M.ID)); }
 		}
 
 		[Serializable]
@@ -311,11 +301,6 @@ namespace LaserGRBL
                 return w;
             }
         }
-
-		internal static void ClearMessage(bool force = false)
-		{
-			mManager?.ClearMessage(force);
-		}
 
 		internal static string GetID()
 		{

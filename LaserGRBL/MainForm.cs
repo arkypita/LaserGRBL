@@ -15,7 +15,7 @@ namespace LaserGRBL
 	{
 		private GrblCore Core;
 		private bool FirstIdle = true;
-		private UsageStats.MessageData CurrentMessage;
+		private UsageStats.MessageData ToolBarMessage;
 
 		public MainForm()
 		{
@@ -142,19 +142,17 @@ namespace LaserGRBL
 
 		private void ManageMessage()
 		{
-			CurrentMessage = UsageStats.GetMessage();
-			if (CurrentMessage != null)
+			foreach (UsageStats.MessageData M in UsageStats.Messages.GetMessages(UsageStats.MessageData.MessageTypes.AutoLink))
 			{
-				if (CurrentMessage.Type == UsageStats.MessageData.MessageTypes.ToolbarLink && CurrentMessage.Title != null && CurrentMessage.Content != null)
-				{
-					TTLinkToNews.Text = CurrentMessage.Title;
-					TTLinkToNews.Enabled = true;
-				}
-				if (CurrentMessage.Type == UsageStats.MessageData.MessageTypes.AutoLink && CurrentMessage.Content != null)
-				{
-					Tools.Utils.OpenLink(CurrentMessage.Content);
-					UsageStats.ClearMessage(true);
-				}
+				Tools.Utils.OpenLink(M.Content);
+				UsageStats.Messages.ClearMessage(M);
+			}
+
+			ToolBarMessage = UsageStats.Messages.GetMessage(UsageStats.MessageData.MessageTypes.ToolbarLink);
+			if (ToolBarMessage != null && ToolBarMessage.Title != null && ToolBarMessage.Content != null)
+			{
+				TTLinkToNews.Text = ToolBarMessage.Title;
+				TTLinkToNews.Enabled = true;
 			}
 		}
 
@@ -832,10 +830,10 @@ namespace LaserGRBL
 
 		private void TTLinkToNews_Click(object sender, EventArgs e)
 		{
-			if (CurrentMessage != null && CurrentMessage.Type == UsageStats.MessageData.MessageTypes.ToolbarLink && CurrentMessage.Content != null)
+			if (ToolBarMessage != null && ToolBarMessage.Title != null && ToolBarMessage.Content != null)
 			{
-				Tools.Utils.OpenLink(CurrentMessage.Content);
-				UsageStats.ClearMessage();
+				Tools.Utils.OpenLink(ToolBarMessage.Content);
+				UsageStats.Messages.ClearMessage(ToolBarMessage);
 			}
 		}
 	}
