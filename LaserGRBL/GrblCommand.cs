@@ -89,14 +89,14 @@ namespace LaserGRBL
 		private string mCodedResult;
 		private TimeSpan mTimeOffset;
 		private Dictionary<char, GrblCommand.Element> mHelper;
-
 		private int mRepeatCount;
 
-		public GrblCommand(string line)
-		{ mLine = line.ToUpper().Trim(); mRepeatCount = 0; }
-
-		public GrblCommand(string line, int repeat)
-		{ mLine = line.ToUpper().Trim(); mRepeatCount = repeat; }
+		public GrblCommand(string line, int repeat = 0, bool preservecase = false)
+		{ 
+			mLine = line.Trim();
+			if (!preservecase) mLine = mLine.ToUpper();
+			mRepeatCount = repeat; 
+		}
 
 		public GrblCommand(IEnumerable<Element> elements)
 		{
