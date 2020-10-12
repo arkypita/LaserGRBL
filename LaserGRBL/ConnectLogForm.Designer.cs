@@ -115,6 +115,7 @@ namespace LaserGRBL
 			// 
 			// TxtManualCommand
 			// 
+			this.TxtManualCommand.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			resources.ApplyResources(this.TxtManualCommand, "TxtManualCommand");
 			this.TxtManualCommand.Name = "TxtManualCommand";
 			this.TxtManualCommand.WaterMarkActiveForeColor = System.Drawing.Color.Gray;
