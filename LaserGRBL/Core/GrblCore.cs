@@ -103,7 +103,6 @@ namespace LaserGRBL
 				mMajor = major; mMinor = minor; mBuild = build;
 				mVendorInfo = VendorInfo;
 				mVendorVersion = VendorVersion;
-				
 				mOrtur = VendorInfo != null && VendorInfo.Contains("Ortur");
 			}
 
@@ -1534,28 +1533,8 @@ namespace LaserGRBL
 				string rline = null;
 				if ((rline = WaitComLineOrDisconnect()) != null)
 				{
-					if (rline.Length > 0)
-					{
-						lock (this)
-						{
-							if (IsCommandReplyMessage(rline))
-								ManageCommandResponse(rline);
-							else if (IsVigoStatusMessage(rline))
-								ManageVigoStatus(rline);
-							else if (IsRealtimeStatusMessage(rline))
-								ManageRealTimeStatus(rline);
-							else if (IsStandardWelcomeMessage(rline))
-								ManageStandardWelcomeMessage(rline);
-							else if (IsVigoWelcomeMessage(rline))
-								ManageVigoWelcomeMessage(rline);
-							else if (IsOrturWelcomeMessage(rline))
-								ManageOrturWelcomeMessage(rline);
-							else if (IsOrturVersionInfo(rline))
-								ManageOrturVersionInfo(rline);
-							else
-								ManageGenericMessage(rline);
-						}
-					}
+					lock (this)
+					{ManageReceivedLine(rline);}
 				}
 
 				RX.SleepTime = HasIncomingData() ? CurrentThreadingMode.RxShort : CurrentThreadingMode.RxLong;
@@ -1564,86 +1543,30 @@ namespace LaserGRBL
 			{ Logger.LogException("ThreadRX", ex); }
 		}
 
-        private bool IsCommandReplyMessage(string rline)
-        {
-            return rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error");
-        }
-
-        private bool IsStandardWelcomeMessage(string rline)
-        {
-            return rline.StartsWith("Grbl ");
-        }
-
-		private bool IsVigoWelcomeMessage(string rline)
+		protected virtual void ManageReceivedLine(string rline)
 		{
-			return rline.StartsWith("Grbl-Vigo");
+			if (IsCommandReplyMessage(rline))
+				ManageCommandResponse(rline);
+			else if (IsRealtimeStatusMessage(rline))
+				ManageRealTimeStatus(rline);
+			else if (IsVigoWelcomeMessage(rline))
+				ManageVigoWelcomeMessage(rline);
+			else if (IsOrturModelMessage(rline))
+				ManageOrturModelMessage(rline);
+			else if (IsOrturFirmwareMessage(rline))
+				ManageOrturFirmwareMessage(rline);
+			else if (IsStandardWelcomeMessage(rline))
+				ManageStandardWelcomeMessage(rline);
+			else
+				ManageGenericMessage(rline);
 		}
 
-		private bool IsOrturWelcomeMessage(string rline)
-		{
-			return rline.StartsWith("Ortur ");
-		}
-
-		private bool IsOrturVersionInfo(string rline)
-		{
-			return rline.StartsWith("OLF");
-		}
-
-		// Return true if message received start with < and finish by >
-		// Overrided by Marlin
-		protected virtual bool IsRealtimeStatusMessage(string rline)
-		{
-			return rline.StartsWith("<") && rline.EndsWith(">");
-		}
-
-		protected virtual bool IsVigoStatusMessage(string rline)
-		{
-			return rline.StartsWith("<VSta") && rline.EndsWith(">");
-		}
-
-		protected virtual void ManageVigoStatus(string rline)
-		{
-			try
-			{
-				//<VSta:2|SBuf:5,1,0|LTC:4095>
-
-				rline = rline.Substring(1, rline.Length - 2);
-				string[] arr = rline.Split("|".ToCharArray());
-
-				for (int i = 0; i < arr.Length; i++)
-				{
-					if (arr[i].StartsWith("VSta:"))
-						;// ParseVSta(arr[i]);
-					else if (arr[i].StartsWith("SBuf:"))
-						ParseSBuf(arr[i]);
-					else if (arr[i].StartsWith("LTC:"))
-						;// ParseLTC(arr[i]);
-				}
-				System.Diagnostics.Debug.WriteLine(rline);	
-			}
-			catch (Exception ex)
-			{
-				Logger.LogMessage("VigoStatus", "Ex on [{0}] message", rline);
-				Logger.LogException("VigoStatus", ex);
-			}
-		}
-
-		private int mOldReceived = 0;
-		private int mOldManaged = 0;
-		private int mOldFoo = 0;
-		private void ParseSBuf(string p)
-		{
-			string wco = p.Substring(5, p.Length - 5);
-			string[] xyz = wco.Split(",".ToCharArray());
-			int mReceived = (int)ParseFloat(xyz[1]);
-
-			if (mReceived != mOldReceived)
-			{
-				for (int i = mOldReceived; i < mReceived; i++)
-					ManageCommandResponse("ok");
-				mOldReceived = mReceived;
-			}
-		}
+		private bool IsCommandReplyMessage(string rline) => rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error");
+		private bool IsRealtimeStatusMessage(string rline) => rline.StartsWith("<") && rline.EndsWith(">");
+		private bool IsVigoWelcomeMessage(string rline) => rline.StartsWith("Grbl-Vigo");
+		private bool IsOrturModelMessage(string rline) => rline.StartsWith("Ortur ");
+		private bool IsOrturFirmwareMessage(string rline) => rline.StartsWith("OLF");
+		private bool IsStandardWelcomeMessage(string rline) => rline.StartsWith("Grbl");
 
 		private void ManageGenericMessage(string rline)
 		{
@@ -1699,7 +1622,7 @@ namespace LaserGRBL
 			mSentPtr.Add(new GrblMessage(rline, false));
 		}
 
-		private void ManageOrturWelcomeMessage(string rline)
+		private void ManageOrturModelMessage(string rline)
 		{
 			try
 			{
@@ -1717,7 +1640,7 @@ namespace LaserGRBL
 			mSentPtr.Add(new GrblMessage(rline, false));
 		}
 
-		private void ManageOrturVersionInfo(string rline)
+		private void ManageOrturFirmwareMessage(string rline)
 		{
 			try
 			{
@@ -1770,7 +1693,7 @@ namespace LaserGRBL
 				return new GrblVersionInfo(0, 9);
 		}
 
-		protected virtual void ManageRealTimeStatus(string rline)
+		private void ManageRealTimeStatus(string rline)
 		{
 			try
 			{
@@ -1921,7 +1844,7 @@ namespace LaserGRBL
 			mTP.LastKnownWCO = wco; //remember last wco for job resume
 		}
 
-		private void ManageCommandResponse(string rline)
+		protected void ManageCommandResponse(string rline)
 		{
 			try
 			{

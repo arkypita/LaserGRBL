@@ -66,38 +66,6 @@ namespace LaserGRBL
 
         }
 
-        protected override void ManageRealTimeStatus(string rline)
-        {
-            try
-            {
-                debugLastStatusDelay.Start();
-
-                // Remove EOL
-                rline = rline.Trim(trimarray);
-
-                // Marlin M114 response : 
-                // X:10.00 Y:0.00 Z:0.00 E:0.00 Count X:1600 Y:0 Z:0
-                // Split by space
-                string[] arr = rline.Split(" ".ToCharArray());
-
-                if (arr.Length > 0)
-                {
-                    // Force update of status 
-                    ParseMachineStatus("ok");
-
-                    // Retrieve position from data send by marlin
-                    float x = float.Parse(arr[0].Split(":".ToCharArray())[1], System.Globalization.NumberFormatInfo.InvariantInfo);
-                    float y = float.Parse(arr[1].Split(":".ToCharArray())[1], System.Globalization.NumberFormatInfo.InvariantInfo);
-                    float z = float.Parse(arr[2].Split(":".ToCharArray())[1], System.Globalization.NumberFormatInfo.InvariantInfo);
-                    SetMPosition(new GPoint(x, y, z));
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.LogMessage("ManageRealTimeStatus", "Ex on [{0}] message", rline);
-                Logger.LogException("ManageRealTimeStatus", ex);
-            }
-        }
         protected override void DetectHang()
         {
             if (mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
@@ -117,15 +85,52 @@ namespace LaserGRBL
             }
         }
 
-        // Return true if message received start with X:
-        protected override bool IsRealtimeStatusMessage(string rline)
-        {
-            return rline.StartsWith("X:");
-        }
+		protected override void ManageReceivedLine(string rline)
+		{
+			if (IsMarlinRealTimeStatusMessage(rline))
+				ManageMarlinRealTimeStatus(rline);
+			else
+				base.ManageReceivedLine(rline);
+		}
 
-        // LaserGRBL don't ask status to marlin during code execution because there is no immediate command
-        // So LaserGRBL has to force the status at the end of programm execution
-        protected override void ForceStatusIdle ()
+		private bool IsMarlinRealTimeStatusMessage(string rline) => rline.StartsWith("X:");
+
+		private void ManageMarlinRealTimeStatus(string rline)
+		{
+			try
+			{
+				debugLastStatusDelay.Start();
+
+				// Remove EOL
+				rline = rline.Trim(trimarray); //maybe not necessary (already done)
+
+				// Marlin M114 response : 
+				// X:10.00 Y:0.00 Z:0.00 E:0.00 Count X:1600 Y:0 Z:0
+				// Split by space
+				string[] arr = rline.Split(" ".ToCharArray());
+
+				if (arr.Length > 0)
+				{
+					// Force update of status 
+					ParseMachineStatus("ok");
+
+					// Retrieve position from data send by marlin
+					float x = float.Parse(arr[0].Split(":".ToCharArray())[1], System.Globalization.NumberFormatInfo.InvariantInfo);
+					float y = float.Parse(arr[1].Split(":".ToCharArray())[1], System.Globalization.NumberFormatInfo.InvariantInfo);
+					float z = float.Parse(arr[2].Split(":".ToCharArray())[1], System.Globalization.NumberFormatInfo.InvariantInfo);
+					SetMPosition(new GPoint(x, y, z));
+				}
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("ManageRealTimeStatus", "Ex on [{0}] message", rline);
+				Logger.LogException("ManageRealTimeStatus", ex);
+			}
+		}
+
+		// LaserGRBL don't ask status to marlin during code execution because there is no immediate command
+		// So LaserGRBL has to force the status at the end of programm execution
+		protected override void ForceStatusIdle ()
         {
             SetStatus(MacStatus.Idle);
         }

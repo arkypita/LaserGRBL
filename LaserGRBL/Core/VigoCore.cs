@@ -28,6 +28,63 @@ namespace LaserGRBL
 
 		public override int BufferSize => 127;
 
+		protected override void ManageReceivedLine(string rline)
+		{
+			if (IsVigoStatusMessage(rline))
+				ManageVigoStatus(rline);
+			else
+				base.ManageReceivedLine(rline);
+		}
+
+		protected virtual bool IsVigoStatusMessage(string rline)
+		{
+			return rline.StartsWith("<VSta") && rline.EndsWith(">");
+		}
+
+		protected virtual void ManageVigoStatus(string rline)
+		{
+			try
+			{
+				//<VSta:2|SBuf:5,1,0|LTC:4095>
+
+				rline = rline.Substring(1, rline.Length - 2);
+				string[] arr = rline.Split("|".ToCharArray());
+
+				for (int i = 0; i < arr.Length; i++)
+				{
+					if (arr[i].StartsWith("VSta:"))
+						;// ParseVSta(arr[i]);
+					else if (arr[i].StartsWith("SBuf:"))
+						ParseSBuf(arr[i]);
+					else if (arr[i].StartsWith("LTC:"))
+						;// ParseLTC(arr[i]);
+				}
+				System.Diagnostics.Debug.WriteLine(rline);
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("VigoStatus", "Ex on [{0}] message", rline);
+				Logger.LogException("VigoStatus", ex);
+			}
+		}
+
+		private int mOldReceived = 0;
+		private int mOldManaged = 0;
+		private int mOldFoo = 0;
+		private void ParseSBuf(string p)
+		{
+			string wco = p.Substring(5, p.Length - 5);
+			string[] xyz = wco.Split(",".ToCharArray());
+			int mReceived = (int)ParseFloat(xyz[1]);
+
+			if (mReceived != mOldReceived)
+			{
+				for (int i = mOldReceived; i < mReceived; i++)
+					ManageCommandResponse("ok");
+				mOldReceived = mReceived;
+			}
+		}
+
 		//protected override void ParseMachineStatus(string data)
 		//{
 		//    MacStatus var = MacStatus.Disconnected;
