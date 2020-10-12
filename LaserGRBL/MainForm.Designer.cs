@@ -53,6 +53,7 @@
 			this.MnGrbl = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnConnect = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnDisconnect = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnWiFiDiscovery = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnGrblReset = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnGoHome = new System.Windows.Forms.ToolStripMenuItem();
@@ -297,6 +298,7 @@
 			this.MnGrbl.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnConnect,
             this.MnDisconnect,
+            this.MnWiFiDiscovery,
             this.toolStripMenuItem2,
             this.MnGrblReset,
             this.MnGoHome,
@@ -323,6 +325,12 @@
 			resources.ApplyResources(this.MnDisconnect, "MnDisconnect");
 			this.MnDisconnect.Name = "MnDisconnect";
 			this.MnDisconnect.Click += new System.EventHandler(this.MnDisconnect_Click);
+			// 
+			// MnWiFiDiscovery
+			// 
+			resources.ApplyResources(this.MnWiFiDiscovery, "MnWiFiDiscovery");
+			this.MnWiFiDiscovery.Name = "MnWiFiDiscovery";
+			this.MnWiFiDiscovery.Click += new System.EventHandler(this.MnWiFiDiscovery_Click);
 			// 
 			// toolStripMenuItem2
 			// 
@@ -970,6 +978,7 @@
 		private System.Windows.Forms.ToolStripSeparator MnRunMultiSep;
 		private System.Windows.Forms.ToolStripMenuItem orturSupportAndFeedbackToolStripMenuItem;
 		private System.Windows.Forms.ToolStripStatusLabel TTLinkToNews;
+		private System.Windows.Forms.ToolStripMenuItem MnWiFiDiscovery;
 	}
 }
 

@@ -298,7 +298,7 @@
     <value>False</value>
   </data>
   <data name="TTLinkToNews.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 19</value>
+    <value>422, 19</value>
   </data>
   <data name="TTOvS.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -410,7 +410,7 @@
 </value>
   </data>
   <data name="MnConnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnConnect.Text" xml:space="preserve">
     <value>&amp;Connect</value>
@@ -437,13 +437,39 @@
 </value>
   </data>
   <data name="MnDisconnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnDisconnect.Text" xml:space="preserve">
     <value>&amp;Disconnect</value>
   </data>
+  <data name="MnWiFiDiscovery.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAAAFkAAABZAaqdqYYAAAJYSURBVDhPpZJLaBNRGIWPiIX6
+        KsVNcVFEN4UidaEudCu4UShWFHRZd4JrRXFjEUQFXelOKC6EdlOUdiOkeUwmmWZeFkqR5jWZzCRpMpOk
+        sY2vXE+naCM+Fro4c+dxz/ef/58LIcR/aeviGRXqM+XCN1TqCRrqadS1ftQNoEl9VQFfAUpJwEkF6gY8
+        pWbgmRJ8cxGe7vFewNdNaoyA/ej8DVDTgOo7aombTD7rJ1BVHxBaRs0QTDGFj9oR1P+YQH+BmvmSkLs0
+        XWL1Iaxzc52gmvE6SFMzNHiJUyjz/a8JjASNHnsXXDdVQkt/joa2l/AeVFO3UUwK5KMWnIWR3wDMfkYf
+        xKpxDBVtlBWng+iesYymdh4bYSAnPUI6LLguwU4OEvgT4CpN15hgGL62E57ay8pjBFTgJD7Aid2ELR9A
+        LqpiZV6gEL+BYqIL4BkFqkFIm+If0MYZezdcZQiZyBfKhqMcYtWLyITbyMVaqCQHuhLoIzSOopG6h6ai
+        BPFLyjRKiT2sdieIbslvCNiFfGwyeC7JF7oTUIs8MBFgLdSHojGHlYiAHb/PFnpoeh8kKcTPUld4/wl5
+        KbYNqJu9HOIZuNpB1OaB1uxR5EMWslHBqPtoGEeavdtJ9q72IRNN89t6N+AxU5RRVGJwwifReQWsvp1C
+        mgBbPofl0PEtQGoCLpNmoglCaf0O8Iw0pyqCijn5Oly2UpQmuKkDK/6M0x9Gji3lpVnOYgeykdDmHLYB
+        7sItmtuwYnNwpQEUZFCXCfAJeAhLOszva5zFDAoSzwTXbGTjB+DfJfANdjxcKh6kaJYAAAAASUVORK5C
+        YII=
+</value>
+  </data>
+  <data name="MnWiFiDiscovery.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="MnWiFiDiscovery.Text" xml:space="preserve">
+    <value>Wi-Fi Discovery</value>
+  </data>
+  <data name="MnWiFiDiscovery.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="MnGrblReset.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -465,7 +491,7 @@
 </value>
   </data>
   <data name="MnGrblReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnGrblReset.Text" xml:space="preserve">
     <value>&amp;Reset</value>
@@ -493,7 +519,7 @@
 </value>
   </data>
   <data name="MnGoHome.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnGoHome.Text" xml:space="preserve">
     <value>&amp;Homing</value>
@@ -519,13 +545,13 @@
 </value>
   </data>
   <data name="MnUnlock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnUnlock.Text" xml:space="preserve">
     <value>&amp;Unlock</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="MnGrblConfig.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -540,7 +566,7 @@
 </value>
   </data>
   <data name="MnGrblConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnGrblConfig.Text" xml:space="preserve">
     <value>Grbl Configuration</value>
@@ -564,7 +590,7 @@
 </value>
   </data>
   <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
     <value>Settings</value>
@@ -588,13 +614,13 @@
 </value>
   </data>
   <data name="MnMaterialDB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnMaterialDB.Text" xml:space="preserve">
     <value>Material DB</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="MnHotkeys.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -614,13 +640,13 @@
 </value>
   </data>
   <data name="MnHotkeys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnHotkeys.Text" xml:space="preserve">
     <value>Hotkeys</value>
   </data>
   <data name="toolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="MnExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -644,7 +670,7 @@
 </value>
   </data>
   <data name="MnExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnExit.Text" xml:space="preserve">
     <value>&amp;Exit</value>
@@ -2044,6 +2070,12 @@
     <value>MnDisconnect</value>
   </data>
   <data name="&gt;&gt;MnDisconnect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MnWiFiDiscovery.Name" xml:space="preserve">
+    <value>MnWiFiDiscovery</value>
+  </data>
+  <data name="&gt;&gt;MnWiFiDiscovery.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem2.Name" xml:space="preserve">

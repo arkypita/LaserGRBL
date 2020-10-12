@@ -14,7 +14,7 @@ using System.Globalization;
 namespace LaserGRBL
 {
 	public enum Firmware
-	{ Grbl, Smoothie, Marlin }
+	{ Grbl, Smoothie, Marlin, VigoWork }
 
 	/// <summary>
 	/// Description of CommandThread.
@@ -253,8 +253,9 @@ namespace LaserGRBL
 
 		private string mWelcomeSeen = null;
 		private string mVersionSeen = null;
-		private int mBuffer;
-        private int stuckBufferCounter = 0;
+		private int mUsedBuffer;
+		private int mAutoBufferSize = 127;
+		private int stuckBufferCounter = 0;
 		private GPoint mMPos;
 		private GPoint mWCO;
 		private int mGrblBlocks = -1;
@@ -264,7 +265,7 @@ namespace LaserGRBL
 		protected TimeProjection mTP = new TimeProjection();
 
 		private MacStatus mMachineStatus;
-		private static int BUFFER_SIZE = 127;
+		
 
 		private float mCurF;
 		private float mCurS;
@@ -319,7 +320,7 @@ namespace LaserGRBL
 			mQueue = new System.Collections.Generic.Queue<GrblCommand>();
 			mPending = new System.Collections.Generic.Queue<GrblCommand>();
 			mSent = new System.Collections.Generic.List<IGrblRow>();
-			mBuffer = 0;
+			mUsedBuffer = 0;
 
 			mSentPtr = mSent;
 			mQueuePtr = mQueue;
@@ -1021,7 +1022,7 @@ namespace LaserGRBL
 		{
 			try
 			{
-				BUFFER_SIZE = 127; //reset to default buffer size
+				mAutoBufferSize = 127; //reset to default buffer size
 				SetStatus(MacStatus.Connecting);
 				connectStart = Tools.HiResTimer.TotalMilliseconds;
 
@@ -1053,7 +1054,7 @@ namespace LaserGRBL
 				if (com.IsOpen)
 					com.Close(!user);
 
-				mBuffer = 0;
+				mUsedBuffer = 0;
 				mTP.JobEnd();
 
 				TX.Stop();
@@ -1116,7 +1117,7 @@ namespace LaserGRBL
 			lock (this)
 			{
 				ClearQueue(true);
-				mBuffer = 0;
+				mUsedBuffer = 0;
 				mTP.JobEnd();
 				mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
 				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
@@ -1476,8 +1477,8 @@ namespace LaserGRBL
 				mQueuePtr.Dequeue();
 		}
 
-		private bool HasSpaceInBuffer(GrblCommand command)
-		{ return (mBuffer + command.SerialData.Length) <= BUFFER_SIZE; }
+		protected virtual bool HasSpaceInBuffer(GrblCommand command)
+		{ return (mUsedBuffer + command.SerialData.Length) <= BufferSize; }
 
 		private void SendLine()
 		{
@@ -1493,8 +1494,9 @@ namespace LaserGRBL
 					mPending.Enqueue(tosend);
 					RemoveManagedCommand();
 
-					mBuffer += tosend.SerialData.Length;
-					com.Write(tosend.SerialData);
+					mUsedBuffer += tosend.SerialData.Length;
+
+					com.Write(tosend.SerialData); //invio dei dati alla linea di comunicazione
 
 					if (mTP.InProgram)
 						mTP.JobSent();
@@ -1511,13 +1513,13 @@ namespace LaserGRBL
 		}
 
 		public int UsedBuffer
-		{ get { return mBuffer; } }
+		{ get { return mUsedBuffer; } }
 
 		public int FreeBuffer
-		{ get { return BUFFER_SIZE - mBuffer; } }
+		{ get { return BufferSize - mUsedBuffer; } }
 
-		public int BufferSize
-		{ get { return BUFFER_SIZE; } }
+		public virtual int BufferSize
+		{ get { return mAutoBufferSize; } }
 
 		public int GrblBlock
 		{ get { return mGrblBlocks; } }
@@ -1538,6 +1540,8 @@ namespace LaserGRBL
 						{
 							if (IsCommandReplyMessage(rline))
 								ManageCommandResponse(rline);
+							else if (IsVigoStatusMessage(rline))
+								ManageVigoStatus(rline);
 							else if (IsRealtimeStatusMessage(rline))
 								ManageRealTimeStatus(rline);
 							else if (IsStandardWelcomeMessage(rline))
@@ -1590,6 +1594,55 @@ namespace LaserGRBL
 		protected virtual bool IsRealtimeStatusMessage(string rline)
 		{
 			return rline.StartsWith("<") && rline.EndsWith(">");
+		}
+
+		protected virtual bool IsVigoStatusMessage(string rline)
+		{
+			return rline.StartsWith("<VSta") && rline.EndsWith(">");
+		}
+
+		protected virtual void ManageVigoStatus(string rline)
+		{
+			try
+			{
+				//<VSta:2|SBuf:5,1,0|LTC:4095>
+
+				rline = rline.Substring(1, rline.Length - 2);
+				string[] arr = rline.Split("|".ToCharArray());
+
+				for (int i = 0; i < arr.Length; i++)
+				{
+					if (arr[i].StartsWith("VSta:"))
+						;// ParseVSta(arr[i]);
+					else if (arr[i].StartsWith("SBuf:"))
+						ParseSBuf(arr[i]);
+					else if (arr[i].StartsWith("LTC:"))
+						;// ParseLTC(arr[i]);
+				}
+				System.Diagnostics.Debug.WriteLine(rline);	
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("VigoStatus", "Ex on [{0}] message", rline);
+				Logger.LogException("VigoStatus", ex);
+			}
+		}
+
+		private int mOldReceived = 0;
+		private int mOldManaged = 0;
+		private int mOldFoo = 0;
+		private void ParseSBuf(string p)
+		{
+			string wco = p.Substring(5, p.Length - 5);
+			string[] xyz = wco.Split(",".ToCharArray());
+			int mReceived = (int)ParseFloat(xyz[1]);
+
+			if (mReceived != mOldReceived)
+			{
+				for (int i = mOldReceived; i < mReceived; i++)
+					ManageCommandResponse("ok");
+				mOldReceived = mReceived;
+			}
 		}
 
 		private void ManageGenericMessage(string rline)
@@ -1687,7 +1740,7 @@ namespace LaserGRBL
 			lock (this)
 			{
 				ClearQueue(false);
-				mBuffer = 0;
+				mUsedBuffer = 0;
 				mTP.JobEnd();
 				mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
 				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
@@ -1811,9 +1864,9 @@ namespace LaserGRBL
 
             if (stuckBufferCounter > 10 && mPending.Count > 0)
                 ManageCommandResponse("ok");
-            if (mGrblBuffer == BUFFER_SIZE && mPending.Count > 0)
+            if (mGrblBuffer == BufferSize && mPending.Count > 0)
                 stuckBufferCounter++;
-            if ((mGrblBuffer != BUFFER_SIZE) ||( mPending.Count == 0 && mGrblBuffer == BUFFER_SIZE))
+            if ((mGrblBuffer != BufferSize) ||( mPending.Count == 0 && mGrblBuffer == BufferSize))
                 stuckBufferCounter = 0;
 
             EnlargeBuffer(mGrblBuffer);
@@ -1821,16 +1874,16 @@ namespace LaserGRBL
 
 		private void EnlargeBuffer(int mGrblBuffer)
 		{
-			if (BUFFER_SIZE == 127) //act only to change default value at first event, do not re-act without a new connect
+			if (BufferSize == 127) //act only to change default value at first event, do not re-act without a new connect
 			{
 				if (mGrblBuffer == 128) //Grbl v1.1 with enabled buffer report
-					BUFFER_SIZE = 128;
+					mAutoBufferSize = 128;
                 else if (mGrblBuffer == 255) //Grbl-Mega fixed
-                    BUFFER_SIZE = 255;
+					mAutoBufferSize = 255;
                 else if (mGrblBuffer == 256) //Grbl-Mega
-					BUFFER_SIZE = 256;
+					mAutoBufferSize = 256;
 				else if (mGrblBuffer == 10240) //Grbl-LPC
-					BUFFER_SIZE = 10240;
+					mAutoBufferSize = 10240;
 			}
 		}
 
@@ -1879,7 +1932,7 @@ namespace LaserGRBL
 					pending.SetResult(rline, SupportCSV);   //assegnare lo stato
 					mPending.Dequeue();                     //solo alla fine rimuoverlo dalla lista (per write config che si aspetta che lo stato sia noto non appena la coda si svuota)
 
-					mBuffer -= pending.SerialData.Length;
+					mUsedBuffer -= pending.SerialData.Length;
 
 					if (mTP.InProgram && pending.RepeatCount == 0) //solo se non è una ripetizione aggiorna il tempo
 						mTP.JobExecuted(pending.TimeOffset);

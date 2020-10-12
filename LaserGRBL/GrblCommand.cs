@@ -93,17 +93,17 @@ namespace LaserGRBL
 		private int mRepeatCount;
 
 		public GrblCommand(string line)
-		{ mLine = line.ToUpper().Trim(); mRepeatCount = 0; }
+		{ mLine = line.Trim(); mRepeatCount = 0; }
 
 		public GrblCommand(string line, int repeat)
-		{ mLine = line.ToUpper().Trim(); mRepeatCount = repeat; }
+		{ mLine = line.Trim(); mRepeatCount = repeat; }
 
 		public GrblCommand(IEnumerable<Element> elements)
 		{
 			mLine = "";
 			foreach (GrblCommand.Element e in elements)
 				mLine = mLine + e.ToString() + " ";
-			mLine = mLine.TrimEnd().ToUpper();
+			mLine = mLine.TrimEnd();
 		}
 
 		public GrblCommand(Element first, GrblCommand toappend)
