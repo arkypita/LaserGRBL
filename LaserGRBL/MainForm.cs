@@ -232,7 +232,7 @@ namespace LaserGRBL
 			MnAdvancedSave.Enabled = MnSaveProgram.Enabled = Core.HasProgram;
 			MnFileSend.Enabled = Core.CanSendFile;
 			MnStartFromPosition.Enabled = Core.CanSendFile;
-			MnRunMulti.Enabled = Core.CanSendFile || Core.CanResumeHold;
+			MnRunMulti.Enabled = Core.CanSendFile || Core.CanResumeHold || Core.CanFeedHold;
 			MnGrblConfig.Enabled = true;
 			//MnExportConfig.Enabled = Core.CanImportExport;
 			//MnImportConfig.Enabled = Core.CanImportExport;
