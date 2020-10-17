@@ -298,7 +298,7 @@
     <value>False</value>
   </data>
   <data name="TTLinkToNews.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 19</value>
+    <value>422, 19</value>
   </data>
   <data name="TTOvS.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -677,7 +677,7 @@
 </value>
   </data>
   <data name="MnFileOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
+    <value>215, 22</value>
   </data>
   <data name="MnFileOpen.Text" xml:space="preserve">
     <value>&amp;Open File</value>
@@ -748,7 +748,7 @@
 </value>
   </data>
   <data name="MnFileAppend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
+    <value>215, 22</value>
   </data>
   <data name="MnFileAppend.Text" xml:space="preserve">
     <value>&amp;Append File</value>
@@ -776,7 +776,7 @@
 </value>
   </data>
   <data name="MnReOpenFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
+    <value>215, 22</value>
   </data>
   <data name="MnReOpenFile.Text" xml:space="preserve">
     <value>&amp;Reload Last File</value>
@@ -801,7 +801,7 @@
 </value>
   </data>
   <data name="MnSaveProgram.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
+    <value>215, 22</value>
   </data>
   <data name="MnSaveProgram.Text" xml:space="preserve">
     <value>&amp;Quick Save</value>
@@ -834,13 +834,13 @@
 </value>
   </data>
   <data name="MnAdvancedSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
+    <value>215, 22</value>
   </data>
   <data name="MnAdvancedSave.Text" xml:space="preserve">
     <value>&amp;Save (Advanced Options)</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 6</value>
+    <value>212, 6</value>
   </data>
   <data name="MnFileSend.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -859,7 +859,7 @@
 </value>
   </data>
   <data name="MnFileSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
+    <value>215, 22</value>
   </data>
   <data name="MnFileSend.Text" xml:space="preserve">
     <value>Send To &amp;Machine</value>
@@ -885,13 +885,13 @@
 </value>
   </data>
   <data name="MnStartFromPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
+    <value>215, 22</value>
   </data>
   <data name="MnStartFromPosition.Text" xml:space="preserve">
     <value>Send From &amp;Position</value>
   </data>
   <data name="MnRunMultiSep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 6</value>
+    <value>212, 6</value>
   </data>
   <data name="MnRunMultiSep.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -921,10 +921,10 @@
 </value>
   </data>
   <data name="MnRunMulti.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
+    <value>215, 22</value>
   </data>
   <data name="MnRunMulti.Text" xml:space="preserve">
-    <value>Syncronized Start/Resume</value>
+    <value>S&amp;yncro Start/Hold/Resume</value>
   </data>
   <data name="MnRunMulti.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
