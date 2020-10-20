@@ -142,18 +142,22 @@ namespace LaserGRBL
 
 		private void ManageMessage()
 		{
-			foreach (UsageStats.MessageData M in UsageStats.Messages.GetMessages(UsageStats.MessageData.MessageTypes.AutoLink))
+			try
 			{
-				Tools.Utils.OpenLink(M.Content);
-				UsageStats.Messages.ClearMessage(M);
-			}
+				foreach (UsageStats.MessageData M in UsageStats.Messages.GetMessages(UsageStats.MessageData.MessageTypes.AutoLink))
+				{
+					Tools.Utils.OpenLink(M.Content);
+					UsageStats.Messages.ClearMessage(M);
+				}
 
-			ToolBarMessage = UsageStats.Messages.GetMessage(UsageStats.MessageData.MessageTypes.ToolbarLink);
-			if (ToolBarMessage != null && ToolBarMessage.Title != null && ToolBarMessage.Content != null)
-			{
-				TTLinkToNews.Text = ToolBarMessage.Title;
-				TTLinkToNews.Enabled = true;
+				ToolBarMessage = UsageStats.Messages.GetMessage(UsageStats.MessageData.MessageTypes.ToolbarLink);
+				if (ToolBarMessage != null && ToolBarMessage.Title != null && ToolBarMessage.Content != null)
+				{
+					TTLinkToNews.Text = ToolBarMessage.Title;
+					TTLinkToNews.Enabled = true;
+				}
 			}
+			catch (Exception ex){ }
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
