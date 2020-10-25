@@ -116,7 +116,7 @@ namespace LaserGRBL
 			EnqueueCommand(new GrblCommand("G0X0Y0M5", 0, true));
 			EnqueueCommand(new GrblCommand(">NPredMjdFaeaJajf6OHy:hkRUygcpBXwtV", 0, true));
 
-			//injob = false; //tanto sembra che a questo messaggio che segue non risponda e invece si resetta! tanto vale chiuderlo prima
+			//injob = false; //tanto sembra che a questo messaggio che segue non risponda e invece si resetta!
 		}
 
 		protected override void SendToSerial(GrblCommand tosend)
