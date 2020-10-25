@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "LaserGRBL"
-#define MyAppVersion "3.7.3"
+#define MyAppVersion "3.8.0"
 #define MyAppVersionName "Rhyhorn"
 #define MyAppPublisher "LaserGRBL"
 #define MyAppURL "https://lasergrbl.com"
@@ -21,12 +21,12 @@ AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
-DisableDirPage=yes
+DisableDirPage=no
 DisableProgramGroupPage=yes
 OutputDir=.\
 OutputBaseFilename=install
-Compression=lzma/ultra64
-SolidCompression=yes
+Compression=zip
+SolidCompression=no
 InternalCompressLevel=ultra64
 CompressionThreads=2
 RestartIfNeededByRun=False

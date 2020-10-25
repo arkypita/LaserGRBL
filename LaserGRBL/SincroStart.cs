@@ -41,6 +41,8 @@ namespace LaserGRBL
 						C.RunProgram();
 					else if (C.CanResumeHold)
 						C.CycleStartResume(false);
+					else if (C.CanFeedHold)
+						C.FeedHold(false);
 
 					System.Threading.Thread.Sleep(1000); //do not test the flag for 1 sec
 				}
