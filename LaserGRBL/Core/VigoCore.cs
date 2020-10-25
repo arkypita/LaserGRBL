@@ -30,6 +30,7 @@ namespace LaserGRBL
 
 		protected override void ManageReceivedLine(string rline)
 		{
+			System.Diagnostics.Debug.WriteLine(rline);
 			if (IsVigoStatusMessage(rline))
 				ManageVigoStatus(rline);
 			else
@@ -45,21 +46,18 @@ namespace LaserGRBL
 		{
 			try
 			{
-				//<VSta:2|SBuf:5,1,0|LTC:4095>
-
 				rline = rline.Substring(1, rline.Length - 2);
 				string[] arr = rline.Split("|".ToCharArray());
 
 				for (int i = 0; i < arr.Length; i++)
 				{
 					if (arr[i].StartsWith("VSta:"))
-						;// ParseVSta(arr[i]);
+						ParseVSta(arr[i]);
 					else if (arr[i].StartsWith("SBuf:"))
 						ParseSBuf(arr[i]);
 					else if (arr[i].StartsWith("LTC:"))
 						;// ParseLTC(arr[i]);
 				}
-				System.Diagnostics.Debug.WriteLine(rline);
 			}
 			catch (Exception ex)
 			{
@@ -68,107 +66,73 @@ namespace LaserGRBL
 			}
 		}
 
-		private int mOldReceived = 0;
-		private int mOldManaged = 0;
-		private int mOldFoo = 0;
-		private void ParseSBuf(string p)
+		int mOldSta = 0;
+		private void ParseVSta(string p)
 		{
-			string wco = p.Substring(5, p.Length - 5);
-			string[] xyz = wco.Split(",".ToCharArray());
-			int mReceived = (int)ParseFloat(xyz[1]);
+			string data = p.Substring(5, p.Length - 5);
+			int mCurSta = (int)ParseFloat(data);
 
-			if (mReceived != mOldReceived)
-			{
-				for (int i = mOldReceived; i < mReceived; i++)
-					ManageCommandResponse("ok");
-				mOldReceived = mReceived;
-			}
+			if (mOldSta == 2 && mCurSta == 0)
+				injob = false;
+
+			mOldSta = mCurSta;
 		}
 
-		//protected override void ParseMachineStatus(string data)
-		//{
-		//    MacStatus var = MacStatus.Disconnected;
+		private bool injob = false;
+		private int mOldReceived = 0;
+		private int mOldManaged = 0;
+		private int mOldError = 0;
+		private void ParseSBuf(string p)
+		{
+			string data = p.Substring(5, p.Length - 5);
+			string[] xyz = data.Split(",".ToCharArray());
+			int mCurReceived = (int)ParseFloat(xyz[0]);
+			int mCurManaged = (int)ParseFloat(xyz[1]);
+			int mCurError = (int)ParseFloat(xyz[2]);
 
-		//    if (data.Contains("ok"))
-		//        var = MacStatus.Idle;
+			if (mOldReceived > mCurReceived)
+				mOldReceived = mOldManaged = mOldError = 0; //emergency reset
 
-		//    //try { var = (MacStatus)Enum.Parse(typeof(MacStatus), data); }
-		//    //catch (Exception ex) { Logger.LogException("ParseMachineStatus", ex); }
+			for (int i = mOldManaged; i < mCurManaged; i++)
+				ManageCommandResponse("ok");
+			for (int i = mOldError; i < mCurError; i++)
+				ManageCommandResponse("error:99");
 
-		//    if (InProgram && var == MacStatus.Idle) //bugfix for grbl sending Idle on G4
-		//        var = MacStatus.Run;
+			mOldReceived = mCurReceived;
+			mOldManaged = mCurManaged;
+			mOldError = mCurError; 
+		}
 
-		//    if (var == MacStatus.Hold && !mHoldByUserRequest)
-		//        var = MacStatus.Cooling;
+		protected override void OnJobBegin()
+		{
+			injob = true;
+			EnqueueCommand(new GrblCommand(">Ofk9gsd8IKjKBahP0OGS9BrhZCPeWCBALCbyGf", 0, true));
+			base.OnJobBegin();
+		}
 
-		//    SetStatus(var);
-		//}
+		protected override void OnJobEnd()
+		{
+			base.OnJobEnd();
+			EnqueueCommand(new GrblCommand("G0X0Y0M5", 0, true));
+			EnqueueCommand(new GrblCommand(">NPredMjdFaeaJajf6OHy:hkRUygcpBXwtV", 0, true));
 
+			//injob = false; //tanto sembra che a questo messaggio che segue non risponda e invece si resetta! tanto vale chiuderlo prima
+		}
 
-		//protected override void ManageRealTimeStatus(string rline)
-		//{
-		//    try
-		//    {
-		//        debugLastStatusDelay.Start();
-
-		//        // Remove EOL
-		//        rline = rline.Trim(trimarray);
-
-		//        // Marlin M114 response : 
-		//        // X:10.00 Y:0.00 Z:0.00 E:0.00 Count X:1600 Y:0 Z:0
-		//        // Split by space
-		//        string[] arr = rline.Split(" ".ToCharArray());
-
-		//        if (arr.Length > 0)
-		//        {
-		//            // Force update of status 
-		//            ParseMachineStatus("ok");
-
-		//            // Retrieve position from data send by marlin
-		//            float x = float.Parse(arr[0].Split(":".ToCharArray())[1], System.Globalization.NumberFormatInfo.InvariantInfo);
-		//            float y = float.Parse(arr[1].Split(":".ToCharArray())[1], System.Globalization.NumberFormatInfo.InvariantInfo);
-		//            float z = float.Parse(arr[2].Split(":".ToCharArray())[1], System.Globalization.NumberFormatInfo.InvariantInfo);
-		//            SetMPosition(new GPoint(x, y, z));
-		//        }
-		//    }
-		//    catch (Exception ex)
-		//    {
-		//        Logger.LogMessage("ManageRealTimeStatus", "Ex on [{0}] message", rline);
-		//        Logger.LogException("ManageRealTimeStatus", ex);
-		//    }
-		//}
-
-		//protected override void DetectHang()
-		//{
-		//    if (mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
-		//    {
-		//        // Marlin does not answer to immediate command
-		//        // So we can not rise an issue if there is too many time before last call of ManageRealTimeStatus
-		//        // We rise the issue if the last response from the board was too long
-
-		//        // Original line :
-		//        //bool noQueryResponse = debugLastMoveDelay.ElapsedTime > TimeSpan.FromTicks(QueryTimer.Period.Ticks * 10) && debugLastStatusDelay.ElapsedTime > TimeSpan.FromSeconds(5);
-		//        // Marlin version :
-		//        bool noQueryResponse = debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(10) && debugLastMoveDelay.ElapsedTime > TimeSpan.FromTicks(QueryTimer.Period.Ticks * 10) && debugLastStatusDelay.ElapsedTime > TimeSpan.FromSeconds(5);
-
-		//        if (noQueryResponse)
-		//            SetIssue(DetectedIssue.StopResponding);
-
-		//    }
-		//}
-
-		//// Return true if message received start with X:
-		//protected override bool IsRealtimeStatusMessage(string rline)
-		//{
-		//    return rline.StartsWith("X:");
-		//}
-
-		//// LaserGRBL don't ask status to marlin during code execution because there is no immediate command
-		//// So LaserGRBL has to force the status at the end of programm execution
-		//protected override void ForceStatusIdle ()
-		//{
-		//    SetStatus(MacStatus.Idle);
-		//}
+		protected override void SendToSerial(GrblCommand tosend)
+		{
+			if (injob)
+			{
+				mUsedBuffer += tosend.SerialData.Length;
+				com.Write(tosend.SerialData); //invio dei dati alla linea di comunicazione
+			}
+			else
+			{
+				//mUsedBuffer += tosend.SerialData.Length;
+				com.Write(tosend.SerialData); //invio dei dati alla linea di comunicazione
+				tosend.SetResult("ok", false);
+			}
+		}
 
 	}
 

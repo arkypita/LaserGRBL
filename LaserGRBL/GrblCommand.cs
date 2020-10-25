@@ -423,7 +423,7 @@ namespace LaserGRBL
 		{
 			mMessage = message.Trim();
 
-			if (mMessage.ToLower().StartsWith("$") || mMessage.ToLower().StartsWith("~") || mMessage.ToLower().StartsWith("!") || mMessage.ToLower().StartsWith("?") || mMessage.ToLower().StartsWith("ctrl"))
+			if (mMessage.ToLower().StartsWith("$") && mMessage.Contains("=")) //if (mMessage.ToLower().StartsWith("$") || mMessage.ToLower().StartsWith("~") || mMessage.ToLower().StartsWith("!") || mMessage.ToLower().StartsWith("?") || mMessage.ToLower().StartsWith("ctrl"))
 				mType = MessageType.Config;
 			else if (mMessage.ToLower().StartsWith("grbl"))
 				mType = MessageType.Startup;

@@ -252,7 +252,7 @@ namespace LaserGRBL
 
 		private string mWelcomeSeen = null;
 		private string mVersionSeen = null;
-		private int mUsedBuffer;
+		protected int mUsedBuffer;
 		private int mAutoBufferSize = 127;
 		private int stuckBufferCounter = 0;
 		private GPoint mMPos;
@@ -920,17 +920,11 @@ namespace LaserGRBL
 				}
 
 				if (first)
-				{
-					Logger.LogMessage("EnqueueProgram", "Push Header");
-					ExecuteCustombutton(Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
-				}
+					OnJobBegin();
 
 				if (pass)
-				{
-					Logger.LogMessage("EnqueueProgram", "Push Passes");
-					ExecuteCustombutton(Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
-				}
-				
+					OnJobCycle();
+
 
 				Logger.LogMessage("EnqueueProgram", "Push File, {0} lines", file.Count);
 				foreach (GrblCommand cmd in file)
@@ -939,6 +933,24 @@ namespace LaserGRBL
 				mTP.JobStart(LoadedFile, mQueuePtr);
 				Logger.LogMessage("EnqueueProgram", "Running program, {0} lines", file.Count);
 			}
+		}
+
+		private void OnJobCycle()
+		{
+			Logger.LogMessage("EnqueueProgram", "Push Passes");
+			ExecuteCustombutton(Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
+		}
+
+		protected virtual void OnJobBegin()
+		{
+			Logger.LogMessage("EnqueueProgram", "Push Header");
+			ExecuteCustombutton(Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
+		}
+
+		protected virtual void OnJobEnd()
+		{
+			Logger.LogMessage("EnqueueProgram", "Push Footer");
+			ExecuteCustombutton(Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
 		}
 
 		private void ContinueProgramFromKnown(int position, bool homing, bool setwco)
@@ -1493,9 +1505,7 @@ namespace LaserGRBL
 					mPending.Enqueue(tosend);
 					RemoveManagedCommand();
 
-					mUsedBuffer += tosend.SerialData.Length;
-
-					com.Write(tosend.SerialData); //invio dei dati alla linea di comunicazione
+					SendToSerial(tosend);
 
 					if (mTP.InProgram)
 						mTP.JobSent();
@@ -1509,6 +1519,12 @@ namespace LaserGRBL
 				}
 				finally { tosend.DeleteHelper(); }
 			}
+		}
+
+		protected virtual void SendToSerial(GrblCommand tosend)
+		{
+			mUsedBuffer += tosend.SerialData.Length;
+			com.Write(tosend.SerialData); //invio dei dati alla linea di comunicazione
 		}
 
 		public int UsedBuffer
@@ -1855,7 +1871,7 @@ namespace LaserGRBL
 					pending.SetResult(rline, SupportCSV);   //assegnare lo stato
 					mPending.Dequeue();                     //solo alla fine rimuoverlo dalla lista (per write config che si aspetta che lo stato sia noto non appena la coda si svuota)
 
-					mUsedBuffer -= pending.SerialData.Length;
+					mUsedBuffer = Math.Max(0, mUsedBuffer - pending.SerialData.Length);
 
 					if (mTP.InProgram && pending.RepeatCount == 0) //solo se non è una ripetizione aggiorna il tempo
 						mTP.JobExecuted(pending.TimeOffset);
@@ -2015,8 +2031,9 @@ namespace LaserGRBL
 			SetStatus(var);
 		}
 
-		// Used by Marlin to update status to Idle (As Marlin has no immediate message)
-		protected virtual void ForceStatusIdle() {}
+		
+		protected virtual void ForceStatusIdle() {} // Used by Marlin to update status to Idle (As Marlin has no immediate message)
+
 		private void OnProgramEnd()
 		{
 			if (mTP.JobEnd() && mLoopCount > 1 && mMachineStatus != MacStatus.Check)
@@ -2032,8 +2049,7 @@ namespace LaserGRBL
 				Logger.LogMessage("ProgramEnd", "Job Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true));
 				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true)), false));
 
-				Logger.LogMessage("EnqueueProgram", "Push Footer");
-				ExecuteCustombutton(Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
+				OnJobEnd();
 
 				SoundEvent.PlaySound(SoundEvent.EventId.Success);
 
