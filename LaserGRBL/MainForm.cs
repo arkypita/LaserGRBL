@@ -75,6 +75,11 @@ namespace LaserGRBL
 			RefreshFormTitle();
 		}
 
+		public MainForm(string[] args) : this()
+		{
+			this.args = args;
+		}
+
 		private void MnAutoUpdateDropDown_Closing(object sender, ToolStripDropDownClosingEventArgs e)
 		{
 			if (e.CloseReason == ToolStripDropDownCloseReason.ItemClicked)
@@ -138,6 +143,15 @@ namespace LaserGRBL
 			ResumeLayout();
 
 			ManageMessage();
+
+
+			if (args != null && args.Length == 1)
+			{
+				string filename = args[0];
+				Application.DoEvents();
+				Core.OpenFile(this, filename, false);
+			}
+			
 		}
 
 		private void ManageMessage()
@@ -818,6 +832,8 @@ namespace LaserGRBL
 		}
 
 		bool MultiRunShown = false;
+		private readonly string[] args;
+
 		private void MnRunMulti_Click(object sender, EventArgs e)
 		{
 			if (MultiRunShown || MessageBox.Show(this, "Warning: this command will start/resume all job in any running LaserGRBL instance!", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)

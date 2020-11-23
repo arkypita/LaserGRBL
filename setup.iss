@@ -20,7 +20,7 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={pf}\{#MyAppName}
+DefaultDirName={commonpf}\{#MyAppName}
 DisableDirPage=no
 DisableProgramGroupPage=yes
 OutputDir=.\
@@ -31,7 +31,7 @@ InternalCompressLevel=ultra64
 CompressionThreads=2
 RestartIfNeededByRun=False
 Uninstallable=yes
-UninstallFilesDir={pf}
+UninstallFilesDir={commonpf}
 SetupIconFile=.\install.ico
 UninstallDisplayIcon={app}\LaserGRBL.exe
 
@@ -64,6 +64,7 @@ Source: ".\LaserGRBL\bin\Release\Firmware\*"; DestDir: "{app}\Firmware"; Flags: 
 Source: ".\LaserGRBL\bin\Release\LaserGRBL.exe.config"; DestDir: "{app}"; Flags: ignoreversion
 Source: ".\LaserGRBL\bin\Release\StandardMaterials.psh"; DestDir: "{app}"; Flags: ignoreversion
 Source: ".\LaserGRBL\bin\Release\Sound\*"; DestDir: "{app}\Sound"; Flags: ignoreversion
+Source: ".\lasergrblfile.ico"; DestDir: "{app}"; Flags: ignoreversion
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
@@ -75,3 +76,8 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
+[Registry]
+Root: HKCR; SubKey: ".nc"; ValueType: string; ValueData: "LaserGRBL gcode file"; Flags: uninsdeletekey
+Root: HKCR; SubKey: "LaserGRBL gcode file"; ValueType: string; ValueData: "GCode file for laser engraving"; Flags: uninsdeletekey
+Root: HKCR; SubKey: "LaserGRBL gcode file\Shell\Open\Command"; ValueType: string; ValueData: """{app}\LaserGRBL.exe"" ""%1"""; Flags: uninsdeletekey
+Root: HKCR; Subkey: "LaserGRBL gcode file\DefaultIcon"; ValueType: string; ValueData: "{app}\lasergrblfile.ico,0"; Flags: uninsdeletevalue
