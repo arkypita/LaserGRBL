@@ -493,7 +493,12 @@ namespace LaserGRBL
 
 		private void importCustomButtonsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (CustomButtons.Import())
+			ImportButton();
+		}
+
+		public void ImportButton(string filename = null)
+		{
+			if (CustomButtons.Import(filename))
 			{
 				RefreshCustomButtons();
 				CustomButtons.SaveFile();

@@ -71,9 +71,9 @@ namespace LaserGRBL
 			using (System.Windows.Forms.SaveFileDialog sfd = new System.Windows.Forms.SaveFileDialog())
 			{
 				sfd.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-				sfd.Filter = "ZippedButton|*.gz";
+				sfd.Filter = "ZippedButton|*.zbn";
 				sfd.AddExtension = true;
-				sfd.FileName = "CustomButtons.gz";
+				sfd.FileName = "CustomButtons.zbn";
 
 				System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
 				try
@@ -91,31 +91,37 @@ namespace LaserGRBL
 			}
 		}
 
-		public static bool Import()
+		public static bool Import(string filename = null)
 		{
-			using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
+			if (filename == null)
 			{
-				ofd.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-				ofd.Filter = "ZippedButton|*.gz";
-				ofd.AddExtension = true;
-				ofd.FileName = "CustomButtons.gz";
+				using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
+				{
+					ofd.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+					ofd.Filter = "ZippedButton|*.zbn;*.gz";
+					ofd.AddExtension = true;
 
+					System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+					try
+					{
+						dialogResult = ofd.ShowDialog();
+					}
+					catch (System.Runtime.InteropServices.COMException)
+					{
+						ofd.AutoUpgradeEnabled = false;
+						dialogResult = ofd.ShowDialog();
+					}
 
+					if (dialogResult == System.Windows.Forms.DialogResult.OK && ofd.FileName != null)
+						filename = ofd.FileName;
+				}
+			}
 
-				System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+			if (filename != null && System.IO.File.Exists(filename))
+			{
 				try
 				{
-					dialogResult = ofd.ShowDialog();
-				}
-				catch (System.Runtime.InteropServices.COMException)
-				{
-					ofd.AutoUpgradeEnabled = false;
-					dialogResult = ofd.ShowDialog();
-				}
-
-				if (dialogResult == System.Windows.Forms.DialogResult.OK && ofd.FileName != null && System.IO.File.Exists(ofd.FileName))
-				{
-					List<CustomButton> list = Tools.Serializer.ObjFromFile(ofd.FileName) as List<CustomButton>;
+					List<CustomButton> list = Tools.Serializer.ObjFromFile(filename) as List<CustomButton>;
 					if (list.Count > 0)
 					{
 						System.Windows.Forms.DialogResult rv = buttons.Count == 0 ? System.Windows.Forms.DialogResult.No : System.Windows.Forms.MessageBox.Show(Strings.BoxImportCustomButtonClearText, Strings.BoxImportCustomButtonCaption, System.Windows.Forms.MessageBoxButtons.YesNoCancel);
@@ -127,7 +133,7 @@ namespace LaserGRBL
 
 							foreach (CustomButton cb in list)
 							{
-								if (System.Windows.Forms.MessageBox.Show(string.Format("Import \"{0}\"?" ,  cb.ToolTip.Trim().Length > 0 ? cb.ToolTip : "[no name]"), Strings.BoxImportCustomButtonCaption, System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+								if (System.Windows.Forms.MessageBox.Show(string.Format("Import \"{0}\"?", cb.ToolTip.Trim().Length > 0 ? cb.ToolTip : "[no name]"), Strings.BoxImportCustomButtonCaption, System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
 									buttons.Add(cb);
 							}
 
@@ -135,6 +141,7 @@ namespace LaserGRBL
 						}
 					}
 				}
+				catch { System.Windows.Forms.MessageBox.Show($"Error importing custom buttons from {filename}"); }
 			}
 
 			return false;

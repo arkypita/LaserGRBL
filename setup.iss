@@ -65,6 +65,7 @@ Source: ".\LaserGRBL\bin\Release\LaserGRBL.exe.config"; DestDir: "{app}"; Flags:
 Source: ".\LaserGRBL\bin\Release\StandardMaterials.psh"; DestDir: "{app}"; Flags: ignoreversion
 Source: ".\LaserGRBL\bin\Release\Sound\*"; DestDir: "{app}\Sound"; Flags: ignoreversion
 Source: ".\lasergrblfile.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: ".\zippedbutton.ico"; DestDir: "{app}"; Flags: ignoreversion
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
@@ -81,3 +82,8 @@ Root: HKCR; SubKey: ".nc"; ValueType: string; ValueData: "LaserGRBL gcode file";
 Root: HKCR; SubKey: "LaserGRBL gcode file"; ValueType: string; ValueData: "GCode file for laser engraving"; Flags: uninsdeletekey
 Root: HKCR; SubKey: "LaserGRBL gcode file\Shell\Open\Command"; ValueType: string; ValueData: """{app}\LaserGRBL.exe"" ""%1"""; Flags: uninsdeletekey
 Root: HKCR; Subkey: "LaserGRBL gcode file\DefaultIcon"; ValueType: string; ValueData: "{app}\lasergrblfile.ico,0"; Flags: uninsdeletevalue
+
+Root: HKCR; SubKey: ".zbn"; ValueType: string; ValueData: "LaserGRBL zipped button"; Flags: uninsdeletekey
+Root: HKCR; SubKey: "LaserGRBL zipped button"; ValueType: string; ValueData: "This file contains LaserGRBL custom buttons"; Flags: uninsdeletekey
+Root: HKCR; SubKey: "LaserGRBL zipped button\Shell\Open\Command"; ValueType: string; ValueData: """{app}\LaserGRBL.exe"" ""%1"""; Flags: uninsdeletekey
+Root: HKCR; Subkey: "LaserGRBL zipped button\DefaultIcon"; ValueType: string; ValueData: "{app}\zippedbutton.ico,0"; Flags: uninsdeletevalue
