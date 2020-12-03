@@ -63,6 +63,8 @@
 			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
 			this.CbHiRes = new System.Windows.Forms.CheckBox();
 			this.label22 = new System.Windows.Forms.Label();
+			this.CbDisableSkip = new System.Windows.Forms.CheckBox();
+			this.label39 = new System.Windows.Forms.Label();
 			this.TpJogControl = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
 			this.label10 = new System.Windows.Forms.Label();
@@ -145,8 +147,6 @@
 			this.label36 = new System.Windows.Forms.Label();
 			this.label28 = new System.Windows.Forms.Label();
 			this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
-			this.CbDisableSkip = new System.Windows.Forms.CheckBox();
-			this.label39 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.MainTabPage.SuspendLayout();
@@ -446,6 +446,17 @@
 			// 
 			resources.ApplyResources(this.label22, "label22");
 			this.label22.Name = "label22";
+			// 
+			// CbDisableSkip
+			// 
+			resources.ApplyResources(this.CbDisableSkip, "CbDisableSkip");
+			this.CbDisableSkip.Name = "CbDisableSkip";
+			this.CbDisableSkip.UseVisualStyleBackColor = true;
+			// 
+			// label39
+			// 
+			resources.ApplyResources(this.label39, "label39");
+			this.label39.Name = "label39";
 			// 
 			// TpJogControl
 			// 
@@ -969,17 +980,6 @@
 			// SoundBrowserDialog
 			// 
 			resources.ApplyResources(this.SoundBrowserDialog, "SoundBrowserDialog");
-			// 
-			// CbDisableSkip
-			// 
-			resources.ApplyResources(this.CbDisableSkip, "CbDisableSkip");
-			this.CbDisableSkip.Name = "CbDisableSkip";
-			this.CbDisableSkip.UseVisualStyleBackColor = true;
-			// 
-			// label39
-			// 
-			resources.ApplyResources(this.label39, "label39");
-			this.label39.Name = "label39";
 			// 
 			// SettingsForm
 			// 

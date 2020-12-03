@@ -2382,15 +2382,23 @@ namespace LaserGRBL
 				exp.AddSetVariable("height", (double)height);
 				exp.AddSetVariable("jogstep", (double)jogstep);
 				exp.AddSetVariable("jogspeed", (double)jogspeed);
-				exp.AddSetVariable("WCO.X", WorkingOffset.X);
-				exp.AddSetVariable("WCO.Y", WorkingOffset.Y);
-				exp.AddSetVariable("WCO.Z", WorkingOffset.Z);
-				exp.AddSetVariable("MPos.X", MachinePosition.X);
-				exp.AddSetVariable("MPos.Y", MachinePosition.Y);
-				exp.AddSetVariable("MPos.Z", MachinePosition.Z);
-				exp.AddSetVariable("WPos.X", MachinePosition.X);
-				exp.AddSetVariable("WPos.Y", MachinePosition.Y);
-				exp.AddSetVariable("WPos.Z", MachinePosition.Z);
+				exp.AddSetVariable("WCO.X", (double)WorkingOffset.X);
+				exp.AddSetVariable("WCO.Y", (double)WorkingOffset.Y);
+				exp.AddSetVariable("WCO.Z", (double)WorkingOffset.Z);
+				exp.AddSetVariable("MPos.X", (double)MachinePosition.X);
+				exp.AddSetVariable("MPos.Y", (double)MachinePosition.Y);
+				exp.AddSetVariable("MPos.Z", (double)MachinePosition.Z);
+				exp.AddSetVariable("WPos.X", (double)MachinePosition.X);
+				exp.AddSetVariable("WPos.Y", (double)MachinePosition.Y);
+				exp.AddSetVariable("WPos.Z", (double)MachinePosition.Z);
+
+				GrblConf conf = Configuration;
+				if (conf != null)
+				{
+					foreach (KeyValuePair<int, decimal> p in conf)
+						exp.AddSetVariable("$" + p.Key, (double)p.Value);
+				}
+
 				double dval = exp.EvaluateD();
 				return m.Result(FormatNumber((decimal)dval));
 			}
@@ -2649,7 +2657,7 @@ namespace LaserGRBL
 	}
 
 	[Serializable]
-	public class GrblConf : System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<int, decimal>>
+	public class GrblConf : IEnumerable<System.Collections.Generic.KeyValuePair<int, decimal>>
 	{
 		public class GrblConfParam : ICloneable
 		{
