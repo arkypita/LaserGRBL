@@ -639,6 +639,15 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Cannot open a new file now..
+        /// </summary>
+        internal static string MsgboxCannotOpenFileNow {
+            get {
+                return ResourceManager.GetString("MsgboxCannotOpenFileNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a It seems that the current position is no longer known by Grbl.
         ///Without the Homing Procedure ($H) the result may not be reliable.
         ///Continue anyway?.

@@ -143,8 +143,11 @@ namespace LaserGRBL
 			ResumeLayout();
 
 			ManageMessage();
+			ManageCommandLineArgs(args);
+		}
 
-
+		private void ManageCommandLineArgs(string[] args)
+		{
 			if (args != null && args.Length == 1)
 			{
 				string filename = args[0];
@@ -153,12 +156,18 @@ namespace LaserGRBL
 					Application.DoEvents();
 
 					if (System.IO.Path.GetExtension(filename).ToLower() == ".zbn") //zipped button
+					{
 						PreviewForm.ImportButton(filename);
+					}
 					else
-						Core.OpenFile(this, filename, false);
+					{
+						if (Core.CanLoadNewFile)
+							Core.OpenFile(this, filename, false);
+						else
+							MessageBox.Show(Strings.MsgboxCannotOpenFileNow);
+					}
 				}
 			}
-			
 		}
 
 		private void ManageMessage()
