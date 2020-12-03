@@ -308,21 +308,32 @@ namespace LaserGRBL
             if(useOptimizeFast)
                 plist = OptimizePaths(plist);
 
-			//laser off and power to maxPower
-			list.Add(new GrblCommand(String.Format("{0} S{1}", c.lOff, c.maxPower)));
+			bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
+
+			
+			if (supportPWM)
+				list.Add(new GrblCommand($"{c.lOn} S0"));	//laser on and power to 0
+			else
+				list.Add(new GrblCommand($"{c.lOff} S{c.maxPower}"));	//laser off and power to maxPower
+
 			//set speed to borderspeed
 			// For marlin, need to specify G1 each time :
 			//list.Add(new GrblCommand(String.Format("G1 F{0}", c.borderSpeed)));
 			list.Add(new GrblCommand(String.Format("F{0}", c.borderSpeed)));
 
 			//trace borders
-			List<string> gc = Potrace.Export2GCode(plist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd);
+			List<string> gc;
+			if (supportPWM)
+				gc = Potrace.Export2GCode(plist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd);
+			else
+				gc = Potrace.Export2GCode(plist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd);
 
 			foreach (string code in gc)
 				list.Add(new GrblCommand(code));
 
 			//laser off (superflua??)
-			//list.Add(new GrblCommand(String.Format("{0}", c.lOff)));
+			if (supportPWM)
+				list.Add(new GrblCommand(c.lOff));	//necessaria perché finisce con solo S0
 
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
