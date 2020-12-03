@@ -759,6 +759,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="CSV\setting_codes.ortur.v1.0.csv" />
+    <None Include="StandardButtons.zbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="StandardMaterials.psh">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -14,11 +14,19 @@ namespace LaserGRBL
 	public class CustomButtons
 	{
 		private static List<CustomButton> buttons;
-		private static string filename = System.IO.Path.Combine(GrblCore.DataPath, "CustomButtons.bin");
+
+		private static string UserFile { get => System.IO.Path.Combine(GrblCore.DataPath, "CustomButtons.bin"); }
+		private static string StandardFile { get => System.IO.Path.Combine(LaserGRBL.GrblCore.ExePath, "StandardButtons.zbn"); }
 
 		public static void LoadFile() //in ingresso
 		{
-			buttons = (List<CustomButton>)Tools.Serializer.ObjFromFile(filename);
+			if (!System.IO.File.Exists(UserFile) && System.IO.File.Exists(StandardFile))
+			{
+				try { System.IO.File.Copy(StandardFile, UserFile, false); }
+				catch { }
+			}
+
+			buttons = (List<CustomButton>)Tools.Serializer.ObjFromFile(UserFile);
 			if (buttons == null)
 			{
 				if (buttons == null) buttons = (List<CustomButton>)Settings.GetAndDeleteObject("Custom Buttons", null);
@@ -30,7 +38,7 @@ namespace LaserGRBL
 
 		public static void SaveFile()
 		{
-			Tools.Serializer.ObjToFile(buttons, filename); //salva
+			Tools.Serializer.ObjToFile(buttons, UserFile); //salva
 		}
 
 		internal static void Reorder(int oldindex, int newindex)
