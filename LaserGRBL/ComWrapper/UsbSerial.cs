@@ -3,7 +3,6 @@
 // This program is free software; you can redistribute it and/or modify  it under the terms of the GPLv3 General Public License as published by  the Free Software Foundation; either version 3 of the License, or (at  your option) any later version.
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
-
 using System;
 
 namespace LaserGRBL.ComWrapper
@@ -15,7 +14,7 @@ namespace LaserGRBL.ComWrapper
 		private string mPortName;
 		private int mBaudRate;
 
-        public void Configure(params object[] param)
+		public void Configure(params object[] param)
 		{
 			mPortName = (string)param[0];
 			mBaudRate = (int)param[1];
@@ -31,12 +30,12 @@ namespace LaserGRBL.ComWrapper
 				try
 				{
 					com = new MySerial();
+					com.PortName = mPortName;
+					com.BaudRate = mBaudRate;
 					com.DataBits = 8;
 					com.Parity = System.IO.Ports.Parity.None;
 					com.StopBits = System.IO.Ports.StopBits.One;
 					com.Handshake = System.IO.Ports.Handshake.None;
-					com.PortName = mPortName;
-					com.BaudRate = mBaudRate;
 					com.NewLine = "\n";
 					com.WriteTimeout = 1000; //se si blocca in write
 
@@ -50,6 +49,7 @@ namespace LaserGRBL.ComWrapper
 					Logger.LogMessage("OpenCom", "Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString());
 
 					com.Open();
+
 					com.DiscardOutBuffer();
 					com.DiscardInBuffer();
 				}
@@ -60,10 +60,10 @@ namespace LaserGRBL.ComWrapper
 						//FIX https://github.com/arkypita/LaserGRBL/issues/31
 
 						try
-						{ 
+						{
 							com.PortName = mPortName.Substring(0, mPortName.Length - 1); //remove last digit and try again
 
-                            ComLogger.Log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
+							ComLogger.Log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
 							Logger.LogMessage("OpenCom", "Retry opening {0} as {1} (issue #31)", mPortName.ToUpper(), com.PortName.ToUpper());
 
 							com.Open();
@@ -86,8 +86,8 @@ namespace LaserGRBL.ComWrapper
 
 		private string GetResetDiagnosticString()
 		{
-			bool rts = Settings.GetObject("HardReset Grbl On Connect", false);
-			bool dtr = Settings.GetObject("HardReset Grbl On Connect", false);
+			bool rts = com.RtsEnable;
+			bool dtr = com.DtrEnable;
 			bool soft = Settings.GetObject("Reset Grbl On Connect", false);
 
 			string rv = "";
@@ -125,16 +125,16 @@ namespace LaserGRBL.ComWrapper
 			}
 		}
 
-        public void Write(byte[] arr)
-        {
+		public void Write(byte[] arr)
+		{
 			if (com != null)
 			{
 				ComLogger.Log("tx", arr);
 				com.Write(arr, 0, arr.Length);
 			}
-        }
+		}
 
-        public void Write(string text)
+		public void Write(string text)
 		{
 			if (com != null)
 			{
@@ -194,5 +194,6 @@ namespace LaserGRBL.ComWrapper
 
 			base.Dispose(disposing);
 		}
+
 	}
 }

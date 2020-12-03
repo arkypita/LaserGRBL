@@ -89,26 +89,26 @@ namespace LaserGRBL
 		private string mCodedResult;
 		private TimeSpan mTimeOffset;
 		private Dictionary<char, GrblCommand.Element> mHelper;
-
 		private int mRepeatCount;
 
-		public GrblCommand(string line)
-		{ mLine = line.ToUpper().Trim(); mRepeatCount = 0; }
-
-		public GrblCommand(string line, int repeat)
-		{ mLine = line.ToUpper().Trim(); mRepeatCount = repeat; }
+		public GrblCommand(string line, int repeat = 0, bool preservecase = false)
+		{ 
+			mLine = line.Trim();
+			if (!preservecase) mLine = mLine.ToUpper();
+			mRepeatCount = repeat; 
+		}
 
 		public GrblCommand(IEnumerable<Element> elements)
 		{
 			mLine = "";
 			foreach (GrblCommand.Element e in elements)
 				mLine = mLine + e.ToString() + " ";
-			mLine = mLine.TrimEnd().ToUpper();
+			mLine = mLine.ToUpper().Trim();
 		}
 
 		public GrblCommand(Element first, GrblCommand toappend)
 		{
-			mLine = string.Format("{0} {1}", first, toappend.mLine);
+			mLine = string.Format("{0} {1}", first, toappend.mLine).ToUpper().Trim();
 		}
 
 		public bool JustBuilt
@@ -423,7 +423,7 @@ namespace LaserGRBL
 		{
 			mMessage = message.Trim();
 
-			if (mMessage.ToLower().StartsWith("$") || mMessage.ToLower().StartsWith("~") || mMessage.ToLower().StartsWith("!") || mMessage.ToLower().StartsWith("?") || mMessage.ToLower().StartsWith("ctrl"))
+			if (mMessage.ToLower().StartsWith("$") && mMessage.Contains("=")) //if (mMessage.ToLower().StartsWith("$") || mMessage.ToLower().StartsWith("~") || mMessage.ToLower().StartsWith("!") || mMessage.ToLower().StartsWith("?") || mMessage.ToLower().StartsWith("ctrl"))
 				mType = MessageType.Config;
 			else if (mMessage.ToLower().StartsWith("grbl"))
 				mType = MessageType.Startup;

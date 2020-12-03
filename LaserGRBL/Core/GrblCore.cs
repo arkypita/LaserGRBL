@@ -14,7 +14,7 @@ using System.Globalization;
 namespace LaserGRBL
 {
 	public enum Firmware
-	{ Grbl, Smoothie, Marlin }
+	{ Grbl, Smoothie, Marlin, VigoWork }
 
 	/// <summary>
 	/// Description of CommandThread.
@@ -103,7 +103,6 @@ namespace LaserGRBL
 				mMajor = major; mMinor = minor; mBuild = build;
 				mVendorInfo = VendorInfo;
 				mVendorVersion = VendorVersion;
-				
 				mOrtur = VendorInfo != null && VendorInfo.Contains("Ortur");
 			}
 
@@ -253,8 +252,9 @@ namespace LaserGRBL
 
 		private string mWelcomeSeen = null;
 		private string mVersionSeen = null;
-		private int mBuffer;
-        private int stuckBufferCounter = 0;
+		protected int mUsedBuffer;
+		private int mAutoBufferSize = 127;
+		private int stuckBufferCounter = 0;
 		private GPoint mMPos;
 		private GPoint mWCO;
 		private int mGrblBlocks = -1;
@@ -264,7 +264,7 @@ namespace LaserGRBL
 		protected TimeProjection mTP = new TimeProjection();
 
 		private MacStatus mMachineStatus;
-		private static int BUFFER_SIZE = 127;
+		
 
 		private float mCurF;
 		private float mCurS;
@@ -319,7 +319,7 @@ namespace LaserGRBL
 			mQueue = new System.Collections.Generic.Queue<GrblCommand>();
 			mPending = new System.Collections.Generic.Queue<GrblCommand>();
 			mSent = new System.Collections.Generic.List<IGrblRow>();
-			mBuffer = 0;
+			mUsedBuffer = 0;
 
 			mSentPtr = mSent;
 			mQueuePtr = mQueue;
@@ -920,17 +920,11 @@ namespace LaserGRBL
 				}
 
 				if (first)
-				{
-					Logger.LogMessage("EnqueueProgram", "Push Header");
-					ExecuteCustombutton(Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
-				}
+					OnJobBegin();
 
 				if (pass)
-				{
-					Logger.LogMessage("EnqueueProgram", "Push Passes");
-					ExecuteCustombutton(Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
-				}
-				
+					OnJobCycle();
+
 
 				Logger.LogMessage("EnqueueProgram", "Push File, {0} lines", file.Count);
 				foreach (GrblCommand cmd in file)
@@ -939,6 +933,24 @@ namespace LaserGRBL
 				mTP.JobStart(LoadedFile, mQueuePtr);
 				Logger.LogMessage("EnqueueProgram", "Running program, {0} lines", file.Count);
 			}
+		}
+
+		private void OnJobCycle()
+		{
+			Logger.LogMessage("EnqueueProgram", "Push Passes");
+			ExecuteCustombutton(Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
+		}
+
+		protected virtual void OnJobBegin()
+		{
+			Logger.LogMessage("EnqueueProgram", "Push Header");
+			ExecuteCustombutton(Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
+		}
+
+		protected virtual void OnJobEnd()
+		{
+			Logger.LogMessage("EnqueueProgram", "Push Footer");
+			ExecuteCustombutton(Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
 		}
 
 		private void ContinueProgramFromKnown(int position, bool homing, bool setwco)
@@ -1021,7 +1033,7 @@ namespace LaserGRBL
 		{
 			try
 			{
-				BUFFER_SIZE = 127; //reset to default buffer size
+				mAutoBufferSize = 127; //reset to default buffer size
 				SetStatus(MacStatus.Connecting);
 				connectStart = Tools.HiResTimer.TotalMilliseconds;
 
@@ -1053,7 +1065,7 @@ namespace LaserGRBL
 				if (com.IsOpen)
 					com.Close(!user);
 
-				mBuffer = 0;
+				mUsedBuffer = 0;
 				mTP.JobEnd();
 
 				TX.Stop();
@@ -1116,7 +1128,7 @@ namespace LaserGRBL
 			lock (this)
 			{
 				ClearQueue(true);
-				mBuffer = 0;
+				mUsedBuffer = 0;
 				mTP.JobEnd();
 				mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
 				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
@@ -1476,8 +1488,8 @@ namespace LaserGRBL
 				mQueuePtr.Dequeue();
 		}
 
-		private bool HasSpaceInBuffer(GrblCommand command)
-		{ return (mBuffer + command.SerialData.Length) <= BUFFER_SIZE; }
+		protected virtual bool HasSpaceInBuffer(GrblCommand command)
+		{ return (mUsedBuffer + command.SerialData.Length) <= BufferSize; }
 
 		private void SendLine()
 		{
@@ -1493,8 +1505,7 @@ namespace LaserGRBL
 					mPending.Enqueue(tosend);
 					RemoveManagedCommand();
 
-					mBuffer += tosend.SerialData.Length;
-					com.Write(tosend.SerialData);
+					SendToSerial(tosend);
 
 					if (mTP.InProgram)
 						mTP.JobSent();
@@ -1510,14 +1521,20 @@ namespace LaserGRBL
 			}
 		}
 
+		protected virtual void SendToSerial(GrblCommand tosend)
+		{
+			mUsedBuffer += tosend.SerialData.Length;
+			com.Write(tosend.SerialData); //invio dei dati alla linea di comunicazione
+		}
+
 		public int UsedBuffer
-		{ get { return mBuffer; } }
+		{ get { return mUsedBuffer; } }
 
 		public int FreeBuffer
-		{ get { return BUFFER_SIZE - mBuffer; } }
+		{ get { return BufferSize - mUsedBuffer; } }
 
-		public int BufferSize
-		{ get { return BUFFER_SIZE; } }
+		public virtual int BufferSize
+		{ get { return mAutoBufferSize; } }
 
 		public int GrblBlock
 		{ get { return mGrblBlocks; } }
@@ -1532,26 +1549,8 @@ namespace LaserGRBL
 				string rline = null;
 				if ((rline = WaitComLineOrDisconnect()) != null)
 				{
-					if (rline.Length > 0)
-					{
-						lock (this)
-						{
-							if (IsCommandReplyMessage(rline))
-								ManageCommandResponse(rline);
-							else if (IsRealtimeStatusMessage(rline))
-								ManageRealTimeStatus(rline);
-							else if (IsStandardWelcomeMessage(rline))
-								ManageStandardWelcomeMessage(rline);
-							else if (IsVigoWelcomeMessage(rline))
-								ManageVigoWelcomeMessage(rline);
-							else if (IsOrturWelcomeMessage(rline))
-								ManageOrturWelcomeMessage(rline);
-							else if (IsOrturVersionInfo(rline))
-								ManageOrturVersionInfo(rline);
-							else
-								ManageGenericMessage(rline);
-						}
-					}
+					lock (this)
+					{ManageReceivedLine(rline);}
 				}
 
 				RX.SleepTime = HasIncomingData() ? CurrentThreadingMode.RxShort : CurrentThreadingMode.RxLong;
@@ -1560,37 +1559,30 @@ namespace LaserGRBL
 			{ Logger.LogException("ThreadRX", ex); }
 		}
 
-        private bool IsCommandReplyMessage(string rline)
-        {
-            return rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error");
-        }
-
-        private bool IsStandardWelcomeMessage(string rline)
-        {
-            return rline.StartsWith("Grbl ");
-        }
-
-		private bool IsVigoWelcomeMessage(string rline)
+		protected virtual void ManageReceivedLine(string rline)
 		{
-			return rline.StartsWith("Grbl-Vigo");
+			if (IsCommandReplyMessage(rline))
+				ManageCommandResponse(rline);
+			else if (IsRealtimeStatusMessage(rline))
+				ManageRealTimeStatus(rline);
+			else if (IsVigoWelcomeMessage(rline))
+				ManageVigoWelcomeMessage(rline);
+			else if (IsOrturModelMessage(rline))
+				ManageOrturModelMessage(rline);
+			else if (IsOrturFirmwareMessage(rline))
+				ManageOrturFirmwareMessage(rline);
+			else if (IsStandardWelcomeMessage(rline))
+				ManageStandardWelcomeMessage(rline);
+			else
+				ManageGenericMessage(rline);
 		}
 
-		private bool IsOrturWelcomeMessage(string rline)
-		{
-			return rline.StartsWith("Ortur ");
-		}
-
-		private bool IsOrturVersionInfo(string rline)
-		{
-			return rline.StartsWith("OLF");
-		}
-
-		// Return true if message received start with < and finish by >
-		// Overrided by Marlin
-		protected virtual bool IsRealtimeStatusMessage(string rline)
-		{
-			return rline.StartsWith("<") && rline.EndsWith(">");
-		}
+		private bool IsCommandReplyMessage(string rline) => rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error");
+		private bool IsRealtimeStatusMessage(string rline) => rline.StartsWith("<") && rline.EndsWith(">");
+		private bool IsVigoWelcomeMessage(string rline) => rline.StartsWith("Grbl-Vigo");
+		private bool IsOrturModelMessage(string rline) => rline.StartsWith("Ortur ");
+		private bool IsOrturFirmwareMessage(string rline) => rline.StartsWith("OLF");
+		private bool IsStandardWelcomeMessage(string rline) => rline.StartsWith("Grbl");
 
 		private void ManageGenericMessage(string rline)
 		{
@@ -1646,7 +1638,7 @@ namespace LaserGRBL
 			mSentPtr.Add(new GrblMessage(rline, false));
 		}
 
-		private void ManageOrturWelcomeMessage(string rline)
+		private void ManageOrturModelMessage(string rline)
 		{
 			try
 			{
@@ -1664,7 +1656,7 @@ namespace LaserGRBL
 			mSentPtr.Add(new GrblMessage(rline, false));
 		}
 
-		private void ManageOrturVersionInfo(string rline)
+		private void ManageOrturFirmwareMessage(string rline)
 		{
 			try
 			{
@@ -1687,7 +1679,7 @@ namespace LaserGRBL
 			lock (this)
 			{
 				ClearQueue(false);
-				mBuffer = 0;
+				mUsedBuffer = 0;
 				mTP.JobEnd();
 				mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
 				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
@@ -1717,7 +1709,7 @@ namespace LaserGRBL
 				return new GrblVersionInfo(0, 9);
 		}
 
-		protected virtual void ManageRealTimeStatus(string rline)
+		private void ManageRealTimeStatus(string rline)
 		{
 			try
 			{
@@ -1811,9 +1803,9 @@ namespace LaserGRBL
 
             if (stuckBufferCounter > 10 && mPending.Count > 0)
                 ManageCommandResponse("ok");
-            if (mGrblBuffer == BUFFER_SIZE && mPending.Count > 0)
+            if (mGrblBuffer == BufferSize && mPending.Count > 0)
                 stuckBufferCounter++;
-            if ((mGrblBuffer != BUFFER_SIZE) ||( mPending.Count == 0 && mGrblBuffer == BUFFER_SIZE))
+            if ((mGrblBuffer != BufferSize) ||( mPending.Count == 0 && mGrblBuffer == BufferSize))
                 stuckBufferCounter = 0;
 
             EnlargeBuffer(mGrblBuffer);
@@ -1821,16 +1813,16 @@ namespace LaserGRBL
 
 		private void EnlargeBuffer(int mGrblBuffer)
 		{
-			if (BUFFER_SIZE == 127) //act only to change default value at first event, do not re-act without a new connect
+			if (BufferSize == 127) //act only to change default value at first event, do not re-act without a new connect
 			{
 				if (mGrblBuffer == 128) //Grbl v1.1 with enabled buffer report
-					BUFFER_SIZE = 128;
+					mAutoBufferSize = 128;
                 else if (mGrblBuffer == 255) //Grbl-Mega fixed
-                    BUFFER_SIZE = 255;
+					mAutoBufferSize = 255;
                 else if (mGrblBuffer == 256) //Grbl-Mega
-					BUFFER_SIZE = 256;
+					mAutoBufferSize = 256;
 				else if (mGrblBuffer == 10240) //Grbl-LPC
-					BUFFER_SIZE = 10240;
+					mAutoBufferSize = 10240;
 			}
 		}
 
@@ -1868,7 +1860,7 @@ namespace LaserGRBL
 			mTP.LastKnownWCO = wco; //remember last wco for job resume
 		}
 
-		private void ManageCommandResponse(string rline)
+		protected void ManageCommandResponse(string rline)
 		{
 			try
 			{
@@ -1879,7 +1871,7 @@ namespace LaserGRBL
 					pending.SetResult(rline, SupportCSV);   //assegnare lo stato
 					mPending.Dequeue();                     //solo alla fine rimuoverlo dalla lista (per write config che si aspetta che lo stato sia noto non appena la coda si svuota)
 
-					mBuffer -= pending.SerialData.Length;
+					mUsedBuffer = Math.Max(0, mUsedBuffer - pending.SerialData.Length);
 
 					if (mTP.InProgram && pending.RepeatCount == 0) //solo se non è una ripetizione aggiorna il tempo
 						mTP.JobExecuted(pending.TimeOffset);
@@ -2039,8 +2031,9 @@ namespace LaserGRBL
 			SetStatus(var);
 		}
 
-		// Used by Marlin to update status to Idle (As Marlin has no immediate message)
-		protected virtual void ForceStatusIdle() {}
+		
+		protected virtual void ForceStatusIdle() {} // Used by Marlin to update status to Idle (As Marlin has no immediate message)
+
 		private void OnProgramEnd()
 		{
 			if (mTP.JobEnd() && mLoopCount > 1 && mMachineStatus != MacStatus.Check)
@@ -2056,8 +2049,7 @@ namespace LaserGRBL
 				Logger.LogMessage("ProgramEnd", "Job Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true));
 				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Minute, Tools.Utils.TimePrecision.Second, ",", true)), false));
 
-				Logger.LogMessage("EnqueueProgram", "Push Footer");
-				ExecuteCustombutton(Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
+				OnJobEnd();
 
 				SoundEvent.PlaySound(SoundEvent.EventId.Success);
 

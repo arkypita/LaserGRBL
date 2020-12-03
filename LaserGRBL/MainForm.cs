@@ -44,6 +44,8 @@ namespace LaserGRBL
 				Core = new SmoothieCore(this, PreviewForm, JogForm);
 			else if (ftype == Firmware.Marlin)
 				Core = new MarlinCore(this, PreviewForm, JogForm);
+			else if (ftype == Firmware.VigoWork)
+				Core = new VigoCore(this, PreviewForm, JogForm);
 			else
 				Core = new GrblCore(this, PreviewForm, JogForm);
 			ExceptionManager.Core = Core;
@@ -286,6 +288,8 @@ namespace LaserGRBL
 			TTOvS.Visible = Core.SupportOverride;
 			spacer.Visible = Core.SupportOverride;
 
+			ComWrapper.WrapperType wt = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
+			MnWiFiDiscovery.Visible = wt == ComWrapper.WrapperType.LaserWebESP8266 || wt == ComWrapper.WrapperType.Telnet;
 
 			switch (Core.MachineStatus)
 			{
@@ -871,6 +875,11 @@ namespace LaserGRBL
 				Tools.Utils.OpenLink(ToolBarMessage.Content);
 				UsageStats.Messages.ClearMessage(ToolBarMessage);
 			}
+		}
+
+		private void MnWiFiDiscovery_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 

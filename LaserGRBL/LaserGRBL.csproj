@@ -111,6 +111,7 @@
       <DependentUpon>AutotraceTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Autotrace\Autotrace.cs" />
+    <Compile Include="Core\VigoCore.cs" />
     <Compile Include="Tools\Json.cs" />
     <Compile Include="ComWrapper\ComLogger.cs" />
     <Compile Include="ExceptionManager.cs">
@@ -131,7 +132,7 @@
     <Compile Include="LicenseForm.Designer.cs">
       <DependentUpon>LicenseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MarlinCore.cs" />
+    <Compile Include="Core\MarlinCore.cs" />
     <Compile Include="PSHelper\MaterialDB.cs">
       <DependentUpon>MaterialDB.xsd</DependentUpon>
     </Compile>
@@ -159,7 +160,7 @@
       <DependentUpon>SaveOptionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SincroStart.cs" />
-    <Compile Include="SmoothieCore.cs" />
+    <Compile Include="Core\SmoothieCore.cs" />
     <Compile Include="Sound\SoundEvent.cs" />
     <Compile Include="SvgConverter\ConvertSizeAndOptionForm.cs">
       <SubType>Form</SubType>
@@ -537,7 +538,7 @@
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AutoUpdate\GitHub.cs" />
-    <Compile Include="GrblCore.cs" />
+    <Compile Include="Core\GrblCore.cs" />
     <Compile Include="CSV\CsvDictionary.cs" />
     <Compile Include="CSV\FormattedMessage.cs" />
     <Compile Include="GrblCommand.cs" />

@@ -203,7 +203,7 @@ namespace LaserGRBL
 		}
 		void TxtManualCommandCommandEntered(string command)
 		{
-			Core.EnqueueCommand(new GrblCommand(command));
+			Core.EnqueueCommand(new GrblCommand(command, 0, true));
 		}
 		
 		public void TimerUpdate()
