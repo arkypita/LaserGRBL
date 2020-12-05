@@ -49,11 +49,7 @@ namespace LaserGRBL.SvgConverter
 		public System.Drawing.PointF UserOffset = new System.Drawing.PointF(0,0);
 		public float GCodeXYFeed = 2000;        // XY feed to apply for G1
 
-		// Using Spindle pwr. to switch on/off laser
-		private bool gcodeUseSpindle = false; // Switch on/off spindle for Pen down/up (M3/M5)
-
 		public bool svgConvertToMM = true;
-
 		private float gcodeScale = 1;                    // finally scale with this factor if svgScaleApply and svgMaxSize
 		private Matrix[] matrixGroup = new Matrix[10];   // store SVG-Group transformation matrixes
 		private Matrix matrixElement = new Matrix();     // store finally applied matrix
@@ -94,17 +90,11 @@ namespace LaserGRBL.SvgConverter
 			gcode.setup();          // initialize GCode creation (get stored settings for export)
 			gcode.setRapidNum(Settings.GetObject("Disable G0 fast skip", false) ? 1 : 0);
 
-			//if (gcodeUseSpindle) gcode.SpindleOn(gcodeString, "Start spindle - Option Z-Axis");
-			//gcode.PenUp(gcodeString, "SVG Start ");
+			gcode.PutInitialCommand(gcodeString);
 			startConvert(svgCode);
+			gcode.PutFinalCommand(gcodeString);
 
-			if (gcodeUseSpindle) gcode.SpindleOff(gcodeString, "Stop spindle - Option Z-Axis");
-
-			//string header = "G90\r\n";
-			//string footer = "G0X0Y0";
-
-			//return header + gcodeString.ToString().Replace(',', '.') + footer;
-			return gcodeString.ToString().Replace(',', '.');
+			return gcodeString.Replace(',', '.').ToString();
 		}
 
 		/// <summary>

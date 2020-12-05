@@ -57,6 +57,7 @@ namespace LaserGRBL.SvgConverter
 		private static Firmware firmwareType = Settings.GetObject("Firmware Type", Firmware.Grbl);
 		
 		private static int rapidnum = 0;
+		private static bool SupportPWM = true;
 
 		public static void setup()
 		{
@@ -69,6 +70,7 @@ namespace LaserGRBL.SvgConverter
 				gcodeSpindleSpeed /= 255.0f;
 			gcodeSpindleCmdOn = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
 			gcodeSpindleCmdOff = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
+			SupportPWM = Settings.GetObject("Support Hardware PWM", true); //If Support PWM use S command instead of M3-M4 / M5
 
 			lastMovewasG0 = true;
 			lastx = -1; lasty = -1; lastz = 0; lasts = -1 ; lastg = -1;
@@ -104,6 +106,7 @@ namespace LaserGRBL.SvgConverter
 			{ return Convert.ToInt16(cmdG.Substring(1)); }
 			return -1;
 		}
+
 		public static string getStrGCode(char code, string tmp)
 		{
 			int cmt = tmp.IndexOf("(");
@@ -145,14 +148,38 @@ namespace LaserGRBL.SvgConverter
 
 		public static void SpindleOn(StringBuilder gcodeString, string cmt = "")
 		{
-			if (cmt.Length > 0) cmt = string.Format("({0})", cmt);
-			gcodeString.AppendFormat("{0} S{1} {2}\r\n", gcodeSpindleCmdOn, gcodeSpindleSpeed, cmt);
+			if (cmt.Length > 0) cmt = string.Format(" ({0})", cmt);
+
+			if (SupportPWM)
+				gcodeString.AppendFormat("S{0}{1}\r\n", gcodeSpindleSpeed, cmt); //only set SMax
+			else
+				gcodeString.AppendFormat("{0}{1}\r\n", gcodeSpindleCmdOn, cmt); //only set M3/M4
 		}
 
 		public static void SpindleOff(StringBuilder gcodeString, string cmt = "")
 		{
-			if (cmt.Length > 0) cmt = string.Format("({0})", cmt);
-			gcodeString.AppendFormat("{0} {1}\r\n", gcodeSpindleCmdOff, cmt);
+			if (cmt.Length > 0) cmt = string.Format(" ({0})", cmt);
+			
+			if (SupportPWM)
+				gcodeString.AppendFormat("S0{0}\r\n", cmt); //only set S0
+			else
+				gcodeString.AppendFormat("{0}{1}\r\n", gcodeSpindleCmdOff, cmt); //only set M5
+		}
+
+		internal static void PutInitialCommand(StringBuilder gcodeString)
+		{
+			if (SupportPWM)
+				gcodeString.AppendFormat("{0} S0\r\n", gcodeSpindleCmdOn); //turn ON with zero power
+			else
+				gcodeString.AppendFormat("{0} S{1}\r\n", gcodeSpindleCmdOff, gcodeSpindleSpeed); //turn OFF and set MaxPower
+		}
+
+		internal static void PutFinalCommand(StringBuilder gcodeString)
+		{
+			if (SupportPWM)
+				gcodeString.AppendFormat("M5 S0\r\n"); //turn OFF and zero power
+			else
+				gcodeString.AppendFormat("M5 S0\r\n"); //turn OFF and zero power
 		}
 
 		public static void PenDown(StringBuilder gcodeString, string cmto = "")
