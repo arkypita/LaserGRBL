@@ -684,4 +684,125 @@
     <Cycles>1</Cycles>
     <Remarks>The surface should be painted black by Marker Pen.</Remarks>
   </Materials>
+  <Materials>
+    <id>bf79a36c-aaf2-4944-bda0-e2aa66cafc0d</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 20W (5W)</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>28</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>2a5f8d01-8030-44ac-b3b3-5ae9ff8d888a</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 20W (5W)</Model>
+    <Material>Hardwood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>28</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>bed6b818-8961-4773-bba4-184d4fc181d0</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 20W (5W)</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>28</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>e79b8428-b563-434c-8a9b-fb44a510c29b</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 20W (5W)</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>28</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>ae5c05c8-cf0f-4109-861f-5c0ac9f428a7</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 20W (5W)</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>18</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>efd1be96-741a-4210-b417-3e1128564dd8</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 20W (5W)</Model>
+    <Material>Mirrors</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>28</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>a7f94b98-150c-409a-928d-ae6c95db259d</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 20W (5W)</Model>
+    <Material>Aluminium alloy</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>13265162-783e-42d7-a5b5-325d0e3624a1</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 20W (5W)</Model>
+    <Material>Basswood</Material>
+    <Thickness>1.8mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>3</Cycles>
+  </Materials>
+  <Materials>
+    <id>a502639d-5ea6-4e22-b7b6-2eeb9d48f53a</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 20W (5W)</Model>
+    <Material>Hardwood</Material>
+    <Thickness>6mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>15</Cycles>
+  </Materials>
+  <Materials>
+    <id>4ec26caf-4df7-453d-95d5-3b7795f69413</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 20W (5W)</Model>
+    <Material>Bamboo</Material>
+    <Thickness>1.8mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>3</Cycles>
+  </Materials>
+  <Materials>
+    <id>5309a65a-1e45-4a3f-9858-52cc7d298953</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 20W (5W)</Model>
+    <Material>Acrylic</Material>
+    <Thickness>2.8mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>12</Cycles>
+  </Materials>
 </MaterialDB>
