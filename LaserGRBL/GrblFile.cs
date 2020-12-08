@@ -907,7 +907,12 @@ namespace LaserGRBL
 					TimeSpan delay = spb.AnalyzeCommand(cmd, true, conf);
 
 					mRange.UpdateSRange(spb.S);
-					mRange.UpdateXYRange(spb.X, spb.Y, spb.LaserBurning);
+
+					if (spb.LastArcHelperResult != null)
+						mRange.UpdateXYRange(spb.LastArcHelperResult.RectX, spb.LastArcHelperResult.RectY, spb.LastArcHelperResult.RectW, spb.LastArcHelperResult.RectH, spb.LaserBurning);
+					else
+						mRange.UpdateXYRange(spb.X, spb.Y, spb.LaserBurning);
+					
 					mEstimatedTotalTime += delay;
 					cmd.SetOffset(mEstimatedTotalTime);
 				}
@@ -1159,6 +1164,15 @@ namespace LaserGRBL
 				if (y != null) Y.UpdateRange(y.Number);
 			}
 
+			internal void UpdateRange(double rectX, double rectY, double rectW, double rectH)
+			{
+				X.UpdateRange((decimal)rectX);
+				X.UpdateRange((decimal)(rectX + rectW));
+
+				Y.UpdateRange((decimal)rectY);
+				Y.UpdateRange((decimal)(rectY + rectH));
+			}
+
 			public void ResetRange()
 			{
 				X.ResetRange();
@@ -1236,6 +1250,12 @@ namespace LaserGRBL
 		{
 			if (drawing) DrawingRange.UpdateRange(X, Y);
 			MovingRange.UpdateRange(X, Y);
+		}
+
+		internal void UpdateXYRange(double rectX, double rectY, double rectW, double rectH, bool drawing)
+		{
+			if (drawing) DrawingRange.UpdateRange(rectX, rectY, rectW, rectH);
+			MovingRange.UpdateRange(rectX, rectY, rectW, rectH);
 		}
 
 		public void UpdateSRange(GrblCommand.Element S)

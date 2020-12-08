@@ -28,11 +28,11 @@ namespace LaserGRBL
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			System.Globalization.CultureInfo ci = Settings.GetObject<System.Globalization.CultureInfo>("User Language", null);
-			if (ci != null)
-				Thread.CurrentThread.CurrentUICulture = ci;
-
+			if (ci != null) Thread.CurrentThread.CurrentUICulture = ci;
 			Tools.TaskScheduler.SetClockResolution(1); //use a fast clock
+			
 			Application.Run(new MainForm(args));
+			
 			GrblEmulator.WebSocketEmulator.Stop();
 			Autotrace.CleanupTmpFolder();
 			Logger.Stop();

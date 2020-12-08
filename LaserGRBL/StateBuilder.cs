@@ -89,6 +89,8 @@ namespace LaserGRBL
 			private LastValueElement mCurF = new LastValueElement("F0");
 			private LastValueElement mCurS = new LastValueElement("S0");
 
+			public G2G3Helper LastArcHelperResult;
+
 			public TimeSpan AnalyzeCommand(GrblCommand cmd, bool compute, GrblConf conf = null)
 			{
 				bool delete = !cmd.JustBuilt;
@@ -188,6 +190,8 @@ namespace LaserGRBL
 
 			private decimal GetSegmentLenght(GrblCommand cmd)
 			{
+				LastArcHelperResult = null;
+
 				if (cmd.IsLinearMovement)
 					return Tools.MathHelper.LinearDistance(mCurX.Previous, mCurY.Previous, mCurX.Number, mCurY.Number);
 				else if (cmd.IsArcMovement) //arc of given radius
@@ -239,7 +243,8 @@ namespace LaserGRBL
 
 			internal G2G3Helper GetArcHelper(GrblCommand cmd)
 			{
-				return new G2G3Helper(this, cmd);
+				LastArcHelperResult = new G2G3Helper(this, cmd);
+				return LastArcHelperResult;
 			}
 		}
 
@@ -414,7 +419,7 @@ namespace LaserGRBL
 			}
 
 
-			public static double CalculateAngle(double x1, double y1, double x2, double y2)
+			private static double CalculateAngle(double x1, double y1, double x2, double y2)
 			{
 				// returns Angle of line between 2 points and X axis (according to quadrants)
 				double Angle = 0;
@@ -444,13 +449,92 @@ namespace LaserGRBL
 				return Angle;
 			}
 
-			public static double AngularDistance(double aA, double bA, bool cw)
+			private static double AngularDistance(double aA, double bA, bool cw)
 			{
 				if (cw)
 					return bA >= aA ? (bA - 2 * Math.PI - aA) : bA - aA;
 				else
 					return -(aA >= bA ? (aA - 2 * Math.PI - bA) : aA - bA);
 			}
+
+			//public void FindBox(double x1, double x2)
+			//{
+			//	double xMin, yMin, xMax, yMax;
+			//	// compute radius of circle
+			//	double radius = Math.Sqrt(Math.Pow((xc - x1), 2) + Math.Pow((yc - y1), 2));
+
+			//	// compute starting and ending points in polar coordinates
+			//	double t1 = 0.0;
+			//	if (x1 == 0.0)
+			//	{
+			//		t1 = Math.PI / 2;
+			//	}
+			//	else
+			//	{
+			//		t1 = Math.atan(y1 / x1);
+			//	}
+
+			//	double t2 = 0.0;
+			//	if (x2 == 0.0)
+			//	{
+			//		t2 = Math.PI / 2;
+			//	}
+			//	else
+			//	{
+			//		t2 = Math.atan(y2 / x2);
+			//	}
+
+			//	// determine starting and ending polar angles
+			//	double tStart, tEnd;
+			//	if (t1 < t2)
+			//	{
+			//		tStart = t1;
+			//		tEnd = t2;
+			//	}
+			//	else
+			//	{
+			//		tStart = t2;
+			//		tEnd = t1;
+			//	}
+
+			//	// now scan the polar space at fixed radius and find
+			//	// the minimum AND maximum Cartesian x and y values
+			//	double delta = 0.01;
+
+			//	// initialize min and max coordinates to first point
+			//	xMin = radius * Math.cos(tStart);
+			//	yMin = radius * Math.sin(tStart);
+			//	xMax = xMin;
+			//	yMax = yMin;
+
+			//	for (double theta = tStart; theta < tEnd; theta += delta)
+			//	{
+			//		// compute coordinates
+			//		double x = radius * Math.cos(theta);
+			//		double y = radius * Math.sin(theta);
+
+			//		if (x > xMax)
+			//		{
+			//			xMax = x;
+			//		}
+			//		if (x < xMin)
+			//		{
+			//			xMin = x;
+			//		}
+			//		if (y > yMax)
+			//		{
+			//			yMax = y;
+			//		}
+			//		if (y < yMin)
+			//		{
+			//			yMin = y;
+			//		}
+			//	}
+
+			//	// display min and max values
+			//	System.out.println("xMin = " + xMin + ", yMin = " + yMin);
+			//	System.out.println("xMax = " + xMax + ", yMax = " + yMax);
+			//}
 
 
 		}
