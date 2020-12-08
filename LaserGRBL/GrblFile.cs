@@ -909,7 +909,7 @@ namespace LaserGRBL
 					mRange.UpdateSRange(spb.S);
 
 					if (spb.LastArcHelperResult != null)
-						mRange.UpdateXYRange(spb.LastArcHelperResult.RectX, spb.LastArcHelperResult.RectY, spb.LastArcHelperResult.RectW, spb.LastArcHelperResult.RectH, spb.LaserBurning);
+						mRange.UpdateXYRange(spb.LastArcHelperResult.BBox.X, spb.LastArcHelperResult.BBox.Y, spb.LastArcHelperResult.BBox.Width, spb.LastArcHelperResult.BBox.Height, spb.LaserBurning);
 					else
 						mRange.UpdateXYRange(spb.X, spb.Y, spb.LaserBurning);
 					

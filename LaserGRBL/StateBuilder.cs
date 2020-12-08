@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace LaserGRBL
 {
@@ -385,6 +386,8 @@ namespace LaserGRBL
 			public double RectW;
 			public double RectH;
 
+			public Rect BBox;
+
 			public double StartAngle;
 			public double EndAngle;
 			public double AngularWidth;
@@ -397,7 +400,7 @@ namespace LaserGRBL
 				double aX = (double)spb.X.Previous; //startX
 				double aY = (double)spb.Y.Previous; //startY
 				double bX = (double)spb.X.Number;	//endX
-				double bY = (double)spb.Y.Number;	//endY
+				double bY = (double)spb.Y.Number;   //endY
 
 				double oX = cmd.I != null ? (double)cmd.I.Number : 0.0; //offsetX
 				double oY = cmd.J != null ? (double)cmd.J.Number : 0.0; //offsetY
@@ -406,6 +409,7 @@ namespace LaserGRBL
 				CenterY = aY + oY; //centerY
 
 				Ray = Math.Sqrt(oX * oX + oY * oY);  //raggio
+
 				RectX = CenterX - Ray;
 				RectY = CenterY - Ray;
 				RectW = 2 * Ray;
@@ -415,9 +419,32 @@ namespace LaserGRBL
 				EndAngle = CalculateAngle(CenterX, CenterY, bX, bY); //angolo finale
 				AngularWidth = AngularDistance(StartAngle, EndAngle, spb.G2);
 
+				//if (aX == bX || aY == bY)
+				//	;
+
+				// con questo codice il BBBox fallisce (non ho capito perché, ma la condizione è che l'arco è approssimato ad una retta) 
+				//M3 F1000
+				//G0 X5.519 Y - 0.16 S0
+				//G2 X5.354 Y - 0.16 I - 0.119 J15.897 S255
+				//M5
+
+				if (QuasiRetta(aX, aY, bX, bY))
+				{
+					BBox = new Rect(new Point(aX, aY), new Point(bX, bY));
+				}
+				else
+				{
+					BBox = CW ? BBBox(EndAngle, StartAngle, Ray, new Point(aX, aY), new Point(bX, bY)) : BBBox(StartAngle, EndAngle, Ray, new Point(aX, aY), new Point(bX, bY));
+					BBox.Offset(CenterX, CenterY);
+				}
+
 				if (!jb) cmd.DeleteHelper();
 			}
 
+			private bool QuasiRetta(double aX, double aY, double bX, double bY)
+			{
+				return (Math.Abs(aX - bX) <= 0.001) || (Math.Abs(aY - aY) <= 0.001);
+			}
 
 			private static double CalculateAngle(double x1, double y1, double x2, double y2)
 			{
@@ -457,86 +484,61 @@ namespace LaserGRBL
 					return -(aA >= bA ? (aA - 2 * Math.PI - bA) : aA - bA);
 			}
 
-			//public void FindBox(double x1, double x2)
-			//{
-			//	double xMin, yMin, xMax, yMax;
-			//	// compute radius of circle
-			//	double radius = Math.Sqrt(Math.Pow((xc - x1), 2) + Math.Pow((yc - y1), 2));
 
-			//	// compute starting and ending points in polar coordinates
-			//	double t1 = 0.0;
-			//	if (x1 == 0.0)
-			//	{
-			//		t1 = Math.PI / 2;
-			//	}
-			//	else
-			//	{
-			//		t1 = Math.atan(y1 / x1);
-			//	}
+			private const double a0 = 0.0;
+			private const double a90 = Math.PI / 2.0;
+			private const double a180 = Math.PI;
+			private const double a270 = Math.PI * 3.0 / 2.0;
+			private const double a360 = Math.PI * 2;
 
-			//	double t2 = 0.0;
-			//	if (x2 == 0.0)
-			//	{
-			//		t2 = Math.PI / 2;
-			//	}
-			//	else
-			//	{
-			//		t2 = Math.atan(y2 / x2);
-			//	}
+			public static int GetQuadrant(Double angle)
+			{
+				var trueAngle = angle % (2 * Math.PI);
 
-			//	// determine starting and ending polar angles
-			//	double tStart, tEnd;
-			//	if (t1 < t2)
-			//	{
-			//		tStart = t1;
-			//		tEnd = t2;
-			//	}
-			//	else
-			//	{
-			//		tStart = t2;
-			//		tEnd = t1;
-			//	}
+				if (trueAngle >= a0 && trueAngle < a90)
+					return 1;
+				else if (trueAngle >= a90 && trueAngle < a180)
+					return 2;
+				else if (trueAngle >= a180 && trueAngle < a270)
+					return 3;
+				else //if (trueAngle >= a270 && trueAngle < a360)
+					return 4;
+			}
 
-			//	// now scan the polar space at fixed radius and find
-			//	// the minimum AND maximum Cartesian x and y values
-			//	double delta = 0.01;
+			//Oleg Petrochenko alghorithm
+			//From https://stackoverflow.com/questions/32365479/formula-to-calculate-bounding-coordinates-of-an-arc-in-space
+			public static Rect BBBox(Double startAngle, Double endAngle, Double r, Point stPt, Point enPt)
+			{
+				int startQuad = GetQuadrant(startAngle) - 1;
+				int endQuad = GetQuadrant(endAngle) - 1;
 
-			//	// initialize min and max coordinates to first point
-			//	xMin = radius * Math.cos(tStart);
-			//	yMin = radius * Math.sin(tStart);
-			//	xMax = xMin;
-			//	yMax = yMin;
+				//commentato, me li faccio passare da fuori invece che ricalcolarli
+				// Convert to Cartesian coordinates.
+				//var stPt = new Point(Math.Round(r * Math.Cos(startAngle), 14), Math.Round(r * Math.Sin(startAngle), 14));
+				//var enPt = new Point(Math.Round(r * Math.Cos(endAngle), 14), Math.Round(r * Math.Sin(endAngle), 14));
 
-			//	for (double theta = tStart; theta < tEnd; theta += delta)
-			//	{
-			//		// compute coordinates
-			//		double x = radius * Math.cos(theta);
-			//		double y = radius * Math.sin(theta);
+				// Find bounding box excluding extremum.
+				double minX = stPt.X;
+				double minY = stPt.Y;
+				double maxX = stPt.X;
+				double maxY = stPt.Y;
 
-			//		if (x > xMax)
-			//		{
-			//			xMax = x;
-			//		}
-			//		if (x < xMin)
-			//		{
-			//			xMin = x;
-			//		}
-			//		if (y > yMax)
-			//		{
-			//			yMax = y;
-			//		}
-			//		if (y < yMin)
-			//		{
-			//			yMin = y;
-			//		}
-			//	}
+				if (maxX < enPt.X) maxX = enPt.X;
+				if (maxY < enPt.Y) maxY = enPt.Y;
+				if (minX > enPt.X) minX = enPt.X;
+				if (minY > enPt.Y) minY = enPt.Y;
 
-			//	// display min and max values
-			//	System.out.println("xMin = " + xMin + ", yMin = " + yMin);
-			//	System.out.println("xMax = " + xMax + ", yMax = " + yMax);
-			//}
+				// Build extremum matrices.
+				var xMax = new[,] { { maxX, r, r, r }, { maxX, maxX, r, r }, { maxX, maxX, maxX, r }, { maxX, maxX, maxX, maxX } };
+				var yMax = new[,] { { maxY, maxY, maxY, maxY }, { r, maxY, r, r }, { r, maxY, maxY, r }, { r, maxY, maxY, maxY } };
+				var xMin = new[,] { { minX, -r, minX, minX }, { minX, minX, minX, minX }, { -r, -r, minX, -r }, { -r, -r, minX, minX } };
+				var yMin = new[,] { { minY, -r, -r, minY }, { minY, minY, -r, minY }, { minY, minY, minY, minY }, { -r, -r, -r, minY } };
 
-
+				// Select desired values
+				var startPt = new Point(xMin[endQuad, startQuad], yMin[endQuad, startQuad]);
+				var endPt = new Point(xMax[endQuad, startQuad], yMax[endQuad, startQuad]);
+				return new Rect(startPt, endPt);
+			}
 		}
 	}
 }
