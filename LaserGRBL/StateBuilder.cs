@@ -397,6 +397,8 @@ namespace LaserGRBL
 				bool jb = cmd.JustBuilt;
 				if (!jb) cmd.BuildHelper();
 
+				CW = spb.G2;
+
 				double aX = (double)spb.X.Previous; //startX
 				double aY = (double)spb.Y.Previous; //startY
 				double bX = (double)spb.X.Number;	//endX
@@ -428,22 +430,33 @@ namespace LaserGRBL
 				//G2 X5.354 Y - 0.16 I - 0.119 J15.897 S255
 				//M5
 
-				if (QuasiRetta(aX, aY, bX, bY))
+				if (Circle(aX, aY, bX, bY))
+				{
+					BBox = new Rect(RectX, RectY, RectW, RectH);
+				}
+				else if (QuasiRetta(aX, aY, bX, bY))
 				{
 					BBox = new Rect(new Point(aX, aY), new Point(bX, bY));
 				}
 				else
 				{
-					BBox = CW ? BBBox(EndAngle, StartAngle, Ray, new Point(aX, aY), new Point(bX, bY)) : BBBox(StartAngle, EndAngle, Ray, new Point(aX, aY), new Point(bX, bY));
+					BBox = CW ? BBBox(EndAngle, StartAngle, Ray) : BBBox(StartAngle, EndAngle, Ray);
 					BBox.Offset(CenterX, CenterY);
 				}
 
 				if (!jb) cmd.DeleteHelper();
 			}
 
+			private bool Circle(double aX, double aY, double bX, double bY)
+			{
+				return aX == bX && aY == bY;
+			}
+
 			private bool QuasiRetta(double aX, double aY, double bX, double bY)
 			{
-				return (Math.Abs(aX - bX) <= 0.001) || (Math.Abs(aY - aY) <= 0.001);
+				bool sameX = Math.Abs(aX - bX) <= 0.00001;
+				bool sameY = Math.Abs(aY - bY) <= 0.00001;
+				return (sameX && !sameY) || (sameY && !sameX) ; //se uguali x e y allora è un cerchio
 			}
 
 			private static double CalculateAngle(double x1, double y1, double x2, double y2)
@@ -507,15 +520,14 @@ namespace LaserGRBL
 
 			//Oleg Petrochenko alghorithm
 			//From https://stackoverflow.com/questions/32365479/formula-to-calculate-bounding-coordinates-of-an-arc-in-space
-			public static Rect BBBox(Double startAngle, Double endAngle, Double r, Point stPt, Point enPt)
+			public static Rect BBBox(Double startAngle, Double endAngle, Double r)
 			{
 				int startQuad = GetQuadrant(startAngle) - 1;
 				int endQuad = GetQuadrant(endAngle) - 1;
 
-				//commentato, me li faccio passare da fuori invece che ricalcolarli
 				// Convert to Cartesian coordinates.
-				//var stPt = new Point(Math.Round(r * Math.Cos(startAngle), 14), Math.Round(r * Math.Sin(startAngle), 14));
-				//var enPt = new Point(Math.Round(r * Math.Cos(endAngle), 14), Math.Round(r * Math.Sin(endAngle), 14));
+				Point stPt = new Point(Math.Round(r * Math.Cos(startAngle), 14), Math.Round(r * Math.Sin(startAngle), 14));
+				Point enPt = new Point(Math.Round(r * Math.Cos(endAngle), 14), Math.Round(r * Math.Sin(endAngle), 14));
 
 				// Find bounding box excluding extremum.
 				double minX = stPt.X;
