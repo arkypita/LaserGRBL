@@ -189,7 +189,7 @@ namespace LaserGRBL
 					TTLinkToNews.Enabled = true;
 				}
 			}
-			catch (Exception ex){ }
+			catch (Exception){ }
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
@@ -273,6 +273,8 @@ namespace LaserGRBL
 			//MnExportConfig.Enabled = Core.CanImportExport;
 			//MnImportConfig.Enabled = Core.CanImportExport;
 			MnGrblReset.Enabled = Core.CanResetGrbl;
+
+			FramingMenuItem.Enabled = (Core.MachineStatus == GrblCore.MacStatus.Idle);
 
 			MNEsp8266.Visible = (Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial)) == ComWrapper.WrapperType.LaserWebESP8266;
 
@@ -881,10 +883,15 @@ namespace LaserGRBL
 		{
 
 		}
-	}
+
+        private void FramingMenuItem_Click(object sender, EventArgs e)
+        {
+			FramingForm.CreateAndShowDialog(Core);
+		}
+    }
 
 
-	public class MMnRenderer : ToolStripProfessionalRenderer
+    public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 
