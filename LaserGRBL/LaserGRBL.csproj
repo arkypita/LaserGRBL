@@ -112,12 +112,6 @@
     </Compile>
     <Compile Include="Autotrace\Autotrace.cs" />
     <Compile Include="Core\VigoCore.cs" />
-    <Compile Include="FramingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FramingForm.Designer.cs">
-      <DependentUpon>FramingForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tools\Json.cs" />
     <Compile Include="ComWrapper\ComLogger.cs" />
     <Compile Include="ExceptionManager.cs">
@@ -889,9 +883,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.zh-CN.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FramingForm.resx">
-      <DependentUpon>FramingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.cs-CZ.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
