@@ -403,7 +403,6 @@ namespace LaserGRBL
 				double aY = (double)spb.Y.Previous; //startY
 				double bX = (double)spb.X.Number;	//endX
 				double bY = (double)spb.Y.Number;   //endY
-
 				double oX = cmd.I != null ? (double)cmd.I.Number : 0.0; //offsetX
 				double oY = cmd.J != null ? (double)cmd.J.Number : 0.0; //offsetY
 
@@ -433,10 +432,6 @@ namespace LaserGRBL
 				if (Circle(aX, aY, bX, bY))
 				{
 					BBox = new Rect(RectX, RectY, RectW, RectH);
-				}
-				else if (QuasiRetta(aX, aY, bX, bY))
-				{
-					BBox = new Rect(new Point(aX, aY), new Point(bX, bY));
 				}
 				else
 				{
