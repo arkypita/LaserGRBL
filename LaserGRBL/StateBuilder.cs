@@ -403,7 +403,6 @@ namespace LaserGRBL
 				double aY = (double)spb.Y.Previous; //startY
 				double bX = (double)spb.X.Number;	//endX
 				double bY = (double)spb.Y.Number;   //endY
-
 				double oX = cmd.I != null ? (double)cmd.I.Number : 0.0; //offsetX
 				double oY = cmd.J != null ? (double)cmd.J.Number : 0.0; //offsetY
 
@@ -421,28 +420,10 @@ namespace LaserGRBL
 				EndAngle = CalculateAngle(CenterX, CenterY, bX, bY); //angolo finale
 				AngularWidth = AngularDistance(StartAngle, EndAngle, spb.G2);
 
-				//if (aX == bX || aY == bY)
-				//	;
-
-				// con questo codice il BBBox fallisce (non ho capito perché, ma la condizione è che l'arco è approssimato ad una retta) 
-				//M3 F1000
-				//G0 X5.519 Y - 0.16 S0
-				//G2 X5.354 Y - 0.16 I - 0.119 J15.897 S255
-				//M5
-
 				if (Circle(aX, aY, bX, bY))
-				{
 					BBox = new Rect(RectX, RectY, RectW, RectH);
-				}
-				else if (QuasiRetta(aX, aY, bX, bY))
-				{
-					BBox = new Rect(new Point(aX, aY), new Point(bX, bY));
-				}
 				else
-				{
-					BBox = CW ? BBBox(EndAngle, StartAngle, Ray) : BBBox(StartAngle, EndAngle, Ray);
-					BBox.Offset(CenterX, CenterY);
-				}
+					BBox = CW ? BBBox(EndAngle, StartAngle, Ray, CenterX, CenterY) : BBBox(StartAngle, EndAngle, Ray, CenterX, CenterY);
 
 				if (!jb) cmd.DeleteHelper();
 			}
@@ -450,13 +431,6 @@ namespace LaserGRBL
 			private bool Circle(double aX, double aY, double bX, double bY)
 			{
 				return aX == bX && aY == bY;
-			}
-
-			private bool QuasiRetta(double aX, double aY, double bX, double bY)
-			{
-				bool sameX = Math.Abs(aX - bX) <= 0.00001;
-				bool sameY = Math.Abs(aY - bY) <= 0.00001;
-				return (sameX && !sameY) || (sameY && !sameX) ; //se uguali x e y allora è un cerchio
 			}
 
 			private static double CalculateAngle(double x1, double y1, double x2, double y2)
@@ -520,7 +494,7 @@ namespace LaserGRBL
 
 			//Oleg Petrochenko alghorithm
 			//From https://stackoverflow.com/questions/32365479/formula-to-calculate-bounding-coordinates-of-an-arc-in-space
-			public static Rect BBBox(Double startAngle, Double endAngle, Double r)
+			public static Rect BBBox(Double startAngle, Double endAngle, Double r, Double centerX, Double centerY)
 			{
 				int startQuad = GetQuadrant(startAngle) - 1;
 				int endQuad = GetQuadrant(endAngle) - 1;
@@ -549,7 +523,11 @@ namespace LaserGRBL
 				// Select desired values
 				var startPt = new Point(xMin[endQuad, startQuad], yMin[endQuad, startQuad]);
 				var endPt = new Point(xMax[endQuad, startQuad], yMax[endQuad, startQuad]);
-				return new Rect(startPt, endPt);
+				
+				Rect rv = new Rect(startPt, endPt);
+				rv.Offset(centerX, centerY);	//i conti sono fatti su un arco con centro in 0,0 quindi aggiungiamo il vero offset alla fine
+
+				return rv;
 			}
 		}
 	}
