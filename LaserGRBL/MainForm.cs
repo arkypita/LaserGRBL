@@ -276,6 +276,8 @@ namespace LaserGRBL
 
 			MNEsp8266.Visible = (Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial)) == ComWrapper.WrapperType.LaserWebESP8266;
 
+			FramingMenuItem.Enabled = (Core.MachineStatus == GrblCore.MacStatus.Idle);
+
 			MnConnect.Visible = !Core.IsOpen;
 			MnDisconnect.Visible = Core.IsOpen;
 
@@ -881,10 +883,15 @@ namespace LaserGRBL
 		{
 
 		}
-	}
+
+        private void FramingMenuItem_Click(object sender, EventArgs e)
+        {
+			FramingForm.CreateAndShowDialog(Core);
+		}
+    }
 
 
-	public class MMnRenderer : ToolStripProfessionalRenderer
+    public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 
