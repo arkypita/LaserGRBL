@@ -112,6 +112,12 @@
     </Compile>
     <Compile Include="Autotrace\Autotrace.cs" />
     <Compile Include="Core\VigoCore.cs" />
+    <Compile Include="AxiiRescale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AxiiRescale.Designer.cs">
+      <DependentUpon>AxiiRescale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\Json.cs" />
     <Compile Include="ComWrapper\ComLogger.cs" />
     <Compile Include="ExceptionManager.cs">
@@ -883,6 +889,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.zh-CN.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AxiiRescale.resx">
+      <DependentUpon>AxiiRescale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.cs-CZ.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>

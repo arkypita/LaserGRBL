@@ -13,6 +13,8 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace LaserGRBL
 {
@@ -130,8 +132,47 @@ namespace LaserGRBL
             RiseOnFileLoaded(filename, elapsed);
         }
 
+		public void AxiiRescale(double XRatio, double YRatio)
+		{
+			RiseOnFileLoading("Rescaled file");
+			long start = Tools.HiResTimer.TotalMilliseconds;
 
-        private abstract class ColorSegment
+			string XPattern = @"X\d{1,4}[.,]?\d{0,15}";
+			string YPattern = @"Y\d{1,4}[.,]?\d{0,15}";
+
+			Regex XRegex = new Regex(XPattern, RegexOptions.IgnoreCase);
+			Regex YRegex = new Regex(YPattern, RegexOptions.IgnoreCase);
+
+			for (int i = 0; i < list.Count; i++)
+			{
+				String command = ((GrblCommand)list[i]).ToString();
+				Match match = XRegex.Match(command);
+				if (match.Success)
+				{
+					double x = double.Parse(match.Value.Substring(1), CultureInfo.InvariantCulture);
+					command = XRegex.Replace(command, "X" + Double2String(x * XRatio));
+				}
+				match = YRegex.Match(command);
+				if (match.Success)
+				{
+					double y = double.Parse(match.Value.Substring(1), CultureInfo.InvariantCulture);
+					command = YRegex.Replace(command, "Y" + Double2String(y * YRatio));
+				}
+				list[i] = new GrblCommand(command);
+			}
+
+			Analyze();
+
+			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+			RiseOnFileLoaded("Rescaled file", elapsed);
+		}
+
+		private string Double2String(double v)
+		{
+			return v.ToString("F3", CultureInfo.InvariantCulture).TrimEnd('0').TrimEnd('.');
+		}
+
+		private abstract class ColorSegment
 		{
 			public int mColor { get; set; }
 			protected int mPixLen;
