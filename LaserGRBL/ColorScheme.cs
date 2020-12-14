@@ -48,6 +48,9 @@ namespace LaserGRBL
 				Color.DarkBlue,				//response good
 				Color.Red,					//response bad
 				Color.Black,				//response others
+
+				Color.DodgerBlue,			//link color
+				Color.Purple,				//visited link color
 			});
 			mData.Add(Scheme.RedLaser, new Color[] 
 			{
@@ -72,9 +75,12 @@ namespace LaserGRBL
 				Color.OrangeRed,			//position
 				Color.Purple,				//others
 				
-				Color.DarkGreen,				//response good
+				Color.DarkGreen,			//response good
 				Color.Red,					//response bad
 				Color.Black,				//response others
+
+				Color.DodgerBlue,			//link color
+				Color.Purple,				//visited link color
 			});
 			mData.Add(Scheme.Dark, new Color[] 
 			{
@@ -102,6 +108,9 @@ namespace LaserGRBL
 				Color.Lime,					//response good
 				Color.OrangeRed,			//response bad
 				Color.White,				//response others
+
+				Color.Yellow,				//link color
+				Color.Violet,				//visited link color
 			});
 			mData.Add(Scheme.Hacker, new Color[] 
 			{
@@ -129,6 +138,9 @@ namespace LaserGRBL
 				Color.LightBlue,			//response good
 				Color.Red,					//response bad
 				Color.White,				//response others
+
+				Color.Yellow,					//link color
+				Color.Violet,				//visited link color
 			});
             mData.Add(Scheme.Nighty, new Color[]
             {
@@ -157,7 +169,8 @@ namespace LaserGRBL
 				Color.Red,		    		//response bad
 				Color.LimeGreen,	    	//response others
 
-                Color.FromArgb(25,25,25),   //TextBox
+				Color.Yellow,				//link color
+				Color.Violet,				//visited link color
             });
 
             CurrentScheme = Scheme.RedLaser;
@@ -249,9 +262,13 @@ namespace LaserGRBL
 		{ get { return GetColor(20); } }
         public static Color TextBoxColorOverride
         { get { return GetColor(20); } }
+		public static Color LinkColor
+		{ get { return GetColor(21); } }
+		public static Color VisitedLinkColor
+		{ get { return GetColor(22); } }
 
 
-        private static Color GetColor(int index)
+		private static Color GetColor(int index)
 		{return mData[CurrentScheme][index];}
 
 		private static Color ChangeColorBrightness(Color color, float correctionFactor)

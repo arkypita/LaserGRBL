@@ -105,6 +105,8 @@ namespace LaserGRBL
 			darkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Dark;
 			hackerToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Hacker;
 			nightyToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Nighty;
+			TTLinkToNews.LinkColor = ColorScheme.LinkColor;
+			TTLinkToNews.VisitedLinkColor = ColorScheme.VisitedLinkColor;
 			ConnectionForm.OnColorChange();
 			PreviewForm.OnColorChange();
 			RefreshOverride();
@@ -187,6 +189,8 @@ namespace LaserGRBL
 				{
 					TTLinkToNews.Text = ToolBarMessage.Title;
 					TTLinkToNews.Enabled = true;
+
+					this.TTLinkToNews.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
 				}
 			}
 			catch (Exception ex){ }
