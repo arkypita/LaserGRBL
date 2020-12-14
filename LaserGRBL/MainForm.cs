@@ -265,7 +265,7 @@ namespace LaserGRBL
 				TTLEstimated.Text = Strings.MainFormEstimatedTime;
 
 			MnFileOpen.Enabled = Core.CanLoadNewFile;
-			MnAdvancedSave.Enabled = MnSaveProgram.Enabled = Core.HasProgram;
+			MnAdvancedSave.Enabled = MnSaveProgram.Enabled = AxiiRescaleMenuItem.Enabled = Core.HasProgram;
 			MnFileSend.Enabled = Core.CanSendFile;
 			MnStartFromPosition.Enabled = Core.CanSendFile;
 			MnRunMulti.Enabled = Core.CanSendFile || Core.CanResumeHold || Core.CanFeedHold;
@@ -881,10 +881,15 @@ namespace LaserGRBL
 		{
 
 		}
+
+        private void AxiiRescaleMenuItem_Click(object sender, EventArgs e)
+		{
+			AxiiRescale.CreateAndShowDialog(Core);
+		}
 	}
 
 
-	public class MMnRenderer : ToolStripProfessionalRenderer
+    public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 
