@@ -28,15 +28,16 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.SuspendLayout();
-			// 
-			// GrblPanel
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Name = "GrblPanel";
-			this.Size = new System.Drawing.Size(548, 400);
-			this.ResumeLayout(false);
+            this.SuspendLayout();
+            // 
+            // GrblPanel
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "GrblPanel";
+            this.Size = new System.Drawing.Size(548, 400);
+            this.Click += new System.EventHandler(this.GrblPanel_Click);
+            this.ResumeLayout(false);
 
 		}
 

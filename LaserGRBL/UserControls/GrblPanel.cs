@@ -243,5 +243,27 @@ namespace LaserGRBL.UserControls
 		{
 			RecreateBMP();
 		}
-	}
+
+        private void GrblPanel_Click(object sender, EventArgs e)
+        {
+			if (Core.MachineStatus == GrblCore.MacStatus.Idle && Core.HasProgram)
+            {
+				MouseEventArgs mouse = (MouseEventArgs)e;
+				Size wSize = Size;
+				ProgramRange.XYRange scaleRange = Core.LoadedFile.Range.MovingRange;
+				float zoom = scaleRange.Width > 0 && scaleRange.Height > 0 ? Math.Min((float)wSize.Width / (float)scaleRange.Width, (float)wSize.Height / (float)scaleRange.Height) * 0.95f : 1;
+				float x = (mouse.X - 10) / zoom;
+				float y = (wSize.Height - mouse.Y - 10) / zoom;
+				switch (mouse.Button)
+				{
+					case MouseButtons.Left:
+						Core.EnqueueCommand(new GrblCommand(string.Format("F{0} G1 X{1} Y{2}", Core.JogSpeed, Math.Max(0, x), Math.Max(0, y)).Replace(",", ".")));
+						break;
+					case MouseButtons.Right:
+						Core.EnqueueCommand(new GrblCommand(string.Format("G0 X{0} Y{1}", Math.Max(0, x), Math.Max(0, y)).Replace(",", ".")));
+						break;
+				}
+			}
+		}
+    }
 }
