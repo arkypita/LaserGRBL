@@ -148,7 +148,7 @@
     <value>ConnectionForm</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Type" xml:space="preserve">
-    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=3.8.5.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -175,7 +175,7 @@
     <value>JogForm</value>
   </data>
   <data name="&gt;&gt;JogForm.Type" xml:space="preserve">
-    <value>LaserGRBL.JogForm, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.JogForm, LaserGRBL, Version=3.8.5.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;JogForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -217,7 +217,7 @@
     <value>PreviewForm</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Type" xml:space="preserve">
-    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=3.8.5.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -410,7 +410,7 @@
 </value>
   </data>
   <data name="MnConnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnConnect.Text" xml:space="preserve">
     <value>&amp;Connect</value>
@@ -437,7 +437,7 @@
 </value>
   </data>
   <data name="MnDisconnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnDisconnect.Text" xml:space="preserve">
     <value>&amp;Disconnect</value>
@@ -460,7 +460,7 @@
 </value>
   </data>
   <data name="MnWiFiDiscovery.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnWiFiDiscovery.Text" xml:space="preserve">
     <value>Wi-Fi Discovery</value>
@@ -469,7 +469,7 @@
     <value>False</value>
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>170, 6</value>
   </data>
   <data name="MnGrblReset.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -491,7 +491,7 @@
 </value>
   </data>
   <data name="MnGrblReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnGrblReset.Text" xml:space="preserve">
     <value>&amp;Reset</value>
@@ -519,7 +519,7 @@
 </value>
   </data>
   <data name="MnGoHome.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnGoHome.Text" xml:space="preserve">
     <value>&amp;Homing</value>
@@ -545,13 +545,13 @@
 </value>
   </data>
   <data name="MnUnlock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnUnlock.Text" xml:space="preserve">
     <value>&amp;Unlock</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>170, 6</value>
   </data>
   <data name="MnGrblConfig.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -566,7 +566,7 @@
 </value>
   </data>
   <data name="MnGrblConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnGrblConfig.Text" xml:space="preserve">
     <value>Grbl Configuration</value>
@@ -590,7 +590,7 @@
 </value>
   </data>
   <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
     <value>Settings</value>
@@ -614,13 +614,13 @@
 </value>
   </data>
   <data name="MnMaterialDB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnMaterialDB.Text" xml:space="preserve">
     <value>Material DB</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>170, 6</value>
   </data>
   <data name="MnHotkeys.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -640,13 +640,13 @@
 </value>
   </data>
   <data name="MnHotkeys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnHotkeys.Text" xml:space="preserve">
     <value>Hotkeys</value>
   </data>
   <data name="toolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>170, 6</value>
   </data>
   <data name="MnExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -670,7 +670,7 @@
 </value>
   </data>
   <data name="MnExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="MnExit.Text" xml:space="preserve">
     <value>&amp;Exit</value>
@@ -1739,6 +1739,33 @@
   <data name="helpOnLineToolStripMenuItem.Text" xml:space="preserve">
     <value>Help on line</value>
   </data>
+  <data name="aboutToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAOKSURBVDhPTZMLTBVUGMfPFQ0uAQVh2Gwj7DaBucka
+        yfVC0MWAidSaDygJFJ02FYMBwggMlLhLLFDRSIfSQo2Hyku5AoGk8bIUMWAQ8orIeJMLusDg10FZ+d/+
+        Oztn3/875/u+/xFCJAqF+EyuOiEWfW5mYZORuHZ9YXtoQt1EckbzTGzqvSm/3aWDS+3jioVQaxYp/YTx
+        81oZ/x8SJQ9L6lyctAWd5/S/MfyPgf8xw6O5aSrbJ3kvqspgbLPrpJGJy2PlAhLkC5JcXLfox8o7e3ho
+        6KB/vIuRiWH6xvpofdjCg8EWBiY7aBwfIji9AdNlG88viOeRYLXS9UL3qbpKmgZ+pm2gn4G/DRhmofXP
+        dqraqrjRVs0P7be43V1Nfpser/jLc4uVjrFCXi0srTIOuUWd5dNrF/h1dIrecRichJ7Rv7jeeJPyplq+
+        b7mD/t6PXLtTji4nGXXiAex9kodl014Sjprsdu3RIjbnjfDFbdB3Qdn9HtIuZpH23Tek5+dwLPci8adP
+        4RseionLSkw9VuMRnofSQhUjNO9fmlwdnYxrip7AKxNEVMG+Sx04Bn/Aii3eqPz9WO63DhN3ZxQe7ph4
+        e2O1wQt12AmsX/G8Kly3Z808F+CEYp0dr+4Pwz+3j1162JzdgTa1FNONb6Hweg2j9fZYBGjRJJ3DJy2b
+        oIwKlql86oQ68PSUTaiaZwJWsMTfljePFxFUAtuuwo7roIreg3KrCmWgA2+n5/FRYT8RxQ2klA9j/bJb
+        jXjD98yg/WFflHvscD4Sx86SCYKLYOsV2C4TvZ6iY/FOS5x00STVzPJu5lk0x0P4OLNW9sChUNip9hd7
+        psWxITuGLxsMHKyGqHIIL4PICggpaEb7dQJxlb2k1o0QVpwjyzyA1+6vZhUK5V5hJGzVniEZhtRfblDc
+        AZmNkC6nkVYPqQ1w8ifIug+5rZDfMkqvNOnl+keY27h1ShNZSZoLMwvfY/FnaumT5rk7CDd7oOKBHKdk
+        ZSfckvsmeS7tQfPvs6zyiJySwqB5G0oslXQSz5pvOp98om6ufwwaDZ3cneimdeIPuqcHmJbCKcmy+iFW
+        uUfMiz95LH0Ca6FQaOS6RtIhxtkjcugd3dG5TbmHCKnQsaP0CAdzSvhw37ezyhfWdsmgbfOqp/AkgcJo
+        /ovOl2RloxCqWFNL5xKz5W61xi+uqRFLbAuEMNq7EPAUhPgX3H8pAaF1ss8AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>LaserGrbl FAQ</value>
+  </data>
   <data name="facebookCommunityToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -1774,33 +1801,6 @@
   </data>
   <data name="facebookCommunityToolStripMenuItem.Text" xml:space="preserve">
     <value>LaserGrbl Community</value>
-  </data>
-  <data name="aboutToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAOKSURBVDhPTZMLTBVUGMfPFQ0uAQVh2Gwj7DaBucka
-        yfVC0MWAidSaDygJFJ02FYMBwggMlLhLLFDRSIfSQo2Hyku5AoGk8bIUMWAQ8orIeJMLusDg10FZ+d/+
-        Oztn3/875/u+/xFCJAqF+EyuOiEWfW5mYZORuHZ9YXtoQt1EckbzTGzqvSm/3aWDS+3jioVQaxYp/YTx
-        81oZ/x8SJQ9L6lyctAWd5/S/MfyPgf8xw6O5aSrbJ3kvqspgbLPrpJGJy2PlAhLkC5JcXLfox8o7e3ho
-        6KB/vIuRiWH6xvpofdjCg8EWBiY7aBwfIji9AdNlG88viOeRYLXS9UL3qbpKmgZ+pm2gn4G/DRhmofXP
-        dqraqrjRVs0P7be43V1Nfpser/jLc4uVjrFCXi0srTIOuUWd5dNrF/h1dIrecRichJ7Rv7jeeJPyplq+
-        b7mD/t6PXLtTji4nGXXiAex9kodl014Sjprsdu3RIjbnjfDFbdB3Qdn9HtIuZpH23Tek5+dwLPci8adP
-        4RseionLSkw9VuMRnofSQhUjNO9fmlwdnYxrip7AKxNEVMG+Sx04Bn/Aii3eqPz9WO63DhN3ZxQe7ph4
-        e2O1wQt12AmsX/G8Kly3Z808F+CEYp0dr+4Pwz+3j1162JzdgTa1FNONb6Hweg2j9fZYBGjRJJ3DJy2b
-        oIwKlql86oQ68PSUTaiaZwJWsMTfljePFxFUAtuuwo7roIreg3KrCmWgA2+n5/FRYT8RxQ2klA9j/bJb
-        jXjD98yg/WFflHvscD4Sx86SCYKLYOsV2C4TvZ6iY/FOS5x00STVzPJu5lk0x0P4OLNW9sChUNip9hd7
-        psWxITuGLxsMHKyGqHIIL4PICggpaEb7dQJxlb2k1o0QVpwjyzyA1+6vZhUK5V5hJGzVniEZhtRfblDc
-        AZmNkC6nkVYPqQ1w8ifIug+5rZDfMkqvNOnl+keY27h1ShNZSZoLMwvfY/FnaumT5rk7CDd7oOKBHKdk
-        ZSfckvsmeS7tQfPvs6zyiJySwqB5G0oslXQSz5pvOp98om6ufwwaDZ3cneimdeIPuqcHmJbCKcmy+iFW
-        uUfMiz95LH0Ca6FQaOS6RtIhxtkjcugd3dG5TbmHCKnQsaP0CAdzSvhw37ezyhfWdsmgbfOqp/AkgcJo
-        /ovOl2RloxCqWFNL5xKz5W61xi+uqRFLbAuEMNq7EPAUhPgX3H8pAaF1ss8AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
-  </data>
-  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>LaserGrbl FAQ</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 6</value>

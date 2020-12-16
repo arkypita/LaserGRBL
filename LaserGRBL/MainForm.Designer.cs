@@ -729,8 +729,8 @@
             this.activateExtendedLogToolStripMenuItem,
             this.toolStripMenuItem7,
             this.helpOnLineToolStripMenuItem,
-            this.facebookCommunityToolStripMenuItem,
             this.aboutToolStripMenuItem,
+            this.facebookCommunityToolStripMenuItem,
             this.toolStripMenuItem3,
             this.donateToolStripMenuItem,
             this.licenseToolStripMenuItem});
@@ -813,6 +813,7 @@
 			// 
 			resources.ApplyResources(this.facebookCommunityToolStripMenuItem, "facebookCommunityToolStripMenuItem");
 			this.facebookCommunityToolStripMenuItem.Name = "facebookCommunityToolStripMenuItem";
+			this.facebookCommunityToolStripMenuItem.Click += new System.EventHandler(this.facebookCommunityToolStripMenuItem_Click);
 			// 
 			// aboutToolStripMenuItem
 			// 
