@@ -885,6 +885,11 @@ namespace LaserGRBL
 		{
 
 		}
+
+		private void facebookCommunityToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Tools.Utils.OpenLink(@"https://www.facebook.com/groups/486886768471991");
+		}
 	}
 
 
