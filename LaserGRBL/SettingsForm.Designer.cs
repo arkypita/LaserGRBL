@@ -65,6 +65,8 @@
 			this.label22 = new System.Windows.Forms.Label();
 			this.CbDisableSkip = new System.Windows.Forms.CheckBox();
 			this.label39 = new System.Windows.Forms.Label();
+			this.CbDisableBoundWarn = new System.Windows.Forms.CheckBox();
+			this.label40 = new System.Windows.Forms.Label();
 			this.TpJogControl = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
 			this.label10 = new System.Windows.Forms.Label();
@@ -399,6 +401,8 @@
 			this.tableLayoutPanel4.Controls.Add(this.label22, 2, 2);
 			this.tableLayoutPanel4.Controls.Add(this.CbDisableSkip, 1, 3);
 			this.tableLayoutPanel4.Controls.Add(this.label39, 2, 3);
+			this.tableLayoutPanel4.Controls.Add(this.CbDisableBoundWarn, 1, 4);
+			this.tableLayoutPanel4.Controls.Add(this.label40, 2, 4);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
 			// 
 			// label1
@@ -457,6 +461,17 @@
 			// 
 			resources.ApplyResources(this.label39, "label39");
 			this.label39.Name = "label39";
+			// 
+			// CbDisableBoundWarn
+			// 
+			resources.ApplyResources(this.CbDisableBoundWarn, "CbDisableBoundWarn");
+			this.CbDisableBoundWarn.Name = "CbDisableBoundWarn";
+			this.CbDisableBoundWarn.UseVisualStyleBackColor = true;
+			// 
+			// label40
+			// 
+			resources.ApplyResources(this.label40, "label40");
+			this.label40.Name = "label40";
 			// 
 			// TpJogControl
 			// 
@@ -1165,5 +1180,7 @@
 		private System.Windows.Forms.Label label31;
 		private System.Windows.Forms.CheckBox CbDisableSkip;
 		private System.Windows.Forms.Label label39;
+		private System.Windows.Forms.CheckBox CbDisableBoundWarn;
+		private System.Windows.Forms.Label label40;
 	}
 }
