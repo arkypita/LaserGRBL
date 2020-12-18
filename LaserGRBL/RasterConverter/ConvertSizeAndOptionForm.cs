@@ -11,203 +11,215 @@ using System.Windows.Forms;
 
 namespace LaserGRBL.RasterConverter
 {
-    /// <summary>
-    /// Description of ConvertSizeAndOptionForm.
-    /// </summary>
-    public partial class ConvertSizeAndOptionForm : Form
-    {
-        GrblCore mCore;
-        bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
+	/// <summary>
+	/// Description of ConvertSizeAndOptionForm.
+	/// </summary>
+	public partial class ConvertSizeAndOptionForm : Form
+	{
+		GrblCore mCore;
+		bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
-        public ConvertSizeAndOptionForm(GrblCore core)
-        {
-            InitializeComponent();
-            mCore = core;
+		public ConvertSizeAndOptionForm(GrblCore core)
+		{
+			InitializeComponent();
+			mCore = core;
 
-            BackColor = ColorScheme.FormBackColor;
-            GbLaser.ForeColor = GbSize.ForeColor = GbSpeed.ForeColor = ForeColor = ColorScheme.FormForeColor;
-            BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
+			BackColor = ColorScheme.FormBackColor;
+			GbLaser.ForeColor = GbSize.ForeColor = GbSpeed.ForeColor = ForeColor = ColorScheme.FormForeColor;
+			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
 
-            LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
-            AssignMinMaxLimit();
+			LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
+			AssignMinMaxLimit();
 
-            CBLaserON.Items.Add("M3");
-            if (core.Configuration.LaserMode)
-                CBLaserON.Items.Add("M4");
+			CBLaserON.Items.Add("M3");
+			if (core.Configuration.LaserMode)
+				CBLaserON.Items.Add("M4");
 
 			// For Marlin, we must change LaserOn & Laser Off command :
-            //if (core.Type != Firmware.Marlin)
-            //{
-            //    CBLaserON.Items.Add("M3");
-            //    if (core.Configuration.LaserMode)
-            //        CBLaserON.Items.Add("M4");
-            //}
-            //else
-            //{
-            //    CBLaserON.Items.Add("M106 P1");
-            //    CBLaserOFF.Items.Add("M107 P1");
-            //}
-        }
+			//if (core.Type != Firmware.Marlin)
+			//{
+			//    CBLaserON.Items.Add("M3");
+			//    if (core.Configuration.LaserMode)
+			//        CBLaserON.Items.Add("M4");
+			//}
+			//else
+			//{
+			//    CBLaserON.Items.Add("M106 P1");
+			//    CBLaserOFF.Items.Add("M107 P1");
+			//}
+		}
 
-        private void AssignMinMaxLimit()
-        {
-            IISizeW.MaxValue = (int)mCore.Configuration.TableWidth;
-            IISizeH.MaxValue = (int)mCore.Configuration.TableHeight;
+		private void AssignMinMaxLimit()
+		{
+			IISizeW.MaxValue = (int)mCore.Configuration.TableWidth;
+			IISizeH.MaxValue = (int)mCore.Configuration.TableHeight;
 
-            IIOffsetX.MaxValue = (int)mCore.Configuration.TableWidth;
-            IIOffsetY.MaxValue = (int)mCore.Configuration.TableHeight;
-            IIOffsetX.MinValue = -(int)mCore.Configuration.TableWidth;
-            IIOffsetY.MinValue = -(int)mCore.Configuration.TableHeight;
+			IIOffsetX.MaxValue = (int)mCore.Configuration.TableWidth;
+			IIOffsetY.MaxValue = (int)mCore.Configuration.TableHeight;
 
-            IIBorderTracing.MaxValue = IILinearFilling.MaxValue = (int)mCore.Configuration.MaxRateX;
-            IIMaxPower.MaxValue = (int)mCore.Configuration.MaxPWM;
-        }
+			if (mCore?.Configuration != null)
+			{
+				if (mCore.Configuration.SoftLimit)
+				{
+					IIOffsetX.MinValue = 0;
+					IIOffsetY.MinValue = 0;
+				}
+				else
+				{
+					IIOffsetX.MinValue = -(int)mCore.Configuration.TableWidth;
+					IIOffsetY.MinValue = -(int)mCore.Configuration.TableHeight;
+				}
+			}
 
-        ImageProcessor IP;
+			IIBorderTracing.MaxValue = IILinearFilling.MaxValue = (int)mCore.Configuration.MaxRateX;
+			IIMaxPower.MaxValue = (int)mCore.Configuration.MaxPWM;
+		}
 
-        public void ShowDialog(ImageProcessor processor)
-        {
-            IP = processor;
+		ImageProcessor IP;
 
-
-            if (IP.Original.Height < IP.Original.Width)
-            {
-                IISizeW.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100F);
-                IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
-            }
-            else
-            {
-                IISizeH.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100F);
-                IISizeW.CurrentValue = IP.HeightToWidht(IISizeH.CurrentValue);
-            }
-
-
-            IIBorderTracing.CurrentValue = IP.BorderSpeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
-            IILinearFilling.CurrentValue = IP.MarkSpeed = Settings.GetObject("GrayScaleConversion.Gcode.Speed.Mark", 1000);
-
-            IP.LaserOn = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
-
-            if (CBLaserON.Items.Contains(IP.LaserOn))
-                CBLaserON.SelectedItem = IP.LaserOn;
-            else
-                CBLaserON.SelectedIndex = 0;
-
-            IP.LaserOff = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
-
-            if (CBLaserOFF.Items.Contains(IP.LaserOff))
-                CBLaserOFF.SelectedItem = IP.LaserOff;
-            else
-                CBLaserOFF.SelectedIndex = 0;
-
-            IIMinPower.CurrentValue = IP.MinPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
-            IIMaxPower.CurrentValue = IP.MaxPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", (int)mCore.Configuration.MaxPWM);
-
-            IILinearFilling.Visible = LblLinearFilling.Visible = LblLinearFillingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Line2Line || IP.SelectedTool == ImageProcessor.Tool.Dithering || (IP.SelectedTool == ImageProcessor.Tool.Vectorize && (IP.FillingDirection != ImageProcessor.Direction.None)));
-            IIBorderTracing.Visible = LblBorderTracing.Visible = LblBorderTracingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Vectorize || IP.SelectedTool == ImageProcessor.Tool.Centerline);
-            LblLinearFilling.Text = IP.SelectedTool == ImageProcessor.Tool.Vectorize ? "Filling Speed" : "Engraving Speed";
-
-            IIOffsetX.CurrentValue = IP.TargetOffset.X = Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F);
-            IIOffsetY.CurrentValue = IP.TargetOffset.Y = Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F);
-
-            ShowDialog();
-        }
+		public void ShowDialog(ImageProcessor processor)
+		{
+			IP = processor;
 
 
-        private void IISizeW_CurrentValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
-        {
-            IP.TargetSize = new SizeF(IISizeW.CurrentValue, IISizeH.CurrentValue);
-        }
+			if (IP.Original.Height < IP.Original.Width)
+			{
+				IISizeW.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100F);
+				IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
+			}
+			else
+			{
+				IISizeH.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100F);
+				IISizeW.CurrentValue = IP.HeightToWidht(IISizeH.CurrentValue);
+			}
 
-        private void IISizeH_CurrentValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
-        {
-            IP.TargetSize = new SizeF(IISizeW.CurrentValue, IISizeH.CurrentValue);
-        }
 
-        void IIOffsetXYCurrentValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
-        {
-            IP.TargetOffset = new PointF(IIOffsetX.CurrentValue, IIOffsetY.CurrentValue);
-        }
+			IIBorderTracing.CurrentValue = IP.BorderSpeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+			IILinearFilling.CurrentValue = IP.MarkSpeed = Settings.GetObject("GrayScaleConversion.Gcode.Speed.Mark", 1000);
 
-        void IIBorderTracingCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
-        {
-            IP.BorderSpeed = NewValue;
-        }
+			IP.LaserOn = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
 
-        void IIMarkSpeedCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
-        {
-            IP.MarkSpeed = NewValue;
-        }
-        void IIMinPowerCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
-        {
-            if (ByUser && IIMaxPower.CurrentValue <= NewValue)
-                IIMaxPower.CurrentValue = NewValue + 1;
+			if (CBLaserON.Items.Contains(IP.LaserOn))
+				CBLaserON.SelectedItem = IP.LaserOn;
+			else
+				CBLaserON.SelectedIndex = 0;
 
-            IP.MinPower = NewValue;
-        }
-        void IIMaxPowerCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
-        {
-            if (ByUser && IIMinPower.CurrentValue >= NewValue)
-                IIMinPower.CurrentValue = NewValue - 1;
+			IP.LaserOff = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
 
-            IP.MaxPower = NewValue;
-        }
+			if (CBLaserOFF.Items.Contains(IP.LaserOff))
+				CBLaserOFF.SelectedItem = IP.LaserOff;
+			else
+				CBLaserOFF.SelectedIndex = 0;
 
-        private void BtnOnOffInfo_Click(object sender, EventArgs e)
-        {
+			IIMinPower.CurrentValue = IP.MinPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
+			IIMaxPower.CurrentValue = IP.MaxPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", (int)mCore.Configuration.MaxPWM);
+
+			IILinearFilling.Visible = LblLinearFilling.Visible = LblLinearFillingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Line2Line || IP.SelectedTool == ImageProcessor.Tool.Dithering || (IP.SelectedTool == ImageProcessor.Tool.Vectorize && (IP.FillingDirection != ImageProcessor.Direction.None)));
+			IIBorderTracing.Visible = LblBorderTracing.Visible = LblBorderTracingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Vectorize || IP.SelectedTool == ImageProcessor.Tool.Centerline);
+			LblLinearFilling.Text = IP.SelectedTool == ImageProcessor.Tool.Vectorize ? "Filling Speed" : "Engraving Speed";
+
+			IIOffsetX.CurrentValue = IP.TargetOffset.X = Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F);
+			IIOffsetY.CurrentValue = IP.TargetOffset.Y = Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F);
+
+			ShowDialog();
+		}
+
+
+		private void IISizeW_CurrentValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
+		{
+			IP.TargetSize = new SizeF(IISizeW.CurrentValue, IISizeH.CurrentValue);
+		}
+
+		private void IISizeH_CurrentValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
+		{
+			IP.TargetSize = new SizeF(IISizeW.CurrentValue, IISizeH.CurrentValue);
+		}
+
+		void IIOffsetXYCurrentValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
+		{
+			IP.TargetOffset = new PointF(IIOffsetX.CurrentValue, IIOffsetY.CurrentValue);
+		}
+
+		void IIBorderTracingCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+		{
+			IP.BorderSpeed = NewValue;
+		}
+
+		void IIMarkSpeedCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+		{
+			IP.MarkSpeed = NewValue;
+		}
+		void IIMinPowerCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+		{
+			if (ByUser && IIMaxPower.CurrentValue <= NewValue)
+				IIMaxPower.CurrentValue = NewValue + 1;
+
+			IP.MinPower = NewValue;
+		}
+		void IIMaxPowerCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+		{
+			if (ByUser && IIMinPower.CurrentValue >= NewValue)
+				IIMinPower.CurrentValue = NewValue - 1;
+
+			IP.MaxPower = NewValue;
+		}
+
+		private void BtnOnOffInfo_Click(object sender, EventArgs e)
+		{
 			Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/raster-image-import/target-image-size-and-laser-options/#laser-modes");
-        }
+		}
 
-        private void BtnModulationInfo_Click(object sender, EventArgs e)
-        {
+		private void BtnModulationInfo_Click(object sender, EventArgs e)
+		{
 			Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/raster-image-import/target-image-size-and-laser-options/#power-modulation");
-        }
+		}
 
-        private void CBLaserON_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            IP.LaserOn = (string)CBLaserON.SelectedItem;
-        }
+		private void CBLaserON_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			IP.LaserOn = (string)CBLaserON.SelectedItem;
+		}
 
-        private void CBLaserOFF_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            IP.LaserOff = (string)CBLaserOFF.SelectedItem;
-        }
+		private void CBLaserOFF_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			IP.LaserOff = (string)CBLaserOFF.SelectedItem;
+		}
 
-        private void IISizeW_OnTheFlyValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
-        {
-            if (ByUser)
-                IISizeH.CurrentValue = IP.WidthToHeight(NewValue);
-        }
+		private void IISizeW_OnTheFlyValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
+		{
+			if (ByUser)
+				IISizeH.CurrentValue = IP.WidthToHeight(NewValue);
+		}
 
-        private void IISizeH_OnTheFlyValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
-        {
-            if (ByUser) IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
-        }
+		private void IISizeH_OnTheFlyValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
+		{
+			if (ByUser) IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
+		}
 
-        private void CbAutosize_CheckedChanged(object sender, EventArgs e)
-        {
-            IISizeH.Enabled = IISizeW.Enabled = !CbAutosize.Checked;
-            IIDpi.Enabled = CbAutosize.Checked;
+		private void CbAutosize_CheckedChanged(object sender, EventArgs e)
+		{
+			IISizeH.Enabled = IISizeW.Enabled = !CbAutosize.Checked;
+			IIDpi.Enabled = CbAutosize.Checked;
 
-            ComputeDpiSize();
-        }
+			ComputeDpiSize();
+		}
 
-        private void IIDpi_CurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
-        {
-            ComputeDpiSize();
-        }
+		private void IIDpi_CurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+		{
+			ComputeDpiSize();
+		}
 
-        private void ComputeDpiSize()
-        {
-            if (CbAutosize.Checked)
-            {
-                IISizeW.CurrentValue = Convert.ToSingle(25.4 * IP.TrueOriginal.Width / IIDpi.CurrentValue);
-                IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
-            }
+		private void ComputeDpiSize()
+		{
+			if (CbAutosize.Checked)
+			{
+				IISizeW.CurrentValue = Convert.ToSingle(25.4 * IP.TrueOriginal.Width / IIDpi.CurrentValue);
+				IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
+			}
 
 			BtnDPI.Enabled = CbAutosize.Checked && (IIDpi.CurrentValue != IP.FileDPI);
-        }
+		}
 
-        private void BtnDPI_Click(object sender, EventArgs e)
+		private void BtnDPI_Click(object sender, EventArgs e)
 		{
 			if (CbAutosize.Checked)
 				IIDpi.CurrentValue = IP.FileDPI;
@@ -225,6 +237,34 @@ namespace LaserGRBL.RasterConverter
 
 				IIMaxPower.CurrentValue = IIMaxPower.MaxValue * row.Power / 100;
 			}
+		}
+
+		private void BtnCreate_Click(object sender, EventArgs e)
+		{
+			if (ConfirmOutOfBoundary())
+				DialogResult = DialogResult.OK;
+		}
+
+		private bool ConfirmOutOfBoundary()
+		{
+			if (mCore?.Configuration != null && !Settings.GetObject("DisableBoundaryWarning", false))
+			{
+				if ((IIOffsetX.CurrentValue < 0 || IIOffsetY.CurrentValue < 0) && mCore.Configuration.SoftLimit)
+					if (MessageBox.Show(Strings.WarnSoftLimitNS, Strings.WarnSoftLimitTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+						return false;
+
+				if (Math.Max(IIOffsetX.CurrentValue, 0) + IISizeW.CurrentValue > (float)mCore.Configuration.TableWidth || Math.Max(IIOffsetY.CurrentValue, 0) + IISizeH.CurrentValue > (float)mCore.Configuration.TableHeight)
+					if (MessageBox.Show(String.Format(Strings.WarnSoftLimitOOB, (int)mCore.Configuration.TableWidth, (int)mCore.Configuration.TableHeight), Strings.WarnSoftLimitTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+						return false;
+			}
+
+			return true;
+		}
+
+		private void BtnReset_Click(object sender, EventArgs e)
+		{
+			IIOffsetY.CurrentValue = 0;
+			IIOffsetX.CurrentValue = 0;
 		}
 
 		private void BtnCenter_Click(object sender, EventArgs e)

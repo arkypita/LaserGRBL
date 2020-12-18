@@ -46,8 +46,9 @@ namespace LaserGRBL
 			CbIssueDetector.Checked = !Settings.GetObject("Do not show Issue Detector", false);
 			CbSoftReset.Checked = Settings.GetObject("Reset Grbl On Connect", true);
 			CbHardReset.Checked = Settings.GetObject("HardReset Grbl On Connect", false);
+			CbDisableBoundWarn.Checked = Settings.GetObject("DisableBoundaryWarning", false);
 
-            CbContinuosJog.Checked = Settings.GetObject("Enable Continuous Jog", false);
+			CbContinuosJog.Checked = Settings.GetObject("Enable Continuous Jog", false);
             CbEnableZJog.Checked = Settings.GetObject("Enale Z Jog Control", false);
 
 			CbHiRes.Checked = Settings.GetObject("Raster Hi-Res", false );
@@ -173,6 +174,7 @@ namespace LaserGRBL
 			Settings.SetObject("HardReset Grbl On Connect", CbHardReset.Checked);
             Settings.SetObject("Enable Continuous Jog", CbContinuosJog.Checked);
             Settings.SetObject("Enale Z Jog Control", CbEnableZJog.Checked);
+			Settings.SetObject("DisableBoundaryWarning", CbDisableBoundWarn.Checked);
 
 			Settings.SetObject("AutoCooling", CbAutoCooling.Checked);
 			Settings.SetObject("AutoCooling TOn", MaxTs(TimeSpan.FromSeconds(10), new TimeSpan(0, (int)CbOnMin.SelectedItem, (int)CbOnSec.SelectedItem)));

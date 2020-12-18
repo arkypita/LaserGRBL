@@ -721,5 +721,37 @@ namespace LaserGRBL {
                 return ResourceManager.GetString("WarnMessageBoxHeader", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a You have set negative offsets, but your engraver is set to use positive space with soft limit alarm enabled ($20=1).
+        ///
+        ///This could generate a soft-limit error. Are you sure of the entered values?.
+        /// </summary>
+        internal static string WarnSoftLimitNS {
+            get {
+                return ResourceManager.GetString("WarnSoftLimitNS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a You have set a size and offset that makes the job larger than the workspace configured in your engraver ({0}mm x {1}mm).
+        ///Grbl Parameters $130 and $131.
+        ///
+        ///This could generate a soft-limit error or the machine could crash into the axes boundary. Are you sure of the entered values?.
+        /// </summary>
+        internal static string WarnSoftLimitOOB {
+            get {
+                return ResourceManager.GetString("WarnSoftLimitOOB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Job boundary confirmation.
+        /// </summary>
+        internal static string WarnSoftLimitTitle {
+            get {
+                return ResourceManager.GetString("WarnSoftLimitTitle", resourceCulture);
+            }
+        }
     }
 }

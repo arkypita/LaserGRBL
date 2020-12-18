@@ -2712,29 +2712,15 @@ namespace LaserGRBL
 		public GrblConf()
 		{ mData = new System.Collections.Generic.Dictionary<int, decimal>(); }
 
-		public GrblCore.GrblVersionInfo GrblVersion
-		{ get { return mVersion; } }
+		public GrblCore.GrblVersionInfo GrblVersion => mVersion; 
+		private bool NoVersionInfo => mVersion == null;
+		private bool Version11 => mVersion != null && mVersion >= new GrblCore.GrblVersionInfo(1, 1);
+		private bool Version9 => mVersion != null && mVersion >= new GrblCore.GrblVersionInfo(0, 9);
 
-		private bool Version11
-		{ get { return mVersion != null && mVersion >= new GrblCore.GrblVersionInfo(1, 1); } }
-
-		private bool Version9
-		{ get { return mVersion != null && mVersion >= new GrblCore.GrblVersionInfo(0, 9); } }
-
-		private bool NoVersionInfo
-		{ get { return mVersion == null; } }
-
-		public int ExpectedCount
-		{ get { return Version11 ? 34 : Version9 ? 31 : 23; } }
-
-		public bool HomingEnabled
-		{ get { return ReadWithDefault(Version9 ? 22 : 17, 1) != 0; } }
-
-		public decimal MaxRateX
-		{ get { return ReadWithDefault(Version9 ? 110 : 4, 4000); } }
-
-		public decimal MaxRateY
-		{ get { return ReadWithDefault(Version9 ? 111 : 5, 4000); } }
+		public int ExpectedCount => Version11 ? 34 : Version9 ? 31 : 23; 
+		public bool HomingEnabled => ReadWithDefault(Version9 ? 22 : 17, 1) != 0;
+		public decimal MaxRateX => ReadWithDefault(Version9 ? 110 : 4, 4000);
+		public decimal MaxRateY => ReadWithDefault(Version9 ? 111 : 5, 4000);
 
 		public bool LaserMode
 		{
@@ -2747,23 +2733,13 @@ namespace LaserGRBL
 			}
 		}
 
-		public decimal MinPWM
-		{ get { return ReadWithDefault(Version11 ? 31 : -1, 0); } }
-
-		public decimal MaxPWM
-		{ get { return ReadWithDefault(Version11 ? 30 : -1, 1000); } }
-
-		public decimal ResolutionX
-		{ get { return ReadWithDefault(Version9 ? 100 : 0, 250); } }
-
-		public decimal ResolutionY
-		{ get { return ReadWithDefault(Version9 ? 101 : 1, 250); } }
-
-		public decimal TableWidth
-		{ get { return ReadWithDefault(Version9 ? 130 : -1, 3000); } }
-
-		public decimal TableHeight
-		{ get { return ReadWithDefault(Version9 ? 131 : -1, 2000); } }
+		public decimal MinPWM => ReadWithDefault(Version11 ? 31 : -1, 0);
+		public decimal MaxPWM => ReadWithDefault(Version11 ? 30 : -1, 1000);
+		public decimal ResolutionX => ReadWithDefault(Version9 ? 100 : 0, 250);
+		public decimal ResolutionY => ReadWithDefault(Version9 ? 101 : 1, 250);
+		public decimal TableWidth => ReadWithDefault(Version9 ? 130 : -1, 3000);
+		public decimal TableHeight => ReadWithDefault(Version9 ? 131 : -1, 2000);
+		public bool SoftLimit => ReadWithDefault(20, 0) != 0;
 
 
 		private decimal ReadWithDefault(int number, decimal defval)
@@ -2799,6 +2775,7 @@ namespace LaserGRBL
 		}
 
 		public int Count { get { return mData.Count; } }
+
 
 		internal bool HasChanges(GrblConfParam p)
 		{

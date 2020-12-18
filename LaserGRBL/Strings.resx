@@ -341,4 +341,18 @@ Continue anyway?</value>
   <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
     <value>Cannot open a new file now.</value>
   </data>
+  <data name="WarnSoftLimitNS" xml:space="preserve">
+    <value>You have set negative offsets, but your engraver is set to use positive space with soft limit alarm enabled ($20=1).
+
+This could generate a soft-limit error. Are you sure of the entered values?</value>
+  </data>
+  <data name="WarnSoftLimitOOB" xml:space="preserve">
+    <value>You have set a size and offset that makes the job larger than the workspace configured in your engraver ({0}mm x {1}mm).
+Grbl Parameters $130 and $131.
+
+This could generate a soft-limit error or the machine could crash into the axes boundary. Are you sure of the entered values?</value>
+  </data>
+  <data name="WarnSoftLimitTitle" xml:space="preserve">
+    <value>Job boundary confirmation</value>
+  </data>
 </root>
