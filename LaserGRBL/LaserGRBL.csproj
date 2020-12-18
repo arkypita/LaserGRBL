@@ -743,7 +743,6 @@
     <Compile Include="UserControls\WaitingProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Content Include="setup.iss" />
     <Content Include="Sound\connect.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
