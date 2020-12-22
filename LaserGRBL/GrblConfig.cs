@@ -62,8 +62,9 @@ namespace LaserGRBL
 
 		void RefreshEnabledButtons()
 		{
-			BtnExport.Enabled = BtnImport.Enabled = BtnRead.Enabled = BtnWrite.Enabled = Core.MachineStatus == GrblCore.MacStatus.Idle;
-			DGV.ReadOnly = LblConnect.Visible = !BtnRead.Enabled;
+			BtnExport.Enabled = Core.Configuration.Count > 0;
+			BtnImport.Enabled = BtnRead.Enabled = BtnWrite.Enabled = Core.CanReadWriteConfig;
+			DGV.ReadOnly = LblConnect.Visible = !Core.IsConnected;
 		}
 
 		internal static void CreateAndShowDialog(GrblCore core)
@@ -172,7 +173,8 @@ namespace LaserGRBL
 
 			if (filename != null)
 			{
-				Core.RefreshConfig();
+				Core.RefreshConfig(); //internally skipped if not possible
+
 				List<GrblConf.GrblConfParam> toexport = Core.Configuration.ToList();
 				if (toexport.Count > 0)
 				{

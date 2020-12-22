@@ -79,7 +79,7 @@ namespace LaserGRBL
 			UnexpectedDisconnect = 4,
 		}
 
-        public enum MacStatus
+		public enum MacStatus
 		{ Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue, Cooling }
 
 		public enum JogDirection
@@ -720,7 +720,7 @@ namespace LaserGRBL
 
 		public virtual void RefreshConfig()
 		{
-			if (IsConnected)
+			if (CanReadWriteConfig)
 			{
 				try
 				{
@@ -819,7 +819,7 @@ namespace LaserGRBL
 
 		public void WriteConfig(System.Collections.Generic.List<GrblConf.GrblConfParam> config)
 		{
-			if (mMachineStatus == MacStatus.Idle)
+			if (CanReadWriteConfig)
 			{
 				lock (this)
 				{
@@ -2125,6 +2125,9 @@ namespace LaserGRBL
 
 		public bool CanResumeHold
 		{ get { return IsConnected && (MachineStatus == MacStatus.Door || MachineStatus == MacStatus.Hold || MachineStatus == MacStatus.Cooling); } }
+
+		public bool CanReadWriteConfig
+		{ get { return IsConnected && !InProgram && (MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Alarm); } }
 
 		public decimal LoopCount
 		{ get { return mLoopCount; } set { mLoopCount = value; if (OnLoopCountChange != null) OnLoopCountChange(mLoopCount); } }
