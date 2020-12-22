@@ -210,7 +210,7 @@ namespace LaserGRBL
 		{
 			SuspendLayout();
 
-			if (!Core.IsOpen && System.IO.Ports.SerialPort.GetPortNames().Length != CBPort.Items.Count)
+			if (!Core.IsConnected && System.IO.Ports.SerialPort.GetPortNames().Length != CBPort.Items.Count)
 				InitPortCB();
 			
 			PB.Maximum = Core.ProgramTarget;
@@ -240,9 +240,9 @@ namespace LaserGRBL
 			Check: Grbl is in check G-code mode. It will process and respond to all G-code commands, but not motion or turn on anything. Once toggled off with another '$C' command, Grbl will reset itself.
 			*/
 
-			TT.SetToolTip(BtnConnectDisconnect, Core.IsOpen ? Strings.BtnDisconnectTT : Strings.BtnConnectTT);
+			TT.SetToolTip(BtnConnectDisconnect, Core.IsConnected ? Strings.BtnDisconnectTT : Strings.BtnConnectTT);
 			
-			BtnConnectDisconnect.UseAltImage = Core.IsOpen;
+			BtnConnectDisconnect.UseAltImage = Core.IsConnected;
 			BtnRunProgram.Enabled = Core.CanSendFile;
             BtnRunProgram.Visible = !Core.CanAbortProgram;
             BtnAbortProgram.Visible = Core.CanAbortProgram;
@@ -254,13 +254,13 @@ namespace LaserGRBL
 			//	TxtManualCommand.Focus();
 
 			//CBProtocol.Enabled = !Core.IsOpen;
-			CBPort.Enabled = !Core.IsOpen;
-			CBSpeed.Enabled = !Core.IsOpen;
-			TxtAddress.Enabled = !Core.IsOpen;
+			CBPort.Enabled = !Core.IsConnected;
+			CBSpeed.Enabled = !Core.IsConnected;
+			TxtAddress.Enabled = !Core.IsConnected;
 
 			CmdLog.TimerUpdate();
 
-			if (!Core.IsOpen)
+			if (!Core.IsConnected)
 			{
 				ComWrapper.WrapperType actualWrapper = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 				if (actualWrapper != currentWrapper)

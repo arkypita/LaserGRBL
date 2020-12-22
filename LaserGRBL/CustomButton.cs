@@ -180,7 +180,7 @@ namespace LaserGRBL
 			if (EnableStyle == EnableStyles.Always)
 				return true;
 			else if (EnableStyle == EnableStyles.Connected)
-				return core.IsOpen;
+				return core.IsConnected;
 			else if (EnableStyle == EnableStyles.Idle)
 				return core.MachineStatus == GrblCore.MacStatus.Idle;
 			else if (EnableStyle == EnableStyles.Run)

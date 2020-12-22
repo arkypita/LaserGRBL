@@ -80,7 +80,7 @@ namespace LaserGRBL
 		}
 
         public enum MacStatus
-		{ Unknown, Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue, Cooling }
+		{ Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue, Cooling }
 
 		public enum JogDirection
 		{ None, Abort, Home, N, S, W, E, NW, NE, SW, SE, Zup, Zdown }
@@ -263,7 +263,7 @@ namespace LaserGRBL
 
 		protected TimeProjection mTP = new TimeProjection();
 
-		private MacStatus mMachineStatus;
+		private MacStatus mMachineStatus = MacStatus.Disconnected;
 		
 
 		private float mCurF;
@@ -389,20 +389,25 @@ namespace LaserGRBL
 			}
 		}
 
-		protected void SetStatus(MacStatus value)
+		protected void SetStatus(MacStatus newStatus)
 		{
 			lock (this)
 			{
-				if (mMachineStatus != value)
+				if (mMachineStatus != newStatus)
 				{
-					Logger.LogMessage("SetStatus", "Machine status [{0}]", value);
+					MacStatus oldStatus = mMachineStatus;
+					mMachineStatus = newStatus;
 
-					if (mMachineStatus == MacStatus.Connecting && value != MacStatus.Disconnected)
+					Logger.LogMessage("SetStatus", "Machine status [{0}]", mMachineStatus);
+
+					if (oldStatus == MacStatus.Connecting && newStatus != MacStatus.Disconnected)
+						RefreshConfigOnConnect();
+
+					if (oldStatus == MacStatus.Connecting && newStatus != MacStatus.Disconnected)
 						SoundEvent.PlaySound(SoundEvent.EventId.Connect);
-					if (mMachineStatus != MacStatus.Unknown && value == MacStatus.Disconnected)
+					if (newStatus == MacStatus.Disconnected)
 						SoundEvent.PlaySound(SoundEvent.EventId.Disconnect);
 
-					mMachineStatus = value;
 					RiseMachineStatusChanged();
 
 					if (mTP != null && mTP.InProgram)
@@ -416,7 +421,13 @@ namespace LaserGRBL
 			}
 		}
 
-        internal virtual void SendHomingCommand()
+		private void RefreshConfigOnConnect()
+		{
+			try {System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(RefreshConfigOnConnect)); }
+			catch{ }
+		}
+
+		internal virtual void SendHomingCommand()
         {
             EnqueueCommand(new GrblCommand("$H"));
         }
@@ -701,9 +712,15 @@ namespace LaserGRBL
 			}
 		}
 
+		private void RefreshConfigOnConnect(object state) //da usare per la chiamata asincrona
+		{
+			try { RefreshConfig(); }
+			catch { }
+		}
+
 		public virtual void RefreshConfig()
 		{
-			if (mMachineStatus == MacStatus.Idle)
+			if (IsConnected)
 			{
 				try
 				{
@@ -1082,8 +1099,7 @@ namespace LaserGRBL
 			}
 		}
 
-		public bool IsOpen
-		{ get { return mMachineStatus != MacStatus.Disconnected; } }
+		public bool IsConnected => mMachineStatus != MacStatus.Disconnected && mMachineStatus != MacStatus.Connecting;
 
 		#region Comandi immediati
 
@@ -1229,9 +1245,9 @@ namespace LaserGRBL
 			get
 			{
 				if (SupportTrueJogging)
-					return IsOpen && (MachineStatus == GrblCore.MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Jog);
+					return IsConnected && (MachineStatus == GrblCore.MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Jog);
 				else
-					return IsOpen && (MachineStatus == GrblCore.MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Run) && !InProgram;
+					return IsConnected && (MachineStatus == GrblCore.MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Run) && !InProgram;
 			}
 		}
 
@@ -2081,34 +2097,34 @@ namespace LaserGRBL
 		{ get { return !InProgram; } }
 
 		public bool CanSendFile
-		{ get { return IsOpen && HasProgram && IdleOrCheck; } }
+		{ get { return IsConnected && HasProgram && IdleOrCheck; } }
 
 		public bool CanAbortProgram
-		{ get { return IsOpen && HasProgram && (MachineStatus == MacStatus.Run || MachineStatus == MacStatus.Hold || MachineStatus == MacStatus.Cooling); } }
+		{ get { return IsConnected && HasProgram && (MachineStatus == MacStatus.Run || MachineStatus == MacStatus.Hold || MachineStatus == MacStatus.Cooling); } }
 
 		public bool CanImportExport
-		{ get { return IsOpen && MachineStatus == MacStatus.Idle; } }
+		{ get { return IsConnected && MachineStatus == MacStatus.Idle; } }
 
 		public bool CanResetGrbl
-		{ get { return IsOpen && MachineStatus != MacStatus.Disconnected; } }
+		{ get { return IsConnected && MachineStatus != MacStatus.Disconnected; } }
 
 		public bool CanSendManualCommand
-		{ get { return IsOpen && MachineStatus != MacStatus.Disconnected && !InProgram; } }
+		{ get { return IsConnected && MachineStatus != MacStatus.Disconnected && !InProgram; } }
 
 		public bool CanDoHoming
-		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm) && Configuration.HomingEnabled; } }
+		{ get { return IsConnected && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm) && Configuration.HomingEnabled; } }
 
 		public bool CanDoZeroing
-		{ get { return IsOpen && MachineStatus == MacStatus.Idle && WorkPosition != GPoint.Zero; } }
+		{ get { return IsConnected && MachineStatus == MacStatus.Idle && WorkPosition != GPoint.Zero; } }
 
 		public bool CanUnlock
-		{ get { return IsOpen && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm); } }
+		{ get { return IsConnected && (MachineStatus == MacStatus.Idle || MachineStatus == GrblCore.MacStatus.Alarm); } }
 
 		public bool CanFeedHold
-		{ get { return IsOpen && MachineStatus == MacStatus.Run; } }
+		{ get { return IsConnected && MachineStatus == MacStatus.Run; } }
 
 		public bool CanResumeHold
-		{ get { return IsOpen && (MachineStatus == MacStatus.Door || MachineStatus == MacStatus.Hold || MachineStatus == MacStatus.Cooling); } }
+		{ get { return IsConnected && (MachineStatus == MacStatus.Door || MachineStatus == MacStatus.Hold || MachineStatus == MacStatus.Cooling); } }
 
 		public decimal LoopCount
 		{ get { return mLoopCount; } set { mLoopCount = value; if (OnLoopCountChange != null) OnLoopCountChange(mLoopCount); } }
@@ -2238,7 +2254,7 @@ namespace LaserGRBL
 
 		internal void HKConnectDisconnect()
 		{
-			if (IsOpen)
+			if (IsConnected)
 				HKDisconnect();
 			else
 				HKConnect();
@@ -2246,13 +2262,13 @@ namespace LaserGRBL
 
 		internal void HKConnect()
 		{
-			if (!IsOpen)
+			if (!IsConnected)
 				OpenCom();
 		}
 
 		internal void HKDisconnect()
 		{
-			if (IsOpen)
+			if (IsConnected)
 			{
 				if (!(InProgram && System.Windows.Forms.MessageBox.Show(Strings.DisconnectAnyway, Strings.WarnMessageBoxHeader, System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Warning, System.Windows.Forms.MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes))
 					CloseCom(true);

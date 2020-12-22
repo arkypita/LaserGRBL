@@ -14,7 +14,6 @@ namespace LaserGRBL
 	public partial class MainForm : Form
 	{
 		private GrblCore Core;
-		private bool FirstIdle = true;
 		private UsageStats.MessageData ToolBarMessage;
 
 		public MainForm()
@@ -215,17 +214,6 @@ namespace LaserGRBL
 
 		void OnMachineStatus()
 		{
-			if (Core.MachineStatus == GrblCore.MacStatus.Idle && FirstIdle && Core.Configuration.Count == 0)
-			{
-				try
-				{
-					Core.RefreshConfig();
-					FirstIdle = false;
-				}
-				catch { }
-			}
-
-
 			TimerUpdate();
 		}
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
@@ -280,8 +268,8 @@ namespace LaserGRBL
 
 			MNEsp8266.Visible = (Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial)) == ComWrapper.WrapperType.LaserWebESP8266;
 
-			MnConnect.Visible = !Core.IsOpen;
-			MnDisconnect.Visible = Core.IsOpen;
+			MnConnect.Visible = !Core.IsConnected;
+			MnDisconnect.Visible = Core.IsConnected;
 
 			MnGoHome.Visible = Core.Configuration.HomingEnabled;
 			MnGoHome.Enabled = Core.CanDoHoming;
