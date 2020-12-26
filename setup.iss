@@ -20,7 +20,7 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={commonpf}\{#MyAppName}
+DefaultDirName={pf}\{#MyAppName}
 DisableDirPage=no
 DisableProgramGroupPage=yes
 OutputDir=.\
@@ -31,7 +31,7 @@ InternalCompressLevel=ultra64
 CompressionThreads=2
 RestartIfNeededByRun=False
 Uninstallable=yes
-UninstallFilesDir={commonpf}
+UninstallFilesDir={pf}
 SetupIconFile=.\install.ico
 UninstallDisplayIcon={app}\LaserGRBL.exe
 
