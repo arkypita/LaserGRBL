@@ -280,8 +280,18 @@ namespace LaserGRBL
 				{
 					using (Graphics g = Graphics.FromImage(ptb))
 					{
-						//Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, (Math.Max(c.res/c.fres, 1) + 1) / 2.0f);
-						Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, Math.Max(1, c.res / c.fres), skipcmd);
+						double inset = Math.Max(1, c.res / c.fres); //bordino da togliere per finire un po' prima del bordo
+
+						PointF correction = new PointF();
+						if (c.dir == RasterConverter.ImageProcessor.Direction.Horizontal)
+							correction = new PointF(0, 1);
+						if (c.dir == RasterConverter.ImageProcessor.Direction.Vertical)
+							correction = new PointF(1, 0);
+						if (c.dir == RasterConverter.ImageProcessor.Direction.Diagonal)
+							correction = new PointF(0, 0);
+
+						Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, inset, correction);
+
 						using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size((int)(bmp.Width * c.fres / c.res), (int)(bmp.Height * c.fres / c.res)), true, InterpolationMode.HighQualityBicubic))
 						{
 							if (c.pwm)

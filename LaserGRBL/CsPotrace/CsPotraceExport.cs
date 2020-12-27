@@ -31,7 +31,7 @@ namespace CsPotrace
        /// <param name="Width">Width of the Bitmap</param>
         /// <param name="Height">Height of the Bitmap</param>
        /// <returns></returns>
-		public static void Export2GDIPlus(List<List<Curve>> Fig, Graphics g, Brush fill, Pen border, double inset, string skipcmd)
+		public static void Export2GDIPlus(List<List<Curve>> Fig, Graphics g, Brush fill, Pen border, double inset, PointF offset_correction = new PointF())
         {
 			g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
 			g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -56,6 +56,13 @@ namespace CsPotrace
 
 				}
 				gp.AddPath(Current, false);
+			}
+
+			if (!offset_correction.IsEmpty)
+			{
+				Matrix M = new Matrix();
+				M.Translate(offset_correction.X, offset_correction.Y);
+				gp.Transform(M);
 			}
 
 			if (fill != null)
