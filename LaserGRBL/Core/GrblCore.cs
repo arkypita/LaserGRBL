@@ -311,7 +311,7 @@ namespace LaserGRBL
 			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX);
 			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null);
 
-			file = new GrblFile(0, 0, 200, 300);  //create a fake range to use with manual movements
+			file = new GrblFile(0, 0, Configuration.TableWidth, Configuration.TableHeight);  //create a fake range to use with manual movements
 
 			file.OnFileLoading += RiseOnFileLoading;
 			file.OnFileLoaded += RiseOnFileLoaded;
@@ -2756,8 +2756,8 @@ namespace LaserGRBL
 		public decimal MaxPWM => ReadWithDefault(Version11 ? 30 : -1, 1000);
 		public decimal ResolutionX => ReadWithDefault(Version9 ? 100 : 0, 250);
 		public decimal ResolutionY => ReadWithDefault(Version9 ? 101 : 1, 250);
-		public decimal TableWidth => ReadWithDefault(Version9 ? 130 : -1, 3000);
-		public decimal TableHeight => ReadWithDefault(Version9 ? 131 : -1, 2000);
+		public decimal TableWidth => ReadWithDefault(Version9 ? 130 : -1, 300);
+		public decimal TableHeight => ReadWithDefault(Version9 ? 131 : -1, 200);
 		public bool SoftLimit => ReadWithDefault(20, 0) != 0;
 
 

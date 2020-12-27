@@ -1007,55 +1007,53 @@ namespace LaserGRBL
 					DrawString(g, zoom, mRange.DrawingRange.X.Min, 0, mRange.DrawingRange.X.Min.ToString(format), true, false, false, top, ColorScheme.PreviewText);
 					DrawString(g, zoom, mRange.DrawingRange.X.Max, 0, mRange.DrawingRange.X.Max.ToString(format), true, false, false, top, ColorScheme.PreviewText);
 				}
+			}
 
-				using (Pen pen = GetPen(ColorScheme.PreviewRuler))
-				{
-					//pen.DashStyle = DashStyle.Dash;
-					//pen.DashPattern = new float[] { 1.0f / zoom, 2.0f / zoom }; //pen.DashPattern = new float[] { 1f / zoom, 2f / zoom};
-					pen.ScaleTransform(1.0f / zoom, 1.0f / zoom);
-					CartesianQuadrant q = Quadrant;
-					bool right = q == CartesianQuadrant.I || q == CartesianQuadrant.IV; //l'oggetto si trova a destra
-					bool top = q == CartesianQuadrant.I || q == CartesianQuadrant.II; //l'oggetto si trova in alto
+			using (Pen pen = GetPen(ColorScheme.PreviewRuler))
+			{
+				//pen.DashStyle = DashStyle.Dash;
+				//pen.DashPattern = new float[] { 1.0f / zoom, 2.0f / zoom }; //pen.DashPattern = new float[] { 1f / zoom, 2f / zoom};
+				pen.ScaleTransform(1.0f / zoom, 1.0f / zoom);
+				CartesianQuadrant q = Quadrant;
+				bool right = q == CartesianQuadrant.Unknown || q == CartesianQuadrant.I || q == CartesianQuadrant.IV; //l'oggetto si trova a destra
+				bool top = q == CartesianQuadrant.Unknown || q == CartesianQuadrant.I || q == CartesianQuadrant.II; //l'oggetto si trova in alto
 
-					string format = "0";
-					if (mRange.DrawingRange.Width < 50 && mRange.DrawingRange.Height < 50)
-						format = "0.0";
+				string format = "0";
+				
+				if (mRange.DrawingRange.ValidRange && mRange.DrawingRange.Width < 50 && mRange.DrawingRange.Height < 50)
+					format = "0.0";
 
-					//scala orizzontale
-					Tools.RulerStepCalculator hscale = new Tools.RulerStepCalculator(-wSize.Width, wSize.Width, (int)(2*s.Width / 100));
+				//scala orizzontale
+				Tools.RulerStepCalculator hscale = new Tools.RulerStepCalculator(-wSize.Width, wSize.Width, (int)(2 * s.Width / 100));
 
-					double h1 = (top ? -4.0 : 4.0) / zoom;
-					double h2 = 1.8*h1;
-					double h3 = (top ? 1.0 : -1.0) / zoom;
+				double h1 = (top ? -4.0 : 4.0) / zoom;
+				double h2 = 1.8 * h1;
+				double h3 = (top ? 1.0 : -1.0) / zoom;
 
-					for (float d = (float)hscale.FirstSmall; d < wSize.Width; d += (float)hscale.SmallStep)
-						g.DrawLine(pen, d, 0, d, (float)h1);
+				for (float d = (float)hscale.FirstSmall; d < wSize.Width; d += (float)hscale.SmallStep)
+					g.DrawLine(pen, d, 0, d, (float)h1);
 
-					for (float d = (float)hscale.FirstBig; d < wSize.Width; d += (float)hscale.BigStep)
-						g.DrawLine(pen, d, 0, d, (float)h2);
+				for (float d = (float)hscale.FirstBig; d < wSize.Width; d += (float)hscale.BigStep)
+					g.DrawLine(pen, d, 0, d, (float)h2);
 
-					for (float d = (float)hscale.FirstBig; d < wSize.Width; d += (float)hscale.BigStep)
-						DrawString(g, zoom, (decimal)d, (decimal)h3, d.ToString(format), false, false, !right, !top, ColorScheme.PreviewRuler);
+				for (float d = (float)hscale.FirstBig; d < wSize.Width; d += (float)hscale.BigStep)
+					DrawString(g, zoom, (decimal)d, (decimal)h3, d.ToString(format), false, false, !right, !top, ColorScheme.PreviewRuler);
 
-					//scala verticale
+				//scala verticale
 
-					Tools.RulerStepCalculator vscale = new Tools.RulerStepCalculator(-wSize.Height, wSize.Height, (int)(2 * s.Height / 100));
-					double v1 = (right ? -4.0 : 4.0) / zoom;
-					double v2 = 1.8 * v1;
-					double v3 = (right ? 2.5 : 0) / zoom;
+				Tools.RulerStepCalculator vscale = new Tools.RulerStepCalculator(-wSize.Height, wSize.Height, (int)(2 * s.Height / 100));
+				double v1 = (right ? -4.0 : 4.0) / zoom;
+				double v2 = 1.8 * v1;
+				double v3 = (right ? 2.5 : 0) / zoom;
 
-					for (float d = (float)vscale.FirstSmall; d < wSize.Height; d += (float)vscale.SmallStep)
-						g.DrawLine(pen, 0, d, (float)v1, d);
+				for (float d = (float)vscale.FirstSmall; d < wSize.Height; d += (float)vscale.SmallStep)
+					g.DrawLine(pen, 0, d, (float)v1, d);
 
-					for (float d = (float)vscale.FirstBig; d < wSize.Height; d += (float)vscale.BigStep)
-						g.DrawLine(pen, 0, d, (float)v2, d);
+				for (float d = (float)vscale.FirstBig; d < wSize.Height; d += (float)vscale.BigStep)
+					g.DrawLine(pen, 0, d, (float)v2, d);
 
-					for (float d = (float)vscale.FirstBig; d < wSize.Height; d += (float)vscale.BigStep)
-						DrawString(g, zoom, (decimal)v3, (decimal)d, d.ToString(format), false, false, right, !top, ColorScheme.PreviewRuler, -90);
-				}
-
-
-
+				for (float d = (float)vscale.FirstBig; d < wSize.Height; d += (float)vscale.BigStep)
+					DrawString(g, zoom, (decimal)v3, (decimal)d, d.ToString(format), false, false, right, !top, ColorScheme.PreviewRuler, -90);
 			}
 		}
 
