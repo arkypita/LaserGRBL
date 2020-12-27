@@ -1009,6 +1009,7 @@ namespace LaserGRBL
 				}
 			}
 
+			//draw ruler
 			using (Pen pen = GetPen(ColorScheme.PreviewRuler))
 			{
 				//pen.DashStyle = DashStyle.Dash;

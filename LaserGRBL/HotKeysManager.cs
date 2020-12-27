@@ -341,7 +341,7 @@ namespace LaserGRBL
 		private void RequestJog(GrblCore.JogDirection dir)
 		{
 			mJogKeyRequested = true;
-			mCore.BeginJog(dir);
+			mCore.BeginJog(dir, false);
 		}
         private void EmulateCustomButtonDown(int index)
         {

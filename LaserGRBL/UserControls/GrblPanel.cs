@@ -66,7 +66,7 @@ namespace LaserGRBL.UserControls
 
 				if (Core != null)
 				{
-					PointF p = TranslatePoint(mLastWPos.ToPointF());
+					PointF p = MachineToDraw(mLastWPos.ToPointF());
 					e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 					e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
@@ -203,15 +203,28 @@ namespace LaserGRBL.UserControls
 			}
 		}
 
-		public PointF TranslatePoint(PointF p)
+		public PointF MachineToDraw(PointF p)
 		{
 			if (mLastMatrix == null)
 				return p;
 
 			PointF[] pa = new PointF[] { p };
 			mLastMatrix.TransformPoints(pa);
-			p = pa[0];
-			return p;
+			return pa[0];
+		}
+
+		public PointF DrawToMachine(PointF p)
+		{
+			if (mLastMatrix == null || !mLastMatrix.IsInvertible)
+				return p;
+
+			Matrix mInvert = mLastMatrix.Clone();
+			mInvert.Invert();
+
+			PointF[] pa = new PointF[] { p };
+			mInvert.TransformPoints(pa);
+
+			return pa[0];
 		}
 
 		private void AssignBMP(System.Drawing.Bitmap bmp)
@@ -242,6 +255,15 @@ namespace LaserGRBL.UserControls
 		internal void OnColorChange()
 		{
 			RecreateBMP();
+		}
+
+		private void GrblPanel_MouseDoubleClick(object sender, MouseEventArgs e)
+		{
+			if (Settings.GetObject("Click N Jog", true))
+			{
+				PointF coord = DrawToMachine(new PointF(e.X, e.Y));
+				Core.BeginJog(coord, e.Button == MouseButtons.Right);
+			}
 		}
 	}
 }

@@ -149,6 +149,8 @@
 			this.label36 = new System.Windows.Forms.Label();
 			this.label28 = new System.Windows.Forms.Label();
 			this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
+			this.CbClickNJog = new System.Windows.Forms.CheckBox();
+			this.label41 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.MainTabPage.SuspendLayout();
@@ -487,6 +489,8 @@
 			this.tableLayoutPanel5.Controls.Add(this.label11, 2, 1);
 			this.tableLayoutPanel5.Controls.Add(this.CbEnableZJog, 1, 1);
 			this.tableLayoutPanel5.Controls.Add(this.CbContinuosJog, 1, 0);
+			this.tableLayoutPanel5.Controls.Add(this.CbClickNJog, 1, 2);
+			this.tableLayoutPanel5.Controls.Add(this.label41, 2, 2);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
 			// 
 			// label10
@@ -996,6 +1000,17 @@
 			// 
 			resources.ApplyResources(this.SoundBrowserDialog, "SoundBrowserDialog");
 			// 
+			// CbClickNJog
+			// 
+			resources.ApplyResources(this.CbClickNJog, "CbClickNJog");
+			this.CbClickNJog.Name = "CbClickNJog";
+			this.CbClickNJog.UseVisualStyleBackColor = true;
+			// 
+			// label41
+			// 
+			resources.ApplyResources(this.label41, "label41");
+			this.label41.Name = "label41";
+			// 
 			// SettingsForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -1182,5 +1197,7 @@
 		private System.Windows.Forms.Label label39;
 		private System.Windows.Forms.CheckBox CbDisableBoundWarn;
 		private System.Windows.Forms.Label label40;
+		private System.Windows.Forms.CheckBox CbClickNJog;
+		private System.Windows.Forms.Label label41;
 	}
 }
