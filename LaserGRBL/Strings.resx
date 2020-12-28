@@ -123,6 +123,17 @@
   <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
     <value>Sharp (NearestNeighbor)</value>
   </data>
+  <data name="WarnSoftLimitOOB" xml:space="preserve">
+    <value>You have set a size and offset that makes the job larger than the workspace configured in your engraver ({0}mm x {1}mm).
+Grbl Parameters $130 and $131.
+
+This could generate a soft-limit error or the machine could crash into the axes boundary. Are you sure of the entered values?</value>
+  </data>
+  <data name="WarnSoftLimitNS" xml:space="preserve">
+    <value>You have set negative offsets, but your engraver is set to use positive space with soft limit alarm enabled ($20=1).
+
+This could generate a soft-limit error. Are you sure of the entered values?</value>
+  </data>
   <data name="DirectionDiagonal" xml:space="preserve">
     <value>Diagonal</value>
   </data>
@@ -150,17 +161,21 @@
   <data name="FormulaOpticalCorrect" xml:space="preserve">
     <value>OpticalCorrect</value>
   </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>Centerline option is not compatible with your PC.
+64bit OS is needed!</value>
+  </data>
   <data name="CustomButtonEdit" xml:space="preserve">
     <value>Edit button</value>
   </data>
   <data name="BoxImportConfigWithoutError" xml:space="preserve">
     <value>{0} Config imported successfully!</value>
   </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>Error reading config!</value>
+  </data>
   <data name="BoxImportCustomButtonCaption" xml:space="preserve">
     <value>Import custom button</value>
-  </data>
-  <data name="BoxWriteConfigWithError" xml:space="preserve">
-    <value>{0} Config written with {1} errors!</value>
   </data>
   <data name="BoxExportConfigErrorTitle" xml:space="preserve">
     <value>Error</value>
@@ -177,8 +192,14 @@
   <data name="FirmwareRequireRestartNow" xml:space="preserve">
     <value>Restart is required to apply Firmware type changes. Restart now?</value>
   </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>Line2Line option is not compatible with your engraver or with your configuration. PWM-able laser is needed, and PWM support should be enabled in LaserGRBL settings.</value>
+  </data>
   <data name="FormulaSimpleAverage" xml:space="preserve">
     <value>SimpleAverage</value>
+  </data>
+  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
+    <value>Cannot open a new file now.</value>
   </data>
   <data name="BoxWriteConfigNoChange" xml:space="preserve">
     <value>No changes... nothing to write!</value>
@@ -241,9 +262,6 @@ Please manually download the new version from lasergrbl site.</value>
   <data name="MacStatusJog" xml:space="preserve">
     <value>Jog</value>
   </data>
-  <data name="DisconnectAnyway" xml:space="preserve">
-    <value>File transfer in progress. Disconnect anyway?</value>
-  </data>
   <data name="MacStatusDoor" xml:space="preserve">
     <value>Door</value>
   </data>
@@ -252,6 +270,9 @@ Please manually download the new version from lasergrbl site.</value>
   </data>
   <data name="BoxExportConfigFileNotFound" xml:space="preserve">
     <value>File does not exist!</value>
+  </data>
+  <data name="WarnSoftLimitTitle" xml:space="preserve">
+    <value>Job boundary confirmation</value>
   </data>
   <data name="BoxImportConfigFileError" xml:space="preserve">
     <value>Error reading file!</value>
@@ -281,6 +302,11 @@ Do you want to rewrite the configuration?</value>
   <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
     <value>Update require administrator privilege!</value>
   </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>It seems that the current position is no longer known by Grbl.
+Without the Homing Procedure ($H) the result may not be reliable.
+Continue anyway?</value>
+  </data>
   <data name="MacStatusConnecting" xml:space="preserve">
     <value>Connecting</value>
   </data>
@@ -302,6 +328,9 @@ Do you want to rewrite the configuration?</value>
   <data name="UnsupportedFiletype" xml:space="preserve">
     <value>This file type is not supported.</value>
   </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} Config written with {1} errors!</value>
+  </data>
   <data name="MacStatusRun" xml:space="preserve">
     <value>Run</value>
   </data>
@@ -311,13 +340,11 @@ Do you want to rewrite the configuration?</value>
   <data name="MainFormProjectedTime" xml:space="preserve">
     <value>Projected Time:</value>
   </data>
-  <data name="BoxReadConfigError" xml:space="preserve">
-    <value>Error reading config!</value>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>Warning</value>
   </data>
-  <data name="ResumeJobHomingRequired" xml:space="preserve">
-    <value>It seems that the current position is no longer known by Grbl.
-Without the Homing Procedure ($H) the result may not be reliable.
-Continue anyway?</value>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>File transfer in progress. Disconnect anyway?</value>
   </data>
   <data name="BoxDeleteCustomButtonText" xml:space="preserve">
     <value>Are you sure to delete selected button?</value>
@@ -328,31 +355,8 @@ Continue anyway?</value>
   <data name="BoxAbortProgramConfirm" xml:space="preserve">
     <value>Abort current job?</value>
   </data>
-  <data name="WarnCenterline64bit" xml:space="preserve">
-    <value>Centerline option is not compatible with your PC.
-64bit OS is needed!</value>
-  </data>
-  <data name="WarnMessageBoxHeader" xml:space="preserve">
-    <value>Warning</value>
-  </data>
-  <data name="WarnLine2LinePWM" xml:space="preserve">
-    <value>Line2Line option is not compatible with your engraver or with your configuration. PWM-able laser is needed, and PWM support should be enabled in LaserGRBL settings.</value>
-  </data>
-  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
-    <value>Cannot open a new file now.</value>
-  </data>
-  <data name="WarnSoftLimitNS" xml:space="preserve">
-    <value>You have set negative offsets, but your engraver is set to use positive space with soft limit alarm enabled ($20=1).
-
-This could generate a soft-limit error. Are you sure of the entered values?</value>
-  </data>
-  <data name="WarnSoftLimitOOB" xml:space="preserve">
-    <value>You have set a size and offset that makes the job larger than the workspace configured in your engraver ({0}mm x {1}mm).
-Grbl Parameters $130 and $131.
-
-This could generate a soft-limit error or the machine could crash into the axes boundary. Are you sure of the entered values?</value>
-  </data>
-  <data name="WarnSoftLimitTitle" xml:space="preserve">
-    <value>Job boundary confirmation</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="flag_greece" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\flag_greece.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

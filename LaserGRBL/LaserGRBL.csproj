@@ -111,7 +111,72 @@
       <DependentUpon>AutotraceTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Autotrace\Autotrace.cs" />
+    <Compile Include="ConnectLogForm.el-GR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConnectLogForm.el-GR.resx</DependentUpon>
+    </Compile>
     <Compile Include="Core\VigoCore.cs" />
+    <Compile Include="CustomButtonForm.el-GR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomButtonForm.el-GR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ExceptionManager.el-GR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExceptionManager.el-GR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GrblConfig.el-GR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GrblConfig.el-GR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="HotkeyManagerForm.el-GR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotkeyManagerForm.el-GR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="IssueDetectorForm.el-GR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IssueDetectorForm.el-GR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LicenseForm.el-GR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LicenseForm.el-GR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.el-GR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainForm.el-GR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PreviewForm.el-GR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PreviewForm.el-GR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ResumeJobForm.el-GR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResumeJobForm.el-GR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RunFromPositionForm.el-GR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RunFromPositionForm.el-GR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SaveOptionForm.el-GR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaveOptionForm.el-GR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsForm.el-GR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SettingsForm.el-GR.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tools\Json.cs" />
     <Compile Include="ComWrapper\ComLogger.cs" />
     <Compile Include="ExceptionManager.cs">
@@ -743,6 +808,7 @@
     <Compile Include="UserControls\WaitingProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <None Include="Resources\flag_greece.png" />
     <Content Include="Sound\connect.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -758,6 +824,11 @@
     <Content Include="Sound\success.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="ConnectLogForm.el-GR.resx">
+      <DependentUpon>ConnectLogForm.cs</DependentUpon>
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <LastGenOutput>ConnectLogForm.el-GR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CSV\setting_codes.ortur.v1.0.csv" />
     <None Include="StandardButtons.zbn">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -848,6 +919,11 @@
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomButtonForm.el-GR.resx">
+      <DependentUpon>CustomButtonForm.cs</DependentUpon>
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <LastGenOutput>CustomButtonForm.el-GR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.es.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -872,6 +948,11 @@
     <EmbeddedResource Include="ExceptionManager.de.resx">
       <DependentUpon>ExceptionManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExceptionManager.el-GR.resx">
+      <DependentUpon>ExceptionManager.cs</DependentUpon>
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <LastGenOutput>ExceptionManager.el-GR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExceptionManager.resx">
       <DependentUpon>ExceptionManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -889,6 +970,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.de.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GrblConfig.el-GR.resx">
+      <DependentUpon>GrblConfig.cs</DependentUpon>
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <LastGenOutput>GrblConfig.el-GR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.es.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
@@ -923,6 +1009,11 @@
     <EmbeddedResource Include="HotkeyManagerForm.de.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HotkeyManagerForm.el-GR.resx">
+      <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <LastGenOutput>HotkeyManagerForm.el-GR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="HotkeyManagerForm.es.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -953,6 +1044,11 @@
     <EmbeddedResource Include="IssueDetectorForm.de.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IssueDetectorForm.el-GR.resx">
+      <DependentUpon>IssueDetectorForm.cs</DependentUpon>
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <LastGenOutput>IssueDetectorForm.el-GR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="IssueDetectorForm.es.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -977,6 +1073,11 @@
     <EmbeddedResource Include="IssueDetectorForm.zh-TW.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LicenseForm.el-GR.resx">
+      <DependentUpon>LicenseForm.cs</DependentUpon>
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <LastGenOutput>LicenseForm.el-GR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="LicenseForm.resx">
       <DependentUpon>LicenseForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -985,6 +1086,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.cs-CZ.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.el-GR.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <LastGenOutput>MainForm.el-GR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.hu-HU.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -1000,6 +1106,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.cs-CZ.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreviewForm.el-GR.resx">
+      <DependentUpon>PreviewForm.cs</DependentUpon>
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <LastGenOutput>PreviewForm.el-GR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.hu-HU.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
@@ -1092,6 +1203,11 @@
     <EmbeddedResource Include="ResumeJobForm.de.resx">
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ResumeJobForm.el-GR.resx">
+      <DependentUpon>ResumeJobForm.cs</DependentUpon>
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <LastGenOutput>ResumeJobForm.el-GR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ResumeJobForm.es.resx">
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1124,6 +1240,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RunFromPositionForm.de.resx">
       <DependentUpon>RunFromPositionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RunFromPositionForm.el-GR.resx">
+      <DependentUpon>RunFromPositionForm.cs</DependentUpon>
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <LastGenOutput>RunFromPositionForm.el-GR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RunFromPositionForm.es.resx">
       <DependentUpon>RunFromPositionForm.cs</DependentUpon>
@@ -1239,6 +1360,11 @@
     <EmbeddedResource Include="SaveOptionForm.de.resx">
       <DependentUpon>SaveOptionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SaveOptionForm.el-GR.resx">
+      <DependentUpon>SaveOptionForm.cs</DependentUpon>
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <LastGenOutput>SaveOptionForm.el-GR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="SaveOptionForm.es.resx">
       <DependentUpon>SaveOptionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1256,6 +1382,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.cs-CZ.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.el-GR.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <LastGenOutput>SettingsForm.el-GR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.es.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

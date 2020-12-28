@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CbRestoreWCO.Text" xml:space="preserve">
+    <value>Αρχή @</value>
+  </data>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>ΟΚ</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Ακύρωση</value>
+  </data>
+  <data name="CbRedoHoming.Text" xml:space="preserve">
+    <value>Επανεκτέλεση επαναφοράς [$Η]</value>
+  </data>
+  <data name="LblSomeLines.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="RbSomeLines.Text" xml:space="preserve">
+    <value>Συνεχίστε μερικές γραμμές πριν από το σταμάτημα</value>
+  </data>
+  <data name="LblLineNumber.Text" xml:space="preserve">
+    <value>Γραμμή #</value>
+  </data>
+  <data name="RbFromSpecific.Text" xml:space="preserve">
+    <value>Συνέχιση από συγκεκριμένη γραμμή</value>
+  </data>
+  <data name="RbFromBeginning.Text" xml:space="preserve">
+    <value>Ξεκινήστε ξανά από την αρχή [ασφαλής]</value>
+  </data>
+  <data name="LblOptions.Text" xml:space="preserve">
+    <value>Επιλογές</value>
+  </data>
+  <data name="LblBegin.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="RbFromSent.Text" xml:space="preserve">
+    <value>Συνέχιση από την τελευταία εντολή που στάλθηκε</value>
+  </data>
+  <data name="LblSent.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LblBrief.Text" xml:space="preserve">
+    <value>Το LaserGRBL μπορεί να ξεκινήσει ξανά αυτήν την εργασία από την αρχή ή να προσπαθήσει να συνεχίσει από την τελευταία γνωστή θέση.
+Καθώς δεν είναι πάντα δυνατό να προσδιορίσετε την καλύτερη θέση επανεκκίνησης, σας αφήνουμε να λάβετε την τελική απόφαση.
+Η τελευταία ταχύτητα, η ισχύς και η κατάσταση λέιζερ ανακτώνται αυτόματα.</value>
+  </data>
+  <data name="LblCause.Text" xml:space="preserve">
+    <value>Αιτία:</value>
+  </data>
+  <data name="TxtCause.Text" xml:space="preserve">
+    <value>Άγνωστο</value>
+  </data>
+  <data name="LblDetected.Text" xml:space="preserve">
+    <value>Το LaserGRBL που εντοπίσε οτι δεν είχε ολοκληρωθεί η τελευταία εργασία!</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Συνέχιση</value>
+  </data>
+</root>
