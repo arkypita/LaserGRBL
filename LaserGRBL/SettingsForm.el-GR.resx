@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="connectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\connect.wav</value>
+  </data>
+  <data name="disconnectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\disconnect.wav</value>
+  </data>
+  <data name="fatalSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\fatal.wav</value>
+  </data>
+  <data name="successSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\success.wav</value>
+  </data>
+  <data name="warningSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\warning.wav</value>
+  </data>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>Αυτόματη ψύξη</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Από προεπιλογή, το LaserGRBL παράγει χαρακτικές γραμμές και στις δύο κατευθύνσεις κίνησης της κεφαλής λέιζερ. Ορισμένες δοκιμές έχουν δείξει ότι αυτή η λειτουργία (η οποία είναι ταχύτερη) παράγει αποτελέσματα χαμηλότερης ποιότητας. Εάν επιθυμείτε τη μέγιστη ποιότητα σήμανσης, ενεργοποιήστε αυτήν την επιλογή.</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>Από προεπιλογή, το LaserGRBL χρησιμοποιεί το G0 - γρήγορη κίνηση - για να παραλείψετε τα λευκά μέρη των εργασιών σας. Αυτό επιταχύνει τη διαδικασία χάραξης αλλά μπορεί να οδηγήσει σε ανακριβή τοποθέτηση με απογοητευτικά αποτελέσματα. Συνήθως είναι δυνατόν να βελτιώσουμε τα αποτελέσματα ορίζοντας σωστά τις μέγιστες τιμές επιτάχυνσης και ταχύτητας (120,121,122 $ και 110,111,112 $) στη διαμόρφωση grbl.
+
+Εάν απενεργοποιήσετε αυτήν τη δυνατότητα, το LaserGRBL θα χρησιμοποιεί γραμμική κίνηση G1 στην ίδια ταχύτητα εργασίας, με αποτέλεσμα όλη η διαδικασία χάραξης να γίνεται με την ίδια ταχύτητα. Αυτό θα επιβραδύνει τη διαδικασία, αλλά μπορεί να βελτιώσει δραματικά το αποτέλεσμα όπου οι άλλες εκτιμήσεις αποτυγχάνουν.</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Ακύρωση</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>Αλλαγή</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>Αλλαγή</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>Αλλαγή</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>Αλλαγή</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>Αλλαγή</value>
+  </data>
+  <data name="CbClickNJog.Text" xml:space="preserve">
+    <value>click 'n jog</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Ήχος Σύνδεσης</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Πρωτόκολλο σύνδεσης:
+- Το UsbSerial, είναι το πιο κοινό πρωτόκολλο. Πρέπει να χρησιμοποιείται εάν το χαράκτη σας είναι συνδεδεμένο σε θύρα USB ή COM.
+- Telnet, εάν έχετε γέφυρα WiFi-Telnet. Η επικοινωνία υλοποιείται σαν έναν απλό διακομιστή-πελάτη telnet.
+- Το LaserWebESP8266 υποστηρίζει σύνδεση WiFi μέσω του WebSocket. Συμβατό με λογισμικό LaserWeb-ESP8266.</value>
+  </data>
+  <data name="CbDisableBoundWarn.Text" xml:space="preserve">
+    <value>Απενεργοποίηση προειδοποίησης ορίου</value>
+  </data>
+  <data name="CbDisableSkip.Text" xml:space="preserve">
+    <value>Απενεργοποίηση γρήγορης παράλειψης G0</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Ηχος Αποσύνδεσης</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>Ενεργοποίηση αυτόματης ψύξης</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Ήχος σφάλματος</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Τύπος υλικολογισμικού
+- Grbl: το φοβερό υλικολογισμικό για το οποίο αναπτύχθηκε το LaserGRBL.
+- Smoothie [πειραματικό]: η υποστήριξη προστέθηκε πρόσφατα και δεν έχει δοκιμαστεί πλήρως.
+- Marlin [πειραματικό]: η υποστήριξη προστέθηκε πρόσφατα και δεν έχει δοκιμαστεί πλήρως.
+- VigoWork [πειραματικό]: υποστήριξη για μοντέλο VG-L7x που δεν είναι πρότυπο.</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Υποσέλιδο</value>
+  </data>
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>Επαναφορά [DTR + RTS]</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Κεφαλίδα</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Εδώ μπορείτε να ορίσετε έναν ήχο για μια επιτυχημένη σύνδεση.
+Επιλέξτε για ενεργοποίηση.</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Εδώ μπορείτε να ορίσετε έναν ήχο για αποσύνδεση.
+Χρήσιμο για ορισμένες συνδέσεις WiFi.
+Επιλέξτε για ενεργοποίηση.</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Εδώ μπορείτε να ορίσετε έναν ήχο σφάλματος για μοιραία σφάλματα.
+Αυτό σημαίνει ότι η εργασία σας πιθανότατα σταμάτησε και το LaserGRBL δεν μπορεί να συνεχίσει τη λειτουργία.
+Επιλέξτε για ενεργοποίηση.</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Εδώ μπορείτε να ορίσετε έναν άλλο ήχο για γεγονότα επιτυχίας, όπως όταν ολοκληρωθεί μια εργασία.
+Επιλέξτε για ενεργοποίηση.</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Εδώ μπορείτε να ορίσετε έναν άλλο ήχο προειδοποίησης.
+Αυτό συνήθως πυροδοτούσε μια κακή εντολή GCode, αλλά το μηχάνημά σας μπορεί να συνεχίσει να λειτουργεί.
+Επιλέξτε για ενεργοποίηση.</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>HiRes Πλήρωση</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Εάν είναι ενεργοποιημένο το LaserGRBL στείλτε μια σκληρή επαναφορά όταν ανοίγει η σύνδεση στο grbl. [Η Θέση χάνεται!]</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>Ανιχνευτής ζητημάτων</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Ελεγχος jog</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Το LaserGRBL μπορεί να εντοπίσει προβλήματα και να προειδοποιήσει τον χρήστη που παρέχει πληροφορίες σχετικά με τον τρόπο επίλυσής τους.
+Εάν απενεργοποιηθεί, όλα τα θέματα αντιμετωπίζονται σιωπηλά χωρίς προειδοποίηση.</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Το LaserGRBL δεν έχει σχεδιαστεί για να υποστηρίζει τον άξονα Ζ, αλλά αν έχετε υλικό 3 αξ, ίσως θα μπορούσατε να βρείτε αυτή την επιλογή χρήσιμη.</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Το LaserGRBL χρησιμοποιεί διαμόρφωση ισχύος μέσω του G-Code "S command" για την παραγωγή τόνων σε κλίμακα του γκρι.
+Το λέιζερ σας πρέπει να υποστηρίζει τον έλεγχο TTL που είναι συνδεδεμένος στο arduino PIN D11.
+Εάν όχι, απενεργοποιήστε την υποστήριξη PWM.</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>Το LaserGRBL θα σας προειδοποιήσει εάν πρόκειται να δημιουργήσετε μια εργασία μεγαλύτερη από τον χαράκτη σας.
+Ορίστε αυτήν τη σημαία εάν δεν θέλετε αυτόν τον έλεγχο ασφαλείας.</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>ελάχ</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>ελάχ</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Πολλαπλά περάσματα</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Κλειστό</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Ανοιχτό</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>Χρήστης Ortur: Το υλικολογισμικό Ortur (όλη η έκδοση έως 137) έχει ένα σφάλμα που εμποδίζει τη σωστή χρήση της λειτουργίας αυτόματης ψύξης.
+Μην χρησιμοποιείτε την Αυτόματη ψύξη με χαράκτη Ortur μέχρι να κυκλοφορήσει ένα νέο υλικολογισμικό.</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>Πρωτόκολλο</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>Εισαγωγή ράστερ</value>
+  </data>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Αποθήκευση</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>δευτ</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>δευτ</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Ρυθμίσεις</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Εμφάνιση Z πάνω / κάτω ελέγχου </value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>Μαλακή επαναφορά [Ctrl-X]</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Κάποια δίοδος λέιζερ μπορεί να θερμανθεί σε πολύ εάν λειτουργήσει για μεγάλο χρονικό διάστημα με την υψηλότερη ισχύ. Για να αποφύγετε την υπερθέρμανση της διόδου και να αυξήσετε τη διάρκεια ζωής του λέιζερ, μπορείτε να προσθέσετε μερικούς αυτόματους κύκλους ψύξης που εισάγουν κάποια παύση κατά τη διάρκεια της διαδικασίας engraivng.
+Εάν είναι ενεργοποιημένη η Αυτόματη ψύξη, το LaserGRBL θα στείλει αυτόματα "αναμονή τροφοδοσίας" και "συνέχιση εργασίας" σύμφωνα με τη διαμόρφωση χρονισμού ON-OFF.</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Αρχείο ήχου</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Αρχείο ήχου</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Αρχείο ήχου</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Αρχείο ήχου</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Αρχείο ήχου</value>
+  </data>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>Ρυθμίσεις ήχου</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Λειτουργία ροής: [Προεπιλεγμένη αποθήκευση]
+- Buffered: βελτιστοποιήστε τις εντολές συνεχούς ροής που συμπληρώνουν το buffer λήψης grbl [συνιστάται]
+- Σύγχρονη: περιμένετε την εκτέλεση κάθε εντολής πριν από την αποστολή της επόμενης εντολής [πιο αργή αλλά ασφαλέστερη]
+- RepeatOnError: ίδιο με το Synchronous αλλά επαναλάβετε εντολές αν εντοπίσετε σφάλμα</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Ήχος επιτυχίας</value>
+  </data>
+  <data name="CBSupportPWM.Text" xml:space="preserve">
+    <value>Υποστήριξη PWM</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Η μέγιστη διαθέσιμη ανάλυση στο LaserGRBL είναι 20 γραμμές / mm (περίπου 500dpi) που είναι αρκετά υψηλή για τους περισσότερους χρήστες.
+Εάν χρειάζεστε υψηλότερη ανάλυση, μπορείτε να ενεργοποιήσετε το "HiRes" και να καταργήσετε αυτό το όριο. Προσέξτε: Το LaserGRBL θα χρειαστεί περισσότερους πόρους!</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Λειτουργία σπειρώματος: UltraFast, Fast, Quiet, Slow. [Προεπιλεγμένο UltraFast]
+Αυτή η ρύθμιση επηρεάζει την ταχύτητα αποστολής νήματος και τη συχνότητα του αιτήματος αναφοράς κατάστασης.
+Ορίστε πιο αργές τιμές εάν αντιμετωπίζετε προβλήματα.</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Χρόνος OFF: μετά από αυτό το διάστημα ψύξης LaserGRBL θα στείλει μια εντολή Συνέχιση για να συνεχίσετε χαρακτική δουλειά.</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Χρόνος ON: αυτό είναι το μέγιστο χρονικό διάστημα που λέιζερ θα παραμείνουν κατά τη διάρκεια της διαδικασίας χαρακτικής.
+Μετά από αυτό το διάστημα, το LaserGRBL θα στείλει μια αυτόματη αναμονή τροφοδοσίας για την ψύξη του λέιζερ.</value>
+  </data>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>Μονοκατευθυντική χαρακτική</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Ήχος προειδοποίησης</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Προειδοποίηση: αυτή η λειτουργία θα λειτουργεί μόνο με εκδόσεις grbl&gt; v1.1 με ενεργοποιημένη τη λειτουργία "laser mode"
+Εάν χρησιμοποιείτε αυτόματη ψύξη με παλαιότερη έκδοση grbl (ή με απενεργοποιημένη τη λειτουργία λέιζερ), το λέιζερ δεν θα απενεργοποιηθεί κατά τη διάρκεια παύσεων
+και καίει τρύπες στη δουλειά σας!</value>
+  </data>
+  <data name="SoundBrowserDialog.Filter" xml:space="preserve">
+    <value>Αρχείο ήχου κυματομορφής | * .wav</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Όταν εκτελείτε πολλά περάσματα, το LaserGRBL θα ωθήσει αυτόν τον GCode στο μεταξύ κάθε περάσματος.
+Μπορεί να χρησιμοποιηθεί για να μετακινήσετε το Z προς τα κάτω για να εκτελέσετε βαθύτερες περικοπές.
+
+Εδώ μπορείτε να χρησιμοποιήσετε την ίδια σύνταξη προσαρμοσμένων κουμπιών.</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>Με ενεργοποιημένο το "click 'n jog", ένα διπλό κλικ στην επιφάνεια προεπισκόπησης θα μεταβεί στη θέση κλικ.</value>
+  </data>
+</root>

@@ -878,10 +878,15 @@ namespace LaserGRBL
 		{
 			Tools.Utils.OpenLink(@"https://www.facebook.com/groups/486886768471991");
 		}
-	}
+
+        private void greekToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetLanguage(new System.Globalization.CultureInfo("el-GR"));
+        }
+    }
 
 
-	public class MMnRenderer : ToolStripProfessionalRenderer
+    public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 
