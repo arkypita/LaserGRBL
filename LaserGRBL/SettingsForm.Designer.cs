@@ -40,12 +40,9 @@
             this.CbThreadingMode = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.CBStreamingMode = new System.Windows.Forms.ComboBox();
-            this.BtnStreamingMode = new LaserGRBL.UserControls.ImageButton();
             this.CBProtocol = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.BtnProtocol = new LaserGRBL.UserControls.ImageButton();
             this.label6 = new System.Windows.Forms.Label();
-            this.BtnThreadingModel = new LaserGRBL.UserControls.ImageButton();
             this.CbIssueDetector = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.CbSoftReset = new System.Windows.Forms.CheckBox();
@@ -53,14 +50,12 @@
             this.CbHardReset = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.BtnFType = new LaserGRBL.UserControls.ImageButton();
             this.TpRasterImport = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.CbUnidirectional = new System.Windows.Forms.CheckBox();
             this.CBSupportPWM = new System.Windows.Forms.CheckBox();
-            this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
             this.CbHiRes = new System.Windows.Forms.CheckBox();
             this.label22 = new System.Windows.Forms.Label();
             this.CbDisableSkip = new System.Windows.Forms.CheckBox();
@@ -151,6 +146,11 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
+            this.BtnStreamingMode = new LaserGRBL.UserControls.ImageButton();
+            this.BtnProtocol = new LaserGRBL.UserControls.ImageButton();
+            this.BtnThreadingModel = new LaserGRBL.UserControls.ImageButton();
+            this.BtnFType = new LaserGRBL.UserControls.ImageButton();
+            this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.MainTabPage.SuspendLayout();
@@ -277,19 +277,6 @@
             this.CBStreamingMode.FormattingEnabled = true;
             this.CBStreamingMode.Name = "CBStreamingMode";
             // 
-            // BtnStreamingMode
-            // 
-            this.BtnStreamingMode.AltImage = null;
-            this.BtnStreamingMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BtnStreamingMode.Caption = null;
-            this.BtnStreamingMode.Coloration = System.Drawing.Color.Empty;
-            this.BtnStreamingMode.Image = ((System.Drawing.Image)(resources.GetObject("BtnStreamingMode.Image")));
-            resources.ApplyResources(this.BtnStreamingMode, "BtnStreamingMode");
-            this.BtnStreamingMode.Name = "BtnStreamingMode";
-            this.BtnStreamingMode.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-            this.BtnStreamingMode.UseAltImage = false;
-            this.BtnStreamingMode.Click += new System.EventHandler(this.BtnStreamingMode_Click);
-            // 
             // CBProtocol
             // 
             resources.ApplyResources(this.CBProtocol, "CBProtocol");
@@ -302,36 +289,10 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // BtnProtocol
-            // 
-            this.BtnProtocol.AltImage = null;
-            this.BtnProtocol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BtnProtocol.Caption = null;
-            this.BtnProtocol.Coloration = System.Drawing.Color.Empty;
-            this.BtnProtocol.Image = ((System.Drawing.Image)(resources.GetObject("BtnProtocol.Image")));
-            resources.ApplyResources(this.BtnProtocol, "BtnProtocol");
-            this.BtnProtocol.Name = "BtnProtocol";
-            this.BtnProtocol.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-            this.BtnProtocol.UseAltImage = false;
-            this.BtnProtocol.Click += new System.EventHandler(this.BtnProtocol_Click);
-            // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            // 
-            // BtnThreadingModel
-            // 
-            this.BtnThreadingModel.AltImage = null;
-            this.BtnThreadingModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BtnThreadingModel.Caption = null;
-            this.BtnThreadingModel.Coloration = System.Drawing.Color.Empty;
-            this.BtnThreadingModel.Image = ((System.Drawing.Image)(resources.GetObject("BtnThreadingModel.Image")));
-            resources.ApplyResources(this.BtnThreadingModel, "BtnThreadingModel");
-            this.BtnThreadingModel.Name = "BtnThreadingModel";
-            this.BtnThreadingModel.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-            this.BtnThreadingModel.UseAltImage = false;
-            this.BtnThreadingModel.Click += new System.EventHandler(this.BtnThreadingModel_Click);
             // 
             // CbIssueDetector
             // 
@@ -370,19 +331,6 @@
             // 
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
-            // 
-            // BtnFType
-            // 
-            this.BtnFType.AltImage = null;
-            this.BtnFType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BtnFType.Caption = null;
-            this.BtnFType.Coloration = System.Drawing.Color.Empty;
-            this.BtnFType.Image = ((System.Drawing.Image)(resources.GetObject("BtnFType.Image")));
-            resources.ApplyResources(this.BtnFType, "BtnFType");
-            this.BtnFType.Name = "BtnFType";
-            this.BtnFType.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-            this.BtnFType.UseAltImage = false;
-            this.BtnFType.Click += new System.EventHandler(this.BtnFType_Click);
             // 
             // TpRasterImport
             // 
@@ -428,19 +376,6 @@
             resources.ApplyResources(this.CBSupportPWM, "CBSupportPWM");
             this.CBSupportPWM.Name = "CBSupportPWM";
             this.CBSupportPWM.UseVisualStyleBackColor = true;
-            // 
-            // BtnModulationInfo
-            // 
-            this.BtnModulationInfo.AltImage = null;
-            this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BtnModulationInfo.Caption = null;
-            this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
-            this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
-            resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
-            this.BtnModulationInfo.Name = "BtnModulationInfo";
-            this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-            this.BtnModulationInfo.UseAltImage = false;
-            this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
             // 
             // CbHiRes
             // 
@@ -1010,6 +945,71 @@
             // SoundBrowserDialog
             // 
             resources.ApplyResources(this.SoundBrowserDialog, "SoundBrowserDialog");
+            // 
+            // BtnStreamingMode
+            // 
+            this.BtnStreamingMode.AltImage = null;
+            this.BtnStreamingMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnStreamingMode.Caption = null;
+            this.BtnStreamingMode.Coloration = System.Drawing.Color.Empty;
+            this.BtnStreamingMode.Image = ((System.Drawing.Image)(resources.GetObject("BtnStreamingMode.Image")));
+            resources.ApplyResources(this.BtnStreamingMode, "BtnStreamingMode");
+            this.BtnStreamingMode.Name = "BtnStreamingMode";
+            this.BtnStreamingMode.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.BtnStreamingMode.UseAltImage = false;
+            this.BtnStreamingMode.Click += new System.EventHandler(this.BtnStreamingMode_Click);
+            // 
+            // BtnProtocol
+            // 
+            this.BtnProtocol.AltImage = null;
+            this.BtnProtocol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnProtocol.Caption = null;
+            this.BtnProtocol.Coloration = System.Drawing.Color.Empty;
+            this.BtnProtocol.Image = ((System.Drawing.Image)(resources.GetObject("BtnProtocol.Image")));
+            resources.ApplyResources(this.BtnProtocol, "BtnProtocol");
+            this.BtnProtocol.Name = "BtnProtocol";
+            this.BtnProtocol.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.BtnProtocol.UseAltImage = false;
+            this.BtnProtocol.Click += new System.EventHandler(this.BtnProtocol_Click);
+            // 
+            // BtnThreadingModel
+            // 
+            this.BtnThreadingModel.AltImage = null;
+            this.BtnThreadingModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnThreadingModel.Caption = null;
+            this.BtnThreadingModel.Coloration = System.Drawing.Color.Empty;
+            this.BtnThreadingModel.Image = ((System.Drawing.Image)(resources.GetObject("BtnThreadingModel.Image")));
+            resources.ApplyResources(this.BtnThreadingModel, "BtnThreadingModel");
+            this.BtnThreadingModel.Name = "BtnThreadingModel";
+            this.BtnThreadingModel.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.BtnThreadingModel.UseAltImage = false;
+            this.BtnThreadingModel.Click += new System.EventHandler(this.BtnThreadingModel_Click);
+            // 
+            // BtnFType
+            // 
+            this.BtnFType.AltImage = null;
+            this.BtnFType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnFType.Caption = null;
+            this.BtnFType.Coloration = System.Drawing.Color.Empty;
+            this.BtnFType.Image = ((System.Drawing.Image)(resources.GetObject("BtnFType.Image")));
+            resources.ApplyResources(this.BtnFType, "BtnFType");
+            this.BtnFType.Name = "BtnFType";
+            this.BtnFType.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.BtnFType.UseAltImage = false;
+            this.BtnFType.Click += new System.EventHandler(this.BtnFType_Click);
+            // 
+            // BtnModulationInfo
+            // 
+            this.BtnModulationInfo.AltImage = null;
+            this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnModulationInfo.Caption = null;
+            this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
+            this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
+            resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
+            this.BtnModulationInfo.Name = "BtnModulationInfo";
+            this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.BtnModulationInfo.UseAltImage = false;
+            this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
             // 
             // SettingsForm
             // 
