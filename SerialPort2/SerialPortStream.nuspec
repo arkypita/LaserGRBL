@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>SerialPortStream</id>
+        <version>2.2.2</version>
+        <title>SerialPortStream</title>
+        <authors>Jason Curl</authors>
+        <owners>Jason Curl</owners>
+        <license type="expression">MS-PL</license>
+        <projectUrl>https://github.com/jcurl/serialportstream</projectUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <description>An independent implementation of System.IO.Ports.SerialPort and SerialStream for better reliability and maintainability.</description>
+        <copyright>(C) 2012-2020, Jason Curl</copyright>
+        <language>en-US</language>
+        <dependencies>
+            <group targetFramework=".NETStandard1.5">
+                <dependency id="System.Threading.Overlapped" version="[4.3.0, )" />
+                <dependency id="System.Threading.Thread" version="[4.3.0, )" />
+                <dependency id="System.Collections" version="[4.3.0, )" />
+                <dependency id="System.Collections.Specialized" version="[4.3.0, )" />
+                <dependency id="System.Diagnostics.Debug" version="[4.3.0, )" />
+                <dependency id="System.Diagnostics.FileVersionInfo" version="[4.3.0, )" />
+                <dependency id="System.Diagnostics.Tools" version="[4.3.0, )" />
+                <dependency id="System.Diagnostics.TraceSource" version="[4.3.0, )" />
+                <dependency id="System.IO" version="[4.3.0, )" />
+                <dependency id="System.IO.FileSystem" version="[4.3.0, )" />
+                <dependency id="System.Runtime.Extensions" version="[4.3.0, )" />
+                <dependency id="System.Runtime.InteropServices" version="[4.3.0, )" />
+                <dependency id="System.Runtime.InteropServices.RuntimeInformation" version="[4.3.0, )" />
+                <dependency id="System.Text.Encoding" version="[4.3.0, )" />
+                <dependency id="System.Runtime.Handles" version="[4.3.0, )" />
+                <dependency id="System.Threading" version="[4.3.0, )" />
+                <dependency id="System.Threading.ThreadPool" version="[4.3.0, )" />
+                <dependency id="Microsoft.Win32.Registry" version="[4.3.0, )" />
+            </group>
+            <group targetFramework=".NETFramework4.0"/>
+            <group targetFramework=".NETFramework4.5"/>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\distribute\lib\netstandard1.5\RJCP.SerialPortStream.dll" target="lib\netstandard1.5" />
+        <file src="..\distribute\lib\netstandard1.5\RJCP.SerialPortStream.pdb" target="lib\netstandard1.5" />
+        <file src="..\distribute\lib\netstandard1.5\RJCP.SerialPortStream.xml" target="lib\netstandard1.5" />
+        <file src="..\distribute\lib\net40\RJCP.SerialPortStream.dll" target="lib\net40" />
+        <file src="..\distribute\lib\net40\RJCP.SerialPortStream.pdb" target="lib\net40" />
+        <file src="..\distribute\lib\net40\RJCP.SerialPortStream.XML" target="lib\net40" />
+        <file src="..\distribute\lib\net45\RJCP.SerialPortStream.dll" target="lib\net45" />
+        <file src="..\distribute\lib\net45\RJCP.SerialPortStream.pdb" target="lib\net45" />
+        <file src="..\distribute\lib\net45\RJCP.SerialPortStream.XML" target="lib\net45" />
+        <file src="**\*.cs" target="src\" />
+        <file src="*.csproj" target="src\" />
+    </files>
+</package>

@@ -192,7 +192,7 @@ namespace LaserGRBL
 					this.TTLinkToNews.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
 				}
 			}
-			catch (Exception ex){ }
+			catch (Exception ex){ System.Diagnostics.Debug.WriteLine(ex); }
 		}
 
 		void OnFileLoaded(long elapsed, string filename)
