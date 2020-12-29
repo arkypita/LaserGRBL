@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>Κάντε δεξί κλικ εδώ για να προσθέσετε προσαρμοσμένα κουμπιά</value>
+  </data>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>Ακύρωση τρέχουσας εργασίας;</value>
+  </data>
+  <data name="BoxAutoUpdateFailed" xml:space="preserve">
+    <value>Η αυτόματη ενημέρωση απέτυχε!
+Κάντε μη αυτόματη λήψη της νέας έκδοσης από τον ιστότοπο lasergrbl.</value>
+  </data>
+  <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
+    <value>Η ενημέρωση απαιτεί προνόμιο διαχειριστή!</value>
+  </data>
+  <data name="BoxAutoUpdateResult" xml:space="preserve">
+    <value>Ενημέρωση αποτελέσματος</value>
+  </data>
+  <data name="BoxAutoUpdateSuccess" xml:space="preserve">
+    <value>Ενημέρωση με επιτυχία!</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>Υπάρχουν ορισμένες αλλαγές που δεν έχουν εφαρμοστεί.
+Θέλετε να αλλάξετε την διαμόρφωση;</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>Εντοπίστηκαν αλλαγές!</value>
+  </data>
+  <data name="BoxConnectErrorTitle" xml:space="preserve">
+    <value>Δεν είναι δυνατή η σύνδεση στη συσκευή</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>Καταχωρίστε εντολές GCode</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>Καταχωρίστε κείμενο επεξήγησης</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>Λείπει πεδίο</value>
+  </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θα διαγράψετε το επιλεγμένο κουμπί;</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>Διαγραφή προσαρμοσμένου κουμπιού</value>
+  </data>
+  <data name="BoxExportConfigError" xml:space="preserve">
+    <value>Σφάλμα κατά την εξαγωγή διαμόρφωσης</value>
+  </data>
+  <data name="BoxExportConfigErrorTitle" xml:space="preserve">
+    <value>Σφάλμα</value>
+  </data>
+  <data name="BoxExportConfigFileNotFound" xml:space="preserve">
+    <value>Το αρχείο δεν υπάρχει!</value>
+  </data>
+  <data name="BoxExportConfigSuccess" xml:space="preserve">
+    <value>{0} Η εξαγωγή διαμόρφωσης ολοκληρώθηκε με επιτυχία!</value>
+  </data>
+  <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
+    <value>Επιτυχία</value>
+  </data>
+  <data name="BoxImportConfigFileError" xml:space="preserve">
+    <value>Σφάλμα ανάγνωσης αρχείου!</value>
+  </data>
+  <data name="BoxImportConfigWithError" xml:space="preserve">
+    <value>{0} Εισαγωγή διαμόρφωσης με {1} σφάλματα!</value>
+  </data>
+  <data name="BoxImportConfigWithoutError" xml:space="preserve">
+    <value>{0} Η διαμόρφωση εισήχθη με επιτυχία!</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>Εισαγωγή προσαρμοσμένου κουμπιού</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>Κατάργηση πραγματικών κουμπιών; Επιλέξτε ναι για κατάργηση, όχι για διατήρηση.</value>
+  </data>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>Επιβεβαίωση</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>Σφάλμα ανάγνωσης διαμόρφωσης</value>
+  </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>Εμφάνιση αποθηκευμένων τιμών ...</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} Η διαμόρφωση διαβάστηκε με επιτυχία!</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>Καμία αλλαγή ... τίποτα για αποθήκευση</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} Διαμόρφωση αποθηκέυτηκε με {1} σφάλματα!</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} Η διαμόρφωση αποθηκεύτηκε με επιτυχία!</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>Σύνδεση</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>Αποσύνδεση</value>
+  </data>
+  <data name="CustomButtonEdit" xml:space="preserve">
+    <value>Επεξεργασία Κουμπιού</value>
+  </data>
+  <data name="CustomButtonRemove" xml:space="preserve">
+    <value>Αφαιρέστε το κουμπί</value>
+  </data>
+  <data name="DirectionDiagonal" xml:space="preserve">
+    <value>Διαγώνια</value>
+  </data>
+  <data name="DirectionHorizontal" xml:space="preserve">
+    <value>Οριζόντια</value>
+  </data>
+  <data name="DirectionNone" xml:space="preserve">
+    <value>Κανένα</value>
+  </data>
+  <data name="DirectionVertical" xml:space="preserve">
+    <value>Κάθετα</value>
+  </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>Η μεταφορά αρχείων βρίσκεται σε εξέλιξη. Αποσύνδεση ούτως ή άλλως;</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>Η μεταφορά αρχείων βρίσκεται σε εξέλιξη. Έξοδος ούτως ή άλλως;</value>
+  </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>Απαιτείται επανεκκίνηση</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>Απαιτείται επανεκκίνηση για την εφαρμογή αλλαγών Firmware . Επανεκκίνηση τώρα?</value>
+  </data>
+  <data name="FormulaCustom" xml:space="preserve">
+    <value>Προσαρμοσμένο</value>
+  </data>
+  <data name="FormulaOpticalCorrect" xml:space="preserve">
+    <value>OpticalCorrect</value>
+  </data>
+  <data name="FormulaSimpleAverage" xml:space="preserve">
+    <value>SimpleAverage</value>
+  </data>
+  <data name="FormulaWeightAverage" xml:space="preserve">
+    <value>WeightAverage</value>
+  </data>
+  <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
+    <value>Ομαλή (HQ Bicubic)</value>
+  </data>
+  <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
+    <value>Sharp (NearestNeighbor)</value>
+  </data>
+  <data name="LanguageRequireRestart" xml:space="preserve">
+    <value>Απαιτείται επανεκκίνηση</value>
+  </data>
+  <data name="LanguageRequireRestartNow" xml:space="preserve">
+    <value>Απαιτείται επανεκκίνηση της εφαρμογής, επανεκκίνηση τώρα;</value>
+  </data>
+  <data name="MacStatusAlarm" xml:space="preserve">
+    <value>Συναγερμός</value>
+  </data>
+  <data name="MacStatusCheck" xml:space="preserve">
+    <value>Ελεγχος</value>
+  </data>
+  <data name="MacStatusConnecting" xml:space="preserve">
+    <value>Σύνδεση</value>
+  </data>
+  <data name="MacStatusDisconnected" xml:space="preserve">
+    <value>Αποσυνδέθηκε</value>
+  </data>
+  <data name="MacStatusDoor" xml:space="preserve">
+    <value>Πόρτα</value>
+  </data>
+  <data name="MacStatusHold" xml:space="preserve">
+    <value>Κρατήστε</value>
+  </data>
+  <data name="MacStatusHome" xml:space="preserve">
+    <value>Αρχική θέση</value>
+  </data>
+  <data name="MacStatusIdle" xml:space="preserve">
+    <value>Αδρανής</value>
+  </data>
+  <data name="MacStatusJog" xml:space="preserve">
+    <value>Jog</value>
+  </data>
+  <data name="MacStatusRun" xml:space="preserve">
+    <value>Εναρξη</value>
+  </data>
+  <data name="MacStatusUnknown" xml:space="preserve">
+    <value>Άγνωστο</value>
+  </data>
+  <data name="MainFormEstimatedTime" xml:space="preserve">
+    <value>Εκτιμώμενος χρόνος:</value>
+  </data>
+  <data name="MainFormProjectedTime" xml:space="preserve">
+    <value>Προβλεπόμενη Ώρα:</value>
+  </data>
+  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
+    <value>Δεν είναι δυνατό το άνοιγμα νέου αρχείου τώρα.</value>
+  </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>Φαίνεται ότι η τρέχουσα θέση δεν είναι πλέον γνωστή από την Grbl.
+Χωρίς τη διαδικασία Πίσω στην αρχική θέση ($ H) το αποτέλεσμα ενδέχεται να μην είναι αξιόπιστο.
+Συνέχεια ούτως ή άλλως;</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>Άγνωστη θέση</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>Ταχύτητα:</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>Βήμα:</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>Αυτός ο τύπος αρχείου δεν υποστηρίζεται.</value>
+  </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>Κεντρική επιλογή δεν είναι συμβατό με τον υπολογιστή σας.
+Απαιτείται λειτουργικό σύστημα 64bit!</value>
+  </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>Η επιλογή Line2Line δεν είναι συμβατή με το χαράκτη σας ή με τη διαμόρφωσή σας. Χρειάζεται λέιζερ με δυνατότητα PWM και η υποστήριξη PWM πρέπει να είναι ενεργοποιημένη στις ρυθμίσεις LaserGRBL</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>Προειδοποίηση</value>
+  </data>
+  <data name="WarnSoftLimitNS" xml:space="preserve">
+    <value>Έχετε ορίσει αρνητικές αντισταθμίσεις, αλλά ο χαράκτης σας έχει ρυθμιστεί να χρησιμοποιεί θετικό χώρο με ενεργοποιημένο το συναγερμό ορίου (20 $ = 1).
+
+Αυτό θα μπορούσε να δημιουργήσει ένα σφάλμα περιορισμένου ορίου. Είστε σίγουροι για τις τιμές που έχετε εισαγάγει;</value>
+  </data>
+  <data name="WarnSoftLimitOOB" xml:space="preserve">
+    <value>Έχετε ορίσει ένα μέγεθος και μετατόπιση που καθιστά την εργασία μεγαλύτερη από τον χώρο εργασίας που έχει διαμορφωθεί στο χαράκτη σας ({0} mm x {1} mm).
+Παράμετροι Grbl 130 $ και 131 $.
+
+Αυτό θα μπορούσε να δημιουργήσει σφάλμα soft-limit ή το μηχάνημα θα μπορούσε να συντρίψει το όριο των αξόνων. Είστε σίγουροι για τις τιμές που έχετε εισαγάγει;</value>
+  </data>
+  <data name="WarnSoftLimitTitle" xml:space="preserve">
+    <value>Επιβεβαίωση ορίου εργασίας</value>
+  </data>
+</root>
