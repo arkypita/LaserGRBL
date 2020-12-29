@@ -1341,8 +1341,8 @@ namespace LaserGRBL
 		{
 			string cmd = "G0";
 
-			cmd += $"X{target.X.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-			cmd += $"Y{target.Y.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+			cmd += $"X{target.X.ToString("0.00", NumberFormatInfo.InvariantInfo)}";
+			cmd += $"Y{target.Y.ToString("0.00", NumberFormatInfo.InvariantInfo)}";
 			cmd += $"F{mPrenotedJogSpeed}";
 
 			EnqueueCommand(new GrblCommand("G90"));
@@ -1370,7 +1370,7 @@ namespace LaserGRBL
 		{
 			mPrenotedJogDirection = JogDirection.None;
 			SendImmediate(0x85); //abort previous jog
-			EnqueueCommand(new GrblCommand(string.Format("$J=G90X{0}Y{1}F{2}", target.X.ToString("0.0", NumberFormatInfo.InvariantInfo), target.Y.ToString("0.0", NumberFormatInfo.InvariantInfo), mPrenotedJogSpeed)));
+			EnqueueCommand(new GrblCommand(string.Format("$J=G90X{0}Y{1}F{2}", target.X.ToString("0.00", NumberFormatInfo.InvariantInfo), target.Y.ToString("0.00", NumberFormatInfo.InvariantInfo), mPrenotedJogSpeed)));
 		}
 
 		private GrblCommand GetRelativeJogCommandv11(JogDirection dir, decimal step)
