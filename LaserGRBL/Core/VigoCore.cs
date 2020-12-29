@@ -55,8 +55,8 @@ namespace LaserGRBL
 						ParseVSta(arr[i]);
 					else if (arr[i].StartsWith("SBuf:"))
 						ParseSBuf(arr[i]);
-					else if (arr[i].StartsWith("LTC:"))
-						;// ParseLTC(arr[i]);
+					//else if (arr[i].StartsWith("LTC:"))
+					//	;// ParseLTC(arr[i]);
 				}
 			}
 			catch (Exception ex)

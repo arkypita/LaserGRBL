@@ -100,7 +100,7 @@ namespace CsPotrace
 
 				try
 				{
-					List<BiArc> bal = Algorithm.ApproxCubicBezier(cb, 5, 1);
+					List<BiArc> bal = Algorithm.ApproxCubicBezier(cb, 5, 2);
 					foreach (BiArc ba in bal)
 					{
 						if (!double.IsNaN(ba.A1.Length) && !double.IsNaN(ba.A1.LinearLength))
