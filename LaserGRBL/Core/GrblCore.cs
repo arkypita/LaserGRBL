@@ -1889,6 +1889,8 @@ namespace LaserGRBL
 					mAutoBufferSize = 256;
 				else if (mGrblBuffer == 10240) //Grbl-LPC
 					mAutoBufferSize = 10240;
+				else if (mGrblBuffer == 254) //Ortur
+					mAutoBufferSize = 254;
 			}
 		}
 
