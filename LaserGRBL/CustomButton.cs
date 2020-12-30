@@ -74,7 +74,7 @@ namespace LaserGRBL
 				return null;
 		}
 
-		public static void Export()
+		public static void Export(System.Windows.Forms.Form parent)
 		{
 			using (System.Windows.Forms.SaveFileDialog sfd = new System.Windows.Forms.SaveFileDialog())
 			{
@@ -86,12 +86,12 @@ namespace LaserGRBL
 				System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
 				try
 				{
-					dialogResult = sfd.ShowDialog();
+					dialogResult = sfd.ShowDialog(parent);
 				}
 				catch (System.Runtime.InteropServices.COMException)
 				{
 					sfd.AutoUpgradeEnabled = false;
-					dialogResult = sfd.ShowDialog();
+					dialogResult = sfd.ShowDialog(parent);
 				}
 
 				if (dialogResult == System.Windows.Forms.DialogResult.OK && sfd.FileName != null)
@@ -99,7 +99,7 @@ namespace LaserGRBL
 			}
 		}
 
-		public static bool Import(string filename = null)
+		public static bool Import(System.Windows.Forms.Form parent, string filename = null)
 		{
 			if (filename == null)
 			{
@@ -112,12 +112,12 @@ namespace LaserGRBL
 					System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
 					try
 					{
-						dialogResult = ofd.ShowDialog();
+						dialogResult = ofd.ShowDialog(parent);
 					}
 					catch (System.Runtime.InteropServices.COMException)
 					{
 						ofd.AutoUpgradeEnabled = false;
-						dialogResult = ofd.ShowDialog();
+						dialogResult = ofd.ShowDialog(parent);
 					}
 
 					if (dialogResult == System.Windows.Forms.DialogResult.OK && ofd.FileName != null)

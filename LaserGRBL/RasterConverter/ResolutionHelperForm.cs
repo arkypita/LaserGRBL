@@ -33,7 +33,7 @@ namespace LaserGRBL.RasterConverter
 			return Settings.GetObject("Raster Hi-Res", false) ? 50 : 20;
 		}
 
-		public static double CreateAndShowDialog(GrblCore Core, double oldval)
+		public static double CreateAndShowDialog(Form parent, GrblCore Core, double oldval)
 		{
 			double rv = oldval;
 
@@ -43,7 +43,7 @@ namespace LaserGRBL.RasterConverter
 				f.UDHardware.Value = Core.Configuration.ResolutionX;
 				f.Compute(null, null);
 
-				if (f.ShowDialog() == DialogResult.OK)
+				if (f.ShowDialog(parent) == DialogResult.OK)
 					rv = f.mRetVal;
 			}
 

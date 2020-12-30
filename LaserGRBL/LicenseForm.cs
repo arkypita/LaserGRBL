@@ -32,10 +32,10 @@ namespace LaserGRBL
 			Tools.Utils.OpenLink(@"https://paypal.me/pools/c/8cQ1Lo4sRA");
 		}
 
-		internal static void CreateAndShowDialog()
+		internal static void CreateAndShowDialog(Form parent)
 		{
 			using (LicenseForm f = new LicenseForm())
-				f.ShowDialog();
+				f.ShowDialog(parent);
 		}
 
 		private void RTBLinkClick(object sender, LinkClickedEventArgs e)

@@ -190,7 +190,7 @@ namespace LaserGRBL
 			return x.Action - y.Action;
 		}
 
-		internal bool ManageHotKeys(Keys keys)
+		internal bool ManageHotKeys(Form parent, Keys keys)
 		{
             if (keys == Keys.None)
             {
@@ -205,7 +205,7 @@ namespace LaserGRBL
             { 
                 foreach (HotKey hk in this)
                     if (Match(keys, hk.Combination))
-                        return PerformAction(hk.Action);
+                        return PerformAction(parent, hk.Action);
 
                 return false;
             }
@@ -218,7 +218,7 @@ namespace LaserGRBL
 			return rv;	
 		}
 
-		private bool PerformAction(HotKey.Actions action)
+		private bool PerformAction(Form parent, HotKey.Actions action)
 		{
 			switch (action)
 			{
@@ -233,9 +233,9 @@ namespace LaserGRBL
 				case HotKey.Actions.ReopenLastFile:
 					mCore.ReOpenFile(Application.OpenForms[0]); break;
 				case HotKey.Actions.SaveFile:
-					mCore.SaveProgram(false, false, false, 1); break;
+					mCore.SaveProgram(parent, false, false, false, 1); break;
 				case HotKey.Actions.ExecuteFile:
-					mCore.RunProgram(); break;
+					mCore.RunProgram(parent); break;
 				case HotKey.Actions.AbortFile:
 					mCore.AbortProgram(); break;
 				case HotKey.Actions.HelpOnline:

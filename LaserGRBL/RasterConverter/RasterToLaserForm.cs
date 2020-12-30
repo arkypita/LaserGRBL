@@ -183,7 +183,7 @@ namespace LaserGRBL.RasterConverter
 		{
 			using (ConvertSizeAndOptionForm f = new ConvertSizeAndOptionForm(mCore))
 			{
-				f.ShowDialog(IP);
+				f.ShowDialog(this, IP);
 				if (f.DialogResult == DialogResult.OK)
 				{
 					preventClose = true;
@@ -681,13 +681,13 @@ namespace LaserGRBL.RasterConverter
 
 		private void BtnQualityInfo_Click(object sender, EventArgs e)
 		{
-			UDQuality.Value = Math.Min(UDQuality.Maximum, (decimal)ResolutionHelperForm.CreateAndShowDialog(mCore, (double)UDQuality.Value));
+			UDQuality.Value = Math.Min(UDQuality.Maximum, (decimal)ResolutionHelperForm.CreateAndShowDialog(this, mCore, (double)UDQuality.Value));
 			//Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
 		}
 
 		private void BtnFillingQualityInfo_Click(object sender, EventArgs e)
 		{
-			UDFillingQuality.Value = Math.Min(UDFillingQuality.Maximum, (decimal)ResolutionHelperForm.CreateAndShowDialog(mCore, (double)UDFillingQuality.Value));
+			UDFillingQuality.Value = Math.Min(UDFillingQuality.Maximum, (decimal)ResolutionHelperForm.CreateAndShowDialog(this, mCore, (double)UDFillingQuality.Value));
 			//Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");
 		}
 

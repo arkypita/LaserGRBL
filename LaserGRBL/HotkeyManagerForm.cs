@@ -43,10 +43,10 @@ namespace LaserGRBL
             ComputeErrors();
 		}
 
-		internal static void CreateAndShowDialog(GrblCore core)
+		internal static void CreateAndShowDialog(Form parent, GrblCore core)
 		{
 			using (HotkeyManagerForm sf = new HotkeyManagerForm(core))
-				sf.ShowDialog();
+				sf.ShowDialog(parent);
 		}
 
 		protected override void OnKeyUp(KeyEventArgs e)

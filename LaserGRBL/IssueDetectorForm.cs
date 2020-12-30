@@ -22,11 +22,11 @@ namespace LaserGRBL
 			InitializeComponent();
 		}
 
-		internal static void CreateAndShowDialog(GrblCore.DetectedIssue issue)
+		internal static void CreateAndShowDialog(Form parent, GrblCore.DetectedIssue issue)
 		{
 			IssueDetectorForm f = new IssueDetectorForm();
 			f.TxtCause.Text = issue.ToString();
-			f.ShowDialog();
+			f.ShowDialog(parent);
 			f.Dispose();
 		}
 

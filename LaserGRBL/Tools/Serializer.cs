@@ -178,7 +178,7 @@ namespace Tools
 							{
 								if (AskForMissingPassword)
 								{
-									string NewKey = InputBox.Show("Insert password:", "Protected file", "", null).Text;
+									string NewKey = InputBox.Show(null, "Insert password:", "Protected file", "", null).Text;
 									if ((NewKey != null))
 									{
 										FinalStream.Close();

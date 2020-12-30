@@ -199,7 +199,7 @@ namespace LaserGRBL
 
 		void BtnRunProgramClick(object sender, EventArgs e)
 		{
-			Core.RunProgram();
+			Core.RunProgram(ParentForm);
 		}
 		void TxtManualCommandCommandEntered(string command)
 		{

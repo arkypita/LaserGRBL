@@ -21,11 +21,11 @@ namespace LaserGRBL.SvgConverter
 			InitializeComponent();
 		}
 
-		internal static Mode CreateAndShow(string filename)
+		internal static Mode CreateAndShow(Form parent, string filename)
 		{
 			SvgModeForm frm = new SvgModeForm();
 			frm.CreatePreview(filename);
-			frm.ShowDialog();
+			frm.ShowDialog(parent);
 			frm.PbVector.Image.Dispose();
 			frm.PbImage.Image.Dispose();
 			frm.Dispose();

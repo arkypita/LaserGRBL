@@ -139,7 +139,7 @@ namespace LaserGRBL.SvgConverter
 
 		private void BtnPSHelper_Click(object sender, EventArgs e)
 		{
-			MaterialDB.MaterialsRow row = PSHelperForm.CreateAndShowDialog();
+			MaterialDB.MaterialsRow row = PSHelperForm.CreateAndShowDialog(this);
 			if (row != null)
 			{
 				if (IIBorderTracing.Visible)

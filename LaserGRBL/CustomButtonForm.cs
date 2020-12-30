@@ -33,19 +33,19 @@ namespace LaserGRBL
 			CbEStyles.SelectedItem = CustomButton.ButtonTypes.Button;
 		}
 
-		public static void CreateAndShowDialog()
+		public static void CreateAndShowDialog(Form parent)
 		{
 			using (CustomButtonForm f = new CustomButtonForm())
-				f.ShowDialog();
+				f.ShowDialog(parent);
 		}
 
-		internal static void CreateAndShowDialog(CustomButton cb)
+		internal static void CreateAndShowDialog(Form parent, CustomButton cb)
 		{
 			using (CustomButtonForm f = new CustomButtonForm())
-				f.ShowDialog(cb);
+				f.ShowDialog(parent, cb);
 		}
 
-		private void ShowDialog(CustomButton cb)
+		private void ShowDialog(Form parent, CustomButton cb)
 		{
 			TBGCode.Text = cb.GCode;
 			TBGCode2.Text = cb.GCode2;
@@ -58,7 +58,7 @@ namespace LaserGRBL
 			BtnCreate.Text = "Save";
 			inedit = cb;
 
-			base.ShowDialog();
+			base.ShowDialog(parent);
 		}
 
 		protected override void OnLoad(EventArgs e)
@@ -135,12 +135,12 @@ namespace LaserGRBL
 				System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
 				try
 				{
-					dialogResult = ofd.ShowDialog();
+					dialogResult = ofd.ShowDialog(this);
 				}
 				catch (System.Runtime.InteropServices.COMException)
 				{
 					ofd.AutoUpgradeEnabled = false;
-					dialogResult = ofd.ShowDialog();
+					dialogResult = ofd.ShowDialog(this);
 				}
 
 

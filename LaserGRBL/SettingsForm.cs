@@ -156,10 +156,10 @@ namespace LaserGRBL
 			CBStreamingMode.EndUpdate();
 		}
 
-		internal static void CreateAndShowDialog(GrblCore core)
+		internal static void CreateAndShowDialog(Form parent, GrblCore core)
 		{
 			using (SettingsForm sf = new SettingsForm(core))
-				sf.ShowDialog();
+				sf.ShowDialog(parent);
 		}
 
 		private void BtnSave_Click(object sender, EventArgs e)
@@ -239,7 +239,7 @@ namespace LaserGRBL
 
         private void changeSucBtn_Click(object sender, EventArgs e)
         {
-            if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
+            if (SoundBrowserDialog.ShowDialog(this) == DialogResult.OK)
             {
                 successSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
                 SuccesFullLabel.Text = SoundBrowserDialog.FileName;
@@ -248,7 +248,7 @@ namespace LaserGRBL
 
         private void changeWarBtn_Click(object sender, EventArgs e)
         {
-            if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
+            if (SoundBrowserDialog.ShowDialog(this) == DialogResult.OK)
             {
                 warningSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
                 WarningFullLabel.Text = SoundBrowserDialog.FileName;
@@ -257,7 +257,7 @@ namespace LaserGRBL
 
         private void changeFatBtn_Click(object sender, EventArgs e)
         {
-            if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
+            if (SoundBrowserDialog.ShowDialog(this) == DialogResult.OK)
             {
                 fatalSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
                 ErrorFullLabel.Text = SoundBrowserDialog.FileName;
@@ -266,7 +266,7 @@ namespace LaserGRBL
 
         private void changeConBtn_Click(object sender, EventArgs e)
         {
-            if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
+            if (SoundBrowserDialog.ShowDialog(this) == DialogResult.OK)
             {
                 connectSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
                 ConnectFullLabel.Text = SoundBrowserDialog.FileName;
@@ -275,7 +275,7 @@ namespace LaserGRBL
 
         private void changeDconBtn_Click(object sender, EventArgs e)
         {
-            if (SoundBrowserDialog.ShowDialog() == DialogResult.OK)
+            if (SoundBrowserDialog.ShowDialog(this) == DialogResult.OK)
             {
                 disconnectSoundLabel.Text = System.IO.Path.GetFileName(SoundBrowserDialog.FileName);
                 DisconnectFullLabel.Text = SoundBrowserDialog.FileName;

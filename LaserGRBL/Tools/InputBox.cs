@@ -182,7 +182,7 @@ namespace Tools
 		/// <param name="xpos">Numeric expression that specifies the distance of the left edge of the dialog box from the left edge of the screen.</param>
 		/// <param name="ypos">Numeric expression that specifies the distance of the upper edge of the dialog box from the top of the screen</param>
 		/// <returns>An InputBoxResult object with the Text and the OK property set to true when OK was clicked.</returns>
-		public static InputBoxResult Show(string prompt, string title, string defaultResponse, InputBoxValidatingHandler validator, int xpos, int ypos)
+		public static InputBoxResult Show(Form parent, string prompt, string title, string defaultResponse, InputBoxValidatingHandler validator, int xpos, int ypos)
 		{
 			using (InputBox form = new InputBox())
 			{
@@ -197,7 +197,7 @@ namespace Tools
 				}
 				form.Validator = validator;
 
-				DialogResult result = form.ShowDialog();
+				DialogResult result = form.ShowDialog(parent);
 
 				InputBoxResult retval = new InputBoxResult();
 				if (result == DialogResult.OK)
@@ -217,9 +217,9 @@ namespace Tools
 		/// <param name="defaultResponse">String expression displayed in the text box as the default response</param>
 		/// <param name="validator">Delegate used to validate the text</param>
 		/// <returns>An InputBoxResult object with the Text and the OK property set to true when OK was clicked.</returns>
-		public static InputBoxResult Show(string prompt, string title, string defaultText, InputBoxValidatingHandler validator)
+		public static InputBoxResult Show(Form parent, string prompt, string title, string defaultText, InputBoxValidatingHandler validator)
 		{
-			return Show(prompt, title, defaultText, validator, -1, -1);
+			return Show(parent, prompt, title, defaultText, validator, -1, -1);
 		}
 
 

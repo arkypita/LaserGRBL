@@ -84,7 +84,7 @@ namespace LaserGRBL
 
 		private void addCustomButtonToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			CustomButtonForm.CreateAndShowDialog();
+			CustomButtonForm.CreateAndShowDialog(ParentForm);
 			RefreshCustomButtons();
 		}
 
@@ -297,7 +297,7 @@ namespace LaserGRBL
 
 			private void EditButton_Click(object sender, EventArgs e)
 			{
-				CustomButtonForm.CreateAndShowDialog(CustomButton);
+				CustomButtonForm.CreateAndShowDialog(ParentForm, CustomButton);
 				form.RefreshCustomButtons();
 			}
 
@@ -488,7 +488,7 @@ namespace LaserGRBL
 
 		private void exportCustomButtonsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			CustomButtons.Export();
+			CustomButtons.Export(ParentForm);
 		}
 
 		private void importCustomButtonsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -498,7 +498,7 @@ namespace LaserGRBL
 
 		public void ImportButton(string filename = null)
 		{
-			if (CustomButtons.Import(filename))
+			if (CustomButtons.Import(ParentForm, filename))
 			{
 				RefreshCustomButtons();
 				CustomButtons.SaveFile();

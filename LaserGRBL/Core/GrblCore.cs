@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace LaserGRBL
 {
@@ -558,12 +559,12 @@ namespace LaserGRBL
 						System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
 						try
 						{
-							dialogResult = ofd.ShowDialog();
+							dialogResult = ofd.ShowDialog(parent);
 						}
 						catch (System.Runtime.InteropServices.COMException)
 						{
 							ofd.AutoUpgradeEnabled = false;
-							dialogResult = ofd.ShowDialog();
+							dialogResult = ofd.ShowDialog(parent);
 						}
 
 						if (dialogResult == System.Windows.Forms.DialogResult.OK)
@@ -673,7 +674,7 @@ namespace LaserGRBL
 			return null;
 		}
 
-		public void SaveProgram(bool header, bool footer, bool between, int cycles)
+		public void SaveProgram(System.Windows.Forms.Form parent, bool header, bool footer, bool between, int cycles)
 		{
 			if (HasProgram)
 			{
@@ -695,12 +696,12 @@ namespace LaserGRBL
 					System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
 					try
 					{
-						dialogResult = sfd.ShowDialog();
+						dialogResult = sfd.ShowDialog(parent);
 					}
 					catch (System.Runtime.InteropServices.COMException)
 					{
 						sfd.AutoUpgradeEnabled = false;
-						dialogResult = sfd.ShowDialog();
+						dialogResult = sfd.ShowDialog(parent);
 					}
 
 					if (dialogResult == System.Windows.Forms.DialogResult.OK)
@@ -863,14 +864,14 @@ namespace LaserGRBL
 		}
 
 
-		public void RunProgram()
+		public void RunProgram(Form parent)
 		{
 			if (CanSendFile)
 			{
 				if (mTP.Executed == 0 || mTP.Executed == mTP.Target) //mai iniziato oppure correttamente finito
 					RunProgramFromStart(false, true);
 				else
-					UserWantToContinue();
+					UserWantToContinue(parent);
 			}
 		}
 
@@ -899,22 +900,22 @@ namespace LaserGRBL
 			}
 		}
 
-		public void RunProgramFromPosition()
+		public void RunProgramFromPosition(Form parent)
 		{
 			if (CanSendFile)
 			{
 				bool homing = false;
-				int position = LaserGRBL.RunFromPositionForm.CreateAndShowDialog(LoadedFile.Count, Configuration.HomingEnabled, out homing);
+				int position = LaserGRBL.RunFromPositionForm.CreateAndShowDialog(parent, LoadedFile.Count, Configuration.HomingEnabled, out homing);
 				if (position >= 0)
 					ContinueProgramFromKnown(position, homing, false);
 			}
 		}
 
-		private void UserWantToContinue()
+		private void UserWantToContinue(Form parent)
 		{
 			bool setwco = mWCO == GPoint.Zero && mTP.LastKnownWCO != GPoint.Zero;
 			bool homing = MachinePosition == GPoint.Zero && mTP.LastIssue != DetectedIssue.ManualAbort && mTP.LastIssue != DetectedIssue.ManualReset; //potrebbe essere dovuto ad un hard reset -> posizione non affidabile
-			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, Configuration.HomingEnabled, homing, out homing, setwco, setwco, out setwco, mTP.LastKnownWCO);
+			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(parent, mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, Configuration.HomingEnabled, homing, out homing, setwco, setwco, out setwco, mTP.LastKnownWCO);
 
 			if (position == 0)
 				RunProgramFromStart(homing);
@@ -2299,12 +2300,12 @@ namespace LaserGRBL
 		}
 
 
-		internal bool ManageHotKeys(System.Windows.Forms.Keys keys)
+		internal bool ManageHotKeys(Form parent,  System.Windows.Forms.Keys keys)
 		{
 			if (SuspendHK)
 				return false;
 			else
-				return mHotKeyManager.ManageHotKeys(keys);
+				return mHotKeyManager.ManageHotKeys(parent, keys);
 		}
 
 		internal void HKConnectDisconnect()

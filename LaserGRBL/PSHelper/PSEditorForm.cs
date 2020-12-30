@@ -18,10 +18,10 @@ namespace LaserGRBL.PSHelper
 			TbNewElement.Text = GrblCore.MaterialDB.GetNewCount().ToString();
 		}
 
-		public static void CreateAndShowDialog()
+		public static void CreateAndShowDialog(Form parent)
 		{
 			using (PSEditorForm f = new PSEditorForm())
-				f.ShowDialog();
+				f.ShowDialog(parent);
 		}
 
 		private void PSEditorForm_FormClosing(object sender, FormClosingEventArgs e)

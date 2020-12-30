@@ -22,11 +22,11 @@ namespace LaserGRBL
 		bool mAllowH, mSuggestH;
 		int mExec, mSent, mSomeLine;
 
-		internal static int CreateAndShowDialog(int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, out bool homing, bool allowWCO, bool suggestWCO, out bool wco, GPoint wcopos)
+		internal static int CreateAndShowDialog(Form parent, int exec, int sent, int target, GrblCore.DetectedIssue issue, bool allowHoming, bool suggestHoming, out bool homing, bool allowWCO, bool suggestWCO, out bool wco, GPoint wcopos)
 		{
 			ResumeJobForm f = new ResumeJobForm(exec, sent, target, issue, allowHoming, suggestHoming, allowWCO, suggestWCO, wcopos);
 
-			int rv = f.ShowDialog() == DialogResult.OK ? f.Position : -1;
+			int rv = f.ShowDialog(parent) == DialogResult.OK ? f.Position : -1;
 			homing = f.DoHoming;
 			wco = f.RestoreWCO;
 			f.Dispose();

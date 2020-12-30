@@ -35,7 +35,7 @@ namespace LaserGRBL
 				System.Threading.Thread.CurrentThread.Name = "Main Thread";
 
 			using (SplashScreenForm f = new SplashScreenForm())
-				f.ShowDialog();
+				f.ShowDialog(this);
 
 			//build main communication object
 			Firmware ftype = Settings.GetObject("Firmware Type", Firmware.Grbl);
@@ -92,7 +92,7 @@ namespace LaserGRBL
 		void OnIssueDetected(GrblCore.DetectedIssue issue)
 		{
 			if (!Settings.GetObject("Do not show Issue Detector", false))
-				IssueDetectorForm.CreateAndShowDialog(issue);
+				IssueDetectorForm.CreateAndShowDialog(this, issue);
 		}
 
 		private void RefreshColorSchema()
@@ -341,7 +341,7 @@ namespace LaserGRBL
 
 		private void MnFileSend_Click(object sender, EventArgs e)
 		{
-			Core.RunProgram();
+			Core.RunProgram(this);
 		}
 
 		private void MnGrblReset_Click(object sender, EventArgs e)
@@ -417,7 +417,7 @@ namespace LaserGRBL
 		}
 		void MnSaveProgramClick(object sender, EventArgs e)
 		{
-			Core.SaveProgram(false, false, false, 1);
+			Core.SaveProgram(this, false, false, false, 1);
 		}
 
 		private void MNEnglish_Click(object sender, EventArgs e)
@@ -466,7 +466,7 @@ namespace LaserGRBL
 
 		private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SettingsForm.CreateAndShowDialog(Core);
+			SettingsForm.CreateAndShowDialog(this, Core);
 		}
 
 		private void openSessionLogToolStripMenuItem_Click(object sender, EventArgs e)
@@ -557,7 +557,7 @@ namespace LaserGRBL
 
 		private void grblConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			GrblConfig.CreateAndShowDialog(Core);
+			GrblConfig.CreateAndShowDialog(this, Core);
 		}
 
 		private void donateToolStripMenuItem_Click(object sender, EventArgs e)
@@ -569,7 +569,7 @@ namespace LaserGRBL
 		protected override void OnKeyUp(KeyEventArgs e)
 		{
 			mLastkeyData = Keys.None;
-			Core.ManageHotKeys(Keys.None);
+			Core.ManageHotKeys(this, Keys.None);
 			base.OnKeyUp(e);
 		}
 
@@ -579,7 +579,7 @@ namespace LaserGRBL
 			if (keyData != mLastkeyData)
 			{
 				mLastkeyData = keyData;
-				return Core.ManageHotKeys(keyData);
+				return Core.ManageHotKeys(this, keyData);
 			}
 			else
 			{
@@ -599,7 +599,7 @@ namespace LaserGRBL
 
 		private void MnHotkeys_Click(object sender, EventArgs e)
 		{
-			HotkeyManagerForm.CreateAndShowDialog(Core);
+			HotkeyManagerForm.CreateAndShowDialog(this, Core);
 		}
 
 
@@ -611,7 +611,7 @@ namespace LaserGRBL
 
 		private void MnStartFromPosition_Click(object sender, EventArgs e)
 		{
-			Core.RunProgramFromPosition();
+			Core.RunProgramFromPosition(this);
 		}
 
 		private void MnFileAppend_Click(object sender, EventArgs e)
@@ -671,12 +671,12 @@ namespace LaserGRBL
 					System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
 					try
 					{
-						dialogResult = sfd.ShowDialog();
+						dialogResult = sfd.ShowDialog(this);
 					}
 					catch (System.Runtime.InteropServices.COMException)
 					{
 						sfd.AutoUpgradeEnabled = false;
-						dialogResult = sfd.ShowDialog();
+						dialogResult = sfd.ShowDialog(this);
 					}
 
 					if (dialogResult == DialogResult.OK && sfd.FileName != null)
@@ -733,12 +733,12 @@ namespace LaserGRBL
 
 		private void MnAdvancedSave_Click(object sender, EventArgs e)
 		{
-			SaveOptionForm.CreateAndShowDialog(Core);
+			SaveOptionForm.CreateAndShowDialog(this, Core);
 		}
 
 		private void licenseToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			LicenseForm.CreateAndShowDialog();
+			LicenseForm.CreateAndShowDialog(this);
 		}
 
 		private void MnNotifyNewVersion_Click(object sender, EventArgs e)
@@ -799,7 +799,7 @@ namespace LaserGRBL
 
 		private void MnMaterialDB_Click(object sender, EventArgs e)
 		{
-			PSHelper.PSEditorForm.CreateAndShowDialog();
+			PSHelper.PSEditorForm.CreateAndShowDialog(this);
 		}
 
 		private void polishToolStripMenuItem_Click(object sender, EventArgs e)

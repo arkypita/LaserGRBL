@@ -21,11 +21,11 @@ namespace LaserGRBL
 
 		bool mAllowH;
 
-		internal static int CreateAndShowDialog(int total, bool allowHoming, out bool homing)
+		internal static int CreateAndShowDialog(Form parent, int total, bool allowHoming, out bool homing)
 		{
 			RunFromPositionForm f = new RunFromPositionForm(total, allowHoming);
 
-			int rv = f.ShowDialog() == DialogResult.OK ? f.Position : -1;
+			int rv = f.ShowDialog(parent) == DialogResult.OK ? f.Position : -1;
 			homing = f.DoHoming;
 			f.Dispose();
 			return rv;

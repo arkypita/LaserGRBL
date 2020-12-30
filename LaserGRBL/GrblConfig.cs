@@ -67,10 +67,10 @@ namespace LaserGRBL
 			DGV.ReadOnly = LblConnect.Visible = !Core.IsConnected;
 		}
 
-		internal static void CreateAndShowDialog(GrblCore core)
+		internal static void CreateAndShowDialog(Form parent, GrblCore core)
 		{
 			using (GrblConfig sf = new GrblConfig(core))
-				sf.ShowDialog();
+				sf.ShowDialog(parent);
 		}
 
 		private void BtnCancel_Click(object sender, EventArgs e)
@@ -159,12 +159,12 @@ namespace LaserGRBL
 				System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
 				try
 				{
-					dialogResult = sfd.ShowDialog();
+					dialogResult = sfd.ShowDialog(this);
 				}
 				catch (System.Runtime.InteropServices.COMException)
 				{
 					sfd.AutoUpgradeEnabled = false;
-					dialogResult = sfd.ShowDialog();
+					dialogResult = sfd.ShowDialog(this);
 				}
 
 				if (dialogResult == System.Windows.Forms.DialogResult.OK)
@@ -213,12 +213,12 @@ namespace LaserGRBL
 				System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
 				try
 				{
-					dialogResult = ofd.ShowDialog();
+					dialogResult = ofd.ShowDialog(this);
 				}
 				catch (System.Runtime.InteropServices.COMException)
 				{
 					ofd.AutoUpgradeEnabled = false;
-					dialogResult = ofd.ShowDialog();
+					dialogResult = ofd.ShowDialog(this);
 				}
 
 				if (dialogResult == System.Windows.Forms.DialogResult.OK)

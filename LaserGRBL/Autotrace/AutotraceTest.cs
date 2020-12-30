@@ -69,12 +69,12 @@ namespace LaserGRBL
 			System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
 			try
 			{
-				dialogResult = ofd.ShowDialog();
+				dialogResult = ofd.ShowDialog(this);
 			}
 			catch (System.Runtime.InteropServices.COMException)
 			{
 				ofd.AutoUpgradeEnabled = false;
-				dialogResult = ofd.ShowDialog();
+				dialogResult = ofd.ShowDialog(this);
 			}
 
 			if (dialogResult == DialogResult.OK)

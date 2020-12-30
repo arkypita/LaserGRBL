@@ -33,12 +33,12 @@ namespace LaserGRBL.PSHelper
 				target.SelectedItem = value;
 		}
 
-		public static MaterialDB.MaterialsRow CreateAndShowDialog()
+		public static MaterialDB.MaterialsRow CreateAndShowDialog(Form parent)
 		{
 			MaterialDB.MaterialsRow rv = null;
 			using (PSHelperForm f = new PSHelperForm())
 			{
-				f.ShowDialog();
+				f.ShowDialog(parent);
 				rv = f.result;
 			}
 

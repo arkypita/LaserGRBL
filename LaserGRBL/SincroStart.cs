@@ -38,7 +38,7 @@ namespace LaserGRBL
 				if (handle == 0)
 				{
 					if (C.CanSendFile)
-						C.RunProgram();
+						C.RunProgram(null);
 					else if (C.CanResumeHold)
 						C.CycleStartResume(false);
 					else if (C.CanFeedHold)

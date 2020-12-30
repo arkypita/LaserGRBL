@@ -77,7 +77,7 @@ namespace LaserGRBL.RasterConverter
 
 		ImageProcessor IP;
 
-		public void ShowDialog(ImageProcessor processor)
+		public void ShowDialog(Form parent, ImageProcessor processor)
 		{
 			IP = processor;
 
@@ -121,7 +121,7 @@ namespace LaserGRBL.RasterConverter
 			IIOffsetX.CurrentValue = IP.TargetOffset.X = Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F);
 			IIOffsetY.CurrentValue = IP.TargetOffset.Y = Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F);
 
-			ShowDialog();
+			ShowDialog(parent);
 		}
 
 
@@ -227,7 +227,7 @@ namespace LaserGRBL.RasterConverter
 
 		private void BtnPSHelper_Click(object sender, EventArgs e)
 		{
-			MaterialDB.MaterialsRow row = PSHelperForm.CreateAndShowDialog();
+			MaterialDB.MaterialsRow row = PSHelperForm.CreateAndShowDialog(this);
 			if (row != null)
 			{
 				if (IIBorderTracing.Visible)
