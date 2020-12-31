@@ -138,7 +138,7 @@
             this.label38 = new System.Windows.Forms.Label();
             this.disconnectSoundLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.label33 = new System.Windows.Forms.Label();
+            this.LblWarnOrturAC = new System.Windows.Forms.Label();
             this.changeSucBtn = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.successSoundLabel = new System.Windows.Forms.Label();
@@ -899,16 +899,16 @@
             // tableLayoutPanel13
             // 
             resources.ApplyResources(this.tableLayoutPanel13, "tableLayoutPanel13");
-            this.tableLayoutPanel13.Controls.Add(this.label33, 0, 0);
+            this.tableLayoutPanel13.Controls.Add(this.LblWarnOrturAC, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.changeSucBtn, 0, 1);
             this.tableLayoutPanel13.Controls.Add(this.label25, 1, 0);
             this.tableLayoutPanel13.Controls.Add(this.successSoundLabel, 1, 1);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             // 
-            // label33
+            // LblWarnOrturAC
             // 
-            resources.ApplyResources(this.label33, "label33");
-            this.label33.Name = "label33";
+            resources.ApplyResources(this.LblWarnOrturAC, "LblWarnOrturAC");
+            this.LblWarnOrturAC.Name = "LblWarnOrturAC";
             // 
             // changeSucBtn
             // 
@@ -1151,7 +1151,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label LblWarnOrturAC;
         private System.Windows.Forms.Button changeSucBtn;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label successSoundLabel;

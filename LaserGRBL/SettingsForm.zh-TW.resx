@@ -452,7 +452,7 @@ G90</value>
   <data name="label38.Text" xml:space="preserve">
     <value>聲音文件</value>
   </data>
-  <data name="label33.Text" xml:space="preserve">
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
     <value>終止工作聲音</value>
   </data>
   <data name="changeSucBtn.Text" xml:space="preserve">

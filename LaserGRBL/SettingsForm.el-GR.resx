@@ -329,7 +329,7 @@
 - Σύγχρονη: περιμένετε την εκτέλεση κάθε εντολής πριν από την αποστολή της επόμενης εντολής [πιο αργή αλλά ασφαλέστερη]
 - RepeatOnError: ίδιο με το Synchronous αλλά επαναλάβετε εντολές αν εντοπίσετε σφάλμα</value>
   </data>
-  <data name="label33.Text" xml:space="preserve">
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
     <value>Ήχος επιτυχίας</value>
   </data>
   <data name="CBSupportPWM.Text" xml:space="preserve">
