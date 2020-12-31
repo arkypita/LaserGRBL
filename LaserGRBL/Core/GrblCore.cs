@@ -224,6 +224,15 @@ namespace LaserGRBL
 						return "Unknown";
 				}
 			}
+
+			public int OrturFWVersionNumber 
+			{
+				get 
+				{
+					try { return int.Parse(mVendorVersion); }
+					catch { return -1; }
+				}
+			}
 		}
 
 		public delegate void dlgIssueDetector(DetectedIssue issue);
