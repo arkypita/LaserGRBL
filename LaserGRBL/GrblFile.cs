@@ -394,8 +394,8 @@ namespace LaserGRBL
 			//absolute
 			//list.Add(new GrblCommand("G90")); //(Moved to custom Header)
 
-			//move fast to offset
-			list.Add(new GrblCommand(String.Format("{0} X{1} Y{2}", skipcmd, formatnumber(c.oX), formatnumber(c.oY))));
+			//move fast to offset (or slow if disable G0) and set mark speed
+			list.Add(new GrblCommand(String.Format("{0} X{1} Y{2} F{3}", skipcmd, formatnumber(c.oX), formatnumber(c.oY), c.markSpeed)));
 			if (c.pwm)
 				list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
 			else
@@ -404,7 +404,7 @@ namespace LaserGRBL
 			//set speed to markspeed						
 			// For marlin, need to specify G1 each time :
 			//list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
-			list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
+			//list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed))); //replaced by the first move to offset and set speed
 
 			ImageLine2Line(bmp, c);
 
