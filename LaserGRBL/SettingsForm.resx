@@ -2248,38 +2248,38 @@ and burns holes in your work!
   <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="label31.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="LblWarnOrturAC.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="label31.AutoSize" type="System.Boolean, mscorlib">
+  <data name="LblWarnOrturAC.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label31.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="LblWarnOrturAC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label31.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="LblWarnOrturAC.Location" type="System.Drawing.Point, System.Drawing">
     <value>211, 148</value>
   </data>
-  <data name="label31.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="LblWarnOrturAC.Size" type="System.Drawing.Size, System.Drawing">
     <value>660, 26</value>
   </data>
-  <data name="label31.TabIndex" type="System.Int32, mscorlib">
+  <data name="LblWarnOrturAC.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
   </data>
-  <data name="label31.Text" xml:space="preserve">
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
     <value>Ortur User: Ortur Firmware (all version up to 137) has a bug on the machining resume that prevents properly using the auto-cooling function.
 Please do not use Automatic Cooling with Ortur engraver until a new firmware is released.</value>
   </data>
-  <data name="&gt;&gt;label31.Name" xml:space="preserve">
-    <value>label31</value>
+  <data name="&gt;&gt;LblWarnOrturAC.Name" xml:space="preserve">
+    <value>LblWarnOrturAC</value>
   </data>
-  <data name="&gt;&gt;label31.Type" xml:space="preserve">
+  <data name="&gt;&gt;LblWarnOrturAC.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label31.Parent" xml:space="preserve">
+  <data name="&gt;&gt;LblWarnOrturAC.Parent" xml:space="preserve">
     <value>tableLayoutPanel6</value>
   </data>
-  <data name="&gt;&gt;label31.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;LblWarnOrturAC.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
   <data name="tableLayoutPanel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -2310,7 +2310,7 @@ Please do not use Automatic Cooling with Ortur engraver until a new firmware is 
     <value>0</value>
   </data>
   <data name="tableLayoutPanel6.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label20" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label12" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label13" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbAutoCooling" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel7" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel8" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="pictureBox1" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label21" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label31" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label20" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label12" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label13" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbAutoCooling" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel7" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel8" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="pictureBox1" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label21" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="LblWarnOrturAC" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="TpAutoCooling.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -3831,40 +3831,40 @@ Check to enable.
   <data name="tableLayoutPanel13.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="LblWarnOrturAC.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="LblSuccessSound.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="LblWarnOrturAC.AutoSize" type="System.Boolean, mscorlib">
+  <data name="LblSuccessSound.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="LblWarnOrturAC.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="LblSuccessSound.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
-  <data name="LblWarnOrturAC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="LblSuccessSound.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="LblWarnOrturAC.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="LblSuccessSound.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
   </data>
-  <data name="LblWarnOrturAC.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="LblSuccessSound.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 20</value>
   </data>
-  <data name="LblWarnOrturAC.TabIndex" type="System.Int32, mscorlib">
+  <data name="LblSuccessSound.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+  <data name="LblSuccessSound.Text" xml:space="preserve">
     <value>Success Sound</value>
   </data>
-  <data name="&gt;&gt;LblWarnOrturAC.Name" xml:space="preserve">
-    <value>LblWarnOrturAC</value>
+  <data name="&gt;&gt;LblSuccessSound.Name" xml:space="preserve">
+    <value>LblSuccessSound</value>
   </data>
-  <data name="&gt;&gt;LblWarnOrturAC.Type" xml:space="preserve">
+  <data name="&gt;&gt;LblSuccessSound.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;LblWarnOrturAC.Parent" xml:space="preserve">
+  <data name="&gt;&gt;LblSuccessSound.Parent" xml:space="preserve">
     <value>tableLayoutPanel13</value>
   </data>
-  <data name="&gt;&gt;LblWarnOrturAC.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;LblSuccessSound.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="changeSucBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -3994,7 +3994,7 @@ Check to enable.
     <value>11</value>
   </data>
   <data name="tableLayoutPanel13.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LblWarnOrturAC" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="changeSucBtn" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label25" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="successSoundLabel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LblSuccessSound" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="changeSucBtn" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label25" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="successSoundLabel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="label32.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>

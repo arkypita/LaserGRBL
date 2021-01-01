@@ -273,7 +273,7 @@
   <data name="label14.Text" xml:space="preserve">
     <value>Ανοιχτό</value>
   </data>
-  <data name="label31.Text" xml:space="preserve">
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
     <value>Χρήστης Ortur: Το υλικολογισμικό Ortur (όλη η έκδοση έως 137) έχει ένα σφάλμα που εμποδίζει τη σωστή χρήση της λειτουργίας αυτόματης ψύξης.
 Μην χρησιμοποιείτε την Αυτόματη ψύξη με χαράκτη Ortur μέχρι να κυκλοφορήσει ένα νέο υλικολογισμικό.</value>
   </data>
@@ -329,7 +329,7 @@
 - Σύγχρονη: περιμένετε την εκτέλεση κάθε εντολής πριν από την αποστολή της επόμενης εντολής [πιο αργή αλλά ασφαλέστερη]
 - RepeatOnError: ίδιο με το Synchronous αλλά επαναλάβετε εντολές αν εντοπίσετε σφάλμα</value>
   </data>
-  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+  <data name="LblSuccessSound.Text" xml:space="preserve">
     <value>Ήχος επιτυχίας</value>
   </data>
   <data name="CBSupportPWM.Text" xml:space="preserve">

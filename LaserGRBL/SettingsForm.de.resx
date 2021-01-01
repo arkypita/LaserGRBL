@@ -343,7 +343,7 @@ Markiere zum Aktivieren.</value>
   <data name="disconnectSoundLabel.Text" xml:space="preserve">
     <value>.\Sound\disconnect.wav</value>
   </data>
-  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+  <data name="LblSuccessSound.Text" xml:space="preserve">
     <value>Erfolgs Ton</value>
   </data>
   <data name="changeSucBtn.Text" xml:space="preserve">

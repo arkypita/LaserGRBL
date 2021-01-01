@@ -95,7 +95,7 @@
 			this.label19 = new System.Windows.Forms.Label();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.label21 = new System.Windows.Forms.Label();
-			this.label31 = new System.Windows.Forms.Label();
+			this.LblWarnOrturAC = new System.Windows.Forms.Label();
 			this.TpGCodeSettings = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblHeader = new System.Windows.Forms.Label();
@@ -143,7 +143,7 @@
 			this.label38 = new System.Windows.Forms.Label();
 			this.disconnectSoundLabel = new System.Windows.Forms.Label();
 			this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-			this.LblWarnOrturAC = new System.Windows.Forms.Label();
+			this.LblSuccessSound = new System.Windows.Forms.Label();
 			this.changeSucBtn = new System.Windows.Forms.Button();
 			this.label25 = new System.Windows.Forms.Label();
 			this.successSoundLabel = new System.Windows.Forms.Label();
@@ -544,7 +544,7 @@
 			this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel8, 1, 2);
 			this.tableLayoutPanel6.Controls.Add(this.pictureBox1, 1, 3);
 			this.tableLayoutPanel6.Controls.Add(this.label21, 2, 3);
-			this.tableLayoutPanel6.Controls.Add(this.label31, 2, 4);
+			this.tableLayoutPanel6.Controls.Add(this.LblWarnOrturAC, 2, 4);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
 			// 
 			// label20
@@ -658,11 +658,11 @@
 			this.label21.ForeColor = System.Drawing.Color.Red;
 			this.label21.Name = "label21";
 			// 
-			// label31
+			// LblWarnOrturAC
 			// 
-			resources.ApplyResources(this.label31, "label31");
-			this.label31.ForeColor = System.Drawing.Color.Red;
-			this.label31.Name = "label31";
+			resources.ApplyResources(this.LblWarnOrturAC, "LblWarnOrturAC");
+			this.LblWarnOrturAC.ForeColor = System.Drawing.Color.Red;
+			this.LblWarnOrturAC.Name = "LblWarnOrturAC";
 			// 
 			// TpGCodeSettings
 			// 
@@ -964,16 +964,16 @@
 			// tableLayoutPanel13
 			// 
 			resources.ApplyResources(this.tableLayoutPanel13, "tableLayoutPanel13");
-			this.tableLayoutPanel13.Controls.Add(this.LblWarnOrturAC, 0, 0);
+			this.tableLayoutPanel13.Controls.Add(this.LblSuccessSound, 0, 0);
 			this.tableLayoutPanel13.Controls.Add(this.changeSucBtn, 0, 1);
 			this.tableLayoutPanel13.Controls.Add(this.label25, 1, 0);
 			this.tableLayoutPanel13.Controls.Add(this.successSoundLabel, 1, 1);
 			this.tableLayoutPanel13.Name = "tableLayoutPanel13";
 			// 
-			// LblWarnOrturAC
+			// LblSuccessSound
 			// 
-			resources.ApplyResources(this.LblWarnOrturAC, "LblWarnOrturAC");
-			this.LblWarnOrturAC.Name = "LblWarnOrturAC";
+			resources.ApplyResources(this.LblSuccessSound, "LblSuccessSound");
+			this.LblSuccessSound.Name = "LblSuccessSound";
 			// 
 			// changeSucBtn
 			// 
@@ -1151,7 +1151,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private System.Windows.Forms.Label LblWarnOrturAC;
+        private System.Windows.Forms.Label LblSuccessSound;
         private System.Windows.Forms.Button changeSucBtn;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label successSoundLabel;
@@ -1192,7 +1192,7 @@
         private System.Windows.Forms.CheckBox CbPlayFatal;
         private System.Windows.Forms.CheckBox CbPlayConnect;
         private System.Windows.Forms.CheckBox CbPlayDisconnect;
-		private System.Windows.Forms.Label label31;
+		private System.Windows.Forms.Label LblWarnOrturAC;
 		private System.Windows.Forms.CheckBox CbDisableSkip;
 		private System.Windows.Forms.Label label39;
 		private System.Windows.Forms.CheckBox CbDisableBoundWarn;

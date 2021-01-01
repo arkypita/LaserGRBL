@@ -452,7 +452,7 @@ G90</value>
   <data name="label38.Text" xml:space="preserve">
     <value>聲音文件</value>
   </data>
-  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+  <data name="LblSuccessSound.Text" xml:space="preserve">
     <value>終止工作聲音</value>
   </data>
   <data name="changeSucBtn.Text" xml:space="preserve">
@@ -479,7 +479,7 @@ G90</value>
   <data name="TpSoundSettings.Text" xml:space="preserve">
     <value>聲音設定</value>
   </data>
-  <data name="label31.Text" xml:space="preserve">
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
     <value>Ortur用戶：Ortur固件（所有版本最高為137）在加工履歷上存在一個錯誤，導致無法正確使用自動冷卻功能。
 在發布新固件之前，請勿在Ortur雕刻機上使用自動冷卻。</value>
   </data>

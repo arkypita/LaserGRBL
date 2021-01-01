@@ -435,7 +435,7 @@ E' utile per esempio per affondare l'asse Z ed eseguire tagli più profondi.</va
   <data name="disconnectSoundLabel.Text" xml:space="preserve">
     <value>.\Sound\disconnect.wav</value>
   </data>
-  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+  <data name="LblSuccessSound.Text" xml:space="preserve">
     <value>Segnale di fine lavoro</value>
   </data>
   <data name="changeSucBtn.Text" xml:space="preserve">

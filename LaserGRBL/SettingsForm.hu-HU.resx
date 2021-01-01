@@ -619,10 +619,10 @@ Jelölje be az aktiváláshoz.</value>
   <data name="label38.Text" xml:space="preserve">
     <value>Hangfájl</value>
   </data>
-  <data name="LblWarnOrturAC.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="LblSuccessSound.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 20</value>
   </data>
-  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+  <data name="LblSuccessSound.Text" xml:space="preserve">
     <value>Siker hangjelzés</value>
   </data>
   <data name="changeSucBtn.Text" xml:space="preserve">
