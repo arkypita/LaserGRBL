@@ -441,7 +441,7 @@
   <data name="label3.Text" xml:space="preserve">
     <value>Connection Protocol:
 - UsbSerial: is the most common protocol. Should be used if your engraver is connected to USB or COM port.
-- UsbSerial2: a new implementation of USB serial to bypass Microsoft SerialPort issues
+- UsbSerial2: an alternative implementation of USB serial to bypass Microsoft SerialPort issues
 - Telnet: if you have a WiFi-Telnet bridge. Communication is implemented like a simple telnet client-server.
 - LaserWebESP8266: support WiFi connection via WebSocket. Compatible with LaserWeb-ESP8266 software.</value>
   </data>
