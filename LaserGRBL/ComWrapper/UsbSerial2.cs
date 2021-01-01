@@ -46,8 +46,8 @@ namespace LaserGRBL.ComWrapper
 					if (Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin)
 						com.DtrEnable = true;
 
-					ComLogger.Log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
-					Logger.LogMessage("OpenCom", "Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString());
+					ComLogger.Log("com", string.Format("Open {0} @ {1} baud {2} (UsbSerial2)", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
+					Logger.LogMessage("OpenCom", "Open {0} @ {1} baud {2} (UsbSerial2)", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString());
 
 					com.Open();
 
@@ -64,8 +64,8 @@ namespace LaserGRBL.ComWrapper
 						{
 							com.PortName = mPortName.Substring(0, mPortName.Length - 1); //remove last digit and try again
 
-							ComLogger.Log("com", string.Format("Open {0} @ {1} baud {2}", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
-							Logger.LogMessage("OpenCom", "Retry opening {0} as {1} (issue #31)", mPortName.ToUpper(), com.PortName.ToUpper());
+							ComLogger.Log("com", string.Format("Open {0} @ {1} baud {2} (UsbSerial2)", com.PortName.ToUpper(), com.BaudRate, GetResetDiagnosticString()));
+							Logger.LogMessage("OpenCom", "Retry opening {0} as {1} (UsbSerial2) (issue #31)", mPortName.ToUpper(), com.PortName.ToUpper());
 
 							com.Open();
 							com.DiscardOutBuffer();

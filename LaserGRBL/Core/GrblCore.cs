@@ -1656,6 +1656,7 @@ namespace LaserGRBL
 
 		private void CreateFakeOK(int count)
 		{
+			ComWrapper.ComLogger.Log("com", $"Handle Missing OK [{count}]");
 			Logger.LogMessage("Issue detector", "Handle Missing OK [{0}]", count);
 
 			for (int i = 0; i < count; i++)
