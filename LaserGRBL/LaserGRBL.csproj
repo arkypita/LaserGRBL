@@ -131,7 +131,7 @@
     <Compile Include="Core\VigoCore.cs" />
     <Compile Include="Logger\AsyncLogFile.cs" />
     <Compile Include="Tools\Json.cs" />
-    <Compile Include="ComWrapper\ComLogger.cs" />
+    <Compile Include="Logger\ComLogger.cs" />
     <Compile Include="ExceptionManager.cs">
       <SubType>Form</SubType>
     </Compile>

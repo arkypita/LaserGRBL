@@ -77,7 +77,7 @@ namespace LaserGRBL
                 // Original line :
                 //bool noQueryResponse = debugLastMoveDelay.ElapsedTime > TimeSpan.FromTicks(QueryTimer.Period.Ticks * 10) && debugLastStatusDelay.ElapsedTime > TimeSpan.FromSeconds(5);
                 // Marlin version :
-                bool noQueryResponse = debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(10) && debugLastMoveDelay.ElapsedTime > TimeSpan.FromTicks(QueryTimer.Period.Ticks * 10) && debugLastStatusDelay.ElapsedTime > TimeSpan.FromSeconds(5);
+                bool noQueryResponse = debugLastMoveOrActivityDelay.ElapsedTime > TimeSpan.FromSeconds(10) && debugLastMoveOrActivityDelay.ElapsedTime > TimeSpan.FromTicks(QueryTimer.Period.Ticks * 10) && debugLastStatusDelay.ElapsedTime > TimeSpan.FromSeconds(5);
 
                 if (noQueryResponse)
                     SetIssue(DetectedIssue.StopResponding);

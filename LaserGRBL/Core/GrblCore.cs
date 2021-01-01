@@ -296,7 +296,7 @@ namespace LaserGRBL
 		private long connectStart;
 
 		protected Tools.ElapsedFromEvent debugLastStatusDelay;
-		protected Tools.ElapsedFromEvent debugLastMoveDelay;
+		protected Tools.ElapsedFromEvent debugLastMoveOrActivityDelay;
 
 		private ThreadingMode mThreadingMode = ThreadingMode.UltraFast;
 		private HotKeysManager mHotKeyManager;
@@ -313,7 +313,7 @@ namespace LaserGRBL
 			com = new ComWrapper.UsbSerial();
 
 			debugLastStatusDelay = new Tools.ElapsedFromEvent();
-			debugLastMoveDelay = new Tools.ElapsedFromEvent();
+			debugLastMoveOrActivityDelay = new Tools.ElapsedFromEvent();
 
 			mThreadingMode = Settings.GetObject("Threading Mode", ThreadingMode.UltraFast);
 			QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(mThreadingMode.StatusQuery), false);
@@ -1591,7 +1591,7 @@ namespace LaserGRBL
 					if (mTP.InProgram)
 						mTP.JobSent();
 
-					debugLastMoveDelay.Start();
+					debugLastMoveOrActivityDelay.Start();
 				}
 				catch (Exception ex)
 				{
@@ -1650,7 +1650,7 @@ namespace LaserGRBL
 		// this feature can work only if $10=3 (status report with buffer size report enabled)
 		private void HandleMissingOK() 
 		{
-			if (BufferIsFull() && HasPendingCommands() && MachineSayBufferFree() && MachineNotMoving())
+			if (BufferIsFull() && HasPendingCommands() && MachineSayBufferFree() && MachineNotMovingOrReply())
 				CreateFakeOK(mPending.Count); //rispondi "ok" a tutti i comandi pending
 		}
 
@@ -1663,7 +1663,7 @@ namespace LaserGRBL
 				ManageCommandResponse("ok");
 		}
 
-		private bool MachineNotMoving() => debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(5);
+		private bool MachineNotMovingOrReply() => debugLastMoveOrActivityDelay.ElapsedTime > TimeSpan.FromSeconds(5);
 		private bool MachineSayBufferFree() => mGrblBuffer == BufferSize;
 		private bool HasPendingCommands() => mPending.Count > 0;
 
@@ -1953,7 +1953,7 @@ namespace LaserGRBL
 			if (pos != mMPos)
 			{
 				mMPos = pos;
-				debugLastMoveDelay.Start();
+				debugLastMoveOrActivityDelay.Start();
 			}
 		}
 
@@ -1967,7 +1967,7 @@ namespace LaserGRBL
 		{
 			try
 			{
-				debugLastMoveDelay.Start(); //add a reset to prevent HangDetector trigger on G4
+				debugLastMoveOrActivityDelay.Start(); //add a reset to prevent HangDetector trigger on G4
 				if (HasPendingCommands())
 				{
 					GrblCommand pending = mPending.Peek();  //necessario fare peek
