@@ -4,13 +4,13 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 using System;
-using RJCP.IO.Ports;
+using MySerialPort;
 
 namespace LaserGRBL.ComWrapper
 {
 	class UsbSerial2 : IComWrapper
 	{
-		private SerialPortStream com = null;
+		private SerialPort com = null;
 
 		private string mPortName;
 		private int mBaudRate;
@@ -30,7 +30,7 @@ namespace LaserGRBL.ComWrapper
 
 				try
 				{
-					com = new SerialPortStream();
+					com = new SerialPort();
 					com.PortName = mPortName;
 					com.BaudRate = mBaudRate;
 					com.DataBits = 8;
@@ -123,7 +123,6 @@ namespace LaserGRBL.ComWrapper
 			{
 				ComLogger.Log("tx", b);
 				com.Write(new byte[] { b }, 0, 1);
-				System.Threading.Thread.Sleep(10);
 			}
 		}
 
@@ -141,7 +140,7 @@ namespace LaserGRBL.ComWrapper
 			if (com != null)
 			{
 				ComLogger.Log("tx", text);
-				//com.Write(text);
+				com.Write(text);
 			}
 		}
 
@@ -149,19 +148,14 @@ namespace LaserGRBL.ComWrapper
 		{
 			if (com != null)
 			{
-
-				System.Threading.Thread.Sleep(100000);
-				return null;
 				if (ComLogger.Enabled)
 				{
-					System.Threading.Thread.Sleep(100000);
 					string rv = com.ReadLine();
 					ComLogger.Log("rx", rv);
 					return rv;
 				}
 				else
 				{
-					System.Threading.Thread.Sleep(100000);
 					return com.ReadLine();
 				}
 			}
@@ -175,5 +169,4 @@ namespace LaserGRBL.ComWrapper
 		{ return com != null && com.BytesToRead > 0; }
 
 	}
-
 }

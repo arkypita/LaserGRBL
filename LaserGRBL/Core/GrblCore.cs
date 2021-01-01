@@ -1046,8 +1046,8 @@ namespace LaserGRBL
 		{
 			if (wraptype == ComWrapper.WrapperType.UsbSerial && (com == null || com.GetType() != typeof(ComWrapper.UsbSerial)))
 				com = new ComWrapper.UsbSerial();
-			//else if (wraptype == ComWrapper.WrapperType.UsbSerial2 && (com == null || com.GetType() != typeof(ComWrapper.UsbSerial2)))
-			//	com = new ComWrapper.UsbSerial2();
+			else if (wraptype == ComWrapper.WrapperType.UsbSerial2 && (com == null || com.GetType() != typeof(ComWrapper.UsbSerial2)))
+				com = new ComWrapper.UsbSerial2();
 			else if (wraptype == ComWrapper.WrapperType.Telnet && (com == null || com.GetType() != typeof(ComWrapper.Telnet)))
 				com = new ComWrapper.Telnet();
 			else if (wraptype == ComWrapper.WrapperType.LaserWebESP8266 && (com == null || com.GetType() != typeof(ComWrapper.LaserWebESP8266)))
@@ -1877,14 +1877,14 @@ namespace LaserGRBL
 			mGrblBlocks = int.Parse(ab[0]);
 			mGrblBuffer = int.Parse(ab[1]);
 
-            if (stuckBufferCounter > 10 && mPending.Count > 0)
-                ManageCommandResponse("ok");
-            if (mGrblBuffer == BufferSize && mPending.Count > 0)
-                stuckBufferCounter++;
-            if ((mGrblBuffer != BufferSize) ||( mPending.Count == 0 && mGrblBuffer == BufferSize))
-                stuckBufferCounter = 0;
+			if (stuckBufferCounter > 10 && mPending.Count > 0)
+				ManageCommandResponse("ok");
+			if (mGrblBuffer == BufferSize && mPending.Count > 0)
+				stuckBufferCounter++;
+			if ((mGrblBuffer != BufferSize) || (mPending.Count == 0 && mGrblBuffer == BufferSize))
+				stuckBufferCounter = 0;
 
-            EnlargeBuffer(mGrblBuffer);
+			EnlargeBuffer(mGrblBuffer);
 		}
 
 		private void EnlargeBuffer(int mGrblBuffer)

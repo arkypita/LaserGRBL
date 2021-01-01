@@ -111,6 +111,23 @@
       <DependentUpon>AutotraceTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Autotrace\Autotrace.cs" />
+    <Compile Include="ComWrapper\MySerial\Handshake.cs" />
+    <Compile Include="ComWrapper\MySerial\ISerialStream.cs" />
+    <Compile Include="ComWrapper\MySerial\Parity.cs" />
+    <Compile Include="ComWrapper\MySerial\SerialData.cs" />
+    <Compile Include="ComWrapper\MySerial\SerialError.cs" />
+    <Compile Include="ComWrapper\MySerial\SerialErrorEventArgs.cs" />
+    <Compile Include="ComWrapper\MySerial\SerialPinChange.cs" />
+    <Compile Include="ComWrapper\MySerial\SerialPinChangedEventArgs.cs" />
+    <Compile Include="ComWrapper\MySerial\SerialPort.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComWrapper\MySerial\SerialPortStream.cs" />
+    <Compile Include="ComWrapper\MySerial\SerialReceivedEventArgs.cs" />
+    <Compile Include="ComWrapper\MySerial\SerialSignal.cs" />
+    <Compile Include="ComWrapper\MySerial\StopBits.cs" />
+    <Compile Include="ComWrapper\MySerial\WinSerialStream.cs" />
+    <Compile Include="ComWrapper\UsbSerial2.cs" />
     <Compile Include="Core\VigoCore.cs" />
     <Compile Include="Tools\Json.cs" />
     <Compile Include="ComWrapper\ComLogger.cs" />
