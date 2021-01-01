@@ -13,49 +13,51 @@ namespace LaserGRBL.ComWrapper
 {
     public static class ComLogger
     {
-		private static string LockString = "--- LOCK COMLOGGER CALL ---";
+		private static string lockstr = "--- TX RX LOG LOCK ---";
+		private static AsyncLogFile file;		
 		private static int logcnt = 0;
-		private static string mFileName = null;
 
-		public static string FileName
+		public static void StartLog(string filename)
 		{
-			get
+			try
 			{
-				return mFileName;
-			}
-			set
-			{
-				lock (LockString)
+				if (filename != null)
 				{
-					if (value != FileName)
-					{
-						if (mFileName != null && value == null)
-							Log("log", $"Recording session stopped @ {DateTime.Now}");
-
-						logcnt = 0;
-						mFileName = value;
-
-						if (mFileName != null)
-							Log("log", $"Recording session started @ {DateTime.Now}");
-					}
+					StopLog();
+					file = new AsyncLogFile(filename, 0);
+					Log("log", $"Recording session started @ {DateTime.Now}");
 				}
 			}
+			catch { }
 		}
 
-		public static bool Enabled => FileName != null; 
+		public static void StopLog()
+		{
+			try
+			{
+				if (Enabled)
+				{
+					Log("log", $"Recording session stopped @ {DateTime.Now}");
+					file.Stop();
+				}
+			}
+			finally { file = null; logcnt = 0; }
+		}
+
+		public static bool Enabled => file != null; 
 		public static void Log(string operation, string line)
         {
-			lock (LockString)
+			if (Enabled)
 			{
-				if (FileName != null)
+				lock (lockstr)
 				{
 					try
 					{
 						line = line?.Replace("\r", "\\r");
 						line = line?.Replace("\n", "\\n");
 						line = string.Format("{0:00000}\t{1:00000000}\t{2}\t{3}\r\n", logcnt, Tools.TimingBase.TimeFromApplicationStartup().TotalMilliseconds, operation, line);
-						System.Diagnostics.Debug.Write(line);
-						System.IO.File.AppendAllText(FileName, line);
+						//System.Diagnostics.Debug.Write(line);
+						file.Log(line);
 					}
 					catch { }
 					logcnt++;

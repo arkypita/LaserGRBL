@@ -680,12 +680,12 @@ namespace LaserGRBL
 					}
 
 					if (dialogResult == DialogResult.OK && sfd.FileName != null)
-						ComWrapper.ComLogger.FileName = sfd.FileName;
+						ComWrapper.ComLogger.StartLog(sfd.FileName);
 				}
 			}
 			else
 			{
-				ComWrapper.ComLogger.FileName = null;
+				ComWrapper.ComLogger.StopLog();
 			}
 		}
 

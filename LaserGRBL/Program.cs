@@ -35,7 +35,10 @@ namespace LaserGRBL
 			
 			GrblEmulator.WebSocketEmulator.Stop();
 			Autotrace.CleanupTmpFolder();
+
+			ComWrapper.ComLogger.StopLog();
 			Logger.Stop();
+
 		}
 	}
 }

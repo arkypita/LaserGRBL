@@ -264,7 +264,6 @@ namespace LaserGRBL
 		private string mVersionSeen = null;
 		protected int mUsedBuffer;
 		private int mAutoBufferSize = 127;
-		private int stuckBufferCounter = 0;
 		private GPoint mMPos;
 		private GPoint mWCO;
 		private int mGrblBlocks = -1;
@@ -842,7 +841,7 @@ namespace LaserGRBL
 
 				try
 				{
-					while (com.IsOpen && (mQueuePtr.Count > 0 || mPending.Count > 0)) //resta in attesa del completamento della comunicazione
+					while (com.IsOpen && (mQueuePtr.Count > 0 || HasPendingCommands())) //resta in attesa del completamento della comunicazione
 						;
 
 					int errors = 0;
@@ -1505,7 +1504,7 @@ namespace LaserGRBL
 			if (mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
 			{
 				//bool executingM4 = false;
-				//if (mPending.Count > 0)
+				//if (HasPendingCommand())
 				//{
 				//	GrblCommand cur = mPending.Peek();
 				//	cur.BuildHelper();
@@ -1542,9 +1541,15 @@ namespace LaserGRBL
 			return next != null && HasSpaceInBuffer(next);
 		}
 
+		private bool BufferIsFull()
+		{
+			GrblCommand next = PeekNextCommand();
+			return mUsedBuffer > 0 && next != null && !HasSpaceInBuffer(next);
+		}
+
 		private GrblCommand PeekNextCommand()
 		{
-			if (mPending.Count > 0 && mPending.Peek().IsWriteEEPROM) //if managing eeprom write act like sync
+			if (HasPendingCommands() && mPending.Peek().IsWriteEEPROM) //if managing eeprom write act like sync
 				return null;
 			else if (CurrentStreamingMode == StreamingMode.Buffered && mQueuePtr.Count > 0) //sono buffered e ho roba da trasmettere
 				return mQueuePtr.Peek();
@@ -1626,7 +1631,10 @@ namespace LaserGRBL
 				if ((rline = WaitComLineOrDisconnect()) != null)
 				{
 					lock (this)
-					{ManageReceivedLine(rline);}
+					{
+						ManageReceivedLine(rline);
+						HandleMissingOK();
+					}
 				}
 
 				RX.SleepTime = HasIncomingData() ? CurrentThreadingMode.RxShort : CurrentThreadingMode.RxLong;
@@ -1634,6 +1642,29 @@ namespace LaserGRBL
 			catch (Exception ex)
 			{ Logger.LogException("ThreadRX", ex); }
 		}
+
+		// this function try to detect and unlock from a "buffer stuck" condition
+		// a "buffer stuck" condition occurs when LaserGRBL does not receive some "ok's" 
+		// back from grbl (i.e. because of electrical noise on wire) and so LaserGRBL
+		// does no longer send commands anymore because think the buffer is full
+		// this feature can work only if $10=3 (status report with buffer size report enabled)
+		private void HandleMissingOK() 
+		{
+			if (BufferIsFull() && HasPendingCommands() && MachineSayBufferFree() && MachineNotMoving())
+				CreateFakeOK(mPending.Count); //rispondi "ok" a tutti i comandi pending
+		}
+
+		private void CreateFakeOK(int count)
+		{
+			Logger.LogMessage("Issue detector", "Handle Missing OK [{0}]", count);
+
+			for (int i = 0; i < count; i++)
+				ManageCommandResponse("ok");
+		}
+
+		private bool MachineNotMoving() => debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(5);
+		private bool MachineSayBufferFree() => mGrblBuffer == BufferSize;
+		private bool HasPendingCommands() => mPending.Count > 0;
 
 		protected virtual void ManageReceivedLine(string rline)
 		{
@@ -1877,13 +1908,6 @@ namespace LaserGRBL
 			mGrblBlocks = int.Parse(ab[0]);
 			mGrblBuffer = int.Parse(ab[1]);
 
-			if (stuckBufferCounter > 10 && mPending.Count > 0)
-				ManageCommandResponse("ok");
-			if (mGrblBuffer == BufferSize && mPending.Count > 0)
-				stuckBufferCounter++;
-			if ((mGrblBuffer != BufferSize) || (mPending.Count == 0 && mGrblBuffer == BufferSize))
-				stuckBufferCounter = 0;
-
 			EnlargeBuffer(mGrblBuffer);
 		}
 
@@ -1943,7 +1967,7 @@ namespace LaserGRBL
 			try
 			{
 				debugLastMoveDelay.Start(); //add a reset to prevent HangDetector trigger on G4
-				if (mPending.Count > 0)
+				if (HasPendingCommands())
 				{
 					GrblCommand pending = mPending.Peek();  //necessario fare peek
 					pending.SetResult(rline, SupportCSV);   //assegnare lo stato
