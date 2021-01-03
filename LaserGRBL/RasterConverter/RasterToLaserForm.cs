@@ -187,6 +187,10 @@ namespace LaserGRBL.RasterConverter
 
 		void BtnCreateClick(object sender, EventArgs e)
 		{
+			if (IP.SelectedTool == ImageProcessor.Tool.Vectorize && GrblFile.TimeConsumingFilling(IP.FillingDirection) && IP.FillingQuality > 2
+			&& System.Windows.Forms.MessageBox.Show(this, $"Using { GrblCore.TranslateEnum(IP.FillingDirection)} with quality > 2 line/mm could be very time consuming with big image. Continue?", "Warning",  MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != DialogResult.OK)
+				return;				
+			
 			using (ConvertSizeAndOptionForm f = new ConvertSizeAndOptionForm(mCore))
 			{
 				f.ShowDialog(this, IP);
@@ -200,7 +204,9 @@ namespace LaserGRBL.RasterConverter
 					BtnCreate.Enabled = false;
 					WB.Visible = true;
 					WB.Running = true;
+					FormBorderStyle = FormBorderStyle.FixedSingle;
 					TlpLeft.Enabled = false;
+					MaximizeBox = false;
 					ResumeLayout();
 
 					StoreSettings();

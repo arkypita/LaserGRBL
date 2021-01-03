@@ -268,8 +268,15 @@ namespace LaserGRBL
 			dir == RasterConverter.ImageProcessor.Direction.NewCross ||
 			dir == RasterConverter.ImageProcessor.Direction.NewDiagonalCross ||
 			dir == RasterConverter.ImageProcessor.Direction.NewSquares ||
-			dir == RasterConverter.ImageProcessor.Direction.NewInsetFilling
-			;
+			dir == RasterConverter.ImageProcessor.Direction.NewInsetFilling;
+		}
+
+		public static bool TimeConsumingFilling(RasterConverter.ImageProcessor.Direction dir)
+		{
+			return 
+			dir == RasterConverter.ImageProcessor.Direction.NewCross ||
+			dir == RasterConverter.ImageProcessor.Direction.NewDiagonalCross ||
+			dir == RasterConverter.ImageProcessor.Direction.NewSquares;
 		}
 
 		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, bool useOptimizeFast, L2LConf c, bool append)
