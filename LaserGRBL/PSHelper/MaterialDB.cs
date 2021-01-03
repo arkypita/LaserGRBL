@@ -28,7 +28,7 @@ namespace LaserGRBL.PSHelper
 
 				MaterialsRow target = e.Row as MaterialsRow;
 				MaterialsRow last = GetLastNotDeleted();
-					
+
 				if (target != null)
 				{
 					target.id = Guid.NewGuid();

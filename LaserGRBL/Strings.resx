@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxConnectErrorTitle" xml:space="preserve">
     <value>Cannot connect to device</value>
@@ -135,7 +135,7 @@ This could generate a soft-limit error or the machine could crash into the axes 
 This could generate a soft-limit error. Are you sure of the entered values?</value>
   </data>
   <data name="DirectionDiagonal" xml:space="preserve">
-    <value>Diagonal</value>
+    <value>Diagonal (old)</value>
   </data>
   <data name="AddCustomButtonsHint" xml:space="preserve">
     <value>Right click here to add custom buttons</value>
@@ -144,7 +144,7 @@ This could generate a soft-limit error. Are you sure of the entered values?</val
     <value>Restart required</value>
   </data>
   <data name="DirectionHorizontal" xml:space="preserve">
-    <value>Horizontal</value>
+    <value>Horizontal (old)</value>
   </data>
   <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
     <value>Confirmation</value>
@@ -251,7 +251,7 @@ Please manually download the new version from lasergrbl site.</value>
     <value>Missing field</value>
   </data>
   <data name="DirectionVertical" xml:space="preserve">
-    <value>Vertical</value>
+    <value>Vertical (old)</value>
   </data>
   <data name="FormulaCustom" xml:space="preserve">
     <value>Custom</value>
@@ -350,9 +350,39 @@ Continue anyway?</value>
     <value>Are you sure to delete selected button?</value>
   </data>
   <data name="DirectionNone" xml:space="preserve">
-    <value>None</value>
+    <value>No Filling</value>
   </data>
   <data name="BoxAbortProgramConfirm" xml:space="preserve">
     <value>Abort current job?</value>
+  </data>
+  <data name="DirectionNewCross" xml:space="preserve">
+    <value>Cross Fill</value>
+  </data>
+  <data name="DirectionNewDiagonal" xml:space="preserve">
+    <value>Diagonal</value>
+  </data>
+  <data name="DirectionNewDiagonalCross" xml:space="preserve">
+    <value>Diagonal Cross Fill</value>
+  </data>
+  <data name="DirectionNewDiagonalGrid" xml:space="preserve">
+    <value>Diagonal Grid</value>
+  </data>
+  <data name="DirectionNewGrid" xml:space="preserve">
+    <value>Grid</value>
+  </data>
+  <data name="DirectionNewHorizontal" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="DirectionNewInsetFilling" xml:space="preserve">
+    <value>Inset Filling</value>
+  </data>
+  <data name="DirectionNewReverseDiagonal" xml:space="preserve">
+    <value>Diagonal Reversed</value>
+  </data>
+  <data name="DirectionNewSquares" xml:space="preserve">
+    <value>Squares</value>
+  </data>
+  <data name="DirectionNewVertical" xml:space="preserve">
+    <value>Vertical</value>
   </data>
 </root>

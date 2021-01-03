@@ -378,7 +378,7 @@ namespace LaserGRBL {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a Diagonal.
+        ///   Cerca una stringa localizzata simile a Diagonal (old).
         /// </summary>
         internal static string DirectionDiagonal {
             get {
@@ -387,7 +387,7 @@ namespace LaserGRBL {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a Horizontal.
+        ///   Cerca una stringa localizzata simile a Horizontal (old).
         /// </summary>
         internal static string DirectionHorizontal {
             get {
@@ -396,7 +396,97 @@ namespace LaserGRBL {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a None.
+        ///   Cerca una stringa localizzata simile a Cross Fill.
+        /// </summary>
+        internal static string DirectionNewCross {
+            get {
+                return ResourceManager.GetString("DirectionNewCross", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Diagonal.
+        /// </summary>
+        internal static string DirectionNewDiagonal {
+            get {
+                return ResourceManager.GetString("DirectionNewDiagonal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Diagonal Cross Fill.
+        /// </summary>
+        internal static string DirectionNewDiagonalCross {
+            get {
+                return ResourceManager.GetString("DirectionNewDiagonalCross", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Diagonal Grid.
+        /// </summary>
+        internal static string DirectionNewDiagonalGrid {
+            get {
+                return ResourceManager.GetString("DirectionNewDiagonalGrid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Grid.
+        /// </summary>
+        internal static string DirectionNewGrid {
+            get {
+                return ResourceManager.GetString("DirectionNewGrid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Horizontal.
+        /// </summary>
+        internal static string DirectionNewHorizontal {
+            get {
+                return ResourceManager.GetString("DirectionNewHorizontal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Inset Filling.
+        /// </summary>
+        internal static string DirectionNewInsetFilling {
+            get {
+                return ResourceManager.GetString("DirectionNewInsetFilling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Diagonal Reversed.
+        /// </summary>
+        internal static string DirectionNewReverseDiagonal {
+            get {
+                return ResourceManager.GetString("DirectionNewReverseDiagonal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Squares.
+        /// </summary>
+        internal static string DirectionNewSquares {
+            get {
+                return ResourceManager.GetString("DirectionNewSquares", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Vertical.
+        /// </summary>
+        internal static string DirectionNewVertical {
+            get {
+                return ResourceManager.GetString("DirectionNewVertical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a No Filling.
         /// </summary>
         internal static string DirectionNone {
             get {
@@ -405,7 +495,7 @@ namespace LaserGRBL {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a Vertical.
+        ///   Cerca una stringa localizzata simile a Vertical (old).
         /// </summary>
         internal static string DirectionVertical {
             get {

@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "LaserGRBL"
-#define MyAppVersion "3.8.10"
-#define MyAppVersionName "Rhyhorn"
+#define MyAppVersion "4.0.0"
+#define MyAppVersionName "Rhydon"
 #define MyAppPublisher "LaserGRBL"
 #define MyAppURL "https://lasergrbl.com"
 #define MyAppExeName "LaserGRBL.exe"
@@ -45,8 +45,6 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: ".\LaserGRBL\bin\Release\LaserGRBL.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: ".\LaserGRBL\bin\Release\LaserGRBL.pdb"; DestDir: "{app}"; Flags: ignoreversion
-;Source: ".\LaserGRBL\bin\Release\SerialPort2.dll"; DestDir: "{app}"; Flags: ignoreversion
-;Source: ".\LaserGRBL\bin\Release\SerialPort2.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: ".\LaserGRBL\bin\Release\Autotrace\autotrace.exe"; DestDir: "{app}\Autotrace"; Flags: ignoreversion
 Source: ".\LaserGRBL\bin\Release\it\LaserGRBL.resources.dll"; DestDir: "{app}\it"; Flags: ignoreversion
 Source: ".\LaserGRBL\bin\Release\da\LaserGRBL.resources.dll"; DestDir: "{app}\da"; Flags: ignoreversion

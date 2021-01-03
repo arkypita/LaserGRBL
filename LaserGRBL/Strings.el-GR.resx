@@ -225,16 +225,16 @@
     <value>Αφαιρέστε το κουμπί</value>
   </data>
   <data name="DirectionDiagonal" xml:space="preserve">
-    <value>Διαγώνια</value>
+    <value>Διαγώνια (old)</value>
   </data>
   <data name="DirectionHorizontal" xml:space="preserve">
-    <value>Οριζόντια</value>
+    <value>Οριζόντια (old)</value>
   </data>
   <data name="DirectionNone" xml:space="preserve">
     <value>Κανένα</value>
   </data>
   <data name="DirectionVertical" xml:space="preserve">
-    <value>Κάθετα</value>
+    <value>Κάθετα (old)</value>
   </data>
   <data name="DisconnectAnyway" xml:space="preserve">
     <value>Η μεταφορά αρχείων βρίσκεται σε εξέλιξη. Αποσύνδεση ούτως ή άλλως;</value>

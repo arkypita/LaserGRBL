@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxAbortProgramConfirm" xml:space="preserve">
     <value>Megszakítja az aktuális munkát?</value>
@@ -216,16 +216,16 @@ Felül szeretné írni a konfigurációt?</value>
     <value>Egyéni gomb eltávolítása</value>
   </data>
   <data name="DirectionDiagonal" xml:space="preserve">
-    <value>Átlós</value>
+    <value>Átlós (old)</value>
   </data>
   <data name="DirectionHorizontal" xml:space="preserve">
-    <value>Vízszintes</value>
+    <value>Vízszintes (old)</value>
   </data>
   <data name="DirectionNone" xml:space="preserve">
     <value>Egyik sem</value>
   </data>
   <data name="DirectionVertical" xml:space="preserve">
-    <value>Függőleges</value>
+    <value>Függőleges (old)</value>
   </data>
   <data name="DisconnectAnyway" xml:space="preserve">
     <value>A fájlátvitel folyamatban van. Megszakítja a kapcsolatot?</value>

@@ -95,7 +95,15 @@ namespace LaserGRBL.RasterConverter
         }
 
 		public enum Direction
-		{ Horizontal, Vertical, Diagonal, None }
+		{
+			None,
+			Horizontal, Vertical, Diagonal,
+			NewHorizontal, NewVertical, NewDiagonal,
+			NewReverseDiagonal, NewGrid, NewDiagonalGrid,
+			NewCross, NewDiagonalCross,
+			NewSquares,
+			NewInsetFilling
+		}
 
 		public ImageProcessor(GrblCore core, string fileName, Size boxSize, bool append)
 		{
@@ -1112,39 +1120,54 @@ namespace LaserGRBL.RasterConverter
 				using (Graphics g = Graphics.FromImage(bmp))
 				{
 					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-					if (dir == Direction.Horizontal)
+					if (dir == Direction.Horizontal || dir == Direction.NewHorizontal || dir == Direction.NewGrid || dir == Direction.NewCross)
 					{
+						int mod = dir == Direction.Horizontal ? 2 : 3;
 						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 100 : 200;
 						for (int Y = 0; Y < bmp.Height && !MustExitTH; Y++)
 						{
 							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
 							{
-								if (Y % 2 == 0)
+								if (Y % mod == 0)
 									g.DrawLine(p, 0, Y, bmp.Width, Y);
 							}
 						}
 					}
-					else if (dir == Direction.Vertical)
+					if (dir == Direction.Vertical || dir == Direction.NewVertical || dir == Direction.NewGrid || dir == Direction.NewCross)
 					{
+						int mod = dir == Direction.Vertical ? 2 : 3;
 						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 100 : 200;
 						for (int X = 0; X < bmp.Width && !MustExitTH; X++)
 						{
 							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
 							{
-								if (X % 2 == 0)
+								if (X % mod == 0)
 									g.DrawLine(p, X, 0, X, bmp.Height);
 							}
 						}
 					}
-					else if (dir == Direction.Diagonal)
+					if (dir == Direction.Diagonal || dir == Direction.NewDiagonal || dir == Direction.NewDiagonalGrid || dir == Direction.NewDiagonalCross || dir == Direction.NewSquares)
+					{
+						int mod = dir == Direction.Diagonal ? 3 : 5;
+						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 150 : 255;
+						for (int I = 0; I < bmp.Width + bmp.Height - 1 && !MustExitTH; I++)
+						{
+							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
+							{
+								if (I % mod == 0)
+									g.DrawLine(p, 0, bmp.Height - I, I, bmp.Height);
+							}
+						}
+					}
+					if (dir == Direction.NewReverseDiagonal || dir == Direction.NewDiagonalGrid || dir == Direction.NewDiagonalCross || dir == Direction.NewSquares)
 					{
 						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 150 : 255;
 						for (int I = 0; I < bmp.Width + bmp.Height - 1 && !MustExitTH; I++)
 						{
 							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
 							{
-								if (I % 3 == 0)
-									g.DrawLine(p, 0, bmp.Height - I, I, bmp.Height);
+								if (I % 5 == 0)
+									g.DrawLine(p, 0, I, I, 0);
 							}
 						}
 					}

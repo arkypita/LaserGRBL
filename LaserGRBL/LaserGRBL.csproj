@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LaserGRBL</RootNamespace>
     <AssemblyName>LaserGRBL</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <NoStdLib>False</NoStdLib>
@@ -111,6 +111,7 @@
       <DependentUpon>AutotraceTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Autotrace\Autotrace.cs" />
+    <Compile Include="Clipper\Clipper.cs" />
     <Compile Include="ComWrapper\MySerial\Handshake.cs" />
     <Compile Include="ComWrapper\MySerial\ISerialStream.cs" />
     <Compile Include="ComWrapper\MySerial\Parity.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="ComWrapper\MySerial\WinSerialStream.cs" />
     <Compile Include="ComWrapper\UsbSerial2.cs" />
     <Compile Include="Core\VigoCore.cs" />
+    <Compile Include="CsPotrace\PotraceClipper.cs" />
     <Compile Include="Logger\AsyncLogFile.cs" />
     <Compile Include="Tools\Json.cs" />
     <Compile Include="Logger\ComLogger.cs" />
@@ -1379,6 +1381,7 @@
     <EmbeddedResource Include="Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings.da.resx">
       <DependentUpon>Strings.resx</DependentUpon>
@@ -1394,6 +1397,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Strings.it.resx">
       <DependentUpon>Strings.resx</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings.pt-BR.resx">
       <DependentUpon>Strings.resx</DependentUpon>

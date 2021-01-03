@@ -13,6 +13,8 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace LaserGRBL
 {
@@ -251,6 +253,25 @@ namespace LaserGRBL
 			{ get { return true; } }
 		}
 
+		public static bool RasterFilling(RasterConverter.ImageProcessor.Direction dir)
+		{ 
+			return dir == RasterConverter.ImageProcessor.Direction.Diagonal || dir == RasterConverter.ImageProcessor.Direction.Horizontal || dir == RasterConverter.ImageProcessor.Direction.Vertical;
+		}
+		public static bool VectorFilling(RasterConverter.ImageProcessor.Direction dir)
+		{
+			return dir == RasterConverter.ImageProcessor.Direction.NewDiagonal ||
+			dir == RasterConverter.ImageProcessor.Direction.NewHorizontal ||
+			dir == RasterConverter.ImageProcessor.Direction.NewVertical ||
+			dir == RasterConverter.ImageProcessor.Direction.NewReverseDiagonal ||
+			dir == RasterConverter.ImageProcessor.Direction.NewGrid ||
+			dir == RasterConverter.ImageProcessor.Direction.NewDiagonalGrid ||
+			dir == RasterConverter.ImageProcessor.Direction.NewCross ||
+			dir == RasterConverter.ImageProcessor.Direction.NewDiagonalCross ||
+			dir == RasterConverter.ImageProcessor.Direction.NewSquares ||
+			dir == RasterConverter.ImageProcessor.Direction.NewInsetFilling
+			;
+		}
+
 		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, bool useOptimizeFast, L2LConf c, bool append)
 		{
 			skipcmd = Settings.GetObject("Disable G0 fast skip", false) ? "G1" : "G0";
@@ -273,8 +294,22 @@ namespace LaserGRBL
 			Potrace.curveoptimizing = UseOptimize; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
 
 			List<List<Curve>> plist = Potrace.PotraceTrace(bmp);
+			List<List<Curve>> rlist = null;
 
-			if (c.dir != RasterConverter.ImageProcessor.Direction.None)
+			if (VectorFilling(c.dir))
+			{
+				long t1 = Tools.HiResTimer.TotalMilliseconds;
+				List<List<Curve>> filling = PotraceClipper.BuildFilling(plist, c.res / c.fres, bmp.Width, bmp.Height, c.dir);
+				long t2 = Tools.HiResTimer.TotalMilliseconds;
+
+				System.Diagnostics.Debug.WriteLine($"BuildFilling = {t2 - t1}ms");
+
+				rlist = ParallelOptimizePaths(filling);
+				long t3 = Tools.HiResTimer.TotalMilliseconds;
+
+				System.Diagnostics.Debug.WriteLine($"OptimizeFilling = {t3 - t2}ms");
+			}
+			if (RasterFilling(c.dir))
 			{
 				using (Bitmap ptb = new Bitmap(bmp.Width, bmp.Height))
 				{
@@ -318,20 +353,42 @@ namespace LaserGRBL
 			else
 				list.Add(new GrblCommand($"{c.lOff} S{c.maxPower}"));	//laser off and power to maxPower
 
+			List<string> gc = new List<string>();
+
+			//trace raster filling
+			if (rlist != null)
+			{
+				list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
+				if (supportPWM)
+					gc.AddRange(Potrace.Export2GCode(rlist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd));
+				else
+					gc.AddRange(Potrace.Export2GCode(rlist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd));
+			}
+
+			//trace borders
+
 			//set speed to borderspeed
 			// For marlin, need to specify G1 each time :
 			//list.Add(new GrblCommand(String.Format("G1 F{0}", c.borderSpeed)));
 			list.Add(new GrblCommand(String.Format("F{0}", c.borderSpeed)));
 
-			//trace borders
-			List<string> gc;
 			if (supportPWM)
-				gc = Potrace.Export2GCode(plist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd);
+				gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd));
 			else
-				gc = Potrace.Export2GCode(plist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd);
+				gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd));
 
 			foreach (string code in gc)
 				list.Add(new GrblCommand(code));
+			
+
+			//if (supportPWM)
+			//	gc = Potrace.Export2GCode(flist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd);
+			//else
+			//	gc = Potrace.Export2GCode(flist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd);
+
+			//foreach (string code in gc)
+			//	list.Add(new GrblCommand(code));
+
 
 			//laser off (superflua??)
 			if (supportPWM)
@@ -668,7 +725,42 @@ namespace LaserGRBL
 			prevCol = col;
 		}
 
-        private List<List<Curve>> OptimizePaths(List<List<Curve>> list)
+		private List<List<Curve>> ParallelOptimizePaths(List<List<Curve>> list)
+		{
+			int maxblocksize = 2048;    //max number of List<Curve> to process in a single OptimizePaths operation
+
+			int blocknum = (int)Math.Ceiling(list.Count / (double)maxblocksize);
+			if (blocknum <= 1)
+				return OptimizePaths(list);
+
+			System.Diagnostics.Debug.WriteLine("Count: " + list.Count);
+
+			Task<List<List<Curve>>>[] taskArray = new Task<List<List<Curve>>>[blocknum];
+			for (int i = 0; i < taskArray.Length; i++)
+				taskArray[i] = Task.Factory.StartNew((data) => OptimizePaths((List<List<Curve>>)data), GetTaskJob(i, taskArray.Length , list));
+			Task.WaitAll(taskArray);
+
+			List<List<Curve>> rv = new List<List<Curve>>();
+			for (int i = 0; i < taskArray.Length; i++)
+			{
+				List<List<Curve>> lc = taskArray[i].Result;
+				rv.AddRange(lc);
+			}
+
+			return rv;
+		}
+
+		private List<List<Curve>> GetTaskJob(int threadIndex, int threadCount, List<List<Curve>> list)
+		{
+			int from = (threadIndex * list.Count) / threadCount;
+			int to = ((threadIndex + 1) * list.Count) / threadCount;
+
+			List<List<Curve>> rv = list.GetRange(from, to - from);
+			System.Diagnostics.Debug.WriteLine($"Thread {threadIndex}/{threadCount}: {rv.Count} [from {from} to {to}]");
+			return rv;
+		}
+
+		private List<List<Curve>> OptimizePaths(List<List<Curve>> list)
         {
 			if (list.Count == 1)
 				return list;

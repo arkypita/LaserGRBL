@@ -14,13 +14,13 @@ namespace LaserGRBL.UserControls
 	public class EnumComboBox : System.Windows.Forms.ComboBox
 	{
 
-		public void AddItem(Enum item)
-		{ Items.Add(new ComboBoxEnumItem(item)); }
+		public void AddItem(Enum item, bool trimparentesi = false)
+		{ Items.Add(new ComboBoxEnumItem(item, trimparentesi)); }
 
 		public new Enum SelectedItem
 		{
 			get {return base.SelectedItem != null ? ((ComboBoxEnumItem)base.SelectedItem).Value : default(Enum) ;}
-			set { base.SelectedItem = new ComboBoxEnumItem(value); }
+			set { base.SelectedItem = new ComboBoxEnumItem(value, false); }
 		}
 
 		public void Clear()
@@ -29,15 +29,31 @@ namespace LaserGRBL.UserControls
 		private class ComboBoxEnumItem
 		{
 			private Enum mValue;
-
-			public ComboBoxEnumItem(Enum value)
-			{ mValue = value; }
+			private bool mTrim;
+			public ComboBoxEnumItem(Enum value, bool trimparentesi)
+			{
+				mValue = value;
+				mTrim = trimparentesi;
+			}
 
 			public Enum Value
 			{ get { return mValue; } }
 
 			public override string ToString()
-			{ return GrblCore.TranslateEnum(mValue); }
+			{ 
+				string s = GrblCore.TranslateEnum(mValue);
+
+				if (mTrim)
+				{
+					int idx = s.IndexOf('(');
+					if (idx > 0)
+					{
+						s = s.Substring(0, idx);
+					}
+				}
+
+				return s;
+			}
 
 			public override bool Equals(object obj)
 			{

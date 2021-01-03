@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxAutoUpdateFailed" xml:space="preserve">
     <value>Mise à jour automatique échouée!
@@ -164,16 +164,16 @@ Téléchargez manuellement la nouvelle version à partir du site Lasergrbl.</val
     <value>Retirer le boutton</value>
   </data>
   <data name="DirectionDiagonal" xml:space="preserve">
-    <value>Diagonal</value>
+    <value>Diagonal (old)</value>
   </data>
   <data name="DirectionHorizontal" xml:space="preserve">
-    <value>Horizontal</value>
+    <value>Horizontal (old)</value>
   </data>
   <data name="DirectionNone" xml:space="preserve">
     <value>Non</value>
   </data>
   <data name="DirectionVertical" xml:space="preserve">
-    <value>Vertical</value>
+    <value>Vertical (old)</value>
   </data>
   <data name="FormulaCustom" xml:space="preserve">
     <value>Personalisé</value>

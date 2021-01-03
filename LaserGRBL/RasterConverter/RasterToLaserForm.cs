@@ -19,7 +19,7 @@ namespace LaserGRBL.RasterConverter
 		ImageProcessor IP;
 		bool preventClose;
 		bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
-	
+
 		private RasterToLaserForm(GrblCore core, string filename, bool append)
 		{
 			InitializeComponent();
@@ -56,17 +56,22 @@ namespace LaserGRBL.RasterConverter
 				CbMode.AddItem(formula);
 			CbMode.SelectedIndex = 0;
 			CbMode.ResumeLayout();
-			CbDirections.SuspendLayout();
 
+			CbDirections.SuspendLayout();
 			foreach (ImageProcessor.Direction direction in Enum.GetValues(typeof(ImageProcessor.Direction)))
-				if (direction != ImageProcessor.Direction.None)
-					CbDirections.AddItem(direction);
+				if (GrblFile.RasterFilling(direction))
+					CbDirections.AddItem(direction, true);
 			CbDirections.SelectedIndex = 0;
 			CbDirections.ResumeLayout();
 
 			CbFillingDirection.SuspendLayout();
+			CbFillingDirection.AddItem(ImageProcessor.Direction.None);
 			foreach (ImageProcessor.Direction direction in Enum.GetValues(typeof(ImageProcessor.Direction)))
-				CbFillingDirection.AddItem(direction);
+				if (GrblFile.VectorFilling(direction))
+					CbFillingDirection.AddItem(direction);
+			foreach (ImageProcessor.Direction direction in Enum.GetValues(typeof(ImageProcessor.Direction)))
+				if (GrblFile.RasterFilling(direction))
+					CbFillingDirection.AddItem(direction);
 			CbFillingDirection.SelectedIndex = 0;
 			CbFillingDirection.ResumeLayout();
 
@@ -89,7 +94,7 @@ namespace LaserGRBL.RasterConverter
 		void OnPreviewBegin()
 		{
 			preventClose = true;
-				
+
 			if (InvokeRequired)
 			{
 				Invoke(new ImageProcessor.PreviewBeginDlg(OnPreviewBegin));
@@ -97,7 +102,7 @@ namespace LaserGRBL.RasterConverter
 			else
 			{
 				WT.Enabled = true;
-				BtnCreate.Enabled = false;				
+				BtnCreate.Enabled = false;
 			}
 		}
 		void OnPreviewReady(Image img)
@@ -159,14 +164,14 @@ namespace LaserGRBL.RasterConverter
 				Close();
 			}
 		}
-		
+
 		void WTTick(object sender, EventArgs e)
 		{
 			WT.Enabled = false;
 			WB.Visible = true;
 			WB.Running = true;
 		}
-		
+
 		internal static void CreateAndShowDialog(GrblCore core, string filename, Form parent, bool append)
 		{
 			using (RasterToLaserForm f = new RasterToLaserForm(core, filename, append))
@@ -195,9 +200,9 @@ namespace LaserGRBL.RasterConverter
 					WB.Visible = true;
 					WB.Running = true;
 					ResumeLayout();
-			
+
 					StoreSettings();
-		
+
 					ImageProcessor targetProcessor = IP.Clone() as ImageProcessor;
 					IP.GenerateGCode();
 
@@ -216,7 +221,7 @@ namespace LaserGRBL.RasterConverter
 		private void StoreSettings()
 		{
 			Settings.SetObject("GrayScaleConversion.RasterConversionTool", RbLineToLineTracing.Checked ? ImageProcessor.Tool.Line2Line : RbDithering.Checked ? ImageProcessor.Tool.Dithering : RbCenterline.Checked ? ImageProcessor.Tool.Centerline : ImageProcessor.Tool.Vectorize);
-			
+
 			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Direction", (ImageProcessor.Direction)CbDirections.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Quality", UDQuality.Value);
 			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Preview", CbLinePreview.Checked);
@@ -230,8 +235,8 @@ namespace LaserGRBL.RasterConverter
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Optimize.Value", UDOptimize.Value);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.DownSample.Enabled", CbDownSample.Checked);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.DownSample.Value", UDDownSample.Value);
-//			Settings.SetObject("GrayScaleConversion.VectorizeOptions.ShowDots.Enabled", CbShowDots.Checked);
-//			Settings.SetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", CbShowImage.Checked);
+			//			Settings.SetObject("GrayScaleConversion.VectorizeOptions.ShowDots.Enabled", CbShowDots.Checked);
+			//			Settings.SetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", CbShowImage.Checked);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", (ImageProcessor.Direction)CbFillingDirection.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", UDFillingQuality.Value);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.OptimizeFast.Enabled", CbOptimizeFast.Checked);
@@ -326,10 +331,10 @@ namespace LaserGRBL.RasterConverter
 		}
 
 		void OnRGBCBDoubleClick(object sender, EventArgs e)
-		{((UserControls.ColorSlider)sender).Value = 100;}
+		{ ((UserControls.ColorSlider)sender).Value = 100; }
 
 		void OnThresholdDoubleClick(object sender, EventArgs e)
-		{((UserControls.ColorSlider)sender).Value = 50;}
+		{ ((UserControls.ColorSlider)sender).Value = 50; }
 
 		private void CbMode_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -345,7 +350,7 @@ namespace LaserGRBL.RasterConverter
 		}
 
 		private void TBRed_ValueChanged(object sender, EventArgs e)
-		{if (IP != null) IP.Red = TBRed.Value; }
+		{ if (IP != null) IP.Red = TBRed.Value; }
 
 		private void TBGreen_ValueChanged(object sender, EventArgs e)
 		{ if (IP != null) IP.Green = TBGreen.Value; }
@@ -371,11 +376,11 @@ namespace LaserGRBL.RasterConverter
 		private void RefreshVE()
 		{
 			GbVectorizeOptions.Visible = RbVectorize.Checked;
-            GbCenterlineOptions.Visible = RbCenterline.Checked;
-            GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
+			GbCenterlineOptions.Visible = RbCenterline.Checked;
+			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
 			GbLineToLineOptions.Text = RbLineToLineTracing.Checked ? "Line To Line Options" : "Dithering Options";
 
-            CbThreshold.Visible = !RbDithering.Checked;
+			CbThreshold.Visible = !RbDithering.Checked;
 			TbThreshold.Visible = !RbDithering.Checked && CbThreshold.Checked;
 
 			LblDitherMode.Visible = CbDither.Visible = RbDithering.Checked;
@@ -394,17 +399,17 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-        private void RbCenterline_CheckedChanged(object sender, EventArgs e)
-        {
-            if (IP != null)
-            {
-                if (RbCenterline.Checked)
-                    IP.SelectedTool = ImageProcessor.Tool.Centerline;
-                RefreshVE();
-            }
-        }
+		private void RbCenterline_CheckedChanged(object sender, EventArgs e)
+		{
+			if (IP != null)
+			{
+				if (RbCenterline.Checked)
+					IP.SelectedTool = ImageProcessor.Tool.Centerline;
+				RefreshVE();
+			}
+		}
 
-        private void RbVectorize_CheckedChanged(object sender, EventArgs e)
+		private void RbVectorize_CheckedChanged(object sender, EventArgs e)
 		{
 			if (IP != null)
 			{
@@ -415,7 +420,7 @@ namespace LaserGRBL.RasterConverter
 		}
 
 		private void UDQuality_ValueChanged(object sender, EventArgs e)
-		{ if (IP != null)  IP.Quality = UDQuality.Value;  }
+		{ if (IP != null) IP.Quality = UDQuality.Value; }
 
 		private void CbLinePreview_CheckedChanged(object sender, EventArgs e)
 		{ if (IP != null) IP.LinePreview = CbLinePreview.Checked; }
@@ -450,7 +455,7 @@ namespace LaserGRBL.RasterConverter
 
 		private void RasterToLaserForm_Load(object sender, EventArgs e)
 		{ if (IP != null) IP.Resume(); }
-		
+
 		void RasterToLaserFormFormClosing(object sender, FormClosingEventArgs e)
 		{
 			if (preventClose)
@@ -467,7 +472,7 @@ namespace LaserGRBL.RasterConverter
 		}
 
 		void CbDirectionsSelectedIndexChanged(object sender, EventArgs e)
-		{ if (IP != null)IP.LineDirection = (ImageProcessor.Direction)CbDirections.SelectedItem; }
+		{ if (IP != null) IP.LineDirection = (ImageProcessor.Direction)CbDirections.SelectedItem; }
 
 		void CbResizeSelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -509,7 +514,7 @@ namespace LaserGRBL.RasterConverter
 				//PbOriginal.Image = IP.Original;
 			}
 		}
-		
+
 		void BtnRevertClick(object sender, EventArgs e)
 		{
 			if (IP != null)
@@ -533,17 +538,17 @@ namespace LaserGRBL.RasterConverter
 			if (IP != null)
 				IP.FillingQuality = UDFillingQuality.Value;
 		}
-		
-		
+
+
 		bool isDrag = false;
 		Rectangle imageRectangle;
-  		Rectangle theRectangle = new Rectangle(new Point(0, 0), new Size(0, 0));
+		Rectangle theRectangle = new Rectangle(new Point(0, 0), new Size(0, 0));
 		Point sP;
 		Point eP;
-	  	
+
 		void PbConvertedMouseDown(object sender, MouseEventArgs e)
 		{
-			if (e.Button==MouseButtons.Left && Cropping)
+			if (e.Button == MouseButtons.Left && Cropping)
 			{
 				int left = (PbConverted.Width - PbConverted.Image.Width) / 2;
 				int top = (PbConverted.Height - PbConverted.Image.Height) / 2;
@@ -551,7 +556,7 @@ namespace LaserGRBL.RasterConverter
 				int bottom = PbConverted.Height - top;
 
 				imageRectangle = new Rectangle(left, top, PbConverted.Image.Width, PbConverted.Image.Height);
-				
+
 				if ((e.X >= left && e.Y >= top) && (e.X <= right && e.Y <= bottom))
 				{
 					isDrag = true;
@@ -559,7 +564,7 @@ namespace LaserGRBL.RasterConverter
 					eP = e.Location;
 				}
 			}
-	
+
 		}
 		void PbConvertedMouseMove(object sender, MouseEventArgs e)
 		{
@@ -569,7 +574,7 @@ namespace LaserGRBL.RasterConverter
 				ControlPaint.DrawReversibleFrame(theRectangle, this.BackColor, FrameStyle.Dashed);
 
 				eP = e.Location;
-				
+
 				//limit eP to image rectangle
 				int left = (PbConverted.Width - PbConverted.Image.Width) / 2;
 				int top = (PbConverted.Height - PbConverted.Image.Height) / 2;
@@ -577,39 +582,39 @@ namespace LaserGRBL.RasterConverter
 				int bottom = PbConverted.Height - top;
 				eP.X = Math.Min(Math.Max(eP.X, left), right);
 				eP.Y = Math.Min(Math.Max(eP.Y, top), bottom);
-				
-				theRectangle = new Rectangle(PbConverted.PointToScreen(sP), new Size(eP.X-sP.X, eP.Y-sP.Y));
-		
+
+				theRectangle = new Rectangle(PbConverted.PointToScreen(sP), new Size(eP.X - sP.X, eP.Y - sP.Y));
+
 				// Draw the new rectangle by calling DrawReversibleFrame
 				ControlPaint.DrawReversibleFrame(theRectangle, this.BackColor, FrameStyle.Dashed);
 			}
 		}
-		
+
 		void PbConvertedMouseUp(object sender, MouseEventArgs e)
 		{
 			// If the MouseUp event occurs, the user is not dragging.
 			if (isDrag)
 			{
 				isDrag = false;
-				
+
 				//erase old rectangle
 				ControlPaint.DrawReversibleFrame(theRectangle, this.BackColor, FrameStyle.Dashed);
-				
+
 
 				int left = (PbConverted.Width - PbConverted.Image.Width) / 2;
 				int top = (PbConverted.Height - PbConverted.Image.Height) / 2;
-				
+
 				Rectangle CropRect = new Rectangle(Math.Min(sP.X, eP.X) - left,
-			                                         Math.Min(sP.Y, eP.Y) - top,
-			                                         Math.Abs(eP.X-sP.X),
-			                                         Math.Abs(eP.Y-sP.Y));
-				
+													 Math.Min(sP.Y, eP.Y) - top,
+													 Math.Abs(eP.X - sP.X),
+													 Math.Abs(eP.Y - sP.Y));
+
 				//Rectangle CropRect = new Rectangle(p.X-left, p.Y-top, orientedRect.Width, orientedRect.Height);
-				
+
 				IP.CropImage(CropRect, PbConverted.Image.Size);
-				
+
 				//PbOriginal.Image = IP.Original;
-				
+
 				// Reset the rectangle.
 				theRectangle = new Rectangle(0, 0, 0, 0);
 				Cropping = false;
@@ -617,14 +622,14 @@ namespace LaserGRBL.RasterConverter
 				UpdateCropping();
 			}
 		}
-		
+
 		bool Cropping;
 		void BtnCropClick(object sender, EventArgs e)
 		{
 			Cropping = !Cropping;
 			UpdateCropping();
 		}
-		
+
 		void UpdateCropping()
 		{
 			if (Cropping)
@@ -717,7 +722,7 @@ namespace LaserGRBL.RasterConverter
 
 		private void CbCornerThreshold_CheckedChanged(object sender, EventArgs e)
 		{
-			if (IP != null) IP.UseCornerThreshold= CbCornerThreshold.Checked;
+			if (IP != null) IP.UseCornerThreshold = CbCornerThreshold.Checked;
 			TBCornerThreshold.Enabled = CbCornerThreshold.Checked;
 		}
 
@@ -737,7 +742,7 @@ namespace LaserGRBL.RasterConverter
 		{ if (IP != null) IP.UseAdaptiveQuality = CbAdaptiveQuality.Checked; }
 
 		private void BtnAdaptiveQualityInfo_Click(object sender, EventArgs e)
-		{ Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/raster-image-import/vectorization-tool/#adaptive-quality");}
+		{ Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/raster-image-import/vectorization-tool/#adaptive-quality"); }
 
 		private void BtnAutoTrim_Click(object sender, EventArgs e)
 		{

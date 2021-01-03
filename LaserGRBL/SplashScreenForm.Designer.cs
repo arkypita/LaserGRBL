@@ -48,7 +48,7 @@
 			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
 			this.pictureBox1.Location = new System.Drawing.Point(0, 0);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(429, 195);
+			this.pictureBox1.Size = new System.Drawing.Size(413, 227);
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
@@ -58,7 +58,7 @@
 			// 
 			this.LblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.LblVersion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.LblVersion.Location = new System.Drawing.Point(320, 178);
+			this.LblVersion.Location = new System.Drawing.Point(304, 210);
 			this.LblVersion.Name = "LblVersion";
 			this.LblVersion.Size = new System.Drawing.Size(108, 16);
 			this.LblVersion.TabIndex = 1;
@@ -71,7 +71,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.ClientSize = new System.Drawing.Size(429, 195);
+			this.ClientSize = new System.Drawing.Size(413, 227);
 			this.Controls.Add(this.LblVersion);
 			this.Controls.Add(this.pictureBox1);
 			this.DoubleBuffered = true;
