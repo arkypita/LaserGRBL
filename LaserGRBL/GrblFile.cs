@@ -353,33 +353,36 @@ namespace LaserGRBL
 			else
 				list.Add(new GrblCommand($"{c.lOff} S{c.maxPower}"));	//laser off and power to maxPower
 
-			List<string> gc = new List<string>();
-
 			//trace raster filling
 			if (rlist != null)
 			{
-				list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
+				List<string> gc = new List<string>();
 				if (supportPWM)
 					gc.AddRange(Potrace.Export2GCode(rlist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd));
 				else
 					gc.AddRange(Potrace.Export2GCode(rlist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd));
+
+				list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
+				foreach (string code in gc)
+					list.Add(new GrblCommand(code));
 			}
 
+
 			//trace borders
+			if (plist != null)
+			{
+				List<string> gc = new List<string>();
+				if (supportPWM)
+					gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd));
+				else
+					gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd));
 
-			//set speed to borderspeed
-			// For marlin, need to specify G1 each time :
-			//list.Add(new GrblCommand(String.Format("G1 F{0}", c.borderSpeed)));
-			list.Add(new GrblCommand(String.Format("F{0}", c.borderSpeed)));
-
-			if (supportPWM)
-				gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd));
-			else
-				gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd));
-
-			foreach (string code in gc)
-				list.Add(new GrblCommand(code));
-			
+				// For marlin, need to specify G1 each time :
+				//list.Add(new GrblCommand(String.Format("G1 F{0}", c.borderSpeed)));
+				list.Add(new GrblCommand(String.Format("F{0}", c.borderSpeed)));
+				foreach (string code in gc)
+					list.Add(new GrblCommand(code));
+			}
 
 			//if (supportPWM)
 			//	gc = Potrace.Export2GCode(flist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd);
