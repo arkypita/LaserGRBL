@@ -77,29 +77,29 @@ namespace CsPotrace
 			bool empty = false;
 			List<List<Curve>> flist = new List<List<Curve>>();
 
-			while (!empty)
+			ClipperOffset c = new ClipperOffset();
+			foreach (List<Curve> LC in plist)
 			{
-				ClipperOffset c = new ClipperOffset();
-				foreach (List<Curve> LC in plist)
+				GraphicsPath Current = new GraphicsPath();
+				for (int j = 0; j < LC.Count; j++)
 				{
-					GraphicsPath Current = new GraphicsPath();
-					for (int j = 0; j < LC.Count; j++)
+					Curve C = LC[j];
+					if (C.Kind == CurveKind.Line)
 					{
-						Curve C = LC[j];
-						if (C.Kind == CurveKind.Line)
-						{
-							Current.AddLine(new PointF((float)C.A.X, (float)C.A.Y), new PointF((float)C.B.X, (float)C.B.Y));
-						}
-						else
-						{
-							PointF A = new PointF((float)C.A.X, (float)C.A.Y);
-							Current.AddBezier(new PointF((float)C.A.X, (float)C.A.Y), new PointF((float)C.ControlPointA.X, (float)C.ControlPointA.Y), new PointF((float)C.ControlPointB.X, (float)C.ControlPointB.Y), new PointF((float)C.B.X, (float)C.B.Y));
-						}
+						Current.AddLine(new PointF((float)C.A.X, (float)C.A.Y), new PointF((float)C.B.X, (float)C.B.Y));
 					}
-
-					AddClip(c, Current);
+					else
+					{
+						PointF A = new PointF((float)C.A.X, (float)C.A.Y);
+						Current.AddBezier(new PointF((float)C.A.X, (float)C.A.Y), new PointF((float)C.ControlPointA.X, (float)C.ControlPointA.Y), new PointF((float)C.ControlPointB.X, (float)C.ControlPointB.Y), new PointF((float)C.B.X, (float)C.B.Y));
+					}
 				}
 
+				AddClip(c, Current);
+			}
+
+			while (!empty)
+			{
 				long t1 = Tools.HiResTimer.TotalMilliseconds;
 				List<List<IntPoint>> solution = new List<List<IntPoint>>();
 				c.Execute(ref solution, -spacing * loop * resolution);
@@ -203,7 +203,7 @@ namespace CsPotrace
 						new IntPoint(0, yPres),
 						new IntPoint(wPres, yPres)
 					});
-					
+
 					y += step;
 				}
 			}
@@ -211,7 +211,7 @@ namespace CsPotrace
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewDiagonal || dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewDiagonalGrid)
 			{
 				double i = 0;
-				while (i <= (2*w) + step || i <= (2*h) + step)
+				while (i <= (2 * w) + step || i <= (2 * h) + step)
 				{
 					double iPres = i * resolution;
 					paths.Add(new List<IntPoint>()
@@ -226,14 +226,14 @@ namespace CsPotrace
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewReverseDiagonal || dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewDiagonalGrid)
 			{
 				double i = 0;
-				while (i <= (2*w) + step || i <= (2*h) + step)
+				while (i <= (2 * w) + step || i <= (2 * h) + step)
 				{
 					paths.Add(new List<IntPoint>()
 					{
 						new IntPoint(0, (h - i) * resolution),
 						new IntPoint(i * resolution, h * resolution)
 					});
-					
+
 					i += dstep;
 				}
 			}
@@ -267,7 +267,7 @@ namespace CsPotrace
 
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewDiagonalCross)
 			{
-				
+
 
 				double crosslen = step / 3 * resolution;
 				double x = 0;
