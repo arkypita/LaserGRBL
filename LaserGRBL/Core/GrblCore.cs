@@ -1650,12 +1650,14 @@ namespace LaserGRBL
 		// this feature can work only if $10=3 (status report with buffer size report enabled)
 		private void HandleMissingOK() 
 		{
-			if (BufferIsFull() && HasPendingCommands() && MachineSayBufferFree() && MachineNotMovingOrReply())
+			if (BufferIsFull() && HasPendingCommands() && MachineSayBufferFree() && MachineNotMovingOrReply() && MachineStatus == MacStatus.Run)
 				CreateFakeOK(mPending.Count); //rispondi "ok" a tutti i comandi pending
 		}
 
 		private void CreateFakeOK(int count)
 		{
+			mSentPtr.Add(new GrblMessage("Unlock from buffer stuck!", false));
+
 			ComWrapper.ComLogger.Log("com", $"Handle Missing OK [{count}]");
 			Logger.LogMessage("Issue detector", "Handle Missing OK [{0}]", count);
 
@@ -1663,7 +1665,7 @@ namespace LaserGRBL
 				ManageCommandResponse("ok");
 		}
 
-		private bool MachineNotMovingOrReply() => debugLastMoveOrActivityDelay.ElapsedTime > TimeSpan.FromSeconds(5);
+		private bool MachineNotMovingOrReply() => debugLastMoveOrActivityDelay.ElapsedTime > TimeSpan.FromSeconds(10);
 		private bool MachineSayBufferFree() => mGrblBuffer == BufferSize;
 		private bool HasPendingCommands() => mPending.Count > 0;
 

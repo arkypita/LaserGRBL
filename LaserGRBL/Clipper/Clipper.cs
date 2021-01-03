@@ -1056,11 +1056,6 @@ namespace ClipperLib
 		{
 			bool result = false;
 
-			//Parallel.For(0, ppg.Count, i =>
-			//{
-			//	if (AddPath(ppg[i], polyType, closed)) result = true;
-			//});
-
 			for (int i = 0; i < ppg.Count; ++i)
 				if (AddPath(ppg[i], polyType, closed)) result = true;
 
