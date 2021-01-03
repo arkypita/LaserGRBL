@@ -139,13 +139,17 @@ namespace LaserGRBL
 
 			string XPattern = @"X\d{1,4}[.,]?\d{0,15}";
 			string YPattern = @"Y\d{1,4}[.,]?\d{0,15}";
+			string IPattern = @"I\d{1,4}[.,]?\d{0,15}";
+			string JPattern = @"J\d{1,4}[.,]?\d{0,15}";
 
 			Regex XRegex = new Regex(XPattern, RegexOptions.IgnoreCase);
 			Regex YRegex = new Regex(YPattern, RegexOptions.IgnoreCase);
+			Regex IRegex = new Regex(IPattern, RegexOptions.IgnoreCase);
+			Regex JRegex = new Regex(JPattern, RegexOptions.IgnoreCase);
 
-			for (int i = 0; i < list.Count; i++)
+			for (int c = 0; c < list.Count; c++)
 			{
-				String command = ((GrblCommand)list[i]).ToString();
+				String command = ((GrblCommand)list[c]).ToString();
 				Match match = XRegex.Match(command);
 				if (match.Success)
 				{
@@ -158,7 +162,19 @@ namespace LaserGRBL
 					double y = double.Parse(match.Value.Substring(1), CultureInfo.InvariantCulture);
 					command = YRegex.Replace(command, "Y" + Double2String(y * YRatio));
 				}
-				list[i] = new GrblCommand(command);
+                match = IRegex.Match(command);
+                if (match.Success)
+                {
+                    double i = double.Parse(match.Value.Substring(1), CultureInfo.InvariantCulture);
+                    command = IRegex.Replace(command, "I" + Double2String(i * XRatio));
+                }
+                match = JRegex.Match(command);
+                if (match.Success)
+                {
+                    double j = double.Parse(match.Value.Substring(1), CultureInfo.InvariantCulture);
+                    command = JRegex.Replace(command, "J" + Double2String(j * YRatio));
+                }
+                list[c] = new GrblCommand(command);
 			}
 
 			Analyze();
