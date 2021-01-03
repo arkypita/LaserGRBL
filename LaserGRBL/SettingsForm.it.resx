@@ -462,4 +462,27 @@ E' utile per esempio per affondare l'asse Z ed eseguire tagli più profondi.</va
   <data name="SoundBrowserDialog.Filter" xml:space="preserve">
     <value>File audio Wave|*.wav</value>
   </data>
+  <data name="CbDisableSkip.Text" xml:space="preserve">
+    <value>Disabilita i salti veloci G0</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>Normalmente LaserGRBL usa il comando G0 - movimento rapido - per saltare le parti bianche del tuo lavoro. Questo velocizza il processo ma può generare un posizionamento approssimativo con risultati imperfetti. E' solitamente possibile migliorare il risultato correggendo le impostazioni della velocità e dell'accelerazione massime ($120, 121, 222 e $110, 111, 112) nella configurazione di grbl.
+
+Se disabiliti questa prestazione LaserGRBL utilizzerà G1 (movimento lineare) così come impostato dalla velocità di lavoro, con il risultato che tutto il processo di marcatura verrà eseguito alla stessa velocità. Questo rallenterà il lavoro ma può migliorare drasticamente la qualità del risultato dove altri approci falliscono.</value>
+  </data>
+  <data name="CbDisableBoundWarn.Text" xml:space="preserve">
+    <value>Disabilita l'allarme dimensioni</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>LaserGRBL ti avvisa se stai creando un lavoro più grande del tuo macchinario. Imposta questa opzione se non vuoi che venga fatto questo controllo di sicurezza.</value>
+  </data>
+  <data name="CbClickNJog.Text" xml:space="preserve">
+    <value>Clicca e posiziona</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>Se abiliti questa opzione potrai posizionarti velocemente facendo doppio-click sull'anteprima di disegno.</value>
+  </data>
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+    <value>Utenti Ortur: Il firmware Ortur, fino alla versione 137, ha un bug che impedisce alla macchina di ripartire correttamente dopo la pausa di raffreddamento. Si prega di non attivare "raffreddamento automatico" con le marcatrici Ortur fino a rilascio di un nuovo firmware.</value>
+  </data>
 </root>

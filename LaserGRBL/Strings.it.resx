@@ -326,4 +326,58 @@ Si prega di scaricare manualmente la nuova versione dal sito lasergrbl.com</valu
   <data name="UnsupportedFiletype" xml:space="preserve">
     <value>Il file non è supportato</value>
   </data>
+  <data name="WarnSoftLimitOOB" xml:space="preserve">
+    <value>Hai impostato dimensioni e offset di lavoro più grandi dello spazio di lavoro impostato per la tua marcatrice ({0}mm x {1}mm). Parametri grbl $130 e $131.
+
+Questo può generare errori durante la lavorazione e la collisione con la fine dell'asse di lavoro. Sei sicuro dei valori impostati?</value>
+  </data>
+  <data name="WarnSoftLimitNS" xml:space="preserve">
+    <value>Hai impostato un offset negativo, ma la tua marcatrice è impostata per uno spazio di lavoro positivo. Questo potrebbe generare errori durante la lavorazione. Sei sicuro dei valori impostati?</value>
+  </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>L'opzione linea centrale non è compatibile con il tuo computer.
+E' richiesto un sistema a 64bit.</value>
+  </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>L'opzione Line2Line non è compatibile con la tua marcatrice o con la tua configurazione. E' necessario un laser capace di modulazione di potenza (PWM) e il supporto PWM deve essere attivato in configurazione.</value>
+  </data>
+  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
+    <value>Non posso aprire un file in questo momento.</value>
+  </data>
+  <data name="WarnSoftLimitTitle" xml:space="preserve">
+    <value>Conferma superamento limiti</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>Attenzione</value>
+  </data>
+  <data name="DirectionNewCross" xml:space="preserve">
+    <value>Crocette</value>
+  </data>
+  <data name="DirectionNewDiagonal" xml:space="preserve">
+    <value>Diagonale</value>
+  </data>
+  <data name="DirectionNewDiagonalCross" xml:space="preserve">
+    <value>Crocette diagonali</value>
+  </data>
+  <data name="DirectionNewDiagonalGrid" xml:space="preserve">
+    <value>Griglia diagonale</value>
+  </data>
+  <data name="DirectionNewGrid" xml:space="preserve">
+    <value>Griglia</value>
+  </data>
+  <data name="DirectionNewHorizontal" xml:space="preserve">
+    <value>Orizzontale</value>
+  </data>
+  <data name="DirectionNewInsetFilling" xml:space="preserve">
+    <value>Concentrico</value>
+  </data>
+  <data name="DirectionNewReverseDiagonal" xml:space="preserve">
+    <value>Diagonale invertito</value>
+  </data>
+  <data name="DirectionNewSquares" xml:space="preserve">
+    <value>Quadretti</value>
+  </data>
+  <data name="DirectionNewVertical" xml:space="preserve">
+    <value>Verticale</value>
+  </data>
 </root>
