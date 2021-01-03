@@ -969,6 +969,19 @@ namespace LaserGRBL.RasterConverter
 
 		public void GenerateGCode()
 		{
+			if (mSuspended)
+				return;
+
+			if (Current != null)
+				Current.AbortThread();
+
+			Current = (ImageProcessor)this.Clone();
+			Current.GenerateGCode2();
+		}
+
+		private void GenerateGCode2()
+		{
+			MustExit = new ManualResetEvent(false);
 			TH = new Thread(DoTrueWork);
 			TH.Name = "GCode Generator";
 			TH.Start();

@@ -156,7 +156,8 @@ namespace LaserGRBL.RasterConverter
 			else
 			{
 				Cursor = Cursors.Default;
-				if (ex != null)
+
+				if (ex != null && !(ex is ThreadAbortException))
 					System.Windows.Forms.MessageBox.Show(ex.Message);
 				preventClose = false;
 				WT.Enabled = false;
@@ -199,11 +200,11 @@ namespace LaserGRBL.RasterConverter
 					BtnCreate.Enabled = false;
 					WB.Visible = true;
 					WB.Running = true;
+					TlpLeft.Enabled = false;
 					ResumeLayout();
 
 					StoreSettings();
 
-					ImageProcessor targetProcessor = IP.Clone() as ImageProcessor;
 					IP.GenerateGCode();
 
 					if (IP.SelectedTool == ImageProcessor.Tool.Dithering)
@@ -639,6 +640,7 @@ namespace LaserGRBL.RasterConverter
 		}
 		void BtnCancelClick(object sender, EventArgs e)
 		{
+			IP.Dispose();
 			Close();
 		}
 

@@ -30,7 +30,7 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RasterToLaserForm));
-			this.RightGrid = new System.Windows.Forms.TableLayoutPanel();
+			this.TlpMain = new System.Windows.Forms.TableLayoutPanel();
 			this.TCOriginalPreview = new System.Windows.Forms.TabControl();
 			this.TpPreview = new System.Windows.Forms.TabPage();
 			this.WB = new LaserGRBL.UserControls.WaitingProgressBar();
@@ -46,7 +46,7 @@
 			this.BtnCrop = new LaserGRBL.UserControls.ImageButton();
 			this.BtnReverse = new LaserGRBL.UserControls.ImageButton();
 			this.BtnAutoTrim = new LaserGRBL.UserControls.ImageButton();
-			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+			this.TlpLeft = new System.Windows.Forms.TableLayoutPanel();
 			this.GbCenterlineOptions = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.label6 = new System.Windows.Forms.Label();
@@ -122,14 +122,14 @@
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.WT = new System.Windows.Forms.Timer(this.components);
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
-			this.RightGrid.SuspendLayout();
+			this.TlpMain.SuspendLayout();
 			this.TCOriginalPreview.SuspendLayout();
 			this.TpPreview.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PbConverted)).BeginInit();
 			this.TpOriginal.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).BeginInit();
 			this.FlipControl.SuspendLayout();
-			this.tableLayoutPanel8.SuspendLayout();
+			this.TlpLeft.SuspendLayout();
 			this.GbCenterlineOptions.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
 			this.GbVectorizeOptions.SuspendLayout();
@@ -149,18 +149,18 @@
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// RightGrid
+			// TlpMain
 			// 
-			resources.ApplyResources(this.RightGrid, "RightGrid");
-			this.RightGrid.Controls.Add(this.TCOriginalPreview, 1, 0);
-			this.RightGrid.Controls.Add(this.FlipControl, 1, 1);
-			this.RightGrid.Controls.Add(this.tableLayoutPanel8, 0, 0);
-			this.RightGrid.Controls.Add(this.tableLayoutPanel1, 3, 1);
-			this.RightGrid.Name = "RightGrid";
+			resources.ApplyResources(this.TlpMain, "TlpMain");
+			this.TlpMain.Controls.Add(this.TCOriginalPreview, 1, 0);
+			this.TlpMain.Controls.Add(this.FlipControl, 1, 1);
+			this.TlpMain.Controls.Add(this.TlpLeft, 0, 0);
+			this.TlpMain.Controls.Add(this.tableLayoutPanel1, 3, 1);
+			this.TlpMain.Name = "TlpMain";
 			// 
 			// TCOriginalPreview
 			// 
-			this.RightGrid.SetColumnSpan(this.TCOriginalPreview, 3);
+			this.TlpMain.SetColumnSpan(this.TCOriginalPreview, 3);
 			this.TCOriginalPreview.Controls.Add(this.TpPreview);
 			this.TCOriginalPreview.Controls.Add(this.TpOriginal);
 			resources.ApplyResources(this.TCOriginalPreview, "TCOriginalPreview");
@@ -346,16 +346,16 @@
 			this.BtnAutoTrim.UseAltImage = false;
 			this.BtnAutoTrim.Click += new System.EventHandler(this.BtnAutoTrim_Click);
 			// 
-			// tableLayoutPanel8
+			// TlpLeft
 			// 
-			resources.ApplyResources(this.tableLayoutPanel8, "tableLayoutPanel8");
-			this.tableLayoutPanel8.Controls.Add(this.GbCenterlineOptions, 0, 2);
-			this.tableLayoutPanel8.Controls.Add(this.GbVectorizeOptions, 0, 4);
-			this.tableLayoutPanel8.Controls.Add(this.GbParameters, 0, 0);
-			this.tableLayoutPanel8.Controls.Add(this.GbLineToLineOptions, 0, 3);
-			this.tableLayoutPanel8.Controls.Add(this.GbConversionTool, 0, 1);
-			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-			this.RightGrid.SetRowSpan(this.tableLayoutPanel8, 2);
+			resources.ApplyResources(this.TlpLeft, "TlpLeft");
+			this.TlpLeft.Controls.Add(this.GbCenterlineOptions, 0, 2);
+			this.TlpLeft.Controls.Add(this.GbVectorizeOptions, 0, 4);
+			this.TlpLeft.Controls.Add(this.GbParameters, 0, 0);
+			this.TlpLeft.Controls.Add(this.GbLineToLineOptions, 0, 3);
+			this.TlpLeft.Controls.Add(this.GbConversionTool, 0, 1);
+			this.TlpLeft.Name = "TlpLeft";
+			this.TlpMain.SetRowSpan(this.TlpLeft, 2);
 			// 
 			// GbCenterlineOptions
 			// 
@@ -1140,22 +1140,22 @@
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.RightGrid);
+			this.Controls.Add(this.TlpMain);
 			this.MinimizeBox = false;
 			this.Name = "RasterToLaserForm";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RasterToLaserFormFormClosing);
 			this.Load += new System.EventHandler(this.RasterToLaserForm_Load);
-			this.RightGrid.ResumeLayout(false);
-			this.RightGrid.PerformLayout();
+			this.TlpMain.ResumeLayout(false);
+			this.TlpMain.PerformLayout();
 			this.TCOriginalPreview.ResumeLayout(false);
 			this.TpPreview.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.PbConverted)).EndInit();
 			this.TpOriginal.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).EndInit();
 			this.FlipControl.ResumeLayout(false);
-			this.tableLayoutPanel8.ResumeLayout(false);
-			this.tableLayoutPanel8.PerformLayout();
+			this.TlpLeft.ResumeLayout(false);
+			this.TlpLeft.PerformLayout();
 			this.GbCenterlineOptions.ResumeLayout(false);
 			this.GbCenterlineOptions.PerformLayout();
 			this.tableLayoutPanel3.ResumeLayout(false);
@@ -1189,7 +1189,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.TableLayoutPanel RightGrid;
+		private System.Windows.Forms.TableLayoutPanel TlpMain;
 		private System.Windows.Forms.TabControl TCOriginalPreview;
 		private System.Windows.Forms.TabPage TpPreview;
 		private System.Windows.Forms.PictureBox PbConverted;
@@ -1232,7 +1232,7 @@
 		private System.Windows.Forms.CheckBox CbSpotRemoval;
 		private System.Windows.Forms.CheckBox CbSmoothing;
 		private System.Windows.Forms.CheckBox CbOptimize;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+		private System.Windows.Forms.TableLayoutPanel TlpLeft;
 		private System.Windows.Forms.Label label27;
 		private UserControls.EnumComboBox CbDirections;
 		private System.Windows.Forms.Label label8;
