@@ -765,71 +765,108 @@ namespace LaserGRBL
 		}
 
 		private List<List<Curve>> OptimizePaths(List<List<Curve>> list)
-        {
+		{
 			if (list.Count == 1)
 				return list;
 
-            //Order all paths in list to reduce travel distance
-            //Calculate and store all distances in a matrix
-            var distances = new double[list.Count, list.Count];
-            for (int p1 = 0; p1 < list.Count; p1++)
-            {
-                for (int p2 = 0; p2 < list.Count; p2++)
-                {
-                    var dx = list[p1][0].A.X - list[p2][0].A.X;
-                    var dy = list[p1][0].A.Y - list[p2][0].A.Y;
-                    if (p1 != p2)
-                        distances[p1, p2] = Math.Sqrt((dx * dx) + (dy * dy));
-                    else
-                        distances[p1, p2] = double.MaxValue;
-                }
-            }
+			//Order all paths in list to reduce travel distance
+			//Calculate and store all distances in a matrix
+			var distancesA = new double[list.Count, list.Count];
+			var distancesB = new double[list.Count, list.Count];
+			for (int p1 = 0; p1 < list.Count; p1++)
+			{
+				for (int p2 = 0; p2 < list.Count; p2++)
+				{
+					var dxA = list[p1][0].B.X - list[p2][0].A.X;
+					var dyA = list[p1][0].B.Y - list[p2][0].A.Y;
 
-            List<List<CsPotrace.Curve>> best = new List<List<Curve>>();
-            var bestTotDistance = double.MaxValue;
+					var dxB = list[p1][0].B.X - list[p2][0].B.X;
+					var dyB = list[p1][0].B.Y - list[p2][0].B.Y;
 
-            //Create a list of unvisited places
-            List<int> unvisited = Enumerable.Range(0, list.Count).ToList();
+					if (p1 != p2)
+					{
+						distancesA[p1, p2] = (dxA * dxA) + (dyA * dyA);
+						distancesB[p1, p2] = (dxB * dxB) + (dyB * dyB);
+					}
+					else
+					{
+						distancesA[p1, p2] = double.MaxValue;
+						distancesB[p1, p2] = double.MaxValue;
+					}
+				}
+			}
 
-            //Pick nearest points
-            List<List<CsPotrace.Curve>> nearest = new List<List<Curve>>();
+			List<List<CsPotrace.Curve>> best = new List<List<Curve>>();
+			var bestTotDistance = double.MaxValue;
 
-            //Save starting point index
-            var lastIndex = 0;
-            var totDistance = 0.0;
-            while (unvisited.Count > 0)
-            {
-                var bestIndex = 0;
-                var bestDistance = double.MaxValue;
-                foreach (var nextIndex in unvisited)
-                {
-                    var dist = distances[nextIndex, lastIndex];
-                    if (dist < bestDistance)
-                    {
-                        bestIndex = nextIndex;
-                        bestDistance = dist;
-                    }
-                }
+			//Create a list of unvisited places
+			List<int> unvisited = Enumerable.Range(0, list.Count).ToList();
 
-                //Save nearest point
-                lastIndex = bestIndex;
-                nearest.Add(list[lastIndex]);
-                unvisited.Remove(lastIndex);
-                totDistance += bestDistance;
-            }
+			//Pick nearest points
+			List<List<CsPotrace.Curve>> nearest = new List<List<Curve>>();
 
-            //Count traveled distance
-            if (totDistance < bestTotDistance)
-            {
-                bestTotDistance = totDistance;
-                //Save best list
-                best = nearest;
-            }
-            
-            return best;
-        }
+			//Save starting point index
+			var lastIndex = 0;
+			var totDistance = 0.0;
+			while (unvisited.Count > 0)
+			{
+				var bestIndex = 0;
+				var bestDistance = double.MaxValue;
+				var reverseAB = false;
+				foreach (var nextIndex in unvisited)
+				{
+					var distA = distancesA[nextIndex, lastIndex];
+					var distB = distancesB[nextIndex, lastIndex];
+					if (distA < bestDistance)
+					{
+						bestIndex = nextIndex;
+						bestDistance = distA;
+						reverseAB = false;
+					}
+					if (distB < bestDistance)
+					{
+						bestIndex = nextIndex;
+						bestDistance = distB;
+						reverseAB = true;
+					}
 
-        private int GetColor(Bitmap I, int X, int Y, int min, int max, bool pwm)
+				}
+
+				//Save nearest point
+				lastIndex = bestIndex;
+				if (reverseAB)
+				{
+					var curve = list[lastIndex];
+					for (int i = 0; i < curve.Count; i++)
+					{
+						var A = curve[i].A;
+						var B = curve[i].B;
+						var cpA = curve[i].ControlPointA;
+						var cpB = curve[i].ControlPointB;
+						curve[i] = new Curve(curve[i].Kind, B, A, cpB, cpA);
+					}
+					nearest.Add(curve);
+				}
+				else
+				{
+					nearest.Add(list[lastIndex]);
+				}
+				unvisited.Remove(lastIndex);
+				totDistance += bestDistance;
+			}
+
+			//Count traveled distance
+			if (totDistance < bestTotDistance)
+			{
+				bestTotDistance = totDistance;
+				//Save best list
+				best = nearest;
+			}
+
+			return best;
+		}
+
+		private int GetColor(Bitmap I, int X, int Y, int min, int max, bool pwm)
 		{
 			Color C = I.GetPixel(X, Y);
 			int rv = (255 - C.R) * C.A / 255;
