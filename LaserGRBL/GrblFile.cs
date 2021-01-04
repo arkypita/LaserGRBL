@@ -301,17 +301,17 @@ namespace LaserGRBL
 			Potrace.curveoptimizing = UseOptimize; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
 
 			List<List<Curve>> plist = Potrace.PotraceTrace(bmp);
-			List<List<Curve>> rlist = null;
+			List<List<Curve>> flist = null;
 
 			if (VectorFilling(c.dir))
 			{
 				long t1 = Tools.HiResTimer.TotalMilliseconds;
-				List<List<Curve>> filling = PotraceClipper.BuildFilling(plist, c.res / c.fres, bmp.Width, bmp.Height, c.dir);
+				flist = PotraceClipper.BuildFilling(plist, c.res / c.fres, bmp.Width, bmp.Height, c.dir);
 				long t2 = Tools.HiResTimer.TotalMilliseconds;
 
 				System.Diagnostics.Debug.WriteLine($"BuildFilling = {t2 - t1}ms");
 
-				rlist = ParallelOptimizePaths(filling);
+				flist = OptimizePaths(flist);
 				long t3 = Tools.HiResTimer.TotalMilliseconds;
 
 				System.Diagnostics.Debug.WriteLine($"OptimizeFilling = {t3 - t2}ms");
@@ -348,10 +348,6 @@ namespace LaserGRBL
 				}
 			}
 
-            //Optimize fast movement
-            if(useOptimizeFast)
-                plist = OptimizePaths(plist);
-
 			bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
 			
@@ -361,13 +357,13 @@ namespace LaserGRBL
 				list.Add(new GrblCommand($"{c.lOff} S{c.maxPower}"));	//laser off and power to maxPower
 
 			//trace raster filling
-			if (rlist != null)
+			if (flist != null)
 			{
 				List<string> gc = new List<string>();
 				if (supportPWM)
-					gc.AddRange(Potrace.Export2GCode(rlist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd));
+					gc.AddRange(Potrace.Export2GCode(flist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd));
 				else
-					gc.AddRange(Potrace.Export2GCode(rlist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd));
+					gc.AddRange(Potrace.Export2GCode(flist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd));
 
 				list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
 				foreach (string code in gc)
@@ -376,8 +372,12 @@ namespace LaserGRBL
 
 
 			//trace borders
-			if (plist != null)
+			if (plist != null) //always true
 			{
+				//Optimize fast movement
+				if (useOptimizeFast)
+					plist = OptimizePaths(plist);
+
 				List<string> gc = new List<string>();
 				if (supportPWM)
 					gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd));

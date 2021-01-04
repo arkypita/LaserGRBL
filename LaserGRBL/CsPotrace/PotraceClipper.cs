@@ -22,26 +22,7 @@ namespace CsPotrace
 			Clipper c = new Clipper();
 
 			AddGridSubject(c, spacing, w, h, dir);
-
-			foreach (List<Curve> LC in plist)
-			{
-				GraphicsPath Current = new GraphicsPath();
-				for (int j = 0; j < LC.Count; j++)
-				{
-					Curve C = LC[j];
-					if (C.Kind == CurveKind.Line)
-					{
-						Current.AddLine(new PointF((float)C.A.X, (float)C.A.Y), new PointF((float)C.B.X, (float)C.B.Y));
-					}
-					else
-					{
-						PointF A = new PointF((float)C.A.X, (float)C.A.Y);
-						Current.AddBezier(new PointF((float)C.A.X, (float)C.A.Y), new PointF((float)C.ControlPointA.X, (float)C.ControlPointA.Y), new PointF((float)C.ControlPointB.X, (float)C.ControlPointB.Y), new PointF((float)C.B.X, (float)C.B.Y));
-					}
-				}
-
-				AddClip(c, Current);
-			}
+			AddGridClip(plist, c);
 
 			long t1 = Tools.HiResTimer.TotalMilliseconds;
 			PolyTree solution = new PolyTree();
@@ -69,6 +50,29 @@ namespace CsPotrace
 
 
 			return flist;
+		}
+
+		private static void AddGridClip(List<List<Curve>> plist, Clipper c)
+		{
+			foreach (List<Curve> LC in plist)
+			{
+				GraphicsPath Current = new GraphicsPath();
+				for (int j = 0; j < LC.Count; j++)
+				{
+					Curve C = LC[j];
+					if (C.Kind == CurveKind.Line)
+					{
+						Current.AddLine(new PointF((float)C.A.X, (float)C.A.Y), new PointF((float)C.B.X, (float)C.B.Y));
+					}
+					else
+					{
+						PointF A = new PointF((float)C.A.X, (float)C.A.Y);
+						Current.AddBezier(new PointF((float)C.A.X, (float)C.A.Y), new PointF((float)C.ControlPointA.X, (float)C.ControlPointA.Y), new PointF((float)C.ControlPointB.X, (float)C.ControlPointB.Y), new PointF((float)C.B.X, (float)C.B.Y));
+					}
+				}
+
+				AddClip(c, Current);
+			}
 		}
 
 		private static List<List<Curve>> BuildInsetFilling(List<List<Curve>> plist, double spacing)
@@ -170,132 +174,69 @@ namespace CsPotrace
 
 		static void AddGridSubject(Clipper c, double step, double w, double h, LaserGRBL.RasterConverter.ImageProcessor.Direction dir)
 		{
-
 			long t1 = Tools.HiResTimer.TotalMilliseconds;
 
 			double dstep = step * Math.Sqrt(2); //step for diagonal (1.414)
+			double rdstep = step * (1 / Math.Sqrt(2)); //step for diagonal (1.414)
 			List<List<IntPoint>> paths = new List<List<IntPoint>>();
 
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewVertical || dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewGrid)
 			{
-				double x = 0;
-				double hPres = h * resolution;
-				while (x <= w + step)
-				{
-					double xPres = x * resolution;
-					paths.Add(new List<IntPoint>()
-					{
-						new IntPoint(xPres, 0),
-						new IntPoint(xPres, hPres)
-					});
-					x += step;
-				}
+				bool pari = true;
+				for (double x = 0; x < w + step; x+= step, pari = !pari)
+					AddPathPoint(paths, x, 0, x, h, pari);
 			}
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewHorizontal || dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewGrid)
 			{
-				double y = 0;
-				double wPres = w * resolution;
-				while (y <= h + step)
-				{
-					double yPres = y * resolution;
-					paths.Add(new List<IntPoint>()
-					{
-						new IntPoint(0, yPres),
-						new IntPoint(wPres, yPres)
-					});
-
-					y += step;
-				}
+				bool pari = true;
+				for (double y = 0; y < h + step; y += step, pari = !pari)
+					AddPathPoint(paths, 0, y, w, y, pari);
 			}
 
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewDiagonal || dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewDiagonalGrid)
 			{
-				double i = 0;
-				while (i <= (2 * w) + step || i <= (2 * h) + step)
-				{
-					double iPres = i * resolution;
-					paths.Add(new List<IntPoint>()
-					{
-						new IntPoint(0, iPres),
-						new IntPoint(iPres, 0)
-					});
-
-					i += dstep;
-				}
+				bool pari = true;
+				for (double i = 0 ; i < (2 * Math.Max(w, h)) + dstep; i += dstep, pari = !pari)
+					AddPathPoint(paths, 0, i, i, 0, pari);
 			}
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewReverseDiagonal || dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewDiagonalGrid)
 			{
-				double i = 0;
-				while (i <= (2 * w) + step || i <= (2 * h) + step)
-				{
-					paths.Add(new List<IntPoint>()
-					{
-						new IntPoint(0, (h - i) * resolution),
-						new IntPoint(i * resolution, h * resolution)
-					});
-
-					i += dstep;
-				}
+				bool pari = true;
+				for (double i = 0; i < (2 * Math.Max(w, h)) + dstep; i += dstep, pari = !pari)
+					AddPathPoint(paths, 0, (h - i), i, h, pari);
 			}
 
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewCross)
 			{
-				double crosslen = step / 3 * resolution;
-				double x = 0;
-				while (x <= w + step)
-				{
-					double y = 0;
-					while (y <= h + step)
-					{
-						paths.Add(new List<IntPoint>()
-						{
-							new IntPoint(x * resolution, y * resolution - crosslen),
-							new IntPoint(x * resolution, y * resolution + crosslen)
-						});
+				double cl = step / 3; //cross len
 
-						paths.Add(new List<IntPoint>()
-						{
-							new IntPoint(x * resolution - crosslen, y * resolution),
-							new IntPoint(x * resolution + crosslen, y * resolution)
-						});
+				//stanghette orizzontali
+				bool pari = true;
+				for (double y = 0; y < h + step; y += step, pari = !pari)
+					for (double x = 0; x < w + step; x += step)
+						AddPathPoint(paths, x-cl, y, x+cl, y, pari);
+				
+				//stanghette verticali
+				pari = true;
+				for (double x = 0; x < w + step; x += step, pari = !pari)
+					for (double y = 0; y < h + step; y += step)
+						AddPathPoint(paths, x, y - cl, x, y + cl, pari);
 
-						y += step;
-					}
-					x += step;
-				}
 			}
 
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewDiagonalCross)
 			{
+				double cl = rdstep / 3; //cross len
 
+				//stanghette alto-basso
+				for (double y = 0; y < h + step; y += step)
+					for (double x = 0; x < w + step; x += step)
+						AddPathPoint(paths, x - cl, y - cl, x + cl, y + cl);
 
-				double crosslen = step / 3 * resolution;
-				double x = 0;
-				while (x <= w + step)
-				{
-					double xPres = x * resolution;
-
-					double y = 0;
-					while (y <= h + step)
-					{
-						double yPres = y * resolution;
-
-						paths.Add(new List<IntPoint>()
-						{
-							new IntPoint(xPres - crosslen, yPres - crosslen),
-							new IntPoint(xPres + crosslen, yPres + crosslen)
-						});
-
-						paths.Add(new List<IntPoint>()
-						{
-							new IntPoint(xPres - crosslen, yPres + crosslen),
-							new IntPoint(xPres + crosslen, yPres - crosslen)
-						});
-
-						y += step;
-					}
-					x += step;
-				}
+				//stanghette basso-alto
+				for (double x = 0; x < w + step; x += step)
+					for (double y = 0; y < h + step; y += step)
+						AddPathPoint(paths, x - cl, y + cl, x + cl, y - cl);
 			}
 
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewSquares)
@@ -351,6 +292,19 @@ namespace CsPotrace
 
 			long t3 = Tools.HiResTimer.TotalMilliseconds;
 			System.Diagnostics.Debug.WriteLine($"AddPath: {t3 - t2}ms");
+		}
+
+		private static void AddPathPoint(List<List<IntPoint>> paths, double x1, double y1, double x2, double y2, bool pari)
+		{
+			if (pari)
+				paths.Add(new List<IntPoint>() { new IntPoint(x1 * resolution, y1 * resolution), new IntPoint(x2 * resolution, y2 * resolution) });
+			else
+				paths.Add(new List<IntPoint>() { new IntPoint(x2 * resolution, y2 * resolution), new IntPoint(x1 * resolution, y1 * resolution) });
+		}
+
+		private static void AddPathPoint(List<List<IntPoint>> paths, double x1, double y1, double x2, double y2)
+		{
+			paths.Add(new List<IntPoint>() { new IntPoint(x1 * resolution, y1 * resolution), new IntPoint(x2 * resolution, y2 * resolution) });
 		}
 
 		static PointF[] PolygonToPointFArray(List<IntPoint> pg, float scale)
