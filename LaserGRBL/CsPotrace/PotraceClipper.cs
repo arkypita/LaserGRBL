@@ -193,17 +193,29 @@ namespace CsPotrace
 			}
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewHorizontal || dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewGrid)
 			{
+				bool pari = true;
 				double y = 0;
 				double wPres = w * resolution;
 				while (y <= h + step)
 				{
 					double yPres = y * resolution;
-					paths.Add(new List<IntPoint>()
+					if (pari)
 					{
-						new IntPoint(0, yPres),
-						new IntPoint(wPres, yPres)
-					});
-					
+						paths.Add(new List<IntPoint>()
+						{
+							new IntPoint(0, yPres),
+							new IntPoint(wPres, yPres)
+						});
+					}
+					else
+					{
+						paths.Add(new List<IntPoint>()
+						{
+							new IntPoint(wPres, yPres),
+							new IntPoint(0, yPres)
+						});
+					}
+					pari = !pari;
 					y += step;
 				}
 			}

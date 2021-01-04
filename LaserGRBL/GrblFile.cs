@@ -299,12 +299,13 @@ namespace LaserGRBL
 			if (VectorFilling(c.dir))
 			{
 				long t1 = Tools.HiResTimer.TotalMilliseconds;
-				List<List<Curve>> filling = PotraceClipper.BuildFilling(plist, c.res / c.fres, bmp.Width, bmp.Height, c.dir);
+				rlist = PotraceClipper.BuildFilling(plist, c.res / c.fres, bmp.Width, bmp.Height, c.dir);
 				long t2 = Tools.HiResTimer.TotalMilliseconds;
 
 				System.Diagnostics.Debug.WriteLine($"BuildFilling = {t2 - t1}ms");
 
-				rlist = ParallelOptimizePaths(filling);
+				rlist = OptimizePaths(rlist); ///<------ turn on 
+
 				long t3 = Tools.HiResTimer.TotalMilliseconds;
 
 				System.Diagnostics.Debug.WriteLine($"OptimizeFilling = {t3 - t2}ms");
@@ -342,8 +343,8 @@ namespace LaserGRBL
 			}
 
             //Optimize fast movement
-            if(useOptimizeFast)
-                plist = OptimizePaths(plist);
+            //if(useOptimizeFast)
+             //   plist = OptimizePaths(plist);
 
 			bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
@@ -369,7 +370,7 @@ namespace LaserGRBL
 
 
 			//trace borders
-			if (plist != null)
+			if (plist != null && false)
 			{
 				List<string> gc = new List<string>();
 				if (supportPWM)
