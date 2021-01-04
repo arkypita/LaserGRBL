@@ -311,7 +311,7 @@ namespace LaserGRBL
 
 				System.Diagnostics.Debug.WriteLine($"BuildFilling = {t2 - t1}ms");
 
-				flist = OptimizePaths(flist);
+				flist = ParallelOptimizeFillingPaths(flist);
 				long t3 = Tools.HiResTimer.TotalMilliseconds;
 
 				System.Diagnostics.Debug.WriteLine($"OptimizeFilling = {t3 - t2}ms");
@@ -735,7 +735,7 @@ namespace LaserGRBL
 			prevCol = col;
 		}
 
-		private List<List<Curve>> ParallelOptimizePaths(List<List<Curve>> list)
+		private List<List<Curve>> ParallelOptimizeFillingPaths(List<List<Curve>> list)
 		{
 			int maxblocksize = 2048;    //max number of List<Curve> to process in a single OptimizePaths operation
 
@@ -747,7 +747,7 @@ namespace LaserGRBL
 
 			Task<List<List<Curve>>>[] taskArray = new Task<List<List<Curve>>>[blocknum];
 			for (int i = 0; i < taskArray.Length; i++)
-				taskArray[i] = Task.Factory.StartNew((data) => OptimizePaths((List<List<Curve>>)data), GetTaskJob(i, taskArray.Length , list));
+				taskArray[i] = Task.Factory.StartNew((data) => OptimizeFillingPaths((List<List<Curve>>)data), GetTaskJob(i, taskArray.Length , list));
 			Task.WaitAll(taskArray);
 
 			List<List<Curve>> rv = new List<List<Curve>>();
@@ -768,6 +768,108 @@ namespace LaserGRBL
 			List<List<Curve>> rv = list.GetRange(from, to - from);
 			System.Diagnostics.Debug.WriteLine($"Thread {threadIndex}/{threadCount}: {rv.Count} [from {from} to {to}]");
 			return rv;
+		}
+
+		private List<List<Curve>> OptimizeFillingPaths(List<List<Curve>> list)
+		{
+			if (list.Count == 1)
+				return list;
+
+			//Order all paths in list to reduce travel distance
+			//Calculate and store all distances in a matrix
+			var distancesA = new double[list.Count, list.Count];
+			var distancesB = new double[list.Count, list.Count];
+			for (int p1 = 0; p1 < list.Count; p1++)
+			{
+				for (int p2 = 0; p2 < list.Count; p2++)
+				{
+					var dxA = list[p1][0].B.X - list[p2][0].A.X;
+					var dyA = list[p1][0].B.Y - list[p2][0].A.Y;
+
+					var dxB = list[p1][0].B.X - list[p2][0].B.X;
+					var dyB = list[p1][0].B.Y - list[p2][0].B.Y;
+
+					if (p1 != p2)
+					{
+						distancesA[p1, p2] = (dxA * dxA) + (dyA * dyA);
+						distancesB[p1, p2] = (dxB * dxB) + (dyB * dyB);
+					}
+					else
+					{
+						distancesA[p1, p2] = double.MaxValue;
+						distancesB[p1, p2] = double.MaxValue;
+					}
+				}
+			}
+
+			List<List<CsPotrace.Curve>> best = new List<List<Curve>>();
+			var bestTotDistance = double.MaxValue;
+
+			//Create a list of unvisited places
+			List<int> unvisited = Enumerable.Range(0, list.Count).ToList();
+
+			//Pick nearest points
+			List<List<CsPotrace.Curve>> nearest = new List<List<Curve>>();
+
+			//Save starting point index
+			var lastIndex = 0;
+			var totDistance = 0.0;
+			while (unvisited.Count > 0)
+			{
+				var bestIndex = 0;
+				var bestDistance = double.MaxValue;
+				var reverseAB = false;
+				foreach (var nextIndex in unvisited)
+				{
+					var distA = distancesA[nextIndex, lastIndex];
+					var distB = distancesB[nextIndex, lastIndex];
+					if (distA < bestDistance)
+					{
+						bestIndex = nextIndex;
+						bestDistance = distA;
+						reverseAB = false;
+					}
+					if (distB < bestDistance)
+					{
+						bestIndex = nextIndex;
+						bestDistance = distB;
+						reverseAB = true;
+					}
+
+				}
+
+				//Save nearest point
+				lastIndex = bestIndex;
+				if (reverseAB)
+				{
+					var curve = list[lastIndex];
+					for (int i = 0; i < curve.Count; i++)
+					{
+						var A = curve[i].A;
+						var B = curve[i].B;
+						var cpA = curve[i].ControlPointA;
+						var cpB = curve[i].ControlPointB;
+						curve[i] = new Curve(curve[i].Kind, B, A, cpB, cpA);
+					}
+					nearest.Add(curve);
+				}
+				else
+				{
+					nearest.Add(list[lastIndex]);
+				}
+				unvisited.Remove(lastIndex);
+				totDistance += bestDistance;
+			}
+
+			//Count traveled distance
+			if (totDistance < bestTotDistance)
+			{
+				bestTotDistance = totDistance;
+				//Save best list
+				best = nearest;
+			}
+
+			return best;
 		}
 
 		private List<List<Curve>> OptimizePaths(List<List<Curve>> list)
