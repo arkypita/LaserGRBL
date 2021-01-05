@@ -85,7 +85,7 @@ namespace LaserGRBL
 
             SuccesFullLabel.Visible = WarningFullLabel.Visible = ErrorFullLabel.Visible = ConnectFullLabel.Visible = DisconnectFullLabel.Visible = false;
 
-			if (Core.GrblVersion.IsOrtur && Core.GrblVersion.OrturFWVersionNumber >= 140)
+			if (Core.GrblVersion != null && Core.GrblVersion.IsOrtur && Core.GrblVersion.OrturFWVersionNumber >= 140)
 				LblWarnOrturAC.Visible = false;
 
 			InitAutoCoolingTab();

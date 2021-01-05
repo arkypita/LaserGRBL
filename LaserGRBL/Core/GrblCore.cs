@@ -446,7 +446,7 @@ namespace LaserGRBL
             EnqueueCommand(new GrblCommand("$X"));
         }
 
-        public GrblVersionInfo GrblVersion
+        public GrblVersionInfo GrblVersion //attenzione! può essere null
 		{
 			get { return Settings.GetObject<GrblVersionInfo>("Last GrblVersion known", null); }
 			set
