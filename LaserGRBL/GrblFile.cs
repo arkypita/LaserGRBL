@@ -55,8 +55,8 @@ namespace LaserGRBL
 						foreach (GrblCommand cmd in list)
 							sw.WriteLine(cmd.Command);
 
-						
-						if (between && i < cycles-1)
+
+						if (between && i < cycles - 1)
 							sw.WriteLine(Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
 					}
 
@@ -99,41 +99,41 @@ namespace LaserGRBL
 			RiseOnFileLoaded(filename, elapsed);
 		}
 
-        public void LoadImportedSVG(string filename, bool append)
-        {
-            RiseOnFileLoading(filename);
+		public void LoadImportedSVG(string filename, bool append)
+		{
+			RiseOnFileLoading(filename);
 
-            long start = Tools.HiResTimer.TotalMilliseconds;
+			long start = Tools.HiResTimer.TotalMilliseconds;
 
-            if (!append)
-                list.Clear();
+			if (!append)
+				list.Clear();
 
-            mRange.ResetRange();
+			mRange.ResetRange();
 
-            SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
-            converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+			SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
+			converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
 
-            string gcode = converter.convertFromFile(filename);
-            string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-            foreach (string l in lines)
-            {
-                string line = l;
-                if ((line = line.Trim()).Length > 0)
-                {
-                    GrblCommand cmd = new GrblCommand(line);
-                    if (!cmd.IsEmpty)
-                        list.Add(cmd);
-                }
-            }
+			string gcode = converter.convertFromFile(filename);
+			string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+			foreach (string l in lines)
+			{
+				string line = l;
+				if ((line = line.Trim()).Length > 0)
+				{
+					GrblCommand cmd = new GrblCommand(line);
+					if (!cmd.IsEmpty)
+						list.Add(cmd);
+				}
+			}
 
-            Analyze();
-            long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+			Analyze();
+			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
-            RiseOnFileLoaded(filename, elapsed);
-        }
+			RiseOnFileLoaded(filename, elapsed);
+		}
 
 
-        private abstract class ColorSegment
+		private abstract class ColorSegment
 		{
 			public int mColor { get; set; }
 			protected int mPixLen;
@@ -164,8 +164,8 @@ namespace LaserGRBL
 			{
 				if (c.firmwareType == Firmware.Smoothie)
 					return string.Format(System.Globalization.CultureInfo.InvariantCulture, "S{0:0.00}", color / 255.0); //maybe scaling to UI maxpower VS config maxpower instead of fixed / 255.0 ?
-				//else if (c.firmwareType == Firmware.Marlin)
-				//	return "";
+																														 //else if (c.firmwareType == Firmware.Marlin)
+																														 //	return "";
 				else
 					return string.Format(System.Globalization.CultureInfo.InvariantCulture, "S{0}", color);
 			}
@@ -181,10 +181,10 @@ namespace LaserGRBL
 			{
 				cumX += mPixLen;
 
-                if (c.pwm)
-                    return string.Format("X{0} {1}", formatnumber(cumX, c.oX, c), FormatLaserPower(mColor, c));
-                else
-                    return string.Format("X{0} {1}", formatnumber(cumX, c.oX, c), Fast(c) ? c.lOff : c.lOn);
+				if (c.pwm)
+					return string.Format("X{0} {1}", formatnumber(cumX, c.oX, c), FormatLaserPower(mColor, c));
+				else
+					return string.Format("X{0} {1}", formatnumber(cumX, c.oX, c), Fast(c) ? c.lOff : c.lOn);
 			}
 		}
 
@@ -196,10 +196,10 @@ namespace LaserGRBL
 			{
 				cumY += mPixLen;
 
-                if (c.pwm)
-                    return string.Format("Y{0} {1}", formatnumber(cumY, c.oY, c), FormatLaserPower(mColor, c));
-                else
-                    return string.Format("Y{0} {1}", formatnumber(cumY, c.oY, c), Fast(c) ? c.lOff : c.lOn);
+				if (c.pwm)
+					return string.Format("Y{0} {1}", formatnumber(cumY, c.oY, c), FormatLaserPower(mColor, c));
+				else
+					return string.Format("Y{0} {1}", formatnumber(cumY, c.oY, c), Fast(c) ? c.lOff : c.lOn);
 			}
 		}
 
@@ -212,10 +212,10 @@ namespace LaserGRBL
 				cumX += mPixLen;
 				cumY -= mPixLen;
 
-                if (c.pwm)
-                    return string.Format("X{0} Y{1} {2}", formatnumber(cumX, c.oX, c), formatnumber(cumY, c.oY, c), FormatLaserPower(mColor, c));
-                else
-                    return string.Format("X{0} Y{1} {2}", formatnumber(cumX, c.oX, c), formatnumber(cumY, c.oY, c), Fast(c) ? c.lOff : c.lOn);
+				if (c.pwm)
+					return string.Format("X{0} Y{1} {2}", formatnumber(cumX, c.oX, c), formatnumber(cumY, c.oY, c), FormatLaserPower(mColor, c));
+				else
+					return string.Format("X{0} Y{1} {2}", formatnumber(cumX, c.oX, c), formatnumber(cumY, c.oY, c), Fast(c) ? c.lOff : c.lOn);
 			}
 		}
 
@@ -254,7 +254,7 @@ namespace LaserGRBL
 		}
 
 		public static bool RasterFilling(RasterConverter.ImageProcessor.Direction dir)
-		{ 
+		{
 			return dir == RasterConverter.ImageProcessor.Direction.Diagonal || dir == RasterConverter.ImageProcessor.Direction.Horizontal || dir == RasterConverter.ImageProcessor.Direction.Vertical;
 		}
 		public static bool VectorFilling(RasterConverter.ImageProcessor.Direction dir)
@@ -273,7 +273,7 @@ namespace LaserGRBL
 
 		public static bool TimeConsumingFilling(RasterConverter.ImageProcessor.Direction dir)
 		{
-			return 
+			return
 			dir == RasterConverter.ImageProcessor.Direction.NewCross ||
 			dir == RasterConverter.ImageProcessor.Direction.NewDiagonalCross ||
 			dir == RasterConverter.ImageProcessor.Direction.NewSquares;
@@ -326,7 +326,7 @@ namespace LaserGRBL
 
 						Potrace.Export2GDIPlus(plist, g, Brushes.Black, null, inset);
 
-						using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size((int)(bmp.Width * c.fres / c.res) +1 , (int)(bmp.Height * c.fres / c.res) +1), true, InterpolationMode.HighQualityBicubic))
+						using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size((int)(bmp.Width * c.fres / c.res) + 1, (int)(bmp.Height * c.fres / c.res) + 1), true, InterpolationMode.HighQualityBicubic))
 						{
 							if (c.pwm)
 								list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
@@ -350,11 +350,11 @@ namespace LaserGRBL
 
 			bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
-			
+
 			if (supportPWM)
-				list.Add(new GrblCommand($"{c.lOn} S0"));	//laser on and power to 0
+				list.Add(new GrblCommand($"{c.lOn} S0"));   //laser on and power to 0
 			else
-				list.Add(new GrblCommand($"{c.lOff} S{c.maxPower}"));	//laser off and power to maxPower
+				list.Add(new GrblCommand($"{c.lOff} S{c.maxPower}"));   //laser off and power to maxPower
 
 			//trace raster filling
 			if (flist != null)
@@ -402,7 +402,7 @@ namespace LaserGRBL
 
 			//laser off (superflua??)
 			if (supportPWM)
-				list.Add(new GrblCommand(c.lOff));	//necessaria perché finisce con solo S0
+				list.Add(new GrblCommand(c.lOff));  //necessaria perché finisce con solo S0
 
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
@@ -542,7 +542,7 @@ namespace LaserGRBL
 		{
 			List<GrblCommand> rv = new List<GrblCommand>();
 
-            decimal curX = (decimal)c.oX;
+			decimal curX = (decimal)c.oX;
 			decimal curY = (decimal)c.oY;
 			bool cumulate = false;
 
@@ -741,13 +741,13 @@ namespace LaserGRBL
 
 			int blocknum = (int)Math.Ceiling(list.Count / (double)maxblocksize);
 			if (blocknum <= 1)
-				return OptimizePaths(list);
+				return OptimizeFillingPaths(list);
 
 			System.Diagnostics.Debug.WriteLine("Count: " + list.Count);
 
 			Task<List<List<Curve>>>[] taskArray = new Task<List<List<Curve>>>[blocknum];
 			for (int i = 0; i < taskArray.Length; i++)
-				taskArray[i] = Task.Factory.StartNew((data) => OptimizeFillingPaths((List<List<Curve>>)data), GetTaskJob(i, taskArray.Length , list));
+				taskArray[i] = Task.Factory.StartNew((data) => OptimizeFillingPaths((List<List<Curve>>)data), GetTaskJob(i, taskArray.Length, list));
 			Task.WaitAll(taskArray);
 
 			List<List<Curve>> rv = new List<List<Curve>>();
@@ -777,14 +777,14 @@ namespace LaserGRBL
 
 			//Order all paths in list to reduce travel distance
 			//Calculate and store all distances in a matrix
-			var distancesA = new double[list.Count, list.Count];	//array bidimensionale delle distanze tra ogni punto e gli altri punti
-			var distancesB = new double[list.Count, list.Count];	//array bidimensionale delle distanze tra ogni punto e gli altri punti
+			var distancesA = new double[list.Count, list.Count];    //array bidimensionale delle distanze tra ogni punto e gli altri punti
+			var distancesB = new double[list.Count, list.Count];    //array bidimensionale delle distanze tra ogni punto e gli altri punti
 
-			for (int p1 = 0; p1 < list.Count; p1++)					//ciclo due volte su list
+			for (int p1 = 0; p1 < list.Count; p1++)                 //ciclo due volte su list
 			{
-				for (int p2 = 0; p2 < list.Count; p2++)				//con due indici diversi p1, p2
+				for (int p2 = 0; p2 < list.Count; p2++)             //con due indici diversi p1, p2
 				{
-					var dxA = list[p1][0].B.X - list[p2][0].A.X;	//deltaX punto finale p1 con punto iniziale p2
+					var dxA = list[p1][0].B.X - list[p2][0].A.X;    //deltaX punto finale p1 con punto iniziale p2
 					var dyA = list[p1][0].B.Y - list[p2][0].A.Y;    //deltaY punto finale p1 con punto iniziale p2
 
 					var dxB = list[p1][0].B.X - list[p2][0].B.X;    //deltaX punto finale p1 con punto finale p2
@@ -792,10 +792,10 @@ namespace LaserGRBL
 
 					if (p1 != p2)
 					{
-						distancesA[p1, p2] = (dxA * dxA) + (dyA * dyA);	//distanza di p1 dal punto iniziale di p2
-						distancesB[p1, p2] = (dxB * dxB) + (dyB * dyB);	//distanza di p1 dal punto finale di p2
+						distancesA[p1, p2] = (dxA * dxA) + (dyA * dyA); //distanza di p1 dal punto iniziale di p2
+						distancesB[p1, p2] = double.MaxValue;	// (dxB * dxB) + (dyB * dyB); //distanza di p1 dal punto finale di p2
 					}
-					else												//distanza del punto con se stesso (caso degenere)
+					else                                                //distanza del punto con se stesso (caso degenere)
 					{
 						distancesA[p1, p2] = double.MaxValue;
 						distancesB[p1, p2] = double.MaxValue;
@@ -820,18 +820,18 @@ namespace LaserGRBL
 				var bestIndex = 0;
 				var bestDistance = double.MaxValue;
 				var reverseAB = false;
-				foreach (var nextIndex in unvisited)					//cicla tutti gli "unvisited" rimanenti
+				foreach (var nextIndex in unvisited)                    //cicla tutti gli "unvisited" rimanenti
 				{
-					var distA = distancesA[nextIndex, lastIndex];		//distanza A (al punto iniziale) tra corrente (nextIndex) e ultimo analizzato (lastIndex)
+					var distA = distancesA[nextIndex, lastIndex];       //distanza A (al punto iniziale) tra corrente (nextIndex) e ultimo analizzato (lastIndex)
 					var distB = distancesB[nextIndex, lastIndex];       //distanza B (al punto finale) tra corrente (nextIndex) e ultimo analizzato (lastIndex)
-					
-					if (distA < bestDistance)							//se il corrente fornisce un risultato migliore
+
+					if (distA < bestDistance)                           //se il corrente fornisce un risultato migliore
 					{
-						bestIndex = nextIndex;							//salva il bestIndex
-						bestDistance = distA;							//salva come risultato migliore
+						bestIndex = nextIndex;                          //salva il bestIndex
+						bestDistance = distA;                           //salva come risultato migliore
 						reverseAB = false;
 					}
-					if (distB < bestDistance)							//idem, ma su punto finale
+					if (distB < bestDistance)                           //idem, ma su punto finale
 					{
 						bestIndex = nextIndex;
 						bestDistance = distB;
@@ -841,8 +841,9 @@ namespace LaserGRBL
 				}
 
 				var curve = list[bestIndex];
-				if (reverseAB)											//fai l'inversione della curva se per caso era meglio la distanza con il punto finale
+				if (reverseAB)                                          //fai l'inversione della curva se per caso era meglio la distanza con il punto finale
 				{
+					
 					for (int i = 0; i < curve.Count; i++)
 					{
 						var A = curve[i].A;
@@ -854,15 +855,15 @@ namespace LaserGRBL
 				}
 				nearest.Add(curve);
 
-				//Save nearest point
-				lastIndex = bestIndex;                                  //l'ultimo analizzato diventa quello che risulta come bestIndex, e si ricomincia
-
-				unvisited.Remove(lastIndex);
+				unvisited.Remove(bestIndex);
 				totDistance += bestDistance;
+
+				//Save nearest point
+				lastIndex = bestIndex;                                  //l'ultimo analizzato diventa quello che risulta come bestIndex
 			}
 
 			//Count traveled distance
-			if (totDistance < bestTotDistance)  //sempre true perché bestTotDistance = double.MaxValue e non più calcolato
+			if (totDistance < bestTotDistance)      //serve a qualcosa? sempre true (bestTotDistance = double.MaxValue)
 			{
 				bestTotDistance = totDistance;
 				//Save best list
@@ -873,71 +874,71 @@ namespace LaserGRBL
 		}
 
 		private List<List<Curve>> OptimizePaths(List<List<Curve>> list)
-        {
+		{
 			if (list.Count == 1)
 				return list;
 
-            //Order all paths in list to reduce travel distance
-            //Calculate and store all distances in a matrix
-            var distances = new double[list.Count, list.Count];
-            for (int p1 = 0; p1 < list.Count; p1++)
-            {
-                for (int p2 = 0; p2 < list.Count; p2++)
-                {
-                    var dx = list[p1][0].A.X - list[p2][0].A.X;
-                    var dy = list[p1][0].A.Y - list[p2][0].A.Y;
-                    if (p1 != p2)
-                        distances[p1, p2] = Math.Sqrt((dx * dx) + (dy * dy));
-                    else
-                        distances[p1, p2] = double.MaxValue;
-                }
-            }
+			//Order all paths in list to reduce travel distance
+			//Calculate and store all distances in a matrix
+			var distances = new double[list.Count, list.Count];
+			for (int p1 = 0; p1 < list.Count; p1++)
+			{
+				for (int p2 = 0; p2 < list.Count; p2++)
+				{
+					var dx = list[p1][0].A.X - list[p2][0].A.X;
+					var dy = list[p1][0].A.Y - list[p2][0].A.Y;
+					if (p1 != p2)
+						distances[p1, p2] = Math.Sqrt((dx * dx) + (dy * dy));
+					else
+						distances[p1, p2] = double.MaxValue;
+				}
+			}
 
-            List<List<CsPotrace.Curve>> best = new List<List<Curve>>();
-            var bestTotDistance = double.MaxValue;
+			List<List<CsPotrace.Curve>> best = new List<List<Curve>>();
+			var bestTotDistance = double.MaxValue;
 
-            //Create a list of unvisited places
-            List<int> unvisited = Enumerable.Range(0, list.Count).ToList();
+			//Create a list of unvisited places
+			List<int> unvisited = Enumerable.Range(0, list.Count).ToList();
 
-            //Pick nearest points
-            List<List<CsPotrace.Curve>> nearest = new List<List<Curve>>();
+			//Pick nearest points
+			List<List<CsPotrace.Curve>> nearest = new List<List<Curve>>();
 
-            //Save starting point index
-            var lastIndex = 0;
-            var totDistance = 0.0;
-            while (unvisited.Count > 0)
-            {
-                var bestIndex = 0;
-                var bestDistance = double.MaxValue;
-                foreach (var nextIndex in unvisited)
-                {
-                    var dist = distances[nextIndex, lastIndex];
-                    if (dist < bestDistance)
-                    {
-                        bestIndex = nextIndex;
-                        bestDistance = dist;
-                    }
-                }
+			//Save starting point index
+			var lastIndex = 0;
+			var totDistance = 0.0;
+			while (unvisited.Count > 0)
+			{
+				var bestIndex = 0;
+				var bestDistance = double.MaxValue;
+				foreach (var nextIndex in unvisited)
+				{
+					var dist = distances[nextIndex, lastIndex];
+					if (dist < bestDistance)
+					{
+						bestIndex = nextIndex;
+						bestDistance = dist;
+					}
+				}
 
-                //Save nearest point
-                lastIndex = bestIndex;
-                nearest.Add(list[lastIndex]);
-                unvisited.Remove(lastIndex);
-                totDistance += bestDistance;
-            }
+				//Save nearest point
+				lastIndex = bestIndex;
+				nearest.Add(list[lastIndex]);
+				unvisited.Remove(lastIndex);
+				totDistance += bestDistance;
+			}
 
-            //Count traveled distance
-            if (totDistance < bestTotDistance)
-            {
-                bestTotDistance = totDistance;
-                //Save best list
-                best = nearest;
-            }
-            
-            return best;
-        }
+			//Count traveled distance
+			if (totDistance < bestTotDistance)
+			{
+				bestTotDistance = totDistance;
+				//Save best list
+				best = nearest;
+			}
 
-        private int GetColor(Bitmap I, int X, int Y, int min, int max, bool pwm)
+			return best;
+		}
+
+		private int GetColor(Bitmap I, int X, int Y, int min, int max, bool pwm)
 		{
 			Color C = I.GetPixel(X, Y);
 			int rv = (255 - C.R) * C.A / 255;
@@ -1068,12 +1069,12 @@ namespace LaserGRBL
 			{
 				content = Autotrace.BitmapToSvgString(bmp, useCornerThreshold, cornerThreshold, useLineThreshold, lineThreshold);
 			}
-			catch(Exception ex) { Logger.LogException("Centerline", ex); }
+			catch (Exception ex) { Logger.LogException("Centerline", ex); }
 
-            SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
-            converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
-            converter.SvgScaleApply = true;
-            converter.SvgMaxSize = (float)Math.Max(bmp.Width /10.0, bmp.Height / 10.0);
+			SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
+			converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+			converter.SvgScaleApply = true;
+			converter.SvgMaxSize = (float)Math.Max(bmp.Width / 10.0, bmp.Height / 10.0);
 			converter.UserOffset.X = Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F);
 			converter.UserOffset.Y = Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F);
 
@@ -1118,7 +1119,7 @@ namespace LaserGRBL
 						mRange.UpdateXYRange(spb.LastArcHelperResult.BBox.X, spb.LastArcHelperResult.BBox.Y, spb.LastArcHelperResult.BBox.Width, spb.LastArcHelperResult.BBox.Height, spb.LaserBurning);
 					else
 						mRange.UpdateXYRange(spb.X, spb.Y, spb.LaserBurning);
-					
+
 					mEstimatedTotalTime += delay;
 					cmd.SetOffset(mEstimatedTotalTime);
 				}
@@ -1204,9 +1205,9 @@ namespace LaserGRBL
 					bool right = q == CartesianQuadrant.I || q == CartesianQuadrant.IV;
 					bool top = q == CartesianQuadrant.I || q == CartesianQuadrant.II;
 
-                    string format = "0";
-                    if (mRange.DrawingRange.Width < 50 && mRange.DrawingRange.Height < 50)
-                        format = "0.0";
+					string format = "0";
+					if (mRange.DrawingRange.Width < 50 && mRange.DrawingRange.Height < 50)
+						format = "0.0";
 
 					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Min, mRange.DrawingRange.Y.Min.ToString(format), false, true, !right, false, ColorScheme.PreviewText);
 					DrawString(g, zoom, 0, mRange.DrawingRange.Y.Max, mRange.DrawingRange.Y.Max.ToString(format), false, true, !right, false, ColorScheme.PreviewText);
@@ -1226,7 +1227,7 @@ namespace LaserGRBL
 				bool top = q == CartesianQuadrant.Unknown || q == CartesianQuadrant.I || q == CartesianQuadrant.II; //l'oggetto si trova in alto
 
 				string format = "0";
-				
+
 				if (mRange.DrawingRange.ValidRange && mRange.DrawingRange.Width < 50 && mRange.DrawingRange.Height < 50)
 					format = "0.0";
 
@@ -1274,7 +1275,7 @@ namespace LaserGRBL
 		{
 			GraphicsState state = g.Save();
 			g.ScaleTransform(1.0f, -1.0f);
-			
+
 
 			using (Font f = new Font(FontFamily.GenericMonospace, 8 * 1 / zoom))
 			{
@@ -1304,11 +1305,11 @@ namespace LaserGRBL
 
 		private static void DrawRotatedTextAt(Graphics g, float a, string text, Font f, Brush b, float x, float y)
 		{
-			GraphicsState state = g.Save();	// Save the graphics state.
-			g.TranslateTransform(x, y);		//posiziona
-			g.RotateTransform(a);			//ruota
+			GraphicsState state = g.Save(); // Save the graphics state.
+			g.TranslateTransform(x, y);     //posiziona
+			g.RotateTransform(a);           //ruota
 			g.DrawString(text, f, b, 0, 0); // scrivi a zero, zero
-			g.Restore(state);				// Restore the graphics state.
+			g.Restore(state);               // Restore the graphics state.
 		}
 
 
