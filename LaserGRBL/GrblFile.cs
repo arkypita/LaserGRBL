@@ -376,7 +376,7 @@ namespace LaserGRBL
 			{
 				//Optimize fast movement
 				if (useOptimizeFast)
-					plist = OptimizeFillingPaths(plist);
+					plist = OptimizePaths(plist);
 
 				List<string> gc = new List<string>();
 				if (supportPWM)
