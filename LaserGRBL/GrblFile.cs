@@ -305,16 +305,8 @@ namespace LaserGRBL
 
 			if (VectorFilling(c.dir))
 			{
-				long t1 = Tools.HiResTimer.TotalMilliseconds;
 				flist = PotraceClipper.BuildFilling(plist, c.res / c.fres, bmp.Width, bmp.Height, c.dir);
-				long t2 = Tools.HiResTimer.TotalMilliseconds;
-
-				System.Diagnostics.Debug.WriteLine($"BuildFilling = {t2 - t1}ms");
-
-				flist = ParallelOptimizeFillingPaths(flist);
-				long t3 = Tools.HiResTimer.TotalMilliseconds;
-
-				System.Diagnostics.Debug.WriteLine($"OptimizeFilling = {t3 - t2}ms");
+				flist = ParallelOptimizePaths(flist);
 			}
 			if (RasterFilling(c.dir))
 			{
@@ -376,7 +368,9 @@ namespace LaserGRBL
 			{
 				//Optimize fast movement
 				if (useOptimizeFast)
-					plist = OptimizeFillingPaths(plist);
+					plist = OptimizePaths(plist);
+				else
+					plist.Reverse(); //la lista viene fornita da potrace con prima esterni e poi interni, ma per il taglio è meglio il contrario
 
 				List<string> gc = new List<string>();
 				if (supportPWM)
@@ -735,19 +729,19 @@ namespace LaserGRBL
 			prevCol = col;
 		}
 
-		private List<List<Curve>> ParallelOptimizeFillingPaths(List<List<Curve>> list)
+		private List<List<Curve>> ParallelOptimizePaths(List<List<Curve>> list)
 		{
 			int maxblocksize = 2048;    //max number of List<Curve> to process in a single OptimizePaths operation
 
 			int blocknum = (int)Math.Ceiling(list.Count / (double)maxblocksize);
 			if (blocknum <= 1)
-				return OptimizeFillingPaths(list);
+				return OptimizePaths(list);
 
 			System.Diagnostics.Debug.WriteLine("Count: " + list.Count);
 
 			Task<List<List<Curve>>>[] taskArray = new Task<List<List<Curve>>>[blocknum];
 			for (int i = 0; i < taskArray.Length; i++)
-				taskArray[i] = Task.Factory.StartNew((data) => OptimizeFillingPaths((List<List<Curve>>)data), GetTaskJob(i, taskArray.Length, list));
+				taskArray[i] = Task.Factory.StartNew((data) => OptimizePaths((List<List<Curve>>)data), GetTaskJob(i, taskArray.Length, list));
 			Task.WaitAll(taskArray);
 
 			List<List<Curve>> rv = new List<List<Curve>>();
@@ -770,9 +764,9 @@ namespace LaserGRBL
 			return rv;
 		}
 
-		private List<List<Curve>> OptimizeFillingPaths(List<List<Curve>> list)
+		private List<List<Curve>> OptimizePaths(List<List<Curve>> list)
 		{
-			if (list.Count == 1)
+			if (list.Count <= 1)
 				return list;
 
 			//Order all paths in list to reduce travel distance
@@ -783,15 +777,27 @@ namespace LaserGRBL
 			{
 				for (int c2 = 0; c2 < list.Count; c2++)             //con due indici diversi c1, c2
 				{
-					if (c1 != c2)
+					if (c1 == 0 && c2 == 0)
 					{
-						var dxAA = list[c1].Last().B.X - list[c2].First().A.X;
-						var dyAA = list[c1].Last().B.Y - list[c2].First().A.Y;
-						distBA[c1, c2] = ((dxAA * dxAA) + (dyAA * dyAA));
+						distBA[c1, c2] = 0; //il primo dista zero, così siamo sicuri di partire da lui (sotto: if (dist < bestDistance))
 					}
-					else                                                //distanza del punto con se stesso (caso degenere)
+					else if (c1 == c2) 
 					{
-						distBA[c1, c2] = double.MaxValue;
+						distBA[c1, c2] = double.MaxValue;  //distanza del punto con se stesso (caso degenere)
+					}
+					else
+					{ 
+						dPoint a1 = list[c1].First().A;		//primo segmento (percorso), inizio
+						dPoint a2 = list[c1].Last().B;      //primo segmento (percorso), fine
+						dPoint b1 = list[c2].First().A;     //secondo segmento (percorso), inizio
+						//dPoint b2 = list[c2].Last().B;      //secondo segmento (percorso), fine
+
+						var dX = b1.X - a2.X;
+						var dY = b1.Y - a2.Y;
+
+						var af = 1; // DirectionChange(a1, a2, b1, 50);
+
+						distBA[c1, c2] = ((dX * dX) + (dY * dY)) * (af * af);
 					}
 				}
 			}
@@ -812,11 +818,11 @@ namespace LaserGRBL
 
 				foreach (var nextIndex in unvisited)                    //cicla tutti gli "unvisited" rimanenti
 				{
-					var distToA = distBA[lastIndex, nextIndex];
-					if (distToA < bestDistance)
+					var dist = distBA[lastIndex, nextIndex];
+					if (dist < bestDistance)
 					{
-						bestIndex = nextIndex;                       //salva il bestIndex
-						bestDistance = distToA;                      //salva come risultato migliore                        
+						bestIndex = nextIndex;                    //salva il bestIndex
+						bestDistance = dist;                      //salva come risultato migliore                        
 					}
 				}
 
@@ -827,8 +833,19 @@ namespace LaserGRBL
 				lastIndex = bestIndex;                   //l'ultimo miglior indice trovato diventa il prossimo punto da analizzare			
 
 			}
-			bestPath.Reverse();
+
 			return bestPath;
+		}
+
+		//questo metodo ritorna un fattore 1 se c'è continuità di direzione, weight se c'è inversione totale
+		private double DirectionChange(dPoint a1, dPoint a2, dPoint b1, double weight)
+		{
+			double angleA = Math.Atan2(a2.Y - a1.Y, a2.X - a1.X); //angolo del segmento corrente
+			double angleB = Math.Atan2(b1.Y - a2.Y, b1.X - a2.X); //angolo della retta congiungente
+
+			double angleAB = Math.Abs(angleB - angleA); //0 se stessa direzione, pigreco se inverte direzione
+			double factor = 1 + (angleAB / Math.PI) * (weight - 1); //1 se stessa direzione, weight se inverte direzione
+			return factor;
 		}
 
 
