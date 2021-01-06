@@ -777,44 +777,52 @@ namespace LaserGRBL
 
 			//Order all paths in list to reduce travel distance
 			//Calculate and store all distances in a matrix
-			var distancesA = new double[list.Count, list.Count];    //array bidimensionale delle distanze tra ogni punto e gli altri punti
-			var distancesB = new double[list.Count, list.Count];    //array bidimensionale delle distanze tra ogni punto e gli altri punti
+			var distBA = new double[list.Count, list.Count];    //array bidimensionale delle distanze dal punto finale della curva 1 al punto iniziale della curva 2
+			var distBB = new double[list.Count, list.Count];    //array bidimensionale delle distanze dal punto finale della curva 1 al punto finale della curva 2
+			var distAA = new double[list.Count, list.Count];    //array bidimensionale delle distanze dal punto iniziale della curva 1 al punto iniziale della curva 2
+			var distAB = new double[list.Count, list.Count];    //array bidimensionale delle distanze dal punto iniziale della curva 1 al punto finale della curva 2
 
-			for (int p1 = 0; p1 < list.Count; p1++)                 //ciclo due volte su list
+			for (int c1 = 0; c1 < list.Count; c1++)                 //ciclo due volte sulla lista di curve
 			{
-				for (int p2 = 0; p2 < list.Count; p2++)             //con due indici diversi p1, p2
+				for (int c2 = 0; c2 < list.Count; c2++)             //con due indici diversi c1, c2
 				{
-					var dxA = list[p1][0].B.X - list[p2][0].A.X;    //deltaX punto finale p1 con punto iniziale p2
-					var dyA = list[p1][0].B.Y - list[p2][0].A.Y;    //deltaY punto finale p1 con punto iniziale p2
-
-					var dxB = list[p1][0].B.X - list[p2][0].B.X;    //deltaX punto finale p1 con punto finale p2
-					var dyB = list[p1][0].B.Y - list[p2][0].B.Y;    //deltaY punto finale p1 con punto finale p2
-
-					if (p1 != p2)
+					if (c1 != c2)
 					{
-						distancesA[p1, p2] = (dxA * dxA) + (dyA * dyA); //distanza di p1 dal punto iniziale di p2
-						distancesB[p1, p2] = double.MaxValue;	// (dxB * dxB) + (dyB * dyB); //distanza di p1 dal punto finale di p2
+						var dxBA = list[c1].First().B.X - list[c2].Last().A.X;    //deltaX punto finale della c1 con punto iniziale c2
+						var dyBA = list[c1].First().B.Y - list[c2].Last().A.Y;    //deltaY punto finale della c1 con punto iniziale c2
+						distBA[c1, c2] = ((dxBA * dxBA) + (dyBA * dyBA));         //distanza quadrata della c1 dal punto iniziale di c2
+
+						var dxBB = list[c1].First().B.X - list[c2].Last().B.X;    //deltaX punto finale della c1 con punto finale c2
+						var dyBB = list[c1].First().B.Y - list[c2].Last().B.Y;    //deltaY punto finale della c1 con punto finale c2						
+						distBB[c1, c2] = ((dxBB * dxBB) + (dyBB * dyBB));         //distanza quadrata della c1 dal punto finale di c2
+
+						var dxAA = list[c1].First().A.X - list[c2].Last().A.X;
+						var dyAA = list[c1].First().A.Y - list[c2].Last().A.Y;
+						distAA[c1, c2] = ((dxAA * dxAA) + (dyAA * dyAA));
+
+						var dxAB = list[c1].First().A.X - list[c2].Last().B.X;
+						var dyAB = list[c1].First().A.Y - list[c2].Last().B.Y;
+						distAB[c1, c2] = ((dxAB * dxAB) + (dyAB * dyAB));
 					}
 					else                                                //distanza del punto con se stesso (caso degenere)
 					{
-						distancesA[p1, p2] = double.MaxValue;
-						distancesB[p1, p2] = double.MaxValue;
+						distBA[c1, c2] = double.MaxValue;
+						distBB[c1, c2] = double.MaxValue;
+						distAA[c1, c2] = double.MaxValue;
+						distAB[c1, c2] = double.MaxValue;
 					}
 				}
 			}
-
-			List<List<Curve>> best = new List<List<Curve>>();
-			var bestTotDistance = double.MaxValue;
 
 			//Create a list of unvisited places
 			List<int> unvisited = Enumerable.Range(0, list.Count).ToList();
 
 			//Pick nearest points
-			List<List<CsPotrace.Curve>> nearest = new List<List<Curve>>();
+			List<List<CsPotrace.Curve>> bestPath = new List<List<Curve>>();
 
 			//Save starting point index
 			var lastIndex = 0;
-			var totDistance = 0.0;
+			var lastReverse = false;
 			while (unvisited.Count > 0)
 			{
 				var bestIndex = 0;
@@ -822,28 +830,30 @@ namespace LaserGRBL
 				var reverseAB = false;
 				foreach (var nextIndex in unvisited)                    //cicla tutti gli "unvisited" rimanenti
 				{
-					var distA = distancesA[nextIndex, lastIndex];       //distanza A (al punto iniziale) tra corrente (nextIndex) e ultimo analizzato (lastIndex)
-					var distB = distancesB[nextIndex, lastIndex];       //distanza B (al punto finale) tra corrente (nextIndex) e ultimo analizzato (lastIndex)
+					var distToA = lastReverse ? distBA[lastIndex, nextIndex] : distAA[lastIndex, nextIndex]; //distanza dall'inizio partendo dalla fine o dall'inizio
+					var distToB = lastReverse ? distBB[lastIndex, nextIndex] : distAB[lastIndex, nextIndex]; //distanza dalla fine partendo dalla fine o dall'inizio
 
-					if (distA < bestDistance)                           //se il corrente fornisce un risultato migliore
+					if (distToA < bestDistance || distToB < bestDistance)
 					{
-						bestIndex = nextIndex;                          //salva il bestIndex
-						bestDistance = distA;                           //salva come risultato migliore
-						reverseAB = false;
+						if (distToA < distToB)                           //se il corrente fornisce un risultato migliore
+						{
+							bestIndex = nextIndex;                       //salva il bestIndex
+							bestDistance = distToA;                      //salva come risultato migliore
+							reverseAB = false;
+						}
+						else                      //idem, ma su punto finale
+						{
+							bestIndex = nextIndex;
+							bestDistance = distToB;
+							reverseAB = true;
+						}
 					}
-					if (distB < bestDistance)                           //idem, ma su punto finale
-					{
-						bestIndex = nextIndex;
-						bestDistance = distB;
-						reverseAB = true;
-					}
-
 				}
+				lastReverse = reverseAB;
 
 				var curve = list[bestIndex];
-				if (reverseAB)                                          //fai l'inversione della curva se per caso era meglio la distanza con il punto finale
+				if (reverseAB)                                          //fai l'inversione della curva se per caso era migliore la distanza con il punto finale
 				{
-					
 					for (int i = 0; i < curve.Count; i++)
 					{
 						var A = curve[i].A;
@@ -853,24 +863,15 @@ namespace LaserGRBL
 						curve[i] = new Curve(curve[i].Kind, B, A, cpB, cpA);
 					}
 				}
-				nearest.Add(curve);
-
+				bestPath.Add(curve);
 				unvisited.Remove(bestIndex);
-				totDistance += bestDistance;
 
 				//Save nearest point
-				lastIndex = bestIndex;                                  //l'ultimo analizzato diventa quello che risulta come bestIndex
-			}
+				lastIndex = bestIndex;                   //l'ultimo miglior indice trovato diventa il prossimo punto da analizzare			
 
-			//Count traveled distance
-			if (totDistance < bestTotDistance)      //serve a qualcosa? sempre true (bestTotDistance = double.MaxValue)
-			{
-				bestTotDistance = totDistance;
-				//Save best list
-				best = nearest;
 			}
-
-			return best;
+			bestPath.Reverse();
+			return bestPath;
 		}
 
 		private List<List<Curve>> OptimizePaths(List<List<Curve>> list)
