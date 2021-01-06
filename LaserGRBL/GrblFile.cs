@@ -376,7 +376,7 @@ namespace LaserGRBL
 			{
 				//Optimize fast movement
 				if (useOptimizeFast)
-					plist = OptimizePaths(plist);
+					plist = OptimizeFillingPaths(plist);
 
 				List<string> gc = new List<string>();
 				if (supportPWM)
@@ -777,8 +777,7 @@ namespace LaserGRBL
 
 			//Order all paths in list to reduce travel distance
 			//Calculate and store all distances in a matrix
-			var distAA = new double[list.Count, list.Count];    //array bidimensionale delle distanze dal punto iniziale della curva 1 al punto iniziale della curva 2
-			var distAB = new double[list.Count, list.Count];    //array bidimensionale delle distanze dal punto iniziale della curva 1 al punto finale della curva 2
+			var distBA = new double[list.Count, list.Count];        //array bidimensionale delle distanze dal punto finale della curva 1 al punto iniziale della curva 2
 
 			for (int c1 = 0; c1 < list.Count; c1++)                 //ciclo due volte sulla lista di curve
 			{
@@ -786,18 +785,13 @@ namespace LaserGRBL
 				{
 					if (c1 != c2)
 					{
-						var dxAA = list[c1].First().A.X - list[c2].Last().A.X;
-						var dyAA = list[c1].First().A.Y - list[c2].Last().A.Y;
-						distAA[c1, c2] = ((dxAA * dxAA) + (dyAA * dyAA));
-
-						var dxAB = list[c1].First().A.X - list[c2].Last().B.X;
-						var dyAB = list[c1].First().A.Y - list[c2].Last().B.Y;
-						distAB[c1, c2] = ((dxAB * dxAB) + (dyAB * dyAB));
+						var dxAA = list[c1].Last().B.X - list[c2].First().A.X;
+						var dyAA = list[c1].Last().B.Y - list[c2].First().A.Y;
+						distBA[c1, c2] = ((dxAA * dxAA) + (dyAA * dyAA));
 					}
 					else                                                //distanza del punto con se stesso (caso degenere)
 					{
-						distAA[c1, c2] = double.MaxValue;
-						distAB[c1, c2] = double.MaxValue;
+						distBA[c1, c2] = double.MaxValue;
 					}
 				}
 			}
@@ -810,46 +804,23 @@ namespace LaserGRBL
 
 			//Save starting point index
 			var lastIndex = 0;
+
 			while (unvisited.Count > 0)
 			{
 				var bestIndex = 0;
 				var bestDistance = double.MaxValue;
-				var reverseAB = false;
+
 				foreach (var nextIndex in unvisited)                    //cicla tutti gli "unvisited" rimanenti
 				{
-					var distToA = distAA[lastIndex, nextIndex]; //distanza dall'inizio partendo dalla fine o dall'inizio
-					var distToB = distAB[lastIndex, nextIndex]; //distanza dalla fine partendo dalla fine o dall'inizio
-
-					if (distToA < bestDistance || distToB < bestDistance)
+					var distToA = distBA[lastIndex, nextIndex];
+					if (distToA < bestDistance)
 					{
-						if (distToA < distToB)                           //se il corrente fornisce un risultato migliore
-						{
-							bestIndex = nextIndex;                       //salva il bestIndex
-							bestDistance = distToA;                      //salva come risultato migliore
-							reverseAB = false;
-						}
-						else                      //idem, ma su punto finale
-						{
-							bestIndex = nextIndex;
-							bestDistance = distToB;
-							reverseAB = true;
-						}
+						bestIndex = nextIndex;                       //salva il bestIndex
+						bestDistance = distToA;                      //salva come risultato migliore                        
 					}
 				}
 
-				var curve = list[bestIndex];
-				if (reverseAB)                                          //fai l'inversione della curva se per caso era migliore la distanza con il punto finale
-				{
-					for (int i = 0; i < curve.Count; i++)
-					{
-						var A = curve[i].A;
-						var B = curve[i].B;
-						var cpA = curve[i].ControlPointA;
-						var cpB = curve[i].ControlPointB;
-						curve[i] = new Curve(curve[i].Kind, B, A, cpB, cpA); //new curve reversed
-					}
-				}
-				bestPath.Add(curve);
+				bestPath.Add(list[bestIndex]);
 				unvisited.Remove(bestIndex);
 
 				//Save nearest point
@@ -860,70 +831,6 @@ namespace LaserGRBL
 			return bestPath;
 		}
 
-		private List<List<Curve>> OptimizePaths(List<List<Curve>> list)
-		{
-			if (list.Count == 1)
-				return list;
-
-			//Order all paths in list to reduce travel distance
-			//Calculate and store all distances in a matrix
-			var distances = new double[list.Count, list.Count];
-			for (int p1 = 0; p1 < list.Count; p1++)
-			{
-				for (int p2 = 0; p2 < list.Count; p2++)
-				{
-					var dx = list[p1][0].A.X - list[p2][0].A.X;
-					var dy = list[p1][0].A.Y - list[p2][0].A.Y;
-					if (p1 != p2)
-						distances[p1, p2] = Math.Sqrt((dx * dx) + (dy * dy));
-					else
-						distances[p1, p2] = double.MaxValue;
-				}
-			}
-
-			List<List<CsPotrace.Curve>> best = new List<List<Curve>>();
-			var bestTotDistance = double.MaxValue;
-
-			//Create a list of unvisited places
-			List<int> unvisited = Enumerable.Range(0, list.Count).ToList();
-
-			//Pick nearest points
-			List<List<CsPotrace.Curve>> nearest = new List<List<Curve>>();
-
-			//Save starting point index
-			var lastIndex = 0;
-			var totDistance = 0.0;
-			while (unvisited.Count > 0)
-			{
-				var bestIndex = 0;
-				var bestDistance = double.MaxValue;
-				foreach (var nextIndex in unvisited)
-				{
-					var dist = distances[nextIndex, lastIndex];
-					if (dist < bestDistance)
-					{
-						bestIndex = nextIndex;
-						bestDistance = dist;
-					}
-				}
-
-				//Save nearest point
-				lastIndex = bestIndex;
-				nearest.Add(list[lastIndex]);
-				unvisited.Remove(lastIndex);
-				totDistance += bestDistance;
-			}
-
-			//Count traveled distance
-			if (totDistance < bestTotDistance)
-			{
-				bestTotDistance = totDistance;
-				//Save best list
-				best = nearest;
-			}
-
-			return best;
-		}
 
 		private int GetColor(Bitmap I, int X, int Y, int min, int max, bool pwm)
 		{
