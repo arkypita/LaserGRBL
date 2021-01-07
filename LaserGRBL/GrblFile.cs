@@ -778,12 +778,14 @@ namespace LaserGRBL
 			double[,] distBA = new double[list.Count, list.Count];        //array bidimensionale delle distanze dal punto finale della curva 1 al punto iniziale della curva 2
 			for (int c1 = 0; c1 < list.Count; c1++)                 //ciclo due volte sulla lista di curve
 			{
-				dPoint a1 = list[c1].First().A;     //primo segmento (percorso), inizio
-				dPoint a2 = list[c1].Last().B;      //primo segmento (percorso), fine
+				dPoint c1fa = list[c1].First().A;	//punto iniziale del primo segmento del percorso (per calcolo distanza dallo zero)
+				dPoint c1la = list[c1].Last().A;	//punto iniziale dell'ulimo segmento del percorso (per calcolo direzione di uscita)
+				dPoint c1lb = list[c1].Last().B;	//punto finale dell'ultimo segmento del percorso (per calcolo distanza tra percorsi e direzione di uscita e ingresso)
+				
 
 				for (int c2 = 0; c2 < list.Count; c2++)             //con due indici diversi c1, c2
 				{
-					dPoint b1 = list[c2].First().A;     //secondo segmento (percorso), inizio
+					dPoint c2fa = list[c2].First().A;     //punto iniziale del primo segmento del percorso (per calcolo distanza tra percorsi e direzione di ingresso)
 
 					if (c1 == c2) 
 					{
@@ -791,15 +793,15 @@ namespace LaserGRBL
 					}
 					else
 					{
-						double sq =	SquareDistance(a2, b1);
-						//double af = DirectionChange(a1, a2, b1);
+						double sq =	SquareDistance(c1lb, c2fa);
+						double af = DirectionChange(c1la, c1lb, c2fa);
 
 						distBA[c1, c2] = sq;
 					}
 				}
 
 				//trova quello che parte più vicino allo zero
-				double distZero = SquareDistanceZero(a1);
+				double distZero = SquareDistanceZero(c1fa);
 				if (distZero < bestDistanceToZero)
 				{
 					nearestToZero = c1;
