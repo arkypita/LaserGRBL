@@ -486,6 +486,15 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Zig Zag.
+        /// </summary>
+        internal static string DirectionNewZigZag {
+            get {
+                return ResourceManager.GetString("DirectionNewZigZag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a No Filling.
         /// </summary>
         internal static string DirectionNone {

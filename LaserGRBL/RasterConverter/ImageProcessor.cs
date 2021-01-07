@@ -102,6 +102,7 @@ namespace LaserGRBL.RasterConverter
 			NewReverseDiagonal, NewGrid, NewDiagonalGrid,
 			NewCross, NewDiagonalCross,
 			NewSquares,
+			NewZigZag,
 			NewInsetFilling
 		}
 
@@ -1159,7 +1160,7 @@ namespace LaserGRBL.RasterConverter
 							}
 						}
 					}
-					if (dir == Direction.Diagonal || dir == Direction.NewDiagonal || dir == Direction.NewDiagonalGrid || dir == Direction.NewDiagonalCross || dir == Direction.NewSquares)
+					if (dir == Direction.Diagonal || dir == Direction.NewDiagonal || dir == Direction.NewDiagonalGrid || dir == Direction.NewDiagonalCross || dir == Direction.NewSquares || dir == Direction.NewZigZag)
 					{
 						int mod = dir == Direction.Diagonal ? 3 : 5;
 						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 150 : 255;

@@ -196,13 +196,13 @@ namespace CsPotrace
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewDiagonal || dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewDiagonalGrid)
 			{
 				bool pari = true;
-				for (double i = 0 ; i < (2 * Math.Max(w, h)) + dstep; i += dstep, pari = !pari)
+				for (double i = 0 ; i < w + h + dstep; i += dstep, pari = !pari)
 					AddPathPoint(paths, 0, i, i, 0, pari);
 			}
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewReverseDiagonal || dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewDiagonalGrid)
 			{
 				bool pari = true;
-				for (double i = 0; i < (2 * Math.Max(w, h)) + dstep; i += dstep, pari = !pari)
+				for (double i = 0; i < w + h + dstep; i += dstep, pari = !pari)
 					AddPathPoint(paths, 0, h - i, i, h, pari);
 			}
 
@@ -250,19 +250,49 @@ namespace CsPotrace
 			}
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewSquares)
 			{
-
-
 				double cl = step / 3; //cross len
 
 				for (double y = 0; y < h + step; y += step)
 				{
 					for (double x = 0; x < w + step; x += step)
 					{
-
 						AddPathPoint(paths, x - cl, y, x, y + cl);
 						AddPathPoint(paths, x, y + cl, x + cl, y);
 						AddPathPoint(paths, x + cl, y, x, y - cl);
 						AddPathPoint(paths, x, y - cl, x - cl, y);
+					}
+				}
+			}
+			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewZigZag)
+			{
+				double hs = step / 2;	//halfstep
+				double ds = step * 2;	//doublestep
+
+				for (double y = step ; y < w + h + step; y += 2*step)
+				{
+					double my = y - hs;
+					double mx = 0;
+
+					while (my > 0)
+					{
+						AddPathPoint(paths, mx, my, mx + hs, my);
+						AddPathPoint(paths, mx + hs, my, mx + hs, my - hs);
+						my -= hs;
+						mx += hs;
+					}
+				}
+
+				for (double x = 2 * step; x < w + h + step; x += 2 * step)
+				{
+					double mx = x - hs;
+					double my = 0;
+
+					while (mx > 0)
+					{
+						AddPathPoint(paths, mx, my, mx , my + hs);
+						AddPathPoint(paths, mx, my + hs, mx - hs, my + hs);
+						my += hs;
+						mx -= hs;
 					}
 				}
 			}
