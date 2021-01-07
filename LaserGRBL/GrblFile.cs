@@ -791,10 +791,10 @@ namespace LaserGRBL
 					}
 					else
 					{
-						double sq =SquareDistance(a2, b1);
-						double af = 1;// DirectionChange(a1, a2, b1, 50);
+						double sq =	SquareDistance(a2, b1);
+						//double af = DirectionChange(a1, a2, b1);
 
-						distBA[c1, c2] = sq * (af * af);
+						distBA[c1, c2] = sq;
 					}
 				}
 
@@ -854,14 +854,14 @@ namespace LaserGRBL
 			return ((a.X * a.X) + (a.Y * a.Y));
 		}
 
-		//questo metodo ritorna un fattore 1 se c'è continuità di direzione, weight se c'è inversione totale
-		private double DirectionChange(dPoint a1, dPoint a2, dPoint b1, double weight)
+		//questo metodo ritorna un fattore 0 se c'è continuità di direzione, 0.5 su angolo 90°, 1 se c'è inversione totale (180°)
+		private double DirectionChange(dPoint a1, dPoint a2, dPoint b1)
 		{
 			double angleA = Math.Atan2(a2.Y - a1.Y, a2.X - a1.X); //angolo del segmento corrente
 			double angleB = Math.Atan2(b1.Y - a2.Y, b1.X - a2.X); //angolo della retta congiungente
 
 			double angleAB = Math.Abs(angleB - angleA); //0 se stessa direzione, pigreco se inverte direzione
-			double factor = 1 + (angleAB / Math.PI) * (weight - 1); //1 se stessa direzione, weight se inverte direzione
+			double factor = angleAB / Math.PI;
 			return factor;
 		}
 
