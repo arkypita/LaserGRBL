@@ -203,85 +203,108 @@ namespace CsPotrace
 			{
 				bool pari = true;
 				for (double i = 0; i < (2 * Math.Max(w, h)) + dstep; i += dstep, pari = !pari)
-					AddPathPoint(paths, 0, (h - i), i, h, pari);
+					AddPathPoint(paths, 0, h - i, i, h, pari);
 			}
 
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewCross)
 			{
 				double cl = step / 3; //cross len
 
-				//stanghette orizzontali
-				bool pari = true;
-				for (double y = 0; y < h + step; y += step, pari = !pari)
-					for (double x = 0; x < w + step; x += step)
-						AddPathPoint(paths, x-cl, y, x+cl, y, pari);
-				
-				//stanghette verticali
-				pari = true;
-				for (double x = 0; x < w + step; x += step, pari = !pari)
-					for (double y = 0; y < h + step; y += step)
-						AddPathPoint(paths, x, y - cl, x, y + cl, pari);
 
+				bool yp = true;
+				for (double y = 0; y < h + step; y += step, yp = !yp)
+				{
+					bool xp = true;
+					for (double x = 0; x < w + step; x += step, xp = !xp)
+					{
+						AddPathPoint(paths, x - cl, y, x + cl, y, yp);	//stanghette orizzontali
+						AddPathPoint(paths, x, y - cl, x, y + cl, xp);  //stanghette verticali
+					}
+				}
 			}
 
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewDiagonalCross)
 			{
 				double cl = rdstep / 3; //cross len
 
-				//stanghette alto-basso
+				//stanghette basso-alto alto-basso
+				//e riga successiva invertita
+				int yp = 0;
 				for (double y = 0; y < h + step; y += step)
+				{
+					int xp = yp++ % 2;
 					for (double x = 0; x < w + step; x += step)
-						AddPathPoint(paths, x - cl, y - cl, x + cl, y + cl);
-
-				//stanghette basso-alto
-				for (double x = 0; x < w + step; x += step)
-					for (double y = 0; y < h + step; y += step)
-						AddPathPoint(paths, x - cl, y + cl, x + cl, y - cl);
+					{
+						if (xp++ % 2 == 0)
+						{
+							AddPathPoint(paths, x - cl, y - cl, x + cl, y + cl);
+							AddPathPoint(paths, x - cl, y + cl, x + cl, y - cl);
+						}
+						else
+						{
+							AddPathPoint(paths, x - cl, y + cl, x + cl, y - cl);
+							AddPathPoint(paths, x - cl, y - cl, x + cl, y + cl);
+						}
+					}
+				}
 			}
-
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewSquares)
 			{
 
 
-				double crosslen = step / 3 * resolution;
-				double x = 0;
-				while (x <= w + step)
+				double cl = step / 3; //cross len
+
+				for (double y = 0; y < h + step; y += step)
 				{
-					double xPres = x * resolution;
-
-					double y = 0;
-					while (y <= h + step)
+					for (double x = 0; x < w + step; x += step)
 					{
-						double yPres = y * resolution;
 
-						paths.Add(new List<IntPoint>()
-						{
-							new IntPoint(xPres - crosslen, yPres),
-							new IntPoint(xPres, yPres + crosslen),
-						});
-
-						paths.Add(new List<IntPoint>()
-						{
-							new IntPoint(xPres, yPres + crosslen),
-							new IntPoint(xPres + crosslen, yPres),
-						});
-
-						paths.Add(new List<IntPoint>()
-						{
-							new IntPoint(xPres + crosslen, yPres),
-							new IntPoint(xPres, yPres - crosslen),
-						});
-
-						paths.Add(new List<IntPoint>()
-						{
-							new IntPoint(xPres, yPres - crosslen),
-							new IntPoint(xPres - crosslen, yPres)
-						});
-
-						y += step;
+						AddPathPoint(paths, x - cl, y, x, y + cl);
+						AddPathPoint(paths, x, y + cl, x + cl, y);
+						AddPathPoint(paths, x + cl, y, x, y - cl);
+						AddPathPoint(paths, x, y - cl, x - cl, y);
 					}
-					x += step;
 				}
+
+				//double cl = step / 3 * resolution;
+				//double x = 0;
+				//while (x <= w + step)
+				//{
+				//	double xPres = x * resolution;
+
+				//	double y = 0;
+				//	while (y <= h + step)
+				//	{
+				//		double yPres = y * resolution;
+
+				//		paths.Add(new List<IntPoint>()
+				//		{
+				//			new IntPoint(xPres - cl, yPres),
+				//			new IntPoint(xPres, yPres + cl),
+				//		});
+
+				//		paths.Add(new List<IntPoint>()
+				//		{
+				//			new IntPoint(xPres, yPres + cl),
+				//			new IntPoint(xPres + cl, yPres),
+				//		});
+
+				//		paths.Add(new List<IntPoint>()
+				//		{
+				//			new IntPoint(xPres + cl, yPres),
+				//			new IntPoint(xPres, yPres - cl),
+				//		});
+
+				//		paths.Add(new List<IntPoint>()
+				//		{
+				//			new IntPoint(xPres, yPres - cl),
+				//			new IntPoint(xPres - cl, yPres)
+				//		});
+
+				//		y += step;
+				//	}
+				//	x += step;
+				//}
 			}
 
 			long t2 = Tools.HiResTimer.TotalMilliseconds;
