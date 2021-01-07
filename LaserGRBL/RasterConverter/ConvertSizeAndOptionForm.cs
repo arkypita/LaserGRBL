@@ -19,6 +19,21 @@ namespace LaserGRBL.RasterConverter
 		GrblCore mCore;
 		bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
+		public ComboboxItem[] LaserOptions = new ComboboxItem[] { new ComboboxItem("M3 - Constant Power", "M3"), new ComboboxItem("M4 - Dynamic Power", "M4") };
+		public class ComboboxItem
+		{
+			public string Text { get; set; }
+			public object Value { get; set; }
+
+			public ComboboxItem(string text, object value)
+			{ Text = text; Value = value; }
+
+			public override string ToString()
+			{
+				return Text;
+			}
+		}
+
 		public ConvertSizeAndOptionForm(GrblCore core)
 		{
 			InitializeComponent();
@@ -31,9 +46,8 @@ namespace LaserGRBL.RasterConverter
 			LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
 			AssignMinMaxLimit();
 
-			CBLaserON.Items.Add("M3");
-			if (core.Configuration.LaserMode)
-				CBLaserON.Items.Add("M4");
+			CBLaserON.Items.Add(LaserOptions[0]);
+			CBLaserON.Items.Add(LaserOptions[1]);
 
 			// For Marlin, we must change LaserOn & Laser Off command :
 			//if (core.Type != Firmware.Marlin)
@@ -99,17 +113,17 @@ namespace LaserGRBL.RasterConverter
 
 			IP.LaserOn = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
 
-			if (CBLaserON.Items.Contains(IP.LaserOn))
-				CBLaserON.SelectedItem = IP.LaserOn;
+			if (IP.LaserOn == "M3" || !mCore.Configuration.LaserMode)
+				CBLaserON.SelectedItem = LaserOptions[0];
 			else
-				CBLaserON.SelectedIndex = 0;
+				CBLaserON.SelectedItem = LaserOptions[1];
 
-			IP.LaserOff = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
+			IP.LaserOff = "M5"; //Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
 
-			if (CBLaserOFF.Items.Contains(IP.LaserOff))
-				CBLaserOFF.SelectedItem = IP.LaserOff;
-			else
-				CBLaserOFF.SelectedIndex = 0;
+			//if (CBLaserOFF.Items.Contains(IP.LaserOff))
+			//	CBLaserOFF.SelectedItem = IP.LaserOff;
+			//else
+			//	CBLaserOFF.SelectedIndex = 0;
 
 			IIMinPower.CurrentValue = IP.MinPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
 			IIMaxPower.CurrentValue = IP.MaxPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", (int)mCore.Configuration.MaxPWM);
@@ -121,6 +135,7 @@ namespace LaserGRBL.RasterConverter
 			IIOffsetX.CurrentValue = IP.TargetOffset.X = Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F);
 			IIOffsetY.CurrentValue = IP.TargetOffset.Y = Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F);
 
+			RefreshPerc();
 			ShowDialog(parent);
 		}
 
@@ -155,6 +170,7 @@ namespace LaserGRBL.RasterConverter
 				IIMaxPower.CurrentValue = NewValue + 1;
 
 			IP.MinPower = NewValue;
+			RefreshPerc();
 		}
 		void IIMaxPowerCurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
 		{
@@ -162,6 +178,21 @@ namespace LaserGRBL.RasterConverter
 				IIMinPower.CurrentValue = NewValue - 1;
 
 			IP.MaxPower = NewValue;
+			RefreshPerc();
+		}
+
+		private void RefreshPerc()
+		{
+			if (mCore?.Configuration != null)
+				LblMaxPerc.Text = (IIMaxPower.CurrentValue / mCore.Configuration.MaxPWM).ToString("P1");
+			else
+				LblMaxPerc.Text = "";
+
+
+			if (mCore?.Configuration != null)
+				LblMinPerc.Text = (IIMinPower.CurrentValue / mCore.Configuration.MaxPWM).ToString("P1");
+			else
+				LblMinPerc.Text = "";
 		}
 
 		private void BtnOnOffInfo_Click(object sender, EventArgs e)
@@ -176,13 +207,23 @@ namespace LaserGRBL.RasterConverter
 
 		private void CBLaserON_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			IP.LaserOn = (string)CBLaserON.SelectedItem;
+			ComboboxItem mode = CBLaserON.SelectedItem as ComboboxItem;
+
+			if (mode != null)
+			{
+				if (!mCore.Configuration.LaserMode && (mode.Value as string) == "M4")
+					MessageBox.Show(Strings.WarnWrongLaserMode, Strings.WarnWrongLaserModeTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);//warning!!
+
+				IP.LaserOn = mode.Value as string;
+			} 
+			else
+				IP.LaserOn = "M3";
 		}
 
-		private void CBLaserOFF_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			IP.LaserOff = (string)CBLaserOFF.SelectedItem;
-		}
+		//private void CBLaserOFF_SelectedIndexChanged(object sender, EventArgs e)
+		//{
+		//	IP.LaserOff = (string)CBLaserOFF.SelectedItem;
+		//}
 
 		private void IISizeW_OnTheFlyValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
 		{

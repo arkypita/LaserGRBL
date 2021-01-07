@@ -852,5 +852,24 @@ namespace LaserGRBL {
                 return ResourceManager.GetString("WarnSoftLimitTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a &quot;M4 Dynamic Laser Power Mode&quot; has been set, but your engraver doesn&apos;t seem to support it.
+        ///Only engravers with grbl version &gt;= 1.1 with &quot;laser mode&quot; enabled ($32=1) can take advantage of M4 option..
+        /// </summary>
+        internal static string WarnWrongLaserMode {
+            get {
+                return ResourceManager.GetString("WarnWrongLaserMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Warning.
+        /// </summary>
+        internal static string WarnWrongLaserModeTitle {
+            get {
+                return ResourceManager.GetString("WarnWrongLaserModeTitle", resourceCulture);
+            }
+        }
     }
 }

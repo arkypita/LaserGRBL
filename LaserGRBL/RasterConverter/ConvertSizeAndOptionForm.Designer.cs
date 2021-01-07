@@ -35,12 +35,11 @@ namespace LaserGRBL.RasterConverter
 		private System.Windows.Forms.Label LblLinearFilling;
 		private System.Windows.Forms.GroupBox GbLaser;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-		private System.Windows.Forms.Label label26;
 		private System.Windows.Forms.Label LblSmin;
 		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IIMinPower;
 		private System.Windows.Forms.Label LblSmax;
 		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IIMaxPower;
-		private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.Label LblLaserMode;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.Button BtnCreate;
 		private System.Windows.Forms.Button BtnCancel;
@@ -91,16 +90,16 @@ namespace LaserGRBL.RasterConverter
 			this.LblLinearFilling = new System.Windows.Forms.Label();
 			this.GbLaser = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-			this.label26 = new System.Windows.Forms.Label();
 			this.LblSmin = new System.Windows.Forms.Label();
 			this.LblSmax = new System.Windows.Forms.Label();
-			this.label18 = new System.Windows.Forms.Label();
+			this.LblLaserMode = new System.Windows.Forms.Label();
 			this.CBLaserON = new System.Windows.Forms.ComboBox();
-			this.CBLaserOFF = new System.Windows.Forms.ComboBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
+			this.LblMinPerc = new System.Windows.Forms.Label();
+			this.LblMaxPerc = new System.Windows.Forms.Label();
 			this.IIOffsetX = new LaserGRBL.UserControls.NumericInput.DecimalInputRanged();
 			this.IIOffsetY = new LaserGRBL.UserControls.NumericInput.DecimalInputRanged();
 			this.IISizeH = new LaserGRBL.UserControls.NumericInput.DecimalInputRanged();
@@ -236,7 +235,7 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel6.Controls.Add(this.IILinearFilling, 1, 1);
 			this.tableLayoutPanel6.Controls.Add(this.LblLinearFillingmm, 2, 1);
 			this.tableLayoutPanel6.Controls.Add(this.LblLinearFilling, 0, 1);
-			this.tableLayoutPanel6.Controls.Add(this.BtnPSHelper, 3, 0);
+			this.tableLayoutPanel6.Controls.Add(this.BtnPSHelper, 4, 0);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
 			// 
 			// LblBorderTracing
@@ -269,22 +268,17 @@ namespace LaserGRBL.RasterConverter
 			// tableLayoutPanel7
 			// 
 			resources.ApplyResources(this.tableLayoutPanel7, "tableLayoutPanel7");
-			this.tableLayoutPanel7.Controls.Add(this.BtnModulationInfo, 4, 1);
-			this.tableLayoutPanel7.Controls.Add(this.label26, 2, 0);
+			this.tableLayoutPanel7.Controls.Add(this.BtnModulationInfo, 3, 1);
 			this.tableLayoutPanel7.Controls.Add(this.LblSmin, 0, 1);
 			this.tableLayoutPanel7.Controls.Add(this.IIMinPower, 1, 1);
-			this.tableLayoutPanel7.Controls.Add(this.LblSmax, 2, 1);
-			this.tableLayoutPanel7.Controls.Add(this.IIMaxPower, 3, 1);
-			this.tableLayoutPanel7.Controls.Add(this.label18, 0, 0);
-			this.tableLayoutPanel7.Controls.Add(this.BtnOnOffInfo, 4, 0);
+			this.tableLayoutPanel7.Controls.Add(this.LblLaserMode, 0, 0);
+			this.tableLayoutPanel7.Controls.Add(this.BtnOnOffInfo, 3, 0);
 			this.tableLayoutPanel7.Controls.Add(this.CBLaserON, 1, 0);
-			this.tableLayoutPanel7.Controls.Add(this.CBLaserOFF, 3, 0);
+			this.tableLayoutPanel7.Controls.Add(this.LblSmax, 0, 2);
+			this.tableLayoutPanel7.Controls.Add(this.IIMaxPower, 1, 2);
+			this.tableLayoutPanel7.Controls.Add(this.LblMinPerc, 2, 1);
+			this.tableLayoutPanel7.Controls.Add(this.LblMaxPerc, 2, 2);
 			this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-			// 
-			// label26
-			// 
-			resources.ApplyResources(this.label26, "label26");
-			this.label26.Name = "label26";
 			// 
 			// LblSmin
 			// 
@@ -296,28 +290,19 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.LblSmax, "LblSmax");
 			this.LblSmax.Name = "LblSmax";
 			// 
-			// label18
+			// LblLaserMode
 			// 
-			resources.ApplyResources(this.label18, "label18");
-			this.label18.Name = "label18";
+			resources.ApplyResources(this.LblLaserMode, "LblLaserMode");
+			this.LblLaserMode.Name = "LblLaserMode";
 			// 
 			// CBLaserON
 			// 
+			this.tableLayoutPanel7.SetColumnSpan(this.CBLaserON, 2);
+			resources.ApplyResources(this.CBLaserON, "CBLaserON");
 			this.CBLaserON.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CBLaserON.FormattingEnabled = true;
-			resources.ApplyResources(this.CBLaserON, "CBLaserON");
 			this.CBLaserON.Name = "CBLaserON";
 			this.CBLaserON.SelectedIndexChanged += new System.EventHandler(this.CBLaserON_SelectedIndexChanged);
-			// 
-			// CBLaserOFF
-			// 
-			this.CBLaserOFF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CBLaserOFF.FormattingEnabled = true;
-			this.CBLaserOFF.Items.AddRange(new object[] {
-            resources.GetString("CBLaserOFF.Items")});
-			resources.ApplyResources(this.CBLaserOFF, "CBLaserOFF");
-			this.CBLaserOFF.Name = "CBLaserOFF";
-			this.CBLaserOFF.SelectedIndexChanged += new System.EventHandler(this.CBLaserOFF_SelectedIndexChanged);
 			// 
 			// tableLayoutPanel1
 			// 
@@ -345,6 +330,16 @@ namespace LaserGRBL.RasterConverter
 			this.TT.AutoPopDelay = 10000;
 			this.TT.InitialDelay = 500;
 			this.TT.ReshowDelay = 100;
+			// 
+			// LblMinPerc
+			// 
+			resources.ApplyResources(this.LblMinPerc, "LblMinPerc");
+			this.LblMinPerc.Name = "LblMinPerc";
+			// 
+			// LblMaxPerc
+			// 
+			resources.ApplyResources(this.LblMaxPerc, "LblMaxPerc");
+			this.LblMaxPerc.Name = "LblMaxPerc";
 			// 
 			// IIOffsetX
 			// 
@@ -498,6 +493,7 @@ namespace LaserGRBL.RasterConverter
 			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
 			this.BtnModulationInfo.Name = "BtnModulationInfo";
+			this.tableLayoutPanel7.SetRowSpan(this.BtnModulationInfo, 2);
 			this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.TT.SetToolTip(this.BtnModulationInfo, resources.GetString("BtnModulationInfo.ToolTip"));
 			this.BtnModulationInfo.UseAltImage = false;
@@ -573,7 +569,6 @@ namespace LaserGRBL.RasterConverter
 		private UserControls.ImageButton BtnModulationInfo;
 		private UserControls.ImageButton BtnOnOffInfo;
 		private System.Windows.Forms.ComboBox CBLaserON;
-		private System.Windows.Forms.ComboBox CBLaserOFF;
 		private System.Windows.Forms.ToolTip TT;
 		private System.Windows.Forms.Label LblBorderTracingmm;
 		private System.Windows.Forms.Label LblLinearFillingmm;
@@ -586,5 +581,7 @@ namespace LaserGRBL.RasterConverter
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
 		private UserControls.ImageButton BtnReset;
 		private UserControls.ImageButton BtnCenter;
+		private System.Windows.Forms.Label LblMinPerc;
+		private System.Windows.Forms.Label LblMaxPerc;
 	}
 }
