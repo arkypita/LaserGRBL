@@ -769,36 +769,41 @@ namespace LaserGRBL
 			if (list.Count <= 1)
 				return list;
 
+			dPoint Origin = new dPoint(0, 0);
+			int nearestToZero = 0;
+			double bestDistanceToZero = Double.MaxValue;
+
 			//Order all paths in list to reduce travel distance
 			//Calculate and store all distances in a matrix
-			var distBA = new double[list.Count, list.Count];        //array bidimensionale delle distanze dal punto finale della curva 1 al punto iniziale della curva 2
-
+			double[,] distBA = new double[list.Count, list.Count];        //array bidimensionale delle distanze dal punto finale della curva 1 al punto iniziale della curva 2
 			for (int c1 = 0; c1 < list.Count; c1++)                 //ciclo due volte sulla lista di curve
 			{
+				dPoint a1 = list[c1].First().A;     //primo segmento (percorso), inizio
+				dPoint a2 = list[c1].Last().B;      //primo segmento (percorso), fine
+
 				for (int c2 = 0; c2 < list.Count; c2++)             //con due indici diversi c1, c2
 				{
-					if (c1 == 0 && c2 == 0)
-					{
-						distBA[c1, c2] = 0; //il primo dista zero, così siamo sicuri di partire da lui (sotto: if (dist < bestDistance))
-					}
-					else if (c1 == c2) 
+					dPoint b1 = list[c2].First().A;     //secondo segmento (percorso), inizio
+
+					if (c1 == c2) 
 					{
 						distBA[c1, c2] = double.MaxValue;  //distanza del punto con se stesso (caso degenere)
 					}
 					else
-					{ 
-						dPoint a1 = list[c1].First().A;		//primo segmento (percorso), inizio
-						dPoint a2 = list[c1].Last().B;      //primo segmento (percorso), fine
-						dPoint b1 = list[c2].First().A;     //secondo segmento (percorso), inizio
-						//dPoint b2 = list[c2].Last().B;      //secondo segmento (percorso), fine
+					{
+						double sq =SquareDistance(a2, b1);
+						double af = 1;// DirectionChange(a1, a2, b1, 50);
 
-						var dX = b1.X - a2.X;
-						var dY = b1.Y - a2.Y;
-
-						var af = 1; // DirectionChange(a1, a2, b1, 50);
-
-						distBA[c1, c2] = ((dX * dX) + (dY * dY)) * (af * af);
+						distBA[c1, c2] = sq * (af * af);
 					}
+				}
+
+				//trova quello che parte più vicino allo zero
+				double distZero = SquareDistanceZero(a1);
+				if (distZero < bestDistanceToZero)
+				{
+					nearestToZero = c1;
+					bestDistanceToZero = distZero;
 				}
 			}
 
@@ -808,17 +813,19 @@ namespace LaserGRBL
 			//Pick nearest points
 			List<List<CsPotrace.Curve>> bestPath = new List<List<Curve>>();
 
-			//Save starting point index
-			var lastIndex = 0;
-
+			//parti da quello individuato come "il più vicino allo zero"
+			bestPath.Add(list[nearestToZero]);
+			unvisited.Remove(nearestToZero);
+			int lastIndex = nearestToZero;
+			
 			while (unvisited.Count > 0)
 			{
-				var bestIndex = 0;
-				var bestDistance = double.MaxValue;
+				int bestIndex = 0;
+				double bestDistance = double.MaxValue;
 
-				foreach (var nextIndex in unvisited)                    //cicla tutti gli "unvisited" rimanenti
+				foreach (int nextIndex in unvisited)                    //cicla tutti gli "unvisited" rimanenti
 				{
-					var dist = distBA[lastIndex, nextIndex];
+					double dist = distBA[lastIndex, nextIndex];
 					if (dist < bestDistance)
 					{
 						bestIndex = nextIndex;                    //salva il bestIndex
@@ -831,10 +838,20 @@ namespace LaserGRBL
 
 				//Save nearest point
 				lastIndex = bestIndex;                   //l'ultimo miglior indice trovato diventa il prossimo punto da analizzare			
-
 			}
 
 			return bestPath;
+		}
+
+		private static double SquareDistance(dPoint a, dPoint b)
+		{
+			double dX = b.X - a.X;
+			double dY = b.Y - a.Y;
+			return ((dX * dX) + (dY * dY));
+		}
+		private static double SquareDistanceZero(dPoint a)
+		{
+			return ((a.X * a.X) + (a.Y * a.Y));
 		}
 
 		//questo metodo ritorna un fattore 1 se c'è continuità di direzione, weight se c'è inversione totale
