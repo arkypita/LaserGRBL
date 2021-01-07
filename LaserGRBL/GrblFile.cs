@@ -779,7 +779,7 @@ namespace LaserGRBL
 			for (int c1 = 0; c1 < list.Count; c1++)                 //ciclo due volte sulla lista di curve
 			{
 				dPoint c1fa = list[c1].First().A;	//punto iniziale del primo segmento del percorso (per calcolo distanza dallo zero)
-				dPoint c1la = list[c1].Last().A;	//punto iniziale dell'ulimo segmento del percorso (per calcolo direzione di uscita)
+				//dPoint c1la = list[c1].Last().A;	//punto iniziale dell'ulimo segmento del percorso (per calcolo direzione di uscita)
 				dPoint c1lb = list[c1].Last().B;	//punto finale dell'ultimo segmento del percorso (per calcolo distanza tra percorsi e direzione di uscita e ingresso)
 				
 
@@ -794,7 +794,7 @@ namespace LaserGRBL
 					else
 					{
 						double sq =	SquareDistance(c1lb, c2fa);
-						double af = DirectionChange(c1la, c1lb, c2fa);
+						//double af = DirectionChange(c1la, c1lb, c2fa);
 
 						distBA[c1, c2] = sq;
 					}
