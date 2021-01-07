@@ -48,7 +48,7 @@ namespace CsPotrace
 				//result.AddLine(pts[0], pts[1]);
 			}
 
-
+			flist.Reverse();
 			return flist;
 		}
 

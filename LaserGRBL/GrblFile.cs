@@ -305,16 +305,8 @@ namespace LaserGRBL
 
 			if (VectorFilling(c.dir))
 			{
-				long t1 = Tools.HiResTimer.TotalMilliseconds;
 				flist = PotraceClipper.BuildFilling(plist, c.res / c.fres, bmp.Width, bmp.Height, c.dir);
-				long t2 = Tools.HiResTimer.TotalMilliseconds;
-
-				System.Diagnostics.Debug.WriteLine($"BuildFilling = {t2 - t1}ms");
-
-				flist = ParallelOptimizeFillingPaths(flist);
-				long t3 = Tools.HiResTimer.TotalMilliseconds;
-
-				System.Diagnostics.Debug.WriteLine($"OptimizeFilling = {t3 - t2}ms");
+				flist = ParallelOptimizePaths(flist);
 			}
 			if (RasterFilling(c.dir))
 			{
@@ -377,6 +369,8 @@ namespace LaserGRBL
 				//Optimize fast movement
 				if (useOptimizeFast)
 					plist = OptimizePaths(plist);
+				else
+					plist.Reverse(); //la lista viene fornita da potrace con prima esterni e poi interni, ma per il taglio è meglio il contrario
 
 				List<string> gc = new List<string>();
 				if (supportPWM)
@@ -735,19 +729,19 @@ namespace LaserGRBL
 			prevCol = col;
 		}
 
-		private List<List<Curve>> ParallelOptimizeFillingPaths(List<List<Curve>> list)
+		private List<List<Curve>> ParallelOptimizePaths(List<List<Curve>> list)
 		{
 			int maxblocksize = 2048;    //max number of List<Curve> to process in a single OptimizePaths operation
 
 			int blocknum = (int)Math.Ceiling(list.Count / (double)maxblocksize);
 			if (blocknum <= 1)
-				return OptimizeFillingPaths(list);
+				return OptimizePaths(list);
 
 			System.Diagnostics.Debug.WriteLine("Count: " + list.Count);
 
 			Task<List<List<Curve>>>[] taskArray = new Task<List<List<Curve>>>[blocknum];
 			for (int i = 0; i < taskArray.Length; i++)
-				taskArray[i] = Task.Factory.StartNew((data) => OptimizeFillingPaths((List<List<Curve>>)data), GetTaskJob(i, taskArray.Length, list));
+				taskArray[i] = Task.Factory.StartNew((data) => OptimizePaths((List<List<Curve>>)data), GetTaskJob(i, taskArray.Length, list));
 			Task.WaitAll(taskArray);
 
 			List<List<Curve>> rv = new List<List<Curve>>();
@@ -770,173 +764,109 @@ namespace LaserGRBL
 			return rv;
 		}
 
-		private List<List<Curve>> OptimizeFillingPaths(List<List<Curve>> list)
-		{
-			if (list.Count == 1)
-				return list;
-
-			//Order all paths in list to reduce travel distance
-			//Calculate and store all distances in a matrix
-			var distancesA = new double[list.Count, list.Count];    //array bidimensionale delle distanze tra ogni punto e gli altri punti
-			var distancesB = new double[list.Count, list.Count];    //array bidimensionale delle distanze tra ogni punto e gli altri punti
-
-			for (int p1 = 0; p1 < list.Count; p1++)                 //ciclo due volte su list
-			{
-				for (int p2 = 0; p2 < list.Count; p2++)             //con due indici diversi p1, p2
-				{
-					var dxA = list[p1][0].B.X - list[p2][0].A.X;    //deltaX punto finale p1 con punto iniziale p2
-					var dyA = list[p1][0].B.Y - list[p2][0].A.Y;    //deltaY punto finale p1 con punto iniziale p2
-
-					var dxB = list[p1][0].B.X - list[p2][0].B.X;    //deltaX punto finale p1 con punto finale p2
-					var dyB = list[p1][0].B.Y - list[p2][0].B.Y;    //deltaY punto finale p1 con punto finale p2
-
-					if (p1 != p2)
-					{
-						distancesA[p1, p2] = (dxA * dxA) + (dyA * dyA); //distanza di p1 dal punto iniziale di p2
-						distancesB[p1, p2] = double.MaxValue;	// (dxB * dxB) + (dyB * dyB); //distanza di p1 dal punto finale di p2
-					}
-					else                                                //distanza del punto con se stesso (caso degenere)
-					{
-						distancesA[p1, p2] = double.MaxValue;
-						distancesB[p1, p2] = double.MaxValue;
-					}
-				}
-			}
-
-			List<List<Curve>> best = new List<List<Curve>>();
-			var bestTotDistance = double.MaxValue;
-
-			//Create a list of unvisited places
-			List<int> unvisited = Enumerable.Range(0, list.Count).ToList();
-
-			//Pick nearest points
-			List<List<CsPotrace.Curve>> nearest = new List<List<Curve>>();
-
-			//Save starting point index
-			var lastIndex = 0;
-			var totDistance = 0.0;
-			while (unvisited.Count > 0)
-			{
-				var bestIndex = 0;
-				var bestDistance = double.MaxValue;
-				var reverseAB = false;
-				foreach (var nextIndex in unvisited)                    //cicla tutti gli "unvisited" rimanenti
-				{
-					var distA = distancesA[nextIndex, lastIndex];       //distanza A (al punto iniziale) tra corrente (nextIndex) e ultimo analizzato (lastIndex)
-					var distB = distancesB[nextIndex, lastIndex];       //distanza B (al punto finale) tra corrente (nextIndex) e ultimo analizzato (lastIndex)
-
-					if (distA < bestDistance)                           //se il corrente fornisce un risultato migliore
-					{
-						bestIndex = nextIndex;                          //salva il bestIndex
-						bestDistance = distA;                           //salva come risultato migliore
-						reverseAB = false;
-					}
-					if (distB < bestDistance)                           //idem, ma su punto finale
-					{
-						bestIndex = nextIndex;
-						bestDistance = distB;
-						reverseAB = true;
-					}
-
-				}
-
-				var curve = list[bestIndex];
-				if (reverseAB)                                          //fai l'inversione della curva se per caso era meglio la distanza con il punto finale
-				{
-					
-					for (int i = 0; i < curve.Count; i++)
-					{
-						var A = curve[i].A;
-						var B = curve[i].B;
-						var cpA = curve[i].ControlPointA;
-						var cpB = curve[i].ControlPointB;
-						curve[i] = new Curve(curve[i].Kind, B, A, cpB, cpA);
-					}
-				}
-				nearest.Add(curve);
-
-				unvisited.Remove(bestIndex);
-				totDistance += bestDistance;
-
-				//Save nearest point
-				lastIndex = bestIndex;                                  //l'ultimo analizzato diventa quello che risulta come bestIndex
-			}
-
-			//Count traveled distance
-			if (totDistance < bestTotDistance)      //serve a qualcosa? sempre true (bestTotDistance = double.MaxValue)
-			{
-				bestTotDistance = totDistance;
-				//Save best list
-				best = nearest;
-			}
-
-			return best;
-		}
-
 		private List<List<Curve>> OptimizePaths(List<List<Curve>> list)
 		{
-			if (list.Count == 1)
+			if (list.Count <= 1)
 				return list;
+
+			dPoint Origin = new dPoint(0, 0);
+			int nearestToZero = 0;
+			double bestDistanceToZero = Double.MaxValue;
 
 			//Order all paths in list to reduce travel distance
 			//Calculate and store all distances in a matrix
-			var distances = new double[list.Count, list.Count];
-			for (int p1 = 0; p1 < list.Count; p1++)
+			double[,] distBA = new double[list.Count, list.Count];        //array bidimensionale delle distanze dal punto finale della curva 1 al punto iniziale della curva 2
+			for (int c1 = 0; c1 < list.Count; c1++)                 //ciclo due volte sulla lista di curve
 			{
-				for (int p2 = 0; p2 < list.Count; p2++)
+				dPoint c1fa = list[c1].First().A;	//punto iniziale del primo segmento del percorso (per calcolo distanza dallo zero)
+				//dPoint c1la = list[c1].Last().A;	//punto iniziale dell'ulimo segmento del percorso (per calcolo direzione di uscita)
+				dPoint c1lb = list[c1].Last().B;	//punto finale dell'ultimo segmento del percorso (per calcolo distanza tra percorsi e direzione di uscita e ingresso)
+				
+
+				for (int c2 = 0; c2 < list.Count; c2++)             //con due indici diversi c1, c2
 				{
-					var dx = list[p1][0].A.X - list[p2][0].A.X;
-					var dy = list[p1][0].A.Y - list[p2][0].A.Y;
-					if (p1 != p2)
-						distances[p1, p2] = Math.Sqrt((dx * dx) + (dy * dy));
+					dPoint c2fa = list[c2].First().A;     //punto iniziale del primo segmento del percorso (per calcolo distanza tra percorsi e direzione di ingresso)
+
+					if (c1 == c2) 
+					{
+						distBA[c1, c2] = double.MaxValue;  //distanza del punto con se stesso (caso degenere)
+					}
 					else
-						distances[p1, p2] = double.MaxValue;
+					{
+						double sq =	SquareDistance(c1lb, c2fa);
+						//double af = DirectionChange(c1la, c1lb, c2fa);
+
+						distBA[c1, c2] = sq;
+					}
+				}
+
+				//trova quello che parte più vicino allo zero
+				double distZero = SquareDistanceZero(c1fa);
+				if (distZero < bestDistanceToZero)
+				{
+					nearestToZero = c1;
+					bestDistanceToZero = distZero;
 				}
 			}
-
-			List<List<CsPotrace.Curve>> best = new List<List<Curve>>();
-			var bestTotDistance = double.MaxValue;
 
 			//Create a list of unvisited places
 			List<int> unvisited = Enumerable.Range(0, list.Count).ToList();
 
 			//Pick nearest points
-			List<List<CsPotrace.Curve>> nearest = new List<List<Curve>>();
+			List<List<CsPotrace.Curve>> bestPath = new List<List<Curve>>();
 
-			//Save starting point index
-			var lastIndex = 0;
-			var totDistance = 0.0;
+			//parti da quello individuato come "il più vicino allo zero"
+			bestPath.Add(list[nearestToZero]);
+			unvisited.Remove(nearestToZero);
+			int lastIndex = nearestToZero;
+			
 			while (unvisited.Count > 0)
 			{
-				var bestIndex = 0;
-				var bestDistance = double.MaxValue;
-				foreach (var nextIndex in unvisited)
+				int bestIndex = 0;
+				double bestDistance = double.MaxValue;
+
+				foreach (int nextIndex in unvisited)                    //cicla tutti gli "unvisited" rimanenti
 				{
-					var dist = distances[nextIndex, lastIndex];
+					double dist = distBA[lastIndex, nextIndex];
 					if (dist < bestDistance)
 					{
-						bestIndex = nextIndex;
-						bestDistance = dist;
+						bestIndex = nextIndex;                    //salva il bestIndex
+						bestDistance = dist;                      //salva come risultato migliore                        
 					}
 				}
 
+				bestPath.Add(list[bestIndex]);
+				unvisited.Remove(bestIndex);
+
 				//Save nearest point
-				lastIndex = bestIndex;
-				nearest.Add(list[lastIndex]);
-				unvisited.Remove(lastIndex);
-				totDistance += bestDistance;
+				lastIndex = bestIndex;                   //l'ultimo miglior indice trovato diventa il prossimo punto da analizzare			
 			}
 
-			//Count traveled distance
-			if (totDistance < bestTotDistance)
-			{
-				bestTotDistance = totDistance;
-				//Save best list
-				best = nearest;
-			}
-
-			return best;
+			return bestPath;
 		}
+
+		private static double SquareDistance(dPoint a, dPoint b)
+		{
+			double dX = b.X - a.X;
+			double dY = b.Y - a.Y;
+			return ((dX * dX) + (dY * dY));
+		}
+		private static double SquareDistanceZero(dPoint a)
+		{
+			return ((a.X * a.X) + (a.Y * a.Y));
+		}
+
+		//questo metodo ritorna un fattore 0 se c'è continuità di direzione, 0.5 su angolo 90°, 1 se c'è inversione totale (180°)
+		private double DirectionChange(dPoint a1, dPoint a2, dPoint b1)
+		{
+			double angleA = Math.Atan2(a2.Y - a1.Y, a2.X - a1.X); //angolo del segmento corrente
+			double angleB = Math.Atan2(b1.Y - a2.Y, b1.X - a2.X); //angolo della retta congiungente
+
+			double angleAB = Math.Abs(angleB - angleA); //0 se stessa direzione, pigreco se inverte direzione
+			double factor = angleAB / Math.PI;
+			return factor;
+		}
+
 
 		private int GetColor(Bitmap I, int X, int Y, int min, int max, bool pwm)
 		{
