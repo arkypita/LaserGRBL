@@ -265,46 +265,6 @@ namespace CsPotrace
 						AddPathPoint(paths, x, y - cl, x - cl, y);
 					}
 				}
-
-				//double cl = step / 3 * resolution;
-				//double x = 0;
-				//while (x <= w + step)
-				//{
-				//	double xPres = x * resolution;
-
-				//	double y = 0;
-				//	while (y <= h + step)
-				//	{
-				//		double yPres = y * resolution;
-
-				//		paths.Add(new List<IntPoint>()
-				//		{
-				//			new IntPoint(xPres - cl, yPres),
-				//			new IntPoint(xPres, yPres + cl),
-				//		});
-
-				//		paths.Add(new List<IntPoint>()
-				//		{
-				//			new IntPoint(xPres, yPres + cl),
-				//			new IntPoint(xPres + cl, yPres),
-				//		});
-
-				//		paths.Add(new List<IntPoint>()
-				//		{
-				//			new IntPoint(xPres + cl, yPres),
-				//			new IntPoint(xPres, yPres - cl),
-				//		});
-
-				//		paths.Add(new List<IntPoint>()
-				//		{
-				//			new IntPoint(xPres, yPres - cl),
-				//			new IntPoint(xPres - cl, yPres)
-				//		});
-
-				//		y += step;
-				//	}
-				//	x += step;
-				//}
 			}
 
 			long t2 = Tools.HiResTimer.TotalMilliseconds;
