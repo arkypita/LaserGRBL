@@ -12,18 +12,18 @@ namespace CsPotrace
 	{
 		private const double resolution = 1000.0;
 
-		internal static List<List<Curve>> BuildFilling(List<List<Curve>> plist, double spacing, double w, double h, LaserGRBL.RasterConverter.ImageProcessor.Direction dir)
+		internal static List<List<Curve>> BuildFilling(List<List<Curve>> plist, double w, double h, LaserGRBL.GrblFile.L2LConf c)
 		{
-			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewInsetFilling)
-				return BuildInsetFilling(plist, spacing);
+			if (c.dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewInsetFilling)
+				return BuildInsetFilling(plist, c);
 			else
-				return BuildGridFilling(plist, spacing, w, h, dir);
+				return BuildGridFilling(plist, w, h, c);
 		}
 
-		private static List<List<Curve>> BuildGridFilling(List<List<Curve>> plist, double spacing, double w, double h, LaserGRBL.RasterConverter.ImageProcessor.Direction dir)
+		private static List<List<Curve>> BuildGridFilling(List<List<Curve>> plist, double w, double h, LaserGRBL.GrblFile.L2LConf cnf)
 		{
 			Clipper c = new Clipper();
-			AddGridSubject(c, spacing, w, h, dir);
+			AddGridSubject(c, w, h, cnf);
 			AddGridClip(plist, c);
 
 			PolyTree solution = new PolyTree();
@@ -36,8 +36,9 @@ namespace CsPotrace
 			return ToPotraceList(ll, false);
 		}
 
-		private static List<List<Curve>> BuildInsetFilling(List<List<Curve>> plist, double spacing)
+		private static List<List<Curve>> BuildInsetFilling(List<List<Curve>> plist, LaserGRBL.GrblFile.L2LConf cnf)
 		{
+			double spacing = cnf.res / cnf.fres;
 			List<List<Curve>> flist = new List<List<Curve>>();
 			ClipperOffset c = new ClipperOffset();
 			AddOffsetSubject(plist, c);
@@ -160,8 +161,11 @@ namespace CsPotrace
 			c.AddPath(subject, JoinType.jtRound, EndType.etClosedPolygon);
 		}
 
-		static void AddGridSubject(Clipper c, double step, double w, double h, LaserGRBL.RasterConverter.ImageProcessor.Direction dir)
+		static void AddGridSubject(Clipper c, double w, double h, LaserGRBL.GrblFile.L2LConf cnf)
 		{
+			LaserGRBL.RasterConverter.ImageProcessor.Direction dir = cnf.dir;
+			double step = cnf.res / cnf.fres;
+
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewGrid || dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewDiagonalGrid)
 				step = step * 2;	//essendo che fa due passate dobbiamo dimezzare la risoluzione per avere la stessa "densità"
 

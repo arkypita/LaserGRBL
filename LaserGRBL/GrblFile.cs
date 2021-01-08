@@ -307,7 +307,7 @@ namespace LaserGRBL
 
 			if (VectorFilling(c.dir))
 			{
-				flist = PotraceClipper.BuildFilling(plist, c.res / c.fres, bmp.Width, bmp.Height, c.dir);
+				flist = PotraceClipper.BuildFilling(plist, bmp.Width, bmp.Height, c);
 				flist = ParallelOptimizePaths(flist);
 			}
 			if (RasterFilling(c.dir))
