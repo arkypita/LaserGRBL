@@ -733,6 +733,9 @@ namespace LaserGRBL
 
 		private List<List<Curve>> ParallelOptimizePaths(List<List<Curve>> list)
 		{
+			if (list == null || list.Count <= 1)
+				return list;
+
 			int maxblocksize = 2048;    //max number of List<Curve> to process in a single OptimizePaths operation
 
 			int blocknum = (int)Math.Ceiling(list.Count / (double)maxblocksize);
