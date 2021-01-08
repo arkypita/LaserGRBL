@@ -82,6 +82,7 @@ LaserGRBL contains some code from:
 - [Expression Evaluator](https://github.com/vubiostat/expression.cs) - Copyright Will Gray, Jeremy Roberts
 - [GCodeFromSVG](https://github.com/svenhb/GRBL-Plotter) - Copyright Sven Hasemann
 - [MS SVG Library](https://archive.codeplex.com/?p=svg) - Microsoft Public License
+- [Clipper](http://www.angusj.com/delphi/clipper.php) - Angus Johnson. Copyright © 2010-2014
 
 Thanks to:
 - Myself, for italian and english language
