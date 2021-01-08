@@ -103,7 +103,8 @@ namespace LaserGRBL.RasterConverter
 			NewCross, NewDiagonalCross,
 			NewSquares,
 			NewZigZag,
-			NewInsetFilling
+			NewHilbert,
+			NewInsetFilling,
 		}
 
 		public ImageProcessor(GrblCore core, string fileName, Size boxSize, bool append)

@@ -267,16 +267,31 @@ namespace CsPotrace
 						double mx = 0;
 						double my = (i * step) - hs;
 
+						AddPathPoint(list, mx-1, my+1); //non togliere questo +/-1, sembra che freghi l'algoritmo clipper obbligandolo a mantenere la mia direzione
 						AddPathPoint(list, mx, my);
 						while (my > 0)
 						{
 							AddPathPoint(list, mx += hs, my);
 							AddPathPoint(list, mx, my -= hs);
 						}
+						
 					}
 
 					AddPathPoints(paths, list);
 				}
+			}
+			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewHilbert)
+			{
+				int depth = 5;
+
+				float size = (float)Math.Max(w, h);
+				float delta = (float)(size / (Math.Pow(2, depth) - 1));
+
+				List<PointF> hilpoints = Hilbert.Execute(depth, delta);
+				List<IntPoint> list = new List<IntPoint>();
+				for (int i = 0; i < hilpoints.Count; i++)
+					AddPathPoint(list, hilpoints[i].X, hilpoints[i].Y);
+				AddPathPoints(paths, list);
 			}
 			c.AddPaths(paths, PolyType.ptSubject, false);
 		}
@@ -297,6 +312,36 @@ namespace CsPotrace
 		private static void AddPathPoints(List<List<IntPoint>> target, List<IntPoint> points)
 		{
 			target.Add(points);
+		}
+
+
+		private class Hilbert
+		{
+			private Hilbert() { }
+
+			public static List<PointF> Execute(int depth, float delta)
+			{
+				List<PointF> rv = new List<PointF>();
+				float dy = 0;
+				float dx = delta;
+				rv.Add(new PointF(0, 0));
+				Hilbert h = new Hilbert();
+				h.DoHilbert(rv, depth, dx, dy);
+				return rv;
+			}
+
+			// Draw a Hilbert curve.
+			private void DoHilbert(List<PointF> list, int depth, float dx, float dy)
+			{
+				if (depth > 1) DoHilbert(list, depth - 1, dy, dx);
+				list.Add(new PointF(list[list.Count - 1].X + dx, list[list.Count - 1].Y + dy));
+				if (depth > 1) DoHilbert(list, depth - 1, dx, dy);
+				list.Add(new PointF(list[list.Count - 1].X + dy, list[list.Count - 1].Y + dx));
+				if (depth > 1) DoHilbert(list, depth - 1, dx, dy);
+				list.Add(new PointF(list[list.Count - 1].X - dx, list[list.Count - 1].Y - dy));
+				if (depth > 1) DoHilbert(list, depth - 1, -dy, -dx);
+			}
+
 		}
 
 	}

@@ -269,6 +269,7 @@ namespace LaserGRBL
 			dir == RasterConverter.ImageProcessor.Direction.NewDiagonalCross ||
 			dir == RasterConverter.ImageProcessor.Direction.NewSquares ||
 			dir == RasterConverter.ImageProcessor.Direction.NewZigZag ||
+			dir == RasterConverter.ImageProcessor.Direction.NewHilbert ||
 			dir == RasterConverter.ImageProcessor.Direction.NewInsetFilling;
 		}
 
@@ -278,6 +279,7 @@ namespace LaserGRBL
 			dir == RasterConverter.ImageProcessor.Direction.NewCross ||
 			dir == RasterConverter.ImageProcessor.Direction.NewDiagonalCross ||
 			dir == RasterConverter.ImageProcessor.Direction.NewSquares ||
+			dir == RasterConverter.ImageProcessor.Direction.NewHilbert ||
 			dir == RasterConverter.ImageProcessor.Direction.NewZigZag;
 		}
 
