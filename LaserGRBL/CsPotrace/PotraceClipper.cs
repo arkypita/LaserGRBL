@@ -173,6 +173,12 @@ namespace CsPotrace
 			double rdstep = step * (1 / Math.Sqrt(2)); //step for diagonal (1.414)
 			List<List<IntPoint>> paths = new List<List<IntPoint>>();
 
+			//se si vuole sfasare per via dell'offset è necessario applicare questa correzione a x e y
+			//ma i risultati possono essere brutti rispetto a ciò che ci si aspetta
+			//double stepmm = 1 / cnf.fres;
+			//double cX = (stepmm - cnf.oX % stepmm) * cnf.res;
+			//double cY = (stepmm - cnf.oY % stepmm) * cnf.res;
+
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewHorizontal || dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewGrid)
 			{
 				for (int y = 1; y < (h / step); y ++)
