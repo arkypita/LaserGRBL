@@ -441,6 +441,15 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Hilbert.
+        /// </summary>
+        internal static string DirectionNewHilbert {
+            get {
+                return ResourceManager.GetString("DirectionNewHilbert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Horizontal.
         /// </summary>
         internal static string DirectionNewHorizontal {

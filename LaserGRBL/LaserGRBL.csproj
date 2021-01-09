@@ -1373,6 +1373,9 @@
     <EmbeddedResource Include="Strings.cs-CZ.resx">
       <DependentUpon>Strings.resx</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Strings.el-GR.resx">
+	  <DependentUpon>Strings.resx</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="Strings.hu-HU.resx">
       <DependentUpon>Strings.resx</DependentUpon>
     </EmbeddedResource>

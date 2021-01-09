@@ -99,13 +99,21 @@ namespace CsPotrace
 				try
 				{
 					List<BiArc> bal = Algorithm.ApproxCubicBezier(cb, 5, 2);
-					foreach (BiArc ba in bal)
+					if (bal != null)	//può ritornare null se ha troppi punti da processare
 					{
-						if (!double.IsNaN(ba.A1.Length) && !double.IsNaN(ba.A1.LinearLength))
-							rv.Add(GetArcGC(ba.A1, oX, oY, scale, g));
+						foreach (BiArc ba in bal)
+						{
+							if (!double.IsNaN(ba.A1.Length) && !double.IsNaN(ba.A1.LinearLength))
+								rv.Add(GetArcGC(ba.A1, oX, oY, scale, g));
 
-						if (!double.IsNaN(ba.A2.Length) && !double.IsNaN(ba.A2.LinearLength))
-							rv.Add(GetArcGC(ba.A2, oX, oY, scale, g));
+							if (!double.IsNaN(ba.A2.Length) && !double.IsNaN(ba.A2.LinearLength))
+								rv.Add(GetArcGC(ba.A2, oX, oY, scale, g));
+						}
+					}
+					else //same as exception
+					{
+						if (g != null) g.DrawLine(Pens.DarkGray, (float)Curve.A.X, (float)Curve.A.Y, (float)Curve.B.X, (float)Curve.B.Y);
+						rv.Add(String.Format("G1 X{0} Y{1}", formatnumber(Curve.B.X + oX, scale), formatnumber(Curve.B.Y + oY, scale)));
 					}
 				}
 				catch

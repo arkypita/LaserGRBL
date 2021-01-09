@@ -282,16 +282,22 @@ namespace CsPotrace
 			}
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewHilbert)
 			{
-				int depth = 5;
+				int n = 6;
+				float ts = (float)(Math.Pow(2, n) * step);
+				//genera un elemento da n ricorsioni su step
+				//la sua dimensione sarà 2^n * step
+				List <PointF> texel = Hilbert.Execute(n, (float)(step));
 
-				float size = (float)Math.Max(w, h);
-				float delta = (float)(size / (Math.Pow(2, depth) - 1));
-
-				List<PointF> hilpoints = Hilbert.Execute(depth, delta);
-				List<IntPoint> list = new List<IntPoint>();
-				for (int i = 0; i < hilpoints.Count; i++)
-					AddPathPoint(list, hilpoints[i].X, hilpoints[i].Y);
-				AddPathPoints(paths, list);
+				for (int y = 0; y < (h / ts); y++)
+				{
+					for (int x = 0; x < (w / ts); x++)
+					{
+						List<IntPoint> list = new List<IntPoint>();
+						for (int i = 0; i < texel.Count; i++)
+							AddPathPoint(list, texel[i].X + (x * ts), texel[i].Y + (y * ts));
+						AddPathPoints(paths, list);
+					}
+				}
 			}
 			c.AddPaths(paths, PolyType.ptSubject, false);
 		}
@@ -315,7 +321,7 @@ namespace CsPotrace
 		}
 
 
-		private class Hilbert
+		internal class Hilbert
 		{
 			private Hilbert() { }
 
