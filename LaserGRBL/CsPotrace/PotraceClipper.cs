@@ -164,13 +164,11 @@ namespace CsPotrace
 		static void AddGridSubject(Clipper c, double w, double h, LaserGRBL.GrblFile.L2LConf cnf)
 		{
 			LaserGRBL.RasterConverter.ImageProcessor.Direction dir = cnf.dir;
+
 			double step = cnf.res / cnf.fres;
-
-			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewGrid || dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewDiagonalGrid)
-				step = step * 2;	//essendo che fa due passate dobbiamo dimezzare la risoluzione per avere la stessa "densità"
-
 			double dstep = step * Math.Sqrt(2); //step for diagonal (1.414)
 			double rdstep = step * (1 / Math.Sqrt(2)); //step for diagonal (1.414)
+
 			List<List<IntPoint>> paths = new List<List<IntPoint>>();
 
 			//se si vuole sfasare per via dell'offset è necessario applicare questa correzione a x e y
@@ -244,16 +242,16 @@ namespace CsPotrace
 			}
 			if (dir == LaserGRBL.RasterConverter.ImageProcessor.Direction.NewZigZag)
 			{
-				double hs = step / 2;	//halfstep
+				double hs = dstep / 2;	//halfstep
 
-				for (int i = 1; i < (w + h) / step; i++)
+				for (int i = 1; i < (w + h) / dstep; i++)
 				{
 					List<IntPoint> list = new List<IntPoint>();
 
 					if (i % 2 == 1)
 					{
 						double my = 0;
-						double mx = (i * step) - hs;
+						double mx = (i * dstep) - hs;
 
 						AddPathPoint(list, mx, my);
 						while (mx > 0)
@@ -265,7 +263,7 @@ namespace CsPotrace
 					else
 					{
 						double mx = 0;
-						double my = (i * step) - hs;
+						double my = (i * dstep) - hs;
 
 						AddPathPoint(list, mx-1, my+1); //non togliere questo +/-1, sembra che freghi l'algoritmo clipper obbligandolo a mantenere la mia direzione
 						AddPathPoint(list, mx, my);
