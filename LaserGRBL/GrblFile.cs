@@ -367,7 +367,7 @@ namespace LaserGRBL
 
 
 			//trace borders
-			if (plist != null && false) //always true
+			if (plist != null) //always true
 			{
 				//Optimize fast movement
 				if (useOptimizeFast)
