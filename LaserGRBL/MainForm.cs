@@ -631,7 +631,12 @@ namespace LaserGRBL
 
 		private void installCH340DriverToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(".\\Driver\\CH341SER.EXE");
+			try
+			{
+				string fname = System.IO.Path.Combine(GrblCore.ExePath, "Driver\\CH341SER.EXE");
+				System.Diagnostics.Process.Start(fname);
+			}
+			catch { Tools.Utils.OpenLink("https://www.google.it/search?q=ch340+drivers"); }
 		}
 
 		private void flashGrblFirmwareToolStripMenuItem_Click(object sender, EventArgs e)

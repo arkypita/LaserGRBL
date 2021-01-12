@@ -124,7 +124,7 @@ namespace LaserGRBL
 					System.Diagnostics.Process pProcess = new System.Diagnostics.Process();
 
 					//strCommand is path and file name of command to run
-					pProcess.StartInfo.FileName = ".\\Firmware\\avrdude.exe";
+					pProcess.StartInfo.FileName = System.IO.Path.Combine(GrblCore.ExePath, "Firmware\\avrdude.exe");
 
 					//strCommandParameters are parameters to pass to program
 					pProcess.StartInfo.Arguments = $"-patmega328p -b{CbBaudRate.SelectedItem} -P{com} -carduino -Uflash:w:\"{firmware}\":i";
