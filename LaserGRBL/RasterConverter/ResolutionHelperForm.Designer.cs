@@ -76,8 +76,8 @@
 			// 
 			// UDComputed
 			// 
-			resources.ApplyResources(this.UDComputed, "UDComputed");
 			this.UDComputed.DecimalPlaces = 3;
+			resources.ApplyResources(this.UDComputed, "UDComputed");
 			this.UDComputed.Maximum = new decimal(new int[] {
             20,
             0,
@@ -97,10 +97,10 @@
 			// 
 			// UDHardware
 			// 
-			resources.ApplyResources(this.UDHardware, "UDHardware");
 			this.UDHardware.DecimalPlaces = 3;
+			resources.ApplyResources(this.UDHardware, "UDHardware");
 			this.UDHardware.Maximum = new decimal(new int[] {
-            1000,
+            10000,
             0,
             0,
             0});
@@ -119,8 +119,8 @@
 			// 
 			// UDDesired
 			// 
-			resources.ApplyResources(this.UDDesired, "UDDesired");
 			this.UDDesired.DecimalPlaces = 3;
+			resources.ApplyResources(this.UDDesired, "UDDesired");
 			this.UDDesired.Maximum = new decimal(new int[] {
             20,
             0,
@@ -186,15 +186,15 @@
 			// 
 			// BtnCancel
 			// 
-			resources.ApplyResources(this.BtnCancel, "BtnCancel");
 			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			resources.ApplyResources(this.BtnCancel, "BtnCancel");
 			this.BtnCancel.Name = "BtnCancel";
 			this.BtnCancel.UseVisualStyleBackColor = true;
 			// 
 			// BtnCreate
 			// 
-			resources.ApplyResources(this.BtnCreate, "BtnCreate");
 			this.BtnCreate.DialogResult = System.Windows.Forms.DialogResult.OK;
+			resources.ApplyResources(this.BtnCreate, "BtnCreate");
 			this.BtnCreate.Name = "BtnCreate";
 			this.BtnCreate.UseVisualStyleBackColor = true;
 			this.BtnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
