@@ -793,16 +793,9 @@ namespace LaserGRBL
 					dPoint c2fa = list[c2].First().A;     //punto iniziale del primo segmento del percorso (per calcolo distanza tra percorsi e direzione di ingresso)
 
 					if (c1 == c2) 
-					{
 						distBA[c1, c2] = double.MaxValue;  //distanza del punto con se stesso (caso degenere)
-					}
 					else
-					{
-						double sq =	SquareDistance(c1lb, c2fa);
-						//double af = DirectionChange(c1la, c1lb, c2fa);
-
-						distBA[c1, c2] = sq;
-					}
+						distBA[c1, c2] = SquareDistance(c1lb, c2fa); //in futuro potrebbe essere sostituita da una funzione "TravelTime" che tiene conto del cambio di direzione, dell'acelerazione etc
 				}
 
 				//trova quello che parte più vicino allo zero
