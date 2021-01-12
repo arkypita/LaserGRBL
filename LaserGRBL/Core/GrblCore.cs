@@ -2849,6 +2849,9 @@ namespace LaserGRBL
 		public decimal TableHeight => ReadWithDefault(Version9 ? 131 : -1, 200);
 		public bool SoftLimit => ReadWithDefault(20, 0) != 0;
 
+		public decimal AccelerationXY => (AccelerationX + AccelerationY) / 2;
+		private decimal AccelerationX => ReadWithDefault(Version9 ? 120 : -1, 2000);
+		private decimal AccelerationY => ReadWithDefault(Version9 ? 121 : -1, 2000);
 
 		private decimal ReadWithDefault(int number, decimal defval)
 		{
@@ -2883,7 +2886,6 @@ namespace LaserGRBL
 		}
 
 		public int Count { get { return mData.Count; } }
-
 
 		internal bool HasChanges(GrblConfParam p)
 		{

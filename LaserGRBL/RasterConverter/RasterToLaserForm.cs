@@ -263,7 +263,6 @@ namespace LaserGRBL.RasterConverter
 
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", IP.BorderSpeed);
 			Settings.SetObject("GrayScaleConversion.Gcode.Speed.Mark", IP.MarkSpeed);
-			Settings.SetObject("GrayScaleConversion.Gcode.Speed.Travel", IP.TravelSpeed);
 
 			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", IP.LaserOn);
 			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", IP.LaserOff);

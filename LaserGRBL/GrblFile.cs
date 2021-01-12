@@ -281,7 +281,7 @@ namespace LaserGRBL
 			dir == RasterConverter.ImageProcessor.Direction.NewSquares;
 		}
 
-		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, bool useOptimizeFast, L2LConf c, bool append)
+		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, bool useOptimizeFast, L2LConf c, bool append, GrblCore core)
 		{
 			skipcmd = Settings.GetObject("Disable G0 fast skip", false) ? "G1" : "G0";
 
@@ -305,10 +305,11 @@ namespace LaserGRBL
 			List<List<Curve>> plist = Potrace.PotraceTrace(bmp);
 			List<List<Curve>> flist = null;
 
+
 			if (VectorFilling(c.dir))
 			{
 				flist = PotraceClipper.BuildFilling(plist, bmp.Width, bmp.Height, c);
-				flist = ParallelOptimizePaths(flist);
+				flist = ParallelOptimizePaths(flist, 0 /*ComputeDirectionChangeCost(c, core, false)*/);
 			}
 			if (RasterFilling(c.dir))
 			{
@@ -366,11 +367,11 @@ namespace LaserGRBL
 
 
 			//trace borders
-			if (plist != null) //always true
+			if (plist != null && false) //always true
 			{
 				//Optimize fast movement
 				if (useOptimizeFast)
-					plist = OptimizePaths(plist);
+					plist = OptimizePaths(plist, 0 /*ComputeDirectionChangeCost(c, core, true)*/);
 				else
 					plist.Reverse(); //la lista viene fornita da potrace con prima esterni e poi interni, ma per il taglio è meglio il contrario
 
@@ -424,7 +425,6 @@ namespace LaserGRBL
 			public float oX;
 			public float oY;
 			public int markSpeed;
-			public int travelSpeed;
 			public int borderSpeed;
 			public int minPower;
 			public int maxPower;
@@ -731,7 +731,7 @@ namespace LaserGRBL
 			prevCol = col;
 		}
 
-		private List<List<Curve>> ParallelOptimizePaths(List<List<Curve>> list)
+		private List<List<Curve>> ParallelOptimizePaths(List<List<Curve>> list, double changecost)
 		{
 			if (list == null || list.Count <= 1)
 				return list;
@@ -740,13 +740,13 @@ namespace LaserGRBL
 
 			int blocknum = (int)Math.Ceiling(list.Count / (double)maxblocksize);
 			if (blocknum <= 1)
-				return OptimizePaths(list);
+				return OptimizePaths(list, changecost);
 
 			System.Diagnostics.Debug.WriteLine("Count: " + list.Count);
 
 			Task<List<List<Curve>>>[] taskArray = new Task<List<List<Curve>>>[blocknum];
 			for (int i = 0; i < taskArray.Length; i++)
-				taskArray[i] = Task.Factory.StartNew((data) => OptimizePaths((List<List<Curve>>)data), GetTaskJob(i, taskArray.Length, list));
+				taskArray[i] = Task.Factory.StartNew((data) => OptimizePaths((List<List<Curve>>)data, changecost), GetTaskJob(i, taskArray.Length, list));
 			Task.WaitAll(taskArray);
 
 			List<List<Curve>> rv = new List<List<Curve>>();
@@ -769,18 +769,17 @@ namespace LaserGRBL
 			return rv;
 		}
 
-		private List<List<Curve>> OptimizePaths(List<List<Curve>> list)
+		private List<List<Curve>> OptimizePaths(List<List<Curve>> list, double changecost)
 		{
 			if (list.Count <= 1)
 				return list;
+
 
 			dPoint Origin = new dPoint(0, 0);
 			int nearestToZero = 0;
 			double bestDistanceToZero = Double.MaxValue;
 
-			//Order all paths in list to reduce travel distance
-			//Calculate and store all distances in a matrix
-			double[,] distBA = new double[list.Count, list.Count];        //array bidimensionale delle distanze dal punto finale della curva 1 al punto iniziale della curva 2
+			double[,] costs = new double[list.Count, list.Count];   //array bidimensionale dei costi di viaggio dal punto finale della curva 1 al punto iniziale della curva 2
 			for (int c1 = 0; c1 < list.Count; c1++)                 //ciclo due volte sulla lista di curve
 			{
 				dPoint c1fa = list[c1].First().A;	//punto iniziale del primo segmento del percorso (per calcolo distanza dallo zero)
@@ -791,11 +790,12 @@ namespace LaserGRBL
 				for (int c2 = 0; c2 < list.Count; c2++)             //con due indici diversi c1, c2
 				{
 					dPoint c2fa = list[c2].First().A;     //punto iniziale del primo segmento del percorso (per calcolo distanza tra percorsi e direzione di ingresso)
+					//dPoint c2fb = list[c2].First().B;     //punto finale del primo segmento del percorso (per calcolo direzione di continuazione)
 
 					if (c1 == c2)
-						distBA[c1, c2] = double.MaxValue;  //distanza del punto con se stesso (caso degenere)
+						costs[c1, c2] = double.MaxValue;  //distanza del punto con se stesso (caso degenere)
 					else
-						distBA[c1, c2] = SquareDistance(c1lb, c2fa); //in futuro potrebbe essere sostituita da una funzione "TravelTime" che tenga conto delle accelerazioni e decelerazioni
+						costs[c1, c2] = SquareDistance(c1lb, c2fa); //TravelCost(c1la, c1lb, c2fa, c2fb, changecost);
 				}
 
 				//trova quello che parte più vicino allo zero
@@ -825,7 +825,7 @@ namespace LaserGRBL
 
 				foreach (int nextIndex in unvisited)                    //cicla tutti gli "unvisited" rimanenti
 				{
-					double dist = distBA[lastIndex, nextIndex];
+					double dist = costs[lastIndex, nextIndex];
 					if (dist < bestDistance)
 					{
 						bestIndex = nextIndex;                    //salva il bestIndex
@@ -843,6 +843,30 @@ namespace LaserGRBL
 			return bestPath;
 		}
 
+		////questa funzione calcola il "costo" di un cambio di direzione
+		////in termini di distanza che sarebbe possibile percorrere
+		////nel tempo di una decelerazione da velocità di marcatura, a zero 
+		//private double ComputeDirectionChangeCost(L2LConf c, GrblCore core, bool border)
+		//{
+		//	double speed = (border ? c.borderSpeed : c.markSpeed) / 60.0; //velocità di marcatura (mm/sec)
+		//	double accel = core.Configuration != null ? (double)core.Configuration.AccelerationXY : 2000; //acceleration (mm/sec^2)
+		//	double cost = (speed * speed) / (2 * accel); //(mm)
+		//	cost = cost * c.res; //mm tradotti nella risoluzione immagine
+
+		//	return cost;
+		//}
+
+		//private double TravelCost(dPoint s1a, dPoint s1b, dPoint s2a, dPoint s2b, double changecost)
+		//{
+		//	double d = Math.Sqrt(SquareDistance(s1b, s2a));
+		//	double a1 = DirectionChange(s1a, s1b, s2a);
+		//	double a2 = DirectionChange(s1b, s2a, s2b);
+		//	double cd = d + changecost * a1 + changecost * a2;
+
+		//	//System.Diagnostics.Debug.WriteLine($"{d}\t{a1}\t{a2}\t{cd}");
+		//	return cd;
+		//}
+
 		private static double SquareDistance(dPoint a, dPoint b)
 		{
 			double dX = b.X - a.X;
@@ -855,12 +879,12 @@ namespace LaserGRBL
 		}
 
 		//questo metodo ritorna un fattore 0 se c'è continuità di direzione, 0.5 su angolo 90°, 1 se c'è inversione totale (180°)
-		private double DirectionChange(dPoint a1, dPoint a2, dPoint b1)
+		private double DirectionChange(dPoint p1, dPoint p2, dPoint p3)
 		{
-			double angleA = Math.Atan2(a2.Y - a1.Y, a2.X - a1.X); //angolo del segmento corrente
-			double angleB = Math.Atan2(b1.Y - a2.Y, b1.X - a2.X); //angolo della retta congiungente
+			double angleA = Math.Atan2(p2.Y - p1.Y, p2.X - p1.X); //angolo del segmento corrente
+			double angleB = Math.Atan2(p3.Y - p2.Y, p3.X - p2.X); //angolo della retta congiungente
 
-			double angleAB = Math.Abs(angleB - angleA); //0 se stessa direzione, pigreco se inverte direzione
+			double angleAB = Math.Abs(Math.Abs(angleB) - Math.Abs(angleA)) ; //0 se stessa direzione, pigreco se inverte direzione
 			double factor = angleAB / Math.PI;
 			return factor;
 		}

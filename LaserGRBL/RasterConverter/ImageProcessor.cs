@@ -74,7 +74,6 @@ namespace LaserGRBL.RasterConverter
 		public PointF TargetOffset;
 		public string LaserOn;
 		public string LaserOff;
-		public int TravelSpeed;
 		public int BorderSpeed;
 		public int MarkSpeed;
 		public int MinPower;
@@ -1020,7 +1019,6 @@ namespace LaserGRBL.RasterConverter
 						conf.res = res;
 						conf.fres = fres;
 						conf.markSpeed = MarkSpeed;
-						conf.travelSpeed = TravelSpeed;
 						conf.minPower = MinPower;
 						conf.maxPower = MaxPower;
 						conf.lOn = LaserOn;
@@ -1035,7 +1033,7 @@ namespace LaserGRBL.RasterConverter
 						if (SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering)
 							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf, mAppend);
 						else if (SelectedTool == ImageProcessor.Tool.Vectorize)
-							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf, mAppend);
+							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf, mAppend, mCore);
 						else if (SelectedTool == ImageProcessor.Tool.Centerline)
 							mCore.LoadedFile.LoadImageCenterline(bmp, mFileName, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold, conf, mAppend);
 					}
