@@ -183,16 +183,18 @@ namespace LaserGRBL.RasterConverter
 
 		private void RefreshPerc()
 		{
-			if (mCore?.Configuration != null)
+			decimal maxpwm = mCore?.Configuration != null ? mCore.Configuration.MaxPWM : -1;
+
+			if (maxpwm > 0)
+			{
 				LblMaxPerc.Text = (IIMaxPower.CurrentValue / mCore.Configuration.MaxPWM).ToString("P1");
-			else
-				LblMaxPerc.Text = "";
-
-
-			if (mCore?.Configuration != null)
 				LblMinPerc.Text = (IIMinPower.CurrentValue / mCore.Configuration.MaxPWM).ToString("P1");
+			}
 			else
+			{
+				LblMaxPerc.Text = "";
 				LblMinPerc.Text = "";
+			}
 		}
 
 		private void BtnOnOffInfo_Click(object sender, EventArgs e)
