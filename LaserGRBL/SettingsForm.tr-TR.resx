@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Akış Modu: [Varsayılan Arabellekli]
+- Buffered: grbl alma arabelleğini dolduran komut akışını optimize edin [önerilir]
+- Synchronous: sonraki komutu göndermeden önce her komutun yürütülmesini bekleyin [daha yavaş ama daha güvenli]
+- RepeatOnError: Eşzamanlı ile aynıdır ancak hata algılarsa komutları tekrarlayın [deneysel]</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Bağlantı Protokolü:
+- UsbSerial: en yaygın protokoldür. Oymacınız USB veya COM bağlantı noktasına bağlıysa kullanılmalıdır.
+- UsbSerial2: Microsoft SerialPort sorunlarını atlamak için alternatif bir USB seri uygulaması
+- Telnet: Bir WiFi-Telnet köprünüz varsa. İletişim, basit bir telnet istemci sunucusu gibi gerçekleştirilir.
+- LaserWebESP8266: WebSocket aracılığıyla WiFi bağlantısını destekler. LaserWeb-ESP8266 yazılımı ile uyumludur.</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>İş Parçaçığı Modu: Ultra Hızlı, Hızlı, Sessiz, Yavaş. [Varsayılan UltraFast]
+Bu ayar, iş parçacığı gönderme hızını ve durum raporu isteğinin sıklığını etkiler.
+Sorun yaşıyorsanız daha yavaş değerler ayarlayın.</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>Sorun algılayıcı</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>LaserGRBL sorunları tespit edebilir ve kullanıcıyı, bunların nasıl çözüleceği hakkında bilgi vererek uyarabilir.
+Devre dışı bırakılırsa, tüm sorunlar uyarı yapılmadan sessizce yönetilir.</value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>Yumuşak Sıfırlama [Ctrl-X]</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Etkinleştirilirse, LaserGRBL, grbl bağlantısı açıldığında yazılımdan sıfırlama gönderir.</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>Sert Sıfırlama [DTR + RTS]</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Etkinleştirilirse, LaserGRBL, grbl bağlantısı açıldığında donanımdan sıfırlama gönderir. [Pozisyon kaybedilir!]</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Firmware türü
+- Grbl: LaserGRBL'nin kendisi için geliştirildiği harika aygıt yazılımı.
+- Smoothie [deneysel]: destek yakın zamanda eklendi ve tam olarak test edilmedi.
+- Marlin [deneysel]: destek yakın zamanda eklendi ve tam olarak test edilmedi.
+- VigoWork [deneysel]: grbl standardı olmayan VG-L7x modeli için destek.</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>Protokol</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>LaserGRBL, gri tonlamalı tonlar üretmek için G-Kodu "S komutu" aracılığıyla güç modülasyonunu kullanır.
+Lazeriniz arduino PIN D11'e bağlı TTL kontrolünü desteklemelidir.
+Değilse, lütfen PWM desteğini devre dışı bırakın.</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Varsayılan olarak LaserGRBL, lazer kafasının her iki hareket yönünde de gravür çizgileri üretir. Bazı testler, bu modun (daha hızlı olan) daha düşük kaliteli sonuçlar verdiğini göstermiştir. Maksimum markalama kalitesi isteniyorsa, bu seçeneği etkinleştirin.</value>
+  </data>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>Tek Yönlü Gravür</value>
+  </data>
+  <data name="CBSupportPWM.Text" xml:space="preserve">
+    <value>PWM'yi destekle</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>HiRes dolgu</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>LaserGRBL'de bulunan maksimum çözünürlük, çoğu kullanıcı için yeterince yüksek olan 20 satır / mm'dir (yaklaşık 500dpi).
+Daha yüksek çözünürlüğe ihtiyacınız varsa "HiRes" özelliğini etkinleştirebilir ve bu sınırı kaldırabilirsiniz. Dikkatli olun: LaserGRBL'nin çok daha fazla kaynağa ihtiyacı olacak!</value>
+  </data>
+  <data name="CbDisableSkip.Text" xml:space="preserve">
+    <value>G0 hızlı atlamayı devre dışı bırak</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>Varsayılan olarak LaserGRBL, işlerinizin beyaz kısımlarını atlamak için G0 - hızlı hareket - kullanır. Bu, kazıma sürecini hızlandırır, ancak hayal kırıklığı yaratan sonuçlarla yanlış konumlandırmaya neden olabilir. Genellikle grbl yapılandırmasında maksimum hızlanma ve hız değerlerini (120,121,122 $ ve 110,111,112 $) doğru ayarlayarak sonuçları iyileştirmek mümkündür.
+
+Bu özelliği devre dışı bırakırsanız LaserGRBL, G1 doğrusal hareketini aynı iş hızında kullanır ve bunun sonucunda tüm gravür işlemi aynı hızda yapılır. Bu, süreci yavaşlatır, ancak diğer yaklaşımların başarısız olduğu durumlarda sonucu dramatik olarak iyileştirebilir.</value>
+  </data>
+  <data name="CbDisableBoundWarn.Text" xml:space="preserve">
+    <value>Sınır uyarısını devre dışı bırak</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>LaserGRBL, oymacı çalışma alanınızdan daha büyük bir iş yaratacaksanız sizi uyaracaktır.
+Bu güvenlik kontrolünü istemiyorsanız bu bayrağı ayarlayın.</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>Raster içe aktarma</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Jog düğmesine basıldığında "Continuous Jog" olmadan LaserGRBL sabit hız ve hareketle Jog talebi gönderir; ve jog tamamen son konuma kadar yürütülür.
+"Kesintisiz Jog" u etkinleştirirseniz, yavaş hareket fare aşağı ile gönderilir ve fare yukarı kaldırıldığında durdurulur / kesilir, böylece yaklaşık konumlandırmayı çok rahat bir şekilde yapabilirsiniz.
+
+NOT: "Continuous Jog" yalnızca Grbl v1.1 veya sonraki sürümleriyle çalışır ve Grbl Yapılandırmasında (Menü "Grbl" -&gt; "Grbl Yapılandırması" 130 $, 131 $, 132 $) tablo boyutunun doğru şekilde yapılandırılmasını gerektirir</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>LaserGRBL, Z eksenini desteklemek için tasarlanmamıştır, ancak 3 eksenli bir donanıma sahipseniz bu seçeneği faydalı bulabilirsin.</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Z yukarı / aşağı kontrolünü göster</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>Sürekli Jog</value>
+  </data>
+  <data name="CbClickNJog.Text" xml:space="preserve">
+    <value>Jog'a tıklayın</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>"Click 'n jog" etkinken, önizleme yüzeyine çift tıklama tıklama konumuna ilerleyecektir.</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Jog kontrolü</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Time OFF: Bu soğuma süresinden sonra LaserGRBL, gravür işine devam etmek için bir devam etme komutu gönderir.</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Bazı lazer diyotları, en yüksek güçte uzun süre çalışırlarsa çok ısınabilirler. Diyotun aşırı ısınmasını önlemek ve lazer ömrünüzü uzatmak için, çalıştırma işlemi sırasında biraz duraklama ekleyen bazı otomatik soğutma döngüleri ekleyebilirsiniz.
+Otomatik Soğutma etkinleştirilirse, LaserGRBL, AÇMA-KAPAMA zamanlama yapılandırmasına göre otomatik "besleme bekletme" ve "iş devam etme" gönderir.</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Time On: Bu, Lazerin kazıma işlemi sırasında açık kalacağı maksimum süredir.
+Bu sürenin sonunda LaserGRBL, lazeri soğutmak için otomatik bir besleme bekletme gönderir.</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>Otomatik soğutmayı etkinleştir</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Dakika</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Aktif</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Saniye</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Dakika</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Pasif</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Saniye</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Uyarı: Bu özellik yalnızca "lazer modu" etkinleştirilmiş grbl sürümleri&gt; v1.1 ile çalışacaktır.
+Otomatik soğutmayı eski grbl sürümüyle (veya lazer modu devre dışıyken) kullanırsanız, lazer duraklamalar sırasında kapanmayacaktır.
+ve işinde delikler açıyor!</value>
+  </data>
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+    <value>Ortur Kullanıcısı: Ortur Firmware (137'ye kadar olan tüm versiyonlar), otomatik soğutma fonksiyonunun düzgün şekilde kullanılmasını engelleyen işleme özgeçmişinde bir hataya sahiptir.
+Yeni bir aygıt yazılımı yayınlanana kadar lütfen Ortur kazıma makinesi ile Otomatik Soğutmayı kullanmayın.</value>
+  </data>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>Otomatik soğutma</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBL, herhangi bir işe başlamadan önce bu GCode'u ekleyecektir.
+Bu kodu özelleştirebilirsiniz, örneğin fanı açmak için M8 ekleyebilirsiniz.
+
+Burada, bazı konumlandırmalara basmanız gerekirse, aynı özel düğmeler sözdizimini kullanabilirsiniz.
+belirli bir iş ile ilgili yürütülecektir.</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Üstyazı </value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Altyazı</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Çoklu geçiş</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBL, herhangi bir işin sonunda bu GCode'u kuyruğa alacaktır.
+Sıfır konumuna geri dönme gibi bir başlangıç durumunda oymacınızı geri itmek için kullanılabilir
+veya fanı kapatmak için M9 gönderme vb.
+
+Burada aynı özel düğmeler sözdizimini kullanabilirsiniz.</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Birden fazla geçiş gerçekleştirirken, LaserGRBL bu GCode'u her geçiş arasında itecektir.
+Daha derin kesimler yapmak için Z'yi aşağı hareket ettirmek için kullanılabilir.
+
+Burada aynı özel düğmeler sözdizimini kullanabilirsiniz.</value>
+  </data>
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Burada, bir işin bitmesi gibi başarı olayları için başka bir ses ayarlayabilirsiniz.
+Etkinleştirmek için işaretleyin.</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Buradan başka bir uyarı sesi ayarlayabilirsiniz.
+Bu genellikle hatalı bir GCode komutuyla tetiklenir, ancak makineniz çalışmaya devam edebilir.
+Etkinleştirmek için işaretleyin.</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Uyarı Sesi</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>Değiştir</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Ses dosyası</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Hata Sesi</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>Değiştir</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Ses dosyası</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Bağlantı sesi</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>Değiştir</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Ses dosyası</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Sesin Bağlantısını Kes</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>Değiştir</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Ses dosyası</value>
+  </data>
+  <data name="LblSuccessSound.Text" xml:space="preserve">
+    <value>Başarı Sesi</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>Değiştir</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Ses dosyası</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Burada başarılı bir bağlantı için bir ses ayarlayabilirsiniz.
+Etkinleştirmek için işaretleyin.</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Burada bağlantının kesilmesi için bir ses ayarlayabilirsiniz.
+Bazı WiFi bağlantıları için kullanışlıdır.
+Etkinleştirmek için işaretleyin.</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Burada önemli hatalar için bir hata sesi ayarlayabilirsiniz.
+Bu, işinizin büyük olasılıkla durduğu ve LaserGRBL'nin işleme devam edemeyeceği anlamına gelir.
+Etkinleştirmek için işaretleyin.</value>
+  </data>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>Ses ayarları</value>
+  </data>
+  <data name="SoundBrowserDialog.Filter" xml:space="preserve">
+    <value>Waveform Audio File|*.wav</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Ayarlar</value>
+  </data>
+</root>
