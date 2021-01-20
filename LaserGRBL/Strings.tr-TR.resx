@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BoxConnectErrorTitle" xml:space="preserve">
+    <value>Cihaza ulaşılamıyor.</value>
+  </data>
+  <data name="DirectionDiagonal" xml:space="preserve">
+    <value>Diyagonal</value>
+  </data>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>Özel düğmeler eklemek için burayı sağ tıklayın</value>
+  </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>Yeniden başlatma gerekiyor</value>
+  </data>
+  <data name="DirectionHorizontal" xml:space="preserve">
+    <value>Yatay</value>
+  </data>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>Onayla</value>
+  </data>
+  <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
+    <value>Yumuşak (HQ bikübik)</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} Ayar dosyası başarıyla okundu!</value>
+  </data>
+  <data name="CustomButtonEdit" xml:space="preserve">
+    <value>Düzenle düğmesi</value>
+  </data>
+  <data name="BoxImportConfigWithoutError" xml:space="preserve">
+    <value>{0} Ayar dosyası başarıyla içeri alındı</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>Özel düğmeleri içeri al</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} dosyası okunurken {1} tane hata oluştu</value>
+  </data>
+  <data name="BoxExportConfigErrorTitle" xml:space="preserve">
+    <value>Hata</value>
+  </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>Önbelleğe alınmış değerleri göster</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>lütfen araç ipucu metni sağlayın</value>
+  </data>
+  <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
+    <value>Başarılı</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>Yazılım tipi değiştirme durumunda yeniden başlatmak gereklidir. Şimdi başlatılsın mı?</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>Değişiklik yok... Hiç bir şey yazılmadı.</value>
+  </data>
+  <data name="MacStatusAlarm" xml:space="preserve">
+    <value>Alarm</value>
+  </data>
+  <data name="MacStatusDisconnected" xml:space="preserve">
+    <value>Bağlantı Kesildi</value>
+  </data>
+  <data name="LanguageRequireRestartNow" xml:space="preserve">
+    <value>Yeniden başlatılması gerekmektedir. Şimdi yeniden başlatılsın mı?</value>
+  </data>
+  <data name="MacStatusHome" xml:space="preserve">
+    <value>Ev(Home)</value>
+  </data>
+  <data name="BoxAutoUpdateSuccess" xml:space="preserve">
+    <value>Güncelleme başarılı!</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>Lütfen GCode komutlarını girin.</value>
+  </data>
+  <data name="LanguageRequireRestart" xml:space="preserve">
+    <value>Yeniden başlatmak gerekli</value>
+  </data>
+  <data name="BoxImportConfigWithError" xml:space="preserve">
+    <value>{0} Ayar içeri alındı, {1} hata ile.</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>Bilinmeyen Pozisyon</value>
+  </data>
+  <data name="MacStatusIdle" xml:space="preserve">
+    <value>Boşta</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>Hız: </value>
+  </data>
+  <data name="BoxAutoUpdateFailed" xml:space="preserve">
+    <value>Otomatik Güncelleme Başarısız. Lütfen Lasergrbl'in kendi sistesinden manual olarak indirin.</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} Ayar dosyası başarılı bir şekilde yazıldı.</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>Eksik alan</value>
+  </data>
+  <data name="DirectionVertical" xml:space="preserve">
+    <value>Dikey</value>
+  </data>
+  <data name="FormulaCustom" xml:space="preserve">
+    <value>Özel</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>Özel düğmeyi sil</value>
+  </data>
+  <data name="MacStatusJog" xml:space="preserve">
+    <value>Hareket</value>
+  </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>Dosya aktarımı devam ediyor. Yinede bağlantı kesilsin mi?</value>
+  </data>
+  <data name="BoxAutoUpdateResult" xml:space="preserve">
+    <value>Güncelleme sonucu</value>
+  </data>
+  <data name="BoxExportConfigFileNotFound" xml:space="preserve">
+    <value>Dosya yok</value>
+  </data>
+  <data name="BoxImportConfigFileError" xml:space="preserve">
+    <value>Dosya okunumadı.</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>Dosya aktarımı devam ediyor. Yinede çıkılsın mı?</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>Adım:</value>
+  </data>
+  <data name="MainFormEstimatedTime" xml:space="preserve">
+    <value>Tahmini Süre:</value>
+  </data>
+  <data name="BoxExportConfigSuccess" xml:space="preserve">
+    <value>{0} Ayar dışarı</value>
+  </data>
+  <data name="BoxExportConfigError" xml:space="preserve">
+    <value>Ayarlar dışa aktarırken hata oluştu!</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>Uygulanmamış bazı değişiklikler var.
+Yapılandırmayı yeniden yazmak istiyor musunuz?</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>bağlantıyı kesmek</value>
+  </data>
+  <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
+    <value>Güncelleme yönetici ayrıcalığı gerektiriyor!</value>
+  </data>
+  <data name="MacStatusConnecting" xml:space="preserve">
+    <value>Bağlanıyor</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>Remove actual buttons? Select yes to remove, no to keep.</value>
+  </data>
+  <data name="MacStatusHold" xml:space="preserve">
+    <value>Gerçek düğmeler kaldırılsın mı? Kaldırmak için evet'i, tutmak için hayır'ı seçin.</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>Bağlan</value>
+  </data>
+  <data name="CustomButtonRemove" xml:space="preserve">
+    <value>Düğmeyi kaldır</value>
+  </data>
+  <data name="MacStatusCheck" xml:space="preserve">
+    <value>Kontrol</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>Bu dosya türü desteklenmiyor.</value>
+  </data>
+  <data name="MacStatusRun" xml:space="preserve">
+    <value>Başlat</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>Değişiklikler algılandı!</value>
+  </data>
+  <data name="MainFormProjectedTime" xml:space="preserve">
+    <value>Öngörülen Zaman:</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>Yapılandırma okunurken hata oluştu!</value>
+  </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>Görünüşe göre mevcut konum artık Grbl tarafından bilinmiyor.
+Hedef Ev(Home) konumlama Prosedürü ($H) olmadan sonuç güvenilir olmayabilir.
+Her halükarda devam et?</value>
+  </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>Seçili düğmeyi silmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="DirectionNone" xml:space="preserve">
+    <value>Yok</value>
+  </data>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>Abort current job?</value>
+  </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>Merkez hattı seçeneği PC'niz ile uyumlu değildir.
+64bit işletim sistemi gereklidir!</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>Uyarı</value>
+  </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>Line2Line seçeneği, gravür makinenizle veya yapılandırmanızla uyumlu değildir. PWM özellikli lazer gereklidir ve PWM desteği LaserGRBL ayarlarında etkinleştirilmelidir.</value>
+  </data>
+  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
+    <value>Şimdi yeni bir dosya açamazsınız.</value>
+  </data>
+  <data name="WarnSoftLimitNS" xml:space="preserve">
+    <value>Negatif ofsetler ayarladınız, ancak oymacınız yumuşak limit alarmı etkinken pozitif boşluk kullanmaya ayarlandı (20 $ = 1).
+
+Bu, yumuşak limit hatası oluşturabilir. Girilen değerlerden emin misiniz?</value>
+  </data>
+  <data name="WarnSoftLimitOOB" xml:space="preserve">
+    <value>İşi, gravür makinenizde yapılandırılan çalışma alanından ({0} mm x {1} mm) daha büyük yapan bir boyut ve ofset ayarladınız.
+Grbl Parametreleri $130  ve $131.
+
+Bu, yumuşak limit hatası oluşturabilir veya makine eksen sınırına çarpabilir. Girilen değerlerden emin misiniz?</value>
+  </data>
+  <data name="WarnSoftLimitTitle" xml:space="preserve">
+    <value>İş sınırı onayı</value>
+  </data>
+  <data name="DirectionNewCross" xml:space="preserve">
+    <value>Çapraz dolgu</value>
+  </data>
+  <data name="DirectionNewDiagonal" xml:space="preserve">
+    <value>diyagonal</value>
+  </data>
+  <data name="DirectionNewDiagonalCross" xml:space="preserve">
+    <value>Diyagonal çapraz dolgu</value>
+  </data>
+  <data name="DirectionNewDiagonalGrid" xml:space="preserve">
+    <value>Çapraz Izgara</value>
+  </data>
+  <data name="DirectionNewGrid" xml:space="preserve">
+    <value>Izgara</value>
+  </data>
+  <data name="DirectionNewHorizontal" xml:space="preserve">
+    <value>Yatay</value>
+  </data>
+  <data name="DirectionNewInsetFilling" xml:space="preserve">
+    <value>Gömme Dolgu</value>
+  </data>
+  <data name="DirectionNewReverseDiagonal" xml:space="preserve">
+    <value>Çapraz Ters</value>
+  </data>
+  <data name="DirectionNewSquares" xml:space="preserve">
+    <value>Kareler</value>
+  </data>
+  <data name="DirectionNewVertical" xml:space="preserve">
+    <value>Dikey</value>
+  </data>
+  <data name="DirectionNewZigZag" xml:space="preserve">
+    <value>Zig Zag</value>
+  </data>
+  <data name="WarnWrongLaserMode" xml:space="preserve">
+    <value>"M4 Dinamik Lazer Güç Modu" ayarlandı, ancak oymacınız bunu desteklemiyor gibi görünüyor.
+Sadece grbl versiyonu&gt; = 1.1 olan ve "lazer modu" etkinleştirilmiş ($32  = 1) gravür makineleri M4 seçeneğinden yararlanabilir.</value>
+  </data>
+  <data name="WarnWrongLaserModeTitle" xml:space="preserve">
+    <value>Uyarı</value>
+  </data>
+  <data name="DirectionNewHilbert" xml:space="preserve">
+    <value>Hilbert</value>
+  </data>
+</root>
