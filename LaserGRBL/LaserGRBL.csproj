@@ -779,10 +779,16 @@
     <Content Include="Sound\success.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="AutoUpdate\NewVersionForm.tr-TR.resx">
+      <DependentUpon>NewVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConnectLogForm.el-GR.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
       <Generator>ResXFileCodeGeneratorEx</Generator>
       <LastGenOutput>ConnectLogForm.el-GR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectLogForm.tr-TR.resx">
+      <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CSV\setting_codes.ortur.v1.0.csv" />
     <None Include="StandardButtons.zbn">
@@ -897,6 +903,9 @@
     <EmbeddedResource Include="CustomButtonForm.sk-SK.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomButtonForm.tr-TR.resx">
+      <DependentUpon>CustomButtonForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.zh-TW.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -912,6 +921,9 @@
       <DependentUpon>ExceptionManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExceptionManager.resx">
+      <DependentUpon>ExceptionManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExceptionManager.tr-TR.resx">
       <DependentUpon>ExceptionManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExceptionManager.zh-TW.resx">
@@ -955,6 +967,9 @@
     <EmbeddedResource Include="GrblConfig.sk-SK.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GrblConfig.tr-TR.resx">
+      <DependentUpon>GrblConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.zh-CN.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -993,6 +1008,9 @@
     <EmbeddedResource Include="HotkeyManagerForm.sk-SK.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HotkeyManagerForm.tr-TR.resx">
+      <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HotkeyManagerForm.zh-TW.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1028,6 +1046,9 @@
     <EmbeddedResource Include="IssueDetectorForm.sk-SK.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IssueDetectorForm.tr-TR.resx">
+      <DependentUpon>IssueDetectorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IssueDetectorForm.zh-TW.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1059,6 +1080,9 @@
     <EmbeddedResource Include="MainForm.sk-SK.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.tr-TR.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.zh-TW.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1079,6 +1103,9 @@
     <EmbeddedResource Include="PreviewForm.sk-SK.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PreviewForm.tr-TR.resx">
+      <DependentUpon>PreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.zh-TW.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1095,6 +1122,9 @@
       <DependentUpon>PSEditorForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSEditorForm.tr-TR.resx">
+      <DependentUpon>PSEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSEditorForm.zh-TW.resx">
       <DependentUpon>PSEditorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1108,6 +1138,9 @@
       <DependentUpon>PSHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSHelperForm.resx">
+      <DependentUpon>PSHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSHelperForm.tr-TR.resx">
       <DependentUpon>PSHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSHelperForm.zh-TW.resx">
@@ -1125,6 +1158,9 @@
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.sk-SK.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.tr-TR.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.zh-TW.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1138,6 +1174,9 @@
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\RasterToLaserForm.sk-SK.resx">
+      <DependentUpon>RasterToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\RasterToLaserForm.tr-TR.resx">
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\RasterToLaserForm.zh-TW.resx">
@@ -1156,6 +1195,9 @@
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.sk-SK.resx">
+      <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.tr-TR.resx">
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.zh-TW.resx">
@@ -1191,6 +1233,9 @@
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResumeJobForm.sk-SK.resx">
+      <DependentUpon>ResumeJobForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResumeJobForm.tr-TR.resx">
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResumeJobForm.zh-CN.resx">
@@ -1316,6 +1361,9 @@
     <EmbeddedResource Include="RunFromPositionForm.sk-SK.resx">
       <DependentUpon>RunFromPositionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RunFromPositionForm.tr-TR.resx">
+      <DependentUpon>RunFromPositionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RunFromPositionForm.zh-CN.resx">
       <DependentUpon>RunFromPositionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1342,6 +1390,9 @@
     <EmbeddedResource Include="SaveOptionForm.resx">
       <DependentUpon>SaveOptionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SaveOptionForm.tr-TR.resx">
+      <DependentUpon>SaveOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SaveOptionForm.zh-TW.resx">
       <DependentUpon>SaveOptionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1366,6 +1417,9 @@
     <EmbeddedResource Include="SettingsForm.sk-SK.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.tr-TR.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.zh-TW.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1374,8 +1428,8 @@
       <DependentUpon>Strings.resx</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings.el-GR.resx">
-	  <DependentUpon>Strings.resx</DependentUpon>
-	</EmbeddedResource>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Strings.hu-HU.resx">
       <DependentUpon>Strings.resx</DependentUpon>
     </EmbeddedResource>
@@ -1401,7 +1455,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Strings.it.resx">
       <DependentUpon>Strings.resx</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings.pt-BR.resx">
       <DependentUpon>Strings.resx</DependentUpon>
@@ -1412,13 +1465,14 @@
     <EmbeddedResource Include="Strings.sk-SK.resx">
       <DependentUpon>Strings.resx</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Strings.tr-TR.resx">
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Strings.zh-CN.resx">
       <DependentUpon>Strings.resx</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings.zh-TW.resx">
       <DependentUpon>Strings.resx</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.da.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
@@ -1574,6 +1628,9 @@
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.sk-SK.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.tr-TR.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.zh-CN.resx">

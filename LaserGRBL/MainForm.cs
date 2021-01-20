@@ -888,10 +888,15 @@ namespace LaserGRBL
         {
             SetLanguage(new System.Globalization.CultureInfo("el-GR"));
         }
-    }
+
+		private void turkishToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("tr-TR"));
+		}
+	}
 
 
-    public class MMnRenderer : ToolStripProfessionalRenderer
+	public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 

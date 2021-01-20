@@ -133,6 +133,8 @@
 			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
 			this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
+			this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -547,7 +549,8 @@
             this.hungarianToolStripMenuItem,
             this.czechToolStripMenuItem,
             this.polishToolStripMenuItem,
-            this.greekToolStripMenuItem});
+            this.greekToolStripMenuItem,
+            this.turkishToolStripMenuItem});
 			this.linguaToolStripMenuItem.Name = "linguaToolStripMenuItem";
 			resources.ApplyResources(this.linguaToolStripMenuItem, "linguaToolStripMenuItem");
 			// 
@@ -857,6 +860,12 @@
 			this.MultipleInstanceTimer.Interval = 1000;
 			this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
 			// 
+			// turkishToolStripMenuItem
+			// 
+			resources.ApplyResources(this.turkishToolStripMenuItem, "turkishToolStripMenuItem");
+			this.turkishToolStripMenuItem.Name = "turkishToolStripMenuItem";
+			this.turkishToolStripMenuItem.Click += new System.EventHandler(this.turkishToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -874,6 +883,7 @@
 			this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
 			this.splitContainer1.Panel1.ResumeLayout(false);
 			this.splitContainer1.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
 			this.StatusBar.ResumeLayout(false);
 			this.StatusBar.PerformLayout();
@@ -989,6 +999,7 @@
 		private System.Windows.Forms.ToolStripStatusLabel TTLinkToNews;
 		private System.Windows.Forms.ToolStripMenuItem MnWiFiDiscovery;
         private System.Windows.Forms.ToolStripMenuItem greekToolStripMenuItem;
-    }
+		private System.Windows.Forms.ToolStripMenuItem turkishToolStripMenuItem;
+	}
 }
 
