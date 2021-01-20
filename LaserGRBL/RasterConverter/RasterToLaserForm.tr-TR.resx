@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Raster Görüntüyü İçe Aktar</value>
+  </data>
+  <data name="BtFlipH.ToolTip" xml:space="preserve">
+    <value>Resmi yatay çevir</value>
+  </data>
+  <data name="BtFlipV.ToolTip" xml:space="preserve">
+    <value>Resmi dikey çevir</value>
+  </data>
+  <data name="BtnAdaptiveQualityInfo.ToolTip" xml:space="preserve">
+    <value>Görüntü çıktı boyutuyla orantılı olarak vektörleştirme kalitesini artırın / azaltın.</value>
+  </data>
+  <data name="BtnAutoTrim.ToolTip" xml:space="preserve">
+    <value>Görüntüyü otomatik kırp</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="BtnCreate.Text" xml:space="preserve">
+    <value>Devam et</value>
+  </data>
+  <data name="BtnCrop.ToolTip" xml:space="preserve">
+    <value>Görüntüyü kes</value>
+  </data>
+  <data name="BtnFillingQualityInfo.ToolTip" xml:space="preserve">
+    <value>Çözünürlük adım adım aralığı ile uyuşmuyorsa bazı yapaylıklar görünebilir! Güvenilir bir çözünürlük hesaplamak için tıklayın ...</value>
+  </data>
+  <data name="BtnQualityInfo.ToolTip" xml:space="preserve">
+    <value>Çözünürlük adım adım aralığı ile uyuşmuyorsa bazı yapaylıklar görünebilir! Güvenilir bir çözünürlük hesaplamak için tıklayın ...</value>
+  </data>
+  <data name="BtnReverse.ToolTip" xml:space="preserve">
+    <value>Rengi ters çevir</value>
+  </data>
+  <data name="BtnRevert.ToolTip" xml:space="preserve">
+    <value>Tüm değişiklikleri geri alın</value>
+  </data>
+  <data name="BtRotateCCW.ToolTip" xml:space="preserve">
+    <value>Saat yönünün tersine 90 ° döndür</value>
+  </data>
+  <data name="BtRotateCW.ToolTip" xml:space="preserve">
+    <value>90 ° saat yönünde döndür</value>
+  </data>
+  <data name="CbDirections.ToolTip" xml:space="preserve">
+    <value>Gravür yönü</value>
+  </data>
+  <data name="CbFillingDirection.ToolTip" xml:space="preserve">
+    <value>Yol doldurmayı etkinleştir / doldurma yönünü ayarla</value>
+  </data>
+  <data name="CbLinePreview.Text" xml:space="preserve">
+    <value>Çizgi Önizleme</value>
+  </data>
+  <data name="CbLinePreview.ToolTip" xml:space="preserve">
+    <value>Önizlemeyi Göster</value>
+  </data>
+  <data name="CbMode.ToolTip" xml:space="preserve">
+    <value>Renk dönüştürme formülünü seçin</value>
+  </data>
+  <data name="CbResize.ToolTip" xml:space="preserve">
+    <value>Yeniden boyutlandırma modunu kontrol edin (Düzgün veya Sert kenarlar)</value>
+  </data>
+  <data name="CbThreshold.ToolTip" xml:space="preserve">
+    <value>Eşik filtrelemesi uygulayın</value>
+  </data>
+  <data name="GbCenterlineOptions.Text" xml:space="preserve">
+    <value>Merkez Çizgi Seçenekleri</value>
+  </data>
+  <data name="GbConversionTool.Text" xml:space="preserve">
+    <value>Dönüştürme Aracı</value>
+  </data>
+  <data name="GbLineToLineOptions.Text" xml:space="preserve">
+    <value>Satır Seçenekleri</value>
+  </data>
+  <data name="GbParameters.Text" xml:space="preserve">
+    <value>Parametreler</value>
+  </data>
+  <data name="GbVectorizeOptions.Text" xml:space="preserve">
+    <value>Vectorize! Seçenekler</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Altörnekleme</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>dolgu</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Parlaklık</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Spot Kaldırma</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Yumuşatma</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Optimize et</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Yön</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Yeniden boyutlandır</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Kontrast</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Beyaz Klip</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Kalite</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Satır eşiği</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Köşe Eşiği</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>satır/mm</value>
+  </data>
+  <data name="LAdaptiveQuality.Text" xml:space="preserve">
+    <value>Uyarlanabilir kalite</value>
+  </data>
+  <data name="LblBlue.Text" xml:space="preserve">
+    <value>Mavi</value>
+  </data>
+  <data name="LblDitherMode.Text" xml:space="preserve">
+    <value>Titreme</value>
+  </data>
+  <data name="LblFillingLineLbl.Text" xml:space="preserve">
+    <value>Çizgiler / mm</value>
+  </data>
+  <data name="LblFillingQuality.Text" xml:space="preserve">
+    <value>Dolum Kalitesi</value>
+  </data>
+  <data name="LblGrayscale.Text" xml:space="preserve">
+    <value>Gri tonlamalı</value>
+  </data>
+  <data name="LblGreen.Text" xml:space="preserve">
+    <value>Yeşil</value>
+  </data>
+  <data name="LblRed.Text" xml:space="preserve">
+    <value>Kırmızı</value>
+  </data>
+  <data name="lOptimizeFast.Text" xml:space="preserve">
+    <value>Yolu Optimize Edin</value>
+  </data>
+  <data name="RbCenterline.Text" xml:space="preserve">
+    <value>Merkez çizgisi</value>
+  </data>
+  <data name="RbCenterline.ToolTip" xml:space="preserve">
+    <value>Merkez çizgisi vektörleştirme</value>
+  </data>
+  <data name="RbDithering.Text" xml:space="preserve">
+    <value>1 bitlik Siyah Beyaz Titreme</value>
+  </data>
+  <data name="RbDithering.ToolTip" xml:space="preserve">
+    <value>Gri tonlamalı siyah beyaz görüntü üretin</value>
+  </data>
+  <data name="RbLineToLineTracing.Text" xml:space="preserve">
+    <value>satır arası izleme</value>
+  </data>
+  <data name="RbLineToLineTracing.ToolTip" xml:space="preserve">
+    <value>Gri tonlamalı görüntü üretin</value>
+  </data>
+  <data name="RbVectorize.Text" xml:space="preserve">
+    <value>Vektör!</value>
+  </data>
+  <data name="RbVectorize.ToolTip" xml:space="preserve">
+    <value>Vektör yolunu oluştur</value>
+  </data>
+  <data name="TBCornerThreshold.ToolTip" xml:space="preserve">
+    <value>Angle-in-degrees: Bir piksel, selefleri ve ardılları bundan daha küçük bir açıda buluşursa, bu bir köşedir.</value>
+  </data>
+  <data name="TBLineThreshold.ToolTip" xml:space="preserve">
+    <value>Spline, uç noktaları tarafından tanımlanan düz çizgiden bu kadar uzakta değilse, düz bir çizgi çıktılar.</value>
+  </data>
+  <data name="TpOriginal.Text" xml:space="preserve">
+    <value>Orijinal</value>
+  </data>
+  <data name="TpPreview.Text" xml:space="preserve">
+    <value>Ön izleme</value>
+  </data>
+  <data name="UDDownSample.ToolTip" xml:space="preserve">
+    <value>Orijinal görüntüyü küçültün [Yüksek Çözünürlüklü görüntü için]</value>
+  </data>
+  <data name="UDFillingQuality.ToolTip" xml:space="preserve">
+    <value>Dolum kalitesi (satır / mm)</value>
+  </data>
+  <data name="UDOptimize.ToolTip" xml:space="preserve">
+    <value>Yolu optimize edin (daha az segment üretin)</value>
+  </data>
+  <data name="UDQuality.ToolTip" xml:space="preserve">
+    <value>Görüntü çözünürlüğünü ayarla (satır / mm)</value>
+  </data>
+  <data name="UDSmoothing.ToolTip" xml:space="preserve">
+    <value>Pürüzsüz sert kenarlar</value>
+  </data>
+  <data name="UDSpotRemoval.ToolTip" xml:space="preserve">
+    <value>Küçük ayrıntıları kaldırın</value>
+  </data>
+</root>
