@@ -1036,7 +1036,15 @@ namespace LaserGRBL.RasterConverter
 						conf.maxPower = MaxPower;
 						conf.lOn = LaserOn;
 						conf.lOff = LaserOff;
-						conf.dir = SelectedTool == ImageProcessor.Tool.Vectorize ? FillingDirection : LineDirection;
+
+
+						if (SelectedTool == Tool.NoProcessing)
+							conf.dir = Direction.Horizontal;
+						else if (SelectedTool == Tool.Vectorize)
+							conf.dir = FillingDirection;
+						else
+							conf.dir = LineDirection;
+
 						conf.oX = TargetOffset.X;
 						conf.oY = TargetOffset.Y;
 						conf.borderSpeed = BorderSpeed;
