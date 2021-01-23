@@ -394,6 +394,7 @@ namespace LaserGRBL.RasterConverter
 
 		private void RefreshVE()
 		{
+			GbParameters.Enabled = !RbNoProcessing.Checked;
 			GbVectorizeOptions.Visible = RbVectorize.Checked;
 			GbCenterlineOptions.Visible = RbCenterline.Checked;
 			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
@@ -414,6 +415,16 @@ namespace LaserGRBL.RasterConverter
 			{
 				if (RbLineToLineTracing.Checked)
 					IP.SelectedTool = ImageProcessor.Tool.Line2Line;
+				RefreshVE();
+			}
+		}
+
+		private void RbNoProcessing_CheckedChanged(object sender, EventArgs e)
+		{
+			if (IP != null)
+			{
+				if (RbNoProcessing.Checked)
+					IP.SelectedTool = ImageProcessor.Tool.NoProcessing;
 				RefreshVE();
 			}
 		}
@@ -799,5 +810,6 @@ namespace LaserGRBL.RasterConverter
 				//RbDithering.Checked = true;
 			}
 		}
+
 	}
 }
