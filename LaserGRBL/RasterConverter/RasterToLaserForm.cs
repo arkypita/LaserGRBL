@@ -398,6 +398,7 @@ namespace LaserGRBL.RasterConverter
 			GbVectorizeOptions.Visible = RbVectorize.Checked;
 			GbCenterlineOptions.Visible = RbCenterline.Checked;
 			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
+			GbPassthrough.Visible = RbNoProcessing.Checked;
 			GbLineToLineOptions.Text = RbLineToLineTracing.Checked ? "Line To Line Options" : "Dithering Options";
 
 			CbThreshold.Visible = !RbDithering.Checked;

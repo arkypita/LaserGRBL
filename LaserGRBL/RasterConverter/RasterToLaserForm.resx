@@ -816,6 +816,75 @@
   <data name="TlpLeft.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="GbPassthrough.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GbPassthrough.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="TbPassthroughInfo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="TbPassthroughInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
+  </data>
+  <data name="TbPassthroughInfo.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TbPassthroughInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 81</value>
+  </data>
+  <data name="TbPassthroughInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="TbPassthroughInfo.Text" xml:space="preserve">
+    <value>Passthrough mode leaves the image intact, without any processing by LaserGRBL. The image will be engraver line by line, horizontally, according to the size and DPI resolution contained in file information.</value>
+  </data>
+  <data name="&gt;&gt;TbPassthroughInfo.Name" xml:space="preserve">
+    <value>TbPassthroughInfo</value>
+  </data>
+  <data name="&gt;&gt;TbPassthroughInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TbPassthroughInfo.Parent" xml:space="preserve">
+    <value>GbPassthrough</value>
+  </data>
+  <data name="&gt;&gt;TbPassthroughInfo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GbPassthrough.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="GbPassthrough.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 375</value>
+  </data>
+  <data name="GbPassthrough.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 100</value>
+  </data>
+  <data name="GbPassthrough.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 100</value>
+  </data>
+  <data name="GbPassthrough.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="GbPassthrough.Text" xml:space="preserve">
+    <value>Passthrough Options</value>
+  </data>
+  <data name="GbPassthrough.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;GbPassthrough.Name" xml:space="preserve">
+    <value>GbPassthrough</value>
+  </data>
+  <data name="&gt;&gt;GbPassthrough.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GbPassthrough.Parent" xml:space="preserve">
+    <value>TlpLeft</value>
+  </data>
+  <data name="&gt;&gt;GbPassthrough.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="GbParameters.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1459,7 +1528,7 @@
     <value>TlpLeft</value>
   </data>
   <data name="&gt;&gt;GbParameters.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="GbCenterlineOptions.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1708,7 +1777,7 @@
     <value>Fill</value>
   </data>
   <data name="GbCenterlineOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 375</value>
+    <value>3, 481</value>
   </data>
   <data name="GbCenterlineOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 67</value>
@@ -1729,7 +1798,7 @@
     <value>TlpLeft</value>
   </data>
   <data name="&gt;&gt;GbCenterlineOptions.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="GbVectorizeOptions.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2551,7 +2620,7 @@
     <value>Fill</value>
   </data>
   <data name="GbVectorizeOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 570</value>
+    <value>3, 676</value>
   </data>
   <data name="GbVectorizeOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 207</value>
@@ -2575,7 +2644,7 @@
     <value>TlpLeft</value>
   </data>
   <data name="&gt;&gt;GbVectorizeOptions.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="GbLineToLineOptions.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2917,7 +2986,7 @@
     <value>Fill</value>
   </data>
   <data name="GbLineToLineOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 448</value>
+    <value>3, 554</value>
   </data>
   <data name="GbLineToLineOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 116</value>
@@ -2938,7 +3007,7 @@
     <value>TlpLeft</value>
   </data>
   <data name="&gt;&gt;GbLineToLineOptions.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="GbConversionTool.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3163,7 +3232,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="RbNoProcessing" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="RbCenterline" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="RbDithering" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="RbVectorize" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="RbLineToLineTracing" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Absolute,20,Absolute,20" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,AutoSize,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="RbNoProcessing" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="RbCenterline" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="RbDithering" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="RbVectorize" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="RbLineToLineTracing" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Absolute,20,Absolute,20" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="GbConversionTool.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3190,7 +3259,7 @@
     <value>TlpLeft</value>
   </data>
   <data name="&gt;&gt;GbConversionTool.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="TlpLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3202,7 +3271,7 @@
     <value>246, 0</value>
   </data>
   <data name="TlpLeft.RowCount" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="TlpLeft.Size" type="System.Drawing.Size, System.Drawing">
     <value>246, 555</value>
@@ -3223,7 +3292,7 @@
     <value>2</value>
   </data>
   <data name="TlpLeft.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="GbParameters" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GbCenterlineOptions" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GbVectorizeOptions" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GbLineToLineOptions" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GbConversionTool" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="GbPassthrough" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GbParameters" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GbCenterlineOptions" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GbVectorizeOptions" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GbLineToLineOptions" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GbConversionTool" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3444,6 +3513,9 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAD4AAAA/AAAAPwAAAD/AAAA//wAAP/+AAH//g
         AD//4AD//+AB///gAf//4AH///AD///wA/8=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
