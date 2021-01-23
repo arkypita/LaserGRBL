@@ -38,6 +38,17 @@
 			this.PbOriginal = new System.Windows.Forms.PictureBox();
 			this.FlipControl = new System.Windows.Forms.TableLayoutPanel();
 			this.TlpLeft = new System.Windows.Forms.TableLayoutPanel();
+			this.GbParameters = new System.Windows.Forms.GroupBox();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.LblGrayscale = new System.Windows.Forms.Label();
+			this.LblRed = new System.Windows.Forms.Label();
+			this.LblBlue = new System.Windows.Forms.Label();
+			this.LblGreen = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.CbThreshold = new System.Windows.Forms.CheckBox();
+			this.label28 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
 			this.GbCenterlineOptions = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.label6 = new System.Windows.Forms.Label();
@@ -66,17 +77,6 @@
 			this.CbDownSample = new System.Windows.Forms.CheckBox();
 			this.lOptimizeFast = new System.Windows.Forms.Label();
 			this.CbOptimizeFast = new System.Windows.Forms.CheckBox();
-			this.GbParameters = new System.Windows.Forms.GroupBox();
-			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.LblGrayscale = new System.Windows.Forms.Label();
-			this.LblRed = new System.Windows.Forms.Label();
-			this.LblBlue = new System.Windows.Forms.Label();
-			this.LblGreen = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.CbThreshold = new System.Windows.Forms.CheckBox();
-			this.label28 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
 			this.GbLineToLineOptions = new System.Windows.Forms.GroupBox();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
 			this.UDQuality = new System.Windows.Forms.NumericUpDown();
@@ -88,6 +88,7 @@
 			this.CbDither = new System.Windows.Forms.ComboBox();
 			this.GbConversionTool = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+			this.RbNoProcessing = new System.Windows.Forms.RadioButton();
 			this.RbCenterline = new System.Windows.Forms.RadioButton();
 			this.RbDithering = new System.Windows.Forms.RadioButton();
 			this.RbVectorize = new System.Windows.Forms.RadioButton();
@@ -97,6 +98,8 @@
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.WT = new System.Windows.Forms.Timer(this.components);
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
+			this.GbPassthrough = new System.Windows.Forms.GroupBox();
+			this.TbPassthroughInfo = new System.Windows.Forms.TextBox();
 			this.WB = new LaserGRBL.UserControls.WaitingProgressBar();
 			this.BtFlipV = new LaserGRBL.UserControls.ImageButton();
 			this.BtFlipH = new LaserGRBL.UserControls.ImageButton();
@@ -106,11 +109,6 @@
 			this.BtnCrop = new LaserGRBL.UserControls.ImageButton();
 			this.BtnReverse = new LaserGRBL.UserControls.ImageButton();
 			this.BtnAutoTrim = new LaserGRBL.UserControls.ImageButton();
-			this.TBLineThreshold = new LaserGRBL.UserControls.ColorSlider();
-			this.TBCornerThreshold = new LaserGRBL.UserControls.ColorSlider();
-			this.BtnAdaptiveQualityInfo = new LaserGRBL.UserControls.ImageButton();
-			this.CbFillingDirection = new LaserGRBL.UserControls.EnumComboBox();
-			this.BtnFillingQualityInfo = new LaserGRBL.UserControls.ImageButton();
 			this.CbResize = new LaserGRBL.UserControls.EnumComboBox();
 			this.CbMode = new LaserGRBL.UserControls.EnumComboBox();
 			this.TBRed = new LaserGRBL.UserControls.ColorSlider();
@@ -120,9 +118,13 @@
 			this.TbContrast = new LaserGRBL.UserControls.ColorSlider();
 			this.TbThreshold = new LaserGRBL.UserControls.ColorSlider();
 			this.TBWhiteClip = new LaserGRBL.UserControls.ColorSlider();
+			this.TBLineThreshold = new LaserGRBL.UserControls.ColorSlider();
+			this.TBCornerThreshold = new LaserGRBL.UserControls.ColorSlider();
+			this.BtnAdaptiveQualityInfo = new LaserGRBL.UserControls.ImageButton();
+			this.CbFillingDirection = new LaserGRBL.UserControls.EnumComboBox();
+			this.BtnFillingQualityInfo = new LaserGRBL.UserControls.ImageButton();
 			this.CbDirections = new LaserGRBL.UserControls.EnumComboBox();
 			this.BtnQualityInfo = new LaserGRBL.UserControls.ImageButton();
-			this.RbNoProcessing = new System.Windows.Forms.RadioButton();
 			this.TlpMain.SuspendLayout();
 			this.TCOriginalPreview.SuspendLayout();
 			this.TpPreview.SuspendLayout();
@@ -131,6 +133,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.PbOriginal)).BeginInit();
 			this.FlipControl.SuspendLayout();
 			this.TlpLeft.SuspendLayout();
+			this.GbParameters.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
 			this.GbCenterlineOptions.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
 			this.GbVectorizeOptions.SuspendLayout();
@@ -140,14 +144,13 @@
 			((System.ComponentModel.ISupportInitialize)(this.UDSmoothing)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDFillingQuality)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDDownSample)).BeginInit();
-			this.GbParameters.SuspendLayout();
-			this.tableLayoutPanel2.SuspendLayout();
 			this.GbLineToLineOptions.SuspendLayout();
 			this.TLP.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.UDQuality)).BeginInit();
 			this.GbConversionTool.SuspendLayout();
 			this.tableLayoutPanel4.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
+			this.GbPassthrough.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// TlpMain
@@ -218,13 +221,92 @@
 			// TlpLeft
 			// 
 			resources.ApplyResources(this.TlpLeft, "TlpLeft");
+			this.TlpLeft.Controls.Add(this.GbPassthrough, 0, 2);
 			this.TlpLeft.Controls.Add(this.GbParameters, 0, 0);
-			this.TlpLeft.Controls.Add(this.GbCenterlineOptions, 0, 2);
-			this.TlpLeft.Controls.Add(this.GbVectorizeOptions, 0, 4);
-			this.TlpLeft.Controls.Add(this.GbLineToLineOptions, 0, 3);
+			this.TlpLeft.Controls.Add(this.GbCenterlineOptions, 0, 3);
+			this.TlpLeft.Controls.Add(this.GbVectorizeOptions, 0, 5);
+			this.TlpLeft.Controls.Add(this.GbLineToLineOptions, 0, 4);
 			this.TlpLeft.Controls.Add(this.GbConversionTool, 0, 1);
 			this.TlpLeft.Name = "TlpLeft";
 			this.TlpMain.SetRowSpan(this.TlpLeft, 2);
+			// 
+			// GbParameters
+			// 
+			resources.ApplyResources(this.GbParameters, "GbParameters");
+			this.GbParameters.Controls.Add(this.tableLayoutPanel2);
+			this.GbParameters.Name = "GbParameters";
+			this.GbParameters.TabStop = false;
+			// 
+			// tableLayoutPanel2
+			// 
+			resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+			this.tableLayoutPanel2.Controls.Add(this.CbResize, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.LblGrayscale, 0, 1);
+			this.tableLayoutPanel2.Controls.Add(this.CbMode, 1, 1);
+			this.tableLayoutPanel2.Controls.Add(this.TBRed, 1, 2);
+			this.tableLayoutPanel2.Controls.Add(this.LblRed, 0, 2);
+			this.tableLayoutPanel2.Controls.Add(this.LblBlue, 0, 4);
+			this.tableLayoutPanel2.Controls.Add(this.LblGreen, 0, 3);
+			this.tableLayoutPanel2.Controls.Add(this.label2, 0, 5);
+			this.tableLayoutPanel2.Controls.Add(this.TBGreen, 1, 3);
+			this.tableLayoutPanel2.Controls.Add(this.TbBright, 1, 5);
+			this.tableLayoutPanel2.Controls.Add(this.TBBlue, 1, 4);
+			this.tableLayoutPanel2.Controls.Add(this.TbContrast, 1, 6);
+			this.tableLayoutPanel2.Controls.Add(this.label3, 0, 6);
+			this.tableLayoutPanel2.Controls.Add(this.CbThreshold, 0, 8);
+			this.tableLayoutPanel2.Controls.Add(this.label28, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.TbThreshold, 1, 8);
+			this.tableLayoutPanel2.Controls.Add(this.TBWhiteClip, 1, 7);
+			this.tableLayoutPanel2.Controls.Add(this.label4, 0, 7);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			// 
+			// LblGrayscale
+			// 
+			resources.ApplyResources(this.LblGrayscale, "LblGrayscale");
+			this.LblGrayscale.Name = "LblGrayscale";
+			// 
+			// LblRed
+			// 
+			resources.ApplyResources(this.LblRed, "LblRed");
+			this.LblRed.Name = "LblRed";
+			// 
+			// LblBlue
+			// 
+			resources.ApplyResources(this.LblBlue, "LblBlue");
+			this.LblBlue.Name = "LblBlue";
+			// 
+			// LblGreen
+			// 
+			resources.ApplyResources(this.LblGreen, "LblGreen");
+			this.LblGreen.Name = "LblGreen";
+			// 
+			// label2
+			// 
+			resources.ApplyResources(this.label2, "label2");
+			this.label2.Name = "label2";
+			// 
+			// label3
+			// 
+			resources.ApplyResources(this.label3, "label3");
+			this.label3.Name = "label3";
+			// 
+			// CbThreshold
+			// 
+			resources.ApplyResources(this.CbThreshold, "CbThreshold");
+			this.CbThreshold.Name = "CbThreshold";
+			this.TT.SetToolTip(this.CbThreshold, resources.GetString("CbThreshold.ToolTip"));
+			this.CbThreshold.UseVisualStyleBackColor = true;
+			this.CbThreshold.CheckedChanged += new System.EventHandler(this.CbThreshold_CheckedChanged);
+			// 
+			// label28
+			// 
+			resources.ApplyResources(this.label28, "label28");
+			this.label28.Name = "label28";
+			// 
+			// label4
+			// 
+			resources.ApplyResources(this.label4, "label4");
+			this.label4.Name = "label4";
 			// 
 			// GbCenterlineOptions
 			// 
@@ -504,84 +586,6 @@
 			this.CbOptimizeFast.UseVisualStyleBackColor = true;
 			this.CbOptimizeFast.CheckedChanged += new System.EventHandler(this.CbOptimizeFast_CheckedChanged);
 			// 
-			// GbParameters
-			// 
-			resources.ApplyResources(this.GbParameters, "GbParameters");
-			this.GbParameters.Controls.Add(this.tableLayoutPanel2);
-			this.GbParameters.Name = "GbParameters";
-			this.GbParameters.TabStop = false;
-			// 
-			// tableLayoutPanel2
-			// 
-			resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
-			this.tableLayoutPanel2.Controls.Add(this.CbResize, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.LblGrayscale, 0, 1);
-			this.tableLayoutPanel2.Controls.Add(this.CbMode, 1, 1);
-			this.tableLayoutPanel2.Controls.Add(this.TBRed, 1, 2);
-			this.tableLayoutPanel2.Controls.Add(this.LblRed, 0, 2);
-			this.tableLayoutPanel2.Controls.Add(this.LblBlue, 0, 4);
-			this.tableLayoutPanel2.Controls.Add(this.LblGreen, 0, 3);
-			this.tableLayoutPanel2.Controls.Add(this.label2, 0, 5);
-			this.tableLayoutPanel2.Controls.Add(this.TBGreen, 1, 3);
-			this.tableLayoutPanel2.Controls.Add(this.TbBright, 1, 5);
-			this.tableLayoutPanel2.Controls.Add(this.TBBlue, 1, 4);
-			this.tableLayoutPanel2.Controls.Add(this.TbContrast, 1, 6);
-			this.tableLayoutPanel2.Controls.Add(this.label3, 0, 6);
-			this.tableLayoutPanel2.Controls.Add(this.CbThreshold, 0, 8);
-			this.tableLayoutPanel2.Controls.Add(this.label28, 0, 0);
-			this.tableLayoutPanel2.Controls.Add(this.TbThreshold, 1, 8);
-			this.tableLayoutPanel2.Controls.Add(this.TBWhiteClip, 1, 7);
-			this.tableLayoutPanel2.Controls.Add(this.label4, 0, 7);
-			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-			// 
-			// LblGrayscale
-			// 
-			resources.ApplyResources(this.LblGrayscale, "LblGrayscale");
-			this.LblGrayscale.Name = "LblGrayscale";
-			// 
-			// LblRed
-			// 
-			resources.ApplyResources(this.LblRed, "LblRed");
-			this.LblRed.Name = "LblRed";
-			// 
-			// LblBlue
-			// 
-			resources.ApplyResources(this.LblBlue, "LblBlue");
-			this.LblBlue.Name = "LblBlue";
-			// 
-			// LblGreen
-			// 
-			resources.ApplyResources(this.LblGreen, "LblGreen");
-			this.LblGreen.Name = "LblGreen";
-			// 
-			// label2
-			// 
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
-			// 
-			// label3
-			// 
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
-			// 
-			// CbThreshold
-			// 
-			resources.ApplyResources(this.CbThreshold, "CbThreshold");
-			this.CbThreshold.Name = "CbThreshold";
-			this.TT.SetToolTip(this.CbThreshold, resources.GetString("CbThreshold.ToolTip"));
-			this.CbThreshold.UseVisualStyleBackColor = true;
-			this.CbThreshold.CheckedChanged += new System.EventHandler(this.CbThreshold_CheckedChanged);
-			// 
-			// label28
-			// 
-			resources.ApplyResources(this.label28, "label28");
-			this.label28.Name = "label28";
-			// 
-			// label4
-			// 
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
-			// 
 			// GbLineToLineOptions
 			// 
 			resources.ApplyResources(this.GbLineToLineOptions, "GbLineToLineOptions");
@@ -683,6 +687,14 @@
 			this.tableLayoutPanel4.Controls.Add(this.RbLineToLineTracing, 0, 0);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
 			// 
+			// RbNoProcessing
+			// 
+			resources.ApplyResources(this.RbNoProcessing, "RbNoProcessing");
+			this.RbNoProcessing.Name = "RbNoProcessing";
+			this.TT.SetToolTip(this.RbNoProcessing, resources.GetString("RbNoProcessing.ToolTip"));
+			this.RbNoProcessing.UseVisualStyleBackColor = true;
+			this.RbNoProcessing.CheckedChanged += new System.EventHandler(this.RbNoProcessing_CheckedChanged);
+			// 
 			// RbCenterline
 			// 
 			resources.ApplyResources(this.RbCenterline, "RbCenterline");
@@ -744,6 +756,19 @@
 			// 
 			this.WT.Interval = 50;
 			this.WT.Tick += new System.EventHandler(this.WTTick);
+			// 
+			// GbPassthrough
+			// 
+			resources.ApplyResources(this.GbPassthrough, "GbPassthrough");
+			this.GbPassthrough.Controls.Add(this.TbPassthroughInfo);
+			this.GbPassthrough.Name = "GbPassthrough";
+			this.GbPassthrough.TabStop = false;
+			// 
+			// TbPassthroughInfo
+			// 
+			resources.ApplyResources(this.TbPassthroughInfo, "TbPassthroughInfo");
+			this.TbPassthroughInfo.Name = "TbPassthroughInfo";
+			this.TbPassthroughInfo.ReadOnly = true;
 			// 
 			// WB
 			// 
@@ -876,84 +901,6 @@
 			this.TT.SetToolTip(this.BtnAutoTrim, resources.GetString("BtnAutoTrim.ToolTip"));
 			this.BtnAutoTrim.UseAltImage = false;
 			this.BtnAutoTrim.Click += new System.EventHandler(this.BtnAutoTrim_Click);
-			// 
-			// TBLineThreshold
-			// 
-			resources.ApplyResources(this.TBLineThreshold, "TBLineThreshold");
-			this.TBLineThreshold.BackColor = System.Drawing.Color.Transparent;
-			this.TBLineThreshold.BarInnerColor = System.Drawing.Color.LightGoldenrodYellow;
-			this.TBLineThreshold.BarOuterColor = System.Drawing.Color.Gold;
-			this.TBLineThreshold.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-			this.TBLineThreshold.ElapsedInnerColor = System.Drawing.Color.Yellow;
-			this.TBLineThreshold.ElapsedOuterColor = System.Drawing.Color.Gold;
-			this.TBLineThreshold.LargeChange = ((uint)(5u));
-			this.TBLineThreshold.Name = "TBLineThreshold";
-			this.TBLineThreshold.SmallChange = ((uint)(1u));
-			this.TBLineThreshold.ThumbRoundRectSize = new System.Drawing.Size(4, 4);
-			this.TBLineThreshold.ThumbSize = 8;
-			this.TT.SetToolTip(this.TBLineThreshold, resources.GetString("TBLineThreshold.ToolTip"));
-			this.TBLineThreshold.Value = 10;
-			this.TBLineThreshold.ValueChanged += new System.EventHandler(this.TBLineThreshold_ValueChanged);
-			this.TBLineThreshold.DoubleClick += new System.EventHandler(this.TBLineThreshold_DoubleClick);
-			// 
-			// TBCornerThreshold
-			// 
-			resources.ApplyResources(this.TBCornerThreshold, "TBCornerThreshold");
-			this.TBCornerThreshold.BackColor = System.Drawing.Color.Transparent;
-			this.TBCornerThreshold.BarInnerColor = System.Drawing.Color.LightGoldenrodYellow;
-			this.TBCornerThreshold.BarOuterColor = System.Drawing.Color.Gold;
-			this.TBCornerThreshold.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-			this.TBCornerThreshold.ElapsedInnerColor = System.Drawing.Color.Yellow;
-			this.TBCornerThreshold.ElapsedOuterColor = System.Drawing.Color.Gold;
-			this.TBCornerThreshold.LargeChange = ((uint)(5u));
-			this.TBCornerThreshold.Maximum = 360;
-			this.TBCornerThreshold.Name = "TBCornerThreshold";
-			this.TBCornerThreshold.SmallChange = ((uint)(1u));
-			this.TBCornerThreshold.ThumbRoundRectSize = new System.Drawing.Size(4, 4);
-			this.TBCornerThreshold.ThumbSize = 8;
-			this.TT.SetToolTip(this.TBCornerThreshold, resources.GetString("TBCornerThreshold.ToolTip"));
-			this.TBCornerThreshold.Value = 110;
-			this.TBCornerThreshold.ValueChanged += new System.EventHandler(this.TBCornerThreshold_ValueChanged);
-			this.TBCornerThreshold.DoubleClick += new System.EventHandler(this.TBCornerThreshold_DoubleClick);
-			// 
-			// BtnAdaptiveQualityInfo
-			// 
-			this.BtnAdaptiveQualityInfo.AltImage = null;
-			resources.ApplyResources(this.BtnAdaptiveQualityInfo, "BtnAdaptiveQualityInfo");
-			this.BtnAdaptiveQualityInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnAdaptiveQualityInfo.Caption = null;
-			this.BtnAdaptiveQualityInfo.Coloration = System.Drawing.Color.Empty;
-			this.BtnAdaptiveQualityInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnAdaptiveQualityInfo.Image")));
-			this.BtnAdaptiveQualityInfo.Name = "BtnAdaptiveQualityInfo";
-			this.BtnAdaptiveQualityInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.BtnAdaptiveQualityInfo, resources.GetString("BtnAdaptiveQualityInfo.ToolTip"));
-			this.BtnAdaptiveQualityInfo.UseAltImage = false;
-			this.BtnAdaptiveQualityInfo.Click += new System.EventHandler(this.BtnAdaptiveQualityInfo_Click);
-			// 
-			// CbFillingDirection
-			// 
-			resources.ApplyResources(this.CbFillingDirection, "CbFillingDirection");
-			this.tableLayoutPanel5.SetColumnSpan(this.CbFillingDirection, 3);
-			this.CbFillingDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CbFillingDirection.FormattingEnabled = true;
-			this.CbFillingDirection.Name = "CbFillingDirection";
-			this.CbFillingDirection.SelectedItem = null;
-			this.TT.SetToolTip(this.CbFillingDirection, resources.GetString("CbFillingDirection.ToolTip"));
-			this.CbFillingDirection.SelectedIndexChanged += new System.EventHandler(this.CbFillingDirection_SelectedIndexChanged);
-			// 
-			// BtnFillingQualityInfo
-			// 
-			this.BtnFillingQualityInfo.AltImage = null;
-			resources.ApplyResources(this.BtnFillingQualityInfo, "BtnFillingQualityInfo");
-			this.BtnFillingQualityInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnFillingQualityInfo.Caption = null;
-			this.BtnFillingQualityInfo.Coloration = System.Drawing.Color.Empty;
-			this.BtnFillingQualityInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnFillingQualityInfo.Image")));
-			this.BtnFillingQualityInfo.Name = "BtnFillingQualityInfo";
-			this.BtnFillingQualityInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.BtnFillingQualityInfo, resources.GetString("BtnFillingQualityInfo.ToolTip"));
-			this.BtnFillingQualityInfo.UseAltImage = false;
-			this.BtnFillingQualityInfo.Click += new System.EventHandler(this.BtnFillingQualityInfo_Click);
 			// 
 			// CbResize
 			// 
@@ -1109,6 +1056,84 @@
 			this.TBWhiteClip.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TBWhiteClip_MouseDown);
 			this.TBWhiteClip.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TBWhiteClip_MouseUp);
 			// 
+			// TBLineThreshold
+			// 
+			resources.ApplyResources(this.TBLineThreshold, "TBLineThreshold");
+			this.TBLineThreshold.BackColor = System.Drawing.Color.Transparent;
+			this.TBLineThreshold.BarInnerColor = System.Drawing.Color.LightGoldenrodYellow;
+			this.TBLineThreshold.BarOuterColor = System.Drawing.Color.Gold;
+			this.TBLineThreshold.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+			this.TBLineThreshold.ElapsedInnerColor = System.Drawing.Color.Yellow;
+			this.TBLineThreshold.ElapsedOuterColor = System.Drawing.Color.Gold;
+			this.TBLineThreshold.LargeChange = ((uint)(5u));
+			this.TBLineThreshold.Name = "TBLineThreshold";
+			this.TBLineThreshold.SmallChange = ((uint)(1u));
+			this.TBLineThreshold.ThumbRoundRectSize = new System.Drawing.Size(4, 4);
+			this.TBLineThreshold.ThumbSize = 8;
+			this.TT.SetToolTip(this.TBLineThreshold, resources.GetString("TBLineThreshold.ToolTip"));
+			this.TBLineThreshold.Value = 10;
+			this.TBLineThreshold.ValueChanged += new System.EventHandler(this.TBLineThreshold_ValueChanged);
+			this.TBLineThreshold.DoubleClick += new System.EventHandler(this.TBLineThreshold_DoubleClick);
+			// 
+			// TBCornerThreshold
+			// 
+			resources.ApplyResources(this.TBCornerThreshold, "TBCornerThreshold");
+			this.TBCornerThreshold.BackColor = System.Drawing.Color.Transparent;
+			this.TBCornerThreshold.BarInnerColor = System.Drawing.Color.LightGoldenrodYellow;
+			this.TBCornerThreshold.BarOuterColor = System.Drawing.Color.Gold;
+			this.TBCornerThreshold.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+			this.TBCornerThreshold.ElapsedInnerColor = System.Drawing.Color.Yellow;
+			this.TBCornerThreshold.ElapsedOuterColor = System.Drawing.Color.Gold;
+			this.TBCornerThreshold.LargeChange = ((uint)(5u));
+			this.TBCornerThreshold.Maximum = 360;
+			this.TBCornerThreshold.Name = "TBCornerThreshold";
+			this.TBCornerThreshold.SmallChange = ((uint)(1u));
+			this.TBCornerThreshold.ThumbRoundRectSize = new System.Drawing.Size(4, 4);
+			this.TBCornerThreshold.ThumbSize = 8;
+			this.TT.SetToolTip(this.TBCornerThreshold, resources.GetString("TBCornerThreshold.ToolTip"));
+			this.TBCornerThreshold.Value = 110;
+			this.TBCornerThreshold.ValueChanged += new System.EventHandler(this.TBCornerThreshold_ValueChanged);
+			this.TBCornerThreshold.DoubleClick += new System.EventHandler(this.TBCornerThreshold_DoubleClick);
+			// 
+			// BtnAdaptiveQualityInfo
+			// 
+			this.BtnAdaptiveQualityInfo.AltImage = null;
+			resources.ApplyResources(this.BtnAdaptiveQualityInfo, "BtnAdaptiveQualityInfo");
+			this.BtnAdaptiveQualityInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnAdaptiveQualityInfo.Caption = null;
+			this.BtnAdaptiveQualityInfo.Coloration = System.Drawing.Color.Empty;
+			this.BtnAdaptiveQualityInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnAdaptiveQualityInfo.Image")));
+			this.BtnAdaptiveQualityInfo.Name = "BtnAdaptiveQualityInfo";
+			this.BtnAdaptiveQualityInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnAdaptiveQualityInfo, resources.GetString("BtnAdaptiveQualityInfo.ToolTip"));
+			this.BtnAdaptiveQualityInfo.UseAltImage = false;
+			this.BtnAdaptiveQualityInfo.Click += new System.EventHandler(this.BtnAdaptiveQualityInfo_Click);
+			// 
+			// CbFillingDirection
+			// 
+			resources.ApplyResources(this.CbFillingDirection, "CbFillingDirection");
+			this.tableLayoutPanel5.SetColumnSpan(this.CbFillingDirection, 3);
+			this.CbFillingDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbFillingDirection.FormattingEnabled = true;
+			this.CbFillingDirection.Name = "CbFillingDirection";
+			this.CbFillingDirection.SelectedItem = null;
+			this.TT.SetToolTip(this.CbFillingDirection, resources.GetString("CbFillingDirection.ToolTip"));
+			this.CbFillingDirection.SelectedIndexChanged += new System.EventHandler(this.CbFillingDirection_SelectedIndexChanged);
+			// 
+			// BtnFillingQualityInfo
+			// 
+			this.BtnFillingQualityInfo.AltImage = null;
+			resources.ApplyResources(this.BtnFillingQualityInfo, "BtnFillingQualityInfo");
+			this.BtnFillingQualityInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnFillingQualityInfo.Caption = null;
+			this.BtnFillingQualityInfo.Coloration = System.Drawing.Color.Empty;
+			this.BtnFillingQualityInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnFillingQualityInfo.Image")));
+			this.BtnFillingQualityInfo.Name = "BtnFillingQualityInfo";
+			this.BtnFillingQualityInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnFillingQualityInfo, resources.GetString("BtnFillingQualityInfo.ToolTip"));
+			this.BtnFillingQualityInfo.UseAltImage = false;
+			this.BtnFillingQualityInfo.Click += new System.EventHandler(this.BtnFillingQualityInfo_Click);
+			// 
 			// CbDirections
 			// 
 			resources.ApplyResources(this.CbDirections, "CbDirections");
@@ -1134,14 +1159,6 @@
 			this.BtnQualityInfo.UseAltImage = false;
 			this.BtnQualityInfo.Click += new System.EventHandler(this.BtnQualityInfo_Click);
 			// 
-			// RbNoProcessing
-			// 
-			resources.ApplyResources(this.RbNoProcessing, "RbNoProcessing");
-			this.RbNoProcessing.Name = "RbNoProcessing";
-			this.TT.SetToolTip(this.RbNoProcessing, resources.GetString("RbNoProcessing.ToolTip"));
-			this.RbNoProcessing.UseVisualStyleBackColor = true;
-			this.RbNoProcessing.CheckedChanged += new System.EventHandler(this.RbNoProcessing_CheckedChanged);
-			// 
 			// RasterToLaserForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -1162,6 +1179,10 @@
 			this.FlipControl.ResumeLayout(false);
 			this.TlpLeft.ResumeLayout(false);
 			this.TlpLeft.PerformLayout();
+			this.GbParameters.ResumeLayout(false);
+			this.GbParameters.PerformLayout();
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
 			this.GbCenterlineOptions.ResumeLayout(false);
 			this.GbCenterlineOptions.PerformLayout();
 			this.tableLayoutPanel3.ResumeLayout(false);
@@ -1175,10 +1196,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.UDSmoothing)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDFillingQuality)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.UDDownSample)).EndInit();
-			this.GbParameters.ResumeLayout(false);
-			this.GbParameters.PerformLayout();
-			this.tableLayoutPanel2.ResumeLayout(false);
-			this.tableLayoutPanel2.PerformLayout();
 			this.GbLineToLineOptions.ResumeLayout(false);
 			this.GbLineToLineOptions.PerformLayout();
 			this.TLP.ResumeLayout(false);
@@ -1189,6 +1206,8 @@
 			this.tableLayoutPanel4.ResumeLayout(false);
 			this.tableLayoutPanel4.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
+			this.GbPassthrough.ResumeLayout(false);
+			this.GbPassthrough.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -1288,5 +1307,7 @@
 		private UserControls.ImageButton BtnAdaptiveQualityInfo;
 		private UserControls.ImageButton BtnAutoTrim;
 		private System.Windows.Forms.RadioButton RbNoProcessing;
+		private System.Windows.Forms.GroupBox GbPassthrough;
+		private System.Windows.Forms.TextBox TbPassthroughInfo;
 	}
 }
