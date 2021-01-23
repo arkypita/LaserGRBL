@@ -147,25 +147,6 @@ namespace LaserGRBL.RasterConverter
 			return newimage;
 		}
 
-		void OnGenerationComplete(Exception ex)
-		{
-			if (InvokeRequired)
-			{
-				BeginInvoke(new ImageProcessor.GenerationCompleteDlg(OnGenerationComplete), ex);
-			}
-			else
-			{
-				Cursor = Cursors.Default;
-
-				if (ex != null && !(ex is ThreadAbortException))
-					System.Windows.Forms.MessageBox.Show(ex.Message);
-				preventClose = false;
-				WT.Enabled = false;
-				IP.Dispose();
-				Close();
-			}
-		}
-
 		void WTTick(object sender, EventArgs e)
 		{
 			WT.Enabled = false;
@@ -211,19 +192,51 @@ namespace LaserGRBL.RasterConverter
 
 					StoreSettings();
 
-					IP.GenerateGCode();
-
-					if (IP.SelectedTool == ImageProcessor.Tool.Dithering)
-						mCore.UsageCounters.Dithering++;
-					else if (IP.SelectedTool == ImageProcessor.Tool.Line2Line)
-						mCore.UsageCounters.Line2Line++;
-					else if (IP.SelectedTool == ImageProcessor.Tool.Vectorize)
-						mCore.UsageCounters.Vectorization++;
-					else if (IP.SelectedTool == ImageProcessor.Tool.Centerline)
-						mCore.UsageCounters.Centerline++;
+					IP.GenerateGCode(); //processo asincrono che ritorna con l'evento "OnGenerationComplete"
 				}
 			}
 		}
+
+
+		void OnGenerationComplete(Exception ex)
+		{
+			if (InvokeRequired)
+			{
+				BeginInvoke(new ImageProcessor.GenerationCompleteDlg(OnGenerationComplete), ex);
+			}
+			else
+			{
+
+				try
+				{
+					if (IP != null)
+					{
+						if (IP.SelectedTool == ImageProcessor.Tool.Dithering)
+							mCore.UsageCounters.Dithering++;
+						else if (IP.SelectedTool == ImageProcessor.Tool.Line2Line)
+							mCore.UsageCounters.Line2Line++;
+						else if (IP.SelectedTool == ImageProcessor.Tool.Vectorize)
+							mCore.UsageCounters.Vectorization++;
+						else if (IP.SelectedTool == ImageProcessor.Tool.Centerline)
+							mCore.UsageCounters.Centerline++;
+
+						Cursor = Cursors.Default;
+
+						if (ex != null && !(ex is ThreadAbortException))
+							MessageBox.Show(ex.Message);
+
+						preventClose = false;
+						WT.Enabled = false;
+
+						ImageProcessor P = IP;
+						IP = null;
+						P?.Dispose();
+					}
+				}
+				finally { Close(); }
+			}
+		}
+
 
 		private void StoreSettings()
 		{
@@ -645,8 +658,13 @@ namespace LaserGRBL.RasterConverter
 		}
 		void BtnCancelClick(object sender, EventArgs e)
 		{
-			IP.Dispose();
-			Close();
+			try
+			{
+				ImageProcessor P = IP;
+				IP = null;
+				P?.Dispose();
+			}
+			finally{ Close(); }
 		}
 
 		private void RbDithering_CheckedChanged(object sender, EventArgs e)
@@ -684,8 +702,15 @@ namespace LaserGRBL.RasterConverter
 
 		private void PbConverted_Resize(object sender, EventArgs e)
 		{
-			if (IP != null)
-				IP.FormResize(GetImageSize());
+			try
+			{
+				if (IP != null)
+					IP.FormResize(GetImageSize());
+			}
+			catch (System.ArgumentException ex)
+			{
+				//Catching this exception https://github.com/arkypita/LaserGRBL/issues/1288
+			}
 		}
 
 		private void CbDither_SelectedIndexChanged(object sender, EventArgs e)
