@@ -95,18 +95,7 @@ namespace LaserGRBL.RasterConverter
 		{
 			IP = processor;
 
-
-			if (IP.Original.Height < IP.Original.Width)
-			{
-				IISizeW.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100F);
-				IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
-			}
-			else
-			{
-				IISizeH.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100F);
-				IISizeW.CurrentValue = IP.HeightToWidht(IISizeH.CurrentValue);
-			}
-
+			InitImageSize();
 
 			IIBorderTracing.CurrentValue = IP.BorderSpeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
 			IILinearFilling.CurrentValue = IP.MarkSpeed = Settings.GetObject("GrayScaleConversion.Gcode.Speed.Mark", 1000);
@@ -128,7 +117,7 @@ namespace LaserGRBL.RasterConverter
 			IIMinPower.CurrentValue = IP.MinPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
 			IIMaxPower.CurrentValue = IP.MaxPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", (int)mCore.Configuration.MaxPWM);
 
-			IILinearFilling.Visible = LblLinearFilling.Visible = LblLinearFillingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Line2Line || IP.SelectedTool == ImageProcessor.Tool.Dithering || (IP.SelectedTool == ImageProcessor.Tool.Vectorize && (IP.FillingDirection != ImageProcessor.Direction.None)));
+			IILinearFilling.Visible = LblLinearFilling.Visible = LblLinearFillingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.NoProcessing || IP.SelectedTool == ImageProcessor.Tool.Line2Line || IP.SelectedTool == ImageProcessor.Tool.Dithering || (IP.SelectedTool == ImageProcessor.Tool.Vectorize && (IP.FillingDirection != ImageProcessor.Direction.None)));
 			IIBorderTracing.Visible = LblBorderTracing.Visible = LblBorderTracingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Vectorize || IP.SelectedTool == ImageProcessor.Tool.Centerline);
 			LblLinearFilling.Text = IP.SelectedTool == ImageProcessor.Tool.Vectorize ? "Filling Speed" : "Engraving Speed";
 
@@ -139,6 +128,29 @@ namespace LaserGRBL.RasterConverter
 			ShowDialog(parent);
 		}
 
+		private void InitImageSize()
+		{
+			if (IP.SelectedTool == ImageProcessor.Tool.NoProcessing)
+			{
+				CbAutosize.Checked = true;
+				BtnDPI_Click(null, null);
+				CbAutosize.Enabled = false;
+				IIDpi.Enabled = false;
+			}
+			else
+			{
+				if (IP.Original.Height < IP.Original.Width)
+				{
+					IISizeW.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100F);
+					IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
+				}
+				else
+				{
+					IISizeH.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100F);
+					IISizeW.CurrentValue = IP.HeightToWidht(IISizeH.CurrentValue);
+				}
+			}
+		}
 
 		private void IISizeW_CurrentValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
 		{

@@ -89,8 +89,12 @@ namespace LaserGRBL.RasterConverter
 
 
 		public enum Tool
-		{ Line2Line, Dithering, Vectorize,
-            Centerline
+		{ 
+			Line2Line,
+			Dithering,
+			Vectorize,
+            Centerline,
+			NoProcessing
         }
 
 		public enum Direction
@@ -887,7 +891,9 @@ namespace LaserGRBL.RasterConverter
 								PreviewVector(bmp);
                             else if (SelectedTool == Tool.Centerline)
                                 PreviewCenterline(bmp);
-                        }
+							else if (SelectedTool == Tool.NoProcessing)
+								PreviewLineByLine(bmp);
+						}
 
 						if (!MustExitTH && PreviewReady != null)
 							PreviewReady(bmp);
@@ -1011,6 +1017,13 @@ namespace LaserGRBL.RasterConverter
 
 				Size pixelSize = new Size((int)(TargetSize.Width * res), (int)(TargetSize.Height * res));
 
+
+				if (SelectedTool == Tool.NoProcessing)
+				{
+					pixelSize = mOriginal.Size;
+					fres = res = FileDPI / 25.4;
+				}
+
 				if (res > 0)
 				{
 					using (Bitmap bmp = CreateTarget(pixelSize))
@@ -1030,11 +1043,11 @@ namespace LaserGRBL.RasterConverter
 						conf.pwm = Settings.GetObject("Support Hardware PWM", true);
 						conf.firmwareType = Settings.GetObject("Firmware Type", Firmware.Grbl);
 
-						if (SelectedTool == ImageProcessor.Tool.Line2Line || SelectedTool == ImageProcessor.Tool.Dithering)
+						if (SelectedTool == Tool.Line2Line || SelectedTool == Tool.Dithering || SelectedTool == Tool.NoProcessing)
 							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf, mAppend);
-						else if (SelectedTool == ImageProcessor.Tool.Vectorize)
+						else if (SelectedTool == Tool.Vectorize)
 							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf, mAppend, mCore);
-						else if (SelectedTool == ImageProcessor.Tool.Centerline)
+						else if (SelectedTool == Tool.Centerline)
 							mCore.LoadedFile.LoadImageCenterline(bmp, mFileName, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold, conf, mAppend);
 					}
 
@@ -1098,27 +1111,107 @@ namespace LaserGRBL.RasterConverter
 
 		private Bitmap ProduceBitmap2(Image img, ref Size size)
 		{
-			using (Bitmap resized = ImageTransform.ResizeImage(img, size, false, Interpolation))
+			if (SelectedTool == Tool.NoProcessing)
 			{
-				using (Bitmap grayscale = ImageTransform.GrayScale(resized, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), IsGrayScale ? ImageTransform.Formula.SimpleAverage : Formula))
+				return ImageTransform.GrayScale(img, 0, 0, 0, 0, 1, ImageTransform.Formula.SimpleAverage);
+			}
+			else
+			{
+				using (Bitmap resized = ImageTransform.ResizeImage(img, size, false, Interpolation))
 				{
-					using (Bitmap whiten = ImageTransform.Whitenize(grayscale, mWhitePoint, false))
+					using (Bitmap grayscale = ImageTransform.GrayScale(resized, Red / 100.0F, Green / 100.0F, Blue / 100.0F, -((100 - Brightness) / 100.0F), (Contrast / 100.0F), IsGrayScale ? ImageTransform.Formula.SimpleAverage : Formula))
 					{
-						if (SelectedTool == Tool.Dithering)
-							return ImageTransform.DitherImage(whiten, mDithering);
-						else if (SelectedTool == Tool.Centerline)
+						using (Bitmap whiten = ImageTransform.Whitenize(grayscale, mWhitePoint, false))
 						{
-							//apply variable threshold (if needed) + 50% threshold (always)
-							return ImageTransform.Threshold(ImageTransform.Threshold(whiten, Threshold / 100.0F, UseThreshold), 50.0F / 100.0F, true);
+							if (SelectedTool == Tool.Dithering)
+								return ImageTransform.DitherImage(whiten, mDithering);
+							else if (SelectedTool == Tool.Centerline)
+							{
+								//apply variable threshold (if needed) + 50% threshold (always)
+								return ImageTransform.Threshold(ImageTransform.Threshold(whiten, Threshold / 100.0F, UseThreshold), 50.0F / 100.0F, true);
+							}
+							else
+								return ImageTransform.Threshold(whiten, Threshold / 100.0F, UseThreshold);
 						}
-						else
-							return ImageTransform.Threshold(whiten, Threshold / 100.0F, UseThreshold);
 					}
 				}
 			}
 		}
 
 		private void PreviewLineByLine(Bitmap bmp)
+		{
+			Direction dir = Direction.None;
+			if (SelectedTool == ImageProcessor.Tool.Line2Line && LinePreview)
+				dir = LineDirection;
+			if (SelectedTool == ImageProcessor.Tool.Dithering && LinePreview)
+				dir = LineDirection;
+			else if (SelectedTool == ImageProcessor.Tool.Vectorize && FillingDirection != Direction.None)
+				dir = FillingDirection;
+			if (SelectedTool == ImageProcessor.Tool.NoProcessing && LinePreview)
+				dir = LineDirection;
+
+			if (!MustExitTH && dir != Direction.None)
+			{
+				using (Graphics g = Graphics.FromImage(bmp))
+				{
+					g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+					if (dir == Direction.Horizontal || dir == Direction.NewHorizontal || dir == Direction.NewGrid || dir == Direction.NewCross)
+					{
+						int mod = dir == Direction.Horizontal ? 2 : 3;
+						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 100 : 200;
+						for (int Y = 0; Y < bmp.Height && !MustExitTH; Y++)
+						{
+							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
+							{
+								if (Y % mod == 0)
+									g.DrawLine(p, 0, Y, bmp.Width, Y);
+							}
+						}
+					}
+					if (dir == Direction.Vertical || dir == Direction.NewVertical || dir == Direction.NewGrid || dir == Direction.NewCross)
+					{
+						int mod = dir == Direction.Vertical ? 2 : 3;
+						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 100 : 200;
+						for (int X = 0; X < bmp.Width && !MustExitTH; X++)
+						{
+							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
+							{
+								if (X % mod == 0)
+									g.DrawLine(p, X, 0, X, bmp.Height);
+							}
+						}
+					}
+					if (dir == Direction.Diagonal || dir == Direction.NewDiagonal || dir == Direction.NewDiagonalGrid || dir == Direction.NewDiagonalCross || dir == Direction.NewSquares || dir == Direction.NewZigZag)
+					{
+						int mod = dir == Direction.Diagonal ? 3 : 5;
+						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 150 : 255;
+						for (int I = 0; I < bmp.Width + bmp.Height - 1 && !MustExitTH; I++)
+						{
+							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
+							{
+								if (I % mod == 0)
+									g.DrawLine(p, 0, bmp.Height - I, I, bmp.Height);
+							}
+						}
+					}
+					if (dir == Direction.NewReverseDiagonal || dir == Direction.NewDiagonalGrid || dir == Direction.NewDiagonalCross || dir == Direction.NewSquares)
+					{
+						int alpha = SelectedTool == ImageProcessor.Tool.Dithering ? 150 : 255;
+						for (int I = 0; I < bmp.Width + bmp.Height - 1 && !MustExitTH; I++)
+						{
+							using (Pen p = new Pen(Color.FromArgb(alpha, 255, 255, 255), 1F))
+							{
+								if (I % 5 == 0)
+									g.DrawLine(p, 0, I, I, 0);
+							}
+						}
+					}
+
+				}
+			}
+		}
+
+		private void PreviewNoProcessing(Bitmap bmp)
 		{
 			Direction dir = Direction.None;
 			if (SelectedTool == ImageProcessor.Tool.Line2Line && LinePreview)
