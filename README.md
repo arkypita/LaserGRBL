@@ -99,7 +99,8 @@ Thanks to:
 - Ozzybanan, for polish translation
 - onmaker, for traditional chinese translation [#1066](https://github.com/arkypita/LaserGRBL/pull/1066)
 - Nikolaos Ntekas, for Greek translation [#1234](https://github.com/arkypita/LaserGRBL/pull/1234)
-- Filippo Rivato for code contribution [#305](https://github.com/arkypita/LaserGRBL/pull/305)
+- Mrjavaci, for Turkish translation [#1293](https://github.com/arkypita/LaserGRBL/pull/1293)
+- Filippo Rivato for code contribution [#305](https://github.com/arkypita/LaserGRBL/pull/305) and again [#1251](https://github.com/arkypita/LaserGRBL/pull/1251)
 - Fabio Ferretti for code contribution [#592](https://github.com/arkypita/LaserGRBL/pull/592)
 - guillaume-rico for code contribution on Smoothie support
 - Tobias Falkner, for code contribution [#937](https://github.com/arkypita/LaserGRBL/pull/937)
