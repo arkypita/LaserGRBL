@@ -12,7 +12,9 @@ There are some tools that you should definitly have to contribute with translati
 As Git client I suggest to download Github Desktop from here: https://desktop.github.com
 
 To translate language files I suggest a good tool for editing resx files, called ResEx, which can be downloaded from here:
-[ResExSetup1.2.zip](https://github.com/arkypita/LaserGRBL/files/909750/ResExSetup1.2.zip)
+[ResEx 1.1](https://github.com/arkypita/ResEx/releases/download/v1.1.0.0/install.exe)
+
+**If you have already installed RegEx, please uninstall and use this version (which is able to handle .NET 4.0 resx file)** 
 
 ## Clone and translate LaserGRBL
 Note: These steps below assume you already downloaded the required/recommended programs.
