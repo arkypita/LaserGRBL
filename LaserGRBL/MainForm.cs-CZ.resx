@@ -130,7 +130,7 @@
     <value>Odemknout</value>
   </data>
   <data name="MnSaveProgram.Text" xml:space="preserve">
-    <value>Uložení úlohy (programu)</value>
+    <value>Uložit úlohu (program)</value>
   </data>
   <data name="autoUpdateToolStripMenuItem.Text" xml:space="preserve">
     <value>Automatická aktualizace</value>
@@ -145,7 +145,7 @@
     <value>Soubor</value>
   </data>
   <data name="MnReOpenFile.Text" xml:space="preserve">
-    <value>Znovu načíst poslední soubor</value>
+    <value>Načíst znovu poslední soubor</value>
   </data>
   <data name="blueLaserToolStripMenuItem.Text" xml:space="preserve">
     <value>Modrý laser</value>
@@ -169,7 +169,7 @@
     <value>Červený laser</value>
   </data>
   <data name="MnFileSend.Text" xml:space="preserve">
-    <value>Odeslat do stroje</value>
+    <value>Spustit úlohu (odeslat do stroje)</value>
   </data>
   <data name="TTTEstimated.Text" xml:space="preserve">
     <value>neznámý</value>
@@ -199,7 +199,7 @@
     <value>Přid&amp;at soubor</value>
   </data>
   <data name="MnStartFromPosition.Text" xml:space="preserve">
-    <value>Odeslat z pozice</value>
+    <value>Spustit z &amp;pozice</value>
   </data>
   <data name="installCH340DriverToolStripMenuItem.Text" xml:space="preserve">
     <value>Instalovat CH340 driver</value>
@@ -215,5 +215,41 @@
   </data>
   <data name="czechToolStripMenuItem.Text" xml:space="preserve">
     <value>Česky</value>
+  </data>
+  <data name="MnMaterialDB.Text" xml:space="preserve">
+    <value>Materiály (databáze)</value>
+  </data>
+  <data name="MnAdvancedSave.Text" xml:space="preserve">
+    <value>Uložit (rozšířené možnosti)</value>
+  </data>
+  <data name="nightyToolStripMenuItem.Text" xml:space="preserve">
+    <value>Noční</value>
+  </data>
+  <data name="youtubeChannelToolStripMenuItem.Text" xml:space="preserve">
+    <value>Youtube kanál</value>
+  </data>
+  <data name="MnAutoUpdate.Text" xml:space="preserve">
+    <value>Automatická akutualizace</value>
+  </data>
+  <data name="MnNotifyNewVersion.Text" xml:space="preserve">
+    <value>Povolení automatické aktualizace</value>
+  </data>
+  <data name="MnNotifyMinorVersion.Text" xml:space="preserve">
+    <value>Oznamovat malé změny</value>
+  </data>
+  <data name="MnNotifyPreRelease.Text" xml:space="preserve">
+    <value>Oznamovat pre-release verze</value>
+  </data>
+  <data name="MnCheckNow.Text" xml:space="preserve">
+    <value>Zkontrolovat nyní!</value>
+  </data>
+  <data name="activateExtendedLogToolStripMenuItem.Text" xml:space="preserve">
+    <value>Aktivovat rozšířené logování</value>
+  </data>
+  <data name="facebookCommunityToolStripMenuItem.Text" xml:space="preserve">
+    <value>LaserGrbl komunita</value>
+  </data>
+  <data name="helpOnLineToolStripMenuItem.Text" xml:space="preserve">
+    <value>Nápověda on-line</value>
   </data>
 </root>

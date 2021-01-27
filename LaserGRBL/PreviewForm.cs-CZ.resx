@@ -150,4 +150,7 @@
   <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
     <value>Upravit tlačítko</value>
   </data>
+  <data name="MnLockButton.Text" xml:space="preserve">
+    <value>Zámek uspořádání (kliknout pro změnu uspořádání)</value>
+  </data>
 </root>

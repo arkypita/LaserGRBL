@@ -137,6 +137,6 @@
   </data>
   <data name="LblConnect.Text" xml:space="preserve">
     <value>Zadejte libovolnou kombinaci kláves pro nastavení zkratky.
-Klávesovou zkratku odstraníte stisknutím klávesy "Storno".</value>
+Klávesovou zkratku odstraníte stisknutím klávesy "Delete".</value>
   </data>
 </root>

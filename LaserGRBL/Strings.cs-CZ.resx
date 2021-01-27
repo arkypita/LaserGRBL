@@ -201,7 +201,7 @@ Chcete přepsat konfiguraci?</value>
     <value>{0} Konfigurace úspěšně načtena!</value>
   </data>
   <data name="BoxWriteConfigNoChange" xml:space="preserve">
-    <value>Žádné změny... nic k uložení!</value>
+    <value>Žádné změny... Nic k uložení!</value>
   </data>
   <data name="BoxWriteConfigWithError" xml:space="preserve">
     <value>{0} Konfigurace uložena s {1} chybami!</value>
@@ -216,16 +216,16 @@ Chcete přepsat konfiguraci?</value>
     <value>Odstranit tlačitko</value>
   </data>
   <data name="DirectionDiagonal" xml:space="preserve">
-    <value>Diagonálně (old)</value>
+    <value>Diagonálně (staré)</value>
   </data>
   <data name="DirectionHorizontal" xml:space="preserve">
-    <value>Horizontálně (old)</value>
+    <value>Horizontálně (staré)</value>
   </data>
   <data name="DirectionNone" xml:space="preserve">
     <value>Žádná</value>
   </data>
   <data name="DirectionVertical" xml:space="preserve">
-    <value>Vertikálně (old)</value>
+    <value>Vertikálně (staré)</value>
   </data>
   <data name="DisconnectAnyway" xml:space="preserve">
     <value>Probíhá přenos souboru. Přesto odpojit?</value>
@@ -309,5 +309,89 @@ Přesto pokračovat?</value>
   </data>
   <data name="MacStatusJog" xml:space="preserve">
     <value>Polohování</value>
+  </data>
+  <data name="WarnSoftLimitOOB" xml:space="preserve">
+    <value>Nastavili jste velikost a posunutí, díky čemuž je úloha větší než nakonfigurovaný pracovní prostor ({0} mm x {1} mm).
+Parametry Grbl 130 $ a 131 $.
+
+To by mohlo vygenerovat chybu soft-limitu nebo by mohl být problém s hranicemi pro osy. Jste si jisti zadanými hodnotami?</value>
+  </data>
+  <data name="WarnSoftLimitNS" xml:space="preserve">
+    <value>Nastavili jste záporné hodnoty, ale Vaše zařízení je nastaveno pro používání pracovního prostoru s kladnými hodnotami a se zapnutým alarmem soft-limitu ($20 = 1).
+
+To by mohlo vygenerovat chybu soft-limitu. Jste si jisti zadanými hodnotami?</value>
+  </data>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>Klikněte na pravé tlačítko myši pro přidání vlastního tlačítka</value>
+  </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>Středová čára je možnost, která není kompatibilní s Vaším PC, je vyžadován 64 bitový operační systém!</value>
+  </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>Možnost Line2Line není kompatibilní s Vaším zařízením nebo s Vaší konfigurací. Je zapotřebí PWM řízení, měla by být také povolené PWM v nastavení LaserGRBL.</value>
+  </data>
+  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
+    <value>Nelze nyní otevřít nový soubor.</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>Rychlost:</value>
+  </data>
+  <data name="WarnSoftLimitTitle" xml:space="preserve">
+    <value>Potvrzení hranice úlohy</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>Kroky:</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>Odpojit</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>Připojit</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>Tento typ souboru není podporován.</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>Upozornění</value>
+  </data>
+  <data name="DirectionNewCross" xml:space="preserve">
+    <value>Křížová výplň</value>
+  </data>
+  <data name="DirectionNewDiagonal" xml:space="preserve">
+    <value>Diagonálně</value>
+  </data>
+  <data name="DirectionNewDiagonalCross" xml:space="preserve">
+    <value>Diagonální křížová výplň</value>
+  </data>
+  <data name="DirectionNewDiagonalGrid" xml:space="preserve">
+    <value>Diagonální mřížka</value>
+  </data>
+  <data name="DirectionNewGrid" xml:space="preserve">
+    <value>Mřížka</value>
+  </data>
+  <data name="DirectionNewHorizontal" xml:space="preserve">
+    <value>Horizontálně</value>
+  </data>
+  <data name="DirectionNewInsetFilling" xml:space="preserve">
+    <value>Vložená výplň</value>
+  </data>
+  <data name="DirectionNewReverseDiagonal" xml:space="preserve">
+    <value>Diagonálně obráceně</value>
+  </data>
+  <data name="DirectionNewSquares" xml:space="preserve">
+    <value>Čtverce</value>
+  </data>
+  <data name="DirectionNewVertical" xml:space="preserve">
+    <value>Vertikálně</value>
+  </data>
+  <data name="DirectionNewZigZag" xml:space="preserve">
+    <value>Cik Cak</value>
+  </data>
+  <data name="WarnWrongLaserMode" xml:space="preserve">
+    <value>„M4 dynamický výkon laseru“ byl nastaven, ale Vaše zařízení to zřejmě nepodporuje.
+Pouze zařízení s verzí grbl &gt; = 1,1 s „laserovým režimem“ ($ 32 = 1) může využít možnosti M4.</value>
+  </data>
+  <data name="WarnWrongLaserModeTitle" xml:space="preserve">
+    <value>Upozornění</value>
   </data>
 </root>

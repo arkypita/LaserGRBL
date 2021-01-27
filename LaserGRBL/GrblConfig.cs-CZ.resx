@@ -127,8 +127,8 @@
     <value>Zavřít</value>
   </data>
   <data name="LblConnect.Text" xml:space="preserve">
-    <value>Čtení a zápis je povolen
-pouze po připojení a v klidovém stavu</value>
+    <value>Čtení a zápis je povoleno pouze pokud
+je zařízení připojeno a je v klidovém stavu</value>
   </data>
   <data name="Parameter.HeaderText" xml:space="preserve">
     <value>Parametr</value>

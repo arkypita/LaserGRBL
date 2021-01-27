@@ -187,7 +187,7 @@ během pauzy nevypne a vypálí díru ve Vaší matrici!</value>
 - Opakování při chybě: stejné jako Synchronní režim, ale příkazy jsou opakovány pokud je detekována chyba [experimentální]</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Threading Mode: [Výchozí UltraFast]
+    <value>Threading Mode: [výchozí UltraFast]
 Ultrarychlý, Rychlý, Klidný, Pomalý.
 Toto nastavení ovlivňuje rychlost odesílání a frekvenci žádostí o hlášení stavu zařízení.
 Pokud máte problémy, nastavte pomalejší hodnoty.</value>
@@ -203,7 +203,7 @@ Pokud máte problémy, nastavte pomalejší hodnoty.</value>
 Pokud tomu tak není, prosím deaktivujte podporu PWM.</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Standardně LaserGRBL vytváří dráhy pro gravírování v obou směrech pohyby laserové hlavy. Některé testy ukázaly, že tento režim (který je rychlejší) přináší nižší kvalitu výsledků. Pokud je požadována maximální kvalita, aktivujte tuto možnost.</value>
+    <value>Standardně LaserGRBL vytváří dráhy pro gravírování v obou směrech pohybu laserové hlavy. Některé testy ukázaly, že tento režim (který je rychlejší) přináší nižší kvalitu výsledků. Pokud je požadována maximální kvalita, aktivujte tuto možnost.</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>Čas VYP: po této době odešle LaserGRBL příkaz pro pokračování úlohy (gravírování).</value>
@@ -228,10 +228,10 @@ Po uplynutí této doby LaserGRBL odešle automaticky příkaz pro přerušení 
     <value>Polohování</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Hlavička</value>
+    <value>Záhlaví</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
-    <value>Patička</value>
+    <value>Zápatí</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Opakované průchody
@@ -257,5 +257,110 @@ Syntaxe kódu je stejná jako u vlastních tlačítek.</value>
 Například lze použít k posunutí osy Z dolů při provádění řezů hlouběji.
 
 Syntaxe kódu je stejná jako u vlastních tlačítek.</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>HiRes rozlišení</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Maximální dostupné rozlišení v LaserGRBL je 20 řádků/mm (asi 500 dpi), které je pro většinu uživatelů dostatečné.
+Pokud potřebujete vyšší rozlišení, můžete povolit „HiRes“ a odstranit tento limit. Buďte opatrní: LaserGRBL bude potřebovat mnohem více zdrojových prostředků!</value>
+  </data>
+  <data name="CbDisableBoundWarn.Text" xml:space="preserve">
+    <value>Zakázat kontrolu okrajů</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>LaserGRBL Vás upozorní, pokud se chystáte vytvořit úlohu větší, než je pracovní plocha pro gravírování.
+Zvolte tuto možnost, pokud bezpečnostní kontrolu nechcete.</value>
+  </data>
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+    <value>Uživatelé Ortur: Firmware Ortur (všechny verze až do 137) obsahuje chybu v obnovení, která znemožňuje správné použití funkce automatického chlazení.
+Nepoužívejte automatické chlazení se zařízením Ortur, dokud nebude vydán nový firmware.</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Zde můžete nastavit jiný zvuk pro úspěšné události, například po dokončení úlohy.
+Zaškrtnutím povolíte.</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Zde můžete nastavit jiný výstražný zvuk, typicky při špatném příkazu G-kódu, ale může se pokračovat v provozu.
+Zaškrtnutím povolíte.</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Upozornění</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>Vybrat soubor</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Soubor zvuku</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>Vybrat soubor</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Soubor zvuku</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Připojení</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>Vybrat soubor</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Soubor zvuku</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Odpojení</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>Vybrat soubor</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Soubor zvuku</value>
+  </data>
+  <data name="LblSuccessSound.Text" xml:space="preserve">
+    <value>Úspěšné operace</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>Vybrat soubor</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Soubor zvuku</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Zde můžete nastavit zvuk pro úspěšné připojení.
+Zaškrtnutím povolíte.</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Zde můžete nastavit zvuk pro odpojení.
+Užitečné pro některá připojení WiFi.
+Zaškrtnutím povolíte.</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Zde můžete nastavit zvuk pro závažné chyby.
+To znamená, že se Vaše úloha s největší pravděpodobností zastavila a LaserGRBL nemůže pokračovat.
+Zaškrtnutím povolíte.</value>
+  </data>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>Zvuky</value>
+  </data>
+  <data name="SoundBrowserDialog.Filter" xml:space="preserve">
+    <value>Zvukové soubory|*.wav</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>Ve výchozím nastavení LaserGRBL používá G0 (rychlý pohyb) k přeskočení prázdných míst. To urychlí proces gravírování, ale může vést k nepřesnostem a neuspokojivým výsledkům. To je obvykle možné vylepšit správným nastavením hodnot maximálního zrychlení a rychlosti ($ 120,122,122 a $ 110,111,112) v konfiguraci grbl.
+
+Pokud tuto funkci deaktivujete, použije LaserGRBL G1 (lineární pohyb se stejnou rychlostí), takže celý proces gravírování se provede stejnou rychlostí. To proces zpomalí, ale může dramaticky zlepšit výsledek tam, kdy jinak dochází k selhání.</value>
+  </data>
+  <data name="CbDisableSkip.Text" xml:space="preserve">
+    <value>Zakázat G0 (rychlý pohyb)</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>Je-li povoleno „click 'n jog“, poklepáním na plochu náhledu bude provedeno polohování na pozici kliknutí.</value>
+  </data>
+  <data name="CbClickNJog.Text" xml:space="preserve">
+    <value>Polohování poklepáním (click 'n jog)</value>
   </data>
 </root>

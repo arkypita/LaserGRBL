@@ -117,28 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnOK.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="CbDoNotShow.Text" xml:space="preserve">
-    <value>Znovu nezobrazovat</value>
-  </data>
-  <data name="LblCause.Text" xml:space="preserve">
-    <value>Důvod:</value>
-  </data>
-  <data name="TxtCause.Text" xml:space="preserve">
-    <value>Neznámý</value>
-  </data>
-  <data name="LblDetected.Text" xml:space="preserve">
-    <value>LaserGRBL detekoval nějaký problém s Vaším hardware!</value>
-  </data>
-  <data name="LblBrief.Text" xml:space="preserve">
-    <value>Zdá se, že grbl má s prováděním této úlohy problém. Příčiny této situace mohou být různé, přečtěte si prosím FAQ, kde najdete informace o tom, jak tento problém vyřešit.</value>
-  </data>
-  <data name="LL.Text" xml:space="preserve">
-    <value>https://lasergrbl.com/faq/</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Detekován problém!</value>
+  <data name="LblFormDescription.Text" xml:space="preserve">
+    <value>Nebojte se, není to vaše chyba! Došlo k chybě programu kvůli nějaké neočekávané situaci. Můžete to nahlásit vývojářům otevřením problému na https://github.com/arkypita/LaserGRBL/issues
+
+Zkopírujte prosím následující zprávu do Vašeho hlášení.</value>
   </data>
 </root>

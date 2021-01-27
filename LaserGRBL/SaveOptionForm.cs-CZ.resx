@@ -117,28 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnOK.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="CBHeader.Text" xml:space="preserve">
+    <value>Export záhlaví</value>
   </data>
-  <data name="CbDoNotShow.Text" xml:space="preserve">
-    <value>Znovu nezobrazovat</value>
+  <data name="CBFooter.Text" xml:space="preserve">
+    <value>Export zápatí</value>
   </data>
-  <data name="LblCause.Text" xml:space="preserve">
-    <value>Důvod:</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Průchody</value>
   </data>
-  <data name="TxtCause.Text" xml:space="preserve">
-    <value>Neznámý</value>
+  <data name="CBBetween.Text" xml:space="preserve">
+    <value>Export G-kódu mezi průchody</value>
   </data>
-  <data name="LblDetected.Text" xml:space="preserve">
-    <value>LaserGRBL detekoval nějaký problém s Vaším hardware!</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Možnosti exportu</value>
   </data>
-  <data name="LblBrief.Text" xml:space="preserve">
-    <value>Zdá se, že grbl má s prováděním této úlohy problém. Příčiny této situace mohou být různé, přečtěte si prosím FAQ, kde najdete informace o tom, jak tento problém vyřešit.</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Pokud potřebujete exportovat G-kód, abyste jej mohli používat mimo LaserGRBL, například se samostatným kontrolérem, možná pro Vás bude užitečné exportovat kód záhlaví / zápatí a kód mezi každým průchodem.
+
+POZNÁMKA: Pokud exportujete G-kód k opětovnému načtení v LaserGRBL, je lepší místo toho použít rychlý export.</value>
   </data>
-  <data name="LL.Text" xml:space="preserve">
-    <value>https://lasergrbl.com/faq/</value>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Uložit</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Detekován problém!</value>
+    <value>Uložit G-kód s možnostmi</value>
   </data>
 </root>
