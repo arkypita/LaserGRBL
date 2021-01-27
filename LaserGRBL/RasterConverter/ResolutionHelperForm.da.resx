@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label20.Text" xml:space="preserve">
-    <value>Linjer/min</value>
+    <value>Linjer/mm</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Opløsningshjælper</value>

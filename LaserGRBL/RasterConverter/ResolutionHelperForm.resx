@@ -298,7 +298,7 @@
     <value>19</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
-    <value>Lines/min</value>
+    <value>Lines/mm</value>
   </data>
   <data name="&gt;&gt;label20.Name" xml:space="preserve">
     <value>label20</value>

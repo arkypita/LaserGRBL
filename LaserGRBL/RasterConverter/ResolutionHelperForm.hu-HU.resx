@@ -121,7 +121,7 @@
     <value>Felbontás segítő</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
-    <value>Vonal/min</value>
+    <value>Vonal/mm</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Számított felbontás</value>

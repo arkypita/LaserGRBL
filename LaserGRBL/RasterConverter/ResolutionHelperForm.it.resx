@@ -149,7 +149,7 @@
     <value>54, 13</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
-    <value>Linee/min</value>
+    <value>Linee/mm</value>
   </data>
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 13</value>

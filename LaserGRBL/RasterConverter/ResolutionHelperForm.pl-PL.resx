@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label20.Text" xml:space="preserve">
-    <value>Linii/min</value>
+    <value>Linii/mm</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Pomocnik rozdzielczości</value>
@@ -130,10 +130,10 @@
     <value>Anuluj</value>
   </data>
   <data name="LblLinearFillingmm.Text" xml:space="preserve">
-    <value>Kroków/min</value>
+    <value>Kroków/mm</value>
   </data>
   <data name="LblBorderTracingmm.Text" xml:space="preserve">
-    <value>Linii/min</value>
+    <value>Linii/mm</value>
   </data>
   <data name="BtnCreate.Text" xml:space="preserve">
     <value>Zestaw</value>
