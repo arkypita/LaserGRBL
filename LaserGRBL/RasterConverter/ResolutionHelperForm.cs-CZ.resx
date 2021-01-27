@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label20.Text" xml:space="preserve">
-    <value>Čáry/mm</value>
+    <value>čáry/mm</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Nápověda rozlišení</value>
+    <value>Pomocník pro nastavení rozlišení</value>
   </data>
   <data name="LblLinearFilling.Text" xml:space="preserve">
     <value>$100 Hardware rozlišení</value>
@@ -130,13 +130,13 @@
     <value>Storno</value>
   </data>
   <data name="LblLinearFillingmm.Text" xml:space="preserve">
-    <value>Kroky/mm</value>
+    <value>kroky/mm</value>
   </data>
   <data name="LblBorderTracingmm.Text" xml:space="preserve">
-    <value>Čáry/mm</value>
+    <value>čáry/mm</value>
   </data>
   <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Nastav</value>
+    <value>Nastavit</value>
   </data>
   <data name="LblBorderTracing.Text" xml:space="preserve">
     <value>Požadované rozlišení</value>
@@ -145,6 +145,6 @@
     <value>Vypočítané rozlišení</value>
   </data>
   <data name="linkLabel1.Text" xml:space="preserve">
-    <value>Pokud nelze dosáhnout celých kroků motoru, mohou se objevit některé artefakty. Klikněte zde pro více informací ...</value>
+    <value>Pokud rozlišení není shodné s krokem motoru, mohou se objevit některé artefakty. Klikněte zde pro více informací...</value>
   </data>
 </root>
