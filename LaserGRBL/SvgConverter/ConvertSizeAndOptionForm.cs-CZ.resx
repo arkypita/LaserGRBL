@@ -137,7 +137,7 @@
   </data>
   <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
     <value>Grbl podporuje řízení výkonu laseru pro vytvoření odstínů šedi.
-To vyžaduje, aby váš hardware měl podporu TTL řízení laseru.
+To vyžaduje, aby Váš hardware měl podporu TTL řízení laseru.
 
 Klikněte pro více informací...</value>
   </data>
@@ -159,5 +159,8 @@ Grbl v1.1 podporuje nový M4 "Dynamic Laser Power Mode".
 Laser VYP: M5 je jediný příkaz, který je podporován.
 
 Klikněte pro více informací...</value>
+  </data>
+  <data name="BtnPSHelper.ToolTip" xml:space="preserve">
+    <value>Otevřít databázi strojů a materiálů</value>
   </data>
 </root>
