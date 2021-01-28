@@ -163,10 +163,10 @@
     <value>Kvalita výplně</value>
   </data>
   <data name="LblFillingLineLbl.Text" xml:space="preserve">
-    <value>Čary/mm</value>
+    <value>čáry/mm</value>
   </data>
   <data name="UDDownSample.ToolTip" xml:space="preserve">
-    <value>Zmenšit původní obrázek</value>
+    <value>Zmenšení původního obrázku</value>
   </data>
   <data name="lOptimizeFast.Text" xml:space="preserve">
     <value>Optimalizace drah</value>
@@ -193,7 +193,7 @@
     <value>Č&amp;B</value>
   </data>
   <data name="label28.Text" xml:space="preserve">
-    <value>Změnit velikost</value>
+    <value>Změna velikosti</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Práh bílé</value>
@@ -214,7 +214,7 @@
     <value>Směr</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>Čáry/mm</value>
+    <value>čáry/mm</value>
   </data>
   <data name="RbCenterline.Text" xml:space="preserve">
     <value>Středová čára</value>
@@ -223,7 +223,7 @@
     <value>Vektorizace!</value>
   </data>
   <data name="GbConversionTool.Text" xml:space="preserve">
-    <value>Konverzní zbůsob</value>
+    <value>Zbůsob konverze</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Storno</value>
@@ -253,7 +253,7 @@
     <value>Výběr barvy konverze</value>
   </data>
   <data name="UDQuality.ToolTip" xml:space="preserve">
-    <value>Nastavení rozlišení obrázku (čáry/mm)</value>
+    <value>Nastavení rozlišení/kvality obrázku (čáry/mm)</value>
   </data>
   <data name="RbDithering.ToolTip" xml:space="preserve">
     <value>Vytvoří emulovaný obrázek v odstínech šedi pomocí černobílého obrázku</value>
@@ -271,25 +271,25 @@
     <value>Úhel ve stupních: pokud se pixel, jeho předchůdce a nástupce setkají pod úhlem menším, je to roh.</value>
   </data>
   <data name="GbCenterlineOptions.Text" xml:space="preserve">
-    <value>Možnosti nastavení</value>
+    <value>Možnosti nastavení (středová čára)</value>
   </data>
   <data name="UDSpotRemoval.ToolTip" xml:space="preserve">
-    <value>Odstranit malé detaily</value>
+    <value>Odstranění malých detailů</value>
   </data>
   <data name="UDOptimize.ToolTip" xml:space="preserve">
     <value>Optimalizace drah (vytvoří méně segmentů)</value>
   </data>
   <data name="UDSmoothing.ToolTip" xml:space="preserve">
-    <value>Vyhladit tvrdé hrany</value>
+    <value>Vyhlazení tvrdých hran</value>
   </data>
   <data name="CbFillingDirection.ToolTip" xml:space="preserve">
-    <value>Povolit vyplňování uzavřených drah / nastavení směru</value>
+    <value>Nastavení typu výplně mezi uzavřenými drahami</value>
   </data>
   <data name="GbVectorizeOptions.Text" xml:space="preserve">
-    <value>Možnosti nastavení</value>
+    <value>Možnosti nastavení (vektorizace)</value>
   </data>
   <data name="GbLineToLineOptions.Text" xml:space="preserve">
-    <value>Možnosti nastavení</value>
+    <value>Možnosti nastavení (čára po čáře)</value>
   </data>
   <data name="RbCenterline.ToolTip" xml:space="preserve">
     <value>Vytvoří vektorizované dráhy středovou čárou</value>
@@ -304,12 +304,33 @@
     <value>Rozklad</value>
   </data>
   <data name="BtnFillingQualityInfo.ToolTip" xml:space="preserve">
-    <value>Pokud rozlišení nesouhlasí s výškou kroku, mohou se objevit artefakty! Kliknutím vypočítáte spolehlivé rozlišení ...</value>
+    <value>Pokud rozlišení nesouhlasí s krokem motoru, mohou se objevit artefakty! Kliknutím vypočítáte spolehlivé rozlišení ...</value>
   </data>
   <data name="CbThreshold.ToolTip" xml:space="preserve">
     <value>Použít filtrování prahových hodnot</value>
   </data>
   <data name="BtnQualityInfo.ToolTip" xml:space="preserve">
     <value>Pokud rozlišení nesouhlasí s výškou kroku, mohou se objevit artefakty! Kliknutím vypočítáte spolehlivé rozlišení ...</value>
+  </data>
+  <data name="BtnAutoTrim.ToolTip" xml:space="preserve">
+    <value>Automatický ořez</value>
+  </data>
+  <data name="TbPassthroughInfo.Text" xml:space="preserve">
+    <value>Režim průchodu ponechá obrázk beze změny, bez jakéhokoli zpracování programem LaserGRBL. Obrázek bude gravírován řádek po řádku, vodorovně, podle velikosti a rozlišení DPI podle informacích v souboru.</value>
+  </data>
+  <data name="GbPassthrough.Text" xml:space="preserve">
+    <value>Možnosti průchodu</value>
+  </data>
+  <data name="BtnAdaptiveQualityInfo.ToolTip" xml:space="preserve">
+    <value>Zvýšení / snížení kvality vektorizace úměrně velikosti výstupního obrázku.</value>
+  </data>
+  <data name="LAdaptiveQuality.Text" xml:space="preserve">
+    <value>Adaptivní kvalita</value>
+  </data>
+  <data name="RbNoProcessing.Text" xml:space="preserve">
+    <value>Průchod</value>
+  </data>
+  <data name="RbNoProcessing.ToolTip" xml:space="preserve">
+    <value>Žádné zpracování (průchod)</value>
   </data>
 </root>

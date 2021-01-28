@@ -117,77 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Posunutí</value>
+  <data name="ColID.HeaderText" xml:space="preserve">
+    <value>id</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Rozměr</value>
+  <data name="ColVisible.HeaderText" xml:space="preserve">
+    <value>Widoczny</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Š</value>
+  <data name="ColModel.HeaderText" xml:space="preserve">
+    <value>Model</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>V</value>
+  <data name="ColMaterial.HeaderText" xml:space="preserve">
+    <value>Materiał</value>
   </data>
-  <data name="CbAutosize.Text" xml:space="preserve">
-    <value>Automatický rozměr</value>
+  <data name="ColAction.HeaderText" xml:space="preserve">
+    <value>Akcja</value>
   </data>
-  <data name="BtnDPI.ToolTip" xml:space="preserve">
-    <value>Nastavit DPI podle EXIFu</value>
+  <data name="ColThick.HeaderText" xml:space="preserve">
+    <value>Grubość</value>
   </data>
-  <data name="GbSize.Text" xml:space="preserve">
-    <value>Rozměr a pozice obrázku</value>
+  <data name="Power.HeaderText" xml:space="preserve">
+    <value>Moc</value>
   </data>
-  <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>Rychlost kontury</value>
+  <data name="ColSpeed.HeaderText" xml:space="preserve">
+    <value>Prędkość</value>
   </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>Rychlost výplně</value>
+  <data name="ColCycles.HeaderText" xml:space="preserve">
+    <value>Cykle</value>
   </data>
-  <data name="GbSpeed.Text" xml:space="preserve">
-    <value>Rychlost</value>
+  <data name="ColRemarks.HeaderText" xml:space="preserve">
+    <value>Uwagi</value>
   </data>
-  <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
-    <value>Grbl podporuje řízení výkonu laseru pro vytvoření odstínů šedi.
-To vyžaduje, aby váš hardware měl podporu TTL řízení laseru.
-
-Klikněte pro více informací...</value>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>Nowe elementy:</value>
   </data>
-  <data name="label26.Text" xml:space="preserve">
-    <value>Laser VYP</value>
+  <data name="TbNewElement.Text" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="LblSmin.Text" xml:space="preserve">
-    <value>Výkon MIN</value>
+  <data name="BtnImport.Text" xml:space="preserve">
+    <value>import</value>
   </data>
-  <data name="LblSmax.Text" xml:space="preserve">
-    <value>Výkon MAX</value>
-  </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Laser ZAP</value>
-  </data>
-  <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
-    <value>Laser ZAP: M3 je standardní příkaz.
-Grbl v1.1 podporuje nový M4 "Dynamic Laser Power Mode".
-Laser VYP: M5 je jediný příkaz, který je podporován.
-
-Klikněte pro více informací...</value>
-  </data>
-  <data name="GbLaser.Text" xml:space="preserve">
-    <value>Možnosti</value>
-  </data>
-  <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Storno</value>
-  </data>
-  <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Vytvořit</value>
+  <data name="statusStrip1.Text" xml:space="preserve">
+    <value>statusPasek1</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Cílový obrázek</value>
-  </data>
-  <data name="BtnPSHelper.ToolTip" xml:space="preserve">
-    <value>Otevřít databázi strojů a materiálů</value>
-  </data>
-  <data name="BtnCenter.ToolTip" xml:space="preserve">
-    <value>Vystředit obrázek svisle a vodorovně (nula uprostřed)</value>
+    <value>Laser &amp;amp; Baza danych materiałów</value>
   </data>
 </root>

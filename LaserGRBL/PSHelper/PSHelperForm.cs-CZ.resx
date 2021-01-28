@@ -112,82 +112,42 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Posunutí</value>
+  <data name="BtnApply.Text" xml:space="preserve">
+    <value>Použít</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Rozměr</value>
+  <data name="LblPower.Text" xml:space="preserve">
+    <value>Výkon</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Š</value>
+  <data name="LblModel.Text" xml:space="preserve">
+    <value>Model laseru</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>V</value>
+  <data name="LblMaterial.Text" xml:space="preserve">
+    <value>Materiál</value>
   </data>
-  <data name="CbAutosize.Text" xml:space="preserve">
-    <value>Automatický rozměr</value>
+  <data name="LblThickness.Text" xml:space="preserve">
+    <value>Tloušťka</value>
   </data>
-  <data name="BtnDPI.ToolTip" xml:space="preserve">
-    <value>Nastavit DPI podle EXIFu</value>
+  <data name="LblAction.Text" xml:space="preserve">
+    <value>Akce</value>
   </data>
-  <data name="GbSize.Text" xml:space="preserve">
-    <value>Rozměr a pozice obrázku</value>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Průchody</value>
   </data>
-  <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>Rychlost kontury</value>
-  </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>Rychlost výplně</value>
-  </data>
-  <data name="GbSpeed.Text" xml:space="preserve">
+  <data name="LblSpeed.Text" xml:space="preserve">
     <value>Rychlost</value>
   </data>
-  <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
-    <value>Grbl podporuje řízení výkonu laseru pro vytvoření odstínů šedi.
-To vyžaduje, aby váš hardware měl podporu TTL řízení laseru.
-
-Klikněte pro více informací...</value>
-  </data>
-  <data name="label26.Text" xml:space="preserve">
-    <value>Laser VYP</value>
-  </data>
-  <data name="LblSmin.Text" xml:space="preserve">
-    <value>Výkon MIN</value>
-  </data>
-  <data name="LblSmax.Text" xml:space="preserve">
-    <value>Výkon MAX</value>
-  </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Laser ZAP</value>
-  </data>
-  <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
-    <value>Laser ZAP: M3 je standardní příkaz.
-Grbl v1.1 podporuje nový M4 "Dynamic Laser Power Mode".
-Laser VYP: M5 je jediný příkaz, který je podporován.
-
-Klikněte pro více informací...</value>
-  </data>
-  <data name="GbLaser.Text" xml:space="preserve">
-    <value>Možnosti</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Doporučené nastavení</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Storno</value>
   </data>
-  <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Vytvořit</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Cílový obrázek</value>
-  </data>
-  <data name="BtnPSHelper.ToolTip" xml:space="preserve">
-    <value>Otevřít databázi strojů a materiálů</value>
-  </data>
-  <data name="BtnCenter.ToolTip" xml:space="preserve">
-    <value>Vystředit obrázek svisle a vodorovně (nula uprostřed)</value>
+    <value>Vyber konfiguraci</value>
   </data>
 </root>

@@ -153,4 +153,7 @@
   <data name="LblComPort.Text" xml:space="preserve">
     <value>COM</value>
   </data>
+  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
+    <value>napište sem G-kód</value>
+  </data>
 </root>
