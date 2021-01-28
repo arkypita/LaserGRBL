@@ -1155,8 +1155,8 @@ namespace LaserGRBL.RasterConverter
 				dir = LineDirection;
 			else if (SelectedTool == ImageProcessor.Tool.Vectorize && FillingDirection != Direction.None)
 				dir = FillingDirection;
-			if (SelectedTool == ImageProcessor.Tool.NoProcessing && LinePreview)
-				dir = LineDirection;
+			if (SelectedTool == ImageProcessor.Tool.NoProcessing)
+				dir = Direction.Horizontal;
 
 			if (!MustExitTH && dir != Direction.None)
 			{
