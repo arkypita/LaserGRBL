@@ -239,7 +239,7 @@ namespace LaserGRBL.WiFiDiscovery
 
 			ParallelOptions po = new ParallelOptions();
 			po.CancellationToken = ct;
-			po.MaxDegreeOfParallelism = Math.Min(4, Environment.ProcessorCount);
+			po.MaxDegreeOfParallelism = 32;//Environment.ProcessorCount;
 			
 			try
 			{
