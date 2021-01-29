@@ -38,8 +38,10 @@ namespace LaserGRBL
             public int Dithering;
             public int Line2Line;
             public int SvgFile;
+			public int Passthrough;
 
-            internal void Update(UsageCounters c)
+
+			internal void Update(UsageCounters c)
             {
                 GCodeFile += c.GCodeFile;
                 RasterFile += c.RasterFile;
@@ -48,7 +50,8 @@ namespace LaserGRBL
                 Dithering += c.Dithering;
                 Line2Line += c.Line2Line;
                 SvgFile += c.SvgFile;
-            }
+				Passthrough += c.Passthrough;
+			}
         }
 
         private Guid InstallationID = Guid.NewGuid();
@@ -220,6 +223,7 @@ namespace LaserGRBL
                     { "osinfo", Tools.OSHelper.GetOSInfo() },
                     { "bitflag", Tools.OSHelper.GetBitFlag().ToString() },
 					{ "vendor", VendorString },
+					{ "fPassthrough", Counters.Passthrough.ToString() },
 				};
 
                 // client.UploadValues returns page's source as byte array (byte[]) so it must be transformed into a string

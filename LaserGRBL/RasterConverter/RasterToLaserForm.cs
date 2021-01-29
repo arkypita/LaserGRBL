@@ -219,6 +219,8 @@ namespace LaserGRBL.RasterConverter
 							mCore.UsageCounters.Vectorization++;
 						else if (IP.SelectedTool == ImageProcessor.Tool.Centerline)
 							mCore.UsageCounters.Centerline++;
+						else if (IP.SelectedTool == ImageProcessor.Tool.NoProcessing)
+							mCore.UsageCounters.Passthrough++;
 
 						Cursor = Cursors.Default;
 
