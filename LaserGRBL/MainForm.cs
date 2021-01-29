@@ -266,7 +266,7 @@ namespace LaserGRBL
 			//MnImportConfig.Enabled = Core.CanImportExport;
 			MnGrblReset.Enabled = Core.CanResetGrbl;
 
-			MNEsp8266.Visible = (Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial)) == ComWrapper.WrapperType.LaserWebESP8266;
+			MNEsp8266.Visible = false;// (Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsBSerial)) == ComWrapper.WrapperType.LaserWebESP8266;
 
 			MnConnect.Visible = !Core.IsConnected;
 			MnDisconnect.Visible = Core.IsConnected;
@@ -282,6 +282,7 @@ namespace LaserGRBL
 
 			ComWrapper.WrapperType wt = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			MnWiFiDiscovery.Visible = wt == ComWrapper.WrapperType.LaserWebESP8266 || wt == ComWrapper.WrapperType.Telnet;
+			MnWiFiDiscovery.Enabled = !Core.IsConnected;
 
 			switch (Core.MachineStatus)
 			{
@@ -876,7 +877,7 @@ namespace LaserGRBL
 
 		private void MnWiFiDiscovery_Click(object sender, EventArgs e)
 		{
-
+			ConnectionForm.ConfigFromDiscovery(WiFiDiscovery.DiscoveryForm.CreateAndShowDialog(this));
 		}
 
 		private void facebookCommunityToolStripMenuItem_Click(object sender, EventArgs e)

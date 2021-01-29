@@ -763,6 +763,16 @@
     <Compile Include="UserControls\WaitingProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="WiFiDiscovery\DiscoveryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WiFiDiscovery\DiscoveryForm.Designer.cs">
+      <DependentUpon>DiscoveryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WiFiDiscovery\IPAddressHelper.cs" />
+    <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.resx">
+      <DependentUpon>DiscoveryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Resources\flag_greece.png" />
     <Content Include="Sound\connect.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -366,5 +366,16 @@ namespace LaserGRBL
                 Core.AbortProgram();
         }
 
+		internal void ConfigFromDiscovery(string config)
+		{
+			if (TxtAddress.Visible && TxtAddress.Enabled && config != null)
+			{
+				TxtAddress.Text = config;
+				Application.DoEvents();
+
+				if (BtnConnectDisconnect.Enabled && Core.MachineStatus == GrblCore.MacStatus.Disconnected)
+					BtnConnectDisconnectClick(null, null);
+			}
+		}
 	}
 }
