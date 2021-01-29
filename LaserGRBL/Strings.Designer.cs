@@ -531,6 +531,15 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Dithering Options.
+        /// </summary>
+        internal static string DitheringOptions {
+            get {
+                return ResourceManager.GetString("DitheringOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a File transfer in progress. Exit anyway?.
         /// </summary>
         internal static string ExitAnyway {
@@ -626,6 +635,15 @@ namespace LaserGRBL {
         internal static string LanguageRequireRestartNow {
             get {
                 return ResourceManager.GetString("LanguageRequireRestartNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Line To Line Options.
+        /// </summary>
+        internal static string Line2LineOptions {
+            get {
+                return ResourceManager.GetString("Line2LineOptions", resourceCulture);
             }
         }
         

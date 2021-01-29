@@ -399,7 +399,7 @@ namespace LaserGRBL.RasterConverter
 			GbCenterlineOptions.Visible = RbCenterline.Checked;
 			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
 			GbPassthrough.Visible = RbNoProcessing.Checked;
-			GbLineToLineOptions.Text = RbLineToLineTracing.Checked ? "Line To Line Options" : "Dithering Options";
+			GbLineToLineOptions.Text = RbLineToLineTracing.Checked ? Strings.Line2LineOptions : Strings.DitheringOptions;
 
 			CbThreshold.Visible = !RbDithering.Checked;
 			TbThreshold.Visible = !RbDithering.Checked && CbThreshold.Checked;

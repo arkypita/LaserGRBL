@@ -398,4 +398,10 @@ Only engravers with grbl version &gt;= 1.1 with "laser mode" enabled ($32=1) can
   <data name="DirectionNewHilbert" xml:space="preserve">
     <value>Hilbert</value>
   </data>
+  <data name="DitheringOptions" xml:space="preserve">
+    <value>Dithering Options</value>
+  </data>
+  <data name="Line2LineOptions" xml:space="preserve">
+    <value>Line To Line Options</value>
+  </data>
 </root>
