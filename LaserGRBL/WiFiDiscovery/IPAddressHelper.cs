@@ -25,7 +25,7 @@ namespace LaserGRBL.WiFiDiscovery
 		private static string AVAIL = "Available";
 
 		[DllImport("iphlpapi.dll", ExactSpelling = true)]
-		public static extern int SendARP(uint DestIP, uint SrcIP, byte[] pMacAddr, ref int PhyAddrLen);
+		public static extern int SendARP(uint DestIP, uint SrcIP, byte[] pMacAddr, ref uint PhyAddrLen);
 		public static IPAddress GetBroadcastAddress(this IPAddress ip, IPAddress mask)
 		{
 			var ipBytes = ip.GetAddressBytes();
@@ -87,7 +87,11 @@ namespace LaserGRBL.WiFiDiscovery
 
 		public class ScanResult
 		{
-			public string Ping;
+			public event System.EventHandler Update;
+			
+			private bool notified;
+
+			private long mPingTime;
 			public string MAC;
 			public string HostName;
 			public string Telnet;
@@ -95,43 +99,89 @@ namespace LaserGRBL.WiFiDiscovery
 			public IPAddress IP;
 			public int Port;
 
+			public ScanResult(IPAddress address, int port, long roundtripTime)
+			{
+				IP = address;
+				Port = port;
+				mPingTime = roundtripTime;
+				notified = true;
+			}
+
+			public ScanResult(IPAddress address, int port)
+			{
+				IP = address;
+				Port = port;
+				mPingTime = -1;
+				notified = false;
+			}
+
 			internal bool HasData()
 			{
-				return Ping != null || MAC != null || HostName != null || Telnet == AVAIL;
+				return mPingTime >= 0 || MAC != null || HostName != null || Telnet == AVAIL;
 			}
-		}
 
-		public static ScanResult ScanIP(this IPAddress ip, int port, CancellationToken token)
-		{
-			ScanResult rv = new ScanResult();
-			List<Task> T = new List<Task>();
+			internal void DeepScan(Action<ScanResult> mCallback, CancellationToken ct)
+			{
+				string oldval = ToString();
+				List<Task> T = new List<Task>();
 
-			rv.Port = port;
-			rv.IP = ip;
+				T.Add(Task.Factory.StartNew(() => { SetPing(IP.Ping()); }));
+				T.Add(Task.Factory.StartNew(() => { MAC = IP.GetMAC(); }));
+				T.Add(Task.Factory.StartNew(() => { HostName = IP.GetHostName(); }));
+				T.Add(Task.Factory.StartNew(() => { Telnet = IP.Telnet(Port); }));
 
-			T.Add(Task.Factory.StartNew(() => { rv.Ping = ip.Ping(); }));
-			T.Add(Task.Factory.StartNew(() => { rv.MAC = ip.GetMAC(); }));
-			T.Add(Task.Factory.StartNew(() => { rv.HostName = ip.GetHostName(); }));
-			T.Add(Task.Factory.StartNew(() => { rv.Telnet = ip.Telnet(port); }));
+				while (T.Count > 0)
+				{
+					int et = Task.WaitAny(T.ToArray(), -1, ct);
+					if (et >= 0)
+					{
+						T.RemoveAt(et);
+					
+						if (!notified && HasData())
+						{
+							notified = true;
+							mCallback.Invoke(this);
+						}
 
-			Task.WaitAll(T.ToArray(), token);
-			return rv;
+						string newval = ToString();
+						if (HasData() && Update != null && oldval != newval)
+							Update.Invoke(null, null);
+
+						oldval = newval;
+					}
+				}
+			}
+
+			private void SetPing(long v)
+			{
+				if (v >= 0)
+					mPingTime = Math.Min(mPingTime, v);
+			}
+
+			public string Ping => mPingTime >= 0 ? $"{mPingTime}ms" : null;
+
+			public override string ToString()
+			{
+				return $"{Ping}{HostName}{MAC}{Telnet}";
+			}
 		}
 
 		private static string GetMAC(this IPAddress ip, int retryCount = 1)
 		{
-			var destIP = ip.ToUInt32();
-			var mac = new byte[6];
-			var macLen = mac.Length;
+			byte[] mac = new byte[6];
+			uint macLen = (uint)mac.Length;
 			for (var j = 0; j < retryCount; j++)
 			{
-				var rc = SendARP(destIP, 0, mac, ref macLen);
+				var rc = SendARP(ip.ToUInt32(), 0, mac, ref macLen);
 				if (rc == 0)
 				{
 					var str = new string[macLen];
 					for (int i = 0; i < macLen; i++)
 						str[i] = mac[i].ToString("x2");
 					return string.Join(":", str);
+				}
+				else 
+				{
 				}
 			}
 			return null;
@@ -180,32 +230,6 @@ namespace LaserGRBL.WiFiDiscovery
 				{
 					CLI.Close();
 					return AVAIL;
-					//reply.Connected = true;
-					//if (!mute)
-					//	SendMessageSleep($"Telnet {EP.Port} success!", 1000);
-					//try
-					//{
-					//	if (!mute)
-					//		SendMessageSleep($"Check signature...", 1000);
-					//	var Response = new byte[4];
-					//	CLI.Send(Encoding.UTF8.GetBytes("PING"));
-					//	CLI.Receive(Response);
-					//	reply.GoodReply = ValidateToken(Response, Encoding.UTF8.GetBytes("SDBS"));
-					//	if (reply.GoodReply)
-					//	{
-					//		if (!mute)
-					//			SendMessageSleep($"Check signature success!", 1000);
-					//	}
-					//	else if (!mute)
-					//		SendMessageSleep($"Check signature failed! (Wrong Response)", 3000);
-					//}
-					//catch (Exception ex)
-					//{
-					//	if (!mute)
-					//		SendMessageSleep($"Check signature failed! ({ex.Message})", 3000);
-					//}
-
-					CLI.Close();
 				}
 			}
 			catch { }
@@ -213,7 +237,7 @@ namespace LaserGRBL.WiFiDiscovery
 			return "Failed!";
 		}
 
-		private static string Ping(this IPAddress ip)
+		private static long Ping(this IPAddress ip)
 		{
 			Ping P = new Ping();
 
@@ -221,9 +245,9 @@ namespace LaserGRBL.WiFiDiscovery
 			PingReply reply = P.Send(ip, 5000, pbuff, PO);
 
 			if (reply.Status == IPStatus.Success)
-				return $"{reply.RoundtripTime}ms";
+				return reply.RoundtripTime;
 			else
-				return null;
+				return -1;
 		}
 
 		public static bool IsInSameSubnet(this IPAddress address2, IPAddress address, IPAddress subnetMask)
@@ -236,7 +260,7 @@ namespace LaserGRBL.WiFiDiscovery
 		{
 			return BitConverter.ToUInt32(ip.GetAddressBytes(), 0);
 		}
-		public static void ScanIP(Action<IPAddress, ScanResult> callback, Action<int, int, int> progress, CancellationToken ct, int port, IPAddress paramIP = null)
+		public static void ScanIP(Action<ScanResult> callback, Action<int, int, int> progress, CancellationToken ct, int port, IPAddress paramIP = null)
 		{
 			int count = 0;
 
@@ -253,40 +277,11 @@ namespace LaserGRBL.WiFiDiscovery
 				throw new Exception(string.Format("Can't find subnet mask for IP {0}", localIP));
 
 			IPSegment segment = new IPSegment(localIP, localMask);
-			segment.FindRespondingHost(progress, ct);
+			IPSegmentScanner scanner = new IPSegmentScanner(segment, callback, progress, port, ct);
 
-			progress.Invoke(1, 0, segment.HostToScan.Count);
-
-			ParallelOptions po = new ParallelOptions();
-			po.CancellationToken = ct;
-			po.MaxDegreeOfParallelism = 32;//Environment.ProcessorCount;
-
-			try
-			{
-				if (!ct.IsCancellationRequested)
-				{
-					Parallel.ForEach<IPAddress>(segment.HostToScan, po, (ip) =>
-					{
-						if (!ct.IsCancellationRequested)
-						{
-							ScanResult rv = ip.ScanIP(port, ct);
-
-							Interlocked.Increment(ref count);
-							progress.Invoke(1, count, segment.HostToScan.Count);
-
-							if (rv.HasData())
-								callback.Invoke(ip, rv);
-
-							if (po.CancellationToken != null)
-								po.CancellationToken.ThrowIfCancellationRequested();
-						}
-					});
-				}
-			}
-			catch (OperationCanceledException e)
-			{
-				Debug.WriteLine(e.Message);
-			}
+			scanner.FastScan();
+			//scanner.FullScan();
+	
 		}
 	}
 	public static class UInt16Helper
@@ -319,6 +314,130 @@ namespace LaserGRBL.WiFiDiscovery
 		}
 	}
 
+	class IPSegmentScanner
+	{
+		IPSegment mSegment;
+		Action<IPAddressHelper.ScanResult> mCallback;
+		Action<int, int, int> mProgress;
+		CancellationToken mCt;
+		private int mRespCount;
+		private int mPort;
+
+		List<IPAddressHelper.ScanResult> mList;
+
+		public IPSegmentScanner(IPSegment segment, Action<IPAddressHelper.ScanResult> callback, Action<int, int, int> progress, int port, CancellationToken ct)
+		{
+			mList = new List<IPAddressHelper.ScanResult>();
+
+			mSegment = segment;
+			mCallback = callback;
+			mProgress = progress;
+			mCt = ct;
+			mPort = port;
+		}
+
+
+		public void FullScan()
+		{
+			BuildFullList();
+			Analize();
+		}
+
+		public void FastScan()
+		{
+			BuildRespondingList();
+			Analize();
+		}
+
+		private void BuildFullList()
+		{
+			foreach (IPAddress host in mSegment.HostToScan)
+				mList.Add(new IPAddressHelper.ScanResult(host, mPort));
+		}
+
+		private void BuildRespondingList()
+		{
+			mRespCount = 0;
+			mProgress(0, 0, mSegment.HostToScan.Count);
+			SpinWait wait = new SpinWait();
+
+			PingOptions PO = new PingOptions(16, true);
+
+			for (int i = 0; i < mSegment.HostToScan.Count && !mCt.IsCancellationRequested; i++)
+			{
+				Ping P = new Ping();
+				P.PingCompleted += PingCompleted;
+				P.SendAsync(mSegment.HostToScan[i], 5000, IPAddressHelper.pbuff, PO);
+				if (i % 16 == 1)
+					Thread.Sleep(100);
+			}
+
+			while (mRespCount < mSegment.HostToScan.Count && !mCt.IsCancellationRequested)
+			{
+				mProgress(0, mRespCount, mSegment.HostToScan.Count);
+				wait.SpinOnce();
+			}
+
+			mProgress(0, mRespCount, mSegment.HostToScan.Count);
+		}
+
+		private void PingCompleted(object sender, PingCompletedEventArgs e)
+		{
+			Ping P = sender as Ping;
+			try
+			{
+				if (e.Reply.Status == IPStatus.Success)
+				{
+					IPAddressHelper.ScanResult SR = new IPAddressHelper.ScanResult(e.Reply.Address, mPort, e.Reply.RoundtripTime);
+					mList.Add(SR);
+					mCallback.Invoke(SR);
+				}
+			}
+			finally
+			{
+				lock (this)
+					mRespCount++;
+
+				P.PingCompleted -= PingCompleted;
+				P.Dispose();
+			}
+		}
+
+
+		private void Analize()
+		{
+			int done = 0;
+			mProgress.Invoke(1, done, mList.Count);
+
+			ParallelOptions po = new ParallelOptions();
+			po.CancellationToken = mCt;
+			po.MaxDegreeOfParallelism = -1;
+
+			try
+			{
+				if (!mCt.IsCancellationRequested)
+				{
+					Parallel.ForEach<IPAddressHelper.ScanResult>(mList, po, (sr) =>
+					{
+						if (!mCt.IsCancellationRequested)
+						{
+							sr.DeepScan(mCallback, mCt);
+
+							Interlocked.Increment(ref done);
+							mProgress.Invoke(1, done, mList.Count);
+
+							mCt.ThrowIfCancellationRequested();
+						}
+					});
+				}
+			}
+			catch (OperationCanceledException e)
+			{
+				Debug.WriteLine(e.Message);
+			}
+		}
+	}
+
 	class IPSegment
 	{
 		private UInt32 ip;
@@ -327,8 +446,6 @@ namespace LaserGRBL.WiFiDiscovery
 		private UInt32 broadcastAddress;
 
 		private List<IPAddress> mAllHost;
-		private List<IPAddress> mRespondingHost;
-
 
 		public IPSegment(IPAddress ip, IPAddress mask)
 		{
@@ -347,54 +464,6 @@ namespace LaserGRBL.WiFiDiscovery
 		public IPAddress NetworkAddress => networkAddress.ToIPAddress();
 		public IPAddress BroadcastAddress => broadcastAddress.ToIPAddress();
 
-		//public List<IPAddress> AllHost => mAllHost;
-		public List<IPAddress> HostToScan => mRespondingHost != null ? mRespondingHost : mAllHost;
-
-		private int mRespCount;
-		public void FindRespondingHost(Action<int, int, int> progress, CancellationToken ct)
-		{
-			mRespCount = 0;
-			mRespondingHost = new List<IPAddress>();
-			progress(0, 0, mAllHost.Count);
-			SpinWait wait = new SpinWait();
-
-			PingOptions PO = new PingOptions(16, true);
-
-			for (int i = 0; i < mAllHost.Count && !ct.IsCancellationRequested; i++)
-			{
-				Ping P = new Ping();
-				P.PingCompleted += PingCompleted;
-				P.SendAsync(mAllHost[i], 5000, IPAddressHelper.pbuff, PO);
-				if (i % 16 == 1)
-					Thread.Sleep(100);
-			}
-
-			while (mRespCount < mAllHost.Count && !ct.IsCancellationRequested)
-			{
-				progress(0, mRespCount, mAllHost.Count);
-				wait.SpinOnce();
-			}
-
-			progress(0, mRespCount, mAllHost.Count);
-		}
-
-		private void PingCompleted(object sender, PingCompletedEventArgs e)
-		{
-			Ping P = sender as Ping;
-			try
-			{
-				if (e.Reply.Status == IPStatus.Success)
-					mRespondingHost.Add(e.Reply.Address);
-			}
-			finally 
-			{
-				lock(this)
-					mRespCount++;
-
-				P.PingCompleted -= PingCompleted;
-				P.Dispose();
-			}
-		}
-
+		public List<IPAddress> HostToScan => mAllHost;
 	}
 }

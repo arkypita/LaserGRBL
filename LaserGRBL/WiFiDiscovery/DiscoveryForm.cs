@@ -85,17 +85,17 @@ namespace LaserGRBL.WiFiDiscovery
 			}
 		}
 
-		void ScanOutput(IPAddress ip, IPAddressHelper.ScanResult result)
+		void ScanOutput(IPAddressHelper.ScanResult result)
 		{
 			if (InvokeRequired)
 			{
-				BeginInvoke((MethodInvoker)(() => { ScanOutput(ip, result); }));
+				BeginInvoke((MethodInvoker)(() => { ScanOutput(result); }));
 			}
 			else
 			{
-				ListViewItem LVA = new ListViewItem(new string[] { result.IP.ToString(), result.HostName, result.MAC, result.Ping, result.Telnet });
-				LVA.Tag = result;
-				LV.Items.Add(LVA);
+				LV.BeginUpdate();
+				LV.Items.Add(new ResultItem(result));
+				LV.EndUpdate();
 			}
 		}
 
@@ -110,7 +110,7 @@ namespace LaserGRBL.WiFiDiscovery
 				if (fase == 0)
 					LblProgress.Text = $"Fast scan: {count}/{total}";
 				if (fase == 1)
-					LblProgress.Text = $"Resolve: {count}/{total}";
+					LblProgress.Text = $"Deep scan: {count}/{total}";
 			}
 		}
 
@@ -150,7 +150,7 @@ namespace LaserGRBL.WiFiDiscovery
 		private void BtnConnect_Click(object sender, EventArgs e)
 		{
 			if (LV.SelectedItems.Count == 1)
-				ReturnItem(LV.SelectedItems[0].Tag as IPAddressHelper.ScanResult);
+				ReturnItem((LV.SelectedItems[0] as ResultItem).RI);
 		}
 
 		private void ReturnItem(IPAddressHelper.ScanResult result)
@@ -179,9 +179,47 @@ namespace LaserGRBL.WiFiDiscovery
 		private void LV_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			ListView senderList = (ListView)sender;
-			ListViewItem clickedItem = senderList.HitTest(e.Location).Item;
+			ResultItem clickedItem = senderList.HitTest(e.Location).Item as ResultItem;
 			if (clickedItem != null)
-				ReturnItem(clickedItem.Tag as IPAddressHelper.ScanResult);
+				ReturnItem(clickedItem.RI);
+		}
+	}
+
+	internal class ResultItem : ListViewItem
+	{
+		public IPAddressHelper.ScanResult RI;
+
+		public ResultItem(IPAddressHelper.ScanResult result)
+		{
+			RI = result;
+			RI.Update += OnUpdate;
+
+			Text = result.IP.ToString();
+			SubItems.Add("");
+			SubItems.Add("");
+			SubItems.Add("");
+			SubItems.Add("");
+			DoRefresh();
+		}
+
+		private void OnUpdate(object sender, EventArgs e)
+		{
+			if (ListView.InvokeRequired)
+				ListView.BeginInvoke((MethodInvoker)(() => OnUpdate(sender, e)));
+			else
+			{
+				ListView.BeginUpdate();
+				DoRefresh();
+				ListView.EndUpdate();
+			}
+		}
+
+		private void DoRefresh()
+		{
+			SubItems[1].Text = RI.Ping;
+			SubItems[2].Text = RI.HostName;
+			SubItems[3].Text = RI.MAC;
+			SubItems[4].Text = RI.Telnet;
 		}
 	}
 }

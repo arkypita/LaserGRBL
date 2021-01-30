@@ -44,10 +44,10 @@
 			this.LblProgress = new System.Windows.Forms.Label();
 			this.LV = new System.Windows.Forms.ListView();
 			this.ChIP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.ChHostName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ChMAC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ChPing = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ChConnection = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.ChHostName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel5.SuspendLayout();
@@ -244,9 +244,9 @@
 			// 
 			this.LV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ChIP,
+            this.ChPing,
             this.ChHostName,
             this.ChMAC,
-            this.ChPing,
             this.ChConnection});
 			this.LV.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.LV.FullRowSelect = true;
@@ -266,6 +266,11 @@
 			this.ChIP.Text = "IP Address";
 			this.ChIP.Width = 100;
 			// 
+			// ChHostName
+			// 
+			this.ChHostName.Text = "Host Name";
+			this.ChHostName.Width = 120;
+			// 
 			// ChMAC
 			// 
 			this.ChMAC.Text = "MAC Address";
@@ -280,17 +285,13 @@
 			this.ChConnection.Text = "Connection";
 			this.ChConnection.Width = 130;
 			// 
-			// ChHostName
-			// 
-			this.ChHostName.Text = "Host Name";
-			this.ChHostName.Width = 120;
-			// 
 			// DiscoveryForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(551, 338);
 			this.Controls.Add(this.tableLayoutPanel1);
+			this.DoubleBuffered = true;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "DiscoveryForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
