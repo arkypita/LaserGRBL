@@ -124,7 +124,7 @@
     <value>OK</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>abbrechen</value>
+    <value>Abbrechen</value>
   </data>
   <data name="CbRedoHoming.Text" xml:space="preserve">
     <value>Wiederholen der Zielanfahrt [$H]</value>
@@ -168,7 +168,8 @@ Letzte Geschwindigkeit, Leistung und Laserzustand werden automatisch wiederherge
     <value>unbekannt</value>
   </data>
   <data name="LblDetected.Text" xml:space="preserve">
-    <value>LaserGRBL hat festgestellt, dass der letzte Auftrag nicht abgeschlossen wurde!</value>
+    <value>LaserGRBL hat festgestellt, dass der letzte Auftrag nicht abgeschlossen wurde!
+</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Job wieder aufnehmen</value>

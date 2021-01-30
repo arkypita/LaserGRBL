@@ -112,48 +112,51 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LblFilename.Text" xml:space="preserve">
-    <value>Dateiname</value>
+  <data name="ColID.HeaderText" xml:space="preserve">
+    <value>id</value>
   </data>
-  <data name="LblProgress.Text" xml:space="preserve">
-    <value>Fortschritt</value>
+  <data name="ColVisible.HeaderText" xml:space="preserve">
+    <value>Sichtbar</value>
   </data>
-  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Programm ausführen</value>
+  <data name="ColModel.HeaderText" xml:space="preserve">
+    <value>Modell</value>
   </data>
-  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Verbinden</value>
+  <data name="ColMaterial.HeaderText" xml:space="preserve">
+    <value>Material</value>
   </data>
-  <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Datei öffnen</value>
+  <data name="ColAction.HeaderText" xml:space="preserve">
+    <value>Aktion</value>
   </data>
-  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
-    <value>Führe mehrere Durchläufe durch</value>
+  <data name="ColThick.HeaderText" xml:space="preserve">
+    <value>Dicke</value>
   </data>
-  <data name="LblComPort.Text" xml:space="preserve">
-    <value>COM</value>
+  <data name="ColPower.HeaderText" xml:space="preserve">
+    <value>Energie</value>
   </data>
-  <data name="LblBaudRate.Text" xml:space="preserve">
-    <value>Baud</value>
+  <data name="ColSpeed.HeaderText" xml:space="preserve">
+    <value>Geschwindigkeit</value>
   </data>
-  <data name="LblAddress.Text" xml:space="preserve">
-    <value>URL</value>
+  <data name="ColCycles.HeaderText" xml:space="preserve">
+    <value>Perioden</value>
   </data>
-  <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Emulated Grbl v1.1#</value>
+  <data name="ColRemarks.HeaderText" xml:space="preserve">
+    <value>Bemerkungen</value>
   </data>
-  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>Programm abbrechen</value>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>Neue Elemente:</value>
   </data>
-  <data name="LblEmulator.Text" xml:space="preserve">
-    <value>Emulator</value>
+  <data name="TbNewElement.Text" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
-    <value>gcode hier eingeben</value>
+  <data name="BtnImport.Text" xml:space="preserve">
+    <value>importieren</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Laser &amp; Material Datenbank</value>
   </data>
 </root>

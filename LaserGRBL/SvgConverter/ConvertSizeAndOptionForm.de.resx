@@ -121,20 +121,11 @@
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>316, 61</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Bild Größe und Position (mm)</value>
-  </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>316, 82</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Geschwindigkeit</value>
-  </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>316, 69</value>
-  </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Laser Optionen</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>316, 30</value>
@@ -147,9 +138,6 @@
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 13</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Größe</value>
   </data>
   <data name="IIOffsetX.Location" type="System.Drawing.Point, System.Drawing">
     <value>57, 24</value>
@@ -165,9 +153,6 @@
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>45, 4</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>B</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
     <value>45, 25</value>
@@ -185,7 +170,7 @@
     <value>111, 13</value>
   </data>
   <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>Grenzgeschwindigkeit</value>
+    <value>Randgeschwindigkeit</value>
   </data>
   <data name="LblBorderTracingmm.Location" type="System.Drawing.Point, System.Drawing">
     <value>260, 4</value>
@@ -199,9 +184,6 @@
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
     <value>193, 13</value>
   </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Geschwindigkeit zum manuelles fahren </value>
-  </data>
   <data name="IILinearFilling.Location" type="System.Drawing.Point, System.Drawing">
     <value>199, 24</value>
   </data>
@@ -210,9 +192,6 @@
   </data>
   <data name="LblLinearFilling.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 13</value>
-  </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>Geschwindigkeit zum ausfüllen</value>
   </data>
   <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
     <value>310, 50</value>
@@ -311,13 +290,13 @@ Klicken Sie für mehr Informationen ...</value>
     <value>159, 3</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>abbrechen</value>
+    <value>Abbrechen</value>
   </data>
   <data name="BtnCreate.Location" type="System.Drawing.Point, System.Drawing">
     <value>239, 3</value>
   </data>
   <data name="BtnCreate.Text" xml:space="preserve">
-    <value>erzeuge</value>
+    <value>Erzeuge!</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>322, 266</value>
@@ -325,40 +304,19 @@ Klicken Sie für mehr Informationen ...</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Soll Bild</value>
   </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>X</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>H</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Y</value>
-  </data>
   <data name="LblBorderTracingmm.Text" xml:space="preserve">
     <value>mm/min</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>mm/min</value>
-  </data>
-  <data name="LblLinearFillingmm.Text" xml:space="preserve">
-    <value>mm/min</value>
-  </data>
-  <data name="CBLaserON.Items" xml:space="preserve">
-    <value>M3</value>
-  </data>
-  <data name="CBLaserON.Items1" xml:space="preserve">
-    <value>M4</value>
-  </data>
   <data name="CBLaserOFF.Items" xml:space="preserve">
     <value>M5</value>
-  </data>
-  <data name="GbSize.Text" xml:space="preserve">
-    <value>Bild Größe und Position (mm)</value>
   </data>
   <data name="GbSpeed.Text" xml:space="preserve">
     <value>Geschwindigkeit</value>
   </data>
   <data name="GbLaser.Text" xml:space="preserve">
     <value>Laser Optionen</value>
+  </data>
+  <data name="BtnPSHelper.ToolTip" xml:space="preserve">
+    <value>Laser und Material DB öffnen</value>
   </data>
 </root>

@@ -122,16 +122,16 @@
 Bitte laden Sie die neue Version manuell von lasergrbl herunter.</value>
   </data>
   <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
-    <value>Update erfordert Administratorrechte</value>
+    <value>Update erfordert Administratorrechte!</value>
   </data>
   <data name="BoxAutoUpdateResult" xml:space="preserve">
-    <value>Update Ergebnis </value>
+    <value>Update Ergebnis</value>
   </data>
   <data name="BoxAutoUpdateSuccess" xml:space="preserve">
     <value>Update erfolgreich!</value>
   </data>
   <data name="BoxConnectErrorTitle" xml:space="preserve">
-    <value>Kann nicht mit dem Gerät verbunden werden</value>
+    <value>Kann nicht mit dem Gerät verbinden</value>
   </data>
   <data name="BoxExportConfigError" xml:space="preserve">
     <value>Fehler beim Exportieren der Konfiguration!</value>
@@ -191,7 +191,7 @@ Bitte laden Sie die neue Version manuell von lasergrbl herunter.</value>
     <value>Sanft (HQ Bicubic)</value>
   </data>
   <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
-    <value>Scharf (nächsterNachbar)</value>
+    <value>Scharf (nächster Nachbar)</value>
   </data>
   <data name="LanguageRequireRestart" xml:space="preserve">
     <value>Neustart erforderlich</value>
@@ -236,7 +236,7 @@ Bitte laden Sie die neue Version manuell von lasergrbl herunter.</value>
     <value>Geschätzte Zeit:</value>
   </data>
   <data name="MainFormProjectedTime" xml:space="preserve">
-    <value>Geplante Zeit:</value>
+    <value>Prognostizierte Zeit:</value>
   </data>
   <data name="AddCustomButtonsHint" xml:space="preserve">
     <value>Klicken Sie hier mit der rechten Maustaste, um benutzerdefinierte Schaltflächen hinzuzufügen</value>
@@ -327,5 +327,50 @@ Trotzdem weitermachen?</value>
   </data>
   <data name="BoxAbortProgramConfirm" xml:space="preserve">
     <value>Aktuelle Tätigkeit abbrechen?</value>
+  </data>
+  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
+    <value>Jetzt kann gerade keine neue Datei geöffnet werden.</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>Warnung</value>
+  </data>
+  <data name="DirectionNewCross" xml:space="preserve">
+    <value>Kreuz-Füllung</value>
+  </data>
+  <data name="DirectionNewDiagonal" xml:space="preserve">
+    <value>Diagonal</value>
+  </data>
+  <data name="DirectionNewDiagonalCross" xml:space="preserve">
+    <value>Diagonal Kreuz-Füllung</value>
+  </data>
+  <data name="DirectionNewDiagonalGrid" xml:space="preserve">
+    <value>Diagonal Gitter</value>
+  </data>
+  <data name="DirectionNewGrid" xml:space="preserve">
+    <value>Gitter</value>
+  </data>
+  <data name="DirectionNewHorizontal" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="DirectionNewInsetFilling" xml:space="preserve">
+    <value>Einsatz-Füllung (nach innen gerichtet)</value>
+  </data>
+  <data name="DirectionNewReverseDiagonal" xml:space="preserve">
+    <value>Diagonal Umgekehrt</value>
+  </data>
+  <data name="DirectionNewSquares" xml:space="preserve">
+    <value>Quadrate</value>
+  </data>
+  <data name="DirectionNewVertical" xml:space="preserve">
+    <value>Vertikal</value>
+  </data>
+  <data name="DirectionNewZigZag" xml:space="preserve">
+    <value>Zickzack</value>
+  </data>
+  <data name="WarnWrongLaserModeTitle" xml:space="preserve">
+    <value>Warnung</value>
+  </data>
+  <data name="DirectionNewHilbert" xml:space="preserve">
+    <value>Hilbert</value>
   </data>
 </root>

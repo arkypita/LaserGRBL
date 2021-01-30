@@ -1,7 +1,7 @@
 # Welcome contibutors!
 
 You can contribute to LaserGRBL both by adding/improving translations or by submitting new features.
-If you are not skilled enought to give coding support you can consider [donating to the project](https://paypal.me/pools/c/8cQ1Lo4sRA)
+If you are not skilled enough to give coding support you can consider [donating to the project](https://paypal.me/pools/c/8cQ1Lo4sRA)
 
 ## Submit translation
 

@@ -118,6 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="LblFormDescription.Text" xml:space="preserve">
-    <value>Es ist nicht Ihre Schuld! Es gab einen Programmfehler, aufgrund einer unerwarteten Bedingung. Sie können ihn den Entwicklern melden, indem Sie ein Problem auf https://github.com/arkypita/LaserGRBL/issues öffnen.</value>
+    <value>Es ist nicht Ihre Schuld! Es gab einen unerwarteten Programmfehler. Sie können den Fehler den Entwicklern melden, indem Sie ein Ticket auf https://github.com/arkypita/LaserGRBL/issues erstellen.
+
+Bitte kopieren Sie die folgende Nachricht mit in Ihren Beitrag.</value>
   </data>
 </root>
