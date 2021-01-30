@@ -122,13 +122,13 @@
     <value>32, 19</value>
   </data>
   <data name="TTLLines.Text" xml:space="preserve">
-    <value>Zeile</value>
+    <value>Zeilen:</value>
   </data>
   <data name="TTLEstimated.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 19</value>
   </data>
   <data name="TTLEstimated.Text" xml:space="preserve">
-    <value>Geschätzte Zeit</value>
+    <value>Geschätzte Zeit:</value>
   </data>
   <data name="TTTEstimated.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 19</value>
@@ -143,7 +143,7 @@
     <value>96, 19</value>
   </data>
   <data name="TTTStatus.Text" xml:space="preserve">
-    <value>Nicht verbunden</value>
+    <value>Getrennt</value>
   </data>
   <data name="MnConnect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -226,7 +226,7 @@
     <value>212, 22</value>
   </data>
   <data name="MnGrblReset.Text" xml:space="preserve">
-    <value>&amp;Zurücksetzten</value>
+    <value>&amp;Zurücksetzen</value>
   </data>
   <data name="MnGoHome.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -657,19 +657,16 @@
     <value>139, 22</value>
   </data>
   <data name="chinexeToolStripMenuItem.Text" xml:space="preserve">
-    <value>Chinesisch</value>
+    <value>Chinesisch (vereinfacht)</value>
   </data>
   <data name="helpOnLineToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 22</value>
   </data>
   <data name="helpOnLineToolStripMenuItem.Text" xml:space="preserve">
-    <value>Hilfe</value>
+    <value>Online-Hilfe</value>
   </data>
   <data name="autoUpdateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 22</value>
-  </data>
-  <data name="autoUpdateToolStripMenuItem.Text" xml:space="preserve">
-    <value>Automatisch aktualisieren</value>
   </data>
   <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
     <value>206, 6</value>
@@ -678,7 +675,7 @@
     <value>209, 22</value>
   </data>
   <data name="openSessionLogToolStripMenuItem.Text" xml:space="preserve">
-    <value>öffne Session log</value>
+    <value>Sitzungslog öffnen</value>
   </data>
   <data name="toolStripMenuItem7.Size" type="System.Drawing.Size, System.Drawing">
     <value>206, 6</value>
@@ -687,7 +684,7 @@
     <value>209, 22</value>
   </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>Web Seite</value>
+    <value>LaserGrbl FAQ</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -808,7 +805,7 @@
     <value>Datei &amp;anhängen</value>
   </data>
   <data name="MnReOpenFile.Text" xml:space="preserve">
-    <value>&amp;letzte Datei neu laden</value>
+    <value>&amp;letzte Datei erneut laden</value>
   </data>
   <data name="MnAdvancedSave.Text" xml:space="preserve">
     <value>&amp;Speichern (Erweiterte Option)</value>
@@ -824,6 +821,7 @@
   </data>
   <data name="nightyToolStripMenuItem.Text" xml:space="preserve">
     <value>Nächtlich</value>
+    <comment>Was ist das? Worauf bezieht sich das? Typo im Originaltext?</comment>
   </data>
   <data name="slovakianToolStripMenuItem.Text" xml:space="preserve">
     <value>Slowakisch</value>
@@ -844,30 +842,69 @@
     <value>Konfigurations &amp;Assistent</value>
   </data>
   <data name="MnAutoUpdate.Text" xml:space="preserve">
-    <value>automatische Aktualisierung</value>
+    <value>Automatische Aktualisierung</value>
   </data>
   <data name="MnNotifyNewVersion.Text" xml:space="preserve">
-    <value>automatische Aktualisierung aktivieren</value>
+    <value>Automatische Aktualisierung aktivieren</value>
   </data>
   <data name="MnNotifyMinorVersion.Text" xml:space="preserve">
-    <value>kleine Änderungen melden</value>
+    <value>Kleine Änderungen melden</value>
   </data>
   <data name="MnNotifyPreRelease.Text" xml:space="preserve">
     <value>Vorabveröffentlichung melden</value>
   </data>
   <data name="MnCheckNow.Text" xml:space="preserve">
-    <value>überprüfe jetzt</value>
+    <value>Jetzt überprüfen!</value>
   </data>
   <data name="activateExtendedLogToolStripMenuItem.Text" xml:space="preserve">
     <value>Erweitertes Protokoll aktivieren</value>
   </data>
   <data name="donateToolStripMenuItem.Text" xml:space="preserve">
-    <value>Spende</value>
+    <value>Spende!</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
     <value>Lizenz</value>
   </data>
   <data name="polishToolStripMenuItem.Text" xml:space="preserve">
     <value>Polnisch</value>
+  </data>
+  <data name="traditionalChineseToolStripMenuItem.Text" xml:space="preserve">
+    <value>Chinesisch (traditionell)</value>
+  </data>
+  <data name="greekToolStripMenuItem.Text" xml:space="preserve">
+    <value>Griechisch</value>
+  </data>
+  <data name="turkishToolStripMenuItem.Text" xml:space="preserve">
+    <value>Türkisch</value>
+  </data>
+  <data name="MnOrtur.Text" xml:space="preserve">
+    <value>Ortur</value>
+  </data>
+  <data name="MnWiFiDiscovery.Text" xml:space="preserve">
+    <value>Wi-Fi Suche</value>
+  </data>
+  <data name="MnRunMulti.Text" xml:space="preserve">
+    <value>Syncro Start/Halten/Fortsetzen</value>
+  </data>
+  <data name="orturSupportGroupToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ortur Benutzergruppe</value>
+  </data>
+  <data name="orturSupportAndFeedbackToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ortur Support und Feedback</value>
+  </data>
+  <data name="orturWebsiteToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ortur Webseite</value>
+  </data>
+  <data name="youtubeChannelToolStripMenuItem.Text" xml:space="preserve">
+    <value>YouTube Kanal</value>
+  </data>
+  <data name="manualsDownloadToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ortur Handbücher</value>
+  </data>
+  <data name="firmwareToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ortur Firmware</value>
+  </data>
+  <data name="facebookCommunityToolStripMenuItem.Text" xml:space="preserve">
+    <value>LaserGrbl Community</value>
   </data>
 </root>

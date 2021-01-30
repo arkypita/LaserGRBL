@@ -118,22 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnWrite.Text" xml:space="preserve">
-    <value>schreiben</value>
+    <value>Schreiben</value>
   </data>
   <data name="BtnRead.Text" xml:space="preserve">
-    <value>aktualisieren</value>
+    <value>Aktualisieren</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>schließen</value>
+    <value>Schließen</value>
   </data>
   <data name="LblConnect.Text" xml:space="preserve">
-    <value>Lesen und Schreiben ist nur möglich wenn eine Verbindung besteht und im Leelauf ist.</value>
+    <value>Lesen und Schreiben ist nur möglich
+wenn verbunden und im Leerlauf</value>
   </data>
   <data name="BtnExport.Text" xml:space="preserve">
-    <value>exportieren</value>
+    <value>Exportieren</value>
   </data>
   <data name="BtnImport.Text" xml:space="preserve">
-    <value>importieren</value>
+    <value>Importieren</value>
   </data>
   <data name="LblAction.Text" xml:space="preserve">
     <value>Aktion</value>

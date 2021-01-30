@@ -118,7 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>Laser GRBL nutzt die Leistungsmodulation über den G-Code "S Befehl", um Graustufen zu erzeugen. Ihr Laser muss die TTL-Steuerung an Arduino PIN D11 unterstützen. Wenn nicht, deaktiviere bitte die PWM-Unterstützung.</value>
+    <value>Laser GRBL nutzt die Leistungsmodulation über den G-Code "S Befehl", um Graustufen zu erzeugen.
+Ihr Laser muss die TTL-Steuerung an Arduino PIN D11 unterstützen.
+Wenn nicht, deaktiviere bitte die PWM-Unterstützung.</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Kopfzeile</value>
@@ -130,25 +132,26 @@
     <value>PWM Unterstützung</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>abbrechen</value>
+    <value>Abbrechen</value>
   </data>
   <data name="BtnSave.Text" xml:space="preserve">
-    <value>speichern</value>
+    <value>Speichern</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Der Laser-Modus ist auf GRBL 1.1 oder höher aktiviert. Dies führt dazu, dass der Laser bei schnellen Bewegungen ausgeschaltet wird. LaserGRBL macht schnelle Bewegungen anders als Schnittbewegungen.</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Verbindungsprotokoll: - USB Serial, ist das häufigste Protokoll. Sollte verwendet werden, wenn Ihr Graveur an USB oder COM-Port angeschlossen ist.
-- Telnet, wenn man eine WiFi-Telnet-Brücke hat. Die Kommunikation ist wie ein einfacher Telnet-Client-Server implementiert.
--LaserWebESP8266 unterstützt WiFi-Verbindung via WebSocket. Kompatibel mit LaserWeb-ESP8266</value>
+    <value>Verbindungsprotokoll:
+ - USB Seriell, ist das häufigste Protokoll. Sollte verwendet werden, wenn Ihr Graveur an USB oder COM-Port angeschlossen ist.
+- USB Seriell 2: eine alternative Implementierung von USB Seriell um Microsoft SerialPort Probleme zu umgehen
+- Telnet: wenn man eine WiFi-Telnet-Brücke hat. Die Kommunikation ist wie ein einfacher Telnet-Client-Server implementiert.
+- LaserWebESP8266: unterstützt WiFi-Verbindung via WebSocket. Kompatibel mit LaserWeb-ESP8266.</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Streaming-Modus:
-- Buffered: Optimieren Sie Befehle, die grbl Empfangspuffer auffüllen[empfohlen].
-- Synchronous: Warten Sie auf die Ausführung jedes Befehls, bevor Sie den nächsten Befehl senden [langsamer, aber sicherer].
-- RepeatOnError: wie Synchronous, aber wiederholte Befehle wenn Fehler erkannt wird [experimentell].
-</value>
+    <value>Streaming-Modus: [standardmäßig gepuffert]
+- Gepuffert: Optimieren Sie Befehle, die grbl Empfangspuffer auffüllen [empfohlen]
+- Synchron: Warte auf die Ausführung jedes Befehls, bevor der nächste Befehl gesendet wird [langsamer, aber sicherer]
+- Bei Fehler wiederholen: wie Synchron, aber wenn ein Fehler erkannt wird wird der Befehl wiederholt [experimentell]</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Einfädelmodus: Ultra-schnell, schnell, leise, langsam. [Standardeinstellung: UltraSchnell]
@@ -169,12 +172,14 @@ Wenn deaktiviert, werden alle Probleme ohne Warnung stillschweigend verwaltet.</
     <value>Hartes Zurücksetzen [DTR+RTS]</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>Wenn LaserGRBL aktiviert ist, senden Sie einen Hardreset, wenn die Verbindung zu grbl geöffnet wird. Die Position ist verloren!</value>
+    <value>Wenn LaserGRBL aktiviert ist, senden Sie einen Hardreset, wenn die Verbindung zu grbl geöffnet wird. [Position geht verloren!]</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Firmware-Typ
 - Grbl: die geniale Firmware, für die LaserGRBL entwickelt wurde.
-- Smoothie [experimentell]: die Unterstützung wurde kürzlich hinzugefügt und ist noch nicht vollständig getestet.</value>
+- Smoothie [experimentell]: die Unterstützung wurde kürzlich hinzugefügt und ist noch nicht vollständig getestet.
+- Marlin [experimentell]: die Unterstützung wurde kürzlich hinzugefügt und ist noch nicht vollständig getestet.
+- VigoWork [experimentell]: die Unterstützung wurde kürzlich hinzugefügt und ist noch nicht vollständig getestet.</value>
   </data>
   <data name="TpHardware.Text" xml:space="preserve">
     <value>Protokoll</value>
@@ -213,16 +218,14 @@ HINWEIS: "Continuous Jog" funktioniert nur mit Grbl v1.1 oder später und erford
     <value>Kontinuierliches Joggen</value>
   </data>
   <data name="TpJogControl.Text" xml:space="preserve">
-    <value>Jog-Steuerung</value>
+    <value>Jogging-Steuerung</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>Zeit AUS: nach dieser Abkühlzeit sendet LaserGRBL einen Fortsetzungsbefehl, um den Gravurauftrag fortzusetzen.</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
     <value>Einige Laserdioden können sich zu stark erwärmen, wenn sie über einen längeren Zeitraum bei höchster Leistung betrieben werden. Um eine Überhitzung der Diode zu verhindern und die Lebensdauer des Lasers zu verlängern, können Sie einige automatische Abkühlzyklen hinzufügen, die eine Pause während des Gravurprozesses einfügen.
-Wenn die automatische Kühlung aktiviert ist, sendet LaserGRBL automatisch "Feed hold" und "Job resume" entsprechend der ON-OFF-Timing-Konfiguration.
-
-Übersetzt mit www.DeepL.com/Translator (kostenlose Version)</value>
+Wenn die automatische Kühlung aktiviert ist, sendet LaserGRBL automatisch "Feed hold" und "Job resume" entsprechend der ON-OFF-Timing-Konfiguration.</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>Zeit EIN: Dies ist die maximale Zeit, die der Laser während des Gravurprozesses eingeschaltet bleibt.
@@ -252,7 +255,8 @@ Nach dieser Zeit sendet LaserGRBL einen automatischen Vorschubhalt, um den Laser
   <data name="label21.Text" xml:space="preserve">
     <value>Warnung: Diese Funktion funktioniert nur mit grbl-Versionen &gt; v1.1 mit aktiviertem "Laser-Modus".
 Wenn Sie die automatische Kühlung mit einer älteren grbl-Version (oder mit deaktiviertem Lasermodus) verwenden, schaltet sich der Laser während der Pausen nicht ab.
-und brennt Löcher in Ihre Arbeit!</value>
+und brennt Löcher in Ihre Arbeit!
+</value>
   </data>
   <data name="TpAutoCooling.Text" xml:space="preserve">
     <value>Automatische Kühlung</value>
@@ -288,12 +292,14 @@ Hier können Sie die gleiche Syntax der benutzerdefinierten Tasten verwenden.</v
   </data>
   <data name="label23.Text" xml:space="preserve">
     <value>Hier können Sie einen anderen Sound für Erfolgsereignisse einstellen, z.B. wenn eine Arbeit beendet ist.
-Markiere zum Aktivieren.</value>
+Markiere zum Aktivieren.
+</value>
   </data>
   <data name="label24.Text" xml:space="preserve">
     <value>Hier können Sie einen weiteren Warnton einstellen.
 Dieser ertönt normalerweise bei einem schlechten GCode-Befehl , aber Ihre Maschine kann weiterarbeiten.
-Markiere zum Aktivieren.</value>
+Markiere zum Aktivieren.
+</value>
   </data>
   <data name="label26.Text" xml:space="preserve">
     <value>Warnton</value>
@@ -357,22 +363,50 @@ Markiere zum Aktivieren.</value>
   </data>
   <data name="label32.Text" xml:space="preserve">
     <value>Hier können Sie einen Ton für eine erfolgreiche Verbindung einstellen.
-Markiere zum Aktivieren.</value>
+Markiere zum Aktivieren.
+</value>
   </data>
   <data name="label36.Text" xml:space="preserve">
     <value>Hier können Sie einen Ton für die Trennung der Verbindung einstellen.
 Nützlich für einige WiFi-Verbindungen.
-Markiere zum Aktivieren.</value>
+Markiere zum Aktivieren.
+</value>
   </data>
   <data name="label28.Text" xml:space="preserve">
     <value>Hier können Sie bei fatalen Fehlern einen Fehlerton einstellen.
 Das bedeutet, dass Ihr Auftrag höchstwahrscheinlich abgebrochen wird und LaserGRBL die Operation nicht fortsetzen kann.
-Markiere zum Aktivieren.</value>
+Markiere zum Aktivieren.
+</value>
   </data>
   <data name="TpSoundSettings.Text" xml:space="preserve">
     <value>Ton-Einstellungen</value>
   </data>
   <data name="SoundBrowserDialog.Filter" xml:space="preserve">
     <value>Waveform Audio File|*.wav</value>
+  </data>
+  <data name="CbDisableSkip.Text" xml:space="preserve">
+    <value>G0 schnelles Überspringen deaktivieren</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>Standardmäßig verwendet LaserGRBL schnelle G0 Bewegungen um weiße Bereiche des Auftrags zu überspringen. Dies beschleunigt den Prozess, kann jedoch zu ungenauer Positionierung und damit Ergebnissen führen. Häufig sind die Ergebnisse verbesserbar durch korrektes Setzen der Beschleunigung und Geschwindigkeit ($ 120,121,122 and $ 110,111,112) in der grbl Konfiguration.
+
+Wenn Sie diese Funktion deaktivieren dann verwendet LaserGRBL lineare G1 Bewegungen in der normalen Arbeitsgeschwindigkeit.</value>
+  </data>
+  <data name="CbDisableBoundWarn.Text" xml:space="preserve">
+    <value>Rand-Warnung deaktivieren</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>LaserGRBL warnt Sie wenn Sie einen Auftrag erstellen der größer als Ihr Arbeitsbereich ist.
+Setzen Sie diese Einstellung um diese Sicherheitsvorkehrung zu deaktivieren.</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>Wenn Klicke-zum-Joggen aktiviert ist führt ein Doppelklick auf den Vorschaubereich zum Joggen an die gewählte Position.</value>
+  </data>
+  <data name="CbClickNJog.Text" xml:space="preserve">
+    <value>Klicke-zum-Joggen</value>
+  </data>
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+    <value>Ortur Benutzer: Ortur Firmware (alle Versionen bis 137) haben einen Fehler beim Fortsetzen des Prozesses. Dieser verhindert die korrekte Verwendung des automatischen Abkühlungsfunktion.
+Bitte nutzen Sie die automatische Abkühlfunktion nicht mit Ortur Geräten bis eine neue Firmware veröffentlicht ist.</value>
   </data>
 </root>

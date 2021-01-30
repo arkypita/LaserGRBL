@@ -133,14 +133,12 @@
     <value>Optionen exportieren</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Wenn Sie den gcode exportieren müssen, um ihn außerhalb von LaserGRBL zu verwenden, z.B. für einem Standalone Kontroller, werden Sie es vielleicht nützlich finden, den Kopf-/Fußzeilencode und den Code zwischen den einzelnen Durchläufen exportieren zu können.
+    <value>Wenn Sie den gcode exportieren müssen, um ihn außerhalb von LaserGRBL zu verwenden, z.B. für einem eigenständigen Controller, werden Sie es vielleicht nützlich finden, den Kopf-/Fußzeilencode und den Code zwischen den einzelnen Durchläufen exportieren zu können.
 
-Hinweis: Wenn Sie G-Code exportieren, um ihn innerhalb von LaserGBRL wieder zu laden, ist es besser, stattdessen den schnellen Export zu verwenden.
-
-Übersetzt mit www.DeepL.com/Translator (kostenlose Version)</value>
+Hinweis: Wenn Sie G-Code exportieren, um ihn innerhalb von LaserGBRL wieder zu laden, ist es besser, stattdessen den schnellen Export zu verwenden.</value>
   </data>
   <data name="BtnSave.Text" xml:space="preserve">
-    <value>speichern</value>
+    <value>Speichern</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>G-code Optionen speichern</value>

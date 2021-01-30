@@ -112,48 +112,42 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LblFilename.Text" xml:space="preserve">
-    <value>Dateiname</value>
+  <data name="BtnApply.Text" xml:space="preserve">
+    <value>Anwenden</value>
   </data>
-  <data name="LblProgress.Text" xml:space="preserve">
-    <value>Fortschritt</value>
+  <data name="LblPower.Text" xml:space="preserve">
+    <value>Energie</value>
   </data>
-  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Programm ausführen</value>
+  <data name="LblModel.Text" xml:space="preserve">
+    <value>Laser Modell</value>
   </data>
-  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Verbinden</value>
+  <data name="LblMaterial.Text" xml:space="preserve">
+    <value>Material</value>
   </data>
-  <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Datei öffnen</value>
+  <data name="LblThickness.Text" xml:space="preserve">
+    <value>Dicke</value>
   </data>
-  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
-    <value>Führe mehrere Durchläufe durch</value>
+  <data name="LblAction.Text" xml:space="preserve">
+    <value>Aktion</value>
   </data>
-  <data name="LblComPort.Text" xml:space="preserve">
-    <value>COM</value>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Durchläufe</value>
   </data>
-  <data name="LblBaudRate.Text" xml:space="preserve">
-    <value>Baud</value>
+  <data name="LblSpeed.Text" xml:space="preserve">
+    <value>Geschwindigkeit</value>
   </data>
-  <data name="LblAddress.Text" xml:space="preserve">
-    <value>URL</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Vorgeschlagene Einstellungen</value>
   </data>
-  <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Emulated Grbl v1.1#</value>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Abbrechen</value>
   </data>
-  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>Programm abbrechen</value>
-  </data>
-  <data name="LblEmulator.Text" xml:space="preserve">
-    <value>Emulator</value>
-  </data>
-  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
-    <value>gcode hier eingeben</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Konfiguration wählen</value>
   </data>
 </root>

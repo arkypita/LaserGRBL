@@ -230,7 +230,7 @@
 </value>
   </data>
   <data name="BtRotateCW.ToolTip" xml:space="preserve">
-    <value>um 90° in Uhrzeigersinn drehen</value>
+    <value>Um 90° in Uhrzeigersinn drehen</value>
   </data>
   <data name="BtRotateCCW.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -265,7 +265,7 @@
 </value>
   </data>
   <data name="BtRotateCCW.ToolTip" xml:space="preserve">
-    <value>um 90° gegen den Uhrzeigersinn drehen</value>
+    <value>Um 90° gegen den Uhrzeigersinn drehen</value>
   </data>
   <data name="BtnCrop.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -543,9 +543,6 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Weißsättigung</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Parameter</value>
-  </data>
   <data name="CbDirections.Location" type="System.Drawing.Point, System.Drawing">
     <value>58, 29</value>
   </data>
@@ -640,7 +637,7 @@
     <value>86, 17</value>
   </data>
   <data name="RbVectorize.Text" xml:space="preserve">
-    <value>Vektorisieren</value>
+    <value>Vektorisieren!</value>
   </data>
   <data name="RbVectorize.ToolTip" xml:space="preserve">
     <value>Produzieren Vektoren</value>
@@ -653,9 +650,6 @@
   </data>
   <data name="RbLineToLineTracing.ToolTip" xml:space="preserve">
     <value>erzeuge Graustufenbild</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Umwandlungswerkzeug</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>abbrechen</value>
@@ -716,5 +710,17 @@
   </data>
   <data name="RbCenterline.ToolTip" xml:space="preserve">
     <value>Mittellinien-Vektorisierung</value>
+  </data>
+  <data name="TbPassthroughInfo.Text" xml:space="preserve">
+    <value>Der Durchreich-Modus lässt das Bild intakt, ohne weitere Verarbeitung durch LaserGRBL. Das Bild wird Linie für Linie eingebrannt, horizontal, entsprehcend der Größe und DPI Auflösung in den Bilddateiinformationen.</value>
+  </data>
+  <data name="GbPassthrough.Text" xml:space="preserve">
+    <value>Durchreich-Optionen</value>
+  </data>
+  <data name="RbNoProcessing.Text" xml:space="preserve">
+    <value>Durchreichen</value>
+  </data>
+  <data name="RbNoProcessing.ToolTip" xml:space="preserve">
+    <value>Keine Verarbeitung/Anpassung (durchreichen)</value>
   </data>
 </root>

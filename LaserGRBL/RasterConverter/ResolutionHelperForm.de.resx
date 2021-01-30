@@ -127,7 +127,7 @@
     <value>$100 Hardware Auflösung</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>abbrechen</value>
+    <value>Abbrechen</value>
   </data>
   <data name="LblLinearFillingmm.Text" xml:space="preserve">
     <value>Schritte/mm</value>
@@ -136,13 +136,14 @@
     <value>Linien/mm</value>
   </data>
   <data name="BtnCreate.Text" xml:space="preserve">
-    <value>setzen</value>
+    <value>Setzen</value>
   </data>
   <data name="LblBorderTracing.Text" xml:space="preserve">
     <value>Gewünschte Auflösung</value>
   </data>
   <data name="linkLabel1.Text" xml:space="preserve">
-    <value>Wenn die Auflösung nicht durch volle Motorschritte erreicht werden könnte, können Artefacte entstehen. Klicken Sie hier für mehr Informationen ...</value>
+    <value>Wenn die Auflösung nicht durch volle Motorschritte erreicht werden könnte, können Artefakte entstehen. Klicken Sie hier für mehr Informationen...
+</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Berechnete Auflösung</value>

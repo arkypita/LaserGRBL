@@ -200,7 +200,7 @@
     <value>152, 13</value>
   </data>
   <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>Geschwindigkeit zum ausfüllen</value>
+    <value>Geschwindigkeit zum Ausfüllen</value>
   </data>
   <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
     <value>310, 50</value>
@@ -224,7 +224,8 @@
     <value>214, 30</value>
   </data>
   <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
-    <value>Grbl unterstützt variable Ausgangsleistung zur Erzeugung von Graustufen. Dies erfordert, dass Ihre Hardware eine TTL-Ansteuerung für Laser hat.
+    <value>Grbl unterstützt variable Ausgangsleistung zur Erzeugung von Graustufen.
+Dies erfordert, dass Ihre Hardware eine TTL-Ansteuerung für Laser hat.
 
 Klicken Sie für mehr Informationen ...</value>
   </data>
@@ -233,9 +234,6 @@ Klicken Sie für mehr Informationen ...</value>
   </data>
   <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 13</value>
-  </data>
-  <data name="label26.Text" xml:space="preserve">
-    <value>Laser aus</value>
   </data>
   <data name="LblSmin.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 13</value>
@@ -261,9 +259,6 @@ Klicken Sie für mehr Informationen ...</value>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 13</value>
   </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Laser an</value>
-  </data>
   <data name="BtnOnOffInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -284,7 +279,7 @@ Klicken Sie für mehr Informationen ...</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Laser an: M3 ist der Standardmodus.
-Grbl V1.1 unterstützt einen neuen M4 "Dynamic laser power mode".
+Grbl V1.1 unterstützt einen neuen M4 "Dynamischer Laser Power Modus".
 Laser aus: nur M5 Befehl wird unterstützt.
 
 Klicken Sie für mehr Informationen ...</value>
@@ -299,19 +294,19 @@ Klicken Sie für mehr Informationen ...</value>
     <value>159, 3</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
-    <value>abbrechen</value>
+    <value>Abbrechen</value>
   </data>
   <data name="BtnCreate.Location" type="System.Drawing.Point, System.Drawing">
     <value>239, 3</value>
   </data>
   <data name="BtnCreate.Text" xml:space="preserve">
-    <value>erzeuge</value>
+    <value>Erzeuge!</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>322, 266</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Soll Bild</value>
+    <value>Ziel-Bild</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>X</value>
@@ -328,11 +323,8 @@ Klicken Sie für mehr Informationen ...</value>
   <data name="LblLinearFillingmm.Text" xml:space="preserve">
     <value>mm/min</value>
   </data>
-  <data name="CBLaserOFF.Items" xml:space="preserve">
-    <value>M5</value>
-  </data>
   <data name="GbSize.Text" xml:space="preserve">
-    <value>Bild Größe und Position (mm)</value>
+    <value>Bild Größe und Position [mm]</value>
   </data>
   <data name="GbSpeed.Text" xml:space="preserve">
     <value>Geschwindigkeit</value>
@@ -354,5 +346,17 @@ Klicken Sie für mehr Informationen ...</value>
   </data>
   <data name="BtnPSHelper.ToolTip" xml:space="preserve">
     <value>Laser &amp; Material DB öffnen</value>
+  </data>
+  <data name="BtnCenter.ToolTip" xml:space="preserve">
+    <value>Bild horizontal und vertikal zentrieren (Null im Zentrum)</value>
+  </data>
+  <data name="LblLaserMode.Text" xml:space="preserve">
+    <value>Laser Modus</value>
+  </data>
+  <data name="LblMinPerc.Text" xml:space="preserve">
+    <value>0%</value>
+  </data>
+  <data name="LblMaxPerc.Text" xml:space="preserve">
+    <value>100%</value>
   </data>
 </root>
