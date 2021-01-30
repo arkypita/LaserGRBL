@@ -123,37 +123,34 @@
   <data name="RemoveButton.Text" xml:space="preserve">
     <value>Schaltfläche löschen</value>
   </data>
-  <data name="$this.ToolTipText" xml:space="preserve">
-    <value>Vorschau</value>
-  </data>
   <data name="BtnReset.ToolTip" xml:space="preserve">
     <value>Grbl zurücksetzten (ctrl-x)</value>
   </data>
   <data name="BtnResume.ToolTip" xml:space="preserve">
-    <value>fortsetzen</value>
+    <value>Fortsetzen</value>
   </data>
   <data name="BtnUnlock.ToolTip" xml:space="preserve">
     <value>Grbl entsperren ($X)</value>
   </data>
   <data name="addCustomButtonToolStripMenuItem.Text" xml:space="preserve">
-    <value>neue Benutzer Schaltfläche</value>
+    <value>Neue benutzerdefinierte Schaltfläche</value>
   </data>
   <data name="BtnStop.ToolTip" xml:space="preserve">
-    <value>anhalten</value>
+    <value>Abfolge anhalten</value>
   </data>
   <data name="MnLockButton.Text" xml:space="preserve">
     <value>Position sperren (zum Neuordnen anklicken)</value>
   </data>
   <data name="exportCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
-    <value>exporiere Benutzer Schaltflächen</value>
+    <value>Exportiere benutzerdefinierte Schaltflächen</value>
   </data>
   <data name="importCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
-    <value>imporiere Benutzer Schaltflächen</value>
+    <value>Importiere benutzerdefinierte Schaltflächen</value>
   </data>
   <data name="BtnHoming.ToolTip" xml:space="preserve">
     <value>Startpunkt ($H)</value>
   </data>
   <data name="BtnZeroing.ToolTip" xml:space="preserve">
-    <value>setze Null Punkt (G92)</value>
+    <value>Nullpunkt setzen (G92)</value>
   </data>
 </root>

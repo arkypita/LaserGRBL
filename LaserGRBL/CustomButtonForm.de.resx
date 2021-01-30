@@ -128,13 +128,13 @@
     <value>275, 3</value>
   </data>
   <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Erzeuge</value>
+    <value>Erzeugen!</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>352, 33</value>
   </data>
   <data name="LblEnabled.Text" xml:space="preserve">
-    <value>Freigeben</value>
+    <value>Aktiviert</value>
   </data>
   <data name="BTOpenImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -241,7 +241,7 @@
     <value>83, 13</value>
   </data>
   <data name="LblToolTip.Text" xml:space="preserve">
-    <value>Werkzeugspitze</value>
+    <value>Tooltip</value>
   </data>
   <data name="TbToolTip.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 138</value>
@@ -281,10 +281,12 @@
   </data>
   <data name="LblDescription.Text" xml:space="preserve">
     <value>- Verwenden Sie einen Punkt als Dezimaltrennzeichen
-- Unterstützt mathematische Ausdrücke in eckigen Klammern: d. H. G0 X[left-5] Y[bottom-5]
-- Verfügbare Variablen: left, right, top, bottom, width, height.. .. (und mehr)
+- Unterstützt mathematische Ausdrücke in eckigen Klammern: z.B. G0 X[left-5] Y[bottom-5]
+- Verfügbare Variablen: left, right, top, bottom, width, height.. (und mehr)
 
-Siehe https://lasergrbl.com/usage/custom-buttons/</value>
+Siehe https://lasergrbl.com/usage/custom-buttons/
+
+</value>
   </data>
   <data name="LblType.Text" xml:space="preserve">
     <value>Art:</value>

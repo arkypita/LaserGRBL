@@ -121,7 +121,7 @@
     <value>OK</value>
   </data>
   <data name="CbDoNotShow.Text" xml:space="preserve">
-    <value>nicht mehr anzeigen</value>
+    <value>Nicht mehr anzeigen</value>
   </data>
   <data name="LblCause.Text" xml:space="preserve">
     <value>Ursache:</value>
@@ -133,10 +133,11 @@
     <value>LaserGRBL hat ein Problem mit Ihrem Board festgestellt!</value>
   </data>
   <data name="LblBrief.Text" xml:space="preserve">
-    <value>Es scheint, dass grbl bei der Ausführung dieser Jobs Probleme hat. Die Ursachen für diese Situation kann vielfältige Ursachen haben. Bitte lesen Sie die FAQ für Informationen zur Lösung dieses Problems.</value>
+    <value>Es scheint, dass grbl bei der Ausführung dieser Jobs Probleme hat. Die Ursachen für diese Situation kann vielfältige Ursachen haben. Bitte lesen Sie die FAQ für Informationen zur Lösung dieses Problems.
+</value>
   </data>
   <data name="LL.Text" xml:space="preserve">
-    <value>https://lasergrbl.com/faq</value>
+    <value>https://lasergrbl.com/faq/</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Problem erkannt!</value>
