@@ -20,6 +20,8 @@ namespace LaserGRBL.WiFiDiscovery
 {
 	public static class IPAddressHelper
 	{
+
+		public static byte[] pbuff = new byte[] { 1, 2, 3, 4 };
 		private static string AVAIL = "Available";
 
 		[DllImport("iphlpapi.dll", ExactSpelling = true)]
@@ -87,7 +89,7 @@ namespace LaserGRBL.WiFiDiscovery
 		{
 			public string Ping;
 			public string MAC;
-			//public string HostName;
+			public string HostName;
 			public string Telnet;
 
 			public IPAddress IP;
@@ -95,7 +97,7 @@ namespace LaserGRBL.WiFiDiscovery
 
 			internal bool HasData()
 			{
-				return Ping != null || MAC != null /*|| HostName != null*/ || Telnet == AVAIL;
+				return Ping != null || MAC != null || HostName != null || Telnet == AVAIL;
 			}
 		}
 
@@ -109,6 +111,7 @@ namespace LaserGRBL.WiFiDiscovery
 
 			T.Add(Task.Factory.StartNew(() => { rv.Ping = ip.Ping(); }));
 			T.Add(Task.Factory.StartNew(() => { rv.MAC = ip.GetMAC(); }));
+			T.Add(Task.Factory.StartNew(() => { rv.HostName = ip.GetHostName(); }));
 			T.Add(Task.Factory.StartNew(() => { rv.Telnet = ip.Telnet(port); }));
 
 			Task.WaitAll(T.ToArray(), token);
@@ -131,6 +134,24 @@ namespace LaserGRBL.WiFiDiscovery
 					return string.Join(":", str);
 				}
 			}
+			return null;
+		}
+
+		private static string GetHostName(this IPAddress ip)
+		{
+			try
+			{
+				IPHostEntry entry = Dns.GetHostEntry(ip);
+				if (entry != null)
+					return entry.HostName;
+			}
+			catch (SocketException ex)
+			{
+				//unknown host or
+				//not every IP has a name
+				//log exception (manage it)
+			}
+
 			return null;
 		}
 
@@ -195,7 +216,9 @@ namespace LaserGRBL.WiFiDiscovery
 		private static string Ping(this IPAddress ip)
 		{
 			Ping P = new Ping();
-			PingReply reply = P.Send(ip, 2000);
+
+			PingOptions PO = new PingOptions(16, true);
+			PingReply reply = P.Send(ip, 5000, pbuff, PO);
 
 			if (reply.Status == IPStatus.Success)
 				return $"{reply.RoundtripTime}ms";
@@ -213,7 +236,7 @@ namespace LaserGRBL.WiFiDiscovery
 		{
 			return BitConverter.ToUInt32(ip.GetAddressBytes(), 0);
 		}
-		public static void ScanIP(Action<IPAddress, ScanResult> callback, Action<int, int> progress, CancellationToken ct, int port, IPAddress paramIP = null)
+		public static void ScanIP(Action<IPAddress, ScanResult> callback, Action<int, int, int> progress, CancellationToken ct, int port, IPAddress paramIP = null)
 		{
 			int count = 0;
 
@@ -229,35 +252,36 @@ namespace LaserGRBL.WiFiDiscovery
 			if (localMask == null)
 				throw new Exception(string.Format("Can't find subnet mask for IP {0}", localIP));
 
-			//var localMac = localIP.ScanIP(ct);
-			//Debug.WriteLine(string.Format("Local IP={0}, Mask={1}, Mac={2}", localIP.ToString(), localMask.ToString(), localMac));
+			IPSegment segment = new IPSegment(localIP, localMask);
+			segment.FindRespondingHost(progress, ct);
 
-			var segment = new IPSegment(localIP, localMask);
-			Debug.WriteLine(string.Format("Number of IPs={0}, NetworkAddress={1}, Broardcast={2}", segment.NumberOfIPs, segment.NetworkAddress, segment.BroadcastAddress));
-
-			progress.Invoke(0, (int)segment.NumberOfIPs);
+			progress.Invoke(1, 0, segment.HostToScan.Count);
 
 			ParallelOptions po = new ParallelOptions();
 			po.CancellationToken = ct;
 			po.MaxDegreeOfParallelism = 32;//Environment.ProcessorCount;
-			
+
 			try
 			{
-				Parallel.ForEach<IPAddress>(segment.Hosts(), po, (ip) =>
+				if (!ct.IsCancellationRequested)
 				{
-					//Debug.WriteLine("Scanning " + ip.ToString());
+					Parallel.ForEach<IPAddress>(segment.HostToScan, po, (ip) =>
+					{
+						if (!ct.IsCancellationRequested)
+						{
+							ScanResult rv = ip.ScanIP(port, ct);
 
-					ScanResult rv = ip.ScanIP(port, ct);
+							Interlocked.Increment(ref count);
+							progress.Invoke(1, count, segment.HostToScan.Count);
 
-					Interlocked.Increment(ref count);
-					progress.Invoke(count, (int)segment.NumberOfIPs);
+							if (rv.HasData())
+								callback.Invoke(ip, rv);
 
-					if (rv.HasData())
-						callback.Invoke(ip, rv);
-
-					if (po.CancellationToken != null)
-						po.CancellationToken.ThrowIfCancellationRequested();
-				});
+							if (po.CancellationToken != null)
+								po.CancellationToken.ThrowIfCancellationRequested();
+						}
+					});
+				}
 			}
 			catch (OperationCanceledException e)
 			{
@@ -301,43 +325,76 @@ namespace LaserGRBL.WiFiDiscovery
 		private UInt32 mask;
 		private UInt32 networkAddress;
 		private UInt32 broadcastAddress;
+
+		private List<IPAddress> mAllHost;
+		private List<IPAddress> mRespondingHost;
+
+
 		public IPSegment(IPAddress ip, IPAddress mask)
 		{
 			this.ip = ip.ToUInt32();
 			this.mask = mask.ToUInt32();
 			networkAddress = this.ip & this.mask;
 			broadcastAddress = networkAddress + ~this.mask;
+
+			mAllHost = new List<IPAddress>();
+			uint net = networkAddress.ReverseBytes();
+			uint broad = broadcastAddress.ReverseBytes();
+			for (uint host = net + 1; host < broad; host++)
+				mAllHost.Add(host.ReverseBytes().ToIPAddress());
 		}
-		public UInt32 NumberOfIPs
+
+		public IPAddress NetworkAddress => networkAddress.ToIPAddress();
+		public IPAddress BroadcastAddress => broadcastAddress.ToIPAddress();
+
+		//public List<IPAddress> AllHost => mAllHost;
+		public List<IPAddress> HostToScan => mRespondingHost != null ? mRespondingHost : mAllHost;
+
+		private int mRespCount;
+		public void FindRespondingHost(Action<int, int, int> progress, CancellationToken ct)
 		{
-			get
+			mRespCount = 0;
+			mRespondingHost = new List<IPAddress>();
+			progress(0, 0, mAllHost.Count);
+			SpinWait wait = new SpinWait();
+
+			PingOptions PO = new PingOptions(16, true);
+
+			for (int i = 0; i < mAllHost.Count && !ct.IsCancellationRequested; i++)
 			{
-				return ~(mask.ReverseBytes()) - 1;
+				Ping P = new Ping();
+				P.PingCompleted += PingCompleted;
+				P.SendAsync(mAllHost[i], 5000, IPAddressHelper.pbuff, PO);
+				if (i % 16 == 1)
+					Thread.Sleep(100);
+			}
+
+			while (mRespCount < mAllHost.Count && !ct.IsCancellationRequested)
+			{
+				progress(0, mRespCount, mAllHost.Count);
+				wait.SpinOnce();
+			}
+
+			progress(0, mRespCount, mAllHost.Count);
+		}
+
+		private void PingCompleted(object sender, PingCompletedEventArgs e)
+		{
+			Ping P = sender as Ping;
+			try
+			{
+				if (e.Reply.Status == IPStatus.Success)
+					mRespondingHost.Add(e.Reply.Address);
+			}
+			finally 
+			{
+				lock(this)
+					mRespCount++;
+
+				P.PingCompleted -= PingCompleted;
+				P.Dispose();
 			}
 		}
 
-		public IPAddress NetworkAddress
-		{
-			get
-			{
-				return networkAddress.ToIPAddress();
-			}
-		}
-		public IPAddress BroadcastAddress
-		{
-			get
-			{
-				return broadcastAddress.ToIPAddress();
-			}
-		}
-		public IEnumerable<IPAddress> Hosts()
-		{
-			var net = networkAddress.ReverseBytes();
-			var broad = broadcastAddress.ReverseBytes();
-			for (var host = net + 1; host < broad; host++)
-			{
-				yield return host.ReverseBytes().ToIPAddress();
-			}
-		}
 	}
 }

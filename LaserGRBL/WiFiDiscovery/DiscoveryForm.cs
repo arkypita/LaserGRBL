@@ -69,9 +69,9 @@ namespace LaserGRBL.WiFiDiscovery
 			else
 			{
 				if (C.IsCancellationRequested)
-					LblProgress.Text = "The scan was aborted";
+					LblProgress.Text = "Scan aborted";
 				else
-					LblProgress.Text = "The scan was finished";
+					LblProgress.Text = "Scan finished";
 
 				BtnScan.Visible = true;
 				BtnStop.Visible = false;
@@ -93,21 +93,24 @@ namespace LaserGRBL.WiFiDiscovery
 			}
 			else
 			{
-				ListViewItem LVA = new ListViewItem(new string[] { ip.ToString(), result.MAC, result.Ping, result.Telnet });
+				ListViewItem LVA = new ListViewItem(new string[] { result.IP.ToString(), result.HostName, result.MAC, result.Ping, result.Telnet });
 				LVA.Tag = result;
 				LV.Items.Add(LVA);
 			}
 		}
 
-		void ScanProgress(int count, int total)
+		void ScanProgress(int fase, int count, int total)
 		{
 			if (InvokeRequired)
 			{
-				BeginInvoke((MethodInvoker)(() => { ScanProgress(count, total); }));
+				BeginInvoke((MethodInvoker)(() => { ScanProgress(fase, count, total); }));
 			}
 			else
 			{
-				LblProgress.Text = $"Progress: {count}/{total}";
+				if (fase == 0)
+					LblProgress.Text = $"Fast scan: {count}/{total}";
+				if (fase == 1)
+					LblProgress.Text = $"Resolve: {count}/{total}";
 			}
 		}
 

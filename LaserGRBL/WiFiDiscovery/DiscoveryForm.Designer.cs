@@ -47,6 +47,7 @@
 			this.ChMAC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ChPing = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ChConnection = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.ChHostName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel5.SuspendLayout();
@@ -243,6 +244,7 @@
 			// 
 			this.LV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ChIP,
+            this.ChHostName,
             this.ChMAC,
             this.ChPing,
             this.ChConnection});
@@ -262,12 +264,12 @@
 			// ChIP
 			// 
 			this.ChIP.Text = "IP Address";
-			this.ChIP.Width = 150;
+			this.ChIP.Width = 100;
 			// 
 			// ChMAC
 			// 
 			this.ChMAC.Text = "MAC Address";
-			this.ChMAC.Width = 120;
+			this.ChMAC.Width = 100;
 			// 
 			// ChPing
 			// 
@@ -276,7 +278,12 @@
 			// ChConnection
 			// 
 			this.ChConnection.Text = "Connection";
-			this.ChConnection.Width = 160;
+			this.ChConnection.Width = 130;
+			// 
+			// ChHostName
+			// 
+			this.ChHostName.Text = "Host Name";
+			this.ChHostName.Width = 120;
 			// 
 			// DiscoveryForm
 			// 
@@ -326,5 +333,6 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.NumericUpDown UdPort;
+		private System.Windows.Forms.ColumnHeader ChHostName;
 	}
 }
