@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnDPI.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAASXSURBVEhLrZVt
+        wgAADsIBFShKgAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAASXSURBVEhLrZVt
         UFRVGMd32ru7OjXT1JTThyKEWt6SonQIhxBaZF/u7rKAu8suyJu7oEOCu7wvlEGgfig1m/rQZB9smsk+
         WAwY4O4qllOSJVmZJKI5pGIBM8UM8v7vnHPvcjeyb56Z/9zzPPec8/zuOc95rkxm7DPJ+MCkzBC8c+8V
         +H/xgQkZ7+dltKPIvwhl4RUot16Dsug6lMWjUJbcILoFVekY0W2oyv4QRfrEVhK/suQmGUvG0fF03tar
@@ -258,5 +258,20 @@ Kattintson további információkért ...</value>
   </data>
   <data name="LblBorderTracing.Text" xml:space="preserve">
     <value>Határsebesség</value>
+  </data>
+  <data name="BtnCenter.ToolTip" xml:space="preserve">
+    <value>Kép vízszintes és függőleges középre igazítása (nulla a középpontban)</value>
+  </data>
+  <data name="BtnPSHelper.ToolTip" xml:space="preserve">
+    <value>Lézer és Anyagtábla megnyitása</value>
+  </data>
+  <data name="LblLaserMode.Text" xml:space="preserve">
+    <value>Lézer mód</value>
+  </data>
+  <data name="LblMinPerc.Text" xml:space="preserve">
+    <value>0%</value>
+  </data>
+  <data name="LblMaxPerc.Text" xml:space="preserve">
+    <value>100%</value>
   </data>
 </root>

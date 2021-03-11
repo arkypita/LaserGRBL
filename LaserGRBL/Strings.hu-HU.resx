@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxAbortProgramConfirm" xml:space="preserve">
     <value>Megszakítja az aktuális munkát?</value>
@@ -216,10 +216,10 @@ Felül szeretné írni a konfigurációt?</value>
     <value>Egyéni gomb eltávolítása</value>
   </data>
   <data name="DirectionDiagonal" xml:space="preserve">
-    <value>Átlós (old)</value>
+    <value>Átlós (régi)</value>
   </data>
   <data name="DirectionHorizontal" xml:space="preserve">
-    <value>Vízszintes (old)</value>
+    <value>Vízszintes (régi)</value>
   </data>
   <data name="DirectionNone" xml:space="preserve">
     <value>Egyik sem</value>
@@ -327,5 +327,82 @@ Mindenképp folytatja?</value>
   </data>
   <data name="UnsupportedFiletype" xml:space="preserve">
     <value>Ez a fájltípis nem támogatott.</value>
+  </data>
+  <data name="WarnSoftLimitOOB" xml:space="preserve">
+    <value>Olyan méretet és eltolást állított be, amely nagyobb, mint a beállított munkaterület a gravírozón ({0}mm x {1}mm).
+Grbl paraméterek: $130 és $131
+
+Ez soft-limit hibát eredményezhet vagy akár a tengelyek végének ütközhet a gép. Biztos. hogy megfelelően írta be az adatokat?</value>
+  </data>
+  <data name="WarnSoftLimitNS" xml:space="preserve">
+    <value>Negatív eltolást állított be, de a gravírozó pozitív koordináta-rendszert használ soft-limit riasztás engedélyezésével ($20=1).
+
+Ez soft-limit hibát eredményezhet. Biztos, hogy megfelelően adta meg az értékeket?</value>
+  </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>Középvonal beállítás nem kompatibilis a PC-jével.
+64 bites OS szüksélges!</value>
+  </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>Sorról-sorra beállítás nem kompatibilis a gravírozójával vagy beállításaival. PWM-támogatott lézer szükséges, valamint PWM támogatás engedélyezése a LaserGRBL beállításaiban.</value>
+  </data>
+  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
+    <value>
+Most nem lehet új fájlt megnyitni.</value>
+  </data>
+  <data name="WarnSoftLimitTitle" xml:space="preserve">
+    <value>Munka határainak beállítása.</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>Figyelmeztetés</value>
+  </data>
+  <data name="DirectionNewCross" xml:space="preserve">
+    <value>Keresztező kitöltés</value>
+  </data>
+  <data name="DirectionNewDiagonal" xml:space="preserve">
+    <value>Átlós</value>
+  </data>
+  <data name="DirectionNewDiagonalCross" xml:space="preserve">
+    <value>Átlós keresztező kitöltés</value>
+  </data>
+  <data name="DirectionNewDiagonalGrid" xml:space="preserve">
+    <value>Átlós rács</value>
+  </data>
+  <data name="DirectionNewGrid" xml:space="preserve">
+    <value>Rács</value>
+  </data>
+  <data name="DirectionNewHorizontal" xml:space="preserve">
+    <value>Vízszintes</value>
+  </data>
+  <data name="DirectionNewInsetFilling" xml:space="preserve">
+    <value>Belső kitöltés</value>
+  </data>
+  <data name="DirectionNewReverseDiagonal" xml:space="preserve">
+    <value>Átlós fordított</value>
+  </data>
+  <data name="DirectionNewSquares" xml:space="preserve">
+    <value>Négyzetek</value>
+  </data>
+  <data name="DirectionNewVertical" xml:space="preserve">
+    <value>Függőleges</value>
+  </data>
+  <data name="DirectionNewZigZag" xml:space="preserve">
+    <value>Cikk-cakk</value>
+  </data>
+  <data name="WarnWrongLaserMode" xml:space="preserve">
+    <value>"M4 Dinamikus Lézer Erősség Mód" be lett állítva, de úgy tűnik, a gravírozója nem támogatja.
+Csak az 1.1 vagy újabb grbl verziójú gravírozóknál használható az M4 beállítás, ha a "lézer mód" engedélyezve van ($31=1).</value>
+  </data>
+  <data name="WarnWrongLaserModeTitle" xml:space="preserve">
+    <value>Figyelmeztetés</value>
+  </data>
+  <data name="DirectionNewHilbert" xml:space="preserve">
+    <value>Hilbert</value>
+  </data>
+  <data name="DitheringOptions" xml:space="preserve">
+    <value>Színkonverzió beállítások</value>
+  </data>
+  <data name="Line2LineOptions" xml:space="preserve">
+    <value>Sorról-sorra beállítások</value>
   </data>
 </root>
