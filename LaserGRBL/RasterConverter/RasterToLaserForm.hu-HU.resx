@@ -112,16 +112,16 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxAAAAsQAa0jvXUAAAbfSURBVEhLfdULUJNXFgDgs+uO
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACw8AAAsPAZL5A6UAAAbfSURBVEhLfdULUJNXFgDgs+uO
         49rZXXfp+qjazi52tTtdSy11p62yWrqjq+VRRN5MSIBAgPIKBJZnFAIrCBteEggYUSIgiCCglDrUBQwS
         AREVBCmPEB55EhJDeEjO3lCHmQ7oP/PN/Scz95xzb869P2Rm8t8oI6MQeDkFWwTFlzZvC5vaDW4vqvZG
         TwP7SpfZ6avXNzlUVoBjRdVrQWlp2RuVlVVA3oXi801luQKb1G4AZ6P9kZg+YOffrfHNancPymiHwDcA
@@ -157,7 +157,7 @@
   <data name="BtFlipH.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxAAAAsQAa0jvXUAAAa5SURBVEhLpZR7UJNXFsDP7Ky7
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACw8AAAsPAZL5A6UAAAa5SURBVEhLpZR7UJNXFsDP7Ky7
         2+5acIfZrg67W3GHah8ottMqrWPZKtpRgYABeZNACK8ASYCEvMRIgaoEebjYVnmJaAMUa0VQYUcFdRW2
         O+oWwVLEJITEQB5fXkQCZ2+y3dmdnX203T9+c8+93/fd3z3n3PkgNzePkO8ZV+TkFAzQ6fGC5GTmMwKB
         mKzxgMXKguLiEigqkkB2NhfIO8DnC6GgoAiysvLJupg8F3kRCCTkGy5wucUglR4k81IgL+V5SUhg+B46
@@ -326,7 +326,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEAAACxABrSO9dQAAAkFJREFUSEtj+P//P00x
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALDwAACw8BkvkDpQAAAkFJREFUSEtj+P//P00x
         VkFqYhRORmpyfVtzw2xKsJeHmzWymSgWzJg6cd/7Ny/+k4tXLl/yPyjALxXZTKpZcOjA3v+WFub4LZg1
         bTJZFjx7fP8/Dw/PfwuQBYH+eCyYPoVkC969fv5fRVkZaBID2IJgvBbMIN0CD3c3sOFwC4ICcFswm0QL
         Ottb4IYTacFUDAuuXr7wv6un579vYMh/FU19MA3ib92y6T8TExOGBSHBgfgsmIZiAcjwjOzc/3IqWihY
@@ -672,5 +672,17 @@
   </data>
   <data name="LAdaptiveQuality.Text" xml:space="preserve">
     <value>Adaptív minőség</value>
+  </data>
+  <data name="GbPassthrough.Text" xml:space="preserve">
+    <value>Közvetítő beállítások</value>
+  </data>
+  <data name="TbPassthroughInfo.Text" xml:space="preserve">
+    <value>A Közvetítő mód érintetlenül hagyja a képet, bárminemű LaserGRBL általi feldolgozás nélkül. A kép vonaltól vonalig lesz gravírozva, vízszintesen, a DPI felbontásnak és a fájl információban szereplő képméretnek megfelelően.</value>
+  </data>
+  <data name="RbNoProcessing.Text" xml:space="preserve">
+    <value>Közvetítés</value>
+  </data>
+  <data name="RbNoProcessing.ToolTip" xml:space="preserve">
+    <value>Nincs feldolgozás (közvetítés)</value>
   </data>
 </root>
