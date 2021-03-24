@@ -1065,18 +1065,7 @@
     <EmbeddedResource Include="IssueDetectorForm.zh-TW.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LicenseForm.de.resx">
-      <DependentUpon>LicenseForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LicenseForm.el-GR.resx">
-      <DependentUpon>LicenseForm.cs</DependentUpon>
-      <Generator>ResXFileCodeGeneratorEx</Generator>
-      <LastGenOutput>LicenseForm.el-GR.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="LicenseForm.resx">
-      <DependentUpon>LicenseForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LicenseForm.zh-TW.resx">
       <DependentUpon>LicenseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.cs-CZ.resx">
