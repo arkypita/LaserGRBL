@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Mégsem</value>
@@ -126,7 +126,7 @@
   <data name="TpHardware.Text" xml:space="preserve">
     <value>Protokoll</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>613, 52</value>
   </data>
@@ -662,5 +662,54 @@ Jelölje be az aktiváláshoz.</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Beállítások</value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>Soft Reset [Ctrl-X]</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>Hard Reset [DTR+RTS]</value>
+  </data>
+  <data name="CbDisableSkip.Text" xml:space="preserve">
+    <value>G0 gyors átugrás kikapcsolása</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>Alapértelmezetten a LaserGRBL G0 - gyors mozgás - parancsot használ a fehér területek átugrására. Ez felgyorsítja a gravírozási folyamatot, de pontatlan pozícionálást eredményezhet, családást keltő végeredménnyel. Általában javítható a végeredmény a helyes maximális gyorsulás és sebesség beállításával ($ 120,121,122 és $ 110,111,112) a grbl beállításokban
+
+Ha kikapcsolja, a LaserGRBL a G1 lineáris mozgást fogja használni a munka beállított sebességével, ami eredménye képpen a gravírozási folyamat azonos sebességen fog végbemenni. Ez lelassítja a folyamatot, de nagyban javítja a végeredményt, ha más beállítás nem segít.</value>
+  </data>
+  <data name="CbDisableBoundWarn.Text" xml:space="preserve">
+    <value>Határfigyelmeztetés kikapcsolása</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>A LaserGRBL figyelmeztetni fogja, ha olyan munkát hoz létre, amely nagyobb, mint a gravírozója munkaterülete.
+Állítsa be, ha nem szeretné ezt a biztonsági figyelmeztetést.</value>
+  </data>
+  <data name="CbClickNJog.Text" xml:space="preserve">
+    <value>Katt-és-menj</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>A katt-és-menj funkció engedélyezésével dupla kattintással az előnézeten a gép a kattintott pozícióra mozdul.</value>
+  </data>
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+    <value>Ortur felhasználók: Az Ortur Firmware (egészen a 137-es verzióig) hibásan folytatja a megkezdett munkát, ezáltal az Automata hűtés nem működik megfelelően.
+Kérem, ne használja az Automatikus hűtés funkciót, amíg egy javított firmware el nem készül.</value>
+  </data>
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="warningSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\warning.wav</value>
+  </data>
+  <data name="fatalSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\fatal.wav</value>
+  </data>
+  <data name="connectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\connect.wav</value>
+  </data>
+  <data name="disconnectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\disconnect.wav</value>
+  </data>
+  <data name="successSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\success.wav</value>
   </data>
 </root>
