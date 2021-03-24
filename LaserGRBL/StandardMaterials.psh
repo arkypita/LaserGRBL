@@ -805,4 +805,155 @@
     <Speed>400</Speed>
     <Cycles>12</Cycles>
   </Materials>
+  <Materials>
+    <id>57565df1-c0fd-4b43-97bd-e027985fd309</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 PRO</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>suggested 8 lines/mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>ae2a08dc-0318-4674-89ae-48f5f22c6b05</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 PRO</Model>
+    <Material>Hardwood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>suggested 8 lines/mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>616a8add-ad2a-46eb-a903-f37107cfa3db</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 PRO</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>suggested 8 lines/mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>c8b95ef9-a63f-4b01-b7cb-727661f6057f</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 PRO</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>suggested 8 lines/mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>69d9bdcf-8bec-4cb1-9b71-756a165d2acd</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 PRO</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>suggested 8 lines/mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>f8f5c283-f2cf-4cf4-bae4-e83cedb38482</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 PRO</Model>
+    <Material>Mirrors</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>suggested 8 lines/mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>8e7cd000-6c1f-4616-ab7d-9824b615e01e</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 PRO</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>suggested 8 lines/mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>50a69914-ac1c-4742-b3a4-5f75163f3f4d</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 PRO</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>3</Cycles>
+    <Remarks>suggested 15 lines/mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>5b86167d-4e8b-4eb6-8bf9-8b21926cbcf7</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 PRO</Model>
+    <Material>Basswood</Material>
+    <Thickness>2.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>450</Speed>
+    <Cycles>3</Cycles>
+  </Materials>
+  <Materials>
+    <id>c309aa0c-bc1a-405e-8ede-80d3b2000fda</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 PRO</Model>
+    <Material>Hardwood</Material>
+    <Thickness>6mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>150</Speed>
+    <Cycles>3</Cycles>
+  </Materials>
+  <Materials>
+    <id>a3f183a6-a426-4463-8572-e86f24907a04</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 PRO</Model>
+    <Material>Bamboo</Material>
+    <Thickness>2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>460</Speed>
+    <Cycles>3</Cycles>
+  </Materials>
+  <Materials>
+    <id>fb246fdd-0a51-47c1-815b-5c575c360983</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 PRO</Model>
+    <Material>Acrylic</Material>
+    <Thickness>2.8mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>310</Speed>
+    <Cycles>3</Cycles>
+  </Materials>
+  <Materials>
+    <id>3ce77e7d-b71f-4330-92d0-5eeb76c0d0d1</id>
+    <Visible>true</Visible>
+    <Model>Atomstack A5 PRO</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>0.2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1200</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
 </MaterialDB>
