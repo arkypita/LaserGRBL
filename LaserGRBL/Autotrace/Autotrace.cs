@@ -70,7 +70,7 @@ namespace LaserGRBL
 		{
 			ProcessStartInfo procStartInfo = new ProcessStartInfo();
 
-			procStartInfo.FileName = ".\\Autotrace\\autotrace.exe";
+			procStartInfo.FileName = System.IO.Path.Combine(GrblCore.ExePath, "Autotrace\\autotrace.exe");
 			procStartInfo.Arguments = args;
 			procStartInfo.RedirectStandardOutput = true;
 			procStartInfo.UseShellExecute = false;

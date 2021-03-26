@@ -44,7 +44,8 @@ namespace LaserGRBL
 		{
 			CbFirmware.BeginUpdate();
 			CbFirmware.Items.Clear();
-			foreach (string filename in System.IO.Directory.GetFiles(".\\Firmware\\"))
+			string FirmwareFolder = System.IO.Path.Combine(GrblCore.ExePath, "Firmware\\");
+			foreach (string filename in System.IO.Directory.GetFiles(FirmwareFolder))
 			{
 				if (filename.ToLower().EndsWith(".hex"))
 					CbFirmware.Items.Add(new Firmware(System.IO.Path.GetFullPath(filename)));

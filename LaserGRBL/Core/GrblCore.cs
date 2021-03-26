@@ -2302,10 +2302,7 @@ namespace LaserGRBL
 
 		public static string ExePath
 		{
-			get
-			{
-				return AppDomain.CurrentDomain.BaseDirectory;
-			}
+			get { return System.IO.Path.GetDirectoryName(Application.ExecutablePath); }
 		}
 
 		private static string mTempPath;
