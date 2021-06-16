@@ -773,6 +773,7 @@
     <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.resx">
       <DependentUpon>DiscoveryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CSV\setting_codes.ortur.v1.5.x.csv" />
     <None Include="Resources\flag_greece.png" />
     <Content Include="Sound\connect.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -800,7 +801,7 @@
     <EmbeddedResource Include="ConnectLogForm.tr-TR.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CSV\setting_codes.ortur.v1.0.csv" />
+    <EmbeddedResource Include="CSV\setting_codes.ortur.v1.4.x.csv" />
     <None Include="StandardButtons.zbn">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

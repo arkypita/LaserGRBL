@@ -35,8 +35,10 @@ namespace LaserGRBL
 			try
 			{
 				string ResourceName;
-				if (value.IsOrtur)
-					ResourceName = String.Format("LaserGRBL.CSV.setting_codes.ortur.v1.0.csv"); 
+				if (value.IsOrtur && value.OrturFWVersionNumber >= 150)
+					ResourceName = String.Format("LaserGRBL.CSV.setting_codes.ortur.v1.5.x.csv");
+				else if (value.IsOrtur)
+					ResourceName = String.Format("LaserGRBL.CSV.setting_codes.ortur.v1.4.x.csv"); 
 				else
 					ResourceName = String.Format("LaserGRBL.CSV.setting_codes.v{0}.{1}.csv", value.Major, value.Minor);
 

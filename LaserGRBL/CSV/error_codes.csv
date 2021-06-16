@@ -32,3 +32,4 @@
 35,Invalid gcode ID:35,G2 and G3 arcs require at least one in-plane offset word.
 36,Invalid gcode ID:36,Unused value words found in block.
 37,Invalid gcode ID:37,G43.1 dynamic tool length offset is not assigned to configured tool length axis.
+18,Emergency stop engaged,Please rotate emergency stop button to release.

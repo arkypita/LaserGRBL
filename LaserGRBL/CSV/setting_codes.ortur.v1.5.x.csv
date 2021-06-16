@@ -1,0 +1,71 @@
+$-Code, Setting, Units, Setting Description
+0,Step pulse time,microseconds,Sets time length per step. Minimum 3 microseconds.
+1,Step idle delay,milliseconds,Sets a short hold delay when stopping to let dynamics settle before disabling steppers. Value 255 keeps motors enabled.
+2,Step pulse invert,mask,Inverts the step signals (active low).
+3,Step direction invert,mask,Inverts the direction signals (active low).
+4,Invert step enable pin,boolean,Inverts the stepper driver enable signals (active low). If the stepper drivers shares the same enable signal only X is used.
+5,Invert limit pins,mask,Inverts the axis limit input signals.
+6,Invert probe pin,boolean,Inverts the probe input pin signal.
+10,Status report options,mask,Specifies optional data included in status reports.
+11,Junction deviation,mm,Sets how fast Grbl travels through consecutive motions. Lower value slows it down.
+12,Arc tolerance,mm,Sets the G2 and G3 arc tracing accuracy based on radial error. Beware: A very small value may effect performance.
+13,Report in inches,boolean,Enables inch units when returning any position and rate value that is not a settings value.
+14,Invert control pins,mask,Inverts the control signals (active low).
+15,Invert coolant pins,mask,Inverts the coolant and mist signals (active low).
+16,Invert spindle signals,mask,Inverts the spindle on counterclockwise and PWM signals (active low).
+17,Pullup disable control pins,mask,Disable the control signals pullup resistors. Potentially enables pulldown resistor if available.
+18,Pullup disable limit pins,mask,Disable the limit signals pullup resistors. Potentially enables pulldown resistor if available.
+19,Pullup disable probe pin,boolean,Disable the probe signal pullup resistor. Potentially enables pulldown resistor if available.
+20,Soft limits enable,boolean,Enables soft limits checks within machine travel and sets alarm when exceeded. Requires homing.
+21,Hard limits enable,mask,When enabled immediately halts motion and throws an alarm when switch is triggered. In strict mode only homing is possible after switch is triggered.
+22,Homing cycle enable,boolean,Enables homing cycle. Requires limit switches on all axes.
+23,Homing direction invert,mask,Homing searches for a switch in the positive direction. Set axis bit to search in negative direction.
+24,Homing locate feed rate,mm/min,Feed rate to slowly engage limit switch to determine its location accurately.
+25,Homing search seek rate,mm/min,Seek rate to quickly find the limit switch before the slower locating phase.
+26,Homing switch debounce delay,milliseconds,Sets a short delay between phases of homing cycle to let a switch debounce.
+27,Homing switch pull off distance,mm,Retract distance after triggering switch to disengage it. Homing will fail if switch isn't cleared.
+28,G73 Retract distance,mm,G73 retract distance (for chip breaking drilling).
+29,Pulse delay,microseconds,Step pulse delay.
+30,Maximum spindle speed,RPM,Maximum spindle speed. Sets PWM to maximum duty cycle.
+31,Minimum spindle speed,RPM,Minimum spindle speed. Sets PWM to minimum duty cycle.
+32,Mode of operation,integer,Laser mode: consecutive G1/2/3 commands will not halt when spindle speed is changed. Lathe mode: allows use of G7/G8/G96 and G97.
+33,PWM frequency,Hz,PWM frequency.
+34,PWM off value,percent,PWM off value in percent (duty cycle).
+35,PWM min value,percent,PWM min value in percent (duty cycle).
+36,PWM max value,percent,PWM max value in percent (duty cycle).
+37,Steppers deenergize ,mask,Specifies which steppers not to disable when stopped.
+39,Enable legacy RT commands,boolean,Enables "normal" processing of ? ! and ~ characters when part of $setting or comment. If disabled then they are added to the input string instead.
+40,Limit jog commands,boolean,Limit jog commands to machine limits for homed axes.
+41,Safety Door,boolean,Enable Safety Door.
+42,Safety Door,mask,Define which axis that performs the parking motion.
+43,Homing passes,integer,Number of homing passes. Minimum 1 maximum 128.
+44,Axes homing,mask,Axes to home in first pass.
+45,Axes homing,mask,Axes to home in second pass.
+46,Axes homing,mask,Axes to home in third pass.
+56,Safety Door,boolean,Spindle pull out and plunge distance in mm. Incremental distance.
+57,Safety Door,integer,Pull out/plunge slow feed rate in mm/min.
+58,Safety Door,integer,Parking axis target. In mm  as machine coordinate
+59,Safety Door,integer,Parking fast rate after pull out in mm/min.
+60,Restore overrides,boolean,Restore overrides to default values at program end.
+61,Ignore door when idle,boolean,Enable this if it is desirable to open the safety door when in IDLE mode (eg. for jogging).
+62,Sleep enable,boolean,Enable sleep mode.
+63,Disable laser,boolean,Disable laser during hold.
+64,Force init alarm,boolean,Starts Grbl in alarm mode after a cold reset.
+65,Check limits at init,boolean,If limit switches are engaged after reset this forces Grbl to start in alarm mode.
+100,X-axis travel resolution,step/mm,X-axis travel resolution in steps per millimeter.
+101,Y-axis travel resolution,step/mm,Y-axis travel resolution in steps per millimeter.
+102,Z-axis travel resolution,step/mm,Z-axis travel resolution in steps per millimeter.
+110,X-axis maximum rate,mm/min,X-axis maximum rate. Used as G0 rapid rate.
+111,Y-axis maximum rate,mm/min,Y-axis maximum rate. Used as G0 rapid rate.
+112,Z-axis maximum rate,mm/min,Z-axis maximum rate. Used as G0 rapid rate.
+120,X-axis acceleration,mm/sec^2,X-axis acceleration. Used for motion planning to not exceed motor torque and lose.
+121,Y-axis acceleration,mm/sec^2,Y-axis acceleration. Used for motion planning to not exceed motor torque and lose.
+122,Z-axis acceleration,mm/sec^2,Z-axis acceleration. Used for motion planning to not exceed motor torque and lose.
+130,X-axis maximum travel,mm,Maximum X-axis travel distance from homing switch. Determines valid machine space for.
+131,Y-axis maximum travel,mm,Maximum Y-axis travel distance from homing switch. Determines valid machine space for.
+132,Z-axis maximum travel,mm,Maximum Z-axis travel distance from homing switch. Determines valid machine space for.
+259,Ortur Flame Sensor Debug,boolean,Flame Sensor Debug Mode (On/OFF)
+260,Ortur Flame Sensor Delta,integer,Flame Sensor Trigger Delta Value
+261,Ortur Flame Sensor Count,integer,Flame Sensor Trigger Count Treshold
+262,Ortur Gshock Sensor Threshold,integer,Gshock Sensor Treshold
+263,Ortur Auto Power Off,minutes,Auto Power Off in Minutes
