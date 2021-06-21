@@ -59,12 +59,20 @@ namespace LaserGRBL.SvgConverter
 		private static int rapidnum = 0;
 		private static bool SupportPWM = true;
 
-		public static void setup()
+		public static void setup(GrblCore core)
 		{
+			SupportPWM = Settings.GetObject("Support Hardware PWM", true); //If Support PWM use S command instead of M3-M4 / M5
+
 			setDecimalPlaces(mDecimalPlaces);
 
 			gcodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
-			gcodeSpindleSpeed = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
+			
+			if (SupportPWM)
+				gcodeSpindleSpeed = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
+			else
+				gcodeSpindleSpeed = (float)core.Configuration.MaxPWM;
+
+
 			// Smoothieware firmware need a value between 0.0 and 1.1
 			if (firmwareType == Firmware.Smoothie)
 				gcodeSpindleSpeed /= 255.0f;

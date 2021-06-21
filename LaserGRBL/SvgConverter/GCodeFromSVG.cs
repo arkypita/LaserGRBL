@@ -65,7 +65,7 @@ namespace LaserGRBL.SvgConverter
 		//private bool fromText = false;
 
 		Regex RemoveInvalidUnicode = new Regex(@"[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-u10FFFF]+", RegexOptions.Compiled);
-		public string convertFromText(string text, bool importMM = false)
+		public string convertFromText(string text, GrblCore core, bool importMM = false)
 		{
 			//fromText = true;
 			importInMM = importMM;
@@ -76,18 +76,18 @@ namespace LaserGRBL.SvgConverter
 			text = RemoveInvalidUnicode.Replace(text, string.Empty);
 			svgCode = XElement.Parse(text, LoadOptions.None);
 
-			return convertSVG(svgCode);
+			return convertSVG(svgCode, core);
 		}
 
-		public string convertFromFile(string file)
+		public string convertFromFile(string file, GrblCore core)
 		{
 			string xml = System.IO.File.ReadAllText(file);
-			return convertFromText(xml, true);
+			return convertFromText(xml, core, true);
 		}
 
-		private string convertSVG(XElement svgCode)
+		private string convertSVG(XElement svgCode, GrblCore core)
 		{
-			gcode.setup();          // initialize GCode creation (get stored settings for export)
+			gcode.setup(core);          // initialize GCode creation (get stored settings for export)
 			gcode.setRapidNum(Settings.GetObject("Disable G0 fast skip", false) ? 1 : 0);
 
 			gcode.PutInitialCommand(gcodeString);

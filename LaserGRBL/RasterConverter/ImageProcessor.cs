@@ -1052,11 +1052,11 @@ namespace LaserGRBL.RasterConverter
 						conf.firmwareType = Settings.GetObject("Firmware Type", Firmware.Grbl);
 
 						if (SelectedTool == Tool.Line2Line || SelectedTool == Tool.Dithering || SelectedTool == Tool.NoProcessing)
-							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf, mAppend);
+							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf, mAppend, mCore);
 						else if (SelectedTool == Tool.Vectorize)
 							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf, mAppend, mCore);
 						else if (SelectedTool == Tool.Centerline)
-							mCore.LoadedFile.LoadImageCenterline(bmp, mFileName, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold, conf, mAppend);
+							mCore.LoadedFile.LoadImageCenterline(bmp, mFileName, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold, conf, mAppend, mCore);
 					}
 
 					if (GenerationComplete != null)
