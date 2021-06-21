@@ -1692,7 +1692,7 @@ NOTE: "Continuous Jog" only work with Grbl v1.1 or later, and require table size
     <value>1</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
-    <value>Some laser diode can heat-up to much if they run for a long time at the highest power. To prevent diode overheating and increase your laser lifetime you can add some automatic cooling-down cycles that insert some pause during engraivng process.
+    <value>Some laser diodes can heat-up to much if they run for a long time at the highest power. To prevent diode overheating and increase your laser lifetime you can add some automatic cooling-down cycles that insert some pause during engraivng process.
 If Auto Cooling is enabled LaserGRBL will send automatic "feed hold" and "job resume" according with ON-OFF timing configuration.</value>
   </data>
   <data name="&gt;&gt;label12.Name" xml:space="preserve">
