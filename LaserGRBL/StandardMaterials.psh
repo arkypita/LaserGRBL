@@ -956,4 +956,120 @@
     <Speed>1200</Speed>
     <Cycles>1</Cycles>
   </Materials>
+  <Materials>
+    <id>b995b754-eed2-4b26-a48f-d01818cff749</id>
+    <Visible>true</Visible>
+    <Model>ScuplFun S6</Model>
+    <Material>Solid Wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>b3b16daa-77f9-463b-ba52-2b46a637ba3b</id>
+    <Visible>true</Visible>
+    <Model>ScuplFun S6</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>f4e347e7-f15d-45b5-b833-efe61a389c60</id>
+    <Visible>true</Visible>
+    <Model>ScuplFun S6</Model>
+    <Material>Mirrors (back)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>35</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>On the back of Mirrors</Remarks>
+  </Materials>
+  <Materials>
+    <id>8605ad4c-4634-41a2-925f-ee56091f1131</id>
+    <Visible>true</Visible>
+    <Model>ScuplFun S6</Model>
+    <Material>Kraft Paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>25</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>0774290d-2c4f-44e3-9f3f-abb88feb4023</id>
+    <Visible>true</Visible>
+    <Model>ScuplFun S6</Model>
+    <Material>Anodised Aluminium</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>better on dark colors</Remarks>
+  </Materials>
+  <Materials>
+    <id>57cc24d5-3b2c-4842-a415-8b4bd372ad68</id>
+    <Visible>true</Visible>
+    <Model>ScuplFun S6</Model>
+    <Material>Acrylic(dark)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>better on dark colors</Remarks>
+  </Materials>
+  <Materials>
+    <id>1ebfb086-41ae-4c8a-b11f-6b7196d606b6</id>
+    <Visible>true</Visible>
+    <Model>ScuplFun S6</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>better on dark colors</Remarks>
+  </Materials>
+  <Materials>
+    <id>067dee6e-99d4-4503-9244-7d0607b2c9e9</id>
+    <Visible>true</Visible>
+    <Model>ScuplFun S6</Model>
+    <Material>Solid Wood</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>6</Cycles>
+    <Remarks>reference value, adjust according to the actual engraving situation</Remarks>
+  </Materials>
+  <Materials>
+    <id>9d9937e5-1cef-482d-9536-2507d8eaaaca</id>
+    <Visible>true</Visible>
+    <Model>ScuplFun S6</Model>
+    <Material>Acrylic (dark)</Material>
+    <Thickness>2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>4</Cycles>
+    <Remarks>reference value, adjust according to the actual engraving situation</Remarks>
+  </Materials>
+  <Materials>
+    <id>950fcbf3-aec8-4109-968d-b91338992bcb</id>
+    <Visible>true</Visible>
+    <Model>ScuplFun S6</Model>
+    <Material>Kraft Paper</Material>
+    <Thickness />
+    <Action>Cut</Action>
+    <Power>80</Power>
+    <Speed>800</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
 </MaterialDB>
