@@ -2759,6 +2759,82 @@ namespace LaserGRBL
 
 		public GrblCore.DetectedIssue LastIssue
 		{ get { return mLastIssue; } }
+
+
+		//private Tools.ElapsedFromEvent crono = new Tools.ElapsedFromEvent();
+
+		//private string LastJobFileName => System.IO.Path.Combine(GrblCore.DataPath, "lastjob.nc");
+		//private string LastPositionFileName => System.IO.Path.Combine(GrblCore.DataPath, "jobprogress.dat");
+
+		//public void LoadFile(GrblFile file)
+		//{
+		//	try
+		//	{
+		//		if (System.IO.File.Exists(LastJobFileName))
+		//			System.IO.File.Delete(LastJobFileName);
+		//		if (file.Count > 0)
+		//			file.SaveProgram(LastJobFileName, false, false, false, 1);
+		//	}
+		//	catch
+		//	{ }
+		//}
+
+		//public void JobBegin()
+		//{
+		//	try
+		//	{
+		//		if (System.IO.File.Exists(LastPositionFileName))
+		//			System.IO.File.Delete(LastPositionFileName);
+
+		//		crono.Start();
+		//		WriteCurrentPosition();
+		//	}
+		//	catch
+		//	{ }
+		//}
+
+		//public void JobEnd()
+		//{
+		//	//try
+		//	//{
+		//	//	if (System.IO.File.Exists(LastPositionFileName))
+		//	//		System.IO.File.Delete(LastPositionFileName);
+		//	//}
+		//	//catch
+		//	//{ }
+		//}
+
+		//public void JobProgress()
+		//{
+		//	try
+		//	{
+		//		if (crono.ElapsedTime > TimeSpan.FromSeconds(10))
+		//		{
+		//			crono.Start();
+		//			WriteCurrentPosition();
+		//		}
+		//	}
+		//	catch
+		//	{ }
+		//}
+
+		//private void WriteCurrentPosition()
+		//{
+		//	using (System.IO.FileStream fs = new System.IO.FileStream(LastPositionFileName, System.IO.FileMode.Create))
+		//	{
+		//		using (System.IO.BinaryWriter w = new System.IO.BinaryWriter(fs))
+		//		{
+		//			int exec = Executed;
+		//			int sent = Sent;
+		//			int target = Target;
+
+		//			w.Write(exec);
+		//			w.Write(sent);
+		//			w.Write(target);
+		//			w.Write(exec ^ sent ^ target ^ 0x55555555); //checksum valid data
+		//		}
+		//	}
+		//}
 	}
 
 	[Serializable]
