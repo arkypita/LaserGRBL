@@ -19,7 +19,6 @@ using System.Drawing.Drawing2D;
 namespace LaserGRBL.UserControls
 {
 
-
 	public class WaitingProgressBar : ColorProgressBar
 	{
 
@@ -27,23 +26,18 @@ namespace LaserGRBL.UserControls
 
 		public WaitingProgressBar() : base()
 		{
-
 			//Chiamata richiesta da Progettazione Windows Form.
 			InitializeComponent();
-
-			//Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent()
 		}
 
 		//UserControl esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
 		protected override void Dispose(bool disposing)
 		{
-			if (disposing) {
+			if (disposing) 
+			{
 				Stop();
+				TIM.Elapsed -= TIM_Elapsed;
 				TIM.Close();
-
-				/*if ((components != null)) {
-					components.Dispose();
-				}*/
 			}
 			base.Dispose(disposing);
 		}
@@ -54,19 +48,7 @@ namespace LaserGRBL.UserControls
 		//NOTA: la procedura che segue è richiesta da Progettazione Windows Form.
 		//Può essere modificata in Progettazione Windows Form.  
 		//Non modificarla nell'editor del codice.
-		private System.Timers.Timer withEventsField_TIM;
-		internal System.Timers.Timer TIM {
-			get { return withEventsField_TIM; }
-			set {
-				if (withEventsField_TIM != null) {
-					withEventsField_TIM.Elapsed -= TIM_Elapsed;
-				}
-				withEventsField_TIM = value;
-				if (withEventsField_TIM != null) {
-					withEventsField_TIM.Elapsed += TIM_Elapsed;
-				}
-			}
-		}
+		private System.Timers.Timer TIM;
 		[System.Diagnostics.DebuggerStepThrough()]
 		private void InitializeComponent()
 		{
@@ -76,6 +58,7 @@ namespace LaserGRBL.UserControls
 			//TIM
 			//
 			this.TIM.SynchronizingObject = this;
+			TIM.Elapsed += TIM_Elapsed;
 			//
 			//WaitingProgressBar
 			//
@@ -89,13 +72,14 @@ namespace LaserGRBL.UserControls
 
 		public bool Running {
 			get { return TIM.Enabled; }
-			set {
-				if (!(value == TIM.Enabled)) {
-					if (value) {
+			set 
+			{
+				if (value != TIM.Enabled)
+				{
+					if (value) 
 						Start();
-					} else {
+					else 
 						Stop();
-					}
 				}
 			}
 		}
@@ -107,9 +91,8 @@ namespace LaserGRBL.UserControls
 
 		public void Start()
 		{
-			if (!Running) {
+			if (!Running)
 				TIM.Enabled = true;
-			}
 		}
 
 		public void Stop()
