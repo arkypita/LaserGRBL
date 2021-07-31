@@ -132,6 +132,7 @@
     <Compile Include="Core\VigoCore.cs" />
     <Compile Include="CsPotrace\PotraceClipper.cs" />
     <Compile Include="Logger\AsyncLogFile.cs" />
+    <Compile Include="SvgConverter\BezierTools.cs" />
     <Compile Include="Tools\Json.cs" />
     <Compile Include="Logger\ComLogger.cs" />
     <Compile Include="ExceptionManager.cs">
