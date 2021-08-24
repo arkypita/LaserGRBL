@@ -1106,12 +1106,11 @@ namespace LaserGRBL.SvgConverter
 
 		/// <summary>
 		/// Calculate Bezier line segments
-		/// from http://stackoverflow.com/questions/13940983/how-to-draw-bezier-curve-by-several-points
 		/// </summary>
 		private Point[] points;
 		private Point[] GetBezierApproximation(Point[] controlPoints, int outputSegmentCount)
 		{
-			return BezierTools.FlattenTo(controlPoints).ToArray();
+			return BezierTools.FlattenTo(controlPoints, 0.5).ToArray();
 		}
 
 		// Prepare G-Code
