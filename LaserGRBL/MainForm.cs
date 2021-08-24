@@ -563,7 +563,7 @@ namespace LaserGRBL
 
 		private void donateToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Tools.Utils.OpenLink(@"https://paypal.me/pools/c/8cQ1Lo4sRA");
+			Tools.Utils.OpenLink(@"https://lasergrbl.com/donate");
 		}
 
 

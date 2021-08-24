@@ -33,7 +33,7 @@
 			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.richTextBox2 = new System.Windows.Forms.RichTextBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.button1 = new System.Windows.Forms.Button();
+			this.BtnDonate = new System.Windows.Forms.Button();
 			this.BtnContinue = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
@@ -86,7 +86,7 @@
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.BtnDonate, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.BtnContinue, 2, 0);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 299);
@@ -98,16 +98,16 @@
 			// 
 			// button1
 			// 
-			this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-			this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.button1.Location = new System.Drawing.Point(3, 3);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(94, 36);
-			this.button1.TabIndex = 18;
-			this.button1.Text = "Donate";
-			this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.BtnDonate.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+			this.BtnDonate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.BtnDonate.Location = new System.Drawing.Point(3, 3);
+			this.BtnDonate.Name = "button1";
+			this.BtnDonate.Size = new System.Drawing.Size(94, 36);
+			this.BtnDonate.TabIndex = 18;
+			this.BtnDonate.Text = "Donate";
+			this.BtnDonate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.BtnDonate.UseVisualStyleBackColor = true;
+			this.BtnDonate.Click += new System.EventHandler(this.BtnDonate_Click);
 			// 
 			// BtnContinue
 			// 
@@ -149,6 +149,6 @@
 		private System.Windows.Forms.RichTextBox richTextBox2;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Button BtnContinue;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button BtnDonate;
 	}
 }

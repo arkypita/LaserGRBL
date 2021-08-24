@@ -27,9 +27,9 @@ namespace LaserGRBL
 			Close();
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void BtnDonate_Click(object sender, EventArgs e)
 		{
-			Tools.Utils.OpenLink(@"https://paypal.me/pools/c/8cQ1Lo4sRA");
+			Tools.Utils.OpenLink(@"https://lasergrbl.com/donate");
 		}
 
 		internal static void CreateAndShowDialog(Form parent)
