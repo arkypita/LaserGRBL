@@ -1971,6 +1971,7 @@ namespace LaserGRBL
 
 		protected void ManageBrokenOkMessage(string rline) //
 		{
+			mSentPtr.Add(new GrblMessage("Handle broken ok!", false));
 			Logger.LogMessage("CommandResponse", "Broken \"ok\" message: [{0}]", rline);
 			ManageCommandResponse("ok");
 		}
