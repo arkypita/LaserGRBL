@@ -1683,6 +1683,8 @@ namespace LaserGRBL
 				ManageOrturFirmwareMessage(rline);
 			else if (IsStandardWelcomeMessage(rline))
 				ManageStandardWelcomeMessage(rline);
+			else if (IsBrokenOkMessage(rline))
+				ManageBrokenOkMessage(rline);
 			else
 				ManageGenericMessage(rline);
 		}
@@ -1693,6 +1695,7 @@ namespace LaserGRBL
 		private bool IsOrturModelMessage(string rline) => rline.StartsWith("Ortur ");
 		private bool IsOrturFirmwareMessage(string rline) => rline.StartsWith("OLF");
 		private bool IsStandardWelcomeMessage(string rline) => rline.StartsWith("Grbl");
+		private bool IsBrokenOkMessage(string rline) => rline.ToLower().Contains("ok");
 
 		private void ManageGenericMessage(string rline)
 		{
@@ -1963,6 +1966,13 @@ namespace LaserGRBL
 		{
 			mWCO = wco;
 			mTP.LastKnownWCO = wco; //remember last wco for job resume
+		}
+
+
+		protected void ManageBrokenOkMessage(string rline) //
+		{
+			Logger.LogMessage("CommandResponse", "Broken \"ok\" message: [{0}]", rline);
+			ManageCommandResponse("ok");
 		}
 
 		protected void ManageCommandResponse(string rline)
