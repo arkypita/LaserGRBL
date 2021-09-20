@@ -53,7 +53,7 @@ namespace LaserGRBL
 
 				StringBuilder sb = new StringBuilder();
 				foreach (string line in text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None))
-					sb.AppendFormat("{0:dd/MM/yyyy hh:mm:ss.fff}\t{1}\t{2}\r\n", dt, context.PadRight(12, ' '), line);//sb.AppendFormat("{0}.{1}\t{2}\t{3}\t{4}\r\n", dt, dt.Millisecond, pid, context.PadRight(12, ' '), line);
+					sb.AppendFormat("{0:dd/MM/yyyy HH:mm:ss.fff}\t{1}\t{2}\r\n", dt, context.PadRight(12, ' '), line);//sb.AppendFormat("{0}.{1}\t{2}\t{3}\t{4}\r\n", dt, dt.Millisecond, pid, context.PadRight(12, ' '), line);
 
 				Log(sb.ToString());
 			}
