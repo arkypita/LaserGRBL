@@ -52,10 +52,10 @@ namespace LaserGRBL
 			{ get { return new ThreadingMode(500, 5, 1, 1, 0, "Fast"); } }
 
 			public static ThreadingMode UltraFast
-			{ get { return new ThreadingMode(200, 1, 0, 0, 0, "UltraFast"); } }
+			{ get { return new ThreadingMode(250, 1, 0, 0, 0, "UltraFast"); } }
 
 			public static ThreadingMode Insane
-			{ get { return new ThreadingMode(100, 1, 0, 0, 0, "Insane"); } }
+			{ get { return new ThreadingMode(200, 1, 0, 0, 0, "Insane"); } }
 
 			public override string ToString()
 			{ return Name; }
@@ -298,7 +298,7 @@ namespace LaserGRBL
 		protected Tools.ElapsedFromEvent debugLastStatusDelay;
 		protected Tools.ElapsedFromEvent debugLastMoveOrActivityDelay;
 
-		private ThreadingMode mThreadingMode = ThreadingMode.UltraFast;
+		private ThreadingMode mThreadingMode = ThreadingMode.Fast;
 		private HotKeysManager mHotKeyManager;
 
 		public UsageStats.UsageCounters UsageCounters;
@@ -315,7 +315,7 @@ namespace LaserGRBL
 			debugLastStatusDelay = new Tools.ElapsedFromEvent();
 			debugLastMoveOrActivityDelay = new Tools.ElapsedFromEvent();
 
-			mThreadingMode = Settings.GetObject("Threading Mode", ThreadingMode.UltraFast);
+			mThreadingMode = Settings.GetObject("Threading Mode", ThreadingMode.Fast);
 			QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(mThreadingMode.StatusQuery), false);
 			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX);
 			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null);
