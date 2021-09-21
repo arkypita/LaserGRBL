@@ -2130,13 +2130,10 @@ namespace LaserGRBL
 
 		protected virtual void ParseMachineStatus(string data)
 		{
-			MacStatus var = MacStatus.Disconnected;
-
 			if (data.Contains(":"))
 				data = data.Substring(0, data.IndexOf(':'));
 
-			try { var = (MacStatus)Enum.Parse(typeof(MacStatus), data); }
-			catch (Exception ex) { Logger.LogException("ParseMachineStatus", ex); }
+			MacStatus var = (MacStatus)Enum.Parse(typeof(MacStatus), data);
 
 			if (InProgram && var == MacStatus.Idle) //bugfix for grbl sending Idle on G4
 				var = MacStatus.Run;
