@@ -52,7 +52,7 @@ namespace LaserGRBL
 
 				try
 				{
-					sb.AppendFormat("LaserGrbl v{0}", typeof(GitHub).Assembly.GetName().Version);
+					sb.AppendFormat("LaserGrbl v{0}", Program.CurrentVersion);
 					sb.AppendLine();
 					sb.AppendFormat("{0} v{1}", Core?.Type, Core?.Configuration?.GrblVersion);
 					sb.AppendLine();

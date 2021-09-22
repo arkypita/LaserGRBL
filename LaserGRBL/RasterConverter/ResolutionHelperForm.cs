@@ -54,7 +54,6 @@ namespace LaserGRBL.RasterConverter
 		{
 			mRetVal = (double)UDComputed.Value;
 			Settings.SetObject("Hardware Resolution", UDHardware.Value);
-			Settings.Save();
 		}
 
 		private void Compute(object sender, EventArgs e)

@@ -31,7 +31,6 @@ namespace LaserGRBL
 			{
 				if (buttons == null) buttons = (List<CustomButton>)Settings.GetAndDeleteObject("Custom Buttons", null);
 				if (buttons == null) buttons = new List<CustomButton>();
-				Settings.Save();
 				SaveFile();
 			}
 		}

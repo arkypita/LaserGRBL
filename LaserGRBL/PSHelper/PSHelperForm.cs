@@ -122,11 +122,10 @@ namespace LaserGRBL.PSHelper
 
 		private void BtnApply_Click(object sender, EventArgs e)
 		{
-			if (CbModel.SelectedItem != null) Settings.SetObject("DB Last Used Laser Model", CbModel.SelectedItem);
+            if (CbModel.SelectedItem != null) Settings.SetObject("DB Last Used Laser Model", CbModel.SelectedItem);
 			if (CbMaterial.SelectedItem != null) Settings.SetObject("DB Last Used Material", CbMaterial.SelectedItem);
 			if (CbAction.SelectedItem != null) Settings.SetObject("DB Last Used Action", CbAction.SelectedItem);
 			if (CbThickness.SelectedItem != null) Settings.SetObject("DB Last Used Thickness", CbThickness.SelectedItem);
-			Settings.Save();
 
 			result = current;
 			Close();

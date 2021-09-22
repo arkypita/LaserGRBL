@@ -137,7 +137,7 @@ namespace LaserGRBL
 				bool build = Settings.GetObject("Auto Update Build", false) || manual;
 				bool pre = Settings.GetObject("Auto Update Pre", false);
 
-				Version current = typeof(GitHub).Assembly.GetName().Version;
+				Version current = Program.CurrentVersion;
 				OnlineVersion found = null;
 				foreach (OnlineVersion ov in versions) //version start with higher first
 				{
@@ -230,7 +230,6 @@ namespace LaserGRBL
 
 				Random rng = new Random();
 				Settings.SetObject("Auto Update Build", Settings.GetObject("Auto Update", true) && rng.Next(0, 100) < percentage); 
-				Settings.Save();
 			}
 		}
 

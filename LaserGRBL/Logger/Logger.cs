@@ -27,11 +27,10 @@ namespace LaserGRBL
 
 		internal static void Start()
 		{
-			Version current = typeof(GitHub).Assembly.GetName().Version;
             bool p64 = Tools.OSHelper.Is64BitProcess;
             bool o64 = Tools.OSHelper.Is64BitOperatingSystem;
 
-            LogMultiLine("Program", String.Format("------- LaserGRBL v{0} [{1}{2}] START -------", current.ToString(3), p64 ? "64bit" : "32bit" , p64 != o64 ? "!" : ""));
+            LogMultiLine("Program", String.Format("------- LaserGRBL v{0} [{1}{2}] START -------", Program.CurrentVersion.ToString(3), p64 ? "64bit" : "32bit" , p64 != o64 ? "!" : ""));
         }
 		
 		internal static void Stop()

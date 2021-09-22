@@ -158,7 +158,7 @@ namespace LaserGRBL
         private void UpdateAndSend(GrblCore Core)
         {
             //invia i dati solo almeno ad un giorno di distanza o al cambio version/grblversion
-            Version current = typeof(GitHub).Assembly.GetName().Version;
+            Version current = Program.CurrentVersion;
             bool mustsend = DateTime.UtcNow.Subtract(LastSent).TotalDays > 1 || Version != current || (Core.Configuration.GrblVersion != null && GrblVersion != Core.Configuration.GrblVersion);
             Version = current;
             GrblVersion = Core.Configuration.GrblVersion != null ? Core.Configuration.GrblVersion : GrblVersion;

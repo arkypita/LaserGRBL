@@ -12,16 +12,21 @@ namespace LaserGRBL
 {
 	static class Program
 	{
-		/// <summary>
-		/// Punto di ingresso principale dell'applicazione.
-		/// </summary>
-		[STAThread]
+        public static Version CurrentVersion { get; private set; }
+
+        /// <summary>
+        /// Punto di ingresso principale dell'applicazione.
+        /// </summary>
+        [STAThread]
 		static void Main(string[] args)
 		{
-			ExceptionManager.RegisterHandler();
+            try { CurrentVersion = typeof(GitHub).Assembly.GetName().Version; }
+            catch { CurrentVersion = new Version(0, 0, 0); }
+
+            ExceptionManager.RegisterHandler();
 			Tools.TimingBase.TimeFromApplicationStartup();
 
-			Logger.Start();
+            Logger.Start();
 			GitHub.InitUpdate();
 			UsageStats.LoadFile();
 			CustomButtons.LoadFile();

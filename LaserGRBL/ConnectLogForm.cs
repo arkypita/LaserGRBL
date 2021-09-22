@@ -310,8 +310,6 @@ namespace LaserGRBL
 			}
 
 			ApplyConfig();
-
-			Settings.Save();
 		}
 
 		private void CBProtocol_SelectedIndexChanged(object sender, EventArgs e)

@@ -62,6 +62,7 @@ namespace LaserGRBL
 
 			public override bool Equals(object obj)
 			{ return obj != null && obj is ThreadingMode && ((ThreadingMode)obj).Name == Name; }
+
             public override int GetHashCode()
             {
                 return base.GetHashCode();
@@ -315,7 +316,18 @@ namespace LaserGRBL
 			debugLastStatusDelay = new Tools.ElapsedFromEvent();
 			debugLastMoveOrActivityDelay = new Tools.ElapsedFromEvent();
 
-			mThreadingMode = Settings.GetObject("Threading Mode", ThreadingMode.Fast);
+            //with version 4.5.0 default ThreadingMode change from "UltraFast" to "Fast"
+            if (!Settings.IsNewFile && Settings.PrevVersion < new Version(4, 5, 0)) 
+            {
+                ThreadingMode CurrentMode = Settings.GetObject("Threading Mode", ThreadingMode.Fast);
+                if (Equals(CurrentMode, ThreadingMode.Insane) || Equals(CurrentMode, ThreadingMode.UltraFast))
+                    Settings.SetObject("Threading Mode", ThreadingMode.Fast);
+            }
+
+            mThreadingMode = Settings.GetObject("Threading Mode", ThreadingMode.Fast);
+
+            
+
 			QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(mThreadingMode.StatusQuery), false);
 			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX);
 			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null);
@@ -391,10 +403,7 @@ namespace LaserGRBL
 			set
 			{
 				if (value.Count > 0 && value.GrblVersion != null)
-				{
 					Settings.SetObject("Grbl Configuration", value);
-					Settings.Save();
-				}
 			}
 		}
 
@@ -457,9 +466,7 @@ namespace LaserGRBL
 				if (GrblVersion == null || !GrblVersion.Equals(value))
 				{
 					CSVD.LoadAppropriateSettings(value);
-
 					Settings.SetObject("Last GrblVersion known", value);
-					Settings.Save();
 				}
 			}
 		}
@@ -2398,7 +2405,6 @@ namespace LaserGRBL
 			mHotKeyManager.Clear();
 			mHotKeyManager.AddRange(mLocalList);
 			Settings.SetObject("Hotkey Setup", mHotKeyManager);
-			Settings.Save();
 		}
 
 		//internal void HKCustomButton(int index)

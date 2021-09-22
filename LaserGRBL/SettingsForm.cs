@@ -204,8 +204,6 @@ namespace LaserGRBL
 
             Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);
 
-			Settings.Save();
-
             SettingsChanged?.Invoke(this, null);
 
             Close();

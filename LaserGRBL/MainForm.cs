@@ -23,8 +23,10 @@ namespace LaserGRBL
 			MnOrtur.Visible = false;
 			MMn.Renderer = new MMnRenderer();
 
+            
 			splitContainer1.FixedPanel = FixedPanel.Panel1;
-			splitContainer1.SplitterDistance = Settings.GetObject("MainForm Splitter Position", 260);
+            splitContainer1.SplitterDistance = Settings.GetObject("MainForm Splitter Position", 260);
+            
 			MnNotifyNewVersion.Checked = Settings.GetObject("Auto Update", true);
 			MnNotifyMinorVersion.Checked = Settings.GetObject("Auto Update Build", false);
 			MnNotifyPreRelease.Checked = Settings.GetObject("Auto Update Pre", false);
@@ -226,9 +228,9 @@ namespace LaserGRBL
 				SincroStart.StopListen();
 				Core.CloseCom(true);
 				Settings.SetObject("Mainform Size and Position", new object[] { Size, Location, WindowState });
-				Settings.Save();
+                Settings.Exiting();
 
-				UsageStats.SaveFile(Core);
+                UsageStats.SaveFile(Core);
 			}
 		}
 
@@ -320,8 +322,7 @@ namespace LaserGRBL
 
 		private void RefreshFormTitle()
 		{
-			Version current = typeof(GitHub).Assembly.GetName().Version;
-			string FormTitle = string.Format("LaserGRBL v{0}", current.ToString(3));
+			string FormTitle = string.Format("LaserGRBL v{0}", Program.CurrentVersion.ToString(3));
 
 			if (Core.Type != Firmware.Grbl)
 				FormTitle = FormTitle + $" (for {Core.Type})";
@@ -443,8 +444,6 @@ namespace LaserGRBL
 			else
 				Settings.DeleteObject("User Language");
 
-			Settings.Save();
-
 			if (MessageBox.Show(Strings.LanguageRequireRestartNow, Strings.LanguageRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
 				Application.Restart();
 		}
@@ -461,8 +460,7 @@ namespace LaserGRBL
 
 		private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
 		{
-			Settings.SetObject("MainForm Splitter Position", splitContainer1.SplitterDistance);
-			Settings.Save();
+            Settings.SetObject("MainForm Splitter Position", splitContainer1.SplitterDistance);
 		}
 
 		private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -551,8 +549,6 @@ namespace LaserGRBL
 		{
 			Settings.SetObject("Color Schema", schema);
 			ColorScheme.CurrentScheme = schema;
-			Settings.Save();
-
 			RefreshColorSchema();
 		}
 
@@ -606,7 +602,7 @@ namespace LaserGRBL
 
 		private void AwakeTimer_Tick(object sender, EventArgs e)
 		{
-			if (Core.InProgram)
+			if (Core != null && Core.InProgram)
 				Tools.WinAPI.SignalActvity();
 		}
 
@@ -751,7 +747,6 @@ namespace LaserGRBL
 		{
 			MnNotifyNewVersion.Checked = !MnNotifyNewVersion.Checked;
 			Settings.SetObject("Auto Update", MnNotifyNewVersion.Checked);
-			Settings.Save();
 
 			//if (MnNotifyNewVersion.Checked)
 			//	GitHub.CheckVersion();
@@ -781,7 +776,6 @@ namespace LaserGRBL
 		{
 			MnNotifyMinorVersion.Checked = !MnNotifyMinorVersion.Checked;
 			Settings.SetObject("Auto Update Build", MnNotifyMinorVersion.Checked);
-			Settings.Save();
 
 			//if (MnNotifyNewVersion.Checked && MnNotifyMinorVersion.Checked)
 			//	GitHub.CheckVersion();
@@ -791,7 +785,6 @@ namespace LaserGRBL
 		{
 			MnNotifyPreRelease.Checked = !MnNotifyPreRelease.Checked;
 			Settings.SetObject("Auto Update Pre", MnNotifyPreRelease.Checked);
-			Settings.Save();
 
 			//if (MnNotifyNewVersion.Checked && MnNotifyPreRelease.Checked)
 			//	GitHub.CheckVersion();

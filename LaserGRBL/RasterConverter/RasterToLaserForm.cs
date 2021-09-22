@@ -292,9 +292,6 @@ namespace LaserGRBL.RasterConverter
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.LineThreshold.Value", IP.LineThreshold);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.CornerThreshold.Enabled", IP.UseCornerThreshold);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.CornerThreshold.Value", IP.CornerThreshold);
-
-
-			Settings.Save(); // Saves settings in application configuration file
 		}
 
 		private void LoadSettings()
