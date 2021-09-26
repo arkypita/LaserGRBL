@@ -1420,6 +1420,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.cs-CZ.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.el-GR.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
@@ -1433,15 +1434,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.hu-HU.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.pl-PL.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.sk-SK.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.tr-TR.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.zh-TW.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
@@ -1591,9 +1596,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.fr.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.it.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.pt-BR.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
@@ -1604,6 +1611,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.ru.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.zh-CN.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

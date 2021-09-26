@@ -187,7 +187,7 @@ Si cette option est désactivée, les problèmes seront gérés silencieusement 
     <value>Passes multiples</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Mode d'envoi : UltraFast, Fast, Quiet, SLow (Par défaut UltraFast)
+    <value>Mode d'envoi : UltraFast, Fast, Quiet, SLow (Par défaut Fast)
 Ce paramètre modifie la vitesse d'envoie et la fréquence des requêtes de statut.
 Baisser cette valeur si vous avez des problèmes.</value>
   </data>

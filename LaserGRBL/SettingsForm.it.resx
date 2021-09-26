@@ -176,7 +176,7 @@
     <value>513, 39</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Modalità Thread: UltraFast, Fast, Quiet, Slow. [Default UltraFast]
+    <value>Modalità Thread: UltraFast, Fast, Quiet, Slow. [Default Fast]
 Questa impostazione influisce sulla velocità dei thread di invio e sulla frequenza di aggiornamento degli stati.
 Se rilevi problemi di comunicazione e di stabilità prova a diminuire questo valore.</value>
   </data>

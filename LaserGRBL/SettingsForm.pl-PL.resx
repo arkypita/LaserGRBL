@@ -136,7 +136,7 @@
 - LaserWebESP8266 obsługuje połączenie Wi-Fi przez WebSocket. Kompatybilny z oprogramowaniem LaserWeb-ESP8266.</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Tryb wątków: Ultraszybki, Szybki, Spokojny, Wolny [domyślny UltraFast]. 
+    <value>Tryb wątków: Ultraszybki, Szybki, Spokojny, Wolny [domyślny Fast]. 
 To ustawienie wpływa na szybkość i częstotliwość żądań raportowania stanu urządzenia. 
 Jeśli masz problemy, ustaw wolniejsze wartości.</value>
   </data>

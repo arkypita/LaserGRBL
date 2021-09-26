@@ -187,7 +187,7 @@ Pokiaľ používate automatické chladenie so staršou verziou grbl (slebo s dea
 - Opakovanie pri chybe: rovnaké ako Synchrónny režim, ale príkazy sú opakovane pokiaľ je detekovaná chyba [experimentálne]</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Threading Mode: [východzí UltraFast]
+    <value>Threading Mode: [východzí Fast]
 Ultrarýchly, Rýchly, Kľudný, Pomalý.
 Toto nastavenie ovplyvňuje rýchlosť a frekvenciu žiadostí o hlásení stavu zariadenia.
 Pokiaľ máte problémy, nastavte pomalšie hodnoty.</value>

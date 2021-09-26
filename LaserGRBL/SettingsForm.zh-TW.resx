@@ -287,7 +287,7 @@ $ 3-方向，$ 102-步數，$ 112-最大速率，$ 122-加速度等設定值
 -重複錯誤 Repat On Error：與同步模式相同，但是如果檢測到錯誤，則重複命令[實驗性]</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>線程模式：[默認-超快速 UltraFast]
+    <value>線程模式：[默認-超快速 Fast]
 瘋狂Insane，超快速UltraFast，快速Fast，平靜Quiet，慢速Slow。
 此設置影響報告設備狀態的請求的速度和頻率。
 如果有問題，請設置較慢的值。</value>

@@ -179,7 +179,7 @@
     <value>556, 39</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Processz mód: UltraFast, Fast, Quiet, Slow. [Alapértelmezett UltraFast]
+    <value>Processz mód: UltraFast, Fast, Quiet, Slow. [Alapértelmezett Fast]
 Ez a beállítás befolyásolja a program processz küldésének sebességét és az állapotjelentés kérésének gyakoriságát.
 Állítson be lassabb értékeket, ha problémák merülnek fel.</value>
   </data>

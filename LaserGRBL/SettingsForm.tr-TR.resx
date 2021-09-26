@@ -137,7 +137,7 @@
 - LaserWebESP8266: WebSocket aracılığıyla WiFi bağlantısını destekler. LaserWeb-ESP8266 yazılımı ile uyumludur.</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>İş Parçaçığı Modu: Ultra Hızlı, Hızlı, Sessiz, Yavaş. [Varsayılan UltraFast]
+    <value>İş Parçaçığı Modu: Ultra Hızlı, Hızlı, Sessiz, Yavaş. [Varsayılan Fast]
 Bu ayar, iş parçacığı gönderme hızını ve durum raporu isteğinin sıklığını etkiler.
 Sorun yaşıyorsanız daha yavaş değerler ayarlayın.</value>
   </data>

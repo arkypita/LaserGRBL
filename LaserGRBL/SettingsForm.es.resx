@@ -515,7 +515,7 @@
     <value>37</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Threading Mode: UltraFast, Fast, Quiet, Slow. [Default UltraFast]
+    <value>Threading Mode: UltraFast, Fast, Quiet, Slow. [Default Fast]
 This setting affect the speed of sending thread and the frequency of status report request.
 Set slower values if you are experiencing issues.</value>
   </data>

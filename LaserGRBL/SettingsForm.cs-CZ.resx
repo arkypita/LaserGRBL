@@ -187,7 +187,7 @@ během pauzy nevypne a vypálí díru ve Vaší matrici!</value>
 - Opakování při chybě: stejné jako Synchronní režim, ale příkazy jsou opakovány pokud je detekována chyba [experimentální]</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Threading Mode: [výchozí UltraFast]
+    <value>Threading Mode: [výchozí Fast]
 Ultrarychlý, Rychlý, Klidný, Pomalý.
 Toto nastavení ovlivňuje rychlost odesílání a frekvenci žádostí o hlášení stavu zařízení.
 Pokud máte problémy, nastavte pomalejší hodnoty.</value>
