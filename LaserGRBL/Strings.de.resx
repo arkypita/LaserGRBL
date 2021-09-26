@@ -209,7 +209,7 @@ Bitte laden Sie die neue Version manuell von lasergrbl herunter.</value>
     <value>Verbinden</value>
   </data>
   <data name="MacStatusDisconnected" xml:space="preserve">
-    <value>Trennen</value>
+    <value>Getrennt</value>
   </data>
   <data name="MacStatusDoor" xml:space="preserve">
     <value>Tür</value>
