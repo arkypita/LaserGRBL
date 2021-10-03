@@ -148,7 +148,7 @@ namespace CsPotrace
 			//http://www.cnccookbook.com/CCCNCGCodeArcsG02G03.htm
 			//https://www.tormach.com/g02_g03.html
 
-			if (arc.LinearLength > 2) //if not a small arc
+			if (!CasoLimite(arc, scale))
 			{
 				if (g != null) g.DrawArc(Pens.Red, arc.C.X - arc.r, arc.C.Y - arc.r, 2 * arc.r, 2 * arc.r, arc.startAngle * 180.0f / (float)Math.PI, arc.sweepAngle * 180.0f / (float)Math.PI);
 				return String.Format("G{0} X{1} Y{2} I{3} J{4}", !arc.IsClockwise ? 2 : 3, formatnumber(arc.P2.X + oX, scale), formatnumber(arc.P2.Y + oY, scale), formatnumber(arc.C.X - arc.P1.X, scale), formatnumber(arc.C.Y - arc.P1.Y, scale));
@@ -158,8 +158,18 @@ namespace CsPotrace
 				if (g != null) g.DrawLine(Pens.DarkGray, (float)arc.P1.X, (float)arc.P1.Y, (float)arc.P2.X, (float)arc.P2.Y);
 				return String.Format("G1 X{0} Y{1}", formatnumber(arc.P2.X + oX, scale), formatnumber(arc.P2.Y + oY, scale));
 			}
+		}
 
+		private static bool CasoLimite(Arc arc, double scale)
+		{
+			if (arc.r == 0 || arc.LinearLength == 0)
+				return true;
+			if ((arc.LinearLength / scale) <= 0.5)
+				return true;
+			if (arc.r / arc.LinearLength > 1000)
+				return true;
 
+			return false;
 		}
 
 		private static string formatnumber(double number, double scale)
