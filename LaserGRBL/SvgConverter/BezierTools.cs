@@ -91,6 +91,11 @@ namespace LaserGRBL.SvgConverter
             var c2 = c - max_distance_above;
 
             var det = a1 * b2 - a2 * b1;
+            if (det == 0)
+            {
+                return 0; // Otherwise the intercepts would blow up to +/- Inf.
+            }
+
             var dInv = 1.0 / det;
 
             var intercept_1 = (b1 * c2 - b2 * c1) * dInv;
