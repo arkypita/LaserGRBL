@@ -8,11 +8,21 @@ namespace LaserGRBL.Tests
 {
     public class BezierToolsTests
     {
-        [InlineData(0.0, new double[] { 0,0,  0,1,  0,2,  0,3 })] /* vertical line */
-        [InlineData(0.0, new double[] { 0,0,  1,0,  2,0,  3,0 })] /* horizontal line, catches det == 0 bug. */
-        [InlineData(3.0, new double[] { 0,0,  1,2,  3,3,  4,2 })] /* from comment */
+        [InlineData(new double[] { 0,0,  0,1,  0,2,  0,3 })] /* vertical line LR */
+        [InlineData(new double[] { 0,3,  0,2,  0,1,  0,0 })] /* vertical line RL */
+        [InlineData(new double[] { 0,0,  1,0,  2,0,  3,0 })] /* horizontal line, catches det == 0 bug. */
+        [InlineData(new double[] { 0,0,  1,1,  2,2,  3,3 })] /* diagonal */
         [Theory]
-        public void CalculateFlatnessError_ZeroErrorWhenLinear(double expectedError, double[] polygon)
+        public void CalculateFlatnessError_ZeroErrorWhenLinear(double[] polygon)
+        {
+            var points = GetPoints(polygon);
+            var result = BezierTools.CalculateFlatnessError(points, 3);
+            Assert.Equal(0, result);
+        }
+
+        [InlineData(3.0, new double[] { 0,0,  1,2,  3,3,  4,2 })] /* from method comment */
+        [Theory]
+        public void CalculateFlatnessError_PassesSpecificRegressionChecks(double expectedError, double[] polygon)
         {
             var points = GetPoints(polygon);
             var result = BezierTools.CalculateFlatnessError(points, 3);
