@@ -856,7 +856,7 @@ namespace LaserGRBL.SvgConverter
 								cx2 = lastX + floatArgs[rep + 2]; cy2 = lastY + floatArgs[rep + 3];
 								cx3 = lastX + floatArgs[rep + 4]; cy3 = lastY + floatArgs[rep + 5];
 							}
-							points = new Point[4];
+							var points = new Point[4];
 							points[0] = new Point(lastX, lastY);
 							points[1] = new Point(cx1, cy1);
 							points[2] = new Point(cx2, cy2);
@@ -897,7 +897,7 @@ namespace LaserGRBL.SvgConverter
 							cx2 = lastX + floatArgs[rep]; cy2 = lastY + floatArgs[rep + 1];
 							cx3 = lastX + floatArgs[rep + 2]; cy3 = lastY + floatArgs[rep + 3];
 						}
-						points = new Point[4];
+						var points = new Point[4];
 						points[0] = new Point(lastX, lastY);
 						points[1] = new Point(cxMirror, cyMirror);
 						points[2] = new Point(cx2, cy2);
@@ -940,7 +940,7 @@ namespace LaserGRBL.SvgConverter
 						float qpy1 = (cy2 - lastY) * 2 / 3 + lastY;     // qubic function
 						float qpx2 = (cx2 - cx3) * 2 / 3 + cx3;
 						float qpy2 = (cy2 - cy3) * 2 / 3 + cy3;
-						points = new Point[4];
+						var points = new Point[4];
 						points[0] = new Point(lastX, lastY);
 						points[1] = new Point(qpx1, qpy1);
 						points[2] = new Point(qpx2, qpy2);
@@ -981,7 +981,7 @@ namespace LaserGRBL.SvgConverter
 						float qpy1 = (cyMirror - lastY) * 2 / 3 + lastY;     // qubic function
 						float qpx2 = (cxMirror - cx3) * 2 / 3 + cx3;
 						float qpy2 = (cyMirror - cy3) * 2 / 3 + cy3;
-						points = new Point[4];
+						var points = new Point[4];
 						points[0] = new Point(lastX, lastY);
 						points[1] = new Point(qpx1, qpy1);
 						points[2] = new Point(qpx2, qpy2);
@@ -1077,7 +1077,7 @@ namespace LaserGRBL.SvgConverter
 				double dxe = t * (cosPhi * rx * sinTheta2 + sinPhi * ry * cosTheta2);
 				double dye = t * (sinPhi * rx * sinTheta2 - cosPhi * ry * cosTheta2);
 
-				points = new Point[4];
+				var points = new Point[4];
 				points[0] = new Point(startX, startY);
 				points[1] = new Point((startX + dx1), (startY + dy1));
 				points[2] = new Point((endpointX + dxe), (endpointY + dye));
@@ -1107,12 +1107,11 @@ namespace LaserGRBL.SvgConverter
 		/// <summary>
 		/// Calculate Bezier line segments
 		/// </summary>
-		private Point[] points;
 		private Point[] GetBezierApproximation(Point[] controlPoints, int outputSegmentCount)
 		{
-			return GetBezierApproximationOld(controlPoints, outputSegmentCount);
-			//return BezierTools.FlattenTo(controlPoints, 0.5).ToArray();
-			//return BezierTools.FlattenTo(controlPoints, 0.1).ToArray();
+			//return GetBezierApproximationOld(controlPoints, outputSegmentCount);
+			return BezierTools.FlattenTo(controlPoints, 0.1).ToArray();
+			//return BezierTools.FlattenTo(controlPoints, 0.01).ToArray();
 		}
 
 
