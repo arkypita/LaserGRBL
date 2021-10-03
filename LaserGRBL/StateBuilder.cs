@@ -403,8 +403,18 @@ namespace LaserGRBL
 				double aY = (double)spb.Y.Previous; //startY
 				double bX = (double)spb.X.Number;	//endX
 				double bY = (double)spb.Y.Number;   //endY
-				double oX = cmd.I != null ? (double)cmd.I.Number : 0.0; //offsetX
-				double oY = cmd.J != null ? (double)cmd.J.Number : 0.0; //offsetY
+				double oX = 0.0;
+				double oY = 0.0;
+				if (cmd.R != null) //G2G3 use R cmd
+				{
+					oX = ((aX + bX) / 2.0) - aX;
+					oY = ((aY + bY) / 2.0) - aY;
+				}
+				else
+				{
+					oX = cmd.I != null ? (double)cmd.I.Number : 0.0; //offsetX
+					oY = cmd.J != null ? (double)cmd.J.Number : 0.0; //offsetY
+				}
 
 				CenterX = aX + oX; //centerX
 				CenterY = aY + oY; //centerY
