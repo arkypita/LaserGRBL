@@ -16,7 +16,7 @@ namespace LaserGRBL.SvgConverter
     /// is available under a very strange license as specified in LICENSE.md at
     /// https://github.com/erich666/GraphicsGems
     /// </summary>
-    static class BezierTools
+    internal static class BezierTools
     {
         /// ControlPolygonFlatEnough :
         ///   Check if the control polygon of a Bezier curve is flat enough
@@ -59,7 +59,7 @@ namespace LaserGRBL.SvgConverter
         /// my code computes left_intercept = -3.0 and right_intercept = 0.0, which you
         /// can verify by sketching a graph. The original code computes
         /// left_intercept = 0.0 and right_intercept = 0.9
-        static double CalculateFlatnessError(Point[] controlPoints, int degree)
+        internal static double CalculateFlatnessError(Point[] controlPoints, int degree)
         {
             // Derive the implicit equation for line connecting first 
             //  and last control points 
