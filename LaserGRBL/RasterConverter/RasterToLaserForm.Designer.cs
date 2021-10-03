@@ -515,11 +515,7 @@
             0,
             0,
             0});
-			this.UDFillingQuality.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+			this.UDFillingQuality.Minimum = 0.1M;
 			this.UDFillingQuality.Name = "UDFillingQuality";
 			this.TT.SetToolTip(this.UDFillingQuality, resources.GetString("UDFillingQuality.ToolTip"));
 			this.UDFillingQuality.Value = new decimal(new int[] {
