@@ -8,25 +8,27 @@ namespace LaserGRBL.Tests
 {
     public class BezierToolsTests
     {
-        [InlineData(new double[] { 0,0,  0,1,  0,2,  0,3 })] /* vertical line LR */
-        [InlineData(new double[] { 0,3,  0,2,  0,1,  0,0 })] /* vertical line RL */
-        [InlineData(new double[] { 0,0,  1,0,  2,0,  3,0 })] /* horizontal line, catches det == 0 bug. */
-        [InlineData(new double[] { 0,0,  1,1,  2,2,  3,3 })] /* diagonal */
+        [InlineData(new double[] { 0, 0, 0, 1, 0, 2, 0, 3 })] /* vertical line LR */
+        [InlineData(new double[] { 0, 3, 0, 2, 0, 1, 0, 0 })] /* vertical line RL */
+        [InlineData(new double[] { 0, 0, 1, 0, 2, 0, 3, 0 })] /* horizontal line (regression) */
+        [InlineData(new double[] { 0, 0, 1, 1, 2, 2, 3, 3 })] /* diagonal */
         [Theory]
-        public void CalculateFlatnessError_ZeroErrorWhenLinear(double[] polygon)
+        public void FlattenTo_NoSubdivisionWhenLinear(double[] polygon)
         {
             var points = GetPoints(polygon);
-            var result = BezierTools.CalculateFlatnessError(points, 3);
-            Assert.Equal(0, result);
+            var result = BezierTools.FlattenTo(points, .001);
+            Assert.Equal(4, result.Count());
         }
-
-        [InlineData(3.0, new double[] { 0,0,  1,2,  3,3,  4,2 })] /* from method comment */
+        
+        [InlineData(new double[] { 0,0,  0,1,  1,1,  1,0 }, 0.5, 1 + 3)] /* should produce single line at error 0.5 */
+        [InlineData(new double[] { 0, 0, 0, 1, 1, 1, 1, 0 }, 0.25, 1 + 3 * 2)] /* should produce triangle at error 0.5^2 */
+        [InlineData(new double[] { 0, 0, 0, 1, 1, 1, 1, 0 }, 0.0625, 1 + 3 * 4)] /* should produce quad-arc at error 0.5^3 */
         [Theory]
-        public void CalculateFlatnessError_PassesSpecificRegressionChecks(double expectedError, double[] polygon)
+        public void FlattenTo_SubdividesToCorrectError(double[] polygon, double acceptedError, int expectedPoints)
         {
             var points = GetPoints(polygon);
-            var result = BezierTools.CalculateFlatnessError(points, 3);
-            Assert.Equal(expectedError, result);
+            var result = BezierTools.FlattenTo(points, acceptedError);
+            Assert.Equal(expectedPoints, result.Count());
         }
 
         public Point[] GetPoints(double[] p)

@@ -18,108 +18,6 @@ namespace LaserGRBL.SvgConverter
     /// </summary>
     internal static class BezierTools
     {
-        /// ControlPolygonFlatEnough :
-        ///   Check if the control polygon of a Bezier curve is flat enough
-        ///    for recursive subdivision to bottom out.
-        /// 
-        /// Corrections by James Walker, jw@jwwalker.com, as follows:
-        /// 
-        /// There seem to be errors in the ControlPolygonFlatEnough function in the
-        /// Graphics Gems book and the repository (NearestPoint.c). This function
-        /// is briefly described on p. 413 of the text, and appears on pages 793-794.
-        /// I see two main problems with it.
-        /// 
-        /// The idea is to find an upper bound for the error of approximating the x
-        /// intercept of the Bezier curve by the x intercept of the line through the
-        /// first and last control points. It is claimed on p. 413 that this error is
-        /// bounded by half of the difference between the intercepts of the bounding
-        /// box. I don't see why that should be true. The line joining the first and
-        /// last control points can be on one side of the bounding box, and the actual
-        /// curve can be near the opposite side, so the bound should be the difference
-        /// of the bounding box intercepts, not half of it.
-        /// 
-        /// Second, we come to the implementation. The values distance[i] computed in
-        /// the first loop are not actual distances, but squares of distances. I
-        /// realize that minimizing or maximizing the squares is equivalent to
-        /// minimizing or maximizing the distances.  But when the code claims that
-        /// one of the sides of the bounding box has equation
-        /// a * x + b * y + c + max_distance_above, where max_distance_above is one of
-        /// those squared distances, that makes no sense to me.
-        /// 
-        /// I have appended my version of the function. If you apply my code to the
-        /// cubic Bezier curve used to test NearestPoint.c,
-        /// 
-        /// static Point2 bezCurve[4] = {    /  A cubic Bezier curve    /
-        ///   { 0.0, 0.0 },
-        ///   { 1.0, 2.0 },
-        ///   { 3.0, 3.0 },
-        ///   { 4.0, 2.0 },
-        /// };
-        /// 
-        /// my code computes left_intercept = -3.0 and right_intercept = 0.0, which you
-        /// can verify by sketching a graph. The original code computes
-        /// left_intercept = 0.0 and right_intercept = 0.9
-        internal static double CalculateFlatnessError(Point[] controlPoints, int degree)
-        {
-            // Derive the implicit equation for line connecting first 
-            //  and last control points 
-            var a = controlPoints[0].Y - controlPoints[degree].Y;
-            var b = controlPoints[degree].X - controlPoints[0].X;
-            var c = controlPoints[0].X * controlPoints[degree].Y - controlPoints[degree].X * controlPoints[0].Y;
-
-            var max_distance_above = 0.0;
-            var max_distance_below = 0.0;
-
-            for (var i = 1; i < degree; i++)
-            {
-                var value = a * controlPoints[i].X + b * controlPoints[i].Y + c;
-
-                if (value > max_distance_above)
-                    max_distance_above = value;
-                else if (value < max_distance_below)
-                    max_distance_below = value;
-            }
-
-            //  Implicit equation for zero line 
-            const double a1 = 0.0;
-            const double b1 = 1.0;
-            const double c1 = 0.0;
-
-            //  Implicit equation for "above" line 
-            var a2 = a;
-            var b2 = b;
-            var c2 = c - max_distance_above;
-
-            var det = a1 * b2 - a2 * b1;
-            if (det == 0)
-            {
-                return 0; // Otherwise the intercepts would blow up to +/- Inf.
-            }
-
-            var dInv = 1.0 / det;
-
-            var intercept_1 = (b1 * c2 - b2 * c1) * dInv;
-
-            //  Implicit equation for "below" line 
-            a2 = a;
-            b2 = b;
-            c2 = c - max_distance_below;
-
-            det = a1 * b2 - a2 * b1;
-            dInv = 1.0 / det;
-
-            var intercept_2 = (b1 * c2 - b2 * c1) * dInv;
-
-            // Compute intercepts of bounding box   
-            var left_intercept = Math.Min(intercept_1, intercept_2);
-            var right_intercept = Math.Max(intercept_1, intercept_2);
-
-            //Precision of root
-            var error = right_intercept - left_intercept;
-
-            return error;
-        }
-
         /// <summary>
         /// Split a curve at the given value of t
         /// </summary>
@@ -184,16 +82,21 @@ namespace LaserGRBL.SvgConverter
             // Convert the points to an array
             var segment = points.ToArray();
 
-            // If the segment is flat enough, then return
-            if (CalculateFlatnessError(segment, 3) < error)
-                return points;
-
-            // Otherwise, split the curve in half
+            // Experimentally split the curve in half.
             var curveParts = SplitCurveAtT(segment, 0.5);
+
+            // How much did we gain from drawing two lines instead of one? Pretend they form a triangle with the original and calculate the area.
+            if (CalculateTriangleArea(segment[0], curveParts.Item1[3], segment[3]) < error)
+            {
+                return points;
+            }
 
             // Flatten the two segments and combine them.
             return FlattenSegmentTo(curveParts.Item1.Take(4), error).Concat(FlattenSegmentTo(curveParts.Item2.Take(4), error).Skip(1));
         }
+
+        private static double CalculateTriangleArea(Point a, Point b, Point c)
+            => Math.Abs(a.X * b.Y + b.X * c.Y + c.X * a.Y - a.Y * b.X - b.Y * c.X - c.Y * a.X) / 2;
 
         /// <summary>
         /// For a series of Bezier curves represented as a series of control points, interpolate a series of points for representing the curve as lines
