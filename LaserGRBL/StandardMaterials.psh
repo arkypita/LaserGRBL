@@ -1223,4 +1223,373 @@
     <Speed>1200</Speed>
     <Cycles>1</Cycles>
   </Materials>
+  <Materials>
+    <id>187243c2-0ecc-48af-b6ee-1cb8085ece3c</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Wood board</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>68af1ed6-2f0f-4df5-81c4-cbede543de7e</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>be3810f5-8ae6-4004-a4e0-eb41d61892f3</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Solid wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>c77f8126-b73d-4c42-a871-db71822ffe74</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>4500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>eb57d92b-ceba-46d3-9298-6e40d80f63aa</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Glass</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>1200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Surface needs to be painted black</Remarks>
+  </Materials>
+  <Materials>
+    <id>8d6dd2d1-8320-439f-ba1b-fee7f8493416</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Ceramic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>1200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Surface needs to be painted black</Remarks>
+  </Materials>
+  <Materials>
+    <id>52f84091-3a3d-41c9-aabb-48e8b2371a31</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>2500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Transparent acrylic needs to be painted black</Remarks>
+  </Materials>
+  <Materials>
+    <id>8b8ed39b-3722-4a8f-9483-09456fe97bb2</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>600</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>3f2966d6-ef4b-4248-80bf-f6093bef1027</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Anodized metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>dca85cf9-0984-493f-af26-deee8ad316f5</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Fabric</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>aa0b3acc-5822-46b3-9986-293752957116</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Plywood</Material>
+    <Thickness>2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>5e267606-bc51-4ae4-b948-3e2d8796e0ad</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Plywood</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>250</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>112023bf-078d-4642-bc69-9a02e525b6a4</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Plywood</Material>
+    <Thickness>4mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>97cf0865-a2ba-4caa-8bf0-882b3fc581db</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Plywood</Material>
+    <Thickness>7mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>90</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>8a43e969-f37b-4139-95d2-93820fe8758c</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Cardboard</Material>
+    <Thickness />
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>584f9863-ae20-4875-be13-3fda4b894af0</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Leather</Material>
+    <Thickness />
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>afc54f83-e0fd-4913-9108-5a83256ff382</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 10W</Model>
+    <Material>Fabric</Material>
+    <Thickness />
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>187243c2-4ecc-48af-b6ee-1cb8085ece3c</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Wood board</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>2500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>68af1ed6-2f0f-4df5-81c4-cbfde543de7e</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>2500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>be3810f5-8ae6-4004-a4e0-eb41b61892f3</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Solid wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>2500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>c77f3126-b73d-4c42-a871-db71822ffe74</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>eb57d92b-ceba-46d3-9298-6e40d80a63aa</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Glass</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>700</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Surface needs to be painted black</Remarks>
+  </Materials>
+  <Materials>
+    <id>8d6dd2d1-8310-439f-ba1b-fee7f8493416</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Ceramic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>700</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Surface needs to be painted black</Remarks>
+  </Materials>
+  <Materials>
+    <id>52f84091-3a3d-41c9-aabb-48e8b3371a31</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Transparent acrylic needs to be painted black</Remarks>
+  </Materials>
+  <Materials>
+    <id>8b8ed39b-3722-4a8f-9483-09456ae97bb2</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>3f2166d6-ef4b-4248-80bf-f6093bef1027</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Anodized metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>800</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>dca15cf9-0984-493f-af26-deee8ad316f5</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Fabric</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>2500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>aa0b3acc-5812-46b3-9986-293752957116</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Plywood</Material>
+    <Thickness>2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>180</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>5e261606-bc51-4ae4-b948-3e2d8796e0ad</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Plywood</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>120</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>122023bf-078d-4642-bc69-9a02e525b6a4</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Plywood</Material>
+    <Thickness>4mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>90</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>8a43a969-f37b-4139-95d2-93820fe8758c</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Cardboard</Material>
+    <Thickness />
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>581f9863-ae20-4875-be13-3fda4b894af0</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Leather</Material>
+    <Thickness />
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>afc51f83-e0fd-4913-9108-5a83256ff382</id>
+    <Visible>true</Visible>
+    <Model>Comgo Z1 5W</Model>
+    <Material>Fabric</Material>
+    <Thickness />
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
 </MaterialDB>
