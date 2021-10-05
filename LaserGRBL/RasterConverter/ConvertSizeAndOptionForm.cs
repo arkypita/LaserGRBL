@@ -48,19 +48,6 @@ namespace LaserGRBL.RasterConverter
 
 			CBLaserON.Items.Add(LaserOptions[0]);
 			CBLaserON.Items.Add(LaserOptions[1]);
-
-			// For Marlin, we must change LaserOn & Laser Off command :
-			//if (core.Type != Firmware.Marlin)
-			//{
-			//    CBLaserON.Items.Add("M3");
-			//    if (core.Configuration.LaserMode)
-			//        CBLaserON.Items.Add("M4");
-			//}
-			//else
-			//{
-			//    CBLaserON.Items.Add("M106 P1");
-			//    CBLaserOFF.Items.Add("M107 P1");
-			//}
 		}
 
 		private void AssignMinMaxLimit()
@@ -107,12 +94,7 @@ namespace LaserGRBL.RasterConverter
 			else
 				CBLaserON.SelectedItem = LaserOptions[1];
 
-			IP.LaserOff = "M5"; //Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
-
-			//if (CBLaserOFF.Items.Contains(IP.LaserOff))
-			//	CBLaserOFF.SelectedItem = IP.LaserOff;
-			//else
-			//	CBLaserOFF.SelectedIndex = 0;
+			IP.LaserOff = "M5"; 
 
 			IIMinPower.CurrentValue = IP.MinPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
 			IIMaxPower.CurrentValue = IP.MaxPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", (int)mCore.Configuration.MaxPWM);
