@@ -1109,8 +1109,8 @@ namespace LaserGRBL.SvgConverter
 		/// </summary>
 		private Point[] GetBezierApproximation(Point[] controlPoints, int outputSegmentCount)
 		{
-			//return GetBezierApproximationOld(controlPoints, outputSegmentCount);
-			return BezierTools.FlattenTo(controlPoints, 0.1).ToArray();
+			return GetBezierApproximationOld(controlPoints, outputSegmentCount);
+			//return BezierTools.FlattenTo(controlPoints, 0.1).ToArray();
 			//return BezierTools.FlattenTo(controlPoints, 0.01).ToArray();
 		}
 

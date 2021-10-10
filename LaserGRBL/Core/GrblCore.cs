@@ -1657,7 +1657,7 @@ namespace LaserGRBL
 		// this feature can work only if $10=3 (status report with buffer size report enabled)
 		private void HandleMissingOK() 
 		{
-			if (BufferIsFull() && HasPendingCommands() && MachineSayBufferFree() && MachineNotMovingOrReply() && MachineStatus == MacStatus.Run)
+			if (HasPendingCommands() && !BufferIsFree() && MachineSayBufferFree() && MachineNotMovingOrReply() && MachineStatus == MacStatus.Run)
 				CreateFakeOK(mPending.Count); //rispondi "ok" a tutti i comandi pending
 		}
 
@@ -1674,6 +1674,7 @@ namespace LaserGRBL
 
 		private bool MachineNotMovingOrReply() => debugLastMoveOrActivityDelay.ElapsedTime > TimeSpan.FromSeconds(10);
 		private bool MachineSayBufferFree() => mGrblBuffer == BufferSize;
+		private bool BufferIsFree() => mUsedBuffer == 0;
 		private bool HasPendingCommands() => mPending.Count > 0;
 
 		protected virtual void ManageReceivedLine(string rline)

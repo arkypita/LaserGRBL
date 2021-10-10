@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tableLayoutPanel9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tableLayoutPanel9.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -152,7 +152,7 @@
   <data name="LblBorderTracing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="LblBorderTracing.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 5</value>
   </data>
@@ -169,7 +169,7 @@
     <value>LblBorderTracing</value>
   </data>
   <data name="&gt;&gt;LblBorderTracing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;LblBorderTracing.Parent" xml:space="preserve">
     <value>tableLayoutPanel6</value>
@@ -202,7 +202,7 @@
     <value>LblBorderTracingmm</value>
   </data>
   <data name="&gt;&gt;LblBorderTracingmm.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;LblBorderTracingmm.Parent" xml:space="preserve">
     <value>tableLayoutPanel6</value>
@@ -229,7 +229,7 @@
     <value>IIBorderTracing</value>
   </data>
   <data name="&gt;&gt;IIBorderTracing.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=3.5.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=4.5.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IIBorderTracing.Parent" xml:space="preserve">
     <value>tableLayoutPanel6</value>
@@ -267,6 +267,9 @@
   <data name="BtnPSHelper.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
+  <metadata name="TT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="BtnPSHelper.ToolTip" xml:space="preserve">
     <value>Open Laser &amp; Material DB</value>
   </data>
@@ -274,7 +277,7 @@
     <value>BtnPSHelper</value>
   </data>
   <data name="&gt;&gt;BtnPSHelper.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.5.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.5.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnPSHelper.Parent" xml:space="preserve">
     <value>tableLayoutPanel6</value>
@@ -301,7 +304,7 @@
     <value>tableLayoutPanel6</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel6.Parent" xml:space="preserve">
     <value>GbSpeed</value>
@@ -310,7 +313,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel6.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LblBorderTracing" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LblBorderTracingmm" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="IIBorderTracing" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnPSHelper" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;Rows Styles="AutoSize,0,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LblBorderTracing" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LblBorderTracingmm" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="IIBorderTracing" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnPSHelper" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,76" /&gt;&lt;Rows Styles="AutoSize,0,Absolute,23,Absolute,23" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="GbSpeed.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -331,7 +334,7 @@
     <value>GbSpeed</value>
   </data>
   <data name="&gt;&gt;GbSpeed.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;GbSpeed.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
@@ -352,7 +355,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="tableLayoutPanel7.ColumnCount" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="BtnModulationInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -373,7 +376,7 @@
 </value>
   </data>
   <data name="BtnModulationInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>221, 30</value>
+    <value>242, 39</value>
   </data>
   <data name="BtnModulationInfo.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 17</value>
@@ -391,46 +394,13 @@ Click for more information...</value>
     <value>BtnModulationInfo</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.5.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.5.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="label26.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="label26.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label26.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 7</value>
-  </data>
-  <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
-  </data>
-  <data name="label26.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="label26.Text" xml:space="preserve">
-    <value>Laser OFF</value>
-  </data>
-  <data name="&gt;&gt;label26.Name" xml:space="preserve">
-    <value>label26</value>
-  </data>
-  <data name="&gt;&gt;label26.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label26.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="LblSmin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -442,7 +412,7 @@ Click for more information...</value>
     <value>NoControl</value>
   </data>
   <data name="LblSmin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 32</value>
+    <value>3, 31</value>
   </data>
   <data name="LblSmin.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 13</value>
@@ -457,19 +427,19 @@ Click for more information...</value>
     <value>LblSmin</value>
   </data>
   <data name="&gt;&gt;LblSmin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;LblSmin.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
   <data name="&gt;&gt;LblSmin.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="IIMinPower.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
   <data name="IIMinPower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>61, 31</value>
+    <value>72, 30</value>
   </data>
   <data name="IIMinPower.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 15</value>
@@ -481,70 +451,13 @@ Click for more information...</value>
     <value>IIMinPower</value>
   </data>
   <data name="&gt;&gt;IIMinPower.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=3.5.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=4.5.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IIMinPower.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
   <data name="&gt;&gt;IIMinPower.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="LblSmax.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="LblSmax.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="LblSmax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="LblSmax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 32</value>
-  </data>
-  <data name="LblSmax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
-  </data>
-  <data name="LblSmax.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="LblSmax.Text" xml:space="preserve">
-    <value>S-MAX</value>
-  </data>
-  <data name="&gt;&gt;LblSmax.Name" xml:space="preserve">
-    <value>LblSmax</value>
-  </data>
-  <data name="&gt;&gt;LblSmax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblSmax.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;LblSmax.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="IIMaxPower.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="IIMaxPower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 31</value>
-  </data>
-  <data name="IIMaxPower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 15</value>
-  </data>
-  <data name="IIMaxPower.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;IIMaxPower.Name" xml:space="preserve">
-    <value>IIMaxPower</value>
-  </data>
-  <data name="&gt;&gt;IIMaxPower.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=3.5.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;IIMaxPower.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;IIMaxPower.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="label18.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -559,25 +472,25 @@ Click for more information...</value>
     <value>3, 7</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 13</value>
+    <value>63, 13</value>
   </data>
   <data name="label18.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
-    <value>Laser ON</value>
+    <value>Laser Mode</value>
   </data>
   <data name="&gt;&gt;label18.Name" xml:space="preserve">
     <value>label18</value>
   </data>
   <data name="&gt;&gt;label18.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label18.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="BtnOnOffInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -598,7 +511,7 @@ Click for more information...</value>
 </value>
   </data>
   <data name="BtnOnOffInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>221, 5</value>
+    <value>242, 5</value>
   </data>
   <data name="BtnOnOffInfo.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 17</value>
@@ -617,19 +530,22 @@ Click for more information...</value>
     <value>BtnOnOffInfo</value>
   </data>
   <data name="&gt;&gt;BtnOnOffInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=3.5.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.5.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnOnOffInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
   <data name="&gt;&gt;BtnOnOffInfo.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>4</value>
+  </data>
+  <data name="CBLaserON.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="CBLaserON.Location" type="System.Drawing.Point, System.Drawing">
-    <value>61, 3</value>
+    <value>72, 3</value>
   </data>
   <data name="CBLaserON.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 21</value>
+    <value>164, 21</value>
   </data>
   <data name="CBLaserON.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -638,36 +554,135 @@ Click for more information...</value>
     <value>CBLaserON</value>
   </data>
   <data name="&gt;&gt;CBLaserON.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CBLaserON.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
   <data name="&gt;&gt;CBLaserON.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>5</value>
   </data>
-  <data name="CBLaserOFF.Items" xml:space="preserve">
-    <value>M5</value>
+  <data name="LblSmax.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
-  <data name="CBLaserOFF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 3</value>
+  <data name="LblSmax.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="CBLaserOFF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 21</value>
+  <data name="LblSmax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="CBLaserOFF.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
+  <data name="LblSmax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 51</value>
   </data>
-  <data name="&gt;&gt;CBLaserOFF.Name" xml:space="preserve">
-    <value>CBLaserOFF</value>
+  <data name="LblSmax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
   </data>
-  <data name="&gt;&gt;CBLaserOFF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="LblSmax.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
   </data>
-  <data name="&gt;&gt;CBLaserOFF.Parent" xml:space="preserve">
+  <data name="LblSmax.Text" xml:space="preserve">
+    <value>S-MAX</value>
+  </data>
+  <data name="&gt;&gt;LblSmax.Name" xml:space="preserve">
+    <value>LblSmax</value>
+  </data>
+  <data name="&gt;&gt;LblSmax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblSmax.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
-  <data name="&gt;&gt;CBLaserOFF.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;LblSmax.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="IIMaxPower.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="IIMaxPower.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 51</value>
+  </data>
+  <data name="IIMaxPower.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 15</value>
+  </data>
+  <data name="IIMaxPower.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;IIMaxPower.Name" xml:space="preserve">
+    <value>IIMaxPower</value>
+  </data>
+  <data name="&gt;&gt;IIMaxPower.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=4.5.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;IIMaxPower.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;IIMaxPower.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="LblMinPerc.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="LblMinPerc.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblMinPerc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LblMinPerc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 31</value>
+  </data>
+  <data name="LblMinPerc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 13</value>
+  </data>
+  <data name="LblMinPerc.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="LblMinPerc.Text" xml:space="preserve">
+    <value>0%</value>
+  </data>
+  <data name="&gt;&gt;LblMinPerc.Name" xml:space="preserve">
+    <value>LblMinPerc</value>
+  </data>
+  <data name="&gt;&gt;LblMinPerc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblMinPerc.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;LblMinPerc.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="LblMaxPerc.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="LblMaxPerc.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblMaxPerc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LblMaxPerc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 51</value>
+  </data>
+  <data name="LblMaxPerc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="LblMaxPerc.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="LblMaxPerc.Text" xml:space="preserve">
+    <value>100%</value>
+  </data>
+  <data name="&gt;&gt;LblMaxPerc.Name" xml:space="preserve">
+    <value>LblMaxPerc</value>
+  </data>
+  <data name="&gt;&gt;LblMaxPerc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblMaxPerc.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;LblMaxPerc.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
   <data name="tableLayoutPanel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -677,10 +692,10 @@ Click for more information...</value>
     <value>3, 16</value>
   </data>
   <data name="tableLayoutPanel7.RowCount" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>262, 50</value>
+    <value>262, 68</value>
   </data>
   <data name="tableLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -689,7 +704,7 @@ Click for more information...</value>
     <value>tableLayoutPanel7</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel7.Parent" xml:space="preserve">
     <value>GbLaser</value>
@@ -698,7 +713,7 @@ Click for more information...</value>
     <value>0</value>
   </data>
   <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnModulationInfo" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="label26" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="LblSmin" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="IIMinPower" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LblSmax" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="IIMaxPower" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="label18" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnOnOffInfo" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="CBLaserON" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CBLaserOFF" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnModulationInfo" Row="1" RowSpan="2" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="LblSmin" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="IIMinPower" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label18" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnOnOffInfo" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="CBLaserON" Row="0" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="LblSmax" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="IIMaxPower" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LblMinPerc" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="LblMaxPerc" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="GbLaser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -707,7 +722,7 @@ Click for more information...</value>
     <value>3, 51</value>
   </data>
   <data name="GbLaser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>268, 69</value>
+    <value>268, 87</value>
   </data>
   <data name="GbLaser.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -719,7 +734,7 @@ Click for more information...</value>
     <value>GbLaser</value>
   </data>
   <data name="&gt;&gt;GbLaser.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;GbLaser.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
@@ -755,7 +770,7 @@ Click for more information...</value>
     <value>BtnCancel</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -782,7 +797,7 @@ Click for more information...</value>
     <value>BtnCreate</value>
   </data>
   <data name="&gt;&gt;BtnCreate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;BtnCreate.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -794,13 +809,13 @@ Click for more information...</value>
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 126</value>
+    <value>3, 144</value>
   </data>
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>268, 31</value>
+    <value>268, 33</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -809,7 +824,7 @@ Click for more information...</value>
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
@@ -830,7 +845,7 @@ Click for more information...</value>
     <value>4</value>
   </data>
   <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 160</value>
+    <value>274, 180</value>
   </data>
   <data name="tableLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -839,7 +854,7 @@ Click for more information...</value>
     <value>tableLayoutPanel9</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel9.Parent" xml:space="preserve">
     <value>$this</value>
@@ -850,6 +865,9 @@ Click for more information...</value>
   <data name="tableLayoutPanel9.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="GbSpeed" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GbLaser" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel1" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
@@ -860,7 +878,7 @@ Click for more information...</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>274, 160</value>
+    <value>274, 180</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -875,66 +893,12 @@ Click for more information...</value>
     <value>TT</value>
   </data>
   <data name="&gt;&gt;TT.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SvgToGCodeForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="CBLaserON.Items" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LblLinearFillingmm.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="CBLaserON.Items1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="GbSize.Text" xml:space="preserve">
-    <value />
-  </data>
-  <metadata name="TT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>
