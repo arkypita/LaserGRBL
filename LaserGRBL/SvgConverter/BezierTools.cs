@@ -85,13 +85,14 @@ namespace LaserGRBL.SvgConverter
             // Experimentally split the curve in half.
             var curveParts = SplitCurveAtT(segment, 0.5);
 
-            // How much did we gain from drawing two lines instead of one? Pretend they form a triangle with the original and calculate the area.
-            if (CalculateTriangleArea(segment[0], curveParts.Item1[3], segment[3]) < error)
+            // Base case: how much did we gain from drawing two lines instead of one? Check the area of the approximating triangle.
+            // If it's below our error, then we are done since it would either form a long, thin line or a very small, triangular dot.
+            if (Math.Sqrt(CalculateTriangleArea(segment[0], curveParts.Item1[3], segment[3])) < error)
             {
-                return points;
+                return new [] { segment[0], curveParts.Item1[3], segment[3] };
             }
 
-            // Flatten the two segments and combine them.
+            // Recursive case: further flatten the two segments and combine.
             return FlattenSegmentTo(curveParts.Item1.Take(4), error).Concat(FlattenSegmentTo(curveParts.Item2.Take(4), error).Skip(1));
         }
 
