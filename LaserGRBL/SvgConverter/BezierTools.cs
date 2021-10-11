@@ -71,26 +71,27 @@ namespace LaserGRBL.SvgConverter
         /// Creates an approximation of a cubic Bezier curve as a series of line segments
         /// </summary>
         /// 
-        /// The algorithm is quite simple. If the curve isn't flat enough, then split the curve in half and recursively
+        /// The algorithm is quite simple. If the curve isn't flat or small enough, then split the curve in half and recursively
         /// test each half for flatness and assemble the segments in a list.
         /// 
         /// <param name="points">The 4 control points of a segment</param>
-        /// <param name="error">The flatness error to enforce.</param>
+        /// <param name="error">The linear error to enforce.</param>
         /// <returns></returns>
         private static IEnumerable<Point> FlattenSegmentTo(IEnumerable<Point> points, double error)
         {
             // Convert the points to an array
             var segment = points.ToArray();
 
-            // Experimentally split the curve in half.
-            var curveParts = SplitCurveAtT(segment, 0.5);
-
-            // Base case: how much did we gain from drawing two lines instead of one? Check the area of the approximating triangle.
-            // If it's below our error, then we are done since it would either form a long, thin line or a very small, triangular dot.
-            if (Math.Sqrt(CalculateTriangleArea(segment[0], curveParts.Item1[3], segment[3])) < error)
+            // Base case: test how flat or small each approximating triangle has become. If it's below our error
+            // then we are done since it would either form a long, thin line or two sides of a very small, triangular dot.
+            if (Math.Sqrt(CalculateTriangleArea(segment[0], segment[1], segment[2])) < error
+                && Math.Sqrt(CalculateTriangleArea(segment[1], segment[2], segment[3])) < error)
             {
-                return new [] { segment[0], curveParts.Item1[3], segment[3] };
+                return segment;
             }
+
+            // Split the curve in half.
+            var curveParts = SplitCurveAtT(segment, 0.5);
 
             // Recursive case: further flatten the two segments and combine.
             return FlattenSegmentTo(curveParts.Item1.Take(4), error).Concat(FlattenSegmentTo(curveParts.Item2.Take(4), error).Skip(1));
@@ -103,7 +104,7 @@ namespace LaserGRBL.SvgConverter
         /// For a series of Bezier curves represented as a series of control points, interpolate a series of points for representing the curve as lines
         /// </summary>
         /// 
-        /// Cubic bezier curves are typically represented as a list of 4 control points. Multiple continuous curves are concenated so that
+        /// Cubic bezier curves are typically represented as a list of 4 control points. Multiple continuous curves are concatenated so that
         /// the last point on one curve is the first point of the next.
         /// 
         /// This function takes a contiguous series of cubic bezier curves and returns an approximated representation of the curve as contiguous lines.
@@ -112,7 +113,7 @@ namespace LaserGRBL.SvgConverter
         /// error, the flatter the curve must be before it's converted into a line segment.
         /// 
         /// <param name="points">The list of contiguous bezier segments</param>
-        /// <param name="error">The flatness error. 0.01 being the default, but 0.001 producing beautiful results.</param>
+        /// <param name="error">The linear error, understood as max distance from ground truth. </param>
         /// <returns>An enumerable list of points representing the line segments</returns>
         public static IEnumerable<Point> FlattenTo(IList<Point> points, double error=0.01)
         {
