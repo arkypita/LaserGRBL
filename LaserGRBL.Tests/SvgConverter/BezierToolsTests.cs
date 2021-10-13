@@ -1,5 +1,8 @@
 using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using LaserGRBL.SvgConverter;
 using Xunit;
@@ -13,7 +16,7 @@ namespace LaserGRBL.Tests
         [InlineData(new [] { 0.0, 0, 1, 0, 2, 0, 3, 0 } )] /* horizontal line (regression test for stack overflow bug in original BezierTools.cs) */
         [InlineData(new [] { 0.0, 0, 1, 1, 2, 2, 3, 3 } )] /* diagonal */
         [Theory]
-        public void FlattenTo_NoSubdivisionWhenLinear_ReturnBaseCaseApproxTriangle(double[] polygon)
+        public void FlattenTo_NoSubdivisionWhenLinear_ReturnBaseCase(double[] polygon)
         {
             var points = UnflattenArrayToPoints(polygon);
             var result = BezierTools.FlattenTo(points, .001).ToArray();
@@ -45,6 +48,20 @@ namespace LaserGRBL.Tests
             var points = UnflattenArrayToPoints(polygon);
             var resultingPoints = BezierTools.FlattenTo(points, acceptedError).ToArray();
             Assert.Equal(1 + expectedNumSides, resultingPoints.Length);
+        }
+
+        [Fact]
+        public void FlattenTo_LimitsRecursiveDepth_10metersSubdividesToNoLessThan100thOfMillimeterByDefault()
+        {
+            // If a curve is 10 meters, how many subdivisions would reduce a segment length to below 0.01 millimeters?
+            // Take that as our maximum # of reasonable subdivisions for approximating a curve.
+            var maxDivisions = Math.Ceiling(Math.Log(10 * 1000 / .01) / Math.Log(2));
+
+            var points = UnflattenArrayToPoints(new double[] { 0, 0, 0, 1, 1, 1, 1, 0 });
+            var result = BezierTools.FlattenTo(points, 0).ToArray();
+            Assert.NotEmpty(result);
+            var actualDivisions = Math.Log(result.Length / 3 /* points per bezier */) / Math.Log(2);
+            Assert.InRange(actualDivisions, 1, maxDivisions);
         }
 
         public Point[] UnflattenArrayToPoints(double[] p)

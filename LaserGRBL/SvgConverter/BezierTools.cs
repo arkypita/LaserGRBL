@@ -77,14 +77,15 @@ namespace LaserGRBL.SvgConverter
         /// <param name="points">The 4 control points of a segment</param>
         /// <param name="error">The linear error to enforce.</param>
         /// <returns></returns>
-        private static IEnumerable<Point> FlattenSegmentTo(IEnumerable<Point> points, double error)
+        private static IEnumerable<Point> FlattenSegmentTo(IEnumerable<Point> points, double error, int subdivisions, int maxSubdivisions)
         {
             // Convert the points to an array
             var segment = points.ToArray();
 
-            // Base case: test how flat or small each approximating triangle has become. If it's below our error
+            // Base case: test how flat or small each approximating "triangle" has become. If it's below our error
             // then we are done since it would either form a long, thin line or two sides of a very small, triangular dot.
-            if (Math.Sqrt(CalculateTriangleArea(segment[0], segment[1], segment[2])) < error
+            if (subdivisions >= maxSubdivisions
+                || Math.Sqrt(CalculateTriangleArea(segment[0], segment[1], segment[2])) < error
                 && Math.Sqrt(CalculateTriangleArea(segment[1], segment[2], segment[3])) < error)
             {
                 return segment;
@@ -94,7 +95,8 @@ namespace LaserGRBL.SvgConverter
             var curveParts = SplitCurveAtT(segment, 0.5);
 
             // Recursive case: further flatten the two segments and combine.
-            return FlattenSegmentTo(curveParts.Item1.Take(4), error).Concat(FlattenSegmentTo(curveParts.Item2.Take(4), error).Skip(1));
+            return FlattenSegmentTo(curveParts.Item1.Take(4), error, subdivisions + 1, maxSubdivisions)
+                .Concat(FlattenSegmentTo(curveParts.Item2.Take(4), error, subdivisions + 1, maxSubdivisions).Skip(1));
         }
 
         private static double CalculateTriangleArea(Point a, Point b, Point c)
@@ -114,12 +116,13 @@ namespace LaserGRBL.SvgConverter
         /// 
         /// <param name="points">The list of contiguous bezier segments</param>
         /// <param name="error">The linear error, understood as max distance from ground truth. </param>
+        /// <param name="maxSubdivisions">The maximum times to recursively subdivide. 20 means 10 meters would be subdivided into 0.01 millimeters.</param>
         /// <returns>An enumerable list of points representing the line segments</returns>
-        public static IEnumerable<Point> FlattenTo(IList<Point> points, double error=0.01)
+        public static IEnumerable<Point> FlattenTo(IList<Point> points, double error=0.01, int maxSubdivisions=20)
         {
             var result = new List<Point> { points.First() };
             for (var i = 0; i + 3 <= points.Count; i += 3)
-                result.AddRange(FlattenSegmentTo(points.Skip(i).Take(4).ToList(), error).Skip(1));
+                result.AddRange(FlattenSegmentTo(points.Skip(i).Take(4).ToList(), error, 0, maxSubdivisions).Skip(1));
 
             return result;
         }
