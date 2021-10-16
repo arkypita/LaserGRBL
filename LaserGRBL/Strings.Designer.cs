@@ -315,6 +315,24 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Test notification has been sent, please check your phone!.
+        /// </summary>
+        internal static string BoxTelegramSettingText {
+            get {
+                return ResourceManager.GetString("BoxTelegramSettingText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Telegram notification.
+        /// </summary>
+        internal static string BoxTelegramSettingTitle {
+            get {
+                return ResourceManager.GetString("BoxTelegramSettingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a No changes... nothing to write!.
         /// </summary>
         internal static string BoxWriteConfigNoChange {

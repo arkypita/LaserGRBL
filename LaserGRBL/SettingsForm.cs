@@ -70,7 +70,10 @@ namespace LaserGRBL
             CbPlayConnect.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Connect}.Enabled", true);
             CbPlayDisconnect.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}.Enabled", true);
 
-            successSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Success}", $"Sound\\{SoundEvent.EventId.Success}.wav"));
+			CbTelegramNotification.Checked = Settings.GetObject("TelegramNotification.Enabled", false);
+			TxtNotification.Text = Tools.Protector.Decrypt(Settings.GetObject("TelegramNotification.Code", ""));
+
+			successSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Success}", $"Sound\\{SoundEvent.EventId.Success}.wav"));
             SuccesFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Success}", $"Sound\\{SoundEvent.EventId.Success}.wav");
             warningSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Warning}", $"Sound\\{SoundEvent.EventId.Warning}.wav"));
             WarningFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Warning}", $"Sound\\{SoundEvent.EventId.Warning}.wav");
@@ -202,6 +205,9 @@ namespace LaserGRBL
             Settings.SetObject($"Sound.{SoundEvent.EventId.Connect}.Enabled", CbPlayConnect.Checked);
             Settings.SetObject($"Sound.{SoundEvent.EventId.Disconnect}.Enabled", CbPlayDisconnect.Checked);
 
+			Settings.SetObject("TelegramNotification.Enabled", CbTelegramNotification.Checked);
+			Settings.SetObject("TelegramNotification.Code", Tools.Protector.Encrypt(TxtNotification.Text));
+
             Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);
 
             SettingsChanged?.Invoke(this, null);
@@ -282,5 +288,29 @@ namespace LaserGRBL
                 DisconnectFullLabel.Text = SoundBrowserDialog.FileName;
             }
         }
-    }
+
+		private void TbNotification_TextChanged(object sender, EventArgs e)
+		{
+			EnableTest();
+		}
+
+		private void EnableTest()
+		{
+			BtnTestNotification.Enabled = TxtNotification.Text.Trim().Length == 10 && CbTelegramNotification.Checked;
+		}
+
+		private void BtnTestNotification_Click(object sender, EventArgs e)
+		{
+			Telegram.NotifyEvent(TxtNotification.Text, "If you receive this message, all is fine!");
+			MessageBox.Show(Strings.BoxTelegramSettingText, Strings.BoxTelegramSettingTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void BtnTelegNoteInfo_Click(object sender, EventArgs e)
+		{ Tools.Utils.OpenLink(@"https://lasergrbl.com/telegram/"); }
+
+		private void CbTelegramNotification_CheckedChanged(object sender, EventArgs e)
+		{
+			EnableTest();
+		}
+	}
 }

@@ -72,6 +72,7 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
 			this.GbSize = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.BtnUnlockProportion = new LaserGRBL.UserControls.ImageButton();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.IIOffsetX = new LaserGRBL.UserControls.NumericInput.DecimalInputRanged();
@@ -115,7 +116,6 @@ namespace LaserGRBL.RasterConverter
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnCreate = new System.Windows.Forms.Button();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
-			this.BtnUnlockProportion = new LaserGRBL.UserControls.ImageButton();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.GbSize.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -161,6 +161,20 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel2, 0, 0);
 			this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 5, 3);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+			// 
+			// BtnUnlockProportion
+			// 
+			this.BtnUnlockProportion.AltImage = ((System.Drawing.Image)(resources.GetObject("BtnUnlockProportion.AltImage")));
+			resources.ApplyResources(this.BtnUnlockProportion, "BtnUnlockProportion");
+			this.BtnUnlockProportion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnUnlockProportion.Caption = null;
+			this.BtnUnlockProportion.Coloration = System.Drawing.Color.Empty;
+			this.BtnUnlockProportion.Image = ((System.Drawing.Image)(resources.GetObject("BtnUnlockProportion.Image")));
+			this.BtnUnlockProportion.Name = "BtnUnlockProportion";
+			this.BtnUnlockProportion.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnUnlockProportion, resources.GetString("BtnUnlockProportion.ToolTip"));
+			this.BtnUnlockProportion.UseAltImage = false;
+			this.BtnUnlockProportion.Click += new System.EventHandler(this.BtnUnlockProportion_Click);
 			// 
 			// label9
 			// 
@@ -537,20 +551,6 @@ namespace LaserGRBL.RasterConverter
 			this.TT.AutoPopDelay = 10000;
 			this.TT.InitialDelay = 500;
 			this.TT.ReshowDelay = 100;
-			// 
-			// BtnUnlockProportion
-			// 
-			this.BtnUnlockProportion.AltImage = ((System.Drawing.Image)(resources.GetObject("BtnUnlockProportion.AltImage")));
-			resources.ApplyResources(this.BtnUnlockProportion, "BtnUnlockProportion");
-			this.BtnUnlockProportion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnUnlockProportion.Caption = null;
-			this.BtnUnlockProportion.Coloration = System.Drawing.Color.Empty;
-			this.BtnUnlockProportion.Image = ((System.Drawing.Image)(resources.GetObject("BtnUnlockProportion.Image")));
-			this.BtnUnlockProportion.Name = "BtnUnlockProportion";
-			this.BtnUnlockProportion.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.BtnUnlockProportion, resources.GetString("BtnUnlockProportion.ToolTip"));
-			this.BtnUnlockProportion.UseAltImage = false;
-			this.BtnUnlockProportion.Click += new System.EventHandler(this.BtnUnlockProportion_Click);
 			// 
 			// ConvertSizeAndOptionForm
 			// 

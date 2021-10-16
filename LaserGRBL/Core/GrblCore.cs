@@ -477,7 +477,11 @@ namespace LaserGRBL
 			Logger.LogMessage("Issue detector", "{0} [{1},{2},{3}]", issue, FreeBuffer, GrblBuffer, GrblBlock);
 
 			if (issue > 0) //negative numbers indicate issue caused by the user, so must not be report to UI
+			{
 				RiseIssueDetected(issue);
+				Telegram.NotifyEvent(String.Format("<b>Job Issue</b>\n{0}", issue));
+				SoundEvent.PlaySound(SoundEvent.EventId.Fatal);
+			}
 		}
 
 		void RiseJogStateChange(bool jog)
@@ -1523,10 +1527,8 @@ namespace LaserGRBL
                 //bool noMovement = !executingM4 && debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(10);
 
                 if (noQueryResponse)
-                {
                     SetIssue(DetectedIssue.StopResponding);
-					SoundEvent.PlaySound(SoundEvent.EventId.Fatal); 
-                }
+
 				//else if (noMovement)
 				//	SetIssue(DetectedIssue.StopMoving);
 			}
@@ -2173,6 +2175,7 @@ namespace LaserGRBL
 				OnJobEnd();
 
 				SoundEvent.PlaySound(SoundEvent.EventId.Success);
+				Telegram.NotifyEvent(String.Format("<b>Job Executed</b>\n{0} lines, {1} errors\nTime: {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)));
 
 				ForceStatusIdle();
 			}
