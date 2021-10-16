@@ -410,4 +410,10 @@ Only engravers with grbl version &gt;= 1.1 with "laser mode" enabled ($32=1) can
   <data name="WarnUnlockProportionTitle" xml:space="preserve">
     <value>Warning</value>
   </data>
+  <data name="BoxTelegramSettingText" xml:space="preserve">
+    <value>Test notification has been sent, please check your phone!</value>
+  </data>
+  <data name="BoxTelegramSettingTitle" xml:space="preserve">
+    <value>Telegram notification</value>
+  </data>
 </root>
