@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30717.126
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1705
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaserGRBL", "LaserGRBL\LaserGRBL.csproj", "{839698EC-FE05-4112-ACCB-A5D7556714F0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaserGRBL.Tests", "LaserGRBL.Tests\LaserGRBL.Tests.csproj", "{1A7B43EB-9BC5-4DE6-AFAB-0913C3A7ACAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{839698EC-FE05-4112-ACCB-A5D7556714F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{839698EC-FE05-4112-ACCB-A5D7556714F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{839698EC-FE05-4112-ACCB-A5D7556714F0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1A7B43EB-9BC5-4DE6-AFAB-0913C3A7ACAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1A7B43EB-9BC5-4DE6-AFAB-0913C3A7ACAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1A7B43EB-9BC5-4DE6-AFAB-0913C3A7ACAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1A7B43EB-9BC5-4DE6-AFAB-0913C3A7ACAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
