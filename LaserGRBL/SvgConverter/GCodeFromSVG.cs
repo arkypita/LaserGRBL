@@ -48,6 +48,7 @@ namespace LaserGRBL.SvgConverter
 
 		public System.Drawing.PointF UserOffset = new System.Drawing.PointF(0,0);
 		public float GCodeXYFeed = 2000;        // XY feed to apply for G1
+        private double scaledError = 1.0;
 
 		public bool svgConvertToMM = true;
 		private float gcodeScale = 1;                    // finally scale with this factor if svgScaleApply and svgMaxSize
@@ -180,7 +181,8 @@ namespace LaserGRBL.SvgConverter
 								 //    tmp.M11 = 1 / factor_Mm2Px; // 3.543307;         // https://www.w3.org/TR/SVG/coords.html#Units
 				if (vbWidth > 0)
 				{
-					tmp.M11 = scale * svgWidthPx / vbWidth;
+					scaledError = scale * svgWidthPx / vbWidth;
+					tmp.M11 = scaledError;
 					tmp.OffsetX = vbOffX * scale;   // svgWidthUnit / vbWidth;
 				}
 			}
@@ -1109,13 +1111,12 @@ namespace LaserGRBL.SvgConverter
 		/// </summary>
 		private Point[] GetBezierApproximation(Point[] controlPoints, int outputSegmentCount)
 		{
-			return GetBezierApproximationOld(controlPoints, outputSegmentCount);
-			//return BezierTools.FlattenTo(controlPoints, 0.1).ToArray();
-			//return BezierTools.FlattenTo(controlPoints, 0.01).ToArray();
+			//return GetBezierApproximationOld(controlPoints, outputSegmentCount);
+			return BezierTools.FlattenTo(controlPoints, .2 / scaledError).ToArray();
+            //return BezierTools.FlattenTo(controlPoints, 0.01).ToArray();
 		}
 
-
-		private Point[] GetBezierApproximationOld(Point[] controlPoints, int outputSegmentCount)
+        private Point[] GetBezierApproximationOld(Point[] controlPoints, int outputSegmentCount)
 		{
 			Point[] points = new Point[outputSegmentCount + 1];
 			for (int i = 0; i <= outputSegmentCount; i++)
