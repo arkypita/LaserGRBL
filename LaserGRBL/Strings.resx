@@ -404,4 +404,10 @@ Only engravers with grbl version &gt;= 1.1 with "laser mode" enabled ($32=1) can
   <data name="Line2LineOptions" xml:space="preserve">
     <value>Line To Line Options</value>
   </data>
+  <data name="WarnUnlockProportionText" xml:space="preserve">
+    <value>Freely assigning the width and height of the work can lead to distortion of the image. Do you want to continue?</value>
+  </data>
+  <data name="WarnUnlockProportionTitle" xml:space="preserve">
+    <value>Warning</value>
+  </data>
 </root>

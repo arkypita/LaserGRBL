@@ -223,13 +223,14 @@ namespace LaserGRBL.RasterConverter
 
 		private void IISizeW_OnTheFlyValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
 		{
-			if (ByUser)
+			if (ByUser && !BtnUnlockProportion.UseAltImage)
 				IISizeH.CurrentValue = IP.WidthToHeight(NewValue);
 		}
 
 		private void IISizeH_OnTheFlyValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
 		{
-			if (ByUser) IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
+			if (ByUser && !BtnUnlockProportion.UseAltImage)
+				IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
 		}
 
 		private void CbAutosize_CheckedChanged(object sender, EventArgs e)
@@ -308,6 +309,21 @@ namespace LaserGRBL.RasterConverter
 		{
 			IIOffsetY.CurrentValue = -(IISizeH.CurrentValue / 2);
 			IIOffsetX.CurrentValue = -(IISizeW.CurrentValue / 2);
+		}
+
+		private void BtnUnlockProportion_Click(object sender, EventArgs e)
+		{
+			if (MessageBox.Show(Strings.WarnUnlockProportionText, Strings.WarnUnlockProportionTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+			{
+				BtnUnlockProportion.UseAltImage = !BtnUnlockProportion.UseAltImage;
+				if (!BtnUnlockProportion.UseAltImage)
+				{
+					if (IP.Original.Height < IP.Original.Width)
+						IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
+					else
+						IISizeW.CurrentValue = IP.HeightToWidht(IISizeH.CurrentValue);
+				}
+			}
 		}
 	}
 }

@@ -881,6 +881,24 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Freely assigning the width and height of the work can lead to distortion of the image. Do you want to continue?.
+        /// </summary>
+        internal static string WarnUnlockProportionText {
+            get {
+                return ResourceManager.GetString("WarnUnlockProportionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Warning.
+        /// </summary>
+        internal static string WarnUnlockProportionTitle {
+            get {
+                return ResourceManager.GetString("WarnUnlockProportionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a &quot;M4 Dynamic Laser Power Mode&quot; has been set, but your engraver doesn&apos;t seem to support it.
         ///Only engravers with grbl version &gt;= 1.1 with &quot;laser mode&quot; enabled ($32=1) can take advantage of M4 option..
         /// </summary>
