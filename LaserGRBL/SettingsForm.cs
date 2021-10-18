@@ -84,7 +84,9 @@ namespace LaserGRBL
             disconnectSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}", $"Sound\\{SoundEvent.EventId.Disconnect}.wav"));
             DisconnectFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}", $"Sound\\{SoundEvent.EventId.Disconnect}.wav");
 
-            groupBox1.ForeColor = groupBox2.ForeColor = groupBox3.ForeColor = ColorScheme.FormForeColor;
+			CbSmartBezier.Checked = Settings.GetObject($"Vector.UseSmartBezier", true);
+
+			groupBox1.ForeColor = groupBox2.ForeColor = groupBox3.ForeColor = ColorScheme.FormForeColor;
 
             SuccesFullLabel.Visible = WarningFullLabel.Visible = ErrorFullLabel.Visible = ConnectFullLabel.Visible = DisconnectFullLabel.Visible = false;
 
@@ -210,7 +212,9 @@ namespace LaserGRBL
 
             Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);
 
-            SettingsChanged?.Invoke(this, null);
+			Settings.SetObject($"Vector.UseSmartBezier", CbSmartBezier.Checked);
+
+			SettingsChanged?.Invoke(this, null);
 
             Close();
 

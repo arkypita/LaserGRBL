@@ -1111,9 +1111,10 @@ namespace LaserGRBL.SvgConverter
 		/// </summary>
 		private Point[] GetBezierApproximation(Point[] controlPoints, int outputSegmentCount)
 		{
-			//return GetBezierApproximationOld(controlPoints, outputSegmentCount);
-			return BezierTools.FlattenTo(controlPoints, .2 / scaledError).ToArray();
-            //return BezierTools.FlattenTo(controlPoints, 0.01).ToArray();
+			if (UseLegacyBezier)
+				return GetBezierApproximationOld(controlPoints, outputSegmentCount);
+			else
+				return BezierTools.FlattenTo(controlPoints, .2 / scaledError).ToArray();
 		}
 
         private Point[] GetBezierApproximationOld(Point[] controlPoints, int outputSegmentCount)
@@ -1221,7 +1222,8 @@ namespace LaserGRBL.SvgConverter
 		private bool isReduceOk = false;
 		private bool rejectPoint = false;
 		private double lastGCX = 0, lastGCY = 0, lastSetGCX = 0, lastSetGCY = 0, distance;
-
+		
+		public bool UseLegacyBezier { get; set; }
 		public bool SvgScaleApply { get => svgScaleApply; set => svgScaleApply = value; }
 		public float SvgMaxSize { get => svgMaxSize; set => svgMaxSize = value; }
 

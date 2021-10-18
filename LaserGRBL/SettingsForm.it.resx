@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Annulla</value>
@@ -123,7 +123,7 @@
   <data name="BtnSave.Text" xml:space="preserve">
     <value>Salva</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>492, 52</value>
   </data>
@@ -457,7 +457,7 @@ E' utile per esempio per affondare l'asse Z ed eseguire tagli più profondi.</va
     <value>Imposta il suono per i segnali di errore, per esempio quando la macchina smette di rispondere durante un lavoro di marcatura.</value>
   </data>
   <data name="TpSoundSettings.Text" xml:space="preserve">
-    <value>Suoni</value>
+    <value>Notifiche</value>
   </data>
   <data name="SoundBrowserDialog.Filter" xml:space="preserve">
     <value>File audio Wave|*.wav</value>
