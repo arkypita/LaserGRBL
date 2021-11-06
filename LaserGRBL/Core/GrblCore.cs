@@ -1894,26 +1894,32 @@ namespace LaserGRBL
 		{
 			string wco = p.Substring(4, p.Length - 4);
 			string[] xyz = wco.Split(",".ToCharArray());
-			SetWCO(new GPoint(ParseFloat(xyz[0]), ParseFloat(xyz[1]), ParseFloat(xyz[2])));
+			SetWCO(new GPoint(ParseFloat(xyz,0), ParseFloat(xyz,1), ParseFloat(xyz,2)));
 		}
 
 		private void ParseWPos(string p)
 		{
 			string wpos = p.Substring(5, p.Length - 5);
 			string[] xyz = wpos.Split(",".ToCharArray());
-			SetMPosition(mWCO + new GPoint(ParseFloat(xyz[0]), ParseFloat(xyz[1]), ParseFloat(xyz[2])));
+			SetMPosition(mWCO + new GPoint(ParseFloat(xyz,0), ParseFloat(xyz,1), ParseFloat(xyz,2)));
 		}
 
 		private void ParseMPos(string p)
 		{
 			string mpos = p.Substring(5, p.Length - 5);
 			string[] xyz = mpos.Split(",".ToCharArray());
-			SetMPosition(new GPoint(ParseFloat(xyz[0]), ParseFloat(xyz[1]), ParseFloat(xyz[2])));
+			SetMPosition(new GPoint(ParseFloat(xyz,0), ParseFloat(xyz,1), ParseFloat(xyz,2)));
 		}
 
 		protected static float ParseFloat(string value)
 		{
 			return float.Parse(value, NumberFormatInfo.InvariantInfo);
+		}
+
+		protected static float ParseFloat(string [] arr, int idx, float defval = 0.0f)
+		{
+			if (arr == null || idx < 0 || idx >= arr.Length) return defval;
+			return float.Parse(arr[idx], NumberFormatInfo.InvariantInfo);
 		}
 
 		private void ParseBf(string p)
@@ -1948,7 +1954,7 @@ namespace LaserGRBL
 		{
 			string sfs = p.Substring(3, p.Length - 3);
 			string[] fs = sfs.Split(",".ToCharArray());
-			SetFS(ParseFloat(fs[0]), ParseFloat(fs[1]));
+			SetFS(ParseFloat(fs,0), ParseFloat(fs,1));
 		}
 
 		protected virtual void ParseF(string p)
