@@ -257,8 +257,6 @@ namespace LaserGRBL.RasterConverter
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Optimize.Value", UDOptimize.Value);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.DownSample.Enabled", CbDownSample.Checked);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.DownSample.Value", UDDownSample.Value);
-			//			Settings.SetObject("GrayScaleConversion.VectorizeOptions.ShowDots.Enabled", CbShowDots.Checked);
-			//			Settings.SetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", CbShowImage.Checked);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", (ImageProcessor.Direction)CbFillingDirection.SelectedItem);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", UDFillingQuality.Value);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.OptimizeFast.Enabled", CbOptimizeFast.Checked);
@@ -286,7 +284,9 @@ namespace LaserGRBL.RasterConverter
 
 			Settings.SetObject("GrayScaleConversion.Gcode.Offset.X", IP.TargetOffset.X);
 			Settings.SetObject("GrayScaleConversion.Gcode.Offset.Y", IP.TargetOffset.Y);
-			Settings.SetObject("GrayScaleConversion.Gcode.BiggestDimension", Math.Max(IP.TargetSize.Width, IP.TargetSize.Height));
+
+			Settings.SetObject("GrayScaleConversion.Gcode.ImageSize.W", IP.TargetSize.Width);
+			Settings.SetObject("GrayScaleConversion.Gcode.ImageSize.H", IP.TargetSize.Height);
 
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.LineThreshold.Enabled", IP.UseLineThreshold);
 			Settings.SetObject("GrayScaleConversion.VectorizeOptions.LineThreshold.Value", IP.LineThreshold);
@@ -320,8 +320,6 @@ namespace LaserGRBL.RasterConverter
 			UDDownSample.Value = IP.DownSampling = Settings.GetObject("GrayScaleConversion.VectorizeOptions.DownSample.Value", 2.0m);
 			CbOptimizeFast.Checked = IP.OptimizeFast = Settings.GetObject("GrayScaleConversion.VectorizeOptions.OptimizeFast.Enabled", false);
 
-			//CbShowDots.Checked = IP.ShowDots = Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowDots.Enabled", false);
-			//CbShowImage.Checked = IP.ShowImage = Settings.GetObject("GrayScaleConversion.VectorizeOptions.ShowImage.Enabled", true);
 			CbFillingDirection.SelectedItem = IP.FillingDirection = Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", ImageProcessor.Direction.None);
 			UDFillingQuality.Value = IP.FillingQuality = Math.Min(UDFillingQuality.Maximum, Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", 3.0m));
 

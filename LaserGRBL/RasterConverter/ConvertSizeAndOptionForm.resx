@@ -146,21 +146,22 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnUnlockProportion.AltImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
+        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
 </value>
   </data>
   <data name="BtnUnlockProportion.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -207,7 +208,7 @@
     <value>BtnUnlockProportion</value>
   </data>
   <data name="&gt;&gt;BtnUnlockProportion.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnUnlockProportion.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -297,7 +298,7 @@
     <value>IIOffsetX</value>
   </data>
   <data name="&gt;&gt;IIOffsetX.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.DecimalInputRanged, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.DecimalInputRanged, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IIOffsetX.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -318,7 +319,7 @@
     <value>IIOffsetY</value>
   </data>
   <data name="&gt;&gt;IIOffsetY.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.DecimalInputRanged, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.DecimalInputRanged, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IIOffsetY.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -339,7 +340,7 @@
     <value>IISizeH</value>
   </data>
   <data name="&gt;&gt;IISizeH.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.DecimalInputRanged, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.DecimalInputRanged, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IISizeH.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -360,7 +361,7 @@
     <value>IISizeW</value>
   </data>
   <data name="&gt;&gt;IISizeW.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.DecimalInputRanged, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.DecimalInputRanged, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IISizeW.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -624,7 +625,7 @@
     <value>IIDpi</value>
   </data>
   <data name="&gt;&gt;IIDpi.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IIDpi.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -680,7 +681,7 @@
     <value>BtnDPI</value>
   </data>
   <data name="&gt;&gt;BtnDPI.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnDPI.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -774,7 +775,7 @@
     <value>BtnReset</value>
   </data>
   <data name="&gt;&gt;BtnReset.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnReset.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -815,7 +816,7 @@
     <value>BtnCenter</value>
   </data>
   <data name="&gt;&gt;BtnCenter.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCenter.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -1010,7 +1011,7 @@
     <value>IIBorderTracing</value>
   </data>
   <data name="&gt;&gt;IIBorderTracing.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IIBorderTracing.Parent" xml:space="preserve">
     <value>tableLayoutPanel6</value>
@@ -1037,7 +1038,7 @@
     <value>IILinearFilling</value>
   </data>
   <data name="&gt;&gt;IILinearFilling.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IILinearFilling.Parent" xml:space="preserve">
     <value>tableLayoutPanel6</value>
@@ -1148,7 +1149,7 @@
     <value>BtnPSHelper</value>
   </data>
   <data name="&gt;&gt;BtnPSHelper.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnPSHelper.Parent" xml:space="preserve">
     <value>tableLayoutPanel6</value>
@@ -1265,7 +1266,7 @@ Click for more information...</value>
     <value>BtnModulationInfo</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -1322,7 +1323,7 @@ Click for more information...</value>
     <value>IIMinPower</value>
   </data>
   <data name="&gt;&gt;IIMinPower.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IIMinPower.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -1401,7 +1402,7 @@ Click for more information...</value>
     <value>BtnOnOffInfo</value>
   </data>
   <data name="&gt;&gt;BtnOnOffInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnOnOffInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -1482,7 +1483,7 @@ Click for more information...</value>
     <value>IIMaxPower</value>
   </data>
   <data name="&gt;&gt;IIMaxPower.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IIMaxPower.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -1750,6 +1751,9 @@ Click for more information...</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>289, 300</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>

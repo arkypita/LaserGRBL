@@ -16,6 +16,8 @@ namespace LaserGRBL.RasterConverter
 	/// </summary>
 	public partial class ConvertSizeAndOptionForm : Form
 	{
+		static bool ratiolock = true;
+
 		GrblCore mCore;
 		bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
@@ -108,6 +110,8 @@ namespace LaserGRBL.RasterConverter
 
 			RefreshPerc();
 			ShowDialog(parent);
+
+			ratiolock = KeepSizeRatio;
 		}
 
 		private void InitImageSize()
@@ -121,15 +125,24 @@ namespace LaserGRBL.RasterConverter
 			}
 			else
 			{
-				if (IP.Original.Height < IP.Original.Width)
+				KeepSizeRatio = ratiolock;
+				if (KeepSizeRatio)
 				{
-					IISizeW.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100F);
-					IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
+					if (IP.Original.Height < IP.Original.Width)
+					{
+						IISizeW.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.ImageSize.W", 100F);
+						IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
+					}
+					else
+					{
+						IISizeH.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.ImageSize.H", 100F);
+						IISizeW.CurrentValue = IP.HeightToWidht(IISizeH.CurrentValue);
+					}
 				}
 				else
 				{
-					IISizeH.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.BiggestDimension", 100F);
-					IISizeW.CurrentValue = IP.HeightToWidht(IISizeH.CurrentValue);
+					IISizeW.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.ImageSize.W", 100F);
+					IISizeH.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.ImageSize.H", 100F);
 				}
 			}
 		}
@@ -223,14 +236,26 @@ namespace LaserGRBL.RasterConverter
 
 		private void IISizeW_OnTheFlyValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
 		{
-			if (ByUser && !BtnUnlockProportion.UseAltImage)
+			if (ByUser && KeepSizeRatio)
 				IISizeH.CurrentValue = IP.WidthToHeight(NewValue);
 		}
 
 		private void IISizeH_OnTheFlyValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
 		{
-			if (ByUser && !BtnUnlockProportion.UseAltImage)
+			if (ByUser && KeepSizeRatio)
 				IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
+		}
+
+		private bool KeepSizeRatio
+		{
+			get
+			{
+				return !BtnUnlockProportion.UseAltImage;
+			}
+			set
+			{
+				BtnUnlockProportion.UseAltImage = !value;
+			}
 		}
 
 		private void CbAutosize_CheckedChanged(object sender, EventArgs e)
@@ -313,16 +338,17 @@ namespace LaserGRBL.RasterConverter
 
 		private void BtnUnlockProportion_Click(object sender, EventArgs e)
 		{
-			if (MessageBox.Show(Strings.WarnUnlockProportionText, Strings.WarnUnlockProportionTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+			if (KeepSizeRatio && MessageBox.Show(Strings.WarnUnlockProportionText, Strings.WarnUnlockProportionTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+				KeepSizeRatio = false;
+			else
+				KeepSizeRatio = true;
+			
+			if (KeepSizeRatio)
 			{
-				BtnUnlockProportion.UseAltImage = !BtnUnlockProportion.UseAltImage;
-				if (!BtnUnlockProportion.UseAltImage)
-				{
-					if (IP.Original.Height < IP.Original.Width)
-						IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
-					else
-						IISizeW.CurrentValue = IP.HeightToWidht(IISizeH.CurrentValue);
-				}
+				if (IP.Original.Height < IP.Original.Width)
+					IISizeH.CurrentValue = IP.WidthToHeight(IISizeW.CurrentValue);
+				else
+					IISizeW.CurrentValue = IP.HeightToWidht(IISizeH.CurrentValue);
 			}
 		}
 	}
