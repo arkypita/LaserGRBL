@@ -154,10 +154,10 @@ namespace LaserGRBL.SvgConverter
 				string viewbox = svgCode.Attribute("viewBox").Value;
 				viewbox = Regex.Replace(viewbox, @"\s+", " ").Replace(' ', '|');    // remove double space
 				var split = viewbox.Split('|');
-				vbOffX = -convertToPixel(split[0]);
-				vbOffY = -convertToPixel(split[1]);
-				vbWidth = convertToPixel(split[2]);
-				vbHeight = convertToPixel(split[3].TrimEnd(')'));
+				vbOffX = -ConvertToPixel(split[0]);
+				vbOffY = -ConvertToPixel(split[1]);
+				vbWidth = ConvertToPixel(split[2]);
+				vbHeight = ConvertToPixel(split[3].TrimEnd(')'));
 				tmp.M11 = 1; tmp.M22 = -1;      // flip Y
 				tmp.OffsetY = vbHeight;
 			}
@@ -174,7 +174,7 @@ namespace LaserGRBL.SvgConverter
 			if (svgCode.Attribute("width") != null)
 			{
 				tmpString = svgCode.Attribute("width").Value;
-				svgWidthPx = convertToPixel(tmpString);             // convert in px
+				svgWidthPx = ConvertToPixel(tmpString);             // convert in px
 
 				tmp.M11 = scale; // get desired scale
 								 //if (fromClipboard)
@@ -190,7 +190,7 @@ namespace LaserGRBL.SvgConverter
 			if (svgCode.Attribute("height") != null)
 			{
 				tmpString = svgCode.Attribute("height").Value;
-				svgHeightPx = convertToPixel(tmpString);
+				svgHeightPx = ConvertToPixel(tmpString);
 
 				tmp.M22 = -scale;   // get desired scale and flip vertical
 				tmp.OffsetY = scale * svgHeightPx;  // svgHeightUnit;
@@ -274,122 +274,104 @@ namespace LaserGRBL.SvgConverter
 		/// Parse Transform information - more information here: http://www.w3.org/TR/SVG/coords.html
 		/// transform will be applied in gcodeMove
 		/// </summary>
-		private bool parseTransform(XElement element, bool isGroup, int level)
+		private Matrix parseTransform(XElement element, bool isGroup, int level)
 		{
-			Matrix tmp = new Matrix(1, 0, 0, 1, 0, 0); // m11, m12, m21, m22, offsetx, offsety
-			bool transf = false;
+			Matrix finalMatrix = new Matrix(1, 0, 0, 1, 0, 0); // m11, m12, m21, m22, offsetx, offsety
 			if (element.Attribute("transform") != null)
 			{
-				transf = true;
-				string tstring = element.Attribute("transform").Value;
-				if (!string.IsNullOrEmpty(tstring))
+				// tranform elements must be processed in given order
+				string[] separatingStrings = { "trans", "sca", "rot", "mat" };
+				string transform = element.Attribute("transform").Value;
+
+				string[] words = transform.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
+				foreach (var word in words)
 				{
-					System.Collections.Generic.List<string> tlist = new System.Collections.Generic.List<string>( Regex.Split(tstring, @"(?<=[\)])"));
-					tlist.Reverse();
-					foreach (string tr in tlist)
-					{
-						if (tr != null && tr.Trim().Length > 0)
-						{
-							if (tr.IndexOf("translate") >= 0)
-							{
-								var coord = getTextBetween(tr, "translate(", ")");
-								var split = coord.Split(',');
-								if (coord.IndexOf(',') < 0)
-									split = coord.Split(' ');
-
-								float ox = floatParse(split[0]);
-								float oy = (split.Length > 1) ? floatParse(split[1].TrimEnd(')')) : 0.0f;
-								tmp.Translate(ox, oy);
-
-								if (svgComments) gcodeString.Append(string.Format("( SVG-Translate {0} {1} )\r\n", ox, oy));
-							}
-							else if (tr.IndexOf("scale") >= 0)
-							{
-								var coord = getTextBetween(tr, "scale(", ")");
-								var split = coord.Split(',');
-								if (coord.IndexOf(',') < 0)
-									split = coord.Split(' ');
-								tmp.M11 = floatParse(split[0]);
-								if (split.Length > 1)
-								{ tmp.M22 = floatParse(split[1]); }
-								else
-								{
-									tmp.M11 = floatParse(coord);
-									tmp.M22 = floatParse(coord);
-								}
-								if (svgComments) gcodeString.Append(string.Format("( SVG-Scale {0} {1} )\r\n", tmp.M11, tmp.M22));
-							}
-							else if (tr.IndexOf("rotate") >= 0)
-							{
-								var coord = getTextBetween(tr, "rotate(", ")");
-								var split = coord.Split(',');
-								if (coord.IndexOf(',') < 0)
-									split = coord.Split(' ');
-
-								//Original code from https://github.com/svenhb/GRBL-Plotter
-								//float angle = floatParse(split[0]) * (float)Math.PI / 180;
-								//tmp.OffsetX = px;
-								//tmp.OffsetY = py;
-								//tmp.M11 = Math.Cos(angle); tmp.M12 = Math.Sin(angle);
-								//tmp.M21 = -Math.Sin(angle); tmp.M22 = Math.Cos(angle);
-
-								//current code from https://github.com/arkypita/LaserGRBL now support rotation with offset
-								float angle = floatParse(split[0]); //no need to convert in radiant
-								float px = split.Length == 3 ? floatParse(split[1]) : 0.0f; //<--- this read rotation offset point x
-								float py = split.Length == 3 ? floatParse(split[2]) : 0.0f; //<--- this read rotation offset point y
-								tmp.RotateAt(angle, px, py); // <--- this apply RotateAt matrix
-
-								if (svgComments) gcodeString.Append(string.Format("( SVG-Rotate {0} {1} {2} )\r\n", angle, px, py));
-							}
-							else if (tr.IndexOf("matrix") >= 0)
-							{
-								var coord = getTextBetween(tr, "matrix(", ")");
-								var split = coord.Split(',');
-								if (coord.IndexOf(',') < 0)
-									split = coord.Split(' ');
-								tmp.M11 = floatParse(split[0]);     // a    scale x         a c e
-								tmp.M12 = floatParse(split[1]);     // b                    b d f
-								tmp.M21 = floatParse(split[2]);     // c                    0 0 1
-								tmp.M22 = floatParse(split[3]);     // d    scale y
-								tmp.OffsetX = floatParse(split[4]); // e    offset x
-								tmp.OffsetY = floatParse(split[5]); // f    offset y
-								if (svgComments) gcodeString.Append(string.Format("\r\n( SVG-Matrix {0} {1} {2} )\r\n", coord.Replace(',', '|'), level, isGroup));
-							}
-						}
-					}
-				}
-
-
-
-				if (isGroup)
-				{
-					matrixGroup[level].SetIdentity();
-					if (level > 0)
-					{
-						for (int i = level; i < matrixGroup.Length; i++)
-						{ matrixGroup[i] = Matrix.Multiply(tmp, matrixGroup[level - 1]); }
-					}
-					else
-					{ matrixGroup[level] = tmp; }
-					matrixElement = matrixGroup[level];
-				}
-				else
-				{
-					matrixElement = Matrix.Multiply(tmp, matrixGroup[level]);
-				}
-
-				if (svgComments && transf)
-				{
-					for (int i = 0; i <= level; i++)
-						gcodeString.AppendFormat("( gc-Matrix level[{0}] {1} )\r\n", i, matrixGroup[i].ToString());
-
-					if (svgComments) gcodeString.AppendFormat("( gc-Scale {0} {1} )\r\n", matrixElement.M11, matrixElement.M22);
-					if (svgComments) gcodeString.AppendFormat("( gc-Offset {0} {1} )\r\n", matrixElement.OffsetX, matrixElement.OffsetY);
+					if (word.StartsWith("late")) { finalMatrix = Matrix.Multiply(ParseTransform("trans" + word), finalMatrix); }
+					else if (word.StartsWith("le")) { finalMatrix = Matrix.Multiply(ParseTransform("sca" + word), finalMatrix); }
+					else if (word.StartsWith("ate")) { finalMatrix = Matrix.Multiply(ParseTransform("rot" + word), finalMatrix); }
+					else if (word.StartsWith("rix")) { finalMatrix = Matrix.Multiply(ParseTransform("mat" + word), finalMatrix); }
 				}
 			}
-			return transf;
+			if (isGroup)
+			{
+				matrixGroup[level].SetIdentity();
+				if (level > 0)
+				{
+					for (int i = level; i < matrixGroup.Length; i++)
+					{ matrixGroup[i] = Matrix.Multiply(finalMatrix, matrixGroup[level - 1]); }
+				}
+				else
+				{   //tmp.M22 = -tmp.M22;
+					matrixGroup[level] = finalMatrix;
+				}
+				matrixElement = matrixGroup[level];
+			}
+			else
+			{ matrixElement = Matrix.Multiply(finalMatrix, matrixGroup[level]); }
+
+			return finalMatrix;
 		}
-		private string getTextBetween(string source, string s1, string s2)
+
+		private static Matrix ParseTransform(string transform)
+		{
+			Matrix tmp = new Matrix(1, 0, 0, 1, 0, 0); // m11, m12, m21, m22, offsetx, offsety
+
+			if ((transform != null) && (transform.IndexOf("translate") >= 0))
+			{
+				var coord = GetTextBetween(transform, "translate(");//, ")");
+				var split = coord.Split(',');
+				if (coord.IndexOf(',') < 0)
+					split = coord.Split(' ');
+
+				tmp.OffsetX = ConvertToPixel(split[0]);
+				if (split.Length > 1)
+					tmp.OffsetY = ConvertToPixel(split[1].TrimEnd(')'));
+			}
+			if ((transform != null) && (transform.IndexOf("scale") >= 0))
+			{
+				var coord = GetTextBetween(transform, "scale(");//, ")");
+				var split = coord.Split(',');
+				if (coord.IndexOf(',') < 0)
+					split = coord.Split(' ');
+				tmp.M11 = ConvertToPixel(split[0]);
+				if (split.Length > 1)
+				{ tmp.M22 = ConvertToPixel(split[1]); }
+				else
+				{
+					tmp.M11 = ConvertToPixel(coord);
+					tmp.M22 = ConvertToPixel(coord);
+				}
+			}
+			if ((transform != null) && (transform.IndexOf("rotate") >= 0))
+			{
+				var coord = GetTextBetween(transform, "rotate(");//, ")");
+				var split = coord.Split(',');
+				if (coord.IndexOf(',') < 0)
+					split = coord.Split(' ');
+				// change by arkypita LaserGRBL
+				float angle = ConvertToPixel(split[0]); //no need to convert in radiant
+				float px = split.Length == 3 ? ConvertToPixel(split[1]) : 0.0f; //<--- this read rotation offset point x
+				float py = split.Length == 3 ? ConvertToPixel(split[2]) : 0.0f; //<--- this read rotation offset point y
+				tmp.RotateAt(angle, px, py); // <--- this apply RotateAt matrix
+			}
+			if ((transform != null) && (transform.IndexOf("matrix") >= 0))
+			{
+				var coord = GetTextBetween(transform, "matrix(");//, ")");
+				var split = coord.Split(',');
+				if (coord.IndexOf(',') < 0)
+					split = coord.Split(' ');
+				tmp.M11 = ConvertToPixel(split[0]);     // a    scale x         a c e
+				tmp.M12 = ConvertToPixel(split[1]);     // b                    b d f
+				tmp.M21 = ConvertToPixel(split[2]);     // c                    0 0 1
+				tmp.M22 = ConvertToPixel(split[3]);     // d    scale y
+				tmp.OffsetX = ConvertToPixel(split[4]); // e    offset x
+				tmp.OffsetY = ConvertToPixel(split[5]); // f    offset y
+			}
+
+			return tmp;
+		}
+
+		private static string GetTextBetween(string source, string s1)//, string s2)
 		{
 			int start = source.IndexOf(s1) + s1.Length;
 			char c;
@@ -402,10 +384,10 @@ namespace LaserGRBL.SvgConverter
 			return source.Substring(start, source.Length - start - 1);
 		}
 
-		private float convertToPixel(string str, float ext = 1) => floatParse(str, ext = 1);
-		private float floatParse(string str, float ext = 1)
-		{
+		private static float ConvertToPixel(string str, float ext = 1)        // return value in px
+		{       // https://www.w3.org/TR/SVG/coords.html#Units          // in=90 or 96 ???
 			bool percent = false;
+			//       Logger.Trace( "convert to pixel in {0}", str);
 			float factor = 1;   // no unit = px
 			if (str.IndexOf("mm") > 0) { factor = factor_Mm2Px; }               // Millimeter
 			else if (str.IndexOf("cm") > 0) { factor = factor_Cm2Px; }          // Centimeter
@@ -414,29 +396,24 @@ namespace LaserGRBL.SvgConverter
 			else if (str.IndexOf("pc") > 0) { factor = factor_Pc2Px; }          // Pica
 			else if (str.IndexOf("em") > 0) { factor = factor_Em2Px; }          // Font size
 			else if (str.IndexOf("%") > 0) { percent = true; }
-			string nstr = removeUnit(str);
-			str = nstr;
-			float test;
+			str = str.Replace("pt", "").Replace("pc", "").Replace("mm", "").Replace("cm", "").Replace("in", "").Replace("em ", "").Replace("%", "").Replace("px", "");
+			double test;
 			if (str.Length > 0)
 			{
 				if (percent)
 				{
-					if (float.TryParse(str, NumberStyles.Float, NumberFormatInfo.InvariantInfo, out test))
-					{ return (test * ext / 100); }
+					if (double.TryParse(str, NumberStyles.Float, NumberFormatInfo.InvariantInfo, out test))
+					{ return ((float)test * ext / 100); }
 				}
 				else
 				{
-					if (float.TryParse(str, NumberStyles.Float, NumberFormatInfo.InvariantInfo, out test))
-					{ return (test * factor); }
+					if (double.TryParse(str, NumberStyles.Float, NumberFormatInfo.InvariantInfo, out test))
+					{ return ((float)test * factor); }
 				}
 			}
 
-			//else error!
 			return 0f;
 		}
-
-		private static string removeUnit(string str)
-		{ return Regex.Replace(str, @"[^0-9.\-+]", ""); }
 
 		private string getColor(XElement pathElement)
 		{
@@ -490,19 +467,19 @@ namespace LaserGRBL.SvgConverter
 
 						float x = 0, y = 0, x1 = 0, y1 = 0, x2 = 0, y2 = 0, width = 0, height = 0, rx = 0, ry = 0, cx = 0, cy = 0, r = 0;
 						string[] points = { "" };
-						if (pathElement.Attribute("x") != null) x = floatParse(pathElement.Attribute("x").Value);
-						if (pathElement.Attribute("y") != null) y = floatParse(pathElement.Attribute("y").Value);
-						if (pathElement.Attribute("x1") != null) x1 = floatParse(pathElement.Attribute("x1").Value);
-						if (pathElement.Attribute("y1") != null) y1 = floatParse(pathElement.Attribute("y1").Value);
-						if (pathElement.Attribute("x2") != null) x2 = floatParse(pathElement.Attribute("x2").Value);
-						if (pathElement.Attribute("y2") != null) y2 = floatParse(pathElement.Attribute("y2").Value);
-						if (pathElement.Attribute("width") != null) width = floatParse(pathElement.Attribute("width").Value, svgWidthPx);
-						if (pathElement.Attribute("height") != null) height = floatParse(pathElement.Attribute("height").Value, svgHeightPx);
-						if (pathElement.Attribute("rx") != null) rx = floatParse(pathElement.Attribute("rx").Value);
-						if (pathElement.Attribute("ry") != null) ry = floatParse(pathElement.Attribute("ry").Value);
-						if (pathElement.Attribute("cx") != null) cx = floatParse(pathElement.Attribute("cx").Value);
-						if (pathElement.Attribute("cy") != null) cy = floatParse(pathElement.Attribute("cy").Value);
-						if (pathElement.Attribute("r") != null) r = floatParse(pathElement.Attribute("r").Value);
+						if (pathElement.Attribute("x") != null) x = ConvertToPixel(pathElement.Attribute("x").Value);
+						if (pathElement.Attribute("y") != null) y = ConvertToPixel(pathElement.Attribute("y").Value);
+						if (pathElement.Attribute("x1") != null) x1 = ConvertToPixel(pathElement.Attribute("x1").Value);
+						if (pathElement.Attribute("y1") != null) y1 = ConvertToPixel(pathElement.Attribute("y1").Value);
+						if (pathElement.Attribute("x2") != null) x2 = ConvertToPixel(pathElement.Attribute("x2").Value);
+						if (pathElement.Attribute("y2") != null) y2 = ConvertToPixel(pathElement.Attribute("y2").Value);
+						if (pathElement.Attribute("width") != null) width = ConvertToPixel(pathElement.Attribute("width").Value, svgWidthPx);
+						if (pathElement.Attribute("height") != null) height = ConvertToPixel(pathElement.Attribute("height").Value, svgHeightPx);
+						if (pathElement.Attribute("rx") != null) rx = ConvertToPixel(pathElement.Attribute("rx").Value);
+						if (pathElement.Attribute("ry") != null) ry = ConvertToPixel(pathElement.Attribute("ry").Value);
+						if (pathElement.Attribute("cx") != null) cx = ConvertToPixel(pathElement.Attribute("cx").Value);
+						if (pathElement.Attribute("cy") != null) cy = ConvertToPixel(pathElement.Attribute("cy").Value);
+						if (pathElement.Attribute("r") != null) r = ConvertToPixel(pathElement.Attribute("r").Value);
 						if (pathElement.Attribute("points") != null) points = pathElement.Attribute("points").Value.Split(' ');
 
 						if (svgPauseElement || svgPausePenDown) { /*gcode.Pause(gcodeString, "Pause before path");*/ }
@@ -569,7 +546,7 @@ namespace LaserGRBL.SvgConverter
 							if (points[index].IndexOf(",") >= 0)
 							{
 								string[] coord = points[index].Split(',');
-								x = floatParse(coord[0]); y = floatParse(coord[1]);
+								x = ConvertToPixel(coord[0]); y = ConvertToPixel(coord[1]);
 								x1 = x; y1 = y;
 								gcodeStartPath(x, y, form);
 								isReduceOk = true;
@@ -578,7 +555,7 @@ namespace LaserGRBL.SvgConverter
 									if (points[i].Length > 3)
 									{
 										coord = points[i].Split(',');
-										x = floatParse(coord[0]); y = floatParse(coord[1]);
+										x = ConvertToPixel(coord[0]); y = ConvertToPixel(coord[1]);
 										x += offsetX; y += offsetY;
 										gcodeMoveTo(x, y, form);
 									}
@@ -696,7 +673,7 @@ namespace LaserGRBL.SvgConverter
 				.Split(remainingargs, argSeparators)
 				.Where(t => !string.IsNullOrEmpty(t));
 			// get command coordinates
-			float[] floatArgs = splitArgs.Select(arg => floatParse(arg)).ToArray();
+			float[] floatArgs = splitArgs.Select(arg => ConvertToPixel(arg)).ToArray();
 			int objCount = 0;
 
 			switch (cmd)
