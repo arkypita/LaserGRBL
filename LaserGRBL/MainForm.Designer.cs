@@ -31,9 +31,6 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
-			this.JogForm = new LaserGRBL.JogForm();
-			this.PreviewForm = new LaserGRBL.PreviewForm();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
@@ -101,6 +98,7 @@
 			this.czechToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.polishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.greekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.installCH340DriverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.flashGrblFirmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -133,7 +131,10 @@
 			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
 			this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
-			this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConnectionForm = new LaserGRBL.ConnectLogForm();
+            this.JogForm = new LaserGRBL.JogForm();
+            this.PreviewForm = new LaserGRBL.PreviewForm();
+            this.MnProjectOpen = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -157,21 +158,6 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
 			this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
-			// 
-			// ConnectionForm
-			// 
-			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
-			this.ConnectionForm.Name = "ConnectionForm";
-			// 
-			// JogForm
-			// 
-			resources.ApplyResources(this.JogForm, "JogForm");
-			this.JogForm.Name = "JogForm";
-			// 
-			// PreviewForm
-			// 
-			resources.ApplyResources(this.PreviewForm, "PreviewForm");
-			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// StatusBar
 			// 
@@ -409,6 +395,7 @@
             this.MnFileOpen,
             this.MnFileAppend,
             this.MnReOpenFile,
+            this.MnProjectOpen,
             this.MnSaveProgram,
             this.MnAdvancedSave,
             this.toolStripMenuItem1,
@@ -438,6 +425,12 @@
 			this.MnReOpenFile.Name = "MnReOpenFile";
 			this.MnReOpenFile.Click += new System.EventHandler(this.MnReOpenFile_Click);
 			// 
+            // MnProjectOpen
+            // 
+            resources.ApplyResources(this.MnProjectOpen, "MnProjectOpen");
+            this.MnProjectOpen.Name = "MnProjectOpen";
+            this.MnProjectOpen.Click += new System.EventHandler(this.MnProjectOpen_Click);
+            // 
 			// MnSaveProgram
 			// 
 			resources.ApplyResources(this.MnSaveProgram, "MnSaveProgram");
@@ -644,6 +637,12 @@
 			this.greekToolStripMenuItem.Name = "greekToolStripMenuItem";
 			this.greekToolStripMenuItem.Click += new System.EventHandler(this.greekToolStripMenuItem_Click);
 			// 
+            // turkishToolStripMenuItem
+            // 
+            resources.ApplyResources(this.turkishToolStripMenuItem, "turkishToolStripMenuItem");
+            this.turkishToolStripMenuItem.Name = "turkishToolStripMenuItem";
+            this.turkishToolStripMenuItem.Click += new System.EventHandler(this.turkishToolStripMenuItem_Click);
+            // 
 			// toolsToolStripMenuItem
 			// 
 			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -860,11 +859,25 @@
 			this.MultipleInstanceTimer.Interval = 1000;
 			this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
 			// 
-			// turkishToolStripMenuItem
+            // ConnectionForm
+            // 
+            resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
+            this.ConnectionForm.Name = "ConnectionForm";
+            // 
+            // JogForm
+            // 
+            resources.ApplyResources(this.JogForm, "JogForm");
+            this.JogForm.Name = "JogForm";
+            // 
+            // PreviewForm
+            // 
+            resources.ApplyResources(this.PreviewForm, "PreviewForm");
+            this.PreviewForm.Name = "PreviewForm";
+            // 
+            // MnProjectOpen
 			// 
-			resources.ApplyResources(this.turkishToolStripMenuItem, "turkishToolStripMenuItem");
-			this.turkishToolStripMenuItem.Name = "turkishToolStripMenuItem";
-			this.turkishToolStripMenuItem.Click += new System.EventHandler(this.turkishToolStripMenuItem_Click);
+            resources.ApplyResources(this.MnProjectOpen, "MnProjectOpen");
+            this.MnProjectOpen.Name = "MnProjectOpen";
 			// 
 			// MainForm
 			// 
@@ -1000,6 +1013,7 @@
 		private System.Windows.Forms.ToolStripMenuItem MnWiFiDiscovery;
         private System.Windows.Forms.ToolStripMenuItem greekToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem turkishToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MnProjectOpen;
 	}
 }
 
