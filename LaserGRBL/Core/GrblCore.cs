@@ -728,7 +728,7 @@ namespace LaserGRBL
 				}
 
 				if (filename != null)
-					file.SaveProgram(filename, header, footer, between, cycles);
+					file.SaveProgram(filename, header, footer, between, cycles, this);
 			}
 		}
 
@@ -2433,7 +2433,7 @@ namespace LaserGRBL
 			{
 				if (str.Trim().Length > 0)
 				{
-					string tosend = bracketsRegEx.Replace(str, new System.Text.RegularExpressions.MatchEvaluator(EvaluateCB)).Trim();
+					string tosend = EvaluateExpression(str);
 
 					if (IsImmediate(tosend))
 					{
@@ -2445,6 +2445,11 @@ namespace LaserGRBL
 					{ EnqueueCommand(new GrblCommand(tosend)); }
 				}
 			}
+		}
+
+		internal string EvaluateExpression(string str)
+		{
+			return bracketsRegEx.Replace(str, new System.Text.RegularExpressions.MatchEvaluator(EvaluateCB)).Trim();
 		}
 
 		bool IsImmediate(string code)
