@@ -15,7 +15,7 @@ namespace LaserGRBL.PSHelper
 		{
 			InitializeComponent();
 			source.DataSource = GrblCore.MaterialDB.Materials;
-			TbNewElement.Text = GrblCore.MaterialDB.GetNewCount().ToString();
+			//TbNewElement.Text = GrblCore.MaterialDB.GetNewCount().ToString();
 		}
 
 		public static void CreateAndShowDialog(Form parent)
@@ -32,7 +32,7 @@ namespace LaserGRBL.PSHelper
 		private void BtnImport_Click(object sender, EventArgs e)
 		{
 			GrblCore.MaterialDB.ImportServer();
-			TbNewElement.Text = GrblCore.MaterialDB.GetNewCount().ToString();
+			//TbNewElement.Text = GrblCore.MaterialDB.GetNewCount().ToString();
 		}
 
 		private void DG_DataError(object sender, DataGridViewDataErrorEventArgs e)
