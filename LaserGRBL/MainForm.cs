@@ -592,61 +592,6 @@ namespace LaserGRBL
 			Core.ReOpenFile(this);
 		}
 
-        private void MnProjectOpen_Click(object sender, EventArgs e)
-        {
-            var fileName = string.Empty;
-
-			// Get storage path
-            using (var ofd = new OpenFileDialog())
-            {
-				ofd.Filter = @"Laser project setting file|*.lps";
-                ofd.CheckFileExists = true;
-                ofd.Multiselect = false;
-                ofd.RestoreDirectory = true;
-
-                if (ofd.ShowDialog() == DialogResult.OK)
-                    fileName = ofd.FileName;
-			}
-
-            if (string.IsNullOrEmpty(fileName)) return;
-
-            Dictionary<string, object> projectSettings;
-            var f = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            {
-                AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
-            };
-
-            using (var fs = new FileStream(fileName, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.None))
-            {
-                projectSettings = (Dictionary<string, object>)f.Deserialize(fs);
-                fs.Close();
-            }
-
-			// Save image temporary
-            var imageFilepath = $"{Path.GetTempPath()}\\{projectSettings["ImageName"]}";
-			SaveImage(projectSettings["ImageBase64"].ToString(), imageFilepath);
-
-			// Restore settings
-            foreach (var setting in projectSettings.Where(setting => setting.Key != "ImageName" && setting.Key != "ImageBase64"))
-                Settings.SetObject(setting.Key, setting.Value);
-
-			// Open file
-            Settings.SetObject("Core.LastOpenFile", imageFilepath);
-			Core.ReOpenFile(this);
-
-			// Delete temporary image file
-			File.Delete(imageFilepath);
-        }
-
-        private static void SaveImage(string base64Image, string imagePath)
-        {
-            var bytes = Convert.FromBase64String(base64Image);
-			using (var ms = new MemoryStream(bytes))
-            {
-                var image = Image.FromStream(ms);
-                image.Save(imagePath);
-            }
-        }
 
 		private void fileToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
 		{

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace LaserGRBL
@@ -553,8 +554,9 @@ namespace LaserGRBL
 				OpenFile(parent, Settings.GetObject<string>("Core.LastOpenFile", null));
 		}
 
-		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
-		public static readonly System.Collections.Generic.List<string> GCodeExtensions = new System.Collections.Generic.List<string>(new string[] { ".nc", ".cnc", ".tap", ".gcode", ".ngc" });
+		public static readonly List<string> ImageExtensions = new List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
+		public static readonly List<string> GCodeExtensions = new List<string>(new string[] { ".nc", ".cnc", ".tap", ".gcode", ".ngc" });
+		public static readonly List<string> ProjectFileExtensions = new List<string>(new string[] { ".lps" });
 		public void OpenFile(System.Windows.Forms.Form parent, string filename = null, bool append = false)
 		{
 			if (!CanLoadNewFile) return;
@@ -570,7 +572,7 @@ namespace LaserGRBL
 						if (lastFN != null && System.IO.File.Exists(lastFN))
 							ofd.FileName = lastFN;
 
-						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.ngc;*.bmp;*.png;*.jpg;*.gif;*.svg|GCODE Files|*.nc;*.cnc;*.tap;*.gcode;*.ngc|Raster Image|*.bmp;*.png;*.jpg;*.gif|Vector Image (experimental)|*.svg";
+						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.ngc;*.bmp;*.png;*.jpg;*.gif;*.svg|GCODE Files|*.nc;*.cnc;*.tap;*.gcode;*.ngc|Raster Image|*.bmp;*.png;*.jpg;*.gif|Vector Image (experimental)|*.svg|LaserGRBL Project|*.lps";
 						ofd.CheckFileExists = true;
 						ofd.Multiselect = false;
 						ofd.RestoreDirectory = true;
@@ -668,6 +670,36 @@ namespace LaserGRBL
 
 						System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
 					}
+					else if (ProjectFileExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load LaserGRBL Project
+					{
+
+						Dictionary<string, object> projectSettings;
+						var f = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+						{
+							AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
+						};
+
+						using (var fs = new System.IO.FileStream(filename, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.None))
+						{
+							projectSettings = (Dictionary<string, object>)f.Deserialize(fs);
+							fs.Close();
+						}
+
+						// Save image temporary
+						var imageFilepath = $"{System.IO.Path.GetTempPath()}\\{projectSettings["ImageName"]}";
+						SaveImage(projectSettings["ImageBase64"].ToString(), imageFilepath);
+
+						// Restore settings
+						foreach (var setting in projectSettings.Where(setting => setting.Key != "ImageName" && setting.Key != "ImageBase64"))
+							Settings.SetObject(setting.Key, setting.Value);
+
+						// Open file
+						Settings.SetObject("Core.LastOpenFile", imageFilepath);
+						ReOpenFile(parent);
+
+						// Delete temporary image file
+						System.IO.File.Delete(imageFilepath);
+					}
 					else
 					{
 						System.Windows.Forms.MessageBox.Show(Strings.UnsupportedFiletype, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
@@ -677,6 +709,16 @@ namespace LaserGRBL
 			catch (Exception ex)
 			{
 				Logger.LogException("OpenFile", ex);
+			}
+		}
+
+		private static void SaveImage(string base64Image, string imagePath)
+		{
+			var bytes = Convert.FromBase64String(base64Image);
+			using (var ms = new System.IO.MemoryStream(bytes))
+			{
+				var image = Image.FromStream(ms);
+				image.Save(imagePath);
 			}
 		}
 
