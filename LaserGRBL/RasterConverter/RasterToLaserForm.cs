@@ -13,6 +13,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Windows.Forms;
 using System.Threading;
+using Tools;
 
 namespace LaserGRBL.RasterConverter
 {
@@ -194,53 +195,12 @@ namespace LaserGRBL.RasterConverter
 					ResumeLayout();
 
 					StoreSettings();
-
-                    // Export project
-                    
-                    var exportResult = MessageBox.Show(@"Do you want to export this project with all your settings?", @"Export project", MessageBoxButtons.YesNo);
-                    if (exportResult == DialogResult.Yes)
-                    {
-                        var exportFilepath = string.Empty;
-
-						// Get storage path
-						using (var sfd = new SaveFileDialog())
-                        {
-                            sfd.FileName = $"{Path.GetFileNameWithoutExtension(Settings.GetObject<string>("Core.LastOpenFile", null))}.lps";
-							sfd.RestoreDirectory = true;
-                            sfd.DefaultExt = "lps";
-                            sfd.Filter = @"Laser project setting file|*.lps";
-
-                            if (sfd.ShowDialog() == DialogResult.OK)
-                                exportFilepath = sfd.FileName;
-                        }
-
-                        if (!string.IsNullOrEmpty(exportFilepath))
-                        {
-                            // Get actual settings
-                            var actualSettings = GetActualSettings();
-
-                            // Add image to dictionary
-                            actualSettings.Add("ImageName", Path.GetFileName(Settings.GetObject<string>("Core.LastOpenFile", null)));
-                            actualSettings.Add("ImageBase64", ConvertImageToBase64(Settings.GetObject<string>("Core.LastOpenFile", null)));
-
-                            // Store project settings
-                            var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-                            {
-                                AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
-                            };
-                            using (var fs = new FileStream(exportFilepath, FileMode.Create, FileAccess.Write, System.IO.FileShare.None))
-                            {
-                                formatter.Serialize(fs, actualSettings);
-                                fs.Close();
-                            }
-						}
-                    }
+					Project.AddSettings(GetActualSettings()); // Store project settings
 
 					IP.GenerateGCode(); //processo asincrono che ritorna con l'evento "OnGenerationComplete"
 				}
 			}
 		}
-
 
 		void OnGenerationComplete(Exception ex)
 		{
@@ -250,7 +210,6 @@ namespace LaserGRBL.RasterConverter
 			}
 			else
 			{
-
 				try
 				{
 					if (IP != null)
@@ -282,7 +241,6 @@ namespace LaserGRBL.RasterConverter
 				finally { Close(); }
 			}
 		}
-
 
 		private void StoreSettings()
 		{
@@ -861,19 +819,6 @@ namespace LaserGRBL.RasterConverter
 				MessageBox.Show(Strings.WarnLine2LinePWM, Strings.WarnMessageBoxHeader, MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				//RbDithering.Checked = true;
 			}
-		}
-
-        private string ConvertImageToBase64(string imagePath)
-        {
-            using (var image = Image.FromFile(imagePath))
-            {
-                using (var m = new MemoryStream())
-                {
-                    image.Save(m, image.RawFormat);
-                    var imageBytes = m.ToArray();
-                    return Convert.ToBase64String(imageBytes);
-                }
-            }
 		}
 	}
 }

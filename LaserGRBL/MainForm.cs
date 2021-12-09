@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Threading;
+using Tools;
 
 namespace LaserGRBL
 {
@@ -341,6 +342,7 @@ namespace LaserGRBL
 
 		private void MnFileOpen_Click(object sender, EventArgs e)
 		{
+			Project.ClearSettings();
 			Core.OpenFile(this);
 		}
 
@@ -589,6 +591,7 @@ namespace LaserGRBL
 
 		private void MnReOpenFile_Click(object sender, EventArgs e)
 		{
+			Project.ClearSettings();
 			Core.ReOpenFile(this);
 		}
 
