@@ -735,8 +735,9 @@ namespace LaserGRBL
 					if (lastFN != null)
 					{
 						string fn = System.IO.Path.GetFileNameWithoutExtension(lastFN);
-						string path = System.IO.Path.GetDirectoryName(lastFN);
-						sfd.FileName = System.IO.Path.Combine(path, fn + ".nc");
+						//string path = System.IO.Path.GetDirectoryName(lastFN);
+						//sfd.FileName = System.IO.Path.Combine(path, fn + ".nc");
+						sfd.FileName = fn; // Filename without extension is enough
 					}
 
 					sfd.Filter = "GCODE Files|*.nc|LaserGRBL Project|*.lps";
