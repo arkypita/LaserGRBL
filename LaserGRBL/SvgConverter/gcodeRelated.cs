@@ -52,7 +52,7 @@ namespace LaserGRBL.SvgConverter
 		private static bool gcodeNoArcs = false;        // replace arcs by line segments
 		private static float gcodeAngleStep = 1.0f;
 
-		private static int mDecimalPlaces = 2;
+		private static int mDecimalPlaces = 3;
 
 		private static Firmware firmwareType = Settings.GetObject("Firmware Type", Firmware.Grbl);
 		
