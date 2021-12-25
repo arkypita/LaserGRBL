@@ -5,11 +5,15 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
+using System.IO.Compression;
 using System.Windows.Forms;
 using System.Threading;
+using Tools;
 
 namespace LaserGRBL.RasterConverter
 {
@@ -191,12 +195,12 @@ namespace LaserGRBL.RasterConverter
 					ResumeLayout();
 
 					StoreSettings();
+					Project.AddSettings(GetActualSettings()); // Store project settings
 
 					IP.GenerateGCode(); //processo asincrono che ritorna con l'evento "OnGenerationComplete"
 				}
 			}
 		}
-
 
 		void OnGenerationComplete(Exception ex)
 		{
@@ -206,7 +210,6 @@ namespace LaserGRBL.RasterConverter
 			}
 			else
 			{
-
 				try
 				{
 					if (IP != null)
@@ -239,59 +242,10 @@ namespace LaserGRBL.RasterConverter
 			}
 		}
 
-
 		private void StoreSettings()
 		{
-			Settings.SetObject("GrayScaleConversion.RasterConversionTool", RbLineToLineTracing.Checked ? ImageProcessor.Tool.Line2Line : RbDithering.Checked ? ImageProcessor.Tool.Dithering : RbCenterline.Checked ? ImageProcessor.Tool.Centerline : ImageProcessor.Tool.Vectorize);
-
-			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Direction", (ImageProcessor.Direction)CbDirections.SelectedItem);
-			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Quality", UDQuality.Value);
-			Settings.SetObject("GrayScaleConversion.Line2LineOptions.Preview", CbLinePreview.Checked);
-
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.SpotRemoval.Enabled", CbSpotRemoval.Checked);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.SpotRemoval.Value", UDSpotRemoval.Value);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Smooting.Enabled", CbSmoothing.Checked);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Smooting.Value", UDSmoothing.Value);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Optimize.Enabled", CbOptimize.Checked);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.UseAdaptiveQuality.Enabled", CbAdaptiveQuality.Checked);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.Optimize.Value", UDOptimize.Value);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.DownSample.Enabled", CbDownSample.Checked);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.DownSample.Value", UDDownSample.Value);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", (ImageProcessor.Direction)CbFillingDirection.SelectedItem);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", UDFillingQuality.Value);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.OptimizeFast.Enabled", CbOptimizeFast.Checked);
-
-			Settings.SetObject("GrayScaleConversion.DitheringOptions.DitheringMode", (ImageTransform.DitheringMode)CbDither.SelectedItem);
-
-			Settings.SetObject("GrayScaleConversion.Parameters.Interpolation", (InterpolationMode)CbResize.SelectedItem);
-			Settings.SetObject("GrayScaleConversion.Parameters.Mode", (ImageTransform.Formula)CbMode.SelectedItem);
-			Settings.SetObject("GrayScaleConversion.Parameters.R", TBRed.Value);
-			Settings.SetObject("GrayScaleConversion.Parameters.G", TBGreen.Value);
-			Settings.SetObject("GrayScaleConversion.Parameters.B", TBBlue.Value);
-			Settings.SetObject("GrayScaleConversion.Parameters.Brightness", TbBright.Value);
-			Settings.SetObject("GrayScaleConversion.Parameters.Contrast", TbContrast.Value);
-			Settings.SetObject("GrayScaleConversion.Parameters.Threshold.Enabled", CbThreshold.Checked);
-			Settings.SetObject("GrayScaleConversion.Parameters.Threshold.Value", TbThreshold.Value);
-			Settings.SetObject("GrayScaleConversion.Parameters.WhiteClip", TBWhiteClip.Value);
-
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", IP.BorderSpeed);
-			Settings.SetObject("GrayScaleConversion.Gcode.Speed.Mark", IP.MarkSpeed);
-
-			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", IP.LaserOn);
-			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", IP.LaserOff);
-			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", IP.MinPower);
-			Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", IP.MaxPower);
-
-			Settings.SetObject("GrayScaleConversion.Gcode.Offset.X", IP.TargetOffset.X);
-			Settings.SetObject("GrayScaleConversion.Gcode.Offset.Y", IP.TargetOffset.Y);
-
-			Settings.SetObject("GrayScaleConversion.Gcode.ImageSize.W", IP.TargetSize.Width);
-			Settings.SetObject("GrayScaleConversion.Gcode.ImageSize.H", IP.TargetSize.Height);
-
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.LineThreshold.Enabled", IP.UseLineThreshold);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.LineThreshold.Value", IP.LineThreshold);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.CornerThreshold.Enabled", IP.UseCornerThreshold);
-			Settings.SetObject("GrayScaleConversion.VectorizeOptions.CornerThreshold.Value", IP.CornerThreshold);
+            foreach (var setting in GetActualSettings())
+				Settings.SetObject(setting.Key, setting.Value);
 		}
 
 		private void LoadSettings()
@@ -345,6 +299,64 @@ namespace LaserGRBL.RasterConverter
 			if (RbLineToLineTracing.Checked && !supportPWM)
 				RbDithering.Checked = true;
 		}
+
+        private Dictionary<string, object> GetActualSettings()
+        {
+            var settings = new Dictionary<string, object> (StringComparer.OrdinalIgnoreCase)
+            {
+                {
+                    "GrayScaleConversion.RasterConversionTool",
+                    RbLineToLineTracing.Checked ? ImageProcessor.Tool.Line2Line :
+                    RbDithering.Checked ? ImageProcessor.Tool.Dithering :
+                    RbCenterline.Checked ? ImageProcessor.Tool.Centerline : ImageProcessor.Tool.Vectorize
+                },
+                {
+                    "GrayScaleConversion.Line2LineOptions.Direction",
+                    (ImageProcessor.Direction)CbDirections.SelectedItem
+                },
+                { "GrayScaleConversion.Line2LineOptions.Quality", UDQuality.Value },
+                { "GrayScaleConversion.Line2LineOptions.Preview", CbLinePreview.Checked },
+                { "GrayScaleConversion.VectorizeOptions.SpotRemoval.Enabled", CbSpotRemoval.Checked },
+                { "GrayScaleConversion.VectorizeOptions.SpotRemoval.Value", UDSpotRemoval.Value },
+                { "GrayScaleConversion.VectorizeOptions.Smooting.Enabled", CbSmoothing.Checked },
+                { "GrayScaleConversion.VectorizeOptions.Smooting.Value", UDSmoothing.Value },
+                { "GrayScaleConversion.VectorizeOptions.Optimize.Enabled", CbOptimize.Checked },
+                { "GrayScaleConversion.VectorizeOptions.UseAdaptiveQuality.Enabled", CbAdaptiveQuality.Checked },
+                { "GrayScaleConversion.VectorizeOptions.Optimize.Value", UDOptimize.Value },
+                { "GrayScaleConversion.VectorizeOptions.DownSample.Enabled", CbDownSample.Checked },
+                { "GrayScaleConversion.VectorizeOptions.DownSample.Value", UDDownSample.Value },
+                { "GrayScaleConversion.VectorizeOptions.FillingDirection", (ImageProcessor.Direction)CbFillingDirection.SelectedItem },
+                { "GrayScaleConversion.VectorizeOptions.FillingQuality", UDFillingQuality.Value },
+                { "GrayScaleConversion.VectorizeOptions.OptimizeFast.Enabled", CbOptimizeFast.Checked },
+                { "GrayScaleConversion.DitheringOptions.DitheringMode", (ImageTransform.DitheringMode)CbDither.SelectedItem },
+                { "GrayScaleConversion.Parameters.Interpolation", (InterpolationMode)CbResize.SelectedItem },
+                { "GrayScaleConversion.Parameters.Mode", (ImageTransform.Formula)CbMode.SelectedItem },
+                { "GrayScaleConversion.Parameters.R", TBRed.Value },
+                { "GrayScaleConversion.Parameters.G", TBGreen.Value },
+                { "GrayScaleConversion.Parameters.B", TBBlue.Value },
+                { "GrayScaleConversion.Parameters.Brightness", TbBright.Value },
+                { "GrayScaleConversion.Parameters.Contrast", TbContrast.Value },
+                { "GrayScaleConversion.Parameters.Threshold.Enabled", CbThreshold.Checked },
+                { "GrayScaleConversion.Parameters.Threshold.Value", TbThreshold.Value },
+                { "GrayScaleConversion.Parameters.WhiteClip", TBWhiteClip.Value },
+                { "GrayScaleConversion.VectorizeOptions.BorderSpeed", IP.BorderSpeed },
+                { "GrayScaleConversion.Gcode.Speed.Mark", IP.MarkSpeed },
+                { "GrayScaleConversion.Gcode.LaserOptions.LaserOn", IP.LaserOn },
+                { "GrayScaleConversion.Gcode.LaserOptions.LaserOff", IP.LaserOff },
+                { "GrayScaleConversion.Gcode.LaserOptions.PowerMin", IP.MinPower },
+                { "GrayScaleConversion.Gcode.LaserOptions.PowerMax", IP.MaxPower },
+                { "GrayScaleConversion.Gcode.Offset.X", IP.TargetOffset.X },
+                { "GrayScaleConversion.Gcode.Offset.Y", IP.TargetOffset.Y },
+                { "GrayScaleConversion.Gcode.ImageSize.W", IP.TargetSize.Width },
+                { "GrayScaleConversion.Gcode.ImageSize.H", IP.TargetSize.Height },
+                { "GrayScaleConversion.VectorizeOptions.LineThreshold.Enabled", IP.UseLineThreshold },
+                { "GrayScaleConversion.VectorizeOptions.LineThreshold.Value", IP.LineThreshold },
+                { "GrayScaleConversion.VectorizeOptions.CornerThreshold.Enabled", IP.UseCornerThreshold },
+                { "GrayScaleConversion.VectorizeOptions.CornerThreshold.Value", IP.CornerThreshold }
+            };
+
+            return settings;
+        }
 
 		void OnRGBCBDoubleClick(object sender, EventArgs e)
 		{ ((UserControls.ColorSlider)sender).Value = 100; }
@@ -808,6 +820,5 @@ namespace LaserGRBL.RasterConverter
 				//RbDithering.Checked = true;
 			}
 		}
-
 	}
 }

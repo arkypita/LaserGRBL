@@ -10,7 +10,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
+using Tools;
 
 namespace LaserGRBL
 {
@@ -553,8 +555,9 @@ namespace LaserGRBL
 				OpenFile(parent, Settings.GetObject<string>("Core.LastOpenFile", null));
 		}
 
-		public static readonly System.Collections.Generic.List<string> ImageExtensions = new System.Collections.Generic.List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
-		public static readonly System.Collections.Generic.List<string> GCodeExtensions = new System.Collections.Generic.List<string>(new string[] { ".nc", ".cnc", ".tap", ".gcode", ".ngc" });
+		public static readonly List<string> ImageExtensions = new List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
+		public static readonly List<string> GCodeExtensions = new List<string>(new string[] { ".nc", ".cnc", ".tap", ".gcode", ".ngc" });
+		public static readonly List<string> ProjectFileExtensions = new List<string>(new string[] { ".lps" });
 		public void OpenFile(System.Windows.Forms.Form parent, string filename = null, bool append = false)
 		{
 			if (!CanLoadNewFile) return;
@@ -570,7 +573,7 @@ namespace LaserGRBL
 						if (lastFN != null && System.IO.File.Exists(lastFN))
 							ofd.FileName = lastFN;
 
-						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.ngc;*.bmp;*.png;*.jpg;*.gif;*.svg|GCODE Files|*.nc;*.cnc;*.tap;*.gcode;*.ngc|Raster Image|*.bmp;*.png;*.jpg;*.gif|Vector Image (experimental)|*.svg";
+						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.ngc;*.bmp;*.png;*.jpg;*.gif;*.svg;*.lps|GCODE Files|*.nc;*.cnc;*.tap;*.gcode;*.ngc|Raster Image|*.bmp;*.png;*.jpg;*.gif|Vector Image (experimental)|*.svg|LaserGRBL Project|*.lps";
 						ofd.CheckFileExists = true;
 						ofd.Multiselect = false;
 						ofd.RestoreDirectory = true;
@@ -590,90 +593,118 @@ namespace LaserGRBL
 							filename = ofd.FileName;
 					}
 				}
-				if (filename != null)
-				{
-					Logger.LogMessage("OpenFile", "Open {0}", filename);
-					Settings.SetObject("Core.LastOpenFile", filename);
 
-					if (ImageExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant())) //import raster image
-					{
-						try
-						{
-							RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent, append);
-							UsageCounters.RasterFile++;
-						}
-						catch (Exception ex)
-						{ Logger.LogException("RasterImport", ex); }
-					}
-					else if (System.IO.Path.GetExtension(filename).ToLowerInvariant() == ".svg")
-					{
-						SvgConverter.SvgModeForm.Mode mode = SvgConverter.SvgModeForm.Mode.Vector;// SvgConverter.SvgModeForm.CreateAndShow(filename);
-						if (mode == SvgConverter.SvgModeForm.Mode.Vector)
-						{
-							try
-							{
-								SvgConverter.SvgToGCodeForm.CreateAndShowDialog(this, filename, parent, append);
-								UsageCounters.SvgFile++;
-							}
-							catch (Exception ex)
-							{ Logger.LogException("SvgImport", ex); }
-						}
-						else if (mode == SvgConverter.SvgModeForm.Mode.Raster)
-						{
-							string bmpname = filename + ".png";
-							string fcontent = System.IO.File.ReadAllText(filename);
-							Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
-							svg.Ppi = 600;
+				if (filename == null) return;
 
-							using (Bitmap bmp = svg.Draw())
-							{
-								bmp.SetResolution(600, 600);
+                Logger.LogMessage("OpenFile", "Open {0}", filename);
+                Settings.SetObject("Core.LastOpenFile", filename);
 
-								//codec options not supported in C# png encoder https://efundies.com/c-sharp-save-png/
-								//quality always 100%
+                if (ImageExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant())) //import raster image
+                {
+                    try
+                    {
+                        RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent, append);
+                        UsageCounters.RasterFile++;
+                    }
+                    catch (Exception ex)
+                    { Logger.LogException("RasterImport", ex); }
+                }
+                else if (System.IO.Path.GetExtension(filename).ToLowerInvariant() == ".svg")
+                {
+                    SvgConverter.SvgModeForm.Mode mode = SvgConverter.SvgModeForm.Mode.Vector;// SvgConverter.SvgModeForm.CreateAndShow(filename);
+                    if (mode == SvgConverter.SvgModeForm.Mode.Vector)
+                    {
+                        try
+                        {
+                            SvgConverter.SvgToGCodeForm.CreateAndShowDialog(this, filename, parent, append);
+                            UsageCounters.SvgFile++;
+                        }
+                        catch (Exception ex)
+                        { Logger.LogException("SvgImport", ex); }
+                    }
+                    else if (mode == SvgConverter.SvgModeForm.Mode.Raster)
+                    {
+                        string bmpname = filename + ".png";
+                        string fcontent = System.IO.File.ReadAllText(filename);
+                        Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
+                        svg.Ppi = 600;
 
-								//ImageCodecInfo codecinfo = GetEncoder(ImageFormat.Png);
-								//EncoderParameters paramlist = new EncoderParameters(1);
-								//paramlist.Param[0] = new EncoderParameter(Encoder.Quality, 30L); 
+                        using (Bitmap bmp = svg.Draw())
+                        {
+                            bmp.SetResolution(600, 600);
+
+                            //codec options not supported in C# png encoder https://efundies.com/c-sharp-save-png/
+                            //quality always 100%
+
+                            //ImageCodecInfo codecinfo = GetEncoder(ImageFormat.Png);
+                            //EncoderParameters paramlist = new EncoderParameters(1);
+                            //paramlist.Param[0] = new EncoderParameter(Encoder.Quality, 30L); 
 
 
-								if (System.IO.File.Exists(bmpname))
-									System.IO.File.Delete(bmpname);
+                            if (System.IO.File.Exists(bmpname))
+                                System.IO.File.Delete(bmpname);
 
-								bmp.Save(bmpname/*, codecinfo, paramlist*/);
-							}
+                            bmp.Save(bmpname/*, codecinfo, paramlist*/);
+                        }
 
-							try
-							{
-								RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, bmpname, parent, append);
-								UsageCounters.RasterFile++;
-								if (System.IO.File.Exists(bmpname))
-									System.IO.File.Delete(bmpname);
-							}
-							catch (Exception ex)
-							{ Logger.LogException("SvgBmpImport", ex); }
-						}
-					}
-					else if (GCodeExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load GCODE file
-					{
-						System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+                        try
+                        {
+                            RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, bmpname, parent, append);
+                            UsageCounters.RasterFile++;
+                            if (System.IO.File.Exists(bmpname))
+                                System.IO.File.Delete(bmpname);
+                        }
+                        catch (Exception ex)
+                        { Logger.LogException("SvgBmpImport", ex); }
+                    }
+                }
+                else if (GCodeExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load GCODE file
+                {
+                    System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
 
-						try
-						{
-							file.LoadFile(filename, append);
-							UsageCounters.GCodeFile++;
-						}
-						catch (Exception ex)
-						{ Logger.LogException("GCodeImport", ex); }
+                    try
+                    {
+                        file.LoadFile(filename, append);
+                        UsageCounters.GCodeFile++;
+                    }
+                    catch (Exception ex)
+                    { Logger.LogException("GCodeImport", ex); }
 
-						System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
-					}
-					else
-					{
-						System.Windows.Forms.MessageBox.Show(Strings.UnsupportedFiletype, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-					}
+                    System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+                }
+                else if (ProjectFileExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load LaserGRBL project
+                {
+                    var project = Project.LoadProject(filename);
+
+					for (var i = 0; i < project.Count; i++)
+                    {
+						var settings = project[i];
+
+                        // Save image temporary
+                        var imageFilepath = $"{System.IO.Path.GetTempPath()}\\{settings["ImageName"]}";
+                        Project.SaveImage(settings["ImageBase64"].ToString(), imageFilepath);
+
+                        // Restore settings
+                        foreach (var setting in settings.Where(setting =>
+                            setting.Key != "ImageName" && setting.Key != "ImageBase64"))
+                            Settings.SetObject(setting.Key, setting.Value);
+
+                        // Open file
+                        Settings.SetObject("Core.LastOpenFile", imageFilepath);
+						if (i == 0)
+                            ReOpenFile(parent);
+                        else
+							OpenFile(parent, imageFilepath, true);
+
+                        // Delete temporary image file
+                        System.IO.File.Delete(imageFilepath);
+                    }
 				}
-			}
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show(Strings.UnsupportedFiletype, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                }
+            }
 			catch (Exception ex)
 			{
 				Logger.LogException("OpenFile", ex);
@@ -704,11 +735,12 @@ namespace LaserGRBL
 					if (lastFN != null)
 					{
 						string fn = System.IO.Path.GetFileNameWithoutExtension(lastFN);
-						string path = System.IO.Path.GetDirectoryName(lastFN);
-						sfd.FileName = System.IO.Path.Combine(path, fn + ".nc");
+						//string path = System.IO.Path.GetDirectoryName(lastFN);
+						//sfd.FileName = System.IO.Path.Combine(path, fn + ".nc");
+						sfd.FileName = fn; // Filename without extension is enough
 					}
 
-					sfd.Filter = "GCODE Files|*.nc";
+					sfd.Filter = "GCODE Files|*.nc|LaserGRBL Project|*.lps";
 					sfd.AddExtension = true;
 					sfd.RestoreDirectory = true;
 
@@ -727,9 +759,17 @@ namespace LaserGRBL
 						filename = sfd.FileName;
 				}
 
-				if (filename != null)
-					file.SaveProgram(filename, header, footer, between, cycles, this);
-			}
+                if (filename == null) return;
+
+        if (System.IO.Path.GetExtension(filename).ToLowerInvariant() == ".lps") //store LaserGRBL project
+				{
+            Project.StoreSettings(filename);
+                }
+                else
+                {
+                    file.SaveProgram(filename, header, footer, between, cycles);
+                }
+            }
 		}
 
 		private void RefreshConfigOnConnect(object state) //da usare per la chiamata asincrona

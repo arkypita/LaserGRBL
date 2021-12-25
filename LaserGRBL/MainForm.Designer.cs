@@ -101,6 +101,7 @@
 			this.czechToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.polishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.greekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.installCH340DriverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.flashGrblFirmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -133,7 +134,6 @@
 			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
 			this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
-			this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -644,6 +644,12 @@
 			this.greekToolStripMenuItem.Name = "greekToolStripMenuItem";
 			this.greekToolStripMenuItem.Click += new System.EventHandler(this.greekToolStripMenuItem_Click);
 			// 
+			// turkishToolStripMenuItem
+			// 
+			resources.ApplyResources(this.turkishToolStripMenuItem, "turkishToolStripMenuItem");
+			this.turkishToolStripMenuItem.Name = "turkishToolStripMenuItem";
+			this.turkishToolStripMenuItem.Click += new System.EventHandler(this.turkishToolStripMenuItem_Click);
+			// 
 			// toolsToolStripMenuItem
 			// 
 			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -859,12 +865,6 @@
 			// 
 			this.MultipleInstanceTimer.Interval = 1000;
 			this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
-			// 
-			// turkishToolStripMenuItem
-			// 
-			resources.ApplyResources(this.turkishToolStripMenuItem, "turkishToolStripMenuItem");
-			this.turkishToolStripMenuItem.Name = "turkishToolStripMenuItem";
-			this.turkishToolStripMenuItem.Click += new System.EventHandler(this.turkishToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
