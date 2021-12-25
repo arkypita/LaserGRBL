@@ -90,3 +90,8 @@ Root: HKCR; SubKey: ".zbn"; ValueType: string; ValueData: "LaserGRBL zipped butt
 Root: HKCR; SubKey: "LaserGRBL zipped button"; ValueType: string; ValueData: "This file contains LaserGRBL custom buttons"; Flags: uninsdeletekey
 Root: HKCR; SubKey: "LaserGRBL zipped button\Shell\Open\Command"; ValueType: string; ValueData: """{app}\LaserGRBL.exe"" ""%1"""; Flags: uninsdeletekey
 Root: HKCR; Subkey: "LaserGRBL zipped button\DefaultIcon"; ValueType: string; ValueData: "{app}\zippedbutton.ico,0"; Flags: uninsdeletevalue
+
+Root: HKCR; SubKey: ".lps"; ValueType: string; ValueData: "LaserGRBL Project file"; Flags: uninsdeletekey
+Root: HKCR; SubKey: "LaserGRBL Project file"; ValueType: string; ValueData: "Project file for laser engraving"; Flags: uninsdeletekey
+Root: HKCR; SubKey: "LaserGRBL Project file\Shell\Open\Command"; ValueType: string; ValueData: """{app}\LaserGRBL.exe"" ""%1"""; Flags: uninsdeletekey
+Root: HKCR; Subkey: "LaserGRBL Project file\DefaultIcon"; ValueType: string; ValueData: "{app}\lasergrblfile.ico,0"; Flags: uninsdeletevalue
