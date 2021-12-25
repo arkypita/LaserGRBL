@@ -134,6 +134,13 @@ namespace LaserGRBL.PSHelper
 			catch { }
 
 			rv.Materials.AcceptChanges();
+
+			if (rv.GetNewCount() > 0)
+			{
+				rv.ImportServer(); //carica da file aggiornato
+				rv.SaveChanges(); //salva se c'é qualche aggiornamento
+			}
+
 			return rv;
 		}
 

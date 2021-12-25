@@ -1592,4 +1592,93 @@
     <Speed>1500</Speed>
     <Cycles>1</Cycles>
   </Materials>
+  <Materials>
+    <id>45720239-5e21-4b99-b0ec-5676ffdcdfd6</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>e57b38af-7218-4f0b-aa90-bd96f820a56b</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Plywood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>117a806e-557d-429a-a55b-d30136b25d06</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Pine</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>6507eea0-038d-46b0-a2db-b88189f4f227</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Stainless steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>color with dark paint before engrave</Remarks>
+  </Materials>
+  <Materials>
+    <id>9cb8de2f-f214-4601-8e94-b1a7543e2a42</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Basswood</Material>
+    <Thickness>2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>4e9b7df8-6b6f-4f8d-b11f-15cc5aa4a072</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Plywood</Material>
+    <Thickness>4mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>7a6f61bb-f941-4b55-b681-3a7a6752f1ee</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Pine</Material>
+    <Thickness>6mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>120</Speed>
+    <Cycles>2</Cycles>
+  </Materials>
+  <Materials>
+    <id>3d3de832-f608-4d5a-9d5e-07a40eba30d6</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>120</Speed>
+    <Cycles>2</Cycles>
+  </Materials>
 </MaterialDB>

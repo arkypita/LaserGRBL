@@ -41,14 +41,14 @@ namespace LaserGRBL
 			mRange.UpdateXYRange(new GrblCommand.Element('X', x1), new GrblCommand.Element('Y', y1), false);
 		}
 
-		public void SaveProgram(string filename, bool header, bool footer, bool between, int cycles)
+		public void SaveProgram(string filename, bool header, bool footer, bool between, int cycles, GrblCore core)
 		{
 			try
 			{
 				using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filename))
 				{
 					if (header)
-						sw.WriteLine(Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
+						EvaluateAddLines(core, sw, Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
 
 					for (int i = 0; i < cycles; i++)
 					{
@@ -57,16 +57,30 @@ namespace LaserGRBL
 
 
 						if (between && i < cycles - 1)
-							sw.WriteLine(Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
+							EvaluateAddLines(core, sw, Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
 					}
 
 					if (footer)
-						sw.WriteLine(Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
+						EvaluateAddLines(core, sw, Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER));
 
 					sw.Close();
 				}
 			}
 			catch { }
+		}
+
+		private static void EvaluateAddLines(GrblCore core, System.IO.StreamWriter sw, string lines)
+		{
+			string[] arr = lines.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+			foreach (string line in arr)
+			{
+				if (line.Trim().Length > 0)
+				{
+					string command = core.EvaluateExpression(line);
+					if (!string.IsNullOrEmpty(command))
+						sw.WriteLine(command);
+				}
+			}
 		}
 
 		public void LoadFile(string filename, bool append)
