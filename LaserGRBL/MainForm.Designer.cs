@@ -72,6 +72,8 @@
 			this.MnReOpenFile = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnSaveProgram = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnAdvancedSave = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
+			this.MnSaveProject = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnFileSend = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnStartFromPosition = new System.Windows.Forms.ToolStripMenuItem();
@@ -411,6 +413,8 @@
             this.MnReOpenFile,
             this.MnSaveProgram,
             this.MnAdvancedSave,
+            this.toolStripMenuItem8,
+            this.MnSaveProject,
             this.toolStripMenuItem1,
             this.MnFileSend,
             this.MnStartFromPosition,
@@ -449,6 +453,17 @@
 			resources.ApplyResources(this.MnAdvancedSave, "MnAdvancedSave");
 			this.MnAdvancedSave.Name = "MnAdvancedSave";
 			this.MnAdvancedSave.Click += new System.EventHandler(this.MnAdvancedSave_Click);
+			// 
+			// toolStripMenuItem8
+			// 
+			this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+			resources.ApplyResources(this.toolStripMenuItem8, "toolStripMenuItem8");
+			// 
+			// MnSaveProject
+			// 
+			resources.ApplyResources(this.MnSaveProject, "MnSaveProject");
+			this.MnSaveProject.Name = "MnSaveProject";
+			this.MnSaveProject.Click += new System.EventHandler(this.MnSaveProject_Click);
 			// 
 			// toolStripMenuItem1
 			// 
@@ -1000,6 +1015,8 @@
 		private System.Windows.Forms.ToolStripMenuItem MnWiFiDiscovery;
         private System.Windows.Forms.ToolStripMenuItem greekToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem turkishToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
+		private System.Windows.Forms.ToolStripMenuItem MnSaveProject;
 	}
 }
 

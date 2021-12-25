@@ -263,7 +263,7 @@ namespace LaserGRBL
 				TTLEstimated.Text = Strings.MainFormEstimatedTime;
 
 			MnFileOpen.Enabled = Core.CanLoadNewFile;
-			MnAdvancedSave.Enabled = MnSaveProgram.Enabled = Core.HasProgram;
+			MnSaveProject.Enabled = MnAdvancedSave.Enabled = MnSaveProgram.Enabled = Core.HasProgram;
 			MnFileSend.Enabled = Core.CanSendFile;
 			MnStartFromPosition.Enabled = Core.CanSendFile;
 			MnRunMulti.Enabled = Core.CanSendFile || Core.CanResumeHold || Core.CanFeedHold;
@@ -425,6 +425,16 @@ namespace LaserGRBL
 		void MnSaveProgramClick(object sender, EventArgs e)
 		{
 			Core.SaveProgram(this, false, false, false, 1);
+		}
+
+		private void MnAdvancedSave_Click(object sender, EventArgs e)
+		{
+			SaveOptionForm.CreateAndShowDialog(this, Core);
+		}
+
+		private void MnSaveProject_Click(object sender, EventArgs e)
+		{
+			Core.SaveProject(this);
 		}
 
 		private void MNEnglish_Click(object sender, EventArgs e)
@@ -740,11 +750,6 @@ namespace LaserGRBL
 			}
 		}
 
-		private void MnAdvancedSave_Click(object sender, EventArgs e)
-		{
-			SaveOptionForm.CreateAndShowDialog(this, Core);
-		}
-
 		private void licenseToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			LicenseForm.CreateAndShowDialog(this);
@@ -894,6 +899,7 @@ namespace LaserGRBL
 		{
 			SetLanguage(new System.Globalization.CultureInfo("tr-TR"));
 		}
+
 	}
 
 

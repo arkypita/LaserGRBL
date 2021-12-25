@@ -148,7 +148,7 @@
     <value>ConnectionForm</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Type" xml:space="preserve">
-    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=4.6.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -175,7 +175,7 @@
     <value>JogForm</value>
   </data>
   <data name="&gt;&gt;JogForm.Type" xml:space="preserve">
-    <value>LaserGRBL.JogForm, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.JogForm, LaserGRBL, Version=4.6.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;JogForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -217,7 +217,7 @@
     <value>PreviewForm</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Type" xml:space="preserve">
-    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=4.6.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=4.6.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -779,6 +779,9 @@
   <data name="MnFileAppend.Text" xml:space="preserve">
     <value>&amp;Append File</value>
   </data>
+  <data name="MnReOpenFile.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="MnReOpenFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
@@ -807,6 +810,9 @@
   <data name="MnReOpenFile.Text" xml:space="preserve">
     <value>&amp;Reload Last File</value>
   </data>
+  <data name="MnSaveProgram.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="MnSaveProgram.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
@@ -831,6 +837,9 @@
   </data>
   <data name="MnSaveProgram.Text" xml:space="preserve">
     <value>&amp;Quick Save</value>
+  </data>
+  <data name="MnAdvancedSave.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="MnAdvancedSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -865,8 +874,55 @@
   <data name="MnAdvancedSave.Text" xml:space="preserve">
     <value>&amp;Save (Advanced Options)</value>
   </data>
+  <data name="toolStripMenuItem8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 6</value>
+  </data>
+  <data name="MnSaveProject.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="MnSaveProject.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="MnSaveProject.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 22</value>
+  </data>
+  <data name="MnSaveProject.Text" xml:space="preserve">
+    <value>Save Project</value>
+  </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>212, 6</value>
+  </data>
+  <data name="MnFileSend.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="MnFileSend.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -889,6 +945,9 @@
   </data>
   <data name="MnFileSend.Text" xml:space="preserve">
     <value>Send To &amp;Machine</value>
+  </data>
+  <data name="MnStartFromPosition.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="MnStartFromPosition.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2221,6 +2280,18 @@
     <value>MnAdvancedSave</value>
   </data>
   <data name="&gt;&gt;MnAdvancedSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem8.Name" xml:space="preserve">
+    <value>toolStripMenuItem8</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MnSaveProject.Name" xml:space="preserve">
+    <value>MnSaveProject</value>
+  </data>
+  <data name="&gt;&gt;MnSaveProject.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">

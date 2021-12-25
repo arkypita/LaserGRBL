@@ -660,7 +660,7 @@ namespace LaserGRBL
                 }
                 else if (GCodeExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load GCODE file
                 {
-                    System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+                    Cursor.Current = Cursors.WaitCursor;
 
                     try
                     {
@@ -670,7 +670,7 @@ namespace LaserGRBL
                     catch (Exception ex)
                     { Logger.LogException("GCodeImport", ex); }
 
-                    System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+                    Cursor.Current = Cursors.Default;
                 }
                 else if (ProjectFileExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load LaserGRBL project
                 {
@@ -724,52 +724,82 @@ namespace LaserGRBL
 			return null;
 		}
 
-		public void SaveProgram(System.Windows.Forms.Form parent, bool header, bool footer, bool between, int cycles)
+		public void SaveProgram(Form parent, bool header, bool footer, bool between, int cycles)
 		{
 			if (HasProgram)
 			{
 				string filename = null;
-				using (System.Windows.Forms.SaveFileDialog sfd = new System.Windows.Forms.SaveFileDialog())
+				using (SaveFileDialog sfd = new SaveFileDialog())
 				{
 					string lastFN = Settings.GetObject<string>("Core.LastOpenFile", null);
 					if (lastFN != null)
 					{
 						string fn = System.IO.Path.GetFileNameWithoutExtension(lastFN);
-						//string path = System.IO.Path.GetDirectoryName(lastFN);
-						//sfd.FileName = System.IO.Path.Combine(path, fn + ".nc");
-						sfd.FileName = fn; // Filename without extension is enough
+						string path = System.IO.Path.GetDirectoryName(lastFN);
+						sfd.FileName = System.IO.Path.Combine(path, fn + ".nc");
 					}
 
-					sfd.Filter = "GCODE Files|*.nc|LaserGRBL Project|*.lps";
+					sfd.Filter = "GCODE Files|*.nc";
 					sfd.AddExtension = true;
 					sfd.RestoreDirectory = true;
 
-					System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+					DialogResult rv = DialogResult.Cancel;
 					try
 					{
-						dialogResult = sfd.ShowDialog(parent);
+						rv = sfd.ShowDialog(parent);
 					}
 					catch (System.Runtime.InteropServices.COMException)
 					{
 						sfd.AutoUpgradeEnabled = false;
-						dialogResult = sfd.ShowDialog(parent);
+						rv = sfd.ShowDialog(parent);
 					}
 
-					if (dialogResult == System.Windows.Forms.DialogResult.OK)
+					if (rv == DialogResult.OK)
 						filename = sfd.FileName;
 				}
 
-                if (filename == null) return;
+                if (filename != null)
+					file.SaveGCODE(filename, header, footer, between, cycles, this);
+			}
+		}
 
-        if (System.IO.Path.GetExtension(filename).ToLowerInvariant() == ".lps") //store LaserGRBL project
+		public void SaveProject(Form parent)
+		{
+			if (HasProgram)
+			{
+				string filename = null;
+				using (SaveFileDialog sfd = new SaveFileDialog())
 				{
-            Project.StoreSettings(filename);
-                }
-                else
-                {
-                    file.SaveProgram(filename, header, footer, between, cycles);
-                }
-            }
+					string lastFN = Settings.GetObject<string>("Core.LastOpenFile", null);
+					if (lastFN != null)
+					{
+						string fn = System.IO.Path.GetFileNameWithoutExtension(lastFN);
+						string path = System.IO.Path.GetDirectoryName(lastFN);
+						sfd.FileName = System.IO.Path.Combine(path, fn + ".lps");
+					}
+
+					sfd.Filter = "LaserGRBL Project|*.lps";
+					sfd.AddExtension = true;
+					sfd.RestoreDirectory = true;
+
+					DialogResult rv = DialogResult.Cancel;
+					try
+					{
+						rv = sfd.ShowDialog(parent);
+					}
+					catch (System.Runtime.InteropServices.COMException)
+					{
+						sfd.AutoUpgradeEnabled = false;
+						rv = sfd.ShowDialog(parent);
+					}
+
+					if (rv == DialogResult.OK)
+						filename = sfd.FileName;
+				}
+
+				if (filename != null)
+					Project.StoreSettings(filename);
+			}
 		}
 
 		private void RefreshConfigOnConnect(object state) //da usare per la chiamata asincrona

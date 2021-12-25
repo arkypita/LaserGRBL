@@ -41,7 +41,7 @@ namespace LaserGRBL
 			mRange.UpdateXYRange(new GrblCommand.Element('X', x1), new GrblCommand.Element('Y', y1), false);
 		}
 
-		public void SaveProgram(string filename, bool header, bool footer, bool between, int cycles, GrblCore core)
+		public void SaveGCODE(string filename, bool header, bool footer, bool between, int cycles, GrblCore core)
 		{
 			try
 			{
