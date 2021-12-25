@@ -1722,23 +1722,35 @@ namespace LaserGRBL
 			{ Logger.LogException("ThreadRX", ex); }
 		}
 
-		// this function try to detect and unlock from a "buffer stuck" condition
+		// this function try to detect and automatically unlock from a "buffer stuck" condition
 		// a "buffer stuck" condition occurs when LaserGRBL does not receive some "ok's" 
 		// back from grbl (i.e. because of electrical noise on wire) and so LaserGRBL
 		// does no longer send commands anymore because think the buffer is full
 		// this feature can work only if $10=3 (status report with buffer size report enabled)
-		private void HandleMissingOK() 
+		private void HandleMissingOK()
 		{
-			if (HasPendingCommands() && !BufferIsFree() && MachineSayBufferFree() && MachineNotMovingOrReply() && MachineStatus == MacStatus.Run)
-				CreateFakeOK(mPending.Count); //rispondi "ok" a tutti i comandi pending
+			if (IsBufferStuck() && MachineSayBufferFree())
+				UnlockFromBufferStuck(true);
 		}
 
-		private void CreateFakeOK(int count)
+		public void UnlockFromBufferStuck(bool auto)
+		{
+			if (IsBufferStuck())
+				CreateFakeOK(mPending.Count, auto); //rispondi "ok" a tutti i comandi pending
+		}
+
+		public bool IsBufferStuck()
+		{
+			return MachineStatus == MacStatus.Run && HasPendingCommands() && !BufferIsFree() && MachineNotMovingOrReply();
+		}
+
+		private void CreateFakeOK(int count, bool auto)
 		{
 			mSentPtr.Add(new GrblMessage("Unlock from buffer stuck!", false));
+			string act = auto ? "auto" : "manual";
 
-			ComWrapper.ComLogger.Log("com", $"Handle Missing OK [{count}]");
-			Logger.LogMessage("Issue detector", "Handle Missing OK [{0}]", count);
+			ComWrapper.ComLogger.Log("com", $"Handle Missing OK [{count}] ({act})");
+			Logger.LogMessage("Issue detector", $"Handle Missing OK [{count}] ({act})");
 
 			for (int i = 0; i < count; i++)
 				ManageCommandResponse("ok");

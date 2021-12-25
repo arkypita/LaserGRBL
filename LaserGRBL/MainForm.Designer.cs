@@ -39,6 +39,7 @@
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTLBuffer = new System.Windows.Forms.ToolStripStatusLabel();
 			this.PbBuffer = new System.Windows.Forms.ToolStripProgressBar();
+			this.BtnUnlockFromStuck = new System.Windows.Forms.ToolStripButton();
 			this.TTLEstimated = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTEstimated = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTLinkToNews = new System.Windows.Forms.ToolStripStatusLabel();
@@ -182,6 +183,7 @@
             this.TTTLines,
             this.TTLBuffer,
             this.PbBuffer,
+            this.BtnUnlockFromStuck,
             this.TTLEstimated,
             this.TTTEstimated,
             this.TTLinkToNews,
@@ -213,11 +215,19 @@
 			// 
 			// PbBuffer
 			// 
-			this.PbBuffer.Margin = new System.Windows.Forms.Padding(0, 3, 5, 3);
+			this.PbBuffer.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
 			this.PbBuffer.Maximum = 127;
 			this.PbBuffer.Name = "PbBuffer";
 			resources.ApplyResources(this.PbBuffer, "PbBuffer");
 			this.PbBuffer.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+			// 
+			// BtnUnlockFromStuck
+			// 
+			this.BtnUnlockFromStuck.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			resources.ApplyResources(this.BtnUnlockFromStuck, "BtnUnlockFromStuck");
+			this.BtnUnlockFromStuck.Margin = new System.Windows.Forms.Padding(0, 2, 2, 0);
+			this.BtnUnlockFromStuck.Name = "BtnUnlockFromStuck";
+			this.BtnUnlockFromStuck.Click += new System.EventHandler(this.BtnUnlockFromStuck_Click);
 			// 
 			// TTLEstimated
 			// 
@@ -1017,6 +1027,7 @@
 		private System.Windows.Forms.ToolStripMenuItem turkishToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
 		private System.Windows.Forms.ToolStripMenuItem MnSaveProject;
+		private System.Windows.Forms.ToolStripButton BtnUnlockFromStuck;
 	}
 }
 

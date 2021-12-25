@@ -12,6 +12,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Threading;
 using Tools;
+using static Tools.ModifyProgressBarColor;
 
 namespace LaserGRBL
 {
@@ -19,6 +20,7 @@ namespace LaserGRBL
 	{
 		private GrblCore Core;
 		private UsageStats.MessageData ToolBarMessage;
+		private bool IsBufferStuck = false;
 
 		public MainForm()
 		{
@@ -319,6 +321,15 @@ namespace LaserGRBL
 			PbBuffer.Maximum = Core.BufferSize;
 			PbBuffer.Value = Core.UsedBuffer;
 			PbBuffer.ToolTipText = $"Buffer: {Core.UsedBuffer}/{Core.BufferSize} Free:{Core.FreeBuffer}";
+
+			bool stuck = Core.IsBufferStuck();
+			if (stuck != IsBufferStuck)
+			{
+				IsBufferStuck = stuck;
+				PbBuffer.ProgressBar.SetState(stuck ? 2 : 1);
+				BtnUnlockFromStuck.Enabled = stuck;
+			}
+			
 			MnOrtur.Visible = Core.IsOrturBoard;
 
 			ResumeLayout();
@@ -900,6 +911,10 @@ namespace LaserGRBL
 			SetLanguage(new System.Globalization.CultureInfo("tr-TR"));
 		}
 
+		private void BtnUnlockFromStuck_Click(object sender, EventArgs e)
+		{
+			Core.UnlockFromBufferStuck(false);
+		}
 	}
 
 

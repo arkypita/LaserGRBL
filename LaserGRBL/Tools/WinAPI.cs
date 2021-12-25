@@ -5,6 +5,18 @@ using System.Runtime.InteropServices;
 
 namespace Tools
 {
+	public static class ModifyProgressBarColor
+	{
+		[DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
+		static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr w, IntPtr l);
+
+		//Note the second parameter in SetState, 1 = normal (green); 2 = error (red); 3 = warning (yellow).
+		public static void SetState(this System.Windows.Forms.ProgressBar pBar, int state)
+		{
+			SendMessage(pBar.Handle, 1040, (IntPtr)state, IntPtr.Zero);
+		}
+	}
+
 	class WinAPI
 	{
 
