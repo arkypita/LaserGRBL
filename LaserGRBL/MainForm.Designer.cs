@@ -105,6 +105,7 @@
 			this.polishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.greekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.romanianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.installCH340DriverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.flashGrblFirmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -575,7 +576,8 @@
             this.czechToolStripMenuItem,
             this.polishToolStripMenuItem,
             this.greekToolStripMenuItem,
-            this.turkishToolStripMenuItem});
+            this.turkishToolStripMenuItem,
+            this.romanianToolStripMenuItem});
 			this.linguaToolStripMenuItem.Name = "linguaToolStripMenuItem";
 			resources.ApplyResources(this.linguaToolStripMenuItem, "linguaToolStripMenuItem");
 			// 
@@ -674,7 +676,12 @@
 			resources.ApplyResources(this.turkishToolStripMenuItem, "turkishToolStripMenuItem");
 			this.turkishToolStripMenuItem.Name = "turkishToolStripMenuItem";
 			this.turkishToolStripMenuItem.Click += new System.EventHandler(this.turkishToolStripMenuItem_Click);
-			// 
+            // 
+            // romanianToolStripMenuItem
+            // 
+            resources.ApplyResources(this.romanianToolStripMenuItem, "romanianToolStripMenuItem");
+            this.romanianToolStripMenuItem.Name = "romanianToolStripMenuItem";
+            this.romanianToolStripMenuItem.Click += new System.EventHandler(this.romanianToolStripMenuItem_Click);
 			// toolsToolStripMenuItem
 			// 
 			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1028,6 +1035,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
 		private System.Windows.Forms.ToolStripMenuItem MnSaveProject;
 		private System.Windows.Forms.ToolStripButton BtnUnlockFromStuck;
+        private System.Windows.Forms.ToolStripMenuItem romanianToolStripMenuItem;
 	}
 }
 

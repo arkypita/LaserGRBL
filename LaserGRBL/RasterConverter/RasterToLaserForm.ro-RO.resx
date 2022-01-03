@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TpPreview.Text" xml:space="preserve">
+    <value>Previzualizare</value>
+  </data>
+  <data name="TpOriginal.Text" xml:space="preserve">
+    <value>Original</value>
+  </data>
+  <data name="BtFlipV.ToolTip" xml:space="preserve">
+    <value>Întoarce imaginea vertical</value>
+  </data>
+  <data name="BtFlipH.ToolTip" xml:space="preserve">
+    <value>Întoarce imaginea orizontal</value>
+  </data>
+  <data name="BtRotateCW.ToolTip" xml:space="preserve">
+    <value>Rotiți 90° în sensul acelor de ceasornic</value>
+  </data>
+  <data name="BtRotateCCW.ToolTip" xml:space="preserve">
+    <value>Rotiți 90° în sensul invers acelor de ceasornic</value>
+  </data>
+  <data name="BtnRevert.ToolTip" xml:space="preserve">
+    <value>Revocă toate modificările</value>
+  </data>
+  <data name="BtnCrop.ToolTip" xml:space="preserve">
+    <value>Decupați imaginea</value>
+  </data>
+  <data name="BtnReverse.ToolTip" xml:space="preserve">
+    <value>Inversați culoarea</value>
+  </data>
+  <data name="BtnAutoTrim.ToolTip" xml:space="preserve">
+    <value>Tăiere Automată Imagine</value>
+  </data>
+  <data name="TbPassthroughInfo.Text" xml:space="preserve">
+    <value>Modul Pătrundere lasă imaginea intactă, fără nicio prelucrare de către LaserGRBL. Imaginea va fi gravată linie cu linie, pe orizontală, în funcție de dimensiunea și rezoluția DPI conținută în informațiile fișierului.</value>
+  </data>
+  <data name="GbPassthrough.Text" xml:space="preserve">
+    <value>Opțiuni Trecere</value>
+  </data>
+  <data name="CbResize.ToolTip" xml:space="preserve">
+    <value>Controlați modul de redimensionare (margini Netede (Smooth) sau solide (Hard))</value>
+  </data>
+  <data name="LblGrayscale.Text" xml:space="preserve">
+    <value>Tonuri Gri</value>
+  </data>
+  <data name="CbMode.ToolTip" xml:space="preserve">
+    <value>Selectați formula de conversie a culorii</value>
+  </data>
+  <data name="LblRed.Text" xml:space="preserve">
+    <value>Roșu</value>
+  </data>
+  <data name="LblBlue.Text" xml:space="preserve">
+    <value>Albastru</value>
+  </data>
+  <data name="LblGreen.Text" xml:space="preserve">
+    <value>Verde</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Luminozitate</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Contrast</value>
+  </data>
+  <data name="CbThreshold.Text" xml:space="preserve">
+    <value>Alb&amp;Negru</value>
+  </data>
+  <data name="CbThreshold.ToolTip" xml:space="preserve">
+    <value>Aplicați pragul (limitarea) filtrarii</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Redimensionați</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Inlocuire Pete Albe</value>
+  </data>
+  <data name="GbParameters.Text" xml:space="preserve">
+    <value>Parametrii</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Limită Linie</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Limită Colț</value>
+  </data>
+  <data name="TBLineThreshold.ToolTip" xml:space="preserve">
+    <value>Dacă spline (striația) nu este mai departe de linia dreaptă definită de punctele sale finale, atunci produceți o linie dreaptă.</value>
+  </data>
+  <data name="TBCornerThreshold.ToolTip" xml:space="preserve">
+    <value>Unghiul în grade: dacă un pixel, predecesorii săi și succesorii săi se întâlnesc într-un unghi mai mic decât acesta, atunci, este un colț.</value>
+  </data>
+  <data name="GbCenterlineOptions.Text" xml:space="preserve">
+    <value>Opțiuni Linie Centrală (Centerline)</value>
+  </data>
+  <data name="BtnAdaptiveQualityInfo.ToolTip" xml:space="preserve">
+    <value>Creșteți/scădeți calitatea vectorizării proporțional cu dimensiunea imaginii finale.</value>
+  </data>
+  <data name="LAdaptiveQuality.Text" xml:space="preserve">
+    <value>Calitate adaptivă</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Îndepărtarea Petelor</value>
+  </data>
+  <data name="UDSpotRemoval.ToolTip" xml:space="preserve">
+    <value>Eliminați micile detalii</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Optimizați</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Netezire</value>
+  </data>
+  <data name="UDOptimize.ToolTip" xml:space="preserve">
+    <value>Optimizați calea (produceți mai puține segmente)</value>
+  </data>
+  <data name="UDSmoothing.ToolTip" xml:space="preserve">
+    <value>Margini solide si netede</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Umplere</value>
+  </data>
+  <data name="CbFillingDirection.ToolTip" xml:space="preserve">
+    <value>Activați umplerea traseului / setați direcția de umplere</value>
+  </data>
+  <data name="LblFillingQuality.Text" xml:space="preserve">
+    <value>Calitate Umplere</value>
+  </data>
+  <data name="UDFillingQuality.ToolTip" xml:space="preserve">
+    <value>Calitatea umplerii (linii/mm)</value>
+  </data>
+  <data name="LblFillingLineLbl.Text" xml:space="preserve">
+    <value>Linii/mm</value>
+  </data>
+  <data name="UDDownSample.ToolTip" xml:space="preserve">
+    <value>Reduceți (redimensionați) imaginea originală [pentru imagine de înaltă rezoluție]</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Reducerea Eșantionării</value>
+  </data>
+  <data name="lOptimizeFast.Text" xml:space="preserve">
+    <value>Optimizează Traseu</value>
+  </data>
+  <data name="BtnFillingQualityInfo.ToolTip" xml:space="preserve">
+    <value>Dacă rezoluția nu se potrivește cu pasul motrului stepper, pot apărea unele imperfecțiuni! Faceți clic pentru a calcula o rezoluție corespunzătoare...</value>
+  </data>
+  <data name="GbVectorizeOptions.Text" xml:space="preserve">
+    <value>Vectorizați! Opțiuni</value>
+  </data>
+  <data name="CbDirections.ToolTip" xml:space="preserve">
+    <value>Direcția de gravare</value>
+  </data>
+  <data name="UDQuality.ToolTip" xml:space="preserve">
+    <value>Setați rezoluția imaginii (linii/mm)</value>
+  </data>
+  <data name="CbLinePreview.Text" xml:space="preserve">
+    <value>Previzualizare Linie</value>
+  </data>
+  <data name="CbLinePreview.ToolTip" xml:space="preserve">
+    <value>Afișează previzualizarea</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Calitate</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Direcţie</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Linii/mm</value>
+  </data>
+  <data name="LblDitherMode.Text" xml:space="preserve">
+    <value>Dithering (oscilare)</value>
+  </data>
+  <data name="BtnQualityInfo.ToolTip" xml:space="preserve">
+    <value>Dacă rezoluția nu se potrivește cu pasul motorului stepper, pot apărea unele imperfecțiuni! Faceți clic pentru a calcula o rezoluție corespunzătoare...</value>
+  </data>
+  <data name="GbLineToLineOptions.Text" xml:space="preserve">
+    <value>Opțiuni Linie Cu Linie</value>
+  </data>
+  <data name="RbNoProcessing.Text" xml:space="preserve">
+    <value>Pătrundere</value>
+  </data>
+  <data name="RbNoProcessing.ToolTip" xml:space="preserve">
+    <value>Fără Procesare (passthrough) (pătrundere)</value>
+  </data>
+  <data name="RbCenterline.Text" xml:space="preserve">
+    <value>Linie Centrală (Centerline)</value>
+    <comment>mijlocul formei desenului</comment>
+  </data>
+  <data name="RbCenterline.ToolTip" xml:space="preserve">
+    <value>Vectorizarea Linie Centrală (Centerline)</value>
+    <comment>mijlocul formei desenului</comment>
+  </data>
+  <data name="RbDithering.Text" xml:space="preserve">
+    <value>Dithering (oscilare) Alb&amp;Negru de 1bit</value>
+  </data>
+  <data name="RbDithering.ToolTip" xml:space="preserve">
+    <value>Realizați o imagine Alb&amp;Negru emulată în tonuri de gri</value>
+  </data>
+  <data name="RbVectorize.Text" xml:space="preserve">
+    <value>Vectorizați!</value>
+  </data>
+  <data name="RbVectorize.ToolTip" xml:space="preserve">
+    <value>Realizatiți calea vectorială</value>
+  </data>
+  <data name="RbLineToLineTracing.Text" xml:space="preserve">
+    <value>Trasare Linie Cu Linie</value>
+  </data>
+  <data name="RbLineToLineTracing.ToolTip" xml:space="preserve">
+    <value>Realizați o imagini în tonuri de gri</value>
+  </data>
+  <data name="GbConversionTool.Text" xml:space="preserve">
+    <value>Instrument Conversie</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Anulează</value>
+  </data>
+  <data name="BtnCreate.Text" xml:space="preserve">
+    <value>Continuă</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Importați Imaginea Raster (rețea fină de linii compuse din puncte)</value>
+    <comment>raster = un model dreptunghiular de linii de scanare paralele, urmate de laser</comment>
+  </data>
+</root>

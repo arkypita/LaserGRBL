@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Anulează</value>
+  </data>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Salvează</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Modul de streaming: [Buffer (Memorie Tampon) implicit]
+- Buffered (Memorie Tampon): optimizați fluxul de comenzi umplend tampon grbl de primire [recomandat]
+- Synchronous (Sincron): așteptați execuția fiecărei comenzi înainte de a trimite următoarea comandă [mai lent, dar mai sigur]
+- RepeatOnError (RepetaInCazDeEroare): la fel ca Synchronous (Sincron), dar repetă comenzi dacă detectează eroare [experimental]</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Protocol Conectare:
+- UsbSerial: este cel mai comun protocol. Ar trebui utilizat dacă gravorul dvs. este conectat la portul USB sau COM.
+- UsbSerial2: o implementare alternativă a serialului USB pentru a ocoli problemele Microsoft SerialPort
+- Telnet: dacă aveți un pod WiFi-Telnet (serial &lt;-&gt; WiFi &lt;---&gt; WiFi &lt;-&gt; serial). Comunicarea este implementată ca un simplu client-server telnet.
+- LaserWebESP8266: suportă conexiunea WiFi prin WebSocket. Compatibil cu software-ul LaserWeb-ESP8266.</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Mod Threading (Fire De Executie Transfer Date): ultrarapid, rapid, silențios, lent. [Rapid implicit]
+Această setare afectează viteza de trimitere a firului de executie (transfer date) și frecvența solicitării raportului de stare (status).
+Setați valori mai lente dacă întâmpinați probleme.</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>Detector de probleme</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>LaserGRBL poate detecta probleme și avertizează utilizatorul furnizând informații despre cum să le rezolve.
+Dacă este dezactivată, toate problemele sunt gestionate în mod silențios, fără avertisment.</value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>Resetare Soft [Ctrl-X] (Repornire)</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Dacă este activat, LaserGRBL trimite o resetare soft (repornire) când conexiunea la grbl este deschisă.</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>Hard Reset [DTR+RTS] (Taiere Alimentare Si Repornire)</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Dacă este activat, LaserGRBL trimite o resetare hardware (repornire automata cu taiere alimentare) atunci când conexiunea la grbl este deschisă. [Poziția este pierdută!]</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Tip de firmware (program (software) placa control laser):
+- Grbl: firmware-ul minunat pentru care a fost dezvoltat LaserGRBL.
+- Smoothie [experimental]: suportul a fost adăugat recent și nu este testat complet.
+- Marlin [experimental]: suportul a fost adăugat recent și nu este complet testat.
+- VigoWork [experimental]: suport pentru modelul VG-L7x care nu este standard grbl.</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>Protocol</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>LaserGRBL utilizează variația puterii prin G-Code „comanda S” pentru a produce tonuri de gri.
+Laserul dvs. trebuie să accepte controlul TTL conectat la arduino PIN D11.
+Dacă nu, vă rugăm să dezactivați suportul PWM.</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>În mod implicit, LaserGRBL produce linii de gravare în ambele direcții de deplasare ale capului laser. Unele teste au arătat că acest
+mod (care este mai rapid) produce rezultate de calitate mai scăzută. Dacă se dorește calitatea maximă a marcajului, activați această
+opțiune.</value>
+  </data>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>Gravură Unidirecțională</value>
+  </data>
+  <data name="CBSupportPWM.Text" xml:space="preserve">
+    <value>Suport PWM (Putere Laser)</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>Umplere imagine HiRes (rezolutie mare)</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Rezoluția maximă disponibilă în LaserGRBL este de 20 de linii/mm (aproximativ 500 dpi), ceea ce este suficient de mare pentru
+majoritatea utilizatorilor.
+Dacă aveți nevoie de o rezoluție mai mare, puteți activa „HiRes” (rezoluție inaltă) și puteți elimina această limită. Fiți atenți: LaserGRBL
+va avea nevoie de mult mai multe resurse!</value>
+  </data>
+  <data name="CbDisableSkip.Text" xml:space="preserve">
+    <value>Dezactivează mișcare rapid G0</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>În mod implicit, LaserGRBL folosește G0 - mișcare rapidă - pentru a omite părțile albe ale lucrărilor dvs. Acest lucru accelerează
+procesul de gravare, dar poate duce la o poziționare incorectă cu rezultate dezamăgitoare. De obicei, este posibil să îmbunătățiți
+rezultatele prin setarea corectă a valorilor maxime de accelerație și viteză ($ 120,121,122 și $ 110,111,112) în configurația grbl.
+
+Dacă dezactivați această caracteristică, LaserGRBL va folosi mișcarea liniară G1 la aceeași viteză de lucru, astfel încât tot procesul
+de gravare se efectuează cu aceeași viteză. Acest lucru va încetini procesul, dar poate îmbunătăți semnificativ rezultatul în cazul în
+care alte abordări eșuează.</value>
+  </data>
+  <data name="CbDisableBoundWarn.Text" xml:space="preserve">
+    <value>Dezactivează avertisment limită</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>LaserGRBL vă va avertiza dacă veți crea o lucrare mai mare decât spațiul dvs. de lucru oferit de gravor.
+Setați acest conditie dacă nu doriți acest control de siguranță.</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>Import raster (punct/linie)</value>
+  </data>
+  <data name="label43.Text" xml:space="preserve">
+    <value>Începând cu versiunea 4.6.1, LaserGRBL utilizează un algoritm de aproximare mai bun al curbelor Bezier, capabil să returneze rezultate mai precise.
+Dezactivați această opțiune dacă preferați să utilizați algoritmul vechi.</value>
+  </data>
+  <data name="CbSmartBezier.Text" xml:space="preserve">
+    <value>Bezier Inteligent</value>
+    <comment>CURBA BEZIER este o curbă matematică care este adesea folosită în grafica pe calculator pentru a modela forme fluide și în animație.</comment>
+  </data>
+  <data name="TpVectorImport.Text" xml:space="preserve">
+    <value>Import Vector</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Fără „Continuous Jog” (Start/Stop Rapid Continuu) atunci când butonul Jog este apăsat LaserGRBL trimite cerere Jog (Start/Stop
+Rapid) cu viteza și mișcarea stabilite; iar jogging-ul este executat complet până în poziția finală.
+Dacă activați „Continuous Jog” (Start/Stop Rapid Continuu), jogging-ul este trimis cu mouse-ul jos și anulat/întrerupt cu mouse-ul
+sus, astfel încât să puteți face o poziționare aproximativă, dar într-un mod foarte confortabil.
+
+NOTĂ: „Continuous Jog” (Start/Stop Rapid Continuu) funcționează numai cu Grbl v1.1 sau o versiune ulterioară și necesită ca
+dimensiunea tabelului să fie configurată corect în Grbl Configuration (Meniu "Grbl" -&gt; "Configuratie Grbl" $130, $131, $132)</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>LaserGRBL nu este proiectat pentru a suporta axa Z, dar dacă aveți un hardware cu 3 axe, poate veți găsi această opțiune utilă.</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Afișați controlul Z sus/jos</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>Start/Stop Rapid Continuu (Continuos Jog)</value>
+  </data>
+  <data name="CbClickNJog.Text" xml:space="preserve">
+    <value>Clic și Start/Stop Rapid (Click 'n Jog)</value>
+    <comment>Jogging = se referă la pornirea și oprirea repetată a unui motor în rafale scurte pentru a efectua o anumită mișcare</comment>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>Cu „Click'n Jog” (Clic Start/Stop Rapid) activat, un dublu clic pe suprafața de previzualizare va sari la poziția unde s-a dat clic.</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Jog Control (Start/Stop Rapid)</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Timp OFF (Oprit): după acest timp de răcire, LaserGRBL va trimite o comandă de reluare pentru a continua lucrarea de gravare.</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Unele diode laser se pot încălzi pre tare dacă funcționează mult timp configurate la cea mai mare putere. Pentru a preveni 
+supraîncălzirea diodei și pentru a crește durata de viață a laserului, puteți adăuga câteva cicluri automate de răcire care introduc o 
+pauză în timpul procesului de gravare.
+Dacă "Răcirea automată" este activată, LaserGRBL va trimite automat "feed hold" („Oprire Program”) și „Reia Lucrul” ("job resume")
+conform configurației de sincronizare ON-OFF (PORNIT-OPRIT).</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Timp ON (Pornit): acesta este timpul maxim în care laserul va rămâne aprins în timpul procesului de gravare.
+După acest timp, LaserGRBL va trimite o comanda automată "feed hold" („Oprire Program”) pentru a răci laserul.</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>Activați răcirea automată</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Pornit</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>sec</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Oprit</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>sec</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Atenție: această funcție va funcționa numai cu versiunile grbl &gt; v1.1 cu „modul laser” activat.
+Dacă utilizați răcirea automată cu versiunea grbl mai veche (sau cu modul laser dezactivat), laserul nu se va opri în timpul pauzelor
+și va arde sau găuri materialul de gravat!</value>
+  </data>
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+    <value>Utilizator Ortur: Firmware-ul Ortur (toate versiunile până la 137) are o eroare în CV-ul de prelucrare care împiedică utilizarea corectă
+a funcției de răcire automată.
+Vă rugăm să nu utilizați răcirea automat cu gravorul Ortur până când nu este lansat un nou firmware (program software).</value>
+  </data>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>Răcire automată</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBL va adăuga acest GCode înainte de a începe orice lucrare.
+Puteți personaliza acest cod, de exemplu, adăugând M8 pentru a porni ventilatorul.
+
+Aici puteți utiliza aceeași sintaxă ca cea folosită pentru butoanelor personalizate, dacă trebuie să creați o poziționare
+aferentă sarcinii specifice dvs., care doriți să fie executate.</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Antet</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Subsol</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Treceri multiple</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBL va pune în coadă acest GCode la sfârșitul oricărei lucrări.
+Poate fi folosit pentru a vă trimite gravorul într-o stare inițială, cum ar fi revenirea la poziția zero
+sau trimiterea comenzii M9 pentru a opri ventilatorul etc.
+
+Aici puteți utiliza aceeași sintaxă ca cea folosită si pentru butoanelor personalizate.</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Când efectuați mai multe treceri, LaserGRBL va împinge acest GCode între fiecare trecere (oricare pasi).
+Poate fi folosit pentru a muta Z în jos pentru a efectua tăieturi mai adânci.
+
+Aici puteți utiliza aceeași sintaxă a butoanelor personalizate.</value>
+  </data>
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Aici puteți seta (configura) un alt sunet pentru evenimentele de succes, cum ar fi atunci când o lucrare
+este terminată.
+Bifați pentru a activa.</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Aici puteți seta un alt sunet de avertizare.
+Aceasta se declanșează de obicei la o comandă GCode greșită, dar mașina dvs. poate continua să
+funcționeze.
+Bifați pentru a activa.</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Sunet Avertizare</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>Modifică</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Fișier Sunet</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Sunet Eroare</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>Modifică</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Fișier Sunet</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Sunet Conectare</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>Modifică</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Fișier Sunet</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Sunetul Deconectare</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>Modifică</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Fișier Sunet</value>
+  </data>
+  <data name="LblSuccessSound.Text" xml:space="preserve">
+    <value>Sunet Succes</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>Modifică</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Fișier Sunet</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Aici puteți seta un sunet pentru o conexiune de succes.
+Bifați pentru a activa.</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Aici puteți seta un sunet pentru deconectare.
+Util pentru unele conexiuni WiFi.
+Bifați pentru a activa.</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Aici puteți seta un sunet de eroare pentru erori fatale.
+Aceasta înseamnă că lucrarea dvs. s-a oprit cel mai probabil și LaserGRBL nu poate continua
+operațiunea.
+Bifați pentru a activa.</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>Notificare telegramă</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Cod Personal</value>
+  </data>
+  <data name="BtnTestNotification.Text" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="label42.Text" xml:space="preserve">
+    <value>Dacă aveți telegramă, căutați botul (robotul automat) @LaserGRBL
+Obțineți codul personal și scrieți-l aici!</value>
+  </data>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>Înstiințare (notificare)</value>
+  </data>
+  <data name="SoundBrowserDialog.Filter" xml:space="preserve">
+    <value>Fișier Audio Waveform|*.wav</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Setări</value>
+  </data>
+</root>
