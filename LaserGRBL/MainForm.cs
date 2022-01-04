@@ -913,7 +913,10 @@ namespace LaserGRBL
 
 		private void BtnUnlockFromStuck_Click(object sender, EventArgs e)
 		{
-			Core.UnlockFromBufferStuck(false);
+			if (MessageBox.Show(Strings.WarnBufferStuckUnlockText, Strings.WarnBufferStuckUnlockTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 0, "http://lasergrbl.com/faq", "issues") == DialogResult.OK)
+			{
+				Core.UnlockFromBufferStuck(false);
+			}
 		}
 
 		private void romanianToolStripMenuItem_Click(object sender, EventArgs e)

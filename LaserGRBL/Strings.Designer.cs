@@ -839,6 +839,25 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a If the buffer is blocked, it is because there was some communication problem with your engraver. If you press &quot;OK&quot; LaserGRBL will ignore the full buffer and send the next commands. If this happens often, you should try to understand the causes of this problem.
+        ///Click &quot;?&quot; for more information..
+        /// </summary>
+        internal static string WarnBufferStuckUnlockText {
+            get {
+                return ResourceManager.GetString("WarnBufferStuckUnlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Unlock buffer.
+        /// </summary>
+        internal static string WarnBufferStuckUnlockTitle {
+            get {
+                return ResourceManager.GetString("WarnBufferStuckUnlockTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Centerline option is not compatible with your PC.
         ///64bit OS is needed!.
         /// </summary>

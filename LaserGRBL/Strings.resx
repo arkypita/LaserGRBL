@@ -416,4 +416,11 @@ Only engravers with grbl version &gt;= 1.1 with "laser mode" enabled ($32=1) can
   <data name="BoxTelegramSettingTitle" xml:space="preserve">
     <value>Telegram notification</value>
   </data>
+  <data name="WarnBufferStuckUnlockText" xml:space="preserve">
+    <value>If the buffer is blocked, it is because there was some communication problem with your engraver. If you press "OK" LaserGRBL will ignore the full buffer and send the next commands. If this happens often, you should try to understand the causes of this problem.
+Click "?" for more information.</value>
+  </data>
+  <data name="WarnBufferStuckUnlockTitle" xml:space="preserve">
+    <value>Unlock buffer</value>
+  </data>
 </root>
