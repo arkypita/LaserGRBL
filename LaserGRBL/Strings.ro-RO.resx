@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BoxConnectErrorTitle" xml:space="preserve">
+    <value>Nu se poate conecta la dispozitiv</value>
+  </data>
+  <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
+    <value>Ascuţitã (CelMaiApropiatVecin)</value>
+  </data>
+  <data name="WarnSoftLimitOOB" xml:space="preserve">
+    <value>Aţi setat o dimensiune şi un decalaj (offset) care fac lucrarea mai mare decât spaţiul de lucru configurat în gravor ({0}mm x {1}mm).
+Parametrii Grbl $130 şi $131.
+
+Acest lucru ar putea genera o eroare limita-soft (limita maximã) sau maşina s-ar putea lovi în limita maxima a axelor. Sunteţi sigur(ã) de valorile introduse?</value>
+  </data>
+  <data name="WarnSoftLimitNS" xml:space="preserve">
+    <value>Aţi setat decalaje negative, dar gravorul dvs. este setat sa utilizeze spaţiu pozitiv cu alarma de limita soft (maxima) activatã ($20=1).
+
+Acest lucru ar putea genera o eroare soft-limit (spatiul maxim de gravat). Sunteţi sigur de valorile introduse?</value>
+  </data>
+  <data name="DirectionDiagonal" xml:space="preserve">
+    <value>Diagonalã (vechi)</value>
+  </data>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>Clic dreapta pentru a adãuga butoane personalizate</value>
+  </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>Repornirea necesara</value>
+  </data>
+  <data name="DirectionHorizontal" xml:space="preserve">
+    <value>Orizontal (vechi)</value>
+  </data>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>Confirmare</value>
+  </data>
+  <data name="MacStatusUnknown" xml:space="preserve">
+    <value>Necunoscut</value>
+  </data>
+  <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
+    <value>Netedã (HQ Bicubic)</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} Configuraţia a fost cititã cu succes!</value>
+  </data>
+  <data name="FormulaOpticalCorrect" xml:space="preserve">
+    <value>OpticalCorrect (CorectieOptica)</value>
+  </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>Opţiunea Centerline nu este compatibilã cu computerul dvs.
+Este necesar un sistem de operare pe 64 de biţi!</value>
+  </data>
+  <data name="CustomButtonEdit" xml:space="preserve">
+    <value>Butonul editare</value>
+  </data>
+  <data name="BoxImportConfigWithoutError" xml:space="preserve">
+    <value>{0} Configuraţia a fost importata cu succes!</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>Eroare la citirea configuraţiei!</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>Import buton personalizat</value>
+  </data>
+  <data name="BoxExportConfigErrorTitle" xml:space="preserve">
+    <value>Eroare</value>
+  </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>Afişeazã valorile din cache (istoric)...</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>Va rugam sa furnizaţi text descriptiv</value>
+  </data>
+  <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
+    <value>Succes</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>Repornirea este necesarã pentru a aplica modificãrile tipului de firmware. Reporniţi acum?</value>
+  </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>Opţiunea LinieCuLinie nu este compatibilã cu gravorul dvs. sau cu configuraţia dvs.. Este necesar un laser compatibil PWM, iar suportul PWM ar trebui activat în setãrile LaserGRBL.</value>
+  </data>
+  <data name="FormulaSimpleAverage" xml:space="preserve">
+    <value>SimpleAverage (MediaAritmenticã)</value>
+  </data>
+  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
+    <value>Nu se poate deschide un fişier nou acum.</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>Nu sunt modificãri... nimic de scris!</value>
+  </data>
+  <data name="MacStatusAlarm" xml:space="preserve">
+    <value>Alarmã</value>
+  </data>
+  <data name="MacStatusDisconnected" xml:space="preserve">
+    <value>Deconectat</value>
+  </data>
+  <data name="LanguageRequireRestartNow" xml:space="preserve">
+    <value>Necesitã repornirea aplicaţiei, reporniţi acum?</value>
+  </data>
+  <data name="MacStatusHome" xml:space="preserve">
+    <value>Acasã</value>
+  </data>
+  <data name="BoxAutoUpdateSuccess" xml:space="preserve">
+    <value>Actualizare cu succes!</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>Vã rugãm sa furnizaţi comenzile GCode</value>
+  </data>
+  <data name="LanguageRequireRestart" xml:space="preserve">
+    <value>Repornirea este necesarã</value>
+  </data>
+  <data name="BoxImportConfigWithError" xml:space="preserve">
+    <value>{0} Configuraţie importatã cu {1} erori!</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>Poziţie necunoscutã</value>
+  </data>
+  <data name="MacStatusIdle" xml:space="preserve">
+    <value>Inactiv</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>Viteza:</value>
+  </data>
+  <data name="FormulaWeightAverage" xml:space="preserve">
+    <value>WeightAverage (GreutateaMedie)</value>
+  </data>
+  <data name="BoxAutoUpdateFailed" xml:space="preserve">
+    <value>Actualizarea automatã a eşuat!
+Vã rugãm sa descãrcaţi manual noua versiune de pe site-ul lasergrbl.</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} Configuraţia scrisã cu succes!</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>Câmp lipsã</value>
+  </data>
+  <data name="DirectionVertical" xml:space="preserve">
+    <value>Vertical (vechi)</value>
+  </data>
+  <data name="FormulaCustom" xml:space="preserve">
+    <value>Personalizat</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>Ştergeţi butonul personalizat</value>
+  </data>
+  <data name="MacStatusJog" xml:space="preserve">
+    <value>Jog (Start/Stop Rapid)</value>
+  </data>
+  <data name="MacStatusDoor" xml:space="preserve">
+    <value>Usã</value>
+  </data>
+  <data name="BoxAutoUpdateResult" xml:space="preserve">
+    <value>Actualizaţi rezultatul</value>
+  </data>
+  <data name="BoxExportConfigFileNotFound" xml:space="preserve">
+    <value>Fisierul nu existã!</value>
+  </data>
+  <data name="WarnSoftLimitTitle" xml:space="preserve">
+    <value>Confirmarea limitelor pentru spatiul de lucru</value>
+  </data>
+  <data name="BoxImportConfigFileError" xml:space="preserve">
+    <value>Eroare la citirea fişierului!</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>Transfer fişiere în curs. Parasiţi oricum transferul?</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>Pasul:</value>
+  </data>
+  <data name="MainFormEstimatedTime" xml:space="preserve">
+    <value>Timpul estimat:</value>
+  </data>
+  <data name="BoxExportConfigSuccess" xml:space="preserve">
+    <value>{0} Configuraţia a fost exportatã cu succes!</value>
+  </data>
+  <data name="BoxExportConfigError" xml:space="preserve">
+    <value>Eroare la exportul configuraţiei!</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>Sunt unele modificãri care nu au fost aplicate.
+Doriţi sa rescrieţi configuraţia?</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>Deconectat</value>
+  </data>
+  <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
+    <value>Actualizarea necesitã privilegii de administrator! Executati laserGRBL.exe, clic dreapta pe fisier si "Rulati Ca Administrator".</value>
+  </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>Se pare cã poziţia actualã nu mai este cunoscutã de Grbl.
+Farã procedura ÎnapoiAcasã (Homing) ($H) (de aducere in pozitia Acasã), rezultatul nu poate sa fie de încredere.
+Continuaţi oricum?</value>
+  </data>
+  <data name="MacStatusConnecting" xml:space="preserve">
+    <value>Conectare</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>Eliminaţi butoanele actuale? Selectaţi da pentru a elimina, nu pentru a pastra.</value>
+  </data>
+  <data name="MacStatusHold" xml:space="preserve">
+    <value>Pastreazã</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>Conectaţi</value>
+  </data>
+  <data name="CustomButtonRemove" xml:space="preserve">
+    <value>Buton eliminare</value>
+  </data>
+  <data name="MacStatusCheck" xml:space="preserve">
+    <value>Verificare</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>Acest tip de fiţier (extensie) nu este acceptat.</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} Configuraţia scrisã cu {1} erori!</value>
+  </data>
+  <data name="MacStatusRun" xml:space="preserve">
+    <value>Porneşte</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>S-au detectat modificãri!</value>
+  </data>
+  <data name="MainFormProjectedTime" xml:space="preserve">
+    <value>Timp Prognozat:</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>Avertizare</value>
+  </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>Transfer de fişier în curs. Deconectaţi oricum?</value>
+  </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>Sunteţi sigur(ã) cã ştergeţi butonul selectat?</value>
+  </data>
+  <data name="DirectionNone" xml:space="preserve">
+    <value>Farã umplere</value>
+  </data>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>Anulaţi lucrul in curs?</value>
+  </data>
+  <data name="DirectionNewCross" xml:space="preserve">
+    <value>Umplere încrucişatã (Cross Fill)</value>
+  </data>
+  <data name="DirectionNewDiagonal" xml:space="preserve">
+    <value>Diagonalã</value>
+  </data>
+  <data name="DirectionNewDiagonalCross" xml:space="preserve">
+    <value>Umplere Transversalã Diagonalã (Diagonal Cross Fill)</value>
+  </data>
+  <data name="DirectionNewDiagonalGrid" xml:space="preserve">
+    <value>Grilã Diagonalã</value>
+  </data>
+  <data name="DirectionNewGrid" xml:space="preserve">
+    <value>Grilã</value>
+  </data>
+  <data name="DirectionNewHorizontal" xml:space="preserve">
+    <value>Orizontalã</value>
+  </data>
+  <data name="DirectionNewInsetFilling" xml:space="preserve">
+    <value>Adaugaţi conţinut (umpluturã) (Inset Filling)</value>
+  </data>
+  <data name="DirectionNewReverseDiagonal" xml:space="preserve">
+    <value>Diagonalã Inversatã (Diagonal Reversed)</value>
+  </data>
+  <data name="DirectionNewSquares" xml:space="preserve">
+    <value>Patrate</value>
+  </data>
+  <data name="DirectionNewVertical" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="DirectionNewZigZag" xml:space="preserve">
+    <value>Zig Zag</value>
+  </data>
+  <data name="WarnWrongLaserMode" xml:space="preserve">
+    <value>„M4 Dynamic Laser Power Mode” ("M4 Control Dinamic Putere Laser") a fost setat, dar gravorul dvs. nu pare sa îl accepte.
+Numai gravoarele cu versiunea grbl &gt;= 1.1 cu "modul laser" activat (32$=1), pot folosi opţiunea M4.</value>
+  </data>
+  <data name="WarnWrongLaserModeTitle" xml:space="preserve">
+    <value>Avertizare</value>
+  </data>
+  <data name="DirectionNewHilbert" xml:space="preserve">
+    <value>Hilbert</value>
+  </data>
+  <data name="DitheringOptions" xml:space="preserve">
+    <value>Opţiuni Dithering (Oscilare)</value>
+  </data>
+  <data name="Line2LineOptions" xml:space="preserve">
+    <value>Opţiuni Linie Cu Linie</value>
+  </data>
+  <data name="WarnUnlockProportionText" xml:space="preserve">
+    <value>Modificarea liberã a lungimii (L) şi lãţimii (l) (in engleza width (W) şi height (H)) lucrãrii poate duce la distorsiunea imaginii. Doriţi sã continuaţi?</value>
+  </data>
+  <data name="WarnUnlockProportionTitle" xml:space="preserve">
+    <value>Avertizare</value>
+  </data>
+  <data name="BoxTelegramSettingText" xml:space="preserve">
+    <value>Înştiinţarea de test a fost trimisã, vã rugãm sã vã verificaţi telefonul!</value>
+  </data>
+  <data name="BoxTelegramSettingTitle" xml:space="preserve">
+    <value>Mesaj înştiinţare</value>
+  </data>
+</root>

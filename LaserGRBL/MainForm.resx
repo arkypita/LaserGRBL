@@ -1406,6 +1406,20 @@
   <data name="turkishToolStripMenuItem.Text" xml:space="preserve">
     <value>Turkish</value>
   </data>
+  <data name="romanianToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAAHVJREFUOE9jGASAS06WgUdZHRlrqAmpu1mxoWBHFQ51SxYuFGzIwinLwKCSvZtB
+        u/4/Mp7Y5fT/z0UxFPyiQeb/OUE1FLyRT2H3qAGjBlDJAE4ZWQZuRXVkrKYiqO5kzoqCbZXY1c2AyRcZ
+        6zNzAJPywAIGBgANhWK59QiHBQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="romanianToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 26</value>
+  </data>
+  <data name="romanianToolStripMenuItem.Text" xml:space="preserve">
+    <value>Romanian</value>
+  </data>
   <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>46, 20</value>
   </data>
@@ -2499,6 +2513,12 @@
     <value>turkishToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;turkishToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;romanianToolStripMenuItem.Name" xml:space="preserve">
+    <value>romanianToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;romanianToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolsToolStripMenuItem.Name" xml:space="preserve">
