@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BoxConnectErrorTitle" xml:space="preserve">
+    <value>Kan niet verbinden met apparaat</value>
+  </data>
+  <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
+    <value>Sharp (Dichtstbijzijnde pixel)</value>
+  </data>
+  <data name="WarnSoftLimitOOB" xml:space="preserve">
+    <value>U hebt een grootte en verschuiving ingesteld waardoor de taak groter is dan de werkruimte die in uw graveur is geconfigureerd ({0} mm x {1} mm).
+Grbl Parameters $ 130 en $ 131.
+
+Dit kan een soft-limit fout veroorzaken of de machine kan tegen de asgrens botsen. Bent u zeker van de ingevoerde waarden?</value>
+  </data>
+  <data name="WarnSoftLimitNS" xml:space="preserve">
+    <value>U hebt negatieve offsets ingesteld, maar uw graveur is ingesteld om positieve ruimte te gebruiken met een zacht limietalarm ingeschakeld ($ 20 = 1).
+
+Dit kan een soft-limit fout genereren. Bent u zeker van de ingevoerde waarden?</value>
+  </data>
+  <data name="DirectionDiagonal" xml:space="preserve">
+    <value>Diagonaal (oud)</value>
+  </data>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>Klik hier met de rechtermuisknop om aangepaste knoppen toe te voegen</value>
+  </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>Opnieuw opstarten vereist</value>
+  </data>
+  <data name="DirectionHorizontal" xml:space="preserve">
+    <value>Horizontaal (oud)</value>
+  </data>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>Bevestiging</value>
+  </data>
+  <data name="MacStatusUnknown" xml:space="preserve">
+    <value>Onbekend</value>
+  </data>
+  <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
+    <value>Smooth (HQ Bicubic)</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} Config met succes gelezen!</value>
+  </data>
+  <data name="FormulaOpticalCorrect" xml:space="preserve">
+    <value>Optische Correctie</value>
+  </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>De optie Centerline is niet compatibel met uw pc.
+64bit OS is nodig!</value>
+  </data>
+  <data name="CustomButtonEdit" xml:space="preserve">
+    <value>Knop Bewerken</value>
+  </data>
+  <data name="BoxImportConfigWithoutError" xml:space="preserve">
+    <value>{0} Config met succes geïmporteerd!</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>Fout bij het lezen van config!</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>Aangepaste knop importeren</value>
+  </data>
+  <data name="BoxExportConfigErrorTitle" xml:space="preserve">
+    <value>Fout</value>
+  </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>Waarden in de cache weergeven...</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>Geef de tekst van knopinfo op</value>
+  </data>
+  <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
+    <value>Succes</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>Opnieuw opstarten is vereist om wijzigingen in het firmwaretype toe te passen. Nu opnieuw opstarten?</value>
+  </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>Line2Line optie is niet compatibel met uw graveur of met uw configuratie. PWM-compatibele laser is nodig en PWM-ondersteuning moet worden ingeschakeld in LaserGRBL-instellingen.</value>
+  </data>
+  <data name="FormulaSimpleAverage" xml:space="preserve">
+    <value>SimpelGemiddeld</value>
+  </data>
+  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
+    <value>Kan nu geen nieuw bestand openen.</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>Geen wijzigingen... niets te schrijven!</value>
+  </data>
+  <data name="MacStatusAlarm" xml:space="preserve">
+    <value>Alarm</value>
+  </data>
+  <data name="MacStatusDisconnected" xml:space="preserve">
+    <value>Verbroken</value>
+  </data>
+  <data name="LanguageRequireRestartNow" xml:space="preserve">
+    <value>Wilt u de toepassing opnieuw opstarten, nu opnieuw opstarten?</value>
+  </data>
+  <data name="MacStatusHome" xml:space="preserve">
+    <value>Thuis</value>
+  </data>
+  <data name="BoxAutoUpdateSuccess" xml:space="preserve">
+    <value>Update succes!</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>Geef GCode-opdrachten op</value>
+  </data>
+  <data name="LanguageRequireRestart" xml:space="preserve">
+    <value>Opnieuw opstarten vereist</value>
+  </data>
+  <data name="BoxImportConfigWithError" xml:space="preserve">
+    <value>{0} Config geïmporteerd met {1} fouten!</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>Onbekende positie</value>
+  </data>
+  <data name="MacStatusIdle" xml:space="preserve">
+    <value>Inactief</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>Snelheid:</value>
+  </data>
+  <data name="FormulaWeightAverage" xml:space="preserve">
+    <value>GewichtGemiddeld</value>
+  </data>
+  <data name="BoxAutoUpdateFailed" xml:space="preserve">
+    <value>Automatische update mislukt!
+Download de nieuwe versie handmatig van de lasergrbl-site.</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} Config succesvol geschreven!</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>Ontbrekend veld</value>
+  </data>
+  <data name="DirectionVertical" xml:space="preserve">
+    <value>Verticaal (oud)</value>
+  </data>
+  <data name="FormulaCustom" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>Aangepaste knop Verwijderen</value>
+  </data>
+  <data name="MacStatusJog" xml:space="preserve">
+    <value>Jog</value>
+  </data>
+  <data name="MacStatusDoor" xml:space="preserve">
+    <value>Deur</value>
+  </data>
+  <data name="BoxAutoUpdateResult" xml:space="preserve">
+    <value>Update resultaat</value>
+  </data>
+  <data name="BoxExportConfigFileNotFound" xml:space="preserve">
+    <value>Bestand bestaat niet!</value>
+  </data>
+  <data name="WarnSoftLimitTitle" xml:space="preserve">
+    <value>Bevestiging van de taakgrens</value>
+  </data>
+  <data name="BoxImportConfigFileError" xml:space="preserve">
+    <value>Fout bij het lezen van bestand!</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>Bestandsoverdracht in uitvoering. Toch exit?</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>Stap:</value>
+  </data>
+  <data name="MainFormEstimatedTime" xml:space="preserve">
+    <value>Geschatte tijd:</value>
+  </data>
+  <data name="BoxExportConfigSuccess" xml:space="preserve">
+    <value>{0} Config succesvol geëxporteerd!</value>
+  </data>
+  <data name="BoxExportConfigError" xml:space="preserve">
+    <value>Fout bij het exporteren van configuratie!</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>Er zijn enkele wijzigingen die niet zijn toegepast.
+Wilt u de configuratie herschrijven?</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>Loskoppelen</value>
+  </data>
+  <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
+    <value>Update vereist beheerdersrechten!</value>
+  </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>Het lijkt erop dat de huidige positie niet meer bekend is bij Grbl.
+Zonder de Homing Procedure ($H) is het resultaat mogelijk niet betrouwbaar.
+Toch doorgaan?</value>
+  </data>
+  <data name="MacStatusConnecting" xml:space="preserve">
+    <value>Verbinden</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>Echte knoppen verwijderen? Selecteer ja om te verwijderen, nee om te behouden.</value>
+  </data>
+  <data name="MacStatusHold" xml:space="preserve">
+    <value>Behouden</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>Verbinden</value>
+  </data>
+  <data name="CustomButtonRemove" xml:space="preserve">
+    <value>Verwijder knop</value>
+  </data>
+  <data name="MacStatusCheck" xml:space="preserve">
+    <value>Controleer</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>Dit bestandstype wordt niet ondersteund.</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} Config geschreven met {1} fout(en)!</value>
+  </data>
+  <data name="MacStatusRun" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>Wijzigingen geconstateerd!</value>
+  </data>
+  <data name="MainFormProjectedTime" xml:space="preserve">
+    <value>Verwachte Tijd:</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>Waarschuwing</value>
+  </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>Bestandsoverdracht bezig. Toch verbinding verbreken?</value>
+  </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>Weet u zeker dat u de geselecteerde knop wilt verwijderen?</value>
+  </data>
+  <data name="DirectionNone" xml:space="preserve">
+    <value>Geen vulling</value>
+  </data>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>Stop huidige taak?</value>
+  </data>
+  <data name="DirectionNewCross" xml:space="preserve">
+    <value>Kruis vulling</value>
+  </data>
+  <data name="DirectionNewDiagonal" xml:space="preserve">
+    <value>Diagonaal</value>
+  </data>
+  <data name="DirectionNewDiagonalCross" xml:space="preserve">
+    <value>Diagonaal kruis vulling</value>
+  </data>
+  <data name="DirectionNewDiagonalGrid" xml:space="preserve">
+    <value>Diagonaal Grid</value>
+  </data>
+  <data name="DirectionNewGrid" xml:space="preserve">
+    <value>Grid</value>
+  </data>
+  <data name="DirectionNewHorizontal" xml:space="preserve">
+    <value>Horizontaal</value>
+  </data>
+  <data name="DirectionNewInsetFilling" xml:space="preserve">
+    <value>Inzet Vulling</value>
+  </data>
+  <data name="DirectionNewReverseDiagonal" xml:space="preserve">
+    <value>Diagonaal Omgekeerd</value>
+  </data>
+  <data name="DirectionNewSquares" xml:space="preserve">
+    <value>Vierkanten</value>
+  </data>
+  <data name="DirectionNewVertical" xml:space="preserve">
+    <value>Verticaal</value>
+  </data>
+  <data name="DirectionNewZigZag" xml:space="preserve">
+    <value>Zig Zag</value>
+  </data>
+  <data name="WarnWrongLaserMode" xml:space="preserve">
+    <value>M4 Dynamic Laser Power Mode" is ingesteld, maar uw graveur lijkt dit niet te ondersteunen.
+Alleen graveurs met grbl-versie &gt;= 1.1 met "lasermodus" ingeschakeld ($32=1) kunnen profiteren van de M4-optie.</value>
+  </data>
+  <data name="WarnWrongLaserModeTitle" xml:space="preserve">
+    <value>Waarschuwing</value>
+  </data>
+  <data name="DirectionNewHilbert" xml:space="preserve">
+    <value>Hilbert</value>
+  </data>
+  <data name="DitheringOptions" xml:space="preserve">
+    <value>Dithering Opties</value>
+  </data>
+  <data name="Line2LineOptions" xml:space="preserve">
+    <value>Regel tot Regel opties</value>
+  </data>
+  <data name="WarnUnlockProportionText" xml:space="preserve">
+    <value>Het vrij toekennen van de breedte en hoogte van het werk kan leiden tot vervorming van het beeld. Wil je doorgaan?</value>
+  </data>
+  <data name="WarnUnlockProportionTitle" xml:space="preserve">
+    <value>Waarschuwing</value>
+  </data>
+  <data name="BoxTelegramSettingText" xml:space="preserve">
+    <value>Test kennisgeving is verstuurd, controleer je mobiel!</value>
+  </data>
+  <data name="BoxTelegramSettingTitle" xml:space="preserve">
+    <value>Telegram notificatie</value>
+  </data>
+  <data name="WarnBufferStuckUnlockText" xml:space="preserve">
+    <value>Als de buffer geblokkeerd is, is er een communicatieprobleem met uw graveur. Als u op "OK" drukt, zal LaserGRBL de volledige buffer negeren en de volgende opdrachten verzenden. Als dit vaak gebeurt, moet u proberen de oorzaken van dit probleem te begrijpen.
+Klik "?" voor meer informatie.</value>
+  </data>
+  <data name="WarnBufferStuckUnlockTitle" xml:space="preserve">
+    <value>Ontgrendel buffer</value>
+  </data>
+</root>
