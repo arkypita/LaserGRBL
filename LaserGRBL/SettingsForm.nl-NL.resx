@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Redden</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Streamingmodus: [Standaard gebufferd]
+- Gebufferd: optimaliseer commando's streaming vullen grbl ontvangen buffer [aanbevolen]
+- Synchroon: wacht op de uitvoering van elk commando voordat u het volgende commando verzendt [langzamer maar veiliger]
+- RepeatOnError: hetzelfde als Synchronous maar herhaal commando's als detectie fout [experimenteel]</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Verbindingsprotocol:
+- UsbSerial: is het meest voorkomende protocol. Moet worden gebruikt als uw graveur is aangesloten op een USB- of COM-poort.
+- UsbSerial2: een alternatieve implementatie van USB seriële om Microsoft SerialPort problemen te omzeilen
+- Telnet: als je een WiFi-Telnet brug hebt. Communicatie wordt geïmplementeerd als een eenvoudige telnet client-server.
+- LaserWebESP8266: ondersteuning WiFi-verbinding via WebSocket. Compatibel met LaserWeb-ESP8266 software.</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Threading-modus: ultrasnel, snel, stil, langzaam. [Standaard snel]
+Deze instelling is van invloed op de snelheid van het verzenden van threads en de frequentie van statusrapportaanvragen.
+Stel langzamere waarden in als u problemen ondervindt.</value>
+  </data>
+  <data name="TpVectorImport.Text" xml:space="preserve">
+    <value>Vector import</value>
+  </data>
+  <data name="CbSmartBezier.Text" xml:space="preserve">
+    <value>Slimme Bezier</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Toon Z op/neer control</value>
+  </data>
+  <data name="BtnTestNotification.Text" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Indien ingeschakeld, stuurt LaserGRBL een harde reset wanneer de verbinding met grbl wordt geopend. [Positie is verloren!]</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Firmware type
+- Grbl: de geweldige firmware waarvoor LaserGRBL is ontwikkeld.
+- Smoothie [experimenteel]: ondersteuning is onlangs toegevoegd en is niet volledig getest.
+- Marlin [experimenteel]: ondersteuning is onlangs toegevoegd en is niet volledig getest.
+- VigoWork [experimenteel]: ondersteuning voor VG-L7x model dat niet grbl-standaard is.</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>Protocol</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>LaserGRBL gebruikt vermogensmodulatie via G-Code "S command" om grijswaardentinten te produceren.
+Uw laser moet TTL-besturing ondersteunen die is aangesloten op arduino PIN D11.
+Zo niet, schakel dan PWM-ondersteuning uit.</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Standaard produceert LaserGRBL graveerlijnen in beide rijrichtingen van de laserkop. Sommige tests hebben aangetoond dat deze modus (die sneller is) resultaten van lagere kwaliteit oplevert. Als de maximale markeringskwaliteit gewenst is, activeert u deze optie.</value>
+  </data>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>Unidirectioneel graveren</value>
+  </data>
+  <data name="CBSupportPWM.Text" xml:space="preserve">
+    <value>Ondersteuning PWM</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>HiRes Vulling</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>De maximale resolutie die beschikbaar is in LaserGRBL is 20 lijnen / mm (ongeveer 500 dpi) die hoog genoeg is voor de meeste gebruikers.
+Als u een hogere resolutie nodig hebt, kunt u "HiRes" inschakelen en deze limiet verwijderen.  Let op: LaserGRBL heeft veel meer middelen nodig!</value>
+  </data>
+  <data name="CbDisableSkip.Text" xml:space="preserve">
+    <value>Schakel G0 fast skip uit</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Geluidsbestand</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>Harde reset [DTR+RTS]</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Indien ingeschakeld, stuurt LaserGRBL een soft-reset wanneer de verbinding met grbl wordt geopend.</value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>Zachte reset [Ctrl-X]</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>Probleem detector</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>LaserGRBL kan problemen detecteren en de gebruiker waarschuwen door informatie te verstrekken over hoe ze op te lossen.
+Als deze optie is uitgeschakeld, worden alle problemen zonder waarschuwing op de achtergrond behandeld.</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>Wijzig</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Geluidsbestand</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Verbindings geluid</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>Wijzig</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Loskoppelen Geluid</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>Wijzig</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Geluidsbestand</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>Wijzig</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Persoonlijke code</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>Telegram notificatie</value>
+  </data>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>Notificatie</value>
+  </data>
+  <data name="SoundBrowserDialog.Filter" xml:space="preserve">
+    <value>Waveform Audio bestand|*.wav</value>
+  </data>
+  <data name="label42.Text" xml:space="preserve">
+    <value>Als u Telegram hebt, zoek dan naar @LaserGRBL bot.
+Verkrijg je persoonlijke code en type het hier!</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Hier kun je een geluid instellen voor fatale fouten.
+Dit betekend, dat je job waarschijnlijk is gestopt, LaserGRBL kan niet vervolgen.
+Check om in te schakelen. </value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Hier kun je een geluid instellen voor loskoppelen.
+Handig voor WiFi verbindingen.</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>Standaard gebruikt LaserGRBL G0 - snelle verplaatsing - om witte delen in uw job over te slaan. Dit versnelt het engraveren maar het kan zorgen voor onnauwkeurige positionering met teleurstellende resultaten. Het is meestal mogelijk om de resultaten te verbeteren door het juist in stellen van de maximale versnelling en snelheids waardes ($ 120, 121, 122 en $ 110, 111, 112) in de grbl configuratie.
+
+Als je deze functionaiteit uitzet zal LaserGRBL de G1 lineaire verplaatsing gebruiken met dezelfde job snelheid. Dit zal het proces vertragen, maar kan het resultaat dramatisch verbeteren waar andere mogelijkheden mislukken.</value>
+  </data>
+  <data name="CbDisableBoundWarn.Text" xml:space="preserve">
+    <value>Begrenzings waarschuwingen uitschakelen</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>LaserGRBL zal u waarschuwen als u een job creeert die groter is dan de engraver werkruimte.
+Zet deze vlag indien je deze veiligheidscontrole niet wilt.</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>Raster import</value>
+  </data>
+  <data name="label43.Text" xml:space="preserve">
+    <value>Vanaf 4.6.1 zal LaserGrbl een beter benaderings algoritme gebruiken met Bezier krommingen, die nauwkeurigere resultaten teruggeven.
+Schakel deze optie uit als u de voorkeur hebt voor de oude algoritme.</value>
+  </data>
+  <data name="successSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\success.wav</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>Continue Jog</value>
+  </data>
+  <data name="CbClickNJog.Text" xml:space="preserve">
+    <value>Klik en Jog</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>Met "klik en Jog" ingeschakeld zal een dubbel-klikop het voorbeeld scherm springen naar de klik positie</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Jog controle</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Zonder "Continuous Jog" wanneer de jog-knop wordt ingedrukt, verzendt LaserGRBL een Jog-verzoek met vaste snelheid en beweging; en het joggen wordt volledig uitgevoerd naar de eindpositie.
+Als u "Continu joggen" inschakelt, wordt het joggen verzonden met de muis naar beneden en afgebroken/onderbroken wanneer de muis omhoog gaat, zodat u benaderende positionering kunt doen, maar op een zeer comfortabele manier.
+
+OPMERKING: "Continuous Jog" werkt alleen met Grbl v1.1 of hoger en vereist dat de tabelgrootte correct is geconfigureerd in Grbl-configuratie (menu "Grbl" -&gt;; "Grbl-configuratie" $ 130, $ 131, $ 132)</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>LaserGRBL is niet ontworpen om de Z-as te ondersteunen, maar als je hardware met 3 assen hebt, zou je deze optie misschien handig kunnen vinden.</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Tijd UIT: na deze afkoeltijd stuurt LaserGRBL een hervattingscommando om door te gaan met graveren.</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Sommige laserdiodes kunnen te veel opwarmen als ze lange tijd op het hoogste vermogen werken. Om oververhitting van de diode te voorkomen en de levensduur van uw laser te verlengen, kunt u enkele automatische afkoelcycli toevoegen die een pauze inlassen tijdens het graveerproces.
+Als Auto Cooling is ingeschakeld, stuurt LaserGRBL automatische "feed hold" en "job hervat" volgens de ON-OFF timingconfiguratie.</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Tijd AAN: dit is de maximale tijd dat de laser aan blijft tijdens het graveerproces.
+Na deze tijd stuurt LaserGRBL een automatische invoerstop om de laser af te koelen.</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>Automatische koeling inschakelen</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Aan</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>sec</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Uit</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>sec</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Waarschuwing: deze functie werkt alleen met grbl-versies &gt; v1.1 met "lasermodus" ingeschakeld.
+Als u automatische koeling gebruikt met een oudere grbl-versie (of met lasermodus uitgeschakeld), wordt de laser niet uitgeschakeld tijdens pauzes
+en brandt gaten in je werk!</value>
+  </data>
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+    <value>Ortur-gebruiker: Ortur-firmware (alle versies tot 137) heeft een bug in de bewerkingshervatting die het correct gebruik van de auto-koelfunctie verhindert.
+Gebruik automatische koeling niet met de Ortur-graveur totdat er nieuwe firmware is uitgebracht.</value>
+  </data>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>Automatische koeling</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBL zal deze GCode toevoegen voordat een taak wordt gestart.
+U kunt deze code aanpassen, bijvoorbeeld door M8 toe te voegen om de ventilator in te schakelen.
+
+Hier kunt u dezelfde syntaxis van aangepaste knoppen gebruiken als u op een bepaalde positie moet drukken
+met betrekking tot de specifieke taak zal worden uitgevoerd.</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Kop</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Voet</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Meerdere herhalingen</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBL zal deze GCode aan het einde van elke taak in de wachtrij plaatsen.
+Kan worden gebruikt om uw graveur terug te duwen in een begintoestand, zoals teruggaan naar de nulpositie
+of M9 sturen om de ventilator uit te schakelen, enz.
+
+Hier kunt u dezelfde syntaxis van aangepaste knoppen gebruiken.</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Bij het uitvoeren van meerdere passen zal LaserGRBL deze GCode tussen elke herhaling duwen.
+Kan worden gebruikt om Z naar beneden te verplaatsen om diepere sneden uit te voeren.
+
+Hier kunt u dezelfde syntaxis van aangepaste knoppen gebruiken.</value>
+  </data>
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Hier kunt u een ander geluid instellen voor succesvolle gebeurtenissen, zoals wanneer een taak is voltooid.
+Vink aan om in te schakelen.</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Hier kunt u nog een waarschuwingsgeluid instellen.
+Dit wordt meestal getoond bij een slecht GCode-commando, maar uw machine kan blijven werken.
+Vink aan om in te schakelen.</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Waarschuwings geluid</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Geluids bestand</value>
+  </data>
+  <data name="warningSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\warning.wav</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Fout geluid</value>
+  </data>
+  <data name="fatalSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\fatal.wav</value>
+  </data>
+  <data name="connectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\connect.wav</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Geluids bestand</value>
+  </data>
+  <data name="disconnectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\disconnect.wav</value>
+  </data>
+  <data name="LblSuccessSound.Text" xml:space="preserve">
+    <value>Succes Geluid</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Hier kunt u een geluid instellen voor een succesvolle verbinding.
+Vink aan om in te schakelen.</value>
+  </data>
+</root>
