@@ -923,6 +923,11 @@ namespace LaserGRBL
 		{
 			SetLanguage(new System.Globalization.CultureInfo("ro-RO"));
 		}
+
+		private void dutchToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("nl-NL"));
+		}
 	}
 
 

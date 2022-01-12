@@ -778,20 +778,38 @@
     <EmbeddedResource Include="AutoUpdate\NewVersionForm.ro-RO.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConnectLogForm.nl-NL.resx">
+      <DependentUpon>ConnectLogForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConnectLogForm.ro-RO.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomButtonForm.nl-NL.resx">
+      <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.ro-RO.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExceptionManager.nl-NL.resx">
+      <DependentUpon>ExceptionManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExceptionManager.ro-RO.resx">
       <DependentUpon>ExceptionManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GrblConfig.nl-NL.resx">
+      <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.ro-RO.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HotkeyManagerForm.nl-NL.resx">
+      <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HotkeyManagerForm.ro-RO.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IssueDetectorForm.nl-NL.resx">
+      <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IssueDetectorForm.ro-RO.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
@@ -799,8 +817,14 @@
     <EmbeddedResource Include="LicenseForm.ro-RO.resx">
       <DependentUpon>LicenseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.nl-NL.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.ro-RO.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreviewForm.nl-NL.resx">
+      <DependentUpon>PreviewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.ro-RO.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
@@ -822,14 +846,26 @@
     <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.ro-RO.resx">
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ResumeJobForm.nl-NL.resx">
+      <DependentUpon>ResumeJobForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ResumeJobForm.ro-RO.resx">
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RunFromPositionForm.nl-NL.resx">
+      <DependentUpon>RunFromPositionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RunFromPositionForm.ro-RO.resx">
       <DependentUpon>RunFromPositionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SaveOptionForm.nl-NL.resx">
+      <DependentUpon>SaveOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SaveOptionForm.ro-RO.resx">
       <DependentUpon>SaveOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.nl-NL.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.ro-RO.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
@@ -1574,6 +1610,9 @@
     <EmbeddedResource Include="Strings.zh-TW.resx">
       <DependentUpon>Strings.resx</DependentUpon>
     </EmbeddedResource>
+	<EmbeddedResource Include="Strings.nl-NL.resx">
+		<DependentUpon>Strings.resx</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.da.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
