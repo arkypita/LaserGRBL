@@ -318,7 +318,7 @@
     <value>False</value>
   </data>
   <data name="TTLinkToNews.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 19</value>
+    <value>402, 19</value>
   </data>
   <data name="TTOvS.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1396,6 +1396,22 @@
   </data>
   <data name="romanianToolStripMenuItem.Text" xml:space="preserve">
     <value>Romanian</value>
+  </data>
+  <data name="dutchToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAADkSURBVDhPpZPNCwFRFEcnUzKl
+        fKVslLCykpKsLchmIrKjKDtJsaRYKvyLimmEmt1sr/ubxhNZvMet09Sde85iajQi+gtMkIkzKUXgwNWS
+        VrtHvwAXgczZ7NBttZbivtp4TzhwEcidmiZdZ3OyB6N3+j4fe9zCgesFjrUGXYZjslpdKXB7rNVfAdd1
+        +YOqDRwRcBzHX8sPHBGwbdtfyw8cEYiWlpSoHihU3EqBWzgiYBQWFKvsyeCXMni37IiAnp9SpLxTAs4z
+        kA5kJ/QLcBGIMAWmoggcuJrOGExYETj6119UHtIelqkCONUri8EAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="dutchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 22</value>
+  </data>
+  <data name="dutchToolStripMenuItem.Text" xml:space="preserve">
+    <value>Dutch</value>
   </data>
   <data name="linguaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 20</value>
@@ -2716,6 +2732,12 @@
   </data>
   <data name="&gt;&gt;MultipleInstanceTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dutchToolStripMenuItem.Name" xml:space="preserve">
+    <value>dutchToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;dutchToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

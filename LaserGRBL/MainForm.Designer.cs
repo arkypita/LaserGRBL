@@ -138,6 +138,7 @@
 			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
 			this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
+			this.dutchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -577,7 +578,8 @@
             this.polishToolStripMenuItem,
             this.greekToolStripMenuItem,
             this.turkishToolStripMenuItem,
-            this.romanianToolStripMenuItem});
+            this.romanianToolStripMenuItem,
+            this.dutchToolStripMenuItem});
 			this.linguaToolStripMenuItem.Name = "linguaToolStripMenuItem";
 			resources.ApplyResources(this.linguaToolStripMenuItem, "linguaToolStripMenuItem");
 			// 
@@ -899,6 +901,12 @@
 			this.MultipleInstanceTimer.Interval = 1000;
 			this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
 			// 
+			// dutchToolStripMenuItem
+			// 
+			resources.ApplyResources(this.dutchToolStripMenuItem, "dutchToolStripMenuItem");
+			this.dutchToolStripMenuItem.Name = "dutchToolStripMenuItem";
+			this.dutchToolStripMenuItem.Click += new System.EventHandler(this.dutchToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -1037,6 +1045,7 @@
 		private System.Windows.Forms.ToolStripMenuItem MnSaveProject;
 		private System.Windows.Forms.ToolStripButton BtnUnlockFromStuck;
         private System.Windows.Forms.ToolStripMenuItem romanianToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem dutchToolStripMenuItem;
 	}
 }
 
