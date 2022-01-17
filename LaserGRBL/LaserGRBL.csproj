@@ -775,6 +775,9 @@
       <DependentUpon>DiscoveryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WiFiDiscovery\IPAddressHelper.cs" />
+    <EmbeddedResource Include="AutoUpdate\NewVersionForm.nl-NL.resx">
+      <DependentUpon>NewVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AutoUpdate\NewVersionForm.ro-RO.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -829,19 +832,34 @@
     <EmbeddedResource Include="PreviewForm.ro-RO.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSEditorForm.nl-NL.resx">
+      <DependentUpon>PSEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSEditorForm.ro-RO.resx">
       <DependentUpon>PSEditorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSHelperForm.nl-NL.resx">
+      <DependentUpon>PSHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSHelperForm.ro-RO.resx">
       <DependentUpon>PSHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.nl-NL.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.ro-RO.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\RasterToLaserForm.nl-NL.resx">
+      <DependentUpon>RasterToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\RasterToLaserForm.ro-RO.resx">
       <DependentUpon>RasterToLaserForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.nl-NL.resx">
+      <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.ro-RO.resx">
       <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
@@ -870,8 +888,14 @@
     <EmbeddedResource Include="SettingsForm.ro-RO.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.nl-NL.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.ro-RO.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.nl-NL.resx">
+      <DependentUpon>DiscoveryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.resx">
       <DependentUpon>DiscoveryForm.cs</DependentUpon>
@@ -1610,9 +1634,9 @@
     <EmbeddedResource Include="Strings.zh-TW.resx">
       <DependentUpon>Strings.resx</DependentUpon>
     </EmbeddedResource>
-	<EmbeddedResource Include="Strings.nl-NL.resx">
-		<DependentUpon>Strings.resx</DependentUpon>
-	</EmbeddedResource>
+    <EmbeddedResource Include="Strings.nl-NL.resx">
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.da.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
