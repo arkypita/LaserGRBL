@@ -423,4 +423,11 @@ Click "?" for more information.</value>
   <data name="WarnBufferStuckUnlockTitle" xml:space="preserve">
     <value>Unlock buffer</value>
   </data>
+  <data name="ProblemConnectingText" xml:space="preserve">
+    <value>Error connecting your engraver.
+If you need help click on "?" button.</value>
+  </data>
+  <data name="ProblemConnectingTitle" xml:space="preserve">
+    <value>Problem with connection?</value>
+  </data>
 </root>

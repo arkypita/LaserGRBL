@@ -31,9 +31,6 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
-			this.JogForm = new LaserGRBL.JogForm();
-			this.PreviewForm = new LaserGRBL.PreviewForm();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
@@ -106,6 +103,7 @@
 			this.greekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.romanianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.dutchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.installCH340DriverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.flashGrblFirmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -138,7 +136,9 @@
 			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
 			this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
-			this.dutchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
+			this.JogForm = new LaserGRBL.JogForm();
+			this.PreviewForm = new LaserGRBL.PreviewForm();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -162,21 +162,6 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
 			this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
-			// 
-			// ConnectionForm
-			// 
-			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
-			this.ConnectionForm.Name = "ConnectionForm";
-			// 
-			// JogForm
-			// 
-			resources.ApplyResources(this.JogForm, "JogForm");
-			this.JogForm.Name = "JogForm";
-			// 
-			// PreviewForm
-			// 
-			resources.ApplyResources(this.PreviewForm, "PreviewForm");
-			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// StatusBar
 			// 
@@ -291,6 +276,8 @@
 			// 
 			this.TTTStatus.Name = "TTTStatus";
 			resources.ApplyResources(this.TTTStatus, "TTTStatus");
+			this.TTTStatus.DoubleClick += new System.EventHandler(this.TTTStatus_DoubleClick);
+			this.TTTStatus.DoubleClickEnabled = true;
 			// 
 			// UpdateTimer
 			// 
@@ -685,6 +672,12 @@
 			this.romanianToolStripMenuItem.Name = "romanianToolStripMenuItem";
 			this.romanianToolStripMenuItem.Click += new System.EventHandler(this.romanianToolStripMenuItem_Click);
 			// 
+			// dutchToolStripMenuItem
+			// 
+			resources.ApplyResources(this.dutchToolStripMenuItem, "dutchToolStripMenuItem");
+			this.dutchToolStripMenuItem.Name = "dutchToolStripMenuItem";
+			this.dutchToolStripMenuItem.Click += new System.EventHandler(this.dutchToolStripMenuItem_Click);
+			// 
 			// toolsToolStripMenuItem
 			// 
 			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -901,11 +894,20 @@
 			this.MultipleInstanceTimer.Interval = 1000;
 			this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
 			// 
-			// dutchToolStripMenuItem
+			// ConnectionForm
 			// 
-			resources.ApplyResources(this.dutchToolStripMenuItem, "dutchToolStripMenuItem");
-			this.dutchToolStripMenuItem.Name = "dutchToolStripMenuItem";
-			this.dutchToolStripMenuItem.Click += new System.EventHandler(this.dutchToolStripMenuItem_Click);
+			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
+			this.ConnectionForm.Name = "ConnectionForm";
+			// 
+			// JogForm
+			// 
+			resources.ApplyResources(this.JogForm, "JogForm");
+			this.JogForm.Name = "JogForm";
+			// 
+			// PreviewForm
+			// 
+			resources.ApplyResources(this.PreviewForm, "PreviewForm");
+			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// MainForm
 			// 

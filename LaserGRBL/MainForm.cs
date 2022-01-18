@@ -223,6 +223,19 @@ namespace LaserGRBL
 		void OnMachineStatus()
 		{
 			TimerUpdate();
+			if (Core.MachineStatus == GrblCore.MacStatus.Disconnected && Core.FailedConnectionCount >= 3)
+			{
+				string url = null;
+				ComWrapper.WrapperType wt = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
+
+				if (wt == ComWrapper.WrapperType.UsbSerial || wt == ComWrapper.WrapperType.UsbSerial2)
+					url = "https://lasergrbl.com/usage/arduino-connection/";
+				else if (wt == ComWrapper.WrapperType.Telnet || wt == ComWrapper.WrapperType.LaserWebESP8266)
+					url = "https://lasergrbl.com/usage/wifi-with-esp8266/";
+
+				if (url != null)
+					MessageBox.Show(this, Strings.ProblemConnectingText, Strings.ProblemConnectingTitle, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 0, url);
+			}
 		}
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -927,6 +940,11 @@ namespace LaserGRBL
 		private void dutchToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SetLanguage(new System.Globalization.CultureInfo("nl-NL"));
+		}
+
+		private void TTTStatus_DoubleClick(object sender, EventArgs e)
+		{
+			Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/machine-status/");
 		}
 	}
 

@@ -792,6 +792,25 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Error connecting your engraver.
+        ///If you need help click on &quot;?&quot; button..
+        /// </summary>
+        internal static string ProblemConnectingText {
+            get {
+                return ResourceManager.GetString("ProblemConnectingText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Problem with connection?.
+        /// </summary>
+        internal static string ProblemConnectingTitle {
+            get {
+                return ResourceManager.GetString("ProblemConnectingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a It seems that the current position is no longer known by Grbl.
         ///Without the Homing Procedure ($H) the result may not be reliable.
         ///Continue anyway?.

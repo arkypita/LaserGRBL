@@ -271,6 +271,7 @@ namespace LaserGRBL
 		private GPoint mWCO;
 		private int mGrblBlocks = -1;
 		private int mGrblBuffer = -1;
+		private int mFailedConnection = 0;
 		private JogDirection mPrenotedJogDirection = JogDirection.None;
 		private float mPrenotedJogSpeed = 100;
 		protected TimeProjection mTP = new TimeProjection();
@@ -419,10 +420,12 @@ namespace LaserGRBL
 					mMachineStatus = newStatus;
 
 					Logger.LogMessage("SetStatus", "Machine status [{0}]", mMachineStatus);
-
+					if (oldStatus == MacStatus.Connecting && newStatus == MacStatus.Disconnected)
+						mFailedConnection ++;
+					if (oldStatus == MacStatus.Connecting && newStatus != MacStatus.Disconnected)
+						mFailedConnection = 0;
 					if (oldStatus == MacStatus.Connecting && newStatus != MacStatus.Disconnected)
 						RefreshConfigOnConnect();
-
 					if (oldStatus == MacStatus.Connecting && newStatus != MacStatus.Disconnected)
 						SoundEvent.PlaySound(SoundEvent.EventId.Connect);
 					if (newStatus == MacStatus.Disconnected)
@@ -2645,6 +2648,7 @@ namespace LaserGRBL
         public virtual bool UIShowUnlockButtons => true;
 
 		public bool IsOrturBoard { get => GrblVersion != null && GrblVersion.IsOrtur; }
+		public int FailedConnectionCount => mFailedConnection;
 	}
 
 	public class TimeProjection
