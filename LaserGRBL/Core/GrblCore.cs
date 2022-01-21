@@ -107,7 +107,7 @@ namespace LaserGRBL
 				mMajor = major; mMinor = minor; mBuild = build;
 				mVendorInfo = VendorInfo;
 				mVendorVersion = VendorVersion;
-				mOrtur = VendorInfo != null && VendorInfo.Contains("Ortur");
+				mOrtur = VendorInfo != null && (VendorInfo.Contains("Ortur") || VendorInfo.Contains("Aufero"));
 			}
 
 			public GrblVersionInfo(int major, int minor, char build)
@@ -1774,6 +1774,8 @@ namespace LaserGRBL
 				ManageVigoWelcomeMessage(rline);
 			else if (IsOrturModelMessage(rline))
 				ManageOrturModelMessage(rline);
+			else if (IsAuferoModelMessage(rline))
+				ManageOrturModelMessage(rline);
 			else if (IsOrturFirmwareMessage(rline))
 				ManageOrturFirmwareMessage(rline);
 			else if (IsStandardWelcomeMessage(rline))
@@ -1788,6 +1790,7 @@ namespace LaserGRBL
 		private bool IsRealtimeStatusMessage(string rline) => rline.StartsWith("<") && rline.EndsWith(">");
 		private bool IsVigoWelcomeMessage(string rline) => rline.StartsWith("Grbl-Vigo");
 		private bool IsOrturModelMessage(string rline) => rline.StartsWith("Ortur ");
+		private bool IsAuferoModelMessage(string rline) => rline.StartsWith("Aufero ");
 		private bool IsOrturFirmwareMessage(string rline) => rline.StartsWith("OLF");
 		private bool IsStandardWelcomeMessage(string rline) => rline.StartsWith("Grbl");
 		private bool IsBrokenOkMessage(string rline) => rline.ToLower().Contains("ok");
@@ -1870,8 +1873,7 @@ namespace LaserGRBL
 			{
 				mVersionSeen = rline;
 				mVersionSeen = mVersionSeen.Replace("OLF", "");
-				mVersionSeen = mVersionSeen.Trim('.');
-				mVersionSeen = mVersionSeen.Trim();
+				mVersionSeen = mVersionSeen.Trim(new char[] { '.', ' ', ':' } );
 				Logger.LogMessage("OrturInfo", "Detected OLF {0}", mVersionSeen);
 			}
 			catch (Exception ex)

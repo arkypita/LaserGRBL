@@ -904,6 +904,7 @@
     <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.ro-RO.resx">
       <DependentUpon>DiscoveryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CSV\setting_codes.ortur.v1.7.x.csv" />
     <None Include="Resources\flag_greece.png" />
     <Content Include="Sound\connect.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
