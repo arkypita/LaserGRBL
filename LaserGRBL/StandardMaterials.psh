@@ -1681,4 +1681,322 @@
     <Speed>120</Speed>
     <Cycles>2</Cycles>
   </Materials>
+  <Materials>
+    <id>9b9c2c82-2c0f-4de1-b454-09ce75ae4b7a</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Anodised Aluminium</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>dark color. It need to be adjusted based on different colors</Remarks>
+  </Materials>
+  <Materials>
+    <id>da7ce8f7-7c65-4c21-b5d2-72bc4ee83d70</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Cotton Cloth</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>white color. It need to be adjusted based on different colors.</Remarks>
+  </Materials>
+  <Materials>
+    <id>8f530785-347e-40f1-9228-e37d28062f5b</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>0f597807-329c-4221-bd97-362cb152a669</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Powder Coated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>dark color.It need to be adjusted based different colors.</Remarks>
+  </Materials>
+  <Materials>
+    <id>af28eae5-7c61-43fb-a9c5-49ec05f1871d</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Solid Wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>It need to be adjusted based on different woods.</Remarks>
+  </Materials>
+  <Materials>
+    <id>f67e518e-a29d-4480-ae1a-2b11442d73af</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Glass</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>700</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>color with dark paint before engrave.</Remarks>
+  </Materials>
+  <Materials>
+    <id>6dbcb6b7-b769-4213-b614-83fb1b1b2edf</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Paperboard</Material>
+    <Thickness>2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>2</Cycles>
+  </Materials>
+  <Materials>
+    <id>b8196a5d-d828-4b29-8086-54ffc6639a2c</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Kraft Paper</Material>
+    <Thickness>0.15mm</Thickness>
+    <Action>Cut</Action>
+    <Power>80</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>23a3db62-ab31-4ef9-a981-4cac69c4ea93</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>KT Board</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>white color.It need to be adjusted based on different colors.</Remarks>
+  </Materials>
+  <Materials>
+    <id>6246e54e-2b3a-482f-b683-a2532c96bf96</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Non-woven fabrics</Material>
+    <Thickness>0.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>800</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>white color.It need to be adjusted based on different colors.</Remarks>
+  </Materials>
+  <Materials>
+    <id>9535e8c9-f0e2-4898-85ab-c98fdb309d34</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Cotton Cloth</Material>
+    <Thickness>1mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>60767cbd-dbe9-44ec-a1ec-96ecbd799d80</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Leather</Material>
+    <Thickness>0.7mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>37160f9c-943a-4d09-b824-cfc002d868d7</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>38f8a352-220c-4df0-8460-0e0d52b0b03a</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Hardwood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>de58921f-8aed-473b-847e-e62b9b82081f</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>49b9ff5c-cbd6-4219-a546-d0910337f5b0</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>43650bf8-1e5f-4c87-b87d-1726f82993c3</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Kraft Paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>15</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>c2996a24-04cf-4faa-a725-aad114790e8b</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Mirrors</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>25</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>9179afa5-b778-4a1b-9887-25062f6478a1</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>18</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>e5f198f9-d287-4040-b46a-2f8f91602cc0</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Ceramics</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Color with dark paint before engrave</Remarks>
+  </Materials>
+  <Materials>
+    <id>ae00b641-8021-4d97-9e29-0529c5e7fdf1</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Glass</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Color with dark paint before engrave</Remarks>
+  </Materials>
+  <Materials>
+    <id>14ef7f36-7b55-418a-9814-039e14157dd6</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Denim</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>447bfbcd-986c-43a5-bba9-1288f10b6343</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Color with dark paint before engrave</Remarks>
+  </Materials>
+  <Materials>
+    <id>041c0454-8e51-413f-99c5-46557200c4d6</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Basswood</Material>
+    <Thickness>2.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>700</Speed>
+    <Cycles>2</Cycles>
+  </Materials>
+  <Materials>
+    <id>2a3ce845-c598-4df3-bc38-0dbe864b0c23</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Hardwood</Material>
+    <Thickness>5.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>250</Speed>
+    <Cycles>2</Cycles>
+  </Materials>
+  <Materials>
+    <id>3f47f3b0-114b-4757-b5a7-87553f277126</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Bamboo</Material>
+    <Thickness>1.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1400</Speed>
+    <Cycles>2</Cycles>
+  </Materials>
+  <Materials>
+    <id>bf6e362d-c1de-413e-9126-795dcbaadc87</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>2.8mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>180</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>5e03f4db-c5f2-4199-ad6e-a5f419cbb599</id>
+    <Visible>true</Visible>
+    <Model>Atomstack M50 10W</Model>
+    <Material>Kraft Paper</Material>
+    <Thickness>0.2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
 </MaterialDB>
