@@ -542,7 +542,7 @@ Használható a Z tengely lefelé mozgatására, mélyebb vágás érdekében
 Itt ugyanazt a szintaxist használhatja, mint az egyéni gomboknál</value>
   </data>
   <data name="TpSoundSettings.Text" xml:space="preserve">
-    <value>Hangbeállítások</value>
+    <value>Értesítés</value>
   </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
     <value>434, 26</value>
@@ -711,5 +711,28 @@ Kérem, ne használja az Automatikus hűtés funkciót, amíg egy javított firm
   </data>
   <data name="successSoundLabel.Text" xml:space="preserve">
     <value>.\Sound\success.wav</value>
+  </data>
+  <data name="label43.Text" xml:space="preserve">
+    <value>A 4.6.1-es verziótól kezdődően a LaserGRBL egy jobb közelítő bezier görbe algoritmust használ, ami pontosabb végeredményhez vezethet.
+Kapcsolja ki ezt az opciót, ha a régi algoritmust szeretné használni.</value>
+  </data>
+  <data name="CbSmartBezier.Text" xml:space="preserve">
+    <value>Intelligens Bezier</value>
+  </data>
+  <data name="TpVectorImport.Text" xml:space="preserve">
+    <value>Vektor importálás</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>Telegram értesítés</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Szeméyles kód</value>
+  </data>
+  <data name="BtnTestNotification.Text" xml:space="preserve">
+    <value>Teszt</value>
+  </data>
+  <data name="label42.Text" xml:space="preserve">
+    <value>Ha van telegram fiókja, keressen rá a @LaserGRBL botra. A személyes kódot ott kaphatja meg.
+(Angol nyelvű)</value>
   </data>
 </root>

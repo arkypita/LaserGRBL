@@ -121,7 +121,7 @@
   <data name="BtnDPI.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAASXSURBVEhLrZVt
+        wQAADsEBuJFr7QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAASXSURBVEhLrZVt
         UFRVGMd32ru7OjXT1JTThyKEWt6SonQIhxBaZF/u7rKAu8suyJu7oEOCu7wvlEGgfig1m/rQZB9smsk+
         WAwY4O4qllOSJVmZJKI5pGIBM8UM8v7vnHPvcjeyb56Z/9zzPPec8/zuOc95rkxm7DPJ+MCkzBC8c+8V
         +H/xgQkZ7+dltKPIvwhl4RUot16Dsug6lMWjUJbcILoFVekY0W2oyv4QRfrEVhK/suQmGUvG0fF03tar
@@ -273,5 +273,8 @@ Kattintson további információkért ...</value>
   </data>
   <data name="LblMaxPerc.Text" xml:space="preserve">
     <value>100%</value>
+  </data>
+  <data name="BtnUnlockProportion.ToolTip" xml:space="preserve">
+    <value>Képarány megtartása</value>
   </data>
 </root>

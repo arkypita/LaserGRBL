@@ -117,31 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TxtHeader.Text" xml:space="preserve">
-    <value>Új verzió található. Javasoljuk, hogy frissítse a LaserGRBL-t az új szolgáltatások és a hibajavítás előnyeinek kihasználása érdekében.</value>
+  <data name="CBHeader.Text" xml:space="preserve">
+    <value>Fejléc exportálása</value>
   </data>
-  <data name="TxtCurrentV.Text" xml:space="preserve">
-    <value>Aktuális verzió</value>
+  <data name="CBFooter.Text" xml:space="preserve">
+    <value>Lábléc exportálása</value>
   </data>
-  <data name="TxtNewV.Text" xml:space="preserve">
-    <value>Utolsó verzió:</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Áthaladások</value>
   </data>
-  <data name="BtnWebsite.Text" xml:space="preserve">
-    <value>Webldal</value>
+  <data name="CBBetween.Text" xml:space="preserve">
+    <value>Áthaladások közötti G-code exportálása</value>
   </data>
-  <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Mégsem</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Exportálás beállítások</value>
   </data>
-  <data name="BtnUpdate.Text" xml:space="preserve">
-    <value>Letöltés!</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Ha exportálnia kellene az elkészült gcode-ot például egy külön vezérlővel rendelkező gravírozóra, hasznosnak találhatja, hogy exportálható a fejléc/lábléc, valamint az áthaladások közötti gcode is.
+
+MEGJEGYZÉS: Ha azért exportál, hogy később újra betölthesse a LaserGRBL-be a kódot, ajánlott inkább a gyors exportot használni.</value>
+  </data>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Mentés</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Új verzió érhető el</value>
-  </data>
-  <data name="LblCurrentVersion.Text" xml:space="preserve">
-    <value>0.0.0</value>
-  </data>
-  <data name="LblLatestVersion.Text" xml:space="preserve">
-    <value>0.0.0</value>
+    <value>G-code mentés opciók</value>
   </data>
 </root>

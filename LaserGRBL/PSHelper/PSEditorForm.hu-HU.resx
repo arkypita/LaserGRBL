@@ -117,31 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TxtHeader.Text" xml:space="preserve">
-    <value>Új verzió található. Javasoljuk, hogy frissítse a LaserGRBL-t az új szolgáltatások és a hibajavítás előnyeinek kihasználása érdekében.</value>
+  <data name="ColID.HeaderText" xml:space="preserve">
+    <value>Azonosító</value>
   </data>
-  <data name="TxtCurrentV.Text" xml:space="preserve">
-    <value>Aktuális verzió</value>
+  <data name="ColVisible.HeaderText" xml:space="preserve">
+    <value>Látható</value>
   </data>
-  <data name="TxtNewV.Text" xml:space="preserve">
-    <value>Utolsó verzió:</value>
+  <data name="ColModel.HeaderText" xml:space="preserve">
+    <value>Modell</value>
   </data>
-  <data name="BtnWebsite.Text" xml:space="preserve">
-    <value>Webldal</value>
+  <data name="ColMaterial.HeaderText" xml:space="preserve">
+    <value>Anyag</value>
   </data>
-  <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Mégsem</value>
+  <data name="ColAction.HeaderText" xml:space="preserve">
+    <value>Akció</value>
   </data>
-  <data name="BtnUpdate.Text" xml:space="preserve">
-    <value>Letöltés!</value>
+  <data name="ColThick.HeaderText" xml:space="preserve">
+    <value>Vastagság</value>
+  </data>
+  <data name="ColPower.HeaderText" xml:space="preserve">
+    <value>Erősség</value>
+  </data>
+  <data name="ColSpeed.HeaderText" xml:space="preserve">
+    <value>Sebesség</value>
+  </data>
+  <data name="ColCycles.HeaderText" xml:space="preserve">
+    <value>Ciklus</value>
+  </data>
+  <data name="ColRemarks.HeaderText" xml:space="preserve">
+    <value>Megjegyzés</value>
+  </data>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>Új elemek:</value>
+  </data>
+  <data name="TbNewElement.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BtnImport.Text" xml:space="preserve">
+    <value>importálás</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Új verzió érhető el</value>
-  </data>
-  <data name="LblCurrentVersion.Text" xml:space="preserve">
-    <value>0.0.0</value>
-  </data>
-  <data name="LblLatestVersion.Text" xml:space="preserve">
-    <value>0.0.0</value>
+    <value>Lézer &amp; anyagtáblázat</value>
   </data>
 </root>
