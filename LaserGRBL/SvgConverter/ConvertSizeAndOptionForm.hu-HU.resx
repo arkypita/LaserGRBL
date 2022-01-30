@@ -200,4 +200,10 @@ Kattintson további információkért ...</value>
   <data name="BtnPSHelper.ToolTip" xml:space="preserve">
     <value>Lézer &amp; Anyagtábla megnyitása</value>
   </data>
+  <data name="LblMinPerc.Text" xml:space="preserve">
+    <value>0%</value>
+  </data>
+  <data name="LblMaxPerc.Text" xml:space="preserve">
+    <value>100%</value>
+  </data>
 </root>

@@ -405,4 +405,30 @@ Csak az 1.1 vagy újabb grbl verziójú gravírozóknál használható az M4 be�
   <data name="Line2LineOptions" xml:space="preserve">
     <value>Sorról-sorra beállítások</value>
   </data>
+  <data name="WarnUnlockProportionText" xml:space="preserve">
+    <value>A képméretek szabadon való szerkesztése a kép torzulásához vezethet. Kívánja folytatni?</value>
+  </data>
+  <data name="WarnUnlockProportionTitle" xml:space="preserve">
+    <value>Figyelem</value>
+  </data>
+  <data name="BoxTelegramSettingText" xml:space="preserve">
+    <value>A teszt értesítés elküldve, kérjük, nézze meg telefonját!</value>
+  </data>
+  <data name="BoxTelegramSettingTitle" xml:space="preserve">
+    <value>Telegram értesítés</value>
+  </data>
+  <data name="WarnBufferStuckUnlockText" xml:space="preserve">
+    <value>Ha a puffer telítve van, akkor egy kommunikációs probléma áll fenn a gravíroójával. Ha az "OK" gombbra kattint, a LaserGRBL figyelmen kívül hagyja a telített puffert, és elküldi a következő parancsot. Amennyiben ez a probléma sűrűn előfordul, érdemes feltárni a hiba okát.
+Kattintson a "?"-re további információért.</value>
+  </data>
+  <data name="WarnBufferStuckUnlockTitle" xml:space="preserve">
+    <value>Puffer felszabadítása</value>
+  </data>
+  <data name="ProblemConnectingText" xml:space="preserve">
+    <value>Hiba a gravírozóhoz történő csatlakozásban.
+Ha segítségre van szüksége, kattintson a "?" gombra.</value>
+  </data>
+  <data name="ProblemConnectingTitle" xml:space="preserve">
+    <value>Probléma a kapcsolódással?</value>
+  </data>
 </root>
