@@ -1799,7 +1799,7 @@ namespace LaserGRBL
 		private bool IsOrturFirmwareMessage(string rline) => rline.StartsWith("OLF");
 		private bool IsStandardWelcomeMessage(string rline) => rline.StartsWith("Grbl");
 		private bool IsBrokenOkMessage(string rline) => rline.ToLower().Contains("ok");
-		private bool IsStandardBlockingAlarm(string rline) => rline.ToLower().Contains("alarm:");
+		private bool IsStandardBlockingAlarm(string rline) => rline.ToLower().StartsWith("alarm:");
 		private bool IsOrturBlockingAlarm(string rline) => false;
 
 		private void ManageGenericMessage(string rline)
