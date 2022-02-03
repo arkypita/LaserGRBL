@@ -81,6 +81,7 @@ namespace LaserGRBL
 			//StopMoving = 2, 
 			UnexpectedReset = 3,
 			UnexpectedDisconnect = 4,
+			MachineAlarm = 5,
 		}
 
 		public enum MacStatus
@@ -1782,6 +1783,10 @@ namespace LaserGRBL
 				ManageStandardWelcomeMessage(rline);
 			else if (IsBrokenOkMessage(rline))
 				ManageBrokenOkMessage(rline);
+			else if (IsStandardBlockingAlarm(rline))
+				ManageStandardBlockingAlarm(rline);
+			//else if (IsOrturBlockingAlarm(rline))
+			//	ManageOrturBlockingAlarm(rline);
 			else
 				ManageGenericMessage(rline);
 		}
@@ -1794,6 +1799,8 @@ namespace LaserGRBL
 		private bool IsOrturFirmwareMessage(string rline) => rline.StartsWith("OLF");
 		private bool IsStandardWelcomeMessage(string rline) => rline.StartsWith("Grbl");
 		private bool IsBrokenOkMessage(string rline) => rline.ToLower().Contains("ok");
+		private bool IsStandardBlockingAlarm(string rline) => rline.ToLower().Contains("alarm:");
+		private bool IsOrturBlockingAlarm(string rline) => false;
 
 		private void ManageGenericMessage(string rline)
 		{
@@ -1803,6 +1810,19 @@ namespace LaserGRBL
 				Logger.LogMessage("GenericMessage", "Ex on [{0}] message", rline);
 				Logger.LogException("GenericMessage", ex);
 			}
+		}
+
+		private void ManageStandardBlockingAlarm(string rline)
+		{
+			if (mTP.LastIssue == DetectedIssue.Unknown && InProgram)
+				SetIssue(DetectedIssue.MachineAlarm);
+
+			ManageGenericMessage(rline); //process as usual
+		}
+
+		private void ManageOrturBlockingAlarm(string rline)
+		{
+			ManageGenericMessage(rline); //process as usual
 		}
 
 		private void ManageStandardWelcomeMessage(string rline)
