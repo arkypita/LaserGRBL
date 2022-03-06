@@ -59,6 +59,10 @@ namespace LaserGRBL.SvgConverter
 		private static int rapidnum = 0;
 		private static bool SupportPWM = true;
 
+		private static int dwelltime = 0;
+		private static int fanId = 0;
+		private static GrblCore.PwmMode pwmMode = GrblCore.PwmMode.Spindle;
+
 		public static void setup(GrblCore core)
 		{
 			SupportPWM = Settings.GetObject("Support Hardware PWM", true); //If Support PWM use S command instead of M3-M4 / M5
@@ -78,10 +82,23 @@ namespace LaserGRBL.SvgConverter
 				gcodeSpindleSpeed /= 255.0f;
 			gcodeSpindleCmdOn = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
 			gcodeSpindleCmdOff = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
-			SupportPWM = Settings.GetObject("Support Hardware PWM", true); //If Support PWM use S command instead of M3-M4 / M5
 
 			lastMovewasG0 = true;
 			lastx = -1; lasty = -1; lastz = 0; lasts = -1 ; lastg = -1;
+
+			if(firmwareType == Firmware.Marlin)
+            {
+				pwmMode = Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle); ;
+				fanId = Settings.GetObject("Pwm FanId", 0);
+				try
+				{
+					dwelltime = Int32.Parse(Settings.GetObject("Pwm FanDwell", "0"));
+				}
+				catch (FormatException)
+				{
+					dwelltime = 0;
+				}
+			}
 		}
 
 		public static bool reduceGCode
@@ -158,36 +175,81 @@ namespace LaserGRBL.SvgConverter
 		{
 			if (cmt.Length > 0) cmt = string.Format(" ({0})", cmt);
 
+			if ((firmwareType == Firmware.Marlin) && (pwmMode == GrblCore.PwmMode.Fan))
+			{
+				gcodeString.AppendFormat("G4 P0\r\n");
+			}
+
 			if (SupportPWM)
-				gcodeString.AppendFormat("S{0}{1}\r\n", gcodeSpindleSpeed, cmt); //only set SMax
+			{
+				if (firmwareType == Firmware.Marlin)
+				{
+					if (pwmMode == GrblCore.PwmMode.Fan)
+					{
+						gcodeString.AppendFormat("{0} S{1} P{2}{3}\r\n", gcodeSpindleCmdOn, gcodeSpindleSpeed, fanId, cmt);
+					}
+					else
+					{
+						gcodeString.AppendFormat("{0} S{1}{2}\r\n", gcodeSpindleCmdOn, gcodeSpindleSpeed, cmt);
+					}
+				}
+				else
+				{
+					gcodeString.AppendFormat("S{0}{1}\r\n", gcodeSpindleSpeed, cmt);
+				}
+			}
 			else
-				gcodeString.AppendFormat("{0}{1}\r\n", gcodeSpindleCmdOn, cmt); //only set M3/M4
+			{
+				gcodeString.AppendFormat("{0}{1}\r\n", gcodeSpindleCmdOn, cmt); //only set M5
+			}
+
+			if ((firmwareType == Firmware.Marlin) && (pwmMode == GrblCore.PwmMode.Fan))
+			{
+				gcodeString.AppendFormat("G4 P{0}\r\n", dwelltime);
+			}
 		}
 
 		public static void SpindleOff(StringBuilder gcodeString, string cmt = "")
 		{
 			if (cmt.Length > 0) cmt = string.Format(" ({0})", cmt);
-			
+
+			if ((firmwareType == Firmware.Marlin) && (pwmMode == GrblCore.PwmMode.Fan))
+			{
+				gcodeString.AppendFormat("G4 P0\r\n");
+			}
+
 			if (SupportPWM)
-				gcodeString.AppendFormat("S0{0}\r\n", cmt); //only set S0
+			{
+				if (firmwareType == Firmware.Marlin)
+				{
+					if (pwmMode == GrblCore.PwmMode.Fan)
+					{
+						gcodeString.AppendFormat("{0} S0 P{1}{2}\r\n", gcodeSpindleCmdOn, fanId, cmt);
+					}
+					else
+					{
+						gcodeString.AppendFormat("{0} S0{1}\r\n", gcodeSpindleCmdOn, cmt);
+					}
+				}
+				else
+				{
+					gcodeString.AppendFormat("S0{0}\r\n", cmt);
+				}
+			}
 			else
+			{
 				gcodeString.AppendFormat("{0}{1}\r\n", gcodeSpindleCmdOff, cmt); //only set M5
+			}
 		}
 
 		internal static void PutInitialCommand(StringBuilder gcodeString)
 		{
-			if (SupportPWM)
-				gcodeString.AppendFormat("{0} S0\r\n", gcodeSpindleCmdOn); //turn ON with zero power
-			else
-				gcodeString.AppendFormat("{0} S{1}\r\n", gcodeSpindleCmdOff, gcodeSpindleSpeed); //turn OFF and set MaxPower
+			SpindleOff(gcodeString);
 		}
 
 		internal static void PutFinalCommand(StringBuilder gcodeString)
 		{
-			if (SupportPWM)
-				gcodeString.AppendFormat("M5 S0\r\n"); //turn OFF and zero power
-			else
-				gcodeString.AppendFormat("M5 S0\r\n"); //turn OFF and zero power
+			SpindleOff(gcodeString);
 		}
 
 		public static void PenDown(StringBuilder gcodeString, string cmto = "")
@@ -509,7 +571,7 @@ namespace LaserGRBL.SvgConverter
 				{
 					// For Marlin, we must change this line to :
 					// if (lastg != gnr || firmwareType == Firmware.Marlin) { gcodeTmp.AppendFormat("G{0}", frmtCode(gnr)); isneeded = true; }
-					if (lastg != gnr) { gcodeTmp.AppendFormat("G{0}", frmtCode(gnr)); isneeded = true; }
+					if (lastg != gnr || firmwareType == Firmware.Marlin) { gcodeTmp.AppendFormat("G{0}", frmtCode(gnr)); isneeded = true; }
 
 					if (lastx != x) { gcodeTmp.AppendFormat("X{0}", frmtNum(x)); isneeded = true; }
 					if (lasty != y) { gcodeTmp.AppendFormat("Y{0}", frmtNum(y)); isneeded = true; }

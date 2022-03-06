@@ -24,6 +24,7 @@ namespace LaserGRBL
 		public class StatePositionBuilder : StateBuilder
 		{
 			bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
+			Firmware mFwType = Settings.GetObject("Firmware Type", Firmware.Grbl);
 
 			public class CumulativeElement : Element
 			{
@@ -184,7 +185,12 @@ namespace LaserGRBL
 				else if (G1G2G3 && cmd.IsMovement && f != 0)
 					return TimeSpan.FromMinutes((double)GetSegmentLenght(cmd) / (double)Math.Min(f, conf.MaxRateX));
 				else if (cmd.IsPause)
-					return cmd.P != null ? TimeSpan.FromSeconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
+					if(mFwType == Firmware.Marlin)
+					{
+						return cmd.P != null ? TimeSpan.FromMilliseconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
+					}
+					else
+						return cmd.P != null ? TimeSpan.FromSeconds((double)cmd.P.Number) : cmd.S != null ? TimeSpan.FromSeconds((double)cmd.S.Number) : TimeSpan.Zero;
 				else
 					return TimeSpan.Zero;
 			}
@@ -230,10 +236,10 @@ namespace LaserGRBL
 			{ get { return DistanceMode.Number == 90; } }
 
 			public bool M3M4
-			{ get { return SpindleState.Number == 3 || SpindleState.Number == 4; } }
+			{ get { return SpindleState.Number == 3 || SpindleState.Number == 4 || SpindleState.Number == 106; } }
 
 			public bool LaserBurning
-			{ get { return (!supportPWM || S.Number > 0) && (SpindleState.Number == 3 || (SpindleState.Number == 4 && MotionMode.Number != 0)); } }
+			{ get { return (!supportPWM || S.Number > 0) && (SpindleState.Number == 3 || SpindleState.Number == 106 || (SpindleState.Number == 4 && MotionMode.Number != 0)); } }
 
 			internal void Homing()
 			{
@@ -312,7 +318,7 @@ namespace LaserGRBL
 			protected ModalElement ToolLengthOffset = new ModalElement("G49", "G43.1");
 			protected ModalElement ProgramMode = new ModalElement("M0", "M1", "M2", "M30");
 			protected ModalElement CoolantState = new ModalElement("M9", "M7", "M8");
-			protected ModalElement SpindleState = new ModalElement("M5", "M3", "M4");
+			protected ModalElement SpindleState = new ModalElement("M5", "M3", "M4", "M106", "M107");
 
 			//private void UpdateModals(GrblCommand cmd) //update modals - BUILD IF NEEDED
 			//{

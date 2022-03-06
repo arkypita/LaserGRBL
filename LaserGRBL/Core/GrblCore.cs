@@ -16,7 +16,7 @@ using Tools;
 
 namespace LaserGRBL
 {
-	public enum Firmware
+    public enum Firmware
 	{ Grbl, Smoothie, Marlin, VigoWork }
 
 	/// <summary>
@@ -82,6 +82,12 @@ namespace LaserGRBL
 			UnexpectedReset = 3,
 			UnexpectedDisconnect = 4,
 			MachineAlarm = 5,
+		}
+
+		public enum PwmMode
+        {
+			Spindle = 0,
+			Fan = 1,
 		}
 
 		public enum MacStatus
@@ -981,8 +987,17 @@ namespace LaserGRBL
 
 					lock (this)
 					{
+						GrblCommand stop = null;
+						if(Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin && Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle) == GrblCore.PwmMode.Fan)
+                        {
+							stop = new GrblCommand("M107");
+						}
+                        else 
+						{
+							stop = new GrblCommand("M5");
+						}
 						mQueue.Clear(); //flush the queue of item to send
-						mQueue.Enqueue(new GrblCommand("M5")); //shut down laser
+						mQueue.Enqueue(stop); //shut down laser
 					}
 				}
 				catch (Exception ex)
@@ -2499,7 +2514,7 @@ namespace LaserGRBL
 		internal void HelpOnLine()
 		{ Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/"); }
 
-		internal void GrblHoming()
+		internal virtual void GrblHoming()
 		{ if (CanDoHoming) EnqueueCommand(new GrblCommand("$H")); }
 
 		internal void GrblUnlock()

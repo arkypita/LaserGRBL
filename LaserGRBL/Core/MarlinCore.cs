@@ -66,6 +66,14 @@ namespace LaserGRBL
 
         }
 
+        internal override void SendHomingCommand()
+        {
+            EnqueueCommand(new GrblCommand("G28"));
+        }
+
+        internal override void GrblHoming()
+        { if (CanDoHoming) EnqueueCommand(new GrblCommand("G28")); }
+
         protected override void DetectHang()
         {
             if (mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)

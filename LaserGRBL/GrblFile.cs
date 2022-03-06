@@ -338,8 +338,20 @@ namespace LaserGRBL
 
 						using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size((int)(bmp.Width * c.fres / c.res) + 1, (int)(bmp.Height * c.fres / c.res) + 1), true, InterpolationMode.HighQualityBicubic))
 						{
+							if ((c.firmwareType == Firmware.Marlin) && (c.pwmMode == GrblCore.PwmMode.Fan))
+							{
+								list.Add(new GrblCommand(String.Format("G4 P0")));
+							}
 							if (c.pwm)
-								list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
+								if (c.firmwareType == Firmware.Marlin)
+								{
+									if (c.pwmMode == GrblCore.PwmMode.Fan)
+										list.Add(new GrblCommand(String.Format("{0} S0 P{1}", c.lOn, c.fanId))); //laser on and power to zero
+									else
+										list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
+								}
+								else
+									list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
 							else
 								list.Add(new GrblCommand(String.Format($"{c.lOff} S{core.Configuration.MaxPWM}"))); //laser off and power to max power
 
@@ -360,20 +372,69 @@ namespace LaserGRBL
 
 			bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
-
+			if ((c.firmwareType == Firmware.Marlin) && (c.pwmMode == GrblCore.PwmMode.Fan))
+			{
+				list.Add(new GrblCommand(String.Format("G4 P0")));
+			}
 			if (supportPWM)
-				list.Add(new GrblCommand($"{c.lOn} S0"));   //laser on and power to 0
+			{
+				if (c.firmwareType == Firmware.Marlin)
+				{
+					if (c.pwmMode == GrblCore.PwmMode.Fan)
+						list.Add(new GrblCommand(String.Format("{0} S0 P{1}", c.lOn, c.fanId))); //laser on and power to zero
+					else
+						list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
+				}
+				else
+					list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
+			}
 			else
 				list.Add(new GrblCommand($"{c.lOff} S{core.Configuration.MaxPWM}"));   //laser off and power to maxPower
+
+			List<string> LaserOn = new List<string>();
+			List<string> LaserOff = new List<string>();
+			if ((c.firmwareType == Firmware.Marlin) && (c.pwmMode == GrblCore.PwmMode.Fan))
+			{
+				LaserOn.Add(String.Format("G4 P0"));
+				LaserOff.Add(String.Format("G4 P0"));
+			}
+			if (supportPWM)
+            {
+				if (c.firmwareType == Firmware.Marlin)
+				{
+					if (c.pwmMode == GrblCore.PwmMode.Fan)
+					{
+						LaserOn.Add(String.Format("{0} S{1} P{2}", c.lOn, c.maxPower, c.fanId));
+						LaserOff.Add(String.Format("{0} S0 P{1}", c.lOn, c.fanId));
+					}
+					else
+					{
+						LaserOn.Add(String.Format("{0} S{1}", c.lOn, c.maxPower));
+						LaserOff.Add(String.Format("{0} S0", c.lOn));
+					}
+				}
+				else
+				{
+					LaserOn.Add(String.Format("{0} S{1}", c.lOn, c.maxPower));
+					LaserOff.Add(String.Format("{0} S0", c.lOn));
+				}
+			}
+            else
+            {
+				LaserOn.Add(c.lOn);
+				LaserOff.Add(c.lOff);
+			}
+
+			if ((c.firmwareType == Firmware.Marlin) && (c.pwmMode == GrblCore.PwmMode.Fan))
+			{
+				LaserOn.Add(String.Format("G4 P{0}", c.dwelltime));
+			}
 
 			//trace raster filling
 			if (flist != null)
 			{
 				List<string> gc = new List<string>();
-				if (supportPWM)
-					gc.AddRange(Potrace.Export2GCode(flist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd));
-				else
-					gc.AddRange(Potrace.Export2GCode(flist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd));
+				gc.AddRange(Potrace.Export2GCode(flist, c.oX, c.oY, c.res, LaserOn, LaserOff, bmp.Size, skipcmd));
 
 				list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
 				foreach (string code in gc)
@@ -391,10 +452,7 @@ namespace LaserGRBL
 					plist.Reverse(); //la lista viene fornita da potrace con prima esterni e poi interni, ma per il taglio è meglio il contrario
 
 				List<string> gc = new List<string>();
-				if (supportPWM)
-					gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd));
-				else
-					gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd));
+				gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, LaserOn, LaserOff, bmp.Size, skipcmd));
 
 				// For marlin, need to specify G1 each time :
 				//list.Add(new GrblCommand(String.Format("G1 F{0}", c.borderSpeed)));
@@ -450,6 +508,9 @@ namespace LaserGRBL
 			public double fres;
 			public bool vectorfilling;
 			public Firmware firmwareType;
+			public int dwelltime;
+			public int fanId;
+			public GrblCore.PwmMode pwmMode;
 		}
 
 		private string skipcmd = "G0";
@@ -474,11 +535,26 @@ namespace LaserGRBL
 
 			//move fast to offset (or slow if disable G0) and set mark speed
 			list.Add(new GrblCommand(String.Format("{0} X{1} Y{2} F{3}", skipcmd, formatnumber(c.oX), formatnumber(c.oY), c.markSpeed)));
+			if ((c.firmwareType == Firmware.Marlin) && (c.pwmMode == GrblCore.PwmMode.Fan))
+			{
+				list.Add(new GrblCommand(String.Format("G4 P0")));
+			}
 			if (c.pwm)
-				list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
+            {
+				if (c.firmwareType == Firmware.Marlin)
+				{
+					if (c.pwmMode == GrblCore.PwmMode.Fan)
+						list.Add(new GrblCommand(String.Format("{0} S0 P{1}", c.lOn, c.fanId))); //laser on and power to zero
+					else
+						list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
+				}
+				else
+				{
+					list.Add(new GrblCommand("S0"));
+				}
+			}
 			else
 				list.Add(new GrblCommand($"{c.lOff} S{core.Configuration.MaxPWM}")); //laser off and power to maxpower
-
 			//set speed to markspeed						
 			// For marlin, need to specify G1 each time :
 			//list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
@@ -487,6 +563,10 @@ namespace LaserGRBL
 			ImageLine2Line(bmp, c);
 
 			//laser off
+			if ((c.firmwareType == Firmware.Marlin) && (c.pwmMode == GrblCore.PwmMode.Fan))
+			{
+				list.Add(new GrblCommand(String.Format("G4 P0")));
+			}
 			list.Add(new GrblCommand(c.lOff));
 
 			//move fast to origin
@@ -508,41 +588,69 @@ namespace LaserGRBL
 
 			int cumX = 0;
 			int cumY = 0;
-
+			int lastColorSend = 0;
 			foreach (ColorSegment seg in segments)
 			{
 				bool changeGMode = (fast != seg.Fast(c)); //se veloce != dafareveloce
 
 				if (seg.IsSeparator && !fast) //fast = previous segment contains S0 color
 				{
+					if ((c.firmwareType == Firmware.Marlin) && (c.pwmMode == GrblCore.PwmMode.Fan))
+					{
+						temp.Add(new GrblCommand(String.Format("G4 P0")));
+					}
 					if (c.pwm)
-						temp.Add(new GrblCommand("S0"));
+					{
+						if (c.firmwareType == Firmware.Marlin)
+						{
+							if(c.pwmMode == GrblCore.PwmMode.Fan)
+								temp.Add(new GrblCommand(String.Format("{0} S0 P{1}", c.lOn, c.fanId))); //laser on and power to zero
+							else
+								temp.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
+						}
+						else
+                        {
+							temp.Add(new GrblCommand("S0"));
+                        }
+					}
 					else
+					{ 
 						temp.Add(new GrblCommand(c.lOff)); //laser off
+					}
 				}
 
 				fast = seg.Fast(c);
 
-				// For marlin firmware, we must defined laser power before moving (unsing M106 or M107)
-				// So we have to speficy gcode (G0 or G1) each time....
-				//if (c.firmwareType == Firmware.Marlin)
-				//{
-				//	// Add M106 only if color has changed
-				//	if (lastColorSend != seg.mColor)
-				//		temp.Add(new GrblCommand(String.Format("M106 P1 S{0}", fast ? 0 : seg.mColor)));
-				//	lastColorSend = seg.mColor;
-				//	temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? "G0" : "G1", seg.ToGCodeNumber(ref cumX, ref cumY, c))));
-				//}
-				//else
-				//{
-
-				if (changeGMode)
-					temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? skipcmd : "G1", seg.ToGCodeNumber(ref cumX, ref cumY, c))));
-				else
-					temp.Add(new GrblCommand(seg.ToGCodeNumber(ref cumX, ref cumY, c)));
-
-				//}
-			}
+                // For marlin firmware, we must defined laser power before moving (unsing M106 or M107)
+                // So we have to speficy gcode (G0 or G1) each time....
+                if (c.firmwareType == Firmware.Marlin)
+                {
+					// Add M106 only if color has changed
+					if (lastColorSend != seg.mColor)
+					{
+						if (c.pwmMode == GrblCore.PwmMode.Fan)
+						{
+							temp.Add(new GrblCommand(String.Format("G4 P0")));
+							temp.Add(new GrblCommand(String.Format("{0} S{1} P{2}", c.lOn, fast ? 0 : seg.mColor, c.fanId)));
+							temp.Add(new GrblCommand(String.Format("G4 P{0}", c.dwelltime)));
+						}
+                        else 
+						{
+							temp.Add(new GrblCommand(String.Format("{0} S{1}", c.lOn, fast ? 0 : seg.mColor)));
+						}
+						lastColorSend = seg.mColor;
+						
+					}
+                    temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? "G0" : "G1", seg.ToGCodeNumber(ref cumX, ref cumY, c))));
+                }
+                else
+                {
+                    if (changeGMode)
+						temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? skipcmd : "G1", seg.ToGCodeNumber(ref cumX, ref cumY, c))));
+					else
+						temp.Add(new GrblCommand(seg.ToGCodeNumber(ref cumX, ref cumY, c)));
+                }
+            }
 
 			temp = OptimizeLine2Line(temp, c);
 			list.AddRange(temp);
