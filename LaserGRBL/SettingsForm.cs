@@ -40,7 +40,7 @@ namespace LaserGRBL
 			CBCore.SelectedItem = fw;
 
 			if (fw != Firmware.Marlin)
-            {
+			{
 				MainTabPage.TabPages.Remove(TpPwmSettings);
 			}
 
@@ -147,7 +147,7 @@ namespace LaserGRBL
         }
 
 		private void InitPwmTab()
-        {
+		{
 			CBPwmSel.BeginUpdate();
 			CBPwmSel.Items.Add(GrblCore.PwmMode.Spindle);
 			CBPwmSel.Items.Add(GrblCore.PwmMode.Fan);

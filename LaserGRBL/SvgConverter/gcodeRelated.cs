@@ -93,7 +93,7 @@ namespace LaserGRBL.SvgConverter
 			lastx = -1; lasty = -1; lastz = 0; lasts = -1 ; lastg = -1;
 
 			if(firmwareType == Firmware.Marlin)
-            {
+			{
 				pwmMode = Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle); ;
 				fanId = Settings.GetObject("Pwm FanId", 0);
 				try

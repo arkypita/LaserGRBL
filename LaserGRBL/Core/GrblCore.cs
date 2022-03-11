@@ -1008,10 +1008,10 @@ namespace LaserGRBL
 					{
 						GrblCommand stop = null;
 						if(Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin && Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle) == GrblCore.PwmMode.Fan)
-                        {
+						{
 							stop = new GrblCommand("M107");
 						}
-                        else 
+						else
 						{
 							stop = new GrblCommand("M5");
 						}
@@ -2701,7 +2701,7 @@ namespace LaserGRBL
 		}
 
 		public void configureSpindle(SpindleConfig SpindleConfig)
-        {
+		{
 			mSpindleConfig = SpindleConfig;
 		}
 

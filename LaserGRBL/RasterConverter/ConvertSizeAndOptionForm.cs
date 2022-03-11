@@ -111,8 +111,8 @@ namespace LaserGRBL.RasterConverter
 					IP.LaserOn = "M106";
 					IP.LaserOff = "M107";
 				}
-                else
-                {
+				else
+				{
 					CBLaserON.SelectedItem = LaserOptions[1];
 					IP.LaserOn = "M4";
 					IP.LaserOff = "M5";
@@ -250,11 +250,11 @@ namespace LaserGRBL.RasterConverter
 				IP.LaserOn = "M3";
 
 			if(IP.LaserOn == "M106")
-            {
+			{
 				IP.LaserOff = "M107";
 			}
-            else
-            {
+			else
+			{
 				IP.LaserOff = "M5";
 			}
 		}
