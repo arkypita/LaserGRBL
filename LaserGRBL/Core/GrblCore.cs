@@ -85,9 +85,26 @@ namespace LaserGRBL
 		}
 
 		public enum PwmMode
-        {
+		{
 			Spindle = 0,
 			Fan = 1,
+		}
+
+		public enum SpindleState
+		{
+			ON = 0,
+			OFF = 1,
+		}
+
+		public class SpindleConfig
+		{
+			public string lOn;
+			public string lOff;
+			public bool pwm;
+			public Firmware firmwareType;
+			public int dwelltime;
+			public int fanId;
+			public GrblCore.PwmMode pwmMode;
 		}
 
 		public enum MacStatus
@@ -313,7 +330,9 @@ namespace LaserGRBL
 		private HotKeysManager mHotKeyManager;
 
 		public UsageStats.UsageCounters UsageCounters;
- 
+
+		protected SpindleConfig mSpindleConfig;
+
 
 		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
 		{
@@ -2681,7 +2700,19 @@ namespace LaserGRBL
 			}
 		}
 
-        public virtual bool UIShowGrblConfig => true;
+		public void configureSpindle(SpindleConfig SpindleConfig)
+        {
+			mSpindleConfig = SpindleConfig;
+		}
+
+		public virtual List<String> getSpindleGcode(SpindleState state , int power)
+		{
+			List<string> LaserCmd = new List<string>();
+			LaserCmd.Add(String.Format("{0} S{1}", state == SpindleState.ON ? mSpindleConfig.lOn : mSpindleConfig.lOff, power));
+			return LaserCmd;
+		}
+
+		public virtual bool UIShowGrblConfig => true;
         public virtual bool UIShowUnlockButtons => true;
 
 		public bool IsOrturBoard { get => GrblVersion != null && GrblVersion.IsOrtur; }

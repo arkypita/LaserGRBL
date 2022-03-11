@@ -28,6 +28,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace LaserGRBL.SvgConverter
 {
@@ -62,6 +63,11 @@ namespace LaserGRBL.SvgConverter
 		private static int dwelltime = 0;
 		private static int fanId = 0;
 		private static GrblCore.PwmMode pwmMode = GrblCore.PwmMode.Spindle;
+
+		private static List<String> SpindleOnGCode = new List<String>();
+		private static List<String> SpindleOffGCode = new List<String>();
+		private static List<String> InitGCode = new List<String>();
+		private static List<String> FinalGCode = new List<String>();
 
 		public static void setup(GrblCore core)
 		{
@@ -99,6 +105,29 @@ namespace LaserGRBL.SvgConverter
 					dwelltime = 0;
 				}
 			}
+
+			GrblCore.SpindleConfig SpindleConfig = new GrblCore.SpindleConfig();
+			SpindleConfig.firmwareType = firmwareType;
+			SpindleConfig.dwelltime = dwelltime;
+			SpindleConfig.fanId = fanId;
+			SpindleConfig.lOff = gcodeSpindleCmdOff;
+			SpindleConfig.lOn = gcodeSpindleCmdOn;
+			SpindleConfig.pwm = SupportPWM;
+			SpindleConfig.pwmMode = pwmMode;
+			core.configureSpindle(SpindleConfig);
+			SpindleOnGCode = core.getSpindleGcode(GrblCore.SpindleState.ON, (int)gcodeSpindleSpeed);
+			if (SupportPWM)
+			{
+				SpindleOffGCode = core.getSpindleGcode(GrblCore.SpindleState.ON, 0);
+				InitGCode = core.getSpindleGcode(GrblCore.SpindleState.ON, 0); 
+			}
+			else
+			{
+				SpindleOffGCode = core.getSpindleGcode(GrblCore.SpindleState.OFF, (int)gcodeSpindleSpeed);
+				InitGCode = core.getSpindleGcode(GrblCore.SpindleState.OFF, (int)gcodeSpindleSpeed);
+			}
+
+			FinalGCode = core.getSpindleGcode(GrblCore.SpindleState.OFF, 0);
 		}
 
 		public static bool reduceGCode
@@ -174,82 +203,28 @@ namespace LaserGRBL.SvgConverter
 		public static void SpindleOn(StringBuilder gcodeString, string cmt = "")
 		{
 			if (cmt.Length > 0) cmt = string.Format(" ({0})", cmt);
-
-			if ((firmwareType == Firmware.Marlin) && (pwmMode == GrblCore.PwmMode.Fan))
-			{
-				gcodeString.AppendFormat("G4 P0\r\n");
-			}
-
-			if (SupportPWM)
-			{
-				if (firmwareType == Firmware.Marlin)
-				{
-					if (pwmMode == GrblCore.PwmMode.Fan)
-					{
-						gcodeString.AppendFormat("{0} S{1} P{2}{3}\r\n", gcodeSpindleCmdOn, gcodeSpindleSpeed, fanId, cmt);
-					}
-					else
-					{
-						gcodeString.AppendFormat("{0} S{1}{2}\r\n", gcodeSpindleCmdOn, gcodeSpindleSpeed, cmt);
-					}
-				}
-				else
-				{
-					gcodeString.AppendFormat("S{0}{1}\r\n", gcodeSpindleSpeed, cmt);
-				}
-			}
-			else
-			{
-				gcodeString.AppendFormat("{0}{1}\r\n", gcodeSpindleCmdOn, cmt); //only set M5
-			}
-
-			if ((firmwareType == Firmware.Marlin) && (pwmMode == GrblCore.PwmMode.Fan))
-			{
-				gcodeString.AppendFormat("G4 P{0}\r\n", dwelltime);
-			}
+			foreach (String cmd in SpindleOnGCode)
+				gcodeString.AppendFormat("{0}{1}\r\n", cmd, cmt);
 		}
 
 		public static void SpindleOff(StringBuilder gcodeString, string cmt = "")
 		{
 			if (cmt.Length > 0) cmt = string.Format(" ({0})", cmt);
 
-			if ((firmwareType == Firmware.Marlin) && (pwmMode == GrblCore.PwmMode.Fan))
-			{
-				gcodeString.AppendFormat("G4 P0\r\n");
-			}
-
-			if (SupportPWM)
-			{
-				if (firmwareType == Firmware.Marlin)
-				{
-					if (pwmMode == GrblCore.PwmMode.Fan)
-					{
-						gcodeString.AppendFormat("{0} S0 P{1}{2}\r\n", gcodeSpindleCmdOn, fanId, cmt);
-					}
-					else
-					{
-						gcodeString.AppendFormat("{0} S0{1}\r\n", gcodeSpindleCmdOn, cmt);
-					}
-				}
-				else
-				{
-					gcodeString.AppendFormat("S0{0}\r\n", cmt);
-				}
-			}
-			else
-			{
-				gcodeString.AppendFormat("{0}{1}\r\n", gcodeSpindleCmdOff, cmt); //only set M5
-			}
+			foreach (String cmd in SpindleOffGCode)
+				gcodeString.AppendFormat("{0}{1}\r\n", cmd, cmt);
 		}
 
 		internal static void PutInitialCommand(StringBuilder gcodeString)
 		{
-			SpindleOff(gcodeString);
+			foreach (String cmd in InitGCode)
+				gcodeString.AppendFormat("{0}\r\n", cmd);
 		}
 
 		internal static void PutFinalCommand(StringBuilder gcodeString)
 		{
-			SpindleOff(gcodeString);
+			foreach (String cmd in FinalGCode)
+				gcodeString.AppendFormat("{0}\r\n", cmd);
 		}
 
 		public static void PenDown(StringBuilder gcodeString, string cmto = "")

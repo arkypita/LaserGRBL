@@ -58,24 +58,24 @@ namespace LaserGRBL.SvgConverter
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.LblBorderTracing = new System.Windows.Forms.Label();
             this.LblBorderTracingmm = new System.Windows.Forms.Label();
+            this.IIBorderTracing = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
+            this.BtnPSHelper = new LaserGRBL.UserControls.ImageButton();
             this.GbLaser = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
             this.LblSmin = new System.Windows.Forms.Label();
+            this.IIMinPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
             this.label18 = new System.Windows.Forms.Label();
+            this.BtnOnOffInfo = new LaserGRBL.UserControls.ImageButton();
             this.CBLaserON = new System.Windows.Forms.ComboBox();
             this.LblSmax = new System.Windows.Forms.Label();
+            this.IIMaxPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
             this.LblMinPerc = new System.Windows.Forms.Label();
             this.LblMaxPerc = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.BtnCreate = new System.Windows.Forms.Button();
             this.TT = new System.Windows.Forms.ToolTip(this.components);
-            this.IIBorderTracing = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
-            this.BtnPSHelper = new LaserGRBL.UserControls.ImageButton();
-            this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
-            this.IIMinPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
-            this.BtnOnOffInfo = new LaserGRBL.UserControls.ImageButton();
-            this.IIMaxPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
             this.tableLayoutPanel9.SuspendLayout();
             this.GbSpeed.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -118,6 +118,32 @@ namespace LaserGRBL.SvgConverter
             resources.ApplyResources(this.LblBorderTracingmm, "LblBorderTracingmm");
             this.LblBorderTracingmm.Name = "LblBorderTracingmm";
             // 
+            // IIBorderTracing
+            // 
+            resources.ApplyResources(this.IIBorderTracing, "IIBorderTracing");
+            this.IIBorderTracing.CurrentValue = 1000;
+            this.IIBorderTracing.ForcedText = null;
+            this.IIBorderTracing.ForceMinMax = false;
+            this.IIBorderTracing.MaxValue = 4000;
+            this.IIBorderTracing.MinValue = 1;
+            this.IIBorderTracing.Name = "IIBorderTracing";
+            this.IIBorderTracing.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.IIBorderTracing.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIBorderTracingCurrentValueChanged);
+            // 
+            // BtnPSHelper
+            // 
+            this.BtnPSHelper.AltImage = null;
+            resources.ApplyResources(this.BtnPSHelper, "BtnPSHelper");
+            this.BtnPSHelper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnPSHelper.Caption = null;
+            this.BtnPSHelper.Coloration = System.Drawing.Color.Empty;
+            this.BtnPSHelper.Image = ((System.Drawing.Image)(resources.GetObject("BtnPSHelper.Image")));
+            this.BtnPSHelper.Name = "BtnPSHelper";
+            this.BtnPSHelper.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.TT.SetToolTip(this.BtnPSHelper, resources.GetString("BtnPSHelper.ToolTip"));
+            this.BtnPSHelper.UseAltImage = false;
+            this.BtnPSHelper.Click += new System.EventHandler(this.BtnPSHelper_Click);
+            // 
             // GbLaser
             // 
             resources.ApplyResources(this.GbLaser, "GbLaser");
@@ -140,15 +166,55 @@ namespace LaserGRBL.SvgConverter
             this.tableLayoutPanel7.Controls.Add(this.LblMaxPerc, 2, 2);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             // 
+            // BtnModulationInfo
+            // 
+            this.BtnModulationInfo.AltImage = null;
+            resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
+            this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnModulationInfo.Caption = null;
+            this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
+            this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
+            this.BtnModulationInfo.Name = "BtnModulationInfo";
+            this.tableLayoutPanel7.SetRowSpan(this.BtnModulationInfo, 2);
+            this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.TT.SetToolTip(this.BtnModulationInfo, resources.GetString("BtnModulationInfo.ToolTip"));
+            this.BtnModulationInfo.UseAltImage = false;
+            this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
+            // 
             // LblSmin
             // 
             resources.ApplyResources(this.LblSmin, "LblSmin");
             this.LblSmin.Name = "LblSmin";
             // 
+            // IIMinPower
+            // 
+            resources.ApplyResources(this.IIMinPower, "IIMinPower");
+            this.IIMinPower.ForcedText = null;
+            this.IIMinPower.ForceMinMax = false;
+            this.IIMinPower.MaxValue = 999;
+            this.IIMinPower.MinValue = 0;
+            this.IIMinPower.Name = "IIMinPower";
+            this.IIMinPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.IIMinPower.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMinPowerCurrentValueChanged);
+            // 
             // label18
             // 
             resources.ApplyResources(this.label18, "label18");
             this.label18.Name = "label18";
+            // 
+            // BtnOnOffInfo
+            // 
+            this.BtnOnOffInfo.AltImage = null;
+            resources.ApplyResources(this.BtnOnOffInfo, "BtnOnOffInfo");
+            this.BtnOnOffInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnOnOffInfo.Caption = null;
+            this.BtnOnOffInfo.Coloration = System.Drawing.Color.Empty;
+            this.BtnOnOffInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnOnOffInfo.Image")));
+            this.BtnOnOffInfo.Name = "BtnOnOffInfo";
+            this.BtnOnOffInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.TT.SetToolTip(this.BtnOnOffInfo, resources.GetString("BtnOnOffInfo.ToolTip"));
+            this.BtnOnOffInfo.UseAltImage = false;
+            this.BtnOnOffInfo.Click += new System.EventHandler(this.BtnOnOffInfo_Click);
             // 
             // CBLaserON
             // 
@@ -163,6 +229,18 @@ namespace LaserGRBL.SvgConverter
             // 
             resources.ApplyResources(this.LblSmax, "LblSmax");
             this.LblSmax.Name = "LblSmax";
+            // 
+            // IIMaxPower
+            // 
+            resources.ApplyResources(this.IIMaxPower, "IIMaxPower");
+            this.IIMaxPower.CurrentValue = 1000;
+            this.IIMaxPower.ForcedText = null;
+            this.IIMaxPower.ForceMinMax = false;
+            this.IIMaxPower.MaxValue = 1000;
+            this.IIMaxPower.MinValue = 1;
+            this.IIMaxPower.Name = "IIMaxPower";
+            this.IIMaxPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.IIMaxPower.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMaxPowerCurrentValueChanged);
             // 
             // LblMinPerc
             // 
@@ -200,84 +278,6 @@ namespace LaserGRBL.SvgConverter
             this.TT.AutoPopDelay = 10000;
             this.TT.InitialDelay = 500;
             this.TT.ReshowDelay = 100;
-            // 
-            // IIBorderTracing
-            // 
-            resources.ApplyResources(this.IIBorderTracing, "IIBorderTracing");
-            this.IIBorderTracing.CurrentValue = 1000;
-            this.IIBorderTracing.ForcedText = null;
-            this.IIBorderTracing.ForceMinMax = false;
-            this.IIBorderTracing.MaxValue = 4000;
-            this.IIBorderTracing.MinValue = 1;
-            this.IIBorderTracing.Name = "IIBorderTracing";
-            this.IIBorderTracing.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.IIBorderTracing.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIBorderTracingCurrentValueChanged);
-            // 
-            // BtnPSHelper
-            // 
-            this.BtnPSHelper.AltImage = null;
-            resources.ApplyResources(this.BtnPSHelper, "BtnPSHelper");
-            this.BtnPSHelper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BtnPSHelper.Caption = null;
-            this.BtnPSHelper.Coloration = System.Drawing.Color.Empty;
-            this.BtnPSHelper.Image = ((System.Drawing.Image)(resources.GetObject("BtnPSHelper.Image")));
-            this.BtnPSHelper.Name = "BtnPSHelper";
-            this.BtnPSHelper.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-            this.TT.SetToolTip(this.BtnPSHelper, resources.GetString("BtnPSHelper.ToolTip"));
-            this.BtnPSHelper.UseAltImage = false;
-            this.BtnPSHelper.Click += new System.EventHandler(this.BtnPSHelper_Click);
-            // 
-            // BtnModulationInfo
-            // 
-            this.BtnModulationInfo.AltImage = null;
-            resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
-            this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BtnModulationInfo.Caption = null;
-            this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
-            this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
-            this.BtnModulationInfo.Name = "BtnModulationInfo";
-            this.tableLayoutPanel7.SetRowSpan(this.BtnModulationInfo, 2);
-            this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-            this.TT.SetToolTip(this.BtnModulationInfo, resources.GetString("BtnModulationInfo.ToolTip"));
-            this.BtnModulationInfo.UseAltImage = false;
-            this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
-            // 
-            // IIMinPower
-            // 
-            resources.ApplyResources(this.IIMinPower, "IIMinPower");
-            this.IIMinPower.ForcedText = null;
-            this.IIMinPower.ForceMinMax = false;
-            this.IIMinPower.MaxValue = 999;
-            this.IIMinPower.MinValue = 0;
-            this.IIMinPower.Name = "IIMinPower";
-            this.IIMinPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.IIMinPower.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMinPowerCurrentValueChanged);
-            // 
-            // BtnOnOffInfo
-            // 
-            this.BtnOnOffInfo.AltImage = null;
-            resources.ApplyResources(this.BtnOnOffInfo, "BtnOnOffInfo");
-            this.BtnOnOffInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BtnOnOffInfo.Caption = null;
-            this.BtnOnOffInfo.Coloration = System.Drawing.Color.Empty;
-            this.BtnOnOffInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnOnOffInfo.Image")));
-            this.BtnOnOffInfo.Name = "BtnOnOffInfo";
-            this.BtnOnOffInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-            this.TT.SetToolTip(this.BtnOnOffInfo, resources.GetString("BtnOnOffInfo.ToolTip"));
-            this.BtnOnOffInfo.UseAltImage = false;
-            this.BtnOnOffInfo.Click += new System.EventHandler(this.BtnOnOffInfo_Click);
-            // 
-            // IIMaxPower
-            // 
-            resources.ApplyResources(this.IIMaxPower, "IIMaxPower");
-            this.IIMaxPower.CurrentValue = 1000;
-            this.IIMaxPower.ForcedText = null;
-            this.IIMaxPower.ForceMinMax = false;
-            this.IIMaxPower.MaxValue = 1000;
-            this.IIMaxPower.MinValue = 1;
-            this.IIMaxPower.Name = "IIMaxPower";
-            this.IIMaxPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.IIMaxPower.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMaxPowerCurrentValueChanged);
             // 
             // SvgToGCodeForm
             // 

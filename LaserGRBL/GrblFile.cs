@@ -147,6 +147,15 @@ namespace LaserGRBL
 			RiseOnFileLoaded(filename, elapsed);
 		}
 
+		private List<GrblCommand> gCodeListToGrblCommad(List<String> gCode)
+		{
+			List<GrblCommand> list = new List<GrblCommand>();
+			foreach (String cmd in gCode)
+				list.Add(new GrblCommand(cmd));
+			return list;
+		}
+
+
 
 		private abstract class ColorSegment
 		{
@@ -305,6 +314,17 @@ namespace LaserGRBL
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 			long start = Tools.HiResTimer.TotalMilliseconds;
 
+			GrblCore.SpindleConfig SpindleConfig = new GrblCore.SpindleConfig();
+			SpindleConfig.firmwareType = c.firmwareType;
+			SpindleConfig.dwelltime = c.dwelltime;
+			SpindleConfig.fanId = c.fanId;
+			SpindleConfig.lOff = c.lOff;
+			SpindleConfig.lOn = c.lOn;
+			SpindleConfig.pwm = c.pwm;
+			SpindleConfig.pwmMode = c.pwmMode;
+			core.configureSpindle(SpindleConfig);
+
+
 			if (!append)
 				list.Clear();
 
@@ -338,22 +358,10 @@ namespace LaserGRBL
 
 						using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size((int)(bmp.Width * c.fres / c.res) + 1, (int)(bmp.Height * c.fres / c.res) + 1), true, InterpolationMode.HighQualityBicubic))
 						{
-							if ((c.firmwareType == Firmware.Marlin) && (c.pwmMode == GrblCore.PwmMode.Fan))
-							{
-								list.Add(new GrblCommand(String.Format("G4 P0")));
-							}
 							if (c.pwm)
-								if (c.firmwareType == Firmware.Marlin)
-								{
-									if (c.pwmMode == GrblCore.PwmMode.Fan)
-										list.Add(new GrblCommand(String.Format("{0} S0 P{1}", c.lOn, c.fanId))); //laser on and power to zero
-									else
-										list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
-								}
-								else
-									list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
+								list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.ON, 0))); //laser on and power to zero
 							else
-								list.Add(new GrblCommand(String.Format($"{c.lOff} S{core.Configuration.MaxPWM}"))); //laser off and power to max power
+								list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(core.Configuration.MaxPWM)))); //laser off and power to max power
 
 							//set speed to markspeed
 							// For marlin, need to specify G1 each time :
@@ -361,10 +369,10 @@ namespace LaserGRBL
 							list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
 
 							c.vectorfilling = true;
-							ImageLine2Line(resampled, c);
+							ImageLine2Line(resampled, c, core);
 
 							//laser off
-							list.Add(new GrblCommand(c.lOff));
+							list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, 0))); //laser off and power to max power
 						}
 					}
 				}
@@ -372,69 +380,19 @@ namespace LaserGRBL
 
 			bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
-			if ((c.firmwareType == Firmware.Marlin) && (c.pwmMode == GrblCore.PwmMode.Fan))
-			{
-				list.Add(new GrblCommand(String.Format("G4 P0")));
-			}
 			if (supportPWM)
-			{
-				if (c.firmwareType == Firmware.Marlin)
-				{
-					if (c.pwmMode == GrblCore.PwmMode.Fan)
-						list.Add(new GrblCommand(String.Format("{0} S0 P{1}", c.lOn, c.fanId))); //laser on and power to zero
-					else
-						list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
-				}
-				else
-					list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
-			}
+				list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.ON, 0))); //laser on and power to zero
 			else
-				list.Add(new GrblCommand($"{c.lOff} S{core.Configuration.MaxPWM}"));   //laser off and power to maxPower
-
-			List<string> LaserOn = new List<string>();
-			List<string> LaserOff = new List<string>();
-			if ((c.firmwareType == Firmware.Marlin) && (c.pwmMode == GrblCore.PwmMode.Fan))
-			{
-				LaserOn.Add(String.Format("G4 P0"));
-				LaserOff.Add(String.Format("G4 P0"));
-			}
-			if (supportPWM)
-            {
-				if (c.firmwareType == Firmware.Marlin)
-				{
-					if (c.pwmMode == GrblCore.PwmMode.Fan)
-					{
-						LaserOn.Add(String.Format("{0} S{1} P{2}", c.lOn, c.maxPower, c.fanId));
-						LaserOff.Add(String.Format("{0} S0 P{1}", c.lOn, c.fanId));
-					}
-					else
-					{
-						LaserOn.Add(String.Format("{0} S{1}", c.lOn, c.maxPower));
-						LaserOff.Add(String.Format("{0} S0", c.lOn));
-					}
-				}
-				else
-				{
-					LaserOn.Add(String.Format("{0} S{1}", c.lOn, c.maxPower));
-					LaserOff.Add(String.Format("{0} S0", c.lOn));
-				}
-			}
-            else
-            {
-				LaserOn.Add(c.lOn);
-				LaserOff.Add(c.lOff);
-			}
-
-			if ((c.firmwareType == Firmware.Marlin) && (c.pwmMode == GrblCore.PwmMode.Fan))
-			{
-				LaserOn.Add(String.Format("G4 P{0}", c.dwelltime));
-			}
+				list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(core.Configuration.MaxPWM)))); //laser off and power to max power
 
 			//trace raster filling
 			if (flist != null)
 			{
 				List<string> gc = new List<string>();
-				gc.AddRange(Potrace.Export2GCode(flist, c.oX, c.oY, c.res, LaserOn, LaserOff, bmp.Size, skipcmd));
+				if (supportPWM)
+					gc.AddRange(Potrace.Export2GCode(flist, c.oX, c.oY, c.res, core.getSpindleGcode(GrblCore.SpindleState.ON, c.maxPower), core.getSpindleGcode(GrblCore.SpindleState.ON, 0), bmp.Size, skipcmd));
+				else
+					gc.AddRange(Potrace.Export2GCode(flist, c.oX, c.oY, c.res, core.getSpindleGcode(GrblCore.SpindleState.ON, c.maxPower), core.getSpindleGcode(GrblCore.SpindleState.OFF, 0), bmp.Size, skipcmd));
 
 				list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
 				foreach (string code in gc)
@@ -452,7 +410,10 @@ namespace LaserGRBL
 					plist.Reverse(); //la lista viene fornita da potrace con prima esterni e poi interni, ma per il taglio è meglio il contrario
 
 				List<string> gc = new List<string>();
-				gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, LaserOn, LaserOff, bmp.Size, skipcmd));
+				if (supportPWM)
+					gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, core.getSpindleGcode(GrblCore.SpindleState.ON, c.maxPower), core.getSpindleGcode(GrblCore.SpindleState.ON, 0), bmp.Size, skipcmd));
+				else
+					gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, core.getSpindleGcode(GrblCore.SpindleState.ON, c.maxPower), core.getSpindleGcode(GrblCore.SpindleState.OFF, 0), bmp.Size, skipcmd));
 
 				// For marlin, need to specify G1 each time :
 				//list.Add(new GrblCommand(String.Format("G1 F{0}", c.borderSpeed)));
@@ -528,6 +489,16 @@ namespace LaserGRBL
 			if (!append)
 				list.Clear();
 
+			GrblCore.SpindleConfig SpindleConfig = new GrblCore.SpindleConfig();
+			SpindleConfig.firmwareType = c.firmwareType;
+			SpindleConfig.dwelltime = c.dwelltime;
+			SpindleConfig.fanId = c.fanId;
+			SpindleConfig.lOff = c.lOff;
+			SpindleConfig.lOn = c.lOn;
+			SpindleConfig.pwm = c.pwm;
+			SpindleConfig.pwmMode = c.pwmMode;
+			core.configureSpindle(SpindleConfig);
+
 			mRange.ResetRange();
 
 			//absolute
@@ -535,39 +506,19 @@ namespace LaserGRBL
 
 			//move fast to offset (or slow if disable G0) and set mark speed
 			list.Add(new GrblCommand(String.Format("{0} X{1} Y{2} F{3}", skipcmd, formatnumber(c.oX), formatnumber(c.oY), c.markSpeed)));
-			if ((c.firmwareType == Firmware.Marlin) && (c.pwmMode == GrblCore.PwmMode.Fan))
-			{
-				list.Add(new GrblCommand(String.Format("G4 P0")));
-			}
 			if (c.pwm)
-            {
-				if (c.firmwareType == Firmware.Marlin)
-				{
-					if (c.pwmMode == GrblCore.PwmMode.Fan)
-						list.Add(new GrblCommand(String.Format("{0} S0 P{1}", c.lOn, c.fanId))); //laser on and power to zero
-					else
-						list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
-				}
-				else
-				{
-					list.Add(new GrblCommand("S0"));
-				}
-			}
+				list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.ON, 0))); //laser on and power to zero
 			else
-				list.Add(new GrblCommand($"{c.lOff} S{core.Configuration.MaxPWM}")); //laser off and power to maxpower
+				list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(core.Configuration.MaxPWM)))); //laser off and power to maxpower
 			//set speed to markspeed						
 			// For marlin, need to specify G1 each time :
 			//list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
 			//list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed))); //replaced by the first move to offset and set speed
 
-			ImageLine2Line(bmp, c);
+			ImageLine2Line(bmp, c, core);
 
 			//laser off
-			if ((c.firmwareType == Firmware.Marlin) && (c.pwmMode == GrblCore.PwmMode.Fan))
-			{
-				list.Add(new GrblCommand(String.Format("G4 P0")));
-			}
-			list.Add(new GrblCommand(c.lOff));
+			list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(core.Configuration.MaxPWM))));
 
 			//move fast to origin
 			//list.Add(new GrblCommand("G0 X0 Y0")); //moved to custom footer
@@ -580,7 +531,7 @@ namespace LaserGRBL
 
 		// For Marlin, as we sen M106 command, we need to know last color send
 		//private int lastColorSend = 0;
-		private void ImageLine2Line(Bitmap bmp, L2LConf c)
+		private void ImageLine2Line(Bitmap bmp, L2LConf c, GrblCore core)
 		{
 			bool fast = true;
 			List<ColorSegment> segments = GetSegments(bmp, c);
@@ -595,62 +546,38 @@ namespace LaserGRBL
 
 				if (seg.IsSeparator && !fast) //fast = previous segment contains S0 color
 				{
-					if ((c.firmwareType == Firmware.Marlin) && (c.pwmMode == GrblCore.PwmMode.Fan))
-					{
-						temp.Add(new GrblCommand(String.Format("G4 P0")));
-					}
 					if (c.pwm)
 					{
-						if (c.firmwareType == Firmware.Marlin)
-						{
-							if(c.pwmMode == GrblCore.PwmMode.Fan)
-								temp.Add(new GrblCommand(String.Format("{0} S0 P{1}", c.lOn, c.fanId))); //laser on and power to zero
-							else
-								temp.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
-						}
-						else
-                        {
-							temp.Add(new GrblCommand("S0"));
-                        }
+						temp.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.ON, 0)));
 					}
 					else
-					{ 
-						temp.Add(new GrblCommand(c.lOff)); //laser off
+					{
+						temp.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(core.Configuration.MaxPWM)))); //laser off
 					}
 				}
 
 				fast = seg.Fast(c);
 
-                // For marlin firmware, we must defined laser power before moving (unsing M106 or M107)
-                // So we have to speficy gcode (G0 or G1) each time....
-                if (c.firmwareType == Firmware.Marlin)
-                {
+				// For marlin firmware, we must defined laser power before moving (unsing M106 or M107)
+				// So we have to speficy gcode (G0 or G1) each time....
+				if (c.firmwareType == Firmware.Marlin)
+				{
 					// Add M106 only if color has changed
 					if (lastColorSend != seg.mColor)
 					{
-						if (c.pwmMode == GrblCore.PwmMode.Fan)
-						{
-							temp.Add(new GrblCommand(String.Format("G4 P0")));
-							temp.Add(new GrblCommand(String.Format("{0} S{1} P{2}", c.lOn, fast ? 0 : seg.mColor, c.fanId)));
-							temp.Add(new GrblCommand(String.Format("G4 P{0}", c.dwelltime)));
-						}
-                        else 
-						{
-							temp.Add(new GrblCommand(String.Format("{0} S{1}", c.lOn, fast ? 0 : seg.mColor)));
-						}
+						temp.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.ON, fast ? 0 : seg.mColor)));
 						lastColorSend = seg.mColor;
-						
 					}
-                    temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? "G0" : "G1", seg.ToGCodeNumber(ref cumX, ref cumY, c))));
-                }
-                else
-                {
-                    if (changeGMode)
+					temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? "G0" : "G1", seg.ToGCodeNumber(ref cumX, ref cumY, c))));
+				}
+				else
+				{
+					if (changeGMode)
 						temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? skipcmd : "G1", seg.ToGCodeNumber(ref cumX, ref cumY, c))));
 					else
 						temp.Add(new GrblCommand(seg.ToGCodeNumber(ref cumX, ref cumY, c)));
-                }
-            }
+				}
+			}
 
 			temp = OptimizeLine2Line(temp, c);
 			list.AddRange(temp);

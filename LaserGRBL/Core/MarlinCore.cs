@@ -71,6 +71,29 @@ namespace LaserGRBL
             EnqueueCommand(new GrblCommand("G28"));
         }
 
+        public override List<String> getSpindleGcode(SpindleState state, int power)
+        {
+            List<string> LaserCmd = new List<string>();
+            if (mSpindleConfig.pwmMode == GrblCore.PwmMode.Fan)
+            {
+                LaserCmd.Add(String.Format("G4 P0"));
+                if(state == SpindleState.ON)
+                    LaserCmd.Add(String.Format("{0} S{1} P{2}", mSpindleConfig.lOn , power, mSpindleConfig.fanId)); //laser on and power to zero
+                else
+                    LaserCmd.Add(String.Format("{0} P{2}", mSpindleConfig.lOff, mSpindleConfig.fanId)); //laser on and power to zero
+                if (state == SpindleState.ON && power > 0)
+                    LaserCmd.Add(String.Format("G4 P{0}", mSpindleConfig.dwelltime));
+            }
+            else
+            {
+                if (state == SpindleState.ON)
+                    LaserCmd.Add(String.Format("{0} S{1}", mSpindleConfig.lOn , power));
+                else
+                    LaserCmd.Add(String.Format("{0}", mSpindleConfig.lOn));
+            }
+            return LaserCmd;
+        }
+
         internal override void GrblHoming()
         { if (CanDoHoming) EnqueueCommand(new GrblCommand("G28")); }
 
