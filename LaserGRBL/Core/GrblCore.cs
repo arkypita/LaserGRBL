@@ -431,6 +431,8 @@ namespace LaserGRBL
 						SoundEvent.PlaySound(SoundEvent.EventId.Connect);
 					if (newStatus == MacStatus.Disconnected)
 						SoundEvent.PlaySound(SoundEvent.EventId.Disconnect);
+					if (mHoldByUserRequest && newStatus != MacStatus.Hold && newStatus != MacStatus.Cooling && (oldStatus == MacStatus.Hold || oldStatus == MacStatus.Cooling))
+						mHoldByUserRequest = false; //se sto uscendo da uno stato di hold per qualsiasi motivo (tipo un reset o altro) mi tolgo l'userHold
 
 					RiseMachineStatusChanged();
 
