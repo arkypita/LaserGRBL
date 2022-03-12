@@ -80,7 +80,7 @@ namespace LaserGRBL
                 if(state == SpindleState.ON)
                     LaserCmd.Add(String.Format("{0} S{1} P{2}", mSpindleConfig.lOn , power, mSpindleConfig.fanId)); //laser on and power to zero
                 else
-                    LaserCmd.Add(String.Format("{0} P{2}", mSpindleConfig.lOff, mSpindleConfig.fanId)); //laser on and power to zero
+                    LaserCmd.Add(String.Format("{0} P{1}", mSpindleConfig.lOff, mSpindleConfig.fanId)); //laser on and power to zero
                 if (state == SpindleState.ON && power > 0)
                     LaserCmd.Add(String.Format("G4 P{0}", mSpindleConfig.dwelltime));
             }
