@@ -538,7 +538,7 @@ namespace LaserGRBL
 
 		void RiseOnFileLoading(long elapsed, string filename)
 		{
-			mTP.Reset();
+			mTP.Reset(true);
 
 			if (OnFileLoaded != null)
 				OnFileLoading(elapsed, filename);
@@ -546,7 +546,7 @@ namespace LaserGRBL
 
 		void RiseOnFileLoaded(long elapsed, string filename)
 		{
-			mTP.Reset();
+			mTP.Reset(true);
 
 			if (OnFileLoaded != null)
 				OnFileLoaded(elapsed, filename);
@@ -979,7 +979,7 @@ namespace LaserGRBL
 					Logger.LogMessage("ManualAbort", "Program aborted by user action!");
 
 					SetIssue(DetectedIssue.ManualAbort);
-					mTP.JobEnd();
+					mTP.JobEnd(true);
 
 					lock (this)
 					{
@@ -1024,7 +1024,7 @@ namespace LaserGRBL
 			{
 				ClearQueue(true);
 
-				mTP.Reset();
+				mTP.Reset(first);
 
 				if (homing)
 				{
@@ -1043,7 +1043,7 @@ namespace LaserGRBL
 				foreach (GrblCommand cmd in file)
 					mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
 
-				mTP.JobStart(LoadedFile, mQueuePtr);
+				mTP.JobStart(LoadedFile, mQueuePtr, first);
 				Logger.LogMessage("EnqueueProgram", "Running program, {0} lines", file.Count);
 			}
 		}
@@ -1181,7 +1181,7 @@ namespace LaserGRBL
 					com.Close(!user);
 
 				mUsedBuffer = 0;
-				mTP.JobEnd();
+				mTP.JobEnd(true);
 
 				TX.Stop();
 				RX.Stop();
@@ -1243,7 +1243,7 @@ namespace LaserGRBL
 			{
 				ClearQueue(true);
 				mUsedBuffer = 0;
-				mTP.JobEnd();
+				mTP.JobEnd(true);
 				mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
 				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
 
@@ -1285,6 +1285,9 @@ namespace LaserGRBL
 
 		public TimeSpan ProgramTime
 		{ get { return mTP.TotalJobTime; } }
+
+		public TimeSpan ProgramGlobalTime
+		{ get { return mTP.TotalGlobalJobTime; } }
 
 		public TimeSpan ProjectedTime
 		{ get { return mTP.ProjectedTarget; } }
@@ -1912,7 +1915,7 @@ namespace LaserGRBL
 			{
 				ClearQueue(false);
 				mUsedBuffer = 0;
-				mTP.JobEnd();
+				mTP.JobEnd(true);
 				mCurOvLinear = mCurOvRapids = mCurOvPower = 100;
 				mTarOvLinear = mTarOvRapids = mTarOvPower = 100;
 			}
@@ -2274,23 +2277,23 @@ namespace LaserGRBL
 
 		private void OnProgramEnd()
 		{
-			if (mTP.JobEnd() && mLoopCount > 1 && mMachineStatus != MacStatus.Check)
+			if (mTP.JobEnd(mLoopCount == 1) && mLoopCount > 1 && mMachineStatus != MacStatus.Check)
 			{
-				Logger.LogMessage("CycleEnd", "Cycle Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true));
-				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)), false));
+				Logger.LogMessage("CycleEnd", "Cycle Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true));
+				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)), false));
 
 				LoopCount--;
 				RunProgramFromStart(false, false, true);
 			}
 			else
 			{
-				Logger.LogMessage("ProgramEnd", "Job Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true));
-				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)), false));
+				Logger.LogMessage("ProgramEnd", "Job Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true));
+				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)), false));
 
 				OnJobEnd();
 
 				SoundEvent.PlaySound(SoundEvent.EventId.Success);
-				Telegram.NotifyEvent(String.Format("<b>Job Executed</b>\n{0} lines, {1} errors\nTime: {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(mTP.TotalJobTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)));
+				Telegram.NotifyEvent(String.Format("<b>Job Executed</b>\n{0} lines, {1} errors\nTime: {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramGlobalTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)));
 
 				ForceStatusIdle();
 			}
@@ -2377,7 +2380,7 @@ namespace LaserGRBL
 		private void ManageCoolingCycles()
 		{
 			if (AutoCooling && InProgram && !mHoldByUserRequest)
-				NowCooling = ((ProgramTime.Ticks % (AutoCoolingOn + AutoCoolingOff).Ticks) > AutoCoolingOn.Ticks);
+				NowCooling = (ProgramGlobalTime.Ticks % (AutoCoolingOn + AutoCoolingOff).Ticks) > AutoCoolingOn.Ticks;
 		}
 
 		protected bool mHoldByUserRequest = false;
@@ -2680,8 +2683,11 @@ namespace LaserGRBL
 		private TimeSpan mETarget;
 		private TimeSpan mEProgress;
 
+		
 		private long mStart;        //Start Time
 		private long mEnd;          //End Time
+		private long mGlobalStart;  //Global Start (multiple pass)
+		private long mGlobalEnd;	//Global End (multiple pass)
 		private long mPauseBegin;   //Pause begin Time
 		private long mCumulatedPause;
 
@@ -2705,14 +2711,14 @@ namespace LaserGRBL
 		}
 
 		public TimeProjection()
-		{ Reset(); }
+		{ Reset(true); }
 
-		public void Reset()
+		public void Reset(bool global)
 		{
 			mETarget = TimeSpan.Zero;
 			mEProgress = TimeSpan.Zero;
-			mStart = 0;
-			mEnd = 0;
+			mStart = mEnd = 0;
+			if (global) mGlobalStart = mGlobalEnd = 0;
 			mPauseBegin = 0;
 			mCumulatedPause = 0;
 			mInPause = false;
@@ -2778,6 +2784,19 @@ namespace LaserGRBL
 			}
 		}
 
+		public TimeSpan TotalGlobalJobTime
+		{
+			get
+			{
+				if (mCompleted)
+					return TimeSpan.FromMilliseconds(mGlobalEnd - mGlobalStart);
+				else if (mStarted)
+					return TimeSpan.FromMilliseconds(now - mGlobalStart);
+				else
+					return TimeSpan.Zero;
+			}
+		}
+
 		private TimeSpan TotalJobPauses
 		{
 			get
@@ -2789,7 +2808,7 @@ namespace LaserGRBL
 			}
 		}
 
-		public void JobStart(GrblFile file, Queue<GrblCommand> mQueuePtr)
+		public void JobStart(GrblFile file, Queue<GrblCommand> mQueuePtr, bool global)
 		{
 			if (!mStarted)
 			{
@@ -2797,6 +2816,7 @@ namespace LaserGRBL
 				mTargetCount = mQueuePtr.Count;
 				mEProgress = TimeSpan.Zero;
 				mStart = Tools.HiResTimer.TotalMilliseconds;
+				if (global) mGlobalStart = mStart;
 				mPauseBegin = 0;
 				mInPause = false;
 				mCompleted = false;
@@ -2817,7 +2837,8 @@ namespace LaserGRBL
 				if (mETarget == TimeSpan.Zero) mETarget = file.EstimatedTime;
 				if (mTargetCount == 0) mTargetCount = file.Count;
 				//mEProgress = TimeSpan.Zero;
-				if (mStart == 0) mStart = Tools.HiResTimer.TotalMilliseconds;
+				if (mStart == 0)
+					mGlobalStart = mStart = Tools.HiResTimer.TotalMilliseconds;
 
 				mPauseBegin = 0;
 				mInPause = false;
@@ -2873,12 +2894,13 @@ namespace LaserGRBL
 			}
 		}
 
-		public bool JobEnd()
+		public bool JobEnd(bool global)
 		{
 			if (mStarted && !mCompleted)
 			{
 				JobResume(); //nel caso l'ultimo comando fosse una pausa, la chiudo e la cumulo
 				mEnd = Tools.HiResTimer.TotalMilliseconds;
+				if (global) mGlobalEnd = mEnd;
 				mCompleted = true;
 				mStarted = false;
 				return true;
