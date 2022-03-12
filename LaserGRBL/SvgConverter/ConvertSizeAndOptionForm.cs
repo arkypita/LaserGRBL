@@ -19,7 +19,7 @@ namespace LaserGRBL.SvgConverter
 		GrblCore mCore;
 		bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
-		public ComboboxItem[] LaserOptions = new ComboboxItem[] { new ComboboxItem("M3 - Constant Power", "M3"), new ComboboxItem("M4 - Dynamic Power", "M4"), new ComboboxItem("M106 - Dynamic Power", "M106") };
+		public ComboboxItem[] LaserOptions = new ComboboxItem[] { new ComboboxItem("M3 - Constant Power", "M3"), new ComboboxItem("M4 - Dynamic Power", "M4"), new ComboboxItem("M106 - Fan Constant Power", "M106") };
 		public class ComboboxItem
 		{
 			public string Text { get; set; }
@@ -44,7 +44,16 @@ namespace LaserGRBL.SvgConverter
                     Settings.SetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", f.IIBorderTracing.CurrentValue);
                     Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", f.IIMaxPower.CurrentValue);
 					Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", f.IIMinPower.CurrentValue);
-					Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", (f.CBLaserON.SelectedItem as ComboboxItem).Value);
+					if ((f.CBLaserON.SelectedItem as ComboboxItem).Value == "M106")
+					{
+						Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", (f.CBLaserON.SelectedItem as ComboboxItem).Value);
+						Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M107");
+					}
+                    else 
+					{
+						Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", (f.CBLaserON.SelectedItem as ComboboxItem).Value);
+						Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
+					}
 
 					core.LoadedFile.LoadImportedSVG(filename, append, core);
                 }
@@ -62,14 +71,13 @@ namespace LaserGRBL.SvgConverter
 
 			LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
 			AssignMinMaxLimit();
-
-			CBLaserON.Items.Add(LaserOptions[0]);
 			if (Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin && Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle) == GrblCore.PwmMode.Fan)
 			{
 				CBLaserON.Items.Add(LaserOptions[2]);
 			}
 			else
 			{
+				CBLaserON.Items.Add(LaserOptions[0]);
 				CBLaserON.Items.Add(LaserOptions[1]);
 			}
 		}
@@ -85,15 +93,13 @@ namespace LaserGRBL.SvgConverter
 			IIBorderTracing.CurrentValue = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
 
 			string LaserOn = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
-
-			if (LaserOn == "M3" || !mCore.Configuration.LaserMode)
+			if (Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin && Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle) == GrblCore.PwmMode.Fan)
+				CBLaserON.SelectedItem = LaserOptions[2];
+			else if (LaserOn == "M3" || !mCore.Configuration.LaserMode)
 				CBLaserON.SelectedItem = LaserOptions[0];
 			else
 			{
-				if (Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin && Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle) == GrblCore.PwmMode.Fan)
-					CBLaserON.SelectedItem = LaserOptions[2];
-				else
-					CBLaserON.SelectedItem = LaserOptions[1];
+				CBLaserON.SelectedItem = LaserOptions[1];
 			}
 
 			IIMinPower.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
