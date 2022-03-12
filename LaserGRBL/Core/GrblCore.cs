@@ -2293,7 +2293,9 @@ namespace LaserGRBL
 				OnJobEnd();
 
 				SoundEvent.PlaySound(SoundEvent.EventId.Success);
-				Telegram.NotifyEvent(String.Format("<b>Job Executed</b>\n{0} lines, {1} errors\nTime: {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramGlobalTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)));
+
+				if (ProgramGlobalTime.TotalMinutes >= (int)Settings.GetObject("TelegramNotification.Threshold", 1))
+					Telegram.NotifyEvent(String.Format("<b>Job Executed</b>\n{0} lines, {1} errors\nTime: {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramGlobalTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)));
 
 				ForceStatusIdle();
 			}

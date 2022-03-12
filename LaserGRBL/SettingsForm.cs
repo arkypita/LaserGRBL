@@ -72,6 +72,7 @@ namespace LaserGRBL
 
 			CbTelegramNotification.Checked = Settings.GetObject("TelegramNotification.Enabled", false);
 			TxtNotification.Text = Tools.Protector.Decrypt(Settings.GetObject("TelegramNotification.Code", ""));
+			UdTelegramNotificationThreshold.Value = (decimal)Settings.GetObject("TelegramNotification.Threshold", 1);
 
 			successSoundLabel.Text = System.IO.Path.GetFileName(Settings.GetObject($"Sound.{SoundEvent.EventId.Success}", $"Sound\\{SoundEvent.EventId.Success}.wav"));
             SuccesFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Success}", $"Sound\\{SoundEvent.EventId.Success}.wav");
@@ -208,6 +209,7 @@ namespace LaserGRBL
             Settings.SetObject($"Sound.{SoundEvent.EventId.Disconnect}.Enabled", CbPlayDisconnect.Checked);
 
 			Settings.SetObject("TelegramNotification.Enabled", CbTelegramNotification.Checked);
+			Settings.SetObject("TelegramNotification.Threshold", (int)UdTelegramNotificationThreshold.Value);
 			Settings.SetObject("TelegramNotification.Code", Tools.Protector.Encrypt(TxtNotification.Text));
 
             Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);

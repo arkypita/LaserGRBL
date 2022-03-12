@@ -164,6 +164,10 @@
 			this.BtnTestNotification = new System.Windows.Forms.Button();
 			this.label42 = new System.Windows.Forms.Label();
 			this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
+			this.label44 = new System.Windows.Forms.Label();
+			this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+			this.UdTelegramNotificationThreshold = new System.Windows.Forms.NumericUpDown();
+			this.label45 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.MainTabPage.SuspendLayout();
@@ -194,6 +198,8 @@
 			this.tableLayoutPanel15.SuspendLayout();
 			this.tableLayoutPanel13.SuspendLayout();
 			this.tableLayoutPanel17.SuspendLayout();
+			this.tableLayoutPanel19.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.UdTelegramNotificationThreshold)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -1075,11 +1081,13 @@
 			// tableLayoutPanel17
 			// 
 			resources.ApplyResources(this.tableLayoutPanel17, "tableLayoutPanel17");
+			this.tableLayoutPanel17.Controls.Add(this.label44, 0, 2);
 			this.tableLayoutPanel17.Controls.Add(this.BtnTelegNoteInfo, 2, 0);
 			this.tableLayoutPanel17.Controls.Add(this.label31, 0, 0);
 			this.tableLayoutPanel17.Controls.Add(this.label33, 0, 1);
 			this.tableLayoutPanel17.Controls.Add(this.TxtNotification, 1, 1);
 			this.tableLayoutPanel17.Controls.Add(this.BtnTestNotification, 2, 1);
+			this.tableLayoutPanel17.Controls.Add(this.tableLayoutPanel19, 2, 2);
 			this.tableLayoutPanel17.Name = "tableLayoutPanel17";
 			// 
 			// BtnTelegNoteInfo
@@ -1128,6 +1136,34 @@
 			// SoundBrowserDialog
 			// 
 			resources.ApplyResources(this.SoundBrowserDialog, "SoundBrowserDialog");
+			// 
+			// label44
+			// 
+			resources.ApplyResources(this.label44, "label44");
+			this.tableLayoutPanel17.SetColumnSpan(this.label44, 2);
+			this.label44.Name = "label44";
+			// 
+			// tableLayoutPanel19
+			// 
+			resources.ApplyResources(this.tableLayoutPanel19, "tableLayoutPanel19");
+			this.tableLayoutPanel19.Controls.Add(this.UdTelegramNotificationThreshold, 0, 0);
+			this.tableLayoutPanel19.Controls.Add(this.label45, 1, 0);
+			this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+			// 
+			// UdNotifyThreshold
+			// 
+			resources.ApplyResources(this.UdTelegramNotificationThreshold, "UdNotifyThreshold");
+			this.UdTelegramNotificationThreshold.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+			this.UdTelegramNotificationThreshold.Name = "UdNotifyThreshold";
+			// 
+			// label45
+			// 
+			resources.ApplyResources(this.label45, "label45");
+			this.label45.Name = "label45";
 			// 
 			// SettingsForm
 			// 
@@ -1194,6 +1230,9 @@
 			this.tableLayoutPanel13.PerformLayout();
 			this.tableLayoutPanel17.ResumeLayout(false);
 			this.tableLayoutPanel17.PerformLayout();
+			this.tableLayoutPanel19.ResumeLayout(false);
+			this.tableLayoutPanel19.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.UdTelegramNotificationThreshold)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1336,5 +1375,9 @@
 		private System.Windows.Forms.Label label43;
 		private System.Windows.Forms.CheckBox CbSmartBezier;
 		private UserControls.ImageButton imageButton1;
+		private System.Windows.Forms.Label label44;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
+		private System.Windows.Forms.NumericUpDown UdTelegramNotificationThreshold;
+		private System.Windows.Forms.Label label45;
 	}
 }
