@@ -1823,7 +1823,7 @@
   <Materials>
     <id>37160f9c-943a-4d09-b824-cfc002d868d7</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Basswood</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
@@ -1834,7 +1834,7 @@
   <Materials>
     <id>38f8a352-220c-4df0-8460-0e0d52b0b03a</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Hardwood</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
@@ -1845,7 +1845,7 @@
   <Materials>
     <id>de58921f-8aed-473b-847e-e62b9b82081f</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Bamboo</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
@@ -1856,7 +1856,7 @@
   <Materials>
     <id>49b9ff5c-cbd6-4219-a546-d0910337f5b0</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Acrylic</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
@@ -1867,7 +1867,7 @@
   <Materials>
     <id>43650bf8-1e5f-4c87-b87d-1726f82993c3</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Kraft Paper</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
@@ -1878,7 +1878,7 @@
   <Materials>
     <id>c2996a24-04cf-4faa-a725-aad114790e8b</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Mirrors</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
@@ -1889,7 +1889,7 @@
   <Materials>
     <id>9179afa5-b778-4a1b-9887-25062f6478a1</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Leather</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
@@ -1900,7 +1900,7 @@
   <Materials>
     <id>e5f198f9-d287-4040-b46a-2f8f91602cc0</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Ceramics</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
@@ -1912,7 +1912,7 @@
   <Materials>
     <id>ae00b641-8021-4d97-9e29-0529c5e7fdf1</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Glass</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
@@ -1924,7 +1924,7 @@
   <Materials>
     <id>14ef7f36-7b55-418a-9814-039e14157dd6</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Denim</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
@@ -1935,7 +1935,7 @@
   <Materials>
     <id>447bfbcd-986c-43a5-bba9-1288f10b6343</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Stainless Steel</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
@@ -1947,7 +1947,7 @@
   <Materials>
     <id>041c0454-8e51-413f-99c5-46557200c4d6</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Basswood</Material>
     <Thickness>2.5mm</Thickness>
     <Action>Cut</Action>
@@ -1958,7 +1958,7 @@
   <Materials>
     <id>2a3ce845-c598-4df3-bc38-0dbe864b0c23</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Hardwood</Material>
     <Thickness>5.5mm</Thickness>
     <Action>Cut</Action>
@@ -1969,7 +1969,7 @@
   <Materials>
     <id>3f47f3b0-114b-4757-b5a7-87553f277126</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Bamboo</Material>
     <Thickness>1.5mm</Thickness>
     <Action>Cut</Action>
@@ -1980,7 +1980,7 @@
   <Materials>
     <id>bf6e362d-c1de-413e-9126-795dcbaadc87</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Acrylic</Material>
     <Thickness>2.8mm</Thickness>
     <Action>Cut</Action>
@@ -1991,12 +1991,128 @@
   <Materials>
     <id>5e03f4db-c5f2-4199-ad6e-a5f419cbb599</id>
     <Visible>true</Visible>
-    <Model>Atomstack M50 10W</Model>
+    <Model>Atomstack M50 10W (A10/S10/X7)</Model>
     <Material>Kraft Paper</Material>
     <Thickness>0.2mm</Thickness>
     <Action>Cut</Action>
     <Power>100</Power>
     <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>b237a8c3-cf51-4a48-907d-6d036f42d39a</id>
+    <Visible>true</Visible>
+    <Model>SculpFun S9</Model>
+    <Material>Solid Wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>539df328-4cc1-4c06-b9a2-b36457d78444</id>
+    <Visible>true</Visible>
+    <Model>SculpFun S9</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>6d1d4b36-b1c3-46bf-955d-b2dd8ef1d633</id>
+    <Visible>true</Visible>
+    <Model>SculpFun S9</Model>
+    <Material>Mirrors (back)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>On the back of mirrors</Remarks>
+  </Materials>
+  <Materials>
+    <id>4d42b0ee-b480-4250-9a14-78558679bdd6</id>
+    <Visible>true</Visible>
+    <Model>SculpFun S9</Model>
+    <Material>Kraft Paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+  </Materials>
+  <Materials>
+    <id>85d643c8-a4ab-4f71-bb79-c72c0adeefa7</id>
+    <Visible>true</Visible>
+    <Model>SculpFun S9</Model>
+    <Material>Anodised Aluminium</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>900</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Preferably dark color</Remarks>
+  </Materials>
+  <Materials>
+    <id>9aa2565c-a6df-4cfe-a10d-f40ee3451634</id>
+    <Visible>true</Visible>
+    <Model>SculpFun S9</Model>
+    <Material>Acrilyc (dark)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Preferably dark color</Remarks>
+  </Materials>
+  <Materials>
+    <id>d5060d33-eb20-4ebc-b5c2-10bb995a9ad3</id>
+    <Visible>true</Visible>
+    <Model>SculpFun S9</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Preferably dark color</Remarks>
+  </Materials>
+  <Materials>
+    <id>280a8bd7-7d89-4558-b90f-17f75986d55a</id>
+    <Visible>true</Visible>
+    <Model>SculpFun S9</Model>
+    <Material>Solid Wood</Material>
+    <Thickness>3.0mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>900</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>Reference value, adjust according to the actual engraving situation</Remarks>
+  </Materials>
+  <Materials>
+    <id>0bbefeca-3942-4e2a-8efa-8bf228d187cc</id>
+    <Visible>true</Visible>
+    <Model>SculpFun S9</Model>
+    <Material>Acrylic</Material>
+    <Thickness>2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>Reference value, adjust according to the actual engraving situation</Remarks>
+  </Materials>
+  <Materials>
+    <id>09ceb759-ecc2-4f10-912a-b1f6989a3102</id>
+    <Visible>true</Visible>
+    <Model>SculpFun S9</Model>
+    <Material>Kraft Paper</Material>
+    <Thickness>0.2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>50</Power>
+    <Speed>1500</Speed>
     <Cycles>1</Cycles>
   </Materials>
 </MaterialDB>
