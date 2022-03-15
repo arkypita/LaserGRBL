@@ -116,7 +116,27 @@ namespace LaserGRBL
             }
         }
 
-		protected override void ManageReceivedLine(string rline)
+        public override void FeedHold(bool auto)
+        {
+            if (CanFeedHold)
+            {
+                mHoldByUserRequest = !auto;
+                GrblCommand stop = null;
+                if (Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin && Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle) == GrblCore.PwmMode.Fan)
+                {
+                    stop = new GrblCommand("M107");
+                }
+                else
+                {
+                    stop = new GrblCommand("M5");
+                }
+                mQueue.Clear(); //flush the queue of item to send
+                mQueue.Enqueue(stop); //shut down laser
+                mQueue.Enqueue(new GrblCommand("M112"));
+            }
+        }
+
+        protected override void ManageReceivedLine(string rline)
 		{
 			if (IsMarlinRealTimeStatusMessage(rline))
 				ManageMarlinRealTimeStatus(rline);

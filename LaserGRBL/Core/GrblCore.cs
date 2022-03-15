@@ -279,7 +279,7 @@ namespace LaserGRBL
 		private System.Windows.Forms.Control syncro;
 		protected ComWrapper.IComWrapper com;
 		private GrblFile file;
-		private System.Collections.Generic.Queue<GrblCommand> mQueue; //vera coda di quelli da mandare
+		protected System.Collections.Generic.Queue<GrblCommand> mQueue; //vera coda di quelli da mandare
 		private GrblCommand mRetryQueue; //coda[1] di quelli in attesa di risposta
 		private System.Collections.Generic.Queue<GrblCommand> mPending; //coda di quelli in attesa di risposta
 		private System.Collections.Generic.List<IGrblRow> mSent; //lista di quelli mandati
@@ -1242,7 +1242,7 @@ namespace LaserGRBL
 			}
 		}
 
-		public void FeedHold(bool auto)
+		public virtual  void FeedHold(bool auto)
 		{
 			if (CanFeedHold)
 			{
