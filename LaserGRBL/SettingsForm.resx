@@ -196,7 +196,7 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 381</value>
+    <value>3, 400</value>
   </data>
   <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -846,7 +846,7 @@ If disabled all the issues are silently managed without warning.</value>
     <value>8</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 340</value>
+    <value>886, 359</value>
   </data>
   <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -873,7 +873,7 @@ If disabled all the issues are silently managed without warning.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpHardware.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="TpHardware.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1287,7 +1287,7 @@ Set this flag if you don't whant this safety control.</value>
     <value>5</value>
   </data>
   <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 340</value>
+    <value>886, 359</value>
   </data>
   <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1314,7 +1314,7 @@ Set this flag if you don't whant this safety control.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpRasterImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="TpRasterImport.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1462,7 +1462,7 @@ Disable this option if you prefer to use the old algorithm.</value>
     <value>2</value>
   </data>
   <data name="tableLayoutPanel18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 340</value>
+    <value>886, 359</value>
   </data>
   <data name="tableLayoutPanel18.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1489,7 +1489,7 @@ Disable this option if you prefer to use the old algorithm.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpVectorImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="TpVectorImport.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1744,7 +1744,7 @@ NOTE: "Continuous Jog" only work with Grbl v1.1 or later, and require table size
     <value>4</value>
   </data>
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 340</value>
+    <value>886, 359</value>
   </data>
   <data name="tableLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1771,7 +1771,7 @@ NOTE: "Continuous Jog" only work with Grbl v1.1 or later, and require table size
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpJogControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="TpJogControl.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2467,7 +2467,7 @@ Please do not use Automatic Cooling with Ortur engraver until a new firmware is 
     <value>6</value>
   </data>
   <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 340</value>
+    <value>886, 359</value>
   </data>
   <data name="tableLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2494,7 +2494,7 @@ Please do not use Automatic Cooling with Ortur engraver until a new firmware is 
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpAutoCooling.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="TpAutoCooling.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2817,7 +2817,7 @@ Here you can use the same syntax of custom buttons.</value>
     <value>4</value>
   </data>
   <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="tableLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2841,7 +2841,7 @@ Here you can use the same syntax of custom buttons.</value>
     <value>4, 22</value>
   </data>
   <data name="TpGCodeSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="TpGCodeSettings.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -3255,7 +3255,7 @@ Here you can use the same syntax of custom buttons.</value>
     <value>NoControl</value>
   </data>
   <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>392, 12</value>
+    <value>407, 12</value>
   </data>
   <data name="label23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -3296,7 +3296,7 @@ Check to enable.
     <value>NoControl</value>
   </data>
   <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
-    <value>392, 56</value>
+    <value>407, 56</value>
   </data>
   <data name="label24.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -4208,7 +4208,7 @@ Check to enable.
     <value>NoControl</value>
   </data>
   <data name="label32.Location" type="System.Drawing.Point, System.Drawing">
-    <value>392, 162</value>
+    <value>407, 162</value>
   </data>
   <data name="label32.Size" type="System.Drawing.Size, System.Drawing">
     <value>265, 26</value>
@@ -4243,7 +4243,7 @@ Check to enable.
     <value>NoControl</value>
   </data>
   <data name="label36.Location" type="System.Drawing.Point, System.Drawing">
-    <value>392, 206</value>
+    <value>407, 206</value>
   </data>
   <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
     <value>216, 39</value>
@@ -4279,7 +4279,7 @@ Check to enable.
     <value>NoControl</value>
   </data>
   <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>392, 106</value>
+    <value>407, 106</value>
   </data>
   <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
     <value>429, 39</value>
@@ -4313,6 +4313,42 @@ Check to enable.
   </data>
   <data name="tableLayoutPanel17.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="label44.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label44.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label44.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="label44.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label44.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 60</value>
+  </data>
+  <data name="label44.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 16</value>
+  </data>
+  <data name="label44.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="label44.Text" xml:space="preserve">
+    <value>Don't notify if job time less then</value>
+  </data>
+  <data name="&gt;&gt;label44.Name" xml:space="preserve">
+    <value>label44</value>
+  </data>
+  <data name="&gt;&gt;label44.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label44.Parent" xml:space="preserve">
+    <value>tableLayoutPanel17</value>
+  </data>
+  <data name="&gt;&gt;label44.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="BtnTelegNoteInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4348,7 +4384,7 @@ Check to enable.
     <value>tableLayoutPanel17</value>
   </data>
   <data name="&gt;&gt;BtnTelegNoteInfo.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="label31.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -4384,7 +4420,7 @@ Check to enable.
     <value>tableLayoutPanel17</value>
   </data>
   <data name="&gt;&gt;label31.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label33.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -4420,7 +4456,7 @@ Check to enable.
     <value>tableLayoutPanel17</value>
   </data>
   <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="TxtNotification.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -4444,7 +4480,7 @@ Check to enable.
     <value>tableLayoutPanel17</value>
   </data>
   <data name="&gt;&gt;TxtNotification.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="BtnTestNotification.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -4459,7 +4495,7 @@ Check to enable.
     <value>285, 26</value>
   </data>
   <data name="BtnTestNotification.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>90, 23</value>
   </data>
   <data name="BtnTestNotification.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -4477,7 +4513,94 @@ Check to enable.
     <value>tableLayoutPanel17</value>
   </data>
   <data name="&gt;&gt;BtnTestNotification.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
+  </data>
+  <data name="tableLayoutPanel19.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanel19.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="UdTelegramNotificationThreshold.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="UdTelegramNotificationThreshold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="UdTelegramNotificationThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 20</value>
+  </data>
+  <data name="UdTelegramNotificationThreshold.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="&gt;&gt;UdTelegramNotificationThreshold.Name" xml:space="preserve">
+    <value>UdTelegramNotificationThreshold</value>
+  </data>
+  <data name="&gt;&gt;UdTelegramNotificationThreshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UdTelegramNotificationThreshold.Parent" xml:space="preserve">
+    <value>tableLayoutPanel19</value>
+  </data>
+  <data name="&gt;&gt;UdTelegramNotificationThreshold.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label45.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label45.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label45.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 6</value>
+  </data>
+  <data name="label45.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 13</value>
+  </data>
+  <data name="label45.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="label45.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="&gt;&gt;label45.Name" xml:space="preserve">
+    <value>label45</value>
+  </data>
+  <data name="&gt;&gt;label45.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label45.Parent" xml:space="preserve">
+    <value>tableLayoutPanel19</value>
+  </data>
+  <data name="&gt;&gt;label45.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 55</value>
+  </data>
+  <data name="tableLayoutPanel19.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 26</value>
+  </data>
+  <data name="tableLayoutPanel19.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel19.Name" xml:space="preserve">
+    <value>tableLayoutPanel19</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel19.Parent" xml:space="preserve">
+    <value>tableLayoutPanel17</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel19.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tableLayoutPanel19.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="UdTelegramNotificationThreshold" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label45" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,AutoSize,50" /&gt;&lt;Rows Styles="AutoSize,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel17.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 261</value>
@@ -4486,10 +4609,10 @@ Check to enable.
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tableLayoutPanel17.RowCount" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="tableLayoutPanel17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 52</value>
+    <value>378, 84</value>
   </data>
   <data name="tableLayoutPanel17.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -4507,7 +4630,7 @@ Check to enable.
     <value>16</value>
   </data>
   <data name="tableLayoutPanel17.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnTelegNoteInfo" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label31" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label33" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TxtNotification" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnTestNotification" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label44" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="BtnTelegNoteInfo" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label31" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label33" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TxtNotification" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnTestNotification" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel19" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="label42.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -4519,7 +4642,7 @@ Check to enable.
     <value>NoControl</value>
   </data>
   <data name="label42.Location" type="System.Drawing.Point, System.Drawing">
-    <value>392, 274</value>
+    <value>407, 290</value>
   </data>
   <data name="label42.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 26</value>
@@ -4553,7 +4676,7 @@ Obtain your personal code and write it here!</value>
     <value>8</value>
   </data>
   <data name="tableLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 340</value>
+    <value>886, 359</value>
   </data>
   <data name="tableLayoutPanel10.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -4580,7 +4703,7 @@ Obtain your personal code and write it here!</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpSoundSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="TpSoundSettings.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -4760,7 +4883,7 @@ Select the fan which drives the PWM for the laser</value>
     <value>177, 69</value>
   </data>
   <data name="label_dwell_time.Size" type="System.Drawing.Size, System.Drawing">
-    <value>705, 270</value>
+    <value>705, 289</value>
   </data>
   <data name="label_dwell_time.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -4791,7 +4914,7 @@ sets the laser start time </value>
     <value>3</value>
   </data>
   <data name="tableLayoutPanelPwmSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 340</value>
+    <value>886, 359</value>
   </data>
   <data name="tableLayoutPanelPwmSettings.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4818,7 +4941,7 @@ sets the laser start time </value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpPwmSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="TpPwmSettings.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -4845,7 +4968,7 @@ sets the laser start time </value>
     <value>3, 3</value>
   </data>
   <data name="MainTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>900, 372</value>
+    <value>900, 391</value>
   </data>
   <data name="MainTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -4872,7 +4995,7 @@ sets the laser start time </value>
     <value>2</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>906, 417</value>
+    <value>906, 436</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4911,7 +5034,7 @@ sets the laser start time </value>
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>906, 417</value>
+    <value>906, 436</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -8418,9 +8541,6 @@ sets the laser start time </value>
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAA
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

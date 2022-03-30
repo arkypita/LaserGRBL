@@ -51,6 +51,7 @@
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnCancel = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -199,8 +200,9 @@
 			// tableLayoutPanel5
 			// 
 			resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
-			this.tableLayoutPanel5.Controls.Add(this.BtnApply, 2, 0);
-			this.tableLayoutPanel5.Controls.Add(this.BtnCancel, 1, 0);
+			this.tableLayoutPanel5.Controls.Add(this.BtnApply, 2, 1);
+			this.tableLayoutPanel5.Controls.Add(this.BtnCancel, 1, 1);
+			this.tableLayoutPanel5.Controls.Add(this.label1, 0, 0);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
 			// 
 			// BtnCancel
@@ -209,6 +211,12 @@
 			this.BtnCancel.Name = "BtnCancel";
 			this.BtnCancel.UseVisualStyleBackColor = true;
 			this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+			// 
+			// label1
+			// 
+			this.tableLayoutPanel5.SetColumnSpan(this.label1, 3);
+			resources.ApplyResources(this.label1, "label1");
+			this.label1.Name = "label1";
 			// 
 			// PSHelperForm
 			// 
@@ -259,5 +267,6 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
 		private System.Windows.Forms.Button BtnCancel;
+		private System.Windows.Forms.Label label1;
 	}
 }
