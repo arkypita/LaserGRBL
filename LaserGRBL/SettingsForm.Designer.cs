@@ -157,7 +157,7 @@
             this.BtnTestNotification = new System.Windows.Forms.Button();
             this.label42 = new System.Windows.Forms.Label();
             this.TpPwmSettings = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelPwmSettings = new System.Windows.Forms.TableLayoutPanel();
             this.CBPwmSel = new System.Windows.Forms.ComboBox();
             this.label_select_pwm_cmd = new System.Windows.Forms.Label();
             this.CBFanIdx = new System.Windows.Forms.ComboBox();
@@ -203,7 +203,7 @@
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel17.SuspendLayout();
             this.TpPwmSettings.SuspendLayout();
-            this.tableLayoutPanel19.SuspendLayout();
+            this.tableLayoutPanelPwmSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -1048,21 +1048,21 @@
             // 
             // TpPwmSettings
             // 
-            this.TpPwmSettings.Controls.Add(this.tableLayoutPanel19);
+            this.TpPwmSettings.Controls.Add(this.tableLayoutPanelPwmSettings);
             resources.ApplyResources(this.TpPwmSettings, "TpPwmSettings");
             this.TpPwmSettings.Name = "TpPwmSettings";
             this.TpPwmSettings.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel19
+            // tableLayoutPanelPwmSettings
             // 
-            resources.ApplyResources(this.tableLayoutPanel19, "tableLayoutPanel19");
-            this.tableLayoutPanel19.Controls.Add(this.CBPwmSel, 1, 0);
-            this.tableLayoutPanel19.Controls.Add(this.label_select_pwm_cmd, 2, 0);
-            this.tableLayoutPanel19.Controls.Add(this.CBFanIdx, 1, 1);
-            this.tableLayoutPanel19.Controls.Add(this.label_fan_index, 2, 1);
-            this.tableLayoutPanel19.Controls.Add(this.TBDwell, 1, 2);
-            this.tableLayoutPanel19.Controls.Add(this.label_dwell_time, 2, 2);
-            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+            resources.ApplyResources(this.tableLayoutPanelPwmSettings, "tableLayoutPanelPwmSettings");
+            this.tableLayoutPanelPwmSettings.Controls.Add(this.CBPwmSel, 1, 0);
+            this.tableLayoutPanelPwmSettings.Controls.Add(this.label_select_pwm_cmd, 2, 0);
+            this.tableLayoutPanelPwmSettings.Controls.Add(this.CBFanIdx, 1, 1);
+            this.tableLayoutPanelPwmSettings.Controls.Add(this.label_fan_index, 2, 1);
+            this.tableLayoutPanelPwmSettings.Controls.Add(this.TBDwell, 1, 2);
+            this.tableLayoutPanelPwmSettings.Controls.Add(this.label_dwell_time, 2, 2);
+            this.tableLayoutPanelPwmSettings.Name = "tableLayoutPanelPwmSettings";
             // 
             // CBPwmSel
             // 
@@ -1256,8 +1256,8 @@
             this.tableLayoutPanel17.ResumeLayout(false);
             this.tableLayoutPanel17.PerformLayout();
             this.TpPwmSettings.ResumeLayout(false);
-            this.tableLayoutPanel19.ResumeLayout(false);
-            this.tableLayoutPanel19.PerformLayout();
+            this.tableLayoutPanelPwmSettings.ResumeLayout(false);
+            this.tableLayoutPanelPwmSettings.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1401,7 +1401,7 @@
 		private System.Windows.Forms.CheckBox CbSmartBezier;
 		private UserControls.ImageButton imageButton1;
         private System.Windows.Forms.TabPage TpPwmSettings;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPwmSettings;
         private System.Windows.Forms.ComboBox CBPwmSel;
         private System.Windows.Forms.Label label_select_pwm_cmd;
         private System.Windows.Forms.ComboBox CBFanIdx;

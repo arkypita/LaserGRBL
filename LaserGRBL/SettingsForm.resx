@@ -4600,10 +4600,10 @@ Obtain your personal code and write it here!</value>
   <data name="&gt;&gt;TpSoundSettings.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="tableLayoutPanel19.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
+  <data name="tableLayoutPanelPwmSettings.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
     <value>Single</value>
   </data>
-  <data name="tableLayoutPanel19.ColumnCount" type="System.Int32, mscorlib">
+  <data name="tableLayoutPanelPwmSettings.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="CBPwmSel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -4625,7 +4625,7 @@ Obtain your personal code and write it here!</value>
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CBPwmSel.Parent" xml:space="preserve">
-    <value>tableLayoutPanel19</value>
+    <value>tableLayoutPanelPwmSettings</value>
   </data>
   <data name="&gt;&gt;CBPwmSel.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -4660,7 +4660,7 @@ Obtain your personal code and write it here!</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label_select_pwm_cmd.Parent" xml:space="preserve">
-    <value>tableLayoutPanel19</value>
+    <value>tableLayoutPanelPwmSettings</value>
   </data>
   <data name="&gt;&gt;label_select_pwm_cmd.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -4684,7 +4684,7 @@ Obtain your personal code and write it here!</value>
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CBFanIdx.Parent" xml:space="preserve">
-    <value>tableLayoutPanel19</value>
+    <value>tableLayoutPanelPwmSettings</value>
   </data>
   <data name="&gt;&gt;CBFanIdx.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -4718,7 +4718,7 @@ Select the fan which drives the PWM for the laser</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label_fan_index.Parent" xml:space="preserve">
-    <value>tableLayoutPanel19</value>
+    <value>tableLayoutPanelPwmSettings</value>
   </data>
   <data name="&gt;&gt;label_fan_index.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -4742,7 +4742,7 @@ Select the fan which drives the PWM for the laser</value>
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TBDwell.Parent" xml:space="preserve">
-    <value>tableLayoutPanel19</value>
+    <value>tableLayoutPanelPwmSettings</value>
   </data>
   <data name="&gt;&gt;TBDwell.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -4776,39 +4776,39 @@ sets the laser start time </value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label_dwell_time.Parent" xml:space="preserve">
-    <value>tableLayoutPanel19</value>
+    <value>tableLayoutPanelPwmSettings</value>
   </data>
   <data name="&gt;&gt;label_dwell_time.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="tableLayoutPanel19.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="tableLayoutPanelPwmSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="tableLayoutPanel19.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tableLayoutPanelPwmSettings.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="tableLayoutPanel19.RowCount" type="System.Int32, mscorlib">
+  <data name="tableLayoutPanelPwmSettings.RowCount" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="tableLayoutPanel19.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tableLayoutPanelPwmSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>886, 340</value>
   </data>
-  <data name="tableLayoutPanel19.TabIndex" type="System.Int32, mscorlib">
+  <data name="tableLayoutPanelPwmSettings.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel19.Name" xml:space="preserve">
-    <value>tableLayoutPanel19</value>
+  <data name="&gt;&gt;tableLayoutPanelPwmSettings.Name" xml:space="preserve">
+    <value>tableLayoutPanelPwmSettings</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel19.Type" xml:space="preserve">
+  <data name="&gt;&gt;tableLayoutPanelPwmSettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel19.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tableLayoutPanelPwmSettings.Parent" xml:space="preserve">
     <value>TpPwmSettings</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel19.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tableLayoutPanelPwmSettings.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tableLayoutPanel19.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+  <data name="tableLayoutPanelPwmSettings.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CBPwmSel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_select_pwm_cmd" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CBFanIdx" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_fan_index" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="TBDwell" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_dwell_time" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,Absolute,148,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="TpPwmSettings.Location" type="System.Drawing.Point, System.Drawing">
