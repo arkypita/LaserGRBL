@@ -4630,36 +4630,39 @@ Obtain your personal code and write it here!</value>
   <data name="&gt;&gt;CBPwmSel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="label44.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label_select_pwm_cmd.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label44.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="label_select_pwm_cmd.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="label44.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="label_select_pwm_cmd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_select_pwm_cmd.Location" type="System.Drawing.Point, System.Drawing">
     <value>177, 1</value>
   </data>
-  <data name="label44.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="label_select_pwm_cmd.Size" type="System.Drawing.Size, System.Drawing">
     <value>705, 39</value>
   </data>
-  <data name="label44.TabIndex" type="System.Int32, mscorlib">
+  <data name="label_select_pwm_cmd.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="label44.Text" xml:space="preserve">
+  <data name="label_select_pwm_cmd.Text" xml:space="preserve">
     <value>Select PWM command:
 - Spindle: Use spindle M3/M5/M5 commads to drive the PWM.
 - Fan: Use the M106/M107 commands to drive the PWM.</value>
   </data>
-  <data name="&gt;&gt;label44.Name" xml:space="preserve">
-    <value>label44</value>
+  <data name="&gt;&gt;label_select_pwm_cmd.Name" xml:space="preserve">
+    <value>label_select_pwm_cmd</value>
   </data>
-  <data name="&gt;&gt;label44.Type" xml:space="preserve">
+  <data name="&gt;&gt;label_select_pwm_cmd.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label44.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label_select_pwm_cmd.Parent" xml:space="preserve">
     <value>tableLayoutPanel19</value>
   </data>
-  <data name="&gt;&gt;label44.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label_select_pwm_cmd.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="CBFanIdx.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -4686,35 +4689,38 @@ Obtain your personal code and write it here!</value>
   <data name="&gt;&gt;CBFanIdx.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="label45.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label_fan_index.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label45.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="label_fan_index.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="label45.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="label_fan_index.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_fan_index.Location" type="System.Drawing.Point, System.Drawing">
     <value>177, 41</value>
   </data>
-  <data name="label45.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="label_fan_index.Size" type="System.Drawing.Size, System.Drawing">
     <value>705, 27</value>
   </data>
-  <data name="label45.TabIndex" type="System.Int32, mscorlib">
+  <data name="label_fan_index.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="label45.Text" xml:space="preserve">
+  <data name="label_fan_index.Text" xml:space="preserve">
     <value>Fan Index:
 Select the fan which drives the PWM for the laser</value>
   </data>
-  <data name="&gt;&gt;label45.Name" xml:space="preserve">
-    <value>label45</value>
+  <data name="&gt;&gt;label_fan_index.Name" xml:space="preserve">
+    <value>label_fan_index</value>
   </data>
-  <data name="&gt;&gt;label45.Type" xml:space="preserve">
+  <data name="&gt;&gt;label_fan_index.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label45.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label_fan_index.Parent" xml:space="preserve">
     <value>tableLayoutPanel19</value>
   </data>
-  <data name="&gt;&gt;label45.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label_fan_index.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="TBDwell.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -4741,35 +4747,38 @@ Select the fan which drives the PWM for the laser</value>
   <data name="&gt;&gt;TBDwell.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="label46.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label_dwell_time.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label46.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="label_dwell_time.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="label46.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="label_dwell_time.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_dwell_time.Location" type="System.Drawing.Point, System.Drawing">
     <value>177, 69</value>
   </data>
-  <data name="label46.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="label_dwell_time.Size" type="System.Drawing.Size, System.Drawing">
     <value>705, 270</value>
   </data>
-  <data name="label46.TabIndex" type="System.Int32, mscorlib">
+  <data name="label_dwell_time.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="label46.Text" xml:space="preserve">
+  <data name="label_dwell_time.Text" xml:space="preserve">
     <value>Laser start time [ms]:
 sets the laser start time </value>
   </data>
-  <data name="&gt;&gt;label46.Name" xml:space="preserve">
-    <value>label46</value>
+  <data name="&gt;&gt;label_dwell_time.Name" xml:space="preserve">
+    <value>label_dwell_time</value>
   </data>
-  <data name="&gt;&gt;label46.Type" xml:space="preserve">
+  <data name="&gt;&gt;label_dwell_time.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label46.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label_dwell_time.Parent" xml:space="preserve">
     <value>tableLayoutPanel19</value>
   </data>
-  <data name="&gt;&gt;label46.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label_dwell_time.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="tableLayoutPanel19.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -4800,7 +4809,7 @@ sets the laser start time </value>
     <value>0</value>
   </data>
   <data name="tableLayoutPanel19.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CBPwmSel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label44" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CBFanIdx" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label45" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="TBDwell" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label46" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,Absolute,148,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CBPwmSel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_select_pwm_cmd" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CBFanIdx" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_fan_index" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="TBDwell" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_dwell_time" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,Absolute,148,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="TpPwmSettings.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -8409,6 +8418,9 @@ sets the laser start time </value>
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAA
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
