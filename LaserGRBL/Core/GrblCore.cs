@@ -1953,7 +1953,7 @@ namespace LaserGRBL
 				rline = rline.Substring(1, rline.Length - 2);
 
 				GrblVersionInfo rversion = StatusReportVersion(rline);
-				if (rversion > new GrblVersionInfo(1, 1))
+				if (rversion >= new GrblVersionInfo(1, 1))
 				{
 					//grbl > 1.1 - https://github.com/gnea/grbl/wiki/Grbl-v1.1-Interface#real-time-status-reports
 					string[] arr = rline.Split("|".ToCharArray());
