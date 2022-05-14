@@ -34,7 +34,7 @@ namespace LaserGRBL.SvgConverter
 			}
 		}
 
-		internal static void CreateAndShowDialog(GrblCore core, string filename, Form parent, bool append)
+		internal static void CreateAndShowDialog(GrblCore core, string filename, Form parent, bool append, int nLayer)
         {
             using (SvgToGCodeForm f = new SvgToGCodeForm(core, filename, append))
             {
@@ -46,7 +46,7 @@ namespace LaserGRBL.SvgConverter
 					Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", f.IIMinPower.CurrentValue);
 					Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", (f.CBLaserON.SelectedItem as ComboboxItem).Value);
 
-					core.LoadedFile.LoadImportedSVG(filename, append, core);
+					core.LoadedFile.LoadImportedSVG(filename, append, core, nLayer);
                 }
             }
         }

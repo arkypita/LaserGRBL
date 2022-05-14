@@ -19,7 +19,8 @@ namespace LaserGRBL
 		public ComWrapper.WrapperType currentWrapper;
 
 		GrblCore Core;
-		private string mLoadedFileName;
+		GrblFile File;
+		private string[] mLoadedFileName = new string[3];
 
 		public ConnectLogForm()
 		{
@@ -31,7 +32,7 @@ namespace LaserGRBL
 		{
 			Core = core;
 			Core.OnFileLoaded += OnFileLoaded;
-			Core.OnLoopCountChange += OnLoopCountChanged;
+			core.OnLoopCountChange += OnLoopCountChanged;
 
 			CmdLog.SetCom(core);
 			
@@ -46,16 +47,17 @@ namespace LaserGRBL
 			TimerUpdate();
 		}
 
-		void OnLoopCountChanged(decimal current)
+		void OnLoopCountChanged(decimal current, int nLayer)
 		{
 			if (InvokeRequired)
 			{
-				Invoke(new GrblCore.dlgOnLoopCountChange(OnLoopCountChanged), current);
+				Invoke(new GrblCore.dlgOnLoopCountChange(OnLoopCountChanged), current, nLayer);
 			}
 			else
 			{
-				if (UDLoopCounter.Value != current)
-					UDLoopCounter.Value = current;
+				if (nLayer == 0) if (UDLoopCounter.Value != current) UDLoopCounter.Value = current;
+				if (nLayer == 1) if (UDLoopCounter1.Value != current) UDLoopCounter1.Value = current;
+				if (nLayer == 2) if (UDLoopCounter2.Value != current) UDLoopCounter2.Value = current;
 			}
 		}
 
@@ -69,16 +71,18 @@ namespace LaserGRBL
 				TxtAddress.Text = Settings.GetObject("Websocket URL", "ws://127.0.0.1:81/"); 
 		}
 
-		void OnFileLoaded(long elapsed, string filename)
+		void OnFileLoaded(long elapsed, string filename, int nLayer)
 		{
 			if (InvokeRequired)
 			{
-				Invoke(new GrblFile.OnFileLoadedDlg(OnFileLoaded), elapsed, filename);
+				Invoke(new GrblFile.OnFileLoadedDlg(OnFileLoaded), elapsed, filename, nLayer);
 			}
 			else
 			{
-				mLoadedFileName = filename;
-				TbFileName.Text = System.IO.Path.GetFileName(filename);
+				mLoadedFileName[nLayer] = filename;
+				if (nLayer == 0) TbFileName.Text = System.IO.Path.GetFileName(filename);
+				if (nLayer == 1) TbFileName1.Text = System.IO.Path.GetFileName(filename);
+				if (nLayer == 2) TbFileName2.Text = System.IO.Path.GetFileName(filename);
 			}
 		}
 
@@ -194,6 +198,7 @@ namespace LaserGRBL
 
 		void BtnOpenClick(object sender, EventArgs e)
 		{
+            Tools.Project.ClearSettings(0);
 			Core.OpenFile(ParentForm);
 		}
 
@@ -329,7 +334,7 @@ namespace LaserGRBL
 
 		private void UDLoopCounter_ValueChanged(object sender, EventArgs e)
 		{
-			Core.LoopCount = UDLoopCounter.Value;
+			Core.LoopCount(0, UDLoopCounter.Value);
 		}
 
 		internal void OnColorChange()
@@ -350,15 +355,36 @@ namespace LaserGRBL
 		private void TbFileName_MouseEnter(object sender, EventArgs e)
 		{
 			if (mLoadedFileName != null)
-				TT.Show(mLoadedFileName, TbFileName, 5000);
+				TT.Show(mLoadedFileName[0], TbFileName, 5000);
 		}
 
 		private void TbFileName_MouseLeave(object sender, EventArgs e)
 		{
 			TT.Hide(TbFileName);
 		}
+		private void TbFileName1_MouseEnter(object sender, EventArgs e)
+		{
+			if (mLoadedFileName != null)
+				TT.Show(mLoadedFileName[1], TbFileName, 5000);
+		}
 
-        private void BtnAbortProgram_Click(object sender, EventArgs e)
+		private void TbFileName1_MouseLeave(object sender, EventArgs e)
+		{
+			TT.Hide(TbFileName);
+		}
+
+		private void TbFileName2_MouseEnter(object sender, EventArgs e)
+		{
+			if (mLoadedFileName != null)
+				TT.Show(mLoadedFileName[2], TbFileName, 5000);
+		}
+
+		private void TbFileName2_MouseLeave(object sender, EventArgs e)
+		{
+			TT.Hide(TbFileName);
+		}
+
+		private void BtnAbortProgram_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(Strings.BoxAbortProgramConfirm, Strings.WarnMessageBoxHeader, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
                 Core.AbortProgram();
@@ -375,5 +401,79 @@ namespace LaserGRBL
 					BtnConnectDisconnectClick(null, null);
 			}
 		}
-	}
+
+        private void PB_Load(object sender, EventArgs e)
+        {
+
+        }
+
+		private void BtnOpen1_Click(object sender, EventArgs e)
+		{
+			Tools.Project.ClearSettings(1);
+			Core.OpenFile(ParentForm, nLayer: 1);
+		}
+		private void BtnOpen2_Click(object sender, EventArgs e)
+        {
+			Tools.Project.ClearSettings(2);
+			Core.OpenFile(ParentForm, nLayer: 2);
+		}
+		
+        private void BtnReOpenClick(object sender, EventArgs e)
+        {
+			Tools.Project.ClearSettings(0);
+			Core.ReOpenFile(ParentForm, 0);
+		}
+
+        private void BtnReOpen1_Click(object sender, EventArgs e)
+        {
+			Tools.Project.ClearSettings(1);
+			Core.ReOpenFile(ParentForm, 1);
+		}
+
+		private void BtnReOpen2_Click(object sender, EventArgs e)
+        {
+			Tools.Project.ClearSettings(2);
+			Core.ReOpenFile(ParentForm, 2);
+		}
+
+		private void UDLoopCounter1_ValueChanged(object sender, EventArgs e)
+        {
+			Core.LoopCount(1, UDLoopCounter1.Value);
+		}
+
+        private void UDLoopCounter2_ValueChanged(object sender, EventArgs e)
+        {
+			Core.LoopCount(2, UDLoopCounter2.Value);
+		}
+
+        private void BtnFileAppend_Click(object sender, EventArgs e)
+        {
+			Core.OpenFile(ParentForm, null, true);
+		}
+
+        private void BtnFileAppend1_Click(object sender, EventArgs e)
+        {
+			Core.OpenFile(ParentForm, null, true, 1);
+		}
+
+        private void BtnFileAppend2_Click(object sender, EventArgs e)
+        {
+			Core.OpenFile(ParentForm, null, true, 2);
+		}
+
+        private void chkFileEnable_CheckedChanged(object sender, EventArgs e)
+        {
+			Core.LayerEnabled(0, chkFileEnable.Checked);
+		}
+
+        private void chkFileEnable1_CheckedChanged(object sender, EventArgs e)
+        {
+			Core.LayerEnabled(1, chkFileEnable1.Checked);
+		}
+
+        private void chkFileEnable2_CheckedChanged(object sender, EventArgs e)
+        {
+			Core.LayerEnabled(2, chkFileEnable2.Checked);
+		}
+    }
 }

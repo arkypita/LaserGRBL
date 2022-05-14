@@ -18,15 +18,15 @@ using System.Threading;
 
 namespace LaserGRBL
 {
-	public class GrblFile : IEnumerable<GrblCommand>
+	public class GrblFile
 	{
 		public enum CartesianQuadrant { I, II, III, IV, Mix, Unknown }
 
-		public delegate void OnFileLoadedDlg(long elapsed, string filename);
+		public delegate void OnFileLoadedDlg(long elapsed, string filename, int nLayer);
 		public event OnFileLoadedDlg OnFileLoading;
 		public event OnFileLoadedDlg OnFileLoaded;
 
-		private List<GrblCommand> list = new List<GrblCommand>();
+		private List<GrblCommand>[] list = { new List<GrblCommand>(), new List<GrblCommand>(), new List<GrblCommand>() };
 		private ProgramRange mRange = new ProgramRange();
 		private TimeSpan mEstimatedTotalTime;
 
@@ -41,7 +41,7 @@ namespace LaserGRBL
 			mRange.UpdateXYRange(new GrblCommand.Element('X', x1), new GrblCommand.Element('Y', y1), false);
 		}
 
-		public void SaveGCODE(string filename, bool header, bool footer, bool between, int cycles, GrblCore core)
+		public void SaveGCODE(string filename, bool header, bool footer, bool between, int[] cycles, GrblCore core)
 		{
 			try
 			{
@@ -50,14 +50,20 @@ namespace LaserGRBL
 					if (header)
 						EvaluateAddLines(core, sw, Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
 
-					for (int i = 0; i < cycles; i++)
+					for (int j = 0; j < 3; j++)
 					{
-						foreach (GrblCommand cmd in list)
-							sw.WriteLine(cmd.Command);
-
-
-						if (between && i < cycles - 1)
+						if (between && j > 0)
 							EvaluateAddLines(core, sw, Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
+
+						for (int i = 0; i < cycles[j]; i++)
+						{
+							foreach (GrblCommand cmd in list[j])
+								sw.WriteLine(cmd.Command);
+
+
+							if (between && i < cycles[j] - 1)
+								EvaluateAddLines(core, sw, Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
+						}
 					}
 
 					if (footer)
@@ -83,14 +89,14 @@ namespace LaserGRBL
 			}
 		}
 
-		public void LoadFile(string filename, bool append)
+		public void LoadFile(string filename, bool append, int nLayer)
 		{
-			RiseOnFileLoading(filename);
+			RiseOnFileLoading(filename, nLayer);
 
 			long start = Tools.HiResTimer.TotalMilliseconds;
 
 			if (!append)
-				list.Clear();
+				list[nLayer].Clear();
 
 			mRange.ResetRange();
 			if (System.IO.File.Exists(filename))
@@ -103,24 +109,24 @@ namespace LaserGRBL
 						{
 							GrblCommand cmd = new GrblCommand(line);
 							if (!cmd.IsEmpty)
-								list.Add(cmd);
+								list[nLayer].Add(cmd);
 						}
 				}
 			}
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
-			RiseOnFileLoaded(filename, elapsed);
+			RiseOnFileLoaded(filename, elapsed, nLayer);
 		}
 
-		public void LoadImportedSVG(string filename, bool append, GrblCore core)
+		public void LoadImportedSVG(string filename, bool append, GrblCore core, int nLayer)
 		{
-			RiseOnFileLoading(filename);
+			RiseOnFileLoading(filename, nLayer);
 
 			long start = Tools.HiResTimer.TotalMilliseconds;
 
 			if (!append)
-				list.Clear();
+				list[nLayer].Clear();
 
 			mRange.ResetRange();
 
@@ -137,14 +143,14 @@ namespace LaserGRBL
 				{
 					GrblCommand cmd = new GrblCommand(line);
 					if (!cmd.IsEmpty)
-						list.Add(cmd);
+						list[nLayer].Add(cmd);
 				}
 			}
 
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
-			RiseOnFileLoaded(filename, elapsed);
+			RiseOnFileLoaded(filename, elapsed, nLayer);
 		}
 
 
@@ -296,17 +302,17 @@ namespace LaserGRBL
 			dir == RasterConverter.ImageProcessor.Direction.NewSquares;
 		}
 
-		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, bool useOptimizeFast, L2LConf c, bool append, GrblCore core)
+		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, bool useOptimizeFast, L2LConf c, bool append, GrblCore core, int nLayer)
 		{
 			skipcmd = Settings.GetObject("Disable G0 fast skip", false) ? "G1" : "G0";
 
-			RiseOnFileLoading(filename);
+			RiseOnFileLoading(filename, nLayer);
 
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 			long start = Tools.HiResTimer.TotalMilliseconds;
 
 			if (!append)
-				list.Clear();
+				list[nLayer].Clear();
 
 			//list.Add(new GrblCommand("G90")); //absolute (Moved to custom Header)
 
@@ -339,20 +345,20 @@ namespace LaserGRBL
 						using (Bitmap resampled = RasterConverter.ImageTransform.ResizeImage(ptb, new Size((int)(bmp.Width * c.fres / c.res) + 1, (int)(bmp.Height * c.fres / c.res) + 1), true, InterpolationMode.HighQualityBicubic))
 						{
 							if (c.pwm)
-								list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
+								list[nLayer].Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
 							else
-								list.Add(new GrblCommand(String.Format($"{c.lOff} S{core.Configuration.MaxPWM}"))); //laser off and power to max power
+								list[nLayer].Add(new GrblCommand(String.Format($"{c.lOff} S{core.Configuration.MaxPWM}"))); //laser off and power to max power
 
 							//set speed to markspeed
 							// For marlin, need to specify G1 each time :
 							// list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
-							list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
+							list[nLayer].Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
 
 							c.vectorfilling = true;
-							ImageLine2Line(resampled, c);
+							ImageLine2Line(resampled, c, nLayer);
 
 							//laser off
-							list.Add(new GrblCommand(c.lOff));
+							list[nLayer].Add(new GrblCommand(c.lOff));
 						}
 					}
 				}
@@ -362,9 +368,9 @@ namespace LaserGRBL
 
 
 			if (supportPWM)
-				list.Add(new GrblCommand($"{c.lOn} S0"));   //laser on and power to 0
+				list[nLayer].Add(new GrblCommand($"{c.lOn} S0"));   //laser on and power to 0
 			else
-				list.Add(new GrblCommand($"{c.lOff} S{core.Configuration.MaxPWM}"));   //laser off and power to maxPower
+				list[nLayer].Add(new GrblCommand($"{c.lOff} S{core.Configuration.MaxPWM}"));   //laser off and power to maxPower
 
 			//trace raster filling
 			if (flist != null)
@@ -375,9 +381,9 @@ namespace LaserGRBL
 				else
 					gc.AddRange(Potrace.Export2GCode(flist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd));
 
-				list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
+				list[nLayer].Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
 				foreach (string code in gc)
-					list.Add(new GrblCommand(code));
+					list[nLayer].Add(new GrblCommand(code));
 			}
 
 
@@ -398,9 +404,9 @@ namespace LaserGRBL
 
 				// For marlin, need to specify G1 each time :
 				//list.Add(new GrblCommand(String.Format("G1 F{0}", c.borderSpeed)));
-				list.Add(new GrblCommand(String.Format("F{0}", c.borderSpeed)));
+				list[nLayer].Add(new GrblCommand(String.Format("F{0}", c.borderSpeed)));
 				foreach (string code in gc)
-					list.Add(new GrblCommand(code));
+					list[nLayer].Add(new GrblCommand(code));
 			}
 
 			//if (supportPWM)
@@ -414,24 +420,24 @@ namespace LaserGRBL
 
 			//laser off (superflua??)
 			if (supportPWM)
-				list.Add(new GrblCommand(c.lOff));  //necessaria perché finisce con solo S0
+				list[nLayer].Add(new GrblCommand(c.lOff));  //necessaria perché finisce con solo S0
 
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
-			RiseOnFileLoaded(filename, elapsed);
+			RiseOnFileLoaded(filename, elapsed, nLayer);
 		}
 
-		private void RiseOnFileLoaded(string filename, long elapsed)
+		private void RiseOnFileLoaded(string filename, long elapsed, int nLayer)
 		{
 			if (OnFileLoaded != null)
-				OnFileLoaded(elapsed, filename);
+				OnFileLoaded(elapsed, filename, nLayer);
 		}
 
-		private void RiseOnFileLoading(string filename)
+		private void RiseOnFileLoading(string filename, int nLayer)
 		{
 			if (OnFileLoading != null)
-				OnFileLoading(0, filename);
+				OnFileLoading(0, filename, nLayer);
 		}
 
 		public class L2LConf
@@ -453,19 +459,19 @@ namespace LaserGRBL
 		}
 
 		private string skipcmd = "G0";
-		public void LoadImageL2L(Bitmap bmp, string filename, L2LConf c, bool append, GrblCore core)
+		public void LoadImageL2L(Bitmap bmp, string filename, L2LConf c, bool append, GrblCore core, int nLayer)
 		{
 
 			skipcmd = Settings.GetObject("Disable G0 fast skip", false) ? "G1" : "G0";
 
-			RiseOnFileLoading(filename);
+			RiseOnFileLoading(filename, nLayer);
 
 			bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
 			long start = Tools.HiResTimer.TotalMilliseconds;
 
 			if (!append)
-				list.Clear();
+				list[nLayer].Clear();
 
 			mRange.ResetRange();
 
@@ -473,21 +479,21 @@ namespace LaserGRBL
 			//list.Add(new GrblCommand("G90")); //(Moved to custom Header)
 
 			//move fast to offset (or slow if disable G0) and set mark speed
-			list.Add(new GrblCommand(String.Format("{0} X{1} Y{2} F{3}", skipcmd, formatnumber(c.oX), formatnumber(c.oY), c.markSpeed)));
+			list[nLayer].Add(new GrblCommand(String.Format("{0} X{1} Y{2} F{3}", skipcmd, formatnumber(c.oX), formatnumber(c.oY), c.markSpeed)));
 			if (c.pwm)
-				list.Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
+				list[nLayer].Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
 			else
-				list.Add(new GrblCommand($"{c.lOff} S{core.Configuration.MaxPWM}")); //laser off and power to maxpower
+				list[nLayer].Add(new GrblCommand($"{c.lOff} S{core.Configuration.MaxPWM}")); //laser off and power to maxpower
 
 			//set speed to markspeed						
 			// For marlin, need to specify G1 each time :
 			//list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
 			//list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed))); //replaced by the first move to offset and set speed
 
-			ImageLine2Line(bmp, c);
+			ImageLine2Line(bmp, c, nLayer);
 
 			//laser off
-			list.Add(new GrblCommand(c.lOff));
+			list[nLayer].Add(new GrblCommand(c.lOff));
 
 			//move fast to origin
 			//list.Add(new GrblCommand("G0 X0 Y0")); //moved to custom footer
@@ -495,12 +501,12 @@ namespace LaserGRBL
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
-			RiseOnFileLoaded(filename, elapsed);
+			RiseOnFileLoaded(filename, elapsed, nLayer);
 		}
 
 		// For Marlin, as we sen M106 command, we need to know last color send
 		//private int lastColorSend = 0;
-		private void ImageLine2Line(Bitmap bmp, L2LConf c)
+		private void ImageLine2Line(Bitmap bmp, L2LConf c, int nLayer)
 		{
 			bool fast = true;
 			List<ColorSegment> segments = GetSegments(bmp, c);
@@ -545,7 +551,7 @@ namespace LaserGRBL
 			}
 
 			temp = OptimizeLine2Line(temp, c);
-			list.AddRange(temp);
+			list[nLayer].AddRange(temp);
 		}
 
 
@@ -924,8 +930,10 @@ namespace LaserGRBL
 		private static bool IsEven(int value)
 		{ return value % 2 == 0; }
 
-		public int Count
-		{ get { return list.Count; } }
+		public int Count(GrblCore core)
+		{ 
+			return GetList(core).Count; 
+		}
 
 		public TimeSpan EstimatedTime { get { return mEstimatedTotalTime; } }
 
@@ -952,7 +960,7 @@ namespace LaserGRBL
 			}
 		}
 
-		internal void DrawOnGraphics(Graphics g, Size size)
+		internal void DrawOnGraphics(Graphics g, Size size, int nLayer, bool[] enabled)
 		{
 			if (!mRange.MovingRange.ValidRange) return;
 
@@ -964,15 +972,15 @@ namespace LaserGRBL
 
 
 			ScaleAndPosition(g, size, scaleRange, zoom);
-			DrawJobPreview(g, spb, zoom);
+			if (enabled[nLayer]) DrawJobPreview(g, spb, zoom, nLayer);
 			DrawJobRange(g, size, zoom);
 
 		}
 
-		private void DrawJobPreview(Graphics g, GrblCommand.StatePositionBuilder spb, float zoom)
+		private void DrawJobPreview(Graphics g, GrblCommand.StatePositionBuilder spb, float zoom, int nLayer)
 		{
 			bool firstline = true; //used to draw the first line in a different color
-			foreach (GrblCommand cmd in list)
+			foreach (GrblCommand cmd in list[nLayer])
 			{
 				try
 				{
@@ -982,10 +990,12 @@ namespace LaserGRBL
 
 					if (spb.TrueMovement())
 					{
-						Color linecolor = Color.FromArgb(spb.GetCurrentAlpha(mRange.SpindleRange), firstline ? ColorScheme.PreviewFirstMovement : spb.LaserBurning ? ColorScheme.PreviewLaserPower : ColorScheme.PreviewOtherMovement);
+						Color linecolor = Color.FromArgb(spb.GetCurrentAlpha(mRange.SpindleRange), firstline ? ColorScheme.PreviewFirstMovement : spb.LaserBurning ? ColorScheme.PreviewLaserPower[nLayer] : ColorScheme.PreviewOtherMovement);
 						using (Pen pen = GetPen(linecolor))
 						{
 							pen.ScaleTransform(1 / zoom, 1 / zoom);
+
+							if (nLayer == 2 && !firstline) pen.Width = 2;
 
 							if (!spb.LaserBurning)
 							{
@@ -1007,7 +1017,6 @@ namespace LaserGRBL
 									catch { System.Diagnostics.Debug.WriteLine(String.Format("Ex drwing arc: W{0} H{1}", ah.RectW, ah.RectH)); }
 								}
 							}
-
 						}
 
 						firstline = false;
@@ -1018,15 +1027,15 @@ namespace LaserGRBL
 			}
 		}
 
-		internal void LoadImageCenterline(Bitmap bmp, string filename, bool useCornerThreshold, int cornerThreshold, bool useLineThreshold, int lineThreshold, L2LConf conf, bool append, GrblCore core)
+		internal void LoadImageCenterline(Bitmap bmp, string filename, bool useCornerThreshold, int cornerThreshold, bool useLineThreshold, int lineThreshold, L2LConf conf, bool append, GrblCore core, int nLayer)
 		{
 
-			RiseOnFileLoading(filename);
+			RiseOnFileLoading(filename, nLayer);
 
 			long start = Tools.HiResTimer.TotalMilliseconds;
 
 			if (!append)
-				list.Clear();
+				list[nLayer].Clear();
 
 			mRange.ResetRange();
 
@@ -1055,14 +1064,14 @@ namespace LaserGRBL
 				{
 					GrblCommand cmd = new GrblCommand(line);
 					if (!cmd.IsEmpty)
-						list.Add(cmd);
+						list[nLayer].Add(cmd);
 				}
 			}
 
 			Analyze();
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
-			RiseOnFileLoaded(filename, elapsed);
+			RiseOnFileLoaded(filename, elapsed, nLayer);
 
 		}
 
@@ -1074,25 +1083,29 @@ namespace LaserGRBL
 			mRange.UpdateXYRange("X0", "Y0", false);
 			mEstimatedTotalTime = TimeSpan.Zero;
 
-			foreach (GrblCommand cmd in list)
+			for (int jLayer = 0; jLayer < 3; jLayer++)
 			{
-				try
+
+				foreach (GrblCommand cmd in list[jLayer])
 				{
-					GrblConf conf = Settings.GetObject("Grbl Configuration", new GrblConf());
-					TimeSpan delay = spb.AnalyzeCommand(cmd, true, conf);
+					try
+					{
+						GrblConf conf = Settings.GetObject("Grbl Configuration", new GrblConf());
+						TimeSpan delay = spb.AnalyzeCommand(cmd, true, conf);
 
-					mRange.UpdateSRange(spb.S);
+						mRange.UpdateSRange(spb.S);
 
-					if (spb.LastArcHelperResult != null)
-						mRange.UpdateXYRange(spb.LastArcHelperResult.BBox.X, spb.LastArcHelperResult.BBox.Y, spb.LastArcHelperResult.BBox.Width, spb.LastArcHelperResult.BBox.Height, spb.LaserBurning);
-					else
-						mRange.UpdateXYRange(spb.X, spb.Y, spb.LaserBurning);
+						if (spb.LastArcHelperResult != null)
+							mRange.UpdateXYRange(spb.LastArcHelperResult.BBox.X, spb.LastArcHelperResult.BBox.Y, spb.LastArcHelperResult.BBox.Width, spb.LastArcHelperResult.BBox.Height, spb.LaserBurning);
+						else
+							mRange.UpdateXYRange(spb.X, spb.Y, spb.LaserBurning);
 
-					mEstimatedTotalTime += delay;
-					cmd.SetOffset(mEstimatedTotalTime);
+						mEstimatedTotalTime += delay;
+						cmd.SetOffset(mEstimatedTotalTime);
+					}
+					catch (Exception ex) { throw ex; }
+					finally { cmd.DeleteHelper(); }
 				}
-				catch (Exception ex) { throw ex; }
-				finally { cmd.DeleteHelper(); }
 			}
 		}
 
@@ -1280,19 +1293,26 @@ namespace LaserGRBL
 			g.Restore(state);               // Restore the graphics state.
 		}
 
-
-
-		System.Collections.Generic.IEnumerator<GrblCommand> IEnumerable<GrblCommand>.GetEnumerator()
-		{ return list.GetEnumerator(); }
-
-
-		public System.Collections.IEnumerator GetEnumerator()
-		{ return list.GetEnumerator(); }
+		public List<GrblCommand> GetList(GrblCore core)
+		{
+			List<GrblCommand> l = new List<GrblCommand>();
+			for (int i = 0; i < 3; i++)
+			{
+				if (core.LayerEnabled(i))
+					for (int j = 0; j < core.LoopCount(i); j++)
+					{
+						IEnumerator<GrblCommand> e = list[i].GetEnumerator();
+						while (e.MoveNext())
+						{
+							GrblCommand cmd = e.Current;
+							l.Add(cmd);
+						}
+					}
+			}
+			return l;
+		}
 
 		public ProgramRange Range { get { return mRange; } }
-
-		public GrblCommand this[int index]
-		{ get { return list[index]; } }
 
 	}
 

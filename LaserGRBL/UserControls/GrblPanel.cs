@@ -132,14 +132,20 @@ namespace LaserGRBL.UserControls
 			Core = core;
 			Core.OnFileLoading += OnFileLoading;
 			Core.OnFileLoaded += OnFileLoaded;
+			Core.OnLayerEnabledChange += OnMultiEnabledChange;
 		}
 
-		void OnFileLoading(long elapsed, string filename)
+		void OnFileLoading(long elapsed, string filename, int nLayer)
 		{
 			AbortCreation();
 		}
 
-		void OnFileLoaded(long elapsed, string filename)
+		void OnFileLoaded(long elapsed, string filename, int nLayer)
+		{
+			RecreateBMP();
+		}
+
+		void OnMultiEnabledChange(Boolean current, int nLayer)
 		{
 			RecreateBMP();
 		}
@@ -186,7 +192,12 @@ namespace LaserGRBL.UserControls
 					g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
 
 					if (Core != null /*&& Core.HasProgram*/)
-						Core.LoadedFile.DrawOnGraphics(g, wSize);
+                    {
+						for (int jLayer = 0; jLayer < 3; jLayer++)
+						{
+							Core.LoadedFile.DrawOnGraphics(g, wSize, jLayer, Core.LayerEnabled());
+						}
+                    }
 
 					mLastMatrix = g.Transform;
 				}
