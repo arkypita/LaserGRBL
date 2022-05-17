@@ -156,7 +156,7 @@ This could generate a soft-limit error. Are you sure of the entered values?</val
     <value>Smooth (HQ Bicubic)</value>
   </data>
   <data name="BoxReadConfigSuccess" xml:space="preserve">
-    <value>{0} Config readed successfully!</value>
+    <value>{0} Config read successfully!</value>
   </data>
   <data name="FormulaOpticalCorrect" xml:space="preserve">
     <value>OpticalCorrect</value>
