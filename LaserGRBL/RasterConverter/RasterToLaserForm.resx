@@ -139,7 +139,7 @@
     <value>WB</value>
   </data>
   <data name="&gt;&gt;WB.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.WaitingProgressBar, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.WaitingProgressBar, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;WB.Parent" xml:space="preserve">
     <value>TpPreview</value>
@@ -150,7 +150,7 @@
   <data name="PbConverted.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        TQAADk0BRtVoCQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAA1SURBVChThcqx
+        RwAADkcBHaGj5QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAA1SURBVChThcqx
         CQAwDMCwnJ7Tu2iooVCt9uzDvGghlRZSaSGVFtKfP6TSQiotpNJCKu2yewAaSmQBLfM2nAAAAABJRU5E
         rkJggg==
 </value>
@@ -215,7 +215,7 @@
   <data name="PbOriginal.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        TQAADk0BRtVoCQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAA1SURBVChThcqx
+        RwAADkcBHaGj5QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAA1SURBVChThcqx
         CQAwDMCwnJ7Tu2iooVCt9uzDvGghlRZSaSGVFtKfP6TSQiotpNJCKu2yewAaSmQBLfM2nAAAAABJRU5E
         rkJggg==
 </value>
@@ -308,12 +308,91 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="FlipControl.ColumnCount" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="BtnOutliner.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAAdVJREFUSEu1lU1LAkEYx/0EdQykW1TgN/CUl0iiUxR0C6KkDLqUCdKxIIjWLUga
+        F0UrysQXsjfs9RKRm0EeOtchP0Mdap9m1hkYd7e23a0f/Jndx/H/zPwHdlz/hc/nAyL6+rcw839poDOP
+        FJUeovmc0qoWHKAzJ0xsAczlAIZj7z20ZAtDc4I7BEpHBMC/9DIQFO9WJ8X78dTBw9LqTqWULN5n9kq3
+        CbPnb80ZQ8tPncBRPK/FcZlMNpWpOWFSlPuotwpugHBZZ6YVby6kLrK4ZsyUWBml3ip8g3pdb0xE4FYO
+        i9L1IR6NCUSr3eo/KKwBMQfQN+FhNWm3nMSjMT9F9BtzItsRMVWrjZGh/d1WRLy+Owsm2xGRlfNnwXai
+        leOIzHbgOCKjlfNNLUW0fywncLnJTCs+NvJuKSIhnieTdaZa8TuwFNFatjZGYiqcPaLMkYzShRskZa7Q
+        RvoUCdIBWtksoCge15OHuHaCNnfKKJq+XKR2erQR2WFKlKepnR5tRHbAn3qB2jUTKXx6ZxKvvXSebYLo
+        uT+cffOG80oLtW4Q2AYI4RttRKz7g2IlgOPy4zPxWHkeFZ48zGcwpjTfjO3zAF0LAO65D0dXJvNpm+Ub
+        uFxf2CdT7pNO+r0AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="BtnOutliner.Location" type="System.Drawing.Point, System.Drawing">
+    <value>266, 3</value>
+  </data>
+  <data name="BtnOutliner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="BtnOutliner.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
+  </data>
+  <metadata name="TT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>84, 8</value>
+  </metadata>
+  <data name="BtnOutliner.ToolTip" xml:space="preserve">
+    <value>Crop image</value>
+  </data>
+  <data name="&gt;&gt;BtnOutliner.Name" xml:space="preserve">
+    <value>BtnOutliner</value>
+  </data>
+  <data name="&gt;&gt;BtnOutliner.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BtnOutliner.Parent" xml:space="preserve">
+    <value>FlipControl</value>
+  </data>
+  <data name="&gt;&gt;BtnOutliner.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BtnFill.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vgAADr4B6kKxwAAAAdpJREFUSEvtjTmLYkEUhf1p/gs3xEhFNFLEJRO3SFwxc8FU3ELXzBUzF8RIRdRI
+        xCUTz1Tdfm+mp+322YMDE8wHh/eq7qn7yf4Z5HI5hN+/w3+BJB8Er5e9E/CvmNchCCjX6/X1ElGwWCyw
+        3+9fLgEXtNttjEYjLJdLHA4H3G63P5OwNsS8Hd8EPJ1OB+PxGKvViiQcscMiDWvdLQ+FQj8F1WoV3W4X
+        k8kE6/Uax+PxeQmb3i23Wq3weDwIh8NIpVLI5/Oo1Wro9XqYTqckOZ1Oz0nY5LflCoUCer0eNpuNJJFI
+        BOl0GoVCAfV6Hf1+H7PZDJvNBufzWVrCbkWBcJRBqVTCYDDAbrfD6/UiGo0ik8mgWCyi0WhgMBiQZLvd
+        4nK5PJawm/cCDhVVKhWMRiNJfD4fYrEYstksSqUSms0mhsMh5vM5drsd9YXcw24/Cjj0QK1Ww2QyweFw
+        wO/3Ix6PI5fLoVwuo9VqkUTs8kefwiafCTj0UKPRkMTpdCIQCCCRSJCkUqnQXMjXsOlXAg4t0Gq1MJvN
+        cLlcCAaDSCaTdC/kMazxSMChRVxisVjgdrvpLEQa1pIScGihTqejr5DnYM1nBBxx8TPdX/DlPMJRiu8t
+        53xT8AQy2Q/xba6ZAwczBAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="BtnFill.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 3</value>
+  </data>
+  <data name="BtnFill.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="BtnFill.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="BtnFill.ToolTip" xml:space="preserve">
+    <value>Crop image</value>
+  </data>
+  <data name="&gt;&gt;BtnFill.Name" xml:space="preserve">
+    <value>BtnFill</value>
+  </data>
+  <data name="&gt;&gt;BtnFill.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BtnFill.Parent" xml:space="preserve">
+    <value>FlipControl</value>
+  </data>
+  <data name="&gt;&gt;BtnFill.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAbfSURBVEhLfdULUJNXFgDgs+uO
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACw0AAAsNAe0HwCwAAAbfSURBVEhLfdULUJNXFgDgs+uO
         49rZXXfp+qjazi52tTtdSy11p62yWrqjq+VRRN5MSIBAgPIKBJZnFAIrCBteEggYUSIgiCCglDrUBQwS
         AREVBCmPEB55EhJDeEjO3lCHmQ7oP/PN/Scz95xzb869P2Rm8t8oI6MQeDkFWwTFlzZvC5vaDW4vqvZG
         TwP7SpfZ6avXNzlUVoBjRdVrQWlp2RuVlVVA3oXi801luQKb1G4AZ6P9kZg+YOffrfHNancPymiHwDcA
@@ -355,9 +434,6 @@
   <data name="BtFlipV.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <metadata name="TT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>84, 8</value>
-  </metadata>
   <data name="BtFlipV.ToolTip" xml:space="preserve">
     <value>Flip image vertical</value>
   </data>
@@ -365,18 +441,18 @@
     <value>BtFlipV</value>
   </data>
   <data name="&gt;&gt;BtFlipV.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtFlipV.Parent" xml:space="preserve">
     <value>FlipControl</value>
   </data>
   <data name="&gt;&gt;BtFlipV.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="BtFlipH.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAa5SURBVEhLpZR7UJNXFsDP7Ky7
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACw0AAAsNAe0HwCwAAAa5SURBVEhLpZR7UJNXFsDP7Ky7
         2+5acIfZrg67W3GHah8ottMqrWPZKtpRgYABeZNACK8ASYCEvMRIgaoEebjYVnmJaAMUa0VQYUcFdRW2
         O+oWwVLEJITEQB5fXkQCZ2+y3dmdnX203T9+c8+93/fd3z3n3PkgNzePkO8ZV+TkFAzQ6fGC5GTmMwKB
         mKzxgMXKguLiEigqkkB2NhfIO8DnC6GgoAiysvLJupg8F3kRCCTkGy5wucUglR4k81IgL+V5SUhg+B46
@@ -424,18 +500,18 @@
     <value>BtFlipH</value>
   </data>
   <data name="&gt;&gt;BtFlipH.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtFlipH.Parent" xml:space="preserve">
     <value>FlipControl</value>
   </data>
   <data name="&gt;&gt;BtFlipH.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="BtRotateCW.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADiYAAA4mAaLvJfwAAAXQSURBVEhLddMJTJN3GMfxJ17T
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADiMAAA4jAY9VQAoAAAXQSURBVEhLddMJTJN3GMfxJ17T
         zDgzt8kIGsdURHQ6dOocDhTE+8JjLprpzLJlHotZYubinNlcFuOReYsyEGqh4gUIRVEQpvO+HQqI0tK3
         b/tebYEKiBN+e94iWpSRfNIG6PN9n//7lsTdgc8544NISehNWmIfciUFkzu536La5N6mp8kBp2oNwZdr
         jAOKH6UOuPUoNfRsbVpodp1p4B4WxajF4/RB1HBo8HNtBtTE4DWupPetSOhw6d/EbuvchrDopv3dwpBE
@@ -479,18 +555,18 @@
     <value>BtRotateCW</value>
   </data>
   <data name="&gt;&gt;BtRotateCW.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtRotateCW.Parent" xml:space="preserve">
     <value>FlipControl</value>
   </data>
   <data name="&gt;&gt;BtRotateCW.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="BtRotateCCW.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADiYAAA4mAaLvJfwAAAXjSURBVEhLfZJ5TBR3GIa/WLWa
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADiMAAA4jAY9VQAoAAAXjSURBVEhLfZJ5TBR3GIa/WLWa
         GmpqW61RY6mKiFarVq3FQgXxvhCtjaZa07SpR2OamNpYa1qbxnik3qIrCOvCihcgh6KsUK33iUUBOXbZ
         2dmda4djBcQKb7/BLhGP/vFkZ3dmn/f9vvlR4+EhrTxMGUz11kFPE87sqUsOzniQFHzuQdLA27WWgYV1
         5sArjxN6nK5L6GPVE/ov8sYHkhbXlxRTH/LE9iJxd89Wng6YxAFD/hMvYwrrkgfdZGmiLyn4uzpLUCgS
@@ -535,13 +611,13 @@
     <value>BtRotateCCW</value>
   </data>
   <data name="&gt;&gt;BtRotateCCW.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtRotateCCW.Parent" xml:space="preserve">
     <value>FlipControl</value>
   </data>
   <data name="&gt;&gt;BtRotateCCW.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="BtnRevert.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -586,13 +662,13 @@
     <value>BtnRevert</value>
   </data>
   <data name="&gt;&gt;BtnRevert.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnRevert.Parent" xml:space="preserve">
     <value>FlipControl</value>
   </data>
   <data name="&gt;&gt;BtnRevert.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="BtnCrop.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -634,13 +710,13 @@
     <value>BtnCrop</value>
   </data>
   <data name="&gt;&gt;BtnCrop.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCrop.Parent" xml:space="preserve">
     <value>FlipControl</value>
   </data>
   <data name="&gt;&gt;BtnCrop.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="BtnReverse.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -689,7 +765,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEwAACxMBAJqcGAAAAkFJREFUSEtj+P//P00x
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALDQAACw0B7QfALAAAAkFJREFUSEtj+P//P00x
         VkFqYhRORmpyfVtzw2xKsJeHmzWymSgWzJg6cd/7Ny/+k4tXLl/yPyjALxXZTKpZcOjA3v+WFub4LZg1
         bTJZFjx7fP8/Dw/PfwuQBYH+eCyYPoVkC969fv5fRVkZaBID2IJgvBbMIN0CD3c3sOFwC4ICcFswm0QL
         Ottb4IYTacFUDAuuXr7wv6un579vYMh/FU19MA3ib92y6T8TExOGBSHBgfgsmIZiAcjwjOzc/3IqWihY
@@ -703,7 +779,7 @@
 </value>
   </data>
   <data name="BtnReverse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 3</value>
+    <value>297, 3</value>
   </data>
   <data name="BtnReverse.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 25</value>
@@ -718,18 +794,18 @@
     <value>BtnReverse</value>
   </data>
   <data name="&gt;&gt;BtnReverse.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnReverse.Parent" xml:space="preserve">
     <value>FlipControl</value>
   </data>
   <data name="&gt;&gt;BtnReverse.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="BtnAutoTrim.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsSAAALEgHS3X78AAAFeUlE
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsMAAALDAE/QCLIAAAFeUlE
         QVRIS62Ve0yTZxTGP0DHRee8zBk3tkWzuS1O3HSomCjbvCTocE4Myi6ik4sO5x9DpE5RNzMgoIgCApvg
         FMQBIhRKL/RKoaVIb5RSilAtg1IuijoVytTv2VusRqJ1MduTPDnnzfvl97RfTk+p/1MN9Q1LLF2WkK7O
         zo0apTJQyOO97rj676pX1G/pMHeYu7u7zU1arVlcVVVLAgId14/k8hT/qxRyxXJTm2m4x9pDG/R6WiIQ
@@ -772,13 +848,13 @@
     <value>BtnAutoTrim</value>
   </data>
   <data name="&gt;&gt;BtnAutoTrim.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnAutoTrim.Parent" xml:space="preserve">
     <value>FlipControl</value>
   </data>
   <data name="&gt;&gt;BtnAutoTrim.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="FlipControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>255, 525</value>
@@ -787,7 +863,7 @@
     <value>1</value>
   </data>
   <data name="FlipControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 31</value>
+    <value>325, 31</value>
   </data>
   <data name="FlipControl.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -805,7 +881,7 @@
     <value>1</value>
   </data>
   <data name="FlipControl.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtFlipV" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="BtFlipH" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="BtRotateCW" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtRotateCCW" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="BtnRevert" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnCrop" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="BtnReverse" Row="0" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="BtnAutoTrim" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Absolute,15,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnOutliner" Row="0" RowSpan="1" Column="9" ColumnSpan="1" /&gt;&lt;Control Name="BtnFill" Row="0" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="BtFlipV" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="BtFlipH" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="BtRotateCW" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtRotateCCW" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="BtnRevert" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnCrop" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="BtnReverse" Row="0" RowSpan="1" Column="10" ColumnSpan="1" /&gt;&lt;Control Name="BtnAutoTrim" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Absolute,15,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="TlpLeft.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -922,7 +998,7 @@
     <value>CbResize</value>
   </data>
   <data name="&gt;&gt;CbResize.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.EnumComboBox, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.EnumComboBox, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CbResize.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -985,7 +1061,7 @@
     <value>CbMode</value>
   </data>
   <data name="&gt;&gt;CbMode.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.EnumComboBox, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.EnumComboBox, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CbMode.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1015,7 +1091,7 @@
     <value>TBRed</value>
   </data>
   <data name="&gt;&gt;TBRed.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TBRed.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1186,7 +1262,7 @@
     <value>TBGreen</value>
   </data>
   <data name="&gt;&gt;TBGreen.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TBGreen.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1213,7 +1289,7 @@
     <value>TbBright</value>
   </data>
   <data name="&gt;&gt;TbBright.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TbBright.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1243,7 +1319,7 @@
     <value>TBBlue</value>
   </data>
   <data name="&gt;&gt;TBBlue.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TBBlue.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1270,7 +1346,7 @@
     <value>TbContrast</value>
   </data>
   <data name="&gt;&gt;TbContrast.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TbContrast.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1405,7 +1481,7 @@
     <value>TbThreshold</value>
   </data>
   <data name="&gt;&gt;TbThreshold.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TbThreshold.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1432,7 +1508,7 @@
     <value>TBWhiteClip</value>
   </data>
   <data name="&gt;&gt;TBWhiteClip.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TBWhiteClip.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1636,7 +1712,7 @@
     <value>TBLineThreshold</value>
   </data>
   <data name="&gt;&gt;TBLineThreshold.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TBLineThreshold.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1669,7 +1745,7 @@
     <value>TBCornerThreshold</value>
   </data>
   <data name="&gt;&gt;TBCornerThreshold.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ColorSlider, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TBCornerThreshold.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1849,7 +1925,7 @@
     <value>BtnAdaptiveQualityInfo</value>
   </data>
   <data name="&gt;&gt;BtnAdaptiveQualityInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnAdaptiveQualityInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -2275,7 +2351,7 @@
     <value>CbFillingDirection</value>
   </data>
   <data name="&gt;&gt;CbFillingDirection.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.EnumComboBox, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.EnumComboBox, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CbFillingDirection.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -2548,7 +2624,7 @@
     <value>BtnFillingQualityInfo</value>
   </data>
   <data name="&gt;&gt;BtnFillingQualityInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnFillingQualityInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -2683,7 +2759,7 @@
     <value>CbDirections</value>
   </data>
   <data name="&gt;&gt;CbDirections.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.EnumComboBox, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.EnumComboBox, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CbDirections.Parent" xml:space="preserve">
     <value>TLP</value>
@@ -2944,7 +3020,7 @@
     <value>BtnQualityInfo</value>
   </data>
   <data name="&gt;&gt;BtnQualityInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnQualityInfo.Parent" xml:space="preserve">
     <value>TLP</value>
@@ -3513,9 +3589,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAD4AAAA/AAAAPwAAAD/AAAA//wAAP/+AAH//g
         AD//4AD//+AB///gAf//4AH///AD///wA/8=
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>

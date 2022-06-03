@@ -633,7 +633,7 @@ namespace LaserGRBL.RasterConverter
 		void PbConvertedMouseUp(object sender, MouseEventArgs e)
 		{
 			// If the MouseUp event occurs, the user is not dragging.
-			if (isDrag)
+			if (isDrag && Cropping)
 			{
 				isDrag = false;
 
@@ -661,11 +661,27 @@ namespace LaserGRBL.RasterConverter
 				Cursor.Clip = new Rectangle();
 				UpdateCropping();
 			}
+			if (Filling>=0)
+            {
+				int left = (PbConverted.Width - PbConverted.Image.Width) / 2;
+				int top = (PbConverted.Height - PbConverted.Image.Height) / 2;
+                Point location = new Point(e.X - left, e.Y - top);
+                Color color = e.Button == MouseButtons.Left ? Color.Black : Color.White;
+                IP.Fill(location, PbConverted.Image.Size, color, Filling);
+            }
+			if (Outlining)
+            {
+				int left = (PbConverted.Width - PbConverted.Image.Width) / 2;
+				int top = (PbConverted.Height - PbConverted.Image.Height) / 2;
+				Point location = new Point(e.X - left, e.Y - top);
+				IP.Outliner(location, PbConverted.Image.Size);
+			}
 		}
 
 		bool Cropping;
 		void BtnCropClick(object sender, EventArgs e)
 		{
+			if (Filling >= 0 || Outlining) return;
 			Cropping = !Cropping;
 			UpdateCropping();
 		}
@@ -677,6 +693,40 @@ namespace LaserGRBL.RasterConverter
 			else
 				BtnCrop.BackColor = DefaultBackColor;
 		}
+
+		int Filling = -1;
+		void BtnFillClick(object sender, EventArgs e)
+		{
+			if (Cropping || Outlining) return;
+			if (Filling >= 0) Filling = -1;
+			else Filling = 127;
+			UpdateFill();
+		}
+
+		void UpdateFill()
+		{
+			if (Filling>=0)
+				BtnFill.BackColor = Color.Orange;
+			else
+				BtnFill.BackColor = DefaultBackColor;
+		}
+
+		bool Outlining;
+		private void BtnOutliner_Click(object sender, EventArgs e)
+		{
+			if (Filling >= 0 || Cropping) return;
+			Outlining = !Outlining;
+			UpdateOutlining();
+		}
+
+		void UpdateOutlining()
+		{
+			if (Outlining)
+				BtnOutliner.BackColor = Color.Orange;
+			else
+				BtnOutliner.BackColor = DefaultBackColor;
+		}
+
 		void BtnCancelClick(object sender, EventArgs e)
 		{
 			try
@@ -820,5 +870,5 @@ namespace LaserGRBL.RasterConverter
 				//RbDithering.Checked = true;
 			}
 		}
-	}
+    }
 }

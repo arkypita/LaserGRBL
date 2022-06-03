@@ -386,7 +386,7 @@ namespace LaserGRBL.RasterConverter
 			return resultBitmap;
 		}
 
-		private static Bitmap Format32bppArgbCopy(Bitmap sourceBitmap)
+        private static Bitmap Format32bppArgbCopy(Bitmap sourceBitmap)
 		{
 			Bitmap copyBitmap = new Bitmap(sourceBitmap.Width, sourceBitmap.Height, PixelFormat.Format32bppArgb);
 
@@ -401,6 +401,95 @@ namespace LaserGRBL.RasterConverter
 			}
 
 			return copyBitmap;
+		}
+
+		internal static Bitmap Fill(Image img, Point location, Color color, int v)
+		{
+			//create a blank bitmap the same size as original
+			Bitmap newBitmap = new Bitmap(img.Width, img.Height);
+
+			//get a graphics object from the new image
+			Graphics g = Graphics.FromImage(newBitmap);
+
+			g.DrawImage(img, new Rectangle(0, 0, img.Width, img.Height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel);
+
+			Fill4(newBitmap, location, color, v);
+
+			//dispose the Graphics object
+			g.Dispose();
+
+			return newBitmap;
+		}
+
+		public static HashSet<Point> Fill4(Bitmap bmp, Point pt, Color c1, int v)
+		{
+			HashSet<Point> tchd = new HashSet<Point>();
+
+			Color cx = bmp.GetPixel(pt.X, pt.Y);
+			Color c0 = cx;
+			Rectangle bmpRect = new Rectangle(Point.Empty, bmp.Size);
+			Stack<Point> stack = new Stack<Point>();
+			int x0 = pt.X;
+			int y0 = pt.Y;
+
+			stack.Push(new Point(x0, y0));
+			while (stack.Count > 0)
+			{
+				Point p = stack.Pop();
+				if (!bmpRect.Contains(p)) continue;
+				tchd.Add(p);
+				cx = bmp.GetPixel(p.X, p.Y);
+				if (c0.R > cx.R - v && c0.R < cx.R + v
+					&& c0.G > cx.G - v && c0.G < cx.G + v
+					&& c0.B > cx.B - v && c0.B < cx.B + v
+					)  //*
+				{
+					bmp.SetPixel(p.X, p.Y, c1);
+					Point _p;
+					_p = new Point(p.X, p.Y + 1); if (!tchd.Contains(_p)) stack.Push(_p);
+					_p = new Point(p.X, p.Y - 1); if (!tchd.Contains(_p)) stack.Push(_p);
+					_p = new Point(p.X + 1, p.Y); if (!tchd.Contains(_p)) stack.Push(_p);
+					_p = new Point(p.X - 1, p.Y); if (!tchd.Contains(_p)) stack.Push(_p);
+				}
+			}
+			return tchd;
+		}
+
+		internal static Bitmap Outliner(Image img, Point location)
+		{
+			//create a blank bitmap the same size as original
+			Bitmap newBitmap = new Bitmap(img.Width, img.Height);
+
+			//get a graphics object from the new image
+			Graphics g = Graphics.FromImage(newBitmap);
+
+			g.DrawImage(img, new Rectangle(0, 0, img.Width, img.Height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel);
+
+			Outline(newBitmap, location);
+
+			//dispose the Graphics object
+			g.Dispose();
+
+			return newBitmap;
+		}
+
+		public static void Outline(Bitmap bmp, Point pt)
+		{
+			int v = 127;
+			Color cx = bmp.GetPixel(pt.X, pt.Y);
+            HashSet<Point> tchd = Fill4(bmp, pt, Color.White, v);
+            Color c0 = cx;
+			for (int y = 0; y < bmp.Height; y++)
+			{
+				for (int x = 0; x < bmp.Width; x++)
+				{
+					Point p = new Point(x, y);
+					if (!tchd.Contains(p))
+                    {
+						bmp.SetPixel(p.X, p.Y, Color.Black);
+					}
+				}
+			}
 		}
 
 		private class ColorSubstitutionFilter
