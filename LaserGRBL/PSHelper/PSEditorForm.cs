@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace LaserGRBL.PSHelper
@@ -67,6 +68,38 @@ namespace LaserGRBL.PSHelper
 		private string StripNonNumber(string input)
 		{
 			return new string(input.Where(c => char.IsDigit(c)).ToArray());
+		}
+
+		private void Paste()
+		{
+			try
+			{
+				DataObject o = (DataObject)Clipboard.GetDataObject();
+				if (o.GetDataPresent(DataFormats.Text))
+				{
+					string[] rows = Regex.Split(o.GetData(DataFormats.Text).ToString().TrimEnd("\r\n".ToCharArray()), "\r\n");
+
+					foreach (string row in rows)
+					{
+						string[] cells = row.Split(new char[] { '\t' });
+						GrblCore.MaterialDB.Materials.AddMaterialsRow(Guid.NewGuid(), true, cells[0], cells[1], cells[3], cells[2], GetInt(cells[4]), GetInt(cells[5]), GetInt(cells[6]), cells[7]);
+					}
+				}
+			}
+			catch (Exception ex) { }
+		}
+
+		private Int32 GetInt(string v)
+		{
+			Int32 rv = 0;
+			Int32.TryParse(StripNonNumber(v), out rv);
+			return rv;
+		}
+
+		private void DG_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == System.Windows.Forms.Keys.V && e.Control)
+				Paste();
 		}
 	}
 }
