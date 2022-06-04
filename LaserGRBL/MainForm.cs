@@ -262,7 +262,7 @@ namespace LaserGRBL
 			JogForm.Enabled = Core.JogEnabled;
 		}
 
-		private void TimerUpdate()
+		public void TimerUpdate()
 		{
 			SuspendLayout();
 			TTTStatus.Text = GrblCore.TranslateEnum(Core.MachineStatus);
@@ -448,7 +448,7 @@ namespace LaserGRBL
 		}
 		void MnSaveProgramClick(object sender, EventArgs e)
 		{
-			Core.SaveProgram(this, false, false, false, new int[]{ 1, 1, 1});
+			Core.SaveProgram(this, false, false, false);
 		}
 
 		private void MnAdvancedSave_Click(object sender, EventArgs e)

@@ -52,17 +52,13 @@ namespace LaserGRBL
 
 					for (int j = 0; j < 3; j++)
 					{
-						if (between && j > 0)
-							EvaluateAddLines(core, sw, Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
-
 						for (int i = 0; i < cycles[j]; i++)
 						{
+							if (between && i > 0)
+								EvaluateAddLines(core, sw, Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
+
 							foreach (GrblCommand cmd in list[j])
 								sw.WriteLine(cmd.Command);
-
-
-							if (between && i < cycles[j] - 1)
-								EvaluateAddLines(core, sw, Settings.GetObject("GCode.CustomPasses", GrblCore.GCODE_STD_PASSES));
 						}
 					}
 

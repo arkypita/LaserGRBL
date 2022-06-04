@@ -21,9 +21,8 @@ namespace LaserGRBL
 			using (SaveOptionForm f = new SaveOptionForm())
 			{
 				if (f.ShowDialog(parent) == DialogResult.OK)
-					core.SaveProgram(parent, f.CBHeader.Checked, f.CBFooter.Checked, f.CBBetween.Checked, new int[]{(int)f.UDCount.Value,(int)f.UDCount.Value,(int)f.UDCount.Value});
+					core.SaveProgram(parent, f.CBHeader.Checked, f.CBFooter.Checked, f.CBBetween.Checked);
 			}
 		}
-
-	}
+    }
 }

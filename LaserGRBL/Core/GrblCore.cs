@@ -293,7 +293,7 @@ namespace LaserGRBL
 		private int mTarOvRapids;
 		private int mTarOvPower;
 
-		private decimal[] mLoopCount = { 1, 1, 1 };
+		private int[] mLoopCount = { 1, 1, 1 };
 		private bool[] layerEnabled = { true, true, true };
 
 		protected Tools.PeriodicEventTimer QueryTimer;
@@ -743,7 +743,7 @@ namespace LaserGRBL
 			return null;
 		}
 
-		public void SaveProgram(Form parent, bool header, bool footer, bool between, int[] cycles)
+		public void SaveProgram(Form parent, bool header, bool footer, bool between)
 		{
 			if (HasProgram)
 			{
@@ -783,7 +783,7 @@ namespace LaserGRBL
 				}
 
 				if (filename != null)
-					file.SaveGCODE(filename, header, footer, between, cycles, this);
+					file.SaveGCODE(filename, header, footer, between, mLoopCount, this);
 			}
 		}
 
@@ -2387,7 +2387,7 @@ namespace LaserGRBL
 		}
 		public void LoopCount(int nLayer, decimal value)
 		{
-			mLoopCount[nLayer] = value;
+			mLoopCount[nLayer] = (int)value;
 			if (OnLoopCountChange != null)
 			{
 				OnLoopCountChange(mLoopCount[nLayer], nLayer);
