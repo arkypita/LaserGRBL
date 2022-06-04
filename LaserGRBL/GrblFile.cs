@@ -85,7 +85,7 @@ namespace LaserGRBL
 			}
 		}
 
-		public void LoadFile(string filename, bool append, int nLayer)
+		public void LoadFile(string filename, bool append, int nLayer, GrblCore core)
 		{
 			RiseOnFileLoading(filename, nLayer);
 
@@ -109,7 +109,7 @@ namespace LaserGRBL
 						}
 				}
 			}
-			Analyze();
+			Analyze(core);
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
 			RiseOnFileLoaded(filename, elapsed, nLayer);
@@ -143,7 +143,7 @@ namespace LaserGRBL
 				}
 			}
 
-			Analyze();
+			Analyze(core);
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
 			RiseOnFileLoaded(filename, elapsed, nLayer);
@@ -418,7 +418,7 @@ namespace LaserGRBL
 			if (supportPWM)
 				list[nLayer].Add(new GrblCommand(c.lOff));  //necessaria perché finisce con solo S0
 
-			Analyze();
+			Analyze(core);
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
 			RiseOnFileLoaded(filename, elapsed, nLayer);
@@ -494,7 +494,7 @@ namespace LaserGRBL
 			//move fast to origin
 			//list.Add(new GrblCommand("G0 X0 Y0")); //moved to custom footer
 
-			Analyze();
+			Analyze(core);
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
 			RiseOnFileLoaded(filename, elapsed, nLayer);
@@ -1064,14 +1064,14 @@ namespace LaserGRBL
 				}
 			}
 
-			Analyze();
+			Analyze(core);
 			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
 			RiseOnFileLoaded(filename, elapsed, nLayer);
 
 		}
 
-		private void Analyze() //analyze the file and build global range and timing for each command
+		public void Analyze(GrblCore core) //analyze the file and build global range and timing for each command
 		{
 			GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
 
@@ -1081,7 +1081,7 @@ namespace LaserGRBL
 
 			for (int jLayer = 0; jLayer < 3; jLayer++)
 			{
-
+				if (!core.LayerEnabled(jLayer)) continue;
 				foreach (GrblCommand cmd in list[jLayer])
 				{
 					try
@@ -1096,7 +1096,7 @@ namespace LaserGRBL
 						else
 							mRange.UpdateXYRange(spb.X, spb.Y, spb.LaserBurning);
 
-						mEstimatedTotalTime += delay;
+						mEstimatedTotalTime += TimeSpan.FromTicks(delay.Ticks * core.LoopCount(jLayer));
 						cmd.SetOffset(mEstimatedTotalTime);
 					}
 					catch (Exception ex) { throw ex; }

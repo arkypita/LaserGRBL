@@ -678,7 +678,7 @@ namespace LaserGRBL
 
 					try
 					{
-						file.LoadFile(filename, append, nLayer);
+						file.LoadFile(filename, append, nLayer, this);
 						UsageCounters.GCodeFile++;
 					}
 					catch (Exception ex)
@@ -2381,17 +2381,18 @@ namespace LaserGRBL
 		public bool CanReadWriteConfig
 		{ get { return IsConnected && !InProgram && (MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Alarm); } }
 
-		public decimal LoopCount(int nLayer)
+		public int LoopCount(int nLayer)
 		{
 			return mLoopCount[nLayer];
 		}
-		public void LoopCount(int nLayer, decimal value)
+		public void LoopCount(int nLayer, int value)
 		{
-			mLoopCount[nLayer] = (int)value;
+			mLoopCount[nLayer] = value;
 			if (OnLoopCountChange != null)
 			{
 				OnLoopCountChange(mLoopCount[nLayer], nLayer);
 			}
+			file.Analyze(this);
 		}
 
 		public bool[] LayerEnabled()
@@ -2411,6 +2412,7 @@ namespace LaserGRBL
 			{
 				OnLayerEnabledChange(layerEnabled[nLayer], nLayer);
 			}
+			file.Analyze(this);
 		}
 
 		private ThreadingMode CurrentThreadingMode
