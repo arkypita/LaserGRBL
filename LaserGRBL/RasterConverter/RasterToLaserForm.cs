@@ -659,7 +659,7 @@ namespace LaserGRBL.RasterConverter
 				theRectangle = new Rectangle(0, 0, 0, 0);
 				Cropping = false;
 				Cursor.Clip = new Rectangle();
-				UpdateCropping();
+				UpdateButtons();
 			}
 			if (Filling>=0)
             {
@@ -681,50 +681,45 @@ namespace LaserGRBL.RasterConverter
 		bool Cropping;
 		void BtnCropClick(object sender, EventArgs e)
 		{
-			if (Filling >= 0 || Outlining) return;
+			if (Filling >= 0 || Outlining)
+			{
+				Filling = -1;
+				Outlining = false;
+			}
 			Cropping = !Cropping;
-			UpdateCropping();
+			UpdateButtons();
 		}
 
-		void UpdateCropping()
+		void UpdateButtons()
 		{
-			if (Cropping)
-				BtnCrop.BackColor = Color.Orange;
-			else
-				BtnCrop.BackColor = DefaultBackColor;
+			BtnCrop.BackColor = Cropping ? Color.Orange : DefaultBackColor;
+			BtnFill.BackColor = Filling >= 0 ? Color.Orange : DefaultBackColor;
+			BtnOutliner.BackColor = Outlining ? Color.Orange : DefaultBackColor;
 		}
 
 		int Filling = -1;
 		void BtnFillClick(object sender, EventArgs e)
 		{
-			if (Cropping || Outlining) return;
+			if (Cropping || Outlining)
+			{
+				Cropping = false;
+				Outlining = false;
+			}
 			if (Filling >= 0) Filling = -1;
 			else Filling = 127;
-			UpdateFill();
-		}
-
-		void UpdateFill()
-		{
-			if (Filling>=0)
-				BtnFill.BackColor = Color.Orange;
-			else
-				BtnFill.BackColor = DefaultBackColor;
+			UpdateButtons();
 		}
 
 		bool Outlining;
 		private void BtnOutliner_Click(object sender, EventArgs e)
 		{
-			if (Filling >= 0 || Cropping) return;
+			if (Filling >= 0 || Cropping)
+			{
+				Filling = -1;
+				Cropping = false;
+			}
 			Outlining = !Outlining;
-			UpdateOutlining();
-		}
-
-		void UpdateOutlining()
-		{
-			if (Outlining)
-				BtnOutliner.BackColor = Color.Orange;
-			else
-				BtnOutliner.BackColor = DefaultBackColor;
+			UpdateButtons();
 		}
 
 		void BtnCancelClick(object sender, EventArgs e)
