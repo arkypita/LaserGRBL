@@ -563,7 +563,7 @@ namespace LaserGRBL
 			if (CanReOpenFile(nLayer))
 			{
 				string layerSuffix = nLayer > 0 ? nLayer.ToString() : "";
-				OpenFile(parent, Settings.GetObject<string>("Core.LastOpenFile" + layerSuffix, null));
+				OpenFile(parent, Settings.GetObject<string>("Core.LastOpenFile" + layerSuffix, null), false, nLayer);
 			}
 		}
 
