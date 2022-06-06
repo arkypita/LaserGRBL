@@ -76,6 +76,7 @@
 			this.DG.Name = "DG";
 			this.DG.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.DG_CellParsing);
 			this.DG.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DG_DataError);
+			this.DG.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DG_KeyDown);
 			// 
 			// ColID
 			// 

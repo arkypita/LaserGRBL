@@ -13,6 +13,8 @@ namespace LaserGRBL
 {
 	class GitHub
 	{
+		
+
 		public class OnlineVersion
 		{
 			public string html_url = null;
@@ -89,6 +91,7 @@ namespace LaserGRBL
 				System.Net.ServicePointManager.ServerCertificateValidationCallback += new System.Net.Security.RemoteCertificateValidationCallback(bypassAllCertificateStuff);
 
 				System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(GitHub.AsyncCheckVersion), manual);
+				System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(GitHub.AsyncDownloadDB), manual);
 			}
 		}
 
@@ -102,14 +105,14 @@ namespace LaserGRBL
 			if (UrlManager.UpdateMain != null)
 			{
 				error = null;
-				try { CheckSite(UrlManager.UpdateMain, manual); } //official https 
+				try { CheckVersionFromSite(UrlManager.UpdateMain, manual); } //official https 
 				catch (Exception ex1)
 				{
 					error = ex1;
 					if (UrlManager.UpdateMirror != null)
 					{
 						error = null;
-						try { CheckSite(UrlManager.UpdateMirror, manual); }	//http mirror
+						try { CheckVersionFromSite(UrlManager.UpdateMirror, manual); }	//http mirror
 						catch (Exception ex2) { error = ex2; }
 					}
 				}
@@ -117,7 +120,7 @@ namespace LaserGRBL
 			else if (UrlManager.UpdateMirror != null) //only mirror configured
 			{
 				error = null;
-				try { CheckSite(UrlManager.UpdateMirror, manual); } //http mirror
+				try { CheckVersionFromSite(UrlManager.UpdateMirror, manual); } //http mirror
 				catch (Exception ex3) { error = ex3; }
 			}
 
@@ -125,7 +128,69 @@ namespace LaserGRBL
 				NewVersion?.Invoke(null, null, error);
 		}
 
-		private static void CheckSite(string site, bool manual)
+		private static void AsyncDownloadDB(object foo)
+		{
+			Exception error = null;
+			bool manual = (bool)foo;
+			if (UrlManager.UpdateMaterialDB != null)
+			{
+				error = null;
+				try
+				{
+					using (System.Net.WebClient wc = new System.Net.WebClient())
+					{
+						try
+						{
+							wc.Headers.Add("User-Agent: .Net WebClient");
+							string json = wc.DownloadString(UrlManager.UpdateMaterialDB);
+
+							dynamic commits = Tools.JSONParser.FromJson<dynamic>(json);
+							dynamic latest = commits[0];
+							dynamic commit = latest["commit"];
+							dynamic author = commit["author"];
+							DateTime gitdate = DateTime.Parse(author["date"] as string).ToUniversalTime();
+							DateTime localdate = System.IO.File.Exists(PSHelper.MaterialDB.ServerFile) ? System.IO.File.GetLastWriteTimeUtc(PSHelper.MaterialDB.ServerFile) : DateTime.MinValue;
+
+							if (gitdate > localdate)
+							{
+								//download and overwrite
+
+								using (System.Net.WebClient dc = new System.Net.WebClient())
+								{
+									string tmp = System.IO.Path.Combine(System.IO.Path.GetTempPath(), System.IO.Path.GetTempFileName());
+									try
+									{
+										dc.DownloadFile(new Uri(UrlManager.DownloadMaterialDB), tmp);
+										if (System.IO.File.Exists(PSHelper.MaterialDB.ServerFile)) System.IO.File.Delete(PSHelper.MaterialDB.ServerFile);
+										System.IO.File.Move(tmp, PSHelper.MaterialDB.ServerFile);
+										System.IO.File.SetLastWriteTimeUtc(PSHelper.MaterialDB.ServerFile, gitdate);
+									}
+									catch (Exception ex) { }
+									finally
+									{
+										try
+										{
+											if (System.IO.File.Exists(tmp))
+												System.IO.File.Delete(tmp);
+										}
+										catch { }
+									}
+								}
+
+							}
+						}
+						catch (Exception ex) { }
+					}
+				} //official https 
+				catch (Exception ex1)
+				{
+					error = ex1;
+				}
+			}
+
+		}
+
+		private static void CheckVersionFromSite(string site, bool manual)
 		{
 			using (System.Net.WebClient wc = new System.Net.WebClient())
 			{
@@ -160,6 +225,7 @@ namespace LaserGRBL
 					NewVersion?.Invoke(current, null, null);
 			}
 		}
+
 
 		public static string installer { get { return System.IO.Path.Combine(GrblCore.TempPath, "LaserGRBL Updater.exe"); } }
 		//public static string mainpath = @"LaserGRBL/";
