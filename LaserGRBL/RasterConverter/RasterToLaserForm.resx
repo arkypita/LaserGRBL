@@ -150,7 +150,7 @@
   <data name="PbConverted.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        RwAADkcBHaGj5QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAA1SURBVChThcqx
+        RgAADkYBz+ZBAQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAA1SURBVChThcqx
         CQAwDMCwnJ7Tu2iooVCt9uzDvGghlRZSaSGVFtKfP6TSQiotpNJCKu2yewAaSmQBLfM2nAAAAABJRU5E
         rkJggg==
 </value>
@@ -215,7 +215,7 @@
   <data name="PbOriginal.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        RwAADkcBHaGj5QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAA1SURBVChThcqx
+        RgAADkYBz+ZBAQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAA1SURBVChThcqx
         CQAwDMCwnJ7Tu2iooVCt9uzDvGghlRZSaSGVFtKfP6TSQiotpNJCKu2yewAaSmQBLfM2nAAAAABJRU5E
         rkJggg==
 </value>
@@ -313,7 +313,7 @@
   <data name="BtnOutliner.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAdVJREFUSEu1lU1LAkEYx/0EdQykW1TgN/CUl0iiUxR0C6KkDLqUCdKxIIjWLUga
+        vwAADr8BOAVTJAAAAdVJREFUSEu1lU1LAkEYx/0EdQykW1TgN/CUl0iiUxR0C6KkDLqUCdKxIIjWLUga
         F0UrysQXsjfs9RKRm0EeOtchP0Mdap9m1hkYd7e23a0f/Jndx/H/zPwHdlz/hc/nAyL6+rcw839poDOP
         FJUeovmc0qoWHKAzJ0xsAczlAIZj7z20ZAtDc4I7BEpHBMC/9DIQFO9WJ8X78dTBw9LqTqWULN5n9kq3
         CbPnb80ZQ8tPncBRPK/FcZlMNpWpOWFSlPuotwpugHBZZ6YVby6kLrK4ZsyUWBml3ip8g3pdb0xE4FYO
@@ -333,11 +333,11 @@
   <data name="BtnOutliner.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <metadata name="TT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="TT.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>84, 8</value>
-  </metadata>
+  </data>
   <data name="BtnOutliner.ToolTip" xml:space="preserve">
-    <value>Crop image</value>
+    <value>Outline image</value>
   </data>
   <data name="&gt;&gt;BtnOutliner.Name" xml:space="preserve">
     <value>BtnOutliner</value>
@@ -354,7 +354,7 @@
   <data name="BtnFill.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAAdpJREFUSEvtjTmLYkEUhf1p/gs3xEhFNFLEJRO3SFwxc8FU3ELXzBUzF8RIRdRI
+        vQAADr0BR/uQrQAAAdpJREFUSEvtjTmLYkEUhf1p/gs3xEhFNFLEJRO3SFwxc8FU3ELXzBUzF8RIRdRI
         xCUTz1Tdfm+mp+322YMDE8wHh/eq7qn7yf4Z5HI5hN+/w3+BJB8Er5e9E/CvmNchCCjX6/X1ElGwWCyw
         3+9fLgEXtNttjEYjLJdLHA4H3G63P5OwNsS8Hd8EPJ1OB+PxGKvViiQcscMiDWvdLQ+FQj8F1WoV3W4X
         k8kE6/Uax+PxeQmb3i23Wq3weDwIh8NIpVLI5/Oo1Wro9XqYTqckOZ1Oz0nY5LflCoUCer0eNpuNJJFI
@@ -375,7 +375,7 @@
     <value>8</value>
   </data>
   <data name="BtnFill.ToolTip" xml:space="preserve">
-    <value>Crop image</value>
+    <value>Flood Fill</value>
   </data>
   <data name="&gt;&gt;BtnFill.Name" xml:space="preserve">
     <value>BtnFill</value>
@@ -392,7 +392,7 @@
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACw0AAAsNAe0HwCwAAAbfSURBVEhLfdULUJNXFgDgs+uO
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACwwAAAsMAT9AIsgAAAbfSURBVEhLfdULUJNXFgDgs+uO
         49rZXXfp+qjazi52tTtdSy11p62yWrqjq+VRRN5MSIBAgPIKBJZnFAIrCBteEggYUSIgiCCglDrUBQwS
         AREVBCmPEB55EhJDeEjO3lCHmQ7oP/PN/Scz95xzb869P2Rm8t8oI6MQeDkFWwTFlzZvC5vaDW4vqvZG
         TwP7SpfZ6avXNzlUVoBjRdVrQWlp2RuVlVVA3oXi801luQKb1G4AZ6P9kZg+YOffrfHNancPymiHwDcA
@@ -452,7 +452,7 @@
   <data name="BtFlipH.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACw0AAAsNAe0HwCwAAAa5SURBVEhLpZR7UJNXFsDP7Ky7
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACwwAAAsMAT9AIsgAAAa5SURBVEhLpZR7UJNXFsDP7Ky7
         2+5acIfZrg67W3GHah8ottMqrWPZKtpRgYABeZNACK8ASYCEvMRIgaoEebjYVnmJaAMUa0VQYUcFdRW2
         O+oWwVLEJITEQB5fXkQCZ2+y3dmdnX203T9+c8+93/fd3z3n3PkgNzePkO8ZV+TkFAzQ6fGC5GTmMwKB
         mKzxgMXKguLiEigqkkB2NhfIO8DnC6GgoAiysvLJupg8F3kRCCTkGy5wucUglR4k81IgL+V5SUhg+B46
@@ -765,7 +765,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALDQAACw0B7QfALAAAAkFJREFUSEtj+P//P00x
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALDAAACwwBP0AiyAAAAkFJREFUSEtj+P//P00x
         VkFqYhRORmpyfVtzw2xKsJeHmzWymSgWzJg6cd/7Ny/+k4tXLl/yPyjALxXZTKpZcOjA3v+WFub4LZg1
         bTJZFjx7fP8/Dw/PfwuQBYH+eCyYPoVkC969fv5fRVkZaBID2IJgvBbMIN0CD3c3sOFwC4ICcFswm0QL
         Ottb4IYTacFUDAuuXr7wv6un579vYMh/FU19MA3ib92y6T8TExOGBSHBgfgsmIZiAcjwjOzc/3IqWihY
@@ -3499,15 +3499,15 @@
   <data name="TlpMain.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="TCOriginalPreview" Row="0" RowSpan="1" Column="1" ColumnSpan="3" /&gt;&lt;Control Name="FlipControl" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TlpLeft" Row="0" RowSpan="2" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel1" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <metadata name="WT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="WT.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>15, 8</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="$this.TrayHeight" type="System.Int32, mscorlib">
     <value>33</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
