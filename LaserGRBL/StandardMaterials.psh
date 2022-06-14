@@ -3351,4 +3351,472 @@
     <Cycles>1</Cycles>
     <Remarks>Easy to catch fire, pay attention to protection!</Remarks>
   </Materials>
+  <Materials>
+    <id>e89d89ac-5f92-47f0-a604-87a22d447f0f</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>The generation of yellow edges can be reduced by adding auxiliary tools.</Remarks>
+  </Materials>
+  <Materials>
+    <id>f8198b5e-1845-4d53-9fa6-c438e455c21a</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Hardwood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>The generation of yellow edges can be reduced by adding auxiliary tools.</Remarks>
+  </Materials>
+  <Materials>
+    <id>d77a4c70-d335-460e-ab05-49ff88587be7</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b760d0bd-5a4f-4e0b-99c1-7bce7745f5ed</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Pay attention to toxic gases!Choose pure black opaque</Remarks>
+  </Materials>
+  <Materials>
+    <id>8d02bde1-e7ee-4a51-8d51-56e31b1a5d7e</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>379ee76b-192c-447b-933a-d2a7783268ba</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Cobblestone</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>0b7c65b7-40d8-47dd-9260-6ea70f1a4d7b</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Anodised Aluminium</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>4000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e2d5d8c2-5e01-4562-a004-3d33f9ee2a1a</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Plastic Sheet (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Some plastic sheets may be melt.</Remarks>
+  </Materials>
+  <Materials>
+    <id>dcf3e951-426c-43e2-8152-0163780f700f</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>42ccfe8e-87ff-4bc9-b7af-a1f4df880b5f</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Powder Coated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>0ef889fe-cce3-4d80-8222-9ffea27a312c</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Plated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>eeb2bbe8-f5e1-4454-b983-4dfdf6e144af</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>suggested 8 lines/mm.Stainless steel will bend and warp when heated.8/mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>46522b5c-86ee-4e83-96ca-e59cfc9194f2</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Basswood</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>The focus before cutting needs to be in the middle of the object to be cut, and the focus is different for different thicknesses.</Remarks>
+  </Materials>
+  <Materials>
+    <id>db759e11-b9db-4368-a338-98632257b092</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Hardwood</Material>
+    <Thickness>4mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>The focus before cutting needs to be in the middle of the object to be cut, and the focus is different for different thicknesses.</Remarks>
+  </Materials>
+  <Materials>
+    <id>714a7858-8055-4247-991b-8f8f92906d4d</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Acrylic</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>150</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>Pay attention to toxic gases!Choose pure black opaque</Remarks>
+  </Materials>
+  <Materials>
+    <id>610900e4-15b9-4258-8316-745a26c1b83e</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>490a93a3-039b-421c-82c5-08c41497c3ce</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Leather</Material>
+    <Thickness>0.7mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>700</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>6fc1ecb5-95e0-4afc-95a5-a6348a899fe1</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Non-woven fabrics (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Easy to burn through, pay attention to protection!</Remarks>
+  </Materials>
+  <Materials>
+    <id>cbb56d8d-d405-4d40-9cd2-32d32d75ee38</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-55</Model>
+    <Material>Cotton Cloth (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Easy to catch fire, pay attention to protection!</Remarks>
+  </Materials>
+  <Materials>
+    <id>ba3d4cff-d6a0-487d-8428-8001b745e658</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>The generation of yellow edges can be reduced by adding auxiliary tools.</Remarks>
+  </Materials>
+  <Materials>
+    <id>36f25250-57dd-4e29-8309-99c6bda74246</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Hardwood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>The generation of yellow edges can be reduced by adding auxiliary tools.</Remarks>
+  </Materials>
+  <Materials>
+    <id>6e883326-ea3d-4d68-81b3-dc3c268cf4a5</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5c0393de-49a9-486a-a8b3-8c396ee60706</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Pay attention to toxic gases!Choose pure black opaque</Remarks>
+  </Materials>
+  <Materials>
+    <id>fe814ea7-0689-4b71-b533-ca43b1d3a923</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>eeddf4a3-ad56-433f-9103-cbb591842c6f</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Cobblestone</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>eb9048f5-7250-4bb5-8376-27c0c5322bc5</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Anodised Aluminium</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b84b812a-b161-435f-a6d8-556b730dbca5</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Plastic Sheet (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Some plastic sheets may be melt.</Remarks>
+  </Materials>
+  <Materials>
+    <id>20f24235-6b1f-48fa-9444-d1c936132e67</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>9734f4da-aec4-4b33-8321-0ed6b672d8d3</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Powder Coated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>1d63bd78-0268-4d9a-bce0-3d380e402f6a</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Plated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>fe935738-b81d-4be7-bc26-ca370e9c6f99</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>suggested 8 lines/mm.Stainless steel will bend and warp when heated.8/mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>9181f0e1-3107-4973-9d0b-0b760bfeb174</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Basswood</Material>
+    <Thickness>7mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>The focus before cutting needs to be in the middle of the object to be cut, and the focus is different for different thicknesses.</Remarks>
+  </Materials>
+  <Materials>
+    <id>1ecf9510-b42c-49b0-abee-a47c723382e4</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Hardwood</Material>
+    <Thickness>6mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>150</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>The focus before cutting needs to be in the middle of the object to be cut, and the focus is different for different thicknesses.</Remarks>
+  </Materials>
+  <Materials>
+    <id>9cb42d4f-9613-4322-9a6e-711a712b67e5</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Bamboo</Material>
+    <Thickness>4mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>150</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d317f159-7612-4171-b7e3-13ced6da6d1a</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Acrylic</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>150</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Pay attention to toxic gases!Choose pure black opaque</Remarks>
+  </Materials>
+  <Materials>
+    <id>a5db3889-baba-4eb3-84cd-35395aec9ccf</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>82ab5b68-5b00-457f-bfd9-990c88adac6e</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Leather</Material>
+    <Thickness>0.7mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b82e1499-fbb8-49ee-a032-15e6da580782</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Non-woven fabrics (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Easy to burn through, pay attention to protection!</Remarks>
+  </Materials>
+  <Materials>
+    <id>4acd934c-cfae-4ddd-b080-74ffd965384b</id>
+    <Visible>true</Visible>
+    <Model>Two Trees TS2-10</Model>
+    <Material>Cotton Cloth (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Easy to catch fire, pay attention to protection!</Remarks>
+  </Materials>
 </MaterialDB>
