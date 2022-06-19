@@ -3819,4 +3819,604 @@
     <Cycles>1</Cycles>
     <Remarks>Easy to catch fire, pay attention to protection!</Remarks>
   </Materials>
+  <Materials>
+    <id>f034e0dd-dd79-4280-ba47-2e3dd3edf980</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a510528b-56aa-4333-b519-a0ba3142a2c1</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Yellow peach wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>6207590c-798a-498f-8a1e-a0a7434b6b62</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Mahogany</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>07c40792-da13-46a3-b609-e3167be87209</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Pine</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>963a44d1-aceb-4263-bfe7-e2c816ad32e1</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Paulownia wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>35</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ade578a6-7400-4a5d-9ab0-e8361fe5eb36</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Bamboo </Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2c942c4a-fd73-4c7d-aed3-10f876945448</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>fcdfbd1b-d6c0-42c2-9667-ef5843dd568b</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Denim</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>0581aa1f-ff0e-4d12-8d62-272f58eebe72</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Ceramics</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>afe13c4f-78bd-45e2-9cbf-af809776872d</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Ceramic tile</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2c5583bc-2d41-4699-94f7-9936cc2e4816</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Alumina</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a2b15492-5114-469e-a38a-c7aac187f46e</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Glass</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4927f9c6-42aa-4bdd-ab82-5e2f0916c10c</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4a78690e-da68-4465-9710-cd23edc1ac71</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Two color plate</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2440014d-5092-49a3-9f23-c470d2cb0a71</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Plastic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5e5b7f57-3166-47bf-9a6e-0b25bcf26368</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Resin</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>15</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8927edda-2b7e-4932-baa2-a128b7dae888</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Artificial beef bone</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>24</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2c90bb75-1033-4577-b3ee-334528be0690</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>High density foam board</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>12</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2a6ae0f0-7746-4a6d-951b-f5831ce78bba</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Rubber</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8ebf5da0-a112-4cd6-8c70-a4432422acf7</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Kraft Paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>14</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>34c5f5ba-2f85-41fb-9cfe-ad9f9a5ad4c9</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Office paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>12</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8b456e34-7a83-454c-9f79-2f5cf0436883</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Oil painting paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>25</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>32c38054-2e4c-4947-b83f-4596f0f3e0b1</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Carton</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>12</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>c5b79972-2ee9-46af-9d7f-a255263d83ca</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>MDF</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>18</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>249ec3e2-adc4-46c5-b7fc-017d69c80532</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Mirrors</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>paint black for better result</Remarks>
+  </Materials>
+  <Materials>
+    <id>c6d77bd5-b7b8-4886-a786-29b0786df1f5</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Rock</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e7099c59-7d4e-4116-87c5-320bb870634d</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Cobblestone</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8f09b0ee-a980-4b75-9dba-874a9b4e71e2</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>PCB Board</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>65</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>03e128bf-192c-4822-bcd3-d9c88a683038</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Mirror Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>83c5e0e4-ba6b-40df-9cc8-3eb5c2f63587</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Brushed Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e2cd06bc-25ad-43c4-b973-4afeb0415521</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Galvanized iron</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>paint black for better result</Remarks>
+  </Materials>
+  <Materials>
+    <id>13c30727-262e-43e8-b699-cb2edeb288fd</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Iron sheet</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>paint black for better result</Remarks>
+  </Materials>
+  <Materials>
+    <id>04cdb0cb-567b-4001-9a69-467561e64109</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Artificial agate</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>36321582-82f2-4248-beb7-f65317aca0d0</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Basswood</Material>
+    <Thickness>10mm</Thickness>
+    <Action>Cut</Action>
+    <Power>80</Power>
+    <Speed>600</Speed>
+    <Cycles>5</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d74f9533-cf4a-428b-bab6-3d83d36f9b74</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Basswood</Material>
+    <Thickness>8mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>de59f10a-7225-45dd-83e6-b514f65a3ebc</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Pine</Material>
+    <Thickness>14mm</Thickness>
+    <Action>Cut</Action>
+    <Power>80</Power>
+    <Speed>300</Speed>
+    <Cycles>7</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>49e8f891-7b58-40fc-879a-8471284c5b3e</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Pine</Material>
+    <Thickness>9mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>120</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>9ddb16d3-cf0e-41e6-8ca1-b37e03e279ef</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Paulownia wood</Material>
+    <Thickness>18mm</Thickness>
+    <Action>Cut</Action>
+    <Power>80</Power>
+    <Speed>400</Speed>
+    <Cycles>6</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a1adc810-1794-4df5-ba34-3c7e08895635</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Paulownia wood</Material>
+    <Thickness>12mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>220</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a396e3bd-b287-42b1-9931-120d6c8efb10</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Cork wood</Material>
+    <Thickness>15mm</Thickness>
+    <Action>Cut</Action>
+    <Power>85</Power>
+    <Speed>700</Speed>
+    <Cycles>2</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>0e4fe5f9-0032-4bf0-b3ce-ac822b80d0e8</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Cork wood</Material>
+    <Thickness>10mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>420</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2f985734-0496-447e-bcbb-9d6c7ec3407b</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Bamboo </Material>
+    <Thickness>6mm</Thickness>
+    <Action>Cut</Action>
+    <Power>80</Power>
+    <Speed>400</Speed>
+    <Cycles>3</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4adb2fa1-1668-47fd-8611-0d12c186f1af</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Bamboo </Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>360</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e90b0497-9dd4-4cfd-af63-027d17412214</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Leather</Material>
+    <Thickness>4mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5b5d3fde-4a74-4446-b686-ef4c16d37085</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Kraft Paper</Material>
+    <Thickness>0.2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>80</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>3c76c1de-f651-4a8e-98af-708fc3bda736</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Acrylic</Material>
+    <Thickness>15mm</Thickness>
+    <Action>Cut</Action>
+    <Power>60</Power>
+    <Speed>100</Speed>
+    <Cycles>8</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>280f7d87-5424-4e3b-b8ff-7f907d1a75d1</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Acrylic</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8d817dff-59b0-4e5f-9f34-96a5941dd5fd</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>MDF</Material>
+    <Thickness>8mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>7</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2bb780aa-bc89-40f4-9320-23e109a99ba7</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>MDF</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>160</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>c7c8be56-d2eb-4ea8-942d-54d4af91f10e</id>
+    <Visible>true</Visible>
+    <Model>Atomstack X20 Pro</Model>
+    <Material>Stainless Steel Sheet</Material>
+    <Thickness>0.05mm</Thickness>
+    <Action>Cut</Action>
+    <Power>80</Power>
+    <Speed>600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
 </MaterialDB>
