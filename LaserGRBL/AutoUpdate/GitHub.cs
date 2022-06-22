@@ -130,62 +130,69 @@ namespace LaserGRBL
 
 		private static void AsyncDownloadDB(object foo)
 		{
-			Exception error = null;
 			bool manual = (bool)foo;
 			if (UrlManager.UpdateMaterialDB != null)
 			{
-				error = null;
 				try
 				{
-					using (System.Net.WebClient wc = new System.Net.WebClient())
+					DateTime curdate = DateTime.UtcNow;
+					DateTime filedate = System.IO.File.Exists(PSHelper.MaterialDB.ServerFile) ? System.IO.File.GetLastWriteTimeUtc(PSHelper.MaterialDB.ServerFile) : new DateTime(2015,1,1, 0,0,0, DateTimeKind.Utc);
+
+					if (curdate.Subtract(filedate).TotalHours > 24) //non effettuare aggiornamenti se sono passate meno di 24 ore dall'ultima verifica
 					{
-						try
+						using (System.Net.WebClient wc = new System.Net.WebClient())
 						{
-							wc.Headers.Add("User-Agent: .Net WebClient");
-							string json = wc.DownloadString(UrlManager.UpdateMaterialDB);
-
-							dynamic commits = Tools.JSONParser.FromJson<dynamic>(json);
-							dynamic latest = commits[0];
-							dynamic commit = latest["commit"];
-							dynamic author = commit["author"];
-							DateTime gitdate = DateTime.Parse(author["date"] as string).ToUniversalTime();
-							DateTime localdate = System.IO.File.Exists(PSHelper.MaterialDB.ServerFile) ? System.IO.File.GetLastWriteTimeUtc(PSHelper.MaterialDB.ServerFile) : DateTime.MinValue;
-
-							if (gitdate > localdate)
+							try
 							{
-								//download and overwrite
+								wc.Headers.Add("User-Agent: .Net WebClient");
+								string json = wc.DownloadString(UrlManager.UpdateMaterialDB);
 
-								using (System.Net.WebClient dc = new System.Net.WebClient())
+								dynamic commits = Tools.JSONParser.FromJson<dynamic>(json);
+								dynamic latest = commits[0];
+								dynamic commit = latest["commit"];
+								dynamic author = commit["author"];
+								string sha = latest["sha"] as string;
+								DateTime gitdate = DateTime.Parse(author["date"] as string).ToUniversalTime();
+
+								if (gitdate > filedate) //è uscito un file più aggiornato
 								{
-									string tmp = System.IO.Path.Combine(System.IO.Path.GetTempPath(), System.IO.Path.GetTempFileName());
-									try
+									//download and overwrite
+
+									using (System.Net.WebClient dc = new System.Net.WebClient())
 									{
-										dc.DownloadFile(new Uri(UrlManager.DownloadMaterialDB), tmp);
-										if (System.IO.File.Exists(PSHelper.MaterialDB.ServerFile)) System.IO.File.Delete(PSHelper.MaterialDB.ServerFile);
-										System.IO.File.Move(tmp, PSHelper.MaterialDB.ServerFile);
-										System.IO.File.SetLastWriteTimeUtc(PSHelper.MaterialDB.ServerFile, gitdate);
-									}
-									catch (Exception ex) { }
-									finally
-									{
+										string tmp = System.IO.Path.Combine(System.IO.Path.GetTempPath(), System.IO.Path.GetTempFileName());
 										try
 										{
-											if (System.IO.File.Exists(tmp))
-												System.IO.File.Delete(tmp);
+											dc.DownloadFile(new Uri(UrlManager.DownloadMaterialDB), tmp);
+											if (System.IO.File.Exists(PSHelper.MaterialDB.ServerFile)) System.IO.File.Delete(PSHelper.MaterialDB.ServerFile);
+											System.IO.File.Move(tmp, PSHelper.MaterialDB.ServerFile);
+											System.IO.File.SetLastWriteTimeUtc(PSHelper.MaterialDB.ServerFile, curdate);
+											Logger.LogMessage("Update DB", $"Material DB Updated to {gitdate.ToShortDateString()} [{sha.Substring(0, 7)}]");
 										}
-										catch { }
+										catch (Exception ex) { Logger.LogException("Update DB", ex); }
+										finally
+										{
+											try
+											{
+												if (System.IO.File.Exists(tmp))
+													System.IO.File.Delete(tmp);
+											}
+											catch (Exception ex) { Logger.LogException("Update DB", ex); }
+										}
 									}
-								}
 
+								}
+								else //segna che il file è aggiornato
+								{
+									System.IO.File.SetLastWriteTimeUtc(PSHelper.MaterialDB.ServerFile, curdate);
+									Logger.LogMessage("Update DB", $"Material DB is up to date");
+								}
 							}
+							catch (Exception ex) { Logger.LogException("Update DB", ex); }
 						}
-						catch (Exception ex) { }
 					}
-				} //official https 
-				catch (Exception ex1)
-				{
-					error = ex1;
 				}
+				catch (Exception ex) { Logger.LogException("Update DB", ex); }
 			}
 
 		}

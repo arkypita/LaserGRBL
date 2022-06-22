@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "LaserGRBL"
-#define MyAppVersion "4.8.3"
+#define MyAppVersion "4.8.4"
 #define MyAppVersionName "Rhydon"
 #define MyAppPublisher "LaserGRBL"
 #define MyAppURL "https://lasergrbl.com"
@@ -66,7 +66,7 @@ Source: ".\LaserGRBL\bin\Release\nl-NL\LaserGRBL.resources.dll"; DestDir: "{app}
 Source: ".\LaserGRBL\bin\Release\Driver\*"; DestDir: "{app}\Driver"; Flags: ignoreversion
 Source: ".\LaserGRBL\bin\Release\Firmware\*"; DestDir: "{app}\Firmware"; Flags: ignoreversion
 Source: ".\LaserGRBL\bin\Release\LaserGRBL.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: ".\LaserGRBL\bin\Release\StandardMaterials.psh"; DestDir: "{app}"; Flags: ignoreversion
+Source: ".\LaserGRBL\bin\Release\StandardMaterials.psh"; DestDir: "{userappdata}\LaserGRBL\"; Flags: ignoreversion
 Source: ".\LaserGRBL\bin\Release\StandardButtons.zbn"; DestDir: "{app}"; Flags: ignoreversion
 Source: ".\LaserGRBL\bin\Release\Sound\*"; DestDir: "{app}\Sound"; Flags: ignoreversion
 Source: ".\lasergrblfile.ico"; DestDir: "{app}"; Flags: ignoreversion
