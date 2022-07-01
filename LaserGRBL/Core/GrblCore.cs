@@ -100,15 +100,18 @@ namespace LaserGRBL
 			int mMinor;
 			char mBuild;
 			bool mOrtur;
+			bool mGrblHal;
+
 			string mVendorInfo;
 			string mVendorVersion;
 
-			public GrblVersionInfo(int major, int minor, char build, string VendorInfo, string VendorVersion)
+			public GrblVersionInfo(int major, int minor, char build, string VendorInfo, string VendorVersion, bool IsHAL)
 			{
 				mMajor = major; mMinor = minor; mBuild = build;
 				mVendorInfo = VendorInfo;
 				mVendorVersion = VendorVersion;
 				mOrtur = VendorInfo != null && (VendorInfo.Contains("Ortur") || VendorInfo.Contains("Aufero"));
+				mGrblHal = IsHAL;
 			}
 
 			public GrblVersionInfo(int major, int minor, char build)
@@ -159,7 +162,7 @@ namespace LaserGRBL
 			public override bool Equals(object obj)
 			{
 				GrblVersionInfo v = obj as GrblVersionInfo;
-				return v != null && this.mMajor == v.mMajor && this.mMinor == v.mMinor && this.mBuild == v.mBuild && this.mOrtur == v.mOrtur;
+				return v != null && this.mMajor == v.mMajor && this.mMinor == v.mMinor && this.mBuild == v.mBuild && this.mOrtur == v.mOrtur && this.mGrblHal == v.mGrblHal;
 			}
 
 			public override int GetHashCode()
@@ -171,6 +174,8 @@ namespace LaserGRBL
 					hash = hash * 23 + mMajor.GetHashCode();
 					hash = hash * 23 + mMinor.GetHashCode();
 					hash = hash * 23 + mBuild.GetHashCode();
+					hash = hash * 23 + mOrtur.GetHashCode();
+					hash = hash * 23 + mGrblHal.GetHashCode();
 					return hash;
 				}
 			}
@@ -208,11 +213,10 @@ namespace LaserGRBL
 			public object Clone()
 			{ return this.MemberwiseClone(); }
 
-			public int Major { get { return mMajor; } }
-
-			public int Minor { get { return mMinor; } }
-
-			public bool IsOrtur { get => mOrtur; internal set => mOrtur = value; }
+			public int Major => mMajor;
+			public int Minor => mMinor;
+			public bool IsOrtur => mOrtur;
+			public bool IsHAL => mGrblHal;
 
 			public string Vendor
 			{
@@ -1776,6 +1780,8 @@ namespace LaserGRBL
 				ManageCommandResponse(rline);
 			else if (IsRealtimeStatusMessage(rline))
 				ManageRealTimeStatus(rline);
+			else if (IsGrblHalWelcomeMessage(rline))
+				ManageGrblHalWelcomeMessage(rline);
 			else if (IsVigoWelcomeMessage(rline))
 				ManageVigoWelcomeMessage(rline);
 			else if (IsOrturModelMessage(rline))
@@ -1798,6 +1804,7 @@ namespace LaserGRBL
 
 		private bool IsCommandReplyMessage(string rline) => rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error");
 		private bool IsRealtimeStatusMessage(string rline) => rline.StartsWith("<") && rline.EndsWith(">");
+		private bool IsGrblHalWelcomeMessage(string rline) => rline.StartsWith("GrblHAL");
 		private bool IsVigoWelcomeMessage(string rline) => rline.StartsWith("Grbl-Vigo");
 		private bool IsOrturModelMessage(string rline) => rline.StartsWith("Ortur ");
 		private bool IsAuferoModelMessage(string rline) => rline.StartsWith("Aufero ");
@@ -1832,13 +1839,34 @@ namespace LaserGRBL
 
 		private void ManageStandardWelcomeMessage(string rline)
 		{
-			//Grbl vX.Xx ['$' for help]
+			//Grbl X.Xx ['$' for help]
 			try
 			{
 				int maj = int.Parse(rline.Substring(5, 1));
 				int min = int.Parse(rline.Substring(7, 1));
 				char build = rline.Substring(8, 1).ToCharArray()[0];
-				GrblVersion = new GrblVersionInfo(maj, min, build, mWelcomeSeen, mVersionSeen);
+				GrblVersion = new GrblVersionInfo(maj, min, build, mWelcomeSeen, mVersionSeen, false);
+
+				DetectUnexpectedReset();
+				OnStartupMessage();
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("VersionInfo", "Ex on [{0}] message", rline);
+				Logger.LogException("VersionInfo", ex);
+			}
+			mSentPtr.Add(new GrblMessage(rline, false));
+		}
+
+		private void ManageGrblHalWelcomeMessage(string rline)
+		{
+			//GrblHAL X.Xx ['$' or '$HELP' for help]
+			try
+			{
+				int maj = int.Parse(rline.Substring(8, 1));
+				int min = int.Parse(rline.Substring(10, 1));
+				char build = rline.Substring(11, 1).ToCharArray()[0];
+				GrblVersion = new GrblVersionInfo(maj, min, build, mWelcomeSeen, mVersionSeen, true);
 
 				DetectUnexpectedReset();
 				OnStartupMessage();
@@ -1860,7 +1888,7 @@ namespace LaserGRBL
 				int min = int.Parse(rline.Substring(12, 1));
 				char build = rline.Substring(13, 1).ToCharArray()[0];
 				string VendorVersion = rline.Split(':')[2];
-				GrblVersion = new GrblVersionInfo(maj, min, build, "Vigotec", VendorVersion);
+				GrblVersion = new GrblVersionInfo(maj, min, build, "Vigotec", VendorVersion, false);
 				Logger.LogMessage("VigoInfo", "Detected {0}", VendorVersion);
 
 				DetectUnexpectedReset();
