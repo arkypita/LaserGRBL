@@ -2188,6 +2188,8 @@ namespace LaserGRBL
 
 		private void EnlargeBuffer(int newval, bool force)
 		{
+			int oldval = mAutoBufferSize;
+
 			if (force) //this came from $I at connect, and so it is a verified buffer size
 			{
 				mAutoBufferSize = newval;
@@ -2209,6 +2211,9 @@ namespace LaserGRBL
 				else if (newval == 254) //Ortur
 					mAutoBufferSize = 254;
 			}
+
+			if (mAutoBufferSize != oldval)
+				Logger.LogMessage("EnlargeBuffer", "Buffer size changed to {0}", mAutoBufferSize);
 		}
 
 		private void ParseFS(string p)
