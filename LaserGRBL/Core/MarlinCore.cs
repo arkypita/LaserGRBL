@@ -65,8 +65,12 @@ namespace LaserGRBL
         {
 
         }
+		public override void RefreshMachineInfo()
+		{
+			
+		}
 
-        protected override void DetectHang()
+		protected override void DetectHang()
         {
             if (mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
             {

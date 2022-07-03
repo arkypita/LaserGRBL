@@ -196,7 +196,7 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 400</value>
+    <value>3, 429</value>
   </data>
   <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -382,7 +382,7 @@
     <value>BtnStreamingMode</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.7.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.4.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -485,7 +485,7 @@
     <value>BtnProtocol</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.7.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.4.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -559,7 +559,7 @@ Set slower values if you are experiencing issues.</value>
     <value>BtnThreadingModel</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.7.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.4.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -828,13 +828,74 @@ If disabled all the issues are silently managed without warning.</value>
     <value>BtnFType</value>
   </data>
   <data name="&gt;&gt;BtnFType.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.7.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.4.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnFType.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;BtnFType.ZOrder" xml:space="preserve">
     <value>17</value>
+  </data>
+  <data name="CbQueryDI.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CbQueryDI.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CbQueryDI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 328</value>
+  </data>
+  <data name="CbQueryDI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 17</value>
+  </data>
+  <data name="CbQueryDI.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="CbQueryDI.Text" xml:space="preserve">
+    <value>Query $I at connect</value>
+  </data>
+  <data name="&gt;&gt;CbQueryDI.Name" xml:space="preserve">
+    <value>CbQueryDI</value>
+  </data>
+  <data name="&gt;&gt;CbQueryDI.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CbQueryDI.Parent" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;CbQueryDI.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="label46.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label46.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label46.Location" type="System.Drawing.Point, System.Drawing">
+    <value>177, 325</value>
+  </data>
+  <data name="label46.Size" type="System.Drawing.Size, System.Drawing">
+    <value>580, 26</value>
+  </data>
+  <data name="label46.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <data name="label46.Text" xml:space="preserve">
+    <value>In enabled LaserGRBL send a $I command and detect some information from the machine (i.e. the machine rx buffer size).
+Please do not disable this feature.</value>
+  </data>
+  <data name="&gt;&gt;label46.Name" xml:space="preserve">
+    <value>label46</value>
+  </data>
+  <data name="&gt;&gt;label46.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label46.Parent" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;label46.ZOrder" xml:space="preserve">
+    <value>19</value>
   </data>
   <data name="tableLayoutPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -843,10 +904,10 @@ If disabled all the issues are silently managed without warning.</value>
     <value>3, 3</value>
   </data>
   <data name="tableLayoutPanel3.RowCount" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 340</value>
+    <value>886, 388</value>
   </data>
   <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -864,7 +925,7 @@ If disabled all the issues are silently managed without warning.</value>
     <value>0</value>
   </data>
   <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CBCore" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CbThreadingMode" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CBStreamingMode" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnStreamingMode" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CBProtocol" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnProtocol" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label6" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnThreadingModel" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbIssueDetector" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label7" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbSoftReset" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="5" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbHardReset" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label8" Row="6" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnFType" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,Absolute,148,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CBCore" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CbThreadingMode" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CBStreamingMode" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnStreamingMode" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CBProtocol" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnProtocol" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label6" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnThreadingModel" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbIssueDetector" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label7" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbSoftReset" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="5" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbHardReset" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label8" Row="6" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BtnFType" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CbQueryDI" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label46" Row="7" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,Absolute,148,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="TpHardware.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -873,7 +934,7 @@ If disabled all the issues are silently managed without warning.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpHardware.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 394</value>
   </data>
   <data name="TpHardware.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1067,7 +1128,7 @@ If not, please disable PWM support.</value>
     <value>BtnModulationInfo</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.7.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.4.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -1287,7 +1348,7 @@ Set this flag if you don't whant this safety control.</value>
     <value>5</value>
   </data>
   <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 340</value>
+    <value>886, 359</value>
   </data>
   <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1314,7 +1375,7 @@ Set this flag if you don't whant this safety control.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpRasterImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="TpRasterImport.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1444,7 +1505,7 @@ Disable this option if you prefer to use the old algorithm.</value>
     <value>imageButton1</value>
   </data>
   <data name="&gt;&gt;imageButton1.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.7.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.4.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imageButton1.Parent" xml:space="preserve">
     <value>tableLayoutPanel18</value>
@@ -1462,7 +1523,7 @@ Disable this option if you prefer to use the old algorithm.</value>
     <value>2</value>
   </data>
   <data name="tableLayoutPanel18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 340</value>
+    <value>886, 359</value>
   </data>
   <data name="tableLayoutPanel18.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1489,7 +1550,7 @@ Disable this option if you prefer to use the old algorithm.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpVectorImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="TpVectorImport.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1744,7 +1805,7 @@ NOTE: "Continuous Jog" only work with Grbl v1.1 or later, and require table size
     <value>4</value>
   </data>
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 340</value>
+    <value>886, 359</value>
   </data>
   <data name="tableLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1771,7 +1832,7 @@ NOTE: "Continuous Jog" only work with Grbl v1.1 or later, and require table size
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpJogControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="TpJogControl.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2467,7 +2528,7 @@ Please do not use Automatic Cooling with Ortur engraver until a new firmware is 
     <value>6</value>
   </data>
   <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 340</value>
+    <value>886, 359</value>
   </data>
   <data name="tableLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2494,7 +2555,7 @@ Please do not use Automatic Cooling with Ortur engraver until a new firmware is 
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpAutoCooling.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="TpAutoCooling.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2817,7 +2878,7 @@ Here you can use the same syntax of custom buttons.</value>
     <value>4</value>
   </data>
   <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="tableLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2841,7 +2902,7 @@ Here you can use the same syntax of custom buttons.</value>
     <value>4, 22</value>
   </data>
   <data name="TpGCodeSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 346</value>
+    <value>892, 365</value>
   </data>
   <data name="TpGCodeSettings.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -4378,7 +4439,7 @@ Check to enable.
     <value>BtnTelegNoteInfo</value>
   </data>
   <data name="&gt;&gt;BtnTelegNoteInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.7.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.4.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnTelegNoteInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel17</value>
@@ -4521,28 +4582,28 @@ Check to enable.
   <data name="tableLayoutPanel19.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="UdNotifyThreshold.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="UdTelegramNotificationThreshold.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="UdNotifyThreshold.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="UdTelegramNotificationThreshold.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="UdNotifyThreshold.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="UdTelegramNotificationThreshold.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 20</value>
   </data>
-  <data name="UdNotifyThreshold.TabIndex" type="System.Int32, mscorlib">
+  <data name="UdTelegramNotificationThreshold.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
   </data>
-  <data name="&gt;&gt;UdNotifyThreshold.Name" xml:space="preserve">
-    <value>UdNotifyThreshold</value>
+  <data name="&gt;&gt;UdTelegramNotificationThreshold.Name" xml:space="preserve">
+    <value>UdTelegramNotificationThreshold</value>
   </data>
-  <data name="&gt;&gt;UdNotifyThreshold.Type" xml:space="preserve">
+  <data name="&gt;&gt;UdTelegramNotificationThreshold.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;UdNotifyThreshold.Parent" xml:space="preserve">
+  <data name="&gt;&gt;UdTelegramNotificationThreshold.Parent" xml:space="preserve">
     <value>tableLayoutPanel19</value>
   </data>
-  <data name="&gt;&gt;UdNotifyThreshold.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;UdTelegramNotificationThreshold.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="label45.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -4550,6 +4611,9 @@ Check to enable.
   </data>
   <data name="label45.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label45.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label45.Location" type="System.Drawing.Point, System.Drawing">
     <value>64, 6</value>
@@ -4600,7 +4664,7 @@ Check to enable.
     <value>6</value>
   </data>
   <data name="tableLayoutPanel19.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="UdNotifyThreshold" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label45" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,AutoSize,50" /&gt;&lt;Rows Styles="AutoSize,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="UdTelegramNotificationThreshold" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label45" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel17.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 261</value>
@@ -4730,7 +4794,7 @@ Obtain your personal code and write it here!</value>
     <value>3, 3</value>
   </data>
   <data name="MainTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>900, 391</value>
+    <value>900, 420</value>
   </data>
   <data name="MainTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -4757,7 +4821,7 @@ Obtain your personal code and write it here!</value>
     <value>2</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>906, 436</value>
+    <value>906, 465</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4778,13 +4842,16 @@ Obtain your personal code and write it here!</value>
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="MainTabPage" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="SoundBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>183, 17</value>
+    <value>24, 18</value>
   </metadata>
   <data name="SoundBrowserDialog.Filter" xml:space="preserve">
     <value>Waveform Audio File|*.wav</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>52</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -4796,7 +4863,7 @@ Obtain your personal code and write it here!</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>906, 436</value>
+    <value>906, 465</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -8303,6 +8370,9 @@ Obtain your personal code and write it here!</value>
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAA
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
