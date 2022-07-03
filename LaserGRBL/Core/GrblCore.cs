@@ -2213,7 +2213,7 @@ namespace LaserGRBL
 			}
 
 			if (mAutoBufferSize != oldval)
-				Logger.LogMessage("EnlargeBuffer", "Buffer size changed to {0}", mAutoBufferSize);
+				Logger.LogMessage("EnlargeBuffer", "Buffer size changed to {0} [{1}]", mAutoBufferSize, force);
 		}
 
 		private void ParseFS(string p)
