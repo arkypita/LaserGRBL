@@ -100,15 +100,18 @@ namespace LaserGRBL
 			int mMinor;
 			char mBuild;
 			bool mOrtur;
+			bool mGrblHal;
+
 			string mVendorInfo;
 			string mVendorVersion;
 
-			public GrblVersionInfo(int major, int minor, char build, string VendorInfo, string VendorVersion)
+			public GrblVersionInfo(int major, int minor, char build, string VendorInfo, string VendorVersion, bool IsHAL)
 			{
 				mMajor = major; mMinor = minor; mBuild = build;
 				mVendorInfo = VendorInfo;
 				mVendorVersion = VendorVersion;
 				mOrtur = VendorInfo != null && (VendorInfo.Contains("Ortur") || VendorInfo.Contains("Aufero"));
+				mGrblHal = IsHAL;
 			}
 
 			public GrblVersionInfo(int major, int minor, char build)
@@ -159,7 +162,7 @@ namespace LaserGRBL
 			public override bool Equals(object obj)
 			{
 				GrblVersionInfo v = obj as GrblVersionInfo;
-				return v != null && this.mMajor == v.mMajor && this.mMinor == v.mMinor && this.mBuild == v.mBuild && this.mOrtur == v.mOrtur;
+				return v != null && this.mMajor == v.mMajor && this.mMinor == v.mMinor && this.mBuild == v.mBuild && this.mOrtur == v.mOrtur && this.mGrblHal == v.mGrblHal;
 			}
 
 			public override int GetHashCode()
@@ -171,6 +174,8 @@ namespace LaserGRBL
 					hash = hash * 23 + mMajor.GetHashCode();
 					hash = hash * 23 + mMinor.GetHashCode();
 					hash = hash * 23 + mBuild.GetHashCode();
+					hash = hash * 23 + mOrtur.GetHashCode();
+					hash = hash * 23 + mGrblHal.GetHashCode();
 					return hash;
 				}
 			}
@@ -208,11 +213,10 @@ namespace LaserGRBL
 			public object Clone()
 			{ return this.MemberwiseClone(); }
 
-			public int Major { get { return mMajor; } }
-
-			public int Minor { get { return mMinor; } }
-
-			public bool IsOrtur { get => mOrtur; internal set => mOrtur = value; }
+			public int Major => mMajor;
+			public int Minor => mMinor;
+			public bool IsOrtur => mOrtur;
+			public bool IsHAL => mGrblHal;
 
 			public string Vendor
 			{
@@ -269,7 +273,9 @@ namespace LaserGRBL
 		private string mWelcomeSeen = null;
 		private string mVersionSeen = null;
 		protected int mUsedBuffer;
-		private int mAutoBufferSize = 127;
+
+		private const int DEFAULT_BUFFER_SIZE = 127;
+		private int mAutoBufferSize = DEFAULT_BUFFER_SIZE;
 		private GPoint mMPos;
 		private GPoint mWCO;
 		private int mGrblBlocks = -1;
@@ -833,8 +839,117 @@ namespace LaserGRBL
 
 		private void RefreshConfigOnConnect(object state) //da usare per la chiamata asincrona
 		{
-			try { RefreshConfig(); }
+			try
+			{
+				System.Threading.Thread.Sleep(500); //allow the machine to send all the startup messages before refreshing config and info
+				RefreshConfig();
+				RefreshMachineInfo();
+			}
 			catch { }
+		}
+
+		public virtual void RefreshMachineInfo()
+		{
+			if (Settings.GetObject("Query MachineInfo ($I) at connect", true))
+			{
+				try
+				{
+					//GrblConf conf = new GrblConf(GrblVersion);
+					GrblCommand cmd = new GrblCommand("$I");
+
+					lock (this)
+					{
+						mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
+						mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
+						mQueuePtr.Enqueue(cmd);
+					}
+
+					Tools.PeriodicEventTimer WaitResponseTimeout = new Tools.PeriodicEventTimer(TimeSpan.FromSeconds(10), true);
+
+					//resta in attesa dell'invio del comando e della risposta
+					while (cmd.Status == GrblCommand.CommandStatus.Queued || cmd.Status == GrblCommand.CommandStatus.WaitingResponse)
+					{
+						if (WaitResponseTimeout.Expired)
+							throw new TimeoutException("No response received from grbl!");
+						else
+							System.Threading.Thread.Sleep(10);
+					}
+
+					if (cmd.Status == GrblCommand.CommandStatus.ResponseGood)
+					{
+						//attendi la ricezione di tutti i parametri
+						long tStart = Tools.HiResTimer.TotalMilliseconds;
+						long tLast = tStart;
+						int counter = mSentPtr.Count;
+						int target = 2 + 1; //il +1 è il comando $I
+
+						//finché ne devo ricevere ancora && l'ultima risposta è più recente di 500mS && non sono passati più di 5s totali
+						while (mSentPtr.Count < target && Tools.HiResTimer.TotalMilliseconds - tLast < 500 && Tools.HiResTimer.TotalMilliseconds - tStart < 5000)
+						{
+							if (mSentPtr.Count != counter)
+							{ tLast = Tools.HiResTimer.TotalMilliseconds; counter = mSentPtr.Count; }
+							else
+								System.Threading.Thread.Sleep(10);
+						}
+
+						foreach (IGrblRow row in mSentPtr) //read the reply
+						{
+							string rline = row.GetMessage();
+							if (IsIVerMessage(rline))
+								ManageVerMessage(rline);
+							else if (IsIOptMessage(rline))
+								ManageOptMessage(rline);
+						}
+					}
+				}
+				catch (Exception ex)
+				{
+					Logger.LogException("Refresh Config", ex);
+					throw (ex);
+				}
+				finally
+				{
+					lock (this)
+					{
+						mQueuePtr = mQueue;
+						mSentPtr = mSent; //restore queue
+					}
+				}
+			}
+		}
+
+		private void ManageOptMessage(string rline)
+		{
+			try
+			{
+				rline = rline.Substring(5, rline.Length - 6);
+				string[] arr = rline.Split(',');
+				string letters = arr[0];
+				int bbuffer = int.Parse(arr[1]);
+				int txbuffer = int.Parse(arr[2]);
+
+				if (txbuffer > DEFAULT_BUFFER_SIZE) //more then default buffer size
+					EnlargeBuffer(txbuffer, true);
+
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("OptionsMessage", "Ex on [{0}] message", rline);
+				Logger.LogException("OptionsMessage", ex);
+			}
+		}
+
+		private void ManageVerMessage(string rline)
+		{
+			try
+			{
+				rline = rline.Substring(5, rline.Length - 6);
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("VersionMessage", "Ex on [{0}] message", rline);
+				Logger.LogException("VersionMessage", ex);
+			}
 		}
 
 		public virtual void RefreshConfig()
@@ -1171,7 +1286,7 @@ namespace LaserGRBL
 		{
 			try
 			{
-				mAutoBufferSize = 127; //reset to default buffer size
+				mAutoBufferSize = DEFAULT_BUFFER_SIZE; //reset to default buffer size
 				SetStatus(MacStatus.Connecting);
 				connectStart = Tools.HiResTimer.TotalMilliseconds;
 
@@ -1799,6 +1914,8 @@ namespace LaserGRBL
 				ManageCommandResponse(rline);
 			else if (IsRealtimeStatusMessage(rline))
 				ManageRealTimeStatus(rline);
+			else if (IsGrblHalWelcomeMessage(rline))
+				ManageGrblHalWelcomeMessage(rline);
 			else if (IsVigoWelcomeMessage(rline))
 				ManageVigoWelcomeMessage(rline);
 			else if (IsOrturModelMessage(rline))
@@ -1821,6 +1938,7 @@ namespace LaserGRBL
 
 		private bool IsCommandReplyMessage(string rline) => rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error");
 		private bool IsRealtimeStatusMessage(string rline) => rline.StartsWith("<") && rline.EndsWith(">");
+		private bool IsGrblHalWelcomeMessage(string rline) => rline.StartsWith("GrblHAL");
 		private bool IsVigoWelcomeMessage(string rline) => rline.StartsWith("Grbl-Vigo");
 		private bool IsOrturModelMessage(string rline) => rline.StartsWith("Ortur ");
 		private bool IsAuferoModelMessage(string rline) => rline.StartsWith("Aufero ");
@@ -1828,6 +1946,8 @@ namespace LaserGRBL
 		private bool IsStandardWelcomeMessage(string rline) => rline.StartsWith("Grbl");
 		private bool IsBrokenOkMessage(string rline) => rline.ToLower().Contains("ok");
 		private bool IsStandardBlockingAlarm(string rline) => rline.ToLower().StartsWith("alarm:");
+		private bool IsIVerMessage(string rline) => rline.StartsWith("[VER:") && rline.EndsWith("]");
+		private bool IsIOptMessage(string rline) => rline.StartsWith("[OPT:") && rline.EndsWith("]");
 		private bool IsOrturBlockingAlarm(string rline) => false;
 
 		private void ManageGenericMessage(string rline)
@@ -1855,13 +1975,34 @@ namespace LaserGRBL
 
 		private void ManageStandardWelcomeMessage(string rline)
 		{
-			//Grbl vX.Xx ['$' for help]
+			//Grbl X.Xx ['$' for help]
 			try
 			{
 				int maj = int.Parse(rline.Substring(5, 1));
 				int min = int.Parse(rline.Substring(7, 1));
 				char build = rline.Substring(8, 1).ToCharArray()[0];
-				GrblVersion = new GrblVersionInfo(maj, min, build, mWelcomeSeen, mVersionSeen);
+				GrblVersion = new GrblVersionInfo(maj, min, build, mWelcomeSeen, mVersionSeen, false);
+
+				DetectUnexpectedReset();
+				OnStartupMessage();
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("VersionInfo", "Ex on [{0}] message", rline);
+				Logger.LogException("VersionInfo", ex);
+			}
+			mSentPtr.Add(new GrblMessage(rline, false));
+		}
+
+		private void ManageGrblHalWelcomeMessage(string rline)
+		{
+			//GrblHAL X.Xx ['$' or '$HELP' for help]
+			try
+			{
+				int maj = int.Parse(rline.Substring(8, 1));
+				int min = int.Parse(rline.Substring(10, 1));
+				char build = rline.Substring(11, 1).ToCharArray()[0];
+				GrblVersion = new GrblVersionInfo(maj, min, build, mWelcomeSeen, mVersionSeen, true);
 
 				DetectUnexpectedReset();
 				OnStartupMessage();
@@ -1883,7 +2024,7 @@ namespace LaserGRBL
 				int min = int.Parse(rline.Substring(12, 1));
 				char build = rline.Substring(13, 1).ToCharArray()[0];
 				string VendorVersion = rline.Split(':')[2];
-				GrblVersion = new GrblVersionInfo(maj, min, build, "Vigotec", VendorVersion);
+				GrblVersion = new GrblVersionInfo(maj, min, build, "Vigotec", VendorVersion, false);
 				Logger.LogMessage("VigoInfo", "Detected {0}", VendorVersion);
 
 				DetectUnexpectedReset();
@@ -2065,24 +2206,37 @@ namespace LaserGRBL
 			mGrblBlocks = int.Parse(ab[0]);
 			mGrblBuffer = int.Parse(ab[1]);
 
-			EnlargeBuffer(mGrblBuffer);
+			EnlargeBuffer(mGrblBuffer, false); //do not force here, we cannot rely on values received from report (electrical noise?!)
 		}
 
-		private void EnlargeBuffer(int mGrblBuffer)
+		private void EnlargeBuffer(int newval, bool force)
 		{
-			if (BufferSize == 127) //act only to change default value at first event, do not re-act without a new connect
+			int oldval = mAutoBufferSize;
+
+			if (force) //this came from $I at connect, and so it is a verified buffer size
 			{
-				if (mGrblBuffer == 128) //Grbl v1.1 with enabled buffer report
+				mAutoBufferSize = newval;
+			}
+			else if (mAutoBufferSize == DEFAULT_BUFFER_SIZE)
+			{
+				// act only to change default value at first event
+				// do not re-act without a new connect
+				// only allow known values (do not accept error in bf message caused by electrical noise)
+
+				if (newval == 128) //Grbl v1.1 with enabled buffer report
 					mAutoBufferSize = 128;
-				else if (mGrblBuffer == 255) //Grbl-Mega fixed
+				else if (newval == 255) //Grbl-Mega fixed
 					mAutoBufferSize = 255;
-				else if (mGrblBuffer == 256) //Grbl-Mega
+				else if (newval == 256) //Grbl-Mega
 					mAutoBufferSize = 256;
-				else if (mGrblBuffer == 10240) //Grbl-LPC
+				else if (newval == 10240) //Grbl-LPC
 					mAutoBufferSize = 10240;
-				else if (mGrblBuffer == 254) //Ortur
+				else if (newval == 254) //Ortur
 					mAutoBufferSize = 254;
 			}
+
+			if (mAutoBufferSize != oldval)
+				Logger.LogMessage("EnlargeBuffer", "Buffer size changed to {0} [{1}]", mAutoBufferSize, force);
 		}
 
 		private void ParseFS(string p)

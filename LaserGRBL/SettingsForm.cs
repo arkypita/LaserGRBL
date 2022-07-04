@@ -46,6 +46,7 @@ namespace LaserGRBL
 			CbIssueDetector.Checked = !Settings.GetObject("Do not show Issue Detector", false);
 			CbSoftReset.Checked = Settings.GetObject("Reset Grbl On Connect", true);
 			CbHardReset.Checked = Settings.GetObject("HardReset Grbl On Connect", false);
+			CbQueryDI.Checked = Settings.GetObject("Query MachineInfo ($I) at connect", true);
 			CbDisableBoundWarn.Checked = Settings.GetObject("DisableBoundaryWarning", false);
 			CbClickNJog.Checked = Settings.GetObject("Click N Jog", true);
 
@@ -183,7 +184,8 @@ namespace LaserGRBL
 			Settings.SetObject("Do not show Issue Detector", !CbIssueDetector.Checked);
 			Settings.SetObject("Reset Grbl On Connect", CbSoftReset.Checked);
 			Settings.SetObject("HardReset Grbl On Connect", CbHardReset.Checked);
-            Settings.SetObject("Enable Continuous Jog", CbContinuosJog.Checked);
+			Settings.SetObject("Query MachineInfo ($I) at connect", CbQueryDI.Checked);
+			Settings.SetObject("Enable Continuous Jog", CbContinuosJog.Checked);
             Settings.SetObject("Enale Z Jog Control", CbEnableZJog.Checked);
 			Settings.SetObject("DisableBoundaryWarning", CbDisableBoundWarn.Checked);
 			Settings.SetObject("Click N Jog", CbClickNJog.Checked);
