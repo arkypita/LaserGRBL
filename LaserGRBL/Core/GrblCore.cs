@@ -901,9 +901,9 @@ namespace LaserGRBL
 			{
 				rline = rline.Substring(5, rline.Length - 6);
 				string[] arr = rline.Split(',');
-				string letters = arr[0];
-				int bbuffer = int.Parse(arr[1]);
-				int txbuffer = int.Parse(arr[2]);
+				string letters = arr.Length > 0 ? arr[0] : null;
+				int bbuffer = arr.Length > 1 ? int.Parse(arr[1]) : 0;
+				int txbuffer = arr.Length > 2 ? int.Parse(arr[2]) : 0;
 
 				if (txbuffer > DEFAULT_BUFFER_SIZE) //more then default buffer size
 					EnlargeBuffer(txbuffer, true);
