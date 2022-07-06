@@ -241,7 +241,7 @@ namespace LaserGRBL
 					catch { return -1; }
 				}
 			}
-		}
+        }
 
 		public delegate void dlgIssueDetector(DetectedIssue issue);
 		public delegate void dlgOnMachineStatus();
@@ -921,6 +921,8 @@ namespace LaserGRBL
 			try
 			{
 				rline = rline.Substring(5, rline.Length - 6);
+                //if (rline.ToLower().Contains("neje"))
+                //    GrblVersion?.IsNeje = true;
 			}
 			catch (Exception ex)
 			{

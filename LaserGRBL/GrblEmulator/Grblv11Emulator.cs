@@ -228,18 +228,20 @@ namespace LaserGRBL.GrblEmulator
 					{
 						string line = rxBuf.Dequeue();
 
-						if (line == "$$\n")
-							SendConfig();
-						else if (IsSetConf(line))
-							SetConfig(line);
-						else if (line == "$C\n")
-							SwapCheck();
-						else if (line == "$H\n")
-							EmulateHoming();
-						else if (line.StartsWith("$J="))
-							EmulateCommand(new JogCommand(line));
-						else
-							EmulateCommand(new GrblCommand(line));
+                        if (line == "$$\n")
+                            SendConfig();
+                        else if (IsSetConf(line))
+                            SetConfig(line);
+                        else if (line == "$C\n")
+                            SwapCheck();
+                        else if (line == "$H\n")
+                            EmulateHoming();
+                        else if (line == "$I\n")
+                            SendInfo();
+                        else if (line.StartsWith("$J="))
+                            EmulateCommand(new JogCommand(line));
+                        else
+                            EmulateCommand(new GrblCommand(line));
 
 						EmuLog(line.Trim("\n".ToCharArray()));
 					}
@@ -252,7 +254,21 @@ namespace LaserGRBL.GrblEmulator
 			}
 		}
 
-		private void EmulateHoming()
+        private void SendInfo()
+        {
+            EnqueueTX("ok");
+
+            //standard Grbl
+            EnqueueTX("[VER:1.1#.20220607:]");
+            EnqueueTX("[OPT:V,15,1024]");
+
+            //neje max 3
+            //EnqueueTX("[VER:1.1#.NEJE build version:v1.0.3:]");
+            //EnqueueTX("[OPT:VMZHL,35,254]");
+
+        }
+
+        private void EmulateHoming()
 		{
 			System.Threading.Thread.Sleep(2000);
 			SPB.Homing();
