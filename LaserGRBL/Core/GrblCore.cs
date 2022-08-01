@@ -85,7 +85,7 @@ namespace LaserGRBL
 		}
 
 		public enum MacStatus
-		{ Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue, Cooling }
+		{ Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue, Cooling, AutoHold }
 
 		public enum JogDirection
 		{ None, Abort, Home, N, S, W, E, NW, NE, SW, SE, Zup, Zdown }
@@ -428,7 +428,7 @@ namespace LaserGRBL
 
 					Logger.LogMessage("SetStatus", "Machine status [{0}]", mMachineStatus);
 					if (oldStatus == MacStatus.Connecting && newStatus == MacStatus.Disconnected)
-						mFailedConnection ++;
+						mFailedConnection++;
 					if (oldStatus == MacStatus.Connecting && newStatus != MacStatus.Disconnected)
 						mFailedConnection = 0;
 					if (oldStatus == MacStatus.Connecting && newStatus != MacStatus.Disconnected)
@@ -437,8 +437,8 @@ namespace LaserGRBL
 						SoundEvent.PlaySound(SoundEvent.EventId.Connect);
 					if (newStatus == MacStatus.Disconnected)
 						SoundEvent.PlaySound(SoundEvent.EventId.Disconnect);
-					if (mHoldByUserRequest && newStatus != MacStatus.Hold && newStatus != MacStatus.Cooling && (oldStatus == MacStatus.Hold || oldStatus == MacStatus.Cooling))
-						mHoldByUserRequest = false; //se sto uscendo da uno stato di hold per qualsiasi motivo (tipo un reset o altro) mi tolgo l'userHold
+					if (IsAnyHoldState(oldStatus) && !IsAnyHoldState(newStatus))
+						mHoldByCoolingRequest = mHoldByUserRequest = false; //se sto uscendo da uno stato di hold per qualsiasi motivo (tipo un reset o altro) mi tolgo l'userHold e il coolingHold
 
 					RiseMachineStatusChanged();
 
@@ -451,6 +451,11 @@ namespace LaserGRBL
 					}
 				}
 			}
+		}
+
+		private static bool IsAnyHoldState(MacStatus status)
+		{
+			return status == MacStatus.Hold || status == MacStatus.Cooling || status == MacStatus.AutoHold;
 		}
 
 		private void RefreshConfigOnConnect()
@@ -1322,17 +1327,18 @@ namespace LaserGRBL
 		{
 			if (CanResumeHold)
 			{
-				mHoldByUserRequest = false;
+                mHoldByCoolingRequest = mHoldByUserRequest = false;
 				SendImmediate(126);
 			}
 		}
 
-		public void FeedHold(bool auto)
+		public void FeedHold(bool cooling)
 		{
 			if (CanFeedHold)
 			{
-				mHoldByUserRequest = !auto;
-				SendImmediate(33);
+				mHoldByUserRequest = !cooling;
+                mHoldByCoolingRequest = cooling;
+                SendImmediate(33);
 			}
 		}
 
@@ -2422,10 +2428,12 @@ namespace LaserGRBL
 			if (InProgram && var == MacStatus.Idle) //bugfix for grbl sending Idle on G4
 				var = MacStatus.Run;
 
-			if (var == MacStatus.Hold && !mHoldByUserRequest)
+			if (var == MacStatus.Hold && mHoldByCoolingRequest)
 				var = MacStatus.Cooling;
+            else if (var == MacStatus.Hold && !mHoldByUserRequest)
+                var = MacStatus.AutoHold;
 
-			SetStatus(var);
+            SetStatus(var);
 		}
 
 		
@@ -2484,7 +2492,7 @@ namespace LaserGRBL
 		{ get { return IsConnected && HasProgram && IdleOrCheck; } }
 
 		public bool CanAbortProgram
-		{ get { return IsConnected && HasProgram && (MachineStatus == MacStatus.Run || MachineStatus == MacStatus.Hold || MachineStatus == MacStatus.Cooling); } }
+		{ get { return IsConnected && HasProgram && (MachineStatus == MacStatus.Run || IsAnyHoldState(MachineStatus)); } }
 
 		public bool CanImportExport
 		{ get { return IsConnected && MachineStatus == MacStatus.Idle; } }
@@ -2508,7 +2516,7 @@ namespace LaserGRBL
 		{ get { return IsConnected && MachineStatus == MacStatus.Run; } }
 
 		public bool CanResumeHold
-		{ get { return IsConnected && (MachineStatus == MacStatus.Door || MachineStatus == MacStatus.Hold || MachineStatus == MacStatus.Cooling); } }
+		{ get { return IsConnected && (MachineStatus == MacStatus.Door || IsAnyHoldState(MachineStatus)); } }
 
 		public bool CanReadWriteConfig
 		{ get { return IsConnected && !InProgram && (MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Alarm); } }
@@ -2537,12 +2545,13 @@ namespace LaserGRBL
 
 		private void ManageCoolingCycles()
 		{
-			if (AutoCooling && InProgram && !mHoldByUserRequest)
+			if (AutoCooling && InProgram && MachineStatus != MacStatus.Hold && MachineStatus != MacStatus.AutoHold)
 				NowCooling = (ProgramGlobalTime.Ticks % (AutoCoolingOn + AutoCoolingOff).Ticks) > AutoCoolingOn.Ticks;
 		}
 
 		protected bool mHoldByUserRequest = false;
-		private bool mNowCooling = false;
+        protected bool mHoldByCoolingRequest = false;
+        private bool mNowCooling = false;
 		private bool NowCooling
 		{
 			set
