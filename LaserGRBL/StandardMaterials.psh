@@ -4419,4 +4419,316 @@
     <Cycles>1</Cycles>
     <Remarks />
   </Materials>
+  <Materials>
+    <id>0392f5a4-3494-4290-be31-69bd78c1aefc</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Madera contrachapada</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>db7c65d2-3514-4232-8625-a3d291df9f7c</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Madera contrachapada</Material>
+    <Thickness>1.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>ec4f98ec-a372-4911-83c2-d4af7c989685</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Madera contrachapada</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>3</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>f75d2877-244e-4ac0-b668-606d4e151392</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Madera contrachapada</Material>
+    <Thickness>5 mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>5</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>b37749b8-cc87-4a1c-95de-b8686fb9aad6</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Cartón</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5f1cde7a-db65-456a-985c-304b5755d503</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Cartón</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>3</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>692b692f-60eb-4ab1-8253-2c4b19d2b361</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Papel kraft</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d3c58ea1-a92b-42b8-b644-86fb1706bb99</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Tablero KT (color oscuro)</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>aafca415-e9ae-43be-a258-e09ae0f36503</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Telas no tejidas (color oscuro)</Material>
+    <Thickness>0.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>73782648-91bb-48e6-9541-72752e961769</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Tela de algodón (color oscuro)</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>1dd57883-3d1c-4448-8f59-be4d95071947</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Cuero</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f7ca02a2-136c-4021-a065-7b7188be423a</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Cuero</Material>
+    <Thickness>0.7mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>fa07b55b-0ab0-4d2b-9b06-b3fb7dc16406</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Hoja de plástico (color oscuro)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f491e8c0-50e6-4567-8843-dc51adb851c4</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Madera maciza</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e4e79e95-c35f-4470-a201-1b1c9abeacfa</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Acrílico</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b5157777-6005-4f9e-8d50-beb5c23ff30e</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Metal lacado o pintado con spray</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ae618ca1-f95b-4911-b530-c5a03b29b59e</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Metal bañado</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>c62f1cef-18d4-4955-bdeb-ec35aba47a9c</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Aluminio anodizado</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>638516d1-930f-46e0-85da-32f1a2c4e8c6</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Piedra mate (Canto rodado)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>eeec2321-8636-415f-a19b-1e191c3a025c</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Acero INOX crudo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f89642ee-bc1a-405a-9ef5-fed75a49e941</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>FOAM / EVA</Material>
+    <Thickness>2 mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>fa65cc6e-2166-4d7c-bf29-a8879493d727</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>MDF</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>35</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>440e4352-6a55-43a0-b5f6-293b84aa77fb</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>MDF</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>4</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ad1d6f33-3ef1-49af-a662-76b9f18fc8aa</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>MDF</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>6</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>9778da4e-2ed4-4912-ba76-b7a501449d57</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Neopreno</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>6000</Speed>
+    <Cycles>3</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>c953cb65-9414-41d9-86eb-6afd75581e91</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Barro Crudo/Horneado</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>2400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
 </MaterialDB>
