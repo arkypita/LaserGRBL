@@ -3420,13 +3420,15 @@ namespace LaserGRBL
 		public static bool IsSetConf(string p)
 		{ return ConfRegEX.IsMatch(p); }
 
-		public void AddOrUpdate(string p)
+		public void AddOrUpdate(string line)
 		{
 			try
 			{
-				if (IsSetConf(p))
+				if (IsSetConf(line))
 				{
-					System.Text.RegularExpressions.MatchCollection matches = ConfRegEX.Matches(p);
+					line = FixFoxalienConfig(line);
+
+					System.Text.RegularExpressions.MatchCollection matches = ConfRegEX.Matches(line);
 					int key = int.Parse(matches[0].Groups[1].Value);
 					string val = matches[0].Groups[2].Value.Trim();
 
@@ -3440,6 +3442,19 @@ namespace LaserGRBL
 			{
 
 			}
+		}
+
+		private static System.Text.RegularExpressions.Regex FoxalienCleanupConfig = new System.Text.RegularExpressions.Regex(@"^[$](\d+)\s*=\s*(\d+\.?\d*)\s*\(.*\)");
+		private string FixFoxalienConfig(string line)
+		{
+			if (!FoxalienCleanupConfig.IsMatch(line))
+				return line;
+
+			System.Text.RegularExpressions.MatchCollection matches = FoxalienCleanupConfig.Matches(line);
+			int key = int.Parse(matches[0].Groups[1].Value);
+			string val = matches[0].Groups[2].Value.Trim();
+
+			return $"${key}={val}";
 		}
 
 		internal bool SetValueIfKeyExist(string p)

@@ -91,7 +91,7 @@ namespace LaserGRBL
 
 				ActionResult( String.Format(Strings.BoxReadConfigSuccess, mLocalCopy.Count));
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
 				Cursor = DefaultCursor;
 				ActionResult(Strings.BoxReadConfigError);
