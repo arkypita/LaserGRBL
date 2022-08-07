@@ -2890,7 +2890,7 @@ namespace LaserGRBL
 				{
 					foreach (KeyValuePair<int, string> p in conf)
 					{
-						if (double.TryParse (p.Value, out double tod)) //aggiungi solo ciò che si riesce a convertire in double
+						if (double.TryParse(p.Value, NumberStyles.Any, CultureInfo.InvariantCulture, out double tod )) //aggiungi solo ciò che si riesce a convertire in double
 							exp.AddSetVariable("$" + p.Key, tod);
 					}
 				}
