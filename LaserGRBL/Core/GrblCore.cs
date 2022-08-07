@@ -85,7 +85,7 @@ namespace LaserGRBL
 		}
 
 		public enum MacStatus
-		{ Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue, Cooling, AutoHold }
+		{ Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue, Cooling, AutoHold, Tool } // "Tool" added in GrblHal
 
 		public enum JogDirection
 		{ None, Abort, Home, N, S, W, E, NW, NE, SW, SE, Zup, Zdown }
@@ -1077,21 +1077,21 @@ namespace LaserGRBL
 								errors++;
 					}
 
-					if (errors > 0)
-						throw new WriteConfigException(mSentPtr);
+					//if (errors > 0)
+					//	throw new WriteConfigException(mSentPtr);
 				}
 				catch (Exception ex)
 				{
 					//Logger.LogException("Write Config", ex);
-					throw (ex);
+					//throw (ex);
 				}
 				finally
 				{
-					lock (this)
-					{
-						//mQueuePtr = mQueue;
-						//mSentPtr = mSent; //restore queue
-					}
+					//lock (this)
+					//{
+					//	//mQueuePtr = mQueue;
+					//	//mSentPtr = mSent; //restore queue
+					//}
 				}
 			}
 
