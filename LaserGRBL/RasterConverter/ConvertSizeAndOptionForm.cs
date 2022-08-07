@@ -54,28 +54,28 @@ namespace LaserGRBL.RasterConverter
 
 		private void AssignMinMaxLimit()
 		{
-			IISizeW.MaxValue = (int)mCore.Configuration.TableWidth;
-			IISizeH.MaxValue = (int)mCore.Configuration.TableHeight;
+			IISizeW.MaxValue = (int)GrblCore.Configuration.TableWidth;
+			IISizeH.MaxValue = (int)GrblCore.Configuration.TableHeight;
 
-			IIOffsetX.MaxValue = (int)mCore.Configuration.TableWidth;
-			IIOffsetY.MaxValue = (int)mCore.Configuration.TableHeight;
+			IIOffsetX.MaxValue = (int)GrblCore.Configuration.TableWidth;
+			IIOffsetY.MaxValue = (int)GrblCore.Configuration.TableHeight;
 
-			if (mCore?.Configuration != null)
+			if (GrblCore.Configuration != null)
 			{
-				if (mCore.Configuration.SoftLimit)
+				if (GrblCore.Configuration.SoftLimit)
 				{
 					IIOffsetX.MinValue = 0;
 					IIOffsetY.MinValue = 0;
 				}
 				else
 				{
-					IIOffsetX.MinValue = -(int)mCore.Configuration.TableWidth;
-					IIOffsetY.MinValue = -(int)mCore.Configuration.TableHeight;
+					IIOffsetX.MinValue = -(int)GrblCore.Configuration.TableWidth;
+					IIOffsetY.MinValue = -(int)GrblCore.Configuration.TableHeight;
 				}
 			}
 
-			IIBorderTracing.MaxValue = IILinearFilling.MaxValue = (int)mCore.Configuration.MaxRateX;
-			IIMaxPower.MaxValue = (int)mCore.Configuration.MaxPWM;
+			IIBorderTracing.MaxValue = IILinearFilling.MaxValue = (int)GrblCore.Configuration.MaxRateX;
+			IIMaxPower.MaxValue = (int)GrblCore.Configuration.MaxPWM;
 		}
 
 		ImageProcessor IP;
@@ -91,7 +91,7 @@ namespace LaserGRBL.RasterConverter
 
 			IP.LaserOn = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
 
-			if (IP.LaserOn == "M3" || !mCore.Configuration.LaserMode)
+			if (IP.LaserOn == "M3" || !GrblCore.Configuration.LaserMode)
 				CBLaserON.SelectedItem = LaserOptions[0];
 			else
 				CBLaserON.SelectedItem = LaserOptions[1];
@@ -99,7 +99,7 @@ namespace LaserGRBL.RasterConverter
 			IP.LaserOff = "M5"; 
 
 			IIMinPower.CurrentValue = IP.MinPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
-			IIMaxPower.CurrentValue = IP.MaxPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", (int)mCore.Configuration.MaxPWM);
+			IIMaxPower.CurrentValue = IP.MaxPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", (int)GrblCore.Configuration.MaxPWM);
 
 			IILinearFilling.Visible = LblLinearFilling.Visible = LblLinearFillingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.NoProcessing || IP.SelectedTool == ImageProcessor.Tool.Line2Line || IP.SelectedTool == ImageProcessor.Tool.Dithering || (IP.SelectedTool == ImageProcessor.Tool.Vectorize && (IP.FillingDirection != ImageProcessor.Direction.None)));
 			IIBorderTracing.Visible = LblBorderTracing.Visible = LblBorderTracingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Vectorize || IP.SelectedTool == ImageProcessor.Tool.Centerline);
@@ -190,12 +190,12 @@ namespace LaserGRBL.RasterConverter
 
 		private void RefreshPerc()
 		{
-			decimal maxpwm = mCore?.Configuration != null ? mCore.Configuration.MaxPWM : -1;
+			decimal maxpwm = GrblCore.Configuration != null ? GrblCore.Configuration.MaxPWM : -1;
 
 			if (maxpwm > 0)
 			{
-				LblMaxPerc.Text = (IIMaxPower.CurrentValue / mCore.Configuration.MaxPWM).ToString("P1");
-				LblMinPerc.Text = (IIMinPower.CurrentValue / mCore.Configuration.MaxPWM).ToString("P1");
+				LblMaxPerc.Text = (IIMaxPower.CurrentValue / GrblCore.Configuration.MaxPWM).ToString("P1");
+				LblMinPerc.Text = (IIMinPower.CurrentValue / GrblCore.Configuration.MaxPWM).ToString("P1");
 			}
 			else
 			{
@@ -220,7 +220,7 @@ namespace LaserGRBL.RasterConverter
 
 			if (mode != null)
 			{
-				if (!mCore.Configuration.LaserMode && (mode.Value as string) == "M4")
+				if (!GrblCore.Configuration.LaserMode && (mode.Value as string) == "M4")
 					MessageBox.Show(Strings.WarnWrongLaserMode, Strings.WarnWrongLaserModeTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);//warning!!
 
 				IP.LaserOn = mode.Value as string;
@@ -310,14 +310,14 @@ namespace LaserGRBL.RasterConverter
 
 		private bool ConfirmOutOfBoundary()
 		{
-			if (mCore?.Configuration != null && !Settings.GetObject("DisableBoundaryWarning", false))
+			if (GrblCore.Configuration != null && !Settings.GetObject("DisableBoundaryWarning", false))
 			{
-				if ((IIOffsetX.CurrentValue < 0 || IIOffsetY.CurrentValue < 0) && mCore.Configuration.SoftLimit)
+				if ((IIOffsetX.CurrentValue < 0 || IIOffsetY.CurrentValue < 0) && GrblCore.Configuration.SoftLimit)
 					if (MessageBox.Show(Strings.WarnSoftLimitNS, Strings.WarnSoftLimitTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
 						return false;
 
-				if (Math.Max(IIOffsetX.CurrentValue, 0) + IISizeW.CurrentValue > (float)mCore.Configuration.TableWidth || Math.Max(IIOffsetY.CurrentValue, 0) + IISizeH.CurrentValue > (float)mCore.Configuration.TableHeight)
-					if (MessageBox.Show(String.Format(Strings.WarnSoftLimitOOB, (int)mCore.Configuration.TableWidth, (int)mCore.Configuration.TableHeight), Strings.WarnSoftLimitTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+				if (Math.Max(IIOffsetX.CurrentValue, 0) + IISizeW.CurrentValue > (float)GrblCore.Configuration.TableWidth || Math.Max(IIOffsetY.CurrentValue, 0) + IISizeH.CurrentValue > (float)GrblCore.Configuration.TableHeight)
+					if (MessageBox.Show(String.Format(Strings.WarnSoftLimitOOB, (int)GrblCore.Configuration.TableWidth, (int)GrblCore.Configuration.TableHeight), Strings.WarnSoftLimitTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
 						return false;
 			}
 

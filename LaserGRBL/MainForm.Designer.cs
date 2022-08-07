@@ -31,6 +31,9 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
+			this.JogForm = new LaserGRBL.JogForm();
+			this.PreviewForm = new LaserGRBL.PreviewForm();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
@@ -117,6 +120,8 @@
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.manualsDownloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.firmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnSeparatorConfigWiFi = new System.Windows.Forms.ToolStripSeparator();
+			this.MnConfigureOrturWiFi = new System.Windows.Forms.ToolStripMenuItem();
 			this.questionMarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnAutoUpdate = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnNotifyNewVersion = new System.Windows.Forms.ToolStripMenuItem();
@@ -136,9 +141,6 @@
 			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
 			this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
-			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
-			this.JogForm = new LaserGRBL.JogForm();
-			this.PreviewForm = new LaserGRBL.PreviewForm();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -162,6 +164,21 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
 			this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+			// 
+			// ConnectionForm
+			// 
+			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
+			this.ConnectionForm.Name = "ConnectionForm";
+			// 
+			// JogForm
+			// 
+			resources.ApplyResources(this.JogForm, "JogForm");
+			this.JogForm.Name = "JogForm";
+			// 
+			// PreviewForm
+			// 
+			resources.ApplyResources(this.PreviewForm, "PreviewForm");
+			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// StatusBar
 			// 
@@ -274,10 +291,10 @@
 			// 
 			// TTTStatus
 			// 
+			this.TTTStatus.DoubleClickEnabled = true;
 			this.TTTStatus.Name = "TTTStatus";
 			resources.ApplyResources(this.TTTStatus, "TTTStatus");
 			this.TTTStatus.DoubleClick += new System.EventHandler(this.TTTStatus_DoubleClick);
-			this.TTTStatus.DoubleClickEnabled = true;
 			// 
 			// UpdateTimer
 			// 
@@ -720,7 +737,9 @@
             this.youtubeChannelToolStripMenuItem,
             this.toolStripSeparator4,
             this.manualsDownloadToolStripMenuItem,
-            this.firmwareToolStripMenuItem});
+            this.firmwareToolStripMenuItem,
+            this.MnSeparatorConfigWiFi,
+            this.MnConfigureOrturWiFi});
 			this.MnOrtur.Name = "MnOrtur";
 			resources.ApplyResources(this.MnOrtur, "MnOrtur");
 			// 
@@ -764,6 +783,17 @@
 			resources.ApplyResources(this.firmwareToolStripMenuItem, "firmwareToolStripMenuItem");
 			this.firmwareToolStripMenuItem.Name = "firmwareToolStripMenuItem";
 			this.firmwareToolStripMenuItem.Click += new System.EventHandler(this.firmwareToolStripMenuItem_Click);
+			// 
+			// MnSeparatorConfigWiFi
+			// 
+			this.MnSeparatorConfigWiFi.Name = "MnSeparatorConfigWiFi";
+			resources.ApplyResources(this.MnSeparatorConfigWiFi, "MnSeparatorConfigWiFi");
+			// 
+			// MnConfigureOrturWiFi
+			// 
+			resources.ApplyResources(this.MnConfigureOrturWiFi, "MnConfigureOrturWiFi");
+			this.MnConfigureOrturWiFi.Name = "MnConfigureOrturWiFi";
+			this.MnConfigureOrturWiFi.Click += new System.EventHandler(this.MnConfigureOrturWiFi_Click);
 			// 
 			// questionMarkToolStripMenuItem
 			// 
@@ -893,21 +923,6 @@
 			// 
 			this.MultipleInstanceTimer.Interval = 1000;
 			this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
-			// 
-			// ConnectionForm
-			// 
-			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
-			this.ConnectionForm.Name = "ConnectionForm";
-			// 
-			// JogForm
-			// 
-			resources.ApplyResources(this.JogForm, "JogForm");
-			this.JogForm.Name = "JogForm";
-			// 
-			// PreviewForm
-			// 
-			resources.ApplyResources(this.PreviewForm, "PreviewForm");
-			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// MainForm
 			// 
@@ -1048,6 +1063,8 @@
 		private System.Windows.Forms.ToolStripButton BtnUnlockFromStuck;
         private System.Windows.Forms.ToolStripMenuItem romanianToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem dutchToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem MnConfigureOrturWiFi;
+		private System.Windows.Forms.ToolStripSeparator MnSeparatorConfigWiFi;
 	}
 }
 

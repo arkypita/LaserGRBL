@@ -35,7 +35,7 @@ namespace LaserGRBL.GrblEmulator
 		private SendMessage mSendFunc;
 
 		private bool opened;
-		private GrblConf conf;
+		private GrblConfST conf;
 
 		private Random rng = new Random();
 
@@ -46,8 +46,11 @@ namespace LaserGRBL.GrblEmulator
 			TX = new Tools.ThreadObject(ManageTX, 0, true, "Emulator TX", null);
 			mSendFunc = sendFunc;
 
-			conf = (GrblConf)Tools.Serializer.ObjFromFile(filename);
-			if (conf == null) conf = new GrblConf(new GrblCore.GrblVersionInfo(1, 1, '#'), new Dictionary<int, decimal> { { 0, 10 }, { 1, 25 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 }, { 6, 0 }, { 10, 1 }, { 11, 0.010m }, { 12, 0.002m }, { 13, 0 }, { 20, 0 }, { 21, 0 }, { 22, 0 }, { 23, 0 }, { 24, 25.000m }, { 25, 500.000m }, { 26, 250 }, { 27, 1.000m }, { 30, 1000.0m }, { 31, 0.0m }, { 32, 0 }, { 100, 250.000m }, { 101, 250.000m }, { 102, 250.000m }, { 110, 500.000m }, { 111, 500.000m }, { 112, 500.000m }, { 120, 10.000m }, { 121, 10.000m }, { 122, 10.000m }, { 130, 200.000m }, { 131, 200.000m }, { 132, 200.000m } });
+			try { conf = (GrblConfST)Tools.Serializer.ObjFromFile(filename); }
+			catch { }
+
+			if (conf == null)
+				conf = new GrblConfST(new GrblCore.GrblVersionInfo(1, 1, '#'), new Dictionary<int, string> { { 0, "10" }, { 1, "25" }, { 2, "0" }, { 3, "0" }, { 4, "0" }, { 5, "0" }, { 6, "0" }, { 10, "1" }, { 11, "0.010" }, { 12, "0.002" }, { 13, "0" }, { 20, "0" }, { 21, "0" }, { 22, "0" }, { 23, "0" }, { 24, "25.000" }, { 25, "500.000" }, { 26, "250" }, { 27, "1.000" }, { 30, "1000.0" }, { 31, "0.0" }, { 32, "0" }, { 100, "250.000" }, { 101, "250.000" }, { 102, "250.000" }, { 110, "500.000" }, { 111, "500.000" }, { 112, "500.000" }, { 120, "10.000" }, { 121, "10.000" }, { 122, "10.000" }, { 130, "200.000" }, { 131, "200.000" }, { 132, "200.000" } });
 		}
 
 		public void CloseCom()
@@ -136,7 +139,7 @@ namespace LaserGRBL.GrblEmulator
 
 		
 		private bool IsSetConf(string p)
-		{ return GrblConf.IsSetConf(p); }
+		{ return GrblConfST.IsSetConf(p); }
 
 		private void SetConfig(string p)
 		{
@@ -152,8 +155,8 @@ namespace LaserGRBL.GrblEmulator
 		{
 			EnqueueTX("ok"); //REPLY TO $$
 
-			foreach (KeyValuePair<int, decimal> kvp in conf)
-				ImmediateTX(string.Format(System.Globalization.CultureInfo.InvariantCulture, "${0}={1}", kvp.Key, kvp.Value));
+			foreach (KeyValuePair<int, string> kvp in conf)
+				ImmediateTX(string.Format("${0}={1}", kvp.Key, kvp.Value));
 		}
 
 		private void EnqueueRX(string message)
