@@ -3356,14 +3356,32 @@ namespace LaserGRBL
 		public string TelnetPort => ReadString(305, "23");
 
 
-		private decimal ReadDecimal(int number, decimal defval)
+		private decimal ReadDecimal(int key, decimal defval)
 		{
 			if (mVersion == null)
 				return defval;
-			else if (!mData.ContainsKey(number))
+			else if (!mData.ContainsKey(key))
 				return defval;
 			else
-				return decimal.Parse(mData[number], CultureInfo.InvariantCulture);
+			{
+				try
+				{
+					return decimal.Parse(mData[key], CultureInfo.InvariantCulture);
+				}
+				catch
+				{
+					try //proviamo a pulire la stringa con una regex?!
+					{
+						System.Text.RegularExpressions.Regex ExtractNumber = new System.Text.RegularExpressions.Regex(@"(\d+\.?\d*)");
+						System.Text.RegularExpressions.MatchCollection matches = ExtractNumber.Matches(mData[key]);
+						return decimal.Parse(matches[0].Groups[1].Value);
+					}
+					catch
+					{
+						return defval; 
+					}
+				}
+			}
 		}
 
 		private string ReadString(int number, string defval)
