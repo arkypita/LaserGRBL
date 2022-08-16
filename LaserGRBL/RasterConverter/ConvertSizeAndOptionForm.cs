@@ -54,11 +54,21 @@ namespace LaserGRBL.RasterConverter
 
 		private void AssignMinMaxLimit()
 		{
-			IISizeW.MaxValue = (int)GrblCore.Configuration.TableWidth;
-			IISizeH.MaxValue = (int)GrblCore.Configuration.TableHeight;
+			int tableWidth = 1000;
+			int tableHeight = 1000;
 
-			IIOffsetX.MaxValue = (int)GrblCore.Configuration.TableWidth;
-			IIOffsetY.MaxValue = (int)GrblCore.Configuration.TableHeight;
+			try
+			{
+				tableWidth = (int)GrblCore.Configuration.TableWidth;
+				tableHeight = (int)GrblCore.Configuration.TableHeight;
+			}
+			catch (Exception ex) { MessageBox.Show(Strings.BoxMachineSizeOutOfRangeText, Strings.BoxMachineSizeOutOfRangeTitle, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+			IISizeW.MaxValue = tableWidth;
+			IISizeH.MaxValue = tableHeight;
+
+			IIOffsetX.MaxValue = tableWidth;
+			IIOffsetY.MaxValue = tableHeight;
 
 			if (GrblCore.Configuration != null)
 			{
@@ -69,8 +79,8 @@ namespace LaserGRBL.RasterConverter
 				}
 				else
 				{
-					IIOffsetX.MinValue = -(int)GrblCore.Configuration.TableWidth;
-					IIOffsetY.MinValue = -(int)GrblCore.Configuration.TableHeight;
+					IIOffsetX.MinValue = -tableWidth;
+					IIOffsetY.MinValue = -tableHeight;
 				}
 			}
 
