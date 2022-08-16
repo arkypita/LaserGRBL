@@ -592,8 +592,8 @@ namespace LaserGRBL.RasterConverter
 			{
 				int left = (PbConverted.Width - PbConverted.Image.Width) / 2;
 				int top = (PbConverted.Height - PbConverted.Image.Height) / 2;
-				int right = PbConverted.Width - left;
-				int bottom = PbConverted.Height - top;
+				int right = PbConverted.Width - left -6;
+				int bottom = PbConverted.Height - top -6;
 
 				imageRectangle = new Rectangle(left, top, PbConverted.Image.Width, PbConverted.Image.Height);
 
@@ -618,8 +618,8 @@ namespace LaserGRBL.RasterConverter
 				//limit eP to image rectangle
 				int left = (PbConverted.Width - PbConverted.Image.Width) / 2;
 				int top = (PbConverted.Height - PbConverted.Image.Height) / 2;
-				int right = PbConverted.Width - left;
-				int bottom = PbConverted.Height - top;
+				int right = PbConverted.Width - left -6;
+				int bottom = PbConverted.Height - top -6;
 				eP.X = Math.Min(Math.Max(eP.X, left), right);
 				eP.Y = Math.Min(Math.Max(eP.Y, top), bottom);
 
