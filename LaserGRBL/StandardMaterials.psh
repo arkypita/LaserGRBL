@@ -5410,8 +5410,8 @@
     <Material>Cork</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
-    <Power>3</Power>
-    <Speed>300</Speed>
+    <Power>5</Power>
+    <Speed>400</Speed>
     <Cycles>1</Cycles>
     <Remarks />
   </Materials>
@@ -5494,8 +5494,8 @@
     <Material>Black Card</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
-    <Power>4</Power>
-    <Speed>500</Speed>
+    <Power>5</Power>
+    <Speed>550</Speed>
     <Cycles>1</Cycles>
     <Remarks />
   </Materials>
@@ -5650,8 +5650,8 @@
     <Material>Cork</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
-    <Power>3</Power>
-    <Speed>1250</Speed>
+    <Power>5</Power>
+    <Speed>1450</Speed>
     <Cycles>1</Cycles>
     <Remarks />
   </Materials>
