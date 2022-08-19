@@ -4747,7 +4747,7 @@
     <id>cec487c5-54cb-4654-9139-2255593ee032</id>
     <Visible>true</Visible>
     <Model>YoraHome 3.5 (2.2W optical)</Model>
-    <Material>3 mm Plywood</Material>
+    <Material>Plywood</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
     <Power>50</Power>
@@ -4927,7 +4927,7 @@
     <id>40b6b2e7-9546-417e-958f-354046e0c4f1</id>
     <Visible>true</Visible>
     <Model>YoraHome 5.5 (3.5W optical)</Model>
-    <Material>3 mm Plywood</Material>
+    <Material>Plywood</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
     <Power>50</Power>
@@ -5143,7 +5143,7 @@
     <id>b0534fb3-9b35-4cb3-b824-7a480d20ec3a</id>
     <Visible>true</Visible>
     <Model>YoraHome 15 (6.5W optical)</Model>
-    <Material>3 mm Plywood</Material>
+    <Material>Plywood</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
     <Power>30</Power>
@@ -5383,7 +5383,7 @@
     <id>8bb01e5b-66fd-4e9f-805a-77c0502ba18e</id>
     <Visible>true</Visible>
     <Model>YoraHome 40 (7W optical)</Model>
-    <Material>3 mm Plywood</Material>
+    <Material>Plywood</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
     <Power>8</Power>
@@ -5623,7 +5623,7 @@
     <id>3869fbcc-9cac-44fe-b58a-cd68bfaf0a66</id>
     <Visible>true</Visible>
     <Model>YoraHome 80 (10W optical)</Model>
-    <Material>3 mm Plywood</Material>
+    <Material>Plywood</Material>
     <Thickness>-</Thickness>
     <Action>Engrave</Action>
     <Power>15</Power>
