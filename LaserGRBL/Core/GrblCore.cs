@@ -583,7 +583,7 @@ namespace LaserGRBL
 				OpenFile(parent, Settings.GetObject<string>("Core.LastOpenFile", null));
 		}
 
-		public static readonly List<string> ImageExtensions = new List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
+		public static readonly List<string> ImageExtensions = new List<string>(new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif" });
 		public static readonly List<string> GCodeExtensions = new List<string>(new string[] { ".nc", ".cnc", ".tap", ".gcode", ".ngc" });
 		public static readonly List<string> ProjectFileExtensions = new List<string>(new string[] { ".lps" });
 		public void OpenFile(System.Windows.Forms.Form parent, string filename = null, bool append = false)
@@ -601,7 +601,7 @@ namespace LaserGRBL
 						if (lastFN != null && System.IO.File.Exists(lastFN))
 							ofd.FileName = lastFN;
 
-						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.ngc;*.bmp;*.png;*.jpg;*.gif;*.svg;*.lps|GCODE Files|*.nc;*.cnc;*.tap;*.gcode;*.ngc|Raster Image|*.bmp;*.png;*.jpg;*.gif|Vector Image (experimental)|*.svg|LaserGRBL Project|*.lps";
+						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.ngc;*.bmp;*.png;*.jpg;*.jpeg;*.gif;*.svg;*.lps|GCODE Files|*.nc;*.cnc;*.tap;*.gcode;*.ngc|Raster Image|*.bmp;*.png;*.jpg;*.jpeg;*.gif|Vector Image (experimental)|*.svg|LaserGRBL Project|*.lps";
 						ofd.CheckFileExists = true;
 						ofd.Multiselect = false;
 						ofd.RestoreDirectory = true;
