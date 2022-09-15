@@ -343,7 +343,7 @@ namespace LaserGRBL
 							if (c.pwm)
 								list[nLayer].Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
 							else
-								list[nLayer].Add(new GrblCommand(String.Format($"{c.lOff} S{core.Configuration.MaxPWM}"))); //laser off and power to max power
+								list[nLayer].Add(new GrblCommand(String.Format($"{c.lOff} S{GrblCore.Configuration.MaxPWM}"))); //laser off and power to max power
 
 							//set speed to markspeed
 							// For marlin, need to specify G1 each time :
@@ -366,7 +366,7 @@ namespace LaserGRBL
 			if (supportPWM)
 				list[nLayer].Add(new GrblCommand($"{c.lOn} S0"));   //laser on and power to 0
 			else
-				list[nLayer].Add(new GrblCommand($"{c.lOff} S{core.Configuration.MaxPWM}"));   //laser off and power to maxPower
+				list[nLayer].Add(new GrblCommand($"{c.lOff} S{GrblCore.Configuration.MaxPWM}"));   //laser off and power to maxPower
 
 			//trace raster filling
 			if (flist != null)
@@ -479,7 +479,7 @@ namespace LaserGRBL
 			if (c.pwm)
 				list[nLayer].Add(new GrblCommand(String.Format("{0} S0", c.lOn))); //laser on and power to zero
 			else
-				list[nLayer].Add(new GrblCommand($"{c.lOff} S{core.Configuration.MaxPWM}")); //laser off and power to maxpower
+				list[nLayer].Add(new GrblCommand($"{c.lOff} S{GrblCore.Configuration.MaxPWM}")); //laser off and power to maxpower
 
 			//set speed to markspeed						
 			// For marlin, need to specify G1 each time :
@@ -1086,7 +1086,7 @@ namespace LaserGRBL
 				{
 					try
 					{
-						GrblConf conf = Settings.GetObject("Grbl Configuration", new GrblConf());
+						GrblConfST conf =  GrblCore.Configuration;
 						TimeSpan delay = spb.AnalyzeCommand(cmd, true, conf);
 
 						mRange.UpdateSRange(spb.S);

@@ -288,6 +288,24 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a The engraver has some configuration parameters out of range. Please check machine configuration (menu &quot;Grbl&quot;, &quot;Grbl Configuration&quot;) parameters 130 and 131..
+        /// </summary>
+        internal static string BoxMachineSizeOutOfRangeText {
+            get {
+                return ResourceManager.GetString("BoxMachineSizeOutOfRangeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Warning.
+        /// </summary>
+        internal static string BoxMachineSizeOutOfRangeTitle {
+            get {
+                return ResourceManager.GetString("BoxMachineSizeOutOfRangeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Error reading config!.
         /// </summary>
         internal static string BoxReadConfigError {

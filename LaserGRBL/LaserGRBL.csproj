@@ -812,6 +812,18 @@
     <Compile Include="UserControls\WaitingProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="WiFiConfigurator\OrturWiFiConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WiFiConfigurator\OrturWiFiConfig.Designer.cs">
+      <DependentUpon>OrturWiFiConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WiFiConfigurator\OrturWiFiConfigPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WiFiConfigurator\OrturWiFiConfigPrompt.Designer.cs">
+      <DependentUpon>OrturWiFiConfigPrompt.cs</DependentUpon>
+    </Compile>
     <Compile Include="WiFiDiscovery\DiscoveryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -938,6 +950,12 @@
     <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.ro-RO.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WiFiConfigurator\OrturWiFiConfig.resx">
+      <DependentUpon>OrturWiFiConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WiFiConfigurator\OrturWiFiConfigPrompt.resx">
+      <DependentUpon>OrturWiFiConfigPrompt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.nl-NL.resx">
       <DependentUpon>DiscoveryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -949,8 +967,12 @@
       <DependentUpon>DiscoveryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CSV\setting_codes.ortur.v1.7.x.csv" />
-    <None Include="LaserGRBL_TemporaryKey.pfx" />
+    <EmbeddedResource Include="CSV\setting_codes.ortur.GrblHal.csv" />
+    <EmbeddedResource Include="CSV\alarm_codes.ortur.GrblHal.csv" />
+    <EmbeddedResource Include="CSV\error_codes.ortur.GrblHal.csv" />
     <None Include="Resources\flag_greece.png" />
+    <Content Include="Grafica\777494-200.png" />
+    <Content Include="Grafica\info.png" />
     <Content Include="Sound\connect.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

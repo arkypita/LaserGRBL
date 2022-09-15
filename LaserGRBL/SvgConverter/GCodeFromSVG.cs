@@ -183,7 +183,7 @@ namespace LaserGRBL.SvgConverter
 				{
 					scaledError = scale * svgWidthPx / vbWidth;
 					tmp.M11 = scaledError;
-					tmp.OffsetX = vbOffX * scale;   // svgWidthUnit / vbWidth;
+					tmp.OffsetX = (vbOffX * svgWidthPx / vbWidth )  * scale;  
 				}
 			}
 
@@ -202,7 +202,7 @@ namespace LaserGRBL.SvgConverter
 				if (vbHeight > 0)
 				{
 					tmp.M22 = -scale * svgHeightPx / vbHeight;
-					tmp.OffsetY = -vbOffY * svgHeightPx / vbHeight + (svgHeightPx * scale);
+					tmp.OffsetY = (-vbOffY * svgHeightPx / vbHeight + svgHeightPx) * scale;
 				}
 			}
 

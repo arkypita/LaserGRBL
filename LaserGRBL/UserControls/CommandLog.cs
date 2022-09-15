@@ -88,7 +88,7 @@ namespace LaserGRBL.UserControls
 							{
 								float respectX = 0;
 								string result = cmd.GetResult(mCom.SupportCSV, mUseImages);
-								string message = cmd.GetMessage();
+								string message = cmd.GetDecodedMessage();
 								if (result != null)
 								{
 									respectX = e.Graphics.MeasureString(result, Font).Width;

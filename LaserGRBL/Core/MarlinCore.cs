@@ -55,8 +55,10 @@ namespace LaserGRBL
             if (InProgram && var == MacStatus.Idle) //bugfix for grbl sending Idle on G4
                 var = MacStatus.Run;
 
-            if (var == MacStatus.Hold && !mHoldByUserRequest)
+            if (var == MacStatus.Hold && mHoldByCoolingRequest)
                 var = MacStatus.Cooling;
+            else if (var == MacStatus.Hold && !mHoldByUserRequest)
+                var = MacStatus.AutoHold;
 
             SetStatus(var);
         }

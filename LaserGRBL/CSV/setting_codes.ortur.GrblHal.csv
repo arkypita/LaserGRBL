@@ -1,0 +1,115 @@
+﻿$-Code, Setting, Units, Setting Description
+0,Step pulse time,microseconds,Sets time length per step. Minimum 2 microseconds.    This needs to be reduced from the default value of 10 when max. step rates exceed approximately 80 kHz.
+1,Step idle delay,milliseconds,Sets a short hold delay when stopping to let dynamics settle before disabling steppers. Value 255 keeps motors enabled.
+2,Step pulse invert,mask,Inverts the step signals (active low).
+3,Step direction invert,mask,Inverts the direction signals (active low).
+4,Invert stepper enable pin(s),boolean,Inverts the stepper driver enable signals. Most drivers uses active low enable requiring inversion.    NOTE: If the stepper drivers shares the same enable signal only X is used.
+5,Invert limit pins,boolean,Inverts the axis limit input signals.
+7,Disable spindle with zero speed,boolean,
+10,Status report options,mask,Specifies optional data included in status reports.  If Run substatus is enabled it may be used for simple probe protection.    NOTE: Parser state will be sent separately after the status report and only on changes.
+11,Junction deviation,millimeters,Sets how fast Grbl travels through consecutive motions. Lower value slows it down.
+12,Arc tolerance,millimeters,Sets the G2 and G3 arc tracing accuracy based on radial error. Beware: A very small value may effect performance.
+13,Report in inches,boolean,Enables inch units when returning any position and rate value that is not a settings value.
+14,Invert control pins,mask,Inverts the control signals (active low).  NOTE: Block delete Optional stop EStop and Probe connected are optional signals availability is driver dependent.
+15,Invert coolant pins,mask,Inverts the coolant and mist signals (active low).
+16,Invert spindle signals,mask,Inverts the spindle on counterclockwise and PWM signals (active low).
+17,Pullup disable control pins,mask,Disable the control signals pullup resistors. Potentially enables pulldown resistor if available.  NOTE: Block delete Optional stop and EStop are optional signals availability is driver dependent.
+18,Pullup disable limit pins,mask,Disable the limit signals pullup resistors. Potentially enables pulldown resistor if available.
+20,Soft limits enable,boolean,Enables soft limits checks within machine travel and sets alarm when exceeded. Requires homing.
+21,Hard limits enable,boolean,When enabled immediately halts motion and throws an alarm when a limit switch is triggered. In strict mode only homing is possible when a switch is engaged.
+22,Homing cycle,boolean,Enables homing cycle. Requires limit switches on axes to be automatically homed. When `Enable single axis commands` is checked single axis homing can be performed by $H<axis letter> commands.    When `Allow manual` is checked axes not homed automatically ay be  manually by $H or $H<axis letter> commands.    `Override locks` is for allowing a soft reset to disable `Homing on startup required`.  NOTE: Block delete Optional stop and EStop are optional signals availability is driver dependent.
+23,Homing direction invert,mask,Homing searches for a switch in the positive direction. Set axis bit to search in negative direction.
+24,Homing locate feed rate,mm/min,Feed rate to slowly engage limit switch to determine its location accurately.
+25,Homing search seek rate,mm/min,Seek rate to quickly find the limit switch before the slower locating phase.
+26,Homing switch debounce delay,milliseconds,Sets a short delay between phases of homing cycle to let a switch debounce.
+27,Homing switch pull-off distance,mm,Retract distance after triggering switch to disengage it. Homing will fail if switch isn't cleared.
+28,G73 Retract distance,mm,G73 retract distance (for chip breaking drilling).
+29,Pulse delay,microseconds,Step pulse delay.    Normally leave this at 0 as there is an implicit delay on direction changes when AMASS is active.
+30,Maximum spindle speed,RPM,Maximum spindle speed. Sets PWM to maximum duty cycle.
+31,Minimum spindle speed,RPM,Minimum spindle speed. Sets PWM to minimum duty cycle.
+32,Mode of operation,integer,Laser mode: consecutive G1/2/3 commands will not halt when spindle speed is changed.  Lathe mode: allows use of G7 G8 G96 and G97.
+33,Spindle PWM frequency,Hz,Spindle PWM frequency.
+34,Spindle PWM off value,percent,Spindle PWM off value in percent (duty cycle).
+35,Spindle PWM min value,percent,Spindle PWM min value in percent (duty cycle).
+36,Spindle PWM max value,percent,Spindle PWM max value in percent (duty cycle).
+37,Steppers deenergize,mask,Specifies which steppers not to disable when stopped.
+39,Enable legacy RT commands,boolean,Enables normal processing of ? ! and ~ characters when part of $-setting or comment. If disabled then they are added to the input string instead.
+40,Limit jog commands,boolean,Limit jog commands to machine limits for homed axes.
+43,Homing passes,integer,Number of homing passes. Minimum 1 maximum 128.
+44,Axes homing first pass,mask,Axes to home in first pass.
+45,Axes homing second pass,mask,Axes to home in second pass.
+46,Axes homing third pass,mask,Axes to home in third pass.
+62,Sleep enable,boolean,Enable sleep mode.
+63,Feed hold actions,,Actions taken during feed hold and on resume from feed hold.
+64,Force init alarm,boolean,Starts Grbl in alarm mode after a cold reset.
+70,Network Services,,Network services to enable. Consult driver documentation for availability.    NOTE: A hard reset of the controller is required after changing this setting.
+73,WiFi Mode,,WiFi Mode.
+74,WiFi Station (STA) SSID,string,WiFi Station (STA) SSID.
+75,WiFi Station (STA) Password,string,WiFi Station (STA) Password.
+76,WiFi Access Point (AP) SSID,string,WiFi Access Point (AP) SSID.
+77,WiFi Access Point (AP) Password,string,WiFi Access Point (AP) Password.
+100,X-axis travel resolution,step/mm,Travel resolution in steps per millimeter.
+101,Y-axis travel resolution,step/mm,Travel resolution in steps per millimeter.
+102,Z-axis travel resolution,step/mm,Travel resolution in steps per millimeter.
+110,X-axis maximum rate,mm/min,Maximum rate. Used as G0 rapid rate.
+111,Y-axis maximum rate,mm/min,Maximum rate. Used as G0 rapid rate.
+112,Z-axis maximum rate,mm/min,Maximum rate. Used as G0 rapid rate.
+120,X-axis acceleration,mm/sec^2,Acceleration. Used for motion planning to not exceed motor torque and lose steps.
+121,Y-axis acceleration,mm/sec^2,Acceleration. Used for motion planning to not exceed motor torque and lose steps.
+122,Z-axis acceleration,mm/sec^2,Acceleration. Used for motion planning to not exceed motor torque and lose steps.
+130,X-axis maximum travel,mm,Maximum axis travel distance from homing switch. Determines valid machine space for soft-limits and homing search distances.
+131,Y-axis maximum travel,mm,Maximum axis travel distance from homing switch. Determines valid machine space for soft-limits and homing search distances.
+132,Z-axis maximum travel,mm,Maximum axis travel distance from homing switch. Determines valid machine space for soft-limits and homing search distances.
+140,X-axis motor current,mA,Motor current in mA (RMS).
+141,Y-axis motor current,mA,Motor current in mA (RMS).
+142,Z-axis motor current,mA,Motor current in mA (RMS).
+150,X-axis microsteps,steps,Microsteps per fullstep.
+151,Y-axis microsteps,steps,Microsteps per fullstep.
+152,Z-axis microsteps,steps,Microsteps per fullstep.
+160,X-axis backlash compensation,mm,Backlash distance to compensate for.
+161,Y-axis backlash compensation,mm,Backlash distance to compensate for.
+162,Z-axis backlash compensation,mm,Backlash distance to compensate for.
+200,X-axis StallGuard4 fast threshold,,StallGuard threshold for fast (seek) homing phase.
+201,Y-axis StallGuard4 fast threshold,,StallGuard threshold for fast (seek) homing phase.
+202,Z-axis StallGuard4 fast threshold,,StallGuard threshold for fast (seek) homing phase.
+210,X-axis hold current,%,Motor current at standstill as a percentage of full current. NOTE: if grblHAL is configured to disable motors on standstill this setting has no use.
+211,Y-axis hold current,%,Motor current at standstill as a percentage of full current. NOTE: if grblHAL is configured to disable motors on standstill this setting has no use.
+212,Z-axis hold current,%,Motor current at standstill as a percentage of full current. NOTE: if grblHAL is configured to disable motors on standstill this setting has no use.
+220,X-axis StallGuard4 slow threshold,,StallGuard threshold for slow (feed) homing phase.
+221,Y-axis StallGuard4 slow threshold,,StallGuard threshold for slow (feed) homing phase.
+222,Z-axis StallGuard4 slow threshold,,StallGuard threshold for slow (feed) homing phase.
+300,Hostname,string,Network hostname.    NOTE: A hard reset of the controller is required after changing this setting.
+302,IP Address,IPv4 address,Static IP address.    NOTE: A hard reset of the controller is required after changing this setting.
+303,Gateway,IPv4 address,Static gateway address.    NOTE: A hard reset of the controller is required after changing this setting.
+304,Netmask,IPv4 mask,Static netmask.    NOTE: A hard reset of the controller is required after changing this setting.
+305,Telnet port,integer,(Raw) Telnet port number listening for incoming connections.    NOTE: A hard reset of the controller is required after changing this setting.
+306,HTTP port,integer,HTTP port number listening for incoming connections.    NOTE: A hard reset of the controller is required after changing this setting.
+307,Websocket port,integer,Websocket port number listening for incoming connections.    NOTE: A hard reset of the controller is required after changing this setting.NOTE: WebUI requires this to be HTTP port number + 1.
+308,FTP port,integer,FTP port number listening for incoming connections.    NOTE: A hard reset of the controller is required after changing this setting.
+310,Hostname (AP),string,Network hostname.    NOTE: A hard reset of the controller is required after changing this setting.
+312,IP Address (AP),IPv4 address,Static IP address.    NOTE: A hard reset of the controller is required after changing this setting.
+313,Gateway (AP),IPv4 address,Static gateway address.    NOTE: A hard reset of the controller is required after changing this setting.
+314,Netmask (AP),IPv4 mask,Static netmask.    NOTE: A hard reset of the controller is required after changing this setting.
+330,Admin Password,string,Administrator password.
+331,User Password,string,User password.
+339,Sensorless homing,boolean,Enable sensorless homing for axis. Requires SPI controlled Trinamic drivers.
+341,Tool change mode,,Normal: allows jogging for manual touch off. Set new position manually.   Manual touch off: retracts tool axis to home position for tool change use jogging or $TPW for touch off.   Manual touch off  G59.3: retracts tool axis to home position then to G59.3 position for tool change use jogging or $TPW for touch off.    Automatic touch off  G59.3: retracts tool axis to home position for tool change then to G59.3 position for automatic touch off.   All modes except Normal and Ignore M6 returns the tool (controlled point) to original position after touch off.
+342,Tool change probing distance,mm,Maximum probing distance for automatic or $TPW touch off.
+343,Tool change locate feed rate,mm/min,Feed rate to slowly engage tool change sensor to determine the tool offset accurately.
+344,Tool change search seek rate,mm/min,Seek rate to quickly find the tool change sensor before the slower locating phase.
+345,Tool change probe pull-off rate,mm/min,Pull-off rate for the retract move before the slower locating phase.
+384,Disable G92 persistence,,Disables save/restore of G92 offset to non-volatile storage (NVS).
+600,Power log enable,boolean,Whether to enable the main power supply power supply debugging information.
+601,Voltage offset,v,Maximum voltage offset allowed for the main power supply.
+602,device auto poweroff time,s,Maximum voltage offset allowed for the main power supply.
+603,Shock detection alarm threshold,,Value range: 0~1000 The Recommended value = 3 If the alarm threshold for shock detection is set to 0 the function is disabled.
+604,Skew detection alarm threshold,,Value range: 0~1000 The Recommended value = 4 If the alarm threshold for skew detection is set to 0 the function is disabled.
+605,Buzz enable,boolean,Enable buzz function
+606,Homing upon power up enable,boolean,Homing upon power up
+607,Report echo line received enable,boolean,Report echo line received enable.
+608,Return Line number enable,boolean,Return Line number enable
+609,Homing switch seek pull-off distance,mm,Homing seek pull-off distance
+610,Language,,Set the firmware language
+611,Auto power on forever,boolean,Enable auto-poweron function
+612,Webui auth enable,boolean,Enable webui auth function
+622,Homing cycle,boolean,Enables homing cycle. Requires limit switches on axes to be automatically homed. When `Enable single axis commands` is checked single axis homing can be performed by $H<axis letter> commands.When `Allow manual` is checked axes not homed automatically may be homed manually by $H or $H<axis letter> commands.`Override locks` is for allowing a soft reset to disable `Homing on startup required`.

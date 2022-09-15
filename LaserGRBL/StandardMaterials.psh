@@ -4419,4 +4419,1576 @@
     <Cycles>1</Cycles>
     <Remarks />
   </Materials>
+  <Materials>
+    <id>0392f5a4-3494-4290-be31-69bd78c1aefc</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Madera contrachapada</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>db7c65d2-3514-4232-8625-a3d291df9f7c</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Madera contrachapada</Material>
+    <Thickness>1.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>ec4f98ec-a372-4911-83c2-d4af7c989685</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Madera contrachapada</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>3</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>f75d2877-244e-4ac0-b668-606d4e151392</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Madera contrachapada</Material>
+    <Thickness>5 mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>5</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>b37749b8-cc87-4a1c-95de-b8686fb9aad6</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Cartón</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5f1cde7a-db65-456a-985c-304b5755d503</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Cartón</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>3</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>692b692f-60eb-4ab1-8253-2c4b19d2b361</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Papel kraft</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d3c58ea1-a92b-42b8-b644-86fb1706bb99</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Tablero KT (color oscuro)</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>aafca415-e9ae-43be-a258-e09ae0f36503</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Telas no tejidas (color oscuro)</Material>
+    <Thickness>0.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>73782648-91bb-48e6-9541-72752e961769</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Tela de algodón (color oscuro)</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>1dd57883-3d1c-4448-8f59-be4d95071947</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Cuero</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f7ca02a2-136c-4021-a065-7b7188be423a</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Cuero</Material>
+    <Thickness>0.7mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>fa07b55b-0ab0-4d2b-9b06-b3fb7dc16406</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Hoja de plástico (color oscuro)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f491e8c0-50e6-4567-8843-dc51adb851c4</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Madera maciza</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e4e79e95-c35f-4470-a201-1b1c9abeacfa</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Acrílico</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b5157777-6005-4f9e-8d50-beb5c23ff30e</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Metal lacado o pintado con spray</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ae618ca1-f95b-4911-b530-c5a03b29b59e</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Metal bañado</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>c62f1cef-18d4-4955-bdeb-ec35aba47a9c</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Aluminio anodizado</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>638516d1-930f-46e0-85da-32f1a2c4e8c6</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Piedra mate (Canto rodado)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>eeec2321-8636-415f-a19b-1e191c3a025c</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Acero INOX crudo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f89642ee-bc1a-405a-9ef5-fed75a49e941</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>FOAM / EVA</Material>
+    <Thickness>2 mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>fa65cc6e-2166-4d7c-bf29-a8879493d727</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>MDF</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>35</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>440e4352-6a55-43a0-b5f6-293b84aa77fb</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>MDF</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>4</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ad1d6f33-3ef1-49af-a662-76b9f18fc8aa</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>MDF</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>6</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>9778da4e-2ed4-4912-ba76-b7a501449d57</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Neopreno</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>6000</Speed>
+    <Cycles>3</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>c953cb65-9414-41d9-86eb-6afd75581e91</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Barro Crudo/Horneado</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>2400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>beaa6ff6-2195-408e-8236-253465053b64</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>Brown Craft Board</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>cec487c5-54cb-4654-9139-2255593ee032</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>Plywood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>0ea330b6-4823-4fbb-936a-4eb2ab962445</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>White Card</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b293ae8c-afed-493e-a342-39dd1d57bfc6</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>Cork</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>716c588b-95d3-40e7-bff8-ce1eab05c4ee</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>Mirror</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>When engraving mirrors, engrave from the rear.</Remarks>
+  </Materials>
+  <Materials>
+    <id>14db08cf-cd8b-4c82-a7fa-08b511f77919</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>Tile</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>95</Power>
+    <Speed>250</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>846d4b6b-1c14-4331-8479-6fffbc46a016</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>Cherry Wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a1a1dbe3-82ed-4893-af42-dbbfdc768b2d</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>Pine</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>150</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>684b98f6-7aa8-4782-a04c-02a2184264e2</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>179e4f6a-7fa3-4be9-8e3c-91d1dac6cad8</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>Black Card</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>0d58e54e-33a1-43d6-86a2-ed708af5d226</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>Blue Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e1b6a265-aedb-49e5-80c3-8e7a465e093e</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>Translucent Red Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>23de062c-c825-42db-9b5d-895dd25c6e9f</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>Solid Pink Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f9a30e37-97cd-4f5a-ba29-cc97da9d2053</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>Real Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b969ff1f-153a-4dc7-8786-07e154bcc4ab</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 3.5 (2.2W optical)</Model>
+    <Material>Faux Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>628be06a-cc0f-418e-a33e-b1cc96b8eac9</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Brown Craft Board</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>40b6b2e7-9546-417e-958f-354046e0c4f1</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Plywood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5278754d-d4c3-4118-a7ea-8755cc383fbd</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>White Card</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>06acf85f-f7b8-499e-bf63-5e8d2da62ac3</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Cork</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b31b967f-be22-4210-8198-ff7a62719134</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Mirror</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>When engraving mirrors, engrave from the rear.</Remarks>
+  </Materials>
+  <Materials>
+    <id>26a3ac0d-4c86-4d68-9fe9-c9af40380795</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Tile</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>85</Power>
+    <Speed>250</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>98d8e1cf-b231-4476-b13e-d4476d4bcc60</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Slate</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>25</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d9008c2f-7ff8-4a14-a336-ff281aede732</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Cherry Wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>68c387c5-13ed-4808-be20-ee936e5ed60b</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Pine</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>150</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d96d4f99-0cbb-4d58-bd1b-17d7485ac7a6</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>cd4e974c-f650-4306-9fa0-195ec8ac3fcd</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Black Card</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>9d935c3c-1dab-4a22-b179-493e96fbed33</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Blue Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>00217595-af06-4e47-b8f5-3437b3e0bf62</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Translucent Red Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>61adb63a-1683-4090-a126-3548b9465cab</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Solid Pink Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a4fbdb85-28a1-4865-b14d-c0cedd301059</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Clear Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>10</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>When engraving clear acrylic, mask it first and leave a 2mm gap under it.</Remarks>
+  </Materials>
+  <Materials>
+    <id>ac38538a-ebbb-48cc-842d-6fa99bbc1c85</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Real Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>9aa80a1a-5fcc-4e43-9ec4-60fdcb33685b</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Faux Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>3114e0a5-77e4-4ff5-a28f-c75e7d4cbeb2</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 5.5 (3.5W optical)</Model>
+    <Material>Glass</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>When engraving glass, paint it with black acrylic.</Remarks>
+  </Materials>
+  <Materials>
+    <id>ce4bfb08-9dda-4d37-bc44-0aeea7c54874</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Brown Craft Board</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b0534fb3-9b35-4cb3-b824-7a480d20ec3a</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Plywood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>7886234b-1eef-427d-b2aa-bd8d28a62abd</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>White Card</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d2ab6789-9df3-467d-8e13-e2ffdd7da4ed</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Cork</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>95aa4167-c219-4e1d-85e9-556c70267c62</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Mirror</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>When engraving mirrors, engrave from the rear.</Remarks>
+  </Materials>
+  <Materials>
+    <id>5a60a996-5c24-40e2-ad5c-6c5a1de1341e</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Tile</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>75</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e868a8ef-7c11-46f5-8407-8828fe5875cc</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Slate</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>cb1928a2-b2c7-4f36-a639-150e1dc9a093</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Cherry Wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>edba4847-a029-4108-a40e-49a736680ffb</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Pine</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>150</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>6c65fd6b-50fa-4205-8c75-3cba5fa16d4d</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>150</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ed96a6cf-2352-47ed-b573-8eebcdffd6ca</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Black Card</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d95f144e-e49e-42dd-b841-815d2f111660</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Blue Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a1b6db1d-2b16-42b7-92ee-86d0a30aa860</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Translucent Red Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d979edd8-d9eb-4d97-bc01-0a0741d5a5b0</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Solid Pink Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>983e8fd2-e551-40b0-9817-2a2141542983</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Clear Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>When engraving clear acrylic, mask it first and leave a 2mm gap under it.</Remarks>
+  </Materials>
+  <Materials>
+    <id>b283833b-0d01-4113-bfea-42773d57460f</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Real Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>545e48c3-5332-4483-af68-f1e10c9fda73</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Faux Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>80d37643-a95e-42a6-9370-6f61a41a2d03</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Glass</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>When engraving glass, paint it with black acrylic.</Remarks>
+  </Materials>
+  <Materials>
+    <id>bbb97159-2736-4cb7-a6e0-9fe9d9d0ffd1</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Anodized Aluminum</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>cdc957b5-1b8a-4524-ba0a-dacb175da093</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 15 (6.5W optical)</Model>
+    <Material>Coated Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>26f9ea17-d27c-40d2-9b56-84f76deff605</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Brown Craft Board</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>5</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8bb01e5b-66fd-4e9f-805a-77c0502ba18e</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Plywood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>8</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>0d78b2d5-b03c-4ea0-84ad-b8b56dfcbd1b</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>White Card</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>8</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b38f4e0e-9c20-4bc4-988c-fccc0e2a2b07</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Cork</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>5</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d1741efc-3a1e-4183-8e92-1bf5c420d47b</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Mirror</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>8</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>When engraving mirrors, engrave from the rear.</Remarks>
+  </Materials>
+  <Materials>
+    <id>51ba6f2f-fe3c-41c9-bfe1-323030791c63</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Tile</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>75</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5b609b53-f84f-4e0f-ae26-2c99f814bac9</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Slate</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>15</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>03215c2c-479e-4146-ad76-b743a5301497</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Cherry Wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>8</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ed0f4586-f13b-4790-972c-b96be128407f</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Pine</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>8</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4161b31b-31d2-4cf3-a024-832f17e51770</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>8</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5f918903-4c60-42a3-8507-293c53849127</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Black Card</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>5</Power>
+    <Speed>550</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5bcac133-df1e-430e-b938-42491f993879</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Blue Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ae41ecf1-fcdc-4e78-855b-846c56f4e39c</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Translucent Red Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>579ba273-0a17-4186-befb-b42a6fb1815f</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Solid Pink Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>421b7542-48c0-4442-82f9-68533656d500</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Clear Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>50</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>When engraving clear acrylic, mask it first and leave a 2mm gap under it.</Remarks>
+  </Materials>
+  <Materials>
+    <id>bbd0faf0-eef4-4507-ae53-a8870b671448</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Real Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>310ffbad-cda1-4e56-af52-b76b73bcd460</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Faux Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>8</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>147d9026-75dd-4559-b3f7-7655a21e4f18</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Glass</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>When engraving glass, paint it with black acrylic.</Remarks>
+  </Materials>
+  <Materials>
+    <id>821dc2cf-17ce-433e-b12e-144abc9cfb9a</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Anodized Aluminum</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>97d7d164-6d9c-4e31-b6ca-1f0ccf4f25b4</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 40 (7W optical)</Model>
+    <Material>Coated Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>fb150ecd-ef9f-4d0c-ad41-c127b083d4a9</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Brown Craft Board</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>5</Power>
+    <Speed>1250</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>3869fbcc-9cac-44fe-b58a-cd68bfaf0a66</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Plywood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>15</Power>
+    <Speed>1250</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>3648ef7a-285c-4f6e-a23e-07ec251b111a</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>White Card</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>15</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5c5aad6e-2836-491d-8598-7e032cce364a</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Cork</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>5</Power>
+    <Speed>1450</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>931a21bb-baa0-4cd8-92f4-46e105ac127d</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Mirror</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>When engraving mirrors, engrave from the rear.</Remarks>
+  </Materials>
+  <Materials>
+    <id>dd26ac00-b7a7-4b80-b000-c7685bf2e448</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Tile</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>18</Power>
+    <Speed>900</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e9392e08-c340-42bc-8b11-d4d63aa4b65d</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Slate</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a04c9244-5038-4176-b37e-b1ea521db368</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Cherry Wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e11d4a83-1a1f-4af8-ba0a-444a54212db8</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Pine</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>15</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>bbc80ac2-0742-48f0-9a12-47661e3e335d</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>15</Power>
+    <Speed>1250</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>90907db4-62f9-474c-9f04-563193d0e259</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Black Card</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>5</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>9a14d79f-6eed-4d07-b428-cca3376fa90f</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Blue Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>7ec13831-eccf-4d75-831d-01be03de7b99</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Translucent Red Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>3fc022e6-4401-408c-8fb1-dde733b6af16</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Solid Pink Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>bc47cfb6-ef19-4f8b-9d4a-ad4184609de7</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Clear Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>When engraving clear acrylic, mask it first and leave a 2mm gap under it.</Remarks>
+  </Materials>
+  <Materials>
+    <id>157f6d6b-9749-44d0-a5c4-dee7ad58c801</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Real Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>53866ce9-d320-486d-b564-3132b2322634</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Faux Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>adbe3ce0-e22d-48d4-9b36-a1a43d8eeca5</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Glass</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>When engraving glass, paint it with black acrylic.</Remarks>
+  </Materials>
+  <Materials>
+    <id>b92ca71d-0396-415e-a438-5be89a984ddf</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Anodized Aluminum</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>15</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f5566e1b-814d-40df-bb8f-13c2b329851b</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Coated Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>25</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>6743330e-1ce6-4f18-9094-fc4ed0af1c8b</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Brown Craft Board</Material>
+    <Thickness />
+    <Action>Cut</Action>
+    <Power>45</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>1302379e-f424-431e-8888-c2e6a4c232f0</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Plywood</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>65</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b5f3cb57-422d-4ce0-96de-637517a4f920</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Plywood</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>75</Power>
+    <Speed>175</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>76f5c061-6a65-4f8e-b767-b152137f73ff</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>MDF</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>60</Power>
+    <Speed>230</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>16922018-7402-48f4-a0e1-4f197f93d918</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>MDF</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>75</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>7e4ad477-1b71-4d06-a8fa-853d1c680685</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>White Card</Material>
+    <Thickness />
+    <Action>Cut</Action>
+    <Power>40</Power>
+    <Speed>800</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>72323b24-9a83-44c6-adbb-05ba1ef2d51a</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Black Card</Material>
+    <Thickness />
+    <Action>Cut</Action>
+    <Power>32</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>263fbb58-f935-4488-9e4c-bc70590cb083</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Translucent Red Acrylic</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>65</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>79c3e315-fed4-43c2-ac96-8bd2786124ec</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Solid Pink Acrylic</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>85</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d874b860-1df0-4d91-90c1-87640158bb5a</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Black Acrylic</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>70</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>997fc2c0-4b7d-45f1-9052-355c680d20da</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Real Leather</Material>
+    <Thickness />
+    <Action>Cut</Action>
+    <Power>55</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>6829965a-7e4f-47c4-8d2b-100ae031c709</id>
+    <Visible>true</Visible>
+    <Model>YoraHome 80 (10W optical)</Model>
+    <Material>Faux Leather</Material>
+    <Thickness />
+    <Action>Cut</Action>
+    <Power>40</Power>
+    <Speed>750</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
 </MaterialDB>
