@@ -40,7 +40,7 @@ namespace LaserGRBL.RasterConverter
 			using (ResolutionHelperForm f = new ResolutionHelperForm())
 			{
 				f.UDDesired.Value = (decimal)oldval;
-				f.UDHardware.Value = Core.Configuration.ResolutionX;
+				f.UDHardware.Value = GrblCore.Configuration.ResolutionX;
 				f.Compute(null, null);
 
 				if (f.ShowDialog(parent) == DialogResult.OK)

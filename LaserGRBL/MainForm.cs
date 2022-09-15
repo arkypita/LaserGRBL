@@ -4,6 +4,7 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.WiFiConfigurator;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,6 +22,9 @@ namespace LaserGRBL
 		private GrblCore Core;
 		private UsageStats.MessageData ToolBarMessage;
 		private bool IsBufferStuck = false;
+		private bool MultiRunShown = false;
+		private bool OrturWiFiShown;
+		private readonly string[] args;
 
 		public MainForm()
 		{
@@ -260,6 +264,36 @@ namespace LaserGRBL
 			ConnectionForm.TimerUpdate();
 			PreviewForm.TimerUpdate();
 			JogForm.Enabled = Core.JogEnabled;
+			PromptOrturWiFi();
+		}
+
+		private void PromptOrturWiFi()
+		{
+			if (!OrturWiFiShown && !Settings.GetObject("Suppress Ortur WiFI Message", false) && Core.GrblVersion != null && Core.GrblVersion.IsLuckyOrturWiFi && !IsConfiguredForWiFi() && Core.CanReadWriteConfig)
+			{
+				OrturWiFiShown = true;
+
+				using (OrturWiFiConfigPrompt F = new OrturWiFiConfigPrompt(Core))
+				{
+					if (F.ShowDialog(this) == DialogResult.OK)
+						ShowWiFiConfig();
+				}
+				
+			}
+		}
+
+		private void ShowWiFiConfig()
+		{
+			using (OrturWiFiConfig F2 = new OrturWiFiConfig(Core))
+			{
+				if (F2.ShowDialog(this) == DialogResult.OK && Core.DetectedIP != null)
+				{
+					ConnectionForm.ConfigFromOrtur($"{Core.DetectedIP}:{GrblCore.Configuration.TelnetPort}");
+					Settings.SetObject("ComWrapper Protocol", ComWrapper.WrapperType.Telnet);
+					Core.CloseCom(true);
+				}
+				
+			}
 		}
 
 		public void TimerUpdate()
@@ -292,7 +326,7 @@ namespace LaserGRBL
 			MnConnect.Visible = !Core.IsConnected;
 			MnDisconnect.Visible = Core.IsConnected;
 
-			MnGoHome.Visible = Core.Configuration.HomingEnabled;
+			MnGoHome.Visible = GrblCore.Configuration.HomingEnabled;
 			MnGoHome.Enabled = Core.CanDoHoming;
 			MnUnlock.Enabled = Core.CanUnlock;
 
@@ -301,9 +335,13 @@ namespace LaserGRBL
 			TTOvS.Visible = Core.SupportOverride;
 			spacer.Visible = Core.SupportOverride;
 
-			ComWrapper.WrapperType wt = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
-			MnWiFiDiscovery.Visible = wt == ComWrapper.WrapperType.LaserWebESP8266 || wt == ComWrapper.WrapperType.Telnet;
+			MnWiFiDiscovery.Visible = IsConfiguredForWiFi();
 			MnWiFiDiscovery.Enabled = !Core.IsConnected;
+
+			ComWrapper.WrapperType wr = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
+
+			MnSeparatorConfigWiFi.Visible = MnConfigureOrturWiFi.Visible = Core.GrblVersion != null && (wr == ComWrapper.WrapperType.UsbSerial || wr == ComWrapper.WrapperType.UsbSerial2) && Core.GrblVersion.IsLuckyOrturWiFi;
+			MnConfigureOrturWiFi.Enabled = MnConfigureOrturWiFi.Visible && Core.CanReadWriteConfig;
 
 			switch (Core.MachineStatus)
 			{
@@ -316,7 +354,8 @@ namespace LaserGRBL
 				case GrblCore.MacStatus.Door:
 				case GrblCore.MacStatus.Hold:
 				case GrblCore.MacStatus.Cooling:
-					TTTStatus.BackColor = Color.DarkOrange;
+                case GrblCore.MacStatus.AutoHold:
+                    TTTStatus.BackColor = Color.DarkOrange;
 					TTTStatus.ForeColor = Color.Black;
 					break;
 				case GrblCore.MacStatus.Jog:
@@ -346,6 +385,12 @@ namespace LaserGRBL
 			MnOrtur.Visible = Core.IsOrturBoard;
 
 			ResumeLayout();
+		}
+
+		private bool IsConfiguredForWiFi()
+		{
+			ComWrapper.WrapperType wt = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
+			return (wt == ComWrapper.WrapperType.LaserWebESP8266 || wt == ComWrapper.WrapperType.Telnet);
 		}
 
 		private void RefreshFormTitle()
@@ -878,9 +923,6 @@ namespace LaserGRBL
 			MnRunMulti.Visible = MnRunMultiSep.Visible = SincroStart.Running() && System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Length > 1;
 		}
 
-		bool MultiRunShown = false;
-		private readonly string[] args;
-
 		private void MnRunMulti_Click(object sender, EventArgs e)
 		{
 			if (MultiRunShown || MessageBox.Show(this, "Warning: this command will start/resume all job in any running LaserGRBL instance!", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
@@ -945,6 +987,11 @@ namespace LaserGRBL
 		private void TTTStatus_DoubleClick(object sender, EventArgs e)
 		{
 			Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/machine-status/");
+		}
+
+		private void MnConfigureOrturWiFi_Click(object sender, EventArgs e)
+		{
+			ShowWiFiConfig();
 		}
 	}
 

@@ -159,9 +159,9 @@ namespace LaserGRBL
         {
             //invia i dati solo almeno ad un giorno di distanza o al cambio version/grblversion
             Version current = Program.CurrentVersion;
-            bool mustsend = DateTime.UtcNow.Subtract(LastSent).TotalDays > 1 || Version != current || (Core.Configuration.GrblVersion != null && GrblVersion != Core.Configuration.GrblVersion);
+            bool mustsend = DateTime.UtcNow.Subtract(LastSent).TotalDays > 1 || Version != current || (GrblCore.Configuration.GrblVersion != null && GrblVersion != GrblCore.Configuration.GrblVersion);
             Version = current;
-            GrblVersion = Core.Configuration.GrblVersion != null ? Core.Configuration.GrblVersion : GrblVersion;
+            GrblVersion = GrblCore.Configuration.GrblVersion != null ? GrblCore.Configuration.GrblVersion : GrblVersion;
             Locale = System.Threading.Thread.CurrentThread.CurrentCulture.LCID;
             UiLang = System.Threading.Thread.CurrentThread.CurrentUICulture.LCID;
 
@@ -175,7 +175,7 @@ namespace LaserGRBL
 
 			LaserGRBL.Firmware fw = Settings.GetObject("Firmware Type", LaserGRBL.Firmware.Grbl);
 			FirmwareString = fw.ToString();
-			VendorString = Core?.GrblVersion?.Vendor != null ? Core.GrblVersion.Vendor : "Unknown";
+			VendorString = Core?.GrblVersion?.VendorName != null ? Core.GrblVersion.VendorName : "Unknown";
 
 			if (Counters == null) Counters = new UsageCounters();
             Counters.Update(Core.UsageCounters);

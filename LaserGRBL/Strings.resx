@@ -430,4 +430,10 @@ If you need help click on "?" button.</value>
   <data name="ProblemConnectingTitle" xml:space="preserve">
     <value>Problem with connection?</value>
   </data>
+  <data name="BoxMachineSizeOutOfRangeText" xml:space="preserve">
+    <value>The engraver has some configuration parameters out of range. Please check machine configuration (menu "Grbl", "Grbl Configuration") parameters 130 and 131.</value>
+  </data>
+  <data name="BoxMachineSizeOutOfRangeTitle" xml:space="preserve">
+    <value>Warning</value>
+  </data>
 </root>

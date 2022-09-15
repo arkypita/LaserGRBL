@@ -43,7 +43,8 @@ namespace LaserGRBL.ComWrapper
 				GrblEmulator.EmulatorUI.ShowUI("Grbl Emulator v1.1#");
 
 				closing = false;
-				emu.OpenCom();
+                ComLogger.Log("com", "Open Emulator");
+                emu.OpenCom();
 				buffer.Clear();
 				opened = true;
 			}
@@ -56,7 +57,8 @@ namespace LaserGRBL.ComWrapper
 			if (opened)
 			{
 				closing = true;
-				emu.CloseCom();
+                ComLogger.Log("com", String.Format("Close Emulator [{0}]", auto ? "CORE" : "USER"));
+                emu.CloseCom();
 				buffer.Clear();
 				opened = false;
 			}
@@ -69,17 +71,20 @@ namespace LaserGRBL.ComWrapper
 
 		public void Write(byte b)
 		{
-			emu.ManageMessage(new byte[] { b });
+            ComLogger.Log("tx", b);
+            emu.ManageMessage(new byte[] { b });
 		}
 
         public void Write(byte[] arr)
         {
+            ComLogger.Log("tx", arr);
             emu.ManageMessage(arr);
         }
 
         public void Write(string text)
 		{
-			emu.ManageMessage(Encoding.UTF8.GetBytes(text));
+            ComLogger.Log("tx", text);
+            emu.ManageMessage(Encoding.UTF8.GetBytes(text));
 		}
 
 		public string ReadLineBlocking()
@@ -95,7 +100,9 @@ namespace LaserGRBL.ComWrapper
 					System.Threading.Thread.Sleep(10);
 			}
 
-			return rv;
+            if (rv != null)
+                ComLogger.Log("rx", rv);
+            return rv;
 		}
 
 		public bool HasData()
