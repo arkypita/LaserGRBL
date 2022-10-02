@@ -361,7 +361,7 @@ namespace LaserGRBL
 							if (c.pwm)
 								list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.ON, 0))); //laser on and power to zero
 							else
-								list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(core.Configuration.MaxPWM)))); //laser off and power to max power
+								list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(GrblCore.Configuration.MaxPWM)))); //laser off and power to max power
 
 							//set speed to markspeed
 							// For marlin, need to specify G1 each time :
@@ -383,7 +383,7 @@ namespace LaserGRBL
 			if (supportPWM)
 				list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.ON, 0))); //laser on and power to zero
 			else
-				list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(core.Configuration.MaxPWM)))); //laser off and power to max power
+				list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(GrblCore.Configuration.MaxPWM)))); //laser off and power to max power
 
 			//trace raster filling
 			if (flist != null)
@@ -509,7 +509,7 @@ namespace LaserGRBL
 			if (c.pwm)
 				list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.ON, 0))); //laser on and power to zero
 			else
-				list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(core.Configuration.MaxPWM)))); //laser off and power to maxpower
+				list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(GrblCore.Configuration.MaxPWM)))); //laser off and power to maxpower
 			//set speed to markspeed						
 			// For marlin, need to specify G1 each time :
 			//list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
@@ -518,7 +518,7 @@ namespace LaserGRBL
 			ImageLine2Line(bmp, c, core);
 
 			//laser off
-			list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(core.Configuration.MaxPWM))));
+			list.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(GrblCore.Configuration.MaxPWM))));
 
 			//move fast to origin
 			//list.Add(new GrblCommand("G0 X0 Y0")); //moved to custom footer
@@ -552,7 +552,7 @@ namespace LaserGRBL
 					}
 					else
 					{
-						temp.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(core.Configuration.MaxPWM)))); //laser off
+						temp.AddRange(gCodeListToGrblCommad(core.getSpindleGcode(GrblCore.SpindleState.OFF, Decimal.ToInt32(GrblCore.Configuration.MaxPWM)))); //laser off
 					}
 				}
 
@@ -1113,7 +1113,7 @@ namespace LaserGRBL
 			{
 				try
 				{
-					GrblConf conf = Settings.GetObject("Grbl Configuration", new GrblConf());
+					GrblConfST conf =  GrblCore.Configuration;
 					TimeSpan delay = spb.AnalyzeCommand(cmd, true, conf);
 
 					mRange.UpdateSRange(spb.S);

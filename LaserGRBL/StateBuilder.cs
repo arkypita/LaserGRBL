@@ -93,7 +93,7 @@ namespace LaserGRBL
 
 			public G2G3Helper LastArcHelperResult;
 
-			public TimeSpan AnalyzeCommand(GrblCommand cmd, bool compute, GrblConf conf = null)
+			public TimeSpan AnalyzeCommand(GrblCommand cmd, bool compute, GrblConfST conf = null)
 			{
 				bool delete = !cmd.JustBuilt;
 				if (!cmd.JustBuilt) cmd.BuildHelper();
@@ -176,7 +176,7 @@ namespace LaserGRBL
 			{ return (mCurX.Number != mCurX.Previous || mCurY.Number != mCurY.Previous || G2G3); }
 
 
-			private TimeSpan ComputeExecutionTime(GrblCommand cmd, GrblConf conf)
+			private TimeSpan ComputeExecutionTime(GrblCommand cmd, GrblConfST conf)
 			{
 				decimal f = cmd is JogCommand && cmd.F != null ? cmd.F.Number : mCurF.Number;
 

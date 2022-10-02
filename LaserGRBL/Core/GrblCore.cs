@@ -108,7 +108,7 @@ namespace LaserGRBL
 		}
 
 		public enum MacStatus
-		{ Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue, Cooling }
+		{ Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue, Cooling, AutoHold, Tool } // "Tool" added in GrblHal
 
 		public enum JogDirection
 		{ None, Abort, Home, N, S, W, E, NW, NE, SW, SE, Zup, Zdown }
@@ -123,15 +123,18 @@ namespace LaserGRBL
 			int mMinor;
 			char mBuild;
 			bool mOrtur;
+			bool mGrblHal;
+
 			string mVendorInfo;
 			string mVendorVersion;
 
-			public GrblVersionInfo(int major, int minor, char build, string VendorInfo, string VendorVersion)
+			public GrblVersionInfo(int major, int minor, char build, string VendorInfo, string VendorVersion, bool IsHAL)
 			{
 				mMajor = major; mMinor = minor; mBuild = build;
 				mVendorInfo = VendorInfo;
 				mVendorVersion = VendorVersion;
 				mOrtur = VendorInfo != null && (VendorInfo.Contains("Ortur") || VendorInfo.Contains("Aufero"));
+				mGrblHal = IsHAL;
 			}
 
 			public GrblVersionInfo(int major, int minor, char build)
@@ -182,7 +185,7 @@ namespace LaserGRBL
 			public override bool Equals(object obj)
 			{
 				GrblVersionInfo v = obj as GrblVersionInfo;
-				return v != null && this.mMajor == v.mMajor && this.mMinor == v.mMinor && this.mBuild == v.mBuild && this.mOrtur == v.mOrtur;
+				return v != null && this.mMajor == v.mMajor && this.mMinor == v.mMinor && this.mBuild == v.mBuild && this.mOrtur == v.mOrtur && this.mGrblHal == v.mGrblHal;
 			}
 
 			public override int GetHashCode()
@@ -194,6 +197,8 @@ namespace LaserGRBL
 					hash = hash * 23 + mMajor.GetHashCode();
 					hash = hash * 23 + mMinor.GetHashCode();
 					hash = hash * 23 + mBuild.GetHashCode();
+					hash = hash * 23 + mOrtur.GetHashCode();
+					hash = hash * 23 + mGrblHal.GetHashCode();
 					return hash;
 				}
 			}
@@ -231,13 +236,14 @@ namespace LaserGRBL
 			public object Clone()
 			{ return this.MemberwiseClone(); }
 
-			public int Major { get { return mMajor; } }
+			public int Major => mMajor;
+			public int Minor => mMinor;
+			public bool IsOrtur => mOrtur;
+			public bool IsHAL => mGrblHal;
+			public bool IsLuckyOrturWiFi => IsOrtur && mVendorInfo == "Ortur Laser Master 3";
+			public string MachineName => mVendorInfo;
 
-			public int Minor { get { return mMinor; } }
-
-			public bool IsOrtur { get => mOrtur; internal set => mOrtur = value; }
-
-			public string Vendor
+			public string VendorName
 			{
 				get 
 				{
@@ -260,7 +266,7 @@ namespace LaserGRBL
 					catch { return -1; }
 				}
 			}
-		}
+        }
 
 		public delegate void dlgIssueDetector(DetectedIssue issue);
 		public delegate void dlgOnMachineStatus();
@@ -290,7 +296,9 @@ namespace LaserGRBL
 		private string mWelcomeSeen = null;
 		private string mVersionSeen = null;
 		protected int mUsedBuffer;
-		private int mAutoBufferSize = 127;
+
+		private const int DEFAULT_BUFFER_SIZE = 127;
+		private int mAutoBufferSize = DEFAULT_BUFFER_SIZE;
 		private GPoint mMPos;
 		private GPoint mWCO;
 		private int mGrblBlocks = -1;
@@ -332,6 +340,9 @@ namespace LaserGRBL
 		public UsageStats.UsageCounters UsageCounters;
 
 		protected SpindleConfig mSpindleConfig;
+
+		private string mDetectedIP = null;
+
 
 
 		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
@@ -384,7 +395,7 @@ namespace LaserGRBL
 			UsageCounters = new UsageStats.UsageCounters();
 
 			if (GrblVersion != null)
-				CSVD.LoadAppropriateSettings(GrblVersion); //load setting for last known version
+				CSVD.LoadAppropriateCSV(GrblVersion); //load setting for last known version
 		}
 
 		internal void HotKeyOverride(HotKeysManager.HotKey.Actions action)
@@ -426,13 +437,20 @@ namespace LaserGRBL
 		public virtual Firmware Type
 		{ get { return Firmware.Grbl; } }
 
-		public GrblConf Configuration
+		public static GrblConfST Configuration
 		{
-			get { return Settings.GetObject("Grbl Configuration", new GrblConf()); }
+			get
+			{	if (Settings.ExistObject("Grbl Configuration"))
+				{
+					Settings.SetObject("Grbl Configuration ST", new GrblConfST(Settings.GetObject("Grbl Configuration", (GrblConf)null)));  //convert old format with only numbers
+					Settings.DeleteObject("Grbl Configuration");																			//delete old format
+				}
+				return Settings.GetObject("Grbl Configuration ST", new GrblConfST());
+			}
 			set
 			{
 				if (value.Count > 0 && value.GrblVersion != null)
-					Settings.SetObject("Grbl Configuration", value);
+					Settings.SetObject("Grbl Configuration ST", value);
 			}
 		}
 
@@ -447,7 +465,7 @@ namespace LaserGRBL
 
 					Logger.LogMessage("SetStatus", "Machine status [{0}]", mMachineStatus);
 					if (oldStatus == MacStatus.Connecting && newStatus == MacStatus.Disconnected)
-						mFailedConnection ++;
+						mFailedConnection++;
 					if (oldStatus == MacStatus.Connecting && newStatus != MacStatus.Disconnected)
 						mFailedConnection = 0;
 					if (oldStatus == MacStatus.Connecting && newStatus != MacStatus.Disconnected)
@@ -456,8 +474,8 @@ namespace LaserGRBL
 						SoundEvent.PlaySound(SoundEvent.EventId.Connect);
 					if (newStatus == MacStatus.Disconnected)
 						SoundEvent.PlaySound(SoundEvent.EventId.Disconnect);
-					if (mHoldByUserRequest && newStatus != MacStatus.Hold && newStatus != MacStatus.Cooling && (oldStatus == MacStatus.Hold || oldStatus == MacStatus.Cooling))
-						mHoldByUserRequest = false; //se sto uscendo da uno stato di hold per qualsiasi motivo (tipo un reset o altro) mi tolgo l'userHold
+					if (IsAnyHoldState(oldStatus) && !IsAnyHoldState(newStatus))
+						mHoldByCoolingRequest = mHoldByUserRequest = false; //se sto uscendo da uno stato di hold per qualsiasi motivo (tipo un reset o altro) mi tolgo l'userHold e il coolingHold
 
 					RiseMachineStatusChanged();
 
@@ -470,6 +488,11 @@ namespace LaserGRBL
 					}
 				}
 			}
+		}
+
+		private static bool IsAnyHoldState(MacStatus status)
+		{
+			return status == MacStatus.Hold || status == MacStatus.Cooling || status == MacStatus.AutoHold;
 		}
 
 		private void RefreshConfigOnConnect()
@@ -498,7 +521,7 @@ namespace LaserGRBL
 
 				if (GrblVersion == null || !GrblVersion.Equals(value))
 				{
-					CSVD.LoadAppropriateSettings(value);
+					CSVD.LoadAppropriateCSV(value);
 					Settings.SetObject("Last GrblVersion known", value);
 				}
 			}
@@ -586,7 +609,7 @@ namespace LaserGRBL
 				OpenFile(parent, Settings.GetObject<string>("Core.LastOpenFile", null));
 		}
 
-		public static readonly List<string> ImageExtensions = new List<string>(new string[] { ".jpg", ".bmp", ".png", ".gif" });
+		public static readonly List<string> ImageExtensions = new List<string>(new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif" });
 		public static readonly List<string> GCodeExtensions = new List<string>(new string[] { ".nc", ".cnc", ".tap", ".gcode", ".ngc" });
 		public static readonly List<string> ProjectFileExtensions = new List<string>(new string[] { ".lps" });
 		public void OpenFile(System.Windows.Forms.Form parent, string filename = null, bool append = false)
@@ -604,7 +627,7 @@ namespace LaserGRBL
 						if (lastFN != null && System.IO.File.Exists(lastFN))
 							ofd.FileName = lastFN;
 
-						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.ngc;*.bmp;*.png;*.jpg;*.gif;*.svg;*.lps|GCODE Files|*.nc;*.cnc;*.tap;*.gcode;*.ngc|Raster Image|*.bmp;*.png;*.jpg;*.gif|Vector Image (experimental)|*.svg|LaserGRBL Project|*.lps";
+						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.ngc;*.bmp;*.png;*.jpg;*.jpeg;*.gif;*.svg;*.lps|GCODE Files|*.nc;*.cnc;*.tap;*.gcode;*.ngc|Raster Image|*.bmp;*.png;*.jpg;*.jpeg;*.gif|Vector Image (experimental)|*.svg|LaserGRBL Project|*.lps";
 						ofd.CheckFileExists = true;
 						ofd.Multiselect = false;
 						ofd.RestoreDirectory = true;
@@ -835,18 +858,23 @@ namespace LaserGRBL
 
 		private void RefreshConfigOnConnect(object state) //da usare per la chiamata asincrona
 		{
-			try { RefreshConfig(); }
+			try
+			{
+				System.Threading.Thread.Sleep(500); //allow the machine to send all the startup messages before refreshing config and info
+				RefreshConfig();
+				RefreshMachineInfo();
+			}
 			catch { }
 		}
 
-		public virtual void RefreshConfig()
+		public virtual void RefreshMachineInfo()
 		{
-			if (CanReadWriteConfig)
+			if (Settings.GetObject("Query MachineInfo ($I) at connect", true))
 			{
 				try
 				{
-					GrblConf conf = new GrblConf(GrblVersion);
-					GrblCommand cmd = new GrblCommand("$$");
+					//GrblConf conf = new GrblConf(GrblVersion);
+					GrblCommand cmd = new GrblCommand("$I");
 
 					lock (this)
 					{
@@ -872,7 +900,7 @@ namespace LaserGRBL
 						long tStart = Tools.HiResTimer.TotalMilliseconds;
 						long tLast = tStart;
 						int counter = mSentPtr.Count;
-						int target = conf.ExpectedCount + 1; //il +1 è il comando $$
+						int target = 2 + 1; //il +1 è il comando $I
 
 						//finché ne devo ricevere ancora && l'ultima risposta è più recente di 500mS && non sono passati più di 5s totali
 						while (mSentPtr.Count < target && Tools.HiResTimer.TotalMilliseconds - tLast < 500 && Tools.HiResTimer.TotalMilliseconds - tStart < 5000)
@@ -883,10 +911,116 @@ namespace LaserGRBL
 								System.Threading.Thread.Sleep(10);
 						}
 
+						foreach (IGrblRow row in mSentPtr) //read the reply
+						{
+							string rline = row.GetDecodedMessage();
+							if (IsIVerMessage(rline))
+								ManageVerMessage(rline);
+							else if (IsIOptMessage(rline))
+								ManageOptMessage(rline);
+						}
+					}
+				}
+				catch (Exception ex)
+				{
+					Logger.LogException("Refresh Config", ex);
+					throw (ex);
+				}
+				finally
+				{
+					lock (this)
+					{
+						mQueuePtr = mQueue;
+						mSentPtr = mSent; //restore queue
+					}
+				}
+			}
+		}
+
+		private void ManageOptMessage(string rline)
+		{
+			try
+			{
+				rline = rline.Substring(5, rline.Length - 6);
+				string[] arr = rline.Split(',');
+				string letters = arr.Length > 0 ? arr[0] : null;
+				int bbuffer = arr.Length > 1 ? int.Parse(arr[1]) : 0;
+				int txbuffer = arr.Length > 2 ? int.Parse(arr[2]) : 0;
+
+				if (txbuffer > DEFAULT_BUFFER_SIZE) //more then default buffer size
+					EnlargeBuffer(txbuffer, true);
+
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("OptionsMessage", "Ex on [{0}] message", rline);
+				Logger.LogException("OptionsMessage", ex);
+			}
+		}
+
+		private void ManageVerMessage(string rline)
+		{
+			try
+			{
+				rline = rline.Substring(5, rline.Length - 6);
+                //if (rline.ToLower().Contains("neje"))
+                //    GrblVersion?.IsNeje = true;
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("VersionMessage", "Ex on [{0}] message", rline);
+				Logger.LogException("VersionMessage", ex);
+			}
+		}
+
+		public virtual void RefreshConfig()
+		{
+			if (CanReadWriteConfig)
+			{
+				try
+				{
+					GrblConfST conf = new GrblConfST(GrblVersion);
+					GrblCommand cmd = new GrblCommand("$$");
+
+					lock (this)
+					{
+						mSentPtr = new List<IGrblRow>(); //assign sent queue
+						mQueuePtr = new Queue<GrblCommand>();
+						mQueuePtr.Enqueue(cmd);
+					}
+
+					PeriodicEventTimer WaitResponseTimeout = new PeriodicEventTimer(TimeSpan.FromSeconds(10), true);
+
+					//resta in attesa dell'invio del comando e della risposta
+					while (cmd.Status == GrblCommand.CommandStatus.Queued || cmd.Status == GrblCommand.CommandStatus.WaitingResponse)
+					{
+						if (WaitResponseTimeout.Expired)
+							throw new TimeoutException("No response received from grbl!");
+						else
+							System.Threading.Thread.Sleep(10);
+					}
+
+					if (cmd.Status == GrblCommand.CommandStatus.ResponseGood)
+					{
+						//attendi la ricezione di tutti i parametri
+						long tStart = Tools.HiResTimer.TotalMilliseconds;
+						long tLast = tStart;
+						int counter = mSentPtr.Count;
+						int target = conf.ExpectedCount + 1; //il +1 è il comando $$
+
+						//finché ne devo ricevere ancora && l'ultima risposta è più recente di 500mS && non sono passati più di 5s totali
+						while (mSentPtr.Count < target && HiResTimer.TotalMilliseconds - tLast < 500 && Tools.HiResTimer.TotalMilliseconds - tStart < 5000)
+						{
+							if (mSentPtr.Count != counter)
+							{ tLast = HiResTimer.TotalMilliseconds; counter = mSentPtr.Count; }
+							else
+								System.Threading.Thread.Sleep(10);
+						}
+
 						foreach (IGrblRow row in mSentPtr)
 						{
 							if (row is GrblMessage)
-								conf.AddOrUpdate(row.GetMessage());
+								conf.AddOrUpdate(((GrblMessage)row).GetNativeMessage());
 						}
 
 						if (conf.Count >= conf.ExpectedCount)
@@ -929,7 +1063,7 @@ namespace LaserGRBL
 				{
 					string rv = "";
 					foreach (IGrblRow r in ErrorLines)
-						rv += string.Format("{0} {1}\n", r.GetMessage(), r.GetResult(true, false));
+						rv += string.Format("{0} {1}\n", r.GetDecodedMessage(), r.GetResult(true, false));
 					return rv.Trim();
 				}
 			}
@@ -938,7 +1072,58 @@ namespace LaserGRBL
 			{ get { return ErrorLines; } }
 		}
 
-		public void WriteConfig(System.Collections.Generic.List<GrblConf.GrblConfParam> config)
+		public string DetectedIP => mDetectedIP;
+
+		internal void WriteWiFiConfig(string ssid, string password)
+		{
+			//throw new NotImplementedException();
+			mDetectedIP = null;
+			if (CanReadWriteConfig)
+			{
+				lock (this)
+				{
+					//mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
+					//mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
+
+					mQueuePtr.Enqueue(new GrblCommand(string.Format("${0}={1}", 74, ssid), 0, true));
+					mQueuePtr.Enqueue(new GrblCommand(string.Format("${0}={1}", 75, password),0, true));
+					mQueuePtr.Enqueue(new GrblCommand("$WRS"));
+				}
+
+				try
+				{
+					while (com.IsOpen && (mQueuePtr.Count > 0 || HasPendingCommands())) //resta in attesa del completamento della comunicazione
+						;
+
+					int errors = 0;
+					foreach (IGrblRow row in mSentPtr)
+					{
+						if (row is GrblCommand)
+							if (((GrblCommand)row).Status != GrblCommand.CommandStatus.ResponseGood)
+								errors++;
+					}
+
+					//if (errors > 0)
+					//	throw new WriteConfigException(mSentPtr);
+				}
+				catch (Exception ex)
+				{
+					//Logger.LogException("Write Config", ex);
+					//throw (ex);
+				}
+				finally
+				{
+					//lock (this)
+					//{
+					//	//mQueuePtr = mQueue;
+					//	//mSentPtr = mSent; //restore queue
+					//}
+				}
+			}
+
+		}
+
+		public void WriteConfig(List<GrblConfST.GrblConfParam> config)
 		{
 			if (CanReadWriteConfig)
 			{
@@ -947,8 +1132,8 @@ namespace LaserGRBL
 					mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
 					mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
 
-					foreach (GrblConf.GrblConfParam p in config)
-						mQueuePtr.Enqueue(new GrblCommand(string.Format("${0}={1}", p.Number, p.Value.ToString(System.Globalization.NumberFormatInfo.InvariantInfo))));
+					foreach (GrblConfST.GrblConfParam p in config)
+						mQueuePtr.Enqueue(new GrblCommand(string.Format("${0}={1}", p.Number, p.Value), 0, true));
 				}
 
 				try
@@ -1182,7 +1367,7 @@ namespace LaserGRBL
 		{
 			try
 			{
-				mAutoBufferSize = 127; //reset to default buffer size
+				mAutoBufferSize = DEFAULT_BUFFER_SIZE; //reset to default buffer size
 				SetStatus(MacStatus.Connecting);
 				connectStart = Tools.HiResTimer.TotalMilliseconds;
 
@@ -1239,17 +1424,18 @@ namespace LaserGRBL
 		{
 			if (CanResumeHold)
 			{
-				mHoldByUserRequest = false;
+                mHoldByCoolingRequest = mHoldByUserRequest = false;
 				SendImmediate(126);
 			}
 		}
 
-		public virtual  void FeedHold(bool auto)
+		public virtual  void FeedHold(bool cooling)
 		{
 			if (CanFeedHold)
 			{
-				mHoldByUserRequest = !auto;
-				SendImmediate(33);
+				mHoldByUserRequest = !cooling;
+                mHoldByCoolingRequest = cooling;
+                SendImmediate(33);
 			}
 		}
 
@@ -1810,6 +1996,8 @@ namespace LaserGRBL
 				ManageCommandResponse(rline);
 			else if (IsRealtimeStatusMessage(rline))
 				ManageRealTimeStatus(rline);
+			else if (IsGrblHalWelcomeMessage(rline))
+				ManageGrblHalWelcomeMessage(rline);
 			else if (IsVigoWelcomeMessage(rline))
 				ManageVigoWelcomeMessage(rline);
 			else if (IsOrturModelMessage(rline))
@@ -1824,14 +2012,32 @@ namespace LaserGRBL
 				ManageBrokenOkMessage(rline);
 			else if (IsStandardBlockingAlarm(rline))
 				ManageStandardBlockingAlarm(rline);
+			else if (IsStaIPMessage(rline))
+				ManageStaIPMessage(rline);
 			//else if (IsOrturBlockingAlarm(rline))
 			//	ManageOrturBlockingAlarm(rline);
 			else
 				ManageGenericMessage(rline);
 		}
 
+		private void ManageStaIPMessage(string rline)
+		{
+			try
+			{
+				//[MSG:Get IP 192.168.1.182]
+				mDetectedIP = rline.Substring(12, rline.Length - 1 - 12);
+				ManageGenericMessage(rline); //process as usual
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("IP Detector", "Ex on [{0}] message", rline);
+				Logger.LogException("IP Detector", ex);
+			}
+		}
+
 		private bool IsCommandReplyMessage(string rline) => rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error");
 		private bool IsRealtimeStatusMessage(string rline) => rline.StartsWith("<") && rline.EndsWith(">");
+		private bool IsGrblHalWelcomeMessage(string rline) => rline.StartsWith("GrblHAL");
 		private bool IsVigoWelcomeMessage(string rline) => rline.StartsWith("Grbl-Vigo");
 		private bool IsOrturModelMessage(string rline) => rline.StartsWith("Ortur ");
 		private bool IsAuferoModelMessage(string rline) => rline.StartsWith("Aufero ");
@@ -1839,6 +2045,9 @@ namespace LaserGRBL
 		private bool IsStandardWelcomeMessage(string rline) => rline.StartsWith("Grbl");
 		private bool IsBrokenOkMessage(string rline) => rline.ToLower().Contains("ok");
 		private bool IsStandardBlockingAlarm(string rline) => rline.ToLower().StartsWith("alarm:");
+		private bool IsIVerMessage(string rline) => rline.StartsWith("[VER:") && rline.EndsWith("]");
+		private bool IsIOptMessage(string rline) => rline.StartsWith("[OPT:") && rline.EndsWith("]");
+		private bool IsStaIPMessage(string rline) => rline.StartsWith("[MSG:Get IP ") && rline.EndsWith("]");
 		private bool IsOrturBlockingAlarm(string rline) => false;
 
 		private void ManageGenericMessage(string rline)
@@ -1866,13 +2075,34 @@ namespace LaserGRBL
 
 		private void ManageStandardWelcomeMessage(string rline)
 		{
-			//Grbl vX.Xx ['$' for help]
+			//Grbl X.Xx ['$' for help]
 			try
 			{
 				int maj = int.Parse(rline.Substring(5, 1));
 				int min = int.Parse(rline.Substring(7, 1));
 				char build = rline.Substring(8, 1).ToCharArray()[0];
-				GrblVersion = new GrblVersionInfo(maj, min, build, mWelcomeSeen, mVersionSeen);
+				GrblVersion = new GrblVersionInfo(maj, min, build, mWelcomeSeen, mVersionSeen, false);
+
+				DetectUnexpectedReset();
+				OnStartupMessage();
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("VersionInfo", "Ex on [{0}] message", rline);
+				Logger.LogException("VersionInfo", ex);
+			}
+			mSentPtr.Add(new GrblMessage(rline, false));
+		}
+
+		private void ManageGrblHalWelcomeMessage(string rline)
+		{
+			//GrblHAL X.Xx ['$' or '$HELP' for help]
+			try
+			{
+				int maj = int.Parse(rline.Substring(8, 1));
+				int min = int.Parse(rline.Substring(10, 1));
+				char build = rline.Substring(11, 1).ToCharArray()[0];
+				GrblVersion = new GrblVersionInfo(maj, min, build, mWelcomeSeen, mVersionSeen, true);
 
 				DetectUnexpectedReset();
 				OnStartupMessage();
@@ -1894,7 +2124,7 @@ namespace LaserGRBL
 				int min = int.Parse(rline.Substring(12, 1));
 				char build = rline.Substring(13, 1).ToCharArray()[0];
 				string VendorVersion = rline.Split(':')[2];
-				GrblVersion = new GrblVersionInfo(maj, min, build, "Vigotec", VendorVersion);
+				GrblVersion = new GrblVersionInfo(maj, min, build, "Vigotec", VendorVersion, false);
 				Logger.LogMessage("VigoInfo", "Detected {0}", VendorVersion);
 
 				DetectUnexpectedReset();
@@ -1987,7 +2217,7 @@ namespace LaserGRBL
 				rline = rline.Substring(1, rline.Length - 2);
 
 				GrblVersionInfo rversion = StatusReportVersion(rline);
-				if (rversion > new GrblVersionInfo(1, 1))
+				if (rversion >= new GrblVersionInfo(1, 1))
 				{
 					//grbl > 1.1 - https://github.com/gnea/grbl/wiki/Grbl-v1.1-Interface#real-time-status-reports
 					string[] arr = rline.Split("|".ToCharArray());
@@ -2076,24 +2306,37 @@ namespace LaserGRBL
 			mGrblBlocks = int.Parse(ab[0]);
 			mGrblBuffer = int.Parse(ab[1]);
 
-			EnlargeBuffer(mGrblBuffer);
+			EnlargeBuffer(mGrblBuffer, false); //do not force here, we cannot rely on values received from report (electrical noise?!)
 		}
 
-		private void EnlargeBuffer(int mGrblBuffer)
+		private void EnlargeBuffer(int newval, bool force)
 		{
-			if (BufferSize == 127) //act only to change default value at first event, do not re-act without a new connect
+			int oldval = mAutoBufferSize;
+
+			if (force) //this came from $I at connect, and so it is a verified buffer size
 			{
-				if (mGrblBuffer == 128) //Grbl v1.1 with enabled buffer report
+				mAutoBufferSize = newval;
+			}
+			else if (mAutoBufferSize == DEFAULT_BUFFER_SIZE)
+			{
+				// act only to change default value at first event
+				// do not re-act without a new connect
+				// only allow known values (do not accept error in bf message caused by electrical noise)
+
+				if (newval == 128) //Grbl v1.1 with enabled buffer report
 					mAutoBufferSize = 128;
-                else if (mGrblBuffer == 255) //Grbl-Mega fixed
+				else if (newval == 255) //Grbl-Mega fixed
 					mAutoBufferSize = 255;
-                else if (mGrblBuffer == 256) //Grbl-Mega
+				else if (newval == 256) //Grbl-Mega
 					mAutoBufferSize = 256;
-				else if (mGrblBuffer == 10240) //Grbl-LPC
+				else if (newval == 10240) //Grbl-LPC
 					mAutoBufferSize = 10240;
-				else if (mGrblBuffer == 254) //Ortur
+				else if (newval == 254) //Ortur
 					mAutoBufferSize = 254;
 			}
+
+			if (mAutoBufferSize != oldval)
+				Logger.LogMessage("EnlargeBuffer", "Buffer size changed to {0} [{1}]", mAutoBufferSize, force);
 		}
 
 		private void ParseFS(string p)
@@ -2158,7 +2401,7 @@ namespace LaserGRBL
 						mTP.JobError(); //incrementa il contatore
 
 					if (pending.IsWriteEEPROM && pending.Status == GrblCommand.CommandStatus.ResponseGood)
-						Configuration.AddOrUpdate(pending.GetMessage());
+						Configuration.AddOrUpdate(pending.GetDecodedMessage());
 
 					//ripeti errori programma && non ho una coda (magari mi sto allineando per cambio conf buff/sync) && ho un errore && non l'ho già ripetuto troppe volte
 					if (InProgram && CurrentStreamingMode == StreamingMode.RepeatOnError && mPending.Count == 0 && pending.Status == GrblCommand.CommandStatus.ResponseBad && pending.RepeatCount < 3) //il comando eseguito ha dato errore
@@ -2300,10 +2543,12 @@ namespace LaserGRBL
 			if (InProgram && var == MacStatus.Idle) //bugfix for grbl sending Idle on G4
 				var = MacStatus.Run;
 
-			if (var == MacStatus.Hold && !mHoldByUserRequest)
+			if (var == MacStatus.Hold && mHoldByCoolingRequest)
 				var = MacStatus.Cooling;
+            else if (var == MacStatus.Hold && !mHoldByUserRequest)
+                var = MacStatus.AutoHold;
 
-			SetStatus(var);
+            SetStatus(var);
 		}
 
 		
@@ -2362,7 +2607,7 @@ namespace LaserGRBL
 		{ get { return IsConnected && HasProgram && IdleOrCheck; } }
 
 		public bool CanAbortProgram
-		{ get { return IsConnected && HasProgram && (MachineStatus == MacStatus.Run || MachineStatus == MacStatus.Hold || MachineStatus == MacStatus.Cooling); } }
+		{ get { return IsConnected && HasProgram && (MachineStatus == MacStatus.Run || IsAnyHoldState(MachineStatus)); } }
 
 		public bool CanImportExport
 		{ get { return IsConnected && MachineStatus == MacStatus.Idle; } }
@@ -2386,7 +2631,7 @@ namespace LaserGRBL
 		{ get { return IsConnected && MachineStatus == MacStatus.Run; } }
 
 		public bool CanResumeHold
-		{ get { return IsConnected && (MachineStatus == MacStatus.Door || MachineStatus == MacStatus.Hold || MachineStatus == MacStatus.Cooling); } }
+		{ get { return IsConnected && (MachineStatus == MacStatus.Door || IsAnyHoldState(MachineStatus)); } }
 
 		public bool CanReadWriteConfig
 		{ get { return IsConnected && !InProgram && (MachineStatus == MacStatus.Idle || MachineStatus == MacStatus.Alarm); } }
@@ -2415,12 +2660,13 @@ namespace LaserGRBL
 
 		private void ManageCoolingCycles()
 		{
-			if (AutoCooling && InProgram && !mHoldByUserRequest)
+			if (AutoCooling && InProgram && MachineStatus != MacStatus.Hold && MachineStatus != MacStatus.AutoHold)
 				NowCooling = (ProgramGlobalTime.Ticks % (AutoCoolingOn + AutoCoolingOff).Ticks) > AutoCoolingOn.Ticks;
 		}
 
 		protected bool mHoldByUserRequest = false;
-		private bool mNowCooling = false;
+        protected bool mHoldByCoolingRequest = false;
+        private bool mNowCooling = false;
 		private bool NowCooling
 		{
 			set
@@ -2674,11 +2920,14 @@ namespace LaserGRBL
 				exp.AddSetVariable("WPos.Y", (double)MachinePosition.Y);
 				exp.AddSetVariable("WPos.Z", (double)MachinePosition.Z);
 
-				GrblConf conf = Configuration;
+				GrblConfST conf = Configuration;
 				if (conf != null)
 				{
-					foreach (KeyValuePair<int, decimal> p in conf)
-						exp.AddSetVariable("$" + p.Key, (double)p.Value);
+					foreach (KeyValuePair<int, string> p in conf)
+					{
+						if (double.TryParse(p.Value, NumberStyles.Any, CultureInfo.InvariantCulture, out double tod )) //aggiungi solo ciò che si riesce a convertire in double
+							exp.AddSetVariable("$" + p.Key, tod);
+					}
 				}
 
 				double dval = exp.EvaluateD();
@@ -3047,8 +3296,272 @@ namespace LaserGRBL
 	}
 
 	[Serializable]
-	public class GrblConf : IEnumerable<System.Collections.Generic.KeyValuePair<int, decimal>>
+	public class GrblConfST : IEnumerable<KeyValuePair<int, string>>
 	{
+		public class GrblConfParam : ICloneable
+		{
+			private int mNumber;
+			private string mValue;
+
+			public GrblConfParam(int number, string value)
+			{ mNumber = number; mValue = value; }
+
+			public int Number
+			{ get { return mNumber; } }
+
+			public string DollarNumber
+			{ get { return "$" + mNumber.ToString(); } }
+
+			public string Parameter
+			{ get { return CSVD.Settings.GetItem(mNumber.ToString(), 0); } }
+
+			//public decimal Value
+			//{
+			//	get { return decimal.Parse(mValue, CultureInfo.InvariantCulture); }
+			//	set { mValue = value.ToString(CultureInfo.InvariantCulture); }
+			//}
+
+			public string Value
+			{
+				get { return mValue; }
+				set { mValue = value; }
+			}
+
+			public string Unit
+			{ get { return CSVD.Settings.GetItem(mNumber.ToString(), 1); } }
+
+			public string Description
+			{ get { return CSVD.Settings.GetItem(mNumber.ToString(), 2); } }
+
+			public object Clone()
+			{ return this.MemberwiseClone(); }
+
+		}
+
+		private Dictionary<int, string> mData;
+		private GrblCore.GrblVersionInfo mVersion;
+
+
+		public GrblConfST()
+		{
+			mData = new Dictionary<int, string>();
+		}
+
+		public GrblConfST(GrblCore.GrblVersionInfo GrblVersion) : this()
+		{
+			mVersion = GrblVersion;
+		}
+
+		public GrblConfST(GrblCore.GrblVersionInfo GrblVersion, Dictionary<int, string> configTable) : this(GrblVersion)
+		{
+			foreach (KeyValuePair<int, string> kvp in configTable)
+				mData.Add(kvp.Key, kvp.Value);
+		}
+
+		public GrblConfST(GrblConf old) : this(old?.GrblVersion)
+		{
+			if (old != null)
+				foreach (KeyValuePair<int, decimal> kvp in old)
+					mData.Add(kvp.Key, kvp.Value.ToString(CultureInfo.InvariantCulture));
+		}
+
+		public GrblCore.GrblVersionInfo GrblVersion => mVersion;
+		private bool NoVersionInfo => mVersion == null;
+		private bool Version11 => mVersion != null && mVersion >= new GrblCore.GrblVersionInfo(1, 1);
+		private bool Version9 => mVersion != null && mVersion >= new GrblCore.GrblVersionInfo(0, 9);
+
+		public int ExpectedCount => Version11 ? 34 : Version9 ? 31 : 23;
+		public bool HomingEnabled => ReadDecimal(Version9 ? 22 : 17, 1) != 0;
+		public decimal MaxRateX => ReadDecimal(Version9 ? 110 : 4, 4000);
+		public decimal MaxRateY => ReadDecimal(Version9 ? 111 : 5, 4000);
+
+		public bool LaserMode
+		{
+			get
+			{
+				if (NoVersionInfo)
+					return true;
+				else
+					return ReadDecimal(Version11 ? 32 : -1, 0) != 0;
+			}
+		}
+
+		public decimal MinPWM => ReadDecimal(Version11 ? 31 : -1, 0);
+		public decimal MaxPWM => ReadDecimal(Version11 ? 30 : -1, 1000);
+		public decimal ResolutionX => ReadDecimal(Version9 ? 100 : 0, 250);
+		public decimal ResolutionY => ReadDecimal(Version9 ? 101 : 1, 250);
+		public decimal TableWidth => ReadDecimal(Version9 ? 130 : -1, 300);
+		public decimal TableHeight => ReadDecimal(Version9 ? 131 : -1, 200);
+		public bool SoftLimit => ReadDecimal(20, 0) != 0;
+
+		public decimal AccelerationXY => (AccelerationX + AccelerationY) / 2;
+		private decimal AccelerationX => ReadDecimal(Version9 ? 120 : -1, 2000);
+		private decimal AccelerationY => ReadDecimal(Version9 ? 121 : -1, 2000);
+
+		public string WiFi_SSID => ReadString(74, null);
+		public string WiFi_Pwd => ReadString(75, null);
+		public string TelnetPort => ReadString(305, "23");
+
+
+		private decimal ReadDecimal(int key, decimal defval)
+		{
+			if (mVersion == null)
+				return defval;
+			else if (!mData.ContainsKey(key))
+				return defval;
+			else
+			{
+				try
+				{
+					return decimal.Parse(mData[key], CultureInfo.InvariantCulture);
+				}
+				catch
+				{
+					try //proviamo a pulire la stringa con una regex?!
+					{
+						System.Text.RegularExpressions.Regex ExtractNumber = new System.Text.RegularExpressions.Regex(@"(\d+\.?\d*)");
+						System.Text.RegularExpressions.MatchCollection matches = ExtractNumber.Matches(mData[key]);
+						return decimal.Parse(matches[0].Groups[1].Value);
+					}
+					catch
+					{
+						return defval; 
+					}
+				}
+			}
+		}
+
+		private string ReadString(int number, string defval)
+		{
+			if (mVersion == null)
+				return defval;
+			else if (!mData.ContainsKey(number))
+				return defval;
+			else
+				return mData[number];
+		}
+
+		public List<GrblConfParam> ToList()
+		{
+			List<GrblConfParam> rv = new List<GrblConfParam>();
+			foreach (KeyValuePair<int, string> kvp in mData)
+				rv.Add(new GrblConfParam(kvp.Key, kvp.Value));
+			return rv;
+		}
+
+		public int Count { get { return mData.Count; } }
+
+	
+
+		internal bool HasChanges(GrblConfParam p)
+		{
+			if (!mData.ContainsKey(p.Number))
+				return true;
+			else if (mData[p.Number] != p.Value)
+				return true;
+			else
+				return false;
+		}
+
+		private bool ContainsKey(int key)
+		{
+			return mData.ContainsKey(key);
+		}
+
+
+		public IEnumerator<KeyValuePair<int, string>> GetEnumerator()
+		{
+			return mData.GetEnumerator();
+		}
+
+		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+		{
+			return mData.GetEnumerator();
+		}
+
+
+		private static System.Text.RegularExpressions.Regex ConfRegEX = new System.Text.RegularExpressions.Regex(@"^[$](\d+)\s*=(.*)");
+
+		public static bool IsSetConf(string p)
+		{ return ConfRegEX.IsMatch(p); }
+
+		public void AddOrUpdate(string line)
+		{
+			try
+			{
+				if (IsSetConf(line))
+				{
+					line = FixFoxalienConfig(line);
+
+					System.Text.RegularExpressions.MatchCollection matches = ConfRegEX.Matches(line);
+					int key = int.Parse(matches[0].Groups[1].Value);
+					string val = matches[0].Groups[2].Value.Trim();
+
+					if (ContainsKey(key))
+						mData[key] = val;
+					else
+						mData.Add(key, val);
+				}
+			}
+			catch (Exception)
+			{
+
+			}
+		}
+
+		private static System.Text.RegularExpressions.Regex FoxalienCleanupConfig = new System.Text.RegularExpressions.Regex(@"^[$](\d+)\s*=\s*(\d+\.?\d*)\s*\(.*\)");
+		private string FixFoxalienConfig(string line)
+		{
+			if (!FoxalienCleanupConfig.IsMatch(line))
+				return line;
+
+			System.Text.RegularExpressions.MatchCollection matches = FoxalienCleanupConfig.Matches(line);
+			int key = int.Parse(matches[0].Groups[1].Value);
+			string val = matches[0].Groups[2].Value.Trim();
+
+			return $"${key}={val}";
+		}
+
+		internal bool SetValueIfKeyExist(string p)
+		{
+			try
+			{
+				if (IsSetConf(p))
+				{
+					System.Text.RegularExpressions.MatchCollection matches = ConfRegEX.Matches(p);
+					int key = int.Parse(matches[0].Groups[1].Value);
+					string val = matches[0].Groups[2].Value.Trim();
+
+					if (!ContainsKey(key))
+						return false;
+
+					mData[key] = val;
+					return true;
+				}
+			}
+			catch (Exception)
+			{
+
+			}
+
+			return false;
+		}
+
+		internal string ValidateConfig(int parid, object value)
+		{
+			if (parid == 33 && mVersion != null && mVersion.IsOrtur)
+				return "This param control an Ortur safety feature. Please do not change this value!";
+
+			return null;
+		}
+	}
+
+
+
+	[Serializable, Obsolete]
+	public class GrblConf : IEnumerable<KeyValuePair<int, decimal>>
+	{
+		[Obsolete]
 		public class GrblConfParam : ICloneable
 		{
 			private int mNumber;

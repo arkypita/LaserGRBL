@@ -164,8 +164,7 @@ Klik voor meer informatie...</value>
     <value>Annuleren</value>
   </data>
   <data name="BtnCreate.Text" xml:space="preserve">
-    <value>
-Creër</value>
+    <value>Creër</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Doelafbeelding</value>

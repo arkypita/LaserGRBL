@@ -13,7 +13,7 @@ namespace LaserGRBL
 {
 	public interface IGrblRow
 	{
-		string GetMessage();
+		string GetDecodedMessage();
 
 		string GetResult(bool decode, bool erroronly);
 		string GetToolTip(bool decode);
@@ -26,16 +26,25 @@ namespace LaserGRBL
 	
 	public static class CSVD
 	{
-		public static CsvDictionary Settings = new CSV.CsvDictionary("LaserGRBL.CSV.setting_codes.v1.1.csv", 3);
-		public static CsvDictionary Alarms = new CSV.CsvDictionary("LaserGRBL.CSV.alarm_codes.csv", 2);
-		public static CsvDictionary Errors = new CSV.CsvDictionary("LaserGRBL.CSV.error_codes.csv", 2);
+		public static CsvDictionary Settings = new CsvDictionary("LaserGRBL.CSV.setting_codes.v1.1.csv", 3);
+		public static CsvDictionary Alarms = new CsvDictionary("LaserGRBL.CSV.alarm_codes.csv", 2);
+		public static CsvDictionary Errors = new CsvDictionary("LaserGRBL.CSV.error_codes.csv", 2);
 
-		internal static void LoadAppropriateSettings(GrblCore.GrblVersionInfo value)
+		public static void LoadAppropriateCSV(GrblCore.GrblVersionInfo value)
+		{
+			LoadAppropriateSettings(value);
+			LoadAppropriateAlarms(value);
+			LoadAppropriateErrors(value);
+		}
+
+		private static void LoadAppropriateSettings(GrblCore.GrblVersionInfo value)
 		{
 			try
 			{
 				string ResourceName;
-				if (value.IsOrtur && value.OrturFWVersionNumber >= 170)
+				if (value.IsOrtur && value.IsHAL)
+					ResourceName = String.Format("LaserGRBL.CSV.setting_codes.ortur.GrblHal.csv");
+				else if (value.IsOrtur && value.OrturFWVersionNumber >= 170)
 					ResourceName = String.Format("LaserGRBL.CSV.setting_codes.ortur.v1.7.x.csv");
 				else if (value.IsOrtur && value.OrturFWVersionNumber >= 150)
 					ResourceName = String.Format("LaserGRBL.CSV.setting_codes.ortur.v1.5.x.csv");
@@ -44,10 +53,39 @@ namespace LaserGRBL
 				else
 					ResourceName = String.Format("LaserGRBL.CSV.setting_codes.v{0}.{1}.csv", value.Major, value.Minor);
 
-
 				Settings = new CsvDictionary(ResourceName, 3);
 			}
-			catch { }
+			catch { Settings = new CsvDictionary("LaserGRBL.CSV.setting_codes.v1.1.csv", 3); }
+		}
+
+		private static void LoadAppropriateAlarms(GrblCore.GrblVersionInfo value)
+		{
+			try
+			{
+				string ResourceName;
+				if (value.IsOrtur && value.IsHAL)
+					ResourceName = String.Format("LaserGRBL.CSV.alarm_codes.ortur.GrblHal.csv");
+				else
+					ResourceName = String.Format("LaserGRBL.CSV.alarm_codes.csv");
+
+				Alarms = new CsvDictionary(ResourceName, 2);
+			}
+			catch { Alarms = new CsvDictionary("LaserGRBL.CSV.alarm_codes.csv", 2); }
+		}
+
+		private static void LoadAppropriateErrors(GrblCore.GrblVersionInfo value)
+		{
+			try
+			{
+				string ResourceName;
+				if (value.IsOrtur && value.IsHAL)
+					ResourceName = String.Format("LaserGRBL.CSV.error_codes.ortur.GrblHal.csv");
+				else
+					ResourceName = String.Format("LaserGRBL.CSV.error_codes.csv");
+
+				Errors = new CsvDictionary(ResourceName, 2);
+			}
+			catch { Errors = new CsvDictionary("LaserGRBL.CSV.error_codes.csv", 2); }
 		}
 	}
 
@@ -273,7 +311,7 @@ namespace LaserGRBL
 		{ get { return IsGrblCommand && IsSetConf; } } //maybe need to add G10/G28.1/G30.1 ?
 
 		private bool IsSetConf
-		{ get { return GrblConf.IsSetConf(mLine); } }
+		{ get { return GrblConfST.IsSetConf(mLine); } }
 
 		
 		#region G Codes
@@ -380,7 +418,7 @@ namespace LaserGRBL
 		private Element GetElement(char key)
 		{ return mHelper.ContainsKey(key) ? mHelper[key] : null; }
 
-		public string GetMessage() //per la visualizzazione
+		public string GetDecodedMessage() //per la visualizzazione
 		{  return mRepeatCount == 0 ? Command : String.Format("{0} (Retry {1})", Command, mRepeatCount); } 
 
 		public string GetToolTip(bool decode)
@@ -419,6 +457,7 @@ namespace LaserGRBL
 		public enum MessageType
 		{Startup, Config, Alarm, Feedback, Position, Others}
 
+		private string mNativeMessage;
 		private string mMessage;
 		private string mToolTip;
 		private MessageType mType;
@@ -426,7 +465,7 @@ namespace LaserGRBL
 		public GrblMessage(string message, bool decode)
 		{
 			mMessage = message.Trim();
-
+			mNativeMessage = mMessage;
 			if (mMessage.ToLower().StartsWith("$") && mMessage.Contains("=")) //if (mMessage.ToLower().StartsWith("$") || mMessage.ToLower().StartsWith("~") || mMessage.ToLower().StartsWith("!") || mMessage.ToLower().StartsWith("?") || mMessage.ToLower().StartsWith("ctrl"))
 				mType = MessageType.Config;
 			else if (mMessage.ToLower().StartsWith("grbl"))
@@ -450,7 +489,7 @@ namespace LaserGRBL
 						string brief = CSVD.Settings.GetItem(key, 0);
 						string unit = CSVD.Settings.GetItem(key, 1);
 						string desc = CSVD.Settings.GetItem(key, 2);
-						
+
 						if (brief != null)
 							mMessage = string.Format("{0} ({1})", message, brief);
 						
@@ -472,11 +511,8 @@ namespace LaserGRBL
 			}
 		}
 
-		public string Message
-		{get { return mMessage; ; }}
-		
-		public string GetMessage()
-		{return mMessage; }
+		public string GetNativeMessage() => mNativeMessage;
+		public string GetDecodedMessage() => mMessage;
 
 		public string GetResult(bool decode, bool erroronly)
 		{return null; }

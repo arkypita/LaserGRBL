@@ -301,7 +301,7 @@ namespace LaserGRBL
 			if (CBSpeed.SelectedItem != null)
 				Settings.SetObject("Serial Speed", CBSpeed.SelectedItem);
 
-			if (TxtAddress.Text != "")
+			if (!string.IsNullOrWhiteSpace(TxtAddress.Text))
 			{
 				if (currentWrapper == ComWrapper.WrapperType.Telnet)
 					Settings.SetObject("Telnet Address", TxtAddress.Text);
@@ -373,6 +373,18 @@ namespace LaserGRBL
 
 				if (BtnConnectDisconnect.Enabled && Core.MachineStatus == GrblCore.MacStatus.Disconnected)
 					BtnConnectDisconnectClick(null, null);
+			}
+		}
+
+		internal void ConfigFromOrtur(string config)
+		{
+			if (config != null)
+			{
+				TxtAddress.Text = config;
+				Application.DoEvents();
+
+				//if (BtnConnectDisconnect.Enabled && Core.MachineStatus == GrblCore.MacStatus.Disconnected)
+				//	BtnConnectDisconnectClick(null, null);
 			}
 		}
 	}

@@ -80,7 +80,7 @@ namespace LaserGRBL.SvgConverter
 			if (SupportPWM)
 				gcodeSpindleSpeed = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", 255);
 			else
-				gcodeSpindleSpeed = (float)core.Configuration.MaxPWM;
+				gcodeSpindleSpeed = (float)GrblCore.Configuration.MaxPWM;
 
 
 			// Smoothieware firmware need a value between 0.0 and 1.1

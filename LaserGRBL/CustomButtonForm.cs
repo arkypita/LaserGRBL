@@ -127,7 +127,7 @@ namespace LaserGRBL
 		{
 			using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
 			{
-				ofd.Filter = "Image file|*.bmp;*.png;*.jpg;*.gif";
+				ofd.Filter = "Image file|*.bmp;*.png;*.jpg;*.jpeg;*.gif";
 				ofd.CheckFileExists = true;
 				ofd.Multiselect = false;
 				ofd.RestoreDirectory = true;

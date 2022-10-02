@@ -44,7 +44,7 @@ namespace LaserGRBL.SvgConverter
                     Settings.SetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", f.IIBorderTracing.CurrentValue);
                     Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", f.IIMaxPower.CurrentValue);
 					Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", f.IIMinPower.CurrentValue);
-					if ((f.CBLaserON.SelectedItem as ComboboxItem).Value == "M106")
+					if ((string)(f.CBLaserON.SelectedItem as ComboboxItem).Value == "M106")
 					{
 						Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", (f.CBLaserON.SelectedItem as ComboboxItem).Value);
 						Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M107");
@@ -84,8 +84,8 @@ namespace LaserGRBL.SvgConverter
 
 		private void AssignMinMaxLimit()
         { 
-			IIBorderTracing.MaxValue = (int)mCore.Configuration.MaxRateX;
-			IIMaxPower.MaxValue = (int)mCore.Configuration.MaxPWM;
+			IIBorderTracing.MaxValue = (int)GrblCore.Configuration.MaxRateX;
+			IIMaxPower.MaxValue = (int)GrblCore.Configuration.MaxPWM;
 		}
 
 		public void ShowDialogForm(Form parent)
@@ -95,7 +95,7 @@ namespace LaserGRBL.SvgConverter
 			string LaserOn = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
 			if (Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin && Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle) == GrblCore.PwmMode.Fan)
 				CBLaserON.SelectedItem = LaserOptions[2];
-			else if (LaserOn == "M3" || !mCore.Configuration.LaserMode)
+			else if (LaserOn == "M3" || !GrblCore.Configuration.LaserMode)
 				CBLaserON.SelectedItem = LaserOptions[0];
 			else
 			{
@@ -103,7 +103,7 @@ namespace LaserGRBL.SvgConverter
 			}
 
 			IIMinPower.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
-			IIMaxPower.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", (int)mCore.Configuration.MaxPWM);
+			IIMaxPower.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", (int)GrblCore.Configuration.MaxPWM);
 
 			IIBorderTracing.Visible = LblBorderTracing.Visible = LblBorderTracingmm.Visible = true;
 
@@ -136,12 +136,12 @@ namespace LaserGRBL.SvgConverter
 
 		private void RefreshPerc()
 		{
-			decimal maxpwm = mCore?.Configuration != null ? mCore.Configuration.MaxPWM : -1;
+			decimal maxpwm = GrblCore.Configuration != null ? GrblCore.Configuration.MaxPWM : -1;
 
 			if (maxpwm > 0)
 			{
-				LblMaxPerc.Text = (IIMaxPower.CurrentValue / mCore.Configuration.MaxPWM).ToString("P1");
-				LblMinPerc.Text = (IIMinPower.CurrentValue / mCore.Configuration.MaxPWM).ToString("P1");
+				LblMaxPerc.Text = (IIMaxPower.CurrentValue / GrblCore.Configuration.MaxPWM).ToString("P1");
+				LblMinPerc.Text = (IIMinPower.CurrentValue / GrblCore.Configuration.MaxPWM).ToString("P1");
 			}
 			else
 			{
@@ -162,7 +162,7 @@ namespace LaserGRBL.SvgConverter
 
 			if (mode != null)
 			{
-				if (!mCore.Configuration.LaserMode && (mode.Value as string) == "M4")
+				if (!GrblCore.Configuration.LaserMode && (mode.Value as string) == "M4")
 					MessageBox.Show(Strings.WarnWrongLaserMode, Strings.WarnWrongLaserModeTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);//warning!!
 			}
 
