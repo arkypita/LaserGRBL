@@ -48,6 +48,10 @@ namespace LaserGRBL
 
             if (data.Contains("ok"))
                 var = MacStatus.Idle;
+            if (data.Contains("echo:busy:") || data.Contains("echo: busy:"))
+            {
+                var = MacStatus.Run;
+            }
 
             //try { var = (MacStatus)Enum.Parse(typeof(MacStatus), data); }
             //catch (Exception ex) { Logger.LogException("ParseMachineStatus", ex); }
@@ -140,6 +144,11 @@ namespace LaserGRBL
 		{
 			if (IsMarlinRealTimeStatusMessage(rline))
 				ManageMarlinRealTimeStatus(rline);
+			else if(rline.Contains("echo:busy:") || rline.Contains("echo: busy:"))
+			{
+				SetStatus(MacStatus.Run);
+				debugLastStatusDelay.Start();
+			}
 			else
 				base.ManageReceivedLine(rline);
 		}
