@@ -5,17 +5,33 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace LaserGRBL
 {
 	public partial class SplashScreenForm : Form
 	{
+		private string mVersion;
+
 		public SplashScreenForm()
 		{
 			InitializeComponent();
+			this.Size = BackgroundImage.Size;
 			this.DoubleBuffered = true;
-			LblVersion.Text = "v" + Program.CurrentVersion.ToString(3);
+			mVersion = "v" + Program.CurrentVersion.ToString(3);
+		}
+
+		protected override void OnPaint(PaintEventArgs e)
+		{
+			base.OnPaint(e);
+
+			SizeF s = e.Graphics.MeasureString(mVersion, Font);
+			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+			e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+			e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+			e.Graphics.DrawString(mVersion, Font, Brushes.LightGray,  Width - s.Width -3 , Height - s.Height - 3);
+			e.Graphics.DrawRectangle(Pens.DarkGray, 2, 2, Width - 5, Height - 5);
 		}
 
 		private void SplashScreenForm_Load(object sender, EventArgs e)
