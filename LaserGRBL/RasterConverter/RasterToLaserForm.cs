@@ -20,14 +20,16 @@ namespace LaserGRBL.RasterConverter
 	public partial class RasterToLaserForm : Form
 	{
 		GrblCore mCore;
-		ImageProcessor IP;
+        ImageProcessor IP;
 		bool preventClose;
 		bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
+        private int nLayer;
 
-		private RasterToLaserForm(GrblCore core, string filename, bool append)
+		private RasterToLaserForm(GrblCore core, string filename, bool append, int nLayer)
 		{
 			InitializeComponent();
 			mCore = core;
+			this.nLayer = nLayer;
 
 			UDQuality.Maximum = UDFillingQuality.Maximum = GetMaxQuality();
 
@@ -35,7 +37,7 @@ namespace LaserGRBL.RasterConverter
 			GbCenterlineOptions.ForeColor = GbConversionTool.ForeColor = GbLineToLineOptions.ForeColor = GbParameters.ForeColor = GbVectorizeOptions.ForeColor = ForeColor = ColorScheme.FormForeColor;
 			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
 
-			IP = new ImageProcessor(core, filename, GetImageSize(), append);
+			IP = new ImageProcessor(core, filename, GetImageSize(), append, nLayer);
 			//PbOriginal.Image = IP.Original;
 			ImageProcessor.PreviewReady += OnPreviewReady;
 			ImageProcessor.PreviewBegin += OnPreviewBegin;
@@ -139,16 +141,23 @@ namespace LaserGRBL.RasterConverter
 
 		private static Image CreatePaper(Image img)
 		{
-			Image newimage = new Bitmap(img.Width + 6, img.Height + 6);
-			using (Graphics g = Graphics.FromImage(newimage))
-			{
-				g.Clear(Color.Transparent);
-				g.FillRectangle(Brushes.Gray, 6, 6, img.Width + 2, img.Height + 2); //ombra
-				g.FillRectangle(Brushes.White, 0, 0, img.Width + 2, img.Height + 2); //pagina
-				g.DrawRectangle(Pens.LightGray, 0, 0, img.Width + 1, img.Height + 1); //bordo
-				g.DrawImage(img, 1, 1); //disegno
+			try
+            {
+				Image newimage = new Bitmap(img.Width + 6, img.Height + 6);
+				using (Graphics g = Graphics.FromImage(newimage))
+				{
+					g.Clear(Color.Transparent);
+					g.FillRectangle(Brushes.Gray, 6, 6, img.Width + 2, img.Height + 2); //ombra
+					g.FillRectangle(Brushes.White, 0, 0, img.Width + 2, img.Height + 2); //pagina
+					g.DrawRectangle(Pens.LightGray, 0, 0, img.Width + 1, img.Height + 1); //bordo
+					g.DrawImage(img, 1, 1); //disegno
+				}
+				return newimage;
 			}
-			return newimage;
+			catch (Exception ex)
+			{
+				return null;
+			}
 		}
 
 		void WTTick(object sender, EventArgs e)
@@ -158,9 +167,9 @@ namespace LaserGRBL.RasterConverter
 			WB.Running = true;
 		}
 
-		internal static void CreateAndShowDialog(GrblCore core, string filename, Form parent, bool append)
+		internal static void CreateAndShowDialog(GrblCore core, string filename, Form parent, bool append, int nLayer)
 		{
-			using (RasterToLaserForm f = new RasterToLaserForm(core, filename, append))
+			using (RasterToLaserForm f = new RasterToLaserForm(core, filename, append, nLayer))
 				f.ShowDialog(parent);
 		}
 
@@ -195,7 +204,7 @@ namespace LaserGRBL.RasterConverter
 					ResumeLayout();
 
 					StoreSettings();
-					Project.AddSettings(GetActualSettings()); // Store project settings
+					Project.AddSettings(GetActualSettings(), nLayer); // Store project settings
 
 					IP.GenerateGCode(); //processo asincrono che ritorna con l'evento "OnGenerationComplete"
 				}
@@ -250,51 +259,53 @@ namespace LaserGRBL.RasterConverter
 
 		private void LoadSettings()
 		{
-			if ((IP.SelectedTool = Settings.GetObject("GrayScaleConversion.RasterConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Line2Line)
+			string layerPrefix = nLayer > 0 ? nLayer.ToString() + "." : "";
+
+			if ((IP.SelectedTool = Settings.GetObject(layerPrefix+"GrayScaleConversion.RasterConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Line2Line)
 				RbLineToLineTracing.Checked = true;
-			else if ((IP.SelectedTool = Settings.GetObject("GrayScaleConversion.RasterConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Dithering)
+			else if ((IP.SelectedTool = Settings.GetObject(layerPrefix+"GrayScaleConversion.RasterConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Dithering)
 				RbDithering.Checked = true;
-			else if ((IP.SelectedTool = Settings.GetObject("GrayScaleConversion.RasterConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Centerline)
+			else if ((IP.SelectedTool = Settings.GetObject(layerPrefix+"GrayScaleConversion.RasterConversionTool", ImageProcessor.Tool.Line2Line)) == ImageProcessor.Tool.Centerline)
 				RbCenterline.Checked = true;
 			else
 				RbVectorize.Checked = true;
 
-			CbDirections.SelectedItem = IP.LineDirection = Settings.GetObject("GrayScaleConversion.Line2LineOptions.Direction", ImageProcessor.Direction.Horizontal);
-			UDQuality.Value = IP.Quality = Math.Min(UDQuality.Maximum, Settings.GetObject("GrayScaleConversion.Line2LineOptions.Quality", 3.0m));
-			CbLinePreview.Checked = IP.LinePreview = Settings.GetObject("GrayScaleConversion.Line2LineOptions.Preview", false);
+			CbDirections.SelectedItem = IP.LineDirection = Settings.GetObject(layerPrefix+"GrayScaleConversion.Line2LineOptions.Direction", ImageProcessor.Direction.Horizontal);
+			UDQuality.Value = IP.Quality = Math.Min(UDQuality.Maximum, Settings.GetObject(layerPrefix+"GrayScaleConversion.Line2LineOptions.Quality", 3.0m));
+			CbLinePreview.Checked = IP.LinePreview = Settings.GetObject(layerPrefix+"GrayScaleConversion.Line2LineOptions.Preview", false);
 
-			CbSpotRemoval.Checked = IP.UseSpotRemoval = Settings.GetObject("GrayScaleConversion.VectorizeOptions.SpotRemoval.Enabled", false);
-			UDSpotRemoval.Value = IP.SpotRemoval = Settings.GetObject("GrayScaleConversion.VectorizeOptions.SpotRemoval.Value", 2.0m);
-			CbSmoothing.Checked = IP.UseSmoothing = Settings.GetObject("GrayScaleConversion.VectorizeOptions.Smooting.Enabled", false);
-			UDSmoothing.Value = IP.Smoothing = Settings.GetObject("GrayScaleConversion.VectorizeOptions.Smooting.Value", 1.0m);
-			CbOptimize.Checked = IP.UseOptimize = Settings.GetObject("GrayScaleConversion.VectorizeOptions.Optimize.Enabled", false);
-			CbAdaptiveQuality.Checked = IP.UseAdaptiveQuality = Settings.GetObject("GrayScaleConversion.VectorizeOptions.UseAdaptiveQuality.Enabled", false);
-			UDOptimize.Value = IP.Optimize = Settings.GetObject("GrayScaleConversion.VectorizeOptions.Optimize.Value", 0.2m);
-			CbDownSample.Checked = IP.UseDownSampling = Settings.GetObject("GrayScaleConversion.VectorizeOptions.DownSample.Enabled", false);
-			UDDownSample.Value = IP.DownSampling = Settings.GetObject("GrayScaleConversion.VectorizeOptions.DownSample.Value", 2.0m);
-			CbOptimizeFast.Checked = IP.OptimizeFast = Settings.GetObject("GrayScaleConversion.VectorizeOptions.OptimizeFast.Enabled", false);
+			CbSpotRemoval.Checked = IP.UseSpotRemoval = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.SpotRemoval.Enabled", false);
+			UDSpotRemoval.Value = IP.SpotRemoval = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.SpotRemoval.Value", 2.0m);
+			CbSmoothing.Checked = IP.UseSmoothing = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.Smooting.Enabled", false);
+			UDSmoothing.Value = IP.Smoothing = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.Smooting.Value", 1.0m);
+			CbOptimize.Checked = IP.UseOptimize = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.Optimize.Enabled", false);
+			CbAdaptiveQuality.Checked = IP.UseAdaptiveQuality = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.UseAdaptiveQuality.Enabled", false);
+			UDOptimize.Value = IP.Optimize = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.Optimize.Value", 0.2m);
+			CbDownSample.Checked = IP.UseDownSampling = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.DownSample.Enabled", false);
+			UDDownSample.Value = IP.DownSampling = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.DownSample.Value", 2.0m);
+			CbOptimizeFast.Checked = IP.OptimizeFast = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.OptimizeFast.Enabled", false);
 
-			CbFillingDirection.SelectedItem = IP.FillingDirection = Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingDirection", ImageProcessor.Direction.None);
-			UDFillingQuality.Value = IP.FillingQuality = Math.Min(UDFillingQuality.Maximum, Settings.GetObject("GrayScaleConversion.VectorizeOptions.FillingQuality", 3.0m));
+			CbFillingDirection.SelectedItem = IP.FillingDirection = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.FillingDirection", ImageProcessor.Direction.None);
+			UDFillingQuality.Value = IP.FillingQuality = Math.Min(UDFillingQuality.Maximum, Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.FillingQuality", 3.0m));
 
-			CbResize.SelectedItem = IP.Interpolation = Settings.GetObject("GrayScaleConversion.Parameters.Interpolation", InterpolationMode.HighQualityBicubic);
-			CbMode.SelectedItem = IP.Formula = Settings.GetObject("GrayScaleConversion.Parameters.Mode", ImageTransform.Formula.SimpleAverage);
-			TBRed.Value = IP.Red = Settings.GetObject("GrayScaleConversion.Parameters.R", 100);
-			TBGreen.Value = IP.Green = Settings.GetObject("GrayScaleConversion.Parameters.G", 100);
-			TBBlue.Value = IP.Blue = Settings.GetObject("GrayScaleConversion.Parameters.B", 100);
-			TbBright.Value = IP.Brightness = Settings.GetObject("GrayScaleConversion.Parameters.Brightness", 100);
-			TbContrast.Value = IP.Contrast = Settings.GetObject("GrayScaleConversion.Parameters.Contrast", 100);
-			CbThreshold.Checked = IP.UseThreshold = Settings.GetObject("GrayScaleConversion.Parameters.Threshold.Enabled", false);
-			TbThreshold.Value = IP.Threshold = Settings.GetObject("GrayScaleConversion.Parameters.Threshold.Value", 50);
-			TBWhiteClip.Value = IP.WhiteClip = Settings.GetObject("GrayScaleConversion.Parameters.WhiteClip", 5);
+			CbResize.SelectedItem = IP.Interpolation = Settings.GetObject(layerPrefix+"GrayScaleConversion.Parameters.Interpolation", InterpolationMode.HighQualityBicubic);
+			CbMode.SelectedItem = IP.Formula = Settings.GetObject(layerPrefix+"GrayScaleConversion.Parameters.Mode", ImageTransform.Formula.SimpleAverage);
+			TBRed.Value = IP.Red = Settings.GetObject(layerPrefix+"GrayScaleConversion.Parameters.R", 100);
+			TBGreen.Value = IP.Green = Settings.GetObject(layerPrefix+"GrayScaleConversion.Parameters.G", 100);
+			TBBlue.Value = IP.Blue = Settings.GetObject(layerPrefix+"GrayScaleConversion.Parameters.B", 100);
+			TbBright.Value = IP.Brightness = Settings.GetObject(layerPrefix+"GrayScaleConversion.Parameters.Brightness", 100);
+			TbContrast.Value = IP.Contrast = Settings.GetObject(layerPrefix+"GrayScaleConversion.Parameters.Contrast", 100);
+			CbThreshold.Checked = IP.UseThreshold = Settings.GetObject(layerPrefix+"GrayScaleConversion.Parameters.Threshold.Enabled", false);
+			TbThreshold.Value = IP.Threshold = Settings.GetObject(layerPrefix+"GrayScaleConversion.Parameters.Threshold.Value", 50);
+			TBWhiteClip.Value = IP.WhiteClip = Settings.GetObject(layerPrefix+"GrayScaleConversion.Parameters.WhiteClip", 5);
 
-			CbDither.SelectedItem = Settings.GetObject("GrayScaleConversion.DitheringOptions.DitheringMode", ImageTransform.DitheringMode.FloydSteinberg);
+			CbDither.SelectedItem = Settings.GetObject(layerPrefix+"GrayScaleConversion.DitheringOptions.DitheringMode", ImageTransform.DitheringMode.FloydSteinberg);
 
-			CbLineThreshold.Checked = IP.UseLineThreshold = Settings.GetObject("GrayScaleConversion.VectorizeOptions.LineThreshold.Enabled", true);
-			TBLineThreshold.Value = IP.LineThreshold = Settings.GetObject("GrayScaleConversion.VectorizeOptions.LineThreshold.Value", 10);
+			CbLineThreshold.Checked = IP.UseLineThreshold = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.LineThreshold.Enabled", true);
+			TBLineThreshold.Value = IP.LineThreshold = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.LineThreshold.Value", 10);
 
-			CbCornerThreshold.Checked = IP.UseCornerThreshold = Settings.GetObject("GrayScaleConversion.VectorizeOptions.CornerThreshold.Enabled", true);
-			TBCornerThreshold.Value = IP.CornerThreshold = Settings.GetObject("GrayScaleConversion.VectorizeOptions.CornerThreshold.Value", 110);
+			CbCornerThreshold.Checked = IP.UseCornerThreshold = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.CornerThreshold.Enabled", true);
+			TBCornerThreshold.Value = IP.CornerThreshold = Settings.GetObject(layerPrefix+"GrayScaleConversion.VectorizeOptions.CornerThreshold.Value", 110);
 
 			if (RbLineToLineTracing.Checked && !supportPWM)
 				RbDithering.Checked = true;
@@ -302,57 +313,58 @@ namespace LaserGRBL.RasterConverter
 
         private Dictionary<string, object> GetActualSettings()
         {
-            var settings = new Dictionary<string, object> (StringComparer.OrdinalIgnoreCase)
+			string layerPrefix = nLayer > 0 ? nLayer.ToString() + "." : "";
+			var settings = new Dictionary<string, object> (StringComparer.OrdinalIgnoreCase)
             {
                 {
-                    "GrayScaleConversion.RasterConversionTool",
+					layerPrefix+"GrayScaleConversion.RasterConversionTool",
                     RbLineToLineTracing.Checked ? ImageProcessor.Tool.Line2Line :
                     RbDithering.Checked ? ImageProcessor.Tool.Dithering :
                     RbCenterline.Checked ? ImageProcessor.Tool.Centerline : ImageProcessor.Tool.Vectorize
                 },
                 {
-                    "GrayScaleConversion.Line2LineOptions.Direction",
+					layerPrefix+"GrayScaleConversion.Line2LineOptions.Direction",
                     (ImageProcessor.Direction)CbDirections.SelectedItem
                 },
-                { "GrayScaleConversion.Line2LineOptions.Quality", UDQuality.Value },
-                { "GrayScaleConversion.Line2LineOptions.Preview", CbLinePreview.Checked },
-                { "GrayScaleConversion.VectorizeOptions.SpotRemoval.Enabled", CbSpotRemoval.Checked },
-                { "GrayScaleConversion.VectorizeOptions.SpotRemoval.Value", UDSpotRemoval.Value },
-                { "GrayScaleConversion.VectorizeOptions.Smooting.Enabled", CbSmoothing.Checked },
-                { "GrayScaleConversion.VectorizeOptions.Smooting.Value", UDSmoothing.Value },
-                { "GrayScaleConversion.VectorizeOptions.Optimize.Enabled", CbOptimize.Checked },
-                { "GrayScaleConversion.VectorizeOptions.UseAdaptiveQuality.Enabled", CbAdaptiveQuality.Checked },
-                { "GrayScaleConversion.VectorizeOptions.Optimize.Value", UDOptimize.Value },
-                { "GrayScaleConversion.VectorizeOptions.DownSample.Enabled", CbDownSample.Checked },
-                { "GrayScaleConversion.VectorizeOptions.DownSample.Value", UDDownSample.Value },
-                { "GrayScaleConversion.VectorizeOptions.FillingDirection", (ImageProcessor.Direction)CbFillingDirection.SelectedItem },
-                { "GrayScaleConversion.VectorizeOptions.FillingQuality", UDFillingQuality.Value },
-                { "GrayScaleConversion.VectorizeOptions.OptimizeFast.Enabled", CbOptimizeFast.Checked },
-                { "GrayScaleConversion.DitheringOptions.DitheringMode", (ImageTransform.DitheringMode)CbDither.SelectedItem },
-                { "GrayScaleConversion.Parameters.Interpolation", (InterpolationMode)CbResize.SelectedItem },
-                { "GrayScaleConversion.Parameters.Mode", (ImageTransform.Formula)CbMode.SelectedItem },
-                { "GrayScaleConversion.Parameters.R", TBRed.Value },
-                { "GrayScaleConversion.Parameters.G", TBGreen.Value },
-                { "GrayScaleConversion.Parameters.B", TBBlue.Value },
-                { "GrayScaleConversion.Parameters.Brightness", TbBright.Value },
-                { "GrayScaleConversion.Parameters.Contrast", TbContrast.Value },
-                { "GrayScaleConversion.Parameters.Threshold.Enabled", CbThreshold.Checked },
-                { "GrayScaleConversion.Parameters.Threshold.Value", TbThreshold.Value },
-                { "GrayScaleConversion.Parameters.WhiteClip", TBWhiteClip.Value },
-                { "GrayScaleConversion.VectorizeOptions.BorderSpeed", IP.BorderSpeed },
-                { "GrayScaleConversion.Gcode.Speed.Mark", IP.MarkSpeed },
-                { "GrayScaleConversion.Gcode.LaserOptions.LaserOn", IP.LaserOn },
-                { "GrayScaleConversion.Gcode.LaserOptions.LaserOff", IP.LaserOff },
-                { "GrayScaleConversion.Gcode.LaserOptions.PowerMin", IP.MinPower },
-                { "GrayScaleConversion.Gcode.LaserOptions.PowerMax", IP.MaxPower },
-                { "GrayScaleConversion.Gcode.Offset.X", IP.TargetOffset.X },
-                { "GrayScaleConversion.Gcode.Offset.Y", IP.TargetOffset.Y },
-                { "GrayScaleConversion.Gcode.ImageSize.W", IP.TargetSize.Width },
-                { "GrayScaleConversion.Gcode.ImageSize.H", IP.TargetSize.Height },
-                { "GrayScaleConversion.VectorizeOptions.LineThreshold.Enabled", IP.UseLineThreshold },
-                { "GrayScaleConversion.VectorizeOptions.LineThreshold.Value", IP.LineThreshold },
-                { "GrayScaleConversion.VectorizeOptions.CornerThreshold.Enabled", IP.UseCornerThreshold },
-                { "GrayScaleConversion.VectorizeOptions.CornerThreshold.Value", IP.CornerThreshold }
+                { layerPrefix+"GrayScaleConversion.Line2LineOptions.Quality", UDQuality.Value },
+                { layerPrefix+"GrayScaleConversion.Line2LineOptions.Preview", CbLinePreview.Checked },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.SpotRemoval.Enabled", CbSpotRemoval.Checked },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.SpotRemoval.Value", UDSpotRemoval.Value },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.Smooting.Enabled", CbSmoothing.Checked },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.Smooting.Value", UDSmoothing.Value },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.Optimize.Enabled", CbOptimize.Checked },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.UseAdaptiveQuality.Enabled", CbAdaptiveQuality.Checked },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.Optimize.Value", UDOptimize.Value },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.DownSample.Enabled", CbDownSample.Checked },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.DownSample.Value", UDDownSample.Value },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.FillingDirection", (ImageProcessor.Direction)CbFillingDirection.SelectedItem },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.FillingQuality", UDFillingQuality.Value },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.OptimizeFast.Enabled", CbOptimizeFast.Checked },
+                { layerPrefix+"GrayScaleConversion.DitheringOptions.DitheringMode", (ImageTransform.DitheringMode)CbDither.SelectedItem },
+                { layerPrefix+"GrayScaleConversion.Parameters.Interpolation", (InterpolationMode)CbResize.SelectedItem },
+                { layerPrefix+"GrayScaleConversion.Parameters.Mode", (ImageTransform.Formula)CbMode.SelectedItem },
+                { layerPrefix+"GrayScaleConversion.Parameters.R", TBRed.Value },
+                { layerPrefix+"GrayScaleConversion.Parameters.G", TBGreen.Value },
+                { layerPrefix+"GrayScaleConversion.Parameters.B", TBBlue.Value },
+                { layerPrefix+"GrayScaleConversion.Parameters.Brightness", TbBright.Value },
+                { layerPrefix+"GrayScaleConversion.Parameters.Contrast", TbContrast.Value },
+                { layerPrefix+"GrayScaleConversion.Parameters.Threshold.Enabled", CbThreshold.Checked },
+                { layerPrefix+"GrayScaleConversion.Parameters.Threshold.Value", TbThreshold.Value },
+                { layerPrefix+"GrayScaleConversion.Parameters.WhiteClip", TBWhiteClip.Value },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.BorderSpeed", IP.BorderSpeed },
+                { layerPrefix+"GrayScaleConversion.Gcode.Speed.Mark", IP.MarkSpeed },
+                { layerPrefix+"GrayScaleConversion.Gcode.LaserOptions.LaserOn", IP.LaserOn },
+                { layerPrefix+"GrayScaleConversion.Gcode.LaserOptions.LaserOff", IP.LaserOff },
+                { layerPrefix+"GrayScaleConversion.Gcode.LaserOptions.PowerMin", IP.MinPower },
+                { layerPrefix+"GrayScaleConversion.Gcode.LaserOptions.PowerMax", IP.MaxPower },
+                { layerPrefix+"GrayScaleConversion.Gcode.Offset.X", IP.TargetOffset.X },
+                { layerPrefix+"GrayScaleConversion.Gcode.Offset.Y", IP.TargetOffset.Y },
+                { layerPrefix+"GrayScaleConversion.Gcode.ImageSize.W", IP.TargetSize.Width },
+                { layerPrefix+"GrayScaleConversion.Gcode.ImageSize.H", IP.TargetSize.Height },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.LineThreshold.Enabled", IP.UseLineThreshold },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.LineThreshold.Value", IP.LineThreshold },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.CornerThreshold.Enabled", IP.UseCornerThreshold },
+                { layerPrefix+"GrayScaleConversion.VectorizeOptions.CornerThreshold.Value", IP.CornerThreshold }
             };
 
             return settings;

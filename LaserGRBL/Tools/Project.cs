@@ -23,7 +23,7 @@ namespace Tools
         /// <summary>
         /// Holds the actual project settings
         /// </summary>
-        public static List<Dictionary<string, object>> ProjectSettings = new List<Dictionary<string, object>>();
+        public static List<Dictionary<string, object>>[] ProjectSettings = new List<Dictionary<string, object>>[] { new List<Dictionary<string, object>>(), new List<Dictionary<string, object>>(),new List<Dictionary<string, object>>() };
 
         #endregion
 
@@ -33,23 +33,29 @@ namespace Tools
         /// Add new settings
         /// </summary>
         /// <param name="settings">Dictionary holding the new settings</param>
-        public static void AddSettings(Dictionary<string, object> settings)
+        public static void AddSettings(Dictionary<string, object> settings, int nLayer)
         {
             if (settings == null) return;
 
             // Add image to dictionary
-            settings.Add("ImageName", Path.GetFileName(Settings.GetObject<string>("Core.LastOpenFile", null)));
-            settings.Add("ImageBase64", ConvertImageToBase64(Settings.GetObject<string>("Core.LastOpenFile", null)));
+            string layerSuffix = nLayer > 0 ? nLayer.ToString() : "";
+            string lastOpenFile = Settings.GetObject<string>("Core.LastOpenFile" + layerSuffix, null);
+            string lastOpenFileName = Path.GetFileName(lastOpenFile);
+            if (lastOpenFileName != null)
+            {
+                settings.Add("ImageName", lastOpenFileName);
+                settings.Add("ImageBase64", ConvertImageToBase64(lastOpenFile));
+            }
 
-            ProjectSettings.Add(settings);
+            ProjectSettings[nLayer].Add(settings);
         }
 
         /// <summary>
         /// Clear all project settings (has to be done if file new file is opened or last file is reloaded)
         /// </summary>
-        public static void ClearSettings()
+        public static void ClearSettings(int nLayer)
         {
-            ProjectSettings.Clear();
+            ProjectSettings[nLayer].Clear();
         }
 
         /// <summary>
@@ -72,16 +78,17 @@ namespace Tools
         /// </summary>
         /// <param name="filename">Filepath to the project</param>
         /// <returns>Settings of the project</returns>
-        public static List<Dictionary<string, object>> LoadProject(string filename)
+        public static List<Dictionary<string, object>>[] LoadProject(string filename)
         {
-            if (string.IsNullOrEmpty(filename)) return new List<Dictionary<string, object>>();
-            if (!File.Exists(filename)) return new List<Dictionary<string, object>>();
+            List<Dictionary<string, object>>[] _new = new List<Dictionary<string, object>>[] { new List<Dictionary<string, object>>(), new List<Dictionary<string, object>>(), new List<Dictionary<string, object>>() };
+            if (string.IsNullOrEmpty(filename)) return _new;
+            if (!File.Exists(filename)) return _new;
 
-            List<Dictionary<string, object>> project;
+            List<Dictionary<string, object>>[] project;
 
             using (var fs = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.None))
             {
-                project = (List<Dictionary<string, object>>)Formatter.Deserialize(fs);
+                project = (List<Dictionary<string, object>>[])Formatter.Deserialize(fs);
                 fs.Close();
             }
 
@@ -95,6 +102,7 @@ namespace Tools
         /// <returns></returns>
         private static string ConvertImageToBase64(string imagePath)
         {
+            if (imagePath == null) return "";
             using (var image = Image.FromFile(imagePath))
             {
                 using (var m = new MemoryStream())

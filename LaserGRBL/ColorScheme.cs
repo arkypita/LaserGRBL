@@ -51,6 +51,9 @@ namespace LaserGRBL
 
 				Color.DodgerBlue,			//link color
 				Color.Purple,				//visited link color
+
+				Color.Green,				//preview laser 2
+				Color.Black,				//preview laser 3
 			});
 			mData.Add(Scheme.RedLaser, new Color[] 
 			{
@@ -81,6 +84,9 @@ namespace LaserGRBL
 
 				Color.DodgerBlue,			//link color
 				Color.Purple,				//visited link color
+
+				Color.Green,				//preview laser 2
+				Color.Black,				//preview laser 3
 			});
 			mData.Add(Scheme.Dark, new Color[] 
 			{
@@ -111,6 +117,9 @@ namespace LaserGRBL
 
 				Color.Yellow,				//link color
 				Color.Violet,				//visited link color
+
+				Color.Green,				//preview laser 2
+				Color.Black,				//preview laser 3
 			});
 			mData.Add(Scheme.Hacker, new Color[] 
 			{
@@ -141,6 +150,9 @@ namespace LaserGRBL
 
 				Color.Yellow,					//link color
 				Color.Violet,				//visited link color
+
+				Color.Green,				//preview laser 2
+				Color.Black,				//preview laser 3
 			});
             mData.Add(Scheme.Nighty, new Color[]
             {
@@ -171,6 +183,9 @@ namespace LaserGRBL
 
 				Color.Yellow,				//link color
 				Color.Violet,				//visited link color
+
+				Color.Green,				//preview laser 2
+				Color.Black,				//preview laser 3
             });
 
             CurrentScheme = Scheme.RedLaser;
@@ -233,8 +248,8 @@ namespace LaserGRBL
 		{ get { return GetColor(6); } }
 		public static Color PreviewOtherMovement
 		{ get { return GetColor(7); } }
-		public static Color PreviewLaserPower
-		{ get { return GetColor(8); } }
+		public static Color[] PreviewLaserPower
+		{ get { return new Color[] { GetColor(8), GetColor(23), GetColor(24) }; } }
 		public static Color PreviewCross
 		{ get { return GetColor(9); } }
 

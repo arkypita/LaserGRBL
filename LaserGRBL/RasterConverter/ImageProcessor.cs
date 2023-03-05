@@ -80,6 +80,7 @@ namespace LaserGRBL.RasterConverter
 		public int MaxPower;
 
 		private string mFileName;
+		private int nLayer;
 		private bool mAppend;
 		GrblCore mCore;
 
@@ -110,10 +111,11 @@ namespace LaserGRBL.RasterConverter
 			NewInsetFilling,
 		}
 
-		public ImageProcessor(GrblCore core, string fileName, Size boxSize, bool append)
+		public ImageProcessor(GrblCore core, string fileName, Size boxSize, bool append, int nLayer)
 		{
 			mCore = core;
 			mFileName = fileName;
+			this.nLayer = nLayer;
 			mAppend = append;
 			mSuspended = true;
             //mOriginal = new Bitmap(fileName);
@@ -1068,11 +1070,11 @@ namespace LaserGRBL.RasterConverter
 						conf.firmwareType = Settings.GetObject("Firmware Type", Firmware.Grbl);
 
 						if (SelectedTool == Tool.Line2Line || SelectedTool == Tool.Dithering || SelectedTool == Tool.NoProcessing)
-							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf, mAppend, mCore);
+							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf, mAppend, mCore, nLayer);
 						else if (SelectedTool == Tool.Vectorize)
-							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf, mAppend, mCore);
+							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf, mAppend, mCore, nLayer);
 						else if (SelectedTool == Tool.Centerline)
-							mCore.LoadedFile.LoadImageCenterline(bmp, mFileName, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold, conf, mAppend, mCore);
+							mCore.LoadedFile.LoadImageCenterline(bmp, mFileName, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold, conf, mAppend, mCore, nLayer);
 					}
 
 					if (GenerationComplete != null)

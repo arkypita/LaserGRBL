@@ -231,9 +231,9 @@ namespace LaserGRBL
 				case HotKey.Actions.OpenFile:
 					mCore.OpenFile(Application.OpenForms[0]); break;
 				case HotKey.Actions.ReopenLastFile:
-					mCore.ReOpenFile(Application.OpenForms[0]); break;
+					mCore.ReOpenFile(Application.OpenForms[0], 0); break;
 				case HotKey.Actions.SaveFile:
-					mCore.SaveProgram(parent, false, false, false, 1); break;
+					mCore.SaveProgram(parent, false, false, false); break;
 				case HotKey.Actions.ExecuteFile:
 					mCore.RunProgram(parent); break;
 				case HotKey.Actions.AbortFile:

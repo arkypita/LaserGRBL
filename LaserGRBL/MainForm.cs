@@ -207,17 +207,17 @@ namespace LaserGRBL
 			catch (Exception ex){ System.Diagnostics.Debug.WriteLine(ex); }
 		}
 
-		void OnFileLoaded(long elapsed, string filename)
+		void OnFileLoaded(long elapsed, string filename, int nLayer)
 		{
 			if (InvokeRequired)
 			{
-				Invoke(new GrblFile.OnFileLoadedDlg(OnFileLoaded), elapsed, filename);
+				Invoke(new GrblFile.OnFileLoadedDlg(OnFileLoaded), elapsed, filename, nLayer);
 			}
 			else
 			{
 				TimerUpdate();
 				//TTTFile.Text = System.IO.Path.GetFileName(filename);
-				TTTLines.Text = Core.LoadedFile.Count.ToString();
+				TTTLines.Text = Core.LoadedFile.Count(Core).ToString();
 				//TTTLoadedIn.Text = elapsed.ToString() + " ms";
 				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, " ,", true);
 			}
@@ -296,7 +296,7 @@ namespace LaserGRBL
 			}
 		}
 
-		private void TimerUpdate()
+		public void TimerUpdate()
 		{
 			SuspendLayout();
 			TTTStatus.Text = GrblCore.TranslateEnum(Core.MachineStatus);
@@ -411,7 +411,7 @@ namespace LaserGRBL
 
 		private void MnFileOpen_Click(object sender, EventArgs e)
 		{
-			Project.ClearSettings();
+			Project.ClearSettings(0);
 			Core.OpenFile(this);
 		}
 
@@ -493,7 +493,7 @@ namespace LaserGRBL
 		}
 		void MnSaveProgramClick(object sender, EventArgs e)
 		{
-			Core.SaveProgram(this, false, false, false, 1);
+			Core.SaveProgram(this, false, false, false);
 		}
 
 		private void MnAdvancedSave_Click(object sender, EventArgs e)
@@ -670,14 +670,14 @@ namespace LaserGRBL
 
 		private void MnReOpenFile_Click(object sender, EventArgs e)
 		{
-			Project.ClearSettings();
-			Core.ReOpenFile(this);
+			Project.ClearSettings(0);
+			Core.ReOpenFile(this, 0);
 		}
 
 
 		private void fileToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
 		{
-			MnReOpenFile.Enabled = Core.CanReOpenFile;
+			MnReOpenFile.Enabled = Core.CanReOpenFile(0);
 		}
 
 		private void MnHotkeys_Click(object sender, EventArgs e)
