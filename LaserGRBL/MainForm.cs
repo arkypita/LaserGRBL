@@ -493,7 +493,7 @@ namespace LaserGRBL
 		}
 		void MnSaveProgramClick(object sender, EventArgs e)
 		{
-			Core.SaveProgram(this, false, false, false, 1);
+			Core.SaveProgram(this, false, false, false, 1, false);
 		}
 
 		private void MnAdvancedSave_Click(object sender, EventArgs e)

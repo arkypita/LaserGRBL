@@ -41,12 +41,15 @@ namespace LaserGRBL
 			mRange.UpdateXYRange(new GrblCommand.Element('X', x1), new GrblCommand.Element('Y', y1), false);
 		}
 
-		public void SaveGCODE(string filename, bool header, bool footer, bool between, int cycles, GrblCore core)
+		public void SaveGCODE(string filename, bool header, bool footer, bool between, int cycles, bool useLFLineEndings, GrblCore core)
 		{
 			try
 			{
 				using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filename))
 				{
+					if (useLFLineEndings)
+						sw.NewLine = "\n";
+
 					if (header)
 						EvaluateAddLines(core, sw, Settings.GetObject("GCode.CustomHeader", GrblCore.GCODE_STD_HEADER));
 
