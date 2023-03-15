@@ -752,7 +752,7 @@ namespace LaserGRBL
 			return null;
 		}
 
-		public void SaveProgram(Form parent, bool header, bool footer, bool between, int cycles)
+		public void SaveProgram(Form parent, bool header, bool footer, bool between, int cycles, bool useLFLineEndings)
 		{
 			if (HasProgram)
 			{
@@ -787,7 +787,7 @@ namespace LaserGRBL
 				}
 
                 if (filename != null)
-					file.SaveGCODE(filename, header, footer, between, cycles, this);
+					file.SaveGCODE(filename, header, footer, between, cycles, useLFLineEndings, this);
 			}
 		}
 
