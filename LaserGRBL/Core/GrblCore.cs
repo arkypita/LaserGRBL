@@ -16,7 +16,7 @@ using Tools;
 
 namespace LaserGRBL
 {
-	public enum Firmware
+    public enum Firmware
 	{ Grbl, Smoothie, Marlin, VigoWork }
 
 	/// <summary>
@@ -82,6 +82,29 @@ namespace LaserGRBL
 			UnexpectedReset = 3,
 			UnexpectedDisconnect = 4,
 			MachineAlarm = 5,
+		}
+
+		public enum PwmMode
+		{
+			Spindle = 0,
+			Fan = 1,
+		}
+
+		public enum SpindleState
+		{
+			ON = 0,
+			OFF = 1,
+		}
+
+		public class SpindleConfig
+		{
+			public string lOn;
+			public string lOff;
+			public bool pwm;
+			public Firmware firmwareType;
+			public int dwelltime;
+			public int fanId;
+			public GrblCore.PwmMode pwmMode;
 		}
 
 		public enum MacStatus
@@ -262,7 +285,7 @@ namespace LaserGRBL
 		private System.Windows.Forms.Control syncro;
 		protected ComWrapper.IComWrapper com;
 		private GrblFile file;
-		private System.Collections.Generic.Queue<GrblCommand> mQueue; //vera coda di quelli da mandare
+		protected System.Collections.Generic.Queue<GrblCommand> mQueue; //vera coda di quelli da mandare
 		private GrblCommand mRetryQueue; //coda[1] di quelli in attesa di risposta
 		private System.Collections.Generic.Queue<GrblCommand> mPending; //coda di quelli in attesa di risposta
 		private System.Collections.Generic.List<IGrblRow> mSent; //lista di quelli mandati
@@ -316,7 +339,10 @@ namespace LaserGRBL
 
 		public UsageStats.UsageCounters UsageCounters;
 
+		protected SpindleConfig mSpindleConfig;
+
 		private string mDetectedIP = null;
+
 
 
 		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
@@ -1167,8 +1193,17 @@ namespace LaserGRBL
 
 					lock (this)
 					{
+						GrblCommand stop = null;
+						if(Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin && Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle) == GrblCore.PwmMode.Fan)
+						{
+							stop = new GrblCommand("M107");
+						}
+						else
+						{
+							stop = new GrblCommand("M5");
+						}
 						mQueue.Clear(); //flush the queue of item to send
-						mQueue.Enqueue(new GrblCommand("M5")); //shut down laser
+						mQueue.Enqueue(stop); //shut down laser
 					}
 				}
 				catch (Exception ex)
@@ -1394,7 +1429,7 @@ namespace LaserGRBL
 			}
 		}
 
-		public void FeedHold(bool cooling)
+		public virtual  void FeedHold(bool cooling)
 		{
 			if (CanFeedHold)
 			{
@@ -2751,7 +2786,7 @@ namespace LaserGRBL
 		internal void HelpOnLine()
 		{ Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/"); }
 
-		internal void GrblHoming()
+		internal virtual void GrblHoming()
 		{ if (CanDoHoming) EnqueueCommand(new GrblCommand("$H")); }
 
 		internal void GrblUnlock()
@@ -2921,7 +2956,19 @@ namespace LaserGRBL
 			}
 		}
 
-        public virtual bool UIShowGrblConfig => true;
+		public void configureSpindle(SpindleConfig SpindleConfig)
+		{
+			mSpindleConfig = SpindleConfig;
+		}
+
+		public virtual List<String> getSpindleGcode(SpindleState state , int power)
+		{
+			List<string> LaserCmd = new List<string>();
+			LaserCmd.Add(String.Format("{0} S{1}", state == SpindleState.ON ? mSpindleConfig.lOn : mSpindleConfig.lOff, power));
+			return LaserCmd;
+		}
+
+		public virtual bool UIShowGrblConfig => true;
         public virtual bool UIShowUnlockButtons => true;
 
 		public bool IsOrturBoard { get => GrblVersion != null && GrblVersion.IsOrtur; }

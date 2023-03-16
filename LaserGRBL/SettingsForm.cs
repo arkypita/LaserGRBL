@@ -36,7 +36,14 @@ namespace LaserGRBL
 			InitStreamingCB();
 			InitThreadingCB();
 
-            CBCore.SelectedItem = Settings.GetObject("Firmware Type", Firmware.Grbl);
+			Firmware fw = Settings.GetObject("Firmware Type", Firmware.Grbl);
+			CBCore.SelectedItem = fw;
+
+			if (fw != Firmware.Marlin)
+			{
+				MainTabPage.TabPages.Remove(TpPwmSettings);
+			}
+
 			CBSupportPWM.Checked = Settings.GetObject("Support Hardware PWM", true);
 			CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			CBStreamingMode.SelectedItem = Settings.GetObject("Streaming Mode", GrblCore.StreamingMode.Buffered);
@@ -96,7 +103,13 @@ namespace LaserGRBL
 				LblWarnOrturAC.Visible = false;
 
 			InitAutoCoolingTab();
-        }
+
+			InitPwmTab();
+
+			CBPwmSel.SelectedItem = Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle);
+			CBFanIdx.SelectedItem = Settings.GetObject("Pwm FanId", 0);
+			TBDwell.Text = Settings.GetObject("Pwm FanDwell", "0");
+		}
 
 		private void InitAutoCoolingTab()
 		{
@@ -134,6 +147,18 @@ namespace LaserGRBL
 			CBCore.Items.Add(Firmware.VigoWork);
 			CBCore.EndUpdate();
         }
+
+		private void InitPwmTab()
+		{
+			CBPwmSel.BeginUpdate();
+			CBPwmSel.Items.Add(GrblCore.PwmMode.Spindle);
+			CBPwmSel.Items.Add(GrblCore.PwmMode.Fan);
+			CBPwmSel.EndUpdate();
+			CBFanIdx.Items.Clear();
+			for (int i = 0; i <= 5; i++)
+				CBFanIdx.Items.Add(i);
+
+		}
 
         private void InitThreadingCB()
 		{
@@ -217,6 +242,9 @@ namespace LaserGRBL
             Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);
 
 			Settings.SetObject($"Vector.UseSmartBezier", CbSmartBezier.Checked);
+			Settings.SetObject("Pwm Selection", CBPwmSel.SelectedItem);
+			Settings.SetObject("Pwm FanId", CBFanIdx.SelectedItem);
+			Settings.SetObject("Pwm FanDwell", TBDwell.Text);
 
 			SettingsChanged?.Invoke(this, null);
 
@@ -320,5 +348,5 @@ namespace LaserGRBL
 		{
 			EnableTest();
 		}
-	}
+    }
 }

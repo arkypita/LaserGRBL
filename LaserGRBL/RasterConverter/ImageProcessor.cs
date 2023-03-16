@@ -1066,6 +1066,17 @@ namespace LaserGRBL.RasterConverter
 						conf.borderSpeed = BorderSpeed;
 						conf.pwm = Settings.GetObject("Support Hardware PWM", true);
 						conf.firmwareType = Settings.GetObject("Firmware Type", Firmware.Grbl);
+						conf.pwmMode = Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle);
+						conf.fanId = Settings.GetObject("Pwm FanId", 0);
+						try
+						{
+							conf.dwelltime = Int32.Parse(Settings.GetObject("Pwm FanDwell", "0"));
+						}
+						catch (FormatException)
+						{
+							conf.dwelltime = 0;
+						}
+						
 
 						if (SelectedTool == Tool.Line2Line || SelectedTool == Tool.Dithering || SelectedTool == Tool.NoProcessing)
 							mCore.LoadedFile.LoadImageL2L(bmp, mFileName, conf, mAppend, mCore);

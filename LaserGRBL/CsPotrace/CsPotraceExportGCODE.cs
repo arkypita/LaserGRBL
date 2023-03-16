@@ -26,7 +26,7 @@ namespace CsPotrace
 		/// <param name="Width">Width of the exportd cvg-File</param>
 		/// <param name="Height">Height of the exportd cvg-File</param>
 		/// <returns></returns>
-		public static List<string> Export2GCode(List<List<CsPotrace.Curve>> list, float oX, float oY, double scale, string lOn, string lOff, Size originalImageSize, string skipcmd)
+		public static List<string> Export2GCode(List<List<CsPotrace.Curve>> list, float oX, float oY, double scale, List<string> lOn, List<string> lOff, Size originalImageSize, string skipcmd)
 		{
 			bool debug = false;
 
@@ -55,7 +55,7 @@ namespace CsPotrace
 			return rv;
 		}
 
-		private static List<string> GetPathGC(List<CsPotrace.Curve> Curves, string lOn, string lOff, double oX, double oY, double scale, Graphics g, string skipcmd)
+		private static List<string> GetPathGC(List<CsPotrace.Curve> Curves, List<string> lOn, List<string> lOff, double oX, double oY, double scale, Graphics g, string skipcmd)
 		{
 			List<string> rv = new List<string>();
 
@@ -125,22 +125,22 @@ namespace CsPotrace
 			}
 		}
 
-		private static void OnPathBegin(List<CsPotrace.Curve> Curves, string lOn, double oX, double oY, double scale, List<string> rv, string skipcmd)
+		private static void OnPathBegin(List<CsPotrace.Curve> Curves, List<string> lOn, double oX, double oY, double scale, List<string> rv, string skipcmd)
 		{
 			if (Curves.Count > 0)
 			{
 				//fast go to position
 				rv.Add(String.Format("{0} X{1} Y{2}", skipcmd, formatnumber(Curves[0].A.X + oX, scale), formatnumber(Curves[0].A.Y + oY, scale)));
 				//turn on laser
-				rv.Add(lOn);
+				rv.AddRange(lOn);
 			}
 		}
 
-		private static void OnPathEnd(List<CsPotrace.Curve> Curves, string lOff, double oX, double oY, double scale, List<string> rv)
+		private static void OnPathEnd(List<CsPotrace.Curve> Curves, List<string> lOff, double oX, double oY, double scale, List<string> rv)
 		{
 			//turn off laser
 			if (Curves.Count > 0)
-				rv.Add(lOff);
+				rv.AddRange(lOff);
 		}
 
 		private static string GetArcGC(Arc arc, double oX, double oY, double scale, Graphics g)

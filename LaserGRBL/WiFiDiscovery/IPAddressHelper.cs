@@ -262,8 +262,6 @@ namespace LaserGRBL.WiFiDiscovery
 		}
 		public static void ScanIP(Action<ScanResult> callback, Action<int, int, int> progress, CancellationToken ct, int port, IPAddress paramIP = null)
 		{
-			int count = 0;
-
 			if (callback == null)
 				throw new ArgumentNullException(string.Format("Callback needed"));
 			if (progress == null)

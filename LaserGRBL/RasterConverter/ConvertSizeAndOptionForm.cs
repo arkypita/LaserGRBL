@@ -21,7 +21,7 @@ namespace LaserGRBL.RasterConverter
 		GrblCore mCore;
 		bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
-		public ComboboxItem[] LaserOptions = new ComboboxItem[] { new ComboboxItem("M3 - Constant Power", "M3"), new ComboboxItem("M4 - Dynamic Power", "M4") };
+		public ComboboxItem[] LaserOptions = new ComboboxItem[] { new ComboboxItem("M3 - Constant Power", "M3"), new ComboboxItem("M4 - Dynamic Power", "M4"), new ComboboxItem("M106 - Fan Constant Power", "M106") };
 		public class ComboboxItem
 		{
 			public string Text { get; set; }
@@ -48,8 +48,15 @@ namespace LaserGRBL.RasterConverter
 			LblMaxPerc.Visible = LblMinPerc.Visible = LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
 			AssignMinMaxLimit();
 
-			CBLaserON.Items.Add(LaserOptions[0]);
-			CBLaserON.Items.Add(LaserOptions[1]);
+			if (Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin && Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle) == GrblCore.PwmMode.Fan)
+			{
+				CBLaserON.Items.Add(LaserOptions[2]);
+			}
+			else
+			{
+				CBLaserON.Items.Add(LaserOptions[0]);
+				CBLaserON.Items.Add(LaserOptions[1]);
+			}
 		}
 
 		private void AssignMinMaxLimit()
@@ -101,12 +108,23 @@ namespace LaserGRBL.RasterConverter
 
 			IP.LaserOn = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
 
-			if (IP.LaserOn == "M3" || !GrblCore.Configuration.LaserMode)
+			if (Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin && Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle) == GrblCore.PwmMode.Fan)
+			{
+				CBLaserON.SelectedItem = LaserOptions[2];
+				IP.LaserOn = "M106";
+				IP.LaserOff = "M107";
+			}
+			else if (IP.LaserOn == "M3" || !GrblCore.Configuration.LaserMode)
+			{ 
 				CBLaserON.SelectedItem = LaserOptions[0];
+				IP.LaserOff = "M5";
+			}
 			else
+			{
 				CBLaserON.SelectedItem = LaserOptions[1];
-
-			IP.LaserOff = "M5"; 
+				IP.LaserOn = "M4";
+				IP.LaserOff = "M5";
+			}
 
 			IIMinPower.CurrentValue = IP.MinPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
 			IIMaxPower.CurrentValue = IP.MaxPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", (int)GrblCore.Configuration.MaxPWM);
@@ -230,13 +248,22 @@ namespace LaserGRBL.RasterConverter
 
 			if (mode != null)
 			{
-				if (!GrblCore.Configuration.LaserMode && (mode.Value as string) == "M4")
+				if (!GrblCore.Configuration.LaserMode && ((mode.Value as string) == "M4" || (mode.Value as string) == "M106"))
 					MessageBox.Show(Strings.WarnWrongLaserMode, Strings.WarnWrongLaserModeTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);//warning!!
 
 				IP.LaserOn = mode.Value as string;
 			} 
 			else
 				IP.LaserOn = "M3";
+
+			if(IP.LaserOn == "M106")
+			{
+				IP.LaserOff = "M107";
+			}
+			else
+			{
+				IP.LaserOff = "M5";
+			}
 		}
 
 		//private void CBLaserOFF_SelectedIndexChanged(object sender, EventArgs e)

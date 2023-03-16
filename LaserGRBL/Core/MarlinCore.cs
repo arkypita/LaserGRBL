@@ -48,6 +48,10 @@ namespace LaserGRBL
 
             if (data.Contains("ok"))
                 var = MacStatus.Idle;
+            if (data.Contains("echo:busy:") || data.Contains("echo: busy:"))
+            {
+                var = MacStatus.Run;
+            }
 
             //try { var = (MacStatus)Enum.Parse(typeof(MacStatus), data); }
             //catch (Exception ex) { Logger.LogException("ParseMachineStatus", ex); }
@@ -72,7 +76,38 @@ namespace LaserGRBL
 			
 		}
 
-		protected override void DetectHang()
+        internal override void SendHomingCommand()
+        {
+            EnqueueCommand(new GrblCommand("G28"));
+        }
+
+        public override List<String> getSpindleGcode(SpindleState state, int power)
+        {
+            List<string> LaserCmd = new List<string>();
+            if (mSpindleConfig.pwmMode == GrblCore.PwmMode.Fan)
+            {
+                LaserCmd.Add(String.Format("G4 P0"));
+                if(state == SpindleState.ON)
+                    LaserCmd.Add(String.Format("{0} S{1} P{2}", mSpindleConfig.lOn , power, mSpindleConfig.fanId)); //laser on and power to zero
+                else
+                    LaserCmd.Add(String.Format("{0} P{1}", mSpindleConfig.lOff, mSpindleConfig.fanId)); //laser on and power to zero
+                if (state == SpindleState.ON && power > 0)
+                    LaserCmd.Add(String.Format("G4 P{0}", mSpindleConfig.dwelltime));
+            }
+            else
+            {
+                if (state == SpindleState.ON)
+                    LaserCmd.Add(String.Format("{0} S{1}", mSpindleConfig.lOn , power));
+                else
+                    LaserCmd.Add(String.Format("{0}", mSpindleConfig.lOn));
+            }
+            return LaserCmd;
+        }
+
+        internal override void GrblHoming()
+        { if (CanDoHoming) EnqueueCommand(new GrblCommand("G28")); }
+
+        protected override void DetectHang()
         {
             if (mTP.LastIssue == DetectedIssue.Unknown && MachineStatus == MacStatus.Run && InProgram)
             {
@@ -91,10 +126,35 @@ namespace LaserGRBL
             }
         }
 
-		protected override void ManageReceivedLine(string rline)
+        public override void FeedHold(bool auto)
+        {
+            if (CanFeedHold)
+            {
+                mHoldByUserRequest = !auto;
+                GrblCommand stop = null;
+                if (Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin && Settings.GetObject("Pwm Selection", GrblCore.PwmMode.Spindle) == GrblCore.PwmMode.Fan)
+                {
+                    stop = new GrblCommand("M107");
+                }
+                else
+                {
+                    stop = new GrblCommand("M5");
+                }
+                mQueue.Clear(); //flush the queue of item to send
+                mQueue.Enqueue(stop); //shut down laser
+                mQueue.Enqueue(new GrblCommand("M112"));
+            }
+        }
+
+        protected override void ManageReceivedLine(string rline)
 		{
 			if (IsMarlinRealTimeStatusMessage(rline))
 				ManageMarlinRealTimeStatus(rline);
+			else if(rline.Contains("echo:busy:") || rline.Contains("echo: busy:"))
+			{
+				SetStatus(MacStatus.Run);
+				debugLastStatusDelay.Start();
+			}
 			else
 				base.ManageReceivedLine(rline);
 		}
