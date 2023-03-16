@@ -1635,7 +1635,12 @@ namespace LaserGRBL
 
 		private void DoJogV11(JogDirection dir, decimal step)
 		{
-			if (ContinuosJogEnabled && dir != JogDirection.Zdown && dir != JogDirection.Zup) //se C.J. e non Z => prenotato
+			if (dir == JogDirection.Abort)
+			{
+				SendImmediate(0x85); //abort previous jog
+				mPrenotedJogDirection = JogDirection.None;
+			}
+			else if (ContinuosJogEnabled && dir != JogDirection.Zdown && dir != JogDirection.Zup) //se C.J. e non Z => prenotato
             {
                 mPrenotedJogDirection = dir;
 				//lo step è quello configurato
