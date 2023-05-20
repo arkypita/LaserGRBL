@@ -150,6 +150,31 @@ namespace LaserGRBL
 			RiseOnFileLoaded(filename, elapsed);
 		}
 
+		public void OptimizeCommands(string filename)
+        {
+			RiseOnFileLoading(filename);
+
+			long start = Tools.HiResTimer.TotalMilliseconds;
+
+			string[] lines = GCodeSegment.CleanGCode(list);
+			list.Clear();
+			foreach (string l in lines)
+			{
+				string line = l;
+				if ((line = line.Trim()).Length > 0)
+				{
+					GrblCommand cmd = new GrblCommand(line);
+					if (!cmd.IsEmpty)
+						list.Add(cmd);
+				}
+			}
+
+			Analyze();
+			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+
+			RiseOnFileLoaded(filename, elapsed);
+		}
+
 
 		private abstract class ColorSegment
 		{

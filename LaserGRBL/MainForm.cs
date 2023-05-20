@@ -312,7 +312,7 @@ namespace LaserGRBL
 				TTLEstimated.Text = Strings.MainFormEstimatedTime;
 
 			MnFileOpen.Enabled = Core.CanLoadNewFile;
-			MnSaveProject.Enabled = MnAdvancedSave.Enabled = MnSaveProgram.Enabled = Core.HasProgram;
+			MnSaveProject.Enabled = MnAdvancedSave.Enabled = MnSaveProgram.Enabled = MnOptimizePath.Enabled = Core.HasProgram;
 			MnFileSend.Enabled = Core.CanSendFile;
 			MnStartFromPosition.Enabled = Core.CanSendFile;
 			MnRunMulti.Enabled = Core.CanSendFile || Core.CanResumeHold || Core.CanFeedHold;
@@ -445,8 +445,6 @@ namespace LaserGRBL
 			GetOvMenu().Show(Cursor.Position, ToolStripDropDownDirection.AboveLeft);
 		}
 
-
-
 		internal virtual System.Windows.Forms.ContextMenuStrip GetOvMenu()
 		{
 			System.Windows.Forms.ContextMenuStrip CM = new System.Windows.Forms.ContextMenuStrip();
@@ -504,6 +502,11 @@ namespace LaserGRBL
 		private void MnSaveProject_Click(object sender, EventArgs e)
 		{
 			Core.SaveProject(this);
+		}
+
+		private void MnOptimizePath_Click(object sender, EventArgs e)
+		{
+			Core.OptimizeCommands();
 		}
 
 		private void MNEnglish_Click(object sender, EventArgs e)
@@ -993,10 +996,12 @@ namespace LaserGRBL
 		{
 			ShowWiFiConfig();
 		}
-	}
+
+        
+    }
 
 
-	public class MMnRenderer : ToolStripProfessionalRenderer
+    public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 
