@@ -834,9 +834,6 @@
     <EmbeddedResource Include="LicenseForm.ro-RO.resx">
       <DependentUpon>LicenseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.aa.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.nl-NL.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
