@@ -117,96 +117,69 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="GbSpeed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 42</value>
   </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Décalage</value>
+  <data name="GbSpeed.Text" xml:space="preserve">
+    <value>Vitesse</value>
   </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 13</value>
+  <data name="GbLaser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 87</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Taille</value>
+  <data name="GbLaser.Text" xml:space="preserve">
+    <value>Options du Laser</value>
   </data>
-  <data name="IIOffsetX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 24</value>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 67</value>
   </data>
-  <data name="IIOffsetY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 24</value>
+  <data name="GbSaveSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 46</value>
   </data>
-  <data name="IISizeH.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 3</value>
+  <data name="GbSaveSettings.Text" xml:space="preserve">
+    <value>Configurations sauvegardées</value>
   </data>
-  <data name="IISizeW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 3</value>
+  <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 266</value>
   </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>62, 4</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>L</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>62, 25</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>135, 4</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>135, 25</value>
-  </data>
-  <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 42</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 61</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Taille et Emplacement de l'image [mm]</value>
+  <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 23</value>
   </data>
   <data name="LblBorderTracing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 13</value>
+    <value>87, 13</value>
   </data>
   <data name="LblBorderTracing.Text" xml:space="preserve">
     <value>Vitesse de travail</value>
   </data>
   <data name="LblBorderTracingmm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 4</value>
+    <value>154, 5</value>
   </data>
   <data name="IIBorderTracing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 3</value>
+    <value>93, 4</value>
   </data>
-  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 46</value>
+  <data name="BtnPSHelper.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACrUlE
+        QVQ4T6WO60uTYRjG3/+kz0F9iMjEMnClhZonEMdi1WxoHoZzMzE3DTwhKttCN0MqZROdluiMSkQdw8OG
+        ZjrJaZ42Z21NrWnbxJ2eq/d1JH7wQ+ED1/PcXPf1/O6bAnAmnWr+j44LaftaWNFnDzf22OZrOtevngw1
+        dC6zZL3rqzKtJVys+ERbJwClrfPDtCDtWGEa+OkDGTS5iWpwc1emnoqVa5dGjF8PyYoTGJ07gFRpQE1z
+        FziCeiZOUaLnpp4JswNi5dwRoMewgzeGLVg2feRJ82Tw3eQm8QQAxx6waA+joFEP8HIgvcKKAIoVxhHj
+        FwcEsvEjwG8/YPvhRUOnBdzyXjjcQcYmfgJi3wWEchOGhJW4FZfC+BQllE2Om1dcyK0dYgx0j7nQqrPC
+        YvPhoaQLC+t7UPbb4aHBzBZ59aMwGGcRE58RAQiaDPNr39x4IO0FMytMa8N5gPLWGWSJX0OmXcSOJ0jo
+        Htn2AI+eDUBUVoXovxsUNIysbrn2wSnTIMRY9Fl1hGCy7CI9XwEj/dZoNjCxTLB3CNx/qkaQUBBXxDNR
+        isqr++BwewPglLTBSxNc9JQF6yH69N+RmF0HyYtpzCy5sOHyYdtDwC5Woe1tKeKS0iIA+qP1Fw3ILGrB
+        Z2sAY2Yvhqe30T6wgDu8asg1U9DpF9H90Qy51oSM/CacszlwXVAWAbBFSqdr3w++9CVS+dWIulsIFlsC
+        jliNOHY5uCIV0nLqkMCtQFRyIWLSBEjo6MeNLD45AmQJW/whunS6Axg37+D9hBUtHcMorX2FS7dzwcmr
+        QGWTGhrdFAb1ZswuO6HWmZDOb4xskCmQe+6VqIJsYTNJ5FWTJF4ViU4pwuXEx7h4k4fzsVxcYGWTqGQB
+        uZZeQuLZklBqdn3gGMBcZ9Gp5r8L1B+TS/Tf7MeMdAAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 13</value>
+  <data name="BtnPSHelper.Location" type="System.Drawing.Point, System.Drawing">
+    <value>261, 3</value>
   </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Vitesse de déplacement</value>
-  </data>
-  <data name="IILinearFilling.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 24</value>
-  </data>
-  <data name="LblLinearFillingmm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 25</value>
-  </data>
-  <data name="LblLinearFilling.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 13</value>
-  </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>Vitesse de travail</value>
-  </data>
-  <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 63</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 82</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Vitesse</value>
+  <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 68</value>
   </data>
   <data name="BtnModulationInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -223,11 +196,23 @@
         2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="BtnModulationInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>261, 39</value>
+  </data>
   <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
     <value>LaserGRBL intègre la modulation de puissance au travers du G-Code "S".
 Ce la nécessite que votre laser supporte le mode TTL.
 
 Cliquez pour plus d'information...</value>
+  </data>
+  <data name="IIMinPower.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 30</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Laser ON</value>
   </data>
   <data name="BtnOnOffInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -244,6 +229,9 @@ Cliquez pour plus d'information...</value>
         2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="BtnOnOffInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>261, 5</value>
+  </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Laser ON: le mode standard est M3.
 Grbl v1.1 permet un nouveau mode M4 " Mode Puissance  Laser Dynamique".
@@ -251,14 +239,20 @@ Laser OFF: seule la commande M5 est supportée.
 
 Cliquez pour plus d'information...</value>
   </data>
-  <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 50</value>
+  <data name="CBLaserON.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 3</value>
   </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 69</value>
+  <data name="CBLaserON.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 21</value>
   </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Options du Laser</value>
+  <data name="IIMaxPower.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 51</value>
+  </data>
+  <data name="LblMinPerc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 31</value>
+  </data>
+  <data name="LblMaxPerc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 51</value>
   </data>
   <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>130, 3</value>
@@ -272,43 +266,54 @@ Cliquez pour plus d'information...</value>
   <data name="BtnCreate.Text" xml:space="preserve">
     <value>Créer !</value>
   </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 30</value>
+  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 27</value>
   </data>
-  <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>293, 266</value>
+  <data name="BtnDeleteSetting.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAK
+        8AAACvABQqw0mAAAAAd0SU1FB9MIExEEBFRHv8sAAAIPSURBVDhPrZFdSFNhHIeH0U1XIY5uBn2xwtKg
+        6PtG8K6broMK6ibFEiyCWKmIgu3KggIto4hYy3IsaeHaRymbfczVRY6o7WyTYUtC18pp7vPpPccTS6dd
+        RD944Fy8v+f9v/+j+W8x9tiR6bhmU2jpeqxwwdiv0NRuljmiHi+NXP5bZEFr18DKkqWCQqFAXpDJFUhn
+        84rgU2x2Zcnl7kG1WowsyeaLgj9Ra8W0XR1Qa8X8FswLQSqdI5FKMz6ZpKntTkGtFdN2xaqU/O+ijL6N
+        8mo0ytDLCA5vBNtwBMvzCI8Eibkcjc23Sie4ftelCORbF4CcevtcJs+MmCD5M8e0EJxp7i0V+HpNeGtr
+        mYgnCXp8OHfu4rPdjT/wBas7xENHiD5nmKnZLKeXEwzptNB4AH9HJ7b9+8T3dtzbKpFiCUXQJwtcEl8V
+        wc1SwX39VmipIVyjg5OVeDeXE/S9xy52YHGFeOAIYnZKTKaE4NKNUsHwbTMvNq2FU9WkDunwnj3Ph/DU
+        wvjOICa74JlEfCZDw8UlAq9Gc2JEXw51VXBcD0c34Fhfwcc3Yzz1RMXbJUwOiXuC2PcM9YaexQLLqrIx
+        zlUR2K3Fu2cjHF4Hx7SMHNwrtp8n/iPDhCiOf0sTnJ6nztC9WOBZXWa1VqzB3tqJ53WAJ9U7sG/R4+kf
+        xGA0KVuXaRDLqxfvX/Yv/Fs0ml+Q1AnMyHHyPgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="BtnDeleteSetting.ToolTip" xml:space="preserve">
+    <value>Supprimer la configuration actuelle</value>
+  </data>
+  <data name="BtnSaveSetting.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAoNJREFUOE+Vz+tLU2EcB/D+kV7UG6EXkUgoVNMullBkOsVqaYnkpjBRU1rYBX2h
+        oDMRh5ZpDCJCogsNa80cZRtelqft7Oh001RoZ/ed2852dnbO+XVGW/i2H98XXx6ez8PzOwAAqtvWkvql
+        2lZ7Xau9tsWm1NiqNd+V6r9ZkFPZZD16beni9Xn5chaUqJ2v9oDhU3LnAVgAWoCklO2ifAQQZ6lOU+Bw
+        o1vuWVDahhkxniRokCDJAcVClIIIAXEGGBYyAoTDUc3L3YLm9RxQaNFpNENSjCQBm86CGAWBOOAxCBHA
+        JMHvj3SbqMK2X/uBQDEJucvvJVNAJSBGQzCeZQQDv/3ROx/IY9rtHChrQ6dQkWaTcpdHkE0a6FT2SyES
+        IpQMyE4TXdi+Dzx3SxwnbyvkIvJihk+n+EQizdDpMB7qMtFF/0B5OzqGgHWDs3i4WSxlQtn3P+m3q9Tr
+        ZWpmmXjzIzpjCza/yxR3bOXApS5Xjx1uvhBVT1OqSa5uglNOcFcMXKWBuzCSPt4rnBqFc0Yo7fblQGW3
+        q+MraKYYJxoMhMJbO5G1zcj6ZsS7F539FjikJIr7hTIjnL6bB1U6V+sX0BrJMI4PjPsXHQGJj7FUTOLj
+        2Aau0JInB8UTU3BGlwfVOpd6DpqfEahr+2AZPjq9R8T82zv+II7bV3Zr+mjFsFj0BM7ey4Pa+2jjR2gw
+        xGwLWPkt77jR4/X4VpEtzO2zWDdaDIzisXRkBMp78kvX9KBqGzRMEos2p8OBOlbcCOJBkHW3c21+AdN/
+        Fs9PQ8EEVDzKg6tNlhtDPtUDZKB/dmzUMqw3Dw6ah4bMw/pPff3mDr2nqtdb8dB3uX4uB/5jAP4AeyVe
+        wT5ITnYAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="BtnSaveSetting.Location" type="System.Drawing.Point, System.Drawing">
+    <value>261, 5</value>
+  </data>
+  <data name="BtnSaveSetting.ToolTip" xml:space="preserve">
+    <value>Sauvegarder une nouvelle configuration</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>293, 266</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Image cible</value>
-  </data>
-  <data name="GbSize.Text" xml:space="preserve">
-    <value>Taille et Emplacement de l'image [mm]</value>
-  </data>
-  <data name="GbSpeed.Text" xml:space="preserve">
-    <value>Vitesse</value>
-  </data>
-  <data name="GbLaser.Text" xml:space="preserve">
-    <value>Options du Laser</value>
-  </data>
-  <data name="LblBorderTracingmm.Text" xml:space="preserve">
-    <value>mm/min</value>
-  </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Laser ON</value>
-  </data>
-  <data name="LblSmin.Text" xml:space="preserve">
-    <value>S-MIN</value>
-  </data>
-  <data name="LblSmax.Text" xml:space="preserve">
-    <value>S-MAX</value>
-  </data>
-  <data name="CBLaserOFF.Items" xml:space="preserve">
-    <value>M5</value>
-  </data>
-  <data name="label26.Text" xml:space="preserve">
-    <value>Laser OFF</value>
   </data>
 </root>
