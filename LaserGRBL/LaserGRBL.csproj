@@ -830,6 +830,9 @@
     <EmbeddedResource Include="IssueDetectorForm.ro-RO.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="JogForm.fr.resx">
+      <DependentUpon>JogForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LicenseForm.ro-RO.resx">
       <DependentUpon>LicenseForm.cs</DependentUpon>
     </EmbeddedResource>

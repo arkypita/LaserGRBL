@@ -1,27 +1,72 @@
 ﻿//Copyright (c) 2016-2021 Diego Settimi - https://github.com/arkypita/
+//Copyright (c) 2023 Alexandre Besnier - https://github.com/Varamil/
+
 
 // This program is free software; you can redistribute it and/or modify  it under the terms of the GPLv3 General Public License as published by  the Free Software Foundation; either version 3 of the License, or (at  your option) any later version.
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace LaserGRBL
 {
-	public partial class JogForm : System.Windows.Forms.UserControl
-	{
-		GrblCore Core;
+    public partial class JogForm : System.Windows.Forms.UserControl
+    {
+        GrblCore Core;
+        private System.Collections.Generic.Queue<string> posQueue;
 
-		public JogForm()
-		{
-			InitializeComponent();
+        public JogForm()
+        {
+            InitializeComponent();
             SettingsForm.SettingsChanged += SettingsForm_SettingsChanged;
-		}
+            posQueue = new System.Collections.Generic.Queue<string>();            
+        }
+
+        public new bool Enabled
+        {
+            get => base.Enabled;
+            set
+            {
+                //Is job in queue and previous step just end ? 
+                if (base.Enabled == false && value == true) ExecuteNextCommand();
+
+                //save the value
+                base.Enabled = value;                
+
+                //Enables moves button
+                if (Core != null)
+                {
+                    if (BtnTL != null && value == true)
+                    {
+                        BtnTL.Enabled = (Core.MachineStatus == GrblCore.MacStatus.Idle && Core.HasProgram);
+                        BtnT.Enabled = BtnTL.Enabled;
+                        BtnTR.Enabled = BtnTL.Enabled;
+                        BtnL.Enabled = BtnTL.Enabled;
+                        BtnR.Enabled = BtnTL.Enabled;
+                        BtnBL.Enabled = BtnTL.Enabled;
+                        BtnB.Enabled = BtnTL.Enabled;
+                        BtnBR.Enabled = BtnTL.Enabled;
+                        BtnC.Enabled = BtnTL.Enabled;
+
+                        BtnFrame.Enabled = BtnTL.Enabled;
+                        BtnFrameInf.Enabled = BtnTL.Enabled;
+                        BtnShape.Enabled = BtnTL.Enabled;
+                    } //else full control is disabled, so don't care
+
+                    if (Core.InProgram)
+                    {
+                        BtnFocus.ON = false;
+                    }
+                }
+            }
+        }
+
 
         public void SetCore(GrblCore core)
 		{
-			Core = core;
+            Core = core;
 
 			UpdateFMax.Enabled = true;
 			UpdateFMax_Tick(null, null);
@@ -41,6 +86,7 @@ namespace LaserGRBL
         {
             TlpStepControl.Visible = !Settings.GetObject("Enable Continuous Jog", false);
             TlpZControl.Visible = Settings.GetObject("Enale Z Jog Control", false);
+            BtnClickNJog.ON = Settings.GetObject("Click N Jog", false);
         }
 
         private void Core_JogStateChange(bool jog)
@@ -104,7 +150,149 @@ namespace LaserGRBL
 			}
 		}
 
-	}
+        private void BtnFocus_Click(object sender, EventArgs e)
+        {
+            TwoStatesGCodeButton bt = (TwoStatesGCodeButton)sender;
+            int percent = Settings.GetObject("Focusing Power", 30);
+            Core.ExecuteCustombutton(bt.ON ? string.Format(bt.GCode, percent) : bt.GCode2);
+        }
+
+        private void BtnPosition_Click(object sender, EventArgs e)
+        {
+            string g = "1";
+            string speed = "F[jogspeed]";
+            if ((e as MouseEventArgs).Button == MouseButtons.Right)
+            {
+                g = "0";
+                speed = "";
+            }
+            string code = string.Format((sender as GCodeButton).GCode, g, speed);
+            Core.ExecuteCustombutton(code);
+        }
+
+        private void BtnFrameInf_Click(object sender, EventArgs e)
+        {
+            string g = "1";
+            string speed = "F[jogspeed]";
+            if ((e as MouseEventArgs).Button == MouseButtons.Right)
+            {
+                g = "0";
+                speed = "";
+            }
+            string code = string.Format((sender as GCodeButton).GCode, g, speed);
+            if (!string.IsNullOrWhiteSpace(code))
+            {
+                lock (posQueue)
+                {
+                    for (int i = 1; i <= (int)TbStep.Value; i++)
+                    {
+                        posQueue.Enqueue(code);
+                    }
+                }
+
+                ExecuteNextCommand();
+            }   
+        }
+
+        private void BtnShape_Click(object sender, EventArgs e)
+        {
+            bool useProgSpeed = (e as MouseEventArgs).Button == MouseButtons.Right;
+
+            System.Text.StringBuilder tosend = new System.Text.StringBuilder();
+            TimeSpan duration = TimeSpan.Zero;
+            TimeSpan batchduration = TimeSpan.Zero;
+            GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
+            GrblConfST conf = GrblCore.Configuration;
+            string ccmd;
+
+            foreach (GrblCommand cmd in Core.LoadedFile)
+            {               
+                if (!Regex.Match(cmd.ToString(), "^[MS][0-9]+").Success)
+                {
+                    ccmd = useProgSpeed ? cmd.ToString() : Core.EvaluateExpression(Regex.Replace(cmd.ToString(), "F[0-9]+", "F[jogspeed]"));
+                    duration = spb.AnalyzeCommand(new GrblCommand(ccmd), true, conf);
+                    batchduration += duration;
+                    if (batchduration.TotalSeconds > 10)
+                    {
+                        //send batch
+                        posQueue.Enqueue(tosend.ToString());
+                        //prepare next one
+                        tosend.Clear();
+                        batchduration = duration;
+                    }
+                    tosend.AppendLine(ccmd);
+                }                    
+            }
+            if (!string.IsNullOrWhiteSpace(tosend.ToString()))
+                posQueue.Enqueue(tosend.ToString());
+
+            ExecuteNextCommand();
+
+        }
+
+        private void ExecuteNextCommand()
+        {
+            lock (posQueue)
+            {
+                if (Core != null && Core.LastIssue != GrblCore.DetectedIssue.Unknown)
+                    posQueue.Clear();
+                else if (posQueue.Count > 0)
+                {
+                    string tosend = posQueue.Dequeue();
+                    Core.ExecuteCustombutton(tosend);
+                }
+            }            
+        }
+
+        private void BtnClickNJog_Click(object sender, EventArgs e)
+        {
+            Settings.SetObject("Click N Jog", BtnClickNJog.ON);
+        }
+
+        public void ExecuteHotKey(HotKeysManager.HotKey.Actions action)
+        {
+            if (Enabled)
+            {
+                switch (action)
+                {
+                    case HotKeysManager.HotKey.Actions.MoveCenter:
+                        ExecuteHotKey(BtnC); break;
+                    case HotKeysManager.HotKey.Actions.MoveN:
+                        ExecuteHotKey(BtnT); break;
+                    case HotKeysManager.HotKey.Actions.MoveNE:
+                        ExecuteHotKey(BtnTR); break;
+                    case HotKeysManager.HotKey.Actions.MoveE:
+                        ExecuteHotKey(BtnR); break;
+                    case HotKeysManager.HotKey.Actions.MoveSE:
+                        ExecuteHotKey(BtnBR); break;
+                    case HotKeysManager.HotKey.Actions.MoveS:
+                        ExecuteHotKey(BtnB); break;
+                    case HotKeysManager.HotKey.Actions.MoveSW:
+                        ExecuteHotKey(BtnBL); break;
+                    case HotKeysManager.HotKey.Actions.MoveW:
+                        ExecuteHotKey(BtnL); break;
+                    case HotKeysManager.HotKey.Actions.MoveNW:
+                        ExecuteHotKey(BtnTL); break;
+                    case HotKeysManager.HotKey.Actions.MoveFrame:
+                        ExecuteHotKey(BtnFrame); break;
+                    case HotKeysManager.HotKey.Actions.MoveFrameN:
+                        ExecuteHotKey(BtnFrameInf); break;
+                    case HotKeysManager.HotKey.Actions.MovePath:
+                        ExecuteHotKey(BtnShape); break;
+                    case HotKeysManager.HotKey.Actions.SwitchFocus:
+                        ExecuteHotKey(BtnFocus); break;
+                }
+            }
+        }
+
+        private void ExecuteHotKey(GCodeButton btn)
+        {
+            if (btn.Enabled)
+            {
+                btn.PerformLeftClick();
+            }
+        }
+    }
 
     public class StepBar : System.Windows.Forms.TrackBar
     {
@@ -162,6 +350,55 @@ namespace LaserGRBL
 			base.OnSizeChanged(e);
 		}
 	}
+
+    public class GCodeButton : UserControls.ImageButton
+    {
+
+        private string gCode;
+
+        [System.ComponentModel.Browsable(true)]
+        [System.ComponentModel.EditorAttribute("System.ComponentModel.Design.MultilineStringEditor, System.Design", "System.Drawing.Design.UITypeEditor")]
+        public string GCode { get => gCode; set => gCode = value; }
+
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            if (Width != Height)
+                Width = Height;
+
+            base.OnSizeChanged(e);
+        }
+
+        public void PerformLeftClick()
+        {
+            OnClick(new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0));
+        }
+    }
+
+    public class TwoStatesGCodeButton : GCodeButton
+    {
+        private bool on;
+        public bool ON { get => on;
+            set {
+                on = value;
+                BackColor = on ? System.Drawing.Color.Orange : Parent.BackColor;
+                Invalidate();
+            } 
+        }
+
+        private string gCode2;
+
+        [System.ComponentModel.Browsable(true)]
+        [System.ComponentModel.EditorAttribute("System.ComponentModel.Design.MultilineStringEditor, System.Design", "System.Drawing.Design.UITypeEditor")]
+        public string GCode2 { get => gCode2; set => gCode2 = value; }
+
+        protected override void OnClick(EventArgs e)
+        {
+            ON = !ON; 
+
+            base.OnClick(e);
+        }
+
+    }
 
     public class DirectionStepButton : DirectionButton
     {

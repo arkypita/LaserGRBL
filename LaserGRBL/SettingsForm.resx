@@ -382,7 +382,7 @@
     <value>BtnStreamingMode</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.4.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.9.4.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -485,7 +485,7 @@
     <value>BtnProtocol</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.4.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.9.4.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -559,7 +559,7 @@ Set slower values if you are experiencing issues.</value>
     <value>BtnThreadingModel</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.4.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.9.4.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -828,7 +828,7 @@ If disabled all the issues are silently managed without warning.</value>
     <value>BtnFType</value>
   </data>
   <data name="&gt;&gt;BtnFType.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.4.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.9.4.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnFType.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1128,7 +1128,7 @@ If not, please disable PWM support.</value>
     <value>BtnModulationInfo</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.4.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.9.4.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -1348,7 +1348,7 @@ Set this flag if you don't whant this safety control.</value>
     <value>5</value>
   </data>
   <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 359</value>
+    <value>886, 388</value>
   </data>
   <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1375,7 +1375,7 @@ Set this flag if you don't whant this safety control.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpRasterImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 365</value>
+    <value>892, 394</value>
   </data>
   <data name="TpRasterImport.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1505,7 +1505,7 @@ Disable this option if you prefer to use the old algorithm.</value>
     <value>imageButton1</value>
   </data>
   <data name="&gt;&gt;imageButton1.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.4.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.9.4.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imageButton1.Parent" xml:space="preserve">
     <value>tableLayoutPanel18</value>
@@ -1523,7 +1523,7 @@ Disable this option if you prefer to use the old algorithm.</value>
     <value>2</value>
   </data>
   <data name="tableLayoutPanel18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 359</value>
+    <value>886, 388</value>
   </data>
   <data name="tableLayoutPanel18.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1550,7 +1550,7 @@ Disable this option if you prefer to use the old algorithm.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpVectorImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 365</value>
+    <value>892, 394</value>
   </data>
   <data name="TpVectorImport.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1795,6 +1795,69 @@ NOTE: "Continuous Jog" only work with Grbl v1.1 or later, and require table size
   <data name="&gt;&gt;label41.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="IIFocusingPower.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="IIFocusingPower.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 150</value>
+  </data>
+  <data name="IIFocusingPower.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 15</value>
+  </data>
+  <data name="IIFocusingPower.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="&gt;&gt;IIFocusingPower.Name" xml:space="preserve">
+    <value>IIFocusingPower</value>
+  </data>
+  <data name="&gt;&gt;IIFocusingPower.Type" xml:space="preserve">
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=4.9.4.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;IIFocusingPower.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;IIFocusingPower.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="LabFocusing.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="LabFocusing.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LabFocusing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LabFocusing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>179, 150</value>
+  </data>
+  <data name="LabFocusing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="LabFocusing.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>690, 0</value>
+  </data>
+  <data name="LabFocusing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 13</value>
+  </data>
+  <data name="LabFocusing.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="LabFocusing.Text" xml:space="preserve">
+    <value>Defines the power of the laser when focusing.</value>
+  </data>
+  <data name="&gt;&gt;LabFocusing.Name" xml:space="preserve">
+    <value>LabFocusing</value>
+  </data>
+  <data name="&gt;&gt;LabFocusing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LabFocusing.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;LabFocusing.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="tableLayoutPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -1802,10 +1865,10 @@ NOTE: "Continuous Jog" only work with Grbl v1.1 or later, and require table size
     <value>3, 3</value>
   </data>
   <data name="tableLayoutPanel5.RowCount" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 359</value>
+    <value>886, 388</value>
   </data>
   <data name="tableLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1823,7 +1886,7 @@ NOTE: "Continuous Jog" only work with Grbl v1.1 or later, and require table size
     <value>0</value>
   </data>
   <data name="tableLayoutPanel5.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbEnableZJog" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CbContinuosJog" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CbClickNJog" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label41" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbEnableZJog" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CbContinuosJog" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CbClickNJog" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label41" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="IIFocusingPower" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabFocusing" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="TpJogControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -1832,7 +1895,7 @@ NOTE: "Continuous Jog" only work with Grbl v1.1 or later, and require table size
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpJogControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 365</value>
+    <value>892, 394</value>
   </data>
   <data name="TpJogControl.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2528,7 +2591,7 @@ Please do not use Automatic Cooling with Ortur engraver until a new firmware is 
     <value>6</value>
   </data>
   <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 359</value>
+    <value>886, 388</value>
   </data>
   <data name="tableLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2555,7 +2618,7 @@ Please do not use Automatic Cooling with Ortur engraver until a new firmware is 
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpAutoCooling.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 365</value>
+    <value>892, 394</value>
   </data>
   <data name="TpAutoCooling.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2878,7 +2941,7 @@ Here you can use the same syntax of custom buttons.</value>
     <value>4</value>
   </data>
   <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 365</value>
+    <value>892, 394</value>
   </data>
   <data name="tableLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2902,7 +2965,7 @@ Here you can use the same syntax of custom buttons.</value>
     <value>4, 22</value>
   </data>
   <data name="TpGCodeSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 365</value>
+    <value>892, 394</value>
   </data>
   <data name="TpGCodeSettings.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -4439,7 +4502,7 @@ Check to enable.
     <value>BtnTelegNoteInfo</value>
   </data>
   <data name="&gt;&gt;BtnTelegNoteInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.8.4.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=4.9.4.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnTelegNoteInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel17</value>
@@ -4740,7 +4803,7 @@ Obtain your personal code and write it here!</value>
     <value>8</value>
   </data>
   <data name="tableLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>886, 359</value>
+    <value>886, 388</value>
   </data>
   <data name="tableLayoutPanel10.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -4767,7 +4830,7 @@ Obtain your personal code and write it here!</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TpSoundSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 365</value>
+    <value>892, 394</value>
   </data>
   <data name="TpSoundSettings.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -8370,9 +8433,6 @@ Obtain your personal code and write it here!</value>
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAA
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

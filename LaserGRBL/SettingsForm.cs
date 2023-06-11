@@ -49,6 +49,8 @@ namespace LaserGRBL
 			CbQueryDI.Checked = Settings.GetObject("Query MachineInfo ($I) at connect", true);
 			CbDisableBoundWarn.Checked = Settings.GetObject("DisableBoundaryWarning", false);
 			CbClickNJog.Checked = Settings.GetObject("Click N Jog", true);
+			IIFocusingPower.CurrentValue = Settings.GetObject("Focusing Power", 30); //3%
+			IIFocusingPower_CurrentValueChanged(null, 0, 0, false);
 
 			CbContinuosJog.Checked = Settings.GetObject("Enable Continuous Jog", false);
             CbEnableZJog.Checked = Settings.GetObject("Enale Z Jog Control", false);
@@ -189,6 +191,7 @@ namespace LaserGRBL
             Settings.SetObject("Enale Z Jog Control", CbEnableZJog.Checked);
 			Settings.SetObject("DisableBoundaryWarning", CbDisableBoundWarn.Checked);
 			Settings.SetObject("Click N Jog", CbClickNJog.Checked);
+			Settings.SetObject("Focusing Power", IIFocusingPower.CurrentValue);			
 
 			Settings.SetObject("AutoCooling", CbAutoCooling.Checked);
 			Settings.SetObject("AutoCooling TOn", MaxTs(TimeSpan.FromSeconds(10), new TimeSpan(0, (int)CbOnMin.SelectedItem, (int)CbOnSec.SelectedItem)));
@@ -319,6 +322,14 @@ namespace LaserGRBL
 		private void CbTelegramNotification_CheckedChanged(object sender, EventArgs e)
 		{
 			EnableTest();
+		}
+
+        private void IIFocusingPower_CurrentValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+        {
+			if (string.IsNullOrWhiteSpace((string)LabFocusing.Tag))
+				LabFocusing.Tag = LabFocusing.Text + " ({0}%)";
+
+			LabFocusing.Text = string.Format((string)LabFocusing.Tag, IIFocusingPower.CurrentValue / 10.0);
 		}
 	}
 }
