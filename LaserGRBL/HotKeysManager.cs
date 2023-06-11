@@ -33,6 +33,8 @@ namespace LaserGRBL
                 JogHome = 1000, JogN = 1001, JogNE = 1002, JogE = 1003, JogSE = 1004, JogS = 1005, JogSW = 1006, JogW = 1007, JogNW = 1008, JogUp = 1009, JogDown = 1010,
 				JogStepIncrease = 1020, JogStepDecrease = 1021,
 				JogSpeedIncrease = 1030, JogSpeedDecrease = 1031,
+				MoveCenter = 1050, MoveN = 1051, MoveNE = 1052, MoveE = 1053, MoveSE = 1054, MoveS = 1055, MoveSW = 1056, MoveW = 1057, MoveNW = 1058,
+				MoveFrame = 1070, MoveFrameN = 1071, MovePath = 1072, SwitchFocus = 1075,
 				OverridePowerDefault = 1100, OverridePowerUp = 1101, OverridePowerDown = 1102,
 				OverrideLinearDefault = 1110, OverrideLinearUp = 1111, OverrideLinearDown = 1112,
 				OverrideRapidDefault = 1120, OverrideRapidUp = 1121, OverrideRapidDown = 1122,
@@ -141,6 +143,21 @@ namespace LaserGRBL
 
 			AddNew(new HotKey(HotKey.Actions.JogSpeedIncrease, Keys.None));
 			AddNew(new HotKey(HotKey.Actions.JogSpeedDecrease, Keys.None));
+
+			AddNew(new HotKey(HotKey.Actions.MoveCenter, Keys.Control | Keys.NumPad5));
+			AddNew(new HotKey(HotKey.Actions.MoveN, Keys.Control | Keys.NumPad8));
+			AddNew(new HotKey(HotKey.Actions.MoveNE, Keys.Control | Keys.NumPad9));
+			AddNew(new HotKey(HotKey.Actions.MoveE, Keys.Control | Keys.NumPad6));
+			AddNew(new HotKey(HotKey.Actions.MoveSE, Keys.Control | Keys.NumPad3));
+			AddNew(new HotKey(HotKey.Actions.MoveS, Keys.Control | Keys.NumPad2));
+			AddNew(new HotKey(HotKey.Actions.MoveSW, Keys.Control | Keys.NumPad1));
+			AddNew(new HotKey(HotKey.Actions.MoveW, Keys.Control | Keys.NumPad4));
+			AddNew(new HotKey(HotKey.Actions.MoveNW, Keys.Control | Keys.NumPad7));
+
+			AddNew(new HotKey(HotKey.Actions.MoveFrame, Keys.Control | Keys.F));
+			AddNew(new HotKey(HotKey.Actions.MoveFrameN, Keys.Control | Keys.N));
+			AddNew(new HotKey(HotKey.Actions.MovePath, Keys.Control | Keys.P));
+			AddNew(new HotKey(HotKey.Actions.SwitchFocus, Keys.Control | Keys.L));
 
 			AddNew(new HotKey(HotKey.Actions.OverridePowerDefault, Keys.None));
             AddNew(new HotKey(HotKey.Actions.OverridePowerUp, Keys.None));
@@ -282,6 +299,20 @@ namespace LaserGRBL
 					ChangeJogSpeed(true); break;
 				case HotKey.Actions.JogSpeedDecrease:
 					ChangeJogSpeed(false); break;
+				case HotKey.Actions.MoveCenter:
+				case HotKey.Actions.MoveN:
+				case HotKey.Actions.MoveNE:
+				case HotKey.Actions.MoveE:
+				case HotKey.Actions.MoveSE:
+				case HotKey.Actions.MoveS:
+				case HotKey.Actions.MoveSW:
+				case HotKey.Actions.MoveW:
+				case HotKey.Actions.MoveNW:
+				case HotKey.Actions.MoveFrame:
+				case HotKey.Actions.MoveFrameN:
+				case HotKey.Actions.MovePath:
+				case HotKey.Actions.SwitchFocus:
+					mJogForm.ExecuteHotKey(action); break;
 				case HotKey.Actions.OverridePowerDefault:
 				case HotKey.Actions.OverridePowerUp:
 				case HotKey.Actions.OverridePowerDown:
