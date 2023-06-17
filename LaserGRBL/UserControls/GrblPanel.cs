@@ -23,6 +23,7 @@ namespace LaserGRBL.UserControls
 		private float mCurF;
 		private float mCurS;
 		private bool mFSTrig;
+		private PointF mMouseCurPos;
 
 		public GrblPanel()
 		{
@@ -34,6 +35,7 @@ namespace LaserGRBL.UserControls
 			SetStyle(ControlStyles.ResizeRedraw, true);
 			mLastWPos = GPoint.Zero;
 			mLastMPos = GPoint.Zero;
+			mMouseCurPos = PointF.Empty;
 
 			forcez = Settings.GetObject("Enale Z Jog Control", false);
 			SettingsForm.SettingsChanged += SettingsForm_SettingsChanged;
@@ -79,7 +81,9 @@ namespace LaserGRBL.UserControls
 					using (Brush b = GetBrush(ColorScheme.PreviewText))
 					{
 						Rectangle r = ClientRectangle;
+						Rectangle r2 = ClientRectangle;
 						r.Inflate(-5, -5);
+						r2.Inflate(-15, -5);
 						StringFormat sf = new StringFormat();
 
 						//  II | I
@@ -108,6 +112,10 @@ namespace LaserGRBL.UserControls
 						}
 
 						e.Graphics.DrawString(position, Font, b, r, sf);
+
+						//Mouse current position
+						sf.Alignment = sf.Alignment == StringAlignment.Near ? StringAlignment.Far : StringAlignment.Near;
+						e.Graphics.DrawString(string.Format("Cur X: {0:0.000} Y: {1:0.000}", mMouseCurPos.X, mMouseCurPos.Y), Font, b, r2, sf);
 					}
 				}
 			}
@@ -265,5 +273,11 @@ namespace LaserGRBL.UserControls
 				Core.BeginJog(coord, e.Button == MouseButtons.Right);
 			}
 		}
-	}
+
+        private void GrblPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+			mMouseCurPos = DrawToMachine(new PointF(e.X, e.Y));
+			Invalidate();
+		}
+    }
 }

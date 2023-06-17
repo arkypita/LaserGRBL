@@ -739,6 +739,12 @@ namespace LaserGRBL
 			}
 		}
 
+
+		public void ChangeScale(double scaleX, double scaleY)
+        {
+			file.ChangeScale(Settings.GetObject<string>("Core.LastOpenFile", null), scaleX, scaleY);
+		}
+
 		private ImageCodecInfo GetEncoder(ImageFormat format)
 		{
 			ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();

@@ -220,6 +220,11 @@ namespace LaserGRBL
 				TTTLines.Text = Core.LoadedFile.Count.ToString();
 				//TTTLoadedIn.Text = elapsed.ToString() + " ms";
 				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, " ,", true);
+
+				char c = TTTHeight.Text.Length > 0 ? TTTHeight.Text[0] : 'H'; //to manage language
+				TTTHeight.Text = string.Format("{0}: {1}", c , Core.LoadedFile.Range.MovingRange.Height);
+				c = TTTWidth.Text.Length > 0 ? TTTWidth.Text[0] : 'W';
+				TTTWidth.Text = string.Format("{0}: {1}",c,  Core.LoadedFile.Range.MovingRange.Width);
 			}
 		}
 
@@ -993,10 +998,15 @@ namespace LaserGRBL
 		{
 			ShowWiFiConfig();
 		}
-	}
+
+        private void MnChangeScale_Click(object sender, EventArgs e)
+        {
+			Core.ChangeScale(2, 2);
+        }
+    }
 
 
-	public class MMnRenderer : ToolStripProfessionalRenderer
+    public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 

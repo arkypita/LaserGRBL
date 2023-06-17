@@ -113,6 +113,12 @@
       <DependentUpon>AutotraceTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Autotrace\Autotrace.cs" />
+    <Compile Include="ChangeScaleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeScaleForm.designer.cs">
+      <DependentUpon>ChangeScaleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clipper\Clipper.cs" />
     <Compile Include="ComWrapper\MySerial\Handshake.cs" />
     <Compile Include="ComWrapper\MySerial\ISerialStream.cs" />
@@ -793,6 +799,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AutoUpdate\NewVersionForm.ro-RO.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeScaleForm.resx">
+      <DependentUpon>ChangeScaleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectLogForm.nl-NL.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
