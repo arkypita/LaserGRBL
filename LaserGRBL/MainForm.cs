@@ -1001,8 +1001,8 @@ namespace LaserGRBL
 
         private void MnChangeScale_Click(object sender, EventArgs e)
         {
-			Core.ChangeScale(2, 2);
-        }
+			ChangeScaleForm.CreateAndShowDialog(Core, this);
+		}
     }
 
 

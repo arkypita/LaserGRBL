@@ -18,6 +18,8 @@ namespace LaserGRBL
 	{
 		GrblCore mCore;
 
+		bool loading = false;
+
 		internal static void CreateAndShowDialog(GrblCore core, Form parent)
         {
             using (ChangeScaleForm f = new ChangeScaleForm(core))
@@ -39,17 +41,20 @@ namespace LaserGRBL
 
 		public void ShowDialogForm(Form parent)
         {
+			loading = true;
 			DIscaleX.CurrentValue = 1;
 			DIscaleY.CurrentValue = 1;
 
 			DIsizeX.CurrentValue = (float)mCore.LoadedFile.Range.MovingRange.Width;
 			DIsizeY.CurrentValue = (float)mCore.LoadedFile.Range.MovingRange.Height;
 
-			if (!mCore.LoadedFile.IsG2G3())
-            {
-				DIscaleY.Enabled = false;
-				DIsizeY.Enabled = false;
-			}
+			ChKeepRatio.Checked = true;
+			ChKeepRatio.Enabled = !mCore.LoadedFile.IsG2G3();
+
+			DIscaleY.Enabled = ChKeepRatio.Enabled && !ChKeepRatio.Checked;
+			DIsizeY.Enabled = ChKeepRatio.Enabled && !ChKeepRatio.Checked;
+
+			loading = false;
 
 			if (ShowDialog(parent) == DialogResult.OK)
 			{
@@ -57,8 +62,82 @@ namespace LaserGRBL
 			}
 		}
 
+        private void DIscaleX_CurrentValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
+        {
+			if (loading) return;
 
-		
+			loading = true;
+			DIsizeX.CurrentValue = DIscaleX.CurrentValue * (float)mCore.LoadedFile.Range.MovingRange.Width;
+			loading = false;
 
-	}
+			if (!DIscaleY.Enabled)
+				DIscaleY.CurrentValue = DIscaleX.CurrentValue;			
+		}
+
+		private void DIscaleY_CurrentValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
+		{
+			if (loading) return;
+
+			loading = true;
+			DIsizeY.CurrentValue = DIscaleY.CurrentValue * (float)mCore.LoadedFile.Range.MovingRange.Height;
+			loading = false;
+
+		}
+
+		private void DIsizeX_CurrentValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
+        {
+			if (loading) return;
+
+			loading = true;
+			DIscaleX.CurrentValue = DIsizeX.CurrentValue / (float)mCore.LoadedFile.Range.MovingRange.Width;
+			loading = false;
+
+			if (!DIsizeY.Enabled)
+				DIsizeY.CurrentValue = DIsizeX.CurrentValue;			
+		}
+
+		private void DIsizeY_CurrentValueChanged(object sender, float OldValue, float NewValue, bool ByUser)
+		{
+			if (loading) return;
+
+			loading = true;
+			DIscaleY.CurrentValue = DIsizeY.CurrentValue / (float)mCore.LoadedFile.Range.MovingRange.Height;
+			loading = false;
+		}
+
+        private void ChKeepRatio_CheckedChanged(object sender, EventArgs e)
+        {
+			if (loading) return;
+
+			if (ChKeepRatio.Checked)
+            {
+				//lock
+				loading = true;
+				DIscaleY.CurrentValue = DIscaleX.CurrentValue ;
+				DIsizeY.CurrentValue = DIscaleY.CurrentValue * (float)mCore.LoadedFile.Range.MovingRange.Height;
+
+				DIscaleY.Enabled = false;
+				DIsizeY.Enabled = false;
+				loading = false;
+
+			} else
+            {
+				//unlock
+				DIscaleY.Enabled = true;
+				DIsizeY.Enabled = true;
+			}
+		}
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+			DialogResult = DialogResult.Cancel;
+			Close();
+        }
+
+        private void BtnCreate_Click(object sender, EventArgs e)
+        {
+			DialogResult = DialogResult.OK;
+			Close();
+        }
+    }
 }

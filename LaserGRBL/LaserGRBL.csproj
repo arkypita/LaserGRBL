@@ -800,6 +800,9 @@
     <EmbeddedResource Include="AutoUpdate\NewVersionForm.ro-RO.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChangeScaleForm.fr.resx">
+      <DependentUpon>ChangeScaleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChangeScaleForm.resx">
       <DependentUpon>ChangeScaleForm.cs</DependentUpon>
     </EmbeddedResource>

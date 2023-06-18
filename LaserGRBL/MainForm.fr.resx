@@ -712,6 +712,9 @@
         TkJi3CX3CVKCFP0PuPEfUhQV8heJRAT7dLSqwwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="MnChangeScale.Text" xml:space="preserve">
+    <value>&amp;Changer d'échelle</value>
+  </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 20</value>
   </data>
