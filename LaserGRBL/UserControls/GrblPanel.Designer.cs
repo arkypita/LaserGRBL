@@ -28,16 +28,17 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.SuspendLayout();
-			// 
-			// GrblPanel
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Name = "GrblPanel";
-			this.Size = new System.Drawing.Size(548, 400);
-			this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.GrblPanel_MouseDoubleClick);
-			this.ResumeLayout(false);
+            this.SuspendLayout();
+            // 
+            // GrblPanel
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "GrblPanel";
+            this.Size = new System.Drawing.Size(548, 400);
+            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.GrblPanel_MouseDoubleClick);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GrblPanel_MouseMove);
+            this.ResumeLayout(false);
 
 		}
 

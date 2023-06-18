@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace LaserGRBL
 {
@@ -150,6 +151,90 @@ namespace LaserGRBL
 			RiseOnFileLoaded(filename, elapsed);
 		}
 
+
+		public void ChangeScale(string filename, double scaleX, double scaleY)
+        {
+			RiseOnFileLoading(filename);
+
+			long start = Tools.HiResTimer.TotalMilliseconds;
+			double X, Y, I, J;
+			string xy;
+			List<string> lines = new List<string>();
+
+			foreach (GrblCommand cmd in list)
+            {
+				if(char.ToUpper(cmd.Command.Take(1).Single()) == 'G')
+                {
+					X = double.NaN;
+					Y = double.NaN;
+
+					if (cmd.Command.Contains("X")) double.TryParse(Regex.Match(cmd.Command, "(?<=X)[0-9.-]+").Value, out X);
+					if (cmd.Command.Contains("Y")) double.TryParse(Regex.Match(cmd.Command, "(?<=Y)[0-9.-]+").Value, out Y);
+
+					X *= scaleX;
+					Y *= scaleY;
+
+					xy = (double.IsNaN(X) ? "" : string.Format("X{0}", Math.Round(X, 3)));
+					xy += (double.IsNaN(Y) ? "" : string.Format("Y{0}", Math.Round(Y, 3)));
+
+					xy = Regex.Replace(cmd.Command, "((X|Y)[0-9.-]+)+", xy);
+
+					if (cmd.Command.Substring(0, 2).ToUpper() == "G2" || cmd.Command.Substring(0, 2).ToUpper() == "G3")
+                    {
+						I = double.NaN;
+						J = double.NaN;
+
+						if (cmd.Command.Contains("I")) double.TryParse(Regex.Match(cmd.Command, "(?<=I)[0-9.-]+").Value, out I);
+						if (cmd.Command.Contains("J")) double.TryParse(Regex.Match(cmd.Command, "(?<=J)[0-9.-]+").Value, out J);
+
+						I *= scaleX;
+						J *= scaleY;
+
+						xy = (double.IsNaN(I) ? "" : string.Format("I{0}", Math.Round(I, 3)));
+						xy += (double.IsNaN(J) ? "" : string.Format("J{0}", Math.Round(J, 3)));
+
+						xy = Regex.Replace(cmd.Command, "((I|J)[0-9.-]+)+", xy);
+					}
+				} 
+				else
+                {
+					xy = cmd.Command;
+				}
+
+				lines.Add(xy);
+			}
+
+			list.Clear();
+			foreach (string l in lines)
+			{
+				string line = l;
+				if ((line = line.Trim()).Length > 0)
+				{
+					GrblCommand cmd = new GrblCommand(line);
+					if (!cmd.IsEmpty)
+						list.Add(cmd);
+				}
+			}
+
+			Analyze();
+			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+
+			RiseOnFileLoaded(filename, elapsed);
+		}
+
+		/// <summary>
+		/// To know if there is any G2 or G3 command into the list. If true, scale must be equal on X and Y
+		/// </summary>
+		/// <returns></returns>
+		public bool IsG2G3()
+        {
+			foreach (GrblCommand cmd in list)
+            {
+				if (cmd.Command.Substring(0, 2).ToUpper() == "G2" || cmd.Command.Substring(0, 2).ToUpper() == "G3")
+					return true;
+			}
+			return false;
+		}
 
 		private abstract class ColorSegment
 		{
