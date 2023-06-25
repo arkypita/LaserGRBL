@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Звук попередження</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>Змінити</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Файл звуку</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Звук помилки</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>Змінити</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Файл звуку</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Звук підключення</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>Змінити</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Файл звуку</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Звук відключення</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>Змінити</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Файл звуку</value>
+  </data>
+  <data name="LblSuccessSound.Text" xml:space="preserve">
+    <value>Звук завершення</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>Змінити</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Файл звуку</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Тут можна змінити звук завершення підключення. Натисніть, щоб увімкнути.</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Тут можна зміити звук розєднання. Корисно для підключення до WIFI. Натисніть, щоб увімкнути.</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Персональний код</value>
+  </data>
+  <data name="BtnTestNotification.Text" xml:space="preserve">
+    <value>Тест</value>
+  </data>
+  <data name="label45.Text" xml:space="preserve">
+    <value>хвилин</value>
+  </data>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>Повідомлення</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>Протокол</value>
+  </data>
+  <data name="TpVectorImport.Text" xml:space="preserve">
+    <value>Імпортувати вектор</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>Повідомлення на Телеграм</value>
+  </data>
+  <data name="SoundBrowserDialog.Filter" xml:space="preserve">
+    <value>Аудіо файл | *.wav</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>сек</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>хв</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>сек</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>хв</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Вкл</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Вимк</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Режим потокового передавання: [Буферизація за замовчуванням]
+- Buffered: оптимізація команд потокового заповнення grbl отримати буфер [рекомендовано]
+- Синхронний: дочекайтеся виконання кожної команди, перш ніж надсилати наступну команду [повільніше, але безпечніше]
+- RepeatOnError: те саме, що Synchronous, але повторити команди, якщо виявити помилку [експериментально]</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Протокол підключення:
+- UsbSerial: є найпоширенішим протоколом. Слід використовувати, якщо гравер підключений до USB- або COM-порту.
+- UsbSerial2: альтернативна реалізація послідовного USB для обходу проблем Microsoft SerialPort
+- Telnet: якщо у вас є міст WiFi-Telnet. Зв'язок реалізується як простий telnet клієнт-сервер.
+- LaserWebESP8266: підтримка WiFi з'єднання через WebSocket. Сумісний з програмним забезпеченням LaserWeb-ESP8266.</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Режим різьблення: UltraFast, Fast, Quiet, Slow. [За замовчуванням швидко]
+Цей параметр впливає на швидкість відправки потоку і частоту запиту звіту про стан.
+Установіть повільніші значення, якщо виникають проблеми.</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>Детектор проблем</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>LaserGRBL може виявляти проблеми та попереджати користувача, надаючи інформацію про те, як їх вирішити.
+Якщо вимкнено, усі проблеми мовчки вирішуються без попередження.</value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>Плавне скидання [Ctrl-X]</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Якщо увімкнено LaserGRBL надішле soft-reset при відкритті з'єднання з grbl.</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>Повне скидання [DTR+RTS]</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Якщо увімкнено LaserGRBL надішле soft-reset при відкритті з'єднання з grbl. [Позиція буде втрачена]</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Шапка</value>
+  </data>
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="CBSupportPWM.Text" xml:space="preserve">
+    <value>Підтримка PWM</value>
+  </data>
+</root>
