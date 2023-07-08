@@ -107,6 +107,7 @@
 			this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.romanianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.dutchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ukrainianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.installCH340DriverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.flashGrblFirmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -583,7 +584,8 @@
             this.greekToolStripMenuItem,
             this.turkishToolStripMenuItem,
             this.romanianToolStripMenuItem,
-            this.dutchToolStripMenuItem});
+            this.dutchToolStripMenuItem,
+            this.ukrainianToolStripMenuItem});
 			this.linguaToolStripMenuItem.Name = "linguaToolStripMenuItem";
 			resources.ApplyResources(this.linguaToolStripMenuItem, "linguaToolStripMenuItem");
 			// 
@@ -694,6 +696,12 @@
 			resources.ApplyResources(this.dutchToolStripMenuItem, "dutchToolStripMenuItem");
 			this.dutchToolStripMenuItem.Name = "dutchToolStripMenuItem";
 			this.dutchToolStripMenuItem.Click += new System.EventHandler(this.dutchToolStripMenuItem_Click);
+			// 
+			// ukrainianToolStripMenuItem
+			// 
+			resources.ApplyResources(this.ukrainianToolStripMenuItem, "ukrainianToolStripMenuItem");
+			this.ukrainianToolStripMenuItem.Name = "ukrainianToolStripMenuItem";
+			this.ukrainianToolStripMenuItem.Click += new System.EventHandler(this.ukrainianToolStripMenuItem_Click);
 			// 
 			// toolsToolStripMenuItem
 			// 
@@ -1065,6 +1073,7 @@
 		private System.Windows.Forms.ToolStripMenuItem dutchToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem MnConfigureOrturWiFi;
 		private System.Windows.Forms.ToolStripSeparator MnSeparatorConfigWiFi;
+		private System.Windows.Forms.ToolStripMenuItem ukrainianToolStripMenuItem;
 	}
 }
 

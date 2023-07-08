@@ -997,9 +997,10 @@ namespace LaserGRBL
 								conf.AddOrUpdate(((GrblMessage)row).GetNativeMessage());
 						}
 
-						if (conf.Count >= conf.ExpectedCount)
-							Configuration = conf;
-						else
+
+						Configuration = conf; //accept configuration in any case
+
+						if (conf.Count < conf.ExpectedCount) //but show error if some param is missing
 							throw new TimeoutException(string.Format("Wrong number of config param found! ({0}/{1})", conf.Count, conf.ExpectedCount));
 					}
 				}
@@ -3251,6 +3252,13 @@ namespace LaserGRBL
 	[Serializable]
 	public class GrblConfST : IEnumerable<KeyValuePair<int, string>>
 	{
+		private const decimal MAX_CONFIG_SPEED = 2000000;
+		private const decimal MAX_CONFIG_PWM = 2000000;
+		private const decimal MAX_CONFIG_RESOLUTION = 10000;
+		private const decimal MAX_CONFIG_SIZE = 2000000;
+		private const decimal MAX_CONFIG_ACCEL = 2000000;
+
+
 		public class GrblConfParam : ICloneable
 		{
 			private int mNumber;
@@ -3324,9 +3332,9 @@ namespace LaserGRBL
 		private bool Version9 => mVersion != null && mVersion >= new GrblCore.GrblVersionInfo(0, 9);
 
 		public int ExpectedCount => Version11 ? 34 : Version9 ? 31 : 23;
-		public bool HomingEnabled => ReadDecimal(Version9 ? 22 : 17, 1) != 0;
-		public decimal MaxRateX => ReadDecimal(Version9 ? 110 : 4, 4000);
-		public decimal MaxRateY => ReadDecimal(Version9 ? 111 : 5, 4000);
+		public bool HomingEnabled => ReadDecimal(Version9 ? 22 : 17, 1, 0, 1) != 0;
+		public decimal MaxRateX => ReadDecimal(Version9 ? 110 : 4, 4000, 1, MAX_CONFIG_SPEED);
+		public decimal MaxRateY => ReadDecimal(Version9 ? 111 : 5, 4000, 1, MAX_CONFIG_SPEED );
 
 		public bool LaserMode
 		{
@@ -3335,28 +3343,28 @@ namespace LaserGRBL
 				if (NoVersionInfo)
 					return true;
 				else
-					return ReadDecimal(Version11 ? 32 : -1, 0) != 0;
+					return ReadDecimal(Version11 ? 32 : -1, 0, 0, 1) != 0;
 			}
 		}
 
-		public decimal MinPWM => ReadDecimal(Version11 ? 31 : -1, 0);
-		public decimal MaxPWM => ReadDecimal(Version11 ? 30 : -1, 1000);
-		public decimal ResolutionX => ReadDecimal(Version9 ? 100 : 0, 250);
-		public decimal ResolutionY => ReadDecimal(Version9 ? 101 : 1, 250);
-		public decimal TableWidth => ReadDecimal(Version9 ? 130 : -1, 300);
-		public decimal TableHeight => ReadDecimal(Version9 ? 131 : -1, 200);
-		public bool SoftLimit => ReadDecimal(20, 0) != 0;
+		public decimal MinPWM => ReadDecimal(Version11 ? 31 : -1, 0, 0, MAX_CONFIG_PWM);
+		public decimal MaxPWM => ReadDecimal(Version11 ? 30 : -1, 1, 1, MAX_CONFIG_PWM);
+		public decimal ResolutionX => ReadDecimal(Version9 ? 100 : 0, 250, 1, MAX_CONFIG_RESOLUTION);
+		public decimal ResolutionY => ReadDecimal(Version9 ? 101 : 1, 250, 1, MAX_CONFIG_RESOLUTION);
+		public decimal TableWidth => ReadDecimal(Version9 ? 130 : -1, 300, 1, MAX_CONFIG_SIZE);
+		public decimal TableHeight => ReadDecimal(Version9 ? 131 : -1, 200, 1, MAX_CONFIG_SIZE);
+		public bool SoftLimit => ReadDecimal(20, 0, 0, 1) != 0;
 
 		public decimal AccelerationXY => (AccelerationX + AccelerationY) / 2;
-		private decimal AccelerationX => ReadDecimal(Version9 ? 120 : -1, 2000);
-		private decimal AccelerationY => ReadDecimal(Version9 ? 121 : -1, 2000);
+		private decimal AccelerationX => ReadDecimal(Version9 ? 120 : -1, 2000, 1, MAX_CONFIG_ACCEL);
+		private decimal AccelerationY => ReadDecimal(Version9 ? 121 : -1, 2000, 1, MAX_CONFIG_ACCEL);
 
 		public string WiFi_SSID => ReadString(74, null);
 		public string WiFi_Pwd => ReadString(75, null);
 		public string TelnetPort => ReadString(305, "23");
 
 
-		private decimal ReadDecimal(int key, decimal defval)
+		private decimal ReadDecimal(int key, decimal defval, decimal min, decimal max)
 		{
 			if (mVersion == null)
 				return defval;
@@ -3366,7 +3374,7 @@ namespace LaserGRBL
 			{
 				try
 				{
-					return decimal.Parse(mData[key], CultureInfo.InvariantCulture);
+					return Math.Max(min, Math.Min(max, decimal.Parse(mData[key], CultureInfo.InvariantCulture)));
 				}
 				catch
 				{
@@ -3463,6 +3471,9 @@ namespace LaserGRBL
 		}
 
 		private static System.Text.RegularExpressions.Regex FoxalienCleanupConfig = new System.Text.RegularExpressions.Regex(@"^[$](\d+)\s*=\s*(\d+\.?\d*)\s*\(.*\)");
+
+
+
 		private string FixFoxalienConfig(string line)
 		{
 			if (!FoxalienCleanupConfig.IsMatch(line))

@@ -806,10 +806,19 @@
     <EmbeddedResource Include="CustomButtonForm.ro-RO.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomButtonForm.uk.resx">
+      <DependentUpon>CustomButtonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExceptionManager.hu-HU.resx">
+      <DependentUpon>ExceptionManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExceptionManager.nl-NL.resx">
       <DependentUpon>ExceptionManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExceptionManager.ro-RO.resx">
+      <DependentUpon>ExceptionManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExceptionManager.uk.resx">
       <DependentUpon>ExceptionManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.nl-NL.resx">
@@ -818,10 +827,16 @@
     <EmbeddedResource Include="GrblConfig.ro-RO.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GrblConfig.uk.resx">
+      <DependentUpon>GrblConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HotkeyManagerForm.nl-NL.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HotkeyManagerForm.ro-RO.resx">
+      <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HotkeyManagerForm.uk.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IssueDetectorForm.nl-NL.resx">
@@ -830,13 +845,16 @@
     <EmbeddedResource Include="IssueDetectorForm.ro-RO.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LicenseForm.ro-RO.resx">
-      <DependentUpon>LicenseForm.cs</DependentUpon>
+    <EmbeddedResource Include="IssueDetectorForm.uk.resx">
+      <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.nl-NL.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.ro-RO.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.uk.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.nl-NL.resx">
@@ -845,11 +863,20 @@
     <EmbeddedResource Include="PreviewForm.ro-RO.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PreviewForm.uk.resx">
+      <DependentUpon>PreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSEditorForm.hu-HU.resx">
+      <DependentUpon>PSEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSEditorForm.nl-NL.resx">
       <DependentUpon>PSEditorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSEditorForm.ro-RO.resx">
       <DependentUpon>PSEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSHelperForm.hu-HU.resx">
+      <DependentUpon>PSHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSHelperForm.nl-NL.resx">
       <DependentUpon>PSHelperForm.cs</DependentUpon>
@@ -883,11 +910,20 @@
     <EmbeddedResource Include="ResumeJobForm.ro-RO.resx">
       <DependentUpon>ResumeJobForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ResumeJobForm.uk.resx">
+      <DependentUpon>ResumeJobForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RunFromPositionForm.nl-NL.resx">
       <DependentUpon>RunFromPositionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RunFromPositionForm.ro-RO.resx">
       <DependentUpon>RunFromPositionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RunFromPositionForm.uk.resx">
+      <DependentUpon>RunFromPositionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveOptionForm.hu-HU.resx">
+      <DependentUpon>SaveOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaveOptionForm.nl-NL.resx">
       <DependentUpon>SaveOptionForm.cs</DependentUpon>
@@ -895,10 +931,16 @@
     <EmbeddedResource Include="SaveOptionForm.ro-RO.resx">
       <DependentUpon>SaveOptionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SaveOptionForm.uk.resx">
+      <DependentUpon>SaveOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.nl-NL.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.ro-RO.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.uk.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.nl-NL.resx">
@@ -912,6 +954,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WiFiConfigurator\OrturWiFiConfigPrompt.resx">
       <DependentUpon>OrturWiFiConfigPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.hu-HU.resx">
+      <DependentUpon>DiscoveryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.nl-NL.resx">
       <DependentUpon>DiscoveryForm.cs</DependentUpon>

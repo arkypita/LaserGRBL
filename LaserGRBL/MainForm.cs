@@ -984,6 +984,11 @@ namespace LaserGRBL
 			SetLanguage(new System.Globalization.CultureInfo("nl-NL"));
 		}
 
+		private void ukrainianToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("uk"));
+		}
+
 		private void TTTStatus_DoubleClick(object sender, EventArgs e)
 		{
 			Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/machine-status/");
@@ -993,6 +998,8 @@ namespace LaserGRBL
 		{
 			ShowWiFiConfig();
 		}
+
+
 	}
 
 

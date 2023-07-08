@@ -84,8 +84,19 @@ namespace LaserGRBL.RasterConverter
 				}
 			}
 
-			IIBorderTracing.MaxValue = IILinearFilling.MaxValue = (int)GrblCore.Configuration.MaxRateX;
-			IIMaxPower.MaxValue = (int)GrblCore.Configuration.MaxPWM;
+
+			int maxrateX = 20000;
+			int maxPwm = 1000;
+
+			try
+			{
+				maxrateX = (int)GrblCore.Configuration.MaxRateX;
+				maxPwm = (int)GrblCore.Configuration.MaxPWM;
+			}
+			catch (Exception ex) {  }
+
+			IIBorderTracing.MaxValue = IILinearFilling.MaxValue = maxrateX;
+			IIMaxPower.MaxValue = maxPwm;
 		}
 
 		ImageProcessor IP;
