@@ -7,6 +7,7 @@
 using LaserGRBL.PSHelper;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace LaserGRBL.SvgConverter
@@ -45,7 +46,15 @@ namespace LaserGRBL.SvgConverter
                     Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", f.IIMaxPower.CurrentValue);
 					Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", f.IIMinPower.CurrentValue);
 					Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", (f.CBLaserON.SelectedItem as ComboboxItem).Value);
-
+					var powerSelection = f.AdaptivePowerChannelSelection.SelectedItem as ComboboxItem;
+					if (!f.EnableAdaptivePowerMode.Checked || powerSelection is null)
+					{
+						Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.AdaptivePower", AdaptiveLaserOptions.disabled.ToString());
+					}
+					else
+					{
+						Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.AdaptivePower", powerSelection.Value.ToString());
+					}
 					core.LoadedFile.LoadImportedSVG(filename, append, core);
                 }
             }
@@ -60,7 +69,7 @@ namespace LaserGRBL.SvgConverter
 			GbLaser.ForeColor = GbSpeed.ForeColor = ForeColor = ColorScheme.FormForeColor;
 			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
 
-			LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
+			LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = AdaptiveOptionGroup.Visible = supportPWM;
 			AssignMinMaxLimit();
 
 			CBLaserON.Items.Add(LaserOptions[0]);
@@ -90,6 +99,18 @@ namespace LaserGRBL.SvgConverter
 			IIMaxPower.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", (int)GrblCore.Configuration.MaxPWM);
 
 			IIBorderTracing.Visible = LblBorderTracing.Visible = LblBorderTracingmm.Visible = true;
+
+			var allAdaptivePowerOptions = Enum.GetValues(typeof(AdaptiveLaserOptions)).Cast<AdaptiveLaserOptions>().Where(x => ((int)x) > 0).Select(x => new ComboboxItem(x.ToString(), x));
+			AdaptivePowerChannelSelection.Items.AddRange(allAdaptivePowerOptions.ToArray());
+
+			var adaptivePowerOption = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.AdaptivePower", AdaptiveLaserOptions.disabled.ToString());
+			var chosenPowerOption = allAdaptivePowerOptions.Where(x => x.Text == adaptivePowerOption);
+
+			if (chosenPowerOption.Count() == 1)
+			{
+				AdaptivePowerChannelSelection.SelectedIndex = ((int)chosenPowerOption.First().Value) - 1;
+				AdaptivePowerChannelSelection.Enabled = EnableAdaptivePowerMode.Checked = true;
+			}
 
 			RefreshPerc();
 
@@ -168,16 +189,21 @@ namespace LaserGRBL.SvgConverter
 			}
 		}
 
-		//private void IISizeW_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
-		//{
-		//	if (ByUser)
-		//		IISizeH.CurrentValue = IP.WidthToHeight(NewValue);
-		//}
+		private void EnableAdaptiveMode_CheckedChanged(object sender, EventArgs e)
+		{
+			AdaptivePowerChannelSelection.Enabled = EnableAdaptivePowerMode.Checked;
+		}
 
-		//private void IISizeH_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
-		//{
-		//	if (ByUser) IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
-		//}
+        //private void IISizeW_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+        //{
+        //	if (ByUser)
+        //		IISizeH.CurrentValue = IP.WidthToHeight(NewValue);
+        //}
 
-	}
+        //private void IISizeH_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+        //{
+        //	if (ByUser) IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
+        //}
+
+    }
 }

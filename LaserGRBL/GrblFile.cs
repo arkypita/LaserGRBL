@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
+using LaserGRBL.SvgConverter;
 
 namespace LaserGRBL
 {
@@ -130,6 +131,7 @@ namespace LaserGRBL
 			SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
 			converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
 			converter.UseLegacyBezier = !Settings.GetObject($"Vector.UseSmartBezier", true);
+			converter.AdaptivePower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.AdaptivePower", AdaptiveLaserOptions.disabled.ToString()).ToAdaptiveLaserOptions();
 
 			string gcode = converter.convertFromFile(filename, core);
 			string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);

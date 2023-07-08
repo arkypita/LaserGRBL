@@ -50,6 +50,10 @@ namespace LaserGRBL.SvgConverter
 		public float GCodeXYFeed = 2000;        // XY feed to apply for G1
         private double scaledError = 1.0;
 
+		public AdaptiveLaserOptions AdaptivePower = AdaptiveLaserOptions.disabled;
+		private double powerFactor = 1.0;
+		private double currentPowerFactor = 1.0;
+
 		public bool svgConvertToMM = true;
 		private float gcodeScale = 1;                    // finally scale with this factor if svgScaleApply and svgMaxSize
 		private Matrix[] matrixGroup = new Matrix[10];   // store SVG-Group transformation matrixes
@@ -435,6 +439,40 @@ namespace LaserGRBL.SvgConverter
 			return "";
 		}
 
+		private void setLaserPower(string color)
+		{
+			if(AdaptivePower != AdaptiveLaserOptions.disabled)
+			{
+				var colorValue = Convert.ToUInt32(color, 16);
+
+				var alpha = (double)((colorValue >> 24) & 0x00FF);
+				var red   = (double)((colorValue >> 16) & 0x00FF);
+				var green = (double)((colorValue >>  8) & 0x00FF);
+				var blue  = (double)((colorValue      ) & 0x00FF);
+
+				switch (AdaptivePower)
+				{
+					case AdaptiveLaserOptions.Luminescence:
+						powerFactor = (255.0 -0.2126 *red -0.7152 *green -0.0722 *blue) / 255.0;
+						break;
+					case AdaptiveLaserOptions.Alpha:
+						powerFactor = (255.0 - alpha) / 255.0;
+						break;
+					case AdaptiveLaserOptions.Red:
+						powerFactor = (255.0 - red) / 255.0;
+						break;
+					case AdaptiveLaserOptions.Green:
+						powerFactor = (255.0 - green) / 255.0;
+						break;
+					case AdaptiveLaserOptions.Blue:
+						powerFactor = (255.0 -blue) / 255.0;
+						break;
+					default: 
+						powerFactor = 1.0; break;
+				}
+			}
+		}
+
 		/// <summary>
 		/// Convert Basic shapes (up to now: line, rect, circle) check: http://www.w3.org/TR/SVG/shapes.html
 		/// </summary>
@@ -448,6 +486,8 @@ namespace LaserGRBL.SvgConverter
 					if (pathElement != null)
 					{
 						string myColor = getColor(pathElement);
+
+						setLaserPower(myColor);
 
 						if (svgComments)
 						{
@@ -1258,8 +1298,9 @@ namespace LaserGRBL.SvgConverter
 		}
 		private void gcodePenDown(string cmt)
 		{
-			if (!penIsDown)
-				gcode.PenDown(gcodeString, cmt);
+			if (!penIsDown || currentPowerFactor != powerFactor)
+				gcode.PenDown(gcodeString, cmt, powerFactor);
+			currentPowerFactor = powerFactor;
 			penIsDown = true;
 		}
 

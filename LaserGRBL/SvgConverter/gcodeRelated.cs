@@ -154,12 +154,12 @@ namespace LaserGRBL.SvgConverter
 		private static StringBuilder secondMove = new StringBuilder();
 		private static bool applyXYFeedRate = true; // apply XY feed after each Pen-move
 
-		public static void SpindleOn(StringBuilder gcodeString, string cmt = "")
+		public static void SpindleOn(StringBuilder gcodeString, string cmt = "", double factor = 1.0)
 		{
 			if (cmt.Length > 0) cmt = string.Format(" ({0})", cmt);
 
 			if (SupportPWM)
-				gcodeString.AppendFormat("S{0}{1}\r\n", gcodeSpindleSpeed, cmt); //only set SMax
+				gcodeString.AppendFormat("S{0}{1}\r\n", (int)(gcodeSpindleSpeed * factor), cmt); //only set SMax
 			else
 				gcodeString.AppendFormat("{0}{1}\r\n", gcodeSpindleCmdOn, cmt); //only set M3/M4
 		}
@@ -190,7 +190,7 @@ namespace LaserGRBL.SvgConverter
 				gcodeString.AppendFormat("M5 S0\r\n"); //turn OFF and zero power
 		}
 
-		public static void PenDown(StringBuilder gcodeString, string cmto = "")
+		public static void PenDown(StringBuilder gcodeString, string cmto = "", double factor = 1.0)
 		{
 			string cmt = cmto;
 			drag1stMove = true;
@@ -203,7 +203,7 @@ namespace LaserGRBL.SvgConverter
 
 			//if (gcodeSpindleToggle)
 			//{   if (gcodeComments) gcodeString.AppendFormat("({0})\r\n", "Pen down: Spindle-On");
-			SpindleOn(gcodeString, cmto);
+			SpindleOn(gcodeString, cmto, factor);
 			//}
 			//if (gcodeZApply)
 			//{   if (gcodeComments) gcodeString.AppendFormat("({0})\r\n", "Pen down: Z-Axis");
