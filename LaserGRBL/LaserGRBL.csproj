@@ -131,6 +131,7 @@
     <Compile Include="ComWrapper\MySerial\StopBits.cs" />
     <Compile Include="ComWrapper\MySerial\WinSerialStream.cs" />
     <Compile Include="ComWrapper\UsbSerial2.cs" />
+    <Compile Include="Core\GCodeSegment.cs" />
     <Compile Include="Tools\Project.cs" />
     <Compile Include="Core\VigoCore.cs" />
     <Compile Include="CsPotrace\PotraceClipper.cs" />
