@@ -5991,4 +5991,472 @@
     <Cycles>1</Cycles>
     <Remarks />
   </Materials>
+  <Materials>
+    <id>2a281e67-42c0-49ef-8233-26936f566f1e</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>The generation of yellow edges can be reduced by adding auxiliary tools.</Remarks>
+  </Materials>
+  <Materials>
+    <id>fc680b32-4a61-4e0d-b714-1dbf2fd79be7</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Hardwood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>The generation of yellow edges can be reduced by adding auxiliary tools.</Remarks>
+  </Materials>
+  <Materials>
+    <id>5b758c99-4cb8-475c-aebc-57e56cab2106</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>6e1ed533-b1b7-42b8-a072-61f7c187c219</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Pay attention to toxic gases!Choose pure black opaque.</Remarks>
+  </Materials>
+  <Materials>
+    <id>dbdc03a8-c038-4c82-94fa-ff38d8dcedca</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>3e616476-2292-45f8-a193-46532e194b3b</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Cobblestone</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8e61218a-5abc-43ff-9e4f-fdd6cc409fd0</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Anodised Aluminium</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>4000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2b42a754-2394-437c-9849-69ea9d19beed</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Plastic Sheet (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Some plastic sheets may be melt.</Remarks>
+  </Materials>
+  <Materials>
+    <id>99306ced-4bf2-4745-8766-cd7f503c8b00</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>47d9ea25-82e2-45d4-b5ab-fc8024ba349b</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Powder Coated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d9fdc8a7-5bd8-43a1-983e-66347074d3a2</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Plated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f7e578ab-da91-47c8-ae60-bf09babdcfac</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>suggested 8 lines.Stainless steel will bend and warp when heated.</Remarks>
+  </Materials>
+  <Materials>
+    <id>e833a995-ca67-4347-a235-b034d652051f</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Basswood</Material>
+    <Thickness>5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>The focus before cutting needs to be in the middle of the object to be cut, and the focus is different for different thicknesses.</Remarks>
+  </Materials>
+  <Materials>
+    <id>61119ce2-0971-40d0-9740-11756727e0e3</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Hardwood</Material>
+    <Thickness>4</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>The focus before cutting needs to be in the middle of the object to be cut, and the focus is different for different thicknesses.</Remarks>
+  </Materials>
+  <Materials>
+    <id>5ebc2c03-ea1b-4413-b191-bbcd44e4e76c</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>3</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>150</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>Pay attention to toxic gases!Choose pure black opaque.</Remarks>
+  </Materials>
+  <Materials>
+    <id>244d630b-e67c-4719-91e3-494dfcd10344</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>2</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f8936eac-76b7-4bc3-ae51-07550b714400</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Leather</Material>
+    <Thickness>0.7</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>700</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>0e9d22af-cae7-44cd-8289-c154f7f57452</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Non-woven fabrics (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Easy to burn through, pay attention to protection!</Remarks>
+  </Materials>
+  <Materials>
+    <id>caa810c8-2afc-4ba0-8d98-8d7026ff4127</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M6W</Model>
+    <Material>Cotton Cloth (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Easy to catch fire, pay attention to protection!</Remarks>
+  </Materials>
+  <Materials>
+    <id>9291a902-8956-4394-ac97-565c4cd78b16</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>The generation of yellow edges can be reduced by adding auxiliary tools.</Remarks>
+  </Materials>
+  <Materials>
+    <id>d8f0770c-28bf-4585-b595-2fe15a874bd1</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Hardwood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>The generation of yellow edges can be reduced by adding auxiliary tools.</Remarks>
+  </Materials>
+  <Materials>
+    <id>e5b349b8-4758-4694-be8a-143f146425ba</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ed3998b0-7499-4c36-b92e-090d8e1fe083</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Pay attention to toxic gases!Choose pure black opaque.</Remarks>
+  </Materials>
+  <Materials>
+    <id>355f8301-2268-47b5-a4f2-5137a1035395</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>bdf4d31d-8bd8-433b-a659-ff52028ff9f2</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Cobblestone</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f8203ec5-c13a-4800-ad2c-f3d7228ca79b</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Anodised Aluminium</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e7fee91a-adb8-4de2-94f4-1fc83da70928</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Plastic Sheet (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Some plastic sheets may be melt.</Remarks>
+  </Materials>
+  <Materials>
+    <id>2868d11f-e60a-44fb-a5ef-7350d98f9816</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4d83ac8c-9bcf-4dbd-a01e-9480ca8b7a3d</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Powder Coated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f4fcbecb-54a6-4f21-835d-0f20e09375d4</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Plated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2b2f5aad-ff61-4a18-8224-8cc8bbe6226f</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Suggested 8 lines.Stainless steel will bend and warp when heated.</Remarks>
+  </Materials>
+  <Materials>
+    <id>3bafdbbd-b591-45ee-a217-b41d3480b863</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Basswood</Material>
+    <Thickness>7</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>The focus before cutting needs to be in the middle of the object to be cut, and the focus is different for different thicknesses.</Remarks>
+  </Materials>
+  <Materials>
+    <id>60333685-5f69-4cd0-858e-07fd05600ca5</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Hardwood</Material>
+    <Thickness>6</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>150</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>The focus before cutting needs to be in the middle of the object to be cut, and the focus is different for different thicknesses.</Remarks>
+  </Materials>
+  <Materials>
+    <id>a66d9e9d-ed36-402a-b172-4677cc947621</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Bamboo</Material>
+    <Thickness>4</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>150</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>796351a2-1cca-40b9-904f-0cd00d73cc5e</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>3</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>150</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Pay attention to toxic gases!Choose pure black opaque.</Remarks>
+  </Materials>
+  <Materials>
+    <id>32c9a0cf-7793-4b4f-aa7a-5e26002d3d30</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>2</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>fa3536b2-6551-42ed-9548-8830d05cb3cc</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Leather</Material>
+    <Thickness>0.7</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d6d2335e-3cc9-415a-964b-47ad387b6ef9</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Non-woven fabrics (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Easy to burn through, pay attention to protection!</Remarks>
+  </Materials>
+  <Materials>
+    <id>ddcd7f53-2c93-4439-962d-31afc3b69790</id>
+    <Visible>true</Visible>
+    <Model>MECOLOUR M10W</Model>
+    <Material>Cotton Cloth (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Easy to catch fire, pay attention to protection!</Remarks>
+  </Materials>
 </MaterialDB>
