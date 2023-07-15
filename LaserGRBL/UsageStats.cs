@@ -159,7 +159,7 @@ namespace LaserGRBL
         {
             //invia i dati solo almeno ad un giorno di distanza o al cambio version/grblversion
             Version current = Program.CurrentVersion;
-            bool mustsend = DateTime.UtcNow.Subtract(LastSent).TotalDays > 1 || Version != current || (GrblCore.Configuration.GrblVersion != null && GrblVersion != GrblCore.Configuration.GrblVersion);
+            bool mustsend = DateTime.UtcNow.Subtract(LastSent).TotalDays > 5 || Version != current || (GrblCore.Configuration.GrblVersion != null && GrblVersion != GrblCore.Configuration.GrblVersion);
             Version = current;
             GrblVersion = GrblCore.Configuration.GrblVersion != null ? GrblCore.Configuration.GrblVersion : GrblVersion;
             Locale = System.Threading.Thread.CurrentThread.CurrentCulture.LCID;

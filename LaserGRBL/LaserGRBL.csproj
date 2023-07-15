@@ -131,6 +131,18 @@
     <Compile Include="ComWrapper\MySerial\StopBits.cs" />
     <Compile Include="ComWrapper\MySerial\WinSerialStream.cs" />
     <Compile Include="ComWrapper\UsbSerial2.cs" />
+    <Compile Include="SafetyCountdown.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SafetyCountdown.Designer.cs">
+      <DependentUpon>SafetyCountdown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LegalDisclaimer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LegalDisclaimer.Designer.cs">
+      <DependentUpon>LegalDisclaimer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\Project.cs" />
     <Compile Include="Core\VigoCore.cs" />
     <Compile Include="CsPotrace\PotraceClipper.cs" />
@@ -809,6 +821,9 @@
     <EmbeddedResource Include="CustomButtonForm.uk.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SafetyCountdown.resx">
+      <DependentUpon>SafetyCountdown.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExceptionManager.hu-HU.resx">
       <DependentUpon>ExceptionManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -847,6 +862,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IssueDetectorForm.uk.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LegalDisclaimer.resx">
+      <DependentUpon>LegalDisclaimer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.nl-NL.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -975,6 +993,9 @@
     <None Include="Resources\flag_greece.png" />
     <Content Include="Grafica\777494-200.png" />
     <Content Include="Grafica\info.png" />
+    <Content Include="Sound\beep.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sound\connect.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

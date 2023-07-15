@@ -40,9 +40,12 @@
 			this.CbThreadingMode = new System.Windows.Forms.ComboBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.CBStreamingMode = new System.Windows.Forms.ComboBox();
+			this.BtnStreamingMode = new LaserGRBL.UserControls.ImageButton();
 			this.CBProtocol = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
+			this.BtnProtocol = new LaserGRBL.UserControls.ImageButton();
 			this.label6 = new System.Windows.Forms.Label();
+			this.BtnThreadingModel = new LaserGRBL.UserControls.ImageButton();
 			this.CbIssueDetector = new System.Windows.Forms.CheckBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.CbSoftReset = new System.Windows.Forms.CheckBox();
@@ -50,12 +53,16 @@
 			this.CbHardReset = new System.Windows.Forms.CheckBox();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
+			this.BtnFType = new LaserGRBL.UserControls.ImageButton();
+			this.CbQueryDI = new System.Windows.Forms.CheckBox();
+			this.label46 = new System.Windows.Forms.Label();
 			this.TpRasterImport = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.CbUnidirectional = new System.Windows.Forms.CheckBox();
 			this.CBSupportPWM = new System.Windows.Forms.CheckBox();
+			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
 			this.CbHiRes = new System.Windows.Forms.CheckBox();
 			this.label22 = new System.Windows.Forms.Label();
 			this.CbDisableSkip = new System.Windows.Forms.CheckBox();
@@ -66,6 +73,7 @@
 			this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
 			this.label43 = new System.Windows.Forms.Label();
 			this.CbSmartBezier = new System.Windows.Forms.CheckBox();
+			this.imageButton1 = new LaserGRBL.UserControls.ImageButton();
 			this.TpJogControl = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
 			this.label10 = new System.Windows.Forms.Label();
@@ -152,6 +160,7 @@
 			this.label28 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
 			this.label44 = new System.Windows.Forms.Label();
+			this.BtnTelegNoteInfo = new LaserGRBL.UserControls.ImageButton();
 			this.label31 = new System.Windows.Forms.Label();
 			this.label33 = new System.Windows.Forms.Label();
 			this.TxtNotification = new System.Windows.Forms.TextBox();
@@ -161,15 +170,12 @@
 			this.label45 = new System.Windows.Forms.Label();
 			this.label42 = new System.Windows.Forms.Label();
 			this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
-			this.CbQueryDI = new System.Windows.Forms.CheckBox();
-			this.label46 = new System.Windows.Forms.Label();
-			this.BtnStreamingMode = new LaserGRBL.UserControls.ImageButton();
-			this.BtnProtocol = new LaserGRBL.UserControls.ImageButton();
-			this.BtnThreadingModel = new LaserGRBL.UserControls.ImageButton();
-			this.BtnFType = new LaserGRBL.UserControls.ImageButton();
-			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
-			this.imageButton1 = new LaserGRBL.UserControls.ImageButton();
-			this.BtnTelegNoteInfo = new LaserGRBL.UserControls.ImageButton();
+			this.TpOptions = new System.Windows.Forms.TabPage();
+			this.Tlp = new System.Windows.Forms.TableLayoutPanel();
+			this.CbDisableSafetyCD = new System.Windows.Forms.CheckBox();
+			this.label47 = new System.Windows.Forms.Label();
+			this.CbQuietSafetyCB = new System.Windows.Forms.CheckBox();
+			this.label48 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.MainTabPage.SuspendLayout();
@@ -202,6 +208,8 @@
 			this.tableLayoutPanel17.SuspendLayout();
 			this.tableLayoutPanel19.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.UdTelegramNotificationThreshold)).BeginInit();
+			this.TpOptions.SuspendLayout();
+			this.Tlp.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -242,6 +250,7 @@
 			this.MainTabPage.Controls.Add(this.TpAutoCooling);
 			this.MainTabPage.Controls.Add(this.TpGCodeSettings);
 			this.MainTabPage.Controls.Add(this.TpSoundSettings);
+			this.MainTabPage.Controls.Add(this.TpOptions);
 			resources.ApplyResources(this.MainTabPage, "MainTabPage");
 			this.MainTabPage.Name = "MainTabPage";
 			this.MainTabPage.SelectedIndex = 0;
@@ -304,6 +313,19 @@
 			this.CBStreamingMode.FormattingEnabled = true;
 			this.CBStreamingMode.Name = "CBStreamingMode";
 			// 
+			// BtnStreamingMode
+			// 
+			this.BtnStreamingMode.AltImage = null;
+			this.BtnStreamingMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnStreamingMode.Caption = null;
+			this.BtnStreamingMode.Coloration = System.Drawing.Color.Empty;
+			this.BtnStreamingMode.Image = ((System.Drawing.Image)(resources.GetObject("BtnStreamingMode.Image")));
+			resources.ApplyResources(this.BtnStreamingMode, "BtnStreamingMode");
+			this.BtnStreamingMode.Name = "BtnStreamingMode";
+			this.BtnStreamingMode.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnStreamingMode.UseAltImage = false;
+			this.BtnStreamingMode.Click += new System.EventHandler(this.BtnStreamingMode_Click);
+			// 
 			// CBProtocol
 			// 
 			resources.ApplyResources(this.CBProtocol, "CBProtocol");
@@ -316,10 +338,36 @@
 			resources.ApplyResources(this.label3, "label3");
 			this.label3.Name = "label3";
 			// 
+			// BtnProtocol
+			// 
+			this.BtnProtocol.AltImage = null;
+			this.BtnProtocol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnProtocol.Caption = null;
+			this.BtnProtocol.Coloration = System.Drawing.Color.Empty;
+			this.BtnProtocol.Image = ((System.Drawing.Image)(resources.GetObject("BtnProtocol.Image")));
+			resources.ApplyResources(this.BtnProtocol, "BtnProtocol");
+			this.BtnProtocol.Name = "BtnProtocol";
+			this.BtnProtocol.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnProtocol.UseAltImage = false;
+			this.BtnProtocol.Click += new System.EventHandler(this.BtnProtocol_Click);
+			// 
 			// label6
 			// 
 			resources.ApplyResources(this.label6, "label6");
 			this.label6.Name = "label6";
+			// 
+			// BtnThreadingModel
+			// 
+			this.BtnThreadingModel.AltImage = null;
+			this.BtnThreadingModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnThreadingModel.Caption = null;
+			this.BtnThreadingModel.Coloration = System.Drawing.Color.Empty;
+			this.BtnThreadingModel.Image = ((System.Drawing.Image)(resources.GetObject("BtnThreadingModel.Image")));
+			resources.ApplyResources(this.BtnThreadingModel, "BtnThreadingModel");
+			this.BtnThreadingModel.Name = "BtnThreadingModel";
+			this.BtnThreadingModel.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnThreadingModel.UseAltImage = false;
+			this.BtnThreadingModel.Click += new System.EventHandler(this.BtnThreadingModel_Click);
 			// 
 			// CbIssueDetector
 			// 
@@ -358,6 +406,30 @@
 			// 
 			resources.ApplyResources(this.label9, "label9");
 			this.label9.Name = "label9";
+			// 
+			// BtnFType
+			// 
+			this.BtnFType.AltImage = null;
+			this.BtnFType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnFType.Caption = null;
+			this.BtnFType.Coloration = System.Drawing.Color.Empty;
+			this.BtnFType.Image = ((System.Drawing.Image)(resources.GetObject("BtnFType.Image")));
+			resources.ApplyResources(this.BtnFType, "BtnFType");
+			this.BtnFType.Name = "BtnFType";
+			this.BtnFType.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnFType.UseAltImage = false;
+			this.BtnFType.Click += new System.EventHandler(this.BtnFType_Click);
+			// 
+			// CbQueryDI
+			// 
+			resources.ApplyResources(this.CbQueryDI, "CbQueryDI");
+			this.CbQueryDI.Name = "CbQueryDI";
+			this.CbQueryDI.UseVisualStyleBackColor = true;
+			// 
+			// label46
+			// 
+			resources.ApplyResources(this.label46, "label46");
+			this.label46.Name = "label46";
 			// 
 			// TpRasterImport
 			// 
@@ -403,6 +475,19 @@
 			resources.ApplyResources(this.CBSupportPWM, "CBSupportPWM");
 			this.CBSupportPWM.Name = "CBSupportPWM";
 			this.CBSupportPWM.UseVisualStyleBackColor = true;
+			// 
+			// BtnModulationInfo
+			// 
+			this.BtnModulationInfo.AltImage = null;
+			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnModulationInfo.Caption = null;
+			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
+			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
+			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
+			this.BtnModulationInfo.Name = "BtnModulationInfo";
+			this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnModulationInfo.UseAltImage = false;
+			this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
 			// 
 			// CbHiRes
 			// 
@@ -462,6 +547,18 @@
 			resources.ApplyResources(this.CbSmartBezier, "CbSmartBezier");
 			this.CbSmartBezier.Name = "CbSmartBezier";
 			this.CbSmartBezier.UseVisualStyleBackColor = true;
+			// 
+			// imageButton1
+			// 
+			this.imageButton1.AltImage = null;
+			this.imageButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.imageButton1.Caption = null;
+			this.imageButton1.Coloration = System.Drawing.Color.Empty;
+			this.imageButton1.Image = ((System.Drawing.Image)(resources.GetObject("imageButton1.Image")));
+			resources.ApplyResources(this.imageButton1, "imageButton1");
+			this.imageButton1.Name = "imageButton1";
+			this.imageButton1.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.imageButton1.UseAltImage = false;
 			// 
 			// TpJogControl
 			// 
@@ -1023,6 +1120,19 @@
 			this.tableLayoutPanel17.SetColumnSpan(this.label44, 2);
 			this.label44.Name = "label44";
 			// 
+			// BtnTelegNoteInfo
+			// 
+			this.BtnTelegNoteInfo.AltImage = null;
+			this.BtnTelegNoteInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnTelegNoteInfo.Caption = null;
+			this.BtnTelegNoteInfo.Coloration = System.Drawing.Color.Empty;
+			this.BtnTelegNoteInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnTelegNoteInfo.Image")));
+			resources.ApplyResources(this.BtnTelegNoteInfo, "BtnTelegNoteInfo");
+			this.BtnTelegNoteInfo.Name = "BtnTelegNoteInfo";
+			this.BtnTelegNoteInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnTelegNoteInfo.UseAltImage = false;
+			this.BtnTelegNoteInfo.Click += new System.EventHandler(this.BtnTelegNoteInfo_Click);
+			// 
 			// label31
 			// 
 			resources.ApplyResources(this.label31, "label31");
@@ -1079,106 +1189,43 @@
 			// 
 			resources.ApplyResources(this.SoundBrowserDialog, "SoundBrowserDialog");
 			// 
-			// CbQueryDI
+			// TpOptions
 			// 
-			resources.ApplyResources(this.CbQueryDI, "CbQueryDI");
-			this.CbQueryDI.Name = "CbQueryDI";
-			this.CbQueryDI.UseVisualStyleBackColor = true;
+			this.TpOptions.Controls.Add(this.Tlp);
+			resources.ApplyResources(this.TpOptions, "TpOptions");
+			this.TpOptions.Name = "TpOptions";
+			this.TpOptions.UseVisualStyleBackColor = true;
 			// 
-			// label46
+			// Tlp
 			// 
-			resources.ApplyResources(this.label46, "label46");
-			this.label46.Name = "label46";
+			resources.ApplyResources(this.Tlp, "Tlp");
+			this.Tlp.Controls.Add(this.CbDisableSafetyCD, 1, 1);
+			this.Tlp.Controls.Add(this.label47, 2, 1);
+			this.Tlp.Controls.Add(this.CbQuietSafetyCB, 1, 0);
+			this.Tlp.Controls.Add(this.label48, 2, 0);
+			this.Tlp.Name = "Tlp";
 			// 
-			// BtnStreamingMode
+			// CbDisableSafetyCD
 			// 
-			this.BtnStreamingMode.AltImage = null;
-			this.BtnStreamingMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnStreamingMode.Caption = null;
-			this.BtnStreamingMode.Coloration = System.Drawing.Color.Empty;
-			this.BtnStreamingMode.Image = ((System.Drawing.Image)(resources.GetObject("BtnStreamingMode.Image")));
-			resources.ApplyResources(this.BtnStreamingMode, "BtnStreamingMode");
-			this.BtnStreamingMode.Name = "BtnStreamingMode";
-			this.BtnStreamingMode.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnStreamingMode.UseAltImage = false;
-			this.BtnStreamingMode.Click += new System.EventHandler(this.BtnStreamingMode_Click);
+			resources.ApplyResources(this.CbDisableSafetyCD, "CbDisableSafetyCD");
+			this.CbDisableSafetyCD.Name = "CbDisableSafetyCD";
+			this.CbDisableSafetyCD.UseVisualStyleBackColor = true;
 			// 
-			// BtnProtocol
+			// label47
 			// 
-			this.BtnProtocol.AltImage = null;
-			this.BtnProtocol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnProtocol.Caption = null;
-			this.BtnProtocol.Coloration = System.Drawing.Color.Empty;
-			this.BtnProtocol.Image = ((System.Drawing.Image)(resources.GetObject("BtnProtocol.Image")));
-			resources.ApplyResources(this.BtnProtocol, "BtnProtocol");
-			this.BtnProtocol.Name = "BtnProtocol";
-			this.BtnProtocol.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnProtocol.UseAltImage = false;
-			this.BtnProtocol.Click += new System.EventHandler(this.BtnProtocol_Click);
+			resources.ApplyResources(this.label47, "label47");
+			this.label47.Name = "label47";
 			// 
-			// BtnThreadingModel
+			// CbQuietSafetyCB
 			// 
-			this.BtnThreadingModel.AltImage = null;
-			this.BtnThreadingModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnThreadingModel.Caption = null;
-			this.BtnThreadingModel.Coloration = System.Drawing.Color.Empty;
-			this.BtnThreadingModel.Image = ((System.Drawing.Image)(resources.GetObject("BtnThreadingModel.Image")));
-			resources.ApplyResources(this.BtnThreadingModel, "BtnThreadingModel");
-			this.BtnThreadingModel.Name = "BtnThreadingModel";
-			this.BtnThreadingModel.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnThreadingModel.UseAltImage = false;
-			this.BtnThreadingModel.Click += new System.EventHandler(this.BtnThreadingModel_Click);
+			resources.ApplyResources(this.CbQuietSafetyCB, "CbQuietSafetyCB");
+			this.CbQuietSafetyCB.Name = "CbQuietSafetyCB";
+			this.CbQuietSafetyCB.UseVisualStyleBackColor = true;
 			// 
-			// BtnFType
+			// label48
 			// 
-			this.BtnFType.AltImage = null;
-			this.BtnFType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnFType.Caption = null;
-			this.BtnFType.Coloration = System.Drawing.Color.Empty;
-			this.BtnFType.Image = ((System.Drawing.Image)(resources.GetObject("BtnFType.Image")));
-			resources.ApplyResources(this.BtnFType, "BtnFType");
-			this.BtnFType.Name = "BtnFType";
-			this.BtnFType.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnFType.UseAltImage = false;
-			this.BtnFType.Click += new System.EventHandler(this.BtnFType_Click);
-			// 
-			// BtnModulationInfo
-			// 
-			this.BtnModulationInfo.AltImage = null;
-			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnModulationInfo.Caption = null;
-			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
-			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
-			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
-			this.BtnModulationInfo.Name = "BtnModulationInfo";
-			this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnModulationInfo.UseAltImage = false;
-			this.BtnModulationInfo.Click += new System.EventHandler(this.BtnModulationInfo_Click);
-			// 
-			// imageButton1
-			// 
-			this.imageButton1.AltImage = null;
-			this.imageButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.imageButton1.Caption = null;
-			this.imageButton1.Coloration = System.Drawing.Color.Empty;
-			this.imageButton1.Image = ((System.Drawing.Image)(resources.GetObject("imageButton1.Image")));
-			resources.ApplyResources(this.imageButton1, "imageButton1");
-			this.imageButton1.Name = "imageButton1";
-			this.imageButton1.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.imageButton1.UseAltImage = false;
-			// 
-			// BtnTelegNoteInfo
-			// 
-			this.BtnTelegNoteInfo.AltImage = null;
-			this.BtnTelegNoteInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.BtnTelegNoteInfo.Caption = null;
-			this.BtnTelegNoteInfo.Coloration = System.Drawing.Color.Empty;
-			this.BtnTelegNoteInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnTelegNoteInfo.Image")));
-			resources.ApplyResources(this.BtnTelegNoteInfo, "BtnTelegNoteInfo");
-			this.BtnTelegNoteInfo.Name = "BtnTelegNoteInfo";
-			this.BtnTelegNoteInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.BtnTelegNoteInfo.UseAltImage = false;
-			this.BtnTelegNoteInfo.Click += new System.EventHandler(this.BtnTelegNoteInfo_Click);
+			resources.ApplyResources(this.label48, "label48");
+			this.label48.Name = "label48";
 			// 
 			// SettingsForm
 			// 
@@ -1248,6 +1295,10 @@
 			this.tableLayoutPanel19.ResumeLayout(false);
 			this.tableLayoutPanel19.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.UdTelegramNotificationThreshold)).EndInit();
+			this.TpOptions.ResumeLayout(false);
+			this.TpOptions.PerformLayout();
+			this.Tlp.ResumeLayout(false);
+			this.Tlp.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1396,5 +1447,11 @@
 		private System.Windows.Forms.Label label45;
 		private System.Windows.Forms.CheckBox CbQueryDI;
 		private System.Windows.Forms.Label label46;
+		private System.Windows.Forms.TabPage TpOptions;
+		private System.Windows.Forms.TableLayoutPanel Tlp;
+		private System.Windows.Forms.CheckBox CbDisableSafetyCD;
+		private System.Windows.Forms.Label label47;
+		private System.Windows.Forms.CheckBox CbQuietSafetyCB;
+		private System.Windows.Forms.Label label48;
 	}
 }

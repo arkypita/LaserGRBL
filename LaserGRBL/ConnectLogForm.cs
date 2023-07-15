@@ -20,6 +20,7 @@ namespace LaserGRBL
 
 		GrblCore Core;
 		private string mLoadedFileName;
+		private bool mForceButtonDisable;
 
 		public ConnectLogForm()
 		{
@@ -199,7 +200,10 @@ namespace LaserGRBL
 
 		void BtnRunProgramClick(object sender, EventArgs e)
 		{
+			mForceButtonDisable = true;
+			BtnRunProgram.Enabled = false;
 			Core.RunProgram(ParentForm);
+			mForceButtonDisable = false;
 		}
 		void TxtManualCommandCommandEntered(string command)
 		{
@@ -228,8 +232,6 @@ namespace LaserGRBL
 			
 			PB.Invalidate();
 
-
-
 			/*
 			Idle: All systems are go, no motions queued, and it's ready for anything.
 			Run: Indicates a cycle is running.
@@ -243,7 +245,7 @@ namespace LaserGRBL
 			TT.SetToolTip(BtnConnectDisconnect, Core.IsConnected ? Strings.BtnDisconnectTT : Strings.BtnConnectTT);
 			
 			BtnConnectDisconnect.UseAltImage = Core.IsConnected;
-			BtnRunProgram.Enabled = Core.CanSendFile;
+			BtnRunProgram.Enabled = Core.CanSendFile && !mForceButtonDisable;
             BtnRunProgram.Visible = !Core.CanAbortProgram;
             BtnAbortProgram.Visible = Core.CanAbortProgram;
             BtnOpen.Enabled = Core.CanLoadNewFile;

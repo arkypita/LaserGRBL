@@ -65,11 +65,11 @@ namespace LaserGRBL
 			public override bool Equals(object obj)
 			{ return obj != null && obj is ThreadingMode && ((ThreadingMode)obj).Name == Name; }
 
-            public override int GetHashCode()
-            {
-                return base.GetHashCode();
-            }
-        }
+			public override int GetHashCode()
+			{
+				return base.GetHashCode();
+			}
+		}
 
 		public enum DetectedIssue
 		{
@@ -222,7 +222,7 @@ namespace LaserGRBL
 
 			public string VendorName
 			{
-				get 
+				get
 				{
 					if (mVendorInfo != null && mVendorInfo.ToLower().Contains("ortur"))
 						return "Ortur";
@@ -235,15 +235,15 @@ namespace LaserGRBL
 				}
 			}
 
-			public int OrturFWVersionNumber 
+			public int OrturFWVersionNumber
 			{
-				get 
+				get
 				{
 					try { return int.Parse(mVendorVersion); }
 					catch { return -1; }
 				}
 			}
-        }
+		}
 
 		public delegate void dlgIssueDetector(DetectedIssue issue);
 		public delegate void dlgOnMachineStatus();
@@ -286,7 +286,7 @@ namespace LaserGRBL
 		protected TimeProjection mTP = new TimeProjection();
 
 		private MacStatus mMachineStatus = MacStatus.Disconnected;
-		
+
 
 		private float mCurF;
 		private float mCurS;
@@ -321,26 +321,26 @@ namespace LaserGRBL
 
 		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
 		{
-            if (Type != Firmware.Grbl) Logger.LogMessage("Program", "Load {0} core", Type);
+			if (Type != Firmware.Grbl) Logger.LogMessage("Program", "Load {0} core", Type);
 
-            SetStatus(MacStatus.Disconnected);
+			SetStatus(MacStatus.Disconnected);
 			syncro = syncroObject;
 			com = new ComWrapper.UsbSerial();
 
 			debugLastStatusDelay = new Tools.ElapsedFromEvent();
 			debugLastMoveOrActivityDelay = new Tools.ElapsedFromEvent();
 
-            //with version 4.5.0 default ThreadingMode change from "UltraFast" to "Fast"
-            if (!Settings.IsNewFile && Settings.PrevVersion < new Version(4, 5, 0)) 
-            {
-                ThreadingMode CurrentMode = Settings.GetObject("Threading Mode", ThreadingMode.Fast);
-                if (Equals(CurrentMode, ThreadingMode.Insane) || Equals(CurrentMode, ThreadingMode.UltraFast))
-                    Settings.SetObject("Threading Mode", ThreadingMode.Fast);
-            }
+			//with version 4.5.0 default ThreadingMode change from "UltraFast" to "Fast"
+			if (!Settings.IsNewFile && Settings.PrevVersion < new Version(4, 5, 0))
+			{
+				ThreadingMode CurrentMode = Settings.GetObject("Threading Mode", ThreadingMode.Fast);
+				if (Equals(CurrentMode, ThreadingMode.Insane) || Equals(CurrentMode, ThreadingMode.UltraFast))
+					Settings.SetObject("Threading Mode", ThreadingMode.Fast);
+			}
 
-            mThreadingMode = Settings.GetObject("Threading Mode", ThreadingMode.Fast);
+			mThreadingMode = Settings.GetObject("Threading Mode", ThreadingMode.Fast);
 
-            
+
 
 			QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(mThreadingMode.StatusQuery), false);
 			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX);
@@ -414,10 +414,11 @@ namespace LaserGRBL
 		public static GrblConfST Configuration
 		{
 			get
-			{	if (Settings.ExistObject("Grbl Configuration"))
+			{
+				if (Settings.ExistObject("Grbl Configuration"))
 				{
 					Settings.SetObject("Grbl Configuration ST", new GrblConfST(Settings.GetObject("Grbl Configuration", (GrblConf)null)));  //convert old format with only numbers
-					Settings.DeleteObject("Grbl Configuration");																			//delete old format
+					Settings.DeleteObject("Grbl Configuration");                                                                            //delete old format
 				}
 				return Settings.GetObject("Grbl Configuration ST", new GrblConfST());
 			}
@@ -471,21 +472,21 @@ namespace LaserGRBL
 
 		private void RefreshConfigOnConnect()
 		{
-			try {System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(RefreshConfigOnConnect)); }
-			catch{ }
+			try { System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(RefreshConfigOnConnect)); }
+			catch { }
 		}
 
 		internal virtual void SendHomingCommand()
-        {
-            EnqueueCommand(new GrblCommand("$H"));
-        }
+		{
+			EnqueueCommand(new GrblCommand("$H"));
+		}
 
-        internal virtual void SendUnlockCommand()
-        {
-            EnqueueCommand(new GrblCommand("$X"));
-        }
+		internal virtual void SendUnlockCommand()
+		{
+			EnqueueCommand(new GrblCommand("$X"));
+		}
 
-        public GrblVersionInfo GrblVersion //attenzione! può essere null
+		public GrblVersionInfo GrblVersion //attenzione! può essere null
 		{
 			get { return Settings.GetObject<GrblVersionInfo>("Last GrblVersion known", null); }
 			set
@@ -624,115 +625,115 @@ namespace LaserGRBL
 
 				if (filename == null) return;
 
-                Logger.LogMessage("OpenFile", "Open {0}", filename);
-                Settings.SetObject("Core.LastOpenFile", filename);
+				Logger.LogMessage("OpenFile", "Open {0}", filename);
+				Settings.SetObject("Core.LastOpenFile", filename);
 
-                if (ImageExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant())) //import raster image
-                {
-                    try
-                    {
-                        RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent, append);
-                        UsageCounters.RasterFile++;
-                    }
-                    catch (Exception ex)
-                    { Logger.LogException("RasterImport", ex); }
-                }
-                else if (System.IO.Path.GetExtension(filename).ToLowerInvariant() == ".svg")
-                {
-                    SvgConverter.SvgModeForm.Mode mode = SvgConverter.SvgModeForm.Mode.Vector;// SvgConverter.SvgModeForm.CreateAndShow(filename);
-                    if (mode == SvgConverter.SvgModeForm.Mode.Vector)
-                    {
-                        try
-                        {
-                            SvgConverter.SvgToGCodeForm.CreateAndShowDialog(this, filename, parent, append);
-                            UsageCounters.SvgFile++;
-                        }
-                        catch (Exception ex)
-                        { Logger.LogException("SvgImport", ex); }
-                    }
-                    else if (mode == SvgConverter.SvgModeForm.Mode.Raster)
-                    {
-                        string bmpname = filename + ".png";
-                        string fcontent = System.IO.File.ReadAllText(filename);
-                        Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
-                        svg.Ppi = 600;
+				if (ImageExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant())) //import raster image
+				{
+					try
+					{
+						RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent, append);
+						UsageCounters.RasterFile++;
+					}
+					catch (Exception ex)
+					{ Logger.LogException("RasterImport", ex); }
+				}
+				else if (System.IO.Path.GetExtension(filename).ToLowerInvariant() == ".svg")
+				{
+					SvgConverter.SvgModeForm.Mode mode = SvgConverter.SvgModeForm.Mode.Vector;// SvgConverter.SvgModeForm.CreateAndShow(filename);
+					if (mode == SvgConverter.SvgModeForm.Mode.Vector)
+					{
+						try
+						{
+							SvgConverter.SvgToGCodeForm.CreateAndShowDialog(this, filename, parent, append);
+							UsageCounters.SvgFile++;
+						}
+						catch (Exception ex)
+						{ Logger.LogException("SvgImport", ex); }
+					}
+					else if (mode == SvgConverter.SvgModeForm.Mode.Raster)
+					{
+						string bmpname = filename + ".png";
+						string fcontent = System.IO.File.ReadAllText(filename);
+						Svg.SvgDocument svg = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(fcontent);
+						svg.Ppi = 600;
 
-                        using (Bitmap bmp = svg.Draw())
-                        {
-                            bmp.SetResolution(600, 600);
+						using (Bitmap bmp = svg.Draw())
+						{
+							bmp.SetResolution(600, 600);
 
-                            //codec options not supported in C# png encoder https://efundies.com/c-sharp-save-png/
-                            //quality always 100%
+							//codec options not supported in C# png encoder https://efundies.com/c-sharp-save-png/
+							//quality always 100%
 
-                            //ImageCodecInfo codecinfo = GetEncoder(ImageFormat.Png);
-                            //EncoderParameters paramlist = new EncoderParameters(1);
-                            //paramlist.Param[0] = new EncoderParameter(Encoder.Quality, 30L); 
+							//ImageCodecInfo codecinfo = GetEncoder(ImageFormat.Png);
+							//EncoderParameters paramlist = new EncoderParameters(1);
+							//paramlist.Param[0] = new EncoderParameter(Encoder.Quality, 30L); 
 
 
-                            if (System.IO.File.Exists(bmpname))
-                                System.IO.File.Delete(bmpname);
+							if (System.IO.File.Exists(bmpname))
+								System.IO.File.Delete(bmpname);
 
-                            bmp.Save(bmpname/*, codecinfo, paramlist*/);
-                        }
+							bmp.Save(bmpname/*, codecinfo, paramlist*/);
+						}
 
-                        try
-                        {
-                            RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, bmpname, parent, append);
-                            UsageCounters.RasterFile++;
-                            if (System.IO.File.Exists(bmpname))
-                                System.IO.File.Delete(bmpname);
-                        }
-                        catch (Exception ex)
-                        { Logger.LogException("SvgBmpImport", ex); }
-                    }
-                }
-                else if (GCodeExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load GCODE file
-                {
-                    Cursor.Current = Cursors.WaitCursor;
+						try
+						{
+							RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, bmpname, parent, append);
+							UsageCounters.RasterFile++;
+							if (System.IO.File.Exists(bmpname))
+								System.IO.File.Delete(bmpname);
+						}
+						catch (Exception ex)
+						{ Logger.LogException("SvgBmpImport", ex); }
+					}
+				}
+				else if (GCodeExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load GCODE file
+				{
+					Cursor.Current = Cursors.WaitCursor;
 
-                    try
-                    {
-                        file.LoadFile(filename, append);
-                        UsageCounters.GCodeFile++;
-                    }
-                    catch (Exception ex)
-                    { Logger.LogException("GCodeImport", ex); }
+					try
+					{
+						file.LoadFile(filename, append);
+						UsageCounters.GCodeFile++;
+					}
+					catch (Exception ex)
+					{ Logger.LogException("GCodeImport", ex); }
 
-                    Cursor.Current = Cursors.Default;
-                }
-                else if (ProjectFileExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load LaserGRBL project
-                {
-                    var project = Project.LoadProject(filename);
+					Cursor.Current = Cursors.Default;
+				}
+				else if (ProjectFileExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load LaserGRBL project
+				{
+					var project = Project.LoadProject(filename);
 
 					for (var i = 0; i < project.Count; i++)
-                    {
+					{
 						var settings = project[i];
 
-                        // Save image temporary
-                        var imageFilepath = $"{System.IO.Path.GetTempPath()}\\{settings["ImageName"]}";
-                        Project.SaveImage(settings["ImageBase64"].ToString(), imageFilepath);
+						// Save image temporary
+						var imageFilepath = $"{System.IO.Path.GetTempPath()}\\{settings["ImageName"]}";
+						Project.SaveImage(settings["ImageBase64"].ToString(), imageFilepath);
 
-                        // Restore settings
-                        foreach (var setting in settings.Where(setting =>
-                            setting.Key != "ImageName" && setting.Key != "ImageBase64"))
-                            Settings.SetObject(setting.Key, setting.Value);
+						// Restore settings
+						foreach (var setting in settings.Where(setting =>
+							setting.Key != "ImageName" && setting.Key != "ImageBase64"))
+							Settings.SetObject(setting.Key, setting.Value);
 
-                        // Open file
-                        Settings.SetObject("Core.LastOpenFile", imageFilepath);
+						// Open file
+						Settings.SetObject("Core.LastOpenFile", imageFilepath);
 						if (i == 0)
-                            ReOpenFile(parent);
-                        else
+							ReOpenFile(parent);
+						else
 							OpenFile(parent, imageFilepath, true);
 
-                        // Delete temporary image file
-                        System.IO.File.Delete(imageFilepath);
-                    }
+						// Delete temporary image file
+						System.IO.File.Delete(imageFilepath);
+					}
 				}
-                else
-                {
-                    System.Windows.Forms.MessageBox.Show(Strings.UnsupportedFiletype, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                }
-            }
+				else
+				{
+					System.Windows.Forms.MessageBox.Show(Strings.UnsupportedFiletype, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				}
+			}
 			catch (Exception ex)
 			{
 				Logger.LogException("OpenFile", ex);
@@ -786,7 +787,7 @@ namespace LaserGRBL
 						filename = sfd.FileName;
 				}
 
-                if (filename != null)
+				if (filename != null)
 					file.SaveGCODE(filename, header, footer, between, cycles, useLFLineEndings, this);
 			}
 		}
@@ -937,8 +938,8 @@ namespace LaserGRBL
 			try
 			{
 				rline = rline.Substring(5, rline.Length - 6);
-                //if (rline.ToLower().Contains("neje"))
-                //    GrblVersion?.IsNeje = true;
+				//if (rline.ToLower().Contains("neje"))
+				//    GrblVersion?.IsNeje = true;
 			}
 			catch (Exception ex)
 			{
@@ -1061,7 +1062,7 @@ namespace LaserGRBL
 					//mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
 
 					mQueuePtr.Enqueue(new GrblCommand(string.Format("${0}={1}", 74, ssid), 0, true));
-					mQueuePtr.Enqueue(new GrblCommand(string.Format("${0}={1}", 75, password),0, true));
+					mQueuePtr.Enqueue(new GrblCommand(string.Format("${0}={1}", 75, password), 0, true));
 					mQueuePtr.Enqueue(new GrblCommand("$WRS"));
 				}
 
@@ -1186,6 +1187,7 @@ namespace LaserGRBL
 			{
 				bool homing = false;
 				int position = LaserGRBL.RunFromPositionForm.CreateAndShowDialog(parent, LoadedFile.Count, Configuration.HomingEnabled, out homing);
+
 				if (position >= 0)
 					ContinueProgramFromKnown(position, homing, false);
 			}
@@ -1195,7 +1197,7 @@ namespace LaserGRBL
 		{
 			bool setwco = mWCO == GPoint.Zero && mTP.LastKnownWCO != GPoint.Zero;
 			bool homing = MachinePosition == GPoint.Zero && mTP.LastIssue != DetectedIssue.ManualAbort && mTP.LastIssue != DetectedIssue.ManualReset; //potrebbe essere dovuto ad un hard reset -> posizione non affidabile
-			int position = LaserGRBL.ResumeJobForm.CreateAndShowDialog(parent, mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, Configuration.HomingEnabled, homing, out homing, setwco, setwco, out setwco, mTP.LastKnownWCO);
+			int position = ResumeJobForm.CreateAndShowDialog(parent, mTP.Executed, mTP.Sent, mTP.Target, mTP.LastIssue, Configuration.HomingEnabled, homing, out homing, setwco, setwco, out setwco, mTP.LastKnownWCO);
 
 			if (position == 0)
 				RunProgramFromStart(homing);
@@ -1205,6 +1207,10 @@ namespace LaserGRBL
 
 		private void RunProgramFromStart(bool homing, bool first = false, bool pass = false)
 		{
+			//solo se non siamo tra le passate
+			if (!pass && !SafetyCountdown.CanGo())
+				return;
+
 			lock (this)
 			{
 				ClearQueue(true);
@@ -1253,6 +1259,9 @@ namespace LaserGRBL
 
 		private void ContinueProgramFromKnown(int position, bool homing, bool setwco)
 		{
+			if (!SafetyCountdown.CanGo())
+				return;
+
 			lock (this)
 			{
 
@@ -1351,7 +1360,7 @@ namespace LaserGRBL
 				Logger.LogMessage("OpenCom", "Error: {0}", ex.Message);
 				SetStatus(MacStatus.Disconnected);
 				com.Close(true);
-                System.Windows.Forms.MessageBox.Show(ex.Message, Strings.BoxConnectErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				System.Windows.Forms.MessageBox.Show(ex.Message, Strings.BoxConnectErrorTitle, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 			}
 		}
 
@@ -1375,7 +1384,7 @@ namespace LaserGRBL
 				{ ClearQueue(false); } //non resettare l'elenco delle cose mandate così da non sbiancare la lista
 
 				SetStatus(MacStatus.Disconnected);
-            }
+			}
 			catch (Exception ex)
 			{
 				Logger.LogException("CloseCom", ex);
@@ -1390,7 +1399,7 @@ namespace LaserGRBL
 		{
 			if (CanResumeHold)
 			{
-                mHoldByCoolingRequest = mHoldByUserRequest = false;
+				mHoldByCoolingRequest = mHoldByUserRequest = false;
 				SendImmediate(126);
 			}
 		}
@@ -1400,8 +1409,8 @@ namespace LaserGRBL
 			if (CanFeedHold)
 			{
 				mHoldByUserRequest = !cooling;
-                mHoldByCoolingRequest = cooling;
-                SendImmediate(33);
+				mHoldByCoolingRequest = cooling;
+				SendImmediate(33);
 			}
 		}
 
@@ -1438,12 +1447,12 @@ namespace LaserGRBL
 			RiseOverrideChanged();
 		}
 
-        protected virtual void SendBoardResetCommand()
-        {
-            SendImmediate(24);
+		protected virtual void SendBoardResetCommand()
+		{
+			SendImmediate(24);
 		}
 
-        public virtual void SendImmediate(byte b, bool mute = false)
+		public virtual void SendImmediate(byte b, bool mute = false)
 		{
 			try
 			{
@@ -1522,12 +1531,12 @@ namespace LaserGRBL
 		public bool SupportOverride
 		{ get { return GrblVersion != null && GrblVersion >= new GrblVersionInfo(1, 1); } }
 
-        public bool SupportLaserMode
-        { get { return GrblVersion != null && GrblVersion >= new GrblVersionInfo(1, 1); } }
+		public bool SupportLaserMode
+		{ get { return GrblVersion != null && GrblVersion >= new GrblVersionInfo(1, 1); } }
 
-        #endregion
+		#endregion
 
-        public bool JogEnabled
+		public bool JogEnabled
 		{
 			get
 			{
@@ -1538,18 +1547,18 @@ namespace LaserGRBL
 			}
 		}
 
-        internal void EnqueueZJog(JogDirection dir, decimal step, bool fast)
-        {
-            if (JogEnabled)
-            {
+		internal void EnqueueZJog(JogDirection dir, decimal step, bool fast)
+		{
+			if (JogEnabled)
+			{
 				mPrenotedJogSpeed = (fast ? 100000 : JogSpeed);
 
 				if (SupportTrueJogging)
-                    DoJogV11(dir, step);
-                else
-                    EmulateJogV09(dir, step); //immediato
-            }
-        }
+					DoJogV11(dir, step);
+				else
+					EmulateJogV09(dir, step); //immediato
+			}
+		}
 
 		public void BeginJog(PointF target, bool fast)
 		{
@@ -1573,7 +1582,7 @@ namespace LaserGRBL
 				PointF rv = new PointF(Math.Min(Math.Max(target.X, -mWCO.X), (float)Configuration.TableWidth - mWCO.X), Math.Min(Math.Max(target.Y, -mWCO.Y), (float)Configuration.TableHeight - mWCO.Y));
 				return rv;
 			}
-			
+
 			return target;
 		}
 
@@ -1594,8 +1603,8 @@ namespace LaserGRBL
 		{
 			if (dir == JogDirection.Home)
 			{
-                EnqueueCommand(new GrblCommand(string.Format("G90")));
-                EnqueueCommand(new GrblCommand(string.Format("G0X0Y0F{0}", mPrenotedJogSpeed)));
+				EnqueueCommand(new GrblCommand(string.Format("G90")));
+				EnqueueCommand(new GrblCommand(string.Format("G0X0Y0F{0}", mPrenotedJogSpeed)));
 			}
 			else
 			{
@@ -1609,12 +1618,12 @@ namespace LaserGRBL
 					cmd += $"Y{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
 				if (dir == JogDirection.SW || dir == JogDirection.S || dir == JogDirection.SE)
 					cmd += $"Y-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-                if (dir == JogDirection.Zdown)
-                    cmd += $"Z-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-                if (dir == JogDirection.Zup)
-                    cmd += $"Z{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+				if (dir == JogDirection.Zdown)
+					cmd += $"Z-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+				if (dir == JogDirection.Zup)
+					cmd += $"Z{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
 
-                cmd += $"F{mPrenotedJogSpeed}";
+				cmd += $"F{mPrenotedJogSpeed}";
 
 				EnqueueCommand(new GrblCommand("G91"));
 				EnqueueCommand(new GrblCommand(cmd));
@@ -1637,18 +1646,18 @@ namespace LaserGRBL
 		private void DoJogV11(JogDirection dir, decimal step)
 		{
 			if (ContinuosJogEnabled && dir != JogDirection.Zdown && dir != JogDirection.Zup) //se C.J. e non Z => prenotato
-            {
-                mPrenotedJogDirection = dir;
+			{
+				mPrenotedJogDirection = dir;
 				//lo step è quello configurato
 			}
-            else //non è CJ o non è Z => immediate enqueue jog command
-            {
-                mPrenotedJogDirection = JogDirection.None;
+			else //non è CJ o non è Z => immediate enqueue jog command
+			{
+				mPrenotedJogDirection = JogDirection.None;
 				if (dir == JogDirection.Home)
-                    EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", mPrenotedJogSpeed)));
-                else
-                    EnqueueCommand(GetRelativeJogCommandv11(dir, step));
-            }
+					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", mPrenotedJogSpeed)));
+				else
+					EnqueueCommand(GetRelativeJogCommandv11(dir, step));
+			}
 		}
 
 		private void DoJogV11(PointF target)
@@ -1669,12 +1678,12 @@ namespace LaserGRBL
 				cmd += $"Y{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
 			if (dir == JogDirection.SW || dir == JogDirection.S || dir == JogDirection.SE)
 				cmd += $"Y-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-            if (dir == JogDirection.Zdown)
-                cmd += $"Z-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-            if (dir == JogDirection.Zup)
-                cmd += $"Z{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+			if (dir == JogDirection.Zdown)
+				cmd += $"Z-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+			if (dir == JogDirection.Zup)
+				cmd += $"Z{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
 
-            cmd += $"F{mPrenotedJogSpeed}";
+			cmd += $"F{mPrenotedJogSpeed}";
 			return new GrblCommand(cmd);
 		}
 
@@ -1695,7 +1704,7 @@ namespace LaserGRBL
 
 		public void EndJogV11() //da chiamare su ButtonUp
 		{
-            mPrenotedJogDirection = JogDirection.Abort;
+			mPrenotedJogDirection = JogDirection.Abort;
 		}
 
 		private void PushJogCommand()
@@ -1709,7 +1718,7 @@ namespace LaserGRBL
 				}
 				else if (mPrenotedJogDirection == JogDirection.Home)
 				{
-                    EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", mPrenotedJogSpeed)));
+					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", mPrenotedJogSpeed)));
 				}
 				else
 				{
@@ -1789,10 +1798,10 @@ namespace LaserGRBL
 				//}
 
 				bool noQueryResponse = debugLastStatusDelay.ElapsedTime > TimeSpan.FromTicks(QueryTimer.Period.Ticks * 10) && debugLastStatusDelay.ElapsedTime > TimeSpan.FromSeconds(5);
-                //bool noMovement = !executingM4 && debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(10);
+				//bool noMovement = !executingM4 && debugLastMoveDelay.ElapsedTime > TimeSpan.FromSeconds(10);
 
-                if (noQueryResponse)
-                    SetIssue(DetectedIssue.StopResponding);
+				if (noQueryResponse)
+					SetIssue(DetectedIssue.StopResponding);
 
 				//else if (noMovement)
 				//	SetIssue(DetectedIssue.StopMoving);
@@ -1806,7 +1815,7 @@ namespace LaserGRBL
 			{
 				Logger.LogMessage("OpenCom", "Connection timeout!");
 				com.Close(true); //this cause disconnection from RX thread ("ReadLineOrDisconnect")
-            }
+			}
 		}
 
 		private bool CanSend()
@@ -2128,7 +2137,7 @@ namespace LaserGRBL
 			{
 				mVersionSeen = rline;
 				mVersionSeen = mVersionSeen.Replace("OLF", "");
-				mVersionSeen = mVersionSeen.Trim(new char[] { '.', ' ', ':' } );
+				mVersionSeen = mVersionSeen.Trim(new char[] { '.', ' ', ':' });
 				Logger.LogMessage("OrturInfo", "Detected OLF {0}", mVersionSeen);
 			}
 			catch (Exception ex)
@@ -2236,21 +2245,21 @@ namespace LaserGRBL
 		{
 			string wco = p.Substring(4, p.Length - 4);
 			string[] xyz = wco.Split(",".ToCharArray());
-			SetWCO(new GPoint(ParseFloat(xyz,0), ParseFloat(xyz,1), ParseFloat(xyz,2)));
+			SetWCO(new GPoint(ParseFloat(xyz, 0), ParseFloat(xyz, 1), ParseFloat(xyz, 2)));
 		}
 
 		private void ParseWPos(string p)
 		{
 			string wpos = p.Substring(5, p.Length - 5);
 			string[] xyz = wpos.Split(",".ToCharArray());
-			SetMPosition(mWCO + new GPoint(ParseFloat(xyz,0), ParseFloat(xyz,1), ParseFloat(xyz,2)));
+			SetMPosition(mWCO + new GPoint(ParseFloat(xyz, 0), ParseFloat(xyz, 1), ParseFloat(xyz, 2)));
 		}
 
 		private void ParseMPos(string p)
 		{
 			string mpos = p.Substring(5, p.Length - 5);
 			string[] xyz = mpos.Split(",".ToCharArray());
-			SetMPosition(new GPoint(ParseFloat(xyz,0), ParseFloat(xyz,1), ParseFloat(xyz,2)));
+			SetMPosition(new GPoint(ParseFloat(xyz, 0), ParseFloat(xyz, 1), ParseFloat(xyz, 2)));
 		}
 
 		protected static float ParseFloat(string value)
@@ -2258,7 +2267,7 @@ namespace LaserGRBL
 			return float.Parse(value, NumberFormatInfo.InvariantInfo);
 		}
 
-		protected static float ParseFloat(string [] arr, int idx, float defval = 0.0f)
+		protected static float ParseFloat(string[] arr, int idx, float defval = 0.0f)
 		{
 			if (arr == null || idx < 0 || idx >= arr.Length) return defval;
 			return float.Parse(arr[idx], NumberFormatInfo.InvariantInfo);
@@ -2309,7 +2318,7 @@ namespace LaserGRBL
 		{
 			string sfs = p.Substring(3, p.Length - 3);
 			string[] fs = sfs.Split(",".ToCharArray());
-			SetFS(ParseFloat(fs,0), ParseFloat(fs,1));
+			SetFS(ParseFloat(fs, 0), ParseFloat(fs, 1));
 		}
 
 		protected virtual void ParseF(string p)
@@ -2511,14 +2520,14 @@ namespace LaserGRBL
 
 			if (var == MacStatus.Hold && mHoldByCoolingRequest)
 				var = MacStatus.Cooling;
-            else if (var == MacStatus.Hold && !mHoldByUserRequest)
-                var = MacStatus.AutoHold;
+			else if (var == MacStatus.Hold && !mHoldByUserRequest)
+				var = MacStatus.AutoHold;
 
-            SetStatus(var);
+			SetStatus(var);
 		}
 
-		
-		protected virtual void ForceStatusIdle() {} // Used by Marlin to update status to Idle (As Marlin has no immediate message)
+
+		protected virtual void ForceStatusIdle() { } // Used by Marlin to update status to Idle (As Marlin has no immediate message)
 
 		private void OnProgramEnd()
 		{
@@ -2570,10 +2579,10 @@ namespace LaserGRBL
 		{ get { return !InProgram; } }
 
 		public bool CanSendFile
-		{ get { return IsConnected && HasProgram && IdleOrCheck; } }
+		{ get { return IsConnected && HasProgram && IdleOrCheck && !InProgram; } }
 
 		public bool CanAbortProgram
-		{ get { return IsConnected && HasProgram && (MachineStatus == MacStatus.Run || IsAnyHoldState(MachineStatus)); } }
+		{ get { return IsConnected && HasProgram && (MachineStatus == MacStatus.Run || IsAnyHoldState(MachineStatus) || InProgram); } }
 
 		public bool CanImportExport
 		{ get { return IsConnected && MachineStatus == MacStatus.Idle; } }
@@ -2631,45 +2640,45 @@ namespace LaserGRBL
 		}
 
 		protected bool mHoldByUserRequest = false;
-        protected bool mHoldByCoolingRequest = false;
-        private bool mNowCooling = false;
+		protected bool mHoldByCoolingRequest = false;
+		private bool mNowCooling = false;
 		private bool NowCooling
 		{
 			set
 			{
 				if (mNowCooling != value)
 				{
-                    if (value)
-                        StartCooling();
-                    else
-                        ResumeCooling();
+					if (value)
+						StartCooling();
+					else
+						ResumeCooling();
 
-                    mNowCooling = value;
+					mNowCooling = value;
 				}
 			}
 		}
 
-        private void StartCooling()
-        {
-            if (SupportLaserMode && Configuration.LaserMode)
-            {
-                FeedHold(true);
-            }
-            else //TODO: emulate pause by pushing laser off and sleep into stream
-            {
-                
-            }
-        }
+		private void StartCooling()
+		{
+			if (SupportLaserMode && Configuration.LaserMode)
+			{
+				FeedHold(true);
+			}
+			else //TODO: emulate pause by pushing laser off and sleep into stream
+			{
 
-        private void ResumeCooling()
-        {
-            if (SupportLaserMode && Configuration.LaserMode)
-            {
-                CycleStartResume(true);
-            }
-        }
+			}
+		}
 
-        private static string mDataPath;
+		private void ResumeCooling()
+		{
+			if (SupportLaserMode && Configuration.LaserMode)
+			{
+				CycleStartResume(true);
+			}
+		}
+
+		private static string mDataPath;
 		public static string DataPath
 		{
 			get
@@ -2718,7 +2727,7 @@ namespace LaserGRBL
 		}
 
 
-		internal bool ManageHotKeys(Form parent,  System.Windows.Forms.Keys keys)
+		internal bool ManageHotKeys(Form parent, System.Windows.Forms.Keys keys)
 		{
 			if (SuspendHK)
 				return false;
@@ -2891,7 +2900,7 @@ namespace LaserGRBL
 				{
 					foreach (KeyValuePair<int, string> p in conf)
 					{
-						if (double.TryParse(p.Value, NumberStyles.Any, CultureInfo.InvariantCulture, out double tod )) //aggiungi solo ciò che si riesce a convertire in double
+						if (double.TryParse(p.Value, NumberStyles.Any, CultureInfo.InvariantCulture, out double tod)) //aggiungi solo ciò che si riesce a convertire in double
 							exp.AddSetVariable("$" + p.Key, tod);
 					}
 				}
@@ -2909,7 +2918,7 @@ namespace LaserGRBL
 		public float CurrentF { get { return mCurF; } }
 		public float CurrentS { get { return mCurS; } }
 
-        private static IEnumerable<GrblCommand> StringToGCode(string input)
+		private static IEnumerable<GrblCommand> StringToGCode(string input)
 		{
 			if (string.IsNullOrEmpty(input))
 				yield break;
@@ -2922,8 +2931,8 @@ namespace LaserGRBL
 			}
 		}
 
-        public virtual bool UIShowGrblConfig => true;
-        public virtual bool UIShowUnlockButtons => true;
+		public virtual bool UIShowGrblConfig => true;
+		public virtual bool UIShowUnlockButtons => true;
 
 		public bool IsOrturBoard { get => GrblVersion != null && GrblVersion.IsOrtur; }
 		public int FailedConnectionCount => mFailedConnection;
@@ -2934,11 +2943,11 @@ namespace LaserGRBL
 		private TimeSpan mETarget;
 		private TimeSpan mEProgress;
 
-		
+
 		private long mStart;        //Start Time
 		private long mEnd;          //End Time
 		private long mGlobalStart;  //Global Start (multiple pass)
-		private long mGlobalEnd;	//Global End (multiple pass)
+		private long mGlobalEnd;    //Global End (multiple pass)
 		private long mPauseBegin;   //Pause begin Time
 		private long mCumulatedPause;
 
@@ -2952,7 +2961,7 @@ namespace LaserGRBL
 		private int mErrorCount;
 		private int mContinueCorrection;
 
-        GrblCore.DetectedIssue mLastIssue;
+		GrblCore.DetectedIssue mLastIssue;
 		private GPoint mLastKnownWCO;
 
 		public GPoint LastKnownWCO
@@ -3111,11 +3120,11 @@ namespace LaserGRBL
 
 		public void JobError()
 		{
-            if (mStarted && !mCompleted)
-            {
+			if (mStarted && !mCompleted)
+			{
 				SoundEvent.PlaySound(SoundEvent.EventId.Warning);
 				mErrorCount++;
-            }
+			}
 		}
 
 		public void JobExecuted(TimeSpan EstimatedProgress)
@@ -3334,7 +3343,7 @@ namespace LaserGRBL
 		public int ExpectedCount => Version11 ? 34 : Version9 ? 31 : 23;
 		public bool HomingEnabled => ReadDecimal(Version9 ? 22 : 17, 1, 0, 1) != 0;
 		public decimal MaxRateX => ReadDecimal(Version9 ? 110 : 4, 4000, 1, MAX_CONFIG_SPEED);
-		public decimal MaxRateY => ReadDecimal(Version9 ? 111 : 5, 4000, 1, MAX_CONFIG_SPEED );
+		public decimal MaxRateY => ReadDecimal(Version9 ? 111 : 5, 4000, 1, MAX_CONFIG_SPEED);
 
 		public bool LaserMode
 		{
@@ -3386,7 +3395,7 @@ namespace LaserGRBL
 					}
 					catch
 					{
-						return defval; 
+						return defval;
 					}
 				}
 			}
@@ -3412,7 +3421,7 @@ namespace LaserGRBL
 
 		public int Count { get { return mData.Count; } }
 
-	
+
 
 		internal bool HasChanges(GrblConfParam p)
 		{
@@ -3579,12 +3588,12 @@ namespace LaserGRBL
 		public GrblConf()
 		{ mData = new System.Collections.Generic.Dictionary<int, decimal>(); }
 
-		public GrblCore.GrblVersionInfo GrblVersion => mVersion; 
+		public GrblCore.GrblVersionInfo GrblVersion => mVersion;
 		private bool NoVersionInfo => mVersion == null;
 		private bool Version11 => mVersion != null && mVersion >= new GrblCore.GrblVersionInfo(1, 1);
 		private bool Version9 => mVersion != null && mVersion >= new GrblCore.GrblVersionInfo(0, 9);
 
-		public int ExpectedCount => Version11 ? 34 : Version9 ? 31 : 23; 
+		public int ExpectedCount => Version11 ? 34 : Version9 ? 31 : 23;
 		public bool HomingEnabled => ReadWithDefault(Version9 ? 22 : 17, 1) != 0;
 		public decimal MaxRateX => ReadWithDefault(Version9 ? 110 : 4, 4000);
 		public decimal MaxRateY => ReadWithDefault(Version9 ? 111 : 5, 4000);
@@ -3700,7 +3709,7 @@ namespace LaserGRBL
 			}
 			catch (Exception)
 			{
-				
+
 			}
 		}
 

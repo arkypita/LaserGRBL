@@ -88,6 +88,9 @@ namespace LaserGRBL
 
 			CbSmartBezier.Checked = Settings.GetObject($"Vector.UseSmartBezier", true);
 
+			CbDisableSafetyCD.Checked = Settings.GetObject("DisableSafetyCountdown", false);
+			CbQuietSafetyCB.Checked = Settings.GetObject("QuietSafetyCountdown", false);
+
 			groupBox1.ForeColor = groupBox2.ForeColor = groupBox3.ForeColor = ColorScheme.FormForeColor;
 
             SuccesFullLabel.Visible = WarningFullLabel.Visible = ErrorFullLabel.Visible = ConnectFullLabel.Visible = DisconnectFullLabel.Visible = false;
@@ -216,7 +219,10 @@ namespace LaserGRBL
 
             Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);
 
-			Settings.SetObject($"Vector.UseSmartBezier", CbSmartBezier.Checked);
+			Settings.SetObject("Vector.UseSmartBezier", CbSmartBezier.Checked);
+
+			Settings.SetObject("DisableSafetyCountdown", CbDisableSafetyCD.Checked);
+			Settings.SetObject("QuietSafetyCountdown", CbQuietSafetyCB.Checked);
 
 			SettingsChanged?.Invoke(this, null);
 
