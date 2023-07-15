@@ -93,7 +93,7 @@
 			this.BtnStart.Location = new System.Drawing.Point(261, 90);
 			this.BtnStart.Name = "BtnStart";
 			this.BtnStart.Size = new System.Drawing.Size(108, 39);
-			this.BtnStart.TabIndex = 2;
+			this.BtnStart.TabIndex = 1;
 			this.BtnStart.Text = "Start";
 			this.BtnStart.UseVisualStyleBackColor = true;
 			// 
@@ -104,7 +104,7 @@
 			this.BtnCancel.Location = new System.Drawing.Point(147, 90);
 			this.BtnCancel.Name = "BtnCancel";
 			this.BtnCancel.Size = new System.Drawing.Size(108, 39);
-			this.BtnCancel.TabIndex = 1;
+			this.BtnCancel.TabIndex = 2;
 			this.BtnCancel.Text = "Cancel";
 			this.BtnCancel.UseVisualStyleBackColor = true;
 			// 
@@ -128,16 +128,18 @@
 			this.TimCountDown.Interval = 1000;
 			this.TimCountDown.Tick += new System.EventHandler(this.TimCountDown_Tick);
 			// 
-			// EngravingStarting
+			// SafetyCountdown
 			// 
+			this.AcceptButton = this.BtnStart;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.BtnCancel;
 			this.ClientSize = new System.Drawing.Size(512, 138);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Name = "EngravingStarting";
+			this.Name = "SafetyCountdown";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Safety first!";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EngravingStarting_FormClosing);
