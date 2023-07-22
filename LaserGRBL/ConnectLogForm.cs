@@ -200,10 +200,14 @@ namespace LaserGRBL
 
 		void BtnRunProgramClick(object sender, EventArgs e)
 		{
-			mForceButtonDisable = true;
-			BtnRunProgram.Enabled = false;
-			Core.RunProgram(ParentForm);
-			mForceButtonDisable = false;
+			try
+			{
+				mForceButtonDisable = true;
+				BtnRunProgram.Enabled = false;
+				Core.RunProgram(ParentForm);
+			}
+			catch { }
+			finally { mForceButtonDisable = false; }
 		}
 		void TxtManualCommandCommandEntered(string command)
 		{
