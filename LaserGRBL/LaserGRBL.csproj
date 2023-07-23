@@ -818,11 +818,35 @@
     <EmbeddedResource Include="CustomButtonForm.nl-NL.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomButtonForm.pt-BR.resx">
+      <DependentUpon>CustomButtonForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.ro-RO.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.uk.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExceptionManager.pt-BR.resx">
+      <DependentUpon>ExceptionManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GrblConfig.pt-BR.resx">
+      <DependentUpon>GrblConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HotkeyManagerForm.pt-BR.resx">
+      <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IssueDetectorForm.pt-BR.resx">
+      <DependentUpon>IssueDetectorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreviewForm.pt-BR.resx">
+      <DependentUpon>PreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResumeJobForm.pt-BR.resx">
+      <DependentUpon>ResumeJobForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RunFromPositionForm.pt-BR.resx">
+      <DependentUpon>RunFromPositionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SafetyCountdown.resx">
       <DependentUpon>SafetyCountdown.cs</DependentUpon>
@@ -947,6 +971,9 @@
       <DependentUpon>SaveOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaveOptionForm.nl-NL.resx">
+      <DependentUpon>SaveOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveOptionForm.pt-BR.resx">
       <DependentUpon>SaveOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaveOptionForm.ro-RO.resx">
