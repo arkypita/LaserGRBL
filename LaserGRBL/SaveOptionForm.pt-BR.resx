@@ -117,46 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.ToolTipText" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="CBLFLineEndings.Text" xml:space="preserve">
+    <value>Utiliza LF (enter) ao final da linha</value>
   </data>
-  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
-    <value>Realizar passos múltiplos</value>
+  <data name="CBHeader.Text" xml:space="preserve">
+    <value>Exportar Cabeçalho</value>
   </data>
-  <data name="LblFilename.Text" xml:space="preserve">
-    <value>Nome do arquivo</value>
+  <data name="CBFooter.Text" xml:space="preserve">
+    <value>Exportar Rodapé</value>
   </data>
-  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Iniciar</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Passos</value>
   </data>
-  <data name="LblProgress.Text" xml:space="preserve">
-    <value>Progresso</value>
+  <data name="CBBetween.Text" xml:space="preserve">
+    <value>Exportar G-code entre passos</value>
   </data>
-  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Opções de Exportação</value>
   </data>
-  <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Abrir arquivo</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Se você necessita exportar o gcode para uso fora do LaserGRBL, por exemplo com um controlador desconectado, talvez você ache útil ser capaz de exportar o código do cabeçalho/rodapé e o código entre cada passos.
+
+NOTA; Se você exporta o gcode para recarrega-lo no LaserGRBL, neste caso é melhor usar a exportação rápida.</value>
   </data>
-  <data name="LblComPort.Text" xml:space="preserve">
-    <value>Porta COM</value>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Salvar</value>
   </data>
-  <data name="LblBaudRate.Text" xml:space="preserve">
-    <value>Baud</value>
-  </data>
-  <data name="LblAddress.Text" xml:space="preserve">
-    <value>URL</value>
-  </data>
-  <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Grbl v1.1 Emulado#</value>
-  </data>
-  <data name="LblEmulator.Text" xml:space="preserve">
-    <value>Emulador</value>
-  </data>
-  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>Abortar Programa</value>
-  </data>
-  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
-    <value>digite o gcode aqui</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Opções Salvar G-code</value>
   </data>
 </root>

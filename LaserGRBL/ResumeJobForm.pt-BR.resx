@@ -117,46 +117,60 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.ToolTipText" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="CbRestoreWCO.Text" xml:space="preserve">
+    <value>Início @</value>
   </data>
-  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
-    <value>Realizar passos múltiplos</value>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="LblFilename.Text" xml:space="preserve">
-    <value>Nome do arquivo</value>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Cancelar</value>
   </data>
-  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Iniciar</value>
+  <data name="CbRedoHoming.Text" xml:space="preserve">
+    <value>Refazer Início [$H]</value>
   </data>
-  <data name="LblProgress.Text" xml:space="preserve">
-    <value>Progresso</value>
+  <data name="LblSomeLines.Text" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="RbSomeLines.Text" xml:space="preserve">
+    <value>Retomar algumas linhas antes de parar</value>
   </data>
-  <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Abrir arquivo</value>
+  <data name="LblLineNumber.Text" xml:space="preserve">
+    <value>Linha #</value>
   </data>
-  <data name="LblComPort.Text" xml:space="preserve">
-    <value>Porta COM</value>
+  <data name="RbFromSpecific.Text" xml:space="preserve">
+    <value>Retomar da linha específica</value>
   </data>
-  <data name="LblBaudRate.Text" xml:space="preserve">
-    <value>Baud</value>
+  <data name="RbFromBeginning.Text" xml:space="preserve">
+    <value>Começar novamente do início (seguro)</value>
   </data>
-  <data name="LblAddress.Text" xml:space="preserve">
-    <value>URL</value>
+  <data name="LblOptions.Text" xml:space="preserve">
+    <value>Opções</value>
   </data>
-  <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Grbl v1.1 Emulado#</value>
+  <data name="LblBegin.Text" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="LblEmulator.Text" xml:space="preserve">
-    <value>Emulador</value>
+  <data name="RbFromSent.Text" xml:space="preserve">
+    <value>Retomar do último comando enviado</value>
   </data>
-  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>Abortar Programa</value>
+  <data name="LblSent.Text" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
-    <value>digite o gcode aqui</value>
+  <data name="LblCause.Text" xml:space="preserve">
+    <value>Causa:</value>
+  </data>
+  <data name="TxtCause.Text" xml:space="preserve">
+    <value>Desconhecido</value>
+  </data>
+  <data name="LblDetected.Text" xml:space="preserve">
+    <value>LaserGrbl detetou que a última tarefa não foi completada!</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Retomar tarefa</value>
+  </data>
+  <data name="LblBrief.Text" xml:space="preserve">
+    <value>LaserGrbl pode iniciar esta tarefa novamente desde o começo or tentar retomar da última posição conhecida.
+Como nem sempre é possível determinar a melhor posição para reiniciar deixaremos você decidir.
+Última velocidade, força e estado do laser são recuperados automaticamente.</value>
   </data>
 </root>

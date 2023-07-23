@@ -112,130 +112,328 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxAutoUpdateFailed" xml:space="preserve">
-    <value>Automatic update failed!
-Please manually download the new version from lasergrbl site.</value>
+    <value>Falha na atualização automática!
+Baixe manualmente a nova versão do site lasergrbl.</value>
   </data>
   <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
-    <value>Update require administrator privilege!</value>
+    <value>A atualização requer privilégio de administrador!</value>
   </data>
   <data name="BoxAutoUpdateResult" xml:space="preserve">
-    <value>Update result</value>
+    <value>Resultado da atualização</value>
   </data>
   <data name="BoxAutoUpdateSuccess" xml:space="preserve">
-    <value>Update success!</value>
+    <value>Atualizado com sucesso!</value>
   </data>
   <data name="BoxConnectErrorTitle" xml:space="preserve">
-    <value>Cannot connect to device</value>
+    <value>Não é possível conectar ao dispositivo</value>
   </data>
   <data name="BoxExportConfigError" xml:space="preserve">
-    <value>Error exporting config!</value>
+    <value>Erro exportando configuração!</value>
   </data>
   <data name="BoxExportConfigErrorTitle" xml:space="preserve">
-    <value>Error</value>
+    <value>Erro</value>
   </data>
   <data name="BoxExportConfigFileNotFound" xml:space="preserve">
-    <value>File does not exist!</value>
+    <value>Arquivo não existe!</value>
   </data>
   <data name="BoxExportConfigSuccess" xml:space="preserve">
-    <value>{0} Config exported with success!</value>
+    <value>{0} Configuração exportada com sucesso!</value>
   </data>
   <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
-    <value>Success</value>
+    <value>Successo</value>
   </data>
   <data name="BoxImportConfigFileError" xml:space="preserve">
-    <value>Error reading file!</value>
+    <value>Erro lendo arquivo!</value>
   </data>
   <data name="BoxImportConfigWithError" xml:space="preserve">
-    <value>{0} Config imported with {1} errors!</value>
+    <value>{0} Configuração importada com {1} erros!</value>
   </data>
   <data name="BoxImportConfigWithoutError" xml:space="preserve">
-    <value>{0} Config imported with success!</value>
+    <value>{0} Configuração importada com sucesso!</value>
   </data>
   <data name="CustomButtonEdit" xml:space="preserve">
-    <value>Edit button</value>
+    <value>Botão de Edição</value>
   </data>
   <data name="CustomButtonRemove" xml:space="preserve">
-    <value>Remove button</value>
+    <value>Remover botão</value>
   </data>
   <data name="DirectionDiagonal" xml:space="preserve">
-    <value>Diagonal (old)</value>
+    <value>Diagonal (antigo)</value>
   </data>
   <data name="DirectionHorizontal" xml:space="preserve">
-    <value>Horizontal (old)</value>
+    <value>Horizontal (antigo)</value>
   </data>
   <data name="DirectionNone" xml:space="preserve">
-    <value>None</value>
+    <value>Ssem Preenchimento</value>
   </data>
   <data name="DirectionVertical" xml:space="preserve">
-    <value>Vertical (old)</value>
+    <value>Vertical (antigo)</value>
   </data>
   <data name="FormulaCustom" xml:space="preserve">
-    <value>Custom</value>
+    <value>Personalizado</value>
   </data>
   <data name="FormulaOpticalCorrect" xml:space="preserve">
-    <value>OpticalCorrect</value>
+    <value>ConexãoÓtica</value>
   </data>
   <data name="FormulaSimpleAverage" xml:space="preserve">
-    <value>SimpleAverage</value>
+    <value>MédiaSimples</value>
   </data>
   <data name="FormulaWeightAverage" xml:space="preserve">
-    <value>WeightAverage</value>
+    <value>PesoMédio</value>
   </data>
   <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
     <value>Smooth (HQ Bicubic)</value>
   </data>
   <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
-    <value>Sharp (NearestNeighbor)</value>
+    <value>Sharp (Vizinho mais próximo)</value>
   </data>
   <data name="LanguageRequireRestart" xml:space="preserve">
-    <value>Restart required</value>
+    <value>Reinicialização requerida</value>
   </data>
   <data name="LanguageRequireRestartNow" xml:space="preserve">
-    <value>Require application restart, restart now?</value>
+    <value>Exige reinicialização do aplicativo, reiniciar agora?</value>
   </data>
   <data name="MacStatusAlarm" xml:space="preserve">
-    <value>Alarm</value>
+    <value>Alarme</value>
   </data>
   <data name="MacStatusCheck" xml:space="preserve">
-    <value>Check</value>
+    <value>Verificar</value>
   </data>
   <data name="MacStatusConnecting" xml:space="preserve">
-    <value>Connecting</value>
+    <value>Conectando</value>
   </data>
   <data name="MacStatusDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>Desconectado</value>
   </data>
   <data name="MacStatusDoor" xml:space="preserve">
-    <value>Door</value>
+    <value>Porta</value>
   </data>
   <data name="MacStatusHold" xml:space="preserve">
-    <value>Hold</value>
+    <value>Manter</value>
   </data>
   <data name="MacStatusHome" xml:space="preserve">
-    <value>Home</value>
+    <value>Início</value>
   </data>
   <data name="MacStatusIdle" xml:space="preserve">
-    <value>Idle</value>
+    <value>Espera</value>
   </data>
   <data name="MacStatusJog" xml:space="preserve">
     <value>Jog</value>
   </data>
   <data name="MacStatusRun" xml:space="preserve">
-    <value>Run</value>
+    <value>Executar</value>
   </data>
   <data name="MacStatusUnknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>Desconhecido</value>
   </data>
   <data name="MainFormEstimatedTime" xml:space="preserve">
-    <value>Estimated Time:</value>
+    <value>Tempo Estimado:</value>
   </data>
   <data name="MainFormProjectedTime" xml:space="preserve">
-    <value>Projected Time:</value>
+    <value>Tempo Estimado:</value>
+  </data>
+  <data name="WarnSoftLimitOOB" xml:space="preserve">
+    <value>Você definiu um tamanho e deslocamento que torna o trabalho maior do que o espaço de trabalho configurado no seu gravador ({0}mm x {1}mm).
+Parâmetros Grbl $130 e $131.
+
+Isso pode gerar um erro de limite suave ou a máquina pode colidir com o limite dos eixos. Tem certeza dos valores inseridos?</value>
+  </data>
+  <data name="WarnSoftLimitNS" xml:space="preserve">
+    <value>Você definiu deslocamentos negativos, mas seu gravador está configurado para usar espaço positivo com alarme de limite suave ativado ($ 20 = 1).
+
+Isso pode gerar um erro de limite flexível. Tem certeza dos valores inseridos?</value>
+  </data>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>Clique com o botão direito aqui para adicionar botões personalizados</value>
+  </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>É necessário reiniciar</value>
+  </data>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>Confirmação</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} Configuração lida com sucesso!</value>
+  </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>A opção de linha central não é compatível com seu PC.
+É necessário um Sistema Operacional de 64 bits!</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>Erro lendo configuração!</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>Importar botão customizado</value>
+  </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>Mostrando valores em cache...</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>Forneça o texto da dica de ferramenta</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>A reinicialização é necessária para aplicar as alterações de tipo de firmware. Reinicie agora?</value>
+  </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>A opção Line2Line não é compatível com sua gravadora ou com sua configuração. Laser compatível com PWM é necessário e o suporte a PWM deve ser ativado nas configurações do LaserGRBL.</value>
+  </data>
+  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
+    <value>Não é possível abrir um novo arquivo agora.</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>Sem alterações... nada a escrever!</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>Forneça os comandos do GCode</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>Posição desconhecida</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>Velocidade:</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>Campo faltante</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>Apagar botão personalizado</value>
+  </data>
+  <data name="WarnSoftLimitTitle" xml:space="preserve">
+    <value>Confirmação de limite de trabalho</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>Transferência de arquivo em andamento. Sair mesmo assim?</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>Passo:</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>Existem algumas alterações que não foram aplicadas.
+Deseja reescrever a configuração?</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>Desconectar</value>
+  </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>Parece que a posição atual não é mais conhecida pelo Grbl.
+Sem o Procedimento de Início (Homing Procedure) ($H), o resultado pode não ser confiável.
+Continue de qualquer maneira?</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>Remover botões atuais? Selecione sim para remover, não para manter.</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>Conectar</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>Este tipo de arquivo não é suportado</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} Configuração gravada com {1} erros!</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>Mudanças detectadas!</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>Transferência de arquivo em andamento. Desconectar mesmo assim?</value>
+  </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>Tem certeza de que deseja excluir o botão selecionado?</value>
+  </data>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>Abortar trabalho atual</value>
+  </data>
+  <data name="DirectionNewCross" xml:space="preserve">
+    <value>Preenchimento Cruzado</value>
+  </data>
+  <data name="DirectionNewDiagonal" xml:space="preserve">
+    <value>Diagonal</value>
+  </data>
+  <data name="DirectionNewDiagonalCross" xml:space="preserve">
+    <value>Preenchimento Cruzado Diagonal</value>
+  </data>
+  <data name="DirectionNewDiagonalGrid" xml:space="preserve">
+    <value>Grade Diagonal</value>
+  </data>
+  <data name="DirectionNewGrid" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="DirectionNewHorizontal" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="DirectionNewInsetFilling" xml:space="preserve">
+    <value>Preenchimento Embutido</value>
+  </data>
+  <data name="DirectionNewReverseDiagonal" xml:space="preserve">
+    <value>Diagonal Invertida</value>
+  </data>
+  <data name="DirectionNewSquares" xml:space="preserve">
+    <value>Quadrados</value>
+  </data>
+  <data name="DirectionNewVertical" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="DirectionNewZigZag" xml:space="preserve">
+    <value>Zig Zag</value>
+  </data>
+  <data name="WarnWrongLaserMode" xml:space="preserve">
+    <value>O "M4 Modo de Força de Laser Dinâmico" foi definido, mas seu gravador não parece suportá-lo.
+Somente gravadores com versão grbl &gt;= 1.1 com "modo laser" ativado ($32=1) podem aproveitar a opção M4.</value>
+  </data>
+  <data name="WarnWrongLaserModeTitle" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="DirectionNewHilbert" xml:space="preserve">
+    <value>Hilbert</value>
+  </data>
+  <data name="DitheringOptions" xml:space="preserve">
+    <value>Opções de pontilhamento</value>
+  </data>
+  <data name="Line2LineOptions" xml:space="preserve">
+    <value>Opções de Linha a Linha</value>
+  </data>
+  <data name="WarnUnlockProportionText" xml:space="preserve">
+    <value>Atribuir livremente a largura e a altura do trabalho pode levar à distorção da imagem. Você quer continuar?</value>
+  </data>
+  <data name="WarnUnlockProportionTitle" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="BoxTelegramSettingText" xml:space="preserve">
+    <value>Test notification has been sent, please check your phone!</value>
+  </data>
+  <data name="BoxTelegramSettingTitle" xml:space="preserve">
+    <value>Notificação do Telegram</value>
+  </data>
+  <data name="WarnBufferStuckUnlockText" xml:space="preserve">
+    <value>Se o buffer estiver bloqueado, é porque houve algum problema de comunicação com sua gravadora. Se você pressionar "OK", o LaserGRBL ignorará o buffer cheio e enviará os próximos comandos. Se isso acontecer com frequência, você deve tentar entender as causas desse problema.
+Clique em "?" Para maiores informações.</value>
+  </data>
+  <data name="WarnBufferStuckUnlockTitle" xml:space="preserve">
+    <value>Desbloquear buffer</value>
+  </data>
+  <data name="ProblemConnectingText" xml:space="preserve">
+    <value>Erro ao conectar sua gravadora.
+Se precisar de ajuda, clique em "?" botão.</value>
+  </data>
+  <data name="ProblemConnectingTitle" xml:space="preserve">
+    <value>Problema com a conexão?</value>
+  </data>
+  <data name="BoxMachineSizeOutOfRangeTitle" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="BoxMachineSizeOutOfRangeText" xml:space="preserve">
+    <value>O gravador tem alguns parâmetros de configuração fora do intervalo. Verifique a configuração da máquina (menu "Grbl", "Grbl Configuration") parâmetros 130 e 131.</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} Configuração gravada com sucesso!</value>
   </data>
 </root>
