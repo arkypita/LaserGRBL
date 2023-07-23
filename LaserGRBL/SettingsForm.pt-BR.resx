@@ -119,11 +119,11 @@
   </resheader>
   <data name="label1.Text" xml:space="preserve">
     <value>LaserGRBL usa energia modulada em seu G-Code "Comando S" para produzir gravação em tons de cinza
-Você precisa conectar sua fonte ao pino D11 do arduino
+Seu laser precisa suportar o controle TTL conectado ao pino D11 do arduino.
 Caso contrário, desabilite a opção "Suporte PWM"</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Hardware Compativel</value>
+    <value>Cabeçalho</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Configurações</value>
@@ -136,5 +136,321 @@ Caso contrário, desabilite a opção "Suporte PWM"</value>
   </data>
   <data name="BtnSave.Text" xml:space="preserve">
     <value>Salvar</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Modo de streaming: [Buffer padrão]
+- Bufferizado: otimiza o streaming de comandos preenchendo o buffer de recebimento grbl [recomendado]
+- Síncrono: aguarde a execução de cada comando antes de enviar o próximo comando [mais lento, mas mais seguro]
+- RepeatOnError: o mesmo que Synchronous, mas repete comandos se detectar erro [experimental]</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Protocolo de conexão:
+- UsbSerial: é o protocolo mais comum. Deve ser usado se o gravador estiver conectado à porta USB ou COM.
+- UsbSerial2: uma implementação alternativa de serial USB para contornar os problemas do Microsoft SerialPort
+- Telnet: se você tiver uma ponte WiFi-Telnet. A comunicação é implementada como um simples cliente-servidor telnet.
+- LaserWebESP8266: suporta conexão Wi-Fi via WebSocket. Compatível com o software LaserWeb-ESP8266.</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Modo de Envio: UltraFast, Fast, Quiet, Slow. [Rápido Padrão]
+Essa configuração afeta a velocidade do encadeamento de envio e a frequência da solicitação do relatório de status.
+Defina valores mais lentos se estiver enfrentando problemas.</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>Detetor de problemas</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>Reset de Hardware [DTR+RTS]</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>O LaserGRBL pode detetar problemas e ajudar o usuário fornecendo informações de como resolve-las.
+Se desabilitado todos os problemas serão gerenciado silenciosamente sem alarmes.</value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>Reset do Programa [Ctrl-X]</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>se habilitado o LaserGRBL envia um reset de programa quando a conecção ao GRBL é aberta.</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>se habilitado o LaserGRBL envia um reset de hardware quando a conecção ao GRBL é aberta. (a Posição é perdida!)</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Tipo de firmware
+- Grbl: o incrível firmware para o qual o LaserGRBL foi desenvolvido.
+- Smoothie [experimental]: o suporte foi adicionado recentemente e não foi totalmente testado.
+- Marlin [experimental]: o suporte foi adicionado recentemente e não foi totalmente testado.
+- VigoWork [experimental]: suporte para modelo VG-L7x que não é padrão grbl.</value>
+  </data>
+  <data name="CbQueryDI.Text" xml:space="preserve">
+    <value>Busca $l ao conectar</value>
+  </data>
+  <data name="label46.Text" xml:space="preserve">
+    <value>Se ativado o LaserGRBL  envia um comando $I e detecta algumas informações da máquina (ou seja, o tamanho do buffer rx da máquina).
+Por favor, não desabilite este recurso.</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>Protocolo</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Por padrão, o LaserGRBL produz linhas de gravação em ambas as direções de deslocamento do cabeçote do laser. Alguns testes mostraram que este modo (que é mais rápido) produz resultados de qualidade inferior. Se desejar a máxima qualidade de marcação, ative esta opção.</value>
+  </data>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>Gravção Unidirecional</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>Preenchimento de alta resolução (HiRes)</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>A resolução máxima disponível no LaserGRBL é de 20 linhas/mm (cerca de 500 dpi) que é alta o suficiente para a maioria dos usuários.
+Se precisar de uma resolução mais alta, você pode habilitar "HiRes" e remover esse limite. Cuidado: o LaserGRBL precisará de muito mais recursos!</value>
+  </data>
+  <data name="CbDisableSkip.Text" xml:space="preserve">
+    <value>Desabilita o G0 pulo rápido</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>Por padrão, o LaserGRBL usa G0 - movimento rápido - para pular partes brancas de seus trabalhos. Isso acelera o processo de gravação, mas pode resultar em posicionamento impreciso com resultados decepcionantes. Geralmente é possível melhorar os resultados definindo corretamente os valores máximos de aceleração e velocidade ($ 120.121.122 e $ 110.111.112) na configuração grbl.
+
+Se você desativar esse recurso, o LaserGRBL usará o movimento linear G1 na mesma velocidade de trabalho, resultando em todo o processo de gravação na mesma velocidade. Isso retardará o processo, mas pode melhorar drasticamente o resultado onde outras abordagens falham.</value>
+  </data>
+  <data name="CbDisableBoundWarn.Text" xml:space="preserve">
+    <value>Desativar aviso de limite</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>O LaserGRBL irá avisá-lo se você for criar um trabalho maior que o espaço de trabalho do gravador.
+Defina este sinalizador se você não quiser este controle de segurança.</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>Importação de Raster</value>
+  </data>
+  <data name="label43.Text" xml:space="preserve">
+    <value>A partir da versão 4.6.1, o LaserGRBL usa um algoritmo de aproximação melhor das curvas bezier, capaz de retornar resultados mais precisos.
+Desative esta opção se preferir usar o algoritmo antigo.</value>
+  </data>
+  <data name="CbSmartBezier.Text" xml:space="preserve">
+    <value>Bezier Inteligente</value>
+  </data>
+  <data name="TpVectorImport.Text" xml:space="preserve">
+    <value>Importação de vetores</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Sem "Jog Contínuo" quando o botão de jog é pressionado LaserGRBL envia solicitação de Jog com velocidade e movimento estabelecidos; e o jog é totalmente executado até a posição final.
+Se você habilitar "Jog Contínuo", o jogging é enviado com o mouse para baixo e abortado/interrompido com o mouse para cima, para que você possa fazer um posicionamento aproximado, mas de uma maneira muito confortável.
+
+NOTA: "Jog Contínuo" só funciona com Grbl v1.1 ou posterior, e requer que o tamanho da mesa esteja configurado corretamente na Configuração Grbl (Menu "Grbl" -&gt; "Configuração Grbl" $ 130, $ 131, $ 132)</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>O LaserGRBL não foi projetado para suportar o eixo Z, mas se você tiver um hardware de 3 eixos, talvez possa achar esta opção útil.</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Mostra o controle Z cima/baixo</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>Jog Contínuo</value>
+  </data>
+  <data name="CbClickNJog.Text" xml:space="preserve">
+    <value>Clique em Jog</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>Com "click 'n jog" ativado, um clique duplo na superfície de visualização irá deslocar para a posição de clique.</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Controle de Jog</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Tempo OFF: após esse tempo de resfriamento, o LaserGRBL enviará um comando de retomada para continuar o trabalho de gravação.</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Alguns diodos laser podem esquentar muito se funcionarem por muito tempo na potência máxima. Para evitar o superaquecimento do diodo e aumentar a vida útil do laser, você pode adicionar alguns ciclos de resfriamento automático que inserem alguma pausa durante o processo de gravação.
+Se o Resfriamento Automático estiver ativado, o LaserGRBL enviará automaticamente "retenção de alimentação" e "retomada do trabalho" de acordo com a configuração de tempo ON-OFF.</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Tempo LIGADO: é o tempo máximo que o Laser ficará ligado durante o processo de gravação.
+Após esse período, o LaserGRBL enviará uma retenção de alimentação automática para resfriar o laser.</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>Habilita auto resfriamento</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Ligado</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>seg</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Desligado</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>seg</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Aviso: este recurso funcionará apenas com versões grbl &gt; v1.1 com "modo laser" ativado.
+Se você usar o resfriamento automático com a versão grbl mais antiga (ou com o modo laser desativado), o laser não será desligado durante as pausas
+e queima buracos em seu trabalho!</value>
+  </data>
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+    <value>Usuário Ortur: Ortur Firmware (todas as versões até 137) tem um bug no resumo da usinagem que impede o uso adequado da função de resfriamento automático.
+Por favor, não use o resfriamento automático com o gravador Ortur até que um novo firmware seja lançado.</value>
+  </data>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>Resfriamento Automático</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>O LaserGRBL anexará este GCode antes de iniciar qualquer trabalho.
+Você pode personalizar esse código, por exemplo, adicionando M8 para ligar o ventilador.
+
+Aqui você pode usar a mesma sintaxe dos botões personalizados se precisar forçar algum posicionamento
+relacionado ao trabalho específico que será executado.</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Rodapé</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Passos Múltiplos</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>O LaserGRBL enfileirará este GCode no final de qualquer trabalho.
+Pode ser usado para forçar seu gravador para um estado inicial, como voltar à posição zero
+ou enviar M9 para desligar o ventilador, etc.
+
+Aqui você pode usar a mesma sintaxe dos botões personalizados.</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Ao executar várias passagens, o LaserGRBL enviará este GCode entre cada passagem.
+Pode ser usado para mover Z para baixo para realizar cortes mais profundos.
+
+Aqui você pode usar a mesma sintaxe dos botões personalizados.</value>
+  </data>
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Aqui você pode definir outro som para eventos de sucesso, como quando um trabalho é concluído.
+Marque para habilitar.</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Aqui você pode definir outro som de aviso.
+Isso geralmente é acionado em um comando GCode ruim, mas sua máquina pode continuar operando.
+Marque para habilitar.</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Som de Aviso</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>Mudar</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Arquivo de Som</value>
+  </data>
+  <data name="warningSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\warning.wav</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Som de Erro</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>Mudar</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Arquivo de Som</value>
+  </data>
+  <data name="fatalSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\fatal.wav</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Som de Conexão</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>Mudar</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Arquivo de Som</value>
+  </data>
+  <data name="connectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\connect.wav</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Som Desconectar</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>Mudar</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Arquivo de Som</value>
+  </data>
+  <data name="disconnectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\disconnect.wav</value>
+  </data>
+  <data name="LblSuccessSound.Text" xml:space="preserve">
+    <value>Som de Sucesso</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>Mudar</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Arquivo de Som</value>
+  </data>
+  <data name="successSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\success.wav</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Aqui você pode definir um som para uma conexão bem-sucedida.
+Marque para habilitar.</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Aqui você pode definir um som para desconexão.
+Útil para algumas conexões WiFi.
+Marque para habilitar.</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Aqui você pode definir um som de erro para erros fatais.
+Isso significa que seu trabalho provavelmente parou e o LaserGRBL não pode continuar a operação.
+Marque para habilitar.</value>
+  </data>
+  <data name="label44.Text" xml:space="preserve">
+    <value>Não notifique se o tempo de trabalho for menor que</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>Notificação do Telegram</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Código Pessoal</value>
+  </data>
+  <data name="BtnTestNotification.Text" xml:space="preserve">
+    <value>Teste</value>
+  </data>
+  <data name="label45.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label42.Text" xml:space="preserve">
+    <value>Se você tiver o Telegram, procure o bot @LaserGRBL
+Obtenha seu código pessoal e escreva-o aqui!</value>
+  </data>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>Notificação</value>
+  </data>
+  <data name="SoundBrowserDialog.Filter" xml:space="preserve">
+    <value>Arquivo de Áudio em Forma de Onda|*.wav</value>
+  </data>
+  <data name="CbDisableSafetyCD.Text" xml:space="preserve">
+    <value>Desativar contagem regressiva de segurança</value>
+  </data>
+  <data name="label47.Text" xml:space="preserve">
+    <value>Esta opção removerá a contagem regressiva do lembrete de segurança para lembrar de usar óculos de segurança.
+Sugiro não desativar esta contagem regressiva, isso permite que você tenha uma chance de 5 segundos para verificar se está tudo bem.</value>
+  </data>
+  <data name="CbQuietSafetyCB.Text" xml:space="preserve">
+    <value>Contagem Silenciosa</value>
+  </data>
+  <data name="label48.Text" xml:space="preserve">
+    <value>Desabilita o "Beep" durante a contagem regressiva de segurança</value>
+  </data>
+  <data name="TpOptions.Text" xml:space="preserve">
+    <value>Opções</value>
   </data>
 </root>

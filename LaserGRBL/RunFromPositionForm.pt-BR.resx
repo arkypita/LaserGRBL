@@ -117,46 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.ToolTipText" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
-    <value>Realizar passos múltiplos</value>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Cancelar</value>
   </data>
-  <data name="LblFilename.Text" xml:space="preserve">
-    <value>Nome do arquivo</value>
+  <data name="CbRedoHoming.Text" xml:space="preserve">
+    <value>Va para Início ($H)</value>
   </data>
-  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Iniciar</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Linha #</value>
   </data>
-  <data name="LblProgress.Text" xml:space="preserve">
-    <value>Progresso</value>
+  <data name="RbFromSpecific.Text" xml:space="preserve">
+    <value>Executar da linha específica</value>
   </data>
-  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Opções</value>
   </data>
-  <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Abrir arquivo</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Executar da Posição</value>
   </data>
-  <data name="LblComPort.Text" xml:space="preserve">
-    <value>Porta COM</value>
-  </data>
-  <data name="LblBaudRate.Text" xml:space="preserve">
-    <value>Baud</value>
-  </data>
-  <data name="LblAddress.Text" xml:space="preserve">
-    <value>URL</value>
-  </data>
-  <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Grbl v1.1 Emulado#</value>
-  </data>
-  <data name="LblEmulator.Text" xml:space="preserve">
-    <value>Emulador</value>
-  </data>
-  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>Abortar Programa</value>
-  </data>
-  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
-    <value>digite o gcode aqui</value>
+  <data name="LblBrief.Text" xml:space="preserve">
+    <value>Esta opção permite executar sua tarefa iniciando de uma linha específica, ignorando qualquer movimento prévio.
+O LaserGrbl calcula a posição exata e o estado e posiciona a gravadora no estado correto.</value>
   </data>
 </root>

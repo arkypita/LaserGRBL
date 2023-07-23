@@ -117,46 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.ToolTipText" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
-    <value>Realizar passos múltiplos</value>
+  <data name="CbDoNotShow.Text" xml:space="preserve">
+    <value>Não mostre novamente</value>
   </data>
-  <data name="LblFilename.Text" xml:space="preserve">
-    <value>Nome do arquivo</value>
+  <data name="LblCause.Text" xml:space="preserve">
+    <value>Causa:</value>
   </data>
-  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Iniciar</value>
+  <data name="TxtCause.Text" xml:space="preserve">
+    <value>Desconhecido</value>
   </data>
-  <data name="LblProgress.Text" xml:space="preserve">
-    <value>Progresso</value>
+  <data name="LblDetected.Text" xml:space="preserve">
+    <value>LaserGRBL encontrou um problema com a sua placa!</value>
   </data>
-  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="LblBrief.Text" xml:space="preserve">
+    <value>Parece que o grbl encontrou um problema para executar esta tarefa. As causas desta situação podem ser muitas.Por favor leia o FAQ para informações de como resolver este problema.</value>
   </data>
-  <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Abrir arquivo</value>
+  <data name="LL.Text" xml:space="preserve">
+    <value>https://lasergrbl.com/faq/</value>
   </data>
-  <data name="LblComPort.Text" xml:space="preserve">
-    <value>Porta COM</value>
-  </data>
-  <data name="LblBaudRate.Text" xml:space="preserve">
-    <value>Baud</value>
-  </data>
-  <data name="LblAddress.Text" xml:space="preserve">
-    <value>URL</value>
-  </data>
-  <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Grbl v1.1 Emulado#</value>
-  </data>
-  <data name="LblEmulator.Text" xml:space="preserve">
-    <value>Emulador</value>
-  </data>
-  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>Abortar Programa</value>
-  </data>
-  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
-    <value>digite o gcode aqui</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Problema detectado!</value>
   </data>
 </root>

@@ -117,46 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.ToolTipText" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="LblFree.Text" xml:space="preserve">
+    <value>LaserGRBL é um software gratuito distribuído sem garantias e pode conter bugs. A utilização deste programa está condicionada à aceitação dos riscos que acompanham o uso de dispositivos a laser, riscos que não podem ser prevenidos e eliminados pelo software. É responsabilidade do usuário tomar as devidas precauções e usar dispositivos de proteção durante o uso.</value>
   </data>
-  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
-    <value>Realizar passos múltiplos</value>
-  </data>
-  <data name="LblFilename.Text" xml:space="preserve">
-    <value>Nome do arquivo</value>
-  </data>
-  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Iniciar</value>
-  </data>
-  <data name="LblProgress.Text" xml:space="preserve">
-    <value>Progresso</value>
-  </data>
-  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Conectar</value>
-  </data>
-  <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Abrir arquivo</value>
-  </data>
-  <data name="LblComPort.Text" xml:space="preserve">
-    <value>Porta COM</value>
-  </data>
-  <data name="LblBaudRate.Text" xml:space="preserve">
-    <value>Baud</value>
-  </data>
-  <data name="LblAddress.Text" xml:space="preserve">
-    <value>URL</value>
-  </data>
-  <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Grbl v1.1 Emulado#</value>
-  </data>
-  <data name="LblEmulator.Text" xml:space="preserve">
-    <value>Emulador</value>
-  </data>
-  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>Abortar Programa</value>
-  </data>
-  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
-    <value>digite o gcode aqui</value>
+  <data name="LblNotToy.Text" xml:space="preserve">
+    <value>Gravadores a laser não são brinquedos!
+- Sempre tome precauções para proteger a sua visão
+- Esteja ciente do risco de incêndio
+- Cuidado para não respirar a fumaça
+- Impedir o acesso de crianças, animais e pessoas não autorizadas
+- Nunca deixe a máquina sem vigilância
+- Consulte o manual da gravadora para instruções de uso, segurança e manutenção</value>
   </data>
 </root>

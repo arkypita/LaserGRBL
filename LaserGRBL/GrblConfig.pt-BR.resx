@@ -117,46 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.ToolTipText" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="BtnWrite.Text" xml:space="preserve">
+    <value>Gravar</value>
   </data>
-  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
-    <value>Realizar passos múltiplos</value>
+  <data name="BtnRead.Text" xml:space="preserve">
+    <value>Refrescar</value>
   </data>
-  <data name="LblFilename.Text" xml:space="preserve">
-    <value>Nome do arquivo</value>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Fechar</value>
   </data>
-  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Iniciar</value>
+  <data name="LblConnect.Text" xml:space="preserve">
+    <value>Ler ou Gravar habilitados somente quando conectado e parado</value>
   </data>
-  <data name="LblProgress.Text" xml:space="preserve">
-    <value>Progresso</value>
+  <data name="BtnExport.Text" xml:space="preserve">
+    <value>Exportar</value>
   </data>
-  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="BtnImport.Text" xml:space="preserve">
+    <value>Importar</value>
   </data>
-  <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Abrir arquivo</value>
+  <data name="LblAction.Text" xml:space="preserve">
+    <value>Ação</value>
   </data>
-  <data name="LblComPort.Text" xml:space="preserve">
-    <value>Porta COM</value>
+  <data name="DollarNumber.HeaderText" xml:space="preserve">
+    <value>#</value>
   </data>
-  <data name="LblBaudRate.Text" xml:space="preserve">
-    <value>Baud</value>
+  <data name="Parameter.HeaderText" xml:space="preserve">
+    <value>Parâmetro</value>
   </data>
-  <data name="LblAddress.Text" xml:space="preserve">
-    <value>URL</value>
+  <data name="Value.HeaderText" xml:space="preserve">
+    <value>Valor</value>
   </data>
-  <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Grbl v1.1 Emulado#</value>
+  <data name="Unit.HeaderText" xml:space="preserve">
+    <value>Unidade</value>
   </data>
-  <data name="LblEmulator.Text" xml:space="preserve">
-    <value>Emulador</value>
+  <data name="Description.HeaderText" xml:space="preserve">
+    <value>Descrição</value>
   </data>
-  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>Abortar Programa</value>
+  <data name="Number.HeaderText" xml:space="preserve">
+    <value>Número</value>
   </data>
-  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
-    <value>digite o gcode aqui</value>
+  <data name="GB.Text" xml:space="preserve">
+    <value>Configuração Grbl $$</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Grbl</value>
   </data>
 </root>

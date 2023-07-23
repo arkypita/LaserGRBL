@@ -117,46 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.ToolTipText" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="BtnReset.ToolTip" xml:space="preserve">
+    <value>Resetar Grbl (ctrl-x)</value>
   </data>
-  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
-    <value>Realizar passos múltiplos</value>
+  <data name="addCustomButtonToolStripMenuItem.Text" xml:space="preserve">
+    <value>Adicionar Botão Customizado</value>
   </data>
-  <data name="LblFilename.Text" xml:space="preserve">
-    <value>Nome do arquivo</value>
+  <data name="MnLockButton.Text" xml:space="preserve">
+    <value>Travar posição (clique para reordenar)</value>
   </data>
-  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Iniciar</value>
+  <data name="exportCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exportar botões customizados</value>
   </data>
-  <data name="LblProgress.Text" xml:space="preserve">
-    <value>Progresso</value>
+  <data name="importCustomButtonsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Importar botões customizados</value>
   </data>
-  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="BtnUnlock.ToolTip" xml:space="preserve">
+    <value>Destravar Grbl ($X)</value>
   </data>
-  <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Abrir arquivo</value>
+  <data name="BtnHoming.ToolTip" xml:space="preserve">
+    <value>Início ($H)</value>
   </data>
-  <data name="LblComPort.Text" xml:space="preserve">
-    <value>Porta COM</value>
+  <data name="BtnZeroing.ToolTip" xml:space="preserve">
+    <value>Marcar ponto zero (G92)</value>
   </data>
-  <data name="LblBaudRate.Text" xml:space="preserve">
-    <value>Baud</value>
+  <data name="BtnResume.ToolTip" xml:space="preserve">
+    <value>Retornar</value>
   </data>
-  <data name="LblAddress.Text" xml:space="preserve">
-    <value>URL</value>
+  <data name="BtnStop.ToolTip" xml:space="preserve">
+    <value>Parar</value>
   </data>
-  <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Grbl v1.1 Emulado#</value>
+  <data name="RemoveButton.Text" xml:space="preserve">
+    <value>Remover Botão</value>
   </data>
-  <data name="LblEmulator.Text" xml:space="preserve">
-    <value>Emulador</value>
-  </data>
-  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>Abortar Programa</value>
-  </data>
-  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
-    <value>digite o gcode aqui</value>
+  <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
+    <value>Editar Botão</value>
   </data>
 </root>

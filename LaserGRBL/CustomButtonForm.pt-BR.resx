@@ -117,46 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.ToolTipText" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Cancelar</value>
   </data>
-  <data name="UDLoopCounter.ToolTip" xml:space="preserve">
-    <value>Realizar passos múltiplos</value>
+  <data name="BtnCreate.Text" xml:space="preserve">
+    <value>Criar</value>
   </data>
-  <data name="LblFilename.Text" xml:space="preserve">
-    <value>Nome do arquivo</value>
+  <data name="LblImage.Text" xml:space="preserve">
+    <value>Imagem</value>
   </data>
-  <data name="BtnRunProgram.ToolTip" xml:space="preserve">
-    <value>Iniciar</value>
+  <data name="LblEnabled.Text" xml:space="preserve">
+    <value>Habilitado</value>
   </data>
-  <data name="LblProgress.Text" xml:space="preserve">
-    <value>Progresso</value>
+  <data name="LblToolTip.Text" xml:space="preserve">
+    <value>Dica da Ferramenta</value>
   </data>
-  <data name="BtnConnectDisconnect.ToolTip" xml:space="preserve">
-    <value>Conectar</value>
+  <data name="LblDescription.Text" xml:space="preserve">
+    <value>- Use ponto como separador decimal
+- Supporta expressões matemáticas entre colchetes: ex G0 X[esquerda-5] Y[baixo-5]
+- Variáveis disponíveis: esquerda, direita, cima, baixo, largura, altura...(e mais)
+
+Veja em https://lasergrbl.com/usage/custom-buttons/
+
+</value>
   </data>
-  <data name="BtnOpen.ToolTip" xml:space="preserve">
-    <value>Abrir arquivo</value>
+  <data name="LblType.Text" xml:space="preserve">
+    <value>Tipo:</value>
   </data>
-  <data name="LblComPort.Text" xml:space="preserve">
-    <value>Porta COM</value>
+  <data name="LblGCode2.Text" xml:space="preserve">
+    <value>GCode2</value>
   </data>
-  <data name="LblBaudRate.Text" xml:space="preserve">
-    <value>Baud</value>
+  <data name="LblGCode.Text" xml:space="preserve">
+    <value>GCode</value>
   </data>
-  <data name="LblAddress.Text" xml:space="preserve">
-    <value>URL</value>
+  <data name="LblCaption.Text" xml:space="preserve">
+    <value>Legenda</value>
   </data>
-  <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Grbl v1.1 Emulado#</value>
-  </data>
-  <data name="LblEmulator.Text" xml:space="preserve">
-    <value>Emulador</value>
-  </data>
-  <data name="BtnAbortProgram.ToolTip" xml:space="preserve">
-    <value>Abortar Programa</value>
-  </data>
-  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
-    <value>digite o gcode aqui</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Botão Personalizado</value>
   </data>
 </root>
