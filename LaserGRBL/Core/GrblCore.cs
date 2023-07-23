@@ -834,13 +834,13 @@ namespace LaserGRBL
 
 		private void RefreshConfigOnConnect(object state) //da usare per la chiamata asincrona
 		{
-			try
-			{
-				System.Threading.Thread.Sleep(500); //allow the machine to send all the startup messages before refreshing config and info
-				RefreshConfig();
-				RefreshMachineInfo();
-			}
-			catch { }
+			System.Threading.Thread.Sleep(500); //allow the machine to send all the startup messages before refreshing config and info
+
+			try { RefreshConfig(); }
+			catch (Exception ex) { Logger.LogMessage("Refresh Config", ex.Message); }
+
+			try { RefreshMachineInfo(); }
+			catch (Exception ex) { Logger.LogMessage("Refresh Config", ex.Message); }
 		}
 
 		public virtual void RefreshMachineInfo()
@@ -854,8 +854,8 @@ namespace LaserGRBL
 
 					lock (this)
 					{
-						mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
-						mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
+						mSentPtr = new List<IGrblRow>(); //assign sent queue
+						mQueuePtr = new Queue<GrblCommand>();
 						mQueuePtr.Enqueue(cmd);
 					}
 
@@ -896,11 +896,6 @@ namespace LaserGRBL
 								ManageOptMessage(rline);
 						}
 					}
-				}
-				catch (Exception ex)
-				{
-					Logger.LogException("Refresh Config", ex);
-					throw (ex);
 				}
 				finally
 				{
@@ -999,17 +994,11 @@ namespace LaserGRBL
 								conf.AddOrUpdate(((GrblMessage)row).GetNativeMessage());
 						}
 
+						Configuration = conf; //accept configuration
 
-						Configuration = conf; //accept configuration in any case
-
-						if (conf.Count < conf.ExpectedCount) //but show error if some param is missing
-							throw new TimeoutException(string.Format("Wrong number of config param found! ({0}/{1})", conf.Count, conf.ExpectedCount));
+						if (conf.Count < conf.ExpectedCount) //log but do not show error if some param is missing
+							Logger.LogMessage("Refresh Config", "Wrong number of config param found! (Expected: {0} Found: {1})", conf.Count, conf.ExpectedCount);
 					}
-				}
-				catch (Exception ex)
-				{
-					Logger.LogException("Refresh Config", ex);
-					throw (ex);
 				}
 				finally
 				{
@@ -1019,6 +1008,15 @@ namespace LaserGRBL
 						mSentPtr = mSent; //restore queue
 					}
 				}
+			}
+		}
+
+
+
+		public class ReadConfigCountException : Exception
+		{
+			public ReadConfigCountException(string message) : base(message)
+			{
 			}
 		}
 
@@ -1045,7 +1043,7 @@ namespace LaserGRBL
 				}
 			}
 
-			public System.Collections.Generic.List<IGrblRow> Errors
+			public List<IGrblRow> Errors
 			{ get { return ErrorLines; } }
 		}
 
@@ -2592,7 +2590,7 @@ namespace LaserGRBL
 		{ get { return IsConnected && HasProgram && IdleOrCheck && QueueEmpty && !mDoingSend; } }
 
 		public bool CanAbortProgram
-		{ get { return IsConnected && HasProgram && (MachineStatus == MacStatus.Run || IsAnyHoldState(MachineStatus)) || !QueueEmpty ; } }
+		{ get { return IsConnected && HasProgram && (MachineStatus == MacStatus.Run || IsAnyHoldState(MachineStatus)) || !QueueEmpty; } }
 
 		public bool CanImportExport
 		{ get { return IsConnected && MachineStatus == MacStatus.Idle; } }

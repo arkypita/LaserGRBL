@@ -94,7 +94,7 @@ namespace LaserGRBL
 			catch (Exception ex)
 			{
 				Cursor = DefaultCursor;
-				ActionResult(Strings.BoxReadConfigError);
+				ActionResult($"{Strings.BoxReadConfigError} {ex.Message}");
 			}
 
 		}
@@ -173,27 +173,29 @@ namespace LaserGRBL
 
 			if (filename != null)
 			{
-				Core.RefreshConfig(); //internally skipped if not possible
+				try { Core.RefreshConfig(); } //internally skipped if not possible
+				catch { }
 
-				List<GrblConfST.GrblConfParam> toexport = GrblCore.Configuration.ToList();
-				if (toexport.Count > 0)
+				try
 				{
-					try
-					{
-						using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filename))
-						{
-							foreach (GrblConfST.GrblConfParam p in toexport)
-								sw.WriteLine(string.Format("${0}={1}", p.Number, p.Value, p.Parameter));
+					List<GrblConfST.GrblConfParam> toexport = GrblCore.Configuration.ToList();
 
-							sw.Close();
-							ActionResult(String.Format(Strings.BoxExportConfigSuccess, toexport.Count));
-						}
-					}
-					catch (Exception ex)
+					if (toexport.Count == 0)
+						throw new Exception("Nothing to export!");
+
+					using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filename))
 					{
-						Logger.LogException("ExportConfig", ex);
-						MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+						foreach (GrblConfST.GrblConfParam p in toexport)
+							sw.WriteLine(string.Format("${0}={1}", p.Number, p.Value, p.Parameter));
+
+						sw.Close();
+						ActionResult(String.Format(Strings.BoxExportConfigSuccess, toexport.Count));
 					}
+				}
+				catch (Exception ex)
+				{
+					Logger.LogException("ExportConfig", ex);
+					MessageBox.Show(Strings.BoxExportConfigError, Strings.BoxExportConfigErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 
 				RefreshEnabledButtons();
