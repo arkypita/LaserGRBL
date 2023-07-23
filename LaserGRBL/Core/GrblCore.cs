@@ -317,6 +317,7 @@ namespace LaserGRBL
 		public UsageStats.UsageCounters UsageCounters;
 
 		private string mDetectedIP = null;
+		private bool mDoingSend = false;
 
 
 		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
@@ -1147,13 +1148,20 @@ namespace LaserGRBL
 
 		public void RunProgram(Form parent)
 		{
-			if (CanSendFile)
+			try
 			{
-				if (mTP.Executed == 0 || mTP.Executed == mTP.Target) //mai iniziato oppure correttamente finito
-					RunProgramFromStart(false, true);
-				else
-					UserWantToContinue(parent);
+				if (CanSendFile)
+				{
+					mDoingSend = true;
+
+					if (mTP.Executed == 0 || mTP.Executed == mTP.Target) //mai iniziato oppure correttamente finito
+						RunProgramFromStart(false, true);
+					else
+						UserWantToContinue(parent);
+				}
 			}
+			catch { } 
+			finally { mDoingSend = false; }
 		}
 
 		public void AbortProgram()
@@ -2575,14 +2583,16 @@ namespace LaserGRBL
 			}
 		}
 
+		public bool QueueEmpty { get { return mQueue.Count == 0; } }
+
 		public bool CanLoadNewFile
 		{ get { return !InProgram; } }
 
 		public bool CanSendFile
-		{ get { return IsConnected && HasProgram && IdleOrCheck && !InProgram; } }
+		{ get { return IsConnected && HasProgram && IdleOrCheck && QueueEmpty && !mDoingSend; } }
 
 		public bool CanAbortProgram
-		{ get { return IsConnected && HasProgram && (MachineStatus == MacStatus.Run || IsAnyHoldState(MachineStatus) || InProgram); } }
+		{ get { return IsConnected && HasProgram && (MachineStatus == MacStatus.Run || IsAnyHoldState(MachineStatus)) || !QueueEmpty ; } }
 
 		public bool CanImportExport
 		{ get { return IsConnected && MachineStatus == MacStatus.Idle; } }

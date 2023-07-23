@@ -20,7 +20,6 @@ namespace LaserGRBL
 
 		GrblCore Core;
 		private string mLoadedFileName;
-		private bool mForceButtonDisable;
 
 		public ConnectLogForm()
 		{
@@ -200,14 +199,8 @@ namespace LaserGRBL
 
 		void BtnRunProgramClick(object sender, EventArgs e)
 		{
-			try
-			{
-				mForceButtonDisable = true;
-				BtnRunProgram.Enabled = false;
-				Core.RunProgram(ParentForm);
-			}
-			catch { }
-			finally { mForceButtonDisable = false; }
+			BtnRunProgram.Enabled = false;
+			Core.RunProgram(ParentForm);
 		}
 		void TxtManualCommandCommandEntered(string command)
 		{
@@ -249,7 +242,7 @@ namespace LaserGRBL
 			TT.SetToolTip(BtnConnectDisconnect, Core.IsConnected ? Strings.BtnDisconnectTT : Strings.BtnConnectTT);
 			
 			BtnConnectDisconnect.UseAltImage = Core.IsConnected;
-			BtnRunProgram.Enabled = Core.CanSendFile && !mForceButtonDisable;
+			BtnRunProgram.Enabled = Core.CanSendFile;
             BtnRunProgram.Visible = !Core.CanAbortProgram;
             BtnAbortProgram.Visible = Core.CanAbortProgram;
             BtnOpen.Enabled = Core.CanLoadNewFile;
