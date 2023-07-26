@@ -163,14 +163,14 @@
     <value>Velocidade de corte</value>
   </data>
   <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
-    <value>Grbl suporta saida variável de energia para produzir escala de cinza, Isto requere que seu hardware possua controle TTL para o laser
+    <value>Grbl suporta saida variável de energia para produzir escala de cinza, Isto requer que seu hardware possua controle TTL para o laser
 
 Click aqui para obter mais informações...</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
-    <value>Ligar laser: (M3) é o modo padrão.
-Para GRBL V1.1 o modo de energia dinâmico (M4)  também é suportado. 
-Desligar Laser: Somente o comando (M5) é suportado.     
+    <value>Laser Ligado: (M3) é o modo padrão.
+No GRBL V1.1 o modo de energia dinâmico (M4)  também é suportado. 
+Laser Desligado: Somente o comando (M5) é suportado.     
 
 Clique aqui para obter mais informações...</value>
   </data>
@@ -185,5 +185,26 @@ Clique aqui para obter mais informações...</value>
   </data>
   <data name="GbLaser.Text" xml:space="preserve">
     <value>Opções do Laser</value>
+  </data>
+  <data name="BtnPSHelper.ToolTip" xml:space="preserve">
+    <value>Abrir Banco de Laser &amp; Materiais</value>
+  </data>
+  <data name="LblSmin.Text" xml:space="preserve">
+    <value>S-MIN</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Modo Laser</value>
+  </data>
+  <data name="LblSmax.Text" xml:space="preserve">
+    <value>S-MAX</value>
+  </data>
+  <data name="LblMinPerc.Text" xml:space="preserve">
+    <value>0%</value>
+  </data>
+  <data name="LblMaxPerc.Text" xml:space="preserve">
+    <value>100%</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Imágem Desejada</value>
   </data>
 </root>

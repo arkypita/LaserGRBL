@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -313,7 +313,7 @@
   <data name="BtnOutliner.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAAdVJREFUSEu1lU1LAkEYx/0EdQykW1TgN/CUl0iiUxR0C6KkDLqUCdKxIIjWLUga
+        vgAADr4B6kKxwAAAAdVJREFUSEu1lU1LAkEYx/0EdQykW1TgN/CUl0iiUxR0C6KkDLqUCdKxIIjWLUga
         F0UrysQXsjfs9RKRm0EeOtchP0Mdap9m1hkYd7e23a0f/Jndx/H/zPwHdlz/hc/nAyL6+rcw839poDOP
         FJUeovmc0qoWHKAzJ0xsAczlAIZj7z20ZAtDc4I7BEpHBMC/9DIQFO9WJ8X78dTBw9LqTqWULN5n9kq3
         CbPnb80ZQ8tPncBRPK/FcZlMNpWpOWFSlPuotwpugHBZZ6YVby6kLrK4ZsyUWBml3ip8g3pdb0xE4FYO
@@ -354,7 +354,7 @@
   <data name="BtnFill.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAAAdpJREFUSEvtjTmLYkEUhf1p/gs3xEhFNFLEJRO3SFwxc8FU3ELXzBUzF8RIRdRI
+        vAAADrwBlbxySQAAAdpJREFUSEvtjTmLYkEUhf1p/gs3xEhFNFLEJRO3SFwxc8FU3ELXzBUzF8RIRdRI
         xCUTz1Tdfm+mp+322YMDE8wHh/eq7qn7yf4Z5HI5hN+/w3+BJB8Er5e9E/CvmNchCCjX6/X1ElGwWCyw
         3+9fLgEXtNttjEYjLJdLHA4H3G63P5OwNsS8Hd8EPJ1OB+PxGKvViiQcscMiDWvdLQ+FQj8F1WoV3W4X
         k8kE6/Uax+PxeQmb3i23Wq3weDwIh8NIpVLI5/Oo1Wro9XqYTqckOZ1Oz0nY5LflCoUCer0eNpuNJJFI
