@@ -18,7 +18,7 @@ namespace LaserGRBL
 			CbLaser.DisplayMember = "Name";
 			List<LaserLifeHandler.LaserLifeCounter> orig = LaserLifeHandler.GetListClone();
 			string lastguid = Settings.GetObject<string>("Last laser used", null);
-			LaserLifeHandler.LaserLifeCounter last = lastguid != null ? orig.First(o => o.Guid == lastguid) : null;
+			LaserLifeHandler.LaserLifeCounter last = lastguid != null ? orig.FirstOrDefault(o => o.Guid == lastguid) : null;
 			List<LaserLifeHandler.LaserLifeCounter> alive = orig.Where(o => o != last && o.DeathDate == null).OrderByDescending(o => o.MonitoringDate).ToList();
 			List<LaserLifeHandler.LaserLifeCounter> death = orig.Where(o => o != last && o.DeathDate != null).OrderByDescending(o => o.MonitoringDate).ToList();
 			if (last != null) CbLaser.Items.Add(last);

@@ -35,6 +35,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+			this.BtnUnmark = new System.Windows.Forms.Button();
 			this.BtnMark = new System.Windows.Forms.Button();
 			this.BtnEdit = new System.Windows.Forms.Button();
 			this.BtnRemove = new System.Windows.Forms.Button();
@@ -50,9 +51,9 @@
 			this.ChDateStartM = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ChDateEndL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnClose = new System.Windows.Forms.Button();
-			this.BtnUnmark = new System.Windows.Forms.Button();
 			this.label2 = new System.Windows.Forms.Label();
+			this.BtnClose = new System.Windows.Forms.Button();
+			this.ChStressTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -75,7 +76,7 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(951, 470);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(1018, 470);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// tableLayoutPanel2
@@ -92,7 +93,7 @@
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 1;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(945, 63);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(1012, 63);
 			this.tableLayoutPanel2.TabIndex = 0;
 			// 
 			// pictureBox1
@@ -112,7 +113,7 @@
 			this.label1.Location = new System.Drawing.Point(73, 18);
 			this.label1.Margin = new System.Windows.Forms.Padding(3);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(854, 26);
+			this.label1.Size = new System.Drawing.Size(925, 26);
 			this.label1.TabIndex = 1;
 			this.label1.Text = resources.GetString("label1.Text");
 			// 
@@ -128,7 +129,7 @@
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
 			this.tableLayoutPanel3.RowCount = 1;
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(945, 341);
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(1012, 341);
 			this.tableLayoutPanel3.TabIndex = 1;
 			// 
 			// tableLayoutPanel4
@@ -143,7 +144,7 @@
 			this.tableLayoutPanel4.Controls.Add(this.BtnRemove, 0, 1);
 			this.tableLayoutPanel4.Controls.Add(this.BtnAddNew, 0, 0);
 			this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel4.Location = new System.Drawing.Point(822, 3);
+			this.tableLayoutPanel4.Location = new System.Drawing.Point(889, 3);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
 			this.tableLayoutPanel4.RowCount = 7;
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -155,6 +156,26 @@
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel4.Size = new System.Drawing.Size(120, 335);
 			this.tableLayoutPanel4.TabIndex = 0;
+			// 
+			// BtnUnmark
+			// 
+			this.BtnUnmark.AutoSize = true;
+			this.BtnUnmark.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.BtnUnmark.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.BtnUnmark.Image = ((System.Drawing.Image)(resources.GetObject("BtnUnmark.Image")));
+			this.BtnUnmark.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.BtnUnmark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.BtnUnmark.Location = new System.Drawing.Point(3, 168);
+			this.BtnUnmark.Name = "BtnUnmark";
+			this.BtnUnmark.Padding = new System.Windows.Forms.Padding(5, 2, 5, 2);
+			this.BtnUnmark.Size = new System.Drawing.Size(114, 32);
+			this.BtnUnmark.TabIndex = 6;
+			this.BtnUnmark.Text = "Unmark dead";
+			this.BtnUnmark.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.BtnUnmark.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.BtnUnmark.UseVisualStyleBackColor = true;
+			this.BtnUnmark.Visible = false;
+			this.BtnUnmark.Click += new System.EventHandler(this.BtnUnmark_Click);
 			// 
 			// BtnMark
 			// 
@@ -240,6 +261,7 @@
             this.ChModel,
             this.ChRunTime,
             this.ChPowerTime,
+            this.ChStressTime,
             this.ChAvgPow,
             this.ChDateBuy,
             this.ChDateStartM,
@@ -250,7 +272,7 @@
 			this.LVLasers.HideSelection = false;
 			this.LVLasers.Location = new System.Drawing.Point(3, 3);
 			this.LVLasers.Name = "LVLasers";
-			this.LVLasers.Size = new System.Drawing.Size(813, 335);
+			this.LVLasers.Size = new System.Drawing.Size(880, 335);
 			this.LVLasers.TabIndex = 1;
 			this.LVLasers.UseCompatibleStateImageBehavior = false;
 			this.LVLasers.View = System.Windows.Forms.View.Details;
@@ -316,44 +338,8 @@
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
 			this.tableLayoutPanel5.RowCount = 1;
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel5.Size = new System.Drawing.Size(945, 48);
+			this.tableLayoutPanel5.Size = new System.Drawing.Size(1012, 48);
 			this.tableLayoutPanel5.TabIndex = 2;
-			// 
-			// BtnClose
-			// 
-			this.BtnClose.AutoSize = true;
-			this.BtnClose.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.BtnClose.Image = ((System.Drawing.Image)(resources.GetObject("BtnClose.Image")));
-			this.BtnClose.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnClose.Location = new System.Drawing.Point(847, 3);
-			this.BtnClose.Name = "BtnClose";
-			this.BtnClose.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
-			this.BtnClose.Size = new System.Drawing.Size(95, 42);
-			this.BtnClose.TabIndex = 7;
-			this.BtnClose.Text = "Close";
-			this.BtnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.BtnClose.UseVisualStyleBackColor = true;
-			this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
-			// 
-			// BtnUnmark
-			// 
-			this.BtnUnmark.AutoSize = true;
-			this.BtnUnmark.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.BtnUnmark.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.BtnUnmark.Image = ((System.Drawing.Image)(resources.GetObject("BtnUnmark.Image")));
-			this.BtnUnmark.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.BtnUnmark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnUnmark.Location = new System.Drawing.Point(3, 168);
-			this.BtnUnmark.Name = "BtnUnmark";
-			this.BtnUnmark.Padding = new System.Windows.Forms.Padding(5, 2, 5, 2);
-			this.BtnUnmark.Size = new System.Drawing.Size(114, 32);
-			this.BtnUnmark.TabIndex = 6;
-			this.BtnUnmark.Text = "Unmark dead";
-			this.BtnUnmark.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.BtnUnmark.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.BtnUnmark.UseVisualStyleBackColor = true;
-			this.BtnUnmark.Visible = false;
-			this.BtnUnmark.Click += new System.EventHandler(this.BtnUnmark_Click);
 			// 
 			// label2
 			// 
@@ -367,11 +353,32 @@
 			this.label2.Text = "Please click on \"edit\" and fill in all the information related to your laser modu" +
     "le.";
 			// 
+			// BtnClose
+			// 
+			this.BtnClose.AutoSize = true;
+			this.BtnClose.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.BtnClose.Image = ((System.Drawing.Image)(resources.GetObject("BtnClose.Image")));
+			this.BtnClose.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.BtnClose.Location = new System.Drawing.Point(914, 3);
+			this.BtnClose.Name = "BtnClose";
+			this.BtnClose.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
+			this.BtnClose.Size = new System.Drawing.Size(95, 42);
+			this.BtnClose.TabIndex = 7;
+			this.BtnClose.Text = "Close";
+			this.BtnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.BtnClose.UseVisualStyleBackColor = true;
+			this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
+			// 
+			// ChStressTime
+			// 
+			this.ChStressTime.Text = "Stress Time";
+			this.ChStressTime.Width = 80;
+			// 
 			// LaserUsage
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(951, 470);
+			this.ClientSize = new System.Drawing.Size(1018, 470);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -423,5 +430,6 @@
 		private System.Windows.Forms.ColumnHeader ChModel;
 		private System.Windows.Forms.Button BtnUnmark;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.ColumnHeader ChStressTime;
 	}
 }

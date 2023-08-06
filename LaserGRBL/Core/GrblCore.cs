@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Windows.Forms;
 using Tools;
 using static LaserGRBL.GrblCore;
@@ -3857,7 +3858,7 @@ namespace LaserGRBL
 		private static string mLLCFileName;
 
 		[Serializable]
-		public class LaserLifeCounter
+		public class LaserLifeCounter : IDeserializationCallback
 		{
 			public static string DEF_NAME = "Default";
 			public static string DEF_BRAND = "Unknown";
@@ -3877,6 +3878,7 @@ namespace LaserGRBL
 			private TimeSpan mTimeInRun;
 			private TimeSpan mTimeUsageNormalizedPower;
 			private TimeSpan mTimeUsageNonZero;
+			private TimeSpan[] mTimeClasses;
 
 			public DateTime? PurchaseDate { get => mPurchaseDate; set => mPurchaseDate = value; }
 			public DateTime? MonitoringDate { get => mMonitoringDate; set => mMonitoringDate = value; }
@@ -3888,6 +3890,7 @@ namespace LaserGRBL
 			public double? OpticalPower { get => mOpticalPower; set => mOpticalPower = value; }
 			public TimeSpan TimeInRun { get => mTimeInRun; }
 			public TimeSpan TimeUsageNormalizedPower { get => mTimeUsageNormalizedPower; }
+			public TimeSpan StressTime { get => mTimeClasses[9]; }
 			public double AveragePowerFactor { get => mTimeUsageNonZero.TotalSeconds == 0 ? 0 : mTimeUsageNormalizedPower.TotalSeconds / mTimeUsageNonZero.TotalSeconds; }
 			public string Guid { get=> mGuid; }
 
@@ -3895,6 +3898,7 @@ namespace LaserGRBL
 			{
 				mGuid = System.Guid.NewGuid().ToString();
 				mMonitoringDate = DateTime.Today;
+				mTimeClasses = new TimeSpan[10];
 			}
 
 			internal static LaserLifeCounter CreateNew()
@@ -3928,7 +3932,15 @@ namespace LaserGRBL
 					mTimeUsageNormalizedPower = mTimeUsageNormalizedPower + normalized;
 					mTimeUsageNonZero = mTimeUsageNonZero + elapsed;
 				}
-				System.Diagnostics.Debug.WriteLine($"LT: {mTimeInRun.TotalSeconds} LTT: {mTimeUsageNormalizedPower.TotalSeconds}");
+
+				if (powerperc > 0.01)
+				{ 
+					int clx = (int)Math.Floor((powerperc * 100 - 1) / 10); //1-10 = 0, 11-20 = 1; 91-100 = 9
+					clx = Math.Min(9, Math.Max(0, clx)); //ensure 0-9 range
+					mTimeClasses[clx] = mTimeClasses[clx] + elapsed;
+				}
+
+				//System.Diagnostics.Debug.WriteLine($"LT: {mTimeInRun.TotalSeconds} LTT: {mTimeUsageNormalizedPower.TotalSeconds}");
 			}
 
 			internal void Update(LaserLifeCounter selected)
@@ -3944,6 +3956,12 @@ namespace LaserGRBL
 			internal bool HasWorked()
 			{
 				return mTimeInRun.TotalHours > 1;
+			}
+
+			void IDeserializationCallback.OnDeserialization(object sender)
+			{
+				if (mTimeClasses == null)
+					mTimeClasses = new TimeSpan[10];
 			}
 		}
 

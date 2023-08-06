@@ -90,6 +90,7 @@ namespace LaserGRBL
 
 				this.SubItems.Add($"{llc.TimeInRun.TotalHours:0.0} h");
 				this.SubItems.Add($"{llc.TimeUsageNormalizedPower.TotalHours:0.0} h");
+				this.SubItems.Add($"{llc.StressTime.TotalHours:0.0} h");
 				this.SubItems.Add($"{Math.Round(llc.AveragePowerFactor * 100, 0)} %");
 
 				this.SubItems.Add(llc.PurchaseDate.HasValue ? llc.PurchaseDate.Value.ToShortDateString() : "");
