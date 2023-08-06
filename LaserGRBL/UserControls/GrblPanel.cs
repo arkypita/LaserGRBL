@@ -59,8 +59,6 @@ namespace LaserGRBL.UserControls
 		{
 			try
 			{
-
-
 				if (mBitmap != null)
 					e.Graphics.DrawImage(mBitmap, 0, 0, Width, Height);
 

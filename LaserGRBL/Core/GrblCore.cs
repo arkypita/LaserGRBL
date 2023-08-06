@@ -13,6 +13,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using Tools;
+using static LaserGRBL.GrblCore;
 
 namespace LaserGRBL
 {
@@ -308,8 +309,8 @@ namespace LaserGRBL
 
 		private long connectStart;
 
-		protected Tools.ElapsedFromEvent debugLastStatusDelay;
-		protected Tools.ElapsedFromEvent debugLastMoveOrActivityDelay;
+		protected ElapsedFromEvent debugLastStatusDelay;
+		protected ElapsedFromEvent debugLastMoveOrActivityDelay;
 
 		private ThreadingMode mThreadingMode = ThreadingMode.Fast;
 		private HotKeysManager mHotKeyManager;
@@ -320,6 +321,7 @@ namespace LaserGRBL
 		private bool mDoingSend = false;
 
 
+
 		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
 		{
 			if (Type != Firmware.Grbl) Logger.LogMessage("Program", "Load {0} core", Type);
@@ -328,8 +330,8 @@ namespace LaserGRBL
 			syncro = syncroObject;
 			com = new ComWrapper.UsbSerial();
 
-			debugLastStatusDelay = new Tools.ElapsedFromEvent();
-			debugLastMoveOrActivityDelay = new Tools.ElapsedFromEvent();
+			debugLastStatusDelay = new ElapsedFromEvent();
+			debugLastMoveOrActivityDelay = new ElapsedFromEvent();
 
 			//with version 4.5.0 default ThreadingMode change from "UltraFast" to "Fast"
 			if (!Settings.IsNewFile && Settings.PrevVersion < new Version(4, 5, 0))
@@ -434,6 +436,8 @@ namespace LaserGRBL
 		{
 			lock (this)
 			{
+				LaserLifeHandler.ComputeLaserTime(mMachineStatus);
+
 				if (mMachineStatus != newStatus)
 				{
 					MacStatus oldStatus = mMachineStatus;
@@ -462,6 +466,9 @@ namespace LaserGRBL
 						else
 							mTP.JobResume();
 					}
+
+					if (newStatus == MacStatus.Disconnected)
+						SetFS(0, 0);
 				}
 			}
 		}
@@ -1158,7 +1165,7 @@ namespace LaserGRBL
 						UserWantToContinue(parent);
 				}
 			}
-			catch { } 
+			catch { }
 			finally { mDoingSend = false; }
 		}
 
@@ -1397,6 +1404,20 @@ namespace LaserGRBL
 			}
 		}
 
+		internal void Exiting()
+		{
+			try { CloseCom(true); }
+			catch { }
+			
+			try { RX.Stop(); }
+			catch { }
+
+			try { TX.Stop(); }
+			catch { }
+			
+			LaserLifeHandler.SaveNow();
+		}
+
 		public bool IsConnected => mMachineStatus != MacStatus.Disconnected && mMachineStatus != MacStatus.Connecting;
 
 		#region Comandi immediati
@@ -1511,7 +1532,7 @@ namespace LaserGRBL
 		public int Executed
 		{ get { return mSent.Count; } }
 
-		public System.Collections.Generic.List<IGrblRow> SentCommand(int index, int count)
+		public List<IGrblRow> SentCommand(int index, int count)
 		{
 			index = Math.Min(index, mSent.Count - 1);       //force index to be in range
 			count = Math.Min(count, mSent.Count - index);   //force count to be in range
@@ -2335,9 +2356,11 @@ namespace LaserGRBL
 
 		protected void SetFS(float f, float s)
 		{
+			LaserLifeHandler.ComputeLaserTrueTime(mCurS);
 			mCurF = f;
 			mCurS = s;
 		}
+
 
 		protected void SetMPosition(GPoint pos)
 		{
@@ -3457,7 +3480,7 @@ namespace LaserGRBL
 			return mData.GetEnumerator();
 		}
 
-
+		// "$" at the beginning of a line, followed by numbers, by any spaces, by "=" and then averything
 		private static System.Text.RegularExpressions.Regex ConfRegEX = new System.Text.RegularExpressions.Regex(@"^[$](\d+)\s*=(.*)");
 
 		public static bool IsSetConf(string p)
@@ -3469,7 +3492,7 @@ namespace LaserGRBL
 			{
 				if (IsSetConf(line))
 				{
-					line = FixFoxalienConfig(line);
+					line = FixFoxalienConfig(line); 
 
 					System.Text.RegularExpressions.MatchCollection matches = ConfRegEX.Matches(line);
 					int key = int.Parse(matches[0].Groups[1].Value);
@@ -3487,10 +3510,10 @@ namespace LaserGRBL
 			}
 		}
 
+
+		// Foxalien send config values with descriprion inside it i.e. "$20=0 (soft limits, bool)\r" , so we need to do a cleanup to remove description between parentesis
+		// See issue https://github.com/arkypita/LaserGRBL/issues/1890
 		private static System.Text.RegularExpressions.Regex FoxalienCleanupConfig = new System.Text.RegularExpressions.Regex(@"^[$](\d+)\s*=\s*(\d+\.?\d*)\s*\(.*\)");
-
-
-
 		private string FixFoxalienConfig(string line)
 		{
 			if (!FoxalienCleanupConfig.IsMatch(line))
@@ -3800,6 +3823,340 @@ namespace LaserGRBL
 		internal PointF ToPointF()
 		{
 			return new PointF(X, Y);
+		}
+	}
+
+
+	public static class LaserLifeHandler
+	{
+		[Serializable]
+		public class ListLLC : List<LaserLifeCounter>
+		{
+			public DateTime LastSent = new DateTime(2000, 1, 1);
+
+			internal ListLLC GetClone()
+			{
+				ListLLC clone = new ListLLC();
+
+				lock (this)
+				{
+					foreach (LaserLifeCounter LLC in this)
+						clone.Add(LLC.Clone());				
+					clone.LastSent = LastSent;
+				}
+
+				return clone;
+			}
+		}
+
+		static ListLLC mLLCL;
+		static LaserLifeCounter mCurrentLLC;
+		private static long mLastStatusHiResTimeNano;
+		private static long mLastPowerHiResTimeNano;
+		private static long mLastSave;
+		private static string mLLCFileName;
+
+		[Serializable]
+		public class LaserLifeCounter
+		{
+			public static string DEF_NAME = "Default";
+			public static string DEF_BRAND = "Unknown";
+			public static string DEF_MODEL = "Unknown";
+			private string mGuid;
+
+			private string mName;
+			private string mBrand;
+			private string mModuleModel;
+			private double? mOpticalPower;
+
+			private DateTime? mPurchaseDate;
+			private DateTime? mMonitoringDate;
+			private DateTime? mDeathDate;
+			private DateTime? mLastUsage;
+
+			private TimeSpan mTimeInRun;
+			private TimeSpan mTimeUsageNormalizedPower;
+			private TimeSpan mTimeUsageNonZero;
+
+			public DateTime? PurchaseDate { get => mPurchaseDate; set => mPurchaseDate = value; }
+			public DateTime? MonitoringDate { get => mMonitoringDate; set => mMonitoringDate = value; }
+			public DateTime? DeathDate { get => mDeathDate; set => mDeathDate = value; }
+			public DateTime? LastUsage { get => mLastUsage; set => mLastUsage = value; }
+			public string Name { get => mName; set => mName = value; }
+			public string Brand { get => mBrand; set => mBrand = value; }
+			public string Model { get => mModuleModel; set => mModuleModel = value; }
+			public double? OpticalPower { get => mOpticalPower; set => mOpticalPower = value; }
+			public TimeSpan TimeInRun { get => mTimeInRun; }
+			public TimeSpan TimeUsageNormalizedPower { get => mTimeUsageNormalizedPower; }
+			public double AveragePowerFactor { get => mTimeUsageNonZero.TotalSeconds == 0 ? 0 : mTimeUsageNormalizedPower.TotalSeconds / mTimeUsageNonZero.TotalSeconds; }
+			public string Guid { get=> mGuid; }
+
+			private LaserLifeCounter()
+			{
+				mGuid = System.Guid.NewGuid().ToString();
+				mMonitoringDate = DateTime.Today;
+			}
+
+			internal static LaserLifeCounter CreateNew()
+			{
+				LaserLifeCounter rv = new LaserLifeCounter();
+				return rv;
+			}
+			public static LaserLifeCounter CreateDefault()
+			{
+				LaserLifeCounter rv = new LaserLifeCounter();
+				rv.Name = DEF_NAME;
+				return rv;
+			}
+
+			internal void AddRunTime(TimeSpan elapsed)
+			{
+				mTimeInRun = mTimeInRun.Add(elapsed);
+				mLastUsage = DateTime.Today;
+			}
+
+			internal LaserLifeCounter Clone()
+			{
+				return MemberwiseClone() as LaserLifeCounter;
+			}
+
+			internal void AddTrueLaserTimePower(TimeSpan elapsed, double powerperc)
+			{
+				if (powerperc > 0.03) //do not track any usage under 3% (framing etc)
+				{
+					TimeSpan normalized = TimeSpan.FromMilliseconds(elapsed.TotalMilliseconds * powerperc); //normalize elapsed time with power
+					mTimeUsageNormalizedPower = mTimeUsageNormalizedPower + normalized;
+					mTimeUsageNonZero = mTimeUsageNonZero + elapsed;
+				}
+				System.Diagnostics.Debug.WriteLine($"LT: {mTimeInRun.TotalSeconds} LTT: {mTimeUsageNormalizedPower.TotalSeconds}");
+			}
+
+			internal void Update(LaserLifeCounter selected)
+			{
+				mName = selected.mName;
+				mPurchaseDate = selected.mPurchaseDate;
+				mDeathDate = selected.mDeathDate;
+				mModuleModel = selected.mModuleModel;
+				mBrand = selected.mBrand;
+				mOpticalPower = selected.mOpticalPower;
+			}
+
+			internal bool HasWorked()
+			{
+				return mTimeInRun.TotalHours > 1;
+			}
+		}
+
+		static LaserLifeHandler()
+		{
+			if (mLLCL == null)
+			{
+				mLLCFileName = System.IO.Path.Combine(GrblCore.DataPath, "LaserLifeCounter.bin");
+				mLLCL = Serializer.ObjFromFile(mLLCFileName) as ListLLC;
+				if (mLLCL == null) mLLCL = Serializer.ObjFromFile(mLLCFileName + ".old") as ListLLC;
+
+				if (mLLCL == null) mLLCL = new ListLLC();
+				if (mLLCL.Count == 0) mLLCL.Add(LaserLifeCounter.CreateDefault());
+			}
+		}
+
+		public static void ComputeLaserTime(GrblCore.MacStatus status)
+		{
+			try
+			{
+				lock (mLLCL)
+				{
+					long now = HiResTimer.TotalNano;
+					if (mLastStatusHiResTimeNano != 0)
+					{
+						double delta = now - mLastPowerHiResTimeNano;
+						double perc = status == MacStatus.Run ? 1 : 0; //potenza da applicare a questo delta
+						double normal = delta * perc;
+
+						mCurrentLLC?.AddRunTime(TimeSpan.FromMilliseconds(normal / 1000 / 1000));
+					}
+					mLastStatusHiResTimeNano = now;
+				}
+			}
+			catch { }
+			DoSave();
+		}
+
+		public static void ComputeLaserTrueTime(float power)
+		{
+			try
+			{
+				lock (mLLCL)
+				{
+					long now = HiResTimer.TotalNano;
+					if (mLastPowerHiResTimeNano != 0)
+					{
+						double elapsed = now - mLastPowerHiResTimeNano;
+						double powerperc = Math.Max(0, Math.Min(1, (double)power / (double)Configuration.MaxPWM)); //potenza da applicare a questo delta
+
+						//mCurrentLLC?.AddTrueLaserTime(TimeSpan.FromMilliseconds(normal / 1000 / 1000));
+						mCurrentLLC?.AddTrueLaserTimePower(TimeSpan.FromMilliseconds(elapsed / 1000 / 1000), powerperc);
+					}
+					mLastPowerHiResTimeNano = now;
+				}
+			}
+			catch { }
+			DoSave();
+		}
+
+		public static void OnConnect(Form parent)
+		{
+			try
+			{
+				List<LaserLifeCounter> alive = mLLCL.Where(l => !l.DeathDate.HasValue).ToList();
+				List<LaserLifeCounter> death = mLLCL.Where(l => !l.DeathDate.HasValue).ToList();
+
+				if (mLLCL.Count == 0)           //non ce ne sono... non tracciamo
+					mCurrentLLC = null;
+				if (mLLCL.Count == 1)           //se ne abbiamo uno solo è per forza lui, vivo o morto che sia
+					mCurrentLLC = mLLCL[0];
+				else if (alive.Count == 1)      //se ne abbiamo più di uno, ma uno solo è vivo => è per forza lui 
+					mCurrentLLC = alive[0];
+				else
+				{
+					string selguid = LaserSelector.CreateAndShowDialog(parent);
+					mCurrentLLC = mLLCL.First(l => l.Guid == selguid);
+				}
+			}
+			catch { mCurrentLLC = null; }
+
+			Settings.SetObject("Last laser used", mCurrentLLC != null ? mCurrentLLC.Guid : null);
+		}
+
+		internal static void OnDisconnect()
+		{
+			mCurrentLLC = null;
+		}
+
+		private static void DoSave()
+		{
+			try
+			{
+				long now = HiResTimer.TotalMilliseconds;
+				if (mLastSave == 0 || now - mLastSave > 20000) //save every 20s
+				{
+					ListLLC tosave = GetListClone();
+					System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(RealDoSave), tosave);
+					mLastSave = now;
+				}
+			}
+			catch { }
+		}
+
+		public static ListLLC GetListClone()
+		{
+			return mLLCL?.GetClone();
+		}
+
+		public static void SaveNow()
+		{
+			try { RealDoSave(GetListClone()); }
+			catch { }
+		}
+
+		private static void RealDoSave(object state)
+		{
+			try
+			{
+				lock (mLLCFileName)
+				{
+					ListLLC tosave = state as ListLLC;
+					if (tosave != null)
+					{
+						try
+						{
+							if (System.IO.File.Exists(mLLCFileName))
+							{
+								if (System.IO.File.Exists(mLLCFileName + ".old"))
+									System.IO.File.Delete(mLLCFileName + ".old");
+								System.IO.File.Move(mLLCFileName, mLLCFileName + ".old");
+							}
+						}
+						catch { }
+
+						try
+						{
+							if (System.IO.File.Exists(mLLCFileName))
+								System.IO.File.Delete(mLLCFileName);
+						}
+						catch { }
+
+						Serializer.ObjToFile(tosave, mLLCFileName);
+					}
+				}
+			}
+			catch { }
+		}
+
+		internal static TimeSpan GetCurrentTime()
+		{
+			return mCurrentLLC != null ? mCurrentLLC.TimeInRun : TimeSpan.Zero;
+		}
+
+		internal static void Add(LaserLifeCounter llc)
+		{
+			lock (mLLCL)
+			{
+				mLLCL.Add(llc);
+				SaveNow();
+			}
+		}
+
+		internal static void Edit(LaserLifeCounter selected)
+		{
+			lock (mLLCL)
+			{
+				foreach (LaserLifeCounter llc in mLLCL)
+				{
+					if (llc.Guid == selected.Guid)
+						llc.Update(selected);
+				}
+				SaveNow();
+			}
+		}
+
+		internal static string Delete(LaserLifeCounter selected)
+		{
+			lock (mLLCL)
+			{
+				if (mCurrentLLC != null && selected.Guid == mCurrentLLC.Guid)
+					return "You cannot delete currently connected Laser module!";
+
+				mLLCL.RemoveAll(l => l.Guid == selected.Guid);
+				SaveNow();
+				return null;
+			}
+		}
+
+		internal static void Death(LaserLifeCounter selected)
+		{
+			lock (mLLCL)
+			{
+				foreach (LaserLifeCounter llc in mLLCL)
+				{
+					if (llc.Guid == selected.Guid && llc.DeathDate == null)
+						llc.DeathDate = DateTime.Today;
+				}
+				SaveNow();
+			}
+		}
+
+		internal static void UnDeath(LaserLifeCounter selected)
+		{
+			lock (mLLCL)
+			{
+				foreach (LaserLifeCounter llc in mLLCL)
+				{
+					if (llc.Guid == selected.Guid && llc.DeathDate != null)
+						llc.DeathDate = null;
+				}
+				SaveNow();
+			}
 		}
 	}
 }

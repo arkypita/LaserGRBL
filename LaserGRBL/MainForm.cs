@@ -244,9 +244,11 @@ namespace LaserGRBL
 		}
 
 
+		bool PrevConnected = false;
 		void OnMachineStatus()
 		{
 			TimerUpdate();
+
 			if (Core.MachineStatus == GrblCore.MacStatus.Disconnected && Core.FailedConnectionCount >= 3)
 			{
 				string url = null;
@@ -260,6 +262,18 @@ namespace LaserGRBL
 				if (url != null)
 					MessageBox.Show(this, Strings.ProblemConnectingText, Strings.ProblemConnectingTitle, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 0, url);
 			}
+
+			if (Core.IsConnected && !PrevConnected)
+			{
+				LaserLifeHandler.OnConnect(this);
+			}
+			if (!Core.IsConnected && PrevConnected)
+			{
+				LaserLifeHandler.OnDisconnect();
+			}
+
+			PrevConnected = Core.IsConnected;
+
 		}
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -269,7 +283,7 @@ namespace LaserGRBL
 			if (!e.Cancel)
 			{
 				SincroStart.StopListen();
-				Core.CloseCom(true);
+				Core.Exiting();
 				Settings.SetObject("Mainform Size and Position", new object[] { Size, Location, WindowState });
 				Settings.Exiting();
 
@@ -403,6 +417,9 @@ namespace LaserGRBL
 			}
 
 			MnOrtur.Visible = Core.IsOrturBoard;
+
+			string NewTTLLText = $"{LaserLifeHandler.GetCurrentTime().TotalHours.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)}h";
+			if (TTlaserLife.Text != NewTTLLText) TTlaserLife.Text = NewTTLLText; //prevent tooltip flickering
 
 			ResumeLayout();
 		}
@@ -1019,7 +1036,15 @@ namespace LaserGRBL
 			ShowWiFiConfig();
 		}
 
+		private void TTlaserLife_Click(object sender, EventArgs e)
+		{
+			LaserUsage.CreateAndShowDialog(this, Core);
+		}
 
+		private void laserUsageStatsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			LaserUsage.CreateAndShowDialog(this, Core);
+		}
 	}
 
 
@@ -1071,7 +1096,6 @@ namespace LaserGRBL
 			using (Brush b = new SolidBrush(ColorScheme.FormBackColor))
 				e.Graphics.FillRectangle(b, e.ConnectedArea);
 		}
-
 	}
 	public class CustomMenuColor : ProfessionalColorTable
 	{

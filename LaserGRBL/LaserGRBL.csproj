@@ -131,6 +131,24 @@
     <Compile Include="ComWrapper\MySerial\StopBits.cs" />
     <Compile Include="ComWrapper\MySerial\WinSerialStream.cs" />
     <Compile Include="ComWrapper\UsbSerial2.cs" />
+    <Compile Include="LaserLifeEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LaserLifeEdit.Designer.cs">
+      <DependentUpon>LaserLifeEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LaserSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LaserSelector.Designer.cs">
+      <DependentUpon>LaserSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LaserUsage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LaserUsage.Designer.cs">
+      <DependentUpon>LaserUsage.cs</DependentUpon>
+    </Compile>
     <Compile Include="SafetyCountdown.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -838,6 +856,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IssueDetectorForm.pt-BR.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LaserLifeEdit.resx">
+      <DependentUpon>LaserLifeEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LaserSelector.resx">
+      <DependentUpon>LaserSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LaserUsage.resx">
+      <DependentUpon>LaserUsage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.pt-BR.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
