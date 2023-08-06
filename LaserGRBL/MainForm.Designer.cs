@@ -43,6 +43,8 @@
 			this.TTLEstimated = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTEstimated = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTLinkToNews = new System.Windows.Forms.ToolStripStatusLabel();
+			this.TTlaserLife = new System.Windows.Forms.ToolStripStatusLabel();
+			this.TTSep = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTOvS = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTOvG1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTOvG0 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -63,6 +65,7 @@
 			this.MnGrblConfig = new System.Windows.Forms.ToolStripMenuItem();
 			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnMaterialDB = new System.Windows.Forms.ToolStripMenuItem();
+			this.laserUsageStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnHotkeys = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
@@ -192,6 +195,8 @@
             this.TTLEstimated,
             this.TTTEstimated,
             this.TTLinkToNews,
+            this.TTlaserLife,
+            this.TTSep,
             this.TTOvS,
             this.TTOvG1,
             this.TTOvG0,
@@ -254,28 +259,46 @@
 			this.TTLinkToNews.Spring = true;
 			this.TTLinkToNews.Click += new System.EventHandler(this.TTLinkToNews_Click);
 			// 
+			// TTlaserLife
+			// 
+			this.TTlaserLife.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+			this.TTlaserLife.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+			this.TTlaserLife.Name = "TTlaserLife";
+			resources.ApplyResources(this.TTlaserLife, "TTlaserLife");
+			this.TTlaserLife.Click += new System.EventHandler(this.TTlaserLife_Click);
+			// 
+			// TTSep
+			// 
+			resources.ApplyResources(this.TTSep, "TTSep");
+			this.TTSep.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+			this.TTSep.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+			this.TTSep.Name = "TTSep";
+			// 
 			// TTOvS
 			// 
-			resources.ApplyResources(this.TTOvS, "TTOvS");
 			this.TTOvS.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
 			this.TTOvS.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+			this.TTOvS.Margin = new System.Windows.Forms.Padding(1, 3, 1, 2);
 			this.TTOvS.Name = "TTOvS";
+			resources.ApplyResources(this.TTOvS, "TTOvS");
 			this.TTOvS.Click += new System.EventHandler(this.TTOvClick);
 			// 
 			// TTOvG1
 			// 
-			resources.ApplyResources(this.TTOvG1, "TTOvG1");
 			this.TTOvG1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
 			this.TTOvG1.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+			this.TTOvG1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 2);
 			this.TTOvG1.Name = "TTOvG1";
+			resources.ApplyResources(this.TTOvG1, "TTOvG1");
 			this.TTOvG1.Click += new System.EventHandler(this.TTOvClick);
 			// 
 			// TTOvG0
 			// 
-			resources.ApplyResources(this.TTOvG0, "TTOvG0");
 			this.TTOvG0.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
 			this.TTOvG0.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+			this.TTOvG0.Margin = new System.Windows.Forms.Padding(1, 3, 1, 2);
 			this.TTOvG0.Name = "TTOvG0";
+			resources.ApplyResources(this.TTOvG0, "TTOvG0");
 			this.TTOvG0.Click += new System.EventHandler(this.TTOvClick);
 			// 
 			// spacer
@@ -329,6 +352,7 @@
             this.MnGrblConfig,
             this.settingsToolStripMenuItem,
             this.MnMaterialDB,
+            this.laserUsageStatsToolStripMenuItem,
             this.toolStripSeparator2,
             this.MnHotkeys,
             this.toolStripMenuItem6,
@@ -399,6 +423,12 @@
 			resources.ApplyResources(this.MnMaterialDB, "MnMaterialDB");
 			this.MnMaterialDB.Name = "MnMaterialDB";
 			this.MnMaterialDB.Click += new System.EventHandler(this.MnMaterialDB_Click);
+			// 
+			// laserUsageStatsToolStripMenuItem
+			// 
+			resources.ApplyResources(this.laserUsageStatsToolStripMenuItem, "laserUsageStatsToolStripMenuItem");
+			this.laserUsageStatsToolStripMenuItem.Name = "laserUsageStatsToolStripMenuItem";
+			this.laserUsageStatsToolStripMenuItem.Click += new System.EventHandler(this.laserUsageStatsToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator2
 			// 
@@ -1074,6 +1104,9 @@
 		private System.Windows.Forms.ToolStripMenuItem MnConfigureOrturWiFi;
 		private System.Windows.Forms.ToolStripSeparator MnSeparatorConfigWiFi;
 		private System.Windows.Forms.ToolStripMenuItem ukrainianToolStripMenuItem;
+		private System.Windows.Forms.ToolStripStatusLabel TTlaserLife;
+		private System.Windows.Forms.ToolStripStatusLabel TTSep;
+		private System.Windows.Forms.ToolStripMenuItem laserUsageStatsToolStripMenuItem;
 	}
 }
 

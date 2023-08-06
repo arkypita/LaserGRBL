@@ -434,7 +434,28 @@ namespace Tools
 			if (functionReturnValue == null || string.IsNullOrEmpty(functionReturnValue))
 			{
 				if (WriteSuffix)
+				{
 					functionReturnValue = S_now;
+				}
+				else // write zero + precision
+				{
+					if (Precision == TimePrecision.Years)
+						functionReturnValue = string.Format("0 {0}", S_years);
+					if (Precision == TimePrecision.Month)
+						functionReturnValue = string.Format("0 {0}", S_months);
+					if (Precision == TimePrecision.Day)
+						functionReturnValue = string.Format("0 {0}", S_days);
+					if (Precision == TimePrecision.Hour)
+						functionReturnValue = string.Format("0 {0}", S_hours);
+					if (Precision == TimePrecision.Minute)
+						functionReturnValue = string.Format("0 {0}", S_minutes);
+					if (Precision == TimePrecision.Second)
+						functionReturnValue = string.Format("0 {0}", S_seconds);
+					if (Precision == TimePrecision.Millisecond)
+						functionReturnValue = string.Format("0 {0}", S_milliseconds);
+
+
+				}
 			}
 			else
 			{
@@ -447,6 +468,7 @@ namespace Tools
 						functionReturnValue = functionReturnValue + " " + S_ago;
 				}
 			}
+
 			return functionReturnValue;
 		}
 

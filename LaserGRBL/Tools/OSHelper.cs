@@ -506,7 +506,12 @@ namespace Tools
 														switch (productType)
 														{
 															case 1:
-																name = "Win 10";
+																{
+																	if (IsWindows11())
+																		name = "Win 11";
+																	else
+																		name = "Win 10";
+																}
 																break;
 															case 3:
 																name = "Win Server 2016";
@@ -527,6 +532,19 @@ namespace Tools
 					return s_Name;
 				}
 			}
+
+			public static bool IsWindows11()
+			{
+				try
+				{
+					string currentBuildStr = RegistryRead(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentBuild", "");
+					int currentBuild = int.Parse(currentBuildStr);
+
+					return currentBuild >= 22000;
+				}
+				catch { return false; }
+			}
+
 			#endregion NAME
 
 			#region PINVOKE
