@@ -117,42 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnApply.Text" xml:space="preserve">
-    <value>Aplicar</value>
-  </data>
-  <data name="LblPower.Text" xml:space="preserve">
-    <value>Força</value>
-  </data>
-  <data name="LblModel.Text" xml:space="preserve">
-    <value>Modelo Laser</value>
-  </data>
-  <data name="LblMaterial.Text" xml:space="preserve">
-    <value>Material</value>
-  </data>
-  <data name="LblThickness.Text" xml:space="preserve">
-    <value>Grossura</value>
-  </data>
-  <data name="LblAction.Text" xml:space="preserve">
-    <value>Ação</value>
-  </data>
-  <data name="LblPasses.Text" xml:space="preserve">
-    <value>Passos</value>
-  </data>
-  <data name="LblSpeed.Text" xml:space="preserve">
-    <value>Velocidade</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Configuração sugerida</value>
-  </data>
-  <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Cancelar</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Aviso: estes são valores de referência do fabricante com base em materiais de teste. Sugere-se fazer alguns testes e ajustar esses valores de acordo com seus materiais específicos. É possível modificar esses dados no menu GRBL "Banco de Materiais".
+  <data name="label7.Text" xml:space="preserve">
+    <value>Nome: Um breve nome rápido para você, apenas para identificar rapidamente este módulo.
 
-Nota: o número de passes deve ser copiado manualmente para o formulário principal.</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Selecione sua configuração</value>
+Marca: Por favor, escreva o nome da marca do módulo de laser. Normalmente é o mesmo da máquina, mas nem sempre.
+
+Modelo: Às vezes, a mesma máquina pode montar diferentes modelos de laser. Por favor, escreva o modelo exato do módulo de laser (não o modelo da máquina).
+
+Potência óptica: A potência óptica do módulo de laser expressa em W (watt). Às vezes expressa como "potência óptica" ou "potência de saída". Se você o tiver expresso em mW (miliwatt), simplesmente divida por 1000.
+
+A maioria dos módulos de laser possui uma etiqueta com essas informações. Caso contrário, consulte as especificações do gravador no manual do usuário ou no site do fabricante.</value>
   </data>
 </root>
