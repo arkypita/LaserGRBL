@@ -46,6 +46,7 @@
 			this.ChModel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ChRunTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ChPowerTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.ChStressTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ChAvgPow = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ChDateBuy = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ChDateStartM = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -53,7 +54,7 @@
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.BtnClose = new System.Windows.Forms.Button();
-			this.ChStressTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.Preview = new LaserGRBL.UserControls.UsageClassPreview();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -130,7 +131,7 @@
 			this.tableLayoutPanel3.RowCount = 1;
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel3.Size = new System.Drawing.Size(1012, 341);
-			this.tableLayoutPanel3.TabIndex = 1;
+			this.tableLayoutPanel3.TabIndex = 0;
 			// 
 			// tableLayoutPanel4
 			// 
@@ -138,11 +139,12 @@
 			this.tableLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.tableLayoutPanel4.ColumnCount = 1;
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel4.Controls.Add(this.BtnUnmark, 0, 5);
-			this.tableLayoutPanel4.Controls.Add(this.BtnMark, 0, 4);
-			this.tableLayoutPanel4.Controls.Add(this.BtnEdit, 0, 2);
-			this.tableLayoutPanel4.Controls.Add(this.BtnRemove, 0, 1);
-			this.tableLayoutPanel4.Controls.Add(this.BtnAddNew, 0, 0);
+			this.tableLayoutPanel4.Controls.Add(this.BtnUnmark, 0, 4);
+			this.tableLayoutPanel4.Controls.Add(this.BtnMark, 0, 3);
+			this.tableLayoutPanel4.Controls.Add(this.BtnEdit, 0, 0);
+			this.tableLayoutPanel4.Controls.Add(this.BtnRemove, 0, 2);
+			this.tableLayoutPanel4.Controls.Add(this.BtnAddNew, 0, 1);
+			this.tableLayoutPanel4.Controls.Add(this.Preview, 0, 6);
 			this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel4.Location = new System.Drawing.Point(889, 3);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -150,9 +152,9 @@
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel4.Size = new System.Drawing.Size(120, 335);
 			this.tableLayoutPanel4.TabIndex = 0;
@@ -165,11 +167,11 @@
 			this.BtnUnmark.Image = ((System.Drawing.Image)(resources.GetObject("BtnUnmark.Image")));
 			this.BtnUnmark.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.BtnUnmark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnUnmark.Location = new System.Drawing.Point(3, 168);
+			this.BtnUnmark.Location = new System.Drawing.Point(3, 155);
 			this.BtnUnmark.Name = "BtnUnmark";
 			this.BtnUnmark.Padding = new System.Windows.Forms.Padding(5, 2, 5, 2);
 			this.BtnUnmark.Size = new System.Drawing.Size(114, 32);
-			this.BtnUnmark.TabIndex = 6;
+			this.BtnUnmark.TabIndex = 5;
 			this.BtnUnmark.Text = "Unmark dead";
 			this.BtnUnmark.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.BtnUnmark.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -185,11 +187,11 @@
 			this.BtnMark.Image = ((System.Drawing.Image)(resources.GetObject("BtnMark.Image")));
 			this.BtnMark.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.BtnMark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnMark.Location = new System.Drawing.Point(3, 130);
+			this.BtnMark.Location = new System.Drawing.Point(3, 117);
 			this.BtnMark.Name = "BtnMark";
 			this.BtnMark.Padding = new System.Windows.Forms.Padding(5, 2, 5, 2);
 			this.BtnMark.Size = new System.Drawing.Size(114, 32);
-			this.BtnMark.TabIndex = 5;
+			this.BtnMark.TabIndex = 4;
 			this.BtnMark.Text = "Mark as dead";
 			this.BtnMark.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.BtnMark.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -204,11 +206,11 @@
 			this.BtnEdit.Image = ((System.Drawing.Image)(resources.GetObject("BtnEdit.Image")));
 			this.BtnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.BtnEdit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnEdit.Location = new System.Drawing.Point(3, 79);
+			this.BtnEdit.Location = new System.Drawing.Point(3, 3);
 			this.BtnEdit.Name = "BtnEdit";
 			this.BtnEdit.Padding = new System.Windows.Forms.Padding(5, 2, 5, 2);
 			this.BtnEdit.Size = new System.Drawing.Size(114, 32);
-			this.BtnEdit.TabIndex = 3;
+			this.BtnEdit.TabIndex = 1;
 			this.BtnEdit.Text = "Edit";
 			this.BtnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.BtnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -223,11 +225,11 @@
 			this.BtnRemove.Image = ((System.Drawing.Image)(resources.GetObject("BtnRemove.Image")));
 			this.BtnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.BtnRemove.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnRemove.Location = new System.Drawing.Point(3, 41);
+			this.BtnRemove.Location = new System.Drawing.Point(3, 79);
 			this.BtnRemove.Name = "BtnRemove";
 			this.BtnRemove.Padding = new System.Windows.Forms.Padding(5, 2, 5, 2);
 			this.BtnRemove.Size = new System.Drawing.Size(114, 32);
-			this.BtnRemove.TabIndex = 2;
+			this.BtnRemove.TabIndex = 3;
 			this.BtnRemove.Text = "Remove";
 			this.BtnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.BtnRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -242,11 +244,11 @@
 			this.BtnAddNew.Image = ((System.Drawing.Image)(resources.GetObject("BtnAddNew.Image")));
 			this.BtnAddNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.BtnAddNew.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnAddNew.Location = new System.Drawing.Point(3, 3);
+			this.BtnAddNew.Location = new System.Drawing.Point(3, 41);
 			this.BtnAddNew.Name = "BtnAddNew";
 			this.BtnAddNew.Padding = new System.Windows.Forms.Padding(5, 2, 5, 2);
 			this.BtnAddNew.Size = new System.Drawing.Size(114, 32);
-			this.BtnAddNew.TabIndex = 1;
+			this.BtnAddNew.TabIndex = 2;
 			this.BtnAddNew.Text = "Add";
 			this.BtnAddNew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.BtnAddNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -273,7 +275,7 @@
 			this.LVLasers.Location = new System.Drawing.Point(3, 3);
 			this.LVLasers.Name = "LVLasers";
 			this.LVLasers.Size = new System.Drawing.Size(880, 335);
-			this.LVLasers.TabIndex = 1;
+			this.LVLasers.TabIndex = 0;
 			this.LVLasers.UseCompatibleStateImageBehavior = false;
 			this.LVLasers.View = System.Windows.Forms.View.Details;
 			this.LVLasers.SelectedIndexChanged += new System.EventHandler(this.LVLasers_SelectedIndexChanged);
@@ -303,6 +305,11 @@
 			// 
 			this.ChPowerTime.Text = "Power Time";
 			this.ChPowerTime.Width = 80;
+			// 
+			// ChStressTime
+			// 
+			this.ChStressTime.Text = "Stress Time";
+			this.ChStressTime.Width = 80;
 			// 
 			// ChAvgPow
 			// 
@@ -339,7 +346,7 @@
 			this.tableLayoutPanel5.RowCount = 1;
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel5.Size = new System.Drawing.Size(1012, 48);
-			this.tableLayoutPanel5.TabIndex = 2;
+			this.tableLayoutPanel5.TabIndex = 1;
 			// 
 			// label2
 			// 
@@ -363,16 +370,23 @@
 			this.BtnClose.Name = "BtnClose";
 			this.BtnClose.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
 			this.BtnClose.Size = new System.Drawing.Size(95, 42);
-			this.BtnClose.TabIndex = 7;
+			this.BtnClose.TabIndex = 6;
 			this.BtnClose.Text = "Close";
 			this.BtnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.BtnClose.UseVisualStyleBackColor = true;
 			this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
 			// 
-			// ChStressTime
+			// Preview
 			// 
-			this.ChStressTime.Text = "Stress Time";
-			this.ChStressTime.Width = 80;
+			this.Preview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.Preview.LifeCounter = null;
+			this.Preview.Location = new System.Drawing.Point(3, 198);
+			this.Preview.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+			this.Preview.Name = "Preview";
+			this.Preview.Size = new System.Drawing.Size(114, 137);
+			this.Preview.TabIndex = 7;
 			// 
 			// LaserUsage
 			// 
@@ -389,6 +403,7 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Laser Lifespan - Monitoring Tool";
 			this.Load += new System.EventHandler(this.LaserUsage_Load);
+			this.Shown += new System.EventHandler(this.LaserUsage_Shown);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
@@ -431,5 +446,6 @@
 		private System.Windows.Forms.Button BtnUnmark;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.ColumnHeader ChStressTime;
+		private UserControls.UsageClassPreview Preview;
 	}
 }
