@@ -4023,10 +4023,13 @@ namespace LaserGRBL
 					if (mLastPowerHiResTimeNano != 0)
 					{
 						double elapsed = now - mLastPowerHiResTimeNano;
-						double powerperc = Math.Max(0, Math.Min(1, (double)power / (double)Configuration.MaxPWM)); //potenza da applicare a questo delta
+						decimal maxpwm = Configuration.MaxPWM;
 
-						//mCurrentLLC?.AddTrueLaserTime(TimeSpan.FromMilliseconds(normal / 1000 / 1000));
-						mCurrentLLC?.AddTrueLaserTimePower(TimeSpan.FromMilliseconds(elapsed / 1000 / 1000), powerperc);
+						if (maxpwm >= 10 && maxpwm <= 100000) //we have a configured value in a valid range
+						{
+							double powerperc = Math.Max(0, Math.Min(1, (double)power / (double)maxpwm)); //potenza da applicare a questo delta
+							mCurrentLLC?.AddTrueLaserTimePower(TimeSpan.FromMilliseconds(elapsed / 1000 / 1000), powerperc);
+						}
 					}
 					mLastPowerHiResTimeNano = now;
 				}
