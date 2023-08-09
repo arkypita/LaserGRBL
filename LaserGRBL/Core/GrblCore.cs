@@ -3390,7 +3390,7 @@ namespace LaserGRBL
 		}
 
 		public decimal MinPWM => ReadDecimal(Version11 ? 31 : -1, 0, 0, MAX_CONFIG_PWM);
-		public decimal MaxPWM => ReadDecimal(Version11 ? 30 : -1, 1, 1, MAX_CONFIG_PWM);
+		public decimal MaxPWM => ReadDecimal(Version11 ? 30 : -1, 1000, 1, MAX_CONFIG_PWM);
 		public decimal ResolutionX => ReadDecimal(Version9 ? 100 : 0, 250, 1, MAX_CONFIG_RESOLUTION);
 		public decimal ResolutionY => ReadDecimal(Version9 ? 101 : 1, 250, 1, MAX_CONFIG_RESOLUTION);
 		public decimal TableWidth => ReadDecimal(Version9 ? 130 : -1, 300, 1, MAX_CONFIG_SIZE);
