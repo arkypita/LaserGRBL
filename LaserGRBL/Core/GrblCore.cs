@@ -4132,7 +4132,7 @@ namespace LaserGRBL
 					{
 						System.Collections.Specialized.NameValueCollection postData = new System.Collections.Specialized.NameValueCollection()
 						{
-							{ "version" , "1" },
+							{ "version" , "2" },
 							{ "guid", UsageStats.GetID() },
 							{ "data", BuildJson(tosave) },
 						};
@@ -4176,8 +4176,23 @@ namespace LaserGRBL
 				sb.Append($"\"LastUsage\": {EscapeJson(LLC.LastUsage?.ToString("yyyy-MM-dd HH:mm:ss"))},");
 				sb.Append($"\"TimeInRun\": {EscapeJson(LLC.TimeInRun.TotalHours)},");
 				sb.Append($"\"TimeUsageNormalizedPower\": {EscapeJson(LLC.TimeUsageNormalizedPower.TotalHours)},");
-				sb.Append($"\"StressTime\": {EscapeJson(LLC.StressTime.TotalHours)},");
-				sb.Append($"\"AveragePowerFactor\": {EscapeJson(LLC.AveragePowerFactor)}");
+				sb.Append($"\"AveragePowerFactor\": {EscapeJson(LLC.AveragePowerFactor)},");
+
+				sb.Append($"\"Classes\": ");
+				{
+					sb.Append("{ ");
+
+					for (int j = 0; j < LLC.Classes.Length; j++)
+					{
+						sb.Append($"{LLC.Classes[j].TotalHours.ToString("0.000", NumberFormatInfo.InvariantInfo)}");
+
+						if (j == LLC.Classes.Length - 1) //ultimo
+							sb.Append(" } ");
+						else
+							sb.Append(", ");
+
+					}
+				}
 
 				if (i == tosend.Count - 1) //ultimo
 					sb.Append(" } ");
@@ -4191,7 +4206,12 @@ namespace LaserGRBL
 
 		static string EscapeJson(object o)
 		{
-			return HttpUtility.JavaScriptStringEncode(o != null ? o.ToString() : "", true);
+			if (o is double?)
+				return $"\"{(o as double?).GetValueOrDefault().ToString("0.000", NumberFormatInfo.InvariantInfo)}\"";
+			else if (o is double)
+				return $"\"{((double)o).ToString("0.000", NumberFormatInfo.InvariantInfo)}\"";
+			else
+				return HttpUtility.JavaScriptStringEncode(o != null ? o.ToString() : "", true);
 		}
 
 		public class RealDoSendRV
