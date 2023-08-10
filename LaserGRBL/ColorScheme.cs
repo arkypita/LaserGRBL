@@ -271,7 +271,7 @@ namespace LaserGRBL
 		private static Color GetColor(int index)
 		{return mData[CurrentScheme][index];}
 
-		private static Color ChangeColorBrightness(Color color, float correctionFactor)
+		public static Color ChangeColorBrightness(Color color, float correctionFactor)
 		{
 			float red = (float)color.R;
 			float green = (float)color.G;

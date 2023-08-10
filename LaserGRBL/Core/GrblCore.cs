@@ -12,6 +12,7 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Web;
 using System.Windows.Forms;
 using Tools;
 using static LaserGRBL.GrblCore;
@@ -1409,13 +1410,13 @@ namespace LaserGRBL
 		{
 			try { CloseCom(true); }
 			catch { }
-			
+
 			try { RX.Stop(); }
 			catch { }
 
 			try { TX.Stop(); }
 			catch { }
-			
+
 			LaserLifeHandler.SaveNow();
 		}
 
@@ -3389,7 +3390,7 @@ namespace LaserGRBL
 		}
 
 		public decimal MinPWM => ReadDecimal(Version11 ? 31 : -1, 0, 0, MAX_CONFIG_PWM);
-		public decimal MaxPWM => ReadDecimal(Version11 ? 30 : -1, 1, 1, MAX_CONFIG_PWM);
+		public decimal MaxPWM => ReadDecimal(Version11 ? 30 : -1, 1000, 1, MAX_CONFIG_PWM);
 		public decimal ResolutionX => ReadDecimal(Version9 ? 100 : 0, 250, 1, MAX_CONFIG_RESOLUTION);
 		public decimal ResolutionY => ReadDecimal(Version9 ? 101 : 1, 250, 1, MAX_CONFIG_RESOLUTION);
 		public decimal TableWidth => ReadDecimal(Version9 ? 130 : -1, 300, 1, MAX_CONFIG_SIZE);
@@ -3493,7 +3494,7 @@ namespace LaserGRBL
 			{
 				if (IsSetConf(line))
 				{
-					line = FixFoxalienConfig(line); 
+					line = FixFoxalienConfig(line);
 
 					System.Text.RegularExpressions.MatchCollection matches = ConfRegEX.Matches(line);
 					int key = int.Parse(matches[0].Groups[1].Value);
@@ -3833,6 +3834,7 @@ namespace LaserGRBL
 		[Serializable]
 		public class ListLLC : List<LaserLifeCounter>
 		{
+			public DateTime LastAttempt = new DateTime(2000, 1, 1);
 			public DateTime LastSent = new DateTime(2000, 1, 1);
 
 			internal ListLLC GetClone()
@@ -3842,8 +3844,9 @@ namespace LaserGRBL
 				lock (this)
 				{
 					foreach (LaserLifeCounter LLC in this)
-						clone.Add(LLC.Clone());				
+						clone.Add(LLC.Clone());
 					clone.LastSent = LastSent;
+					clone.LastAttempt = LastAttempt;
 				}
 
 				return clone;
@@ -3892,7 +3895,8 @@ namespace LaserGRBL
 			public TimeSpan TimeUsageNormalizedPower { get => mTimeUsageNormalizedPower; }
 			public TimeSpan StressTime { get => mTimeClasses[9]; }
 			public double AveragePowerFactor { get => mTimeUsageNonZero.TotalSeconds == 0 ? 0 : mTimeUsageNormalizedPower.TotalSeconds / mTimeUsageNonZero.TotalSeconds; }
-			public string Guid { get=> mGuid; }
+			public string Guid { get => mGuid; }
+			public TimeSpan[] Classes { get => mTimeClasses; }
 
 			private LaserLifeCounter()
 			{
@@ -3915,6 +3919,7 @@ namespace LaserGRBL
 
 			internal void AddRunTime(TimeSpan elapsed)
 			{
+				//elapsed = TimeSpan.FromSeconds(elapsed.TotalSeconds * 100);
 				mTimeInRun = mTimeInRun.Add(elapsed);
 				mLastUsage = DateTime.Today;
 			}
@@ -3926,6 +3931,8 @@ namespace LaserGRBL
 
 			internal void AddTrueLaserTimePower(TimeSpan elapsed, double powerperc)
 			{
+				//elapsed = TimeSpan.FromSeconds(elapsed.TotalSeconds * 100);
+
 				if (powerperc > 0.03) //do not track any usage under 3% (framing etc)
 				{
 					TimeSpan normalized = TimeSpan.FromMilliseconds(elapsed.TotalMilliseconds * powerperc); //normalize elapsed time with power
@@ -3934,7 +3941,7 @@ namespace LaserGRBL
 				}
 
 				if (powerperc > 0.01)
-				{ 
+				{
 					int clx = (int)Math.Floor((powerperc * 100 - 1) / 10); //1-10 = 0, 11-20 = 1; 91-100 = 9
 					clx = Math.Min(9, Math.Max(0, clx)); //ensure 0-9 range
 					mTimeClasses[clx] = mTimeClasses[clx] + elapsed;
@@ -3995,8 +4002,14 @@ namespace LaserGRBL
 					}
 					mLastStatusHiResTimeNano = now;
 				}
+				SendAndSave();
 			}
 			catch { }
+		}
+
+		private static void SendAndSave()
+		{
+			DoSend();
 			DoSave();
 		}
 
@@ -4010,16 +4023,19 @@ namespace LaserGRBL
 					if (mLastPowerHiResTimeNano != 0)
 					{
 						double elapsed = now - mLastPowerHiResTimeNano;
-						double powerperc = Math.Max(0, Math.Min(1, (double)power / (double)Configuration.MaxPWM)); //potenza da applicare a questo delta
+						decimal maxpwm = Configuration.MaxPWM;
 
-						//mCurrentLLC?.AddTrueLaserTime(TimeSpan.FromMilliseconds(normal / 1000 / 1000));
-						mCurrentLLC?.AddTrueLaserTimePower(TimeSpan.FromMilliseconds(elapsed / 1000 / 1000), powerperc);
+						if (maxpwm >= 10 && maxpwm <= 100000) //we have a configured value in a valid range
+						{
+							double powerperc = Math.Max(0, Math.Min(1, (double)power / (double)maxpwm)); //potenza da applicare a questo delta
+							mCurrentLLC?.AddTrueLaserTimePower(TimeSpan.FromMilliseconds(elapsed / 1000 / 1000), powerperc);
+						}
 					}
 					mLastPowerHiResTimeNano = now;
 				}
+				SendAndSave();
 			}
 			catch { }
-			DoSave();
 		}
 
 		public static void OnConnect(Form parent)
@@ -4055,12 +4071,39 @@ namespace LaserGRBL
 		{
 			try
 			{
-				long now = HiResTimer.TotalMilliseconds;
-				if (mLastSave == 0 || now - mLastSave > 20000) //save every 20s
+				lock(mLLCFileName)
+				{ 
+					long now = HiResTimer.TotalMilliseconds;
+					if (mLastSave == 0 || now - mLastSave > 20000) //save every 20s
+					{
+						ListLLC tosave = GetListClone();
+						System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(RealDoSave), tosave);
+						mLastSave = now;
+					}
+				}
+			}
+			catch { }
+		}
+
+		private static void DoSend()
+		{
+			try
+			{
+				DateTime now = DateTime.Now;
+				bool sendnow = false;
+				lock (mLLCL)
 				{
-					ListLLC tosave = GetListClone();
-					System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(RealDoSave), tosave);
-					mLastSave = now;
+					if ((now - mLLCL.LastSent).TotalDays > 14 && (now - mLLCL.LastAttempt).TotalDays > 1)
+					{
+						mLLCL.LastAttempt = now;
+						sendnow = true;
+					}
+				}
+
+				if (sendnow)
+				{
+					ListLLC tosend = GetListClone();
+					System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(RealDoSend), tosend);
 				}
 			}
 			catch { }
@@ -4075,6 +4118,107 @@ namespace LaserGRBL
 		{
 			try { RealDoSave(GetListClone()); }
 			catch { }
+		}
+
+		private static void RealDoSend(object state)
+		{
+			try
+			{
+				List<LaserLifeCounter> tosave = (state as ListLLC).Where(t => t.HasWorked()).ToList();
+				if (UrlManager.LaserStatistics != null && tosave.Count > 0)
+				{
+					string urlAddress = UrlManager.LaserStatistics;
+					using (UsageStats.MyWebClient client = new UsageStats.MyWebClient())
+					{
+						System.Collections.Specialized.NameValueCollection postData = new System.Collections.Specialized.NameValueCollection()
+						{
+							{ "version" , "2" },
+							{ "guid", UsageStats.GetID() },
+							{ "data", BuildJson(tosave) },
+						};
+
+						// client.UploadValues returns page's source as byte array (byte[]) so it must be transformed into a string
+						string json = System.Text.Encoding.UTF8.GetString(client.UploadValues(urlAddress, postData));
+
+						//RealDoSendRV RV = Tools.JSONParser.FromJson<RealDoSendRV>(json);
+						if (json == "Success!")
+							mLLCL.LastSent = DateTime.Now;
+					}
+				}
+
+			}
+			catch { }
+		}
+
+		private static string BuildJson(List<LaserLifeCounter> tosend)
+		{
+			//return "[ { \"id\": \"5001\", \"type\": \"None\" }, { \"id\": \"5004\", \"type\": \"Maple\" } ]";
+
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
+			sb.Append("[ ");
+
+
+
+			for (int i = 0; i < tosend.Count; i++)
+			{
+				LaserLifeCounter LLC = tosend[i];
+
+				sb.Append("{ ");
+
+				sb.Append($"\"Guid\": {EscapeJson(LLC.Guid)},");
+				sb.Append($"\"Name\": {EscapeJson(LLC.Name)},");
+				sb.Append($"\"Brand\": {EscapeJson(LLC.Brand)},");
+				sb.Append($"\"Model\": {EscapeJson(LLC.Model)},");
+				sb.Append($"\"OpticalPower\": {EscapeJson(LLC.OpticalPower)},");
+				sb.Append($"\"PurchaseDate\": {EscapeJson(LLC.PurchaseDate?.ToString("yyyy-MM-dd HH:mm:ss"))},");
+				sb.Append($"\"MonitoringDate\": {EscapeJson(LLC.MonitoringDate?.ToString("yyyy-MM-dd HH:mm:ss"))},");
+				sb.Append($"\"DeathDate\": {EscapeJson(LLC.DeathDate?.ToString("yyyy-MM-dd HH:mm:ss"))},");
+				sb.Append($"\"LastUsage\": {EscapeJson(LLC.LastUsage?.ToString("yyyy-MM-dd HH:mm:ss"))},");
+				sb.Append($"\"TimeInRun\": {EscapeJson(LLC.TimeInRun.TotalHours)},");
+				sb.Append($"\"TimeUsageNormalizedPower\": {EscapeJson(LLC.TimeUsageNormalizedPower.TotalHours)},");
+				sb.Append($"\"AveragePowerFactor\": {EscapeJson(LLC.AveragePowerFactor)},");
+
+				sb.Append($"\"Classes\": ");
+				{
+					sb.Append("{ ");
+
+					for (int j = 0; j < LLC.Classes.Length; j++)
+					{
+						sb.Append($"{LLC.Classes[j].TotalHours.ToString("0.000", NumberFormatInfo.InvariantInfo)}");
+
+						if (j == LLC.Classes.Length - 1) //ultimo
+							sb.Append(" } ");
+						else
+							sb.Append(", ");
+
+					}
+				}
+
+				if (i == tosend.Count - 1) //ultimo
+					sb.Append(" } ");
+				else
+					sb.Append(" }, ");
+			}
+
+			sb.Append(" ]");
+			return sb.ToString();
+		}
+
+		static string EscapeJson(object o)
+		{
+			if (o is double?)
+				return $"\"{(o as double?).GetValueOrDefault().ToString("0.000", NumberFormatInfo.InvariantInfo)}\"";
+			else if (o is double)
+				return $"\"{((double)o).ToString("0.000", NumberFormatInfo.InvariantInfo)}\"";
+			else
+				return HttpUtility.JavaScriptStringEncode(o != null ? o.ToString() : "", true);
+		}
+
+		public class RealDoSendRV
+		{
+			public int UpdateResult = -1;
+
+			[IgnoreDataMember] public bool Success => UpdateResult == 1;
 		}
 
 		private static void RealDoSave(object state)

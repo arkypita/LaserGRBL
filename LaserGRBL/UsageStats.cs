@@ -297,7 +297,7 @@ namespace LaserGRBL
 			[IgnoreDataMember] private int iType { get => string.IsNullOrEmpty(type) ? -1 : int.Parse(type); }
 		}
 
-		private class MyWebClient : WebClient
+		public class MyWebClient : WebClient
         {
             protected override WebRequest GetWebRequest(Uri uri)
             {

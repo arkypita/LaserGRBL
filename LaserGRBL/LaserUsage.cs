@@ -28,11 +28,11 @@ namespace LaserGRBL
 
 		private void LaserUsage_Load(object sender, EventArgs e)
 		{
-			RefreshList();
+			RefreshList(true);
 			RefreshButtons();
 		}
 
-		private void RefreshList()
+		private void RefreshList(bool select = false)
 		{
 			try
 			{
@@ -40,8 +40,17 @@ namespace LaserGRBL
 
 				LVLasers.BeginUpdate();
 				LVLasers.Items.Clear();
+
+				string lastguid = Settings.GetObject<string>("Last laser used", null);
 				foreach (LaserLifeHandler.LaserLifeCounter llc in mList)
-					LVLasers.Items.Add(value: new LaserLifeCounterLVI(llc));
+				{
+					LaserLifeCounterLVI lvi = new LaserLifeCounterLVI(llc);
+				
+					if (select && !string.IsNullOrEmpty(lastguid) && llc.Guid == lastguid)
+						lvi.Selected = true;
+
+					LVLasers.Items.Add(lvi);
+				}
 				LVLasers.EndUpdate();
 			}
 			catch { }
@@ -55,6 +64,7 @@ namespace LaserGRBL
 		private void LVLasers_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			RefreshButtons();
+			Preview.LifeCounter = GetSelected();
 		}
 
 		private void RefreshButtons()
@@ -179,6 +189,11 @@ namespace LaserGRBL
 				}
 			}
 			RefreshButtons();
+		}
+
+		private void LaserUsage_Shown(object sender, EventArgs e)
+		{
+			LVLasers.Focus();
 		}
 	}
 }
