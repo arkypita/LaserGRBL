@@ -294,6 +294,7 @@ namespace LaserGRBL
 
 		private void UpdateTimer_Tick(object sender, EventArgs e)
 		{
+			long foo = HiResTimer.TotalNano; //ensure call TotalNano to be able to detect and fix sleep/hibernation
 			TimerUpdate();
 			ConnectionForm.TimerUpdate();
 			PreviewForm.TimerUpdate();

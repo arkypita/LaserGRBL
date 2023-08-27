@@ -3851,12 +3851,18 @@ namespace LaserGRBL
 
 				return clone;
 			}
+
+			//internal void FixWeirdMeasures()
+			//{
+			//	foreach (LaserLifeCounter LLC in this)
+			//		LLC.FixWeirdMeasures();
+			//}
 		}
 
 		static ListLLC mLLCL;
 		static LaserLifeCounter mCurrentLLC;
-		private static long mLastStatusHiResTimeNano;
-		private static long mLastPowerHiResTimeNano;
+		private static long? mLastStatusHiResTimeNano;
+		private static long? mLastPowerHiResTimeNano;
 		private static long mLastSave;
 		private static string mLLCFileName;
 
@@ -3946,7 +3952,7 @@ namespace LaserGRBL
 					clx = Math.Min(9, Math.Max(0, clx)); //ensure 0-9 range
 					mTimeClasses[clx] = mTimeClasses[clx] + elapsed;
 				}
-
+				mLastUsage = DateTime.Today;
 				//System.Diagnostics.Debug.WriteLine($"LT: {mTimeInRun.TotalSeconds} LTT: {mTimeUsageNormalizedPower.TotalSeconds}");
 			}
 
@@ -3970,6 +3976,22 @@ namespace LaserGRBL
 				if (mTimeClasses == null)
 					mTimeClasses = new TimeSpan[10];
 			}
+
+			//internal void FixWeirdMeasures()
+			//{
+			//	TimeSpan TT = TimeSpan.Zero;
+			//	foreach (TimeSpan TS in Classes)
+			//		TT = TT.Add(TS);
+
+			//	if (
+			//		LastUsage.HasValue &&
+			//		DateTime.Today < new DateTime(2023, 12, 31) && // smette di farlo ad una certa data
+			//		TimeInRun.TotalHours > 100 && // almeno 100 ore
+			//		TimeInRun.TotalHours > ((LastUsage.Value - MonitoringDate.Value).TotalHours + 24) * 2 && //TIR > 2 * DELTA TRA DATE MONITORATE
+			//		TimeInRun.TotalHours > TT.TotalHours * 100 //TIR > 100 volte Classes.Time
+			//		)
+			//		mTimeInRun = TimeSpan.FromHours(TT.TotalHours * 1.5); //ri-assegna da TT (total time preso dalle classi) esteso * 1.5
+			//}
 		}
 
 		static LaserLifeHandler()
@@ -3982,6 +4004,8 @@ namespace LaserGRBL
 
 				if (mLLCL == null) mLLCL = new ListLLC();
 				if (mLLCL.Count == 0) mLLCL.Add(LaserLifeCounter.CreateDefault());
+
+				//mLLCL.FixWeirdMeasures();
 			}
 		}
 
@@ -3992,13 +4016,15 @@ namespace LaserGRBL
 				lock (mLLCL)
 				{
 					long now = HiResTimer.TotalNano;
-					if (mLastStatusHiResTimeNano != 0)
+					if (mLastStatusHiResTimeNano != null)
 					{
-						double delta = now - mLastPowerHiResTimeNano;
-						double perc = status == MacStatus.Run ? 1 : 0; //potenza da applicare a questo delta
-						double normal = delta * perc;
-
-						mCurrentLLC?.AddRunTime(TimeSpan.FromMilliseconds(normal / 1000 / 1000));
+						long delta = now - mLastPowerHiResTimeNano.Value;
+						if (delta > 0 && delta < 600000000000L) //do not add delta if bigger then 600s (or negative) - just a safety test
+						{ 
+							double perc = status == MacStatus.Run ? 1 : 0; //potenza da applicare a questo delta
+							double normal = delta * perc;
+							mCurrentLLC?.AddRunTime(TimeSpan.FromMilliseconds(normal / 1000 / 1000));
+						}
 					}
 					mLastStatusHiResTimeNano = now;
 				}
@@ -4020,15 +4046,18 @@ namespace LaserGRBL
 				lock (mLLCL)
 				{
 					long now = HiResTimer.TotalNano;
-					if (mLastPowerHiResTimeNano != 0)
+					if (mLastPowerHiResTimeNano != null)
 					{
-						double elapsed = now - mLastPowerHiResTimeNano;
-						decimal maxpwm = Configuration.MaxPWM;
+						long delta = now - mLastPowerHiResTimeNano.Value;
+						if (delta > 0 && delta < 600000000000L) //do not add delta if bigger then 600s (or negative) - just a safety test
+						{ 
+							decimal maxpwm = Configuration.MaxPWM;
 
-						if (maxpwm >= 10 && maxpwm <= 100000) //we have a configured value in a valid range
-						{
-							double powerperc = Math.Max(0, Math.Min(1, (double)power / (double)maxpwm)); //potenza da applicare a questo delta
-							mCurrentLLC?.AddTrueLaserTimePower(TimeSpan.FromMilliseconds(elapsed / 1000 / 1000), powerperc);
+							if (maxpwm >= 10 && maxpwm <= 100000) //we have a configured value in a valid range
+							{
+								double powerperc = Math.Max(0, Math.Min(1, (double)power / (double)maxpwm)); //potenza da applicare a questo delta
+								mCurrentLLC?.AddTrueLaserTimePower(TimeSpan.FromMilliseconds((double)delta / 1000000.0), powerperc);
+							}
 						}
 					}
 					mLastPowerHiResTimeNano = now;
