@@ -158,7 +158,7 @@ Baixe manualmente a nova versão do site lasergrbl.</value>
     <value>{0} Configuração importada com sucesso!</value>
   </data>
   <data name="CustomButtonEdit" xml:space="preserve">
-    <value>Botão de Edição</value>
+    <value>Editar Botão</value>
   </data>
   <data name="CustomButtonRemove" xml:space="preserve">
     <value>Remover botão</value>
