@@ -45,7 +45,12 @@ namespace LaserGRBL
 			GrblEmulator.WebSocketEmulator.Stop();
 			Autotrace.CleanupTmpFolder();
 
-			ComWrapper.ComLogger.StopLog();
+			if (ComWrapper.ComLogger.Enabled)
+			{
+				string message = ComWrapper.ComLogger.StopLog();
+				if (message != null) Logger.LogMessage("ComLog", message);
+			}
+
 			Logger.Stop();
 
 		}

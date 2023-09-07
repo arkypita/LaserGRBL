@@ -63,7 +63,7 @@ namespace LaserGRBL
             SetStatus(var);
         }
 
-        public override void RefreshConfig()
+        public override void RefreshConfig(RefreshCause cause)
         {
 
         }

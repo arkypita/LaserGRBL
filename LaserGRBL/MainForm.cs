@@ -639,7 +639,7 @@ namespace LaserGRBL
 
 		private void MNGrblEmulator_Click(object sender, EventArgs e)
 		{
-			LaserGRBL.GrblEmulator.WebSocketEmulator.Start();
+			GrblEmulator.WebSocketEmulator.Start();
 		}
 
 		private void blueLaserToolStripMenuItem_Click(object sender, EventArgs e)
@@ -794,7 +794,7 @@ namespace LaserGRBL
 					sfd.FileName = "comlog.txt";
 					sfd.Title = "Select extended log filename";
 
-					System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+					DialogResult dialogResult = DialogResult.Cancel;
 					try
 					{
 						dialogResult = sfd.ShowDialog(this);
@@ -806,12 +806,16 @@ namespace LaserGRBL
 					}
 
 					if (dialogResult == DialogResult.OK && sfd.FileName != null)
-						ComWrapper.ComLogger.StartLog(sfd.FileName);
+					{
+						string message = ComWrapper.ComLogger.StartLog(sfd.FileName);
+						Logger.LogMessage("ComLog", message);
+					}
 				}
 			}
 			else
 			{
-				ComWrapper.ComLogger.StopLog();
+				string message = ComWrapper.ComLogger.StopLog();
+				if (message != null) Logger.LogMessage("ComLog", message);
 			}
 		}
 

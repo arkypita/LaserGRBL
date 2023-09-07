@@ -16,8 +16,9 @@ namespace LaserGRBL.ComWrapper
 		private static string lockstr = "--- TX RX LOG LOCK ---";
 		private static AsyncLogFile file;		
 		private static int logcnt = 0;
+		private static string logid = null;
 
-		public static void StartLog(string filename)
+		public static string StartLog(string filename)
 		{
 			try
 			{
@@ -25,23 +26,35 @@ namespace LaserGRBL.ComWrapper
 				{
 					StopLog();
 					file = new AsyncLogFile(filename, 0);
-					Log("log", $"Recording session started @ {DateTime.Now}");
+
+					logid = Guid.NewGuid().ToString().Split('-')[0];
+					string message = String.Format("Recording session started @ {0:dd/MM/yyyy HH:mm:ss.fff} - Session ID [{1}]", DateTime.Now, logid);
+					Log("log", message);
+
+					return message;
 				}
 			}
 			catch { }
+
+			return "Cannot start recording session!";
 		}
 
-		public static void StopLog()
+		public static string StopLog()
 		{
 			try
 			{
 				if (Enabled)
 				{
-					Log("log", $"Recording session stopped @ {DateTime.Now}");
+					string message = String.Format("Recording session stopped @ {0:dd/MM/yyyy HH:mm:ss.fff} - Session ID [{1}]", DateTime.Now, logid);
+					Log("log", message);
 					file.Stop();
+
+					return message;
 				}
 			}
-			finally { file = null; logcnt = 0; }
+			finally { file = null; logcnt = 0; logid = null; }
+
+			return null;
 		}
 
 		public static bool Enabled => file != null; 
