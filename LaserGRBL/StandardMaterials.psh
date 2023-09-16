@@ -6459,4 +6459,1912 @@
     <Cycles>1</Cycles>
     <Remarks>Easy to catch fire, pay attention to protection!</Remarks>
   </Materials>
+  <Materials>
+    <id>a2486915-2d1e-4ae2-b3ab-aaba771cf517</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Plywood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>910c3fd7-c571-4f48-b7a9-9884d20ab571</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Plywood</Material>
+    <Thickness>1.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>75b44675-e0de-4f10-826c-d909e3a46310</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Plywood</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>3</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>9e1b4588-432e-44a8-a61b-8ef0cadc586a</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Plywood</Material>
+    <Thickness>5 mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>5</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>25bd4418-6208-4646-951a-707f8bae0786</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Paperboard</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>6fd5668c-1c58-4e10-9f9d-e8983a8aca75</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Paperboard</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>3</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8af4d6f2-fcd1-4328-9693-c5a49cdbc436</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Kraft Paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>898baaa0-3eb6-4dbb-873f-a3348208f222</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>KT Board (dark color)</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4f44f596-50f3-4a78-9909-53f43d065823</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Non-woven fabrics (dark color)</Material>
+    <Thickness>0.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>791ebe79-d303-4fa5-8b0b-c34c66546e6e</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Cotton Cloth (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>78fd4a83-48df-4c3b-8a13-5f7f9674e3fe</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8fab9932-c85a-4ae8-aa1d-ae6e1fe2a902</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Leather</Material>
+    <Thickness>0.7mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4cd6d1a3-de00-47e2-afc0-abf8f70e3989</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Plastic Sheet (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d2b296d1-61a4-43d6-bb49-2e1f0dae420a</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Solid Wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>093b3b8b-01da-497c-aeef-552c791982e1</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4b48d2c9-315d-433a-bbf5-3acd1591da41</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Powder Coated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>6d0929bd-bf0e-492c-9c12-d60762cb4b99</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Paint Sprayed Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>644270e4-6ced-4247-97dc-3075c6b6136c</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Plated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>7bd47d9d-a164-4110-9a3b-88d0763cacce</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Anodised Aluminium</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>05a77153-6a69-4e96-9e04-86d45d283f92</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Cobblestone</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>13e4fb82-f866-4899-b187-aa2394543957</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Stainless Steel Crude</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>226b7e41-9f55-45ef-9dce-ece8be488892</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Foam sheet</Material>
+    <Thickness>2 mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>aab72fb4-614b-4624-88ad-6f1b512d1bd3</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Neoprene</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>6000</Speed>
+    <Cycles>3</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>81fb0ebb-a50c-4e3f-8f2b-07deefc70f9d</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L40 (5.5W)</Model>
+    <Material>Clay Oven</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>2400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>c337d23b-739b-4863-8557-ff46c76fe656</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Plywood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>7df4775b-2ed6-4551-bda1-992f5b3a97e7</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Plywood</Material>
+    <Thickness>1.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>ac1616d5-a954-422b-8217-0c59c18cf67e</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Plywood</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>32ef78a3-f4fa-4236-8068-b46ab951304f</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Plywood</Material>
+    <Thickness>5 mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>3</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>695b5475-2bb2-4e8d-8608-9d085bd3bd0c</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Paperboard</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>12</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>745fb6ee-4b51-47c4-bd0e-84d2a7386d7a</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Paperboard</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>2</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>820feefa-20d2-4440-8610-de156a90fcbb</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Kraft Paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>12</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>3e69fc83-d851-4817-8f8b-6c348fbe4752</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>KT Board (dark color)</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ddb6a1cd-a967-4dc7-a41b-7a4483ff84e2</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Non-woven fabrics (dark color)</Material>
+    <Thickness>0.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2953e0ac-d6f3-4701-91c9-6767e2023a9f</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Cotton Cloth (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ab763444-3fc5-4194-be9f-d6569bed5e97</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>12</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>fcf761ee-c29f-430b-af3d-9a236bd883f0</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Leather</Material>
+    <Thickness>0.7mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>01345d95-7b9b-4001-93ba-f0da82df594b</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Plastic Sheet (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>45</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>42ce1ec9-e7f6-45af-9f65-b21bc75b93d9</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Solid Wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>38</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>31b4141a-7116-4f52-97de-4ffdb4a93ae5</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>71c63a00-c68d-42e4-9a5e-4cf62879dd04</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Powder Coated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>03d46df5-badb-4a1f-a607-fbb0236e0362</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Paint Sprayed Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e14cfb4a-5318-4d4c-b0da-f3d91113c298</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Plated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>50632051-9e78-4bd4-8393-903f1165c14f</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Anodised Aluminium</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>032f1528-6faf-4619-aab7-ee0a04efe6ae</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Cobblestone</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>31a0937b-275c-4576-836d-307fa75a8b6a</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Stainless Steel Crude</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f15cb3fe-fed2-4449-b106-c3acde88acf0</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Foam sheet</Material>
+    <Thickness>2 mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>131551cb-4761-4b01-97f9-4fa7ff517273</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>MDF</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>41bb9622-ed5f-46fc-85e2-20c619777b73</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>MDF</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>2</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>cce34626-3905-4252-8a2e-cb92b8fdb799</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>MDF</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>3</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e99c71c5-3399-40e7-89ea-237d0961a0bc</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Neoprene</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>6000</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>Importante: reducir la velocidad puede provocar llama</Remarks>
+  </Materials>
+  <Materials>
+    <id>558a558d-4a57-4816-a053-f17c85a54514</id>
+    <Visible>true</Visible>
+    <Model>LEON3D L60 (10w)</Model>
+    <Material>Clay Oven</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>45</Power>
+    <Speed>2400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>c7596736-7078-412a-b1c1-0567d63bdf40</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Basswood</Material>
+    <Thickness>3</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>700</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>6de45bbf-05e7-455a-bc5f-e25af2b2a1cb</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Basswood</Material>
+    <Thickness>5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>bb2ec70c-43cc-4ac2-9be8-e4c33ebc241a</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Basswood</Material>
+    <Thickness>6</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>98d505fd-5e40-4380-a097-e3582f538bd1</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Basswood</Material>
+    <Thickness>8</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>bfc87428-2003-4d12-aeda-3b73fa740029</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Basswood</Material>
+    <Thickness>10</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>acce4f31-dbf2-4915-816b-d329dcd90050</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Basswood</Material>
+    <Thickness>12</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5f14c172-3899-4e54-9b5a-3c19e9923c89</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Basswood</Material>
+    <Thickness>13</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>2</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>9ae0502f-e153-460e-8346-54b84e239194</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Basswood</Material>
+    <Thickness>14</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>2</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>082d9332-b27a-474a-93f2-b5f13b1f95da</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Basswood</Material>
+    <Thickness>15</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>2</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>dd16e92c-031b-4631-a0fd-dde18162c736</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Basswood</Material>
+    <Thickness>20</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>15</Cycles>
+    <Remarks>Drop the focal length by 1mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>4086778c-84a3-4c70-8128-982029ceb412</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Pine_Board</Material>
+    <Thickness>5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f66d9595-1199-43d3-9df0-842dbb5c980e</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Pine_Board</Material>
+    <Thickness>10</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>67c8b8f5-8845-45c5-bb81-16a7bdfc7505</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Pine_Board</Material>
+    <Thickness>12</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ad71fc6c-c044-4f38-bc49-a0954fec0b04</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Pine_Board</Material>
+    <Thickness>15</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>2</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>60bfb1e9-a0b3-4795-8d13-807aaf26b236</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Pine_Board</Material>
+    <Thickness>19</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>3</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b3483333-1c27-4fc4-8666-279c6be68ac4</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Pine_Board</Material>
+    <Thickness>20</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>3</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>3061c6e3-22a4-4177-8b35-4558b5ffdd83</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Pine_Board</Material>
+    <Thickness>30</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>10</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>03d168d5-5f54-4e21-bbcd-736b4ea9a43d</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Acrylic</Material>
+    <Thickness>5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>588b6622-11ea-4404-b867-fd6cf9c1e8dc</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Acrylic</Material>
+    <Thickness>6</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>f1c9fd03-a4f4-4771-b45d-4f9699ddefd7</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Acrylic</Material>
+    <Thickness>8</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>1bd060f3-8f5a-448b-8094-18f571f945fa</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Acrylic</Material>
+    <Thickness>10</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>60</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>6ce61e22-1bfa-417f-9d18-13ab15dd484e</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Acrylic</Material>
+    <Thickness>15</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>4</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>2ed1f0e4-08b9-4117-806c-290832eaecb3</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Acrylic</Material>
+    <Thickness>20</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>4</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>9e13eaea-b2b4-4b46-b84c-b5ff56e686a1</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Acrylic</Material>
+    <Thickness>25</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>10</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>1629601d-1d8b-4b08-91ef-928466cd828e</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Acrylic</Material>
+    <Thickness>30</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>10</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>ccee28cf-0924-4644-a732-3db242e06992</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Acrylic</Material>
+    <Thickness>45</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>15</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>63c493b9-83a1-4521-81f6-6b88bfbf8f8f</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Poly_Vinyl_Chloride</Material>
+    <Thickness>3</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>44333496-e11f-49e1-befb-d6c8e5e86ce1</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Poly_Vinyl_Chloride</Material>
+    <Thickness>5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>900</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d428f64b-7886-4dd7-990f-5b3e84e90026</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Poly_Vinyl_Chloride</Material>
+    <Thickness>15</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>The bottom of the cut is slightly burnt</Remarks>
+  </Materials>
+  <Materials>
+    <id>d7ca0cf4-914b-4f69-86bd-afbceb4de75b</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Paperboard</Material>
+    <Thickness>1</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f0b5dac7-4e93-46d0-a605-f4e14ba78066</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Paperboard</Material>
+    <Thickness>2</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>cf7f8faf-19a2-4110-ac57-72dd928e6e0d</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Paperboard</Material>
+    <Thickness>3</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>39a48582-81fc-46e0-b8ea-04b756b0f8f7</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Paperboard</Material>
+    <Thickness>6</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>2</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b54a4a22-9414-40b8-a209-4eafa37ab2e8</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Paperboard</Material>
+    <Thickness>5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>941ec86a-f258-4a1f-89df-5c71f0e65ce9</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Leather</Material>
+    <Thickness>1,5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>dee7658f-4068-4582-83ef-30396e3ba02b</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Leather</Material>
+    <Thickness>2</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>bb5cd378-6e08-4f72-a859-e32d35875fb0</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Colored_A4_Paper</Material>
+    <Thickness>0,2</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>-</Remarks>
+  </Materials>
+  <Materials>
+    <id>576957b8-1807-48c8-8d41-76174969ec89</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Non_Woven_Fabrics</Material>
+    <Thickness>0,6</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Cut edges neatly, but slight burn marks can be seen</Remarks>
+  </Materials>
+  <Materials>
+    <id>9e6cd206-1b48-4e11-8d0d-00525740694e</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Bamboo</Material>
+    <Thickness>8,5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>bda3f7bf-5e9d-4c1c-8553-53d36b3c7a68</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>20000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>1fe615ac-51a1-4cee-a20c-095aa0d35c1a</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Pine_Board</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>15000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>741aa3b3-8be4-499a-bf8f-ffaff80378a8</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>20000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>47097d08-efdc-436f-b807-ee9d01275411</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Poly_Vinyl_Chloride</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>30000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>37a38808-ca95-4014-9c3f-f13821f3fdc9</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Paperboard</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>30000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>42c9d21c-b986-44de-a85e-8e027ef6e6af</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>30000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5b887b0c-3d4b-4be8-8236-8cd14ee07676</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Colored_A4_Paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>30000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>9c9d3dc1-e287-49d5-b6f0-96d5adc9da6b</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Non-Woven Fabrics (dark color)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>20000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>6a8ed2d2-6cff-41b9-9af1-7cc15aa9ce0a</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Denim</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>20000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ef2cc38e-0a91-4d0c-9a0d-4d42987f5336</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>ABS</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>30000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>fbe0fa89-0087-4646-8703-d2c086d97f8c</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>20000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2b999752-01d5-4915-8804-7067cfb5aa2d</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>bf3873fb-d37d-4da5-951e-ce26051eeea1</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Coated_Metal_Card</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>20000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>c24a5ce6-07f9-4bfa-87cf-276da4def2e7</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Birch Plywood</Material>
+    <Thickness>4</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ce735662-42c1-4e85-9921-a89f90044c50</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Birch Plywood</Material>
+    <Thickness>6</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>6789965d-1788-43fd-9a23-0d7d3fb2b341</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Birch Plywood</Material>
+    <Thickness>9</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>474c286c-0888-45cd-bd40-5e72f32ed275</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Birch Plywood</Material>
+    <Thickness>12</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>3</Cycles>
+    <Remarks>The bottom of the cut is slightly burnt</Remarks>
+  </Materials>
+  <Materials>
+    <id>b7340ca2-0174-47c0-ba47-0032eb9d9d64</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Eucalyptus Plywood</Material>
+    <Thickness>5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8188e3a5-de78-4773-9759-a3a33504a0f6</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Eucalyptus Plywood</Material>
+    <Thickness>10</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>2</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5d603d72-cd30-46db-8e97-a9f4983eaff2</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Eucalyptus Plywood</Material>
+    <Thickness>12</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>4</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>7a604f03-0a1a-4255-a898-26bd472ccb93</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Eucalyptus Plywood</Material>
+    <Thickness>15</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>6</Cycles>
+    <Remarks>The bottom of the cut is slightly burnt</Remarks>
+  </Materials>
+  <Materials>
+    <id>9f782e40-50c0-479d-b7c8-9829026f2b62</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Paulownia Plank</Material>
+    <Thickness>3</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>0ef4ce10-421c-4069-b39f-8432fbf7e39d</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Paulownia Plank</Material>
+    <Thickness>5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>700</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a8a1026d-cc0f-466b-b132-e2534fe139fd</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Paulownia Plank</Material>
+    <Thickness>8</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>1cd683de-216f-4a33-8c85-3483392c2df3</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Paulownia Plank</Material>
+    <Thickness>10</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>94d0f06e-0b90-4de7-942c-86b966ff6f02</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Paulownia Plank</Material>
+    <Thickness>12</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>1800516d-5e55-4850-b3dc-9cf603ddd188</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Paulownia Plank</Material>
+    <Thickness>15</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>89982dbe-5d54-4b11-9b6f-fa4eeadfc419</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Paulownia Plank</Material>
+    <Thickness>20</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>3</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>09d51a9b-617e-443e-ac16-bca1e3db91f0</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>MDF</Material>
+    <Thickness>3</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>c6edeb2c-0930-4bd1-9f8e-56ce5b3aab43</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>MDF</Material>
+    <Thickness>5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>2</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>97028911-ba44-4ce1-933c-0ca9dc0d385b</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>MDF</Material>
+    <Thickness>12</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>6</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>c2948198-cc57-4636-9bc9-6190314cfcd9</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Green Acrylic</Material>
+    <Thickness>3</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>There are burn marks along the cutting path and a pungent odor is emitted during the cutting process. Cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>2e897fd9-d538-4f79-845e-8da91f943734</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Green Acrylic</Material>
+    <Thickness>5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>There are burn marks along the cutting path and a pungent odor is emitted during the cutting process. Cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>9b4eaf4b-646d-4de2-9b1c-42316b93f602</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Green Acrylic</Material>
+    <Thickness>8</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>4</Cycles>
+    <Remarks>There are burn marks along the cutting path and a pungent odor is emitted during the cutting process. Cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>0d1c0f56-02a1-4c44-bae8-248d49c6cb12</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Yellow Acrylic</Material>
+    <Thickness>3</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There are burn marks along the cutting path and a pungent odor is emitted during the cutting process. Cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>863346c3-5df5-41ca-93ba-71d64983e5f6</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Yellow Acrylic</Material>
+    <Thickness>5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>There are burn marks along the cutting path and a pungent odor is emitted during the cutting process. Cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>d8320c4c-3941-4b07-bca7-9ccceb70d402</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Red Acrylic</Material>
+    <Thickness>3</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There are burn marks along the cutting path and a pungent odor is emitted during the cutting process. Cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>10c70a0f-667a-41a6-9488-bc372d1940e8</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Red Acrylic</Material>
+    <Thickness>5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There are burn marks along the cutting path and a pungent odor is emitted during the cutting process. Cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>3bee1a48-b53e-4ca5-b9d4-2a92a8dfb686</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Red Acrylic</Material>
+    <Thickness>10</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>6</Cycles>
+    <Remarks>There are burn marks along the cutting path and a pungent odor is emitted during the cutting process. Cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>04b2e7b0-d380-41dc-8a11-83aaad06a1c5</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>White Cardboard</Material>
+    <Thickness>1</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8d1c60fb-1c7f-4ad9-ba8a-36d105fdb306</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>White Cardboard</Material>
+    <Thickness>2,5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There is a slight yellowing next to the cutting path</Remarks>
+  </Materials>
+  <Materials>
+    <id>2f809e5d-33f3-4645-97d7-827d6d366d47</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>White Cardboard</Material>
+    <Thickness>3</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There is a slight yellowing next to the cutting path</Remarks>
+  </Materials>
+  <Materials>
+    <id>35294e98-c7ab-4758-b0af-0ca7c541e601</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Black Cardboard</Material>
+    <Thickness>1</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There is a slight yellowing next to the cutting path</Remarks>
+  </Materials>
+  <Materials>
+    <id>99d7fd98-8058-4e69-a73d-ea80c9bca2b6</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Black Cardboard</Material>
+    <Thickness>2,5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a03de069-10c6-43a2-9057-fdd26cb3297f</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Coated Duplex Board</Material>
+    <Thickness>1</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>1c0696fe-a591-480b-b942-4baecbbd3cdb</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Coated Duplex Board</Material>
+    <Thickness>2</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>98efbb18-9eb2-4d9a-88fb-31f45b73ca26</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Rubber</Material>
+    <Thickness>1</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>3</Cycles>
+    <Remarks>There are burn marks along the cutting path and a pungent odor is emitted during the cutting process. Cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>35db6847-5d3e-4480-beb6-f563d6b0476f</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Birch Plywood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>7b7425b9-45d5-444c-a036-03985537cef6</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Eucalyptus Plywood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>cf01a531-99f5-4679-bfc2-3c4b95f4e239</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Paulownia Plank</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>20000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>083a2c4c-b27e-4eea-a1da-d2e98ae59613</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>MDF</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>15000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>06b1b2e5-8541-4efd-9df1-855c048f1028</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Green Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>20000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b4bed5d6-5a51-4c7a-b907-05fe153b1e15</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Orange Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>20000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4d3f29d2-6c5b-4290-9f78-8d77665980d4</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Yellow Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>20000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a8f1a1ba-bd03-4700-90c9-691e983fa6d6</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Red Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>20000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>6ee6dbc6-5375-4ed0-b932-d1493dc6b8df</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>White Cardboard</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>15000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>0799ff69-6c98-410d-8104-44956c85668c</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Black Cardboard</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>30000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>391e3687-cd1b-4598-825b-ba804a9ea1ab</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Coated Duplex Board</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>30000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e562c0a6-bafe-4ca7-be07-038036e19b5e</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Rubber</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>30000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>be40732f-2cff-401b-a712-9bcd230d23bd</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Cold Rolled Sheet</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8ac0d45a-e0e8-49e5-9700-f6b14d67636e</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Dry Leaves</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>30000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a2987b99-beb7-428b-bb87-11709337b764</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Denim</Material>
+    <Thickness>0,7</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1800</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Cut edges neatly, but slight burn marks can be seen</Remarks>
+  </Materials>
+  <Materials>
+    <id>9377c0af-037a-4426-8b7c-cd8203ba9442</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>Denim</Material>
+    <Thickness>0,8</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1800</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Cut edges neatly, but slight burn marks can be seen</Remarks>
+  </Materials>
+  <Materials>
+    <id>2f3e804a-513a-445a-a37a-ec9edcfa91f7</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>ABS</Material>
+    <Thickness>1</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>There are burn marks along the cutting path and a pungent odor is emitted during the cutting process. Cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>d7279ae2-2b9f-4380-a106-916ce8596fa9</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>ABS</Material>
+    <Thickness>0,8</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>b830d1e6-0a8b-4b8f-88d5-e304ddd9bbf4</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>ABS</Material>
+    <Thickness>2</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>700</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>1b60f5e5-c400-4a38-a60e-99287e8e4102</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>ABS</Material>
+    <Thickness>3</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>960021b9-2d49-4099-8abd-18ca6f1db14f</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>ABS</Material>
+    <Thickness>4</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>There is an irritating odor when cutting, so cut with caution</Remarks>
+  </Materials>
+  <Materials>
+    <id>dc50080b-582c-4c0c-8223-417f47947286</id>
+    <Visible>true</Visible>
+    <Model>Algo ALM-22BD (22W)</Model>
+    <Material>ABS</Material>
+    <Thickness>6</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>There are burn marks along the cutting path and a pungent odor is emitted during the cutting process. Cut with caution</Remarks>
+  </Materials>
 </MaterialDB>

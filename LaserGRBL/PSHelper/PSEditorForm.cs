@@ -81,8 +81,12 @@ namespace LaserGRBL.PSHelper
 
 					foreach (string row in rows)
 					{
-						string[] cells = row.Split(new char[] { '\t' });
-						GrblCore.MaterialDB.Materials.AddMaterialsRow(Guid.NewGuid(), true, cells[0], cells[1], cells[3], cells[2], GetInt(cells[4]), GetInt(cells[5]), GetInt(cells[6]), cells[7]);
+						try
+						{
+							string[] cells = row.Split(new char[] { '\t' });
+							GrblCore.MaterialDB.Materials.AddMaterialsRow(Guid.NewGuid(), true, cells[0], cells[1], cells[3], cells[2], GetInt(cells[4]), GetInt(cells[5]), GetInt(cells[6]), cells[7]);
+						}
+						catch (Exception ex) { MessageBox.Show($"Error importing line: [{row}]\r\n{ex.Message}"); }
 					}
 				}
 			}
