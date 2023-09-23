@@ -845,7 +845,10 @@ namespace LaserGRBL
 		{
 			System.Threading.Thread.Sleep(500); //allow the machine to send all the startup messages before refreshing config and info
 
-			try { RefreshConfig(); }
+			try
+			{
+				RefreshConfig(RefreshCause.OnConnect);
+			}
 			catch (Exception ex) { Logger.LogMessage("Refresh Config", ex.Message); }
 
 			try { RefreshMachineInfo(); }
@@ -953,12 +956,15 @@ namespace LaserGRBL
 			}
 		}
 
-		public virtual void RefreshConfig()
+		public enum RefreshCause { OnConnect, OnDialog, OnRead, OnExport, OnImport, OnWriteBegin, OnWriteEnd }
+		public virtual void RefreshConfig(RefreshCause cause)
 		{
 			if (CanReadWriteConfig)
 			{
 				try
 				{
+					Logger.LogMessage("Refresh Config", "Refreshing grbl configuration [{0}]", cause);
+
 					GrblConfST conf = new GrblConfST(GrblVersion);
 					GrblCommand cmd = new GrblCommand("$$");
 
@@ -1007,7 +1013,14 @@ namespace LaserGRBL
 
 						if (conf.Count < conf.ExpectedCount) //log but do not show error if some param is missing
 							Logger.LogMessage("Refresh Config", "Wrong number of config param found! (Expected: {0} Found: {1})", conf.Count, conf.ExpectedCount);
+						else
+							Logger.LogMessage("Refresh Config", "Configuration successfully received! (Expected: {0} Found: {1})", conf.Count, conf.ExpectedCount);
 					}
+				}
+				catch (Exception ex)
+				{
+					Logger.LogException("Refresh Config", ex);
+					throw ex;
 				}
 				finally
 				{
@@ -1017,6 +1030,10 @@ namespace LaserGRBL
 						mSentPtr = mSent; //restore queue
 					}
 				}
+			}
+			else
+			{
+				Logger.LogMessage("Refresh Config", "Cannot refresh config now [{0}] [Connected:{1} Program:{2} Status:{3}]", cause, IsConnected, InProgram, MachineStatus);
 			}
 		}
 
