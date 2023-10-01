@@ -146,7 +146,7 @@ namespace LaserGRBL
 				ContextMenuStrip = cms;
 			}
 
-			internal bool PositionUnlocked
+			private bool PositionUnlocked
 			{
 				get
 				{
