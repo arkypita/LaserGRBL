@@ -139,7 +139,6 @@ namespace LaserGRBL
 				this.Caption = cb.Caption;
 				tt.SetToolTip(this, cb.ToolTip);
 
-
 				cms = new ContextMenuStrip();
 				cms.Items.Add(Strings.CustomButtonRemove, null, RemoveButton_Click);
 				cms.Items.Add(Strings.CustomButtonEdit, null, EditButton_Click);
@@ -147,7 +146,7 @@ namespace LaserGRBL
 				ContextMenuStrip = cms;
 			}
 
-			private bool PositionUnlocked
+			internal bool PositionUnlocked
 			{
 				get
 				{

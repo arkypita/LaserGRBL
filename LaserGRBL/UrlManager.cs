@@ -19,5 +19,9 @@ namespace LaserGRBL
 		public static string TelegramServiceKey = null;
 		public static string UpdateMaterialDB = null;
 		public static string DownloadMaterialDB = null;
-	}
+
+		// we just use a non-filled-in URL here
+		public static string LaserStatistics = null;
+
+    }
 }

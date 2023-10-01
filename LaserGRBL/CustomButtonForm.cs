@@ -52,6 +52,7 @@ namespace LaserGRBL
 			BTOpenImage.Image = cb.Image;
 			TbCaption.Text = cb.Caption;
 			TbToolTip.Text = cb.ToolTip;
+			TbHotKeyName.Text = cb.HotKeyName;
 			CbEStyles.SelectedItem = cb.EnableStyle;
 			CbByttonType.SelectedItem = cb.ButtonType;
 
@@ -99,6 +100,7 @@ namespace LaserGRBL
 				cb.Image = BTOpenImage.Image;
 				cb.Caption = TbCaption.Text;
 				cb.ToolTip = TbToolTip.Text;
+				cb.HotKeyName = TbHotKeyName.Text;
 				cb.EnableStyle = (CustomButton.EnableStyles)CbEStyles.SelectedItem;
 				CustomButtons.Add(cb);
 			}
@@ -109,7 +111,8 @@ namespace LaserGRBL
 				inedit.Image = BTOpenImage.Image;
 				inedit.Caption = TbCaption.Text;
 				inedit.ToolTip = TbToolTip.Text;
-				inedit.EnableStyle = (CustomButton.EnableStyles)CbEStyles.SelectedItem;
+				inedit.HotKeyName = TbHotKeyName.Text;
+                inedit.EnableStyle = (CustomButton.EnableStyles)CbEStyles.SelectedItem;
 				inedit.ButtonType = (CustomButton.ButtonTypes)CbByttonType.SelectedItem;
 			}
 
