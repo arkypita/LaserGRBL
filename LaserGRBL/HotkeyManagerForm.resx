@@ -351,28 +351,28 @@ Press "Canc" keyboard key to remove shortcut.</value>
   <data name="Shortcut.HeaderText" xml:space="preserve">
     <value>Shortcut</value>
   </data>
-  <data name="DGVF.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="DGV.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="DGVF.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="DGV.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
   </data>
-  <data name="DGVF.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="DGV.Size" type="System.Drawing.Size, System.Drawing">
     <value>548, 440</value>
   </data>
-  <data name="DGVF.TabIndex" type="System.Int32, mscorlib">
+  <data name="DGV.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;DGVF.Name" xml:space="preserve">
-    <value>DGVF</value>
+  <data name="&gt;&gt;DGV.Name" xml:space="preserve">
+    <value>DGV</value>
   </data>
-  <data name="&gt;&gt;DGVF.Type" xml:space="preserve">
+  <data name="&gt;&gt;DGV.Type" xml:space="preserve">
     <value>LaserGRBL.MyDatagridView, LaserGRBL, Version=5.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;DGVF.Parent" xml:space="preserve">
+  <data name="&gt;&gt;DGV.Parent" xml:space="preserve">
     <value>GB</value>
   </data>
-  <data name="&gt;&gt;DGVF.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;DGV.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="GB.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">

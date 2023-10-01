@@ -35,13 +35,13 @@
             this.BtnCancel = new System.Windows.Forms.Button();
             this.BtnSave = new System.Windows.Forms.Button();
             this.GB = new System.Windows.Forms.GroupBox();
-            this.DGVF = new LaserGRBL.MyDatagridView();
+            this.DGV = new LaserGRBL.MyDatagridView();
             this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Shortcut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.GB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -82,24 +82,24 @@
             // 
             // GB
             // 
-            this.GB.Controls.Add(this.DGVF);
+            this.GB.Controls.Add(this.DGV);
             resources.ApplyResources(this.GB, "GB");
             this.GB.Name = "GB";
             this.GB.TabStop = false;
             // 
-            // DGVF
+            // DGV
             // 
-            this.DGVF.AllowUserToAddRows = false;
-            this.DGVF.AllowUserToDeleteRows = false;
-            this.DGVF.AllowUserToResizeRows = false;
-            this.DGVF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVF.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DGV.AllowUserToAddRows = false;
+            this.DGV.AllowUserToDeleteRows = false;
+            this.DGV.AllowUserToResizeRows = false;
+            this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Action,
             this.Shortcut});
-            resources.ApplyResources(this.DGVF, "DGVF");
-            this.DGVF.Name = "DGVF";
-            this.DGVF.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVF.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DGV_DataError);
+            resources.ApplyResources(this.DGV, "DGV");
+            this.DGV.Name = "DGV";
+            this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DGV_DataError);
             // 
             // Action
             // 
@@ -128,7 +128,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.GB.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DGVF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -139,7 +139,7 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.GroupBox GB;
 		private System.Windows.Forms.Button BtnCancel;
-		private MyDatagridView DGVF;
+		private MyDatagridView DGV;
 		private System.Windows.Forms.Button BtnSave;
 		private System.Windows.Forms.Label LblConnect;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Action;

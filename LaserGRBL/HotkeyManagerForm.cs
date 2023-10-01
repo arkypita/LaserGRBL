@@ -23,18 +23,18 @@ namespace LaserGRBL
 			BackColor = ColorScheme.FormBackColor;
 			GB.ForeColor = ForeColor = ColorScheme.FormForeColor;
             GB.BackColor = ColorScheme.FormBackColor;
-            DGVF.EnableHeadersVisualStyles = false;
-            DGVF.BackgroundColor = ColorScheme.FormBackColor; //SystemColors.Control;
-			DGVF.ForeColor = ColorScheme.FormForeColor; //SystemColors.ControlText;
-            DGVF.DefaultCellStyle.BackColor = ColorScheme.FormBackColor;
-            DGVF.ColumnHeadersDefaultCellStyle.BackColor = ColorScheme.FormBackColor;
-            DGVF.ColumnHeadersDefaultCellStyle.ForeColor = ColorScheme.FormForeColor;
-            DGVF.RowHeadersDefaultCellStyle.BackColor = ColorScheme.FormBackColor;
-            DGVF.RowHeadersDefaultCellStyle.ForeColor = ColorScheme.FormForeColor;
+            DGV.EnableHeadersVisualStyles = false;
+            DGV.BackgroundColor = ColorScheme.FormBackColor; //SystemColors.Control;
+			DGV.ForeColor = ColorScheme.FormForeColor; //SystemColors.ControlText;
+            DGV.DefaultCellStyle.BackColor = ColorScheme.FormBackColor;
+            DGV.ColumnHeadersDefaultCellStyle.BackColor = ColorScheme.FormBackColor;
+            DGV.ColumnHeadersDefaultCellStyle.ForeColor = ColorScheme.FormForeColor;
+            DGV.RowHeadersDefaultCellStyle.BackColor = ColorScheme.FormBackColor;
+            DGV.RowHeadersDefaultCellStyle.ForeColor = ColorScheme.FormForeColor;
             BtnSave.BackColor = BtnCancel.BackColor = ColorScheme.FormButtonsColor;
 
 			mLocalList = core.HotKeys.GetEditList();
-			DGVF.DataSource = mLocalList;
+			DGV.DataSource = mLocalList;
 
             ComputeErrors();
 		}
@@ -57,7 +57,7 @@ namespace LaserGRBL
 			if (keyData != mLastkeyData)
 			{
 				mLastkeyData = keyData;
-				HotKeysManager.HotKey hk = DGVF.CurrentRow.DataBoundItem as HotKeysManager.HotKey;
+				HotKeysManager.HotKey hk = DGV.CurrentRow.DataBoundItem as HotKeysManager.HotKey;
 
 				if (HotKeysManager.HotKey.ValidShortcut(mLastkeyData))
 					SetNewValue(hk, mLastkeyData);
@@ -74,7 +74,7 @@ namespace LaserGRBL
 		private void SetNewValue(HotKeysManager.HotKey hk, Keys value)
 		{
 			hk.SetShortcut(value);
-			DGVF.Refresh();
+			DGV.Refresh();
 			ComputeErrors();
 		}
 
@@ -82,11 +82,11 @@ namespace LaserGRBL
 		{
 			List<DataGridViewRow> inerror = new List<DataGridViewRow>();
 			List<DataGridViewRow> noerror = new List<DataGridViewRow>();
-			foreach (DataGridViewRow ra in DGVF.Rows)
+			foreach (DataGridViewRow ra in DGV.Rows)
 			{
 				HotKeysManager.HotKey a = ra.DataBoundItem as HotKeysManager.HotKey;
 
-				foreach (DataGridViewRow rb in DGVF.Rows)
+				foreach (DataGridViewRow rb in DGV.Rows)
 				{
 					HotKeysManager.HotKey b = rb.DataBoundItem as HotKeysManager.HotKey;
 					if (!ReferenceEquals(a, b) && a.Combination != Keys.None && a.Combination == b.Combination)
