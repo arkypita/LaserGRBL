@@ -6,7 +6,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace LaserGRBL
 {
@@ -45,9 +44,8 @@ namespace LaserGRBL
 			CustomButton item = buttons[oldindex];
 			buttons.RemoveAt(oldindex);
 			if(oldindex < newindex && newindex > 0)
-			{
 				newindex--; // removing the element from the list, has impact on the index
-			}
+
 			if (newindex < 0 || newindex > buttons.Count)
 				buttons.Add(item);
 			else
@@ -69,8 +67,7 @@ namespace LaserGRBL
 		{
 			if (buttons != null && buttons.Count > index)
 				return buttons[index];
-			else
-				return null;
+			return null;
 		}
 
 		public static void Export(System.Windows.Forms.Form parent)
@@ -154,7 +151,7 @@ namespace LaserGRBL
 			return false;
 		}
 
-		public static int Count { get { return buttons.Count; } }
+		public static int Count => buttons.Count;
 	}
 
 
@@ -162,7 +159,7 @@ namespace LaserGRBL
 	public class CustomButton
 	{
 		public enum EnableStyles { Always = 0, Connected = 1, Idle = 3, Run = 4, IdleProgram = 10}
-		public enum ButtonTypes { Button = 0, TwoStateButton = 1, PushButton =2 }
+		public enum ButtonTypes { Button = 0, TwoStateButton = 1, PushButton = 2 }
 
 		public System.Guid guid = Guid.NewGuid();
 		public System.Drawing.Image Image;
@@ -170,21 +167,26 @@ namespace LaserGRBL
 		public string GCode2;
 		public string Caption;
 		public string ToolTip;
+		public string HotKeyName;
 
-		public EnableStyles EnableStyle;
+        public EnableStyles EnableStyle;
 		public ButtonTypes ButtonType;
 
 		public bool EnabledNow(GrblCore core)
 		{
 			if (EnableStyle == EnableStyles.Always)
 				return true;
-			else if (EnableStyle == EnableStyles.Connected)
+
+			if (EnableStyle == EnableStyles.Connected)
 				return core.IsConnected;
-			else if (EnableStyle == EnableStyles.Idle)
+
+			if (EnableStyle == EnableStyles.Idle)
 				return core.MachineStatus == GrblCore.MacStatus.Idle;
-			else if (EnableStyle == EnableStyles.Run)
+
+			if (EnableStyle == EnableStyles.Run)
 				return core.MachineStatus == GrblCore.MacStatus.Run;
-			else if (EnableStyle == EnableStyles.IdleProgram)
+
+			if (EnableStyle == EnableStyles.IdleProgram)
 				return core.MachineStatus == GrblCore.MacStatus.Idle && core.HasProgram;
 
 			return false;

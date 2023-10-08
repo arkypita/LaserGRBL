@@ -6,11 +6,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace LaserGRBL
@@ -19,6 +14,7 @@ namespace LaserGRBL
 	{
 		private List<HotKeysManager.HotKey> mLocalList = null;
 		GrblCore mCore = null;
+
 		public HotkeyManagerForm(GrblCore core)
 		{
 			InitializeComponent();
@@ -37,9 +33,9 @@ namespace LaserGRBL
             DGV.RowHeadersDefaultCellStyle.ForeColor = ColorScheme.FormForeColor;
             BtnSave.BackColor = BtnCancel.BackColor = ColorScheme.FormButtonsColor;
 
-
 			mLocalList = core.HotKeys.GetEditList();
 			DGV.DataSource = mLocalList;
+
             ComputeErrors();
 		}
 
@@ -113,5 +109,11 @@ namespace LaserGRBL
 		{
 			mCore.WriteHotkeys(mLocalList);
 		}
-	}
+
+        private void DGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+			// added this for debugging.. it's rather optional, but here just in case you want to put a breakpoint and examine
+			Console.WriteLine("datagrid exception:", e.ToString());
+        }
+    }
 }
