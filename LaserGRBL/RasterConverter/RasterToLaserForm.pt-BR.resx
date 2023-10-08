@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="TCOriginalPreview.Location" type="System.Drawing.Point, System.Drawing">
     <value>251, 3</value>
   </data>
@@ -151,7 +151,7 @@
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAbfSURBVEhLfdULUJNXFgDgs+uO
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxAAAAsQAa0jvXUAAAbfSURBVEhLfdULUJNXFgDgs+uO
         49rZXXfp+qjazi52tTtdSy11p62yWrqjq+VRRN5MSIBAgPIKBJZnFAIrCBteEggYUSIgiCCglDrUBQwS
         AREVBCmPEB55EhJDeEjO3lCHmQ7oP/PN/Scz95xzb869P2Rm8t8oI6MQeDkFWwTFlzZvC5vaDW4vqvZG
         TwP7SpfZ6avXNzlUVoBjRdVrQWlp2RuVlVVA3oXi801luQKb1G4AZ6P9kZg+YOffrfHNancPymiHwDcA
@@ -190,7 +190,7 @@
   <data name="BtFlipH.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAa5SURBVEhLpZR7UJNXFsDP7Ky7
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxAAAAsQAa0jvXUAAAa5SURBVEhLpZR7UJNXFsDP7Ky7
         2+5acIfZrg67W3GHah8ottMqrWPZKtpRgYABeZNACK8ASYCEvMRIgaoEebjYVnmJaAMUa0VQYUcFdRW2
         O+oWwVLEJITEQB5fXkQCZ2+y3dmdnX203T9+c8+93/fd3z3n3PkgNzePkO8ZV+TkFAzQ6fGC5GTmMwKB
         mKzxgMXKguLiEigqkkB2NhfIO8DnC6GgoAiysvLJupg8F3kRCCTkGy5wucUglR4k81IgL+V5SUhg+B46
@@ -228,7 +228,7 @@
   <data name="BtRotateCW.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADiUAAA4lAQ9WBJEAAAXQSURBVEhLddMJTJN3GMfxJ17T
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADiMAAA4jAY9VQAoAAAXQSURBVEhLddMJTJN3GMfxJ17T
         zDgzt8kIGsdURHQ6dOocDhTE+8JjLprpzLJlHotZYubinNlcFuOReYsyEGqh4gUIRVEQpvO+HQqI0tK3
         b/tebYEKiBN+e94iWpSRfNIG6PN9n//7lsTdgc8544NISehNWmIfciUFkzu536La5N6mp8kBp2oNwZdr
         jAOKH6UOuPUoNfRsbVpodp1p4B4WxajF4/RB1HBo8HNtBtTE4DWupPetSOhw6d/EbuvchrDopv3dwpBE
@@ -262,7 +262,7 @@
   <data name="BtRotateCCW.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADiUAAA4lAQ9WBJEAAAXjSURBVEhLfZJ5TBR3GIa/WLWa
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADiMAAA4jAY9VQAoAAAXjSURBVEhLfZJ5TBR3GIa/WLWa
         GmpqW61RY6mKiFarVq3FQgXxvhCtjaZa07SpR2OamNpYa1qbxnik3qIrCOvCihcgh6KsUK33iUUBOXbZ
         2dmda4djBcQKb7/BLhGP/vFkZ3dmn/f9vvlR4+EhrTxMGUz11kFPE87sqUsOzniQFHzuQdLA27WWgYV1
         5sArjxN6nK5L6GPVE/ov8sYHkhbXlxRTH/LE9iJxd89Wng6YxAFD/hMvYwrrkgfdZGmiLyn4uzpLUCgS
@@ -418,7 +418,7 @@
     <value>77, 21</value>
   </data>
   <data name="CbFillingDirection.ToolTip" xml:space="preserve">
-    <value>Habilitar o caminho de arquivamento / Definir o caminho de arquivamento</value>
+    <value>Habilitar o caminho de preenchimento / Definir o caminho de preenchimento</value>
   </data>
   <data name="LblFillingQuality.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 13</value>
@@ -430,7 +430,7 @@
     <value>151, 123</value>
   </data>
   <data name="UDFillingQuality.ToolTip" xml:space="preserve">
-    <value>Qaualidade de preenchimento (lines/mm)</value>
+    <value>Qualidade de preenchimento (linhas/mm)</value>
   </data>
   <data name="LblFillingLineLbl.Location" type="System.Drawing.Point, System.Drawing">
     <value>211, 126</value>
@@ -490,7 +490,7 @@
     <value>39, 13</value>
   </data>
   <data name="LblGrayscale.Text" xml:space="preserve">
-    <value>Nitidez</value>
+    <value>Escala de cinzas</value>
   </data>
   <data name="CbMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>60, 27</value>
@@ -556,7 +556,7 @@
     <value>34, 13</value>
   </data>
   <data name="label28.Text" xml:space="preserve">
-    <value>Modo</value>
+    <value>Redimencionar</value>
   </data>
   <data name="TbThreshold.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 195</value>
@@ -568,13 +568,13 @@
     <value>24, 13</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Luz</value>
+    <value>Clipe Branco</value>
   </data>
   <data name="GbLineToLineOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 116</value>
   </data>
   <data name="GbLineToLineOptions.Text" xml:space="preserve">
-    <value>Opções de Preenchimento</value>
+    <value>Opções de Linha a Linha</value>
   </data>
   <data name="TLP.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 97</value>
@@ -652,16 +652,16 @@
     <value>50, 17</value>
   </data>
   <data name="RbDithering.Text" xml:space="preserve">
-    <value>Matiz</value>
+    <value>Pontilhamento de 1bit PB</value>
   </data>
   <data name="RbDithering.ToolTip" xml:space="preserve">
-    <value>Produzir imagem preto e branco  com emulação de escala de cinza</value>
+    <value>Produzir imagem preto e branco  com emulação de escala de cinzas</value>
   </data>
   <data name="RbVectorize.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 17</value>
   </data>
   <data name="RbVectorize.Text" xml:space="preserve">
-    <value>Vetor</value>
+    <value>Vetorizar!</value>
   </data>
   <data name="RbVectorize.ToolTip" xml:space="preserve">
     <value>Criar caminho vetorial</value>
@@ -673,7 +673,7 @@
     <value>Rastreamento linha por linha</value>
   </data>
   <data name="RbLineToLineTracing.ToolTip" xml:space="preserve">
-    <value>Criar escala de cinza a partir da imagem</value>
+    <value>Criar imagem em escala de cinzas</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Cancelar</value>
@@ -682,12 +682,78 @@
     <value>Avançar</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Importar imagem raster</value>
+    <value>Importar Imagem Raster</value>
   </data>
   <data name="GbConversionTool.Text" xml:space="preserve">
     <value>Ferramenta de conversão</value>
   </data>
   <data name="GbParameters.Text" xml:space="preserve">
     <value>Parâmetros</value>
+  </data>
+  <data name="TpOriginal.Text" xml:space="preserve">
+    <value>Original</value>
+  </data>
+  <data name="BtnOutliner.ToolTip" xml:space="preserve">
+    <value>Imagem de contorno</value>
+  </data>
+  <data name="BtnFill.ToolTip" xml:space="preserve">
+    <value>Preenchimento total</value>
+  </data>
+  <data name="BtnReverse.ToolTip" xml:space="preserve">
+    <value>Inverter cor</value>
+  </data>
+  <data name="BtnAutoTrim.ToolTip" xml:space="preserve">
+    <value>Corte automático imagem</value>
+  </data>
+  <data name="TbPassthroughInfo.Text" xml:space="preserve">
+    <value>O modo passagem deixa a imagem intacta, sem nenhum processamento pelo LaserGRBL. A imagem será gravada linha a linha, na horizontal, de acordo com o tamanho e resolução de DPI contidos nas informações do arquivo.</value>
+  </data>
+  <data name="GbPassthrough.Text" xml:space="preserve">
+    <value>Opções de passagem</value>
+  </data>
+  <data name="CbResize.ToolTip" xml:space="preserve">
+    <value>Controle o modo de redimensionamento (bordas suaves ou rígidas)</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Limite de Linha</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Limite de Borda</value>
+  </data>
+  <data name="TBLineThreshold.ToolTip" xml:space="preserve">
+    <value>Se a spline não estiver mais do que esta distância da linha reta definida por suas extremidades, imprima uma linha reta.</value>
+  </data>
+  <data name="TBCornerThreshold.ToolTip" xml:space="preserve">
+    <value>Ângulo-em-graus: se um pixel, seus predecessores e seus sucessores se encontram em um ângulo menor que esse, é um canto.</value>
+  </data>
+  <data name="GbCenterlineOptions.Text" xml:space="preserve">
+    <value>Opções de Linha Central</value>
+  </data>
+  <data name="BtnAdaptiveQualityInfo.ToolTip" xml:space="preserve">
+    <value>Aumente/diminua a qualidade da vetorização proporcionalmente ao tamanho da saída da imagem.</value>
+  </data>
+  <data name="LAdaptiveQuality.Text" xml:space="preserve">
+    <value>Qualidade adaptativa</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Redução da resolução</value>
+  </data>
+  <data name="lOptimizeFast.Text" xml:space="preserve">
+    <value>Otimizar Percurso</value>
+  </data>
+  <data name="LblDitherMode.Text" xml:space="preserve">
+    <value>Pontilhado(a)</value>
+  </data>
+  <data name="RbNoProcessing.Text" xml:space="preserve">
+    <value>Atravessar</value>
+  </data>
+  <data name="RbNoProcessing.ToolTip" xml:space="preserve">
+    <value>Sem Processamento (Atravessar)</value>
+  </data>
+  <data name="RbCenterline.Text" xml:space="preserve">
+    <value>Linha Central</value>
+  </data>
+  <data name="RbCenterline.ToolTip" xml:space="preserve">
+    <value>Vetorização da linha central</value>
   </data>
 </root>

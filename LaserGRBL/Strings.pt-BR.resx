@@ -158,7 +158,7 @@ Baixe manualmente a nova versão do site lasergrbl.</value>
     <value>{0} Configuração importada com sucesso!</value>
   </data>
   <data name="CustomButtonEdit" xml:space="preserve">
-    <value>Botão de Edição</value>
+    <value>Editar Botão</value>
   </data>
   <data name="CustomButtonRemove" xml:space="preserve">
     <value>Remover botão</value>
@@ -170,7 +170,7 @@ Baixe manualmente a nova versão do site lasergrbl.</value>
     <value>Horizontal (antigo)</value>
   </data>
   <data name="DirectionNone" xml:space="preserve">
-    <value>Ssem Preenchimento</value>
+    <value>Sem Preenchimento</value>
   </data>
   <data name="DirectionVertical" xml:space="preserve">
     <value>Vertical (antigo)</value>
@@ -353,13 +353,13 @@ Continue de qualquer maneira?</value>
     <value>Abortar trabalho atual</value>
   </data>
   <data name="DirectionNewCross" xml:space="preserve">
-    <value>Preenchimento Cruzado</value>
+    <value>P. Cruzado</value>
   </data>
   <data name="DirectionNewDiagonal" xml:space="preserve">
     <value>Diagonal</value>
   </data>
   <data name="DirectionNewDiagonalCross" xml:space="preserve">
-    <value>Preenchimento Cruzado Diagonal</value>
+    <value>P. Cruzado Diagonal</value>
   </data>
   <data name="DirectionNewDiagonalGrid" xml:space="preserve">
     <value>Grade Diagonal</value>
@@ -371,7 +371,7 @@ Continue de qualquer maneira?</value>
     <value>Horizontal</value>
   </data>
   <data name="DirectionNewInsetFilling" xml:space="preserve">
-    <value>Preenchimento Embutido</value>
+    <value>P. Embutido</value>
   </data>
   <data name="DirectionNewReverseDiagonal" xml:space="preserve">
     <value>Diagonal Invertida</value>
@@ -408,7 +408,7 @@ Somente gravadores com versão grbl &gt;= 1.1 com "modo laser" ativado ($32=1) p
     <value>Aviso</value>
   </data>
   <data name="BoxTelegramSettingText" xml:space="preserve">
-    <value>Test notification has been sent, please check your phone!</value>
+    <value>Notificação de teste foi enviada, por favor verifique seu celular!</value>
   </data>
   <data name="BoxTelegramSettingTitle" xml:space="preserve">
     <value>Notificação do Telegram</value>

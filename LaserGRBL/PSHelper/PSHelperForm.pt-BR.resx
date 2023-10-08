@@ -117,97 +117,42 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label7.Text" xml:space="preserve">
-    <value>H</value>
+  <data name="BtnApply.Text" xml:space="preserve">
+    <value>Aplicar</value>
   </data>
-  <data name="LblBorderTracingmm.Text" xml:space="preserve">
-    <value>mm/min</value>
+  <data name="LblPower.Text" xml:space="preserve">
+    <value>Força</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Tamanho</value>
+  <data name="LblModel.Text" xml:space="preserve">
+    <value>Modelo Laser</value>
+  </data>
+  <data name="LblMaterial.Text" xml:space="preserve">
+    <value>Material</value>
+  </data>
+  <data name="LblThickness.Text" xml:space="preserve">
+    <value>Grossura</value>
+  </data>
+  <data name="LblAction.Text" xml:space="preserve">
+    <value>Ação</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Passos</value>
+  </data>
+  <data name="LblSpeed.Text" xml:space="preserve">
+    <value>Velocidade</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Configuração sugerida</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Cancelar</value>
   </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>Velocidade de preenchimento</value>
-  </data>
-  <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Criar!</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>W</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>X</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Y</value>
-  </data>
-  <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>Velocidade de corte</value>
-  </data>
-  <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
-    <value>Grbl suporta saida variável de energia para produzir escala de cinza, Isto requere que seu hardware possua controle TTL para o laser
-
-Click aqui para obter mais informações...</value>
-  </data>
-  <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
-    <value>Ligar laser: (M3) é o modo padrão.
-Para GRBL V1.1 o modo de energia dinâmico (M4)  também é suportado. 
-Desligar Laser: Somente o comando (M5) é suportado.     
-
-Clique aqui para obter mais informações...</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Posição</value>
-  </data>
-  <data name="GbSize.Text" xml:space="preserve">
-    <value>Dimensão da imagem e posição [mm]</value>
-  </data>
-  <data name="GbSpeed.Text" xml:space="preserve">
-    <value>Velocidades</value>
-  </data>
-  <data name="GbLaser.Text" xml:space="preserve">
-    <value>Opções do Laser</value>
-  </data>
-  <data name="BtnUnlockProportion.ToolTip" xml:space="preserve">
-    <value>Bloquear/Desbloquear a proporção da imagem</value>
-  </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>DPI</value>
-  </data>
-  <data name="CbAutosize.Text" xml:space="preserve">
-    <value>Tamanho automático</value>
-  </data>
-  <data name="BtnDPI.ToolTip" xml:space="preserve">
-    <value>Carregar DPI da informação Exif</value>
-  </data>
-  <data name="BtnCenter.ToolTip" xml:space="preserve">
-    <value>Centraliza a imagem vertical e horizontal (zero no centro)</value>
-  </data>
-  <data name="LblLinearFillingmm.Text" xml:space="preserve">
-    <value>mm/min</value>
-  </data>
-  <data name="BtnPSHelper.ToolTip" xml:space="preserve">
-    <value>Abrir banco de Laser &amp; Materiais</value>
-  </data>
-  <data name="LblSmin.Text" xml:space="preserve">
-    <value>S-MIN</value>
-  </data>
-  <data name="LblLaserMode.Text" xml:space="preserve">
-    <value>Modo Laser</value>
-  </data>
-  <data name="LblSmax.Text" xml:space="preserve">
-    <value>S-MAX</value>
-  </data>
-  <data name="LblMinPerc.Text" xml:space="preserve">
-    <value>0%</value>
-  </data>
-  <data name="LblMaxPerc.Text" xml:space="preserve">
-    <value>100%</value>
+    <value>Aviso: estes são valores de referência do fabricante com base em materiais de teste. Sugere-se fazer alguns testes e ajustar esses valores de acordo com seus materiais específicos. É possível modificar esses dados no menu GRBL "Banco de Materiais".
+
+Nota: o número de passes deve ser copiado manualmente para o formulário principal.</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Imagem alvo</value>
+    <value>Selecione sua configuração</value>
   </data>
 </root>
