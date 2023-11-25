@@ -959,10 +959,13 @@ namespace LaserGRBL
 		public enum RefreshCause { OnConnect, OnDialog, OnRead, OnExport, OnImport, OnWriteBegin, OnWriteEnd }
 		public virtual void RefreshConfig(RefreshCause cause)
 		{
+			Exception exc = null;
 			if (CanReadWriteConfig)
 			{
 				try
 				{
+					//mSentPtr.Add(new GrblMessage(string.Format("Refresh conf [{0}]", cause), false));
+
 					Logger.LogMessage("Refresh Config", "Refreshing grbl configuration [{0}]", cause);
 
 					GrblConfST conf = new GrblConfST(GrblVersion);
@@ -1011,14 +1014,15 @@ namespace LaserGRBL
 
 						Configuration = conf; //accept configuration
 
-						if (conf.Count < conf.ExpectedCount) //log but do not show error if some param is missing
-							Logger.LogMessage("Refresh Config", "Wrong number of config param found! (Expected: {0} Found: {1})", conf.Count, conf.ExpectedCount);
+						if (conf.Count < conf.ExpectedCount)	//log but do not show error if some param is missing
+							Logger.LogMessage("Refresh Config", "Wrong number of config param found! (Expected: {0} Found: {1})", Configuration.ExpectedCount, Configuration.Count);
 						else
-							Logger.LogMessage("Refresh Config", "Configuration successfully received! (Expected: {0} Found: {1})", conf.Count, conf.ExpectedCount);
+							Logger.LogMessage("Refresh Config", "Configuration successfully received! (Expected: {0} Found: {1})", Configuration.ExpectedCount, Configuration.Count);
 					}
 				}
 				catch (Exception ex)
 				{
+					exc = ex;
 					Logger.LogException("Refresh Config", ex);
 					throw ex;
 				}
@@ -1028,6 +1032,9 @@ namespace LaserGRBL
 					{
 						mQueuePtr = mQueue;
 						mSentPtr = mSent; //restore queue
+
+						//mSentPtr.Add(new GrblMessage(string.Format("Refresh conf: [{0}] parameter found!", Configuration.Count), false));
+						//if (exc != null) mSentPtr.Add(new GrblMessage(string.Format("Refresh conf error: [{0}]", exc.Message), false));
 					}
 				}
 			}
