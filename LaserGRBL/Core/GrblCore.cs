@@ -2034,6 +2034,8 @@ namespace LaserGRBL
 				ManageOrturModelMessage(rline);
 			else if (IsOrturFirmwareMessage(rline))
 				ManageOrturFirmwareMessage(rline);
+			else if (IsSimpleLaserWelcomeMessage(rline))
+				ManageSimpleLaserWelcomeMessage(rline);
 			else if (IsStandardWelcomeMessage(rline))
 				ManageStandardWelcomeMessage(rline);
 			else if (IsBrokenOkMessage(rline))
@@ -2071,6 +2073,7 @@ namespace LaserGRBL
 		private bool IsAuferoModelMessage(string rline) => rline.StartsWith("Aufero ");
 		private bool IsOrturFirmwareMessage(string rline) => rline.StartsWith("OLF");
 		private bool IsStandardWelcomeMessage(string rline) => rline.StartsWith("Grbl");
+		private bool IsSimpleLaserWelcomeMessage(string rline) => rline.StartsWith("SimpleLaser");
 		private bool IsBrokenOkMessage(string rline) => rline.ToLower().Contains("ok");
 		private bool IsStandardBlockingAlarm(string rline) => rline.ToLower().StartsWith("alarm:");
 		private bool IsIVerMessage(string rline) => rline.StartsWith("[VER:") && rline.EndsWith("]");
@@ -2122,6 +2125,27 @@ namespace LaserGRBL
 			mSentPtr.Add(new GrblMessage(rline, false));
 		}
 
+		private void ManageSimpleLaserWelcomeMessage(string rline)
+		{
+			//SimpleLaser X.Xx ['$' for help]
+			try
+			{
+				int maj = int.Parse(rline.Substring(12, 1));
+				int min = int.Parse(rline.Substring(14, 1));
+				char build = rline.Substring(15, 1).ToCharArray()[0];
+				GrblVersion = new GrblVersionInfo(maj, min, build, "SimpleLaser", mVersionSeen, false);
+				Logger.LogMessage("SimpleInfo", "Detected {0}", "SimpleLaser");
+
+				DetectUnexpectedReset();
+				OnStartupMessage();
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("VersionInfo", "Ex on [{0}] message", rline);
+				Logger.LogException("VersionInfo", ex);
+			}
+			mSentPtr.Add(new GrblMessage(rline, false));
+		}
 		private void ManageGrblHalWelcomeMessage(string rline)
 		{
 			//GrblHAL X.Xx ['$' or '$HELP' for help]
@@ -4044,7 +4068,7 @@ namespace LaserGRBL
 					{
 						long delta = now - mLastPowerHiResTimeNano.Value;
 						if (delta > 0 && delta < 600000000000L) //do not add delta if bigger then 600s (or negative) - just a safety test
-						{ 
+						{
 							double perc = status == MacStatus.Run ? 1 : 0; //potenza da applicare a questo delta
 							double normal = delta * perc;
 							mCurrentLLC?.AddRunTime(TimeSpan.FromMilliseconds(normal / 1000 / 1000));
@@ -4074,7 +4098,7 @@ namespace LaserGRBL
 					{
 						long delta = now - mLastPowerHiResTimeNano.Value;
 						if (delta > 0 && delta < 600000000000L) //do not add delta if bigger then 600s (or negative) - just a safety test
-						{ 
+						{
 							decimal maxpwm = Configuration.MaxPWM;
 
 							if (maxpwm >= 10 && maxpwm <= 100000) //we have a configured value in a valid range
@@ -4125,7 +4149,7 @@ namespace LaserGRBL
 			try
 			{
 				lock(mLLCFileName)
-				{ 
+				{
 					long now = HiResTimer.TotalMilliseconds;
 					if (mLastSave == 0 || now - mLastSave > 20000) //save every 20s
 					{
