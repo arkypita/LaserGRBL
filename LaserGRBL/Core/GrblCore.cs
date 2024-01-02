@@ -1015,7 +1015,7 @@ namespace LaserGRBL
 
 						Configuration = conf; //accept configuration
 
-						if (conf.Count < conf.ExpectedCount)	//log but do not show error if some param is missing
+						if (Configuration.Count < Configuration.ExpectedCount)	//log but do not show error if some param is missing
 							Logger.LogMessage("Refresh Config", "Wrong number of config param found! (Expected: {0} Found: {1})", Configuration.ExpectedCount, Configuration.Count);
 						else
 							Logger.LogMessage("Refresh Config", "Configuration successfully received! (Expected: {0} Found: {1})", Configuration.ExpectedCount, Configuration.Count);
