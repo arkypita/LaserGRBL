@@ -274,7 +274,8 @@ namespace LaserGRBL
 		private System.Collections.Generic.List<IGrblRow> mSentPtr; //puntatore a lista di quelli mandati (normalmente punta a mSent, salvo per import/export configurazione)
 
 		private string mWelcomeSeen = null;
-		private string mVersionSeen = null;
+		private string mVendorInfoSeen = null;
+		private string mVendorVersionSeen = null;
 		protected int mUsedBuffer;
 
 		private const int DEFAULT_BUFFER_SIZE = 127;
@@ -429,7 +430,7 @@ namespace LaserGRBL
 			}
 			set
 			{
-				if (value.Count > 0 && value.GrblVersion != null)
+				if (value.Count > 0/* && value.GrblVersion != null*/)
 					Settings.SetObject("Grbl Configuration ST", value);
 			}
 		}
@@ -2038,6 +2039,8 @@ namespace LaserGRBL
 				ManageSimpleLaserWelcomeMessage(rline);
 			else if (IsStandardWelcomeMessage(rline))
 				ManageStandardWelcomeMessage(rline);
+			else if (IsUnknownWelcomeMessage(rline))
+				ManageUnknownWelcomeMessage(rline);
 			else if (IsBrokenOkMessage(rline))
 				ManageBrokenOkMessage(rline);
 			else if (IsStandardBlockingAlarm(rline))
@@ -2065,15 +2068,18 @@ namespace LaserGRBL
 			}
 		}
 
+		System.Text.RegularExpressions.Regex unknownWelcomeRegex = new System.Text.RegularExpressions.Regex(@"(?<fw>[a-zA-Z]+)\s+(?<maj>\d+)\.(?<min>\d+)(?<build>\D)($|\s)", System.Text.RegularExpressions.RegexOptions.Compiled);
+
 		private bool IsCommandReplyMessage(string rline) => rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error");
 		private bool IsRealtimeStatusMessage(string rline) => rline.StartsWith("<") && rline.EndsWith(">");
-		private bool IsGrblHalWelcomeMessage(string rline) => rline.StartsWith("GrblHAL");
-		private bool IsVigoWelcomeMessage(string rline) => rline.StartsWith("Grbl-Vigo");
+		private bool IsGrblHalWelcomeMessage(string rline) => rline.StartsWith("GrblHAL ");
+		private bool IsVigoWelcomeMessage(string rline) => rline.StartsWith("Grbl-Vigo:");
 		private bool IsOrturModelMessage(string rline) => rline.StartsWith("Ortur ");
 		private bool IsAuferoModelMessage(string rline) => rline.StartsWith("Aufero ");
 		private bool IsOrturFirmwareMessage(string rline) => rline.StartsWith("OLF");
-		private bool IsStandardWelcomeMessage(string rline) => rline.StartsWith("Grbl");
-		private bool IsSimpleLaserWelcomeMessage(string rline) => rline.StartsWith("SimpleLaser");
+		private bool IsStandardWelcomeMessage(string rline) => rline.StartsWith("Grbl ");
+		private bool IsSimpleLaserWelcomeMessage(string rline) => rline.StartsWith("SimpleLaser ");
+		private bool IsUnknownWelcomeMessage(string rline) => mWelcomeSeen == null && unknownWelcomeRegex.IsMatch(rline);
 		private bool IsBrokenOkMessage(string rline) => rline.ToLower().Contains("ok");
 		private bool IsStandardBlockingAlarm(string rline) => rline.ToLower().StartsWith("alarm:");
 		private bool IsIVerMessage(string rline) => rline.StartsWith("[VER:") && rline.EndsWith("]");
@@ -2109,10 +2115,38 @@ namespace LaserGRBL
 			//Grbl X.Xx ['$' for help]
 			try
 			{
+				mWelcomeSeen = rline; //welcome already seen - disable unknown firmware detection
 				int maj = int.Parse(rline.Substring(5, 1));
 				int min = int.Parse(rline.Substring(7, 1));
 				char build = rline.Substring(8, 1).ToCharArray()[0];
-				GrblVersion = new GrblVersionInfo(maj, min, build, mWelcomeSeen, mVersionSeen, false);
+				GrblVersion = new GrblVersionInfo(maj, min, build, mVendorInfoSeen, mVendorVersionSeen, false);
+
+				DetectUnexpectedReset();
+				OnStartupMessage();
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("VersionInfo", "Ex on [{0}] message", rline);
+				Logger.LogException("VersionInfo", ex);
+			}
+			mSentPtr.Add(new GrblMessage(rline, false));
+		}
+
+		private void ManageUnknownWelcomeMessage(string rline)
+		{
+			//BlaBla X.Xx
+			try
+			{
+				mWelcomeSeen = rline; //unknwn welcome seen - disable next unknown firmware detection
+				unknownWelcomeRegex.Match(rline);
+				int maj = int.Parse(unknownWelcomeRegex.Match(rline).Groups["maj"].Value);
+				int min = int.Parse(unknownWelcomeRegex.Match(rline).Groups["min"].Value);
+				char build = unknownWelcomeRegex.Match(rline).Groups["build"].Value.ToCharArray()[0];
+				string fw = unknownWelcomeRegex.Match(rline).Groups["fw"].Value;
+				mVendorInfoSeen = fw;
+
+				GrblVersion = new GrblVersionInfo(maj, min, build, mVendorInfoSeen, mVendorVersionSeen, false);
+				Logger.LogMessage("UnknInfo", "Detected {0}", mVendorInfoSeen);
 
 				DetectUnexpectedReset();
 				OnStartupMessage();
@@ -2130,11 +2164,13 @@ namespace LaserGRBL
 			//SimpleLaser X.Xx ['$' for help]
 			try
 			{
+				mWelcomeSeen = rline; //welcome already seen - disable unknown firmware detection
 				int maj = int.Parse(rline.Substring(12, 1));
 				int min = int.Parse(rline.Substring(14, 1));
 				char build = rline.Substring(15, 1).ToCharArray()[0];
-				GrblVersion = new GrblVersionInfo(maj, min, build, "SimpleLaser", mVersionSeen, false);
-				Logger.LogMessage("SimpleInfo", "Detected {0}", "SimpleLaser");
+				mVendorInfoSeen = "SimpleLaser";
+				GrblVersion = new GrblVersionInfo(maj, min, build, mVendorInfoSeen, mVendorVersionSeen, false);
+				Logger.LogMessage("SimpleInfo", "Detected {0}", mVendorInfoSeen);
 
 				DetectUnexpectedReset();
 				OnStartupMessage();
@@ -2151,10 +2187,11 @@ namespace LaserGRBL
 			//GrblHAL X.Xx ['$' or '$HELP' for help]
 			try
 			{
+				mWelcomeSeen = rline; //welcome already seen - disable unknown firmware detection
 				int maj = int.Parse(rline.Substring(8, 1));
 				int min = int.Parse(rline.Substring(10, 1));
 				char build = rline.Substring(11, 1).ToCharArray()[0];
-				GrblVersion = new GrblVersionInfo(maj, min, build, mWelcomeSeen, mVersionSeen, true);
+				GrblVersion = new GrblVersionInfo(maj, min, build, mVendorInfoSeen, mVendorVersionSeen, true);
 
 				DetectUnexpectedReset();
 				OnStartupMessage();
@@ -2172,12 +2209,14 @@ namespace LaserGRBL
 			//Grbl-Vigo:1.1f|Build:G-20170131-V3.0-20200720
 			try
 			{
+				mWelcomeSeen = rline; //welcome already seen - disable unknown firmware detection
 				int maj = int.Parse(rline.Substring(10, 1));
 				int min = int.Parse(rline.Substring(12, 1));
 				char build = rline.Substring(13, 1).ToCharArray()[0];
-				string VendorVersion = rline.Split(':')[2];
-				GrblVersion = new GrblVersionInfo(maj, min, build, "Vigotec", VendorVersion, false);
-				Logger.LogMessage("VigoInfo", "Detected {0}", VendorVersion);
+				mVendorInfoSeen = "Grbl-Vigo";
+				mVendorVersionSeen = rline.Split(':')[2];
+				GrblVersion = new GrblVersionInfo(maj, min, build, mVendorInfoSeen, mVendorVersionSeen, false);
+				Logger.LogMessage("VigoInfo", "Detected {0} {1}", mVendorInfoSeen, mVendorVersionSeen);
 
 				DetectUnexpectedReset();
 				OnStartupMessage();
@@ -2194,11 +2233,11 @@ namespace LaserGRBL
 		{
 			try
 			{
-				mWelcomeSeen = rline;
-				mWelcomeSeen = mWelcomeSeen.Replace("Ready", "");
-				mWelcomeSeen = mWelcomeSeen.Replace("!", "");
-				mWelcomeSeen = mWelcomeSeen.Trim();
-				Logger.LogMessage("OrturInfo", "Detected {0}", mWelcomeSeen);
+				mVendorInfoSeen = rline;
+				mVendorInfoSeen = mVendorInfoSeen.Replace("Ready", "");
+				mVendorInfoSeen = mVendorInfoSeen.Replace("!", "");
+				mVendorInfoSeen = mVendorInfoSeen.Trim();
+				Logger.LogMessage("OrturInfo", "Detected {0}", mVendorInfoSeen);
 			}
 			catch (Exception ex)
 			{
@@ -2212,10 +2251,10 @@ namespace LaserGRBL
 		{
 			try
 			{
-				mVersionSeen = rline;
-				mVersionSeen = mVersionSeen.Replace("OLF", "");
-				mVersionSeen = mVersionSeen.Trim(new char[] { '.', ' ', ':' });
-				Logger.LogMessage("OrturInfo", "Detected OLF {0}", mVersionSeen);
+				mVendorVersionSeen = rline;
+				mVendorVersionSeen = mVendorVersionSeen.Replace("OLF", "");
+				mVendorVersionSeen = mVendorVersionSeen.Trim(new char[] { '.', ' ', ':' });
+				Logger.LogMessage("OrturInfo", "Detected OLF {0}", mVendorVersionSeen);
 			}
 			catch (Exception ex)
 			{
