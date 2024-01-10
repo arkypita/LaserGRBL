@@ -1,4 +1,5 @@
 ﻿//Copyright (c) 2016-2021 Diego Settimi - https://github.com/arkypita/
+//Copyright (c) 2023 Alexandre Besnier - https://github.com/Varamil/
 
 // This program is free software; you can redistribute it and/or modify  it under the terms of the GPLv3 General Public License as published by  the Free Software Foundation; either version 3 of the License, or (at  your option) any later version.
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
@@ -6,6 +7,7 @@
 
 using LaserGRBL.PSHelper;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -65,6 +67,12 @@ namespace LaserGRBL.SvgConverter
 
 			CBLaserON.Items.Add(LaserOptions[0]);
 			CBLaserON.Items.Add(LaserOptions[1]);
+
+			//get saved settings
+			Dictionary<string, string> dic = Settings.GetObject("SVGImport.SavedSettings", new Dictionary<string, string>());
+			List<string> keys = new List<string>(dic.Keys);
+			keys.Sort();
+			CbSaveSettings.Items.AddRange(keys.ToArray());
 		}
 
 		private void AssignMinMaxLimit()
@@ -168,16 +176,89 @@ namespace LaserGRBL.SvgConverter
 			}
 		}
 
-		//private void IISizeW_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
-		//{
-		//	if (ByUser)
-		//		IISizeH.CurrentValue = IP.WidthToHeight(NewValue);
-		//}
+        private void BtnSaveSetting_Click(object sender, EventArgs e)
+        {
+			//Check if empty
+			if(!string.IsNullOrWhiteSpace(CbSaveSettings.Text))
+            {
+				//get saved settings
+				Dictionary<string, string> dic = Settings.GetObject("SVGImport.SavedSettings", new Dictionary<string, string>());
 
-		//private void IISizeH_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
-		//{
-		//	if (ByUser) IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
-		//}
+				//check if already exist
+				string key = CbSaveSettings.Text;
+				if (dic.ContainsKey(key))
+                {
+					//update it
+					dic[key] = string.Format("{0}|{1}|{2}|{3}", IIBorderTracing.CurrentValue,(CBLaserON.SelectedItem as ComboboxItem).Value, IIMinPower.CurrentValue, IIMaxPower.CurrentValue);
+                }
+				else
+                {
+					//add it
+					dic.Add(key, string.Format("{0}|{1}|{2}|{3}", IIBorderTracing.CurrentValue, (CBLaserON.SelectedItem as ComboboxItem).Value, IIMinPower.CurrentValue, IIMaxPower.CurrentValue));
+					//add item
+					CbSaveSettings.Items.Add(key);
+				}
 
-	}
+				//save settings
+				Settings.SetObject("SVGImport.SavedSettings", dic);
+			}
+        }
+
+        private void CbSaveSettings_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			//Check if empty
+			if (!string.IsNullOrWhiteSpace(CbSaveSettings.Text))
+			{
+				//get saved settings
+				Dictionary<string, string> dic = Settings.GetObject("SVGImport.SavedSettings", new Dictionary<string, string>());
+
+				//check if exist
+				string key = CbSaveSettings.Text;
+				if (dic.ContainsKey(key))
+				{
+					//load it
+					string[] data = dic[key].Split('|');
+					IIBorderTracing.CurrentValue = int.Parse(data[0]);
+					IIMinPower.CurrentValue = int.Parse(data[2]);
+					IIMaxPower.CurrentValue = int.Parse(data[3]);
+					CBLaserON.SelectedItem = Array.Find(LaserOptions, x => (string)x.Value == data[1]);
+				}//else new one, nothing to do
+			}
+		}
+
+        private void BtnDeleteSetting_Click(object sender, EventArgs e)
+        {
+			//Check if empty
+			if (!string.IsNullOrWhiteSpace(CbSaveSettings.Text))
+            {
+				//get saved settings
+				Dictionary<string, string> dic = Settings.GetObject("SVGImport.SavedSettings", new Dictionary<string, string>());
+
+				//check if exist
+				string key = CbSaveSettings.Text;
+				if (dic.ContainsKey(key))
+                {
+					//delete setting
+					dic.Remove(key);
+					CbSaveSettings.Items.Remove(key);
+					CbSaveSettings.Text = "";
+                }
+			}
+		}
+
+
+
+
+        //private void IISizeW_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+        //{
+        //	if (ByUser)
+        //		IISizeH.CurrentValue = IP.WidthToHeight(NewValue);
+        //}
+
+        //private void IISizeH_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
+        //{
+        //	if (ByUser) IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
+        //}
+
+    }
 }
