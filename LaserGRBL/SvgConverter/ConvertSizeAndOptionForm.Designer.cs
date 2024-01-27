@@ -43,11 +43,10 @@ namespace LaserGRBL.SvgConverter
 			}
 			base.Dispose(disposing);
 		}
-		
+
 		/// <summary>
-		/// This method is required for Windows Forms designer support.
-		/// Do not change the method contents inside the source code editor. The Forms designer might
-		/// not be able to load this method if it was changed manually.
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -75,6 +74,11 @@ namespace LaserGRBL.SvgConverter
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.BtnCreate = new System.Windows.Forms.Button();
+			this.gbFilter = new System.Windows.Forms.GroupBox();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.labelFilter = new System.Windows.Forms.Label();
+			this.CBFilter = new System.Windows.Forms.ComboBox();
+			this.imageButton1 = new LaserGRBL.UserControls.ImageButton();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
 			this.tableLayoutPanel9.SuspendLayout();
 			this.GbSpeed.SuspendLayout();
@@ -82,6 +86,8 @@ namespace LaserGRBL.SvgConverter
 			this.GbLaser.SuspendLayout();
 			this.tableLayoutPanel7.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
+			this.gbFilter.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel9
@@ -89,7 +95,8 @@ namespace LaserGRBL.SvgConverter
 			resources.ApplyResources(this.tableLayoutPanel9, "tableLayoutPanel9");
 			this.tableLayoutPanel9.Controls.Add(this.GbSpeed, 0, 0);
 			this.tableLayoutPanel9.Controls.Add(this.GbLaser, 0, 1);
-			this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel1, 0, 3);
+			this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel1, 0, 4);
+			this.tableLayoutPanel9.Controls.Add(this.gbFilter, 0, 3);
 			this.tableLayoutPanel9.Name = "tableLayoutPanel9";
 			// 
 			// GbSpeed
@@ -273,6 +280,48 @@ namespace LaserGRBL.SvgConverter
 			this.BtnCreate.Name = "BtnCreate";
 			this.BtnCreate.UseVisualStyleBackColor = true;
 			// 
+			// gbFilter
+			// 
+			this.gbFilter.Controls.Add(this.tableLayoutPanel2);
+			resources.ApplyResources(this.gbFilter, "gbFilter");
+			this.gbFilter.Name = "gbFilter";
+			this.gbFilter.TabStop = false;
+			// 
+			// tableLayoutPanel2
+			// 
+			resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+			this.tableLayoutPanel2.Controls.Add(this.labelFilter, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.CBFilter, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.imageButton1, 2, 0);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			// 
+			// labelFilter
+			// 
+			resources.ApplyResources(this.labelFilter, "labelFilter");
+			this.labelFilter.Name = "labelFilter";
+			// 
+			// CBFilter
+			// 
+			resources.ApplyResources(this.CBFilter, "CBFilter");
+			this.CBFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CBFilter.DropDownWidth = 934;
+			this.CBFilter.FormattingEnabled = true;
+			this.CBFilter.Name = "CBFilter";
+			// 
+			// imageButton1
+			// 
+			this.imageButton1.AltImage = null;
+			resources.ApplyResources(this.imageButton1, "imageButton1");
+			this.imageButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.imageButton1.Caption = null;
+			this.imageButton1.Coloration = System.Drawing.Color.Empty;
+			this.imageButton1.Image = ((System.Drawing.Image)(resources.GetObject("imageButton1.Image")));
+			this.imageButton1.Name = "imageButton1";
+			this.imageButton1.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.imageButton1, resources.GetString("imageButton1.ToolTip"));
+			this.imageButton1.UseAltImage = false;
+			this.imageButton1.Click += new System.EventHandler(this.BtnFilterInfo_Click);
+			// 
 			// TT
 			// 
 			this.TT.AutoPopDelay = 10000;
@@ -297,17 +346,30 @@ namespace LaserGRBL.SvgConverter
 			this.tableLayoutPanel7.ResumeLayout(false);
 			this.tableLayoutPanel7.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
+			this.gbFilter.ResumeLayout(false);
+			this.gbFilter.PerformLayout();
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
-
 		}
 
-		private UserControls.ImageButton BtnModulationInfo;
-		private UserControls.ImageButton BtnOnOffInfo;
+		private LaserGRBL.UserControls.ImageButton imageButton1;
+
+		private System.Windows.Forms.ComboBox CBFilter;
+
+		private System.Windows.Forms.Label labelFilter;
+
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+
+		private System.Windows.Forms.GroupBox gbFilter;
+
+		private LaserGRBL.UserControls.ImageButton BtnModulationInfo;
+		private LaserGRBL.UserControls.ImageButton BtnOnOffInfo;
 		private System.Windows.Forms.ComboBox CBLaserON;
 		private System.Windows.Forms.ToolTip TT;
 		private System.Windows.Forms.Label LblBorderTracingmm;
-		private UserControls.ImageButton BtnPSHelper;
+		private LaserGRBL.UserControls.ImageButton BtnPSHelper;
 		private System.Windows.Forms.Label LblMinPerc;
 		private System.Windows.Forms.Label LblMaxPerc;
 	}
