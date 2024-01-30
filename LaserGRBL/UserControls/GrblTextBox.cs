@@ -83,8 +83,7 @@ namespace LaserGRBL.UserControls
             if (keyData == Keys.Escape)
             {
                 Clear();
-
-				// Disable button sound
+				
                 return true;
             }
 
