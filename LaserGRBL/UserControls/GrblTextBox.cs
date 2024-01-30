@@ -80,14 +80,14 @@ namespace LaserGRBL.UserControls
 				return true;
 			}
 
-            if (keyData == Keys.Escape)
-            {
-                Clear();
+			if (keyData == Keys.Escape)
+			{
+			    Clear();
 				
-                return true;
-            }
+			    return true;
+			}
 
-            return base.ProcessCmdKey(ref m, keyData);
+			return base.ProcessCmdKey(ref m, keyData);
 		}
 
 	}
