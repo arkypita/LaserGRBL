@@ -662,13 +662,16 @@ namespace LaserGRBL.SvgConverter
 
 		private bool filterByColor(XElement pathElement, ColorFilter filter)
 		{
-			if (filter == ColorFilter.All)
-			{
-				return true;
-			}
+			if (filter == ColorFilter.All) return true;
+
 			var styleMap = parseStyle(pathElement);
-			if (!styleMap.TryGetValue("stroke", out var stroke)) return true;
-			var rgb=parseRgb(stroke);
+			
+			if (!styleMap.TryGetValue("stroke", out var pathColor) || "none"==pathColor)
+				if (!styleMap.TryGetValue("fill", out pathColor) || "none"==pathColor) return true;
+			
+			var rgb=parseRgb(pathColor);
+
+			if (rgb == Color.Empty) return true;
 			
 			switch (filter)
 			{
