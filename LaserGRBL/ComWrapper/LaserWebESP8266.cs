@@ -15,7 +15,7 @@ namespace LaserGRBL.ComWrapper
 {
 	class LaserWebESP8266 : IComWrapper
 	{
-
+		private string mRemainder;
 		private string mAddress;
 		private WebSocket cln;
 		private Queue<string> buffer = new Queue<string>();
@@ -113,8 +113,24 @@ namespace LaserGRBL.ComWrapper
 			var data = e.Data;
 			if (data == null)
 				data = Encoding.Default.GetString(e.RawData);
-			foreach (string line in e.Data.Split(new string[] {"\n"}, StringSplitOptions.RemoveEmptyEntries))
-				buffer.Enqueue(line); 
+			var lastItemComplete = data.EndsWith("\n") || data.EndsWith("\r");
+
+			var items = data.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+			for (int i = 0; i < items.Length; i++)
+			{
+				var item = items[i];
+				if(i == items.Length-1 && !lastItemComplete)
+				{
+					mRemainder = item;
+					break;
+				}
+				if (mRemainder != null)
+				{
+					item = mRemainder + item;
+					mRemainder = null;
+				}
+				buffer.Enqueue(item);
+			} 
 		}
 
 		public string ReadLineBlocking()

@@ -4106,7 +4106,7 @@ namespace LaserGRBL
 					long now = HiResTimer.TotalNano;
 					if (mLastStatusHiResTimeNano != null)
 					{
-						long delta = now - mLastPowerHiResTimeNano.Value;
+						long delta = now - (mLastPowerHiResTimeNano ?? now);
 						if (delta > 0 && delta < 600000000000L) //do not add delta if bigger then 600s (or negative) - just a safety test
 						{
 							double perc = status == MacStatus.Run ? 1 : 0; //potenza da applicare a questo delta
