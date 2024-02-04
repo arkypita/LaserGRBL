@@ -2517,6 +2517,7 @@ namespace LaserGRBL
 			try
 			{
 				string rv = com.ReadLineBlocking();
+				if (rv == null) return null;
 				rv = rv.TrimEnd(trimarray); //rimuovi ritorno a capo
 				rv = rv.Trim(); //rimuovi spazi iniziali e finali
 				return rv.Length > 0 ? rv : null;

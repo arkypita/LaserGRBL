@@ -110,6 +110,9 @@ namespace LaserGRBL.ComWrapper
 
 		void cln_OnMessage(object sender, MessageEventArgs e)
 		{
+			var data = e.Data;
+			if (data == null)
+				data = Encoding.Default.GetString(e.RawData);
 			foreach (string line in e.Data.Split(new string[] {"\n"}, StringSplitOptions.RemoveEmptyEntries))
 				buffer.Enqueue(line); 
 		}
