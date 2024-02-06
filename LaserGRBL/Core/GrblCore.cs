@@ -2517,6 +2517,7 @@ namespace LaserGRBL
 			try
 			{
 				string rv = com.ReadLineBlocking();
+				if (rv == null) return null;
 				rv = rv.TrimEnd(trimarray); //rimuovi ritorno a capo
 				rv = rv.Trim(); //rimuovi spazi iniziali e finali
 				return rv.Length > 0 ? rv : null;
@@ -4105,7 +4106,7 @@ namespace LaserGRBL
 					long now = HiResTimer.TotalNano;
 					if (mLastStatusHiResTimeNano != null)
 					{
-						long delta = now - mLastPowerHiResTimeNano.Value;
+						long delta = now - (mLastPowerHiResTimeNano ?? now);
 						if (delta > 0 && delta < 600000000000L) //do not add delta if bigger then 600s (or negative) - just a safety test
 						{
 							double perc = status == MacStatus.Run ? 1 : 0; //potenza da applicare a questo delta
