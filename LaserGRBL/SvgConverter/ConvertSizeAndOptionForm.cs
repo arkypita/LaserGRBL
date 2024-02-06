@@ -8,6 +8,8 @@ using LaserGRBL.PSHelper;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using LaserGRBL.RasterConverter;
+using Svg;
 
 namespace LaserGRBL.SvgConverter
 {
@@ -20,6 +22,16 @@ namespace LaserGRBL.SvgConverter
 		bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
 		public ComboboxItem[] LaserOptions = new ComboboxItem[] { new ComboboxItem("M3 - Constant Power", "M3"), new ComboboxItem("M4 - Dynamic Power", "M4") };
+
+		public ComboboxItem[] FilterOptions = Array.ConvertAll(
+			(ColorFilter[])Enum.GetValues(typeof(ColorFilter)),
+			ColorFilterToItem
+			);
+
+		private static ComboboxItem ColorFilterToItem(ColorFilter filter)
+		{
+			return new ComboboxItem(filter.ToString(), filter);
+		}
 		public class ComboboxItem
 		{
 			public string Text { get; set; }
@@ -46,7 +58,9 @@ namespace LaserGRBL.SvgConverter
 					Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", f.IIMinPower.CurrentValue);
 					Settings.SetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", (f.CBLaserON.SelectedItem as ComboboxItem).Value);
 
-					core.LoadedFile.LoadImportedSVG(filename, append, core);
+					var selectedFilter = (ColorFilter)Enum.Parse(typeof(ColorFilter),(f.CBFilter.SelectedItem as ComboboxItem).Value.ToString());
+					
+					core.LoadedFile.LoadImportedSVG(filename, append, core, selectedFilter);
                 }
             }
         }
@@ -65,6 +79,11 @@ namespace LaserGRBL.SvgConverter
 
 			CBLaserON.Items.Add(LaserOptions[0]);
 			CBLaserON.Items.Add(LaserOptions[1]);
+
+			foreach (var filterOption in FilterOptions)
+			{
+				CBFilter.Items.Add(filterOption);
+			}
 		}
 
 		private void AssignMinMaxLimit()
@@ -83,6 +102,8 @@ namespace LaserGRBL.SvgConverter
 				CBLaserON.SelectedItem = LaserOptions[0];
 			else
 				CBLaserON.SelectedItem = LaserOptions[1];
+
+			CBFilter.SelectedItem = FilterOptions[0];
 
 			string LaserOff = "M5"; //Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
 
@@ -167,7 +188,8 @@ namespace LaserGRBL.SvgConverter
 				IIMaxPower.CurrentValue = IIMaxPower.MaxValue * row.Power / 100;
 			}
 		}
-
+		private void BtnColorFilter_Click(object sender, EventArgs e)
+		{Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/raster-image-import/target-image-size-and-laser-options/#color-filter");}
 		//private void IISizeW_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
 		//{
 		//	if (ByUser)
@@ -178,6 +200,5 @@ namespace LaserGRBL.SvgConverter
 		//{
 		//	if (ByUser) IISizeW.CurrentValue = IP.HeightToWidht(NewValue);
 		//}
-
 	}
 }

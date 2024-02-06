@@ -319,4 +319,7 @@ Klicken Sie für mehr Informationen ...</value>
   <data name="BtnPSHelper.ToolTip" xml:space="preserve">
     <value>Laser und Material DB öffnen</value>
   </data>
+  <data name="labelFilter.Text" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
 </root>

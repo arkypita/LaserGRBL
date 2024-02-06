@@ -10,7 +10,8 @@
 */
 
 using System;
-using System.Windows;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Media;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,18 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using System.IO;
 using System.Globalization;
+using Point = System.Windows.Point;
 
 namespace LaserGRBL.SvgConverter
 {
+	public enum ColorFilter
+	{
+		All,
+		Red,
+		Green,
+		Blue,
+		Black
+	}
 	class GCodeFromSVG
 	{
 		private static float factor_In2Px = 96;
@@ -56,6 +66,9 @@ namespace LaserGRBL.SvgConverter
 		private Matrix matrixElement = new Matrix();     // store finally applied matrix
 		private Matrix oldMatrixElement = new Matrix();     // store finally applied matrix
 
+		private ColorFilter loadColorFilter = ColorFilter.All;
+		private const int FilterColorLimitHLow = 20;
+		private const int FilterColorLimitHigh = 200;
 		/// <summary>
 		/// Entrypoint for conversion: apply file-path or file-URL
 		/// </summary>
@@ -66,7 +79,7 @@ namespace LaserGRBL.SvgConverter
 		//private bool fromText = false;
 
 		Regex RemoveInvalidUnicode = new Regex(@"[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-u10FFFF]+", RegexOptions.Compiled);
-		public string convertFromText(string text, GrblCore core, bool importMM = false)
+		public string convertFromText(string text, GrblCore core, bool importMM = false, ColorFilter filter=ColorFilter.All)
 		{
 			//fromText = true;
 			importInMM = importMM;
@@ -77,13 +90,15 @@ namespace LaserGRBL.SvgConverter
 			text = RemoveInvalidUnicode.Replace(text, string.Empty);
 			svgCode = XElement.Parse(text, LoadOptions.None);
 
+			loadColorFilter = filter;
+
 			return convertSVG(svgCode, core);
 		}
 
-		public string convertFromFile(string file, GrblCore core)
+		public string convertFromFile(string file, GrblCore core, ColorFilter filter)
 		{
 			string xml = System.IO.File.ReadAllText(file);
-			return convertFromText(xml, core, true);
+			return convertFromText(xml, core, true, filter);
 		}
 
 		private string convertSVG(XElement svgCode, GrblCore core)
@@ -445,7 +460,7 @@ namespace LaserGRBL.SvgConverter
 			{
 				foreach (var pathElement in svgCode.Elements(nspace + form))
 				{
-					if (pathElement != null)
+					if (filterByColor(pathElement, loadColorFilter))
 					{
 						string myColor = getColor(pathElement);
 
@@ -595,7 +610,7 @@ namespace LaserGRBL.SvgConverter
 		{
 			foreach (var pathElement in svgCode.Elements(nspace + "path"))
 			{
-				if (pathElement != null)
+				if (filterByColor(pathElement, loadColorFilter))
 				{
 					offsetX = 0;// (float)matrixElement.OffsetX;
 					offsetY = 0;// (float)matrixElement.OffsetY;
@@ -643,6 +658,48 @@ namespace LaserGRBL.SvgConverter
 				}
 			}
 			return;
+		}
+
+		private bool filterByColor(XElement pathElement, ColorFilter filter)
+		{
+			if (filter == ColorFilter.All) return true;
+
+			var styleMap = parseStyle(pathElement);
+			
+			if (!styleMap.TryGetValue("stroke", out var pathColor) || "none"==pathColor)
+				if (!styleMap.TryGetValue("fill", out pathColor) || "none"==pathColor) return true;
+			
+			var rgb=parseRgb(pathColor);
+
+			if (rgb == Color.Empty) return true;
+			
+			switch (filter)
+			{
+				case ColorFilter.Red:
+					return rgb.R >= FilterColorLimitHigh && rgb.G <= FilterColorLimitHLow && rgb.B <= FilterColorLimitHLow;
+				case ColorFilter.Green:
+					return rgb.R <= FilterColorLimitHLow && rgb.G > FilterColorLimitHigh && rgb.B <= FilterColorLimitHLow;
+				case ColorFilter.Blue:
+					return rgb.R <= FilterColorLimitHLow && rgb.G <= FilterColorLimitHLow && rgb.B > FilterColorLimitHigh;
+				case ColorFilter.Black:
+					return rgb.R <= FilterColorLimitHLow && rgb.G <= FilterColorLimitHLow && rgb.B <= FilterColorLimitHLow;
+				default:
+					return true;
+			}
+		}
+
+		private Color parseRgb(string style)
+		{
+			return ColorTranslator.FromHtml(style);
+		}
+
+		private Dictionary<string,string> parseStyle(XElement pathElement)
+		{
+			var attribute=pathElement.Attribute("style");
+			return attribute?.Value.Replace(" ", "")
+				.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
+				.Select(s => s.Split(':'))
+				.ToDictionary(s => s[0], s => s[1]);
 		}
 
 		private bool penIsDown = true;
