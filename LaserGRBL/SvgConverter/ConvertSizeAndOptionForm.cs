@@ -188,7 +188,7 @@ namespace LaserGRBL.SvgConverter
 				IIMaxPower.CurrentValue = IIMaxPower.MaxValue * row.Power / 100;
 			}
 		}
-		private void BtnFilterInfo_Click(object sender, EventArgs e)
+		private void BtnColorFilter_Click(object sender, EventArgs e)
 		{Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/raster-image-import/target-image-size-and-laser-options/#color-filter");}
 		//private void IISizeW_OnTheFlyValueChanged(object sender, int OldValue, int NewValue, bool ByUser)
 		//{

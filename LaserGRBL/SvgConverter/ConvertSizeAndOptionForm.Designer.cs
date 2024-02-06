@@ -78,7 +78,7 @@ namespace LaserGRBL.SvgConverter
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.labelFilter = new System.Windows.Forms.Label();
 			this.CBFilter = new System.Windows.Forms.ComboBox();
-			this.imageButton1 = new LaserGRBL.UserControls.ImageButton();
+			this.BtnColorFilter = new LaserGRBL.UserControls.ImageButton();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
 			this.tableLayoutPanel9.SuspendLayout();
 			this.GbSpeed.SuspendLayout();
@@ -95,7 +95,7 @@ namespace LaserGRBL.SvgConverter
 			resources.ApplyResources(this.tableLayoutPanel9, "tableLayoutPanel9");
 			this.tableLayoutPanel9.Controls.Add(this.GbSpeed, 0, 0);
 			this.tableLayoutPanel9.Controls.Add(this.GbLaser, 0, 1);
-			this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel1, 0, 4);
+			this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel1, 0, 5);
 			this.tableLayoutPanel9.Controls.Add(this.gbFilter, 0, 3);
 			this.tableLayoutPanel9.Name = "tableLayoutPanel9";
 			// 
@@ -225,8 +225,8 @@ namespace LaserGRBL.SvgConverter
 			// 
 			// CBLaserON
 			// 
-			this.tableLayoutPanel7.SetColumnSpan(this.CBLaserON, 2);
 			resources.ApplyResources(this.CBLaserON, "CBLaserON");
+			this.tableLayoutPanel7.SetColumnSpan(this.CBLaserON, 2);
 			this.CBLaserON.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CBLaserON.FormattingEnabled = true;
 			this.CBLaserON.Name = "CBLaserON";
@@ -268,22 +268,22 @@ namespace LaserGRBL.SvgConverter
 			// 
 			// BtnCancel
 			// 
-			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			resources.ApplyResources(this.BtnCancel, "BtnCancel");
+			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.BtnCancel.Name = "BtnCancel";
 			this.BtnCancel.UseVisualStyleBackColor = true;
 			// 
 			// BtnCreate
 			// 
-			this.BtnCreate.DialogResult = System.Windows.Forms.DialogResult.OK;
 			resources.ApplyResources(this.BtnCreate, "BtnCreate");
+			this.BtnCreate.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.BtnCreate.Name = "BtnCreate";
 			this.BtnCreate.UseVisualStyleBackColor = true;
 			// 
 			// gbFilter
 			// 
-			this.gbFilter.Controls.Add(this.tableLayoutPanel2);
 			resources.ApplyResources(this.gbFilter, "gbFilter");
+			this.gbFilter.Controls.Add(this.tableLayoutPanel2);
 			this.gbFilter.Name = "gbFilter";
 			this.gbFilter.TabStop = false;
 			// 
@@ -292,7 +292,7 @@ namespace LaserGRBL.SvgConverter
 			resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
 			this.tableLayoutPanel2.Controls.Add(this.labelFilter, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.CBFilter, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.imageButton1, 2, 0);
+			this.tableLayoutPanel2.Controls.Add(this.BtnColorFilter, 2, 0);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			// 
 			// labelFilter
@@ -308,19 +308,19 @@ namespace LaserGRBL.SvgConverter
 			this.CBFilter.FormattingEnabled = true;
 			this.CBFilter.Name = "CBFilter";
 			// 
-			// imageButton1
+			// BtnColorFilter
 			// 
-			this.imageButton1.AltImage = null;
-			resources.ApplyResources(this.imageButton1, "imageButton1");
-			this.imageButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.imageButton1.Caption = null;
-			this.imageButton1.Coloration = System.Drawing.Color.Empty;
-			this.imageButton1.Image = ((System.Drawing.Image)(resources.GetObject("imageButton1.Image")));
-			this.imageButton1.Name = "imageButton1";
-			this.imageButton1.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
-			this.TT.SetToolTip(this.imageButton1, resources.GetString("imageButton1.ToolTip"));
-			this.imageButton1.UseAltImage = false;
-			this.imageButton1.Click += new System.EventHandler(this.BtnFilterInfo_Click);
+			this.BtnColorFilter.AltImage = null;
+			resources.ApplyResources(this.BtnColorFilter, "BtnColorFilter");
+			this.BtnColorFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnColorFilter.Caption = null;
+			this.BtnColorFilter.Coloration = System.Drawing.Color.Empty;
+			this.BtnColorFilter.Image = ((System.Drawing.Image)(resources.GetObject("BtnColorFilter.Image")));
+			this.BtnColorFilter.Name = "BtnColorFilter";
+			this.BtnColorFilter.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.TT.SetToolTip(this.BtnColorFilter, resources.GetString("BtnColorFilter.ToolTip"));
+			this.BtnColorFilter.UseAltImage = false;
+			this.BtnColorFilter.Click += new System.EventHandler(this.BtnColorFilter_Click);
 			// 
 			// TT
 			// 
@@ -352,9 +352,8 @@ namespace LaserGRBL.SvgConverter
 			this.tableLayoutPanel2.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
-		}
 
-		private LaserGRBL.UserControls.ImageButton imageButton1;
+		}
 
 		private System.Windows.Forms.ComboBox CBFilter;
 
@@ -372,5 +371,6 @@ namespace LaserGRBL.SvgConverter
 		private LaserGRBL.UserControls.ImageButton BtnPSHelper;
 		private System.Windows.Forms.Label LblMinPerc;
 		private System.Windows.Forms.Label LblMaxPerc;
+		private UserControls.ImageButton BtnColorFilter;
 	}
 }

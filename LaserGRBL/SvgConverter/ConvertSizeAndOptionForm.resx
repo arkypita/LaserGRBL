@@ -154,13 +154,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="LblBorderTracing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 10</value>
-  </data>
-  <data name="LblBorderTracing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 10, 0</value>
+    <value>3, 5</value>
   </data>
   <data name="LblBorderTracing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 37</value>
+    <value>72, 13</value>
   </data>
   <data name="LblBorderTracing.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -190,13 +187,10 @@
     <value>NoControl</value>
   </data>
   <data name="LblBorderTracingmm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>427, 10</value>
-  </data>
-  <data name="LblBorderTracingmm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 10, 0</value>
+    <value>139, 5</value>
   </data>
   <data name="LblBorderTracingmm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 37</value>
+    <value>44, 13</value>
   </data>
   <data name="LblBorderTracingmm.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -220,13 +214,13 @@
     <value>Left</value>
   </data>
   <data name="IIBorderTracing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 9</value>
+    <value>78, 4</value>
   </data>
   <data name="IIBorderTracing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 9, 10, 9</value>
+    <value>0, 3, 3, 3</value>
   </data>
   <data name="IIBorderTracing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 39</value>
+    <value>55, 15</value>
   </data>
   <data name="IIBorderTracing.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -265,10 +259,7 @@
 </value>
   </data>
   <data name="BtnPSHelper.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1183, 20</value>
-  </data>
-  <data name="BtnPSHelper.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>346, 3</value>
   </data>
   <data name="BtnPSHelper.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 17</value>
@@ -298,16 +289,13 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 46</value>
-  </data>
-  <data name="tableLayoutPanel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>3, 16</value>
   </data>
   <data name="tableLayoutPanel6.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1210, 57</value>
+    <value>366, 23</value>
   </data>
   <data name="tableLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -325,22 +313,16 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel6.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LblBorderTracing" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LblBorderTracingmm" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="IIBorderTracing" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnPSHelper" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,641" /&gt;&lt;Rows Styles="AutoSize,0,Absolute,57,Absolute,57" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LblBorderTracing" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LblBorderTracingmm" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="IIBorderTracing" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnPSHelper" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,275" /&gt;&lt;Rows Styles="AutoSize,0,Absolute,23,Absolute,23" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="GbSpeed.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="GbSpeed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 9</value>
-  </data>
-  <data name="GbSpeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
-  </data>
-  <data name="GbSpeed.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>3, 3</value>
   </data>
   <data name="GbSpeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1230, 112</value>
+    <value>372, 42</value>
   </data>
   <data name="GbSpeed.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -394,10 +376,7 @@
 </value>
   </data>
   <data name="BtnModulationInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1183, 111</value>
-  </data>
-  <data name="BtnModulationInfo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>346, 39</value>
   </data>
   <data name="BtnModulationInfo.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 17</value>
@@ -433,13 +412,10 @@ Click for more information...</value>
     <value>NoControl</value>
   </data>
   <data name="LblSmin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 73</value>
-  </data>
-  <data name="LblSmin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 10, 0</value>
+    <value>3, 31</value>
   </data>
   <data name="LblSmin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 37</value>
+    <value>37, 13</value>
   </data>
   <data name="LblSmin.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -463,13 +439,10 @@ Click for more information...</value>
     <value>Left</value>
   </data>
   <data name="IIMinPower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 72</value>
-  </data>
-  <data name="IIMinPower.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>72, 30</value>
   </data>
   <data name="IIMinPower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 39</value>
+    <value>43, 15</value>
   </data>
   <data name="IIMinPower.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -496,13 +469,10 @@ Click for more information...</value>
     <value>NoControl</value>
   </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 13</value>
-  </data>
-  <data name="label18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 10, 0</value>
+    <value>3, 7</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 37</value>
+    <value>63, 13</value>
   </data>
   <data name="label18.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -541,10 +511,7 @@ Click for more information...</value>
 </value>
   </data>
   <data name="BtnOnOffInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1183, 23</value>
-  </data>
-  <data name="BtnOnOffInfo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>346, 5</value>
   </data>
   <data name="BtnOnOffInfo.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 17</value>
@@ -571,17 +538,14 @@ Click for more information...</value>
   <data name="&gt;&gt;BtnOnOffInfo.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="CBLaserON.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="CBLaserON.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
   <data name="CBLaserON.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 9</value>
-  </data>
-  <data name="CBLaserON.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>72, 3</value>
   </data>
   <data name="CBLaserON.Size" type="System.Drawing.Size, System.Drawing">
-    <value>948, 45</value>
+    <value>157, 21</value>
   </data>
   <data name="CBLaserON.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -608,13 +572,10 @@ Click for more information...</value>
     <value>NoControl</value>
   </data>
   <data name="LblSmax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 130</value>
-  </data>
-  <data name="LblSmax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 10, 0</value>
+    <value>3, 51</value>
   </data>
   <data name="LblSmax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 37</value>
+    <value>40, 13</value>
   </data>
   <data name="LblSmax.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -638,13 +599,10 @@ Click for more information...</value>
     <value>Left</value>
   </data>
   <data name="IIMaxPower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 129</value>
-  </data>
-  <data name="IIMaxPower.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>72, 51</value>
   </data>
   <data name="IIMaxPower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 39</value>
+    <value>43, 15</value>
   </data>
   <data name="IIMaxPower.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -671,13 +629,10 @@ Click for more information...</value>
     <value>NoControl</value>
   </data>
   <data name="LblMinPerc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>371, 73</value>
-  </data>
-  <data name="LblMinPerc.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 10, 0</value>
+    <value>121, 31</value>
   </data>
   <data name="LblMinPerc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 37</value>
+    <value>21, 13</value>
   </data>
   <data name="LblMinPerc.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -707,13 +662,10 @@ Click for more information...</value>
     <value>NoControl</value>
   </data>
   <data name="LblMaxPerc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>371, 130</value>
-  </data>
-  <data name="LblMaxPerc.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 10, 0</value>
+    <value>121, 51</value>
   </data>
   <data name="LblMaxPerc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 37</value>
+    <value>33, 13</value>
   </data>
   <data name="LblMaxPerc.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -737,16 +689,13 @@ Click for more information...</value>
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 46</value>
-  </data>
-  <data name="tableLayoutPanel7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>3, 16</value>
   </data>
   <data name="tableLayoutPanel7.RowCount" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1210, 217</value>
+    <value>366, 68</value>
   </data>
   <data name="tableLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -764,22 +713,16 @@ Click for more information...</value>
     <value>0</value>
   </data>
   <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnModulationInfo" Row="1" RowSpan="2" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="LblSmin" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="IIMinPower" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label18" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnOnOffInfo" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="CBLaserON" Row="0" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="LblSmax" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="IIMaxPower" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LblMinPerc" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="LblMaxPerc" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Absolute,57,Absolute,20,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnModulationInfo" Row="1" RowSpan="2" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="LblSmin" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="IIMinPower" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label18" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BtnOnOffInfo" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="CBLaserON" Row="0" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="LblSmax" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="IIMaxPower" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LblMinPerc" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="LblMaxPerc" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,Percent,50,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Absolute,20,Absolute,7" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="GbLaser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="GbLaser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 139</value>
-  </data>
-  <data name="GbLaser.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
-  </data>
-  <data name="GbLaser.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>3, 51</value>
   </data>
   <data name="GbLaser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1230, 272</value>
+    <value>372, 87</value>
   </data>
   <data name="GbLaser.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -808,17 +751,17 @@ Click for more information...</value>
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="BtnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
   <data name="BtnCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>732, 9</value>
-  </data>
-  <data name="BtnCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>215, 6</value>
   </data>
   <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 77</value>
+    <value>74, 27</value>
   </data>
   <data name="BtnCancel.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -838,17 +781,17 @@ Click for more information...</value>
   <data name="&gt;&gt;BtnCancel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="BtnCreate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
   <data name="BtnCreate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="BtnCreate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>986, 9</value>
-  </data>
-  <data name="BtnCreate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>295, 6</value>
   </data>
   <data name="BtnCreate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 77</value>
+    <value>74, 27</value>
   </data>
   <data name="BtnCreate.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -872,16 +815,13 @@ Click for more information...</value>
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 601</value>
-  </data>
-  <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>3, 210</value>
   </data>
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1230, 110</value>
+    <value>372, 39</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -901,6 +841,12 @@ Click for more information...</value>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="BtnCancel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnCreate" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <data name="gbFilter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="gbFilter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="tableLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -916,11 +862,17 @@ Click for more information...</value>
   <data name="labelFilter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="labelFilter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="labelFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 37</value>
+    <value>1, 7</value>
+  </data>
+  <data name="labelFilter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 1, 0</value>
   </data>
   <data name="labelFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 37</value>
+    <value>31, 13</value>
   </data>
   <data name="labelFilter.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -940,17 +892,14 @@ Click for more information...</value>
   <data name="&gt;&gt;labelFilter.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="CBFilter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="CBFilter.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
   <data name="CBFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>175, 9</value>
-  </data>
-  <data name="CBFilter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>36, 3</value>
   </data>
   <data name="CBFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>996, 45</value>
+    <value>195, 21</value>
   </data>
   <data name="CBFilter.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -967,10 +916,10 @@ Click for more information...</value>
   <data name="&gt;&gt;CBFilter.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="imageButton1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="BtnColorFilter.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="imageButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="BtnColorFilter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
@@ -985,50 +934,43 @@ Click for more information...</value>
         2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="imageButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1191, 47</value>
+  <data name="BtnColorFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>350, 5</value>
   </data>
-  <data name="imageButton1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
-  </data>
-  <data name="imageButton1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="BtnColorFilter.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 17</value>
   </data>
-  <data name="imageButton1.TabIndex" type="System.Int32, mscorlib">
+  <data name="BtnColorFilter.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
   </data>
-  <data name="imageButton1.ToolTip" xml:space="preserve">
-    <value>Grbl support variable output power to produce grayscales.
-This require your hardware to have a TTL control on laser.
+  <data name="BtnColorFilter.ToolTip" xml:space="preserve">
+    <value>Select color to filter image on
 
 Click for more information...</value>
   </data>
-  <data name="&gt;&gt;imageButton1.Name" xml:space="preserve">
-    <value>imageButton1</value>
+  <data name="&gt;&gt;BtnColorFilter.Name" xml:space="preserve">
+    <value>BtnColorFilter</value>
   </data>
-  <data name="&gt;&gt;imageButton1.Type" xml:space="preserve">
+  <data name="&gt;&gt;BtnColorFilter.Type" xml:space="preserve">
     <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=5.7.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;imageButton1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;BtnColorFilter.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
   </data>
-  <data name="&gt;&gt;imageButton1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;BtnColorFilter.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 40</value>
-  </data>
-  <data name="tableLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+    <value>1, 14</value>
   </data>
   <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1224, 111</value>
+    <value>370, 27</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1046,19 +988,19 @@ Click for more information...</value>
     <value>0</value>
   </data>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="labelFilter" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CBFilter" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="imageButton1" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,13,97121,Percent,86,02879,Absolute,42" /&gt;&lt;Rows Styles="Percent,50,Absolute,111" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="labelFilter" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="CBFilter" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BtnColorFilter" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,50,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,Absolute,27" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="gbFilter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="gbFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 429</value>
+    <value>3, 144</value>
   </data>
-  <data name="gbFilter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
+  <data name="gbFilter.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
   </data>
   <data name="gbFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1230, 154</value>
+    <value>372, 42</value>
   </data>
   <data name="gbFilter.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1084,14 +1026,11 @@ Click for more information...</value>
   <data name="tableLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="tableLayoutPanel9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 9</value>
-  </data>
   <data name="tableLayoutPanel9.RowCount" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1236, 720</value>
+    <value>378, 252</value>
   </data>
   <data name="tableLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1109,13 +1048,13 @@ Click for more information...</value>
     <value>0</value>
   </data>
   <data name="tableLayoutPanel9.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="GbSpeed" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GbLaser" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel1" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="gbFilter" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Percent,100,Absolute,128" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="GbSpeed" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="GbLaser" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel1" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="gbFilter" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Percent,100,Absolute,45" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>19, 37</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1124,10 +1063,13 @@ Click for more information...</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1236, 720</value>
+    <value>378, 252</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>13, 11, 13, 11</value>
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>371, 279</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
