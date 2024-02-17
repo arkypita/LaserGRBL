@@ -1073,6 +1073,7 @@ namespace LaserGRBL.RasterConverter
 							mCore.LoadedFile.LoadImagePotrace(bmp, mFileName, UseSpotRemoval, (int)SpotRemoval, UseSmoothing, Smoothing, UseOptimize, Optimize, OptimizeFast, conf, mAppend, mCore);
 						else if (SelectedTool == Tool.Centerline)
 							mCore.LoadedFile.LoadImageCenterline(bmp, mFileName, UseCornerThreshold, CornerThreshold, UseLineThreshold, LineThreshold, conf, mAppend, mCore);
+
 					}
 
 					if (GenerationComplete != null)

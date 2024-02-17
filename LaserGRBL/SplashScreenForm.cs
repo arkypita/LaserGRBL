@@ -30,8 +30,8 @@ namespace LaserGRBL
 			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 			e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 			e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-			e.Graphics.DrawString(mVersion, Font, Brushes.LightGray,  Width - s.Width -3 , Height - s.Height - 3);
-			e.Graphics.DrawRectangle(Pens.DarkGray, 2, 2, Width - 5, Height - 5);
+			e.Graphics.DrawString(mVersion, Font, Brushes.Black,  Width - s.Width -3 , Height - s.Height - 3);
+			//e.Graphics.DrawRectangle(Pens.DarkGray, 2, 2, Width - 5, Height - 5);
 		}
 
 		private void SplashScreenForm_Load(object sender, EventArgs e)

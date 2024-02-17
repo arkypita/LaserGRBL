@@ -502,6 +502,127 @@ namespace LaserGRBL
 			RiseOnFileLoaded(filename, elapsed);
 		}
 
+		public void GenerateGreyscaleTest(int f_row, int s_col, int f_start, int f_end, int s_start, int s_end, int x_size, int y_size, double resolution, int f_grid, int s_grid, string title, int f_text, int s_text, string ton)
+		{
+
+			//string text = Hershey.Hershey.Test();
+
+			double ox = 3;
+			double oy = 3;
+			string filename = "GreyScale Test";
+
+			RiseOnFileLoading(filename);
+
+			long start = Tools.HiResTimer.TotalMilliseconds;
+
+			list.Clear();
+			mRange.ResetRange();
+
+			bool forward = true;
+			double f_delta = f_row > 1 ? (f_end - f_start) / (double)(f_row-1) : 0;
+			double s_delta = s_col > 1 ? (s_end - s_start) / (double)(s_col-1) : 0;
+
+			double x_step = x_size / (double)s_col;
+			double y_step = y_size / (double)f_row;
+			double filling_step = 1 / resolution;
+
+			//back to origin
+			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1} S0", formatnumber(ox), formatnumber(oy))));
+			list.Add(new GrblCommand($"G1 {ton} F{formatnumber(f_start)}"));
+
+			//draw filling
+			double prevF = double.NaN, curF = double.NaN;
+			forward = true;
+			for (double y = 0; y <= y_size; y += filling_step)
+			{
+				curF = f_start + ((int)(y / y_step)) * f_delta;
+
+				if (curF != prevF)
+				{
+					list.Add(new GrblCommand($"F{formatnumber(curF)}"));
+					prevF = curF;
+				}
+
+				list.Add(new GrblCommand($"Y{formatnumber(oy + y)} S0"));
+
+				for (int x = 0; x < s_col; x++)
+				{
+					double cx = forward ? ((x + 1) * x_step) : x_size - ((x + 1) * x_step);
+					double cs = forward ? s_start + (x * s_delta) : s_end - (x * s_delta);
+
+					list.Add(new GrblCommand(String.Format("X{0} S{1}", formatnumber(ox + cx), formatnumber(cs))));
+				}
+
+				forward = !forward;
+			}
+
+			//back to origin
+			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1} S0", formatnumber(ox), formatnumber(oy))));
+			list.Add(new GrblCommand($"G1 {ton} F{formatnumber(f_grid)}"));
+
+			// draw grid X
+			forward = true;
+			for (int y = 0; y < f_row + 1; y++)
+			{
+				double cy = y * y_step;
+				list.Add(new GrblCommand(String.Format("Y{0} S0", formatnumber(oy + cy))));
+
+				for (int x = 0; x < s_col + 1; x++)
+				{
+					double cx = forward ? x * x_step : x_size - x * x_step;
+					list.Add(new GrblCommand(String.Format("X{0} S{1}", formatnumber(ox + cx), formatnumber(s_grid))));
+				}
+
+				forward = !forward;
+			}
+
+			//back to origin
+			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1} S0", formatnumber(ox), formatnumber(oy))));
+			list.Add(new GrblCommand($"G1 {ton} F{formatnumber(f_grid)}"));
+
+			// draw grid Y
+			forward = true;
+			for (int x = 0; x < s_col + 1; x++)
+			{
+				double cx = x * x_step;
+				list.Add(new GrblCommand(String.Format("X{0} S0", formatnumber(ox + cx))));
+
+				for (int y = 0; y < f_row + 1; y++)
+				{
+					double cy = forward ? y * y_step : y_size - y * y_step;
+					list.Add(new GrblCommand(String.Format("Y{0} S{1}", formatnumber(oy + cy), formatnumber(s_grid))));
+				}
+
+				forward = !forward;
+			}
+
+			for (int x = 0; x < s_col; x++)
+				list.AddRange( Hershey.Hershey.CreateString($"S{(int)(s_start + (x * s_delta))}", (x*x_step) + (x_step/2) + ox, oy / 2, f_text, s_text, true, ton));
+			for (int y = 0; y < f_row; y++)
+				list.AddRange(Hershey.Hershey.CreateString($"F{(int)(f_start + (y * f_delta))}", ox / 2, (y * y_step) + (y_step / 2) + oy, f_text, s_text, false, ton));
+
+			string srange = (s_start != s_end) ? $"S{s_start} - S{s_end}" : $"S{s_end}";
+			string frange = (f_start != f_end) ? $"F{f_start} - F{f_end}" : $"F{f_end}";
+
+			
+			if (string.IsNullOrEmpty(title))
+				title = "LaserGRBL grayscale test";
+			else
+				title = $"LaserGRBL grayscale test [{title}]";
+			string parmessage = $"{srange}, {frange}, {ton},  {formatnumber(resolution)} line/mm";
+			list.AddRange(Hershey.Hershey.CreateString(title, x_size / 2 + ox, y_size + oy + oy + oy/2, f_text, s_text, true, ton));
+			list.AddRange(Hershey.Hershey.CreateString(parmessage, x_size / 2 + ox, y_size + oy + oy / 2, f_text, s_text, true, ton));
+
+			//laser off
+			list.Add(new GrblCommand("M5"));
+
+
+			Analyze();
+			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+
+			RiseOnFileLoaded(filename, elapsed);
+		}
+
 		// For Marlin, as we sen M106 command, we need to know last color send
 		//private int lastColorSend = 0;
 		private void ImageLine2Line(Bitmap bmp, L2LConf c)

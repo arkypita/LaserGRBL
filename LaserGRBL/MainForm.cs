@@ -211,7 +211,7 @@ namespace LaserGRBL
 			{
 				foreach (UsageStats.MessageData M in UsageStats.Messages.GetMessages(UsageStats.MessageData.MessageTypes.AutoLink))
 				{
-					Tools.Utils.OpenLink(M.Content);
+					Utils.OpenLink(M.Content);
 					UsageStats.Messages.ClearMessage(M);
 				}
 
@@ -221,7 +221,7 @@ namespace LaserGRBL
 					TTLinkToNews.Text = ToolBarMessage.Title;
 					TTLinkToNews.Enabled = true;
 
-					this.TTLinkToNews.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+					this.TTLinkToNews.LinkBehavior = LinkBehavior.HoverUnderline;
 				}
 			}
 			catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex); }
@@ -355,6 +355,7 @@ namespace LaserGRBL
 			//MnExportConfig.Enabled = Core.CanImportExport;
 			//MnImportConfig.Enabled = Core.CanImportExport;
 			MnGrblReset.Enabled = Core.CanResetGrbl;
+			MnPowerVsSpeed.Enabled = Core.CanLoadNewFile;
 
 			MNEsp8266.Visible = false;// (Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsBSerial)) == ComWrapper.WrapperType.LaserWebESP8266;
 
@@ -1049,6 +1050,11 @@ namespace LaserGRBL
 		private void laserUsageStatsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			LaserUsage.CreateAndShowDialog(this, Core);
+		}
+
+		private void MnGrayscaleTest_Click(object sender, EventArgs e)
+		{
+			Generator.PowerVsSpeedForm.CreateAndShowDialog(this, Core);
 		}
 	}
 

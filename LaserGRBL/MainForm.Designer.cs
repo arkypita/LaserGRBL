@@ -83,6 +83,11 @@
 			this.MnStartFromPosition = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnRunMultiSep = new System.Windows.Forms.ToolStripSeparator();
 			this.MnRunMulti = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnGenerate = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnPowerVsSpeed = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnCuttingTest = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnAccuracyTest = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnFocusTest = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNEsp8266 = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNGrblEmulator = new System.Windows.Forms.ToolStripMenuItem();
 			this.schemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -329,6 +334,7 @@
 			this.MMn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnGrbl,
             this.fileToolStripMenuItem,
+            this.MnGenerate,
             this.MNEsp8266,
             this.schemaToolStripMenuItem,
             this.linguaToolStripMenuItem,
@@ -539,6 +545,37 @@
 			resources.ApplyResources(this.MnRunMulti, "MnRunMulti");
 			this.MnRunMulti.Name = "MnRunMulti";
 			this.MnRunMulti.Click += new System.EventHandler(this.MnRunMulti_Click);
+			// 
+			// MnGenerate
+			// 
+			this.MnGenerate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MnPowerVsSpeed,
+            this.MnCuttingTest,
+            this.MnAccuracyTest,
+            this.MnFocusTest});
+			this.MnGenerate.Name = "MnGenerate";
+			resources.ApplyResources(this.MnGenerate, "MnGenerate");
+			// 
+			// MnPowerVsSpeed
+			// 
+			this.MnPowerVsSpeed.Name = "MnPowerVsSpeed";
+			resources.ApplyResources(this.MnPowerVsSpeed, "MnPowerVsSpeed");
+			this.MnPowerVsSpeed.Click += new System.EventHandler(this.MnGrayscaleTest_Click);
+			// 
+			// MnCuttingTest
+			// 
+			this.MnCuttingTest.Name = "MnCuttingTest";
+			resources.ApplyResources(this.MnCuttingTest, "MnCuttingTest");
+			// 
+			// MnAccuracyTest
+			// 
+			this.MnAccuracyTest.Name = "MnAccuracyTest";
+			resources.ApplyResources(this.MnAccuracyTest, "MnAccuracyTest");
+			// 
+			// MnFocusTest
+			// 
+			this.MnFocusTest.Name = "MnFocusTest";
+			resources.ApplyResources(this.MnFocusTest, "MnFocusTest");
 			// 
 			// MNEsp8266
 			// 
@@ -973,6 +1010,7 @@
 			this.Cursor = System.Windows.Forms.Cursors.Default;
 			this.KeyPreview = true;
 			this.Name = "MainForm";
+			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
@@ -1107,6 +1145,11 @@
 		private System.Windows.Forms.ToolStripStatusLabel TTlaserLife;
 		private System.Windows.Forms.ToolStripStatusLabel TTSep;
 		private System.Windows.Forms.ToolStripMenuItem laserUsageStatsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem MnGenerate;
+		private System.Windows.Forms.ToolStripMenuItem MnPowerVsSpeed;
+		private System.Windows.Forms.ToolStripMenuItem MnCuttingTest;
+		private System.Windows.Forms.ToolStripMenuItem MnAccuracyTest;
+		private System.Windows.Forms.ToolStripMenuItem MnFocusTest;
 	}
 }
 

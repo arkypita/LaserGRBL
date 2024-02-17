@@ -133,6 +133,13 @@
     <Compile Include="ComWrapper\MySerial\StopBits.cs" />
     <Compile Include="ComWrapper\MySerial\WinSerialStream.cs" />
     <Compile Include="ComWrapper\UsbSerial2.cs" />
+    <Compile Include="Generator\PowerVsSpeedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generator\PowerVsSpeedForm.Designer.cs">
+      <DependentUpon>PowerVsSpeedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hershey\Hershey.cs" />
     <Compile Include="LaserLifeEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -855,6 +862,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExceptionManager.pt-BR.resx">
       <DependentUpon>ExceptionManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generator\PowerVsSpeedForm.resx">
+      <DependentUpon>PowerVsSpeedForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.pt-BR.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
