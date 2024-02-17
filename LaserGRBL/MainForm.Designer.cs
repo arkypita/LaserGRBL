@@ -566,6 +566,7 @@
 			// 
 			this.MnCuttingTest.Name = "MnCuttingTest";
 			resources.ApplyResources(this.MnCuttingTest, "MnCuttingTest");
+			this.MnCuttingTest.Click += new System.EventHandler(this.MnCuttingTest_Click);
 			// 
 			// MnAccuracyTest
 			// 

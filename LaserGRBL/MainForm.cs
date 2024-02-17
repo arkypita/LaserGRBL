@@ -1056,6 +1056,11 @@ namespace LaserGRBL
 		{
 			Generator.PowerVsSpeedForm.CreateAndShowDialog(this, Core);
 		}
+
+		private void MnCuttingTest_Click(object sender, EventArgs e)
+		{
+			Generator.CuttingTest.CreateAndShowDialog(this, Core);
+		}
 	}
 
 

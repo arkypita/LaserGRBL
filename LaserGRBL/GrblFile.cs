@@ -502,6 +502,85 @@ namespace LaserGRBL
 			RiseOnFileLoaded(filename, elapsed);
 		}
 
+		internal void GenerateCuttingTest(int f_col, int f_start, int f_end, int p_start, int p_end, int s_fixed, int f_text, int s_text, string title, string ton)
+		{
+			int p_row = p_end - p_start + 1;
+			double ox = 3;
+			double oy = 3;
+			string filename = "Cutting Test";
+
+			int x_size = f_col * 14 - 4;
+			int y_size = p_row * 14 - 4;
+
+			RiseOnFileLoading(filename);
+
+			long start = Tools.HiResTimer.TotalMilliseconds;
+
+			list.Clear();
+			mRange.ResetRange();
+
+			double f_delta = f_col > 1 ? (f_end - f_start) / (double)(f_col - 1) : 0;
+
+			//back to origin
+			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1} S{2}", formatnumber(ox), formatnumber(oy), formatnumber(s_fixed))));
+			list.Add(new GrblCommand($"G1 {ton} F{formatnumber(f_start)}"));
+
+			double cx = ox;
+			double cy = oy;
+
+			for (int p = 0; p < p_row; p++) // rows
+			{
+				cy = oy + 14 * p;
+				for (int f = 0; f < f_col; f += 1) //cols
+				{
+					cx = ox + 14 * f;
+					for (int pass = 0; pass < p_start + p; pass++)
+					{
+						//move to position
+						list.Add(new GrblCommand(String.Format("G0 X{0} Y{1}", formatnumber(cx), formatnumber(cy))));
+						//now draw rectangle
+						list.Add(new GrblCommand(String.Format("G1 X{0} F{1} {2}", formatnumber(cx+10), formatnumber(f_start + f_delta * f), ton))); //Laser ON
+						list.Add(new GrblCommand(String.Format("G1 Y{0}", formatnumber(cy+10))));
+						list.Add(new GrblCommand(String.Format("G1 X{0}", formatnumber(cx))));
+						list.Add(new GrblCommand(String.Format("G1 Y{0}", formatnumber(cy))));
+						list.Add(new GrblCommand("M5")); // Laser OFF
+					}
+				}
+			}
+			
+			//back to origin
+			list.Add(new GrblCommand(String.Format("G0 X{0} Y{1} S0", formatnumber(ox), formatnumber(oy))));
+			list.Add(new GrblCommand($"G1 {ton} F{formatnumber(f_text)}"));
+
+
+			for (int x = 0; x < f_col; x++)
+				list.AddRange(Hershey.Hershey.CreateString($"F{(int)(f_start + (x * f_delta))}", (x * 14) + (10 / 2) + ox, oy / 2, f_text, s_text, true, "M4"));
+			for (int y = 0; y < p_row; y++)
+				list.AddRange(Hershey.Hershey.CreateString($"{(int)(p_start + y)}pass", ox / 2, (y * 14) + (10 / 2) + oy, f_text, s_text, false, "M4"));
+
+			string srange = $"S{s_fixed}";
+			string frange = (f_start != f_end) ? $"F{f_start} - F{f_end}" : $"F{f_end}";
+			string prange = (p_start != p_end) ? $"{p_start} - F{p_end} pass" : $"{p_end} pass";
+
+
+			if (string.IsNullOrEmpty(title))
+				title = "LaserGRBL cutting test";
+			else
+				title = $"LaserGRBL cutting test [{title}]";
+			string parmessage = $"{srange}, {frange}, {prange}, {ton}";
+			list.AddRange(Hershey.Hershey.CreateString(title, x_size / 2 + ox, y_size + oy + oy + oy / 2, f_text, s_text, true, "M4"));
+			list.AddRange(Hershey.Hershey.CreateString(parmessage, x_size / 2 + ox, y_size + oy + oy / 2, f_text, s_text, true, "M4"));
+
+			//laser off
+			list.Add(new GrblCommand("M5"));
+
+
+			Analyze();
+			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+
+			RiseOnFileLoaded(filename, elapsed);
+		}
+
 		public void GenerateGreyscaleTest(int f_row, int s_col, int f_start, int f_end, int s_start, int s_end, int x_size, int y_size, double resolution, int f_grid, int s_grid, string title, int f_text, int s_text, string ton)
 		{
 
@@ -509,7 +588,7 @@ namespace LaserGRBL
 
 			double ox = 3;
 			double oy = 3;
-			string filename = "GreyScale Test";
+			string filename = "PowerSpeed Test";
 
 			RiseOnFileLoading(filename);
 
@@ -597,21 +676,21 @@ namespace LaserGRBL
 			}
 
 			for (int x = 0; x < s_col; x++)
-				list.AddRange( Hershey.Hershey.CreateString($"S{(int)(s_start + (x * s_delta))}", (x*x_step) + (x_step/2) + ox, oy / 2, f_text, s_text, true, ton));
+				list.AddRange( Hershey.Hershey.CreateString($"S{(int)(s_start + (x * s_delta))}", (x*x_step) + (x_step/2) + ox, oy / 2, f_text, s_text, true, "M4"));
 			for (int y = 0; y < f_row; y++)
-				list.AddRange(Hershey.Hershey.CreateString($"F{(int)(f_start + (y * f_delta))}", ox / 2, (y * y_step) + (y_step / 2) + oy, f_text, s_text, false, ton));
+				list.AddRange(Hershey.Hershey.CreateString($"F{(int)(f_start + (y * f_delta))}", ox / 2, (y * y_step) + (y_step / 2) + oy, f_text, s_text, false, "M4"));
 
 			string srange = (s_start != s_end) ? $"S{s_start} - S{s_end}" : $"S{s_end}";
 			string frange = (f_start != f_end) ? $"F{f_start} - F{f_end}" : $"F{f_end}";
 
 			
 			if (string.IsNullOrEmpty(title))
-				title = "LaserGRBL grayscale test";
+				title = "LaserGRBL power/speed test";
 			else
-				title = $"LaserGRBL grayscale test [{title}]";
+				title = $"LaserGRBL power/speed test [{title}]";
 			string parmessage = $"{srange}, {frange}, {ton},  {formatnumber(resolution)} line/mm";
-			list.AddRange(Hershey.Hershey.CreateString(title, x_size / 2 + ox, y_size + oy + oy + oy/2, f_text, s_text, true, ton));
-			list.AddRange(Hershey.Hershey.CreateString(parmessage, x_size / 2 + ox, y_size + oy + oy / 2, f_text, s_text, true, ton));
+			list.AddRange(Hershey.Hershey.CreateString(title, x_size / 2 + ox, y_size + oy + oy + oy/2, f_text, s_text, true, "M4"));
+			list.AddRange(Hershey.Hershey.CreateString(parmessage, x_size / 2 + ox, y_size + oy + oy / 2, f_text, s_text, true, "M4"));
 
 			//laser off
 			list.Add(new GrblCommand("M5"));
