@@ -68,7 +68,10 @@ namespace LaserGRBL.SvgConverter
 
 		private ColorFilter loadColorFilter = ColorFilter.All;
 		private const int FilterColorLimitHLow = 20;
-		private const int FilterColorLimitHigh = 200;
+		private const int FilterColorLimitHigh = 127;
+		private const string SvgStrokeAttribute = "stroke";
+		private const string SvgFillAttribute = "fill";
+
 		/// <summary>
 		/// Entrypoint for conversion: apply file-path or file-URL
 		/// </summary>
@@ -665,9 +668,13 @@ namespace LaserGRBL.SvgConverter
 			if (filter == ColorFilter.All) return true;
 
 			var styleMap = parseStyle(pathElement);
-			
-			if (!styleMap.TryGetValue("stroke", out var pathColor) || "none"==pathColor)
-				if (!styleMap.TryGetValue("fill", out pathColor) || "none"==pathColor) return true;
+			var colorMap = parseColorAttributes(pathElement);
+
+			if (!styleMap.TryGetValue(SvgStrokeAttribute, out var pathColor))
+				if (!styleMap.TryGetValue(SvgFillAttribute, out pathColor))
+					if (!colorMap.TryGetValue(SvgStrokeAttribute, out pathColor))
+						if (!colorMap.TryGetValue(SvgFillAttribute, out pathColor))
+							return true;
 			
 			var rgb=parseRgb(pathColor);
 
@@ -699,7 +706,27 @@ namespace LaserGRBL.SvgConverter
 			return attribute?.Value.Replace(" ", "")
 				.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
 				.Select(s => s.Split(':'))
+				.Where(s => s.Length==2 && "none"!=s[1])
 				.ToDictionary(s => s[0], s => s[1]);
+		}
+
+		private Dictionary<string, string> parseColorAttributes(XElement pathElement)
+		{
+			var result = new Dictionary<string, string>();
+
+			var attribute = pathElement.Attribute(SvgStrokeAttribute);
+			if (attribute != null && "none"!=attribute.Value)
+			{
+				result.Add(SvgStrokeAttribute, attribute.Value);
+			}
+
+			attribute = pathElement.Attribute(SvgFillAttribute);
+			if (attribute != null && "none"!=attribute.Value)
+			{
+				result.Add(SvgFillAttribute, attribute.Value);
+			}
+
+			return result;
 		}
 
 		private bool penIsDown = true;
@@ -1256,7 +1283,7 @@ namespace LaserGRBL.SvgConverter
 		private bool isReduceOk = false;
 		private bool rejectPoint = false;
 		private double lastGCX = 0, lastGCY = 0, lastSetGCX = 0, lastSetGCY = 0, distance;
-		
+
 		public bool UseLegacyBezier { get; set; }
 		public bool SvgScaleApply { get => svgScaleApply; set => svgScaleApply = value; }
 		public float SvgMaxSize { get => svgMaxSize; set => svgMaxSize = value; }
