@@ -97,7 +97,12 @@ namespace LaserGRBL.SvgConverter
 
 		public string convertFromFile(string file, GrblCore core, ColorFilter filter)
 		{
-			string xml = System.IO.File.ReadAllText(file);
+			string xml;
+			if (Resources.ResourceHelper.IsEmbeddedResource(file))
+				xml = Resources.ResourceHelper.GetFileAsText(file);
+			else
+				xml = File.ReadAllText(file);
+
 			return convertFromText(xml, core, true, filter);
 		}
 

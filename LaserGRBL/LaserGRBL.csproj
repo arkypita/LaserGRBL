@@ -164,6 +164,7 @@
     <Compile Include="LaserUsage.Designer.cs">
       <DependentUpon>LaserUsage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resources\ResourceHelper.cs" />
     <Compile Include="SafetyCountdown.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1078,6 +1079,7 @@
     <EmbeddedResource Include="CSV\alarm_codes.ortur.GrblHal.csv" />
     <EmbeddedResource Include="CSV\error_codes.ortur.GrblHal.csv" />
     <None Include="Resources\flag_greece.png" />
+    <EmbeddedResource Include="Generator\SVG\LaserGRBL-accuracy-test-file.svg" />
     <Content Include="Grafica\777494-200.png" />
     <Content Include="Grafica\info.png" />
     <Content Include="Sound\beep.wav">

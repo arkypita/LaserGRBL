@@ -1061,6 +1061,11 @@ namespace LaserGRBL
 		{
 			Generator.CuttingTest.CreateAndShowDialog(this, Core);
 		}
+
+		private void MnAccuracyTest_Click(object sender, EventArgs e)
+		{
+			Core.OpenFile(this, "LaserGRBL.Generator.SVG.LaserGRBL-accuracy-test-file.svg", false);
+		}
 	}
 
 

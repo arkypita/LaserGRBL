@@ -443,9 +443,6 @@
   <data name="MnAccuracyTest.Text" xml:space="preserve">
     <value>Accuracy Test</value>
   </data>
-  <data name="MnAccuracyTest.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="MnFocusTest.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
@@ -2229,6 +2226,9 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAD4AAAA/AAAAPwAAAD/AAAA//wAAP/+AAH//g
         AD//4AD//+AB///gAf//4AH///AD///wA/8=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>

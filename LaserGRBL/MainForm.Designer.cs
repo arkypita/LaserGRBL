@@ -31,9 +31,6 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
-			this.JogForm = new LaserGRBL.JogForm();
-			this.PreviewForm = new LaserGRBL.PreviewForm();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
@@ -150,6 +147,9 @@
 			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
 			this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
+			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
+			this.JogForm = new LaserGRBL.JogForm();
+			this.PreviewForm = new LaserGRBL.PreviewForm();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -173,21 +173,6 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
 			this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
-			// 
-			// ConnectionForm
-			// 
-			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
-			this.ConnectionForm.Name = "ConnectionForm";
-			// 
-			// JogForm
-			// 
-			resources.ApplyResources(this.JogForm, "JogForm");
-			this.JogForm.Name = "JogForm";
-			// 
-			// PreviewForm
-			// 
-			resources.ApplyResources(this.PreviewForm, "PreviewForm");
-			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// StatusBar
 			// 
@@ -572,6 +557,7 @@
 			// 
 			this.MnAccuracyTest.Name = "MnAccuracyTest";
 			resources.ApplyResources(this.MnAccuracyTest, "MnAccuracyTest");
+			this.MnAccuracyTest.Click += new System.EventHandler(this.MnAccuracyTest_Click);
 			// 
 			// MnFocusTest
 			// 
@@ -999,6 +985,21 @@
 			// 
 			this.MultipleInstanceTimer.Interval = 1000;
 			this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
+			// 
+			// ConnectionForm
+			// 
+			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
+			this.ConnectionForm.Name = "ConnectionForm";
+			// 
+			// JogForm
+			// 
+			resources.ApplyResources(this.JogForm, "JogForm");
+			this.JogForm.Name = "JogForm";
+			// 
+			// PreviewForm
+			// 
+			resources.ApplyResources(this.PreviewForm, "PreviewForm");
+			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// MainForm
 			// 

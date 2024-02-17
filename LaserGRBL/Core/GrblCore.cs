@@ -598,7 +598,7 @@ namespace LaserGRBL
 		public static readonly List<string> ImageExtensions = new List<string>(new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif" });
 		public static readonly List<string> GCodeExtensions = new List<string>(new string[] { ".nc", ".cnc", ".tap", ".gcode", ".ngc" });
 		public static readonly List<string> ProjectFileExtensions = new List<string>(new string[] { ".lps" });
-		public void OpenFile(System.Windows.Forms.Form parent, string filename = null, bool append = false)
+		public void OpenFile(Form parent, string filename = null, bool append = false)
 		{
 			if (!CanLoadNewFile) return;
 
@@ -606,7 +606,7 @@ namespace LaserGRBL
 			{
 				if (filename == null)
 				{
-					using (System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog())
+					using (OpenFileDialog ofd = new OpenFileDialog())
 					{
 						//pre-select last file if exist
 						string lastFN = Settings.GetObject<string>("Core.LastOpenFile", null);
@@ -618,7 +618,7 @@ namespace LaserGRBL
 						ofd.Multiselect = false;
 						ofd.RestoreDirectory = true;
 
-						System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.DialogResult.Cancel;
+						DialogResult dialogResult = DialogResult.Cancel;
 						try
 						{
 							dialogResult = ofd.ShowDialog(parent);
@@ -629,7 +629,7 @@ namespace LaserGRBL
 							dialogResult = ofd.ShowDialog(parent);
 						}
 
-						if (dialogResult == System.Windows.Forms.DialogResult.OK)
+						if (dialogResult == DialogResult.OK)
 							filename = ofd.FileName;
 					}
 				}
