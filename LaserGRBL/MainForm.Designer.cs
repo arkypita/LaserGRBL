@@ -1010,7 +1010,6 @@
 			this.Cursor = System.Windows.Forms.Cursors.Default;
 			this.KeyPreview = true;
 			this.Name = "MainForm";
-			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
