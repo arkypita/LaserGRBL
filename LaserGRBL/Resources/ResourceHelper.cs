@@ -16,7 +16,7 @@ namespace LaserGRBL.Resources
 
 		public static Stream GetFileAsStream(string strName)
 		{
-			return System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GT.Core.Resources." + strName);
+			return System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(strName);
 		}
 
 		internal static string GetFileAsText(string file)
