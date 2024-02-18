@@ -304,7 +304,7 @@ namespace LaserGRBL.SvgConverter
 			// 
 			resources.ApplyResources(this.CBFilter, "CBFilter");
 			this.CBFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CBFilter.DropDownWidth = 934;
+			this.CBFilter.DropDownWidth = 195;
 			this.CBFilter.FormattingEnabled = true;
 			this.CBFilter.Name = "CBFilter";
 			// 
