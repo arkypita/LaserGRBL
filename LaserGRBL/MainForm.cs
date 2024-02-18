@@ -355,7 +355,7 @@ namespace LaserGRBL
 			//MnExportConfig.Enabled = Core.CanImportExport;
 			//MnImportConfig.Enabled = Core.CanImportExport;
 			MnGrblReset.Enabled = Core.CanResetGrbl;
-			MnPowerVsSpeed.Enabled = Core.CanLoadNewFile;
+			MnGenerate.Enabled = Core.CanLoadNewFile;
 
 			MNEsp8266.Visible = false;// (Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsBSerial)) == ComWrapper.WrapperType.LaserWebESP8266;
 
