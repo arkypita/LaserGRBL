@@ -207,4 +207,10 @@ Clique aqui para obter mais informações...</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Imágem Desejada</value>
   </data>
+  <data name="labelFilter.Text" xml:space="preserve">
+    <value>Cor</value>
+  </data>
+  <data name="gbFilter.Text" xml:space="preserve">
+    <value>Filtro</value>
+  </data>
 </root>

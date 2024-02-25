@@ -851,4 +851,19 @@
   <data name="laserUsageStatsToolStripMenuItem.Text" xml:space="preserve">
     <value>Vida Útil Laser</value>
   </data>
+  <data name="MnPowerVsSpeed.Text" xml:space="preserve">
+    <value>Teste de Potência vs Velocidade</value>
+  </data>
+  <data name="MnCuttingTest.Text" xml:space="preserve">
+    <value>Teste de Corte</value>
+  </data>
+  <data name="MnAccuracyTest.Text" xml:space="preserve">
+    <value>Teste de Precisão</value>
+  </data>
+  <data name="MnFocusTest.Text" xml:space="preserve">
+    <value>Teste de Foco</value>
+  </data>
+  <data name="MnGenerate.Text" xml:space="preserve">
+    <value>Gerar</value>
+  </data>
 </root>
