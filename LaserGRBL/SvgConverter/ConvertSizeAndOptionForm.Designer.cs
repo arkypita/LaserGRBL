@@ -332,6 +332,7 @@ namespace LaserGRBL.SvgConverter
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.BtnCancel;
 			this.Controls.Add(this.tableLayoutPanel9);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "SvgToGCodeForm";

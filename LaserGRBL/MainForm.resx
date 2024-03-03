@@ -1068,31 +1068,28 @@
     <value>&amp;File</value>
   </data>
   <data name="MnPowerVsSpeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnPowerVsSpeed.Text" xml:space="preserve">
     <value>Power vs Speed test</value>
   </data>
   <data name="MnCuttingTest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnCuttingTest.Text" xml:space="preserve">
     <value>Cutting Test</value>
   </data>
   <data name="MnAccuracyTest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MnAccuracyTest.Text" xml:space="preserve">
     <value>Accuracy Test</value>
   </data>
-  <data name="MnFocusTest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
+  <data name="shakeTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
-  <data name="MnFocusTest.Text" xml:space="preserve">
-    <value>Focus Test</value>
-  </data>
-  <data name="MnFocusTest.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="shakeTestToolStripMenuItem.Text" xml:space="preserve">
+    <value>Shake Test</value>
   </data>
   <data name="MnGenerate.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 20</value>
@@ -10503,12 +10500,6 @@
   <data name="&gt;&gt;MnAccuracyTest.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MnFocusTest.Name" xml:space="preserve">
-    <value>MnFocusTest</value>
-  </data>
-  <data name="&gt;&gt;MnFocusTest.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;MNEsp8266.Name" xml:space="preserve">
     <value>MNEsp8266</value>
   </data>
@@ -10880,6 +10871,12 @@
   </data>
   <data name="&gt;&gt;MultipleInstanceTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;shakeTestToolStripMenuItem.Name" xml:space="preserve">
+    <value>shakeTestToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;shakeTestToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
