@@ -1,5 +1,4 @@
 ﻿using LaserGRBL.Obj3D;
-using LaserGRBL.UserControls;
 using SharpGL;
 using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Cameras;
@@ -36,11 +35,10 @@ namespace LaserGRBL.UserControls
         private Grid3D mGrid = null;
         // grbl object 
         private Grbl3D mGrbl3D = null;
+        private bool mInvalidateGrbl3D = false;
         // grbl core
         private GrblCore Core;
 
-        // pointer info
-        public Vertex PointerPosition { get; set; } = new Vertex(0, 0, 0);
         public float PointerSize { get; set; } = 3;
 
         public GrblPanel3D()
@@ -78,12 +76,13 @@ namespace LaserGRBL.UserControls
             OpenGL.Color(color);
             OpenGL.LineWidth(PointerSize);
             OpenGL.Begin(OpenGL.GL_LINES);
-            OpenGL.Vertex(PointerPosition.X - 2, PointerPosition.Y, PointerPosition.Z);
-            OpenGL.Vertex(PointerPosition.X + 2, PointerPosition.Y, PointerPosition.Z);
+            Vertex pointerPos = new Vertex(Core.MachinePosition.X, Core.MachinePosition.Y, 0.2f);
+            OpenGL.Vertex(pointerPos.X - 2, pointerPos.Y, pointerPos.Z);
+            OpenGL.Vertex(pointerPos.X + 2, pointerPos.Y, pointerPos.Z);
             OpenGL.End();
             OpenGL.Begin(OpenGL.GL_LINES);
-            OpenGL.Vertex(PointerPosition.X, PointerPosition.Y - 2, PointerPosition.Z);
-            OpenGL.Vertex(PointerPosition.X, PointerPosition.Y + 2, PointerPosition.Z);
+            OpenGL.Vertex(pointerPos.X, pointerPos.Y - 2, pointerPos.Z);
+            OpenGL.Vertex(pointerPos.X, pointerPos.Y + 2, pointerPos.Z);
             OpenGL.End();
         }
 
@@ -157,7 +156,7 @@ namespace LaserGRBL.UserControls
             {
                 // define text position
                 double xMouse = ((Point)mMousePosCurrent).X / ratio + Camera.Left;
-                double yMouse = -(((Point)mMousePosCurrent).Y / ratio + Camera.Bottom);
+                double yMouse = -(((Point)mMousePosCurrent).Y / ratio - Camera.Bottom);
                 string mousePos = $"{xMouse:0.0}x{yMouse:0.0}";
                 Size size = TextRenderer.MeasureText(mousePos, TextFont);
                 SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
@@ -174,6 +173,11 @@ namespace LaserGRBL.UserControls
 
         private void GrblSceneControl_OpenGLDraw(object sender, RenderEventArgs args)
         {
+            if (mInvalidateGrbl3D)
+            {
+                mInvalidateGrbl3D = false;
+                mGrbl3D?.Invalidate();
+            }
             // compute width ratio
             double ratio = Width / (Camera.Right - Camera.Left);
             // set colors
@@ -224,6 +228,12 @@ namespace LaserGRBL.UserControls
             Core = core;
             Core.OnFileLoading += OnFileLoading;
             Core.OnFileLoaded += OnFileLoaded;
+            Core.OnMPositionChanged += OnMPositionChanged;
+        }
+
+        private void OnMPositionChanged(GrblCore obj)
+        {
+            mInvalidateGrbl3D = true;
         }
 
         private void OnFileLoaded(long elapsed, string filename)

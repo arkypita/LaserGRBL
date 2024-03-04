@@ -17,6 +17,16 @@ namespace LaserGRBL.Obj3D
         public static float GlBlue(this Color color) => color.B / 255f;
         public static float GlAlpha(this Color color) => color.A / 255f;
 
+        public static Color Blend(this Color color, Color blendColor)
+        {
+            return Color.FromArgb(
+                (int)((color.A + blendColor.A) / 2f),
+                (int)((color.R + blendColor.R) / 2f),
+                (int)((color.G + blendColor.G) / 2f),
+                (int)((color.B + blendColor.B) / 2f)
+            );
+        }
+
     }
 
 }

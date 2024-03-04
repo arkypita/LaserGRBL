@@ -325,7 +325,7 @@ namespace LaserGRBL.GrblEmulator
 				try
 				{
 					TimeSpan cmdTime = SPB.AnalyzeCommand(cmd, true, conf);
-					toSleep += cmdTime;
+					toSleep += TimeSpan.FromTicks(cmdTime.Ticks / 10);
 
 					if (toSleep.TotalMilliseconds > 15) //execute sleep
 					{
@@ -345,9 +345,10 @@ namespace LaserGRBL.GrblEmulator
 				catch (Exception ex) { throw ex; }
 				finally { cmd.DeleteHelper(); }
 			}
-
-			if (!EMULATE_MISSING_OK || rng.Next(0, 20) != 0)
-				EnqueueTX("ok");
-		}
+            if (rng.Next(0, 50) == 0)
+                EnqueueTX("error:2");
+            else if (!EMULATE_MISSING_OK || rng.Next(0, 20) != 0)
+                EnqueueTX("ok");
+        }
 	}
 }

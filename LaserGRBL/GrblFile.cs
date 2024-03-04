@@ -1626,8 +1626,8 @@ namespace LaserGRBL
                             }
                             if (color != null)
                             {
-                                object3D.AddVertex((float)spb.X.Previous, (float)spb.Y.Previous, zPos, (Color)color, i);
-                                object3D.AddVertex((float)spb.X.Number, (float)spb.Y.Number, zPos, (Color)color, i);
+                                object3D.AddVertex((float)spb.X.Previous, (float)spb.Y.Previous, zPos, (Color)color, cmd);
+                                object3D.AddVertex((float)spb.X.Number, (float)spb.Y.Number, zPos, (Color)color, cmd);
                             }
                         }
                         else if (spb.G2G3 && cmd.IsArcMovement)
@@ -1648,13 +1648,13 @@ namespace LaserGRBL
                                     double y = ah.CenterY + ah.RectH / 2 * Math.Sin(angle);
                                     if (lastX != null && lastY != null)
                                     {
-                                        object3D.AddVertex((double)lastX, (double)lastY, zPos, color, i);
+                                        object3D.AddVertex((double)lastX, (double)lastY, zPos, color, cmd);
                                     }
                                     else
                                     {
-                                        object3D.AddVertex(x, y, zPos, color, i);
+                                        object3D.AddVertex(x, y, zPos, color, cmd);
                                     }
-                                    object3D.AddVertex(x, y, zPos, color, i);
+                                    object3D.AddVertex(x, y, zPos, color, cmd);
                                     lastX = x;
                                     lastY = y;
                                 }

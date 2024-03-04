@@ -4,6 +4,7 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.Obj3D;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -379,9 +380,7 @@ namespace LaserGRBL
 		public bool IsSetWCO
 		{ get { return G != null && G.Number == 92; } }
 
-
-
-		public class G2G3Helper
+        public class G2G3Helper
 		{
 			public double CenterX;
 			public double CenterY;

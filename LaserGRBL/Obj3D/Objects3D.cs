@@ -1,5 +1,4 @@
-﻿using LaserGRBL;
-using SharpGL;
+﻿using SharpGL;
 using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Core;
 using System.Collections.Generic;
@@ -15,20 +14,14 @@ namespace LaserGRBL.Obj3D
         public double Z { get; set; }
         public Color OriginalColor { get; set; }
         public Color? NewColor { get; set; }
-        public int Index { get; set; }
+        public GrblCommand Command { get; set; }
     }
 
     public class Object3DDisplayList
     {
+        public bool IsValid { get; private set; } = true;
         public DisplayList DisplayList { get; private set; }
         public List<Object3DVertex> Vertices { get; } = new List<Object3DVertex>();
-        public int MinIndex { get; private set; } = int.MaxValue;
-        public int MaxIndex { get; private set; } = int.MinValue;
-        public void SetIndex(int index)
-        {
-            if (index < MinIndex) MinIndex = index;
-            if (index > MaxIndex) MaxIndex = index;
-        }
 
         public void Begin(OpenGL gl, float lineWidth)
         {
@@ -71,6 +64,7 @@ namespace LaserGRBL.Obj3D
             DisplayList.End(gl);
         }
 
+        internal void Invalidate() => IsValid = false;
     }
 
     public abstract class Object3D : SceneElement, IRenderable
@@ -145,12 +139,12 @@ namespace LaserGRBL.Obj3D
             mDisplayLists.Add(mCurrentDisplayList);
         }
 
-        public void AddVertex(double x, double y, double z, Color color, int index = -1)
+        public void AddVertex(double x, double y, double z, Color color, GrblCommand command = null)
         {
             mGL.Color(color.R, color.G, color.B, color.A);
             mGL.Vertex(x, y, z);
-            mCurrentDisplayList.Vertices.Add(new Object3DVertex { X = x, Y = y, Z = z, OriginalColor = color, Index = index });
-            mCurrentDisplayList.SetIndex(index);
+            mCurrentDisplayList.Vertices.Add(new Object3DVertex { X = x, Y = y, Z = z, OriginalColor = color, Command = command });
+            if (command != null) command.LinkedDisplayList = mCurrentDisplayList;
         }
 
         public void CheckListSize()
@@ -286,62 +280,43 @@ namespace LaserGRBL.Obj3D
             File.To3D(this, _justLaserOffMovements, 0.1f);
         }
 
-        private void ReplaceColor(Color? color, int startIndex, int stopIndex)
+        public void Invalidate()
         {
-            List<Object3DDisplayList> invalidateList = new List<Object3DDisplayList>();
-            for (int i = 0; i < mDisplayLists.Count; i++)
+            foreach (Object3DDisplayList list in mDisplayLists)
             {
-                Object3DDisplayList list = mDisplayLists[i];
-                if (startIndex <= list.MaxIndex && stopIndex >= list.MinIndex)
-                {
-                    invalidateList.Add(list);
-                }
-                if (stopIndex < list.MinIndex) break;
-            }
-            if (invalidateList.Count > 0)
-            {
-                foreach (Object3DDisplayList list in invalidateList)
-                {
+                if (!list.IsValid) {
                     list.DisplayList.Delete(mGL);
                     list.Begin(mGL, mLineWidth);
                     foreach (Object3DVertex vertex in list.Vertices)
                     {
-                        if (vertex.Index >= startIndex && vertex.Index <= stopIndex)
+                        Color newColor;
+                        switch (vertex.Command.Status)
                         {
-                            Color newColor = new Color();
-                            if (color != null)
-                            {
-                                Color setColor = (Color)color;
-                                newColor = Color.FromArgb(
-                                    setColor.A > vertex.OriginalColor.A ? setColor.A : vertex.OriginalColor.A,
-                                    setColor.R > vertex.OriginalColor.R ? setColor.R : vertex.OriginalColor.R,
-                                    setColor.G > vertex.OriginalColor.G ? setColor.G : vertex.OriginalColor.G,
-                                    setColor.B > vertex.OriginalColor.B ? setColor.B : vertex.OriginalColor.B
-                                );
-                            }
-                            else
-                            {
-                                newColor = Color.FromArgb(vertex.OriginalColor.A, vertex.OriginalColor);
-                            }
-                            vertex.NewColor = newColor;
-                            CurrentVertex = vertex;
-                            mGL.Color(newColor);
-                            mGL.Vertex(vertex.X, vertex.Y, vertex.Z);
+                            case GrblCommand.CommandStatus.ResponseGood:
+                                newColor = Color.FromArgb(255, 20, 120, 20);
+                                break;
+                            case GrblCommand.CommandStatus.ResponseBad:
+                            case GrblCommand.CommandStatus.InvalidResponse:
+                                newColor = Color.Red;
+                                break;
+                            case GrblCommand.CommandStatus.Queued:
+                                newColor = Color.Blue;
+                                break;
+                            case GrblCommand.CommandStatus.WaitingResponse:
+                                newColor = Color.Pink;
+                                break;
+                            default:
+                                newColor = vertex.OriginalColor;
+                                break;
                         }
-                        else
-                        {
-                            mGL.Color(vertex.NewColor != null ? vertex.NewColor : vertex.OriginalColor);
-                            mGL.Vertex(vertex.X, vertex.Y, vertex.Z);
-                        }
+                        vertex.NewColor = vertex.OriginalColor.Blend(newColor);
+                        CurrentVertex = vertex;
+                        mGL.Color(vertex.NewColor);
+                        mGL.Vertex(vertex.X, vertex.Y, vertex.Z);
                     }
                     list.End(mGL);
                 }
             }
-        }
-
-        public void OverrideColor(Color color, int startIndex, int stopIndex)
-        {
-            ReplaceColor(color, startIndex, stopIndex);
         }
 
         public void ResetColor()
@@ -352,8 +327,8 @@ namespace LaserGRBL.Obj3D
                 {
                     vertex.NewColor = null;
                 }
+                list.Invalidate();
             }
-            ReplaceColor(null, int.MinValue, int.MaxValue);
         }
 
     }
