@@ -229,6 +229,7 @@ namespace LaserGRBL.UserControls
             Core.OnFileLoading += OnFileLoading;
             Core.OnFileLoaded += OnFileLoaded;
             Core.OnMPositionChanged += OnMPositionChanged;
+            OnFileLoaded(0, null);
         }
 
         private void OnMPositionChanged(GrblCore obj)

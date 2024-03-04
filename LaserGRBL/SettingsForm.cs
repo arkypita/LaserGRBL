@@ -90,8 +90,9 @@ namespace LaserGRBL
 
 			CbDisableSafetyCD.Checked = Settings.GetObject("DisableSafetyCountdown", false);
 			CbQuietSafetyCB.Checked = Settings.GetObject("QuietSafetyCountdown", false);
+            CbLegacyPreview.Checked = Settings.GetObject("LegacyPreview", false);
 
-			groupBox1.ForeColor = groupBox2.ForeColor = groupBox3.ForeColor = ColorScheme.FormForeColor;
+            groupBox1.ForeColor = groupBox2.ForeColor = groupBox3.ForeColor = ColorScheme.FormForeColor;
 
             SuccesFullLabel.Visible = WarningFullLabel.Visible = ErrorFullLabel.Visible = ConnectFullLabel.Visible = DisconnectFullLabel.Visible = false;
 
@@ -223,8 +224,9 @@ namespace LaserGRBL
 
 			Settings.SetObject("DisableSafetyCountdown", CbDisableSafetyCD.Checked);
 			Settings.SetObject("QuietSafetyCountdown", CbQuietSafetyCB.Checked);
+            Settings.SetObject("LegacyPreview", CbLegacyPreview.Checked);
 
-			SettingsChanged?.Invoke(this, null);
+            SettingsChanged?.Invoke(this, null);
 
             Close();
 

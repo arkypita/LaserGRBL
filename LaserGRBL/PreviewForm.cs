@@ -20,25 +20,46 @@ namespace LaserGRBL
 	{
 		GrblCore Core;
 
-		private IGrblPanel mPanel;
+		private IGrblPanel mPanel = null;
 
 		public PreviewForm()
 		{
 			InitializeComponent();
-			if (false)
-			{
-                mPanel = new GrblPanel();
-			}
-			else
-			{
-				mPanel = new GrblPanel3D();
-            }
-            (mPanel as Control).Dock = DockStyle.Fill;
-            tableLayoutPanel1.Controls.Add(mPanel as Control);
+            SettingsForm.SettingsChanged += SettingsForm_SettingsChanged;
+            CreatePanel(Settings.GetObject("LegacyPreview", false));
             CustomButtonArea.OrderChanged += CustomButtonArea_OrderChanged;
 		}
 
-		private void CustomButtonArea_OrderChanged(int oldindex, int newindex)
+        private void SettingsForm_SettingsChanged(object sender, EventArgs e)
+        {
+            bool isLegacy = Settings.GetObject("LegacyPreview", false);
+			if (mPanel is GrblPanel && !isLegacy || mPanel is GrblPanel3D && isLegacy)
+			{
+				CreatePanel(isLegacy);
+			}
+        }
+
+        private void CreatePanel(bool isLegacy)
+        {
+			if (mPanel != null)
+            {
+                tableLayoutPanel1.Controls.Remove(mPanel as Control);
+				(mPanel as Control).Dispose();
+            }
+            if (isLegacy)
+            {
+                mPanel = new GrblPanel();
+            }
+            else
+            {
+                mPanel = new GrblPanel3D();
+            }
+			if (Core != null) mPanel.SetComProgram(Core);
+            (mPanel as Control).Dock = DockStyle.Fill;
+            tableLayoutPanel1.Controls.Add(mPanel as Control);
+        }
+
+        private void CustomButtonArea_OrderChanged(int oldindex, int newindex)
 		{
 			CustomButtons.Reorder(oldindex, newindex);
 			RefreshCustomButtons();
