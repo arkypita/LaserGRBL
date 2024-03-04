@@ -866,4 +866,7 @@
   <data name="MnGenerate.Text" xml:space="preserve">
     <value>Gerar</value>
   </data>
+  <data name="shakeTestToolStripMenuItem.Text" xml:space="preserve">
+    <value>Teste de Movimentação</value>
+  </data>
 </root>
