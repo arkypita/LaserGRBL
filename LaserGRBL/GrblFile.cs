@@ -16,6 +16,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using LaserGRBL.SvgConverter;
+using LaserGRBL.Obj3D;
 
 namespace LaserGRBL
 {
@@ -1596,9 +1597,81 @@ namespace LaserGRBL
 			g.Restore(state);               // Restore the graphics state.
 		}
 
+        public void To3D(Object3D object3D, bool justLaserOffMovements, float zPos)
+        {
+            GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
+            for (int i = 0; i < list.Count; i++)
+            {
+                GrblCommand cmd = list[i];
+                try
+                {
+                    cmd.BuildHelper();
+                    spb.AnalyzeCommand(cmd, false);
 
+                    if (spb.TrueMovement())
+                    {
+                        if (spb.G0G1 && cmd.IsLinearMovement)
+                        {
+                            Color? color = null;
+                            if (spb.LaserBurning && !justLaserOffMovements)
+                            {
+                                color = spb.GetCurrentColor(0, 1000);
+                            }
+                            else
+                            {
+                                if (justLaserOffMovements)
+                                {
+                                    color = Color.FromArgb(0, 150, 0);
+                                }
+                            }
+                            if (color != null)
+                            {
+                                object3D.AddVertex((float)spb.X.Previous, (float)spb.Y.Previous, zPos, (Color)color, i);
+                                object3D.AddVertex((float)spb.X.Number, (float)spb.Y.Number, zPos, (Color)color, i);
+                            }
+                        }
+                        else if (spb.G2G3 && cmd.IsArcMovement)
+                        {
+                            GrblCommand.G2G3Helper ah = spb.GetArcHelper(cmd);
+                            if (ah.RectW > 0 && ah.RectH > 0)
+                            {
+                                double? lastX = null;
+                                double? lastY = null;
+                                Color color = spb.GetCurrentColor(0, 1000);
+                                double startAngle = ah.StartAngle;
+                                double endAngle = ah.StartAngle + ah.AngularWidth;
+                                int sign = Math.Sign(ah.AngularWidth);
+                                double angleStep = Math.Abs(ah.AngularWidth / Math.PI / 36);
+                                for (double angle = startAngle; sign * (angle - startAngle) <= sign * ah.AngularWidth; angle += sign * angleStep)
+                                {
+                                    double x = ah.CenterX + ah.RectW / 2 * Math.Cos(angle);
+                                    double y = ah.CenterY + ah.RectH / 2 * Math.Sin(angle);
+                                    if (lastX != null && lastY != null)
+                                    {
+                                        object3D.AddVertex((double)lastX, (double)lastY, zPos, color, i);
+                                    }
+                                    else
+                                    {
+                                        object3D.AddVertex(x, y, zPos, color, i);
+                                    }
+                                    object3D.AddVertex(x, y, zPos, color, i);
+                                    lastX = x;
+                                    lastY = y;
+                                }
+                            }
+                        }
+                        object3D.CheckListSize();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally { cmd.DeleteHelper(); }
+            }
+        }
 
-		System.Collections.Generic.IEnumerator<GrblCommand> IEnumerable<GrblCommand>.GetEnumerator()
+        System.Collections.Generic.IEnumerator<GrblCommand> IEnumerable<GrblCommand>.GetEnumerator()
 		{ return list.GetEnumerator(); }
 
 

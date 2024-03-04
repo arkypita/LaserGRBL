@@ -209,9 +209,19 @@ namespace LaserGRBL
 					return (int)((S.Number - range.S.Min) * 255 / (range.S.Max - range.S.Min));
 				else
 					return 255;
-			}
+            }
 
-			public bool G2
+            internal System.Drawing.Color GetCurrentColor(decimal min, decimal max)
+            {
+                byte intensity = 255;
+                if (!LaserBurning)
+                    intensity = (byte)(supportPWM ? 128 : 100);
+                else if (supportPWM && (max - min > 0) && S.IsSettled)
+                    intensity = (byte)(255 - (S.Number - min) / (max - min) * 255);
+                return System.Drawing.Color.FromArgb(255, intensity, intensity, intensity);
+            }
+
+            public bool G2
 			{ get { return MotionMode.Number == 2; } }
 
 			public bool G2G3
