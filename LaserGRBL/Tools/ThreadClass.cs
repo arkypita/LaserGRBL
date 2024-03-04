@@ -89,6 +89,7 @@ namespace Tools
 			if (TH == null) {
 				MustExit = new ManualResetEvent(false);
 				TH = new System.Threading.Thread(Loop);
+				TH.Priority = ThreadPriority.Highest;
 				TH.Name = this.Name;
 				TH.Start();
 			}

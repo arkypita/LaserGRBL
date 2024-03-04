@@ -81,7 +81,7 @@ namespace LaserGRBL.Obj3D
         [XmlIgnore]
         protected Object3DDisplayList mCurrentDisplayList = null;
         [XmlIgnore]
-        protected const int MAX_VECTOR_IN_DISPLAY_LIST = 10000;
+        protected const int MAX_VECTOR_IN_DISPLAY_LIST = 1000;
 
         public Object3D(string name, float lineWidth)
         {

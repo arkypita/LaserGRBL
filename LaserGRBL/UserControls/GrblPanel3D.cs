@@ -173,11 +173,6 @@ namespace LaserGRBL.UserControls
 
         private void GrblSceneControl_OpenGLDraw(object sender, RenderEventArgs args)
         {
-            if (mInvalidateGrbl3D)
-            {
-                mInvalidateGrbl3D = false;
-                mGrbl3D?.Invalidate();
-            }
             // compute width ratio
             double ratio = Width / (Camera.Right - Camera.Left);
             // set colors
@@ -185,6 +180,11 @@ namespace LaserGRBL.UserControls
             mGrid.TicksColor = TicksColor;
             mGrid.MinorsColor = MinorsColor;
             mGrid.OriginsColor = OriginsColor;
+            if (mInvalidateGrbl3D)
+            {
+                mInvalidateGrbl3D = false;
+                mGrbl3D?.Invalidate();
+            }
             SetViewPort();
             DrawPointer();
             DrawRulers(ratio);

@@ -20,10 +20,10 @@ namespace LaserGRBL.Obj3D
         public static Color Blend(this Color color, Color blendColor)
         {
             return Color.FromArgb(
-                (int)((color.A + blendColor.A) / 2f),
-                (int)((color.R + blendColor.R) / 2f),
-                (int)((color.G + blendColor.G) / 2f),
-                (int)((color.B + blendColor.B) / 2f)
+                (int)((color.A + blendColor.A * 2) / 3f),
+                (int)((color.R + blendColor.R * 2) / 3f),
+                (int)((color.G + blendColor.G * 2) / 3f),
+                (int)((color.B + blendColor.B * 2) / 3f)
             );
         }
 
