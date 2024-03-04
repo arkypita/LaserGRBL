@@ -1,6 +1,6 @@
-﻿namespace LaserGRBL.Obj3D
+﻿namespace LaserGRBL.UserControls
 {
-    partial class GrblSceneControl
+    partial class GrblPanel3D
     {
         /// <summary> 
         /// Required designer variable.

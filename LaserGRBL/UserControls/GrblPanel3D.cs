@@ -1,18 +1,19 @@
-﻿using SharpGL;
+﻿using LaserGRBL.Obj3D;
+using LaserGRBL.UserControls;
+using SharpGL;
 using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Cameras;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace LaserGRBL.Obj3D
+namespace LaserGRBL.UserControls
 {
     [ToolboxBitmap(typeof(SceneControl), "GrblScene")]
-    public partial class GrblSceneControl : SceneControl
+    public partial class GrblPanel3D : SceneControl, IGrblPanel
     {
         // on zoom event
-        public event Action<GrblSceneControl> OnZoom;
+        public event Action<GrblPanel3D> OnZoom;
         // constants
         private const float MAX_Z = 1000;
         private const float MIN_Z = 1.2f;
@@ -31,13 +32,18 @@ namespace LaserGRBL.Obj3D
         public Color PointerColor { get; set; } = Color.FromArgb(200, 40, 40);
         public Color TextColor { get; set; } = Color.FromArgb(0, 0, 0);
         public Font TextFont { get; set; } = new Font("Arial", 12);
-        // DCA background 
+        // background 
         private Grid3D mGrid = null;
-        // DCA pointer info
+        // grbl object 
+        private Grbl3D mGrbl3D = null;
+        // grbl core
+        private GrblCore Core;
+
+        // pointer info
         public Vertex PointerPosition { get; set; } = new Vertex(0, 0, 0);
         public float PointerSize { get; set; } = 3;
 
-        public GrblSceneControl()
+        public GrblPanel3D()
         {
             InitializeComponent();
             MouseWheel += GrblSceneControl_MouseWheel;
@@ -211,6 +217,36 @@ namespace LaserGRBL.Obj3D
             mShift.Z += e.Delta / 1000f * mShift.Z;
             if (mShift.Z > MAX_Z) mShift.Z = MAX_Z;
             if (mShift.Z < MIN_Z) mShift.Z = MIN_Z;
+        }
+
+        public void SetComProgram(GrblCore core)
+        {
+            Core = core;
+            Core.OnFileLoading += OnFileLoading;
+            Core.OnFileLoaded += OnFileLoaded;
+        }
+
+        private void OnFileLoaded(long elapsed, string filename)
+        {
+            if (mGrbl3D != null)
+            {
+                Scene.SceneContainer.RemoveChild(mGrbl3D);
+                mGrbl3D = null;
+            }
+            mGrbl3D = new Grbl3D(Core.LoadedFile, "Grbl file", false);
+            Scene.SceneContainer.AddChild(mGrbl3D);
+        }
+
+        private void OnFileLoading(long elapsed, string filename)
+        {
+        }
+
+        public void TimerUpdate()
+        {
+        }
+
+        public void OnColorChange()
+        {
         }
 
     }

@@ -172,11 +172,11 @@
     </Compile>
     <Compile Include="Obj3D\ColorHelper.cs" />
     <Compile Include="Obj3D\GlColorHelper.cs" />
-    <Compile Include="Obj3D\GrblSceneControl.cs">
+    <Compile Include="UserControls\GrblPanel3D.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Obj3D\GrblSceneControl.Designer.cs">
-      <DependentUpon>GrblSceneControl.cs</DependentUpon>
+    <Compile Include="UserControls\GrblPanel3D.Designer.cs">
+      <DependentUpon>GrblPanel3D.cs</DependentUpon>
     </Compile>
     <Compile Include="Obj3D\Objects3D.cs" />
     <Compile Include="Resources\ResourceHelper.cs" />
@@ -949,6 +949,7 @@
     <Compile Include="UserControls\GrblTextBox.Designer.cs">
       <DependentUpon>GrblTextBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\IGrblPanel.cs" />
     <Compile Include="UserControls\ImageButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1077,8 +1078,8 @@
     <EmbeddedResource Include="LaserUsage.resx">
       <DependentUpon>LaserUsage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Obj3D\GrblSceneControl.resx">
-      <DependentUpon>GrblSceneControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\GrblPanel3D.resx">
+      <DependentUpon>GrblPanel3D.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.pt-BR.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>

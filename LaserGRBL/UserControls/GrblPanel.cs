@@ -12,7 +12,7 @@ using LaserGRBL;
 
 namespace LaserGRBL.UserControls
 {
-	public partial class GrblPanel : UserControl
+	public partial class GrblPanel : UserControl, IGrblPanel
 	{
 		GrblCore Core;
 		System.Drawing.Bitmap mBitmap;
@@ -250,7 +250,7 @@ namespace LaserGRBL.UserControls
 		}
 
 
-		internal void OnColorChange()
+		public void OnColorChange()
 		{
 			RecreateBMP();
 		}

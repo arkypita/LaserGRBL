@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using LaserGRBL.UserControls;
 
 namespace LaserGRBL
 {
@@ -19,10 +20,22 @@ namespace LaserGRBL
 	{
 		GrblCore Core;
 
+		private IGrblPanel mPanel;
+
 		public PreviewForm()
 		{
 			InitializeComponent();
-			CustomButtonArea.OrderChanged += CustomButtonArea_OrderChanged;
+			if (false)
+			{
+                mPanel = new GrblPanel();
+			}
+			else
+			{
+				mPanel = new GrblPanel3D();
+            }
+            (mPanel as Control).Dock = DockStyle.Fill;
+            tableLayoutPanel1.Controls.Add(mPanel as Control);
+            CustomButtonArea.OrderChanged += CustomButtonArea_OrderChanged;
 		}
 
 		private void CustomButtonArea_OrderChanged(int oldindex, int newindex)
@@ -34,7 +47,7 @@ namespace LaserGRBL
 		public void SetCore(GrblCore core)
 		{
 			Core = core;
-			Preview.SetComProgram(core);
+            mPanel.SetComProgram(core);
 
             BtnUnlock.Visible = Core.Type == Firmware.Grbl;
 
@@ -44,7 +57,7 @@ namespace LaserGRBL
 
 		public void TimerUpdate()
 		{
-			Preview.TimerUpdate();
+            mPanel.TimerUpdate();
 			SuspendLayout();
 			BtnReset.Enabled = Core.CanResetGrbl;
 			BtnHoming.Visible = GrblCore.Configuration.HomingEnabled;
@@ -478,7 +491,7 @@ namespace LaserGRBL
 
 		internal void OnColorChange()
 		{
-			Preview.OnColorChange();
+            mPanel.OnColorChange();
 		}
 
 		private void BtnZeroing_Click(object sender, EventArgs e)
