@@ -325,7 +325,7 @@ namespace LaserGRBL.GrblEmulator
 				try
 				{
 					TimeSpan cmdTime = SPB.AnalyzeCommand(cmd, true, conf);
-					toSleep += TimeSpan.FromTicks(cmdTime.Ticks / 10);
+					toSleep += TimeSpan.FromTicks(cmdTime.Ticks);
 
 					if (toSleep.TotalMilliseconds > 15) //execute sleep
 					{

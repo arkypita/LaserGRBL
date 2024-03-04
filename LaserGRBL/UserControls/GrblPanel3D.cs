@@ -123,7 +123,7 @@ namespace LaserGRBL.UserControls
                 step = 100;
             }
             // draw horizontal
-            for (int i = -mGrid.MaxWidth; i < mGrid.MaxHeight; i += 1)
+            for (int i = (int)Camera.Left; i < (int)Camera.Right; i += 1)
             {
                 if (i % step == 0)
                 {
@@ -135,7 +135,7 @@ namespace LaserGRBL.UserControls
                 }
             }
             // draw vertical
-            for (int i = -mGrid.MaxHeight; i < mGrid.MaxHeight; i += 1)
+            for (int i = (int)Camera.Bottom; i < (int)Camera.Top; i += 1)
             {
                 if (i % step == 0)
                 {
@@ -164,7 +164,7 @@ namespace LaserGRBL.UserControls
                 int yText = Height - 20;
                 // clear background
                 OpenGL.Enable(OpenGL.GL_SCISSOR_TEST);
-                OpenGL.Scissor(xText, yText, (int)sizeProp.Width, 20);
+                OpenGL.Scissor(xText - 10, yText, (int)sizeProp.Width + 10, 20);
                 OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
                 OpenGL.Disable(OpenGL.GL_SCISSOR_TEST);
                 OpenGL.DrawText(xText, yText + 5, TextColor.GlRed(), TextColor.GlGreen(), TextColor.GlBlue(), TextFont.FontFamily.Name, TextFont.Size, mousePos);

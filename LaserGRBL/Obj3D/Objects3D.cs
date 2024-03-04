@@ -65,6 +65,9 @@ namespace LaserGRBL.Obj3D
         }
 
         internal void Invalidate() => IsValid = false;
+
+        internal void Invalidated() => IsValid = true;
+
     }
 
     public abstract class Object3D : SceneElement, IRenderable
@@ -315,6 +318,7 @@ namespace LaserGRBL.Obj3D
                         mGL.Vertex(vertex.X, vertex.Y, vertex.Z);
                     }
                     list.End(mGL);
+                    list.Invalidated();
                 }
             }
         }
