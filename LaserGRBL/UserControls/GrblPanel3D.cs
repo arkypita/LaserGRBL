@@ -90,6 +90,7 @@ namespace LaserGRBL.UserControls
             OpenGL.Vertex(pointerPos.X, pointerPos.Y - 2, pointerPos.Z);
             OpenGL.Vertex(pointerPos.X, pointerPos.Y + 2, pointerPos.Z);
             OpenGL.End();
+            OpenGL.Flush();
         }
 
         public void DrawRulers(double ratio)
@@ -153,6 +154,7 @@ namespace LaserGRBL.UserControls
                     OpenGL.DrawText((int)x, (int)y, TextColor.R, TextColor.G, TextColor.B, TextFont.FontFamily.Name, TextFont.Size, text);
                 }
             }
+            OpenGL.Flush();
         }
 
         private void DrawMouseCoord(double ratio)
@@ -162,8 +164,8 @@ namespace LaserGRBL.UserControls
             {
                 // define text position
                 double xMouse = ((Point)mMousePosCurrent).X / ratio + Camera.Left;
-                double yMouse = -(((Point)mMousePosCurrent).Y / ratio - Camera.Bottom);
-                string mousePos = $"{xMouse:0.0}x{yMouse:0.0}";
+                double yMouse = -(((Point)mMousePosCurrent).Y / ratio - Camera.Bottom - (-Camera.Bottom + Camera.Top));
+                string mousePos = $"{xMouse:0.0} x {yMouse:0.0}";
                 Size size = TextRenderer.MeasureText(mousePos, TextFont);
                 SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
                 int xText = (int)(Width - sizeProp.Width);
@@ -174,6 +176,7 @@ namespace LaserGRBL.UserControls
                 OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
                 OpenGL.Disable(OpenGL.GL_SCISSOR_TEST);
                 OpenGL.DrawText(xText, yText + 5, TextColor.R, TextColor.G, TextColor.B, TextFont.FontFamily.Name, TextFont.Size, mousePos);
+                OpenGL.Flush();
             }
         }
 
