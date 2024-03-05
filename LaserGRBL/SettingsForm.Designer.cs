@@ -175,8 +175,8 @@
             this.label47 = new System.Windows.Forms.Label();
             this.CbQuietSafetyCB = new System.Windows.Forms.CheckBox();
             this.label48 = new System.Windows.Forms.Label();
-            this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
             this.CbLegacyPreview = new System.Windows.Forms.CheckBox();
+            this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.MainTabPage.SuspendLayout();
@@ -1225,15 +1225,15 @@
             resources.ApplyResources(this.label48, "label48");
             this.label48.Name = "label48";
             // 
-            // SoundBrowserDialog
-            // 
-            resources.ApplyResources(this.SoundBrowserDialog, "SoundBrowserDialog");
-            // 
             // CbLegacyPreview
             // 
             resources.ApplyResources(this.CbLegacyPreview, "CbLegacyPreview");
             this.CbLegacyPreview.Name = "CbLegacyPreview";
             this.CbLegacyPreview.UseVisualStyleBackColor = true;
+            // 
+            // SoundBrowserDialog
+            // 
+            resources.ApplyResources(this.SoundBrowserDialog, "SoundBrowserDialog");
             // 
             // SettingsForm
             // 

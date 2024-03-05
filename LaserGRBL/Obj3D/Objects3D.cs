@@ -1,7 +1,9 @@
 ﻿using SharpGL;
 using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Core;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Xml.Serialization;
 
@@ -12,8 +14,8 @@ namespace LaserGRBL.Obj3D
         public double X { get; set; }
         public double Y { get; set; }
         public double Z { get; set; }
-        public Color OriginalColor { get; set; }
-        public Color? NewColor { get; set; }
+        public GLColor OriginalColor { get; set; }
+        public GLColor NewColor { get; set; }
         public GrblCommand Command { get; set; }
     }
 
@@ -70,7 +72,7 @@ namespace LaserGRBL.Obj3D
 
     }
 
-    public abstract class Object3D : SceneElement, IRenderable
+    public abstract class Object3D : SceneElement, IRenderable, IDisposable
     {
         [XmlIgnore]
         protected List<Object3DDisplayList> mDisplayLists = new List<Object3DDisplayList>();
@@ -142,9 +144,9 @@ namespace LaserGRBL.Obj3D
             mDisplayLists.Add(mCurrentDisplayList);
         }
 
-        public void AddVertex(double x, double y, double z, Color color, GrblCommand command = null)
+        public void AddVertex(double x, double y, double z, GLColor color, GrblCommand command = null)
         {
-            mGL.Color(color.R, color.G, color.B, color.A);
+            mGL.Color(color);
             mGL.Vertex(x, y, z);
             mCurrentDisplayList.Vertices.Add(new Object3DVertex { X = x, Y = y, Z = z, OriginalColor = color, Command = command });
             if (command != null) command.LinkedDisplayList = mCurrentDisplayList;
@@ -153,6 +155,15 @@ namespace LaserGRBL.Obj3D
         public void CheckListSize()
         {
             if (mCurrentDisplayList.Vertices.Count > MAX_VECTOR_IN_DISPLAY_LIST) NewDisplayList();
+        }
+
+        public void Dispose()
+        {
+            foreach (Object3DDisplayList object3DDisplayList in mDisplayLists)
+            {
+                object3DDisplayList.Vertices.Clear();
+            }
+            ClearDisplayList();
         }
 
     }
@@ -172,9 +183,9 @@ namespace LaserGRBL.Obj3D
         [XmlIgnore]
         public bool ShowMinor { get; set; }
         [XmlIgnore]
-        private Color mTicksColor = new Color();
+        private GLColor mTicksColor = new GLColor();
         [XmlIgnore]
-        public Color TicksColor {
+        public GLColor TicksColor {
             get => mTicksColor;
             set
             {
@@ -186,9 +197,9 @@ namespace LaserGRBL.Obj3D
             }
         }
         [XmlIgnore]
-        private Color mMinorsColor = new Color();
+        private GLColor mMinorsColor = new GLColor();
         [XmlIgnore]
-        public Color MinorsColor
+        public GLColor MinorsColor
         {
             get => mMinorsColor;
             set
@@ -201,9 +212,9 @@ namespace LaserGRBL.Obj3D
             }
         }
         [XmlIgnore]
-        private Color mOriginsColor = new Color();
+        private GLColor mOriginsColor = new GLColor();
         [XmlIgnore]
-        public Color OriginsColor
+        public GLColor OriginsColor
         {
             get => mOriginsColor;
             set
@@ -270,8 +281,6 @@ namespace LaserGRBL.Obj3D
         [XmlIgnore]
         private readonly bool _justLaserOffMovements;
 
-        public Object3DVertex CurrentVertex = null;
-
         public Grbl3D(GrblFile file, string name, bool justLaserOffMovements) : base(name, 1f)
         {
             File = file;
@@ -285,18 +294,20 @@ namespace LaserGRBL.Obj3D
 
         public void Invalidate()
         {
+            int invalidatedLists = 0;
             foreach (Object3DDisplayList list in mDisplayLists)
             {
                 if (!list.IsValid) {
+                    invalidatedLists++;
                     list.DisplayList.Delete(mGL);
                     list.Begin(mGL, mLineWidth);
                     foreach (Object3DVertex vertex in list.Vertices)
                     {
-                        Color newColor;
+                        GLColor newColor;
                         switch (vertex.Command.Status)
                         {
                             case GrblCommand.CommandStatus.ResponseGood:
-                                newColor = Color.FromArgb(255, 20, 120, 20);
+                                newColor = new GLColor(0.1f, 1f, 0.2f, 20);
                                 break;
                             case GrblCommand.CommandStatus.ResponseBad:
                             case GrblCommand.CommandStatus.InvalidResponse:
@@ -313,7 +324,6 @@ namespace LaserGRBL.Obj3D
                                 break;
                         }
                         vertex.NewColor = vertex.OriginalColor.Blend(newColor);
-                        CurrentVertex = vertex;
                         mGL.Color(vertex.NewColor);
                         mGL.Vertex(vertex.X, vertex.Y, vertex.Z);
                     }
@@ -321,6 +331,7 @@ namespace LaserGRBL.Obj3D
                     list.Invalidated();
                 }
             }
+            Debug.WriteLine($"Invalidated {invalidatedLists} lists");
         }
 
         public void ResetColor()

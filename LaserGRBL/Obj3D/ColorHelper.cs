@@ -12,18 +12,13 @@ namespace LaserGRBL.Obj3D
     public static class ColorHelper
     {
 
-        public static float GlRed(this Color color) => color.R / 255f;
-        public static float GlGreen(this Color color) => color.G / 255f;
-        public static float GlBlue(this Color color) => color.B / 255f;
-        public static float GlAlpha(this Color color) => color.A / 255f;
-
-        public static Color Blend(this Color color, Color blendColor)
+        public static GLColor Blend(this GLColor color, GLColor blendColor)
         {
-            return Color.FromArgb(
-                (int)((color.A + blendColor.A * 2) / 3f),
-                (int)((color.R + blendColor.R * 2) / 3f),
-                (int)((color.G + blendColor.G * 2) / 3f),
-                (int)((color.B + blendColor.B * 2) / 3f)
+            return new GLColor(
+                (float)((color.R + blendColor.R * 2) / 3f),
+                (float)((color.G + blendColor.G * 2) / 3f),
+                (float)((color.B + blendColor.B * 2) / 3f),
+                (float)((color.A + blendColor.A * 2) / 3f)
             );
         }
 

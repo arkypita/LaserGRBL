@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using LaserGRBL.SvgConverter;
 using LaserGRBL.Obj3D;
+using SharpGL.SceneGraph;
 
 namespace LaserGRBL
 {
@@ -1612,7 +1613,7 @@ namespace LaserGRBL
                     {
                         if (spb.G0G1 && cmd.IsLinearMovement)
                         {
-                            Color? color = null;
+                            GLColor color = null;
                             if (spb.LaserBurning && !justLaserOffMovements)
                             {
                                 color = spb.GetCurrentColor(0, 1000);
@@ -1626,8 +1627,8 @@ namespace LaserGRBL
                             }
                             if (color != null)
                             {
-                                object3D.AddVertex((float)spb.X.Previous, (float)spb.Y.Previous, zPos, (Color)color, cmd);
-                                object3D.AddVertex((float)spb.X.Number, (float)spb.Y.Number, zPos, (Color)color, cmd);
+                                object3D.AddVertex((float)spb.X.Previous, (float)spb.Y.Previous, zPos, color, cmd);
+                                object3D.AddVertex((float)spb.X.Number, (float)spb.Y.Number, zPos, color, cmd);
                             }
                         }
                         else if (spb.G2G3 && cmd.IsArcMovement)
@@ -1637,7 +1638,7 @@ namespace LaserGRBL
                             {
                                 double? lastX = null;
                                 double? lastY = null;
-                                Color color = spb.GetCurrentColor(0, 1000);
+                                GLColor color = spb.GetCurrentColor(0, 1000);
                                 double startAngle = ah.StartAngle;
                                 double endAngle = ah.StartAngle + ah.AngularWidth;
                                 int sign = Math.Sign(ah.AngularWidth);

@@ -24,12 +24,12 @@ namespace LaserGRBL.UserControls
         private Vertex mShift = new Vertex(0, 0, 10f);
         // main camera
         public OrthographicCamera Camera { get; } = new OrthographicCamera();
-        public Color BackgroundColor { get; set; } = Color.White;
-        public Color TicksColor { get; set; } = Color.FromArgb(200, 200, 200);
-        public Color MinorsColor { get; set; } = Color.FromArgb(220, 220, 220);
-        public Color OriginsColor { get; set; } = Color.FromArgb(50, 50, 50);
-        public Color PointerColor { get; set; } = Color.FromArgb(200, 40, 40);
-        public Color TextColor { get; set; } = Color.FromArgb(0, 0, 0);
+        public GLColor BackgroundColor { get; set; } = Color.White;
+        public GLColor TicksColor { get; set; } = Color.FromArgb(200, 200, 200);
+        public GLColor MinorsColor { get; set; } = Color.FromArgb(220, 220, 220);
+        public GLColor OriginsColor { get; set; } = Color.FromArgb(50, 50, 50);
+        public GLColor PointerColor { get; set; } = Color.FromArgb(200, 40, 40);
+        public GLColor TextColor { get; set; } = Color.FromArgb(0, 0, 0);
         public Font TextFont { get; set; } = new Font("Arial", 12);
         // background 
         private Grid3D mGrid = null;
@@ -50,6 +50,7 @@ namespace LaserGRBL.UserControls
             MouseUp += GrblSceneControl_MouseUp;
             MouseLeave += GrblSceneControl_MouseLeave;
             OpenGLDraw += GrblSceneControl_OpenGLDraw;
+            Disposed += GrblPanel3D_Disposed;
             Scene.SceneContainer.Children.Clear();
             Scene.CurrentCamera = Camera;
             Camera.Position = new Vertex(0, 0, 0);
@@ -57,6 +58,11 @@ namespace LaserGRBL.UserControls
             Camera.Far = 100000000;
             mGrid = new Grid3D();
             Scene.SceneContainer.AddChild(mGrid);
+        }
+
+        private void GrblPanel3D_Disposed(object sender, EventArgs e)
+        {
+            DisposeGrbl3D();
         }
 
         private void SetViewPort()
@@ -131,7 +137,7 @@ namespace LaserGRBL.UserControls
                     Size size = TextRenderer.MeasureText(text, TextFont);
                     SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
                     double x = i * ratio - Camera.Left * ratio - sizeProp.Width / 4f;
-                    if (x > 50) OpenGL.DrawText((int)x, 5, TextColor.GlRed(), TextColor.GlGreen(), TextColor.GlBlue(), TextFont.FontFamily.Name, TextFont.Size, text);
+                    if (x > 50) OpenGL.DrawText((int)x, 5, TextColor.R, TextColor.G, TextColor.B, TextFont.FontFamily.Name, TextFont.Size, text);
                 }
             }
             // draw vertical
@@ -144,7 +150,7 @@ namespace LaserGRBL.UserControls
                     SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
                     double x = 50 - sizeProp.Width;
                     double y = i * ratio - Camera.Bottom * ratio - sizeProp.Height / 4f;
-                    OpenGL.DrawText((int)x, (int)y, TextColor.GlRed(), TextColor.GlGreen(), TextColor.GlBlue(), TextFont.FontFamily.Name, TextFont.Size, text);
+                    OpenGL.DrawText((int)x, (int)y, TextColor.R, TextColor.G, TextColor.B, TextFont.FontFamily.Name, TextFont.Size, text);
                 }
             }
         }
@@ -167,7 +173,7 @@ namespace LaserGRBL.UserControls
                 OpenGL.Scissor(xText - 10, yText, (int)sizeProp.Width + 10, 20);
                 OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
                 OpenGL.Disable(OpenGL.GL_SCISSOR_TEST);
-                OpenGL.DrawText(xText, yText + 5, TextColor.GlRed(), TextColor.GlGreen(), TextColor.GlBlue(), TextFont.FontFamily.Name, TextFont.Size, mousePos);
+                OpenGL.DrawText(xText, yText + 5, TextColor.R, TextColor.G, TextColor.B, TextFont.FontFamily.Name, TextFont.Size, mousePos);
             }
         }
 
@@ -176,7 +182,7 @@ namespace LaserGRBL.UserControls
             // compute width ratio
             double ratio = Width / (Camera.Right - Camera.Left);
             // set colors
-            Scene.ClearColour.FromColor(BackgroundColor);
+            Scene.ClearColour = BackgroundColor;
             mGrid.TicksColor = TicksColor;
             mGrid.MinorsColor = MinorsColor;
             mGrid.OriginsColor = OriginsColor;
@@ -229,7 +235,6 @@ namespace LaserGRBL.UserControls
             Core.OnFileLoading += OnFileLoading;
             Core.OnFileLoaded += OnFileLoaded;
             Core.OnMPositionChanged += OnMPositionChanged;
-            OnFileLoaded(0, null);
         }
 
         private void OnMPositionChanged(GrblCore obj)
@@ -237,13 +242,19 @@ namespace LaserGRBL.UserControls
             mInvalidateGrbl3D = true;
         }
 
-        private void OnFileLoaded(long elapsed, string filename)
+        private void DisposeGrbl3D()
         {
             if (mGrbl3D != null)
             {
                 Scene.SceneContainer.RemoveChild(mGrbl3D);
+                mGrbl3D.Dispose();
                 mGrbl3D = null;
             }
+        }
+
+        private void OnFileLoaded(long elapsed, string filename)
+        {
+            DisposeGrbl3D();
             mGrbl3D = new Grbl3D(Core.LoadedFile, "Grbl file", false);
             Scene.SceneContainer.AddChild(mGrbl3D);
         }

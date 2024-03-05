@@ -5,6 +5,7 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using LaserGRBL.Obj3D;
+using SharpGL.SceneGraph;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -212,14 +213,14 @@ namespace LaserGRBL
 					return 255;
             }
 
-            internal System.Drawing.Color GetCurrentColor(decimal min, decimal max)
+            internal GLColor GetCurrentColor(decimal min, decimal max)
             {
-                byte intensity = 255;
+                float intensity = 1;
                 if (!LaserBurning)
-                    intensity = (byte)(supportPWM ? 128 : 100);
+                    intensity = (byte)(supportPWM ? 0.5f : 0.3f);
                 else if (supportPWM && (max - min > 0) && S.IsSettled)
-                    intensity = (byte)(255 - (S.Number - min) / (max - min) * 255);
-                return System.Drawing.Color.FromArgb(255, intensity, intensity, intensity);
+                    intensity = (byte)(1 - (S.Number - min) / (max - min));
+                return new GLColor(intensity, intensity, intensity, 1);
             }
 
             public bool G2
