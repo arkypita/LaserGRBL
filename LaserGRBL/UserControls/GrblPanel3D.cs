@@ -54,10 +54,12 @@ namespace LaserGRBL.UserControls
         private Grid3D mGrid = null;
         // grbl object 
         private Grbl3D mGrbl3D = null;
-        private bool mInvalidateGrbl3D = false;
+        // viewport padding
+        private Padding mPadding = new Padding(50, 20, 0, 30);
+        // DCA last invalidate
+        private DateTimeOffset mLastInvalidate = DateTimeOffset.MinValue;
         // grbl core
         private GrblCore Core;
-
         public float PointerSize { get; set; } = 3;
 
         public GrblPanel3D()
@@ -84,13 +86,14 @@ namespace LaserGRBL.UserControls
             DisposeGrbl3D();
         }
 
-        private void SetViewPort()
+        private void SetViewport()
         {
+            double ratio = mRatio;
             // set viewport
-            Camera.Left = Width / -mShift.Z + mShift.X;
-            Camera.Right = Width / mShift.Z + mShift.X;
-            Camera.Top = Height / mShift.Z - mShift.Y;
-            Camera.Bottom = Height / -mShift.Z - mShift.Y;
+            Camera.Left = Width / -mShift.Z + mShift.X - ((mPadding.Left - mPadding.Right) / 2 / ratio);
+            Camera.Right = Width / mShift.Z + mShift.X - ((mPadding.Left - mPadding.Right) / 2 / ratio);
+            Camera.Top = Height / mShift.Z + mShift.Y - ((mPadding.Bottom - mPadding.Top) / 2 / ratio);
+            Camera.Bottom = Height / -mShift.Z + mShift.Y - ((mPadding.Bottom - mPadding.Top) / 2 / ratio);
         }
 
         private void DrawPointer()
@@ -118,12 +121,22 @@ namespace LaserGRBL.UserControls
             double ratio = mRatio; 
             // clear left ruler background
             OpenGL.Enable(OpenGL.GL_SCISSOR_TEST);
-            OpenGL.Scissor(0, 0, 50, Height);
+            OpenGL.Scissor(0, 0, mPadding.Left, Height);
             OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
             OpenGL.Disable(OpenGL.GL_SCISSOR_TEST);
             // clear bottom ruler background
             OpenGL.Enable(OpenGL.GL_SCISSOR_TEST);
-            OpenGL.Scissor(0, 0, Width, 20);
+            OpenGL.Scissor(0, 0, Width, mPadding.Bottom);
+            OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
+            OpenGL.Disable(OpenGL.GL_SCISSOR_TEST);
+            // clear right ruler background
+            OpenGL.Enable(OpenGL.GL_SCISSOR_TEST);
+            OpenGL.Scissor(Width - mPadding.Right, 0, mPadding.Right, Height);
+            OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
+            OpenGL.Disable(OpenGL.GL_SCISSOR_TEST);
+            // clear top ruler background
+            OpenGL.Enable(OpenGL.GL_SCISSOR_TEST);
+            OpenGL.Scissor(0, Height - mPadding.Top, Width, mPadding.Top);
             OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
             OpenGL.Disable(OpenGL.GL_SCISSOR_TEST);
             // define if minors are visible
@@ -151,7 +164,7 @@ namespace LaserGRBL.UserControls
                 step = 100;
             }
             // draw horizontal
-            for (int i = (int)Camera.Left; i < (int)Camera.Right; i += 1)
+            for (int i = (int)Camera.Left + (int)(mPadding.Left / ratio); i < (int)Camera.Right - (int)(mPadding.Right / ratio); i += 1)
             {
                 if (i % step == 0)
                 {
@@ -159,23 +172,33 @@ namespace LaserGRBL.UserControls
                     Size size = TextRenderer.MeasureText(text, TextFont);
                     SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
                     double x = i * ratio - Camera.Left * ratio - sizeProp.Width / 4f;
-                    if (x > 50) OpenGL.DrawText((int)x, 5, TextColor.R, TextColor.G, TextColor.B, TextFont.FontFamily.Name, TextFont.Size, text);
+                    OpenGL.DrawText((int)x, mPadding.Bottom - size.Height, TextColor.R, TextColor.G, TextColor.B, TextFont.FontFamily.Name, TextFont.Size, text);
                 }
             }
             // draw vertical
-            for (int i = (int)Camera.Bottom; i < (int)Camera.Top; i += 1)
+            for (int i = (int)Camera.Bottom + (int)(mPadding.Bottom / ratio); i < (int)Camera.Top - (int)(mPadding.Top / ratio); i += 1)
             {
                 if (i % step == 0)
                 {
                     string text = $"{i}";
                     Size size = TextRenderer.MeasureText(text, TextFont);
                     SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
-                    double x = 50 - sizeProp.Width;
+                    double x = mPadding.Left - sizeProp.Width;
                     double y = i * ratio - Camera.Bottom * ratio - sizeProp.Height / 4f;
                     OpenGL.DrawText((int)x, (int)y, TextColor.R, TextColor.G, TextColor.B, TextFont.FontFamily.Name, TextFont.Size, text);
                 }
             }
             OpenGL.Flush();
+        }
+
+        private void InvalidatePanel()
+        {
+            DateTimeOffset now = DateTimeOffset.UtcNow;
+            if (now.Subtract(mLastInvalidate).TotalMilliseconds > (Core.InProgram ? 100 : 20))
+            {
+                Invalidate();
+                mLastInvalidate = now;
+            }
         }
 
         private void DrawMouseCoord()
@@ -206,12 +229,8 @@ namespace LaserGRBL.UserControls
             mGrid.TicksColor = TicksColor;
             mGrid.MinorsColor = MinorsColor;
             mGrid.OriginsColor = OriginsColor;
-            if (mInvalidateGrbl3D)
-            {
-                mInvalidateGrbl3D = false;
-                mGrbl3D?.Invalidate();
-            }
-            SetViewPort();
+            mGrbl3D?.Invalidate();
+            SetViewport();
             DrawPointer();
             DrawRulers();
             DrawMouseCoord();
@@ -237,11 +256,11 @@ namespace LaserGRBL.UserControls
             if (mLastMousePos != null)
             {
                 mShift.X -= (e.Location.X - (int)mLastMousePos?.X) * 2f / mShift.Z;
-                mShift.Y -= (e.Location.Y - (int)mLastMousePos?.Y) * 2f / mShift.Z;
+                mShift.Y -= (e.Location.Y - (int)mLastMousePos?.Y) * 2f / -mShift.Z;
                 mLastMousePos = e.Location;
             }
             mCurrentMousePos = e.Location;
-            Invalidate();
+            InvalidatePanel();
         }
 
         private void GrblSceneControl_MouseWheel(object sender, MouseEventArgs e)
@@ -249,7 +268,7 @@ namespace LaserGRBL.UserControls
             mShift.Z += e.Delta / 1000f * mShift.Z;
             if (mShift.Z > MAX_Z) mShift.Z = MAX_Z;
             if (mShift.Z < MIN_Z) mShift.Z = MIN_Z;
-            Invalidate();
+            InvalidatePanel();
         }
 
         public void SetComProgram(GrblCore core)
@@ -262,8 +281,7 @@ namespace LaserGRBL.UserControls
 
         private void OnMPositionChanged(GrblCore obj)
         {
-            mInvalidateGrbl3D = true;
-            Invalidate();
+            InvalidatePanel();
         }
 
         private void DisposeGrbl3D()
@@ -281,7 +299,23 @@ namespace LaserGRBL.UserControls
             DisposeGrbl3D();
             mGrbl3D = new Grbl3D(Core.LoadedFile, "Grbl file", false);
             Scene.SceneContainer.AddChild(mGrbl3D);
-            Invalidate();
+            AutoSizeDrawing();
+            InvalidatePanel();
+        }
+
+        public void AutoSizeDrawing()
+        {
+            if (Core.LoadedFile.Range.DrawingRange.ValidRange)
+            {
+                mShift.X = (float)Core.LoadedFile.Range.DrawingRange.Center.X;
+                mShift.Y = (float)Core.LoadedFile.Range.DrawingRange.Center.Y;
+                double ratio = mRatio;
+                double currentWidth = Camera.Right - Camera.Left - (mPadding.Left / ratio) - (mPadding.Right / ratio);
+                double currentHeight = Camera.Top - Camera.Bottom - (mPadding.Bottom / ratio) - (mPadding.Top / ratio);
+                double xFactor = (double)Core.LoadedFile.Range.DrawingRange.Width / currentWidth;
+                double yFactor = (double)Core.LoadedFile.Range.DrawingRange.Height / currentHeight;
+                mShift.Z = (float)(mShift.Z / Math.Max(xFactor, yFactor));
+            }
         }
 
         private void OnFileLoading(long elapsed, string filename)

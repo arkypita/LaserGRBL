@@ -244,7 +244,7 @@ namespace LaserGRBL.Obj3D
                 if (i % 10 == 0 || i == 0) continue;
                 DrawCross(i, MinorsColor, -0.3f);
             }
-            // DCA tick display list
+            // tick display list
             NewDisplayList();
             mDisplayTick = mCurrentDisplayList.DisplayList;
             for (int i = -MaxWidth; i <= MaxWidth; i++)
@@ -328,7 +328,7 @@ namespace LaserGRBL.Obj3D
                     list.Invalidated();
                 }
             }
-            Debug.WriteLine($"Invalidated {invalidatedLists} lists");
+            Debug.WriteLine($"{DateTime.Now} Invalidated {invalidatedLists} lists");
         }
 
         public void ResetColor()
