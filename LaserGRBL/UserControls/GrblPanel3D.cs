@@ -17,16 +17,35 @@ namespace LaserGRBL.UserControls
         private const float MAX_Z = 1000;
         private const float MIN_Z = 1.2f;
         // last mouse position
-        private Point? mMousePos = null;
-        // current mouse position
-        private Point? mMousePosCurrent = null;
+        private Point? mLastMousePos = null;
+        private Point? mCurrentMousePos
+        {
+            set
+            {
+                if (value != null)
+                {
+                    Point pos = (Point)value;
+                    mMouseWorldPosition = new PointF((float)(pos.X / mRatio + Camera.Left),
+                                                     -(float)(pos.Y / mRatio - Camera.Bottom - (-Camera.Bottom + Camera.Top)));
+
+                }
+                else
+                {
+                    mMouseWorldPosition = null;
+                }
+            }
+        }
+        // current mouse world position
+        private PointF? mMouseWorldPosition {  get; set; }
+        // compute width ratio
+        private double mRatio => Width / (Camera.Right - Camera.Left);
         // origins shift
         private Vertex mShift = new Vertex(0, 0, 10f);
         // main camera
         public OrthographicCamera Camera { get; } = new OrthographicCamera();
         public GLColor BackgroundColor { get; set; } = Color.White;
-        public GLColor TicksColor { get; set; } = Color.FromArgb(200, 200, 200);
-        public GLColor MinorsColor { get; set; } = Color.FromArgb(220, 220, 220);
+        public GLColor TicksColor { get; set; } = Color.FromArgb(220, 220, 220);
+        public GLColor MinorsColor { get; set; } = Color.FromArgb(242, 242, 242);
         public GLColor OriginsColor { get; set; } = Color.FromArgb(50, 50, 50);
         public GLColor PointerColor { get; set; } = Color.FromArgb(200, 40, 40);
         public GLColor TextColor { get; set; } = Color.FromArgb(0, 0, 0);
@@ -93,8 +112,10 @@ namespace LaserGRBL.UserControls
             OpenGL.Flush();
         }
 
-        public void DrawRulers(double ratio)
+        public void DrawRulers()
         {
+            // get ratio
+            double ratio = mRatio; 
             // clear left ruler background
             OpenGL.Enable(OpenGL.GL_SCISSOR_TEST);
             OpenGL.Scissor(0, 0, 50, Height);
@@ -157,15 +178,13 @@ namespace LaserGRBL.UserControls
             OpenGL.Flush();
         }
 
-        private void DrawMouseCoord(double ratio)
+        private void DrawMouseCoord()
         {
             // draw current mouse position
-            if (mMousePosCurrent != null)
+            if (mMouseWorldPosition != null)
             {
-                // define text position
-                double xMouse = ((Point)mMousePosCurrent).X / ratio + Camera.Left;
-                double yMouse = -(((Point)mMousePosCurrent).Y / ratio - Camera.Bottom - (-Camera.Bottom + Camera.Top));
-                string mousePos = $"{xMouse:0.0} x {yMouse:0.0}";
+                PointF pos = (PointF)mMouseWorldPosition;
+                string mousePos = $"{pos.X:0.0} x {pos.Y:0.0}";
                 Size size = TextRenderer.MeasureText(mousePos, TextFont);
                 SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
                 int xText = (int)(Width - sizeProp.Width);
@@ -182,8 +201,6 @@ namespace LaserGRBL.UserControls
 
         private void GrblSceneControl_OpenGLDraw(object sender, RenderEventArgs args)
         {
-            // compute width ratio
-            double ratio = Width / (Camera.Right - Camera.Left);
             // set colors
             Scene.ClearColour = BackgroundColor;
             mGrid.TicksColor = TicksColor;
@@ -196,33 +213,35 @@ namespace LaserGRBL.UserControls
             }
             SetViewPort();
             DrawPointer();
-            DrawRulers(ratio);
-            DrawMouseCoord(ratio);
+            DrawRulers();
+            DrawMouseCoord();
+            if (FrameRate > 1) FrameRate--;
         }
 
         private void GrblSceneControl_MouseLeave(object sender, EventArgs e)
         {
-            mMousePos = null;
-            mMousePosCurrent = null;
+            mLastMousePos = null;
+            mCurrentMousePos = null;
         }
 
         private void GrblSceneControl_MouseUp(object sender, MouseEventArgs e)
         {
-            mMousePos = null;
-            mMousePosCurrent = null;
+            mLastMousePos = null;
+            mCurrentMousePos = null;
         }
 
-        private void GrblSceneControl_MouseDown(object sender, MouseEventArgs e) => mMousePos = e.Location;
+        private void GrblSceneControl_MouseDown(object sender, MouseEventArgs e) => mLastMousePos = e.Location;
 
         private void GrblSceneControl_MouseMove(object sender, MouseEventArgs e)
         {
-            if (mMousePos != null)
+            if (mLastMousePos != null)
             {
-                mShift.X -= (e.Location.X - (int)mMousePos?.X) * 2f / mShift.Z;
-                mShift.Y -= (e.Location.Y - (int)mMousePos?.Y) * 2f / mShift.Z;
-                mMousePos = e.Location;
+                mShift.X -= (e.Location.X - (int)mLastMousePos?.X) * 2f / mShift.Z;
+                mShift.Y -= (e.Location.Y - (int)mLastMousePos?.Y) * 2f / mShift.Z;
+                mLastMousePos = e.Location;
             }
-            mMousePosCurrent = e.Location;
+            mCurrentMousePos = e.Location;
+            Invalidate();
         }
 
         private void GrblSceneControl_MouseWheel(object sender, MouseEventArgs e)
@@ -230,6 +249,7 @@ namespace LaserGRBL.UserControls
             mShift.Z += e.Delta / 1000f * mShift.Z;
             if (mShift.Z > MAX_Z) mShift.Z = MAX_Z;
             if (mShift.Z < MIN_Z) mShift.Z = MIN_Z;
+            Invalidate();
         }
 
         public void SetComProgram(GrblCore core)
@@ -243,6 +263,7 @@ namespace LaserGRBL.UserControls
         private void OnMPositionChanged(GrblCore obj)
         {
             mInvalidateGrbl3D = true;
+            Invalidate();
         }
 
         private void DisposeGrbl3D()
@@ -260,6 +281,7 @@ namespace LaserGRBL.UserControls
             DisposeGrbl3D();
             mGrbl3D = new Grbl3D(Core.LoadedFile, "Grbl file", false);
             Scene.SceneContainer.AddChild(mGrbl3D);
+            Invalidate();
         }
 
         private void OnFileLoading(long elapsed, string filename)

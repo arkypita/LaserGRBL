@@ -29,7 +29,7 @@ namespace LaserGRBL.Obj3D
         {
             DisplayList = new DisplayList();
             DisplayList.Generate(gl);
-            DisplayList.New(gl, DisplayList.DisplayListMode.CompileAndExecute);
+            DisplayList.New(gl, DisplayList.DisplayListMode.Compile);
             gl.PushAttrib(OpenGL.GL_CURRENT_BIT | OpenGL.GL_ENABLE_BIT | OpenGL.GL_LINE_BIT);
             gl.Disable(OpenGL.GL_LIGHTING);
             gl.Disable(OpenGL.GL_TEXTURE_2D);
@@ -109,10 +109,7 @@ namespace LaserGRBL.Obj3D
                     mGL = gl;
                     CreateDisplayList();
                 }
-                else
-                {
-                    CallDisplayList(gl);
-                }
+                CallDisplayList(gl);
             }
         }
 
@@ -181,7 +178,7 @@ namespace LaserGRBL.Obj3D
         [XmlIgnore]
         private DisplayList mDisplayMinor;
         [XmlIgnore]
-        public bool ShowMinor { get; set; }
+        public bool ShowMinor { get; set; } = false;
         [XmlIgnore]
         private GLColor mTicksColor = new GLColor();
         [XmlIgnore]

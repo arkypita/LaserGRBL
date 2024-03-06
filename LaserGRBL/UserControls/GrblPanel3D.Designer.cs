@@ -35,10 +35,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.DrawFPS = true;
+            this.FrameRate = 20;
             this.Name = "GrblPanel3D";
             this.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_0;
-            this.RenderContextType = SharpGL.RenderContextType.FBO;
             this.Size = new System.Drawing.Size(1170, 856);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
