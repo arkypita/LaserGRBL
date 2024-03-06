@@ -1616,7 +1616,7 @@ namespace LaserGRBL
                             GLColor color = null;
                             if (spb.LaserBurning && !justLaserOffMovements)
                             {
-                                color = spb.GetCurrentColor(0, 1000);
+                                color = spb.GetCurrentColor(mRange.SpindleRange);
                             }
                             else
                             {
@@ -1638,7 +1638,7 @@ namespace LaserGRBL
                             {
                                 double? lastX = null;
                                 double? lastY = null;
-                                GLColor color = spb.GetCurrentColor(0, 1000);
+                                GLColor color = spb.GetCurrentColor(mRange.SpindleRange);
                                 double startAngle = ah.StartAngle;
                                 double endAngle = ah.StartAngle + ah.AngularWidth;
                                 int sign = Math.Sign(ah.AngularWidth);

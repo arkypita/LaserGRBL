@@ -213,13 +213,13 @@ namespace LaserGRBL
 					return 255;
             }
 
-            internal GLColor GetCurrentColor(decimal min, decimal max)
+            internal GLColor GetCurrentColor(ProgramRange.SRange range)
             {
                 float intensity = 1;
                 if (!LaserBurning)
-                    intensity = (byte)(supportPWM ? 0.5f : 0.3f);
-                else if (supportPWM && (max - min > 0) && S.IsSettled)
-                    intensity = (byte)(1 - (S.Number - min) / (max - min));
+                    intensity = (float)(supportPWM ? 0.5f : 0.3f);
+                else if (supportPWM && (range.S.Max - range.S.Min > 0) && S.IsSettled)
+                    intensity = (float)(1 - (S.Number - range.S.Min) / (range.S.Max - range.S.Min));
                 return new GLColor(intensity, intensity, intensity, 1);
             }
 
