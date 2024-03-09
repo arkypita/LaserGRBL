@@ -28,20 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
-            this.SuspendLayout();
             // 
             // GrblPanel3D
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.FrameRate = 20;
             this.Name = "GrblPanel3D";
-            this.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_0;
             this.Size = new System.Drawing.Size(1170, 856);
-            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
-            this.ResumeLayout(false);
-
         }
 
         #endregion

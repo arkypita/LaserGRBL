@@ -14,26 +14,26 @@ namespace Tools
 	public class ThreadObject : ThreadClass
 	{
 
-		private System.Threading.ThreadStart _delegatesub;
+		private System.Threading.ThreadStart _delegateSub;
 
-		private System.Threading.ThreadStart _firsrunsub;
-		public ThreadObject(System.Threading.ThreadStart DelegateSub, int SleepTime, bool AutoDispose, string Name, System.Threading.ThreadStart FirstRunSub) : base(SleepTime, AutoDispose, Name)
+		private System.Threading.ThreadStart _firstRunSub;
+		public ThreadObject(System.Threading.ThreadStart DelegateSub, int SleepTime, bool AutoDispose, string Name, System.Threading.ThreadStart FirstRunSub, ThreadPriority priority = ThreadPriority.Normal) : base(SleepTime, AutoDispose, Name, priority)
 		{
-			_delegatesub = DelegateSub;
-			_firsrunsub = FirstRunSub;
+			_delegateSub = DelegateSub;
+			_firstRunSub = FirstRunSub;
 		}
 
 		protected override void OnFirstRun()
 		{
-			if ((_firsrunsub != null)) {
-				_firsrunsub();
+			if ((_firstRunSub != null)) {
+				_firstRunSub();
 			}
 		}
 
 		protected override void DoTheWork()
 		{
-			if ((_delegatesub != null)) {
-				_delegatesub();
+			if ((_delegateSub != null)) {
+				_delegateSub();
 			}
 		}
 
@@ -47,8 +47,11 @@ namespace Tools
 			//checked 26/05/2008
 		protected internal Thread TH;
 
-		protected ThreadClass(int SleepTime, bool AutoDispose, string Name)
+		protected internal ThreadPriority mPriority;
+
+        protected ThreadClass(int SleepTime, bool AutoDispose, string Name, ThreadPriority priority)
 		{
+			mPriority = priority;
 			this.SleepTime = SleepTime;
 			if (AutoDispose)
 				System.Windows.Forms.Application.ApplicationExit += this.AutoDispose;
@@ -88,8 +91,9 @@ namespace Tools
 		{
 			if (TH == null) {
 				MustExit = new ManualResetEvent(false);
-				TH = new System.Threading.Thread(Loop);
-				TH.Priority = ThreadPriority.Highest;
+				TH = new Thread(Loop);
+				//TH.SetApartmentState(ApartmentState.STA);
+				TH.Priority = mPriority;
 				TH.Name = this.Name;
 				TH.Start();
 			}

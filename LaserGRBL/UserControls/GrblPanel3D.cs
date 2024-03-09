@@ -2,14 +2,20 @@
 using SharpGL;
 using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Cameras;
+using SharpGL.SceneGraph.Core;
+using SharpGL.Serialization;
+using SharpGL.Version;
 using System;
+using System.ComponentModel;
 using System.Drawing;
+using System.Management;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace LaserGRBL.UserControls
 {
     [ToolboxBitmap(typeof(SceneControl), "GrblScene")]
-    public partial class GrblPanel3D : SceneControl, IGrblPanel
+    public partial class GrblPanel3D : UserControl, IGrblPanel
     {
         // on zoom event
         public event Action<GrblPanel3D> OnZoom;
@@ -54,6 +60,8 @@ namespace LaserGRBL.UserControls
         private Grid3D mGrid = null;
         // grbl object 
         private Grbl3D mGrbl3D = null;
+        // loaded grbl object
+        private Grbl3D mGrbl3DLoaded = null;
         // viewport padding
         private Padding mPadding = new Padding(50, 20, 0, 30);
         // DCA last invalidate
@@ -61,29 +69,50 @@ namespace LaserGRBL.UserControls
         // grbl core
         private GrblCore Core;
         public float PointerSize { get; set; } = 3;
+        // DCA drawing thread
+        private Tools.ThreadObject mThreadDraw;
+        private Bitmap mBmp = null;
+        private object mBitmapLock = new object();
+
+        private OpenGL OpenGL;
 
         public GrblPanel3D()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             MouseWheel += GrblSceneControl_MouseWheel;
             MouseDown += GrblSceneControl_MouseDown;
             MouseMove += GrblSceneControl_MouseMove;
             MouseUp += GrblSceneControl_MouseUp;
             MouseLeave += GrblSceneControl_MouseLeave;
-            OpenGLDraw += GrblSceneControl_OpenGLDraw;
             Disposed += GrblPanel3D_Disposed;
-            Scene.SceneContainer.Children.Clear();
-            Scene.CurrentCamera = Camera;
             Camera.Position = new Vertex(0, 0, 0);
             Camera.Near = 0;
             Camera.Far = 100000000;
             mGrid = new Grid3D();
-            Scene.SceneContainer.AddChild(mGrid);
+            mThreadDraw = new Tools.ThreadObject(DrawScene, 20, true, "Drawing Thread", InitializeOpenGL, ThreadPriority.BelowNormal);
+            mThreadDraw.Start();
+        }
+
+        protected void InitializeOpenGL()
+        {
+            object parameter = null;
+            OpenGL = new OpenGL();
+            OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.DIBSection, Width, Height, 32, parameter);
+            OpenGL.ShadeModel(OpenGL.GL_SMOOTH);
+            OpenGL.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+            OpenGL.ClearDepth(1.0f);
+            OpenGL.Enable(OpenGL.GL_DEPTH_TEST);
+            OpenGL.DepthFunc(OpenGL.GL_LEQUAL);
+            OpenGL.Hint(OpenGL.GL_PERSPECTIVE_CORRECTION_HINT, OpenGL.GL_NICEST);
         }
 
         private void GrblPanel3D_Disposed(object sender, EventArgs e)
         {
             DisposeGrbl3D();
+            mThreadDraw?.Dispose();
         }
 
         private void SetViewport()
@@ -98,6 +127,7 @@ namespace LaserGRBL.UserControls
 
         private void DrawPointer()
         {
+            if (Core == null) return;
             // draw laser cross
             GLColor color = new GLColor();
             color.FromColor(PointerColor);
@@ -139,8 +169,6 @@ namespace LaserGRBL.UserControls
             OpenGL.Scissor(0, Height - mPadding.Top, Width, mPadding.Top);
             OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
             OpenGL.Disable(OpenGL.GL_SCISSOR_TEST);
-            // define if minors are visible
-            mGrid.ShowMinor = mShift.Z > 10;
             // define rulers step
             int step;
             if (mShift.Z > 10)
@@ -222,19 +250,70 @@ namespace LaserGRBL.UserControls
             }
         }
 
-        private void GrblSceneControl_OpenGLDraw(object sender, RenderEventArgs args)
+        private void DrawScene()
         {
-            // set colors
-            Scene.ClearColour = BackgroundColor;
+            OpenGL.MakeCurrent();
+            OpenGL.SetDimensions(Width, Height);
+            OpenGL.Viewport(0, 0, Width, Height);
+            Camera.Project(OpenGL);
+            OpenGL.ClearColor(BackgroundColor.R, BackgroundColor.G, BackgroundColor.B, BackgroundColor.A);
+            OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
+            // render grid
+            // define if minors are visible
+            mGrid.ShowMinor = mShift.Z > 10;
             mGrid.TicksColor = TicksColor;
             mGrid.MinorsColor = MinorsColor;
             mGrid.OriginsColor = OriginsColor;
-            mGrbl3D?.Invalidate();
+            mGrid.Render(OpenGL, RenderMode.Design);
+            // manage grbl object
+            if (mGrbl3DLoaded != null)
+            {
+                if (mGrbl3DLoaded != mGrbl3D)
+                {
+                    mGrbl3D?.Dispose();
+                    mGrbl3D = mGrbl3DLoaded;
+                }
+                mGrbl3D.Invalidate();
+                mGrbl3D.Render(OpenGL, RenderMode.Design);
+            }
+            // main hud
             SetViewport();
             DrawPointer();
             DrawRulers();
             DrawMouseCoord();
-            if (FrameRate > 1) FrameRate--;
+            OpenGL.Flush();
+            // enter lock and copy bitmap
+            lock (mBitmapLock)
+            {
+                // new bitmap if different size
+                if (mBmp == null ||
+                    mBmp.Width != Width ||
+                    mBmp.Height != Height)
+                {
+                    mBmp?.Dispose();
+                    mBmp = new Bitmap(Width, Height);
+                }
+                // clone opengl graphics
+                using (Graphics g = Graphics.FromImage(mBmp))
+                {
+                    IntPtr handleDeviceContext = g.GetHdc();
+                    OpenGL.Blit(handleDeviceContext);
+                    g.ReleaseHdc(handleDeviceContext);
+                }
+            }
+            // call control invalidate
+            Invalidate();
+
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            // exit if not defined bitmap
+            if (mBmp == null) return;
+            // enter lock and copy bitmap to control
+            lock (mBitmapLock)
+            {
+                e.Graphics.DrawImage(mBmp, new Point(0, 0));
+            }
         }
 
         private void GrblSceneControl_MouseLeave(object sender, EventArgs e)
@@ -260,7 +339,6 @@ namespace LaserGRBL.UserControls
                 mLastMousePos = e.Location;
             }
             mCurrentMousePos = e.Location;
-            InvalidatePanel();
         }
 
         private void GrblSceneControl_MouseWheel(object sender, MouseEventArgs e)
@@ -268,7 +346,6 @@ namespace LaserGRBL.UserControls
             mShift.Z += e.Delta / 1000f * mShift.Z;
             if (mShift.Z > MAX_Z) mShift.Z = MAX_Z;
             if (mShift.Z < MIN_Z) mShift.Z = MIN_Z;
-            InvalidatePanel();
         }
 
         public void SetComProgram(GrblCore core)
@@ -276,29 +353,17 @@ namespace LaserGRBL.UserControls
             Core = core;
             Core.OnFileLoading += OnFileLoading;
             Core.OnFileLoaded += OnFileLoaded;
-            Core.OnMPositionChanged += OnMPositionChanged;
-        }
-
-        private void OnMPositionChanged(GrblCore obj)
-        {
-            InvalidatePanel();
         }
 
         private void DisposeGrbl3D()
         {
-            if (mGrbl3D != null)
-            {
-                Scene.SceneContainer.RemoveChild(mGrbl3D);
-                mGrbl3D.Dispose();
-                mGrbl3D = null;
-            }
+            mGrbl3DLoaded = null;
         }
 
         private void OnFileLoaded(long elapsed, string filename)
         {
             DisposeGrbl3D();
-            mGrbl3D = new Grbl3D(Core.LoadedFile, "Grbl file", false);
-            Scene.SceneContainer.AddChild(mGrbl3D);
+            mGrbl3DLoaded = new Grbl3D(Core.LoadedFile, "Grbl file", false);
             AutoSizeDrawing();
             InvalidatePanel();
         }
