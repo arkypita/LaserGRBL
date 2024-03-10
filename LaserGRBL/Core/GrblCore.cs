@@ -349,8 +349,8 @@ namespace LaserGRBL
 
 
 			QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(mThreadingMode.StatusQuery), false);
-			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX);
-			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null);
+			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX, System.Threading.ThreadPriority.Highest);
+			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null, System.Threading.ThreadPriority.Highest);
 
 			file = new GrblFile(0, 0, Configuration.TableWidth, Configuration.TableHeight);  //create a fake range to use with manual movements
 

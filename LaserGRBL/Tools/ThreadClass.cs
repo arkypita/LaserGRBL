@@ -92,7 +92,6 @@ namespace Tools
 			if (TH == null) {
 				MustExit = new ManualResetEvent(false);
 				TH = new Thread(Loop);
-				//TH.SetApartmentState(ApartmentState.STA);
 				TH.Priority = mPriority;
 				TH.Name = this.Name;
 				TH.Start();

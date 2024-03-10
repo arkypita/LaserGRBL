@@ -3,7 +3,6 @@ using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Core;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Xml.Serialization;
 
@@ -34,27 +33,6 @@ namespace LaserGRBL.Obj3D
             gl.Disable(OpenGL.GL_LIGHTING);
             gl.Disable(OpenGL.GL_TEXTURE_2D);
             gl.LineWidth(lineWidth);
-            //gl.Enable(OpenGL.GL_POLYGON_SMOOTH);
-
-            /*
-            gl.ShadeModel(OpenGL.GL_SMOOTH);
-            gl.PushAttrib(OpenGL.GL_CURRENT_BIT | OpenGL.GL_ENABLE_BIT | OpenGL.GL_LINE_BIT);
-            gl.Disable(OpenGL.GL_LIGHTING);
-            gl.Disable(OpenGL.GL_TEXTURE_2D);
-            gl.Enable(OpenGL.GL_POLYGON_SMOOTH);
-            gl.ClearDepth(1.0f);
-            gl.Enable(OpenGL.GL_DEPTH_TEST);
-            gl.DepthFunc(OpenGL.GL_LEQUAL);
-            gl.Disable(OpenGL.GL_CULL_FACE);
-            gl.Hint(OpenGL.GL_PERSPECTIVE_CORRECTION_HINT, OpenGL.GL_NICEST);
-            gl.Enable(OpenGL.GL_BLEND);
-            gl.BlendFunc(OpenGL.GL_SRC_ALPHA, OpenGL.GL_ONE_MINUS_SRC_ALPHA);
-            gl.Enable(OpenGL.GL_LINE_SMOOTH);
-            gl.Hint(OpenGL.GL_LINE_SMOOTH_HINT, OpenGL.GL_NICEST);
-            gl.PolygonMode(FaceMode.FrontAndBack, PolygonMode.Filled);
-            */
-            //gl.Enable(OpenGL.GL_LINE_SMOOTH);
-            //gl.Hint(OpenGL.GL_LINE_SMOOTH_HINT, OpenGL.GL_NICEST);
             gl.Begin(OpenGL.GL_LINES);
         }
 
@@ -242,7 +220,7 @@ namespace LaserGRBL.Obj3D
             for (int i = -MaxWidth; i <= MaxWidth; i++)
             {
                 if (i % 10 == 0 || i == 0) continue;
-                DrawCross(i, MinorsColor, -0.3f);
+                DrawCross(i, MinorsColor, -20f);
             }
             // tick display list
             NewDisplayList();
@@ -250,12 +228,12 @@ namespace LaserGRBL.Obj3D
             for (int i = -MaxWidth; i <= MaxWidth; i++)
             {
                 if (i % 10 != 0 || i == 0) continue;
-                DrawCross(i, TicksColor, -0.2f);
+                DrawCross(i, TicksColor, -10f);
             }
             // oringins display list
             NewDisplayList();
             mDisplayOrigins = mCurrentDisplayList.DisplayList;
-            DrawCross(0, OriginsColor, -0.1f);
+            DrawCross(0, OriginsColor, -1f);
         }
 
         protected override void CallDisplayList(OpenGL gl)

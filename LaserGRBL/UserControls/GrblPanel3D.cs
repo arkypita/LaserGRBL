@@ -8,6 +8,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LaserGRBL.UserControls
@@ -29,8 +30,8 @@ namespace LaserGRBL.UserControls
                 if (value != null)
                 {
                     Point pos = (Point)value;
-                    mMouseWorldPosition = new PointF((float)(pos.X / mRatio + Camera.Left),
-                                                     -(float)(pos.Y / mRatio - Camera.Bottom - (-Camera.Bottom + Camera.Top)));
+                    mMouseWorldPosition = new PointF((float)(pos.X / mRatio + mCamera.Left),
+                                                     -(float)(pos.Y / mRatio - mCamera.Bottom - (-mCamera.Bottom + mCamera.Top)));
 
                 }
                 else
@@ -42,18 +43,18 @@ namespace LaserGRBL.UserControls
         // current mouse world position
         private PointF? mMouseWorldPosition {  get; set; }
         // compute width ratio
-        private double mRatio => Width / (Camera.Right - Camera.Left);
+        private double mRatio => Width / (mCamera.Right - mCamera.Left);
         // origins shift
         private Vertex mShift = new Vertex(0, 0, 10f);
         // main camera
-        public OrthographicCamera Camera { get; } = new OrthographicCamera();
-        public GLColor BackgroundColor { get; set; } = Color.White;
-        public GLColor TicksColor { get; set; } = Color.FromArgb(220, 220, 220);
-        public GLColor MinorsColor { get; set; } = Color.FromArgb(242, 242, 242);
-        public GLColor OriginsColor { get; set; } = Color.FromArgb(50, 50, 50);
-        public GLColor PointerColor { get; set; } = Color.FromArgb(200, 40, 40);
-        public GLColor TextColor { get; set; } = Color.FromArgb(0, 0, 0);
-        public Font TextFont { get; set; } = new Font("Arial", 12);
+        private OrthographicCamera mCamera { get; } = new OrthographicCamera();
+        private GLColor mBackgroundColor { get; set; }
+        private GLColor mTicksColor { get; set; }
+        private GLColor mMinorsColor { get; set; }
+        private GLColor mOriginsColor { get; set; }
+        private GLColor mPointerColor { get; set; }
+        private GLColor mTextColor { get; set; }
+        private Font mTextFont { get; set; } = new Font("Arial", 12);
         // background 
         private Grid3D mGrid = null;
         // grbl object 
@@ -86,12 +87,19 @@ namespace LaserGRBL.UserControls
             MouseUp += GrblSceneControl_MouseUp;
             MouseLeave += GrblSceneControl_MouseLeave;
             Disposed += GrblPanel3D_Disposed;
-            Camera.Position = new Vertex(0, 0, 0);
-            Camera.Near = 0;
-            Camera.Far = 100000000;
+            mCamera.Position = new Vertex(0, 0, 0);
+            mCamera.Near = 0;
+            mCamera.Far = 100000000;
             mGrid = new Grid3D();
-            mThreadDraw = new Tools.ThreadObject(DrawScene, 40, true, "Drawing Thread", InitializeOpenGL, ThreadPriority.BelowNormal);
-            mThreadDraw.Start();
+            Task.Factory.StartNew(() => {
+                InitializeOpenGL();
+                while (true)
+                {
+                    DrawScene();
+                    Thread.Sleep(30);
+                }
+            });
+
         }
 
         protected void InitializeOpenGL()
@@ -117,10 +125,10 @@ namespace LaserGRBL.UserControls
         {
             double ratio = mRatio;
             // set viewport
-            Camera.Left = Width / -mShift.Z + mShift.X - ((mPadding.Left - mPadding.Right) / 2 / ratio);
-            Camera.Right = Width / mShift.Z + mShift.X - ((mPadding.Left - mPadding.Right) / 2 / ratio);
-            Camera.Top = Height / mShift.Z + mShift.Y - ((mPadding.Bottom - mPadding.Top) / 2 / ratio);
-            Camera.Bottom = Height / -mShift.Z + mShift.Y - ((mPadding.Bottom - mPadding.Top) / 2 / ratio);
+            mCamera.Left = Width / -mShift.Z + mShift.X - ((mPadding.Left - mPadding.Right) / 2 / ratio);
+            mCamera.Right = Width / mShift.Z + mShift.X - ((mPadding.Left - mPadding.Right) / 2 / ratio);
+            mCamera.Top = Height / mShift.Z + mShift.Y - ((mPadding.Bottom - mPadding.Top) / 2 / ratio);
+            mCamera.Bottom = Height / -mShift.Z + mShift.Y - ((mPadding.Bottom - mPadding.Top) / 2 / ratio);
         }
 
         private void DrawPointer()
@@ -128,7 +136,7 @@ namespace LaserGRBL.UserControls
             if (Core == null) return;
             // draw laser cross
             GLColor color = new GLColor();
-            color.FromColor(PointerColor);
+            color.FromColor(mPointerColor);
             OpenGL.Color(color);
             OpenGL.LineWidth(PointerSize);
             OpenGL.Begin(OpenGL.GL_LINES);
@@ -190,28 +198,28 @@ namespace LaserGRBL.UserControls
                 step = 100;
             }
             // draw horizontal
-            for (int i = (int)Camera.Left + (int)(mPadding.Left / ratio); i < (int)Camera.Right - (int)(mPadding.Right / ratio); i += 1)
+            for (int i = (int)mCamera.Left + (int)(mPadding.Left / ratio); i < (int)mCamera.Right - (int)(mPadding.Right / ratio); i += 1)
             {
                 if (i % step == 0)
                 {
                     string text = $"{i}";
-                    Size size = TextRenderer.MeasureText(text, TextFont);
+                    Size size = TextRenderer.MeasureText(text, mTextFont);
                     SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
-                    double x = i * ratio - Camera.Left * ratio - sizeProp.Width / 4f;
-                    OpenGL.DrawText((int)x, mPadding.Bottom - size.Height, TextColor.R, TextColor.G, TextColor.B, TextFont.FontFamily.Name, TextFont.Size, text);
+                    double x = i * ratio - mCamera.Left * ratio - sizeProp.Width / 4f;
+                    OpenGL.DrawText((int)x, mPadding.Bottom - size.Height, mTextColor.R, mTextColor.G, mTextColor.B, mTextFont.FontFamily.Name, mTextFont.Size, text);
                 }
             }
             // draw vertical
-            for (int i = (int)Camera.Bottom + (int)(mPadding.Bottom / ratio); i < (int)Camera.Top - (int)(mPadding.Top / ratio); i += 1)
+            for (int i = (int)mCamera.Bottom + (int)(mPadding.Bottom / ratio); i < (int)mCamera.Top - (int)(mPadding.Top / ratio); i += 1)
             {
                 if (i % step == 0)
                 {
                     string text = $"{i}";
-                    Size size = TextRenderer.MeasureText(text, TextFont);
+                    Size size = TextRenderer.MeasureText(text, mTextFont);
                     SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
                     double x = mPadding.Left - sizeProp.Width;
-                    double y = i * ratio - Camera.Bottom * ratio - sizeProp.Height / 4f;
-                    OpenGL.DrawText((int)x, (int)y, TextColor.R, TextColor.G, TextColor.B, TextFont.FontFamily.Name, TextFont.Size, text);
+                    double y = i * ratio - mCamera.Bottom * ratio - sizeProp.Height / 4f;
+                    OpenGL.DrawText((int)x, (int)y, mTextColor.R, mTextColor.G, mTextColor.B, mTextFont.FontFamily.Name, mTextFont.Size, text);
                 }
             }
             OpenGL.Flush();
@@ -224,7 +232,7 @@ namespace LaserGRBL.UserControls
             {
                 PointF pos = (PointF)mMouseWorldPosition;
                 string mousePos = $"{pos.X:0.0} x {pos.Y:0.0}";
-                Size size = TextRenderer.MeasureText(mousePos, TextFont);
+                Size size = TextRenderer.MeasureText(mousePos, mTextFont);
                 SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
                 int xText = (int)(Width - sizeProp.Width);
                 int yText = Height - 20;
@@ -233,7 +241,7 @@ namespace LaserGRBL.UserControls
                 OpenGL.Scissor(xText - 10, yText, (int)sizeProp.Width + 10, 20);
                 OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
                 OpenGL.Disable(OpenGL.GL_SCISSOR_TEST);
-                OpenGL.DrawText(xText, yText + 5, TextColor.R, TextColor.G, TextColor.B, TextFont.FontFamily.Name, TextFont.Size, mousePos);
+                OpenGL.DrawText(xText, yText + 5, mTextColor.R, mTextColor.G, mTextColor.B, mTextFont.FontFamily.Name, mTextFont.Size, mousePos);
                 OpenGL.Flush();
             }
         }
@@ -241,17 +249,18 @@ namespace LaserGRBL.UserControls
         private void DrawScene()
         {
             Stopwatch sw = Stopwatch.StartNew();
+            if (mBackgroundColor == null) return;
             OpenGL.MakeCurrent();
             OpenGL.SetDimensions(Width, Height);
             OpenGL.Viewport(0, 0, Width, Height);
-            Camera.Project(OpenGL);
-            OpenGL.ClearColor(BackgroundColor.R, BackgroundColor.G, BackgroundColor.B, BackgroundColor.A);
+            mCamera.Project(OpenGL);
+            OpenGL.ClearColor(mBackgroundColor.R, mBackgroundColor.G, mBackgroundColor.B, mBackgroundColor.A);
             OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
             // render grid
             mGrid.ShowMinor = mShift.Z > 10;
-            mGrid.TicksColor = TicksColor;
-            mGrid.MinorsColor = MinorsColor;
-            mGrid.OriginsColor = OriginsColor;
+            mGrid.TicksColor = mTicksColor;
+            mGrid.MinorsColor = mMinorsColor;
+            mGrid.OriginsColor = mOriginsColor;
             mGrid.Render(OpenGL, RenderMode.Design);
             // enable anti alias
             OpenGL.Enable(OpenGL.GL_BLEND);
@@ -370,8 +379,8 @@ namespace LaserGRBL.UserControls
                 mShift.X = (float)Core.LoadedFile.Range.DrawingRange.Center.X;
                 mShift.Y = (float)Core.LoadedFile.Range.DrawingRange.Center.Y;
                 double ratio = mRatio;
-                double currentWidth = Camera.Right - Camera.Left - (mPadding.Left / ratio) - (mPadding.Right / ratio);
-                double currentHeight = Camera.Top - Camera.Bottom - (mPadding.Bottom / ratio) - (mPadding.Top / ratio);
+                double currentWidth = mCamera.Right - mCamera.Left - (mPadding.Left / ratio) - (mPadding.Right / ratio);
+                double currentHeight = mCamera.Top - mCamera.Bottom - (mPadding.Bottom / ratio) - (mPadding.Top / ratio);
                 double xFactor = (double)Core.LoadedFile.Range.DrawingRange.Width / currentWidth;
                 double yFactor = (double)Core.LoadedFile.Range.DrawingRange.Height / currentHeight;
                 mShift.Z = (float)(mShift.Z / Math.Max(xFactor, yFactor));
@@ -388,6 +397,12 @@ namespace LaserGRBL.UserControls
 
         public void OnColorChange()
         {
+            mBackgroundColor = ColorScheme.PreviewBackColor;
+            mTextColor = ColorScheme.PreviewText;
+            mOriginsColor = ColorScheme.PreviewRuler;
+            mPointerColor = ColorScheme.PreviewCross;
+            mTicksColor = ColorScheme.PreviewGrid;
+            mMinorsColor = ColorScheme.PreviewGridMinor;
         }
 
     }
