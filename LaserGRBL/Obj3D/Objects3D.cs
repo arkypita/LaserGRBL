@@ -328,7 +328,6 @@ namespace LaserGRBL.Obj3D
                     list.Invalidated();
                 }
             }
-            Debug.WriteLine($"{DateTime.Now} Invalidated {invalidatedLists} lists");
         }
 
         public void ResetColor()

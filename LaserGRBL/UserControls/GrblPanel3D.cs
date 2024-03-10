@@ -3,12 +3,10 @@ using SharpGL;
 using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Cameras;
 using SharpGL.SceneGraph.Core;
-using SharpGL.Serialization;
 using SharpGL.Version;
 using System;
-using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
-using System.Management;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -63,17 +61,17 @@ namespace LaserGRBL.UserControls
         // loaded grbl object
         private Grbl3D mGrbl3DLoaded = null;
         // viewport padding
-        private Padding mPadding = new Padding(50, 20, 0, 30);
-        // DCA last invalidate
-        private DateTimeOffset mLastInvalidate = DateTimeOffset.MinValue;
+        private Padding mPadding = new Padding(50, 0, 0, 30);
         // grbl core
         private GrblCore Core;
         public float PointerSize { get; set; } = 3;
-        // DCA drawing thread
+        // drawing thread
         private Tools.ThreadObject mThreadDraw;
+        // generated 3d bitmap
         private Bitmap mBmp = null;
+        // critical section
         private object mBitmapLock = new object();
-
+        // open gl object
         private OpenGL OpenGL;
 
         public GrblPanel3D()
@@ -92,7 +90,7 @@ namespace LaserGRBL.UserControls
             Camera.Near = 0;
             Camera.Far = 100000000;
             mGrid = new Grid3D();
-            mThreadDraw = new Tools.ThreadObject(DrawScene, 20, true, "Drawing Thread", InitializeOpenGL, ThreadPriority.BelowNormal);
+            mThreadDraw = new Tools.ThreadObject(DrawScene, 40, true, "Drawing Thread", InitializeOpenGL, ThreadPriority.BelowNormal);
             mThreadDraw.Start();
         }
 
@@ -219,16 +217,6 @@ namespace LaserGRBL.UserControls
             OpenGL.Flush();
         }
 
-        private void InvalidatePanel()
-        {
-            DateTimeOffset now = DateTimeOffset.UtcNow;
-            if (now.Subtract(mLastInvalidate).TotalMilliseconds > (Core.InProgram ? 100 : 20))
-            {
-                Invalidate();
-                mLastInvalidate = now;
-            }
-        }
-
         private void DrawMouseCoord()
         {
             // draw current mouse position
@@ -252,6 +240,7 @@ namespace LaserGRBL.UserControls
 
         private void DrawScene()
         {
+            Stopwatch sw = Stopwatch.StartNew();
             OpenGL.MakeCurrent();
             OpenGL.SetDimensions(Width, Height);
             OpenGL.Viewport(0, 0, Width, Height);
@@ -259,12 +248,16 @@ namespace LaserGRBL.UserControls
             OpenGL.ClearColor(BackgroundColor.R, BackgroundColor.G, BackgroundColor.B, BackgroundColor.A);
             OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
             // render grid
-            // define if minors are visible
             mGrid.ShowMinor = mShift.Z > 10;
             mGrid.TicksColor = TicksColor;
             mGrid.MinorsColor = MinorsColor;
             mGrid.OriginsColor = OriginsColor;
             mGrid.Render(OpenGL, RenderMode.Design);
+            // enable anti alias
+            OpenGL.Enable(OpenGL.GL_BLEND);
+            OpenGL.BlendFunc(OpenGL.GL_SRC_ALPHA, OpenGL.GL_ONE_MINUS_SRC_ALPHA);
+            OpenGL.Enable(OpenGL.GL_LINE_SMOOTH);
+            OpenGL.Hint(OpenGL.GL_LINE_SMOOTH_HINT, OpenGL.GL_NICEST);
             // manage grbl object
             if (mGrbl3DLoaded != null)
             {
@@ -276,6 +269,9 @@ namespace LaserGRBL.UserControls
                 mGrbl3D.Invalidate();
                 mGrbl3D.Render(OpenGL, RenderMode.Design);
             }
+            // disable anti alias
+            OpenGL.Disable(OpenGL.GL_BLEND);
+            OpenGL.Disable(OpenGL.GL_LINE_SMOOTH);
             // main hud
             SetViewport();
             DrawPointer();
@@ -303,8 +299,8 @@ namespace LaserGRBL.UserControls
             }
             // call control invalidate
             Invalidate();
-
         }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             // exit if not defined bitmap
@@ -365,7 +361,6 @@ namespace LaserGRBL.UserControls
             DisposeGrbl3D();
             mGrbl3DLoaded = new Grbl3D(Core.LoadedFile, "Grbl file", false);
             AutoSizeDrawing();
-            InvalidatePanel();
         }
 
         public void AutoSizeDrawing()
