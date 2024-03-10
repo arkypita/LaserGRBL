@@ -362,10 +362,9 @@ namespace LaserGRBL.UserControls
             if (mShift.Z < MIN_Z) mShift.Z = MIN_Z;
         }
 
-        public void SetComProgram(GrblCore core)
+        public void SetCore(GrblCore core)
         {
             Core = core;
-            Core.OnFileLoading += OnFileLoading;
             Core.OnFileLoaded += OnFileLoaded;
         }
 
@@ -390,14 +389,11 @@ namespace LaserGRBL.UserControls
                 double ratio = mRatio;
                 double currentWidth = mCamera.Right - mCamera.Left - (mPadding.Left / ratio) - (mPadding.Right / ratio);
                 double currentHeight = mCamera.Top - mCamera.Bottom - (mPadding.Bottom / ratio) - (mPadding.Top / ratio);
-                double xFactor = (double)Core.LoadedFile.Range.DrawingRange.Width / currentWidth;
-                double yFactor = (double)Core.LoadedFile.Range.DrawingRange.Height / currentHeight;
+                const double marginPerc = 1.05;
+                double xFactor = (double)Core.LoadedFile.Range.DrawingRange.Width * marginPerc / currentWidth;
+                double yFactor = (double)Core.LoadedFile.Range.DrawingRange.Height * marginPerc / currentHeight;
                 mShift.Z = (float)(mShift.Z / Math.Max(xFactor, yFactor));
             }
-        }
-
-        private void OnFileLoading(long elapsed, string filename)
-        {
         }
 
         public void TimerUpdate()

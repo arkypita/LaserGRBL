@@ -323,9 +323,9 @@ namespace LaserGRBL
 		private string mDetectedIP = null;
 		private bool mDoingSend = false;
 
+		public bool LegacyPreview { private set; get; }
 
-
-		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
+        public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
 		{
 			if (Type != Firmware.Grbl) Logger.LogMessage("Program", "Load {0} core", Type);
 
@@ -346,9 +346,9 @@ namespace LaserGRBL
 
 			mThreadingMode = Settings.GetObject("Threading Mode", ThreadingMode.Fast);
 
+            LegacyPreview = Settings.GetObject("LegacyPreview", false);
 
-
-			QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(mThreadingMode.StatusQuery), false);
+            QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(mThreadingMode.StatusQuery), false);
 			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX, System.Threading.ThreadPriority.Highest);
 			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null, System.Threading.ThreadPriority.Highest);
 
@@ -575,7 +575,7 @@ namespace LaserGRBL
 			mTP.Reset(true);
 
 			if (OnFileLoaded != null)
-				OnFileLoading(elapsed, filename);
+				OnFileLoading?.Invoke(elapsed, filename);
 		}
 
 		void RiseOnFileLoaded(long elapsed, string filename)
@@ -583,7 +583,7 @@ namespace LaserGRBL
 			mTP.Reset(true);
 
 			if (OnFileLoaded != null)
-				OnFileLoaded(elapsed, filename);
+				OnFileLoaded?.Invoke(elapsed, filename);
 		}
 
 		public GrblFile LoadedFile

@@ -125,7 +125,7 @@ namespace LaserGRBL.UserControls
 		private Brush GetBrush(Color color)
 		{ return new SolidBrush(color); }
 
-		public void SetComProgram(GrblCore core)
+		public void SetCore(GrblCore core)
 		{
 			Core = core;
 			Core.OnFileLoading += OnFileLoading;

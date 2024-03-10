@@ -29,6 +29,7 @@ namespace LaserGRBL
 
 				Color.LightYellow,			//preview background
 				Color.Black,				//preview text
+				Color.DarkGray,				//preview grid origins
 				Color.FromArgb(242,242,200),//preview grid?
 				Color.FromArgb(248,248,220),//preview grid minor?
 				Color.LightGray,			//preview reference line
@@ -60,6 +61,7 @@ namespace LaserGRBL
 
 				Color.LightYellow,			//preview background
 				Color.Black,				//preview text
+				Color.DarkGray,				//preview grid origins
 				Color.FromArgb(242,242,200),//preview grid?
 				Color.FromArgb(248,248,220),//preview grid minor?
 				Color.LightGray,			//preview reference line
@@ -91,6 +93,7 @@ namespace LaserGRBL
 
 				Color.FromArgb(220,220,220),//preview background
 				Color.Black,				//preview text
+				Color.DarkGray,				//preview grid origins
 				Color.FromArgb(210,210,210),//preview grid?
 				Color.FromArgb(220,220,220),//preview grid minor?
 				Color.DimGray,				//preview reference line
@@ -122,6 +125,7 @@ namespace LaserGRBL
 
 				Color.FromArgb(220,220,220),//preview background
 				Color.Black,				//preview text
+				Color.DarkGray,				//preview grid origins
 				Color.FromArgb(210,210,210),//preview grid?
 				Color.FromArgb(220,220,220),//preview grid minor?
 				Color.DimGray,				//preview reference line
@@ -152,6 +156,7 @@ namespace LaserGRBL
 				Color.Aqua,			        //form forecolor
 
 				Color.FromArgb(25,25,25),   //preview background
+				Color.Aqua,		    		//preview text
 				Color.Aqua,		    		//preview text
 				Color.FromArgb(34,34,34),   //preview grid?
 				Color.FromArgb(28,28,28),   //preview grid minor?
@@ -229,50 +234,50 @@ namespace LaserGRBL
 		public static Color PreviewText
 		{ get { return GetColor(3); } }
 		public static Color PreviewRuler
-		{ get { return PreviewText; } }
-		public static Color PreviewGrid
 		{ get { return GetColor(4); } }
+		public static Color PreviewGrid
+		{ get { return GetColor(5); } }
         public static Color PreviewGridMinor
-        { get { return GetColor(5); } }
+        { get { return GetColor(6); } }
         public static Color PreviewJobRange
-		{ get { return GetColor(6); } }
-		public static Color PreviewFirstMovement
 		{ get { return GetColor(7); } }
-		public static Color PreviewOtherMovement
+		public static Color PreviewFirstMovement
 		{ get { return GetColor(8); } }
-		public static Color PreviewLaserPower
+		public static Color PreviewOtherMovement
 		{ get { return GetColor(9); } }
-		public static Color PreviewCross
+		public static Color PreviewLaserPower
 		{ get { return GetColor(10); } }
+		public static Color PreviewCross
+		{ get { return GetColor(11); } }
 
 		public static Color LogBackColor
-		{ get { return GetColor(11); } }
-		public static Color LogLeftCOMMAND
 		{ get { return GetColor(12); } }
-		public static Color LogLeftSTARTUP
+		public static Color LogLeftCOMMAND
 		{ get { return GetColor(13); } }
-		public static Color LogLeftALARM
+		public static Color LogLeftSTARTUP
 		{ get { return GetColor(14); } }
-		public static Color LogLeftCONFIG
+		public static Color LogLeftALARM
 		{ get { return GetColor(15); } }
-		public static Color LogLeftFEEDBACK
+		public static Color LogLeftCONFIG
 		{ get { return GetColor(16); } }
-		public static Color LogLeftPOSITION
+		public static Color LogLeftFEEDBACK
 		{ get { return GetColor(17); } }
-		public static Color LogLeftOTHERS
+		public static Color LogLeftPOSITION
 		{ get { return GetColor(18); } }
-		public static Color LogRightGOOD
+		public static Color LogLeftOTHERS
 		{ get { return GetColor(19); } }
-		public static Color LogRightBAD
+		public static Color LogRightGOOD
 		{ get { return GetColor(20); } }
-		public static Color LogRightOTHERS
+		public static Color LogRightBAD
 		{ get { return GetColor(21); } }
-        public static Color TextBoxColorOverride
-        { get { return GetColor(21); } }
-		public static Color LinkColor
+		public static Color LogRightOTHERS
 		{ get { return GetColor(22); } }
-		public static Color VisitedLinkColor
+        public static Color TextBoxColorOverride
+        { get { return GetColor(22); } }
+		public static Color LinkColor
 		{ get { return GetColor(23); } }
+		public static Color VisitedLinkColor
+		{ get { return GetColor(24); } }
 
 
 		private static Color GetColor(int index)

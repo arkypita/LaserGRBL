@@ -232,7 +232,11 @@ namespace LaserGRBL
 
             if (Core.Type != Settings.GetObject("Firmware Type", Firmware.Grbl) && MessageBox.Show(Strings.FirmwareRequireRestartNow, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
                 Application.Restart();
-		}
+
+
+            if (Core.LegacyPreview != Settings.GetObject("LegacyPreview", false) && MessageBox.Show(Strings.PreviewChangesRequiresRestart, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
+                Application.Restart();
+        }
 
 		private TimeSpan MaxTs(TimeSpan a, TimeSpan b)
 		{ return TimeSpan.FromTicks(Math.Max(a.Ticks, b.Ticks)); }

@@ -18,45 +18,34 @@ namespace LaserGRBL
 	/// </summary>
 	public partial class PreviewForm : System.Windows.Forms.UserControl
 	{
-		GrblCore Core;
-
-		private IGrblPanel mPanel = null;
+		private GrblCore mCore;
+		public IGrblPanel GrblPanel { private set; get; } = null;
 
 		public PreviewForm()
 		{
 			InitializeComponent();
-            SettingsForm.SettingsChanged += SettingsForm_SettingsChanged;
             CreatePanel(Settings.GetObject("LegacyPreview", false));
             CustomButtonArea.OrderChanged += CustomButtonArea_OrderChanged;
 		}
 
-        private void SettingsForm_SettingsChanged(object sender, EventArgs e)
-        {
-            bool isLegacy = Settings.GetObject("LegacyPreview", false);
-			if (mPanel is GrblPanel && !isLegacy || mPanel is GrblPanel3D && isLegacy)
-			{
-				CreatePanel(isLegacy);
-			}
-        }
-
         private void CreatePanel(bool isLegacy)
         {
-			if (mPanel != null)
+			if (GrblPanel != null)
             {
-                tableLayoutPanel1.Controls.Remove(mPanel as Control);
-				(mPanel as Control).Dispose();
+                tableLayoutPanel1.Controls.Remove(GrblPanel as Control);
+				(GrblPanel as Control).Dispose();
             }
             if (isLegacy)
             {
-                mPanel = new GrblPanel();
+                GrblPanel = new GrblPanel();
             }
             else
             {
-                mPanel = new GrblPanel3D();
+                GrblPanel = new GrblPanel3D();
             }
-			if (Core != null) mPanel.SetComProgram(Core);
-            (mPanel as Control).Dock = DockStyle.Fill;
-            tableLayoutPanel1.Controls.Add(mPanel as Control);
+			if (mCore != null) GrblPanel.SetCore(mCore);
+            (GrblPanel as Control).Dock = DockStyle.Fill;
+            tableLayoutPanel1.Controls.Add(GrblPanel as Control);
         }
 
         private void CustomButtonArea_OrderChanged(int oldindex, int newindex)
@@ -67,10 +56,10 @@ namespace LaserGRBL
 
 		public void SetCore(GrblCore core)
 		{
-			Core = core;
-            mPanel.SetComProgram(core);
+			mCore = core;
+            GrblPanel.SetCore(core);
 
-            BtnUnlock.Visible = Core.Type == Firmware.Grbl;
+            BtnUnlock.Visible = mCore.Type == Firmware.Grbl;
 
             RefreshCustomButtons();
 			TimerUpdate();
@@ -78,15 +67,15 @@ namespace LaserGRBL
 
 		public void TimerUpdate()
 		{
-            mPanel.TimerUpdate();
+            GrblPanel.TimerUpdate();
 			SuspendLayout();
-			BtnReset.Enabled = Core.CanResetGrbl;
+			BtnReset.Enabled = mCore.CanResetGrbl;
 			BtnHoming.Visible = GrblCore.Configuration.HomingEnabled;
-			BtnHoming.Enabled = Core.CanDoHoming;
-			BtnUnlock.Enabled = Core.CanUnlock;
-			BtnStop.Enabled = Core.CanFeedHold;
-			BtnResume.Enabled = Core.CanResumeHold;
-			BtnZeroing.Enabled = Core.CanDoZeroing;
+			BtnHoming.Enabled = mCore.CanDoHoming;
+			BtnUnlock.Enabled = mCore.CanUnlock;
+			BtnStop.Enabled = mCore.CanFeedHold;
+			BtnResume.Enabled = mCore.CanResumeHold;
+			BtnZeroing.Enabled = mCore.CanDoZeroing;
 
 			foreach (CustomButtonIB ib in CustomButtonArea.Controls)
 				ib.RefreshEnabled();
@@ -96,24 +85,24 @@ namespace LaserGRBL
 
 		void BtnGoHomeClick(object sender, EventArgs e)
 		{
-			Core.GrblHoming();
+			mCore.GrblHoming();
 		}
 		void BtnResetClick(object sender, EventArgs e)
 		{
-			Core.GrblReset();
+			mCore.GrblReset();
 		}
 		void BtnStopClick(object sender, EventArgs e)
 		{
-			Core.FeedHold(false);
+			mCore.FeedHold(false);
 		}
 		void BtnResumeClick(object sender, EventArgs e)
 		{
-			Core.CycleStartResume(false);
+			mCore.CycleStartResume(false);
 		}
 
 		private void BtnUnlockClick(object sender, EventArgs e)
 		{
-			Core.GrblUnlock();
+			mCore.GrblUnlock();
 		}
 
 		private void addCustomButtonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,7 +116,7 @@ namespace LaserGRBL
 			CustomButtonArea.Controls.Clear();
 			foreach (CustomButton cb in CustomButtons.Buttons)
 			{
-				CustomButtonIB ib = new CustomButtonIB(Core, cb, this);
+				CustomButtonIB ib = new CustomButtonIB(mCore, cb, this);
 				CustomButtonArea.Controls.Add(ib);
 			}
 
@@ -512,12 +501,12 @@ namespace LaserGRBL
 
 		internal void OnColorChange()
 		{
-            mPanel.OnColorChange();
+            GrblPanel.OnColorChange();
 		}
 
 		private void BtnZeroing_Click(object sender, EventArgs e)
 		{
-			Core.SetNewZero();
+			mCore.SetNewZero();
 		}
 
 		private void exportCustomButtonsToolStripMenuItem_Click(object sender, EventArgs e)

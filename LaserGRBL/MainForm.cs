@@ -4,12 +4,10 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.UserControls;
 using LaserGRBL.WiFiConfigurator;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Threading;
 using Tools;
@@ -17,7 +15,7 @@ using static Tools.ModifyProgressBarColor;
 
 namespace LaserGRBL
 {
-	public partial class MainForm : Form
+    public partial class MainForm : Form
 	{
 		private GrblCore Core;
 		private UsageStats.MessageData ToolBarMessage;
@@ -41,7 +39,7 @@ namespace LaserGRBL
 			MnNotifyMinorVersion.Checked = Settings.GetObject("Auto Update Build", false);
 			MnNotifyPreRelease.Checked = Settings.GetObject("Auto Update Pre", false);
 
-			MnAutoUpdate.DropDown.Closing += MnAutoUpdateDropDown_Closing;
+            MnAutoUpdate.DropDown.Closing += MnAutoUpdateDropDown_Closing;
 
 			if (System.Threading.Thread.CurrentThread.Name == null)
 				System.Threading.Thread.CurrentThread.Name = "Main Thread";
@@ -67,7 +65,8 @@ namespace LaserGRBL
 				MultipleInstanceTimer.Enabled = true;
 			}
 
-			MnGrblConfig.Visible = Core.UIShowGrblConfig;
+            previewToolStripMenuItem.Visible = !Core.LegacyPreview;
+            MnGrblConfig.Visible = Core.UIShowGrblConfig;
 			MnUnlock.Visible = Core.UIShowUnlockButtons;
 
 			MnGrbl.Text = Core.Type.ToString();
@@ -88,7 +87,7 @@ namespace LaserGRBL
 			RefreshFormTitle();
 		}
 
-		public MainForm(string[] args) : this()
+        public MainForm(string[] args) : this()
 		{
 			this.args = args;
 		}
@@ -1071,10 +1070,21 @@ namespace LaserGRBL
 		{
 			Generator.ShakeTest.CreateAndShowDialog(this, Core);
 		}
-	}
+
+        private void autoSizeToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (PreviewForm.GrblPanel is GrblPanel3D)
+            {
+                GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
+                panel3D.AutoSizeDrawing();
+
+            }
+        }
+
+    }
 
 
-	public class MMnRenderer : ToolStripProfessionalRenderer
+    public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 

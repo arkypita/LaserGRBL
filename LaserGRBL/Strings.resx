@@ -436,4 +436,7 @@ If you need help click on "?" button.</value>
   <data name="BoxMachineSizeOutOfRangeTitle" xml:space="preserve">
     <value>Warning</value>
   </data>
+  <data name="PreviewChangesRequiresRestart" xml:space="preserve">
+    <value>Restart is required to apply preview changes. Restart now?</value>
+  </data>
 </root>
