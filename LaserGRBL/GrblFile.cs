@@ -32,8 +32,9 @@ namespace LaserGRBL
 		private List<GrblCommand> list = new List<GrblCommand>();
 		private ProgramRange mRange = new ProgramRange();
 		private TimeSpan mEstimatedTotalTime;
+		public List<GrblCommand> Commands => list;
 
-		public GrblFile()
+        public GrblFile()
 		{
 
 		}
@@ -1597,80 +1598,6 @@ namespace LaserGRBL
 			g.DrawString(text, f, b, 0, 0); // scrivi a zero, zero
 			g.Restore(state);               // Restore the graphics state.
 		}
-
-        public void To3D(Object3D object3D, bool justLaserOffMovements, float zPos)
-        {
-            GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
-            for (int i = 0; i < list.Count; i++)
-            {
-                GrblCommand cmd = list[i];
-                try
-                {
-                    cmd.BuildHelper();
-                    spb.AnalyzeCommand(cmd, false);
-
-                    if (spb.TrueMovement())
-                    {
-                        if (spb.G0G1 && cmd.IsLinearMovement)
-                        {
-                            GLColor color = null;
-                            if (spb.LaserBurning && !justLaserOffMovements)
-                            {
-                                color = spb.GetCurrentColor(mRange.SpindleRange);
-                            }
-                            else
-                            {
-                                if (justLaserOffMovements)
-                                {
-                                    color = Color.FromArgb(0, 150, 0);
-                                }
-                            }
-                            if (color != null)
-                            {
-                                object3D.AddVertex((float)spb.X.Previous, (float)spb.Y.Previous, zPos, color, cmd);
-                                object3D.AddVertex((float)spb.X.Number, (float)spb.Y.Number, zPos, color, cmd);
-                            }
-                        }
-                        else if (spb.G2G3 && cmd.IsArcMovement)
-                        {
-                            GrblCommand.G2G3Helper ah = spb.GetArcHelper(cmd);
-                            if (ah.RectW > 0 && ah.RectH > 0)
-                            {
-                                double? lastX = null;
-                                double? lastY = null;
-                                GLColor color = spb.GetCurrentColor(mRange.SpindleRange);
-                                double startAngle = ah.StartAngle;
-                                double endAngle = ah.StartAngle + ah.AngularWidth;
-                                int sign = Math.Sign(ah.AngularWidth);
-                                double angleStep = Math.Abs(ah.AngularWidth / Math.PI / 36);
-                                for (double angle = startAngle; sign * (angle - startAngle) <= sign * ah.AngularWidth; angle += sign * angleStep)
-                                {
-                                    double x = ah.CenterX + ah.RectW / 2 * Math.Cos(angle);
-                                    double y = ah.CenterY + ah.RectH / 2 * Math.Sin(angle);
-                                    if (lastX != null && lastY != null)
-                                    {
-                                        object3D.AddVertex((double)lastX, (double)lastY, zPos, color, cmd);
-                                    }
-                                    else
-                                    {
-                                        object3D.AddVertex(x, y, zPos, color, cmd);
-                                    }
-                                    object3D.AddVertex(x, y, zPos, color, cmd);
-                                    lastX = x;
-                                    lastY = y;
-                                }
-                            }
-                        }
-                        object3D.CheckListSize();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                finally { cmd.DeleteHelper(); }
-            }
-        }
 
         System.Collections.Generic.IEnumerator<GrblCommand> IEnumerable<GrblCommand>.GetEnumerator()
 		{ return list.GetEnumerator(); }

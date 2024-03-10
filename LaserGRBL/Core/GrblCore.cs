@@ -2456,7 +2456,6 @@ namespace LaserGRBL
 			if (pos != mMPos)
 			{
 				mMPos = pos;
-				OnMPositionChanged?.Invoke(this);
 				debugLastMoveOrActivityDelay.Start();
 			}
 		}
@@ -3059,7 +3058,6 @@ namespace LaserGRBL
 		public bool IsOrturBoard { get => GrblVersion != null && GrblVersion.IsOrtur; }
 		public int FailedConnectionCount => mFailedConnection;
 
-        public event Action<GrblCore> OnMPositionChanged;
     }
 
 	public class TimeProjection

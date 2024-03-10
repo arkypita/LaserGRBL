@@ -264,7 +264,78 @@ namespace LaserGRBL.Obj3D
 
         protected override void Draw()
         {
-            File.To3D(this, _justLaserOffMovements, 0.1f);
+            bool justLaserOffMovements = false;
+            float zPos = 0;
+            GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
+            for (int i = 0; i < File.Commands.Count; i++)
+            {
+                GrblCommand cmd = File.Commands[i];
+                try
+                {
+                    cmd.BuildHelper();
+                    spb.AnalyzeCommand(cmd, false);
+
+                    if (spb.TrueMovement())
+                    {
+                        if (spb.G0G1 && cmd.IsLinearMovement)
+                        {
+                            GLColor color = null;
+                            if (spb.LaserBurning && !justLaserOffMovements)
+                            {
+                                color = spb.GetCurrentColor(File.Range.SpindleRange);
+                            }
+                            else
+                            {
+                                if (justLaserOffMovements)
+                                {
+                                    color = Color.FromArgb(0, 150, 0);
+                                }
+                            }
+                            if (color != null)
+                            {
+                                AddVertex((float)spb.X.Previous, (float)spb.Y.Previous, zPos, color, cmd);
+                                AddVertex((float)spb.X.Number, (float)spb.Y.Number, zPos, color, cmd);
+                            }
+                        }
+                        else if (spb.G2G3 && cmd.IsArcMovement)
+                        {
+                            GrblCommand.G2G3Helper ah = spb.GetArcHelper(cmd);
+                            if (ah.RectW > 0 && ah.RectH > 0)
+                            {
+                                double? lastX = null;
+                                double? lastY = null;
+                                GLColor color = spb.GetCurrentColor(File.Range.SpindleRange);
+                                double startAngle = ah.StartAngle;
+                                double endAngle = ah.StartAngle + ah.AngularWidth;
+                                int sign = Math.Sign(ah.AngularWidth);
+                                double angleStep = Math.Abs(ah.AngularWidth / Math.PI / 36);
+                                for (double angle = startAngle; sign * (angle - startAngle) <= sign * ah.AngularWidth; angle += sign * angleStep)
+                                {
+                                    double x = ah.CenterX + ah.RectW / 2 * Math.Cos(angle);
+                                    double y = ah.CenterY + ah.RectH / 2 * Math.Sin(angle);
+                                    if (lastX != null && lastY != null)
+                                    {
+                                        AddVertex((double)lastX, (double)lastY, zPos, color, cmd);
+                                    }
+                                    else
+                                    {
+                                        AddVertex(x, y, zPos, color, cmd);
+                                    }
+                                    AddVertex(x, y, zPos, color, cmd);
+                                    lastX = x;
+                                    lastY = y;
+                                }
+                            }
+                        }
+                        CheckListSize();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally { cmd.DeleteHelper(); }
+            }
         }
 
         public void Invalidate()
@@ -310,6 +381,10 @@ namespace LaserGRBL.Obj3D
 
         public void ResetColor()
         {
+            foreach (GrblCommand command in File.Commands)
+            {
+                command.SetResult("CLEAR", false);
+            }
             foreach (Object3DDisplayList list in mDisplayLists)
             {
                 foreach (Object3DVertex vertex in list.Vertices)

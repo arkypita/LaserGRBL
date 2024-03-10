@@ -78,6 +78,7 @@ namespace LaserGRBL.UserControls
         public GrblPanel3D()
         {
             InitializeComponent();
+            MouseDoubleClick += GrblPanel3D_DoubleClick;
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -100,6 +101,14 @@ namespace LaserGRBL.UserControls
                 }
             });
 
+        }
+
+        private void GrblPanel3D_DoubleClick(object sender, MouseEventArgs e)
+        {
+            if (Settings.GetObject("Click N Jog", true) && mMouseWorldPosition != null)
+            {
+                Core.BeginJog((PointF)mMouseWorldPosition, e.Button == MouseButtons.Right);
+            }
         }
 
         protected void InitializeOpenGL()
@@ -140,7 +149,7 @@ namespace LaserGRBL.UserControls
             OpenGL.Color(color);
             OpenGL.LineWidth(PointerSize);
             OpenGL.Begin(OpenGL.GL_LINES);
-            Vertex pointerPos = new Vertex(Core.MachinePosition.X, Core.MachinePosition.Y, 0.2f);
+            Vertex pointerPos = new Vertex(Core.WorkPosition.X, Core.WorkPosition.Y, 0.2f);
             OpenGL.Vertex(pointerPos.X - 2, pointerPos.Y, pointerPos.Z);
             OpenGL.Vertex(pointerPos.X + 2, pointerPos.Y, pointerPos.Z);
             OpenGL.End();
@@ -337,7 +346,7 @@ namespace LaserGRBL.UserControls
 
         private void GrblSceneControl_MouseMove(object sender, MouseEventArgs e)
         {
-            if (mLastMousePos != null)
+            if (mLastMousePos != null && e.Button == MouseButtons.Left)
             {
                 mShift.X -= (e.Location.X - (int)mLastMousePos?.X) * 2f / mShift.Z;
                 mShift.Y -= (e.Location.Y - (int)mLastMousePos?.Y) * 2f / -mShift.Z;
