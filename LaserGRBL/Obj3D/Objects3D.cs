@@ -254,17 +254,20 @@ namespace LaserGRBL.Obj3D
         [XmlIgnore]
         public readonly GrblFile File;
         [XmlIgnore]
-        private readonly bool _justLaserOffMovements;
+        private readonly bool mJustLaserOffMovements;
+        [XmlIgnore]
+        private readonly Color mColor;
 
-        public Grbl3D(GrblFile file, string name, bool justLaserOffMovements) : base(name, 1f)
+
+        public Grbl3D(GrblFile file, string name, bool justLaserOffMovements, Color color) : base(name, 1f)
         {
             File = file;
-            _justLaserOffMovements = justLaserOffMovements;
+            mJustLaserOffMovements = justLaserOffMovements;
+            mColor = color;
         }
 
         protected override void Draw()
         {
-            bool justLaserOffMovements = false;
             float zPos = 0;
             GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
             for (int i = 0; i < File.Commands.Count; i++)
@@ -280,15 +283,15 @@ namespace LaserGRBL.Obj3D
                         if (spb.G0G1 && cmd.IsLinearMovement)
                         {
                             GLColor color = null;
-                            if (spb.LaserBurning && !justLaserOffMovements)
+                            if (spb.LaserBurning && !mJustLaserOffMovements)
                             {
-                                color = spb.GetCurrentColor(File.Range.SpindleRange);
+                                color = spb.GetCurrentColor(File.Range.SpindleRange, mColor);
                             }
                             else
                             {
-                                if (justLaserOffMovements)
+                                if (mJustLaserOffMovements)
                                 {
-                                    color = Color.FromArgb(0, 150, 0);
+                                    color = mColor;
                                 }
                             }
                             if (color != null)
@@ -304,7 +307,7 @@ namespace LaserGRBL.Obj3D
                             {
                                 double? lastX = null;
                                 double? lastY = null;
-                                GLColor color = spb.GetCurrentColor(File.Range.SpindleRange);
+                                GLColor color = spb.GetCurrentColor(File.Range.SpindleRange, mColor);
                                 double startAngle = ah.StartAngle;
                                 double endAngle = ah.StartAngle + ah.AngularWidth;
                                 int sign = Math.Sign(ah.AngularWidth);
@@ -340,6 +343,7 @@ namespace LaserGRBL.Obj3D
 
         public void Invalidate()
         {
+            if (mJustLaserOffMovements) return;
             int invalidatedLists = 0;
             foreach (Object3DDisplayList list in mDisplayLists)
             {

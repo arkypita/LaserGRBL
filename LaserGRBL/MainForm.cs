@@ -38,6 +38,7 @@ namespace LaserGRBL
 			MnNotifyNewVersion.Checked = Settings.GetObject("Auto Update", true);
 			MnNotifyMinorVersion.Checked = Settings.GetObject("Auto Update Build", false);
 			MnNotifyPreRelease.Checked = Settings.GetObject("Auto Update Pre", false);
+			showLaserOffMovementsToolStripMenuItem.Checked = Settings.GetObject("ShowLaserOffMovements", true);
 
             MnAutoUpdate.DropDown.Closing += MnAutoUpdateDropDown_Closing;
 
@@ -1077,10 +1078,18 @@ namespace LaserGRBL
             {
                 GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
                 panel3D.AutoSizeDrawing();
-
             }
         }
 
+        private void showLaserOffMovementsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (PreviewForm.GrblPanel is GrblPanel3D)
+            {
+                GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
+                panel3D.ShowLaserOffMovements = showLaserOffMovementsToolStripMenuItem.Checked;
+                Settings.SetObject("ShowLaserOffMovements", panel3D.ShowLaserOffMovements);
+            }
+        }
     }
 
 

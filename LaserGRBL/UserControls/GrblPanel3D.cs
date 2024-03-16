@@ -57,15 +57,18 @@ namespace LaserGRBL.UserControls
         private Font mTextFont { get; set; } = new Font("Arial", 12);
         // background 
         private Grid3D mGrid = null;
-        // grbl object 
+        // grbl object
         private Grbl3D mGrbl3D = null;
-        // loaded grbl object
-        private Grbl3D mGrbl3DLoaded = null;
+        private Grbl3D mGrbl3DOff = null;
+        // reload request
+        private bool mReload = false;
         // viewport padding
         private Padding mPadding = new Padding(50, 0, 0, 30);
         // grbl core
         private GrblCore Core;
         public float PointerSize { get; set; } = 3;
+        public bool ShowLaserOffMovements { get; set; } = true;
+
         // drawing thread
         private Tools.ThreadObject mThreadDraw;
         // generated 3d bitmap
@@ -78,6 +81,7 @@ namespace LaserGRBL.UserControls
         public GrblPanel3D()
         {
             InitializeComponent();
+            ShowLaserOffMovements = Settings.GetObject("ShowLaserOffMovements", true);
             MouseDoubleClick += GrblPanel3D_DoubleClick;
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.UserPaint, true);
@@ -133,11 +137,17 @@ namespace LaserGRBL.UserControls
         private void SetViewport()
         {
             double ratio = mRatio;
+            double xPad = (mPadding.Left - mPadding.Right) / 2 / ratio;
             // set viewport
-            mCamera.Left = Width / -mShift.Z + mShift.X - ((mPadding.Left - mPadding.Right) / 2 / ratio);
-            mCamera.Right = Width / mShift.Z + mShift.X - ((mPadding.Left - mPadding.Right) / 2 / ratio);
-            mCamera.Top = Height / mShift.Z + mShift.Y - ((mPadding.Bottom - mPadding.Top) / 2 / ratio);
-            mCamera.Bottom = Height / -mShift.Z + mShift.Y - ((mPadding.Bottom - mPadding.Top) / 2 / ratio);
+            mCamera.Left = Width / -mShift.Z + mShift.X - xPad;
+            mCamera.Right = Width / mShift.Z + mShift.X - xPad;
+            ratio = mRatio;
+            xPad = (mPadding.Left - mPadding.Right) / 2 / ratio;
+            mCamera.Left = Width / -mShift.Z + mShift.X - xPad;
+            mCamera.Right = Width / mShift.Z + mShift.X - xPad;
+            double yPad = (mPadding.Bottom - mPadding.Top) / 2 / ratio;
+            mCamera.Top = Height / mShift.Z + mShift.Y - yPad;
+            mCamera.Bottom = Height / -mShift.Z + mShift.Y - yPad;
         }
 
         private void DrawPointer()
@@ -277,12 +287,20 @@ namespace LaserGRBL.UserControls
             OpenGL.Enable(OpenGL.GL_LINE_SMOOTH);
             OpenGL.Hint(OpenGL.GL_LINE_SMOOTH_HINT, OpenGL.GL_NICEST);
             // manage grbl object
-            if (mGrbl3DLoaded != null)
+            if (mReload)
             {
-                if (mGrbl3DLoaded != mGrbl3D)
+                mReload = false;
+                mGrbl3D?.Dispose();
+                mGrbl3DOff?.Dispose();
+                mGrbl3D = new Grbl3D(Core.LoadedFile, "LaserOn", false, ColorScheme.PreviewLaserPower);
+                mGrbl3DOff = new Grbl3D(Core.LoadedFile, "LaserOff", true, ColorScheme.PreviewOtherMovement);
+            }
+            if (mGrbl3D != null)
+            {
+                if (ShowLaserOffMovements)
                 {
-                    mGrbl3D?.Dispose();
-                    mGrbl3D = mGrbl3DLoaded;
+                    mGrbl3DOff.Invalidate();
+                    mGrbl3DOff.Render(OpenGL, RenderMode.Design);
                 }
                 mGrbl3D.Invalidate();
                 mGrbl3D.Render(OpenGL, RenderMode.Design);
@@ -370,13 +388,13 @@ namespace LaserGRBL.UserControls
 
         private void DisposeGrbl3D()
         {
-            mGrbl3DLoaded = null;
+            mReload = true;
         }
 
         private void OnFileLoaded(long elapsed, string filename)
         {
             DisposeGrbl3D();
-            mGrbl3DLoaded = new Grbl3D(Core.LoadedFile, "Grbl file", false);
+            mReload = true;
             AutoSizeDrawing();
         }
 
@@ -408,6 +426,7 @@ namespace LaserGRBL.UserControls
             mPointerColor = ColorScheme.PreviewCross;
             mTicksColor = ColorScheme.PreviewGrid;
             mMinorsColor = ColorScheme.PreviewGridMinor;
+            mReload = true;
         }
 
     }
