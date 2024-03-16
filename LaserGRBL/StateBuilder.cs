@@ -4,17 +4,13 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
-using LaserGRBL.Obj3D;
-using SharpGL.SceneGraph;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 
 namespace LaserGRBL
 {
-	public class JogCommand : GrblCommand
+    public class JogCommand : GrblCommand
 	{
 		public JogCommand(string line) : base(line.Substring(3))
 		{
@@ -211,16 +207,6 @@ namespace LaserGRBL
 					return (int)((S.Number - range.S.Min) * 255 / (range.S.Max - range.S.Min));
 				else
 					return 255;
-            }
-
-            internal GLColor GetCurrentColor(ProgramRange.SRange range, System.Drawing.Color color)
-            {
-                float intensity = 1;
-                if (!LaserBurning)
-                    intensity = (float)(supportPWM ? 0.5f : 0.3f);
-                else if (supportPWM && (range.S.Max - range.S.Min > 0) && S.IsSettled)
-                    intensity = (float)((S.Number - range.S.Min) / (range.S.Max - range.S.Min));
-                return new GLColor(color.R, color.G, color.B, intensity);
             }
 
             public bool G2

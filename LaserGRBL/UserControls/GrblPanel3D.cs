@@ -62,6 +62,8 @@ namespace LaserGRBL.UserControls
         private Grbl3D mGrbl3DOff = null;
         // reload request
         private bool mReload = false;
+        // invalidate all request
+        private bool mInvalidateAll = false;
         // viewport padding
         private Padding mPadding = new Padding(50, 0, 0, 30);
         // grbl core
@@ -297,6 +299,14 @@ namespace LaserGRBL.UserControls
             }
             if (mGrbl3D != null)
             {
+                if (mInvalidateAll)
+                {
+                    mInvalidateAll = false;
+                    mGrbl3D.Color = ColorScheme.PreviewLaserPower;
+                    mGrbl3D.InvalidateAll();
+                    mGrbl3DOff.Color = ColorScheme.PreviewOtherMovement;
+                    mGrbl3DOff.InvalidateAll();
+                }
                 if (ShowLaserOffMovements)
                 {
                     mGrbl3DOff.Invalidate();
@@ -426,7 +436,7 @@ namespace LaserGRBL.UserControls
             mPointerColor = ColorScheme.PreviewCross;
             mTicksColor = ColorScheme.PreviewGrid;
             mMinorsColor = ColorScheme.PreviewGridMinor;
-            mReload = true;
+            mInvalidateAll = true;
         }
 
     }

@@ -3,6 +3,7 @@ using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Xml.Serialization;
 
@@ -13,7 +14,7 @@ namespace LaserGRBL.Obj3D
         public double X { get; set; }
         public double Y { get; set; }
         public double Z { get; set; }
-        public GLColor OriginalColor { get; set; }
+        public float Alpha { get; set; }
         public GLColor NewColor { get; set; }
         public GrblCommand Command { get; set; }
     }
@@ -123,7 +124,7 @@ namespace LaserGRBL.Obj3D
         {
             mGL.Color(color);
             mGL.Vertex(x, y, z);
-            mCurrentDisplayList.Vertices.Add(new Object3DVertex { X = x, Y = y, Z = z, OriginalColor = color, Command = command });
+            mCurrentDisplayList.Vertices.Add(new Object3DVertex { X = x, Y = y, Z = z, Alpha = color.A, Command = command });
             if (command != null) command.LinkedDisplayList = mCurrentDisplayList;
         }
 
@@ -256,14 +257,14 @@ namespace LaserGRBL.Obj3D
         [XmlIgnore]
         private readonly bool mJustLaserOffMovements;
         [XmlIgnore]
-        private readonly Color mColor;
+        public Color Color;
 
 
         public Grbl3D(GrblFile file, string name, bool justLaserOffMovements, Color color) : base(name, 1f)
         {
             File = file;
             mJustLaserOffMovements = justLaserOffMovements;
-            mColor = color;
+            Color = color;
         }
 
         protected override void Draw()
@@ -282,16 +283,20 @@ namespace LaserGRBL.Obj3D
                     {
                         if (spb.G0G1 && cmd.IsLinearMovement)
                         {
-                            GLColor color = null;
+                            GLColor color = Color;
                             if (spb.LaserBurning && !mJustLaserOffMovements)
                             {
-                                color = spb.GetCurrentColor(File.Range.SpindleRange, mColor);
+                                color.A = spb.GetCurrentAlpha(File.Range.SpindleRange) / 255f;
                             }
                             else
                             {
                                 if (mJustLaserOffMovements)
                                 {
-                                    color = mColor;
+                                    color = Color;
+                                }
+                                else
+                                {
+                                    color.A = 0;
                                 }
                             }
                             if (color != null)
@@ -307,7 +312,8 @@ namespace LaserGRBL.Obj3D
                             {
                                 double? lastX = null;
                                 double? lastY = null;
-                                GLColor color = spb.GetCurrentColor(File.Range.SpindleRange, mColor);
+                                GLColor color = Color;
+                                color.A = spb.GetCurrentAlpha(File.Range.SpindleRange);
                                 double startAngle = ah.StartAngle;
                                 double endAngle = ah.StartAngle + ah.AngularWidth;
                                 int sign = Math.Sign(ah.AngularWidth);
@@ -343,37 +349,44 @@ namespace LaserGRBL.Obj3D
 
         public void Invalidate()
         {
-            if (mJustLaserOffMovements) return;
-            int invalidatedLists = 0;
             foreach (Object3DDisplayList list in mDisplayLists)
             {
                 if (!list.IsValid) {
-                    invalidatedLists++;
                     list.DisplayList.Delete(mGL);
                     list.Begin(mGL, mLineWidth);
                     foreach (Object3DVertex vertex in list.Vertices)
                     {
                         GLColor newColor;
-                        switch (vertex.Command.Status)
+                        if (mJustLaserOffMovements)
                         {
-                            case GrblCommand.CommandStatus.ResponseGood:
-                                newColor = new GLColor(0.1f, 1f, 0.2f, 20);
-                                break;
-                            case GrblCommand.CommandStatus.ResponseBad:
-                            case GrblCommand.CommandStatus.InvalidResponse:
-                                newColor = Color.Red;
-                                break;
-                            case GrblCommand.CommandStatus.Queued:
-                                newColor = Color.Blue;
-                                break;
-                            case GrblCommand.CommandStatus.WaitingResponse:
-                                newColor = Color.Pink;
-                                break;
-                            default:
-                                newColor = vertex.OriginalColor;
-                                break;
+                            newColor = Color;
                         }
-                        vertex.NewColor = vertex.OriginalColor.Blend(newColor);
+                        else
+                        {
+                            switch (vertex.Command.Status)
+                            {
+                                case GrblCommand.CommandStatus.ResponseGood:
+                                    newColor = new GLColor(0.1f, 1f, 0.2f, 1);
+                                    break;
+                                case GrblCommand.CommandStatus.ResponseBad:
+                                case GrblCommand.CommandStatus.InvalidResponse:
+                                    newColor = Color.Red;
+                                    break;
+                                /*
+                                case GrblCommand.CommandStatus.Queued:
+                                    newColor = Color.Blue;
+                                    break;
+                                */
+                                case GrblCommand.CommandStatus.WaitingResponse:
+                                    newColor = Color.Pink;
+                                    break;
+                                default:
+                                    newColor = Color;
+                                    break;
+                            }
+                        }
+                        vertex.NewColor = newColor;
+                        vertex.NewColor.A = vertex.Alpha;
                         mGL.Color(vertex.NewColor);
                         mGL.Vertex(vertex.X, vertex.Y, vertex.Z);
                     }
@@ -383,22 +396,14 @@ namespace LaserGRBL.Obj3D
             }
         }
 
-        public void ResetColor()
+        internal void InvalidateAll()
         {
-            foreach (GrblCommand command in File.Commands)
-            {
-                command.SetResult("CLEAR", false);
-            }
             foreach (Object3DDisplayList list in mDisplayLists)
             {
-                foreach (Object3DVertex vertex in list.Vertices)
-                {
-                    vertex.NewColor = null;
-                }
                 list.Invalidate();
             }
+            Invalidate();
         }
-
     }
 
 }
