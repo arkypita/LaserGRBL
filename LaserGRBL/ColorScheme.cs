@@ -36,7 +36,7 @@ namespace LaserGRBL
 				Color.Blue,					//preview first line
 				Color.FromArgb( 60, 82, 85),//preview other line
 				Color.FromArgb(220,220,220),//preview laser
-				Color.FromArgb(230,230,230),//preview cross position
+				Color.FromArgb(230,230, 20),//preview cross position
 				Color.FromArgb( 55,199,116),//preview command ok
 				Color.DarkRed,				//preview command ko
 				Color.LightPink,			//preview command wait

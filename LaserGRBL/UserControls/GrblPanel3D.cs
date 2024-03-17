@@ -294,6 +294,7 @@ namespace LaserGRBL.UserControls
                 mGrbl3DOff?.Dispose();
                 mGrbl3D = new Grbl3D(Core, "LaserOn", false, ColorScheme.PreviewLaserPower);
                 mGrbl3DOff = new Grbl3D(Core, "LaserOff", true, ColorScheme.PreviewOtherMovement);
+                mGrbl3DOff.LineWidth = 1;
             }
             if (mGrbl3D != null)
             {
