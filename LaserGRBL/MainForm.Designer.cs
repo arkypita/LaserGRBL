@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.ConnectionForm = new LaserGRBL.ConnectLogForm();
+            this.JogForm = new LaserGRBL.JogForm();
+            this.PreviewForm = new LaserGRBL.PreviewForm();
             this.StatusBar = new System.Windows.Forms.StatusStrip();
             this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
             this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
@@ -102,6 +105,8 @@
             this.pxToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pxToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.pxToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pxToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pxToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.linguaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MNEnglish = new System.Windows.Forms.ToolStripMenuItem();
             this.MNItalian = new System.Windows.Forms.ToolStripMenuItem();
@@ -156,11 +161,6 @@
             this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
             this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
-            this.ConnectionForm = new LaserGRBL.ConnectLogForm();
-            this.JogForm = new LaserGRBL.JogForm();
-            this.PreviewForm = new LaserGRBL.PreviewForm();
-            this.pxToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pxToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -184,6 +184,21 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+            // 
+            // ConnectionForm
+            // 
+            resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
+            this.ConnectionForm.Name = "ConnectionForm";
+            // 
+            // JogForm
+            // 
+            resources.ApplyResources(this.JogForm, "JogForm");
+            this.JogForm.Name = "JogForm";
+            // 
+            // PreviewForm
+            // 
+            resources.ApplyResources(this.PreviewForm, "PreviewForm");
+            this.PreviewForm.Name = "PreviewForm";
             // 
             // StatusBar
             // 
@@ -700,6 +715,20 @@
             this.pxToolStripMenuItem3.Tag = "3";
             this.pxToolStripMenuItem3.Click += new System.EventHandler(this.pxToolStripMenuItem_Click);
             // 
+            // pxToolStripMenuItem4
+            // 
+            this.pxToolStripMenuItem4.Name = "pxToolStripMenuItem4";
+            resources.ApplyResources(this.pxToolStripMenuItem4, "pxToolStripMenuItem4");
+            this.pxToolStripMenuItem4.Tag = "4";
+            this.pxToolStripMenuItem4.Click += new System.EventHandler(this.pxToolStripMenuItem_Click);
+            // 
+            // pxToolStripMenuItem5
+            // 
+            this.pxToolStripMenuItem5.Name = "pxToolStripMenuItem5";
+            resources.ApplyResources(this.pxToolStripMenuItem5, "pxToolStripMenuItem5");
+            this.pxToolStripMenuItem5.Tag = "5";
+            this.pxToolStripMenuItem5.Click += new System.EventHandler(this.pxToolStripMenuItem_Click);
+            // 
             // linguaToolStripMenuItem
             // 
             this.linguaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1067,35 +1096,6 @@
             // 
             this.MultipleInstanceTimer.Interval = 1000;
             this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
-            // 
-            // ConnectionForm
-            // 
-            resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
-            this.ConnectionForm.Name = "ConnectionForm";
-            // 
-            // JogForm
-            // 
-            resources.ApplyResources(this.JogForm, "JogForm");
-            this.JogForm.Name = "JogForm";
-            // 
-            // PreviewForm
-            // 
-            resources.ApplyResources(this.PreviewForm, "PreviewForm");
-            this.PreviewForm.Name = "PreviewForm";
-            // 
-            // pxToolStripMenuItem4
-            // 
-            this.pxToolStripMenuItem4.Name = "pxToolStripMenuItem4";
-            resources.ApplyResources(this.pxToolStripMenuItem4, "pxToolStripMenuItem4");
-            this.pxToolStripMenuItem4.Tag = "4";
-            this.pxToolStripMenuItem4.Click += new System.EventHandler(this.pxToolStripMenuItem_Click);
-            // 
-            // pxToolStripMenuItem5
-            // 
-            this.pxToolStripMenuItem5.Name = "pxToolStripMenuItem5";
-            resources.ApplyResources(this.pxToolStripMenuItem5, "pxToolStripMenuItem5");
-            this.pxToolStripMenuItem5.Tag = "5";
-            this.pxToolStripMenuItem5.Click += new System.EventHandler(this.pxToolStripMenuItem_Click);
             // 
             // MainForm
             // 

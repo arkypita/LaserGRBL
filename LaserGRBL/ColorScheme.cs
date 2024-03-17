@@ -237,7 +237,7 @@ namespace LaserGRBL
 		}
 
 		public static bool DarkScheme
-		{ get { return CurrentScheme == Scheme.Dark || CurrentScheme == Scheme.Hacker || CurrentScheme == Scheme.Nighty; } }
+		{ get { return CurrentScheme == Scheme.Dark || CurrentScheme == Scheme.Hacker || CurrentScheme == Scheme.Nighty || CurrentScheme == Scheme.CADStyle; } }
 
 		public static Scheme CurrentScheme { get; set; }
 
