@@ -56,7 +56,7 @@ namespace LaserGRBL.Obj3D
         [XmlIgnore]
         protected List<Object3DDisplayList> mDisplayLists = new List<Object3DDisplayList>();
         [XmlIgnore]
-        protected float mLineWidth;
+        public float LineWidth { get; set; }
         [XmlIgnore]
         protected OpenGL mGL;
         [XmlIgnore]
@@ -67,7 +67,7 @@ namespace LaserGRBL.Obj3D
         public Object3D(string name, float lineWidth)
         {
             Name = name;
-            mLineWidth = lineWidth;
+            LineWidth = lineWidth;
         }
 
         protected virtual void ClearDisplayList()
@@ -103,7 +103,7 @@ namespace LaserGRBL.Obj3D
         private void CreateDisplayList()
         {
             mCurrentDisplayList = new Object3DDisplayList();
-            mCurrentDisplayList.Begin(mGL, mLineWidth);
+            mCurrentDisplayList.Begin(mGL, LineWidth);
             mDisplayLists.Add(mCurrentDisplayList);
             Draw();
             mCurrentDisplayList.End(mGL);
@@ -116,7 +116,7 @@ namespace LaserGRBL.Obj3D
         {
             mCurrentDisplayList.End(mGL);
             mCurrentDisplayList = new Object3DDisplayList();
-            mCurrentDisplayList.Begin(mGL, mLineWidth);
+            mCurrentDisplayList.Begin(mGL, LineWidth);
             mDisplayLists.Add(mCurrentDisplayList);
         }
 
@@ -260,7 +260,7 @@ namespace LaserGRBL.Obj3D
         public Color Color;
 
 
-        public Grbl3D(GrblCore core, string name, bool justLaserOffMovements, Color color) : base(name, 1f)
+        public Grbl3D(GrblCore core, string name, bool justLaserOffMovements, Color color) : base(name, core.PreviewLineSize.Value)
         {
             Core = core;
             mJustLaserOffMovements = justLaserOffMovements;
@@ -353,7 +353,7 @@ namespace LaserGRBL.Obj3D
             {
                 if (!list.IsValid) {
                     list.DisplayList.Delete(mGL);
-                    list.Begin(mGL, mLineWidth);
+                    list.Begin(mGL, LineWidth);
                     foreach (Object3DVertex vertex in list.Vertices)
                     {
                         GLColor newColor;

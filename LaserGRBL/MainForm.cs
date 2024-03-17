@@ -7,6 +7,7 @@
 using LaserGRBL.UserControls;
 using LaserGRBL.WiFiConfigurator;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Threading;
@@ -23,12 +24,23 @@ namespace LaserGRBL
 		private bool MultiRunShown = false;
 		private bool OrturWiFiShown;
 		private readonly string[] args;
+		private readonly List<ToolStripMenuItem> mLineWidthMenu;
 
-		public MainForm()
+
+        public MainForm()
 		{
 			InitializeComponent();
 
-			MnOrtur.Visible = false;
+            mLineWidthMenu = new List<ToolStripMenuItem>()
+            {
+                pxToolStripMenuItem1,
+                pxToolStripMenuItem2,
+                pxToolStripMenuItem3,
+                pxToolStripMenuItem4,
+                pxToolStripMenuItem5,
+            };
+
+            MnOrtur.Visible = false;
 			MMn.Renderer = new MMnRenderer();
 
 
@@ -68,6 +80,7 @@ namespace LaserGRBL
             previewToolStripMenuItem.Visible = !Core.LegacyPreview;
             showLaserOffMovementsToolStripMenuItem.Checked = Core.ShowLaserOffMovements.Value;
             showExecutedCommandsToolStripMenuItem.Checked = Core.ShowExecutedCommands.Value;
+			CheckLineWidthItem();
 
             MnGrblConfig.Visible = Core.UIShowGrblConfig;
 			MnUnlock.Visible = Core.UIShowUnlockButtons;
@@ -645,7 +658,13 @@ namespace LaserGRBL
 			GrblEmulator.WebSocketEmulator.Start();
 		}
 
-		private void blueLaserToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void cadStyleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetSchema(ColorScheme.Scheme.CADStyle);
+        }
+
+        private void blueLaserToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SetSchema(ColorScheme.Scheme.BlueLaser);
 		}
@@ -1100,6 +1119,24 @@ namespace LaserGRBL
                 Core.ShowExecutedCommands.Value = showExecutedCommandsToolStripMenuItem.Checked;
             }
         }
+
+        private void pxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (PreviewForm.GrblPanel is GrblPanel3D)
+            {
+                GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
+                Core.PreviewLineSize.Value = Convert.ToInt32((sender as ToolStripMenuItem).Tag);
+				CheckLineWidthItem();
+            }
+        }
+
+		private void CheckLineWidthItem() {
+            foreach (ToolStripMenuItem item in mLineWidthMenu)
+            {
+                item.Checked = Convert.ToInt32(item.Tag) == Core.PreviewLineSize.Value;
+            }
+        }
+
     }
 
 

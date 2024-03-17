@@ -364,11 +364,16 @@ namespace LaserGRBL.UserControls
 
         private void GrblSceneControl_MouseUp(object sender, MouseEventArgs e)
         {
+            Cursor.Current = Cursors.Default;
             mLastMousePos = null;
             mCurrentMousePos = null;
         }
 
-        private void GrblSceneControl_MouseDown(object sender, MouseEventArgs e) => mLastMousePos = e.Location;
+        private void GrblSceneControl_MouseDown(object sender, MouseEventArgs e)
+        {
+            Cursor.Current = Cursors.SizeAll;
+            mLastMousePos = e.Location;
+        }
 
         private void GrblSceneControl_MouseMove(object sender, MouseEventArgs e)
         {
@@ -393,12 +398,16 @@ namespace LaserGRBL.UserControls
             Core = core;
             Core.OnFileLoaded += OnFileLoaded;
             Core.ShowExecutedCommands.OnChange += ShowExecutedCommands_OnChange;
+            Core.PreviewLineSize.OnChange += PrerviewLineSize_OnChange;
         }
 
-        private void ShowExecutedCommands_OnChange(Tools.RetainedSetting<bool> obj)
+        private void PrerviewLineSize_OnChange(Tools.RetainedSetting<float> obj)
         {
+            if (mGrbl3D != null) mGrbl3D.LineWidth = obj.Value;
             mInvalidateAll = true;
         }
+
+        private void ShowExecutedCommands_OnChange(Tools.RetainedSetting<bool> obj) => mInvalidateAll = true;
 
         private void DisposeGrbl3D()
         {

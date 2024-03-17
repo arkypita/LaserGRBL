@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.ConnectionForm = new LaserGRBL.ConnectLogForm();
-            this.JogForm = new LaserGRBL.JogForm();
-            this.PreviewForm = new LaserGRBL.PreviewForm();
             this.StatusBar = new System.Windows.Forms.StatusStrip();
             this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
             this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
@@ -91,6 +88,7 @@
             this.MNEsp8266 = new System.Windows.Forms.ToolStripMenuItem();
             this.MNGrblEmulator = new System.Windows.Forms.ToolStripMenuItem();
             this.schemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blueLaserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redLaserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,6 +98,10 @@
             this.autoSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showLaserOffMovementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showExecutedCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lineSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pxToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pxToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pxToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.linguaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MNEnglish = new System.Windows.Forms.ToolStripMenuItem();
             this.MNItalian = new System.Windows.Forms.ToolStripMenuItem();
@@ -154,6 +156,11 @@
             this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
             this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
+            this.ConnectionForm = new LaserGRBL.ConnectLogForm();
+            this.JogForm = new LaserGRBL.JogForm();
+            this.PreviewForm = new LaserGRBL.PreviewForm();
+            this.pxToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pxToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -177,21 +184,6 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
-            // 
-            // ConnectionForm
-            // 
-            resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
-            this.ConnectionForm.Name = "ConnectionForm";
-            // 
-            // JogForm
-            // 
-            resources.ApplyResources(this.JogForm, "JogForm");
-            this.JogForm.Name = "JogForm";
-            // 
-            // PreviewForm
-            // 
-            resources.ApplyResources(this.PreviewForm, "PreviewForm");
-            this.PreviewForm.Name = "PreviewForm";
             // 
             // StatusBar
             // 
@@ -601,6 +593,7 @@
             // schemaToolStripMenuItem
             // 
             this.schemaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadStyleToolStripMenuItem,
             this.blueLaserToolStripMenuItem,
             this.redLaserToolStripMenuItem,
             this.darkToolStripMenuItem,
@@ -608,6 +601,12 @@
             this.nightyToolStripMenuItem});
             this.schemaToolStripMenuItem.Name = "schemaToolStripMenuItem";
             resources.ApplyResources(this.schemaToolStripMenuItem, "schemaToolStripMenuItem");
+            // 
+            // cadStyleToolStripMenuItem
+            // 
+            this.cadStyleToolStripMenuItem.Name = "cadStyleToolStripMenuItem";
+            resources.ApplyResources(this.cadStyleToolStripMenuItem, "cadStyleToolStripMenuItem");
+            this.cadStyleToolStripMenuItem.Click += new System.EventHandler(this.cadStyleToolStripMenuItem_Click);
             // 
             // blueLaserToolStripMenuItem
             // 
@@ -644,7 +643,8 @@
             this.previewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.autoSizeToolStripMenuItem,
             this.showLaserOffMovementsToolStripMenuItem,
-            this.showExecutedCommandsToolStripMenuItem});
+            this.showExecutedCommandsToolStripMenuItem,
+            this.lineSizeToolStripMenuItem});
             this.previewToolStripMenuItem.Name = "previewToolStripMenuItem";
             resources.ApplyResources(this.previewToolStripMenuItem, "previewToolStripMenuItem");
             // 
@@ -667,6 +667,38 @@
             this.showExecutedCommandsToolStripMenuItem.Name = "showExecutedCommandsToolStripMenuItem";
             resources.ApplyResources(this.showExecutedCommandsToolStripMenuItem, "showExecutedCommandsToolStripMenuItem");
             this.showExecutedCommandsToolStripMenuItem.Click += new System.EventHandler(this.showExecutedCommandsToolStripMenuItem_Click);
+            // 
+            // lineSizeToolStripMenuItem
+            // 
+            this.lineSizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pxToolStripMenuItem1,
+            this.pxToolStripMenuItem2,
+            this.pxToolStripMenuItem3,
+            this.pxToolStripMenuItem4,
+            this.pxToolStripMenuItem5});
+            this.lineSizeToolStripMenuItem.Name = "lineSizeToolStripMenuItem";
+            resources.ApplyResources(this.lineSizeToolStripMenuItem, "lineSizeToolStripMenuItem");
+            // 
+            // pxToolStripMenuItem1
+            // 
+            this.pxToolStripMenuItem1.Name = "pxToolStripMenuItem1";
+            resources.ApplyResources(this.pxToolStripMenuItem1, "pxToolStripMenuItem1");
+            this.pxToolStripMenuItem1.Tag = "1";
+            this.pxToolStripMenuItem1.Click += new System.EventHandler(this.pxToolStripMenuItem_Click);
+            // 
+            // pxToolStripMenuItem2
+            // 
+            this.pxToolStripMenuItem2.Name = "pxToolStripMenuItem2";
+            resources.ApplyResources(this.pxToolStripMenuItem2, "pxToolStripMenuItem2");
+            this.pxToolStripMenuItem2.Tag = "2";
+            this.pxToolStripMenuItem2.Click += new System.EventHandler(this.pxToolStripMenuItem_Click);
+            // 
+            // pxToolStripMenuItem3
+            // 
+            this.pxToolStripMenuItem3.Name = "pxToolStripMenuItem3";
+            resources.ApplyResources(this.pxToolStripMenuItem3, "pxToolStripMenuItem3");
+            this.pxToolStripMenuItem3.Tag = "3";
+            this.pxToolStripMenuItem3.Click += new System.EventHandler(this.pxToolStripMenuItem_Click);
             // 
             // linguaToolStripMenuItem
             // 
@@ -1036,6 +1068,35 @@
             this.MultipleInstanceTimer.Interval = 1000;
             this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
             // 
+            // ConnectionForm
+            // 
+            resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
+            this.ConnectionForm.Name = "ConnectionForm";
+            // 
+            // JogForm
+            // 
+            resources.ApplyResources(this.JogForm, "JogForm");
+            this.JogForm.Name = "JogForm";
+            // 
+            // PreviewForm
+            // 
+            resources.ApplyResources(this.PreviewForm, "PreviewForm");
+            this.PreviewForm.Name = "PreviewForm";
+            // 
+            // pxToolStripMenuItem4
+            // 
+            this.pxToolStripMenuItem4.Name = "pxToolStripMenuItem4";
+            resources.ApplyResources(this.pxToolStripMenuItem4, "pxToolStripMenuItem4");
+            this.pxToolStripMenuItem4.Tag = "4";
+            this.pxToolStripMenuItem4.Click += new System.EventHandler(this.pxToolStripMenuItem_Click);
+            // 
+            // pxToolStripMenuItem5
+            // 
+            this.pxToolStripMenuItem5.Name = "pxToolStripMenuItem5";
+            resources.ApplyResources(this.pxToolStripMenuItem5, "pxToolStripMenuItem5");
+            this.pxToolStripMenuItem5.Tag = "5";
+            this.pxToolStripMenuItem5.Click += new System.EventHandler(this.pxToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -1190,6 +1251,13 @@
         private System.Windows.Forms.ToolStripMenuItem autoSizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showLaserOffMovementsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showExecutedCommandsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadStyleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lineSizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pxToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem pxToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem pxToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem pxToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem pxToolStripMenuItem5;
     }
 }
 

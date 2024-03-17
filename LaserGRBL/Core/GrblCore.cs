@@ -327,6 +327,7 @@ namespace LaserGRBL
 
 		public RetainedSetting<bool> ShowLaserOffMovements { get; } = new RetainedSetting<bool>("ShowLaserOffMovements", true);
         public RetainedSetting<bool> ShowExecutedCommands { get; } = new RetainedSetting<bool>("ShowExecutedCommands", true);
+        public RetainedSetting<float> PreviewLineSize { get; } = new RetainedSetting<float>("PreviewLineSize", 1f);
 
         public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
 		{

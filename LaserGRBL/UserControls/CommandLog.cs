@@ -75,7 +75,7 @@ namespace LaserGRBL.UserControls
 				int howmany = Math.Min(Height / RowHeight, queueCount);
 				int index = ScrollBar.Value;
 				mDraw = mCom.SentCommand(index, howmany);
-				if (mDraw != null)
+                if (mDraw != null)
 				{
 					using (StringFormat esf = new StringFormat(StringFormat.GenericTypographic))
 					{
@@ -111,8 +111,6 @@ namespace LaserGRBL.UserControls
 										e.Graphics.DrawImage(I, 1, RowHeight * i + (RowHeight - iH) / 2, iW, iH);
 									}
 								}
-
-								e.Graphics.DrawLine(Pens.LightGray, 0, RowHeight * (i + 1), Width, RowHeight * (i + 1));
 							}
 						}
 					}

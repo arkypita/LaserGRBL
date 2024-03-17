@@ -15,14 +15,49 @@ namespace LaserGRBL
 	class ColorScheme
 	{
 		public enum Scheme
-		{ BlueLaser, RedLaser, Dark, Hacker, Nighty }
+		{ CADStyle, BlueLaser, RedLaser, Dark, Hacker, Nighty }
 
 		public static Dictionary<Scheme, Color[]> mData;
 
 		static ColorScheme()
 		{
 			mData = new Dictionary<Scheme, Color[]>();
-			mData.Add(Scheme.BlueLaser, new Color[] 
+            mData.Add(Scheme.CADStyle, new Color[]
+            {
+                Color.White,		        //form backcolor
+				SystemColors.ControlText,	//form forecolor
+
+				Color.FromArgb( 33, 40, 48),//preview background
+				Color.FromArgb(220,220,220),//preview text
+				Color.FromArgb( 69, 78,101),//preview grid origins
+				Color.FromArgb( 49, 55, 70),//preview grid?
+				Color.FromArgb( 38, 45, 55),//preview grid minor?
+				Color.LightGray,			//preview reference line
+				Color.Blue,					//preview first line
+				Color.FromArgb( 60, 82, 85),//preview other line
+				Color.FromArgb(220,220,220),//preview laser
+				Color.FromArgb(230,230,230),//preview cross position
+				Color.FromArgb( 55,199,116),//preview command ok
+				Color.DarkRed,				//preview command ko
+				Color.LightPink,			//preview command wait
+
+				Color.White,				//log background
+				Color.Black,				//command text
+				Color.DarkGreen,			//startup
+				Color.Crimson,				//alarm
+				Color.DimGray,				//config
+				Color.DodgerBlue,			//feedback
+				Color.OrangeRed,			//position
+				Color.Purple,				//others
+				
+				Color.DarkBlue,				//response good
+				Color.Red,					//response bad
+				Color.Black,				//response others
+
+				Color.DodgerBlue,			//link color
+				Color.Purple,				//visited link color
+			});
+            mData.Add(Scheme.BlueLaser, new Color[] 
 			{
 				SystemColors.Control,		//form backcolor
 				SystemColors.ControlText,	//form forecolor
