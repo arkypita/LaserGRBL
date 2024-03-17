@@ -69,7 +69,6 @@ namespace LaserGRBL.UserControls
         // grbl core
         private GrblCore Core;
         public float PointerSize { get; set; } = 3;
-        public bool ShowLaserOffMovements { get; set; } = true;
 
         // drawing thread
         private Tools.ThreadObject mThreadDraw;
@@ -83,7 +82,6 @@ namespace LaserGRBL.UserControls
         public GrblPanel3D()
         {
             InitializeComponent();
-            ShowLaserOffMovements = Settings.GetObject("ShowLaserOffMovements", true);
             MouseDoubleClick += GrblPanel3D_DoubleClick;
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.UserPaint, true);
@@ -294,8 +292,8 @@ namespace LaserGRBL.UserControls
                 mReload = false;
                 mGrbl3D?.Dispose();
                 mGrbl3DOff?.Dispose();
-                mGrbl3D = new Grbl3D(Core.LoadedFile, "LaserOn", false, ColorScheme.PreviewLaserPower);
-                mGrbl3DOff = new Grbl3D(Core.LoadedFile, "LaserOff", true, ColorScheme.PreviewOtherMovement);
+                mGrbl3D = new Grbl3D(Core, "LaserOn", false, ColorScheme.PreviewLaserPower);
+                mGrbl3DOff = new Grbl3D(Core, "LaserOff", true, ColorScheme.PreviewOtherMovement);
             }
             if (mGrbl3D != null)
             {
@@ -307,7 +305,7 @@ namespace LaserGRBL.UserControls
                     mGrbl3DOff.Color = ColorScheme.PreviewOtherMovement;
                     mGrbl3DOff.InvalidateAll();
                 }
-                if (ShowLaserOffMovements)
+                if (Core.ShowLaserOffMovements.Value)
                 {
                     mGrbl3DOff.Invalidate();
                     mGrbl3DOff.Render(OpenGL, RenderMode.Design);
@@ -394,6 +392,12 @@ namespace LaserGRBL.UserControls
         {
             Core = core;
             Core.OnFileLoaded += OnFileLoaded;
+            Core.ShowExecutedCommands.OnChange += ShowExecutedCommands_OnChange;
+        }
+
+        private void ShowExecutedCommands_OnChange(Tools.RetainedSetting<bool> obj)
+        {
+            mInvalidateAll = true;
         }
 
         private void DisposeGrbl3D()

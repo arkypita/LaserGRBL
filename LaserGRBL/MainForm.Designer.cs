@@ -98,6 +98,8 @@
             this.nightyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.previewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autoSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showLaserOffMovementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showExecutedCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.linguaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MNEnglish = new System.Windows.Forms.ToolStripMenuItem();
             this.MNItalian = new System.Windows.Forms.ToolStripMenuItem();
@@ -152,7 +154,6 @@
             this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
             this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
-            this.showLaserOffMovementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -642,7 +643,8 @@
             // 
             this.previewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.autoSizeToolStripMenuItem,
-            this.showLaserOffMovementsToolStripMenuItem});
+            this.showLaserOffMovementsToolStripMenuItem,
+            this.showExecutedCommandsToolStripMenuItem});
             this.previewToolStripMenuItem.Name = "previewToolStripMenuItem";
             resources.ApplyResources(this.previewToolStripMenuItem, "previewToolStripMenuItem");
             // 
@@ -651,6 +653,20 @@
             this.autoSizeToolStripMenuItem.Name = "autoSizeToolStripMenuItem";
             resources.ApplyResources(this.autoSizeToolStripMenuItem, "autoSizeToolStripMenuItem");
             this.autoSizeToolStripMenuItem.Click += new System.EventHandler(this.autoSizeToolStripMenuItem_Click_1);
+            // 
+            // showLaserOffMovementsToolStripMenuItem
+            // 
+            this.showLaserOffMovementsToolStripMenuItem.CheckOnClick = true;
+            this.showLaserOffMovementsToolStripMenuItem.Name = "showLaserOffMovementsToolStripMenuItem";
+            resources.ApplyResources(this.showLaserOffMovementsToolStripMenuItem, "showLaserOffMovementsToolStripMenuItem");
+            this.showLaserOffMovementsToolStripMenuItem.Click += new System.EventHandler(this.showLaserOffMovementsToolStripMenuItem_Click);
+            // 
+            // showExecutedCommandsToolStripMenuItem
+            // 
+            this.showExecutedCommandsToolStripMenuItem.CheckOnClick = true;
+            this.showExecutedCommandsToolStripMenuItem.Name = "showExecutedCommandsToolStripMenuItem";
+            resources.ApplyResources(this.showExecutedCommandsToolStripMenuItem, "showExecutedCommandsToolStripMenuItem");
+            this.showExecutedCommandsToolStripMenuItem.Click += new System.EventHandler(this.showExecutedCommandsToolStripMenuItem_Click);
             // 
             // linguaToolStripMenuItem
             // 
@@ -1020,15 +1036,6 @@
             this.MultipleInstanceTimer.Interval = 1000;
             this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
             // 
-            // showLaserOffMovementsToolStripMenuItem
-            // 
-            this.showLaserOffMovementsToolStripMenuItem.Checked = true;
-            this.showLaserOffMovementsToolStripMenuItem.CheckOnClick = true;
-            this.showLaserOffMovementsToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.showLaserOffMovementsToolStripMenuItem.Name = "showLaserOffMovementsToolStripMenuItem";
-            resources.ApplyResources(this.showLaserOffMovementsToolStripMenuItem, "showLaserOffMovementsToolStripMenuItem");
-            this.showLaserOffMovementsToolStripMenuItem.Click += new System.EventHandler(this.showLaserOffMovementsToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -1182,6 +1189,7 @@
         private System.Windows.Forms.ToolStripMenuItem previewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autoSizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showLaserOffMovementsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showExecutedCommandsToolStripMenuItem;
     }
 }
 

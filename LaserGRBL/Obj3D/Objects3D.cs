@@ -253,16 +253,16 @@ namespace LaserGRBL.Obj3D
     {
 
         [XmlIgnore]
-        public readonly GrblFile File;
+        public readonly GrblCore Core;
         [XmlIgnore]
         private readonly bool mJustLaserOffMovements;
         [XmlIgnore]
         public Color Color;
 
 
-        public Grbl3D(GrblFile file, string name, bool justLaserOffMovements, Color color) : base(name, 1f)
+        public Grbl3D(GrblCore core, string name, bool justLaserOffMovements, Color color) : base(name, 1f)
         {
-            File = file;
+            Core = core;
             mJustLaserOffMovements = justLaserOffMovements;
             Color = color;
         }
@@ -271,9 +271,9 @@ namespace LaserGRBL.Obj3D
         {
             float zPos = 0;
             GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
-            for (int i = 0; i < File.Commands.Count; i++)
+            for (int i = 0; i < Core.LoadedFile.Commands.Count; i++)
             {
-                GrblCommand cmd = File.Commands[i];
+                GrblCommand cmd = Core.LoadedFile.Commands[i];
                 try
                 {
                     cmd.BuildHelper();
@@ -286,7 +286,7 @@ namespace LaserGRBL.Obj3D
                             GLColor color = Color;
                             if (spb.LaserBurning && !mJustLaserOffMovements)
                             {
-                                color.A = spb.GetCurrentAlpha(File.Range.SpindleRange) / 255f;
+                                color.A = spb.GetCurrentAlpha(Core.LoadedFile.Range.SpindleRange) / 255f;
                             }
                             else
                             {
@@ -313,7 +313,7 @@ namespace LaserGRBL.Obj3D
                                 double? lastX = null;
                                 double? lastY = null;
                                 GLColor color = Color;
-                                color.A = spb.GetCurrentAlpha(File.Range.SpindleRange);
+                                color.A = spb.GetCurrentAlpha(Core.LoadedFile.Range.SpindleRange);
                                 double startAngle = ah.StartAngle;
                                 double endAngle = ah.StartAngle + ah.AngularWidth;
                                 int sign = Math.Sign(ah.AngularWidth);
@@ -357,7 +357,7 @@ namespace LaserGRBL.Obj3D
                     foreach (Object3DVertex vertex in list.Vertices)
                     {
                         GLColor newColor;
-                        if (mJustLaserOffMovements)
+                        if (mJustLaserOffMovements || !Core.ShowExecutedCommands.Value)
                         {
                             newColor = Color;
                         }
@@ -366,11 +366,11 @@ namespace LaserGRBL.Obj3D
                             switch (vertex.Command.Status)
                             {
                                 case GrblCommand.CommandStatus.ResponseGood:
-                                    newColor = new GLColor(0.1f, 1f, 0.2f, 1);
+                                    newColor = ColorScheme.PreviewCommandOK;
                                     break;
                                 case GrblCommand.CommandStatus.ResponseBad:
                                 case GrblCommand.CommandStatus.InvalidResponse:
-                                    newColor = Color.Red;
+                                    newColor = ColorScheme.PreviewCommandKO;
                                     break;
                                 /*
                                 case GrblCommand.CommandStatus.Queued:
@@ -378,7 +378,7 @@ namespace LaserGRBL.Obj3D
                                     break;
                                 */
                                 case GrblCommand.CommandStatus.WaitingResponse:
-                                    newColor = Color.Pink;
+                                    newColor = ColorScheme.PreviewCommandWait;
                                     break;
                                 default:
                                     newColor = Color;

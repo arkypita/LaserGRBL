@@ -37,6 +37,9 @@ namespace LaserGRBL
 				Color.LightGray,			//preview other line
 				Color.Red,					//preview laser
 				Color.Blue,					//preview cross position
+				Color.DarkGreen,			//preview command ok
+				Color.DarkRed,				//preview command ko
+				Color.LightPink,			//preview command wait
 
 				Color.White,				//log background
 				Color.Black,				//command text
@@ -69,6 +72,9 @@ namespace LaserGRBL
 				Color.LightGray,			//preview other line
 				Color.DarkBlue,				//preview laser
 				Color.DarkViolet,			//preview cross position
+				Color.DarkGreen,			//preview command ok
+				Color.DarkRed,				//preview command ko
+				Color.LightBlue,			//preview command wait
 
 				Color.White,				//log background
 				Color.Black,				//command text
@@ -101,6 +107,9 @@ namespace LaserGRBL
 				Color.FromArgb(180,118,0),  //preview other line
 				Color.Red,					//preview laser
 				Color.DarkMagenta,			//preview cross position
+				Color.DarkGreen,			//preview command ok
+				Color.DarkRed,				//preview command ko
+				Color.LightBlue,			//preview command wait
 
 				Color.DimGray,				//log background
 				Color.White,				//command text
@@ -133,6 +142,9 @@ namespace LaserGRBL
 				Color.FromArgb(180,118,0),  //preview other line
 				Color.DarkGreen,			//preview laser
 				Color.DarkMagenta,			//preview cross position
+				Color.DarkGreen,			//preview command ok
+				Color.DarkRed,				//preview command ko
+				Color.LightBlue,			//preview command wait
 
 				Color.FromArgb(20,20,20),	//log background
 				Color.LimeGreen,			//command text
@@ -165,6 +177,9 @@ namespace LaserGRBL
 				Color.FromArgb(150,0,120),  //preview other line
 				Color.FromArgb(0,125,140),	//preview laser
 				Color.Pink,	                //preview cross position
+				Color.DarkGreen,			//preview command ok
+				Color.DarkRed,				//preview command ko
+				Color.LightBlue,			//preview command wait
 
 				Color.FromArgb(25,25,25),	//log background
 				Color.Aqua,		        	//command text
@@ -249,35 +264,41 @@ namespace LaserGRBL
 		{ get { return GetColor(10); } }
 		public static Color PreviewCross
 		{ get { return GetColor(11); } }
+        public static Color PreviewCommandOK
+        { get { return GetColor(12); } }
+        public static Color PreviewCommandKO
+        { get { return GetColor(13); } }
+        public static Color PreviewCommandWait
+        { get { return GetColor(14); } }
 
-		public static Color LogBackColor
-		{ get { return GetColor(12); } }
-		public static Color LogLeftCOMMAND
-		{ get { return GetColor(13); } }
-		public static Color LogLeftSTARTUP
-		{ get { return GetColor(14); } }
-		public static Color LogLeftALARM
+        public static Color LogBackColor
 		{ get { return GetColor(15); } }
-		public static Color LogLeftCONFIG
+		public static Color LogLeftCOMMAND
 		{ get { return GetColor(16); } }
-		public static Color LogLeftFEEDBACK
+		public static Color LogLeftSTARTUP
 		{ get { return GetColor(17); } }
-		public static Color LogLeftPOSITION
+		public static Color LogLeftALARM
 		{ get { return GetColor(18); } }
-		public static Color LogLeftOTHERS
+		public static Color LogLeftCONFIG
 		{ get { return GetColor(19); } }
-		public static Color LogRightGOOD
+		public static Color LogLeftFEEDBACK
 		{ get { return GetColor(20); } }
-		public static Color LogRightBAD
+		public static Color LogLeftPOSITION
 		{ get { return GetColor(21); } }
-		public static Color LogRightOTHERS
+		public static Color LogLeftOTHERS
 		{ get { return GetColor(22); } }
-        public static Color TextBoxColorOverride
-        { get { return GetColor(22); } }
-		public static Color LinkColor
+		public static Color LogRightGOOD
 		{ get { return GetColor(23); } }
-		public static Color VisitedLinkColor
+		public static Color LogRightBAD
 		{ get { return GetColor(24); } }
+		public static Color LogRightOTHERS
+		{ get { return GetColor(25); } }
+        public static Color TextBoxColorOverride
+        { get { return GetColor(25); } }
+		public static Color LinkColor
+		{ get { return GetColor(26); } }
+		public static Color VisitedLinkColor
+		{ get { return GetColor(27); } }
 
 
 		private static Color GetColor(int index)

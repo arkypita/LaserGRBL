@@ -38,7 +38,6 @@ namespace LaserGRBL
 			MnNotifyNewVersion.Checked = Settings.GetObject("Auto Update", true);
 			MnNotifyMinorVersion.Checked = Settings.GetObject("Auto Update Build", false);
 			MnNotifyPreRelease.Checked = Settings.GetObject("Auto Update Pre", false);
-			showLaserOffMovementsToolStripMenuItem.Checked = Settings.GetObject("ShowLaserOffMovements", true);
 
             MnAutoUpdate.DropDown.Closing += MnAutoUpdateDropDown_Closing;
 
@@ -67,6 +66,9 @@ namespace LaserGRBL
 			}
 
             previewToolStripMenuItem.Visible = !Core.LegacyPreview;
+            showLaserOffMovementsToolStripMenuItem.Checked = Core.ShowLaserOffMovements.Value;
+            showExecutedCommandsToolStripMenuItem.Checked = Core.ShowExecutedCommands.Value;
+
             MnGrblConfig.Visible = Core.UIShowGrblConfig;
 			MnUnlock.Visible = Core.UIShowUnlockButtons;
 
@@ -1086,8 +1088,16 @@ namespace LaserGRBL
             if (PreviewForm.GrblPanel is GrblPanel3D)
             {
                 GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
-                panel3D.ShowLaserOffMovements = showLaserOffMovementsToolStripMenuItem.Checked;
-                Settings.SetObject("ShowLaserOffMovements", panel3D.ShowLaserOffMovements);
+				Core.ShowLaserOffMovements.Value = showLaserOffMovementsToolStripMenuItem.Checked;
+            }
+        }
+
+        private void showExecutedCommandsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (PreviewForm.GrblPanel is GrblPanel3D)
+            {
+                GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
+                Core.ShowExecutedCommands.Value = showExecutedCommandsToolStripMenuItem.Checked;
             }
         }
     }
