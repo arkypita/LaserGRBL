@@ -1137,6 +1137,13 @@ namespace LaserGRBL
             }
         }
 
+
+        private void SplitContainer1_Paint(object sender, PaintEventArgs e)
+        {
+			Rectangle rect = new Rectangle(e.ClipRectangle.X + 1, e.ClipRectangle.Y + 3, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 6);
+			e.Graphics.FillRectangle(new SolidBrush(ColorScheme.ControlsBorder), rect);
+        }
+
     }
 
 

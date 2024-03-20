@@ -25,14 +25,13 @@ namespace LaserGRBL
 		{
 			currentWrapper = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			InitializeComponent();
-		}
+        }
 
-		public void SetCore(GrblCore core)
+        public void SetCore(GrblCore core)
 		{
 			Core = core;
 			Core.OnFileLoaded += OnFileLoaded;
 			Core.OnLoopCountChange += OnLoopCountChanged;
-
 			CmdLog.SetCom(core);
 			
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(Color.LightSkyBlue));
@@ -333,6 +332,7 @@ namespace LaserGRBL
 
 		internal void OnColorChange()
 		{
+			TbFileName.BackColor = ColorScheme.FormBackColor;
 			CmdLog.Invalidate();
 		}
 
@@ -385,6 +385,12 @@ namespace LaserGRBL
 				//if (BtnConnectDisconnect.Enabled && Core.MachineStatus == GrblCore.MacStatus.Disconnected)
 				//	BtnConnectDisconnectClick(null, null);
 			}
-		}
-	}
+        }
+
+        private void CmdLog_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, ColorScheme.ControlsBorder, ButtonBorderStyle.Solid);
+        }
+
+    }
 }

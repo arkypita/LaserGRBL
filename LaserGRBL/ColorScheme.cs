@@ -22,9 +22,9 @@ namespace LaserGRBL
 		static ColorScheme()
 		{
 			mData = new Dictionary<Scheme, Color[]>();
-            mData.Add(Scheme.CADStyle, new Color[]
-            {
-                Color.White,		        //form backcolor
+			mData.Add(Scheme.CADStyle, new Color[]
+			{
+				Color.White,		        //form backcolor
 				SystemColors.ControlText,	//form forecolor
 
 				Color.FromArgb( 33, 40, 48),//preview background
@@ -56,7 +56,9 @@ namespace LaserGRBL
 
 				Color.DodgerBlue,			//link color
 				Color.Purple,				//visited link color
-			});
+
+				Color.FromArgb(220,220,220)//controls border
+			}); ;
             mData.Add(Scheme.BlueLaser, new Color[] 
 			{
 				SystemColors.Control,		//form backcolor
@@ -91,6 +93,8 @@ namespace LaserGRBL
 
 				Color.DodgerBlue,			//link color
 				Color.Purple,				//visited link color
+
+				Color.FromArgb(220,220,220)//controls border
 			});
 			mData.Add(Scheme.RedLaser, new Color[] 
 			{
@@ -126,6 +130,8 @@ namespace LaserGRBL
 
 				Color.DodgerBlue,			//link color
 				Color.Purple,				//visited link color
+
+				Color.FromArgb(220,220,220)//controls border
 			});
 			mData.Add(Scheme.Dark, new Color[] 
 			{
@@ -161,6 +167,8 @@ namespace LaserGRBL
 
 				Color.Yellow,				//link color
 				Color.Violet,				//visited link color
+
+				Color.FromArgb(220,220,220)//controls border
 			});
 			mData.Add(Scheme.Hacker, new Color[] 
 			{
@@ -194,8 +202,10 @@ namespace LaserGRBL
 				Color.Red,					//response bad
 				Color.White,				//response others
 
-				Color.Yellow,					//link color
+				Color.Yellow,			    //link color
 				Color.Violet,				//visited link color
+
+				Color.FromArgb(220,220,220)//controls border
 			});
             mData.Add(Scheme.Nighty, new Color[]
             {
@@ -231,6 +241,7 @@ namespace LaserGRBL
 
 				Color.Yellow,				//link color
 				Color.Violet,				//visited link color
+				Color.FromArgb(220,220,220)//controls border
             });
 
             CurrentScheme = Scheme.RedLaser;
@@ -334,9 +345,11 @@ namespace LaserGRBL
 		{ get { return GetColor(26); } }
 		public static Color VisitedLinkColor
 		{ get { return GetColor(27); } }
+        public static Color ControlsBorder
+        { get { return GetColor(28); } }
 
 
-		private static Color GetColor(int index)
+        private static Color GetColor(int index)
 		{return mData[CurrentScheme][index];}
 
 		public static Color ChangeColorBrightness(Color color, float correctionFactor)

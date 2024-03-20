@@ -183,7 +183,10 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+            this.splitContainer1.Paint += new System.Windows.Forms.PaintEventHandler(SplitContainer1_Paint);
+
             // 
             // ConnectionForm
             // 
@@ -1124,8 +1127,8 @@
             this.PerformLayout();
 
 		}
-		
-		private System.Windows.Forms.StatusStrip StatusBar;
+
+        private System.Windows.Forms.StatusStrip StatusBar;
 		private System.Windows.Forms.ToolStripStatusLabel TTLLines;
 		private System.Windows.Forms.ToolStripStatusLabel TTLEstimated;
 		private System.Windows.Forms.ToolStripStatusLabel TTTEstimated;
