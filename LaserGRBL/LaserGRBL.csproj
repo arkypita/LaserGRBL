@@ -994,6 +994,12 @@
     <Compile Include="UserControls\PlaceholderTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\TextInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TextInput.Designer.cs">
+      <DependentUpon>TextInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UsageClassPreview.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1251,6 +1257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.ro-RO.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TextInput.resx">
+      <DependentUpon>TextInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UsageClassPreview.resx">
       <DependentUpon>UsageClassPreview.cs</DependentUpon>

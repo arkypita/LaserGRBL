@@ -310,7 +310,7 @@ namespace LaserGRBL.UserControls
 				DrawTick(e.Graphics);
 			if (DrawProgressString)
 				DrawString(e.Graphics);
-			DrawBorder(e.Graphics);
+			DrawBorder(e);
 		}
 
 
@@ -333,12 +333,13 @@ namespace LaserGRBL.UserControls
 		}
 
 
-		protected virtual void DrawBorder(Graphics g)
+		protected virtual void DrawBorder(PaintEventArgs e)
 		{
+			ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, ColorScheme.ControlsBorder, ButtonBorderStyle.Solid);
+			/*
 			//SALVA HEIGHT E WIDTH PER CALCOLI PIU VELOCI
 			int W = this.ClientRectangle.Width;
 			int H = this.ClientRectangle.Height;
-
 			Point[] BordoGrigio = {
 				new Point(0, 2),
 				new Point(1, 1),
@@ -369,6 +370,7 @@ namespace LaserGRBL.UserControls
 			// Ombra Sopra
 			g.DrawLine(Pens.LightGray, 1, 2, 1, H - 3);
 			//Ombra Lato Sx
+			*/
 		}
 
 		protected virtual void DrawBackground(Graphics g)
@@ -457,8 +459,7 @@ namespace LaserGRBL.UserControls
 				{
 					ColoredBar = new Rectangle(2, 2, BarWidth, BarHeight);
 				}
-
-
+				/*
 				using (LinearGradientBrush brush = new LinearGradientBrush(ColoredBar, this.FillColor, C, 90f))
 				{
 					float[] relativeIntensities = {
@@ -488,6 +489,12 @@ namespace LaserGRBL.UserControls
 
 					G.FillRectangle(brush, ColoredBar);
 				}
+				*/
+				using (SolidBrush brush = new SolidBrush(C))
+				{
+					G.FillRectangle(brush, ColoredBar);
+				}
+				
 			}
 		}
 

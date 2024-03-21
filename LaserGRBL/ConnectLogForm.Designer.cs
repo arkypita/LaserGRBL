@@ -21,7 +21,7 @@ namespace LaserGRBL
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
 		private LaserGRBL.UserControls.GrblTextBox TxtManualCommand;
 		private LaserGRBL.UserControls.CommandLog CmdLog;
-		private System.Windows.Forms.TextBox TbFileName;
+		private UserControls.TextInput TbFileName;
 		private LaserGRBL.UserControls.DoubleProgressBar PB;
 		private LaserGRBL.UserControls.ImageButton BtnOpen;
 		private LaserGRBL.UserControls.ImageButton BtnRunProgram;
@@ -66,7 +66,7 @@ namespace LaserGRBL
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.LblProgress = new System.Windows.Forms.Label();
             this.LblFilename = new System.Windows.Forms.Label();
-            this.TbFileName = new System.Windows.Forms.TextBox();
+            this.TbFileName = new UserControls.TextInput();
             this.PB = new LaserGRBL.UserControls.DoubleProgressBar();
             this.BtnOpen = new LaserGRBL.UserControls.ImageButton();
             this.BtnRunProgram = new LaserGRBL.UserControls.ImageButton();
@@ -81,7 +81,7 @@ namespace LaserGRBL
             this.CBSpeed = new System.Windows.Forms.ComboBox();
             this.LblAddress = new System.Windows.Forms.Label();
             this.TxtAddress = new System.Windows.Forms.TextBox();
-            this.TxtEmulator = new System.Windows.Forms.TextBox();
+            this.TxtEmulator = new UserControls.TextInput();
             this.BtnConnectDisconnect = new LaserGRBL.UserControls.ImageButton();
             this.TT = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
@@ -171,6 +171,7 @@ namespace LaserGRBL
             this.TbFileName.Name = "TbFileName";
             this.TbFileName.ReadOnly = true;
             this.TbFileName.TabStop = false;
+            this.TbFileName.Height = 20;
             this.TbFileName.MouseEnter += new System.EventHandler(this.TbFileName_MouseEnter);
             this.TbFileName.MouseLeave += new System.EventHandler(this.TbFileName_MouseLeave);
             // 
@@ -380,7 +381,7 @@ namespace LaserGRBL
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
 		private System.Windows.Forms.NumericUpDown UDLoopCounter;
 		private System.Windows.Forms.Label LblEmulator;
-		private System.Windows.Forms.TextBox TxtEmulator;
+		private UserControls.TextInput TxtEmulator;
         private UserControls.ImageButton BtnAbortProgram;
     }
 }

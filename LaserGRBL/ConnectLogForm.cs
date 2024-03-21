@@ -33,9 +33,9 @@ namespace LaserGRBL
 			Core.OnFileLoaded += OnFileLoaded;
 			Core.OnLoopCountChange += OnLoopCountChanged;
 			CmdLog.SetCom(core);
-			
-			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(Color.LightSkyBlue));
-			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(Color.Pink));
+
+			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandWait));
+			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandOK));
 
 			InitSpeedCB();
 			InitPortCB();
@@ -333,6 +333,11 @@ namespace LaserGRBL
 		internal void OnColorChange()
 		{
 			TbFileName.BackColor = ColorScheme.FormBackColor;
+			TxtEmulator.BorderColor = ColorScheme.ControlsBorder;
+            TbFileName.BorderColor = ColorScheme.ControlsBorder;
+            PB.Bars.Clear();
+			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandWait));
+			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandOK));
 			CmdLog.Invalidate();
 		}
 
