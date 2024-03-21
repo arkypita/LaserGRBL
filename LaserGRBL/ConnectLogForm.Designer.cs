@@ -70,7 +70,7 @@ namespace LaserGRBL
             this.PB = new LaserGRBL.UserControls.DoubleProgressBar();
             this.BtnOpen = new LaserGRBL.UserControls.ImageButton();
             this.BtnRunProgram = new LaserGRBL.UserControls.ImageButton();
-            this.UDLoopCounter = new System.Windows.Forms.NumericUpDown();
+            this.UDLoopCounter = new LaserGRBL.UserControls.NumericInput.NumericUpDown();
             this.BtnAbortProgram = new LaserGRBL.UserControls.ImageButton();
             this.GBConnection = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -379,7 +379,7 @@ namespace LaserGRBL
 		private System.Windows.Forms.TextBox TxtAddress;
 		private System.Windows.Forms.Panel GBFile;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-		private System.Windows.Forms.NumericUpDown UDLoopCounter;
+		private UserControls.NumericInput.NumericUpDown UDLoopCounter;
 		private System.Windows.Forms.Label LblEmulator;
 		private UserControls.TextInput TxtEmulator;
         private UserControls.ImageButton BtnAbortProgram;

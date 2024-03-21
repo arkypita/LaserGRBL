@@ -54,7 +54,7 @@ namespace LaserGRBL.UserControls
 
 		public ColorProgressBar()
 		{
-			base.Size = new Size(150, 15);
+			base.Size = new Size(150, 10);
 			SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw | ControlStyles.DoubleBuffer, true);
 		}
 

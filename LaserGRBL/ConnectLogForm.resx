@@ -136,7 +136,7 @@
     <value>1, 1</value>
   </data>
   <data name="TxtManualCommand.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 0</value>
+    <value>3, 1, 3, 0</value>
   </data>
   <data name="TxtManualCommand.Size" type="System.Drawing.Size, System.Drawing">
     <value>243, 22</value>
@@ -337,7 +337,7 @@
     <value>52, 1</value>
   </data>
   <data name="TbFileName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
+    <value>1, 1, 3, 1</value>
   </data>
   <data name="TbFileName.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 20</value>
@@ -364,10 +364,10 @@
     <value>52, 23</value>
   </data>
   <data name="PB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
+    <value>1, 3, 1, 3</value>
   </data>
   <data name="PB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 20</value>
+    <value>109, 15</value>
   </data>
   <data name="PB.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -503,7 +503,7 @@
     <value>UDLoopCounter</value>
   </data>
   <data name="&gt;&gt;UDLoopCounter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.NumericInput.NumericUpDown, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;UDLoopCounter.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
