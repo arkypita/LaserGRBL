@@ -29,8 +29,8 @@ namespace LaserGRBL
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
 		private System.Windows.Forms.Label LblComPort;
 		private System.Windows.Forms.Label LblBaudRate;
-		private System.Windows.Forms.ComboBox CBPort;
-		private System.Windows.Forms.ComboBox CBSpeed;
+		private LaserGRBL.UserControls.FlatComboBox CBPort;
+		private LaserGRBL.UserControls.FlatComboBox CBSpeed;
 		private LaserGRBL.UserControls.ImageButton BtnConnectDisconnect;
 		private System.Windows.Forms.ToolTip TT;
 		
@@ -76,9 +76,9 @@ namespace LaserGRBL
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.LblEmulator = new System.Windows.Forms.Label();
             this.LblComPort = new System.Windows.Forms.Label();
-            this.CBPort = new System.Windows.Forms.ComboBox();
+            this.CBPort = new LaserGRBL.UserControls.FlatComboBox();
             this.LblBaudRate = new System.Windows.Forms.Label();
-            this.CBSpeed = new System.Windows.Forms.ComboBox();
+            this.CBSpeed = new LaserGRBL.UserControls.FlatComboBox();
             this.LblAddress = new System.Windows.Forms.Label();
             this.TxtAddress = new UserControls.TextInput();
             this.TxtEmulator = new UserControls.TextInput();

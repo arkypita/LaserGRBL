@@ -83,8 +83,9 @@
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
     <StartAction>Project</StartAction>
   </PropertyGroup>
-  <PropertyGroup />
-  <PropertyGroup />
+  <PropertyGroup>
+    <ForceDesignerDPIUnaware>true</ForceDesignerDPIUnaware>
+  </PropertyGroup>
   <PropertyGroup>
     <StartupObject>LaserGRBL.Program</StartupObject>
   </PropertyGroup>
@@ -173,6 +174,9 @@
     <Compile Include="Obj3D\ColorHelper.cs" />
     <Compile Include="Obj3D\GlColorHelper.cs" />
     <Compile Include="Tools\RetainedSetting.cs" />
+    <Compile Include="UserControls\FlatComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\GrblPanel3D.cs">
       <SubType>UserControl</SubType>
     </Compile>

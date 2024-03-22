@@ -25,6 +25,7 @@ namespace LaserGRBL.UserControls
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
+            mTextBox.ForeColor = ForeColor;
             mTextBox.BackColor = BackColor;
         }
     }

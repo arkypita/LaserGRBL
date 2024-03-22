@@ -20,6 +20,29 @@ namespace LaserGRBL.UserControls.NumericInput
             mNumericUpDown.ValueChanged += MNumericUpDown_ValueChanged;
         }
 
+        public new Color ForeColor
+        {
+            get
+            {
+                return mNumericUpDown.ForeColor;
+            }
+            set
+            {
+                mNumericUpDown.ForeColor = value;
+            }
+        }
+        public new Color BackColor
+        {
+            get
+            {
+                return mNumericUpDown.BackColor;
+            }
+            set
+            {
+                mNumericUpDown.BackColor = value;
+            }
+        }
+
         private void MNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             ValueChanged?.Invoke(sender, e);

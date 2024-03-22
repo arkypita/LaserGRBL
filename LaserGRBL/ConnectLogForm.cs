@@ -332,14 +332,40 @@ namespace LaserGRBL
 
 		internal void OnColorChange()
 		{
-			TbFileName.BackColor = ColorScheme.FormBackColor;
-			TxtEmulator.BorderColor = ColorScheme.ControlsBorder;
+			TbFileName.BackColor = ColorScheme.LogBackColor;
+            TbFileName.ForeColor = ColorScheme.FormForeColor;
+
+            TxtEmulator.BorderColor = ColorScheme.ControlsBorder;
+            TxtEmulator.ForeColor = ColorScheme.FormForeColor;
+
             TbFileName.BorderColor = ColorScheme.ControlsBorder;
-			UDLoopCounter.BorderColor = ColorScheme.ControlsBorder;
+            TbFileName.ForeColor = ColorScheme.FormForeColor;
+
+            UDLoopCounter.BackColor = ColorScheme.LogBackColor;
+            UDLoopCounter.BorderColor = ColorScheme.ControlsBorder;
+            UDLoopCounter.ForeColor = ColorScheme.FormForeColor;
+
             TxtManualCommand.WaterMarkColor = ColorScheme.ControlsBorder;
             TxtManualCommand.WaterMarkActiveColor = ColorScheme.ControlsBorder;
-			TxtAddress.BorderColor = ColorScheme.ControlsBorder;
-			TxtAddress.BackColor = ColorScheme.FormBackColor;
+            TxtManualCommand.BackColor = ColorScheme.LogBackColor;
+			TxtManualCommand.ForeColor = ColorScheme.FormForeColor;
+
+            TxtAddress.BorderColor = ColorScheme.ControlsBorder;
+			TxtAddress.BackColor = ColorScheme.LogBackColor;
+            TxtAddress.ForeColor = ColorScheme.FormForeColor;
+
+
+            CBPort.BackColor = ColorScheme.LogBackColor;
+			CBPort.BorderColor = ColorScheme.ControlsBorder;
+			CBPort.ButtonColor = ColorScheme.LogBackColor;
+            CBPort.ForeColor = ColorScheme.FormForeColor;
+            CBSpeed.BackColor = ColorScheme.LogBackColor;
+            CBSpeed.BorderColor = ColorScheme.ControlsBorder;
+            CBSpeed.ButtonColor = ColorScheme.LogBackColor;
+            CBSpeed.ForeColor = ColorScheme.FormForeColor;
+
+			PB.ForeColor = ColorScheme.FormForeColor;
+            PB.FillColor = ColorScheme.LogBackColor;
             PB.Bars.Clear();
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandWait));
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandOK));
