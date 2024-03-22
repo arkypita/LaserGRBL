@@ -1190,12 +1190,18 @@ namespace LaserGRBL
 
 		protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
 		{
-			base.OnRenderToolStripBorder(e);
-			/*
-			using (Brush b = new SolidBrush(ColorScheme.FormBackColor))
-				e.Graphics.FillRectangle(b, e.ConnectedArea);
-			*/
-		}
+			//base.OnRenderToolStripBorder(e);
+			
+			if (!e.ConnectedArea.IsEmpty)
+            {
+                using (Brush b = new SolidBrush(ColorScheme.ControlsBorder))
+                    e.Graphics.FillRectangle(b, e.ConnectedArea);
+                Rectangle rect = new Rectangle(e.AffectedBounds.X, e.AffectedBounds.Y, e.AffectedBounds.Width - 1, e.AffectedBounds.Height - 1);
+				using (Pen p = new Pen(ColorScheme.ControlsBorder))
+					e.Graphics.DrawRectangle(p, rect);
+			}
+
+        }
 	}
 	public class CustomMenuColor : ProfessionalColorTable
 	{

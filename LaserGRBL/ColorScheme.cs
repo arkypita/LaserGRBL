@@ -24,7 +24,7 @@ namespace LaserGRBL
 			mData = new Dictionary<Scheme, Color[]>();
 			mData.Add(Scheme.CADStyle, new Color[]
 			{
-				Color.White,		        //form backcolor
+                Color.White,		        //form backcolor
 				SystemColors.ControlText,	//form forecolor
 
 				Color.FromArgb( 33, 40, 48),//preview background
@@ -168,7 +168,7 @@ namespace LaserGRBL
 				Color.Yellow,				//link color
 				Color.Violet,				//visited link color
 
-				Color.FromArgb(220,220,220)//controls border
+				Color.FromArgb(39,54,85)//controls border
 			});
 			mData.Add(Scheme.Hacker, new Color[] 
 			{
@@ -205,7 +205,7 @@ namespace LaserGRBL
 				Color.Yellow,			    //link color
 				Color.Violet,				//visited link color
 
-				Color.FromArgb(220,220,220)//controls border
+				Color.FromArgb(15,25,50)//controls border
 			});
             mData.Add(Scheme.Nighty, new Color[]
             {
@@ -241,14 +241,14 @@ namespace LaserGRBL
 
 				Color.Yellow,				//link color
 				Color.Violet,				//visited link color
-				Color.FromArgb(220,220,220)//controls border
+				Color.FromArgb(40,40,40)//controls border
             });
 
             CurrentScheme = Scheme.RedLaser;
 		}
 
 		public static bool DarkScheme
-		{ get { return CurrentScheme == Scheme.Dark || CurrentScheme == Scheme.Hacker || CurrentScheme == Scheme.Nighty || CurrentScheme == Scheme.CADStyle; } }
+		{ get { return CurrentScheme == Scheme.Dark || CurrentScheme == Scheme.Hacker || CurrentScheme == Scheme.Nighty; } }
 
 		public static Scheme CurrentScheme { get; set; }
 

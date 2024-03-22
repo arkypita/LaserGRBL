@@ -336,6 +336,8 @@ namespace LaserGRBL
 			TxtEmulator.BorderColor = ColorScheme.ControlsBorder;
             TbFileName.BorderColor = ColorScheme.ControlsBorder;
 			UDLoopCounter.BorderColor = ColorScheme.ControlsBorder;
+            TxtManualCommand.WaterMarkColor = ColorScheme.ControlsBorder;
+            TxtManualCommand.WaterMarkActiveColor = ColorScheme.ControlsBorder;
             PB.Bars.Clear();
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandWait));
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandOK));
