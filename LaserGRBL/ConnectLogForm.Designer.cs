@@ -80,7 +80,7 @@ namespace LaserGRBL
             this.LblBaudRate = new System.Windows.Forms.Label();
             this.CBSpeed = new System.Windows.Forms.ComboBox();
             this.LblAddress = new System.Windows.Forms.Label();
-            this.TxtAddress = new System.Windows.Forms.TextBox();
+            this.TxtAddress = new UserControls.TextInput();
             this.TxtEmulator = new UserControls.TextInput();
             this.BtnConnectDisconnect = new LaserGRBL.UserControls.ImageButton();
             this.TT = new System.Windows.Forms.ToolTip(this.components);
@@ -376,7 +376,7 @@ namespace LaserGRBL
         private System.Windows.Forms.Label LblProgress;
 		private System.Windows.Forms.Label LblFilename;
 		private System.Windows.Forms.Label LblAddress;
-		private System.Windows.Forms.TextBox TxtAddress;
+		private UserControls.TextInput TxtAddress;
 		private System.Windows.Forms.Panel GBFile;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
 		private UserControls.NumericInput.NumericUpDown UDLoopCounter;

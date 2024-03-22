@@ -338,6 +338,8 @@ namespace LaserGRBL
 			UDLoopCounter.BorderColor = ColorScheme.ControlsBorder;
             TxtManualCommand.WaterMarkColor = ColorScheme.ControlsBorder;
             TxtManualCommand.WaterMarkActiveColor = ColorScheme.ControlsBorder;
+			TxtAddress.BorderColor = ColorScheme.ControlsBorder;
+			TxtAddress.BackColor = ColorScheme.FormBackColor;
             PB.Bars.Clear();
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandWait));
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandOK));
