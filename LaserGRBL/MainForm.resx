@@ -1115,6 +1115,9 @@
   <data name="cadStyleToolStripMenuItem.Text" xml:space="preserve">
     <value>CAD Style</value>
   </data>
+  <data name="cadDarkToolStripMenuItem.Text" xml:space="preserve">
+    <value>CAD Dark</value>
+  </data>
   <data name="blueLaserToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 22</value>
   </data>
@@ -10594,6 +10597,12 @@
     <value>cadStyleToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;cadStyleToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cadDarkToolStripMenuItem.Name" xml:space="preserve">
+    <value>cadStyleToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;cadDarkToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;blueLaserToolStripMenuItem.Name" xml:space="preserve">

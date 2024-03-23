@@ -1,5 +1,5 @@
 ﻿using LaserGRBL.UserControls.NumericInput;
-using System.Windows.Forms;
+using System.Drawing;
 
 namespace LaserGRBL.UserControls
 {
@@ -8,6 +8,21 @@ namespace LaserGRBL.UserControls
         public TextInput()
         {
             InitializeComponent();
+        }
+
+        public new Color ForeColor
+        {
+            get => mTextBox.ForeColor;
+            set => mTextBox.ForeColor = value;
+        }
+
+        public new Color BackColor
+        {
+            get => mTextBox.BackColor;
+            set {
+                base.BackColor = value;
+                mTextBox.BackColor = value;
+            }
         }
 
         public new string Text
@@ -22,12 +37,6 @@ namespace LaserGRBL.UserControls
             set => mTextBox.ReadOnly = value;
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            mTextBox.ForeColor = ForeColor;
-            mTextBox.BackColor = BackColor;
-        }
     }
 
 }

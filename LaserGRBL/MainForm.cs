@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Threading;
 using Tools;
+using static LaserGRBL.ColorScheme;
 using static Tools.ModifyProgressBarColor;
 
 namespace LaserGRBL
@@ -126,12 +127,14 @@ namespace LaserGRBL
 		{
 			MMn.BackColor = BackColor = StatusBar.BackColor = ColorScheme.FormBackColor;
 			MMn.ForeColor = ForeColor = ColorScheme.FormForeColor;
-			blueLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.BlueLaser;
-			redLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.RedLaser;
-			darkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Dark;
-			hackerToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Hacker;
-			nightyToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Nighty;
-			TTLinkToNews.LinkColor = ColorScheme.LinkColor;
+            cadStyleToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.CADStyle;
+            cadDarkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.CADDark;
+            blueLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.BlueLaser;
+            redLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.RedLaser;
+            darkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Dark;
+            hackerToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Hacker;
+            nightyToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Nighty;
+            TTLinkToNews.LinkColor = ColorScheme.LinkColor;
 			TTLinkToNews.VisitedLinkColor = ColorScheme.VisitedLinkColor;
 			ConnectionForm.OnColorChange();
 			PreviewForm.OnColorChange();
@@ -664,6 +667,11 @@ namespace LaserGRBL
             SetSchema(ColorScheme.Scheme.CADStyle);
         }
 
+        private void cadDarkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetSchema(ColorScheme.Scheme.CADDark);
+        }
+
         private void blueLaserToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SetSchema(ColorScheme.Scheme.BlueLaser);
@@ -693,7 +701,7 @@ namespace LaserGRBL
 		{
 			Settings.SetObject("Color Schema", schema);
 			ColorScheme.CurrentScheme = schema;
-			RefreshColorSchema();
+            RefreshColorSchema();
 		}
 
 		private void grblConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1143,7 +1151,6 @@ namespace LaserGRBL
 			Rectangle rect = new Rectangle(e.ClipRectangle.X + 1, e.ClipRectangle.Y + 3, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 6);
 			e.Graphics.FillRectangle(new SolidBrush(ColorScheme.ControlsBorder), rect);
         }
-
     }
 
 
@@ -1190,19 +1197,15 @@ namespace LaserGRBL
 
 		protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
 		{
-			//base.OnRenderToolStripBorder(e);
-			
 			if (!e.ConnectedArea.IsEmpty)
             {
-                using (Brush b = new SolidBrush(ColorScheme.ControlsBorder))
-                    e.Graphics.FillRectangle(b, e.ConnectedArea);
                 Rectangle rect = new Rectangle(e.AffectedBounds.X, e.AffectedBounds.Y, e.AffectedBounds.Width - 1, e.AffectedBounds.Height - 1);
 				using (Pen p = new Pen(ColorScheme.ControlsBorder))
 					e.Graphics.DrawRectangle(p, rect);
 			}
-
         }
 	}
+
 	public class CustomMenuColor : ProfessionalColorTable
 	{
 		public override Color SeparatorDark

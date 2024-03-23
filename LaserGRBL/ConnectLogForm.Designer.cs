@@ -295,6 +295,7 @@ namespace LaserGRBL
             // CBPort
             // 
             resources.ApplyResources(this.CBPort, "CBPort");
+            this.CBPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBPort.FormattingEnabled = true;
             this.CBPort.Name = "CBPort";
             this.CBPort.SelectedIndexChanged += new System.EventHandler(this.CBPort_SelectedIndexChanged);

@@ -39,6 +39,7 @@ namespace LaserGRBL.UserControls.NumericInput
             }
             set
             {
+                base.BackColor = value;
                 mNumericUpDown.BackColor = value;
             }
         }

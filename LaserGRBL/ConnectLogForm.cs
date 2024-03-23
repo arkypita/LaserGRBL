@@ -359,6 +359,7 @@ namespace LaserGRBL
 			CBPort.BorderColor = ColorScheme.ControlsBorder;
 			CBPort.ButtonColor = ColorScheme.LogBackColor;
             CBPort.ForeColor = ColorScheme.FormForeColor;
+
             CBSpeed.BackColor = ColorScheme.LogBackColor;
             CBSpeed.BorderColor = ColorScheme.ControlsBorder;
             CBSpeed.ButtonColor = ColorScheme.LogBackColor;

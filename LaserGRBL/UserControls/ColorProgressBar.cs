@@ -304,7 +304,7 @@ namespace LaserGRBL.UserControls
 
 		protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
 		{
-			DrawBackground(e.Graphics);
+			DrawBackground(e);
 			DrawProgres(e.Graphics);
 			if (FillStyle == FillStyles.Dashed)
 				DrawTick(e.Graphics);
@@ -334,84 +334,13 @@ namespace LaserGRBL.UserControls
 
 
 		protected virtual void DrawBorder(PaintEventArgs e)
-		{
-			ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, ColorScheme.ControlsBorder, ButtonBorderStyle.Solid);
-			/*
-			//SALVA HEIGHT E WIDTH PER CALCOLI PIU VELOCI
-			int W = this.ClientRectangle.Width;
-			int H = this.ClientRectangle.Height;
-			Point[] BordoGrigio = {
-				new Point(0, 2),
-				new Point(1, 1),
-				new Point(2, 0),
-				new Point(W - 3, 0),
-				new Point(W - 2, 1),
-				new Point(W - 1, 2),
-				new Point(W - 1, H - 3),
-				new Point(W - 2, H - 2),
-				new Point(W - 3, H - 1),
-				new Point(2, H - 1),
-				new Point(1, H - 2),
-				new Point(0, H - 3),
-				new Point(0, 2)
-			};
-			Point[] OmbraSopra = {
-				new Point(1, 2),
-				new Point(2, 1),
-				new Point(3, 1),
-				new Point(W - 4, 1),
-				new Point(W - 3, 1),
-				new Point(W - 2, 2)
-			};
-
-			g.DrawCurve(Pens.Gray, BordoGrigio, 0);
-			//BordoGrigio
-			g.DrawCurve(Pens.LightGray, OmbraSopra, 0);
-			// Ombra Sopra
-			g.DrawLine(Pens.LightGray, 1, 2, 1, H - 3);
-			//Ombra Lato Sx
-			*/
+        {
+            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, ColorScheme.ControlsBorder, ButtonBorderStyle.Solid);
 		}
 
-		protected virtual void DrawBackground(Graphics g)
+		protected virtual void DrawBackground(PaintEventArgs e)
 		{
-			//SALVA HEIGHT E WIDTH PER CALCOLI PIU VELOCI
-			int W = this.ClientRectangle.Width;
-			int H = this.ClientRectangle.Height;
-
-			//CREA IL PATH DELLA PARTE DA RIEMPIRE CON IL FILLCOLOR (INTERNA AL BORDO)
-			GraphicsPath path = new GraphicsPath();
-			path.AddLines(new Point[] {
-				new Point(1, 2),
-				new Point(2, 1),
-				new Point(3, 0),
-				new Point(W - 3, 0),
-				new Point(W - 2, 1),
-				new Point(W - 1, 2),
-				new Point(W - 1, H - 3),
-				new Point(W - 2, H - 2),
-				new Point(W - 3, H - 1),
-				new Point(3, H - 1),
-				new Point(2, H - 2),
-				new Point(1, H - 3),
-				new Point(1, 2)
-			});
-
-			Region reg = new Region(path);
-			//CREA LA REGION DA RIEMPIRE PARTENDO DAL PATH
-			Color col = default(Color);
-			if (this.Enabled)
-			{
-				col = this.FillColor;
-			}
-			else
-			{
-				col = Color.DarkGray;
-			}
-			using (SolidBrush fillbrush = new SolidBrush(col))
-			{
-				g.FillRegion(fillbrush, reg);
-			}
+			e.Graphics.FillRectangle(new SolidBrush(FillColor), e.ClipRectangle);
 		}
 
 		//L = Larghezza di una tacca

@@ -92,6 +92,7 @@
             this.MNGrblEmulator = new System.Windows.Forms.ToolStripMenuItem();
             this.schemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadDarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blueLaserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redLaserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -612,6 +613,7 @@
             // 
             this.schemaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadStyleToolStripMenuItem,
+			this.cadDarkToolStripMenuItem,			
             this.blueLaserToolStripMenuItem,
             this.redLaserToolStripMenuItem,
             this.darkToolStripMenuItem,
@@ -625,6 +627,12 @@
             this.cadStyleToolStripMenuItem.Name = "cadStyleToolStripMenuItem";
             resources.ApplyResources(this.cadStyleToolStripMenuItem, "cadStyleToolStripMenuItem");
             this.cadStyleToolStripMenuItem.Click += new System.EventHandler(this.cadStyleToolStripMenuItem_Click);
+            // 
+            // cadDarkToolStripMenuItem
+            // 
+            this.cadDarkToolStripMenuItem.Name = "cadDarkToolStripMenuItem";
+            resources.ApplyResources(this.cadDarkToolStripMenuItem, "cadDarkToolStripMenuItem");
+            this.cadDarkToolStripMenuItem.Click += new System.EventHandler(this.cadDarkToolStripMenuItem_Click);
             // 
             // blueLaserToolStripMenuItem
             // 
@@ -1255,6 +1263,7 @@
         private System.Windows.Forms.ToolStripMenuItem showLaserOffMovementsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showExecutedCommandsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadStyleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadDarkToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lineSizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pxToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem pxToolStripMenuItem2;
