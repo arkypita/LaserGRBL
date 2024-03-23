@@ -1066,6 +1066,11 @@ namespace LaserGRBL
 		{
 			Core.OpenFile(this, "LaserGRBL.Generator.SVG.LaserGRBL-accuracy-test-file.svg", false);
 		}
+
+		private void shakeTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Generator.ShakeTest.CreateAndShowDialog(this, Core);
+		}
 	}
 
 

@@ -31,6 +31,9 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
+			this.JogForm = new LaserGRBL.JogForm();
+			this.PreviewForm = new LaserGRBL.PreviewForm();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
@@ -84,7 +87,6 @@
 			this.MnPowerVsSpeed = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnCuttingTest = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnAccuracyTest = new System.Windows.Forms.ToolStripMenuItem();
-			this.MnFocusTest = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNEsp8266 = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNGrblEmulator = new System.Windows.Forms.ToolStripMenuItem();
 			this.schemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -147,9 +149,7 @@
 			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
 			this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
-			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
-			this.JogForm = new LaserGRBL.JogForm();
-			this.PreviewForm = new LaserGRBL.PreviewForm();
+			this.shakeTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -173,6 +173,21 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
 			this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+			// 
+			// ConnectionForm
+			// 
+			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
+			this.ConnectionForm.Name = "ConnectionForm";
+			// 
+			// JogForm
+			// 
+			resources.ApplyResources(this.JogForm, "JogForm");
+			this.JogForm.Name = "JogForm";
+			// 
+			// PreviewForm
+			// 
+			resources.ApplyResources(this.PreviewForm, "PreviewForm");
+			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// StatusBar
 			// 
@@ -537,7 +552,7 @@
             this.MnPowerVsSpeed,
             this.MnCuttingTest,
             this.MnAccuracyTest,
-            this.MnFocusTest});
+            this.shakeTestToolStripMenuItem});
 			this.MnGenerate.Name = "MnGenerate";
 			resources.ApplyResources(this.MnGenerate, "MnGenerate");
 			// 
@@ -558,11 +573,6 @@
 			this.MnAccuracyTest.Name = "MnAccuracyTest";
 			resources.ApplyResources(this.MnAccuracyTest, "MnAccuracyTest");
 			this.MnAccuracyTest.Click += new System.EventHandler(this.MnAccuracyTest_Click);
-			// 
-			// MnFocusTest
-			// 
-			this.MnFocusTest.Name = "MnFocusTest";
-			resources.ApplyResources(this.MnFocusTest, "MnFocusTest");
 			// 
 			// MNEsp8266
 			// 
@@ -986,20 +996,11 @@
 			this.MultipleInstanceTimer.Interval = 1000;
 			this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
 			// 
-			// ConnectionForm
+			// shakeTestToolStripMenuItem
 			// 
-			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
-			this.ConnectionForm.Name = "ConnectionForm";
-			// 
-			// JogForm
-			// 
-			resources.ApplyResources(this.JogForm, "JogForm");
-			this.JogForm.Name = "JogForm";
-			// 
-			// PreviewForm
-			// 
-			resources.ApplyResources(this.PreviewForm, "PreviewForm");
-			this.PreviewForm.Name = "PreviewForm";
+			this.shakeTestToolStripMenuItem.Name = "shakeTestToolStripMenuItem";
+			resources.ApplyResources(this.shakeTestToolStripMenuItem, "shakeTestToolStripMenuItem");
+			this.shakeTestToolStripMenuItem.Click += new System.EventHandler(this.shakeTestToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -1150,7 +1151,7 @@
 		private System.Windows.Forms.ToolStripMenuItem MnPowerVsSpeed;
 		private System.Windows.Forms.ToolStripMenuItem MnCuttingTest;
 		private System.Windows.Forms.ToolStripMenuItem MnAccuracyTest;
-		private System.Windows.Forms.ToolStripMenuItem MnFocusTest;
+		private System.Windows.Forms.ToolStripMenuItem shakeTestToolStripMenuItem;
 	}
 }
 

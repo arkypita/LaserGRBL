@@ -702,6 +702,118 @@ namespace LaserGRBL
 			RiseOnFileLoaded(filename, elapsed);
 		}
 
+		internal void GenerateShakeTest(string axis, int flimit, int axislen, int cpower, int cspeed)
+		{
+			string filename = $"Shake Test {axis}";
+
+			RiseOnFileLoading(filename);
+
+			long start = Tools.HiResTimer.TotalMilliseconds;
+
+			list.Clear();
+			mRange.ResetRange();
+
+			list.Add(new GrblCommand("M5"));                    //laser OFF
+			list.Add(new GrblCommand("G1 F1000 X0 Y0 S0"));     //move to origin (slowly)
+			list.Add(new GrblCommand($"G1 F{cspeed} X7 Y10"));        //positioning
+			list.Add(new GrblCommand("M4"));                    //laser ON
+			list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X13 Y10"));        //drow cross
+			list.Add(new GrblCommand("M5"));                    //laser OFF
+			list.Add(new GrblCommand($"G1 F{cspeed} X10 Y7"));        //positioning
+			list.Add(new GrblCommand("M4"));                    //laser ON
+			list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X10 Y13"));        //drow cross
+			list.Add(new GrblCommand("M5"));                    //laser OFF
+			list.Add(new GrblCommand("G1 F1000 X10 Y10 S0"));     //move to cross center (slowly)
+
+			GenerateShakeTest2(axis, flimit, axislen, 10, 50, 0.5);
+			GenerateShakeTest2(axis, flimit, axislen, 10, 100, 2);
+			GenerateShakeTest2(axis, flimit, axislen, 10, 200, 4);
+			GenerateShakeTest2(axis, flimit, axislen, 10, 400, 8);
+
+			list.Add(new GrblCommand($"G1 F{cspeed} X10 Y10 S0"));     //move to cross center (fast)
+
+			list.Add(new GrblCommand($"G1 F{cspeed} X7 Y10"));        //positioning
+			list.Add(new GrblCommand("M4"));                    //laser ON
+			list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X13 Y10"));        //drow cross
+			list.Add(new GrblCommand("M5"));                    //laser OFF
+			list.Add(new GrblCommand($"G1 F{cspeed} X10 Y7"));        //positioning
+			list.Add(new GrblCommand("M4"));                    //laser ON
+			list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X10 Y13"));        //drow cross
+			list.Add(new GrblCommand("M5"));                    //laser OFF
+			list.Add(new GrblCommand("G1 F1000 X0 Y0 S0"));     //move to origin (slowly)
+
+			Analyze();
+			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+
+			RiseOnFileLoaded(filename, elapsed);
+		}
+
+		long map(long x, long in_min, long in_max, long out_min, long out_max)
+		{
+			return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+		}
+
+		private void GenerateShakeTest2(string axis, int flimit, int axislen, int o, int trip, double step)
+		{
+			for (int c = trip / 2; c < axislen - trip / 2; c += trip) //centro dei punti di oscillazione
+			{
+				for (double i = 0; i < trip / 3; i += step)
+				{
+					list.Add(new GrblCommand($"G1 F{flimit} {axis}{formatnumber(o + c + i)}"));
+					list.Add(new GrblCommand($"G1 F{flimit} {axis}{formatnumber(o + c - i)}"));
+				}
+			}
+		}
+
+		//internal void GenerateShakeTest(string axis, int flimit, int axislen, int cpower, int cspeed)
+		//{
+		//	string filename = $"Shake Test {axis}";
+
+		//	RiseOnFileLoading(filename);
+
+		//	long start = Tools.HiResTimer.TotalMilliseconds;
+
+		//	list.Clear();
+		//	mRange.ResetRange();
+
+		//	list.Add(new GrblCommand("M5"));                    //laser OFF
+		//	list.Add(new GrblCommand("G1 F1000 X0 Y0 S0"));     //move to origin (slowly)
+		//	list.Add(new GrblCommand($"G1 F{cspeed} X7 Y10"));        //positioning
+		//	list.Add(new GrblCommand("M4"));                    //laser ON
+		//	list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X13 Y10"));        //drow cross
+		//	list.Add(new GrblCommand("M5"));                    //laser OFF
+		//	list.Add(new GrblCommand($"G1 F{cspeed} X10 Y7"));        //positioning
+		//	list.Add(new GrblCommand("M4"));                    //laser ON
+		//	list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X10 Y13"));        //drow cross
+		//	list.Add(new GrblCommand("M5"));                    //laser OFF
+		//	list.Add(new GrblCommand("G1 F1000 X10 Y10 S0"));     //move to cross center (slowly)
+
+		//	int ca = 10;
+		//	int da = 1;
+		//	while ((ca + da) < axislen)
+		//	{
+		//		ca += da;
+		//		list.Add(new GrblCommand($"G1 F{flimit} {axis}{ca}"));
+		//		ca -= da;
+		//		list.Add(new GrblCommand($"G1 F{flimit} {axis}{ca}"));
+		//		da += 5;
+		//	}
+
+		//	list.Add(new GrblCommand($"G1 F{cspeed} X7 Y10"));        //positioning
+		//	list.Add(new GrblCommand("M4"));                    //laser ON
+		//	list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X13 Y10"));        //drow cross
+		//	list.Add(new GrblCommand("M5"));                    //laser OFF
+		//	list.Add(new GrblCommand($"G1 F{cspeed} X10 Y7"));        //positioning
+		//	list.Add(new GrblCommand("M4"));                    //laser ON
+		//	list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X10 Y13"));        //drow cross
+		//	list.Add(new GrblCommand("M5"));                    //laser OFF
+
+		//	Analyze();
+		//	long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+
+		//	RiseOnFileLoaded(filename, elapsed);
+		//}
+
 		// For Marlin, as we sen M106 command, we need to know last color send
 		//private int lastColorSend = 0;
 		private void ImageLine2Line(Bitmap bmp, L2LConf c)
