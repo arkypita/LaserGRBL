@@ -864,7 +864,7 @@
     <value>Teste de Foco</value>
   </data>
   <data name="MnGenerate.Text" xml:space="preserve">
-    <value>Gerar</value>
+    <value>Gerador</value>
   </data>
   <data name="shakeTestToolStripMenuItem.Text" xml:space="preserve">
     <value>Teste de Movimentação</value>
