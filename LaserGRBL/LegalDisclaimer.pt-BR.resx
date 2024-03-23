@@ -117,35 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Linhas/mm</value>
+  <data name="LblFree.Text" xml:space="preserve">
+    <value>LaserGRBL é um software gratuito distribuído sem garantias e pode conter bugs. A utilização deste programa está condicionada à aceitação dos riscos que acompanham o uso de dispositivos a laser, riscos que não podem ser evitados e eliminados pelo software. É responsabilidade do usuário tomar as precauções adequadas e usar dispositivos de proteção durante o uso.</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Ajustes da Resolução</value>
-  </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>($100) Resolução do hardware</value>
-  </data>
-  <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Cancelar</value>
-  </data>
-  <data name="LblLinearFillingmm.Text" xml:space="preserve">
-    <value>Passos/mm</value>
-  </data>
-  <data name="LblBorderTracingmm.Text" xml:space="preserve">
-    <value>Linhas/mm</value>
-  </data>
-  <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Confirmar</value>
-  </data>
-  <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>Resolução desejada</value>
-  </data>
-  <data name="linkLabel1.Text" xml:space="preserve">
-    <value>Se a resolução não puder ser alcançada devido ao passo do motor, algumas falhas podem aparecer.
-Clique aqui para obter mais informações</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Resolução calculada</value>
+  <data name="LblNotToy.Text" xml:space="preserve">
+    <value>Gravadores a laser não são brinquedos!
+- Sempre tome precauções para proteger sua visão
+- Esteja ciente do risco de incêndio
+- Tenha cuidado para não respirar os vapores
+- Impedir o acesso de crianças, animais e pessoal não autorizado
+- Nunca deixe a máquina sem vigilância
+- Consulte o manual do gravador para instruções de uso, segurança e manutenção</value>
   </data>
 </root>
