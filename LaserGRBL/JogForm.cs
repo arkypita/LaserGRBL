@@ -4,6 +4,7 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.Icons;
 using System;
 using System.Windows.Forms;
 
@@ -17,7 +18,16 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
             SettingsForm.SettingsChanged += SettingsForm_SettingsChanged;
-		}
+            IconsMgr.PrepareButton(BtnN, "n");
+            IconsMgr.PrepareButton(BtnNE, "ne");
+            IconsMgr.PrepareButton(BtnE, "e");
+            IconsMgr.PrepareButton(BtnSE, "se");
+            IconsMgr.PrepareButton(BtnS, "s");
+            IconsMgr.PrepareButton(BtnSW, "sw");
+            IconsMgr.PrepareButton(BtnW, "w");
+            IconsMgr.PrepareButton(BtnNW, "nw");
+            IconsMgr.PrepareButton(BtnHome, "home");
+        }
 
         public void SetCore(GrblCore core)
 		{

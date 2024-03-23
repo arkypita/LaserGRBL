@@ -11,6 +11,8 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace LaserGRBL.UserControls
 {
@@ -96,6 +98,8 @@ namespace LaserGRBL.UserControls
 			}
 		}
 
+		public bool Pressed { get; set; } = false;
+
 		public enum SizingModes
 		{
 			StretchImage,
@@ -145,28 +149,29 @@ namespace LaserGRBL.UserControls
 				{
 					Size = new Size(this.Width - 1, this.Height - 1);
 				}
-
+				/*
 				if (HasCaption)
 				{
 					Size.Height -= CAPTION_HEIGHT;
 					Size.Width -= CAPTION_HEIGHT;
 					Point.X += (Image.Width - Size.Width) / 2;
 				}
-
+				*/
 
 				if (DrawDisabled())
 				{
-					//Disabilitato
-					Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
-					Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.11F);
-					//Tmp = Base.Drawing.ImageTransform.ChangeAlpha(Tmp, 150);
+                    Tmp = Base.Drawing.ImageTransform.SetColor(Tmp, ColorScheme.DisabledButtons);
 				}
 				else
                 {
+					if (Pressed)
+					{
+                        Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, ColorScheme.DarkScheme ? -0.3f : 0.3f);
+                    }
                     if (!Coloration.Equals(Color.Empty))
                     {
                         Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
-                        Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, -0.5F);
+                        Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, ColorScheme.DarkScheme ? -0.3f : 0.3f);
                         Tmp = Base.Drawing.ImageTransform.Translate(Tmp, Coloration, 0);
                     }
 
@@ -198,6 +203,7 @@ namespace LaserGRBL.UserControls
 					e.Graphics.DrawImage(Tmp, new Rectangle(Point, Size));
 				}
 
+				/*
 				if (this.HasCaption)
 				{
 					StringFormat sf = new StringFormat()
@@ -215,6 +221,7 @@ namespace LaserGRBL.UserControls
 							e.Graphics.DrawString(Caption, captionFont, b, new RectangleF(0f, textY, Width, Height - textY), sf);
 					}
 				}
+				*/
 			}
 
 		}

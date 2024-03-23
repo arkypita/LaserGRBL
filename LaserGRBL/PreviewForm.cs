@@ -4,19 +4,20 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.Icons;
+using LaserGRBL.UserControls;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using LaserGRBL.UserControls;
 
 namespace LaserGRBL
 {
-	/// <summary>
-	/// Description of PreviewForm.
-	/// </summary>
-	public partial class PreviewForm : System.Windows.Forms.UserControl
+    /// <summary>
+    /// Description of PreviewForm.
+    /// </summary>
+    public partial class PreviewForm : System.Windows.Forms.UserControl
 	{
 		private GrblCore mCore;
 		public IGrblPanel GrblPanel { private set; get; } = null;
@@ -26,7 +27,13 @@ namespace LaserGRBL
 			InitializeComponent();
             CreatePanel(Settings.GetObject("LegacyPreview", false));
             CustomButtonArea.OrderChanged += CustomButtonArea_OrderChanged;
-		}
+			IconsMgr.PrepareButton(BtnReset, "reset");
+            IconsMgr.PrepareButton(BtnUnlock, "unlock");
+            IconsMgr.PrepareButton(BtnHoming, "homing");
+            IconsMgr.PrepareButton(BtnResume, "resume");
+            IconsMgr.PrepareButton(BtnStop, "stop");
+            IconsMgr.PrepareButton(BtnZeroing, "zeroing");
+        }
 
         private void CreatePanel(bool isLegacy)
         {
@@ -76,9 +83,11 @@ namespace LaserGRBL
 			BtnStop.Enabled = mCore.CanFeedHold;
 			BtnResume.Enabled = mCore.CanResumeHold;
 			BtnZeroing.Enabled = mCore.CanDoZeroing;
-
 			foreach (CustomButtonIB ib in CustomButtonArea.Controls)
-				ib.RefreshEnabled();
+			{
+                ib.RefreshEnabled();
+            }
+				
 
 			ResumeLayout();
 		}
@@ -117,7 +126,16 @@ namespace LaserGRBL
 			foreach (CustomButton cb in CustomButtons.Buttons)
 			{
 				CustomButtonIB ib = new CustomButtonIB(mCore, cb, this);
-				CustomButtonArea.Controls.Add(ib);
+				switch (ib.Caption)
+				{
+					case "Frame": IconsMgr.PrepareButton(ib, "frame"); break;
+					case "Center": IconsMgr.PrepareButton(ib, "center"); break;
+                    case "Corner": IconsMgr.PrepareButton(ib, "corner"); break;
+                    case "Focus": IconsMgr.PrepareButton(ib, "focus"); break;
+                    case "Blink": IconsMgr.PrepareButton(ib, "blink"); break;
+                }
+                ib.Size = BtnStop.Size;
+                CustomButtonArea.Controls.Add(ib);
 			}
 
 		}
@@ -155,7 +173,7 @@ namespace LaserGRBL
 				Tag = cb;
 
 				//ContextMenuStrip = MNRemEditCB;
-				SizingMode = UserControls.ImageButton.SizingModes.FixedSize;
+				//SizingMode = UserControls.ImageButton.SizingModes.FixedSize;
 				BorderStyle = BorderStyle.FixedSingle;
 				Size = new Size(49, 49);
 				Margin = new Padding(2);
@@ -166,7 +184,7 @@ namespace LaserGRBL
 				cms = new ContextMenuStrip();
 				cms.Items.Add(Strings.CustomButtonRemove, null, RemoveButton_Click);
 				cms.Items.Add(Strings.CustomButtonEdit, null, EditButton_Click);
-
+				BorderStyle = BorderStyle.None;
 				ContextMenuStrip = cms;
 			}
 
@@ -203,7 +221,6 @@ namespace LaserGRBL
 			{
 				base.OnPaint(e);
 
-
 				Rectangle r = new Rectangle(0, 0, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1);
 
 				if (PositionUnlocked)
@@ -237,7 +254,6 @@ namespace LaserGRBL
                 return EmulateMouseInside || base.IsMouseInside();
             }
 
-            private bool on;
             public void PerformClick(EventArgs e)
             {
                 if (((MouseEventArgs)e).Button != MouseButtons.Left)
@@ -251,9 +267,8 @@ namespace LaserGRBL
 
                 if (cb.ButtonType == CustomButton.ButtonTypes.TwoStateButton && !PositionUnlocked)
                 {
-                    on = !on;
-                    Core.ExecuteCustombutton(on ? cb.GCode : cb.GCode2);
-                    BackColor = on ? Color.Orange : Parent.BackColor;
+                    Pressed = !Pressed;
+                    Core.ExecuteCustombutton(Pressed ? cb.GCode : cb.GCode2);
                 }
 
                 base.OnClick(e);
@@ -279,7 +294,7 @@ namespace LaserGRBL
                 if (cb.ButtonType == CustomButton.ButtonTypes.PushButton && !PositionUnlocked)
                 {
                     Core.ExecuteCustombutton(cb.GCode);
-                    BackColor = Color.LightBlue;
+                    Pressed = true;
                 }
 
                 base.OnMouseDown(e);
@@ -302,7 +317,7 @@ namespace LaserGRBL
                 if (cb.ButtonType == CustomButton.ButtonTypes.PushButton && !PositionUnlocked)
                 {
                     Core.ExecuteCustombutton(cb.GCode2);
-                    BackColor = Parent.BackColor;
+					Pressed = false;
                 }
 
                 base.OnMouseUp(e);

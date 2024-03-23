@@ -4,6 +4,7 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.Icons;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -37,7 +38,16 @@ namespace LaserGRBL
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandWait));
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandOK));
 
-			InitSpeedCB();
+			IconsMgr.PrepareButton(BtnRunProgram, "run");
+			BtnRunProgram.Size = new Size(20, 20);
+            IconsMgr.PrepareButton(BtnAbortProgram, "abort");
+            BtnAbortProgram.Size = new Size(20, 20);
+            IconsMgr.PrepareButton(BtnConnectDisconnect, "connect", "disconnect");
+            BtnConnectDisconnect.Size = new Size(20, 20);
+            IconsMgr.PrepareButton(BtnOpen, "open");
+            BtnOpen.Size = new Size(20, 20);
+
+            InitSpeedCB();
 			InitPortCB();
 
 			RestoreConf();
@@ -335,6 +345,7 @@ namespace LaserGRBL
 			TbFileName.BackColor = ColorScheme.LogBackColor;
             TbFileName.ForeColor = ColorScheme.FormForeColor;
 
+            TxtEmulator.BackColor = ColorScheme.LogBackColor;
             TxtEmulator.BorderColor = ColorScheme.ControlsBorder;
             TxtEmulator.ForeColor = ColorScheme.FormForeColor;
 

@@ -153,6 +153,7 @@
       <DependentUpon>ShakeTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Hershey\Hershey.cs" />
+    <Compile Include="Icons\IconsMgr.cs" />
     <Compile Include="LaserLifeEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1301,6 +1302,31 @@
     <EmbeddedResource Include="Generator\SVG\LaserGRBL-accuracy-test-file.svg" />
     <Content Include="Grafica\777494-200.png" />
     <Content Include="Grafica\info.png" />
+    <EmbeddedResource Include="Icons\reset.png" />
+    <EmbeddedResource Include="Icons\unlock.png" />
+    <EmbeddedResource Include="Icons\homing.png" />
+    <EmbeddedResource Include="Icons\resume.png" />
+    <EmbeddedResource Include="Icons\stop.png" />
+    <EmbeddedResource Include="Icons\zeroing.png" />
+    <EmbeddedResource Include="Icons\frame.png" />
+    <EmbeddedResource Include="Icons\center.png" />
+    <EmbeddedResource Include="Icons\corner.png" />
+    <EmbeddedResource Include="Icons\focus.png" />
+    <EmbeddedResource Include="Icons\blink.png" />
+    <EmbeddedResource Include="Icons\w.png" />
+    <EmbeddedResource Include="Icons\e.png" />
+    <EmbeddedResource Include="Icons\n.png" />
+    <EmbeddedResource Include="Icons\ne.png" />
+    <EmbeddedResource Include="Icons\nw.png" />
+    <EmbeddedResource Include="Icons\s.png" />
+    <EmbeddedResource Include="Icons\se.png" />
+    <EmbeddedResource Include="Icons\sw.png" />
+    <EmbeddedResource Include="Icons\home.png" />
+    <EmbeddedResource Include="Icons\run.png" />
+    <EmbeddedResource Include="Icons\abort.png" />
+    <EmbeddedResource Include="Icons\connect.png" />
+    <EmbeddedResource Include="Icons\disconnect.png" />
+    <EmbeddedResource Include="Icons\open.png" />
     <Content Include="Sound\beep.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

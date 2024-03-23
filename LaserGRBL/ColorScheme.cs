@@ -58,7 +58,8 @@ namespace LaserGRBL
 				Color.Purple,				//visited link color
 
 				Color.FromArgb(220,220,220),//controls border
-				Color.FromArgb(180,180,180) //controls background disabled
+				Color.FromArgb(180,180,180),//controls background disabled
+                Color.FromArgb(100,100,100) //disabled buttons
 			});
 			mData.Add(Scheme.CADDark, new Color[]
 			{
@@ -96,7 +97,8 @@ namespace LaserGRBL
 				Color.Purple,				//visited link color
 
 				Color.FromArgb( 64, 67, 85),//controls border
-				Color.FromArgb(180,180,180) //controls background disabled
+				Color.FromArgb(180,180,180),//controls background disabled
+                Color.FromArgb(100,100,100) //disabled buttons
 			});
             mData.Add(Scheme.BlueLaser, new Color[] 
 			{
@@ -134,7 +136,8 @@ namespace LaserGRBL
 				Color.Purple,				//visited link color
 				
 				Color.FromArgb(220,220,220),//controls border
-				Color.FromArgb(180,180,180) //controls background disabled
+				Color.FromArgb(180,180,180),//controls background disabled
+                Color.FromArgb(100,100,100) //disabled buttons
 			});
 			mData.Add(Scheme.RedLaser, new Color[] 
 			{
@@ -172,7 +175,8 @@ namespace LaserGRBL
 				Color.Purple,				//visited link color
 				
 				Color.FromArgb(220,220,220),//controls border
-				Color.FromArgb(180,180,180) //controls background disabled
+				Color.FromArgb(180,180,180),//controls background disabled
+                Color.FromArgb(100,100,100) //disabled buttons
 			});
 			mData.Add(Scheme.Dark, new Color[] 
 			{
@@ -210,7 +214,8 @@ namespace LaserGRBL
 				Color.Violet,				//visited link color
 
                 Color.FromArgb( 39, 54, 85),//controls border
-				Color.FromArgb(180,180,180) //controls background disabled
+				Color.FromArgb(180,180,180),//controls background disabled
+                Color.FromArgb(100,100,100) //disabled buttons
 			});
 			mData.Add(Scheme.Hacker, new Color[] 
 			{
@@ -248,7 +253,8 @@ namespace LaserGRBL
 				Color.Violet,				//visited link color
 
                 Color.FromArgb( 15, 25, 50),//controls border
-				Color.FromArgb(180,180,180) //controls background disabled
+				Color.FromArgb(180,180,180),//controls background disabled
+                Color.FromArgb(100,100,100) //disabled buttons
 			});
             mData.Add(Scheme.Nighty, new Color[]
             {
@@ -285,7 +291,8 @@ namespace LaserGRBL
 				Color.Yellow,				//link color
 				Color.Violet,				//visited link color
                 Color.FromArgb( 40, 40, 40),//controls border
-				Color.FromArgb(180,180,180) //controls background disabled
+				Color.FromArgb(180,180,180),//controls background disabled
+                Color.FromArgb(100,100,100) //disabled buttons
             });
 
             CurrentScheme = Scheme.RedLaser;
@@ -394,6 +401,8 @@ namespace LaserGRBL
         public static Color ControlsBackDisabled
         { get { return GetColor(29); } }
 
+        public static Color DisabledButtons
+        { get { return GetColor(30); } }
 
         private static Color GetColor(int index)
 		{return mData[CurrentScheme][index];}
