@@ -1011,6 +1011,7 @@
     <Compile Include="UserControls\TextInput.Designer.cs">
       <DependentUpon>TextInput.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ThemeMgr.cs" />
     <Compile Include="UserControls\UsageClassPreview.cs">
       <SubType>UserControl</SubType>
     </Compile>

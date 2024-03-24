@@ -8,11 +8,10 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using LaserGRBL;
 
 namespace LaserGRBL.UserControls
 {
-	public partial class CommandLog : UserControl
+    public partial class CommandLog : UserControl
 	{
 		GrblCore mCom;
 		int RowHeight = 16;
@@ -27,7 +26,7 @@ namespace LaserGRBL.UserControls
 			SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 			SetStyle(ControlStyles.AllPaintingInWmPaint, true);
 			SetStyle(ControlStyles.ResizeRedraw, true);
-		}
+        }
 
 		public void SetCom(GrblCore core)
 		{ mCom = core; }
@@ -144,5 +143,11 @@ namespace LaserGRBL.UserControls
 				mPosition = position;
 			}
 		}
+
+		public void OnColorChange()
+		{
+            ThemeMgr.SetTheme(ScrollBar);
+        }
+
 	}
 }

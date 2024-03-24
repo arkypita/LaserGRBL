@@ -59,7 +59,7 @@ namespace LaserGRBL
 
 				Color.FromArgb(220,220,220),//controls border
 				Color.FromArgb(180,180,180),//controls background disabled
-                Color.FromArgb(100,100,100) //disabled buttons
+                Color.FromArgb(220,220,220) //disabled buttons
 			});
 			mData.Add(Scheme.CADDark, new Color[]
 			{
@@ -98,7 +98,7 @@ namespace LaserGRBL
 
 				Color.FromArgb( 64, 67, 85),//controls border
 				Color.FromArgb(180,180,180),//controls background disabled
-                Color.FromArgb(100,100,100) //disabled buttons
+                Color.FromArgb( 25, 30, 41)//disabled buttons
 			});
             mData.Add(Scheme.BlueLaser, new Color[] 
 			{
@@ -137,7 +137,7 @@ namespace LaserGRBL
 				
 				Color.FromArgb(220,220,220),//controls border
 				Color.FromArgb(180,180,180),//controls background disabled
-                Color.FromArgb(100,100,100) //disabled buttons
+                Color.FromArgb( 70, 70, 70) //disabled buttons
 			});
 			mData.Add(Scheme.RedLaser, new Color[] 
 			{

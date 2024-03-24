@@ -10,6 +10,8 @@ using LaserGRBL.WiFiConfigurator;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Web.UI;
 using System.Windows.Forms;
 using System.Windows.Threading;
 using Tools;
@@ -19,8 +21,9 @@ using static Tools.ModifyProgressBarColor;
 namespace LaserGRBL
 {
     public partial class MainForm : Form
-	{
-		private GrblCore Core;
+    {
+
+        private GrblCore Core;
 		private UsageStats.MessageData ToolBarMessage;
 		private bool IsBufferStuck = false;
 		private bool MultiRunShown = false;
@@ -32,7 +35,6 @@ namespace LaserGRBL
         public MainForm()
 		{
 			InitializeComponent();
-
             mLineWidthMenu = new List<ToolStripMenuItem>()
             {
                 pxToolStripMenuItem1,
@@ -137,7 +139,8 @@ namespace LaserGRBL
             nightyToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Nighty;
             TTLinkToNews.LinkColor = ColorScheme.LinkColor;
 			TTLinkToNews.VisitedLinkColor = ColorScheme.VisitedLinkColor;
-			ConnectionForm.OnColorChange();
+			ThemeMgr.SetTheme(this);
+            ConnectionForm.OnColorChange();
 			PreviewForm.OnColorChange();
 			IconsMgr.OnColorChannge();
 			RefreshOverride();

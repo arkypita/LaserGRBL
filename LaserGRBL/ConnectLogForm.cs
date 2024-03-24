@@ -381,7 +381,8 @@ namespace LaserGRBL
             PB.Bars.Clear();
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandWait));
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandOK));
-			CmdLog.Invalidate();
+            CmdLog.OnColorChange();
+            CmdLog.Invalidate();
 		}
 
 		private void TxtManualCommand_Enter(object sender, EventArgs e)
