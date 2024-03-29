@@ -98,10 +98,14 @@ namespace LaserGRBL.UserControls
 
         private void SetWorldPosition(double left, double right, double bottom, double top)
         {
-            double max = 2000;
+            // max viewport size
+            const double max = 2000;
+            // compute size
             double width = right - left;
             double height = top - bottom;
+            // exit if max viewport reached
             if (width > max * 2 || height > max * 2) return;
+            // fix min and max
             if (left < -max)
             {
                 left = -max;
@@ -122,6 +126,7 @@ namespace LaserGRBL.UserControls
                 top = max;
                 bottom = top - height;
             }
+            // set new camera coords
             mCamera.Left = left;
             mCamera.Right = right;
             mCamera.Bottom = bottom;
@@ -130,9 +135,17 @@ namespace LaserGRBL.UserControls
 
         private void GrblPanel3D_Resize(object sender, EventArgs e)
         {
+            // compute ratiobesed on last size
             double wRatio = Width / mLastControlSize.X;
             double hRatio = Height / mLastControlSize.Y;
+            // define max ratio
+            double max = Math.Max(Math.Abs(wRatio), Math.Abs(hRatio));
+            // normalize ratio (only values less than 1 are valid)
+            wRatio = wRatio / max;
+            hRatio = hRatio / max;
+            // set world positions
             SetWorldPosition(mCamera.Left * wRatio, mCamera.Right * wRatio, mCamera.Bottom * hRatio, mCamera.Top * hRatio);
+            // save last size
             mLastControlSize = new PointF(Width, Height);
         }
 
@@ -377,17 +390,20 @@ namespace LaserGRBL.UserControls
 
         private void GrblSceneControl_MouseDown(object sender, MouseEventArgs e)
         {
-            Cursor.Current = Cursors.SizeAll;
+            Cursor.Current = Cursors.Cross;
             mLastMousePos = e.Location;
         }
 
         private void GrblSceneControl_MouseMove(object sender, MouseEventArgs e)
         {
+            // compute mouse coord
             double xp = e.X / (double)Width * (mCamera.Right - mCamera.Left) + mCamera.Left;
             double yp = (Height - e.Y) / (double)Height * (mCamera.Top - mCamera.Bottom) + mCamera.Bottom;
             mMouseWorldPosition = new PointF((float)xp, (float)yp);
+            // if in drag
             if (mLastMousePos != null && e.Button == MouseButtons.Left)
             {
+                Cursor.Current = Cursors.SizeAll;
                 Point lastPos = (Point)mLastMousePos;
                 double k = (mCamera.Right - mCamera.Left) / Width;
                 double dx = e.X - lastPos.X;
@@ -399,14 +415,17 @@ namespace LaserGRBL.UserControls
 
         private void GrblSceneControl_MouseWheel(object sender, MouseEventArgs e)
         {
-            float k = e.Delta / 1000f;
-            PointF mousePos = (PointF)mMouseWorldPosition;
-            SetWorldPosition(
-                mCamera.Left + (mousePos.X - mCamera.Left) * k,
-                mCamera.Right - (mCamera.Right - mousePos.X) * k,
-                mCamera.Bottom + (mousePos.Y - mCamera.Bottom) * k,
-                mCamera.Top - (mCamera.Top - mousePos.Y) * k
-            );
+            if (mMouseWorldPosition != null)
+            {
+                float k = e.Delta / 1000f;
+                PointF mousePos = (PointF)mMouseWorldPosition;
+                SetWorldPosition(
+                    mCamera.Left + (mousePos.X - mCamera.Left) * k,
+                    mCamera.Right - (mCamera.Right - mousePos.X) * k,
+                    mCamera.Bottom + (mousePos.Y - mCamera.Bottom) * k,
+                    mCamera.Top - (mCamera.Top - mousePos.Y) * k
+                );
+            }
         }
 
         public void SetCore(GrblCore core)
@@ -415,6 +434,12 @@ namespace LaserGRBL.UserControls
             Core.OnFileLoaded += OnFileLoaded;
             Core.ShowExecutedCommands.OnChange += ShowExecutedCommands_OnChange;
             Core.PreviewLineSize.OnChange += PrerviewLineSize_OnChange;
+            Core.OnAutoSizeDrawing += Core_OnAutoSizeDrawing;
+        }
+
+        private void Core_OnAutoSizeDrawing(GrblCore obj)
+        {
+            AutoSizeDrawing();
         }
 
         private void PrerviewLineSize_OnChange(Tools.RetainedSetting<float> obj)

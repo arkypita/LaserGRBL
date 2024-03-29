@@ -261,8 +261,9 @@ namespace LaserGRBL
 		public event dlgOnOverrideChange OnOverrideChange;
 		public event dlgOnLoopCountChange OnLoopCountChange;
 		public event dlgJogStateChange JogStateChange;
+		public event Action<GrblCore> OnAutoSizeDrawing;
 
-		private System.Windows.Forms.Control syncro;
+        private System.Windows.Forms.Control syncro;
 		protected ComWrapper.IComWrapper com;
 		private GrblFile file;
 		private System.Collections.Generic.Queue<GrblCommand> mQueue; //vera coda di quelli da mandare
@@ -3056,7 +3057,12 @@ namespace LaserGRBL
 			}
 		}
 
-		public virtual bool UIShowGrblConfig => true;
+        public void AutoSizeDrawing()
+        {
+			OnAutoSizeDrawing?.Invoke(this);
+        }
+
+        public virtual bool UIShowGrblConfig => true;
 		public virtual bool UIShowUnlockButtons => true;
 
 		public bool IsOrturBoard { get => GrblVersion != null && GrblVersion.IsOrtur; }
