@@ -69,8 +69,8 @@ namespace LaserGRBL
 				Color.FromArgb( 23, 30, 38),//preview background
 				Color.FromArgb(220,220,220),//preview text
 				Color.FromArgb( 69, 78,101),//preview grid origins
-				Color.FromArgb( 49, 55, 70),//preview grid?
-				Color.FromArgb( 38, 45, 55),//preview grid minor?
+				Color.FromArgb( 39, 45, 60),//preview grid?
+				Color.FromArgb( 28, 35, 45),//preview grid minor?
 				Color.LightGray,			//preview reference line
 				Color.Blue,					//preview first line
 				Color.FromArgb( 60, 82, 85),//preview other line
@@ -98,7 +98,7 @@ namespace LaserGRBL
 
 				Color.FromArgb( 64, 67, 85),//controls border
 				Color.FromArgb(180,180,180),//controls background disabled
-                Color.FromArgb( 25, 30, 41)//disabled buttons
+                Color.FromArgb( 18, 20, 23)//disabled buttons
 			});
             mData.Add(Scheme.BlueLaser, new Color[] 
 			{
