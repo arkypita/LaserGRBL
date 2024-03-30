@@ -33,8 +33,8 @@
 			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.richTextBox2 = new System.Windows.Forms.RichTextBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnDonate = new System.Windows.Forms.Button();
-			this.BtnContinue = new System.Windows.Forms.Button();
+			this.BtnDonate = new LaserGRBL.UserControls.GrblButton();
+			this.BtnContinue = new LaserGRBL.UserControls.GrblButton();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.SuspendLayout();
@@ -150,7 +150,7 @@
 		private System.Windows.Forms.RichTextBox richTextBox1;
 		private System.Windows.Forms.RichTextBox richTextBox2;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-		private System.Windows.Forms.Button BtnContinue;
-		private System.Windows.Forms.Button BtnDonate;
+		private LaserGRBL.UserControls.GrblButton BtnContinue;
+		private LaserGRBL.UserControls.GrblButton BtnDonate;
 	}
 }

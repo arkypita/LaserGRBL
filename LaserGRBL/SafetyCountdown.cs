@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+﻿using LaserGRBL.Icons;
+using LaserGRBL.UserControls;
+using System;
 using System.Media;
-using System.Text;
 using System.Windows.Forms;
 
 namespace LaserGRBL
 {
-	public partial class SafetyCountdown : Form
+    public partial class SafetyCountdown : Form
 	{
 		int down;
 		string lbl;
@@ -19,7 +15,13 @@ namespace LaserGRBL
 		public SafetyCountdown()
 		{
 			InitializeComponent();
-			down = 5;
+			BackColor = ColorScheme.FormBackColor;
+			ForeColor = ColorScheme.FormForeColor;
+			ThemeMgr.SetTheme(this);
+			IconsMgr.PreparePictureBox(pictureBox1, "safety");
+			IconsMgr.PrepareButton(BtnStart, "ok");
+            IconsMgr.PrepareButton(BtnCancel, "cancel");
+            down = 5;
 			lbl = BtnStart.Text;
 			BtnStart.Text = $"{lbl} ({down})";
 		}

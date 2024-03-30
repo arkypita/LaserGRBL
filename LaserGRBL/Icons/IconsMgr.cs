@@ -3,6 +3,7 @@ using LaserGRBL.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -11,7 +12,7 @@ namespace LaserGRBL.Icons
     public static class IconsMgr
     {
         // buttons list
-        private static List<Control> mControls = new List<Control>();
+        private static List<object> mControls = new List<object>();
         // light color set
         private static Dictionary<string, Color> mLightIconColors = new Dictionary<string, Color>
         {
@@ -39,6 +40,7 @@ namespace LaserGRBL.Icons
             { "connect"          , Color.FromArgb(  0,173, 16) },
             { "disconnect"       , Color.FromArgb(236, 58, 58) },
             { "open"             , Color.FromArgb( 88,119,232) },
+            { "append"           , Color.FromArgb(  0,173, 16) },
             { "ok"               , Color.FromArgb(  0,173, 16) },
             { "cancel"           , Color.FromArgb(236, 58, 58) },
             { "info"             , Color.FromArgb(  0,122,217) },
@@ -58,6 +60,15 @@ namespace LaserGRBL.Icons
             { "invert"           , Color.FromArgb( 19,169,142) },
             { "magicwand"        , Color.FromArgb( 19,169,142) },
             { "revert"           , Color.FromArgb(  0,173, 16) },
+            { "heart"            , Color.FromArgb(236, 58, 58) },
+            { "safety"           , Color.FromArgb( 79,188,243) },
+            { "config"           , Color.FromArgb( 79,188,243) },
+            { "settings"         , Color.FromArgb(  0,122,217) },
+            { "stats"            , Color.FromArgb(231, 70,143) },
+            { "keyboard"         , Color.FromArgb(230,138,  7) },
+            { "save"             , Color.FromArgb(230,138,  7) },
+            { "saveadvanced"     , Color.FromArgb(230,138,  7) },
+            { "saveproject"      , Color.FromArgb(230,138,  7) },
         };
         // dark color set
         private static Dictionary<string, Color> mDarkIconColors = new Dictionary<string, Color>
@@ -86,6 +97,7 @@ namespace LaserGRBL.Icons
             { "connect"          , Color.FromArgb( 71,200, 86) },
             { "disconnect"       , Color.FromArgb(228, 60, 60) },
             { "open"             , Color.FromArgb( 85,231,192) },
+            { "append"           , Color.FromArgb( 71,200, 86) },
             { "ok"               , Color.FromArgb( 71,200, 86) },
             { "cancel"           , Color.FromArgb(228, 60, 60) },
             { "info"             , Color.FromArgb(  0,122,217) },
@@ -105,29 +117,57 @@ namespace LaserGRBL.Icons
             { "invert"           , Color.FromArgb( 85,231,192) },
             { "magicwand"        , Color.FromArgb( 85,231,192) },
             { "revert"           , Color.FromArgb( 71,200, 86) },
+            { "heart"            , Color.FromArgb(228, 60, 60) },
+            { "safety"           , Color.FromArgb( 79,188,243) },
+            { "config"           , Color.FromArgb( 79,188,243) },
+            { "settings"         , Color.FromArgb(  0,122,217) },
+            { "stats"            , Color.FromArgb(243, 79,133) },
+            { "keyboard"         , Color.FromArgb(246,163, 41) },
+            { "save"             , Color.FromArgb(246,163, 41) },
+            { "saveadvanced"     , Color.FromArgb(246,163, 41) },
+            { "saveproject"      , Color.FromArgb(246,163, 41) },
         };
         // current icon colors
         private static Dictionary<string, Color> mIconColors = mLightIconColors;
 
         // reload image
-        private static Image LoadImage(object resourceName)
+        private static Image LoadImage(object resourceName, int width = 0, int height = 0)
         {
+            // load image
             Assembly assembly = Assembly.GetExecutingAssembly();
             Bitmap image = new Bitmap(assembly.GetManifestResourceStream($"LaserGRBL.Icons.{resourceName}.png"));
+            Image result = image;
+            // if resize needed
+            if (width > 0 && height > 0)
+            {
+                Bitmap newImage = new Bitmap(16, 16);
+                using (Graphics g = Graphics.FromImage(newImage))
+                {
+                    g.SmoothingMode = SmoothingMode.AntiAlias;
+                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    g.DrawImage(image, 0, 0, width, height);
+                }
+                image.Dispose();
+                result = newImage;
+            }
+            // colorize
             if (mIconColors.TryGetValue((string)resourceName, out Color color))
             {
-                return ImageTransform.SetColor(image, color);
+                result = ImageTransform.SetColor(result, color);
             }
-            Image result = image;
+            // set resource link
             result.Tag = resourceName;
             return result;
         }
 
         // add control to list
-        private static void AddControl(Control control)
+        private static void AddControl(object control)
         {
             mControls.Add(control);
-            control.Disposed += ControlDisposed;
+            if (control is Control ctrl)
+            {
+                ctrl.Disposed += ControlDisposed;
+            }
         }
 
         // prepare button
@@ -150,6 +190,20 @@ namespace LaserGRBL.Icons
             AddControl(button);
         }
 
+        // prepare picturebox
+        public static void PreparePictureBox(PictureBox pictureBox, string resourceName)
+        {
+            pictureBox.Image = LoadImage(resourceName);
+            AddControl(pictureBox);
+        }
+
+        // prepare menu item
+        public static void PrepareMenuItem(ToolStripMenuItem item, string resourceName)
+        {
+            item.Image = LoadImage(resourceName, 16, 16);
+            AddControl(item);
+        }
+
         private static void ControlDisposed(object sender, EventArgs e)
         {
             mControls.RemoveAt(mControls.IndexOf(sender as Control));
@@ -158,16 +212,24 @@ namespace LaserGRBL.Icons
         internal static void OnColorChannge()
         {
             mIconColors = ColorScheme.DarkScheme ? mDarkIconColors : mLightIconColors;
-            foreach (Control button in mControls)
+            foreach (object control in mControls)
             {
-                if (button is ImageButton imageBtn)
+                if (control is ImageButton imageBtn)
                 {
                     if (imageBtn.Image?.Tag != null) imageBtn.Image = LoadImage(imageBtn.Image.Tag);
                     if (imageBtn.AltImage?.Tag != null) imageBtn.AltImage = LoadImage(imageBtn.AltImage.Tag);
                 }
-                if (button is GrblButton grblBtn)
+                if (control is GrblButton grblBtn)
                 {
                     if (grblBtn.Image != null) grblBtn.Image = LoadImage(grblBtn.Image.Tag);
+                }
+                if (control is PictureBox pictureBox)
+                {
+                    if (pictureBox.Image != null) pictureBox.Image = LoadImage(pictureBox.Image.Tag);
+                }
+                if (control is ToolStripMenuItem item)
+                {
+                    if (item.Image != null) item.Image = LoadImage(item.Image.Tag, item.Image.Width, item.Image.Height);
                 }
             }
 

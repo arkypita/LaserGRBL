@@ -194,7 +194,10 @@ namespace LaserGRBL.RasterConverter
 		internal static void CreateAndShowDialog(GrblCore core, string filename, Form parent, bool append)
 		{
 			using (RasterToLaserForm f = new RasterToLaserForm(core, filename, append))
-				f.ShowDialog(parent);
+			{
+				f.Icon = parent.Icon;
+                f.ShowDialog(parent);
+            }	
 		}
 
 		void GoodInput(object sender, KeyPressEventArgs e)

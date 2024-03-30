@@ -1353,6 +1353,16 @@
     <EmbeddedResource Include="Icons\fill.png" />
     <EmbeddedResource Include="Icons\invert.png" />
     <EmbeddedResource Include="Icons\magicwand.png" />
+    <EmbeddedResource Include="Icons\heart.png" />
+    <EmbeddedResource Include="Icons\safety.png" />
+    <EmbeddedResource Include="Icons\settings.png" />
+    <EmbeddedResource Include="Icons\config.png" />
+    <EmbeddedResource Include="Icons\stats.png" />
+    <EmbeddedResource Include="Icons\keyboard.png" />
+    <EmbeddedResource Include="Icons\append.png" />
+    <EmbeddedResource Include="Icons\save.png" />
+    <EmbeddedResource Include="Icons\saveadvanced.png" />
+    <EmbeddedResource Include="Icons\saveproject.png" />
     <Content Include="Sound\beep.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -47,7 +47,6 @@ namespace LaserGRBL
             MnOrtur.Visible = false;
 			MMn.Renderer = new MMnRenderer();
 
-
 			splitContainer1.FixedPanel = FixedPanel.Panel1;
 			splitContainer1.SplitterDistance = Settings.GetObject("MainForm Splitter Position", 260);
 
@@ -102,8 +101,26 @@ namespace LaserGRBL
 
 			GitHub.NewVersion += GitHub_NewVersion;
 
-			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser); ;
-			RefreshColorSchema(); //include RefreshOverride();
+			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser);
+
+			IconsMgr.PrepareMenuItem(MnConnect, "connect");
+            IconsMgr.PrepareMenuItem(MnDisconnect, "disconnect");
+            IconsMgr.PrepareMenuItem(MnGrblReset, "reset");
+            IconsMgr.PrepareMenuItem(MnUnlock, "unlock");
+            IconsMgr.PrepareMenuItem(MnGrblConfig, "config");
+            IconsMgr.PrepareMenuItem(settingsToolStripMenuItem, "settings");
+            IconsMgr.PrepareMenuItem(MnMaterialDB, "book");
+            IconsMgr.PrepareMenuItem(laserUsageStatsToolStripMenuItem, "stats");
+            IconsMgr.PrepareMenuItem(MnHotkeys, "keyboard");
+            IconsMgr.PrepareMenuItem(MnFileOpen, "open");
+            IconsMgr.PrepareMenuItem(MnFileAppend, "append");
+            IconsMgr.PrepareMenuItem(MnSaveProgram, "save");
+            IconsMgr.PrepareMenuItem(MnAdvancedSave, "saveadvanced");
+            IconsMgr.PrepareMenuItem(MnSaveProject, "saveproject");
+
+            IconsMgr.PrepareMenuItem(MnExit, "cancel");
+
+            RefreshColorSchema(); //include RefreshOverride();
 			RefreshFormTitle();
 		}
 
