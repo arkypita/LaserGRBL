@@ -953,7 +953,7 @@
     <value>GbPassthrough</value>
   </data>
   <data name="&gt;&gt;GbPassthrough.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GbPassthrough.Parent" xml:space="preserve">
     <value>TlpLeft</value>
@@ -1598,7 +1598,7 @@
     <value>GbParameters</value>
   </data>
   <data name="&gt;&gt;GbParameters.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GbParameters.Parent" xml:space="preserve">
     <value>TlpLeft</value>
@@ -1868,7 +1868,7 @@
     <value>GbCenterlineOptions</value>
   </data>
   <data name="&gt;&gt;GbCenterlineOptions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GbCenterlineOptions.Parent" xml:space="preserve">
     <value>TlpLeft</value>
@@ -1893,21 +1893,6 @@
   </data>
   <data name="BtnAdaptiveQualityInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
-  </data>
-  <data name="BtnAdaptiveQualityInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
-        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
-        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
-        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
-        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
-        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
-        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
-        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
-        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
-        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
-</value>
   </data>
   <data name="BtnAdaptiveQualityInfo.Location" type="System.Drawing.Point, System.Drawing">
     <value>214, 99</value>
@@ -2593,21 +2578,6 @@
   <data name="BtnFillingQualityInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="BtnFillingQualityInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
-        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
-        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
-        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
-        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
-        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
-        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
-        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
-        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
-        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="BtnFillingQualityInfo.Location" type="System.Drawing.Point, System.Drawing">
     <value>214, 167</value>
   </data>
@@ -2714,7 +2684,7 @@
     <value>GbVectorizeOptions</value>
   </data>
   <data name="&gt;&gt;GbVectorizeOptions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GbVectorizeOptions.Parent" xml:space="preserve">
     <value>TlpLeft</value>
@@ -2989,21 +2959,6 @@
   <data name="BtnQualityInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="BtnQualityInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIMSURBVDhPpc9PSNNhHMfxZ7/pQYIOHioMojBnyMLN
-        FUSOiNEfWyASls0Fk2jVdEwTCzwU5aXoUHaxoEOHDh2m/bECFZZ/1qFyQ1JYI+kPg3JQW3qwjS6fns8z
-        /fHLgxE98IIvz/O8nx8/AeC/CHP1kDS8xmwbaZX6pchf8E6ramS79MBQm8M7PRO6tZC7cOcn/rSI87cL
-        uvoW0XZjPmf3vJ1hU3hg+3MaCN6cz/muzMGooTOprNz3X/uWY8NWmK2DNBrq/YGm7k86d3Ba/mJhcTae
-        +a+mwYatMFc9otGz19Oo70jo9p2OLeVQs/HsxKXPYMNWaJVhGmvpSeFgYErnOvUGlrqHKN/fj0r3Y2w9
-        MKBwdvomwIat0Coe0Lj34gf1pb0nX8PeGIHl0CBisRji8Tgq6p7A4n6mqzkaARu2Qiu/T+NN3e9R63sF
-        65ExVDW8wLb6YRUnEgk1c2+Z/VgUbNgKbfM9mjjcnoTNM4nq4wXWxqiKU6mUmpf3qcYbAxu2Qtt0l6Ku
-        4EfsbEnqbJ64ijOZjJqNZ8SGrdA29tFLVyiN3We+6Hb43qk4m82q2XhGbNgKbX0vPXUG5vJ72hdgZG+e
-        Ulbu7/J/zbNhK0xFW4Rp7eWOMkd41hn4nnd1/cJqauWdDTXhWTZsuUqFqdQhipp7RPG5EVHcObk6eYd3
-        2bCVq0RaJ5X9I9mIkt+LaQarb80ZCAAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="BtnQualityInfo.Location" type="System.Drawing.Point, System.Drawing">
     <value>214, 55</value>
   </data>
@@ -3077,7 +3032,7 @@
     <value>GbLineToLineOptions</value>
   </data>
   <data name="&gt;&gt;GbLineToLineOptions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GbLineToLineOptions.Parent" xml:space="preserve">
     <value>TlpLeft</value>
@@ -3329,7 +3284,7 @@
     <value>GbConversionTool</value>
   </data>
   <data name="&gt;&gt;GbConversionTool.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GbConversionTool.Parent" xml:space="preserve">
     <value>TlpLeft</value>

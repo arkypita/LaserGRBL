@@ -39,6 +39,14 @@ namespace LaserGRBL.RasterConverter
             ThemeMgr.SetTheme(this, true);
             IconsMgr.PrepareButton(BtnCreate, "ok");
             IconsMgr.PrepareButton(BtnCancel, "cancel");
+            IconsMgr.PrepareButton(BtnAdaptiveQualityInfo, "info");
+			BtnAdaptiveQualityInfo.Size = new Size(16, 16);
+            IconsMgr.PrepareButton(BtnFillingQualityInfo, "info");
+            BtnFillingQualityInfo.Size = new Size(16, 16);
+            IconsMgr.PrepareButton(BtnQualityInfo, "info");
+            BtnQualityInfo.Size = new Size(16, 16);
+
+            IconsMgr.PrepareButton(BtnCreate, "ok");
 
             IP = new ImageProcessor(core, filename, GetImageSize(), append);
 			//PbOriginal.Image = IP.Original;
@@ -408,8 +416,8 @@ namespace LaserGRBL.RasterConverter
 
 		private void RefreshVE()
 		{
-			GbParameters.Enabled = !RbNoProcessing.Checked;
-			GbVectorizeOptions.Visible = RbVectorize.Checked;
+            GbParameters.Visible = !RbNoProcessing.Checked;
+            GbVectorizeOptions.Visible = RbVectorize.Checked;
 			GbCenterlineOptions.Visible = RbCenterline.Checked;
 			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
 			GbPassthrough.Visible = RbNoProcessing.Checked;

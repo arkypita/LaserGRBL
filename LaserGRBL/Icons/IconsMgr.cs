@@ -41,6 +41,7 @@ namespace LaserGRBL.Icons
             { "open"      , Color.FromArgb( 88,119,232) },
             { "ok"        , Color.FromArgb(  0,173, 16) },
             { "cancel"    , Color.FromArgb(236, 58, 58) },
+            { "info"      , Color.FromArgb(  0,122,217) },
         };
         // dark color set
         private static Dictionary<string, Color> mDarkIconColors = new Dictionary<string, Color>
@@ -71,6 +72,7 @@ namespace LaserGRBL.Icons
             { "open"      , Color.FromArgb( 85,231,192) },
             { "ok"        , Color.FromArgb( 71,200, 86) },
             { "cancel"    , Color.FromArgb(228, 60, 60) },
+            { "info"      , Color.FromArgb(  0,122,217) },
         };
         // current icon colors
         private static Dictionary<string, Color> mIconColors = mLightIconColors;

@@ -49,9 +49,9 @@
 			this.BtnReverse = new LaserGRBL.UserControls.ImageButton();
 			this.BtnAutoTrim = new LaserGRBL.UserControls.ImageButton();
 			this.TlpLeft = new System.Windows.Forms.TableLayoutPanel();
-			this.GbPassthrough = new System.Windows.Forms.GroupBox();
+			this.GbPassthrough = new LaserGRBL.UserControls.GrblGroupBox();
 			this.TbPassthroughInfo = new LaserGRBL.UserControls.TextInput();
-			this.GbParameters = new System.Windows.Forms.GroupBox();
+			this.GbParameters = new LaserGRBL.UserControls.GrblGroupBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.CbResize = new LaserGRBL.UserControls.EnumComboBox();
 			this.LblGrayscale = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@
 			this.TbThreshold = new LaserGRBL.UserControls.ColorSlider();
 			this.TBWhiteClip = new LaserGRBL.UserControls.ColorSlider();
 			this.label4 = new System.Windows.Forms.Label();
-			this.GbCenterlineOptions = new System.Windows.Forms.GroupBox();
+			this.GbCenterlineOptions = new LaserGRBL.UserControls.GrblGroupBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
@@ -79,7 +79,7 @@
 			this.TBCornerThreshold = new LaserGRBL.UserControls.ColorSlider();
 			this.CbLineThreshold = new System.Windows.Forms.CheckBox();
 			this.CbCornerThreshold = new System.Windows.Forms.CheckBox();
-			this.GbVectorizeOptions = new System.Windows.Forms.GroupBox();
+			this.GbVectorizeOptions = new LaserGRBL.UserControls.GrblGroupBox();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnAdaptiveQualityInfo = new LaserGRBL.UserControls.ImageButton();
 			this.CbAdaptiveQuality = new System.Windows.Forms.CheckBox();
@@ -104,7 +104,7 @@
 			this.lOptimizeFast = new System.Windows.Forms.Label();
 			this.BtnFillingQualityInfo = new LaserGRBL.UserControls.ImageButton();
 			this.CbOptimizeFast = new System.Windows.Forms.CheckBox();
-			this.GbLineToLineOptions = new System.Windows.Forms.GroupBox();
+			this.GbLineToLineOptions = new LaserGRBL.UserControls.GrblGroupBox();
 			this.TLP = new System.Windows.Forms.TableLayoutPanel();
 			this.CbDirections = new LaserGRBL.UserControls.EnumComboBox();
 			this.UDQuality = new LaserGRBL.UserControls.NumericInput.NumericUpDown();
@@ -115,7 +115,7 @@
 			this.LblDitherMode = new System.Windows.Forms.Label();
 			this.CbDither = new System.Windows.Forms.ComboBox();
 			this.BtnQualityInfo = new LaserGRBL.UserControls.ImageButton();
-			this.GbConversionTool = new System.Windows.Forms.GroupBox();
+			this.GbConversionTool = new LaserGRBL.UserControls.GrblGroupBox();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.RbNoProcessing = new System.Windows.Forms.RadioButton();
 			this.RbCenterline = new System.Windows.Forms.RadioButton();
@@ -1254,7 +1254,7 @@
 		private System.Windows.Forms.PictureBox PbConverted;
 		private System.Windows.Forms.TabPage TpOriginal;
 		private System.Windows.Forms.PictureBox PbOriginal;
-		private System.Windows.Forms.GroupBox GbParameters;
+		private LaserGRBL.UserControls.GrblGroupBox GbParameters;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Label LblGrayscale;
 		private System.Windows.Forms.Label label2;
@@ -1274,13 +1274,13 @@
 		private System.Windows.Forms.CheckBox CbLinePreview;
 		private UserControls.ColorSlider TbThreshold;
 		private System.Windows.Forms.CheckBox CbThreshold;
-		private System.Windows.Forms.GroupBox GbLineToLineOptions;
+		private LaserGRBL.UserControls.GrblGroupBox GbLineToLineOptions;
 		private System.Windows.Forms.TableLayoutPanel TLP;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
 		private System.Windows.Forms.RadioButton RbVectorize;
 		private System.Windows.Forms.RadioButton RbLineToLineTracing;
-		private System.Windows.Forms.GroupBox GbConversionTool;
-		private System.Windows.Forms.GroupBox GbVectorizeOptions;
+		private LaserGRBL.UserControls.GrblGroupBox GbConversionTool;
+		private LaserGRBL.UserControls.GrblGroupBox GbVectorizeOptions;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
 		private LaserGRBL.UserControls.NumericInput.NumericUpDown UDSpotRemoval;
 		private LaserGRBL.UserControls.NumericInput.NumericUpDown UDSmoothing;
@@ -1328,7 +1328,7 @@
 		private System.Windows.Forms.CheckBox CbOptimizeFast;
 		private UserControls.ImageButton BtnReverse;
         private System.Windows.Forms.RadioButton RbCenterline;
-        private System.Windows.Forms.GroupBox GbCenterlineOptions;
+        private LaserGRBL.UserControls.GrblGroupBox GbCenterlineOptions;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.CheckBox CbLineThreshold;
@@ -1341,7 +1341,7 @@
 		private UserControls.ImageButton BtnAdaptiveQualityInfo;
 		private UserControls.ImageButton BtnAutoTrim;
 		private System.Windows.Forms.RadioButton RbNoProcessing;
-		private System.Windows.Forms.GroupBox GbPassthrough;
+		private LaserGRBL.UserControls.GrblGroupBox GbPassthrough;
 		private LaserGRBL.UserControls.TextInput TbPassthroughInfo;
         private UserControls.ImageButton BtnFill;
         private UserControls.ImageButton BtnOutliner;
