@@ -65,6 +65,7 @@
 			this.richTextBox1.Size = new System.Drawing.Size(569, 205);
 			this.richTextBox1.TabIndex = 1;
 			this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+			this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.richTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.RTBLinkClick);
 			// 
 			// richTextBox2
@@ -77,7 +78,8 @@
 			this.richTextBox2.Size = new System.Drawing.Size(569, 79);
 			this.richTextBox2.TabIndex = 2;
 			this.richTextBox2.Text = resources.GetString("richTextBox2.Text");
-			this.richTextBox2.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.RTBLinkClick);
+            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox2.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.RTBLinkClick);
 			// 
 			// tableLayoutPanel2
 			// 

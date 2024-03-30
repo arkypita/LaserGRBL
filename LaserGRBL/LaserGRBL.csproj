@@ -178,6 +178,9 @@
     <Compile Include="UserControls\FlatComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\GrblButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\GrblPanel3D.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1328,6 +1331,8 @@
     <EmbeddedResource Include="Icons\connect.png" />
     <EmbeddedResource Include="Icons\disconnect.png" />
     <EmbeddedResource Include="Icons\open.png" />
+    <EmbeddedResource Include="Icons\ok.png" />
+    <EmbeddedResource Include="Icons\cancel.png" />
     <Content Include="Sound\beep.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

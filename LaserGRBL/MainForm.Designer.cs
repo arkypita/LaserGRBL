@@ -239,7 +239,7 @@
             // 
             // TTLBuffer
             // 
-            this.TTLBuffer.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.TTLBuffer.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
             this.TTLBuffer.Name = "TTLBuffer";
             resources.ApplyResources(this.TTLBuffer, "TTLBuffer");
             // 
@@ -261,7 +261,7 @@
             // 
             // TTLEstimated
             // 
-            this.TTLEstimated.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.TTLEstimated.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
             this.TTLEstimated.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.TTLEstimated.Name = "TTLEstimated";
             resources.ApplyResources(this.TTLEstimated, "TTLEstimated");
@@ -281,7 +281,7 @@
             // 
             // TTlaserLife
             // 
-            this.TTlaserLife.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.TTlaserLife.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
             this.TTlaserLife.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.TTlaserLife.Name = "TTlaserLife";
             resources.ApplyResources(this.TTlaserLife, "TTlaserLife");
@@ -290,13 +290,13 @@
             // TTSep
             // 
             resources.ApplyResources(this.TTSep, "TTSep");
-            this.TTSep.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.TTSep.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
             this.TTSep.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.TTSep.Name = "TTSep";
             // 
             // TTOvS
             // 
-            this.TTOvS.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.TTOvS.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
             this.TTOvS.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.TTOvS.Margin = new System.Windows.Forms.Padding(1, 3, 1, 2);
             this.TTOvS.Name = "TTOvS";
@@ -305,7 +305,7 @@
             // 
             // TTOvG1
             // 
-            this.TTOvG1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.TTOvG1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
             this.TTOvG1.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.TTOvG1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 2);
             this.TTOvG1.Name = "TTOvG1";
@@ -314,7 +314,7 @@
             // 
             // TTOvG0
             // 
-            this.TTOvG0.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.TTOvG0.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
             this.TTOvG0.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.TTOvG0.Margin = new System.Windows.Forms.Padding(1, 3, 1, 2);
             this.TTOvG0.Name = "TTOvG0";
@@ -324,7 +324,7 @@
             // spacer
             // 
             resources.ApplyResources(this.spacer, "spacer");
-            this.spacer.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.spacer.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
             this.spacer.Name = "spacer";
             // 
             // TTLStatus

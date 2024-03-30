@@ -5,22 +5,22 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace LaserGRBL
 {
-	public partial class LicenseForm : Form
+    public partial class LicenseForm : Form
 	{
 		public LicenseForm()
 		{
 			InitializeComponent();
-		}
+			BackColor = ColorScheme.FormBackColor;
+			ForeColor = ColorScheme.FormForeColor;
+            richTextBox1.BackColor = ColorScheme.LogBackColor;
+            richTextBox1.ForeColor = ColorScheme.FormForeColor;
+            richTextBox2.BackColor = ColorScheme.LogBackColor;
+            richTextBox2.ForeColor = ColorScheme.FormForeColor;
+        }
 
 		private void BtnContinue_Click(object sender, EventArgs e)
 		{

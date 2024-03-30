@@ -5,6 +5,7 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using LaserGRBL.Icons;
+using LaserGRBL.UserControls;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -345,10 +346,6 @@ namespace LaserGRBL
 			TbFileName.BackColor = ColorScheme.LogBackColor;
             TbFileName.ForeColor = ColorScheme.FormForeColor;
 
-            TxtEmulator.BackColor = ColorScheme.LogBackColor;
-            TxtEmulator.BorderColor = ColorScheme.ControlsBorder;
-            TxtEmulator.ForeColor = ColorScheme.FormForeColor;
-
             TbFileName.BorderColor = ColorScheme.ControlsBorder;
             TbFileName.ForeColor = ColorScheme.FormForeColor;
 
@@ -360,21 +357,6 @@ namespace LaserGRBL
             TxtManualCommand.WaterMarkActiveColor = ColorScheme.ControlsBorder;
             TxtManualCommand.BackColor = ColorScheme.LogBackColor;
 			TxtManualCommand.ForeColor = ColorScheme.FormForeColor;
-
-            TxtAddress.BorderColor = ColorScheme.ControlsBorder;
-			TxtAddress.BackColor = ColorScheme.LogBackColor;
-            TxtAddress.ForeColor = ColorScheme.FormForeColor;
-
-
-            CBPort.BackColor = ColorScheme.LogBackColor;
-			CBPort.BorderColor = ColorScheme.ControlsBorder;
-			CBPort.ButtonColor = ColorScheme.LogBackColor;
-            CBPort.ForeColor = ColorScheme.FormForeColor;
-
-            CBSpeed.BackColor = ColorScheme.LogBackColor;
-            CBSpeed.BorderColor = ColorScheme.ControlsBorder;
-            CBSpeed.ButtonColor = ColorScheme.LogBackColor;
-            CBSpeed.ForeColor = ColorScheme.FormForeColor;
 
 			PB.ForeColor = ColorScheme.FormForeColor;
             PB.FillColor = ColorScheme.LogBackColor;

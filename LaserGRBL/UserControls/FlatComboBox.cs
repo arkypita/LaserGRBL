@@ -8,34 +8,6 @@ namespace LaserGRBL.UserControls
 {
     public class FlatComboBox : ComboBox
     {
-        private Color borderColor = Color.Gray;
-        [DefaultValue(typeof(Color), "Gray")]
-        public Color BorderColor
-        {
-            get { return borderColor; }
-            set
-            {
-                if (borderColor != value)
-                {
-                    borderColor = value;
-                    Invalidate();
-                }
-            }
-        }
-        private Color buttonColor = Color.LightGray;
-        [DefaultValue(typeof(Color), "LightGray")]
-        public Color ButtonColor
-        {
-            get { return buttonColor; }
-            set
-            {
-                if (buttonColor != value)
-                {
-                    buttonColor = value;
-                    Invalidate();
-                }
-            }
-        }
 
         protected override void WndProc(ref Message m)
         {
@@ -58,9 +30,11 @@ namespace LaserGRBL.UserControls
                     dropDownRect.X = clientRect.Width - dropDownRect.Right;
                     dropDownRect.Width += 1;
                 }
-                var innerBorderColor = BackColor;
-                var outerBorderColor = BorderColor;
-                var buttonColor = BackColor;
+                ForeColor = ColorScheme.FormForeColor;
+                BackColor = ColorScheme.LogBackColor;
+                var innerBorderColor = ColorScheme.LogBackColor;
+                var outerBorderColor = ColorScheme.ControlsBorder;
+                var buttonColor = ColorScheme.LogBackColor;
                 var middle = new Point(dropDownRect.Left + dropDownRect.Width / 2,
                     dropDownRect.Top + dropDownRect.Height / 2);
                 var arrow = new Point[]

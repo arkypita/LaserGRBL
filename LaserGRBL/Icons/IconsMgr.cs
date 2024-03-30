@@ -4,13 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace LaserGRBL.Icons
 {
     public static class IconsMgr
     {
         // buttons list
-        private static Dictionary<string, ImageButton> mImageButtons = new Dictionary<string, ImageButton>();
+        private static List<Control> mControls = new List<Control>();
         // light color set
         private static Dictionary<string, Color> mLightIconColors = new Dictionary<string, Color>
         {
@@ -38,6 +39,8 @@ namespace LaserGRBL.Icons
             { "connect"   , Color.FromArgb(  0,173, 16) },
             { "disconnect", Color.FromArgb(236, 58, 58) },
             { "open"      , Color.FromArgb( 88,119,232) },
+            { "ok"        , Color.FromArgb(  0,173, 16) },
+            { "cancel"    , Color.FromArgb(236, 58, 58) },
         };
         // dark color set
         private static Dictionary<string, Color> mDarkIconColors = new Dictionary<string, Color>
@@ -66,21 +69,31 @@ namespace LaserGRBL.Icons
             { "connect"   , Color.FromArgb( 71,200, 86) },
             { "disconnect", Color.FromArgb(228, 60, 60) },
             { "open"      , Color.FromArgb( 85,231,192) },
+            { "ok"        , Color.FromArgb( 71,200, 86) },
+            { "cancel"    , Color.FromArgb(228, 60, 60) },
         };
         // current icon colors
         private static Dictionary<string, Color> mIconColors = mLightIconColors;
 
         // reload image
-        private static Image LoadImage(string resourceName)
+        private static Image LoadImage(object resourceName)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
             Bitmap image = new Bitmap(assembly.GetManifestResourceStream($"LaserGRBL.Icons.{resourceName}.png"));
-            if (mIconColors.TryGetValue(resourceName, out Color color))
+            if (mIconColors.TryGetValue((string)resourceName, out Color color))
             {
                 return ImageTransform.SetColor(image, color);
             }
-            return image;
+            Image result = image;
+            result.Tag = resourceName;
+            return result;
+        }
 
+        // add control to list
+        private static void AddControl(Control control)
+        {
+            mControls.Add(control);
+            control.Disposed += ControlDisposed;
         }
 
         // prepare button
@@ -88,21 +101,40 @@ namespace LaserGRBL.Icons
         {
             button.Image = LoadImage(resourceName);
             button.SizingMode = ImageButton.SizingModes.StretchImage;
-            mImageButtons[resourceName] = button;
             if (!string.IsNullOrEmpty(resourceNameAlt))
             {
                 button.AltImage = LoadImage(resourceNameAlt);
             }
             button.SizingMode = ImageButton.SizingModes.StretchImage;
+            AddControl(button);
+        }
+
+        // prepare button
+        public static void PrepareButton(GrblButton button, string resourceName)
+        {
+            button.Image = LoadImage(resourceName);
+            AddControl(button);
+        }
+
+        private static void ControlDisposed(object sender, EventArgs e)
+        {
+            mControls.RemoveAt(mControls.IndexOf(sender as Control));
         }
 
         internal static void OnColorChannge()
         {
             mIconColors = ColorScheme.DarkScheme ? mDarkIconColors : mLightIconColors;
-            foreach (var button in mImageButtons)
+            foreach (Control button in mControls)
             {
-                button.Value.Image?.Dispose();
-                button.Value.Image = LoadImage(button.Key);
+                if (button is ImageButton imageBtn)
+                {
+                    if (imageBtn.Image?.Tag != null) imageBtn.Image = LoadImage(imageBtn.Image.Tag);
+                    if (imageBtn.AltImage?.Tag != null) imageBtn.AltImage = LoadImage(imageBtn.AltImage.Tag);
+                }
+                if (button is GrblButton grblBtn)
+                {
+                    if (grblBtn.Image != null) grblBtn.Image = LoadImage(grblBtn.Image.Tag);
+                }
             }
 
         }
