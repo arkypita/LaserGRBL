@@ -920,7 +920,7 @@
     <value>TbPassthroughInfo</value>
   </data>
   <data name="&gt;&gt;TbPassthroughInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.TextInput, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TbPassthroughInfo.Parent" xml:space="preserve">
     <value>GbPassthrough</value>
@@ -2057,7 +2057,7 @@
     <value>UDSpotRemoval</value>
   </data>
   <data name="&gt;&gt;UDSpotRemoval.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.NumericInput.NumericUpDown, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;UDSpotRemoval.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -2189,7 +2189,7 @@
     <value>UDOptimize</value>
   </data>
   <data name="&gt;&gt;UDOptimize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.NumericInput.NumericUpDown, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;UDOptimize.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -2222,7 +2222,7 @@
     <value>UDSmoothing</value>
   </data>
   <data name="&gt;&gt;UDSmoothing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.NumericInput.NumericUpDown, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;UDSmoothing.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -2414,7 +2414,7 @@
     <value>UDFillingQuality</value>
   </data>
   <data name="&gt;&gt;UDFillingQuality.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.NumericInput.NumericUpDown, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;UDFillingQuality.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -2480,7 +2480,7 @@
     <value>UDDownSample</value>
   </data>
   <data name="&gt;&gt;UDDownSample.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.NumericInput.NumericUpDown, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;UDDownSample.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -2786,7 +2786,7 @@
     <value>UDQuality</value>
   </data>
   <data name="&gt;&gt;UDQuality.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.NumericInput.NumericUpDown, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;UDQuality.Parent" xml:space="preserve">
     <value>TLP</value>
@@ -3401,7 +3401,7 @@
     <value>BtnCancel</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -3431,7 +3431,7 @@
     <value>BtnCreate</value>
   </data>
   <data name="&gt;&gt;BtnCreate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCreate.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>

@@ -139,7 +139,7 @@ namespace LaserGRBL
             nightyToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Nighty;
             TTLinkToNews.LinkColor = ColorScheme.LinkColor;
 			TTLinkToNews.VisitedLinkColor = ColorScheme.VisitedLinkColor;
-			ThemeMgr.SetTheme(this);
+			ThemeMgr.SetTheme(this, true);
             ConnectionForm.OnColorChange();
 			PreviewForm.OnColorChange();
 			IconsMgr.OnColorChannge();

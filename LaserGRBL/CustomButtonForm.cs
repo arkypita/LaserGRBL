@@ -26,7 +26,6 @@ namespace LaserGRBL
             IconsMgr.PrepareButton(BtnCreate, "ok");
             IconsMgr.PrepareButton(BtnCancel, "cancel");
 
-
             CbEStyles.DataSource = Enum.GetValues(typeof(CustomButton.EnableStyles));
 			CbEStyles.SelectedItem = CustomButton.EnableStyles.Always;
 

@@ -349,10 +349,6 @@ namespace LaserGRBL
             TbFileName.BorderColor = ColorScheme.ControlsBorder;
             TbFileName.ForeColor = ColorScheme.FormForeColor;
 
-            UDLoopCounter.BackColor = ColorScheme.LogBackColor;
-            UDLoopCounter.BorderColor = ColorScheme.ControlsBorder;
-            UDLoopCounter.ForeColor = ColorScheme.FormForeColor;
-
             TxtManualCommand.WaterMarkColor = ColorScheme.ControlsBorder;
             TxtManualCommand.WaterMarkActiveColor = ColorScheme.ControlsBorder;
             TxtManualCommand.BackColor = ColorScheme.LogBackColor;

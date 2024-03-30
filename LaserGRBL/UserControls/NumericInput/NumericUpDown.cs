@@ -20,28 +20,16 @@ namespace LaserGRBL.UserControls.NumericInput
             mNumericUpDown.ValueChanged += MNumericUpDown_ValueChanged;
         }
 
-        public new Color ForeColor
+        public int DecimalPlaces
         {
-            get
-            {
-                return mNumericUpDown.ForeColor;
-            }
-            set
-            {
-                mNumericUpDown.ForeColor = value;
-            }
+            get => mNumericUpDown.DecimalPlaces;
+            set => mNumericUpDown.DecimalPlaces = value;
         }
-        public new Color BackColor
+
+        public decimal Increment
         {
-            get
-            {
-                return mNumericUpDown.BackColor;
-            }
-            set
-            {
-                base.BackColor = value;
-                mNumericUpDown.BackColor = value;
-            }
+            get => mNumericUpDown.Increment;
+            set => mNumericUpDown.Increment = value;
         }
 
         private void MNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -77,6 +65,14 @@ namespace LaserGRBL.UserControls.NumericInput
             set => mNumericUpDown.Maximum = value;
         }
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            mNumericUpDown.BackColor = ColorScheme.LogBackColor;
+            BackColor = ColorScheme.LogBackColor;
+            mNumericUpDown.ForeColor = ColorScheme.FormForeColor;
+            BorderColor = ColorScheme.ControlsBorder;
+            base.OnPaint(e);
+        }
         
 
     }

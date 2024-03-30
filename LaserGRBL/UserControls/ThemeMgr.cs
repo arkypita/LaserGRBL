@@ -175,7 +175,7 @@ namespace LaserGRBL.UserControls
             return default;
         }
 
-        public static void SetTheme(Control control)
+        private static void SetTheme(Control control)
         {
             // exit if not managed by os
             if (SetWindowTheme == null || DwmSetWindowAttribute == null) return;
@@ -188,5 +188,18 @@ namespace LaserGRBL.UserControls
                 DwmSetWindowAttribute(control.Handle, (int)DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE, DarkModeOn, 4);
             }
         }
+
+        public static void SetTheme(Control control, bool recursive = false)
+        {
+            SetTheme(control);
+            if (recursive)
+            {
+                foreach (Control child in control.Controls)
+                {
+                    SetTheme(child, recursive);
+                }
+            }
+        }
+
     }
 }

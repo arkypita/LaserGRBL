@@ -22,6 +22,12 @@ namespace LaserGRBL.UserControls
             set => mTextBox.ReadOnly = value;
         }
 
+        public bool Multiline
+        {
+            get => mTextBox.Multiline;
+            set => mTextBox.Multiline = value;
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             BackColor = ColorScheme.LogBackColor;

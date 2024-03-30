@@ -14,6 +14,8 @@ using System.IO.Compression;
 using System.Windows.Forms;
 using System.Threading;
 using Tools;
+using LaserGRBL.Icons;
+using LaserGRBL.UserControls;
 
 namespace LaserGRBL.RasterConverter
 {
@@ -33,9 +35,12 @@ namespace LaserGRBL.RasterConverter
 
 			BackColor = ColorScheme.FormBackColor;
 			GbCenterlineOptions.ForeColor = GbConversionTool.ForeColor = GbLineToLineOptions.ForeColor = GbParameters.ForeColor = GbVectorizeOptions.ForeColor = ForeColor = ColorScheme.FormForeColor;
-			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
+			
+            ThemeMgr.SetTheme(this, true);
+            IconsMgr.PrepareButton(BtnCreate, "ok");
+            IconsMgr.PrepareButton(BtnCancel, "cancel");
 
-			IP = new ImageProcessor(core, filename, GetImageSize(), append);
+            IP = new ImageProcessor(core, filename, GetImageSize(), append);
 			//PbOriginal.Image = IP.Original;
 			ImageProcessor.PreviewReady += OnPreviewReady;
 			ImageProcessor.PreviewBegin += OnPreviewBegin;
