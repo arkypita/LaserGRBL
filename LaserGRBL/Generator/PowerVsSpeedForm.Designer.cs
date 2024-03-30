@@ -615,7 +615,6 @@
 			this.IISizeW.MaxValue = 1000F;
 			this.IISizeW.MinValue = 0F;
 			this.IISizeW.Name = "IISizeW";
-			this.IISizeW.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IISizeW.Size = new System.Drawing.Size(49, 15);
 			this.IISizeW.TabIndex = 12;
 			// 
@@ -663,7 +662,6 @@
 			this.IISizeH.MaxValue = 1000F;
 			this.IISizeH.MinValue = 0F;
 			this.IISizeH.Name = "IISizeH";
-			this.IISizeH.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IISizeH.Size = new System.Drawing.Size(49, 15);
 			this.IISizeH.TabIndex = 13;
 			// 

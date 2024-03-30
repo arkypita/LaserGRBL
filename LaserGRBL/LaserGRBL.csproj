@@ -1337,6 +1337,22 @@
     <EmbeddedResource Include="Icons\ok.png" />
     <EmbeddedResource Include="Icons\cancel.png" />
     <EmbeddedResource Include="Icons\info.png" />
+    <EmbeddedResource Include="Icons\book.png" />
+    <EmbeddedResource Include="Icons\target.png" />
+    <EmbeddedResource Include="Icons\lockproportions.png" />
+    <EmbeddedResource Include="Icons\unlockproportions.png" />
+    <EmbeddedResource Include="Icons\exif.png" />
+    <EmbeddedResource Include="Icons\resetcenter.png" />
+    <EmbeddedResource Include="Icons\fliphorizontal.png" />
+    <EmbeddedResource Include="Icons\flipvertical.png" />
+    <EmbeddedResource Include="Icons\rotateleft.png" />
+    <EmbeddedResource Include="Icons\rotateright.png" />
+    <EmbeddedResource Include="Icons\crop.png" />
+    <EmbeddedResource Include="Icons\revert.png" />
+    <EmbeddedResource Include="Icons\autotrim.png" />
+    <EmbeddedResource Include="Icons\fill.png" />
+    <EmbeddedResource Include="Icons\invert.png" />
+    <EmbeddedResource Include="Icons\magicwand.png" />
     <Content Include="Sound\beep.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

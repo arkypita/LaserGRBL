@@ -134,7 +134,6 @@ namespace LaserGRBL.SvgConverter
 			this.IIBorderTracing.MaxValue = 4000;
 			this.IIBorderTracing.MinValue = 1;
 			this.IIBorderTracing.Name = "IIBorderTracing";
-			this.IIBorderTracing.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIBorderTracing.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIBorderTracingCurrentValueChanged);
 			// 
 			// BtnPSHelper
@@ -201,7 +200,6 @@ namespace LaserGRBL.SvgConverter
 			this.IIMinPower.MaxValue = 999;
 			this.IIMinPower.MinValue = 0;
 			this.IIMinPower.Name = "IIMinPower";
-			this.IIMinPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIMinPower.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMinPowerCurrentValueChanged);
 			// 
 			// label18
@@ -246,7 +244,6 @@ namespace LaserGRBL.SvgConverter
 			this.IIMaxPower.MaxValue = 1000;
 			this.IIMaxPower.MinValue = 1;
 			this.IIMaxPower.Name = "IIMaxPower";
-			this.IIMaxPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIMaxPower.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMaxPowerCurrentValueChanged);
 			// 
 			// LblMinPerc

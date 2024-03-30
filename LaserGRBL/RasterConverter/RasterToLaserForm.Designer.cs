@@ -113,7 +113,7 @@
 			this.label27 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.LblDitherMode = new System.Windows.Forms.Label();
-			this.CbDither = new System.Windows.Forms.ComboBox();
+			this.CbDither = new LaserGRBL.UserControls.FlatComboBox();
 			this.BtnQualityInfo = new LaserGRBL.UserControls.ImageButton();
 			this.GbConversionTool = new LaserGRBL.UserControls.GrblGroupBox();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -1319,7 +1319,7 @@
 		private LaserGRBL.UserControls.NumericInput.NumericUpDown UDDownSample;
 		private System.Windows.Forms.CheckBox CbDownSample;
 		private System.Windows.Forms.Label LblDitherMode;
-		private System.Windows.Forms.ComboBox CbDither;
+		private LaserGRBL.UserControls.FlatComboBox CbDither;
 		private UserControls.ImageButton BtnQualityInfo;
 		private UserControls.ImageButton BtnFillingQualityInfo;
 		private UserControls.ColorSlider TBWhiteClip;
