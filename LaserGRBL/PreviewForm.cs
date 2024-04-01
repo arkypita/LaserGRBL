@@ -27,11 +27,11 @@ namespace LaserGRBL
 			InitializeComponent();
             CreatePanel(Settings.GetObject("LegacyPreview", false));
             CustomButtonArea.OrderChanged += CustomButtonArea_OrderChanged;
-			IconsMgr.PrepareButton(BtnReset, "reset");
-            IconsMgr.PrepareButton(BtnUnlock, "unlock");
+			IconsMgr.PrepareButton(BtnReset, "custom-reset");
+            IconsMgr.PrepareButton(BtnUnlock, "custom-unlock");
             IconsMgr.PrepareButton(BtnHoming, "homing");
             IconsMgr.PrepareButton(BtnResume, "resume");
-            IconsMgr.PrepareButton(BtnStop, "stop");
+            IconsMgr.PrepareButton(BtnStop, "custom-stop");
             IconsMgr.PrepareButton(BtnZeroing, "zeroing");
         }
 

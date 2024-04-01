@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace LaserGRBL.Icons
@@ -16,7 +15,7 @@ namespace LaserGRBL.Icons
         // light color set
         private static Dictionary<string, Color> mLightIconColors = new Dictionary<string, Color>
         {
-            { "reset"            , Color.FromArgb(199,193, 13) },
+            { "custom-reset"            , Color.FromArgb(199,193, 13) },
             { "unlock"           , Color.FromArgb(230,138,  7) },
             { "zeroing"          , Color.FromArgb( 14,136,229) },
             { "center"           , Color.FromArgb( 19,169,142) },
@@ -24,25 +23,25 @@ namespace LaserGRBL.Icons
             { "frame"            , Color.FromArgb(  0,173, 16) },
             { "focus"            , Color.FromArgb(197, 60,221) },
             { "blink"            , Color.FromArgb(231, 70,143) },
-            { "home"             , Color.FromArgb( 79,188,243) },
-            { "n"                , Color.FromArgb(  0,122,217) },
-            { "ne"               , Color.FromArgb(  0,122,217) },
-            { "e"                , Color.FromArgb(  0,122,217) },
-            { "se"               , Color.FromArgb(  0,122,217) },
-            { "s"                , Color.FromArgb(  0,122,217) },
-            { "sw"               , Color.FromArgb(  0,122,217) },
-            { "w"                , Color.FromArgb(  0,122,217) },
-            { "nw"               , Color.FromArgb(  0,122,217) },
+            { "mdi-home"             , Color.FromArgb( 79,188,243) },
+            { "mdi-arrow-up-bold-outline"    , Color.FromArgb(  0,122,217) },
+            { "mdi-arrow-top-right-bold-outline", Color.FromArgb(  0,122,217) },
+            { "mdi-arrow-right-bold-outline" , Color.FromArgb(  0,122,217) },
+            { "mdi-arrow-bottom-right-bold-outline"               , Color.FromArgb(  0,122,217) },
+            { "mdi-arrow-down-bold-outline"  , Color.FromArgb(  0,122,217) },
+            { "mdi-arrow-bottom-left-bold-outline"               , Color.FromArgb(  0,122,217) },
+            { "mdi-arrow-left-bold-outline"  , Color.FromArgb(  0,122,217) },
+            { "mdi-arrow-top-left-bold-outline"               , Color.FromArgb(  0,122,217) },
             { "resume"           , Color.FromArgb(  0,173, 16) },
             { "stop"             , Color.FromArgb(236, 58, 58) },
-            { "run"              , Color.FromArgb(  0,173, 16) },
-            { "abort"            , Color.FromArgb(236, 58, 58) },
+            { "mdi-play-box"              , Color.FromArgb(  0,173, 16) },
+            { "custom-abort"     , Color.FromArgb(236, 58, 58) },
             { "connect"          , Color.FromArgb(  0,173, 16) },
             { "disconnect"       , Color.FromArgb(236, 58, 58) },
             { "open"             , Color.FromArgb( 88,119,232) },
             { "append"           , Color.FromArgb(  0,173, 16) },
-            { "ok"               , Color.FromArgb(  0,173, 16) },
-            { "cancel"           , Color.FromArgb(236, 58, 58) },
+            { "mdi-checkbox-marked"               , Color.FromArgb(  0,173, 16) },
+            { "mdi-close-box"           , Color.FromArgb(236, 58, 58) },
             { "info"             , Color.FromArgb(  0,122,217) },
             { "book"             , Color.FromArgb( 19,169,142) },
             { "target"           , Color.FromArgb(  0,173, 16) },
@@ -60,46 +59,46 @@ namespace LaserGRBL.Icons
             { "invert"           , Color.FromArgb( 19,169,142) },
             { "magicwand"        , Color.FromArgb( 19,169,142) },
             { "revert"           , Color.FromArgb(  0,173, 16) },
-            { "heart"            , Color.FromArgb(236, 58, 58) },
+            { "mdi-heart-box"        , Color.FromArgb(236, 58, 58) },
             { "safety"           , Color.FromArgb( 79,188,243) },
             { "config"           , Color.FromArgb( 79,188,243) },
             { "settings"         , Color.FromArgb(  0,122,217) },
-            { "stats"            , Color.FromArgb(231, 70,143) },
-            { "keyboard"         , Color.FromArgb(230,138,  7) },
-            { "save"             , Color.FromArgb(230,138,  7) },
-            { "saveadvanced"     , Color.FromArgb(230,138,  7) },
-            { "saveproject"      , Color.FromArgb(230,138,  7) },
+            { "mdi-chart-bar"            , Color.FromArgb(231, 70,143) },
+            { "mdi-keyboard"         , Color.FromArgb(230,138,  7) },
+            { "mdi-content-save"             , Color.FromArgb(230,138,  7) },
+            { "mdi-content-save-edit"     , Color.FromArgb(230,138,  7) },
+            { "mdi-content-save-cog"      , Color.FromArgb(230,138,  7) },
         };
         // dark color set
         private static Dictionary<string, Color> mDarkIconColors = new Dictionary<string, Color>
         {
-            { "reset"            , Color.FromArgb(230,230, 20) },
-            { "unlock"           , Color.FromArgb(246,163, 41) },
+            { "custom-reset"            , Color.FromArgb(230,230, 20) },
+            { "custom-unlock"           , Color.FromArgb(246,163, 41) },
             { "zeroing"          , Color.FromArgb( 79,188,243) },
             { "center"           , Color.FromArgb( 85,231,192) },
             { "corner"           , Color.FromArgb( 85,231,192) },
             { "frame"            , Color.FromArgb( 71,200, 86) },
             { "focus"            , Color.FromArgb(193,114,235) },
             { "blink"            , Color.FromArgb(243, 79,133) },
-            { "home"             , Color.FromArgb( 79,188,243) },
-            { "n"                , Color.FromArgb(  0,122,217) },
-            { "ne"               , Color.FromArgb(  0,122,217) },
-            { "e"                , Color.FromArgb(  0,122,217) },
-            { "se"               , Color.FromArgb(  0,122,217) },
-            { "s"                , Color.FromArgb(  0,122,217) },
-            { "sw"               , Color.FromArgb(  0,122,217) },
-            { "w"                , Color.FromArgb(  0,122,217) },
-            { "nw"               , Color.FromArgb(  0,122,217) },
+            { "mdi-home"             , Color.FromArgb( 79,188,243) },
+            { "mdi-arrow-up-bold-outline"    , Color.FromArgb(  0,122,217) },
+            { "mdi-arrow-top-right-bold-outline", Color.FromArgb(  0,122,217) },
+            { "mdi-arrow-right-bold-outline" , Color.FromArgb(  0,122,217) },
+            { "mdi-arrow-bottom-right-bold-outline"               , Color.FromArgb(  0,122,217) },
+            { "mdi-arrow-down-bold-outline"  , Color.FromArgb(  0,122,217) },
+            { "mdi-arrow-bottom-left-bold-outline"               , Color.FromArgb(  0,122,217) },
+            { "mdi-arrow-left-bold-outline"  , Color.FromArgb(  0,122,217) },
+            { "mdi-arrow-top-left-bold-outline"               , Color.FromArgb(  0,122,217) },
             { "resume"           , Color.FromArgb( 71,200, 86) },
-            { "stop"             , Color.FromArgb(228, 60, 60) },
-            { "run"              , Color.FromArgb( 71,200, 86) },
-            { "abort"            , Color.FromArgb(228, 60, 60) },
+            { "custom-stop"             , Color.FromArgb(228, 60, 60) },
+            { "mdi-play-box"              , Color.FromArgb( 71,200, 86) },
+            { "custom-abort"     , Color.FromArgb(228, 60, 60) },
             { "connect"          , Color.FromArgb( 71,200, 86) },
             { "disconnect"       , Color.FromArgb(228, 60, 60) },
             { "open"             , Color.FromArgb( 85,231,192) },
             { "append"           , Color.FromArgb( 71,200, 86) },
-            { "ok"               , Color.FromArgb( 71,200, 86) },
-            { "cancel"           , Color.FromArgb(228, 60, 60) },
+            { "mdi-checkbox-marked"               , Color.FromArgb( 71,200, 86) },
+            { "mdi-close-box"           , Color.FromArgb(228, 60, 60) },
             { "info"             , Color.FromArgb(  0,122,217) },
             { "book"             , Color.FromArgb( 85,231,192) },
             { "target"           , Color.FromArgb( 71,200, 86) },
@@ -117,15 +116,15 @@ namespace LaserGRBL.Icons
             { "invert"           , Color.FromArgb( 85,231,192) },
             { "magicwand"        , Color.FromArgb( 85,231,192) },
             { "revert"           , Color.FromArgb( 71,200, 86) },
-            { "heart"            , Color.FromArgb(228, 60, 60) },
+            { "mdi-heart-box"        , Color.FromArgb(228, 60, 60) },
             { "safety"           , Color.FromArgb( 79,188,243) },
             { "config"           , Color.FromArgb( 79,188,243) },
             { "settings"         , Color.FromArgb(  0,122,217) },
-            { "stats"            , Color.FromArgb(243, 79,133) },
-            { "keyboard"         , Color.FromArgb(246,163, 41) },
-            { "save"             , Color.FromArgb(246,163, 41) },
-            { "saveadvanced"     , Color.FromArgb(246,163, 41) },
-            { "saveproject"      , Color.FromArgb(246,163, 41) },
+            { "mdi-chart-bar"            , Color.FromArgb(243, 79,133) },
+            { "mdi-keyboard"         , Color.FromArgb(246,163, 41) },
+            { "mdi-content-save"             , Color.FromArgb(246,163, 41) },
+            { "mdi-content-save-edit"     , Color.FromArgb(246,163, 41) },
+            { "mdi-content-save-cog"      , Color.FromArgb(246,163, 41) },
         };
         // current icon colors
         private static Dictionary<string, Color> mIconColors = mLightIconColors;
@@ -133,9 +132,18 @@ namespace LaserGRBL.Icons
         // reload image
         private static Image LoadImage(object resourceName, int width = 0, int height = 0)
         {
-            // load image
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            Bitmap image = new Bitmap(assembly.GetManifestResourceStream($"LaserGRBL.Icons.{resourceName}.png"));
+            Bitmap image = null;
+            if (SvgIcons.SvgIcons.Contains((string)resourceName))
+            {
+                image = SvgIcons.SvgIcons.LoadImage((string)resourceName, 256, 256);
+            }
+            else
+            {
+                // load image
+                //Assembly assembly = Assembly.GetExecutingAssembly();
+                //image = new Bitmap(assembly.GetManifestResourceStream($"LaserGRBL.Icons.{resourceName}.png"));
+                image = SvgIcons.SvgIcons.LoadImage("mdi-square-rounded", 256, 256);
+            }
             Image result = image;
             // if resize needed
             if (width > 0 && height > 0)

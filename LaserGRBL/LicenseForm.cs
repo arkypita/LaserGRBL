@@ -24,8 +24,8 @@ namespace LaserGRBL
             richTextBox2.BackColor = ColorScheme.LogBackColor;
             richTextBox2.ForeColor = ColorScheme.FormForeColor;
 			ThemeMgr.SetTheme(this, true);
-			IconsMgr.PrepareButton(BtnContinue, "ok");
-			IconsMgr.PrepareButton(BtnDonate, "heart");
+			IconsMgr.PrepareButton(BtnContinue, "mdi-checkbox-marked");
+			IconsMgr.PrepareButton(BtnDonate, "mdi-heart-box");
         }
 
 		private void BtnContinue_Click(object sender, EventArgs e)

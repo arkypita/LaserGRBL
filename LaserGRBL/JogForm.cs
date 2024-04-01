@@ -18,15 +18,15 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
             SettingsForm.SettingsChanged += SettingsForm_SettingsChanged;
-            IconsMgr.PrepareButton(BtnN, "n");
-            IconsMgr.PrepareButton(BtnNE, "ne");
-            IconsMgr.PrepareButton(BtnE, "e");
-            IconsMgr.PrepareButton(BtnSE, "se");
-            IconsMgr.PrepareButton(BtnS, "s");
-            IconsMgr.PrepareButton(BtnSW, "sw");
-            IconsMgr.PrepareButton(BtnW, "w");
-            IconsMgr.PrepareButton(BtnNW, "nw");
-            IconsMgr.PrepareButton(BtnHome, "home");
+            IconsMgr.PrepareButton(BtnN, "mdi-arrow-up-bold-outline");
+            IconsMgr.PrepareButton(BtnNE, "mdi-arrow-top-right-bold-outline");
+            IconsMgr.PrepareButton(BtnE, "mdi-arrow-right-bold-outline");
+            IconsMgr.PrepareButton(BtnSE, "mdi-arrow-bottom-right-bold-outline");
+            IconsMgr.PrepareButton(BtnS, "mdi-arrow-down-bold-outline");
+            IconsMgr.PrepareButton(BtnSW, "mdi-arrow-bottom-left-bold-outline");
+            IconsMgr.PrepareButton(BtnW, "mdi-arrow-left-bold-outline");
+            IconsMgr.PrepareButton(BtnNW, "mdi-arrow-top-left-bold-outline");
+            IconsMgr.PrepareButton(BtnHome, "mdi-home");
         }
 
         public void SetCore(GrblCore core)

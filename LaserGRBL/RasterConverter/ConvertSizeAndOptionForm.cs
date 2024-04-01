@@ -46,8 +46,8 @@ namespace LaserGRBL.RasterConverter
 			BackColor = ColorScheme.FormBackColor;
 			ForeColor = ColorScheme.FormForeColor;
 			ThemeMgr.SetTheme(this, true);
-            IconsMgr.PrepareButton(BtnCreate, "ok");
-            IconsMgr.PrepareButton(BtnCancel, "cancel");
+            IconsMgr.PrepareButton(BtnCreate, "mdi-checkbox-marked");
+            IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
             IconsMgr.PrepareButton(BtnModulationInfo, "info");
             BtnModulationInfo.Size = new Size(16, 16);
             IconsMgr.PrepareButton(BtnOnOffInfo, "info");

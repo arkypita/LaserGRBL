@@ -37,8 +37,8 @@ namespace LaserGRBL.RasterConverter
 			GbCenterlineOptions.ForeColor = GbConversionTool.ForeColor = GbLineToLineOptions.ForeColor = GbParameters.ForeColor = GbVectorizeOptions.ForeColor = ForeColor = ColorScheme.FormForeColor;
 			
             ThemeMgr.SetTheme(this, true);
-            IconsMgr.PrepareButton(BtnCreate, "ok");
-            IconsMgr.PrepareButton(BtnCancel, "cancel");
+            IconsMgr.PrepareButton(BtnCreate, "mdi-checkbox-marked");
+            IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
             IconsMgr.PrepareButton(BtnAdaptiveQualityInfo, "info");
 			BtnAdaptiveQualityInfo.Size = new Size(16, 16);
             IconsMgr.PrepareButton(BtnFillingQualityInfo, "info");
@@ -66,7 +66,7 @@ namespace LaserGRBL.RasterConverter
             IconsMgr.PrepareButton(BtnOutliner, "magicwand");
             BtnOutliner.Size = new Size(25, 25);
 
-            IconsMgr.PrepareButton(BtnCreate, "ok");
+            IconsMgr.PrepareButton(BtnCreate, "mdi-checkbox-marked");
 
             IP = new ImageProcessor(core, filename, GetImageSize(), append);
 			//PbOriginal.Image = IP.Original;

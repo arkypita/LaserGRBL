@@ -39,9 +39,9 @@ namespace LaserGRBL
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandWait));
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandOK));
 
-			IconsMgr.PrepareButton(BtnRunProgram, "run");
+			IconsMgr.PrepareButton(BtnRunProgram, "mdi-play-box");
 			BtnRunProgram.Size = new Size(20, 20);
-            IconsMgr.PrepareButton(BtnAbortProgram, "abort");
+            IconsMgr.PrepareButton(BtnAbortProgram, "custom-abort");
             BtnAbortProgram.Size = new Size(20, 20);
             IconsMgr.PrepareButton(BtnConnectDisconnect, "connect", "disconnect");
             BtnConnectDisconnect.Size = new Size(20, 20);

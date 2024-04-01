@@ -23,8 +23,8 @@ namespace LaserGRBL
 			BackColor = ColorScheme.FormBackColor;
 			ForeColor = ColorScheme.FormForeColor;
 
-            IconsMgr.PrepareButton(BtnCreate, "ok");
-            IconsMgr.PrepareButton(BtnCancel, "cancel");
+            IconsMgr.PrepareButton(BtnCreate, "mdi-checkbox-marked");
+            IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
 
             CbEStyles.DataSource = Enum.GetValues(typeof(CustomButton.EnableStyles));
 			CbEStyles.SelectedItem = CustomButton.EnableStyles.Always;
