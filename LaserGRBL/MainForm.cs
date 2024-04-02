@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Windows.Threading;
 using Tools;
@@ -103,22 +104,57 @@ namespace LaserGRBL
 
 			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser);
 
-            IconsMgr.PrepareMenuItem(MnConnect, "connect");
-            IconsMgr.PrepareMenuItem(MnDisconnect, "disconnect");
-            IconsMgr.PrepareMenuItem(MnGrblReset, "reset");
-            IconsMgr.PrepareMenuItem(MnUnlock, "unlock");
-            IconsMgr.PrepareMenuItem(MnGrblConfig, "config");
-            IconsMgr.PrepareMenuItem(settingsToolStripMenuItem, "settings");
-            IconsMgr.PrepareMenuItem(MnMaterialDB, "book");
+            IconsMgr.PrepareMenuItem(MnConnect, "mdi-power-plug");
+            IconsMgr.PrepareMenuItem(MnDisconnect, "mdi-power-plug-off");
+            IconsMgr.PrepareMenuItem(MnGrblReset, "mdi-lightning-bolt");
+            IconsMgr.PrepareMenuItem(MnUnlock, "mdi-lock-open");
+            IconsMgr.PrepareMenuItem(MnGrblConfig, "mdi-cogs");
+            IconsMgr.PrepareMenuItem(settingsToolStripMenuItem, "mdi-wrench");
+            IconsMgr.PrepareMenuItem(MnMaterialDB, "mdi-database");
             IconsMgr.PrepareMenuItem(laserUsageStatsToolStripMenuItem, "mdi-chart-bar");
             IconsMgr.PrepareMenuItem(MnHotkeys, "mdi-keyboard");
-            IconsMgr.PrepareMenuItem(MnFileOpen, "open");
-            IconsMgr.PrepareMenuItem(MnFileAppend, "append");
+            IconsMgr.PrepareMenuItem(MnFileOpen, "mdi-folder");
+            IconsMgr.PrepareMenuItem(MnFileAppend, "mdi-folder-plus");
+            IconsMgr.PrepareMenuItem(MnReOpenFile, "mdi-reload");
             IconsMgr.PrepareMenuItem(MnSaveProgram, "mdi-content-save");
             IconsMgr.PrepareMenuItem(MnAdvancedSave, "mdi-content-save-edit");
             IconsMgr.PrepareMenuItem(MnSaveProject, "mdi-content-save-cog");
-
             IconsMgr.PrepareMenuItem(MnExit, "mdi-close-box");
+
+            IconsMgr.PrepareMenuItem(MnFileSend, "mdi-play-circle-outline");
+            IconsMgr.PrepareMenuItem(MnStartFromPosition, "mdi-motion-play-outline");
+			
+			IconsMgr.PrepareMenuItem(MnPowerVsSpeed, "mdi-speedometer");
+            IconsMgr.PrepareMenuItem(MnCuttingTest, "mdi-content-cut");
+            IconsMgr.PrepareMenuItem(MnAccuracyTest, "mdi-details");
+            IconsMgr.PrepareMenuItem(shakeTestToolStripMenuItem, "mdi-pulse");
+
+            IconsMgr.PrepareMenuItem(autoSizeToolStripMenuItem, "mdi-resize");
+            IconsMgr.PrepareMenuItem(lineSizeToolStripMenuItem, "mdi-draw-pen");
+
+            IconsMgr.PrepareMenuItem(MNEnglish, "flags-gb", false);
+            IconsMgr.PrepareMenuItem(MNItalian, "flags-it", false);
+            IconsMgr.PrepareMenuItem(MNSpanish, "flags-es", false);
+            IconsMgr.PrepareMenuItem(MNFrench, "flags-fr", false);
+            IconsMgr.PrepareMenuItem(MNGerman, "flags-de", false);
+            IconsMgr.PrepareMenuItem(MNDanish, "flags-dk", false);
+            IconsMgr.PrepareMenuItem(MNBrazilian, "flags-br", false);
+            IconsMgr.PrepareMenuItem(russianToolStripMenuItem, "flags-ru", false);
+            IconsMgr.PrepareMenuItem(chinexeToolStripMenuItem, "flags-cn", false);
+            IconsMgr.PrepareMenuItem(traditionalChineseToolStripMenuItem, "flags-cn", false);
+            IconsMgr.PrepareMenuItem(slovakianToolStripMenuItem, "flags-sk", false);
+            IconsMgr.PrepareMenuItem(hungarianToolStripMenuItem, "flags-hu", false);
+            IconsMgr.PrepareMenuItem(czechToolStripMenuItem, "flags-cz", false);
+            IconsMgr.PrepareMenuItem(polishToolStripMenuItem, "flags-pl", false);
+            IconsMgr.PrepareMenuItem(greekToolStripMenuItem, "flags-gr", false);
+            IconsMgr.PrepareMenuItem(turkishToolStripMenuItem, "flags-tr", false);
+            IconsMgr.PrepareMenuItem(romanianToolStripMenuItem, "flags-ro", false);
+            IconsMgr.PrepareMenuItem(dutchToolStripMenuItem, "flags-nl", false);
+            IconsMgr.PrepareMenuItem(ukrainianToolStripMenuItem, "flags-ua", false);
+
+			IconsMgr.PrepareMenuItem(installCH340DriverToolStripMenuItem, "mdi-usb");
+            IconsMgr.PrepareMenuItem(flashGrblFirmwareToolStripMenuItem, "mdi-chip");
+
 
             RefreshColorSchema(); //include RefreshOverride();
 			RefreshFormTitle();

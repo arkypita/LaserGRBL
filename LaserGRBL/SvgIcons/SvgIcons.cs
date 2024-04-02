@@ -14,6 +14,7 @@ namespace LaserGRBL.SvgIcons
         {
             LoadSvg("Mdi");
             LoadSvg("Custom");
+            LoadSvg("Flags");
         }
 
         private static void LoadSvg(string fileName)

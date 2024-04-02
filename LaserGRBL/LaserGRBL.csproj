@@ -2276,6 +2276,8 @@
     <EmbeddedResource Include="SvgIcons\Custom.header" />
     <EmbeddedResource Include="SvgIcons\Mdi.data" />
     <EmbeddedResource Include="SvgIcons\Mdi.header" />
+    <EmbeddedResource Include="SvgIcons\Flags.data" />
+    <EmbeddedResource Include="SvgIcons\Flags.header" />
     <None Include="SvgLibrary\Basic Shapes\DOM.cd" />
     <EmbeddedResource Include="SvgLibrary\Resources\svg11.dtd" />
   </ItemGroup>

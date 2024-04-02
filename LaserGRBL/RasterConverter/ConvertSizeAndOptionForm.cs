@@ -52,7 +52,7 @@ namespace LaserGRBL.RasterConverter
             BtnModulationInfo.Size = new Size(16, 16);
             IconsMgr.PrepareButton(BtnOnOffInfo, "info");
             BtnOnOffInfo.Size = new Size(16, 16);
-            IconsMgr.PrepareButton(BtnPSHelper, "book");
+            IconsMgr.PrepareButton(BtnPSHelper, "mdi-database");
             BtnPSHelper.Size = new Size(16, 16);
             IconsMgr.PrepareButton(BtnCenter, "target");
             BtnCenter.Size = new Size(16, 16);
