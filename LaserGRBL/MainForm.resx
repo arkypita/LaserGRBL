@@ -2175,9 +2175,6 @@
   <data name="questionMarkToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 20</value>
   </data>
-  <data name="questionMarkToolStripMenuItem.Text" xml:space="preserve">
-    <value>?</value>
-  </data>
   <data name="MMn.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>

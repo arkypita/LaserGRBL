@@ -64,7 +64,7 @@ namespace LaserGRBL
 			mData.Add(Scheme.CADDark, new Color[]
 			{
                 Color.FromArgb(35,40,51),//form backcolor
-				Color.White,	//form forecolor
+				Color.FromArgb(190, 190, 190),	//form forecolor
 
 				Color.FromArgb( 23, 30, 38),//preview background
 				Color.FromArgb(220,220,220),//preview text

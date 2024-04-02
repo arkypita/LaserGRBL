@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace LaserGRBL.Icons
@@ -42,17 +43,19 @@ namespace LaserGRBL.Icons
             { "mdi-arrow-bottom-left-bold-outline", Color.FromArgb(0, 122, 217) },
             { "mdi-arrow-left-bold-outline", Color.FromArgb(0, 122, 217) },
             { "mdi-arrow-top-left-bold-outline", Color.FromArgb(0, 122, 217) },
-            { "resume", Color.FromArgb(0, 173, 16) },
-            { "mdi-stop", Color.FromArgb(236, 58, 58) },
-            { "mdi-play", Color.FromArgb(0, 173, 16) },
-            { "custom-abort", Color.FromArgb(236, 58, 58) },
+            { "mdi-stop", Color.FromArgb(176, 58, 58) },
+            { "mdi-play", Color.FromArgb(0, 123, 16) },
             { "mdi-power-plug", Color.FromArgb(0, 173, 16) },
-            { "mdi-power-plug-off", Color.FromArgb(236, 58, 58) },
+            { "mdi-power-plug-off", Color.FromArgb(176, 58, 58) },
+            { "mdi-close-box", Color.FromArgb(176, 58, 58) },
+            { "mdi-checkbox-marked", Color.FromArgb(0, 173, 16) },
+            { "mdi-play-circle", Color.FromArgb(0, 173, 16) },
+            { "mdi-stop-circle", Color.FromArgb(176, 58, 58) },
         };
         // dark color set
         private static Dictionary<string, Color> mDarkIconColors = new Dictionary<string, Color>
         {
-            { string.Empty, Color.FromArgb(220, 220, 220) },
+            { string.Empty, Color.FromArgb(250, 250, 250) },
             { "custom-reset", Color.FromArgb(230, 230, 20) },
             { "custom-unlock", Color.FromArgb(246, 163, 41) },
             { "zeroing", Color.FromArgb(79, 188, 243) },
@@ -70,12 +73,14 @@ namespace LaserGRBL.Icons
             { "mdi-arrow-bottom-left-bold-outline", Color.FromArgb( 0, 122, 217) },
             { "mdi-arrow-left-bold-outline", Color.FromArgb( 0, 122, 217) },
             { "mdi-arrow-top-left-bold-outline", Color.FromArgb( 0, 122, 217) },
-            { "resume", Color.FromArgb(71, 200, 86) },
-            { "mdi-stop", Color.FromArgb(228, 60, 60) },
+            { "mdi-stop", Color.FromArgb(248, 90, 90) },
             { "mdi-play", Color.FromArgb(71, 200, 86) },
-            { "custom-abort", Color.FromArgb(228, 60, 60) },
             { "mdi-power-plug", Color.FromArgb(71, 200, 86) },
-            { "mdi-power-plug-off", Color.FromArgb(228, 60, 60) },
+            { "mdi-power-plug-off", Color.FromArgb(248, 90, 90) },
+            { "mdi-close-box", Color.FromArgb(248, 90, 90) },
+            { "mdi-checkbox-marked", Color.FromArgb(71, 200, 86) },
+            { "mdi-play-circle", Color.FromArgb(71, 200, 86) },
+            { "mdi-stop-circle", Color.FromArgb(248, 90, 90) },
         };
         // current icon colors
         private static Dictionary<string, Color> mIconColors = mLightIconColors;

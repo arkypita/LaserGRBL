@@ -102,7 +102,7 @@ namespace LaserGRBL
 
 			GitHub.NewVersion += GitHub_NewVersion;
 
-			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser);
+			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", ColorScheme.Scheme.CADDark);
 
             IconsMgr.PrepareMenuItem(MnConnect, "mdi-power-plug");
             IconsMgr.PrepareMenuItem(MnDisconnect, "mdi-power-plug-off");
@@ -130,7 +130,7 @@ namespace LaserGRBL
             IconsMgr.PrepareMenuItem(shakeTestToolStripMenuItem, "mdi-pulse");
 
             IconsMgr.PrepareMenuItem(autoSizeToolStripMenuItem, "mdi-resize");
-            IconsMgr.PrepareMenuItem(lineSizeToolStripMenuItem, "mdi-draw-pen");
+            IconsMgr.PrepareMenuItem(lineSizeToolStripMenuItem, "mdi-gesture");
 
             IconsMgr.PrepareMenuItem(MNEnglish, "flags-gb", false);
             IconsMgr.PrepareMenuItem(MNItalian, "flags-it", false);
@@ -154,6 +154,28 @@ namespace LaserGRBL
 
 			IconsMgr.PrepareMenuItem(installCH340DriverToolStripMenuItem, "mdi-usb");
             IconsMgr.PrepareMenuItem(flashGrblFirmwareToolStripMenuItem, "mdi-chip");
+
+			IconsMgr.PrepareMenuItem(MnAutoUpdate, "mdi-cloud-download");
+            IconsMgr.PrepareMenuItem(openSessionLogToolStripMenuItem, "mdi-file-account-outline");
+            IconsMgr.PrepareMenuItem(activateExtendedLogToolStripMenuItem, "mdi-file-chart");
+            IconsMgr.PrepareMenuItem(helpOnLineToolStripMenuItem, "mdi-help-circle");
+            IconsMgr.PrepareMenuItem(aboutToolStripMenuItem, "mdi-frequently-asked-questions");
+            IconsMgr.PrepareMenuItem(facebookCommunityToolStripMenuItem, "mdi-facebook");
+            IconsMgr.PrepareMenuItem(donateToolStripMenuItem, "mdi-gift");
+            IconsMgr.PrepareMenuItem(licenseToolStripMenuItem, "mdi-license");
+
+
+            IconsMgr.PrepareMenuItem(questionMarkToolStripMenuItem, "mdi-help");
+			IconsMgr.PrepareMenuItem(MnCheckNow, "mdi-cloud-check-variant-outline");
+
+
+            IconsMgr.PrepareMenuItem(MnGrbl, "mdi-hammer-wrench");
+            IconsMgr.PrepareMenuItem(fileToolStripMenuItem, "mdi-file-document-outline");
+            IconsMgr.PrepareMenuItem(MnGenerate, "mdi-flask");
+            IconsMgr.PrepareMenuItem(schemaToolStripMenuItem, "mdi-palette");
+			IconsMgr.PrepareMenuItem(previewToolStripMenuItem, "mdi-image-filter-center-focus-strong");
+            IconsMgr.PrepareMenuItem(linguaToolStripMenuItem, "mdi-flag-variant");
+            IconsMgr.PrepareMenuItem(toolsToolStripMenuItem, "mdi-tools");
 
 
             RefreshColorSchema(); //include RefreshOverride();

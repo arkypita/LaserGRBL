@@ -34,6 +34,7 @@ namespace LaserGRBL.UserControls
 			MouseUp += ImageButtonMouseUp;
 			MouseLeave += ImageButtonMouseLeave;
 			MouseEnter += ImageButtonMouseEnter;
+            MouseMove += ImageButton_MouseMove;
 
 			//Chiamata richiesta da Progettazione Windows Form.
 			InitializeComponent();
@@ -42,9 +43,14 @@ namespace LaserGRBL.UserControls
 			Init();
 		}
 
-		#endregion
+        private void ImageButton_MouseMove(object sender, MouseEventArgs e)
+        {
+            Cursor.Current = Cursors.Hand;
+        }
 
-		private void Init()
+        #endregion
+
+        private void Init()
 		{
 			SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
 			SetStyle(System.Windows.Forms.ControlStyles.AllPaintingInWmPaint, true);
@@ -180,7 +186,7 @@ namespace LaserGRBL.UserControls
                         if (MouseButtons == System.Windows.Forms.MouseButtons.Left)
                         {
                             //Contenuto con mouse premuto
-                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.15F);
+                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, ColorScheme.DarkScheme ? -0.35f : 0.35f);
                             Point = new Point(Point.X + CLICK_SCALE_IN_PIXEL, CLICK_SCALE_IN_PIXEL);
 							Size.Width -= CLICK_SCALE_IN_PIXEL * 2;
 							Size.Height -= CLICK_SCALE_IN_PIXEL * 2;
@@ -188,7 +194,7 @@ namespace LaserGRBL.UserControls
                         else
                         {
                             //Contenuto con mouse non premuto
-                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.1F);
+                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, ColorScheme.DarkScheme ? -0.25f : 0.25f);
                         }
                     }
                     else
@@ -237,13 +243,13 @@ namespace LaserGRBL.UserControls
 		}
 
 		private void ImageButtonMouseEnter(object sender, System.EventArgs e)
-		{
-			Invalidate();
+        {
+            Invalidate();
 		}
 
 		private void ImageButtonMouseLeave(object sender, System.EventArgs e)
-		{
-			Invalidate();
+        {
+            Invalidate();
 		}
 
 		private void ImageButtonMouseUp(object sender, System.Windows.Forms.MouseEventArgs e)

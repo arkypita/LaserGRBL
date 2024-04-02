@@ -18,7 +18,7 @@ namespace LaserGRBL
 			BackColor = ColorScheme.FormBackColor;
 			ForeColor = ColorScheme.FormForeColor;
 			ThemeMgr.SetTheme(this);
-			IconsMgr.PreparePictureBox(pictureBox1, "safety");
+			IconsMgr.PreparePictureBox(pictureBox1, "mdi-safety-goggles");
 			IconsMgr.PrepareButton(BtnStart, "mdi-checkbox-marked");
             IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
             down = 5;
