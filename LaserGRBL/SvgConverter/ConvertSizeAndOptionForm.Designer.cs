@@ -15,11 +15,11 @@ namespace LaserGRBL.SvgConverter
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-		private System.Windows.Forms.GroupBox GbSpeed;
+		private LaserGRBL.UserControls.GrblGroupBox GbSpeed;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
 		private System.Windows.Forms.Label LblBorderTracing;
 		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IIBorderTracing;
-		private System.Windows.Forms.GroupBox GbLaser;
+		private LaserGRBL.UserControls.GrblGroupBox GbLaser;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
 		private System.Windows.Forms.Label LblSmin;
 		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IIMinPower;
@@ -27,8 +27,8 @@ namespace LaserGRBL.SvgConverter
 		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IIMaxPower;
 		private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private System.Windows.Forms.Button BtnCreate;
-		private System.Windows.Forms.Button BtnCancel;
+		private LaserGRBL.UserControls.GrblButton BtnCreate;
+		private LaserGRBL.UserControls.GrblButton BtnCancel;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -53,31 +53,31 @@ namespace LaserGRBL.SvgConverter
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SvgToGCodeForm));
 			this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-			this.GbSpeed = new System.Windows.Forms.GroupBox();
+			this.GbSpeed = new LaserGRBL.UserControls.GrblGroupBox();
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblBorderTracing = new System.Windows.Forms.Label();
 			this.LblBorderTracingmm = new System.Windows.Forms.Label();
 			this.IIBorderTracing = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
 			this.BtnPSHelper = new LaserGRBL.UserControls.ImageButton();
-			this.GbLaser = new System.Windows.Forms.GroupBox();
+			this.GbLaser = new LaserGRBL.UserControls.GrblGroupBox();
 			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
 			this.LblSmin = new System.Windows.Forms.Label();
 			this.IIMinPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
 			this.label18 = new System.Windows.Forms.Label();
 			this.BtnOnOffInfo = new LaserGRBL.UserControls.ImageButton();
-			this.CBLaserON = new System.Windows.Forms.ComboBox();
+			this.CBLaserON = new LaserGRBL.UserControls.FlatComboBox();
 			this.LblSmax = new System.Windows.Forms.Label();
 			this.IIMaxPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
 			this.LblMinPerc = new System.Windows.Forms.Label();
 			this.LblMaxPerc = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnCancel = new System.Windows.Forms.Button();
-			this.BtnCreate = new System.Windows.Forms.Button();
-			this.gbFilter = new System.Windows.Forms.GroupBox();
+			this.BtnCancel = new LaserGRBL.UserControls.GrblButton();
+			this.BtnCreate = new LaserGRBL.UserControls.GrblButton();
+			this.gbFilter = new LaserGRBL.UserControls.GrblGroupBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.labelFilter = new System.Windows.Forms.Label();
-			this.CBFilter = new System.Windows.Forms.ComboBox();
+			this.CBFilter = new LaserGRBL.UserControls.FlatComboBox();
 			this.BtnColorFilter = new LaserGRBL.UserControls.ImageButton();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
 			this.tableLayoutPanel9.SuspendLayout();
@@ -353,17 +353,17 @@ namespace LaserGRBL.SvgConverter
 
 		}
 
-		private System.Windows.Forms.ComboBox CBFilter;
+		private LaserGRBL.UserControls.FlatComboBox CBFilter;
 
 		private System.Windows.Forms.Label labelFilter;
 
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 
-		private System.Windows.Forms.GroupBox gbFilter;
+		private LaserGRBL.UserControls.GrblGroupBox gbFilter;
 
 		private LaserGRBL.UserControls.ImageButton BtnModulationInfo;
 		private LaserGRBL.UserControls.ImageButton BtnOnOffInfo;
-		private System.Windows.Forms.ComboBox CBLaserON;
+		private LaserGRBL.UserControls.FlatComboBox CBLaserON;
 		private System.Windows.Forms.ToolTip TT;
 		private System.Windows.Forms.Label LblBorderTracingmm;
 		private LaserGRBL.UserControls.ImageButton BtnPSHelper;

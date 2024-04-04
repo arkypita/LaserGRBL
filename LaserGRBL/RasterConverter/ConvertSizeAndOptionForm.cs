@@ -48,20 +48,13 @@ namespace LaserGRBL.RasterConverter
 			ThemeMgr.SetTheme(this, true);
             IconsMgr.PrepareButton(BtnCreate, "mdi-checkbox-marked");
             IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
-            IconsMgr.PrepareButton(BtnModulationInfo, "info");
-            BtnModulationInfo.Size = new Size(16, 16);
-            IconsMgr.PrepareButton(BtnOnOffInfo, "info");
-            BtnOnOffInfo.Size = new Size(16, 16);
-            IconsMgr.PrepareButton(BtnPSHelper, "mdi-database");
-            BtnPSHelper.Size = new Size(16, 16);
-            IconsMgr.PrepareButton(BtnCenter, "target");
-            BtnCenter.Size = new Size(16, 16);
-            IconsMgr.PrepareButton(BtnUnlockProportion, "lockproportions", "unlockproportions");
-            BtnUnlockProportion.Size = new Size(16, 16);
-            IconsMgr.PrepareButton(BtnDPI, "exif");
-            BtnDPI.Size = new Size(34, 16);
-            IconsMgr.PrepareButton(BtnReset, "resetcenter");
-            BtnReset.Size = new Size(16, 16);
+            IconsMgr.PrepareButton(BtnModulationInfo, "mdi-information-slab-box", new Size(16, 16));
+            IconsMgr.PrepareButton(BtnOnOffInfo, "info", new Size(16, 16));
+            IconsMgr.PrepareButton(BtnPSHelper, "mdi-database", new Size(16, 16));
+            IconsMgr.PrepareButton(BtnCenter, "target", new Size(16, 16));
+            IconsMgr.PrepareButton(BtnUnlockProportion, "lockproportions", new Size(16, 16), "unlockproportions");
+            IconsMgr.PrepareButton(BtnDPI, "exif", new Size(34, 16));
+            IconsMgr.PrepareButton(BtnReset, "resetcenter", new Size(16, 16));
 
             LblMaxPerc.Visible = LblMinPerc.Visible = LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
 			AssignMinMaxLimit();

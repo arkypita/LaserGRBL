@@ -51,6 +51,7 @@ namespace LaserGRBL.Icons
             { "mdi-checkbox-marked", Color.FromArgb(0, 173, 16) },
             { "mdi-play-circle", Color.FromArgb(0, 173, 16) },
             { "mdi-stop-circle", Color.FromArgb(176, 58, 58) },
+            { "mdi-information-slab-box", Color.FromArgb(79, 188, 243) },
         };
         // dark color set
         private static Dictionary<string, Color> mDarkIconColors = new Dictionary<string, Color>
@@ -81,6 +82,7 @@ namespace LaserGRBL.Icons
             { "mdi-checkbox-marked", Color.FromArgb(71, 200, 86) },
             { "mdi-play-circle", Color.FromArgb(71, 200, 86) },
             { "mdi-stop-circle", Color.FromArgb(248, 90, 90) },
+            { "mdi-information-slab-box", Color.FromArgb(79, 188, 243) },
         };
         // current icon colors
         private static Dictionary<string, Color> mIconColors = mLightIconColors;
@@ -151,22 +153,33 @@ namespace LaserGRBL.Icons
         }
 
         // prepare button
-        public static void PrepareButton(ImageButton button, string resourceName, string resourceNameAlt = null)
+        public static void PrepareButton(ImageButton button, string resourceName, Size size, string resourceNameAlt = null)
         {
-            button.Image = LoadImage(resourceName, Size.Empty);
+            button.Image = LoadImage(resourceName, size);
             button.SizingMode = ImageButton.SizingModes.StretchImage;
             if (!string.IsNullOrEmpty(resourceNameAlt))
             {
-                button.AltImage = LoadImage(resourceNameAlt, Size.Empty);
+                button.AltImage = LoadImage(resourceNameAlt, size);
             }
             button.SizingMode = ImageButton.SizingModes.StretchImage;
             AddControl(button);
+        }
+        // prepare button
+        public static void PrepareButton(ImageButton button, string resourceName, string resourceNameAlt = null)
+        {
+            PrepareButton(button, resourceName, Size.Empty, resourceNameAlt);
         }
 
         // prepare button
         public static void PrepareButton(GrblButton button, string resourceName)
         {
-            button.Image = LoadImage(resourceName, Size.Empty);
+            PrepareButton(button, resourceName, Size.Empty);
+        }
+
+        // prepare button
+        public static void PrepareButton(GrblButton button, string resourceName, Size size)
+        {
+            button.Image = LoadImage(resourceName, size);
             AddControl(button);
         }
 

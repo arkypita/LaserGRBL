@@ -334,7 +334,7 @@
     <value>GbSpeed</value>
   </data>
   <data name="&gt;&gt;GbSpeed.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GbSpeed.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
@@ -554,7 +554,7 @@ Click for more information...</value>
     <value>CBLaserON</value>
   </data>
   <data name="&gt;&gt;CBLaserON.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CBLaserON.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -734,7 +734,7 @@ Click for more information...</value>
     <value>GbLaser</value>
   </data>
   <data name="&gt;&gt;GbLaser.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GbLaser.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
@@ -773,7 +773,7 @@ Click for more information...</value>
     <value>BtnCancel</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -803,7 +803,7 @@ Click for more information...</value>
     <value>BtnCreate</value>
   </data>
   <data name="&gt;&gt;BtnCreate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCreate.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -908,7 +908,7 @@ Click for more information...</value>
     <value>CBFilter</value>
   </data>
   <data name="&gt;&gt;CBFilter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CBFilter.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1012,7 +1012,7 @@ Click for more information...</value>
     <value>gbFilter</value>
   </data>
   <data name="&gt;&gt;gbFilter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;gbFilter.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
