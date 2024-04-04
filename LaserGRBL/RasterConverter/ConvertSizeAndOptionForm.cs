@@ -46,15 +46,16 @@ namespace LaserGRBL.RasterConverter
 			BackColor = ColorScheme.FormBackColor;
 			ForeColor = ColorScheme.FormForeColor;
 			ThemeMgr.SetTheme(this, true);
+			Size icoSize = new Size(16, 16);
             IconsMgr.PrepareButton(BtnCreate, "mdi-checkbox-marked");
             IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
-            IconsMgr.PrepareButton(BtnModulationInfo, "mdi-information-slab-box", new Size(16, 16));
-            IconsMgr.PrepareButton(BtnOnOffInfo, "info", new Size(16, 16));
-            IconsMgr.PrepareButton(BtnPSHelper, "mdi-database", new Size(16, 16));
-            IconsMgr.PrepareButton(BtnCenter, "target", new Size(16, 16));
-            IconsMgr.PrepareButton(BtnUnlockProportion, "lockproportions", new Size(16, 16), "unlockproportions");
+            IconsMgr.PrepareButton(BtnModulationInfo, "mdi-information-slab-box", icoSize);
+            IconsMgr.PrepareButton(BtnOnOffInfo, "info", icoSize);
+            IconsMgr.PrepareButton(BtnPSHelper, "mdi-database", icoSize);
+            IconsMgr.PrepareButton(BtnCenter, "target", icoSize);
+            IconsMgr.PrepareButton(BtnUnlockProportion, "lockproportions", icoSize, "unlockproportions");
             IconsMgr.PrepareButton(BtnDPI, "exif", new Size(34, 16));
-            IconsMgr.PrepareButton(BtnReset, "resetcenter", new Size(16, 16));
+            IconsMgr.PrepareButton(BtnReset, "resetcenter", icoSize);
 
             LblMaxPerc.Visible = LblMinPerc.Visible = LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
 			AssignMinMaxLimit();

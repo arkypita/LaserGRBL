@@ -35,38 +35,26 @@ namespace LaserGRBL.RasterConverter
 
 			BackColor = ColorScheme.FormBackColor;
 			GbCenterlineOptions.ForeColor = GbConversionTool.ForeColor = GbLineToLineOptions.ForeColor = GbParameters.ForeColor = GbVectorizeOptions.ForeColor = ForeColor = ColorScheme.FormForeColor;
-			
+
+            Size icoSize = new Size(16, 16);
             ThemeMgr.SetTheme(this, true);
             IconsMgr.PrepareButton(BtnCreate, "mdi-checkbox-marked");
             IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
-            IconsMgr.PrepareButton(BtnAdaptiveQualityInfo, "info");
-			BtnAdaptiveQualityInfo.Size = new Size(16, 16);
-            IconsMgr.PrepareButton(BtnFillingQualityInfo, "info");
-            BtnFillingQualityInfo.Size = new Size(16, 16);
-            IconsMgr.PrepareButton(BtnQualityInfo, "info");
-            BtnQualityInfo.Size = new Size(16, 16);
-            IconsMgr.PrepareButton(BtFlipH, "flipvertical");
-            BtFlipH.Size = new Size(25, 25);
-            IconsMgr.PrepareButton(BtFlipV, "fliphorizontal");
-            BtFlipV.Size = new Size(25, 25);
-            IconsMgr.PrepareButton(BtRotateCW, "rotateright");
-            BtRotateCW.Size = new Size(25, 25);
-            IconsMgr.PrepareButton(BtRotateCCW, "rotateleft");
-            BtRotateCCW.Size = new Size(25, 25);
-            IconsMgr.PrepareButton(BtnCrop, "crop");
-            BtnCrop.Size = new Size(25, 25);
-            IconsMgr.PrepareButton(BtnRevert, "revert");
-            BtnRevert.Size = new Size(25, 25);
-            IconsMgr.PrepareButton(BtnAutoTrim, "autotrim");
-            BtnAutoTrim.Size = new Size(25, 25);
-            IconsMgr.PrepareButton(BtnFill, "fill");
-            BtnFill.Size = new Size(25, 25);
-            IconsMgr.PrepareButton(BtnReverse, "invert");
-            BtnReverse.Size = new Size(25, 25);
-            IconsMgr.PrepareButton(BtnOutliner, "magicwand");
-            BtnOutliner.Size = new Size(25, 25);
+            IconsMgr.PrepareButton(BtnAdaptiveQualityInfo, "mdi-information-slab-box", icoSize);
+            IconsMgr.PrepareButton(BtnFillingQualityInfo, "mdi-information-slab-box", icoSize);
+            IconsMgr.PrepareButton(BtnQualityInfo, "mdi-information-slab-box", icoSize);
 
-            IconsMgr.PrepareButton(BtnCreate, "mdi-checkbox-marked");
+            Size icoToolSize = new Size(25, 25);
+            IconsMgr.PrepareButton(BtFlipH, "mdi-flip-vertical", icoToolSize);
+            IconsMgr.PrepareButton(BtFlipV, "mdi-flip-horizontal", icoToolSize);
+            IconsMgr.PrepareButton(BtRotateCW, "mdi-rotate-right", icoToolSize);
+            IconsMgr.PrepareButton(BtRotateCCW, "mdi-rotate-left", icoToolSize);
+            IconsMgr.PrepareButton(BtnCrop, "mdi-crop", icoToolSize);
+            IconsMgr.PrepareButton(BtnRevert, "mdi-arrow-u-left-top-bold", icoToolSize);
+            IconsMgr.PrepareButton(BtnAutoTrim, "mdi-image-size-select-large", icoToolSize);
+            IconsMgr.PrepareButton(BtnFill, "mdi-format-color-fill", icoToolSize);
+            IconsMgr.PrepareButton(BtnReverse, "mdi-invert-colors", icoToolSize);
+            IconsMgr.PrepareButton(BtnOutliner, "mdi-auto-fix", icoToolSize);
 
             IP = new ImageProcessor(core, filename, GetImageSize(), append);
 			//PbOriginal.Image = IP.Original;
