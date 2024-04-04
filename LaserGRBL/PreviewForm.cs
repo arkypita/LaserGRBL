@@ -27,12 +27,12 @@ namespace LaserGRBL
 			InitializeComponent();
             CreatePanel(Settings.GetObject("LegacyPreview", false));
             CustomButtonArea.OrderChanged += CustomButtonArea_OrderChanged;
-			IconsMgr.PrepareButton(BtnReset, "custom-reset");
-            IconsMgr.PrepareButton(BtnUnlock, "custom-unlock");
-            IconsMgr.PrepareButton(BtnHoming, "homing");
-            IconsMgr.PrepareButton(BtnResume, "resume");
-            IconsMgr.PrepareButton(BtnStop, "custom-stop");
-            IconsMgr.PrepareButton(BtnZeroing, "zeroing");
+			IconsMgr.PrepareButton(BtnReset, "mdi-lightning-bolt");
+            IconsMgr.PrepareButton(BtnUnlock, "mdi-lock-open");
+            IconsMgr.PrepareButton(BtnHoming, "mdi-map-marker-radius");
+            IconsMgr.PrepareButton(BtnResume, "mdi-arrow-right-bold-hexagon-outline");
+            IconsMgr.PrepareButton(BtnStop, "mdi-close-octagon");
+            IconsMgr.PrepareButton(BtnZeroing, "mdi-home-floor-0");
         }
 
         private void CreatePanel(bool isLegacy)
@@ -128,11 +128,11 @@ namespace LaserGRBL
 				CustomButtonIB ib = new CustomButtonIB(mCore, cb, this);
 				switch (ib.Caption)
 				{
-					case "Frame": IconsMgr.PrepareButton(ib, "frame"); break;
+					case "Frame": IconsMgr.PrepareButton(ib, "mdi-vector-square"); break;
 					case "Center": IconsMgr.PrepareButton(ib, "center"); break;
                     case "Corner": IconsMgr.PrepareButton(ib, "corner"); break;
-                    case "Focus": IconsMgr.PrepareButton(ib, "focus"); break;
-                    case "Blink": IconsMgr.PrepareButton(ib, "blink"); break;
+                    case "Focus": IconsMgr.PrepareButton(ib, "mdi-image-filter-center-focus"); break;
+                    case "Blink": IconsMgr.PrepareButton(ib, "mdi-lightbulb-on"); break;
                 }
                 ib.Size = BtnStop.Size;
                 CustomButtonArea.Controls.Add(ib);

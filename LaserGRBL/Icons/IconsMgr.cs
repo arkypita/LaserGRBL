@@ -1,11 +1,13 @@
 ﻿using Base.Drawing;
 using LaserGRBL.UserControls;
+using SharpGL.SceneGraph.Lighting;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace LaserGRBL.Icons
 {
@@ -52,6 +54,8 @@ namespace LaserGRBL.Icons
             { "mdi-play-circle", Color.FromArgb(0, 173, 16) },
             { "mdi-stop-circle", Color.FromArgb(176, 58, 58) },
             { "mdi-information-slab-box", Color.FromArgb(79, 188, 243) },
+            { "mdi-arrow-right-bold-hexagon-outline", Color.FromArgb(0, 173, 16) },
+            { "mdi-close-octagon", Color.FromArgb(176, 58, 58) },
         };
         // dark color set
         private static Dictionary<string, Color> mDarkIconColors = new Dictionary<string, Color>
@@ -83,6 +87,8 @@ namespace LaserGRBL.Icons
             { "mdi-play-circle", Color.FromArgb(71, 200, 86) },
             { "mdi-stop-circle", Color.FromArgb(248, 90, 90) },
             { "mdi-information-slab-box", Color.FromArgb(79, 188, 243) },
+            { "mdi-arrow-right-bold-hexagon-outline", Color.FromArgb(71, 200, 86) },
+            { "mdi-close-octagon", Color.FromArgb(248, 90, 90) },
         };
         // current icon colors
         private static Dictionary<string, Color> mIconColors = mLightIconColors;
