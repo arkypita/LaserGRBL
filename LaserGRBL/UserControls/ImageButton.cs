@@ -172,7 +172,7 @@ namespace LaserGRBL.UserControls
                 {
 					if (Pressed)
 					{
-                        Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, ColorScheme.DarkScheme ? -0.3f : 0.3f);
+                        Tmp = Base.Drawing.ImageTransform.SetColor(Tmp, ColorScheme.PressedButtons);
                     }
                     if (!Coloration.Equals(Color.Empty))
                     {

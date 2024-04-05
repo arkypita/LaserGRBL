@@ -128,13 +128,12 @@ namespace LaserGRBL
 				CustomButtonIB ib = new CustomButtonIB(mCore, cb, this);
 				switch (ib.Caption)
 				{
-					case "Frame": IconsMgr.PrepareButton(ib, "mdi-vector-square"); break;
-					case "Center": IconsMgr.PrepareButton(ib, "center"); break;
-                    case "Corner": IconsMgr.PrepareButton(ib, "corner"); break;
-                    case "Focus": IconsMgr.PrepareButton(ib, "mdi-image-filter-center-focus"); break;
-                    case "Blink": IconsMgr.PrepareButton(ib, "mdi-lightbulb-on"); break;
+					case "Frame": IconsMgr.PrepareButton(ib, "mdi-vector-square", BtnStop.Size); break;
+					case "Center": IconsMgr.PrepareButton(ib, "center", BtnStop.Size); break;
+                    case "Corner": IconsMgr.PrepareButton(ib, "corner", BtnStop.Size); break;
+                    case "Focus": IconsMgr.PrepareButton(ib, "mdi-image-filter-center-focus", BtnStop.Size); break;
+                    case "Blink": IconsMgr.PrepareButton(ib, "mdi-lightbulb-on", BtnStop.Size); break;
                 }
-                ib.Size = BtnStop.Size;
                 CustomButtonArea.Controls.Add(ib);
 			}
 
