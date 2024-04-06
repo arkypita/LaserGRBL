@@ -157,7 +157,7 @@
     <value>BtnCancel</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -184,7 +184,7 @@
     <value>BtnSave</value>
   </data>
   <data name="&gt;&gt;BtnSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnSave.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -253,7 +253,7 @@
     <value>CBCore</value>
   </data>
   <data name="&gt;&gt;CBCore.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CBCore.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -280,7 +280,7 @@
     <value>CbThreadingMode</value>
   </data>
   <data name="&gt;&gt;CbThreadingMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CbThreadingMode.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -346,7 +346,7 @@
     <value>CBStreamingMode</value>
   </data>
   <data name="&gt;&gt;CBStreamingMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CBStreamingMode.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -409,7 +409,7 @@
     <value>CBProtocol</value>
   </data>
   <data name="&gt;&gt;CBProtocol.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CBProtocol.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -2068,7 +2068,7 @@ After this time LaserGRBL will send an automatic feed hold to cool down the lase
     <value>CbOnMin</value>
   </data>
   <data name="&gt;&gt;CbOnMin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CbOnMin.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -2092,7 +2092,7 @@ After this time LaserGRBL will send an automatic feed hold to cool down the lase
     <value>CbOnSec</value>
   </data>
   <data name="&gt;&gt;CbOnSec.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CbOnSec.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -2251,7 +2251,7 @@ After this time LaserGRBL will send an automatic feed hold to cool down the lase
     <value>CbOffMin</value>
   </data>
   <data name="&gt;&gt;CbOffMin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CbOffMin.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
@@ -2275,7 +2275,7 @@ After this time LaserGRBL will send an automatic feed hold to cool down the lase
     <value>CbOffSec</value>
   </data>
   <data name="&gt;&gt;CbOffSec.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CbOffSec.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
@@ -2673,7 +2673,7 @@ related to the specific job is going to be executed.</value>
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
@@ -2724,7 +2724,7 @@ related to the specific job is going to be executed.</value>
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
@@ -2775,7 +2775,7 @@ related to the specific job is going to be executed.</value>
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
@@ -3456,7 +3456,7 @@ Check to enable.
     <value>changeWarBtn</value>
   </data>
   <data name="&gt;&gt;changeWarBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;changeWarBtn.Parent" xml:space="preserve">
     <value>tableLayoutPanel11</value>
@@ -3630,7 +3630,7 @@ Check to enable.
     <value>changeFatBtn</value>
   </data>
   <data name="&gt;&gt;changeFatBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;changeFatBtn.Parent" xml:space="preserve">
     <value>tableLayoutPanel12</value>
@@ -3804,7 +3804,7 @@ Check to enable.
     <value>changeConBtn</value>
   </data>
   <data name="&gt;&gt;changeConBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;changeConBtn.Parent" xml:space="preserve">
     <value>tableLayoutPanel14</value>
@@ -3978,7 +3978,7 @@ Check to enable.
     <value>changeDconBtn</value>
   </data>
   <data name="&gt;&gt;changeDconBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;changeDconBtn.Parent" xml:space="preserve">
     <value>tableLayoutPanel15</value>
@@ -4152,7 +4152,7 @@ Check to enable.
     <value>changeSucBtn</value>
   </data>
   <data name="&gt;&gt;changeSucBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;changeSucBtn.Parent" xml:space="preserve">
     <value>tableLayoutPanel13</value>
@@ -4568,7 +4568,7 @@ Check to enable.
     <value>BtnTestNotification</value>
   </data>
   <data name="&gt;&gt;BtnTestNotification.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnTestNotification.Parent" xml:space="preserve">
     <value>tableLayoutPanel17</value>
