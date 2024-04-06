@@ -788,7 +788,7 @@ only when connected and idle</value>
     <value>GB</value>
   </data>
   <data name="&gt;&gt;GB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GB.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>

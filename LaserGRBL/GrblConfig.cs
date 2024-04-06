@@ -5,6 +5,7 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using LaserGRBL.Icons;
+using LaserGRBL.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,7 +39,7 @@ namespace LaserGRBL
             DGV.Columns["Value"].DefaultCellStyle.ForeColor = ColorScheme.FormForeColor;
             DGV.Columns["Value"].DefaultCellStyle.BackColor = ColorScheme.FormBackColor;
             BtnRead.BackColor = BtnWrite.BackColor = BtnImport.BackColor = BtnExport.BackColor = BtnCancel.BackColor = ColorScheme.FormButtonsColor;
-
+			ThemeMgr.SetTheme(this, true);
 			IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
             IconsMgr.PrepareButton(BtnWrite, "mdi-text-box-edit");
             IconsMgr.PrepareButton(BtnRead, "mdi-text-box-search");

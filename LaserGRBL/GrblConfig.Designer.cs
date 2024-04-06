@@ -27,7 +27,7 @@
 			this.LblConnect = new System.Windows.Forms.Label();
 			this.BtnExport = new LaserGRBL.UserControls.GrblButton();
 			this.BtnImport = new LaserGRBL.UserControls.GrblButton();
-			this.GB = new System.Windows.Forms.GroupBox();
+			this.GB = new LaserGRBL.UserControls.GrblGroupBox();
 			this.LblAction = new System.Windows.Forms.Label();
 			this.DGV = new LaserGRBL.MyDatagridView();
 			this.DollarNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -216,7 +216,7 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private LaserGRBL.UserControls.GrblButton BtnCancel;
-		private System.Windows.Forms.GroupBox GB;
+		private LaserGRBL.UserControls.GrblGroupBox GB;
 		private MyDatagridView DGV;
 		private LaserGRBL.UserControls.GrblButton BtnWrite;
 		private LaserGRBL.UserControls.GrblButton BtnRead;
