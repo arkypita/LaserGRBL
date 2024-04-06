@@ -121,38 +121,6 @@ namespace LaserGRBL.UserControls
             set { _coloration = value; }
         }
 
-        public static GraphicsPath RoundedRect(Rectangle bounds, int radius)
-        {
-            int diameter = radius * 2;
-            Size size = new Size(diameter, diameter);
-            Rectangle arc = new Rectangle(bounds.Location, size);
-            GraphicsPath path = new GraphicsPath();
-
-            if (radius == 0)
-            {
-                path.AddRectangle(bounds);
-                return path;
-            }
-
-            // top left arc  
-            path.AddArc(arc, 180, 90);
-
-            // top right arc  
-            arc.X = bounds.Right - diameter;
-            path.AddArc(arc, 270, 90);
-
-            // bottom right arc  
-            arc.Y = bounds.Bottom - diameter;
-            path.AddArc(arc, 0, 90);
-
-            // bottom left arc 
-            arc.X = bounds.Left;
-            path.AddArc(arc, 90, 90);
-
-            path.CloseFigure();
-            return path;
-        }
-
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -229,7 +197,7 @@ namespace LaserGRBL.UserControls
                 if (ColorScheme.FormBackColor != BackColor)
                 {
                     using (Brush brush = new SolidBrush(BackColor))
-                    using (GraphicsPath path = RoundedRect(new Rectangle(Point, Size), 5))
+                    using (GraphicsPath path = Tools.Graph.RoundedRect(new Rectangle(Point, Size), 5))
                     {
                         e.Graphics.FillPath(brush, path);
                     }

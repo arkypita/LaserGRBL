@@ -29,6 +29,8 @@ namespace LaserGRBL.Icons
         {
             { string.Empty, Color.FromArgb(50, 50, 50) },
             { "custom-reset", Color.FromArgb(199, 193, 13) },
+            { "mdi-lightning-bolt", Color.FromArgb(199, 193, 13) },
+            { "mdi-home", Color.FromArgb(79, 188, 243) },
             { "mdi-arrow-up-bold-outline", Color.FromArgb(0, 122, 217) },
             { "mdi-arrow-top-right-bold-outline", Color.FromArgb(0, 122, 217) },
             { "mdi-arrow-right-bold-outline", Color.FromArgb(0, 122, 217) },
@@ -54,6 +56,8 @@ namespace LaserGRBL.Icons
         {
             { string.Empty, Color.FromArgb(230, 230, 230) },
             { "custom-reset", Color.FromArgb(230, 230, 20) },
+            { "mdi-lightning-bolt", Color.FromArgb(230, 230, 20) },
+            { "mdi-home", Color.FromArgb(79, 188, 243) },
             { "mdi-arrow-up-bold-outline", Color.FromArgb( 0, 122, 217) },
             { "mdi-arrow-top-right-bold-outline", Color.FromArgb( 0, 122, 217) },
             { "mdi-arrow-right-bold-outline", Color.FromArgb( 0, 122, 217) },

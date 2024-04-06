@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Management.Instrumentation;
 using System.Windows.Forms;
+using Tools;
+using static LaserGRBL.UserControls.ColorSlider;
 
 namespace LaserGRBL.UserControls
 {
@@ -18,6 +19,7 @@ namespace LaserGRBL.UserControls
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            e.Graphics.Clear(ColorScheme.FormBackColor);
             Color backColor = ColorScheme.LogBackColor;
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
@@ -26,9 +28,11 @@ namespace LaserGRBL.UserControls
             using (Brush backColorBrush = new SolidBrush(backColor))
             using (Brush foreColorBrush = new SolidBrush(ColorScheme.FormForeColor))
             using (Font font = new Font(Font, Font.Style))
+            using (Pen borderPen = new Pen(ColorScheme.ControlsBorder))
+            using (GraphicsPath backRect = Graph.RoundedRect(e.ClipRectangle, 5))
             {
-                e.Graphics.FillRectangle(backColorBrush, e.ClipRectangle);
-                ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, ColorScheme.ControlsBorder, ButtonBorderStyle.Solid);
+                e.Graphics.FillPath(backColorBrush, backRect);
+                e.Graphics.DrawPath(borderPen, backRect);
                 int startX = 0;
                 if (Image != null)
                 {
