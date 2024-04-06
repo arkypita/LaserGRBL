@@ -60,7 +60,7 @@ namespace LaserGRBL.Icons
         // dark color set
         private static Dictionary<string, Color> mDarkIconColors = new Dictionary<string, Color>
         {
-            { string.Empty, Color.FromArgb(250, 250, 250) },
+            { string.Empty, Color.FromArgb(230, 230, 230) },
             { "custom-reset", Color.FromArgb(230, 230, 20) },
             { "custom-unlock", Color.FromArgb(246, 163, 41) },
             { "zeroing", Color.FromArgb(79, 188, 243) },

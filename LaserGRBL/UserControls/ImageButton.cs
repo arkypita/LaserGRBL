@@ -4,180 +4,198 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace LaserGRBL.UserControls
 {
 
-	[System.ComponentModel.DefaultEvent("Click")]
-	public partial class ImageButton : System.Windows.Forms.UserControl
-	{
-		private const float CAPTION_FONTSIZE = 7f;
-		private const int CAPTION_HEIGHT = 12;
-		private const int CLICK_SCALE_IN_PIXEL = 1;
+    [System.ComponentModel.DefaultEvent("Click")]
+    public partial class ImageButton : System.Windows.Forms.UserControl
+    {
+        private const float CAPTION_FONTSIZE = 7f;
+        private const int CAPTION_HEIGHT = 12;
+        private const int CLICK_SCALE_IN_PIXEL = 1;
 
-		#region " Codice generato da Progettazione Windows Form "
+        #region " Codice generato da Progettazione Windows Form "
 
-		public ImageButton()
-			: base()
-		{
-			EnabledChanged += ImageButtonEnabledChanged;
-			MouseDown += ImageButtonMouseDown;
-			MouseUp += ImageButtonMouseUp;
-			MouseLeave += ImageButtonMouseLeave;
-			MouseEnter += ImageButtonMouseEnter;
-            MouseMove += ImageButton_MouseMove;
-
-			//Chiamata richiesta da Progettazione Windows Form.
-			InitializeComponent();
-
-			//Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent()
-			Init();
-		}
-
-        private void ImageButton_MouseMove(object sender, MouseEventArgs e)
+        public ImageButton()
+            : base()
         {
-            Cursor.Current = Cursors.Hand;
+            EnabledChanged += ImageButtonEnabledChanged;
+            MouseDown += ImageButtonMouseDown;
+            MouseUp += ImageButtonMouseUp;
+            MouseLeave += ImageButtonMouseLeave;
+            MouseEnter += ImageButtonMouseEnter;
+
+            //Chiamata richiesta da Progettazione Windows Form.
+            InitializeComponent();
+
+            //Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent()
+            Init();
+
+            this.Cursor = Cursors.Hand;
         }
 
         #endregion
 
         private void Init()
-		{
-			SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
-			SetStyle(System.Windows.Forms.ControlStyles.AllPaintingInWmPaint, true);
-			SetStyle(System.Windows.Forms.ControlStyles.DoubleBuffer, true);
-			SetStyle(System.Windows.Forms.ControlStyles.ResizeRedraw, true);
-			SetStyle(System.Windows.Forms.ControlStyles.SupportsTransparentBackColor, true);
-			SetStyle(System.Windows.Forms.ControlStyles.ContainerControl, true);
+        {
+            SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
+            SetStyle(System.Windows.Forms.ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(System.Windows.Forms.ControlStyles.DoubleBuffer, true);
+            SetStyle(System.Windows.Forms.ControlStyles.ResizeRedraw, true);
+            SetStyle(System.Windows.Forms.ControlStyles.SupportsTransparentBackColor, true);
+            SetStyle(System.Windows.Forms.ControlStyles.ContainerControl, true);
+            this.BackColor = Color.FromArgb(0, 0, 0, 0);
+        }
 
-			this.BackColor = Color.FromArgb(0, 0, 0, 0);
-		}
+        private Image _image;
+        public virtual Image Image
+        {
+            get { return _image; }
+            set
+            {
+                _image = value;
+                SizingMode = SizingMode;
+                Invalidate();
+            }
+        }
 
-		private Image _image;
-		public virtual Image Image
-		{
-			get { return _image; }
-			set
-			{
-				_image = value;
-				SizingMode = SizingMode;
-				Invalidate();
-			}
-		}
+        public string Caption { get; set; }
 
-		public string Caption { get; set; }
+        private bool HasCaption
+        {
+            get { return !string.IsNullOrEmpty(Caption); }
+        }
 
-		private bool HasCaption
-		{
-			get { return !string.IsNullOrEmpty(Caption); }
-		}
+        private Image _altimage;
+        public virtual Image AltImage
+        {
+            get { return _altimage; }
+            set
+            {
+                _altimage = value;
+                SizingMode = SizingMode;
+                Invalidate();
+            }
+        }
 
-		private Image _altimage;
-		public virtual Image AltImage
-		{
-			get { return _altimage; }
-			set
-			{
-				_altimage = value;
-				SizingMode = SizingMode;
-				Invalidate();
-			}
-		}
+        private bool _UseAltImage;
+        public bool UseAltImage
+        {
+            get { return _UseAltImage; }
+            set
+            {
+                _UseAltImage = value;
+                Invalidate();
+            }
+        }
 
-		private bool _UseAltImage;
-		public bool UseAltImage
-		{
-			get { return _UseAltImage; }
-			set 
-			{
-				_UseAltImage = value;
-				Invalidate();
-			}
-		}
+        public enum SizingModes
+        {
+            StretchImage,
+            FixedSize
+        }
 
-		public bool Pressed { get; set; } = false;
-
-		public enum SizingModes
-		{
-			StretchImage,
-			FixedSize
-		}
-
-		private SizingModes _sizingmode = SizingModes.FixedSize;
-		public SizingModes SizingMode
-		{
-			get { return _sizingmode; }
-			set
-			{
-				_sizingmode = value;
-				if (SizingMode == SizingModes.FixedSize && (Image != null))
-				{
-					this.Size = new Size(Image.Width + 1, Image.Height + 1);
-				}
-			}
-		}
+        private SizingModes _sizingmode = SizingModes.FixedSize;
+        public SizingModes SizingMode
+        {
+            get { return _sizingmode; }
+            set
+            {
+                _sizingmode = value;
+                if (SizingMode == SizingModes.FixedSize && (Image != null))
+                {
+                    this.Size = new Size(Image.Width + 1, Image.Height + 1);
+                }
+            }
+        }
 
 
-		private Color _coloration = Color.Empty;
-		public Color Coloration
-		{
-			get { return _coloration; }
-			set { _coloration = value; }
-		}
+        private Color _coloration = Color.Empty;
+        public Color Coloration
+        {
+            get { return _coloration; }
+            set { _coloration = value; }
+        }
+
+        public static GraphicsPath RoundedRect(Rectangle bounds, int radius)
+        {
+            int diameter = radius * 2;
+            Size size = new Size(diameter, diameter);
+            Rectangle arc = new Rectangle(bounds.Location, size);
+            GraphicsPath path = new GraphicsPath();
+
+            if (radius == 0)
+            {
+                path.AddRectangle(bounds);
+                return path;
+            }
+
+            // top left arc  
+            path.AddArc(arc, 180, 90);
+
+            // top right arc  
+            arc.X = bounds.Right - diameter;
+            path.AddArc(arc, 270, 90);
+
+            // bottom right arc  
+            arc.Y = bounds.Bottom - diameter;
+            path.AddArc(arc, 0, 90);
+
+            // bottom left arc 
+            arc.X = bounds.Left;
+            path.AddArc(arc, 90, 90);
+
+            path.CloseFigure();
+            return path;
+        }
 
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
-		{
-			base.OnPaint(e);
+        {
+            base.OnPaint(e);
 
-			System.Drawing.Image touse = UseAltImage ? AltImage : Image;
+            System.Drawing.Image touse = UseAltImage ? AltImage : Image;
 
 
-			if ((touse != null) & this.Visible)
-			{
-				e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-				e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            if ((touse != null) & this.Visible)
+            {
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
-				Image Tmp = (Image)touse.Clone();
+                Image Tmp = (Image)touse.Clone();
 
-				Point Point = new Point(0, 0);
-				Size Size = new Size(Image.Width, Image.Height);
+                Point Point = new Point(0, 0);
+                Size Size = new Size(Image.Width, Image.Height);
 
-				if (SizingMode == SizingModes.StretchImage)
-				{
-					Size = new Size(this.Width - 1, this.Height - 1);
-				}
-				/*
-				if (HasCaption)
-				{
-					Size.Height -= CAPTION_HEIGHT;
-					Size.Width -= CAPTION_HEIGHT;
-					Point.X += (Image.Width - Size.Width) / 2;
-				}
-				*/
-
-				if (DrawDisabled())
-				{
-                    Tmp = Base.Drawing.ImageTransform.SetColor(Tmp, ColorScheme.DisabledButtons);
-				}
-				else
+                if (SizingMode == SizingModes.StretchImage)
                 {
-					if (Pressed)
-					{
-                        Tmp = Base.Drawing.ImageTransform.SetColor(Tmp, ColorScheme.PressedButtons);
-                    }
+                    Size = new Size(this.Width - 1, this.Height - 1);
+                }
+
+                if (HasCaption)
+                {
+                    Size.Height -= CAPTION_HEIGHT;
+                    Size.Width -= CAPTION_HEIGHT;
+                    Point.X += (Image.Width - Size.Width) / 2;
+                }
+
+                float direction = ColorScheme.DarkScheme ? 1 : -1;
+                if (DrawDisabled())
+                {
+                    //Disabilitato
+                    //Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
+                    //Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.11F);
+                    Tmp = Base.Drawing.ImageTransform.SetColor(Tmp, ColorScheme.DisabledButtons);
+                }
+                else
+                {
                     if (!Coloration.Equals(Color.Empty))
                     {
-                        Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
-                        Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, ColorScheme.DarkScheme ? -0.3f : 0.3f);
+                        //Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
+                        Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.5F * direction);
                         Tmp = Base.Drawing.ImageTransform.Translate(Tmp, Coloration, 0);
                     }
 
@@ -186,15 +204,15 @@ namespace LaserGRBL.UserControls
                         if (MouseButtons == System.Windows.Forms.MouseButtons.Left)
                         {
                             //Contenuto con mouse premuto
-                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, ColorScheme.DarkScheme ? -0.35f : 0.35f);
+                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.3F * direction);
                             Point = new Point(Point.X + CLICK_SCALE_IN_PIXEL, CLICK_SCALE_IN_PIXEL);
-							Size.Width -= CLICK_SCALE_IN_PIXEL * 2;
-							Size.Height -= CLICK_SCALE_IN_PIXEL * 2;
-						}
+                            Size.Width -= CLICK_SCALE_IN_PIXEL * 2;
+                            Size.Height -= CLICK_SCALE_IN_PIXEL * 2;
+                        }
                         else
                         {
                             //Contenuto con mouse non premuto
-                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, ColorScheme.DarkScheme ? -0.25f : 0.25f);
+                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.2F * direction);
                         }
                     }
                     else
@@ -204,33 +222,42 @@ namespace LaserGRBL.UserControls
                     }
                 }
 
+                e.Graphics.Clear(ColorScheme.FormBackColor);
+
+                if (ColorScheme.FormBackColor != BackColor)
+                {
+                    using (Brush brush = new SolidBrush(BackColor))
+                    using (GraphicsPath path = RoundedRect(new Rectangle(Point, Size), 5))
+                    {
+                        e.Graphics.FillPath(brush, path);
+                    }
+                }
+
                 if ((Tmp != null))
-				{
-					e.Graphics.DrawImage(Tmp, new Rectangle(Point, Size));
-				}
+                {
+                    e.Graphics.DrawImage(Tmp, new Rectangle(Point, Size));
+                }
 
-				/*
-				if (this.HasCaption)
-				{
-					StringFormat sf = new StringFormat()
-					{
-						Alignment = StringAlignment.Center,
-						LineAlignment = StringAlignment.Center,
-						FormatFlags = StringFormatFlags.LineLimit
-					};
+                if (this.HasCaption)
+                {
+                    StringFormat sf = new StringFormat()
+                    {
+                        Alignment = StringAlignment.Center,
+                        LineAlignment = StringAlignment.Center,
+                        FormatFlags = StringFormatFlags.LineLimit
+                    };
 
-					using (Font captionFont = new Font("Microsoft Sans Serif", CAPTION_FONTSIZE))
-					{
-						float textY = Height - CAPTION_HEIGHT - 4;
+                    using (Font captionFont = new Font("Microsoft Sans Serif", CAPTION_FONTSIZE))
+                    {
+                        float textY = Height - CAPTION_HEIGHT - 4;
 
-						using (Brush b = new SolidBrush(ForeColor))
-							e.Graphics.DrawString(Caption, captionFont, b, new RectangleF(0f, textY, Width, Height - textY), sf);
-					}
-				}
-				*/
-			}
+                        using (Brush b = new SolidBrush(ForeColor))
+                            e.Graphics.DrawString(Caption, captionFont, b, new RectangleF(0f, textY, Width, Height - textY), sf);
+                    }
+                }
+            }
 
-		}
+        }
 
         public virtual bool IsMouseInside()
         {
@@ -238,54 +265,53 @@ namespace LaserGRBL.UserControls
         }
 
         protected virtual bool DrawDisabled()
-		{
-			return !Enabled;
-		}
+        {
+            return !Enabled;
+        }
 
-		private void ImageButtonMouseEnter(object sender, System.EventArgs e)
+        private void ImageButtonMouseEnter(object sender, System.EventArgs e)
         {
             Invalidate();
-		}
+        }
 
-		private void ImageButtonMouseLeave(object sender, System.EventArgs e)
+        private void ImageButtonMouseLeave(object sender, System.EventArgs e)
         {
             Invalidate();
-		}
+        }
 
-		private void ImageButtonMouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
-		{
-			Invalidate();
-		}
+        private void ImageButtonMouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            Invalidate();
+        }
 
-		private void ImageButtonMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-		{
-			Invalidate();
-		}
+        private void ImageButtonMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            Invalidate();
+        }
 
-		private void ImageButtonEnabledChanged(object sender, System.EventArgs e)
-		{
-			Invalidate();
-		}
+        private void ImageButtonEnabledChanged(object sender, System.EventArgs e)
+        {
+            Invalidate();
+        }
 
-		protected override void OnControlAdded(System.Windows.Forms.ControlEventArgs e)
-		{
-			e.Control.MouseEnter += ImageButtonMouseEnter;
-			e.Control.MouseLeave += ImageButtonMouseLeave;
-			e.Control.MouseUp += ImageButtonMouseUp;
-			e.Control.MouseDown += ImageButtonMouseDown;
-		}
+        protected override void OnControlAdded(System.Windows.Forms.ControlEventArgs e)
+        {
+            e.Control.MouseEnter += ImageButtonMouseEnter;
+            e.Control.MouseLeave += ImageButtonMouseLeave;
+            e.Control.MouseUp += ImageButtonMouseUp;
+            e.Control.MouseDown += ImageButtonMouseDown;
+        }
 
-		protected override void OnControlRemoved(System.Windows.Forms.ControlEventArgs e)
-		{
-			e.Control.MouseEnter -= ImageButtonMouseEnter;
-			e.Control.MouseLeave -= ImageButtonMouseLeave;
-			e.Control.MouseUp -= ImageButtonMouseUp;
-			e.Control.MouseDown -= ImageButtonMouseDown;
-		}
+        protected override void OnControlRemoved(System.Windows.Forms.ControlEventArgs e)
+        {
+            e.Control.MouseEnter -= ImageButtonMouseEnter;
+            e.Control.MouseLeave -= ImageButtonMouseLeave;
+            e.Control.MouseUp -= ImageButtonMouseUp;
+            e.Control.MouseDown -= ImageButtonMouseDown;
+        }
 
-	}
+    }
 
 
 
 }
-

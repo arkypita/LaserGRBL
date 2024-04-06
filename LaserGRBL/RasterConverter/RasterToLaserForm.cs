@@ -716,9 +716,9 @@ namespace LaserGRBL.RasterConverter
 
 		void UpdateButtons()
 		{
-			BtnCrop.BackColor = Cropping ? Color.Orange : DefaultBackColor;
-			BtnFill.BackColor = Filling >= 0 ? Color.Orange : DefaultBackColor;
-			BtnOutliner.BackColor = Outlining ? Color.Orange : DefaultBackColor;
+			BtnCrop.BackColor = Cropping ? ColorScheme.PressedButtons : ColorScheme.FormBackColor;
+			BtnFill.BackColor = Filling >= 0 ? ColorScheme.PressedButtons : ColorScheme.FormBackColor;
+			BtnOutliner.BackColor = Outlining ? ColorScheme.PressedButtons : ColorScheme.FormBackColor;
 		}
 
 		int Filling = -1;

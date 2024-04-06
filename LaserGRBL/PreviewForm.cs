@@ -150,96 +150,97 @@ namespace LaserGRBL
                 return rv;
             }
         }
+        public class CustomButtonIB : UserControls.ImageButton
+        {
+            private GrblCore Core;
+            private LaserGRBL.CustomButton cb;
+            PreviewForm form;
+            private ToolTip tt;
+            private ContextMenuStrip cms;
+            private bool mDrawDisabled = true;
 
-		public class CustomButtonIB : UserControls.ImageButton
-		{
-			private GrblCore Core;
-			private LaserGRBL.CustomButton cb;
-			PreviewForm form;
-			private ToolTip tt;
-			private ContextMenuStrip cms;
-			private bool mDrawDisabled = true;
+            public CustomButtonIB(GrblCore Core, LaserGRBL.CustomButton cb, PreviewForm form)
+            {
+                // TODO: Complete member initialization
+                this.Core = Core;
+                this.cb = cb;
+                this.form = form;
+                this.tt = new ToolTip();
 
-			public CustomButtonIB(GrblCore Core, LaserGRBL.CustomButton cb, PreviewForm form)
-			{
-				// TODO: Complete member initialization
-				this.Core = Core;
-				this.cb = cb;
-				this.form = form;
-				this.tt = new ToolTip();
+                Image = cb.Image;
+                Tag = cb;
 
-				Image = cb.Image;
-				Tag = cb;
+                //ContextMenuStrip = MNRemEditCB;
+                SizingMode = UserControls.ImageButton.SizingModes.FixedSize;
+                BorderStyle = BorderStyle.None;
 
-				//ContextMenuStrip = MNRemEditCB;
-				//SizingMode = UserControls.ImageButton.SizingModes.FixedSize;
-				BorderStyle = BorderStyle.FixedSingle;
-				Size = new Size(49, 49);
-				Margin = new Padding(2);
-				this.Caption = cb.Caption;
-				tt.SetToolTip(this, cb.ToolTip);
-
-
-				cms = new ContextMenuStrip();
-				cms.Items.Add(Strings.CustomButtonRemove, null, RemoveButton_Click);
-				cms.Items.Add(Strings.CustomButtonEdit, null, EditButton_Click);
-				BorderStyle = BorderStyle.None;
-				ContextMenuStrip = cms;
-			}
-
-			private bool PositionUnlocked
-			{
-				get
-				{
-					MyFlowPanel panel = Parent as MyFlowPanel;
-					return panel != null && panel.ButtonPositionUnlocked;
-				}
-			}
+                Size = new Size(49, 49);
+                Margin = new Padding(2);
+                this.Caption = cb.Caption;
+                tt.SetToolTip(this, cb.ToolTip);
 
 
-			protected override void Dispose(bool disposing)
-			{
-				tt.SetToolTip(this, null);
-				base.Dispose(disposing);
-			}
+                cms = new ContextMenuStrip();
+                cms.Items.Add(Strings.CustomButtonRemove, null, RemoveButton_Click);
+                cms.Items.Add(Strings.CustomButtonEdit, null, EditButton_Click);
 
-			public CustomButton CustomButton
-			{ get { return Tag as CustomButton; } }
+                ContextMenuStrip = cms;
+            }
 
-			internal void RefreshEnabled()
-			{
-				bool disabled = !CustomButton.EnabledNow(Core) || PositionUnlocked;
-				if (mDrawDisabled != disabled)
-				{
-					mDrawDisabled = disabled;
-					Refresh();
-				}
-			}
+            private bool PositionUnlocked
+            {
+                get
+                {
+                    MyFlowPanel panel = Parent as MyFlowPanel;
+                    return panel != null && panel.ButtonPositionUnlocked;
+                }
+            }
 
-			protected override void OnPaint(PaintEventArgs e)
-			{
-				base.OnPaint(e);
 
-				Rectangle r = new Rectangle(0, 0, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1);
+            protected override void Dispose(bool disposing)
+            {
+                tt.SetToolTip(this, null);
+                base.Dispose(disposing);
+            }
 
-				if (PositionUnlocked)
-				{
-					using (Pen p = new Pen(Color.FromArgb(150, 135, 206, 250)))
-					{
-						e.Graphics.DrawRectangle(p, r);
-						for (int i = 0; i < 2 * Math.Max(r.Width, r.Height); i += 5)
-							e.Graphics.DrawLine(p, i, 0, 0, i);
-					}
-				}
-			}
+            public CustomButton CustomButton
+            { get { return Tag as CustomButton; } }
 
-			protected override bool DrawDisabled()
-			{
-				return mDrawDisabled;
-			}
+            internal void RefreshEnabled()
+            {
+                bool disabled = !CustomButton.EnabledNow(Core) || PositionUnlocked;
+                if (mDrawDisabled != disabled)
+                {
+                    mDrawDisabled = disabled;
+                    Refresh();
+                }
+            }
 
-			protected override void OnClick(EventArgs e)
-            {PerformClick(e);}
+            protected override void OnPaint(PaintEventArgs e)
+            {
+                base.OnPaint(e);
+
+
+                Rectangle r = new Rectangle(0, 0, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1);
+
+                if (PositionUnlocked)
+                {
+                    using (Pen p = new Pen(Color.FromArgb(150, 135, 206, 250)))
+                    {
+                        e.Graphics.DrawRectangle(p, r);
+                        for (int i = 0; i < 2 * Math.Max(r.Width, r.Height); i += 5)
+                            e.Graphics.DrawLine(p, i, 0, 0, i);
+                    }
+                }
+            }
+
+            protected override bool DrawDisabled()
+            {
+                return mDrawDisabled;
+            }
+
+            protected override void OnClick(EventArgs e)
+            { PerformClick(e); }
 
             private bool mEmulateMouseInside;
             public bool EmulateMouseInside
@@ -253,6 +254,7 @@ namespace LaserGRBL
                 return EmulateMouseInside || base.IsMouseInside();
             }
 
+            private bool on;
             public void PerformClick(EventArgs e)
             {
                 if (((MouseEventArgs)e).Button != MouseButtons.Left)
@@ -266,8 +268,9 @@ namespace LaserGRBL
 
                 if (cb.ButtonType == CustomButton.ButtonTypes.TwoStateButton && !PositionUnlocked)
                 {
-                    Pressed = !Pressed;
-                    Core.ExecuteCustombutton(Pressed ? cb.GCode : cb.GCode2);
+                    on = !on;
+                    Core.ExecuteCustombutton(on ? cb.GCode : cb.GCode2);
+                    BackColor = on ? ColorScheme.PressedButtons : Parent.BackColor;
                 }
 
                 base.OnClick(e);
@@ -275,12 +278,12 @@ namespace LaserGRBL
 
             protected override void OnMouseDown(MouseEventArgs e)
             {
-				_mX = e.X;
-				_mY = e.Y;
-				this._isDragging = false;
+                _mX = e.X;
+                _mY = e.Y;
+                this._isDragging = false;
 
-				PerformMouseDown(e);
-			}
+                PerformMouseDown(e);
+            }
 
             public void PerformMouseDown(MouseEventArgs e)
             {
@@ -293,7 +296,7 @@ namespace LaserGRBL
                 if (cb.ButtonType == CustomButton.ButtonTypes.PushButton && !PositionUnlocked)
                 {
                     Core.ExecuteCustombutton(cb.GCode);
-                    Pressed = true;
+                    BackColor = ColorScheme.PressedButtons;
                 }
 
                 base.OnMouseDown(e);
@@ -301,9 +304,9 @@ namespace LaserGRBL
 
             protected override void OnMouseUp(MouseEventArgs e)
             {
-				_isDragging = false;
-				PerformMouseUp(e);
-			}
+                _isDragging = false;
+                PerformMouseUp(e);
+            }
 
             public void PerformMouseUp(MouseEventArgs e)
             {
@@ -316,65 +319,65 @@ namespace LaserGRBL
                 if (cb.ButtonType == CustomButton.ButtonTypes.PushButton && !PositionUnlocked)
                 {
                     Core.ExecuteCustombutton(cb.GCode2);
-					Pressed = false;
+                    BackColor = Parent.BackColor;
                 }
 
                 base.OnMouseUp(e);
             }
 
             private void RemoveButton_Click(object sender, EventArgs e)
-			{
-				if (MessageBox.Show(Strings.BoxDeleteCustomButtonText, Strings.BoxDeleteCustomButtonTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-				{
-					CustomButtons.Remove(CustomButton);
-					CustomButtons.SaveFile();
-					form.RefreshCustomButtons();
-				}
-			}
+            {
+                if (MessageBox.Show(Strings.BoxDeleteCustomButtonText, Strings.BoxDeleteCustomButtonTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    CustomButtons.Remove(CustomButton);
+                    CustomButtons.SaveFile();
+                    form.RefreshCustomButtons();
+                }
+            }
 
-			private void EditButton_Click(object sender, EventArgs e)
-			{
-				CustomButtonForm.CreateAndShowDialog(ParentForm, CustomButton);
-				form.RefreshCustomButtons();
-			}
-
-
-			#region DragDrop
+            private void EditButton_Click(object sender, EventArgs e)
+            {
+                CustomButtonForm.CreateAndShowDialog(ParentForm, CustomButton);
+                form.RefreshCustomButtons();
+            }
 
 
-			//Check radius for begin drag n drop
-			//public bool AllowDrag { get; set; }
-			private bool _isDragging = false;
-			private int _DDradius = 40;
-			private int _mX = 0;
-			private int _mY = 0;
+            #region DragDrop
 
-			protected override void OnMouseMove(MouseEventArgs e)
-			{
-				if (!_isDragging)
-				{
-					// This is a check to see if the mouse is moving while pressed.
-					// Without this, the DragDrop is fired directly when the control is clicked, now you have to drag a few pixels first.
-					if (e.Button == MouseButtons.Left && _DDradius > 0 && PositionUnlocked)
-					{
-						int num1 = _mX - e.X;
-						int num2 = _mY - e.Y;
-						if (((num1 * num1) + (num2 * num2)) > _DDradius)
-						{
-							DoDragDrop(this, DragDropEffects.Move);
-							_isDragging = true;
-							return;
-						}
-					}
-					base.OnMouseMove(e);
-				}
-			}
 
-			#endregion
+            //Check radius for begin drag n drop
+            //public bool AllowDrag { get; set; }
+            private bool _isDragging = false;
+            private int _DDradius = 40;
+            private int _mX = 0;
+            private int _mY = 0;
 
-		}
+            protected override void OnMouseMove(MouseEventArgs e)
+            {
+                if (!_isDragging)
+                {
+                    // This is a check to see if the mouse is moving while pressed.
+                    // Without this, the DragDrop is fired directly when the control is clicked, now you have to drag a few pixels first.
+                    if (e.Button == MouseButtons.Left && _DDradius > 0 && PositionUnlocked)
+                    {
+                        int num1 = _mX - e.X;
+                        int num2 = _mY - e.Y;
+                        if (((num1 * num1) + (num2 * num2)) > _DDradius)
+                        {
+                            DoDragDrop(this, DragDropEffects.Move);
+                            _isDragging = true;
+                            return;
+                        }
+                    }
+                    base.OnMouseMove(e);
+                }
+            }
 
-		private class MyFlowPanel : FlowLayoutPanel
+            #endregion
+
+        }
+
+        private class MyFlowPanel : FlowLayoutPanel
 		{
 			public delegate void OrderChangedDlg(int oldindex, int newindex);
 			public event OrderChangedDlg OrderChanged;
@@ -398,7 +401,7 @@ namespace LaserGRBL
 
 			protected override void OnPaintBackground(PaintEventArgs e)
 			{
-				e.Graphics.Clear(BackColor);
+				e.Graphics.Clear(ColorScheme.FormBackColor);
 				if (Controls.Count == 0)
 				{
 					string text = Strings.AddCustomButtonsHint;

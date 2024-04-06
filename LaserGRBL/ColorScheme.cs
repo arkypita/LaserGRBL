@@ -99,8 +99,8 @@ namespace LaserGRBL
 
 				Color.FromArgb( 64, 67, 85),//controls border
 				Color.FromArgb(180,180,180),//controls background disabled
-                Color.FromArgb( 65, 70, 85),//disabled buttons
-                Color.Yellow,				//pressed buttons
+                Color.FromArgb( 85, 90,105),//disabled buttons
+                Color.FromArgb( 84, 96,122),//pressed buttons
 			});
             mData.Add(Scheme.BlueLaser, new Color[] 
 			{
