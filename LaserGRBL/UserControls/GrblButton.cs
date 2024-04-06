@@ -25,11 +25,13 @@ namespace LaserGRBL.UserControls
             e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
             if (mHover) backColor = ColorScheme.ChangeColorBrightness(backColor, -0.15f);
             if (mPressed) backColor = ColorScheme.ChangeColorBrightness(backColor, -0.15f);
+            Rectangle borderRect = e.ClipRectangle;
+            borderRect.Width -= 1; borderRect.Height -= 1;
             using (Brush backColorBrush = new SolidBrush(backColor))
             using (Brush foreColorBrush = new SolidBrush(ColorScheme.FormForeColor))
             using (Font font = new Font(Font, Font.Style))
             using (Pen borderPen = new Pen(ColorScheme.ControlsBorder))
-            using (GraphicsPath backRect = Graph.RoundedRect(e.ClipRectangle, 5))
+            using (GraphicsPath backRect = Graph.RoundedRect(borderRect, 5))
             {
                 e.Graphics.FillPath(backColorBrush, backRect);
                 e.Graphics.DrawPath(borderPen, backRect);

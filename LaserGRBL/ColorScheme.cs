@@ -60,7 +60,7 @@ namespace LaserGRBL
 				Color.FromArgb(220,220,220),//controls border
 				Color.FromArgb(180,180,180),//controls background disabled
                 Color.FromArgb(140,140,140),//disabled buttons
-                Color.FromArgb(159,153, 13),//pressed buttons
+                Color.FromArgb(222,230,  7),//pressed buttons
 			});
 			mData.Add(Scheme.CADDark, new Color[]
 			{
