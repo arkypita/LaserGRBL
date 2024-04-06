@@ -21,12 +21,12 @@
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnWrite = new System.Windows.Forms.Button();
-			this.BtnRead = new System.Windows.Forms.Button();
-			this.BtnCancel = new System.Windows.Forms.Button();
+			this.BtnWrite = new LaserGRBL.UserControls.GrblButton();
+			this.BtnRead = new LaserGRBL.UserControls.GrblButton();
+			this.BtnCancel = new LaserGRBL.UserControls.GrblButton();
 			this.LblConnect = new System.Windows.Forms.Label();
-			this.BtnExport = new System.Windows.Forms.Button();
-			this.BtnImport = new System.Windows.Forms.Button();
+			this.BtnExport = new LaserGRBL.UserControls.GrblButton();
+			this.BtnImport = new LaserGRBL.UserControls.GrblButton();
 			this.GB = new System.Windows.Forms.GroupBox();
 			this.LblAction = new System.Windows.Forms.Label();
 			this.DGV = new LaserGRBL.MyDatagridView();
@@ -215,13 +215,13 @@
 
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-		private System.Windows.Forms.Button BtnCancel;
+		private LaserGRBL.UserControls.GrblButton BtnCancel;
 		private System.Windows.Forms.GroupBox GB;
 		private MyDatagridView DGV;
-		private System.Windows.Forms.Button BtnWrite;
-		private System.Windows.Forms.Button BtnRead;
-		private System.Windows.Forms.Button BtnImport;
-		private System.Windows.Forms.Button BtnExport;
+		private LaserGRBL.UserControls.GrblButton BtnWrite;
+		private LaserGRBL.UserControls.GrblButton BtnRead;
+		private LaserGRBL.UserControls.GrblButton BtnImport;
+		private LaserGRBL.UserControls.GrblButton BtnExport;
 		private System.Windows.Forms.Label LblConnect;
 		private System.Windows.Forms.Timer ActionTimer;
 		private System.Windows.Forms.Label LblAction;

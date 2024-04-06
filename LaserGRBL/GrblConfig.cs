@@ -4,6 +4,7 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.Icons;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,7 +39,13 @@ namespace LaserGRBL
             DGV.Columns["Value"].DefaultCellStyle.BackColor = ColorScheme.FormBackColor;
             BtnRead.BackColor = BtnWrite.BackColor = BtnImport.BackColor = BtnExport.BackColor = BtnCancel.BackColor = ColorScheme.FormButtonsColor;
 
-			mLocalCopy = GrblCore.Configuration.ToList();
+			IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
+            IconsMgr.PrepareButton(BtnWrite, "mdi-text-box-edit");
+            IconsMgr.PrepareButton(BtnRead, "mdi-text-box-search");
+            IconsMgr.PrepareButton(BtnImport, "mdi-download-box");
+            IconsMgr.PrepareButton(BtnExport, "mdi-upload-box");
+
+            mLocalCopy = GrblCore.Configuration.ToList();
 			DGV.DataSource = mLocalCopy;
             Core.MachineStatusChanged += RefreshEnabledButtons;
 			
