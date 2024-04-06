@@ -107,6 +107,7 @@ namespace LaserGRBL
             IconsMgr.PrepareMenuItem(MnConnect, "mdi-power-plug");
             IconsMgr.PrepareMenuItem(MnDisconnect, "mdi-power-plug-off");
             IconsMgr.PrepareMenuItem(MnGrblReset, "mdi-lightning-bolt");
+			IconsMgr.PrepareMenuItem(MnGoHome, "mdi-home");
             IconsMgr.PrepareMenuItem(MnUnlock, "mdi-lock-open");
             IconsMgr.PrepareMenuItem(MnGrblConfig, "mdi-cogs");
             IconsMgr.PrepareMenuItem(settingsToolStripMenuItem, "mdi-wrench");
@@ -164,10 +165,8 @@ namespace LaserGRBL
             IconsMgr.PrepareMenuItem(donateToolStripMenuItem, "mdi-gift");
             IconsMgr.PrepareMenuItem(licenseToolStripMenuItem, "mdi-license");
 
-
             IconsMgr.PrepareMenuItem(questionMarkToolStripMenuItem, "mdi-help");
 			IconsMgr.PrepareMenuItem(MnCheckNow, "mdi-cloud-check-variant-outline");
-
 
             IconsMgr.PrepareMenuItem(MnGrbl, "mdi-hammer-wrench");
             IconsMgr.PrepareMenuItem(fileToolStripMenuItem, "mdi-file-document-outline");
@@ -176,7 +175,6 @@ namespace LaserGRBL
 			IconsMgr.PrepareMenuItem(previewToolStripMenuItem, "mdi-image-filter-center-focus-strong");
             IconsMgr.PrepareMenuItem(linguaToolStripMenuItem, "mdi-flag-variant");
             IconsMgr.PrepareMenuItem(toolsToolStripMenuItem, "mdi-tools");
-
 
             RefreshColorSchema(); //include RefreshOverride();
 			RefreshFormTitle();

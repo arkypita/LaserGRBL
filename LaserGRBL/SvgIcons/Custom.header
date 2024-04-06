@@ -1,4 +1,12 @@
 abort
+blink
+center
+corner
+focus
+framing
+homing
 reset
+resume
 stop
 unlock
+zeroing

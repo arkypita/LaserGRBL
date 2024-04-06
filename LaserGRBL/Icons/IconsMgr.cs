@@ -29,14 +29,6 @@ namespace LaserGRBL.Icons
         {
             { string.Empty, Color.FromArgb(50, 50, 50) },
             { "custom-reset", Color.FromArgb(199, 193, 13) },
-            { "custom-unlock", Color.FromArgb(230, 138, 7) },
-            { "zeroing", Color.FromArgb(14, 136, 229) },
-            { "center", Color.FromArgb(19, 169, 142) },
-            { "corner", Color.FromArgb(19, 169, 142) },
-            { "frame", Color.FromArgb(0, 173, 16) },
-            { "focus", Color.FromArgb(197, 60, 221) },
-            { "blink", Color.FromArgb(231, 70, 143) },
-            { "mdi-home", Color.FromArgb(79, 188, 243) },
             { "mdi-arrow-up-bold-outline", Color.FromArgb(0, 122, 217) },
             { "mdi-arrow-top-right-bold-outline", Color.FromArgb(0, 122, 217) },
             { "mdi-arrow-right-bold-outline", Color.FromArgb(0, 122, 217) },
@@ -54,22 +46,14 @@ namespace LaserGRBL.Icons
             { "mdi-play-circle", Color.FromArgb(0, 173, 16) },
             { "mdi-stop-circle", Color.FromArgb(176, 58, 58) },
             { "mdi-information-slab-box", Color.FromArgb(79, 188, 243) },
-            { "mdi-arrow-right-bold-hexagon-outline", Color.FromArgb(0, 173, 16) },
-            { "mdi-close-octagon", Color.FromArgb(176, 58, 58) },
+            { "custom-resume", Color.FromArgb(0, 173, 16) },
+            { "custom-stop", Color.FromArgb(176, 58, 58) },
         };
         // dark color set
         private static Dictionary<string, Color> mDarkIconColors = new Dictionary<string, Color>
         {
             { string.Empty, Color.FromArgb(230, 230, 230) },
             { "custom-reset", Color.FromArgb(230, 230, 20) },
-            { "custom-unlock", Color.FromArgb(246, 163, 41) },
-            { "zeroing", Color.FromArgb(79, 188, 243) },
-            { "center", Color.FromArgb(85, 231, 192) },
-            { "corner", Color.FromArgb(85, 231, 192) },
-            { "frame", Color.FromArgb(71, 200, 86) },
-            { "focus", Color.FromArgb(193, 114, 235) },
-            { "blink", Color.FromArgb(243, 79, 133) },
-            { "mdi-home", Color.FromArgb(79, 188, 243) },
             { "mdi-arrow-up-bold-outline", Color.FromArgb( 0, 122, 217) },
             { "mdi-arrow-top-right-bold-outline", Color.FromArgb( 0, 122, 217) },
             { "mdi-arrow-right-bold-outline", Color.FromArgb( 0, 122, 217) },
@@ -87,8 +71,8 @@ namespace LaserGRBL.Icons
             { "mdi-play-circle", Color.FromArgb(71, 200, 86) },
             { "mdi-stop-circle", Color.FromArgb(248, 90, 90) },
             { "mdi-information-slab-box", Color.FromArgb(79, 188, 243) },
-            { "mdi-arrow-right-bold-hexagon-outline", Color.FromArgb(71, 200, 86) },
-            { "mdi-close-octagon", Color.FromArgb(248, 90, 90) },
+            { "custom-resume", Color.FromArgb(71, 200, 86) },
+            { "custom-stop", Color.FromArgb(248, 90, 90) },
         };
         // current icon colors
         private static Dictionary<string, Color> mIconColors = mLightIconColors;

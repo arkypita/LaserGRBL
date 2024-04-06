@@ -27,12 +27,12 @@ namespace LaserGRBL
 			InitializeComponent();
             CreatePanel(Settings.GetObject("LegacyPreview", false));
             CustomButtonArea.OrderChanged += CustomButtonArea_OrderChanged;
-			IconsMgr.PrepareButton(BtnReset, "mdi-lightning-bolt");
-            IconsMgr.PrepareButton(BtnUnlock, "mdi-lock-open");
-            IconsMgr.PrepareButton(BtnHoming, "mdi-map-marker-radius");
-            IconsMgr.PrepareButton(BtnResume, "mdi-arrow-right-bold-hexagon-outline");
-            IconsMgr.PrepareButton(BtnStop, "mdi-close-octagon");
-            IconsMgr.PrepareButton(BtnZeroing, "mdi-home-floor-0");
+			IconsMgr.PrepareButton(BtnReset, "custom-reset");
+            IconsMgr.PrepareButton(BtnUnlock, "custom-unlock");
+            IconsMgr.PrepareButton(BtnHoming, "custom-homing");
+            IconsMgr.PrepareButton(BtnZeroing, "custom-zeroing");
+            IconsMgr.PrepareButton(BtnResume, "custom-resume");
+            IconsMgr.PrepareButton(BtnStop, "custom-stop");
         }
 
         private void CreatePanel(bool isLegacy)
@@ -128,11 +128,11 @@ namespace LaserGRBL
 				CustomButtonIB ib = new CustomButtonIB(mCore, cb, this);
 				switch (ib.Caption)
 				{
-					case "Frame": IconsMgr.PrepareButton(ib, "mdi-vector-square", BtnStop.Size); break;
-					case "Center": IconsMgr.PrepareButton(ib, "center", BtnStop.Size); break;
-                    case "Corner": IconsMgr.PrepareButton(ib, "corner", BtnStop.Size); break;
-                    case "Focus": IconsMgr.PrepareButton(ib, "mdi-image-filter-center-focus", BtnStop.Size); break;
-                    case "Blink": IconsMgr.PrepareButton(ib, "mdi-lightbulb-on", BtnStop.Size); break;
+					case "Frame": IconsMgr.PrepareButton(ib, "custom-framing", BtnStop.Size); break;
+					case "Center": IconsMgr.PrepareButton(ib, "custom-center", BtnStop.Size); break;
+                    case "Corner": IconsMgr.PrepareButton(ib, "custom-corner", BtnStop.Size); break;
+                    case "Focus": IconsMgr.PrepareButton(ib, "custom-focus", BtnStop.Size); break;
+                    case "Blink": IconsMgr.PrepareButton(ib, "custom-blink", BtnStop.Size); break;
                 }
                 CustomButtonArea.Controls.Add(ib);
 			}

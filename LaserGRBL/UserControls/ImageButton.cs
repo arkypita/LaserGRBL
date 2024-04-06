@@ -175,12 +175,14 @@ namespace LaserGRBL.UserControls
                     Size = new Size(this.Width - 1, this.Height - 1);
                 }
 
+                /*
                 if (HasCaption)
                 {
                     Size.Height -= CAPTION_HEIGHT;
                     Size.Width -= CAPTION_HEIGHT;
                     Point.X += (Image.Width - Size.Width) / 2;
                 }
+                */
 
                 float direction = ColorScheme.DarkScheme ? 1 : -1;
                 if (DrawDisabled())
@@ -238,6 +240,7 @@ namespace LaserGRBL.UserControls
                     e.Graphics.DrawImage(Tmp, new Rectangle(Point, Size));
                 }
 
+                /*
                 if (this.HasCaption)
                 {
                     StringFormat sf = new StringFormat()
@@ -255,6 +258,7 @@ namespace LaserGRBL.UserControls
                             e.Graphics.DrawString(Caption, captionFont, b, new RectangleF(0f, textY, Width, Height - textY), sf);
                     }
                 }
+                */
             }
 
         }
