@@ -24,7 +24,7 @@ namespace LaserGRBL
             mData = new Dictionary<Scheme, Color[]>();
             mData.Add(Scheme.CADStyle, new Color[]
             {
-                Color.FromArgb(252,252,252),//form backcolor
+                Color.FromArgb(248,248,248),//form backcolor
 				SystemColors.ControlText,	//form forecolor
 
 				Color.FromArgb( 33, 40, 48),//preview background
