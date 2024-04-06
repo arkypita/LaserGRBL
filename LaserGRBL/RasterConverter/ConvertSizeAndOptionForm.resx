@@ -604,7 +604,7 @@
     <value>164, 3</value>
   </data>
   <data name="BtnDPI.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 17</value>
+    <value>34, 16</value>
   </data>
   <data name="BtnDPI.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>

@@ -50,12 +50,12 @@ namespace LaserGRBL.RasterConverter
             IconsMgr.PrepareButton(BtnCreate, "mdi-checkbox-marked");
             IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
             IconsMgr.PrepareButton(BtnModulationInfo, "mdi-information-slab-box", icoSize);
-            IconsMgr.PrepareButton(BtnOnOffInfo, "info", icoSize);
+            IconsMgr.PrepareButton(BtnOnOffInfo, "mdi-information-slab-box", icoSize);
             IconsMgr.PrepareButton(BtnPSHelper, "mdi-database", icoSize);
-            IconsMgr.PrepareButton(BtnCenter, "target", icoSize);
-            IconsMgr.PrepareButton(BtnUnlockProportion, "lockproportions", icoSize, "unlockproportions");
-            IconsMgr.PrepareButton(BtnDPI, "exif", new Size(34, 16));
-            IconsMgr.PrepareButton(BtnReset, "resetcenter", icoSize);
+            IconsMgr.PrepareButton(BtnCenter, "mdi-target", icoSize);
+            IconsMgr.PrepareButton(BtnUnlockProportion, "mdi-lock", icoSize, "mdi-lock-open-outline");
+            IconsMgr.PrepareButton(BtnDPI, "custom-exif", new Size(34, 24));
+            IconsMgr.PrepareButton(BtnReset, "mdi-arrow-u-left-top-bold", icoSize);
 
             LblMaxPerc.Visible = LblMinPerc.Visible = LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
 			AssignMinMaxLimit();
