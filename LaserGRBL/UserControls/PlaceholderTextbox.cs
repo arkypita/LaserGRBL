@@ -117,6 +117,8 @@ namespace LaserGRBL.UserControls
 
 		private void waterMarkContainer_Paint(object sender, PaintEventArgs e)
 		{
+			BackColor = ColorScheme.LogBackColor;
+			ForeColor = ColorScheme.FormForeColor;
 			//Setting the watermark container up
 			waterMarkContainer.Location = new Point(2, 0); // sets the location
 			waterMarkContainer.Height = this.Height; // Height should be the same as its parent
