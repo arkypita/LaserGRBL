@@ -37,6 +37,8 @@ namespace LaserGRBL
             IconsMgr.PrepareButton(BtnModulationInfo, "mdi-information-slab-box", btnSize);
             IconsMgr.PrepareButton(BtnTelegNoteInfo, "mdi-information-slab-box", btnSize);
             IconsMgr.PrepareButton(imageButton1, "mdi-information-slab-box", btnSize);
+            IconsMgr.PrepareButton(BtnSave, "mdi-checkbox-marked");
+            IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
 
             InitCoreCB();
 			InitProtocolCB();
