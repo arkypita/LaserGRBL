@@ -757,12 +757,12 @@ namespace LaserGRBL.SvgConverter
 			char cmd = char.ToUpper(command);
 			bool absolute = (cmd == command);
 			string remainingargs = svgPath.Substring(1);
-			string argSeparators = @"[\s,]|(?=(?<!e)-)";// @"[\s,]|(?=-)|(-{,2})";        // support also -1.2e-3 orig. @"[\s,]|(?=-)"; 
-			var splitArgs = Regex
-				.Split(remainingargs, argSeparators)
-				.Where(t => !string.IsNullOrEmpty(t));
+			string argMatcher = @"((\-|)\d+(\.\d+|)((((E|e)(\-|\+|))|\.)\d+|)|((\-|)\.\d+))";
+			var splitArgs = Regex.Matches(remainingargs, argMatcher);
+
+
 			// get command coordinates
-			float[] floatArgs = splitArgs.Select(arg => ConvertToPixel(arg)).ToArray();
+			float[] floatArgs = splitArgs.Cast<Capture>().Select(c => ConvertToPixel(c.Value)).ToArray();
 			int objCount = 0;
 
 			switch (cmd)
