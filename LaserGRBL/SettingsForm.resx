@@ -4956,6 +4956,36 @@ I suggest to not disable this countdown, this allow you to have a 5 second chanc
   <data name="&gt;&gt;CbLegacyPreview.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="CbLegacyIcons.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CbLegacyIcons.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CbLegacyIcons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 55</value>
+  </data>
+  <data name="CbLegacyIcons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 17</value>
+  </data>
+  <data name="CbLegacyIcons.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="CbLegacyIcons.Text" xml:space="preserve">
+    <value>Legacy icons</value>
+  </data>
+  <data name="&gt;&gt;CbLegacyIcons.Name" xml:space="preserve">
+    <value>CbLegacyIcons</value>
+  </data>
+  <data name="&gt;&gt;CbLegacyIcons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CbLegacyIcons.Parent" xml:space="preserve">
+    <value>Tlp</value>
+  </data>
+  <data name="&gt;&gt;CbLegacyIcons.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="Tlp.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -4984,7 +5014,7 @@ I suggest to not disable this countdown, this allow you to have a 5 second chanc
     <value>0</value>
   </data>
   <data name="Tlp.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbDisableSafetyCD" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label47" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbQuietSafetyCB" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label48" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbLegacyPreview" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,148,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,20,AutoSize,24,Percent,100,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbDisableSafetyCD" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label47" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbQuietSafetyCB" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label48" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbLegacyPreview" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CbLegacyIcons" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,148,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,20,AutoSize,20,Autosize,20,Autosize,20,Autosize,20,Autosize,20,Autosize,20,Autosize,20,Autosize,20,Autosize,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="TpOptions.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>

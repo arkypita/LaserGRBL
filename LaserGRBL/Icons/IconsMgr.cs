@@ -1,13 +1,10 @@
 ﻿using Base.Drawing;
 using LaserGRBL.UserControls;
-using SharpGL.SceneGraph.Lighting;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Security.Cryptography;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace LaserGRBL.Icons
 {
@@ -22,6 +19,8 @@ namespace LaserGRBL.Icons
 
     public static class IconsMgr
     {
+        // icons loader
+        private static IIconsLoader mIconsLoader;
         // buttons list
         private static List<object> mControls = new List<object>();
         // light color set
@@ -97,27 +96,42 @@ namespace LaserGRBL.Icons
         // current icon colors
         private static Dictionary<string, Color> mIconColors = mLightIconColors;
 
-        // reload image
-        private static Image LoadImage(object resourceName, Size size, bool colorize = true)
+
+        public static void Initialize()
         {
-            Bitmap image = null;
-            string strResourceName = (string)resourceName;
-            if (SvgIcons.SvgIcons.Contains(strResourceName))
+            if (Settings.GetObject("LegacyIcons", false))
             {
-                image = SvgIcons.SvgIcons.LoadImage(strResourceName, 256, 256);
+                mIconsLoader = new LegacyIcons();
             }
             else
             {
-                if (SvgIcons.SvgIcons.Contains(strResourceName))
+                mIconsLoader = new SvgIcons.SvgIcons();
+            }
+        }
+
+
+        // reload image
+        private static Image LoadImage(object resourceName, Size size, bool colorize = true)
+        {
+            string strResourceName = (string)resourceName;
+            Bitmap image = null;
+            Image result = null;
+            if (mIconsLoader.Contains(strResourceName))
+            {
+                image = mIconsLoader.LoadImage(strResourceName);
+            }
+            else
+            {
+                if (mIconsLoader.Contains(strResourceName))
                 {
-                    image = SvgIcons.SvgIcons.LoadImage(strResourceName, 256, 256);
+                    image = mIconsLoader.LoadImage(strResourceName);
                 }
                 else
                 {
-                    image = SvgIcons.SvgIcons.LoadImage("mdi-square-rounded", 256, 256);
+                    image = mIconsLoader.LoadImage("mdi-square-rounded");
                 }
             }
-            Image result = image;
+            result = image;
             // if resize needed
             if (!size.IsEmpty)
             {
@@ -132,7 +146,8 @@ namespace LaserGRBL.Icons
                 result = newImage;
             }
             // colorize
-            if (colorize) {
+            if (colorize && mIconsLoader is SvgIcons.SvgIcons)
+            {
                 if (mIconColors.TryGetValue(strResourceName, out Color color))
                 {
                     result = ImageTransform.SetColor(result, color);
@@ -141,14 +156,14 @@ namespace LaserGRBL.Icons
                 {
                     result = ImageTransform.SetColor(result, mIconColors[string.Empty]);
                 }
+                // set resource link
+                result.Tag = new LoadedImageTag
+                {
+                    Colorize = colorize,
+                    ResourceName = strResourceName,
+                    Size = size
+                };
             }
-            // set resource link
-            result.Tag = new LoadedImageTag
-            {
-                Colorize = colorize,
-                ResourceName = strResourceName,
-                Size = size
-            };
             return result;
         }
 

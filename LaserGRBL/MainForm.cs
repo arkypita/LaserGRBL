@@ -165,17 +165,23 @@ namespace LaserGRBL
             IconsMgr.PrepareMenuItem(donateToolStripMenuItem, "mdi-gift");
             IconsMgr.PrepareMenuItem(licenseToolStripMenuItem, "mdi-license");
 
-            IconsMgr.PrepareMenuItem(questionMarkToolStripMenuItem, "mdi-help");
 			IconsMgr.PrepareMenuItem(MnCheckNow, "mdi-cloud-check-variant-outline");
 
-            IconsMgr.PrepareMenuItem(MnGrbl, "mdi-hammer-wrench");
-            IconsMgr.PrepareMenuItem(fileToolStripMenuItem, "mdi-file-document-outline");
-            IconsMgr.PrepareMenuItem(MnGenerate, "mdi-flask");
-            IconsMgr.PrepareMenuItem(schemaToolStripMenuItem, "mdi-palette");
-			IconsMgr.PrepareMenuItem(previewToolStripMenuItem, "mdi-image-filter-center-focus-strong");
-            IconsMgr.PrepareMenuItem(linguaToolStripMenuItem, "mdi-flag-variant");
-            IconsMgr.PrepareMenuItem(toolsToolStripMenuItem, "mdi-tools");
-
+			if (!Core.LegacyIcons)
+			{
+				IconsMgr.PrepareMenuItem(MnGrbl, "mdi-hammer-wrench");
+				IconsMgr.PrepareMenuItem(fileToolStripMenuItem, "mdi-file-document-outline");
+				IconsMgr.PrepareMenuItem(MnGenerate, "mdi-flask");
+				IconsMgr.PrepareMenuItem(schemaToolStripMenuItem, "mdi-palette");
+				IconsMgr.PrepareMenuItem(previewToolStripMenuItem, "mdi-image-filter-center-focus-strong");
+				IconsMgr.PrepareMenuItem(linguaToolStripMenuItem, "mdi-flag-variant");
+				IconsMgr.PrepareMenuItem(toolsToolStripMenuItem, "mdi-tools");
+                IconsMgr.PrepareMenuItem(questionMarkToolStripMenuItem, "mdi-help");
+            }
+			else
+            {
+                questionMarkToolStripMenuItem.Text = "?";
+            }
             RefreshColorSchema(); //include RefreshOverride();
 			RefreshFormTitle();
 		}

@@ -176,6 +176,7 @@
             this.CbQuietSafetyCB = new System.Windows.Forms.CheckBox();
             this.label48 = new System.Windows.Forms.Label();
             this.CbLegacyPreview = new System.Windows.Forms.CheckBox();
+            this.CbLegacyIcons = new System.Windows.Forms.CheckBox();
             this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -1201,6 +1202,7 @@
             this.Tlp.Controls.Add(this.CbQuietSafetyCB, 1, 0);
             this.Tlp.Controls.Add(this.label48, 2, 0);
             this.Tlp.Controls.Add(this.CbLegacyPreview, 1, 2);
+            this.Tlp.Controls.Add(this.CbLegacyIcons, 1, 3);
             this.Tlp.Name = "Tlp";
             // 
             // CbDisableSafetyCD
@@ -1230,6 +1232,12 @@
             resources.ApplyResources(this.CbLegacyPreview, "CbLegacyPreview");
             this.CbLegacyPreview.Name = "CbLegacyPreview";
             this.CbLegacyPreview.UseVisualStyleBackColor = true;
+            // 
+            // CbLegacyIcons
+            // 
+            resources.ApplyResources(this.CbLegacyIcons, "CbLegacyIcons");
+            this.CbLegacyIcons.Name = "CbLegacyIcons";
+            this.CbLegacyIcons.UseVisualStyleBackColor = true;
             // 
             // SoundBrowserDialog
             // 
@@ -1462,5 +1470,6 @@
 		private System.Windows.Forms.CheckBox CbQuietSafetyCB;
 		private System.Windows.Forms.Label label48;
         private System.Windows.Forms.CheckBox CbLegacyPreview;
+        private System.Windows.Forms.CheckBox CbLegacyIcons;
     }
 }

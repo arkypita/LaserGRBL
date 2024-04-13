@@ -639,6 +639,15 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Restart is required to apply icons changes. Restart now?.
+        /// </summary>
+        internal static string IconsChangesRequiresRestart {
+            get {
+                return ResourceManager.GetString("IconsChangesRequiresRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Smooth (HQ Bicubic).
         /// </summary>
         internal static string InterpolationModeHighQualityBicubic {

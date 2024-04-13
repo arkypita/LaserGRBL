@@ -4,6 +4,7 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.Icons;
 using LaserGRBL.UserControls;
 using System;
 using System.Runtime.CompilerServices;
@@ -37,7 +38,7 @@ namespace LaserGRBL
 			CustomButtons.LoadFile();
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-            SvgIcons.SvgIcons.Initialize();
+            IconsMgr.Initialize();
 			System.Globalization.CultureInfo ci = Settings.GetObject<System.Globalization.CultureInfo>("User Language", null);
 			if (ci != null) Thread.CurrentThread.CurrentUICulture = ci;
 			Tools.TaskScheduler.SetClockResolution(1); //use a fast clock

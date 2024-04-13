@@ -153,6 +153,8 @@
       <DependentUpon>ShakeTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Hershey\Hershey.cs" />
+    <Compile Include="Icons\IIconsLoader.cs" />
+    <Compile Include="Icons\LegacyIcons.cs" />
     <Compile Include="Icons\IconsMgr.cs" />
     <Compile Include="LaserLifeEdit.cs">
       <SubType>Form</SubType>
@@ -1307,6 +1309,8 @@
     <EmbeddedResource Include="CSV\setting_codes.ortur.GrblHal.csv" />
     <EmbeddedResource Include="CSV\alarm_codes.ortur.GrblHal.csv" />
     <EmbeddedResource Include="CSV\error_codes.ortur.GrblHal.csv" />
+    <EmbeddedResource Include="Icons\LegacyIcons.data" />
+    <EmbeddedResource Include="Icons\LegacyIcons.header" />
     <None Include="Resources\flag_greece.png" />
     <EmbeddedResource Include="Generator\SVG\LaserGRBL-accuracy-test-file.svg" />
     <Content Include="Grafica\777494-200.png" />

@@ -26,7 +26,7 @@ namespace LaserGRBL
             IconsMgr.PrepareButton(BtnSW, "mdi-arrow-bottom-left-bold-outline");
             IconsMgr.PrepareButton(BtnW, "mdi-arrow-left-bold-outline");
             IconsMgr.PrepareButton(BtnNW, "mdi-arrow-top-left-bold-outline");
-            IconsMgr.PrepareButton(BtnHome, "mdi-home");
+            IconsMgr.PrepareButton(BtnHome, "custom-home");
             IconsMgr.PrepareButton(BtnZup01, "custom-zup01");
             IconsMgr.PrepareButton(BtnZup1, "custom-zup1");
             IconsMgr.PrepareButton(BtnZup10, "custom-zup10");
