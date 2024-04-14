@@ -38,15 +38,11 @@ namespace LaserGRBL
 
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandWait));
 			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandOK));
-
-			IconsMgr.PrepareButton(BtnRunProgram, "mdi-play-circle");
-			BtnRunProgram.Size = new Size(20, 20);
-            IconsMgr.PrepareButton(BtnAbortProgram, "mdi-stop-circle");
-            BtnAbortProgram.Size = new Size(20, 20);
-            IconsMgr.PrepareButton(BtnConnectDisconnect, "mdi-power-plug", "mdi-power-plug-off");
-            BtnConnectDisconnect.Size = new Size(20, 20);
-            IconsMgr.PrepareButton(BtnOpen, "mdi-folder");
-            BtnOpen.Size = new Size(20, 20);
+			Size btnSize = new Size(20, 20);
+			IconsMgr.PrepareButton(BtnRunProgram, "mdi-play-circle", btnSize);
+            IconsMgr.PrepareButton(BtnAbortProgram, "mdi-stop-circle", btnSize);
+            IconsMgr.PrepareButton(BtnConnectDisconnect, "mdi-power-plug", btnSize, "mdi-power-plug-off");
+            IconsMgr.PrepareButton(BtnOpen, "mdi-folder", btnSize);
 
             InitSpeedCB();
 			InitPortCB();

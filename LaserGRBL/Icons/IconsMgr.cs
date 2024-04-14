@@ -20,7 +20,7 @@ namespace LaserGRBL.Icons
     public static class IconsMgr
     {
         // icons loader
-        private static IIconsLoader mIconsLoader;
+        private static IIconsLoader mIconsLoader = null;
         // buttons list
         private static List<object> mControls = new List<object>();
         // light color set
@@ -113,9 +113,9 @@ namespace LaserGRBL.Icons
         // reload image
         private static Image LoadImage(object resourceName, Size size, bool colorize = true)
         {
+            if (mIconsLoader == null) return null;
             string strResourceName = (string)resourceName;
-            Bitmap image = null;
-            Image result = null;
+            Bitmap image;
             if (mIconsLoader.Contains(strResourceName))
             {
                 image = mIconsLoader.LoadImage(strResourceName);
@@ -131,7 +131,7 @@ namespace LaserGRBL.Icons
                     image = mIconsLoader.LoadImage("mdi-square-rounded");
                 }
             }
-            result = image;
+            Image result = image;
             // if resize needed
             if (!size.IsEmpty)
             {
