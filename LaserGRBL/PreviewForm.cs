@@ -126,13 +126,16 @@ namespace LaserGRBL
 			foreach (CustomButton cb in CustomButtons.Buttons)
 			{
 				CustomButtonIB ib = new CustomButtonIB(mCore, cb, this);
-				switch (ib.Caption)
-				{
-					case "Frame": IconsMgr.PrepareButton(ib, "custom-framing", BtnStop.Size); break;
-					case "Center": IconsMgr.PrepareButton(ib, "custom-center", BtnStop.Size); break;
-                    case "Corner": IconsMgr.PrepareButton(ib, "custom-corner", BtnStop.Size); break;
-                    case "Focus": IconsMgr.PrepareButton(ib, "custom-focus", BtnStop.Size); break;
-                    case "Blink": IconsMgr.PrepareButton(ib, "custom-blink", BtnStop.Size); break;
+                if (mCore.LegacyIcons)
+                {
+                    switch (ib.Caption)
+                    {
+                        case "Frame": IconsMgr.PrepareButton(ib, "custom-framing", BtnStop.Size); break;
+                        case "Center": IconsMgr.PrepareButton(ib, "custom-center", BtnStop.Size); break;
+                        case "Corner": IconsMgr.PrepareButton(ib, "custom-corner", BtnStop.Size); break;
+                        case "Focus": IconsMgr.PrepareButton(ib, "custom-focus", BtnStop.Size); break;
+                        case "Blink": IconsMgr.PrepareButton(ib, "custom-blink", BtnStop.Size); break;
+                    }
                 }
                 CustomButtonArea.Controls.Add(ib);
 			}
