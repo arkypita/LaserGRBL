@@ -106,6 +106,7 @@ namespace LaserGRBL
 
             IconsMgr.PrepareMenuItem(MnConnect, "mdi-power-plug");
             IconsMgr.PrepareMenuItem(MnDisconnect, "mdi-power-plug-off");
+            IconsMgr.PrepareMenuItem(MnWiFiDiscovery, "mdi-wifi");
             IconsMgr.PrepareMenuItem(MnGrblReset, "mdi-lightning-bolt");
 			IconsMgr.PrepareMenuItem(MnGoHome, "mdi-home");
             IconsMgr.PrepareMenuItem(MnUnlock, "mdi-lock-open");
@@ -121,18 +122,15 @@ namespace LaserGRBL
             IconsMgr.PrepareMenuItem(MnAdvancedSave, "mdi-content-save-edit");
             IconsMgr.PrepareMenuItem(MnSaveProject, "mdi-content-save-cog");
             IconsMgr.PrepareMenuItem(MnExit, "mdi-close-box");
-
             IconsMgr.PrepareMenuItem(MnFileSend, "mdi-play-circle-outline");
             IconsMgr.PrepareMenuItem(MnStartFromPosition, "mdi-motion-play-outline");
-			
+			IconsMgr.PrepareMenuItem(MnRunMulti, "mdi-lan-connect");
 			IconsMgr.PrepareMenuItem(MnPowerVsSpeed, "mdi-speedometer");
             IconsMgr.PrepareMenuItem(MnCuttingTest, "mdi-content-cut");
             IconsMgr.PrepareMenuItem(MnAccuracyTest, "mdi-details");
             IconsMgr.PrepareMenuItem(shakeTestToolStripMenuItem, "mdi-pulse");
-
             IconsMgr.PrepareMenuItem(autoSizeToolStripMenuItem, "mdi-resize");
             IconsMgr.PrepareMenuItem(lineSizeToolStripMenuItem, "mdi-gesture");
-
             IconsMgr.PrepareMenuItem(MNEnglish, "flags-gb", false);
             IconsMgr.PrepareMenuItem(MNItalian, "flags-it", false);
             IconsMgr.PrepareMenuItem(MNSpanish, "flags-es", false);
@@ -152,11 +150,16 @@ namespace LaserGRBL
             IconsMgr.PrepareMenuItem(romanianToolStripMenuItem, "flags-ro", false);
             IconsMgr.PrepareMenuItem(dutchToolStripMenuItem, "flags-nl", false);
             IconsMgr.PrepareMenuItem(ukrainianToolStripMenuItem, "flags-ua", false);
-
 			IconsMgr.PrepareMenuItem(installCH340DriverToolStripMenuItem, "mdi-usb");
             IconsMgr.PrepareMenuItem(flashGrblFirmwareToolStripMenuItem, "mdi-chip");
-
-			IconsMgr.PrepareMenuItem(MnAutoUpdate, "mdi-cloud-download");
+            IconsMgr.PrepareMenuItem(orturSupportGroupToolStripMenuItem, "mdi-facebook");
+            IconsMgr.PrepareMenuItem(orturSupportAndFeedbackToolStripMenuItem, "mdi-lifebuoy");
+            IconsMgr.PrepareMenuItem(orturWebsiteToolStripMenuItem, "mdi-web");
+            IconsMgr.PrepareMenuItem(youtubeChannelToolStripMenuItem, "mdi-youtube");
+            IconsMgr.PrepareMenuItem(manualsDownloadToolStripMenuItem, "mdi-notebook");
+            IconsMgr.PrepareMenuItem(firmwareToolStripMenuItem, "mdi-chip");
+            IconsMgr.PrepareMenuItem(MnConfigureOrturWiFi, "mdi-wifi");
+            IconsMgr.PrepareMenuItem(MnAutoUpdate, "mdi-cloud-download");
             IconsMgr.PrepareMenuItem(openSessionLogToolStripMenuItem, "mdi-file-account-outline");
             IconsMgr.PrepareMenuItem(activateExtendedLogToolStripMenuItem, "mdi-file-chart");
             IconsMgr.PrepareMenuItem(helpOnLineToolStripMenuItem, "mdi-help-circle");
@@ -164,9 +167,7 @@ namespace LaserGRBL
             IconsMgr.PrepareMenuItem(facebookCommunityToolStripMenuItem, "mdi-facebook");
             IconsMgr.PrepareMenuItem(donateToolStripMenuItem, "mdi-gift");
             IconsMgr.PrepareMenuItem(licenseToolStripMenuItem, "mdi-license");
-
 			IconsMgr.PrepareMenuItem(MnCheckNow, "mdi-cloud-check-variant-outline");
-
 			if (!Core.LegacyIcons)
 			{
 				IconsMgr.PrepareMenuItem(MnGrbl, "mdi-hammer-wrench");
