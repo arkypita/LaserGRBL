@@ -9,6 +9,7 @@ using LaserGRBL.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -135,6 +136,11 @@ namespace LaserGRBL
                         case "Corner": IconsMgr.PrepareButton(ib, "custom-corner", BtnStop.Size); break;
                         case "Focus": IconsMgr.PrepareButton(ib, "custom-focus", BtnStop.Size); break;
                         case "Blink": IconsMgr.PrepareButton(ib, "custom-blink", BtnStop.Size); break;
+                    }
+                    string mdiIconCode = $"mdi-{ib.Caption}";
+                    if (IconsMgr.IconsLoader.Contains(mdiIconCode))
+                    {
+                        IconsMgr.PrepareButton(ib, mdiIconCode, BtnStop.Size);
                     }
                 }
                 CustomButtonArea.Controls.Add(ib);

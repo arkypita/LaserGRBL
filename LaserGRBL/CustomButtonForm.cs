@@ -22,9 +22,19 @@ namespace LaserGRBL
 
 			BackColor = ColorScheme.FormBackColor;
 			ForeColor = ColorScheme.FormForeColor;
-
+			LblDescription.LinkColor = ColorScheme.LinkColor;
             IconsMgr.PrepareButton(BtnCreate, "mdi-checkbox-marked");
             IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
+
+			if (!IconsMgr.LegacyIcons)
+			{
+				LblCaption.Text = Strings.MdiIconCaption;
+                LblCaption.ForeColor = ColorScheme.LinkColor;
+                LblCaption.Click += LblCaption_Click;
+				LblCaption.Cursor = Cursors.Hand;
+				BTOpenImage.Visible = false;
+				LblImage.Visible = false;
+			}
 
             CbEStyles.DataSource = Enum.GetValues(typeof(CustomButton.EnableStyles));
 			CbEStyles.SelectedItem = CustomButton.EnableStyles.Always;
@@ -35,7 +45,12 @@ namespace LaserGRBL
             ThemeMgr.SetTheme(this);
         }
 
-		public static void CreateAndShowDialog(Form parent)
+        private void LblCaption_Click(object sender, EventArgs e)
+        {
+            Tools.Utils.OpenLink("https://pictogrammers.com/library/mdi/");
+        }
+
+        public static void CreateAndShowDialog(Form parent)
 		{
 			using (CustomButtonForm f = new CustomButtonForm())
 				f.ShowDialog(parent);

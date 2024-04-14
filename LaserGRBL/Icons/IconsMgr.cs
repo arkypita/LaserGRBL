@@ -97,6 +97,7 @@ namespace LaserGRBL.Icons
         private static Dictionary<string, Color> mIconColors = mLightIconColors;
 
         public static bool LegacyIcons { get; private set; }
+        public static IIconsLoader IconsLoader => mIconsLoader;
 
         public static void Initialize()
         {

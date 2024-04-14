@@ -810,6 +810,15 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MDI Icon code.
+        /// </summary>
+        internal static string MdiIconCaption {
+            get {
+                return ResourceManager.GetString("MdiIconCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot open a new file now..
         /// </summary>
         internal static string MsgboxCannotOpenFileNow {

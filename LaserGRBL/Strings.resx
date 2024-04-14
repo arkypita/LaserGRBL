@@ -442,4 +442,7 @@ If you need help click on "?" button.</value>
   <data name="IconsChangesRequiresRestart" xml:space="preserve">
     <value>Restart is required to apply icons changes. Restart now?</value>
   </data>
+  <data name="MdiIconCaption" xml:space="preserve">
+    <value>MDI Icon code</value>
+  </data>
 </root>
