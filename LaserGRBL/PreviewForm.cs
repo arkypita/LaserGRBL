@@ -126,7 +126,7 @@ namespace LaserGRBL
 			foreach (CustomButton cb in CustomButtons.Buttons)
 			{
 				CustomButtonIB ib = new CustomButtonIB(mCore, cb, this);
-                if (mCore.LegacyIcons)
+                if (!IconsMgr.LegacyIcons)
                 {
                     switch (ib.Caption)
                     {

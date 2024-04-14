@@ -96,10 +96,12 @@ namespace LaserGRBL.Icons
         // current icon colors
         private static Dictionary<string, Color> mIconColors = mLightIconColors;
 
+        public static bool LegacyIcons { get; private set; }
 
         public static void Initialize()
         {
-            if (Settings.GetObject("LegacyIcons", false))
+            LegacyIcons = Settings.GetObject("LegacyIcons", false);
+            if (LegacyIcons)
             {
                 mIconsLoader = new LegacyIcons();
             }

@@ -168,7 +168,7 @@ namespace LaserGRBL
             IconsMgr.PrepareMenuItem(donateToolStripMenuItem, "mdi-gift");
             IconsMgr.PrepareMenuItem(licenseToolStripMenuItem, "mdi-license");
 			IconsMgr.PrepareMenuItem(MnCheckNow, "mdi-cloud-check-variant-outline");
-			if (!Core.LegacyIcons)
+			if (!IconsMgr.LegacyIcons)
 			{
 				IconsMgr.PrepareMenuItem(MnGrbl, "mdi-hammer-wrench");
 				IconsMgr.PrepareMenuItem(fileToolStripMenuItem, "mdi-file-document-outline");

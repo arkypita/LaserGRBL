@@ -325,7 +325,6 @@ namespace LaserGRBL
 		private bool mDoingSend = false;
 
 		public bool LegacyPreview { private set; get; }
-        public bool LegacyIcons { private set; get; }
 
         public RetainedSetting<bool> ShowLaserOffMovements { get; } = new RetainedSetting<bool>("ShowLaserOffMovements", true);
         public RetainedSetting<bool> ShowExecutedCommands { get; } = new RetainedSetting<bool>("ShowExecutedCommands", true);
@@ -353,7 +352,6 @@ namespace LaserGRBL
 			mThreadingMode = Settings.GetObject("Threading Mode", ThreadingMode.Fast);
 
             LegacyPreview = Settings.GetObject("LegacyPreview", false);
-            LegacyIcons = Settings.GetObject("LegacyIcons", false);
 
             QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(mThreadingMode.StatusQuery), false);
 			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX, System.Threading.ThreadPriority.Highest);

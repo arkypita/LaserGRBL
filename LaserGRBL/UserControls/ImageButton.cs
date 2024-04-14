@@ -4,6 +4,7 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.Icons;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -125,7 +126,7 @@ namespace LaserGRBL.UserControls
         {
             base.OnPaint(e);
 
-            System.Drawing.Image touse = UseAltImage ? AltImage : Image;
+            Image touse = UseAltImage ? AltImage : Image;
 
 
             if ((touse != null) & this.Visible)
@@ -143,90 +144,130 @@ namespace LaserGRBL.UserControls
                     Size = new Size(this.Width - 1, this.Height - 1);
                 }
 
-                /*
-                if (HasCaption)
+                if (IconsMgr.LegacyIcons)
                 {
-                    Size.Height -= CAPTION_HEIGHT;
-                    Size.Width -= CAPTION_HEIGHT;
-                    Point.X += (Image.Width - Size.Width) / 2;
-                }
-                */
 
-                float direction = ColorScheme.DarkScheme ? 1 : -1;
-                if (DrawDisabled())
-                {
-                    //Disabilitato
-                    //Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
-                    //Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.11F);
-                    Tmp = Base.Drawing.ImageTransform.SetColor(Tmp, ColorScheme.DisabledButtons);
-                }
-                else
-                {
-                    if (!Coloration.Equals(Color.Empty))
+                    if (HasCaption)
                     {
-                        //Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
-                        Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.5F * direction);
-                        Tmp = Base.Drawing.ImageTransform.Translate(Tmp, Coloration, 0);
+                        Size.Height -= CAPTION_HEIGHT;
+                        Size.Width -= CAPTION_HEIGHT;
+                        Point.X += (Image.Width - Size.Width) / 2;
                     }
 
-                    if (IsMouseInside())
+
+                    if (DrawDisabled())
                     {
-                        if (MouseButtons == System.Windows.Forms.MouseButtons.Left)
-                        {
-                            //Contenuto con mouse premuto
-                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.3F * direction);
-                            Point = new Point(Point.X + CLICK_SCALE_IN_PIXEL, CLICK_SCALE_IN_PIXEL);
-                            Size.Width -= CLICK_SCALE_IN_PIXEL * 2;
-                            Size.Height -= CLICK_SCALE_IN_PIXEL * 2;
-                        }
-                        else
-                        {
-                            //Contenuto con mouse non premuto
-                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.2F * direction);
-                        }
+                        //Disabilitato
+                        Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
+                        Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.11F);
                     }
                     else
                     {
-                        //Non contenuto
-                        Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0);
+                        if (!Coloration.Equals(Color.Empty))
+                        {
+                            Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
+                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, -0.5F);
+                            Tmp = Base.Drawing.ImageTransform.Translate(Tmp, Coloration, 0);
+                        }
+
+                        if (IsMouseInside())
+                        {
+                            if (MouseButtons == System.Windows.Forms.MouseButtons.Left)
+                            {
+                                //Contenuto con mouse premuto
+                                Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.15F);
+                                Point = new Point(Point.X + CLICK_SCALE_IN_PIXEL, CLICK_SCALE_IN_PIXEL);
+                                Size.Width -= CLICK_SCALE_IN_PIXEL * 2;
+                                Size.Height -= CLICK_SCALE_IN_PIXEL * 2;
+                            }
+                            else
+                            {
+                                //Contenuto con mouse non premuto
+                                Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.1F);
+                            }
+                        }
+                        else
+                        {
+                            //Non contenuto
+                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0);
+                        }
+                    }
+
+                    if ((Tmp != null))
+                    {
+                        e.Graphics.DrawImage(Tmp, new Rectangle(Point, Size));
+                    }
+
+                    if (this.HasCaption)
+                    {
+                        StringFormat sf = new StringFormat()
+                        {
+                            Alignment = StringAlignment.Center,
+                            LineAlignment = StringAlignment.Center,
+                            FormatFlags = StringFormatFlags.LineLimit
+                        };
+
+                        using (Font captionFont = new Font("Microsoft Sans Serif", CAPTION_FONTSIZE))
+                        {
+                            float textY = Height - CAPTION_HEIGHT - 4;
+
+                            using (Brush b = new SolidBrush(ForeColor))
+                                e.Graphics.DrawString(Caption, captionFont, b, new RectangleF(0f, textY, Width, Height - textY), sf);
+                        }
+                    }
+                }
+                else
+                {
+                    float direction = ColorScheme.DarkScheme ? 1 : -1;
+                    if (DrawDisabled())
+                    {
+                        Tmp = Base.Drawing.ImageTransform.SetColor(Tmp, ColorScheme.DisabledButtons);
+                    }
+                    else
+                    {
+                        if (!Coloration.Equals(Color.Empty))
+                        {
+                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.5F * direction);
+                            Tmp = Base.Drawing.ImageTransform.Translate(Tmp, Coloration, 0);
+                        }
+
+                        if (IsMouseInside())
+                        {
+                            if (MouseButtons == MouseButtons.Left)
+                            {
+                                Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.3F * direction);
+                                Point = new Point(Point.X + CLICK_SCALE_IN_PIXEL, CLICK_SCALE_IN_PIXEL);
+                                Size.Width -= CLICK_SCALE_IN_PIXEL * 2;
+                                Size.Height -= CLICK_SCALE_IN_PIXEL * 2;
+                            }
+                            else
+                            {
+                                Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.2F * direction);
+                            }
+                        }
+                        else
+                        {
+                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0);
+                        }
+                    }
+
+                    e.Graphics.Clear(ColorScheme.FormBackColor);
+
+                    if (ColorScheme.FormBackColor != BackColor)
+                    {
+                        using (Brush brush = new SolidBrush(BackColor))
+                        using (GraphicsPath path = Tools.Graph.RoundedRect(new Rectangle(Point, Size), 5))
+                        {
+                            e.Graphics.FillPath(brush, path);
+                        }
+                    }
+
+                    if ((Tmp != null))
+                    {
+                        e.Graphics.DrawImage(Tmp, new Rectangle(Point, Size));
                     }
                 }
 
-                e.Graphics.Clear(ColorScheme.FormBackColor);
-
-                if (ColorScheme.FormBackColor != BackColor)
-                {
-                    using (Brush brush = new SolidBrush(BackColor))
-                    using (GraphicsPath path = Tools.Graph.RoundedRect(new Rectangle(Point, Size), 5))
-                    {
-                        e.Graphics.FillPath(brush, path);
-                    }
-                }
-
-                if ((Tmp != null))
-                {
-                    e.Graphics.DrawImage(Tmp, new Rectangle(Point, Size));
-                }
-
-                /*
-                if (this.HasCaption)
-                {
-                    StringFormat sf = new StringFormat()
-                    {
-                        Alignment = StringAlignment.Center,
-                        LineAlignment = StringAlignment.Center,
-                        FormatFlags = StringFormatFlags.LineLimit
-                    };
-
-                    using (Font captionFont = new Font("Microsoft Sans Serif", CAPTION_FONTSIZE))
-                    {
-                        float textY = Height - CAPTION_HEIGHT - 4;
-
-                        using (Brush b = new SolidBrush(ForeColor))
-                            e.Graphics.DrawString(Caption, captionFont, b, new RectangleF(0f, textY, Width, Height - textY), sf);
-                    }
-                }
-                */
             }
 
         }

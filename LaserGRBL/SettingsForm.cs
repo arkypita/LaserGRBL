@@ -248,7 +248,7 @@ namespace LaserGRBL
             if (Core.LegacyPreview != Settings.GetObject("LegacyPreview", false) && MessageBox.Show(Strings.PreviewChangesRequiresRestart, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
                 Application.Restart();
 
-            if (Core.LegacyIcons != Settings.GetObject("LegacyIcons", false) && MessageBox.Show(Strings.IconsChangesRequiresRestart, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (IconsMgr.LegacyIcons != Settings.GetObject("LegacyIcons", false) && MessageBox.Show(Strings.IconsChangesRequiresRestart, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
                 Application.Restart();
         }
 
