@@ -1089,6 +1089,12 @@
     <EmbeddedResource Include="Generator\SVG\LaserGRBL-accuracy-test-file.svg" />
     <Content Include="Grafica\777494-200.png" />
     <Content Include="Grafica\info.png" />
+    <None Include="Grafica\zdown01v2.png" />
+    <None Include="Grafica\zup01v2.png" />
+    <None Include="Grafica\zup1v2.png" />
+    <None Include="Grafica\zup10v2.png" />
+    <None Include="Grafica\zdown1v2.png" />
+    <None Include="Grafica\zdown10v2.png" />
     <Content Include="Sound\beep.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

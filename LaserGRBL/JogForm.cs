@@ -41,6 +41,7 @@ namespace LaserGRBL
         {
             TlpStepControl.Visible = !Settings.GetObject("Enable Continuous Jog", false);
             TlpZControl.Visible = Settings.GetObject("Enale Z Jog Control", false);
+            TlpZControl2.Visible = Settings.GetObject("Enale Z Jog Control", false);
         }
 
         private void Core_JogStateChange(bool jog)
