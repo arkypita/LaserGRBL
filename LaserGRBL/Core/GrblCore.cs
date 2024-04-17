@@ -2659,7 +2659,7 @@ namespace LaserGRBL
 			{
 				Logger.LogMessage("CycleEnd", "Cycle Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true));
 				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)), false));
-
+				OnProgramEnded?.Invoke();
 				LoopCount--;
 				RunProgramFromStart(false, false, true);
 			}
@@ -2667,8 +2667,8 @@ namespace LaserGRBL
 			{
 				Logger.LogMessage("ProgramEnd", "Job Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true));
 				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)), false));
-
-				OnJobEnd();
+                OnProgramEnded?.Invoke();
+                OnJobEnd();
 
 				SoundEvent.PlaySound(SoundEvent.EventId.Success);
 
@@ -3067,6 +3067,8 @@ namespace LaserGRBL
 
 		public bool IsOrturBoard { get => GrblVersion != null && GrblVersion.IsOrtur; }
 		public int FailedConnectionCount => mFailedConnection;
+
+		public event Action OnProgramEnded;
     }
 
 	public class TimeProjection

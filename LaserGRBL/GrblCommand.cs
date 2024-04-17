@@ -134,7 +134,7 @@ namespace LaserGRBL
         }
 
         private string mLine;
-        private ResultWrapper mResultWrapper = new ResultWrapper();
+        private ResultWrapper mResultWrapper;
         private TimeSpan mTimeOffset;
         private Dictionary<char, GrblCommand.Element> mHelper;
         private int mRepeatCount;
@@ -148,11 +148,18 @@ namespace LaserGRBL
         }
 
 		public GrblCommand(string line, int repeat = 0, bool preservecase = false)
-		{ 
+		{
+			ClearResult();
 			mLine = line.Trim();
 			if (!preservecase) mLine = mLine.ToUpper();
-			mRepeatCount = repeat; 
+			mRepeatCount = repeat;
 		}
+
+		public void ClearResult()
+		{
+            mResultWrapper = new ResultWrapper();
+			LinkedDisplayList?.Invalidate();
+        }
 
 		public GrblCommand(IEnumerable<Element> elements)
 		{

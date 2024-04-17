@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static LaserGRBL.ProgramRange;
 
 namespace LaserGRBL.UserControls
 {
@@ -435,6 +436,15 @@ namespace LaserGRBL.UserControls
             Core.ShowExecutedCommands.OnChange += ShowExecutedCommands_OnChange;
             Core.PreviewLineSize.OnChange += PrerviewLineSize_OnChange;
             Core.OnAutoSizeDrawing += Core_OnAutoSizeDrawing;
+            Core.OnProgramEnded += OnProgramEnded;
+        }
+
+        private void OnProgramEnded()
+        {
+            foreach (var command in Core.LoadedFile.Commands)
+            {
+                command.ClearResult();
+            }
         }
 
         private void Core_OnAutoSizeDrawing(GrblCore obj)
@@ -464,38 +474,87 @@ namespace LaserGRBL.UserControls
 
         public void AutoSizeDrawing()
         {
+
+            double ratio = Width / (double)Height;
+            double availableWidth = Width - mPadding.Left - mPadding.Right;
+            double availableHeight = Height - mPadding.Bottom - mPadding.Top;
+            const double growFactor = 1.1;
+            const decimal defaultViewport = 100;
+
+            XYRange drawingRange;
+
             if (Core?.LoadedFile.Range.DrawingRange.ValidRange == true)
             {
-                float ratio = (Width / (float)Height) / (float)(Core.LoadedFile.Range.DrawingRange.Width / Core.LoadedFile.Range.DrawingRange.Height);
-                if (ratio > 1)
-                {
-                    float width = (float)Core.LoadedFile.Range.DrawingRange.Width * ratio;
-                    float border = (float)Core.LoadedFile.Range.DrawingRange.Height * 0.1f;
-                    SetWorldPosition(
-                        Core.LoadedFile.Range.DrawingRange.Center.X - width / 2f - border * ratio,
-                        Core.LoadedFile.Range.DrawingRange.Center.Y + width / 2f + border * ratio,
-                        (float)Core.LoadedFile.Range.DrawingRange.Y.Min - border,
-                        (float)Core.LoadedFile.Range.DrawingRange.Y.Max + border
-                    );
-                }
-                else
-                {
-                    float height = ((float)Core.LoadedFile.Range.DrawingRange.Height) / ratio;
-                    float border = (float)Core.LoadedFile.Range.DrawingRange.Width * 0.1f;
-                    SetWorldPosition(
-                        (float)Core.LoadedFile.Range.DrawingRange.X.Min - border,
-                        (float)Core.LoadedFile.Range.DrawingRange.X.Max + border,
-                        Core.LoadedFile.Range.DrawingRange.Center.Y - height / 2f - border * ratio,
-                        Core.LoadedFile.Range.DrawingRange.Center.Y + height / 2f + border * ratio
-                    );
-                }
+                drawingRange = Core.LoadedFile.Range.DrawingRange;
             }
             else
             {
-                double ratio = (Height) / (float)Width;
-                float limit = 200;
-                SetWorldPosition(-limit, limit, -limit * ratio, limit * ratio);
+                drawingRange = new XYRange();
+                drawingRange.X.Min = -defaultViewport;
+                drawingRange.X.Max = defaultViewport;
+                drawingRange.Y.Min = -defaultViewport;
+                drawingRange.Y.Max = defaultViewport;
             }
+
+            double drawingWidth = (double)drawingRange.Width * growFactor;
+            double drawingHeight = (double)drawingRange.Height * growFactor;
+
+            double widthRatio = drawingWidth / availableWidth;
+            double paddingLeftWorld = mPadding.Left * widthRatio;
+            double paddingRightWorld = mPadding.Right * widthRatio;
+
+            double heightRatio = drawingHeight / availableHeight;
+            double paddingBottomWorld = mPadding.Bottom * heightRatio;
+            double paddingTopWorld = mPadding.Top * heightRatio;
+
+            double left;
+            double right;
+            double bottom;
+            double top;
+
+            if (drawingWidth / drawingHeight > availableWidth / availableHeight)
+            {
+                left = (double)drawingRange.Center.X - drawingWidth / 2;
+                right = (double)drawingRange.Center.X + drawingWidth / 2;
+
+                left -= paddingLeftWorld;
+                right += paddingRightWorld;
+
+                double resizedHeight = (right - left) / ratio;
+                double centerY = drawingRange.Center.Y;
+
+                bottom = centerY - resizedHeight / 2;
+                top = centerY + resizedHeight / 2;
+
+                double bottomShift = (top - bottom) / Height * mPadding.Bottom / 2;
+                bottom -= bottomShift;
+                top -= bottomShift;
+            }
+            else
+            {
+                bottom = (double)drawingRange.Center.Y - drawingHeight / 2;
+                top = (double)drawingRange.Center.Y + drawingHeight / 2;
+
+                bottom -= paddingBottomWorld;
+                top += paddingTopWorld;
+
+                double resizedWidth = (top - bottom) * ratio;
+                double centerX = drawingRange.Center.X;
+
+                left = centerX - resizedWidth / 2;
+                right = centerX + resizedWidth / 2;
+
+                double leftShift = (right - left) / Width * mPadding.Left / 2;
+                left -= leftShift;
+                right -= leftShift;
+            }
+
+            SetWorldPosition(
+                left,
+                right,
+                bottom,
+                top
+            );
         }
 
 
