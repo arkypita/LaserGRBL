@@ -83,6 +83,8 @@ LaserGRBL contains some code from:
 - [GCodeFromSVG](https://github.com/svenhb/GRBL-Plotter) - Copyright Sven Hasemann
 - [MS SVG Library](https://archive.codeplex.com/?p=svg) - Microsoft Public License
 - [Clipper](http://www.angusj.com/delphi/clipper.php) - Angus Johnson. Copyright © 2010-2014
+- [SharpGL](https://github.com/dwmkerr/sharpgl) - Dave Kerr
+- [MDI Icons](https://pictogrammers.com/library/mdi/) - Pictogrammers
 
 Thanks to:
 - Myself, for italian and english language
@@ -105,3 +107,4 @@ Thanks to:
 - guillaume-rico for code contribution on Smoothie support
 - Tobias Falkner, for code contribution [#937](https://github.com/arkypita/LaserGRBL/pull/937)
 - gmmanonymus111, for code contribution [#1032](https://github.com/arkypita/LaserGRBL/pull/1032)
+- [GabeMx5](https://github.com/GabeMx5), for OpenGL preview and svg icons implementation
