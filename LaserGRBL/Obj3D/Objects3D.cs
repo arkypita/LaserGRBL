@@ -147,9 +147,9 @@ namespace LaserGRBL.Obj3D
     public class Grid3D : Object3D
     {
         [XmlIgnore]
-        public int MaxWidth { get; set; } = 2000;
+        public int MaxWidth { get; set; } = 50000;
         [XmlIgnore]
-        public int MaxHeight { get; set; } = 2000;
+        public int MaxHeight { get; set; } = 50000;
         [XmlIgnore]
         private DisplayList mDisplayOrigins;
         [XmlIgnore]

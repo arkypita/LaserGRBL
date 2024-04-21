@@ -59,11 +59,16 @@ namespace LaserGRBL.UserControls
         private OpenGL OpenGL;
         // rulers steps
         private List<KeyValuePair<double, int>> mRulerSteps = new List<KeyValuePair<double, int>> {
-            new KeyValuePair<double, int>( 100,   5),
-            new KeyValuePair<double, int>( 200,  10),
-            new KeyValuePair<double, int>( 600,  30),
-            new KeyValuePair<double, int>(1000,  50),
-            new KeyValuePair<double, int>(2000, 100)
+            new KeyValuePair<double, int>(   100,    5),
+            new KeyValuePair<double, int>(   200,   10),
+            new KeyValuePair<double, int>(   600,   30),
+            new KeyValuePair<double, int>(  1000,   50),
+            new KeyValuePair<double, int>(  2000,  100),
+            new KeyValuePair<double, int>(  6000,  300),
+            new KeyValuePair<double, int>( 10000,  500),
+            new KeyValuePair<double, int>( 20000, 1000),
+            new KeyValuePair<double, int>( 60000, 3000),
+            new KeyValuePair<double, int>(100000, 5000)
         };
 
         public GrblPanel3D()
@@ -100,7 +105,7 @@ namespace LaserGRBL.UserControls
         private void SetWorldPosition(double left, double right, double bottom, double top)
         {
             // max viewport size
-            const double max = 2000;
+            const double max = 50000;
             // compute size
             double width = right - left;
             double height = top - bottom;
