@@ -5,8 +5,12 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using LaserGRBL.Icons;
+using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace LaserGRBL.UserControls
@@ -114,13 +118,7 @@ namespace LaserGRBL.UserControls
             }
         }
 
-
-        private Color _coloration = Color.Empty;
-        public Color Coloration
-        {
-            get { return _coloration; }
-            set { _coloration = value; }
-        }
+        public bool RoundedBorders { get; set; } = false;
 
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
@@ -135,6 +133,7 @@ namespace LaserGRBL.UserControls
                 e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
                 Image Tmp = (Image)touse.Clone();
+                Tmp.Tag = touse.Tag;
 
                 Point Point = new Point(0, 0);
                 Size Size = new Size(Image.Width, Image.Height);
@@ -163,12 +162,6 @@ namespace LaserGRBL.UserControls
                     }
                     else
                     {
-                        if (!Coloration.Equals(Color.Empty))
-                        {
-                            Tmp = Base.Drawing.ImageTransform.GrayScale(Tmp, Base.Drawing.ImageTransform.Formula.CCIRRec709);
-                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, -0.5F);
-                            Tmp = Base.Drawing.ImageTransform.Translate(Tmp, Coloration, 0);
-                        }
 
                         if (IsMouseInside())
                         {
@@ -219,22 +212,19 @@ namespace LaserGRBL.UserControls
                 else
                 {
                     float direction = ColorScheme.DarkScheme ? 1 : -1;
+                    Color borderColor = (Tmp.Tag as LoadedImageTag).Color;
                     if (DrawDisabled())
                     {
                         Tmp = Base.Drawing.ImageTransform.SetColor(Tmp, ColorScheme.DisabledButtons);
+                        borderColor = ColorScheme.DisabledButtons;
                     }
                     else
                     {
-                        if (!Coloration.Equals(Color.Empty))
-                        {
-                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.5F * direction);
-                            Tmp = Base.Drawing.ImageTransform.Translate(Tmp, Coloration, 0);
-                        }
-
                         if (IsMouseInside())
                         {
                             if (MouseButtons == MouseButtons.Left)
                             {
+                                borderColor = ColorScheme.ChangeColorBrightness(borderColor, 0.3F * direction);
                                 Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.3F * direction);
                                 Point = new Point(Point.X + CLICK_SCALE_IN_PIXEL, CLICK_SCALE_IN_PIXEL);
                                 Size.Width -= CLICK_SCALE_IN_PIXEL * 2;
@@ -242,26 +232,51 @@ namespace LaserGRBL.UserControls
                             }
                             else
                             {
+                                borderColor = ColorScheme.ChangeColorBrightness(borderColor, 0.2F * direction);
                                 Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.2F * direction);
                             }
                         }
                         else
                         {
-                            Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0);
+                            //Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0);
                         }
                     }
 
                     e.Graphics.Clear(ColorScheme.FormBackColor);
-
-                    if (ColorScheme.FormBackColor != BackColor)
+                    if (RoundedBorders)
                     {
+                        // draw rounded border
+                        //borderColor = DrawDisabled() ? ColorScheme.DisabledButtons : ColorScheme.FormForeColor;
+                        using (Brush brush = new SolidBrush(borderColor))
+                        using (GraphicsPath path = Tools.Graph.RoundedRect(new Rectangle(Point, Size), 7))
+                        {
+                            e.Graphics.FillPath(brush, path);
+                        }
+                        // draw rounded background
+                        Size.Width -= 6;
+                        Size.Height -= 6;
+                        Point.X += 3;
+                        Point.Y += 3;
+                        Color backColor = BackColor.A == 0 ? ColorScheme.FormBackColor : BackColor;
+                        using (Brush brush = new SolidBrush(backColor))
+                        using (GraphicsPath path = Tools.Graph.RoundedRect(new Rectangle(Point, Size), 5))
+                        {
+                            e.Graphics.FillPath(brush, path);
+                        }
+                        Size.Width -= 2;
+                        Size.Height -= 2;
+                        Point.X += 1;
+                        Point.Y += 1;
+                    }
+                    else
+                    {
+                        // draw rounded background
                         using (Brush brush = new SolidBrush(BackColor))
                         using (GraphicsPath path = Tools.Graph.RoundedRect(new Rectangle(Point, Size), 5))
                         {
                             e.Graphics.FillPath(brush, path);
                         }
                     }
-
                     if ((Tmp != null))
                     {
                         e.Graphics.DrawImage(Tmp, new Rectangle(Point, Size));

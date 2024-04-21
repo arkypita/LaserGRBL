@@ -111,7 +111,6 @@
 			this.BTOpenImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BTOpenImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BTOpenImage.Caption = "";
-			this.BTOpenImage.Coloration = System.Drawing.Color.Empty;
 			this.BTOpenImage.Image = ((System.Drawing.Image)(resources.GetObject("BTOpenImage.Image")));
 			resources.ApplyResources(this.BTOpenImage, "BTOpenImage");
 			this.BTOpenImage.Name = "BTOpenImage";

@@ -81,7 +81,6 @@ namespace LaserGRBL
             resources.ApplyResources(this.BtnReset, "BtnReset");
             this.BtnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnReset.Caption = null;
-            this.BtnReset.Coloration = System.Drawing.Color.Empty;
             this.BtnReset.Image = ((System.Drawing.Image)(resources.GetObject("BtnReset.Image")));
             this.BtnReset.Name = "BtnReset";
             this.BtnReset.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -145,7 +144,6 @@ namespace LaserGRBL
             resources.ApplyResources(this.BtnUnlock, "BtnUnlock");
             this.BtnUnlock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnUnlock.Caption = null;
-            this.BtnUnlock.Coloration = System.Drawing.Color.Empty;
             this.BtnUnlock.Image = ((System.Drawing.Image)(resources.GetObject("BtnUnlock.Image")));
             this.BtnUnlock.Name = "BtnUnlock";
             this.BtnUnlock.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -159,7 +157,6 @@ namespace LaserGRBL
             resources.ApplyResources(this.BtnHoming, "BtnHoming");
             this.BtnHoming.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnHoming.Caption = null;
-            this.BtnHoming.Coloration = System.Drawing.Color.Empty;
             this.BtnHoming.Image = ((System.Drawing.Image)(resources.GetObject("BtnHoming.Image")));
             this.BtnHoming.Name = "BtnHoming";
             this.BtnHoming.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -173,7 +170,6 @@ namespace LaserGRBL
             resources.ApplyResources(this.BtnZeroing, "BtnZeroing");
             this.BtnZeroing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnZeroing.Caption = null;
-            this.BtnZeroing.Coloration = System.Drawing.Color.Empty;
             this.BtnZeroing.Image = ((System.Drawing.Image)(resources.GetObject("BtnZeroing.Image")));
             this.BtnZeroing.Name = "BtnZeroing";
             this.BtnZeroing.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -187,7 +183,6 @@ namespace LaserGRBL
             resources.ApplyResources(this.BtnResume, "BtnResume");
             this.BtnResume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnResume.Caption = null;
-            this.BtnResume.Coloration = System.Drawing.Color.Empty;
             this.BtnResume.Image = ((System.Drawing.Image)(resources.GetObject("BtnResume.Image")));
             this.BtnResume.Name = "BtnResume";
             this.BtnResume.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -201,7 +196,6 @@ namespace LaserGRBL
             resources.ApplyResources(this.BtnStop, "BtnStop");
             this.BtnStop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnStop.Caption = null;
-            this.BtnStop.Coloration = System.Drawing.Color.Empty;
             this.BtnStop.Image = ((System.Drawing.Image)(resources.GetObject("BtnStop.Image")));
             this.BtnStop.Name = "BtnStop";
             this.BtnStop.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;

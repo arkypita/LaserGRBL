@@ -320,7 +320,6 @@
             this.BtnStreamingMode.AltImage = null;
             this.BtnStreamingMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnStreamingMode.Caption = null;
-            this.BtnStreamingMode.Coloration = System.Drawing.Color.Empty;
             this.BtnStreamingMode.Image = ((System.Drawing.Image)(resources.GetObject("BtnStreamingMode.Image")));
             resources.ApplyResources(this.BtnStreamingMode, "BtnStreamingMode");
             this.BtnStreamingMode.Name = "BtnStreamingMode";
@@ -345,7 +344,6 @@
             this.BtnProtocol.AltImage = null;
             this.BtnProtocol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnProtocol.Caption = null;
-            this.BtnProtocol.Coloration = System.Drawing.Color.Empty;
             this.BtnProtocol.Image = ((System.Drawing.Image)(resources.GetObject("BtnProtocol.Image")));
             resources.ApplyResources(this.BtnProtocol, "BtnProtocol");
             this.BtnProtocol.Name = "BtnProtocol";
@@ -363,7 +361,6 @@
             this.BtnThreadingModel.AltImage = null;
             this.BtnThreadingModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnThreadingModel.Caption = null;
-            this.BtnThreadingModel.Coloration = System.Drawing.Color.Empty;
             this.BtnThreadingModel.Image = ((System.Drawing.Image)(resources.GetObject("BtnThreadingModel.Image")));
             resources.ApplyResources(this.BtnThreadingModel, "BtnThreadingModel");
             this.BtnThreadingModel.Name = "BtnThreadingModel";
@@ -414,7 +411,6 @@
             this.BtnFType.AltImage = null;
             this.BtnFType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnFType.Caption = null;
-            this.BtnFType.Coloration = System.Drawing.Color.Empty;
             this.BtnFType.Image = ((System.Drawing.Image)(resources.GetObject("BtnFType.Image")));
             resources.ApplyResources(this.BtnFType, "BtnFType");
             this.BtnFType.Name = "BtnFType";
@@ -483,7 +479,6 @@
             this.BtnModulationInfo.AltImage = null;
             this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnModulationInfo.Caption = null;
-            this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
             this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
             resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
             this.BtnModulationInfo.Name = "BtnModulationInfo";
@@ -555,7 +550,6 @@
             this.imageButton1.AltImage = null;
             this.imageButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.imageButton1.Caption = null;
-            this.imageButton1.Coloration = System.Drawing.Color.Empty;
             this.imageButton1.Image = ((System.Drawing.Image)(resources.GetObject("imageButton1.Image")));
             resources.ApplyResources(this.imageButton1, "imageButton1");
             this.imageButton1.Name = "imageButton1";
@@ -1127,7 +1121,6 @@
             this.BtnTelegNoteInfo.AltImage = null;
             this.BtnTelegNoteInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnTelegNoteInfo.Caption = null;
-            this.BtnTelegNoteInfo.Coloration = System.Drawing.Color.Empty;
             this.BtnTelegNoteInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnTelegNoteInfo.Image")));
             resources.ApplyResources(this.BtnTelegNoteInfo, "BtnTelegNoteInfo");
             this.BtnTelegNoteInfo.Name = "BtnTelegNoteInfo";

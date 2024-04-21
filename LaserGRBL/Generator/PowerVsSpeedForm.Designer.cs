@@ -466,7 +466,6 @@
 			this.BtnOnOffInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.BtnOnOffInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnOnOffInfo.Caption = null;
-			this.BtnOnOffInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnOnOffInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnOnOffInfo.Image")));
 			this.BtnOnOffInfo.Location = new System.Drawing.Point(261, 55);
 			this.BtnOnOffInfo.Name = "BtnOnOffInfo";

@@ -11,6 +11,7 @@ namespace LaserGRBL.Icons
 
     public class LoadedImageTag
     {
+        public Color Color { get; set; }
         public bool Colorize { get; set; }
         public string ResourceName { get; set; }
         public Size Size { get; set; }
@@ -151,17 +152,21 @@ namespace LaserGRBL.Icons
             // colorize
             if (colorize && mIconsLoader is SvgIcons.SvgIcons)
             {
+                Color iconColor;
                 if (mIconColors.TryGetValue(strResourceName, out Color color))
                 {
                     result = ImageTransform.SetColor(result, color);
+                    iconColor = color;
                 }
                 else
                 {
                     result = ImageTransform.SetColor(result, mIconColors[string.Empty]);
+                    iconColor = mIconColors[string.Empty];
                 }
                 // set resource link
                 result.Tag = new LoadedImageTag
                 {
+                    Color = iconColor,
                     Colorize = colorize,
                     ResourceName = strResourceName,
                     Size = size

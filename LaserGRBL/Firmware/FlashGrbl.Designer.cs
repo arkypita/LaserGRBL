@@ -299,7 +299,6 @@
 			this.BtnTarget.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.BtnTarget.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnTarget.Caption = null;
-			this.BtnTarget.Coloration = System.Drawing.Color.Empty;
 			this.BtnTarget.Image = ((System.Drawing.Image)(resources.GetObject("BtnTarget.Image")));
 			this.BtnTarget.Location = new System.Drawing.Point(285, 5);
 			this.BtnTarget.Name = "BtnTarget";
@@ -317,7 +316,6 @@
 			this.BtnFirmware.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.BtnFirmware.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnFirmware.Caption = null;
-			this.BtnFirmware.Coloration = System.Drawing.Color.Empty;
 			this.BtnFirmware.Image = ((System.Drawing.Image)(resources.GetObject("BtnFirmware.Image")));
 			this.BtnFirmware.Location = new System.Drawing.Point(285, 32);
 			this.BtnFirmware.Name = "BtnFirmware";

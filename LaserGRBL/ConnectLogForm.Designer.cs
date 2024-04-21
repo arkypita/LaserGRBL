@@ -200,7 +200,6 @@ namespace LaserGRBL
             resources.ApplyResources(this.BtnOpen, "BtnOpen");
             this.BtnOpen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnOpen.Caption = null;
-            this.BtnOpen.Coloration = System.Drawing.Color.Empty;
             this.tableLayoutPanel5.SetColumnSpan(this.BtnOpen, 2);
             this.BtnOpen.Image = ((System.Drawing.Image)(resources.GetObject("BtnOpen.Image")));
             this.BtnOpen.Name = "BtnOpen";
@@ -216,7 +215,6 @@ namespace LaserGRBL
             resources.ApplyResources(this.BtnRunProgram, "BtnRunProgram");
             this.BtnRunProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnRunProgram.Caption = null;
-            this.BtnRunProgram.Coloration = System.Drawing.Color.Empty;
             this.BtnRunProgram.Image = ((System.Drawing.Image)(resources.GetObject("BtnRunProgram.Image")));
             this.BtnRunProgram.Name = "BtnRunProgram";
             this.BtnRunProgram.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -253,7 +251,6 @@ namespace LaserGRBL
             resources.ApplyResources(this.BtnAbortProgram, "BtnAbortProgram");
             this.BtnAbortProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnAbortProgram.Caption = null;
-            this.BtnAbortProgram.Coloration = System.Drawing.Color.Empty;
             this.BtnAbortProgram.Image = ((System.Drawing.Image)(resources.GetObject("BtnAbortProgram.Image")));
             this.BtnAbortProgram.Name = "BtnAbortProgram";
             this.BtnAbortProgram.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -340,7 +337,6 @@ namespace LaserGRBL
             resources.ApplyResources(this.BtnConnectDisconnect, "BtnConnectDisconnect");
             this.BtnConnectDisconnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnConnectDisconnect.Caption = null;
-            this.BtnConnectDisconnect.Coloration = System.Drawing.Color.Empty;
             this.BtnConnectDisconnect.Image = ((System.Drawing.Image)(resources.GetObject("BtnConnectDisconnect.Image")));
             this.BtnConnectDisconnect.Name = "BtnConnectDisconnect";
             this.tableLayoutPanel4.SetRowSpan(this.BtnConnectDisconnect, 3);

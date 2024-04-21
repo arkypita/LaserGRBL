@@ -51,6 +51,12 @@ namespace LaserGRBL
                 BtnZeroing.BorderStyle = BorderStyle.None;
                 BtnResume.BorderStyle = BorderStyle.None;
                 BtnStop.BorderStyle = BorderStyle.None;
+                BtnReset.RoundedBorders = true;
+                BtnUnlock.RoundedBorders = true;
+                BtnHoming.RoundedBorders = true;
+                BtnZeroing.RoundedBorders = true;
+                BtnResume.RoundedBorders = true;
+                BtnStop.RoundedBorders = true;
             }
         }
 
@@ -200,6 +206,7 @@ namespace LaserGRBL
                 //ContextMenuStrip = MNRemEditCB;
                 SizingMode = UserControls.ImageButton.SizingModes.FixedSize;
                 BorderStyle = IconsMgr.LegacyIcons ? BorderStyle.FixedSingle : BorderStyle.None;
+                RoundedBorders = true;
 
                 Size = new Size(49, 49);
                 Margin = new Padding(2);

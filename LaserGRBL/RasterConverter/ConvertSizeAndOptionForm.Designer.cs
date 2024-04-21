@@ -168,7 +168,6 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.BtnUnlockProportion, "BtnUnlockProportion");
 			this.BtnUnlockProportion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnUnlockProportion.Caption = null;
-			this.BtnUnlockProportion.Coloration = System.Drawing.Color.Empty;
 			this.BtnUnlockProportion.Image = ((System.Drawing.Image)(resources.GetObject("BtnUnlockProportion.Image")));
 			this.BtnUnlockProportion.Name = "BtnUnlockProportion";
 			this.BtnUnlockProportion.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -291,7 +290,6 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.BtnDPI, "BtnDPI");
 			this.BtnDPI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnDPI.Caption = null;
-			this.BtnDPI.Coloration = System.Drawing.Color.Empty;
 			this.BtnDPI.Image = ((System.Drawing.Image)(resources.GetObject("BtnDPI.Image")));
 			this.BtnDPI.Name = "BtnDPI";
 			this.BtnDPI.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -311,7 +309,6 @@ namespace LaserGRBL.RasterConverter
 			this.BtnReset.AltImage = null;
 			this.BtnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnReset.Caption = null;
-			this.BtnReset.Coloration = System.Drawing.Color.Empty;
 			this.BtnReset.Image = ((System.Drawing.Image)(resources.GetObject("BtnReset.Image")));
 			resources.ApplyResources(this.BtnReset, "BtnReset");
 			this.BtnReset.Name = "BtnReset";
@@ -326,7 +323,6 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.BtnCenter, "BtnCenter");
 			this.BtnCenter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnCenter.Caption = null;
-			this.BtnCenter.Coloration = System.Drawing.Color.Empty;
 			this.BtnCenter.Image = ((System.Drawing.Image)(resources.GetObject("BtnCenter.Image")));
 			this.BtnCenter.Name = "BtnCenter";
 			this.BtnCenter.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -401,7 +397,6 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.BtnPSHelper, "BtnPSHelper");
 			this.BtnPSHelper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnPSHelper.Caption = null;
-			this.BtnPSHelper.Coloration = System.Drawing.Color.Empty;
 			this.BtnPSHelper.Image = ((System.Drawing.Image)(resources.GetObject("BtnPSHelper.Image")));
 			this.BtnPSHelper.Name = "BtnPSHelper";
 			this.tableLayoutPanel6.SetRowSpan(this.BtnPSHelper, 2);
@@ -438,7 +433,6 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
 			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnModulationInfo.Caption = null;
-			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
 			this.BtnModulationInfo.Name = "BtnModulationInfo";
 			this.tableLayoutPanel7.SetRowSpan(this.BtnModulationInfo, 2);
@@ -473,7 +467,6 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.BtnOnOffInfo, "BtnOnOffInfo");
 			this.BtnOnOffInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnOnOffInfo.Caption = null;
-			this.BtnOnOffInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnOnOffInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnOnOffInfo.Image")));
 			this.BtnOnOffInfo.Name = "BtnOnOffInfo";
 			this.BtnOnOffInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;

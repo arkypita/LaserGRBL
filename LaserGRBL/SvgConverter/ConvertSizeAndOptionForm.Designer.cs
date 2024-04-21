@@ -142,7 +142,6 @@ namespace LaserGRBL.SvgConverter
 			resources.ApplyResources(this.BtnPSHelper, "BtnPSHelper");
 			this.BtnPSHelper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnPSHelper.Caption = null;
-			this.BtnPSHelper.Coloration = System.Drawing.Color.Empty;
 			this.BtnPSHelper.Image = ((System.Drawing.Image)(resources.GetObject("BtnPSHelper.Image")));
 			this.BtnPSHelper.Name = "BtnPSHelper";
 			this.BtnPSHelper.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -178,7 +177,6 @@ namespace LaserGRBL.SvgConverter
 			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
 			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnModulationInfo.Caption = null;
-			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
 			this.BtnModulationInfo.Name = "BtnModulationInfo";
 			this.tableLayoutPanel7.SetRowSpan(this.BtnModulationInfo, 2);
@@ -213,7 +211,6 @@ namespace LaserGRBL.SvgConverter
 			resources.ApplyResources(this.BtnOnOffInfo, "BtnOnOffInfo");
 			this.BtnOnOffInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnOnOffInfo.Caption = null;
-			this.BtnOnOffInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnOnOffInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnOnOffInfo.Image")));
 			this.BtnOnOffInfo.Name = "BtnOnOffInfo";
 			this.BtnOnOffInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -311,7 +308,6 @@ namespace LaserGRBL.SvgConverter
 			resources.ApplyResources(this.BtnColorFilter, "BtnColorFilter");
 			this.BtnColorFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnColorFilter.Caption = null;
-			this.BtnColorFilter.Coloration = System.Drawing.Color.Empty;
 			this.BtnColorFilter.Image = ((System.Drawing.Image)(resources.GetObject("BtnColorFilter.Image")));
 			this.BtnColorFilter.Name = "BtnColorFilter";
 			this.BtnColorFilter.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;

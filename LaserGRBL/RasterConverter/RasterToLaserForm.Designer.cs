@@ -247,7 +247,6 @@
 			this.BtnOutliner.AltImage = null;
 			this.BtnOutliner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnOutliner.Caption = null;
-			this.BtnOutliner.Coloration = System.Drawing.Color.Empty;
 			this.BtnOutliner.Image = ((System.Drawing.Image)(resources.GetObject("BtnOutliner.Image")));
 			resources.ApplyResources(this.BtnOutliner, "BtnOutliner");
 			this.BtnOutliner.Name = "BtnOutliner";
@@ -261,7 +260,6 @@
 			this.BtnFill.AltImage = null;
 			this.BtnFill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnFill.Caption = null;
-			this.BtnFill.Coloration = System.Drawing.Color.Empty;
 			this.BtnFill.Image = ((System.Drawing.Image)(resources.GetObject("BtnFill.Image")));
 			resources.ApplyResources(this.BtnFill, "BtnFill");
 			this.BtnFill.Name = "BtnFill";
@@ -275,7 +273,6 @@
 			this.BtFlipV.AltImage = null;
 			this.BtFlipV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtFlipV.Caption = null;
-			this.BtFlipV.Coloration = System.Drawing.Color.Empty;
 			this.BtFlipV.Image = ((System.Drawing.Image)(resources.GetObject("BtFlipV.Image")));
 			resources.ApplyResources(this.BtFlipV, "BtFlipV");
 			this.BtFlipV.Name = "BtFlipV";
@@ -289,7 +286,6 @@
 			this.BtFlipH.AltImage = null;
 			this.BtFlipH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtFlipH.Caption = null;
-			this.BtFlipH.Coloration = System.Drawing.Color.Empty;
 			this.BtFlipH.Image = ((System.Drawing.Image)(resources.GetObject("BtFlipH.Image")));
 			resources.ApplyResources(this.BtFlipH, "BtFlipH");
 			this.BtFlipH.Name = "BtFlipH";
@@ -303,7 +299,6 @@
 			this.BtRotateCW.AltImage = null;
 			this.BtRotateCW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtRotateCW.Caption = null;
-			this.BtRotateCW.Coloration = System.Drawing.Color.Empty;
 			this.BtRotateCW.Image = ((System.Drawing.Image)(resources.GetObject("BtRotateCW.Image")));
 			resources.ApplyResources(this.BtRotateCW, "BtRotateCW");
 			this.BtRotateCW.Name = "BtRotateCW";
@@ -317,7 +312,6 @@
 			this.BtRotateCCW.AltImage = null;
 			this.BtRotateCCW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtRotateCCW.Caption = null;
-			this.BtRotateCCW.Coloration = System.Drawing.Color.Empty;
 			this.BtRotateCCW.Image = ((System.Drawing.Image)(resources.GetObject("BtRotateCCW.Image")));
 			resources.ApplyResources(this.BtRotateCCW, "BtRotateCCW");
 			this.BtRotateCCW.Name = "BtRotateCCW";
@@ -331,7 +325,6 @@
 			this.BtnRevert.AltImage = null;
 			this.BtnRevert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnRevert.Caption = null;
-			this.BtnRevert.Coloration = System.Drawing.Color.Empty;
 			this.BtnRevert.Image = ((System.Drawing.Image)(resources.GetObject("BtnRevert.Image")));
 			resources.ApplyResources(this.BtnRevert, "BtnRevert");
 			this.BtnRevert.Name = "BtnRevert";
@@ -345,7 +338,6 @@
 			this.BtnCrop.AltImage = null;
 			this.BtnCrop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnCrop.Caption = null;
-			this.BtnCrop.Coloration = System.Drawing.Color.Empty;
 			this.BtnCrop.Image = ((System.Drawing.Image)(resources.GetObject("BtnCrop.Image")));
 			resources.ApplyResources(this.BtnCrop, "BtnCrop");
 			this.BtnCrop.Name = "BtnCrop";
@@ -359,7 +351,6 @@
 			this.BtnReverse.AltImage = null;
 			this.BtnReverse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnReverse.Caption = null;
-			this.BtnReverse.Coloration = System.Drawing.Color.Empty;
 			this.BtnReverse.Image = ((System.Drawing.Image)(resources.GetObject("BtnReverse.Image")));
 			resources.ApplyResources(this.BtnReverse, "BtnReverse");
 			this.BtnReverse.Name = "BtnReverse";
@@ -373,7 +364,6 @@
 			this.BtnAutoTrim.AltImage = null;
 			this.BtnAutoTrim.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnAutoTrim.Caption = null;
-			this.BtnAutoTrim.Coloration = System.Drawing.Color.Empty;
 			this.BtnAutoTrim.Image = ((System.Drawing.Image)(resources.GetObject("BtnAutoTrim.Image")));
 			resources.ApplyResources(this.BtnAutoTrim, "BtnAutoTrim");
 			this.BtnAutoTrim.Name = "BtnAutoTrim";
@@ -761,7 +751,6 @@
 			resources.ApplyResources(this.BtnAdaptiveQualityInfo, "BtnAdaptiveQualityInfo");
 			this.BtnAdaptiveQualityInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnAdaptiveQualityInfo.Caption = null;
-			this.BtnAdaptiveQualityInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnAdaptiveQualityInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnAdaptiveQualityInfo.Image")));
 			this.BtnAdaptiveQualityInfo.Name = "BtnAdaptiveQualityInfo";
 			this.BtnAdaptiveQualityInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -980,7 +969,6 @@
 			resources.ApplyResources(this.BtnFillingQualityInfo, "BtnFillingQualityInfo");
 			this.BtnFillingQualityInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnFillingQualityInfo.Caption = null;
-			this.BtnFillingQualityInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnFillingQualityInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnFillingQualityInfo.Image")));
 			this.BtnFillingQualityInfo.Name = "BtnFillingQualityInfo";
 			this.BtnFillingQualityInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -1096,7 +1084,6 @@
 			resources.ApplyResources(this.BtnQualityInfo, "BtnQualityInfo");
 			this.BtnQualityInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnQualityInfo.Caption = null;
-			this.BtnQualityInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnQualityInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnQualityInfo.Image")));
 			this.BtnQualityInfo.Name = "BtnQualityInfo";
 			this.BtnQualityInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
