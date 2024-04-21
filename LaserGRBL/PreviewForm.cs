@@ -34,6 +34,24 @@ namespace LaserGRBL
             IconsMgr.PrepareButton(BtnZeroing, "custom-zeroing");
             IconsMgr.PrepareButton(BtnResume, "custom-resume");
             IconsMgr.PrepareButton(BtnStop, "custom-stop");
+            if (IconsMgr.LegacyIcons)
+            {
+                BtnReset.BorderStyle = BorderStyle.FixedSingle;
+                BtnUnlock.BorderStyle = BorderStyle.FixedSingle;
+                BtnHoming.BorderStyle = BorderStyle.FixedSingle;
+                BtnZeroing.BorderStyle = BorderStyle.FixedSingle;
+                BtnResume.BorderStyle = BorderStyle.FixedSingle;
+                BtnStop.BorderStyle = BorderStyle.FixedSingle;
+            }
+            else
+            {
+                BtnReset.BorderStyle = BorderStyle.None;
+                BtnUnlock.BorderStyle = BorderStyle.None;
+                BtnHoming.BorderStyle = BorderStyle.None;
+                BtnZeroing.BorderStyle = BorderStyle.None;
+                BtnResume.BorderStyle = BorderStyle.None;
+                BtnStop.BorderStyle = BorderStyle.None;
+            }
         }
 
         private void CreatePanel(bool isLegacy)
@@ -181,7 +199,7 @@ namespace LaserGRBL
 
                 //ContextMenuStrip = MNRemEditCB;
                 SizingMode = UserControls.ImageButton.SizingModes.FixedSize;
-                BorderStyle = BorderStyle.None;
+                BorderStyle = IconsMgr.LegacyIcons ? BorderStyle.FixedSingle : BorderStyle.None;
 
                 Size = new Size(49, 49);
                 Margin = new Padding(2);
