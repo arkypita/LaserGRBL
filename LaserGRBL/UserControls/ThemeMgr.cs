@@ -153,12 +153,12 @@ namespace LaserGRBL.UserControls
             if (Environment.OSVersion.Version.Major >= 6)
             {
                 // get methods pointer
-                SetWindowTheme = GetDelegate<SetWindowThemePtr>("UxTheme.dll", "SetWindowTheme");
-                DwmSetWindowAttribute = GetDelegate<DwmSetWindowAttributePtr>("DwmApi.dll", "DwmSetWindowAttribute");
+                SetWindowTheme = GetDelegate("UxTheme.dll", "SetWindowTheme", typeof(SetWindowThemePtr)) as SetWindowThemePtr;
+                DwmSetWindowAttribute = GetDelegate("DwmApi.dll", "DwmSetWindowAttribute", typeof(DwmSetWindowAttributePtr)) as DwmSetWindowAttributePtr;
             }
         }
 
-        private static T GetDelegate<T>(string dllName, string funcName) where T : Delegate
+        private static Delegate GetDelegate(string dllName, string funcName, Type type)
         {
             // load library
             IntPtr handle = LoadLibrary(dllName);
@@ -168,11 +168,11 @@ namespace LaserGRBL.UserControls
                 IntPtr funcPtr = GetProcAddress(handle, funcName);
                 if (funcPtr != IntPtr.Zero)
                 {
-                    // return method cast
-                    return (T)Marshal.GetDelegateForFunctionPointer(funcPtr, typeof(T));
+                    // get delegate
+                    return Marshal.GetDelegateForFunctionPointer(funcPtr, type);
                 }
             }
-            return default;
+            return null;
         }
 
         private static void SetTheme(Control control)
