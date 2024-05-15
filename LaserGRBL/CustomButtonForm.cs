@@ -4,17 +4,15 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.Icons;
+using LaserGRBL.UserControls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace LaserGRBL
 {
-	public partial class CustomButtonForm : Form
+    public partial class CustomButtonForm : Form
 	{
 		CustomButton inedit = null;
 
@@ -24,16 +22,35 @@ namespace LaserGRBL
 
 			BackColor = ColorScheme.FormBackColor;
 			ForeColor = ColorScheme.FormForeColor;
-			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
+			LblDescription.LinkColor = ColorScheme.LinkColor;
+            IconsMgr.PrepareButton(BtnCreate, "mdi-checkbox-marked");
+            IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
 
-			CbEStyles.DataSource = Enum.GetValues(typeof(CustomButton.EnableStyles));
+			if (!IconsMgr.LegacyIcons)
+			{
+				LblCaption.Text = Strings.MdiIconCaption;
+                LblCaption.ForeColor = ColorScheme.LinkColor;
+                LblCaption.Click += LblCaption_Click;
+				LblCaption.Cursor = Cursors.Hand;
+				BTOpenImage.Visible = false;
+				LblImage.Visible = false;
+			}
+
+            CbEStyles.DataSource = Enum.GetValues(typeof(CustomButton.EnableStyles));
 			CbEStyles.SelectedItem = CustomButton.EnableStyles.Always;
 
 			CbByttonType.DataSource = Enum.GetValues(typeof(CustomButton.ButtonTypes));
 			CbEStyles.SelectedItem = CustomButton.ButtonTypes.Button;
-		}
 
-		public static void CreateAndShowDialog(Form parent)
+            ThemeMgr.SetTheme(this);
+        }
+
+        private void LblCaption_Click(object sender, EventArgs e)
+        {
+            Tools.Utils.OpenLink("https://pictogrammers.com/library/mdi/");
+        }
+
+        public static void CreateAndShowDialog(Form parent)
 		{
 			using (CustomButtonForm f = new CustomButtonForm())
 				f.ShowDialog(parent);

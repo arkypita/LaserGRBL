@@ -15,26 +15,31 @@ namespace LaserGRBL
 	class ColorScheme
 	{
 		public enum Scheme
-		{ BlueLaser, RedLaser, Dark, Hacker, Nighty }
+		{ CADStyle, CADDark, BlueLaser, RedLaser, Dark, Hacker, Nighty }
 
 		public static Dictionary<Scheme, Color[]> mData;
 
 		static ColorScheme()
-		{
-			mData = new Dictionary<Scheme, Color[]>();
-			mData.Add(Scheme.BlueLaser, new Color[] 
-			{
-				SystemColors.Control,		//form backcolor
+        {
+            mData = new Dictionary<Scheme, Color[]>();
+            mData.Add(Scheme.CADStyle, new Color[]
+            {
+                Color.FromArgb(248,248,248),//form backcolor
 				SystemColors.ControlText,	//form forecolor
 
-				Color.LightYellow,			//preview background
-				Color.Black,				//preview text
-				Color.Empty,				//preview grid?
+				Color.FromArgb( 33, 40, 48),//preview background
+				Color.FromArgb(220,220,220),//preview text
+				Color.FromArgb( 69, 78,101),//preview grid origins
+				Color.FromArgb( 49, 55, 70),//preview grid?
+				Color.FromArgb( 38, 45, 55),//preview grid minor?
 				Color.LightGray,			//preview reference line
 				Color.Blue,					//preview first line
-				Color.LightGray,			//preview other line
-				Color.Red,					//preview laser
-				Color.Blue,					//preview cross position
+				Color.FromArgb( 60, 82, 85),//preview other line
+				Color.FromArgb(220,220,220),//preview laser
+				Color.FromArgb(230,230, 20),//preview cross position
+				Color.FromArgb( 55,199,116),//preview command ok
+				Color.FromArgb(240, 50, 50),//preview command ko
+				Color.LightPink,			//preview command wait
 
 				Color.White,				//log background
 				Color.Black,				//command text
@@ -51,6 +56,91 @@ namespace LaserGRBL
 
 				Color.DodgerBlue,			//link color
 				Color.Purple,				//visited link color
+
+				Color.FromArgb(220,220,220),//controls border
+				Color.FromArgb(180,180,180),//controls background disabled
+                Color.FromArgb(140,140,140),//disabled buttons
+                Color.FromArgb(222,230,  7),//pressed buttons
+			});
+			mData.Add(Scheme.CADDark, new Color[]
+			{
+                Color.FromArgb(35,40,51),//form backcolor
+				Color.FromArgb(190, 190, 190),	//form forecolor
+
+				Color.FromArgb( 23, 30, 38),//preview background
+				Color.FromArgb(220,220,220),//preview text
+				Color.FromArgb( 69, 78,101),//preview grid origins
+				Color.FromArgb( 39, 45, 60),//preview grid?
+				Color.FromArgb( 28, 35, 45),//preview grid minor?
+				Color.LightGray,			//preview reference line
+				Color.Blue,					//preview first line
+				Color.FromArgb( 60, 82, 85),//preview other line
+				Color.FromArgb(220,220,220),//preview laser
+				Color.FromArgb(230,230, 20),//preview cross position
+				Color.FromArgb( 55,199,116),//preview command ok
+				Color.FromArgb(240, 50, 50),//preview command ko
+				Color.LightPink,			//preview command wait
+
+				Color.FromArgb( 70, 79, 92),//log background
+				Color.White,				//command text
+				Color.FromArgb(121,214, 58),//startup
+				Color.Crimson,				//alarm
+				Color.DimGray,				//config
+				Color.DodgerBlue,			//feedback
+				Color.OrangeRed,			//position
+				Color.Purple,				//others
+				
+				Color.DarkBlue,				//response good
+				Color.Red,					//response bad
+				Color.Black,				//response others
+
+				Color.DodgerBlue,			//link color
+				Color.Purple,				//visited link color
+
+				Color.FromArgb( 64, 67, 85),//controls border
+				Color.FromArgb(180,180,180),//controls background disabled
+                Color.FromArgb( 85, 90,105),//disabled buttons
+                Color.FromArgb( 84, 96,122),//pressed buttons
+			});
+            mData.Add(Scheme.BlueLaser, new Color[] 
+			{
+				SystemColors.Control,		//form backcolor
+				SystemColors.ControlText,	//form forecolor
+
+				Color.LightYellow,			//preview background
+				Color.Black,				//preview text
+				Color.DarkGray,				//preview grid origins
+				Color.FromArgb(242,242,200),//preview grid?
+				Color.FromArgb(248,248,220),//preview grid minor?
+				Color.LightGray,			//preview reference line
+				Color.Blue,					//preview first line
+				Color.LightGray,			//preview other line
+				Color.Red,					//preview laser
+				Color.Blue,					//preview cross position
+				Color.DarkGreen,			//preview command ok
+				Color.DarkRed,				//preview command ko
+				Color.LightPink,			//preview command wait
+
+				Color.White,				//log background
+				Color.Black,				//command text
+				Color.DarkGreen,			//startup
+				Color.Crimson,				//alarm
+				Color.DimGray,				//config
+				Color.DodgerBlue,			//feedback
+				Color.OrangeRed,			//position
+				Color.Purple,				//others
+				
+				Color.DarkBlue,				//response good
+				Color.Red,					//response bad
+				Color.Black,				//response others
+
+				Color.DodgerBlue,			//link color
+				Color.Purple,				//visited link color
+				
+				Color.FromArgb(220,220,220),//controls border
+				Color.FromArgb(180,180,180),//controls background disabled
+                Color.FromArgb( 70, 70, 70),//disabled buttons
+                Color.Crimson,				//pressed buttons
 			});
 			mData.Add(Scheme.RedLaser, new Color[] 
 			{
@@ -59,12 +149,17 @@ namespace LaserGRBL
 
 				Color.LightYellow,			//preview background
 				Color.Black,				//preview text
-				Color.Empty,				//preview grid?
+				Color.DarkGray,				//preview grid origins
+				Color.FromArgb(242,242,200),//preview grid?
+				Color.FromArgb(248,248,220),//preview grid minor?
 				Color.LightGray,			//preview reference line
 				Color.Blue,					//preview first line
 				Color.LightGray,			//preview other line
 				Color.DarkBlue,				//preview laser
 				Color.DarkViolet,			//preview cross position
+				Color.DarkGreen,			//preview command ok
+				Color.DarkRed,				//preview command ko
+				Color.LightBlue,			//preview command wait
 
 				Color.White,				//log background
 				Color.Black,				//command text
@@ -81,6 +176,11 @@ namespace LaserGRBL
 
 				Color.DodgerBlue,			//link color
 				Color.Purple,				//visited link color
+				
+				Color.FromArgb(220,220,220),//controls border
+				Color.FromArgb(180,180,180),//controls background disabled
+                Color.FromArgb(100,100,100),//disabled buttons
+                Color.Crimson,				//pressed buttons
 			});
 			mData.Add(Scheme.Dark, new Color[] 
 			{
@@ -89,14 +189,19 @@ namespace LaserGRBL
 
 				Color.FromArgb(220,220,220),//preview background
 				Color.Black,				//preview text
-				Color.Empty,				//preview grid?
+				Color.DarkGray,				//preview grid origins
+				Color.FromArgb(210,210,210),//preview grid?
+				Color.FromArgb(220,220,220),//preview grid minor?
 				Color.DimGray,				//preview reference line
 				Color.Blue,					//preview first line
 				Color.FromArgb(180,118,0),  //preview other line
 				Color.Red,					//preview laser
 				Color.DarkMagenta,			//preview cross position
+				Color.DarkGreen,			//preview command ok
+				Color.DarkRed,				//preview command ko
+				Color.LightBlue,			//preview command wait
 
-				Color.DimGray,				//log background
+				Color.FromArgb(220,220,220),//log background
 				Color.White,				//command text
 				Color.Lime,					//startup
 				Color.Red,					//alarm
@@ -111,6 +216,11 @@ namespace LaserGRBL
 
 				Color.Yellow,				//link color
 				Color.Violet,				//visited link color
+
+                Color.FromArgb( 39, 54, 85),//controls border
+				Color.FromArgb(180,180,180),//controls background disabled
+                Color.FromArgb(100,100,100),//disabled buttons
+                Color.Crimson,				//pressed buttons
 			});
 			mData.Add(Scheme.Hacker, new Color[] 
 			{
@@ -119,12 +229,17 @@ namespace LaserGRBL
 
 				Color.FromArgb(220,220,220),//preview background
 				Color.Black,				//preview text
-				Color.Empty,				//preview grid?
+				Color.DarkGray,				//preview grid origins
+				Color.FromArgb(210,210,210),//preview grid?
+				Color.FromArgb(220,220,220),//preview grid minor?
 				Color.DimGray,				//preview reference line
 				Color.Blue,					//preview first line
 				Color.FromArgb(180,118,0),  //preview other line
 				Color.DarkGreen,			//preview laser
 				Color.DarkMagenta,			//preview cross position
+				Color.DarkGreen,			//preview command ok
+				Color.DarkRed,				//preview command ko
+				Color.LightBlue,			//preview command wait
 
 				Color.FromArgb(20,20,20),	//log background
 				Color.LimeGreen,			//command text
@@ -139,8 +254,13 @@ namespace LaserGRBL
 				Color.Red,					//response bad
 				Color.White,				//response others
 
-				Color.Yellow,					//link color
+				Color.Yellow,			    //link color
 				Color.Violet,				//visited link color
+
+                Color.FromArgb( 15, 25, 50),//controls border
+				Color.FromArgb(180,180,180),//controls background disabled
+                Color.FromArgb(100,100,100),//disabled buttons
+                Color.Crimson,				//pressed buttons
 			});
             mData.Add(Scheme.Nighty, new Color[]
             {
@@ -149,12 +269,17 @@ namespace LaserGRBL
 
 				Color.FromArgb(25,25,25),   //preview background
 				Color.Aqua,		    		//preview text
-				Color.FromArgb(25,25,25),	//preview grid?
+				Color.Aqua,		    		//preview text
+				Color.FromArgb(34,34,34),   //preview grid?
+				Color.FromArgb(28,28,28),   //preview grid minor?
 				Color.DimGray,				//preview reference line
 				Color.DarkOrange,			//preview first line
 				Color.FromArgb(150,0,120),  //preview other line
 				Color.FromArgb(0,125,140),	//preview laser
 				Color.Pink,	                //preview cross position
+				Color.DarkGreen,			//preview command ok
+				Color.DarkRed,				//preview command ko
+				Color.LightBlue,			//preview command wait
 
 				Color.FromArgb(25,25,25),	//log background
 				Color.Aqua,		        	//command text
@@ -171,13 +296,17 @@ namespace LaserGRBL
 
 				Color.Yellow,				//link color
 				Color.Violet,				//visited link color
+                Color.FromArgb( 40, 40, 40),//controls border
+				Color.FromArgb(180,180,180),//controls background disabled
+                Color.FromArgb(100,100,100),//disabled buttons
+                Color.Crimson,				//pressed buttons
             });
 
             CurrentScheme = Scheme.RedLaser;
 		}
 
 		public static bool DarkScheme
-		{ get { return CurrentScheme == Scheme.Dark || CurrentScheme == Scheme.Hacker || CurrentScheme == Scheme.Nighty; } }
+		{ get { return CurrentScheme == Scheme.Dark || CurrentScheme == Scheme.Hacker || CurrentScheme == Scheme.Nighty || CurrentScheme == Scheme.CADDark; } }
 
 		public static Scheme CurrentScheme { get; set; }
 
@@ -224,51 +353,66 @@ namespace LaserGRBL
 		public static Color PreviewText
 		{ get { return GetColor(3); } }
 		public static Color PreviewRuler
-		{ get { return PreviewText; } }
-		public static Color PreviewGrid
 		{ get { return GetColor(4); } }
-		public static Color PreviewJobRange
+		public static Color PreviewGrid
 		{ get { return GetColor(5); } }
-		public static Color PreviewFirstMovement
-		{ get { return GetColor(6); } }
-		public static Color PreviewOtherMovement
+        public static Color PreviewGridMinor
+        { get { return GetColor(6); } }
+        public static Color PreviewJobRange
 		{ get { return GetColor(7); } }
-		public static Color PreviewLaserPower
+		public static Color PreviewFirstMovement
 		{ get { return GetColor(8); } }
-		public static Color PreviewCross
+		public static Color PreviewOtherMovement
 		{ get { return GetColor(9); } }
-
-		public static Color LogBackColor
+		public static Color PreviewLaserPower
 		{ get { return GetColor(10); } }
-		public static Color LogLeftCOMMAND
+		public static Color PreviewCross
 		{ get { return GetColor(11); } }
-		public static Color LogLeftSTARTUP
-		{ get { return GetColor(12); } }
-		public static Color LogLeftALARM
-		{ get { return GetColor(13); } }
-		public static Color LogLeftCONFIG
-		{ get { return GetColor(14); } }
-		public static Color LogLeftFEEDBACK
+        public static Color PreviewCommandOK
+        { get { return GetColor(12); } }
+        public static Color PreviewCommandKO
+        { get { return GetColor(13); } }
+        public static Color PreviewCommandWait
+        { get { return GetColor(14); } }
+
+        public static Color LogBackColor
 		{ get { return GetColor(15); } }
-		public static Color LogLeftPOSITION
+		public static Color LogLeftCOMMAND
 		{ get { return GetColor(16); } }
-		public static Color LogLeftOTHERS
+		public static Color LogLeftSTARTUP
 		{ get { return GetColor(17); } }
-		public static Color LogRightGOOD
+		public static Color LogLeftALARM
 		{ get { return GetColor(18); } }
-		public static Color LogRightBAD
+		public static Color LogLeftCONFIG
 		{ get { return GetColor(19); } }
-		public static Color LogRightOTHERS
+		public static Color LogLeftFEEDBACK
 		{ get { return GetColor(20); } }
-        public static Color TextBoxColorOverride
-        { get { return GetColor(20); } }
-		public static Color LinkColor
+		public static Color LogLeftPOSITION
 		{ get { return GetColor(21); } }
-		public static Color VisitedLinkColor
+		public static Color LogLeftOTHERS
 		{ get { return GetColor(22); } }
+		public static Color LogRightGOOD
+		{ get { return GetColor(23); } }
+		public static Color LogRightBAD
+		{ get { return GetColor(24); } }
+		public static Color LogRightOTHERS
+		{ get { return GetColor(25); } }
+        public static Color TextBoxColorOverride
+        { get { return GetColor(25); } }
+		public static Color LinkColor
+		{ get { return GetColor(26); } }
+		public static Color VisitedLinkColor
+		{ get { return GetColor(27); } }
+        public static Color ControlsBorder
+        { get { return GetColor(28); } }
+        public static Color ControlsBackDisabled
+        { get { return GetColor(29); } }
+        public static Color DisabledButtons
+        { get { return GetColor(30); } }
+        public static Color PressedButtons
+        { get { return GetColor(31); } }
 
-
-		private static Color GetColor(int index)
+        private static Color GetColor(int index)
 		{return mData[CurrentScheme][index];}
 
 		public static Color ChangeColorBrightness(Color color, float correctionFactor)

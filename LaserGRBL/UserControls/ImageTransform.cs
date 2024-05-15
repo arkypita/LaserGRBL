@@ -125,9 +125,9 @@ namespace Base.Drawing
 			}
 
 			// noramlize the color components to 1
-			r = Convert.ToSingle(DestColor.R / 255);
-			g = Convert.ToSingle(DestColor.G / 255);
-			b = Convert.ToSingle(DestColor.B / 255);
+			r = Convert.ToSingle(DestColor.R / 255f);
+			g = Convert.ToSingle(DestColor.G / 255f);
+			b = Convert.ToSingle(DestColor.B / 255f);
 
 
 			// create the color matrix
@@ -245,7 +245,105 @@ namespace Base.Drawing
 
 		}
 
-		public static Image ChangeAlpha(Image img, byte alpha)
+
+        private static Image MakeWhite(Image img)
+        {
+            // create the color matrix
+            ColorMatrix cm = new ColorMatrix(new float[][] {
+                new float[] {
+                    1,
+                    0,
+                    0,
+                    0,
+                    0
+                },
+                new float[] {
+                    0,
+                    1,
+                    0,
+                    0,
+                    0
+                },
+                new float[] {
+                    0,
+                    0,
+                    1,
+                    0,
+                    0
+                },
+                new float[] {
+                    0,
+                    0,
+                    0,
+                    1,
+                    0
+                },
+                new float[] {
+                    1,
+                    1,
+                    1,
+                    0,
+                    1
+                }
+            });
+
+            // apply the matrix to the image
+            return draw_adjusted_image(img, cm);
+
+        }
+
+        public static Image SetColor(Image img, Color color)
+        {
+            // noramlize the color components to 1
+            float sr = color.R / 255f;
+            float sg = color.G / 255f;
+            float sb = color.B / 255f;
+
+            // create the color matrix
+            ColorMatrix cm = new ColorMatrix(new float[][] {
+                new float[] {
+                    sr,
+                    0,
+                    0,
+                    0,
+                    0
+                },
+                new float[] {
+                    0,
+                    sg,
+                    0,
+                    0,
+                    0
+                },
+                new float[] {
+                    0,
+                    0,
+                    sb,
+                    0,
+                    0
+                },
+                new float[] {
+                    0,
+                    0,
+                    0,
+                    1,
+                    0
+                },
+                new float[] {
+                    0,
+                    0,
+                    0,
+                    0,
+                    1
+                }
+            });
+
+            // apply the matrix to the image
+            return draw_adjusted_image(MakeWhite(img), cm);
+
+        }
+
+        public static Image ChangeAlpha(Image img, byte alpha)
 		{
 
 			// noramlize the color components to 1
@@ -552,9 +650,7 @@ namespace Base.Drawing
 
 		}
 
-
-
-	}
+    }
 
 }
 

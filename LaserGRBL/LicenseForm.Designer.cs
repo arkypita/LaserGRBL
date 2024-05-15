@@ -33,8 +33,8 @@
 			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.richTextBox2 = new System.Windows.Forms.RichTextBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnDonate = new System.Windows.Forms.Button();
-			this.BtnContinue = new System.Windows.Forms.Button();
+			this.BtnDonate = new LaserGRBL.UserControls.GrblButton();
+			this.BtnContinue = new LaserGRBL.UserControls.GrblButton();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.SuspendLayout();
@@ -65,6 +65,7 @@
 			this.richTextBox1.Size = new System.Drawing.Size(569, 205);
 			this.richTextBox1.TabIndex = 1;
 			this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+			this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.richTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.RTBLinkClick);
 			// 
 			// richTextBox2
@@ -77,7 +78,8 @@
 			this.richTextBox2.Size = new System.Drawing.Size(569, 79);
 			this.richTextBox2.TabIndex = 2;
 			this.richTextBox2.Text = resources.GetString("richTextBox2.Text");
-			this.richTextBox2.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.RTBLinkClick);
+            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox2.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.RTBLinkClick);
 			// 
 			// tableLayoutPanel2
 			// 
@@ -148,7 +150,7 @@
 		private System.Windows.Forms.RichTextBox richTextBox1;
 		private System.Windows.Forms.RichTextBox richTextBox2;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-		private System.Windows.Forms.Button BtnContinue;
-		private System.Windows.Forms.Button BtnDonate;
+		private LaserGRBL.UserControls.GrblButton BtnContinue;
+		private LaserGRBL.UserControls.GrblButton BtnDonate;
 	}
 }

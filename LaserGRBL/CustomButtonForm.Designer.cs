@@ -31,24 +31,24 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomButtonForm));
 			this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnCancel = new System.Windows.Forms.Button();
-			this.BtnCreate = new System.Windows.Forms.Button();
+			this.BtnCancel = new LaserGRBL.UserControls.GrblButton();
+			this.BtnCreate = new LaserGRBL.UserControls.GrblButton();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblImage = new System.Windows.Forms.Label();
 			this.BTOpenImage = new LaserGRBL.UserControls.ImageButton();
 			this.LblToolTip = new System.Windows.Forms.Label();
-			this.TbToolTip = new System.Windows.Forms.TextBox();
+			this.TbToolTip = new LaserGRBL.UserControls.TextInput();
 			this.LblEnabled = new System.Windows.Forms.Label();
-			this.CbEStyles = new System.Windows.Forms.ComboBox();
+			this.CbEStyles = new LaserGRBL.UserControls.FlatComboBox();
 			this.LblDescription = new System.Windows.Forms.LinkLabel();
 			this.LblType = new System.Windows.Forms.Label();
-			this.CbByttonType = new System.Windows.Forms.ComboBox();
+			this.CbByttonType = new LaserGRBL.UserControls.FlatComboBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblGCode2 = new System.Windows.Forms.Label();
-			this.TBGCode = new System.Windows.Forms.TextBox();
+			this.TBGCode = new LaserGRBL.UserControls.TextInput();
 			this.LblGCode = new System.Windows.Forms.Label();
-			this.TBGCode2 = new System.Windows.Forms.TextBox();
-			this.TbCaption = new System.Windows.Forms.TextBox();
+			this.TBGCode2 = new LaserGRBL.UserControls.TextInput();
+			this.TbCaption = new LaserGRBL.UserControls.TextInput();
 			this.LblCaption = new System.Windows.Forms.Label();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -75,14 +75,12 @@
 			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			resources.ApplyResources(this.BtnCancel, "BtnCancel");
 			this.BtnCancel.Name = "BtnCancel";
-			this.BtnCancel.UseVisualStyleBackColor = true;
 			this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
 			// 
 			// BtnCreate
 			// 
 			resources.ApplyResources(this.BtnCreate, "BtnCreate");
 			this.BtnCreate.Name = "BtnCreate";
-			this.BtnCreate.UseVisualStyleBackColor = true;
 			this.BtnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
 			// 
 			// tableLayoutPanel2
@@ -113,7 +111,6 @@
 			this.BTOpenImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BTOpenImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BTOpenImage.Caption = "";
-			this.BTOpenImage.Coloration = System.Drawing.Color.Empty;
 			this.BTOpenImage.Image = ((System.Drawing.Image)(resources.GetObject("BTOpenImage.Image")));
 			resources.ApplyResources(this.BTOpenImage, "BTOpenImage");
 			this.BTOpenImage.Name = "BTOpenImage";
@@ -231,23 +228,23 @@
 
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private System.Windows.Forms.Button BtnCancel;
-		private System.Windows.Forms.Button BtnCreate;
+		private LaserGRBL.UserControls.GrblButton BtnCancel;
+		private LaserGRBL.UserControls.GrblButton BtnCreate;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private UserControls.ImageButton BTOpenImage;
 		private System.Windows.Forms.Label LblImage;
 		private System.Windows.Forms.Label LblGCode;
-		private System.Windows.Forms.TextBox TbToolTip;
+		private LaserGRBL.UserControls.TextInput TbToolTip;
 		private System.Windows.Forms.Label LblToolTip;
 		private System.Windows.Forms.Label LblEnabled;
-		private System.Windows.Forms.ComboBox CbEStyles;
-		private System.Windows.Forms.TextBox TBGCode;
+		private LaserGRBL.UserControls.FlatComboBox CbEStyles;
+		private LaserGRBL.UserControls.TextInput TBGCode;
 		private System.Windows.Forms.Label LblType;
-		private System.Windows.Forms.ComboBox CbByttonType;
-		private System.Windows.Forms.TextBox TBGCode2;
+		private LaserGRBL.UserControls.FlatComboBox CbByttonType;
+		private LaserGRBL.UserControls.TextInput TBGCode2;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
 		private System.Windows.Forms.Label LblGCode2;
-		private System.Windows.Forms.TextBox TbCaption;
+		private LaserGRBL.UserControls.TextInput TbCaption;
 		private System.Windows.Forms.Label LblCaption;
         private System.Windows.Forms.LinkLabel LblDescription;
     }

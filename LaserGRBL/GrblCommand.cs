@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using LaserGRBL.CSV;
+using LaserGRBL.Obj3D;
 
 namespace LaserGRBL
 {
@@ -127,18 +128,38 @@ namespace LaserGRBL
 			//{mNumber = p;}
 		}
 
-		private string mLine;
-		private string mCodedResult;
-		private TimeSpan mTimeOffset;
-		private Dictionary<char, GrblCommand.Element> mHelper;
-		private int mRepeatCount;
+        private class ResultWrapper
+        {
+            public string CodedResult;
+        }
+
+        private string mLine;
+        private ResultWrapper mResultWrapper;
+        private TimeSpan mTimeOffset;
+        private Dictionary<char, GrblCommand.Element> mHelper;
+        private int mRepeatCount;
+        public Object3DDisplayList LinkedDisplayList { get; internal set; } = null;
+
+
+        public string mCodedResult
+        {
+            get { return mResultWrapper.CodedResult; }
+            set { mResultWrapper.CodedResult = value; }
+        }
 
 		public GrblCommand(string line, int repeat = 0, bool preservecase = false)
-		{ 
+		{
+			ClearResult();
 			mLine = line.Trim();
 			if (!preservecase) mLine = mLine.ToUpper();
-			mRepeatCount = repeat; 
+			mRepeatCount = repeat;
 		}
+
+		public void ClearResult()
+		{
+            mResultWrapper = new ResultWrapper();
+			LinkedDisplayList?.Invalidate();
+        }
 
 		public GrblCommand(IEnumerable<Element> elements)
 		{
@@ -299,7 +320,8 @@ namespace LaserGRBL
 		public void SetResult(string result, bool decode) //ERROR:NUM
 		{
 			mCodedResult = result.ToUpper().Trim();
-		}
+            LinkedDisplayList?.Invalidate();
+        }
 
 		public bool IsGrblCommand
 		{ get { return mLine.StartsWith("$"); } }

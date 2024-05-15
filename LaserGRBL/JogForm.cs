@@ -4,6 +4,7 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.Icons;
 using System;
 using System.Windows.Forms;
 
@@ -17,7 +18,22 @@ namespace LaserGRBL
 		{
 			InitializeComponent();
             SettingsForm.SettingsChanged += SettingsForm_SettingsChanged;
-		}
+            IconsMgr.PrepareButton(BtnN, "mdi-arrow-up-bold-outline");
+            IconsMgr.PrepareButton(BtnNE, "mdi-arrow-top-right-bold-outline");
+            IconsMgr.PrepareButton(BtnE, "mdi-arrow-right-bold-outline");
+            IconsMgr.PrepareButton(BtnSE, "mdi-arrow-bottom-right-bold-outline");
+            IconsMgr.PrepareButton(BtnS, "mdi-arrow-down-bold-outline");
+            IconsMgr.PrepareButton(BtnSW, "mdi-arrow-bottom-left-bold-outline");
+            IconsMgr.PrepareButton(BtnW, "mdi-arrow-left-bold-outline");
+            IconsMgr.PrepareButton(BtnNW, "mdi-arrow-top-left-bold-outline");
+            IconsMgr.PrepareButton(BtnHome, "custom-home");
+            IconsMgr.PrepareButton(BtnZup01, "custom-zup01");
+            IconsMgr.PrepareButton(BtnZup1, "custom-zup1");
+            IconsMgr.PrepareButton(BtnZup10, "custom-zup10");
+            IconsMgr.PrepareButton(BtnZdown01, "custom-zdown01");
+            IconsMgr.PrepareButton(BtnZdown1, "custom-zdown1");
+            IconsMgr.PrepareButton(BtnZdown10, "custom-zdown10");
+        }
 
         public void SetCore(GrblCore core)
 		{

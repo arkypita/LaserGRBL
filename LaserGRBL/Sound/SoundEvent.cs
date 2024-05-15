@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Media;
+using System.Windows.Forms;
+using System.IO;
 
 namespace Sound
 {
@@ -51,11 +53,13 @@ namespace Sound
 		{
 			try
 			{
-				SoundPlayer player = new SoundPlayer(filename as string);
+				Uri uri = new Uri(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), $"{filename}"));
+                SoundPlayer player = new SoundPlayer(uri.AbsoluteUri);
 				player.PlaySync();
 				player.Dispose();
 			}
-			catch { }
+			catch {
+			}
 			mBusy = false;
 		}
 	}

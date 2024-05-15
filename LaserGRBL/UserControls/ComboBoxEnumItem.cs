@@ -5,13 +5,10 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace LaserGRBL.UserControls
 {
-	public class EnumComboBox : System.Windows.Forms.ComboBox
+    public class EnumComboBox : LaserGRBL.UserControls.FlatComboBox
 	{
 
 		public void AddItem(Enum item, bool trimparentesi = false)

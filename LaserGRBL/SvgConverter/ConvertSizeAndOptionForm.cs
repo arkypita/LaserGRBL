@@ -10,6 +10,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using LaserGRBL.RasterConverter;
 using Svg;
+using LaserGRBL.Icons;
+using LaserGRBL.UserControls;
 
 namespace LaserGRBL.SvgConverter
 {
@@ -68,7 +70,14 @@ namespace LaserGRBL.SvgConverter
         private SvgToGCodeForm(GrblCore core, string filename, bool append)
 		{
 			InitializeComponent();
-			mCore = core;
+			ThemeMgr.SetTheme(this);
+            IconsMgr.PrepareButton(BtnCreate, "mdi-checkbox-marked");
+            IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
+			IconsMgr.PrepareButton(BtnOnOffInfo, "mdi-information-slab-box", new Size(16, 16));
+            IconsMgr.PrepareButton(BtnModulationInfo, "mdi-information-slab-box", new Size(16, 16));
+            IconsMgr.PrepareButton(BtnPSHelper, "mdi-information-slab-box", new Size(16, 16));
+            IconsMgr.PrepareButton(BtnColorFilter, "mdi-information-slab-box", new Size(16, 16));
+            mCore = core;
 
 			BackColor = ColorScheme.FormBackColor;
 			GbLaser.ForeColor = GbSpeed.ForeColor = ForeColor = ColorScheme.FormForeColor;

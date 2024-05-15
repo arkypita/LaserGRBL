@@ -4,19 +4,16 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.Icons;
+using LaserGRBL.UserControls;
 using Sound;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace LaserGRBL
 {
-	public partial class SettingsForm : Form
+    public partial class SettingsForm : Form
 	{
         private GrblCore Core;
         public static event EventHandler SettingsChanged;
@@ -30,6 +27,18 @@ namespace LaserGRBL
             BackColor = ColorScheme.FormBackColor;
             ForeColor = ColorScheme.FormForeColor;
             TpVectorImport.BackColor = TpRasterImport.BackColor = TpHardware.BackColor = TpJogControl.BackColor = TpAutoCooling.BackColor  = TpGCodeSettings.BackColor = BtnCancel.BackColor = BtnSave.BackColor = TpSoundSettings.BackColor = changeConBtn.BackColor = changeDconBtn.BackColor = changeFatBtn.BackColor = changeSucBtn.BackColor = changeWarBtn.BackColor = ColorScheme.FormBackColor;
+
+			ThemeMgr.SetTheme(this, true);
+			Size btnSize = new Size(16, 16);
+			IconsMgr.PrepareButton(BtnStreamingMode, "mdi-information-slab-box", btnSize);
+            IconsMgr.PrepareButton(BtnProtocol, "mdi-information-slab-box", btnSize);
+            IconsMgr.PrepareButton(BtnThreadingModel, "mdi-information-slab-box", btnSize);
+            IconsMgr.PrepareButton(BtnFType, "mdi-information-slab-box", btnSize);
+            IconsMgr.PrepareButton(BtnModulationInfo, "mdi-information-slab-box", btnSize);
+            IconsMgr.PrepareButton(BtnTelegNoteInfo, "mdi-information-slab-box", btnSize);
+            IconsMgr.PrepareButton(imageButton1, "mdi-information-slab-box", btnSize);
+            IconsMgr.PrepareButton(BtnSave, "mdi-checkbox-marked");
+            IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
 
             InitCoreCB();
 			InitProtocolCB();
@@ -64,6 +73,7 @@ namespace LaserGRBL
             TBFooter.Text = Settings.GetObject("GCode.CustomFooter", GrblCore.GCODE_STD_FOOTER);
             TBFooter.ForeColor = ColorScheme.FormForeColor;
             TBFooter.BackColor = ColorScheme.FormBackColor;
+            TpOptions.BackColor = ColorScheme.FormBackColor;
 
             CbPlaySuccess.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Success}.Enabled", true);
             CbPlayWarning.Checked = Settings.GetObject($"Sound.{SoundEvent.EventId.Warning}.Enabled", true);
@@ -90,8 +100,10 @@ namespace LaserGRBL
 
 			CbDisableSafetyCD.Checked = Settings.GetObject("DisableSafetyCountdown", false);
 			CbQuietSafetyCB.Checked = Settings.GetObject("QuietSafetyCountdown", false);
+            CbLegacyPreview.Checked = Settings.GetObject("LegacyPreview", false);
+            CbLegacyIcons.Checked = Settings.GetObject("LegacyIcons", false);
 
-			groupBox1.ForeColor = groupBox2.ForeColor = groupBox3.ForeColor = ColorScheme.FormForeColor;
+            groupBox1.ForeColor = groupBox2.ForeColor = groupBox3.ForeColor = ColorScheme.FormForeColor;
 
             SuccesFullLabel.Visible = WarningFullLabel.Visible = ErrorFullLabel.Visible = ConnectFullLabel.Visible = DisconnectFullLabel.Visible = false;
 
@@ -223,14 +235,22 @@ namespace LaserGRBL
 
 			Settings.SetObject("DisableSafetyCountdown", CbDisableSafetyCD.Checked);
 			Settings.SetObject("QuietSafetyCountdown", CbQuietSafetyCB.Checked);
+            Settings.SetObject("LegacyPreview", CbLegacyPreview.Checked);
+            Settings.SetObject("LegacyIcons", CbLegacyIcons.Checked);
 
-			SettingsChanged?.Invoke(this, null);
+            SettingsChanged?.Invoke(this, null);
 
             Close();
 
             if (Core.Type != Settings.GetObject("Firmware Type", Firmware.Grbl) && MessageBox.Show(Strings.FirmwareRequireRestartNow, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
                 Application.Restart();
-		}
+
+            if (Core.LegacyPreview != Settings.GetObject("LegacyPreview", false) && MessageBox.Show(Strings.PreviewChangesRequiresRestart, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
+                Application.Restart();
+
+            if (IconsMgr.LegacyIcons != Settings.GetObject("LegacyIcons", false) && MessageBox.Show(Strings.IconsChangesRequiresRestart, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
+                Application.Restart();
+        }
 
 		private TimeSpan MaxTs(TimeSpan a, TimeSpan b)
 		{ return TimeSpan.FromTicks(Math.Max(a.Ticks, b.Ticks)); }

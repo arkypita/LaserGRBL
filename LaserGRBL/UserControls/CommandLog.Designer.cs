@@ -28,41 +28,41 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommandLog));
-			this.ScrollBar = new System.Windows.Forms.VScrollBar();
-			this.TT = new System.Windows.Forms.ToolTip(this.components);
-			this.IL = new System.Windows.Forms.ImageList(this.components);
-			this.SuspendLayout();
-			// 
-			// ScrollBar
-			// 
-			this.ScrollBar.Dock = System.Windows.Forms.DockStyle.Right;
-			this.ScrollBar.LargeChange = 1;
-			this.ScrollBar.Location = new System.Drawing.Point(276, 0);
-			this.ScrollBar.Maximum = 0;
-			this.ScrollBar.Name = "ScrollBar";
-			this.ScrollBar.Size = new System.Drawing.Size(17, 404);
-			this.ScrollBar.TabIndex = 0;
-			// 
-			// IL
-			// 
-			this.IL.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IL.ImageStream")));
-			this.IL.TransparentColor = System.Drawing.Color.Transparent;
-			this.IL.Images.SetKeyName(0, "GcodeQueue.png");
-			this.IL.Images.SetKeyName(1, "GcodeOK.png");
-			this.IL.Images.SetKeyName(2, "GcodeKO.png");
-			this.IL.Images.SetKeyName(3, "GCodeInfo.png");
-			// 
-			// CommandLog
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.ScrollBar);
-			this.Name = "CommandLog";
-			this.Size = new System.Drawing.Size(293, 404);
-			this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CommandLogMouseMove);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommandLog));
+            this.ScrollBar = new System.Windows.Forms.VScrollBar();
+            this.TT = new System.Windows.Forms.ToolTip(this.components);
+            this.IL = new System.Windows.Forms.ImageList(this.components);
+            this.SuspendLayout();
+            // 
+            // ScrollBar
+            // 
+            this.ScrollBar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ScrollBar.LargeChange = 1;
+            this.ScrollBar.Location = new System.Drawing.Point(276, 0);
+            this.ScrollBar.Maximum = 0;
+            this.ScrollBar.Name = "ScrollBar";
+            this.ScrollBar.Size = new System.Drawing.Size(17, 404);
+            this.ScrollBar.TabIndex = 0;
+            // 
+            // IL
+            // 
+            this.IL.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IL.ImageStream")));
+            this.IL.TransparentColor = System.Drawing.Color.Transparent;
+            this.IL.Images.SetKeyName(0, "logqueued.png");
+            this.IL.Images.SetKeyName(1, "logok.png");
+            this.IL.Images.SetKeyName(2, "logko.png");
+            this.IL.Images.SetKeyName(3, "loginfo.png");
+            // 
+            // CommandLog
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ScrollBar);
+            this.Name = "CommandLog";
+            this.Size = new System.Drawing.Size(293, 404);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CommandLogMouseMove);
+            this.ResumeLayout(false);
 
 		}
 
