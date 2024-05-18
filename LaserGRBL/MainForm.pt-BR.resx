@@ -869,4 +869,40 @@
   <data name="shakeTestToolStripMenuItem.Text" xml:space="preserve">
     <value>Teste de Movimentação</value>
   </data>
+  <data name="cadStyleToolStripMenuItem.Text" xml:space="preserve">
+    <value>Estilo CAD</value>
+  </data>
+  <data name="cadDarkToolStripMenuItem.Text" xml:space="preserve">
+    <value>Estilo Escuro</value>
+  </data>
+  <data name="autoSizeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Tamanho Automático</value>
+  </data>
+  <data name="showExecutedCommandsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mostrar comandos executados</value>
+  </data>
+  <data name="pxToolStripMenuItem1.Text" xml:space="preserve">
+    <value>1px</value>
+  </data>
+  <data name="pxToolStripMenuItem2.Text" xml:space="preserve">
+    <value>2px</value>
+  </data>
+  <data name="pxToolStripMenuItem3.Text" xml:space="preserve">
+    <value>3px</value>
+  </data>
+  <data name="pxToolStripMenuItem4.Text" xml:space="preserve">
+    <value>4px</value>
+  </data>
+  <data name="pxToolStripMenuItem5.Text" xml:space="preserve">
+    <value>5px</value>
+  </data>
+  <data name="lineSizeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Tamanho da linha</value>
+  </data>
+  <data name="showLaserOffMovementsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mostrar movimentos do Laser Apagado</value>
+  </data>
+  <data name="previewToolStripMenuItem.Text" xml:space="preserve">
+    <value>Visualizar</value>
+  </data>
 </root>

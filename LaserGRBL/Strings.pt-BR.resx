@@ -436,4 +436,13 @@ Se precisar de ajuda, clique em "?" botão.</value>
   <data name="BoxWriteConfigWithoutError" xml:space="preserve">
     <value>{0} Configuração gravada com sucesso!</value>
   </data>
+  <data name="PreviewChangesRequiresRestart" xml:space="preserve">
+    <value>É necessário reiniciar para aplicar a mudanças de pre-visualização. Reiniciar agora?</value>
+  </data>
+  <data name="IconsChangesRequiresRestart" xml:space="preserve">
+    <value>É necessário reiniciar para aplicar as mudanças de ícones. Reiniciar agora ?</value>
+  </data>
+  <data name="MdiIconCaption" xml:space="preserve">
+    <value>Código de Ícone MDI</value>
+  </data>
 </root>

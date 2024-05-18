@@ -453,4 +453,10 @@ Sugiro não desativar esta contagem regressiva, isso permite que você tenha uma
   <data name="TpOptions.Text" xml:space="preserve">
     <value>Opções</value>
   </data>
+  <data name="CbLegacyPreview.Text" xml:space="preserve">
+    <value>Visualização legada</value>
+  </data>
+  <data name="CbLegacyIcons.Text" xml:space="preserve">
+    <value>Ícones legados</value>
+  </data>
 </root>
