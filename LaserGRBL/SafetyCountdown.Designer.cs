@@ -33,8 +33,8 @@
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnStart = new System.Windows.Forms.Button();
-			this.BtnCancel = new System.Windows.Forms.Button();
+			this.BtnStart = new LaserGRBL.UserControls.GrblButton();
+			this.BtnCancel = new LaserGRBL.UserControls.GrblButton();
 			this.label1 = new System.Windows.Forms.Label();
 			this.TimCountDown = new System.Windows.Forms.Timer(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -92,7 +92,7 @@
 			this.BtnStart.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.BtnStart.Location = new System.Drawing.Point(261, 90);
 			this.BtnStart.Name = "BtnStart";
-			this.BtnStart.Size = new System.Drawing.Size(108, 39);
+			this.BtnStart.Size = new System.Drawing.Size(120, 30);
 			this.BtnStart.TabIndex = 1;
 			this.BtnStart.Text = "Start";
 			this.BtnStart.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@
 			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.BtnCancel.Location = new System.Drawing.Point(147, 90);
 			this.BtnCancel.Name = "BtnCancel";
-			this.BtnCancel.Size = new System.Drawing.Size(108, 39);
+			this.BtnCancel.Size = new System.Drawing.Size(120, 30);
 			this.BtnCancel.TabIndex = 2;
 			this.BtnCancel.Text = "Cancel";
 			this.BtnCancel.UseVisualStyleBackColor = true;
@@ -160,8 +160,8 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Button BtnStart;
-		private System.Windows.Forms.Button BtnCancel;
+		private LaserGRBL.UserControls.GrblButton BtnStart;
+		private LaserGRBL.UserControls.GrblButton BtnCancel;
 		private System.Windows.Forms.Timer TimCountDown;
 	}
 }

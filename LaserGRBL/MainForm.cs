@@ -4,35 +4,49 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.Icons;
+using LaserGRBL.UserControls;
 using LaserGRBL.WiFiConfigurator;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Linq;
+using System.Runtime.InteropServices;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Windows.Threading;
 using Tools;
+using static LaserGRBL.ColorScheme;
 using static Tools.ModifyProgressBarColor;
 
 namespace LaserGRBL
 {
-	public partial class MainForm : Form
-	{
-		private GrblCore Core;
+    public partial class MainForm : Form
+    {
+
+        private GrblCore Core;
 		private UsageStats.MessageData ToolBarMessage;
 		private bool IsBufferStuck = false;
 		private bool MultiRunShown = false;
 		private bool OrturWiFiShown;
 		private readonly string[] args;
+		private readonly List<ToolStripMenuItem> mLineWidthMenu;
 
-		public MainForm()
+
+        public MainForm()
 		{
 			InitializeComponent();
+            mLineWidthMenu = new List<ToolStripMenuItem>()
+            {
+                pxToolStripMenuItem1,
+                pxToolStripMenuItem2,
+                pxToolStripMenuItem3,
+                pxToolStripMenuItem4,
+                pxToolStripMenuItem5,
+            };
 
-			MnOrtur.Visible = false;
+            MnOrtur.Visible = false;
 			MMn.Renderer = new MMnRenderer();
-
 
 			splitContainer1.FixedPanel = FixedPanel.Panel1;
 			splitContainer1.SplitterDistance = Settings.GetObject("MainForm Splitter Position", 260);
@@ -41,7 +55,7 @@ namespace LaserGRBL
 			MnNotifyMinorVersion.Checked = Settings.GetObject("Auto Update Build", false);
 			MnNotifyPreRelease.Checked = Settings.GetObject("Auto Update Pre", false);
 
-			MnAutoUpdate.DropDown.Closing += MnAutoUpdateDropDown_Closing;
+            MnAutoUpdate.DropDown.Closing += MnAutoUpdateDropDown_Closing;
 
 			if (System.Threading.Thread.CurrentThread.Name == null)
 				System.Threading.Thread.CurrentThread.Name = "Main Thread";
@@ -67,7 +81,12 @@ namespace LaserGRBL
 				MultipleInstanceTimer.Enabled = true;
 			}
 
-			MnGrblConfig.Visible = Core.UIShowGrblConfig;
+            previewToolStripMenuItem.Visible = !Core.LegacyPreview;
+            showLaserOffMovementsToolStripMenuItem.Checked = Core.ShowLaserOffMovements.Value;
+            showExecutedCommandsToolStripMenuItem.Checked = Core.ShowExecutedCommands.Value;
+			CheckLineWidthItem();
+
+            MnGrblConfig.Visible = Core.UIShowGrblConfig;
 			MnUnlock.Visible = Core.UIShowUnlockButtons;
 
 			MnGrbl.Text = Core.Type.ToString();
@@ -83,12 +102,92 @@ namespace LaserGRBL
 
 			GitHub.NewVersion += GitHub_NewVersion;
 
-			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", ColorScheme.Scheme.BlueLaser); ;
-			RefreshColorSchema(); //include RefreshOverride();
+			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", ColorScheme.Scheme.CADDark);
+
+            IconsMgr.PrepareMenuItem(MnConnect, "mdi-power-plug");
+            IconsMgr.PrepareMenuItem(MnDisconnect, "mdi-power-plug-off");
+            IconsMgr.PrepareMenuItem(MnWiFiDiscovery, "mdi-wifi");
+            IconsMgr.PrepareMenuItem(MnGrblReset, "mdi-lightning-bolt");
+			IconsMgr.PrepareMenuItem(MnGoHome, "mdi-home");
+            IconsMgr.PrepareMenuItem(MnUnlock, "mdi-lock-open");
+            IconsMgr.PrepareMenuItem(MnGrblConfig, "mdi-cogs");
+            IconsMgr.PrepareMenuItem(settingsToolStripMenuItem, "mdi-wrench");
+            IconsMgr.PrepareMenuItem(MnMaterialDB, "mdi-database");
+            IconsMgr.PrepareMenuItem(laserUsageStatsToolStripMenuItem, "mdi-chart-bar");
+            IconsMgr.PrepareMenuItem(MnHotkeys, "mdi-keyboard");
+            IconsMgr.PrepareMenuItem(MnFileOpen, "mdi-folder");
+            IconsMgr.PrepareMenuItem(MnFileAppend, "mdi-folder-plus");
+            IconsMgr.PrepareMenuItem(MnReOpenFile, "mdi-reload");
+            IconsMgr.PrepareMenuItem(MnSaveProgram, "mdi-content-save");
+            IconsMgr.PrepareMenuItem(MnAdvancedSave, "mdi-content-save-edit");
+            IconsMgr.PrepareMenuItem(MnSaveProject, "mdi-content-save-cog");
+            IconsMgr.PrepareMenuItem(MnExit, "mdi-close-box");
+            IconsMgr.PrepareMenuItem(MnFileSend, "mdi-play-circle-outline");
+            IconsMgr.PrepareMenuItem(MnStartFromPosition, "mdi-motion-play-outline");
+			IconsMgr.PrepareMenuItem(MnRunMulti, "mdi-lan-connect");
+			IconsMgr.PrepareMenuItem(MnPowerVsSpeed, "mdi-speedometer");
+            IconsMgr.PrepareMenuItem(MnCuttingTest, "mdi-content-cut");
+            IconsMgr.PrepareMenuItem(MnAccuracyTest, "mdi-details");
+            IconsMgr.PrepareMenuItem(shakeTestToolStripMenuItem, "mdi-pulse");
+            IconsMgr.PrepareMenuItem(autoSizeToolStripMenuItem, "mdi-resize");
+            IconsMgr.PrepareMenuItem(lineSizeToolStripMenuItem, "mdi-gesture");
+            IconsMgr.PrepareMenuItem(MNEnglish, "flags-gb", false);
+            IconsMgr.PrepareMenuItem(MNItalian, "flags-it", false);
+            IconsMgr.PrepareMenuItem(MNSpanish, "flags-es", false);
+            IconsMgr.PrepareMenuItem(MNFrench, "flags-fr", false);
+            IconsMgr.PrepareMenuItem(MNGerman, "flags-de", false);
+            IconsMgr.PrepareMenuItem(MNDanish, "flags-dk", false);
+            IconsMgr.PrepareMenuItem(MNBrazilian, "flags-br", false);
+            IconsMgr.PrepareMenuItem(russianToolStripMenuItem, "flags-ru", false);
+            IconsMgr.PrepareMenuItem(chinexeToolStripMenuItem, "flags-cn", false);
+            IconsMgr.PrepareMenuItem(traditionalChineseToolStripMenuItem, "flags-cn", false);
+            IconsMgr.PrepareMenuItem(slovakianToolStripMenuItem, "flags-sk", false);
+            IconsMgr.PrepareMenuItem(hungarianToolStripMenuItem, "flags-hu", false);
+            IconsMgr.PrepareMenuItem(czechToolStripMenuItem, "flags-cz", false);
+            IconsMgr.PrepareMenuItem(polishToolStripMenuItem, "flags-pl", false);
+            IconsMgr.PrepareMenuItem(greekToolStripMenuItem, "flags-gr", false);
+            IconsMgr.PrepareMenuItem(turkishToolStripMenuItem, "flags-tr", false);
+            IconsMgr.PrepareMenuItem(romanianToolStripMenuItem, "flags-ro", false);
+            IconsMgr.PrepareMenuItem(dutchToolStripMenuItem, "flags-nl", false);
+            IconsMgr.PrepareMenuItem(ukrainianToolStripMenuItem, "flags-ua", false);
+			IconsMgr.PrepareMenuItem(installCH340DriverToolStripMenuItem, "mdi-usb");
+            IconsMgr.PrepareMenuItem(flashGrblFirmwareToolStripMenuItem, "mdi-chip");
+            IconsMgr.PrepareMenuItem(orturSupportGroupToolStripMenuItem, "mdi-facebook");
+            IconsMgr.PrepareMenuItem(orturSupportAndFeedbackToolStripMenuItem, "mdi-lifebuoy");
+            IconsMgr.PrepareMenuItem(orturWebsiteToolStripMenuItem, "mdi-web");
+            IconsMgr.PrepareMenuItem(youtubeChannelToolStripMenuItem, "mdi-youtube");
+            IconsMgr.PrepareMenuItem(manualsDownloadToolStripMenuItem, "mdi-notebook");
+            IconsMgr.PrepareMenuItem(firmwareToolStripMenuItem, "mdi-chip");
+            IconsMgr.PrepareMenuItem(MnConfigureOrturWiFi, "mdi-wifi");
+            IconsMgr.PrepareMenuItem(MnAutoUpdate, "mdi-cloud-download");
+            IconsMgr.PrepareMenuItem(openSessionLogToolStripMenuItem, "mdi-file-account-outline");
+            IconsMgr.PrepareMenuItem(activateExtendedLogToolStripMenuItem, "mdi-file-chart");
+            IconsMgr.PrepareMenuItem(helpOnLineToolStripMenuItem, "mdi-help-circle");
+            IconsMgr.PrepareMenuItem(aboutToolStripMenuItem, "mdi-frequently-asked-questions");
+            IconsMgr.PrepareMenuItem(facebookCommunityToolStripMenuItem, "mdi-facebook");
+            IconsMgr.PrepareMenuItem(donateToolStripMenuItem, "mdi-gift");
+            IconsMgr.PrepareMenuItem(licenseToolStripMenuItem, "mdi-license");
+			IconsMgr.PrepareMenuItem(MnCheckNow, "mdi-cloud-check-variant-outline");
+			if (!IconsMgr.LegacyIcons)
+			{
+				IconsMgr.PrepareMenuItem(MnGrbl, "mdi-hammer-wrench");
+				IconsMgr.PrepareMenuItem(fileToolStripMenuItem, "mdi-file-document-outline");
+				IconsMgr.PrepareMenuItem(MnGenerate, "mdi-flask");
+				IconsMgr.PrepareMenuItem(schemaToolStripMenuItem, "mdi-palette");
+				IconsMgr.PrepareMenuItem(previewToolStripMenuItem, "mdi-image-filter-center-focus-strong");
+				IconsMgr.PrepareMenuItem(linguaToolStripMenuItem, "mdi-flag-variant");
+				IconsMgr.PrepareMenuItem(toolsToolStripMenuItem, "mdi-tools");
+                IconsMgr.PrepareMenuItem(questionMarkToolStripMenuItem, "mdi-help");
+            }
+			else
+            {
+                questionMarkToolStripMenuItem.Text = "?";
+            }
+            RefreshColorSchema(); //include RefreshOverride();
 			RefreshFormTitle();
 		}
 
-		public MainForm(string[] args) : this()
+        public MainForm(string[] args) : this()
 		{
 			this.args = args;
 		}
@@ -111,15 +210,19 @@ namespace LaserGRBL
 		{
 			MMn.BackColor = BackColor = StatusBar.BackColor = ColorScheme.FormBackColor;
 			MMn.ForeColor = ForeColor = ColorScheme.FormForeColor;
-			blueLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.BlueLaser;
-			redLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.RedLaser;
-			darkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Dark;
-			hackerToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Hacker;
-			nightyToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Nighty;
-			TTLinkToNews.LinkColor = ColorScheme.LinkColor;
+            cadStyleToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.CADStyle;
+            cadDarkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.CADDark;
+            blueLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.BlueLaser;
+            redLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.RedLaser;
+            darkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Dark;
+            hackerToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Hacker;
+            nightyToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Nighty;
+            TTLinkToNews.LinkColor = ColorScheme.LinkColor;
 			TTLinkToNews.VisitedLinkColor = ColorScheme.VisitedLinkColor;
-			ConnectionForm.OnColorChange();
+			ThemeMgr.SetTheme(this, true);
+            ConnectionForm.OnColorChange();
 			PreviewForm.OnColorChange();
+			IconsMgr.OnColorChannge();
 			RefreshOverride();
 		}
 
@@ -643,7 +746,18 @@ namespace LaserGRBL
 			GrblEmulator.WebSocketEmulator.Start();
 		}
 
-		private void blueLaserToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void cadStyleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetSchema(ColorScheme.Scheme.CADStyle);
+        }
+
+        private void cadDarkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetSchema(ColorScheme.Scheme.CADDark);
+        }
+
+        private void blueLaserToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SetSchema(ColorScheme.Scheme.BlueLaser);
 		}
@@ -672,7 +786,7 @@ namespace LaserGRBL
 		{
 			Settings.SetObject("Color Schema", schema);
 			ColorScheme.CurrentScheme = schema;
-			RefreshColorSchema();
+            RefreshColorSchema();
 		}
 
 		private void grblConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1071,10 +1185,61 @@ namespace LaserGRBL
 		{
 			Generator.ShakeTest.CreateAndShowDialog(this, Core);
 		}
-	}
+
+        private void autoSizeToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (PreviewForm.GrblPanel is GrblPanel3D)
+            {
+                GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
+                panel3D.AutoSizeDrawing();
+            }
+        }
+
+        private void showLaserOffMovementsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (PreviewForm.GrblPanel is GrblPanel3D)
+            {
+                GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
+				Core.ShowLaserOffMovements.Value = showLaserOffMovementsToolStripMenuItem.Checked;
+            }
+        }
+
+        private void showExecutedCommandsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (PreviewForm.GrblPanel is GrblPanel3D)
+            {
+                GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
+                Core.ShowExecutedCommands.Value = showExecutedCommandsToolStripMenuItem.Checked;
+            }
+        }
+
+        private void pxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (PreviewForm.GrblPanel is GrblPanel3D)
+            {
+                GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
+                Core.PreviewLineSize.Value = Convert.ToInt32((sender as ToolStripMenuItem).Tag);
+				CheckLineWidthItem();
+            }
+        }
+
+		private void CheckLineWidthItem() {
+            foreach (ToolStripMenuItem item in mLineWidthMenu)
+            {
+                item.Checked = Convert.ToInt32(item.Tag) == Core.PreviewLineSize.Value;
+            }
+        }
 
 
-	public class MMnRenderer : ToolStripProfessionalRenderer
+        private void SplitContainer1_Paint(object sender, PaintEventArgs e)
+        {
+			Rectangle rect = new Rectangle(e.ClipRectangle.X + 1, e.ClipRectangle.Y + 3, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 6);
+			e.Graphics.FillRectangle(new SolidBrush(ColorScheme.ControlsBorder), rect);
+        }
+    }
+
+
+    public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 
@@ -1117,12 +1282,15 @@ namespace LaserGRBL
 
 		protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
 		{
-			base.OnRenderToolStripBorder(e);
-
-			using (Brush b = new SolidBrush(ColorScheme.FormBackColor))
-				e.Graphics.FillRectangle(b, e.ConnectedArea);
-		}
+			if (!e.ConnectedArea.IsEmpty)
+            {
+                Rectangle rect = new Rectangle(e.AffectedBounds.X, e.AffectedBounds.Y, e.AffectedBounds.Width - 1, e.AffectedBounds.Height - 1);
+				using (Pen p = new Pen(ColorScheme.ControlsBorder))
+					e.Graphics.DrawRectangle(p, rect);
+			}
+        }
 	}
+
 	public class CustomMenuColor : ProfessionalColorTable
 	{
 		public override Color SeparatorDark

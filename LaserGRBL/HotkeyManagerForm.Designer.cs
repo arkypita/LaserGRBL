@@ -32,9 +32,9 @@
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblConnect = new System.Windows.Forms.Label();
-			this.BtnCancel = new System.Windows.Forms.Button();
-			this.BtnSave = new System.Windows.Forms.Button();
-			this.GB = new System.Windows.Forms.GroupBox();
+			this.BtnCancel = new LaserGRBL.UserControls.GrblButton();
+			this.BtnSave = new LaserGRBL.UserControls.GrblButton();
+			this.GB = new LaserGRBL.UserControls.GrblGroupBox();
 			this.DGV = new LaserGRBL.MyDatagridView();
 			this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Shortcut = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -136,10 +136,10 @@
 
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-		private System.Windows.Forms.GroupBox GB;
-		private System.Windows.Forms.Button BtnCancel;
+		private LaserGRBL.UserControls.GrblGroupBox GB;
+		private LaserGRBL.UserControls.GrblButton BtnCancel;
 		private MyDatagridView DGV;
-		private System.Windows.Forms.Button BtnSave;
+		private LaserGRBL.UserControls.GrblButton BtnSave;
 		private System.Windows.Forms.Label LblConnect;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Action;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Shortcut;

@@ -6,13 +6,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 
 namespace LaserGRBL
 {
-	public class JogCommand : GrblCommand
+    public class JogCommand : GrblCommand
 	{
 		public JogCommand(string line) : base(line.Substring(3))
 		{
@@ -209,9 +207,9 @@ namespace LaserGRBL
 					return (int)((S.Number - range.S.Min) * 255 / (range.S.Max - range.S.Min));
 				else
 					return 255;
-			}
+            }
 
-			public bool G2
+            public bool G2
 			{ get { return MotionMode.Number == 2; } }
 
 			public bool G2G3
@@ -369,9 +367,7 @@ namespace LaserGRBL
 		public bool IsSetWCO
 		{ get { return G != null && G.Number == 92; } }
 
-
-
-		public class G2G3Helper
+        public class G2G3Helper
 		{
 			public double CenterX;
 			public double CenterY;

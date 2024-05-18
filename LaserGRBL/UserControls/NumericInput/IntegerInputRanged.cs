@@ -172,7 +172,7 @@ namespace LaserGRBL.UserControls.NumericInput
 				if (this.InError && ForcedText == null) {
 					this.BorderColor = InErrorBorderColor;
 				} else {
-					this.BorderColor = NormalBorderColor;
+					this.BorderColor = ColorScheme.ControlsBorder;
 				}
 			}
 		}

@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Size = new System.Drawing.Size(260, 20);
+			this.Size = new System.Drawing.Size(260, 15);
 			components = new System.ComponentModel.Container();
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 		}

@@ -261,8 +261,9 @@ namespace LaserGRBL
 		public event dlgOnOverrideChange OnOverrideChange;
 		public event dlgOnLoopCountChange OnLoopCountChange;
 		public event dlgJogStateChange JogStateChange;
+		public event Action<GrblCore> OnAutoSizeDrawing;
 
-		private System.Windows.Forms.Control syncro;
+        private System.Windows.Forms.Control syncro;
 		protected ComWrapper.IComWrapper com;
 		private GrblFile file;
 		private System.Collections.Generic.Queue<GrblCommand> mQueue; //vera coda di quelli da mandare
@@ -323,9 +324,13 @@ namespace LaserGRBL
 		private string mDetectedIP = null;
 		private bool mDoingSend = false;
 
+		public bool LegacyPreview { private set; get; }
 
+        public RetainedSetting<bool> ShowLaserOffMovements { get; } = new RetainedSetting<bool>("ShowLaserOffMovements", true);
+        public RetainedSetting<bool> ShowExecutedCommands { get; } = new RetainedSetting<bool>("ShowExecutedCommands", true);
+        public RetainedSetting<float> PreviewLineSize { get; } = new RetainedSetting<float>("PreviewLineSize", 1f);
 
-		public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
+        public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
 		{
 			if (Type != Firmware.Grbl) Logger.LogMessage("Program", "Load {0} core", Type);
 
@@ -346,11 +351,11 @@ namespace LaserGRBL
 
 			mThreadingMode = Settings.GetObject("Threading Mode", ThreadingMode.Fast);
 
+            LegacyPreview = Settings.GetObject("LegacyPreview", false);
 
-
-			QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(mThreadingMode.StatusQuery), false);
-			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX);
-			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null);
+            QueryTimer = new Tools.PeriodicEventTimer(TimeSpan.FromMilliseconds(mThreadingMode.StatusQuery), false);
+			TX = new Tools.ThreadObject(ThreadTX, 1, true, "Serial TX Thread", StartTX, System.Threading.ThreadPriority.Highest);
+			RX = new Tools.ThreadObject(ThreadRX, 1, true, "Serial RX Thread", null, System.Threading.ThreadPriority.Highest);
 
 			file = new GrblFile(0, 0, Configuration.TableWidth, Configuration.TableHeight);  //create a fake range to use with manual movements
 
@@ -575,7 +580,7 @@ namespace LaserGRBL
 			mTP.Reset(true);
 
 			if (OnFileLoaded != null)
-				OnFileLoading(elapsed, filename);
+				OnFileLoading?.Invoke(elapsed, filename);
 		}
 
 		void RiseOnFileLoaded(long elapsed, string filename)
@@ -583,7 +588,7 @@ namespace LaserGRBL
 			mTP.Reset(true);
 
 			if (OnFileLoaded != null)
-				OnFileLoaded(elapsed, filename);
+				OnFileLoaded?.Invoke(elapsed, filename);
 		}
 
 		public GrblFile LoadedFile
@@ -2654,7 +2659,7 @@ namespace LaserGRBL
 			{
 				Logger.LogMessage("CycleEnd", "Cycle Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true));
 				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)), false));
-
+				OnProgramEnded?.Invoke();
 				LoopCount--;
 				RunProgramFromStart(false, false, true);
 			}
@@ -2662,8 +2667,8 @@ namespace LaserGRBL
 			{
 				Logger.LogMessage("ProgramEnd", "Job Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true));
 				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)), false));
-
-				OnJobEnd();
+                OnProgramEnded?.Invoke();
+                OnJobEnd();
 
 				SoundEvent.PlaySound(SoundEvent.EventId.Success);
 
@@ -3052,12 +3057,19 @@ namespace LaserGRBL
 			}
 		}
 
-		public virtual bool UIShowGrblConfig => true;
+        public void AutoSizeDrawing()
+        {
+			OnAutoSizeDrawing?.Invoke(this);
+        }
+
+        public virtual bool UIShowGrblConfig => true;
 		public virtual bool UIShowUnlockButtons => true;
 
 		public bool IsOrturBoard { get => GrblVersion != null && GrblVersion.IsOrtur; }
 		public int FailedConnectionCount => mFailedConnection;
-	}
+
+		public event Action OnProgramEnded;
+    }
 
 	public class TimeProjection
 	{

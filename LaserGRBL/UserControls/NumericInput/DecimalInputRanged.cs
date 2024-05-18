@@ -192,7 +192,7 @@ namespace LaserGRBL.UserControls.NumericInput
             else if (this.InError)
                 this.BorderColor = InErrorBorderColor;
             else
-                this.BorderColor = NormalBorderColor;
+                this.BorderColor = ColorScheme.ControlsBorder;
         }
 
         protected override bool AcceptKeys(char key)

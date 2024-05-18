@@ -4,7 +4,9 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.Icons;
 using LaserGRBL.PSHelper;
+using LaserGRBL.UserControls;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -42,10 +44,20 @@ namespace LaserGRBL.RasterConverter
 			mCore = core;
 
 			BackColor = ColorScheme.FormBackColor;
-			GbLaser.ForeColor = GbSize.ForeColor = GbSpeed.ForeColor = ForeColor = ColorScheme.FormForeColor;
-			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
+			ForeColor = ColorScheme.FormForeColor;
+			ThemeMgr.SetTheme(this, true);
+			Size icoSize = new Size(16, 16);
+            IconsMgr.PrepareButton(BtnCreate, "mdi-checkbox-marked");
+            IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
+            IconsMgr.PrepareButton(BtnModulationInfo, "mdi-information-slab-box", icoSize);
+            IconsMgr.PrepareButton(BtnOnOffInfo, "mdi-information-slab-box", icoSize);
+            IconsMgr.PrepareButton(BtnPSHelper, "mdi-database", icoSize);
+            IconsMgr.PrepareButton(BtnCenter, "mdi-target", icoSize);
+            IconsMgr.PrepareButton(BtnUnlockProportion, "mdi-lock", icoSize, "mdi-lock-open-outline");
+            IconsMgr.PrepareButton(BtnDPI, "custom-exif", new Size(34, 24));
+            IconsMgr.PrepareButton(BtnReset, "mdi-arrow-u-left-top-bold", icoSize);
 
-			LblMaxPerc.Visible = LblMinPerc.Visible = LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
+            LblMaxPerc.Visible = LblMinPerc.Visible = LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
 			AssignMinMaxLimit();
 
 			CBLaserON.Items.Add(LaserOptions[0]);

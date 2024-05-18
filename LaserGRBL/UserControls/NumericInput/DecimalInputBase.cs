@@ -7,6 +7,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System;
+using System.Windows.Forms;
 
 namespace LaserGRBL.UserControls.NumericInput
 {
@@ -108,23 +109,6 @@ namespace LaserGRBL.UserControls.NumericInput
 
         private bool ShouldSerializeInEditBorderColor()
         { return !InEditBorderColor.Equals(Color.Orange); }
-
-        [Category("Apparence")]
-        public Color NormalBorderColor
-        {
-            get { return _NormalBorderColor; }
-            set
-            {
-                _NormalBorderColor = value;
-                this.UpdateStatus();
-            }
-        }
-
-        private void ResetNormalBorderColor()
-        { NormalBorderColor = Color.DodgerBlue; }
-
-        private bool ShouldSerializeNormalBorderColor()
-        { return !NormalBorderColor.Equals(Color.DodgerBlue); }
 
         [Category("Numeric Info")]
         [DefaultValue(0)]
@@ -314,7 +298,7 @@ namespace LaserGRBL.UserControls.NumericInput
             }
             else
             {
-                this.BorderColor = NormalBorderColor;
+                this.BorderColor = ColorScheme.ControlsBorder;
             }
 
         }
@@ -351,6 +335,15 @@ namespace LaserGRBL.UserControls.NumericInput
             LB.Visible = !Enabled;
             TB.Visible = Enabled;
             this.TabStop = Enabled;
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            BackColor = ColorScheme.LogBackColor;
+            LB.BackColor = ColorScheme.LogBackColor;
+            TB.BackColor = ColorScheme.LogBackColor;
+            TB.ForeColor = ColorScheme.FormForeColor;
+            base.OnPaint(e);
         }
 
 

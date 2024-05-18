@@ -33,12 +33,12 @@
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnCancel = new System.Windows.Forms.Button();
-			this.BtnCreate = new System.Windows.Forms.Button();
+			this.BtnCancel = new LaserGRBL.UserControls.GrblButton();
+			this.BtnCreate = new LaserGRBL.UserControls.GrblButton();
 			this.label1 = new System.Windows.Forms.Label();
-			this.GbParameters = new System.Windows.Forms.GroupBox();
+			this.GbParameters = new LaserGRBL.UserControls.GrblGroupBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-			this.CBLaserON = new System.Windows.Forms.ComboBox();
+			this.CBLaserON = new LaserGRBL.UserControls.FlatComboBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.Ii_Ssteps = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
@@ -58,7 +58,7 @@
 			this.LblLaserMode = new System.Windows.Forms.Label();
 			this.BtnOnOffInfo = new LaserGRBL.UserControls.ImageButton();
 			this.label13 = new System.Windows.Forms.Label();
-			this.UDQuality = new System.Windows.Forms.NumericUpDown();
+			this.UDQuality = new LaserGRBL.UserControls.NumericInput.NumericUpDown();
 			this.label14 = new System.Windows.Forms.Label();
 			this.Ii_SStepSize = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
 			this.Ii_FStepSize = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
@@ -466,7 +466,6 @@
 			this.BtnOnOffInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.BtnOnOffInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnOnOffInfo.Caption = null;
-			this.BtnOnOffInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnOnOffInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnOnOffInfo.Image")));
 			this.BtnOnOffInfo.Location = new System.Drawing.Point(261, 55);
 			this.BtnOnOffInfo.Name = "BtnOnOffInfo";
@@ -615,7 +614,6 @@
 			this.IISizeW.MaxValue = 1000F;
 			this.IISizeW.MinValue = 0F;
 			this.IISizeW.Name = "IISizeW";
-			this.IISizeW.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IISizeW.Size = new System.Drawing.Size(49, 15);
 			this.IISizeW.TabIndex = 12;
 			// 
@@ -663,7 +661,6 @@
 			this.IISizeH.MaxValue = 1000F;
 			this.IISizeH.MinValue = 0F;
 			this.IISizeH.Name = "IISizeH";
-			this.IISizeH.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IISizeH.Size = new System.Drawing.Size(49, 15);
 			this.IISizeH.TabIndex = 13;
 			// 
@@ -718,7 +715,7 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.GroupBox GbParameters;
+		private LaserGRBL.UserControls.GrblGroupBox GbParameters;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
 		private System.Windows.Forms.Label label6;
 		private UserControls.NumericInput.IntegerInputRanged Ii_Ssteps;
@@ -736,12 +733,12 @@
 		private System.Windows.Forms.Label label10;
 		private UserControls.NumericInput.IntegerInputRanged Ii_Fsteps;
 		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.ComboBox CBLaserON;
+		private LaserGRBL.UserControls.FlatComboBox CBLaserON;
 		private System.Windows.Forms.Label LblLaserMode;
 		private UserControls.ImageButton BtnOnOffInfo;
 		private System.Windows.Forms.Label label13;
 		private System.Windows.Forms.Label label14;
-		private System.Windows.Forms.NumericUpDown UDQuality;
+		private LaserGRBL.UserControls.NumericInput.NumericUpDown UDQuality;
 		private System.Windows.Forms.Label label15;
 		private System.Windows.Forms.Label label16;
 		private UserControls.NumericInput.DecimalInputRanged IISizeW;
@@ -750,8 +747,8 @@
 		private UserControls.NumericInput.IntegerInputRanged Ii_SStepSize;
 		private UserControls.NumericInput.IntegerInputRanged Ii_FStepSize;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-		private System.Windows.Forms.Button BtnCancel;
-		private System.Windows.Forms.Button BtnCreate;
+		private LaserGRBL.UserControls.GrblButton BtnCancel;
+		private LaserGRBL.UserControls.GrblButton BtnCreate;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label label18;
 		private UserControls.NumericInput.IntegerInputRanged Ii_Ftext;

@@ -188,7 +188,7 @@
     <value>BtnWrite</value>
   </data>
   <data name="&gt;&gt;BtnWrite.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnWrite.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -252,7 +252,7 @@
     <value>BtnRead</value>
   </data>
   <data name="&gt;&gt;BtnRead.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnRead.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -326,7 +326,7 @@
     <value>BtnCancel</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -489,7 +489,7 @@ only when connected and idle</value>
     <value>BtnExport</value>
   </data>
   <data name="&gt;&gt;BtnExport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnExport.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -617,7 +617,7 @@ only when connected and idle</value>
     <value>BtnImport</value>
   </data>
   <data name="&gt;&gt;BtnImport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnImport.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -788,7 +788,7 @@ only when connected and idle</value>
     <value>GB</value>
   </data>
   <data name="&gt;&gt;GB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GB.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>

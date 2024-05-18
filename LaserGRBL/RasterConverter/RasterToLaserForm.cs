@@ -14,6 +14,8 @@ using System.IO.Compression;
 using System.Windows.Forms;
 using System.Threading;
 using Tools;
+using LaserGRBL.Icons;
+using LaserGRBL.UserControls;
 
 namespace LaserGRBL.RasterConverter
 {
@@ -33,9 +35,28 @@ namespace LaserGRBL.RasterConverter
 
 			BackColor = ColorScheme.FormBackColor;
 			GbCenterlineOptions.ForeColor = GbConversionTool.ForeColor = GbLineToLineOptions.ForeColor = GbParameters.ForeColor = GbVectorizeOptions.ForeColor = ForeColor = ColorScheme.FormForeColor;
-			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
 
-			IP = new ImageProcessor(core, filename, GetImageSize(), append);
+            Size icoSize = new Size(16, 16);
+            ThemeMgr.SetTheme(this, true);
+            IconsMgr.PrepareButton(BtnCreate, "mdi-checkbox-marked");
+            IconsMgr.PrepareButton(BtnCancel, "mdi-close-box");
+            IconsMgr.PrepareButton(BtnAdaptiveQualityInfo, "mdi-information-slab-box", icoSize);
+            IconsMgr.PrepareButton(BtnFillingQualityInfo, "mdi-information-slab-box", icoSize);
+            IconsMgr.PrepareButton(BtnQualityInfo, "mdi-information-slab-box", icoSize);
+
+            Size icoToolSize = new Size(25, 25);
+            IconsMgr.PrepareButton(BtFlipH, "mdi-flip-vertical", icoToolSize);
+            IconsMgr.PrepareButton(BtFlipV, "mdi-flip-horizontal", icoToolSize);
+            IconsMgr.PrepareButton(BtRotateCW, "mdi-rotate-right", icoToolSize);
+            IconsMgr.PrepareButton(BtRotateCCW, "mdi-rotate-left", icoToolSize);
+            IconsMgr.PrepareButton(BtnCrop, "mdi-crop", icoToolSize);
+            IconsMgr.PrepareButton(BtnRevert, "mdi-arrow-u-left-top-bold", icoToolSize);
+            IconsMgr.PrepareButton(BtnAutoTrim, "mdi-image-size-select-large", icoToolSize);
+            IconsMgr.PrepareButton(BtnFill, "mdi-format-color-fill", icoToolSize);
+            IconsMgr.PrepareButton(BtnReverse, "mdi-invert-colors", icoToolSize);
+            IconsMgr.PrepareButton(BtnOutliner, "mdi-auto-fix", icoToolSize);
+
+            IP = new ImageProcessor(core, filename, GetImageSize(), append);
 			//PbOriginal.Image = IP.Original;
 			ImageProcessor.PreviewReady += OnPreviewReady;
 			ImageProcessor.PreviewBegin += OnPreviewBegin;
@@ -161,7 +182,10 @@ namespace LaserGRBL.RasterConverter
 		internal static void CreateAndShowDialog(GrblCore core, string filename, Form parent, bool append)
 		{
 			using (RasterToLaserForm f = new RasterToLaserForm(core, filename, append))
-				f.ShowDialog(parent);
+			{
+				f.Icon = parent.Icon;
+                f.ShowDialog(parent);
+            }	
 		}
 
 		void GoodInput(object sender, KeyPressEventArgs e)
@@ -403,8 +427,8 @@ namespace LaserGRBL.RasterConverter
 
 		private void RefreshVE()
 		{
-			GbParameters.Enabled = !RbNoProcessing.Checked;
-			GbVectorizeOptions.Visible = RbVectorize.Checked;
+            GbParameters.Visible = !RbNoProcessing.Checked;
+            GbVectorizeOptions.Visible = RbVectorize.Checked;
 			GbCenterlineOptions.Visible = RbCenterline.Checked;
 			GbLineToLineOptions.Visible = RbLineToLineTracing.Checked || RbDithering.Checked;
 			GbPassthrough.Visible = RbNoProcessing.Checked;
@@ -692,9 +716,9 @@ namespace LaserGRBL.RasterConverter
 
 		void UpdateButtons()
 		{
-			BtnCrop.BackColor = Cropping ? Color.Orange : DefaultBackColor;
-			BtnFill.BackColor = Filling >= 0 ? Color.Orange : DefaultBackColor;
-			BtnOutliner.BackColor = Outlining ? Color.Orange : DefaultBackColor;
+			BtnCrop.BackColor = Cropping ? ColorScheme.PressedButtons : ColorScheme.FormBackColor;
+			BtnFill.BackColor = Filling >= 0 ? ColorScheme.PressedButtons : ColorScheme.FormBackColor;
+			BtnOutliner.BackColor = Outlining ? ColorScheme.PressedButtons : ColorScheme.FormBackColor;
 		}
 
 		int Filling = -1;

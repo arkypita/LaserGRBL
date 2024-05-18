@@ -21,11 +21,22 @@ namespace LaserGRBL.UserControls
 		protected Color _waterMarkColor; //Color of the watermark when the control does not have focus
 		protected Color _waterMarkActiveColor; //Color of the watermark when the control has focus
 
-		#endregion
+		public Color WaterMarkColor
+		{
+            get => _waterMarkColor;
+            set => _waterMarkColor = value;
+        }
+        public Color WaterMarkActiveColor
+        {
+            get => _waterMarkActiveColor;
+            set => _waterMarkActiveColor = value;
+        }
 
-		#region Private Fields
+        #endregion
 
-		private Panel waterMarkContainer; //Container to hold the watermark
+        #region Private Fields
+
+        private Panel waterMarkContainer; //Container to hold the watermark
 		private Font waterMarkFont; //Font of the watermark
 		private SolidBrush waterMarkBrush; //Brush for the watermark
 
@@ -55,7 +66,7 @@ namespace LaserGRBL.UserControls
 			waterMarkFont = this.Font;
 			waterMarkBrush = new SolidBrush(_waterMarkActiveColor);
 			waterMarkContainer = null;
-
+			BorderStyle = BorderStyle.None;
 			//Draw the watermark, so we can see it in design time
 			DrawWaterMark();
 
@@ -106,6 +117,8 @@ namespace LaserGRBL.UserControls
 
 		private void waterMarkContainer_Paint(object sender, PaintEventArgs e)
 		{
+			BackColor = ColorScheme.LogBackColor;
+			ForeColor = ColorScheme.FormForeColor;
 			//Setting the watermark container up
 			waterMarkContainer.Location = new Point(2, 0); // sets the location
 			waterMarkContainer.Height = this.Height; // Height should be the same as its parent

@@ -31,8 +31,8 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShakeTest));
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnCancel = new System.Windows.Forms.Button();
-			this.BtnCreate = new System.Windows.Forms.Button();
+			this.BtnCancel = new LaserGRBL.UserControls.GrblButton();
+			this.BtnCreate = new LaserGRBL.UserControls.GrblButton();
 			this.label1 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -42,10 +42,10 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.IiCrossSpeed = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
 			this.label4 = new System.Windows.Forms.Label();
-			this.CbLimit = new System.Windows.Forms.ComboBox();
+			this.CbLimit = new LaserGRBL.UserControls.FlatComboBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.IiCrossPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
-			this.CbAxis = new System.Windows.Forms.ComboBox();
+			this.CbAxis = new LaserGRBL.UserControls.FlatComboBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.IiAxisLen = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -330,15 +330,15 @@
 		#endregion
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-		private System.Windows.Forms.Button BtnCancel;
-		private System.Windows.Forms.Button BtnCreate;
+		private LaserGRBL.UserControls.GrblButton BtnCancel;
+		private LaserGRBL.UserControls.GrblButton BtnCreate;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.ComboBox CbAxis;
-		private System.Windows.Forms.ComboBox CbLimit;
+		private LaserGRBL.UserControls.FlatComboBox CbAxis;
+		private LaserGRBL.UserControls.FlatComboBox CbLimit;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label5;
 		private UserControls.NumericInput.IntegerInputRanged IiCrossSpeed;

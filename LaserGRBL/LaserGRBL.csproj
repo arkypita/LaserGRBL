@@ -81,8 +81,9 @@
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
     <StartAction>Project</StartAction>
   </PropertyGroup>
-  <PropertyGroup />
-  <PropertyGroup />
+  <PropertyGroup>
+    <ForceDesignerDPIUnaware>true</ForceDesignerDPIUnaware>
+  </PropertyGroup>
   <PropertyGroup>
     <StartupObject>LaserGRBL.Program</StartupObject>
   </PropertyGroup>
@@ -150,6 +151,9 @@
       <DependentUpon>ShakeTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Hershey\Hershey.cs" />
+    <Compile Include="Icons\IIconsLoader.cs" />
+    <Compile Include="Icons\LegacyIcons.cs" />
+    <Compile Include="Icons\IconsMgr.cs" />
     <Compile Include="LaserLifeEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +172,27 @@
     <Compile Include="LaserUsage.Designer.cs">
       <DependentUpon>LaserUsage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Obj3D\ColorHelper.cs" />
+    <Compile Include="Obj3D\GlColorHelper.cs" />
+    <Compile Include="SvgIcons\SvgIcons.cs" />
+    <Compile Include="Tools\Graph.cs" />
+    <Compile Include="Tools\RetainedSetting.cs" />
+    <Compile Include="UserControls\FlatComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\GrblButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\GrblGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\GrblPanel3D.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\GrblPanel3D.Designer.cs">
+      <DependentUpon>GrblPanel3D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Obj3D\Objects3D.cs" />
     <Compile Include="Resources\ResourceHelper.cs" />
     <Compile Include="SafetyCountdown.cs">
       <SubType>Form</SubType>
@@ -181,6 +206,171 @@
     <Compile Include="LegalDisclaimer.Designer.cs">
       <DependentUpon>LegalDisclaimer.cs</DependentUpon>
     </Compile>
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Assets\Asset.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Assets\Material.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Assets\Texture.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Cameras\ArcBallCamera.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Cameras\Camera.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Cameras\FrustumCamera.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Cameras\LookAtCamera.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Cameras\OrthographicCamera.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Cameras\PerspectiveCamera.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Collections.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Core\ArcBall.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Core\BoundingVolume.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Core\IBindable.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Core\IFreezable.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Core\IHasMaterial.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Core\IHasObjectSpace.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Core\IHasOpenGLContext.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Core\IRenderable.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Core\IVolumeBound.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Core\RenderMode.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Core\SceneContainer.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Core\SceneElement.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Core\SceneElementTraversal.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Core\VertexGrid.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\DisplayList.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Effects\ArcBallTransformationEffect.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Effects\Effect.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Effects\LinearTransformationEffect.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Effects\OpenGLAttributesEffect.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Evaluators\Evaluator.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Evaluators\Evaluator1D.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Evaluators\Evaluator2D.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Evaluators\NURBS.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Evaluators\NurbsCurve.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Evaluators\NurbsSurface.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Face.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Feedback\Feedback.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Feedback\Polygonator.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Feedback\Triangulator.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\GLColor.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Helpers\BoundingVolumeHelper.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Helpers\FreezableHelper.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Helpers\HasObjectSpaceHelper.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Helpers\OpenGLHelper.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Helpers\SceneHelper.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\IDeepClonable.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Index.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Lighting\Light.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Lighting\Spotlight.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Matrix.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\AccumBufferAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\ColorBufferAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\CurrentAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\DepthBufferAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\EnableAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\EvalAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\FogAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\HintAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\LightingAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\LineAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\ListAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\OpenGLAttributeGroup.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\PixelModeAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\PointAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\PolygonAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\PolygonStippleAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\ScissorAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\StencilBufferAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\TextureAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\TransformAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLAttributes\ViewportAttributes.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLEventArgs.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\OpenGLSceneGraphExtensions.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\ParticleSystem\Particle.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\ParticleSystem\ParticleSystems.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Plane.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Primitives\Axies.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Primitives\Cube.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Primitives\Folder.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Primitives\Grid.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Primitives\Polygon.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Primitives\Shadow.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Primitives\Teapot.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Quadrics\Cylinder.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Quadrics\Disk.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Quadrics\DrawStyle.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Quadrics\Normals.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Quadrics\Orientation.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Quadrics\Quadric.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Quadrics\Sphere.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Raytracing\Intersection.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Raytracing\IRayTracable.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Raytracing\Ray.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Raytracing\RayTracer.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Raytracing\ScreenPixel.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Scene.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Shaders\FragmentShader.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Shaders\Shader.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Shaders\ShaderProgram.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Shaders\VertexShader.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Transformations\LinearTransformation.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Transformations\Transformation.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\UV.cs" />
+    <Compile Include="SharpGL\SharpGL.SceneGraph\Vertex.cs" />
+    <Compile Include="SharpGL\SharpGL.Serialization\Caligari\CaligariChunk.cs" />
+    <Compile Include="SharpGL\SharpGL.Serialization\Caligari\CaligariFileFormat.cs" />
+    <Compile Include="SharpGL\SharpGL.Serialization\Caligari\CaligariFileHeader.cs" />
+    <Compile Include="SharpGL\SharpGL.Serialization\Caligari\CaligariPrimitives.cs" />
+    <Compile Include="SharpGL\SharpGL.Serialization\Caligari\PolygonChunk.cs" />
+    <Compile Include="SharpGL\SharpGL.Serialization\Discreet\Chunks.cs" />
+    <Compile Include="SharpGL\SharpGL.Serialization\Discreet\DiscreetFormat.cs" />
+    <Compile Include="SharpGL\SharpGL.Serialization\IFileFormat.cs" />
+    <Compile Include="SharpGL\SharpGL.Serialization\SerializationEngine.cs" />
+    <Compile Include="SharpGL\SharpGL.Serialization\SharpGL\SharpGLXmlFormat.cs" />
+    <Compile Include="SharpGL\SharpGL.Serialization\Wavefront\ObjFileFormat.cs" />
+    <Compile Include="SharpGL\SharpGL.WinForms\GLColourPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SharpGL\SharpGL.WinForms\IdleTimeManager.cs" />
+    <Compile Include="SharpGL\SharpGL.WinForms\MaterialListViewItem.cs" />
+    <Compile Include="SharpGL\SharpGL.WinForms\NETDesignSurface\Converters\MaterialCollectionConverter.cs" />
+    <Compile Include="SharpGL\SharpGL.WinForms\NETDesignSurface\Converters\VertexConverter.cs" />
+    <Compile Include="SharpGL\SharpGL.WinForms\NETDesignSurface\Designers\OpenGLControlDesigner.cs" />
+    <Compile Include="SharpGL\SharpGL.WinForms\NETDesignSurface\DesignSurface.cs" />
+    <Compile Include="SharpGL\SharpGL.WinForms\NETDesignSurface\Editors\CameraCollectionEditor.cs" />
+    <Compile Include="SharpGL\SharpGL.WinForms\NETDesignSurface\Editors\EvaluatorCollectionEditor.cs" />
+    <Compile Include="SharpGL\SharpGL.WinForms\NETDesignSurface\Editors\QuadricCollectionEditor.cs" />
+    <Compile Include="SharpGL\SharpGL.WinForms\NETDesignSurface\Editors\UITextureEditor.cs" />
+    <Compile Include="SharpGL\SharpGL.WinForms\OpenGLControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SharpGL\SharpGL.WinForms\OpenGLControl.Designer.cs">
+      <DependentUpon>OpenGLControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharpGL\SharpGL.WinForms\RenderEventArgs.cs" />
+    <Compile Include="SharpGL\SharpGL.WinForms\RenderTrigger.cs" />
+    <Compile Include="SharpGL\SharpGL.WinForms\SceneControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SharpGL\SharpGL.WinForms\VertexControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SharpGL\SharpGL\DIBSection.cs" />
+    <Compile Include="SharpGL\SharpGL\Enumerations\OpenGLEnumerations.cs" />
+    <Compile Include="SharpGL\SharpGL\FontBitmaps.cs" />
+    <Compile Include="SharpGL\SharpGL\FontOutlines.cs" />
+    <Compile Include="SharpGL\SharpGL\OpenGL.cs" />
+    <Compile Include="SharpGL\SharpGL\OpenGLExtensions.cs" />
+    <Compile Include="SharpGL\SharpGL\RenderContextProviders\DIBSectionRenderContextProvider.cs" />
+    <Compile Include="SharpGL\SharpGL\RenderContextProviders\ExternalRenderContextProvider.cs" />
+    <Compile Include="SharpGL\SharpGL\RenderContextProviders\FBORenderContextProvider.cs" />
+    <Compile Include="SharpGL\SharpGL\RenderContextProviders\HiddenWindowRenderContextProvider.cs" />
+    <Compile Include="SharpGL\SharpGL\RenderContextProviders\IRenderContextProvider.cs" />
+    <Compile Include="SharpGL\SharpGL\RenderContextProviders\NativeWindowRenderContextProvider.cs" />
+    <Compile Include="SharpGL\SharpGL\RenderContextProviders\RenderContextProvider.cs" />
+    <Compile Include="SharpGL\SharpGL\RenderContextType.cs" />
+    <Compile Include="SharpGL\SharpGL\Shaders\Shader.cs" />
+    <Compile Include="SharpGL\SharpGL\Shaders\ShaderCompilationException.cs" />
+    <Compile Include="SharpGL\SharpGL\Shaders\ShaderProgram.cs" />
+    <Compile Include="SharpGL\SharpGL\Version\OpenGLVersion.cs" />
+    <Compile Include="SharpGL\SharpGL\Version\VersionAttribute.cs" />
+    <Compile Include="SharpGL\SharpGL\VertexBuffers\IndexBuffer.cs" />
+    <Compile Include="SharpGL\SharpGL\VertexBuffers\VertexBuffer.cs" />
+    <Compile Include="SharpGL\SharpGL\VertexBuffers\VertexBufferArray.cs" />
+    <Compile Include="SharpGL\SharpGL\Win32.cs" />
     <Compile Include="Tools\Project.cs" />
     <Compile Include="Core\VigoCore.cs" />
     <Compile Include="CsPotrace\PotraceClipper.cs" />
@@ -773,6 +963,7 @@
     <Compile Include="UserControls\GrblTextBox.Designer.cs">
       <DependentUpon>GrblTextBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\IGrblPanel.cs" />
     <Compile Include="UserControls\ImageButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -813,9 +1004,22 @@
     <Compile Include="UserControls\LabelTB.Designer.cs">
       <DependentUpon>LabelTB.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\NumericInput\NumericUpDown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NumericInput\NumericUpDown.Designer.cs">
+      <DependentUpon>NumericUpDown.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\PlaceholderTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\TextInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TextInput.Designer.cs">
+      <DependentUpon>TextInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ThemeMgr.cs" />
     <Compile Include="UserControls\UsageClassPreview.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -900,6 +1104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LaserUsage.resx">
       <DependentUpon>LaserUsage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\GrblPanel3D.resx">
+      <DependentUpon>GrblPanel3D.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.pt-BR.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
@@ -1053,11 +1260,26 @@
     <EmbeddedResource Include="SettingsForm.uk.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SharpGL\SharpGL.WinForms\GLColourPicker.resx">
+      <DependentUpon>GLColourPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpGL\SharpGL.WinForms\OpenGLControl.resx">
+      <DependentUpon>OpenGLControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpGL\SharpGL.WinForms\SceneControl.resx">
+      <DependentUpon>SceneControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpGL\SharpGL.WinForms\VertexControl.resx">
+      <DependentUpon>VertexControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.nl-NL.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.ro-RO.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TextInput.resx">
+      <DependentUpon>TextInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UsageClassPreview.resx">
       <DependentUpon>UsageClassPreview.cs</DependentUpon>
@@ -1085,6 +1307,8 @@
     <EmbeddedResource Include="CSV\setting_codes.ortur.GrblHal.csv" />
     <EmbeddedResource Include="CSV\alarm_codes.ortur.GrblHal.csv" />
     <EmbeddedResource Include="CSV\error_codes.ortur.GrblHal.csv" />
+    <EmbeddedResource Include="Icons\LegacyIcons.data" />
+    <EmbeddedResource Include="Icons\LegacyIcons.header" />
     <None Include="Resources\flag_greece.png" />
     <EmbeddedResource Include="Generator\SVG\LaserGRBL-accuracy-test-file.svg" />
     <Content Include="Grafica\777494-200.png" />
@@ -2051,6 +2275,12 @@
     <None Include="PSHelper\MaterialDB.xss">
       <DependentUpon>MaterialDB.xsd</DependentUpon>
     </None>
+    <EmbeddedResource Include="SvgIcons\Custom.data" />
+    <EmbeddedResource Include="SvgIcons\Custom.header" />
+    <EmbeddedResource Include="SvgIcons\Mdi.data" />
+    <EmbeddedResource Include="SvgIcons\Mdi.header" />
+    <EmbeddedResource Include="SvgIcons\Flags.data" />
+    <EmbeddedResource Include="SvgIcons\Flags.header" />
     <None Include="SvgLibrary\Basic Shapes\DOM.cd" />
     <EmbeddedResource Include="SvgLibrary\Resources\svg11.dtd" />
   </ItemGroup>

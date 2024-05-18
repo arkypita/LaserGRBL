@@ -4,6 +4,8 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
+using LaserGRBL.Icons;
+using LaserGRBL.UserControls;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -25,20 +27,24 @@ namespace LaserGRBL
 		{
 			currentWrapper = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			InitializeComponent();
-		}
+        }
 
-		public void SetCore(GrblCore core)
+        public void SetCore(GrblCore core)
 		{
 			Core = core;
 			Core.OnFileLoaded += OnFileLoaded;
 			Core.OnLoopCountChange += OnLoopCountChanged;
-
 			CmdLog.SetCom(core);
-			
-			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(Color.LightSkyBlue));
-			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(Color.Pink));
 
-			InitSpeedCB();
+			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandWait));
+			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandOK));
+			Size btnSize = new Size(20, 20);
+			IconsMgr.PrepareButton(BtnRunProgram, "mdi-play-circle", btnSize);
+            IconsMgr.PrepareButton(BtnAbortProgram, "mdi-stop-circle", btnSize);
+            IconsMgr.PrepareButton(BtnConnectDisconnect, "mdi-power-plug", btnSize, "mdi-power-plug-off");
+            IconsMgr.PrepareButton(BtnOpen, "mdi-folder", btnSize);
+
+            InitSpeedCB();
 			InitPortCB();
 
 			RestoreConf();
@@ -333,7 +339,24 @@ namespace LaserGRBL
 
 		internal void OnColorChange()
 		{
-			CmdLog.Invalidate();
+			TbFileName.BackColor = ColorScheme.LogBackColor;
+            TbFileName.ForeColor = ColorScheme.FormForeColor;
+
+            TbFileName.BorderColor = ColorScheme.ControlsBorder;
+            TbFileName.ForeColor = ColorScheme.FormForeColor;
+
+            TxtManualCommand.WaterMarkColor = ColorScheme.ControlsBorder;
+            TxtManualCommand.WaterMarkActiveColor = ColorScheme.ControlsBorder;
+            TxtManualCommand.BackColor = ColorScheme.LogBackColor;
+			TxtManualCommand.ForeColor = ColorScheme.FormForeColor;
+
+			PB.ForeColor = ColorScheme.FormForeColor;
+            PB.FillColor = ColorScheme.LogBackColor;
+            PB.Bars.Clear();
+			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandWait));
+			PB.Bars.Add(new LaserGRBL.UserControls.DoubleProgressBar.Bar(ColorScheme.PreviewCommandOK));
+            CmdLog.OnColorChange();
+            CmdLog.Invalidate();
 		}
 
 		private void TxtManualCommand_Enter(object sender, EventArgs e)
@@ -385,6 +408,12 @@ namespace LaserGRBL
 				//if (BtnConnectDisconnect.Enabled && Core.MachineStatus == GrblCore.MacStatus.Disconnected)
 				//	BtnConnectDisconnectClick(null, null);
 			}
-		}
-	}
+        }
+
+        private void CmdLog_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, ColorScheme.ControlsBorder, ButtonBorderStyle.Solid);
+        }
+
+    }
 }

@@ -15,7 +15,7 @@ namespace LaserGRBL.RasterConverter
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-		private System.Windows.Forms.GroupBox GbSize;
+		private LaserGRBL.UserControls.GrblGroupBox GbSize;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Label label4;
@@ -27,13 +27,13 @@ namespace LaserGRBL.RasterConverter
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.GroupBox GbSpeed;
+		private LaserGRBL.UserControls.GrblGroupBox GbSpeed;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
 		private System.Windows.Forms.Label LblBorderTracing;
 		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IIBorderTracing;
 		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IILinearFilling;
 		private System.Windows.Forms.Label LblLinearFilling;
-		private System.Windows.Forms.GroupBox GbLaser;
+		private LaserGRBL.UserControls.GrblGroupBox GbLaser;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
 		private System.Windows.Forms.Label LblSmin;
 		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IIMinPower;
@@ -41,8 +41,8 @@ namespace LaserGRBL.RasterConverter
 		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IIMaxPower;
 		private System.Windows.Forms.Label LblLaserMode;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private System.Windows.Forms.Button BtnCreate;
-		private System.Windows.Forms.Button BtnCancel;
+		private LaserGRBL.UserControls.GrblButton BtnCreate;
+		private LaserGRBL.UserControls.GrblButton BtnCancel;
 
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -70,7 +70,7 @@ namespace LaserGRBL.RasterConverter
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConvertSizeAndOptionForm));
 			this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-			this.GbSize = new System.Windows.Forms.GroupBox();
+			this.GbSize = new LaserGRBL.UserControls.GrblGroupBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnUnlockProportion = new LaserGRBL.UserControls.ImageButton();
 			this.label9 = new System.Windows.Forms.Label();
@@ -91,7 +91,7 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnReset = new LaserGRBL.UserControls.ImageButton();
 			this.BtnCenter = new LaserGRBL.UserControls.ImageButton();
-			this.GbSpeed = new System.Windows.Forms.GroupBox();
+			this.GbSpeed = new LaserGRBL.UserControls.GrblGroupBox();
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
 			this.LblBorderTracing = new System.Windows.Forms.Label();
 			this.LblBorderTracingmm = new System.Windows.Forms.Label();
@@ -100,21 +100,21 @@ namespace LaserGRBL.RasterConverter
 			this.LblLinearFillingmm = new System.Windows.Forms.Label();
 			this.LblLinearFilling = new System.Windows.Forms.Label();
 			this.BtnPSHelper = new LaserGRBL.UserControls.ImageButton();
-			this.GbLaser = new System.Windows.Forms.GroupBox();
+			this.GbLaser = new LaserGRBL.UserControls.GrblGroupBox();
 			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnModulationInfo = new LaserGRBL.UserControls.ImageButton();
 			this.LblSmin = new System.Windows.Forms.Label();
 			this.IIMinPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
 			this.LblLaserMode = new System.Windows.Forms.Label();
 			this.BtnOnOffInfo = new LaserGRBL.UserControls.ImageButton();
-			this.CBLaserON = new System.Windows.Forms.ComboBox();
+			this.CBLaserON = new LaserGRBL.UserControls.FlatComboBox();
 			this.LblSmax = new System.Windows.Forms.Label();
 			this.IIMaxPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
 			this.LblMinPerc = new System.Windows.Forms.Label();
 			this.LblMaxPerc = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.BtnCancel = new System.Windows.Forms.Button();
-			this.BtnCreate = new System.Windows.Forms.Button();
+			this.BtnCancel = new LaserGRBL.UserControls.GrblButton();
+			this.BtnCreate = new LaserGRBL.UserControls.GrblButton();
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
 			this.tableLayoutPanel9.SuspendLayout();
 			this.GbSize.SuspendLayout();
@@ -168,7 +168,6 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.BtnUnlockProportion, "BtnUnlockProportion");
 			this.BtnUnlockProportion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnUnlockProportion.Caption = null;
-			this.BtnUnlockProportion.Coloration = System.Drawing.Color.Empty;
 			this.BtnUnlockProportion.Image = ((System.Drawing.Image)(resources.GetObject("BtnUnlockProportion.Image")));
 			this.BtnUnlockProportion.Name = "BtnUnlockProportion";
 			this.BtnUnlockProportion.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -195,7 +194,6 @@ namespace LaserGRBL.RasterConverter
 			this.IIOffsetX.MaxValue = 1000F;
 			this.IIOffsetX.MinValue = 0F;
 			this.IIOffsetX.Name = "IIOffsetX";
-			this.IIOffsetX.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIOffsetX.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.DecimalInputBase.CurrentValueChangedDlg(this.IIOffsetXYCurrentValueChanged);
 			// 
 			// IIOffsetY
@@ -207,7 +205,6 @@ namespace LaserGRBL.RasterConverter
 			this.IIOffsetY.MaxValue = 1000F;
 			this.IIOffsetY.MinValue = 0F;
 			this.IIOffsetY.Name = "IIOffsetY";
-			this.IIOffsetY.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIOffsetY.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.DecimalInputBase.CurrentValueChangedDlg(this.IIOffsetXYCurrentValueChanged);
 			// 
 			// IISizeH
@@ -219,7 +216,6 @@ namespace LaserGRBL.RasterConverter
 			this.IISizeH.MaxValue = 1000F;
 			this.IISizeH.MinValue = 10F;
 			this.IISizeH.Name = "IISizeH";
-			this.IISizeH.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IISizeH.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.DecimalInputBase.CurrentValueChangedDlg(this.IISizeH_CurrentValueChanged);
 			this.IISizeH.OnTheFlyValueChanged += new LaserGRBL.UserControls.NumericInput.DecimalInputBase.CurrentValueChangedDlg(this.IISizeH_OnTheFlyValueChanged);
 			// 
@@ -232,7 +228,6 @@ namespace LaserGRBL.RasterConverter
 			this.IISizeW.MaxValue = 1000F;
 			this.IISizeW.MinValue = 10F;
 			this.IISizeW.Name = "IISizeW";
-			this.IISizeW.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IISizeW.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.DecimalInputBase.CurrentValueChangedDlg(this.IISizeW_CurrentValueChanged);
 			this.IISizeW.OnTheFlyValueChanged += new LaserGRBL.UserControls.NumericInput.DecimalInputBase.CurrentValueChangedDlg(this.IISizeW_OnTheFlyValueChanged);
 			// 
@@ -287,7 +282,6 @@ namespace LaserGRBL.RasterConverter
 			this.IIDpi.MaxValue = 10000;
 			this.IIDpi.MinValue = 1;
 			this.IIDpi.Name = "IIDpi";
-			this.IIDpi.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIDpi.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIDpi_CurrentValueChanged);
 			// 
 			// BtnDPI
@@ -296,7 +290,6 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.BtnDPI, "BtnDPI");
 			this.BtnDPI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnDPI.Caption = null;
-			this.BtnDPI.Coloration = System.Drawing.Color.Empty;
 			this.BtnDPI.Image = ((System.Drawing.Image)(resources.GetObject("BtnDPI.Image")));
 			this.BtnDPI.Name = "BtnDPI";
 			this.BtnDPI.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -316,7 +309,6 @@ namespace LaserGRBL.RasterConverter
 			this.BtnReset.AltImage = null;
 			this.BtnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnReset.Caption = null;
-			this.BtnReset.Coloration = System.Drawing.Color.Empty;
 			this.BtnReset.Image = ((System.Drawing.Image)(resources.GetObject("BtnReset.Image")));
 			resources.ApplyResources(this.BtnReset, "BtnReset");
 			this.BtnReset.Name = "BtnReset";
@@ -331,7 +323,6 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.BtnCenter, "BtnCenter");
 			this.BtnCenter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnCenter.Caption = null;
-			this.BtnCenter.Coloration = System.Drawing.Color.Empty;
 			this.BtnCenter.Image = ((System.Drawing.Image)(resources.GetObject("BtnCenter.Image")));
 			this.BtnCenter.Name = "BtnCenter";
 			this.BtnCenter.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -377,7 +368,6 @@ namespace LaserGRBL.RasterConverter
 			this.IIBorderTracing.MaxValue = 4000;
 			this.IIBorderTracing.MinValue = 1;
 			this.IIBorderTracing.Name = "IIBorderTracing";
-			this.IIBorderTracing.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIBorderTracing.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIBorderTracingCurrentValueChanged);
 			// 
 			// IILinearFilling
@@ -389,7 +379,6 @@ namespace LaserGRBL.RasterConverter
 			this.IILinearFilling.MaxValue = 4000;
 			this.IILinearFilling.MinValue = 1;
 			this.IILinearFilling.Name = "IILinearFilling";
-			this.IILinearFilling.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IILinearFilling.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMarkSpeedCurrentValueChanged);
 			// 
 			// LblLinearFillingmm
@@ -408,7 +397,6 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.BtnPSHelper, "BtnPSHelper");
 			this.BtnPSHelper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnPSHelper.Caption = null;
-			this.BtnPSHelper.Coloration = System.Drawing.Color.Empty;
 			this.BtnPSHelper.Image = ((System.Drawing.Image)(resources.GetObject("BtnPSHelper.Image")));
 			this.BtnPSHelper.Name = "BtnPSHelper";
 			this.tableLayoutPanel6.SetRowSpan(this.BtnPSHelper, 2);
@@ -445,7 +433,6 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
 			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnModulationInfo.Caption = null;
-			this.BtnModulationInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
 			this.BtnModulationInfo.Name = "BtnModulationInfo";
 			this.tableLayoutPanel7.SetRowSpan(this.BtnModulationInfo, 2);
@@ -467,7 +454,6 @@ namespace LaserGRBL.RasterConverter
 			this.IIMinPower.MaxValue = 999;
 			this.IIMinPower.MinValue = 0;
 			this.IIMinPower.Name = "IIMinPower";
-			this.IIMinPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIMinPower.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMinPowerCurrentValueChanged);
 			// 
 			// LblLaserMode
@@ -481,7 +467,6 @@ namespace LaserGRBL.RasterConverter
 			resources.ApplyResources(this.BtnOnOffInfo, "BtnOnOffInfo");
 			this.BtnOnOffInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnOnOffInfo.Caption = null;
-			this.BtnOnOffInfo.Coloration = System.Drawing.Color.Empty;
 			this.BtnOnOffInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnOnOffInfo.Image")));
 			this.BtnOnOffInfo.Name = "BtnOnOffInfo";
 			this.BtnOnOffInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -512,7 +497,6 @@ namespace LaserGRBL.RasterConverter
 			this.IIMaxPower.MaxValue = 1000;
 			this.IIMaxPower.MinValue = 1;
 			this.IIMaxPower.Name = "IIMaxPower";
-			this.IIMaxPower.NormalBorderColor = System.Drawing.SystemColors.ActiveBorder;
 			this.IIMaxPower.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMaxPowerCurrentValueChanged);
 			// 
 			// LblMinPerc
@@ -585,7 +569,7 @@ namespace LaserGRBL.RasterConverter
 
 		private UserControls.ImageButton BtnModulationInfo;
 		private UserControls.ImageButton BtnOnOffInfo;
-		private System.Windows.Forms.ComboBox CBLaserON;
+		private LaserGRBL.UserControls.FlatComboBox CBLaserON;
 		private System.Windows.Forms.ToolTip TT;
 		private System.Windows.Forms.Label LblBorderTracingmm;
 		private System.Windows.Forms.Label LblLinearFillingmm;

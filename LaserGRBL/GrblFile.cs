@@ -16,6 +16,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using LaserGRBL.SvgConverter;
+using LaserGRBL.Obj3D;
+using SharpGL.SceneGraph;
 
 namespace LaserGRBL
 {
@@ -30,8 +32,9 @@ namespace LaserGRBL
 		private List<GrblCommand> list = new List<GrblCommand>();
 		private ProgramRange mRange = new ProgramRange();
 		private TimeSpan mEstimatedTotalTime;
+		public List<GrblCommand> Commands => list;
 
-		public GrblFile()
+        public GrblFile()
 		{
 
 		}
@@ -1529,7 +1532,7 @@ namespace LaserGRBL
 					g.DrawLine(pen, d, 0, d, (float)h2);
 
 				for (float d = (float)hscale.FirstBig; d < wSize.Width; d += (float)hscale.BigStep)
-					DrawString(g, zoom, (decimal)d, (decimal)h3, d.ToString(format), false, false, !right, !top, ColorScheme.PreviewRuler);
+					DrawString(g, zoom, (decimal)d, (decimal)h3, d.ToString(format), false, false, !right, !top, ColorScheme.PreviewText);
 
 				//scala verticale
 
@@ -1545,7 +1548,7 @@ namespace LaserGRBL
 					g.DrawLine(pen, 0, d, (float)v2, d);
 
 				for (float d = (float)vscale.FirstBig; d < wSize.Height; d += (float)vscale.BigStep)
-					DrawString(g, zoom, (decimal)v3, (decimal)d, d.ToString(format), false, false, right, !top, ColorScheme.PreviewRuler, -90);
+					DrawString(g, zoom, (decimal)v3, (decimal)d, d.ToString(format), false, false, right, !top, ColorScheme.PreviewText, -90);
 			}
 		}
 
@@ -1596,9 +1599,7 @@ namespace LaserGRBL
 			g.Restore(state);               // Restore the graphics state.
 		}
 
-
-
-		System.Collections.Generic.IEnumerator<GrblCommand> IEnumerable<GrblCommand>.GetEnumerator()
+        System.Collections.Generic.IEnumerator<GrblCommand> IEnumerable<GrblCommand>.GetEnumerator()
 		{ return list.GetEnumerator(); }
 
 
