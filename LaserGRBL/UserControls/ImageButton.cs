@@ -12,6 +12,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LaserGRBL.UserControls
 {
@@ -212,33 +213,38 @@ namespace LaserGRBL.UserControls
                 else
                 {
                     float direction = ColorScheme.DarkScheme ? 1 : -1;
-                    Color borderColor = (Tmp.Tag as LoadedImageTag).Color;
-                    if (DrawDisabled())
+                    Color borderColor = ColorScheme.ControlsBorder;
+                    if (Tmp != null)
                     {
-                        Tmp = Base.Drawing.ImageTransform.SetColor(Tmp, ColorScheme.DisabledButtons);
-                        borderColor = ColorScheme.DisabledButtons;
-                    }
-                    else
-                    {
-                        if (IsMouseInside())
+                        LoadedImageTag tag = Tmp.Tag as LoadedImageTag;
+                        borderColor = tag?.Color ?? ColorScheme.ControlsBorder;
+                        if (DrawDisabled())
                         {
-                            if (MouseButtons == MouseButtons.Left)
-                            {
-                                borderColor = ColorScheme.ChangeColorBrightness(borderColor, 0.3F * direction);
-                                Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.3F * direction);
-                                Point = new Point(Point.X + CLICK_SCALE_IN_PIXEL, CLICK_SCALE_IN_PIXEL);
-                                Size.Width -= CLICK_SCALE_IN_PIXEL * 2;
-                                Size.Height -= CLICK_SCALE_IN_PIXEL * 2;
-                            }
-                            else
-                            {
-                                borderColor = ColorScheme.ChangeColorBrightness(borderColor, 0.2F * direction);
-                                Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.2F * direction);
-                            }
+                            Tmp = Base.Drawing.ImageTransform.SetColor(Tmp, ColorScheme.DisabledButtons);
+                            borderColor = ColorScheme.DisabledButtons;
                         }
                         else
                         {
-                            //Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0);
+                            if (IsMouseInside())
+                            {
+                                if (MouseButtons == MouseButtons.Left)
+                                {
+                                    borderColor = ColorScheme.ChangeColorBrightness(borderColor, 0.3F * direction);
+                                    Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.3F * direction);
+                                    Point = new Point(Point.X + CLICK_SCALE_IN_PIXEL, CLICK_SCALE_IN_PIXEL);
+                                    Size.Width -= CLICK_SCALE_IN_PIXEL * 2;
+                                    Size.Height -= CLICK_SCALE_IN_PIXEL * 2;
+                                }
+                                else
+                                {
+                                    borderColor = ColorScheme.ChangeColorBrightness(borderColor, 0.2F * direction);
+                                    Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0.2F * direction);
+                                }
+                            }
+                            else
+                            {
+                                //Tmp = Base.Drawing.ImageTransform.Brightness(Tmp, 0);
+                            }
                         }
                     }
 
