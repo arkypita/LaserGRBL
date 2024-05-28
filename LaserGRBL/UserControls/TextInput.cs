@@ -37,6 +37,10 @@ namespace LaserGRBL.UserControls
             base.OnPaint(e);
         }
 
-    }
+		private void mTextBox_TextChanged(object sender, System.EventArgs e)
+		{
+			OnTextChanged(e);
+		}
+	}
 
 }
