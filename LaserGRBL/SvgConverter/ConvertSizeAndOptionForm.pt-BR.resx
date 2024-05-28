@@ -165,12 +165,12 @@
   <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
     <value>Grbl suporta saida variável de energia para produzir escala de cinza, Isto requer que seu hardware possua controle TTL para o laser
 
-Click aqui para obter mais informações...</value>
+Clique aqui para obter mais informações...</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
-    <value>Laser Ligado: (M3) é o modo padrão.
-No GRBL V1.1 o modo de energia dinâmico (M4)  também é suportado. 
-Laser Desligado: Somente o comando (M5) é suportado.     
+    <value>Laser Ligado: M3 é o modo padrão.
+No GRBL V1.1 o modo de energia dinâmico M4  também é suportado. 
+Laser Desligado: Somente o comando M5 é suportado.     
 
 Clique aqui para obter mais informações...</value>
   </data>
@@ -205,6 +205,17 @@ Clique aqui para obter mais informações...</value>
     <value>100%</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Imágem Desejada</value>
+    <value>Imagem Desejada</value>
+  </data>
+  <data name="labelFilter.Text" xml:space="preserve">
+    <value>Cor</value>
+  </data>
+  <data name="gbFilter.Text" xml:space="preserve">
+    <value>Filtro</value>
+  </data>
+  <data name="BtnColorFilter.ToolTip" xml:space="preserve">
+    <value>Selecione a cor para filtrar a imagem
+
+Clique para mais informações...</value>
   </data>
 </root>

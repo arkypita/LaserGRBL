@@ -188,7 +188,7 @@ Baixe manualmente a nova versão do site lasergrbl.</value>
     <value>PesoMédio</value>
   </data>
   <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
-    <value>Smooth (HQ Bicubic)</value>
+    <value>Suave (HQ Bicubic)</value>
   </data>
   <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
     <value>Sharp (Vizinho mais próximo)</value>
@@ -224,7 +224,7 @@ Baixe manualmente a nova versão do site lasergrbl.</value>
     <value>Espera</value>
   </data>
   <data name="MacStatusJog" xml:space="preserve">
-    <value>Jog</value>
+    <value>Correr</value>
   </data>
   <data name="MacStatusRun" xml:space="preserve">
     <value>Executar</value>
@@ -431,9 +431,18 @@ Se precisar de ajuda, clique em "?" botão.</value>
     <value>Aviso</value>
   </data>
   <data name="BoxMachineSizeOutOfRangeText" xml:space="preserve">
-    <value>O gravador tem alguns parâmetros de configuração fora do intervalo. Verifique a configuração da máquina (menu "Grbl", "Grbl Configuration") parâmetros 130 e 131.</value>
+    <value>O gravador tem alguns parâmetros de configuração fora do intervalo. Verifique a configuração da máquina (menu "Grbl", "Configuração Grbl ") parâmetros 130 e 131.</value>
   </data>
   <data name="BoxWriteConfigWithoutError" xml:space="preserve">
     <value>{0} Configuração gravada com sucesso!</value>
+  </data>
+  <data name="PreviewChangesRequiresRestart" xml:space="preserve">
+    <value>É necessário reiniciar para aplicar a mudanças de pre-visualização. Reiniciar agora?</value>
+  </data>
+  <data name="IconsChangesRequiresRestart" xml:space="preserve">
+    <value>É necessário reiniciar para aplicar as mudanças de ícones. Reiniciar agora ?</value>
+  </data>
+  <data name="MdiIconCaption" xml:space="preserve">
+    <value>Código de Ícone MDI</value>
   </data>
 </root>

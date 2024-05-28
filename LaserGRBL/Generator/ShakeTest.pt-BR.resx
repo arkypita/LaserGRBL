@@ -117,35 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Linhas/mm</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Ajustes da Resolução</value>
-  </data>
-  <data name="LblLinearFilling.Text" xml:space="preserve">
-    <value>($100) Resolução do hardware</value>
-  </data>
-  <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Cancelar</value>
-  </data>
-  <data name="LblLinearFillingmm.Text" xml:space="preserve">
-    <value>Passos/mm</value>
-  </data>
-  <data name="LblBorderTracingmm.Text" xml:space="preserve">
-    <value>Linhas/mm</value>
-  </data>
-  <data name="BtnCreate.Text" xml:space="preserve">
-    <value>Confirmar</value>
-  </data>
-  <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>Resolução desejada</value>
-  </data>
-  <data name="linkLabel1.Text" xml:space="preserve">
-    <value>Se a resolução não puder ser alcançada devido ao passo do motor, algumas falhas podem aparecer.
-Clique aqui para obter mais informações</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Resolução calculada</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Este teste permite verificar a confiabilidade de sua máquina na execução de movimentos rápidos sem esalinhamentos de posição.
+É um teste fundamental para o ajuste fino do seu gravador.
+
+Ele funciona gravando uma pequena cruz de referência, em seguida balançando a cabeça do laser com muitos movimentos rápidos e depois voltando à posição original e traçando a cruz novamente.
+
+O teste é concluído com sucesso se o cruzamento inicial e o cruzamento final corresponderem (sobreposição).
+Se o seu gravador não conseguir concluir este teste com sucesso, você precisará verificar:
+
+1. Que a máquina não escorregue sobre a mesa devido às vibrações durante o trabalho.
+2. A própria mesa e a peça de trabalho não tremem durante o teste, devido a vibrações.
+3. Que as correias de transmissão estejam tensionadas corretamente
+4. Os parafusos e porcas estão corretamente apertados
+5. O carro do laser não tem resistência mecânica durante o movimento em alguns pontos de seu percurso
+6. Os fios elétricos não atuam como obstáculo ao movimento e não se desprendem/movem de seus conectores durante o movimento.
+
+Se estas condições forem atendidas, mas a máquina não for capaz de realizar este teste com sucesso, você pode tentar diminuir ligeiramente os limites de velocidade definidos na "Configuração Grbl ($110-$111)" ou acelerações máximas.</value>
   </data>
 </root>

@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>LICENÇA PÚBLICA GERAL GNU
+Versão 3, 29 de junho de 2007
+
+Copyright © 2007 Free Software Foundation, Inc.
+
+Todos têm permissão para copiar e distribuir cópias literais deste documento de licença, mas não é permitido alterá-lo.
+
+Preâmbulo
+A Licença Pública Geral GNU é uma licença copyleft gratuita para software e outros tipos de obras.
+
+As licenças para a maioria dos softwares e outros trabalhos práticos são projetadas para tirar sua liberdade de compartilhar e alterar os trabalhos. Por outro lado, a Licença Pública Geral GNU destina-se a garantir a sua liberdade de compartilhar e alterar todas as versões de um programa – para garantir que ele permaneça software livre para todos os seus usuários. Nós, a Free Software Foundation, usamos a Licença Pública Geral GNU para a maioria dos nossos softwares; aplica-se também a qualquer outro trabalho divulgado desta forma pelos seus autores. Você também pode aplicá-lo aos seus programas.
+
+Quando falamos de software livre, estamos nos referindo à liberdade, não ao preço. Nossas licenças públicas gerais são projetadas para garantir que você tenha a liberdade de distribuir cópias de software gratuito (e cobrar por elas, se desejar), que receba o código-fonte ou possa obtê-lo se desejar, que possa alterar o software ou usar partes dele em novos programas gratuitos, e que você sabe que pode fazer essas coisas.
+
+Para proteger os seus direitos, precisamos de evitar que outras pessoas lhe neguem esses direitos ou lhe peçam que renuncie a eles. Portanto, você tem certas responsabilidades se distribuir cópias do software ou se modificá-lo: responsabilidades de respeitar a liberdade de outras pessoas.
+
+Por exemplo, se você distribuir cópias de tal programa, seja gratuitamente ou mediante pagamento, deverá transmitir aos destinatários as mesmas liberdades que recebeu. Você deve garantir que eles também recebam ou possam obter o código-fonte. E você deve mostrar-lhes estes termos para que conheçam seus direitos.
+
+Os desenvolvedores que usam a GNU GPL protegem seus direitos em duas etapas: (1) reivindicam os direitos autorais do software e (2) oferecem a você esta licença, dando-lhe permissão legal para copiá-lo, distribuí-lo e/ou modificá-lo.
+
+Para proteção dos desenvolvedores e autores, a GPL explica claramente que não há garantia para este software livre. Para o bem dos usuários e dos autores, a GPL exige que as versões modificadas sejam marcadas como alteradas, para que seus problemas não sejam atribuídos erroneamente aos autores de versões anteriores.
+
+Alguns dispositivos são projetados para negar aos usuários acesso para instalar ou executar versões modificadas do software dentro deles, embora o fabricante possa fazê-lo. Isto é fundamentalmente incompatível com o objectivo de proteger a liberdade dos utilizadores de alterar o software. O padrão sistemático de tal abuso ocorre na área dos produtos de uso individual, que é precisamente onde é mais inaceitável. Portanto, criamos esta versão da GPL para proibir a prática desses produtos. Se tais problemas surgirem substancialmente noutros domínios, estamos prontos a alargar esta disposição a esses domínios em versões futuras da GPL, conforme necessário para proteger a liberdade dos utilizadores.
+
+Finalmente, todo programa é constantemente ameaçado por patentes de software. Os Estados não devem permitir que as patentes restrinjam o desenvolvimento e a utilização de software em computadores de uso geral, mas naqueles que o fazem, desejamos evitar o perigo especial de que as patentes aplicadas a um programa livre possam torná-lo efectivamente proprietário. Para evitar isso, a GPL garante que as patentes não podem ser usadas para tornar o programa não-livre.
+
+Seguem os termos e condições precisos para cópia, distribuição e modificação.
+
+TERMOS E CONDIÇÕES
+0. Definições.
+“Esta Licença” refere-se à versão 3 da Licença Pública Geral GNU.
+
+“Direitos autorais” também significa leis semelhantes a direitos autorais que se aplicam a outros tipos de obras, como máscaras semicondutoras.
+
+“O Programa” refere-se a qualquer trabalho protegido por direitos autorais licenciado sob esta Licença. Cada licenciado é tratado como “você”. “Licenciados” e “destinatários” podem ser indivíduos ou organizações.
+
+“Modificar” uma obra significa copiar ou adaptar a totalidade ou parte da obra de uma forma que exija permissão de direitos autorais, exceto a realização de uma cópia exata. O trabalho resultante é chamado de “versão modificada” do trabalho anterior ou de trabalho “baseado” no trabalho anterior.
+
+Uma “obra coberta” significa o Programa não modificado ou uma obra baseada no Programa.
+
+“Propagar” uma obra significa fazer qualquer coisa com ela que, sem permissão, o tornaria direta ou secundariamente responsável pela violação da lei de direitos autorais aplicável, exceto executá-la em um computador ou modificar uma cópia privada. A propagação inclui cópia, distribuição (com ou sem modificação), disponibilização ao público e, em alguns países, também outras atividades.
+
+“Transmitir” uma obra significa qualquer tipo de propagação que permita a terceiros fazer ou receber cópias. A mera interação com um usuário através de uma rede de computadores, sem transferência de cópia, não é transmitida.
+
+Uma interface de usuário interativa exibe “Avisos Legais Apropriados” na medida em que inclui um recurso conveniente e bem visível que (1) exibe um aviso de direitos autorais apropriado e (2) informa ao usuário que não há garantia para o trabalho (exceto para na medida em que as garantias são fornecidas), que os licenciados podem transmitir o trabalho sob esta Licença e como visualizar uma cópia desta Licença. Se a interface apresentar uma lista de comandos ou opções do usuário, como um menu, um item de destaque na lista atende a esse critério.
+
+1. Código Fonte.
+O “código-fonte” de uma obra significa a forma preferida da obra para fazer modificações nela. “Código objeto” significa qualquer forma de obra que não seja a fonte.
+
+Uma “Interface Padrão” significa uma interface que é um padrão oficial definido por um órgão de padronização reconhecido ou, no caso de interfaces especificadas para uma linguagem de programação específica, uma que é amplamente utilizada entre desenvolvedores que trabalham nessa linguagem.
+
+As “Bibliotecas de Sistema” de um trabalho executável incluem qualquer coisa, exceto o trabalho como um todo, que (a) esteja incluído na forma normal de empacotamento de um Componente Principal, mas que não faça parte desse Componente Principal, e (b) serve apenas para permitir o uso do trabalho com aquele Componente Principal ou para implementar uma Interface Padrão para a qual uma implementação está disponível ao público em forma de código-fonte. Um “Componente Principal”, neste contexto, significa um componente essencial importante (kernel, sistema de janelas e assim por diante) do sistema operacional específico (se houver) no qual o trabalho executável é executado, ou um compilador usado para produzir o trabalho, ou um interpretador de código objeto usado para executá-lo.
+
+A “Fonte Correspondente” para uma obra em forma de código-objeto significa todo o código-fonte necessário para gerar, instalar e (para uma obra executável) executar o código-objeto e modificar a obra, incluindo scripts para controlar essas atividades. No entanto, não inclui as Bibliotecas de Sistema do trabalho, nem ferramentas de uso geral ou programas gratuitos geralmente disponíveis que são usados ​​sem modificações na execução dessas atividades, mas que não fazem parte do trabalho. Por exemplo, a Fonte Correspondente inclui arquivos de definição de interface associados aos arquivos de origem do trabalho e o código-fonte para bibliotecas compartilhadas e subprogramas vinculados dinamicamente que o trabalho foi projetado especificamente para exigir, como por comunicação íntima de dados ou fluxo de controle entre esses subprogramas e outras partes do trabalho.
+
+A Fonte Correspondente não precisa incluir nada que os usuários possam regenerar automaticamente de outras partes da Fonte Correspondente.
+
+A Fonte Correspondente para uma obra em forma de código-fonte é essa mesma obra.
+
+2. Permissões básicas.
+Todos os direitos concedidos sob esta Licença são concedidos durante a vigência dos direitos autorais do Programa e são irrevogáveis, desde que as condições declaradas sejam atendidas. Esta Licença afirma explicitamente a sua permissão ilimitada para executar o Programa não modificado. O resultado da execução de uma obra coberta é coberto por esta Licença somente se o resultado, dado o seu conteúdo, constituir uma obra coberta. Esta Licença reconhece seus direitos de uso justo ou outro equivalente, conforme previsto pela lei de direitos autorais.
+
+Você pode criar, executar e propagar trabalhos cobertos que não transmite, sem condições, desde que sua licença permaneça em vigor. Você pode transmitir trabalhos cobertos a terceiros com o único propósito de que eles façam modificações exclusivamente para você, ou fornecer-lhe facilidades para executar esses trabalhos, desde que você cumpra os termos desta Licença ao transmitir todo o material sobre o qual você não tem controle. direito autoral. Aqueles que fizerem ou executarem os trabalhos cobertos para você deverão fazê-lo exclusivamente em seu nome, sob sua direção e controle, em termos que os proíbam de fazer quaisquer cópias de seu material protegido por direitos autorais fora do relacionamento com você.
+
+O transporte sob quaisquer outras circunstâncias é permitido somente nas condições indicadas abaixo. O sublicenciamento não é permitido; a seção 10 torna isso desnecessário.
+
+3. Protegendo os Direitos Legais dos Usuários da Lei Anti-Evasão.
+Nenhuma obra abrangida será considerada parte de uma medida tecnológica eficaz ao abrigo de qualquer lei aplicável que cumpra as obrigações previstas no artigo 11.º do tratado de direitos de autor da OMPI adoptado em 20 de Dezembro de 1996, ou de leis semelhantes que proíbam ou restrinjam a evasão de tais medidas.
+
+Ao transmitir uma obra coberta, você renuncia a qualquer poder legal para proibir a evasão de medidas tecnológicas, na medida em que tal evasão seja efetuada pelo exercício de direitos sob esta Licença com relação à obra coberta, e você renuncia a qualquer intenção de limitar a operação ou modificação do trabalho coberto. trabalho como meio de fazer cumprir, contra os usuários do trabalho, os seus direitos legais ou de terceiros de proibir a evasão de medidas tecnológicas.
+
+4. Transmissão de cópias literais.
+Você pode transmitir cópias literais do código-fonte do Programa conforme o recebe, em qualquer meio, desde que publique de forma visível e apropriada em cada cópia um aviso de direitos autorais apropriado; manter intactos todos os avisos declarando que esta Licença e quaisquer termos não permissivos adicionados de acordo com a seção 7 se aplicam ao código; manter intactos todos os avisos de ausência de qualquer garantia; e forneça a todos os destinatários uma cópia desta Licença junto com o Programa.
+
+Você pode cobrar qualquer preço ou nenhum preço por cada cópia que transmitir e pode oferecer suporte ou proteção de garantia mediante o pagamento de uma taxa.
+
+5. Transmissão de versões de fontes modificadas.
+Você poderá transmitir um trabalho baseado no Programa, ou as modificações para produzi-lo a partir do Programa, na forma de código-fonte sob os termos da seção 4, desde que você também atenda a todas estas condições:
+
+a) O trabalho deve conter avisos em destaque informando que você o modificou e informando uma data relevante.
+b) O trabalho deve conter avisos proeminentes informando que foi lançado sob esta Licença e quaisquer condições adicionadas na seção 7. Este requisito modifica o requisito na seção 4 para “manter intactos todos os avisos”.
+c) Você deve licenciar a obra inteira, como um todo, sob esta Licença para qualquer pessoa que possua uma cópia. Esta Licença será, portanto, aplicável, juntamente com quaisquer termos adicionais aplicáveis ​​da seção 7, à totalidade da obra e a todas as suas partes, independentemente de como elas sejam embaladas. Esta Licença não dá permissão para licenciar o trabalho de qualquer outra forma, mas não invalida tal permissão se você a tiver recebido separadamente.
+d) Se o trabalho possuir interfaces de usuário interativas, cada uma deverá exibir Avisos Legais Apropriados; entretanto, se o Programa tiver interfaces interativas que não exibem Avisos Legais Apropriados, seu trabalho não precisará obrigar eles a fazê-lo.
+Uma compilação de uma obra coberta com outras obras separadas e independentes, que não são, por sua natureza, extensões da obra coberta, e que não são combinadas com ela de modo a formar um programa maior, em ou sobre um volume de armazenamento ou distribuição meio, é chamado de “agregado” se a compilação e seus direitos autorais resultantes não forem usados ​​para limitar o acesso ou os direitos legais dos usuários da compilação além do que as obras individuais permitem. A inclusão de uma obra coberta num agregado não faz com que esta Licença se aplique às outras partes do agregado.
+
+6. Transmissão de formulários não originais.
+Você pode transmitir um trabalho coberto em forma de código objeto sob os termos das seções 4 e 5, desde que você também transmita a Fonte Correspondente legível por máquina sob os termos desta Licença, de uma destas maneiras:
+
+a) Transmitir o código objeto ou incorporado em um produto físico (incluindo um meio de distribuição físico), acompanhado da Fonte Correspondente fixada em um meio físico durável normalmente usado para intercâmbio de software.
+b) Transmitir o código objeto em, ou incorporado em, um produto físico (incluindo um meio de distribuição físico), acompanhado de uma oferta por escrito, válida por pelo menos três anos e válida enquanto você oferecer peças de reposição ou suporte ao cliente para esse modelo de produto, para fornecer a qualquer pessoa que possua o código objeto (1) uma cópia da Fonte Correspondente para todo o software no produto coberto por esta Licença, em um meio físico durável normalmente usado para intercâmbio de software, por um preço não mais do que o seu custo razoável de realizar fisicamente esta transmissão da fonte, ou (2) acesso para copiar a Fonte Correspondente de um servidor de rede sem nenhum custo.
+c) Transmitir cópias individuais do código objeto com uma cópia da oferta por escrito para fornecer a Fonte Correspondente. Esta alternativa é permitida apenas ocasionalmente e de forma não comercial, e somente se você recebeu o código objeto com tal oferta, de acordo com a subseção 6b.
+d) Transmitir o código objeto oferecendo acesso a partir de um local designado (gratuito ou mediante pagamento), e oferecer acesso equivalente à Fonte Correspondente da mesma forma, através do mesmo local, sem custo adicional. Você não precisa exigir que os destinatários copiem a Fonte Correspondente junto com o código do objeto. Se o local para copiar o código-objeto for um servidor de rede, a Fonte Correspondente poderá estar em um servidor diferente (operado por você ou por terceiros) que suporte recursos de cópia equivalentes, desde que você mantenha instruções claras ao lado do código-objeto informando para onde copiar. encontre a fonte correspondente. Independentemente do servidor que hospeda a Fonte Correspondente, você permanece obrigado a garantir que ela esteja disponível pelo tempo necessário para satisfazer esses requisitos.
+e) Transmitir o código-objeto usando transmissão ponto a ponto, desde que você informe outros pares onde o código-objeto e a fonte correspondente do trabalho estão sendo oferecidos ao público em geral gratuitamente nos termos da subseção 6d.
+Uma parte separável do código-objeto, cujo código-fonte é excluído da Fonte Correspondente como uma Biblioteca do Sistema, não precisa ser incluída na transmissão do trabalho do código-objeto.
+
+Um “Produto de Usuário” é (1) um “produto de consumo”, o que significa qualquer propriedade pessoal tangível que normalmente é usada para fins pessoais, familiares ou domésticos, ou (2) qualquer coisa projetada ou vendida para incorporação em uma residência. Ao determinar se um produto é um produto de consumo, os casos duvidosos serão resolvidos em favor da cobertura. Para um determinado produto recebido por um determinado usuário, “normalmente usado” refere-se ao uso típico ou comum daquela classe de produto, independentemente do status do usuário específico ou da maneira como o usuário específico realmente usa, ou espera ou espera usar o produto. Um produto é um produto de consumo, independentemente de o produto ter utilizações comerciais, industriais ou não de consumo substanciais, a menos que tais utilizações representem o único modo significativo de utilização do produto.
+
+“Informações de Instalação” para um Produto do Usuário significa quaisquer métodos, procedimentos, chaves de autorização ou outras informações necessárias para instalar e executar versões modificadas de um trabalho coberto nesse Produto do Usuário a partir de uma versão modificada de sua Fonte Correspondente. As informações devem ser suficientes para garantir que o funcionamento contínuo do código-objeto modificado não seja, em caso algum, impedido ou interferido apenas porque a modificação foi feita.
+
+Se você transmitir um código-objeto que funcione sob esta seção em, ou com, ou especificamente para uso em, um Produto do Usuário, e a transmissão ocorrer como parte de uma transação na qual o direito de posse e uso do Produto do Usuário é transferido para o destinatário em caráter perpétuo ou por prazo determinado (independentemente de como a transação seja caracterizada), a Fonte Correspondente veiculada nesta seção deverá ser acompanhada das Informações de Instalação. Mas este requisito não se aplica se nem você nem terceiros mantiverem a capacidade de instalar código-objeto modificado no Produto do Usuário (por exemplo, o trabalho foi instalado em ROM).
+
+A exigência de fornecer Informações de Instalação não inclui a exigência de continuar a fornecer serviço de suporte, garantia ou atualizações para um trabalho que tenha sido modificado ou instalado pelo destinatário, ou para o Produto do Usuário no qual tenha sido modificado ou instalado. O acesso a uma rede pode ser negado quando a própria modificação afeta material e negativamente a operação da rede ou viola as regras e protocolos de comunicação através da rede.
+
+A fonte correspondente transmitida e as informações de instalação fornecidas, de acordo com esta seção, devem estar em um formato documentado publicamente (e com uma implementação disponível ao público na forma de código-fonte) e não devem exigir nenhuma senha ou chave especial para descompactar, ler ou copiando.
+
+7. Termos Adicionais.
+“Permissões adicionais” são termos que complementam os termos desta Licença, abrindo exceções a uma ou mais de suas condições. Permissões adicionais que sejam aplicáveis ​​a todo o Programa serão tratadas como se estivessem incluídas nesta Licença, na medida em que sejam válidas sob a lei aplicável. Se permissões adicionais se aplicarem apenas a parte do Programa, essa parte poderá ser usada separadamente sob essas permissões, mas todo o Programa permanecerá regido por esta Licença, independentemente das permissões adicionais.
+
+Ao transmitir uma cópia de uma obra coberta, você pode, a seu critério, remover quaisquer permissões adicionais dessa cópia ou de qualquer parte dela. (Permissões adicionais podem ser escritas para exigir sua própria remoção em certos casos quando você modifica o trabalho.) Você pode colocar permissões adicionais em material adicionado por você a um trabalho coberto, para o qual você tem ou pode conceder permissão de direitos autorais apropriada.
+
+Não obstante qualquer outra disposição desta Licença, para material adicionado a uma obra coberta, você poderá (se autorizado pelos detentores dos direitos autorais desse material) complementar os termos desta Licença com os termos:
+
+a) Isenção de garantia ou limitação de responsabilidade diferentemente dos termos das seções 15 e 16 desta Licença; ou
+b) Exigir a preservação de avisos legais razoáveis ​​especificados ou atribuições de autor nesse material ou nos Avisos Legais Apropriados exibidos por obras que o contenham; ou
+c) Proibir a deturpação da origem desse material, ou exigir que versões modificadas de tal material sejam marcadas de forma razoável como diferentes da versão original; ou
+d) Limitar a utilização para fins publicitários de nomes de licenciantes ou autores do material; ou
+e) Recusar-se a conceder direitos sob a lei de marcas para uso de alguns nomes comerciais, marcas registradas ou marcas de serviço; ou
+f) Exigir indenização dos licenciantes e autores desse material por qualquer pessoa que transmita o material (ou versões modificadas dele) com suposições contratuais de responsabilidade para o destinatário, por qualquer responsabilidade que essas suposições contratuais imponham diretamente a esses licenciantes e autores.
+Todos os outros termos adicionais não permissivos são considerados “restrições adicionais” dentro do significado da seção 10. Se o Programa tal como você o recebeu, ou qualquer parte dele, contiver um aviso declarando que é regido por esta Licença junto com um termo que é uma restrição adicional, você pode remover esse termo. Se um documento de licença contiver uma restrição adicional, mas permitir o relicenciamento ou transmissão sob esta Licença, você poderá adicionar a um material de trabalho coberto regido pelos termos desse documento de licença, desde que a restrição adicional não sobreviva a tal relicenciamento ou transmissão.
+
+Se você adicionar termos a um trabalho coberto de acordo com esta seção, deverá colocar, nos arquivos de origem relevantes, uma declaração dos termos adicionais que se aplicam a esses arquivos ou um aviso indicando onde encontrar os termos aplicáveis.
+
+Termos adicionais, permissivos ou não permissivos, podem ser declarados na forma de uma licença escrita separadamente ou declarados como exceções; os requisitos acima se aplicam de qualquer maneira.
+
+8. Rescisão.
+Você não pode propagar ou modificar uma obra coberta, exceto conforme expressamente previsto nesta Licença. Qualquer tentativa de propagá-la ou modificá-la será nula e encerrará automaticamente seus direitos sob esta Licença (incluindo quaisquer licenças de patente concedidas sob o terceiro parágrafo da seção 11).
+
+No entanto, se você cessar todas as violações desta Licença, então sua licença de um determinado detentor de direitos autorais será restabelecida (a) provisoriamente, a menos e até que o detentor dos direitos autorais rescinda explícita e definitivamente sua licença, e (b) permanentemente, se o detentor dos direitos autorais falhar notificá-lo da violação por algum meio razoável antes de 60 dias após a cessação.
+
+Além disso, sua licença de um determinado detentor de direitos autorais será restabelecida permanentemente se o detentor dos direitos autorais notificá-lo da violação por algum meio razoável. Esta é a primeira vez que você recebe um aviso de violação desta Licença (para qualquer trabalho) desse detentor de direitos autorais, e você sanará a violação antes de 30 dias após o recebimento da notificação.
+
+A rescisão de seus direitos sob esta seção não encerra as licenças das partes que receberam cópias ou direitos de você sob esta Licença. Se os seus direitos foram rescindidos e não restabelecidos permanentemente, você não se qualifica para receber novas licenças para o mesmo material nos termos da seção 10.
+
+9. Aceitação não necessária para cópias.
+Você não é obrigado a aceitar esta Licença para receber ou executar uma cópia do Programa. A propagação auxiliar de uma obra abrangida que ocorra apenas como consequência da utilização da transmissão peer-to-peer para receber uma cópia também não requer aceitação. No entanto, nada além desta Licença lhe concede permissão para propagar ou modificar qualquer trabalho coberto. Essas ações infringem os direitos autorais se você não aceitar esta Licença. Portanto, ao modificar ou propagar uma obra coberta, você indica sua aceitação desta Licença para fazê-lo.
+
+10. Licenciamento Automático de Destinatários Downstream.
+Cada vez que você transmite uma obra coberta, o destinatário recebe automaticamente uma licença dos licenciantes originais para executar, modificar e propagar essa obra, sujeita a esta Licença. Você não é responsável por garantir a conformidade de terceiros com esta Licença.
+
+Uma “transação de entidade” é uma transação que transfere o controle de uma organização, ou substancialmente todos os ativos de uma, ou subdivide uma organização, ou funde organizações. Se a propagação de uma obra coberta resultar de uma transação de entidade, cada parte dessa transação que recebe uma cópia da obra também recebe quaisquer licenças para a obra que o antecessor interessado da parte tinha ou poderia conceder nos termos do parágrafo anterior, além de um direito de posse da Fonte Correspondente do trabalho do antecessor em interesse, se o antecessor o tiver ou puder obtê-lo com esforços razoáveis.
+
+Você não poderá impor quaisquer restrições adicionais ao exercício dos direitos concedidos ou afirmados sob esta Licença. Por exemplo, você não pode impor uma taxa de licença, royalties ou outro encargo pelo exercício dos direitos concedidos sob esta Licença, e não pode iniciar um litígio (incluindo uma reclamação cruzada ou reconvenção em uma ação judicial) alegando que qualquer reivindicação de patente foi infringida fazendo, usando, vendendo, colocando à venda ou importando o Programa ou qualquer parte dele.
+
+11. Patentes.
+Um “colaborador” é um detentor de direitos autorais que autoriza o uso sob esta Licença do Programa ou de um trabalho no qual o Programa se baseia. A obra assim licenciada é chamada de “versão do contribuidor”.
+
+As “reivindicações de patente essenciais” de um contribuidor são todas as reivindicações de patente pertencentes ou controladas pelo contribuidor, já adquiridas ou adquiridas posteriormente, que seriam infringidas de alguma maneira, permitida por esta Licença, de fazer, usar ou vender sua versão do contribuidor, mas não incluem reivindicações que seriam infringidas apenas como consequência de modificações adicionais na versão do contribuidor. Para fins desta definição, “controle” inclui o direito de conceder sublicenças de patentes de maneira consistente com os requisitos desta Licença.
+
+Cada contribuidor concede a você uma licença de patente não exclusiva, mundial e isenta de royalties sob as reivindicações de patente essenciais do contribuidor, para fazer, usar, vender, colocar à venda, importar e de outra forma executar, modificar e propagar o conteúdo de sua versão do contribuidor.
+
+Nos três parágrafos seguintes, uma “licença de patente” é qualquer acordo ou compromisso expresso, independentemente da denominação, de não fazer cumprir uma patente (como uma permissão expressa para praticar uma patente ou pacto de não processar por violação de patente). “Conceder” tal licença de patente a uma parte significa fazer tal acordo ou compromisso de não fazer valer uma patente contra a parte.
+
+Se você transmitir uma obra coberta, contando conscientemente com uma licença de patente, e a Fonte Correspondente da obra não estiver disponível para qualquer pessoa copiar, gratuitamente e sob os termos desta Licença, através de um servidor de rede disponível publicamente ou outro prontamente acessível significa, então você deve (1) fazer com que a Fonte Correspondente esteja disponível, ou (2) providenciar a privação do benefício da licença de patente para este trabalho específico, ou (3) providenciar, de maneira consistente com o requisitos desta Licença, para estender a licença de patente aos destinatários a jusante. “Confiar conscientemente” significa que você tem conhecimento real de que, se não fosse pela licença de patente, a transmissão da obra coberta em um país, ou o uso da obra coberta pelo destinatário em um país, infringiria uma ou mais patentes identificáveis ​​naquele país que você têm motivos para acreditar que são válidos.
+
+Se, de acordo com ou em conexão com uma única transação ou acordo, você transmitir ou propagar através da aquisição de transmissão de uma obra coberta e conceder uma licença de patente a algumas das partes que recebem a obra coberta, autorizando-as a usar, propagar, modificar ou transmitir uma cópia específica da obra coberta, a licença de patente que você concede será automaticamente estendida a todos os destinatários da obra coberta e das obras baseadas nela.
+
+Uma licença de patente é “discriminatória” se não incluir no âmbito de sua cobertura, proibir o exercício ou estiver condicionada ao não exercício de um ou mais dos direitos especificamente concedidos sob esta Licença. Você não poderá transmitir um trabalho coberto se for parte de um acordo com um terceiro que atua no ramo de distribuição de software, sob o qual você efetua o pagamento ao terceiro com base na extensão de sua atividade de transmissão do trabalho, e sob o qual o terceiro concede, a qualquer uma das partes que receberia o trabalho coberto de você, uma licença de patente discriminatória (a) em conexão com cópias do trabalho coberto transmitidas por você (ou cópias feitas a partir dessas cópias), ou ( b) principalmente para e em conexão com produtos ou compilações específicas que contenham o trabalho coberto, a menos que você tenha celebrado esse acordo ou que a licença de patente tenha sido concedida antes de 28 de março de 2007.
+
+Nada nesta Licença deve ser interpretado como excluindo ou limitando qualquer licença implícita ou outras defesas contra infrações que possam estar disponíveis para você de acordo com a lei de patentes aplicável.
+
+12. Nenhuma renúncia à liberdade dos outros.
+Se condições forem impostas a você (seja por ordem judicial, acordo ou de outra forma) que contradigam as condições desta Licença, elas não isentarão você das condições desta Licença. Se você não puder transmitir uma obra coberta de modo a satisfazer simultaneamente suas obrigações sob esta Licença e quaisquer outras obrigações pertinentes, então, como consequência, você não poderá transmiti-la de forma alguma. Por exemplo, se você concordar com os termos que o obrigam a cobrar royalties para posterior transmissão daqueles a quem você transmite o Programa, a única maneira de satisfazer ambos os termos e esta Licença seria abster-se totalmente de transmitir o Programa.
+
+13. Use com a Licença Pública Geral GNU Affero.
+Não obstante qualquer outra disposição desta Licença, você tem permissão para vincular ou combinar qualquer trabalho coberto com um trabalho licenciado sob a versão 3 da Licença Pública Geral GNU Affero em um único trabalho combinado e transmitir o trabalho resultante. Os termos desta Licença continuarão a ser aplicados à parte que é a obra coberta, mas os requisitos especiais da Licença Pública Geral GNU Affero, seção 13, relativos à interação através de uma rede serão aplicados à combinação como tal.
+
+14. Versões Revisadas desta Licença.
+A Free Software Foundation pode publicar versões revisadas e/ou novas da Licença Pública Geral GNU de tempos em tempos. Essas novas versões serão semelhantes em espírito à versão atual, mas poderão diferir em detalhes para abordar novos problemas ou preocupações.
+
+Cada versão recebe um número de versão distinto. Se o Programa especificar que uma determinada versão numerada da Licença Pública Geral GNU “ou qualquer versão posterior” se aplica a ele, você terá a opção de seguir os termos e condições dessa versão numerada ou de qualquer versão posterior publicada pelo Software Livre. Fundação. Se o Programa não especificar um número de versão da Licença Pública Geral GNU, você poderá escolher qualquer versão já publicada pela Free Software Foundation.
+
+Se o Programa especificar que um proxy pode decidir quais versões futuras da Licença Pública Geral GNU podem ser usadas, a declaração pública de aceitação de uma versão desse proxy autoriza permanentemente o Cliente a escolher essa versão para o Programa.
+
+Versões de licença posteriores podem conceder permissões adicionais ou diferentes. No entanto, nenhuma obrigação adicional é imposta a qualquer autor ou detentor de direitos autorais como resultado de sua escolha de seguir uma versão posterior.
+
+15. Isenção de Garantia.
+NÃO HÁ NENHUMA GARANTIA PARA O PROGRAMA, NA MEDIDA PERMITIDA PELA LEI APLICÁVEL. EXCETO QUANDO DECLARADO EM CONTRÁRIO POR ESCRITO, OS DETENTORES DOS DIREITOS AUTORAIS E/OU OUTRAS PARTES FORNECEM O PROGRAMA “</value>
+  </data>
+  <data name="richTextBox2.Text" xml:space="preserve">
+    <value>LaserGRBL é um software gratuito, disponível para uso hobby e profissional, conforme licença GPL v3.0. O código-fonte está disponível em https://github.com/arkypita/LaserGRBL e pode ser editado gratuitamente sob os termos da licença GPL.
+
+Os direitos autorais do projeto LaserGRBL são de Diego Settimi (arkypita), exceto o código de terceiros que pertence aos seus respectivos proprietários. Você acha o LaserGRBL útil? Apoie o projeto com uma doação!</value>
+  </data>
+</root>

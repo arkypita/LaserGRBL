@@ -121,13 +121,14 @@
     <value>Gravar</value>
   </data>
   <data name="BtnRead.Text" xml:space="preserve">
-    <value>Refrescar</value>
+    <value>Atualizar</value>
   </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Fechar</value>
   </data>
   <data name="LblConnect.Text" xml:space="preserve">
-    <value>Ler ou Gravar habilitados somente quando conectado e parado</value>
+    <value>Leitura e Gravação habilitadas
+somente quando conectado e ocioso</value>
   </data>
   <data name="BtnExport.Text" xml:space="preserve">
     <value>Exportar</value>
