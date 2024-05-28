@@ -14,6 +14,7 @@ namespace LaserGRBL.GrblEmulator
 
 	public class Grblv11Emulator
 	{
+		private const bool EMULATE_RANDOM_ERRORS = false;
 		private const bool EMULATE_MISSING_OK = false;
 
 		private static string filename = System.IO.Path.Combine(GrblCore.DataPath, "GrblEmulator.v11.bin");
@@ -345,9 +346,9 @@ namespace LaserGRBL.GrblEmulator
 				catch (Exception ex) { throw ex; }
 				finally { cmd.DeleteHelper(); }
 			}
-            if (rng.Next(0, 50) == 0)
+            if (EMULATE_RANDOM_ERRORS && rng.Next(0, 50) == 0)
                 EnqueueTX("error:2");
-            else if (!EMULATE_MISSING_OK || rng.Next(0, 20) != 0)
+            else if (EMULATE_MISSING_OK && rng.Next(0, 20) == 0)
                 EnqueueTX("ok");
         }
 	}
