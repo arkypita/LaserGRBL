@@ -348,7 +348,7 @@ namespace LaserGRBL.GrblEmulator
 			}
             if (EMULATE_RANDOM_ERRORS && rng.Next(0, 50) == 0)
                 EnqueueTX("error:2");
-            else if (EMULATE_MISSING_OK && rng.Next(0, 20) == 0)
+            else if (!EMULATE_MISSING_OK || rng.Next(0, 20) != 0)
                 EnqueueTX("ok");
         }
 	}
