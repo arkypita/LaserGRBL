@@ -85,16 +85,16 @@ namespace LaserGRBL
 				Color.White,				//command text
 				Color.FromArgb(121,214, 58),//startup
 				Color.Crimson,				//alarm
-				Color.DimGray,				//config
+				Color.LightGray,			//config
 				Color.DodgerBlue,			//feedback
 				Color.OrangeRed,			//position
-				Color.Purple,				//others
+				Color.Pink,					//others
 				
 				Color.DarkBlue,				//response good
 				Color.Red,					//response bad
 				Color.Black,				//response others
 
-				Color.DodgerBlue,			//link color
+				Color.Pink,					//link color
 				Color.Purple,				//visited link color
 
 				Color.FromArgb( 64, 67, 85),//controls border
@@ -202,13 +202,13 @@ namespace LaserGRBL
 				Color.LightBlue,			//preview command wait
 
 				Color.FromArgb(220,220,220),//log background
-				Color.White,				//command text
-				Color.Lime,					//startup
-				Color.Red,					//alarm
-				Color.LightGray,			//config
-				Color.LightBlue,			//feedback
+				Color.Black,				//command text
+				Color.DarkGreen,			//startup
+				Color.DarkRed,				//alarm
+				Color.DarkSlateGray,		//config
+				Color.DarkBlue,				//feedback
 				Color.OrangeRed,			//position
-				Color.Pink,					//others
+				Color.Purple,				//others
 				
 				Color.Lime,					//response good
 				Color.OrangeRed,			//response bad
@@ -237,9 +237,9 @@ namespace LaserGRBL
 				Color.FromArgb(180,118,0),  //preview other line
 				Color.DarkGreen,			//preview laser
 				Color.DarkMagenta,			//preview cross position
-				Color.DarkGreen,			//preview command ok
-				Color.DarkRed,				//preview command ko
-				Color.LightBlue,			//preview command wait
+				Color.DarkBlue,				//preview command ok
+				Color.OrangeRed,			//preview command ko
+				Color.Pink,					//preview command wait
 
 				Color.FromArgb(20,20,20),	//log background
 				Color.LimeGreen,			//command text

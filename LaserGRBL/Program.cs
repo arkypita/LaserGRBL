@@ -43,6 +43,12 @@ namespace LaserGRBL
 			if (ci != null) Thread.CurrentThread.CurrentUICulture = ci;
 			Tools.TaskScheduler.SetClockResolution(1); //use a fast clock
 
+			foreach (string s in args)
+			{
+				if (s != null && s.ToLower() == "nogl")
+					Settings.SetObject("LegacyPreview", true);
+			}
+
 			Application.Run(new MainForm(args));
 
 			GrblEmulator.WebSocketEmulator.Stop();
