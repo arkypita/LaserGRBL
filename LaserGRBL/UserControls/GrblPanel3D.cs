@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,7 +33,9 @@ namespace LaserGRBL.UserControls
         private GLColor mOriginsColor { get; set; }
         private GLColor mPointerColor { get; set; }
         private GLColor mTextColor { get; set; }
-        private Font mTextFont { get; set; } = new Font("Arial", 12);
+        // default font
+        private const string mFontName = "Courier New";
+        private Font mTextFont { get; set; } = new Font(mFontName, 12);
         // background
         private Grid3D mGrid = null;
         // grbl object
@@ -70,10 +73,19 @@ namespace LaserGRBL.UserControls
             new KeyValuePair<double, int>( 60000, 3000),
             new KeyValuePair<double, int>(100000, 5000)
         };
+        private GPoint mLastWPos;
+        private GPoint mLastMPos;
+        private float mCurF;
+        private float mCurS;
+        bool forcez = false;
+        private bool mFSTrig;
 
         public GrblPanel3D()
         {
             InitializeComponent();
+            mLastWPos = GPoint.Zero;
+            mLastMPos = GPoint.Zero;
+            forcez = Settings.GetObject("Enale Z Jog Control", false);
             MouseDoubleClick += GrblPanel3D_DoubleClick;
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.UserPaint, true);
@@ -269,25 +281,18 @@ namespace LaserGRBL.UserControls
             OpenGL.Flush();
         }
 
-        private void DrawMouseCoord()
+        private void DrawTextRightAlign(string text, int top)
         {
-            // draw current mouse position
-            if (mMouseWorldPosition != null)
-            {
-                PointF pos = (PointF)mMouseWorldPosition;
-                string mousePos = $"{pos.X:0.0} x {pos.Y:0.0}";
-                Size size = TextRenderer.MeasureText(mousePos, mTextFont);
-                SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
-                int xText = (int)(Width - sizeProp.Width);
-                int yText = Height - 20;
-                // clear background
-                OpenGL.Enable(OpenGL.GL_SCISSOR_TEST);
-                OpenGL.Scissor(xText - 10, yText, (int)sizeProp.Width + 10, 20);
-                OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
-                OpenGL.Disable(OpenGL.GL_SCISSOR_TEST);
-                OpenGL.DrawText(xText, yText + 5, mTextColor.R, mTextColor.G, mTextColor.B, mTextFont.FontFamily.Name, mTextFont.Size, mousePos);
-                OpenGL.Flush();
-            }
+            Size size = TextRenderer.MeasureText(text, mTextFont);
+            SizeF sizeProp = new SizeF(size.Width * 0.85f, size.Height * 0.85f);
+            int xText = (int)(Width - sizeProp.Width - 5);
+            int yText = Height - top;
+            OpenGL.Enable(OpenGL.GL_SCISSOR_TEST);
+            OpenGL.Scissor(xText - 10, yText, (int)sizeProp.Width + 10, 20);
+            OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
+            OpenGL.Disable(OpenGL.GL_SCISSOR_TEST);
+            OpenGL.DrawText(xText, yText + 5, mTextColor.R, mTextColor.G, mTextColor.B, mTextFont.FontFamily.Name, mTextFont.Size, text);
+            OpenGL.Flush();
         }
 
         private void DrawScene()
@@ -345,7 +350,6 @@ namespace LaserGRBL.UserControls
             // main hud
             DrawPointer();
             DrawRulers();
-            DrawMouseCoord();
             OpenGL.Flush();
             // enter lock and copy bitmap
             lock (mBitmapLock)
@@ -379,6 +383,78 @@ namespace LaserGRBL.UserControls
             {
                 e.Graphics.DrawImage(mBmp, new Point(0, 0));
             }
+            DoGDIDraw(e);
+        }
+
+        private string FormatCoord(float coord)
+        {
+            return string.Format("{0,10:######0.000}", coord);
+        }
+
+        private void DoGDIDraw(PaintEventArgs e)
+        {
+            if (Core == null) return;
+            const int top = 12;
+            using (Brush b = new SolidBrush(ColorScheme.PreviewText))
+            using (Font font = new Font(mFontName, 10))
+            {
+                // set aliasing
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                // use z
+                bool useZ = mLastWPos.Z != 0 || mLastMPos.Z != 0 || forcez;
+                string text = "         X          Y";
+                if (useZ) text += "          Z    ";
+                // last position
+                text += $"\nMCO {FormatCoord(mLastMPos.X)} {FormatCoord(mLastMPos.Y)}";
+                if (useZ) text += $" {FormatCoord(mLastMPos.Z)}";
+                // working offset
+                if (Core.WorkingOffset != GPoint.Zero)
+                {
+                    text += $"\nWCO {FormatCoord(mLastWPos.X)} {FormatCoord(mLastWPos.Y)}";
+                    if (useZ) text += $" {FormatCoord(mLastWPos.Z)}";
+                }
+                // mouse info
+                if (mMouseWorldPosition != null)
+                {
+                    PointF pos = (PointF)mMouseWorldPosition;
+                    text += $"\nPTR {FormatCoord(pos.X)} {FormatCoord(pos.Y)}";
+                    if (useZ) text += "          ";
+                }
+                Size size = MeasureText(text, font);
+                Point point = new Point(Width - size.Width - mPadding.Right, top);
+                DrawOverlay(e, point, size);
+                e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
+                e.Graphics.DrawString(text, font, b, point.X, point.Y);
+                // laser info
+                if (mCurF != 0 || mCurS != 0 || mFSTrig)
+                {
+                    mFSTrig = true;
+                    int pos = point.Y + size.Height + 5;
+                    text = $"F {string.Format("{0,6:####0.##}", mCurF)}\nS {string.Format("{0,6:##0.##}", mCurS)}";
+                    size = MeasureText(text, font);
+                    point = new Point(Width - size.Width - mPadding.Right, pos);
+                    DrawOverlay(e, point, size);
+                    e.Graphics.DrawString(text, font, b, point.X, point.Y);
+                }
+            }   
+        }
+
+        private void DrawOverlay(PaintEventArgs e, Point point, Size size)
+        {
+            Color color = Color.FromArgb(100, ColorScheme.PreviewRuler.R, ColorScheme.PreviewRuler.G, ColorScheme.PreviewRuler.B);
+            using (Brush brush = new SolidBrush(color))
+            using (GraphicsPath path = Tools.Graph.RoundedRect(new Rectangle(point.X - 5, point.Y - 5, size.Width, size.Height), 7))
+            {
+                e.Graphics.FillPath(brush, path);
+            }
+        }
+
+        private Size MeasureText(string text, Font font)
+        {
+            Size size = TextRenderer.MeasureText(text, font);
+            size.Width += 10;
+            size.Height += 5;
+            return size;
         }
 
         private void GrblSceneControl_MouseLeave(object sender, EventArgs e)
@@ -562,9 +638,16 @@ namespace LaserGRBL.UserControls
             );
         }
 
-
         public void TimerUpdate()
         {
+            if (Core != null && (mLastWPos != Core.WorkPosition || mLastMPos != Core.MachinePosition || mCurF != Core.CurrentF || mCurS != Core.CurrentS))
+            {
+                mLastWPos = Core.WorkPosition;
+                mLastMPos = Core.MachinePosition;
+                mCurF = Core.CurrentF;
+                mCurS = Core.CurrentS;
+                Invalidate();
+            }
         }
 
         public void OnColorChange()
