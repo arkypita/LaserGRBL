@@ -36,6 +36,7 @@
 			this.LblFormDescription = new System.Windows.Forms.RichTextBox();
 			this.LblOOPS = new System.Windows.Forms.Label();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.BtnClipboardCopy = new System.Windows.Forms.Button();
 			this.BtnContinue = new System.Windows.Forms.Button();
 			this.BtnAbort = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -130,13 +131,15 @@
 			// tableLayoutPanel3
 			// 
 			this.tableLayoutPanel3.AutoSize = true;
-			this.tableLayoutPanel3.ColumnCount = 3;
+			this.tableLayoutPanel3.ColumnCount = 4;
 			this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel3, 2);
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel3.Controls.Add(this.BtnContinue, 2, 0);
-			this.tableLayoutPanel3.Controls.Add(this.BtnAbort, 1, 0);
+			this.tableLayoutPanel3.Controls.Add(this.BtnClipboardCopy, 0, 0);
+			this.tableLayoutPanel3.Controls.Add(this.BtnContinue, 3, 0);
+			this.tableLayoutPanel3.Controls.Add(this.BtnAbort, 2, 0);
 			this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 390);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -144,6 +147,19 @@
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel3.Size = new System.Drawing.Size(637, 48);
 			this.tableLayoutPanel3.TabIndex = 4;
+			// 
+			// BtnClipboardCopy
+			// 
+			this.BtnClipboardCopy.Image = ((System.Drawing.Image)(resources.GetObject("BtnClipboardCopy.Image")));
+			this.BtnClipboardCopy.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.BtnClipboardCopy.Location = new System.Drawing.Point(3, 3);
+			this.BtnClipboardCopy.Name = "BtnClipboardCopy";
+			this.BtnClipboardCopy.Size = new System.Drawing.Size(107, 42);
+			this.BtnClipboardCopy.TabIndex = 17;
+			this.BtnClipboardCopy.Text = "Copy";
+			this.BtnClipboardCopy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.BtnClipboardCopy.UseVisualStyleBackColor = true;
+			this.BtnClipboardCopy.Click += new System.EventHandler(this.BtnClipboardCopy_Click);
 			// 
 			// BtnContinue
 			// 
@@ -179,9 +195,9 @@
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "ExceptionManager";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.ShowInTaskbar = false;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Exception Manager";
-			this.TopMost = true;
 			this.Load += new System.EventHandler(this.ExceptionManager_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
@@ -204,5 +220,6 @@
 		private System.Windows.Forms.Button BtnContinue;
 		private System.Windows.Forms.RichTextBox LblFormDescription;
 		private System.Windows.Forms.RichTextBox TbExMessage;
+		private System.Windows.Forms.Button BtnClipboardCopy;
 	}
 }

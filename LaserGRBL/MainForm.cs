@@ -36,6 +36,8 @@ namespace LaserGRBL
         public MainForm()
 		{
 			InitializeComponent();
+			ExceptionManager.ParentMain = this;
+
             mLineWidthMenu = new List<ToolStripMenuItem>()
             {
                 pxToolStripMenuItem1,

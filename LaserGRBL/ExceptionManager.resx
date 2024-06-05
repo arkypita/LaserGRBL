@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAHIAAABkCAYAAABaUmT7AAAAIGNIUk0AAHonAACAjwAA+f8AAIDoAAB1
@@ -332,6 +332,44 @@
     <value>But don't worry, it's not your fault! There was a program error due to some unexpected condition. You can report it to the developers by opening an issue on https://github.com/arkypita/LaserGRBL/issues
 
 Please copy following message in your report.</value>
+  </data>
+  <data name="BtnClipboardCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
   </data>
   <data name="BtnContinue.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

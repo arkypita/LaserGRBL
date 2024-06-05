@@ -16,6 +16,7 @@ namespace LaserGRBL
 {
 	static class Program
 	{
+		public static bool DesignTime = true;
         public static Version CurrentVersion { get; private set; }
 
         /// <summary>
@@ -24,6 +25,8 @@ namespace LaserGRBL
         [STAThread]
 		static void Main(string[] args)
 		{
+			DesignTime = false;
+
 			try { CurrentVersion = typeof(GitHub).Assembly.GetName().Version; }
 			catch { CurrentVersion = new Version(0, 0, 0); }
 
