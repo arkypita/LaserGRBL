@@ -5,11 +5,6 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -43,6 +38,11 @@ namespace LaserGRBL
 			CreateAndShow(e?.ExceptionObject as Exception, false, false);
 		}
 
+		public static void OnHandledException(Exception ex)
+		{
+			CreateAndShow(ex, true, true);
+		}
+
 		public static void CreateAndShow(Exception ex, bool cancontinue, bool manual = true)
 		{
 			bool close;
@@ -70,7 +70,7 @@ namespace LaserGRBL
 
 				f.TbExMessage.Text = sb.ToString();
 				f.BtnContinue.Visible = cancontinue;
-				f.ShowDialog();
+				f.Show();
 				close = f.UserClose;
 			}
 
@@ -138,5 +138,10 @@ namespace LaserGRBL
 
 		private void LblFormDescription_LinkClicked(object sender, LinkClickedEventArgs e)
 		{Tools.Utils.OpenLink(e.LinkText);}
+
+		private void ExceptionManager_Load(object sender, EventArgs e)
+		{
+			BringToFront();
+		}
 	}
 }

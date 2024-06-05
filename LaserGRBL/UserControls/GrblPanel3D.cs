@@ -103,18 +103,32 @@ namespace LaserGRBL.UserControls
             AutoSizeDrawing();
             mLastControlSize = new PointF(Width, Height);
             mGrid = new Grid3D();
-            Task.Factory.StartNew(() => {
+			Task.Factory.StartNew(() =>
+			{
+				GlThread();
+			});
+
+        }
+
+		[System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptions]
+		private void GlThread()
+		{
+            try
+            {
                 InitializeOpenGL();
                 while (true)
                 {
                     DrawScene();
                     Thread.Sleep(30);
                 }
-            });
+            }
+			catch (Exception ex)
+			{
+                ExceptionManager.OnHandledException(ex);
+			}
+		}
 
-        }
-
-        private void SetWorldPosition(double left, double right, double bottom, double top)
+		private void SetWorldPosition(double left, double right, double bottom, double top)
         {
             // max viewport size
             const double max = 50000;
