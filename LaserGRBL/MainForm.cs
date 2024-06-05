@@ -273,6 +273,10 @@ namespace LaserGRBL
 				FormWindowState state = msp == null ? FormWindowState.Maximized : (FormWindowState)msp[2] != FormWindowState.Minimized ? (FormWindowState)msp[2] : FormWindowState.Maximized;
 				if (state == FormWindowState.Normal)
 				{ WindowState = state; Size = (Size)msp[0]; Location = (Point)msp[1]; }
+
+				if (!IsVisibleOnAnyScreen(new Rectangle(Location, Size))) //ensure form is visible if stored position is no longer valid on current screen configuration
+				{ WindowState = FormWindowState.Normal; Size = new Size(1024, 768); CenterToScreen(); }
+
 				ResumeLayout();
 
 				ManageMessage();
@@ -282,6 +286,18 @@ namespace LaserGRBL
 			{
 				Close();
 			}
+		}
+
+		public bool IsVisibleOnAnyScreen(Rectangle rect)
+		{
+			foreach (Screen s in Screen.AllScreens)
+			{
+				if (s.WorkingArea.IntersectsWith(rect))
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		private void ManageCommandLineArgs(string[] args)
