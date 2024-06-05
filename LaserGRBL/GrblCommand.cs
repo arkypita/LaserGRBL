@@ -163,6 +163,7 @@ namespace LaserGRBL
 
 		public GrblCommand(IEnumerable<Element> elements)
 		{
+			ClearResult();
 			mLine = "";
 			foreach (GrblCommand.Element e in elements)
 				mLine = mLine + e.ToString() + " ";
@@ -171,6 +172,7 @@ namespace LaserGRBL
 
 		public GrblCommand(Element first, GrblCommand toappend)
 		{
+			ClearResult();
 			mLine = string.Format("{0} {1}", first, toappend.mLine).ToUpper().Trim();
 		}
 
