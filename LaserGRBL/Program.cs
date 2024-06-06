@@ -49,7 +49,7 @@ namespace LaserGRBL
 			foreach (string s in args)
 			{
 				if (s != null && s.ToLower() == "nogl")
-					Settings.SetObject("LegacyPreview", true);
+					Settings.LegacyPreview = true;
 			}
 
 			Application.Run(new MainForm(args));

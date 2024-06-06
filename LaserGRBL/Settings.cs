@@ -17,8 +17,9 @@ namespace LaserGRBL
         private static System.Collections.Generic.Dictionary<string, object> dic;
         private static string LastCause = null;
         private static string LockString = "---- SETTING LOCK ----";
+		internal static bool LegacyPreview;
 
-        public static bool IsNewFile { get; private set; } = false;
+		public static bool IsNewFile { get; private set; } = false;
         public static Version PrevVersion { get; private set; } = new Version(0, 0, 0);
 
         static string filename

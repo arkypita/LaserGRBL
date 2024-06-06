@@ -100,7 +100,6 @@ namespace LaserGRBL
 
 			CbDisableSafetyCD.Checked = Settings.GetObject("DisableSafetyCountdown", false);
 			CbQuietSafetyCB.Checked = Settings.GetObject("QuietSafetyCountdown", false);
-            CbLegacyPreview.Checked = Settings.GetObject("LegacyPreview", false);
             CbLegacyIcons.Checked = Settings.GetObject("LegacyIcons", false);
 
             groupBox1.ForeColor = groupBox2.ForeColor = groupBox3.ForeColor = ColorScheme.FormForeColor;
@@ -235,7 +234,6 @@ namespace LaserGRBL
 
 			Settings.SetObject("DisableSafetyCountdown", CbDisableSafetyCD.Checked);
 			Settings.SetObject("QuietSafetyCountdown", CbQuietSafetyCB.Checked);
-            Settings.SetObject("LegacyPreview", CbLegacyPreview.Checked);
             Settings.SetObject("LegacyIcons", CbLegacyIcons.Checked);
 
             SettingsChanged?.Invoke(this, null);
@@ -243,9 +241,6 @@ namespace LaserGRBL
             Close();
 
             if (Core.Type != Settings.GetObject("Firmware Type", Firmware.Grbl) && MessageBox.Show(Strings.FirmwareRequireRestartNow, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
-                Application.Restart();
-
-            if (Core.LegacyPreview != Settings.GetObject("LegacyPreview", false) && MessageBox.Show(Strings.PreviewChangesRequiresRestart, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
                 Application.Restart();
 
             if (IconsMgr.LegacyIcons != Settings.GetObject("LegacyIcons", false) && MessageBox.Show(Strings.IconsChangesRequiresRestart, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)

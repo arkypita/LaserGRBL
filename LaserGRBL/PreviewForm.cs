@@ -26,7 +26,7 @@ namespace LaserGRBL
 		public PreviewForm()
 		{
 			InitializeComponent();
-            CreatePanel(Settings.GetObject("LegacyPreview", false));
+            CreatePanel(Settings.LegacyPreview);
             CustomButtonArea.OrderChanged += CustomButtonArea_OrderChanged;
 			IconsMgr.PrepareButton(BtnReset, "custom-reset");
             IconsMgr.PrepareButton(BtnUnlock, "custom-unlock");

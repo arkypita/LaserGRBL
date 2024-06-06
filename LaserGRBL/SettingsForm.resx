@@ -157,7 +157,7 @@
     <value>BtnCancel</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -184,7 +184,7 @@
     <value>BtnSave</value>
   </data>
   <data name="&gt;&gt;BtnSave.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnSave.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -253,7 +253,7 @@
     <value>CBCore</value>
   </data>
   <data name="&gt;&gt;CBCore.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CBCore.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -280,7 +280,7 @@
     <value>CbThreadingMode</value>
   </data>
   <data name="&gt;&gt;CbThreadingMode.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CbThreadingMode.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -346,7 +346,7 @@
     <value>CBStreamingMode</value>
   </data>
   <data name="&gt;&gt;CBStreamingMode.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CBStreamingMode.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -382,7 +382,7 @@
     <value>BtnStreamingMode</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnStreamingMode.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -409,7 +409,7 @@
     <value>CBProtocol</value>
   </data>
   <data name="&gt;&gt;CBProtocol.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CBProtocol.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -485,7 +485,7 @@
     <value>BtnProtocol</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnProtocol.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -559,7 +559,7 @@ Set slower values if you are experiencing issues.</value>
     <value>BtnThreadingModel</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnThreadingModel.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -828,7 +828,7 @@ If disabled all the issues are silently managed without warning.</value>
     <value>BtnFType</value>
   </data>
   <data name="&gt;&gt;BtnFType.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnFType.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1128,7 +1128,7 @@ If not, please disable PWM support.</value>
     <value>BtnModulationInfo</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -1505,7 +1505,7 @@ Disable this option if you prefer to use the old algorithm.</value>
     <value>imageButton1</value>
   </data>
   <data name="&gt;&gt;imageButton1.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imageButton1.Parent" xml:space="preserve">
     <value>tableLayoutPanel18</value>
@@ -2068,7 +2068,7 @@ After this time LaserGRBL will send an automatic feed hold to cool down the lase
     <value>CbOnMin</value>
   </data>
   <data name="&gt;&gt;CbOnMin.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CbOnMin.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -2092,7 +2092,7 @@ After this time LaserGRBL will send an automatic feed hold to cool down the lase
     <value>CbOnSec</value>
   </data>
   <data name="&gt;&gt;CbOnSec.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CbOnSec.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -2251,7 +2251,7 @@ After this time LaserGRBL will send an automatic feed hold to cool down the lase
     <value>CbOffMin</value>
   </data>
   <data name="&gt;&gt;CbOffMin.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CbOffMin.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
@@ -2275,7 +2275,7 @@ After this time LaserGRBL will send an automatic feed hold to cool down the lase
     <value>CbOffSec</value>
   </data>
   <data name="&gt;&gt;CbOffSec.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CbOffSec.Parent" xml:space="preserve">
     <value>tableLayoutPanel8</value>
@@ -2673,7 +2673,7 @@ related to the specific job is going to be executed.</value>
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
@@ -2724,7 +2724,7 @@ related to the specific job is going to be executed.</value>
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
@@ -2775,7 +2775,7 @@ related to the specific job is going to be executed.</value>
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
@@ -3316,7 +3316,7 @@ Here you can use the same syntax of custom buttons.</value>
     <value>NoControl</value>
   </data>
   <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>406, 12</value>
+    <value>407, 12</value>
   </data>
   <data name="label23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -3357,7 +3357,7 @@ Check to enable.
     <value>NoControl</value>
   </data>
   <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
-    <value>406, 56</value>
+    <value>407, 56</value>
   </data>
   <data name="label24.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -3456,7 +3456,7 @@ Check to enable.
     <value>changeWarBtn</value>
   </data>
   <data name="&gt;&gt;changeWarBtn.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;changeWarBtn.Parent" xml:space="preserve">
     <value>tableLayoutPanel11</value>
@@ -3480,7 +3480,7 @@ Check to enable.
     <value>229, 2</value>
   </data>
   <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 16</value>
+    <value>82, 16</value>
   </data>
   <data name="label27.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3630,7 +3630,7 @@ Check to enable.
     <value>changeFatBtn</value>
   </data>
   <data name="&gt;&gt;changeFatBtn.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;changeFatBtn.Parent" xml:space="preserve">
     <value>tableLayoutPanel12</value>
@@ -3654,7 +3654,7 @@ Check to enable.
     <value>229, 2</value>
   </data>
   <data name="label30.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 16</value>
+    <value>82, 16</value>
   </data>
   <data name="label30.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3804,7 +3804,7 @@ Check to enable.
     <value>changeConBtn</value>
   </data>
   <data name="&gt;&gt;changeConBtn.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;changeConBtn.Parent" xml:space="preserve">
     <value>tableLayoutPanel14</value>
@@ -3828,7 +3828,7 @@ Check to enable.
     <value>229, 2</value>
   </data>
   <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 16</value>
+    <value>82, 16</value>
   </data>
   <data name="label35.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3978,7 +3978,7 @@ Check to enable.
     <value>changeDconBtn</value>
   </data>
   <data name="&gt;&gt;changeDconBtn.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;changeDconBtn.Parent" xml:space="preserve">
     <value>tableLayoutPanel15</value>
@@ -4002,7 +4002,7 @@ Check to enable.
     <value>229, 2</value>
   </data>
   <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 16</value>
+    <value>82, 16</value>
   </data>
   <data name="label38.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -4152,7 +4152,7 @@ Check to enable.
     <value>changeSucBtn</value>
   </data>
   <data name="&gt;&gt;changeSucBtn.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;changeSucBtn.Parent" xml:space="preserve">
     <value>tableLayoutPanel13</value>
@@ -4176,7 +4176,7 @@ Check to enable.
     <value>229, 2</value>
   </data>
   <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 16</value>
+    <value>82, 16</value>
   </data>
   <data name="label25.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -4269,7 +4269,7 @@ Check to enable.
     <value>NoControl</value>
   </data>
   <data name="label32.Location" type="System.Drawing.Point, System.Drawing">
-    <value>406, 162</value>
+    <value>407, 162</value>
   </data>
   <data name="label32.Size" type="System.Drawing.Size, System.Drawing">
     <value>265, 26</value>
@@ -4304,7 +4304,7 @@ Check to enable.
     <value>NoControl</value>
   </data>
   <data name="label36.Location" type="System.Drawing.Point, System.Drawing">
-    <value>406, 206</value>
+    <value>407, 206</value>
   </data>
   <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
     <value>216, 39</value>
@@ -4340,7 +4340,7 @@ Check to enable.
     <value>NoControl</value>
   </data>
   <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>406, 106</value>
+    <value>407, 106</value>
   </data>
   <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
     <value>429, 39</value>
@@ -4391,7 +4391,7 @@ Check to enable.
     <value>3, 60</value>
   </data>
   <data name="label44.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 16</value>
+    <value>222, 16</value>
   </data>
   <data name="label44.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -4427,7 +4427,7 @@ Check to enable.
 </value>
   </data>
   <data name="BtnTelegNoteInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>284, 3</value>
+    <value>285, 3</value>
   </data>
   <data name="BtnTelegNoteInfo.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 17</value>
@@ -4439,7 +4439,7 @@ Check to enable.
     <value>BtnTelegNoteInfo</value>
   </data>
   <data name="&gt;&gt;BtnTelegNoteInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnTelegNoteInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel17</value>
@@ -4499,7 +4499,7 @@ Check to enable.
     <value>3, 29</value>
   </data>
   <data name="label33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 16</value>
+    <value>111, 16</value>
   </data>
   <data name="label33.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -4523,7 +4523,7 @@ Check to enable.
     <value>Left</value>
   </data>
   <data name="TxtNotification.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 27</value>
+    <value>120, 27</value>
   </data>
   <data name="TxtNotification.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 20</value>
@@ -4553,7 +4553,7 @@ Check to enable.
     <value>NoControl</value>
   </data>
   <data name="BtnTestNotification.Location" type="System.Drawing.Point, System.Drawing">
-    <value>284, 26</value>
+    <value>285, 26</value>
   </data>
   <data name="BtnTestNotification.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 23</value>
@@ -4568,7 +4568,7 @@ Check to enable.
     <value>BtnTestNotification</value>
   </data>
   <data name="&gt;&gt;BtnTestNotification.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnTestNotification.Parent" xml:space="preserve">
     <value>tableLayoutPanel17</value>
@@ -4640,7 +4640,7 @@ Check to enable.
     <value>1</value>
   </data>
   <data name="tableLayoutPanel19.Location" type="System.Drawing.Point, System.Drawing">
-    <value>284, 55</value>
+    <value>285, 55</value>
   </data>
   <data name="tableLayoutPanel19.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4676,7 +4676,7 @@ Check to enable.
     <value>3</value>
   </data>
   <data name="tableLayoutPanel17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>377, 84</value>
+    <value>378, 84</value>
   </data>
   <data name="tableLayoutPanel17.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -4706,7 +4706,7 @@ Check to enable.
     <value>NoControl</value>
   </data>
   <data name="label42.Location" type="System.Drawing.Point, System.Drawing">
-    <value>406, 290</value>
+    <value>407, 290</value>
   </data>
   <data name="label42.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 26</value>
@@ -4926,36 +4926,6 @@ I suggest to not disable this countdown, this allow you to have a 5 second chanc
   <data name="&gt;&gt;label48.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="CbLegacyPreview.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CbLegacyPreview.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CbLegacyPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 55</value>
-  </data>
-  <data name="CbLegacyPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 17</value>
-  </data>
-  <data name="CbLegacyPreview.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="CbLegacyPreview.Text" xml:space="preserve">
-    <value>Legacy preview</value>
-  </data>
-  <data name="&gt;&gt;CbLegacyPreview.Name" xml:space="preserve">
-    <value>CbLegacyPreview</value>
-  </data>
-  <data name="&gt;&gt;CbLegacyPreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CbLegacyPreview.Parent" xml:space="preserve">
-    <value>Tlp</value>
-  </data>
-  <data name="&gt;&gt;CbLegacyPreview.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="CbLegacyIcons.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4966,7 +4936,7 @@ I suggest to not disable this countdown, this allow you to have a 5 second chanc
     <value>28, 55</value>
   </data>
   <data name="CbLegacyIcons.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 17</value>
+    <value>89, 17</value>
   </data>
   <data name="CbLegacyIcons.TabIndex" type="System.Int32, mscorlib">
     <value>51</value>
@@ -4993,7 +4963,7 @@ I suggest to not disable this countdown, this allow you to have a 5 second chanc
     <value>0, 0</value>
   </data>
   <data name="Tlp.RowCount" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="Tlp.Size" type="System.Drawing.Size, System.Drawing">
     <value>892, 394</value>
@@ -5014,7 +4984,7 @@ I suggest to not disable this countdown, this allow you to have a 5 second chanc
     <value>0</value>
   </data>
   <data name="Tlp.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbDisableSafetyCD" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label47" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbQuietSafetyCB" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label48" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbLegacyPreview" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CbLegacyIcons" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,148,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,20,AutoSize,20,Autosize,20,Autosize,20,Autosize,20,Autosize,20,Autosize,20,Autosize,20,Autosize,20,Autosize,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="CbDisableSafetyCD" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label47" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbQuietSafetyCB" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label48" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="CbLegacyIcons" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,148,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,20,AutoSize,20,AutoSize,24,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="TpOptions.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
