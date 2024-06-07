@@ -12,6 +12,7 @@ using System.IO;
 using System.Net;
 using System.Runtime.Serialization;
 using System.Linq;
+using LaserGRBL.UserControls;
 
 namespace LaserGRBL
 {
@@ -224,6 +225,10 @@ namespace LaserGRBL
                     { "bitflag", Tools.OSHelper.GetBitFlag().ToString() },
 					{ "vendor", VendorString },
 					{ "fPassthrough", Counters.Passthrough.ToString() },
+					{ "RenderType", GrblPanel3D.CurrentRendererType },
+					{ "RenderVendor", GrblPanel3D.CurrentVendor },
+					{ "RenderName", GrblPanel3D.CurrentRenderer },
+					{ "RenderGLVersion", GrblPanel3D.CurrentGLVersion },
 				};
 
                 // client.UploadValues returns page's source as byte array (byte[]) so it must be transformed into a string

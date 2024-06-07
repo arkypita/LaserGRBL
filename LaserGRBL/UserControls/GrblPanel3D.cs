@@ -82,6 +82,11 @@ namespace LaserGRBL.UserControls
 
 		private Exception FatalException;
 
+		public static string CurrentRendererType = "";
+		public static string CurrentVendor = "";
+		public static string CurrentRenderer = ""; 
+		public static string CurrentGLVersion = "";
+
 		public GrblPanel3D()
 		{
 			InitializeComponent();
@@ -121,6 +126,7 @@ namespace LaserGRBL.UserControls
 			}
 			catch (Exception ex)
 			{
+				Logger.LogException("OpenGL", ex);
 				FatalException = ex;
 				Invalidate();
 				ExceptionManager.OnHandledException(ex, true);
@@ -192,7 +198,24 @@ namespace LaserGRBL.UserControls
 		{
 			object parameter = null;
 			OpenGL = new OpenGL();
-			OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.DIBSection, Width, Height, 32, parameter);
+
+			try 
+			{
+				CurrentRendererType = "FBO";
+				OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.FBO, Width, Height, 32, parameter); 
+			} 
+			catch  
+			{
+				CurrentRendererType = "DIB";
+				OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.DIBSection, Width, Height, 32, parameter);
+			}
+
+			try { CurrentVendor = OpenGL.Vendor; } catch { CurrentVendor = "Unknown"; }
+			try { CurrentRenderer = OpenGL.Renderer; } catch { CurrentRenderer = "Unknown"; }
+			try { CurrentGLVersion = OpenGL.Version; } catch { CurrentGLVersion = "0.0"; }
+
+			Logger.LogMessage("OpenGL", "{0} OpenGL {1}, {2}, {3}", CurrentRendererType, CurrentGLVersion, CurrentVendor, CurrentRenderer);
+
 			OpenGL.ShadeModel(OpenGL.GL_SMOOTH);
 			OpenGL.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 			OpenGL.ClearDepth(1.0f);

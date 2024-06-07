@@ -26,7 +26,7 @@ namespace LaserGRBL
 		public PreviewForm()
 		{
 			InitializeComponent();
-            CreatePanel(Settings.LegacyPreview);
+            CreatePanel();
             CustomButtonArea.OrderChanged += CustomButtonArea_OrderChanged;
 			IconsMgr.PrepareButton(BtnReset, "custom-reset");
             IconsMgr.PrepareButton(BtnUnlock, "custom-unlock");
@@ -60,21 +60,18 @@ namespace LaserGRBL
             }
         }
 
-        private void CreatePanel(bool isLegacy)
+        private void CreatePanel()
         {
 			if (GrblPanel != null)
             {
                 tableLayoutPanel1.Controls.Remove(GrblPanel as Control);
 				(GrblPanel as Control).Dispose();
             }
-            if (isLegacy)
-            {
+            if (Settings.LegacyPreview)
                 GrblPanel = new GrblPanel();
-            }
             else
-            {
                 GrblPanel = new GrblPanel3D();
-            }
+
 			if (mCore != null) GrblPanel.SetCore(mCore);
             (GrblPanel as Control).Dock = DockStyle.Fill;
             tableLayoutPanel1.Controls.Add(GrblPanel as Control);
