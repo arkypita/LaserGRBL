@@ -236,7 +236,7 @@ namespace LaserGRBL.UserControls
 
 					CurrentRendererType = "FBO";
 					OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.FBO, Width, Height, 32, parameter);
-					CheckError(OpenGL, "Create");
+					if (OpenGL.GetError() != OpenGL.GL_NO_ERROR) throw new Exception("Cannot Create FBO");
 				}
 				catch
 				{
@@ -265,7 +265,7 @@ namespace LaserGRBL.UserControls
 		}
 
 		static uint errcounter = 0;
-		public static void CheckError(OpenGL gl, string action)
+		public static bool CheckError(OpenGL gl, string action)
 		{
 			uint err = gl.GetError();
 			if (err != OpenGL.GL_NO_ERROR)
@@ -280,6 +280,7 @@ namespace LaserGRBL.UserControls
 					Logger.LogMessage("OpenGL", message);
 				}
 			}
+			return err != OpenGL.GL_NO_ERROR;
 		}
 
 		private void GrblPanel3D_Disposed(object sender, EventArgs e)
