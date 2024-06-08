@@ -113,6 +113,11 @@ namespace LaserGRBL.UserControls
 			AutoSizeDrawing();
 			mLastControlSize = new PointF(Width, Height);
 			mGrid = new Grid3D();
+
+			Task.Factory.StartNew(() =>
+			{
+				GlThread();
+			});
 		}
 
 		[System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptions]
@@ -743,14 +748,6 @@ namespace LaserGRBL.UserControls
 			mTicksColor = ColorScheme.PreviewGrid;
 			mMinorsColor = ColorScheme.PreviewGridMinor;
 			mInvalidateAll = true;
-		}
-
-		private void GrblPanel3D_Load(object sender, EventArgs e)
-		{
-			Task.Factory.StartNew(() =>
-			{
-				GlThread();
-			});
 		}
 	}
 
