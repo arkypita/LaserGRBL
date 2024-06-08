@@ -207,16 +207,25 @@ namespace LaserGRBL.UserControls
 			object parameter = null;
 			OpenGL = new OpenGL();
 
-			try
-			{
-				//throw new Exception(); //uncomment to force DIB for testing
-				CurrentRendererType = "FBO";
-				OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.FBO, Width, Height, 32, parameter);
-			}
-			catch
+
+			if (Settings.UseSoftwareOpenGL)
 			{
 				CurrentRendererType = "DIB";
 				OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.DIBSection, Width, Height, 32, parameter);
+			}
+			else
+			{ 
+				try
+				{
+
+					CurrentRendererType = "FBO";
+					OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.FBO, Width, Height, 32, parameter);
+				}
+				catch
+				{
+					CurrentRendererType = "DIB";
+					OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.DIBSection, Width, Height, 32, parameter);
+				}
 			}
 
 			try { CurrentVendor = OpenGL.Vendor; } catch { CurrentVendor = "Unknown"; }

@@ -50,9 +50,11 @@ namespace LaserGRBL
 			{
 				if (s != null && s.ToLower() == "nogl")
 					Settings.LegacyPreview = true;
+				if (s != null && s.ToLower() == "swgl")
+					Settings.UseSoftwareOpenGL = true;
 			}
 
-			if (!Settings.LegacyPreview)
+			if (!Settings.LegacyPreview && !Settings.UseSoftwareOpenGL)
 				GraphicInitializer.RequestDedicatedGraphics();
 
 			Application.Run(new MainForm(args));
