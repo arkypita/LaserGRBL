@@ -81,13 +81,26 @@ namespace LaserGRBL.UserControls
 		private Base.Mathematics.MobileDAverageCalculator RenderTime;
 		private Base.Mathematics.MobileDAverageCalculator RefreshRate;
 
-		private Exception FatalException;
+		private static Exception FatalException;
 		private Color IssueMatchBackColor;
 
 		public static string CurrentRendererType = "";
 		public static string CurrentVendor = "";
 		public static string CurrentRenderer = "";
 		public static string CurrentGLVersion = "";
+
+		private static string FirstGlError = null;
+
+		public static string GlDiagnosticMessage
+		{
+			get
+			{
+				if (FatalException != null)
+					return FatalException.Message;
+				else
+					return FirstGlError;
+			}
+		}
 
 		public GrblPanel3D()
 		{
@@ -212,7 +225,7 @@ namespace LaserGRBL.UserControls
 
 			if (Settings.UseSoftwareOpenGL)
 			{
-				CurrentRendererType = "DIB";
+				CurrentRendererType = "DIB!";
 				OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.DIBSection, Width, Height, 32, parameter);
 				CheckError(OpenGL, "Create");
 			}
@@ -257,10 +270,14 @@ namespace LaserGRBL.UserControls
 			uint err = gl.GetError();
 			if (err != OpenGL.GL_NO_ERROR)
 			{
+
 				if (errcounter < 3)
 				{
 					errcounter++;
-					Logger.LogMessage("OpenGL", "{0}: {1} [{2}]", action, gl.GetErrorDescription(err), err);
+
+					string message = string.Format("{0}: {1} [{2}]", action, gl.GetErrorDescription(err), err);
+					if (errcounter == 1) FirstGlError = message;
+					Logger.LogMessage("OpenGL", message);
 				}
 			}
 		}
@@ -563,11 +580,11 @@ namespace LaserGRBL.UserControls
 					if (VertexCounter < 1000)
 						VertexString = string.Format("{0,6:##0}", VertexCounter);
 					else if (VertexCounter < 1000000)
-						VertexString = string.Format("{0,6:###0.#} K", VertexCounter / 1000.0);
+						VertexString = string.Format("{0,6:###0.0} K", VertexCounter / 1000.0);
 					else if (VertexCounter < 1000000000)
-						VertexString = string.Format("{0,6:###0.#} M", VertexCounter / 1000000.0);
+						VertexString = string.Format("{0,6:###0.0} M", VertexCounter / 1000000.0);
 					else
-						VertexString = string.Format("{0,6:###0.#} B", VertexCounter / 1000000000.0);
+						VertexString = string.Format("{0,6:###0.0} B", VertexCounter / 1000000000.0);
 
 					text = $"VER   {VertexString}\nTIM   {string.Format("{0,6:##0} ms", RenderTime.Avg)}\nFPS   {string.Format("{0,6:##0}", 1000.0 / RefreshRate.Avg)}";
 					size = MeasureText(text, font);
@@ -840,7 +857,7 @@ namespace LaserGRBL.UserControls
 		private void GrblPanel3D_Load(object sender, EventArgs e)
 		{
 			this.Load -= GrblPanel3D_Load;
-			//TimIssueDetector.Start();
+			//TimIssueDetector.Start(); //uncomment to enable issue detector using bitmap pixel color test
 		}
 	}
 

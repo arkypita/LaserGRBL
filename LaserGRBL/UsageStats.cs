@@ -229,6 +229,7 @@ namespace LaserGRBL
 					{ "RenderVendor", GrblPanel3D.CurrentVendor },
 					{ "RenderName", GrblPanel3D.CurrentRenderer },
 					{ "RenderGLVersion", GrblPanel3D.CurrentGLVersion },
+					{ "RenderError", GrblPanel3D.GlDiagnosticMessage },
 				};
 
                 // client.UploadValues returns page's source as byte array (byte[]) so it must be transformed into a string
