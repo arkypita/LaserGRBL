@@ -497,10 +497,37 @@ namespace LaserGRBL.UserControls
 					e.Graphics.DrawString(text, font, b, point.X, point.Y);
 				}
 
+				// performance
+				if (Core.ShowPerformanceDiagnostic.Value)
+				{
+					int pos = point.Y + size.Height + 5;
+
+
+					string VertexString = null;
+					ulong VertexCounter = 0;
+					lock (mGrbl3DLock)
+					{VertexCounter = mGrbl3D != null ? mGrbl3D.VertexCounter : 0;}
+
+					if (VertexCounter < 1000)
+						VertexString = string.Format("{0,6:##0}", VertexCounter);
+					else if (VertexCounter < 1000000)
+						VertexString = string.Format("{0,6:###0.#} K", VertexCounter / 1000.0);
+					else if (VertexCounter < 1000000000)
+						VertexString = string.Format("{0,6:###0.#} M", VertexCounter / 1000000.0);
+					else
+						VertexString = string.Format("{0,6:###0.#} B", VertexCounter / 1000000000.0);
+
+					text = $"VER   {VertexString}\nTIM   {string.Format("{0,6:##0} ms", RenderTime.Avg)}\nFPS   {string.Format("{0,6:##0}", 1000.0 / RefreshRate.Avg)}";
+					size = MeasureText(text, font);
+					point = new Point(Width - size.Width - mPadding.Right, pos);
+					DrawOverlay(e, point, size, ColorScheme.PreviewRuler, 100);
+					e.Graphics.DrawString(text, font, b, point.X, point.Y);
+				}
+
 				// loading
 				lock (mGrbl3DLock)
-					if (mGrbl3D != null && mGrbl3D.LoadingPercentage < 100 ||
-						Core.ShowLaserOffMovements.Value && mGrbl3DOff != null && mGrbl3DOff.LoadingPercentage < 100)
+				{
+					if (mGrbl3D != null && mGrbl3D.LoadingPercentage < 100 || Core.ShowLaserOffMovements.Value && mGrbl3DOff != null && mGrbl3DOff.LoadingPercentage < 100)
 					{
 						mFSTrig = true;
 						int pos = point.Y + size.Height + 5;
@@ -514,16 +541,6 @@ namespace LaserGRBL.UserControls
 						DrawOverlay(e, point, size, ColorScheme.PreviewRuler, 100);
 						e.Graphics.DrawString(text, font, b, point.X, point.Y);
 					}
-
-				// performance
-				if (Core.ShowPerformanceDiagnostic.Value)
-				{
-					int pos = point.Y + size.Height + 5;
-					text = $"TIME  {string.Format("{0,6:###} ms", RenderTime.Avg)}\nFPS:  {string.Format("{0,6:###}", (int)(1000.0 / RefreshRate.Avg))}";
-					size = MeasureText(text, font);
-					point = new Point(Width - size.Width - mPadding.Right, pos);
-					DrawOverlay(e, point, size, ColorScheme.PreviewRuler, 100);
-					e.Graphics.DrawString(text, font, b, point.X, point.Y);
 				}
 			}
 		}

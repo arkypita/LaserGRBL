@@ -63,6 +63,8 @@ namespace LaserGRBL.Obj3D
         [XmlIgnore]
         protected const int MAX_VECTOR_IN_DISPLAY_LIST = 1000;
 
+		public ulong VertexCounter { get; private set; } = 0;
+
         public Object3D(string name, float lineWidth)
         {
             Name = name;
@@ -118,6 +120,7 @@ namespace LaserGRBL.Obj3D
 
         public void AddVertex(double x, double y, double z, GLColor color, GrblCommand command = null)
         {
+			VertexCounter++;
             mGL.Color(color);
             mGL.Vertex(x, y, z);
             mCurrentDisplayList.Vertices.Add(new Object3DVertex { X = x, Y = y, Z = z, Alpha = color.A, Command = command });
