@@ -108,7 +108,6 @@ namespace LaserGRBL.Obj3D
             mCurrentDisplayList.Begin(mGL, LineWidth);
             mDisplayLists.Add(mCurrentDisplayList);
             Draw();
-			LaserGRBL.UserControls.GrblPanel3D.CheckError(mGL, "Draw");
 			mCurrentDisplayList.End(mGL);
             mCurrentDisplayList = null;
         }
