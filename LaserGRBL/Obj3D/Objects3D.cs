@@ -30,11 +30,16 @@ namespace LaserGRBL.Obj3D
             DisplayList.Generate(gl);
             DisplayList.New(gl, DisplayList.DisplayListMode.Compile);
             gl.PushAttrib(OpenGL.GL_CURRENT_BIT | OpenGL.GL_ENABLE_BIT | OpenGL.GL_LINE_BIT);
-            gl.Disable(OpenGL.GL_LIGHTING);
-            gl.Disable(OpenGL.GL_TEXTURE_2D);
-            gl.LineWidth(lineWidth);
-            gl.Begin(OpenGL.GL_LINES);
-        }
+			LaserGRBL.UserControls.GrblPanel3D.CheckError(gl, "Attrib");
+			gl.Disable(OpenGL.GL_LIGHTING);
+			LaserGRBL.UserControls.GrblPanel3D.CheckError(gl, "Light");
+			gl.Disable(OpenGL.GL_TEXTURE_2D);
+			LaserGRBL.UserControls.GrblPanel3D.CheckError(gl, "Texture");
+			gl.LineWidth(lineWidth);
+			LaserGRBL.UserControls.GrblPanel3D.CheckError(gl, "LineWidth");
+			gl.Begin(OpenGL.GL_LINES);
+			LaserGRBL.UserControls.GrblPanel3D.CheckError(gl, "Lines");
+		}
 
         public void End(OpenGL gl)
         {
@@ -104,7 +109,8 @@ namespace LaserGRBL.Obj3D
             mCurrentDisplayList.Begin(mGL, LineWidth);
             mDisplayLists.Add(mCurrentDisplayList);
             Draw();
-            mCurrentDisplayList.End(mGL);
+			LaserGRBL.UserControls.GrblPanel3D.CheckError(mGL, "Draw");
+			mCurrentDisplayList.End(mGL);
             mCurrentDisplayList = null;
         }
 

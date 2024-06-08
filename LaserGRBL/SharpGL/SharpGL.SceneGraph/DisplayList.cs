@@ -28,6 +28,7 @@ namespace SharpGL.SceneGraph
 		{
 			//	Generate one list.
 			list = gl.GenLists(1);
+			LaserGRBL.UserControls.GrblPanel3D.CheckError(gl, "GenLists");
 		}
 
 		/// <summary>
@@ -39,6 +40,7 @@ namespace SharpGL.SceneGraph
 		{
 			//	Start the list.
 			gl.NewList(list, (uint)mode);
+			LaserGRBL.UserControls.GrblPanel3D.CheckError(gl, "NewList");
 		}
 
 		/// <summary>
@@ -49,6 +51,7 @@ namespace SharpGL.SceneGraph
 		{
 			//	This function ends the display list
 			gl.EndList();
+			LaserGRBL.UserControls.GrblPanel3D.CheckError(gl, "EndList");
 		}
 
 		public virtual bool IsList(OpenGL gl)
@@ -72,11 +75,13 @@ namespace SharpGL.SceneGraph
 		public virtual void Call(OpenGL gl)
 		{
 			gl.CallList(list);
+			LaserGRBL.UserControls.GrblPanel3D.CheckError(gl, "CallList");
 		}
 
 		public virtual void Delete(OpenGL gl)
 		{
 			gl.DeleteLists(list, 1);
+			LaserGRBL.UserControls.GrblPanel3D.CheckError(gl, "DeleteList");
 			list = 0;
 		}
 

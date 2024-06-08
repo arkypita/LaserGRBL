@@ -28,18 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+			this.components = new System.ComponentModel.Container();
+			this.TimIssueDetector = new System.Windows.Forms.Timer(this.components);
 			this.SuspendLayout();
+			// 
+			// TimIssueDetector
+			// 
+			this.TimIssueDetector.Interval = 5000;
+			this.TimIssueDetector.Tick += new System.EventHandler(this.TimIssueDetector_Tick);
 			// 
 			// GrblPanel3D
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.SystemColors.Control;
 			this.Name = "GrblPanel3D";
 			this.Size = new System.Drawing.Size(1170, 856);
+			this.Load += new System.EventHandler(this.GrblPanel3D_Load);
 			this.ResumeLayout(false);
 
         }
 
-        #endregion
-    }
+		#endregion
+
+		private System.Windows.Forms.Timer TimIssueDetector;
+	}
 }
