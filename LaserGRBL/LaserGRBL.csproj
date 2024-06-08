@@ -176,6 +176,7 @@
     <Compile Include="Obj3D\GlColorHelper.cs" />
     <Compile Include="SvgIcons\SvgIcons.cs" />
     <Compile Include="Tools\Graph.cs" />
+    <Compile Include="Tools\MobileAverageCalculator.cs" />
     <Compile Include="Tools\RetainedSetting.cs" />
     <Compile Include="UserControls\FlatComboBox.cs">
       <SubType>Component</SubType>

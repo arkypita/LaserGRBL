@@ -138,7 +138,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="ConnectionForm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 761</value>
+    <value>307, 763</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ConnectionForm.TabIndex" type="System.Int32, mscorlib">
@@ -148,7 +148,7 @@
     <value>ConnectionForm</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Type" xml:space="preserve">
-    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.ConnectLogForm, LaserGRBL, Version=7.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ConnectionForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -163,10 +163,10 @@
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="JogForm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 761</value>
+    <value>0, 763</value>
   </data>
   <data name="JogForm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 128</value>
+    <value>307, 128</value>
   </data>
   <data name="JogForm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -175,7 +175,7 @@
     <value>JogForm</value>
   </data>
   <data name="&gt;&gt;JogForm.Type" xml:space="preserve">
-    <value>LaserGRBL.JogForm, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.JogForm, LaserGRBL, Version=7.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;JogForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -208,7 +208,7 @@
     <value>0, 0</value>
   </data>
   <data name="PreviewForm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>844, 889</value>
+    <value>846, 891</value>
   </data>
   <data name="PreviewForm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -217,7 +217,7 @@
     <value>PreviewForm</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Type" xml:space="preserve">
-    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.PreviewForm, LaserGRBL, Version=7.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;PreviewForm.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -274,7 +274,7 @@
     <value>0</value>
   </data>
   <data name="TTLBuffer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 23</value>
+    <value>39, 23</value>
   </data>
   <data name="TTLBuffer.Text" xml:space="preserve">
     <value>Buffer</value>
@@ -303,7 +303,7 @@
     <value>23, 26</value>
   </data>
   <data name="TTLEstimated.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 23</value>
+    <value>91, 23</value>
   </data>
   <data name="TTLEstimated.Text" xml:space="preserve">
     <value>Estimated Time:</value>
@@ -318,10 +318,10 @@
     <value>False</value>
   </data>
   <data name="TTLinkToNews.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 23</value>
+    <value>650, 23</value>
   </data>
   <data name="TTlaserLife.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 23</value>
+    <value>29, 23</value>
   </data>
   <data name="TTlaserLife.Text" xml:space="preserve">
     <value>0.0h</value>
@@ -336,7 +336,7 @@
     <value>5, 23</value>
   </data>
   <data name="TTOvS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 23</value>
+    <value>47, 23</value>
   </data>
   <data name="TTOvS.Text" xml:space="preserve">
     <value>S: 100%</value>
@@ -345,7 +345,7 @@
     <value>False</value>
   </data>
   <data name="TTOvG1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 23</value>
+    <value>55, 23</value>
   </data>
   <data name="TTOvG1.Text" xml:space="preserve">
     <value>G1: 100%</value>
@@ -354,7 +354,7 @@
     <value>False</value>
   </data>
   <data name="TTOvG0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 23</value>
+    <value>55, 23</value>
   </data>
   <data name="TTOvG0.Text" xml:space="preserve">
     <value>G0: 100%</value>
@@ -647,6 +647,9 @@
   <data name="cadStyleToolStripMenuItem.Text" xml:space="preserve">
     <value>CAD Style</value>
   </data>
+  <data name="cadDarkToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 22</value>
+  </data>
   <data name="cadDarkToolStripMenuItem.Text" xml:space="preserve">
     <value>CAD Dark</value>
   </data>
@@ -739,6 +742,15 @@
   </data>
   <data name="lineSizeToolStripMenuItem.Text" xml:space="preserve">
     <value>Line size</value>
+  </data>
+  <data name="toolStripMenuItem9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 6</value>
+  </data>
+  <data name="showDiagnosticDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 22</value>
+  </data>
+  <data name="showDiagnosticDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>Show diagnostic data</value>
   </data>
   <data name="previewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 20</value>
@@ -1047,7 +1059,7 @@
     <value>License</value>
   </data>
   <data name="questionMarkToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 20</value>
+    <value>12, 20</value>
   </data>
   <data name="MMn.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -9471,7 +9483,7 @@
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cadDarkToolStripMenuItem.Name" xml:space="preserve">
-    <value>cadStyleToolStripMenuItem</value>
+    <value>cadDarkToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;cadDarkToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -9564,6 +9576,18 @@
     <value>pxToolStripMenuItem5</value>
   </data>
   <data name="&gt;&gt;pxToolStripMenuItem5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem9.Name" xml:space="preserve">
+    <value>toolStripMenuItem9</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showDiagnosticDataToolStripMenuItem.Name" xml:space="preserve">
+    <value>showDiagnosticDataToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;showDiagnosticDataToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;linguaToolStripMenuItem.Name" xml:space="preserve">

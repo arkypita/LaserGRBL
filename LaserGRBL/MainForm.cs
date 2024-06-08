@@ -86,6 +86,7 @@ namespace LaserGRBL
             previewToolStripMenuItem.Visible = !Settings.LegacyPreview;
             showLaserOffMovementsToolStripMenuItem.Checked = Core.ShowLaserOffMovements.Value;
             showExecutedCommandsToolStripMenuItem.Checked = Core.ShowExecutedCommands.Value;
+			showDiagnosticDataToolStripMenuItem.Checked = Core.ShowPerformanceDiagnostic.Value;
 			CheckLineWidthItem();
 
             MnGrblConfig.Visible = Core.UIShowGrblConfig;
@@ -1254,10 +1255,19 @@ namespace LaserGRBL
 			Rectangle rect = new Rectangle(e.ClipRectangle.X + 1, e.ClipRectangle.Y + 3, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 6);
 			e.Graphics.FillRectangle(new SolidBrush(ColorScheme.ControlsBorder), rect);
         }
-    }
+
+		private void showDiagnosticDataToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (PreviewForm.GrblPanel is GrblPanel3D)
+			{
+				GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
+				Core.ShowPerformanceDiagnostic.Value = showDiagnosticDataToolStripMenuItem.Checked;
+			}
+		}
+	}
 
 
-    public class MMnRenderer : ToolStripProfessionalRenderer
+	public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 

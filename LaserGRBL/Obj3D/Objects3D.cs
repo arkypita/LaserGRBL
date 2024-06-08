@@ -3,7 +3,6 @@ using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Core;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Xml.Serialization;
 
@@ -51,7 +50,7 @@ namespace LaserGRBL.Obj3D
 
     }
 
-    public abstract class Object3D : SceneElement, IRenderable, IDisposable
+    public abstract class Object3D : SceneElement, IDisposable
     {
         [XmlIgnore]
         protected List<Object3DDisplayList> mDisplayLists = new List<Object3DDisplayList>();
@@ -79,17 +78,14 @@ namespace LaserGRBL.Obj3D
             mDisplayLists.Clear();
         }
 
-        public virtual void Render(OpenGL gl, RenderMode renderMode)
+        public virtual void Render(OpenGL gl)
         {
-            if (renderMode == RenderMode.Design)
+            if (mDisplayLists.Count <= 0)
             {
-                if (mDisplayLists.Count <= 0)
-                {
-                    mGL = gl;
-                    CreateDisplayList();
-                }
-                CallDisplayList(gl);
+                mGL = gl;
+                CreateDisplayList();
             }
+            CallDisplayList(gl);
         }
 
         protected virtual void CallDisplayList(OpenGL gl)
@@ -258,6 +254,8 @@ namespace LaserGRBL.Obj3D
         private readonly bool mJustLaserOffMovements;
         [XmlIgnore]
         public Color Color;
+        [XmlIgnore]
+        public double LoadingPercentage { get; private set; } = 0;
 
 
         public Grbl3D(GrblCore core, string name, bool justLaserOffMovements, Color color) : base(name, core.PreviewLineSize.Value)
@@ -271,8 +269,10 @@ namespace LaserGRBL.Obj3D
         {
             float zPos = 0;
             GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
-            for (int i = 0; i < Core.LoadedFile.Commands.Count; i++)
+            int commandsCount = Core.LoadedFile.Commands.Count;
+            for (int i = 0; i < commandsCount; i++)
             {
+                LoadingPercentage = (i + 1.0) / commandsCount * 100;
                 GrblCommand cmd = Core.LoadedFile.Commands[i];
                 try
                 {

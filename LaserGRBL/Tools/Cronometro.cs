@@ -68,7 +68,12 @@ namespace Tools
 	{
 		private ElapsedFromEvent timer = new ElapsedFromEvent();
 		private TimeSpan elapsed = TimeSpan.Zero;
-		
+
+		public SimpleCrono(bool start = false)
+		{
+			if (start) Start();
+		}
+
 		public void Start()
 		{
 			timer.Start();

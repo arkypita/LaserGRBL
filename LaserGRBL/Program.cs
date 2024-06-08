@@ -52,6 +52,9 @@ namespace LaserGRBL
 					Settings.LegacyPreview = true;
 			}
 
+			if (!Settings.LegacyPreview)
+				GraphicInitializer.RequestDedicatedGraphics();
+
 			Application.Run(new MainForm(args));
 
 			GrblEmulator.WebSocketEmulator.Stop();
@@ -88,5 +91,41 @@ namespace LaserGRBL
 
 		private static bool bypassAllCertificateStuff(object sender, System.Security.Cryptography.X509Certificates.X509Certificate certificate, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
 		{ return true; }
+	}
+
+
+	public class GraphicInitializer
+	{
+		// https://stackoverflow.com/questions/17270429/forcing-hardware-accelerated-rendering
+		
+		//From PDF: https://developer.download.nvidia.com/devzone/devcenter/gamegraphics/files/OptimusRenderingPolicies.pdf
+		//For any application without an existing application profile, there is a set of libraries
+		//which, when statically linked to a given application executable, will direct the Optimus
+		//driver to render the application using High Performance Graphics.As of Release 302, the
+		//current list of libraries are vcamp110.dll, vcamp110d.dll, nvapi.dll, nvapi64.dll, opencl.dll,
+		//nvcuda.dll, and cudart*.*.
+
+		[System.Runtime.InteropServices.DllImport("nvapi64.dll", EntryPoint = "fake")]
+		static extern int LoadNvApi64();
+
+		[System.Runtime.InteropServices.DllImport("nvapi.dll", EntryPoint = "fake")]
+		static extern int LoadNvApi32();
+
+		//[System.Runtime.InteropServices.DllImport("opencsl.dll", EntryPoint = "fake")]
+		//static extern int LoadOpenCL();
+
+		public static void RequestDedicatedGraphics()
+		{
+
+			try
+			{
+				if (Tools.OSHelper.Is64BitProcess) LoadNvApi64();
+				else LoadNvApi32();
+			}
+			catch (EntryPointNotFoundException ex) { } // normal exception, will always fail since 'fake' entry point doesn't exists (but the library is loaded now)
+			catch (DllNotFoundException ex) { } // if not NVIDIA driver, the dll does not exists, so it is normat to have this exception
+			catch (Exception ex) { } //any other cases... simply ignore 
+		}
+
 	}
 }
