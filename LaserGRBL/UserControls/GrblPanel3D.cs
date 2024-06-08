@@ -598,7 +598,6 @@ namespace LaserGRBL.UserControls
 				{
 					if (mGrbl3D != null && mGrbl3D.LoadingPercentage < 100 || Core.ShowLaserOffMovements.Value && mGrbl3DOff != null && mGrbl3DOff.LoadingPercentage < 100)
 					{
-						mFSTrig = true;
 						int pos = point.Y + size.Height + 5;
 						double? perc;
 						perc = mGrbl3D?.LoadingPercentage ?? 0;
