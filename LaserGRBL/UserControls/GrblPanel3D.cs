@@ -82,7 +82,9 @@ namespace LaserGRBL.UserControls
 		private Base.Mathematics.MobileDAverageCalculator RefreshRate;
 
 		private static Exception FatalException;
-		private Color IssueMatchBackColor;
+
+		// 0 = never run, 1 = init begin, 2 = init complete, 3 = draw begin, 4 = draw end, > 4 = running (can be tested with a timer to check if it stop incrementing)
+		private static ulong OpCounter;
 
 		public static string CurrentRendererType = "";
 		public static string CurrentVendor = "";
@@ -97,15 +99,20 @@ namespace LaserGRBL.UserControls
 			{
 				if (FatalException != null)
 					return FatalException.Message;
-				else
+				else if (FirstGlError != null)
 					return FirstGlError;
+				else if (OpCounter < 4)
+					return $"OpCounter {OpCounter}";
+
+				return null;
 			}
 		}
 
+		Tools.ThreadObject TH = null;
 		public GrblPanel3D()
 		{
 			InitializeComponent();
-			IssueMatchBackColor = Color.FromArgb(BackColor.A, BackColor.R, BackColor.G, BackColor.B);
+			OpCounter = 0;
 			RenderTime = new Base.Mathematics.MobileDAverageCalculator(30);
 			RefreshRate = new Base.Mathematics.MobileDAverageCalculator(30);
 			mLastWPos = GPoint.Zero;
@@ -129,23 +136,76 @@ namespace LaserGRBL.UserControls
 			mLastControlSize = new PointF(Width, Height);
 			mGrid = new Grid3D();
 
-			Task.Factory.StartNew(() =>
+			TH = new Tools.ThreadObject(DrawScene, 10, true, "OpenGL", InitializeOpenGL, ThreadPriority.Lowest);
+			TH.Start();
+		}
+
+		/// <summary> 
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
 			{
-				GlThread();
-			});
+				try { TH?.Stop(); TH.Dispose(); } catch { }
+				components.Dispose();
+			}
+			base.Dispose(disposing);
 		}
 
 		[System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptions]
-		private void GlThread()
+		protected void InitializeOpenGL()
 		{
 			try
 			{
-				InitializeOpenGL();
-				while (true)
+				OpCounter++;
+
+				object parameter = null;
+				OpenGL = new OpenGL();
+
+
+				if (Settings.UseSoftwareOpenGL)
 				{
-					DrawScene();
-					Thread.Sleep(30);
+					CurrentRendererType = "DIB!";
+					OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.DIBSection, Width, Height, 32, parameter);
+					CheckError(OpenGL, "Create");
 				}
+				else
+				{
+					try
+					{
+
+						CurrentRendererType = "FBO";
+						OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.FBO, Width, Height, 32, parameter);
+						if (OpenGL.GetError() != OpenGL.GL_NO_ERROR) throw new Exception("Cannot Create FBO");
+					}
+					catch
+					{
+						CurrentRendererType = "DIB";
+						OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.DIBSection, Width, Height, 32, parameter);
+						CheckError(OpenGL, "Create");
+					}
+				}
+
+				try { CurrentVendor = OpenGL.Vendor; } catch { CurrentVendor = "Unknown"; }
+				try { CurrentRenderer = OpenGL.Renderer; } catch { CurrentRenderer = "Unknown"; }
+				try { CurrentGLVersion = OpenGL.Version; } catch { CurrentGLVersion = "0.0"; }
+
+				Logger.LogMessage("OpenGL", "{0} OpenGL {1}, {2}, {3}", CurrentRendererType, CurrentGLVersion, CurrentVendor, CurrentRenderer);
+
+				OpenGL.ShadeModel(OpenGL.GL_SMOOTH);
+				CheckError(OpenGL, "ShadeModel");
+				OpenGL.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+				OpenGL.ClearDepth(1.0f);
+				OpenGL.Enable(OpenGL.GL_DEPTH_TEST);
+				CheckError(OpenGL, "DepthTest");
+				OpenGL.DepthFunc(OpenGL.GL_LEQUAL);
+				CheckError(OpenGL, "DepthFunc");
+				OpenGL.Hint(OpenGL.GL_PERSPECTIVE_CORRECTION_HINT, OpenGL.GL_NICEST);
+				CheckError(OpenGL, "Hint");
+
+				OpCounter++;
 			}
 			catch (Exception ex)
 			{
@@ -155,6 +215,117 @@ namespace LaserGRBL.UserControls
 				ExceptionManager.OnHandledException(ex, true);
 			}
 		}
+
+		[System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptions]
+		private void DrawScene()
+		{
+			try
+			{
+				if (FatalException != null) return;
+				OpCounter++;
+
+				Tools.SimpleCrono crono = new Tools.SimpleCrono(true);
+				if (mBackgroundColor == null) return;
+				OpenGL.MakeCurrent();
+				CheckError(OpenGL, "MakeCurrent");
+				OpenGL.SetDimensions(Width, Height);
+				OpenGL.Viewport(0, 0, Width, Height);
+				mCamera.Project(OpenGL);
+				CheckError(OpenGL, "Viewport");
+				OpenGL.ClearColor(mBackgroundColor.R, mBackgroundColor.G, mBackgroundColor.B, mBackgroundColor.A);
+				OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
+				CheckError(OpenGL, "Clear");
+				// render grid
+				mGrid.ShowMinor = mCamera.Right - mCamera.Left < 100;
+				mGrid.TicksColor = mTicksColor;
+				mGrid.MinorsColor = mMinorsColor;
+				mGrid.OriginsColor = mOriginsColor;
+				mGrid.Render(OpenGL);
+				CheckError(OpenGL, "RenderGrid");
+				// enable anti alias
+				OpenGL.Enable(OpenGL.GL_BLEND);
+				OpenGL.BlendFunc(OpenGL.GL_SRC_ALPHA, OpenGL.GL_ONE_MINUS_SRC_ALPHA);
+				CheckError(OpenGL, "Blend");
+				OpenGL.Enable(OpenGL.GL_LINE_SMOOTH);
+				OpenGL.Hint(OpenGL.GL_LINE_SMOOTH_HINT, OpenGL.GL_NICEST);
+				CheckError(OpenGL, "Smooth");
+				// manage grbl object
+				if (mReload)
+				{
+					mReload = false;
+					lock (mGrbl3DLock)
+					{
+						mGrbl3D?.Dispose();
+						mGrbl3DOff?.Dispose();
+						mGrbl3D = new Grbl3D(Core, "LaserOn", false, ColorScheme.PreviewLaserPower);
+						mGrbl3DOff = new Grbl3D(Core, "LaserOff", true, ColorScheme.PreviewOtherMovement);
+					}
+					mGrbl3DOff.LineWidth = 1;
+				}
+				if (mGrbl3D != null)
+				{
+					if (mInvalidateAll)
+					{
+						mInvalidateAll = false;
+						mGrbl3D.Color = ColorScheme.PreviewLaserPower;
+						mGrbl3D.InvalidateAll();
+						mGrbl3DOff.Color = ColorScheme.PreviewOtherMovement;
+						mGrbl3DOff.InvalidateAll();
+					}
+					if (Core.ShowLaserOffMovements.Value)
+					{
+						mGrbl3DOff.Invalidate();
+						mGrbl3DOff.Render(OpenGL);
+					}
+					mGrbl3D.Invalidate();
+					mGrbl3D.Render(OpenGL);
+				}
+				CheckError(OpenGL, "RenderObject");
+				// disable anti alias
+				OpenGL.Disable(OpenGL.GL_BLEND);
+				OpenGL.Disable(OpenGL.GL_LINE_SMOOTH);
+				CheckError(OpenGL, "BlendDisable");
+				// main hud
+				DrawPointer();
+				CheckError(OpenGL, "Pointer");
+				DrawRulers();
+				CheckError(OpenGL, "Rulers");
+				OpenGL.Flush();
+				CheckError(OpenGL, "Flush");
+				// enter lock and copy bitmap
+				lock (mBitmapLock)
+				{
+					// new bitmap if different size
+					if (mBmp == null || mBmp.Width != Width || mBmp.Height != Height)
+					{
+						mBmp?.Dispose();
+						mBmp = new Bitmap(Width, Height);
+					}
+					// clone opengl graphics
+					using (Graphics g = Graphics.FromImage(mBmp))
+					{
+						IntPtr handleDeviceContext = g.GetHdc();
+						OpenGL.Blit(handleDeviceContext);
+						CheckError(OpenGL, "Blit");
+						g.ReleaseHdc(handleDeviceContext);
+					}
+				}
+				RenderTime.EnqueueNewSample(crono.ElapsedTime.TotalMilliseconds);
+
+				// call control invalidate
+				Invalidate();
+
+				OpCounter++;
+			}
+			catch (Exception ex)
+			{
+				Logger.LogException("OpenGL", ex);
+				FatalException = ex;
+				Invalidate();
+				ExceptionManager.OnHandledException(ex, true);
+			}
+		}
+
 
 		private void SetWorldPosition(double left, double right, double bottom, double top)
 		{
@@ -215,53 +386,6 @@ namespace LaserGRBL.UserControls
 			{
 				Core.BeginJog((PointF)mMouseWorldPosition, e.Button == MouseButtons.Right);
 			}
-		}
-
-		protected void InitializeOpenGL()
-		{
-			object parameter = null;
-			OpenGL = new OpenGL();
-
-
-			if (Settings.UseSoftwareOpenGL)
-			{
-				CurrentRendererType = "DIB!";
-				OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.DIBSection, Width, Height, 32, parameter);
-				CheckError(OpenGL, "Create");
-			}
-			else
-			{ 
-				try
-				{
-
-					CurrentRendererType = "FBO";
-					OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.FBO, Width, Height, 32, parameter);
-					if (OpenGL.GetError() != OpenGL.GL_NO_ERROR) throw new Exception("Cannot Create FBO");
-				}
-				catch
-				{
-					CurrentRendererType = "DIB";
-					OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.DIBSection, Width, Height, 32, parameter);
-					CheckError(OpenGL, "Create");
-				}
-			}
-
-			try { CurrentVendor = OpenGL.Vendor; } catch { CurrentVendor = "Unknown"; }
-			try { CurrentRenderer = OpenGL.Renderer; } catch { CurrentRenderer = "Unknown"; }
-			try { CurrentGLVersion = OpenGL.Version; } catch { CurrentGLVersion = "0.0"; }
-
-			Logger.LogMessage("OpenGL", "{0} OpenGL {1}, {2}, {3}", CurrentRendererType, CurrentGLVersion, CurrentVendor, CurrentRenderer);
-
-			OpenGL.ShadeModel(OpenGL.GL_SMOOTH);
-			CheckError(OpenGL, "ShadeModel");
-			OpenGL.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-			OpenGL.ClearDepth(1.0f);
-			OpenGL.Enable(OpenGL.GL_DEPTH_TEST);
-			CheckError(OpenGL, "DepthTest");
-			OpenGL.DepthFunc(OpenGL.GL_LEQUAL);
-			CheckError(OpenGL, "DepthFunc");
-			OpenGL.Hint(OpenGL.GL_PERSPECTIVE_CORRECTION_HINT, OpenGL.GL_NICEST);
-			CheckError(OpenGL, "Hint");
 		}
 
 		static uint errcounter = 0;
@@ -378,100 +502,6 @@ namespace LaserGRBL.UserControls
 			OpenGL.Flush();
 		}
 
-		private void DrawScene()
-		{
-			Tools.SimpleCrono crono = new Tools.SimpleCrono(true);
-			if (mBackgroundColor == null) return;
-			OpenGL.MakeCurrent();
-			CheckError(OpenGL, "MakeCurrent");
-			OpenGL.SetDimensions(Width, Height);
-			OpenGL.Viewport(0, 0, Width, Height);
-			mCamera.Project(OpenGL);
-			CheckError(OpenGL, "Viewport");
-			OpenGL.ClearColor(mBackgroundColor.R, mBackgroundColor.G, mBackgroundColor.B, mBackgroundColor.A);
-			OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
-			CheckError(OpenGL, "Clear");
-			// render grid
-			mGrid.ShowMinor = mCamera.Right - mCamera.Left < 100;
-			mGrid.TicksColor = mTicksColor;
-			mGrid.MinorsColor = mMinorsColor;
-			mGrid.OriginsColor = mOriginsColor;
-			mGrid.Render(OpenGL);
-			CheckError(OpenGL, "RenderGrid");
-			// enable anti alias
-			OpenGL.Enable(OpenGL.GL_BLEND);
-			OpenGL.BlendFunc(OpenGL.GL_SRC_ALPHA, OpenGL.GL_ONE_MINUS_SRC_ALPHA);
-			CheckError(OpenGL, "Blend");
-			OpenGL.Enable(OpenGL.GL_LINE_SMOOTH);
-			OpenGL.Hint(OpenGL.GL_LINE_SMOOTH_HINT, OpenGL.GL_NICEST);
-			CheckError(OpenGL, "Smooth");
-			// manage grbl object
-			if (mReload)
-			{
-				mReload = false;
-				lock (mGrbl3DLock)
-				{
-					mGrbl3D?.Dispose();
-					mGrbl3DOff?.Dispose();
-					mGrbl3D = new Grbl3D(Core, "LaserOn", false, ColorScheme.PreviewLaserPower);
-					mGrbl3DOff = new Grbl3D(Core, "LaserOff", true, ColorScheme.PreviewOtherMovement);
-				}
-				mGrbl3DOff.LineWidth = 1;
-			}
-			if (mGrbl3D != null)
-			{
-				if (mInvalidateAll)
-				{
-					mInvalidateAll = false;
-					mGrbl3D.Color = ColorScheme.PreviewLaserPower;
-					mGrbl3D.InvalidateAll();
-					mGrbl3DOff.Color = ColorScheme.PreviewOtherMovement;
-					mGrbl3DOff.InvalidateAll();
-				}
-				if (Core.ShowLaserOffMovements.Value)
-				{
-					mGrbl3DOff.Invalidate();
-					mGrbl3DOff.Render(OpenGL);
-				}
-				mGrbl3D.Invalidate();
-				mGrbl3D.Render(OpenGL);
-			}
-			CheckError(OpenGL, "RenderObject");
-			// disable anti alias
-			OpenGL.Disable(OpenGL.GL_BLEND);
-			OpenGL.Disable(OpenGL.GL_LINE_SMOOTH);
-			CheckError(OpenGL, "BlendDisable");
-			// main hud
-			DrawPointer();
-			CheckError(OpenGL, "Pointer");
-			DrawRulers();
-			CheckError(OpenGL, "Rulers");
-			OpenGL.Flush();
-			CheckError(OpenGL, "Flush");
-			// enter lock and copy bitmap
-			lock (mBitmapLock)
-			{
-				// new bitmap if different size
-				if (mBmp == null || mBmp.Width != Width || mBmp.Height != Height)
-				{
-					mBmp?.Dispose();
-					mBmp = new Bitmap(Width, Height);
-				}
-				// clone opengl graphics
-				using (Graphics g = Graphics.FromImage(mBmp))
-				{
-					IntPtr handleDeviceContext = g.GetHdc();
-					OpenGL.Blit(handleDeviceContext);
-					CheckError(OpenGL, "Blit");
-					g.ReleaseHdc(handleDeviceContext);
-				}
-			}
-			RenderTime.EnqueueNewSample(crono.ElapsedTime.TotalMilliseconds);
-
-			// call control invalidate
-			Invalidate();
-		}
-
 		Tools.SimpleCrono FpsCrono;
 		protected override void OnPaint(PaintEventArgs e)
 		{
@@ -504,17 +534,27 @@ namespace LaserGRBL.UserControls
 				DrawException(e, FatalException.ToString());
 			else if (OnPaintException != null)
 				DrawException(e, OnPaintException.ToString());
+			else if (OpCounter == 0)
+				DrawException(e, "Initializing OpenGL");
+			else if (OpCounter == 1)
+				DrawException(e, "Waiting for draw begin");
+			else if (OpCounter == 0)
+				DrawException(e, "Drawing");
 			else if (mBmp == null)
 				DrawException(e, "nothing to draw");
 		}
 
 		private void DrawException(PaintEventArgs e, string text)
 		{
-			Size size = MeasureText(text, Font);
-			Size size2 = new Size(size.Width + 20, size.Height);
-			Point point = new Point((Width - size2.Width) / 2, (Height - size2.Height) / 2);
-			DrawOverlay(e, point, size2, Color.Red, 100);
-			e.Graphics.DrawString(text, Font, Brushes.White, point.X, point.Y);
+			try
+			{
+				Size size = MeasureText(text, Font);
+				Size size2 = new Size(size.Width + 20, size.Height);
+				Point point = new Point((Width - size2.Width) / 2, (Height - size2.Height) / 2);
+				DrawOverlay(e, point, size2, Color.Red, 100);
+				e.Graphics.DrawString(text, Font, Brushes.White, point.X, point.Y);
+			}
+			catch { }
 		}
 
 		private string FormatCoord(float coord)
@@ -835,32 +875,10 @@ namespace LaserGRBL.UserControls
 			mPointerColor = ColorScheme.PreviewCross;
 			mTicksColor = ColorScheme.PreviewGrid;
 			mMinorsColor = ColorScheme.PreviewGridMinor;
+			BackColor = mBackgroundColor;
 			mInvalidateAll = true;
 		}
 
-		private void TimIssueDetector_Tick(object sender, EventArgs e)
-		{
-			TimIssueDetector.Enabled = false;
-
-			if (Width > 0 && Height > 0)
-			{ 
-				Bitmap bitmap = new Bitmap(Width, Height);
-				// Draw the control to the bitmap
-				DrawToBitmap(bitmap, new Rectangle(0, 0, Width, Height));
-
-				Color c = bitmap.GetPixel(1, 1);
-
-				if (c.Equals(IssueMatchBackColor))
-					MessageBox.Show("LaserGRBL is unable to draw the preview, it seems your video card is not supported. Try starting LaserGRBL again from the start menu by choosing the \"LaserGRBL (soft opengl)\" option.");
-			}
-
-		}
-
-		private void GrblPanel3D_Load(object sender, EventArgs e)
-		{
-			this.Load -= GrblPanel3D_Load;
-			//TimIssueDetector.Start(); //uncomment to enable issue detector using bitmap pixel color test
-		}
 	}
 
 }

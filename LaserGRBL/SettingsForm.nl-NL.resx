@@ -121,7 +121,7 @@
     <value>Annuleren</value>
   </data>
   <data name="BtnSave.Text" xml:space="preserve">
-    <value>Redden</value>
+    <value>Opslaan</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Streamingmodus: [Standaard gebufferd]
