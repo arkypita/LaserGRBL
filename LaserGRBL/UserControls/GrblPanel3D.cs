@@ -97,6 +97,9 @@ namespace LaserGRBL.UserControls
 		{
 			get
 			{
+				if (Settings.LegacyPreview) //we not use GrblPanel3D
+					return null;
+
 				if (FatalException != null)
 					return FatalException.Message;
 				else if (FirstGlError != null)
