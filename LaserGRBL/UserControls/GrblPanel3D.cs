@@ -274,9 +274,8 @@ namespace LaserGRBL.UserControls
 				if (errcounter < 3)
 				{
 					errcounter++;
-
-					string message = string.Format("{0}: {1} [{2}]", action, gl.GetErrorDescription(err), err);
-					if (errcounter == 1) FirstGlError = message;
+					string message = string.Format("[{0}] {1}: {2}", err, action, gl.GetErrorDescription(err));
+					if (FirstGlError == null) FirstGlError = message;
 					Logger.LogMessage("OpenGL", message);
 				}
 			}
