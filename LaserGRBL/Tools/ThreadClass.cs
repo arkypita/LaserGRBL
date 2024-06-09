@@ -5,7 +5,6 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using System;
-using System.Diagnostics;
 using System.Threading;
 
 namespace Tools
@@ -14,10 +13,10 @@ namespace Tools
 	public class ThreadObject : ThreadClass
 	{
 
-		private System.Threading.ThreadStart _delegateSub;
+		private ThreadStart _delegateSub;
 
-		private System.Threading.ThreadStart _firstRunSub;
-		public ThreadObject(System.Threading.ThreadStart DelegateSub, int SleepTime, bool AutoDispose, string Name, System.Threading.ThreadStart FirstRunSub, ThreadPriority priority = ThreadPriority.Normal) : base(SleepTime, AutoDispose, Name, priority)
+		private ThreadStart _firstRunSub;
+		public ThreadObject(ThreadStart DelegateSub, int SleepTime, bool AutoDispose, string Name, ThreadStart FirstRunSub, ThreadPriority priority = ThreadPriority.Normal, ApartmentState apartment = ApartmentState.Unknown) : base(SleepTime, AutoDispose, Name, priority)
 		{
 			_delegateSub = DelegateSub;
 			_firstRunSub = FirstRunSub;
@@ -46,11 +45,12 @@ namespace Tools
 		protected ManualResetEvent MustExit;
 			//checked 26/05/2008
 		protected internal Thread TH;
-
+		private ApartmentState mApartment;
 		protected internal ThreadPriority mPriority;
 
-        protected ThreadClass(int SleepTime, bool AutoDispose, string Name, ThreadPriority priority)
+        protected ThreadClass(int SleepTime, bool AutoDispose, string Name, ThreadPriority priority, ApartmentState apartment = ApartmentState.Unknown)
 		{
+			mApartment = apartment;
 			mPriority = priority;
 			this.SleepTime = SleepTime;
 			if (AutoDispose)
@@ -92,6 +92,7 @@ namespace Tools
 			if (TH == null) {
 				MustExit = new ManualResetEvent(false);
 				TH = new Thread(Loop);
+				if (mApartment != ApartmentState.Unknown) TH.SetApartmentState(mApartment);
 				TH.Priority = mPriority;
 				TH.Name = this.Name;
 				TH.Start();
@@ -147,7 +148,7 @@ namespace Tools
 			}
 		}
 
-		private void AutoDispose(object sender, System.EventArgs e)
+		private void AutoDispose(object sender, EventArgs e)
 		{
 			System.Windows.Forms.Application.ApplicationExit -= this.AutoDispose;
 			Dispose();

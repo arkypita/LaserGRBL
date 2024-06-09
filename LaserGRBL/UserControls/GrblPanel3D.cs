@@ -136,7 +136,7 @@ namespace LaserGRBL.UserControls
 			mLastControlSize = new PointF(Width, Height);
 			mGrid = new Grid3D();
 
-			TH = new Tools.ThreadObject(DrawScene, 10, true, "OpenGL", InitializeOpenGL, ThreadPriority.Lowest);
+			TH = new Tools.ThreadObject(DrawScene, 10, true, "OpenGL", InitializeOpenGL, ThreadPriority.Lowest, ApartmentState.STA);
 			TH.Start();
 		}
 
