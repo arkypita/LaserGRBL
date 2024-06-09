@@ -83,7 +83,7 @@ namespace LaserGRBL.UserControls
 
 		private static Exception FatalException;
 
-		// 0 = never run, 1 = init begin, 2 = init complete, 3 = draw begin, 4 = draw end, > 4 = running (can be tested with a timer to check if it stop incrementing)
+		// 0 = never run, 1 = init begin, 2 = create complete, 3 = init complete, 4 = draw begin, 5 = draw end, > 5 = running (can be tested with a timer to check if it stop incrementing)
 		private static ulong OpCounter;
 
 		public static string CurrentRendererType = "";
@@ -101,7 +101,7 @@ namespace LaserGRBL.UserControls
 					return FatalException.Message;
 				else if (FirstGlError != null)
 					return FirstGlError;
-				else if (OpCounter < 4)
+				else if (OpCounter < 5)
 					return $"OpCounter {OpCounter}";
 
 				return null;
@@ -187,6 +187,8 @@ namespace LaserGRBL.UserControls
 						CheckError(OpenGL, "Create");
 					}
 				}
+
+				OpCounter++;
 
 				try { CurrentVendor = OpenGL.Vendor; } catch { CurrentVendor = "Unknown"; }
 				try { CurrentRenderer = OpenGL.Renderer; } catch { CurrentRenderer = "Unknown"; }
@@ -534,12 +536,16 @@ namespace LaserGRBL.UserControls
 				DrawException(e, FatalException.ToString());
 			else if (OnPaintException != null)
 				DrawException(e, OnPaintException.ToString());
-			else if (OpCounter == 0)
-				DrawException(e, "Initializing OpenGL");
+			else if (OpCounter == 0)        // 0 = never run, 1 = init begin, 2 = create complete, 3 = init complete, 4 = draw begin, 5 = draw end, > 5 = running (can be tested with a timer to check if it stop incrementing)
+				DrawException(e, "0.Thread Starting");
 			else if (OpCounter == 1)
-				DrawException(e, "Waiting for draw begin");
-			else if (OpCounter == 0)
-				DrawException(e, "Drawing");
+				DrawException(e, "1.Initializing OpenGL");
+			else if (OpCounter == 2)
+				DrawException(e, "2.Creation Complete");
+			else if (OpCounter == 3)
+				DrawException(e, "3.Init Complete");
+			else if (OpCounter == 4)
+				DrawException(e, "4.Draw Begin");
 			else if (mBmp == null)
 				DrawException(e, "nothing to draw");
 		}
