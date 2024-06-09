@@ -267,19 +267,22 @@ namespace LaserGRBL.UserControls
 		static uint errcounter = 0;
 		public static bool CheckError(OpenGL gl, string action)
 		{
+			bool rv = false;
 			uint err = gl.GetError();
-			if (err != OpenGL.GL_NO_ERROR)
+			uint loopCount = 0; //loop with count checks to prevent infinite loop in case of code errors
+			while (err != OpenGL.GL_NO_ERROR && loopCount++ < 20) //glGetError should always be called in a loop, until it returns GL_NO_ERROR https://registry.khronos.org/OpenGL-Refpages/gl4/html/glGetError.xhtml
 			{
-
-				if (errcounter < 3)
+				rv = true;
+				if (errcounter < 3) //we store only first 3 error
 				{
 					errcounter++;
 					string message = string.Format("[{0}] {1}: {2}", err, action, gl.GetErrorDescription(err));
-					if (FirstGlError == null) FirstGlError = message;
+					if (FirstGlError == null) FirstGlError = message; //we send only the first one
 					Logger.LogMessage("OpenGL", message);
 				}
+				err = gl.GetError();
 			}
-			return err != OpenGL.GL_NO_ERROR;
+			return rv;
 		}
 
 		private void GrblPanel3D_Disposed(object sender, EventArgs e)
