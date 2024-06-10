@@ -897,6 +897,9 @@ namespace LaserGRBL.UserControls
 			TimDetectIssue.Stop();
 			if (OpCounter < 7 || FatalException != null) //non è riuscito a completare nemmeno due disegni nei 5 secondi del timer! (o se c'è stata una eccezione nei primi 5 secondi)
 			{
+				if (FatalException == null) //fatal exception are logged where they are generated
+					Logger.LogMessage("OpenGL", "Rendering issue detected! OpCounte: {0}", OpCounter);
+
 				if (Settings.CurrentGraphicMode == Settings.GraphicMode.FBO && MessageBox.Show(Strings.FBOIssueSuggestDBO, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
 				{
 					Settings.ConfiguredGraphicMode = Settings.GraphicMode.DIB;
