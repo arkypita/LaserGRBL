@@ -83,7 +83,7 @@ namespace LaserGRBL
 				MultipleInstanceTimer.Enabled = true;
 			}
 
-            previewToolStripMenuItem.Visible = !Settings.LegacyPreview;
+            previewToolStripMenuItem.Visible = Settings.CurrentGraphicMode != Settings.GraphicMode.GDI;
             showLaserOffMovementsToolStripMenuItem.Checked = Core.ShowLaserOffMovements.Value;
             showExecutedCommandsToolStripMenuItem.Checked = Core.ShowExecutedCommands.Value;
 			showDiagnosticDataToolStripMenuItem.Checked = Core.ShowPerformanceDiagnostic.Value;

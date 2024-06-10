@@ -86,7 +86,6 @@ namespace LaserGRBL.UserControls
 		// 0 = never run, 1 = init begin, 2 = create complete, 3 = init complete, 4 = draw begin, 5 = draw end, > 5 = running (can be tested with a timer to check if it stop incrementing)
 		private static ulong OpCounter;
 
-		public static string CurrentRendererType = "";
 		public static string CurrentVendor = "";
 		public static string CurrentRenderer = "";
 		public static string CurrentGLVersion = "";
@@ -97,7 +96,7 @@ namespace LaserGRBL.UserControls
 		{
 			get
 			{
-				if (Settings.LegacyPreview) //we not use GrblPanel3D
+				if (Settings.CurrentGraphicMode == Settings.GraphicMode.GDI) //we not use GrblPanel3D
 					return null;
 
 				if (FatalException != null)
@@ -168,24 +167,23 @@ namespace LaserGRBL.UserControls
 				OpenGL = new OpenGL();
 
 
-				if (Settings.UseSoftwareOpenGL)
+				if (Settings.RequestedGraphicMode == Settings.GraphicMode.DIB)
 				{
-					CurrentRendererType = "DIB!";
+					Settings.CurrentGraphicMode = Settings.GraphicMode.DIB;
 					OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.DIBSection, Width, Height, 32, parameter);
 					CheckError(OpenGL, "Create");
 				}
-				else
+				else // if we are here the requested is AUTO or FBO so we can proceed with FBO and fallback to DIB
 				{
 					try
 					{
-
-						CurrentRendererType = "FBO";
+						Settings.CurrentGraphicMode = Settings.GraphicMode.FBO;
 						OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.FBO, Width, Height, 32, parameter);
 						if (OpenGL.GetError() != OpenGL.GL_NO_ERROR) throw new Exception("Cannot Create FBO");
 					}
 					catch
 					{
-						CurrentRendererType = "DIB";
+						Settings.CurrentGraphicMode = Settings.GraphicMode.DIB;
 						OpenGL.Create(OpenGLVersion.OpenGL2_1, RenderContextType.DIBSection, Width, Height, 32, parameter);
 						CheckError(OpenGL, "Create");
 					}
@@ -197,7 +195,7 @@ namespace LaserGRBL.UserControls
 				try { CurrentRenderer = OpenGL.Renderer; } catch { CurrentRenderer = "Unknown"; }
 				try { CurrentGLVersion = OpenGL.Version; } catch { CurrentGLVersion = "0.0"; }
 
-				Logger.LogMessage("OpenGL", "{0} OpenGL {1}, {2}, {3}", CurrentRendererType, CurrentGLVersion, CurrentVendor, CurrentRenderer);
+				Logger.LogMessage("OpenGL", "{0}->{1} OpenGL {2}, {3}, {4}", Settings.RequestedGraphicMode, Settings.CurrentGraphicMode, CurrentGLVersion, CurrentVendor, CurrentRenderer);
 
 				OpenGL.ShadeModel(OpenGL.GL_SMOOTH);
 				CheckError(OpenGL, "ShadeModel");

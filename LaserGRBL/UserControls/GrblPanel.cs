@@ -28,10 +28,11 @@ namespace LaserGRBL.UserControls
 		public GrblPanel()
 		{
 			InitializeComponent();
-			GrblPanel3D.CurrentRendererType = "GDI+";
+			Settings.CurrentGraphicMode = Settings.GraphicMode.GDI;
 			GrblPanel3D.CurrentVendor = "LaserGRBL";
 			GrblPanel3D.CurrentRenderer = "Legacy Preview";
-			Logger.LogMessage("OpenGL", "{0} {1}, {2}", GrblPanel3D.CurrentRendererType, GrblPanel3D.CurrentVendor, GrblPanel3D.CurrentRenderer);
+			Logger.LogMessage("OpenGL", "{0}->{1} {2}, {3}", Settings.RequestedGraphicMode, Settings.CurrentGraphicMode, GrblPanel3D.CurrentVendor, GrblPanel3D.CurrentRenderer);
+
 			SetStyle(ControlStyles.UserPaint, true);
 			SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 			SetStyle(ControlStyles.AllPaintingInWmPaint, true);

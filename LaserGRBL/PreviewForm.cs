@@ -67,7 +67,7 @@ namespace LaserGRBL
                 tableLayoutPanel1.Controls.Remove(GrblPanel as Control);
 				(GrblPanel as Control).Dispose();
             }
-            if (Settings.LegacyPreview)
+            if (Settings.RequestedGraphicMode == Settings.GraphicMode.GDI)
                 GrblPanel = new GrblPanel();
             else
                 GrblPanel = new GrblPanel3D();

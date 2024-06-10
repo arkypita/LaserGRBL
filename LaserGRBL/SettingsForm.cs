@@ -8,6 +8,8 @@ using LaserGRBL.Icons;
 using LaserGRBL.UserControls;
 using Sound;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -17,6 +19,7 @@ namespace LaserGRBL
 	{
         private GrblCore Core;
         public static event EventHandler SettingsChanged;
+		private Settings.GraphicMode PrevGraphicMode;
 
 		public SettingsForm(GrblCore core)
 		{
@@ -44,6 +47,7 @@ namespace LaserGRBL
 			InitProtocolCB();
 			InitStreamingCB();
 			InitThreadingCB();
+			InitGraphicModeCB();
 
             CBCore.SelectedItem = Settings.GetObject("Firmware Type", Firmware.Grbl);
 			CBSupportPWM.Checked = Settings.GetObject("Support Hardware PWM", true);
@@ -101,8 +105,9 @@ namespace LaserGRBL
 			CbDisableSafetyCD.Checked = Settings.GetObject("DisableSafetyCountdown", false);
 			CbQuietSafetyCB.Checked = Settings.GetObject("QuietSafetyCountdown", false);
             CbLegacyIcons.Checked = Settings.GetObject("LegacyIcons", false);
+			CBGraphicMode.SelectedValue = PrevGraphicMode = Settings.ConfiguredGraphicMode;
 
-            groupBox1.ForeColor = groupBox2.ForeColor = groupBox3.ForeColor = ColorScheme.FormForeColor;
+			groupBox1.ForeColor = groupBox2.ForeColor = groupBox3.ForeColor = ColorScheme.FormForeColor;
 
             SuccesFullLabel.Visible = WarningFullLabel.Visible = ErrorFullLabel.Visible = ConnectFullLabel.Visible = DisconnectFullLabel.Visible = false;
 
@@ -180,6 +185,20 @@ namespace LaserGRBL
 			CBStreamingMode.EndUpdate();
 		}
 
+		private void InitGraphicModeCB()
+		{
+			CBGraphicMode.BeginUpdate();
+			List<KeyValuePair<string, Settings.GraphicMode>> list = new List<KeyValuePair<string, Settings.GraphicMode>>();
+			list.Add(new KeyValuePair<string, Settings.GraphicMode>("Auto", Settings.GraphicMode.AUTO));
+			list.Add(new KeyValuePair<string, Settings.GraphicMode>("Hardware Acceleration", Settings.GraphicMode.FBO));
+			list.Add(new KeyValuePair<string, Settings.GraphicMode>("Software Rendering", Settings.GraphicMode.DIB));
+			list.Add(new KeyValuePair<string, Settings.GraphicMode>("Legacy", Settings.GraphicMode.GDI));
+			CBGraphicMode.DisplayMember = "Key";
+			CBGraphicMode.ValueMember = "Value";
+			CBGraphicMode.DataSource = list;
+			CBGraphicMode.EndUpdate();
+		}
+
 		internal static void CreateAndShowDialog(Form parent, GrblCore core)
 		{
 			using (SettingsForm sf = new SettingsForm(core))
@@ -235,17 +254,32 @@ namespace LaserGRBL
 			Settings.SetObject("DisableSafetyCountdown", CbDisableSafetyCD.Checked);
 			Settings.SetObject("QuietSafetyCountdown", CbQuietSafetyCB.Checked);
             Settings.SetObject("LegacyIcons", CbLegacyIcons.Checked);
+			Settings.ConfiguredGraphicMode = (Settings.GraphicMode)CBGraphicMode.SelectedValue;
 
-            SettingsChanged?.Invoke(this, null);
+			SettingsChanged?.Invoke(this, null);
 
             Close();
 
-            if (Core.Type != Settings.GetObject("Firmware Type", Firmware.Grbl) && MessageBox.Show(Strings.FirmwareRequireRestartNow, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
+			if (PrevGraphicMode != Settings.ConfiguredGraphicMode && MessageBox.Show(Strings.PreviewChangesRequiresRestart, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
+				RestartNoCommandLine();
+
+			if (Core.Type != Settings.GetObject("Firmware Type", Firmware.Grbl) && MessageBox.Show(Strings.FirmwareRequireRestartNow, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
                 Application.Restart();
 
             if (IconsMgr.LegacyIcons != Settings.GetObject("LegacyIcons", false) && MessageBox.Show(Strings.IconsChangesRequiresRestart, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
                 Application.Restart();
         }
+
+		public static void RestartNoCommandLine()
+		{
+			ProcessStartInfo startInfo = Process.GetCurrentProcess().StartInfo;
+			startInfo.FileName = Application.ExecutablePath;
+			var exit = typeof(Application).GetMethod("ExitInternal",
+								System.Reflection.BindingFlags.NonPublic |
+								System.Reflection.BindingFlags.Static);
+			exit.Invoke(null, null);
+			Process.Start(startInfo);
+		}
 
 		private TimeSpan MaxTs(TimeSpan a, TimeSpan b)
 		{ return TimeSpan.FromTicks(Math.Max(a.Ticks, b.Ticks)); }
@@ -341,5 +375,8 @@ namespace LaserGRBL
 		{
 			EnableTest();
 		}
+
+		private void BtnRenderingMode_Click(object sender, EventArgs e)
+		{ Tools.Utils.OpenLink(@"https://lasergrbl.com/configuration/#rendering-mode"); }
 	}
 }

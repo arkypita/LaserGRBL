@@ -8,22 +8,37 @@ using System;
 
 namespace LaserGRBL
 {
-    /// <summary>
-    /// Description of Settings.
-    /// </summary>
-    public static class Settings
-    {
-        private static System.Threading.Timer Timer = new System.Threading.Timer(OnTimerExpire, null, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
-        private static System.Collections.Generic.Dictionary<string, object> dic;
-        private static string LastCause = null;
-        private static string LockString = "---- SETTING LOCK ----";
-		internal static bool LegacyPreview;
-		internal static bool UseSoftwareOpenGL;
+	/// <summary>
+	/// Description of Settings.
+	/// </summary>
+	public static class Settings
+	{
+		private static System.Threading.Timer Timer = new System.Threading.Timer(OnTimerExpire, null, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+		private static System.Collections.Generic.Dictionary<string, object> dic;
+		private static string LastCause = null;
+		private static string LockString = "---- SETTING LOCK ----";
 
 		public static bool IsNewFile { get; private set; } = false;
-        public static Version PrevVersion { get; private set; } = new Version(0, 0, 0);
+		public static Version PrevVersion { get; private set; } = new Version(0, 0, 0);
 
-        static string filename
+		public enum GraphicMode
+		{
+			AUTO = 0,
+			GDI = 1,
+			DIB = 2,
+			FBO = 3,
+		}
+
+		public static GraphicMode ForcedGraphicMode { get; set; } = GraphicMode.AUTO;							// forced by command line
+		public static GraphicMode ConfiguredGraphicMode                                                         // stored in settings
+		{
+			get { return (GraphicMode)GetObject("ConfiguredGraphicMode", 0); }
+			set { SetObject("ConfiguredGraphicMode", (int)value); }
+		}
+		public static GraphicMode RequestedGraphicMode => ForcedGraphicMode != GraphicMode.AUTO ? ForcedGraphicMode : ConfiguredGraphicMode ;
+		public static GraphicMode CurrentGraphicMode { get; set; } = GraphicMode.AUTO;							// actually in use
+
+		static string filename
         {
             get
             {
@@ -62,7 +77,6 @@ namespace LaserGRBL
             PrevVersion = GetObject("Current LaserGRBL Version", new Version(0, 0, 0));
             SetObject("Current LaserGRBL Version", Program.CurrentVersion);
         }
-
 
         public static T GetObject<T>(string key, T defval)
         {

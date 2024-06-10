@@ -225,7 +225,7 @@ namespace LaserGRBL
                     { "bitflag", Tools.OSHelper.GetBitFlag().ToString() },
 					{ "vendor", VendorString },
 					{ "fPassthrough", Counters.Passthrough.ToString() },
-					{ "RenderType", GrblPanel3D.CurrentRendererType },
+					{ "RenderType", $"{(int)Settings.RequestedGraphicMode}|{(int)Settings.CurrentGraphicMode}" },
 					{ "RenderVendor", GrblPanel3D.CurrentVendor },
 					{ "RenderName", GrblPanel3D.CurrentRenderer },
 					{ "RenderGLVersion", GrblPanel3D.CurrentGLVersion },

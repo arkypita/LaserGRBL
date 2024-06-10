@@ -48,13 +48,13 @@ namespace LaserGRBL
 
 			foreach (string s in args)
 			{
-				if (s != null && s.ToLower() == "nogl")
-					Settings.LegacyPreview = true;
-				if (s != null && s.ToLower() == "swgl")
-					Settings.UseSoftwareOpenGL = true;
+				if (s != null && Settings.ForcedGraphicMode == Settings.GraphicMode.AUTO  && s.ToLower() == "nogl")
+					Settings.ForcedGraphicMode = Settings.GraphicMode.GDI;
+				if (s != null && Settings.ForcedGraphicMode == Settings.GraphicMode.AUTO && s.ToLower() == "swgl")
+					Settings.ForcedGraphicMode = Settings.GraphicMode.DIB;
 			}
 
-			if (!Settings.LegacyPreview && !Settings.UseSoftwareOpenGL)
+			if (Settings.RequestedGraphicMode != Settings.GraphicMode.DIB && Settings.RequestedGraphicMode != Settings.GraphicMode.GDI)
 				GraphicInitializer.RequestDedicatedGraphics();
 
 			Application.Run(new MainForm(args));

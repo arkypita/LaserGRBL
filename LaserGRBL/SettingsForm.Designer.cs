@@ -171,11 +171,15 @@
 			this.label42 = new System.Windows.Forms.Label();
 			this.TpOptions = new System.Windows.Forms.TabPage();
 			this.Tlp = new System.Windows.Forms.TableLayoutPanel();
+			this.CBGraphicMode = new LaserGRBL.UserControls.FlatComboBox();
+			this.BtnRenderingMode = new LaserGRBL.UserControls.ImageButton();
 			this.CbDisableSafetyCD = new System.Windows.Forms.CheckBox();
 			this.label47 = new System.Windows.Forms.Label();
 			this.CbQuietSafetyCB = new System.Windows.Forms.CheckBox();
 			this.label48 = new System.Windows.Forms.Label();
 			this.CbLegacyIcons = new System.Windows.Forms.CheckBox();
+			this.label49 = new System.Windows.Forms.Label();
+			this.label50 = new System.Windows.Forms.Label();
 			this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
@@ -1211,12 +1215,39 @@
 			// Tlp
 			// 
 			resources.ApplyResources(this.Tlp, "Tlp");
+			this.Tlp.Controls.Add(this.CBGraphicMode, 1, 3);
+			this.Tlp.Controls.Add(this.BtnRenderingMode, 0, 3);
 			this.Tlp.Controls.Add(this.CbDisableSafetyCD, 1, 1);
 			this.Tlp.Controls.Add(this.label47, 2, 1);
 			this.Tlp.Controls.Add(this.CbQuietSafetyCB, 1, 0);
 			this.Tlp.Controls.Add(this.label48, 2, 0);
 			this.Tlp.Controls.Add(this.CbLegacyIcons, 1, 2);
+			this.Tlp.Controls.Add(this.label49, 2, 2);
+			this.Tlp.Controls.Add(this.label50, 2, 3);
 			this.Tlp.Name = "Tlp";
+			// 
+			// CBGraphicMode
+			// 
+			this.CBGraphicMode.BackColor = System.Drawing.Color.White;
+			resources.ApplyResources(this.CBGraphicMode, "CBGraphicMode");
+			this.CBGraphicMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CBGraphicMode.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.CBGraphicMode.FormattingEnabled = true;
+			this.CBGraphicMode.Name = "CBGraphicMode";
+			// 
+			// BtnRenderingMode
+			// 
+			this.BtnRenderingMode.AltImage = null;
+			this.BtnRenderingMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.BtnRenderingMode.Caption = null;
+			this.BtnRenderingMode.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.BtnRenderingMode.Image = ((System.Drawing.Image)(resources.GetObject("BtnRenderingMode.Image")));
+			resources.ApplyResources(this.BtnRenderingMode, "BtnRenderingMode");
+			this.BtnRenderingMode.Name = "BtnRenderingMode";
+			this.BtnRenderingMode.RoundedBorders = false;
+			this.BtnRenderingMode.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+			this.BtnRenderingMode.UseAltImage = false;
+			this.BtnRenderingMode.Click += new System.EventHandler(this.BtnRenderingMode_Click);
 			// 
 			// CbDisableSafetyCD
 			// 
@@ -1245,6 +1276,16 @@
 			resources.ApplyResources(this.CbLegacyIcons, "CbLegacyIcons");
 			this.CbLegacyIcons.Name = "CbLegacyIcons";
 			this.CbLegacyIcons.UseVisualStyleBackColor = true;
+			// 
+			// label49
+			// 
+			resources.ApplyResources(this.label49, "label49");
+			this.label49.Name = "label49";
+			// 
+			// label50
+			// 
+			resources.ApplyResources(this.label50, "label50");
+			this.label50.Name = "label50";
 			// 
 			// SoundBrowserDialog
 			// 
@@ -1477,5 +1518,9 @@
 		private System.Windows.Forms.CheckBox CbQuietSafetyCB;
 		private System.Windows.Forms.Label label48;
         private System.Windows.Forms.CheckBox CbLegacyIcons;
-    }
+		private UserControls.FlatComboBox CBGraphicMode;
+		private UserControls.ImageButton BtnRenderingMode;
+		private System.Windows.Forms.Label label49;
+		private System.Windows.Forms.Label label50;
+	}
 }
