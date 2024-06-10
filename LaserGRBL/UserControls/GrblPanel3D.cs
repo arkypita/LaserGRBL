@@ -225,8 +225,8 @@ namespace LaserGRBL.UserControls
 			try
 			{
 				if (FatalException != null) return;
-				OpCounter++;
 
+				OpCounter++;
 				Tools.SimpleCrono crono = new Tools.SimpleCrono(true);
 				if (mBackgroundColor == null) return;
 				OpenGL.MakeCurrent();
@@ -886,6 +886,31 @@ namespace LaserGRBL.UserControls
 			mInvalidateAll = true;
 		}
 
+		private void GrblPanel3D_Load(object sender, EventArgs e)
+		{
+			Load -= GrblPanel3D_Load;
+			TimDetectIssue.Start();
+		}
+
+		private void TimDetectIssue_Tick(object sender, EventArgs e)
+		{
+			TimDetectIssue.Stop();
+			if (OpCounter < 7 || FatalException != null) //non è riuscito a completare nemmeno due disegni nei 5 secondi del timer! (o se c'è stata una eccezione nei primi 5 secondi)
+			{
+				if (Settings.CurrentGraphicMode == Settings.GraphicMode.FBO && MessageBox.Show(Strings.FBOIssueSuggestDBO, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
+				{
+					Settings.ConfiguredGraphicMode = Settings.GraphicMode.DIB;
+					UsageStats.DoNotSendNow = true;
+					Application2.RestartNoCommandLine();
+				}
+				else if (Settings.CurrentGraphicMode == Settings.GraphicMode.DIB && MessageBox.Show(Strings.DBOIssueSuggestGDI, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
+				{
+					Settings.ConfiguredGraphicMode = Settings.GraphicMode.GDI;
+					UsageStats.DoNotSendNow = true;
+					Application2.RestartNoCommandLine();
+				}
+			}
+		}
 	}
 
 }

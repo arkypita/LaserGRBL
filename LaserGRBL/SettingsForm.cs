@@ -261,25 +261,16 @@ namespace LaserGRBL
             Close();
 
 			if (PrevGraphicMode != Settings.ConfiguredGraphicMode && MessageBox.Show(Strings.PreviewChangesRequiresRestart, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
-				RestartNoCommandLine();
-
+			{
+				UsageStats.DoNotSendNow = true;
+				Application2.RestartNoCommandLine();
+			}
 			if (Core.Type != Settings.GetObject("Firmware Type", Firmware.Grbl) && MessageBox.Show(Strings.FirmwareRequireRestartNow, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
                 Application.Restart();
 
             if (IconsMgr.LegacyIcons != Settings.GetObject("LegacyIcons", false) && MessageBox.Show(Strings.IconsChangesRequiresRestart, Strings.FirmwareRequireRestart, MessageBoxButtons.OKCancel) == DialogResult.OK)
                 Application.Restart();
         }
-
-		public static void RestartNoCommandLine()
-		{
-			ProcessStartInfo startInfo = Process.GetCurrentProcess().StartInfo;
-			startInfo.FileName = Application.ExecutablePath;
-			var exit = typeof(Application).GetMethod("ExitInternal",
-								System.Reflection.BindingFlags.NonPublic |
-								System.Reflection.BindingFlags.Static);
-			exit.Invoke(null, null);
-			Process.Start(startInfo);
-		}
 
 		private TimeSpan MaxTs(TimeSpan a, TimeSpan b)
 		{ return TimeSpan.FromTicks(Math.Max(a.Ticks, b.Ticks)); }

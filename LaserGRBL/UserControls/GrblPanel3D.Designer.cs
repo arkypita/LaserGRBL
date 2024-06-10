@@ -15,7 +15,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+			this.components = new System.ComponentModel.Container();
+			this.TimDetectIssue = new System.Windows.Forms.Timer(this.components);
 			this.SuspendLayout();
+			// 
+			// TimDetectIssue
+			// 
+			this.TimDetectIssue.Interval = 5000;
+			this.TimDetectIssue.Tick += new System.EventHandler(this.TimDetectIssue_Tick);
 			// 
 			// GrblPanel3D
 			// 
@@ -24,10 +31,13 @@
 			this.BackColor = System.Drawing.SystemColors.Control;
 			this.Name = "GrblPanel3D";
 			this.Size = new System.Drawing.Size(1170, 856);
+			this.Load += new System.EventHandler(this.GrblPanel3D_Load);
 			this.ResumeLayout(false);
 
         }
 
 		#endregion
+
+		private System.Windows.Forms.Timer TimDetectIssue;
 	}
 }

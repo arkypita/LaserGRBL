@@ -445,4 +445,12 @@ If you need help click on "?" button.</value>
   <data name="MdiIconCaption" xml:space="preserve">
     <value>MDI Icon code</value>
   </data>
+  <data name="DBOIssueSuggestGDI" xml:space="preserve">
+    <value>It seems that your computer does not support software rendering.
+Do you want to restart LaserGRBL and switch to legacy mode?</value>
+  </data>
+  <data name="FBOIssueSuggestDBO" xml:space="preserve">
+    <value>It seems that your computer does not support hardware acceleration.
+Do you want to restart LaserGRBL and switch to software rendering?</value>
+  </data>
 </root>
