@@ -21,7 +21,7 @@
 			// 
 			// TimDetectIssue
 			// 
-			this.TimDetectIssue.Interval = 5000;
+			this.TimDetectIssue.Interval = 10000;
 			this.TimDetectIssue.Tick += new System.EventHandler(this.TimDetectIssue_Tick);
 			// 
 			// GrblPanel3D
