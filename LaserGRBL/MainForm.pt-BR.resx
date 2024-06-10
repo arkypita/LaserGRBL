@@ -905,4 +905,7 @@
   <data name="previewToolStripMenuItem.Text" xml:space="preserve">
     <value>Visualizar</value>
   </data>
+  <data name="showDiagnosticDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mostrar dados de diagnóstico</value>
+  </data>
 </root>

@@ -459,4 +459,14 @@ Sugiro não desativar esta contagem regressiva, isso permite que você tenha uma
   <data name="CbLegacyIcons.Text" xml:space="preserve">
     <value>Ícones legados</value>
   </data>
+  <data name="label49.Text" xml:space="preserve">
+    <value>Use ícones LaserGRBL de estilo antigo [Modo Nostalgia: LIGADO]</value>
+  </data>
+  <data name="label50.Text" xml:space="preserve">
+    <value>Modo de renderização
+- Automático: Deixe o LaserGRBL escolher a melhor configuração para você (prefere aceleração de hardware).
+- Aceleração de hardware: Use OpenGL com aceleração de hardware (se suportado)
+- Renderização de software: Use OpenGL com renderização de software (selecione esta opção se tiver problemas com aceleração de hardware)
+- Legado: Desabilite o OpenGL e use o formulário de visualização antigo (selecione esta opção em computadores antigos)</value>
+  </data>
 </root>
