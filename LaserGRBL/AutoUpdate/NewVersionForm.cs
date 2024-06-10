@@ -40,9 +40,14 @@ namespace LaserGRBL
 				DialogResult rv = f.ShowDialog(parent);
 
 				if (rv == DialogResult.OK)
-					System.Windows.Forms.Application.Exit(); //exit (spawned process will apply update)
+				{
+					UsageStats.DoNotSendNow = true; //do not send stats now, will be sent on next start
+					Application.Exit(); //exit (spawned process will apply update)
+				}
 				else if (rv == DialogResult.Abort)
-					System.Windows.Forms.MessageBox.Show(Strings.BoxAutoUpdateFailed, Strings.BoxAutoUpdateResult, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				{
+					MessageBox.Show(Strings.BoxAutoUpdateFailed, Strings.BoxAutoUpdateResult, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
 			}
 		}
 

@@ -77,7 +77,7 @@ namespace LaserGRBL
 		private static string messagefilename = System.IO.Path.Combine(GrblCore.DataPath, "Message.bin");
 
 		public static MessageManager Messages { get => mManager;  }
-
+        public static bool DoNotSendNow = false; // used to delay sending statistics (i.e. when updating)
 		public static void LoadFile() //in ingresso
         {
 			bool exist = File.Exists(datafilename);
@@ -160,7 +160,7 @@ namespace LaserGRBL
         {
             //invia i dati solo almeno ad un giorno di distanza o al cambio version/grblversion
             Version current = Program.CurrentVersion;
-            bool mustsend = DateTime.UtcNow.Subtract(LastSent).TotalDays > 5 || Version != current || (GrblCore.Configuration.GrblVersion != null && GrblVersion != GrblCore.Configuration.GrblVersion);
+            bool mustsend = !DoNotSendNow && (DateTime.UtcNow.Subtract(LastSent).TotalDays > 5 || Version != current || (GrblCore.Configuration.GrblVersion != null && GrblVersion != GrblCore.Configuration.GrblVersion));
             Version = current;
             GrblVersion = GrblCore.Configuration.GrblVersion != null ? GrblCore.Configuration.GrblVersion : GrblVersion;
             Locale = System.Threading.Thread.CurrentThread.CurrentCulture.LCID;
