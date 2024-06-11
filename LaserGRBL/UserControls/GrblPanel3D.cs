@@ -314,7 +314,8 @@ namespace LaserGRBL.UserControls
 					}
 				}
 				RenderTime.EnqueueNewSample(crono.ElapsedTime.TotalMilliseconds);
-
+				
+				TH.SleepTime = BestSleep(RenderTime.Avg, 10, 100, 10, 50);
 				// call control invalidate
 				Invalidate();
 
@@ -329,6 +330,10 @@ namespace LaserGRBL.UserControls
 			}
 		}
 
+		private static int BestSleep(double renderTime, double minRender, double maxRender, double minSleep, double maxSleep)
+		{
+			return (int) Math.Max(minSleep, Math.Min(maxSleep, (renderTime - minRender) * (maxSleep - minSleep) / (maxRender - minRender) + minSleep));
+		}
 
 		private void SetWorldPosition(double left, double right, double bottom, double top)
 		{
