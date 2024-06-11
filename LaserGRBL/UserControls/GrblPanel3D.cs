@@ -138,6 +138,7 @@ namespace LaserGRBL.UserControls
 			mLastControlSize = new PointF(Width, Height);
 			mGrid = new Grid3D();
 
+			OnColorChange();
 			TH = new Tools.ThreadObject(DrawScene, 10, true, "OpenGL", InitializeOpenGL, ThreadPriority.Normal, ApartmentState.STA);
 			TH.Start();
 		}
@@ -228,7 +229,6 @@ namespace LaserGRBL.UserControls
 
 				OpCounter++;
 				Tools.SimpleCrono crono = new Tools.SimpleCrono(true);
-				if (mBackgroundColor == null) return;
 				OpenGL.MakeCurrent();
 				CheckError(OpenGL, "MakeCurrent");
 				OpenGL.SetDimensions(Width, Height);
