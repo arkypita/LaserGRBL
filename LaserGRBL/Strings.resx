@@ -453,4 +453,16 @@ Do you want to restart LaserGRBL and switch to legacy mode?</value>
     <value>It seems that your computer does not support hardware acceleration.
 Do you want to restart LaserGRBL and switch to software rendering?</value>
   </data>
+  <data name="AlreadyLoading" xml:space="preserve">
+    <value>A file is already loading, please wait...</value>
+  </data>
+  <data name="ClearDrawing" xml:space="preserve">
+    <value>Clear drawing...</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="PrepareDrawing" xml:space="preserve">
+    <value>Prepare drawing...</value>
+  </data>
 </root>

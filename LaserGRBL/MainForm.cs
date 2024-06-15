@@ -181,6 +181,7 @@ namespace LaserGRBL
 				IconsMgr.PrepareMenuItem(linguaToolStripMenuItem, "mdi-flag-variant");
 				IconsMgr.PrepareMenuItem(toolsToolStripMenuItem, "mdi-tools");
                 IconsMgr.PrepareMenuItem(questionMarkToolStripMenuItem, "mdi-help");
+                questionMarkToolStripMenuItem.Text = "";
             }
 			else
             {

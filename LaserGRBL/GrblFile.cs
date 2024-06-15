@@ -33,8 +33,9 @@ namespace LaserGRBL
 		private ProgramRange mRange = new ProgramRange();
 		private TimeSpan mEstimatedTotalTime;
 		public List<GrblCommand> Commands => list;
+		private Tools.ThreadObject mLoadingThread = null;
 
-        public GrblFile()
+		public GrblFile()
 		{
 
 		}
@@ -90,69 +91,100 @@ namespace LaserGRBL
 			}
 		}
 
-		public void LoadFile(string filename, bool append)
-		{
-			RiseOnFileLoading(filename);
-
-			long start = Tools.HiResTimer.TotalMilliseconds;
-
-			if (!append)
-				list.Clear();
-
-			mRange.ResetRange();
-			if (System.IO.File.Exists(filename))
-			{
-				using (System.IO.StreamReader sr = new System.IO.StreamReader(filename))
+		private void SafeLoadFile(ThreadStart loadFileAction)
+        {
+            if (mLoadingThread != null || InUse)
+            {
+                MessageBox.Show(Strings.AlreadyLoading);
+                return;
+            }
+            mLoadingThread = new Tools.ThreadObject(null, 10, true, "SafeLoadFile", () =>
+            {
+				try
 				{
-					string line = null;
-					while ((line = sr.ReadLine()) != null)
-						if ((line = line.Trim()).Length > 0)
-						{
-							GrblCommand cmd = new GrblCommand(line);
-							if (!cmd.IsEmpty)
-								list.Add(cmd);
-						}
-				}
-			}
-			Analyze();
-			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+					loadFileAction.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogException("SafeLoadFile", ex);
+                }
+                finally
+                {
+                    mLoadingThread = null;
+                }
+            }, ThreadPriority.Normal);
+            mLoadingThread.Start();
+        }
 
-			RiseOnFileLoaded(filename, elapsed);
+		public void LoadFile(string filename, bool append)
+        {
+            SafeLoadFile(() =>
+            {
+				RiseOnFileLoading(filename);
+
+				long start = Tools.HiResTimer.TotalMilliseconds;
+
+				if (!append)
+					list.Clear();
+
+				mRange.ResetRange();
+				if (System.IO.File.Exists(filename))
+				{
+					using (System.IO.StreamReader sr = new System.IO.StreamReader(filename))
+					{
+						string line = null;
+						while ((line = sr.ReadLine()) != null)
+							if ((line = line.Trim()).Length > 0)
+							{
+								GrblCommand cmd = new GrblCommand(line);
+								if (!cmd.IsEmpty)
+									list.Add(cmd);
+							}
+					}
+				}
+				Analyze();
+				long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+
+				RiseOnFileLoaded(filename, elapsed);
+            });
 		}
 
 		public void LoadImportedSVG(string filename, bool append, GrblCore core, ColorFilter filter)
-		{
-			RiseOnFileLoading(filename);
+        {
+            SafeLoadFile(() =>
+            {
+				RiseOnFileLoading(filename);
 
-			long start = Tools.HiResTimer.TotalMilliseconds;
+				long start = Tools.HiResTimer.TotalMilliseconds;
 
-			if (!append)
-				list.Clear();
+				if (!append)
+					list.Clear();
 
-			mRange.ResetRange();
+				mRange.ResetRange();
 
-			SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
-			converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
-			converter.UseLegacyBezier = !Settings.GetObject($"Vector.UseSmartBezier", true);
+				SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
+				converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+				converter.UseLegacyBezier = !Settings.GetObject($"Vector.UseSmartBezier", true);
 
-			string gcode = converter.convertFromFile(filename, core, filter);
-			string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-			foreach (string l in lines)
-			{
-				string line = l;
-				if ((line = line.Trim()).Length > 0)
+				string gcode = converter.convertFromFile(filename, core, filter);
+				string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+				foreach (string l in lines)
 				{
-					GrblCommand cmd = new GrblCommand(line);
-					if (!cmd.IsEmpty)
-						list.Add(cmd);
+					string line = l;
+					if ((line = line.Trim()).Length > 0)
+					{
+						GrblCommand cmd = new GrblCommand(line);
+						if (!cmd.IsEmpty)
+							list.Add(cmd);
+					}
 				}
-			}
 
-			Analyze();
-			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+				Analyze();
+				long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
-			RiseOnFileLoaded(filename, elapsed);
-		}
+				RiseOnFileLoaded(filename, elapsed);
+            });
+        }
 
 
 		private abstract class ColorSegment
@@ -1608,7 +1640,9 @@ namespace LaserGRBL
 
 		public ProgramRange Range { get { return mRange; } }
 
-		public GrblCommand this[int index]
+        public bool InUse { get; internal set; }
+
+        public GrblCommand this[int index]
 		{ get { return list[index]; } }
 
 	}
