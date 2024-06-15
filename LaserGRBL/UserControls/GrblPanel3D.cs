@@ -5,17 +5,15 @@ using SharpGL.SceneGraph.Cameras;
 using SharpGL.Version;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static LaserGRBL.ProgramRange;
 
 namespace LaserGRBL.UserControls
 {
-	[ToolboxBitmap(typeof(SceneControl), "GrblScene")]
+    [ToolboxBitmap(typeof(SceneControl), "GrblScene")]
 	public partial class GrblPanel3D : UserControl, IGrblPanel
 	{
 		// last mouse position
@@ -53,9 +51,7 @@ namespace LaserGRBL.UserControls
 		// drawing thread
 		private Tools.ThreadObject mThreadDraw;
 		// generated 3d bitmap
-		private Bitmap mBmp = null;
-		// critical section
-		private object mBitmapLock = new object();
+		private DoubleBufferBmp mBmp = new DoubleBufferBmp();
 		// open gl object
 		private OpenGL OpenGL;
 		// rulers steps
@@ -295,24 +291,16 @@ namespace LaserGRBL.UserControls
 				CheckError(OpenGL, "Rulers");
 				OpenGL.Flush();
 				CheckError(OpenGL, "Flush");
-				// enter lock and copy bitmap
-				lock (mBitmapLock)
+				Bitmap newBmp = new Bitmap(Width, Height);
+				// clone opengl graphics
+				using (Graphics g = Graphics.FromImage(newBmp))
 				{
-					// new bitmap if different size
-					if (mBmp == null || mBmp.Width != Width || mBmp.Height != Height)
-					{
-						mBmp?.Dispose();
-						mBmp = new Bitmap(Width, Height);
-					}
-					// clone opengl graphics
-					using (Graphics g = Graphics.FromImage(mBmp))
-					{
-						IntPtr handleDeviceContext = g.GetHdc();
-						OpenGL.Blit(handleDeviceContext);
-						CheckError(OpenGL, "Blit");
-						g.ReleaseHdc(handleDeviceContext);
-					}
+					IntPtr handleDeviceContext = g.GetHdc();
+					OpenGL.Blit(handleDeviceContext);
+					CheckError(OpenGL, "Blit");
+					g.ReleaseHdc(handleDeviceContext);
 				}
+				mBmp.Bitmap = newBmp;
 				RenderTime.EnqueueNewSample(crono.ElapsedTime.TotalMilliseconds);
 				
 				TH.SleepTime = BestSleep(RenderTime.Avg, 10, 100, 10, 50);
@@ -518,16 +506,12 @@ namespace LaserGRBL.UserControls
 			if (FpsCrono != null) RefreshRate.EnqueueNewSample(FpsCrono.ElapsedTime.TotalMilliseconds); //compute time distance between two OnPaint
 			FpsCrono = new Tools.SimpleCrono(true);
 
-
-			if (mBmp != null)
+            Bitmap bmp = mBmp.Bitmap;
+            if (bmp != null)
 			{
 				try
 				{
-					// enter lock and copy bitmap to control
-					lock (mBitmapLock)
-					{
-						e.Graphics.DrawImage(mBmp, new Point(0, 0));
-					}
+					e.Graphics.DrawImage(bmp, new Point(0, 0));
 					DoGDIDraw(e);
 				}
 				catch (Exception ex) { OnPaintException = ex;  }
@@ -536,7 +520,6 @@ namespace LaserGRBL.UserControls
 			{
 				// nothing to draw from GL Thread
 			}
-
 
 			if (FatalException != null)
 				DrawException(e, FatalException.ToString());
