@@ -16,6 +16,7 @@
         private void InitializeComponent()
         {
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GrblPanel3D));
 			this.TimDetectIssue = new System.Windows.Forms.Timer(this.components);
 			this.SuspendLayout();
 			// 
@@ -29,8 +30,11 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Control;
+			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.DoubleBuffered = true;
 			this.Name = "GrblPanel3D";
-			this.Size = new System.Drawing.Size(1170, 856);
+			this.Size = new System.Drawing.Size(834, 460);
 			this.Load += new System.EventHandler(this.GrblPanel3D_Load);
 			this.ResumeLayout(false);
 

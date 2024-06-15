@@ -138,7 +138,8 @@ namespace LaserGRBL.UserControls
 			mLastControlSize = new PointF(Width, Height);
 			mGrid = new Grid3D();
 
-			TH = new Tools.ThreadObject(DrawScene, 10, true, "OpenGL", InitializeOpenGL, ThreadPriority.Lowest, ApartmentState.STA);
+			OnColorChange();
+			TH = new Tools.ThreadObject(DrawScene, 10, true, "OpenGL", InitializeOpenGL, ThreadPriority.Normal, ApartmentState.STA);
 			TH.Start();
 		}
 
@@ -228,7 +229,6 @@ namespace LaserGRBL.UserControls
 
 				OpCounter++;
 				Tools.SimpleCrono crono = new Tools.SimpleCrono(true);
-				if (mBackgroundColor == null) return;
 				OpenGL.MakeCurrent();
 				CheckError(OpenGL, "MakeCurrent");
 				OpenGL.SetDimensions(Width, Height);
@@ -314,7 +314,8 @@ namespace LaserGRBL.UserControls
 					}
 				}
 				RenderTime.EnqueueNewSample(crono.ElapsedTime.TotalMilliseconds);
-
+				
+				TH.SleepTime = BestSleep(RenderTime.Avg, 10, 100, 10, 50);
 				// call control invalidate
 				Invalidate();
 
@@ -329,6 +330,10 @@ namespace LaserGRBL.UserControls
 			}
 		}
 
+		private static int BestSleep(double renderTime, double minRender, double maxRender, double minSleep, double maxSleep)
+		{
+			return (int) Math.Max(minSleep, Math.Min(maxSleep, (renderTime - minRender) * (maxSleep - minSleep) / (maxRender - minRender) + minSleep));
+		}
 
 		private void SetWorldPosition(double left, double right, double bottom, double top)
 		{
@@ -548,7 +553,7 @@ namespace LaserGRBL.UserControls
 			else if (OpCounter == 4)
 				DrawException(e, "4.Draw Begin");
 			else if (mBmp == null)
-				DrawException(e, "nothing to draw");
+				;
 		}
 
 		private void DrawException(PaintEventArgs e, string text)
