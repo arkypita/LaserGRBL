@@ -90,7 +90,7 @@ namespace LaserGRBL
 		}
 	}
 
-	public partial class GrblCommand : ICloneable, IGrblRow
+	public partial class GrblCommand : ICloneable, IGrblRow, IDisposable
 	{
 		public class Element
 		{
@@ -474,7 +474,12 @@ namespace LaserGRBL
 
 		public override string ToString()
 		{ return this.mLine; }
-	}
+
+        public void Dispose()
+        {
+			LinkedDisplayList = null;
+        }
+    }
 
 	public class GrblMessage : IGrblRow
 	{
