@@ -7,8 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Net.Mail;
-using System.Runtime.Remoting.Messaging;
 using System.Threading;
 using System.Windows.Forms;
 using static LaserGRBL.ProgramRange;
@@ -138,7 +136,7 @@ namespace LaserGRBL.UserControls
 			mGrid = new Grid3D();
 
 			OnColorChange();
-			TH = new Tools.ThreadObject(DrawScene, 10, true, "OpenGL", InitializeOpenGL, ThreadPriority.Normal, ApartmentState.STA);
+			TH = new Tools.ThreadObject(DrawScene, 10, true, "OpenGL", InitializeOpenGL, ThreadPriority.Lowest, ApartmentState.STA);
 			TH.Start();
 		}
 
