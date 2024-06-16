@@ -1211,7 +1211,7 @@ namespace LaserGRBL
 
 					lock (this)
 					{
-						mQueue.Clear(); //flush the queue of item to send
+						ClearQueue(mQueue); //flush the queue of item to send
 						mQueue.Enqueue(new GrblCommand("M5")); //shut down laser
 					}
 				}
@@ -2679,10 +2679,19 @@ namespace LaserGRBL
 		private bool InPause
 		{ get { return mMachineStatus != MacStatus.Run && mMachineStatus != MacStatus.Idle; } }
 
-		private void ClearQueue(bool sent)
+		private void ClearQueue(Queue<GrblCommand> queue)
+        {
+			foreach (GrblCommand command in queue)
+			{
+				command.Dispose();
+			}
+			queue.Clear();
+        }
+
+        private void ClearQueue(bool sent)
 		{
-			mQueue.Clear();
-			mPending.Clear();
+            ClearQueue(mQueue);
+            ClearQueue(mPending);
 			if (sent) mSent.Clear();
 			mRetryQueue = null;
 		}

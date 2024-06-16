@@ -33,8 +33,9 @@ namespace LaserGRBL
 		private ProgramRange mRange = new ProgramRange();
 		private TimeSpan mEstimatedTotalTime;
 		public List<GrblCommand> Commands => list;
+		private Thread mLoadingThread = null;
 
-        public GrblFile()
+		public GrblFile()
 		{
 
 		}
@@ -43,9 +44,18 @@ namespace LaserGRBL
 		{
 			mRange.UpdateXYRange(new GrblCommand.Element('X', x), new GrblCommand.Element('Y', y), false);
 			mRange.UpdateXYRange(new GrblCommand.Element('X', x1), new GrblCommand.Element('Y', y1), false);
-		}
+        }
 
-		public void SaveGCODE(string filename, bool header, bool footer, bool between, int cycles, bool useLFLineEndings, GrblCore core)
+        private void ClearList()
+        {
+            foreach (GrblCommand command in list)
+            {
+                command.Dispose();
+            }
+            list.Clear();
+        }
+
+        public void SaveGCODE(string filename, bool header, bool footer, bool between, int cycles, bool useLFLineEndings, GrblCore core)
 		{
 			try
 			{
@@ -90,69 +100,100 @@ namespace LaserGRBL
 			}
 		}
 
-		public void LoadFile(string filename, bool append)
-		{
-			RiseOnFileLoading(filename);
-
-			long start = Tools.HiResTimer.TotalMilliseconds;
-
-			if (!append)
-				list.Clear();
-
-			mRange.ResetRange();
-			if (System.IO.File.Exists(filename))
-			{
-				using (System.IO.StreamReader sr = new System.IO.StreamReader(filename))
+		private void SafeLoadFile(ThreadStart loadFileAction)
+        {
+            if (mLoadingThread != null || InUse)
+            {
+                MessageBox.Show(Strings.AlreadyLoading);
+                return;
+            }
+            mLoadingThread = new Thread(new ThreadStart(() =>
+            {
+				try
 				{
-					string line = null;
-					while ((line = sr.ReadLine()) != null)
-						if ((line = line.Trim()).Length > 0)
-						{
-							GrblCommand cmd = new GrblCommand(line);
-							if (!cmd.IsEmpty)
-								list.Add(cmd);
-						}
-				}
-			}
-			Analyze();
-			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+					loadFileAction.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogException("SafeLoadFile", ex);
+                }
+                finally
+                {
+                    mLoadingThread = null;
+                }
+            }));
+            mLoadingThread.Start();
+        }
 
-			RiseOnFileLoaded(filename, elapsed);
+		public void LoadFile(string filename, bool append)
+        {
+            SafeLoadFile(() =>
+            {
+				RiseOnFileLoading(filename);
+
+				long start = Tools.HiResTimer.TotalMilliseconds;
+
+				if (!append)
+                    ClearList();
+
+				mRange.ResetRange();
+				if (System.IO.File.Exists(filename))
+				{
+					using (System.IO.StreamReader sr = new System.IO.StreamReader(filename))
+					{
+						string line = null;
+						while ((line = sr.ReadLine()) != null)
+							if ((line = line.Trim()).Length > 0)
+							{
+								GrblCommand cmd = new GrblCommand(line);
+								if (!cmd.IsEmpty)
+									list.Add(cmd);
+							}
+					}
+				}
+				Analyze();
+				long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+
+				RiseOnFileLoaded(filename, elapsed);
+            });
 		}
 
 		public void LoadImportedSVG(string filename, bool append, GrblCore core, ColorFilter filter)
-		{
-			RiseOnFileLoading(filename);
+        {
+            SafeLoadFile(() =>
+            {
+				RiseOnFileLoading(filename);
 
-			long start = Tools.HiResTimer.TotalMilliseconds;
+				long start = Tools.HiResTimer.TotalMilliseconds;
 
-			if (!append)
-				list.Clear();
+				if (!append)
+                    ClearList();
 
-			mRange.ResetRange();
+				mRange.ResetRange();
 
-			SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
-			converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
-			converter.UseLegacyBezier = !Settings.GetObject($"Vector.UseSmartBezier", true);
+				SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
+				converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+				converter.UseLegacyBezier = !Settings.GetObject($"Vector.UseSmartBezier", true);
 
-			string gcode = converter.convertFromFile(filename, core, filter);
-			string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-			foreach (string l in lines)
-			{
-				string line = l;
-				if ((line = line.Trim()).Length > 0)
+				string gcode = converter.convertFromFile(filename, core, filter);
+				string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+				foreach (string l in lines)
 				{
-					GrblCommand cmd = new GrblCommand(line);
-					if (!cmd.IsEmpty)
-						list.Add(cmd);
+					string line = l;
+					if ((line = line.Trim()).Length > 0)
+					{
+						GrblCommand cmd = new GrblCommand(line);
+						if (!cmd.IsEmpty)
+							list.Add(cmd);
+					}
 				}
-			}
 
-			Analyze();
-			long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+				Analyze();
+				long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
-			RiseOnFileLoaded(filename, elapsed);
-		}
+				RiseOnFileLoaded(filename, elapsed);
+            });
+        }
 
 
 		private abstract class ColorSegment
@@ -313,7 +354,7 @@ namespace LaserGRBL
 			long start = Tools.HiResTimer.TotalMilliseconds;
 
 			if (!append)
-				list.Clear();
+                ClearList();
 
 			//list.Add(new GrblCommand("G90")); //absolute (Moved to custom Header)
 
@@ -472,7 +513,7 @@ namespace LaserGRBL
 			long start = Tools.HiResTimer.TotalMilliseconds;
 
 			if (!append)
-				list.Clear();
+                ClearList();
 
 			mRange.ResetRange();
 
@@ -519,7 +560,7 @@ namespace LaserGRBL
 
 			long start = Tools.HiResTimer.TotalMilliseconds;
 
-			list.Clear();
+            ClearList();
 			mRange.ResetRange();
 
 			double f_delta = f_col > 1 ? (f_end - f_start) / (double)(f_col - 1) : 0;
@@ -597,7 +638,7 @@ namespace LaserGRBL
 
 			long start = Tools.HiResTimer.TotalMilliseconds;
 
-			list.Clear();
+            ClearList();
 			mRange.ResetRange();
 
 			bool forward = true;
@@ -713,7 +754,7 @@ namespace LaserGRBL
 
 			long start = Tools.HiResTimer.TotalMilliseconds;
 
-			list.Clear();
+            ClearList();
 			mRange.ResetRange();
 
 			list.Add(new GrblCommand("M5"));                    //laser OFF
@@ -768,58 +809,58 @@ namespace LaserGRBL
 			}
 		}
 
-		//internal void GenerateShakeTest(string axis, int flimit, int axislen, int cpower, int cspeed)
-		//{
-		//	string filename = $"Shake Test {axis}";
+        //internal void GenerateShakeTest(string axis, int flimit, int axislen, int cpower, int cspeed)
+        //{
+        //	string filename = $"Shake Test {axis}";
 
-		//	RiseOnFileLoading(filename);
+        //	RiseOnFileLoading(filename);
 
-		//	long start = Tools.HiResTimer.TotalMilliseconds;
+        //	long start = Tools.HiResTimer.TotalMilliseconds;
 
-		//	list.Clear();
-		//	mRange.ResetRange();
+        //	ClearList();
+        //	mRange.ResetRange();
 
-		//	list.Add(new GrblCommand("M5"));                    //laser OFF
-		//	list.Add(new GrblCommand("G1 F1000 X0 Y0 S0"));     //move to origin (slowly)
-		//	list.Add(new GrblCommand($"G1 F{cspeed} X7 Y10"));        //positioning
-		//	list.Add(new GrblCommand("M4"));                    //laser ON
-		//	list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X13 Y10"));        //drow cross
-		//	list.Add(new GrblCommand("M5"));                    //laser OFF
-		//	list.Add(new GrblCommand($"G1 F{cspeed} X10 Y7"));        //positioning
-		//	list.Add(new GrblCommand("M4"));                    //laser ON
-		//	list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X10 Y13"));        //drow cross
-		//	list.Add(new GrblCommand("M5"));                    //laser OFF
-		//	list.Add(new GrblCommand("G1 F1000 X10 Y10 S0"));     //move to cross center (slowly)
+        //	list.Add(new GrblCommand("M5"));                    //laser OFF
+        //	list.Add(new GrblCommand("G1 F1000 X0 Y0 S0"));     //move to origin (slowly)
+        //	list.Add(new GrblCommand($"G1 F{cspeed} X7 Y10"));        //positioning
+        //	list.Add(new GrblCommand("M4"));                    //laser ON
+        //	list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X13 Y10"));        //drow cross
+        //	list.Add(new GrblCommand("M5"));                    //laser OFF
+        //	list.Add(new GrblCommand($"G1 F{cspeed} X10 Y7"));        //positioning
+        //	list.Add(new GrblCommand("M4"));                    //laser ON
+        //	list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X10 Y13"));        //drow cross
+        //	list.Add(new GrblCommand("M5"));                    //laser OFF
+        //	list.Add(new GrblCommand("G1 F1000 X10 Y10 S0"));     //move to cross center (slowly)
 
-		//	int ca = 10;
-		//	int da = 1;
-		//	while ((ca + da) < axislen)
-		//	{
-		//		ca += da;
-		//		list.Add(new GrblCommand($"G1 F{flimit} {axis}{ca}"));
-		//		ca -= da;
-		//		list.Add(new GrblCommand($"G1 F{flimit} {axis}{ca}"));
-		//		da += 5;
-		//	}
+        //	int ca = 10;
+        //	int da = 1;
+        //	while ((ca + da) < axislen)
+        //	{
+        //		ca += da;
+        //		list.Add(new GrblCommand($"G1 F{flimit} {axis}{ca}"));
+        //		ca -= da;
+        //		list.Add(new GrblCommand($"G1 F{flimit} {axis}{ca}"));
+        //		da += 5;
+        //	}
 
-		//	list.Add(new GrblCommand($"G1 F{cspeed} X7 Y10"));        //positioning
-		//	list.Add(new GrblCommand("M4"));                    //laser ON
-		//	list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X13 Y10"));        //drow cross
-		//	list.Add(new GrblCommand("M5"));                    //laser OFF
-		//	list.Add(new GrblCommand($"G1 F{cspeed} X10 Y7"));        //positioning
-		//	list.Add(new GrblCommand("M4"));                    //laser ON
-		//	list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X10 Y13"));        //drow cross
-		//	list.Add(new GrblCommand("M5"));                    //laser OFF
+        //	list.Add(new GrblCommand($"G1 F{cspeed} X7 Y10"));        //positioning
+        //	list.Add(new GrblCommand("M4"));                    //laser ON
+        //	list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X13 Y10"));        //drow cross
+        //	list.Add(new GrblCommand("M5"));                    //laser OFF
+        //	list.Add(new GrblCommand($"G1 F{cspeed} X10 Y7"));        //positioning
+        //	list.Add(new GrblCommand("M4"));                    //laser ON
+        //	list.Add(new GrblCommand($"G1 F{cspeed} S{cpower} X10 Y13"));        //drow cross
+        //	list.Add(new GrblCommand("M5"));                    //laser OFF
 
-		//	Analyze();
-		//	long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
+        //	Analyze();
+        //	long elapsed = Tools.HiResTimer.TotalMilliseconds - start;
 
-		//	RiseOnFileLoaded(filename, elapsed);
-		//}
+        //	RiseOnFileLoaded(filename, elapsed);
+        //}
 
-		// For Marlin, as we sen M106 command, we need to know last color send
-		//private int lastColorSend = 0;
-		private void ImageLine2Line(Bitmap bmp, L2LConf c)
+        // For Marlin, as we sen M106 command, we need to know last color send
+        //private int lastColorSend = 0;
+        private void ImageLine2Line(Bitmap bmp, L2LConf c)
 		{
 			bool fast = true;
 			List<ColorSegment> segments = GetSegments(bmp, c);
@@ -1345,7 +1386,7 @@ namespace LaserGRBL
 			long start = Tools.HiResTimer.TotalMilliseconds;
 
 			if (!append)
-				list.Clear();
+                ClearList();
 
 			mRange.ResetRange();
 
@@ -1608,7 +1649,9 @@ namespace LaserGRBL
 
 		public ProgramRange Range { get { return mRange; } }
 
-		public GrblCommand this[int index]
+        public bool InUse { get; internal set; }
+
+        public GrblCommand this[int index]
 		{ get { return list[index]; } }
 
 	}

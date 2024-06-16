@@ -5,17 +5,15 @@ using SharpGL.SceneGraph.Cameras;
 using SharpGL.Version;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static LaserGRBL.ProgramRange;
 
 namespace LaserGRBL.UserControls
 {
-	[ToolboxBitmap(typeof(SceneControl), "GrblScene")]
+    [ToolboxBitmap(typeof(SceneControl), "GrblScene")]
 	public partial class GrblPanel3D : UserControl, IGrblPanel
 	{
 		// last mouse position
@@ -39,8 +37,9 @@ namespace LaserGRBL.UserControls
 		private Grbl3D mGrbl3D = null;
 		private Grbl3D mGrbl3DOff = null;
 		private object mGrbl3DLock = new object();
-		// reload request
-		private bool mReload = false;
+		private string mMessage = null;
+        // reload request
+        private bool mReload = false;
 		// invalidate all request
 		private bool mInvalidateAll = false;
 		// viewport padding
@@ -53,9 +52,7 @@ namespace LaserGRBL.UserControls
 		// drawing thread
 		private Tools.ThreadObject mThreadDraw;
 		// generated 3d bitmap
-		private Bitmap mBmp = null;
-		// critical section
-		private object mBitmapLock = new object();
+		private DoubleBufferBmp mBmp = new DoubleBufferBmp();
 		// open gl object
 		private OpenGL OpenGL;
 		// rulers steps
@@ -139,7 +136,7 @@ namespace LaserGRBL.UserControls
 			mGrid = new Grid3D();
 
 			OnColorChange();
-			TH = new Tools.ThreadObject(DrawScene, 10, true, "OpenGL", InitializeOpenGL, ThreadPriority.Normal, ApartmentState.STA);
+			TH = new Tools.ThreadObject(DrawScene, 10, true, "OpenGL", InitializeOpenGL, ThreadPriority.Lowest, ApartmentState.STA);
 			TH.Start();
 		}
 
@@ -256,14 +253,26 @@ namespace LaserGRBL.UserControls
 				if (mReload)
 				{
 					mReload = false;
-					lock (mGrbl3DLock)
-					{
-						mGrbl3D?.Dispose();
-						mGrbl3DOff?.Dispose();
-						mGrbl3D = new Grbl3D(Core, "LaserOn", false, ColorScheme.PreviewLaserPower);
-						mGrbl3DOff = new Grbl3D(Core, "LaserOff", true, ColorScheme.PreviewOtherMovement);
+					Grbl3D oldGrbl3D = mGrbl3D;
+                    Grbl3D oldGrbl3DOff = mGrbl3DOff;
+                    lock (mGrbl3DLock)
+                    {
+                        mGrbl3D = null;
+                        mGrbl3DOff = null;
 					}
-					mGrbl3DOff.LineWidth = 1;
+					mMessage = Strings.ClearDrawing;
+					oldGrbl3D?.Dispose();
+                    oldGrbl3DOff?.Dispose();
+					mMessage = Strings.PrepareDrawing;
+                    Grbl3D newGrbl3D = new Grbl3D(Core, "LaserOn", false, ColorScheme.PreviewLaserPower);
+                    Grbl3D newGrbl3DOff = new Grbl3D(Core, "LaserOff", true, ColorScheme.PreviewOtherMovement);
+                    mMessage = null;
+                    lock (mGrbl3DLock)
+					{
+						mGrbl3D = newGrbl3D;
+						mGrbl3DOff = newGrbl3DOff;
+                    }
+                    mGrbl3DOff.LineWidth = 1;
 				}
 				if (mGrbl3D != null)
 				{
@@ -295,24 +304,16 @@ namespace LaserGRBL.UserControls
 				CheckError(OpenGL, "Rulers");
 				OpenGL.Flush();
 				CheckError(OpenGL, "Flush");
-				// enter lock and copy bitmap
-				lock (mBitmapLock)
+				Bitmap newBmp = new Bitmap(Width, Height);
+				// clone opengl graphics
+				using (Graphics g = Graphics.FromImage(newBmp))
 				{
-					// new bitmap if different size
-					if (mBmp == null || mBmp.Width != Width || mBmp.Height != Height)
-					{
-						mBmp?.Dispose();
-						mBmp = new Bitmap(Width, Height);
-					}
-					// clone opengl graphics
-					using (Graphics g = Graphics.FromImage(mBmp))
-					{
-						IntPtr handleDeviceContext = g.GetHdc();
-						OpenGL.Blit(handleDeviceContext);
-						CheckError(OpenGL, "Blit");
-						g.ReleaseHdc(handleDeviceContext);
-					}
+					IntPtr handleDeviceContext = g.GetHdc();
+					OpenGL.Blit(handleDeviceContext);
+					CheckError(OpenGL, "Blit");
+					g.ReleaseHdc(handleDeviceContext);
 				}
+				mBmp.Bitmap = newBmp;
 				RenderTime.EnqueueNewSample(crono.ElapsedTime.TotalMilliseconds);
 				
 				TH.SleepTime = BestSleep(RenderTime.Avg, 10, 100, 10, 50);
@@ -518,16 +519,12 @@ namespace LaserGRBL.UserControls
 			if (FpsCrono != null) RefreshRate.EnqueueNewSample(FpsCrono.ElapsedTime.TotalMilliseconds); //compute time distance between two OnPaint
 			FpsCrono = new Tools.SimpleCrono(true);
 
-
-			if (mBmp != null)
+            Bitmap bmp = mBmp.Bitmap;
+            if (bmp != null)
 			{
 				try
 				{
-					// enter lock and copy bitmap to control
-					lock (mBitmapLock)
-					{
-						e.Graphics.DrawImage(mBmp, new Point(0, 0));
-					}
+					e.Graphics.DrawImage(bmp, new Point(0, 0));
 					DoGDIDraw(e);
 				}
 				catch (Exception ex) { OnPaintException = ex;  }
@@ -536,7 +533,6 @@ namespace LaserGRBL.UserControls
 			{
 				// nothing to draw from GL Thread
 			}
-
 
 			if (FatalException != null)
 				DrawException(e, FatalException.ToString());
@@ -560,11 +556,14 @@ namespace LaserGRBL.UserControls
 		{
 			try
 			{
-				Size size = MeasureText(text, Font);
-				Size size2 = new Size(size.Width + 20, size.Height);
-				Point point = new Point((Width - size2.Width) / 2, (Height - size2.Height) / 2);
-				DrawOverlay(e, point, size2, Color.Red, 100);
-				e.Graphics.DrawString(text, Font, Brushes.White, point.X, point.Y);
+				using (Font font = new Font(mFontName, 12))
+				{
+					Size size = MeasureText(text, mTextFont);
+					Size size2 = new Size(size.Width + 20, size.Height);
+					Point point = new Point((Width - size2.Width) / 2, (Height - size2.Height) / 2);
+					DrawOverlay(e, point, size2, Color.Red, 100);
+					e.Graphics.DrawString(text, font, Brushes.White, point.X, point.Y);
+				}
 			}
 			catch { }
 		}
@@ -651,14 +650,14 @@ namespace LaserGRBL.UserControls
 				// loading
 				lock (mGrbl3DLock)
 				{
-					if (mGrbl3D != null && mGrbl3D.LoadingPercentage < 100 || Core.ShowLaserOffMovements.Value && mGrbl3DOff != null && mGrbl3DOff.LoadingPercentage < 100)
+					if (mMessage != null || mGrbl3D != null && mGrbl3D.LoadingPercentage < 100 || Core.ShowLaserOffMovements.Value && mGrbl3DOff != null && mGrbl3DOff.LoadingPercentage < 100)
 					{
 						int pos = point.Y + size.Height + 5;
 						double? perc;
 						perc = mGrbl3D?.LoadingPercentage ?? 0;
 						perc += mGrbl3DOff?.LoadingPercentage ?? 0;
 						if (Core.ShowLaserOffMovements.Value) perc /= 2;
-						text = $"Loading {perc:0.0}%";
+						text = mMessage == null ? $"{Strings.Loading} {perc:0.0}%" : mMessage;
 						size = MeasureText(text, font);
 						point = new Point(Width - size.Width - mPadding.Right, pos);
 						DrawOverlay(e, point, size, ColorScheme.PreviewRuler, 100);
@@ -742,6 +741,7 @@ namespace LaserGRBL.UserControls
 		public void SetCore(GrblCore core)
 		{
 			Core = core;
+            Core.OnFileLoading += OnFileLoading;
 			Core.OnFileLoaded += OnFileLoaded;
 			Core.ShowExecutedCommands.OnChange += ShowExecutedCommands_OnChange;
 			Core.PreviewLineSize.OnChange += PrerviewLineSize_OnChange;
@@ -749,7 +749,12 @@ namespace LaserGRBL.UserControls
 			Core.OnProgramEnded += OnProgramEnded;
 		}
 
-		private void OnProgramEnded()
+        private void OnFileLoading(long elapsed, string filename)
+        {
+			mMessage = "Loading file...";
+        }
+
+        private void OnProgramEnded()
 		{
 			foreach (var command in Core.LoadedFile.Commands)
 			{

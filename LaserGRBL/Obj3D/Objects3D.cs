@@ -65,7 +65,7 @@ namespace LaserGRBL.Obj3D
         [XmlIgnore]
         protected Object3DDisplayList mCurrentDisplayList = null;
         [XmlIgnore]
-        protected const int MAX_VECTOR_IN_DISPLAY_LIST = 1000;
+        protected const int MAX_VECTOR_IN_DISPLAY_LIST = 5000;
 
 		public ulong VertexCounter { get; private set; } = 0;
 
@@ -136,7 +136,7 @@ namespace LaserGRBL.Obj3D
             if (mCurrentDisplayList.Vertices.Count > MAX_VECTOR_IN_DISPLAY_LIST) NewDisplayList();
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             foreach (Object3DDisplayList object3DDisplayList in mDisplayLists)
             {
@@ -276,6 +276,7 @@ namespace LaserGRBL.Obj3D
         {
             float zPos = 0;
             GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
+            Core.LoadedFile.InUse = true;
             int commandsCount = Core.LoadedFile.Commands.Count;
             for (int i = 0; i < commandsCount; i++)
             {
@@ -352,6 +353,7 @@ namespace LaserGRBL.Obj3D
                 }
                 finally { cmd.DeleteHelper(); }
             }
+            Core.LoadedFile.InUse = false;
         }
 
         public void Invalidate()
