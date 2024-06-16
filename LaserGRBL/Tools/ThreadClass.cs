@@ -16,7 +16,7 @@ namespace Tools
 		private ThreadStart _delegateSub;
 
 		private ThreadStart _firstRunSub;
-		public ThreadObject(ThreadStart DelegateSub, int SleepTime, bool AutoDispose, string Name, ThreadStart FirstRunSub, ThreadPriority priority = ThreadPriority.Normal, ApartmentState apartment = ApartmentState.Unknown) : base(SleepTime, AutoDispose, Name, priority)
+		public ThreadObject(ThreadStart DelegateSub, int SleepTime, bool AutoDispose, string Name, ThreadStart FirstRunSub, ThreadPriority priority = ThreadPriority.Normal, ApartmentState apartment = ApartmentState.Unknown, EventWaitHandle ev = null) : base(SleepTime, AutoDispose, Name, priority, apartment, ev)
 		{
 			_delegateSub = DelegateSub;
 			_firstRunSub = FirstRunSub;
@@ -43,18 +43,22 @@ namespace Tools
 	{
 
 		protected ManualResetEvent MustExit;
-			//checked 26/05/2008
+		private EventWaitHandle UserHandle;
+
+		//checked 26/05/2008
 		protected internal Thread TH;
 		private ApartmentState mApartment;
 		protected internal ThreadPriority mPriority;
 
-        protected ThreadClass(int SleepTime, bool AutoDispose, string Name, ThreadPriority priority, ApartmentState apartment = ApartmentState.Unknown)
+		private WaitHandle[] mHandleArray;
+		protected ThreadClass(int SleepTime, bool AutoDispose, string Name, ThreadPriority priority, ApartmentState apartment = ApartmentState.Unknown, EventWaitHandle ev = null)
 		{
 			mApartment = apartment;
 			mPriority = priority;
+			UserHandle = ev;
+
 			this.SleepTime = SleepTime;
-			if (AutoDispose)
-				System.Windows.Forms.Application.ApplicationExit += this.AutoDispose;
+			if (AutoDispose) System.Windows.Forms.Application.ApplicationExit += this.AutoDispose;
 			_Name = Name;
 		}
 
@@ -62,7 +66,8 @@ namespace Tools
 		protected virtual bool MustRun()
 		{
 			//return true if must run
-			return (MustExit != null) && !MustExit.WaitOne(SleepTime, false);
+
+			return mHandleArray != null && (WaitHandle.WaitAny(mHandleArray, SleepTime) != 0); // 0 = MustExit
 		}
 
 
@@ -91,6 +96,9 @@ namespace Tools
 		{
 			if (TH == null) {
 				MustExit = new ManualResetEvent(false);
+				if (UserHandle != null) mHandleArray = new WaitHandle[] { MustExit, UserHandle };
+				else mHandleArray = new WaitHandle[] { MustExit };
+
 				TH = new Thread(Loop);
 				if (mApartment != ApartmentState.Unknown) TH.SetApartmentState(mApartment);
 				TH.Priority = mPriority;
@@ -145,6 +153,7 @@ namespace Tools
 
 				TH = null;
 				MustExit = null;
+				mHandleArray = null;
 			}
 		}
 

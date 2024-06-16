@@ -35,6 +35,8 @@ namespace LaserGRBL
 
         public MainForm()
 		{
+			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", ColorScheme.Scheme.CADDark);
+
 			InitializeComponent();
 			ExceptionManager.ParentMain = this;
 
@@ -104,8 +106,6 @@ namespace LaserGRBL
 			JogForm.SetCore(Core);
 
 			GitHub.NewVersion += GitHub_NewVersion;
-
-			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", ColorScheme.Scheme.CADDark);
 
             IconsMgr.PrepareMenuItem(MnConnect, "mdi-power-plug");
             IconsMgr.PrepareMenuItem(MnDisconnect, "mdi-power-plug-off");

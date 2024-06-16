@@ -75,7 +75,7 @@ namespace LaserGRBL.UserControls
 		bool forcez = false;
 		private bool mFSTrig;
 
-		private Base.Mathematics.MobileDAverageCalculator RenderTime;
+		private Base.Mathematics.MobileDAverageCalculator FrameTime;
 		private Base.Mathematics.MobileDAverageCalculator RefreshRate;
 
 		private static Exception FatalException;
@@ -107,12 +107,13 @@ namespace LaserGRBL.UserControls
 			}
 		}
 
-		Tools.ThreadObject TH = null;
+		AutoResetEvent RR = new AutoResetEvent(true);		//redraw required
+		Tools.ThreadObject TH = null;	//drawing thread
 		public GrblPanel3D()
 		{
 			InitializeComponent();
 			OpCounter = 0;
-			RenderTime = new Base.Mathematics.MobileDAverageCalculator(30);
+			FrameTime = new Base.Mathematics.MobileDAverageCalculator(30);
 			RefreshRate = new Base.Mathematics.MobileDAverageCalculator(30);
 			mLastWPos = GPoint.Zero;
 			mLastMPos = GPoint.Zero;
@@ -136,7 +137,8 @@ namespace LaserGRBL.UserControls
 			mGrid = new Grid3D();
 
 			OnColorChange();
-			TH = new Tools.ThreadObject(DrawScene, 10, true, "OpenGL", InitializeOpenGL, ThreadPriority.Lowest, ApartmentState.STA);
+	
+			TH = new Tools.ThreadObject(DrawScene, 100, true, "OpenGL", InitializeOpenGL, ThreadPriority.Lowest, ApartmentState.STA, RR);
 			TH.Start();
 		}
 
@@ -148,7 +150,12 @@ namespace LaserGRBL.UserControls
 		{
 			if (disposing && (components != null))
 			{
-				try { TH?.Stop(); TH.Dispose(); } catch { }
+				try
+				{
+					TH?.Stop();
+					TH?.Dispose();
+					TH = null;
+				} catch { }
 				components.Dispose();
 			}
 			base.Dispose(disposing);
@@ -314,9 +321,9 @@ namespace LaserGRBL.UserControls
 					g.ReleaseHdc(handleDeviceContext);
 				}
 				mBmp.Bitmap = newBmp;
-				RenderTime.EnqueueNewSample(crono.ElapsedTime.TotalMilliseconds);
+				FrameTime.EnqueueNewSample(crono.ElapsedTime.TotalMilliseconds);
 				
-				TH.SleepTime = BestSleep(RenderTime.Avg, 10, 100, 10, 50);
+				//TH.SleepTime = BestSleep(FrameTime.Avg, 10, 100, 10, 50);
 				// call control invalidate
 				Invalidate();
 
@@ -371,6 +378,8 @@ namespace LaserGRBL.UserControls
 			mCamera.Right = right;
 			mCamera.Bottom = bottom;
 			mCamera.Top = top;
+
+			RR.Set();
 		}
 
 		private void GrblPanel3D_Resize(object sender, EventArgs e)
@@ -640,7 +649,7 @@ namespace LaserGRBL.UserControls
 					else
 						VertexString = string.Format("{0,6:###0.0} B", VertexCounter / 1000000000.0);
 
-					text = $"VER   {VertexString}\nTIM   {string.Format("{0,6:##0} ms", RenderTime.Avg)}\nFPS   {string.Format("{0,6:##0}", 1000.0 / RefreshRate.Avg)}";
+					text = $"VER   {VertexString}\nAFT   {string.Format("{0,6:##0} ms", FrameTime.Avg)}\nFPS   {string.Format("{0,6:##0}", 1000.0 / RefreshRate.Avg)}";
 					size = MeasureText(text, font);
 					point = new Point(Width - size.Width - mPadding.Right, pos);
 					DrawOverlay(e, point, size, ColorScheme.PreviewRuler, 100);
@@ -905,7 +914,7 @@ namespace LaserGRBL.UserControls
 		private void TimDetectIssue_Tick(object sender, EventArgs e)
 		{
 			TimDetectIssue.Stop();
-			if (OpCounter < 7 || FatalException != null) //non è riuscito a completare nemmeno due disegni nei 5 secondi del timer! (o se c'è stata una eccezione nei primi 5 secondi)
+			if (OpCounter < 5 || FatalException != null) //non è riuscito a completare nemmeno un disegno nei 5 secondi del timer! (o se c'è stata una eccezione nei primi 5 secondi)
 			{
 				if (FatalException == null) //fatal exception are logged where they are generated
 					Logger.LogMessage("OpenGL", "Rendering issue detected! OpCounte: {0}", OpCounter);
