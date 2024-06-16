@@ -138,7 +138,7 @@ namespace LaserGRBL.UserControls
 
 			OnColorChange();
 	
-			TH = new Tools.ThreadObject(DrawScene, 100, true, "OpenGL", InitializeOpenGL, ThreadPriority.Lowest, ApartmentState.STA, RR);
+			TH = new Tools.ThreadObject(DrawScene, 10000, true, "OpenGL", InitializeOpenGL, ThreadPriority.Lowest, ApartmentState.STA, RR);
 			TH.Start();
 		}
 
@@ -889,6 +889,7 @@ namespace LaserGRBL.UserControls
 				mLastMPos = Core.MachinePosition;
 				mCurF = Core.CurrentF;
 				mCurS = Core.CurrentS;
+				RR.Set();
 			}
 			Invalidate();
 		}
