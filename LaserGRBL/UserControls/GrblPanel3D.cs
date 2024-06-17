@@ -76,6 +76,7 @@ namespace LaserGRBL.UserControls
 		private bool mFSTrig;
 
 		private Base.Mathematics.MobileDAverageCalculator FrameTime;
+		private Base.Mathematics.MobileDAverageCalculator SleepTime;
 		private Base.Mathematics.MobileDAverageCalculator RefreshRate;
 
 		private static Exception FatalException;
@@ -114,6 +115,7 @@ namespace LaserGRBL.UserControls
 			InitializeComponent();
 			OpCounter = 0;
 			FrameTime = new Base.Mathematics.MobileDAverageCalculator(30);
+			SleepTime = new Base.Mathematics.MobileDAverageCalculator(30);
 			RefreshRate = new Base.Mathematics.MobileDAverageCalculator(30);
 			mLastWPos = GPoint.Zero;
 			mLastMPos = GPoint.Zero;
@@ -321,9 +323,13 @@ namespace LaserGRBL.UserControls
 					g.ReleaseHdc(handleDeviceContext);
 				}
 				mBmp.Bitmap = newBmp;
+
 				FrameTime.EnqueueNewSample(crono.ElapsedTime.TotalMilliseconds);
 				
-				//TH.SleepTime = BestSleep(FrameTime.Avg, 10, 100, 10, 50);
+				int best_sleep = BestSleep(FrameTime.CurrentValue, 10, 100, 10, 50);
+				SleepTime.EnqueueNewSample(best_sleep);
+				Thread.Sleep(best_sleep);
+
 				// call control invalidate
 				Invalidate();
 
@@ -649,7 +655,7 @@ namespace LaserGRBL.UserControls
 					else
 						VertexString = string.Format("{0,6:###0.0} B", VertexCounter / 1000000000.0);
 
-					text = $"VER   {VertexString}\nAFT   {string.Format("{0,6:##0} ms", FrameTime.Avg)}\nFPS   {string.Format("{0,6:##0}", 1000.0 / RefreshRate.Avg)}";
+					text = $"VER   {VertexString}\nAFT   {string.Format("{0,6:##0} ms", FrameTime.Avg)}\nAST   {string.Format("{0,6:##0} ms", SleepTime.Avg)}\nRPS   {string.Format("{0,6:##0}", 1000.0 / RefreshRate.Avg)}";
 					size = MeasureText(text, font);
 					point = new Point(Width - size.Width - mPadding.Right, pos);
 					DrawOverlay(e, point, size, ColorScheme.PreviewRuler, 100);
