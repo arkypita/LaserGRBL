@@ -114,9 +114,9 @@ namespace LaserGRBL.UserControls
 		{
 			InitializeComponent();
 			OpCounter = 0;
-			FrameTime = new Base.Mathematics.MobileDAverageCalculator(30);
-			SleepTime = new Base.Mathematics.MobileDAverageCalculator(30);
-			RefreshRate = new Base.Mathematics.MobileDAverageCalculator(30);
+			FrameTime = new Base.Mathematics.MobileDAverageCalculator(10);
+			SleepTime = new Base.Mathematics.MobileDAverageCalculator(10);
+			RefreshRate = new Base.Mathematics.MobileDAverageCalculator(10);
 			mLastWPos = GPoint.Zero;
 			mLastMPos = GPoint.Zero;
 			forcez = Settings.GetObject("Enale Z Jog Control", false);
@@ -325,10 +325,10 @@ namespace LaserGRBL.UserControls
 				mBmp.Bitmap = newBmp;
 
 				FrameTime.EnqueueNewSample(crono.ElapsedTime.TotalMilliseconds);
-				
-				int best_sleep = BestSleep(FrameTime.CurrentValue, 10, 100, 10, 50);
-				SleepTime.EnqueueNewSample(best_sleep);
-				Thread.Sleep(best_sleep);
+
+				crono.Start();
+				Thread.Sleep(BestSleep(FrameTime.CurrentValue, 10, 100, 15, 50));
+				SleepTime.EnqueueNewSample(crono.ElapsedTime.TotalMilliseconds);
 
 				// call control invalidate
 				Invalidate();
