@@ -132,8 +132,10 @@ namespace LaserGRBL
             IconsMgr.PrepareMenuItem(MnCuttingTest, "mdi-content-cut");
             IconsMgr.PrepareMenuItem(MnAccuracyTest, "mdi-details");
             IconsMgr.PrepareMenuItem(shakeTestToolStripMenuItem, "mdi-pulse");
-            IconsMgr.PrepareMenuItem(autoSizeToolStripMenuItem, "mdi-resize");
-            IconsMgr.PrepareMenuItem(lineSizeToolStripMenuItem, "mdi-gesture");
+            IconsMgr.PrepareMenuItem(autoSizeToolStripMenuItem, "mdi-magnify-scan");
+			IconsMgr.PrepareMenuItem(zoomInToolStripMenuItem, "mdi-magnify-plus-outline");
+			IconsMgr.PrepareMenuItem(zoomOutToolStripMenuItem, "mdi-magnify-minus-outline");
+			IconsMgr.PrepareMenuItem(lineSizeToolStripMenuItem, "mdi-gesture");
             IconsMgr.PrepareMenuItem(MNEnglish, "flags-gb", false);
             IconsMgr.PrepareMenuItem(MNItalian, "flags-it", false);
             IconsMgr.PrepareMenuItem(MNSpanish, "flags-es", false);
@@ -1215,7 +1217,25 @@ namespace LaserGRBL
             }
         }
 
-        private void showLaserOffMovementsToolStripMenuItem_Click(object sender, EventArgs e)
+		private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (PreviewForm.GrblPanel is GrblPanel3D)
+			{
+				GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
+				panel3D.ZoomIn();
+			}
+		}
+
+		private void zoomOutToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (PreviewForm.GrblPanel is GrblPanel3D)
+			{
+				GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
+				panel3D.ZoomOut();
+			}
+		}
+
+		private void showLaserOffMovementsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (PreviewForm.GrblPanel is GrblPanel3D)
             {
@@ -1265,6 +1285,7 @@ namespace LaserGRBL
 				Core.ShowPerformanceDiagnostic.Value = showDiagnosticDataToolStripMenuItem.Checked;
 			}
 		}
+
 	}
 
 

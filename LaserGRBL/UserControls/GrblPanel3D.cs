@@ -2,6 +2,7 @@
 using SharpGL;
 using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Cameras;
+using SharpGL.SceneGraph.Lighting;
 using SharpGL.Version;
 using System;
 using System.Collections.Generic;
@@ -761,6 +762,8 @@ namespace LaserGRBL.UserControls
 			Core.ShowExecutedCommands.OnChange += ShowExecutedCommands_OnChange;
 			Core.PreviewLineSize.OnChange += PrerviewLineSize_OnChange;
 			Core.OnAutoSizeDrawing += Core_OnAutoSizeDrawing;
+			Core.OnZoomInDrawing += Core_OnZoomInDrawing;
+			Core.OnZoomOutDrawing += Core_OnZoomOutDrawing;
 			Core.OnProgramEnded += OnProgramEnded;
 		}
 
@@ -780,6 +783,15 @@ namespace LaserGRBL.UserControls
 		private void Core_OnAutoSizeDrawing(GrblCore obj)
 		{
 			AutoSizeDrawing();
+		}
+		private void Core_OnZoomInDrawing(GrblCore obj)
+		{
+			ZoomIn();
+		}
+
+		private void Core_OnZoomOutDrawing(GrblCore obj)
+		{
+			ZoomOut();
 		}
 
 		private void PrerviewLineSize_OnChange(Tools.RetainedSetting<float> obj)
@@ -939,6 +951,38 @@ namespace LaserGRBL.UserControls
 					Application2.RestartNoCommandLine();
 				}
 			}
+		}
+
+		internal void ZoomIn()
+		{
+			CenterZoom(1.0 / 1.1);
+		}
+
+		internal void ZoomOut()
+		{
+			CenterZoom(1.1);
+		}
+
+		private void CenterZoom(double k)
+		{
+			// Calculate the center of the current view
+			double centerX = (mCamera.Left + mCamera.Right) / 2;
+			double centerY = (mCamera.Bottom + mCamera.Top) / 2;
+
+			// Calculate the new half-width and half-height based on the zoom factor
+			double halfWidth = (mCamera.Right - mCamera.Left) / 2 ;
+			double halfHeight = (mCamera.Top - mCamera.Bottom) / 2 ;
+
+			halfWidth = halfWidth * k;
+			halfHeight = halfHeight * k;
+
+			// Update the boundaries
+			double left = centerX - halfWidth;
+			double right = centerX + halfWidth;
+			double bottom = centerY - halfHeight;
+			double top = centerY + halfHeight;
+
+			SetWorldPosition(left, right, bottom, top);
 		}
 	}
 

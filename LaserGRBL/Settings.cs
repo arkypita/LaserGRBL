@@ -102,18 +102,17 @@ namespace LaserGRBL
             return rv;
         }
 
-        public static void SetObject(string key, object value)
+        public static void SetObject(string key, object value, bool forcesave = false) //use force-save if calling with a complex object that not support Equal comparison
         {
             if (ExistObject(key))
             {
-
                 bool isdifferent = !Equals(dic[key], value);
 
                 if (value is object[] && dic[key] is object[])
                     isdifferent = !ArraysEqual((object[])dic[key], (object[])value);
 
                 dic[key] = value;
-                if (isdifferent)
+                if (isdifferent || forcesave)
                     TriggerSave(key);
             }
             else

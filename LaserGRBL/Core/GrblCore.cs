@@ -262,8 +262,10 @@ namespace LaserGRBL
 		public event dlgOnLoopCountChange OnLoopCountChange;
 		public event dlgJogStateChange JogStateChange;
 		public event Action<GrblCore> OnAutoSizeDrawing;
+		public event Action<GrblCore> OnZoomInDrawing;
+		public event Action<GrblCore> OnZoomOutDrawing;
 
-        private System.Windows.Forms.Control syncro;
+		private System.Windows.Forms.Control syncro;
 		protected ComWrapper.IComWrapper com;
 		private GrblFile file;
 		private System.Collections.Generic.Queue<GrblCommand> mQueue; //vera coda di quelli da mandare
@@ -2915,7 +2917,7 @@ namespace LaserGRBL
 		{
 			mHotKeyManager.Clear();
 			mHotKeyManager.AddRange(mLocalList);
-			Settings.SetObject("Hotkey Setup", mHotKeyManager);
+			Settings.SetObject("Hotkey Setup", mHotKeyManager, true);
 		}
 
 		//internal void HKCustomButton(int index)
@@ -3068,7 +3070,17 @@ namespace LaserGRBL
 			OnAutoSizeDrawing?.Invoke(this);
         }
 
-        public virtual bool UIShowGrblConfig => true;
+		public void ZoomInDrawing()
+		{
+			OnZoomInDrawing?.Invoke(this);
+		}
+
+		public void ZoomOutDrawing()
+		{
+			OnZoomOutDrawing?.Invoke(this);
+		}
+
+		public virtual bool UIShowGrblConfig => true;
 		public virtual bool UIShowUnlockButtons => true;
 
 		public bool IsOrturBoard { get => GrblVersion != null && GrblVersion.IsOrtur; }
