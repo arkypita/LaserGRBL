@@ -663,6 +663,30 @@ namespace LaserGRBL.UserControls
 					e.Graphics.DrawString(text, font, b, point.X, point.Y);
 				}
 
+				if (!Core.HasProgram)
+				{
+
+					text = $"Basic usage\r\nZOOM: Use mouse wheel (or two-finger gesture)\r\nPAN:  Click and drag (or touch and drag)\r\nJOG:  Double click in any point (or double tap)\r\n\r\n";
+
+					string shortcut = "";
+					string a_asd = GetShortcut(HotKeysManager.HotKey.Actions.AutoSizeDrawing);
+					string a_zin = GetShortcut(HotKeysManager.HotKey.Actions.ZoomInDrawing);
+					string a_zou = GetShortcut(HotKeysManager.HotKey.Actions.ZoomInDrawing);
+					if (!string.IsNullOrEmpty(a_asd)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.AutoSizeDrawing)}: Zoom Auto (100%)\r\n";
+					if (!string.IsNullOrEmpty(a_zin)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.ZoomInDrawing)}: Zoom In   (+10%)\r\n";
+					if (!string.IsNullOrEmpty(a_zou)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.ZoomOutDrawing)}: Zoom Out  (-10%)\r\n";
+
+					if (!string.IsNullOrEmpty(shortcut))
+						text = text + "Keyboard Shortcut\r\n" + shortcut;
+
+					text = text.Trim("\r\n\t ".ToCharArray());
+
+					size = MeasureText(text, font);
+					point = new Point(Width - size.Width - mPadding.Right, Height - size.Height - 35);
+					DrawOverlay(e, point, size, ColorScheme.PreviewRuler, 60);
+					e.Graphics.DrawString(text, font, b, point.X, point.Y);
+				}
+
 				// loading
 				lock (mGrbl3DLock)
 				{
@@ -681,6 +705,18 @@ namespace LaserGRBL.UserControls
 					}
 				}
 			}
+		}
+
+		private string GetShortcut(HotKeysManager.HotKey.Actions action)
+		{
+			string shortcut = Core.GetHotKeyString(action);
+			if (shortcut != null)
+			{
+				shortcut = shortcut.Replace("+", " ");
+				shortcut = shortcut.Replace("Add", "+");
+				shortcut = shortcut.Replace("Subtract", "-");
+			}
+			return shortcut;
 		}
 
 		private void DrawOverlay(PaintEventArgs e, Point point, Size size, Color color, int alfa)
@@ -922,6 +958,7 @@ namespace LaserGRBL.UserControls
 			mMinorsColor = ColorScheme.PreviewGridMinor;
 			BackColor = mBackgroundColor;
 			mInvalidateAll = true;
+			RR.Set();
 		}
 
 		private void GrblPanel3D_Load(object sender, EventArgs e)
@@ -985,5 +1022,4 @@ namespace LaserGRBL.UserControls
 			SetWorldPosition(left, right, bottom, top);
 		}
 	}
-
 }
