@@ -352,40 +352,12 @@ namespace LaserGRBL.UserControls
 
 		private void SetWorldPosition(double left, double right, double bottom, double top)
 		{
-			// max viewport size
-			const double max = 50000;
-			// compute size
-			double width = right - left;
-			double height = top - bottom;
-			// exit if max viewport reached
-			if (width > max * 2 || height > max * 2) return;
-			// fix min and max
-			if (left < -max)
-			{
-				left = -max;
-				right = left + width;
-			}
-			if (right > max)
-			{
-				right = max;
-				left = max - width;
-			}
-			if (bottom < -max)
-			{
-				bottom = -max;
-				top = bottom + height;
-			}
-			if (top > max)
-			{
-				top = max;
-				bottom = top - height;
-			}
 			// set new camera coords
 			mCamera.Left = left;
 			mCamera.Right = right;
 			mCamera.Bottom = bottom;
 			mCamera.Top = top;
-
+			// call control invalidate
 			RR.Set();
 		}
 
@@ -394,13 +366,11 @@ namespace LaserGRBL.UserControls
 			// compute ratiobesed on last size
 			double wRatio = Width / mLastControlSize.X;
 			double hRatio = Height / mLastControlSize.Y;
-			// define max ratio
-			double max = Math.Max(Math.Abs(wRatio), Math.Abs(hRatio));
-			// normalize ratio (only values less than 1 are valid)
-			wRatio = wRatio / max;
-			hRatio = hRatio / max;
-			// set world positions
-			SetWorldPosition(mCamera.Left * wRatio, mCamera.Right * wRatio, mCamera.Bottom * hRatio, mCamera.Top * hRatio);
+			// compute increment
+			double wIncrement = (mCamera.Right - mCamera.Left) - (mCamera.Right - mCamera.Left) * wRatio;
+            double hIncrement = (mCamera.Top - mCamera.Bottom) - (mCamera.Top - mCamera.Bottom) * hRatio;
+            // set world positions
+            SetWorldPosition(mCamera.Left + wIncrement / 2, mCamera.Right - wIncrement / 2, mCamera.Bottom + hIncrement / 2, mCamera.Top - hIncrement / 2);
 			// save last size
 			mLastControlSize = new PointF(Width, Height);
 		}
@@ -769,7 +739,7 @@ namespace LaserGRBL.UserControls
 
         private void OnFileLoading(long elapsed, string filename)
         {
-			mMessage = "Loading file...";
+			mMessage = Strings.Loading;
         }
 
         private void OnProgramEnded()
