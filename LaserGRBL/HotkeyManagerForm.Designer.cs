@@ -103,7 +103,7 @@
 			// Action
 			// 
 			this.Action.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.Action.DataPropertyName = "Action";
+			this.Action.DataPropertyName = "ActionString";
 			resources.ApplyResources(this.Action, "Action");
 			this.Action.Name = "Action";
 			this.Action.ReadOnly = true;

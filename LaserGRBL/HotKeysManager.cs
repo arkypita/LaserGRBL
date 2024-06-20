@@ -30,8 +30,8 @@ namespace LaserGRBL
 				OpenFile = 20, ReopenLastFile = 21, SaveFile = 22, ExecuteFile = 23, AbortFile = 24,
 				HelpOnline = 30,
 				AutoSizeDrawing = 40, ZoomInDrawing = 41, ZoomOutDrawing = 42,
-				Reset = 100, Homing = 101, Unlock = 102,  PauseJob = 103, ResumeJob = 104, SetNewZero = 105,
-                JogHome = 1000, JogN = 1001, JogNE = 1002, JogE = 1003, JogSE = 1004, JogS = 1005, JogSW = 1006, JogW = 1007, JogNW = 1008, JogUp = 1009, JogDown = 1010,
+				Reset = 100, Homing = 101, Unlock = 102, PauseJob = 103, ResumeJob = 104, SetNewZero = 105,
+				JogHome = 1000, JogN = 1001, JogNE = 1002, JogE = 1003, JogSE = 1004, JogS = 1005, JogSW = 1006, JogW = 1007, JogNW = 1008, JogUp = 1009, JogDown = 1010,
 				JogStepIncrease = 1020, JogStepDecrease = 1021,
 				JogSpeedIncrease = 1030, JogSpeedDecrease = 1031,
 				OverridePowerDefault = 1100, OverridePowerUp = 1101, OverridePowerDown = 1102,
@@ -48,6 +48,18 @@ namespace LaserGRBL
 
 			public Keys Combination
 			{ get { return mCombination; } }
+
+			public string ActionString
+			{
+				get 
+				{
+					if (Enum.IsDefined(typeof(Actions), Action))
+						return Action.ToString();
+					else
+						return "-";
+				}
+			}
+
 
 			public HotKey(Actions action, Keys keys)
 			{ mAction = action; mCombination = keys; }
@@ -397,6 +409,16 @@ namespace LaserGRBL
 			foreach (HotKeysManager.HotKey hk in this)
 				rv.Add(hk.Clone() as HotKeysManager.HotKey);
 			return rv;
+		}
+
+		private static KeysConverter cnv = new KeysConverter();
+		internal string GetHotKeyString(HotKey.Actions action)
+		{
+			foreach (HotKey hk in this)
+				if (hk.Action == action && hk.Combination != Keys.None)
+					return cnv.ConvertToString(hk.Combination);
+
+			return null;
 		}
 	}
 }
