@@ -2,10 +2,8 @@
 using SharpGL;
 using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Cameras;
-using SharpGL.SceneGraph.Lighting;
 using SharpGL.Version;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Threading;
@@ -31,7 +29,7 @@ namespace LaserGRBL.UserControls
 		private GLColor mTextColor { get; set; }
 		// default font
 		private const string mFontName = "Courier New";
-		private Font mTextFont { get; set; } = new Font(mFontName, 12);
+        private Font mTextFont { get; set; } = new Font(mFontName, 12);
 		// background
 		private Grid3D mGrid = null;
 		// grbl object
@@ -56,19 +54,6 @@ namespace LaserGRBL.UserControls
 		private DoubleBufferBmp mBmp = new DoubleBufferBmp();
 		// open gl object
 		private OpenGL OpenGL;
-		// rulers steps
-		private List<KeyValuePair<double, int>> mRulerSteps = new List<KeyValuePair<double, int>> {
-			new KeyValuePair<double, int>(   100,    5),
-			new KeyValuePair<double, int>(   200,   10),
-			new KeyValuePair<double, int>(   600,   30),
-			new KeyValuePair<double, int>(  1000,   50),
-			new KeyValuePair<double, int>(  2000,  100),
-			new KeyValuePair<double, int>(  6000,  300),
-			new KeyValuePair<double, int>( 10000,  500),
-			new KeyValuePair<double, int>( 20000, 1000),
-			new KeyValuePair<double, int>( 60000, 3000),
-			new KeyValuePair<double, int>(100000, 5000)
-		};
 		private GPoint mLastWPos;
 		private GPoint mLastMPos;
 		private float mCurF;
@@ -145,11 +130,28 @@ namespace LaserGRBL.UserControls
 			TH.Start();
 		}
 
-		/// <summary> 
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
+        private static double GetRulerStep(double n)
+        {
+            int digitCount = Convert.ToInt32(Math.Max(3, Math.Floor(Math.Log10(n) + 1)));
+            int power = Convert.ToInt32(Math.Pow(10, digitCount - 1));
+            double step = n / power;
+            double result;
+            if (step < 1)
+                result = 5;
+            else if (step < 2)
+                result = 10;
+            else if (step < 6)
+                result = 30;
+            else
+                result = 50;
+            return result * Math.Pow(10, digitCount - 3);
+        }
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
 		{
 			if (disposing && (components != null))
 			{
@@ -351,9 +353,31 @@ namespace LaserGRBL.UserControls
 		}
 
 		private void SetWorldPosition(double left, double right, double bottom, double top)
-		{
-			// set new camera coords
-			mCamera.Left = left;
+        {
+			double maxViewport = Grid3D.ViewportSize * 2;
+            if (right - left > maxViewport) return;
+            if (bottom - top > maxViewport) return;
+            if (left < - maxViewport / 2) {
+				right += (-maxViewport / 2 - left);
+				left = -maxViewport / 2;
+            }
+            if (right > maxViewport / 2)
+            {
+                left += (maxViewport / 2 - right);
+                right = maxViewport / 2;
+            }
+            if (bottom < -maxViewport / 2)
+            {
+                top += (-maxViewport / 2 - bottom);
+                bottom = -maxViewport / 2;
+            }
+            if (top > maxViewport / 2)
+            {
+                bottom += (maxViewport / 2 - top);
+                top = maxViewport / 2;
+            }
+            // set new camera coords
+            mCamera.Left = left;
 			mCamera.Right = right;
 			mCamera.Bottom = bottom;
 			mCamera.Top = top;
@@ -369,8 +393,28 @@ namespace LaserGRBL.UserControls
 			// compute increment
 			double wIncrement = (mCamera.Right - mCamera.Left) - (mCamera.Right - mCamera.Left) * wRatio;
             double hIncrement = (mCamera.Top - mCamera.Bottom) - (mCamera.Top - mCamera.Bottom) * hRatio;
+			double newLeft = mCamera.Left + wIncrement / 2;
+			double newRight = mCamera.Right - wIncrement / 2;
+			double newTop = mCamera.Top - hIncrement / 2;
+			double newBottom = mCamera.Bottom + hIncrement / 2;
+            double rw = 1;
+            double rh = 1;
+			double maxViewport = Grid3D.ViewportSize * 2;
+            if (newRight - newLeft > maxViewport)
+            {
+                rw = maxViewport / (newRight - newLeft);
+            }
+            if (newBottom - newTop > maxViewport)
+            {
+                rh = maxViewport / (newBottom - newTop);
+            }
+			double r = Math.Min(rw, rh);
+            newLeft = newLeft * r;
+            newRight = newRight * r;
+            newTop = newTop * r;
+            newBottom = newBottom * r;
             // set world positions
-            SetWorldPosition(mCamera.Left + wIncrement / 2, mCamera.Right - wIncrement / 2, mCamera.Bottom + hIncrement / 2, mCamera.Top - hIncrement / 2);
+            SetWorldPosition(newLeft, newRight, newBottom, newTop);
 			// save last size
 			mLastControlSize = new PointF(Width, Height);
 		}
@@ -455,18 +499,9 @@ namespace LaserGRBL.UserControls
 			// get world width
 			double worldWidth = mCamera.Right - mCamera.Left;
 			// init rulers step
-			int step = 200;
-			// get step from list
-			foreach (KeyValuePair<double, int> rulerStep in mRulerSteps)
-			{
-				if (worldWidth < rulerStep.Key)
-				{
-					step = rulerStep.Value;
-					break;
-				}
-			}
+			double step = GetRulerStep(worldWidth);
 			// get ratio
-			double wRatio = Width / (mCamera.Right - mCamera.Left);
+            double wRatio = Width / (mCamera.Right - mCamera.Left);
 			// draw horizontal
 			for (int i = (int)mCamera.Left + (int)(mPadding.Left / wRatio); i < (int)mCamera.Right - (int)(mPadding.Right / wRatio); i += 1)
 			{

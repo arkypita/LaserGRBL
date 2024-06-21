@@ -150,9 +150,7 @@ namespace LaserGRBL.Obj3D
     public class Grid3D : Object3D
     {
         [XmlIgnore]
-        public int MaxWidth { get; set; } = 50000;
-        [XmlIgnore]
-        public int MaxHeight { get; set; } = 50000;
+        public static int ViewportSize { get; set; } = 50000;
         [XmlIgnore]
         private DisplayList mDisplayOrigins;
         [XmlIgnore]
@@ -211,17 +209,17 @@ namespace LaserGRBL.Obj3D
 
         private void DrawCross(float position, GLColor color, float z)
         {
-            AddVertex(position, -MaxHeight, z, color);
-            AddVertex(position, MaxHeight, z, color);
-            AddVertex(-MaxHeight, position, z, color);
-            AddVertex(MaxHeight, position, z, color);
+            AddVertex(position, -ViewportSize, z, color);
+            AddVertex(position, ViewportSize, z, color);
+            AddVertex(-ViewportSize, position, z, color);
+            AddVertex(ViewportSize, position, z, color);
         }
 
         protected override void Draw()
         {
             // minor tick display list
             mDisplayMinor = mCurrentDisplayList.DisplayList;
-            for (int i = -MaxWidth; i <= MaxWidth; i++)
+            for (int i = -ViewportSize; i <= ViewportSize; i++)
             {
                 if (i % 10 == 0 || i == 0) continue;
                 DrawCross(i, MinorsColor, -20f);
@@ -229,7 +227,7 @@ namespace LaserGRBL.Obj3D
             // tick display list
             NewDisplayList();
             mDisplayTick = mCurrentDisplayList.DisplayList;
-            for (int i = -MaxWidth; i <= MaxWidth; i++)
+            for (int i = -ViewportSize; i <= ViewportSize; i++)
             {
                 if (i % 10 != 0 || i == 0) continue;
                 DrawCross(i, TicksColor, -10f);
