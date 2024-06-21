@@ -16,6 +16,7 @@ using System.Web;
 using System.Windows.Forms;
 using Tools;
 using static LaserGRBL.GrblCore;
+using static LaserGRBL.HotKeysManager;
 
 namespace LaserGRBL
 {
@@ -2867,6 +2868,11 @@ namespace LaserGRBL
 				return false;
 			else
 				return mHotKeyManager.ManageHotKeys(parent, keys);
+		}
+
+		internal string GetHotKeyString(HotKey.Actions action)
+		{
+			return mHotKeyManager.GetHotKeyString(action);
 		}
 
 		internal void HKConnectDisconnect()
