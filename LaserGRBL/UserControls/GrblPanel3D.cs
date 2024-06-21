@@ -42,7 +42,7 @@ namespace LaserGRBL.UserControls
 		// invalidate all request
 		private bool mInvalidateAll = false;
 		// viewport padding
-		private Padding mPadding = new Padding(50, 0, 0, 30);
+		private Padding mPadding = new Padding(70, 0, 0, 30);
 		// grbl core
 		private GrblCore Core;
 		public float PointerSize { get; set; } = 3;
@@ -122,10 +122,8 @@ namespace LaserGRBL.UserControls
 			mCamera.Far = 100000000;
 			AutoSizeDrawing();
 			mLastControlSize = new PointF(Width, Height);
-			mGrid = new Grid3D();
-
+			mGrid = new Grid3D(mCamera);
 			OnColorChange();
-	
 			TH = new Tools.ThreadObject(DrawScene, 10000, true, "OpenGL", InitializeOpenGL, ThreadPriority.Lowest, ApartmentState.STA, RR);
 			TH.Start();
 		}
@@ -248,7 +246,7 @@ namespace LaserGRBL.UserControls
 				OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
 				CheckError(OpenGL, "Clear");
 				// render grid
-				mGrid.ShowMinor = mCamera.Right - mCamera.Left < 100;
+				mGrid.ControlWidth = Width;
 				mGrid.TicksColor = mTicksColor;
 				mGrid.MinorsColor = mMinorsColor;
 				mGrid.OriginsColor = mOriginsColor;
@@ -381,6 +379,7 @@ namespace LaserGRBL.UserControls
 			mCamera.Right = right;
 			mCamera.Bottom = bottom;
 			mCamera.Top = top;
+			mGrid?.Invalidate();
 			// call control invalidate
 			RR.Set();
 		}
@@ -474,6 +473,22 @@ namespace LaserGRBL.UserControls
 			OpenGL.Flush();
 		}
 
+		private string HumanReadableLength(int mm, double worldWidth)
+        {
+            if (worldWidth > 10000)
+            {
+                return $"{Math.Round(mm / 1000f, 0)}m";
+            }
+            else if (worldWidth > 1000)
+			{
+				return $"{Math.Round(mm / 10f, 0)}cm";
+			}
+			else
+			{
+				return $"{mm}mm";
+			}
+		}
+
 		public void DrawRulers()
 		{
 			// clear left ruler background
@@ -507,7 +522,7 @@ namespace LaserGRBL.UserControls
 			{
 				if (i % step == 0)
 				{
-					string text = $"{i}";
+					string text = HumanReadableLength(i, worldWidth);
 					Size size = TextRenderer.MeasureText(text, mTextFont);
 					SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
 					double x = i * wRatio - mCamera.Left * wRatio - sizeProp.Width / 4f;
@@ -521,7 +536,7 @@ namespace LaserGRBL.UserControls
 			{
 				if (i % step == 0)
 				{
-					string text = $"{i}";
+					string text = HumanReadableLength(i, worldWidth);
 					Size size = TextRenderer.MeasureText(text, mTextFont);
 					SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
 					double x = mPadding.Left - sizeProp.Width;

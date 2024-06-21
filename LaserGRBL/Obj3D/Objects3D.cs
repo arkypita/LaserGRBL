@@ -1,5 +1,6 @@
 ﻿using SharpGL;
 using SharpGL.SceneGraph;
+using SharpGL.SceneGraph.Cameras;
 using SharpGL.SceneGraph.Core;
 using System;
 using System.Collections.Generic;
@@ -66,8 +67,10 @@ namespace LaserGRBL.Obj3D
         protected Object3DDisplayList mCurrentDisplayList = null;
         [XmlIgnore]
         protected const int MAX_VECTOR_IN_DISPLAY_LIST = 5000;
+        [XmlIgnore]
+        protected bool mInvalidate = true;
 
-		public ulong VertexCounter { get; private set; } = 0;
+        public ulong VertexCounter { get; private set; } = 0;
 
         public Object3D(string name, float lineWidth)
         {
@@ -86,10 +89,12 @@ namespace LaserGRBL.Obj3D
 
         public virtual void Render(OpenGL gl)
         {
-            if (mDisplayLists.Count <= 0)
+            if (mDisplayLists.Count <= 0 || mInvalidate)
             {
                 mGL = gl;
+                ClearDisplayList();
                 CreateDisplayList();
+                mInvalidate = false;
             }
             CallDisplayList(gl);
         }
@@ -145,20 +150,27 @@ namespace LaserGRBL.Obj3D
             ClearDisplayList();
         }
 
+        public virtual void Invalidate()
+        {
+            mInvalidate = true;
+        }
+
     }
 
     public class Grid3D : Object3D
     {
         [XmlIgnore]
-        public static int ViewportSize { get; set; } = 50000;
+        public static int ViewportSize { get; set; } = 1000000;
+        [XmlIgnore]
+        public int ControlWidth { get; set; }
+        [XmlIgnore]
+        private OrthographicCamera mCamera;
         [XmlIgnore]
         private DisplayList mDisplayOrigins;
         [XmlIgnore]
         private DisplayList mDisplayTick;
         [XmlIgnore]
         private DisplayList mDisplayMinor;
-        [XmlIgnore]
-        public bool ShowMinor { get; set; } = false;
         [XmlIgnore]
         private GLColor mTicksColor = new GLColor();
         [XmlIgnore]
@@ -204,48 +216,73 @@ namespace LaserGRBL.Obj3D
             }
         }
 
+        private bool mShowMinor => (mCamera.Right - mCamera.Left) < 300;
 
-        public Grid3D() : base("Grid", 0.01f) { }
-
-        private void DrawCross(float position, GLColor color, float z)
-        {
-            AddVertex(position, -ViewportSize, z, color);
-            AddVertex(position, ViewportSize, z, color);
-            AddVertex(-ViewportSize, position, z, color);
-            AddVertex(ViewportSize, position, z, color);
+        public Grid3D(OrthographicCamera camera) : base("Grid", 0.01f) {
+            mCamera = camera;
         }
 
         protected override void Draw()
         {
-            // minor tick display list
-            mDisplayMinor = mCurrentDisplayList.DisplayList;
-            for (int i = -ViewportSize; i <= ViewportSize; i++)
+            int left = (int)mCamera.Left;
+            int right = (int)mCamera.Right;
+            int bottom = (int)mCamera.Bottom;
+            int top = (int)mCamera.Top;
+            float f = -20;
+            if (mShowMinor)
             {
-                if (i % 10 == 0 || i == 0) continue;
-                DrawCross(i, MinorsColor, -20f);
+                // minor tick display list
+                mDisplayMinor = mCurrentDisplayList.DisplayList;
+                for (int i = left; i <= right; i++)
+                {
+                    if (i % 10 == 0 || i == 0) continue;
+                    AddVertex(i, mCamera.Bottom, f, MinorsColor);
+                    AddVertex(i, mCamera.Top, f, MinorsColor);
+                }
+                for (int i = bottom; i <= top; i++)
+                {
+                    if (i % 10 == 0 || i == 0) continue;
+                    AddVertex(mCamera.Left, i, f, MinorsColor);
+                    AddVertex(mCamera.Right, i, f, MinorsColor);
+                }
+                // tick display list
+                NewDisplayList();
             }
-            // tick display list
-            NewDisplayList();
+            int gridSize = (int)(right - left) * 2 / ControlWidth;
+            gridSize = Math.Max(10, gridSize * 10);
+            f = -10;
             mDisplayTick = mCurrentDisplayList.DisplayList;
-            for (int i = -ViewportSize; i <= ViewportSize; i++)
+            for (int i = left; i <= right; i++)
             {
-                if (i % 10 != 0 || i == 0) continue;
-                DrawCross(i, TicksColor, -10f);
+                if (i % gridSize != 0 || i == 0) continue;
+                AddVertex(i, mCamera.Bottom, f, TicksColor);
+                AddVertex(i, mCamera.Top, f, TicksColor);
+            }
+            for (int i = bottom; i <= top; i++)
+            {
+                if (i % gridSize != 0 || i == 0) continue;
+                AddVertex(mCamera.Left, i, f, TicksColor);
+                AddVertex(mCamera.Right, i, f, TicksColor);
             }
             // oringins display list
             NewDisplayList();
+            f = -1;
             mDisplayOrigins = mCurrentDisplayList.DisplayList;
-            DrawCross(0, OriginsColor, -1f);
+            AddVertex(0, mCamera.Bottom, f, OriginsColor);
+            AddVertex(0, mCamera.Top, f, OriginsColor);
+            AddVertex(mCamera.Left, 0, f, OriginsColor);
+            AddVertex(mCamera.Right, 0, f, OriginsColor);
         }
 
         protected override void CallDisplayList(OpenGL gl)
         {
             mDisplayOrigins.Call(gl);
             mDisplayTick.Call(gl);
-            if (ShowMinor)
+            if (mShowMinor)
             {
                 mDisplayMinor.Call(gl);
             }
+            mInvalidate = false;
         }
 
     }
@@ -354,7 +391,7 @@ namespace LaserGRBL.Obj3D
             Core.LoadedFile.InUse = false;
         }
 
-        public void Invalidate()
+        public override void Invalidate()
         {
             foreach (Object3DDisplayList list in mDisplayLists)
             {
