@@ -950,6 +950,78 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Basic usage.
+        /// </summary>
+        internal static string TipsBasicUsage {
+            get {
+                return ResourceManager.GetString("TipsBasicUsage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to JOG:  Double click in any point (or double tap).
+        /// </summary>
+        internal static string TipsJog {
+            get {
+                return ResourceManager.GetString("TipsJog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyboard Shortcuts.
+        /// </summary>
+        internal static string TipsKeyboardShortcuts {
+            get {
+                return ResourceManager.GetString("TipsKeyboardShortcuts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PAN:  Click and drag (or touch and drag).
+        /// </summary>
+        internal static string TipsPan {
+            get {
+                return ResourceManager.GetString("TipsPan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ZOOM: Use mouse wheel (or two-finger gesture).
+        /// </summary>
+        internal static string TipsZoom {
+            get {
+                return ResourceManager.GetString("TipsZoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom Auto (100%).
+        /// </summary>
+        internal static string TipsZoomAuto {
+            get {
+                return ResourceManager.GetString("TipsZoomAuto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom In   (+10%).
+        /// </summary>
+        internal static string TipsZoomIn {
+            get {
+                return ResourceManager.GetString("TipsZoomIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom Out  (-10%).
+        /// </summary>
+        internal static string TipsZoomOut {
+            get {
+                return ResourceManager.GetString("TipsZoomOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This file type is not supported..
         /// </summary>
         internal static string UnsupportedFiletype {

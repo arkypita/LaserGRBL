@@ -686,23 +686,18 @@ namespace LaserGRBL.UserControls
 
 				if (!Core.HasProgram)
 				{
-
-					text = $"Basic usage\r\nZOOM: Use mouse wheel (or two-finger gesture)\r\nPAN:  Click and drag (or touch and drag)\r\nJOG:  Double click in any point (or double tap)\r\n\r\n";
-
-					string shortcut = "";
+					text = $"{Strings.TipsBasicUsage}\r\n{Strings.TipsZoom}\r\n{Strings.TipsPan}\r\n{Strings.TipsJog}\r\n\r\n";
+                    string shortcut = "";
 					string a_asd = GetShortcut(HotKeysManager.HotKey.Actions.AutoSizeDrawing);
 					string a_zin = GetShortcut(HotKeysManager.HotKey.Actions.ZoomInDrawing);
 					string a_zou = GetShortcut(HotKeysManager.HotKey.Actions.ZoomInDrawing);
-					if (!string.IsNullOrEmpty(a_asd)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.AutoSizeDrawing)}: Zoom Auto (100%)\r\n";
-					if (!string.IsNullOrEmpty(a_zin)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.ZoomInDrawing)}: Zoom In   (+10%)\r\n";
-					if (!string.IsNullOrEmpty(a_zou)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.ZoomOutDrawing)}: Zoom Out  (-10%)\r\n";
-
+					if (!string.IsNullOrEmpty(a_asd)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.AutoSizeDrawing)}: {Strings.TipsZoomAuto}\r\n";
+					if (!string.IsNullOrEmpty(a_zin)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.ZoomInDrawing)}: {Strings.TipsZoomIn}\r\n";
+					if (!string.IsNullOrEmpty(a_zou)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.ZoomOutDrawing)}: {Strings.TipsZoomOut}\r\n";
 					if (!string.IsNullOrEmpty(shortcut))
-						text = text + "Keyboard Shortcut\r\n" + shortcut;
-
-					text = text.Trim("\r\n\t ".ToCharArray());
-
-					size = MeasureText(text, font);
+						text = text + $"{Strings.TipsKeyboardShortcuts}\r\n" + shortcut;
+                    text = text.Trim("\r\n".ToCharArray());
+                    size = MeasureText(text, font);
 					point = new Point(Width - size.Width - mPadding.Right, Height - size.Height - 35);
 					DrawOverlay(e, point, size, ColorScheme.PreviewRuler, 60);
 					e.Graphics.DrawString(text, font, b, point.X, point.Y);
