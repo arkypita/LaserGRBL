@@ -563,9 +563,23 @@ namespace LaserGRBL.UserControls
                     DrawText(text, x, y);
                 }
             }
-            // draw unit of measure
-            SizeF uomSizeProp = MeasureOpenGlText(uom);
-            DrawText(uom, mPadding.Left - uomSizeProp.Width, mPadding.Bottom - uomSizeProp.Height);
+
+			// Draw a masking rectangle where to put measure unit, so ruler numbers does not overlap
+			GLColor color = new GLColor();
+			color.FromColor(mBackgroundColor);
+			OpenGL.Color(color);
+
+			OpenGL.Begin(OpenGL.GL_QUADS);
+			OpenGL.Vertex(mCamera.Left, mCamera.Bottom);
+			OpenGL.Vertex(mCamera.Left + mPadding.Left / hRatio, mCamera.Bottom);
+			OpenGL.Vertex(mCamera.Left + mPadding.Left / hRatio, mCamera.Bottom + mPadding.Bottom / hRatio);
+			OpenGL.Vertex(mCamera.Left, mCamera.Bottom + mPadding.Bottom / hRatio);
+			OpenGL.End();
+
+			// draw unit of measure
+			SizeF uomSizeProp = MeasureOpenGlText(uom);
+			DrawText(uom, mPadding.Left - uomSizeProp.Width -20, mPadding.Bottom - uomSizeProp.Height);
+
             OpenGL.Flush();
 		}
 
@@ -705,7 +719,7 @@ namespace LaserGRBL.UserControls
 					e.Graphics.DrawString(text, font, b, point.X, point.Y);
 				}
 
-				if (!Core.HasProgram)
+				if (mGrbl3D == null)
 				{
 					text = $"{Strings.TipsBasicUsage}\r\n{Strings.TipsZoom}\r\n{Strings.TipsPan}\r\n{Strings.TipsJog}\r\n\r\n";
                     string shortcut = "";
