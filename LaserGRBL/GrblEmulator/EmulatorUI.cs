@@ -19,7 +19,7 @@ namespace LaserGRBL.GrblEmulator
 	{
 		private static EmulatorUI istance;
 		private bool canclose = false;
-
+		RollingBuffer rb = new RollingBuffer(30);
 		private const int CP_NOCLOSE_BUTTON = 0x200;
 		protected override CreateParams CreateParams
 		{
@@ -55,63 +55,108 @@ namespace LaserGRBL.GrblEmulator
 		{
 			InitializeComponent();
 			Grblv11Emulator.EmulatorMessage += Grblv11Emulator_EmulatorMessage;
-
 			Grblv11Emulator_EmulatorMessage(initmessage);
 		}
-
-		StringBuilder sb = new StringBuilder();
 
 		void Grblv11Emulator_EmulatorMessage(string message)
 		{
 			if (message == null)
-			{
-				if (InvokeRequired)
-					Invoke(new Grblv11Emulator.SendMessage(ManageClearMessage), new object [] {null});
-				else
-					ManageClearMessage(null);
-			}
+				rb.Clear();
 			else
-			{
-				lock (sb)
-				{ sb.AppendLine(message); }
-			}
+				rb.Add(message);
 		}
 
-
-		void ManageClearMessage(string message)
-		{
-			lock (sb)
-			{ sb.Length = 0; }
-			RTB.Text = "";
-		}
 
 		private void RT_Tick(object sender, EventArgs e)
 		{
-			string buff = null;
-			lock (sb)
-			{
-				if (sb.Length > 0)
-				{
-					buff = sb.ToString();
-					sb.Length = 0;
-				}
-			}
+			string buff = "";
 
-			if (buff != null)
-			{
-				RTB.Text = RTB.Text + buff;
+			string[] arr = rb.ToArray();
 
-				if (RTB.TextLength > 10000)
-					RTB.Text = RTB.Text.Substring(RTB.Text.Length - 10000);
+			foreach (string s in arr)
+				buff = buff + s + "\r\n";
 
-				RTB.SelectionStart = RTB.TextLength;
-				RTB.ScrollToCaret();
-			}
+			RTB.Text = buff;
+
+				
+			RTB.SelectionStart = RTB.TextLength;
+			RTB.ScrollToCaret();
 		}
 
 		private void EmulatorUI_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			e.Cancel = !canclose;
+		}
+	}
+
+
+	public class RollingBuffer //one reader, one writer... no need to sync?!
+	{
+		private string[] buffer;
+		private int head;
+		private int tail;
+		private int count;
+		private int capacity;
+
+		public RollingBuffer(int size)
+		{
+			lock(this)
+			{ 
+				buffer = new string[size];
+				capacity = size;
+				head = 0;
+				tail = 0;
+				count = 0;
+			}
+		}
+
+		public void Add(string item)
+		{
+			//lock (this)
+			//{ 
+				buffer[head] = item;
+				head = (head + 1) % capacity;
+
+				if (count == capacity)
+				{
+					tail = (tail + 1) % capacity; // Overwrite oldest element
+				}
+				else
+				{
+					count++;
+				}
+			//}
+		}
+
+		public string[] ToArray()
+		{
+			//lock(this)
+			//{ 
+				string[] result = new string[count];
+				for (int i = 0; i < count; i++)
+						result[i] = buffer[(tail + i) % capacity];
+				return result;
+			//}
+		}
+
+		internal void Clear()
+		{
+			//lock (this)
+			//{
+				head = 0;
+				tail = 0;
+				count = 0;
+			//}
+		}
+
+		public int Count
+		{
+			get { return count; }
+		}
+
+		public int Capacity
+		{
+			get { return capacity; }
 		}
 	}
 }
