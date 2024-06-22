@@ -537,6 +537,8 @@ namespace LaserGRBL.UserControls
             double wRatio = Width / (mCamera.Right - mCamera.Left);
 			// unit of measure
 			string uom = string.Empty;
+
+			HumanReadableLength(0, worldWidth, out uom); //call it just to be sure to have uom loaded by worldWidth
 			// draw horizontal
 			for (int i = (int)mCamera.Left + (int)(mPadding.Left / wRatio); i <= (int)mCamera.Right - (int)(mPadding.Right / wRatio); i += 1)
 			{
