@@ -2,6 +2,7 @@
 using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Cameras;
 using SharpGL.SceneGraph.Core;
+using SharpGL.SceneGraph.Lighting;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -166,8 +167,6 @@ namespace LaserGRBL.Obj3D
         [XmlIgnore]
         private OrthographicCamera mCamera;
         [XmlIgnore]
-        private DisplayList mDisplayOrigins;
-        [XmlIgnore]
         private DisplayList mDisplayTick;
         [XmlIgnore]
         private DisplayList mDisplayMinor;
@@ -216,14 +215,28 @@ namespace LaserGRBL.Obj3D
             }
         }
 
-        private bool mShowMinor => (mCamera.Right - mCamera.Left) < 300;
+        public double GridSize => ControlWidth > 0 ? (mCamera.Right - mCamera.Left) * 10 / ControlWidth : 0;
+        private bool mShowMinor => GridSize <= 2;
 
         public Grid3D(OrthographicCamera camera) : base("Grid", 0.01f) {
             mCamera = camera;
         }
 
+        private void DrawVerticalLine(double x, float f, GLColor color)
+        {
+            AddVertex(x, mCamera.Bottom, f, color);
+            AddVertex(x, mCamera.Top, f, color);
+        }
+
+        private void DrawHorizontalLine(double y, float f, GLColor color)
+        {
+            AddVertex(mCamera.Left, y, f, color);
+            AddVertex(mCamera.Right, y, f, color);
+        }
+
         protected override void Draw()
         {
+            if (ControlWidth <= 0) return;
             int left = (int)mCamera.Left;
             int right = (int)mCamera.Right;
             int bottom = (int)mCamera.Bottom;
@@ -233,50 +246,27 @@ namespace LaserGRBL.Obj3D
             {
                 // minor tick display list
                 mDisplayMinor = mCurrentDisplayList.DisplayList;
-                for (int i = left; i <= right; i++)
-                {
-                    if (i % 10 == 0 || i == 0) continue;
-                    AddVertex(i, mCamera.Bottom, f, MinorsColor);
-                    AddVertex(i, mCamera.Top, f, MinorsColor);
-                }
-                for (int i = bottom; i <= top; i++)
-                {
-                    if (i % 10 == 0 || i == 0) continue;
-                    AddVertex(mCamera.Left, i, f, MinorsColor);
-                    AddVertex(mCamera.Right, i, f, MinorsColor);
-                }
+                for (int i = 1; i <= right; i++) DrawVerticalLine(i, f, MinorsColor);
+                for (int i = 1; i >= left; i--) DrawVerticalLine(i, f, MinorsColor);
+                for (int i = 0; i <= top; i++) DrawHorizontalLine(i, f, MinorsColor);
+                for (int i = 0; i >= bottom; i--) DrawHorizontalLine(i, f, MinorsColor);
                 // tick display list
                 NewDisplayList();
             }
-            int gridSize = (int)(right - left) * 2 / ControlWidth;
-            gridSize = Math.Max(10, gridSize * 10);
+            int gridSize = Math.Max(10, (int)GridSize * 2);
             f = -10;
             mDisplayTick = mCurrentDisplayList.DisplayList;
-            for (int i = left; i <= right; i++)
-            {
-                if (i % gridSize != 0 || i == 0) continue;
-                AddVertex(i, mCamera.Bottom, f, TicksColor);
-                AddVertex(i, mCamera.Top, f, TicksColor);
-            }
-            for (int i = bottom; i <= top; i++)
-            {
-                if (i % gridSize != 0 || i == 0) continue;
-                AddVertex(mCamera.Left, i, f, TicksColor);
-                AddVertex(mCamera.Right, i, f, TicksColor);
-            }
-            // oringins display list
-            NewDisplayList();
+            for (int i = 0; i <= right; i += gridSize) DrawVerticalLine(i, f, TicksColor);
+            for (int i = 0; i >= left; i -= gridSize) DrawVerticalLine(i, f, TicksColor);
+            for (int i = 0; i <= top; i += gridSize) DrawHorizontalLine(i, f, TicksColor);
+            for (int i = 0; i >= bottom; i -= gridSize) DrawHorizontalLine(i, f, TicksColor);
             f = -1;
-            mDisplayOrigins = mCurrentDisplayList.DisplayList;
-            AddVertex(0, mCamera.Bottom, f, OriginsColor);
-            AddVertex(0, mCamera.Top, f, OriginsColor);
-            AddVertex(mCamera.Left, 0, f, OriginsColor);
-            AddVertex(mCamera.Right, 0, f, OriginsColor);
+            DrawVerticalLine(0, f, OriginsColor);
+            DrawHorizontalLine(0, f, OriginsColor);
         }
 
         protected override void CallDisplayList(OpenGL gl)
         {
-            mDisplayOrigins.Call(gl);
             mDisplayTick.Call(gl);
             if (mShowMinor)
             {

@@ -463,12 +463,13 @@ namespace LaserGRBL.UserControls
 			OpenGL.LineWidth(PointerSize);
 			OpenGL.Begin(OpenGL.GL_LINES);
 			Vertex pointerPos = new Vertex(Core.WorkPosition.X, Core.WorkPosition.Y, 0.2f);
-			OpenGL.Vertex(pointerPos.X - 2, pointerPos.Y, pointerPos.Z);
-			OpenGL.Vertex(pointerPos.X + 2, pointerPos.Y, pointerPos.Z);
+			double size = mGrid.GridSize * 1.5;
+			OpenGL.Vertex(pointerPos.X - size, pointerPos.Y, pointerPos.Z);
+			OpenGL.Vertex(pointerPos.X + size, pointerPos.Y, pointerPos.Z);
 			OpenGL.End();
 			OpenGL.Begin(OpenGL.GL_LINES);
-			OpenGL.Vertex(pointerPos.X, pointerPos.Y - 2, pointerPos.Z);
-			OpenGL.Vertex(pointerPos.X, pointerPos.Y + 2, pointerPos.Z);
+			OpenGL.Vertex(pointerPos.X, pointerPos.Y - size, pointerPos.Z);
+			OpenGL.Vertex(pointerPos.X, pointerPos.Y + size, pointerPos.Z);
 			OpenGL.End();
 			OpenGL.Flush();
 		}
