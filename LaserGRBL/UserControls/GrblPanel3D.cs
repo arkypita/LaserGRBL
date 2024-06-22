@@ -9,9 +9,11 @@ using System.Drawing.Drawing2D;
 using System.Threading;
 using System.Windows.Forms;
 using static LaserGRBL.ProgramRange;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace LaserGRBL.UserControls
 {
+
     [ToolboxBitmap(typeof(SceneControl), "GrblScene")]
 	public partial class GrblPanel3D : UserControl, IGrblPanel
 	{
@@ -474,23 +476,37 @@ namespace LaserGRBL.UserControls
 			OpenGL.Flush();
 		}
 
-		private string HumanReadableLength(int mm, double worldWidth)
+		private string HumanReadableLength(int mm, double worldWidth, out string uom)
         {
             if (worldWidth > 10000)
             {
-                return $"{Math.Round(mm / 1000f, 0)}m";
+                uom = "m";
+                return $"{Math.Round(mm / 1000.0, 0)}";
             }
             else if (worldWidth > 1000)
-			{
-				return $"{Math.Round(mm / 10f, 0)}cm";
+            {
+                uom = "cm";
+                return $"{Math.Round(mm / 10.0, 0)}";
 			}
 			else
 			{
-				return $"{mm}mm";
+				uom = "mm";
+				return $"{mm}";
 			}
 		}
 
-		public void DrawRulers()
+		private SizeF MeasureOpenGlText(string text)
+		{
+			Size size = TextRenderer.MeasureText(text, mTextFont);
+            return new SizeF(size.Width * 0.8f, size.Height * 0.8f);
+        }
+
+		private void DrawText(string text, double x, double y)
+		{
+            OpenGL.DrawText((int)x, (int)y, mTextColor.R, mTextColor.G, mTextColor.B, mTextFont.FontFamily.Name, mTextFont.Size, text);
+        }
+
+        public void DrawRulers()
 		{
 			// clear left ruler background
 			OpenGL.Enable(OpenGL.GL_SCISSOR_TEST);
@@ -518,17 +534,19 @@ namespace LaserGRBL.UserControls
 			double step = GetRulerStep(worldWidth);
 			// get ratio
             double wRatio = Width / (mCamera.Right - mCamera.Left);
+			// unit of measure
+			string uom = string.Empty;
 			// draw horizontal
 			for (int i = (int)mCamera.Left + (int)(mPadding.Left / wRatio); i < (int)mCamera.Right - (int)(mPadding.Right / wRatio); i += 1)
 			{
 				if (i % step == 0)
 				{
-					string text = HumanReadableLength(i, worldWidth);
-					Size size = TextRenderer.MeasureText(text, mTextFont);
-					SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
+					string text = HumanReadableLength(i, worldWidth, out uom);
+					SizeF sizeProp = MeasureOpenGlText(text);
 					double x = i * wRatio - mCamera.Left * wRatio - sizeProp.Width / 4f;
-					OpenGL.DrawText((int)x, mPadding.Bottom - size.Height, mTextColor.R, mTextColor.G, mTextColor.B, mTextFont.FontFamily.Name, mTextFont.Size, text);
-				}
+					double y = mPadding.Bottom - sizeProp.Height;
+					DrawText(text, x, y);
+                }
 			}
 			// get ratio
 			double hRatio = Height / (mCamera.Top - mCamera.Bottom);
@@ -537,15 +555,17 @@ namespace LaserGRBL.UserControls
 			{
 				if (i % step == 0)
 				{
-					string text = HumanReadableLength(i, worldWidth);
-					Size size = TextRenderer.MeasureText(text, mTextFont);
-					SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
-					double x = mPadding.Left - sizeProp.Width;
+					string text = HumanReadableLength(i, worldWidth, out uom);
+					SizeF sizeProp = MeasureOpenGlText(text);
+                    double x = mPadding.Left - sizeProp.Width;
 					double y = i * hRatio - mCamera.Bottom * hRatio - sizeProp.Height / 4f;
-					OpenGL.DrawText((int)x, (int)y, mTextColor.R, mTextColor.G, mTextColor.B, mTextFont.FontFamily.Name, mTextFont.Size, text);
-				}
-			}
-			OpenGL.Flush();
+                    DrawText(text, x, y);
+                }
+            }
+            // draw unit of measure
+            SizeF uomSizeProp = MeasureOpenGlText(uom);
+            DrawText(uom, mPadding.Left - uomSizeProp.Width, mPadding.Bottom - uomSizeProp.Height);
+            OpenGL.Flush();
 		}
 
 		Tools.SimpleCrono FpsCrono;
