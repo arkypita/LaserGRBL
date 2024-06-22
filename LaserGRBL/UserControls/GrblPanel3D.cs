@@ -538,7 +538,7 @@ namespace LaserGRBL.UserControls
 			// unit of measure
 			string uom = string.Empty;
 			// draw horizontal
-			for (int i = (int)mCamera.Left + (int)(mPadding.Left / wRatio); i < (int)mCamera.Right - (int)(mPadding.Right / wRatio); i += 1)
+			for (int i = (int)mCamera.Left + (int)(mPadding.Left / wRatio); i <= (int)mCamera.Right - (int)(mPadding.Right / wRatio); i += 1)
 			{
 				if (i % step == 0)
 				{
@@ -552,7 +552,7 @@ namespace LaserGRBL.UserControls
 			// get ratio
 			double hRatio = Height / (mCamera.Top - mCamera.Bottom);
 			// draw vertical
-			for (int i = (int)mCamera.Bottom + (int)(mPadding.Bottom / hRatio); i < (int)mCamera.Top - (int)(mPadding.Top / hRatio); i += 1)
+			for (int i = (int)mCamera.Bottom + (int)(mPadding.Bottom / hRatio); i <= (int)mCamera.Top - (int)(mPadding.Top / hRatio); i += 1)
 			{
 				if (i % step == 0)
 				{
