@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Threading;
 using System.Windows.Forms;
+using Tools;
 using static LaserGRBL.ProgramRange;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -833,13 +834,14 @@ namespace LaserGRBL.UserControls
 			Core.OnFileLoaded += OnFileLoaded;
 			Core.ShowExecutedCommands.OnChange += ShowExecutedCommands_OnChange;
 			Core.PreviewLineSize.OnChange += PrerviewLineSize_OnChange;
+			Core.ShowLaserOffMovements.OnChange += ShowLaserOffMovements_OnChange;
 			Core.OnAutoSizeDrawing += Core_OnAutoSizeDrawing;
 			Core.OnZoomInDrawing += Core_OnZoomInDrawing;
 			Core.OnZoomOutDrawing += Core_OnZoomOutDrawing;
 			Core.OnProgramEnded += OnProgramEnded;
 		}
 
-        private void OnFileLoading(long elapsed, string filename)
+		private void OnFileLoading(long elapsed, string filename)
         {
 			mMessage = Strings.Loading;
         }
@@ -870,9 +872,20 @@ namespace LaserGRBL.UserControls
 		{
 			if (mGrbl3D != null) mGrbl3D.LineWidth = obj.Value;
 			mInvalidateAll = true;
+			RR.Set();
 		}
 
-		private void ShowExecutedCommands_OnChange(Tools.RetainedSetting<bool> obj) => mInvalidateAll = true;
+		private void ShowLaserOffMovements_OnChange(RetainedSetting<bool> obj)
+		{
+			mInvalidateAll = true;
+			RR.Set();
+		}
+
+		private void ShowExecutedCommands_OnChange(Tools.RetainedSetting<bool> obj)
+		{
+			mInvalidateAll = true;
+			RR.Set();
+		}
 
 		private void DisposeGrbl3D()
 		{
