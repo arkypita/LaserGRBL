@@ -169,20 +169,20 @@ namespace LaserGRBL.GrblEmulator
 		private void GrblReset()
 		{
 			lock (rxBuf)
-			{
-				rxBuf.Clear();
-				System.Threading.Thread.Sleep(50);
-				
-				mCheck = mPaused = false;
-				toSleep = TimeSpan.Zero;
+			{ rxBuf.Clear(); }
 
-				SPB = new GrblCommand.StatePositionBuilder();
+			System.Threading.Thread.Sleep(50);
+				
+			mCheck = mPaused = false;
+			toSleep = TimeSpan.Zero;
+
+			SPB = new GrblCommand.StatePositionBuilder();
 				
 
-				EmuLog(null);
-				EmuLog("Grbl Reset");
-				SendVersion();
-			}
+			EmuLog(null);
+			EmuLog("Grbl Reset");
+			SendVersion();
+			
 		}
 
 		//private void PrintArray(byte[] p)
@@ -224,38 +224,45 @@ namespace LaserGRBL.GrblEmulator
 
 		private void ManageRX()
 		{
+			string line = null;
+			int queue = 0;
+
 			lock (rxBuf)
 			{
 				if (rxBuf.Count > 0 && !mPaused)
 				{
-					try
-					{
-						string line = rxBuf.Dequeue();
-
-                        if (line == "$$\n")
-                            SendConfig();
-                        else if (IsSetConf(line))
-                            SetConfig(line);
-                        else if (line == "$C\n")
-                            SwapCheck();
-                        else if (line == "$H\n")
-                            EmulateHoming();
-                        else if (line == "$I\n")
-                            SendInfo();
-                        else if (line.StartsWith("$J="))
-                            EmulateCommand(new JogCommand(line));
-                        else
-                            EmulateCommand(new GrblCommand(line));
-
-						EmuLog(line.Trim("\n".ToCharArray()));
-					}
-					catch (Exception)
-					{
-					}
+					line = rxBuf.Dequeue();
+					queue = rxBuf.Count;
 				}
-
-				RX.SleepTime = rxBuf.Count > 0 ? 0 : 1;
 			}
+
+			if (line != null)
+			{
+				try
+				{
+                    if (line == "$$\n")
+                        SendConfig();
+                    else if (IsSetConf(line))
+                        SetConfig(line);
+                    else if (line == "$C\n")
+                        SwapCheck();
+                    else if (line == "$H\n")
+                        EmulateHoming();
+                    else if (line == "$I\n")
+                        SendInfo();
+                    else if (line.StartsWith("$J="))
+                        EmulateCommand(new JogCommand(line));
+                    else
+                        EmulateCommand(new GrblCommand(line));
+
+					EmuLog(line.Trim("\n".ToCharArray()));
+				}
+				catch (Exception)
+				{
+				}
+			}
+
+			RX.SleepTime = queue > 0 ? 0 : 1;
 		}
 
         private void SendInfo()
