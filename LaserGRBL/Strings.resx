@@ -465,4 +465,28 @@ Do you want to restart LaserGRBL and switch to software rendering?</value>
   <data name="PrepareDrawing" xml:space="preserve">
     <value>Prepare drawing...</value>
   </data>
+  <data name="TipsBasicUsage" xml:space="preserve">
+    <value>Basic usage</value>
+  </data>
+  <data name="TipsJog" xml:space="preserve">
+    <value>JOG:  Double click in any point (or double tap)</value>
+  </data>
+  <data name="TipsKeyboardShortcuts" xml:space="preserve">
+    <value>Keyboard Shortcuts</value>
+  </data>
+  <data name="TipsPan" xml:space="preserve">
+    <value>PAN:  Click and drag (or touch and drag)</value>
+  </data>
+  <data name="TipsZoom" xml:space="preserve">
+    <value>ZOOM: Use mouse wheel (or two-finger gesture)</value>
+  </data>
+  <data name="TipsZoomAuto" xml:space="preserve">
+    <value>Zoom Auto (100%)</value>
+  </data>
+  <data name="TipsZoomIn" xml:space="preserve">
+    <value>Zoom In   (+10%)</value>
+  </data>
+  <data name="TipsZoomOut" xml:space="preserve">
+    <value>Zoom Out  (-10%)</value>
+  </data>
 </root>

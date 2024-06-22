@@ -2,10 +2,8 @@
 using SharpGL;
 using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Cameras;
-using SharpGL.SceneGraph.Lighting;
 using SharpGL.Version;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Threading;
@@ -31,7 +29,7 @@ namespace LaserGRBL.UserControls
 		private GLColor mTextColor { get; set; }
 		// default font
 		private const string mFontName = "Courier New";
-		private Font mTextFont { get; set; } = new Font(mFontName, 12);
+        private Font mTextFont { get; set; } = new Font(mFontName, 12);
 		// background
 		private Grid3D mGrid = null;
 		// grbl object
@@ -44,7 +42,7 @@ namespace LaserGRBL.UserControls
 		// invalidate all request
 		private bool mInvalidateAll = false;
 		// viewport padding
-		private Padding mPadding = new Padding(50, 0, 0, 30);
+		private Padding mPadding = new Padding(70, 0, 0, 30);
 		// grbl core
 		private GrblCore Core;
 		public float PointerSize { get; set; } = 3;
@@ -56,19 +54,6 @@ namespace LaserGRBL.UserControls
 		private DoubleBufferBmp mBmp = new DoubleBufferBmp();
 		// open gl object
 		private OpenGL OpenGL;
-		// rulers steps
-		private List<KeyValuePair<double, int>> mRulerSteps = new List<KeyValuePair<double, int>> {
-			new KeyValuePair<double, int>(   100,    5),
-			new KeyValuePair<double, int>(   200,   10),
-			new KeyValuePair<double, int>(   600,   30),
-			new KeyValuePair<double, int>(  1000,   50),
-			new KeyValuePair<double, int>(  2000,  100),
-			new KeyValuePair<double, int>(  6000,  300),
-			new KeyValuePair<double, int>( 10000,  500),
-			new KeyValuePair<double, int>( 20000, 1000),
-			new KeyValuePair<double, int>( 60000, 3000),
-			new KeyValuePair<double, int>(100000, 5000)
-		};
 		private GPoint mLastWPos;
 		private GPoint mLastMPos;
 		private float mCurF;
@@ -137,19 +122,34 @@ namespace LaserGRBL.UserControls
 			mCamera.Far = 100000000;
 			AutoSizeDrawing();
 			mLastControlSize = new PointF(Width, Height);
-			mGrid = new Grid3D();
-
+			mGrid = new Grid3D(mCamera);
 			OnColorChange();
-	
 			TH = new Tools.ThreadObject(DrawScene, 10000, true, "OpenGL", InitializeOpenGL, ThreadPriority.Lowest, ApartmentState.STA, RR);
 			TH.Start();
 		}
 
-		/// <summary> 
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
+        private static double GetRulerStep(double n)
+        {
+            int digitCount = Convert.ToInt32(Math.Max(3, Math.Floor(Math.Log10(n) + 1)));
+            int power = Convert.ToInt32(Math.Pow(10, digitCount - 1));
+            double step = n / power;
+            double result;
+            if (step < 1)
+                result = 5;
+            else if (step < 2)
+                result = 10;
+            else if (step < 6)
+                result = 30;
+            else
+                result = 50;
+            return result * Math.Pow(10, digitCount - 3);
+        }
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
 		{
 			if (disposing && (components != null))
 			{
@@ -246,7 +246,7 @@ namespace LaserGRBL.UserControls
 				OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
 				CheckError(OpenGL, "Clear");
 				// render grid
-				mGrid.ShowMinor = mCamera.Right - mCamera.Left < 100;
+				mGrid.ControlWidth = Width;
 				mGrid.TicksColor = mTicksColor;
 				mGrid.MinorsColor = mMinorsColor;
 				mGrid.OriginsColor = mOriginsColor;
@@ -351,41 +351,36 @@ namespace LaserGRBL.UserControls
 		}
 
 		private void SetWorldPosition(double left, double right, double bottom, double top)
-		{
-			// max viewport size
-			const double max = 50000;
-			// compute size
-			double width = right - left;
-			double height = top - bottom;
-			// exit if max viewport reached
-			if (width > max * 2 || height > max * 2) return;
-			// fix min and max
-			if (left < -max)
-			{
-				left = -max;
-				right = left + width;
-			}
-			if (right > max)
-			{
-				right = max;
-				left = max - width;
-			}
-			if (bottom < -max)
-			{
-				bottom = -max;
-				top = bottom + height;
-			}
-			if (top > max)
-			{
-				top = max;
-				bottom = top - height;
-			}
-			// set new camera coords
-			mCamera.Left = left;
+        {
+			double maxViewport = Grid3D.ViewportSize * 2;
+            if (right - left > maxViewport) return;
+            if (bottom - top > maxViewport) return;
+            if (left < - maxViewport / 2) {
+				right += (-maxViewport / 2 - left);
+				left = -maxViewport / 2;
+            }
+            if (right > maxViewport / 2)
+            {
+                left += (maxViewport / 2 - right);
+                right = maxViewport / 2;
+            }
+            if (bottom < -maxViewport / 2)
+            {
+                top += (-maxViewport / 2 - bottom);
+                bottom = -maxViewport / 2;
+            }
+            if (top > maxViewport / 2)
+            {
+                bottom += (maxViewport / 2 - top);
+                top = maxViewport / 2;
+            }
+            // set new camera coords
+            mCamera.Left = left;
 			mCamera.Right = right;
 			mCamera.Bottom = bottom;
 			mCamera.Top = top;
-
+			mGrid?.Invalidate();
+			// call control invalidate
 			RR.Set();
 		}
 
@@ -394,13 +389,31 @@ namespace LaserGRBL.UserControls
 			// compute ratiobesed on last size
 			double wRatio = Width / mLastControlSize.X;
 			double hRatio = Height / mLastControlSize.Y;
-			// define max ratio
-			double max = Math.Max(Math.Abs(wRatio), Math.Abs(hRatio));
-			// normalize ratio (only values less than 1 are valid)
-			wRatio = wRatio / max;
-			hRatio = hRatio / max;
-			// set world positions
-			SetWorldPosition(mCamera.Left * wRatio, mCamera.Right * wRatio, mCamera.Bottom * hRatio, mCamera.Top * hRatio);
+			// compute increment
+			double wIncrement = (mCamera.Right - mCamera.Left) - (mCamera.Right - mCamera.Left) * wRatio;
+            double hIncrement = (mCamera.Top - mCamera.Bottom) - (mCamera.Top - mCamera.Bottom) * hRatio;
+			double newLeft = mCamera.Left + wIncrement / 2;
+			double newRight = mCamera.Right - wIncrement / 2;
+			double newTop = mCamera.Top - hIncrement / 2;
+			double newBottom = mCamera.Bottom + hIncrement / 2;
+            double rw = 1;
+            double rh = 1;
+			double maxViewport = Grid3D.ViewportSize * 2;
+            if (newRight - newLeft > maxViewport)
+            {
+                rw = maxViewport / (newRight - newLeft);
+            }
+            if (newBottom - newTop > maxViewport)
+            {
+                rh = maxViewport / (newBottom - newTop);
+            }
+			double r = Math.Min(rw, rh);
+            newLeft = newLeft * r;
+            newRight = newRight * r;
+            newTop = newTop * r;
+            newBottom = newBottom * r;
+            // set world positions
+            SetWorldPosition(newLeft, newRight, newBottom, newTop);
 			// save last size
 			mLastControlSize = new PointF(Width, Height);
 		}
@@ -450,14 +463,31 @@ namespace LaserGRBL.UserControls
 			OpenGL.LineWidth(PointerSize);
 			OpenGL.Begin(OpenGL.GL_LINES);
 			Vertex pointerPos = new Vertex(Core.WorkPosition.X, Core.WorkPosition.Y, 0.2f);
-			OpenGL.Vertex(pointerPos.X - 2, pointerPos.Y, pointerPos.Z);
-			OpenGL.Vertex(pointerPos.X + 2, pointerPos.Y, pointerPos.Z);
+			double size = mGrid.GridSize * 1.5;
+			OpenGL.Vertex(pointerPos.X - size, pointerPos.Y, pointerPos.Z);
+			OpenGL.Vertex(pointerPos.X + size, pointerPos.Y, pointerPos.Z);
 			OpenGL.End();
 			OpenGL.Begin(OpenGL.GL_LINES);
-			OpenGL.Vertex(pointerPos.X, pointerPos.Y - 2, pointerPos.Z);
-			OpenGL.Vertex(pointerPos.X, pointerPos.Y + 2, pointerPos.Z);
+			OpenGL.Vertex(pointerPos.X, pointerPos.Y - size, pointerPos.Z);
+			OpenGL.Vertex(pointerPos.X, pointerPos.Y + size, pointerPos.Z);
 			OpenGL.End();
 			OpenGL.Flush();
+		}
+
+		private string HumanReadableLength(int mm, double worldWidth)
+        {
+            if (worldWidth > 10000)
+            {
+                return $"{Math.Round(mm / 1000f, 0)}m";
+            }
+            else if (worldWidth > 1000)
+			{
+				return $"{Math.Round(mm / 10f, 0)}cm";
+			}
+			else
+			{
+				return $"{mm}mm";
+			}
 		}
 
 		public void DrawRulers()
@@ -485,24 +515,15 @@ namespace LaserGRBL.UserControls
 			// get world width
 			double worldWidth = mCamera.Right - mCamera.Left;
 			// init rulers step
-			int step = 200;
-			// get step from list
-			foreach (KeyValuePair<double, int> rulerStep in mRulerSteps)
-			{
-				if (worldWidth < rulerStep.Key)
-				{
-					step = rulerStep.Value;
-					break;
-				}
-			}
+			double step = GetRulerStep(worldWidth);
 			// get ratio
-			double wRatio = Width / (mCamera.Right - mCamera.Left);
+            double wRatio = Width / (mCamera.Right - mCamera.Left);
 			// draw horizontal
 			for (int i = (int)mCamera.Left + (int)(mPadding.Left / wRatio); i < (int)mCamera.Right - (int)(mPadding.Right / wRatio); i += 1)
 			{
 				if (i % step == 0)
 				{
-					string text = $"{i}";
+					string text = HumanReadableLength(i, worldWidth);
 					Size size = TextRenderer.MeasureText(text, mTextFont);
 					SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
 					double x = i * wRatio - mCamera.Left * wRatio - sizeProp.Width / 4f;
@@ -516,7 +537,7 @@ namespace LaserGRBL.UserControls
 			{
 				if (i % step == 0)
 				{
-					string text = $"{i}";
+					string text = HumanReadableLength(i, worldWidth);
 					Size size = TextRenderer.MeasureText(text, mTextFont);
 					SizeF sizeProp = new SizeF(size.Width * 0.8f, size.Height * 0.8f);
 					double x = mPadding.Left - sizeProp.Width;
@@ -665,23 +686,18 @@ namespace LaserGRBL.UserControls
 
 				if (!Core.HasProgram)
 				{
-
-					text = $"Basic usage\r\nZOOM: Use mouse wheel (or two-finger gesture)\r\nPAN:  Click and drag (or touch and drag)\r\nJOG:  Double click in any point (or double tap)\r\n\r\n";
-
-					string shortcut = "";
+					text = $"{Strings.TipsBasicUsage}\r\n{Strings.TipsZoom}\r\n{Strings.TipsPan}\r\n{Strings.TipsJog}\r\n\r\n";
+                    string shortcut = "";
 					string a_asd = GetShortcut(HotKeysManager.HotKey.Actions.AutoSizeDrawing);
 					string a_zin = GetShortcut(HotKeysManager.HotKey.Actions.ZoomInDrawing);
 					string a_zou = GetShortcut(HotKeysManager.HotKey.Actions.ZoomInDrawing);
-					if (!string.IsNullOrEmpty(a_asd)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.AutoSizeDrawing)}: Zoom Auto (100%)\r\n";
-					if (!string.IsNullOrEmpty(a_zin)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.ZoomInDrawing)}: Zoom In   (+10%)\r\n";
-					if (!string.IsNullOrEmpty(a_zou)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.ZoomOutDrawing)}: Zoom Out  (-10%)\r\n";
-
+					if (!string.IsNullOrEmpty(a_asd)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.AutoSizeDrawing)}: {Strings.TipsZoomAuto}\r\n";
+					if (!string.IsNullOrEmpty(a_zin)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.ZoomInDrawing)}: {Strings.TipsZoomIn}\r\n";
+					if (!string.IsNullOrEmpty(a_zou)) shortcut += $"{GetShortcut(HotKeysManager.HotKey.Actions.ZoomOutDrawing)}: {Strings.TipsZoomOut}\r\n";
 					if (!string.IsNullOrEmpty(shortcut))
-						text = text + "Keyboard Shortcut\r\n" + shortcut;
-
-					text = text.Trim("\r\n\t ".ToCharArray());
-
-					size = MeasureText(text, font);
+						text = text + $"{Strings.TipsKeyboardShortcuts}\r\n" + shortcut;
+                    text = text.Trim("\r\n".ToCharArray());
+                    size = MeasureText(text, font);
 					point = new Point(Width - size.Width - mPadding.Right, Height - size.Height - 35);
 					DrawOverlay(e, point, size, ColorScheme.PreviewRuler, 60);
 					e.Graphics.DrawString(text, font, b, point.X, point.Y);
@@ -805,7 +821,7 @@ namespace LaserGRBL.UserControls
 
         private void OnFileLoading(long elapsed, string filename)
         {
-			mMessage = "Loading file...";
+			mMessage = Strings.Loading;
         }
 
         private void OnProgramEnded()
