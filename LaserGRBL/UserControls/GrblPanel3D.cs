@@ -566,17 +566,11 @@ namespace LaserGRBL.UserControls
                 }
             }
 
-			// Draw a masking rectangle where to put measure unit, so ruler numbers does not overlap
-			GLColor color = new GLColor();
-			color.FromColor(mBackgroundColor);
-			OpenGL.Color(color);
-
-			OpenGL.Begin(OpenGL.GL_QUADS);
-			OpenGL.Vertex(mCamera.Left, mCamera.Bottom);
-			OpenGL.Vertex(mCamera.Left + mPadding.Left / hRatio, mCamera.Bottom);
-			OpenGL.Vertex(mCamera.Left + mPadding.Left / hRatio, mCamera.Bottom + mPadding.Bottom / hRatio);
-			OpenGL.Vertex(mCamera.Left, mCamera.Bottom + mPadding.Bottom / hRatio);
-			OpenGL.End();
+			// clear uom  background
+			OpenGL.Enable(OpenGL.GL_SCISSOR_TEST);
+			OpenGL.Scissor(0, 0, mPadding.Left, mPadding.Bottom);
+			OpenGL.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
+			OpenGL.Disable(OpenGL.GL_SCISSOR_TEST);
 
 			// draw unit of measure
 			SizeF uomSizeProp = MeasureOpenGlText(uom);
