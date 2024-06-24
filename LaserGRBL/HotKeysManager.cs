@@ -217,7 +217,7 @@ namespace LaserGRBL
             if (keys == Keys.None)
             {
 				if (mJogKeyRequested)
-					mCore.EndJogV11();
+					mCore.JogAbort();
 				mJogKeyRequested = false;
 
 				EmulateCustomButtonUp();
@@ -369,7 +369,7 @@ namespace LaserGRBL
 		private void RequestJog(GrblCore.JogDirection dir)
 		{
 			mJogKeyRequested = true;
-			mCore.BeginJog(dir, false);
+			mCore.JogToDirection(dir, false);
 		}
         private void EmulateCustomButtonDown(int index)
         {

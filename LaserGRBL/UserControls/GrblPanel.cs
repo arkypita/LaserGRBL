@@ -265,7 +265,7 @@ namespace LaserGRBL.UserControls
 			if (Settings.GetObject("Click N Jog", true))
 			{
 				PointF coord = DrawToMachine(new PointF(e.X, e.Y));
-				Core.BeginJog(coord, e.Button == MouseButtons.Right);
+				Core.JogToPosition(coord, e.Button == MouseButtons.Right);
 			}
 		}
 	}

@@ -66,17 +66,17 @@ namespace LaserGRBL
 
         private void OnJogButtonMouseDown(object sender, MouseEventArgs e)
 		{
-			Core.BeginJog((sender as DirectionButton).JogDirection, e.Button == MouseButtons.Right);
+			Core.JogToDirection((sender as DirectionButton).JogDirection, e.Button == MouseButtons.Right);
 		}
 
         private void OnJogButtonMouseUp(object sender, MouseEventArgs e)
         {
-            Core.EndJogV11();
+            Core.JogAbort();
         }
 
         private void OnZJogButtonMouseDown(object sender, MouseEventArgs e)
         {
-            Core.EnqueueZJog((sender as DirectionStepButton).JogDirection, (sender as DirectionStepButton).JogStep, e.Button == MouseButtons.Right);
+            Core.JogToDirection((sender as DirectionStepButton).JogDirection, e.Button == MouseButtons.Right, (sender as DirectionStepButton).JogStep);
         }
 
         private void TbSpeed_ValueChanged(object sender, EventArgs e)

@@ -14,6 +14,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using Tools;
 using static LaserGRBL.GrblCore;
 using static LaserGRBL.HotKeysManager;
@@ -92,7 +93,7 @@ namespace LaserGRBL
 		{ Disconnected, Connecting, Idle, Run, Hold, Door, Home, Alarm, Check, Jog, Queue, Cooling, AutoHold, Tool } // "Tool" added in GrblHal
 
 		public enum JogDirection
-		{ None, Abort, Home, N, S, W, E, NW, NE, SW, SE, Zup, Zdown }
+		{ Abort, Home, N, S, W, E, NW, NE, SW, SE, Zup, Zdown, Position }
 
 		public enum StreamingMode
 		{ Buffered, Synchronous, RepeatOnError }
@@ -289,12 +290,9 @@ namespace LaserGRBL
 		private int mGrblBlocks = -1;
 		private int mGrblBuffer = -1;
 		private int mFailedConnection = 0;
-		private JogDirection mPrenotedJogDirection = JogDirection.None;
-		private float mPrenotedJogSpeed = 100;
+
 		protected TimeProjection mTP = new TimeProjection();
-
 		private MacStatus mMachineStatus = MacStatus.Disconnected;
-
 
 		private float mCurF;
 		private float mCurS;
@@ -1606,31 +1604,49 @@ namespace LaserGRBL
 			}
 		}
 
-		internal void EnqueueZJog(JogDirection dir, decimal step, bool fast)
+		public void JogToPosition(PointF target, bool fast) => JogToPosition(target, fast ? 100000 : JogSpeed); //da chiamare su doppio click
+		public void JogToPosition(PointF target, float speed)
 		{
-			if (JogEnabled)
-			{
-				mPrenotedJogSpeed = (fast ? 100000 : JogSpeed);
+			target = LimitToBound(target); //if soft limit enabled -> crop to machine area
 
-				if (SupportTrueJogging)
-					DoJogV11(dir, step);
-				else
-					EmulateJogV09(dir, step); //immediato
-			}
+			if (!JogEnabled) //cannot jog now
+				return;
+
+			if (!SupportTrueJogging) //old firmware
+				EnqueueJogV09(target, speed);
+			else if (!ContinuosJogEnabled)	//continuous jog disabled
+				EnqueueJogV11(target, speed);
+			else
+				ContinuousJog.ToPosition(target, speed);
 		}
 
-		public void BeginJog(PointF target, bool fast)
+		public void JogToDirection(JogDirection dir, bool fast) => JogToDirection(dir, fast, JogStep);
+		public void JogToDirection(JogDirection dir, bool fast, decimal step) => JogToDirection(dir, fast ? 100000 : JogSpeed, step);
+		public void JogToDirection(JogDirection dir, float speed, decimal step) 
 		{
-			if (JogEnabled)
-			{
-				mPrenotedJogSpeed = (fast ? 100000 : JogSpeed);
-				target = LimitToBound(target);
+			if (dir == JogDirection.Abort)
+				throw new ArgumentException("Invalid option", "dir");
+			if (dir == JogDirection.Position)
+				throw new ArgumentException("Invalid option", "dir");
 
-				if (SupportTrueJogging)
-					DoJogV11(target);
-				else
-					EmulateJogV09(target);
-			}
+			if (!JogEnabled)																		// cannot jog now
+				return;																					// ignore request
+			else if (!SupportTrueJogging)															// old firmware
+				EnqueueJogV09(dir, step, speed);														// immediate enqueue old command
+			else if (!ContinuosJogEnabled || dir == JogDirection.Zdown || dir == JogDirection.Zup)  // continuous jog disabled && Z movement
+				EnqueueJogV11(dir, step, speed);                                                        // immediate enqueue new command
+			else																					// continuoud jog enabled
+				ContinuousJog.ToDirection(dir, speed);														// assign jog target
+		}
+
+		public void JogAbort() //da chiamare su ButtonUp
+		{
+			if (!SupportTrueJogging)																// old firmware
+				;																						// abort not supported
+			else if (!ContinuosJogEnabled)															// continuous jog disabled
+				;                                                                                       // we can abort but we don't want
+			else                                                                                    // continuoud jog enabled
+				ContinuousJog.Abort();														               // assign jog target
 		}
 
 		private PointF LimitToBound(PointF target)
@@ -1645,29 +1661,16 @@ namespace LaserGRBL
 			return target;
 		}
 
-		public void BeginJog(JogDirection dir, bool fast) //da chiamare su ButtonDown
-		{
-			if (JogEnabled)
-			{
-				mPrenotedJogSpeed = (fast ? 100000 : JogSpeed);
-
-				if (SupportTrueJogging)
-					DoJogV11(dir, JogStep);
-				else
-					EmulateJogV09(dir, JogStep);
-			}
-		}
-
-		private void EmulateJogV09(JogDirection dir, decimal step) //emulate jog using plane G-Code
+		private void EnqueueJogV09(JogDirection dir, decimal step, float speed) //emulate jog using plane G-Code
 		{
 			if (dir == JogDirection.Home)
 			{
 				EnqueueCommand(new GrblCommand(string.Format("G90")));
-				EnqueueCommand(new GrblCommand(string.Format("G0X0Y0F{0}", mPrenotedJogSpeed)));
+				EnqueueCommand(new GrblCommand(string.Format("G1X0Y0F{0}", speed)));
 			}
 			else
 			{
-				string cmd = "G0";
+				string cmd = "G1";
 
 				if (dir == JogDirection.NE || dir == JogDirection.E || dir == JogDirection.SE)
 					cmd += $"X{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
@@ -1682,7 +1685,7 @@ namespace LaserGRBL
 				if (dir == JogDirection.Zup)
 					cmd += $"Z{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
 
-				cmd += $"F{mPrenotedJogSpeed}";
+				cmd += $"F{speed}";
 
 				EnqueueCommand(new GrblCommand("G91"));
 				EnqueueCommand(new GrblCommand(cmd));
@@ -1690,43 +1693,24 @@ namespace LaserGRBL
 			}
 		}
 
-		private void EmulateJogV09(PointF target) //emulate jog using plane G-Code
+		private void EnqueueJogV09(PointF target, float speed) //emulate jog using plane G-Code
 		{
-			string cmd = "G0";
+			string cmd = "G1";
 
 			cmd += $"X{target.X.ToString("0.00", NumberFormatInfo.InvariantInfo)}";
 			cmd += $"Y{target.Y.ToString("0.00", NumberFormatInfo.InvariantInfo)}";
-			cmd += $"F{mPrenotedJogSpeed}";
+			cmd += $"F{speed}";
 
 			EnqueueCommand(new GrblCommand("G90"));
 			EnqueueCommand(new GrblCommand(cmd));
 		}
 
-		private void DoJogV11(JogDirection dir, decimal step)
+		private void EnqueueJogV11(PointF target, float speed)
 		{
-			if (ContinuosJogEnabled && dir != JogDirection.Zdown && dir != JogDirection.Zup) //se C.J. e non Z => prenotato
-			{
-				mPrenotedJogDirection = dir;
-				//lo step è quello configurato
-			}
-			else //non è CJ o non è Z => immediate enqueue jog command
-			{
-				mPrenotedJogDirection = JogDirection.None;
-				if (dir == JogDirection.Home)
-					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", mPrenotedJogSpeed)));
-				else
-					EnqueueCommand(GetRelativeJogCommandv11(dir, step));
-			}
+			EnqueueCommand(new GrblCommand(string.Format("$J=G90X{0}Y{1}F{2}", target.X.ToString("0.00", NumberFormatInfo.InvariantInfo), target.Y.ToString("0.00", NumberFormatInfo.InvariantInfo), speed)));
 		}
 
-		private void DoJogV11(PointF target)
-		{
-			mPrenotedJogDirection = JogDirection.None;
-			SendImmediate(0x85); //abort previous jog
-			EnqueueCommand(new GrblCommand(string.Format("$J=G90X{0}Y{1}F{2}", target.X.ToString("0.00", NumberFormatInfo.InvariantInfo), target.Y.ToString("0.00", NumberFormatInfo.InvariantInfo), mPrenotedJogSpeed)));
-		}
-
-		private GrblCommand GetRelativeJogCommandv11(JogDirection dir, decimal step)
+		private void EnqueueJogV11(JogDirection dir, decimal step, float speed)
 		{
 			string cmd = "$J=G91";
 			if (dir == JogDirection.NE || dir == JogDirection.E || dir == JogDirection.SE)
@@ -1742,55 +1726,120 @@ namespace LaserGRBL
 			if (dir == JogDirection.Zup)
 				cmd += $"Z{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
 
-			cmd += $"F{mPrenotedJogSpeed}";
-			return new GrblCommand(cmd);
+			cmd += $"F{speed}";
+			EnqueueCommand(new GrblCommand(cmd));
 		}
 
-		private GrblCommand GetContinuosJogCommandv11(JogDirection dir)
-		{
-			string cmd = "$J=G53";
-			if (dir == JogDirection.NE || dir == JogDirection.E || dir == JogDirection.SE)
-				cmd += $"X{Configuration.TableWidth.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-			if (dir == JogDirection.NW || dir == JogDirection.W || dir == JogDirection.SW)
-				cmd += $"X{0.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-			if (dir == JogDirection.NW || dir == JogDirection.N || dir == JogDirection.NE)
-				cmd += $"Y{Configuration.TableHeight.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-			if (dir == JogDirection.SW || dir == JogDirection.S || dir == JogDirection.SE)
-				cmd += $"Y{0.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-			cmd += $"F{mPrenotedJogSpeed}";
-			return new GrblCommand(cmd);
-		}
+		//private void DoJogV11(JogDirection dir, decimal step)
+		//{
+		//	// TODO: rewrite
 
-		public void EndJogV11() //da chiamare su ButtonUp
-		{
-			mPrenotedJogDirection = JogDirection.Abort;
-		}
+		//	//if (ContinuosJogEnabled && dir != JogDirection.Zdown && dir != JogDirection.Zup) //se C.J. e non Z => prenotato
+		//	//{
+		//	//	mPrenotedJogDirection = dir;
+		//	//	//lo step è quello configurato
+		//	//}
+		//	//else //non è CJ o non è Z => immediate enqueue jog command
+		//	//{
+		//	//	mPrenotedJogDirection = JogDirection.None;
+		//	//	if (dir == JogDirection.Home)
+		//	//		EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", mPrenotedJogSpeed)));
+		//	//	else
+		//	//		EnqueueCommand(GetRelativeJogCommandv11(dir, step));
+		//	//}
+		//}
 
-		private void PushJogCommand()
+		//private void DoJogV11(PointF target)
+		//{
+		//	// TODO: rewrite
+
+		//	//mPrenotedJogDirection = JogDirection.None;
+		//	//SendImmediate(0x85); //abort previous jog
+		//	//EnqueueCommand(new GrblCommand(string.Format("$J=G90X{0}Y{1}F{2}", target.X.ToString("0.00", NumberFormatInfo.InvariantInfo), target.Y.ToString("0.00", NumberFormatInfo.InvariantInfo), mPrenotedJogSpeed)));
+		//}
+
+
+
+		public class ContinuousJog
 		{
-			if (SupportTrueJogging && mPrenotedJogDirection != JogDirection.None && mPending.Count == 0)
+			public JogDirection Direction { get; private set; }
+			public float Speed { get; private set; } = 0.0f;
+			public PointF Target { get; private set; } = PointF.Empty;
+
+			private static string mCurrentTargetLock = "--- JOG TARGET LOCK ---";
+			private static ContinuousJog mCurrentTarget = null;
+
+			private static void SetJogTarget(ContinuousJog target)
 			{
-				if (mPrenotedJogDirection == JogDirection.Abort)
+				lock (mCurrentTargetLock)
 				{
-					if (ContinuosJogEnabled)
-						SendImmediate(0x85);
+					mCurrentTarget = target;
 				}
-				else if (mPrenotedJogDirection == JogDirection.Home)
+			}
+			public static ContinuousJog GetAndClearTarget()
+			{
+				lock (mCurrentTargetLock)
 				{
-					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", mPrenotedJogSpeed)));
+					ContinuousJog rv = mCurrentTarget;
+					mCurrentTarget = null;
+					return rv;
 				}
-				else
-				{
-					if (ContinuosJogEnabled)
-						EnqueueCommand(GetContinuosJogCommandv11(mPrenotedJogDirection));
-					else
-						EnqueueCommand(GetRelativeJogCommandv11(mPrenotedJogDirection, JogStep));
-				}
+			}
 
-				mPrenotedJogDirection = JogDirection.None;
+			public static void Abort() => SetJogTarget(new ContinuousJog(JogDirection.Abort, 0, PointF.Empty));
+			public static void ToPosition(PointF target, float speed) => SetJogTarget(new ContinuousJog(JogDirection.Position, speed, target));
+			public static void ToDirection(JogDirection direction, float speed)
+			{
+				if (direction == JogDirection.Abort)
+					throw new ArgumentException("Invalid option", "direction");
+				if (direction == JogDirection.Position)
+					throw new ArgumentException("Invalid option", "direction");
+				if (direction == JogDirection.Zup)
+					throw new ArgumentException("Z Not supported in Continuous Jog", "direction");
+				if (direction == JogDirection.Zdown)
+					throw new ArgumentException("Z Not supported in Continuous Jog", "direction");
+
+				SetJogTarget(new ContinuousJog(direction, speed, PointF.Empty));
+			}
+
+			private ContinuousJog(JogDirection direction, float speed, PointF target)
+			{
+				this.Direction = direction;
+				this.Target = target;
+				this.Speed = speed;
 			}
 		}
 
+		private void HandleContinuosJog() // Handle only Continuos Jog - Other Jog modes are executed by enqueuing command directly
+		{
+			ContinuousJog newJog = null;
+			if (SupportTrueJogging && !HasPendingCommands() && (newJog = ContinuousJog.GetAndClearTarget()) != null) // we have all the condition for sending jog command, and we have one to send
+			{
+				SendImmediate(0x85); //immediate abort any pending jog command
+
+				if (newJog.Direction == JogDirection.Abort)
+					; //nothing to do
+				else if (newJog.Direction == JogDirection.Position)
+					EnqueueCommand(new GrblCommand(string.Format("$J=G90X{0}Y{1}F{2}", newJog.Target.X.ToString("0.00", NumberFormatInfo.InvariantInfo), newJog.Target.Y.ToString("0.00", NumberFormatInfo.InvariantInfo), newJog.Speed)));
+				else if (newJog.Direction == JogDirection.Home)
+					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", newJog.Speed)));
+				else
+				{
+					JogDirection dir = newJog.Direction;
+					string cmd = "$J=G53";
+					if (dir == JogDirection.NE || dir == JogDirection.E || dir == JogDirection.SE)
+						cmd += $"X{Configuration.TableWidth.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+					if (dir == JogDirection.NW || dir == JogDirection.W || dir == JogDirection.SW)
+						cmd += $"X{0.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+					if (dir == JogDirection.NW || dir == JogDirection.N || dir == JogDirection.NE)
+						cmd += $"Y{Configuration.TableHeight.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+					if (dir == JogDirection.SW || dir == JogDirection.S || dir == JogDirection.SE)
+						cmd += $"Y{0.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+					cmd += $"F{newJog.Speed}";
+					EnqueueCommand(new GrblCommand(cmd));
+				}
+			}
+		}
 
 		private void StartTX()
 		{
@@ -1821,7 +1870,7 @@ namespace LaserGRBL
 
 					if (!TX.MustExitTH())
 					{
-						PushJogCommand();
+						HandleContinuosJog();
 
 						if (CanSend())
 							SendLine();
@@ -1895,7 +1944,7 @@ namespace LaserGRBL
 				return null;
 			else if (CurrentStreamingMode == StreamingMode.Buffered && mQueuePtr.Count > 0) //sono buffered e ho roba da trasmettere
 				return mQueuePtr.Peek();
-			else if (CurrentStreamingMode != StreamingMode.Buffered && mPending.Count == 0) //sono sync e sono vuoto
+			else if (CurrentStreamingMode != StreamingMode.Buffered && !HasPendingCommands()) //sono sync e sono vuoto
 				if (mRetryQueue != null) return mRetryQueue;
 				else if (mQueuePtr.Count > 0) return mQueuePtr.Peek();
 				else return null;
@@ -2502,11 +2551,11 @@ namespace LaserGRBL
 						Configuration.AddOrUpdate(pending.GetDecodedMessage());
 
 					//ripeti errori programma && non ho una coda (magari mi sto allineando per cambio conf buff/sync) && ho un errore && non l'ho già ripetuto troppe volte
-					if (InProgram && CurrentStreamingMode == StreamingMode.RepeatOnError && mPending.Count == 0 && pending.Status == GrblCommand.CommandStatus.ResponseBad && pending.RepeatCount < 3) //il comando eseguito ha dato errore
+					if (InProgram && CurrentStreamingMode == StreamingMode.RepeatOnError && !HasPendingCommands() && pending.Status == GrblCommand.CommandStatus.ResponseBad && pending.RepeatCount < 3) //il comando eseguito ha dato errore
 						mRetryQueue = new GrblCommand(pending.Command, pending.RepeatCount + 1); //repeat on error
 				}
 
-				if (InProgram && mQueuePtr.Count == 0 && mPending.Count == 0)
+				if (InProgram && mQueuePtr.Count == 0 && !HasPendingCommands())
 					OnProgramEnd();
 			}
 			catch (Exception ex)

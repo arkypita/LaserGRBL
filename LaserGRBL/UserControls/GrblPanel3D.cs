@@ -425,7 +425,7 @@ namespace LaserGRBL.UserControls
 		{
 			if (Settings.GetObject("Click N Jog", true) && mMouseWorldPosition != null)
 			{
-				Core.BeginJog((PointF)mMouseWorldPosition, e.Button == MouseButtons.Right);
+				Core.JogToPosition((PointF)mMouseWorldPosition, e.Button == MouseButtons.Right);
 			}
 		}
 
