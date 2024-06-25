@@ -7,6 +7,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tools;
 using static LaserGRBL.ProgramRange;
@@ -129,6 +130,21 @@ namespace LaserGRBL.UserControls
 			OnColorChange();
 			TH = new Tools.ThreadObject(DrawScene, 10000, true, "OpenGL", InitializeOpenGL, ThreadPriority.Lowest, ApartmentState.STA, RR);
 			TH.Start();
+
+			/*
+			// TEST JOG 
+			Task.Factory.StartNew(() => {
+				Random RNG = new Random();
+				while (true)
+				{
+					Core?.JogToPosition(new PointF(50 - RNG.Next(100), 50 - RNG.Next(100)), false);
+					if (RNG.Next(20) == 10)
+						Core?.JogAbort();
+					if (RNG.Next(20) == 10)
+						Thread.Sleep(10);
+				}
+			});
+			/*
 		}
 
         private static double GetRulerStep(double n)
