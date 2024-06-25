@@ -1769,23 +1769,30 @@ namespace LaserGRBL
 			public PointF Target { get; private set; } = PointF.Empty;
 
 			private static string mCurrentTargetLock = "--- JOG TARGET LOCK ---";
-			private static ContinuousJog mCurrentTarget = null;
+			private static ContinuousJog mPrev = null;
+			private static ContinuousJog mCurr = null;
 
 			private static void SetJogTarget(ContinuousJog target)
 			{
 				lock (mCurrentTargetLock)
 				{
-					mCurrentTarget = target;
+					mCurr = target; //what to do now
 				}
 			}
-			public static ContinuousJog GetAndClearTarget()
+
+			public static ContinuousJog GetAndClearTarget(out bool abortPrevCommand)
 			{
+				ContinuousJog rv = null;
+				abortPrevCommand = false;
 				lock (mCurrentTargetLock)
 				{
-					ContinuousJog rv = mCurrentTarget;
-					mCurrentTarget = null;
-					return rv;
+					if (mCurr != null && mCurr != mPrev)
+					{
+						abortPrevCommand = mPrev != null && mPrev.Direction != JogDirection.Abort;	//if i have a prev command, and the prev command is not an abort itself, we need to abort the prev command
+						rv = mPrev = mCurr; //set prev = cur and return cur
+					}
 				}
+				return rv;
 			}
 
 			public static void Abort() => SetJogTarget(new ContinuousJog(JogDirection.Abort, 0, PointF.Empty));
@@ -1815,12 +1822,14 @@ namespace LaserGRBL
 		private void HandleContinuosJog() // Handle only Continuos Jog - Other Jog modes are executed by enqueuing command directly
 		{
 			ContinuousJog newJog = null;
-			if (SupportTrueJogging && !HasPendingCommands() && (newJog = ContinuousJog.GetAndClearTarget()) != null) // we have all the condition for sending jog command, and we have one to send
+			bool abortRequired = false;
+			if (SupportTrueJogging && !HasPendingCommands() && (newJog = ContinuousJog.GetAndClearTarget(out abortRequired)) != null) // we have all the condition for sending jog command, and we have one to send
 			{
-				SendImmediate(0x85); //immediate abort any pending jog command
+				if (abortRequired)
+					SendImmediate(0x85); // abort previous jog command
 
 				if (newJog.Direction == JogDirection.Abort)
-					; //nothing to do
+					; //nothing to send, the abort is sent by previous test if needed
 				else if (newJog.Direction == JogDirection.Position)
 					EnqueueCommand(new GrblCommand(string.Format("$J=G90X{0}Y{1}F{2}", newJog.Target.X.ToString("0.00", NumberFormatInfo.InvariantInfo), newJog.Target.Y.ToString("0.00", NumberFormatInfo.InvariantInfo), newJog.Speed)));
 				else if (newJog.Direction == JogDirection.Home)
