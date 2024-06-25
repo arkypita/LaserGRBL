@@ -285,6 +285,8 @@ namespace LaserGRBL.Obj3D
         [XmlIgnore]
         private readonly bool mJustLaserOffMovements;
         [XmlIgnore]
+        private Object3DDisplayList mBorderDisplayList;
+        [XmlIgnore]
         public Color Color;
         [XmlIgnore]
         public double LoadingPercentage { get; private set; } = 0;
@@ -302,6 +304,21 @@ namespace LaserGRBL.Obj3D
             float zPos = 0;
             GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
             Core.LoadedFile.InUse = true;
+            mBorderDisplayList = mCurrentDisplayList;
+            
+            AddVertex((double)Core.LoadedFile.Range.MovingRange.X.Min, (double)Core.LoadedFile.Range.MovingRange.Y.Min, zPos, Color);
+            AddVertex((double)Core.LoadedFile.Range.MovingRange.X.Max, (double)Core.LoadedFile.Range.MovingRange.Y.Min, zPos, Color);
+            
+            AddVertex((double)Core.LoadedFile.Range.MovingRange.X.Max, (double)Core.LoadedFile.Range.MovingRange.Y.Min, zPos, Color);
+            AddVertex((double)Core.LoadedFile.Range.MovingRange.X.Max, (double)Core.LoadedFile.Range.MovingRange.Y.Max, zPos, Color);
+
+            AddVertex((double)Core.LoadedFile.Range.MovingRange.X.Max, (double)Core.LoadedFile.Range.MovingRange.Y.Max, zPos, Color);
+            AddVertex((double)Core.LoadedFile.Range.MovingRange.X.Min, (double)Core.LoadedFile.Range.MovingRange.Y.Max, zPos, Color);
+
+            AddVertex((double)Core.LoadedFile.Range.MovingRange.X.Min, (double)Core.LoadedFile.Range.MovingRange.Y.Max, zPos, Color);
+            AddVertex((double)Core.LoadedFile.Range.MovingRange.X.Min, (double)Core.LoadedFile.Range.MovingRange.Y.Min, zPos, Color);
+
+            NewDisplayList();
             int commandsCount = Core.LoadedFile.Commands.Count;
             for (int i = 0; i < commandsCount; i++)
             {
@@ -383,6 +400,7 @@ namespace LaserGRBL.Obj3D
 
         public override void Invalidate()
         {
+            //mBorderDisplayList?.DisplayList?.Call(mGL);
             foreach (Object3DDisplayList list in mDisplayLists)
             {
                 if (!list.IsValid) {
