@@ -144,7 +144,7 @@ namespace LaserGRBL.UserControls
 						Thread.Sleep(10);
 				}
 			});
-			/*
+			*/
 		}
 
         private static double GetRulerStep(double n)
