@@ -30,8 +30,9 @@ namespace LaserGRBL.UserControls
 		private GLColor mOriginsColor { get; set; }
 		private GLColor mPointerColor { get; set; }
 		private GLColor mTextColor { get; set; }
-		// default font
-		private const string mFontName = "Courier New";
+        private GLColor mTextBoundingColor { get; set; }
+        // default font
+        private const string mFontName = "Courier New";
         private Font mTextFont { get; set; } = new Font(mFontName, 12);
 		// background
 		private Grid3D mGrid = null;
@@ -504,9 +505,9 @@ namespace LaserGRBL.UserControls
             return new SizeF(size.Width * 0.8f, size.Height * 0.8f);
         }
 
-		private void DrawText(string text, double x, double y)
+		private void DrawText(string text, double x, double y, GLColor color)
 		{
-            OpenGL.DrawText((int)x, (int)y, mTextColor.R, mTextColor.G, mTextColor.B, mTextFont.FontFamily.Name, mTextFont.Size, text);
+            OpenGL.DrawText((int)x, (int)y, color.R, color.G, color.B, mTextFont.FontFamily.Name, mTextFont.Size, text);
         }
 
         public void DrawRulers()
@@ -539,32 +540,45 @@ namespace LaserGRBL.UserControls
             double wRatio = Width / (mCamera.Right - mCamera.Left);
 			// unit of measure
 			string uom = string.Empty;
-
-			HumanReadableLength(0, worldWidth, out uom); //call it just to be sure to have uom loaded by worldWidth
+            HumanReadableLength(0, worldWidth, out uom); //call it just to be sure to have uom loaded by worldWidth
 			// draw horizontal
-			for (int i = (int)mCamera.Left + (int)(mPadding.Left / wRatio); i <= (int)mCamera.Right - (int)(mPadding.Right / wRatio); i += 1)
+            int? maxWorkingX = (int?)Core?.LoadedFile?.Range.MovingRange.X.Max;
+            for (int i = (int)mCamera.Left + (int)(mPadding.Left / wRatio); i <= (int)mCamera.Right - (int)(mPadding.Right / wRatio); i += 1)
 			{
-				if (i % step == 0)
+				bool canDraw = i % step == 0;
+                if (maxWorkingX != null)
+                {
+					canDraw &= (i < maxWorkingX - step / 2) || (i > maxWorkingX + step / 2);
+					canDraw |= i == maxWorkingX;
+                }
+                if (canDraw)
 				{
 					string text = HumanReadableLength(i, worldWidth, out uom);
 					SizeF sizeProp = MeasureOpenGlText(text);
 					double x = i * wRatio - mCamera.Left * wRatio - sizeProp.Width / 4f;
 					double y = mPadding.Bottom - sizeProp.Height;
-					DrawText(text, x, y);
+					DrawText(text, x, y, i == maxWorkingX || i == 0 ? mTextBoundingColor : mTextColor);
                 }
 			}
 			// get ratio
 			double hRatio = Height / (mCamera.Top - mCamera.Bottom);
-			// draw vertical
-			for (int i = (int)mCamera.Bottom + (int)(mPadding.Bottom / hRatio); i <= (int)mCamera.Top - (int)(mPadding.Top / hRatio); i += 1)
-			{
-				if (i % step == 0)
+            // draw vertical
+            int? maxWorkingY = (int?)Core?.LoadedFile?.Range.MovingRange.Y.Max;
+            for (int i = (int)mCamera.Bottom + (int)(mPadding.Bottom / hRatio); i <= (int)mCamera.Top - (int)(mPadding.Top / hRatio); i += 1)
+            {
+                bool canDraw = i % step == 0;
+                if (maxWorkingY != null)
+                {
+                    canDraw &= (i < maxWorkingY - step / 2) || (i > maxWorkingY + step / 2);
+                    canDraw |= i == maxWorkingY;
+                }
+                if (canDraw)
 				{
 					string text = HumanReadableLength(i, worldWidth, out uom);
 					SizeF sizeProp = MeasureOpenGlText(text);
                     double x = mPadding.Left - sizeProp.Width;
 					double y = i * hRatio - mCamera.Bottom * hRatio - sizeProp.Height / 4f;
-                    DrawText(text, x, y);
+                    DrawText(text, x, y, i == maxWorkingY || i == 0 ? mTextBoundingColor : mTextColor);
                 }
             }
 
@@ -576,7 +590,7 @@ namespace LaserGRBL.UserControls
 
 			// draw unit of measure
 			SizeF uomSizeProp = MeasureOpenGlText(uom);
-			DrawText(uom, mPadding.Left - uomSizeProp.Width -20, mPadding.Bottom - uomSizeProp.Height);
+			DrawText(uom, mPadding.Left - uomSizeProp.Width -20, mPadding.Bottom - uomSizeProp.Height, mTextBoundingColor);
 
             OpenGL.Flush();
 		}
@@ -1020,6 +1034,7 @@ namespace LaserGRBL.UserControls
 		{
 			mBackgroundColor = ColorScheme.PreviewBackColor;
 			mTextColor = ColorScheme.PreviewText;
+			mTextBoundingColor = ColorScheme.PreviewJobRange;
 			mOriginsColor = ColorScheme.PreviewRuler;
 			mPointerColor = ColorScheme.PreviewCross;
 			mTicksColor = ColorScheme.PreviewGrid;
