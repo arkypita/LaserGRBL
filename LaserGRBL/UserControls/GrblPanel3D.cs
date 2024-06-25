@@ -536,20 +536,35 @@ namespace LaserGRBL.UserControls
 			double worldWidth = mCamera.Right - mCamera.Left;
 			// init rulers step
 			double step = GetRulerStep(worldWidth);
+			// half step
+			int halfStep = (int)(step / 2);
 			// get ratio
             double wRatio = Width / (mCamera.Right - mCamera.Left);
 			// unit of measure
 			string uom = string.Empty;
             HumanReadableLength(0, worldWidth, out uom); //call it just to be sure to have uom loaded by worldWidth
-			// draw horizontal
-            int? maxWorkingX = (int?)Core?.LoadedFile?.Range.MovingRange.X.Max;
+			int? minDrawingX = null;
+            int? maxDrawingX = null;
+            int? minDrawingY = null;
+            int? maxDrawingY = null;
+            if (Core?.LoadedFile?.Range.DrawingRange.ValidRange == true)
+            {
+                minDrawingX = (int)Core.LoadedFile.Range.DrawingRange.X.Min;
+                maxDrawingX = (int)Core.LoadedFile.Range.DrawingRange.X.Max;
+                minDrawingY = (int)Core.LoadedFile.Range.DrawingRange.Y.Min;
+                maxDrawingY = (int)Core.LoadedFile.Range.DrawingRange.Y.Max;
+            }
+            // draw horizontal
             for (int i = (int)mCamera.Left + (int)(mPadding.Left / wRatio); i <= (int)mCamera.Right - (int)(mPadding.Right / wRatio); i += 1)
 			{
 				bool canDraw = i % step == 0;
-                if (maxWorkingX != null)
+                if (maxDrawingX != null)
                 {
-					canDraw &= (i < maxWorkingX - step / 2) || (i > maxWorkingX + step / 2);
-					canDraw |= i == maxWorkingX;
+					canDraw &=
+						i < (minDrawingX - halfStep) ||
+						(i > (minDrawingX + halfStep) && i < (maxDrawingX - halfStep)) ||
+						i > (maxDrawingX + halfStep);
+                    canDraw |= i == maxDrawingX || i == minDrawingX;
                 }
                 if (canDraw)
 				{
@@ -557,20 +572,22 @@ namespace LaserGRBL.UserControls
 					SizeF sizeProp = MeasureOpenGlText(text);
 					double x = i * wRatio - mCamera.Left * wRatio - sizeProp.Width / 4f;
 					double y = mPadding.Bottom - sizeProp.Height;
-					DrawText(text, x, y, i == maxWorkingX || i == 0 ? mTextBoundingColor : mTextColor);
+					DrawText(text, x, y, i == minDrawingX || i == maxDrawingX ? mTextBoundingColor : mTextColor);
                 }
 			}
 			// get ratio
 			double hRatio = Height / (mCamera.Top - mCamera.Bottom);
             // draw vertical
-            int? maxWorkingY = (int?)Core?.LoadedFile?.Range.MovingRange.Y.Max;
             for (int i = (int)mCamera.Bottom + (int)(mPadding.Bottom / hRatio); i <= (int)mCamera.Top - (int)(mPadding.Top / hRatio); i += 1)
             {
                 bool canDraw = i % step == 0;
-                if (maxWorkingY != null)
+                if (maxDrawingY != null)
                 {
-                    canDraw &= (i < maxWorkingY - step / 2) || (i > maxWorkingY + step / 2);
-                    canDraw |= i == maxWorkingY;
+                    canDraw &=
+                        i < (minDrawingY - halfStep) ||
+                        (i > (minDrawingY + halfStep) && i < (maxDrawingY - halfStep)) ||
+                        i > (maxDrawingY + halfStep);
+                    canDraw |= i == maxDrawingY || i == minDrawingY;
                 }
                 if (canDraw)
 				{
@@ -578,10 +595,9 @@ namespace LaserGRBL.UserControls
 					SizeF sizeProp = MeasureOpenGlText(text);
                     double x = mPadding.Left - sizeProp.Width;
 					double y = i * hRatio - mCamera.Bottom * hRatio - sizeProp.Height / 4f;
-                    DrawText(text, x, y, i == maxWorkingY || i == 0 ? mTextBoundingColor : mTextColor);
+                    DrawText(text, x, y, i == minDrawingY || i == maxDrawingY ? mTextBoundingColor : mTextColor);
                 }
             }
-
 			// clear uom  background
 			OpenGL.Enable(OpenGL.GL_SCISSOR_TEST);
 			OpenGL.Scissor(0, 0, mPadding.Left, mPadding.Bottom);
@@ -708,7 +724,6 @@ namespace LaserGRBL.UserControls
 				if (Core.ShowPerformanceDiagnostic.Value)
 				{
 					int pos = point.Y + size.Height + 5;
-
 
 					string VertexString = null;
 					ulong VertexCounter = 0;
@@ -941,23 +956,23 @@ namespace LaserGRBL.UserControls
 			const double growFactor = 1.1;
 			const decimal defaultViewport = 100;
 
-			XYRange drawingRange;
+			XYRange autosizeRange;
 
-			if (Core?.LoadedFile.Range.MovingRange.ValidRange == true)
+			if (Core?.LoadedFile.Range.DrawingRange.ValidRange == true)
 			{
-				drawingRange = Core.LoadedFile.Range.MovingRange;
+				autosizeRange = Core.AutoSizeOnDrawing.Value ? Core.LoadedFile.Range.DrawingRange : Core.LoadedFile.Range.MovingRange;
 			}
 			else
 			{
-				drawingRange = new XYRange();
-				drawingRange.X.Min = -defaultViewport;
-				drawingRange.X.Max = defaultViewport;
-				drawingRange.Y.Min = -defaultViewport;
-				drawingRange.Y.Max = defaultViewport;
+				autosizeRange = new XYRange();
+				autosizeRange.X.Min = -defaultViewport;
+				autosizeRange.X.Max = defaultViewport;
+				autosizeRange.Y.Min = -defaultViewport;
+				autosizeRange.Y.Max = defaultViewport;
 			}
 
-			double drawingWidth = (double)drawingRange.Width * growFactor;
-			double drawingHeight = (double)drawingRange.Height * growFactor;
+			double drawingWidth = (double)autosizeRange.Width * growFactor;
+			double drawingHeight = (double)autosizeRange.Height * growFactor;
 
 			double widthRatio = drawingWidth / availableWidth;
 			double paddingLeftWorld = mPadding.Left * widthRatio;
@@ -974,14 +989,14 @@ namespace LaserGRBL.UserControls
 
 			if (drawingWidth / drawingHeight > availableWidth / availableHeight)
 			{
-				left = (double)drawingRange.Center.X - drawingWidth / 2;
-				right = (double)drawingRange.Center.X + drawingWidth / 2;
+				left = (double)autosizeRange.Center.X - drawingWidth / 2;
+				right = (double)autosizeRange.Center.X + drawingWidth / 2;
 
 				left -= paddingLeftWorld;
 				right += paddingRightWorld;
 
 				double resizedHeight = (right - left) / ratio;
-				double centerY = drawingRange.Center.Y;
+				double centerY = autosizeRange.Center.Y;
 
 				bottom = centerY - resizedHeight / 2;
 				top = centerY + resizedHeight / 2;
@@ -992,14 +1007,14 @@ namespace LaserGRBL.UserControls
 			}
 			else
 			{
-				bottom = (double)drawingRange.Center.Y - drawingHeight / 2;
-				top = (double)drawingRange.Center.Y + drawingHeight / 2;
+				bottom = (double)autosizeRange.Center.Y - drawingHeight / 2;
+				top = (double)autosizeRange.Center.Y + drawingHeight / 2;
 
 				bottom -= paddingBottomWorld;
 				top += paddingTopWorld;
 
 				double resizedWidth = (top - bottom) * ratio;
-				double centerX = drawingRange.Center.X;
+				double centerX = autosizeRange.Center.X;
 
 				left = centerX - resizedWidth / 2;
 				right = centerX + resizedWidth / 2;

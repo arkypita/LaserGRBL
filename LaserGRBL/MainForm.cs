@@ -90,6 +90,8 @@ namespace LaserGRBL
 			showExecutedCommandsToolStripMenuItem.Checked = Core.ShowExecutedCommands.Value;
 			showDiagnosticDataToolStripMenuItem.Checked = Core.ShowPerformanceDiagnostic.Value;
             showBoundingBoxToolStripMenuItem.Checked = Core.ShowBoundingBox.Value;
+            drawingAreaToolStripMenuItem.Checked = Core.AutoSizeOnDrawing.Value;
+            machineAreaToolStripMenuItem.Checked = !Core.AutoSizeOnDrawing.Value;
 
             CheckLineWidthItem();
 
@@ -222,6 +224,7 @@ namespace LaserGRBL
 			IconsMgr.PrepareMenuItem(donateToolStripMenuItem, "mdi-gift");
 			IconsMgr.PrepareMenuItem(licenseToolStripMenuItem, "mdi-license");
 			IconsMgr.PrepareMenuItem(MnCheckNow, "mdi-cloud-check-variant-outline");
+			IconsMgr.PrepareMenuItem(autosizeToolStripMenuItem, "mdi-resize");
 			if (!IconsMgr.LegacyIcons)
 			{
 				IconsMgr.PrepareMenuItem(MnGrbl, "mdi-hammer-wrench");
@@ -1319,6 +1322,27 @@ namespace LaserGRBL
             }
         }
 
+        private void drawingAreaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (PreviewForm.GrblPanel is GrblPanel3D)
+            {
+                Core.AutoSizeOnDrawing.Value = drawingAreaToolStripMenuItem.Checked;
+                machineAreaToolStripMenuItem.Checked = !Core.AutoSizeOnDrawing.Value;
+                (PreviewForm.GrblPanel as GrblPanel3D).AutoSizeDrawing();
+            }
+        }
+
+        private void machineAreaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (PreviewForm.GrblPanel is GrblPanel3D)
+            {
+                Core.AutoSizeOnDrawing.Value = !machineAreaToolStripMenuItem.Checked;
+                drawingAreaToolStripMenuItem.Checked = Core.AutoSizeOnDrawing.Value;
+                (PreviewForm.GrblPanel as GrblPanel3D).AutoSizeDrawing();
+            }
+        }
     }
 
 

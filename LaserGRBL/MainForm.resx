@@ -123,7 +123,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+    <value>0, 27</value>
+  </data>
+  <data name="splitContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
   <data name="ConnectionForm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -135,10 +138,10 @@
     <value>0, 0</value>
   </data>
   <data name="ConnectionForm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>8, 8, 8, 8</value>
   </data>
   <data name="ConnectionForm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 763</value>
+    <value>614, 1460</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ConnectionForm.TabIndex" type="System.Int32, mscorlib">
@@ -163,10 +166,13 @@
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="JogForm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 763</value>
+    <value>0, 1460</value>
+  </data>
+  <data name="JogForm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
   <data name="JogForm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 128</value>
+    <value>614, 246</value>
   </data>
   <data name="JogForm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -207,8 +213,11 @@
   <data name="PreviewForm.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="PreviewForm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
   <data name="PreviewForm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>846, 891</value>
+    <value>1692, 1706</value>
   </data>
   <data name="PreviewForm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -238,10 +247,13 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1157, 891</value>
+    <value>2314, 1706</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>307</value>
+    <value>614</value>
+  </data>
+  <data name="splitContainer1.SplitterWidth" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -262,25 +274,25 @@
     <value>194, 17</value>
   </metadata>
   <data name="TTLLines.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 23</value>
+    <value>37, 43</value>
   </data>
   <data name="TTLLines.Text" xml:space="preserve">
     <value>Lines:</value>
   </data>
   <data name="TTTLines.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 23</value>
+    <value>13, 43</value>
   </data>
   <data name="TTTLines.Text" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="TTLBuffer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 23</value>
+    <value>39, 43</value>
   </data>
   <data name="TTLBuffer.Text" xml:space="preserve">
     <value>Buffer</value>
   </data>
   <data name="PbBuffer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 22</value>
+    <value>140, 42</value>
   </data>
   <data name="BtnUnlockFromStuck.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -300,16 +312,16 @@
 </value>
   </data>
   <data name="BtnUnlockFromStuck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 26</value>
+    <value>23, 46</value>
   </data>
   <data name="TTLEstimated.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 23</value>
+    <value>91, 43</value>
   </data>
   <data name="TTLEstimated.Text" xml:space="preserve">
     <value>Estimated Time:</value>
   </data>
   <data name="TTTEstimated.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 23</value>
+    <value>57, 43</value>
   </data>
   <data name="TTTEstimated.Text" xml:space="preserve">
     <value>unknown</value>
@@ -318,10 +330,10 @@
     <value>False</value>
   </data>
   <data name="TTLinkToNews.Size" type="System.Drawing.Size, System.Drawing">
-    <value>650, 23</value>
+    <value>1717, 43</value>
   </data>
   <data name="TTlaserLife.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 23</value>
+    <value>29, 43</value>
   </data>
   <data name="TTlaserLife.Text" xml:space="preserve">
     <value>0.0h</value>
@@ -333,10 +345,10 @@
     <value>False</value>
   </data>
   <data name="TTSep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>5, 23</value>
+    <value>5, 43</value>
   </data>
   <data name="TTOvS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 23</value>
+    <value>47, 43</value>
   </data>
   <data name="TTOvS.Text" xml:space="preserve">
     <value>S: 100%</value>
@@ -345,7 +357,7 @@
     <value>False</value>
   </data>
   <data name="TTOvG1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 23</value>
+    <value>55, 43</value>
   </data>
   <data name="TTOvG1.Text" xml:space="preserve">
     <value>G1: 100%</value>
@@ -354,7 +366,7 @@
     <value>False</value>
   </data>
   <data name="TTOvG0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 23</value>
+    <value>55, 43</value>
   </data>
   <data name="TTOvG0.Text" xml:space="preserve">
     <value>G0: 100%</value>
@@ -366,31 +378,31 @@
     <value>False</value>
   </data>
   <data name="spacer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 23</value>
+    <value>10, 43</value>
   </data>
   <data name="spacer.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="TTLStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 23</value>
+    <value>42, 43</value>
   </data>
   <data name="TTLStatus.Text" xml:space="preserve">
     <value>Status:</value>
   </data>
   <data name="TTTStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 23</value>
+    <value>79, 43</value>
   </data>
   <data name="TTTStatus.Text" xml:space="preserve">
     <value>Disconnected</value>
   </data>
   <data name="StatusBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 915</value>
+    <value>0, 1733</value>
   </data>
   <data name="StatusBar.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 19, 0</value>
+    <value>2, 0, 38, 0</value>
   </data>
   <data name="StatusBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1157, 28</value>
+    <value>2314, 48</value>
   </data>
   <data name="StatusBar.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -501,7 +513,7 @@
     <value>&amp;Exit</value>
   </data>
   <data name="MnGrbl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 20</value>
+    <value>41, 19</value>
   </data>
   <data name="MnGrbl.Text" xml:space="preserve">
     <value>&amp;Grbl</value>
@@ -594,7 +606,7 @@
     <value>False</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
+    <value>37, 19</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File</value>
@@ -624,7 +636,7 @@
     <value>Shake Test</value>
   </data>
   <data name="MnGenerate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 20</value>
+    <value>66, 19</value>
   </data>
   <data name="MnGenerate.Text" xml:space="preserve">
     <value>Generate</value>
@@ -636,7 +648,7 @@
     <value>&amp;Grbl Emulator</value>
   </data>
   <data name="MNEsp8266.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 20</value>
+    <value>62, 19</value>
   </data>
   <data name="MNEsp8266.Text" xml:space="preserve">
     <value>&amp;ESP8266</value>
@@ -684,7 +696,7 @@
     <value>Nighty</value>
   </data>
   <data name="schemaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
+    <value>53, 19</value>
   </data>
   <data name="schemaToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Colors</value>
@@ -727,6 +739,24 @@
   </data>
   <data name="showBoundingBoxToolStripMenuItem.Text" xml:space="preserve">
     <value>Show bounding box</value>
+  </data>
+  <data name="drawingAreaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="drawingAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Drawing area</value>
+  </data>
+  <data name="machineAreaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="machineAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Machine area</value>
+  </data>
+  <data name="autosizeToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 22</value>
+  </data>
+  <data name="autosizeToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Autosize</value>
   </data>
   <data name="pxToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 22</value>
@@ -774,7 +804,7 @@
     <value>Show diagnostic data</value>
   </data>
   <data name="previewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
+    <value>60, 19</value>
   </data>
   <data name="previewToolStripMenuItem.Text" xml:space="preserve">
     <value>Preview</value>
@@ -894,7 +924,7 @@
     <value>Ukrainian</value>
   </data>
   <data name="linguaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 20</value>
+    <value>71, 19</value>
   </data>
   <data name="linguaToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Language</value>
@@ -927,7 +957,7 @@
     <value>False</value>
   </data>
   <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 20</value>
+    <value>46, 19</value>
   </data>
   <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Tools</value>
@@ -987,7 +1017,7 @@
     <value>False</value>
   </data>
   <data name="MnOrtur.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 20</value>
+    <value>47, 19</value>
   </data>
   <data name="MnOrtur.Text" xml:space="preserve">
     <value>Ortur</value>
@@ -1080,13 +1110,16 @@
     <value>License</value>
   </data>
   <data name="questionMarkToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>12, 20</value>
+    <value>12, 19</value>
   </data>
   <data name="MMn.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="MMn.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>12, 4, 0, 4</value>
+  </data>
   <data name="MMn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1157, 24</value>
+    <value>2314, 27</value>
   </data>
   <data name="MMn.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1116,10 +1149,10 @@
     <value>51</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>12, 25</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1157, 943</value>
+    <value>2314, 1781</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1172,7 +1205,7 @@
         AP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAAYAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAA/QAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAA
         AP8AAAD9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAP0AAAD/AAAA/wAA
-        AP8AAAD/AAAA/wAAAP8AAAD9AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA/gfwAPgB8ADgAHAAwAAwAMAA
+        AP8AAAD/AAAA/wAAAP8AAAD9AAAAQAAAAAAIAAAAAAAAAAAAAAAAAAAA/gfwAPgB8ADgAHAAwAAwAMAA
         MACAABAAgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAEACAABAAwAAwAMAAMADgAHAA+AHwAP4H
         8AAoAAAAGAAAADAAAAABACAAAAAAAIgJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAALkAAAD+AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/gAAALkAAAAAAAAAAAAA
@@ -9165,7 +9198,7 @@
 </value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>8, 8, 8, 8</value>
   </data>
   <data name="&gt;&gt;TTLLines.Name" xml:space="preserve">
     <value>TTLLines</value>
@@ -9585,6 +9618,24 @@
     <value>showBoundingBoxToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;showBoundingBoxToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;autosizeToolStripMenuItem1.Name" xml:space="preserve">
+    <value>autosizeToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;autosizeToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;drawingAreaToolStripMenuItem.Name" xml:space="preserve">
+    <value>drawingAreaToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;drawingAreaToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;machineAreaToolStripMenuItem.Name" xml:space="preserve">
+    <value>machineAreaToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;machineAreaToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lineSizeToolStripMenuItem.Name" xml:space="preserve">

@@ -330,6 +330,7 @@ namespace LaserGRBL
 		public RetainedSetting<bool> ShowPerformanceDiagnostic { get; } = new RetainedSetting<bool>("ShowPerformanceDiagnostic", false);
         public RetainedSetting<bool> ShowBoundingBox { get; } = new RetainedSetting<bool>("ShowBoundingBox", true);
         public RetainedSetting<float> PreviewLineSize { get; } = new RetainedSetting<float>("PreviewLineSize", 1f);
+        public RetainedSetting<bool> AutoSizeOnDrawing { get; } = new RetainedSetting<bool>("AutoSizeOnDrawing", true);
 
         public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
 		{

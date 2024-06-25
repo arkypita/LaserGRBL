@@ -290,17 +290,17 @@ namespace LaserGRBL.Obj3D
             {
                 const int borderLimit = 1000000;
 
-                AddVertex(-borderLimit, (double)Core.LoadedFile.Range.MovingRange.Y.Min, zPos, BoundingBoxColor);
-                AddVertex(borderLimit, (double)Core.LoadedFile.Range.MovingRange.Y.Min, zPos, BoundingBoxColor);
+                AddVertex(-borderLimit, (double)Core.LoadedFile.Range.DrawingRange.Y.Min, zPos, BoundingBoxColor);
+                AddVertex(borderLimit, (double)Core.LoadedFile.Range.DrawingRange.Y.Min, zPos, BoundingBoxColor);
 
-                AddVertex((double)Core.LoadedFile.Range.MovingRange.X.Max, -borderLimit, zPos, BoundingBoxColor);
-                AddVertex((double)Core.LoadedFile.Range.MovingRange.X.Max, borderLimit, zPos, BoundingBoxColor);
+                AddVertex((double)Core.LoadedFile.Range.DrawingRange.X.Max, -borderLimit, zPos, BoundingBoxColor);
+                AddVertex((double)Core.LoadedFile.Range.DrawingRange.X.Max, borderLimit, zPos, BoundingBoxColor);
 
-                AddVertex(-borderLimit, (double)Core.LoadedFile.Range.MovingRange.Y.Max, zPos, BoundingBoxColor);
-                AddVertex(borderLimit, (double)Core.LoadedFile.Range.MovingRange.Y.Max, zPos, BoundingBoxColor);
+                AddVertex(-borderLimit, (double)Core.LoadedFile.Range.DrawingRange.Y.Max, zPos, BoundingBoxColor);
+                AddVertex(borderLimit, (double)Core.LoadedFile.Range.DrawingRange.Y.Max, zPos, BoundingBoxColor);
 
-                AddVertex((double)Core.LoadedFile.Range.MovingRange.X.Min, -borderLimit, zPos, BoundingBoxColor);
-                AddVertex((double)Core.LoadedFile.Range.MovingRange.X.Min, borderLimit, zPos, BoundingBoxColor);
+                AddVertex((double)Core.LoadedFile.Range.DrawingRange.X.Min, -borderLimit, zPos, BoundingBoxColor);
+                AddVertex((double)Core.LoadedFile.Range.DrawingRange.X.Min, borderLimit, zPos, BoundingBoxColor);
             }
             NewDisplayList();
             int commandsCount = Core.LoadedFile.Commands.Count;
