@@ -1828,7 +1828,7 @@ namespace LaserGRBL
 
 				if (newJog.Direction == JogDirection.Abort)
 					; //nothing to send, the abort is sent by previous test if needed
-				if (newJog.Direction == JogDirection.Position)
+				else if (newJog.Direction == JogDirection.Position)
 					EnqueueCommand(new GrblCommand(string.Format("$J=G90X{0}Y{1}F{2}", newJog.Target.X.ToString("0.00", NumberFormatInfo.InvariantInfo), newJog.Target.Y.ToString("0.00", NumberFormatInfo.InvariantInfo), newJog.Speed)));
 				else if (newJog.Direction == JogDirection.Home)
 					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", newJog.Speed)));
