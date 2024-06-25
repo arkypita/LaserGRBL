@@ -97,7 +97,7 @@ namespace LaserGRBL.UserControls
 			}
 		}
 
-		AutoResetEvent RR = new AutoResetEvent(true);		//redraw required
+		public AutoResetEvent RR = new AutoResetEvent(true);		//redraw required
 		Tools.ThreadObject TH = null;	//drawing thread
 		public GrblPanel3D()
 		{
@@ -277,8 +277,8 @@ namespace LaserGRBL.UserControls
 					oldGrbl3D?.Dispose();
                     oldGrbl3DOff?.Dispose();
 					mMessage = Strings.PrepareDrawing;
-                    Grbl3D newGrbl3D = new Grbl3D(Core, "LaserOn", false, ColorScheme.PreviewLaserPower);
-                    Grbl3D newGrbl3DOff = new Grbl3D(Core, "LaserOff", true, ColorScheme.PreviewOtherMovement);
+                    Grbl3D newGrbl3D = new Grbl3D(Core, "LaserOn", false, ColorScheme.PreviewLaserPower, ColorScheme.PreviewJobRange);
+                    Grbl3D newGrbl3DOff = new Grbl3D(Core, "LaserOff", true, ColorScheme.PreviewOtherMovement, ColorScheme.PreviewJobRange);
                     mMessage = null;
                     lock (mGrbl3DLock)
 					{
@@ -293,7 +293,8 @@ namespace LaserGRBL.UserControls
 					{
 						mInvalidateAll = false;
 						mGrbl3D.Color = ColorScheme.PreviewLaserPower;
-						mGrbl3D.InvalidateAll();
+                        mGrbl3D.BoundingBoxColor = ColorScheme.PreviewJobRange;
+                        mGrbl3D.InvalidateAll();
 						mGrbl3DOff.Color = ColorScheme.PreviewOtherMovement;
 						mGrbl3DOff.InvalidateAll();
 					}
@@ -302,7 +303,8 @@ namespace LaserGRBL.UserControls
 						mGrbl3DOff.Invalidate();
 						mGrbl3DOff.Render(OpenGL);
 					}
-					mGrbl3D.Invalidate();
+					mGrbl3D.ShowBoundingBox = Core.ShowBoundingBox.Value;
+                    mGrbl3D.Invalidate();
 					mGrbl3D.Render(OpenGL);
 				}
 				CheckError(OpenGL, "RenderObject");
@@ -845,13 +847,14 @@ namespace LaserGRBL.UserControls
 			Core.ShowExecutedCommands.OnChange += ShowExecutedCommands_OnChange;
 			Core.PreviewLineSize.OnChange += PrerviewLineSize_OnChange;
 			Core.ShowLaserOffMovements.OnChange += ShowLaserOffMovements_OnChange;
+            Core.ShowBoundingBox.OnChange += ShowBoundingBox_OnChange;
 			Core.OnAutoSizeDrawing += Core_OnAutoSizeDrawing;
 			Core.OnZoomInDrawing += Core_OnZoomInDrawing;
 			Core.OnZoomOutDrawing += Core_OnZoomOutDrawing;
 			Core.OnProgramEnded += OnProgramEnded;
 		}
 
-		private void OnFileLoading(long elapsed, string filename)
+        private void OnFileLoading(long elapsed, string filename)
         {
 			mMessage = Strings.Loading;
         }
@@ -891,7 +894,13 @@ namespace LaserGRBL.UserControls
 			RR.Set();
 		}
 
-		private void ShowExecutedCommands_OnChange(Tools.RetainedSetting<bool> obj)
+        private void ShowBoundingBox_OnChange(RetainedSetting<bool> obj)
+        {
+            mInvalidateAll = true;
+            RR.Set();
+        }
+
+        private void ShowExecutedCommands_OnChange(Tools.RetainedSetting<bool> obj)
 		{
 			mInvalidateAll = true;
 			RR.Set();
@@ -920,9 +929,9 @@ namespace LaserGRBL.UserControls
 
 			XYRange drawingRange;
 
-			if (Core?.LoadedFile.Range.DrawingRange.ValidRange == true)
+			if (Core?.LoadedFile.Range.MovingRange.ValidRange == true)
 			{
-				drawingRange = Core.LoadedFile.Range.DrawingRange;
+				drawingRange = Core.LoadedFile.Range.MovingRange;
 			}
 			else
 			{

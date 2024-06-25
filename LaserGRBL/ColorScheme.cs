@@ -32,7 +32,7 @@ namespace LaserGRBL
 				Color.FromArgb( 69, 78,101),//preview grid origins
 				Color.FromArgb( 49, 55, 70),//preview grid?
 				Color.FromArgb( 38, 45, 55),//preview grid minor?
-				Color.LightGray,			//preview reference line
+				Color.FromArgb(200,200,140),//preview reference line
 				Color.Blue,					//preview first line
 				Color.FromArgb( 60, 82, 85),//preview other line
 				Color.FromArgb(220,220,220),//preview laser
@@ -72,7 +72,7 @@ namespace LaserGRBL
 				Color.FromArgb( 69, 78,101),//preview grid origins
 				Color.FromArgb( 39, 45, 60),//preview grid?
 				Color.FromArgb( 28, 35, 45),//preview grid minor?
-				Color.LightGray,			//preview reference line
+				Color.FromArgb(200,200,140),//preview reference line
 				Color.Blue,					//preview first line
 				Color.FromArgb( 60, 82, 85),//preview other line
 				Color.FromArgb(220,220,220),//preview laser
