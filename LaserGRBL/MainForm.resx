@@ -1031,12 +1031,6 @@
   <data name="MnConfigureOrturWiFi.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 22</value>
   </data>
-  <data name="&gt;&gt;addInToolStripMenuItem.Name" xml:space="preserve">
-    <value>addInToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;addInToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="MnConfigureOrturWiFi.Text" xml:space="preserve">
     <value>Configure WiFi</value>
   </data>
@@ -1093,9 +1087,6 @@
   </data>
   <data name="toolStripMenuItem7.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 6</value>
-  </data>
-  <data name="addInToolStripMenuItem.Text" xml:space="preserve">
-    <value>Add In</value>
   </data>
   <data name="helpOnLineToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 22</value>

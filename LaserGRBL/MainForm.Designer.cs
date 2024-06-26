@@ -144,7 +144,6 @@
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.manualsDownloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.firmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnSeparatorConfigWiFi = new System.Windows.Forms.ToolStripSeparator();
 			this.MnConfigureOrturWiFi = new System.Windows.Forms.ToolStripMenuItem();
 			this.questionMarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -340,7 +339,6 @@
             this.linguaToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.MnOrtur,
-            this.addInToolStripMenuItem,
             this.questionMarkToolStripMenuItem});
 			resources.ApplyResources(this.MMn, "MMn");
 			this.MMn.Name = "MMn";
@@ -1013,12 +1011,6 @@
 			resources.ApplyResources(this.MnConfigureOrturWiFi, "MnConfigureOrturWiFi");
 			this.MnConfigureOrturWiFi.Name = "MnConfigureOrturWiFi";
 			this.MnConfigureOrturWiFi.Click += new System.EventHandler(this.MnConfigureOrturWiFi_Click);
-            // 
-            // addInToolStripMenuItem
-            // 
-            this.addInToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {});
-            this.addInToolStripMenuItem.Name = "addInToolStripMenuItem";
-            resources.ApplyResources(this.addInToolStripMenuItem, "addInToolStripMenuItem");
 			// 
 			// questionMarkToolStripMenuItem
 			// 
@@ -1299,7 +1291,6 @@
 		private System.Windows.Forms.ToolStripMenuItem MnMaterialDB;
 		private System.Windows.Forms.ToolStripMenuItem polishToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem MnOrtur;
-		private System.Windows.Forms.ToolStripMenuItem addInToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem orturSupportGroupToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem orturWebsiteToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem facebookCommunityToolStripMenuItem;
