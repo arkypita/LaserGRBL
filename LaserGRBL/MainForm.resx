@@ -476,6 +476,12 @@
   <data name="showBoundingBoxToolStripMenuItem.Text" xml:space="preserve">
     <value>Show bounding box</value>
   </data>
+  <data name="crossCursorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 22</value>
+  </data>
+  <data name="crossCursorToolStripMenuItem.Text" xml:space="preserve">
+    <value>Show cross cursor</value>
+  </data>
   <data name="showExecutedCommandsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>219, 22</value>
   </data>
@@ -500,11 +506,11 @@
   <data name="drawingAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>Drawing area</value>
   </data>
-  <data name="machineAreaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="movingAreaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>219, 22</value>
   </data>
-  <data name="machineAreaToolStripMenuItem.Text" xml:space="preserve">
-    <value>Machine area</value>
+  <data name="movingAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Moving area</value>
   </data>
   <data name="toolStripMenuItem9.Size" type="System.Drawing.Size, System.Drawing">
     <value>216, 6</value>

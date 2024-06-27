@@ -7,11 +7,9 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tools;
 using static LaserGRBL.ProgramRange;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace LaserGRBL.UserControls
 {
@@ -73,6 +71,27 @@ namespace LaserGRBL.UserControls
 		private Base.Mathematics.MobileDAverageCalculator RefreshRate;
 
 		private static Exception FatalException;
+
+		private bool mShowCursor = true;
+		public bool ShowCursor
+		{
+            get => mShowCursor;
+            set
+			{
+				if (mShowCursor != value)
+                {
+                    mShowCursor = value;
+					if (value)
+					{
+						Cursor.Show();
+					}
+					else
+					{
+						Cursor.Hide();
+					}
+                }
+            }
+        }
 
 		// 0 = never run, 1 = init begin, 2 = create complete, 3 = init complete, 4 = draw begin, 5 = draw end, > 5 = running (can be tested with a timer to check if it stop incrementing)
 		private static ulong OpCounter;
@@ -572,11 +591,12 @@ namespace LaserGRBL.UserControls
                 minDrawingY = (int)Core.LoadedFile.Range.DrawingRange.Y.Min;
                 maxDrawingY = (int)Core.LoadedFile.Range.DrawingRange.Y.Max;
             }
+			bool showBoundingBox = Core?.ShowBoundingBox.Value ?? false;
             // draw horizontal
             for (int i = (int)mCamera.Left + (int)(mPadding.Left / wRatio); i <= (int)mCamera.Right - (int)(mPadding.Right / wRatio); i += 1)
 			{
 				bool canDraw = i % step == 0;
-                if (maxDrawingX != null)
+                if (showBoundingBox && (minDrawingX != null || maxDrawingX != null))
                 {
 					canDraw &=
 						i < (minDrawingX - halfStep) ||
@@ -599,7 +619,7 @@ namespace LaserGRBL.UserControls
             for (int i = (int)mCamera.Bottom + (int)(mPadding.Bottom / hRatio); i <= (int)mCamera.Top - (int)(mPadding.Top / hRatio); i += 1)
             {
                 bool canDraw = i % step == 0;
-                if (maxDrawingY != null)
+                if (showBoundingBox && (minDrawingY != null || maxDrawingY != null))
                 {
                     canDraw &=
                         i < (minDrawingY - halfStep) ||
@@ -801,17 +821,26 @@ namespace LaserGRBL.UserControls
 					}
 				}
 
-				if (mMousePos != null &&
+				if (Core.CrossCursor.Value &&
+					mMousePos != null &&
 					mMousePos.Value.X >= mPadding.Left &&
 					mMousePos.Value.X <= Width - mPadding.Right &&
 					mMousePos.Value.Y >= mPadding.Top &&
 					mMousePos.Value.Y <= Height - mPadding.Bottom)
                 {
 					Pen pCross = Pens.Gray;
-                    e.Graphics.DrawLine(pCross, new Point(mPadding.Left, mMousePos.Value.Y), new Point(Width - mPadding.Right, mMousePos.Value.Y));
-                    e.Graphics.DrawLine(pCross, new Point(mMousePos.Value.X, mPadding.Top), new Point(mMousePos.Value.X, Height - mPadding.Bottom));
-					e.Graphics.DrawRectangle(pCross, mMousePos.Value.X - 5, mMousePos.Value.Y - 5, 10, 10);
+					int halfCrossSize = 4;
+                    e.Graphics.DrawLine(pCross, new Point(mPadding.Left, mMousePos.Value.Y), new Point(mMousePos.Value.X - 5, mMousePos.Value.Y));
+                    e.Graphics.DrawLine(pCross, new Point(mMousePos.Value.X + halfCrossSize, mMousePos.Value.Y), new Point(Width - mPadding.Right, mMousePos.Value.Y));
+                    e.Graphics.DrawLine(pCross, new Point(mMousePos.Value.X, mPadding.Top), new Point(mMousePos.Value.X, mMousePos.Value.Y - halfCrossSize));
+                    e.Graphics.DrawLine(pCross, new Point(mMousePos.Value.X, mMousePos.Value.Y + halfCrossSize), new Point(mMousePos.Value.X, Height - mPadding.Bottom));
+                    e.Graphics.DrawRectangle(pCross, mMousePos.Value.X - halfCrossSize, mMousePos.Value.Y - halfCrossSize, halfCrossSize * 2, halfCrossSize * 2);
+                    ShowCursor = false;
                 }
+				else
+				{
+					ShowCursor = true;
+				}
 
 			}
 		}
@@ -851,22 +880,25 @@ namespace LaserGRBL.UserControls
 			mLastMousePos = null;
 			mMouseWorldPosition = null;
 			mMousePos = null;
-			Cursor.Show();
+			if (Core?.CrossCursor.Value == true) ShowCursor = true;
 			Cursor.Current = Cursors.Default;
 		}
 
 		private void GrblSceneControl_MouseUp(object sender, MouseEventArgs e)
 		{
-			Cursor.Current = Cursors.Default;
+            if (Core?.CrossCursor.Value == true) ShowCursor = true;
+            Cursor.Current = Cursors.Default;
 			mLastMousePos = null;
 			mMouseWorldPosition = null;
 		}
 
 		private void GrblSceneControl_MouseDown(object sender, MouseEventArgs e)
-		{
-			Cursor.Current = Cursors.Cross;
+        {
+            mMousePos = null;
+            Cursor.Current = Cursors.Cross;
 			mLastMousePos = e.Location;
-		}
+			Invalidate();
+        }
 
 		private void GrblSceneControl_MouseMove(object sender, MouseEventArgs e)
 		{
@@ -875,7 +907,6 @@ namespace LaserGRBL.UserControls
             double xp = e.X / (double)Width * (mCamera.Right - mCamera.Left) + mCamera.Left;
 			double yp = (Height - e.Y) / (double)Height * (mCamera.Top - mCamera.Bottom) + mCamera.Bottom;
 			mMouseWorldPosition = new PointF((float)xp, (float)yp);
-			Cursor.Hide();
             // if in drag
             if (mLastMousePos != null && e.Button == MouseButtons.Left)
 			{
@@ -886,6 +917,7 @@ namespace LaserGRBL.UserControls
 				double dy = e.Y - lastPos.Y;
 				SetWorldPosition(mCamera.Left - dx * k, mCamera.Right - dx * k, mCamera.Bottom + dy * k, mCamera.Top + dy * k);
 				mLastMousePos = e.Location;
+				mMousePos = null;
 			}
 			Invalidate();
 		}
@@ -983,10 +1015,9 @@ namespace LaserGRBL.UserControls
 			mReload = true;
 			AutoSizeDrawing();
 		}
-
+		
 		public void AutoSizeDrawing()
 		{
-
 			double ratio = Width / (double)Height;
 			double availableWidth = Width - mPadding.Left - mPadding.Right;
 			double availableHeight = Height - mPadding.Bottom - mPadding.Top;

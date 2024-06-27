@@ -109,8 +109,9 @@
 			this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
 			this.showDiagnosticDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.showBoundingBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.crossCursorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.drawingAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.machineAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.movingAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.linguaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNEnglish = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNItalian = new System.Windows.Forms.ToolStripMenuItem();
@@ -657,6 +658,7 @@
             this.showLaserOffMovementsToolStripMenuItem,
             this.showExecutedCommandsToolStripMenuItem,
             this.showBoundingBoxToolStripMenuItem,
+			this.crossCursorToolStripMenuItem,
 			this.autosizeModeToolStripMenuItem,
             this.lineSizeToolStripMenuItem,
             this.toolStripMenuItem9,
@@ -684,6 +686,13 @@
 			resources.ApplyResources(this.showBoundingBoxToolStripMenuItem, "showBoundingBoxToolStripMenuItem");
 			this.showBoundingBoxToolStripMenuItem.Click += new System.EventHandler(this.showBoundingBoxToolStripMenuItem_Click);
 			// 
+			// crossCursorToolStripMenuItem
+			// 
+			this.crossCursorToolStripMenuItem.CheckOnClick = true;
+			this.crossCursorToolStripMenuItem.Name = "crossCursorToolStripMenuItem";
+			resources.ApplyResources(this.crossCursorToolStripMenuItem, "crossCursorToolStripMenuItem");
+			this.crossCursorToolStripMenuItem.Click += new System.EventHandler(this.crossCursorToolStripMenuItem_Click);
+			// 
 			// showExecutedCommandsToolStripMenuItem
 			// 
 			this.showExecutedCommandsToolStripMenuItem.CheckOnClick = true;
@@ -706,7 +715,7 @@
 			// 
 			this.autosizeModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.drawingAreaToolStripMenuItem,
-            this.machineAreaToolStripMenuItem});
+            this.movingAreaToolStripMenuItem});
 			this.autosizeModeToolStripMenuItem.Name = "autosizeModeToolStripMenuItem";
 			resources.ApplyResources(this.autosizeModeToolStripMenuItem, "autosizeModeToolStripMenuItem");
 			// 
@@ -753,13 +762,13 @@
 			this.drawingAreaToolStripMenuItem.Tag = "Drawing area";
 			this.drawingAreaToolStripMenuItem.Click += new System.EventHandler(this.drawingAreaToolStripMenuItem_Click);
 			// 
-			// machineAreaToolStripMenuItem
+			// movingAreaToolStripMenuItem
 			// 
-			this.machineAreaToolStripMenuItem.Name = "machineAreaToolStripMenuItem";
-			this.machineAreaToolStripMenuItem.CheckOnClick = true;
-			resources.ApplyResources(this.machineAreaToolStripMenuItem, "machineAreaToolStripMenuItem");
-			this.machineAreaToolStripMenuItem.Tag = "Machine area";
-			this.machineAreaToolStripMenuItem.Click += new System.EventHandler(this.machineAreaToolStripMenuItem_Click);
+			this.movingAreaToolStripMenuItem.Name = "movingAreaToolStripMenuItem";
+			this.movingAreaToolStripMenuItem.CheckOnClick = true;
+			resources.ApplyResources(this.movingAreaToolStripMenuItem, "movingAreaToolStripMenuItem");
+			this.movingAreaToolStripMenuItem.Tag = "Machine area";
+			this.movingAreaToolStripMenuItem.Click += new System.EventHandler(this.machineAreaToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem9
 			// 
@@ -1341,9 +1350,10 @@
 		private System.Windows.Forms.ToolStripMenuItem zoomOutToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
 		private System.Windows.Forms.ToolStripMenuItem showBoundingBoxToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem crossCursorToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem autosizeModeToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem drawingAreaToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem machineAreaToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem movingAreaToolStripMenuItem;
 	}
 }
 
