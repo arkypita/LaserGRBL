@@ -22,7 +22,9 @@ namespace LaserGRBL.UserControls
 		// last mouse position
 		private Point? mLastMousePos = null;
 		// current mouse world position
-		private PointF? mMouseWorldPosition { get; set; }
+        private Point? mMousePos = null;
+        // current mouse world position
+        private PointF? mMouseWorldPosition { get; set; }
 		// main camera
 		private OrthographicCamera mCamera { get; } = new OrthographicCamera();
 		private GLColor mBackgroundColor { get; set; }
@@ -798,6 +800,19 @@ namespace LaserGRBL.UserControls
 						e.Graphics.DrawString(text, font, b, point.X, point.Y);
 					}
 				}
+
+				if (mMousePos != null &&
+					mMousePos.Value.X >= mPadding.Left &&
+					mMousePos.Value.X <= Width - mPadding.Right &&
+					mMousePos.Value.Y >= mPadding.Top &&
+					mMousePos.Value.Y <= Height - mPadding.Bottom)
+                {
+					Pen pCross = Pens.Gray;
+                    e.Graphics.DrawLine(pCross, new Point(mPadding.Left, mMousePos.Value.Y), new Point(Width - mPadding.Right, mMousePos.Value.Y));
+                    e.Graphics.DrawLine(pCross, new Point(mMousePos.Value.X, mPadding.Top), new Point(mMousePos.Value.X, Height - mPadding.Bottom));
+					e.Graphics.DrawRectangle(pCross, mMousePos.Value.X - 5, mMousePos.Value.Y - 5, 10, 10);
+                }
+
 			}
 		}
 
@@ -835,6 +850,9 @@ namespace LaserGRBL.UserControls
 		{
 			mLastMousePos = null;
 			mMouseWorldPosition = null;
+			mMousePos = null;
+			Cursor.Show();
+			Cursor.Current = Cursors.Default;
 		}
 
 		private void GrblSceneControl_MouseUp(object sender, MouseEventArgs e)
@@ -852,12 +870,14 @@ namespace LaserGRBL.UserControls
 
 		private void GrblSceneControl_MouseMove(object sender, MouseEventArgs e)
 		{
-			// compute mouse coord
-			double xp = e.X / (double)Width * (mCamera.Right - mCamera.Left) + mCamera.Left;
+            // compute mouse coord
+            mMousePos = e.Location;
+            double xp = e.X / (double)Width * (mCamera.Right - mCamera.Left) + mCamera.Left;
 			double yp = (Height - e.Y) / (double)Height * (mCamera.Top - mCamera.Bottom) + mCamera.Bottom;
 			mMouseWorldPosition = new PointF((float)xp, (float)yp);
-			// if in drag
-			if (mLastMousePos != null && e.Button == MouseButtons.Left)
+			Cursor.Hide();
+            // if in drag
+            if (mLastMousePos != null && e.Button == MouseButtons.Left)
 			{
 				Cursor.Current = Cursors.SizeAll;
 				Point lastPos = (Point)mLastMousePos;
@@ -867,6 +887,7 @@ namespace LaserGRBL.UserControls
 				SetWorldPosition(mCamera.Left - dx * k, mCamera.Right - dx * k, mCamera.Bottom + dy * k, mCamera.Top + dy * k);
 				mLastMousePos = e.Location;
 			}
+			Invalidate();
 		}
 
 		private void GrblSceneControl_MouseWheel(object sender, MouseEventArgs e)
