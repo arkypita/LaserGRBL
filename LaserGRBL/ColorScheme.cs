@@ -13,7 +13,7 @@ namespace LaserGRBL
 
 	public interface IColorScheme
     {
-        Scheme Code { get; }
+        Scheme Scheme { get; }
         bool IsDark { get; }
         Color FormBackColor { get; }
         Color FormForeColor { get; }
@@ -54,7 +54,7 @@ namespace LaserGRBL
 	// CAD style color scheme
     public class SchemeCADStyle: IColorScheme
     {
-        public Scheme Code => Scheme.CADStyle;
+        public Scheme Scheme => Scheme.CADStyle;
         public bool IsDark => false;
         public Color FormBackColor => Color.FromArgb(248, 248, 248);
         public Color FormForeColor => SystemColors.ControlText;
@@ -95,7 +95,7 @@ namespace LaserGRBL
 	// CAD dark color scheme
 	public class SchemeCADDark: IColorScheme
     {
-        public Scheme Code => Scheme.CADDark;
+        public Scheme Scheme => Scheme.CADDark;
         public bool IsDark => true;
         public Color FormBackColor => Color.FromArgb(35, 40, 51);
         public Color FormForeColor => Color.FromArgb(190, 190, 190);
@@ -136,7 +136,7 @@ namespace LaserGRBL
 	// blue laser color scheme
 	public class SchemeBlueLaser: IColorScheme
     {
-        public Scheme Code => Scheme.BlueLaser;
+        public Scheme Scheme => Scheme.BlueLaser;
         public bool IsDark => false;
         public Color FormBackColor => SystemColors.Control;
         public Color FormForeColor => SystemColors.ControlText;
@@ -177,7 +177,7 @@ namespace LaserGRBL
 	// red laser color scheme
 	public class SchemeRedLaser: IColorScheme
     {
-        public Scheme Code => Scheme.RedLaser;
+        public Scheme Scheme => Scheme.RedLaser;
         public bool IsDark => false;
         public Color FormBackColor => SystemColors.Control;
         public Color FormForeColor => SystemColors.ControlText;
@@ -218,7 +218,7 @@ namespace LaserGRBL
 	// dark color scheme
 	public class SchemeDark: IColorScheme
     {
-        public Scheme Code => Scheme.Dark;
+        public Scheme Scheme => Scheme.Dark;
         public bool IsDark => true;
         public Color FormBackColor => Color.FromArgb(29, 44, 75);
         public Color FormForeColor => Color.White;
@@ -259,7 +259,7 @@ namespace LaserGRBL
 	// hacker color scheme
 	public class SchemeHacker: IColorScheme
     {
-        public Scheme Code => Scheme.Hacker;
+        public Scheme Scheme => Scheme.Hacker;
         public bool IsDark => true;
         public Color FormBackColor => Color.FromArgb(0, 10, 35);
         public Color FormForeColor => Color.LimeGreen;
@@ -300,7 +300,7 @@ namespace LaserGRBL
     // nighty color scheme
     public class SchemeNighty : IColorScheme
     {
-        public Scheme Code => Scheme.Nighty;
+        public Scheme Scheme => Scheme.Nighty;
         public bool IsDark => true;
         public Color FormBackColor => Color.FromArgb(25, 25, 25);
         public Color FormForeColor => Color.Aqua;
@@ -368,7 +368,7 @@ namespace LaserGRBL
 
         public static void AddSchema(IColorScheme colorSchema)
         {
-            mDefaultSchemas.Add(colorSchema.Code, colorSchema);
+            mDefaultSchemas.Add(colorSchema.Scheme, colorSchema);
         }
 
 		public static Scheme CurrentScheme { get; set; }
