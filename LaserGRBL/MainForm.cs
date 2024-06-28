@@ -35,7 +35,7 @@ namespace LaserGRBL
 
         public MainForm()
 		{
-			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", "CADDark");
+			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", Scheme.CADDark);
 
 			InitializeComponent();
 			ExceptionManager.ParentMain = this;
@@ -94,6 +94,14 @@ namespace LaserGRBL
             drawingAreaToolStripMenuItem.Checked = Core.AutoSizeOnDrawing.Value;
             movingAreaToolStripMenuItem.Checked = !Core.AutoSizeOnDrawing.Value;
 
+            cadStyleToolStripMenuItem.Tag = Scheme.CADStyle;
+            cadDarkToolStripMenuItem.Tag = Scheme.CADDark;
+            blueLaserToolStripMenuItem.Tag = Scheme.BlueLaser;
+            redLaserToolStripMenuItem.Tag = Scheme.RedLaser;
+            darkToolStripMenuItem.Tag = Scheme.Dark;
+            hackerToolStripMenuItem.Tag = Scheme.Hacker;
+            nightyToolStripMenuItem.Tag = Scheme.Nighty;
+
             CheckLineWidthItem();
 
 			MnGrblConfig.Visible = Core.UIShowGrblConfig;
@@ -116,14 +124,6 @@ namespace LaserGRBL
 			RefreshColorSchema(); //include RefreshOverride();
 			RefreshFormTitle();
             //RefreshMenuHotKeys(); // I don't like the behaviour and the aspect, so I comment it out
-
-            cadStyleToolStripMenuItem.Tag = "CADStyle";
-            cadDarkToolStripMenuItem.Tag = "CADDark";
-            blueLaserToolStripMenuItem.Tag = "BlueLaser";
-            redLaserToolStripMenuItem.Tag = "RedLaser";
-            darkToolStripMenuItem.Tag = "Dark";
-            hackerToolStripMenuItem.Tag = "Hacker";
-            nightyToolStripMenuItem.Tag = "Nighty";
         }
 
 		public MainForm(string[] args) : this()
@@ -159,7 +159,7 @@ namespace LaserGRBL
 				hackerToolStripMenuItem,
 				nightyToolStripMenuItem
 			};
-			foreach (ToolStripMenuItem item in items) item.Checked = ColorScheme.CurrentScheme == item.Tag.ToString();
+			foreach (ToolStripMenuItem item in items) item.Checked = ColorScheme.CurrentScheme == (Scheme)item.Tag;
             TTLinkToNews.LinkColor = ColorScheme.LinkColor;
 			TTLinkToNews.VisitedLinkColor = ColorScheme.VisitedLinkColor;
 			ThemeMgr.SetTheme(this, true);
@@ -810,47 +810,13 @@ namespace LaserGRBL
 		}
 
 
-        private void cadStyleToolStripMenuItem_Click(object sender, EventArgs e)
+        private void styleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SetSchema("CADStyle");
-        }
-
-        private void cadDarkToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SetSchema("CADDark");
-        }
-
-        private void blueLaserToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SetSchema("BlueLaser");
-		}
-
-		private void redLaserToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SetSchema("RedLaser");
-		}
-
-		private void darkToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SetSchema("Dark");
-		}
-
-		private void hackerToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SetSchema("Hacker");
-		}
-
-		private void nightyToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SetSchema("Nighty");
-		}
-
-		private void SetSchema(string schema)
-		{
-			Settings.SetObject("Color Schema", schema);
-			ColorScheme.CurrentScheme = schema;
+            Scheme schema = (Scheme)(sender as ToolStripMenuItem).Tag;
+            Settings.SetObject("Color Schema", schema);
+            ColorScheme.CurrentScheme = (Scheme)schema;
             RefreshColorSchema();
-		}
+        }
 
 		private void grblConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
 		{

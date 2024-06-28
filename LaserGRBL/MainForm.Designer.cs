@@ -610,43 +610,43 @@
 			// 
 			this.cadStyleToolStripMenuItem.Name = "cadStyleToolStripMenuItem";
 			resources.ApplyResources(this.cadStyleToolStripMenuItem, "cadStyleToolStripMenuItem");
-			this.cadStyleToolStripMenuItem.Click += new System.EventHandler(this.cadStyleToolStripMenuItem_Click);
+			this.cadStyleToolStripMenuItem.Click += new System.EventHandler(this.styleToolStripMenuItem_Click);
 			// 
 			// cadDarkToolStripMenuItem
 			// 
 			this.cadDarkToolStripMenuItem.Name = "cadDarkToolStripMenuItem";
 			resources.ApplyResources(this.cadDarkToolStripMenuItem, "cadDarkToolStripMenuItem");
-			this.cadDarkToolStripMenuItem.Click += new System.EventHandler(this.cadDarkToolStripMenuItem_Click);
+			this.cadDarkToolStripMenuItem.Click += new System.EventHandler(this.styleToolStripMenuItem_Click);
 			// 
 			// blueLaserToolStripMenuItem
 			// 
 			this.blueLaserToolStripMenuItem.Name = "blueLaserToolStripMenuItem";
 			resources.ApplyResources(this.blueLaserToolStripMenuItem, "blueLaserToolStripMenuItem");
-			this.blueLaserToolStripMenuItem.Click += new System.EventHandler(this.blueLaserToolStripMenuItem_Click);
+			this.blueLaserToolStripMenuItem.Click += new System.EventHandler(this.styleToolStripMenuItem_Click);
 			// 
 			// redLaserToolStripMenuItem
 			// 
 			this.redLaserToolStripMenuItem.Name = "redLaserToolStripMenuItem";
 			resources.ApplyResources(this.redLaserToolStripMenuItem, "redLaserToolStripMenuItem");
-			this.redLaserToolStripMenuItem.Click += new System.EventHandler(this.redLaserToolStripMenuItem_Click);
+			this.redLaserToolStripMenuItem.Click += new System.EventHandler(this.styleToolStripMenuItem_Click);
 			// 
 			// darkToolStripMenuItem
 			// 
 			this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
 			resources.ApplyResources(this.darkToolStripMenuItem, "darkToolStripMenuItem");
-			this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
+			this.darkToolStripMenuItem.Click += new System.EventHandler(this.styleToolStripMenuItem_Click);
 			// 
 			// hackerToolStripMenuItem
 			// 
 			this.hackerToolStripMenuItem.Name = "hackerToolStripMenuItem";
 			resources.ApplyResources(this.hackerToolStripMenuItem, "hackerToolStripMenuItem");
-			this.hackerToolStripMenuItem.Click += new System.EventHandler(this.hackerToolStripMenuItem_Click);
+			this.hackerToolStripMenuItem.Click += new System.EventHandler(this.styleToolStripMenuItem_Click);
 			// 
 			// nightyToolStripMenuItem
 			// 
 			this.nightyToolStripMenuItem.Name = "nightyToolStripMenuItem";
 			resources.ApplyResources(this.nightyToolStripMenuItem, "nightyToolStripMenuItem");
-			this.nightyToolStripMenuItem.Click += new System.EventHandler(this.nightyToolStripMenuItem_Click);
+			this.nightyToolStripMenuItem.Click += new System.EventHandler(this.styleToolStripMenuItem_Click);
 			// 
 			// previewToolStripMenuItem
 			// 
