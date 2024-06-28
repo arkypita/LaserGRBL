@@ -35,7 +35,7 @@ namespace LaserGRBL
 
         public MainForm()
 		{
-			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", ColorScheme.Scheme.CADDark);
+			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", "CADDark");
 
 			InitializeComponent();
 			ExceptionManager.ParentMain = this;
@@ -115,8 +115,16 @@ namespace LaserGRBL
 			AssignIcons();
 			RefreshColorSchema(); //include RefreshOverride();
 			RefreshFormTitle();
-			//RefreshMenuHotKeys(); // I don't like the behaviour and the aspect, so I comment it out
-		}
+            //RefreshMenuHotKeys(); // I don't like the behaviour and the aspect, so I comment it out
+
+            cadStyleToolStripMenuItem.Tag = "CADStyle";
+            cadDarkToolStripMenuItem.Tag = "CADDark";
+            blueLaserToolStripMenuItem.Tag = "BlueLaser";
+            redLaserToolStripMenuItem.Tag = "RedLaser";
+            darkToolStripMenuItem.Tag = "Dark";
+            hackerToolStripMenuItem.Tag = "Hacker";
+            nightyToolStripMenuItem.Tag = "Nighty";
+        }
 
 		public MainForm(string[] args) : this()
 		{
@@ -141,13 +149,17 @@ namespace LaserGRBL
 		{
 			MMn.BackColor = BackColor = StatusBar.BackColor = ColorScheme.FormBackColor;
 			MMn.ForeColor = ForeColor = ColorScheme.FormForeColor;
-            cadStyleToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.CADStyle;
-            cadDarkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.CADDark;
-            blueLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.BlueLaser;
-            redLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.RedLaser;
-            darkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Dark;
-            hackerToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Hacker;
-            nightyToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Nighty;
+			List<ToolStripMenuItem> items = new List<ToolStripMenuItem>()
+            {
+                cadStyleToolStripMenuItem,
+				cadDarkToolStripMenuItem,
+				blueLaserToolStripMenuItem,
+				redLaserToolStripMenuItem,
+				darkToolStripMenuItem,
+				hackerToolStripMenuItem,
+				nightyToolStripMenuItem
+			};
+			foreach (ToolStripMenuItem item in items) item.Checked = ColorScheme.CurrentScheme == item.Tag.ToString();
             TTLinkToNews.LinkColor = ColorScheme.LinkColor;
 			TTLinkToNews.VisitedLinkColor = ColorScheme.VisitedLinkColor;
 			ThemeMgr.SetTheme(this, true);
@@ -800,40 +812,40 @@ namespace LaserGRBL
 
         private void cadStyleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SetSchema(ColorScheme.Scheme.CADStyle);
+            SetSchema("CADStyle");
         }
 
         private void cadDarkToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SetSchema(ColorScheme.Scheme.CADDark);
+            SetSchema("CADDark");
         }
 
         private void blueLaserToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SetSchema(ColorScheme.Scheme.BlueLaser);
+			SetSchema("BlueLaser");
 		}
 
 		private void redLaserToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SetSchema(ColorScheme.Scheme.RedLaser);
+			SetSchema("RedLaser");
 		}
 
 		private void darkToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SetSchema(ColorScheme.Scheme.Dark);
+			SetSchema("Dark");
 		}
 
 		private void hackerToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SetSchema(ColorScheme.Scheme.Hacker);
+			SetSchema("Hacker");
 		}
 
 		private void nightyToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SetSchema(ColorScheme.Scheme.Nighty);
+			SetSchema("Nighty");
 		}
 
-		private void SetSchema(ColorScheme.Scheme schema)
+		private void SetSchema(string schema)
 		{
 			Settings.SetObject("Color Schema", schema);
 			ColorScheme.CurrentScheme = schema;

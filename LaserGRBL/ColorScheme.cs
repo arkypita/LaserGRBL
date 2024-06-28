@@ -12,6 +12,7 @@ namespace LaserGRBL
 
 	public interface IColorScheme
     {
+        string Code { get; }
         bool IsDark { get; }
         Color FormBackColor { get; }
         Color FormForeColor { get; }
@@ -52,6 +53,7 @@ namespace LaserGRBL
 	// CAD style color scheme
     public class SchemeCADStyle: IColorScheme
     {
+        public string Code => "CADStyle";
         public bool IsDark => false;
         public Color FormBackColor => Color.FromArgb(248, 248, 248);
         public Color FormForeColor => SystemColors.ControlText;
@@ -92,6 +94,7 @@ namespace LaserGRBL
 	// CAD dark color scheme
 	public class SchemeCADDark: IColorScheme
     {
+        public string Code => "CADDark";
         public bool IsDark => true;
         public Color FormBackColor => Color.FromArgb(35, 40, 51);
         public Color FormForeColor => Color.FromArgb(190, 190, 190);
@@ -132,6 +135,7 @@ namespace LaserGRBL
 	// blue laser color scheme
 	public class SchemeBlueLaser: IColorScheme
     {
+        public string Code => "BlueLaser";
         public bool IsDark => false;
         public Color FormBackColor => SystemColors.Control;
         public Color FormForeColor => SystemColors.ControlText;
@@ -172,6 +176,7 @@ namespace LaserGRBL
 	// red laser color scheme
 	public class SchemeRedLaser: IColorScheme
     {
+        public string Code => "RedLaser";
         public bool IsDark => false;
         public Color FormBackColor => SystemColors.Control;
         public Color FormForeColor => SystemColors.ControlText;
@@ -212,6 +217,7 @@ namespace LaserGRBL
 	// dark color scheme
 	public class SchemeDark: IColorScheme
     {
+        public string Code => "Dark";
         public bool IsDark => true;
         public Color FormBackColor => Color.FromArgb(29, 44, 75);
         public Color FormForeColor => Color.White;
@@ -252,6 +258,7 @@ namespace LaserGRBL
 	// hacker color scheme
 	public class SchemeHacker: IColorScheme
     {
+        public string Code => "Hacker";
         public bool IsDark => true;
         public Color FormBackColor => Color.FromArgb(0, 10, 35);
         public Color FormForeColor => Color.LimeGreen;
@@ -292,6 +299,7 @@ namespace LaserGRBL
     // nighty color scheme
     public class SchemeNighty : IColorScheme
     {
+        public string Code => "Nighty";
         public bool IsDark => true;
         public Color FormBackColor => Color.FromArgb(25, 25, 25);
         public Color FormForeColor => Color.Aqua;
@@ -331,26 +339,28 @@ namespace LaserGRBL
 
     class ColorScheme
 	{
-		public enum Scheme
-		{ CADStyle, CADDark, BlueLaser, RedLaser, Dark, Hacker, Nighty }
-
-		private static Dictionary<Scheme, IColorScheme> mData;
+		private static Dictionary<string, IColorScheme> mDefaultSchemas;
 
 		static ColorScheme()
         {
-            mData = new Dictionary<Scheme, IColorScheme>();
-            mData.Add(Scheme.CADStyle, new SchemeCADStyle());
-            mData.Add(Scheme.CADDark, new SchemeCADDark());
-            mData.Add(Scheme.BlueLaser, new SchemeBlueLaser());
-            mData.Add(Scheme.RedLaser, new SchemeRedLaser());
-            mData.Add(Scheme.Dark, new SchemeDark());
-            mData.Add(Scheme.Hacker, new SchemeHacker());
-            mData.Add(Scheme.Nighty, new SchemeNighty());
-            CurrentScheme = Scheme.RedLaser;
+            mDefaultSchemas = new Dictionary<string, IColorScheme>();
+            AddSchema(new SchemeCADStyle());
+            AddSchema(new SchemeCADDark());
+            AddSchema(new SchemeBlueLaser());
+            AddSchema(new SchemeRedLaser());
+            AddSchema(new SchemeDark());
+            AddSchema(new SchemeHacker());
+            AddSchema(new SchemeNighty());
+            CurrentScheme = mDefaultSchemas["RedLaser"].Code;
 		}
 
-		public static Scheme CurrentScheme { get; set; }
-        private static IColorScheme CurrentSchemeColors => mData[CurrentScheme];
+        public static void AddSchema(IColorScheme colorSchema)
+        {
+            mDefaultSchemas.Add(colorSchema.Code, colorSchema);
+        }
+
+		public static string CurrentScheme { get; set; }
+        private static IColorScheme CurrentSchemeColors => mDefaultSchemas[CurrentScheme];
 
         public static bool DarkScheme => CurrentSchemeColors.IsDark;
 
