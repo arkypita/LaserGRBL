@@ -782,9 +782,27 @@ namespace LaserGRBL.UserControls
 					point = new Point(Width - size.Width - mPadding.Right, pos);
 					DrawOverlay(e, point, size, ColorScheme.PreviewRuler, 100);
 					e.Graphics.DrawString(text, font, b, point.X, point.Y);
-				}
+                }
 
-				if (mGrbl3D == null)
+                // loading
+                lock (mGrbl3DLock)
+                {
+                    if (mMessage != null || mGrbl3D != null && mGrbl3D.LoadingPercentage < 100 || Core.ShowLaserOffMovements.Value && mGrbl3DOff != null && mGrbl3DOff.LoadingPercentage < 100)
+                    {
+                        int pos = point.Y + size.Height + 5;
+                        double? perc;
+                        perc = mGrbl3D?.LoadingPercentage ?? 0;
+                        perc += mGrbl3DOff?.LoadingPercentage ?? 0;
+                        if (Core.ShowLaserOffMovements.Value) perc /= 2;
+                        text = mMessage == null ? $"{Strings.Loading} {perc:0.0}%" : mMessage;
+                        size = MeasureText(text, font);
+                        point = new Point(Width - size.Width - mPadding.Right, pos);
+                        DrawOverlay(e, point, size, ColorScheme.PreviewRuler, 100);
+                        e.Graphics.DrawString(text, font, b, point.X, point.Y);
+                    }
+                }
+
+                if (mGrbl3D == null)
 				{
 					text = $"{Strings.TipsBasicUsage}\r\n{Strings.TipsZoom}\r\n{Strings.TipsPan}\r\n{Strings.TipsJog}\r\n\r\n";
                     string shortcut = "";
@@ -803,24 +821,6 @@ namespace LaserGRBL.UserControls
 					e.Graphics.DrawString(text, font, b, point.X, point.Y);
 				}
 
-				// loading
-				lock (mGrbl3DLock)
-				{
-					if (mMessage != null || mGrbl3D != null && mGrbl3D.LoadingPercentage < 100 || Core.ShowLaserOffMovements.Value && mGrbl3DOff != null && mGrbl3DOff.LoadingPercentage < 100)
-					{
-						int pos = point.Y + size.Height + 5;
-						double? perc;
-						perc = mGrbl3D?.LoadingPercentage ?? 0;
-						perc += mGrbl3DOff?.LoadingPercentage ?? 0;
-						if (Core.ShowLaserOffMovements.Value) perc /= 2;
-						text = mMessage == null ? $"{Strings.Loading} {perc:0.0}%" : mMessage;
-						size = MeasureText(text, font);
-						point = new Point(Width - size.Width - mPadding.Right, pos);
-						DrawOverlay(e, point, size, ColorScheme.PreviewRuler, 100);
-						e.Graphics.DrawString(text, font, b, point.X, point.Y);
-					}
-				}
-
 				if (Core.CrossCursor.Value &&
 					mMousePos != null &&
 					mMousePos.Value.X >= mPadding.Left &&
@@ -828,14 +828,16 @@ namespace LaserGRBL.UserControls
 					mMousePos.Value.Y >= mPadding.Top &&
 					mMousePos.Value.Y <= Height - mPadding.Bottom)
                 {
-					Pen pCross = Pens.Gray;
-					int halfCrossSize = 4;
-                    e.Graphics.DrawLine(pCross, new Point(mPadding.Left, mMousePos.Value.Y), new Point(mMousePos.Value.X - 5, mMousePos.Value.Y));
-                    e.Graphics.DrawLine(pCross, new Point(mMousePos.Value.X + halfCrossSize, mMousePos.Value.Y), new Point(Width - mPadding.Right, mMousePos.Value.Y));
-                    e.Graphics.DrawLine(pCross, new Point(mMousePos.Value.X, mPadding.Top), new Point(mMousePos.Value.X, mMousePos.Value.Y - halfCrossSize));
-                    e.Graphics.DrawLine(pCross, new Point(mMousePos.Value.X, mMousePos.Value.Y + halfCrossSize), new Point(mMousePos.Value.X, Height - mPadding.Bottom));
-                    e.Graphics.DrawRectangle(pCross, mMousePos.Value.X - halfCrossSize, mMousePos.Value.Y - halfCrossSize, halfCrossSize * 2, halfCrossSize * 2);
-                    ShowCursor = false;
+					using (Pen pCross = new Pen(ColorScheme.PreviewCrossCursor))
+                    {
+                        int halfCrossSize = 4;
+                        e.Graphics.DrawLine(pCross, new Point(mPadding.Left, mMousePos.Value.Y), new Point(mMousePos.Value.X - 5, mMousePos.Value.Y));
+                        e.Graphics.DrawLine(pCross, new Point(mMousePos.Value.X + halfCrossSize, mMousePos.Value.Y), new Point(Width - mPadding.Right, mMousePos.Value.Y));
+                        e.Graphics.DrawLine(pCross, new Point(mMousePos.Value.X, mPadding.Top), new Point(mMousePos.Value.X, mMousePos.Value.Y - halfCrossSize));
+                        e.Graphics.DrawLine(pCross, new Point(mMousePos.Value.X, mMousePos.Value.Y + halfCrossSize), new Point(mMousePos.Value.X, Height - mPadding.Bottom));
+                        e.Graphics.DrawRectangle(pCross, mMousePos.Value.X - halfCrossSize, mMousePos.Value.Y - halfCrossSize, halfCrossSize * 2, halfCrossSize * 2);
+                        ShowCursor = false;
+                    }
                 }
 				else
 				{

@@ -4,15 +4,12 @@
 // This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GPLv3  General Public License for more details.
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Drawing;
 
 namespace LaserGRBL
 {
-	class ColorScheme
+    class ColorScheme
 	{
 		public enum Scheme
 		{ CADStyle, CADDark, BlueLaser, RedLaser, Dark, Hacker, Nighty }
@@ -40,6 +37,7 @@ namespace LaserGRBL
 				Color.FromArgb( 55,199,116),//preview command ok
 				Color.FromArgb(240, 50, 50),//preview command ko
 				Color.LightPink,			//preview command wait
+				Color.FromArgb(103,107,117),//preview cross cursor
 
 				Color.White,				//log background
 				Color.Black,				//command text
@@ -80,6 +78,7 @@ namespace LaserGRBL
 				Color.FromArgb( 55,199,116),//preview command ok
 				Color.FromArgb(240, 50, 50),//preview command ko
 				Color.LightPink,			//preview command wait
+				Color.FromArgb(103,107,117),//preview cross cursor
 
 				Color.FromArgb( 70, 79, 92),//log background
 				Color.White,				//command text
@@ -112,7 +111,7 @@ namespace LaserGRBL
 				Color.DarkGray,				//preview grid origins
 				Color.FromArgb(242,242,200),//preview grid?
 				Color.FromArgb(248,248,220),//preview grid minor?
-				Color.LightGray,			//preview reference line
+				Color.DarkGray,				//preview reference line
 				Color.Blue,					//preview first line
 				Color.LightGray,			//preview other line
 				Color.Red,					//preview laser
@@ -120,6 +119,7 @@ namespace LaserGRBL
 				Color.DarkGreen,			//preview command ok
 				Color.DarkRed,				//preview command ko
 				Color.LightPink,			//preview command wait
+				Color.FromArgb(184,184,184),//preview cross cursor
 
 				Color.White,				//log background
 				Color.Black,				//command text
@@ -152,7 +152,7 @@ namespace LaserGRBL
 				Color.DarkGray,				//preview grid origins
 				Color.FromArgb(242,242,200),//preview grid?
 				Color.FromArgb(248,248,220),//preview grid minor?
-				Color.LightGray,			//preview reference line
+				Color.DarkGray,				//preview reference line
 				Color.Blue,					//preview first line
 				Color.LightGray,			//preview other line
 				Color.DarkBlue,				//preview laser
@@ -160,6 +160,7 @@ namespace LaserGRBL
 				Color.DarkGreen,			//preview command ok
 				Color.DarkRed,				//preview command ko
 				Color.LightBlue,			//preview command wait
+				Color.FromArgb(184,184,184),//preview cross cursor
 
 				Color.White,				//log background
 				Color.Black,				//command text
@@ -200,6 +201,7 @@ namespace LaserGRBL
 				Color.DarkGreen,			//preview command ok
 				Color.DarkRed,				//preview command ko
 				Color.LightBlue,			//preview command wait
+				Color.Gray,					//preview cross cursor
 
 				Color.FromArgb(220,220,220),//log background
 				Color.Black,				//command text
@@ -240,6 +242,7 @@ namespace LaserGRBL
 				Color.DarkBlue,				//preview command ok
 				Color.OrangeRed,			//preview command ko
 				Color.Pink,					//preview command wait
+				Color.Gray,					//preview cross cursor
 
 				Color.FromArgb(20,20,20),	//log background
 				Color.LimeGreen,			//command text
@@ -272,7 +275,7 @@ namespace LaserGRBL
 				Color.Aqua,		    		//preview text
 				Color.FromArgb(34,34,34),   //preview grid?
 				Color.FromArgb(28,28,28),   //preview grid minor?
-				Color.DimGray,				//preview reference line
+				Color.LightPink,			//preview reference line
 				Color.DarkOrange,			//preview first line
 				Color.FromArgb(150,0,120),  //preview other line
 				Color.FromArgb(0,125,140),	//preview laser
@@ -280,6 +283,7 @@ namespace LaserGRBL
 				Color.DarkGreen,			//preview command ok
 				Color.DarkRed,				//preview command ko
 				Color.LightBlue,			//preview command wait
+				Color.Gray,					//preview cross cursor
 
 				Color.FromArgb(25,25,25),	//log background
 				Color.Aqua,		        	//command text
@@ -374,43 +378,45 @@ namespace LaserGRBL
         { get { return GetColor(13); } }
         public static Color PreviewCommandWait
         { get { return GetColor(14); } }
+        public static Color PreviewCrossCursor
+        { get { return GetColor(15); } }
 
         public static Color LogBackColor
-		{ get { return GetColor(15); } }
-		public static Color LogLeftCOMMAND
 		{ get { return GetColor(16); } }
-		public static Color LogLeftSTARTUP
+		public static Color LogLeftCOMMAND
 		{ get { return GetColor(17); } }
-		public static Color LogLeftALARM
+		public static Color LogLeftSTARTUP
 		{ get { return GetColor(18); } }
-		public static Color LogLeftCONFIG
+		public static Color LogLeftALARM
 		{ get { return GetColor(19); } }
-		public static Color LogLeftFEEDBACK
+		public static Color LogLeftCONFIG
 		{ get { return GetColor(20); } }
-		public static Color LogLeftPOSITION
+		public static Color LogLeftFEEDBACK
 		{ get { return GetColor(21); } }
-		public static Color LogLeftOTHERS
+		public static Color LogLeftPOSITION
 		{ get { return GetColor(22); } }
-		public static Color LogRightGOOD
+		public static Color LogLeftOTHERS
 		{ get { return GetColor(23); } }
-		public static Color LogRightBAD
+		public static Color LogRightGOOD
 		{ get { return GetColor(24); } }
-		public static Color LogRightOTHERS
+		public static Color LogRightBAD
 		{ get { return GetColor(25); } }
-        public static Color TextBoxColorOverride
-        { get { return GetColor(25); } }
-		public static Color LinkColor
+		public static Color LogRightOTHERS
 		{ get { return GetColor(26); } }
-		public static Color VisitedLinkColor
+        public static Color TextBoxColorOverride
+        { get { return GetColor(26); } }
+		public static Color LinkColor
 		{ get { return GetColor(27); } }
+		public static Color VisitedLinkColor
+		{ get { return GetColor(28); } }
         public static Color ControlsBorder
-        { get { return GetColor(28); } }
-        public static Color ControlsBackDisabled
         { get { return GetColor(29); } }
-        public static Color DisabledButtons
+        public static Color ControlsBackDisabled
         { get { return GetColor(30); } }
-        public static Color PressedButtons
+        public static Color DisabledButtons
         { get { return GetColor(31); } }
+        public static Color PressedButtons
+        { get { return GetColor(32); } }
 
         private static Color GetColor(int index)
 		{return mData[CurrentScheme][index];}
