@@ -470,6 +470,18 @@
   <data name="showLaserOffMovementsToolStripMenuItem.Text" xml:space="preserve">
     <value>Show Laser Off movements</value>
   </data>
+  <data name="showBoundingBoxToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 22</value>
+  </data>
+  <data name="showBoundingBoxToolStripMenuItem.Text" xml:space="preserve">
+    <value>Show bounding box</value>
+  </data>
+  <data name="crossCursorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 22</value>
+  </data>
+  <data name="crossCursorToolStripMenuItem.Text" xml:space="preserve">
+    <value>Show cross cursor</value>
+  </data>
   <data name="showExecutedCommandsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>219, 22</value>
   </data>
@@ -481,6 +493,24 @@
   </data>
   <data name="lineSizeToolStripMenuItem.Text" xml:space="preserve">
     <value>Line size</value>
+  </data>
+  <data name="autosizeModeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 22</value>
+  </data>
+  <data name="autosizeModeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Auto size mode</value>
+  </data>
+  <data name="drawingAreaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 22</value>
+  </data>
+  <data name="drawingAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Drawing area</value>
+  </data>
+  <data name="movingAreaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 22</value>
+  </data>
+  <data name="movingAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Moving area</value>
   </data>
   <data name="toolStripMenuItem9.Size" type="System.Drawing.Size, System.Drawing">
     <value>216, 6</value>

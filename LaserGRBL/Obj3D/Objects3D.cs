@@ -2,7 +2,6 @@
 using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Cameras;
 using SharpGL.SceneGraph.Core;
-using SharpGL.SceneGraph.Lighting;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,25 +25,31 @@ namespace LaserGRBL.Obj3D
         public DisplayList DisplayList { get; private set; }
         public List<Object3DVertex> Vertices { get; } = new List<Object3DVertex>();
 
-        public void Begin(OpenGL gl, float lineWidth)
+        public void Begin(OpenGL gl, float lineWidth, int stipple = 0)
         {
             DisplayList = new DisplayList();
             DisplayList.Generate(gl);
             DisplayList.New(gl, DisplayList.DisplayListMode.Compile);
             gl.PushAttrib(OpenGL.GL_CURRENT_BIT | OpenGL.GL_ENABLE_BIT | OpenGL.GL_LINE_BIT);
-			LaserGRBL.UserControls.GrblPanel3D.CheckError(gl, "Attrib");
+            UserControls.GrblPanel3D.CheckError(gl, "Attrib");
 			gl.Disable(OpenGL.GL_LIGHTING);
-			LaserGRBL.UserControls.GrblPanel3D.CheckError(gl, "Light");
+			UserControls.GrblPanel3D.CheckError(gl, "Light");
 			gl.Disable(OpenGL.GL_TEXTURE_2D);
-			LaserGRBL.UserControls.GrblPanel3D.CheckError(gl, "Texture");
+			UserControls.GrblPanel3D.CheckError(gl, "Texture");
 			gl.LineWidth(lineWidth);
-			LaserGRBL.UserControls.GrblPanel3D.CheckError(gl, "LineWidth");
+            UserControls.GrblPanel3D.CheckError(gl, "LineWidth");
+            if (stipple > 0) {
+                gl.LineStipple(stipple, 0xAAAA);
+                UserControls.GrblPanel3D.CheckError(gl, "LineStipple");
+                gl.Enable(OpenGL.GL_LINE_STIPPLE);
+                UserControls.GrblPanel3D.CheckError(gl, "EnableLineStipple");
+            }
 			gl.Begin(OpenGL.GL_LINES);
-		}
+            UserControls.GrblPanel3D.CheckError(gl, "Lines");
+        }
 
         public void End(OpenGL gl)
         {
-            //gl.Disable(OpenGL.GL_POLYGON_SMOOTH);
             gl.End();
             gl.PopAttrib();
             DisplayList.End(gl);
@@ -58,17 +63,11 @@ namespace LaserGRBL.Obj3D
 
     public abstract class Object3D : SceneElement, IDisposable
     {
-        [XmlIgnore]
         protected List<Object3DDisplayList> mDisplayLists = new List<Object3DDisplayList>();
-        [XmlIgnore]
         public float LineWidth { get; set; }
-        [XmlIgnore]
         protected OpenGL mGL;
-        [XmlIgnore]
         protected Object3DDisplayList mCurrentDisplayList = null;
-        [XmlIgnore]
         protected const int MAX_VECTOR_IN_DISPLAY_LIST = 5000;
-        [XmlIgnore]
         protected bool mInvalidate = true;
 
         public ulong VertexCounter { get; private set; } = 0;
@@ -100,19 +99,10 @@ namespace LaserGRBL.Obj3D
             CallDisplayList(gl);
         }
 
-        protected virtual void CallDisplayList(OpenGL gl)
-        {
-            foreach (Object3DDisplayList object3DDisplayList in mDisplayLists)
-            {
-                object3DDisplayList.DisplayList.Call(gl);
-            }
-        }
+        protected abstract void CallDisplayList(OpenGL gl);
 
         private void CreateDisplayList()
         {
-            mCurrentDisplayList = new Object3DDisplayList();
-            mCurrentDisplayList.Begin(mGL, LineWidth);
-            mDisplayLists.Add(mCurrentDisplayList);
             Draw();
 			mCurrentDisplayList.End(mGL);
             mCurrentDisplayList = null;
@@ -120,11 +110,11 @@ namespace LaserGRBL.Obj3D
 
         protected abstract void Draw();
 
-        protected void NewDisplayList()
+        protected void NewDisplayList(bool first = false, int? lineWidth = null, int stipple = 0)
         {
-            mCurrentDisplayList.End(mGL);
+            if (!first) mCurrentDisplayList.End(mGL);
             mCurrentDisplayList = new Object3DDisplayList();
-            mCurrentDisplayList.Begin(mGL, LineWidth);
+            mCurrentDisplayList.Begin(mGL, lineWidth == null ? LineWidth : (int)lineWidth, stipple);
             mDisplayLists.Add(mCurrentDisplayList);
         }
 
@@ -160,17 +150,11 @@ namespace LaserGRBL.Obj3D
 
     public class Grid3D : Object3D
     {
-        [XmlIgnore]
         public static int ViewportSize { get; set; } = 1000000;
-        [XmlIgnore]
         public int ControlWidth { get; set; }
-        [XmlIgnore]
-        private OrthographicCamera mCamera;
-        [XmlIgnore]
         private DisplayList mDisplayTick;
-        [XmlIgnore]
         private DisplayList mDisplayMinor;
-        [XmlIgnore]
+        protected OrthographicCamera mCamera;
         private GLColor mTicksColor = new GLColor();
         [XmlIgnore]
         public GLColor TicksColor {
@@ -184,9 +168,7 @@ namespace LaserGRBL.Obj3D
                 }
             }
         }
-        [XmlIgnore]
         private GLColor mMinorsColor = new GLColor();
-        [XmlIgnore]
         public GLColor MinorsColor
         {
             get => mMinorsColor;
@@ -199,9 +181,7 @@ namespace LaserGRBL.Obj3D
                 }
             }
         }
-        [XmlIgnore]
         private GLColor mOriginsColor = new GLColor();
-        [XmlIgnore]
         public GLColor OriginsColor
         {
             get => mOriginsColor;
@@ -236,6 +216,7 @@ namespace LaserGRBL.Obj3D
 
         protected override void Draw()
         {
+            NewDisplayList(true);
             if (ControlWidth <= 0) return;
             int left = (int)mCamera.Left;
             int right = (int)mCamera.Right;
@@ -279,29 +260,49 @@ namespace LaserGRBL.Obj3D
 
     public class Grbl3D : Object3D
     {
-
-        [XmlIgnore]
         public readonly GrblCore Core;
-        [XmlIgnore]
         private readonly bool mJustLaserOffMovements;
-        [XmlIgnore]
+        private Object3DDisplayList mBoundingBoxDisplayList;
         public Color Color;
-        [XmlIgnore]
+        public Color BoundingBoxColor;
         public double LoadingPercentage { get; private set; } = 0;
+        public bool ShowBoundingBox { get; set; } = true;
+        private const int BOUNDING_RECT_LINE_WIDTH = 1;
+        private const int BOUNDING_RECT_STIPPLE = 10;
 
-
-        public Grbl3D(GrblCore core, string name, bool justLaserOffMovements, Color color) : base(name, core.PreviewLineSize.Value)
+        public Grbl3D(GrblCore core, string name, bool justLaserOffMovements, Color color, Color boundingBoxColor) : base(name, core.PreviewLineSize.Value)
         {
             Core = core;
             mJustLaserOffMovements = justLaserOffMovements;
             Color = color;
+            BoundingBoxColor = boundingBoxColor;
         }
 
         protected override void Draw()
         {
+            NewDisplayList(true, BOUNDING_RECT_LINE_WIDTH, BOUNDING_RECT_STIPPLE);
             float zPos = 0;
             GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
             Core.LoadedFile.InUse = true;
+            
+            mBoundingBoxDisplayList = mCurrentDisplayList;
+            if (!mJustLaserOffMovements)
+            {
+                const int borderLimit = 1000000;
+
+                AddVertex(-borderLimit, (double)Core.LoadedFile.Range.DrawingRange.Y.Min, zPos, BoundingBoxColor);
+                AddVertex(borderLimit, (double)Core.LoadedFile.Range.DrawingRange.Y.Min, zPos, BoundingBoxColor);
+
+                AddVertex((double)Core.LoadedFile.Range.DrawingRange.X.Max, -borderLimit, zPos, BoundingBoxColor);
+                AddVertex((double)Core.LoadedFile.Range.DrawingRange.X.Max, borderLimit, zPos, BoundingBoxColor);
+
+                AddVertex(-borderLimit, (double)Core.LoadedFile.Range.DrawingRange.Y.Max, zPos, BoundingBoxColor);
+                AddVertex(borderLimit, (double)Core.LoadedFile.Range.DrawingRange.Y.Max, zPos, BoundingBoxColor);
+
+                AddVertex((double)Core.LoadedFile.Range.DrawingRange.X.Min, -borderLimit, zPos, BoundingBoxColor);
+                AddVertex((double)Core.LoadedFile.Range.DrawingRange.X.Min, borderLimit, zPos, BoundingBoxColor);
+            }
+            NewDisplayList();
             int commandsCount = Core.LoadedFile.Commands.Count;
             for (int i = 0; i < commandsCount; i++)
             {
@@ -383,8 +384,22 @@ namespace LaserGRBL.Obj3D
 
         public override void Invalidate()
         {
-            foreach (Object3DDisplayList list in mDisplayLists)
+            if (!mJustLaserOffMovements && mBoundingBoxDisplayList != null)
             {
+                mBoundingBoxDisplayList.DisplayList.Delete(mGL);
+                mBoundingBoxDisplayList.Begin(mGL, BOUNDING_RECT_LINE_WIDTH, BOUNDING_RECT_STIPPLE);
+                foreach (Object3DVertex vertex in mBoundingBoxDisplayList.Vertices)
+                {
+                    vertex.NewColor = BoundingBoxColor;
+                    mGL.Color(vertex.NewColor);
+                    mGL.Vertex(vertex.X, vertex.Y, vertex.Z);
+                }
+                mBoundingBoxDisplayList.End(mGL);
+                mBoundingBoxDisplayList.Invalidated();
+            }
+            for (int i = 1; i < mDisplayLists.Count; i++)
+            {
+                Object3DDisplayList list = mDisplayLists[i];
                 if (!list.IsValid) {
                     list.DisplayList.Delete(mGL);
                     list.Begin(mGL, LineWidth);
@@ -432,12 +447,22 @@ namespace LaserGRBL.Obj3D
 
         internal void InvalidateAll()
         {
-            foreach (Object3DDisplayList list in mDisplayLists)
+            for (int i = 1; i < mDisplayLists.Count; i++)
             {
-                list.Invalidate();
+                mDisplayLists[i].Invalidate();
             }
             Invalidate();
         }
+
+        protected override void CallDisplayList(OpenGL gl)
+        {
+            if (ShowBoundingBox) mBoundingBoxDisplayList?.DisplayList?.Call(mGL);
+            for (int i = 1; i < mDisplayLists.Count; i++)
+            {
+                mDisplayLists[i].DisplayList.Call(gl);
+            }
+        }
+
     }
 
 }

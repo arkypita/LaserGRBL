@@ -35,7 +35,7 @@ namespace LaserGRBL
 
         public MainForm()
 		{
-			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", ColorScheme.Scheme.CADDark);
+			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", Scheme.CADDark);
 
 			InitializeComponent();
 			ExceptionManager.ParentMain = this;
@@ -89,7 +89,20 @@ namespace LaserGRBL
 			showLaserOffMovementsToolStripMenuItem.Checked = Core.ShowLaserOffMovements.Value;
 			showExecutedCommandsToolStripMenuItem.Checked = Core.ShowExecutedCommands.Value;
 			showDiagnosticDataToolStripMenuItem.Checked = Core.ShowPerformanceDiagnostic.Value;
-			CheckLineWidthItem();
+            showBoundingBoxToolStripMenuItem.Checked = Core.ShowBoundingBox.Value;
+			crossCursorToolStripMenuItem.Checked = Core.CrossCursor.Value;
+            drawingAreaToolStripMenuItem.Checked = Core.AutoSizeOnDrawing.Value;
+            movingAreaToolStripMenuItem.Checked = !Core.AutoSizeOnDrawing.Value;
+
+            cadStyleToolStripMenuItem.Tag = Scheme.CADStyle;
+            cadDarkToolStripMenuItem.Tag = Scheme.CADDark;
+            blueLaserToolStripMenuItem.Tag = Scheme.BlueLaser;
+            redLaserToolStripMenuItem.Tag = Scheme.RedLaser;
+            darkToolStripMenuItem.Tag = Scheme.Dark;
+            hackerToolStripMenuItem.Tag = Scheme.Hacker;
+            nightyToolStripMenuItem.Tag = Scheme.Nighty;
+
+            CheckLineWidthItem();
 
 			MnGrblConfig.Visible = Core.UIShowGrblConfig;
 			MnUnlock.Visible = Core.UIShowUnlockButtons;
@@ -110,8 +123,8 @@ namespace LaserGRBL
 			AssignIcons();
 			RefreshColorSchema(); //include RefreshOverride();
 			RefreshFormTitle();
-			//RefreshMenuHotKeys(); // I don't like the behaviour and the aspect, so I comment it out
-		}
+            //RefreshMenuHotKeys(); // I don't like the behaviour and the aspect, so I comment it out
+        }
 
 		public MainForm(string[] args) : this()
 		{
@@ -136,13 +149,17 @@ namespace LaserGRBL
 		{
 			MMn.BackColor = BackColor = StatusBar.BackColor = ColorScheme.FormBackColor;
 			MMn.ForeColor = ForeColor = ColorScheme.FormForeColor;
-            cadStyleToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.CADStyle;
-            cadDarkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.CADDark;
-            blueLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.BlueLaser;
-            redLaserToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.RedLaser;
-            darkToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Dark;
-            hackerToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Hacker;
-            nightyToolStripMenuItem.Checked = ColorScheme.CurrentScheme == ColorScheme.Scheme.Nighty;
+			List<ToolStripMenuItem> items = new List<ToolStripMenuItem>()
+            {
+                cadStyleToolStripMenuItem,
+				cadDarkToolStripMenuItem,
+				blueLaserToolStripMenuItem,
+				redLaserToolStripMenuItem,
+				darkToolStripMenuItem,
+				hackerToolStripMenuItem,
+				nightyToolStripMenuItem
+			};
+			foreach (ToolStripMenuItem item in items) item.Checked = ColorScheme.CurrentScheme == (Scheme)item.Tag;
             TTLinkToNews.LinkColor = ColorScheme.LinkColor;
 			TTLinkToNews.VisitedLinkColor = ColorScheme.VisitedLinkColor;
 			ThemeMgr.SetTheme(this, true);
@@ -220,6 +237,7 @@ namespace LaserGRBL
 			IconsMgr.PrepareMenuItem(donateToolStripMenuItem, "mdi-gift");
 			IconsMgr.PrepareMenuItem(licenseToolStripMenuItem, "mdi-license");
 			IconsMgr.PrepareMenuItem(MnCheckNow, "mdi-cloud-check-variant-outline");
+			IconsMgr.PrepareMenuItem(autosizeModeToolStripMenuItem, "mdi-resize");
 			if (!IconsMgr.LegacyIcons)
 			{
 				IconsMgr.PrepareMenuItem(MnGrbl, "mdi-hammer-wrench");
@@ -792,47 +810,13 @@ namespace LaserGRBL
 		}
 
 
-        private void cadStyleToolStripMenuItem_Click(object sender, EventArgs e)
+        private void styleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SetSchema(ColorScheme.Scheme.CADStyle);
-        }
-
-        private void cadDarkToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SetSchema(ColorScheme.Scheme.CADDark);
-        }
-
-        private void blueLaserToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SetSchema(ColorScheme.Scheme.BlueLaser);
-		}
-
-		private void redLaserToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SetSchema(ColorScheme.Scheme.RedLaser);
-		}
-
-		private void darkToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SetSchema(ColorScheme.Scheme.Dark);
-		}
-
-		private void hackerToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SetSchema(ColorScheme.Scheme.Hacker);
-		}
-
-		private void nightyToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SetSchema(ColorScheme.Scheme.Nighty);
-		}
-
-		private void SetSchema(ColorScheme.Scheme schema)
-		{
-			Settings.SetObject("Color Schema", schema);
-			ColorScheme.CurrentScheme = schema;
+            Scheme schema = (Scheme)(sender as ToolStripMenuItem).Tag;
+            Settings.SetObject("Color Schema", schema);
+            ColorScheme.CurrentScheme = (Scheme)schema;
             RefreshColorSchema();
-		}
+        }
 
 		private void grblConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -1231,7 +1215,7 @@ namespace LaserGRBL
 			Generator.ShakeTest.CreateAndShowDialog(this, Core);
 		}
 
-        private void autoSizeToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void autoSizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (PreviewForm.GrblPanel is GrblPanel3D)
             {
@@ -1262,7 +1246,6 @@ namespace LaserGRBL
         {
             if (PreviewForm.GrblPanel is GrblPanel3D)
             {
-                GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
 				Core.ShowLaserOffMovements.Value = showLaserOffMovementsToolStripMenuItem.Checked;
             }
         }
@@ -1271,7 +1254,6 @@ namespace LaserGRBL
         {
             if (PreviewForm.GrblPanel is GrblPanel3D)
             {
-                GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
                 Core.ShowExecutedCommands.Value = showExecutedCommandsToolStripMenuItem.Checked;
             }
         }
@@ -1280,7 +1262,6 @@ namespace LaserGRBL
         {
             if (PreviewForm.GrblPanel is GrblPanel3D)
             {
-                GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
                 Core.PreviewLineSize.Value = Convert.ToInt32((sender as ToolStripMenuItem).Tag);
 				CheckLineWidthItem();
             }
@@ -1304,15 +1285,53 @@ namespace LaserGRBL
 		{
 			if (PreviewForm.GrblPanel is GrblPanel3D)
 			{
-				GrblPanel3D panel3D = PreviewForm.GrblPanel as GrblPanel3D;
 				Core.ShowPerformanceDiagnostic.Value = showDiagnosticDataToolStripMenuItem.Checked;
 			}
 		}
 
-	}
+        private void showBoundingBoxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (PreviewForm.GrblPanel is GrblPanel3D)
+            {
+                Core.ShowBoundingBox.Value = showBoundingBoxToolStripMenuItem.Checked;
+                (PreviewForm.GrblPanel as GrblPanel3D).RR.Set();
+            }
+        }
+
+        private void crossCursorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (PreviewForm.GrblPanel is GrblPanel3D)
+            {
+                Core.CrossCursor.Value = crossCursorToolStripMenuItem.Checked;
+                (PreviewForm.GrblPanel as GrblPanel3D).RR.Set();
+            }
+        }
+
+        private void drawingAreaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (PreviewForm.GrblPanel is GrblPanel3D)
+            {
+                Core.AutoSizeOnDrawing.Value = drawingAreaToolStripMenuItem.Checked;
+                movingAreaToolStripMenuItem.Checked = !Core.AutoSizeOnDrawing.Value;
+                (PreviewForm.GrblPanel as GrblPanel3D).AutoSizeDrawing();
+            }
+        }
+
+        private void machineAreaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (PreviewForm.GrblPanel is GrblPanel3D)
+            {
+                Core.AutoSizeOnDrawing.Value = !movingAreaToolStripMenuItem.Checked;
+                drawingAreaToolStripMenuItem.Checked = Core.AutoSizeOnDrawing.Value;
+                (PreviewForm.GrblPanel as GrblPanel3D).AutoSizeDrawing();
+            }
+        }
+    }
 
 
-	public class MMnRenderer : ToolStripProfessionalRenderer
+    public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 

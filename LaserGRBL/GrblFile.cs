@@ -102,11 +102,7 @@ namespace LaserGRBL
 
 		private void SafeLoadFile(ThreadStart loadFileAction)
         {
-            if (mLoadingThread != null || InUse)
-            {
-                MessageBox.Show(Strings.AlreadyLoading);
-                return;
-            }
+            if (CheckInUse()) return;
             mLoadingThread = new Thread(new ThreadStart(() =>
             {
 				try
@@ -344,9 +340,22 @@ namespace LaserGRBL
 			dir == RasterConverter.ImageProcessor.Direction.NewSquares;
 		}
 
+		private bool CheckInUse()
+		{
+            if (mLoadingThread != null || InUse)
+            {
+                MessageBox.Show(Strings.AlreadyLoading);
+				return true;
+            }
+			return false;
+        }
+
+
 		public void LoadImagePotrace(Bitmap bmp, string filename, bool UseSpotRemoval, int SpotRemoval, bool UseSmoothing, decimal Smoothing, bool UseOptimize, decimal Optimize, bool useOptimizeFast, L2LConf c, bool append, GrblCore core)
 		{
-			skipcmd = Settings.GetObject("Disable G0 fast skip", false) ? "G1" : "G0";
+            if (CheckInUse()) return;
+
+            skipcmd = Settings.GetObject("Disable G0 fast skip", false) ? "G1" : "G0";
 
 			RiseOnFileLoading(filename);
 
@@ -502,9 +511,10 @@ namespace LaserGRBL
 
 		private string skipcmd = "G0";
 		public void LoadImageL2L(Bitmap bmp, string filename, L2LConf c, bool append, GrblCore core)
-		{
+        {
+            if (CheckInUse()) return;
 
-			skipcmd = Settings.GetObject("Disable G0 fast skip", false) ? "G1" : "G0";
+            skipcmd = Settings.GetObject("Disable G0 fast skip", false) ? "G1" : "G0";
 
 			RiseOnFileLoading(filename);
 
@@ -547,8 +557,10 @@ namespace LaserGRBL
 		}
 
 		internal void GenerateCuttingTest(int f_col, int f_start, int f_end, int p_start, int p_end, int s_fixed, int f_text, int s_text, string title, string ton)
-		{
-			int p_row = p_end - p_start + 1;
+        {
+            if (CheckInUse()) return;
+
+            int p_row = p_end - p_start + 1;
 			double ox = 3;
 			double oy = 3;
 			string filename = "Cutting Test";
@@ -626,11 +638,12 @@ namespace LaserGRBL
 		}
 
 		public void GenerateGreyscaleTest(int f_row, int s_col, int f_start, int f_end, int s_start, int s_end, int x_size, int y_size, double resolution, int f_grid, int s_grid, string title, int f_text, int s_text, string ton)
-		{
+        {
+            if (CheckInUse()) return;
 
-			//string text = Hershey.Hershey.Test();
+            //string text = Hershey.Hershey.Test();
 
-			double ox = 3;
+            double ox = 3;
 			double oy = 3;
 			string filename = "PowerSpeed Test";
 
@@ -747,8 +760,10 @@ namespace LaserGRBL
 		}
 
 		internal void GenerateShakeTest(string axis, int flimit, int axislen, int cpower, int cspeed)
-		{
-			string filename = $"Shake Test {axis}";
+        {
+            if (CheckInUse()) return;
+
+            string filename = $"Shake Test {axis}";
 
 			RiseOnFileLoading(filename);
 
@@ -798,8 +813,8 @@ namespace LaserGRBL
 		}
 
 		private void GenerateShakeTest2(string axis, int flimit, int axislen, int o, int trip, double step)
-		{
-			for (int c = trip / 2; c < axislen - trip / 2; c += trip) //centro dei punti di oscillazione
+        {
+            for (int c = trip / 2; c < axislen - trip / 2; c += trip) //centro dei punti di oscillazione
 			{
 				for (double i = 0; i < trip / 3; i += step)
 				{
@@ -1380,6 +1395,7 @@ namespace LaserGRBL
 
 		internal void LoadImageCenterline(Bitmap bmp, string filename, bool useCornerThreshold, int cornerThreshold, bool useLineThreshold, int lineThreshold, L2LConf conf, bool append, GrblCore core)
 		{
+			if (CheckInUse()) return;
 
 			RiseOnFileLoading(filename);
 

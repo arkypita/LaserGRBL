@@ -100,6 +100,7 @@
 			this.showLaserOffMovementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.showExecutedCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.lineSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.autosizeModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pxToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.pxToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
 			this.pxToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,6 +108,10 @@
 			this.pxToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
 			this.showDiagnosticDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.showBoundingBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.crossCursorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.drawingAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.movingAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.linguaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNEnglish = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNItalian = new System.Windows.Forms.ToolStripMenuItem();
@@ -605,43 +610,43 @@
 			// 
 			this.cadStyleToolStripMenuItem.Name = "cadStyleToolStripMenuItem";
 			resources.ApplyResources(this.cadStyleToolStripMenuItem, "cadStyleToolStripMenuItem");
-			this.cadStyleToolStripMenuItem.Click += new System.EventHandler(this.cadStyleToolStripMenuItem_Click);
+			this.cadStyleToolStripMenuItem.Click += new System.EventHandler(this.styleToolStripMenuItem_Click);
 			// 
 			// cadDarkToolStripMenuItem
 			// 
 			this.cadDarkToolStripMenuItem.Name = "cadDarkToolStripMenuItem";
 			resources.ApplyResources(this.cadDarkToolStripMenuItem, "cadDarkToolStripMenuItem");
-			this.cadDarkToolStripMenuItem.Click += new System.EventHandler(this.cadDarkToolStripMenuItem_Click);
+			this.cadDarkToolStripMenuItem.Click += new System.EventHandler(this.styleToolStripMenuItem_Click);
 			// 
 			// blueLaserToolStripMenuItem
 			// 
 			this.blueLaserToolStripMenuItem.Name = "blueLaserToolStripMenuItem";
 			resources.ApplyResources(this.blueLaserToolStripMenuItem, "blueLaserToolStripMenuItem");
-			this.blueLaserToolStripMenuItem.Click += new System.EventHandler(this.blueLaserToolStripMenuItem_Click);
+			this.blueLaserToolStripMenuItem.Click += new System.EventHandler(this.styleToolStripMenuItem_Click);
 			// 
 			// redLaserToolStripMenuItem
 			// 
 			this.redLaserToolStripMenuItem.Name = "redLaserToolStripMenuItem";
 			resources.ApplyResources(this.redLaserToolStripMenuItem, "redLaserToolStripMenuItem");
-			this.redLaserToolStripMenuItem.Click += new System.EventHandler(this.redLaserToolStripMenuItem_Click);
+			this.redLaserToolStripMenuItem.Click += new System.EventHandler(this.styleToolStripMenuItem_Click);
 			// 
 			// darkToolStripMenuItem
 			// 
 			this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
 			resources.ApplyResources(this.darkToolStripMenuItem, "darkToolStripMenuItem");
-			this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
+			this.darkToolStripMenuItem.Click += new System.EventHandler(this.styleToolStripMenuItem_Click);
 			// 
 			// hackerToolStripMenuItem
 			// 
 			this.hackerToolStripMenuItem.Name = "hackerToolStripMenuItem";
 			resources.ApplyResources(this.hackerToolStripMenuItem, "hackerToolStripMenuItem");
-			this.hackerToolStripMenuItem.Click += new System.EventHandler(this.hackerToolStripMenuItem_Click);
+			this.hackerToolStripMenuItem.Click += new System.EventHandler(this.styleToolStripMenuItem_Click);
 			// 
 			// nightyToolStripMenuItem
 			// 
 			this.nightyToolStripMenuItem.Name = "nightyToolStripMenuItem";
 			resources.ApplyResources(this.nightyToolStripMenuItem, "nightyToolStripMenuItem");
-			this.nightyToolStripMenuItem.Click += new System.EventHandler(this.nightyToolStripMenuItem_Click);
+			this.nightyToolStripMenuItem.Click += new System.EventHandler(this.styleToolStripMenuItem_Click);
 			// 
 			// previewToolStripMenuItem
 			// 
@@ -652,6 +657,9 @@
             this.toolStripMenuItem10,
             this.showLaserOffMovementsToolStripMenuItem,
             this.showExecutedCommandsToolStripMenuItem,
+            this.showBoundingBoxToolStripMenuItem,
+			this.crossCursorToolStripMenuItem,
+			this.autosizeModeToolStripMenuItem,
             this.lineSizeToolStripMenuItem,
             this.toolStripMenuItem9,
             this.showDiagnosticDataToolStripMenuItem});
@@ -662,7 +670,7 @@
 			// 
 			this.autoSizeToolStripMenuItem.Name = "autoSizeToolStripMenuItem";
 			resources.ApplyResources(this.autoSizeToolStripMenuItem, "autoSizeToolStripMenuItem");
-			this.autoSizeToolStripMenuItem.Click += new System.EventHandler(this.autoSizeToolStripMenuItem_Click_1);
+			this.autoSizeToolStripMenuItem.Click += new System.EventHandler(this.autoSizeToolStripMenuItem_Click);
 			// 
 			// showLaserOffMovementsToolStripMenuItem
 			// 
@@ -670,6 +678,20 @@
 			this.showLaserOffMovementsToolStripMenuItem.Name = "showLaserOffMovementsToolStripMenuItem";
 			resources.ApplyResources(this.showLaserOffMovementsToolStripMenuItem, "showLaserOffMovementsToolStripMenuItem");
 			this.showLaserOffMovementsToolStripMenuItem.Click += new System.EventHandler(this.showLaserOffMovementsToolStripMenuItem_Click);
+			// 
+			// showBoundingBoxToolStripMenuItem
+			// 
+			this.showBoundingBoxToolStripMenuItem.CheckOnClick = true;
+			this.showBoundingBoxToolStripMenuItem.Name = "showBoundingBoxToolStripMenuItem";
+			resources.ApplyResources(this.showBoundingBoxToolStripMenuItem, "showBoundingBoxToolStripMenuItem");
+			this.showBoundingBoxToolStripMenuItem.Click += new System.EventHandler(this.showBoundingBoxToolStripMenuItem_Click);
+			// 
+			// crossCursorToolStripMenuItem
+			// 
+			this.crossCursorToolStripMenuItem.CheckOnClick = true;
+			this.crossCursorToolStripMenuItem.Name = "crossCursorToolStripMenuItem";
+			resources.ApplyResources(this.crossCursorToolStripMenuItem, "crossCursorToolStripMenuItem");
+			this.crossCursorToolStripMenuItem.Click += new System.EventHandler(this.crossCursorToolStripMenuItem_Click);
 			// 
 			// showExecutedCommandsToolStripMenuItem
 			// 
@@ -688,6 +710,14 @@
             this.pxToolStripMenuItem5});
 			this.lineSizeToolStripMenuItem.Name = "lineSizeToolStripMenuItem";
 			resources.ApplyResources(this.lineSizeToolStripMenuItem, "lineSizeToolStripMenuItem");
+			// 
+			// autosizeModeToolStripMenuItem
+			// 
+			this.autosizeModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.drawingAreaToolStripMenuItem,
+            this.movingAreaToolStripMenuItem});
+			this.autosizeModeToolStripMenuItem.Name = "autosizeModeToolStripMenuItem";
+			resources.ApplyResources(this.autosizeModeToolStripMenuItem, "autosizeModeToolStripMenuItem");
 			// 
 			// pxToolStripMenuItem1
 			// 
@@ -723,6 +753,22 @@
 			resources.ApplyResources(this.pxToolStripMenuItem5, "pxToolStripMenuItem5");
 			this.pxToolStripMenuItem5.Tag = "5";
 			this.pxToolStripMenuItem5.Click += new System.EventHandler(this.pxToolStripMenuItem_Click);
+			// 
+			// drawingAreaToolStripMenuItem
+			// 
+			this.drawingAreaToolStripMenuItem.Name = "drawingAreaToolStripMenuItem";
+			this.drawingAreaToolStripMenuItem.CheckOnClick = true;
+			resources.ApplyResources(this.drawingAreaToolStripMenuItem, "drawingAreaToolStripMenuItem");
+			this.drawingAreaToolStripMenuItem.Tag = "Drawing area";
+			this.drawingAreaToolStripMenuItem.Click += new System.EventHandler(this.drawingAreaToolStripMenuItem_Click);
+			// 
+			// movingAreaToolStripMenuItem
+			// 
+			this.movingAreaToolStripMenuItem.Name = "movingAreaToolStripMenuItem";
+			this.movingAreaToolStripMenuItem.CheckOnClick = true;
+			resources.ApplyResources(this.movingAreaToolStripMenuItem, "movingAreaToolStripMenuItem");
+			this.movingAreaToolStripMenuItem.Tag = "Machine area";
+			this.movingAreaToolStripMenuItem.Click += new System.EventHandler(this.machineAreaToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem9
 			// 
@@ -1303,6 +1349,11 @@
 		private System.Windows.Forms.ToolStripMenuItem zoomInToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem zoomOutToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
+		private System.Windows.Forms.ToolStripMenuItem showBoundingBoxToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem crossCursorToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem autosizeModeToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem drawingAreaToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem movingAreaToolStripMenuItem;
 	}
 }
 
