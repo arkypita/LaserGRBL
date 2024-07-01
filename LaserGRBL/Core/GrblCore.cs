@@ -1623,6 +1623,19 @@ namespace LaserGRBL
 				ContinuousJog.ToPosition(target, speed);
 		}
 
+		public void ContinuousJogToPosition(PointF target, float speed) 
+		{
+			target = LimitToBound(target); //if soft limit enabled -> crop to machine area
+
+			if (!JogEnabled) //cannot jog now
+				return;
+
+			if (!SupportTrueJogging)                                                            // old firmware
+				return; //not supported by firmware
+
+			ContinuousJog.ToPosition(target, speed);
+		}
+
 		public void JogToDirection(JogDirection dir, bool fast) => JogToDirection(dir, fast, JogStep);
 		public void JogToDirection(JogDirection dir, bool fast, decimal step) => JogToDirection(dir, fast ? 100000 : JogSpeed, step);
 		public void JogToDirection(JogDirection dir, float speed, decimal step) 
@@ -1634,12 +1647,29 @@ namespace LaserGRBL
 
 			if (!JogEnabled)																		// cannot jog now
 				return;																					// ignore request
-			else if (!SupportTrueJogging)															// old firmware
+			
+			if (!SupportTrueJogging)															// old firmware
 				EnqueueJogV09(dir, step, speed);														// immediate enqueue old command
 			else if (!ContinuosJogEnabled || dir == JogDirection.Zdown || dir == JogDirection.Zup)  // continuous jog disabled && Z movement
 				EnqueueJogV11(dir, step, speed);                                                        // immediate enqueue new command
-			else																					// continuoud jog enabled
-				ContinuousJog.ToDirection(dir, speed);														// assign jog target
+			else                                                                                    // continuoud jog enabled
+				ContinuousJog.ToDirection(dir, speed);                                                    // assign jog target
+		}
+
+		public void ContinuousJogToDirection(JogDirection dir, float speed)
+		{
+			if (dir == JogDirection.Abort)
+				throw new ArgumentException("Invalid option", "dir");
+			if (dir == JogDirection.Position)
+				throw new ArgumentException("Invalid option", "dir");
+
+			if (!JogEnabled)                                                                        // cannot jog now
+				return;
+
+			if (!SupportTrueJogging)                                                            // old firmware
+				return; //not supported by firmware
+
+			ContinuousJog.ToDirection(dir, speed);
 		}
 
 		public void JogAbort() //da chiamare su ButtonUp
@@ -1650,6 +1680,14 @@ namespace LaserGRBL
 				;                                                                                       // we can abort but we don't want
 			else                                                                                    // continuoud jog enabled
 				ContinuousJog.Abort();														               // assign jog target
+		}
+
+		public void ContinuousJogAbort() //da chiamare su ButtonUp
+		{
+			if (!SupportTrueJogging)                                                                // old firmware
+				return;                                                                                       // abort not supported
+			
+			ContinuousJog.Abort();                                                                     // assign jog target
 		}
 
 		private PointF LimitToBound(PointF target)
