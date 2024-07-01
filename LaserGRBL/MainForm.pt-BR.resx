@@ -832,4 +832,10 @@
   <data name="showDiagnosticDataToolStripMenuItem.Text" xml:space="preserve">
     <value>Mostrar dados de diagnóstico</value>
   </data>
+  <data name="zoomInToolStripMenuItem.Text" xml:space="preserve">
+    <value>Zoom Aumentar (+10%)</value>
+  </data>
+  <data name="zoomOutToolStripMenuItem.Text" xml:space="preserve">
+    <value>Zoom Diminuir (-10%)</value>
+  </data>
 </root>

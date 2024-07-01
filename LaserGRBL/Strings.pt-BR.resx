@@ -453,4 +453,40 @@ Você quer reiniciar o LaserGRBL e alternar para o modo legado?</value>
     <value>Parece que seu computador não suporta aceleração de hardware.
 Você quer reiniciar o LaserGRBL e alternar para renderização de software?</value>
   </data>
+  <data name="TipsZoomOut" xml:space="preserve">
+    <value>Zoom Diminuir (-10%)</value>
+  </data>
+  <data name="TipsZoomIn" xml:space="preserve">
+    <value>Zoom Aumentar (+10%)</value>
+  </data>
+  <data name="TipsZoomAuto" xml:space="preserve">
+    <value>Zoom Auto (100%)</value>
+  </data>
+  <data name="TipsZoom" xml:space="preserve">
+    <value>ZOOM: Use a roda do mouse (ou gesto de 2-dedos)</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Carregando</value>
+  </data>
+  <data name="PrepareDrawing" xml:space="preserve">
+    <value>Preparando desenho...</value>
+  </data>
+  <data name="TipsBasicUsage" xml:space="preserve">
+    <value>Uso Básico</value>
+  </data>
+  <data name="ClearDrawing" xml:space="preserve">
+    <value>Limpar desenho...</value>
+  </data>
+  <data name="AlreadyLoading" xml:space="preserve">
+    <value>Um arquivo já está sendo carregado, por favor aguarde...</value>
+  </data>
+  <data name="TipsJog" xml:space="preserve">
+    <value>JOG: Clique duas vezes em qualquer ponto (ou toque duas vezes)</value>
+  </data>
+  <data name="TipsKeyboardShortcuts" xml:space="preserve">
+    <value>Atalhos do Teclado</value>
+  </data>
+  <data name="TipsPan" xml:space="preserve">
+    <value>PAN: Clique e arraste (ou toque e arraste)</value>
+  </data>
 </root>
