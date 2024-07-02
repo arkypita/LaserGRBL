@@ -128,7 +128,7 @@ namespace LaserGRBL.UserControls
 			OpCounter = 0;
 			FrameTime = new Base.Mathematics.MobileDAverageCalculator(10);
 			SleepTime = new Base.Mathematics.MobileDAverageCalculator(10);
-			RefreshRate = new Base.Mathematics.MobileDAverageCalculator(10);
+			RefreshRate = new Base.Mathematics.MobileDAverageCalculator(3);
 			mLastWPos = GPoint.Zero;
 			mLastMPos = GPoint.Zero;
 			forcez = Settings.GetObject("Enale Z Jog Control", false);
@@ -777,7 +777,7 @@ namespace LaserGRBL.UserControls
 					else
 						VertexString = string.Format("{0,6:###0.0} B", VertexCounter / 1000000000.0);
 
-					text = $"VER   {VertexString}\nAFT   {string.Format("{0,6:##0} ms", FrameTime.Avg)}\nAST   {string.Format("{0,6:##0} ms", SleepTime.Avg)}\nRPS   {string.Format("{0,6:##0}", 1000.0 / RefreshRate.Avg)}";
+					text = $"VER   {VertexString}\nAFT   {string.Format("{0,6:##0} ms", FrameTime.Avg)}\nAST   {string.Format("{0,6:##0} ms", SleepTime.Avg)}\nRPS   {string.Format("{0,6:##0}", Math.Max(0, Math.Floor(1000.0 / RefreshRate.Avg - 1)))}";
 					size = MeasureText(text, font);
 					point = new Point(Width - size.Width - mPadding.Right, pos);
 					DrawOverlay(e, point, size, ColorScheme.PreviewRuler, 100);
@@ -1102,6 +1102,7 @@ namespace LaserGRBL.UserControls
 			);
 		}
 
+		PeriodicEventTimer InvalidateTimer = new Tools.PeriodicEventTimer(TimeSpan.FromSeconds(1), true);
 		public void TimerUpdate()
 		{
 			if (Core != null && (mLastWPos != Core.WorkPosition || mLastMPos != Core.MachinePosition || mCurF != Core.CurrentF || mCurS != Core.CurrentS))
@@ -1112,7 +1113,9 @@ namespace LaserGRBL.UserControls
 				mCurS = Core.CurrentS;
 				RR.Set();
 			}
-			Invalidate();
+
+			if (InvalidateTimer.Expired)
+				Invalidate();
 		}
 
 		public void OnColorChange()
