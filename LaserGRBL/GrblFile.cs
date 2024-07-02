@@ -340,11 +340,13 @@ namespace LaserGRBL
 			dir == RasterConverter.ImageProcessor.Direction.NewSquares;
 		}
 
-		private bool CheckInUse()
+		public bool CheckInUse(bool showMessageBox = true)
 		{
             if (mLoadingThread != null || InUse)
             {
-                MessageBox.Show(Strings.AlreadyLoading);
+                if(showMessageBox)
+					MessageBox.Show(Strings.AlreadyLoading);
+
 				return true;
             }
 			return false;

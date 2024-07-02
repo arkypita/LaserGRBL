@@ -295,12 +295,12 @@ namespace LaserGRBL
                     return;
 
                 if (cb.ButtonType == CustomButton.ButtonTypes.Button && !PositionUnlocked)
-                    Core.ExecuteCustombutton(cb.GCode);
+                    Core.ExecuteCustomCode(cb.GCode);
 
                 if (cb.ButtonType == CustomButton.ButtonTypes.TwoStateButton && !PositionUnlocked)
                 {
                     on = !on;
-                    Core.ExecuteCustombutton(on ? cb.GCode : cb.GCode2);
+                    Core.ExecuteCustomCode(on ? cb.GCode : cb.GCode2);
                     BackColor = on ? ColorScheme.PressedButtons : Parent.BackColor;
                 }
 
@@ -326,7 +326,7 @@ namespace LaserGRBL
 
                 if (cb.ButtonType == CustomButton.ButtonTypes.PushButton && !PositionUnlocked)
                 {
-                    Core.ExecuteCustombutton(cb.GCode);
+                    Core.ExecuteCustomCode(cb.GCode);
                     BackColor = ColorScheme.PressedButtons;
                 }
 
@@ -349,7 +349,7 @@ namespace LaserGRBL
 
                 if (cb.ButtonType == CustomButton.ButtonTypes.PushButton && !PositionUnlocked)
                 {
-                    Core.ExecuteCustombutton(cb.GCode2);
+                    Core.ExecuteCustomCode(cb.GCode2);
                     BackColor = Parent.BackColor;
                 }
 
