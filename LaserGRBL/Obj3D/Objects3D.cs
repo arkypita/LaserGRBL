@@ -258,27 +258,44 @@ namespace LaserGRBL.Obj3D
 
     }
 
-    public class Grbl3D : Object3D
-    {
-        public readonly GrblCore Core;
-        private readonly bool mJustLaserOffMovements;
-        private Object3DDisplayList mBoundingBoxDisplayList;
-        public Color Color;
-        public Color BoundingBoxColor;
-        public double LoadingPercentage { get; private set; } = 0;
-        public bool ShowBoundingBox { get; set; } = true;
-        private const int BOUNDING_RECT_LINE_WIDTH = 1;
-        private const int BOUNDING_RECT_STIPPLE = 10;
+	public class Grbl3D : Object3D
+	{
+		public readonly GrblCore Core;
+		private readonly bool mJustLaserOffMovements;
+		private Object3DDisplayList mBoundingBoxDisplayList;
+		public Color Color;
+		public Color BoundingBoxColor;
+		private double mLoadingPercentage = 0;
+		public bool ShowBoundingBox { get; set; } = true;
+		private const int BOUNDING_RECT_LINE_WIDTH = 1;
+		private const int BOUNDING_RECT_STIPPLE = 10;
 
-        public Grbl3D(GrblCore core, string name, bool justLaserOffMovements, Color color, Color boundingBoxColor) : base(name, core.PreviewLineSize.Value)
-        {
-            Core = core;
-            mJustLaserOffMovements = justLaserOffMovements;
-            Color = color;
-            BoundingBoxColor = boundingBoxColor;
-        }
+		public delegate void OnLoadingPercentageChangeDlg();
+		public static event OnLoadingPercentageChangeDlg OnLoadingPercentageChange;
 
-        protected override void Draw()
+		public Grbl3D(GrblCore core, string name, bool justLaserOffMovements, Color color, Color boundingBoxColor) : base(name, core.PreviewLineSize.Value)
+		{
+			Core = core;
+			mJustLaserOffMovements = justLaserOffMovements;
+			Color = color;
+			BoundingBoxColor = boundingBoxColor;
+		}
+
+
+		public double LoadingPercentage
+		{
+			get { return mLoadingPercentage; }
+			private set
+			{
+				if (value != mLoadingPercentage)
+				{
+					mLoadingPercentage = value;
+					OnLoadingPercentageChange?.Invoke();
+				}
+			}
+		}
+
+		protected override void Draw()
         {
             NewDisplayList(true, BOUNDING_RECT_LINE_WIDTH, BOUNDING_RECT_STIPPLE);
             float zPos = 0;

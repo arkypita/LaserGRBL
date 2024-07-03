@@ -141,6 +141,7 @@ namespace LaserGRBL.UserControls
 			MouseMove += GrblSceneControl_MouseMove;
 			MouseUp += GrblSceneControl_MouseUp;
 			MouseLeave += GrblSceneControl_MouseLeave;
+			Grbl3D.OnLoadingPercentageChange += Grbl3D_OnLoadingPercentageChange;
 			Resize += GrblPanel3D_Resize;
 			Disposed += GrblPanel3D_Disposed;
 			mCamera.Position = new Vertex(0, 0, 0);
@@ -169,7 +170,7 @@ namespace LaserGRBL.UserControls
 			*/
 		}
 
-        private static double GetRulerStep(double n)
+		private static double GetRulerStep(double n)
         {
             int digitCount = Convert.ToInt32(Math.Max(3, Math.Floor(Math.Log10(n) + 1)));
             int power = Convert.ToInt32(Math.Pow(10, digitCount - 1));
@@ -1116,6 +1117,11 @@ namespace LaserGRBL.UserControls
 
 			if (InvalidateTimer.Expired)
 				Invalidate();
+		}
+
+		private void Grbl3D_OnLoadingPercentageChange()
+		{
+			Invalidate();
 		}
 
 		public void OnColorChange()
