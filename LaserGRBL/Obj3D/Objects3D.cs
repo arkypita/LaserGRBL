@@ -45,7 +45,6 @@ namespace LaserGRBL.Obj3D
                 UserControls.GrblPanel3D.CheckError(gl, "EnableLineStipple");
             }
 			gl.Begin(OpenGL.GL_LINES);
-            UserControls.GrblPanel3D.CheckError(gl, "Lines");
         }
 
         public void End(OpenGL gl)
