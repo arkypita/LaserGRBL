@@ -26,10 +26,10 @@ namespace LaserGRBL.Generator
             mCore = core;
 		}
 
-		public static void CreateAndShowDialog(Form parent, GrblCore core)
+		public static void CreateAndShowDialog(GrblCore core)
 		{
 			using (ShakeTest f = new ShakeTest(core))
-				f.ShowDialog(parent);
+				f.ShowDialog(FormsHelper.MainForm);
 		}
 
 		private void BtnCreate_Click(object sender, EventArgs e)

@@ -20,10 +20,10 @@ namespace LaserGRBL
 			mCore = core;
 		}
 
-		internal static void CreateAndShowDialog(Form parent, GrblCore core)
+		internal static void CreateAndShowDialog(GrblCore core)
 		{
 			using (LaserUsage sf = new LaserUsage(core))
-				sf.ShowDialog(parent);
+				sf.ShowDialog(FormsHelper.MainForm);
 		}
 
 		private void LaserUsage_Load(object sender, EventArgs e)

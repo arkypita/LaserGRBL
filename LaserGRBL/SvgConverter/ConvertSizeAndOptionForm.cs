@@ -48,11 +48,11 @@ namespace LaserGRBL.SvgConverter
 			}
 		}
 
-		internal static void CreateAndShowDialog(GrblCore core, string filename, Form parent, bool append)
+		internal static void CreateAndShowDialog(GrblCore core, string filename, bool append)
         {
             using (SvgToGCodeForm f = new SvgToGCodeForm(core, filename, append))
             {
-                f.ShowDialogForm(parent);
+                f.ShowDialogForm();
                 if (f.DialogResult == DialogResult.OK)
                 {
                     Settings.SetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", f.IIBorderTracing.CurrentValue);
@@ -101,7 +101,7 @@ namespace LaserGRBL.SvgConverter
 			IIMaxPower.MaxValue = (int)GrblCore.Configuration.MaxPWM;
 		}
 
-		public void ShowDialogForm(Form parent)
+		public void ShowDialogForm()
         {
 			IIBorderTracing.CurrentValue = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
 
@@ -123,7 +123,7 @@ namespace LaserGRBL.SvgConverter
 
 			RefreshPerc();
 
-			ShowDialog(parent);
+			ShowDialog(FormsHelper.MainForm);
 		}
 
 

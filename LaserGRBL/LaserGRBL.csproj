@@ -177,6 +177,7 @@
     <Compile Include="SvgIcons\SvgIcons.cs" />
     <Compile Include="Tools\Application.cs" />
     <Compile Include="Tools\DoubleBufferBmp.cs" />
+    <Compile Include="Tools\FormsHelper.cs" />
     <Compile Include="Tools\Graph.cs" />
     <Compile Include="Tools\MobileAverageCalculator.cs" />
     <Compile Include="Tools\RetainedSetting.cs" />
