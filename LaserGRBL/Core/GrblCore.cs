@@ -1753,22 +1753,30 @@ namespace LaserGRBL
 
 		private void EnqueueJogV11(JogDirection dir, decimal step, float speed)
 		{
-			string cmd = "$J=G91";
-			if (dir == JogDirection.NE || dir == JogDirection.E || dir == JogDirection.SE)
-				cmd += $"X{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-			if (dir == JogDirection.NW || dir == JogDirection.W || dir == JogDirection.SW)
-				cmd += $"X-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-			if (dir == JogDirection.NW || dir == JogDirection.N || dir == JogDirection.NE)
-				cmd += $"Y{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-			if (dir == JogDirection.SW || dir == JogDirection.S || dir == JogDirection.SE)
-				cmd += $"Y-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-			if (dir == JogDirection.Zdown)
-				cmd += $"Z-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
-			if (dir == JogDirection.Zup)
-				cmd += $"Z{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+			if (dir == JogDirection.Home)
+			{
+				EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", speed)));
+			}
+			else
+			{
+				string cmd = "$J=G91";
+				if (dir == JogDirection.NE || dir == JogDirection.E || dir == JogDirection.SE)
+					cmd += $"X{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+				if (dir == JogDirection.NW || dir == JogDirection.W || dir == JogDirection.SW)
+					cmd += $"X-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+				if (dir == JogDirection.NW || dir == JogDirection.N || dir == JogDirection.NE)
+					cmd += $"Y{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+				if (dir == JogDirection.SW || dir == JogDirection.S || dir == JogDirection.SE)
+					cmd += $"Y-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+				if (dir == JogDirection.Zdown)
+					cmd += $"Z-{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
+				if (dir == JogDirection.Zup)
+					cmd += $"Z{step.ToString("0.0", NumberFormatInfo.InvariantInfo)}";
 
-			cmd += $"F{speed}";
-			EnqueueCommand(new GrblCommand(cmd));
+				cmd += $"F{speed}";
+				EnqueueCommand(new GrblCommand(cmd));
+			}
+
 		}
 
 		//private void DoJogV11(JogDirection dir, decimal step)
