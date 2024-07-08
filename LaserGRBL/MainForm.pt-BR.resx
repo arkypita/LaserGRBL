@@ -838,4 +838,19 @@
   <data name="zoomOutToolStripMenuItem.Text" xml:space="preserve">
     <value>Zoom Diminuir (-10%)</value>
   </data>
+  <data name="showBoundingBoxToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mostrar caixa delimitadora</value>
+  </data>
+  <data name="crossCursorToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mostrar cursor cruz</value>
+  </data>
+  <data name="autosizeModeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Modo de tamanho automático</value>
+  </data>
+  <data name="drawingAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Área de desenho</value>
+  </data>
+  <data name="movingAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Área de movimentação</value>
+  </data>
 </root>
