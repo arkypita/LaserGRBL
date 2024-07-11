@@ -2116,7 +2116,7 @@ namespace LaserGRBL
 
 		private void CreateFakeOK(int count, bool auto)
 		{
-			mSentPtr.Add(new GrblMessage("Unlock from buffer stuck!", false));
+			mSentPtr.Add(new GrblMessage("Unlock from buffer stuck!", GrblMessage.MessageType.Warning));
 			string act = auto ? "auto" : "manual";
 
 			ComWrapper.ComLogger.Log("com", $"Handle Missing OK [{count}] ({act})");
@@ -2581,7 +2581,7 @@ namespace LaserGRBL
 
 		protected void ManageBrokenOkMessage(string rline) //
 		{
-			mSentPtr.Add(new GrblMessage("Handle broken ok!", false));
+			mSentPtr.Add(new GrblMessage("Handle broken ok!", GrblMessage.MessageType.Warning));
 			Logger.LogMessage("CommandResponse", "Broken \"ok\" message: [{0}]", rline);
 			ManageCommandResponse("ok");
 		}
@@ -2765,7 +2765,7 @@ namespace LaserGRBL
 			if (mTP.JobEnd(mLoopCount == 1) && mLoopCount > 1 && mMachineStatus != MacStatus.Check)
 			{
 				Logger.LogMessage("CycleEnd", "Cycle Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true));
-				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)), false));
+				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)), GrblMessage.MessageType.Diagnostic));
 				OnProgramEnded?.Invoke();
 				LoopCount--;
 				RunProgramFromStart(false, false, true);
@@ -2773,7 +2773,7 @@ namespace LaserGRBL
 			else
 			{
 				Logger.LogMessage("ProgramEnd", "Job Executed: {0} lines, {1} errors, {2}", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true));
-				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)), false));
+				mSentPtr.Add(new GrblMessage(string.Format("[{0} lines, {1} errors, {2}]", file.Count, mTP.ErrorCount, Tools.Utils.TimeSpanToString(ProgramTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, ",", true)), GrblMessage.MessageType.Diagnostic));
                 OnProgramEnded?.Invoke();
                 OnJobEnd();
 
