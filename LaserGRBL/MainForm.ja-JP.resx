@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TTLLines.Text" xml:space="preserve">
+    <value>行:</value>
+  </data>
+  <data name="TTLBuffer.Text" xml:space="preserve">
+    <value>バッファー</value>
+  </data>
+  <data name="TTLEstimated.Text" xml:space="preserve">
+    <value>推定時間</value>
+  </data>
+  <data name="TTTEstimated.Text" xml:space="preserve">
+    <value>不明</value>
+  </data>
+  <data name="TTLStatus.Text" xml:space="preserve">
+    <value>ステータス:</value>
+  </data>
+  <data name="TTTStatus.Text" xml:space="preserve">
+    <value>切断</value>
+  </data>
+  <data name="MnGenerate.Text" xml:space="preserve">
+    <value>作成</value>
+  </data>
+  <data name="autoSizeToolStripMenuItem.Text" xml:space="preserve">
+    <value>ズーム自動(100%)</value>
+  </data>
+  <data name="zoomInToolStripMenuItem.Text" xml:space="preserve">
+    <value>ズームイン(+10%)</value>
+  </data>
+  <data name="zoomOutToolStripMenuItem.Text" xml:space="preserve">
+    <value>ズームアウト(-10%)</value>
+  </data>
+  <data name="youtubeChannelToolStripMenuItem.Text" xml:space="preserve">
+    <value>Youtubeチャンネル</value>
+  </data>
+  <data name="TTTLines.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TTlaserLife.Text" xml:space="preserve">
+    <value>0.0h</value>
+  </data>
+  <data name="TTlaserLife.ToolTipText" xml:space="preserve">
+    <value>レーザーの総使用量はこちら。</value>
+  </data>
+  <data name="TTOvS.Text" xml:space="preserve">
+    <value>S: 100%</value>
+  </data>
+  <data name="TTOvG1.Text" xml:space="preserve">
+    <value>G1: 100%</value>
+  </data>
+  <data name="TTOvG0.Text" xml:space="preserve">
+    <value>G0: 100%</value>
+  </data>
+  <data name="MNEsp8266.Text" xml:space="preserve">
+    <value>&amp;ESP8266</value>
+  </data>
+  <data name="schemaToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;カラー</value>
+  </data>
+  <data name="previewToolStripMenuItem.Text" xml:space="preserve">
+    <value>プレビュー</value>
+  </data>
+  <data name="MNEnglish.Text" xml:space="preserve">
+    <value>英語</value>
+  </data>
+  <data name="MNItalian.Text" xml:space="preserve">
+    <value>イタリア語</value>
+  </data>
+  <data name="MNSpanish.Text" xml:space="preserve">
+    <value>スペイン語</value>
+  </data>
+  <data name="MNFrench.Text" xml:space="preserve">
+    <value>フランス語</value>
+  </data>
+  <data name="MNGerman.Text" xml:space="preserve">
+    <value>ドイツ語</value>
+  </data>
+  <data name="MNDanish.Text" xml:space="preserve">
+    <value>デンマーク語</value>
+  </data>
+  <data name="MNBrazilian.Text" xml:space="preserve">
+    <value>ポルトガル語</value>
+  </data>
+  <data name="russianToolStripMenuItem.Text" xml:space="preserve">
+    <value>ロシア語</value>
+  </data>
+  <data name="chinexeToolStripMenuItem.Text" xml:space="preserve">
+    <value>中国語（簡体字）</value>
+  </data>
+  <data name="traditionalChineseToolStripMenuItem.Text" xml:space="preserve">
+    <value>中国語（繁体字）</value>
+  </data>
+  <data name="slovakianToolStripMenuItem.Text" xml:space="preserve">
+    <value>スロバキア語</value>
+  </data>
+  <data name="hungarianToolStripMenuItem.Text" xml:space="preserve">
+    <value>ハンガリー語</value>
+  </data>
+  <data name="czechToolStripMenuItem.Text" xml:space="preserve">
+    <value>チェコ</value>
+  </data>
+  <data name="polishToolStripMenuItem.Text" xml:space="preserve">
+    <value>ポーランド語</value>
+  </data>
+  <data name="greekToolStripMenuItem.Text" xml:space="preserve">
+    <value>ギリシャ語</value>
+  </data>
+  <data name="turkishToolStripMenuItem.Text" xml:space="preserve">
+    <value>トルコ語</value>
+  </data>
+  <data name="romanianToolStripMenuItem.Text" xml:space="preserve">
+    <value>ルーマニア語</value>
+  </data>
+  <data name="dutchToolStripMenuItem.Text" xml:space="preserve">
+    <value>オランダ語</value>
+  </data>
+  <data name="ukrainianToolStripMenuItem.Text" xml:space="preserve">
+    <value>ウクライナ語</value>
+  </data>
+  <data name="japaneseToolStripMenuItem.Text" xml:space="preserve">
+    <value>日本語</value>
+  </data>
+  <data name="linguaToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;言語</value>
+  </data>
+  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;ツール</value>
+  </data>
+  <data name="MnOrtur.Text" xml:space="preserve">
+    <value>Ortur</value>
+  </data>
+  <data name="MnConnect.Text" xml:space="preserve">
+    <value>&amp;接続</value>
+  </data>
+  <data name="MnDisconnect.Text" xml:space="preserve">
+    <value>&amp;切断</value>
+  </data>
+  <data name="MnWiFiDiscovery.Text" xml:space="preserve">
+    <value>Wi-Fi検出</value>
+  </data>
+  <data name="MnGrblReset.Text" xml:space="preserve">
+    <value>&amp;リセット</value>
+  </data>
+  <data name="MnGoHome.Text" xml:space="preserve">
+    <value>&amp;ホーミング</value>
+  </data>
+  <data name="MnUnlock.Text" xml:space="preserve">
+    <value>&amp;アンロック</value>
+  </data>
+  <data name="MnGrblConfig.Text" xml:space="preserve">
+    <value>Grbl設定</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="MnMaterialDB.Text" xml:space="preserve">
+    <value>マテリアルDB</value>
+  </data>
+  <data name="laserUsageStatsToolStripMenuItem.Text" xml:space="preserve">
+    <value>レーザー寿命</value>
+  </data>
+  <data name="MnHotkeys.Text" xml:space="preserve">
+    <value>ホットキー</value>
+  </data>
+  <data name="MnSaveProject.Text" xml:space="preserve">
+    <value>プロジェクトを保存</value>
+  </data>
+  <data name="MnFileSend.Text" xml:space="preserve">
+    <value>&amp;機械に送る</value>
+  </data>
+  <data name="MnPowerVsSpeed.Text" xml:space="preserve">
+    <value>パワー対スピードテスト</value>
+  </data>
+  <data name="MnCuttingTest.Text" xml:space="preserve">
+    <value>カッティングテスト</value>
+  </data>
+  <data name="MnAccuracyTest.Text" xml:space="preserve">
+    <value>精度テスト</value>
+  </data>
+  <data name="shakeTestToolStripMenuItem.Text" xml:space="preserve">
+    <value>シェイクテスト</value>
+  </data>
+  <data name="MNGrblEmulator.Text" xml:space="preserve">
+    <value>&amp;Grblエミュレータ</value>
+  </data>
+  <data name="cadStyleToolStripMenuItem.Text" xml:space="preserve">
+    <value>CADスタイル</value>
+  </data>
+  <data name="cadDarkToolStripMenuItem.Text" xml:space="preserve">
+    <value>CADダーク</value>
+  </data>
+  <data name="blueLaserToolStripMenuItem.Text" xml:space="preserve">
+    <value>ブルーレーザー</value>
+  </data>
+  <data name="redLaserToolStripMenuItem.Text" xml:space="preserve">
+    <value>レッドレーザー</value>
+  </data>
+  <data name="darkToolStripMenuItem.Text" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="hackerToolStripMenuItem.Text" xml:space="preserve">
+    <value>Hacker</value>
+  </data>
+  <data name="showLaserOffMovementsToolStripMenuItem.Text" xml:space="preserve">
+    <value>レーザーオフの動きを見せる</value>
+  </data>
+  <data name="showExecutedCommandsToolStripMenuItem.Text" xml:space="preserve">
+    <value>実行されたコマンドの表示</value>
+  </data>
+  <data name="showBoundingBoxToolStripMenuItem.Text" xml:space="preserve">
+    <value>バウンディングボックスの表示</value>
+  </data>
+  <data name="crossCursorToolStripMenuItem.Text" xml:space="preserve">
+    <value>十字カーソルを表示する</value>
+  </data>
+  <data name="autosizeModeToolStripMenuItem.Text" xml:space="preserve">
+    <value>自動サイズモード</value>
+  </data>
+  <data name="drawingAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>描画エリア</value>
+  </data>
+  <data name="movingAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>移動エリア</value>
+  </data>
+  <data name="lineSizeToolStripMenuItem.Text" xml:space="preserve">
+    <value>ラインサイズ</value>
+  </data>
+  <data name="pxToolStripMenuItem1.Text" xml:space="preserve">
+    <value>1px</value>
+  </data>
+  <data name="pxToolStripMenuItem2.Text" xml:space="preserve">
+    <value>2px</value>
+  </data>
+  <data name="pxToolStripMenuItem3.Text" xml:space="preserve">
+    <value>3px</value>
+  </data>
+  <data name="pxToolStripMenuItem4.Text" xml:space="preserve">
+    <value>4px</value>
+  </data>
+  <data name="pxToolStripMenuItem5.Text" xml:space="preserve">
+    <value>5px</value>
+  </data>
+  <data name="showDiagnosticDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>診断データの表示</value>
+  </data>
+  <data name="installCH340DriverToolStripMenuItem.Text" xml:space="preserve">
+    <value>CH340ドライバのインストール</value>
+  </data>
+  <data name="flashGrblFirmwareToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Grblファームウェア書き込み</value>
+  </data>
+  <data name="configurationWizardToolStripMenuItem.Text" xml:space="preserve">
+    <value>設定ウィザード</value>
+  </data>
+  <data name="orturSupportGroupToolStripMenuItem.Text" xml:space="preserve">
+    <value>Orturユーザーグループ</value>
+  </data>
+  <data name="orturSupportAndFeedbackToolStripMenuItem.Text" xml:space="preserve">
+    <value>Orturのサポートとフィードバック</value>
+  </data>
+  <data name="orturWebsiteToolStripMenuItem.Text" xml:space="preserve">
+    <value>Orturウェブサイト</value>
+  </data>
+  <data name="manualsDownloadToolStripMenuItem.Text" xml:space="preserve">
+    <value>Orturマニュアル</value>
+  </data>
+  <data name="firmwareToolStripMenuItem.Text" xml:space="preserve">
+    <value>Orturファームウェア</value>
+  </data>
+  <data name="MnConfigureOrturWiFi.Text" xml:space="preserve">
+    <value>WiFiの設定</value>
+  </data>
+  <data name="MnAutoUpdate.Text" xml:space="preserve">
+    <value>自動更新</value>
+  </data>
+  <data name="MnNotifyNewVersion.Text" xml:space="preserve">
+    <value>自動アップデートを有効にする</value>
+  </data>
+  <data name="MnNotifyMinorVersion.Text" xml:space="preserve">
+    <value>マイナーチェンジを通知</value>
+  </data>
+  <data name="MnNotifyPreRelease.Text" xml:space="preserve">
+    <value>プレリリースを通知</value>
+  </data>
+  <data name="MnCheckNow.Text" xml:space="preserve">
+    <value>今すぐチェック</value>
+  </data>
+  <data name="openSessionLogToolStripMenuItem.Text" xml:space="preserve">
+    <value>セッションログを開く</value>
+  </data>
+  <data name="activateExtendedLogToolStripMenuItem.Text" xml:space="preserve">
+    <value>拡張ログを有効にする</value>
+  </data>
+  <data name="helpOnLineToolStripMenuItem.Text" xml:space="preserve">
+    <value>オンラインヘルプ</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>LaserGrbl FAQ</value>
+  </data>
+  <data name="facebookCommunityToolStripMenuItem.Text" xml:space="preserve">
+    <value>LaserGrbl コミュニティ</value>
+  </data>
+  <data name="donateToolStripMenuItem.Text" xml:space="preserve">
+    <value>寄付する</value>
+  </data>
+  <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
+    <value>ライセンス</value>
+  </data>
+  <data name="MnGrbl.Text" xml:space="preserve">
+    <value>&amp;Grbl</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;ファイル</value>
+  </data>
+  <data name="MnExit.Text" xml:space="preserve">
+    <value>&amp;終了</value>
+  </data>
+  <data name="MnFileOpen.Text" xml:space="preserve">
+    <value>&amp;ファイルを開く</value>
+  </data>
+  <data name="MnFileAppend.Text" xml:space="preserve">
+    <value>&amp;ファイルを追加する</value>
+  </data>
+  <data name="MnReOpenFile.Text" xml:space="preserve">
+    <value>&amp;最後のファイルを読み込む</value>
+  </data>
+  <data name="MnSaveProgram.Text" xml:space="preserve">
+    <value>&amp;クイックセーブ</value>
+  </data>
+  <data name="MnAdvancedSave.Text" xml:space="preserve">
+    <value>&amp;保存（高度なオプション）</value>
+  </data>
+  <data name="nightyToolStripMenuItem.Text" xml:space="preserve">
+    <value>Nighty</value>
+  </data>
+  <data name="MnStartFromPosition.Text" xml:space="preserve">
+    <value>&amp;指定箇所から送る</value>
+  </data>
+</root>

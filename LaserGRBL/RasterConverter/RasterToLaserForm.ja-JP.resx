@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="TpPreview.Text" xml:space="preserve">
+    <value>プレビュー</value>
+  </data>
+  <data name="TpOriginal.Text" xml:space="preserve">
+    <value>オリジナル</value>
+  </data>
+  <data name="BtnOutliner.ToolTip" xml:space="preserve">
+    <value>アウトライン画像</value>
+  </data>
+  <data name="BtnFill.ToolTip" xml:space="preserve">
+    <value>塗りつぶし</value>
+  </data>
+  <data name="BtFlipV.ToolTip" xml:space="preserve">
+    <value>画像を垂直に反転</value>
+  </data>
+  <data name="BtFlipH.ToolTip" xml:space="preserve">
+    <value>画像を水平方向に反転</value>
+  </data>
+  <data name="BtRotateCW.ToolTip" xml:space="preserve">
+    <value>時計回りに90°回転</value>
+  </data>
+  <data name="BtRotateCCW.ToolTip" xml:space="preserve">
+    <value>反時計回りに90°回転</value>
+  </data>
+  <data name="BtnRevert.ToolTip" xml:space="preserve">
+    <value>すべての変更を元に戻す</value>
+  </data>
+  <data name="BtnCrop.ToolTip" xml:space="preserve">
+    <value>画像の切り抜き</value>
+  </data>
+  <data name="BtnAutoTrim.ToolTip" xml:space="preserve">
+    <value>自動トリム</value>
+  </data>
+  <data name="BtnCreate.Text" xml:space="preserve">
+    <value>次へ</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>ラスター画像をインポート</value>
+  </data>
+  <data name="TbPassthroughInfo.Text" xml:space="preserve">
+    <value>パススルー・モードは、LaserGRBLによる処理を行わず、画像をそのまま残す。画像は、ファイル情報に含まれるサイズとDPI解像度に従って、水平方向に一行ずつ彫刻される。</value>
+  </data>
+  <data name="GbPassthrough.Text" xml:space="preserve">
+    <value>パススルーオプション</value>
+  </data>
+  <data name="CbResize.ToolTip" xml:space="preserve">
+    <value>リサイズモードのコントロール（スムーズまたはハードエッジ）</value>
+  </data>
+  <data name="LblGrayscale.Text" xml:space="preserve">
+    <value>グレースケール</value>
+  </data>
+  <data name="CbMode.ToolTip" xml:space="preserve">
+    <value>色変換式を選択</value>
+  </data>
+  <data name="CbThreshold.Text" xml:space="preserve">
+    <value>モノクロ</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>コントラスト</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>明るさ</value>
+  </data>
+  <data name="LblGreen.Text" xml:space="preserve">
+    <value>グリーン</value>
+  </data>
+  <data name="LblRed.Text" xml:space="preserve">
+    <value>レッド</value>
+  </data>
+  <data name="LblBlue.Text" xml:space="preserve">
+    <value>ブルー</value>
+  </data>
+  <data name="BtnReverse.ToolTip" xml:space="preserve">
+    <value>色の反転</value>
+  </data>
+  <data name="CbThreshold.ToolTip" xml:space="preserve">
+    <value>閾値フィルタリングの適用</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>リサイズ</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>白切り取り</value>
+  </data>
+  <data name="GbParameters.Text" xml:space="preserve">
+    <value>パラメータ</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>ラインしきい値</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>コーナーしきい値</value>
+  </data>
+  <data name="TBCornerThreshold.ToolTip" xml:space="preserve">
+    <value>角度：ピクセル、その前のピクセル、その次のピクセルがこの角度より小さい角度で接する場合、そのピクセルはコーナーとなる。</value>
+  </data>
+  <data name="GbCenterlineOptions.Text" xml:space="preserve">
+    <value>センターラインオプション</value>
+  </data>
+  <data name="BtnAdaptiveQualityInfo.ToolTip" xml:space="preserve">
+    <value>画像出力サイズに比例してベクトル化品質を増減する。</value>
+  </data>
+  <data name="TBLineThreshold.ToolTip" xml:space="preserve">
+    <value>スプラインがその端点で定義される直線からこれ以上離れていなければ、直線を出力する。</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>スポット除去</value>
+  </data>
+  <data name="UDSpotRemoval.ToolTip" xml:space="preserve">
+    <value>細かい部分を取り除く</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>最適化</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>スムージング</value>
+  </data>
+  <data name="UDSmoothing.ToolTip" xml:space="preserve">
+    <value>滑らかなハードエッジ</value>
+  </data>
+  <data name="CbFillingDirection.ToolTip" xml:space="preserve">
+    <value>パスのフィリングを有効にする／フィリングの方向を設定する</value>
+  </data>
+  <data name="UDFillingQuality.ToolTip" xml:space="preserve">
+    <value>フィル品質（線/mm）</value>
+  </data>
+  <data name="LblFillingLineLbl.Text" xml:space="preserve">
+    <value>線/mm</value>
+  </data>
+  <data name="UDDownSample.ToolTip" xml:space="preserve">
+    <value>元の画像を縮小する［ハイレゾ画像の場合］</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>ダウンサンプリング</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>フィル</value>
+  </data>
+  <data name="LblFillingQuality.Text" xml:space="preserve">
+    <value>フィル品質</value>
+  </data>
+  <data name="UDOptimize.ToolTip" xml:space="preserve">
+    <value>パスの最適化（より少ないセグメントの生成）</value>
+  </data>
+  <data name="LAdaptiveQuality.Text" xml:space="preserve">
+    <value>適応品質</value>
+  </data>
+  <data name="lOptimizeFast.Text" xml:space="preserve">
+    <value>移動の最適化</value>
+  </data>
+  <data name="GbVectorizeOptions.Text" xml:space="preserve">
+    <value>ベクトル化するオプション</value>
+  </data>
+  <data name="UDQuality.ToolTip" xml:space="preserve">
+    <value>画像解像度（線/mm）の設定</value>
+  </data>
+  <data name="CbDirections.ToolTip" xml:space="preserve">
+    <value>彫刻の方向</value>
+  </data>
+  <data name="CbLinePreview.Text" xml:space="preserve">
+    <value>ラインプレビュー</value>
+  </data>
+  <data name="CbLinePreview.ToolTip" xml:space="preserve">
+    <value>プレビューを表示</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>品質</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>方向</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>線/mm</value>
+  </data>
+  <data name="LblDitherMode.Text" xml:space="preserve">
+    <value>ディザリング</value>
+  </data>
+  <data name="BtnFillingQualityInfo.ToolTip" xml:space="preserve">
+    <value>解像度がステッパーピッチと一致しない場合、アーチファクトが表示されることがあります！クリックして信頼できる解像度を計算する...</value>
+  </data>
+  <data name="BtnQualityInfo.ToolTip" xml:space="preserve">
+    <value>解像度がステッパーピッチと一致しない場合、アーチファクトが表示されることがあります！クリックして信頼できる解像度を計算する...</value>
+  </data>
+  <data name="GbLineToLineOptions.Text" xml:space="preserve">
+    <value>線間オプション</value>
+  </data>
+  <data name="RbNoProcessing.Text" xml:space="preserve">
+    <value>パススルー</value>
+  </data>
+  <data name="RbNoProcessing.ToolTip" xml:space="preserve">
+    <value>処理なし（パススルー）</value>
+  </data>
+  <data name="RbCenterline.Text" xml:space="preserve">
+    <value>センターライン</value>
+  </data>
+  <data name="RbCenterline.ToolTip" xml:space="preserve">
+    <value>センターラインのベクトル化</value>
+  </data>
+  <data name="RbDithering.Text" xml:space="preserve">
+    <value>1bit 白黒ディザリング</value>
+  </data>
+  <data name="RbVectorize.Text" xml:space="preserve">
+    <value>ベクトル化</value>
+  </data>
+  <data name="RbDithering.ToolTip" xml:space="preserve">
+    <value>グレースケールでエミュレートされた白黒画像を生成する</value>
+  </data>
+  <data name="RbVectorize.ToolTip" xml:space="preserve">
+    <value>ベクターパスの作成</value>
+  </data>
+  <data name="RbLineToLineTracing.ToolTip" xml:space="preserve">
+    <value>グレースケール画像の作成</value>
+  </data>
+  <data name="GbConversionTool.Text" xml:space="preserve">
+    <value>変換ツール</value>
+  </data>
+  <data name="RbLineToLineTracing.Text" xml:space="preserve">
+    <value>線から線へのトレース</value>
+  </data>
+</root>
