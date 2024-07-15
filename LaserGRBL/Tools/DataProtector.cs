@@ -28,20 +28,24 @@ namespace Tools
 			return Convert.ToBase64String(encrypted);
 		}
 
-		public static string Decrypt(string cipher)
+		public static string Decrypt(string cipher, string defval)
 		{
-			if (cipher == null)
-				return null;
+			try
+			{
+				if (cipher == null)
+					return null;
 
-			if (cipher == "")
-				return "";
+				if (cipher == "")
+					return "";
 
-			//parse base64 string
-			byte[] data = Convert.FromBase64String(cipher);
+				//parse base64 string
+				byte[] data = Convert.FromBase64String(cipher);
 
-			//decrypt data
-			byte[] decrypted = ProtectedData.Unprotect(data, null, Scope);
-			return Encoding.Unicode.GetString(decrypted);
+				//decrypt data
+				byte[] decrypted = ProtectedData.Unprotect(data, null, Scope);
+				return Encoding.Unicode.GetString(decrypted);
+			}
+			catch { return defval; }
 		}
 
 	}
