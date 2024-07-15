@@ -142,8 +142,10 @@ namespace LaserGRBL.SvgConverter
 			resources.ApplyResources(this.BtnPSHelper, "BtnPSHelper");
 			this.BtnPSHelper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnPSHelper.Caption = null;
+			this.BtnPSHelper.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.BtnPSHelper.Image = ((System.Drawing.Image)(resources.GetObject("BtnPSHelper.Image")));
 			this.BtnPSHelper.Name = "BtnPSHelper";
+			this.BtnPSHelper.RoundedBorders = false;
 			this.BtnPSHelper.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.TT.SetToolTip(this.BtnPSHelper, resources.GetString("BtnPSHelper.ToolTip"));
 			this.BtnPSHelper.UseAltImage = false;
@@ -177,8 +179,10 @@ namespace LaserGRBL.SvgConverter
 			resources.ApplyResources(this.BtnModulationInfo, "BtnModulationInfo");
 			this.BtnModulationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnModulationInfo.Caption = null;
+			this.BtnModulationInfo.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.BtnModulationInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnModulationInfo.Image")));
 			this.BtnModulationInfo.Name = "BtnModulationInfo";
+			this.BtnModulationInfo.RoundedBorders = false;
 			this.tableLayoutPanel7.SetRowSpan(this.BtnModulationInfo, 2);
 			this.BtnModulationInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.TT.SetToolTip(this.BtnModulationInfo, resources.GetString("BtnModulationInfo.ToolTip"));
@@ -211,8 +215,10 @@ namespace LaserGRBL.SvgConverter
 			resources.ApplyResources(this.BtnOnOffInfo, "BtnOnOffInfo");
 			this.BtnOnOffInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnOnOffInfo.Caption = null;
+			this.BtnOnOffInfo.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.BtnOnOffInfo.Image = ((System.Drawing.Image)(resources.GetObject("BtnOnOffInfo.Image")));
 			this.BtnOnOffInfo.Name = "BtnOnOffInfo";
+			this.BtnOnOffInfo.RoundedBorders = false;
 			this.BtnOnOffInfo.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.TT.SetToolTip(this.BtnOnOffInfo, resources.GetString("BtnOnOffInfo.ToolTip"));
 			this.BtnOnOffInfo.UseAltImage = false;
@@ -221,8 +227,10 @@ namespace LaserGRBL.SvgConverter
 			// CBLaserON
 			// 
 			resources.ApplyResources(this.CBLaserON, "CBLaserON");
+			this.CBLaserON.BackColor = System.Drawing.Color.White;
 			this.tableLayoutPanel7.SetColumnSpan(this.CBLaserON, 2);
 			this.CBLaserON.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CBLaserON.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.CBLaserON.FormattingEnabled = true;
 			this.CBLaserON.Name = "CBLaserON";
 			this.CBLaserON.SelectedIndexChanged += new System.EventHandler(this.CBLaserON_SelectedIndexChanged);
@@ -297,8 +305,10 @@ namespace LaserGRBL.SvgConverter
 			// CBFilter
 			// 
 			resources.ApplyResources(this.CBFilter, "CBFilter");
+			this.CBFilter.BackColor = System.Drawing.Color.White;
 			this.CBFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CBFilter.DropDownWidth = 195;
+			this.CBFilter.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.CBFilter.FormattingEnabled = true;
 			this.CBFilter.Name = "CBFilter";
 			// 
@@ -308,8 +318,10 @@ namespace LaserGRBL.SvgConverter
 			resources.ApplyResources(this.BtnColorFilter, "BtnColorFilter");
 			this.BtnColorFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.BtnColorFilter.Caption = null;
+			this.BtnColorFilter.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.BtnColorFilter.Image = ((System.Drawing.Image)(resources.GetObject("BtnColorFilter.Image")));
 			this.BtnColorFilter.Name = "BtnColorFilter";
+			this.BtnColorFilter.RoundedBorders = false;
 			this.BtnColorFilter.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
 			this.TT.SetToolTip(this.BtnColorFilter, resources.GetString("BtnColorFilter.ToolTip"));
 			this.BtnColorFilter.UseAltImage = false;
