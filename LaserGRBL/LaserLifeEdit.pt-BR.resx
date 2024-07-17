@@ -128,4 +128,31 @@ Potência óptica: A potência óptica do módulo de laser expressa em W (watt).
 
 A maioria dos módulos de laser possui uma etiqueta com essas informações. Caso contrário, consulte as especificações do gravador no manual do usuário ou no site do fabricante.</value>
   </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Data de Compra</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Marca</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Modelo</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Potência Ótica</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Editar Laser</value>
+  </data>
 </root>

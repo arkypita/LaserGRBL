@@ -135,4 +135,40 @@ Se o seu gravador não conseguir concluir este teste com sucesso, você precisar
 
 Se estas condições forem atendidas, mas a máquina não for capaz de realizar este teste com sucesso, você pode tentar diminuir ligeiramente os limites de velocidade definidos na "Configuração Grbl ($110-$111)" ou acelerações máximas.</value>
   </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Comprimento</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Tipo de Teste</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Gravação Cruzada</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Velocidade</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Limite de Velocidade</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Potência</value>
+  </data>
+  <data name="CbAxis.Items" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="CbAxis.Items1" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Eixo</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Teste de Agitação</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="BtnCreate.Text" xml:space="preserve">
+    <value>Criar!</value>
+  </data>
 </root>

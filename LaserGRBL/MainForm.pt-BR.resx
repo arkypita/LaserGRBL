@@ -853,4 +853,7 @@
   <data name="movingAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>Área de movimentação</value>
   </data>
+  <data name="japaneseToolStripMenuItem.Text" xml:space="preserve">
+    <value>Japones</value>
+  </data>
 </root>

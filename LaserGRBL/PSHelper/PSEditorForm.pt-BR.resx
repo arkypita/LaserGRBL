@@ -136,7 +136,7 @@
     <value>Grossura</value>
   </data>
   <data name="ColPower.HeaderText" xml:space="preserve">
-    <value>Força</value>
+    <value>Potência</value>
   </data>
   <data name="ColSpeed.HeaderText" xml:space="preserve">
     <value>Velocidade</value>

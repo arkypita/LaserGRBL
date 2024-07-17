@@ -129,4 +129,19 @@
 - Nunca deixe a máquina sem vigilância
 - Consulte o manual do gravador para instruções de uso, segurança e manutenção</value>
   </data>
+  <data name="LblHaveFun.Text" xml:space="preserve">
+    <value>Divirta-se, com segurança!</value>
+  </data>
+  <data name="BtnAccept.Text" xml:space="preserve">
+    <value>Aceitar</value>
+  </data>
+  <data name="CbIHaveRead.Text" xml:space="preserve">
+    <value>Eu li, entendi, e aceito estas condições</value>
+  </data>
+  <data name="LlTranslate.Text" xml:space="preserve">
+    <value>tradução do Google</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Contrato</value>
+  </data>
 </root>

@@ -121,7 +121,7 @@
     <value>Aplicar</value>
   </data>
   <data name="LblPower.Text" xml:space="preserve">
-    <value>Força</value>
+    <value>Potência</value>
   </data>
   <data name="LblModel.Text" xml:space="preserve">
     <value>Modelo Laser</value>

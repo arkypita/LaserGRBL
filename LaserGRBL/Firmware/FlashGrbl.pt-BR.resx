@@ -117,61 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label1.Text" xml:space="preserve">
-    <value>O LaserGRBL rastreia a vida útil de seus lasers, para que você saiba quanto cada módulo de laser foi usado. Se você tiver mais de uma máquina ou módulo de laser, poderá adicioná-los com  o botão "adicionar". Neste caso, o LaserGRBL perguntará qual laser você está usando no momento da conexão, para atribuir o consumo ao módulo correto a cada vez.</value>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Cancelar</value>
   </data>
-  <data name="BtnMark.Text" xml:space="preserve">
-    <value>Marcar como desativado</value>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="BtnUnmark.Text" xml:space="preserve">
-    <value>Desmarcar desativado</value>
+  <data name="LblNotForOrtur.Text" xml:space="preserve">
+    <value>Este procedimento NÃO deve ser aplicado em gravadoras Ortur</value>
   </data>
-  <data name="BtnEdit.Text" xml:space="preserve">
-    <value>Editar</value>
+  <data name="LblWarning.Text" xml:space="preserve">
+    <value>Aviso! Esta operação pode danificar seu hardware.
+A operação pode ser irreversível: use por sua conta e risco.</value>
   </data>
-  <data name="BtnRemove.Text" xml:space="preserve">
-    <value>Remover</value>
+  <data name="CbTarget.Items" xml:space="preserve">
+    <value>Arduino Uno</value>
   </data>
-  <data name="BtnAddNew.Text" xml:space="preserve">
-    <value>Adicionar</value>
+  <data name="CbTarget.Items1" xml:space="preserve">
+    <value>Arduino Nano</value>
   </data>
-  <data name="ChName.Text" xml:space="preserve">
-    <value>Nome</value>
+  <data name="LblTarget.Text" xml:space="preserve">
+    <value>Alvo:</value>
   </data>
-  <data name="ChBrand.Text" xml:space="preserve">
-    <value>Marca</value>
+  <data name="LblFirmware.Text" xml:space="preserve">
+    <value>Firmware:</value>
   </data>
-  <data name="ChModel.Text" xml:space="preserve">
-    <value>Modelo</value>
+  <data name="LblPort.Text" xml:space="preserve">
+    <value>Porta:</value>
   </data>
-  <data name="ChRunTime.Text" xml:space="preserve">
-    <value>Tempo de Uso</value>
+  <data name="LblSpeed.Text" xml:space="preserve">
+    <value>Velocidade:</value>
   </data>
-  <data name="ChPowerTime.Text" xml:space="preserve">
-    <value>Tempo Ligado</value>
+  <data name="BtnTarget.ToolTip" xml:space="preserve">
+    <value>Selecione o tipo exato de placa Arduino que você deseja atualizar.
+Clique aqui para mais informações...</value>
   </data>
-  <data name="ChStressTime.Text" xml:space="preserve">
-    <value>Tempo de Estresse</value>
-  </data>
-  <data name="ChAvgPow.Text" xml:space="preserve">
-    <value>Pot Média</value>
-  </data>
-  <data name="ChDateBuy.Text" xml:space="preserve">
-    <value>Data de Compra</value>
-  </data>
-  <data name="ChDateStartM.Text" xml:space="preserve">
-    <value>Início de Monitoramento</value>
-  </data>
-  <data name="ChDateEndL.Text" xml:space="preserve">
-    <value>Data de Desativamento</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Por favor clique em "editar" e preencha todas as informações relacionadas ao seu módulo laser.</value>
-  </data>
-  <data name="BtnClose.Text" xml:space="preserve">
-    <value>Fechar</value>
+  <data name="BtnFirmware.ToolTip" xml:space="preserve">
+    <value>Selecione o firmware que você deseja atualizar em sua placa
+Clique aqui se precisar de mais informações sobre as versões disponíveis...</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Ferramenta de Monitoramento - Vida Útil Laser</value>
+    <value>Gravar Firmware Grbl</value>
   </data>
 </root>
