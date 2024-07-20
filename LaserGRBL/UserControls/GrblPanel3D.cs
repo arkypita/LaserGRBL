@@ -316,8 +316,8 @@ namespace LaserGRBL.UserControls
 					oldGrbl3D?.Dispose();
                     oldGrbl3DOff?.Dispose();
 					mMessage = Strings.PrepareDrawing;
-                    Grbl3D newGrbl3D = new Grbl3D(Core, "LaserOn", false, ColorScheme.PreviewLaserPower, ColorScheme.PreviewJobRange);
-                    Grbl3D newGrbl3DOff = new Grbl3D(Core, "LaserOff", true, ColorScheme.PreviewOtherMovement, ColorScheme.PreviewJobRange);
+                    Grbl3D newGrbl3D = new Grbl3D(Core, "LaserOn", false, ColorScheme.PreviewLaserPower, ColorScheme.PreviewBackColor, ColorScheme.PreviewJobRange, 0);
+                    Grbl3D newGrbl3DOff = new Grbl3D(Core, "LaserOff", true, ColorScheme.PreviewOtherMovement, ColorScheme.PreviewBackColor, ColorScheme.PreviewJobRange, -1);
                     mMessage = null;
                     lock (mGrbl3DLock)
 					{
@@ -332,10 +332,12 @@ namespace LaserGRBL.UserControls
 					{
 						mInvalidateAll = false;
 						mGrbl3D.Color = ColorScheme.PreviewLaserPower;
+						mGrbl3D.BackgroundColor = ColorScheme.PreviewBackColor;
                         mGrbl3D.BoundingBoxColor = ColorScheme.PreviewJobRange;
                         mGrbl3D.InvalidateAll();
 						mGrbl3DOff.Color = ColorScheme.PreviewOtherMovement;
-						mGrbl3DOff.InvalidateAll();
+                        mGrbl3DOff.BackgroundColor = ColorScheme.PreviewBackColor;
+                        mGrbl3DOff.InvalidateAll();
 					}
 					if (Core.ShowLaserOffMovements.Value)
 					{
