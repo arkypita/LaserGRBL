@@ -316,8 +316,8 @@ namespace LaserGRBL.UserControls
 					oldGrbl3D?.Dispose();
                     oldGrbl3DOff?.Dispose();
 					mMessage = Strings.PrepareDrawing;
-                    Grbl3D newGrbl3D = new Grbl3D(Core, "LaserOn", false, ColorScheme.PreviewLaserPower, ColorScheme.PreviewBackColor, ColorScheme.PreviewJobRange, 0);
-                    Grbl3D newGrbl3DOff = new Grbl3D(Core, "LaserOff", true, ColorScheme.PreviewOtherMovement, ColorScheme.PreviewBackColor, ColorScheme.PreviewJobRange, -1);
+                    Grbl3D newGrbl3D = new Grbl3D(Core, "LaserOn", false, ColorScheme.PreviewLaserPower, ColorScheme.PreviewBackColor, ColorScheme.PreviewJobRange);
+                    Grbl3D newGrbl3DOff = new Grbl3D(Core, "LaserOff", true, ColorScheme.PreviewOtherMovement, ColorScheme.PreviewBackColor, ColorScheme.PreviewJobRange);
                     mMessage = null;
                     lock (mGrbl3DLock)
 					{
