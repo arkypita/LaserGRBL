@@ -831,14 +831,13 @@ namespace LaserGRBL.UserControls
 					mMousePos.Value.Y >= mPadding.Top &&
 					mMousePos.Value.Y <= Height - mPadding.Bottom)
                 {
-					using (Pen pCross = new Pen(ColorScheme.PreviewCrossCursor))
+                    using (Pen pCross = new Pen(ColorScheme.PreviewBackColor))
                     {
-                        int halfCrossSize = 4;
-                        e.Graphics.DrawLine(pCross, new Point(mPadding.Left, mMousePos.Value.Y), new Point(mMousePos.Value.X - 5, mMousePos.Value.Y));
-                        e.Graphics.DrawLine(pCross, new Point(mMousePos.Value.X + halfCrossSize, mMousePos.Value.Y), new Point(Width - mPadding.Right, mMousePos.Value.Y));
-                        e.Graphics.DrawLine(pCross, new Point(mMousePos.Value.X, mPadding.Top), new Point(mMousePos.Value.X, mMousePos.Value.Y - halfCrossSize));
-                        e.Graphics.DrawLine(pCross, new Point(mMousePos.Value.X, mMousePos.Value.Y + halfCrossSize), new Point(mMousePos.Value.X, Height - mPadding.Bottom));
-                        e.Graphics.DrawRectangle(pCross, mMousePos.Value.X - halfCrossSize, mMousePos.Value.Y - halfCrossSize, halfCrossSize * 2, halfCrossSize * 2);
+                        DrawCross(e.Graphics, pCross, new Point(mMousePos.Value.X - 1, mMousePos.Value.Y - 1));
+                    }
+                    using (Pen pCross = new Pen(ColorScheme.PreviewCrossCursor))
+                    {
+						DrawCross(e.Graphics, pCross, mMousePos.Value);
                         ShowCursor = false;
                     }
                 }
@@ -849,6 +848,16 @@ namespace LaserGRBL.UserControls
 
 			}
 		}
+
+		private void DrawCross(Graphics g, Pen pCross, Point point)
+        {
+            const int halfCrossSize = 4;
+            g.DrawLine(pCross, new Point(mPadding.Left, point.Y), new Point(point.X - 5, point.Y));
+            g.DrawLine(pCross, new Point(point.X + halfCrossSize, point.Y), new Point(Width - mPadding.Right, point.Y));
+            g.DrawLine(pCross, new Point(point.X, mPadding.Top), new Point(point.X, point.Y - halfCrossSize));
+            g.DrawLine(pCross, new Point(point.X, point.Y + halfCrossSize), new Point(point.X, Height - mPadding.Bottom));
+            g.DrawRectangle(pCross, point.X - halfCrossSize, point.Y - halfCrossSize, halfCrossSize * 2, halfCrossSize * 2);
+        }
 
 		private string GetShortcut(HotKeysManager.HotKey.Actions action)
 		{
