@@ -282,7 +282,7 @@ namespace LaserGRBL
 			{
 				using (LegalDisclaimer lds = new LegalDisclaimer())
 				{
-					lds.ShowDialog();
+					lds.ShowDialog(FormsHelper.MainForm);
 					if (lds.accepted)
 					{
 						canrun = true;
@@ -347,7 +347,7 @@ namespace LaserGRBL
 					else
 					{
 						if (Core.CanLoadNewFile)
-							Core.OpenFile(this, filename, false);
+							Core.OpenFile(filename, false);
 						else
 							MessageBox.Show(Strings.MsgboxCannotOpenFileNow);
 					}
@@ -617,7 +617,7 @@ namespace LaserGRBL
 		private void MnFileOpen_Click(object sender, EventArgs e)
 		{
 			Project.ClearSettings();
-			Core.OpenFile(this);
+			Core.OpenFile();
 		}
 
 		private void MnFileSend_Click(object sender, EventArgs e)
@@ -853,7 +853,7 @@ namespace LaserGRBL
 		private void MnReOpenFile_Click(object sender, EventArgs e)
 		{
 			Project.ClearSettings();
-			Core.ReOpenFile(this);
+			Core.ReOpenFile();
 		}
 
 
@@ -885,7 +885,7 @@ namespace LaserGRBL
 
 		private void MnFileAppend_Click(object sender, EventArgs e)
 		{
-			Core.OpenFile(this, null, true);
+			Core.OpenFile(null, true);
 		}
 
 		private void hungarianToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1001,10 +1001,10 @@ namespace LaserGRBL
 
 		void dropDispatcherTimer_Tick(object sender, EventArgs e)
 		{
-			if (this.droppedFile != null)
+			if (droppedFile != null)
 			{
-				Core.OpenFile(this, this.droppedFile);
-				this.droppedFile = null;
+				Core.OpenFile(droppedFile);
+				droppedFile = null;
 				dropDispatcherTimer.Stop();
 			}
 		}
@@ -1196,32 +1196,32 @@ namespace LaserGRBL
 
 		private void TTlaserLife_Click(object sender, EventArgs e)
 		{
-			LaserUsage.CreateAndShowDialog(this, Core);
+			LaserUsage.CreateAndShowDialog(Core);
 		}
 
 		private void laserUsageStatsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			LaserUsage.CreateAndShowDialog(this, Core);
+			LaserUsage.CreateAndShowDialog(Core);
 		}
 
 		private void MnGrayscaleTest_Click(object sender, EventArgs e)
 		{
-			Generator.PowerVsSpeedForm.CreateAndShowDialog(this, Core);
+			Generator.PowerVsSpeedForm.CreateAndShowDialog(Core);
 		}
 
 		private void MnCuttingTest_Click(object sender, EventArgs e)
 		{
-			Generator.CuttingTest.CreateAndShowDialog(this, Core);
+			Generator.CuttingTest.CreateAndShowDialog(Core);
 		}
 
 		private void MnAccuracyTest_Click(object sender, EventArgs e)
 		{
-			Core.OpenFile(this, "LaserGRBL.Generator.SVG.LaserGRBL-accuracy-test-file.svg", false);
+			Core.OpenFile("LaserGRBL.Generator.SVG.LaserGRBL-accuracy-test-file.svg", false);
 		}
 
 		private void shakeTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Generator.ShakeTest.CreateAndShowDialog(this, Core);
+			Generator.ShakeTest.CreateAndShowDialog(Core);
 		}
 
         private void autoSizeToolStripMenuItem_Click(object sender, EventArgs e)

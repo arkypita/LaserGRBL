@@ -595,16 +595,16 @@ namespace LaserGRBL
 		public GrblFile LoadedFile
 		{ get { return file; } }
 
-		public void ReOpenFile(System.Windows.Forms.Form parent)
+		public void ReOpenFile()
 		{
 			if (CanReOpenFile)
-				OpenFile(parent, Settings.GetObject<string>("Core.LastOpenFile", null));
+				OpenFile(Settings.GetObject<string>("Core.LastOpenFile", null));
 		}
 
 		public static readonly List<string> ImageExtensions = new List<string>(new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif" });
 		public static readonly List<string> GCodeExtensions = new List<string>(new string[] { ".nc", ".cnc", ".tap", ".gcode", ".ngc" });
 		public static readonly List<string> ProjectFileExtensions = new List<string>(new string[] { ".lps" });
-		public void OpenFile(Form parent, string filename = null, bool append = false)
+		public void OpenFile(string filename = null, bool append = false)
 		{
 			if (!CanLoadNewFile) return;
 
@@ -627,12 +627,12 @@ namespace LaserGRBL
 						DialogResult dialogResult = DialogResult.Cancel;
 						try
 						{
-							dialogResult = ofd.ShowDialog(parent);
+							dialogResult = ofd.ShowDialog(FormsHelper.MainForm);
 						}
 						catch (System.Runtime.InteropServices.COMException)
 						{
 							ofd.AutoUpgradeEnabled = false;
-							dialogResult = ofd.ShowDialog(parent);
+							dialogResult = ofd.ShowDialog(FormsHelper.MainForm);
 						}
 
 						if (dialogResult == DialogResult.OK)
@@ -649,7 +649,7 @@ namespace LaserGRBL
 				{
 					try
 					{
-						RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, parent, append);
+						RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, filename, append);
 						UsageCounters.RasterFile++;
 					}
 					catch (Exception ex)
@@ -662,7 +662,7 @@ namespace LaserGRBL
 					{
 						try
 						{
-							SvgConverter.SvgToGCodeForm.CreateAndShowDialog(this, filename, parent, append);
+							SvgConverter.SvgToGCodeForm.CreateAndShowDialog(this, filename, append);
 							UsageCounters.SvgFile++;
 						}
 						catch (Exception ex)
@@ -695,7 +695,7 @@ namespace LaserGRBL
 
 						try
 						{
-							RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, bmpname, parent, append);
+							RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, bmpname, append);
 							UsageCounters.RasterFile++;
 							if (System.IO.File.Exists(bmpname))
 								System.IO.File.Delete(bmpname);
@@ -738,9 +738,9 @@ namespace LaserGRBL
 						// Open file
 						Settings.SetObject("Core.LastOpenFile", imageFilepath);
 						if (i == 0)
-							ReOpenFile(parent);
+							ReOpenFile();
 						else
-							OpenFile(parent, imageFilepath, true);
+							OpenFile(imageFilepath, true);
 
 						// Delete temporary image file
 						System.IO.File.Delete(imageFilepath);

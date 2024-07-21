@@ -179,12 +179,12 @@ namespace LaserGRBL.RasterConverter
 			WB.Running = true;
 		}
 
-		internal static void CreateAndShowDialog(GrblCore core, string filename, Form parent, bool append)
+		internal static void CreateAndShowDialog(GrblCore core, string filename, bool append)
 		{
 			using (RasterToLaserForm f = new RasterToLaserForm(core, filename, append))
 			{
-				f.Icon = parent.Icon;
-                f.ShowDialog(parent);
+				f.Icon = FormsHelper.MainForm.Icon;
+                f.ShowDialog(FormsHelper.MainForm);
             }	
 		}
 
