@@ -229,7 +229,7 @@
     <value>IIBorderTracing</value>
   </data>
   <data name="&gt;&gt;IIBorderTracing.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IIBorderTracing.Parent" xml:space="preserve">
     <value>tableLayoutPanel6</value>
@@ -277,7 +277,7 @@
     <value>BtnPSHelper</value>
   </data>
   <data name="&gt;&gt;BtnPSHelper.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnPSHelper.Parent" xml:space="preserve">
     <value>tableLayoutPanel6</value>
@@ -334,7 +334,7 @@
     <value>GbSpeed</value>
   </data>
   <data name="&gt;&gt;GbSpeed.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GbSpeed.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
@@ -394,7 +394,7 @@ Click for more information...</value>
     <value>BtnModulationInfo</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnModulationInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -451,7 +451,7 @@ Click for more information...</value>
     <value>IIMinPower</value>
   </data>
   <data name="&gt;&gt;IIMinPower.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IIMinPower.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -530,7 +530,7 @@ Click for more information...</value>
     <value>BtnOnOffInfo</value>
   </data>
   <data name="&gt;&gt;BtnOnOffInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnOnOffInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -554,7 +554,7 @@ Click for more information...</value>
     <value>CBLaserON</value>
   </data>
   <data name="&gt;&gt;CBLaserON.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CBLaserON.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -611,7 +611,7 @@ Click for more information...</value>
     <value>IIMaxPower</value>
   </data>
   <data name="&gt;&gt;IIMaxPower.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IIMaxPower.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -734,7 +734,7 @@ Click for more information...</value>
     <value>GbLaser</value>
   </data>
   <data name="&gt;&gt;GbLaser.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GbLaser.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
@@ -773,7 +773,7 @@ Click for more information...</value>
     <value>BtnCancel</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -803,7 +803,7 @@ Click for more information...</value>
     <value>BtnCreate</value>
   </data>
   <data name="&gt;&gt;BtnCreate.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=6.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCreate.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -908,7 +908,7 @@ Click for more information...</value>
     <value>CBFilter</value>
   </data>
   <data name="&gt;&gt;CBFilter.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CBFilter.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -952,7 +952,7 @@ Click for more information...</value>
     <value>BtnColorFilter</value>
   </data>
   <data name="&gt;&gt;BtnColorFilter.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnColorFilter.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1012,7 +1012,7 @@ Click for more information...</value>
     <value>gbFilter</value>
   </data>
   <data name="&gt;&gt;gbFilter.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=3.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;gbFilter.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>

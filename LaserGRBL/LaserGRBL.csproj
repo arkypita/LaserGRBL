@@ -1052,11 +1052,20 @@
       <DependentUpon>DiscoveryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WiFiDiscovery\IPAddressHelper.cs" />
+    <EmbeddedResource Include="AutoUpdate\NewVersionForm.ja-JP.resx">
+      <DependentUpon>NewVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AutoUpdate\NewVersionForm.nl-NL.resx">
+      <DependentUpon>NewVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoUpdate\NewVersionForm.pt-BR.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AutoUpdate\NewVersionForm.ro-RO.resx">
       <DependentUpon>NewVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectLogForm.ja-JP.resx">
+      <DependentUpon>ConnectLogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectLogForm.nl-NL.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
@@ -1066,6 +1075,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectLogForm.uk.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomButtonForm.ja-JP.resx">
+      <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomButtonForm.nl-NL.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
@@ -1079,6 +1091,9 @@
     <EmbeddedResource Include="CustomButtonForm.uk.resx">
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExceptionManager.ja-JP.resx">
+      <DependentUpon>ExceptionManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExceptionManager.pt-BR.resx">
       <DependentUpon>ExceptionManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -1088,17 +1103,35 @@
     <EmbeddedResource Include="Generator\PowerVsSpeedForm.resx">
       <DependentUpon>PowerVsSpeedForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Generator\ShakeTest.ja-JP.resx">
+      <DependentUpon>ShakeTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generator\ShakeTest.pt-BR.resx">
+      <DependentUpon>ShakeTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Generator\ShakeTest.resx">
       <DependentUpon>ShakeTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GrblConfig.ja-JP.resx">
+      <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.pt-BR.resx">
       <DependentUpon>GrblConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HotkeyManagerForm.ja-JP.resx">
+      <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HotkeyManagerForm.pt-BR.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IssueDetectorForm.ja-JP.resx">
+      <DependentUpon>IssueDetectorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IssueDetectorForm.pt-BR.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LaserLifeEdit.pt-BR.resx">
+      <DependentUpon>LaserLifeEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LaserLifeEdit.resx">
       <DependentUpon>LaserLifeEdit.cs</DependentUpon>
@@ -1106,8 +1139,44 @@
     <EmbeddedResource Include="LaserSelector.resx">
       <DependentUpon>LaserSelector.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LaserUsage.pt-BR.resx">
+      <DependentUpon>LaserUsage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LaserUsage.resx">
       <DependentUpon>LaserUsage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LegalDisclaimer.ja-JP.resx">
+      <DependentUpon>LegalDisclaimer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LegalDisclaimer.pt-BR.resx">
+      <DependentUpon>LegalDisclaimer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.ja-JP.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.ja-JP.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\RasterToLaserForm.ja-JP.resx">
+      <DependentUpon>RasterToLaserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RasterConverter\ResolutionHelperForm.ja-JP.resx">
+      <DependentUpon>ResolutionHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResumeJobForm.ja-JP.resx">
+      <DependentUpon>ResumeJobForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RunFromPositionForm.ja-JP.resx">
+      <DependentUpon>RunFromPositionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveOptionForm.ja-JP.resx">
+      <DependentUpon>SaveOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.ja-JP.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SvgConverter\ConvertSizeAndOptionForm.ja-JP.resx">
+      <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\GrblPanel3D.resx">
       <DependentUpon>GrblPanel3D.cs</DependentUpon>
@@ -1292,13 +1361,25 @@
     <EmbeddedResource Include="WiFiConfigurator\OrturWiFiConfig.resx">
       <DependentUpon>OrturWiFiConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WiFiConfigurator\OrturWiFiConfigPrompt.ja-JP.resx">
+      <DependentUpon>OrturWiFiConfigPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WiFiConfigurator\OrturWiFiConfigPrompt.pt-BR.resx">
+      <DependentUpon>OrturWiFiConfigPrompt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WiFiConfigurator\OrturWiFiConfigPrompt.resx">
       <DependentUpon>OrturWiFiConfigPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.hu-HU.resx">
       <DependentUpon>DiscoveryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.ja-JP.resx">
+      <DependentUpon>DiscoveryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.nl-NL.resx">
+      <DependentUpon>DiscoveryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.pt-BR.resx">
       <DependentUpon>DiscoveryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.resx">

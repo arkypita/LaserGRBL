@@ -31,6 +31,9 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
+			this.JogForm = new LaserGRBL.JogForm();
+			this.PreviewForm = new LaserGRBL.PreviewForm();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
@@ -97,10 +100,17 @@
 			this.nightyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.previewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.autoSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.zoomInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.zoomOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripSeparator();
 			this.showLaserOffMovementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.showExecutedCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.lineSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.showBoundingBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.crossCursorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.autosizeModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.drawingAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.movingAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.lineSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pxToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.pxToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
 			this.pxToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,10 +118,6 @@
 			this.pxToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
 			this.showDiagnosticDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.showBoundingBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.crossCursorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.drawingAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.movingAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.linguaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNEnglish = new System.Windows.Forms.ToolStripMenuItem();
 			this.MNItalian = new System.Windows.Forms.ToolStripMenuItem();
@@ -166,12 +172,7 @@
 			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
 			this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
-			this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripSeparator();
-			this.zoomInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.zoomOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
-			this.JogForm = new LaserGRBL.JogForm();
-			this.PreviewForm = new LaserGRBL.PreviewForm();
+			this.japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -195,6 +196,21 @@
 			this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
 			this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
 			this.splitContainer1.Paint += new System.Windows.Forms.PaintEventHandler(this.SplitContainer1_Paint);
+			// 
+			// ConnectionForm
+			// 
+			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
+			this.ConnectionForm.Name = "ConnectionForm";
+			// 
+			// JogForm
+			// 
+			resources.ApplyResources(this.JogForm, "JogForm");
+			this.JogForm.Name = "JogForm";
+			// 
+			// PreviewForm
+			// 
+			resources.ApplyResources(this.PreviewForm, "PreviewForm");
+			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// StatusBar
 			// 
@@ -658,8 +674,8 @@
             this.showLaserOffMovementsToolStripMenuItem,
             this.showExecutedCommandsToolStripMenuItem,
             this.showBoundingBoxToolStripMenuItem,
-			this.crossCursorToolStripMenuItem,
-			this.autosizeModeToolStripMenuItem,
+            this.crossCursorToolStripMenuItem,
+            this.autosizeModeToolStripMenuItem,
             this.lineSizeToolStripMenuItem,
             this.toolStripMenuItem9,
             this.showDiagnosticDataToolStripMenuItem});
@@ -672,12 +688,36 @@
 			resources.ApplyResources(this.autoSizeToolStripMenuItem, "autoSizeToolStripMenuItem");
 			this.autoSizeToolStripMenuItem.Click += new System.EventHandler(this.autoSizeToolStripMenuItem_Click);
 			// 
+			// zoomInToolStripMenuItem
+			// 
+			this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
+			resources.ApplyResources(this.zoomInToolStripMenuItem, "zoomInToolStripMenuItem");
+			this.zoomInToolStripMenuItem.Click += new System.EventHandler(this.zoomInToolStripMenuItem_Click);
+			// 
+			// zoomOutToolStripMenuItem
+			// 
+			this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
+			resources.ApplyResources(this.zoomOutToolStripMenuItem, "zoomOutToolStripMenuItem");
+			this.zoomOutToolStripMenuItem.Click += new System.EventHandler(this.zoomOutToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem10
+			// 
+			this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+			resources.ApplyResources(this.toolStripMenuItem10, "toolStripMenuItem10");
+			// 
 			// showLaserOffMovementsToolStripMenuItem
 			// 
 			this.showLaserOffMovementsToolStripMenuItem.CheckOnClick = true;
 			this.showLaserOffMovementsToolStripMenuItem.Name = "showLaserOffMovementsToolStripMenuItem";
 			resources.ApplyResources(this.showLaserOffMovementsToolStripMenuItem, "showLaserOffMovementsToolStripMenuItem");
 			this.showLaserOffMovementsToolStripMenuItem.Click += new System.EventHandler(this.showLaserOffMovementsToolStripMenuItem_Click);
+			// 
+			// showExecutedCommandsToolStripMenuItem
+			// 
+			this.showExecutedCommandsToolStripMenuItem.CheckOnClick = true;
+			this.showExecutedCommandsToolStripMenuItem.Name = "showExecutedCommandsToolStripMenuItem";
+			resources.ApplyResources(this.showExecutedCommandsToolStripMenuItem, "showExecutedCommandsToolStripMenuItem");
+			this.showExecutedCommandsToolStripMenuItem.Click += new System.EventHandler(this.showExecutedCommandsToolStripMenuItem_Click);
 			// 
 			// showBoundingBoxToolStripMenuItem
 			// 
@@ -693,12 +733,29 @@
 			resources.ApplyResources(this.crossCursorToolStripMenuItem, "crossCursorToolStripMenuItem");
 			this.crossCursorToolStripMenuItem.Click += new System.EventHandler(this.crossCursorToolStripMenuItem_Click);
 			// 
-			// showExecutedCommandsToolStripMenuItem
+			// autosizeModeToolStripMenuItem
 			// 
-			this.showExecutedCommandsToolStripMenuItem.CheckOnClick = true;
-			this.showExecutedCommandsToolStripMenuItem.Name = "showExecutedCommandsToolStripMenuItem";
-			resources.ApplyResources(this.showExecutedCommandsToolStripMenuItem, "showExecutedCommandsToolStripMenuItem");
-			this.showExecutedCommandsToolStripMenuItem.Click += new System.EventHandler(this.showExecutedCommandsToolStripMenuItem_Click);
+			this.autosizeModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.drawingAreaToolStripMenuItem,
+            this.movingAreaToolStripMenuItem});
+			this.autosizeModeToolStripMenuItem.Name = "autosizeModeToolStripMenuItem";
+			resources.ApplyResources(this.autosizeModeToolStripMenuItem, "autosizeModeToolStripMenuItem");
+			// 
+			// drawingAreaToolStripMenuItem
+			// 
+			this.drawingAreaToolStripMenuItem.CheckOnClick = true;
+			this.drawingAreaToolStripMenuItem.Name = "drawingAreaToolStripMenuItem";
+			resources.ApplyResources(this.drawingAreaToolStripMenuItem, "drawingAreaToolStripMenuItem");
+			this.drawingAreaToolStripMenuItem.Tag = "Drawing area";
+			this.drawingAreaToolStripMenuItem.Click += new System.EventHandler(this.drawingAreaToolStripMenuItem_Click);
+			// 
+			// movingAreaToolStripMenuItem
+			// 
+			this.movingAreaToolStripMenuItem.CheckOnClick = true;
+			this.movingAreaToolStripMenuItem.Name = "movingAreaToolStripMenuItem";
+			resources.ApplyResources(this.movingAreaToolStripMenuItem, "movingAreaToolStripMenuItem");
+			this.movingAreaToolStripMenuItem.Tag = "Machine area";
+			this.movingAreaToolStripMenuItem.Click += new System.EventHandler(this.machineAreaToolStripMenuItem_Click);
 			// 
 			// lineSizeToolStripMenuItem
 			// 
@@ -710,14 +767,6 @@
             this.pxToolStripMenuItem5});
 			this.lineSizeToolStripMenuItem.Name = "lineSizeToolStripMenuItem";
 			resources.ApplyResources(this.lineSizeToolStripMenuItem, "lineSizeToolStripMenuItem");
-			// 
-			// autosizeModeToolStripMenuItem
-			// 
-			this.autosizeModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.drawingAreaToolStripMenuItem,
-            this.movingAreaToolStripMenuItem});
-			this.autosizeModeToolStripMenuItem.Name = "autosizeModeToolStripMenuItem";
-			resources.ApplyResources(this.autosizeModeToolStripMenuItem, "autosizeModeToolStripMenuItem");
 			// 
 			// pxToolStripMenuItem1
 			// 
@@ -754,22 +803,6 @@
 			this.pxToolStripMenuItem5.Tag = "5";
 			this.pxToolStripMenuItem5.Click += new System.EventHandler(this.pxToolStripMenuItem_Click);
 			// 
-			// drawingAreaToolStripMenuItem
-			// 
-			this.drawingAreaToolStripMenuItem.Name = "drawingAreaToolStripMenuItem";
-			this.drawingAreaToolStripMenuItem.CheckOnClick = true;
-			resources.ApplyResources(this.drawingAreaToolStripMenuItem, "drawingAreaToolStripMenuItem");
-			this.drawingAreaToolStripMenuItem.Tag = "Drawing area";
-			this.drawingAreaToolStripMenuItem.Click += new System.EventHandler(this.drawingAreaToolStripMenuItem_Click);
-			// 
-			// movingAreaToolStripMenuItem
-			// 
-			this.movingAreaToolStripMenuItem.Name = "movingAreaToolStripMenuItem";
-			this.movingAreaToolStripMenuItem.CheckOnClick = true;
-			resources.ApplyResources(this.movingAreaToolStripMenuItem, "movingAreaToolStripMenuItem");
-			this.movingAreaToolStripMenuItem.Tag = "Machine area";
-			this.movingAreaToolStripMenuItem.Click += new System.EventHandler(this.machineAreaToolStripMenuItem_Click);
-			// 
 			// toolStripMenuItem9
 			// 
 			this.toolStripMenuItem9.Name = "toolStripMenuItem9";
@@ -803,7 +836,8 @@
             this.turkishToolStripMenuItem,
             this.romanianToolStripMenuItem,
             this.dutchToolStripMenuItem,
-            this.ukrainianToolStripMenuItem});
+            this.ukrainianToolStripMenuItem,
+            this.japaneseToolStripMenuItem});
 			this.linguaToolStripMenuItem.Name = "linguaToolStripMenuItem";
 			resources.ApplyResources(this.linguaToolStripMenuItem, "linguaToolStripMenuItem");
 			// 
@@ -1150,37 +1184,11 @@
 			this.MultipleInstanceTimer.Interval = 1000;
 			this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
 			// 
-			// toolStripMenuItem10
+			// japaneseToolStripMenuItem
 			// 
-			this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-			resources.ApplyResources(this.toolStripMenuItem10, "toolStripMenuItem10");
-			// 
-			// zoomInToolStripMenuItem
-			// 
-			this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
-			resources.ApplyResources(this.zoomInToolStripMenuItem, "zoomInToolStripMenuItem");
-			this.zoomInToolStripMenuItem.Click += new System.EventHandler(this.zoomInToolStripMenuItem_Click);
-			// 
-			// zoomOutToolStripMenuItem
-			// 
-			this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
-			resources.ApplyResources(this.zoomOutToolStripMenuItem, "zoomOutToolStripMenuItem");
-			this.zoomOutToolStripMenuItem.Click += new System.EventHandler(this.zoomOutToolStripMenuItem_Click);
-			// 
-			// ConnectionForm
-			// 
-			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
-			this.ConnectionForm.Name = "ConnectionForm";
-			// 
-			// JogForm
-			// 
-			resources.ApplyResources(this.JogForm, "JogForm");
-			this.JogForm.Name = "JogForm";
-			// 
-			// PreviewForm
-			// 
-			resources.ApplyResources(this.PreviewForm, "PreviewForm");
-			this.PreviewForm.Name = "PreviewForm";
+			this.japaneseToolStripMenuItem.Name = "japaneseToolStripMenuItem";
+			resources.ApplyResources(this.japaneseToolStripMenuItem, "japaneseToolStripMenuItem");
+			this.japaneseToolStripMenuItem.Click += new System.EventHandler(this.japaneseToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -1354,6 +1362,7 @@
 		private System.Windows.Forms.ToolStripMenuItem autosizeModeToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem drawingAreaToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem movingAreaToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem japaneseToolStripMenuItem;
 	}
 }
 

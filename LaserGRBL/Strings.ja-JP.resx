@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BoxConnectErrorTitle" xml:space="preserve">
+    <value>デバイスに接続できません</value>
+  </data>
+  <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
+    <value>スムーズ(HQバイキュービック法)</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} 設定が正常に読み取られました。</value>
+  </data>
+  <data name="FormulaOpticalCorrect" xml:space="preserve">
+    <value>光学補正</value>
+  </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>中心線オプションは、お使いのPCと互換性がありません。
+64bitのOSが必要です!</value>
+  </data>
+  <data name="CustomButtonEdit" xml:space="preserve">
+    <value>[編集] ボタン</value>
+  </data>
+  <data name="BoxImportConfigWithoutError" xml:space="preserve">
+    <value>{0} Config が正常にインポートされました。</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>設定の読み取り中にエラーが発生しました!</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>カスタムボタンのインポート</value>
+  </data>
+  <data name="BoxExportConfigErrorTitle" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>キャッシュされた値を表示しています...</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>ツールチップのテキストを入力してください</value>
+  </data>
+  <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
+    <value>成功</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>ファームウェアタイプの変更を適用するには、再起動が必要です。今すぐ再起動しますか?</value>
+  </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>Line2Lineオプションは、加工機または構成と互換性がありません。PWM対応レーザーが必要であり、PWMサポートはLaserGRBL設定で有効にする必要があります。</value>
+  </data>
+  <data name="FormulaSimpleAverage" xml:space="preserve">
+    <value>単純平均</value>
+  </data>
+  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
+    <value>新しいファイルを開くことができません。</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>変更なし...</value>
+  </data>
+  <data name="MacStatusAlarm" xml:space="preserve">
+    <value>注意</value>
+  </data>
+  <data name="MacStatusDisconnected" xml:space="preserve">
+    <value>切断されています</value>
+  </data>
+  <data name="LanguageRequireRestartNow" xml:space="preserve">
+    <value>アプリケーションの再起動が必要です。今すぐ再起動しますか?</value>
+  </data>
+  <data name="MacStatusHome" xml:space="preserve">
+    <value>ホーム</value>
+  </data>
+  <data name="BoxAutoUpdateSuccess" xml:space="preserve">
+    <value>アップデート成功!</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>GCode コマンドを指定してください</value>
+  </data>
+  <data name="LanguageRequireRestart" xml:space="preserve">
+    <value>再起動が必要です</value>
+  </data>
+  <data name="BoxImportConfigWithError" xml:space="preserve">
+    <value>{0} Configが{1}エラーでインポートされました。</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>不明な位置</value>
+  </data>
+  <data name="MacStatusIdle" xml:space="preserve">
+    <value>アイドル</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>速度：</value>
+  </data>
+  <data name="FormulaWeightAverage" xml:space="preserve">
+    <value>加重平均</value>
+  </data>
+  <data name="BoxAutoUpdateFailed" xml:space="preserve">
+    <value>自動更新に失敗しました。
+lasergrblのサイトから手動で新しいバージョンをダウンロードしてください。</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} 設定が正常に書き込まれました。</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>欠落しているフィールド</value>
+  </data>
+  <data name="DirectionVertical" xml:space="preserve">
+    <value>垂直(旧)</value>
+  </data>
+  <data name="FormulaCustom" xml:space="preserve">
+    <value>カスタム</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>カスタムボタンの削除</value>
+  </data>
+  <data name="MacStatusJog" xml:space="preserve">
+    <value>ジョグ</value>
+  </data>
+  <data name="MacStatusDoor" xml:space="preserve">
+    <value>ドア</value>
+  </data>
+  <data name="BoxAutoUpdateResult" xml:space="preserve">
+    <value>結果更新</value>
+  </data>
+  <data name="BoxExportConfigFileNotFound" xml:space="preserve">
+    <value>ファイルが存在しません!</value>
+  </data>
+  <data name="WarnSoftLimitTitle" xml:space="preserve">
+    <value>ジョブ境界の確認</value>
+  </data>
+  <data name="BoxImportConfigFileError" xml:space="preserve">
+    <value>ファイルの読み取り中にエラーが発生しました。</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>ファイル転送が進行中です。終了しますか?</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>ステップ:</value>
+  </data>
+  <data name="MainFormEstimatedTime" xml:space="preserve">
+    <value>推定時間:</value>
+  </data>
+  <data name="BoxExportConfigSuccess" xml:space="preserve">
+    <value>{0} 設定が正常にエクスポートされました。</value>
+  </data>
+  <data name="BoxExportConfigError" xml:space="preserve">
+    <value>設定のエクスポート中にエラーが発生しました。</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>適用されていない変更がいくつかあります。
+構成を書き直しますか?</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>切断</value>
+  </data>
+  <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
+    <value>アップデートには管理者権限が必要です。</value>
+  </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>Grblでは現在位置を見失っているようです。
+ホーミング($H)をしない場合、結果は信頼できない可能性があります。
+続行しますか?</value>
+  </data>
+  <data name="MacStatusConnecting" xml:space="preserve">
+    <value>接続中</value>
+  </data>
+  <data name="DirectionHorizontal" xml:space="preserve">
+    <value>水平(旧)</value>
+  </data>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="MacStatusUnknown" xml:space="preserve">
+    <value>不明</value>
+  </data>
+  <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
+    <value>シャープ (最近傍探索)</value>
+  </data>
+  <data name="WarnSoftLimitOOB" xml:space="preserve">
+    <value>加工機で構成されたワークスペース ({0} mm x {1}mm) よりも大きくするサイズとオフセットを設定しました。
+grblパラメータは$130と$131です。
+
+これにより、ソフトリミットエラーが発生したり、マシンが軸境界に衝突したりする可能性があります。入力した値に問題はありませんか?</value>
+  </data>
+  <data name="WarnSoftLimitNS" xml:space="preserve">
+    <value>負のオフセットを設定しましたが、加工機はソフトリミットアラームを有効にした正のスペースを使用するように設定されています($20=1)。
+
+これにより、ソフトリミットエラーが発生する可能性があります。入力した値に問題はありませんか?</value>
+  </data>
+  <data name="DirectionDiagonal" xml:space="preserve">
+    <value>斜め(旧)</value>
+  </data>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>ここを右クリックしてカスタムボタンを追加</value>
+  </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>再起動が必要です</value>
+  </data>
+  <data name="TipsZoomAuto" xml:space="preserve">
+    <value>ズーム自動 (100%)</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>接続</value>
+  </data>
+  <data name="WarnWrongLaserMode" xml:space="preserve">
+    <value>"M4ダイナミックレーザーパワーモード "が設定されていますが、加工機はサポートしていないようです。
+M4オプションを利用できるのは、"レーザーモード "が有効($32=1)になっているgrblバージョン&gt;= 1.1の加工機だけです。</value>
+  </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>ファイル転送中。切断しますか？</value>
+  </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>選択したボタンを削除してもよろしいですか？</value>
+  </data>
+  <data name="DirectionNone" xml:space="preserve">
+    <value>フィルなし</value>
+  </data>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>現在のジョブを中断しますか？</value>
+  </data>
+  <data name="DirectionNewCross" xml:space="preserve">
+    <value>クロスフィル</value>
+  </data>
+  <data name="DirectionNewDiagonal" xml:space="preserve">
+    <value>斜め</value>
+  </data>
+  <data name="DirectionNewDiagonalCross" xml:space="preserve">
+    <value>斜めクロスフィル</value>
+  </data>
+  <data name="DirectionNewDiagonalGrid" xml:space="preserve">
+    <value>斜めグリッド</value>
+  </data>
+  <data name="DirectionNewGrid" xml:space="preserve">
+    <value>グリッド</value>
+  </data>
+  <data name="DirectionNewHorizontal" xml:space="preserve">
+    <value>水平</value>
+  </data>
+  <data name="DirectionNewInsetFilling" xml:space="preserve">
+    <value>フィルをセット</value>
+  </data>
+  <data name="DirectionNewReverseDiagonal" xml:space="preserve">
+    <value>斜め反転</value>
+  </data>
+  <data name="DirectionNewSquares" xml:space="preserve">
+    <value>正方形</value>
+  </data>
+  <data name="DirectionNewVertical" xml:space="preserve">
+    <value>垂直</value>
+  </data>
+  <data name="DirectionNewZigZag" xml:space="preserve">
+    <value>ジグザグ</value>
+  </data>
+  <data name="MacStatusCheck" xml:space="preserve">
+    <value>チェック</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>この種類のファイルはサポートされていません。</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} コンフィグが{1}のエラーで書かれた！</value>
+  </data>
+  <data name="MacStatusRun" xml:space="preserve">
+    <value>実行</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>変更が検出されました！</value>
+  </data>
+  <data name="MainFormProjectedTime" xml:space="preserve">
+    <value>推定時間:</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>ボタンを削除しますか？削除する場合は「はい」を、残す場合は「いいえ」を選択してください。</value>
+  </data>
+  <data name="MacStatusHold" xml:space="preserve">
+    <value>ホールド</value>
+  </data>
+  <data name="CustomButtonRemove" xml:space="preserve">
+    <value>ボタンを削除</value>
+  </data>
+  <data name="DitheringOptions" xml:space="preserve">
+    <value>ディザリングオプション</value>
+  </data>
+  <data name="Line2LineOptions" xml:space="preserve">
+    <value>線間オプション</value>
+  </data>
+  <data name="WarnUnlockProportionText" xml:space="preserve">
+    <value>幅や高さを自由に設定すると、画像が歪んでしまうことがあります。続けますか？</value>
+  </data>
+  <data name="BoxTelegramSettingText" xml:space="preserve">
+    <value>テスト通知が送信されました！</value>
+  </data>
+  <data name="WarnUnlockProportionTitle" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="DirectionNewHilbert" xml:space="preserve">
+    <value>ヒルベルト</value>
+  </data>
+  <data name="WarnWrongLaserModeTitle" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="BoxTelegramSettingTitle" xml:space="preserve">
+    <value>テレグラム通知</value>
+  </data>
+  <data name="ProblemConnectingTitle" xml:space="preserve">
+    <value>接続に問題がありますか？</value>
+  </data>
+  <data name="BoxMachineSizeOutOfRangeText" xml:space="preserve">
+    <value>加工機の設定パラメータが範囲外です。機械設定（メニュー "Grbl", "Grbl Configuration"）のパラメータ130と131をチェックしてください。</value>
+  </data>
+  <data name="WarnBufferStuckUnlockTitle" xml:space="preserve">
+    <value>バッファをアンロック</value>
+  </data>
+  <data name="ProblemConnectingText" xml:space="preserve">
+    <value>加工機接続エラー。
+ヘルプが必要な場合は、"? "ボタンをクリックしてください。</value>
+  </data>
+  <data name="TipsBasicUsage" xml:space="preserve">
+    <value>基本的な使い方</value>
+  </data>
+  <data name="MdiIconCaption" xml:space="preserve">
+    <value>MDI Icon code</value>
+  </data>
+  <data name="DBOIssueSuggestGDI" xml:space="preserve">
+    <value>お使いのコンピュータがソフトウェアレンダリングをサポートしていないようです。
+LaserGRBLを再起動して、レガシーモードに切り替えますか？</value>
+  </data>
+  <data name="FBOIssueSuggestDBO" xml:space="preserve">
+    <value>お使いのコンピュータがハードウェアアクセラレーションに対応していないようです。
+LaserGRBLを再起動してソフトウェアレンダリングに切り替えますか？</value>
+  </data>
+  <data name="AlreadyLoading" xml:space="preserve">
+    <value>ファイルがすでに読み込まれています。少しお待ち下さい。</value>
+  </data>
+  <data name="ClearDrawing" xml:space="preserve">
+    <value>描画をクリア...</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>読込中</value>
+  </data>
+  <data name="PrepareDrawing" xml:space="preserve">
+    <value>描画準備...</value>
+  </data>
+  <data name="PreviewChangesRequiresRestart" xml:space="preserve">
+    <value>プレビューの変更を適用するには再起動が必要です。今すぐ再起動しますか？</value>
+  </data>
+  <data name="IconsChangesRequiresRestart" xml:space="preserve">
+    <value>アイコンの変更を適用するには再起動が必要です。今すぐ再起動しますか？</value>
+  </data>
+  <data name="BoxMachineSizeOutOfRangeTitle" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="TipsZoomOut" xml:space="preserve">
+    <value>ズームアウト (-10%)</value>
+  </data>
+  <data name="TipsJog" xml:space="preserve">
+    <value>ジョグ: 任意の位置でダブルクリック（またはダブルタップ）</value>
+  </data>
+  <data name="TipsKeyboardShortcuts" xml:space="preserve">
+    <value>キーボードショートカット</value>
+  </data>
+  <data name="TipsPan" xml:space="preserve">
+    <value>パン: クリック＆ドラッグ（またはタッチ＆ドラッグ）</value>
+  </data>
+  <data name="TipsZoom" xml:space="preserve">
+    <value>ズーム: マウスホイール（または2本指ジェスチャー）を使う</value>
+  </data>
+  <data name="TipsZoomIn" xml:space="preserve">
+    <value>ズームイン (+10%)</value>
+  </data>
+  <data name="WarnBufferStuckUnlockText" xml:space="preserve">
+    <value>バッファがブロックされている場合は、加工機との通信に問題があるためです。OK "を押すと、LaserGRBLは満杯のバッファを無視して次のコマンドを送信します。この現象が頻繁に起こる場合は、この問題の原因を理解する必要があります。
+詳細は"?"をクリックしてください。</value>
+  </data>
+</root>

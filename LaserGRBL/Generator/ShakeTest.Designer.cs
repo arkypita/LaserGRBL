@@ -57,101 +57,49 @@
 			// pictureBox1
 			// 
 			this.pictureBox1.BackColor = System.Drawing.Color.White;
-			this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-			this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+			resources.ApplyResources(this.pictureBox1, "pictureBox1");
 			this.pictureBox1.Name = "pictureBox1";
 			this.tableLayoutPanel5.SetRowSpan(this.pictureBox1, 4);
-			this.pictureBox1.Size = new System.Drawing.Size(300, 366);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
 			// 
 			// tableLayoutPanel4
 			// 
-			this.tableLayoutPanel4.AutoSize = true;
-			this.tableLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.tableLayoutPanel4.ColumnCount = 3;
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
 			this.tableLayoutPanel4.Controls.Add(this.BtnCancel, 1, 0);
 			this.tableLayoutPanel4.Controls.Add(this.BtnCreate, 2, 0);
-			this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel4.Location = new System.Drawing.Point(309, 317);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-			this.tableLayoutPanel4.RowCount = 1;
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel4.Size = new System.Drawing.Size(609, 52);
-			this.tableLayoutPanel4.TabIndex = 6;
 			// 
 			// BtnCancel
 			// 
 			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.BtnCancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnCancel.Location = new System.Drawing.Point(452, 3);
+			resources.ApplyResources(this.BtnCancel, "BtnCancel");
 			this.BtnCancel.Name = "BtnCancel";
-			this.BtnCancel.Size = new System.Drawing.Size(74, 27);
-			this.BtnCancel.TabIndex = 6;
-			this.BtnCancel.Text = "Cancel";
 			this.BtnCancel.UseVisualStyleBackColor = true;
 			// 
 			// BtnCreate
 			// 
-			this.BtnCreate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.BtnCreate.Location = new System.Drawing.Point(532, 3);
+			resources.ApplyResources(this.BtnCreate, "BtnCreate");
 			this.BtnCreate.Name = "BtnCreate";
-			this.BtnCreate.Size = new System.Drawing.Size(74, 27);
-			this.BtnCreate.TabIndex = 7;
-			this.BtnCreate.Text = "Create!";
 			this.BtnCreate.UseVisualStyleBackColor = true;
 			this.BtnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
 			// 
 			// label1
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(310, 4);
-			this.label1.Margin = new System.Windows.Forms.Padding(4);
-			this.label1.MaximumSize = new System.Drawing.Size(600, 0);
+			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(598, 247);
-			this.label1.TabIndex = 0;
-			this.label1.Text = resources.GetString("label1.Text");
 			// 
 			// tableLayoutPanel5
 			// 
-			this.tableLayoutPanel5.AutoSize = true;
-			this.tableLayoutPanel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.tableLayoutPanel5.ColumnCount = 2;
-			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
 			this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel4, 1, 3);
 			this.tableLayoutPanel5.Controls.Add(this.label1, 1, 0);
 			this.tableLayoutPanel5.Controls.Add(this.pictureBox1, 0, 0);
 			this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel6, 1, 2);
-			this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-			this.tableLayoutPanel5.RowCount = 4;
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel5.Size = new System.Drawing.Size(921, 372);
-			this.tableLayoutPanel5.TabIndex = 1;
 			// 
 			// tableLayoutPanel6
 			// 
-			this.tableLayoutPanel6.AutoSize = true;
-			this.tableLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.tableLayoutPanel6.ColumnCount = 7;
-			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			resources.ApplyResources(this.tableLayoutPanel6, "tableLayoutPanel6");
 			this.tableLayoutPanel6.Controls.Add(this.label8, 3, 0);
 			this.tableLayoutPanel6.Controls.Add(this.label2, 0, 0);
 			this.tableLayoutPanel6.Controls.Add(this.label3, 0, 1);
@@ -164,157 +112,102 @@
 			this.tableLayoutPanel6.Controls.Add(this.CbAxis, 2, 0);
 			this.tableLayoutPanel6.Controls.Add(this.label7, 1, 0);
 			this.tableLayoutPanel6.Controls.Add(this.IiAxisLen, 4, 0);
-			this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel6.Location = new System.Drawing.Point(309, 263);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-			this.tableLayoutPanel6.RowCount = 2;
-			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel6.Size = new System.Drawing.Size(609, 48);
-			this.tableLayoutPanel6.TabIndex = 1;
 			// 
 			// label8
 			// 
-			this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(202, 7);
+			resources.ApplyResources(this.label8, "label8");
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(40, 13);
-			this.label8.TabIndex = 10;
-			this.label8.Text = "Lenght";
 			// 
 			// label2
 			// 
-			this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(3, 7);
+			resources.ApplyResources(this.label2, "label2");
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(51, 13);
-			this.label2.TabIndex = 0;
-			this.label2.Text = "Test type";
 			// 
 			// label3
 			// 
-			this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(3, 31);
+			resources.ApplyResources(this.label3, "label3");
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(83, 13);
-			this.label3.TabIndex = 1;
-			this.label3.Text = "Cross engraving";
 			// 
 			// label5
 			// 
-			this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(92, 31);
+			resources.ApplyResources(this.label5, "label5");
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(38, 13);
-			this.label5.TabIndex = 4;
-			this.label5.Text = "Speed";
 			// 
 			// IiCrossSpeed
 			// 
 			this.IiCrossSpeed.CurrentValue = 1000;
 			this.IiCrossSpeed.ForcedText = null;
 			this.IiCrossSpeed.ForceMinMax = false;
-			this.IiCrossSpeed.Location = new System.Drawing.Point(136, 30);
+			resources.ApplyResources(this.IiCrossSpeed, "IiCrossSpeed");
 			this.IiCrossSpeed.MaxValue = 10000;
 			this.IiCrossSpeed.MinValue = 10;
 			this.IiCrossSpeed.Name = "IiCrossSpeed";
-			this.IiCrossSpeed.Size = new System.Drawing.Size(60, 15);
-			this.IiCrossSpeed.TabIndex = 4;
 			// 
 			// label4
 			// 
-			this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(314, 7);
+			resources.ApplyResources(this.label4, "label4");
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(60, 13);
-			this.label4.TabIndex = 2;
-			this.label4.Text = "Limit speed";
 			// 
 			// CbLimit
 			// 
+			this.CbLimit.BackColor = System.Drawing.Color.White;
 			this.CbLimit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbLimit.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.CbLimit.FormattingEnabled = true;
-			this.CbLimit.Location = new System.Drawing.Point(380, 3);
-			this.CbLimit.MaxDropDownItems = 6;
+			resources.ApplyResources(this.CbLimit, "CbLimit");
 			this.CbLimit.Name = "CbLimit";
-			this.CbLimit.Size = new System.Drawing.Size(146, 21);
-			this.CbLimit.TabIndex = 3;
 			// 
 			// label6
 			// 
-			this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(202, 31);
+			resources.ApplyResources(this.label6, "label6");
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(37, 13);
-			this.label6.TabIndex = 7;
-			this.label6.Text = "Power";
 			// 
 			// IiCrossPower
 			// 
 			this.IiCrossPower.CurrentValue = 100;
 			this.IiCrossPower.ForcedText = null;
 			this.IiCrossPower.ForceMinMax = false;
-			this.IiCrossPower.Location = new System.Drawing.Point(248, 30);
+			resources.ApplyResources(this.IiCrossPower, "IiCrossPower");
 			this.IiCrossPower.MaxValue = 1000;
 			this.IiCrossPower.MinValue = 1;
 			this.IiCrossPower.Name = "IiCrossPower";
-			this.IiCrossPower.Size = new System.Drawing.Size(60, 15);
-			this.IiCrossPower.TabIndex = 5;
 			// 
 			// CbAxis
 			// 
+			this.CbAxis.BackColor = System.Drawing.Color.White;
 			this.CbAxis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbAxis.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.CbAxis.FormattingEnabled = true;
 			this.CbAxis.Items.AddRange(new object[] {
-            "X",
-            "Y"});
-			this.CbAxis.Location = new System.Drawing.Point(136, 3);
+            resources.GetString("CbAxis.Items"),
+            resources.GetString("CbAxis.Items1")});
+			resources.ApplyResources(this.CbAxis, "CbAxis");
 			this.CbAxis.Name = "CbAxis";
-			this.CbAxis.Size = new System.Drawing.Size(60, 21);
-			this.CbAxis.TabIndex = 1;
 			this.CbAxis.SelectedIndexChanged += new System.EventHandler(this.CbAxis_SelectedIndexChanged);
 			// 
 			// label7
 			// 
-			this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(92, 7);
+			resources.ApplyResources(this.label7, "label7");
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(26, 13);
-			this.label7.TabIndex = 9;
-			this.label7.Text = "Axis";
 			// 
 			// IiAxisLen
 			// 
-			this.IiAxisLen.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			resources.ApplyResources(this.IiAxisLen, "IiAxisLen");
 			this.IiAxisLen.CurrentValue = 100;
 			this.IiAxisLen.ForcedText = null;
 			this.IiAxisLen.ForceMinMax = false;
-			this.IiAxisLen.Location = new System.Drawing.Point(248, 6);
 			this.IiAxisLen.MinValue = 50;
 			this.IiAxisLen.Name = "IiAxisLen";
-			this.IiAxisLen.Size = new System.Drawing.Size(60, 15);
-			this.IiAxisLen.TabIndex = 2;
 			// 
 			// ShakeTest
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.AutoSize = true;
-			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.CancelButton = this.BtnCancel;
-			this.ClientSize = new System.Drawing.Size(921, 372);
 			this.Controls.Add(this.tableLayoutPanel5);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "ShakeTest";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "Shake Test";
 			this.Load += new System.EventHandler(this.ShakeTest_Load);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.tableLayoutPanel4.ResumeLayout(false);

@@ -484,17 +484,36 @@ namespace LaserGRBL
 	public class GrblMessage : IGrblRow
 	{
 		public enum MessageType
-		{Startup, Config, Alarm, Feedback, Position, Others}
+		{
+			Startup,	//from grbl
+			Config,		//from grbl
+			Alarm,		//from grbl
+			Feedback,   //from grbl
+			Position,   //from grbl
+			Others,		//from grbl
+
+			Warning,	//from LaserGRBL
+			Diagnostic, //from LaserGRBL
+		}
+
 
 		private string mNativeMessage;
 		private string mMessage;
 		private string mToolTip;
 		private MessageType mType;
-		
+
+		public GrblMessage(string message, MessageType type)
+		{
+			mMessage = message.Trim();
+			mNativeMessage = mMessage;
+			mType = type;
+		}
+
 		public GrblMessage(string message, bool decode)
 		{
 			mMessage = message.Trim();
 			mNativeMessage = mMessage;
+
 			if (mMessage.ToLower().StartsWith("$") && mMessage.Contains("=")) //if (mMessage.ToLower().StartsWith("$") || mMessage.ToLower().StartsWith("~") || mMessage.ToLower().StartsWith("!") || mMessage.ToLower().StartsWith("?") || mMessage.ToLower().StartsWith("ctrl"))
 				mType = MessageType.Config;
 			else if (mMessage.ToLower().StartsWith("grbl"))
@@ -574,6 +593,15 @@ namespace LaserGRBL
 		{get { return Color.Black; }} //normalmente per questi messaggi non c'è un right
 
 		public int ImageIndex
-		{ get { return 3; } }
+		{ get 
+			{
+				if (mType == MessageType.Warning)
+					return 4;
+				else if (mType == MessageType.Diagnostic)
+					return 5;
+				else
+					return 3; 
+			}
+		}
 	}
 }

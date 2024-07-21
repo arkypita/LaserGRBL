@@ -219,6 +219,7 @@ namespace LaserGRBL
 			IconsMgr.PrepareMenuItem(romanianToolStripMenuItem, "flags-ro", false);
 			IconsMgr.PrepareMenuItem(dutchToolStripMenuItem, "flags-nl", false);
 			IconsMgr.PrepareMenuItem(ukrainianToolStripMenuItem, "flags-ua", false);
+			IconsMgr.PrepareMenuItem(japaneseToolStripMenuItem, "flags-jp", false);
 			IconsMgr.PrepareMenuItem(installCH340DriverToolStripMenuItem, "mdi-usb");
 			IconsMgr.PrepareMenuItem(flashGrblFirmwareToolStripMenuItem, "mdi-chip");
 			IconsMgr.PrepareMenuItem(orturSupportGroupToolStripMenuItem, "mdi-facebook");
@@ -872,7 +873,9 @@ namespace LaserGRBL
 		private void AwakeTimer_Tick(object sender, EventArgs e)
 		{
 			if (Core != null && Core.InProgram)
-				Tools.WinAPI.SignalActvity();
+				WinAPI.SignalActvity();
+			else
+				WinAPI.SignalFree();
 		}
 
 		private void MnStartFromPosition_Click(object sender, EventArgs e)
@@ -1176,6 +1179,11 @@ namespace LaserGRBL
 			SetLanguage(new System.Globalization.CultureInfo("uk"));
 		}
 
+		private void japaneseToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("ja-JP"));
+		}
+
 		private void TTTStatus_DoubleClick(object sender, EventArgs e)
 		{
 			Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/machine-status/");
@@ -1329,10 +1337,11 @@ namespace LaserGRBL
                 (PreviewForm.GrblPanel as GrblPanel3D).AutoSizeDrawing();
             }
         }
-    }
+
+	}
 
 
-    public class MMnRenderer : ToolStripProfessionalRenderer
+	public class MMnRenderer : ToolStripProfessionalRenderer
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 

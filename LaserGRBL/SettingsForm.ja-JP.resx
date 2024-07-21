@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>セーブ</value>
+  </data>
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
+    <value>Gコード</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>ストリーミングモード[デフォルト Buffered］
+- Buffered：grblの受信バッファに合わせてコマンドの送信を最適化する。[推奨]
+- Synchronous: 次のコマンドを送信する前にコマンドの実行を待つ。[遅いが安全]
+- RepeatOnError: Synchronousと同じだが、エラーを検出したらコマンドを繰り返す。 [試験的]</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>接続プロトコル：
+- UsbSerial：最も一般的なプロトコルです。加工機がUSBまたはCOMポートに接続されている場合に使用します。
+- UsbSerial2: Microsoft SerialPortの問題を回避するためのUSBSerialの代替実装です。
+- Telnet: WiFi-Telnetブリッジがある場合。通信は単純なTelnetクライアント・サーバーのように実装されます。
+- LaserWebESP8266: WebSocket 経由の WiFi 接続をサポートします。LaserWeb-ESP8266 ソフトウェアと互換性があります。</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>スレッディングモード：UltraFast、Fast、Quiet、Slow。[デフォルト Fast］
+この設定はスレッドの送信速度とステータスレポート要求の頻度に影響します。
+問題が発生した場合は、遅い値を設定してください。</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>問題検知器</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>LaserGRBLは問題を検出し、ユーザーに警告し、解決方法を提供する。
+無効にした場合、すべての問題は警告を出さず静かになります。</value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>ソフトリセット [Ctrl-X］</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>有効であれば、grblへの接続が開かれたときにソフトリセットを送る。</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>ハードリセット [DTR+RTS］</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>有効であれば、grblへの接続が開かれたときにハードリセットを送る。[位置が失われます］</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>ファームウェアの種類
+- Grbl: 素晴らしいファームウェア。
+- Smoothie [試験的]: 最近サポートが追加されましたが、完全にはテストされていません。
+- Marlin [試験的]: 最近サポートが追加されましたが、完全にはテストされていません。
+- VigoWork [試験的]: VG-L7xをサポートしました。これはgrbl標準ではありません。</value>
+  </data>
+  <data name="CbQueryDI.Text" xml:space="preserve">
+    <value>接続時$Iを問い合わせる</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>プロトコル</value>
+  </data>
+  <data name="label46.Text" xml:space="preserve">
+    <value>LaserGRBLは、$Iコマンドを送信し、マシンからいくつかの情報（例：マシンの受信バッファサイズ）を検出します。
+この機能を無効にしないでください。</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>LaserGRBLは、Gコードの "Sコマンド "による電力調整を使用して、グレースケールのトーンを生成します。
+レーザーは、arduinoのPIN D11に接続されたTTL制御をサポートしている必要があります。
+そうでない場合は、PWMサポートを無効にしてください。</value>
+  </data>
+  <data name="CBSupportPWM.Text" xml:space="preserve">
+    <value>PWMをサポート</value>
+  </data>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>単方向彫刻</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>デフォルトでは、LaserGRBLはレーザーヘッドの両方の移動方向に彫刻線を作成します。いくつかのテストでは、このモード（より高速）では、より低い品質の結果が得られることが示されている。最高のマーキング品質が必要な場合は、このオプションを有効にしてください。</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>ハイレゾフィル</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>LaserGRBLで利用可能な最大解像度は20本/mm（約500dpi）で、ほとんどのユーザーにとって十分な高解像度です。
+より高い解像度が必要な場合は、"ハイレゾ "を有効にして、この制限を取り除くことができます。  注意してください：LaserGRBLはより多くのリソースを必要とします！</value>
+  </data>
+  <data name="CbDisableSkip.Text" xml:space="preserve">
+    <value>G0高速スキップを無効にする</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>デフォルトでは、LaserGRBLはジョブの白い部分をスキップするためにG0（高速移動）を使用します。これは彫刻プロセスをスピードアップしますが、位置決めが不正確になり、残念な結果になることがあります。通常、grbl設定の最大加速度と速度値（$ 120,121,122と$ 110,111,112）を正しく設定することで、結果を改善することが可能です。
+
+この機能を無効にすると、LaserGRBLはジョブ速度と同じのG1直線移動を使用します。これは加工を遅くしますが、他のアプローチが失敗する結果を劇的に改善することができます。</value>
+  </data>
+  <data name="CbDisableBoundWarn.Text" xml:space="preserve">
+    <value>境界警告を無効にする</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>LaserGRBLは、彫刻機のワークスペースより大きなジョブを作成しようとすると警告を出します。
+この安全制御を望まない場合は、このフラグを設定してください。</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>ラスターインポート</value>
+  </data>
+  <data name="label43.Text" xml:space="preserve">
+    <value>バージョン4.6.1より、LaserGRBLはベジェ曲線のより良い近似アルゴリズムを使用し、より正確な結果を返すことができます。
+古いアルゴリズムを使用したい場合は、このオプションを無効にしてください。</value>
+  </data>
+  <data name="CbSmartBezier.Text" xml:space="preserve">
+    <value>スマートベジェ</value>
+  </data>
+  <data name="TpVectorImport.Text" xml:space="preserve">
+    <value>ベクターインポート</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>連続ジョグ(Continuous Jog)がない場合、ジョグボタンが押されると、LaserGRBLは設定された速度と動きでジョグ要求を送信し、ジョグは最終位置まで完全に実行されます。
+連続ジョグを有効にすると、ジョグはマウスダウンで送信され、マウスアップで中断されます。
+
+注意："Continuous Jog "はGrbl v1.1以降でのみ動作し、Grbl Configuration (Menu "Grbl" -&gt; "Grbl Configuration" $130, $131, $132) でテーブル・サイズが正しく設定されている必要があります。</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>LaserGRBLはZ軸をサポートするようには設計されていませんが、もし3軸のハードウェアをお持ちなら、このオプションが役に立つかもしれません。</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Zアップ/ダウンコントロールを表示</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>連続ジョグ</value>
+  </data>
+  <data name="CbClickNJog.Text" xml:space="preserve">
+    <value>クリック＆ジョグ</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>クリック＆ジョグを有効にすると、プレビューサーフェスをダブルクリックすると、クリック位置にジョグします。</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>ジョグコントロール</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>時間OFF：この冷却時間の後、LaserGRBLは彫刻ジョブを継続するために再開コマンドを送信します。</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>レーザーダイオードの中には、最高出力で長時間使用すると発熱するものがあります。ダイオードの過熱を防ぎ、レーザーの寿命を延ばすために、彫刻プロセス中に一時停止を挿入する自動冷却サイクルを追加することができます。
+自動冷却が有効な場合、LaserGRBLはON-OFFタイミング構成に従って、自動で「フィードホールド」と「ジョブ再開」を送信します。</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>時間オン：これは、レーザーが彫刻プロセス中にオンになっている最大時間です。
+この時間が経過すると、LaserGRBLはレーザーを冷却するために自動フィードホールドを送信します。</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>自動冷却を有効にする</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>オン</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>オフ</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>警告：この機能は、"レーザーモード "が有効なgrblバージョン&gt; v1.1でのみ機能します。
+古いgrblバージョンで自動冷却を使用する場合（またはレーザーモードが無効の場合）、レーザーは一時停止中にオフになりません。
+あなたの作品に穴を開けてしまいます！</value>
+  </data>
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+    <value>Orturユーザー：Orturファームウェア（137までの全バージョン）には、自動冷却機能を正しく使用できない加工レジュームのバグがあります。
+新しいファームウェアがリリースされるまで、Ortur彫刻機で自動冷却機能を使用しないでください。</value>
+  </data>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>自動冷却</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBLは、ジョブを開始する前にこのGCodeを付加する。
+このコードをカスタマイズすることができる。例えば、ファンをオンにするためにM8を追加する。
+
+位置に関係する特別なジョブを実行する必要がある場合は、カスタムボタンと同じ構文を使用できます。</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>ヘッダー</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>フッター</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>マルチパス</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBLは、ジョブの終了時にこのGCodeを追加します。
+原点位置に戻ったり、M9を送信してファンをオフにしたり、加工機を初期状態に戻すために使用できます。
+
+ここでは、カスタムボタンと同じ構文を使用できます。</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>複数のパスを行う場合、LaserGRBLは各パスの間にこのGCodeを送信する。
+より深いカットを行うためにZを下に移動するために使用できる。
+
+カスタムボタンと同じ構文が使えます。</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>ここでは、ジョブが終了したときなど、成功イベント用の別のサウンドを設定できます。
+有効にする場合はチェックを入れてください。</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>ここで別の警告音を設定することができる。
+この警告音は通常、GCodeコマンドのエラー時に鳴りますが、マシンは動作を続けることができます。
+有効にチェックしてください。</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>警告音</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>変更</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>サウンドファイル</value>
+  </data>
+  <data name="warningSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\warning.wav</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>エラー音</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>変更</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>サウンドファイル</value>
+  </data>
+  <data name="fatalSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\fatal.wav</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>接続音</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>変更</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>サウンドファイル</value>
+  </data>
+  <data name="connectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\connect.wav</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>切断音</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>変更</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>サウンドファイル</value>
+  </data>
+  <data name="disconnectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\disconnect.wav</value>
+  </data>
+  <data name="LblSuccessSound.Text" xml:space="preserve">
+    <value>成功音</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>変更</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>サウンドファイル</value>
+  </data>
+  <data name="successSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\success.wav</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>接続成功時のサウンドを設定します。
+有効にする場合はチェックを入れてください。</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>切断時の音を設定できます。
+WiFi接続によっては便利です。
+有効にする場合はチェックを入れてください。</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>ここでは、致命的なエラー時のエラー音を設定することができます。
+これは、ジョブが停止し、LaserGRBL が操作を続行できない可能性が高いことを意味します。
+有効にチェックしてください。</value>
+  </data>
+  <data name="label44.Text" xml:space="preserve">
+    <value>ジョブ時間が以下の場合は通知しない</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>テレグラム通知</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>パーソナルコード</value>
+  </data>
+  <data name="BtnTestNotification.Text" xml:space="preserve">
+    <value>テスト</value>
+  </data>
+  <data name="label45.Text" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="label42.Text" xml:space="preserve">
+    <value>テレグラムをお持ちの方は、@LaserGRBL botを検索してください。
+個人コードを取得し、ここに書き込んでください！</value>
+  </data>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>お知らせ</value>
+  </data>
+  <data name="CbDisableSafetyCD.Text" xml:space="preserve">
+    <value>セーフティカウントダウンを無効にする</value>
+  </data>
+  <data name="label47.Text" xml:space="preserve">
+    <value>このオプションは、安全ゴーグルの着用を忘れないようにするための安全リマインダーのカウントダウンを削除します。
+このカウントダウンを無効にしないことをお勧めします。これは5秒間全てに問題がないかを確認する猶予です。</value>
+  </data>
+  <data name="CbQuietSafetyCB.Text" xml:space="preserve">
+    <value>静かなカウントダウン</value>
+  </data>
+  <data name="label48.Text" xml:space="preserve">
+    <value>セーフティカウントダウン中の「ビープ音」を無効にする。</value>
+  </data>
+  <data name="CbLegacyIcons.Text" xml:space="preserve">
+    <value>レガシーアイコン</value>
+  </data>
+  <data name="label49.Text" xml:space="preserve">
+    <value>旧式のLaserGRBLアイコンを使用する ［ノスタルジアモード: ON］</value>
+  </data>
+  <data name="label50.Text" xml:space="preserve">
+    <value>レンダリングモード
+- Auto：LaserGRBLに最適な設定を選択させます（ハードウェアアクセラレーションを推奨）。
+- ハードウェアアクセラレーション：ハードウェアアクセラレーションにてOpenGLを使用します。（サポートされている場合）
+- ソフトウェアレンダリング：ソフトウェアレンダリングにてOpenGLを使用します。
+- レガシー：OpenGLを無効にし、古いプレビュー形式を使用する（古いコンピュータではこのオプションを選択してください）</value>
+  </data>
+  <data name="TpOptions.Text" xml:space="preserve">
+    <value>オプション</value>
+  </data>
+  <data name="SoundBrowserDialog.Filter" xml:space="preserve">
+    <value>オーディオファイル|*.wav</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>設定</value>
+  </data>
+</root>

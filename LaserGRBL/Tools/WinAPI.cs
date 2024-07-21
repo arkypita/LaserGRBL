@@ -47,13 +47,15 @@ namespace Tools
 
 		public static void SignalActvity()
 		{
-			SetThreadExecutionState(EXECUTION_STATE.ES_SYSTEM_REQUIRED);
+			try{SetThreadExecutionState(EXECUTION_STATE.ES_CONTINUOUS | EXECUTION_STATE.ES_SYSTEM_REQUIRED | EXECUTION_STATE.ES_AWAYMODE_REQUIRED);}
+			catch { }
 		}
 
 		// Clear EXECUTION_STATE flags to disable away mode and allow the system to idle to sleep normally.
 		public static void SignalFree()
 		{
-			SetThreadExecutionState(EXECUTION_STATE.ES_CONTINUOUS);
+			try{SetThreadExecutionState(EXECUTION_STATE.ES_CONTINUOUS);}
+			catch { }
 		}
 
 
