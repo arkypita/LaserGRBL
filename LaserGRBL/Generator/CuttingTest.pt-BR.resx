@@ -118,60 +118,69 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>O LaserGRBL rastreia a vida útil de seus lasers, para que você saiba quanto cada módulo de laser foi usado. Se você tiver mais de uma máquina ou módulo de laser, poderá adicioná-los com  o botão "adicionar". Neste caso, o LaserGRBL perguntará qual laser você está usando no momento da conexão, para atribuir o consumo ao módulo correto a cada vez.</value>
+    <value>Gerar um teste de corte para diferentes combinações develocidade e passadas.</value>
   </data>
-  <data name="BtnMark.Text" xml:space="preserve">
-    <value>Marcar como desativado</value>
+  <data name="BtnCreate.Text" xml:space="preserve">
+    <value>Criar!</value>
   </data>
-  <data name="BtnUnmark.Text" xml:space="preserve">
-    <value>Desmarcar desativado</value>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Cancelar</value>
   </data>
-  <data name="BtnEdit.Text" xml:space="preserve">
-    <value>Editar</value>
-  </data>
-  <data name="BtnRemove.Text" xml:space="preserve">
-    <value>Remover</value>
-  </data>
-  <data name="BtnAddNew.Text" xml:space="preserve">
-    <value>Adicionar</value>
-  </data>
-  <data name="ChName.Text" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="ChBrand.Text" xml:space="preserve">
-    <value>Marca</value>
-  </data>
-  <data name="ChModel.Text" xml:space="preserve">
-    <value>Modelo</value>
-  </data>
-  <data name="ChRunTime.Text" xml:space="preserve">
-    <value>Tempo de Uso</value>
-  </data>
-  <data name="ChPowerTime.Text" xml:space="preserve">
-    <value>Tempo Ligado</value>
-  </data>
-  <data name="ChStressTime.Text" xml:space="preserve">
-    <value>Tempo de Estresse</value>
-  </data>
-  <data name="ChAvgPow.Text" xml:space="preserve">
-    <value>Pot Média</value>
-  </data>
-  <data name="ChDateBuy.Text" xml:space="preserve">
-    <value>Data de Compra</value>
-  </data>
-  <data name="ChDateStartM.Text" xml:space="preserve">
-    <value>Início de Monitoramento</value>
-  </data>
-  <data name="ChDateEndL.Text" xml:space="preserve">
-    <value>Data de Desativamento</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Velocidade (F)</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Por favor clique em "editar" e preencha todas as informações relacionadas ao seu módulo laser.</value>
+    <value>Passos</value>
   </data>
-  <data name="BtnClose.Text" xml:space="preserve">
-    <value>Fechar</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>para</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>para</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>passos</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>tamanho passo</value>
+  </data>
+  <data name="LblLaserMode.Text" xml:space="preserve">
+    <value>Modo Laser</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Texto</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Tamanho</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>velocidade</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>pot</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="PhTbLabel.WaterMark" xml:space="preserve">
+    <value>digite etiqueta personalizada</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Potência (S)</value>
+  </data>
+  <data name="GbParameters.Text" xml:space="preserve">
+    <value>Parâmetros</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Ferramenta de Monitoramento - Vida Útil Laser</value>
+    <value>Gerador  teste de corte</value>
   </data>
 </root>

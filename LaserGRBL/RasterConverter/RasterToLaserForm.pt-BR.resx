@@ -151,7 +151,7 @@
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxAAAAsQAa0jvXUAAAbfSURBVEhLfdULUJNXFgDgs+uO
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACw4AAAsOAUC+4UEAAAbfSURBVEhLfdULUJNXFgDgs+uO
         49rZXXfp+qjazi52tTtdSy11p62yWrqjq+VRRN5MSIBAgPIKBJZnFAIrCBteEggYUSIgiCCglDrUBQwS
         AREVBCmPEB55EhJDeEjO3lCHmQ7oP/PN/Scz95xzb869P2Rm8t8oI6MQeDkFWwTFlzZvC5vaDW4vqvZG
         TwP7SpfZ6avXNzlUVoBjRdVrQWlp2RuVlVVA3oXi801luQKb1G4AZ6P9kZg+YOffrfHNancPymiHwDcA
@@ -190,7 +190,7 @@
   <data name="BtFlipH.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxAAAAsQAa0jvXUAAAa5SURBVEhLpZR7UJNXFsDP7Ky7
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACw4AAAsOAUC+4UEAAAa5SURBVEhLpZR7UJNXFsDP7Ky7
         2+5acIfZrg67W3GHah8ottMqrWPZKtpRgYABeZNACK8ASYCEvMRIgaoEebjYVnmJaAMUa0VQYUcFdRW2
         O+oWwVLEJITEQB5fXkQCZ2+y3dmdnX203T9+c8+93/fd3z3n3PkgNzePkO8ZV+TkFAzQ6fGC5GTmMwKB
         mKzxgMXKguLiEigqkkB2NhfIO8DnC6GgoAiysvLJupg8F3kRCCTkGy5wucUglR4k81IgL+V5SUhg+B46
@@ -424,7 +424,7 @@
     <value>143, 13</value>
   </data>
   <data name="LblFillingQuality.Text" xml:space="preserve">
-    <value>Qualidade do preenchimento</value>
+    <value>Qualidade</value>
   </data>
   <data name="UDFillingQuality.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 123</value>
@@ -547,7 +547,7 @@
     <value>46, 17</value>
   </data>
   <data name="CbThreshold.Text" xml:space="preserve">
-    <value>P&amp;&amp;B</value>
+    <value>P&amp;B</value>
   </data>
   <data name="CbThreshold.ToolTip" xml:space="preserve">
     <value>Aplicar Limite de filtro</value>
@@ -655,7 +655,7 @@
     <value>Pontilhamento de 1bit PB</value>
   </data>
   <data name="RbDithering.ToolTip" xml:space="preserve">
-    <value>Produzir imagem preto e branco  com emulação de escala de cinzas</value>
+    <value>Produzir imagem P&amp;B com emulação de escala de cinzas</value>
   </data>
   <data name="RbVectorize.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 17</value>
@@ -709,7 +709,7 @@
     <value>O modo passagem deixa a imagem intacta, sem nenhum processamento pelo LaserGRBL. A imagem será gravada linha a linha, na horizontal, de acordo com o tamanho e resolução de DPI contidos nas informações do arquivo.</value>
   </data>
   <data name="GbPassthrough.Text" xml:space="preserve">
-    <value>Opções de passagem</value>
+    <value>Opções de Passagem</value>
   </data>
   <data name="CbResize.ToolTip" xml:space="preserve">
     <value>Controle o modo de redimensionamento (bordas suaves ou rígidas)</value>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label7.Text" xml:space="preserve">
-    <value>H</value>
+    <value>A</value>
   </data>
   <data name="LblBorderTracingmm.Text" xml:space="preserve">
     <value>mm/min</value>
@@ -136,7 +136,7 @@
     <value>Criar!</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>W</value>
+    <value>L</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>X</value>
