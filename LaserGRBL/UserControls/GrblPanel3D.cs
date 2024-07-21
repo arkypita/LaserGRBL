@@ -831,9 +831,15 @@ namespace LaserGRBL.UserControls
 					mMousePos.Value.Y >= mPadding.Top &&
 					mMousePos.Value.Y <= Height - mPadding.Bottom)
                 {
-                    using (Pen pCross = new Pen(ColorScheme.PreviewBackColor))
+					Color loShadowColor = Color.FromArgb(
+						128,
+						ColorScheme.PreviewBackColor.R,
+                        ColorScheme.PreviewBackColor.G,
+                        ColorScheme.PreviewBackColor.B
+                    );
+                    using (Pen pCross = new Pen(loShadowColor))
                     {
-                        DrawCross(e.Graphics, pCross, new Point(mMousePos.Value.X - 1, mMousePos.Value.Y - 1));
+                        DrawCross(e.Graphics, pCross, new Point(mMousePos.Value.X + 1, mMousePos.Value.Y + 1));
                     }
                     using (Pen pCross = new Pen(ColorScheme.PreviewCrossCursor))
                     {
@@ -851,7 +857,7 @@ namespace LaserGRBL.UserControls
 
 		private void DrawCross(Graphics g, Pen pCross, Point point)
         {
-            const int halfCrossSize = 4;
+			const int halfCrossSize = 4;
             g.DrawLine(pCross, new Point(mPadding.Left, point.Y), new Point(point.X - 5, point.Y));
             g.DrawLine(pCross, new Point(point.X + halfCrossSize, point.Y), new Point(Width - mPadding.Right, point.Y));
             g.DrawLine(pCross, new Point(point.X, mPadding.Top), new Point(point.X, point.Y - halfCrossSize));
