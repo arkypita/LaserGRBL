@@ -150,7 +150,7 @@
   <data name="BtnModulationInfo.ToolTip" xml:space="preserve">
     <value>Grbl suporta saida variável de energia para produzir escala de cinza, Isto requere que seu hardware possua controle TTL para o laser
 
-Click aqui para obter mais informações...</value>
+Clique aqui para obter mais informações...</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Ligar laser: (M3) é o modo padrão.
@@ -208,6 +208,6 @@ Clique aqui para obter mais informações...</value>
     <value>100%</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Imagem alvo</value>
+    <value>Imagem desejada</value>
   </data>
 </root>

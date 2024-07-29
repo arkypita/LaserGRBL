@@ -124,11 +124,11 @@
     <value>OK</value>
   </data>
   <data name="LblNotForOrtur.Text" xml:space="preserve">
-    <value>Este procedimento NÃO deve ser aplicado em gravadoras Ortur</value>
+    <value>NÃO deve ser aplicado em gravadoras Ortur</value>
   </data>
   <data name="LblWarning.Text" xml:space="preserve">
     <value>Aviso! Esta operação pode danificar seu hardware.
-A operação pode ser irreversível: use por sua conta e risco.</value>
+Pode ser irreversível: use por sua conta e risco.</value>
   </data>
   <data name="CbTarget.Items" xml:space="preserve">
     <value>Arduino Uno</value>
@@ -137,7 +137,7 @@ A operação pode ser irreversível: use por sua conta e risco.</value>
     <value>Arduino Nano</value>
   </data>
   <data name="LblTarget.Text" xml:space="preserve">
-    <value>Alvo:</value>
+    <value>Destino:</value>
   </data>
   <data name="LblFirmware.Text" xml:space="preserve">
     <value>Firmware:</value>

@@ -130,7 +130,7 @@
     <value>Material</value>
   </data>
   <data name="LblThickness.Text" xml:space="preserve">
-    <value>Grossura</value>
+    <value>Espessura</value>
   </data>
   <data name="LblAction.Text" xml:space="preserve">
     <value>Ação</value>

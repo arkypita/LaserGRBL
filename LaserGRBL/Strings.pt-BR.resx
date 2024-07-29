@@ -179,7 +179,7 @@ Baixe manualmente a nova versão do site lasergrbl.</value>
     <value>Personalizado</value>
   </data>
   <data name="FormulaOpticalCorrect" xml:space="preserve">
-    <value>ConexãoÓtica</value>
+    <value>CorreçãoÓtica</value>
   </data>
   <data name="FormulaSimpleAverage" xml:space="preserve">
     <value>MédiaSimples</value>
@@ -215,7 +215,7 @@ Baixe manualmente a nova versão do site lasergrbl.</value>
     <value>Porta</value>
   </data>
   <data name="MacStatusHold" xml:space="preserve">
-    <value>Manter</value>
+    <value>Pausar</value>
   </data>
   <data name="MacStatusHome" xml:space="preserve">
     <value>Início</value>
@@ -224,7 +224,7 @@ Baixe manualmente a nova versão do site lasergrbl.</value>
     <value>Espera</value>
   </data>
   <data name="MacStatusJog" xml:space="preserve">
-    <value>Correr</value>
+    <value>Mover</value>
   </data>
   <data name="MacStatusRun" xml:space="preserve">
     <value>Executar</value>
@@ -481,12 +481,12 @@ Você quer reiniciar o LaserGRBL e alternar para renderização de software?</va
     <value>Um arquivo já está sendo carregado, por favor aguarde...</value>
   </data>
   <data name="TipsJog" xml:space="preserve">
-    <value>JOG: Clique duas vezes em qualquer ponto (ou toque duas vezes)</value>
+    <value>MOVER: Clique duas vezes em qualquer ponto (ou toque duas vezes)</value>
   </data>
   <data name="TipsKeyboardShortcuts" xml:space="preserve">
     <value>Atalhos do Teclado</value>
   </data>
   <data name="TipsPan" xml:space="preserve">
-    <value>PAN: Clique e arraste (ou toque e arraste)</value>
+    <value>ARRASTO: Clique e arraste (ou toque e arraste)</value>
   </data>
 </root>

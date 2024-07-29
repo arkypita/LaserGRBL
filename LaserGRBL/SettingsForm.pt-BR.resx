@@ -192,7 +192,9 @@ Por favor, não desabilite este recurso.</value>
     <value>Protocolo</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Por padrão, o LaserGRBL produz linhas de gravação em ambas as direções de deslocamento do cabeçote do laser. Alguns testes mostraram que este modo (que é mais rápido) produz resultados de qualidade inferior. Se desejar a máxima qualidade de marcação, ative esta opção.</value>
+    <value>Por padrão, o LaserGRBL produz linhas de gravação em ambas as direções de deslocamento do cabeçote do laser. Alguns testes
+mostraram que este modo (que é mais rápido) produz resultados de qualidade inferior. Se desejar a máxima qualidade de marcação,
+ative esta opção.</value>
   </data>
   <data name="CbUnidirectional.Text" xml:space="preserve">
     <value>Gravção Unidirecional</value>
@@ -201,16 +203,23 @@ Por favor, não desabilite este recurso.</value>
     <value>Preenchimento de alta resolução (HiRes)</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
-    <value>A resolução máxima disponível no LaserGRBL é de 20 linhas/mm (cerca de 500 dpi) que é alta o suficiente para a maioria dos usuários.
-Se precisar de uma resolução mais alta, você pode habilitar "HiRes" e remover esse limite. Cuidado: o LaserGRBL precisará de muito mais recursos!</value>
+    <value>A resolução máxima disponível no LaserGRBL é de 20 linhas/mm (cerca de 500 dpi) que é alta o suficiente para a maioria dos 
+usuários.
+Se precisar de uma resolução mais alta, você pode habilitar "HiRes" e remover esse limite. Cuidado: o LaserGRBL precisará de
+muito mais recursos!</value>
   </data>
   <data name="CbDisableSkip.Text" xml:space="preserve">
     <value>Desabilita o G0 pulo rápido</value>
   </data>
   <data name="label39.Text" xml:space="preserve">
-    <value>Por padrão, o LaserGRBL usa G0 - movimento rápido - para pular partes brancas de seus trabalhos. Isso acelera o processo de gravação, mas pode resultar em posicionamento impreciso com resultados decepcionantes. Geralmente é possível melhorar os resultados definindo corretamente os valores máximos de aceleração e velocidade ($ 120.121.122 e $ 110.111.112) na configuração grbl.
+    <value>Por padrão, o LaserGRBL usa G0 - movimento rápido - para pular partes brancas de seus trabalhos. Isso acelera o processo de
+gravação, mas pode resultar em posicionamento impreciso com resultados ecepcionantes. Geralmente é possível melhorar os 
+resultados definindo corretamente os valores máximos de aceleração e velocidade ($ 120.121.122 e $ 110.111.112) na
+configuração grbl.
 
-Se você desativar esse recurso, o LaserGRBL usará o movimento linear G1 na mesma velocidade de trabalho, resultando em todo o processo de gravação na mesma velocidade. Isso retardará o processo, mas pode melhorar drasticamente o resultado onde outras abordagens falham.</value>
+Se você desativar esse recurso, o LaserGRBL usará o movimento linear G1 na mesma velocidade de trabalho, resultando em todo
+o processo de gravação na mesma velocidade. Isso retardará o processo, mas pode melhorar drasticamente o resultado onde
+outras abordagens falham.</value>
   </data>
   <data name="CbDisableBoundWarn.Text" xml:space="preserve">
     <value>Desativar aviso de limite</value>
@@ -233,10 +242,11 @@ Desative esta opção se preferir usar o algoritmo antigo.</value>
     <value>Importação de vetores</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
-    <value>Sem "Jog Contínuo" quando o botão de jog é pressionado LaserGRBL envia solicitação de Jog com velocidade e movimento estabelecidos; e o jog é totalmente executado até a posição final.
-Se você habilitar "Jog Contínuo", o jogging é enviado com o mouse para baixo e abortado/interrompido com o mouse para cima, para que você possa fazer um posicionamento aproximado, mas de uma maneira muito confortável.
+    <value>Sem "Movimento Contínuo" quando o botão mover é pressionado LaserGRBL envia solicitação de Mover com velocidade e movimento estabelecidos; e o movimento é totalmente executado até a posição final.
+Se você habilitar "Movimento Contínuo", o movimento é enviado com o mouse para baixo e abortado/interrompido com o mouse para cima,
+para que você possa fazer um posicionamento aproximado, mas de uma maneira muito confortável.
 
-NOTA: "Jog Contínuo" só funciona com Grbl v1.1 ou posterior, e requer que o tamanho da mesa esteja configurado corretamente na Configuração Grbl (Menu "Grbl" -&gt; "Configuração Grbl" $ 130, $ 131, $ 132)</value>
+NOTA: "Movimento Contínuo" só funciona com Grbl v1.1 ou posterior, e requer que o tamanho da mesa esteja configurado corretamente na Configuração Grbl (Menu "Grbl" -&gt; "Configuração Grbl" $ 130, $ 131, $ 132)</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>O LaserGRBL não foi projetado para suportar o eixo Z, mas se você tiver um hardware de 3 eixos, talvez possa achar esta opção útil.</value>
@@ -245,23 +255,26 @@ NOTA: "Jog Contínuo" só funciona com Grbl v1.1 ou posterior, e requer que o ta
     <value>Mostra o controle Z cima/baixo</value>
   </data>
   <data name="CbContinuosJog.Text" xml:space="preserve">
-    <value>Jog Contínuo</value>
+    <value>Movimento Contínuo</value>
   </data>
   <data name="CbClickNJog.Text" xml:space="preserve">
-    <value>Clique em Jog</value>
+    <value>Clicar e Mover</value>
   </data>
   <data name="label41.Text" xml:space="preserve">
-    <value>Com "click 'n jog" ativado, um clique duplo na superfície de visualização irá deslocar para a posição de clique.</value>
+    <value>Com "Clicar e Mover" ativado, um clique duplo na superfície de visualização irá deslocar para a posição do clique.</value>
   </data>
   <data name="TpJogControl.Text" xml:space="preserve">
-    <value>Controle de Jog</value>
+    <value>Controle de Movimento</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
-    <value>Tempo OFF: após esse tempo de resfriamento, o LaserGRBL enviará um comando de retomada para continuar o trabalho de gravação.</value>
+    <value>Tempo OFF: após esse tempo de resfriamento, o LaserGRBL enviará um comando de retomada para continuar o trabalho de gravação</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
-    <value>Alguns diodos laser podem esquentar muito se funcionarem por muito tempo na potência máxima. Para evitar o superaquecimento do diodo e aumentar a vida útil do laser, você pode adicionar alguns ciclos de resfriamento automático que inserem alguma pausa durante o processo de gravação.
-Se o Resfriamento Automático estiver ativado, o LaserGRBL enviará automaticamente "retenção de alimentação" e "retomada do trabalho" de acordo com a configuração de tempo ON-OFF.</value>
+    <value>Alguns diodos laser podem esquentar muito se funcionarem por muito tempo na potência máxima. Para evitar o superaquecimento do
+diodo e aumentar a vida útil do laser, você pode adicionar alguns ciclos de resfriamento automático que inserem alguma pausa
+durante o processo de gravação.
+Se o Resfriamento Automático estiver ativado, o LaserGRBL enviará automaticamente "retenção de alimentação" e "retomada do
+trabalho" de acordo com a configuração de tempo ON-OFF.</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>Tempo LIGADO: é o tempo máximo que o Laser ficará ligado durante o processo de gravação.
@@ -290,11 +303,12 @@ Após esse período, o LaserGRBL enviará uma retenção de alimentação autom�
   </data>
   <data name="label21.Text" xml:space="preserve">
     <value>Aviso: este recurso funcionará apenas com versões grbl &gt; v1.1 com "modo laser" ativado.
-Se você usar o resfriamento automático com a versão grbl mais antiga (ou com o modo laser desativado), o laser não será desligado durante as pausas
-e queima buracos em seu trabalho!</value>
+Se você usar o resfriamento automático com a versão grbl mais antiga (ou com o modo laser desativado), o laser não será desligado
+durante as pausas e queima buracos em seu trabalho!</value>
   </data>
   <data name="LblWarnOrturAC.Text" xml:space="preserve">
-    <value>Usuário Ortur: Ortur Firmware (todas as versões até 137) tem um bug no resumo da usinagem que impede o uso adequado da função de resfriamento automático.
+    <value>Usuário Ortur: Ortur Firmware (todas as versões até 137) tem um bug no resumo da usinagem que impede o uso adequado da função
+de resfriamento automático.
 Por favor, não use o resfriamento automático com o gravador Ortur até que um novo firmware seja lançado.</value>
   </data>
   <data name="TpAutoCooling.Text" xml:space="preserve">
@@ -330,12 +344,14 @@ Aqui você pode usar a mesma sintaxe dos botões personalizados.</value>
     <value>GCode</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
-    <value>Aqui você pode definir outro som para eventos de sucesso, como quando um trabalho é concluído.
+    <value>Aqui você pode definir outro som para eventos de sucesso, como quando um 
+trabalho é concluído.
 Marque para habilitar.</value>
   </data>
   <data name="label24.Text" xml:space="preserve">
     <value>Aqui você pode definir outro som de aviso.
-Isso geralmente é acionado em um comando GCode ruim, mas sua máquina pode continuar operando.
+Isso geralmente é acionado em um comando GCode ruim, mas sua máquina pode
+continuar operando.
 Marque para habilitar.</value>
   </data>
   <data name="label26.Text" xml:space="preserve">
@@ -409,7 +425,8 @@ Marque para habilitar.</value>
   </data>
   <data name="label28.Text" xml:space="preserve">
     <value>Aqui você pode definir um som de erro para erros fatais.
-Isso significa que seu trabalho provavelmente parou e o LaserGRBL não pode continuar a operação.
+Isso significa que seu trabalho provavelmente parou e o LaserGRBL não pode
+continuar a operação.
 Marque para habilitar.</value>
   </data>
   <data name="label44.Text" xml:space="preserve">
@@ -442,7 +459,8 @@ Obtenha seu código pessoal e escreva-o aqui!</value>
   </data>
   <data name="label47.Text" xml:space="preserve">
     <value>Esta opção removerá a contagem regressiva do lembrete de segurança para lembrar de usar óculos de segurança.
-Sugiro não desativar esta contagem regressiva, isso permite que você tenha uma chance de 5 segundos para verificar se está tudo bem.</value>
+Sugiro não desativar esta contagem regressiva, isso permite que você tenha uma chance de 5 segundos para verificar se está
+tudo bem.</value>
   </data>
   <data name="CbQuietSafetyCB.Text" xml:space="preserve">
     <value>Contagem Silenciosa</value>
@@ -466,7 +484,8 @@ Sugiro não desativar esta contagem regressiva, isso permite que você tenha uma
     <value>Modo de renderização
 - Automático: Deixe o LaserGRBL escolher a melhor configuração para você (prefere aceleração de hardware).
 - Aceleração de hardware: Use OpenGL com aceleração de hardware (se suportado)
-- Renderização de software: Use OpenGL com renderização de software (selecione esta opção se tiver problemas com aceleração de hardware)
+- Renderização de software: Use OpenGL com renderização de software (selecione esta opção se tiver problemas com
+  aceleração de hardware)
 - Legado: Desabilite o OpenGL e use o formulário de visualização antigo (selecione esta opção em computadores antigos)</value>
   </data>
 </root>

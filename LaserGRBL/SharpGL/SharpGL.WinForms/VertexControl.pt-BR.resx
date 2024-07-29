@@ -117,12 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Gera uma série de linhas paralelas, de comprimento/espaçamento específicos.
-
-Útil para:
--Verificar o alinhamento/balanceamento dos eixos
--Ajustar o foco perfeito do laser (faça o teste com diferentes alturas, ou numa superfíce inclinada (um teste "rampa").
-Distância focal ótima é a altura na qual as linhas são as mais finas, e o espaçamento entre elas é o maior.</value>
+  <data name="$this.Name" xml:space="preserve">
+    <value>ControleVertex</value>
   </data>
 </root>
