@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>Este teste permite verificar a confiabilidade de sua máquina na execução de movimentos rápidos sem esalinhamentos de posição.
+    <value>Este teste permite verificar a confiabilidade de sua máquina na execução de movimentos rápidos sem desalinhamentos de posição.
 É um teste fundamental para o ajuste fino do seu gravador.
 
-Ele funciona gravando uma pequena cruz de referência, em seguida balançando a cabeça do laser com muitos movimentos rápidos e depois voltando à posição original e traçando a cruz novamente.
+Ele funciona gravando uma pequena cruz de referência, em seguida balançando a cabeça do laser com muitos movimentos rápidos, e depois voltando à posição original e traçando a cruz novamente.
 
 O teste é concluído com sucesso se o cruzamento inicial e o cruzamento final corresponderem (sobreposição).
 Se o seu gravador não conseguir concluir este teste com sucesso, você precisará verificar:
@@ -131,7 +131,7 @@ Se o seu gravador não conseguir concluir este teste com sucesso, você precisar
 3. Que as correias de transmissão estejam tensionadas corretamente
 4. Os parafusos e porcas estão corretamente apertados
 5. O carro do laser não tem resistência mecânica durante o movimento em alguns pontos de seu percurso
-6. Os fios elétricos não atuam como obstáculo ao movimento e não se desprendem/movem de seus conectores durante o movimento.
+6. Os fios elétricos não atuam como obstáculo ao movimento e não se soltam/movem de seus conectores durante o movimento.
 
 Se estas condições forem atendidas, mas a máquina não for capaz de realizar este teste com sucesso, você pode tentar diminuir ligeiramente os limites de velocidade definidos na "Configuração Grbl ($110-$111)" ou acelerações máximas.</value>
   </data>
@@ -142,7 +142,7 @@ Se estas condições forem atendidas, mas a máquina não for capaz de realizar 
     <value>Tipo de Teste</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Gravação Cruzada</value>
+    <value>Gravação da cruz</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Velocidade</value>

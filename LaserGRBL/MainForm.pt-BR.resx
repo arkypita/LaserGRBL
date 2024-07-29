@@ -599,7 +599,7 @@
     <value>G0: 100%</value>
   </data>
   <data name="TTLStatus.Text" xml:space="preserve">
-    <value>Status</value>
+    <value>Status:</value>
   </data>
   <data name="MnWiFiDiscovery.Text" xml:space="preserve">
     <value>Descoberta Wi-Fi</value>
@@ -620,7 +620,7 @@
     <value>Atalhos</value>
   </data>
   <data name="MnExit.Text" xml:space="preserve">
-    <value>&amp;Saída</value>
+    <value>&amp;Saír</value>
   </data>
   <data name="MnGrbl.Text" xml:space="preserve">
     <value>&amp;Grbl</value>
@@ -788,7 +788,7 @@
     <value>Teste de Foco</value>
   </data>
   <data name="MnGenerate.Text" xml:space="preserve">
-    <value>Gerador</value>
+    <value>Gerar</value>
   </data>
   <data name="shakeTestToolStripMenuItem.Text" xml:space="preserve">
     <value>Teste de Movimentação</value>
