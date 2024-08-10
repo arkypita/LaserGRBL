@@ -737,7 +737,7 @@
     <value>Notificar pré release</value>
   </data>
   <data name="MnCheckNow.Text" xml:space="preserve">
-    <value>Verifique Agora!</value>
+    <value>Verificar Agora!</value>
   </data>
   <data name="MnAutoUpdate.Text" xml:space="preserve">
     <value>Atualização automática</value>

@@ -193,11 +193,11 @@ Por favor, não desabilite este recurso.</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Por padrão, o LaserGRBL produz linhas de gravação em ambas as direções de deslocamento do cabeçote do laser. Alguns testes
-mostraram que este modo (que é mais rápido) produz resultados de qualidade inferior. Se desejar a máxima qualidade de marcação,
+mostraram que este modo (que é mais rápido) produz resultados de qualidade inferior. Se desejar a máxima qualidade de gravação,
 ative esta opção.</value>
   </data>
   <data name="CbUnidirectional.Text" xml:space="preserve">
-    <value>Gravção Unidirecional</value>
+    <value>Gravação Unidirecional</value>
   </data>
   <data name="CbHiRes.Text" xml:space="preserve">
     <value>Preenchimento de alta resolução (HiRes)</value>
@@ -209,11 +209,11 @@ Se precisar de uma resolução mais alta, você pode habilitar "HiRes" e remover
 muito mais recursos!</value>
   </data>
   <data name="CbDisableSkip.Text" xml:space="preserve">
-    <value>Desabilita o G0 pulo rápido</value>
+    <value>Desabilita o G0 movimento rápido</value>
   </data>
   <data name="label39.Text" xml:space="preserve">
     <value>Por padrão, o LaserGRBL usa G0 - movimento rápido - para pular partes brancas de seus trabalhos. Isso acelera o processo de
-gravação, mas pode resultar em posicionamento impreciso com resultados ecepcionantes. Geralmente é possível melhorar os 
+gravação, mas pode resultar em posicionamento impreciso com resultados decepcionantes. Geralmente é possível melhorar os 
 resultados definindo corretamente os valores máximos de aceleração e velocidade ($ 120.121.122 e $ 110.111.112) na
 configuração grbl.
 
@@ -307,7 +307,7 @@ Se você usar o resfriamento automático com a versão grbl mais antiga (ou com 
 durante as pausas e queima buracos em seu trabalho!</value>
   </data>
   <data name="LblWarnOrturAC.Text" xml:space="preserve">
-    <value>Usuário Ortur: Ortur Firmware (todas as versões até 137) tem um bug no resumo da usinagem que impede o uso adequado da função
+    <value>Usuário Ortur: Ortur Firmware (todas as versões até 137) existe um bug no resumo da gravação que impede o uso adequado da função
 de resfriamento automático.
 Por favor, não use o resfriamento automático com o gravador Ortur até que um novo firmware seja lançado.</value>
   </data>

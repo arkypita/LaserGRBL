@@ -487,6 +487,6 @@ Você quer reiniciar o LaserGRBL e alternar para renderização de software?</va
     <value>Atalhos do Teclado</value>
   </data>
   <data name="TipsPan" xml:space="preserve">
-    <value>ARRASTO: Clique e arraste (ou toque e arraste)</value>
+    <value>ARRASTO: Clique e arraste (ou toque e  arraste)</value>
   </data>
 </root>
