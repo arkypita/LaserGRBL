@@ -117,29 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnOK.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Cancelar</value>
-  </data>
-  <data name="CbRedoHoming.Text" xml:space="preserve">
-    <value>Va para Início ($H)</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Linha #</value>
-  </data>
-  <data name="RbFromSpecific.Text" xml:space="preserve">
-    <value>Executar de uma linha específica</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Opções</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Executar da Posição</value>
-  </data>
-  <data name="LblBrief.Text" xml:space="preserve">
-    <value>Esta opção permite executar sua tarefa iniciando de uma linha específica, ignorando qualquer movimento prévio.
-O LaserGrbl calcula a posição exata e o estado e posiciona a gravadora no estado correto.</value>
+  <data name="$this.Name" xml:space="preserve">
+    <value>AbrirCtrlGL</value>
   </data>
 </root>

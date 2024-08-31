@@ -130,7 +130,7 @@
     <value>Atalho</value>
   </data>
   <data name="GB.Text" xml:space="preserve">
-    <value>Atalho disponível</value>
+    <value>Atalhos disponíveis</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Gerenciador Tecla de Atalho</value>
