@@ -352,7 +352,7 @@
     <value>BtnCancel</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCancel.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -379,7 +379,7 @@
     <value>BtnCreate</value>
   </data>
   <data name="&gt;&gt;BtnCreate.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblButton, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnCreate.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -481,7 +481,7 @@
     <value>Ii_Sfixed</value>
   </data>
   <data name="&gt;&gt;Ii_Sfixed.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Ii_Sfixed.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -505,7 +505,7 @@
     <value>CBLaserON</value>
   </data>
   <data name="&gt;&gt;CBLaserON.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.FlatComboBox, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CBLaserON.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -619,7 +619,7 @@
     <value>Ii_Pmin</value>
   </data>
   <data name="&gt;&gt;Ii_Pmin.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Ii_Pmin.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -673,7 +673,7 @@
     <value>Ii_Pmax</value>
   </data>
   <data name="&gt;&gt;Ii_Pmax.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Ii_Pmax.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -727,7 +727,7 @@
     <value>Ii_Fmin</value>
   </data>
   <data name="&gt;&gt;Ii_Fmin.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Ii_Fmin.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -751,7 +751,7 @@
     <value>Ii_Fmax</value>
   </data>
   <data name="&gt;&gt;Ii_Fmax.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Ii_Fmax.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -835,7 +835,7 @@
     <value>Ii_Fsteps</value>
   </data>
   <data name="&gt;&gt;Ii_Fsteps.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Ii_Fsteps.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -937,7 +937,7 @@
     <value>BtnOnOffInfo</value>
   </data>
   <data name="&gt;&gt;BtnOnOffInfo.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.ImageButton, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtnOnOffInfo.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -964,7 +964,7 @@
     <value>Ii_FStepSize</value>
   </data>
   <data name="&gt;&gt;Ii_FStepSize.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Ii_FStepSize.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1123,7 +1123,7 @@
     <value>Ii_Ftext</value>
   </data>
   <data name="&gt;&gt;Ii_Ftext.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Ii_Ftext.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1147,7 +1147,7 @@
     <value>IISizeW</value>
   </data>
   <data name="&gt;&gt;IISizeW.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.DecimalInputRanged, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.DecimalInputRanged, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IISizeW.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1240,7 +1240,7 @@
     <value>Ii_Stext</value>
   </data>
   <data name="&gt;&gt;Ii_Stext.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.IntegerInputRanged, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Ii_Stext.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1264,7 +1264,7 @@
     <value>IISizeH</value>
   </data>
   <data name="&gt;&gt;IISizeH.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.NumericInput.DecimalInputRanged, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.NumericInput.DecimalInputRanged, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IISizeH.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1291,7 +1291,7 @@
     <value>PhTbLabel</value>
   </data>
   <data name="&gt;&gt;PhTbLabel.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.PlaceholderTextBox, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.PlaceholderTextBox, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;PhTbLabel.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1375,7 +1375,7 @@
     <value>GbParameters</value>
   </data>
   <data name="&gt;&gt;GbParameters.Type" xml:space="preserve">
-    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=7.11.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LaserGRBL.UserControls.GrblGroupBox, LaserGRBL, Version=7.11.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GbParameters.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>

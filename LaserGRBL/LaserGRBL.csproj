@@ -1097,8 +1097,17 @@
     <EmbeddedResource Include="ExceptionManager.pt-BR.resx">
       <DependentUpon>ExceptionManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Firmware\FlashGrbl.pt-BR.resx">
+      <DependentUpon>FlashGrbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generator\CuttingTest.pt-BR.resx">
+      <DependentUpon>CuttingTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Generator\CuttingTest.resx">
       <DependentUpon>CuttingTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generator\PowerVsSpeedForm.pt-BR.resx">
+      <DependentUpon>PowerVsSpeedForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generator\PowerVsSpeedForm.resx">
       <DependentUpon>PowerVsSpeedForm.cs</DependentUpon>
@@ -1153,6 +1162,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.ja-JP.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSEditorForm.ja-JP.resx">
+      <DependentUpon>PSEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSEditorForm.pt-BR.resx">
+      <DependentUpon>PSEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSHelperForm.ja-JP.resx">
+      <DependentUpon>PSHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSHelperForm.pt-BR.resx">
+      <DependentUpon>PSHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.ja-JP.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
