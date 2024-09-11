@@ -7,11 +7,13 @@
 using Sound;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -875,7 +877,7 @@ namespace LaserGRBL
 					{
 						mSentPtr = new List<IGrblRow>(); //assign sent queue
 						mQueuePtr = new Queue<GrblCommand>();
-						mQueuePtr.Enqueue(cmd);
+						EnqueueCommandInner(cmd);
 					}
 
 					Tools.PeriodicEventTimer WaitResponseTimeout = new Tools.PeriodicEventTimer(TimeSpan.FromSeconds(10), true);
@@ -982,7 +984,7 @@ namespace LaserGRBL
 					{
 						mSentPtr = new List<IGrblRow>(); //assign sent queue
 						mQueuePtr = new Queue<GrblCommand>();
-						mQueuePtr.Enqueue(cmd);
+						EnqueueCommandInner(cmd);
 					}
 
 					PeriodicEventTimer WaitResponseTimeout = new PeriodicEventTimer(TimeSpan.FromSeconds(10), true);
@@ -1100,9 +1102,9 @@ namespace LaserGRBL
 					//mSentPtr = new System.Collections.Generic.List<IGrblRow>(); //assign sent queue
 					//mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
 
-					mQueuePtr.Enqueue(new GrblCommand(string.Format("${0}={1}", 74, ssid), 0, true));
-					mQueuePtr.Enqueue(new GrblCommand(string.Format("${0}={1}", 75, password), 0, true));
-					mQueuePtr.Enqueue(new GrblCommand("$WRS"));
+					EnqueueCommandInner(new GrblCommand(string.Format("${0}={1}", 74, ssid), 0, true));
+					EnqueueCommandInner(new GrblCommand(string.Format("${0}={1}", 75, password), 0, true));
+					EnqueueCommandInner(new GrblCommand("$WRS"));
 				}
 
 				try
@@ -1148,7 +1150,7 @@ namespace LaserGRBL
 					mQueuePtr = new System.Collections.Generic.Queue<GrblCommand>();
 
 					foreach (GrblConfST.GrblConfParam p in config)
-						mQueuePtr.Enqueue(new GrblCommand(string.Format("${0}={1}", p.Number, p.Value), 0, true));
+						EnqueueCommandInner(new GrblCommand(string.Format("${0}={1}", p.Number, p.Value), 0, true));
 				}
 
 				try
@@ -1266,7 +1268,7 @@ namespace LaserGRBL
 				if (homing)
 				{
 					Logger.LogMessage("EnqueueProgram", "Push Homing ($H)");
-					mQueuePtr.Enqueue(new GrblCommand("$H"));
+					EnqueueCommandInner(new GrblCommand("$H"));
 				}
 
 				if (first)
@@ -1278,7 +1280,7 @@ namespace LaserGRBL
 
 				Logger.LogMessage("EnqueueProgram", "Push File, {0} lines", file.Count);
 				foreach (GrblCommand cmd in file)
-					mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
+					EnqueueCommandInner(cmd.Clone() as GrblCommand);
 
 				mTP.JobStart(LoadedFile, mQueuePtr, first);
 				Logger.LogMessage("EnqueueProgram", "Running program, {0} lines", file.Count);
@@ -1318,7 +1320,7 @@ namespace LaserGRBL
 
 				GrblCommand.StatePositionBuilder spb = new GrblCommand.StatePositionBuilder();
 
-				if (homing) mQueuePtr.Enqueue(new GrblCommand("$H"));
+				if (homing) EnqueueCommandInner(new GrblCommand("$H"));
 
 				if (setwco)
 				{
@@ -1332,9 +1334,9 @@ namespace LaserGRBL
 				for (int i = 0; i < position && i < file.Count; i++) //analizza fino alla posizione
 					spb.AnalyzeCommand(file[i], false);
 
-				mQueuePtr.Enqueue(new GrblCommand("G90")); //absolute coordinate
-				mQueuePtr.Enqueue(new GrblCommand(string.Format("M5 G0 {0} {1} {2} {3} {4}", spb.X, spb.Y, spb.Z, spb.F, spb.S))); //fast go to the computed position with laser off and set speed and power
-				mQueuePtr.Enqueue(new GrblCommand(spb.GetSettledModals()));
+				EnqueueCommandInner(new GrblCommand("G90")); //absolute coordinate
+				EnqueueCommandInner(new GrblCommand(string.Format("M5 G0 {0} {1} {2} {3} {4}", spb.X, spb.Y, spb.Z, spb.F, spb.S))); //fast go to the computed position with laser off and set speed and power
+				EnqueueCommandInner(new GrblCommand(spb.GetSettledModals()));
 
 				mTP.JobContinue(LoadedFile, position, mQueuePtr.Count);
 
@@ -1345,15 +1347,15 @@ namespace LaserGRBL
 						GrblCommand cmd = file[i].Clone() as GrblCommand;
 						cmd.BuildHelper();
 						if (cmd.IsMovement && cmd.G == null)
-							mQueuePtr.Enqueue(new GrblCommand(spb.MotionMode, cmd));
+							EnqueueCommandInner(new GrblCommand(spb.MotionMode, cmd));
 						else
-							mQueuePtr.Enqueue(cmd);
+							EnqueueCommandInner(cmd);
 						cmd.DeleteHelper();
 						spb = null; //only the first time
 					}
 					else
 					{
-						mQueuePtr.Enqueue(file[i].Clone() as GrblCommand);
+						EnqueueCommandInner(file[i].Clone() as GrblCommand);
 					}
 				}
 			}
@@ -1365,7 +1367,7 @@ namespace LaserGRBL
 		public void EnqueueCommand(GrblCommand cmd)
 		{
 			lock (this)
-			{ mQueuePtr.Enqueue(cmd.Clone() as GrblCommand); }
+			{ EnqueueCommandInner(cmd.Clone() as GrblCommand); }
 		}
 
 		public void Configure(ComWrapper.WrapperType wraptype, params object[] conf)
@@ -1995,6 +1997,98 @@ namespace LaserGRBL
 			GrblCommand next = PeekNextCommand();
 			return mUsedBuffer > 0 && next != null && !HasSpaceInBuffer(next);
 		}
+
+        string MarlinLastMode = "G0";
+        string MarlinLastLaserMode = "M3";
+		string MarlinLastLaserPower = "S1";
+
+        static string CalculateConstants(string input)
+        {
+            Dictionary<string, double> constants = new Dictionary<string, double>
+            {
+				/* assume marlin is configured for CUTTER_POWER_UNIT PWM255 */
+				{ "$30", 255 }
+            };
+
+            return Regex.Replace(input, @"\[(.*?)\]", match =>
+            {
+                string expression = match.Groups[1].Value;
+
+                /* Replace constants */
+                foreach (var constant in constants)
+                {
+                    expression = Regex.Replace(expression, $@"{Regex.Escape(constant.Key)}", constant.Value.ToString());
+                }
+
+                /* Evaluate the expression */
+                var dataTable = new DataTable();
+                var result = Convert.ToInt32(dataTable.Compute(expression, null));
+                return result.ToString();
+            });
+        }
+
+        private void EnqueueCommandInner(GrblCommand cmd)
+        {
+            /* replace calculated strength values */
+            if (Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin)
+            {
+                string newString = CalculateConstants(cmd.Command);
+
+                /* convert homing command */
+                if (newString.Trim() == "$H")
+                {
+					newString = "G28";
+                }
+                else if (newString.Trim().StartsWith("M"))
+                {
+                    /* M commands are all fine, just extract the last spindle mode for S-commands later */
+                    if (newString.Trim().StartsWith("M3") || newString.Trim().StartsWith("M4") || newString.Trim().StartsWith("M5"))
+					{
+						MarlinLastLaserMode = Regex.Match(newString.Trim(), @"^(M\d+)").Value.Trim();
+                    }
+				}
+				else
+				{
+					/* if not M and not G, then prefix the last G */
+                    if (!newString.Trim().StartsWith("G"))
+					{
+						/* stray S command? then prefix it with the last M mode */
+						if (newString.Trim().StartsWith("S"))
+						{
+							newString = MarlinLastLaserMode + " " + newString;
+						}
+						else
+						{
+                            /* anything else, prefix X/Y/Z -> only if GCODE_MOTION_MODES isn't enabled, but helps below checking G+M */
+                            newString = MarlinLastMode + " " + newString;
+                        }
+                    }
+					else
+					{
+						MarlinLastMode = Regex.Match(newString.Trim(), @"^(G\d+)").Value.Trim();
+                    }
+
+                    /* M within G command? assume it is M3-5 and extract */
+                    var match = Regex.Match(newString, @"G\d+.*M\d+");
+                    if (match.Success)
+                    {
+                        /* issue two lines, first send the M command with last S, then send G line without M string */
+                        MarlinLastLaserMode = Regex.Match(newString, @"M\d+").Value.Trim();
+						mQueuePtr.Enqueue(new GrblCommand(MarlinLastLaserMode + " " + MarlinLastLaserPower));
+						newString = Regex.Replace(newString, @"M\d+", "").Trim();
+                    }
+
+                    /* S command? save the strength if needed later */
+                    var matchS = Regex.Match(newString, @"S\d+");
+                    if (matchS.Success)
+                    {
+                        MarlinLastLaserPower = Regex.Match(newString, @"S\d+").Value.Trim();
+                    }
+                }
+
+                mQueuePtr.Enqueue(new GrblCommand(newString));
+            }
+        }
 
 		private GrblCommand PeekNextCommand()
 		{
