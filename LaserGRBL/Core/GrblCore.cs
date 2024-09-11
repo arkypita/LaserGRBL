@@ -1998,59 +1998,59 @@ namespace LaserGRBL
 			return mUsedBuffer > 0 && next != null && !HasSpaceInBuffer(next);
 		}
 
-        string MarlinLastMode = "G0";
-        string MarlinLastLaserMode = "M3";
+		string MarlinLastMode = "G0";
+		string MarlinLastLaserMode = "M3";
 		string MarlinLastLaserPower = "S1";
 
-        static string CalculateConstants(string input)
-        {
-            Dictionary<string, double> constants = new Dictionary<string, double>
-            {
+		static string CalculateConstants(string input)
+		{
+			Dictionary<string, double> constants = new Dictionary<string, double>
+			{
 				/* assume marlin is configured for CUTTER_POWER_UNIT PWM255 */
 				{ "$30", 255 }
-            };
+			};
 
-            return Regex.Replace(input, @"\[(.*?)\]", match =>
-            {
-                string expression = match.Groups[1].Value;
+			return Regex.Replace(input, @"\[(.*?)\]", match =>
+			{
+				string expression = match.Groups[1].Value;
 
-                /* Replace constants */
-                foreach (var constant in constants)
-                {
-                    expression = Regex.Replace(expression, $@"{Regex.Escape(constant.Key)}", constant.Value.ToString());
-                }
+				/* Replace constants */
+				foreach (var constant in constants)
+				{
+					expression = Regex.Replace(expression, $@"{Regex.Escape(constant.Key)}", constant.Value.ToString());
+				}
 
-                /* Evaluate the expression */
-                var dataTable = new DataTable();
-                var result = Convert.ToInt32(dataTable.Compute(expression, null));
-                return result.ToString();
-            });
-        }
+				/* Evaluate the expression */
+				var dataTable = new DataTable();
+				var result = Convert.ToInt32(dataTable.Compute(expression, null));
+				return result.ToString();
+			});
+		}
 
-        private void EnqueueCommandInner(GrblCommand cmd)
-        {
-            /* replace calculated strength values */
-            if (Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin)
-            {
-                string newString = CalculateConstants(cmd.Command);
+		private void EnqueueCommandInner(GrblCommand cmd)
+		{
+			/* replace calculated strength values */
+			if (Settings.GetObject("Firmware Type", Firmware.Grbl) == Firmware.Marlin)
+			{
+				string newString = CalculateConstants(cmd.Command);
 
-                /* convert homing command */
-                if (newString.Trim() == "$H")
-                {
+				/* convert homing command */
+				if (newString.Trim() == "$H")
+				{
 					newString = "G28";
-                }
-                else if (newString.Trim().StartsWith("M"))
-                {
-                    /* M commands are all fine, just extract the last spindle mode for S-commands later */
-                    if (newString.Trim().StartsWith("M3") || newString.Trim().StartsWith("M4") || newString.Trim().StartsWith("M5"))
+				}
+				else if (newString.Trim().StartsWith("M"))
+				{
+					/* M commands are all fine, just extract the last spindle mode for S-commands later */
+					if (newString.Trim().StartsWith("M3") || newString.Trim().StartsWith("M4") || newString.Trim().StartsWith("M5"))
 					{
 						MarlinLastLaserMode = Regex.Match(newString.Trim(), @"^(M\d+)").Value.Trim();
-                    }
+					}
 				}
 				else
 				{
 					/* if not M and not G, then prefix the last G */
-                    if (!newString.Trim().StartsWith("G"))
+					if (!newString.Trim().StartsWith("G"))
 					{
 						/* stray S command? then prefix it with the last M mode */
 						if (newString.Trim().StartsWith("S"))
@@ -2059,36 +2059,36 @@ namespace LaserGRBL
 						}
 						else
 						{
-                            /* anything else, prefix X/Y/Z -> only if GCODE_MOTION_MODES isn't enabled, but helps below checking G+M */
-                            newString = MarlinLastMode + " " + newString;
-                        }
-                    }
+							/* anything else, prefix X/Y/Z -> only if GCODE_MOTION_MODES isn't enabled, but helps below checking G+M */
+							newString = MarlinLastMode + " " + newString;
+						}
+					}
 					else
 					{
 						MarlinLastMode = Regex.Match(newString.Trim(), @"^(G\d+)").Value.Trim();
-                    }
+					}
 
-                    /* M within G command? assume it is M3-5 and extract */
-                    var match = Regex.Match(newString, @"G\d+.*M\d+");
-                    if (match.Success)
-                    {
-                        /* issue two lines, first send the M command with last S, then send G line without M string */
-                        MarlinLastLaserMode = Regex.Match(newString, @"M\d+").Value.Trim();
+					/* M within G command? assume it is M3-5 and extract */
+					var match = Regex.Match(newString, @"G\d+.*M\d+");
+					if (match.Success)
+					{
+						/* issue two lines, first send the M command with last S, then send G line without M string */
+						MarlinLastLaserMode = Regex.Match(newString, @"M\d+").Value.Trim();
 						mQueuePtr.Enqueue(new GrblCommand(MarlinLastLaserMode + " " + MarlinLastLaserPower));
 						newString = Regex.Replace(newString, @"M\d+", "").Trim();
-                    }
+					}
 
-                    /* S command? save the strength if needed later */
-                    var matchS = Regex.Match(newString, @"S\d+");
-                    if (matchS.Success)
-                    {
-                        MarlinLastLaserPower = Regex.Match(newString, @"S\d+").Value.Trim();
-                    }
-                }
+					/* S command? save the strength if needed later */
+					var matchS = Regex.Match(newString, @"S\d+");
+					if (matchS.Success)
+					{
+						MarlinLastLaserPower = Regex.Match(newString, @"S\d+").Value.Trim();
+					}
+				}
 
-                mQueuePtr.Enqueue(new GrblCommand(newString));
-            }
-        }
+				mQueuePtr.Enqueue(new GrblCommand(newString));
+			}
+		}
 
 		private GrblCommand PeekNextCommand()
 		{
