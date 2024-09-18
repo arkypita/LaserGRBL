@@ -2072,7 +2072,7 @@ namespace LaserGRBL
 								/* when receiving a S0, immediately disable using M5, don't wait for a move */
 								if (newString.Trim() == "S0")
 								{
-									newString = "M5";
+									newString = "M5 I";
 									MarlinLastLaserState = false;
 								}
 								else
@@ -2107,14 +2107,18 @@ namespace LaserGRBL
 							MarlinLastLaserMode = Regex.Match(newString, @"M\d+").Value.Trim();
 							mQueuePtr.Enqueue(new GrblCommand(MarlinLastLaserMode + " " + MarlinLastLaserPower));
 							newString = Regex.Replace(newString, @"M\d+", "").Trim();
-						}
+                        }
 
-						/* S command? save the strength if needed later */
-						var matchS = Regex.Match(newString, @"S\d+");
+                        /* S command? save the strength if needed later */
+                        var matchS = Regex.Match(newString, @"S\d+");
 						if (matchS.Success)
 						{
 							MarlinLastLaserPower = Regex.Match(newString, @"S\d+").Value.Trim();
 						}
+						else
+                        {
+                            newString = newString + " " + MarlinLastLaserPower;
+                        }
 					}
 				}
 
