@@ -8367,4 +8367,2428 @@
     <Cycles>2</Cycles>
     <Remarks>There are burn marks along the cutting path and a pungent odor is emitted during the cutting process. Cut with caution</Remarks>
   </Materials>
+  <Materials>
+    <id>075b5626-9dc8-4c9f-8b94-3e83a81e1450</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 5W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Paint dark.</Remarks>
+  </Materials>
+  <Materials>
+    <id>f22a07f8-b642-4c94-a673-ff42c462fc18</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>35</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>9c638ab1-541f-4731-89fb-6a0d8b484da6</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Hardwood</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>00f93aa9-5ce5-4a96-bdd1-dd1dfd19ee52</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>35</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>01e07ef0-9366-4a1a-9909-61fd2a5288bb</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>35</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2dea62b7-ba83-476a-bf7e-4b8519f26ea0</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>KraftPaper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e4201e9c-9e82-4d37-9490-7873156eb453</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Mirror</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>35</Power>
+    <Speed>2500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>cebd544c-6d75-45cc-9dec-5070836dba53</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Light color. It need to be adjusted based on different colors.</Remarks>
+  </Materials>
+  <Materials>
+    <id>601a4347-9b03-422f-9d86-94896e759185</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Denim</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>25</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f1258342-636d-4d50-9b5a-6ba777e9a011</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Powder Coated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ccdd1656-497e-4f95-83f5-bb65fd3e5ffb</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Anodised Aluminium</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>946b8e80-020c-4960-92de-6fb1cf53e5f7</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Ceramic</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Paint dark.</Remarks>
+  </Materials>
+  <Materials>
+    <id>335e177b-d8ef-43bd-bd41-7a1460ccbe66</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Glass</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Paint dark.</Remarks>
+  </Materials>
+  <Materials>
+    <id>e5321f1f-23d0-4ae4-9334-b5e8339f28e2</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Matte surface.</Remarks>
+  </Materials>
+  <Materials>
+    <id>4843228e-7f3e-4da4-bd9f-06c411f52f0e</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Basswood</Material>
+    <Thickness>2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5de905af-1c9b-4960-b53b-dde5a11995b5</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Basswood</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>350</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>072e4078-894e-44ec-ae76-ec5771c1d061</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Basswood</Material>
+    <Thickness>4mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>180</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>61fdc6a5-62dc-4af4-8fa8-c67cf9070dea</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Basswood</Material>
+    <Thickness>8mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>120</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defoucs by 1~3 mm.</Remarks>
+  </Materials>
+  <Materials>
+    <id>caacec22-332c-42b8-a5ca-9068980e408a</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Basswood</Material>
+    <Thickness>10mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>Defoucs by 1~3 mm.</Remarks>
+  </Materials>
+  <Materials>
+    <id>04e133a2-5ebd-4e5b-96d0-86ef913cfd50</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Pinewood</Material>
+    <Thickness>14mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>Defoucs by 1~3 mm.</Remarks>
+  </Materials>
+  <Materials>
+    <id>5f0f6fdb-fc60-40c7-8d74-c9bd0beec59d</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Pinewood</Material>
+    <Thickness>15mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>3</Cycles>
+    <Remarks>Defoucs by 1~3 mm.</Remarks>
+  </Materials>
+  <Materials>
+    <id>cc9218d2-2d89-476e-938e-c8a26a83e6da</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>180</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>41623720-2994-4a5c-b7a9-2079aa468a70</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>KraftPaper</Material>
+    <Thickness>0.1mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>7669cba4-a86d-4c8d-8448-ae2908049ba3</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Leather</Material>
+    <Thickness>0.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>70</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Light color. It need to be adjusted based on different colors.</Remarks>
+  </Materials>
+  <Materials>
+    <id>46658689-9f79-41a3-b18f-242395d17e3f</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 10W</Model>
+    <Material>Denim</Material>
+    <Thickness>0.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>1fe6c8e5-5b02-41d4-9156-08ab7203ba70</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>4000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>360e195f-dff3-4eea-b6d4-d3589cb965a4</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Cork Wood</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>15</Power>
+    <Speed>3500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5830c047-e5ca-45bb-a58c-ed9807dcef08</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>4000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e9d1539b-b678-4e8d-aa15-9bc89e816f0f</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Translucent Acrylic</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>15</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2d5dfc80-a5ac-40d9-9975-b7087b5f88b9</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>4000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5d5b4a34-6979-451f-99aa-1f91ff55ef21</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Kraft Paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>4500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4a66aa58-7b2a-4e55-a0ed-bde0efd5c3af</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Rubber</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5336e93a-faf9-4761-b479-43a3d54306bb</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>High Density Foam</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>15</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5c7d8153-4e5a-453b-95d7-b414e2632e6e</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Mirror</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>4500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d2145092-0b9f-40a7-8c4d-9545168c6ed6</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>4500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>00bd54d4-8f63-4aa6-a023-fe77c40815ca</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Carton</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>15</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>679fb2db-dc0b-4c7d-af84-54e8ff5f176f</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Denim</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>25</Power>
+    <Speed>4500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>13b342e2-21d9-41a5-aff0-dbbb81712c11</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Powder Coated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>6e0f134a-14c4-44dc-9b5b-b5b8bba85825</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>PCB Borad</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>14a4c4ca-e0cc-4e20-b67d-9b20214be6af</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Anodized Aluminum</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>164d8ae6-de78-40f2-b777-146aa9eb32c2</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Rock</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>3500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5ee506a1-4f62-4a85-bcfe-249681ffb476</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Pebble</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>3500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>bd73e2e5-2339-47c5-863a-fe176767f0ed</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>White Ceramic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Paint dark.</Remarks>
+  </Materials>
+  <Materials>
+    <id>a74e0040-6a06-4c3a-9f6f-5ce3cac3fb79</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Glass</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>75</Power>
+    <Speed>4000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Paint dark.</Remarks>
+  </Materials>
+  <Materials>
+    <id>52189cdb-efda-4edd-b002-04ab6a980b29</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>75</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>57f2ca3e-f666-4450-9a3f-7337654ab01a</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Basswood</Material>
+    <Thickness>2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>800</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>da633f00-3f91-4040-9bc4-3d75f354bb47</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Basswood</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>700</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>820eadef-61f8-4c91-b4f3-4490c2867385</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Basswood</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>450</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>c6ac079e-8468-4d93-b8f9-88cca4feeea4</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Basswood</Material>
+    <Thickness>6mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>202024ca-d53d-45c3-966e-00864e814abe</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Basswood</Material>
+    <Thickness>8mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>87f95330-e494-4e95-84a5-ec75628e4c9a</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Basswood</Material>
+    <Thickness>10mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f4721639-f382-42c8-9f57-94f44d3e1f41</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Pine</Material>
+    <Thickness>10mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>120</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>c8670751-b5e2-45ba-ae99-e25ab9fbea9d</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Pine</Material>
+    <Thickness>15mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus by 3mm..</Remarks>
+  </Materials>
+  <Materials>
+    <id>ca8df174-2c28-4249-887d-af16927f123c</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4034df4e-6bf3-4011-a409-2849feaf879f</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>8mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a7b5999c-c575-4cdb-985b-d19afe10449c</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Kraft Paper</Material>
+    <Thickness>0.1mm</Thickness>
+    <Action>Cut</Action>
+    <Power>40</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>7e3646a4-8f67-4453-9840-673e079cddb0</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Leather</Material>
+    <Thickness>0.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>70</Power>
+    <Speed>2500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e4a74d36-af13-4752-b015-a065802ae57b</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Denim</Material>
+    <Thickness>0.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b2fe5f8e-e69e-4d6a-82f5-4a28fd18f4c3</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>10mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>120</Speed>
+    <Cycles>2</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>0b66f6e4-c0ef-4ce0-815b-c3224cf33c3d</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>0.05mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>120</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>c2fd15c6-fc05-439a-9198-c9d84f0d733a</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>15mm</Thickness>
+    <Action>Cut</Action>
+    <Power>70</Power>
+    <Speed>100</Speed>
+    <Cycles>5</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>784920b4-c32e-4cd9-97ab-948717bc2e98</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>MDF</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>160</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>9add509b-6407-43b9-993b-ba4af435ebb1</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>MDF</Material>
+    <Thickness>10mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>6</Cycles>
+    <Remarks>Defocus by 3mm. Be aware that the material  is flammable during cutting.</Remarks>
+  </Materials>
+  <Materials>
+    <id>10be9795-fb1a-4262-860c-9aa5b6911c9a</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Paulownia Wood</Material>
+    <Thickness>15mm</Thickness>
+    <Action>Cut</Action>
+    <Power>70</Power>
+    <Speed>300</Speed>
+    <Cycles>3</Cycles>
+    <Remarks>Be aware that the material  is flammable during cutting.</Remarks>
+  </Materials>
+  <Materials>
+    <id>012a162a-745f-41bd-95d5-4ef47fe4082e</id>
+    <Visible>true</Visible>
+    <Model>Longer RAY5 or B1 20W</Model>
+    <Material>Cork Wood</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>153ae979-eb04-4397-a8f4-26e91e68d8a8</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>55</Power>
+    <Speed>7000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>074671c8-4362-4751-851f-537e0fb99fa5</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Cardboard (carton)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>15</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4e2c09a7-90cb-46a7-8ee1-08db806dab66</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Hardwood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>4500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>858f0cf1-e042-432c-a0d3-e33a0bdb76b3</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Eraser</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>65</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8728b339-5279-40dc-b933-60992c9adaaf</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Ceramic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>339c0bd1-2156-45a2-a2e3-785d6074348a</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Pine wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>45</Power>
+    <Speed>7000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>95e942d9-dcff-483d-b778-aedf566916c6</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>33f43afb-4458-49a1-8dba-ed1502f21e84</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Denim</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>19afac20-4fe1-42ec-ab3d-5be19ed07b4e</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>5</Power>
+    <Speed>1300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a3952992-cd75-451c-90ea-7f4be6876ee2</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Mirror</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>cbfdcf45-9b09-4ab5-acc8-76910b3ec2d5</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>High density foam</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>4</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e536c65f-faee-4de5-9568-298d1b0f4921</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Black Powder Coated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>90</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>be874512-a6a5-4ddb-9563-dbce2ec083b1</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Cobblestone</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>4000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b9b7d169-5488-4d95-ab1e-6b85fd791169</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>20</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>74d5fdaa-af49-4f4e-a51d-f42a70916331</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Electroplated aluminum</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Purple or pink color.</Remarks>
+  </Materials>
+  <Materials>
+    <id>01d3780b-846d-49c2-81cc-0abbbaf4c6e2</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>75363a15-2a0c-4b83-b5b0-c9050335f842</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Glass</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>1500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Paint blue.</Remarks>
+  </Materials>
+  <Materials>
+    <id>c7ae0424-57c5-47df-ad63-36eb6155b1a7</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>black acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>25</Power>
+    <Speed>4500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>eb6d7314-9991-4568-8839-7395ee22a0b5</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Orange Translucent Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>25</Power>
+    <Speed>2500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>868e5d72-1656-413d-bd0b-fcf762bb17f4</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>PCB copper plate</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>4000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>3935f2e2-120e-4d80-b461-1827aa1a1ba4</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>MDF</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>17</Power>
+    <Speed>4000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>197c51a2-5467-4576-b73d-57f651d9f4ec</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Cardboard (carton)</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>99acd3f0-1a56-483d-8440-090fbad100f6</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>10mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus 2mm.</Remarks>
+  </Materials>
+  <Materials>
+    <id>f147f1a7-caf1-430d-8dd7-a4bbe5b78c02</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Acrylic acid</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>360</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>dd9ccd8c-d07f-4412-ac1e-537085f5a073</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Non-woven fabric</Material>
+    <Thickness>0.18mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>3200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4393b5e3-783e-49df-9113-8e383adb8b32</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Pine wood</Material>
+    <Thickness>15mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus 2mm.</Remarks>
+  </Materials>
+  <Materials>
+    <id>9266370f-c5d4-481a-abe3-7f052e5909cd</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Leather</Material>
+    <Thickness>0.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>4000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a9323204-e831-4695-96fe-0a75bcff49f2</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Paulownia wood</Material>
+    <Thickness>20mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>120</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus 2mm.</Remarks>
+  </Materials>
+  <Materials>
+    <id>b3a30c3b-b63a-4c47-85d7-8766d2ca7bfa</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Denim</Material>
+    <Thickness>0.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ac7d9b9a-9557-4e49-99ce-6bec335904a1</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>0.1mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>9000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>29e1132f-af77-400b-b9ea-d5db80f43060</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Basswood</Material>
+    <Thickness>2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ae9eb9e8-75b6-41b2-89a5-fba5e0204386</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Basswood</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>800</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>089d00af-2ef5-467f-b021-1b5c8043ce69</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Basswood</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>480</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>6e84418d-feac-47c9-b4cc-2a773335e884</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Basswood</Material>
+    <Thickness>6mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>320</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b92b2777-019b-41f5-bfc3-268e7ad43fcf</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Basswood</Material>
+    <Thickness>8mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>210</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>06a3eb9b-be58-4cdf-9b3f-218062cc0616</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Basswood</Material>
+    <Thickness>10mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>160</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>daf53f0c-6e59-442e-9d50-fdcba1d67c17</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Hardwood</Material>
+    <Thickness>11mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>1f903e60-04d4-4180-940c-30b80fe93036</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>0.05mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1800</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>315e4bd2-6633-45fd-b25e-185357e7eb72</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>0.1mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>782307d0-01c5-4ee2-b219-dd963f8d8c3f</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>MDF</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>360</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ad8a66be-b675-4635-98aa-2a7894cc3dd0</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>MDF</Material>
+    <Thickness>8.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>160</Speed>
+    <Cycles>3</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>34059bd9-70e3-4fe7-bfaa-b6bb7c3fdb2a</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>MDF</Material>
+    <Thickness>10mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>320</Speed>
+    <Cycles>7</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e1e6f156-f058-44c4-8163-162d1d3a6b97</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>MDF</Material>
+    <Thickness>12mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>10</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>228a45db-4585-43c5-94ad-ec4457a3be4e</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>15mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>3</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d70a1c34-81e8-4d19-b54d-16e94cc0c0dd</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Basswood</Material>
+    <Thickness>25mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>10</Cycles>
+    <Remarks>Defocus 10mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>8e79d0b3-f96a-402f-a08a-2d88bc81ad64</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 30W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>50mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>240</Speed>
+    <Cycles>25</Cycles>
+    <Remarks>Defocus 10mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>a1462180-fcc2-4b90-863f-2fea0749fb48</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Bamboo</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>fceef34b-f9e6-4967-b759-95d442b45cc5</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Cardboard (carton)</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>fd93731d-0ce8-4984-a9b9-7c6ede8d1477</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Hardwood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>26ac03ae-9c93-4043-b389-13677c890c89</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Eraser</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f52d6f58-5fc7-4df2-8c8b-90e143e59629</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Ceramic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>4000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>fa545d44-0dc4-4b8e-8a51-c9f91287ead8</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Pine wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4be64ebb-53e1-4b67-9898-ca29c8abbb23</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8d25963b-f109-4c93-83a7-b59fb1747060</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Denim</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>404f51a3-1df7-4350-8621-50d71d38b577</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>10</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>24eaad85-d745-4420-b0de-e70959200470</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Mirror</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ba2be6a5-f387-4763-a7d4-d7a26ea44be5</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>High density foam</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>15</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>266d3066-6831-4400-ae6b-1d0739e74d57</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Black Powder Coated Metal</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>401d410b-558a-4c08-8d42-5145f2c5fb69</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Cobblestone</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>4d42b8ca-71d4-4671-aaa8-ecb16a8be2df</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>481983e8-72b3-46b3-a174-1f81e8ca7e52</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Electroplated aluminum</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Purple or pink color.</Remarks>
+  </Materials>
+  <Materials>
+    <id>00daf242-b6de-48f9-a8e5-3a239beeabfc</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>3ebcd658-fee0-471e-9b3f-aac173c19aac</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Glass</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Paint blue</Remarks>
+  </Materials>
+  <Materials>
+    <id>c989ad6e-c104-4b4a-bcff-3aaaea3b68c2</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Black acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2fb57087-65e5-444b-80fa-49d63fbcb2ce</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Translucent Acrylic</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>25</Power>
+    <Speed>2500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Orange color.</Remarks>
+  </Materials>
+  <Materials>
+    <id>768d4e78-6e69-4973-843d-bf6ad303364c</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>PCB copper plate</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>90</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d7d5ac98-5533-4784-8ed6-de60e3e480a0</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>MDF</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>35</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>db49d629-0967-4d10-9726-18e2368bc4bf</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Cardboard (carton)</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>9171d6c8-2b61-4e3f-9cb5-5804446da90d</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>81124542-c1a8-4a62-8fdf-0d29c7da9e4a</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>10mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>130</Speed>
+    <Cycles>2</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>26995cf9-4134-41ab-a260-3a47afba44e0</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>15mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>2</Cycles>
+    <Remarks>Defocus 10mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>3b569668-4e1e-4a71-a341-99729b4f18da</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Non-woven fabric</Material>
+    <Thickness>0.18mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>73b45df6-9ae4-4864-aaf6-fa5731d22394</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Pine wood</Material>
+    <Thickness>15mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>150</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus 2mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>b0c0d755-c94a-47d2-9cc3-b505f8fb9682</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Pine wood</Material>
+    <Thickness>20mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus 2mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>11d163b0-060c-4d74-a081-5886523f0707</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Leather</Material>
+    <Thickness>0.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>7000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8c8e75b0-7606-4cea-b02b-9029000ce9c7</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Paulownia wood</Material>
+    <Thickness>15mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>350</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus 2.5mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>9ea011d3-e690-4032-ba73-6d012b0349f1</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Paulownia wood</Material>
+    <Thickness>20mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus 2.5mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>d8e6c713-47ce-4214-9019-cfec314297a1</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Paulownia wood</Material>
+    <Thickness>25mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus 10mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>070e242c-1191-4be9-ad6d-482604b31d27</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Denim</Material>
+    <Thickness>0.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>3500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ff2b819f-dcc9-42ec-ade7-06ff32385355</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Kraft paper</Material>
+    <Thickness>0.1mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>18000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a1decf21-7032-48f5-82ed-a8b3482bffac</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Basswood</Material>
+    <Thickness>2mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1800</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a33227bd-643f-4cca-adb9-5253e0fc4ae4</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Basswood</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>1400</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>04b40c5c-d0bb-4859-9491-6c2253cf544f</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Basswood</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>900</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2fb6fd06-00bc-4cf5-8d81-4095fd365704</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Basswood</Material>
+    <Thickness>6mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a75dae4a-6439-4a51-86a1-b74f3650bc84</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Basswood</Material>
+    <Thickness>8mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>270</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus 2.5mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>4d89f2de-43a8-4ebc-b535-59e2dd5e233e</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Basswood</Material>
+    <Thickness>9.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>450</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus 2.5mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>55aeab7c-7d51-4589-b05d-ff940d0f7cbe</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Basswood</Material>
+    <Thickness>15mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>150</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus 2.5mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>caa568b6-d28e-439f-be83-9da15b5ff58d</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Basswood</Material>
+    <Thickness>20mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus 10mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>d8ace208-9607-4cbc-a9eb-bfe748b95241</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Hardwood</Material>
+    <Thickness>11mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>250</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus 2.5mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>7907df63-5164-40a3-bda6-d5904ff87b39</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>0.05mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>89f0a4c1-a4ae-4123-817e-12309bab9b0d</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>0.1mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>d9007570-ce70-430a-8f2f-08dbf38af1af</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>0.15mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>9c3e9544-6c53-43c5-ad83-88ce11a5da8c</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>MDF</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>700</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Defocus 2.5mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>e2125ed3-b56b-4c7f-9f93-04cf829719c8</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>MDF</Material>
+    <Thickness>12mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>500</Speed>
+    <Cycles>5</Cycles>
+    <Remarks>Defocus 2.5mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>4dab25b3-c44e-4620-aa29-d908130f7ac5</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Basswood</Material>
+    <Thickness>40mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>20</Cycles>
+    <Remarks>Defocus 10mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>17ba2a55-be98-4c06-af12-2e56d9937b67</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Acrylic</Material>
+    <Thickness>50mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>300</Speed>
+    <Cycles>22</Cycles>
+    <Remarks>Defocus 10mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>72ed9388-eb33-4cf0-a043-6e6f840297c3</id>
+    <Visible>true</Visible>
+    <Model>Longer B1 40W</Model>
+    <Material>Pine wood</Material>
+    <Thickness>30mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>3</Cycles>
+    <Remarks>Defocus 10mm</Remarks>
+  </Materials>
+  <Materials>
+    <id>0a587cfc-05c5-4891-9551-dfe58cf83175</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Basswood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ea40525f-ccf1-433a-bcfd-22a3e515346b</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Rock</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>02733eb1-e371-4dc0-b2ec-f01ce65328f7</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Leather</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>7000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>grey. You need to adjust according to different colors.</Remarks>
+  </Materials>
+  <Materials>
+    <id>65b9d98e-6379-460d-9acd-831a02df2e01</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Pearl paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>White, the rest of the color needs to be adjusted</Remarks>
+  </Materials>
+  <Materials>
+    <id>b37b8f97-dfb6-4a3a-b694-e7799f1a8928</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>kraft paper</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>70</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Earthy, the rest of the color needs to be adjusted</Remarks>
+  </Materials>
+  <Materials>
+    <id>5247995c-d5ce-43d2-a3fb-bb7302d738cb</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Transparent silicone</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>90</Power>
+    <Speed>3000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Transparent, the remaining colors need to be adjusted according to the existing parameters</Remarks>
+  </Materials>
+  <Materials>
+    <id>24bf9380-f0d5-4c4d-ad40-3cf1d3ee0d28</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Red Cardboard</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>8000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>00fbca10-7937-483e-8274-3dee76696a7b</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Purple Business Card</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>7000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>37c22f81-8049-475d-bfc0-a08efba8cf8a</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Golden Business Card</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>7000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>b3fa216e-8e41-4ba7-ad0d-cb7c748feac8</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Black Alumina</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>41f36c0f-ce76-49ba-a2e7-429444f7222f</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Paulownia wood</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>8000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>ca3d3e69-5438-48fe-aab7-25575e58c9d9</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness>-</Thickness>
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>1000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e43193f9-b03c-4d64-885e-a79d62b3c915</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Leather</Material>
+    <Thickness>0.1mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2058a116-cd9d-492c-9e27-2f7657ccec1f</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Iridescent paper</Material>
+    <Thickness>0.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>1c8c4a48-9089-4a7d-82d9-1f85ff0a3be7</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Acrylic (black)</Material>
+    <Thickness>2.0mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f24e5d15-0f0e-45cb-b5d7-e71b2b0974a4</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Acrylic (black)</Material>
+    <Thickness>3.0mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>3</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2b9988da-cb89-48ed-b155-2c6159b0002e</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Basswood</Material>
+    <Thickness>2.0mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>150</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8ee479b4-fdb7-42b4-8910-2293106301f2</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano</Model>
+    <Material>Basswood</Material>
+    <Thickness>3.0mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>5e9dbcb7-b209-4350-a9ce-aaa0f72f88a1</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Basswood</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>6500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>2ba06c0f-c8d8-44d8-a4ac-88876b6bff5a</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Paulownia wood</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>60</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>53e32e60-805e-471e-8508-cd0f681e6468</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Solid wood</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>10000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>It needs to be adjusted based on different woods</Remarks>
+  </Materials>
+  <Materials>
+    <id>d552e990-12a8-4144-acc8-68895a2b131e</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Stainless Steel</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>9163479b-c0af-4329-a850-fedff3b9fd3e</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Black Alumina</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>100</Power>
+    <Speed>5000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>7c5f3666-4cab-4b48-b619-9423c02ab43d</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Rock</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>6500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e521303d-00fd-42af-b97b-d8cb47ca44bc</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Leather</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Grey. It needs to adjust according to different colors.</Remarks>
+  </Materials>
+  <Materials>
+    <id>79bdd7e4-451d-490b-b1f4-245f93b92f5f</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Pearl paper</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>35</Power>
+    <Speed>7000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>White. It needs to adjust according to different colors.</Remarks>
+  </Materials>
+  <Materials>
+    <id>daa1b2f6-dd5c-4d51-9b2f-cd834c32aae9</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Kraft paper</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>40</Power>
+    <Speed>5500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Earthy. It needs to adjust according to different colors.</Remarks>
+  </Materials>
+  <Materials>
+    <id>13ca6a25-12f4-4d5f-9082-cc3a9ce412b0</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Transparent silicone</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>80</Power>
+    <Speed>3500</Speed>
+    <Cycles>1</Cycles>
+    <Remarks>Transparent. It needs to adjust according to different colors.</Remarks>
+  </Materials>
+  <Materials>
+    <id>2b9e73fd-97e0-4b89-ae0b-0f9da4f8bd3f</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Purple Business Card</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>93b02afd-5adc-47a5-88ee-d8e5d046e743</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Golden Business Card</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>50</Power>
+    <Speed>6000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>0585c2c1-ca85-4911-83e3-02dd03b22f54</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Red Cardboard</Material>
+    <Thickness />
+    <Action>Engrave</Action>
+    <Power>30</Power>
+    <Speed>7000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f389d574-f2f9-42e9-9eee-a2ea3d9e3dfb</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Basswood</Material>
+    <Thickness>3mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>200</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>a84f72c7-dc2b-4bd0-862d-ea3ef569c674</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Basswood</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>14</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>1f9b35a9-ee15-4774-9733-3251aef433db</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Basswood</Material>
+    <Thickness>8mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>2000</Speed>
+    <Cycles>22</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>8fead4fc-6269-47be-b24b-3af19b9dae16</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Paulownia wood</Material>
+    <Thickness>8mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>f550fa3d-cebe-4244-83eb-dd7a33fe599f</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Pine wood</Material>
+    <Thickness>5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>aca567e2-38fc-4737-b7ff-6368026c562a</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Black Acrylic</Material>
+    <Thickness>2.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>100</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>e0401d58-1e5b-427a-a3b3-be1a56c27bb3</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Black Acrylic</Material>
+    <Thickness>4.5mm</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>500</Speed>
+    <Cycles>7</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>91d917c0-6049-4dcb-9a1c-35a6f61e8449</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Pearl paper</Material>
+    <Thickness>0.1</Thickness>
+    <Action>Cut</Action>
+    <Power>70</Power>
+    <Speed>2000</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
+  <Materials>
+    <id>887c6750-fbff-47cb-ba7b-2b552afdaa5c</id>
+    <Visible>true</Visible>
+    <Model>Longer Nano Pro</Model>
+    <Material>Leather</Material>
+    <Thickness>0.5</Thickness>
+    <Action>Cut</Action>
+    <Power>100</Power>
+    <Speed>600</Speed>
+    <Cycles>1</Cycles>
+    <Remarks />
+  </Materials>
 </MaterialDB>
