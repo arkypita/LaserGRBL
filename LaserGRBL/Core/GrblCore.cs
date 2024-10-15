@@ -3058,7 +3058,7 @@ namespace LaserGRBL
 						SendImmediate(b);
 					}
 					else
-					{ EnqueueCommand(new GrblCommand(tosend)); }
+					{ EnqueueCommand(new GrblCommand(tosend, 0, true)); }
 				}
 			}
 		}
