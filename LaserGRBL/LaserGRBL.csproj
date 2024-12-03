@@ -2211,6 +2211,12 @@
     <EmbeddedResource Include="Strings.nl-NL.resx">
       <DependentUpon>Strings.resx</DependentUpon>
     </EmbeddedResource>
+	<EmbeddedResource Include="Strings.uk.resx">
+		<DependentUpon>Strings.resx</DependentUpon>
+	</EmbeddedResource>
+	<EmbeddedResource Include="Strings.ja-JP.resx">
+		<DependentUpon>Strings.resx</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.da.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>
