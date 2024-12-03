@@ -406,7 +406,7 @@ namespace LaserGRBL
 				string url = null;
 				ComWrapper.WrapperType wt = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 
-				if (wt == ComWrapper.WrapperType.UsbSerial || wt == ComWrapper.WrapperType.UsbSerial2)
+				if (wt == ComWrapper.WrapperType.UsbSerial || wt == ComWrapper.WrapperType.UsbSerial2 || wt == ComWrapper.WrapperType.RJCPSerial)
 					url = "https://lasergrbl.com/usage/arduino-connection/";
 				else if (wt == ComWrapper.WrapperType.Telnet || wt == ComWrapper.WrapperType.LaserWebESP8266)
 					url = "https://lasergrbl.com/usage/wifi-with-esp8266/";
@@ -528,8 +528,8 @@ namespace LaserGRBL
 
 			ComWrapper.WrapperType wr = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 
-			MnSeparatorConfigWiFi.Visible = MnConfigureOrturWiFi.Visible = Core.GrblVersion != null && (wr == ComWrapper.WrapperType.UsbSerial || wr == ComWrapper.WrapperType.UsbSerial2) && Core.GrblVersion.IsLuckyWiFi;
-			MnSeparatorConfigWiFi2.Visible = MnConfigureLongerWiFi.Visible = Core.GrblVersion != null && (wr == ComWrapper.WrapperType.UsbSerial || wr == ComWrapper.WrapperType.UsbSerial2) && Core.GrblVersion.IsLuckyWiFi;
+			MnSeparatorConfigWiFi.Visible = MnConfigureOrturWiFi.Visible = Core.GrblVersion != null && (wr == ComWrapper.WrapperType.UsbSerial || wr == ComWrapper.WrapperType.UsbSerial2 || wr == ComWrapper.WrapperType.RJCPSerial) && Core.GrblVersion.IsLuckyWiFi;
+			MnSeparatorConfigWiFi2.Visible = MnConfigureLongerWiFi.Visible = Core.GrblVersion != null && (wr == ComWrapper.WrapperType.UsbSerial || wr == ComWrapper.WrapperType.UsbSerial2 || wr == ComWrapper.WrapperType.RJCPSerial) && Core.GrblVersion.IsLuckyWiFi;
 
 			MnConfigureOrturWiFi.Enabled = MnConfigureOrturWiFi.Visible && Core.CanReadWriteConfig;
 			MnConfigureLongerWiFi.Enabled = MnConfigureLongerWiFi.Visible && Core.CanReadWriteConfig;

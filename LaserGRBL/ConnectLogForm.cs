@@ -190,7 +190,7 @@ namespace LaserGRBL
 
 		void ApplyConfig()
 		{
-			if ((currentWrapper == ComWrapper.WrapperType.UsbSerial || currentWrapper == ComWrapper.WrapperType.UsbSerial2) && CBPort.Text != null && CBSpeed.SelectedItem != null)
+			if ((currentWrapper == ComWrapper.WrapperType.UsbSerial || currentWrapper == ComWrapper.WrapperType.UsbSerial2 || currentWrapper == ComWrapper.WrapperType.RJCPSerial) && CBPort.Text != null && CBSpeed.SelectedItem != null)
 				Core.Configure(currentWrapper, CBPort.Text, (int)CBSpeed.SelectedItem);
 			else if (currentWrapper == ComWrapper.WrapperType.Telnet || currentWrapper == ComWrapper.WrapperType.LaserWebESP8266)
 				Core.Configure(currentWrapper, (string)TxtAddress.Text);
@@ -297,7 +297,7 @@ namespace LaserGRBL
 		private void UpdateConf()
 		{
 			tableLayoutPanel4.SuspendLayout();
-			CBPort.Visible = CBSpeed.Visible = LblComPort.Visible = LblBaudRate.Visible = (currentWrapper == ComWrapper.WrapperType.UsbSerial || currentWrapper == ComWrapper.WrapperType.UsbSerial2);
+			CBPort.Visible = CBSpeed.Visible = LblComPort.Visible = LblBaudRate.Visible = (currentWrapper == ComWrapper.WrapperType.UsbSerial || currentWrapper == ComWrapper.WrapperType.UsbSerial2 || currentWrapper == ComWrapper.WrapperType.RJCPSerial);
 			TxtAddress.Visible = LblAddress.Visible = (currentWrapper == ComWrapper.WrapperType.Telnet || currentWrapper == ComWrapper.WrapperType.LaserWebESP8266);
 			LblAddress.Text = (currentWrapper == ComWrapper.WrapperType.Telnet ? "IP:PORT" : "Socket URL");
 			TxtEmulator.Visible = LblEmulator.Visible = (currentWrapper == ComWrapper.WrapperType.Emulator);
