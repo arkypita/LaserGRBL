@@ -28,7 +28,7 @@ namespace LaserGRBL
 		private UsageStats.MessageData ToolBarMessage;
 		private bool IsBufferStuck = false;
 		private bool MultiRunShown = false;
-		private bool OrturWiFiShown;
+		private bool PromptForWiFiShown;
 		private readonly string[] args;
 		private readonly List<ToolStripMenuItem> mLineWidthMenu;
 
@@ -249,6 +249,8 @@ namespace LaserGRBL
 				IconsMgr.PrepareMenuItem(linguaToolStripMenuItem, "mdi-flag-variant");
 				IconsMgr.PrepareMenuItem(toolsToolStripMenuItem, "mdi-tools");
 				IconsMgr.PrepareMenuItem(questionMarkToolStripMenuItem, "mdi-help");
+				IconsMgr.PrepareMenuItem(MnLonger, "mdi-cube-scan");
+				IconsMgr.PrepareMenuItem(MnOrtur, "mdi-opera");
 				questionMarkToolStripMenuItem.Text = "";
 			}
 			else
@@ -449,16 +451,16 @@ namespace LaserGRBL
 			ConnectionForm.TimerUpdate();
 			PreviewForm.TimerUpdate();
 			JogForm.Enabled = Core.JogEnabled;
-			PromptOrturWiFi();
+			PromptForWiFi();
 		}
 
-		private void PromptOrturWiFi()
+		private void PromptForWiFi()
 		{
-			if (!OrturWiFiShown && !Settings.GetObject("Suppress Ortur WiFI Message", false) && Core.GrblVersion != null && Core.GrblVersion.IsLuckyOrturWiFi && !IsConfiguredForWiFi() && Core.CanReadWriteConfig)
+			if (!PromptForWiFiShown && !Settings.GetObject("Suppress WiFI Prompt Message", false) && Core.GrblVersion != null && Core.GrblVersion.IsLuckyWiFi && !IsConfiguredForWiFi() && Core.CanReadWriteConfig)
 			{
-				OrturWiFiShown = true;
+				PromptForWiFiShown = true;
 
-				using (OrturWiFiConfigPrompt F = new OrturWiFiConfigPrompt(Core))
+				using (WiFiConfigPrompt F = new WiFiConfigPrompt(Core))
 				{
 					if (F.ShowDialog(this) == DialogResult.OK)
 						ShowWiFiConfig();
@@ -473,7 +475,8 @@ namespace LaserGRBL
 			{
 				if (F2.ShowDialog(this) == DialogResult.OK && Core.DetectedIP != null)
 				{
-					ConnectionForm.ConfigFromOrtur($"{Core.DetectedIP}:{GrblCore.Configuration.TelnetPort}");
+					if (Core.IsOrturBoard) ConnectionForm.ConfigFromWiFiForm($"{Core.DetectedIP}:{GrblCore.Configuration.TelnetPort}");
+					else if (Core.GrblVersion.IsLonger) ConnectionForm.ConfigFromWiFiForm($"{Core.DetectedIP}:{8847}");
 					Settings.SetObject("ComWrapper Protocol", ComWrapper.WrapperType.Telnet);
 					Core.CloseCom(true);
 				}
@@ -525,8 +528,12 @@ namespace LaserGRBL
 
 			ComWrapper.WrapperType wr = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 
-			MnSeparatorConfigWiFi.Visible = MnConfigureOrturWiFi.Visible = Core.GrblVersion != null && (wr == ComWrapper.WrapperType.UsbSerial || wr == ComWrapper.WrapperType.UsbSerial2) && Core.GrblVersion.IsLuckyOrturWiFi;
+			MnSeparatorConfigWiFi.Visible = MnConfigureOrturWiFi.Visible = Core.GrblVersion != null && (wr == ComWrapper.WrapperType.UsbSerial || wr == ComWrapper.WrapperType.UsbSerial2) && Core.GrblVersion.IsLuckyWiFi;
+			MnSeparatorConfigWiFi2.Visible = MnConfigureLongerWiFi.Visible = Core.GrblVersion != null && (wr == ComWrapper.WrapperType.UsbSerial || wr == ComWrapper.WrapperType.UsbSerial2) && Core.GrblVersion.IsLuckyWiFi;
+
 			MnConfigureOrturWiFi.Enabled = MnConfigureOrturWiFi.Visible && Core.CanReadWriteConfig;
+			MnConfigureLongerWiFi.Enabled = MnConfigureLongerWiFi.Visible && Core.CanReadWriteConfig;
+
 
 			switch (Core.MachineStatus)
 			{
@@ -568,6 +575,7 @@ namespace LaserGRBL
 			}
 
 			MnOrtur.Visible = Core.IsOrturBoard;
+			MnLonger.Visible = Core.IsLongerBoard;
 
 			string NewTTLLText = $"{LaserLifeHandler.GetCurrentTime().TotalHours.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)}h";
 			if (TTlaserLife.Text != NewTTLLText) TTlaserLife.Text = NewTTLLText; //prevent tooltip flickering
@@ -1138,7 +1146,7 @@ namespace LaserGRBL
 
 		private void MnWiFiDiscovery_Click(object sender, EventArgs e)
 		{
-			ConnectionForm.ConfigFromDiscovery(WiFiDiscovery.DiscoveryForm.CreateAndShowDialog(this));
+			ConnectionForm.ConfigFromDiscovery(WiFiDiscovery.DiscoveryForm.CreateAndShowDialog(this, Core));
 		}
 
 		private void facebookCommunityToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1338,6 +1346,10 @@ namespace LaserGRBL
             }
         }
 
+		private void MnConfigureLongerWiFi_Click(object sender, EventArgs e)
+		{
+			ShowWiFiConfig();
+		}
 	}
 
 

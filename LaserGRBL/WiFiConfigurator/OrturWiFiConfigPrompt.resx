@@ -596,7 +596,7 @@ Do you want to configure the engraver to connect to your WiFi network?</value>
     <value>Configure machine for WiFi?</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>OrturWiFiConfigPrompt</value>
+    <value>WiFiConfigPrompt</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

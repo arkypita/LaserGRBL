@@ -105,6 +105,7 @@ namespace LaserGRBL
 			int mMinor;
 			char mBuild;
 			bool mOrtur;
+			bool mLonger;
 			bool mGrblHal;
 
 			string mVendorInfo;
@@ -116,6 +117,7 @@ namespace LaserGRBL
 				mVendorInfo = VendorInfo;
 				mVendorVersion = VendorVersion;
 				mOrtur = VendorInfo != null && (VendorInfo.Contains("Ortur") || VendorInfo.Contains("Aufero"));
+				mLonger = VendorInfo != null && (VendorInfo.Contains("Longer"));
 				mGrblHal = IsHAL;
 			}
 
@@ -221,8 +223,9 @@ namespace LaserGRBL
 			public int Major => mMajor;
 			public int Minor => mMinor;
 			public bool IsOrtur => mOrtur;
+			public bool IsLonger => mLonger;
 			public bool IsHAL => mGrblHal;
-			public bool IsLuckyOrturWiFi => IsOrtur && mVendorInfo == "Ortur Laser Master 3";
+			public bool IsLuckyWiFi => (IsOrtur && mVendorInfo == "Ortur Laser Master 3") || (IsLonger && mVendorInfo == "Longer Nano");
 			public string MachineName => mVendorInfo;
 
 			public string VendorName
@@ -514,8 +517,9 @@ namespace LaserGRBL
 				if (GrblVersion == null || !GrblVersion.Equals(value))
 				{
 					CSVD.LoadAppropriateCSV(value);
-					Settings.SetObject("Last GrblVersion known", value);
 				}
+
+				Settings.SetObject("Last GrblVersion known", value);
 			}
 		}
 
@@ -1093,6 +1097,59 @@ namespace LaserGRBL
 		{
 			//throw new NotImplementedException();
 			mDetectedIP = null;
+
+			if (GrblVersion.IsOrtur)
+				WriteOrturWiFi(ssid, password);
+			else if (GrblVersion.IsLonger)
+				WriteLongerWiFi(ssid, password);
+		}
+
+		private void WriteLongerWiFi(string ssid, string password)
+		{
+
+			lock (this)
+			{
+				mQueuePtr.Enqueue(new GrblCommand("$radio/mode=sta", 0, true));
+				mQueuePtr.Enqueue(new GrblCommand($"$sta/ssid={ssid}", 0, true));
+				mQueuePtr.Enqueue(new GrblCommand($"$sta/password={password}", 0, true));
+				mQueuePtr.Enqueue(new GrblCommand("$wifi/begin", 0, true));
+			}
+
+			try
+			{
+				//while (com.IsOpen && (mQueuePtr.Count > 0 || HasPendingCommands())) //resta in attesa del completamento della comunicazione
+				//	;
+
+				System.Threading.Thread.Sleep(2);
+
+				int errors = 0;
+				foreach (IGrblRow row in mSentPtr)
+				{
+					if (row is GrblCommand)
+						if (((GrblCommand)row).Status == GrblCommand.CommandStatus.ResponseBad)
+							errors++;
+				}
+
+				//if (errors > 0)
+				//	throw new WriteConfigException(mSentPtr);
+			}
+			catch (Exception ex)
+			{
+				//Logger.LogException("Write Config", ex);
+				//throw (ex);
+			}
+			finally
+			{
+				//lock (this)
+				//{
+				//	//mQueuePtr = mQueue;
+				//	//mSentPtr = mSent; //restore queue
+				//}
+			}
+		}
+
+		private void WriteOrturWiFi(string ssid, string password)
+		{
 			if (CanReadWriteConfig)
 			{
 				lock (this)
@@ -1135,7 +1192,6 @@ namespace LaserGRBL
 					//}
 				}
 			}
-
 		}
 
 		public void WriteConfig(List<GrblConfST.GrblConfParam> config)
@@ -2147,6 +2203,10 @@ namespace LaserGRBL
 				ManageOrturModelMessage(rline);
 			else if (IsOrturFirmwareMessage(rline))
 				ManageOrturFirmwareMessage(rline);
+			else if (IsLongerModelMessage(rline))
+				ManageLongerModelMessage(rline);
+			else if (IsLongerFirmwareMessage(rline))
+				ManageLongerFirmwareMessage(rline);
 			else if (IsSimpleLaserWelcomeMessage(rline))
 				ManageSimpleLaserWelcomeMessage(rline);
 			else if (IsStandardWelcomeMessage(rline))
@@ -2159,6 +2219,8 @@ namespace LaserGRBL
 				ManageStandardBlockingAlarm(rline);
 			else if (IsStaIPMessage(rline))
 				ManageStaIPMessage(rline);
+			else if (IsLongerIPMessage(rline))
+				ManageLongerIPMessage(rline);
 			//else if (IsOrturBlockingAlarm(rline))
 			//	ManageOrturBlockingAlarm(rline);
 			else
@@ -2180,6 +2242,21 @@ namespace LaserGRBL
 			}
 		}
 
+		private void ManageLongerIPMessage(string rline)
+		{
+			try
+			{
+				//[MSG:Connected with 192.168.1.182]
+				mDetectedIP = rline.Substring(20, rline.Length - 1 - 20);
+				ManageGenericMessage(rline); //process as usual
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("IP Detector", "Ex on [{0}] message", rline);
+				Logger.LogException("IP Detector", ex);
+			}
+		}
+
 		System.Text.RegularExpressions.Regex unknownWelcomeRegex = new System.Text.RegularExpressions.Regex(@"(?<fw>[a-zA-Z]+)\s+(?<maj>\d+)\.(?<min>\d+)(?<build>\D)($|\s)", System.Text.RegularExpressions.RegexOptions.Compiled);
 
 		private bool IsCommandReplyMessage(string rline) => rline.ToLower().StartsWith("ok") || rline.ToLower().StartsWith("error");
@@ -2187,8 +2264,10 @@ namespace LaserGRBL
 		private bool IsGrblHalWelcomeMessage(string rline) => rline.StartsWith("GrblHAL ");
 		private bool IsVigoWelcomeMessage(string rline) => rline.StartsWith("Grbl-Vigo:");
 		private bool IsOrturModelMessage(string rline) => rline.StartsWith("Ortur ");
+		private bool IsLongerModelMessage(string rline) => rline.StartsWith("[Machine:") && rline.EndsWith("]");
 		private bool IsAuferoModelMessage(string rline) => rline.StartsWith("Aufero ");
 		private bool IsOrturFirmwareMessage(string rline) => rline.StartsWith("OLF");
+		private bool IsLongerFirmwareMessage(string rline) => rline.StartsWith("[Software:") && rline.EndsWith("]");
 		private bool IsStandardWelcomeMessage(string rline) => rline.StartsWith("Grbl ");
 		private bool IsSimpleLaserWelcomeMessage(string rline) => rline.StartsWith("SimpleLaser ");
 		private bool IsUnknownWelcomeMessage(string rline) => mWelcomeSeen == null && unknownWelcomeRegex.IsMatch(rline);
@@ -2197,6 +2276,7 @@ namespace LaserGRBL
 		private bool IsIVerMessage(string rline) => rline.StartsWith("[VER:") && rline.EndsWith("]");
 		private bool IsIOptMessage(string rline) => rline.StartsWith("[OPT:") && rline.EndsWith("]");
 		private bool IsStaIPMessage(string rline) => rline.StartsWith("[MSG:Get IP ") && rline.EndsWith("]");
+		private bool IsLongerIPMessage(string rline) => rline.StartsWith("[MSG:Connected with ") && rline.EndsWith("]");
 		private bool IsOrturBlockingAlarm(string rline) => false;
 
 		private void ManageGenericMessage(string rline)
@@ -2358,6 +2438,47 @@ namespace LaserGRBL
 			}
 			mSentPtr.Add(new GrblMessage(rline, false));
 		}
+
+		private void ManageLongerModelMessage(string rline)
+		{
+			try
+			{
+				mVendorInfoSeen = rline;
+				mVendorInfoSeen = mVendorInfoSeen.Replace("[Machine:", "");
+				mVendorInfoSeen = mVendorInfoSeen.Replace("]", "");
+				mVendorInfoSeen = mVendorInfoSeen.Trim();
+
+				GrblVersion = new GrblVersionInfo(1, 1, 'f', mVendorInfoSeen, mVendorVersionSeen, false);
+
+				Logger.LogMessage("LongerInfo", "Detected {0}", mVendorInfoSeen);
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("LongerInfo", "Ex on [{0}] message", rline);
+				Logger.LogException("LongerInfo", ex);
+			}
+			mSentPtr.Add(new GrblMessage(rline, false));
+		}
+
+		private void ManageLongerFirmwareMessage(string rline)
+		{
+			try
+			{
+				mVendorVersionSeen = rline;
+				mVendorVersionSeen = mVendorVersionSeen.Replace("[Software:", "");
+				mVendorVersionSeen = mVendorVersionSeen.Replace("]", "");
+
+				GrblVersion = new GrblVersionInfo(1, 1, 'f', mVendorInfoSeen, mVendorVersionSeen, false);
+				Logger.LogMessage("LongerInfo", "Detected FW {0}", mVendorVersionSeen);
+			}
+			catch (Exception ex)
+			{
+				Logger.LogMessage("LongerInfo", "Ex on [{0}] message", rline);
+				Logger.LogException("LongerInfo", ex);
+			}
+			mSentPtr.Add(new GrblMessage(rline, false));
+		}
+
 
 		private void ManageOrturFirmwareMessage(string rline)
 		{
@@ -3197,6 +3318,7 @@ namespace LaserGRBL
 		public virtual bool UIShowUnlockButtons => true;
 
 		public bool IsOrturBoard { get => GrblVersion != null && GrblVersion.IsOrtur; }
+		public bool IsLongerBoard { get => GrblVersion != null && GrblVersion.IsLonger; }
 		public int FailedConnectionCount => mFailedConnection;
 
 		public event Action OnProgramEnded;
