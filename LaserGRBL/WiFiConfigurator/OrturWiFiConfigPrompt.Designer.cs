@@ -1,6 +1,6 @@
 ﻿namespace LaserGRBL.WiFiConfigurator
 {
-	partial class OrturWiFiConfigPrompt
+	partial class WiFiConfigPrompt
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrturWiFiConfigPrompt));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WiFiConfigPrompt));
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnOK = new System.Windows.Forms.Button();

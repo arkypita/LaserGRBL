@@ -19,13 +19,13 @@ namespace LaserGRBL.WiFiDiscovery
 		Task T;
 		CancellationTokenSource C;
 
-		public DiscoveryForm()
+		public DiscoveryForm(GrblCore core)
 		{
 			InitializeComponent();
 
 			ComWrapper.WrapperType currentWrapper = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
 			if (currentWrapper == ComWrapper.WrapperType.Telnet)
-				UdPort.Value = 23;
+				UdPort.Value = core.IsLongerBoard ? 8847 : 23;
 			else if (currentWrapper == ComWrapper.WrapperType.LaserWebESP8266)
 				UdPort.Value = 81;
 			else
@@ -131,10 +131,10 @@ namespace LaserGRBL.WiFiDiscovery
 			catch { }
 		}
 
-		internal static string CreateAndShowDialog(Form parent)
+		internal static string CreateAndShowDialog(Form parent, GrblCore core)
 		{
 			String RV;
-			using (DiscoveryForm F = new DiscoveryForm())
+			using (DiscoveryForm F = new DiscoveryForm(core))
 			{
 				F.ShowDialog(parent);
 				RV = F.RV;

@@ -131,6 +131,7 @@
     <Compile Include="ComWrapper\MySerial\SerialSignal.cs" />
     <Compile Include="ComWrapper\MySerial\StopBits.cs" />
     <Compile Include="ComWrapper\MySerial\WinSerialStream.cs" />
+    <Compile Include="ComWrapper\RJCPSerial.cs" />
     <Compile Include="ComWrapper\UsbSerial2.cs" />
     <Compile Include="Generator\CuttingTest.cs">
       <SubType>Form</SubType>
@@ -174,6 +175,60 @@
     </Compile>
     <Compile Include="Obj3D\ColorHelper.cs" />
     <Compile Include="Obj3D\GlColorHelper.cs" />
+    <Compile Include="ComWrapper\RJCP\Datastructures\CircularBuffer.cs" />
+    <Compile Include="ComWrapper\RJCP\Datastructures\ReusableList.cs" />
+    <Compile Include="ComWrapper\RJCP\Datastructures\TimerExpiry.cs" />
+    <Compile Include="ComWrapper\RJCP\GlobalSuppressions.cs" />
+    <Compile Include="ComWrapper\RJCP\HandShake.cs" />
+    <Compile Include="ComWrapper\RJCP\InternalApplicationException.cs" />
+    <Compile Include="ComWrapper\RJCP\ISerialPortStream.cs" />
+    <Compile Include="ComWrapper\RJCP\LocalAsyncResult.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\INativeSerial.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\ISerialBufferSerialData.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\ISerialBufferStreamData.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Platform.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\ReadToCache.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\SerialBuffer.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\UnixNativeSerial.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Unix\INativeSerialDll.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Unix\SafeNativeMethods.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Unix\SafeSerialHandle.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Unix\SerialReadWriteEvent.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Unix\SerialUnix.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Unix\SysErrNo.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Unix\UnsafeNativeMethods.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Unix\WaitForModemEvent.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Windows\CfgMgr32.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Windows\CfgMgr32.Types.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Windows\CommErrorEventArgs.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Windows\CommEventArgs.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Windows\CommModemStatus.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Windows\CommOverlappedIo.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Windows\CommProperties.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Windows\CommState.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Windows\DtrControl.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Windows\Kernel32.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Windows\Kernel32.Types.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Windows\Marshalling.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Windows\RtsControl.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\Windows\WinError.cs" />
+    <Compile Include="ComWrapper\RJCP\Native\WinNativeSerial.cs" />
+    <Compile Include="ComWrapper\RJCP\Parity.cs" />
+    <Compile Include="ComWrapper\RJCP\PortDescription.cs" />
+    <Compile Include="ComWrapper\RJCP\SerialData.cs" />
+    <Compile Include="ComWrapper\RJCP\SerialDataEventArgs.cs" />
+    <Compile Include="ComWrapper\RJCP\SerialError.cs" />
+    <Compile Include="ComWrapper\RJCP\SerialErrorReceivedEventArgs.cs" />
+    <Compile Include="ComWrapper\RJCP\SerialPinChange.cs" />
+    <Compile Include="ComWrapper\RJCP\SerialPinChangedEventArgs.cs" />
+    <Compile Include="ComWrapper\RJCP\SerialPortStream.cs" />
+    <Compile Include="ComWrapper\RJCP\StopBits.cs" />
+    <Compile Include="ComWrapper\RJCP\System\EntryPointNotFoundException.cs" />
+    <Compile Include="ComWrapper\RJCP\Trace\LineSplitter.cs" />
+    <Compile Include="ComWrapper\RJCP\Trace\Log.cs" />
+    <Compile Include="ComWrapper\RJCP\Trace\LoggerTraceListener.cs" />
+    <Compile Include="ComWrapper\RJCP\Trace\LogSource.cs" />
+    <Compile Include="ComWrapper\RJCP\Trace\LogSourceFactory.cs" />
     <Compile Include="SvgIcons\SvgIcons.cs" />
     <Compile Include="Tools\Application.cs" />
     <Compile Include="Tools\DoubleBufferBmp.cs" />
@@ -2156,6 +2211,12 @@
     <EmbeddedResource Include="Strings.nl-NL.resx">
       <DependentUpon>Strings.resx</DependentUpon>
     </EmbeddedResource>
+	<EmbeddedResource Include="Strings.uk.resx">
+		<DependentUpon>Strings.resx</DependentUpon>
+	</EmbeddedResource>
+	<EmbeddedResource Include="Strings.ja-JP.resx">
+		<DependentUpon>Strings.resx</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.da.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>

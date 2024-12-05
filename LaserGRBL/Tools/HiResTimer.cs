@@ -216,12 +216,12 @@ namespace Tools
 
 					TimeReference delta = now.Subtract(mLastReference);
 					long deltaNano = delta.IsGoodHiRes() ? delta.HiResNano : delta.LowResNano;
-					long nanoSleepThreshold = 10000000000L; // se passano più di 10s tra due chiamate abbiamo avuto una sleep da non conteggiare! (assicurati di chiamare TotalNano con una frequenza più alta)
+					long nanoSleepThreshold = 10*1000*1000*1000L; // se passano più di 10s tra due chiamate abbiamo avuto una sleep da non conteggiare! (assicurati di chiamare TotalNano con una frequenza più alta)
 
 					if (deltaNano < 0)
 						LaserGRBL.Logger.LogMessage("Issue detector", "Negative delta detected!");
 					else if (deltaNano > nanoSleepThreshold)
-						LaserGRBL.Logger.LogMessage("Issue detector", "System sleep/hibernation detected ({0}s)", deltaNano / 1000000000L);
+						LaserGRBL.Logger.LogMessage("Issue detector", "System sleep/hibernation detected ({0}s)", deltaNano / 1000*1000*1000L);
 					else
 						mTotalNano += deltaNano;
 

@@ -30,10 +30,6 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
-			this.JogForm = new LaserGRBL.JogForm();
-			this.PreviewForm = new LaserGRBL.PreviewForm();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.TTLLines = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TTTLines = new System.Windows.Forms.ToolStripStatusLabel();
@@ -138,11 +134,22 @@
 			this.romanianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.dutchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ukrainianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.installCH340DriverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.flashGrblFirmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.configurationWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnLonger = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnSeparatorConfigWiFi2 = new System.Windows.Forms.ToolStripSeparator();
+			this.MnConfigureLongerWiFi = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnOrtur = new System.Windows.Forms.ToolStripMenuItem();
 			this.orturSupportGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.orturSupportAndFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -172,45 +179,17 @@
 			this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
 			this.MultipleInstanceTimer = new System.Windows.Forms.Timer(this.components);
-			this.japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.ConnectionForm = new LaserGRBL.ConnectLogForm();
+			this.JogForm = new LaserGRBL.JogForm();
+			this.PreviewForm = new LaserGRBL.PreviewForm();
+			this.StatusBar.SuspendLayout();
+			this.MMn.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
-			this.StatusBar.SuspendLayout();
-			this.MMn.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// splitContainer1
-			// 
-			resources.ApplyResources(this.splitContainer1, "splitContainer1");
-			this.splitContainer1.Name = "splitContainer1";
-			// 
-			// splitContainer1.Panel1
-			// 
-			this.splitContainer1.Panel1.Controls.Add(this.ConnectionForm);
-			this.splitContainer1.Panel1.Controls.Add(this.JogForm);
-			// 
-			// splitContainer1.Panel2
-			// 
-			this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
-			this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
-			this.splitContainer1.Paint += new System.Windows.Forms.PaintEventHandler(this.SplitContainer1_Paint);
-			// 
-			// ConnectionForm
-			// 
-			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
-			this.ConnectionForm.Name = "ConnectionForm";
-			// 
-			// JogForm
-			// 
-			resources.ApplyResources(this.JogForm, "JogForm");
-			this.JogForm.Name = "JogForm";
-			// 
-			// PreviewForm
-			// 
-			resources.ApplyResources(this.PreviewForm, "PreviewForm");
-			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// StatusBar
 			// 
@@ -355,6 +334,7 @@
             this.previewToolStripMenuItem,
             this.linguaToolStripMenuItem,
             this.toolsToolStripMenuItem,
+            this.MnLonger,
             this.MnOrtur,
             this.questionMarkToolStripMenuItem});
 			resources.ApplyResources(this.MMn, "MMn");
@@ -955,6 +935,12 @@
 			resources.ApplyResources(this.ukrainianToolStripMenuItem, "ukrainianToolStripMenuItem");
 			this.ukrainianToolStripMenuItem.Click += new System.EventHandler(this.ukrainianToolStripMenuItem_Click);
 			// 
+			// japaneseToolStripMenuItem
+			// 
+			this.japaneseToolStripMenuItem.Name = "japaneseToolStripMenuItem";
+			resources.ApplyResources(this.japaneseToolStripMenuItem, "japaneseToolStripMenuItem");
+			this.japaneseToolStripMenuItem.Click += new System.EventHandler(this.japaneseToolStripMenuItem_Click);
+			// 
 			// toolsToolStripMenuItem
 			// 
 			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -987,6 +973,67 @@
 			// 
 			this.configurationWizardToolStripMenuItem.Name = "configurationWizardToolStripMenuItem";
 			resources.ApplyResources(this.configurationWizardToolStripMenuItem, "configurationWizardToolStripMenuItem");
+			// 
+			// MnLonger
+			// 
+			this.MnLonger.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem12,
+            this.toolStripMenuItem13,
+            this.toolStripMenuItem14,
+            this.toolStripMenuItem15,
+            this.toolStripSeparator5,
+            this.toolStripMenuItem16,
+            this.toolStripMenuItem17,
+            this.MnSeparatorConfigWiFi2,
+            this.MnConfigureLongerWiFi});
+			this.MnLonger.Name = "MnLonger";
+			resources.ApplyResources(this.MnLonger, "MnLonger");
+			// 
+			// toolStripMenuItem12
+			// 
+			this.toolStripMenuItem12.Name = "toolStripMenuItem12";
+			resources.ApplyResources(this.toolStripMenuItem12, "toolStripMenuItem12");
+			// 
+			// toolStripMenuItem13
+			// 
+			this.toolStripMenuItem13.Name = "toolStripMenuItem13";
+			resources.ApplyResources(this.toolStripMenuItem13, "toolStripMenuItem13");
+			// 
+			// toolStripMenuItem14
+			// 
+			this.toolStripMenuItem14.Name = "toolStripMenuItem14";
+			resources.ApplyResources(this.toolStripMenuItem14, "toolStripMenuItem14");
+			// 
+			// toolStripMenuItem15
+			// 
+			this.toolStripMenuItem15.Name = "toolStripMenuItem15";
+			resources.ApplyResources(this.toolStripMenuItem15, "toolStripMenuItem15");
+			// 
+			// toolStripSeparator5
+			// 
+			this.toolStripSeparator5.Name = "toolStripSeparator5";
+			resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
+			// 
+			// toolStripMenuItem16
+			// 
+			this.toolStripMenuItem16.Name = "toolStripMenuItem16";
+			resources.ApplyResources(this.toolStripMenuItem16, "toolStripMenuItem16");
+			// 
+			// toolStripMenuItem17
+			// 
+			this.toolStripMenuItem17.Name = "toolStripMenuItem17";
+			resources.ApplyResources(this.toolStripMenuItem17, "toolStripMenuItem17");
+			// 
+			// MnSeparatorConfigWiFi2
+			// 
+			this.MnSeparatorConfigWiFi2.Name = "MnSeparatorConfigWiFi2";
+			resources.ApplyResources(this.MnSeparatorConfigWiFi2, "MnSeparatorConfigWiFi2");
+			// 
+			// MnConfigureLongerWiFi
+			// 
+			resources.ApplyResources(this.MnConfigureLongerWiFi, "MnConfigureLongerWiFi");
+			this.MnConfigureLongerWiFi.Name = "MnConfigureLongerWiFi";
+			this.MnConfigureLongerWiFi.Click += new System.EventHandler(this.MnConfigureLongerWiFi_Click);
 			// 
 			// MnOrtur
 			// 
@@ -1184,11 +1231,36 @@
 			this.MultipleInstanceTimer.Interval = 1000;
 			this.MultipleInstanceTimer.Tick += new System.EventHandler(this.MultipleInstanceTimer_Tick);
 			// 
-			// japaneseToolStripMenuItem
+			// splitContainer1
 			// 
-			this.japaneseToolStripMenuItem.Name = "japaneseToolStripMenuItem";
-			resources.ApplyResources(this.japaneseToolStripMenuItem, "japaneseToolStripMenuItem");
-			this.japaneseToolStripMenuItem.Click += new System.EventHandler(this.japaneseToolStripMenuItem_Click);
+			resources.ApplyResources(this.splitContainer1, "splitContainer1");
+			this.splitContainer1.Name = "splitContainer1";
+			// 
+			// splitContainer1.Panel1
+			// 
+			this.splitContainer1.Panel1.Controls.Add(this.ConnectionForm);
+			this.splitContainer1.Panel1.Controls.Add(this.JogForm);
+			// 
+			// splitContainer1.Panel2
+			// 
+			this.splitContainer1.Panel2.Controls.Add(this.PreviewForm);
+			this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+			this.splitContainer1.Paint += new System.Windows.Forms.PaintEventHandler(this.SplitContainer1_Paint);
+			// 
+			// ConnectionForm
+			// 
+			resources.ApplyResources(this.ConnectionForm, "ConnectionForm");
+			this.ConnectionForm.Name = "ConnectionForm";
+			// 
+			// JogForm
+			// 
+			resources.ApplyResources(this.JogForm, "JogForm");
+			this.JogForm.Name = "JogForm";
+			// 
+			// PreviewForm
+			// 
+			resources.ApplyResources(this.PreviewForm, "PreviewForm");
+			this.PreviewForm.Name = "PreviewForm";
 			// 
 			// MainForm
 			// 
@@ -1205,14 +1277,14 @@
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
 			this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
-			this.splitContainer1.Panel1.ResumeLayout(false);
-			this.splitContainer1.Panel2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-			this.splitContainer1.ResumeLayout(false);
 			this.StatusBar.ResumeLayout(false);
 			this.StatusBar.PerformLayout();
 			this.MMn.ResumeLayout(false);
 			this.MMn.PerformLayout();
+			this.splitContainer1.Panel1.ResumeLayout(false);
+			this.splitContainer1.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+			this.splitContainer1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1363,6 +1435,16 @@
 		private System.Windows.Forms.ToolStripMenuItem drawingAreaToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem movingAreaToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem japaneseToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem MnLonger;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem14;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem16;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem17;
+		private System.Windows.Forms.ToolStripSeparator MnSeparatorConfigWiFi2;
+		private System.Windows.Forms.ToolStripMenuItem MnConfigureLongerWiFi;
 	}
 }
 

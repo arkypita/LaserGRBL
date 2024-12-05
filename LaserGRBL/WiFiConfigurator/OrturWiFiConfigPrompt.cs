@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace LaserGRBL.WiFiConfigurator
 {
-	public partial class OrturWiFiConfigPrompt : Form
+	public partial class WiFiConfigPrompt : Form
 	{
-		public OrturWiFiConfigPrompt(GrblCore core)
+		public WiFiConfigPrompt(GrblCore core)
 		{
 			InitializeComponent();
 			LblPrompt.Text = String.Format(LblPrompt.Text, core.GrblVersion?.MachineName);
@@ -19,7 +19,7 @@ namespace LaserGRBL.WiFiConfigurator
 
 		private void CbDontShow_CheckedChanged(object sender, EventArgs e)
 		{
-			Settings.SetObject("Suppress Ortur WiFI Message", CbDontShow.Checked);
+			Settings.SetObject("Suppress WiFI Prompt Message", CbDontShow.Checked);
 		}
 	}
 }

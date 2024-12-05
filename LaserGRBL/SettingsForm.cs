@@ -170,6 +170,7 @@ namespace LaserGRBL
 			CBProtocol.BeginUpdate();
 			CBProtocol.Items.Add(ComWrapper.WrapperType.UsbSerial);
 			CBProtocol.Items.Add(ComWrapper.WrapperType.UsbSerial2);
+			CBProtocol.Items.Add(ComWrapper.WrapperType.RJCPSerial);
 			CBProtocol.Items.Add(ComWrapper.WrapperType.Telnet);
 			CBProtocol.Items.Add(ComWrapper.WrapperType.LaserWebESP8266);
 			CBProtocol.Items.Add(ComWrapper.WrapperType.Emulator);

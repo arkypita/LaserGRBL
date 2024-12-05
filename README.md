@@ -111,3 +111,4 @@ Thanks to:
 - Tobias Falkner, for code contribution [#937](https://github.com/arkypita/LaserGRBL/pull/937)
 - gmmanonymus111, for code contribution [#1032](https://github.com/arkypita/LaserGRBL/pull/1032)
 - [GabeMx5](https://github.com/GabeMx5), for OpenGL preview and svg icons implementation
+- [jcurl](https://github.com/jcurl), for [RJCP.SerialPort](https://github.com/jcurl/RJCP.DLL.SerialPortStream) implementation
