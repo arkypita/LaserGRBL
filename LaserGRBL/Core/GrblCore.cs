@@ -2623,23 +2623,41 @@ namespace LaserGRBL
 			}
 		}
 
+		int good, ioex;
 		protected static char[] trimarray = new char[] { '\r', '\n', ' ' };
 		private string WaitComLineOrDisconnect()
 		{
-			try
+			if (!com.IsOpen || !HasIncomingData()) return null;
+
+			string rv = null;
+
+			do
 			{
-				string rv = com.ReadLineBlocking();
-				if (rv == null) return null;
-				rv = rv.TrimEnd(trimarray); //rimuovi ritorno a capo
-				rv = rv.Trim(); //rimuovi spazi iniziali e finali
-				return rv.Length > 0 ? rv : null;
-			}
-			catch
-			{
-				try { CloseCom(false); }
-				catch { }
-				return null;
-			}
+				try
+				{
+					string tmp = com.ReadLineBlocking();
+					if (tmp != null)
+					{
+						tmp = tmp.TrimEnd(trimarray); //rimuovi ritorno a capo
+						tmp = tmp.Trim(); //rimuovi spazi iniziali e finali
+						if (tmp.Length > 0) rv = tmp;
+						good++;
+					}
+				}
+				catch (System.IO.IOException ex)
+				{
+					ioex++;
+					if (ioex % 10 == 0) System.Threading.Thread.Sleep(1);
+				}
+				catch
+				{
+					try { CloseCom(false); }
+					catch { }
+				}
+			} while (rv == null && com.IsOpen);
+
+			return rv;
+
 		}
 
 		private bool HasIncomingData()
