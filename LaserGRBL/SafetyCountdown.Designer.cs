@@ -29,7 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SafetyCountdown));
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -45,7 +44,6 @@
 			// pictureBox1
 			// 
 			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
 			this.pictureBox1.Location = new System.Drawing.Point(3, 5);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(128, 128);
@@ -89,24 +87,24 @@
 			// BtnStart
 			// 
 			this.BtnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.BtnStart.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.BtnStart.Location = new System.Drawing.Point(261, 90);
+			this.BtnStart.Location = new System.Drawing.Point(249, 99);
 			this.BtnStart.Name = "BtnStart";
 			this.BtnStart.Size = new System.Drawing.Size(120, 30);
 			this.BtnStart.TabIndex = 1;
 			this.BtnStart.Text = "Start";
 			this.BtnStart.UseVisualStyleBackColor = true;
+			this.BtnStart.Click += new System.EventHandler(this.BtnStart_Click);
 			// 
 			// BtnCancel
 			// 
 			this.BtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.BtnCancel.Location = new System.Drawing.Point(147, 90);
+			this.BtnCancel.Location = new System.Drawing.Point(123, 99);
 			this.BtnCancel.Name = "BtnCancel";
 			this.BtnCancel.Size = new System.Drawing.Size(120, 30);
 			this.BtnCancel.TabIndex = 2;
 			this.BtnCancel.Text = "Cancel";
 			this.BtnCancel.UseVisualStyleBackColor = true;
+			this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
 			// 
 			// label1
 			// 

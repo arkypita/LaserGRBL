@@ -46,20 +46,39 @@ namespace LaserGRBL
 
 		private void TimCountDown_Tick(object sender, EventArgs e)
 		{
-			down = down - 1;
+			down = Math.Max(0, down-1);
 
 			BtnStart.Text = $"{lbl} ({down})";
 			Application.DoEvents();
 
 			if (down == 0)
-			{
-				DialogResult = DialogResult.OK;
-				TimCountDown.Enabled = false;
-			}
+				ExitOK();
 			else
-			{
 				DoBeep();
-			}
+		}
+
+		private void BtnStart_Click(object sender, EventArgs e)
+		{
+			ExitOK();
+		}
+
+		private void BtnCancel_Click(object sender, EventArgs e)
+		{
+			ExitKO();
+		}
+
+		private void ExitOK()
+		{
+			TimCountDown.Enabled = false;
+			DialogResult = DialogResult.OK;
+			Close();
+		}
+
+		private void ExitKO()
+		{
+			TimCountDown.Enabled = false;
+			DialogResult = DialogResult.Cancel;
+			Close();
 		}
 
 		private static void DoBeep()
@@ -96,5 +115,7 @@ namespace LaserGRBL
 
 			return true;
 		}
+
+
 	}
 }
