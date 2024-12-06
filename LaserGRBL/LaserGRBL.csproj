@@ -1152,7 +1152,13 @@
     <EmbeddedResource Include="ExceptionManager.pt-BR.resx">
       <DependentUpon>ExceptionManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExceptionManager.zh-CN.resx">
+      <DependentUpon>ExceptionManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Firmware\FlashGrbl.pt-BR.resx">
+      <DependentUpon>FlashGrbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Firmware\FlashGrbl.zh-CN.resx">
       <DependentUpon>FlashGrbl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generator\CuttingTest.pt-BR.resx">
@@ -1161,10 +1167,16 @@
     <EmbeddedResource Include="Generator\CuttingTest.resx">
       <DependentUpon>CuttingTest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Generator\CuttingTest.zh-CN.resx">
+      <DependentUpon>CuttingTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Generator\PowerVsSpeedForm.pt-BR.resx">
       <DependentUpon>PowerVsSpeedForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generator\PowerVsSpeedForm.resx">
+      <DependentUpon>PowerVsSpeedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generator\PowerVsSpeedForm.zh-CN.resx">
       <DependentUpon>PowerVsSpeedForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generator\ShakeTest.ja-JP.resx">
@@ -1174,6 +1186,9 @@
       <DependentUpon>ShakeTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generator\ShakeTest.resx">
+      <DependentUpon>ShakeTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generator\ShakeTest.zh-CN.resx">
       <DependentUpon>ShakeTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GrblConfig.ja-JP.resx">
@@ -1188,6 +1203,9 @@
     <EmbeddedResource Include="HotkeyManagerForm.pt-BR.resx">
       <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HotkeyManagerForm.zh-CN.resx">
+      <DependentUpon>HotkeyManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IssueDetectorForm.ja-JP.resx">
       <DependentUpon>IssueDetectorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1200,6 +1218,9 @@
     <EmbeddedResource Include="LaserLifeEdit.resx">
       <DependentUpon>LaserLifeEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LaserLifeEdit.zh-CN.resx">
+      <DependentUpon>LaserLifeEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LaserSelector.resx">
       <DependentUpon>LaserSelector.cs</DependentUpon>
     </EmbeddedResource>
@@ -1209,10 +1230,16 @@
     <EmbeddedResource Include="LaserUsage.resx">
       <DependentUpon>LaserUsage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LaserUsage.zh-CN.resx">
+      <DependentUpon>LaserUsage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LegalDisclaimer.ja-JP.resx">
       <DependentUpon>LegalDisclaimer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LegalDisclaimer.pt-BR.resx">
+      <DependentUpon>LegalDisclaimer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LegalDisclaimer.zh-CN.resx">
       <DependentUpon>LegalDisclaimer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.ja-JP.resx">
@@ -1224,10 +1251,16 @@
     <EmbeddedResource Include="PSHelper\PSEditorForm.pt-BR.resx">
       <DependentUpon>PSEditorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSEditorForm.zh-CN.resx">
+      <DependentUpon>PSEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSHelperForm.ja-JP.resx">
       <DependentUpon>PSHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PSHelper\PSHelperForm.pt-BR.resx">
+      <DependentUpon>PSHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSHelper\PSHelperForm.zh-CN.resx">
       <DependentUpon>PSHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.ja-JP.resx">
@@ -1246,6 +1279,9 @@
       <DependentUpon>RunFromPositionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaveOptionForm.ja-JP.resx">
+      <DependentUpon>SaveOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveOptionForm.zh-CN.resx">
       <DependentUpon>SaveOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.ja-JP.resx">
@@ -1446,6 +1482,9 @@
     <EmbeddedResource Include="WiFiConfigurator\OrturWiFiConfigPrompt.resx">
       <DependentUpon>OrturWiFiConfigPrompt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WiFiConfigurator\OrturWiFiConfigPrompt.zh-CN.resx">
+      <DependentUpon>OrturWiFiConfigPrompt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.hu-HU.resx">
       <DependentUpon>DiscoveryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1471,6 +1510,9 @@
     <EmbeddedResource Include="CSV\error_codes.ortur.GrblHal.csv" />
     <EmbeddedResource Include="Icons\LegacyIcons.data" />
     <EmbeddedResource Include="Icons\LegacyIcons.header" />
+    <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.zh-CN.resx">
+      <DependentUpon>DiscoveryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Resources\flag_greece.png" />
     <EmbeddedResource Include="Generator\SVG\LaserGRBL-accuracy-test-file.svg" />
     <Content Include="Grafica\777494-200.png" />
@@ -2211,12 +2253,12 @@
     <EmbeddedResource Include="Strings.nl-NL.resx">
       <DependentUpon>Strings.resx</DependentUpon>
     </EmbeddedResource>
-	<EmbeddedResource Include="Strings.uk.resx">
-		<DependentUpon>Strings.resx</DependentUpon>
-	</EmbeddedResource>
-	<EmbeddedResource Include="Strings.ja-JP.resx">
-		<DependentUpon>Strings.resx</DependentUpon>
-	</EmbeddedResource>
+    <EmbeddedResource Include="Strings.uk.resx">
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings.ja-JP.resx">
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RasterConverter\ConvertSizeAndOptionForm.da.resx">
       <DependentUpon>ConvertSizeAndOptionForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -285,4 +285,7 @@
 
 </value>
   </data>
+  <data name="LblCaption.Text" xml:space="preserve">
+    <value>标题</value>
+  </data>
 </root>

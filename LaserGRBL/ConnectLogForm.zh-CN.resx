@@ -128,7 +128,7 @@
     <value>43, 13</value>
   </data>
   <data name="LblProgress.Text" xml:space="preserve">
-    <value>进程</value>
+    <value>已工作时间</value>
   </data>
   <data name="TbFileName.Location" type="System.Drawing.Point, System.Drawing">
     <value>46, 1</value>
@@ -405,9 +405,12 @@
     <value>URL</value>
   </data>
   <data name="TxtEmulator.Text" xml:space="preserve">
-    <value>Emulated Grbl v1.1#</value>
+    <value>模拟器Grbl v1.1#</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Connect control</value>
+    <value>连接控制</value>
+  </data>
+  <data name="TxtManualCommand.WaterMark" xml:space="preserve">
+    <value>输入GCode代码</value>
   </data>
 </root>

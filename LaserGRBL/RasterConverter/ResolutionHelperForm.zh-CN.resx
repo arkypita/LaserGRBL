@@ -181,4 +181,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>分辨率助手</value>
   </data>
+  <data name="LblLinearFilling.Text" xml:space="preserve">
+    <value>$100硬件分辨率</value>
+  </data>
 </root>

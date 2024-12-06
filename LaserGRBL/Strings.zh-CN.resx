@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxAutoUpdateFailed" xml:space="preserve">
     <value>自动更新失败!
@@ -152,7 +152,7 @@
     <value>读取文件时出错!</value>
   </data>
   <data name="BoxImportConfigWithError" xml:space="preserve">
-    <value>{0} Config imported with {1} errors!</value>
+    <value>导入｛0｝个配置时出现｛1｝个错误！</value>
   </data>
   <data name="BoxImportConfigWithoutError" xml:space="preserve">
     <value>{0} 配置导入成功!</value>
@@ -164,13 +164,13 @@
     <value>删除按钮</value>
   </data>
   <data name="DirectionDiagonal" xml:space="preserve">
-    <value>Diagonal (old)</value>
+    <value>对角线（旧）</value>
   </data>
   <data name="DirectionHorizontal" xml:space="preserve">
     <value>水平 (old)</value>
   </data>
   <data name="DirectionNone" xml:space="preserve">
-    <value>无</value>
+    <value>无填充</value>
   </data>
   <data name="DirectionVertical" xml:space="preserve">
     <value>垂直 (old)</value>
@@ -179,16 +179,16 @@
     <value>自定义</value>
   </data>
   <data name="FormulaOpticalCorrect" xml:space="preserve">
-    <value>OpticalCorrect</value>
+    <value>光学校正</value>
   </data>
   <data name="FormulaSimpleAverage" xml:space="preserve">
     <value>SimpleAverage</value>
   </data>
   <data name="FormulaWeightAverage" xml:space="preserve">
-    <value>WeightAverage</value>
+    <value>平均值</value>
   </data>
   <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
-    <value>Smooth (HQ Bicubic)</value>
+    <value>平滑（HQ Bicubic）</value>
   </data>
   <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
     <value>Sharp (NearestNeighbor)</value>
@@ -237,5 +237,257 @@
   </data>
   <data name="MainFormProjectedTime" xml:space="preserve">
     <value>预计时间:</value>
+  </data>
+  <data name="WarnSoftLimitOOB" xml:space="preserve">
+    <value>您已设置了一个大小和偏移，使作业大于雕刻机中配置的工作空间({0}mm x{1}mm).
+Grbl参数$130和$131。
+这可能会产生软限制误差，或者机器可能会撞到轴边界。您确定输入的值吗？</value>
+  </data>
+  <data name="WarnSoftLimitNS" xml:space="preserve">
+    <value>你已经设置了负偏移量，但你的雕刻被设置为使用正空间与软限制警报启用（$20=1）。
+
+这可能会产生软限制错误。您确定输入的值吗？</value>
+  </data>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>右键单击此处添加自定义按钮</value>
+  </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>需要重新启动</value>
+  </data>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>｛0｝配置读取成功！</value>
+  </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>中心线选项与您的电脑不兼容。
+需要64位操作系统！</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>读取配置时出错！</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>导入自定义按钮</value>
+  </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>显示缓存值…</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>请提供工具提示文本</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>需要重新启动才能应用固件类型更改。现在重启吗?</value>
+  </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>Line2Line选项与您的雕刻机或配置不兼容。需要能够PWM的激光器，并且在LaserGRBL设置中应该启用PWM支持。</value>
+  </data>
+  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
+    <value>现在无法打开新文件。</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>没有变化……没什么可写的！</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>请提供GCode命令</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>未知位置</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>速度：</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0}配置写入成功！</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>缺少字段</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>删除自定义按钮</value>
+  </data>
+  <data name="WarnSoftLimitTitle" xml:space="preserve">
+    <value>工作范围确认</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>正在传输文件,退出吗?</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>移动距离（mm）：</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>有些更改尚未应用。
+您想重写配置吗？</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>断开连接</value>
+  </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>Grbl似乎不再知道目前的情况。
+如果没有回原点（$H），结果可能不可靠。
+仍要继续吗？</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>删除实际按钮？选择“是”删除，选择“否”保留。</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>连接</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>不支持此文件类型。</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>｛0｝配置写入时出现｛1｝个错误！</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>检测到更改！</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>文件传输正在进行中。无论如何都要断开连接吗？</value>
+  </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>您确定要删除所选按钮吗？</value>
+  </data>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>中止当前工作？</value>
+  </data>
+  <data name="DirectionNewCross" xml:space="preserve">
+    <value>交叉填充</value>
+  </data>
+  <data name="DirectionNewDiagonal" xml:space="preserve">
+    <value>对角线</value>
+  </data>
+  <data name="DirectionNewDiagonalCross" xml:space="preserve">
+    <value>对角交叉填充</value>
+  </data>
+  <data name="DirectionNewDiagonalGrid" xml:space="preserve">
+    <value>对角线网格</value>
+  </data>
+  <data name="DirectionNewGrid" xml:space="preserve">
+    <value>网格</value>
+  </data>
+  <data name="DirectionNewHorizontal" xml:space="preserve">
+    <value>水平</value>
+  </data>
+  <data name="DirectionNewInsetFilling" xml:space="preserve">
+    <value>插图填充</value>
+  </data>
+  <data name="DirectionNewReverseDiagonal" xml:space="preserve">
+    <value>对角线反转</value>
+  </data>
+  <data name="DirectionNewSquares" xml:space="preserve">
+    <value>正方形</value>
+  </data>
+  <data name="DirectionNewVertical" xml:space="preserve">
+    <value>垂直</value>
+  </data>
+  <data name="DirectionNewZigZag" xml:space="preserve">
+    <value>Zig Zag</value>
+  </data>
+  <data name="WarnWrongLaserMode" xml:space="preserve">
+    <value>“M4动态激光功率模式”已设置，但您的雕刻机似乎不支持。
+
+只有grbl版本&gt;= 1.1与“激光模式”启用（$32=1）的雕刻师可以利用M4选项。</value>
+  </data>
+  <data name="WarnWrongLaserModeTitle" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="DirectionNewHilbert" xml:space="preserve">
+    <value>希尔伯特</value>
+  </data>
+  <data name="DitheringOptions" xml:space="preserve">
+    <value>抖动选项</value>
+  </data>
+  <data name="Line2LineOptions" xml:space="preserve">
+    <value>行间选项</value>
+  </data>
+  <data name="WarnUnlockProportionText" xml:space="preserve">
+    <value>自由分配作品的宽度和高度会导致图像失真。你想继续吗？</value>
+  </data>
+  <data name="WarnUnlockProportionTitle" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="BoxTelegramSettingText" xml:space="preserve">
+    <value>测试通知已发送，请检查您的手机！</value>
+  </data>
+  <data name="BoxTelegramSettingTitle" xml:space="preserve">
+    <value>电报通知</value>
+  </data>
+  <data name="WarnBufferStuckUnlockText" xml:space="preserve">
+    <value>如果缓冲区被阻塞，这是因为你的雕刻有一些通信问题。如果您按下“OK”，LaserGRBL将忽略满缓冲区并发送下一个命令。如果这种情况经常发生，您应该尝试了解这个问题的原因。
+
+点击“？”获取更多信息。</value>
+  </data>
+  <data name="WarnBufferStuckUnlockTitle" xml:space="preserve">
+    <value>解锁缓冲区</value>
+  </data>
+  <data name="ProblemConnectingText" xml:space="preserve">
+    <value>连接雕刻机时出错。
+如果您需要帮助，请单击“？”按钮。</value>
+  </data>
+  <data name="ProblemConnectingTitle" xml:space="preserve">
+    <value>连接有问题吗？</value>
+  </data>
+  <data name="BoxMachineSizeOutOfRangeText" xml:space="preserve">
+    <value>雕刻机有一些配置参数超出了范围。请检查机器配置（菜单“Grbl”，“Grbl配置”）参数130和131。</value>
+  </data>
+  <data name="BoxMachineSizeOutOfRangeTitle" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="PreviewChangesRequiresRestart" xml:space="preserve">
+    <value>需要重新启动才能应用预览更改。现在重新启动？</value>
+  </data>
+  <data name="IconsChangesRequiresRestart" xml:space="preserve">
+    <value>需要重新启动才能应用图标更改。现在重新启动？</value>
+  </data>
+  <data name="MdiIconCaption" xml:space="preserve">
+    <value>MDI图标代码</value>
+  </data>
+  <data name="DBOIssueSuggestGDI" xml:space="preserve">
+    <value>您的计算机似乎不支持软件渲染。
+您想重新启动LaserGRBL并切换到传统模式吗？</value>
+  </data>
+  <data name="FBOIssueSuggestDBO" xml:space="preserve">
+    <value>您的计算机似乎不支持硬件加速。
+您想重新启动LaserGRBL并切换到软件渲染吗？</value>
+  </data>
+  <data name="AlreadyLoading" xml:space="preserve">
+    <value>文件已在加载中，请稍候</value>
+  </data>
+  <data name="ClearDrawing" xml:space="preserve">
+    <value>清除绘图</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>加载中</value>
+  </data>
+  <data name="PrepareDrawing" xml:space="preserve">
+    <value>准备画...</value>
+  </data>
+  <data name="TipsBasicUsage" xml:space="preserve">
+    <value>基本用法</value>
+  </data>
+  <data name="TipsJog" xml:space="preserve">
+    <value>JOG：双击任意点（或双击）</value>
+  </data>
+  <data name="TipsKeyboardShortcuts" xml:space="preserve">
+    <value>键盘快捷键</value>
+  </data>
+  <data name="TipsPan" xml:space="preserve">
+    <value>PAN：点击和拖动（或触摸和拖动）</value>
+  </data>
+  <data name="TipsZoom" xml:space="preserve">
+    <value>ZOOM：使用鼠标滚轮（或两指手势）</value>
+  </data>
+  <data name="TipsZoomAuto" xml:space="preserve">
+    <value>自动缩放（100%）</value>
+  </data>
+  <data name="TipsZoomIn" xml:space="preserve">
+    <value>放大（+10%）</value>
+  </data>
+  <data name="TipsZoomOut" xml:space="preserve">
+    <value>缩小（-10%）</value>
   </data>
 </root>

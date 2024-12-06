@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="TpPreview.Text" xml:space="preserve">
     <value>预览</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtFlipV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
@@ -391,7 +391,7 @@
     <value>矢量化！选项</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
-    <value>祛斑</value>
+    <value>斑点清除</value>
   </data>
   <data name="label24.Text" xml:space="preserve">
     <value>优化</value>
@@ -459,7 +459,6 @@
   <data name="GbLineToLineOptions.Text" xml:space="preserve">
     <value>线到线选项</value>
   </data>
-
   <data name="CbLinePreview.Text" xml:space="preserve">
     <value>预览</value>
   </data>
@@ -589,5 +588,117 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>输入光栅图像</value>
+    <comment>raster = un model dreptunghiular de linii de scanare paralele, urmate de laser</comment>
+  </data>
+  <data name="TpOriginal.Text" xml:space="preserve">
+    <value>原始图片</value>
+  </data>
+  <data name="BtnOutliner.ToolTip" xml:space="preserve">
+    <value>轮廓图像</value>
+  </data>
+  <data name="BtnFill.ToolTip" xml:space="preserve">
+    <value>洪水填满</value>
+  </data>
+  <data name="BtnAutoTrim.ToolTip" xml:space="preserve">
+    <value>自动修剪图像</value>
+  </data>
+  <data name="TbPassthroughInfo.Text" xml:space="preserve">
+    <value>直通模式使图像保持完整，无需LaserGRBL进行任何处理。图像将根据文件信息中包含的大小和DPI分辨率逐行水平雕刻。</value>
+  </data>
+  <data name="GbPassthrough.Text" xml:space="preserve">
+    <value>通道选项</value>
+  </data>
+  <data name="CbResize.ToolTip" xml:space="preserve">
+    <value>控制调整大小模式（平滑或锐利）</value>
+  </data>
+  <data name="CbMode.ToolTip" xml:space="preserve">
+    <value>选择颜色转换公式</value>
+  </data>
+  <data name="CbThreshold.ToolTip" xml:space="preserve">
+    <value>应用阈值滤波</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>线阈值</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>角阈值</value>
+  </data>
+  <data name="TBLineThreshold.ToolTip" xml:space="preserve">
+    <value>如果样条距离由其端点定义的直线的距离不超过这个距离，则输出一条直线。</value>
+  </data>
+  <data name="TBCornerThreshold.ToolTip" xml:space="preserve">
+    <value>角度：如果一个像素，它的前身和后继像素相交的角度小于这个角度，它就是一个角。</value>
+  </data>
+  <data name="GbCenterlineOptions.Text" xml:space="preserve">
+    <value>中心线的选项</value>
+  </data>
+  <data name="BtnAdaptiveQualityInfo.ToolTip" xml:space="preserve">
+    <value>增加/减少矢量化质量成比例的图像输出大小。</value>
+  </data>
+  <data name="LAdaptiveQuality.Text" xml:space="preserve">
+    <value>自适应质量</value>
+  </data>
+  <data name="UDSpotRemoval.ToolTip" xml:space="preserve">
+    <value>删除小细节</value>
+  </data>
+  <data name="UDOptimize.ToolTip" xml:space="preserve">
+    <value>轮廓优化（减少段数）</value>
+  </data>
+  <data name="UDSmoothing.ToolTip" xml:space="preserve">
+    <value>光滑的边缘</value>
+  </data>
+  <data name="CbFillingDirection.ToolTip" xml:space="preserve">
+    <value>启用路径填充/设置填充方向</value>
+  </data>
+  <data name="UDFillingQuality.ToolTip" xml:space="preserve">
+    <value>填充质量（线/mm）</value>
+  </data>
+  <data name="UDDownSample.ToolTip" xml:space="preserve">
+    <value>缩小原始图像[适用于高分辨率图像]</value>
+  </data>
+  <data name="lOptimizeFast.Text" xml:space="preserve">
+    <value>优化路径</value>
+  </data>
+  <data name="BtnFillingQualityInfo.ToolTip" xml:space="preserve">
+    <value>如果密度（分辨率）与电机步数不符，则可能会出现雕刻错误！
+单击以计算可靠的分辨率…</value>
+  </data>
+  <data name="CbDirections.ToolTip" xml:space="preserve">
+    <value>雕刻方向</value>
+  </data>
+  <data name="UDQuality.ToolTip" xml:space="preserve">
+    <value>设置图像分辨率（线/mm）</value>
+  </data>
+  <data name="CbLinePreview.ToolTip" xml:space="preserve">
+    <value>显示预览</value>
+  </data>
+  <data name="RbNoProcessing.Text" xml:space="preserve">
+    <value>直通</value>
+  </data>
+  <data name="RbNoProcessing.ToolTip" xml:space="preserve">
+    <value>无处理（直通）</value>
+  </data>
+  <data name="RbCenterline.Text" xml:space="preserve">
+    <value>中心线</value>
+    <comment>mijlocul formei desenului</comment>
+  </data>
+  <data name="RbCenterline.ToolTip" xml:space="preserve">
+    <value>中心线向量化</value>
+    <comment>mijlocul formei desenului</comment>
+  </data>
+  <data name="RbDithering.ToolTip" xml:space="preserve">
+    <value>生成灰度模拟BW图像</value>
+  </data>
+  <data name="RbVectorize.ToolTip" xml:space="preserve">
+    <value>产生矢量路径</value>
+  </data>
+  <data name="RbLineToLineTracing.ToolTip" xml:space="preserve">
+    <value>生成灰度图像</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>参数</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>转换工具</value>
   </data>
 </root>

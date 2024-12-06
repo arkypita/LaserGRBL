@@ -122,7 +122,7 @@
     <value>53, 12</value>
   </data>
   <data name="LblBorderTracing.Text" xml:space="preserve">
-    <value>边界速度</value>
+    <value>边框速度</value>
   </data>
   <data name="LblBorderTracingmm.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 5</value>
@@ -267,5 +267,79 @@
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="LblBorderTracingmm.Text" xml:space="preserve">
+    <value>mm/min</value>
+  </data>
+  <data name="BtnPSHelper.ToolTip" xml:space="preserve">
+    <value>打开激光与材料数据库</value>
+  </data>
+  <data name="LblMinPerc.Text" xml:space="preserve">
+    <value>0%</value>
+  </data>
+  <data name="LblMaxPerc.Text" xml:space="preserve">
+    <value>100%</value>
+  </data>
+  <data name="labelFilter.Text" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="BtnColorFilter.ToolTip" xml:space="preserve">
+    <value>选择要过滤图像的颜色
+
+点击查看更多信息…</value>
+  </data>
+  <data name="gbFilter.Text" xml:space="preserve">
+    <value>过滤器</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>跑步速度</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="CBLaserOFF.Items" xml:space="preserve">
+    <value>M5</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>尺寸</value>
+  </data>
+  <data name="CBLaserON.Items" xml:space="preserve">
+    <value>M3</value>
+  </data>
+  <data name="LblLinearFillingmm.Text" xml:space="preserve">
+    <value>mm/min</value>
+  </data>
+  <data name="LblLinearFilling.Text" xml:space="preserve">
+    <value>填充速度</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>图像大小和位置[mm]</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>W</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>mm/min</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>速度</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>激光器选项</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>偏离量</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="CBLaserON.Items1" xml:space="preserve">
+    <value>M4</value>
+  </data>
+  <data name="GbSize.Text" xml:space="preserve">
+    <value>图像大小和位置[mm]</value>
   </data>
 </root>

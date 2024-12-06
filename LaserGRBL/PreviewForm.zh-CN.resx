@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -769,5 +769,8 @@
   </data>
   <data name="editButtonToolStripMenuItem.Text" xml:space="preserve">
     <value>编辑按钮</value>
+  </data>
+  <data name="MnLockButton.Text" xml:space="preserve">
+    <value>锁定位置（单击以重新排序）</value>
   </data>
 </root>

@@ -147,7 +147,7 @@
     <value>行:</value>
   </data>
   <data name="TTLBuffer.Text" xml:space="preserve">
-    <value>缓冲</value>
+    <value>缓冲区</value>
   </data>
   <data name="TTLEstimated.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 21</value>
@@ -840,7 +840,7 @@
     <value>124, 22</value>
   </data>
   <data name="chinexeToolStripMenuItem.Text" xml:space="preserve">
-    <value>中文</value>
+    <value>中文(简体)</value>
   </data>
   <data name="slovakianToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -984,7 +984,7 @@
     <value>148, 22</value>
   </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>网站</value>
+    <value>LaserGrbl常见问题</value>
   </data>
   <data name="MMn.Size" type="System.Drawing.Size, System.Drawing">
     <value>1141, 25</value>
@@ -999,9 +999,220 @@
     <value>斯洛伐克文</value>
   </data>
   <data name="czechToolStripMenuItem.Text" xml:space="preserve">
-    <value>捷克文</value>
+    <value>捷克语</value>
   </data>
   <data name="questionMarkToolStripMenuItem.Text" xml:space="preserve">
     <value>?</value>
+  </data>
+  <data name="TTTLines.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TTlaserLife.Text" xml:space="preserve">
+    <value>0.0h</value>
+  </data>
+  <data name="TTlaserLife.ToolTipText" xml:space="preserve">
+    <value>激光总使用量。点击这里了解更多信息。</value>
+  </data>
+  <data name="TTOvS.Text" xml:space="preserve">
+    <value>S: 100%</value>
+  </data>
+  <data name="TTOvG1.Text" xml:space="preserve">
+    <value>G1: 100%</value>
+  </data>
+  <data name="TTOvG0.Text" xml:space="preserve">
+    <value>G0: 100%</value>
+  </data>
+  <data name="MnWiFiDiscovery.Text" xml:space="preserve">
+    <value>Wi-Fi探索</value>
+  </data>
+  <data name="MnMaterialDB.Text" xml:space="preserve">
+    <value>材料数据库</value>
+  </data>
+  <data name="laserUsageStatsToolStripMenuItem.Text" xml:space="preserve">
+    <value>激光寿命</value>
+  </data>
+  <data name="MnGrbl.Text" xml:space="preserve">
+    <value>&amp;Grbl</value>
+  </data>
+  <data name="MnAdvancedSave.Text" xml:space="preserve">
+    <value>&amp;保存（高级选项）</value>
+  </data>
+  <data name="MnSaveProject.Text" xml:space="preserve">
+    <value>保存项目</value>
+  </data>
+  <data name="MnRunMulti.Text" xml:space="preserve">
+    <value>S&amp;yncro Start/Hold/Resume</value>
+  </data>
+  <data name="MnPowerVsSpeed.Text" xml:space="preserve">
+    <value>功率与速度测试</value>
+  </data>
+  <data name="MnCuttingTest.Text" xml:space="preserve">
+    <value>切割测试</value>
+  </data>
+  <data name="MnAccuracyTest.Text" xml:space="preserve">
+    <value>精度测试</value>
+  </data>
+  <data name="shakeTestToolStripMenuItem.Text" xml:space="preserve">
+    <value>震动测试</value>
+  </data>
+  <data name="MnGenerate.Text" xml:space="preserve">
+    <value>生成</value>
+  </data>
+  <data name="MNEsp8266.Text" xml:space="preserve">
+    <value>&amp;ESP8266</value>
+  </data>
+  <data name="cadStyleToolStripMenuItem.Text" xml:space="preserve">
+    <value>CAD样式</value>
+  </data>
+  <data name="cadDarkToolStripMenuItem.Text" xml:space="preserve">
+    <value>CAD深色</value>
+  </data>
+  <data name="darkToolStripMenuItem.Text" xml:space="preserve">
+    <value>暗黑</value>
+  </data>
+  <data name="hackerToolStripMenuItem.Text" xml:space="preserve">
+    <value>纯黑</value>
+  </data>
+  <data name="nightyToolStripMenuItem.Text" xml:space="preserve">
+    <value>灰黑</value>
+    <comment>Was ist das? Worauf bezieht sich das? Typo im Originaltext?</comment>
+  </data>
+  <data name="autoSizeToolStripMenuItem.Text" xml:space="preserve">
+    <value>自动缩放（100%）</value>
+  </data>
+  <data name="zoomInToolStripMenuItem.Text" xml:space="preserve">
+    <value>放大（+10%）</value>
+  </data>
+  <data name="zoomOutToolStripMenuItem.Text" xml:space="preserve">
+    <value>缩小（-10%）</value>
+  </data>
+  <data name="showLaserOffMovementsToolStripMenuItem.Text" xml:space="preserve">
+    <value>显示激光关闭动作</value>
+  </data>
+  <data name="showExecutedCommandsToolStripMenuItem.Text" xml:space="preserve">
+    <value>显示已执行的命令</value>
+  </data>
+  <data name="showBoundingBoxToolStripMenuItem.Text" xml:space="preserve">
+    <value>显示边界框</value>
+  </data>
+  <data name="crossCursorToolStripMenuItem.Text" xml:space="preserve">
+    <value>显示交叉光标</value>
+  </data>
+  <data name="drawingAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>绘图区</value>
+  </data>
+  <data name="movingAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>移动区域</value>
+  </data>
+  <data name="autosizeModeToolStripMenuItem.Text" xml:space="preserve">
+    <value>自动调整大小模式</value>
+  </data>
+  <data name="pxToolStripMenuItem1.Text" xml:space="preserve">
+    <value>1px</value>
+  </data>
+  <data name="pxToolStripMenuItem2.Text" xml:space="preserve">
+    <value>2px</value>
+  </data>
+  <data name="pxToolStripMenuItem3.Text" xml:space="preserve">
+    <value>3px</value>
+  </data>
+  <data name="pxToolStripMenuItem4.Text" xml:space="preserve">
+    <value>4px</value>
+  </data>
+  <data name="pxToolStripMenuItem5.Text" xml:space="preserve">
+    <value>5px</value>
+  </data>
+  <data name="lineSizeToolStripMenuItem.Text" xml:space="preserve">
+    <value>线尺寸</value>
+  </data>
+  <data name="showDiagnosticDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>显示诊断数据</value>
+  </data>
+  <data name="previewToolStripMenuItem.Text" xml:space="preserve">
+    <value>预览</value>
+  </data>
+  <data name="traditionalChineseToolStripMenuItem.Text" xml:space="preserve">
+    <value>中文(繁体)</value>
+  </data>
+  <data name="polishToolStripMenuItem.Text" xml:space="preserve">
+    <value>波兰语</value>
+  </data>
+  <data name="greekToolStripMenuItem.Text" xml:space="preserve">
+    <value>希腊语</value>
+  </data>
+  <data name="turkishToolStripMenuItem.Text" xml:space="preserve">
+    <value>土耳其</value>
+  </data>
+  <data name="romanianToolStripMenuItem.Text" xml:space="preserve">
+    <value>罗马尼亚语</value>
+  </data>
+  <data name="dutchToolStripMenuItem.Text" xml:space="preserve">
+    <value>荷兰语</value>
+  </data>
+  <data name="ukrainianToolStripMenuItem.Text" xml:space="preserve">
+    <value>乌克兰语</value>
+  </data>
+  <data name="japaneseToolStripMenuItem.Text" xml:space="preserve">
+    <value>日语</value>
+  </data>
+  <data name="installCH340DriverToolStripMenuItem.Text" xml:space="preserve">
+    <value>安装CH340驱动程序</value>
+  </data>
+  <data name="flashGrblFirmwareToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Flash Grbl固件</value>
+  </data>
+  <data name="configurationWizardToolStripMenuItem.Text" xml:space="preserve">
+    <value>配置和向导</value>
+  </data>
+  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;工具</value>
+  </data>
+  <data name="orturSupportGroupToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ortur用户组</value>
+  </data>
+  <data name="orturSupportAndFeedbackToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ortur支持和反馈</value>
+  </data>
+  <data name="orturWebsiteToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ortur网站</value>
+  </data>
+  <data name="youtubeChannelToolStripMenuItem.Text" xml:space="preserve">
+    <value>Youtube频道</value>
+  </data>
+  <data name="manualsDownloadToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ortur 手动</value>
+  </data>
+  <data name="firmwareToolStripMenuItem.Text" xml:space="preserve">
+    <value>固件Ortur</value>
+  </data>
+  <data name="MnConfigureOrturWiFi.Text" xml:space="preserve">
+    <value>配置WiFi</value>
+  </data>
+  <data name="MnOrtur.Text" xml:space="preserve">
+    <value>Ortur</value>
+  </data>
+  <data name="MnNotifyNewVersion.Text" xml:space="preserve">
+    <value>启用自动更新</value>
+  </data>
+  <data name="MnNotifyMinorVersion.Text" xml:space="preserve">
+    <value>通知细微的变化</value>
+  </data>
+  <data name="MnNotifyPreRelease.Text" xml:space="preserve">
+    <value>通知预发布</value>
+  </data>
+  <data name="MnCheckNow.Text" xml:space="preserve">
+    <value>现在检查！</value>
+  </data>
+  <data name="MnAutoUpdate.Text" xml:space="preserve">
+    <value>自动更新</value>
+  </data>
+  <data name="activateExtendedLogToolStripMenuItem.Text" xml:space="preserve">
+    <value>激活扩展日志</value>
+  </data>
+  <data name="facebookCommunityToolStripMenuItem.Text" xml:space="preserve">
+    <value>LaserGrbl社区</value>
+  </data>
+  <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
+    <value>许可证</value>
   </data>
 </root>

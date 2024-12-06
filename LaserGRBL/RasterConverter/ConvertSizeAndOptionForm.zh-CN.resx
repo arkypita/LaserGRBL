@@ -164,6 +164,7 @@
   </data>
   <data name="BtnDPI.ToolTip" xml:space="preserve">
     <value>从 Exif 信息加载 DPI</value>
+    <comment>DPI = dots per inch (numarul de puncte dintr-o line pe 1 inch = 2.54cm) or DPC = dtos per centimetre</comment>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 64</value>
@@ -275,5 +276,45 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>目标图像</value>
+  </data>
+  <data name="BtnUnlockProportion.ToolTip" xml:space="preserve">
+    <value>锁定/解锁图像比例</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>W</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>DPI</value>
+    <comment>DPI = dots per inch (numarul de puncte dintr-o line pe 1 inch = 2.54cm) or DPC = dtos per centimetre</comment>
+  </data>
+  <data name="BtnCenter.ToolTip" xml:space="preserve">
+    <value>将图像垂直和水平居中（中心为零）</value>
+  </data>
+  <data name="LblBorderTracingmm.Text" xml:space="preserve">
+    <value>mm/min</value>
+  </data>
+  <data name="LblLinearFillingmm.Text" xml:space="preserve">
+    <value>mm/min</value>
+  </data>
+  <data name="BtnPSHelper.ToolTip" xml:space="preserve">
+    <value>打开激光与材料数据库</value>
+  </data>
+  <data name="LblLaserMode.Text" xml:space="preserve">
+    <value>激光模式</value>
+  </data>
+  <data name="LblMinPerc.Text" xml:space="preserve">
+    <value>0%</value>
+  </data>
+  <data name="LblMaxPerc.Text" xml:space="preserve">
+    <value>100%</value>
   </data>
 </root>

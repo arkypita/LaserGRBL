@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -199,7 +199,7 @@
   </data>
   <data name="CBSupportPWM.Text" xml:space="preserve">
     <value>支持PWM</value>
-    </data>
+  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>521, 24</value>
   </data>
@@ -272,5 +272,305 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>设置</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>流式传输模式：[默认缓冲]
+
+缓冲：优化命令流填充grbl接收缓冲区[推荐]
+
+同步：等待每个命令执行后再发送下一个命令[慢但更安全]
+
+- RepeatOnError：与Synchronous相同，但如果检测到错误则重复命令[实验]</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>线程模式：[默认快速]
+超快、快、静、慢。
+此设置会影响设备状态请求的发送速</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>问题检测</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>LaserGRBL可以检测问题并警告用户提供如何解决问题的信息。
+
+如果禁用，所有问题将在没有警告的情况下静默管理。</value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>软复位[Ctrl-X]</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>硬复位[DTR+RTS]</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>如果使能，当打开与grbl的连接时，LaserGRBL发送一个硬复位。[失去位置！］</value>
+  </data>
+  <data name="CbQueryDI.Text" xml:space="preserve">
+    <value>连接时查询$I</value>
+  </data>
+  <data name="label46.Text" xml:space="preserve">
+    <value>在启用的LaserGRBL中，发送$I命令并检测来自机器的一些信息（即机器rx缓冲区大小）。
+请不要禁用此功能。</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>高解析度的填充</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>在LaserGRBL中可用的最大分辨率是20线/毫米（约500dpi），这对大多数用户来说足够高了。
+
+如果您需要更高的分辨率，您可以启用“HiRes”并删除此限制。注意：LaserGRBL将需要更多的资源！</value>
+  </data>
+  <data name="CbDisableSkip.Text" xml:space="preserve">
+    <value>禁用G0快速跳过</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>默认情况下，LaserGRBL使用G0 -快速移动-跳过白色部分的工作。这加快了雕刻过程，但它可能导致定位不准确，结果令人失望。通常可以通过在grbl配置中正确设置最大加速度和速度值（$ 120,121,122和$ 110,111,112）来改善结果。
+
+如果禁用此功能，LaserGRBL将以相同的工作速度使用G1线性运动，其结果是所有雕刻过程都以相同的速度完成。这将减缓过程，但可以显著改善其他方法失败的结果。</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>LaserGRBL会警告你，如果你要创建一个比你的雕刻工作空间更大的工作。
+
+如果您不需要此安全控制，请设置此标志。</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>光栅导入</value>
+  </data>
+  <data name="label43.Text" xml:space="preserve">
+    <value>从4.6.1版本开始，LaserGRBL使用更好的贝塞尔曲线近似算法，能够返回更准确的结果。
+如果您更喜欢使用旧算法，请禁用此选项。</value>
+  </data>
+  <data name="CbSmartBezier.Text" xml:space="preserve">
+    <value>智能贝塞尔曲线</value>
+    <comment>CURBA BEZIER este o curbă matematică care este adesea folosită în grafica pe calculator pentru a modela forme fluide și în animație.</comment>
+  </data>
+  <data name="TpVectorImport.Text" xml:space="preserve">
+    <value>矢量导入</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>按下点动按钮时没有“连续点动”，LaserGRBL以固定的速度和运动发送点动请求；并且慢跑被完全执行到最终位置。
+如果您启用“连续慢跑”，慢跑将在鼠标按下时发送，在鼠标抬起时中止/中断，因此您可以以非常舒适的方式进行近似定位。
+注：“连续点动”仅适用于Grbl v1.1或更高版本，并且要求在Grbl配置中正确配置表大小（菜单“Grbl”-&gt;“Grbl配置”$130、$131、$132）</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>连续慢跑</value>
+  </data>
+  <data name="CbClickNJog.Text" xml:space="preserve">
+    <value>点击‘n ’慢跑</value>
+    <comment>Jogging = se referă la pornirea și oprirea repetată a unui motor în rafale scurte pentru a efectua o anumită mișcare</comment>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>启用“点击n点动”后，双击预览表面将点动到点击位置。</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Jog控制</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>关闭时间：在此冷却时间之后，LaserGRBL将发送恢复命令以继续雕刻作业。</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>如果以最高功率长时间运行，一些激光二极管可能会发热很多。为了防止二极管过热并延长激光器寿命，您可以添加一些自动冷却循环，在植入过程中插入一些暂停。
+如果启用了自动冷却，LaserGRBL将根据开关定时配置发送自动“进给保持”和“作业恢复”。</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>警告：此功能仅适用于启用了“激光模式”的grbl版本&gt; v1.1。
+
+如果您使用自动冷却与旧的grbl版本（或禁用激光模式），激光将不会在暂停期间关闭
+
+在你的工作上烧个洞！</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBL将在开始任何作业之前附加此GCode。
+您可以自定义此代码，例如添加M8以打开风扇。
+如果你需要按下一些定位键，你可以在这里使用自定义按钮的相同语法
+将执行与特定作业相关的操作。</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>页眉</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>页脚</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>重复次数之间的G代码</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBL将在任何作业结束时将此GCode排队。
+可用于在初始状态下推回雕刻机，如回到零位
+或发送M9关闭风扇等。
+在这里，您可以使用自定义按钮的相同语法。</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>当执行多次扫描时，LaserGRBL将在每次扫描之间推送此GCode。
+可用于向下移动Z以执行更深的切割。
+在这里，您可以使用自定义按钮的相同语法。</value>
+  </data>
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>在这里，您可以为成功事件设置另一个声音，例如当任务完成时。
+
+选中以启用。</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>在这里你可以设置另一个警告声音。
+
+这通常是由错误的GCode命令触发的，但您的机器可以继续运行。
+
+选中以启用。</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>警告音</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>更改</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>声音文件</value>
+  </data>
+  <data name="warningSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\warning.wav</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>错误音</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>更改</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>声音文件</value>
+  </data>
+  <data name="fatalSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\fatal.wav</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>连接的声音</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>更改</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>声音文件</value>
+  </data>
+  <data name="connectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\connect.wav</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>断开连接的声音</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>更改</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>声音文件</value>
+  </data>
+  <data name="disconnectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\disconnect.wav</value>
+  </data>
+  <data name="LblSuccessSound.Text" xml:space="preserve">
+    <value>终止工作声音</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>更改</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>声音文件</value>
+  </data>
+  <data name="successSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\success.wav</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>在这里，您可以设置成功连接的声音。
+选中以启用。</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>在这里，您可以设置断开连接的声音。
+适用于某些WiFi连接。
+选中以启用。</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>在这里，您可以为致命错误设置错误声音。
+这意味着您的作业很可能已停止，LaserGRBL无法继续操作。
+选中以启用。</value>
+  </data>
+  <data name="label44.Text" xml:space="preserve">
+    <value>如果工作时间减少，不要通知</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>电报通知</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>个人代码</value>
+  </data>
+  <data name="BtnTestNotification.Text" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="label45.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label42.Text" xml:space="preserve">
+    <value>如果你有电报搜索@LaserGRBL bot
+
+获取您的个人代码并在这里编写！</value>
+  </data>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="CbDisableSafetyCD.Text" xml:space="preserve">
+    <value>禁用安全倒计时</value>
+  </data>
+  <data name="label47.Text" xml:space="preserve">
+    <value>此选项将删除安全提醒倒计时，以记住佩戴安全护目镜。
+我建议不要禁用此倒计时，这样你就有5秒的时间检查一切是否正常。</value>
+  </data>
+  <data name="CbQuietSafetyCB.Text" xml:space="preserve">
+    <value>安静的倒计时</value>
+  </data>
+  <data name="label48.Text" xml:space="preserve">
+    <value>在安全倒计时期间禁用“嘟嘟”声。</value>
+  </data>
+  <data name="CbLegacyIcons.Text" xml:space="preserve">
+    <value>传统图标</value>
+  </data>
+  <data name="label49.Text" xml:space="preserve">
+    <value>使用老式LaserGRBL图标[怀旧模式：开启]</value>
+  </data>
+  <data name="label50.Text" xml:space="preserve">
+    <value>渲染模式
+-自动：让LaserGRBL为您选择最佳配置（更喜欢硬件加速）。
+-硬件加速：使用OpenGL进行硬件加速（如果支持）
+-软件渲染：在软件渲染中使用OpenGL（如果硬件加速有问题，请选择此选项）
+-传统：禁用OpenGL并使用旧的预览表单（在旧计算机上选择此选项）</value>
+  </data>
+  <data name="TpOptions.Text" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="SoundBrowserDialog.Filter" xml:space="preserve">
+    <value>波形音频文件|*.wav</value>
+  </data>
+  <data name="CbLegacyPreview.Text" xml:space="preserve">
+    <value>传统视图</value>
+  </data>
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+    <value>Ortur用户：Ortur固件（所有版本不超过137）在加工恢复上有一个错误，阻止正确使用自动冷却功能。
+在新固件发布之前，请不要使用Ortur雕刻机的自动冷却功能。</value>
   </data>
 </root>
