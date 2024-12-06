@@ -398,7 +398,7 @@ namespace LaserGRBL
 		{
 			try
 			{
-				System.Management.ManagementObjectSearcher objSearcher = new System.Management.ManagementObjectSearcher("SELECT * FROM Win32_PnPSignedDriver WHERE DeviceName LIKE '%CH340%' OR Manufacturer LIKE '%wch.cn%'");
+				System.Management.ManagementObjectSearcher objSearcher = new System.Management.ManagementObjectSearcher("SELECT * FROM Win32_PnPSignedDriver WHERE Description LIKE '%CH340%' OR Caption LIKE '%CH340%' OR DriverProviderName LIKE '%wch.cn%' OR Manufacturer LIKE '%wch.cn%'");
 
 				System.Management.ManagementObjectCollection objCollection = objSearcher.Get();
 
@@ -406,12 +406,20 @@ namespace LaserGRBL
 				{
 					try
 					{
-						if (obj["DeviceName"].ToString().ToLower().Contains("ch340") || obj["Manufacturer"].ToString().ToLower().Contains("wch.cn"))
+						string devname = obj["Caption"] as string;
+						if (string.IsNullOrWhiteSpace(devname)) devname = obj["Description"] as string;
+							
+						string manu = obj["Manufacturer"] as string;
+						if (string.IsNullOrWhiteSpace(manu)) manu = obj["DriverProviderName"] as string;
+
+						if ((devname != null && devname.ToLower().Contains("ch340")) || (manu != null && manu.ToLower().Contains("wch.cn")))
 						{
 							string date = obj["DriverDate"] as string;
 							if (date != null && date.Length >= 8) date = date.Substring(0, 8);
 
-							CH340Version = String.Format("Device='{0}' Manufacturer='{1}' Version='{2}' Date='{3}'", obj["DeviceName"], obj["Manufacturer"], obj["DriverVersion"], date);
+							string version = obj["DriverVersion"] as string;
+
+							CH340Version = String.Format("Device='{0}' Manufacturer='{1}' Version='{2}' Date='{3}'", devname, manu, version, date);
 							break;
 						}
 					}
@@ -2809,12 +2817,14 @@ namespace LaserGRBL
 				}
 				catch (System.IO.IOException ex)
 				{
-					if (!FixCH340)
+					FixCH340_exception++;
+
+					if (!FixCH340 && FixCH340_exception > 5)
 					{
 						FixCH340 = true;    //self fix for CH340, use HasIncomingData to check if there is data, this reduce the number of exceptions
-						Logger.LogMessage("FixCH340", $"Detected CH340 driver issue {CH340Version}");
+						Logger.LogMessage("FixCH340", $"Detected CH340 driver: {CH340Version}");
 					}
-					FixCH340_exception++;
+
 					if (FixCH340_exception % 10 == 0) System.Threading.Thread.Sleep(1);
 				}
 				catch
