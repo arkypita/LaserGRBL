@@ -1446,6 +1446,9 @@ namespace LaserGRBL
 		{
 			try
 			{
+				FixCH340 = false;
+				FixCH340_exception = FixCH340_goodread = 0;
+
 				mAutoBufferSize = DEFAULT_BUFFER_SIZE; //reset to default buffer size
 				SetStatus(MacStatus.Connecting);
 				connectStart = Tools.HiResTimer.TotalMilliseconds;
@@ -2746,11 +2749,14 @@ namespace LaserGRBL
 			}
 		}
 
-		int good, ioex;
+
+		bool FixCH340 = false;
+		UInt32 FixCH340_goodread = 0;
+		UInt32 FixCH340_exception = 0;
 		protected static char[] trimarray = new char[] { '\r', '\n', ' ' };
 		private string WaitComLineOrDisconnect()
 		{
-			if (!com.IsOpen || !HasIncomingData()) return null;
+			if (FixCH340 && (!com.IsOpen || !HasIncomingData())) return null;
 
 			string rv = null;
 
@@ -2764,13 +2770,14 @@ namespace LaserGRBL
 						tmp = tmp.TrimEnd(trimarray); //rimuovi ritorno a capo
 						tmp = tmp.Trim(); //rimuovi spazi iniziali e finali
 						if (tmp.Length > 0) rv = tmp;
-						good++;
+						FixCH340_goodread++;
 					}
 				}
 				catch (System.IO.IOException ex)
 				{
-					ioex++;
-					if (ioex % 10 == 0) System.Threading.Thread.Sleep(1);
+					FixCH340 = true;    //self fix for CH340, use HasIncomingData to check if there is data, this reduce the number of exceptions
+					FixCH340_exception++;
+					if (FixCH340_exception % 10 == 0) System.Threading.Thread.Sleep(1);
 				}
 				catch
 				{
