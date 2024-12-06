@@ -856,4 +856,28 @@
   <data name="japaneseToolStripMenuItem.Text" xml:space="preserve">
     <value>Japones</value>
   </data>
+  <data name="toolStripMenuItem12.Text" xml:space="preserve">
+    <value>Grupo de Usuários Longer</value>
+  </data>
+  <data name="toolStripMenuItem13.Text" xml:space="preserve">
+    <value>Suporte e Feedback Longer</value>
+  </data>
+  <data name="toolStripMenuItem14.Text" xml:space="preserve">
+    <value>Site Longer</value>
+  </data>
+  <data name="toolStripMenuItem15.Text" xml:space="preserve">
+    <value>Canal do YouTube</value>
+  </data>
+  <data name="toolStripMenuItem16.Text" xml:space="preserve">
+    <value>Manuais do Longer</value>
+  </data>
+  <data name="toolStripMenuItem17.Text" xml:space="preserve">
+    <value>Firmware do Longer</value>
+  </data>
+  <data name="MnConfigureLongerWiFi.Text" xml:space="preserve">
+    <value>Configurar WiFi</value>
+  </data>
+  <data name="MnLonger.Text" xml:space="preserve">
+    <value>Longer</value>
+  </data>
 </root>
