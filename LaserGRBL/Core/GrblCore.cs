@@ -36,6 +36,8 @@ namespace LaserGRBL
 		public static string GCODE_STD_PASSES = ";(Uncomment if you want to sink Z axis)\r\n;G91 (use relative coordinates)\r\n;G0 Z-1 (sinks the Z axis, 1mm)\r\n;G90 (use absolute coordinates)";
 		public static string GCODE_STD_FOOTER = "G0 X0 Y0 Z0 (move back to origin)";
 
+		private static string CH340Version;
+
 		[Serializable]
 		public class ThreadingMode
 		{
@@ -336,6 +338,11 @@ namespace LaserGRBL
         public RetainedSetting<float> PreviewLineSize { get; } = new RetainedSetting<float>("PreviewLineSize", 1f);
         public RetainedSetting<bool> AutoSizeOnDrawing { get; } = new RetainedSetting<bool>("AutoSizeOnDrawing", true);
 
+		static GrblCore() //static constructor for static initialization
+		{
+			System.Threading.ThreadPool.QueueUserWorkItem(GetCH340Version);
+		}
+
         public GrblCore(System.Windows.Forms.Control syncroObject, PreviewForm cbform, JogForm jogform)
 		{
 			if (Type != Firmware.Grbl) Logger.LogMessage("Program", "Load {0} core", Type);
@@ -385,6 +392,33 @@ namespace LaserGRBL
 
 			if (GrblVersion != null)
 				CSVD.LoadAppropriateCSV(GrblVersion); //load setting for last known version
+		}
+
+		public static void GetCH340Version(Object stateInfo)
+		{
+			try
+			{
+				System.Management.ManagementObjectSearcher objSearcher = new System.Management.ManagementObjectSearcher("SELECT * FROM Win32_PnPSignedDriver WHERE DeviceName LIKE '%CH340%' OR Manufacturer LIKE '%wch.cn%'");
+
+				System.Management.ManagementObjectCollection objCollection = objSearcher.Get();
+
+				foreach (System.Management.ManagementObject obj in objCollection)
+				{
+					try
+					{
+						if (obj["DeviceName"].ToString().ToLower().Contains("ch340") || obj["Manufacturer"].ToString().ToLower().Contains("wch.cn"))
+						{
+							string date = obj["DriverDate"] as string;
+							if (date != null && date.Length >= 8) date = date.Substring(0, 8);
+
+							CH340Version = String.Format("Device='{0}' Manufacturer='{1}' Version='{2}' Date='{3}'", obj["DeviceName"], obj["Manufacturer"], obj["DriverVersion"], date);
+							break;
+						}
+					}
+					catch { }
+				}
+			}
+			catch { }
 		}
 
 		internal void HotKeyOverride(HotKeysManager.HotKey.Actions action)
@@ -2775,7 +2809,11 @@ namespace LaserGRBL
 				}
 				catch (System.IO.IOException ex)
 				{
-					FixCH340 = true;    //self fix for CH340, use HasIncomingData to check if there is data, this reduce the number of exceptions
+					if (!FixCH340)
+					{
+						FixCH340 = true;    //self fix for CH340, use HasIncomingData to check if there is data, this reduce the number of exceptions
+						Logger.LogMessage("FixCH340", $"Detected CH340 driver issue {CH340Version}");
+					}
 					FixCH340_exception++;
 					if (FixCH340_exception % 10 == 0) System.Threading.Thread.Sleep(1);
 				}
@@ -2789,6 +2827,10 @@ namespace LaserGRBL
 			return rv;
 
 		}
+
+
+		
+
 
 		private bool HasIncomingData()
 		{
