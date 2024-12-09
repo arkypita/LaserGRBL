@@ -26,6 +26,7 @@ namespace Tools
 	// sbagliata di molto. Abbiamo infatti notato su UNA macchina (portatile DELL VOSTRO 3750 - i5-2450M w7-64bit) che la funzione QPC può dare
 	// delle tempistiche incoerenti con la relativa QPF, cambiando la sua velocità anche in corso di esecuzione del programma, senza variazioni di QPF
 	//
+#if OS_WINDOWS
 	public static class HiResTimer
 	{
 
@@ -311,6 +312,29 @@ namespace Tools
 		}
 
 	}
+#else
+	// Non-Windows platforms, use generic
+	public static class HiResTimer
+	{
+		private const long NANO_IN_MILLI = 1000 * 1000;
+		private static Stopwatch watch = new Stopwatch();
+
+		static HiResTimer() //costruttore static, viene chiamato prima del primo utilizzo della classe
+		{watch.Start();}
+
+		public static long TotalMilliseconds
+		{ get { return TotalNano / NANO_IN_MILLI; } }
+
+		public static long TotalNano
+		{
+			get
+			{
+				return (long)((double)watch.ElapsedTicks / (double)Stopwatch.Frequency * 1000000000.0);
+			}
+		}
+
+	}
+#endif
 
 
 	public class Utils
