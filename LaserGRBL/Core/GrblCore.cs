@@ -119,7 +119,7 @@ namespace LaserGRBL
 				mVendorInfo = VendorInfo;
 				mVendorVersion = VendorVersion;
 				mOrtur = VendorInfo != null && (VendorInfo.Contains("Ortur") || VendorInfo.Contains("Aufero"));
-				mLonger = VendorInfo != null && (VendorInfo.Contains("Longer"));
+				mLonger = VendorInfo != null && (VendorInfo.Contains("Longer") || VendorInfo.Contains("NanoDuo"));
 				mGrblHal = IsHAL;
 			}
 
@@ -227,7 +227,7 @@ namespace LaserGRBL
 			public bool IsOrtur => mOrtur;
 			public bool IsLonger => mLonger;
 			public bool IsHAL => mGrblHal;
-			public bool IsLuckyWiFi => (IsOrtur && mVendorInfo == "Ortur Laser Master 3") || (IsLonger && mVendorInfo == "Longer Nano");
+			public bool IsLuckyWiFi => (IsOrtur && mVendorInfo == "Ortur Laser Master 3") || (IsLonger && mVendorInfo == "Longer Nano" || mVendorInfo == "NanoDuo");
 			public string MachineName => mVendorInfo;
 
 			public string VendorName

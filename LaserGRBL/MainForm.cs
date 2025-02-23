@@ -391,7 +391,7 @@ namespace LaserGRBL
 				//TTTFile.Text = System.IO.Path.GetFileName(filename);
 				TTTLines.Text = Core.LoadedFile.Count.ToString();
 				//TTTLoadedIn.Text = elapsed.ToString() + " ms";
-				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, " ,", true);
+				TTTEstimated.Text = Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Utils.TimePrecision.Second, Utils.TimePrecision.Second, " ,", true);
 			}
 		}
 
@@ -490,9 +490,9 @@ namespace LaserGRBL
 			TTTStatus.Text = GrblCore.TranslateEnum(Core.MachineStatus);
 
 			if (Core.InProgram)
-				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.ProjectedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, " ,", true);
+				TTTEstimated.Text = Utils.TimeSpanToString(Core.ProjectedTime, Utils.TimePrecision.Second, Utils.TimePrecision.Second, " ,", true);
 			else
-				TTTEstimated.Text = Tools.Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Tools.Utils.TimePrecision.Second, Tools.Utils.TimePrecision.Second, " ,", true);
+				TTTEstimated.Text = Utils.TimeSpanToString(Core.LoadedFile.EstimatedTime, Utils.TimePrecision.Second, Utils.TimePrecision.Second, " ,", true);
 
 			if (Core.InProgram)
 				TTLEstimated.Text = Strings.MainFormProjectedTime;
@@ -752,7 +752,7 @@ namespace LaserGRBL
 
 		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Tools.Utils.OpenLink(@"https://lasergrbl.com/faq/");
+			Utils.OpenLink(@"https://lasergrbl.com/faq/");
 		}
 
 		private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
@@ -833,7 +833,7 @@ namespace LaserGRBL
 
 		private void donateToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Tools.Utils.OpenLink(@"https://lasergrbl.com/donate");
+			Utils.OpenLink(@"https://lasergrbl.com/donate");
 		}
 
 
@@ -913,7 +913,7 @@ namespace LaserGRBL
 				string fname = System.IO.Path.Combine(GrblCore.ExePath, "Driver\\CH341SER.EXE");
 				System.Diagnostics.Process.Start(fname);
 			}
-			catch { Tools.Utils.OpenLink("https://www.google.it/search?q=ch340+drivers"); }
+			catch { Utils.OpenLink("https://www.google.it/search?q=ch340+drivers"); }
 		}
 
 		private void flashGrblFirmwareToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1087,12 +1087,12 @@ namespace LaserGRBL
 
 		private void orturSupportGroupToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Tools.Utils.OpenLink(@"https://lasergrbl.com/orturfacebook/");
+			Utils.OpenLink(@"https://lasergrbl.com/orturfacebook/");
 		}
 
 		private void orturWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Tools.Utils.OpenLink(@"https://lasergrbl.com/orturwebsite/");
+			Utils.OpenLink(@"https://lasergrbl.com/orturwebsite/");
 		}
 
 		private void traditionalChineseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1102,17 +1102,17 @@ namespace LaserGRBL
 
 		private void youtubeChannelToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Tools.Utils.OpenLink(@"https://lasergrbl.com/orturYTchannel/");
+			Utils.OpenLink(@"https://lasergrbl.com/orturYTchannel/");
 		}
 
 		private void firmwareToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Tools.Utils.OpenLink(@"https://lasergrbl.com/ortur-firmware/");
+			Utils.OpenLink(@"https://lasergrbl.com/ortur-firmware/");
 		}
 
 		private void manualsDownloadToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Tools.Utils.OpenLink(@"https://lasergrbl.com/ortur-manuals/");
+			Utils.OpenLink(@"https://lasergrbl.com/ortur-manuals/");
 		}
 
 		private void MultipleInstanceTimer_Tick(object sender, EventArgs e)
@@ -1132,14 +1132,14 @@ namespace LaserGRBL
 
 		private void orturSupportAndFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Tools.Utils.OpenLink(@"https://lasergrbl.com/ortursupport/");
+			Utils.OpenLink(@"https://lasergrbl.com/ortursupport/");
 		}
 
 		private void TTLinkToNews_Click(object sender, EventArgs e)
 		{
 			if (ToolBarMessage != null && ToolBarMessage.Title != null && ToolBarMessage.Content != null)
 			{
-				Tools.Utils.OpenLink(ToolBarMessage.Content);
+				Utils.OpenLink(ToolBarMessage.Content);
 				UsageStats.Messages.ClearMessage(ToolBarMessage);
 			}
 		}
@@ -1151,7 +1151,7 @@ namespace LaserGRBL
 
 		private void facebookCommunityToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Tools.Utils.OpenLink(@"https://www.facebook.com/groups/486886768471991");
+			Utils.OpenLink(@"https://www.facebook.com/groups/486886768471991");
 		}
 
 		private void greekToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1194,7 +1194,7 @@ namespace LaserGRBL
 
 		private void TTTStatus_DoubleClick(object sender, EventArgs e)
 		{
-			Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/machine-status/");
+			Utils.OpenLink(@"https://lasergrbl.com/usage/machine-status/");
 		}
 
 		private void MnConfigureOrturWiFi_Click(object sender, EventArgs e)
@@ -1349,6 +1349,36 @@ namespace LaserGRBL
 		private void MnConfigureLongerWiFi_Click(object sender, EventArgs e)
 		{
 			ShowWiFiConfig();
+		}
+
+		private void MnLongerUserGroup_Click(object sender, EventArgs e)
+		{
+			Utils.OpenLink(@"https://www.facebook.com/longer3dprinter/groups");
+		}
+
+		private void MnLongerSupportAndFeedback_Click(object sender, EventArgs e)
+		{
+			Utils.OpenLink(@"https://www.longer3d.com/pages/support");
+		}
+
+		private void MnLongerWebsite_Click(object sender, EventArgs e)
+		{
+			Utils.OpenLink(@"https://www.longer3d.com/");
+		}
+
+		private void MnLongerYouTube_Click(object sender, EventArgs e)
+		{
+			Utils.OpenLink(@"https://www.youtube.com/@Longerofficial");
+		}
+
+		private void MnLongerManuals_Click(object sender, EventArgs e)
+		{
+			Utils.OpenLink(@"https://www.longer3d.com/pages/manuals");
+		}
+
+		private void MnLongerFirmware_Click(object sender, EventArgs e)
+		{
+			Utils.OpenLink(@"https://www.longer3d.com/pages/download-firmware	");
 		}
 	}
 

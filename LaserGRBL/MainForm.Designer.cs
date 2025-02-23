@@ -141,13 +141,13 @@
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.configurationWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnLonger = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnLongerUserGroup = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnLongerSupportAndFeedback = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnLongerWebsite = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnLongerYouTube = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnLongerManuals = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnLongerFirmware = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnSeparatorConfigWiFi2 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnConfigureLongerWiFi = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnOrtur = new System.Windows.Forms.ToolStripMenuItem();
@@ -977,52 +977,58 @@
 			// MnLonger
 			// 
 			this.MnLonger.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem12,
-            this.toolStripMenuItem13,
-            this.toolStripMenuItem14,
-            this.toolStripMenuItem15,
+            this.MnLongerUserGroup,
+            this.MnLongerSupportAndFeedback,
+            this.MnLongerWebsite,
+            this.MnLongerYouTube,
             this.toolStripSeparator5,
-            this.toolStripMenuItem16,
-            this.toolStripMenuItem17,
+            this.MnLongerManuals,
+            this.MnLongerFirmware,
             this.MnSeparatorConfigWiFi2,
             this.MnConfigureLongerWiFi});
 			this.MnLonger.Name = "MnLonger";
 			resources.ApplyResources(this.MnLonger, "MnLonger");
 			// 
-			// toolStripMenuItem12
+			// MnLongerUserGroup
 			// 
-			this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-			resources.ApplyResources(this.toolStripMenuItem12, "toolStripMenuItem12");
+			this.MnLongerUserGroup.Name = "MnLongerUserGroup";
+			resources.ApplyResources(this.MnLongerUserGroup, "MnLongerUserGroup");
+			this.MnLongerUserGroup.Click += new System.EventHandler(this.MnLongerUserGroup_Click);
 			// 
-			// toolStripMenuItem13
+			// MnLongerSupportAndFeedback
 			// 
-			this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-			resources.ApplyResources(this.toolStripMenuItem13, "toolStripMenuItem13");
+			this.MnLongerSupportAndFeedback.Name = "MnLongerSupportAndFeedback";
+			resources.ApplyResources(this.MnLongerSupportAndFeedback, "MnLongerSupportAndFeedback");
+			this.MnLongerSupportAndFeedback.Click += new System.EventHandler(this.MnLongerSupportAndFeedback_Click);
 			// 
-			// toolStripMenuItem14
+			// MnLongerWebsite
 			// 
-			this.toolStripMenuItem14.Name = "toolStripMenuItem14";
-			resources.ApplyResources(this.toolStripMenuItem14, "toolStripMenuItem14");
+			this.MnLongerWebsite.Name = "MnLongerWebsite";
+			resources.ApplyResources(this.MnLongerWebsite, "MnLongerWebsite");
+			this.MnLongerWebsite.Click += new System.EventHandler(this.MnLongerWebsite_Click);
 			// 
-			// toolStripMenuItem15
+			// MnLongerYouTube
 			// 
-			this.toolStripMenuItem15.Name = "toolStripMenuItem15";
-			resources.ApplyResources(this.toolStripMenuItem15, "toolStripMenuItem15");
+			this.MnLongerYouTube.Name = "MnLongerYouTube";
+			resources.ApplyResources(this.MnLongerYouTube, "MnLongerYouTube");
+			this.MnLongerYouTube.Click += new System.EventHandler(this.MnLongerYouTube_Click);
 			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
 			resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
 			// 
-			// toolStripMenuItem16
+			// MnLongerManuals
 			// 
-			this.toolStripMenuItem16.Name = "toolStripMenuItem16";
-			resources.ApplyResources(this.toolStripMenuItem16, "toolStripMenuItem16");
+			this.MnLongerManuals.Name = "MnLongerManuals";
+			resources.ApplyResources(this.MnLongerManuals, "MnLongerManuals");
+			this.MnLongerManuals.Click += new System.EventHandler(this.MnLongerManuals_Click);
 			// 
-			// toolStripMenuItem17
+			// MnLongerFirmware
 			// 
-			this.toolStripMenuItem17.Name = "toolStripMenuItem17";
-			resources.ApplyResources(this.toolStripMenuItem17, "toolStripMenuItem17");
+			this.MnLongerFirmware.Name = "MnLongerFirmware";
+			resources.ApplyResources(this.MnLongerFirmware, "MnLongerFirmware");
+			this.MnLongerFirmware.Click += new System.EventHandler(this.MnLongerFirmware_Click);
 			// 
 			// MnSeparatorConfigWiFi2
 			// 
@@ -1436,13 +1442,13 @@
 		private System.Windows.Forms.ToolStripMenuItem movingAreaToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem japaneseToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem MnLonger;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem14;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
+		private System.Windows.Forms.ToolStripMenuItem MnLongerUserGroup;
+		private System.Windows.Forms.ToolStripMenuItem MnLongerSupportAndFeedback;
+		private System.Windows.Forms.ToolStripMenuItem MnLongerWebsite;
+		private System.Windows.Forms.ToolStripMenuItem MnLongerYouTube;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem16;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem17;
+		private System.Windows.Forms.ToolStripMenuItem MnLongerManuals;
+		private System.Windows.Forms.ToolStripMenuItem MnLongerFirmware;
 		private System.Windows.Forms.ToolStripSeparator MnSeparatorConfigWiFi2;
 		private System.Windows.Forms.ToolStripMenuItem MnConfigureLongerWiFi;
 	}
