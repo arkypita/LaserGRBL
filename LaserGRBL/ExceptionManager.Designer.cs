@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExceptionManager));
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.TbExMessage = new System.Windows.Forms.RichTextBox();
@@ -39,6 +40,7 @@
 			this.BtnClipboardCopy = new System.Windows.Forms.Button();
 			this.BtnContinue = new System.Windows.Forms.Button();
 			this.BtnAbort = new System.Windows.Forms.Button();
+			this.TimLink = new System.Windows.Forms.Timer(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.tableLayoutPanel2.SuspendLayout();
@@ -187,6 +189,11 @@
 			this.BtnAbort.UseVisualStyleBackColor = true;
 			this.BtnAbort.Click += new System.EventHandler(this.BtnAbort_Click);
 			// 
+			// TimLink
+			// 
+			this.TimLink.Interval = 2000;
+			this.TimLink.Tick += new System.EventHandler(this.TimLink_Tick);
+			// 
 			// ExceptionManager
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,5 +228,6 @@
 		private System.Windows.Forms.RichTextBox LblFormDescription;
 		private System.Windows.Forms.RichTextBox TbExMessage;
 		private System.Windows.Forms.Button BtnClipboardCopy;
+		private System.Windows.Forms.Timer TimLink;
 	}
 }

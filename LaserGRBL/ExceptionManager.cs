@@ -153,11 +153,19 @@ namespace LaserGRBL
 		private void ExceptionManager_Load(object sender, EventArgs e)
 		{
 			BringToFront();
+			TimLink.Enabled = true;				
 		}
 
 		private void BtnClipboardCopy_Click(object sender, EventArgs e)
 		{
 			Clipboard.SetText(TbExMessage.Text);
+		}
+
+		private void TimLink_Tick(object sender, EventArgs e)
+		{
+			TimLink.Enabled = false;
+			if (TbExMessage.Text.Contains("DangerousAddRef"))
+				Tools.Utils.OpenLink(@"https://lasergrbl.com/faq/ooops-something-went-wrong/#ObjectDisposedException-DangerousAddRef");
 		}
 	}
 }
