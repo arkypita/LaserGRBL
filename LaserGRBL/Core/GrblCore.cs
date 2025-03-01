@@ -3352,6 +3352,10 @@ namespace LaserGRBL
 					}
 				}
 
+				// Fix for "Bad Number Format" error, when machine max power cannot be read from grbl machine configuration
+				if (!exp.ExistToken("$30"))
+					exp.AddSetVariable("$30", 1000.0);
+
 				double dval = exp.EvaluateD();
 				return m.Result(FormatNumber((decimal)dval));
 			}

@@ -565,6 +565,9 @@ namespace Tools
 			}
 		}
 
+		public bool ExistToken(string token)
+		{ return variables.ContainsKey(token); }
+
 		protected bool Validate(string inFix)
 		{
 			string inFixClean = this.Expand(inFix);
