@@ -1373,7 +1373,7 @@ namespace LaserGRBL
 
 		private void MnLongerManuals_Click(object sender, EventArgs e)
 		{
-			Utils.OpenLink(@"https://www.longer3d.com/pages/manuals");
+			Utils.OpenLink(@"https://www.longer3d.com/collections/laser-engraver");
 		}
 
 		private void MnLongerFirmware_Click(object sender, EventArgs e)
