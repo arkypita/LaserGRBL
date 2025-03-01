@@ -1353,32 +1353,32 @@ namespace LaserGRBL
 
 		private void MnLongerUserGroup_Click(object sender, EventArgs e)
 		{
-			Utils.OpenLink(@"https://www.facebook.com/longer3dprinter/groups");
+			Utils.OpenLink(@"https://lasergrbl.com/longer-facebook/"); //https://www.facebook.com/longer3dprinter/groups
 		}
 
 		private void MnLongerSupportAndFeedback_Click(object sender, EventArgs e)
 		{
-			Utils.OpenLink(@"https://www.longer3d.com/pages/support");
+			Utils.OpenLink(@"https://lasergrbl.com/longer-support/"); //https://www.longer3d.com/pages/support
 		}
 
 		private void MnLongerWebsite_Click(object sender, EventArgs e)
 		{
-			Utils.OpenLink(@"https://www.longer3d.com/");
+			Utils.OpenLink(@"https://lasergrbl.com/longer-website/"); //https://www.longer3d.com/
 		}
 
 		private void MnLongerYouTube_Click(object sender, EventArgs e)
 		{
-			Utils.OpenLink(@"https://www.youtube.com/@Longerofficial");
+			Utils.OpenLink(@"https://lasergrbl.com/longer-YTchannel/"); //https://www.youtube.com/@Longerofficial
 		}
 
 		private void MnLongerManuals_Click(object sender, EventArgs e)
 		{
-			Utils.OpenLink(@"https://www.longer3d.com/collections/laser-engraver");
+			Utils.OpenLink(@"https://lasergrbl.com/longer-manuals/"); //https://www.longer3d.com/collections/laser-engraver
 		}
 
 		private void MnLongerFirmware_Click(object sender, EventArgs e)
 		{
-			Utils.OpenLink(@"https://www.longer3d.com/pages/download-firmware	");
+			Utils.OpenLink(@"https://lasergrbl.com/longer-firmware/"); //https://www.longer3d.com/pages/download-firmware
 		}
 	}
 
