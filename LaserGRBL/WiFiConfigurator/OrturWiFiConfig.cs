@@ -109,7 +109,10 @@ namespace LaserGRBL.WiFiConfigurator
 
 		private void BtnHelp_Click(object sender, EventArgs e)
 		{
-			Tools.Utils.OpenLink(@"https://lasergrbl.com/ortur-manuals/#configure-wifi");
+			if (Core.GrblVersion.IsOrtur)
+				Tools.Utils.OpenLink(@"https://lasergrbl.com/ortur-manuals/#configure-wifi");
+			else if (Core.GrblVersion.IsLonger)
+				Tools.Utils.OpenLink(@"https://lasergrbl.com/longer-manuals/#configure-wifi");
 		}
 	}
 }

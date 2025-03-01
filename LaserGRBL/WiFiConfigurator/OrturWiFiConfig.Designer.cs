@@ -157,6 +157,7 @@
 			this.BtnHelp.Text = "Help";
 			this.BtnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.BtnHelp.UseVisualStyleBackColor = true;
+			this.BtnHelp.Visible = false;
 			this.BtnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
 			// 
 			// BtnWrite

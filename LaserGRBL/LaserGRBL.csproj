@@ -1513,6 +1513,9 @@
     <EmbeddedResource Include="WiFiDiscovery\DiscoveryForm.zh-CN.resx">
       <DependentUpon>DiscoveryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CSV\alarm_codes.longer.nanoduo.csv" />
+    <EmbeddedResource Include="CSV\error_codes.longer.nanoduo.csv" />
+    <EmbeddedResource Include="CSV\setting_codes.longer.nanoduo.csv" />
     <None Include="Resources\flag_greece.png" />
     <EmbeddedResource Include="Generator\SVG\LaserGRBL-accuracy-test-file.svg" />
     <Content Include="Grafica\777494-200.png" />

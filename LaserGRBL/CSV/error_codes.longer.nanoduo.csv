@@ -1,0 +1,62 @@
+1,Expected GCodecommand letter,Expected GCodecommand letter
+2,Bad GCode number format,Bad GCode number format
+3,Invalid $ statement,Invalid $ statement
+4,Negative value,Negative value
+5,Setting disabled,Setting disabled
+6,Step pulse too short,Step pulse too short
+7,Failed to read settings,Failed to read settings
+8,Command requires idle state,Command requires idle state
+9,GCode cannot be executed in lock or alarm state,GCode cannot be executed in lock or alarm state
+10,Soft limit error,Soft limit error
+11,Line too long,Line too long
+12,Max step rate exceeded,Max step rate exceeded
+13,Check door,Check door
+14,Startup line too long,Startup line too long
+15,Max travel exceeded during jog,Max travel exceeded during jog
+16,Invalid jog command,Invalid jog command
+17,Laser mode requires PWM output,Laser mode requires PWM output
+18,No Homing/Cycle defined in settings,No Homing/Cycle defined in settings
+19,Unsupported GCode command,Unsupported GCode command
+20,Gcode modal group violation,Gcode modal group violation
+21,Gcode undefined feed rate,Gcode undefined feed rate
+22,Gcode command value not integer,Gcode command value not integer
+23,Gcode axis command conflict,Gcode axis command conflict
+24,Gcode word repeated,Gcode word repeated
+25,Gcode no axis words,Gcode no axis words
+26,Gcode invalid line number,Gcode invalid line number
+27,Gcode value word missing,Gcode value word missing
+28,Gcode unsupported coordinate system,Gcode unsupported coordinate system
+29,Gcode G53 invalid motion mode,Gcode G53 invalid motion mode
+30,Gcode extra axis words,Gcode extra axis words
+31,Gcode no axis words in plane,Gcode no axis words in plane
+32,Gcode invalid target,Gcode invalid target
+33,Gcode arc radius error,Gcode arc radius error
+34,Gcode no offsets in plane,Gcode no offsets in plane
+35,Gcode unused words,Gcode unused words
+36,Gcode G43 dynamic axis error,Gcode G43 dynamic axis error
+37,Gcode max value exceeded,Gcode max value exceeded
+38,P param max exceeded,P param max exceeded
+39,Failed to mount device,Failed to mount device
+40,Failed to read,Failed to read
+41,Failed to open directory,Failed to open directory
+42,Directory not found,Directory not found
+43,File empty,File empty
+44,File not found,File not found
+45,Failed to open file,Failed to open file
+46,Device is busy,Device is busy
+47,Failed to delete directory,Failed to delete directory
+48,Failed to delete file,Failed to delete file
+49,Bluetooth failed to start,Bluetooth failed to start
+50,WiFi failed to start,WiFi failed to start
+51,Number out of range for setting,Number out of range for setting
+52,Invalid value for setting,Invalid value for setting
+53,Failed to send message,Failed to send message
+54,Failed to store setting,Failed to store setting
+55,Failed to get setting status,Failed to get setting status
+56,Authentication failed!,Authentication failed!
+57,Another interface is busy,Another interface is busy
+58,Jog Cancelled,Jog Cancelled
+59,Zip file failed to open,Zip file failed to open
+60,Failed to get information from zip file,Failed to get information from zip file
+61,The upgraded firmware was not found,The upgraded firmware was not found
+62,Upgrade failed,Upgrade failed
