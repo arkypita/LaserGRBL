@@ -172,6 +172,8 @@ namespace LaserGRBL.UserControls
 
 		private static double GetRulerStep(double n)
         {
+			n = Math.Abs(n);
+
             int digitCount = Convert.ToInt32(Math.Max(3, Math.Floor(Math.Log10(n) + 1)));
             int power = Convert.ToInt32(Math.Pow(10, digitCount - 1));
             double step = n / power;
