@@ -3844,15 +3844,16 @@ namespace LaserGRBL
 
 		private decimal ReadDecimal(int key, decimal defval, decimal min, decimal max)
 		{
+			decimal rv = defval;
 			if (mVersion == null)
-				return defval;
+				rv = defval;
 			else if (!mData.ContainsKey(key))
-				return defval;
+				rv = defval;
 			else
 			{
 				try
 				{
-					return Math.Max(min, Math.Min(max, decimal.Parse(mData[key], CultureInfo.InvariantCulture)));
+					rv = decimal.Parse(mData[key], CultureInfo.InvariantCulture);
 				}
 				catch
 				{
@@ -3860,14 +3861,16 @@ namespace LaserGRBL
 					{
 						System.Text.RegularExpressions.Regex ExtractNumber = new System.Text.RegularExpressions.Regex(@"(\d+\.?\d*)");
 						System.Text.RegularExpressions.MatchCollection matches = ExtractNumber.Matches(mData[key]);
-						return decimal.Parse(matches[0].Groups[1].Value);
+						rv = decimal.Parse(matches[0].Groups[1].Value);
 					}
 					catch
 					{
-						return defval;
+						rv = defval;
 					}
 				}
 			}
+
+			return Math.Max(min, Math.Min(max, rv));
 		}
 
 		private string ReadString(int number, string defval)
