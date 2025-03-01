@@ -4,7 +4,7 @@ $-Code, Setting, Units, Setting Description
 2,Step pulse invert,mask,Inverts the step signal. Set axis bit to invert (00000ZYX).
 3,Step direction invert,mask,Inverts the direction signal. Set axis bit to invert (00000ZYX).
 4,Invert step enable pin,boolean,Inverts the stepper driver enable pin signal.
-5,Invert limit pins,boolean,Inverts the all of the limit input pins.
+5,Invert limit pins,boolean,Inverts all of the limit input pins.
 6,Invert probe pin,boolean,Inverts the probe input pin signal.
 10,Status report options,mask,Alters data included in status reports.
 11,Junction deviation,millimeters,Sets how fast Grbl travels through consecutive motions. Lower value slows it down.
