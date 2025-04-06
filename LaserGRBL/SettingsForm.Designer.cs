@@ -180,18 +180,18 @@
             this.CbLegacyIcons = new System.Windows.Forms.CheckBox();
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
-            this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
             this.tpMqtt = new System.Windows.Forms.TabPage();
             this.tblMqtt = new System.Windows.Forms.TableLayoutPanel();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.txtMqttServerName = new System.Windows.Forms.TextBox();
-            this.txtMqttPort = new System.Windows.Forms.TextBox();
-            this.txtMqttPassword = new System.Windows.Forms.TextBox();
-            this.txtMqttUserName = new System.Windows.Forms.TextBox();
             this.chkMqttActive = new System.Windows.Forms.CheckBox();
+            this.txtMqttUserName = new System.Windows.Forms.TextBox();
+            this.txtMqttPassword = new System.Windows.Forms.TextBox();
+            this.txtMqttPort = new System.Windows.Forms.TextBox();
+            this.txtMqttServerName = new System.Windows.Forms.TextBox();
+            this.lblMqttUserName = new System.Windows.Forms.Label();
+            this.lblMqttServerName = new System.Windows.Forms.Label();
+            this.lblMqttPassword = new System.Windows.Forms.Label();
+            this.lblMqttPort = new System.Windows.Forms.Label();
+            this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.MainTabPage.SuspendLayout();
@@ -1309,10 +1309,6 @@
             resources.ApplyResources(this.label50, "label50");
             this.label50.Name = "label50";
             // 
-            // SoundBrowserDialog
-            // 
-            resources.ApplyResources(this.SoundBrowserDialog, "SoundBrowserDialog");
-            // 
             // tpMqtt
             // 
             this.tpMqtt.Controls.Add(this.tblMqtt);
@@ -1328,57 +1324,61 @@
             this.tblMqtt.Controls.Add(this.txtMqttPassword, 1, 2);
             this.tblMqtt.Controls.Add(this.txtMqttPort, 1, 3);
             this.tblMqtt.Controls.Add(this.txtMqttServerName, 1, 0);
-            this.tblMqtt.Controls.Add(this.label51, 2, 1);
-            this.tblMqtt.Controls.Add(this.label52, 2, 0);
-            this.tblMqtt.Controls.Add(this.label53, 2, 2);
-            this.tblMqtt.Controls.Add(this.label54, 2, 3);
+            this.tblMqtt.Controls.Add(this.lblMqttUserName, 2, 1);
+            this.tblMqtt.Controls.Add(this.lblMqttServerName, 2, 0);
+            this.tblMqtt.Controls.Add(this.lblMqttPassword, 2, 2);
+            this.tblMqtt.Controls.Add(this.lblMqttPort, 2, 3);
             this.tblMqtt.Name = "tblMqtt";
-            // 
-            // label51
-            // 
-            resources.ApplyResources(this.label51, "label51");
-            this.label51.Name = "label51";
-            // 
-            // label52
-            // 
-            resources.ApplyResources(this.label52, "label52");
-            this.label52.Name = "label52";
-            // 
-            // label53
-            // 
-            resources.ApplyResources(this.label53, "label53");
-            this.label53.Name = "label53";
-            // 
-            // label54
-            // 
-            resources.ApplyResources(this.label54, "label54");
-            this.label54.Name = "label54";
-            // 
-            // txtMqttServerName
-            // 
-            resources.ApplyResources(this.txtMqttServerName, "txtMqttServerName");
-            this.txtMqttServerName.Name = "txtMqttServerName";
-            // 
-            // txtMqttPort
-            // 
-            resources.ApplyResources(this.txtMqttPort, "txtMqttPort");
-            this.txtMqttPort.Name = "txtMqttPort";
-            // 
-            // txtMqttPassword
-            // 
-            resources.ApplyResources(this.txtMqttPassword, "txtMqttPassword");
-            this.txtMqttPassword.Name = "txtMqttPassword";
-            // 
-            // txtMqttUserName
-            // 
-            resources.ApplyResources(this.txtMqttUserName, "txtMqttUserName");
-            this.txtMqttUserName.Name = "txtMqttUserName";
             // 
             // chkMqttActive
             // 
             resources.ApplyResources(this.chkMqttActive, "chkMqttActive");
             this.chkMqttActive.Name = "chkMqttActive";
             this.chkMqttActive.UseVisualStyleBackColor = true;
+            // 
+            // txtMqttUserName
+            // 
+            resources.ApplyResources(this.txtMqttUserName, "txtMqttUserName");
+            this.txtMqttUserName.Name = "txtMqttUserName";
+            // 
+            // txtMqttPassword
+            // 
+            resources.ApplyResources(this.txtMqttPassword, "txtMqttPassword");
+            this.txtMqttPassword.Name = "txtMqttPassword";
+            // 
+            // txtMqttPort
+            // 
+            resources.ApplyResources(this.txtMqttPort, "txtMqttPort");
+            this.txtMqttPort.Name = "txtMqttPort";
+            // 
+            // txtMqttServerName
+            // 
+            resources.ApplyResources(this.txtMqttServerName, "txtMqttServerName");
+            this.txtMqttServerName.Name = "txtMqttServerName";
+            // 
+            // lblMqttUserName
+            // 
+            resources.ApplyResources(this.lblMqttUserName, "lblMqttUserName");
+            this.lblMqttUserName.Name = "lblMqttUserName";
+            // 
+            // lblMqttServerName
+            // 
+            resources.ApplyResources(this.lblMqttServerName, "lblMqttServerName");
+            this.lblMqttServerName.Name = "lblMqttServerName";
+            // 
+            // lblMqttPassword
+            // 
+            resources.ApplyResources(this.lblMqttPassword, "lblMqttPassword");
+            this.lblMqttPassword.Name = "lblMqttPassword";
+            // 
+            // lblMqttPort
+            // 
+            resources.ApplyResources(this.lblMqttPort, "lblMqttPort");
+            this.lblMqttPort.Name = "lblMqttPort";
+            // 
+            // SoundBrowserDialog
+            // 
+            resources.ApplyResources(this.SoundBrowserDialog, "SoundBrowserDialog");
             // 
             // SettingsForm
             // 
@@ -1617,10 +1617,10 @@
 		private System.Windows.Forms.Label label50;
         private System.Windows.Forms.TabPage tpMqtt;
         private System.Windows.Forms.TableLayoutPanel tblMqtt;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label lblMqttUserName;
+        private System.Windows.Forms.Label lblMqttServerName;
+        private System.Windows.Forms.Label lblMqttPassword;
+        private System.Windows.Forms.Label lblMqttPort;
         private System.Windows.Forms.TextBox txtMqttServerName;
         private System.Windows.Forms.TextBox txtMqttUserName;
         private System.Windows.Forms.TextBox txtMqttPassword;

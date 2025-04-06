@@ -84,9 +84,18 @@ namespace LaserGRBL.Repos
             if (this.IsMqttActive)
             {
                 this.Connect();
-                string jsonData = JsonConvert.SerializeObject(data);
-                this.mqttClient.PublishStringAsync(GBRL_DEFAULT_TOPIC, payload: jsonData).Wait();
-                this.Disconnect();
+                try
+                {
+                    string jsonData = JsonConvert.SerializeObject(data);
+                    this.mqttClient.PublishStringAsync(GBRL_DEFAULT_TOPIC, payload: jsonData).Wait();
+                }
+                catch (Exception ex)
+                {
+                }
+                finally
+                {
+                    this.Disconnect();
+                }
             }
         }
 

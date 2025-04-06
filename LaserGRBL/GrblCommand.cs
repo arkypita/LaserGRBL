@@ -446,7 +446,13 @@ namespace LaserGRBL
 		#endregion
 
 		private Element GetElement(char key)
-		{ return mHelper.ContainsKey(key) ? mHelper[key] : null; }
+		{ 
+			if (mHelper== null)
+			{
+				return null;
+			}
+			return mHelper.ContainsKey(key) ? mHelper[key] : null; 
+		}
 
 		public string GetDecodedMessage() //per la visualizzazione
 		{  return mRepeatCount == 0 ? Command : String.Format("{0} (Retry {1})", Command, mRepeatCount); } 

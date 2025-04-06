@@ -5284,136 +5284,136 @@ I suggest to not disable this countdown, this allow you to have a 5 second chanc
   <data name="&gt;&gt;txtMqttServerName.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="label51.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="lblMqttUserName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="label51.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblMqttUserName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label51.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblMqttUserName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label51.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblMqttUserName.Location" type="System.Drawing.Point, System.Drawing">
     <value>229, 34</value>
   </data>
-  <data name="label51.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblMqttUserName.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 13</value>
   </data>
-  <data name="label51.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblMqttUserName.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
   </data>
-  <data name="label51.Text" xml:space="preserve">
+  <data name="lblMqttUserName.Text" xml:space="preserve">
     <value>The username to login</value>
   </data>
-  <data name="&gt;&gt;label51.Name" xml:space="preserve">
-    <value>label51</value>
+  <data name="&gt;&gt;lblMqttUserName.Name" xml:space="preserve">
+    <value>lblMqttUserName</value>
   </data>
-  <data name="&gt;&gt;label51.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblMqttUserName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label51.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblMqttUserName.Parent" xml:space="preserve">
     <value>tblMqtt</value>
   </data>
-  <data name="&gt;&gt;label51.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblMqttUserName.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="label52.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="lblMqttServerName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="label52.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblMqttServerName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label52.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblMqttServerName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label52.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblMqttServerName.Location" type="System.Drawing.Point, System.Drawing">
     <value>229, 7</value>
   </data>
-  <data name="label52.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblMqttServerName.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 13</value>
   </data>
-  <data name="label52.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblMqttServerName.TabIndex" type="System.Int32, mscorlib">
     <value>49</value>
   </data>
-  <data name="label52.Text" xml:space="preserve">
+  <data name="lblMqttServerName.Text" xml:space="preserve">
     <value>Mqqt Server name</value>
   </data>
-  <data name="&gt;&gt;label52.Name" xml:space="preserve">
-    <value>label52</value>
+  <data name="&gt;&gt;lblMqttServerName.Name" xml:space="preserve">
+    <value>lblMqttServerName</value>
   </data>
-  <data name="&gt;&gt;label52.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblMqttServerName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label52.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblMqttServerName.Parent" xml:space="preserve">
     <value>tblMqtt</value>
   </data>
-  <data name="&gt;&gt;label52.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblMqttServerName.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="label53.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="lblMqttPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="label53.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblMqttPassword.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label53.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblMqttPassword.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label53.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblMqttPassword.Location" type="System.Drawing.Point, System.Drawing">
     <value>229, 61</value>
   </data>
-  <data name="label53.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblMqttPassword.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 13</value>
   </data>
-  <data name="label53.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblMqttPassword.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="label53.Text" xml:space="preserve">
+  <data name="lblMqttPassword.Text" xml:space="preserve">
     <value>The password for the given username</value>
   </data>
-  <data name="&gt;&gt;label53.Name" xml:space="preserve">
-    <value>label53</value>
+  <data name="&gt;&gt;lblMqttPassword.Name" xml:space="preserve">
+    <value>lblMqttPassword</value>
   </data>
-  <data name="&gt;&gt;label53.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblMqttPassword.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label53.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblMqttPassword.Parent" xml:space="preserve">
     <value>tblMqtt</value>
   </data>
-  <data name="&gt;&gt;label53.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblMqttPassword.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="label54.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="lblMqttPort.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="label54.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblMqttPort.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label54.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblMqttPort.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label54.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblMqttPort.Location" type="System.Drawing.Point, System.Drawing">
     <value>229, 88</value>
   </data>
-  <data name="label54.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblMqttPort.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 13</value>
   </data>
-  <data name="label54.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblMqttPort.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
-  <data name="label54.Text" xml:space="preserve">
+  <data name="lblMqttPort.Text" xml:space="preserve">
     <value>The port to connect on</value>
   </data>
-  <data name="&gt;&gt;label54.Name" xml:space="preserve">
-    <value>label54</value>
+  <data name="&gt;&gt;lblMqttPort.Name" xml:space="preserve">
+    <value>lblMqttPort</value>
   </data>
-  <data name="&gt;&gt;label54.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblMqttPort.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label54.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblMqttPort.Parent" xml:space="preserve">
     <value>tblMqtt</value>
   </data>
-  <data name="&gt;&gt;label54.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblMqttPort.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
   <data name="tblMqtt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -5444,7 +5444,7 @@ I suggest to not disable this countdown, this allow you to have a 5 second chanc
     <value>0</value>
   </data>
   <data name="tblMqtt.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="chkMqttActive" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtMqttUserName" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtMqttPassword" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtMqttPort" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtMqttServerName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label51" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label52" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label53" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label54" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Percent,50,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="chkMqttActive" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtMqttUserName" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtMqttPassword" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtMqttPort" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtMqttServerName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblMqttUserName" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="lblMqttServerName" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="lblMqttPassword" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="lblMqttPort" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,23,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Percent,50,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tpMqtt.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
