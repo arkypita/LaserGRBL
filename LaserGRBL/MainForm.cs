@@ -32,7 +32,20 @@ namespace LaserGRBL
         private readonly string[] args;
         private readonly List<ToolStripMenuItem> mLineWidthMenu;
 
+        private void SetupMqtt()
+        {
+            mqtt.SetUpData(
+    Settings.GetObject("MqttServer", ""),
+    Settings.GetObject("MqttUserName", ""),
+    Settings.GetObject("MqttPassword", ""),
+    Settings.GetObject("MqttPort", 18863),
+    Settings.GetObject("MqttPortActive", false));
+#if DEBUG
+            mqtt.SetUpData("mediacenter.localdomain", "user", "password", 1883, true);
+#endif
 
+
+        }
         public MainForm()
         {
             ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", Scheme.CADDark);
@@ -41,16 +54,7 @@ namespace LaserGRBL
 
             // to mqttInitialization afterwards
             mqtt = new MqttRepository();
-
-            mqtt.SetUpData(
-                Settings.GetObject("MqttServer", ""),
-                Settings.GetObject("MqttUserName", ""),
-                Settings.GetObject("MqttPassword", ""),
-                Settings.GetObject("MqttPort", 18863),
-                Settings.GetObject("MqttPortActive", false));
-#if DEBUG
-            mqtt.SetUpData("mediacenter.localdomain", "user", "password", 1883, true);
-#endif
+            SetupMqtt();
 
 
             // Setting up mqtt connection instance.
@@ -313,6 +317,7 @@ namespace LaserGRBL
 
             if (canrun)
             {
+
                 UpdateTimer.Enabled = true;
 
                 if (Settings.GetObject("Auto Update", true))

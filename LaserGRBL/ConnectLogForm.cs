@@ -253,6 +253,7 @@ namespace LaserGRBL
         {
             SuspendLayout();
             this.EnsurePortIsInitialized();
+
             this.SendDataToMqttserver(Core);
             // Set data to progressbars
             PB.Maximum = Core.ProgramTarget;
