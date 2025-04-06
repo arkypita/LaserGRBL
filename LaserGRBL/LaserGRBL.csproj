@@ -231,6 +231,7 @@
     <Compile Include="ComWrapper\RJCP\Trace\LoggerTraceListener.cs" />
     <Compile Include="ComWrapper\RJCP\Trace\LogSource.cs" />
     <Compile Include="ComWrapper\RJCP\Trace\LogSourceFactory.cs" />
+    <Compile Include="Repos\MqttRepository.cs" />
     <Compile Include="SvgIcons\SvgIcons.cs" />
     <Compile Include="Tools\Application.cs" />
     <Compile Include="Tools\DoubleBufferBmp.cs" />
@@ -1601,6 +1602,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectLogForm.de.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectLogForm.es.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
@@ -2562,6 +2564,14 @@
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
     <Folder Include="SvgLibrary\Web\Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MQTTnet">
+      <Version>4.3.7.1207</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.3</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
