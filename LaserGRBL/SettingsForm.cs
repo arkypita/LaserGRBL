@@ -49,6 +49,14 @@ namespace LaserGRBL
 			InitThreadingCB();
 			InitGraphicModeCB();
 
+            txtMqttServerName.Text= Settings.GetObject("MqttServer","");
+            txtMqttUserName.Text= Settings.GetObject("MqttUserName","" );
+            txtMqttPassword.Text= Settings.GetObject("MqttPassword","" );
+            txtMqttPort.Text= Settings.GetObject("MqttPort", 1883).ToString();
+            chkMqttActive.Checked=  Settings.GetObject("MqttPortActive", false);
+
+
+
             CBCore.SelectedItem = Settings.GetObject("Firmware Type", Firmware.Grbl);
 			CBSupportPWM.Checked = Settings.GetObject("Support Hardware PWM", true);
 			CBProtocol.SelectedItem = Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial);
@@ -208,6 +216,18 @@ namespace LaserGRBL
 
 		private void BtnSave_Click(object sender, EventArgs e)
 		{
+
+            Settings.SetObject("MqttServer", txtMqttServerName.Text);
+            Settings.SetObject("MqttUserName", txtMqttUserName.Text);
+            Settings.SetObject("MqttPassword", txtMqttPassword.Text);
+			int port = 0;
+			if (!string.IsNullOrEmpty(txtMqttPort.Text))
+			{
+				int.TryParse(txtMqttPort.Text, out port);
+			}
+			Settings.SetObject("MqttPort", port);
+            Settings.SetObject("MqttPortActive", chkMqttActive.Checked);
+
             Settings.SetObject("Firmware Type", CBCore.SelectedItem);
             Settings.SetObject("Support Hardware PWM", CBSupportPWM.Checked);
 			Settings.SetObject("ComWrapper Protocol", CBProtocol.SelectedItem);

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LaserGRBL</RootNamespace>
     <AssemblyName>LaserGRBL</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <NoStdLib>False</NoStdLib>
@@ -54,6 +54,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -66,6 +67,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
@@ -229,6 +231,7 @@
     <Compile Include="ComWrapper\RJCP\Trace\LoggerTraceListener.cs" />
     <Compile Include="ComWrapper\RJCP\Trace\LogSource.cs" />
     <Compile Include="ComWrapper\RJCP\Trace\LogSourceFactory.cs" />
+    <Compile Include="Repos\MqttRepository.cs" />
     <Compile Include="SvgIcons\SvgIcons.cs" />
     <Compile Include="Tools\Application.cs" />
     <Compile Include="Tools\DoubleBufferBmp.cs" />
@@ -1599,6 +1602,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectLogForm.de.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectLogForm.es.resx">
       <DependentUpon>ConnectLogForm.cs</DependentUpon>
@@ -2560,6 +2564,14 @@
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
     <Folder Include="SvgLibrary\Web\Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MQTTnet">
+      <Version>4.3.7.1207</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.3</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
