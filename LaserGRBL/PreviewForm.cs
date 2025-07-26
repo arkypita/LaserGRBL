@@ -9,7 +9,9 @@ using LaserGRBL.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+#if OS_WINDOWS
 using System.Diagnostics.Eventing.Reader;
+#endif
 using System.Drawing;
 using System.Windows.Forms;
 
