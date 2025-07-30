@@ -170,6 +170,7 @@ namespace LaserGRBL
 				SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
 				converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
 				converter.UseLegacyBezier = !Settings.GetObject($"Vector.UseSmartBezier", true);
+				converter.ReplaceClonesWithOriginals = Settings.GetObject($"Vector.ReplaceClones", false);
 
 				string gcode = converter.convertFromFile(filename, core, filter);
 				string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
@@ -1423,6 +1424,7 @@ namespace LaserGRBL
 			converter.UserOffset.X = Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F);
 			converter.UserOffset.Y = Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F);
 			converter.UseLegacyBezier = !Settings.GetObject($"Vector.UseSmartBezier", true);
+			converter.ReplaceClonesWithOriginals = Settings.GetObject($"Vector.ReplaceClones", false);
 
 			string gcode = converter.convertFromText(content, core);
 			string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);

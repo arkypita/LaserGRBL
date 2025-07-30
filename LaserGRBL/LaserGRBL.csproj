@@ -229,6 +229,7 @@
     <Compile Include="ComWrapper\RJCP\Trace\LoggerTraceListener.cs" />
     <Compile Include="ComWrapper\RJCP\Trace\LogSource.cs" />
     <Compile Include="ComWrapper\RJCP\Trace\LogSourceFactory.cs" />
+    <Compile Include="SvgConverter\CloneReplacer.cs" />
     <Compile Include="SvgIcons\SvgIcons.cs" />
     <Compile Include="Tools\Application.cs" />
     <Compile Include="Tools\DoubleBufferBmp.cs" />

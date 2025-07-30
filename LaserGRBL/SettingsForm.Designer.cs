@@ -181,6 +181,8 @@
 			this.label49 = new System.Windows.Forms.Label();
 			this.label50 = new System.Windows.Forms.Label();
 			this.SoundBrowserDialog = new System.Windows.Forms.OpenFileDialog();
+            this.CbReplaceClones = new System.Windows.Forms.CheckBox();
+            this.labelReplaceClones = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.MainTabPage.SuspendLayout();
@@ -550,6 +552,8 @@
 			// tableLayoutPanel18
 			// 
 			resources.ApplyResources(this.tableLayoutPanel18, "tableLayoutPanel18");
+            this.tableLayoutPanel18.Controls.Add(this.labelReplaceClones, 2, 1);
+            this.tableLayoutPanel18.Controls.Add(this.CbReplaceClones, 1, 1);
 			this.tableLayoutPanel18.Controls.Add(this.label43, 2, 0);
 			this.tableLayoutPanel18.Controls.Add(this.CbSmartBezier, 1, 0);
 			this.tableLayoutPanel18.Controls.Add(this.imageButton1, 0, 0);
@@ -1291,6 +1295,17 @@
 			// 
 			resources.ApplyResources(this.SoundBrowserDialog, "SoundBrowserDialog");
 			// 
+            // CbReplaceClones
+            // 
+            resources.ApplyResources(this.CbReplaceClones, "CbReplaceClones");
+            this.CbReplaceClones.Name = "CbReplaceClones";
+            this.CbReplaceClones.UseVisualStyleBackColor = true;
+            // 
+            // labelReplaceClones
+            // 
+            resources.ApplyResources(this.labelReplaceClones, "labelReplaceClones");
+            this.labelReplaceClones.Name = "labelReplaceClones";
+            // 
 			// SettingsForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -1522,5 +1537,7 @@
 		private UserControls.ImageButton BtnRenderingMode;
 		private System.Windows.Forms.Label label49;
 		private System.Windows.Forms.Label label50;
+		private System.Windows.Forms.Label labelReplaceClones;
+		private System.Windows.Forms.CheckBox CbReplaceClones;
 	}
 }
