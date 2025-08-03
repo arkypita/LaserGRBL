@@ -11,6 +11,7 @@ namespace LaserGRBL.SvgConverter
     /// </summary>
     public class CloneReplacer
     {
+        private const int CLONE_NESTING_LIMIT = 20;
         public CloneReplacer() {}
 
         #region ScanSVGAndReplaceClonedElements
@@ -100,11 +101,12 @@ namespace LaserGRBL.SvgConverter
         {
             var isFound = svgElementMap.TryGetValue(idOfPotentialClone, out TraversalElementInfo cloneInfo);
             recurseCount = recurseCount + 1;
-            if (recurseCount > 20)
+            if (recurseCount > CLONE_NESTING_LIMIT)
             {
                 // Assume the worse. It's a corrupt SVG with an infinite loop reference problem.
                 // Bail out to prevent stack overflow.
-                // Be nice to raise an error here.
+                Logger.LogMessage("CloneReplace", "Aborting clone nesting deeper than {0}. Clone: '{1}' Source: '{2}'", CLONE_NESTING_LIMIT, idOfPotentialClone, cloneInfo.SourceID);
+                cloneInfo.MarkDeadEnd();
                 return null;
             }
             if (isFound)
@@ -201,6 +203,14 @@ namespace LaserGRBL.SvgConverter
                 var v = linkAtribute.Value ?? "";
                 SourceID = v.StartsWith("#") ? v.Substring(1) : v; // Remove the leading "#" if it exists
             }
+        }
+
+        /// <summary>
+        /// Marks the element as a dead end. Useful in the case of a recursion problem.
+        /// </summary>
+        public void MarkDeadEnd()
+        {
+            this.SourceID = null;
         }
     } 
     #endregion
