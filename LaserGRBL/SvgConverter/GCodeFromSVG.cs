@@ -142,6 +142,11 @@ namespace LaserGRBL.SvgConverter
 			for (int i = 0; i < matrixGroup.Length; i++)
 				matrixGroup[i].SetIdentity();
 
+			if(ReplaceClonesWithOriginals)
+			{
+				CloneReplacer cloneReplacer = new CloneReplacer();
+				cloneReplacer.ScanSVGAndReplaceClonedElements(svgCode);
+			}
 			parseGlobals(svgCode);
 			if (!svgNodesOnly)
 				parseBasicElements(svgCode, 1);
@@ -1292,6 +1297,10 @@ namespace LaserGRBL.SvgConverter
 		public bool UseLegacyBezier { get; set; }
 		public bool SvgScaleApply { get => svgScaleApply; set => svgScaleApply = value; }
 		public float SvgMaxSize { get => svgMaxSize; set => svgMaxSize = value; }
+		/// <summary>
+		/// Toggles the scanning and replacement of "use" clones within the SVG with their original source objects.
+		/// </summary>
+		public bool ReplaceClonesWithOriginals { get; set; } = false;
 
 		/// <summary>
 		/// Insert G1 gcode command

@@ -101,6 +101,7 @@ namespace LaserGRBL
             DisconnectFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}", $"Sound\\{SoundEvent.EventId.Disconnect}.wav");
 
 			CbSmartBezier.Checked = Settings.GetObject($"Vector.UseSmartBezier", true);
+			CbReplaceClones.Checked = Settings.GetObject($"Vector.ReplaceClones", false);
 
 			CbDisableSafetyCD.Checked = Settings.GetObject("DisableSafetyCountdown", false);
 			CbQuietSafetyCB.Checked = Settings.GetObject("QuietSafetyCountdown", false);
@@ -251,6 +252,7 @@ namespace LaserGRBL
             Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);
 
 			Settings.SetObject("Vector.UseSmartBezier", CbSmartBezier.Checked);
+			Settings.SetObject("Vector.ReplaceClones", CbReplaceClones.Checked);
 
 			Settings.SetObject("DisableSafetyCountdown", CbDisableSafetyCD.Checked);
 			Settings.SetObject("QuietSafetyCountdown", CbQuietSafetyCB.Checked);
