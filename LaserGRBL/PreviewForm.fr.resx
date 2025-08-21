@@ -153,4 +153,7 @@
   <data name="BtnHoming.ToolTip" xml:space="preserve">
     <value>Homing ($H)</value>
   </data>
+  <data name="MnLockButton.Text" xml:space="preserve">
+    <value>Verouiller la position (Cliquer pour réorganiser)</value>
+  </data>
 </root>

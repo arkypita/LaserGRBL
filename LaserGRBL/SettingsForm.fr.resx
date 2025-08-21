@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Tête</value>
@@ -159,7 +159,7 @@ Si cette option est désactivée, les problèmes seront gérés silencieusement 
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Type de firmware :
-- Grbl : l'incroyable firmware pour lequel LaserGRBL a été dévellopé
+- Grbl : l'incroyable firmware pour lequel LaserGRBL a été développé
 - Smoothieware [Expériemental] : le support a été ajouté récemment et n'est pas encore completement testé.</value>
   </data>
   <data name="TpHardware.Text" xml:space="preserve">
@@ -273,5 +273,155 @@ Après ce temps, LaserGRBL enverra extinction d'alimentation automatique pour re
   </data>
   <data name="TpRasterImport.Text" xml:space="preserve">
     <value>Import matriciel</value>
+  </data>
+  <data name="CbQueryDI.Text" xml:space="preserve">
+    <value>Interroger $l à la connexion</value>
+  </data>
+  <data name="label46.Text" xml:space="preserve">
+    <value>Lorsque cette option est activée, LaserGRBL envoie la commande $l et récupère des informations sur la machine (par exemple; la taille du tampon de réception RX). Merci de ne pas désactiver cette fonctionnalité</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>La résolution maximale disponible dans LaserGRBL est de 20 lignes/mm (environ 500 ppp), ce qui est suffisant pour la plupart des utilisateurs. Si vous avez besoin d'une résolution plus élevée, vous pouvez activer « HiRes » et supprimer cette limite. Attention : LaserGRBL nécessitera beaucoup plus de ressources !</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>Remplissage HiRes</value>
+  </data>
+  <data name="CbDisableSkip.Text" xml:space="preserve">
+    <value>Désactiver le saut rapide G0</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>Par défaut, LaserGRBL utilise le mouvement rapide G0 pour ignorer les zones blanches de vos travaux. Cela accélère le processus de gravure, mais peut entraîner un positionnement imprécis et des résultats décevants. Il est généralement possible d'améliorer les résultats en définissant correctement les valeurs maximales d'accélération et de vitesse ($120,121,122 et $110,111,112) dans la configuration de GRBL.
+
+Si vous désactivez cette fonctionnalité, LaserGRBL utilisera le mouvement linéaire G1 à la même vitesse de travail, ce qui entraînera une gravure uniforme. Cela ralentira le processus, mais peut considérablement améliorer le résultat là où d'autres approches échouent.</value>
+  </data>
+  <data name="CbDisableBoundWarn.Text" xml:space="preserve">
+    <value>Désactiver l'avertissement de limite</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>LaserGRBL vous avertira si vous envisagez de créer une tâche plus grande que votre espace de travail de gravure.
+Activez cette option si vous ne souhaitez pas utiliser ce contrôle de sécurité.</value>
+  </data>
+  <data name="label43.Text" xml:space="preserve">
+    <value>À partir de la version 4.6.1, LaserGRBL utilise un meilleur algorithme d'approximation des courbes de Bézier, capable de produire des résultats plus précis. Désactivez cette option si vous préférez utiliser l'ancien algorithme.</value>
+  </data>
+  <data name="TpVectorImport.Text" xml:space="preserve">
+    <value>Importation de vecteurs</value>
+  </data>
+  <data name="CbClickNJog.Text" xml:space="preserve">
+    <value>Click 'n Jog</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>Avec « click 'n jog » activé, un double-clic sur la surface d'aperçu déplacera vers la position de clic.</value>
+  </data>
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+    <value>Utilisateur Ortur : Le micrologiciel Ortur (jusqu'à la version 137) présente un bug de reprise d'usinage qui empêche l'utilisation correcte de la fonction de refroidissement automatique. Veuillez ne pas utiliser le refroidissement automatique avec le graveur Ortur avant la sortie d'un nouveau micrologiciel.</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Vous pouvez ici définir un autre son pour les événements de réussite, comme la fin d'une tâche.
+Cochez cette case pour activer ce son.</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Vous pouvez ici définir un autre signal sonore d'avertissement.
+Ce signal est généralement émis en cas de commande GCode incorrecte, mais votre machine peut continuer à fonctionner.
+Cochez cette case pour l'activer.
+</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Son d'avertissement</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>Changer</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Fichier son</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Son d'erreur</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>Changer</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Fichier son</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Son de connexion</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>Changer</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Fichier son</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Son de deconnexion</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>Changer</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Fichier son</value>
+  </data>
+  <data name="LblSuccessSound.Text" xml:space="preserve">
+    <value>Son de succès</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>Changer</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Fichier son</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Vous pouvez ici définir un son pour une connexion réussie. Cochez cette case pour activer cette option.
+</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Vous pouvez ici définir un son de déconnexion.
+Utile pour certaines connexions Wi-Fi.
+Cochez cette case pour activer.
+</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Ici, vous pouvez définir un son d'erreur pour les erreurs fatales. Cela signifie que votre tâche s'est probablement arrêtée et que LaserGRBL ne peut pas poursuivre l'opération.
+Cochez cette case pour activer cette option.
+</value>
+  </data>
+  <data name="label44.Text" xml:space="preserve">
+    <value>Ne pas notifier si le temps de travail est inférieur à</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>Notification par télégramme</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Code personnel</value>
+  </data>
+  <data name="label42.Text" xml:space="preserve">
+    <value>Si vous utilisez Telegram, recherchez le bot @LaserGRBL.
+Obtenez votre code personnel et saisissez-le ici !!</value>
+  </data>
+  <data name="CbDisableSafetyCD.Text" xml:space="preserve">
+    <value>Désactiver le compte à rebours de sécurité</value>
+  </data>
+  <data name="label47.Text" xml:space="preserve">
+    <value>Cette option supprimera le compte à rebours de rappel de sécurité pour vous rappeler de porter des lunettes de sécurité. Je vous conseille de ne pas désactiver ce compte à rebours ; cela vous laisse 5 secondes pour vérifier que tout va bien.</value>
+  </data>
+  <data name="CbQuietSafetyCB.Text" xml:space="preserve">
+    <value>Compte à rebours silencieux</value>
+  </data>
+  <data name="label48.Text" xml:space="preserve">
+    <value>Désactiver le son « bip » pendant le compte à rebours de sécurité.</value>
+  </data>
+  <data name="CbLegacyIcons.Text" xml:space="preserve">
+    <value>Icones d'ogines</value>
+  </data>
+  <data name="label49.Text" xml:space="preserve">
+    <value>Utiliser les anciennes icônes LaserGRBL</value>
+  </data>
+  <data name="label50.Text" xml:space="preserve">
+    <value>Mode de rendu
+- Auto : LaserGRBL choisit la configuration la plus adaptée (préfère l'accélération matérielle).
+- Accélération matérielle : Utilise OpenGL avec l'accélération matérielle (si prise en charge).
+- Rendu logiciel : Utilise OpenGL avec le rendu logiciel (sélectionnez cette option si vous rencontrez des problèmes avec l'accélération matérielle).
+- Hérité : Désactive OpenGL et utilise l'ancien formulaire d'aperçu (sélectionnez cette option sur un ancien ordinateur).</value>
   </data>
 </root>

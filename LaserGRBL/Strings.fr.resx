@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoxAutoUpdateFailed" xml:space="preserve">
     <value>Mise à jour automatique échouée!
@@ -323,5 +323,160 @@ Continuer quand même ?</value>
   </data>
   <data name="StepSliderToolTip" xml:space="preserve">
     <value>Pas :</value>
+  </data>
+  <data name="WarnSoftLimitOOB" xml:space="preserve">
+    <value>Vous avez défini une taille et un décalage qui rendent la tâche plus grande que l'espace de travail configuré dans votre graveur ({0}mm x {1}mm).
+Paramètres Grbl $130 et $131.
+
+Cela pourrait générer une erreur de limite logicielle ou la machine pourrait se bloquer sur les limites des axes. Êtes-vous sûr des valeurs saisies ?</value>
+  </data>
+  <data name="WarnSoftLimitNS" xml:space="preserve">
+    <value>Vous avez défini des décalages négatifs, mais votre graveur est configuré pour utiliser un espace positif avec une alarme de limite souple activée ($20=1).
+
+Cela pourrait générer une erreur de limite souple. Êtes-vous sûr des valeurs saisies ?</value>
+  </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>L'option Ligne centrale n'est pas compatible avec votre PC. Un système d'exploitation 64 bits est requis !</value>
+  </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>L'option Line2Line n'est pas compatible avec votre graveur ni avec votre configuration. Un laser compatible PWM est requis, et la prise en charge PWM doit être activée dans les paramètres de LaserGRBL.</value>
+  </data>
+  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
+    <value>Impossible d'ouvrir un nouveau fichier maintenant.</value>
+  </data>
+  <data name="WarnSoftLimitTitle" xml:space="preserve">
+    <value>Confirmation des limites du travail</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>Ce type de fichier n'est pas pris en charge.</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>Avertissement</value>
+  </data>
+  <data name="DirectionNewCross" xml:space="preserve">
+    <value>Remplissage croisé</value>
+  </data>
+  <data name="DirectionNewDiagonal" xml:space="preserve">
+    <value>Diagonal</value>
+  </data>
+  <data name="DirectionNewDiagonalCross" xml:space="preserve">
+    <value>Remplissage croisé diagonal</value>
+  </data>
+  <data name="DirectionNewDiagonalGrid" xml:space="preserve">
+    <value>Grille diagonal</value>
+  </data>
+  <data name="DirectionNewGrid" xml:space="preserve">
+    <value>Grille</value>
+  </data>
+  <data name="DirectionNewHorizontal" xml:space="preserve">
+    <value>Horizontale</value>
+  </data>
+  <data name="DirectionNewInsetFilling" xml:space="preserve">
+    <value>Remplissage d'encart</value>
+  </data>
+  <data name="DirectionNewReverseDiagonal" xml:space="preserve">
+    <value>Diagonale inversée</value>
+  </data>
+  <data name="DirectionNewSquares" xml:space="preserve">
+    <value>Carrés</value>
+  </data>
+  <data name="DirectionNewVertical" xml:space="preserve">
+    <value>Verticale</value>
+  </data>
+  <data name="WarnWrongLaserMode" xml:space="preserve">
+    <value>Le « Mode de puissance laser dynamique M4 » a été activé, mais votre graveur ne semble pas le prendre en charge. Seuls les graveurs dont la version de GRBL est supérieure à 1.1 et dont le « mode laser » est activé ($32=1) peuvent bénéficier de l'option M4.</value>
+  </data>
+  <data name="WarnWrongLaserModeTitle" xml:space="preserve">
+    <value>Avertissement</value>
+  </data>
+  <data name="DirectionNewHilbert" xml:space="preserve">
+    <value>Hilbert</value>
+  </data>
+  <data name="DitheringOptions" xml:space="preserve">
+    <value>Options de tramage</value>
+  </data>
+  <data name="Line2LineOptions" xml:space="preserve">
+    <value>Options ligne à ligne</value>
+  </data>
+  <data name="WarnUnlockProportionText" xml:space="preserve">
+    <value>L'attribution libre de la largeur et de la hauteur de l'œuvre peut entraîner une distorsion de l'image. Voulez-vous continuer ?</value>
+  </data>
+  <data name="WarnUnlockProportionTitle" xml:space="preserve">
+    <value>Avertssement</value>
+  </data>
+  <data name="BoxTelegramSettingText" xml:space="preserve">
+    <value>Une notification de test a été envoyée, veuillez vérifier votre téléphone !</value>
+  </data>
+  <data name="BoxTelegramSettingTitle" xml:space="preserve">
+    <value>Notification par télégram</value>
+  </data>
+  <data name="WarnBufferStuckUnlockText" xml:space="preserve">
+    <value>Si le tampon est bloqué, cela signifie qu'il y a un problème de communication avec votre graveur. Si vous appuyez sur « OK », LaserGRBL ignorera le tampon plein et enverra les commandes suivantes. Si cela se produit souvent, essayez d'en comprendre les causes.
+Cliquez sur « ? » pour plus d'informations.</value>
+  </data>
+  <data name="WarnBufferStuckUnlockTitle" xml:space="preserve">
+    <value>Déverrouiller le tampon</value>
+  </data>
+  <data name="ProblemConnectingText" xml:space="preserve">
+    <value>Erreur lors de la connexion de votre graveur.
+
+Si vous avez besoin d'aide, cliquez sur le bouton « ? ».</value>
+  </data>
+  <data name="ProblemConnectingTitle" xml:space="preserve">
+    <value>Problème de connexion ?</value>
+  </data>
+  <data name="BoxMachineSizeOutOfRangeText" xml:space="preserve">
+    <value>Certains paramètres de configuration du graveur sont hors limites. Veuillez vérifier les paramètres 130 et 131 de la configuration de la machine (menu « Grbl », « Configuration Grbl »).</value>
+  </data>
+  <data name="BoxMachineSizeOutOfRangeTitle" xml:space="preserve">
+    <value>Avertissement</value>
+  </data>
+  <data name="PreviewChangesRequiresRestart" xml:space="preserve">
+    <value>Un redémarrage est nécessaire pour appliquer les modifications de l'aperçu. Redémarrer maintenant ?</value>
+  </data>
+  <data name="IconsChangesRequiresRestart" xml:space="preserve">
+    <value>Un redémarrage est nécessaire pour appliquer les modifications des icônes. Redémarrer maintenant ?</value>
+  </data>
+  <data name="MdiIconCaption" xml:space="preserve">
+    <value>MDI Icon code</value>
+  </data>
+  <data name="DBOIssueSuggestGDI" xml:space="preserve">
+    <value>Il semble que votre ordinateur ne prenne pas en charge le rendu logiciel. Souhaitez-vous redémarrer LaserGRBL et passer en mode Legacy ?</value>
+  </data>
+  <data name="FBOIssueSuggestDBO" xml:space="preserve">
+    <value>Il semble que votre ordinateur ne prenne pas en charge l'accélération matérielle. Souhaitez-vous redémarrer LaserGRBL et passer au rendu logiciel ?</value>
+  </data>
+  <data name="AlreadyLoading" xml:space="preserve">
+    <value>Un fichier est déjà en cours de chargement, veuillez patienter...</value>
+  </data>
+  <data name="ClearDrawing" xml:space="preserve">
+    <value>Effacement du dessin...</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Chargement</value>
+  </data>
+  <data name="PrepareDrawing" xml:space="preserve">
+    <value>Préparation du dessin</value>
+  </data>
+  <data name="TipsBasicUsage" xml:space="preserve">
+    <value>Usage basique</value>
+  </data>
+  <data name="TipsJog" xml:space="preserve">
+    <value>JOG : Double-cliquez sur n'importe quel point (ou appuyez deux fois)</value>
+  </data>
+  <data name="TipsKeyboardShortcuts" xml:space="preserve">
+    <value>Raccourcis clavier</value>
+  </data>
+  <data name="TipsPan" xml:space="preserve">
+    <value>PAN : Cliquez et faites glisser (ou touchez et faites glisser)</value>
+  </data>
+  <data name="TipsZoom" xml:space="preserve">
+    <value>ZOOM : Utilisez la molette de la souris (ou un geste à deux doigts)</value>
+  </data>
+  <data name="TipsZoomIn" xml:space="preserve">
+    <value>Zoom +   (+10%)</value>
+  </data>
+  <data name="TipsZoomOut" xml:space="preserve">
+    <value>Zoom -  (-10%)</value>
   </data>
 </root>
