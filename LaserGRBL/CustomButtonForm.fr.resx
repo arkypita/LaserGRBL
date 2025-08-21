@@ -151,4 +151,7 @@ Voir : https://lasergrbl.com/usage/custom-buttons/</value>
   <data name="LblImage.Text" xml:space="preserve">
     <value>Image</value>
   </data>
+  <data name="LblCaption.Text" xml:space="preserve">
+    <value>Légende</value>
+  </data>
 </root>
