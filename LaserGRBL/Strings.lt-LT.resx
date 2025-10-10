@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BoxConnectErrorTitle" xml:space="preserve">
+    <value>Negalima prisijungti prie įrenginio</value>
+  </data>
+  <data name="InterpolationModeNearestNeighbor" xml:space="preserve">
+    <value>Aštrus (artimiausias kaimynas)</value>
+  </data>
+  <data name="WarnSoftLimitOOB" xml:space="preserve">
+    <value>Jūs nustatėte dydį ir nuokrypį, dėl kurių darbas tampa didesnis nei jūsų graviravimo staklėse sukonfigūruota darbo erdvė ({0}mm x {1}mm).
+Grbl parametrai $130 ir $131.
+
+Dėl to gali atsirasti minkštojo apribojimo klaida arba staklės gali atsitrenkti į ašių ribą. Ar esate tikri dėl įvestų verčių?</value>
+  </data>
+  <data name="WarnSoftLimitNS" xml:space="preserve">
+    <value>Jūs nustatėte neigiamus nuokrypius, bet jūsų graviravimo įrenginys yra nustatytas naudoti teigiamą erdvę su įjungtu minkštu ribos signalu ($20=1).
+
+Tai gali sukelti minkšto ribos signalo klaidą. Ar esate tikri dėl įvestų verčių?</value>
+  </data>
+  <data name="DirectionDiagonal" xml:space="preserve">
+    <value>Įstrižainė (sena)</value>
+  </data>
+  <data name="AddCustomButtonsHint" xml:space="preserve">
+    <value>Dešiniuoju pelės mygtuku spustelėkite čia, kad pridėtumėte pas</value>
+  </data>
+  <data name="FirmwareRequireRestart" xml:space="preserve">
+    <value>Reikia paleisti iš naujo</value>
+  </data>
+  <data name="DirectionHorizontal" xml:space="preserve">
+    <value>Horizontali (sena)</value>
+  </data>
+  <data name="BoxImportCustomButtonrCaption" xml:space="preserve">
+    <value>Patvirtinimas</value>
+  </data>
+  <data name="MacStatusUnknown" xml:space="preserve">
+    <value>Nežinoma</value>
+  </data>
+  <data name="InterpolationModeHighQualityBicubic" xml:space="preserve">
+    <value>Sklandus (HQ Bicubic)</value>
+  </data>
+  <data name="BoxReadConfigSuccess" xml:space="preserve">
+    <value>{0} Konfigūracija sėkmingai perskaityta!</value>
+  </data>
+  <data name="FormulaOpticalCorrect" xml:space="preserve">
+    <value>Optinis koregavimas</value>
+  </data>
+  <data name="WarnCenterline64bit" xml:space="preserve">
+    <value>Centerline parinktis nėra suderinama su jūsų kompiuteriu.
+Reikalinga 64 bitų operacinė sistema!</value>
+  </data>
+  <data name="CustomButtonEdit" xml:space="preserve">
+    <value>Redaguoti mygtuką</value>
+  </data>
+  <data name="BoxImportConfigWithoutError" xml:space="preserve">
+    <value>{0} Konfigūracija importuota sėkmingai!</value>
+  </data>
+  <data name="BoxReadConfigError" xml:space="preserve">
+    <value>Klaida skaitant konfigūraciją!</value>
+  </data>
+  <data name="BoxImportCustomButtonCaption" xml:space="preserve">
+    <value>Importuoti pasirinktinį mygtuką</value>
+  </data>
+  <data name="BoxExportConfigErrorTitle" xml:space="preserve">
+    <value>Klaida</value>
+  </data>
+  <data name="BoxReadConfigPleaseConnect" xml:space="preserve">
+    <value>Rodo išsaugotas vertes...</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipText" xml:space="preserve">
+    <value>Pateikite įrankio patarimo tekstą</value>
+  </data>
+  <data name="BoxExportConfigSuccessTitle" xml:space="preserve">
+    <value>Sėkmė</value>
+  </data>
+  <data name="FirmwareRequireRestartNow" xml:space="preserve">
+    <value>Norint pritaikyti programinės įrangos tipo pakeitimus, reikia iš naujo paleisti kompiuterį. Ar paleisti iš naujo dabar?</value>
+  </data>
+  <data name="WarnLine2LinePWM" xml:space="preserve">
+    <value>Line2Line parinktis nėra suderinama su jūsų graviravimo įrenginiu arba jūsų konfigūracija. Reikalingas PWM palaikantis lazeris, o PWM palaikymas turėtų būti įjungtas LaserGRBL nustatymuose.</value>
+  </data>
+  <data name="FormulaSimpleAverage" xml:space="preserve">
+    <value>Paprastas vidurkis</value>
+  </data>
+  <data name="MsgboxCannotOpenFileNow" xml:space="preserve">
+    <value>Dabar negalima atidaryti naujo failo.</value>
+  </data>
+  <data name="BoxWriteConfigNoChange" xml:space="preserve">
+    <value>Jokių pokyčių... nėra ko įrašyti!</value>
+  </data>
+  <data name="MacStatusAlarm" xml:space="preserve">
+    <value>Signalas</value>
+  </data>
+  <data name="MacStatusDisconnected" xml:space="preserve">
+    <value>Atsijungta</value>
+  </data>
+  <data name="LanguageRequireRestartNow" xml:space="preserve">
+    <value>Reikia paleisti programą iš naujo, paleisti dabar?</value>
+  </data>
+  <data name="MacStatusHome" xml:space="preserve">
+    <value>Pradžia</value>
+  </data>
+  <data name="BoxAutoUpdateSuccess" xml:space="preserve">
+    <value>Atnaujinimas sėkmingas!</value>
+  </data>
+  <data name="BoxCustomButtonPleaseGCodeText" xml:space="preserve">
+    <value>Pateikite GCode komandas</value>
+  </data>
+  <data name="LanguageRequireRestart" xml:space="preserve">
+    <value>Reikia paleisti iš naujo</value>
+  </data>
+  <data name="BoxImportConfigWithError" xml:space="preserve">
+    <value>{0} Konfigūracija importuota su {1} klaidomis!</value>
+  </data>
+  <data name="ResumeJobHomingRequiredTitle" xml:space="preserve">
+    <value>Nežinoma padėtis</value>
+  </data>
+  <data name="MacStatusIdle" xml:space="preserve">
+    <value>Nenaudojamas</value>
+  </data>
+  <data name="SpeedSliderToolTip" xml:space="preserve">
+    <value>Greitis:</value>
+  </data>
+  <data name="FormulaWeightAverage" xml:space="preserve">
+    <value>Svorio vidurkis</value>
+  </data>
+  <data name="BoxAutoUpdateFailed" xml:space="preserve">
+    <value>Automatinis atnaujinimas nepavyko!
+Prašome naują versiją atsisiųsti rankiniu būdu iš lasergrbl svetainės.</value>
+  </data>
+  <data name="BoxWriteConfigWithoutError" xml:space="preserve">
+    <value>{0} Konfigūracija sėkmingai įrašyta!</value>
+  </data>
+  <data name="BoxCustomButtonPleaseToolTipTitle" xml:space="preserve">
+    <value>Trūksta lauko</value>
+  </data>
+  <data name="DirectionVertical" xml:space="preserve">
+    <value>Vertikalus (senas)</value>
+  </data>
+  <data name="FormulaCustom" xml:space="preserve">
+    <value>Pasirinktinis</value>
+  </data>
+  <data name="BoxDeleteCustomButtonTitle" xml:space="preserve">
+    <value>Naikinti pasirinktinį mygtuką</value>
+  </data>
+  <data name="MacStatusJog" xml:space="preserve">
+    <value>Judesys</value>
+  </data>
+  <data name="MacStatusDoor" xml:space="preserve">
+    <value>Durys</value>
+  </data>
+  <data name="BoxAutoUpdateResult" xml:space="preserve">
+    <value>Atnaujinti rezultatą</value>
+  </data>
+  <data name="BoxExportConfigFileNotFound" xml:space="preserve">
+    <value>Failo nėra!</value>
+  </data>
+  <data name="WarnSoftLimitTitle" xml:space="preserve">
+    <value>Darbo ribų patvirtinimas</value>
+  </data>
+  <data name="BoxImportConfigFileError" xml:space="preserve">
+    <value>Klaida skaitant failą!</value>
+  </data>
+  <data name="ExitAnyway" xml:space="preserve">
+    <value>Failų perkėlimas vyksta. Vis tiek norite išeiti?</value>
+  </data>
+  <data name="StepSliderToolTip" xml:space="preserve">
+    <value>Žingsnis:</value>
+  </data>
+  <data name="MainFormEstimatedTime" xml:space="preserve">
+    <value>Numatomas laikas:</value>
+  </data>
+  <data name="BoxExportConfigSuccess" xml:space="preserve">
+    <value>{0} Konfigūracija eksportuota sėkmingai!</value>
+  </data>
+  <data name="BoxExportConfigError" xml:space="preserve">
+    <value>Klaida eksportuojant konfigūraciją!</value>
+  </data>
+  <data name="BoxConfigDetectedChanges" xml:space="preserve">
+    <value>Yra keletas pakeitimų, kurie nebuvo pritaikyti.
+Ar norite perrašyti konfigūraciją?</value>
+  </data>
+  <data name="BtnDisconnectTT" xml:space="preserve">
+    <value>Atsijungti</value>
+  </data>
+  <data name="BoxAutoUpdateRequireAdmin" xml:space="preserve">
+    <value>Atnaujinimui reikalingos administratoriaus teisės!</value>
+  </data>
+  <data name="ResumeJobHomingRequired" xml:space="preserve">
+    <value>Atrodo, kad dabartinė padėtis Grbl nebėra žinoma.
+Be grįžimo procedūros ($H) rezultatas gali būti nepatikimas.
+Tęsti vis tiek?</value>
+  </data>
+  <data name="MacStatusConnecting" xml:space="preserve">
+    <value>Jungiamasi</value>
+  </data>
+  <data name="BoxImportCustomButtonClearText" xml:space="preserve">
+    <value>Pašalinti esamus mygtukus? Pasirinkite „taip“, jei norite pašalinti, „ne“, jei norite palikti</value>
+  </data>
+  <data name="MacStatusHold" xml:space="preserve">
+    <value>Laikyti</value>
+  </data>
+  <data name="BtnConnectTT" xml:space="preserve">
+    <value>Prisijungti</value>
+  </data>
+  <data name="CustomButtonRemove" xml:space="preserve">
+    <value>Pašalinti mygtuką</value>
+  </data>
+  <data name="MacStatusCheck" xml:space="preserve">
+    <value>Patikrinti</value>
+  </data>
+  <data name="UnsupportedFiletype" xml:space="preserve">
+    <value>Šis failo tipas nėra palaikomas.</value>
+  </data>
+  <data name="BoxWriteConfigWithError" xml:space="preserve">
+    <value>{0} Konfigūracija parašyta su {1} klaidomis!</value>
+  </data>
+  <data name="MacStatusRun" xml:space="preserve">
+    <value>Vykdyti</value>
+  </data>
+  <data name="BoxConfigDetectedChangesTitle" xml:space="preserve">
+    <value>Aptikti pokyčiai!</value>
+  </data>
+  <data name="MainFormProjectedTime" xml:space="preserve">
+    <value>Numatomas laikas:</value>
+  </data>
+  <data name="WarnMessageBoxHeader" xml:space="preserve">
+    <value>Įspėjimas</value>
+  </data>
+  <data name="DisconnectAnyway" xml:space="preserve">
+    <value>Failų perdavimas vyksta. Vis tiek norite nutraukti ryšį?</value>
+  </data>
+  <data name="BoxDeleteCustomButtonText" xml:space="preserve">
+    <value>Ar tikrai norite ištrinti pasirinktą mygtuką?</value>
+  </data>
+  <data name="DirectionNone" xml:space="preserve">
+    <value>Be užpildo</value>
+  </data>
+  <data name="BoxAbortProgramConfirm" xml:space="preserve">
+    <value>Nutraukti dabartinį darbą?</value>
+  </data>
+  <data name="DirectionNewCross" xml:space="preserve">
+    <value>Kryžminis užpildymas</value>
+  </data>
+  <data name="DirectionNewDiagonal" xml:space="preserve">
+    <value>Įstrižainė</value>
+  </data>
+  <data name="DirectionNewDiagonalCross" xml:space="preserve">
+    <value>Įstrižinis kryžminis užpildymas</value>
+  </data>
+  <data name="DirectionNewDiagonalGrid" xml:space="preserve">
+    <value>Įstrižainis tinklelis</value>
+  </data>
+  <data name="DirectionNewGrid" xml:space="preserve">
+    <value>Tinklelis</value>
+  </data>
+  <data name="DirectionNewHorizontal" xml:space="preserve">
+    <value>Horizontali</value>
+  </data>
+  <data name="DirectionNewInsetFilling" xml:space="preserve">
+    <value>Įdėklų užpildymas</value>
+  </data>
+  <data name="DirectionNewReverseDiagonal" xml:space="preserve">
+    <value>Diagonali atvirkštinė</value>
+  </data>
+  <data name="DirectionNewSquares" xml:space="preserve">
+    <value>Kvadratai</value>
+  </data>
+  <data name="DirectionNewVertical" xml:space="preserve">
+    <value>Vertikalus</value>
+  </data>
+  <data name="DirectionNewZigZag" xml:space="preserve">
+    <value>Zigzagas</value>
+  </data>
+  <data name="WarnWrongLaserMode" xml:space="preserve">
+    <value>Nustatytas „M4 dinaminis lazerio galios režimas“, tačiau jūsų graviravimo įrenginys jo nepalaiko.
+Tik graviravimo įrenginiai su grbl versija &gt;= 1.1, kuriuose įjungtas „lazerio režimas“ ($32=1), gali naudotis M4 parinktimi.</value>
+  </data>
+  <data name="WarnWrongLaserModeTitle" xml:space="preserve">
+    <value>Įspėjimas</value>
+  </data>
+  <data name="DirectionNewHilbert" xml:space="preserve">
+    <value>Hilbertas</value>
+  </data>
+  <data name="DitheringOptions" xml:space="preserve">
+    <value>Dithering parinktys</value>
+  </data>
+  <data name="Line2LineOptions" xml:space="preserve">
+    <value>Linija į liniją parinktys</value>
+  </data>
+  <data name="WarnUnlockProportionText" xml:space="preserve">
+    <value>Laisvai nustatant darbo plotį ir aukštį, vaizdas gali būti iškraipytas. Ar norite tęsti?</value>
+  </data>
+  <data name="WarnUnlockProportionTitle" xml:space="preserve">
+    <value>Įspėjimas</value>
+  </data>
+  <data name="BoxTelegramSettingText" xml:space="preserve">
+    <value>Testinis pranešimas išsiųstas, patikrinkite savo telefoną!</value>
+  </data>
+  <data name="BoxTelegramSettingTitle" xml:space="preserve">
+    <value>Telegram pranešimas</value>
+  </data>
+  <data name="WarnBufferStuckUnlockText" xml:space="preserve">
+    <value>Jei buferis yra užblokuotas, tai reiškia, kad buvo kokių nors ryšio problemų su jūsų graviravimo įrenginiu. Jei paspausite „OK“, LaserGRBL ignoruos visą buferį ir išsiųs kitas komandas. Jei tai atsitinka dažnai, turėtumėte pabandyti išsiaiškinti šios problemos priežastis.
+Norėdami gauti daugiau informacijos, spustelėkite „?“.</value>
+  </data>
+  <data name="WarnBufferStuckUnlockTitle" xml:space="preserve">
+    <value>Atrakinti buferį</value>
+  </data>
+  <data name="ProblemConnectingText" xml:space="preserve">
+    <value>Klaida jungiant graviravimo įrenginį.
+Jei reikia pagalbos, spustelėkite mygtuką „?“.</value>
+  </data>
+  <data name="ProblemConnectingTitle" xml:space="preserve">
+    <value>Problema su ryšiu?</value>
+  </data>
+  <data name="BoxMachineSizeOutOfRangeText" xml:space="preserve">
+    <value>Graverio kai kurie konfigūracijos parametrai yra už ribų. Patikrinkite mašinos konfigūracijos (meniu „Grbl“, „Grbl Configuration“) parametrus 130 ir 131.</value>
+  </data>
+  <data name="BoxMachineSizeOutOfRangeTitle" xml:space="preserve">
+    <value>Įspėjimas</value>
+  </data>
+  <data name="PreviewChangesRequiresRestart" xml:space="preserve">
+    <value>Norint pritaikyti peržiūros pakeitimus, reikia iš naujo paleisti kompiuterį. Ar paleisti iš naujo dabar?</value>
+  </data>
+  <data name="IconsChangesRequiresRestart" xml:space="preserve">
+    <value>Norint pritaikyti piktogramų pakeitimus, reikia iš naujo paleisti kompiuterį. Ar paleisti iš naujo dabar?</value>
+  </data>
+  <data name="MdiIconCaption" xml:space="preserve">
+    <value>MDI piktogramos kodas</value>
+  </data>
+  <data name="DBOIssueSuggestGDI" xml:space="preserve">
+    <value>Atrodo, kad jūsų kompiuteris nepalaiko programinės įrangos atvaizdavimo.
+Ar norite iš naujo paleisti LaserGRBL ir pereiti į senąjį režimą?</value>
+  </data>
+  <data name="FBOIssueSuggestDBO" xml:space="preserve">
+    <value>Atrodo, kad jūsų kompiuteris nepalaiko aparatinės įrangos pagreičio.
+Ar norite iš naujo paleisti LaserGRBL ir pereiti prie programinės įrangos atvaizdavimo?</value>
+  </data>
+  <data name="AlreadyLoading" xml:space="preserve">
+    <value>Failas jau kraunamas, prašome palaukti...</value>
+  </data>
+  <data name="ClearDrawing" xml:space="preserve">
+    <value>Išvalyti brėžinį...</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Įkėlimas</value>
+  </data>
+  <data name="PrepareDrawing" xml:space="preserve">
+    <value>Paruošti brėžinį...</value>
+  </data>
+  <data name="TipsBasicUsage" xml:space="preserve">
+    <value>Pagrindinis naudojimas</value>
+  </data>
+  <data name="TipsJog" xml:space="preserve">
+    <value>JUDESYS:  Dukart spustelėkite bet kurią vietą (arba dukart bakstelėkite)</value>
+  </data>
+  <data name="TipsKeyboardShortcuts" xml:space="preserve">
+    <value>Klaviatūros spartūs klavišai</value>
+  </data>
+  <data name="TipsPan" xml:space="preserve">
+    <value>SLINKIMAS:  Spustelėkite ir vilkite (arba palieskite ir vilkite)</value>
+  </data>
+  <data name="TipsZoom" xml:space="preserve">
+    <value>MASTELIO KEITIMAS: Naudokite pelės ratuką (arba dviejų pirštų gestą)</value>
+  </data>
+  <data name="TipsZoomAuto" xml:space="preserve">
+    <value>Automatinis priartinimas (100 %)</value>
+  </data>
+  <data name="TipsZoomIn" xml:space="preserve">
+    <value>Padidinti   (+10 %)</value>
+  </data>
+  <data name="TipsZoomOut" xml:space="preserve">
+    <value>Sumažinti  (-10 %)</value>
+  </data>
+</root>

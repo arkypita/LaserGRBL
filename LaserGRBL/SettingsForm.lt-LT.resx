@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Atšaukti</value>
+  </data>
+  <data name="BtnSave.Text" xml:space="preserve">
+    <value>Išsaugoti</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Srauto perdavimo režimas: [Numatytasis buferinis]
+- Buferinis: optimizuoja komandų srauto perdavimą, užpildydamas grbl priėmimo buferį [rekomenduojama]
+- Sinchroninis: prieš siunčiant kitą komandą, laukia, kol bus įvykdyta kiekviena komanda [lėtesnis, bet saugesnis]
+- KartotiAptikusKlaidą:  tas pats kaip sinchroninis, bet, aptikus klaidą, komandos kartojamos [eksperimentinis]</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Ryšio protokolas:
+- UsbSerial: yra labiausiai paplitęs protokolas. Turėtų būti naudojamas, jei jūsų graviravimo įrenginys yra prijungtas prie USB arba COM prievado.
+- UsbSerial2: alternatyvus USB serijinio ryšio įgyvendinimas, leidžiantis apeiti „Microsoft SerialPort“ problemas.
+- Telnet: jei turite „WiFi-Telnet“ tiltą. Ryšys įgyvendinamas kaip paprastas „telnet“ klientas-serveris.
+- LaserWebESP8266: palaiko „WiFi“ ryšį per „WebSocket“. Suderinamas su „LaserWeb-ESP8266“ programine įranga.</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Srautų režimas: UltraFast, Fast, Quiet, Slow. [Numatytasis Fast]
+Šis nustatymas turi įtakos srautų siuntimo greičiui ir būsenos ataskaitos užklausų dažnumui.
+Jei kyla problemų, nustatykite mažesnes vertes.</value>
+  </data>
+  <data name="CbIssueDetector.Text" xml:space="preserve">
+    <value>Problemų aptikimas</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>LaserGRBL gali aptikti problemas ir įspėti vartotoją, pateikdamas informaciją apie tai, kaip jas išspręsti.
+Jei ši funkcija išjungta, visos problemos sprendžiamos tyliai, be įspėjimo.</value>
+  </data>
+  <data name="CbSoftReset.Text" xml:space="preserve">
+    <value>Minkštas perkrovimas [Ctrl-X]</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Jei įjungta, LaserGRBL siunčia minkštąjį paleidimą iš naujo, kai atidaromas ryšys su grbl.</value>
+  </data>
+  <data name="CbHardReset.Text" xml:space="preserve">
+    <value>Kietasis perkrovimas [DTR+RTS]</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Jei įjungta, LaserGRBL siunčia kietąjį perkrovimą, kai atidaromas ryšys su grbl. [Prarasta padėtis!]</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Programinės įrangos tipas
+- Grbl: puiki programinė įranga, kuriai buvo sukurta LaserGRBL.
+- Smoothie [eksperimentinė]: palaikymas buvo pridėtas neseniai ir nėra visiškai išbandytas.
+- Marlin [eksperimentinė]: palaikymas buvo pridėtas neseniai ir nėra visiškai išbandytas.
+- VigoWork [eksperimentinė]: palaikymas VG-L7x modeliui, kuris neatitinka grbl standarto.</value>
+  </data>
+  <data name="CbQueryDI.Text" xml:space="preserve">
+    <value>Užklausa $I prisijungus</value>
+  </data>
+  <data name="label46.Text" xml:space="preserve">
+    <value>Įjungus LaserGRBL, išsiųskite komandą $I ir aptikite tam tikrą informaciją iš mašinos (t. y. mašinos rx buferio dydį).
+Prašome neišjungti šios funkcijos.</value>
+  </data>
+  <data name="TpHardware.Text" xml:space="preserve">
+    <value>Protokolas</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>LaserGRBL naudoja galios moduliavimą per G-Code „S komandą“, kad sukurtų pilkosios skalės tonus.
+Jūsų lazeris turi palaikyti TTL valdymą, prijungtą prie arduino PIN D11.
+Jei ne, išjunkite PWM palaikymą.</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Pagal numatytuosius nustatymus LaserGRBL graviruoja linijas abiem lazerio galvutės judėjimo kryptimis. Kai kurie bandymai parodė, kad šis režimas (kuris yra greitesnis) duoda prastesnės kokybės rezultatus. Jei norite pasiekti maksimalią žymėjimo kokybę, įjunkite šią parinktį.</value>
+  </data>
+  <data name="CbUnidirectional.Text" xml:space="preserve">
+    <value>Vienkryptis graviravimas</value>
+  </data>
+  <data name="CBSupportPWM.Text" xml:space="preserve">
+    <value>PWM palaikymas</value>
+  </data>
+  <data name="CbHiRes.Text" xml:space="preserve">
+    <value>HiRes užpildymas</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Didžiausia LaserGRBL galimoji skiriamoji geba yra 20 linijų/mm (apie 500 dpi), o tai yra pakankamai didelė daugumai vartotojų.
+Jei jums reikalinga didesnė skiriamoji geba, galite įjungti „HiRes“ ir pašalinti šį apribojimą.  Būkite atsargūs: LaserGRBL reikės daug daugiau išteklių!</value>
+  </data>
+  <data name="CbDisableSkip.Text" xml:space="preserve">
+    <value>Išjungti G0 greitą peršokimą</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>Pagal numatytuosius nustatymus LaserGRBL naudoja G0 – greitą judesį – kad praleistų baltas darbo dalis. Tai pagreitina graviravimo procesą, tačiau gali sukelti netikslų padėties nustatymą ir nepatenkinamus rezultatus. Paprastai rezultatus galima pagerinti teisingai nustatant maksimalias pagreičio ir greičio vertes ($ 120,121,122 ir $ 110,111,112) grbl konfigūracijoje.
+
+Jei išjungsite šią funkciją, LaserGRBL naudos G1 linijinį judėjimą tuo pačiu darbo greičiu, todėl visas graviravimo procesas bus atliekamas tuo pačiu greičiu. Tai sulėtins procesą, bet gali žymiai pagerinti rezultatą, kai kiti metodai nepavyksta.</value>
+  </data>
+  <data name="CbDisableBoundWarn.Text" xml:space="preserve">
+    <value>Išjungti ribų įspėjimą</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>LaserGRBL įspės jus, jei ketinate sukurti užduotį, kuri yra didesnė nei jūsų graviravimo įrenginio darbo sritis.
+Nustatykite šį žymeklį, jei nenorite šio saugos kontrolės.</value>
+  </data>
+  <data name="TpRasterImport.Text" xml:space="preserve">
+    <value>Rastro importas</value>
+  </data>
+  <data name="label43.Text" xml:space="preserve">
+    <value>Nuo versijos 4.6.1 LaserGRBL naudoja geresnį Bezier kreivių aproksimacijos algoritmą, galintį pateikti tikslesnius rezultatus.
+Jei norite naudoti senąjį algoritmą, išjunkite šią parinktį.</value>
+  </data>
+  <data name="CbSmartBezier.Text" xml:space="preserve">
+    <value>Išmanusis Bezier</value>
+  </data>
+  <data name="TpVectorImport.Text" xml:space="preserve">
+    <value>Vektorių importas</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Nespaudžiant „Continuous Jog“ (Nuolatinis judėjimas), kai paspaudžiamas judėjimo mygtukas, LaserGRBL siunčia judėjimo užklausą su nustatytu greičiu ir judesiu; judėjimas yra visiškai įvykdomas iki galutinės padėties.
+Jei įjungsite „Continuous Jog“ (Nuolatinis judėjimas), judėjimas yra siunčiamas nuspaudus pelę ir nutraukiamas/pertraukiamas atleidus pelę, todėl galite atlikti apytikslį padėties nustatymą, bet labai patogiu būdu.
+
+PASTABA: „Continuous Jog“ veikia tik su Grbl v1.1 ar naujesne versija ir reikalauja, kad stalo dydis būtų teisingai sukonfigūruotas Grbl konfigūracijoje (meniu „Grbl“ -&gt; „Grbl Configuration“ $130, $131, $132).</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>LaserGRBL nėra pritaikytas Z ašiai, tačiau jei turite 3 ašių įrangą, ši funkcija gali būti naudinga.</value>
+  </data>
+  <data name="CbEnableZJog.Text" xml:space="preserve">
+    <value>Rodyti Z aukštyn/žemyn valdymą</value>
+  </data>
+  <data name="CbContinuosJog.Text" xml:space="preserve">
+    <value>Nuolatinis judėjimas</value>
+  </data>
+  <data name="CbClickNJog.Text" xml:space="preserve">
+    <value>Spausti ir judėti</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>Įjungus funkciją „spausti ir judėti“, dukart spustelėjus peržiūros paviršių, bus pereita į spustelėjimo vietą.</value>
+  </data>
+  <data name="TpJogControl.Text" xml:space="preserve">
+    <value>Judesio kontrolė</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Laikas OFF: po šio aušinimo laiko LaserGRBL išsiųs atnaujinimo komandą, kad būtų tęsiamas graviravimo darbas.</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Kai kurie lazeriniai diodai gali labai įkaisti, jei ilgą laiką veikia didžiausiu galingumu. Norėdami išvengti diodų perkaitimo ir padidinti lazerio tarnavimo laiką, galite pridėti automatinius aušinimo ciklus, kurie įterpia pauzę graviravimo proceso metu.
+Jei automatinis aušinimas įjungtas, LaserGRBL siųs automatinius „feed hold“ ir „job resume“ signalus pagal ON-OFF laiko konfigūraciją.</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Laikas įjungtas: tai maksimalus laikas, kurį lazeris bus įjungtas graviravimo proceso metu.
+Po šio laiko LaserGRBL automatiškai sustabdys padavimą, kad lazeris atvėstų.</value>
+  </data>
+  <data name="CbAutoCooling.Text" xml:space="preserve">
+    <value>Įjungti automatinį aušinimą</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Įj.</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Išj.</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Įspėjimas: ši funkcija veiks tik su grbl versijomis &gt; v1.1, kuriose įjungtas „lazerinis režimas“.
+Jei naudojate automatinį aušinimą su senesne grbl versija (arba išjungtu lazeriniu režimu), lazeris nebus išjungiamas per pertraukas
+ir išdegins skyles jūsų darbe!
+</value>
+  </data>
+  <data name="LblWarnOrturAC.Text" xml:space="preserve">
+    <value>Ortur vartotojas: Ortur programinė įranga (visos versijos iki 137) turi klaidą, susijusią su apdirbimo atnaujinimu, dėl kurios negalima tinkamai naudoti automatinio aušinimo funkcijos.
+Nenaudokite automatinio aušinimo su Ortur graviravimo įrenginiu, kol nebus išleista nauja programinė įranga.</value>
+  </data>
+  <data name="TpAutoCooling.Text" xml:space="preserve">
+    <value>Automatic cooling</value>
+  </data>
+  <data name="LblHeader.Text" xml:space="preserve">
+    <value>LaserGRBL pridės šį GCode prieš pradėdamas bet kokį darbą.
+Galite pritaikyti šį kodą, pavyzdžiui, pridėdami M8, kad įjungtumėte ventiliatorių.
+
+Čia galite naudoti tą pačią pasirinktinių mygtukų sintaksę, jei reikia paspausti tam tikrą pozicionavimą,
+susijusį su konkrečiu darbu, kuris bus vykdomas.</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Antraštė</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Apatinė juosta</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Keli praėjimai</value>
+  </data>
+  <data name="LblFooter.Text" xml:space="preserve">
+    <value>LaserGRBL įtrauks šį GCode į bet kokio darbo pabaigą.
+Gali būti naudojamas, norint grąžinti graviravimo įrenginį į pradinę padėtį, pvz., grįžti į nulio padėtį
+arba siųsti M9, kad išjungti ventiliatorių ir pan.
+
+Čia galite naudoti tą pačią pasirinktinių mygtukų sintaksę.</value>
+  </data>
+  <data name="LblPasses.Text" xml:space="preserve">
+    <value>Atliekant kelis praėjimus, LaserGRBL įterps šį GCode tarp kiekvieno praėjimo.
+Gali būti naudojamas Z judinimui žemyn, kad būtų galima atlikti gilesnius pjūvius.
+
+Čia galite naudoti tą pačią pasirinktinių mygtukų sintaksę.</value>
+  </data>
+  <data name="TpGCodeSettings.Text" xml:space="preserve">
+    <value>GKodas</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Čia galite nustatyti kitą garsą sėkmingiems įvykiams, pvz., kai užduotis baigta.
+Pažymėkite, kad įjungtumėte.
+</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Čia galite nustatyti kitą įspėjamąjį garsą.
+Jis paprastai skamba, kai GCode komanda yra netinkama, bet jūsų mašina gali toliau veikti.
+Pažymėkite, kad įjungtumėte.
+</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Įspėjamasis garsas</value>
+  </data>
+  <data name="changeWarBtn.Text" xml:space="preserve">
+    <value>Pakeisti</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Garso failas</value>
+  </data>
+  <data name="warningSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\warning.wav</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Klaidos garsas</value>
+  </data>
+  <data name="changeFatBtn.Text" xml:space="preserve">
+    <value>Pakeisti</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Garso failas</value>
+  </data>
+  <data name="fatalSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\fatal.wav</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Prijungimo garsas</value>
+  </data>
+  <data name="changeConBtn.Text" xml:space="preserve">
+    <value>Pakeisti</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Garso failas</value>
+  </data>
+  <data name="connectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\connect.wav</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Atjungimo garsas</value>
+  </data>
+  <data name="changeDconBtn.Text" xml:space="preserve">
+    <value>Pakeisti</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Garso failas</value>
+  </data>
+  <data name="disconnectSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\disconnect.wav</value>
+  </data>
+  <data name="LblSuccessSound.Text" xml:space="preserve">
+    <value>Sėkmės garsas</value>
+  </data>
+  <data name="changeSucBtn.Text" xml:space="preserve">
+    <value>Pakeisti</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Garso failas</value>
+  </data>
+  <data name="successSoundLabel.Text" xml:space="preserve">
+    <value>.\Sound\success.wav</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Čia galite nustatyti garsą, skambantį sėkmingai prisijungus.
+Pažymėkite, kad įjungtumėte.
+</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Čia galite nustatyti atjungimo garsą.
+Naudinga kai kuriems WiFi ryšiams.
+Pažymėkite, kad įjungtumėte.
+</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Čia galite nustatyti klaidos garsą, kuris skambės esant kritinėms klaidoms.
+Tai reiškia, kad jūsų darbas greičiausiai sustabdytas ir LaserGRBL negali tęsti operacijos.
+Pažymėkite, kad įjungtumėte.
+</value>
+  </data>
+  <data name="label44.Text" xml:space="preserve">
+    <value>Nepranešti, jei darbo laikas trumpesnis nei</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>Telegram pranešimas</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Asmeninis kodas</value>
+  </data>
+  <data name="BtnTestNotification.Text" xml:space="preserve">
+    <value>Testas</value>
+  </data>
+  <data name="label45.Text" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="label42.Text" xml:space="preserve">
+    <value>Jei turite „Telegram“, ieškokite @LaserGRBL boto.
+Gaukite savo asmeninį kodą ir įrašykite jį čia!</value>
+  </data>
+  <data name="TpSoundSettings.Text" xml:space="preserve">
+    <value>Pranešimas</value>
+  </data>
+  <data name="CbDisableSafetyCD.Text" xml:space="preserve">
+    <value>Išjungti saugos atgalinį skaičiavimą</value>
+  </data>
+  <data name="label47.Text" xml:space="preserve">
+    <value>Ši parinktis pašalins saugos priminimą, kad reikia užsidėti apsauginius akinius.
+Rekomenduoju neišjungti šio priminimo, nes jis suteikia 5 sekundžių laiko patikrinti, ar viskas yra gerai.</value>
+  </data>
+  <data name="CbQuietSafetyCB.Text" xml:space="preserve">
+    <value>Tylus atgalinis skaičiavimas</value>
+  </data>
+  <data name="label48.Text" xml:space="preserve">
+    <value>Išjunkite „pyptelėjimo“ garsą saugos atgalinio skaičiavimo metu.</value>
+  </data>
+  <data name="CbLegacyIcons.Text" xml:space="preserve">
+    <value>Senosios piktogramos</value>
+  </data>
+  <data name="label49.Text" xml:space="preserve">
+    <value>Naudoti senosios versijos LaserGRBL piktogramas [Nostalgijos režimas: ĮJUNGTA]</value>
+  </data>
+  <data name="label50.Text" xml:space="preserve">
+    <value>Rendering Mode (Rendering režimas)
+- Auto (Automatinis): Leiskite LaserGRBL pasirinkti jums geriausią konfigūraciją (pirmenybė teikiama aparatinės įrangos spartinimui).
+- Hardware Acceleration (Aparatinės įrangos spartinimas): Naudokite OpenGL su aparatinės įrangos spartinimu (jei palaikoma).
+- Software Rendering (Programinis renderingas): Naudokite OpenGL su programiniu renderingu (pasirinkite šią parinktį, jei turite problemų su aparatinės įrangos spartinimu).
+- Legacy (Senasis): Išjunkite OpenGL ir naudokite seną peržiūros formą (pasirinkite šią parinktį sename kompiuteryje </value>
+  </data>
+  <data name="TpOptions.Text" xml:space="preserve">
+    <value>Pasirinkimai</value>
+  </data>
+  <data name="SoundBrowserDialog.Filter" xml:space="preserve">
+    <value>Garso failas su bangos forma | *.wav</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Nustatymai</value>
+  </data>
+</root>
