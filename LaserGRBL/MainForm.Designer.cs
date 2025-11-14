@@ -128,6 +128,7 @@
 			this.slovakianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.hungarianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.czechToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.slovenianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.polishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.greekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -811,6 +812,7 @@
             this.slovakianToolStripMenuItem,
             this.hungarianToolStripMenuItem,
             this.czechToolStripMenuItem,
+            this.slovenianToolStripMenuItem,
             this.polishToolStripMenuItem,
             this.greekToolStripMenuItem,
             this.turkishToolStripMenuItem,
@@ -898,9 +900,15 @@
 			this.czechToolStripMenuItem.Name = "czechToolStripMenuItem";
 			resources.ApplyResources(this.czechToolStripMenuItem, "czechToolStripMenuItem");
 			this.czechToolStripMenuItem.Click += new System.EventHandler(this.czechToolStripMenuItem_Click);
-			// 
+			//
+			// slovenianToolStripMenuItem
+			//
+			this.slovenianToolStripMenuItem.Name = "slovenianToolStripMenuItem";
+			resources.ApplyResources(this.slovenianToolStripMenuItem, "slovenianToolStripMenuItem");
+			this.slovenianToolStripMenuItem.Click += new System.EventHandler(this.slovenianToolStripMenuItem_Click);
+			//
 			// polishToolStripMenuItem
-			// 
+			//
 			this.polishToolStripMenuItem.Name = "polishToolStripMenuItem";
 			resources.ApplyResources(this.polishToolStripMenuItem, "polishToolStripMenuItem");
 			this.polishToolStripMenuItem.Click += new System.EventHandler(this.polishToolStripMenuItem_Click);
@@ -1367,6 +1375,7 @@
 		private System.Windows.Forms.ToolStripMenuItem slovakianToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem hungarianToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem czechToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem slovenianToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem flashGrblFirmwareToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
