@@ -213,6 +213,7 @@ namespace LaserGRBL
 			IconsMgr.PrepareMenuItem(slovakianToolStripMenuItem, "flags-sk", false);
 			IconsMgr.PrepareMenuItem(hungarianToolStripMenuItem, "flags-hu", false);
 			IconsMgr.PrepareMenuItem(czechToolStripMenuItem, "flags-cz", false);
+			IconsMgr.PrepareMenuItem(slovenianToolStripMenuItem, "flags-si", false);
 			IconsMgr.PrepareMenuItem(polishToolStripMenuItem, "flags-pl", false);
 			IconsMgr.PrepareMenuItem(greekToolStripMenuItem, "flags-gr", false);
 			IconsMgr.PrepareMenuItem(turkishToolStripMenuItem, "flags-tr", false);
@@ -904,6 +905,11 @@ namespace LaserGRBL
 		private void czechToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SetLanguage(new System.Globalization.CultureInfo("cs-CZ"));
+		}
+
+		private void slovenianToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SetLanguage(new System.Globalization.CultureInfo("sl-SI"));
 		}
 
 		private void installCH340DriverToolStripMenuItem_Click(object sender, EventArgs e)

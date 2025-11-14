@@ -743,6 +743,12 @@
   <data name="czechToolStripMenuItem.Text" xml:space="preserve">
     <value>Czech</value>
   </data>
+  <data name="slovenianToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 22</value>
+  </data>
+  <data name="slovenianToolStripMenuItem.Text" xml:space="preserve">
+    <value>Slovenian</value>
+  </data>
   <data name="polishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>181, 22</value>
   </data>
