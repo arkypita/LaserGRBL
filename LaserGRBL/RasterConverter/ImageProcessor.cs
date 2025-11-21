@@ -122,7 +122,7 @@ namespace LaserGRBL.RasterConverter
             //http://stackoverflow.com/questions/2016406/converting-bitmap-pixelformats-in-c-sharp
             using (Bitmap loadedBmp = new Bitmap(fileName))
             {
-                mFileDPI = (int)loadedBmp.HorizontalResolution;
+                mFileDPI = (int) Math.Round(loadedBmp.HorizontalResolution);
                 mFileResolution = loadedBmp.Size;
 
                 using (Bitmap tmpBmp = new Bitmap(loadedBmp))
