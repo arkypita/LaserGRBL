@@ -20,7 +20,7 @@ namespace ExCSS
             set { _condition = value; }
         }
 
-        public bool IsSupported{ get; set; }
+        public bool IsSupported { get; set; }
 
         public override string ToString()
         {

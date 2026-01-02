@@ -15,148 +15,148 @@ using System.Windows.Forms;
 
 namespace LaserGRBL.GrblEmulator
 {
-	public partial class EmulatorUI : Form
-	{
-		private static EmulatorUI istance;
-		private bool canclose = false;
-		RollingBuffer rb = new RollingBuffer(30);
-		private const int CP_NOCLOSE_BUTTON = 0x200;
-		protected override CreateParams CreateParams
-		{
-			get
-			{
-				CreateParams myCp = base.CreateParams;
-				myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
-				return myCp;
-			}
-		}
+    public partial class EmulatorUI : Form
+    {
+        private static EmulatorUI istance;
+        private bool canclose = false;
+        RollingBuffer rb = new RollingBuffer(30);
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
 
-		public static void ShowUI(string initmessage)
-		{
-			if (istance == null)
-			{
-				istance = new EmulatorUI(initmessage);
-				istance.Show();
-			}
-		}
+        public static void ShowUI(string initmessage)
+        {
+            if (istance == null)
+            {
+                istance = new EmulatorUI(initmessage);
+                istance.Show();
+            }
+        }
 
-		public static void HideUI()
-		{
-			if (istance != null)
-			{
-				istance.canclose = true;
-				istance.Hide();
-				istance.Dispose();
-				istance = null;
-			}
-		}
+        public static void HideUI()
+        {
+            if (istance != null)
+            {
+                istance.canclose = true;
+                istance.Hide();
+                istance.Dispose();
+                istance = null;
+            }
+        }
 
-		public EmulatorUI(string initmessage)
-		{
-			InitializeComponent();
-			Grblv11Emulator.EmulatorMessage += Grblv11Emulator_EmulatorMessage;
-			Grblv11Emulator_EmulatorMessage(initmessage);
-		}
+        public EmulatorUI(string initmessage)
+        {
+            InitializeComponent();
+            Grblv11Emulator.EmulatorMessage += Grblv11Emulator_EmulatorMessage;
+            Grblv11Emulator_EmulatorMessage(initmessage);
+        }
 
-		void Grblv11Emulator_EmulatorMessage(string message)
-		{
-			if (message == null)
-				rb.Clear();
-			else
-				rb.Add(message);
-		}
-
-
-		private void RT_Tick(object sender, EventArgs e)
-		{
-			string buff = "";
-
-			string[] arr = rb.ToArray();
-
-			foreach (string s in arr)
-				buff = buff + s + "\r\n";
-
-			RTB.Text = buff;
-
-				
-			RTB.SelectionStart = RTB.TextLength;
-			RTB.ScrollToCaret();
-		}
-
-		private void EmulatorUI_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			e.Cancel = !canclose;
-		}
-	}
+        void Grblv11Emulator_EmulatorMessage(string message)
+        {
+            if (message == null)
+                rb.Clear();
+            else
+                rb.Add(message);
+        }
 
 
-	public class RollingBuffer //one reader, one writer... no need to sync?!
-	{
-		private string[] buffer;
-		private int head;
-		private int tail;
-		private int count;
-		private int capacity;
+        private void RT_Tick(object sender, EventArgs e)
+        {
+            string buff = "";
 
-		public RollingBuffer(int size)
-		{
-			lock(this)
-			{ 
-				buffer = new string[size];
-				capacity = size;
-				head = 0;
-				tail = 0;
-				count = 0;
-			}
-		}
+            string[] arr = rb.ToArray();
 
-		public void Add(string item)
-		{
-			//lock (this)
-			//{ 
-				buffer[head] = item;
-				head = (head + 1) % capacity;
+            foreach (string s in arr)
+                buff = buff + s + "\r\n";
 
-				if (count == capacity)
-				{
-					tail = (tail + 1) % capacity; // Overwrite oldest element
-				}
-				else
-				{
-					count++;
-				}
-			//}
-		}
+            RTB.Text = buff;
 
-		public string[] ToArray()
-		{
-			//lock(this)
-			//{ 
-				string[] result = new string[count];
-				for (int i = 0; i < count; i++)
-						result[i] = buffer[(tail + i) % capacity];
-				return result;
-			//}
-		}
 
-		internal void Clear()
-		{
-			//lock (this)
-			//{
-				head = 0;
-				tail = 0;
-				count = 0;
-			//}
-		}
+            RTB.SelectionStart = RTB.TextLength;
+            RTB.ScrollToCaret();
+        }
 
-		public int Count
-		{
-			get { return count; }
-		}
+        private void EmulatorUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = !canclose;
+        }
+    }
 
-		public int Capacity
-		{
-			get { return capacity; }
-		}
-	}
+
+    public class RollingBuffer //one reader, one writer... no need to sync?!
+    {
+        private string[] buffer;
+        private int head;
+        private int tail;
+        private int count;
+        private int capacity;
+
+        public RollingBuffer(int size)
+        {
+            lock (this)
+            {
+                buffer = new string[size];
+                capacity = size;
+                head = 0;
+                tail = 0;
+                count = 0;
+            }
+        }
+
+        public void Add(string item)
+        {
+            //lock (this)
+            //{ 
+            buffer[head] = item;
+            head = (head + 1) % capacity;
+
+            if (count == capacity)
+            {
+                tail = (tail + 1) % capacity; // Overwrite oldest element
+            }
+            else
+            {
+                count++;
+            }
+            //}
+        }
+
+        public string[] ToArray()
+        {
+            //lock(this)
+            //{ 
+            string[] result = new string[count];
+            for (int i = 0; i < count; i++)
+                result[i] = buffer[(tail + i) % capacity];
+            return result;
+            //}
+        }
+
+        internal void Clear()
+        {
+            //lock (this)
+            //{
+            head = 0;
+            tail = 0;
+            count = 0;
+            //}
+        }
+
+        public int Count
+        {
+            get { return count; }
+        }
+
+        public int Capacity
+        {
+            get { return capacity; }
+        }
+    }
 }

@@ -26,7 +26,7 @@ namespace Svg
             get { return _size * 72.0f / _ppi; }
         }
 
-        public SvgFontDefn (SvgFont font, float size, float ppi)
+        public SvgFontDefn(SvgFont font, float size, float ppi)
         {
             _font = font;
             _size = size;

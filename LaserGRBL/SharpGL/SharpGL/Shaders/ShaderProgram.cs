@@ -19,7 +19,7 @@ namespace SharpGL.Shaders
         /// <param name="attributeLocations">The attribute locations. This is an optional array of
         /// uint attribute locations to their names.</param>
         /// <exception cref="ShaderCompilationException"></exception>
-        public void Create(OpenGL gl, string vertexShaderSource, string fragmentShaderSource, 
+        public void Create(OpenGL gl, string vertexShaderSource, string fragmentShaderSource,
             Dictionary<uint, string> attributeLocations)
         {
             //  Create the shaders.

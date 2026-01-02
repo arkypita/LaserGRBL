@@ -11,12 +11,12 @@ namespace ExCSS
         private readonly List<RuleSet> _ruleSets;
         private string _identifier;
 
-        public KeyframesRule() 
+        public KeyframesRule()
         {
             _ruleSets = new List<RuleSet>();
             RuleType = RuleType.Keyframes;
         }
-       
+
         public string Identifier
         {
             get { return _identifier; }

@@ -61,7 +61,7 @@ namespace Svg
         {
             return new RectangleF(value.MinX, value.MinY, value.Width, value.Height);
         }
-        
+
         /// <summary>
         /// Performs an implicit conversion from <see cref="System.Drawing.RectangleF"/> to <see cref="Svg.SvgViewBox"/>.
         /// </summary>
@@ -86,42 +86,43 @@ namespace Svg
             this.Width = width;
             this.Height = height;
         }
-        
+
         #region Equals and GetHashCode implementation
         public override bool Equals(object obj)
-		{
-			return (obj is SvgViewBox) && Equals((SvgViewBox)obj);
-		}
-        
-		public bool Equals(SvgViewBox other)
-		{
-			return this.MinX == other.MinX 
-				&& this.MinY == other.MinY 
-				&& this.Width == other.Width 
-				&& this.Height == other.Height;
-		}
-        
-		public override int GetHashCode()
-		{
-			int hashCode = 0;
-			unchecked {
-				hashCode += 1000000007 * MinX.GetHashCode();
-				hashCode += 1000000009 * MinY.GetHashCode();
-				hashCode += 1000000021 * Width.GetHashCode();
-				hashCode += 1000000033 * Height.GetHashCode();
-			}
-			return hashCode;
-		}
-        
-		public static bool operator ==(SvgViewBox lhs, SvgViewBox rhs)
-		{
-			return lhs.Equals(rhs);
-		}
-        
-		public static bool operator !=(SvgViewBox lhs, SvgViewBox rhs)
-		{
-			return !(lhs == rhs);
-		}
+        {
+            return (obj is SvgViewBox) && Equals((SvgViewBox)obj);
+        }
+
+        public bool Equals(SvgViewBox other)
+        {
+            return this.MinX == other.MinX
+                && this.MinY == other.MinY
+                && this.Width == other.Width
+                && this.Height == other.Height;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 0;
+            unchecked
+            {
+                hashCode += 1000000007 * MinX.GetHashCode();
+                hashCode += 1000000009 * MinY.GetHashCode();
+                hashCode += 1000000021 * Width.GetHashCode();
+                hashCode += 1000000033 * Height.GetHashCode();
+            }
+            return hashCode;
+        }
+
+        public static bool operator ==(SvgViewBox lhs, SvgViewBox rhs)
+        {
+            return lhs.Equals(rhs);
+        }
+
+        public static bool operator !=(SvgViewBox lhs, SvgViewBox rhs)
+        {
+            return !(lhs == rhs);
+        }
         #endregion
 
         public void AddViewBoxTransform(SvgAspectRatio aspectRatio, ISvgRenderer renderer, SvgFragment frag)
@@ -199,10 +200,10 @@ namespace Svg
                         break;
                 }
             }
-            
+
             renderer.TranslateTransform(x, y, MatrixOrder.Prepend);
             renderer.TranslateTransform(fMinX, fMinY, MatrixOrder.Prepend);
-            renderer.ScaleTransform(fScaleX, fScaleY, MatrixOrder.Prepend);       
+            renderer.ScaleTransform(fScaleX, fScaleY, MatrixOrder.Prepend);
         }
     }
 

@@ -18,7 +18,8 @@ namespace RJCP.IO.Ports.Trace
         {
             get
             {
-                lock (m_RefLock) {
+                lock (m_RefLock)
+                {
                     if (s_Serial == null) s_Serial = new LogSource(SerialPortStream);
                 }
                 return s_Serial;
@@ -29,7 +30,8 @@ namespace RJCP.IO.Ports.Trace
         {
             get
             {
-                lock (m_RefLock) {
+                lock (m_RefLock)
+                {
                     if (s_ReadTo == null) s_ReadTo = new LogSource(SerialPortStream_ReadTo);
                 }
                 return s_ReadTo;

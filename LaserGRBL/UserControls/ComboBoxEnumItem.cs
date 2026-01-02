@@ -9,62 +9,62 @@ using System;
 namespace LaserGRBL.UserControls
 {
     public class EnumComboBox : LaserGRBL.UserControls.FlatComboBox
-	{
+    {
 
-		public void AddItem(Enum item, bool trimparentesi = false)
-		{ Items.Add(new ComboBoxEnumItem(item, trimparentesi)); }
+        public void AddItem(Enum item, bool trimparentesi = false)
+        { Items.Add(new ComboBoxEnumItem(item, trimparentesi)); }
 
-		public new Enum SelectedItem
-		{
-			get {return base.SelectedItem != null ? ((ComboBoxEnumItem)base.SelectedItem).Value : default(Enum) ;}
-			set { base.SelectedItem = new ComboBoxEnumItem(value, false); }
-		}
+        public new Enum SelectedItem
+        {
+            get { return base.SelectedItem != null ? ((ComboBoxEnumItem)base.SelectedItem).Value : default(Enum); }
+            set { base.SelectedItem = new ComboBoxEnumItem(value, false); }
+        }
 
-		public void Clear()
-		{Items.Clear(); }
+        public void Clear()
+        { Items.Clear(); }
 
-		private class ComboBoxEnumItem
-		{
-			private Enum mValue;
-			private bool mTrim;
-			public ComboBoxEnumItem(Enum value, bool trimparentesi)
-			{
-				mValue = value;
-				mTrim = trimparentesi;
-			}
+        private class ComboBoxEnumItem
+        {
+            private Enum mValue;
+            private bool mTrim;
+            public ComboBoxEnumItem(Enum value, bool trimparentesi)
+            {
+                mValue = value;
+                mTrim = trimparentesi;
+            }
 
-			public Enum Value
-			{ get { return mValue; } }
+            public Enum Value
+            { get { return mValue; } }
 
-			public override string ToString()
-			{ 
-				string s = GrblCore.TranslateEnum(mValue);
+            public override string ToString()
+            {
+                string s = GrblCore.TranslateEnum(mValue);
 
-				if (mTrim)
-				{
-					int idx = s.IndexOf('(');
-					if (idx > 0)
-					{
-						s = s.Substring(0, idx);
-					}
-				}
+                if (mTrim)
+                {
+                    int idx = s.IndexOf('(');
+                    if (idx > 0)
+                    {
+                        s = s.Substring(0, idx);
+                    }
+                }
 
-				return s;
-			}
+                return s;
+            }
 
-			public override bool Equals(object obj)
-			{
-				if (obj is ComboBoxEnumItem)
-					return object.Equals((obj as ComboBoxEnumItem).mValue, mValue);
-				else
-					return false;
-			}
+            public override bool Equals(object obj)
+            {
+                if (obj is ComboBoxEnumItem)
+                    return object.Equals((obj as ComboBoxEnumItem).mValue, mValue);
+                else
+                    return false;
+            }
 
-			public override int GetHashCode()
-			{return mValue.GetHashCode();}
-	
-		}
-	}
+            public override int GetHashCode()
+            { return mValue.GetHashCode(); }
+
+        }
+    }
 
 
 }

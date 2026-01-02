@@ -8,7 +8,7 @@ namespace ExCSS
     {
         private readonly StyleDeclaration _declarations;
 
-        public FontFaceRule() 
+        public FontFaceRule()
         {
             _declarations = new StyleDeclaration();
             RuleType = RuleType.FontFace;

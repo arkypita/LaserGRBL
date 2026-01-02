@@ -13,82 +13,82 @@ using WebSocketSharp;
 
 namespace LaserGRBL.ComWrapper
 {
-	class LaserWebESP8266 : IComWrapper
-	{
-		private string mRemainder;
-		private string mAddress;
-		private WebSocket cln;
-		private Queue<string> buffer = new Queue<string>();
+    class LaserWebESP8266 : IComWrapper
+    {
+        private string mRemainder;
+        private string mAddress;
+        private WebSocket cln;
+        private Queue<string> buffer = new Queue<string>();
 
-		public void Configure(params object[] param)
-		{
-			mAddress = (string)param[0];
-		}
+        public void Configure(params object[] param)
+        {
+            mAddress = (string)param[0];
+        }
 
-		public void Open()
-		{
-			if (cln != null)
-				Close(true);
+        public void Open()
+        {
+            if (cln != null)
+                Close(true);
 
 
-			if (string.IsNullOrEmpty(mAddress))
-				throw new MissingFieldException("Missing Address");
+            if (string.IsNullOrEmpty(mAddress))
+                throw new MissingFieldException("Missing Address");
 
-			buffer.Clear();
-			cln = new WebSocketSharp.WebSocket(mAddress);
+            buffer.Clear();
+            cln = new WebSocketSharp.WebSocket(mAddress);
 
-			Logger.LogMessage("OpenCom", "Open {0}", mAddress);
+            Logger.LogMessage("OpenCom", "Open {0}", mAddress);
             ComLogger.Log("com", string.Format("Open {0} {1}", mAddress, GetResetDiagnosticString()));
 
-			cln.OnMessage += cln_OnMessage;
-			cln.Connect();
-		}
+            cln.OnMessage += cln_OnMessage;
+            cln.Connect();
+        }
 
-		private string GetResetDiagnosticString()
-		{
-			//bool rts = Settings.GetObject("HardReset Grbl On Connect", false);
-			//bool dtr = Settings.GetObject("HardReset Grbl On Connect", false);
-			bool soft = Settings.GetObject("Reset Grbl On Connect", false);
+        private string GetResetDiagnosticString()
+        {
+            //bool rts = Settings.GetObject("HardReset Grbl On Connect", false);
+            //bool dtr = Settings.GetObject("HardReset Grbl On Connect", false);
+            bool soft = Settings.GetObject("Reset Grbl On Connect", false);
 
-			string rv = "";
+            string rv = "";
 
-			//if (dtr) rv += "DTR, ";
-			//if (rts) rv += "RTS, ";
-			if (soft) rv += "Ctrl-X, ";
+            //if (dtr) rv += "DTR, ";
+            //if (rts) rv += "RTS, ";
+            if (soft) rv += "Ctrl-X, ";
 
-			return rv.Trim(", ".ToCharArray());
-		}
+            return rv.Trim(", ".ToCharArray());
+        }
 
-		public void Close(bool auto)
-		{
-			if (cln != null)
-			{
-				try
-				{
-					ComLogger.Log("com", string.Format("Close {0} [{1}]", mAddress, auto ? "CORE" : "USER"));
-					Logger.LogMessage("CloseCom", "Close {0} [{1}]", mAddress, auto ? "CORE" : "USER");
-					cln.OnMessage -= cln_OnMessage;
+        public void Close(bool auto)
+        {
+            if (cln != null)
+            {
+                try
+                {
+                    ComLogger.Log("com", string.Format("Close {0} [{1}]", mAddress, auto ? "CORE" : "USER"));
+                    Logger.LogMessage("CloseCom", "Close {0} [{1}]", mAddress, auto ? "CORE" : "USER");
+                    cln.OnMessage -= cln_OnMessage;
 
-					cln.Close();
-				}
-				catch { }
+                    cln.Close();
+                }
+                catch { }
 
-				buffer.Clear();
-				cln = null;
-			}
-		}
+                buffer.Clear();
+                cln = null;
+            }
+        }
 
-		public bool IsOpen
-		{get { return cln != null && cln.IsConnected; }}
+        public bool IsOpen
+        { get { return cln != null && cln.IsConnected; } }
 
-		public void Write(byte b)
-		{
-			if (IsOpen)
-			{
-				ComLogger.Log("tx", b);
-				cln.Send(new string((char)b, 1));
-			}
-		}
+        public void Write(byte b)
+        {
+            if (IsOpen)
+            {
+                ComLogger.Log("tx", b);
+                cln.Send(new string((char)b, 1));
+            }
+        }
 
         public void Write(byte[] arr)
         {
@@ -100,56 +100,56 @@ namespace LaserGRBL.ComWrapper
         }
 
         public void Write(string text)
-		{
-			if (IsOpen)
-			{
+        {
+            if (IsOpen)
+            {
                 ComLogger.Log("tx", text);
-				cln.Send(text);
-			}
-		}
+                cln.Send(text);
+            }
+        }
 
-		void cln_OnMessage(object sender, MessageEventArgs e)
-		{
-			var data = e.Data;
-			if (data == null)
-				data = Encoding.Default.GetString(e.RawData);
-			var lastItemComplete = data.EndsWith("\n") || data.EndsWith("\r");
+        void cln_OnMessage(object sender, MessageEventArgs e)
+        {
+            var data = e.Data;
+            if (data == null)
+                data = Encoding.Default.GetString(e.RawData);
+            var lastItemComplete = data.EndsWith("\n") || data.EndsWith("\r");
 
-			var items = data.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
-			for (int i = 0; i < items.Length; i++)
-			{
-				var item = items[i];
-				if(i == items.Length-1 && !lastItemComplete)
-				{
-					mRemainder = item;
-					break;
-				}
-				if (mRemainder != null)
-				{
-					item = mRemainder + item;
-					mRemainder = null;
-				}
-				buffer.Enqueue(item);
-			} 
-		}
+            var items = data.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < items.Length; i++)
+            {
+                var item = items[i];
+                if (i == items.Length - 1 && !lastItemComplete)
+                {
+                    mRemainder = item;
+                    break;
+                }
+                if (mRemainder != null)
+                {
+                    item = mRemainder + item;
+                    mRemainder = null;
+                }
+                buffer.Enqueue(item);
+            }
+        }
 
-		public string ReadLineBlocking()
-		{
-			string rv = null;
-			while (IsOpen && rv == null) //wait for disconnect or data
-			{
-				if (buffer.Count > 0)
-					rv = buffer.Dequeue();
-				else
-					System.Threading.Thread.Sleep(1);
-			}
+        public string ReadLineBlocking()
+        {
+            string rv = null;
+            while (IsOpen && rv == null) //wait for disconnect or data
+            {
+                if (buffer.Count > 0)
+                    rv = buffer.Dequeue();
+                else
+                    System.Threading.Thread.Sleep(1);
+            }
 
             ComLogger.Log("rx", rv);
-			return rv;
-		}
+            return rv;
+        }
 
-		public bool HasData()
-		{ return IsOpen && buffer.Count > 0; }
+        public bool HasData()
+        { return IsOpen && buffer.Count > 0; }
 
-	}
+    }
 }

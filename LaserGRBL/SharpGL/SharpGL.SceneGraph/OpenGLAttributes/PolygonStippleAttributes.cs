@@ -6,13 +6,13 @@ using SharpGL.SceneGraph;
 
 namespace SharpGL.OpenGLAttributes
 {
-	/// <summary>
-	/// This class has all the settings you can edit for fog.
-	/// </summary>
-	[TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
-	[Serializable()]
+    /// <summary>
+    /// This class has all the settings you can edit for fog.
+    /// </summary>
+    [TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    [Serializable()]
     public class PolygonStippleAttributes : OpenGLAttributeGroup
-	{
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="PolygonStippleAttributes"/> class.
         /// </summary>
@@ -51,9 +51,9 @@ namespace SharpGL.OpenGLAttributes
         /// </value>
 		[Description("."), Category("Polygon Stipple")]
         public byte[] PolygonStipple
-		{
+        {
             get { return polygonStipple; }
             set { polygonStipple = value; }
-		}
-	}
+        }
+    }
 }

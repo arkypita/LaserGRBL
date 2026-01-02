@@ -19,16 +19,16 @@ namespace LaserGRBL
     /// Description of PreviewForm.
     /// </summary>
     public partial class PreviewForm : System.Windows.Forms.UserControl
-	{
-		private GrblCore mCore;
-		public IGrblPanel GrblPanel { private set; get; } = null;
+    {
+        private GrblCore mCore;
+        public IGrblPanel GrblPanel { private set; get; } = null;
 
-		public PreviewForm()
-		{
-			InitializeComponent();
+        public PreviewForm()
+        {
+            InitializeComponent();
             CreatePanel();
             CustomButtonArea.OrderChanged += CustomButtonArea_OrderChanged;
-			IconsMgr.PrepareButton(BtnReset, "custom-reset");
+            IconsMgr.PrepareButton(BtnReset, "custom-reset");
             IconsMgr.PrepareButton(BtnUnlock, "custom-unlock");
             IconsMgr.PrepareButton(BtnHoming, "custom-homing");
             IconsMgr.PrepareButton(BtnZeroing, "custom-zeroing");
@@ -62,92 +62,92 @@ namespace LaserGRBL
 
         private void CreatePanel()
         {
-			if (GrblPanel != null)
+            if (GrblPanel != null)
             {
                 tableLayoutPanel1.Controls.Remove(GrblPanel as Control);
-				(GrblPanel as Control).Dispose();
+                (GrblPanel as Control).Dispose();
             }
             if (Settings.RequestedGraphicMode == Settings.GraphicMode.GDI)
                 GrblPanel = new GrblPanel();
             else
                 GrblPanel = new GrblPanel3D();
 
-			if (mCore != null) GrblPanel.SetCore(mCore);
+            if (mCore != null) GrblPanel.SetCore(mCore);
             (GrblPanel as Control).Dock = DockStyle.Fill;
             tableLayoutPanel1.Controls.Add(GrblPanel as Control);
         }
 
         private void CustomButtonArea_OrderChanged(int oldindex, int newindex)
-		{
-			CustomButtons.Reorder(oldindex, newindex);
-			RefreshCustomButtons();
-		}
+        {
+            CustomButtons.Reorder(oldindex, newindex);
+            RefreshCustomButtons();
+        }
 
-		public void SetCore(GrblCore core)
-		{
-			mCore = core;
+        public void SetCore(GrblCore core)
+        {
+            mCore = core;
             GrblPanel.SetCore(core);
 
             BtnUnlock.Visible = mCore.Type == Firmware.Grbl;
 
             RefreshCustomButtons();
-			TimerUpdate();
-		}
+            TimerUpdate();
+        }
 
-		public void TimerUpdate()
-		{
+        public void TimerUpdate()
+        {
             GrblPanel.TimerUpdate();
-			SuspendLayout();
-			BtnReset.Enabled = mCore.CanResetGrbl;
-			BtnHoming.Visible = GrblCore.Configuration.HomingEnabled;
-			BtnHoming.Enabled = mCore.CanDoHoming;
-			BtnUnlock.Enabled = mCore.CanUnlock;
-			BtnStop.Enabled = mCore.CanFeedHold;
-			BtnResume.Enabled = mCore.CanResumeHold;
-			BtnZeroing.Enabled = mCore.CanDoZeroing;
-			foreach (CustomButtonIB ib in CustomButtonArea.Controls)
-			{
+            SuspendLayout();
+            BtnReset.Enabled = mCore.CanResetGrbl;
+            BtnHoming.Visible = GrblCore.Configuration.HomingEnabled;
+            BtnHoming.Enabled = mCore.CanDoHoming;
+            BtnUnlock.Enabled = mCore.CanUnlock;
+            BtnStop.Enabled = mCore.CanFeedHold;
+            BtnResume.Enabled = mCore.CanResumeHold;
+            BtnZeroing.Enabled = mCore.CanDoZeroing;
+            foreach (CustomButtonIB ib in CustomButtonArea.Controls)
+            {
                 ib.RefreshEnabled();
             }
-				
 
-			ResumeLayout();
-		}
 
-		void BtnGoHomeClick(object sender, EventArgs e)
-		{
-			mCore.GrblHoming();
-		}
-		void BtnResetClick(object sender, EventArgs e)
-		{
-			mCore.GrblReset();
-		}
-		void BtnStopClick(object sender, EventArgs e)
-		{
-			mCore.FeedHold(false);
-		}
-		void BtnResumeClick(object sender, EventArgs e)
-		{
-			mCore.CycleStartResume(false);
-		}
+            ResumeLayout();
+        }
 
-		private void BtnUnlockClick(object sender, EventArgs e)
-		{
-			mCore.GrblUnlock();
-		}
+        void BtnGoHomeClick(object sender, EventArgs e)
+        {
+            mCore.GrblHoming();
+        }
+        void BtnResetClick(object sender, EventArgs e)
+        {
+            mCore.GrblReset();
+        }
+        void BtnStopClick(object sender, EventArgs e)
+        {
+            mCore.FeedHold(false);
+        }
+        void BtnResumeClick(object sender, EventArgs e)
+        {
+            mCore.CycleStartResume(false);
+        }
 
-		private void addCustomButtonToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			CustomButtonForm.CreateAndShowDialog(ParentForm);
-			RefreshCustomButtons();
-		}
+        private void BtnUnlockClick(object sender, EventArgs e)
+        {
+            mCore.GrblUnlock();
+        }
 
-		private void RefreshCustomButtons()
-		{
-			CustomButtonArea.Controls.Clear();
-			foreach (CustomButton cb in CustomButtons.Buttons)
-			{
-				CustomButtonIB ib = new CustomButtonIB(mCore, cb, this);
+        private void addCustomButtonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CustomButtonForm.CreateAndShowDialog(ParentForm);
+            RefreshCustomButtons();
+        }
+
+        private void RefreshCustomButtons()
+        {
+            CustomButtonArea.Controls.Clear();
+            foreach (CustomButton cb in CustomButtons.Buttons)
+            {
+                CustomButtonIB ib = new CustomButtonIB(mCore, cb, this);
                 if (!IconsMgr.LegacyIcons)
                 {
                     switch (ib.Caption)
@@ -165,9 +165,9 @@ namespace LaserGRBL
                     }
                 }
                 CustomButtonArea.Controls.Add(ib);
-			}
+            }
 
-		}
+        }
 
         public List<CustomButtonIB> CustomImageButtons
         {
@@ -409,186 +409,186 @@ namespace LaserGRBL
         }
 
         private class MyFlowPanel : FlowLayoutPanel
-		{
-			public delegate void OrderChangedDlg(int oldindex, int newindex);
-			public event OrderChangedDlg OrderChanged;
+        {
+            public delegate void OrderChangedDlg(int oldindex, int newindex);
+            public event OrderChangedDlg OrderChanged;
 
-			public MyFlowPanel()
-			{
-				AllowDrop = true;
-				ResizeRedraw = true;
-			}
+            public MyFlowPanel()
+            {
+                AllowDrop = true;
+                ResizeRedraw = true;
+            }
 
-			protected override void OnControlAdded(ControlEventArgs e)
-			{
-				base.OnControlAdded(e);
-				Invalidate();
-			}
-			protected override void OnControlRemoved(ControlEventArgs e)
-			{
-				base.OnControlRemoved(e);
-				Invalidate();
-			}
+            protected override void OnControlAdded(ControlEventArgs e)
+            {
+                base.OnControlAdded(e);
+                Invalidate();
+            }
+            protected override void OnControlRemoved(ControlEventArgs e)
+            {
+                base.OnControlRemoved(e);
+                Invalidate();
+            }
 
-			protected override void OnPaintBackground(PaintEventArgs e)
-			{
-				e.Graphics.Clear(ColorScheme.FormBackColor);
-				if (Controls.Count == 0)
-				{
-					string text = Strings.AddCustomButtonsHint;
-					SizeF size = e.Graphics.MeasureString(text, Font);
-					e.Graphics.DrawString(text, Font, Brushes.DarkGray, (Width - size.Width) / 2, (Height - size.Height) / 2);
-				}
-			}
+            protected override void OnPaintBackground(PaintEventArgs e)
+            {
+                e.Graphics.Clear(ColorScheme.FormBackColor);
+                if (Controls.Count == 0)
+                {
+                    string text = Strings.AddCustomButtonsHint;
+                    SizeF size = e.Graphics.MeasureString(text, Font);
+                    e.Graphics.DrawString(text, Font, Brushes.DarkGray, (Width - size.Width) / 2, (Height - size.Height) / 2);
+                }
+            }
 
-			protected override void OnDragEnter(DragEventArgs drgevent)
-			{
-				CustomButtonIB btn = (CustomButtonIB)drgevent.Data.GetData(typeof(CustomButtonIB));
-				if (btn != null)
-					drgevent.Effect = DragDropEffects.Move;
-				else
-					drgevent.Effect = DragDropEffects.None;
+            protected override void OnDragEnter(DragEventArgs drgevent)
+            {
+                CustomButtonIB btn = (CustomButtonIB)drgevent.Data.GetData(typeof(CustomButtonIB));
+                if (btn != null)
+                    drgevent.Effect = DragDropEffects.Move;
+                else
+                    drgevent.Effect = DragDropEffects.None;
 
-				base.OnDragEnter(drgevent);
-			}
+                base.OnDragEnter(drgevent);
+            }
 
-			int dragInsertIndex = -1;
+            int dragInsertIndex = -1;
 
-			public bool ButtonPositionUnlocked { get; internal set; }
+            public bool ButtonPositionUnlocked { get; internal set; }
 
-			protected override void OnDragOver(DragEventArgs drgevent)
-			{
-				MyFlowPanel dst = this;
+            protected override void OnDragOver(DragEventArgs drgevent)
+            {
+                MyFlowPanel dst = this;
 
-				Point p = dst.PointToClient(new Point(drgevent.X, drgevent.Y));
-				Control item = dst.GetChildAtPoint(p);
+                Point p = dst.PointToClient(new Point(drgevent.X, drgevent.Y));
+                Control item = dst.GetChildAtPoint(p);
 
-				if (item == null) // move the point a bit to the left, if the cursor is between two buttons
-				{
-					p.X -= 6;
-					item = dst.GetChildAtPoint(p);
-				}
+                if (item == null) // move the point a bit to the left, if the cursor is between two buttons
+                {
+                    p.X -= 6;
+                    item = dst.GetChildAtPoint(p);
+                }
 
-				if (item != null)
-				{
-					int currentIndex = dst.Controls.GetChildIndex(item, false);
+                if (item != null)
+                {
+                    int currentIndex = dst.Controls.GetChildIndex(item, false);
 
-					Point pRelativeToControl = item.PointToClient(new Point(drgevent.X, drgevent.Y));
-					double xInPercent = pRelativeToControl.X / (double)item.Width * 100.0;
-					bool isLastItem = false;
+                    Point pRelativeToControl = item.PointToClient(new Point(drgevent.X, drgevent.Y));
+                    double xInPercent = pRelativeToControl.X / (double)item.Width * 100.0;
+                    bool isLastItem = false;
 
-					if (xInPercent > 50.0)
-					{
-						if (++currentIndex >= dst.Controls.Count)
-						{
-							item = dst.Controls[dst.Controls.Count - 1];
-							isLastItem = true;
-						}
-						else
-						{
-							item = dst.Controls[currentIndex];
-						}
-					}
+                    if (xInPercent > 50.0)
+                    {
+                        if (++currentIndex >= dst.Controls.Count)
+                        {
+                            item = dst.Controls[dst.Controls.Count - 1];
+                            isLastItem = true;
+                        }
+                        else
+                        {
+                            item = dst.Controls[currentIndex];
+                        }
+                    }
 
-					if (item != null && (dragInsertIndex == -1 || currentIndex != dragInsertIndex))
-					{
-						using (Graphics g = CreateGraphics())
-						{
-							g.Clear(this.BackColor);
-							dragInsertIndex = currentIndex;
-							int xPos = item.Location.X - 3;
-							if (isLastItem)
-							{
-								xPos = item.Location.X + item.Width + 1;
-							}
-							g.FillRectangle(Brushes.CornflowerBlue, xPos, 2, 2, item.Height);
-						}
-					}
-				}
-
-
-				base.OnDragOver(drgevent);
-			}
-
-			protected override void OnDragDrop(DragEventArgs drgevent)
-			{
-				CustomButtonIB btn = (CustomButtonIB)drgevent.Data.GetData(typeof(CustomButtonIB));
-				MyFlowPanel dst = this;
-				MyFlowPanel src = btn?.Parent as MyFlowPanel;
-
-				if (btn != null && src != null && dst != null &&  src == dst)
-				{
-					drgevent.Effect = DragDropEffects.Move;
-
-					int oldindex = dst.Controls.GetChildIndex(btn);		
-					OrderChanged?.Invoke(oldindex, dragInsertIndex);
-					dragInsertIndex = -1;
-				}
-				else
-				{
-					drgevent.Effect = DragDropEffects.None;
-					dragInsertIndex = -1;
-				}
-
-				base.OnDragDrop(drgevent);
-			}
-
-			protected override void OnDragLeave(EventArgs e)
-			{
-				dragInsertIndex = -1;
-				using (Graphics g = CreateGraphics())
-				{
-					g.Clear(this.BackColor);
-				}
-
-				base.OnDragLeave(e);
-			}
-
-		}
+                    if (item != null && (dragInsertIndex == -1 || currentIndex != dragInsertIndex))
+                    {
+                        using (Graphics g = CreateGraphics())
+                        {
+                            g.Clear(this.BackColor);
+                            dragInsertIndex = currentIndex;
+                            int xPos = item.Location.X - 3;
+                            if (isLastItem)
+                            {
+                                xPos = item.Location.X + item.Width + 1;
+                            }
+                            g.FillRectangle(Brushes.CornflowerBlue, xPos, 2, 2, item.Height);
+                        }
+                    }
+                }
 
 
-		internal void OnColorChange()
-		{
+                base.OnDragOver(drgevent);
+            }
+
+            protected override void OnDragDrop(DragEventArgs drgevent)
+            {
+                CustomButtonIB btn = (CustomButtonIB)drgevent.Data.GetData(typeof(CustomButtonIB));
+                MyFlowPanel dst = this;
+                MyFlowPanel src = btn?.Parent as MyFlowPanel;
+
+                if (btn != null && src != null && dst != null && src == dst)
+                {
+                    drgevent.Effect = DragDropEffects.Move;
+
+                    int oldindex = dst.Controls.GetChildIndex(btn);
+                    OrderChanged?.Invoke(oldindex, dragInsertIndex);
+                    dragInsertIndex = -1;
+                }
+                else
+                {
+                    drgevent.Effect = DragDropEffects.None;
+                    dragInsertIndex = -1;
+                }
+
+                base.OnDragDrop(drgevent);
+            }
+
+            protected override void OnDragLeave(EventArgs e)
+            {
+                dragInsertIndex = -1;
+                using (Graphics g = CreateGraphics())
+                {
+                    g.Clear(this.BackColor);
+                }
+
+                base.OnDragLeave(e);
+            }
+
+        }
+
+
+        internal void OnColorChange()
+        {
             GrblPanel.OnColorChange();
-		}
+        }
 
-		private void BtnZeroing_Click(object sender, EventArgs e)
-		{
-			mCore.SetNewZero();
-		}
+        private void BtnZeroing_Click(object sender, EventArgs e)
+        {
+            mCore.SetNewZero();
+        }
 
-		private void exportCustomButtonsToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			CustomButtons.Export(ParentForm);
-		}
+        private void exportCustomButtonsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CustomButtons.Export(ParentForm);
+        }
 
-		private void importCustomButtonsToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			ImportButton();
-		}
+        private void importCustomButtonsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImportButton();
+        }
 
-		public void ImportButton(string filename = null)
-		{
-			if (CustomButtons.Import(ParentForm, filename))
-			{
-				RefreshCustomButtons();
-				CustomButtons.SaveFile();
-			}
-		}
+        public void ImportButton(string filename = null)
+        {
+            if (CustomButtons.Import(ParentForm, filename))
+            {
+                RefreshCustomButtons();
+                CustomButtons.SaveFile();
+            }
+        }
 
-		private void MNAddCB_Opening(object sender, CancelEventArgs e)
-		{
-			exportCustomButtonsToolStripMenuItem.Enabled = CustomButtons.Count > 0;
-		}
+        private void MNAddCB_Opening(object sender, CancelEventArgs e)
+        {
+            exportCustomButtonsToolStripMenuItem.Enabled = CustomButtons.Count > 0;
+        }
 
-		private void MnUnlockButtonClick(object sender, EventArgs e)
-		{
-			MnLockButton.Checked = !MnLockButton.Checked;
-			CustomButtonArea.ButtonPositionUnlocked = !MnLockButton.Checked;
-			Refresh();
-		}
+        private void MnUnlockButtonClick(object sender, EventArgs e)
+        {
+            MnLockButton.Checked = !MnLockButton.Checked;
+            CustomButtonArea.ButtonPositionUnlocked = !MnLockButton.Checked;
+            Refresh();
+        }
 
-		
-	}
+
+    }
 
 }

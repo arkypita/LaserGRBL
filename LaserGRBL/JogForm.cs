@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace LaserGRBL
 {
-	public partial class JogForm : System.Windows.Forms.UserControl
-	{
-		GrblCore Core;
+    public partial class JogForm : System.Windows.Forms.UserControl
+    {
+        GrblCore Core;
 
-		public JogForm()
-		{
-			InitializeComponent();
+        public JogForm()
+        {
+            InitializeComponent();
             SettingsForm.SettingsChanged += SettingsForm_SettingsChanged;
             IconsMgr.PrepareButton(BtnN, "mdi-arrow-up-bold-outline");
             IconsMgr.PrepareButton(BtnNE, "mdi-arrow-top-right-bold-outline");
@@ -36,18 +36,18 @@ namespace LaserGRBL
         }
 
         public void SetCore(GrblCore core)
-		{
-			Core = core;
+        {
+            Core = core;
 
-			UpdateFMax.Enabled = true;
-			UpdateFMax_Tick(null, null);
+            UpdateFMax.Enabled = true;
+            UpdateFMax_Tick(null, null);
 
-			TbSpeed.Value = Math.Max(Math.Min(Settings.GetObject("Jog Speed", 1000), TbSpeed.Maximum), TbSpeed.Minimum);
-            
-			TbStep.Value = Convert.ToDecimal(Settings.GetObject("Jog Step", 10M));
+            TbSpeed.Value = Math.Max(Math.Min(Settings.GetObject("Jog Speed", 1000), TbSpeed.Maximum), TbSpeed.Minimum);
 
-			TbSpeed_ValueChanged(null, null); //set tooltip
-			TbStep_ValueChanged(null, null); //set tooltip
+            TbStep.Value = Convert.ToDecimal(Settings.GetObject("Jog Step", 10M));
+
+            TbSpeed_ValueChanged(null, null); //set tooltip
+            TbStep_ValueChanged(null, null); //set tooltip
 
             Core.JogStateChange += Core_JogStateChange;
             SettingsForm_SettingsChanged(this, null);
@@ -65,9 +65,9 @@ namespace LaserGRBL
         }
 
         private void OnJogButtonMouseDown(object sender, MouseEventArgs e)
-		{
-			Core.JogToDirection((sender as DirectionButton).JogDirection, e.Button == MouseButtons.Right);
-		}
+        {
+            Core.JogToDirection((sender as DirectionButton).JogDirection, e.Button == MouseButtons.Right);
+        }
 
         private void OnJogButtonMouseUp(object sender, MouseEventArgs e)
         {
@@ -80,47 +80,47 @@ namespace LaserGRBL
         }
 
         private void TbSpeed_ValueChanged(object sender, EventArgs e)
-		{
-			TT.SetToolTip(TbSpeed, $"{Strings.SpeedSliderToolTip} {TbSpeed.Value}");
-			LblSpeed.Text = String.Format("F{0}", TbSpeed.Value);
-			Settings.SetObject("Jog Speed", TbSpeed.Value);
-			Core.JogSpeed = TbSpeed.Value;
-		}
+        {
+            TT.SetToolTip(TbSpeed, $"{Strings.SpeedSliderToolTip} {TbSpeed.Value}");
+            LblSpeed.Text = String.Format("F{0}", TbSpeed.Value);
+            Settings.SetObject("Jog Speed", TbSpeed.Value);
+            Core.JogSpeed = TbSpeed.Value;
+        }
 
-		private void TbStep_ValueChanged(object sender, EventArgs e)
-		{
-			TT.SetToolTip(TbStep, $"{Strings.StepSliderToolTip} {TbStep.Value}");
-			LblStep.Text = TbStep.Value.ToString();
-			Settings.SetObject("Jog Step", TbStep.Value);
-			Core.JogStep = TbStep.Value;
-		}
+        private void TbStep_ValueChanged(object sender, EventArgs e)
+        {
+            TT.SetToolTip(TbStep, $"{Strings.StepSliderToolTip} {TbStep.Value}");
+            LblStep.Text = TbStep.Value.ToString();
+            Settings.SetObject("Jog Step", TbStep.Value);
+            Core.JogStep = TbStep.Value;
+        }
 
         public void ChangeJogStepIndexBy(int value)
         {
             TbStep.ChangeIndexBy(value);
         }
 
-		internal void ChangeJogSpeedIndexBy(int v)
-		{
-			TbSpeed.Value = Math.Max(Math.Min(TbSpeed.Value + (TbSpeed.LargeChange * v), TbSpeed.Maximum), TbSpeed.Minimum);
-		}
+        internal void ChangeJogSpeedIndexBy(int v)
+        {
+            TbSpeed.Value = Math.Max(Math.Min(TbSpeed.Value + (TbSpeed.LargeChange * v), TbSpeed.Maximum), TbSpeed.Minimum);
+        }
 
-		int oldMax;
-		private void UpdateFMax_Tick(object sender, EventArgs e)
-		{
-			int curMax = (int)Math.Max(TbSpeed.Minimum, Math.Max(GrblCore.Configuration.MaxRateX, GrblCore.Configuration.MaxRateY));
+        int oldMax;
+        private void UpdateFMax_Tick(object sender, EventArgs e)
+        {
+            int curMax = (int)Math.Max(TbSpeed.Minimum, Math.Max(GrblCore.Configuration.MaxRateX, GrblCore.Configuration.MaxRateY));
 
-			if (oldMax != curMax)
-			{
-				oldMax = curMax;
-				TbSpeed.Maximum = curMax;
-				
-				TbSpeed.LargeChange = Math.Max(1, curMax / 10);
-				TbSpeed.SmallChange = Math.Max(1, curMax / 20);
-			}
-		}
+            if (oldMax != curMax)
+            {
+                oldMax = curMax;
+                TbSpeed.Maximum = curMax;
 
-	}
+                TbSpeed.LargeChange = Math.Max(1, curMax / 10);
+                TbSpeed.SmallChange = Math.Max(1, curMax / 20);
+            }
+        }
+
+    }
 
     public class StepBar : System.Windows.Forms.TrackBar
     {
@@ -129,7 +129,7 @@ namespace LaserGRBL
         public StepBar()
         {
             Minimum = 0;
-            Maximum = values.Length -1;
+            Maximum = values.Length - 1;
             SmallChange = LargeChange = 1;
         }
 
@@ -161,23 +161,23 @@ namespace LaserGRBL
 
 
     public class DirectionButton : UserControls.ImageButton
-	{
-		private GrblCore.JogDirection mDir = GrblCore.JogDirection.N;
+    {
+        private GrblCore.JogDirection mDir = GrblCore.JogDirection.N;
 
-		public GrblCore.JogDirection JogDirection
-		{
-			get { return mDir; }
-			set { mDir = value; }
-		}
+        public GrblCore.JogDirection JogDirection
+        {
+            get { return mDir; }
+            set { mDir = value; }
+        }
 
-		protected override void OnSizeChanged(EventArgs e)
-		{
-			if (Width != Height)
-				Width = Height;
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            if (Width != Height)
+                Width = Height;
 
-			base.OnSizeChanged(e);
-		}
-	}
+            base.OnSizeChanged(e);
+        }
+    }
 
     public class DirectionStepButton : DirectionButton
     {

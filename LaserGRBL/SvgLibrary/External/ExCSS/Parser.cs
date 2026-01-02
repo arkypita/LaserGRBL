@@ -96,12 +96,12 @@ namespace ExCSS
         internal static RuleSet ParseRule(string css)
         {
             var parser = new Parser();
-            
+
 
             var styleSheet = parser.Parse(css);
 
             return styleSheet.Rules.Count > 0
-                ? styleSheet.Rules[0] 
+                ? styleSheet.Rules[0]
                 : null;
         }
 
@@ -116,7 +116,7 @@ namespace ExCSS
         internal static void AppendDeclarations(StyleDeclaration list, string css, bool quirksMode = false)
         {
             var parser = new Parser();//(new StyleSheet(), new StylesheetReader(declarations))
-           
+
 
             parser.AddRuleSet(list.ParentRule ?? new StyleRule(list));
 

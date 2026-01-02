@@ -56,9 +56,9 @@ namespace Svg.Transforms
         }
 
 
-		public override object Clone()
-		{
-			return new SvgRotate(this.Angle, this.CenterX, this.CenterY);
-		}
+        public override object Clone()
+        {
+            return new SvgRotate(this.Angle, this.CenterX, this.CenterY);
+        }
     }
 }

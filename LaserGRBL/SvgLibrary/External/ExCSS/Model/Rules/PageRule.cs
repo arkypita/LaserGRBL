@@ -10,7 +10,7 @@ namespace ExCSS
         private BaseSelector _selector;
         private string _selectorText;
 
-        public PageRule() 
+        public PageRule()
         {
             _declarations = new StyleDeclaration();
             RuleType = RuleType.Page;

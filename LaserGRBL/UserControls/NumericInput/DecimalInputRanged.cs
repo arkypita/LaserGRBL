@@ -171,7 +171,7 @@ namespace LaserGRBL.UserControls.NumericInput
         private bool OldErrorState = false;
         private void CheckInError()
         {
-			if (this.InError != OldErrorState)
+            if (this.InError != OldErrorState)
             {
                 OldErrorState = this.InError;
                 IsInErrorChanged?.Invoke(this, InError);

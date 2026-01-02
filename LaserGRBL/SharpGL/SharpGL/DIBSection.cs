@@ -7,7 +7,7 @@ namespace SharpGL
     /// 
     /// </summary>
 	public class DIBSection : IDisposable
-	{
+    {
         /// <summary>
         /// Creates the specified width.
         /// </summary>
@@ -17,42 +17,42 @@ namespace SharpGL
         /// <param name="bitCount">The bit count.</param>
         /// <returns></returns>
 		public virtual unsafe bool Create(IntPtr hDC, int width, int height, int bitCount)
-		{
-			this.width = width;
-			this.height = height;
+        {
+            this.width = width;
+            this.height = height;
             parentDC = hDC;
 
-			//	Destroy existing objects.
-			Destroy();
-			
-			//	Create a bitmap info structure.
+            //	Destroy existing objects.
+            Destroy();
+
+            //	Create a bitmap info structure.
             Win32.BITMAPINFO info = new Win32.BITMAPINFO();
             info.Init();
 
-			//	Set the data.
-			info.biBitCount = (short)bitCount;
-			info.biPlanes = 1;
-			info.biWidth = width;
-			info.biHeight = height;
+            //	Set the data.
+            info.biBitCount = (short)bitCount;
+            info.biPlanes = 1;
+            info.biWidth = width;
+            info.biHeight = height;
 
-			//	Create the bitmap.
-			hBitmap = Win32.CreateDIBSection(hDC, ref info, Win32.DIB_RGB_COLORS,
-				out bits, IntPtr.Zero, 0);
+            //	Create the bitmap.
+            hBitmap = Win32.CreateDIBSection(hDC, ref info, Win32.DIB_RGB_COLORS,
+                out bits, IntPtr.Zero, 0);
 
             Win32.SelectObject(hDC, hBitmap);
-			
-			//	Set the OpenGL pixel format.
-			SetPixelFormat(hDC, bitCount);
 
-			return true;
-		}
+            //	Set the OpenGL pixel format.
+            SetPixelFormat(hDC, bitCount);
 
-    /// <summary>
-    /// Resizes the section.
-    /// </summary>
-    /// <param name="width">The width.</param>
-    /// <param name="height">The height.</param>
-    /// <param name="bitCount">The bit count.</param>
+            return true;
+        }
+
+        /// <summary>
+        /// Resizes the section.
+        /// </summary>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <param name="bitCount">The bit count.</param>
         public void Resize(int width, int height, int bitCount)
         {
             //	Destroy existing objects.
@@ -87,53 +87,53 @@ namespace SharpGL
             Destroy();
         }
 
-		/// <summary>
-		/// This function sets the pixel format of the underlying bitmap.
-		/// </summary>
+        /// <summary>
+        /// This function sets the pixel format of the underlying bitmap.
+        /// </summary>
         /// <param name="hDC">The handle to the device context.</param>
-		/// <param name="bitCount">The bitcount.</param>
-		protected virtual bool SetPixelFormat(IntPtr hDC, int bitCount)
-		{
-			//	Create the big lame pixel format majoo.
+        /// <param name="bitCount">The bitcount.</param>
+        protected virtual bool SetPixelFormat(IntPtr hDC, int bitCount)
+        {
+            //	Create the big lame pixel format majoo.
             Win32.PIXELFORMATDESCRIPTOR pixelFormat = new Win32.PIXELFORMATDESCRIPTOR();
             pixelFormat.Init();
 
-			//	Set the values for the pixel format.
-			pixelFormat.nVersion  = 1;
+            //	Set the values for the pixel format.
+            pixelFormat.nVersion = 1;
             pixelFormat.dwFlags = (Win32.PFD_DRAW_TO_BITMAP | Win32.PFD_SUPPORT_OPENGL | Win32.PFD_SUPPORT_GDI);
             pixelFormat.iPixelType = Win32.PFD_TYPE_RGBA;
-			pixelFormat.cColorBits = (byte)bitCount;
-			pixelFormat.cDepthBits = 32;
+            pixelFormat.cColorBits = (byte)bitCount;
+            pixelFormat.cDepthBits = 32;
             pixelFormat.iLayerType = Win32.PFD_MAIN_PLANE;
 
-			//	Match an appropriate pixel format 
-			int iPixelformat;
-			if((iPixelformat = Win32.ChoosePixelFormat(hDC, pixelFormat)) == 0 )
-				return false;
+            //	Match an appropriate pixel format 
+            int iPixelformat;
+            if ((iPixelformat = Win32.ChoosePixelFormat(hDC, pixelFormat)) == 0)
+                return false;
 
-			//	Sets the pixel format
+            //	Sets the pixel format
             if (Win32.SetPixelFormat(hDC, iPixelformat, pixelFormat) == 0)
-			{
+            {
                 //  Clear the error and fail.
-				int _ = Marshal.GetLastWin32Error();
-				return false;
-			}
-
-			return true;
-		}
-
-    /// <summary>
-    /// Destroys this instance.
-    /// </summary>
-		public virtual void Destroy()
-		{
-            //	Destroy the bitmap.
-			if(hBitmap != IntPtr.Zero)
-			{
-                Win32.DeleteObject(hBitmap);
-				hBitmap = IntPtr.Zero;
+                int _ = Marshal.GetLastWin32Error();
+                return false;
             }
-		}
+
+            return true;
+        }
+
+        /// <summary>
+        /// Destroys this instance.
+        /// </summary>
+        public virtual void Destroy()
+        {
+            //	Destroy the bitmap.
+            if (hBitmap != IntPtr.Zero)
+            {
+                Win32.DeleteObject(hBitmap);
+                hBitmap = IntPtr.Zero;
+            }
+        }
 
         /// <summary>
         /// The parent dc.
@@ -154,20 +154,20 @@ namespace SharpGL
         /// The width.
         /// </summary>
 		protected int width = 0;
-        
+
         /// <summary>
         /// The height.
         /// </summary>
-		protected int height = 0;
+        protected int height = 0;
 
         /// <summary>
         /// Gets the handle to the bitmap.
         /// </summary>
         /// <value>The handle to the bitmap.</value>
 		public IntPtr HBitmap
-		{
-			get {return hBitmap;}
-		}
+        {
+            get { return hBitmap; }
+        }
 
         /// <summary>
         /// Gets the bits.
@@ -182,19 +182,19 @@ namespace SharpGL
         /// </summary>
         /// <value>The width.</value>
 		public int Width
-		{
-			get { return width; }
+        {
+            get { return width; }
             protected set { width = value; }
-		}
+        }
 
         /// <summary>
         /// Gets or sets the height.
         /// </summary>
         /// <value>The height.</value>
 		public int Height
-		{
-			get {return height;}
+        {
+            get { return height; }
             protected set { height = value; }
-		}
+        }
     }
 }

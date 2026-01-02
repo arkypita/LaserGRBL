@@ -15,8 +15,8 @@ namespace SharpGL.SceneGraph.Quadrics
         /// <summary>
         /// Initializes a new instance of the <see cref="Sphere"/> class.
         /// </summary>
-        public Sphere() 
-        { 
+        public Sphere()
+        {
             //  Set the name.
             Name = "Sphere";
 

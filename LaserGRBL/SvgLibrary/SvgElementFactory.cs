@@ -97,7 +97,7 @@ namespace Svg
                     ElementInfo validType = null;
                     if (AvailableElements.TryGetValue(elementName, out validType))
                     {
-                        createdElement = (SvgElement) Activator.CreateInstance(validType.ElementType);
+                        createdElement = (SvgElement)Activator.CreateInstance(validType.ElementType);
                     }
                     else
                     {
@@ -132,7 +132,7 @@ namespace Svg
 
             while (reader.MoveToNextAttribute())
             {
-                if (reader.LocalName.Equals("style") && !(element is NonSvgElement)) 
+                if (reader.LocalName.Equals("style") && !(element is NonSvgElement))
                 {
                     var inlineSheet = cssParser.Parse("#a{" + reader.Value + "}");
                     foreach (var rule in inlineSheet.StyleRules)
@@ -254,7 +254,7 @@ namespace Svg
                     _propertyDescriptors.Add(elementType, new Dictionary<string, PropertyDescriptorCollection>());
 
                     _propertyDescriptors[elementType].Add(attributeName, properties);
-                } 
+                }
             }
 
             if (properties.Count > 0)
@@ -263,13 +263,13 @@ namespace Svg
 
                 try
                 {
-					if (attributeName == "opacity" && attributeValue == "undefined")
-					{
-						attributeValue = "1";
-					}
+                    if (attributeName == "opacity" && attributeValue == "undefined")
+                    {
+                        attributeValue = "1";
+                    }
 
-					descriptor.SetValue(element, descriptor.Converter.ConvertFrom(document, CultureInfo.InvariantCulture, attributeValue));
-					
+                    descriptor.SetValue(element, descriptor.Converter.ConvertFrom(document, CultureInfo.InvariantCulture, attributeValue));
+
 
                 }
                 catch

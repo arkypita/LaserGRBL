@@ -7,19 +7,19 @@ using SharpGL.Enumerations;
 
 namespace SharpGL.OpenGLAttributes
 {
-	/// <summary>
-	/// This class has the light settings.
-	/// </summary>
-	[TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
-	[Serializable()]
-	public class LightingAttributes : OpenGLAttributeGroup
-	{
+    /// <summary>
+    /// This class has the light settings.
+    /// </summary>
+    [TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    [Serializable()]
+    public class LightingAttributes : OpenGLAttributeGroup
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="LightingAttributes"/> class.
         /// </summary>
         public LightingAttributes()
         {
-            AttributeFlags = SharpGL.Enumerations.AttributeMask.Lighting;        
+            AttributeFlags = SharpGL.Enumerations.AttributeMask.Lighting;
         }
 
         /// <summary>
@@ -52,30 +52,30 @@ namespace SharpGL.OpenGLAttributes
         private bool? localViewer;
         private bool? twoSided;
         private bool? enable;
-		
-		[Description("The ambient light for the entire scene."), Category("Lighting")]
+
+        [Description("The ambient light for the entire scene."), Category("Lighting")]
         public GLColor AmbientLight
-		{
-			get {return ambientLight;}
-			set {ambientLight = value;}
-		}
-		[Description("Does the scene get light depending on camera position?"), Category("Lighting")]
-		public bool? LocalViewer
-		{
-			get {return localViewer;}
-			set {localViewer = value;}
-		}
-		[Description("Are both sides of a polygon lit?"), Category("Lighting")]
-		public bool? TwoSided
-		{
-			get {return twoSided;}
-			set {twoSided = value;}
-		}
-		[Description("Is lighting enabled in the scene?"), Category("Lighting")]
-		public bool? Enable
-		{
-			get {return enable;}
-			set {enable = value;}
-		}
-	}
+        {
+            get { return ambientLight; }
+            set { ambientLight = value; }
+        }
+        [Description("Does the scene get light depending on camera position?"), Category("Lighting")]
+        public bool? LocalViewer
+        {
+            get { return localViewer; }
+            set { localViewer = value; }
+        }
+        [Description("Are both sides of a polygon lit?"), Category("Lighting")]
+        public bool? TwoSided
+        {
+            get { return twoSided; }
+            set { twoSided = value; }
+        }
+        [Description("Is lighting enabled in the scene?"), Category("Lighting")]
+        public bool? Enable
+        {
+            get { return enable; }
+            set { enable = value; }
+        }
+    }
 }

@@ -7,16 +7,16 @@
 // (c) Copyright 2006 Novell, Inc. (http://www.novell.com)
 //
 
-namespace MySerialPort 
+namespace MySerialPort
 {
-	public enum SerialPinChange 
-	{
-		CtsChanged = 8,
-		DsrChanged = 16,
-		CDChanged = 32,
-		Break = 64,
-		Ring = 256
-	} 
+    public enum SerialPinChange
+    {
+        CtsChanged = 8,
+        DsrChanged = 16,
+        CDChanged = 32,
+        Break = 64,
+        Ring = 256
+    }
 }
 
 

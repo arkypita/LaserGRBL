@@ -43,7 +43,8 @@ namespace Fizzler
         /// <see cref="IEnumerable{T}"/> object.
         /// </summary>
         public Reader(IEnumerable<T> e) :
-            this(CheckNonNull(e).GetEnumerator()) { }
+            this(CheckNonNull(e).GetEnumerator())
+        { }
 
         private static IEnumerable<T> CheckNonNull(IEnumerable<T> e)
         {
@@ -57,7 +58,7 @@ namespace Fizzler
         /// </summary>
         public Reader(IEnumerator<T> e)
         {
-            if(e == null) throw new ArgumentNullException("e");
+            if (e == null) throw new ArgumentNullException("e");
             _enumerator = e;
             _buffer = new Stack<T>();
             RealRead();
@@ -159,7 +160,7 @@ namespace Fizzler
 
         void Dispose()
         {
-            if(_enumerator == null) 
+            if (_enumerator == null)
                 return;
             _enumerator.Dispose();
             _enumerator = null;

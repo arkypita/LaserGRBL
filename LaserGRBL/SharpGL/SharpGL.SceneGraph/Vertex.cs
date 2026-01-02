@@ -16,8 +16,8 @@ namespace SharpGL.SceneGraph
         /// <param name="z">The z.</param>
         public Vertex(float x, float y, float z)
         {
-            this.x = x; 
-            this.y = y; 
+            this.x = x;
+            this.y = y;
             this.z = z;
         }
 
@@ -110,11 +110,11 @@ namespace SharpGL.SceneGraph
         /// <returns>
         /// The result of the operator.
         /// </returns>
-        public static Vertex operator * (Vertex lhs, Matrix rhs)
+        public static Vertex operator *(Vertex lhs, Matrix rhs)
         {
-            float X = lhs.X * (float)rhs[0,0] + lhs.Y * (float)rhs[1,0] + lhs.Z * (float)rhs[2,0];
-            float Y = lhs.X * (float)rhs[0,1] + lhs.Y * (float)rhs[1,1] + lhs.Z * (float)rhs[2,1];
-            float Z = lhs.X * (float)rhs[0,2] + lhs.Y * (float)rhs[1,2] + lhs.Z * (float)rhs[2,2];
+            float X = lhs.X * (float)rhs[0, 0] + lhs.Y * (float)rhs[1, 0] + lhs.Z * (float)rhs[2, 0];
+            float Y = lhs.X * (float)rhs[0, 1] + lhs.Y * (float)rhs[1, 1] + lhs.Z * (float)rhs[2, 1];
+            float Z = lhs.X * (float)rhs[0, 2] + lhs.Y * (float)rhs[1, 2] + lhs.Z * (float)rhs[2, 2];
 
             return new Vertex(X, Y, Z);
         }
@@ -211,7 +211,7 @@ namespace SharpGL.SceneGraph
         private float x;
         private float y;
         private float z;
-        
+
         /// <summary>
         /// The X coordinate.
         /// </summary>

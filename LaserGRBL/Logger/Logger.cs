@@ -9,68 +9,68 @@ using System.Text;
 
 namespace LaserGRBL
 {
-	static class Logger
-	{
-		private static AsyncLogFile file = new AsyncLogFile(System.IO.Path.Combine(GrblCore.DataPath, "sessionlog.txt"), 1000);
+    static class Logger
+    {
+        private static AsyncLogFile file = new AsyncLogFile(System.IO.Path.Combine(GrblCore.DataPath, "sessionlog.txt"), 1000);
 
-		public static void LogException(string context, Exception ex)
-		{
-			try { LogMultiLine(context, ex.ToString()); }
-			catch { }
-		}
+        public static void LogException(string context, Exception ex)
+        {
+            try { LogMultiLine(context, ex.ToString()); }
+            catch { }
+        }
 
-		public static void LogMessage(string context, string format, params object[] args)
-		{
-			try { LogMultiLine(context, string.Format(format, args)); }
-			catch { }
-		}
+        public static void LogMessage(string context, string format, params object[] args)
+        {
+            try { LogMultiLine(context, string.Format(format, args)); }
+            catch { }
+        }
 
-		internal static void Start()
-		{
+        internal static void Start()
+        {
             bool p64 = Tools.OSHelper.Is64BitProcess;
             bool o64 = Tools.OSHelper.Is64BitOperatingSystem;
 
-            LogMultiLine("Program", String.Format("------- LaserGRBL v{0} [{1}{2}] START -------", Program.CurrentVersion.ToString(3), p64 ? "64bit" : "32bit" , p64 != o64 ? "!" : ""));
+            LogMultiLine("Program", String.Format("------- LaserGRBL v{0} [{1}{2}] START -------", Program.CurrentVersion.ToString(3), p64 ? "64bit" : "32bit", p64 != o64 ? "!" : ""));
         }
-		
-		internal static void Stop()
-		{
-			try
-			{
-				LogMultiLine("Program", "---------------- PROGRAM STOP -----------------");
-				Log("\r\n");
-				file.Stop();
-			}
-			catch { }
-		}
 
-		private static void LogMultiLine(string context, string text)
-		{
-			try
-			{
-				DateTime dt = DateTime.Now;
+        internal static void Stop()
+        {
+            try
+            {
+                LogMultiLine("Program", "---------------- PROGRAM STOP -----------------");
+                Log("\r\n");
+                file.Stop();
+            }
+            catch { }
+        }
 
-				StringBuilder sb = new StringBuilder();
-				foreach (string line in text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None))
-					sb.AppendFormat("{0:dd/MM/yyyy HH:mm:ss.fff}\t{1}\t{2}\r\n", dt, context.PadRight(12, ' '), line);//sb.AppendFormat("{0}.{1}\t{2}\t{3}\t{4}\r\n", dt, dt.Millisecond, pid, context.PadRight(12, ' '), line);
+        private static void LogMultiLine(string context, string text)
+        {
+            try
+            {
+                DateTime dt = DateTime.Now;
 
-				Log(sb.ToString());
-			}
-			catch { }
-		}
+                StringBuilder sb = new StringBuilder();
+                foreach (string line in text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None))
+                    sb.AppendFormat("{0:dd/MM/yyyy HH:mm:ss.fff}\t{1}\t{2}\r\n", dt, context.PadRight(12, ' '), line);//sb.AppendFormat("{0}.{1}\t{2}\t{3}\t{4}\r\n", dt, dt.Millisecond, pid, context.PadRight(12, ' '), line);
 
-		private static void Log(string s)
-		{
-			file.Log(s);
-		}
+                Log(sb.ToString());
+            }
+            catch { }
+        }
 
-		public static bool ExistLog
-		{ get { return file.ExistLog; } }
+        private static void Log(string s)
+        {
+            file.Log(s);
+        }
+
+        public static bool ExistLog
+        { get { return file.ExistLog; } }
 
 
-		internal static void ShowLog()
-		{
-			file.ShowLog();
-		}
-	}
+        internal static void ShowLog()
+        {
+            file.ShowLog();
+        }
+    }
 }

@@ -16,11 +16,11 @@ namespace Svg
         public override string ToString()
         {
             var builder = new StringBuilder();
-            for (var i = 0; i < Count; i += 2) 
+            for (var i = 0; i < Count; i += 2)
             {
-                if (i + 1 < Count) 
+                if (i + 1 < Count)
                 {
-                    if (i > 1) 
+                    if (i > 1)
                     {
                         builder.Append(" ");
                     }
@@ -28,7 +28,7 @@ namespace Svg
                     builder.Append(this[i].Value.ToString(CultureInfo.InvariantCulture));
                     builder.Append(",");
                     builder.Append(this[i + 1].Value.ToString(CultureInfo.InvariantCulture));
-                }    
+                }
             }
             return builder.ToString();
         }
@@ -66,7 +66,7 @@ namespace Svg
                 {
                     result.Add(new SvgUnit(SvgUnitType.User, pointValue));
                 }
-                
+
                 return result;
             }
 

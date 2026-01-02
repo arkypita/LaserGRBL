@@ -10,22 +10,22 @@ using SharpGL.SceneGraph.Transformations;
 
 namespace SharpGL.SceneGraph.Evaluators
 {
-	/// <summary>
-	/// This is the base class of all evaluators, 1D, 2D etc. It is also the base class
-	/// for the NURBS, as they share alot of common code, such as the VertexGrid.
-	/// </summary>
-	[Serializable()]
-	public abstract class Evaluator : 
-        SceneElement, 
-        IHasObjectSpace, 
+    /// <summary>
+    /// This is the base class of all evaluators, 1D, 2D etc. It is also the base class
+    /// for the NURBS, as they share alot of common code, such as the VertexGrid.
+    /// </summary>
+    [Serializable()]
+    public abstract class Evaluator :
+        SceneElement,
+        IHasObjectSpace,
         IRenderable
-	{
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="Evaluator"/> class.
         /// </summary>
 		public Evaluator()
-		{
-			Name = "Evaluator";
+        {
+            Name = "Evaluator";
         }
 
         /// <summary>
@@ -83,10 +83,10 @@ namespace SharpGL.SceneGraph.Evaluators
         /// </value>
         [Description("The control points."), Category("Evaluator")]
         public VertexGrid ControlPoints
-		{
-			get {return controlPoints;}
-			set {controlPoints = value; }
-		}
+        {
+            get { return controlPoints; }
+            set { controlPoints = value; }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether [draw control points].
@@ -95,11 +95,11 @@ namespace SharpGL.SceneGraph.Evaluators
         ///   <c>true</c> if [draw control points]; otherwise, <c>false</c>.
         /// </value>
         [Description("Should the control points be drawn?"), Category("Evaluator")]
-		public bool DrawControlPoints
-		{
-			get {return drawPoints;}
-			set {drawPoints = value; }
-		}
+        public bool DrawControlPoints
+        {
+            get { return drawPoints; }
+            set { drawPoints = value; }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether [draw control grid].
@@ -108,11 +108,11 @@ namespace SharpGL.SceneGraph.Evaluators
         ///   <c>true</c> if [draw control grid]; otherwise, <c>false</c>.
         /// </value>
         [Description("Should the control grid be drawn?"), Category("Evaluator")]
-		public bool DrawControlGrid
-		{
-			get {return drawLines;}
-			set {drawLines = value; }
-		}
+        public bool DrawControlGrid
+        {
+            get { return drawLines; }
+            set { drawLines = value; }
+        }
 
         /// <summary>
         /// Gets the transformation that pushes us into object space.
@@ -122,5 +122,5 @@ namespace SharpGL.SceneGraph.Evaluators
         {
             get { return hasObjectSpaceHelper.Transformation; }
         }
-	}
+    }
 }

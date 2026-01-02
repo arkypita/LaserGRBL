@@ -57,14 +57,14 @@ namespace Svg
                 {
                     for (int i = 0; (i + 1) < Points.Count; i += 2)
                     {
-                        PointF endPoint = new PointF(Points[i].ToDeviceValue(renderer, UnitRenderingType.Horizontal, this), 
+                        PointF endPoint = new PointF(Points[i].ToDeviceValue(renderer, UnitRenderingType.Horizontal, this),
                                                      Points[i + 1].ToDeviceValue(renderer, UnitRenderingType.Vertical, this));
 
                         if (renderer == null)
                         {
-                          var radius = base.StrokeWidth / 2;
-                          _Path.AddEllipse(endPoint.X - radius, endPoint.Y - radius, 2 * radius, 2 * radius);
-                          continue;
+                            var radius = base.StrokeWidth / 2;
+                            _Path.AddEllipse(endPoint.X - radius, endPoint.Y - radius, 2 * radius, 2 * radius);
+                            continue;
                         }
 
                         // TODO: Remove unrequired first line
@@ -83,7 +83,7 @@ namespace Svg
                     Trace.TraceError("Error rendering points: " + exc.Message);
                 }
                 if (renderer != null)
-                  this.IsPathDirty = false;
+                    this.IsPathDirty = false;
             }
             return _Path;
         }

@@ -26,7 +26,7 @@ namespace Svg
         public virtual SvgUnit StartOffset
         {
             get { return (_dx.Count < 1 ? SvgUnit.None : _dx[0]); }
-            set 
+            set
             {
                 if (_dx.Count < 1)
                 {
@@ -90,7 +90,7 @@ namespace Svg
             return base.DeepCopy<SvgTextPath>();
         }
 
-        
+
 
 
     }

@@ -18,7 +18,7 @@ namespace Svg.Pathing
 
         public SvgPathSegment Last
         {
-            get { return this._segments[this._segments.Count-1]; }
+            get { return this._segments[this._segments.Count - 1]; }
         }
 
         public int IndexOf(SvgPathSegment item)

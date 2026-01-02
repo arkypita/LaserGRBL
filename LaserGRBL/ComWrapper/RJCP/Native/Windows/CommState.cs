@@ -43,7 +43,8 @@ namespace RJCP.IO.Ports.Native.Windows
         /// <exception cref="IOException">The DCB could not be obtained.</exception>
         public void GetCommState()
         {
-            if (!Kernel32.GetCommState(m_ComPortHandle, ref m_Dcb)) {
+            if (!Kernel32.GetCommState(m_ComPortHandle, ref m_Dcb))
+            {
                 throw new IOException("Unable to get serial port state", Marshal.GetLastWin32Error());
             }
         }
@@ -62,7 +63,8 @@ namespace RJCP.IO.Ports.Native.Windows
         /// combination of data in the DCB.</exception>
         public void SetCommState()
         {
-            if (!Kernel32.SetCommState(m_ComPortHandle, ref m_Dcb)) {
+            if (!Kernel32.SetCommState(m_ComPortHandle, ref m_Dcb))
+            {
                 throw new IOException("Unable to set the serial port state", Marshal.GetLastWin32Error());
             }
         }

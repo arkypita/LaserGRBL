@@ -41,9 +41,12 @@ namespace Svg
         [SvgAttribute("vert-origin-y")]
         public float VertOriginY
         {
-            get { return (this.Attributes["vert-origin-y"] == null ? 
-                          (this.Children.OfType<SvgFontFace>().First().Attributes["ascent"] == null ? 0 : this.Children.OfType<SvgFontFace>().First().Ascent) : 
-                          (float)this.Attributes["vert-origin-y"]); }
+            get
+            {
+                return (this.Attributes["vert-origin-y"] == null ?
+                          (this.Children.OfType<SvgFontFace>().First().Attributes["ascent"] == null ? 0 : this.Children.OfType<SvgFontFace>().First().Ascent) :
+                          (float)this.Attributes["vert-origin-y"]);
+            }
             set { this.Attributes["vert-origin-y"] = value; }
         }
 

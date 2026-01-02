@@ -26,11 +26,11 @@ namespace Svg
         [SvgAttribute("d", true)]
         public SvgPathSegmentList PathData
         {
-        	get { return this.Attributes.GetAttribute<SvgPathSegmentList>("d"); }
+            get { return this.Attributes.GetAttribute<SvgPathSegmentList>("d"); }
             set
             {
-            	this.Attributes["d"] = value;
-            	value._owner = this;
+                this.Attributes["d"] = value;
+                value._owner = this;
                 this.IsPathDirty = true;
             }
         }
@@ -45,38 +45,38 @@ namespace Svg
             set { this.Attributes["pathLength"] = value; }
         }
 
-		
+
         /// <summary>
         /// Gets or sets the marker (end cap) of the path.
         /// </summary>
         [SvgAttribute("marker-end", true)]
-		public Uri MarkerEnd
+        public Uri MarkerEnd
         {
-			get { return this.Attributes.GetAttribute<Uri>("marker-end").ReplaceWithNullIfNone(); }
-			set { this.Attributes["marker-end"] = value; }
-		}
+            get { return this.Attributes.GetAttribute<Uri>("marker-end").ReplaceWithNullIfNone(); }
+            set { this.Attributes["marker-end"] = value; }
+        }
 
 
-		/// <summary>
-		/// Gets or sets the marker (start cap) of the path.
-		/// </summary>
+        /// <summary>
+        /// Gets or sets the marker (start cap) of the path.
+        /// </summary>
         [SvgAttribute("marker-mid", true)]
-		public Uri MarkerMid
-		{
-			get { return this.Attributes.GetAttribute<Uri>("marker-mid").ReplaceWithNullIfNone(); }
-			set { this.Attributes["marker-mid"] = value; }
-		}
+        public Uri MarkerMid
+        {
+            get { return this.Attributes.GetAttribute<Uri>("marker-mid").ReplaceWithNullIfNone(); }
+            set { this.Attributes["marker-mid"] = value; }
+        }
 
 
-		/// <summary>
-		/// Gets or sets the marker (start cap) of the path.
-		/// </summary>
+        /// <summary>
+        /// Gets or sets the marker (start cap) of the path.
+        /// </summary>
         [SvgAttribute("marker-start", true)]
-		public Uri MarkerStart
-		{
-			get { return this.Attributes.GetAttribute<Uri>("marker-start").ReplaceWithNullIfNone(); }
-			set { this.Attributes["marker-start"] = value; }
-		}
+        public Uri MarkerStart
+        {
+            get { return this.Attributes.GetAttribute<Uri>("marker-start").ReplaceWithNullIfNone(); }
+            set { this.Attributes["marker-start"] = value; }
+        }
 
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Svg
         internal void OnPathUpdated()
         {
             this.IsPathDirty = true;
-            OnAttributeChanged(new AttributeEventArgs{ Attribute = "d", Value = this.Attributes.GetAttribute<SvgPathSegmentList>("d") });
+            OnAttributeChanged(new AttributeEventArgs { Attribute = "d", Value = this.Attributes.GetAttribute<SvgPathSegmentList>("d") });
         }
 
         /// <summary>
@@ -123,12 +123,12 @@ namespace Svg
             pathData._owner = this;
         }
 
-		/// <summary>
-		/// Renders the stroke of the <see cref="SvgVisualElement"/> to the specified <see cref="ISvgRenderer"/>
-		/// </summary>
-		/// <param name="renderer">The <see cref="ISvgRenderer"/> object to render to.</param>
-		protected internal override bool RenderStroke(ISvgRenderer renderer)
-		{
+        /// <summary>
+        /// Renders the stroke of the <see cref="SvgVisualElement"/> to the specified <see cref="ISvgRenderer"/>
+        /// </summary>
+        /// <param name="renderer">The <see cref="ISvgRenderer"/> object to render to.</param>
+        protected internal override bool RenderStroke(ISvgRenderer renderer)
+        {
             var result = base.RenderStroke(renderer);
             var path = this.Path(renderer);
 
@@ -150,25 +150,25 @@ namespace Svg
                 SvgMarker marker = this.OwnerDocument.GetElementById<SvgMarker>(this.MarkerEnd.ToString());
                 marker.RenderMarker(renderer, this, path.PathPoints[path.PathPoints.Length - 1], path.PathPoints[path.PathPoints.Length - 2], path.PathPoints[path.PathPoints.Length - 1]);
             }
-                
+
             return result;
-		}
+        }
 
-		public override SvgElement DeepCopy()
-		{
-			return DeepCopy<SvgPath>();
-		}
+        public override SvgElement DeepCopy()
+        {
+            return DeepCopy<SvgPath>();
+        }
 
-		public override SvgElement DeepCopy<T>()
-		{
-			var newObj = base.DeepCopy<T>() as SvgPath;
-			foreach (var pathData in this.PathData)
-				newObj.PathData.Add(pathData.Clone());
-			newObj.PathLength = this.PathLength;
-			newObj.MarkerStart = this.MarkerStart;
-			newObj.MarkerEnd = this.MarkerEnd;
-			return newObj;
+        public override SvgElement DeepCopy<T>()
+        {
+            var newObj = base.DeepCopy<T>() as SvgPath;
+            foreach (var pathData in this.PathData)
+                newObj.PathData.Add(pathData.Clone());
+            newObj.PathLength = this.PathLength;
+            newObj.MarkerStart = this.MarkerStart;
+            newObj.MarkerEnd = this.MarkerEnd;
+            return newObj;
 
-		}
+        }
     }
 }

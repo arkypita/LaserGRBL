@@ -8,17 +8,17 @@ namespace SharpGL.SceneGraph.Core
     /// to allow a material to be associated with the object.
     /// </summary>
 	public interface IHasMaterial
-	{
+    {
         /// <summary>
         /// Gets or sets the material.
         /// </summary>
         /// <value>
         /// The material.
         /// </value>
-	    Material Material 
-        { 
-            get; 
-            set; 
+	    Material Material
+        {
+            get;
+            set;
         }
-	}
+    }
 }

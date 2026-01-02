@@ -38,7 +38,7 @@ namespace Svg
                         break;
                     case 3:
                         newSegment = new CubicBezierSegment(_data.Points[i - 1], _data.Points[i], _data.Points[i + 1], _data.Points[i + 2]);
-                        i+= 3;
+                        i += 3;
                         break;
                     default:
                         throw new NotSupportedException();
@@ -155,7 +155,8 @@ namespace Svg
                 var mid = (left + right) / 2;
                 var leftValue = GaussianQuadrature(_integral, left, mid, 4);
                 var rightValue = GaussianQuadrature(_integral, mid, right, 4);
-                if (Math.Abs(fullInt - (leftValue + rightValue)) > epsilon) {
+                if (Math.Abs(fullInt - (leftValue + rightValue)) > epsilon)
+                {
                     var leftSub = Subdivide(left, mid, leftValue, totalLength, epsilon / 2.0);
                     totalLength += leftSub;
                     AddElementToTable(mid, totalLength);
@@ -189,7 +190,7 @@ namespace Svg
                 }
                 else if ((last - first) == 1)
                 {
-                    return _lengths.Values[first] + (_lengths.Values[last] - _lengths.Values[first]) * 
+                    return _lengths.Values[first] + (_lengths.Values[last] - _lengths.Values[first]) *
                         (length - _lengths.Keys[first]) / (_lengths.Keys[last] - _lengths.Keys[first]);
                 }
                 else
@@ -220,7 +221,7 @@ namespace Svg
                     case 1:
                         return (b - a) * func.Invoke((a + b) / 2.0);
                     case 2:
-                        return (b - a) / 2.0 * (func.Invoke((b - a) / 2.0 * -1 * GqBreak_TwoPoint + (a + b) / 2.0) + 
+                        return (b - a) / 2.0 * (func.Invoke((b - a) / 2.0 * -1 * GqBreak_TwoPoint + (a + b) / 2.0) +
                                                 func.Invoke((b - a) / 2.0 * GqBreak_TwoPoint + (a + b) / 2.0));
                     case 3:
                         return (b - a) / 2.0 * (5.0 / 9 * func.Invoke((b - a) / 2.0 * -1 * GqBreak_ThreePoint + (a + b) / 2.0) +

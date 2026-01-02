@@ -39,7 +39,7 @@ namespace ExCSS.Model
         public Term Done()
         {
             Include();
-            return BuildFunctionTerm(_function, _termList); 
+            return BuildFunctionTerm(_function, _termList);
         }
 
         private Term BuildFunctionTerm(string name, List<Term> terms)
@@ -47,58 +47,58 @@ namespace ExCSS.Model
             switch (name)
             {
                 case "rgb":
-                {
-                    if (terms.Count == 3)
                     {
-                        if (CheckNumber(terms[0]) &&
-                            CheckNumber(terms[1]) && 
-                            CheckNumber(terms[2]))
+                        if (terms.Count == 3)
                         {
-                            return HtmlColor.FromRgb(
-                                ToByte(terms[0]), 
-                                ToByte(terms[1]),
-                                ToByte(terms[2]));
+                            if (CheckNumber(terms[0]) &&
+                                CheckNumber(terms[1]) &&
+                                CheckNumber(terms[2]))
+                            {
+                                return HtmlColor.FromRgb(
+                                    ToByte(terms[0]),
+                                    ToByte(terms[1]),
+                                    ToByte(terms[2]));
+                            }
                         }
-                    }
 
-                    break;
-                }
+                        break;
+                    }
                 case "rgba":
-                {
-                    if (terms.Count == 4)
                     {
-                        if (CheckNumber(terms[0]) && 
-                            CheckNumber(terms[1]) && 
-                            CheckNumber(terms[2]) &&
-                            CheckNumber(terms[3]))
+                        if (terms.Count == 4)
                         {
-                            return HtmlColor.FromRgba(
-                                ToByte(terms[0]), 
-                                ToByte(terms[1]),
-                                ToByte(terms[2]), 
-                                ToSingle(terms[3]));
+                            if (CheckNumber(terms[0]) &&
+                                CheckNumber(terms[1]) &&
+                                CheckNumber(terms[2]) &&
+                                CheckNumber(terms[3]))
+                            {
+                                return HtmlColor.FromRgba(
+                                    ToByte(terms[0]),
+                                    ToByte(terms[1]),
+                                    ToByte(terms[2]),
+                                    ToSingle(terms[3]));
+                            }
                         }
-                    }
 
-                    break;
-                }
+                        break;
+                    }
                 case "hsl":
-                {
-                    if (_termList.Count == 3)
                     {
-                        if (CheckNumber(terms[0]) && 
-                            CheckNumber(terms[1]) && 
-                            CheckNumber(terms[2]))
+                        if (_termList.Count == 3)
                         {
-                            return HtmlColor.FromHsl(
-                                ToSingle(terms[0]), 
-                                ToSingle(terms[1]), 
-                                ToSingle(terms[2]));
+                            if (CheckNumber(terms[0]) &&
+                                CheckNumber(terms[1]) &&
+                                CheckNumber(terms[2]))
+                            {
+                                return HtmlColor.FromHsl(
+                                    ToSingle(terms[0]),
+                                    ToSingle(terms[1]),
+                                    ToSingle(terms[2]));
+                            }
                         }
-                    }
 
-                    break;
-                }
+                        break;
+                    }
             }
 
             return new GenericFunction(name, terms);
@@ -106,16 +106,16 @@ namespace ExCSS.Model
 
         private static bool CheckNumber(Term cssValue)
         {
-            return (cssValue is PrimitiveTerm && 
+            return (cssValue is PrimitiveTerm &&
                     ((PrimitiveTerm)cssValue).PrimitiveType == UnitType.Number);
         }
 
         private static Single ToSingle(Term cssValue)
         {
             var value = ((PrimitiveTerm)cssValue).GetFloatValue(UnitType.Number);
-                
-            return value.HasValue 
-                ? value.Value 
+
+            return value.HasValue
+                ? value.Value
                 : 0f;
         }
 

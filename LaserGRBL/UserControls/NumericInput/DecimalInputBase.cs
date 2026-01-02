@@ -229,7 +229,7 @@ namespace LaserGRBL.UserControls.NumericInput
         protected virtual bool AcceptKeys(char key)
         {
             System.Globalization.CultureInfo CI = System.Globalization.CultureInfo.CurrentCulture;
-            return char.IsDigit(key) || char.IsControl(key) || new string(key,1) == CI.NumberFormat.NegativeSign || new string(key, 1) == CI.NumberFormat.NumberDecimalSeparator;
+            return char.IsDigit(key) || char.IsControl(key) || new string(key, 1) == CI.NumberFormat.NegativeSign || new string(key, 1) == CI.NumberFormat.NumberDecimalSeparator;
         }
 
         private void FocusEvent(object sender, System.EventArgs e)
@@ -311,7 +311,7 @@ namespace LaserGRBL.UserControls.NumericInput
                 return "0";
         }
 
-        
+
 
         public new bool Enabled
         {

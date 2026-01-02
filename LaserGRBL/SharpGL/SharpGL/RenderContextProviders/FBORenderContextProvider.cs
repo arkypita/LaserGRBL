@@ -182,7 +182,7 @@ namespace SharpGL.RenderContextProviders
                 gl.ReadBuffer(OpenGL.GL_COLOR_ATTACHMENT0_EXT);
 
                 //	Read the pixels into the DIB section.
-                gl.ReadPixels(0, 0, Width, Height, OpenGL.GL_BGRA, 
+                gl.ReadPixels(0, 0, Width, Height, OpenGL.GL_BGRA,
                     OpenGL.GL_UNSIGNED_BYTE, dibSection.Bits);
 
                 //	Blit the DC (containing the DIB section) to the target DC.

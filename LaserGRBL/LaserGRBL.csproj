@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LaserGRBL</RootNamespace>
     <AssemblyName>LaserGRBL</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <NoStdLib>False</NoStdLib>
@@ -435,6 +435,7 @@
     <Compile Include="CsPotrace\PotraceClipper.cs" />
     <Compile Include="Logger\AsyncLogFile.cs" />
     <Compile Include="SvgConverter\BezierTools.cs" />
+    <Compile Include="Ntfy.cs" />
     <Compile Include="Telegram.cs" />
     <Compile Include="Tools\DataProtector.cs" />
     <Compile Include="Tools\Json.cs" />
@@ -864,6 +865,7 @@
     </Compile>
     <Compile Include="AutoUpdate\GitHub.cs" />
     <Compile Include="Core\GrblCore.cs" />
+    <Compile Include="Core\TimeProjection.cs" />
     <Compile Include="CSV\CsvDictionary.cs" />
     <Compile Include="CSV\FormattedMessage.cs" />
     <Compile Include="GrblCommand.cs" />

@@ -8,9 +8,9 @@ using SharpGL.WinForms.NETDesignSurface.Designers;
 
 namespace SharpGL
 {
-   	/// <summary>
-	/// This is the basic OpenGL control object, it gives all of the basic OpenGL functionality.
-	/// </summary>
+    /// <summary>
+    /// This is the basic OpenGL control object, it gives all of the basic OpenGL functionality.
+    /// </summary>
     [ToolboxBitmap(typeof(OpenGLControl), "SharpGL.png")]
     [Designer(typeof(OpenGLCtrlDesigner))]
     public partial class OpenGLControl : UserControl, ISupportInitialize
@@ -52,7 +52,7 @@ namespace SharpGL
             timerDrawing.Interval = (int)(1000.0 / FrameRate);
 
             //  Finally, if the timer is not enabled, enable it now.
-            if(timerDrawing.Enabled == false)
+            if (timerDrawing.Enabled == false)
                 timerDrawing.Enabled = true;
         }
 
@@ -69,9 +69,9 @@ namespace SharpGL
         protected void InitialiseOpenGL()
         {
             object parameter = null;
-           
+
             //  Native render context providers need a little bit more attention.
-            if(RenderContextType == RenderContextType.NativeWindow)
+            if (RenderContextType == RenderContextType.NativeWindow)
             {
                 SetStyle(ControlStyles.OptimizedDoubleBuffer, false);
                 parameter = Handle;
@@ -178,7 +178,7 @@ namespace SharpGL
                 if (handler != null)
                     handler(this, e);
                 else
-                {                    
+                {
                     //  Otherwise we do our own projection.
                     gl.MatrixMode(OpenGL.GL_PROJECTION);
                     gl.LoadIdentity();
@@ -226,7 +226,7 @@ namespace SharpGL
         private void timerDrawing_Tick(object sender, EventArgs e)
         {
             //  If we're in manual mode, we do not care about the timer.
-            if(RenderTrigger == RenderTrigger.Manual)
+            if (RenderTrigger == RenderTrigger.Manual)
                 return;
 
             //  The timer for drawing simply invalidates the control at a regular interval.
@@ -273,7 +273,7 @@ namespace SharpGL
         [Description("Called when the control is resized - you can use this to do custom viewport projections."), Category("SharpGL")]
         public event EventHandler Resized;
 
-   	    /// <summary>
+        /// <summary>
         /// The timer used for drawing the control.
         /// </summary>
         private readonly Timer timerDrawing = new Timer();
@@ -307,9 +307,9 @@ namespace SharpGL
         ///   <c>true</c> if FPS info should be drawn; otherwise, <c>false</c>.
         /// </value>
    	    [Description("Should the draw time be shown?"), Category("SharpGL")]
-   	    public bool DrawFPS { get; set; }
+        public bool DrawFPS { get; set; }
 
-   	    /// <summary>
+        /// <summary>
         /// The framerate, in hertz.
         /// </summary>
         private int frameRate = 20;
@@ -349,7 +349,7 @@ namespace SharpGL
         /// The desired OpenGL version.
         /// </value>
         [Description("The desired OpenGL version for the control."), Category("SharpGL")]
-   	    public OpenGLVersion OpenGLVersion { get; set; } = OpenGLVersion.OpenGL2_1;
+        public OpenGLVersion OpenGLVersion { get; set; } = OpenGLVersion.OpenGL2_1;
 
         /// <summary>
         /// Gets or sets the render trigger.

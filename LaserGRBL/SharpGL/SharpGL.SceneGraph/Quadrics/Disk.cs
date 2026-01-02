@@ -13,8 +13,8 @@ namespace SharpGL.SceneGraph.Quadrics
         /// <summary>
         /// Initializes a new instance of the <see cref="Disk"/> class.
         /// </summary>
-        public Disk() 
-        { 
+        public Disk()
+        {
             Name = "Disk";
         }
 

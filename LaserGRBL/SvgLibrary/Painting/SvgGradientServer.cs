@@ -92,8 +92,8 @@ namespace Svg
         public SvgPaintServer InheritGradient
         {
             get { return this._inheritGradient; }
-            set 
-            { 
+            set
+            {
                 this._inheritGradient = value;
             }
         }
@@ -141,7 +141,7 @@ namespace Svg
             if (this.Stops[0].Offset.Value > 0)
             {
                 colourBlends++;
-                
+
                 if (radial)
                 {
                     insertEnd = true;
@@ -237,7 +237,7 @@ namespace Svg
         public override SvgElement DeepCopy<T>()
         {
             var newObj = base.DeepCopy<T>() as SvgGradientServer;
-            
+
             newObj.SpreadMethod = this.SpreadMethod;
             newObj.GradientUnits = this.GradientUnits;
             newObj.InheritGradient = this.InheritGradient;

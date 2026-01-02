@@ -11,24 +11,24 @@ using System.Text;
 
 namespace LaserGRBL.ComWrapper
 {
-	public enum WrapperType
-	{ UsbSerial, UsbSerial2, Telnet, LaserWebESP8266, Emulator, RJCPSerial }
+    public enum WrapperType
+    { UsbSerial, UsbSerial2, Telnet, LaserWebESP8266, Emulator, RJCPSerial }
 
-	public interface IComWrapper
-	{
-		void Configure(params object[] param);
+    public interface IComWrapper
+    {
+        void Configure(params object[] param);
 
-		void Open();
-		void Close(bool auto);
+        void Open();
+        void Close(bool auto);
 
-		bool IsOpen { get; }
-		
-		void Write(byte b);
+        bool IsOpen { get; }
+
+        void Write(byte b);
         void Write(byte[] arr);
         void Write(string text);
 
-		string ReadLineBlocking();
+        string ReadLineBlocking();
 
-		bool HasData();
-	}
+        bool HasData();
+    }
 }

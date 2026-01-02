@@ -54,10 +54,13 @@ namespace RJCP.IO.Ports.Native
             get { return m_Encoding; }
             set
             {
-                if (value != null) {
+                if (value != null)
+                {
                     m_Encoding = value;
                     m_Decoder = null;
-                } else {
+                }
+                else
+                {
                     throw new ArgumentNullException(nameof(value));
                 }
             }
@@ -67,10 +70,13 @@ namespace RJCP.IO.Ports.Native
         {
             get
             {
-                if (m_Encoding != null) {
+                if (m_Encoding != null)
+                {
                     if (m_Decoder == null) m_Decoder = m_Encoding.GetDecoder();
                     return m_Decoder;
-                } else {
+                }
+                else
+                {
                     return null;
                 }
             }
@@ -102,14 +108,18 @@ namespace RJCP.IO.Ports.Native
 
             char[] oneChar = new char[2];
             int cu = 0;
-            while (cu == 0 && m_ReadOffset < readLen) {
+            while (cu == 0 && m_ReadOffset < readLen)
+            {
                 int bu;
-                try {
+                try
+                {
                     // Some UTF8 sequences may result in two UTF16 characters being generated.
                     Decoder.Convert(sbuffer.Serial.ReadBuffer.Array,
                         sbuffer.Serial.ReadBuffer.ToArrayIndex(m_ReadOffset),
                         1, oneChar, 0, 1, false, out bu, out cu, out _);
-                } catch (ArgumentException ex) {
+                }
+                catch (ArgumentException ex)
+                {
                     if (!ex.ParamName.Equals("chars")) throw;
                     Decoder.Convert(sbuffer.Serial.ReadBuffer.Array,
                         sbuffer.Serial.ReadBuffer.ToArrayIndex(m_ReadOffset),
@@ -136,10 +146,12 @@ namespace RJCP.IO.Ports.Native
             // of bytes we've consumed independent of if we've overflowed or not.
 
             int consume = 1;
-            if (m_ReadOverflow == -1) {
+            if (m_ReadOverflow == -1)
+            {
                 m_ReadOverflowChar[0] = m_ReadCache[0];
                 m_ReadOverflow = m_ReadOffsets[0];
-                if (m_ReadOffsets[1] == 0) {
+                if (m_ReadOffsets[1] == 0)
+                {
                     m_ReadOverflowUtf32 = true;
                     m_ReadOverflowChar[1] = m_ReadCache[1];
                     consume = 2;
@@ -168,7 +180,8 @@ namespace RJCP.IO.Ports.Native
         {
             int chars = 0;
             if (IsOverflowed) Reset(true);
-            if (IsCached) {
+            if (IsCached)
+            {
                 chars = m_ReadCache.CopyTo(cbuffer, offset, count);
                 if (m_Log.ShouldTrace(System.Diagnostics.TraceEventType.Verbose))
                     m_Log.TraceEvent(System.Diagnostics.TraceEventType.Verbose,
@@ -200,14 +213,17 @@ namespace RJCP.IO.Ports.Native
                 m_Log.TraceEvent(System.Diagnostics.TraceEventType.Verbose,
                     "ReadChar: IsCached {0}", IsCached);
             bool dataAvailable = IsCached;
-            if (!IsCached) {
-                lock (sbuffer.ReadLock) {
+            if (!IsCached)
+            {
+                lock (sbuffer.ReadLock)
+                {
                     dataAvailable = PeekChar(sbuffer);
                 }
             }
 
             // Get the next byte from the cache, or put the next byte in the cache
-            if (dataAvailable) {
+            if (dataAvailable)
+            {
                 m_ReadCache.CopyTo(schar, 0, 1);
                 ReadToConsume(sbuffer, 1);
                 return schar[0];
@@ -227,7 +243,8 @@ namespace RJCP.IO.Ports.Native
         public bool ReadTo(SerialBuffer sbuffer, string text, out string line)
         {
             bool changedText = !text.Equals(m_ReadToString);
-            if (changedText) {
+            if (changedText)
+            {
                 if (m_Log.ShouldTrace(System.Diagnostics.TraceEventType.Verbose))
                     m_Log.TraceEvent(System.Diagnostics.TraceEventType.Verbose,
                         "ReadTo: Text changed!");
@@ -235,11 +252,13 @@ namespace RJCP.IO.Ports.Native
                 if (IsOverflowed) Reset(true);
 
                 int readLen = m_ReadCache.Length;
-                if (readLen >= text.Length) {
+                if (readLen >= text.Length)
+                {
                     // Check if the text already exists
                     string lbuffer = m_ReadCache.GetString();
                     int p = lbuffer.IndexOf(text, StringComparison.Ordinal);
-                    if (p != -1) {
+                    if (p != -1)
+                    {
                         if (m_Log.ShouldTrace(System.Diagnostics.TraceEventType.Verbose))
                             m_Log.TraceEvent(System.Diagnostics.TraceEventType.Verbose,
                                 "ReadTo: Text changed! And Found!");
@@ -250,14 +269,18 @@ namespace RJCP.IO.Ports.Native
                         return true;
                     }
                 }
-            } else {
+            }
+            else
+            {
                 if (m_Log.ShouldTrace(System.Diagnostics.TraceEventType.Verbose))
                     m_Log.TraceEvent(System.Diagnostics.TraceEventType.Verbose,
                         "ReadTo: No reset, text the same.");
             }
 
-            lock (sbuffer.ReadLock) {
-                while (!ReadToMatch(text)) {
+            lock (sbuffer.ReadLock)
+            {
+                while (!ReadToMatch(text))
+                {
 
                     // Decoders in .NET are designed for streams and not really for reading
                     // a little bit of data. By design, they are "greedy", they consume as much
@@ -267,7 +290,8 @@ namespace RJCP.IO.Ports.Native
                     // consumed for each character.
 
                     bool newChar = PeekChar(sbuffer);
-                    if (!newChar) {
+                    if (!newChar)
+                    {
                         // Didn't find the string and there's no new data.
                         line = null;
                         return false;
@@ -309,8 +333,10 @@ namespace RJCP.IO.Ports.Native
             sb.Append(m_ReadCache.GetString());
             Reset(false);
 
-            lock (sbuffer.ReadLock) {
-                do {
+            lock (sbuffer.ReadLock)
+            {
+                do
+                {
                     char[] c = new char[2048];
                     Decoder.Convert(sbuffer.Serial.ReadBuffer, c, 0, c.Length, false, out int bu, out int cu, out bool complete);
                     sb.Append(c, 0, cu);
@@ -325,7 +351,8 @@ namespace RJCP.IO.Ports.Native
         private void ReadToConsume(SerialBuffer sbuffer, int chars)
         {
             int bytesRead = 0;
-            for (int i = 0; i < chars; i++) {
+            for (int i = 0; i < chars; i++)
+            {
                 bytesRead += m_ReadOffsets[i];
             }
             m_LastChar -= bytesRead;
@@ -333,7 +360,8 @@ namespace RJCP.IO.Ports.Native
             m_ReadCache.Consume(chars);
             m_ReadOffsets.Consume(chars);
             sbuffer.Stream.ReadConsume(bytesRead);
-            if (m_Log.ShouldTrace(System.Diagnostics.TraceEventType.Verbose)) {
+            if (m_Log.ShouldTrace(System.Diagnostics.TraceEventType.Verbose))
+            {
                 m_Log.TraceEvent(System.Diagnostics.TraceEventType.Verbose, "ReadToConsume(chars={0}) = {1} bytes", chars, bytesRead);
                 m_Log.TraceEvent(System.Diagnostics.TraceEventType.Verbose, "ReadToConsume: m_ReadOffset={0}; m_ReadCache.Free={1}", m_ReadOffset, m_ReadCache.Free);
             }
@@ -353,12 +381,15 @@ namespace RJCP.IO.Ports.Native
             m_ReadCache.Reset();
             m_ReadOffsets.Reset();
             if (m_Decoder != null) m_Decoder.Reset();
-            if (withOverflow) {
+            if (withOverflow)
+            {
                 m_ReadCache.Append(m_ReadOverflowChar, 0, m_ReadOverflowUtf32 ? 2 : 1);
                 m_ReadOffsets.Append(m_ReadOverflow);
                 if (m_ReadOverflowUtf32) m_ReadOffsets.Append(0);
                 m_ReadOffset = m_ReadOverflow;
-            } else {
+            }
+            else
+            {
                 m_ReadOffset = 0;
             }
             m_LastChar = m_ReadOffset;
@@ -372,7 +403,8 @@ namespace RJCP.IO.Ports.Native
             int offset = bl - text.Length;
             if (offset < 0) return false;
 
-            for (int i = 0; i < text.Length; i++) {
+            for (int i = 0; i < text.Length; i++)
+            {
                 if (m_ReadCache[i + offset] != text[i]) return false;
             }
             if (m_Log.ShouldTrace(System.Diagnostics.TraceEventType.Verbose))

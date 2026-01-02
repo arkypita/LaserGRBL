@@ -11,161 +11,161 @@ using System.Windows.Forms;
 
 namespace LaserGRBL
 {
-	public partial class ExceptionManager : Form
-	{
-		public static GrblCore Core;
-		public static Form ParentMain;
-		public bool UserClose = false;
+    public partial class ExceptionManager : Form
+    {
+        public static GrblCore Core;
+        public static Form ParentMain;
+        public bool UserClose = false;
 
-		private ExceptionManager()
-		{
-			InitializeComponent();
-		}
+        private ExceptionManager()
+        {
+            InitializeComponent();
+        }
 
-		public static void RegisterHandler()
-		{
-			AppDomain.CurrentDomain.UnhandledException += OnUnhandledThreadException;
-			Application.ThreadException += OnUnhandledMainException;
-		}
+        public static void RegisterHandler()
+        {
+            AppDomain.CurrentDomain.UnhandledException += OnUnhandledThreadException;
+            Application.ThreadException += OnUnhandledMainException;
+        }
 
-		private static void OnUnhandledMainException(object sender, ThreadExceptionEventArgs e)
-		{
-			CreateAndShow(e?.Exception, true, false);
-		}
+        private static void OnUnhandledMainException(object sender, ThreadExceptionEventArgs e)
+        {
+            CreateAndShow(e?.Exception, true, false);
+        }
 
-		private static void OnUnhandledThreadException(object sender, UnhandledExceptionEventArgs e)
-		{
-			CreateAndShow(e?.ExceptionObject as Exception, false, false);
-		}
+        private static void OnUnhandledThreadException(object sender, UnhandledExceptionEventArgs e)
+        {
+            CreateAndShow(e?.ExceptionObject as Exception, false, false);
+        }
 
-		public static void OnHandledException(Exception ex, bool cancontinue)
-		{
-			CreateAndShow(ex, cancontinue, true);
-		}
+        public static void OnHandledException(Exception ex, bool cancontinue)
+        {
+            CreateAndShow(ex, cancontinue, true);
+        }
 
-		public delegate void CreateAndShowDlg(Exception ex, bool cancontinue, bool manual);
-		public static void CreateAndShow(Exception ex, bool cancontinue, bool manual)
-		{
-			if (Program.DesignTime)
-				return;
+        public delegate void CreateAndShowDlg(Exception ex, bool cancontinue, bool manual);
+        public static void CreateAndShow(Exception ex, bool cancontinue, bool manual)
+        {
+            if (Program.DesignTime)
+                return;
 
-			if (ParentMain != null && ParentMain.InvokeRequired)
-			{
-				ParentMain.Invoke(new CreateAndShowDlg(CreateAndShow), ex, cancontinue, manual);
-			}
-			else
-			{
-				bool close;
-				using (ExceptionManager f = new ExceptionManager())
-				{
-					StringBuilder sb = new StringBuilder();
+            if (ParentMain != null && ParentMain.InvokeRequired)
+            {
+                ParentMain.Invoke(new CreateAndShowDlg(CreateAndShow), ex, cancontinue, manual);
+            }
+            else
+            {
+                bool close;
+                using (ExceptionManager f = new ExceptionManager())
+                {
+                    StringBuilder sb = new StringBuilder();
 
-					try
-					{
-						sb.AppendFormat("LaserGrbl v{0}", Program.CurrentVersion);
-						sb.AppendLine();
-						sb.AppendFormat("{0} v{1}", Core?.Type, GrblCore.Configuration?.GrblVersion);
-						sb.AppendLine();
-						sb.AppendFormat("Wrapper: {0}", Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial));
-						sb.AppendLine();
-						sb.AppendFormat("{0} ({1})", Tools.OSHelper.GetOSInfo()?.Replace("|", ", "), Tools.OSHelper.GetBitFlag());
-						sb.AppendLine();
-						sb.AppendFormat("CLR: {0}", Tools.OSHelper.GetClrInfo());
-						sb.AppendLine();
-						sb.AppendLine();
-					}
-					catch { }
+                    try
+                    {
+                        sb.AppendFormat("LaserGrbl v{0}", Program.CurrentVersion);
+                        sb.AppendLine();
+                        sb.AppendFormat("{0} v{1}", Core?.Type, GrblCore.Configuration?.GrblVersion);
+                        sb.AppendLine();
+                        sb.AppendFormat("Wrapper: {0}", Settings.GetObject("ComWrapper Protocol", ComWrapper.WrapperType.UsbSerial));
+                        sb.AppendLine();
+                        sb.AppendFormat("{0} ({1})", Tools.OSHelper.GetOSInfo()?.Replace("|", ", "), Tools.OSHelper.GetBitFlag());
+                        sb.AppendLine();
+                        sb.AppendFormat("CLR: {0}", Tools.OSHelper.GetClrInfo());
+                        sb.AppendLine();
+                        sb.AppendLine();
+                    }
+                    catch { }
 
-					AppendExceptionData(sb, ex);
+                    AppendExceptionData(sb, ex);
 
-					f.TbExMessage.Text = sb.ToString();
-					f.BtnContinue.Visible = cancontinue;
-					f.ShowDialog(ParentMain);
-					close = f.UserClose;
-				}
+                    f.TbExMessage.Text = sb.ToString();
+                    f.BtnContinue.Visible = cancontinue;
+                    f.ShowDialog(ParentMain);
+                    close = f.UserClose;
+                }
 
-				if (close)
-					Application.Exit();
-			}
-		}
+                if (close)
+                    Application.Exit();
+            }
+        }
 
-		private void BtnAbort_Click(object sender, EventArgs e)
-		{
-			UserClose = true;
-			Close();
-		}
+        private void BtnAbort_Click(object sender, EventArgs e)
+        {
+            UserClose = true;
+            Close();
+        }
 
-		private void BtnContinue_Click(object sender, EventArgs e)
-		{
-			Close();
-		}
+        private void BtnContinue_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
-		private static void AppendExceptionData(StringBuilder sb, Exception e)
-		{
-			if (e != null)
-			{
-				try
-				{
-					sb.AppendFormat("TypeOf exception  [{0}]", e.GetType());
-					sb.AppendLine();
-					sb.AppendFormat("Exception message [{0}]", e.Message);
-					sb.AppendLine();
-					sb.AppendFormat("Exception source  [{0}], thread [{1}]", e.Source, Thread.CurrentThread.Name);
-					sb.AppendLine();
-					sb.AppendFormat("Exception method  [{0}]", e.TargetSite);
-					sb.AppendLine();
-					sb.AppendFormat("");
-					sb.AppendLine();
-				}
-				catch { }
+        private static void AppendExceptionData(StringBuilder sb, Exception e)
+        {
+            if (e != null)
+            {
+                try
+                {
+                    sb.AppendFormat("TypeOf exception  [{0}]", e.GetType());
+                    sb.AppendLine();
+                    sb.AppendFormat("Exception message [{0}]", e.Message);
+                    sb.AppendLine();
+                    sb.AppendFormat("Exception source  [{0}], thread [{1}]", e.Source, Thread.CurrentThread.Name);
+                    sb.AppendLine();
+                    sb.AppendFormat("Exception method  [{0}]", e.TargetSite);
+                    sb.AppendLine();
+                    sb.AppendFormat("");
+                    sb.AppendLine();
+                }
+                catch { }
 
-				try
-				{
-					if (e.StackTrace != null)
-					{
-						sb.AppendFormat("   ----------- stack trace -----------");
-						sb.AppendLine();
-						sb.AppendFormat(e.StackTrace);
-						sb.AppendLine();
-						sb.AppendFormat("");
-					}
-				}
-				catch { }
+                try
+                {
+                    if (e.StackTrace != null)
+                    {
+                        sb.AppendFormat("   ----------- stack trace -----------");
+                        sb.AppendLine();
+                        sb.AppendFormat(e.StackTrace);
+                        sb.AppendLine();
+                        sb.AppendFormat("");
+                    }
+                }
+                catch { }
 
-				try
-				{
-					sb.AppendLine();
-					if (e.InnerException != null)
-					{
-						sb.AppendFormat("Inner exception data");
-						sb.AppendLine();
-						AppendExceptionData(sb, e.InnerException);
-						sb.AppendLine();
-					}
-				}
-				catch { }
-			}
-		}
+                try
+                {
+                    sb.AppendLine();
+                    if (e.InnerException != null)
+                    {
+                        sb.AppendFormat("Inner exception data");
+                        sb.AppendLine();
+                        AppendExceptionData(sb, e.InnerException);
+                        sb.AppendLine();
+                    }
+                }
+                catch { }
+            }
+        }
 
-		private void LblFormDescription_LinkClicked(object sender, LinkClickedEventArgs e)
-		{Tools.Utils.OpenLink(e.LinkText);}
+        private void LblFormDescription_LinkClicked(object sender, LinkClickedEventArgs e)
+        { Tools.Utils.OpenLink(e.LinkText); }
 
-		private void ExceptionManager_Load(object sender, EventArgs e)
-		{
-			BringToFront();
-			TimLink.Enabled = true;				
-		}
+        private void ExceptionManager_Load(object sender, EventArgs e)
+        {
+            BringToFront();
+            TimLink.Enabled = true;
+        }
 
-		private void BtnClipboardCopy_Click(object sender, EventArgs e)
-		{
-			Clipboard.SetText(TbExMessage.Text);
-		}
+        private void BtnClipboardCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TbExMessage.Text);
+        }
 
-		private void TimLink_Tick(object sender, EventArgs e)
-		{
-			TimLink.Enabled = false;
-			if (TbExMessage.Text.Contains("DangerousAddRef"))
-				Tools.Utils.OpenLink(@"https://lasergrbl.com/faq/ooops-something-went-wrong/#ObjectDisposedException-DangerousAddRef");
-		}
-	}
+        private void TimLink_Tick(object sender, EventArgs e)
+        {
+            TimLink.Enabled = false;
+            if (TbExMessage.Text.Contains("DangerousAddRef"))
+                Tools.Utils.OpenLink(@"https://lasergrbl.com/faq/ooops-something-went-wrong/#ObjectDisposedException-DangerousAddRef");
+        }
+    }
 }

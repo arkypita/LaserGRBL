@@ -66,7 +66,8 @@
 
         public bool Contains(T item)
         {
-            for (int i = 0; i < m_Count; i++) {
+            for (int i = 0; i < m_Count; i++)
+            {
                 if (item == null) return m_ReusableList[i] == null;
                 if (item.Equals(m_ReusableList[i])) return true;
             }
@@ -80,7 +81,8 @@
             if (array.Rank != 1) throw new ArgumentException("array is multidimensional", nameof(array));
             if (m_Count + arrayIndex > array.Length) throw new ArgumentException("The number of elements in source array is greater than available elements from index to the end of the destination array");
 
-            for (int i = 0; i < m_Count; i++) {
+            for (int i = 0; i < m_Count; i++)
+            {
                 array[i + arrayIndex] = m_ReusableList[i];
             }
         }
@@ -130,7 +132,8 @@
 
         public int IndexOf(T item)
         {
-            for (int i = 0; i < m_Count; i++) {
+            for (int i = 0; i < m_Count; i++)
+            {
                 if (item == null && m_ReusableList[i] == null) return i;
                 if (item != null && item.Equals(m_ReusableList[i])) return i;
             }
@@ -141,7 +144,8 @@
         {
             if (m_Count == m_ReusableList.Length) throw new InvalidOperationException("List is full");
             if (index > m_Count) throw new ArgumentOutOfRangeException(nameof(index), "Index greater than Count");
-            for (int i = m_Count; i > index; i--) {
+            for (int i = m_Count; i > index; i--)
+            {
                 m_ReusableList[i] = m_ReusableList[i - 1];
             }
             m_ReusableList[index] = item;
@@ -159,7 +163,8 @@
         public void RemoveAt(int index)
         {
             if (index >= Count) throw new ArgumentOutOfRangeException(nameof(index), "Index is more than Count");
-            for (int i = index; i < m_Count; i++) {
+            for (int i = index; i < m_Count; i++)
+            {
                 m_ReusableList[i] = m_ReusableList[i + 1];
             }
             m_Count--;
@@ -168,19 +173,26 @@
         public T[] ToArray()
         {
             T[] result;
-            if (m_Count < m_MinCapacity) {
+            if (m_Count < m_MinCapacity)
+            {
                 result = new T[m_Count];
-            } else {
+            }
+            else
+            {
                 int index = m_Count - m_MinCapacity;
-                if (m_ReusableListCache[index] == null) {
+                if (m_ReusableListCache[index] == null)
+                {
                     result = new T[m_Count];
                     m_ReusableListCache[index] = result;
-                } else {
+                }
+                else
+                {
                     result = m_ReusableListCache[index];
                 }
             }
 
-            for (int i = 0; i < m_Count; i++) {
+            for (int i = 0; i < m_Count; i++)
+            {
                 result[i] = m_ReusableList[i];
             }
             return result;

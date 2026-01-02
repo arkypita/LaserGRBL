@@ -8,13 +8,13 @@ using SharpGL.Enumerations;
 
 namespace SharpGL.OpenGLAttributes
 {
-	/// <summary>
-	/// This class has all the settings you can edit for current.
-	/// </summary>
-	[TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
-	[Serializable()]
+    /// <summary>
+    /// This class has all the settings you can edit for current.
+    /// </summary>
+    [TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    [Serializable()]
     public class CurrentAttributes : OpenGLAttributeGroup
-	{
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="CurrentAttributes"/> class.
         /// </summary>
@@ -30,7 +30,7 @@ namespace SharpGL.OpenGLAttributes
         public override void SetAttributes(OpenGL gl)
         {
             if (currentColor != null) gl.Color(currentColor.R, currentColor.G, currentColor.B, currentColor.A);
-            if(currentColorIndex.HasValue) gl.Index(currentColorIndex.Value);
+            if (currentColorIndex.HasValue) gl.Index(currentColorIndex.Value);
             if (currentNormalVector != null) gl.Normal(currentNormalVector.Value.X, currentNormalVector.Value.Y, currentNormalVector.Value.Z);
             if (currentTextureCoordiate != null) gl.TexCoord(currentTextureCoordiate.Value.U, currentTextureCoordiate.Value.V);
             if (currentRasterPosition != null) gl.RasterPos(currentRasterPosition.Value.X, currentRasterPosition.Value.X);
@@ -187,5 +187,5 @@ namespace SharpGL.OpenGLAttributes
             get { return currentEdgeFlag; }
             set { currentEdgeFlag = value; }
         }
-	}
+    }
 }

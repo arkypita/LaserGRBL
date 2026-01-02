@@ -28,137 +28,149 @@ using Microsoft.Win32;
 
 namespace MySerialPort
 {
-	[MonitoringDescription ("")]
-	public class SerialPort : Component
-	{
-		public const int InfiniteTimeout = -1;
-		const int DefaultReadBufferSize = 4096;
-		const int DefaultWriteBufferSize = 2048;
-		const int DefaultBaudRate = 9600;
-		const int DefaultDataBits = 8;
-		const Parity DefaultParity = Parity.None;
-		const StopBits DefaultStopBits = StopBits.One;
+    [MonitoringDescription("")]
+    public class SerialPort : Component
+    {
+        public const int InfiniteTimeout = -1;
+        const int DefaultReadBufferSize = 4096;
+        const int DefaultWriteBufferSize = 2048;
+        const int DefaultBaudRate = 9600;
+        const int DefaultDataBits = 8;
+        const Parity DefaultParity = Parity.None;
+        const StopBits DefaultStopBits = StopBits.One;
 
-		bool is_open;
-		int baud_rate;
-		Parity parity;
-		StopBits stop_bits;
-		Handshake handshake;
-		int data_bits;
-		bool break_state = false;
-		bool dtr_enable = false;
-		bool rts_enable = false;
-		ISerialStream stream;
-		Encoding encoding = Encoding.ASCII;
-		string new_line = Environment.NewLine;
-		string port_name;
-		int read_timeout = InfiniteTimeout;
-		int write_timeout = InfiniteTimeout;
-		int readBufferSize = DefaultReadBufferSize;
-		int writeBufferSize = DefaultWriteBufferSize;
-		object error_received = new object ();
-		object data_received = new object ();
-		object pin_changed = new object ();
+        bool is_open;
+        int baud_rate;
+        Parity parity;
+        StopBits stop_bits;
+        Handshake handshake;
+        int data_bits;
+        bool break_state = false;
+        bool dtr_enable = false;
+        bool rts_enable = false;
+        ISerialStream stream;
+        Encoding encoding = Encoding.ASCII;
+        string new_line = Environment.NewLine;
+        string port_name;
+        int read_timeout = InfiniteTimeout;
+        int write_timeout = InfiniteTimeout;
+        int readBufferSize = DefaultReadBufferSize;
+        int writeBufferSize = DefaultWriteBufferSize;
+        object error_received = new object();
+        object data_received = new object();
+        object pin_changed = new object();
 
-		public SerialPort () : 
-			this (GetDefaultPortName (), DefaultBaudRate, DefaultParity, DefaultDataBits, DefaultStopBits)
-		{
-		}
+        public SerialPort() :
+            this(GetDefaultPortName(), DefaultBaudRate, DefaultParity, DefaultDataBits, DefaultStopBits)
+        {
+        }
 
-		public SerialPort (IContainer container) : this ()
-		{
-			// TODO: What to do here?
-		}
+        public SerialPort(IContainer container) : this()
+        {
+            // TODO: What to do here?
+        }
 
-		public SerialPort (string portName) :
-			this (portName, DefaultBaudRate, DefaultParity, DefaultDataBits, DefaultStopBits)
-		{
-		}
+        public SerialPort(string portName) :
+            this(portName, DefaultBaudRate, DefaultParity, DefaultDataBits, DefaultStopBits)
+        {
+        }
 
-		public SerialPort (string portName, int baudRate) :
-			this (portName, baudRate, DefaultParity, DefaultDataBits, DefaultStopBits)
-		{
-		}
+        public SerialPort(string portName, int baudRate) :
+            this(portName, baudRate, DefaultParity, DefaultDataBits, DefaultStopBits)
+        {
+        }
 
-		public SerialPort (string portName, int baudRate, Parity parity) :
-			this (portName, baudRate, parity, DefaultDataBits, DefaultStopBits)
-		{
-		}
+        public SerialPort(string portName, int baudRate, Parity parity) :
+            this(portName, baudRate, parity, DefaultDataBits, DefaultStopBits)
+        {
+        }
 
-		public SerialPort (string portName, int baudRate, Parity parity, int dataBits) :
-			this (portName, baudRate, parity, dataBits, DefaultStopBits)
-		{
-		}
+        public SerialPort(string portName, int baudRate, Parity parity, int dataBits) :
+            this(portName, baudRate, parity, dataBits, DefaultStopBits)
+        {
+        }
 
-		public SerialPort (string portName, int baudRate, Parity parity, int dataBits, StopBits stopBits) 
-		{
-			port_name = portName;
-			baud_rate = baudRate;
-			data_bits = dataBits;
-			stop_bits = stopBits;
-			this.parity = parity;
-		}
+        public SerialPort(string portName, int baudRate, Parity parity, int dataBits, StopBits stopBits)
+        {
+            port_name = portName;
+            baud_rate = baudRate;
+            data_bits = dataBits;
+            stop_bits = stopBits;
+            this.parity = parity;
+        }
 
-		static string GetDefaultPortName ()
-		{
-			string[] ports = GetPortNames();
-			if (ports.Length > 0) {
-				return ports[0];
-			} else {
-				int p = (int)Environment.OSVersion.Platform;
-				if (p == 4 || p == 128 || p == 6)
-					return "ttyS0"; // Default for Unix
-				else
-					return "COM1"; // Default for Windows
-			}
-		}
+        static string GetDefaultPortName()
+        {
+            string[] ports = GetPortNames();
+            if (ports.Length > 0)
+            {
+                return ports[0];
+            }
+            else
+            {
+                int p = (int)Environment.OSVersion.Platform;
+                if (p == 4 || p == 128 || p == 6)
+                    return "ttyS0"; // Default for Unix
+                else
+                    return "COM1"; // Default for Windows
+            }
+        }
 
-		[Browsable (false)]
-		[DesignerSerializationVisibilityAttribute (DesignerSerializationVisibility.Hidden)]
-		public Stream BaseStream {
-			get {
-				CheckOpen ();
-				return (Stream) stream;
-			}
-		}
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(DesignerSerializationVisibility.Hidden)]
+        public Stream BaseStream
+        {
+            get
+            {
+                CheckOpen();
+                return (Stream)stream;
+            }
+        }
 
-		[DefaultValueAttribute (DefaultBaudRate)]
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		public int BaudRate {
-			get {
-				return baud_rate;
-			}
-			set {
-				if (value <= 0)
-					throw new ArgumentOutOfRangeException ("value");
-				
-				if (is_open)
-					stream.SetAttributes (value, parity, data_bits, stop_bits, handshake);
-				
-				baud_rate = value;
-			}
-		}
+        [DefaultValueAttribute(DefaultBaudRate)]
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        public int BaudRate
+        {
+            get
+            {
+                return baud_rate;
+            }
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentOutOfRangeException("value");
 
-		[Browsable (false)]
-		[DesignerSerializationVisibilityAttribute (DesignerSerializationVisibility.Hidden)]
-		public bool BreakState {
-			get {
-				return break_state;
-			}
-			set {
-				CheckOpen ();
-				if (value == break_state)
-					return; // Do nothing.
+                if (is_open)
+                    stream.SetAttributes(value, parity, data_bits, stop_bits, handshake);
 
-				stream.SetBreakState (value);
-				break_state = value;
-			}
-		}
+                baud_rate = value;
+            }
+        }
 
-		[Browsable (false)]
-		[DesignerSerializationVisibilityAttribute (DesignerSerializationVisibility.Hidden)]
-		public int BytesToRead {
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(DesignerSerializationVisibility.Hidden)]
+        public bool BreakState
+        {
+            get
+            {
+                return break_state;
+            }
+            set
+            {
+                CheckOpen();
+                if (value == break_state)
+                    return; // Do nothing.
+
+                stream.SetBreakState(value);
+                break_state = value;
+            }
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(DesignerSerializationVisibility.Hidden)]
+        public int BytesToRead
+        {
             get
             {
                 CheckOpen();
@@ -174,9 +186,10 @@ namespace MySerialPort
             }
         }
 
-		[Browsable (false)]
-		[DesignerSerializationVisibilityAttribute (DesignerSerializationVisibility.Hidden)]
-		public int BytesToWrite {
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(DesignerSerializationVisibility.Hidden)]
+        public int BytesToWrite
+        {
             get
             {
                 CheckOpen();
@@ -192,423 +205,492 @@ namespace MySerialPort
             }
         }
 
-		[Browsable (false)]
-		[DesignerSerializationVisibilityAttribute (DesignerSerializationVisibility.Hidden)]
-		public bool CDHolding {
-			get {
-				CheckOpen ();
-				return (stream.GetSignals () & SerialSignal.Cd) != 0;
-			}
-		}
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(DesignerSerializationVisibility.Hidden)]
+        public bool CDHolding
+        {
+            get
+            {
+                CheckOpen();
+                return (stream.GetSignals() & SerialSignal.Cd) != 0;
+            }
+        }
 
-		[Browsable (false)]
-		[DesignerSerializationVisibilityAttribute (DesignerSerializationVisibility.Hidden)]
-		public bool CtsHolding {
-			get {
-				CheckOpen ();
-				return (stream.GetSignals () & SerialSignal.Cts) != 0;
-			}
-		}
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(DesignerSerializationVisibility.Hidden)]
+        public bool CtsHolding
+        {
+            get
+            {
+                CheckOpen();
+                return (stream.GetSignals() & SerialSignal.Cts) != 0;
+            }
+        }
 
-		[DefaultValueAttribute(DefaultDataBits)]
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		public int DataBits {
-			get {
-				return data_bits;
-			}
-			set {
-				if (value < 5 || value > 8)
-					throw new ArgumentOutOfRangeException ("value");
+        [DefaultValueAttribute(DefaultDataBits)]
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        public int DataBits
+        {
+            get
+            {
+                return data_bits;
+            }
+            set
+            {
+                if (value < 5 || value > 8)
+                    throw new ArgumentOutOfRangeException("value");
 
-				if (is_open)
-					stream.SetAttributes (baud_rate, parity, value, stop_bits, handshake);
-				
-				data_bits = value;
-			}
-		}
+                if (is_open)
+                    stream.SetAttributes(baud_rate, parity, value, stop_bits, handshake);
 
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		[DefaultValue (false)]
-		public bool DiscardNull {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				// LAMESPEC: Msdn states that an InvalidOperationException exception
-				// is fired if the port is not open, which is *not* happening.
+                data_bits = value;
+            }
+        }
 
-				throw new NotImplementedException ();
-			}
-		}
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        [DefaultValue(false)]
+        public bool DiscardNull
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                // LAMESPEC: Msdn states that an InvalidOperationException exception
+                // is fired if the port is not open, which is *not* happening.
 
-		[Browsable (false)]
-		[DesignerSerializationVisibilityAttribute (DesignerSerializationVisibility.Hidden)]
-		public bool DsrHolding {
-			get {
-				CheckOpen ();
-				return (stream.GetSignals () & SerialSignal.Dsr) != 0;
-			}
-		}
+                throw new NotImplementedException();
+            }
+        }
 
-		[DefaultValueAttribute(false)]
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		public bool DtrEnable {
-			get {
-				return dtr_enable;
-			}
-			set {
-				if (value == dtr_enable)
-					return;
-				if (is_open)
-					stream.SetSignal (SerialSignal.Dtr, value);
-				
-				dtr_enable = value;
-			}
-		}
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(DesignerSerializationVisibility.Hidden)]
+        public bool DsrHolding
+        {
+            get
+            {
+                CheckOpen();
+                return (stream.GetSignals() & SerialSignal.Dsr) != 0;
+            }
+        }
 
-		[Browsable (false)]
-		[DesignerSerializationVisibilityAttribute (DesignerSerializationVisibility.Hidden)]
-		[MonitoringDescription ("")]
-		public Encoding Encoding {
-			get {
-				return encoding;
-			}
-			set {
-				if (value == null)
-					throw new ArgumentNullException ("value");
+        [DefaultValueAttribute(false)]
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        public bool DtrEnable
+        {
+            get
+            {
+                return dtr_enable;
+            }
+            set
+            {
+                if (value == dtr_enable)
+                    return;
+                if (is_open)
+                    stream.SetSignal(SerialSignal.Dtr, value);
 
-				encoding = value;
-			}
-		}
+                dtr_enable = value;
+            }
+        }
 
-		[DefaultValueAttribute(Handshake.None)]
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		public Handshake Handshake {
-			get {
-				return handshake;
-			}
-			set {
-				if (value < Handshake.None || value > Handshake.RequestToSendXOnXOff)
-					throw new ArgumentOutOfRangeException ("value");
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(DesignerSerializationVisibility.Hidden)]
+        [MonitoringDescription("")]
+        public Encoding Encoding
+        {
+            get
+            {
+                return encoding;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
 
-				if (is_open)
-					stream.SetAttributes (baud_rate, parity, data_bits, stop_bits, value);
-				
-				handshake = value;
-			}
-		}
+                encoding = value;
+            }
+        }
 
-		[Browsable (false)]
-		public bool IsOpen {
-			get {
-				return is_open;
-			}
-		}
+        [DefaultValueAttribute(Handshake.None)]
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        public Handshake Handshake
+        {
+            get
+            {
+                return handshake;
+            }
+            set
+            {
+                if (value < Handshake.None || value > Handshake.RequestToSendXOnXOff)
+                    throw new ArgumentOutOfRangeException("value");
 
-		[DefaultValueAttribute("\n")]
-		[Browsable (false)]
-		[MonitoringDescription ("")]
-		public string NewLine {
-			get {
-				return new_line;
-			}
-			set {
-				if (value == null)
-					throw new ArgumentNullException ("value");
-				if (value.Length == 0)
-					throw new ArgumentException ("NewLine cannot be null or empty.", "value");
-				
-				new_line = value;
-			}
-		}
+                if (is_open)
+                    stream.SetAttributes(baud_rate, parity, data_bits, stop_bits, value);
 
-		[DefaultValueAttribute(DefaultParity)]
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		public Parity Parity {
-			get {
-				return parity;
-			}
-			set {
-				if (value < Parity.None || value > Parity.Space)
-					throw new ArgumentOutOfRangeException ("value");
+                handshake = value;
+            }
+        }
 
-				if (is_open)
-					stream.SetAttributes (baud_rate, value, data_bits, stop_bits, handshake);
-				
-				parity = value;
-			}
-		}
+        [Browsable(false)]
+        public bool IsOpen
+        {
+            get
+            {
+                return is_open;
+            }
+        }
 
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		[DefaultValue (63)]
-		public byte ParityReplace {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+        [DefaultValueAttribute("\n")]
+        [Browsable(false)]
+        [MonitoringDescription("")]
+        public string NewLine
+        {
+            get
+            {
+                return new_line;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                if (value.Length == 0)
+                    throw new ArgumentException("NewLine cannot be null or empty.", "value");
 
-		
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		[DefaultValue ("COM1")] // silly Windows-ism. We should ignore it.
-		public string PortName {
-			get {
-				return port_name;
-			}
-			set {
-				if (is_open)
-					throw new InvalidOperationException ("Port name cannot be set while port is open.");
-				if (value == null)
-					throw new ArgumentNullException ("value");
-				if (value.Length == 0 || value.StartsWith ("\\\\"))
-					throw new ArgumentException ("value");
+                new_line = value;
+            }
+        }
 
-				port_name = value;
-			}
-		}
+        [DefaultValueAttribute(DefaultParity)]
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        public Parity Parity
+        {
+            get
+            {
+                return parity;
+            }
+            set
+            {
+                if (value < Parity.None || value > Parity.Space)
+                    throw new ArgumentOutOfRangeException("value");
 
-		[DefaultValueAttribute(DefaultReadBufferSize)]
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		public int ReadBufferSize {
-			get {
-				return readBufferSize;
-			}
-			set {
-				if (is_open)
-					throw new InvalidOperationException ();
-				if (value <= 0)
-					throw new ArgumentOutOfRangeException ("value");
-				if (value <= DefaultReadBufferSize)
-					return;
+                if (is_open)
+                    stream.SetAttributes(baud_rate, value, data_bits, stop_bits, handshake);
 
-				readBufferSize = value;
-			}
-		}
+                parity = value;
+            }
+        }
 
-		[DefaultValueAttribute(InfiniteTimeout)]
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		public int ReadTimeout {
-			get {
-				return read_timeout;
-			}
-			set {
-				if (value < 0 && value != InfiniteTimeout)
-					throw new ArgumentOutOfRangeException ("value");
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        [DefaultValue(63)]
+        public byte ParityReplace
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
-				if (is_open)
-					stream.ReadTimeout = value;
-				
-				read_timeout = value;
-			}
-		}
 
-		[DefaultValueAttribute(1)]
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		public int ReceivedBytesThreshold {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				if (value <= 0)
-					throw new ArgumentOutOfRangeException ("value");
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        [DefaultValue("COM1")] // silly Windows-ism. We should ignore it.
+        public string PortName
+        {
+            get
+            {
+                return port_name;
+            }
+            set
+            {
+                if (is_open)
+                    throw new InvalidOperationException("Port name cannot be set while port is open.");
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                if (value.Length == 0 || value.StartsWith("\\\\"))
+                    throw new ArgumentException("value");
 
-				throw new NotImplementedException ();
-			}
-		}
+                port_name = value;
+            }
+        }
 
-		[DefaultValueAttribute(false)]
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		public bool RtsEnable {
-			get {
-				return rts_enable;
-			}
-			set {
-				if (value == rts_enable)
-					return;
-				if (is_open)
-					stream.SetSignal (SerialSignal.Rts, value);
-				
-				rts_enable = value;
-			}
-		}
+        [DefaultValueAttribute(DefaultReadBufferSize)]
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        public int ReadBufferSize
+        {
+            get
+            {
+                return readBufferSize;
+            }
+            set
+            {
+                if (is_open)
+                    throw new InvalidOperationException();
+                if (value <= 0)
+                    throw new ArgumentOutOfRangeException("value");
+                if (value <= DefaultReadBufferSize)
+                    return;
 
-		[DefaultValueAttribute(DefaultStopBits)]
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		public StopBits StopBits {
-			get {
-				return stop_bits;
-			}
-			set {
-				if (value < StopBits.One || value > StopBits.OnePointFive)
-					throw new ArgumentOutOfRangeException ("value");
-				
-				if (is_open)
-					stream.SetAttributes (baud_rate, parity, data_bits, value, handshake);
-				
-				stop_bits = value;
-			}
-		}
+                readBufferSize = value;
+            }
+        }
 
-		[DefaultValueAttribute(DefaultWriteBufferSize)]
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		public int WriteBufferSize {
-			get {
-				return writeBufferSize;
-			}
-			set {
-				if (is_open)
-					throw new InvalidOperationException ();
-				if (value <= 0)
-					throw new ArgumentOutOfRangeException ("value");
-				if (value <= DefaultWriteBufferSize)
-					return;
+        [DefaultValueAttribute(InfiniteTimeout)]
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        public int ReadTimeout
+        {
+            get
+            {
+                return read_timeout;
+            }
+            set
+            {
+                if (value < 0 && value != InfiniteTimeout)
+                    throw new ArgumentOutOfRangeException("value");
 
-				writeBufferSize = value;
-			}
-		}
+                if (is_open)
+                    stream.ReadTimeout = value;
 
-		[DefaultValueAttribute(InfiniteTimeout)]
-		[Browsable (true)]
-		[MonitoringDescription ("")]
-		public int WriteTimeout {
-			get {
-				return write_timeout;
-			}
-			set {
-				if (value < 0 && value != InfiniteTimeout)
-					throw new ArgumentOutOfRangeException ("value");
+                read_timeout = value;
+            }
+        }
 
-				if (is_open)
-					stream.WriteTimeout = value;
-				
-				write_timeout = value;
-			}
-		}
+        [DefaultValueAttribute(1)]
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        public int ReceivedBytesThreshold
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentOutOfRangeException("value");
 
-		// methods
+                throw new NotImplementedException();
+            }
+        }
 
-		public void Close ()
-		{
-			Dispose (true);
-		}
+        [DefaultValueAttribute(false)]
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        public bool RtsEnable
+        {
+            get
+            {
+                return rts_enable;
+            }
+            set
+            {
+                if (value == rts_enable)
+                    return;
+                if (is_open)
+                    stream.SetSignal(SerialSignal.Rts, value);
 
-		protected override void Dispose (bool disposing)
-		{
-			if (!is_open)
-				return;
-			
-			is_open = false;
-			// Do not close the base stream when the finalizer is run; the managed code can still hold a reference to it.
-			if (disposing)
-				stream.Close ();
-			stream = null;
-		}
+                rts_enable = value;
+            }
+        }
 
-		public void DiscardInBuffer ()
-		{
-			CheckOpen ();
-			stream.DiscardInBuffer ();
-		}
+        [DefaultValueAttribute(DefaultStopBits)]
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        public StopBits StopBits
+        {
+            get
+            {
+                return stop_bits;
+            }
+            set
+            {
+                if (value < StopBits.One || value > StopBits.OnePointFive)
+                    throw new ArgumentOutOfRangeException("value");
 
-		public void DiscardOutBuffer ()
-		{
-			CheckOpen ();
-			stream.DiscardOutBuffer ();
-		}
+                if (is_open)
+                    stream.SetAttributes(baud_rate, parity, data_bits, value, handshake);
 
-		public static string [] GetPortNames ()
-		{
-			int p = (int) Environment.OSVersion.Platform;
-			List<string> serial_ports = new List<string>();
-			
-			// Are we on Unix?
-			if (p == 4 || p == 128 || p == 6) {
-				string[] ttys = Directory.GetFiles("/dev/", "tty*");
-				bool linux_style = false;
+                stop_bits = value;
+            }
+        }
 
-				//
-				// Probe for Linux-styled devices: /dev/ttyS* or /dev/ttyUSB*
-				// 
-				foreach (string dev in ttys) {
-					if (dev.StartsWith("/dev/ttyS") || dev.StartsWith("/dev/ttyUSB") || dev.StartsWith("/dev/ttyACM")) {
-						linux_style = true;
-						break;
-					}
-				}
+        [DefaultValueAttribute(DefaultWriteBufferSize)]
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        public int WriteBufferSize
+        {
+            get
+            {
+                return writeBufferSize;
+            }
+            set
+            {
+                if (is_open)
+                    throw new InvalidOperationException();
+                if (value <= 0)
+                    throw new ArgumentOutOfRangeException("value");
+                if (value <= DefaultWriteBufferSize)
+                    return;
 
-				foreach (string dev in ttys) {
-					if (linux_style){
-						if (dev.StartsWith("/dev/ttyS") || dev.StartsWith("/dev/ttyUSB") || dev.StartsWith("/dev/ttyACM"))
-							serial_ports.Add (dev);
-					} else {
-						if (dev != "/dev/tty" && dev.StartsWith ("/dev/tty") && !dev.StartsWith ("/dev/ttyC"))
-							serial_ports.Add (dev);
-					}
-				}
-			} else {
-				using (RegistryKey subkey = Registry.LocalMachine.OpenSubKey("HARDWARE\\DEVICEMAP\\SERIALCOMM"))
-				{
-					if (subkey != null) {
-						string[] names = subkey.GetValueNames();
-						foreach (string value in names) {
-							string port = subkey.GetValue(value, "").ToString();
-							if (port != "")
-								serial_ports.Add(port);
-						}
-					}
-				}
-			}
-			return serial_ports.ToArray();
-		}
+                writeBufferSize = value;
+            }
+        }
 
-		static bool IsWindows {
-			get {
-				PlatformID id =  Environment.OSVersion.Platform;
-				return id == PlatformID.Win32Windows || id == PlatformID.Win32NT; // WinCE not supported
-			}
-		}
+        [DefaultValueAttribute(InfiniteTimeout)]
+        [Browsable(true)]
+        [MonitoringDescription("")]
+        public int WriteTimeout
+        {
+            get
+            {
+                return write_timeout;
+            }
+            set
+            {
+                if (value < 0 && value != InfiniteTimeout)
+                    throw new ArgumentOutOfRangeException("value");
 
-		public void Open ()
-		{
-			if (is_open)
-				throw new InvalidOperationException ("Port is already open");
-			
-			if (IsWindows) // Use windows kernel32 backend
-				stream = new WinSerialStream (port_name, baud_rate, data_bits, parity, stop_bits, dtr_enable,
-					rts_enable, handshake, read_timeout, write_timeout, readBufferSize, writeBufferSize);
-			else // Use standard unix backend
-				stream = new SerialPortStream (port_name, baud_rate, data_bits, parity, stop_bits, dtr_enable,
-					rts_enable, handshake, read_timeout, write_timeout, readBufferSize, writeBufferSize);
-			
-			is_open = true;
-		}
+                if (is_open)
+                    stream.WriteTimeout = value;
 
-		public int Read (byte[] buffer, int offset, int count)
-		{
-			CheckOpen ();
-			if (buffer == null)
-				throw new ArgumentNullException ("buffer");
-			if (offset < 0 || count < 0)
-				throw new ArgumentOutOfRangeException ("offset or count less than zero.");
+                write_timeout = value;
+            }
+        }
 
-			if (buffer.Length - offset < count )
-				throw new ArgumentException ("offset+count",
-							      "The size of the buffer is less than offset + count.");
+        // methods
+
+        public void Close()
+        {
+            Dispose(true);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (!is_open)
+                return;
+
+            is_open = false;
+            // Do not close the base stream when the finalizer is run; the managed code can still hold a reference to it.
+            if (disposing)
+                stream.Close();
+            stream = null;
+        }
+
+        public void DiscardInBuffer()
+        {
+            CheckOpen();
+            stream.DiscardInBuffer();
+        }
+
+        public void DiscardOutBuffer()
+        {
+            CheckOpen();
+            stream.DiscardOutBuffer();
+        }
+
+        public static string[] GetPortNames()
+        {
+            int p = (int)Environment.OSVersion.Platform;
+            List<string> serial_ports = new List<string>();
+
+            // Are we on Unix?
+            if (p == 4 || p == 128 || p == 6)
+            {
+                string[] ttys = Directory.GetFiles("/dev/", "tty*");
+                bool linux_style = false;
+
+                //
+                // Probe for Linux-styled devices: /dev/ttyS* or /dev/ttyUSB*
+                // 
+                foreach (string dev in ttys)
+                {
+                    if (dev.StartsWith("/dev/ttyS") || dev.StartsWith("/dev/ttyUSB") || dev.StartsWith("/dev/ttyACM"))
+                    {
+                        linux_style = true;
+                        break;
+                    }
+                }
+
+                foreach (string dev in ttys)
+                {
+                    if (linux_style)
+                    {
+                        if (dev.StartsWith("/dev/ttyS") || dev.StartsWith("/dev/ttyUSB") || dev.StartsWith("/dev/ttyACM"))
+                            serial_ports.Add(dev);
+                    }
+                    else
+                    {
+                        if (dev != "/dev/tty" && dev.StartsWith("/dev/tty") && !dev.StartsWith("/dev/ttyC"))
+                            serial_ports.Add(dev);
+                    }
+                }
+            }
+            else
+            {
+                using (RegistryKey subkey = Registry.LocalMachine.OpenSubKey("HARDWARE\\DEVICEMAP\\SERIALCOMM"))
+                {
+                    if (subkey != null)
+                    {
+                        string[] names = subkey.GetValueNames();
+                        foreach (string value in names)
+                        {
+                            string port = subkey.GetValue(value, "").ToString();
+                            if (port != "")
+                                serial_ports.Add(port);
+                        }
+                    }
+                }
+            }
+            return serial_ports.ToArray();
+        }
+
+        static bool IsWindows
+        {
+            get
+            {
+                PlatformID id = Environment.OSVersion.Platform;
+                return id == PlatformID.Win32Windows || id == PlatformID.Win32NT; // WinCE not supported
+            }
+        }
+
+        public void Open()
+        {
+            if (is_open)
+                throw new InvalidOperationException("Port is already open");
+
+            if (IsWindows) // Use windows kernel32 backend
+                stream = new WinSerialStream(port_name, baud_rate, data_bits, parity, stop_bits, dtr_enable,
+                    rts_enable, handshake, read_timeout, write_timeout, readBufferSize, writeBufferSize);
+            else // Use standard unix backend
+                stream = new SerialPortStream(port_name, baud_rate, data_bits, parity, stop_bits, dtr_enable,
+                    rts_enable, handshake, read_timeout, write_timeout, readBufferSize, writeBufferSize);
+
+            is_open = true;
+        }
+
+        public int Read(byte[] buffer, int offset, int count)
+        {
+            CheckOpen();
+            if (buffer == null)
+                throw new ArgumentNullException("buffer");
+            if (offset < 0 || count < 0)
+                throw new ArgumentOutOfRangeException("offset or count less than zero.");
+
+            if (buffer.Length - offset < count)
+                throw new ArgumentException("offset+count",
+                                  "The size of the buffer is less than offset + count.");
 
             try
             {
@@ -621,28 +703,28 @@ namespace MySerialPort
             }
         }
 
-		public int Read (char[] buffer, int offset, int count)
-		{
-			CheckOpen ();
-			if (buffer == null)
-				throw new ArgumentNullException ("buffer");
-			if (offset < 0 || count < 0)
-				throw new ArgumentOutOfRangeException ("offset or count less than zero.");
+        public int Read(char[] buffer, int offset, int count)
+        {
+            CheckOpen();
+            if (buffer == null)
+                throw new ArgumentNullException("buffer");
+            if (offset < 0 || count < 0)
+                throw new ArgumentOutOfRangeException("offset or count less than zero.");
 
-			if (buffer.Length - offset < count )
-				throw new ArgumentException ("offset+count",
-							      "The size of the buffer is less than offset + count.");
+            if (buffer.Length - offset < count)
+                throw new ArgumentException("offset+count",
+                                  "The size of the buffer is less than offset + count.");
 
-			int c, i;
-			for (i = 0; i < count && (c = ReadChar ()) != -1; i++)
-				buffer[offset + i] = (char) c;
+            int c, i;
+            for (i = 0; i < count && (c = ReadChar()) != -1; i++)
+                buffer[offset + i] = (char)c;
 
-			return i;
-		}
+            return i;
+        }
 
         internal int read_byte()
         {
-            byte[] buff = new byte [1];
+            byte[] buff = new byte[1];
 
             try
             {
@@ -658,38 +740,39 @@ namespace MySerialPort
             return -1;
         }
 
-        public int ReadByte ()
-		{
-			CheckOpen ();
-			return read_byte ();
-		}
+        public int ReadByte()
+        {
+            CheckOpen();
+            return read_byte();
+        }
 
-		public int ReadChar ()
-		{
-			CheckOpen ();
-			
-			byte [] buffer = new byte [16];
-			int i = 0;
+        public int ReadChar()
+        {
+            CheckOpen();
 
-			do {
-				int b = read_byte ();
-				if (b == -1)
-					return -1;
-				buffer [i++] = (byte) b;
-				char [] c = encoding.GetChars (buffer, 0, 1);
-				if (c.Length > 0)
-					return (int) c [0];
-			} while (i < buffer.Length);
+            byte[] buffer = new byte[16];
+            int i = 0;
 
-			return -1;
-		}
+            do
+            {
+                int b = read_byte();
+                if (b == -1)
+                    return -1;
+                buffer[i++] = (byte)b;
+                char[] c = encoding.GetChars(buffer, 0, 1);
+                if (c.Length > 0)
+                    return (int)c[0];
+            } while (i < buffer.Length);
+
+            return -1;
+        }
 
         public string ReadExisting()
         {
             CheckOpen();
 
             int count = BytesToRead;
-            byte[] bytes = new byte [count];
+            byte[] bytes = new byte[count];
 
             try
             {
@@ -703,144 +786,151 @@ namespace MySerialPort
             }
         }
 
-        public string ReadLine ()
-		{
-			return ReadTo (new_line);
-		}
+        public string ReadLine()
+        {
+            return ReadTo(new_line);
+        }
 
-		public string ReadTo (string value)
-		{
-			CheckOpen ();
-			if (value == null)
-				throw new ArgumentNullException ("value");
-			if (value.Length == 0)
-				throw new ArgumentException ("value");
+        public string ReadTo(string value)
+        {
+            CheckOpen();
+            if (value == null)
+                throw new ArgumentNullException("value");
+            if (value.Length == 0)
+                throw new ArgumentException("value");
 
-			// Turn into byte array, so we can compare
-			byte [] byte_value = encoding.GetBytes (value);
-			int current = 0;
-			List<byte> seen = new List<byte> ();
+            // Turn into byte array, so we can compare
+            byte[] byte_value = encoding.GetBytes(value);
+            int current = 0;
+            List<byte> seen = new List<byte>();
 
-			while (true){
-				int n = read_byte ();
-				if (n == -1)
-					break;
-				seen.Add ((byte)n);
-				if (n == byte_value [current]){
-					current++;
-					if (current == byte_value.Length)
-						return encoding.GetString (seen.ToArray (), 0, seen.Count - byte_value.Length);
-				} else {
-					current = (byte_value [0] == n) ? 1 : 0;
-				}
-			}
-			return encoding.GetString (seen.ToArray ());
-		}
+            while (true)
+            {
+                int n = read_byte();
+                if (n == -1)
+                    break;
+                seen.Add((byte)n);
+                if (n == byte_value[current])
+                {
+                    current++;
+                    if (current == byte_value.Length)
+                        return encoding.GetString(seen.ToArray(), 0, seen.Count - byte_value.Length);
+                }
+                else
+                {
+                    current = (byte_value[0] == n) ? 1 : 0;
+                }
+            }
+            return encoding.GetString(seen.ToArray());
+        }
 
-		public void Write (string text)
-		{
-			CheckOpen ();
-			if (text == null)
-				throw new ArgumentNullException ("text");
-			
-			byte [] buffer = encoding.GetBytes (text);
-			Write (buffer, 0, buffer.Length);
-		}
+        public void Write(string text)
+        {
+            CheckOpen();
+            if (text == null)
+                throw new ArgumentNullException("text");
 
-		public void Write (byte [] buffer, int offset, int count)
-		{
-			CheckOpen ();
-			if (buffer == null)
-				throw new ArgumentNullException ("buffer");
+            byte[] buffer = encoding.GetBytes(text);
+            Write(buffer, 0, buffer.Length);
+        }
 
-			if (offset < 0 || count < 0)
-				throw new ArgumentOutOfRangeException ();
+        public void Write(byte[] buffer, int offset, int count)
+        {
+            CheckOpen();
+            if (buffer == null)
+                throw new ArgumentNullException("buffer");
 
-			if (buffer.Length - offset < count)
-				throw new ArgumentException ("offset+count",
-							     "The size of the buffer is less than offset + count.");
+            if (offset < 0 || count < 0)
+                throw new ArgumentOutOfRangeException();
 
-			stream.Write (buffer, offset, count);
-		}
+            if (buffer.Length - offset < count)
+                throw new ArgumentException("offset+count",
+                                 "The size of the buffer is less than offset + count.");
 
-		public void Write (char [] buffer, int offset, int count)
-		{
-			CheckOpen ();
-			if (buffer == null)
-				throw new ArgumentNullException ("buffer");
+            stream.Write(buffer, offset, count);
+        }
 
-			if (offset < 0 || count < 0)
-				throw new ArgumentOutOfRangeException ();
+        public void Write(char[] buffer, int offset, int count)
+        {
+            CheckOpen();
+            if (buffer == null)
+                throw new ArgumentNullException("buffer");
 
-			if (buffer.Length - offset < count)
-				throw new ArgumentException ("offset+count",
-							     "The size of the buffer is less than offset + count.");
+            if (offset < 0 || count < 0)
+                throw new ArgumentOutOfRangeException();
 
-			byte [] bytes = encoding.GetBytes (buffer, offset, count);
-			stream.Write (bytes, 0, bytes.Length);
-		}
+            if (buffer.Length - offset < count)
+                throw new ArgumentException("offset+count",
+                                 "The size of the buffer is less than offset + count.");
 
-		public void WriteLine (string text)
-		{
-			Write (text + new_line);
-		}
+            byte[] bytes = encoding.GetBytes(buffer, offset, count);
+            stream.Write(bytes, 0, bytes.Length);
+        }
 
-		void CheckOpen ()
-		{
-			if (!is_open)
-				throw new InvalidOperationException ("Specified port is not open.");
-		}
+        public void WriteLine(string text)
+        {
+            Write(text + new_line);
+        }
 
-		internal void OnErrorReceived (SerialErrorReceivedEventArgs args)
-		{
-			SerialErrorReceivedEventHandler handler =
-				(SerialErrorReceivedEventHandler) Events [error_received];
+        void CheckOpen()
+        {
+            if (!is_open)
+                throw new InvalidOperationException("Specified port is not open.");
+        }
 
-			if (handler != null)
-				handler (this, args);
-		}
+        internal void OnErrorReceived(SerialErrorReceivedEventArgs args)
+        {
+            SerialErrorReceivedEventHandler handler =
+                (SerialErrorReceivedEventHandler)Events[error_received];
 
-		internal void OnDataReceived (SerialDataReceivedEventArgs args)
-		{
-			SerialDataReceivedEventHandler handler =
-				(SerialDataReceivedEventHandler) Events [data_received];
+            if (handler != null)
+                handler(this, args);
+        }
 
-			if (handler != null)
-				handler (this, args);
-		}
-		
-		internal void OnDataReceived (SerialPinChangedEventArgs args)
-		{
-			SerialPinChangedEventHandler handler =
-				(SerialPinChangedEventHandler) Events [pin_changed];
+        internal void OnDataReceived(SerialDataReceivedEventArgs args)
+        {
+            SerialDataReceivedEventHandler handler =
+                (SerialDataReceivedEventHandler)Events[data_received];
 
-			if (handler != null)
-				handler (this, args);
-		}
+            if (handler != null)
+                handler(this, args);
+        }
 
-		// events
-		[MonitoringDescription ("")]
-		public event SerialErrorReceivedEventHandler ErrorReceived {
-			add { Events.AddHandler (error_received, value); }
-			remove { Events.RemoveHandler (error_received, value); }
-		}
-		
-		[MonitoringDescription ("")]
-		public event SerialPinChangedEventHandler PinChanged {
-			add { Events.AddHandler (pin_changed, value); }
-			remove { Events.RemoveHandler (pin_changed, value); }
-		}
-		
-		[MonitoringDescription ("")]
-		public event SerialDataReceivedEventHandler DataReceived {
-			add { Events.AddHandler (data_received, value); }
-			remove { Events.RemoveHandler (data_received, value); }
-		}
-	}
+        internal void OnDataReceived(SerialPinChangedEventArgs args)
+        {
+            SerialPinChangedEventHandler handler =
+                (SerialPinChangedEventHandler)Events[pin_changed];
 
-	public delegate void SerialDataReceivedEventHandler (object sender, SerialDataReceivedEventArgs e);
-	public delegate void SerialPinChangedEventHandler (object sender, SerialPinChangedEventArgs e);
-	public delegate void SerialErrorReceivedEventHandler (object sender, SerialErrorReceivedEventArgs e);
+            if (handler != null)
+                handler(this, args);
+        }
+
+        // events
+        [MonitoringDescription("")]
+        public event SerialErrorReceivedEventHandler ErrorReceived
+        {
+            add { Events.AddHandler(error_received, value); }
+            remove { Events.RemoveHandler(error_received, value); }
+        }
+
+        [MonitoringDescription("")]
+        public event SerialPinChangedEventHandler PinChanged
+        {
+            add { Events.AddHandler(pin_changed, value); }
+            remove { Events.RemoveHandler(pin_changed, value); }
+        }
+
+        [MonitoringDescription("")]
+        public event SerialDataReceivedEventHandler DataReceived
+        {
+            add { Events.AddHandler(data_received, value); }
+            remove { Events.RemoveHandler(data_received, value); }
+        }
+    }
+
+    public delegate void SerialDataReceivedEventHandler(object sender, SerialDataReceivedEventArgs e);
+    public delegate void SerialPinChangedEventHandler(object sender, SerialPinChangedEventArgs e);
+    public delegate void SerialErrorReceivedEventHandler(object sender, SerialErrorReceivedEventArgs e);
 
 }
 

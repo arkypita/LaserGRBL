@@ -64,7 +64,7 @@ namespace SharpGL.SceneGraph.Core
                 OpenGL gl = TraverseToRootElement().ParentScene.CurrentOpenGLContext;
 
                 //  If we don't exist in this context, create in this context.
-                if(contextChild.CurrentOpenGLContext != gl)
+                if (contextChild.CurrentOpenGLContext != gl)
                     contextChild.CreateInContext(gl);
             }
         }
@@ -74,12 +74,12 @@ namespace SharpGL.SceneGraph.Core
         /// </summary>
         /// <param name="child">The child scene element.</param>
         public void RemoveChild(SceneElement child)
-        {       
+        {
             //  If the child has OpenGL context which is not the current one, we must destroy it.
             if (child is IHasOpenGLContext)
-                if(((IHasOpenGLContext)child).CurrentOpenGLContext != TraverseToRootElement().ParentScene.CurrentOpenGLContext)
+                if (((IHasOpenGLContext)child).CurrentOpenGLContext != TraverseToRootElement().ParentScene.CurrentOpenGLContext)
                     ((IHasOpenGLContext)child).DestroyInContext(TraverseToRootElement().ParentScene.CurrentOpenGLContext);
-  
+
             //  Throw an exception if the child is not a child of this element..
             if (child.Parent != this)
                 throw new Exception("Cannot remove the child element '" + child.Name +

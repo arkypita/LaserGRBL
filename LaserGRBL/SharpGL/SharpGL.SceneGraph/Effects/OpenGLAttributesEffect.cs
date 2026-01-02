@@ -67,7 +67,7 @@ namespace SharpGL.SceneGraph.Effects
             lightingAttributes.SetAttributes(gl);
             lineAttributes.SetAttributes(gl);
             pointAttributes.SetAttributes(gl);
-            polygonAttributes.SetAttributes(gl);            
+            polygonAttributes.SetAttributes(gl);
             evalAttributes.SetAttributes(gl);
             hintAttributes.SetAttributes(gl);
             listAttributes.SetAttributes(gl);
@@ -358,6 +358,6 @@ namespace SharpGL.SceneGraph.Effects
             set { polygonAttributes = value; }
         }
 
-        
+
     }
 }

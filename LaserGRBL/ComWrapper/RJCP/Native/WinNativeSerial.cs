@@ -89,12 +89,15 @@ namespace RJCP.IO.Ports.Native
         /// <returns>An array of serial port names for the current computer.</returns>
         public string[] GetPortNames()
         {
-            using (RegistryKey local = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DEVICEMAP\SERIALCOMM", false)) {
+            using (RegistryKey local = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DEVICEMAP\SERIALCOMM", false))
+            {
                 if (local == null) return new string[0];
                 string[] k = local.GetValueNames();
-                if (k.Length > 0) {
+                if (k.Length > 0)
+                {
                     string[] ports = new string[local.ValueCount];
-                    for (int i = 0; i < k.Length; i++) {
+                    for (int i = 0; i < k.Length; i++)
+                    {
                         ports[i] = local.GetValue(k[i]) as string;
                     }
                     return ports;
@@ -117,10 +120,13 @@ namespace RJCP.IO.Ports.Native
         public PortDescription[] GetPortDescriptions()
         {
             Dictionary<string, PortDescription> list = new Dictionary<string, PortDescription>();
-            using (RegistryKey local = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DEVICEMAP\SERIALCOMM", false)) {
-                if (local != null) {
+            using (RegistryKey local = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DEVICEMAP\SERIALCOMM", false))
+            {
+                if (local != null)
+                {
                     string[] k = local.GetValueNames();
-                    foreach (string p in k) {
+                    foreach (string p in k)
+                    {
                         string n = local.GetValue(p) as string;
                         list.Add(n, new PortDescription(n, ""));
                     }
@@ -134,7 +140,8 @@ namespace RJCP.IO.Ports.Native
             // Get the array and return it
             int i = 0;
             PortDescription[] ports = new PortDescription[list.Count];
-            foreach (PortDescription p in list.Values) {
+            foreach (PortDescription p in list.Values)
+            {
                 ports[i++] = p;
             }
             return ports;
@@ -145,14 +152,18 @@ namespace RJCP.IO.Ports.Native
             CfgMgr32.CONFIGRET ret = CfgMgr32.CM_Get_Device_ID_List(null, out string[] instances);
             if (ret != CfgMgr32.CONFIGRET.CR_SUCCESS) return;
 
-            foreach (string device in instances) {
+            foreach (string device in instances)
+            {
                 ret = CfgMgr32.CM_Locate_DevNode(out CfgMgr32.SafeDevInst devInst, device, CfgMgr32.CM_LOCATE_DEVINST.NORMAL);
                 if (ret != CfgMgr32.CONFIGRET.CR_SUCCESS) continue;
 
-                using (RegistryKey devKey = GetDeviceKey(devInst)) {
-                    if (devKey != null) {
+                using (RegistryKey devKey = GetDeviceKey(devInst))
+                {
+                    if (devKey != null)
+                    {
                         if (devKey.GetValue("PortName") is string portName &&
-                            list.TryGetValue(portName, out PortDescription port)) {
+                            list.TryGetValue(portName, out PortDescription port))
+                        {
                             port.Description = GetDeviceProperty(devInst, CfgMgr32.CM_DRP.FRIENDLYNAME) ?? string.Empty;
                             if (string.IsNullOrEmpty(port.Description))
                                 port.Description = GetDeviceProperty(devInst, CfgMgr32.CM_DRP.DEVICEDESC) ?? string.Empty;
@@ -225,7 +236,8 @@ namespace RJCP.IO.Ports.Native
             set
             {
                 if (m_IsDisposed) throw new ObjectDisposedException(nameof(WinNativeSerial));
-                if ((value < 5 || value > 8) && value != 16) {
+                if ((value < 5 || value > 8) && value != 16)
+                {
                     throw new ArgumentOutOfRangeException(nameof(value), "May only be 5, 6, 7, 8 or 16");
                 }
                 m_DataBits = value;
@@ -249,7 +261,8 @@ namespace RJCP.IO.Ports.Native
             set
             {
                 if (m_IsDisposed) throw new ObjectDisposedException(nameof(WinNativeSerial));
-                if (!Enum.IsDefined(typeof(Parity), value)) {
+                if (!Enum.IsDefined(typeof(Parity), value))
+                {
                     throw new ArgumentOutOfRangeException(nameof(value), "Unknown value for Parity");
                 }
                 m_Parity = value;
@@ -272,7 +285,8 @@ namespace RJCP.IO.Ports.Native
             set
             {
                 if (m_IsDisposed) throw new ObjectDisposedException(nameof(WinNativeSerial));
-                if (!Enum.IsDefined(typeof(StopBits), value)) {
+                if (!Enum.IsDefined(typeof(StopBits), value))
+                {
                     throw new ArgumentOutOfRangeException(nameof(value), "Unknown value for Stop Bits");
                 }
                 m_StopBits = value;
@@ -358,7 +372,8 @@ namespace RJCP.IO.Ports.Native
             set
             {
                 if (m_IsDisposed) throw new ObjectDisposedException(nameof(WinNativeSerial));
-                if (value < 0) {
+                if (value < 0)
+                {
                     throw new ArgumentOutOfRangeException(nameof(value), "XOffLimit must be positive");
                 }
                 m_XOffLimit = value;
@@ -381,7 +396,8 @@ namespace RJCP.IO.Ports.Native
             set
             {
                 if (m_IsDisposed) throw new ObjectDisposedException(nameof(WinNativeSerial));
-                if (value < 0) {
+                if (value < 0)
+                {
                     throw new ArgumentOutOfRangeException(nameof(value), "XOnLimit must be positive");
                 }
                 m_XOnLimit = value;
@@ -411,9 +427,12 @@ namespace RJCP.IO.Ports.Native
             {
                 if (m_IsDisposed) throw new ObjectDisposedException(nameof(WinNativeSerial));
                 if (!IsOpen) throw new InvalidOperationException("Port not open");
-                if (value) {
+                if (value)
+                {
                     m_CommModemStatus.SetCommBreak();
-                } else {
+                }
+                else
+                {
                     m_CommModemStatus.ClearCommBreak();
                 }
                 m_BreakState = value;
@@ -442,7 +461,8 @@ namespace RJCP.IO.Ports.Native
                 if (value < 0) throw new ArgumentOutOfRangeException(nameof(value), "value must be a positive integer");
                 m_DriverInQueue = value;
 
-                if (IsOpen) {
+                if (IsOpen)
+                {
                     Kernel32.SetupComm(m_ComPortHandle, m_DriverInQueue, m_DriverOutQueue);
                 }
             }
@@ -470,7 +490,8 @@ namespace RJCP.IO.Ports.Native
                 if (value < 0) throw new ArgumentOutOfRangeException(nameof(value), "value must be a positive integer");
                 m_DriverOutQueue = value;
 
-                if (IsOpen) {
+                if (IsOpen)
+                {
                     Kernel32.SetupComm(m_ComPortHandle, m_DriverInQueue, m_DriverOutQueue);
                 }
             }
@@ -646,7 +667,8 @@ namespace RJCP.IO.Ports.Native
             set
             {
                 if (m_IsDisposed) throw new ObjectDisposedException(nameof(WinNativeSerial));
-                if (!Enum.IsDefined(typeof(Handshake), value)) {
+                if (!Enum.IsDefined(typeof(Handshake), value))
+                {
                     throw new ArgumentOutOfRangeException(nameof(value), "Unknown value for Handshake");
                 }
                 m_Handshake = value;
@@ -717,7 +739,8 @@ namespace RJCP.IO.Ports.Native
             // This is a limitation of the API as taken over from the System.IO.Ports.SerialPort
             // implementation by Microsoft.
             m_ParityReplace = m_CommState.ErrorChar;
-            if (m_ParityReplace == 0 && m_CommState.ErrorCharEnabled && m_Parity != Parity.None) {
+            if (m_ParityReplace == 0 && m_CommState.ErrorCharEnabled && m_Parity != Parity.None)
+            {
                 m_ParityReplace = 126;
             }
 
@@ -727,15 +750,16 @@ namespace RJCP.IO.Ports.Native
             if (m_CommState.InX) m_Handshake |= Handshake.XOn;
 
             // We don't support RTS_CONTROL_TOGGLE
-            switch (m_CommState.RtsControl) {
-            case RtsControl.Disable:
-            case RtsControl.Toggle:
-                m_RtsEnable = false;
-                break;
-            case RtsControl.Enable:
-            case RtsControl.Handshake:
-                m_RtsEnable = true;
-                break;
+            switch (m_CommState.RtsControl)
+            {
+                case RtsControl.Disable:
+                case RtsControl.Toggle:
+                    m_RtsEnable = false;
+                    break;
+                case RtsControl.Enable:
+                case RtsControl.Handshake:
+                    m_RtsEnable = true;
+                    break;
             }
             m_DtrEnable = m_CommState.DtrControl != DtrControl.Disable;
         }
@@ -767,33 +791,40 @@ namespace RJCP.IO.Ports.Native
 
             m_CommState.ParityEnable = true;
             m_CommState.Parity = m_Parity;
-            switch (m_Parity) {
-            case Parity.None:
-                m_CommState.ErrorCharEnabled = false;
-                m_CommState.ErrorChar = 0;
-                break;
-            case Parity.Even:
-            case Parity.Odd:
-            case Parity.Space:
-            case Parity.Mark:
-                if (m_ParityReplace == 0) {
+            switch (m_Parity)
+            {
+                case Parity.None:
                     m_CommState.ErrorCharEnabled = false;
                     m_CommState.ErrorChar = 0;
-                } else {
-                    m_CommState.ErrorCharEnabled = true;
-                    m_CommState.ErrorChar = m_ParityReplace;
-                }
-                break;
-            default:
-                throw new InternalApplicationException("Unknown Parity");
+                    break;
+                case Parity.Even:
+                case Parity.Odd:
+                case Parity.Space:
+                case Parity.Mark:
+                    if (m_ParityReplace == 0)
+                    {
+                        m_CommState.ErrorCharEnabled = false;
+                        m_CommState.ErrorChar = 0;
+                    }
+                    else
+                    {
+                        m_CommState.ErrorCharEnabled = true;
+                        m_CommState.ErrorChar = m_ParityReplace;
+                    }
+                    break;
+                default:
+                    throw new InternalApplicationException("Unknown Parity");
             }
 
             SetRtsPortSettings(false);
             SetDtrPortSettings(false);
-            if ((m_Handshake & Handshake.XOn) != 0) {
+            if ((m_Handshake & Handshake.XOn) != 0)
+            {
                 m_CommState.InX = true;
                 m_CommState.OutX = true;
-            } else {
+            }
+            else
+            {
                 m_CommState.InX = false;
                 m_CommState.OutX = false;
             }
@@ -806,15 +837,19 @@ namespace RJCP.IO.Ports.Native
 
         private void SetRtsPortSettings(bool immediate)
         {
-            if ((m_Handshake & Handshake.Rts) != 0) {
+            if ((m_Handshake & Handshake.Rts) != 0)
+            {
                 m_CommState.OutCtsFlow = true;
                 m_CommState.RtsControl = RtsControl.Handshake;
-            } else {
+            }
+            else
+            {
                 m_CommState.OutCtsFlow = false;
                 m_CommState.RtsControl = m_RtsEnable ? RtsControl.Enable : RtsControl.Disable;
             }
 
-            if (immediate) {
+            if (immediate)
+            {
                 m_CommState.SetCommState();
                 if (m_CommState.RtsControl != RtsControl.Handshake) m_CommModemStatus.SetRts(m_RtsEnable);
             }
@@ -822,17 +857,21 @@ namespace RJCP.IO.Ports.Native
 
         private void SetDtrPortSettings(bool immediate)
         {
-            if ((m_Handshake & Handshake.Dtr) != 0) {
+            if ((m_Handshake & Handshake.Dtr) != 0)
+            {
                 m_CommState.OutDsrFlow = true;
                 m_CommState.DsrSensitivity = true;
                 m_CommState.DtrControl = DtrControl.Handshake;
-            } else {
+            }
+            else
+            {
                 m_CommState.OutDsrFlow = false;
                 m_CommState.DsrSensitivity = false;
                 m_CommState.DtrControl = m_DtrEnable ? DtrControl.Enable : DtrControl.Disable;
             }
 
-            if (immediate) {
+            if (immediate)
+            {
                 m_CommState.SetCommState();
                 if (m_CommState.DtrControl != DtrControl.Handshake) m_CommModemStatus.SetDtr(m_DtrEnable);
             }
@@ -869,22 +908,26 @@ namespace RJCP.IO.Ports.Native
 
             Kernel32.FileType t = Kernel32.GetFileType(m_ComPortHandle);
             bool validOverride = false;
-            if (t != Kernel32.FileType.FILE_TYPE_CHAR && t != Kernel32.FileType.FILE_TYPE_UNKNOWN) {
-                foreach (string port in GetPortNames()) {
+            if (t != Kernel32.FileType.FILE_TYPE_CHAR && t != Kernel32.FileType.FILE_TYPE_UNKNOWN)
+            {
+                foreach (string port in GetPortNames())
+                {
 #if NETSTANDARD1_5
                     if (port.Equals(PortName, StringComparison.OrdinalIgnoreCase)) {
                         validOverride = true;
                         break;
                     }
 #else
-                    if (port.Equals(PortName, StringComparison.InvariantCultureIgnoreCase)) {
+                    if (port.Equals(PortName, StringComparison.InvariantCultureIgnoreCase))
+                    {
                         validOverride = true;
                         break;
                     }
 #endif
                 }
 
-                if (!validOverride) {
+                if (!validOverride)
+                {
                     m_ComPortHandle.Dispose();
                     m_ComPortHandle = null;
                     throw new IOException(string.Format("Wrong file type: {0}", PortName));
@@ -912,7 +955,8 @@ namespace RJCP.IO.Ports.Native
         public void Close()
         {
             if (m_IsDisposed) throw new ObjectDisposedException(nameof(WinNativeSerial));
-            if (IsOpen) {
+            if (IsOpen)
+            {
                 SafeFileHandle handle = m_ComPortHandle;
                 m_ComPortHandle = null;
                 m_CommOverlappedIo.Dispose();
@@ -972,16 +1016,17 @@ namespace RJCP.IO.Ports.Native
         {
             int e = Marshal.GetLastWin32Error();
 
-            switch (e) {
-            case 2:
-            case 3:
-                throw new IOException(string.Format("Port not found: {0}", PortName), e);
-            case 5:
-                throw new UnauthorizedAccessException(string.Format("Access Denied: {0}", PortName));
-            case 32:
-                throw new IOException(string.Format("Sharing violation: {0}", PortName), e);
-            case 206:
-                throw new PathTooLongException(string.Format("Path too long: {0}", PortName));
+            switch (e)
+            {
+                case 2:
+                case 3:
+                    throw new IOException(string.Format("Port not found: {0}", PortName), e);
+                case 5:
+                    throw new UnauthorizedAccessException(string.Format("Access Denied: {0}", PortName));
+                case 32:
+                    throw new IOException(string.Format("Sharing violation: {0}", PortName), e);
+                case 206:
+                    throw new PathTooLongException(string.Format("Path too long: {0}", PortName));
             }
             throw new IOException(string.Format("Unknown error 0x{0}: {1}", e.ToString("X"), PortName), e);
         }
@@ -1014,12 +1059,14 @@ namespace RJCP.IO.Ports.Native
         private void CommOverlappedIo_CommEvent(object sender, CommEventArgs e)
         {
             SerialData dataFlags = (SerialData)(e.EventType & c_DataFlags);
-            if (dataFlags != 0) {
+            if (dataFlags != 0)
+            {
                 OnDataReceived(this, new SerialDataReceivedEventArgs(dataFlags));
             }
 
             SerialPinChange pinFlags = (SerialPinChange)(e.EventType & c_PinFlags);
-            if (pinFlags != 0) {
+            if (pinFlags != 0)
+            {
                 OnPinChanged(this, new SerialPinChangedEventArgs(pinFlags));
             }
         }
@@ -1027,7 +1074,8 @@ namespace RJCP.IO.Ports.Native
         private void CommOverlappedIo_CommErrorEvent(object sender, CommErrorEventArgs e)
         {
             SerialError errorFlags = (SerialError)(e.EventType & c_ErrorFlags);
-            if (errorFlags != 0) {
+            if (errorFlags != 0)
+            {
                 OnCommError(this, new SerialErrorReceivedEventArgs(errorFlags));
             }
         }
@@ -1045,7 +1093,8 @@ namespace RJCP.IO.Ports.Native
         protected virtual void OnDataReceived(object sender, SerialDataReceivedEventArgs args)
         {
             EventHandler<SerialDataReceivedEventArgs> handler = DataReceived;
-            if (handler != null) {
+            if (handler != null)
+            {
                 handler(sender, args);
             }
         }
@@ -1063,7 +1112,8 @@ namespace RJCP.IO.Ports.Native
         protected virtual void OnCommError(object sender, SerialErrorReceivedEventArgs args)
         {
             EventHandler<SerialErrorReceivedEventArgs> handler = ErrorReceived;
-            if (handler != null) {
+            if (handler != null)
+            {
                 handler(sender, args);
             }
         }
@@ -1081,7 +1131,8 @@ namespace RJCP.IO.Ports.Native
         protected virtual void OnPinChanged(object sender, SerialPinChangedEventArgs args)
         {
             EventHandler<SerialPinChangedEventArgs> handler = PinChanged;
-            if (handler != null) {
+            if (handler != null)
+            {
                 handler(sender, args);
             }
         }
@@ -1108,7 +1159,8 @@ namespace RJCP.IO.Ports.Native
         {
             if (m_IsDisposed) return;
 
-            if (disposing) {
+            if (disposing)
+            {
                 if (IsOpen) Close();
             }
 

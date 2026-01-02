@@ -20,7 +20,7 @@ namespace SharpGL.SceneGraph.Primitives
         {
             Name = "Design Time Axies";
         }
-        
+
         /// <summary>
         /// Render to the provided instance of OpenGL.
         /// </summary>

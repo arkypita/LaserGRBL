@@ -25,7 +25,7 @@ namespace ExCSS
         {
             return _selectors.GetEnumerator();
         }
-       
+
         internal void ConcludeSelector(BaseSelector selector)
         {
             _selectors.Add(new CombinatorSelector { Selector = selector });

@@ -31,7 +31,7 @@ namespace LaserGRBL.SvgConverter
         /// <param name="controlPoints">The control points representing the curve</param>
         /// <param name="t">The time/t to split at</param>
         /// <returns>A tuple containing two Bezier curves</returns>
-        private static Tuple<Point [], Point[]> SplitCurveAtT(Point[] controlPoints, double t)
+        private static Tuple<Point[], Point[]> SplitCurveAtT(Point[] controlPoints, double t)
         {
             var degree = controlPoints.Length - 1;
             Point[,] Vtemp = new Point[degree + 1, degree + 1];
@@ -118,7 +118,7 @@ namespace LaserGRBL.SvgConverter
         /// <param name="error">The linear error, understood as max distance from ground truth. </param>
         /// <param name="maxSubdivisions">The maximum times to recursively subdivide. 20 means 10 meters would be subdivided into 0.01 millimeters.</param>
         /// <returns>An enumerable list of points representing the line segments</returns>
-        public static IEnumerable<Point> FlattenTo(IList<Point> points, double error=0.01, int maxSubdivisions=20)
+        public static IEnumerable<Point> FlattenTo(IList<Point> points, double error = 0.01, int maxSubdivisions = 20)
         {
             var result = new List<Point> { points.First() };
             for (var i = 0; i + 3 <= points.Count; i += 3)

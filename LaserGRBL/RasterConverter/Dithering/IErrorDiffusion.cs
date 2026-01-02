@@ -8,12 +8,12 @@
 
 namespace Cyotek.Drawing.Imaging.ColorReduction
 {
-  public interface IErrorDiffusion
-  {
-    #region Methods
+    public interface IErrorDiffusion
+    {
+        #region Methods
 
-    void Diffuse(ArgbColor[] data, ArgbColor original, ArgbColor transformed, int x, int y, int width, int height);
+        void Diffuse(ArgbColor[] data, ArgbColor original, ArgbColor transformed, int x, int y, int width, int height);
 
-    #endregion
-  }
+        #endregion
+    }
 }

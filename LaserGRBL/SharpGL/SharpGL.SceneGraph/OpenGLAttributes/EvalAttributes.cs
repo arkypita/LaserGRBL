@@ -7,13 +7,13 @@ using SharpGL.Enumerations;
 
 namespace SharpGL.OpenGLAttributes
 {
-	/// <summary>
-	/// This class has all the settings you can edit for fog.
-	/// </summary>
-	[TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
-	[Serializable()]
+    /// <summary>
+    /// This class has all the settings you can edit for fog.
+    /// </summary>
+    [TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    [Serializable()]
     public class EvalAttributes : OpenGLAttributeGroup
-	{
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="EvalAttributes"/> class.
         /// </summary>
@@ -56,11 +56,11 @@ GL_AUTO_NORMAL enable bit*/
 
         private bool? enableAutoNormal;
 
-		[Description("."), Category("Eval")]
+        [Description("."), Category("Eval")]
         public bool? EnableAutoNormal
-		{
+        {
             get { return enableAutoNormal; }
             set { enableAutoNormal = value; }
-		}
-	}
+        }
+    }
 }

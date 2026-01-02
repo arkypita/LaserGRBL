@@ -26,6 +26,8 @@ namespace LaserGRBL.SvgConverter
 		private System.Windows.Forms.Label LblSmax;
 		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IIMaxPower;
 		private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.Label LblPassCount;
+		private LaserGRBL.UserControls.NumericInput.IntegerInputRanged IIPassCount;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private LaserGRBL.UserControls.GrblButton BtnCreate;
 		private LaserGRBL.UserControls.GrblButton BtnCancel;
@@ -69,6 +71,8 @@ namespace LaserGRBL.SvgConverter
 			this.CBLaserON = new LaserGRBL.UserControls.FlatComboBox();
 			this.LblSmax = new System.Windows.Forms.Label();
 			this.IIMaxPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
+			this.LblPassCount = new System.Windows.Forms.Label();
+			this.IIPassCount = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
 			this.LblMinPerc = new System.Windows.Forms.Label();
 			this.LblMaxPerc = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -171,6 +175,8 @@ namespace LaserGRBL.SvgConverter
 			this.tableLayoutPanel7.Controls.Add(this.IIMaxPower, 1, 2);
 			this.tableLayoutPanel7.Controls.Add(this.LblMinPerc, 2, 1);
 			this.tableLayoutPanel7.Controls.Add(this.LblMaxPerc, 2, 2);
+			this.tableLayoutPanel7.Controls.Add(this.LblPassCount, 0, 3);
+			this.tableLayoutPanel7.Controls.Add(this.IIPassCount, 1, 3);
 			this.tableLayoutPanel7.Name = "tableLayoutPanel7";
 			// 
 			// BtnModulationInfo
@@ -250,6 +256,21 @@ namespace LaserGRBL.SvgConverter
 			this.IIMaxPower.MinValue = 1;
 			this.IIMaxPower.Name = "IIMaxPower";
 			this.IIMaxPower.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMaxPowerCurrentValueChanged);
+			// 
+			// LblPassCount
+			// 
+			resources.ApplyResources(this.LblPassCount, "LblPassCount");
+			this.LblPassCount.Name = "LblPassCount";
+			// 
+			// IIPassCount
+			// 
+			resources.ApplyResources(this.IIPassCount, "IIPassCount");
+			this.IIPassCount.CurrentValue = 1;
+			this.IIPassCount.ForcedText = null;
+			this.IIPassCount.ForceMinMax = false;
+			this.IIPassCount.MaxValue = 99;
+			this.IIPassCount.MinValue = 1;
+			this.IIPassCount.Name = "IIPassCount";
 			// 
 			// LblMinPerc
 			// 

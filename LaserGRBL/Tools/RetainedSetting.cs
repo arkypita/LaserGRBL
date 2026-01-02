@@ -31,7 +31,8 @@ namespace Tools
             }
         }
 
-        public RetainedSetting(string settingName, T defaultValue) {
+        public RetainedSetting(string settingName, T defaultValue)
+        {
             // save setting name
             mSettingName = settingName;
             // read current value

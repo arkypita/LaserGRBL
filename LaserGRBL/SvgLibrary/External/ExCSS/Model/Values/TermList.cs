@@ -18,10 +18,10 @@ namespace ExCSS
 
         public TermList(params Term[] terms)
         {
-            for(var i = 0; i < terms.Length; ++i)
+            for (var i = 0; i < terms.Length; ++i)
             {
                 AddTerm(terms[i]);
-                if(i != terms.Length-1)
+                if (i != terms.Length - 1)
                 {
                     AddSeparator(DefaultSeparator);
                 }
@@ -40,18 +40,18 @@ namespace ExCSS
 
         public void AddSeparator(TermSeparator termSeparator)
         {
-            switch(termSeparator)
+            switch (termSeparator)
             {
-                case(TermSeparator.Comma):
-                {
-                    AddSeparator(GrammarSegment.Comma);
-                    break;
-                }
-	             case(TermSeparator.Space):
-                {
-                    AddSeparator(GrammarSegment.Whitespace);
-                    break;
-                }
+                case (TermSeparator.Comma):
+                    {
+                        AddSeparator(GrammarSegment.Comma);
+                        break;
+                    }
+                case (TermSeparator.Space):
+                    {
+                        AddSeparator(GrammarSegment.Whitespace);
+                        break;
+                    }
             }
         }
 
@@ -71,7 +71,7 @@ namespace ExCSS
         }
 
         [IndexerName("ListItems")]
-        public Term this [int index]
+        public Term this[int index]
         {
             //return index >= 0 && index < _items.Count ? _items[index] : null; 
             get { return _items[index]; }

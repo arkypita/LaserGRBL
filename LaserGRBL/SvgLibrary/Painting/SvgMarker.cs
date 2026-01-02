@@ -242,7 +242,7 @@ namespace Svg
             switch (MarkerUnits)
             {
                 case SvgMarkerUnits.StrokeWidth:
-                    return (new Pen(pBrush, StrokeWidth.ToDeviceValue(renderer, UnitRenderingType.Other, this) * 
+                    return (new Pen(pBrush, StrokeWidth.ToDeviceValue(renderer, UnitRenderingType.Other, this) *
                                             pPath.StrokeWidth.ToDeviceValue(renderer, UnitRenderingType.Other, this)));
                 case SvgMarkerUnits.UserSpaceOnUse:
                     return (new Pen(pBrush, StrokeWidth.ToDeviceValue(renderer, UnitRenderingType.Other, this)));

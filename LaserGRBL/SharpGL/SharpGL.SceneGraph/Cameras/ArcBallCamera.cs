@@ -5,24 +5,24 @@ using SharpGL.SceneGraph.Lighting;
 
 namespace SharpGL.SceneGraph.Cameras
 {
-	/// <summary>
-	/// The ArcBall camera supports arcball projection, making it ideal for use with a mouse.
-	/// </summary>
-	[Serializable()]
-	public class ArcBallCamera : PerspectiveCamera
-	{
+    /// <summary>
+    /// The ArcBall camera supports arcball projection, making it ideal for use with a mouse.
+    /// </summary>
+    [Serializable()]
+    public class ArcBallCamera : PerspectiveCamera
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="PerspectiveCamera"/> class.
         /// </summary>
         public ArcBallCamera()
-		{
-			Name = "Camera (ArcBall)";
-		}
+        {
+            Name = "Camera (ArcBall)";
+        }
 
-		/// <summary>
-		/// This is the class' main function, to override this function and perform a 
-		/// perspective transformation.
-		/// </summary>
+        /// <summary>
+        /// This is the class' main function, to override this function and perform a 
+        /// perspective transformation.
+        /// </summary>
         public override void TransformProjectionMatrix(OpenGL gl)
         {
             int[] viewport = new int[4];
@@ -40,7 +40,7 @@ namespace SharpGL.SceneGraph.Cameras
                 (double)upVector.X, (double)upVector.Y, (double)upVector.Z);
 
             arcBall.TransformMatrix(gl);
-		}
+        }
 
         /// <summary>
         /// The arcball used for rotating.
@@ -54,5 +54,5 @@ namespace SharpGL.SceneGraph.Cameras
         {
             get { return arcBall; }
         }
-	}
+    }
 }

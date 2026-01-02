@@ -7,13 +7,13 @@ using SharpGL.Enumerations;
 
 namespace SharpGL.OpenGLAttributes
 {
-	/// <summary>
-	/// This class has all the settings you can edit for fog.
-	/// </summary>
-	[TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
-	[Serializable()]
+    /// <summary>
+    /// This class has all the settings you can edit for fog.
+    /// </summary>
+    [TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    [Serializable()]
     public class ColorBufferAttributes : OpenGLAttributeGroup
-	{
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="ColorBufferAttributes"/> class.
         /// </summary>
@@ -28,27 +28,27 @@ namespace SharpGL.OpenGLAttributes
         /// <param name="gl">The OpenGL instance.</param>
         public override void SetAttributes(OpenGL gl)
         {
-            if(enableAlphaTest.HasValue && alphaTestFunction.HasValue && alphaTestReferenceValue.HasValue) 
+            if (enableAlphaTest.HasValue && alphaTestFunction.HasValue && alphaTestReferenceValue.HasValue)
             {
                 gl.EnableIf(OpenGL.GL_ALPHA_TEST, enableAlphaTest.Value);
                 gl.AlphaFunc(alphaTestFunction.Value, alphaTestReferenceValue.Value);
             }
-            
-            if(enableBlend.HasValue && blendingSourceFactor.HasValue && blendingDestinationFactor.HasValue) 
+
+            if (enableBlend.HasValue && blendingSourceFactor.HasValue && blendingDestinationFactor.HasValue)
             {
                 gl.EnableIf(OpenGL.GL_BLEND, enableBlend.Value);
                 gl.BlendFunc(blendingSourceFactor.Value, blendingDestinationFactor.Value);
             }
 
-            if(enableDither.HasValue) gl.EnableIf(OpenGL.GL_DITHER, enableDither.Value);
-            if(drawBufferMode.HasValue) gl.DrawBuffer(drawBufferMode.Value);
-            
-            if(enableLogicOp.HasValue && logicOp.HasValue) 
+            if (enableDither.HasValue) gl.EnableIf(OpenGL.GL_DITHER, enableDither.Value);
+            if (drawBufferMode.HasValue) gl.DrawBuffer(drawBufferMode.Value);
+
+            if (enableLogicOp.HasValue && logicOp.HasValue)
             {
                 gl.EnableIf(OpenGL.GL_COLOR_LOGIC_OP, enableLogicOp.Value);
                 gl.LogicOp(logicOp.Value);
             }
-            if(colorModeClearColor != null) gl.ClearColor(colorModeClearColor.R, colorModeClearColor.G, colorModeClearColor.B, colorModeClearColor.A);
+            if (colorModeClearColor != null) gl.ClearColor(colorModeClearColor.R, colorModeClearColor.G, colorModeClearColor.B, colorModeClearColor.A);
             //todowritemask
         }
 
@@ -273,5 +273,5 @@ namespace SharpGL.OpenGLAttributes
             get { return indexModeWriteMask; }
             set { indexModeWriteMask = value; }
         }
-	}
+    }
 }

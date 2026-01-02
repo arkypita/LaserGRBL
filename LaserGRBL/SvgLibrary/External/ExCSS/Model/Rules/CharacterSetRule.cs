@@ -5,7 +5,7 @@ namespace ExCSS
 {
     public class CharacterSetRule : RuleSet
     {
-        public CharacterSetRule() 
+        public CharacterSetRule()
         {
             RuleType = RuleType.Charset;
         }

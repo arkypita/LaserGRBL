@@ -8,14 +8,14 @@ using SharpGL.Enumerations;
 
 namespace SharpGL.SceneGraph.Core
 {
-	public class BoundingVolume : IRenderable
-	{
+    public class BoundingVolume : IRenderable
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="BoundingVolume"/> class.
         /// </summary>
-        public BoundingVolume() 
-		{
-		}
+        public BoundingVolume()
+        {
+        }
 
         /// <summary>
         /// Creates the volume from vertices.
@@ -107,13 +107,13 @@ namespace SharpGL.SceneGraph.Core
             set[0] = baseline;
             set[1] = baseline + new Vertex(0, 0, height);
 
-            set[2] = baseline + new Vertex(baseRadius, baseRadius , 0);
+            set[2] = baseline + new Vertex(baseRadius, baseRadius, 0);
             set[3] = baseline + new Vertex(-baseRadius, -baseRadius, 0);
 
             set[4] = set[1] + new Vertex(topRadius, topRadius, 0);
             set[5] = set[1] + new Vertex(-topRadius, -topRadius, 0);
 
-            FromVertices(set);            
+            FromVertices(set);
         }
 
         /// <summary>
@@ -182,9 +182,9 @@ namespace SharpGL.SceneGraph.Core
             gl.Disable(OpenGL.GL_TEXTURE_2D);
             gl.LineWidth(1.0f);
             gl.Color(1f, 0.2f, 0.2f, 0.6f);
-            gl.PolygonMode(OpenGL.GL_FRONT_AND_BACK, 
+            gl.PolygonMode(OpenGL.GL_FRONT_AND_BACK,
                 renderMode == RenderMode.HitTest ? (uint)PolygonMode.Filled : (uint)PolygonMode.Lines);
-            
+
             gl.Begin(OpenGL.GL_QUADS);		// Draw The Cube Using quads
             gl.Vertex(hhl);	// Top Right Of The Quad (Top)
             gl.Vertex(lhl);	// Top Left Of The Quad (Top)

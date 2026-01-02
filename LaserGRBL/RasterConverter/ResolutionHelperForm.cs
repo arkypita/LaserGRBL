@@ -15,80 +15,80 @@ using System.Windows.Forms;
 
 namespace LaserGRBL.RasterConverter
 {
-	public partial class ResolutionHelperForm : Form
-	{
-		double mRetVal;
+    public partial class ResolutionHelperForm : Form
+    {
+        double mRetVal;
 
-		public ResolutionHelperForm()
-		{
-			InitializeComponent();
-			UDDesired.Maximum = UDComputed.Maximum = GetMaxQuality();
-			BackColor = ColorScheme.FormBackColor;
-			ForeColor = ColorScheme.FormForeColor;
-			BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
-		}
+        public ResolutionHelperForm()
+        {
+            InitializeComponent();
+            UDDesired.Maximum = UDComputed.Maximum = GetMaxQuality();
+            BackColor = ColorScheme.FormBackColor;
+            ForeColor = ColorScheme.FormForeColor;
+            BtnCancel.BackColor = BtnCreate.BackColor = ColorScheme.FormButtonsColor;
+        }
 
-		private decimal GetMaxQuality()
-		{
-			return Settings.GetObject("Raster Hi-Res", false) ? 50 : 20;
-		}
+        private decimal GetMaxQuality()
+        {
+            return Settings.GetObject("Raster Hi-Res", false) ? 50 : 20;
+        }
 
-		public static double CreateAndShowDialog(Form parent, GrblCore Core, double oldval)
-		{
-			double rv = oldval;
+        public static double CreateAndShowDialog(Form parent, GrblCore Core, double oldval)
+        {
+            double rv = oldval;
 
-			using (ResolutionHelperForm f = new ResolutionHelperForm())
-			{
-				f.UDDesired.Value = (decimal)oldval;
-				f.UDHardware.Value = GrblCore.Configuration.ResolutionX;
-				f.Compute(null, null);
+            using (ResolutionHelperForm f = new ResolutionHelperForm())
+            {
+                f.UDDesired.Value = (decimal)oldval;
+                f.UDHardware.Value = GrblCore.Configuration.ResolutionX;
+                f.Compute(null, null);
 
-				if (f.ShowDialog(parent) == DialogResult.OK)
-					rv = f.mRetVal;
-			}
+                if (f.ShowDialog(parent) == DialogResult.OK)
+                    rv = f.mRetVal;
+            }
 
-			return rv;
-		}
+            return rv;
+        }
 
-		private void BtnCreate_Click(object sender, EventArgs e)
-		{
-			mRetVal = (double)UDComputed.Value;
-			Settings.SetObject("Hardware Resolution", UDHardware.Value);
-		}
+        private void BtnCreate_Click(object sender, EventArgs e)
+        {
+            mRetVal = (double)UDComputed.Value;
+            Settings.SetObject("Hardware Resolution", UDHardware.Value);
+        }
 
-		private void Compute(object sender, EventArgs e)
-		{
-			try
-			{
-				decimal newRes = UDHardware.Value / Math.Round((UDHardware.Value / UDDesired.Value), 0);
+        private void Compute(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal newRes = UDHardware.Value / Math.Round((UDHardware.Value / UDDesired.Value), 0);
 
-				if (newRes > UDComputed.Maximum)
-					UDComputed.Value = MaxRes();
-				else if (newRes < UDComputed.Minimum)
-					UDComputed.Value = MinRes();
-				else
-					UDComputed.Value = newRes;
-			}
-			catch (Exception ex)
-			{
-				Logger.LogMessage("ResolutionHelper", "Ex with data [{0}]HW [{1}]DV", UDHardware.Value, UDDesired.Value);
-				Logger.LogException("ResolutionHelper", ex); 
-			}
-		}
+                if (newRes > UDComputed.Maximum)
+                    UDComputed.Value = MaxRes();
+                else if (newRes < UDComputed.Minimum)
+                    UDComputed.Value = MinRes();
+                else
+                    UDComputed.Value = newRes;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMessage("ResolutionHelper", "Ex with data [{0}]HW [{1}]DV", UDHardware.Value, UDDesired.Value);
+                Logger.LogException("ResolutionHelper", ex);
+            }
+        }
 
-		private decimal MaxRes()
-		{
-			decimal maxRes = UDHardware.Value / Math.Ceiling(UDHardware.Value / UDComputed.Maximum);
-			return Math.Min(UDComputed.Maximum, maxRes);
-		}
+        private decimal MaxRes()
+        {
+            decimal maxRes = UDHardware.Value / Math.Ceiling(UDHardware.Value / UDComputed.Maximum);
+            return Math.Min(UDComputed.Maximum, maxRes);
+        }
 
-		private decimal MinRes()
-		{
-			decimal minRes = UDHardware.Value / Math.Floor(UDHardware.Value / UDComputed.Minimum);
-			return Math.Max(UDComputed.Minimum, minRes);
-		}
+        private decimal MinRes()
+        {
+            decimal minRes = UDHardware.Value / Math.Floor(UDHardware.Value / UDComputed.Minimum);
+            return Math.Max(UDComputed.Minimum, minRes);
+        }
 
-		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/");}
-	}
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        { Tools.Utils.OpenLink(@"https://lasergrbl.com/usage/raster-image-import/setting-reliable-resolution/"); }
+    }
 }

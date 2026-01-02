@@ -77,7 +77,7 @@ namespace SharpGL.Serialization.Caligari
                     }
                 }
             }
-            
+
             //  Return the scene.
             return scene;
         }

@@ -13,43 +13,43 @@ using System.Windows.Forms;
 namespace LaserGRBL
 {
     public partial class LicenseForm : Form
-	{
-		public LicenseForm()
-		{
-			InitializeComponent();
-			BackColor = ColorScheme.FormBackColor;
-			ForeColor = ColorScheme.FormForeColor;
+    {
+        public LicenseForm()
+        {
+            InitializeComponent();
+            BackColor = ColorScheme.FormBackColor;
+            ForeColor = ColorScheme.FormForeColor;
             richTextBox1.BackColor = ColorScheme.LogBackColor;
             richTextBox1.ForeColor = ColorScheme.FormForeColor;
             richTextBox2.BackColor = ColorScheme.LogBackColor;
             richTextBox2.ForeColor = ColorScheme.FormForeColor;
-			ThemeMgr.SetTheme(this, true);
-			IconsMgr.PrepareButton(BtnContinue, "mdi-checkbox-marked");
-			IconsMgr.PrepareButton(BtnDonate, "mdi-heart");
+            ThemeMgr.SetTheme(this, true);
+            IconsMgr.PrepareButton(BtnContinue, "mdi-checkbox-marked");
+            IconsMgr.PrepareButton(BtnDonate, "mdi-heart");
         }
 
-		private void BtnContinue_Click(object sender, EventArgs e)
-		{
-			Close();
-		}
+        private void BtnContinue_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
-		private void BtnDonate_Click(object sender, EventArgs e)
-		{
-			Tools.Utils.OpenLink(@"https://lasergrbl.com/donate");
-		}
+        private void BtnDonate_Click(object sender, EventArgs e)
+        {
+            Tools.Utils.OpenLink(@"https://lasergrbl.com/donate");
+        }
 
-		internal static void CreateAndShowDialog(Form parent)
-		{
-			using (LicenseForm f = new LicenseForm())
-			{
-				f.Icon = parent.Icon;
-				f.ShowDialog(parent);
-			}
-		}
+        internal static void CreateAndShowDialog(Form parent)
+        {
+            using (LicenseForm f = new LicenseForm())
+            {
+                f.Icon = parent.Icon;
+                f.ShowDialog(parent);
+            }
+        }
 
-		private void RTBLinkClick(object sender, LinkClickedEventArgs e)
-		{
-			Tools.Utils.OpenLink(e.LinkText);
-		}
-	}
+        private void RTBLinkClick(object sender, LinkClickedEventArgs e)
+        {
+            Tools.Utils.OpenLink(e.LinkText);
+        }
+    }
 }

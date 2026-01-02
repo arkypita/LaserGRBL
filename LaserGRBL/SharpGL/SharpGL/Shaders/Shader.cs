@@ -72,5 +72,5 @@ namespace SharpGL.Shaders
         }
     }
 
-    
+
 }

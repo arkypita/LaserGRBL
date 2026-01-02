@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Svg.FilterEffects
 {
-	[SvgElement("feMerge")]
+    [SvgElement("feMerge")]
     public class SvgMerge : SvgFilterPrimitive
     {
         public override void Process(ImageBuffer buffer)
@@ -30,10 +30,10 @@ namespace Svg.FilterEffects
             buffer[this.Result] = result;
         }
 
-		public override SvgElement DeepCopy()
-		{
+        public override SvgElement DeepCopy()
+        {
             return DeepCopy<SvgMerge>();
-		}
+        }
 
     }
 }

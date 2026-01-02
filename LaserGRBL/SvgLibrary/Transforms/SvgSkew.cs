@@ -1,5 +1,5 @@
-﻿﻿using System;
-﻿using System.Drawing.Drawing2D;
+﻿using System;
+using System.Drawing.Drawing2D;
 using System.Globalization;
 
 namespace Svg.Transforms
@@ -19,8 +19,8 @@ namespace Svg.Transforms
             {
                 var matrix = new Matrix();
                 matrix.Shear(
-                    (float)Math.Tan(AngleX/180*Math.PI),
-                    (float)Math.Tan(AngleY/180*Math.PI));
+                    (float)Math.Tan(AngleX / 180 * Math.PI),
+                    (float)Math.Tan(AngleY / 180 * Math.PI));
                 return matrix;
             }
         }
@@ -44,9 +44,9 @@ namespace Svg.Transforms
         }
 
 
-		public override object Clone()
-		{
-			return new SvgSkew(this.AngleX, this.AngleY);
-		}
+        public override object Clone()
+        {
+            return new SvgSkew(this.AngleX, this.AngleY);
+        }
     }
 }

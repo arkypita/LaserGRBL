@@ -74,7 +74,7 @@ namespace Svg.Web
         /// <param name="result">An <see cref="T:System.IAsyncResult"/> that contains information about the status of the process.</param>
         public void EndProcessRequest(IAsyncResult result)
         {
-            
+
         }
 
         /// <summary>

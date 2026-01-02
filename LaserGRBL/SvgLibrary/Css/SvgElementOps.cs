@@ -8,17 +8,17 @@ namespace Svg.Css
 {
     internal class SvgElementOps : IElementOps<SvgElement>
     {
-	    private readonly SvgElementFactory _elementFactory;
+        private readonly SvgElementFactory _elementFactory;
 
-	    public SvgElementOps(SvgElementFactory elementFactory)
-	    {
-		    _elementFactory = elementFactory;
-	    }
+        public SvgElementOps(SvgElementFactory elementFactory)
+        {
+            _elementFactory = elementFactory;
+        }
 
-	    public Selector<SvgElement> Type(NamespacePrefix prefix, string name)
+        public Selector<SvgElement> Type(NamespacePrefix prefix, string name)
         {
             SvgElementFactory.ElementInfo type = null;
-            if (_elementFactory.AvailableElements.TryGetValue(name, out type)) 
+            if (_elementFactory.AvailableElements.TryGetValue(name, out type))
             {
                 return nodes => nodes.Where(n => n.GetType() == type.ElementType);
             }

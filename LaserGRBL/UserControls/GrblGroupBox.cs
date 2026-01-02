@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace LaserGRBL.UserControls
 {
-    public class GrblGroupBox: GroupBox
+    public class GrblGroupBox : GroupBox
     {
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -33,7 +33,7 @@ namespace LaserGRBL.UserControls
             e.Graphics.DrawLine(pen, bounds2.X + bounds2.Width + 1, num, bounds.Width - 1, num);
             e.Graphics.DrawLine(pen, bounds.Width - 1, num, bounds.Width - 1, bounds.Height - 1);
             pen.Dispose();
-            
+
         }
     }
 }

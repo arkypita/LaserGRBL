@@ -5,31 +5,31 @@ using SharpGL.SceneGraph.Lighting;
 
 namespace SharpGL.SceneGraph.Cameras
 {
-	/// <summary>
-	/// This camera contains the data needed to perform a Frustum transformation
-	/// to the projection matrix.
-	/// </summary>
-	[Serializable()]
-	public class FrustumCamera : Camera
-	{
+    /// <summary>
+    /// This camera contains the data needed to perform a Frustum transformation
+    /// to the projection matrix.
+    /// </summary>
+    [Serializable()]
+    public class FrustumCamera : Camera
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="FrustumCamera"/> class.
         /// </summary>
 		public FrustumCamera()
-		{
-			Name = "Camera (Frustum)";
-		}
+        {
+            Name = "Camera (Frustum)";
+        }
 
-		/// <summary>
-		/// This is the main function of the camera, perform a Frustrum (in this case)
-		/// transformation.
-		/// </summary>
+        /// <summary>
+        /// This is the main function of the camera, perform a Frustrum (in this case)
+        /// transformation.
+        /// </summary>
         public override void TransformProjectionMatrix(OpenGL gl)
         {
             //  Perform the transformation.
-            gl.Translate(Position.X, Position.Y, Position.Z); 
-			gl.Frustum(left, right, bottom, top, near, far);
-		}
+            gl.Translate(Position.X, Position.Y, Position.Z);
+            gl.Frustum(left, right, bottom, top, near, far);
+        }
 
         /// <summary>
         /// The left pos.
@@ -68,11 +68,11 @@ namespace SharpGL.SceneGraph.Cameras
         /// The left.
         /// </value>
         [Description("The left clip"), Category("Camera")]
-		public double Left
-		{
-			get {return left;}
-			set {left = value;}
-		}
+        public double Left
+        {
+            get { return left; }
+            set { left = value; }
+        }
 
         /// <summary>
         /// Gets or sets the right.
@@ -81,11 +81,11 @@ namespace SharpGL.SceneGraph.Cameras
         /// The right.
         /// </value>
         [Description("The right clip"), Category("Camera")]
-		public double Right
-		{
-			get {return right;}
-			set {right = value;}
-		}
+        public double Right
+        {
+            get { return right; }
+            set { right = value; }
+        }
 
         /// <summary>
         /// Gets or sets the top.
@@ -94,11 +94,11 @@ namespace SharpGL.SceneGraph.Cameras
         /// The top.
         /// </value>
         [Description("The top clip"), Category("Camera")]
-		public double Top
-		{
-			get {return top;}
-			set {top = value;}
-		}
+        public double Top
+        {
+            get { return top; }
+            set { top = value; }
+        }
 
         /// <summary>
         /// Gets or sets the bottom.
@@ -107,11 +107,11 @@ namespace SharpGL.SceneGraph.Cameras
         /// The bottom.
         /// </value>
         [Description("The bottom clip"), Category("Camera")]
-		public double Bottom
-		{
-			get {return bottom;}
-			set {bottom = value;}
-		}
+        public double Bottom
+        {
+            get { return bottom; }
+            set { bottom = value; }
+        }
 
         /// <summary>
         /// Gets or sets the near.
@@ -120,11 +120,11 @@ namespace SharpGL.SceneGraph.Cameras
         /// The near.
         /// </value>
         [Description("The near clip"), Category("Camera")]
-		public double Near
-		{
-			get {return near;}
-			set {near = value;}
-		}
+        public double Near
+        {
+            get { return near; }
+            set { near = value; }
+        }
 
         /// <summary>
         /// Gets or sets the far.
@@ -133,10 +133,10 @@ namespace SharpGL.SceneGraph.Cameras
         /// The far.
         /// </value>
         [Description("The far clip"), Category("Camera")]
-		public double Far
-		{
-			get {return far;}
-			set {far = value;}
-		}
-	}
+        public double Far
+        {
+            get { return far; }
+            set { far = value; }
+        }
+    }
 }

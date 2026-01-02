@@ -84,10 +84,10 @@ namespace Svg
             LoadStops(renderingElement);
 
             if (this.Stops.Count < 1) return null;
-            if (this.Stops.Count == 1) 
+            if (this.Stops.Count == 1)
             {
-                var stopColor = this.Stops[0].GetColor(renderingElement); 
-                int alpha = (int)Math.Round((opacity * (stopColor.A/255.0f) ) * 255);
+                var stopColor = this.Stops[0].GetColor(renderingElement);
+                int alpha = (int)Math.Round((opacity * (stopColor.A / 255.0f)) * 255);
                 Color colour = System.Drawing.Color.FromArgb(alpha, stopColor);
                 return new SolidBrush(colour);
             }
@@ -102,7 +102,7 @@ namespace Svg
                 };
 
                 var bounds = renderer.GetBoundable().Bounds;
-                if (bounds.Width <= 0 || bounds.Height <= 0 || ((points[0].X == points[1].X) && (points[0].Y == points[1].Y))) 
+                if (bounds.Width <= 0 || bounds.Height <= 0 || ((points[0].X == points[1].X) && (points[0].Y == points[1].Y)))
                 {
                     if (this.GetCallback != null) return GetCallback().GetBrush(renderingElement, renderer, opacity, forStroke);
                     return null;
@@ -311,7 +311,7 @@ namespace Svg
             float endExtend;
             List<Color> colors;
             List<float> positions;
-            
+
             var colorBlend = GetColorBlend(renderer, opacity, false);
 
             var startDelta = CalculateDistance(specifiedStart, effectiveStart);

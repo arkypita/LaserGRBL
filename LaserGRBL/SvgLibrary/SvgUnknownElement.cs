@@ -4,7 +4,7 @@ namespace Svg
     {
         public SvgUnknownElement()
         {
-            
+
         }
 
         public SvgUnknownElement(string elementName)

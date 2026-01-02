@@ -13,7 +13,7 @@ namespace SharpGL.SceneGraph.Shaders
     /// <summary>
     /// The Shader base class.
     /// </summary>
-    public abstract class Shader : 
+    public abstract class Shader :
         Effect,
         IHasOpenGLContext
     {
@@ -24,7 +24,7 @@ namespace SharpGL.SceneGraph.Shaders
         /// <param name="parentElement">The parent element.</param>
         public override void Pop(OpenGL gl, SceneElement parentElement)
         {
-            
+
         }
 
         /// <summary>

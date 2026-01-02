@@ -79,11 +79,13 @@ namespace RJCP.IO.Ports.Native
 
         void ISerialBufferSerialData.ReadBufferProduce(int count)
         {
-            lock (m_ReadLock) {
+            lock (m_ReadLock)
+            {
                 m_ReadBuffer.Produce(count);
                 m_ReadBufferNotEmptyEvent.Set();
                 m_ReadEvent.Set();
-                if (m_ReadBuffer.Free == 0) {
+                if (m_ReadBuffer.Free == 0)
+                {
                     m_ReadBufferNotFullEvent.Reset();
                 }
             }
@@ -91,10 +93,12 @@ namespace RJCP.IO.Ports.Native
 
         void ISerialBufferSerialData.WriteBufferConsume(int count)
         {
-            lock (m_WriteLock) {
+            lock (m_WriteLock)
+            {
                 m_WriteBuffer.Consume(count);
                 m_WriteBufferNotFullEvent.Set();
-                if (m_WriteBuffer.Length == 0) {
+                if (m_WriteBuffer.Length == 0)
+                {
                     m_WriteBufferNotEmptyEvent.Reset();
                 }
             }
@@ -102,8 +106,10 @@ namespace RJCP.IO.Ports.Native
 
         bool ISerialBufferSerialData.TxEmptyEvent()
         {
-            lock (m_WriteLock) {
-                if (m_WriteBuffer.Length == 0) {
+            lock (m_WriteLock)
+            {
+                if (m_WriteBuffer.Length == 0)
+                {
                     m_TxEmptyEvent.Set();
                     return true;
                 }
@@ -138,7 +144,8 @@ namespace RJCP.IO.Ports.Native
         /// </summary>
         void ISerialBufferSerialData.Purge()
         {
-            lock (m_WriteLock) {
+            lock (m_WriteLock)
+            {
                 m_WriteBuffer.Reset();
                 m_WriteBufferNotEmptyEvent.Reset();
                 m_WriteBufferNotFullEvent.Set();
@@ -171,18 +178,19 @@ namespace RJCP.IO.Ports.Native
         {
             m_AbortReadEvent.Reset();
             int triggered = WaitHandle.WaitAny(m_BufferStreamWaitForReadHandles, timeout);
-            switch (triggered) {
-            case WaitHandle.WaitTimeout:
-                return false;
-            case 0:
-                // Data is available to read
-                return true;
-            case 1:
-                // Someone aborted the wait.
-                return false;
-            case 2:
-                // Monitoring thread died. No point waiting any longer.
-                return false;
+            switch (triggered)
+            {
+                case WaitHandle.WaitTimeout:
+                    return false;
+                case 0:
+                    // Data is available to read
+                    return true;
+                case 1:
+                    // Someone aborted the wait.
+                    return false;
+                case 2:
+                    // Monitoring thread died. No point waiting any longer.
+                    return false;
             }
             throw new InternalApplicationException("Unexpected code flow");
         }
@@ -190,31 +198,35 @@ namespace RJCP.IO.Ports.Native
         bool ISerialBufferStreamData.WaitForRead(int count, int timeout)
         {
             if (count == 0) return true;
-            lock (m_ReadLock) {
+            lock (m_ReadLock)
+            {
                 if (count > m_ReadBuffer.Capacity) return false;
             }
 
             m_AbortReadEvent.Reset();
             TimerExpiry timer = new TimerExpiry(timeout);
-            do {
-                lock (m_ReadLock) {
+            do
+            {
+                lock (m_ReadLock)
+                {
                     if (m_ReadBuffer.Length >= count) return true;
                     m_ReadEvent.Reset();
                 }
 
                 int triggered = WaitHandle.WaitAny(m_BufferStreamWaitForReadCountHandles, timer.RemainingTime());
-                switch (triggered) {
-                case WaitHandle.WaitTimeout:
-                    break;
-                case 0:
-                    // Someone aborted the wait.
-                    return false;
-                case 1:
-                    // Data is available to read.
-                    return true;
-                case 2:
-                    // Monitoring thread died. No point waiting any longer.
-                    return false;
+                switch (triggered)
+                {
+                    case WaitHandle.WaitTimeout:
+                        break;
+                    case 0:
+                        // Someone aborted the wait.
+                        return false;
+                    case 1:
+                        // Data is available to read.
+                        return true;
+                    case 2:
+                        // Monitoring thread died. No point waiting any longer.
+                        return false;
                 }
             } while (!timer.Expired);
             return false;
@@ -222,9 +234,11 @@ namespace RJCP.IO.Ports.Native
 
         int ISerialBufferStreamData.Read(byte[] buffer, int offset, int count)
         {
-            lock (m_ReadLock) {
+            lock (m_ReadLock)
+            {
                 int bytes = m_ReadBuffer.MoveTo(buffer, offset, count);
-                if (m_ReadBuffer.Length == 0) {
+                if (m_ReadBuffer.Length == 0)
+                {
                     m_ReadBufferNotEmptyEvent.Reset();
                 }
                 m_ReadBufferNotFullEvent.Set();
@@ -234,9 +248,11 @@ namespace RJCP.IO.Ports.Native
 
         void ISerialBufferStreamData.ReadConsume(int count)
         {
-            lock (m_ReadLock) {
+            lock (m_ReadLock)
+            {
                 m_ReadBuffer.Consume(count);
-                if (m_ReadBuffer.Length == 0) {
+                if (m_ReadBuffer.Length == 0)
+                {
                     m_ReadBufferNotEmptyEvent.Reset();
                 }
                 m_ReadBufferNotFullEvent.Set();
@@ -245,9 +261,11 @@ namespace RJCP.IO.Ports.Native
 
         int ISerialBufferStreamData.Read(char[] buffer, int offset, int count, Decoder decoder)
         {
-            lock (m_ReadLock) {
+            lock (m_ReadLock)
+            {
                 decoder.Convert(m_ReadBuffer, buffer, offset, count, false, out int bu, out int cu, out bool complete);
-                if (m_ReadBuffer.Length == 0) {
+                if (m_ReadBuffer.Length == 0)
+                {
                     m_ReadBufferNotEmptyEvent.Reset();
                 }
                 m_ReadBufferNotFullEvent.Set();
@@ -257,11 +275,13 @@ namespace RJCP.IO.Ports.Native
 
         int ISerialBufferStreamData.ReadByte()
         {
-            lock (m_ReadLock) {
+            lock (m_ReadLock)
+            {
                 if (m_ReadBuffer.Length == 0) return -1;
                 int v = m_ReadBuffer[0];
                 m_ReadBuffer.Consume(1);
-                if (m_ReadBuffer.Length == 0) {
+                if (m_ReadBuffer.Length == 0)
+                {
                     m_ReadBufferNotEmptyEvent.Reset();
                 }
                 m_ReadBufferNotFullEvent.Set();
@@ -273,7 +293,8 @@ namespace RJCP.IO.Ports.Native
         {
             get
             {
-                lock (m_ReadLock) {
+                lock (m_ReadLock)
+                {
                     return m_ReadBuffer.Length;
                 }
             }
@@ -281,7 +302,8 @@ namespace RJCP.IO.Ports.Native
 
         void ISerialBufferStreamData.DiscardInBuffer()
         {
-            lock (m_ReadLock) {
+            lock (m_ReadLock)
+            {
                 m_ReadBuffer.Consume(m_ReadBuffer.Length);
                 m_ReadBufferNotFullEvent.Set();
                 m_ReadBufferNotEmptyEvent.Reset();
@@ -293,30 +315,34 @@ namespace RJCP.IO.Ports.Native
         bool ISerialBufferStreamData.WaitForWrite(int count, int timeout)
         {
             if (count == 0) return true;
-            lock (m_WriteLock) {
+            lock (m_WriteLock)
+            {
                 if (count > m_WriteBuffer.Capacity) return false;
             }
 
             m_AbortWriteEvent.Reset();
             TimerExpiry timer = new TimerExpiry(timeout);
-            do {
-                lock (m_WriteLock) {
+            do
+            {
+                lock (m_WriteLock)
+                {
                     if (m_WriteBuffer.Free >= count) return true;
                     m_WriteBufferNotFullEvent.Reset();
                 }
                 int triggered = WaitHandle.WaitAny(m_BufferStreamWaitForWriteCountHandles, timer.RemainingTime());
-                switch (triggered) {
-                case WaitHandle.WaitTimeout:
-                    break;
-                case 0:
-                    // The internal thread died.
-                    return false;
-                case 1:
-                    // Someone aborted the wait.
-                    return false;
-                case 2:
-                    // Data is available to write. Loop to the beginning to see if there is now enough data to write.
-                    break;
+                switch (triggered)
+                {
+                    case WaitHandle.WaitTimeout:
+                        break;
+                    case 0:
+                        // The internal thread died.
+                        return false;
+                    case 1:
+                        // Someone aborted the wait.
+                        return false;
+                    case 2:
+                        // Data is available to write. Loop to the beginning to see if there is now enough data to write.
+                        break;
                 }
             } while (!timer.Expired);
             return false;
@@ -330,11 +356,13 @@ namespace RJCP.IO.Ports.Native
 
         int ISerialBufferStreamData.Write(byte[] buffer, int offset, int count)
         {
-            lock (m_WriteLock) {
+            lock (m_WriteLock)
+            {
                 int bytes = m_WriteBuffer.Append(buffer, offset, count);
                 m_WriteBufferNotEmptyEvent.Set();
                 m_TxEmptyEvent.Reset();
-                if (m_WriteBuffer.Free == 0) {
+                if (m_WriteBuffer.Free == 0)
+                {
                     m_WriteBufferNotFullEvent.Reset();
                 }
                 OnWriteEvent(this, new EventArgs());
@@ -346,7 +374,8 @@ namespace RJCP.IO.Ports.Native
         {
             get
             {
-                lock (m_WriteLock) {
+                lock (m_WriteLock)
+                {
                     return m_WriteBuffer.Length;
                 }
             }
@@ -359,18 +388,19 @@ namespace RJCP.IO.Ports.Native
             // This manual reset event is always set every time data is removed from the buffer
             m_AbortWriteEvent.Reset();
             int triggered = WaitHandle.WaitAny(m_BufferStreamFlushHandles, timeout);
-            switch (triggered) {
-            case WaitHandle.WaitTimeout:
-                return false;
-            case 0:
-                // The internal thread died.
-                return false;
-            case 1:
-                // Someone aborted the wait.
-                return false;
-            case 2:
-                // Data is available to write
-                return true;
+            switch (triggered)
+            {
+                case WaitHandle.WaitTimeout:
+                    return false;
+                case 0:
+                    // The internal thread died.
+                    return false;
+                case 1:
+                    // Someone aborted the wait.
+                    return false;
+                case 2:
+                    // Data is available to write
+                    return true;
             }
             throw new InternalApplicationException("Unexpected code flow");
         }
@@ -417,7 +447,8 @@ namespace RJCP.IO.Ports.Native
         /// </remarks>
         public SerialBuffer(int readBuffer, int writeBuffer, bool pinned)
         {
-            if (pinned) {
+            if (pinned)
+            {
                 byte[] read = new byte[readBuffer];
                 m_ReadHandle = GCHandle.Alloc(read, GCHandleType.Pinned);
                 m_ReadBuffer = new CircularBuffer<byte>(read, 0);
@@ -425,7 +456,9 @@ namespace RJCP.IO.Ports.Native
                 byte[] write = new byte[writeBuffer];
                 m_WriteHandle = GCHandle.Alloc(write, GCHandleType.Pinned);
                 m_WriteBuffer = new CircularBuffer<byte>(write, 0);
-            } else {
+            }
+            else
+            {
                 m_ReadBuffer = new CircularBuffer<byte>(readBuffer);
                 m_WriteBuffer = new CircularBuffer<byte>(writeBuffer);
             }
@@ -477,7 +510,8 @@ namespace RJCP.IO.Ports.Native
         private void OnWriteEvent(object sender, EventArgs args)
         {
             EventHandler handler = WriteEvent;
-            if (handler != null) {
+            if (handler != null)
+            {
                 handler(sender, args);
             }
         }
@@ -505,8 +539,10 @@ namespace RJCP.IO.Ports.Native
         protected virtual void Dispose(bool disposing)
         {
             // This is a sealed class, so we have "private void" instead of "protected virtual"
-            if (disposing) {
-                if (m_Pinned) {
+            if (disposing)
+            {
+                if (m_Pinned)
+                {
                     // Dispose managed objects here.
                     m_ReadHandle.Free();
                     m_WriteHandle.Free();

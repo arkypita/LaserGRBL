@@ -37,7 +37,7 @@
         internal const char ParenOpen = (char)0x28;
         internal const char ParenClose = (char)0x29;
         internal const char Percent = (char)0x25;
-        internal const char SquareBracketOpen =(char)0x5b;
+        internal const char SquareBracketOpen = (char)0x5b;
         internal const char SquareBracketClose = (char)0x5d;
         internal const char CurlyBraceOpen = (char)0x7b;
         internal const char CurlyBraceClose = (char)0x7d;

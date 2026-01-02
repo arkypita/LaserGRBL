@@ -87,14 +87,14 @@ namespace Fizzler
         /// Indicates whether this instance represents a name from a 
         /// specific namespace or not.
         /// </summary>
-        public bool IsSpecific { get {return !IsNone && !IsAny; } }
+        public bool IsSpecific { get { return !IsNone && !IsAny; } }
 
         /// <summary>
         /// Indicates whether this instance and a specified object are equal.
         /// </summary>
         public override bool Equals(object obj)
         {
-            return obj is NamespacePrefix && Equals((NamespacePrefix) obj);
+            return obj is NamespacePrefix && Equals((NamespacePrefix)obj);
         }
 
         /// <summary>

@@ -87,13 +87,13 @@ namespace SharpGL.SceneGraph.Core
             {
                 //  ...yield it...
                 if (sceneElement is T)
-                    if(predicate(sceneElement as T))
+                    if (predicate(sceneElement as T))
                         yield return (T)sceneElement;
 
                 //  ...and recurse.
                 foreach (var descenedent in sceneElement.Traverse())
                     if (descenedent is T)
-                        if(predicate(descenedent as T))
+                        if (predicate(descenedent as T))
                             yield return (T)descenedent;
             }
         }
@@ -108,7 +108,7 @@ namespace SharpGL.SceneGraph.Core
             var current = this;
             while (current.Parent != null)
                 current = current.Parent;
-            
+
             //  Return the root element.
             return current as SceneContainer;
         }

@@ -19,14 +19,14 @@ using System.ComponentModel;
 
 namespace Cyotek.Drawing.Imaging.ColorReduction
 {
-  [Description("Atkinson")]
-  public sealed class AtkinsonDithering : ErrorDiffusionDithering
-  {
-    #region Constructors
+    [Description("Atkinson")]
+    public sealed class AtkinsonDithering : ErrorDiffusionDithering
+    {
+        #region Constructors
 
-    public AtkinsonDithering()
-      : base(new byte[,]
-             {
+        public AtkinsonDithering()
+          : base(new byte[,]
+                 {
                {
                  0, 0, 1, 1
                },
@@ -36,9 +36,9 @@ namespace Cyotek.Drawing.Imaging.ColorReduction
                {
                  0, 1, 0, 0
                }
-             }, 3, true)
-    { }
+                 }, 3, true)
+        { }
 
-    #endregion
-  }
+        #endregion
+    }
 }

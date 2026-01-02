@@ -552,7 +552,7 @@ namespace ExCSS
         {
             HtmlColor htmlColor;
 
-            if(HtmlColor.TryFromHex(color, out htmlColor))
+            if (HtmlColor.TryFromHex(color, out htmlColor))
                 return AddTerm(htmlColor);
             return false;
         }
@@ -659,7 +659,7 @@ namespace ExCSS
             }
 
             _buffer = new StringBuilder();
-         
+
             return ParseKeyframeText(token);
         }
 
@@ -714,7 +714,7 @@ namespace ExCSS
 
             return false;
         }
-        
+
         #endregion
 
         #region Document

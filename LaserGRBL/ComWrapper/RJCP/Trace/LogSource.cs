@@ -56,12 +56,12 @@ namespace RJCP.IO.Ports.Trace
             if (string.IsNullOrEmpty(name)) throw new ArgumentException("Name may not be empty", nameof(name));
             m_Name = name;
 
-//#if NETFRAMEWORK
+            //#if NETFRAMEWORK
             m_TraceSource = new TraceSource(m_Name);
             m_TraceLevels = GetTraceLevels(m_TraceSource);
-//#else
-//            SetLoggerTraceListener(name, LogSourceFactory.CreateLogger(name));
-//#endif
+            //#else
+            //            SetLoggerTraceListener(name, LogSourceFactory.CreateLogger(name));
+            //#endif
         }
 
 #if NETSTANDARD1_5

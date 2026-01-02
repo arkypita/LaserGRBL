@@ -87,7 +87,7 @@ namespace ExCSS
 
         public IEnumerator<string> GetEnumerator()
         {
-            return ((IEnumerable<string>) _media).GetEnumerator();
+            return ((IEnumerable<string>)_media).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

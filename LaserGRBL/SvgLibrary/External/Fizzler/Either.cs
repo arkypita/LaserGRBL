@@ -32,10 +32,10 @@ namespace Fizzler
 
     // Adapted from Mono Rocks
 
-    internal abstract class Either<TA, TB> 
+    internal abstract class Either<TA, TB>
             : IEquatable<Either<TA, TB>>
     {
-        private Either() {}
+        private Either() { }
 
         public static Either<TA, TB> A(TA value)
         {
@@ -77,7 +77,7 @@ namespace Fizzler
             public override bool Equals(Either<TA, TB> obj)
             {
                 var a = obj as AImpl;
-                return a != null 
+                return a != null
                     && EqualityComparer<TA>.Default.Equals(_value, a._value);
             }
 
@@ -116,7 +116,7 @@ namespace Fizzler
             public override bool Equals(Either<TA, TB> obj)
             {
                 var b = obj as BImpl;
-                return b != null 
+                return b != null
                     && EqualityComparer<TB>.Default.Equals(_value, b._value);
             }
 

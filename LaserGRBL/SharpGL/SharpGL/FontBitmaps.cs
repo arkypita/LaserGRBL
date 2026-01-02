@@ -190,12 +190,12 @@ namespace SharpGL
             gl.MakeCurrent();
 
             //  Create the font based on the face name.
-            var hFont = Win32.CreateFont(12, 0, 0, 0, Win32.FW_DONTCARE, 0, 0, 0, Win32.DEFAULT_CHARSET, 
+            var hFont = Win32.CreateFont(12, 0, 0, 0, Win32.FW_DONTCARE, 0, 0, 0, Win32.DEFAULT_CHARSET,
                 Win32.OUT_OUTLINE_PRECIS, Win32.CLIP_DEFAULT_PRECIS, Win32.CLEARTYPE_QUALITY, Win32.VARIABLE_PITCH, faceName);
-            
+
             //  Select the font handle.
             var hOldObject = Win32.SelectObject(gl.RenderContextProvider.DeviceContextHandle, hFont);
-            
+
             //  Create the list base.
             var listBase = gl.GenLists(1);
 
@@ -265,12 +265,12 @@ namespace SharpGL
             //  If not, create one.
             const float tolerance = 0.01f;
             var fontOutlineEntry = (from fbe in fontOutlineEntries
-                                       where fbe.HDC == gl.RenderContextProvider.DeviceContextHandle
-                                             && fbe.HRC == gl.RenderContextProvider.RenderContextHandle
-                                             && string.Compare(fbe.FaceName, faceName, StringComparison.OrdinalIgnoreCase) == 0
-                                             && Math.Abs(fbe.Deviation - deviation) < tolerance
-                                             && Math.Abs(fbe.Extrusion - extrusion) < tolerance
-                                       select fbe).FirstOrDefault()
+                                    where fbe.HDC == gl.RenderContextProvider.DeviceContextHandle
+                                          && fbe.HRC == gl.RenderContextProvider.RenderContextHandle
+                                          && string.Compare(fbe.FaceName, faceName, StringComparison.OrdinalIgnoreCase) == 0
+                                          && Math.Abs(fbe.Deviation - deviation) < tolerance
+                                          && Math.Abs(fbe.Extrusion - extrusion) < tolerance
+                                    select fbe).FirstOrDefault()
                                    ?? CreateFontOutlineEntry(gl, faceName, deviation, extrusion,
                                        FontOutlineFormat.Polygons);
 
@@ -285,7 +285,7 @@ namespace SharpGL
             gl.ListBase(fontOutlineEntry.ListBase);
 
             //  Create an array of lists for the glyphs.
-            var lists = text.Select(c => (byte) c).ToArray();
+            var lists = text.Select(c => (byte)c).ToArray();
 
             //  Call the lists for the string.
             gl.CallLists(lists.Length, lists);

@@ -82,11 +82,11 @@ namespace Svg
             // http://www.w3.org/TR/SVG11/coords.html#Units
 
             const float cmInInch = 2.54f;
-			int ppi = owner != null ? owner.OwnerDocument.Ppi : SvgDocument.PointsPerInch;
+            int ppi = owner != null ? owner.OwnerDocument.Ppi : SvgDocument.PointsPerInch;
 
             var type = this.Type;
             var value = this.Value;
-            
+
             float points;
 
             switch (type)
@@ -205,21 +205,22 @@ namespace Svg
         public override bool Equals(object obj)
         {
             if (obj == null) return false;
-            if (!(obj.GetType() == typeof (SvgUnit))) return false;
+            if (!(obj.GetType() == typeof(SvgUnit))) return false;
 
             var unit = (SvgUnit)obj;
             return (unit.Value == this.Value && unit.Type == this.Type);
         }
-        
+
         public bool Equals(SvgUnit other)
         {
             return this._type == other._type && (this._value == other._value);
         }
-        
+
         public override int GetHashCode()
         {
             int hashCode = 0;
-            unchecked {
+            unchecked
+            {
                 hashCode += 1000000007 * _type.GetHashCode();
                 hashCode += 1000000009 * _value.GetHashCode();
                 hashCode += 1000000021 * _isEmpty.GetHashCode();
@@ -227,12 +228,12 @@ namespace Svg
             }
             return hashCode;
         }
-        
+
         public static bool operator ==(SvgUnit lhs, SvgUnit rhs)
         {
             return lhs.Equals(rhs);
         }
-        
+
         public static bool operator !=(SvgUnit lhs, SvgUnit rhs)
         {
             return !(lhs == rhs);

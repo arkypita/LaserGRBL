@@ -152,12 +152,12 @@ namespace Svg.Pathing
                 startY = (float)endpointY;
             }
         }
-        
+
         public override string ToString()
         {
-        	var arcFlag = this.Size == SvgArcSize.Large ? "1" : "0";
-        	var sweepFlag = this.Sweep == SvgArcSweep.Positive ? "1" : "0";
-        	return "A" + this.RadiusX.ToString() + " " + this.RadiusY.ToString() + " " + this.Angle.ToString() + " " + arcFlag + " " + sweepFlag + " " + this.End.ToSvgString();
+            var arcFlag = this.Size == SvgArcSize.Large ? "1" : "0";
+            var sweepFlag = this.Sweep == SvgArcSweep.Positive ? "1" : "0";
+            return "A" + this.RadiusX.ToString() + " " + this.RadiusY.ToString() + " " + this.Angle.ToString() + " " + arcFlag + " " + sweepFlag + " " + this.End.ToSvgString();
         }
     }
 

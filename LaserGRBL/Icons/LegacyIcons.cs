@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LaserGRBL.Icons
 {
-    public class LegacyIcons: IIconsLoader
+    public class LegacyIcons : IIconsLoader
     {
         private Dictionary<string, string> mIconList = new Dictionary<string, string>();
 

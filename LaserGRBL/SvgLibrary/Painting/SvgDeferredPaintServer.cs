@@ -29,15 +29,15 @@ namespace Svg
         {
             if (!_serverLoaded)
             {
-                if (this.DeferredId == "currentColor" && styleOwner != null) 
+                if (this.DeferredId == "currentColor" && styleOwner != null)
                 {
                     var colorElement = (from e in styleOwner.ParentsAndSelf.OfType<SvgElement>()
-                                        where e.Color != SvgPaintServer.None && e.Color != SvgColourServer.NotSet && 
+                                        where e.Color != SvgPaintServer.None && e.Color != SvgColourServer.NotSet &&
                                               e.Color != SvgColourServer.Inherit && e.Color != SvgColourServer.None
                                         select e).FirstOrDefault();
                     _concreteServer = (colorElement == null ? SvgPaintServer.None : colorElement.Color);
                 }
-                else 
+                else
                 {
                     _concreteServer = this.Document.IdManager.GetElementById(this.DeferredId) as SvgPaintServer;
                 }

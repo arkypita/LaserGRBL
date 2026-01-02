@@ -8,10 +8,10 @@ namespace Svg
     {
 
 
-		public override SvgElement DeepCopy()
-		{
-			return DeepCopy<SvgMask>();
-		}
+        public override SvgElement DeepCopy()
+        {
+            return DeepCopy<SvgMask>();
+        }
 
     }
 }

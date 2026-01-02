@@ -42,9 +42,9 @@ namespace Svg
             this._innerGraphics = graphics;
         }
 
-		public bool Wireframe { get; set; }
+        public bool Wireframe { get; set; }
 
-		public void DrawImage(Image image, RectangleF destRect, RectangleF srcRect, GraphicsUnit graphicsUnit)
+        public void DrawImage(Image image, RectangleF destRect, RectangleF srcRect, GraphicsUnit graphicsUnit)
         {
             _innerGraphics.DrawImage(image, destRect, srcRect, graphicsUnit);
         }
@@ -54,20 +54,20 @@ namespace Svg
         }
         public void DrawPath(Pen pen, GraphicsPath path)
         {
-			if (Wireframe)
-			{
-				pen.Width = 1;
-				pen.Color = Color.Red;
-			}
-			
-			_innerGraphics.DrawPath(pen, path);
+            if (Wireframe)
+            {
+                pen.Width = 1;
+                pen.Color = Color.Red;
+            }
+
+            _innerGraphics.DrawPath(pen, path);
         }
         public void FillPath(Brush brush, GraphicsPath path)
         {
-			if (Wireframe)
-				_innerGraphics.DrawPath(Pens.Red, path);
-			else
-				_innerGraphics.FillPath(brush, path);
+            if (Wireframe)
+                _innerGraphics.DrawPath(Pens.Red, path);
+            else
+                _innerGraphics.FillPath(brush, path);
         }
         public Region GetClip()
         {
@@ -89,7 +89,7 @@ namespace Svg
         {
             this._innerGraphics.TranslateTransform(dx, dy, order);
         }
-        
+
 
 
         public SmoothingMode SmoothingMode

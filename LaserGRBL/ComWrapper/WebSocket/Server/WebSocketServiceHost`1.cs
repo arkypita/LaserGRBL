@@ -30,73 +30,76 @@ using System;
 
 namespace WebSocketSharp.Server
 {
-  internal class WebSocketServiceHost<TBehavior> : WebSocketServiceHost
-    where TBehavior : WebSocketBehavior
-  {
-    #region Private Fields
-
-    private Func<TBehavior> _creator;
-
-    #endregion
-
-    #region Internal Constructors
-
-    internal WebSocketServiceHost (
-      string path, Func<TBehavior> creator, Logger log
-    )
-      : this (path, creator, null, log)
+    internal class WebSocketServiceHost<TBehavior> : WebSocketServiceHost
+      where TBehavior : WebSocketBehavior
     {
+        #region Private Fields
+
+        private Func<TBehavior> _creator;
+
+        #endregion
+
+        #region Internal Constructors
+
+        internal WebSocketServiceHost(
+          string path, Func<TBehavior> creator, Logger log
+        )
+          : this(path, creator, null, log)
+        {
+        }
+
+        internal WebSocketServiceHost(
+          string path,
+          Func<TBehavior> creator,
+          Action<TBehavior> initializer,
+          Logger log
+        )
+          : base(path, log)
+        {
+            _creator = createCreator(creator, initializer);
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        public override Type BehaviorType
+        {
+            get
+            {
+                return typeof(TBehavior);
+            }
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private Func<TBehavior> createCreator(
+          Func<TBehavior> creator, Action<TBehavior> initializer
+        )
+        {
+            if (initializer == null)
+                return creator;
+
+            return () =>
+            {
+                var ret = creator();
+                initializer(ret);
+
+                return ret;
+            };
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        protected override WebSocketBehavior CreateSession()
+        {
+            return _creator();
+        }
+
+        #endregion
     }
-
-    internal WebSocketServiceHost (
-      string path,
-      Func<TBehavior> creator,
-      Action<TBehavior> initializer,
-      Logger log
-    )
-      : base (path, log)
-    {
-      _creator = createCreator (creator, initializer);
-    }
-
-    #endregion
-
-    #region Public Properties
-
-    public override Type BehaviorType {
-      get {
-        return typeof (TBehavior);
-      }
-    }
-
-    #endregion
-
-    #region Private Methods
-
-    private Func<TBehavior> createCreator (
-      Func<TBehavior> creator, Action<TBehavior> initializer
-    )
-    {
-      if (initializer == null)
-        return creator;
-
-      return () => {
-               var ret = creator ();
-               initializer (ret);
-
-               return ret;
-             };
-    }
-
-    #endregion
-
-    #region Protected Methods
-
-    protected override WebSocketBehavior CreateSession ()
-    {
-      return _creator ();
-    }
-
-    #endregion
-  }
 }

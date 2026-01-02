@@ -42,7 +42,8 @@ namespace RJCP.IO.Ports
         /// <returns>A <see cref="string"/> that represents this instance.</returns>
         public override string ToString()
         {
-            if (string.IsNullOrEmpty(Manufacturer)) {
+            if (string.IsNullOrEmpty(Manufacturer))
+            {
                 return Description;
             }
             return $"{Description} [{Manufacturer}]";

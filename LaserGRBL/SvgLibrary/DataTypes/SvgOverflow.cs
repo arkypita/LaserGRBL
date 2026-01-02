@@ -19,7 +19,7 @@ namespace Svg
     ///     <para>As a result of the above, the default behavior of SVG user agents is to establish a clipping path to the bounds of the initial viewport and to establish a new clipping path for each element which establishes a new viewport and each ‘pattern’ and ‘marker’ element.</para>
     /// </remarks>
     [TypeConverter(typeof(SvgOverflowConverter))]
-	public enum SvgOverflow
+    public enum SvgOverflow
     {
         /// <summary>Overflow is not rendered.</summary>
         Hidden,
@@ -35,5 +35,5 @@ namespace Svg
 
         /// <summary>Overflow causes a scrollbar to appear (horizontal, vertical or both).</summary>
 		Scroll
-	}
+    }
 }

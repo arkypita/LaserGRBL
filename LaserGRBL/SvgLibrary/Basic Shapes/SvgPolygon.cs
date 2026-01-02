@@ -12,7 +12,7 @@ namespace Svg
     public class SvgPolygon : SvgPathBasedElement
     {
         private GraphicsPath _path;
-        
+
         /// <summary>
         /// The points that make up the SvgPolygon
         /// </summary>
@@ -69,13 +69,13 @@ namespace Svg
                     {
                         var endPoint = SvgUnit.GetDevicePoint(points[i], points[i + 1], renderer, this);
 
-                      // If it is to render, don't need to consider stroke width.
+                        // If it is to render, don't need to consider stroke width.
                         // i.e stroke width only to be considered when calculating boundary
                         if (renderer == null)
                         {
-                          var radius = base.StrokeWidth / 2;
-                          _path.AddEllipse(endPoint.X - radius, endPoint.Y - radius, 2 * radius, 2 * radius);
-                          continue;
+                            var radius = base.StrokeWidth / 2;
+                            _path.AddEllipse(endPoint.X - radius, endPoint.Y - radius, 2 * radius, 2 * radius);
+                            continue;
                         }
 
                         //first line
@@ -96,7 +96,7 @@ namespace Svg
 
                 this._path.CloseFigure();
                 if (renderer != null)
-                  this.IsPathDirty = false;
+                    this.IsPathDirty = false;
             }
             return this._path;
         }
@@ -132,18 +132,18 @@ namespace Svg
             return result;
         }
 
-		public override SvgElement DeepCopy()
-		{
-			return DeepCopy<SvgPolygon>();
-		}
+        public override SvgElement DeepCopy()
+        {
+            return DeepCopy<SvgPolygon>();
+        }
 
-		public override SvgElement DeepCopy<T>()
-		{
-			var newObj = base.DeepCopy<T>() as SvgPolygon;
-			newObj.Points = new SvgPointCollection();
-			foreach (var pt in this.Points)
-				newObj.Points.Add(pt);
-			return newObj;
-		}
+        public override SvgElement DeepCopy<T>()
+        {
+            var newObj = base.DeepCopy<T>() as SvgPolygon;
+            newObj.Points = new SvgPointCollection();
+            foreach (var pt in this.Points)
+                newObj.Points.Add(pt);
+            return newObj;
+        }
     }
 }

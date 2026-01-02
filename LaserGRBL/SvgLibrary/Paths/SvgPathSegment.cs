@@ -35,9 +35,9 @@ namespace Svg.Pathing
 
         public abstract void AddToPath(GraphicsPath graphicsPath);
 
-		public SvgPathSegment Clone()
-		{
-			return this.MemberwiseClone() as SvgPathSegment;
-		}
+        public SvgPathSegment Clone()
+        {
+            return this.MemberwiseClone() as SvgPathSegment;
+        }
     }
 }

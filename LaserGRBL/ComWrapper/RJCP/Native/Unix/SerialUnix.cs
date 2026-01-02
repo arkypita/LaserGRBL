@@ -60,21 +60,26 @@ namespace RJCP.IO.Ports.Native.Unix
             // Get the number of ports in the system.
             int portNum = 0;
             IntPtr portName;
-            do {
+            do
+            {
                 portName = Marshal.ReadIntPtr(portdesc, portNum * 2 * IntPtr.Size);
                 if (portName != IntPtr.Zero) portNum++;
             } while (portName != IntPtr.Zero);
 
             // Copy them into our struct
             PortDescription[] ports = new PortDescription[portNum];
-            for (int i = 0; i < portNum; i++) {
+            for (int i = 0; i < portNum; i++)
+            {
                 IntPtr portPtr = Marshal.ReadIntPtr(portdesc, i * 2 * IntPtr.Size);
                 string port = Marshal.PtrToStringAnsi(portPtr);
                 IntPtr descPtr = Marshal.ReadIntPtr(portdesc, i * 2 * IntPtr.Size + IntPtr.Size);
                 string desc;
-                if (descPtr.Equals(IntPtr.Zero)) {
+                if (descPtr.Equals(IntPtr.Zero))
+                {
                     desc = string.Empty;
-                } else {
+                }
+                else
+                {
                     desc = Marshal.PtrToStringAnsi(descPtr);
                 }
                 ports[i] = new PortDescription(port, desc);

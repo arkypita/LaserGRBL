@@ -33,7 +33,8 @@ namespace Svg
             if (colour != null)
             {
                 var oldCulture = Thread.CurrentThread.CurrentCulture;
-                try {
+                try
+                {
                     Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 
                     colour = colour.Trim();
@@ -91,7 +92,8 @@ namespace Svg
                         }
                     }
                     // HSL support
-                    else if (colour.StartsWith("hsl")) {
+                    else if (colour.StartsWith("hsl"))
+                    {
                         try
                         {
                             int start = colour.IndexOf("(") + 1;
@@ -206,62 +208,63 @@ namespace Svg
         /// <param name="sl"></param>
         /// <param name="l"></param>
         /// <returns></returns>
-        private static Color Hsl2Rgb( double h, double sl, double l ) {
+        private static Color Hsl2Rgb(double h, double sl, double l)
+        {
             double r = l;   // default to gray
             double g = l;
             double b = l;
             double v = (l <= 0.5) ? (l * (1.0 + sl)) : (l + sl - l * sl);
             if (v > 0)
             {
-                  double m;
-                  double sv;
-                  int sextant;
-                  double fract, vsf, mid1, mid2;
- 
-                  m = l + l - v;
-                  sv = (v - m ) / v;
-                  h *= 6.0;
-                  sextant = (int)h;
-                  fract = h - sextant;
-                  vsf = v * sv * fract;
-                  mid1 = m + vsf;
-                  mid2 = v - vsf;
-                  switch (sextant)
-                  {
-                        case 0:
-                              r = v;
-                              g = mid1;
-                              b = m;
-                              break;
-                        case 1:
-                              r = mid2;
-                              g = v;
-                              b = m;
-                              break;
-                        case 2:
-                              r = m;
-                              g = v;
-                              b = mid1;
-                              break;
-                        case 3:
-                              r = m;
-                              g = mid2;
-                              b = v;
-                              break;
-                        case 4:
-                              r = mid1;
-                              g = m;
-                              b = v;
-                              break;
-                        case 5:
-                              r = v;
-                              g = m;
-                              b = mid2;
-                              break;
-                  }
+                double m;
+                double sv;
+                int sextant;
+                double fract, vsf, mid1, mid2;
+
+                m = l + l - v;
+                sv = (v - m) / v;
+                h *= 6.0;
+                sextant = (int)h;
+                fract = h - sextant;
+                vsf = v * sv * fract;
+                mid1 = m + vsf;
+                mid2 = v - vsf;
+                switch (sextant)
+                {
+                    case 0:
+                        r = v;
+                        g = mid1;
+                        b = m;
+                        break;
+                    case 1:
+                        r = mid2;
+                        g = v;
+                        b = m;
+                        break;
+                    case 2:
+                        r = m;
+                        g = v;
+                        b = mid1;
+                        break;
+                    case 3:
+                        r = m;
+                        g = mid2;
+                        b = v;
+                        break;
+                    case 4:
+                        r = mid1;
+                        g = m;
+                        b = v;
+                        break;
+                    case 5:
+                        r = v;
+                        g = m;
+                        b = mid2;
+                        break;
+                }
             }
-            Color rgb = Color.FromArgb( (int)Math.Round( r * 255.0 ), (int)Math.Round( g * 255.0 ), (int)Math.Round( b * 255.0 ) );
-            return rgb;        
+            Color rgb = Color.FromArgb((int)Math.Round(r * 255.0), (int)Math.Round(g * 255.0), (int)Math.Round(b * 255.0));
+            return rgb;
         }
 
     }

@@ -11,7 +11,7 @@ using static LaserGRBL.ColorScheme;
 namespace LaserGRBL
 {
 
-	public interface IColorScheme
+    public interface IColorScheme
     {
         Scheme Scheme { get; }
         bool IsDark { get; }
@@ -51,8 +51,8 @@ namespace LaserGRBL
         Color PressedButtons { get; }
     }
 
-	// CAD style color scheme
-    public class SchemeCADStyle: IColorScheme
+    // CAD style color scheme
+    public class SchemeCADStyle : IColorScheme
     {
         public Scheme Scheme => Scheme.CADStyle;
         public bool IsDark => false;
@@ -89,11 +89,11 @@ namespace LaserGRBL
         public Color ControlsBorder => Color.FromArgb(220, 220, 220);
         public Color ControlsBackDisabled => Color.FromArgb(180, 180, 180);
         public Color DisabledButtons => Color.FromArgb(140, 140, 140);
-        public Color PressedButtons => Color.FromArgb(222, 230,  7);
+        public Color PressedButtons => Color.FromArgb(222, 230, 7);
     }
 
-	// CAD dark color scheme
-	public class SchemeCADDark: IColorScheme
+    // CAD dark color scheme
+    public class SchemeCADDark : IColorScheme
     {
         public Scheme Scheme => Scheme.CADDark;
         public bool IsDark => true;
@@ -133,8 +133,8 @@ namespace LaserGRBL
         public Color PressedButtons => Color.FromArgb(84, 96, 122);
     }
 
-	// blue laser color scheme
-	public class SchemeBlueLaser: IColorScheme
+    // blue laser color scheme
+    public class SchemeBlueLaser : IColorScheme
     {
         public Scheme Scheme => Scheme.BlueLaser;
         public bool IsDark => false;
@@ -144,8 +144,8 @@ namespace LaserGRBL
         public Color PreviewText => Color.Black;
         public Color PreviewRuler => Color.DarkGray;
         public Color PreviewGrid => Color.FromArgb(242, 242, 200);
-		public Color PreviewGridMinor => Color.FromArgb(248, 248, 220);
-		public Color PreviewJobRange => Color.DarkGray;
+        public Color PreviewGridMinor => Color.FromArgb(248, 248, 220);
+        public Color PreviewJobRange => Color.DarkGray;
         public Color PreviewFirstMovement => Color.Blue;
         public Color PreviewOtherMovement => Color.LightGray;
         public Color PreviewLaserPower => Color.Red;
@@ -154,7 +154,7 @@ namespace LaserGRBL
         public Color PreviewCommandKO => Color.DarkRed;
         public Color PreviewCommandWait => Color.LightPink;
         public Color PreviewCrossCursor => Color.FromArgb(184, 184, 184);
-		public Color LogBackColor => Color.White;
+        public Color LogBackColor => Color.White;
         public Color LogLeftCOMMAND => Color.Black;
         public Color LogLeftSTARTUP => Color.DarkGreen;
         public Color LogLeftALARM => Color.Crimson;
@@ -169,13 +169,13 @@ namespace LaserGRBL
         public Color LinkColor => Color.DodgerBlue;
         public Color VisitedLinkColor => Color.Purple;
         public Color ControlsBorder => Color.FromArgb(220, 220, 220);
-		public Color ControlsBackDisabled => Color.FromArgb(180, 180, 180);
-		public Color DisabledButtons => Color.FromArgb(70, 70, 70);
-		public Color PressedButtons => Color.Crimson;
+        public Color ControlsBackDisabled => Color.FromArgb(180, 180, 180);
+        public Color DisabledButtons => Color.FromArgb(70, 70, 70);
+        public Color PressedButtons => Color.Crimson;
     }
 
-	// red laser color scheme
-	public class SchemeRedLaser: IColorScheme
+    // red laser color scheme
+    public class SchemeRedLaser : IColorScheme
     {
         public Scheme Scheme => Scheme.RedLaser;
         public bool IsDark => false;
@@ -185,8 +185,8 @@ namespace LaserGRBL
         public Color PreviewText => Color.Black;
         public Color PreviewRuler => Color.DarkGray;
         public Color PreviewGrid => Color.FromArgb(242, 242, 200);
-		public Color PreviewGridMinor => Color.FromArgb(248, 248, 220);
-		public Color PreviewJobRange => Color.DarkGray;
+        public Color PreviewGridMinor => Color.FromArgb(248, 248, 220);
+        public Color PreviewJobRange => Color.DarkGray;
         public Color PreviewFirstMovement => Color.Blue;
         public Color PreviewOtherMovement => Color.LightGray;
         public Color PreviewLaserPower => Color.DarkBlue;
@@ -195,7 +195,7 @@ namespace LaserGRBL
         public Color PreviewCommandKO => Color.DarkRed;
         public Color PreviewCommandWait => Color.LightBlue;
         public Color PreviewCrossCursor => Color.FromArgb(184, 184, 184);
-		public Color LogBackColor => Color.White;
+        public Color LogBackColor => Color.White;
         public Color LogLeftCOMMAND => Color.Black;
         public Color LogLeftSTARTUP => Color.DarkGreen;
         public Color LogLeftALARM => Color.Crimson;
@@ -210,34 +210,34 @@ namespace LaserGRBL
         public Color LinkColor => Color.DodgerBlue;
         public Color VisitedLinkColor => Color.Purple;
         public Color ControlsBorder => Color.FromArgb(220, 220, 220);
-		public Color ControlsBackDisabled => Color.FromArgb(180, 180, 180);
-		public Color DisabledButtons => Color.FromArgb(100, 100, 100);
-		public Color PressedButtons => Color.Crimson;
+        public Color ControlsBackDisabled => Color.FromArgb(180, 180, 180);
+        public Color DisabledButtons => Color.FromArgb(100, 100, 100);
+        public Color PressedButtons => Color.Crimson;
     }
 
-	// dark color scheme
-	public class SchemeDark: IColorScheme
+    // dark color scheme
+    public class SchemeDark : IColorScheme
     {
         public Scheme Scheme => Scheme.Dark;
         public bool IsDark => true;
         public Color FormBackColor => Color.FromArgb(29, 44, 75);
         public Color FormForeColor => Color.White;
         public Color PreviewBackColor => Color.FromArgb(220, 220, 220);
-		public Color PreviewText => Color.Black;
+        public Color PreviewText => Color.Black;
         public Color PreviewRuler => Color.DarkGray;
         public Color PreviewGrid => Color.FromArgb(210, 210, 210);
-		public Color PreviewGridMinor => Color.FromArgb(220, 220, 220);
-		public Color PreviewJobRange => Color.DimGray;
+        public Color PreviewGridMinor => Color.FromArgb(220, 220, 220);
+        public Color PreviewJobRange => Color.DimGray;
         public Color PreviewFirstMovement => Color.Blue;
         public Color PreviewOtherMovement => Color.FromArgb(180, 118, 0);
-		public Color PreviewLaserPower => Color.Red;
+        public Color PreviewLaserPower => Color.Red;
         public Color PreviewCross => Color.DarkMagenta;
         public Color PreviewCommandOK => Color.DarkGreen;
         public Color PreviewCommandKO => Color.DarkRed;
         public Color PreviewCommandWait => Color.LightBlue;
         public Color PreviewCrossCursor => Color.Gray;
         public Color LogBackColor => Color.FromArgb(220, 220, 220);
-		public Color LogLeftCOMMAND => Color.Black;
+        public Color LogLeftCOMMAND => Color.Black;
         public Color LogLeftSTARTUP => Color.DarkGreen;
         public Color LogLeftALARM => Color.DarkRed;
         public Color LogLeftCONFIG => Color.DarkSlateGray;
@@ -251,13 +251,13 @@ namespace LaserGRBL
         public Color LinkColor => Color.Yellow;
         public Color VisitedLinkColor => Color.Violet;
         public Color ControlsBorder => Color.FromArgb(39, 54, 85);
-		public Color ControlsBackDisabled => Color.FromArgb(180, 180, 180);
-		public Color DisabledButtons => Color.FromArgb(100, 100, 100);
-		public Color PressedButtons => Color.Crimson;
+        public Color ControlsBackDisabled => Color.FromArgb(180, 180, 180);
+        public Color DisabledButtons => Color.FromArgb(100, 100, 100);
+        public Color PressedButtons => Color.Crimson;
     }
 
-	// hacker color scheme
-	public class SchemeHacker: IColorScheme
+    // hacker color scheme
+    public class SchemeHacker : IColorScheme
     {
         public Scheme Scheme => Scheme.Hacker;
         public bool IsDark => true;
@@ -353,7 +353,7 @@ namespace LaserGRBL
 
         private static Dictionary<Scheme, IColorScheme> mDefaultSchemas;
 
-		static ColorScheme()
+        static ColorScheme()
         {
             mDefaultSchemas = new Dictionary<Scheme, IColorScheme>();
             AddSchema(new SchemeCADStyle());
@@ -364,14 +364,14 @@ namespace LaserGRBL
             AddSchema(new SchemeHacker());
             AddSchema(new SchemeNighty());
             CurrentScheme = Scheme.RedLaser;
-		}
+        }
 
         public static void AddSchema(IColorScheme colorSchema)
         {
             mDefaultSchemas.Add(colorSchema.Scheme, colorSchema);
         }
 
-		public static Scheme CurrentScheme { get; set; }
+        public static Scheme CurrentScheme { get; set; }
 
         private static IColorScheme CurrentSchemeColors => mDefaultSchemas[CurrentScheme];
 
@@ -405,35 +405,35 @@ namespace LaserGRBL
         public static Color LogRightBAD => CurrentSchemeColors.LogRightBAD;
         public static Color LogRightOTHERS => CurrentSchemeColors.LogRightOTHERS;
         public static Color TextBoxColorOverride => CurrentSchemeColors.TextBoxColorOverride;
-		public static Color LinkColor => CurrentSchemeColors.LinkColor;
+        public static Color LinkColor => CurrentSchemeColors.LinkColor;
         public static Color VisitedLinkColor => CurrentSchemeColors.VisitedLinkColor;
         public static Color ControlsBorder => CurrentSchemeColors.ControlsBorder;
         public static Color ControlsBackDisabled => CurrentSchemeColors.ControlsBackDisabled;
         public static Color DisabledButtons => CurrentSchemeColors.DisabledButtons;
         public static Color PressedButtons => CurrentSchemeColors.PressedButtons;
 
-		public static Color ChangeColorBrightness(Color color, float correctionFactor)
-		{
-			float red = (float)color.R;
-			float green = (float)color.G;
-			float blue = (float)color.B;
+        public static Color ChangeColorBrightness(Color color, float correctionFactor)
+        {
+            float red = (float)color.R;
+            float green = (float)color.G;
+            float blue = (float)color.B;
 
-			if (correctionFactor < 0)
-			{
-				correctionFactor = 1 + correctionFactor;
-				red *= correctionFactor;
-				green *= correctionFactor;
-				blue *= correctionFactor;
-			}
-			else
-			{
-				red = (255 - red) * correctionFactor + red;
-				green = (255 - green) * correctionFactor + green;
-				blue = (255 - blue) * correctionFactor + blue;
-			}
+            if (correctionFactor < 0)
+            {
+                correctionFactor = 1 + correctionFactor;
+                red *= correctionFactor;
+                green *= correctionFactor;
+                blue *= correctionFactor;
+            }
+            else
+            {
+                red = (255 - red) * correctionFactor + red;
+                green = (255 - green) * correctionFactor + green;
+                blue = (255 - blue) * correctionFactor + blue;
+            }
 
-			return Color.FromArgb(color.A, (int)red, (int)green, (int)blue);
-		}
+            return Color.FromArgb(color.A, (int)red, (int)green, (int)blue);
+        }
 
         public static Color FormButtonsColor
         {

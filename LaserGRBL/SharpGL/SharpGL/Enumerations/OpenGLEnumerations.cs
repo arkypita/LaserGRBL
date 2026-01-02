@@ -31,7 +31,7 @@ namespace SharpGL.Enumerations
         GreaterThanOrEqual = OpenGL.GL_GEQUAL,
         Always = OpenGL.GL_ALWAYS,
     }
-    
+
     /// <summary>
     /// The OpenGL Attribute flags.
     /// </summary>
@@ -74,11 +74,11 @@ namespace SharpGL.Enumerations
         Triangles = OpenGL.GL_TRIANGLES,
         TriangleString = OpenGL.GL_TRIANGLE_STRIP,
         TriangleFan = OpenGL.GL_TRIANGLE_FAN,
-        Quads= OpenGL.GL_QUADS,
+        Quads = OpenGL.GL_QUADS,
         QuadStrip = OpenGL.GL_QUAD_STRIP,
         Polygon = OpenGL.GL_POLYGON
     }
-    
+
     /// <summary>
     /// BlendingDestinationFactor
     /// </summary>
@@ -107,7 +107,7 @@ namespace SharpGL.Enumerations
         /// </summary>
         SourceAlpha = OpenGL.GL_SRC_ALPHA
     }
-    
+
     /// <summary>
     /// The Clip Plane Name
     /// </summary>
@@ -152,7 +152,7 @@ namespace SharpGL.Enumerations
         /// <summary>
         /// 
         /// </summary>
-        Double= OpenGL.GL_DOUBLE
+        Double = OpenGL.GL_DOUBLE
     }
 
     /// <summary>
@@ -185,12 +185,12 @@ namespace SharpGL.Enumerations
         Left = OpenGL.GL_LEFT,
         Right = OpenGL.GL_RIGHT,
         FrontAndBack = OpenGL.GL_FRONT_AND_BACK,
-        Auxilliary0= OpenGL.GL_AUX0,
+        Auxilliary0 = OpenGL.GL_AUX0,
         Auxilliary1 = OpenGL.GL_AUX1,
         Auxilliary2 = OpenGL.GL_AUX2,
         Auxilliary3 = OpenGL.GL_AUX3,
     }
-    
+
     /// <summary>
     /// Error Code
     /// </summary>
@@ -237,14 +237,14 @@ namespace SharpGL.Enumerations
     /// </summary>
     public enum FogMode : uint
     {
-	   	Exp = OpenGL.GL_EXP,
+        Exp = OpenGL.GL_EXP,
 
         /// <summary>
         /// 
         /// </summary>
 		Exp2 = OpenGL.GL_EXP2,
-	}
-	
+    }
+
     /// <summary>
     /// GetMapTarget 
     /// </summary>
@@ -466,7 +466,7 @@ namespace SharpGL.Enumerations
         FeedbackBufferType = OpenGL.GL_FEEDBACK_BUFFER_TYPE,
         SelectionBufferPointer = OpenGL.GL_SELECTION_BUFFER_POINTER,
         SelectionBufferSize = OpenGL.GL_SELECTION_BUFFER_SIZE
-    }	
+    }
 
     /// <summary>
     /// The Front Face Mode.
@@ -483,8 +483,8 @@ namespace SharpGL.Enumerations
     /// </summary>
 	public enum HintMode : uint
     {
-		DontCare = OpenGL.GL_DONT_CARE,
-		Fastest = OpenGL.GL_FASTEST,
+        DontCare = OpenGL.GL_DONT_CARE,
+        Fastest = OpenGL.GL_FASTEST,
         /// <summary>
         /// The 
         /// </summary>
@@ -502,22 +502,22 @@ namespace SharpGL.Enumerations
         PolygonSmooth = OpenGL.GL_POLYGON_SMOOTH_HINT,
         Fog = OpenGL.GL_FOG_HINT
     }
-     
+
     /// <summary>
     /// LightName
     /// </summary>
     public enum LightName : uint
     {
-		Light0 = OpenGL.GL_LIGHT0  ,
+        Light0 = OpenGL.GL_LIGHT0,
         Light1 = OpenGL.GL_LIGHT1,
         Light2 = OpenGL.GL_LIGHT2,
         Light3 = OpenGL.GL_LIGHT3,
         Light4 = OpenGL.GL_LIGHT4,
         Light5 = OpenGL.GL_LIGHT5,
         Light6 = OpenGL.GL_LIGHT6,
-        Light7 = OpenGL.GL_LIGHT7  
+        Light7 = OpenGL.GL_LIGHT7
     }
-	
+
     /// <summary>
     /// LightParameter
     /// </summary>
@@ -552,19 +552,19 @@ namespace SharpGL.Enumerations
     {
         Clear = OpenGL.GL_CLEAR,
         And = OpenGL.GL_AND,
-        AndReverse  = OpenGL.GL_AND_REVERSE,
+        AndReverse = OpenGL.GL_AND_REVERSE,
         Copy = OpenGL.GL_COPY,
         AndInverted = OpenGL.GL_AND_INVERTED,
-        NoOp= OpenGL.GL_NOOP,
+        NoOp = OpenGL.GL_NOOP,
         XOr = OpenGL.GL_XOR,
         Or = OpenGL.GL_OR,
-        NOr= OpenGL.GL_NOR,
+        NOr = OpenGL.GL_NOR,
         Equiv = OpenGL.GL_EQUIV,
         Invert = OpenGL.GL_INVERT,
         OrReverse = OpenGL.GL_OR_REVERSE,
         CopyInverted = OpenGL.GL_COPY_INVERTED,
         OrInverted = OpenGL.GL_OR_INVERTED,
-        NAnd= OpenGL.GL_NAND,
+        NAnd = OpenGL.GL_NAND,
         Set = OpenGL.GL_SET,
     }
 
@@ -621,11 +621,11 @@ namespace SharpGL.Enumerations
         /// </summary>
         Filled = OpenGL.GL_FILL
     }
-    
+
     /// <summary>
     /// Rendering Mode 
     /// </summary>
-    public enum RenderingMode: uint
+    public enum RenderingMode : uint
     {
         Render = OpenGL.GL_RENDER,
         Feedback = OpenGL.GL_FEEDBACK,
@@ -669,8 +669,8 @@ namespace SharpGL.Enumerations
         IncreaseWrap = OpenGL.GL_INCR_WRAP,
         DecreaseWrap = OpenGL.GL_DECR_WRAP,
         Invert = OpenGL.GL_INVERT
-    }    
-    
+    }
+
     /// <summary>
     /// GetTextureParameter
     /// </summary>

@@ -24,10 +24,10 @@ namespace Svg
         /// <value>The bounds.</value>
         public override System.Drawing.RectangleF Bounds
         {
-            get 
-            { 
+            get
+            {
                 var r = new RectangleF();
-                foreach(var c in this.Children)
+                foreach (var c in this.Children)
                 {
                     if (c is SvgVisualElement)
                     {
@@ -47,13 +47,13 @@ namespace Svg
                         }
                     }
                 }
-                
+
                 return r;
             }
         }
 
         protected override bool Renderable { get { return false; } }
-                
+
         public override SvgElement DeepCopy()
         {
             return DeepCopy<SvgGroup>();

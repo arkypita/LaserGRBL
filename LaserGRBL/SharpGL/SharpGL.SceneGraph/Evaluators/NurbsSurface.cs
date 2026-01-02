@@ -5,20 +5,20 @@ using SharpGL.SceneGraph.Evaluators;
 
 namespace SharpGL.SceneGraph.Evaluators
 {
-	/// <summary>
-	/// A NURBS Surface is a two dimensional non uniform B-Spline.
-	/// </summary>
-	[Serializable()]
-	public class NurbsSurface : NurbsBase
-	{
+    /// <summary>
+    /// A NURBS Surface is a two dimensional non uniform B-Spline.
+    /// </summary>
+    [Serializable()]
+    public class NurbsSurface : NurbsBase
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="NurbsSurface"/> class.
         /// </summary>
 		public NurbsSurface()
-		{
-			Name = "NURBS Surface";
-			ControlPoints.CreateGrid(4, 4);
-		}
+        {
+            Name = "NURBS Surface";
+            ControlPoints.CreateGrid(4, 4);
+        }
 
         /// <summary>
         /// Render to the provided instance of OpenGL.
@@ -55,7 +55,7 @@ namespace SharpGL.SceneGraph.Evaluators
         /// <summary>
         /// The s knots.
         /// </summary>
-		private float[] sKnots = new float [] {0, 0, 0, 0, 1, 1, 1, 1};
+		private float[] sKnots = new float[] { 0, 0, 0, 0, 1, 1, 1, 1 };
 
         /// <summary>
         /// The t knots.
@@ -79,5 +79,5 @@ namespace SharpGL.SceneGraph.Evaluators
         {
             get { return tKnots; }
         }
-	}
+    }
 }

@@ -10,15 +10,15 @@
 
 namespace LaserGRBL
 {
-	public static class UrlManager
-	{
-		public static string UpdateMain = null;
-		public static string UpdateMirror = null;
-		public static string Statistics = null;
-		public static string TelegramHandler = null;
-		public static string TelegramServiceKey = null;
-		public static string UpdateMaterialDB = null;
-		public static string DownloadMaterialDB = null;
-		public static string LaserStatistics = null;
-	}
+    public static class UrlManager
+    {
+        public static string UpdateMain = null;
+        public static string UpdateMirror = null;
+        public static string Statistics = null;
+        public static string TelegramHandler = null;
+        public static string TelegramServiceKey = null;
+        public static string UpdateMaterialDB = null;
+        public static string DownloadMaterialDB = null;
+        public static string LaserStatistics = null;
+    }
 }

@@ -7,16 +7,16 @@
 // (c) Copyright 2006 Novell, Inc. (http://www.novell.com)
 //
 
-namespace MySerialPort 
+namespace MySerialPort
 {
-	public enum Parity 
-	{
-		None,
-		Odd,
-		Even,
-		Mark,
-		Space
-	} 
+    public enum Parity
+    {
+        None,
+        Odd,
+        Even,
+        Mark,
+        Space
+    }
 }
 
 

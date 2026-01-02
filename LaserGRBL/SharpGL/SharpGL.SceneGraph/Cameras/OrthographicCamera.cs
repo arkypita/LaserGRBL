@@ -5,31 +5,31 @@ using SharpGL.SceneGraph.Lighting;
 
 namespace SharpGL.SceneGraph.Cameras
 {
-	/// <summary>
-	/// This camera contains the data needed to perform an orthographic transformation
-	/// to the projection matrix.
-	/// </summary>
-	[Serializable()]
-	public class OrthographicCamera : Camera
-	{
+    /// <summary>
+    /// This camera contains the data needed to perform an orthographic transformation
+    /// to the projection matrix.
+    /// </summary>
+    [Serializable()]
+    public class OrthographicCamera : Camera
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="OrthographicCamera"/> class.
         /// </summary>
 		public OrthographicCamera()
-		{
-			Name = "Camera (Orthographic)";
-		}
+        {
+            Name = "Camera (Orthographic)";
+        }
 
-		/// <summary>
-		/// This is the main function of the class, to perform a specialised projection
-		/// in this case, an orthographic one.
-		/// </summary>
+        /// <summary>
+        /// This is the main function of the class, to perform a specialised projection
+        /// in this case, an orthographic one.
+        /// </summary>
         public override void TransformProjectionMatrix(OpenGL gl)
         {
             //  Perform the transformation.
-            gl.Translate(Position.X, Position.Y, Position.Z); 
-			gl.Ortho(left, right, bottom, top, near, far);
-		}
+            gl.Translate(Position.X, Position.Y, Position.Z);
+            gl.Ortho(left, right, bottom, top, near, far);
+        }
 
         /// <summary>
         /// The left pos.
@@ -138,5 +138,5 @@ namespace SharpGL.SceneGraph.Cameras
             get { return far; }
             set { far = value; }
         }
-	}
+    }
 }

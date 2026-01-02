@@ -7,13 +7,14 @@ using static LaserGRBL.UserControls.ColorSlider;
 
 namespace LaserGRBL.UserControls
 {
-    public class GrblButton: Button
+    public class GrblButton : Button
     {
 
         private bool mHover = false;
         private bool mPressed = false;
 
-        public GrblButton() {
+        public GrblButton()
+        {
             SetStyle(ControlStyles.UserPaint, true);
         }
 

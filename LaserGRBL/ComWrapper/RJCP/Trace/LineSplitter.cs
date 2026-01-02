@@ -60,8 +60,10 @@ namespace RJCP.IO.Ports.Trace
 
             m_Lines.Add(m_Line.ToString());
             m_Line.Clear();
-            if (lines.Length > 2) {
-                for (int i = 1; i < lines.Length - 1; i++) {
+            if (lines.Length > 2)
+            {
+                for (int i = 1; i < lines.Length - 1; i++)
+                {
                     m_Lines.Add(lines[i]);
                 }
             }

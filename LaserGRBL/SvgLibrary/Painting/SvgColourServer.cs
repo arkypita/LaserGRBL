@@ -7,8 +7,8 @@ namespace Svg
 {
     public sealed class SvgColourServer : SvgPaintServer
     {
-    	
-    	/// <summary>
+
+        /// <summary>
         /// An unspecified <see cref="SvgPaintServer"/>.
         /// </summary>
         public static readonly SvgPaintServer NotSet = new SvgColourServer(System.Drawing.Color.Black);
@@ -39,8 +39,8 @@ namespace Svg
         {
             //is none?
             if (this == SvgPaintServer.None) return new SolidBrush(System.Drawing.Color.Transparent);
-                
-            int alpha = (int)Math.Round((opacity * (this.Colour.A/255.0) ) * 255);
+
+            int alpha = (int)Math.Round((opacity * (this.Colour.A / 255.0)) * 255);
             Color colour = System.Drawing.Color.FromArgb(alpha, this.Colour);
 
             return new SolidBrush(colour);
@@ -48,11 +48,11 @@ namespace Svg
 
         public override string ToString()
         {
-        	if(this == SvgPaintServer.None)
-        		return "none";
-        	else if(this == SvgColourServer.NotSet)
-        		return "";
-        	
+            if (this == SvgPaintServer.None)
+                return "none";
+            else if (this == SvgColourServer.NotSet)
+                return "";
+
             Color c = this.Colour;
 
             // Return the name if it exists
@@ -66,19 +66,19 @@ namespace Svg
         }
 
 
-		public override SvgElement DeepCopy()
-		{
-			return DeepCopy<SvgColourServer>();
-		}
+        public override SvgElement DeepCopy()
+        {
+            return DeepCopy<SvgColourServer>();
+        }
 
 
-		public override SvgElement DeepCopy<T>()
-		{
-			var newObj = base.DeepCopy<T>() as SvgColourServer;
-			newObj.Colour = this.Colour;
-			return newObj;
+        public override SvgElement DeepCopy<T>()
+        {
+            var newObj = base.DeepCopy<T>() as SvgColourServer;
+            newObj.Colour = this.Colour;
+            return newObj;
 
-		}
+        }
 
         public override bool Equals(object obj)
         {

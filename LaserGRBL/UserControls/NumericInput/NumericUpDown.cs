@@ -73,7 +73,7 @@ namespace LaserGRBL.UserControls.NumericInput
             BorderColor = ColorScheme.ControlsBorder;
             base.OnPaint(e);
         }
-        
+
 
     }
 }

@@ -27,13 +27,13 @@ namespace Svg.DataTypes
             bool bDefer = false;
             bool bSlice = false;
 
-            string[] sParts = (value as string).Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+            string[] sParts = (value as string).Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             int nAlignIndex = 0;
             if (sParts[0].Equals("defer"))
             {
                 bDefer = true;
                 nAlignIndex++;
-                if(sParts.Length < 2)
+                if (sParts.Length < 2)
                     throw new ArgumentOutOfRangeException("value is not a member of SvgPreserveAspectRatio");
             }
 
@@ -60,7 +60,7 @@ namespace Svg.DataTypes
                 }
             }
             nAlignIndex++;
-            if(sParts.Length > nAlignIndex)
+            if (sParts.Length > nAlignIndex)
                 throw new ArgumentOutOfRangeException("value is not a member of SvgPreserveAspectRatio");
 
             SvgAspectRatio pRet = new SvgAspectRatio(eAlign);

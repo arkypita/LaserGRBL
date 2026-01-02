@@ -28,7 +28,7 @@ namespace Fizzler
     using System.Diagnostics;
     using System.IO;
     using System.Text;
-    
+
     #endregion
 
     /// <summary>
@@ -102,63 +102,63 @@ namespace Fizzler
                             break;
                     }
                 }
-                else switch(ch)
-                {
-                    case '*': // * or *=
-                    case '~': // ~ or ~=
-                    case '|': // | or |=
+                else switch (ch)
                     {
-                        if (reader.Read() == '=')
-                        {
-                            yield return ch == '*' 
-                                       ? Token.SubstringMatch() 
-                                       : ch == '|' ? Token.DashMatch() 
-                                       : Token.Includes();
-                        }
-                        else
-                        {
-                            reader.Unread();
-                            yield return ch == '*' || ch == '|'
-                                ? Token.Char(ch.Value) 
-                                : Token.Tilde();
-                        }
-                        break;
-                    }
-                    case '^': // ^=
-                    case '$': // $=
-                    {
-                        if (reader.Read() != '=')
+                        case '*': // * or *=
+                        case '~': // ~ or ~=
+                        case '|': // | or |=
+                            {
+                                if (reader.Read() == '=')
+                                {
+                                    yield return ch == '*'
+                                               ? Token.SubstringMatch()
+                                               : ch == '|' ? Token.DashMatch()
+                                               : Token.Includes();
+                                }
+                                else
+                                {
+                                    reader.Unread();
+                                    yield return ch == '*' || ch == '|'
+                                        ? Token.Char(ch.Value)
+                                        : Token.Tilde();
+                                }
+                                break;
+                            }
+                        case '^': // ^=
+                        case '$': // $=
+                            {
+                                if (reader.Read() != '=')
+                                    throw new FormatException(string.Format("Invalid character at position {0}.", reader.Position));
+
+                                switch (ch)
+                                {
+                                    case '^': yield return Token.PrefixMatch(); break;
+                                    case '$': yield return Token.SuffixMatch(); break;
+                                }
+                                break;
+                            }
+                        //
+                        // Single-character punctuation
+                        //
+                        case '.': yield return Token.Dot(); break;
+                        case ':': yield return Token.Colon(); break;
+                        case ',': yield return Token.Comma(); break;
+                        case '=': yield return Token.Equals(); break;
+                        case '[': yield return Token.LeftBracket(); break;
+                        case ']': yield return Token.RightBracket(); break;
+                        case ')': yield return Token.RightParenthesis(); break;
+                        case '+': yield return Token.Plus(); break;
+                        case '>': yield return Token.Greater(); break;
+                        case '#': yield return Token.Hash(ParseHash(reader)); break;
+                        //
+                        // Single- or double-quoted strings
+                        //
+                        case '\"':
+                        case '\'': yield return ParseString(reader, /* quote */ ch.Value); break;
+
+                        default:
                             throw new FormatException(string.Format("Invalid character at position {0}.", reader.Position));
-                        
-                        switch (ch)
-                        {
-                            case '^': yield return Token.PrefixMatch(); break;
-                            case '$': yield return Token.SuffixMatch(); break;
-                        }
-                        break;
                     }
-                    //
-                    // Single-character punctuation
-                    //
-                    case '.': yield return Token.Dot(); break;
-                    case ':':  yield return Token.Colon(); break;
-                    case ',':  yield return Token.Comma(); break;
-                    case '=':  yield return Token.Equals(); break;
-                    case '[':  yield return Token.LeftBracket(); break;
-                    case ']':  yield return Token.RightBracket(); break;
-                    case ')':  yield return Token.RightParenthesis(); break;
-                    case '+': yield return Token.Plus(); break;
-                    case '>':  yield return Token.Greater(); break;
-                    case '#':  yield return Token.Hash(ParseHash(reader)); break;
-                    //
-                    // Single- or double-quoted strings
-                    //
-                    case '\"':
-                    case '\'': yield return ParseString(reader, /* quote */ ch.Value); break;
-                    
-                    default:
-                        throw new FormatException(string.Format("Invalid character at position {0}.", reader.Position));
-                }
             }
             yield return Token.Eoi();
         }
@@ -204,12 +204,12 @@ namespace Fizzler
 
             char? ch;
             StringBuilder sb = null;
-            
+
             while ((ch = reader.Read()) != quote)
             {
                 if (ch == null)
                     throw new FormatException(string.Format("Unterminated string at position {0}.", strpos));
-                
+
                 if (ch == '\\')
                 {
                     ch = reader.Read();
@@ -217,18 +217,18 @@ namespace Fizzler
                     //
                     // NOTE: Only escaping of quote and backslash supported!
                     //
-                    
+
                     if (ch != quote && ch != '\\')
                         throw new FormatException(string.Format("Invalid escape sequence at position {0} in a string at position {1}.", reader.Position, strpos));
-                    
+
                     if (sb == null)
                         sb = new StringBuilder();
-                    
+
                     sb.Append(reader.MarkedExceptLast());
                     reader.Mark();
                 }
             }
-            
+
             var text = reader.Marked();
 
             if (sb != null)
@@ -251,7 +251,7 @@ namespace Fizzler
         {
             return ch == '_'
                 || (ch >= 'a' && ch <= 'z')
-                || (ch >= 'A' && ch <= 'Z');                
+                || (ch >= 'A' && ch <= 'Z');
         }
 
         private static bool IsNmChar(char? ch) // [_a-z0-9-]|{nonascii}|{escape}
@@ -273,7 +273,7 @@ namespace Fizzler
             private bool Ready { get { return _index >= 0 && _index < _input.Length; } }
             public char? Value { get { return Ready ? _input[_index] : (char?)null; } }
             public int Position { get { return _index + 1; } }
-          
+
             public void Mark()
             {
                 _start = _index;

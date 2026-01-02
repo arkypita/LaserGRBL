@@ -10,50 +10,50 @@ using System.Windows.Forms;
 
 namespace LaserGRBL
 {
-	public partial class SplashScreenForm : Form
-	{
-		private string mVersion;
+    public partial class SplashScreenForm : Form
+    {
+        private string mVersion;
 
-		public SplashScreenForm()
-		{
-			InitializeComponent();
-			this.Size = BackgroundImage.Size;
-			this.DoubleBuffered = true;
-			mVersion = "v" + Program.CurrentVersion.ToString(3);
-		}
+        public SplashScreenForm()
+        {
+            InitializeComponent();
+            this.Size = BackgroundImage.Size;
+            this.DoubleBuffered = true;
+            mVersion = "v" + Program.CurrentVersion.ToString(3);
+        }
 
-		protected override void OnPaint(PaintEventArgs e)
-		{
-			base.OnPaint(e);
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
 
-			SizeF s = e.Graphics.MeasureString(mVersion, Font);
-			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-			e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-			e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-			e.Graphics.DrawString(mVersion, Font, Brushes.Black,  Width - s.Width -3 , Height - s.Height - 3);
-			//e.Graphics.DrawRectangle(Pens.DarkGray, 2, 2, Width - 5, Height - 5);
-		}
+            SizeF s = e.Graphics.MeasureString(mVersion, Font);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            e.Graphics.DrawString(mVersion, Font, Brushes.Black, Width - s.Width - 3, Height - s.Height - 3);
+            //e.Graphics.DrawRectangle(Pens.DarkGray, 2, 2, Width - 5, Height - 5);
+        }
 
-		private void SplashScreenForm_Load(object sender, EventArgs e)
-		{
-			timer1.Start();
-		}
+        private void SplashScreenForm_Load(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
 
-		private void timer1_Tick(object sender, EventArgs e)
-		{
-			CloseAndGoMain();
-		}
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            CloseAndGoMain();
+        }
 
-		private void pictureBox1_Click(object sender, EventArgs e)
-		{
-			CloseAndGoMain();
-		}
-		
-		private void CloseAndGoMain()
-		{
-			timer1.Enabled = false;
-			Close();
-			
-		}
-	}
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            CloseAndGoMain();
+        }
+
+        private void CloseAndGoMain()
+        {
+            timer1.Enabled = false;
+            Close();
+
+        }
+    }
 }

@@ -25,7 +25,8 @@ namespace RJCP.IO.Ports.Native.Windows
 
         public void GetCommProperties()
         {
-            if (!Kernel32.GetCommProperties(m_ComPortHandle, out m_CommProp)) {
+            if (!Kernel32.GetCommProperties(m_ComPortHandle, out m_CommProp))
+            {
                 throw new IOException("Unable to get Serial Port properties", Marshal.GetLastWin32Error());
             }
         }
@@ -71,13 +72,14 @@ namespace RJCP.IO.Ports.Native.Windows
         public bool IsValidDataBits(int databits)
         {
             if ((databits < 5 || databits > 8) && databits != 16) return false;
-            switch (databits) {
-            case 5: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableData.DATABITS_5];
-            case 6: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableData.DATABITS_6];
-            case 7: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableData.DATABITS_7];
-            case 8: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableData.DATABITS_8];
-            case 16: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableData.DATABITS_16];
-            default: return false;
+            switch (databits)
+            {
+                case 5: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableData.DATABITS_5];
+                case 6: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableData.DATABITS_6];
+                case 7: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableData.DATABITS_7];
+                case 8: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableData.DATABITS_8];
+                case 16: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableData.DATABITS_16];
+                default: return false;
             }
         }
 
@@ -88,11 +90,12 @@ namespace RJCP.IO.Ports.Native.Windows
         /// <returns><see langword="true"/> if the number of stop bits is indicated as supported.</returns>
         public bool IsValidStopBits(StopBits stopbits)
         {
-            switch (stopbits) {
-            case StopBits.One: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.STOPBITS_10];
-            case StopBits.One5: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.STOPBITS_15];
-            case StopBits.Two: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.STOPBITS_20];
-            default: return false;
+            switch (stopbits)
+            {
+                case StopBits.One: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.STOPBITS_10];
+                case StopBits.One5: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.STOPBITS_15];
+                case StopBits.Two: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.STOPBITS_20];
+                default: return false;
             }
         }
 
@@ -103,13 +106,14 @@ namespace RJCP.IO.Ports.Native.Windows
         /// <returns><see langword="true"/> if the parity is indicated as supported.</returns>
         public bool IsValidParity(Parity parity)
         {
-            switch (parity) {
-            case Parity.None: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.PARITY_NONE];
-            case Parity.Odd: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.PARITY_ODD];
-            case Parity.Even: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.PARITY_EVEN];
-            case Parity.Mark: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.PARITY_MARK];
-            case Parity.Space: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.PARITY_SPACE];
-            default: return false;
+            switch (parity)
+            {
+                case Parity.None: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.PARITY_NONE];
+                case Parity.Odd: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.PARITY_ODD];
+                case Parity.Even: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.PARITY_EVEN];
+                case Parity.Mark: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.PARITY_MARK];
+                case Parity.Space: return m_CommProp.dwSettableDataStopParity[(int)Kernel32.SettableStopParity.PARITY_SPACE];
+                default: return false;
             }
         }
 
@@ -125,27 +129,28 @@ namespace RJCP.IO.Ports.Native.Windows
         public bool IsValidBaud(int baudrate)
         {
             if (baudrate <= 0) return false;
-            switch (baudrate) {
-            case 75: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_075];
-            case 110: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_110];
-            case 134: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_134_5];
-            case 150: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_150];
-            case 300: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_300];
-            case 600: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_600];
-            case 1200: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_1200];
-            case 1800: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_1800];
-            case 2400: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_2400];
-            case 4800: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_4800];
-            case 7200: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_7200];
-            case 9600: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_9600];
-            case 14400: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_14400];
-            case 19200: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_19200];
-            case 38400: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_38400];
-            case 56000: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_56K];
-            case 57600: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_57600];
-            case 115200: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_115200];
-            case 128000: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_128K];
-            default: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_USER];
+            switch (baudrate)
+            {
+                case 75: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_075];
+                case 110: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_110];
+                case 134: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_134_5];
+                case 150: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_150];
+                case 300: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_300];
+                case 600: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_600];
+                case 1200: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_1200];
+                case 1800: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_1800];
+                case 2400: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_2400];
+                case 4800: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_4800];
+                case 7200: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_7200];
+                case 9600: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_9600];
+                case 14400: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_14400];
+                case 19200: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_19200];
+                case 38400: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_38400];
+                case 56000: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_56K];
+                case 57600: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_57600];
+                case 115200: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_115200];
+                case 128000: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_128K];
+                default: return m_CommProp.dwSettableBaud[(int)Kernel32.MaxBaud.BAUD_USER];
             }
         }
     }

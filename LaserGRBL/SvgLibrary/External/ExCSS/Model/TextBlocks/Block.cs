@@ -3,7 +3,7 @@ namespace ExCSS.Model.TextBlocks
 {
     internal abstract class Block
     {
-        internal GrammarSegment GrammarSegment { get;set; }
+        internal GrammarSegment GrammarSegment { get; set; }
 
         internal static PipeBlock Column
         {

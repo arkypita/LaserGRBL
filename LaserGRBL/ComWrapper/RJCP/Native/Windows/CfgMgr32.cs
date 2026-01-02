@@ -17,14 +17,16 @@
         public static unsafe CONFIGRET CM_Get_Device_ID_List(string filter, out string[] buffer)
         {
             CONFIGRET ret = CM_Get_Device_ID_List_Size(out int length, filter, 0);
-            if (ret != CONFIGRET.CR_SUCCESS) {
+            if (ret != CONFIGRET.CR_SUCCESS)
+            {
                 buffer = null;
                 return ret;
             }
 
             char[] blob = new char[length];
             ret = CM_Get_Device_ID_List(filter, blob, length, 0);
-            if (ret != CONFIGRET.CR_SUCCESS) {
+            if (ret != CONFIGRET.CR_SUCCESS)
+            {
                 buffer = null;
                 return ret;
             }
@@ -55,18 +57,21 @@
         {
             int length = 0;
             CONFIGRET ret = CM_Get_DevNode_Registry_Property(devInst, property, out dataType, IntPtr.Zero, ref length, 0);
-            if (ret != CONFIGRET.CR_SUCCESS && ret != CONFIGRET.CR_BUFFER_SMALL) {
+            if (ret != CONFIGRET.CR_SUCCESS && ret != CONFIGRET.CR_BUFFER_SMALL)
+            {
                 buffer = string.Empty;
                 return ret;
             }
 
-            if (length <= 0) {
+            if (length <= 0)
+            {
                 buffer = string.Empty;
                 return CONFIGRET.CR_UNEXPECTED_LENGTH;
             }
 
             Kernel32.REG_DATATYPE regDataType = (Kernel32.REG_DATATYPE)dataType;
-            if (regDataType != Kernel32.REG_DATATYPE.REG_SZ) {
+            if (regDataType != Kernel32.REG_DATATYPE.REG_SZ)
+            {
                 buffer = string.Empty;
                 return CONFIGRET.CR_UNEXPECTED_TYPE;
             }
@@ -74,10 +79,12 @@
             if (length % 2 == 1) length++;
             int bloblen = length / 2;
 
-            if (length <= MaxLengthStack) {
+            if (length <= MaxLengthStack)
+            {
                 char* blob = stackalloc char[bloblen];
                 ret = CM_Get_DevNode_Registry_Property(devInst, property, out _, blob, ref length, 0);
-                if (ret != CONFIGRET.CR_SUCCESS) {
+                if (ret != CONFIGRET.CR_SUCCESS)
+                {
                     buffer = string.Empty;
                     return ret;
                 }
@@ -85,12 +92,15 @@
                 // Subtract one for the NUL at the end.
                 if (blob[bloblen - 1] == (char)0) bloblen--;
                 buffer = new string(blob, 0, bloblen);
-            } else {
+            }
+            else
+            {
                 // NETSTANDARD 1.5 doesn't have ArrayPool.
 
                 char[] blob = new char[bloblen];
                 ret = CM_Get_DevNode_Registry_Property(devInst, property, out _, blob, ref length, 0);
-                if (ret != CONFIGRET.CR_SUCCESS) {
+                if (ret != CONFIGRET.CR_SUCCESS)
+                {
                     buffer = string.Empty;
                     return ret;
                 }

@@ -12,7 +12,7 @@ namespace SharpGL.SceneGraph.Shaders
     /// <summary>
     /// The Shader base class.
     /// </summary>
-    public class ShaderProgram : 
+    public class ShaderProgram :
         Effect,
         IHasOpenGLContext
     {
@@ -177,7 +177,7 @@ namespace SharpGL.SceneGraph.Shaders
         {
             CurrentOpenGLContext.Uniform1(
         }*/
-        
+
         /// <summary>
         /// The set of attached shaders.
         /// </summary>

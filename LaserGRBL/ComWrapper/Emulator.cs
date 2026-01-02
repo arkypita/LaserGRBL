@@ -13,67 +13,67 @@ using System.Net;
 
 namespace LaserGRBL.ComWrapper
 {
-	class Emulator : IComWrapper
-	{
-		private LaserGRBL.GrblEmulator.Grblv11Emulator emu;
-		private bool opened;
-		private bool closing;
-		private Queue<string> buffer = new Queue<string>();
+    class Emulator : IComWrapper
+    {
+        private LaserGRBL.GrblEmulator.Grblv11Emulator emu;
+        private bool opened;
+        private bool closing;
+        private Queue<string> buffer = new Queue<string>();
 
-		public Emulator()
-		{
-			emu = new GrblEmulator.Grblv11Emulator(SendData);
-		}
+        public Emulator()
+        {
+            emu = new GrblEmulator.Grblv11Emulator(SendData);
+        }
 
-		private void SendData(string message)
-		{
-			foreach (string line in message.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries))
-				buffer.Enqueue(line); 
-		}
+        private void SendData(string message)
+        {
+            foreach (string line in message.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries))
+                buffer.Enqueue(line);
+        }
 
-		public void Configure(params object[] param)
-		{
-			
-		}
+        public void Configure(params object[] param)
+        {
 
-		public void Open()
-		{
-			if (!opened)
-			{
-				GrblEmulator.EmulatorUI.ShowUI("Grbl Emulator v1.1#");
+        }
 
-				closing = false;
+        public void Open()
+        {
+            if (!opened)
+            {
+                GrblEmulator.EmulatorUI.ShowUI("Grbl Emulator v1.1#");
+
+                closing = false;
                 ComLogger.Log("com", "Open Emulator");
                 emu.OpenCom();
-				buffer.Clear();
-				opened = true;
-			}
+                buffer.Clear();
+                opened = true;
+            }
 
 
-		}
+        }
 
-		public void Close(bool auto)
-		{
-			if (opened)
-			{
-				closing = true;
+        public void Close(bool auto)
+        {
+            if (opened)
+            {
+                closing = true;
                 ComLogger.Log("com", String.Format("Close Emulator [{0}]", auto ? "CORE" : "USER"));
                 emu.CloseCom();
-				buffer.Clear();
-				opened = false;
-			}
-		}
+                buffer.Clear();
+                opened = false;
+            }
+        }
 
-		public bool IsOpen
-		{
-			get { return opened; }
-		}
+        public bool IsOpen
+        {
+            get { return opened; }
+        }
 
-		public void Write(byte b)
-		{
+        public void Write(byte b)
+        {
             ComLogger.Log("tx", b);
             emu.ManageMessage(new byte[] { b });
-		}
+        }
 
         public void Write(byte[] arr)
         {
@@ -82,31 +82,31 @@ namespace LaserGRBL.ComWrapper
         }
 
         public void Write(string text)
-		{
+        {
             ComLogger.Log("tx", text);
             emu.ManageMessage(Encoding.UTF8.GetBytes(text));
-		}
+        }
 
-		public string ReadLineBlocking()
-		{
-			string rv = null;
-			while (IsOpen && rv == null) //wait for disconnect or data
-			{
-				if (closing)
-					throw new System.IO.EndOfStreamException("Connection closed");
-				if (buffer.Count > 0)
-					rv = buffer.Dequeue();
-				else
-					System.Threading.Thread.Sleep(10);
-			}
+        public string ReadLineBlocking()
+        {
+            string rv = null;
+            while (IsOpen && rv == null) //wait for disconnect or data
+            {
+                if (closing)
+                    throw new System.IO.EndOfStreamException("Connection closed");
+                if (buffer.Count > 0)
+                    rv = buffer.Dequeue();
+                else
+                    System.Threading.Thread.Sleep(10);
+            }
 
             if (rv != null)
                 ComLogger.Log("rx", rv);
             return rv;
-		}
+        }
 
-		public bool HasData()
-		{ return IsOpen && buffer.Count > 0; }
-	}
+        public bool HasData()
+        { return IsOpen && buffer.Count > 0; }
+    }
 
 }

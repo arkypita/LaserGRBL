@@ -66,15 +66,15 @@ namespace CsPotrace.BezierToBiarc
         {
             get { return r * Math.Abs(sweepAngle); }
         }
-        
+
         public float LinearLength
         {
-        	get
-        	{
-        		float dX = P2.X - P1.X;
-				float dY = P2.Y - P2.Y;
-				return (float)Math.Sqrt(dX * dX + dY * dY);
-        	}
+            get
+            {
+                float dX = P2.X - P1.X;
+                float dY = P2.Y - P2.Y;
+                return (float)Math.Sqrt(dX * dX + dY * dY);
+            }
         }
     }
 }

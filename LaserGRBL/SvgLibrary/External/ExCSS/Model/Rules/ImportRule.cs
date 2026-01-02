@@ -9,12 +9,12 @@ namespace ExCSS
         private string _href;
         private readonly MediaTypeList _media;
 
-        public ImportRule() 
+        public ImportRule()
         {
             _media = new MediaTypeList();
             RuleType = RuleType.Import;
         }
-      
+
         public string Href
         {
             get { return _href; }

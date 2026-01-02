@@ -50,10 +50,10 @@ namespace Svg.Transforms
         }
 
 
-		public override object Clone()
-		{
-			return new SvgTranslate(this.x, this.y);
-		}
+        public override object Clone()
+        {
+            return new SvgTranslate(this.x, this.y);
+        }
 
     }
 }

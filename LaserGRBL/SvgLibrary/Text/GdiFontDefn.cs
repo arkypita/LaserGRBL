@@ -59,15 +59,15 @@ namespace Svg
 
         public SizeF MeasureString(ISvgRenderer renderer, string text)
         {
-		    var g = GetGraphics(renderer);
-		    StringFormat format = StringFormat.GenericTypographic.Clone() as StringFormat;
-		    format.SetMeasurableCharacterRanges(new CharacterRange[] {new CharacterRange(0, text.Length)});
-		    format.FormatFlags |= StringFormatFlags.MeasureTrailingSpaces;
-			Region[] r = g.MeasureCharacterRanges(text, _font, new Rectangle(0, 0, 1000, 1000), format);
-			RectangleF rect = r[0].GetBounds(g);
+            var g = GetGraphics(renderer);
+            StringFormat format = StringFormat.GenericTypographic.Clone() as StringFormat;
+            format.SetMeasurableCharacterRanges(new CharacterRange[] { new CharacterRange(0, text.Length) });
+            format.FormatFlags |= StringFormatFlags.MeasureTrailingSpaces;
+            Region[] r = g.MeasureCharacterRanges(text, _font, new Rectangle(0, 0, 1000, 1000), format);
+            RectangleF rect = r[0].GetBounds(g);
 
-			return new SizeF(rect.Width, Ascent(renderer));
-		}
+            return new SizeF(rect.Width, Ascent(renderer));
+        }
 
         private Graphics _graphics;
         private Graphics GetGraphics(object renderer)

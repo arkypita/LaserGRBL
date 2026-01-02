@@ -114,7 +114,19 @@
 			this.TBPasses = new System.Windows.Forms.TextBox();
 			this.LblFooter = new System.Windows.Forms.Label();
 			this.LblPasses = new System.Windows.Forms.Label();
-			this.TpSoundSettings = new System.Windows.Forms.TabPage();
+			this.TpSounds = new System.Windows.Forms.TabPage();
+			this.TpNotifications = new System.Windows.Forms.TabPage();
+			this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
+			this.CbNtfyNotification = new System.Windows.Forms.CheckBox();
+			this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
+			this.label52 = new System.Windows.Forms.Label();
+			this.TxtNtfyTopic = new System.Windows.Forms.TextBox();
+			this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
+			this.label55 = new System.Windows.Forms.Label();
+			this.UdNtfyNotificationThreshold = new System.Windows.Forms.NumericUpDown();
+			this.label54 = new System.Windows.Forms.Label();
+			this.CbNtfySecondPass = new System.Windows.Forms.CheckBox();
+			this.label53 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
 			this.CbPlaySuccess = new System.Windows.Forms.CheckBox();
 			this.CbPlayWarning = new System.Windows.Forms.CheckBox();
@@ -169,6 +181,12 @@
 			this.UdTelegramNotificationThreshold = new System.Windows.Forms.NumericUpDown();
 			this.label45 = new System.Windows.Forms.Label();
 			this.label42 = new System.Windows.Forms.Label();
+			this.CbCustomScript = new System.Windows.Forms.CheckBox();
+			this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
+			this.TxtCustomScriptPath = new System.Windows.Forms.TextBox();
+			this.BtnBrowseScript = new LaserGRBL.UserControls.GrblButton();
+			this.label51 = new System.Windows.Forms.Label();
+			this.ScriptBrowserDialog = new System.Windows.Forms.OpenFileDialog();
 			this.TpOptions = new System.Windows.Forms.TabPage();
 			this.Tlp = new System.Windows.Forms.TableLayoutPanel();
 			this.CBGraphicMode = new LaserGRBL.UserControls.FlatComboBox();
@@ -202,7 +220,10 @@
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
-			this.TpSoundSettings.SuspendLayout();
+			this.TpSounds.SuspendLayout();
+			this.TpNotifications.SuspendLayout();
+			this.tableLayoutPanel21.SuspendLayout();
+			this.tableLayoutPanel22.SuspendLayout();
 			this.tableLayoutPanel16.SuspendLayout();
 			this.tableLayoutPanel10.SuspendLayout();
 			this.tableLayoutPanel11.SuspendLayout();
@@ -213,6 +234,11 @@
 			this.tableLayoutPanel17.SuspendLayout();
 			this.tableLayoutPanel19.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.UdTelegramNotificationThreshold)).BeginInit();
+			this.tableLayoutPanel21.SuspendLayout();
+			this.tableLayoutPanel22.SuspendLayout();
+			this.tableLayoutPanel23.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.UdNtfyNotificationThreshold)).BeginInit();
+			this.tableLayoutPanel20.SuspendLayout();
 			this.TpOptions.SuspendLayout();
 			this.Tlp.SuspendLayout();
 			this.SuspendLayout();
@@ -254,7 +280,8 @@
 			this.MainTabPage.Controls.Add(this.TpJogControl);
 			this.MainTabPage.Controls.Add(this.TpAutoCooling);
 			this.MainTabPage.Controls.Add(this.TpGCodeSettings);
-			this.MainTabPage.Controls.Add(this.TpSoundSettings);
+			this.MainTabPage.Controls.Add(this.TpSounds);
+			this.MainTabPage.Controls.Add(this.TpNotifications);
 			this.MainTabPage.Controls.Add(this.TpOptions);
 			resources.ApplyResources(this.MainTabPage, "MainTabPage");
 			this.MainTabPage.Name = "MainTabPage";
@@ -837,13 +864,13 @@
 			resources.ApplyResources(this.LblPasses, "LblPasses");
 			this.LblPasses.Name = "LblPasses";
 			// 
-			// TpSoundSettings
+			// TpSounds
 			// 
-			this.TpSoundSettings.Controls.Add(this.tableLayoutPanel16);
-			this.TpSoundSettings.Controls.Add(this.tableLayoutPanel10);
-			resources.ApplyResources(this.TpSoundSettings, "TpSoundSettings");
-			this.TpSoundSettings.Name = "TpSoundSettings";
-			this.TpSoundSettings.UseVisualStyleBackColor = true;
+			this.TpSounds.Controls.Add(this.tableLayoutPanel16);
+			this.TpSounds.Controls.Add(this.tableLayoutPanel10);
+			resources.ApplyResources(this.TpSounds, "TpSounds");
+			this.TpSounds.Name = "TpSounds";
+			this.TpSounds.UseVisualStyleBackColor = true;
 			// 
 			// tableLayoutPanel16
 			// 
@@ -889,7 +916,6 @@
 			// tableLayoutPanel10
 			// 
 			resources.ApplyResources(this.tableLayoutPanel10, "tableLayoutPanel10");
-			this.tableLayoutPanel10.Controls.Add(this.CbTelegramNotification, 0, 6);
 			this.tableLayoutPanel10.Controls.Add(this.DisconnectFullLabel, 0, 4);
 			this.tableLayoutPanel10.Controls.Add(this.ConnectFullLabel, 0, 3);
 			this.tableLayoutPanel10.Controls.Add(this.ErrorFullLabel, 0, 2);
@@ -905,8 +931,6 @@
 			this.tableLayoutPanel10.Controls.Add(this.label32, 2, 3);
 			this.tableLayoutPanel10.Controls.Add(this.label36, 2, 4);
 			this.tableLayoutPanel10.Controls.Add(this.label28, 2, 2);
-			this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel17, 1, 6);
-			this.tableLayoutPanel10.Controls.Add(this.label42, 2, 6);
 			this.tableLayoutPanel10.Name = "tableLayoutPanel10";
 			// 
 			// CbTelegramNotification
@@ -1205,6 +1229,129 @@
 			resources.ApplyResources(this.label42, "label42");
 			this.label42.Name = "label42";
 			// 
+			// CbCustomScript
+			// 
+			resources.ApplyResources(this.CbCustomScript, "CbCustomScript");
+			this.CbCustomScript.Name = "CbCustomScript";
+			this.CbCustomScript.UseVisualStyleBackColor = true;
+			this.CbCustomScript.CheckedChanged += new System.EventHandler(this.CbCustomScript_CheckedChanged);
+			// 
+			// tableLayoutPanel20
+			// 
+			resources.ApplyResources(this.tableLayoutPanel20, "tableLayoutPanel20");
+			this.tableLayoutPanel20.Controls.Add(this.TxtCustomScriptPath, 0, 0);
+			this.tableLayoutPanel20.Controls.Add(this.BtnBrowseScript, 1, 0);
+			this.tableLayoutPanel20.Name = "tableLayoutPanel20";
+			// 
+			// TxtCustomScriptPath
+			// 
+			resources.ApplyResources(this.TxtCustomScriptPath, "TxtCustomScriptPath");
+			this.TxtCustomScriptPath.Name = "TxtCustomScriptPath";
+			this.TxtCustomScriptPath.ReadOnly = true;
+			// 
+			// BtnBrowseScript
+			// 
+			resources.ApplyResources(this.BtnBrowseScript, "BtnBrowseScript");
+			this.BtnBrowseScript.Name = "BtnBrowseScript";
+			this.BtnBrowseScript.UseVisualStyleBackColor = true;
+			this.BtnBrowseScript.Click += new System.EventHandler(this.BtnBrowseScript_Click);
+			// 
+			// label51
+			// 
+			resources.ApplyResources(this.label51, "label51");
+			this.label51.Name = "label51";
+			// 
+			// ScriptBrowserDialog
+			// 
+			this.ScriptBrowserDialog.Filter = "PowerShell Scripts|*.ps1";
+			this.ScriptBrowserDialog.Title = "Select Job Completion Script";
+			// 
+			// TpNotifications
+			// 
+			this.TpNotifications.Controls.Add(this.tableLayoutPanel21);
+			resources.ApplyResources(this.TpNotifications, "TpNotifications");
+			this.TpNotifications.Name = "TpNotifications";
+			this.TpNotifications.UseVisualStyleBackColor = true;
+			// 
+			// tableLayoutPanel21
+			// 
+			resources.ApplyResources(this.tableLayoutPanel21, "tableLayoutPanel21");
+			this.tableLayoutPanel21.Controls.Add(this.CbTelegramNotification, 0, 0);
+			this.tableLayoutPanel21.Controls.Add(this.tableLayoutPanel17, 1, 0);
+			this.tableLayoutPanel21.Controls.Add(this.label42, 2, 0);
+			this.tableLayoutPanel21.Controls.Add(this.CbCustomScript, 0, 1);
+			this.tableLayoutPanel21.Controls.Add(this.tableLayoutPanel20, 1, 1);
+			this.tableLayoutPanel21.Controls.Add(this.label51, 2, 1);
+			this.tableLayoutPanel21.Controls.Add(this.CbNtfyNotification, 0, 2);
+			this.tableLayoutPanel21.Controls.Add(this.tableLayoutPanel22, 1, 2);
+			this.tableLayoutPanel21.Controls.Add(this.label53, 2, 2);
+			this.tableLayoutPanel21.Name = "tableLayoutPanel21";
+			// 
+			// CbNtfyNotification
+			// 
+			resources.ApplyResources(this.CbNtfyNotification, "CbNtfyNotification");
+			this.CbNtfyNotification.Name = "CbNtfyNotification";
+			this.CbNtfyNotification.UseVisualStyleBackColor = true;
+			// 
+			// tableLayoutPanel22
+			// 
+			resources.ApplyResources(this.tableLayoutPanel22, "tableLayoutPanel22");
+			this.tableLayoutPanel22.Controls.Add(this.label52, 0, 0);
+			this.tableLayoutPanel22.Controls.Add(this.TxtNtfyTopic, 1, 0);
+			this.tableLayoutPanel22.Controls.Add(this.tableLayoutPanel23, 0, 1);
+			this.tableLayoutPanel22.Name = "tableLayoutPanel22";
+			// 
+			// label52
+			// 
+			resources.ApplyResources(this.label52, "label52");
+			this.label52.Name = "label52";
+			// 
+			// TxtNtfyTopic
+			// 
+			resources.ApplyResources(this.TxtNtfyTopic, "TxtNtfyTopic");
+			this.TxtNtfyTopic.Name = "TxtNtfyTopic";
+			this.TxtNtfyTopic.BackColor = System.Drawing.SystemColors.Window;
+			// 
+			// tableLayoutPanel23
+			// 
+			resources.ApplyResources(this.tableLayoutPanel23, "tableLayoutPanel23");
+			this.tableLayoutPanel23.Controls.Add(this.label55, 0, 0);
+			this.tableLayoutPanel23.Controls.Add(this.UdNtfyNotificationThreshold, 0, 1);
+			this.tableLayoutPanel23.Controls.Add(this.label54, 1, 1);
+			this.tableLayoutPanel23.Controls.Add(this.CbNtfySecondPass, 0, 2);
+			this.tableLayoutPanel23.Name = "tableLayoutPanel23";
+			// 
+			// label55
+			// 
+			resources.ApplyResources(this.label55, "label55");
+			this.label55.Name = "label55";
+			// 
+			// UdNtfyNotificationThreshold
+			// 
+			resources.ApplyResources(this.UdNtfyNotificationThreshold, "UdNtfyNotificationThreshold");
+			this.UdNtfyNotificationThreshold.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.UdNtfyNotificationThreshold.Name = "UdNtfyNotificationThreshold";
+			// 
+			// label54
+			// 
+			resources.ApplyResources(this.label54, "label54");
+			this.label54.Name = "label54";
+			// 
+			// CbNtfySecondPass
+			// 
+			resources.ApplyResources(this.CbNtfySecondPass, "CbNtfySecondPass");
+			this.CbNtfySecondPass.Name = "CbNtfySecondPass";
+			this.CbNtfySecondPass.UseVisualStyleBackColor = true;
+			// 
+			// label53
+			// 
+			resources.ApplyResources(this.label53, "label53");
+			this.label53.Name = "label53";
+			// 
 			// TpOptions
 			// 
 			this.TpOptions.Controls.Add(this.Tlp);
@@ -1338,8 +1485,17 @@
 			this.groupBox2.PerformLayout();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
-			this.TpSoundSettings.ResumeLayout(false);
-			this.TpSoundSettings.PerformLayout();
+			this.TpSounds.ResumeLayout(false);
+			this.TpSounds.PerformLayout();
+			this.TpNotifications.ResumeLayout(false);
+			this.TpNotifications.PerformLayout();
+			this.tableLayoutPanel21.ResumeLayout(false);
+			this.tableLayoutPanel21.PerformLayout();
+			this.tableLayoutPanel22.ResumeLayout(false);
+			this.tableLayoutPanel22.PerformLayout();
+			this.tableLayoutPanel23.ResumeLayout(false);
+			this.tableLayoutPanel23.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.UdNtfyNotificationThreshold)).EndInit();
 			this.tableLayoutPanel16.ResumeLayout(false);
 			this.tableLayoutPanel16.PerformLayout();
 			this.tableLayoutPanel10.ResumeLayout(false);
@@ -1354,11 +1510,17 @@
 			this.tableLayoutPanel15.PerformLayout();
 			this.tableLayoutPanel13.ResumeLayout(false);
 			this.tableLayoutPanel13.PerformLayout();
+			this.TpNotifications.ResumeLayout(false);
+			this.TpNotifications.PerformLayout();
+			this.tableLayoutPanel21.ResumeLayout(false);
+			this.tableLayoutPanel21.PerformLayout();
 			this.tableLayoutPanel17.ResumeLayout(false);
 			this.tableLayoutPanel17.PerformLayout();
 			this.tableLayoutPanel19.ResumeLayout(false);
 			this.tableLayoutPanel19.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.UdTelegramNotificationThreshold)).EndInit();
+			this.tableLayoutPanel20.ResumeLayout(false);
+			this.tableLayoutPanel20.PerformLayout();
 			this.TpOptions.ResumeLayout(false);
 			this.TpOptions.PerformLayout();
 			this.Tlp.ResumeLayout(false);
@@ -1439,8 +1601,10 @@
 		private LaserGRBL.UserControls.GrblGroupBox groupBox3;
 		private System.Windows.Forms.TextBox TBPasses;
         private UserControls.ImageButton BtnFType;
-        private System.Windows.Forms.TabPage TpSoundSettings;
+        private System.Windows.Forms.TabPage TpSounds;
+        private System.Windows.Forms.TabPage TpNotifications;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
@@ -1522,5 +1686,21 @@
 		private UserControls.ImageButton BtnRenderingMode;
 		private System.Windows.Forms.Label label49;
 		private System.Windows.Forms.Label label50;
+		private System.Windows.Forms.CheckBox CbCustomScript;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
+		private System.Windows.Forms.TextBox TxtCustomScriptPath;
+		private UserControls.GrblButton BtnBrowseScript;
+		private System.Windows.Forms.Label label51;
+		private System.Windows.Forms.CheckBox CbNtfyNotification;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel22;
+		private System.Windows.Forms.Label label52;
+		private System.Windows.Forms.TextBox TxtNtfyTopic;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel23;
+		private System.Windows.Forms.Label label55;
+		private System.Windows.Forms.NumericUpDown UdNtfyNotificationThreshold;
+		private System.Windows.Forms.Label label54;
+		private System.Windows.Forms.CheckBox CbNtfySecondPass;
+		private System.Windows.Forms.Label label53;
+		private System.Windows.Forms.OpenFileDialog ScriptBrowserDialog;
 	}
 }

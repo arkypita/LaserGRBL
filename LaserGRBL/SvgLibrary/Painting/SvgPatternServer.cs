@@ -43,13 +43,13 @@ namespace Svg
             get { return this._viewBox; }
             set { this._viewBox = value; }
         }
-        
+
         /// <summary>
         /// Gets or sets the aspect of the viewport.
         /// </summary>
         /// <value></value>
         [SvgAttribute("preserveAspectRatio")]
-        public SvgAspectRatio AspectRatio 
+        public SvgAspectRatio AspectRatio
         {
             get;
             set;
@@ -217,11 +217,11 @@ namespace Svg
                     float height = yScale * NormalizeUnit(heightElem.Height).ToDeviceValue(renderer, UnitRenderingType.Vertical, this);
 
                     // Apply a scale if needed
-                    patternMatrix.Scale((patternContentUnits == SvgCoordinateUnits.ObjectBoundingBox ? bounds.Width : 1) * 
+                    patternMatrix.Scale((patternContentUnits == SvgCoordinateUnits.ObjectBoundingBox ? bounds.Width : 1) *
                                         (viewBox.Width > 0 ? width / viewBox.Width : 1),
-                                        (patternContentUnits == SvgCoordinateUnits.ObjectBoundingBox ? bounds.Height : 1) * 
+                                        (patternContentUnits == SvgCoordinateUnits.ObjectBoundingBox ? bounds.Height : 1) *
                                         (viewBox.Height > 0 ? height / viewBox.Height : 1), MatrixOrder.Prepend);
-                    
+
                     Bitmap image = new Bitmap((int)width, (int)height);
                     using (var iRenderer = SvgRenderer.FromImage(image))
                     {

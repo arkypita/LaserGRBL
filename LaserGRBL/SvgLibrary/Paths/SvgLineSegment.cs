@@ -17,11 +17,11 @@ namespace Svg.Pathing
         {
             graphicsPath.AddLine(this.Start, this.End);
         }
-        
+
         public override string ToString()
-		{
-        	return "L" + this.End.ToSvgString();
-		}
+        {
+            return "L" + this.End.ToSvgString();
+        }
 
     }
 }

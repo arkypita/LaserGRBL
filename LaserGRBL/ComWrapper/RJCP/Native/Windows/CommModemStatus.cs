@@ -23,7 +23,8 @@ namespace RJCP.IO.Ports.Native.Windows
 
         public void GetCommModemStatus()
         {
-            if (!Kernel32.GetCommModemStatus(m_ComPortHandle, out Kernel32.ModemStat s)) {
+            if (!Kernel32.GetCommModemStatus(m_ComPortHandle, out Kernel32.ModemStat s))
+            {
                 throw new IOException("Unable to get serial port modem state", Marshal.GetLastWin32Error());
             }
 
@@ -40,28 +41,32 @@ namespace RJCP.IO.Ports.Native.Windows
 
         public void ClearCommBreak()
         {
-            if (!Kernel32.ClearCommBreak(m_ComPortHandle)) {
+            if (!Kernel32.ClearCommBreak(m_ComPortHandle))
+            {
                 throw new IOException("Unable to clear the serial break state", Marshal.GetLastWin32Error());
             }
         }
 
         public void SetCommBreak()
         {
-            if (!Kernel32.SetCommBreak(m_ComPortHandle)) {
+            if (!Kernel32.SetCommBreak(m_ComPortHandle))
+            {
                 throw new IOException("Unable to set the serial break state", Marshal.GetLastWin32Error());
             }
         }
 
         public void SetDtr(bool value)
         {
-            if (!Kernel32.EscapeCommFunction(m_ComPortHandle, value ? Kernel32.ExtendedFunctions.SETDTR : Kernel32.ExtendedFunctions.CLRDTR)) {
+            if (!Kernel32.EscapeCommFunction(m_ComPortHandle, value ? Kernel32.ExtendedFunctions.SETDTR : Kernel32.ExtendedFunctions.CLRDTR))
+            {
                 throw new IOException("Unable to set DTR state explicitly", Marshal.GetLastWin32Error());
             }
         }
 
         public void SetRts(bool value)
         {
-            if (!Kernel32.EscapeCommFunction(m_ComPortHandle, value ? Kernel32.ExtendedFunctions.SETRTS : Kernel32.ExtendedFunctions.CLRRTS)) {
+            if (!Kernel32.EscapeCommFunction(m_ComPortHandle, value ? Kernel32.ExtendedFunctions.SETRTS : Kernel32.ExtendedFunctions.CLRRTS))
+            {
                 throw new IOException("Unable to set RTS state explicitly", Marshal.GetLastWin32Error());
             }
         }

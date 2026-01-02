@@ -2,211 +2,211 @@
 
 namespace Base.Mathematics
 {
-	public class MobileAverageCalculator
-	{
-		private int mSize;
-		private int mFilledSize;
+    public class MobileAverageCalculator
+    {
+        private int mSize;
+        private int mFilledSize;
 
-		private long mSum;
-		private long mCur;
-		private long mMax;
-		private long mMin;
-		private long mAvg;
-		private bool mReady;
-
-
-		public MobileAverageCalculator(int size, long init) : this(size)
-		{
-			EnqueueNewSample(init);
-		}
-
-		public MobileAverageCalculator(int size)
-		{
-			mSize = size;
-		}
-
-		public void Reset()
-		{
-			mSum = 0;
-			mCur = 0;
-			mMax = 0;
-			mMin = 0;
-			mAvg = 0;
-			mFilledSize = 0;
-			mReady = false;
-		}
-
-		public void EnqueueNewSample(long value)
-		{
-			if (mReady)
-				mSum = mSum - (mSum / mSize) + value;
-			else
-			{
-				mSum = value * mSize;
-				mReady = true;
-			}
-
-			if ((mFilledSize < mSize))
-				mFilledSize += 1;
+        private long mSum;
+        private long mCur;
+        private long mMax;
+        private long mMin;
+        private long mAvg;
+        private bool mReady;
 
 
-			mCur = value;
-			mMax = Math.Max(mMax, mCur);
-			mMin = Math.Min(mMin, mCur);
-			mAvg = mSum / mSize;
-		}
+        public MobileAverageCalculator(int size, long init) : this(size)
+        {
+            EnqueueNewSample(init);
+        }
 
-		public void Resize(int newSize)
-		{
-			mSum = mAvg * newSize;
-			mSize = newSize;
-		}
+        public MobileAverageCalculator(int size)
+        {
+            mSize = size;
+        }
 
-		public long CurrentValue
-		{
-			get
-			{
-				return mCur;
-			}
-		}
+        public void Reset()
+        {
+            mSum = 0;
+            mCur = 0;
+            mMax = 0;
+            mMin = 0;
+            mAvg = 0;
+            mFilledSize = 0;
+            mReady = false;
+        }
 
-		public long Max
-		{
-			get
-			{
-				return mMax;
-			}
-		}
+        public void EnqueueNewSample(long value)
+        {
+            if (mReady)
+                mSum = mSum - (mSum / mSize) + value;
+            else
+            {
+                mSum = value * mSize;
+                mReady = true;
+            }
 
-		public long Min
-		{
-			get
-			{
-				return mMin;
-			}
-		}
-
-		public long Avg
-		{
-			get
-			{
-				return mAvg;
-			}
-		}
-
-		public bool Ready
-		{
-			get
-			{
-				return mReady;
-			}
-		}
-
-		public bool Filled
-		{
-			get
-			{
-				return mFilledSize == mSize;
-			}
-		}
-	}
+            if ((mFilledSize < mSize))
+                mFilledSize += 1;
 
 
-	public class MobileDAverageCalculator
-	{
-		private int mSize;
-		private double mSum;
-		private double mCur;
-		private double mMax;
-		private double mMin;
-		private double mAvg;
-		private bool mReady;
+            mCur = value;
+            mMax = Math.Max(mMax, mCur);
+            mMin = Math.Min(mMin, mCur);
+            mAvg = mSum / mSize;
+        }
 
-		public MobileDAverageCalculator(int size, double init) : this(size)
-		{
-			EnqueueNewSample(init);
-		}
+        public void Resize(int newSize)
+        {
+            mSum = mAvg * newSize;
+            mSize = newSize;
+        }
 
-		public MobileDAverageCalculator(int size)
-		{
-			mSize = size;
-		}
+        public long CurrentValue
+        {
+            get
+            {
+                return mCur;
+            }
+        }
 
-		public void Reset(double init)
-		{
-			Reset();
-			EnqueueNewSample(init);
-		}
-		public void Reset()
-		{
-			mSum = 0;
-			mCur = 0;
-			mMax = 0;
-			mMin = 0;
-			mAvg = 0;
-			mReady = false;
-		}
+        public long Max
+        {
+            get
+            {
+                return mMax;
+            }
+        }
 
-		public void EnqueueNewSample(double value)
-		{
-			if (mReady)
-				mSum = mSum - (mSum / mSize) + value;
-			else
-			{
-				mSum = value * mSize;
-				mReady = true;
-			}
+        public long Min
+        {
+            get
+            {
+                return mMin;
+            }
+        }
 
-			mCur = value;
-			mMax = Math.Max(mMax, mCur);
-			mMin = Math.Min(mMin, mCur);
-			mAvg = mSum / mSize;
-		}
+        public long Avg
+        {
+            get
+            {
+                return mAvg;
+            }
+        }
 
-		public void Resize(int newSize)
-		{
-			mSum = mAvg * newSize;
-			mSize = newSize;
-		}
+        public bool Ready
+        {
+            get
+            {
+                return mReady;
+            }
+        }
 
-		public double CurrentValue
-		{
-			get
-			{
-				return mCur;
-			}
-		}
+        public bool Filled
+        {
+            get
+            {
+                return mFilledSize == mSize;
+            }
+        }
+    }
 
-		public double Max
-		{
-			get
-			{
-				return mMax;
-			}
-		}
 
-		public double Min
-		{
-			get
-			{
-				return mMin;
-			}
-		}
+    public class MobileDAverageCalculator
+    {
+        private int mSize;
+        private double mSum;
+        private double mCur;
+        private double mMax;
+        private double mMin;
+        private double mAvg;
+        private bool mReady;
 
-		public double Avg
-		{
-			get
-			{
-				return mAvg;
-			}
-		}
+        public MobileDAverageCalculator(int size, double init) : this(size)
+        {
+            EnqueueNewSample(init);
+        }
 
-		public bool Ready
-		{
-			get
-			{
-				return mReady;
-			}
-		}
-	}
+        public MobileDAverageCalculator(int size)
+        {
+            mSize = size;
+        }
+
+        public void Reset(double init)
+        {
+            Reset();
+            EnqueueNewSample(init);
+        }
+        public void Reset()
+        {
+            mSum = 0;
+            mCur = 0;
+            mMax = 0;
+            mMin = 0;
+            mAvg = 0;
+            mReady = false;
+        }
+
+        public void EnqueueNewSample(double value)
+        {
+            if (mReady)
+                mSum = mSum - (mSum / mSize) + value;
+            else
+            {
+                mSum = value * mSize;
+                mReady = true;
+            }
+
+            mCur = value;
+            mMax = Math.Max(mMax, mCur);
+            mMin = Math.Min(mMin, mCur);
+            mAvg = mSum / mSize;
+        }
+
+        public void Resize(int newSize)
+        {
+            mSum = mAvg * newSize;
+            mSize = newSize;
+        }
+
+        public double CurrentValue
+        {
+            get
+            {
+                return mCur;
+            }
+        }
+
+        public double Max
+        {
+            get
+            {
+                return mMax;
+            }
+        }
+
+        public double Min
+        {
+            get
+            {
+                return mMin;
+            }
+        }
+
+        public double Avg
+        {
+            get
+            {
+                return mAvg;
+            }
+        }
+
+        public bool Ready
+        {
+            get
+            {
+                return mReady;
+            }
+        }
+    }
 }

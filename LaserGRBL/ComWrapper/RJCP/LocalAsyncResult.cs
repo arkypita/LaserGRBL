@@ -51,16 +51,21 @@ namespace RJCP.IO
         {
             get
             {
-                if (m_Handle == null) {
+                if (m_Handle == null)
+                {
                     bool done = IsCompleted;
                     ManualResetEvent mre = new ManualResetEvent(done);
                     if (Interlocked.CompareExchange(ref m_Handle,
-                        mre, null) != null) {
+                        mre, null) != null)
+                    {
                         // Another thread created this object's event; dispose
                         // the event we just created
                         mre.Dispose();
-                    } else {
-                        if (!done && IsCompleted) {
+                    }
+                    else
+                    {
+                        if (!done && IsCompleted)
+                        {
                             // If the operation wasn't done when we created
                             // the event but now it is done, set the event
                             m_Handle.Set();
@@ -91,7 +96,8 @@ namespace RJCP.IO
             get { return m_IsCompleted; }
             set
             {
-                if (value) {
+                if (value)
+                {
                     m_IsCompleted = true;
                     if (m_Handle != null) m_Handle.Set();
                 }
@@ -123,7 +129,8 @@ namespace RJCP.IO
         {
             if (!disposing) return;
 
-            if (m_Handle != null) {
+            if (m_Handle != null)
+            {
                 m_Handle.Dispose();
                 m_Handle = null;
             }

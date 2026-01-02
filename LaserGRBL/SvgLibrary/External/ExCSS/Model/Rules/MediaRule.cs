@@ -10,7 +10,7 @@ namespace ExCSS
     {
         private readonly MediaTypeList _media;
 
-        public MediaRule() 
+        public MediaRule()
         {
             _media = new MediaTypeList();
             RuleType = RuleType.Media;

@@ -3,7 +3,7 @@ namespace ExCSS.Model.TextBlocks
 {
     internal class BracketBlock : Block
     {
-        private readonly static BracketBlock RoundOpen= new BracketBlock { GrammarSegment = GrammarSegment.ParenOpen, _mirror = GrammarSegment.ParenClose };
+        private readonly static BracketBlock RoundOpen = new BracketBlock { GrammarSegment = GrammarSegment.ParenOpen, _mirror = GrammarSegment.ParenClose };
         private readonly static BracketBlock RoundClose = new BracketBlock { GrammarSegment = GrammarSegment.ParenClose, _mirror = GrammarSegment.ParenOpen };
         private readonly static BracketBlock CurlyOpen = new BracketBlock { GrammarSegment = GrammarSegment.CurlyBraceOpen, _mirror = GrammarSegment.CurlyBracketClose };
         private readonly static BracketBlock CurlyClose = new BracketBlock { GrammarSegment = GrammarSegment.CurlyBracketClose, _mirror = GrammarSegment.CurlyBraceOpen };
@@ -15,7 +15,7 @@ namespace ExCSS.Model.TextBlocks
         BracketBlock()
         {
         }
- 
+
         internal char Open
         {
             get
@@ -24,13 +24,13 @@ namespace ExCSS.Model.TextBlocks
                 {
                     case GrammarSegment.ParenOpen:
                         return '(';
-                       
+
                     case GrammarSegment.SquareBraceOpen:
                         return '[';
-                       
+
                     default:
                         return '{';
-                       
+
                 }
             }
         }
@@ -43,13 +43,13 @@ namespace ExCSS.Model.TextBlocks
                 {
                     case GrammarSegment.ParenOpen:
                         return ')';
-                      
+
                     case GrammarSegment.SquareBraceOpen:
                         return ']';
-                       
+
                     default:
                         return '}';
-                      
+
                 }
             }
         }

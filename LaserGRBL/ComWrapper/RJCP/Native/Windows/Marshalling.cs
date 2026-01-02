@@ -33,22 +33,30 @@
             List<string> strings = new List<string>();
             int cur = 0;
 
-            while (cur < blobLen) {
+            while (cur < blobLen)
+            {
                 int nextNull = cur;
-                while (nextNull < blobLen && blob[nextNull] != (char)0) {
+                while (nextNull < blobLen && blob[nextNull] != (char)0)
+                {
                     nextNull++;
                 }
 
-                if (nextNull < blobLen) {
-                    if (nextNull - cur > 0) {
+                if (nextNull < blobLen)
+                {
+                    if (nextNull - cur > 0)
+                    {
                         strings.Add(new string(blob, cur, nextNull - cur));
-                    } else {
+                    }
+                    else
+                    {
                         // we found an empty string.  But if we're at the end of the data,
                         // it's just the extra null terminator.
                         if (nextNull != blobLen - 1)
                             strings.Add(string.Empty);
                     }
-                } else {
+                }
+                else
+                {
                     strings.Add(new string(blob, cur, blobLen - cur));
                 }
                 cur = nextNull + 1;
@@ -71,22 +79,30 @@
             List<string> strings = new List<string>();
             int cur = 0;
 
-            while (cur < blobLen) {
+            while (cur < blobLen)
+            {
                 int nextNull = cur;
-                while (nextNull < blobLen && blob[nextNull] != (char)0) {
+                while (nextNull < blobLen && blob[nextNull] != (char)0)
+                {
                     nextNull++;
                 }
 
-                if (nextNull < blobLen) {
-                    if (nextNull - cur > 0) {
+                if (nextNull < blobLen)
+                {
+                    if (nextNull - cur > 0)
+                    {
                         strings.Add(new string(blob, cur, nextNull - cur));
-                    } else {
+                    }
+                    else
+                    {
                         // we found an empty string.  But if we're at the end of the data,
                         // it's just the extra null terminator.
                         if (nextNull != blobLen - 1)
                             strings.Add(string.Empty);
                     }
-                } else {
+                }
+                else
+                {
                     strings.Add(new string(blob, cur, blobLen - cur));
                 }
                 cur = nextNull + 1;

@@ -33,13 +33,15 @@ namespace Tools
         /// Add new settings
         /// </summary>
         /// <param name="settings">Dictionary holding the new settings</param>
-        public static void AddSettings(Dictionary<string, object> settings)
+        /// <param name="passCount">Number of passes for this segment</param>
+        public static void AddSettings(Dictionary<string, object> settings, int passCount = 1)
         {
             if (settings == null) return;
 
             // Add image to dictionary
             settings.Add("ImageName", Path.GetFileName(Settings.GetObject<string>("Core.LastOpenFile", null)));
             settings.Add("ImageBase64", ConvertImageToBase64(Settings.GetObject<string>("Core.LastOpenFile", null)));
+            settings.Add("PassCount", passCount);
 
             ProjectSettings.Add(settings);
         }

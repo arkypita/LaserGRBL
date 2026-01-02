@@ -43,34 +43,34 @@ namespace SharpGL.RenderContextProviders
                 throw new Exception("A valid Window Handle must be provided for the NativeWindowRenderContextProvider");
             }
 
-		    //	Get the window device context.
-		    deviceContextHandle = Win32.GetDC(windowHandle);
+            //	Get the window device context.
+            deviceContextHandle = Win32.GetDC(windowHandle);
 
-		    //	Setup a pixel format.
-		    Win32.PIXELFORMATDESCRIPTOR pfd = new Win32.PIXELFORMATDESCRIPTOR();
+            //	Setup a pixel format.
+            Win32.PIXELFORMATDESCRIPTOR pfd = new Win32.PIXELFORMATDESCRIPTOR();
             pfd.Init();
-		    pfd.nVersion = 1;
-		    pfd.dwFlags = Win32.PFD_DRAW_TO_WINDOW | Win32.PFD_SUPPORT_OPENGL | Win32.PFD_DOUBLEBUFFER;
-		    pfd.iPixelType = Win32.PFD_TYPE_RGBA;
-		    pfd.cColorBits = (byte)bitDepth;
-		    pfd.cDepthBits = 16;
-		    pfd.cStencilBits = 8;
-		    pfd.iLayerType = Win32.PFD_MAIN_PLANE;
-		
-		    //	Match an appropriate pixel format 
-		    int iPixelformat;
-		    if((iPixelformat = Win32.ChoosePixelFormat(deviceContextHandle, pfd)) == 0 )
-			    return false;
+            pfd.nVersion = 1;
+            pfd.dwFlags = Win32.PFD_DRAW_TO_WINDOW | Win32.PFD_SUPPORT_OPENGL | Win32.PFD_DOUBLEBUFFER;
+            pfd.iPixelType = Win32.PFD_TYPE_RGBA;
+            pfd.cColorBits = (byte)bitDepth;
+            pfd.cDepthBits = 16;
+            pfd.cStencilBits = 8;
+            pfd.iLayerType = Win32.PFD_MAIN_PLANE;
 
-		    //	Sets the pixel format
+            //	Match an appropriate pixel format 
+            int iPixelformat;
+            if ((iPixelformat = Win32.ChoosePixelFormat(deviceContextHandle, pfd)) == 0)
+                return false;
+
+            //	Sets the pixel format
             if (Win32.SetPixelFormat(deviceContextHandle, iPixelformat, pfd) == 0)
-		    {
-			    return false;
-		    }
+            {
+                return false;
+            }
 
-		    //	Create the render context.
+            //	Create the render context.
             renderContextHandle = Win32.wglCreateContext(deviceContextHandle);
-            
+
             //  Make the context current.
             MakeCurrent();
 
@@ -85,13 +85,13 @@ namespace SharpGL.RenderContextProviders
         /// Destroys the render context provider instance.
         /// </summary>
 	    public override void Destroy()
-	    {
-		    //	Release the device context.
-		    Win32.ReleaseDC(windowHandle, deviceContextHandle);
-            
-		    //	Call the base, which will delete the render context handle.
+        {
+            //	Release the device context.
+            Win32.ReleaseDC(windowHandle, deviceContextHandle);
+
+            //	Call the base, which will delete the render context handle.
             base.Destroy();
-	    }
+        }
 
         /// <summary>
         /// Sets the dimensions of the render context provider.
@@ -99,32 +99,32 @@ namespace SharpGL.RenderContextProviders
         /// <param name="width">Width.</param>
         /// <param name="height">Height.</param>
 	    public override void SetDimensions(int width, int height)
-	    {
+        {
             //  Call the base.
             base.SetDimensions(width, height);
-	    }
+        }
 
         /// <summary>
         /// Blit the rendered data to the supplied device context.
         /// </summary>
         /// <param name="hdc">The HDC.</param>
 	    public override void Blit(IntPtr hdc)
-	    {
-		    if(deviceContextHandle != IntPtr.Zero || windowHandle != IntPtr.Zero)
-		    {
-			    //	Swap the buffers.
+        {
+            if (deviceContextHandle != IntPtr.Zero || windowHandle != IntPtr.Zero)
+            {
+                //	Swap the buffers.
                 Win32.SwapBuffers(deviceContextHandle);
-		    }
-	    }
+            }
+        }
 
         /// <summary>
         /// Makes the render context current.
         /// </summary>
 	    public override void MakeCurrent()
-	    {
-		    if(renderContextHandle != IntPtr.Zero)
-			    Win32.wglMakeCurrent(deviceContextHandle, renderContextHandle);
-	    }
+        {
+            if (renderContextHandle != IntPtr.Zero)
+                Win32.wglMakeCurrent(deviceContextHandle, renderContextHandle);
+        }
 
         /// <summary>
         /// The window handle.

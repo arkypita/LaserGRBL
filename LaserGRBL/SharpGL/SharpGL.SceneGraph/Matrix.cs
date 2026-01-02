@@ -17,32 +17,38 @@ namespace SharpGL.SceneGraph
     class MatrixNullException : ApplicationException
     {
         public MatrixNullException() :
-            base("To do this operation, matrix can not be null") { }
+            base("To do this operation, matrix can not be null")
+        { }
     }
     class MatrixDimensionException : ApplicationException
     {
         public MatrixDimensionException() :
-            base("Dimension of the two matrices not suitable for this operation !") { }
+            base("Dimension of the two matrices not suitable for this operation !")
+        { }
     }
     class MatrixNotSquare : ApplicationException
     {
         public MatrixNotSquare() :
-            base("To do this operation, matrix must be a square matrix !") { }
+            base("To do this operation, matrix must be a square matrix !")
+        { }
     }
     class MatrixDeterminentZero : ApplicationException
     {
         public MatrixDeterminentZero() :
-            base("Determinent of matrix equals zero, inverse can't be found !") { }
+            base("Determinent of matrix equals zero, inverse can't be found !")
+        { }
     }
     class VectorDimensionException : ApplicationException
     {
         public VectorDimensionException() :
-            base("Dimension of matrix must be [3 , 1] to do this operation !") { }
+            base("Dimension of matrix must be [3 , 1] to do this operation !")
+        { }
     }
     class MatrixSingularException : ApplicationException
     {
         public MatrixSingularException() :
-            base("Matrix is singular this operation cannot continue !") { }
+            base("Matrix is singular this operation cannot continue !")
+        { }
     }
     #endregion
 
@@ -218,12 +224,12 @@ namespace SharpGL.SceneGraph
             get
             {
                 //  Storage for the array.
-                List<double> ar = new List<double>();    
-                
+                List<double> ar = new List<double>();
+
                 //  Create the array.
                 for (int i = 0; i < Rows; i++)
                     for (int j = 0; j < Columns; j++)
-                        ar.Add(this[i,j]);
+                        ar.Add(this[i, j]);
 
                 //  Return the array.
                 return ar.ToArray();
@@ -300,13 +306,13 @@ namespace SharpGL.SceneGraph
         /// <returns>A single value decomposition of the matrix.</returns>
         public float TempSVD()
         {
-        // this is a simple svd.
-        // Not complete but fast and reasonable.
-        // See comment in Matrix3d.
+            // this is a simple svd.
+            // Not complete but fast and reasonable.
+            // See comment in Matrix3d.
             return (float)Math.Sqrt(
-                (float)((this[0,0] * this[0,0]) + (this[0,1] * this[0,1]) + (this[0,2] * this[0,2]) + 
-                (this[1,0] * this[1,0]) + (this[1,1] * this[1,1]) + (this[1,2] * this[1,2]) +
-                (this[2,0] * this[2,0]) + (this[2,1] * this[2,1]) + (this[2,2] * this[2,2]) ) / 3.0f );                
+                (float)((this[0, 0] * this[0, 0]) + (this[0, 1] * this[0, 1]) + (this[0, 2] * this[0, 2]) +
+                (this[1, 0] * this[1, 0]) + (this[1, 1] * this[1, 1]) + (this[1, 2] * this[1, 2]) +
+                (this[2, 0] * this[2, 0]) + (this[2, 1] * this[2, 1]) + (this[2, 2] * this[2, 2])) / 3.0f);
         }
 
         /// <summary>
@@ -429,7 +435,7 @@ namespace SharpGL.SceneGraph
             //  Set the identity.
             for (int i = 0; i < Rows; i++)
                 for (int j = 0; j < Columns; j++)
-                    this[i, j] = i==j? 1 : 0;
+                    this[i, j] = i == j ? 1 : 0;
         }
 
         /// <summary>

@@ -47,7 +47,7 @@ namespace SharpGL.SceneGraph.Helpers
             //  Create some lights.
             Light light1 = new Light()
             {
-                Name="Light 1",
+                Name = "Light 1",
                 On = true,
                 Position = new Vertex(-9, -9, 11),
                 GLCode = OpenGL.GL_LIGHT0

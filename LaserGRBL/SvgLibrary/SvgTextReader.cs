@@ -122,7 +122,7 @@ namespace Svg
         private void ParseEntities()
         {
             const string entityText = "<!ENTITY";
-            string[] entities = this.Value.Split(new string[]{entityText}, StringSplitOptions.None);
+            string[] entities = this.Value.Split(new string[] { entityText }, StringSplitOptions.None);
             string name = null;
             string value = null;
             int quoteIndex;

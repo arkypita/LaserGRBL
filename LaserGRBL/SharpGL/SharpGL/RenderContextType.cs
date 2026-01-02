@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SharpGL
 {
-	/// <summary>
+    /// <summary>
     /// The render context type.
     /// </summary>
     public enum RenderContextType
@@ -28,9 +28,9 @@ namespace SharpGL
         /// </summary>
         HiddenWindow,
 
-		/// <summary>
-		///	A Framebuffer Object - accelerated but may not be supported on some cards.
-		/// </summary>
-		FBO
-	};
+        /// <summary>
+        ///	A Framebuffer Object - accelerated but may not be supported on some cards.
+        /// </summary>
+        FBO
+    };
 }

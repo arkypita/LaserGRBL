@@ -11,10 +11,10 @@ namespace ExCSS
         private BaseSelector _selector;
         private readonly StyleDeclaration _declarations;
 
-        public StyleRule() : this( new StyleDeclaration())
-        {}
+        public StyleRule() : this(new StyleDeclaration())
+        { }
 
-        public StyleRule(StyleDeclaration declarations) 
+        public StyleRule(StyleDeclaration declarations)
         {
             RuleType = RuleType.Style;
             _declarations = declarations;

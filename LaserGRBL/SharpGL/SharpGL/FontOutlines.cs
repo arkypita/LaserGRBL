@@ -138,9 +138,9 @@ namespace SharpGL
             gl.MakeCurrent();
 
             //  Create the font based on the face name.
-            var hFont = Win32.CreateFont(height, 0, 0, 0, Win32.FW_DONTCARE, 0, 0, 0, Win32.DEFAULT_CHARSET, 
+            var hFont = Win32.CreateFont(height, 0, 0, 0, Win32.FW_DONTCARE, 0, 0, 0, Win32.DEFAULT_CHARSET,
                 Win32.OUT_OUTLINE_PRECIS, Win32.CLIP_DEFAULT_PRECIS, Win32.CLEARTYPE_QUALITY, Win32.VARIABLE_PITCH, faceName);
-            
+
             //  Select the font handle.
             var hOldObject = Win32.SelectObject(gl.RenderContextProvider.DeviceContextHandle, hFont);
 
@@ -254,7 +254,7 @@ namespace SharpGL
             gl.MatrixMode(OpenGL.GL_PROJECTION);
             gl.PushMatrix();
             gl.LoadIdentity();
-            
+
             gl.Ortho(0, resWidth, 0, resHeight, -1, 1);
 
             //  Create the appropriate modelview matrix.
@@ -304,7 +304,7 @@ namespace SharpGL
             gl.CallLists(lists.Length, lists);
             // ftlPhysicsGuy -- No real need to flush and it significantly slows down this method!
             //gl.Flush();
-            
+
             //  Reset the list bit.
             gl.PopAttrib();
 

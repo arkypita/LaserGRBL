@@ -4,8 +4,8 @@ using SharpGL.SceneGraph;
 
 namespace SharpGL.Serialization.Discreet
 {
-	public class Discreet3dsFormat : IFileFormat
-	{
+    public class Discreet3dsFormat : IFileFormat
+    {
         /*
 		protected override object LoadData(Stream stream)
 		{
@@ -53,7 +53,7 @@ namespace SharpGL.Serialization.Discreet
                     MainChunk main = new MainChunk();
                     main.Read(scene, reader);
                 }
-            }            
+            }
 
             //  Return the scene.
             return scene;

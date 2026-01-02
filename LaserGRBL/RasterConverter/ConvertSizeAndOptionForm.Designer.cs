@@ -110,6 +110,8 @@ namespace LaserGRBL.RasterConverter
 			this.CBLaserON = new LaserGRBL.UserControls.FlatComboBox();
 			this.LblSmax = new System.Windows.Forms.Label();
 			this.IIMaxPower = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
+			this.LblPassCount = new System.Windows.Forms.Label();
+			this.IIPassCount = new LaserGRBL.UserControls.NumericInput.IntegerInputRanged();
 			this.LblMinPerc = new System.Windows.Forms.Label();
 			this.LblMaxPerc = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -435,6 +437,8 @@ namespace LaserGRBL.RasterConverter
 			this.tableLayoutPanel7.Controls.Add(this.IIMaxPower, 1, 2);
 			this.tableLayoutPanel7.Controls.Add(this.LblMinPerc, 2, 1);
 			this.tableLayoutPanel7.Controls.Add(this.LblMaxPerc, 2, 2);
+			this.tableLayoutPanel7.Controls.Add(this.LblPassCount, 0, 3);
+			this.tableLayoutPanel7.Controls.Add(this.IIPassCount, 1, 3);
 			this.tableLayoutPanel7.Name = "tableLayoutPanel7";
 			// 
 			// BtnModulationInfo
@@ -514,6 +518,21 @@ namespace LaserGRBL.RasterConverter
 			this.IIMaxPower.MinValue = 1;
 			this.IIMaxPower.Name = "IIMaxPower";
 			this.IIMaxPower.CurrentValueChanged += new LaserGRBL.UserControls.NumericInput.IntegerInputBase.CurrentValueChangedEventHandler(this.IIMaxPowerCurrentValueChanged);
+			// 
+			// LblPassCount
+			// 
+			resources.ApplyResources(this.LblPassCount, "LblPassCount");
+			this.LblPassCount.Name = "LblPassCount";
+			// 
+			// IIPassCount
+			// 
+			resources.ApplyResources(this.IIPassCount, "IIPassCount");
+			this.IIPassCount.CurrentValue = 1;
+			this.IIPassCount.ForcedText = null;
+			this.IIPassCount.ForceMinMax = false;
+			this.IIPassCount.MaxValue = 99;
+			this.IIPassCount.MinValue = 1;
+			this.IIPassCount.Name = "IIPassCount";
 			// 
 			// LblMinPerc
 			// 
@@ -601,5 +620,7 @@ namespace LaserGRBL.RasterConverter
 		private System.Windows.Forms.Label LblMinPerc;
 		private System.Windows.Forms.Label LblMaxPerc;
 		private UserControls.ImageButton BtnUnlockProportion;
+		private System.Windows.Forms.Label LblPassCount;
+		private UserControls.NumericInput.IntegerInputRanged IIPassCount;
 	}
 }

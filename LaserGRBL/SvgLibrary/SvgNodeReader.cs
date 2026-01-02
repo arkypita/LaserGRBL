@@ -114,7 +114,7 @@ namespace Svg
         private void ParseEntities()
         {
             const string entityText = "<!ENTITY";
-            string[] entities = this.Value.Split(new string[]{entityText}, StringSplitOptions.None);
+            string[] entities = this.Value.Split(new string[] { entityText }, StringSplitOptions.None);
             string[] parts = null;
             string name = null;
             string value = null;
@@ -126,7 +126,7 @@ namespace Svg
                     continue;
                 }
 
-                parts = entity.Trim().Split(new char[]{' ', '\t'},  StringSplitOptions.RemoveEmptyEntries);
+                parts = entity.Trim().Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
                 name = parts[0];
                 value = parts[1].Split(new char[] { this.QuoteChar }, StringSplitOptions.RemoveEmptyEntries)[0];
 

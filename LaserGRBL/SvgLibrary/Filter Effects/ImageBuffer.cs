@@ -128,7 +128,7 @@ namespace Svg.FilterEffects
             return key;
         }
 
-        
+
 
         private Bitmap CreateSourceGraphic()
         {

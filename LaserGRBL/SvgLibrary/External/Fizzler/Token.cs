@@ -38,7 +38,7 @@ namespace Fizzler
         /// </summary>
         public string Text { get; private set; }
 
-        private Token(TokenKind kind) : this(kind, null) {}
+        private Token(TokenKind kind) : this(kind, null) { }
 
         private Token(TokenKind kind, string text) : this()
         {
@@ -266,7 +266,7 @@ namespace Fizzler
         /// </summary>
         public override bool Equals(object obj)
         {
-            return obj != null && obj is Token && Equals((Token) obj);
+            return obj != null && obj is Token && Equals((Token)obj);
         }
 
         /// <summary>
@@ -296,7 +296,7 @@ namespace Fizzler
         /// Performs a logical comparison of the two tokens to determine 
         /// whether they are equal. 
         /// </summary>
-        public static bool operator==(Token a, Token b)
+        public static bool operator ==(Token a, Token b)
         {
             return a.Equals(b);
         }

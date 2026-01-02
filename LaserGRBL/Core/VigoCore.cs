@@ -21,119 +21,119 @@ namespace LaserGRBL
         public override Firmware Type
         { get { return Firmware.VigoWork; } }
 
-		protected override void QueryPosition()
-		{
-			SendImmediate(0x88, true);
-		}
+        protected override void QueryPosition()
+        {
+            SendImmediate(0x88, true);
+        }
 
-		public override int BufferSize => 127;
+        public override int BufferSize => 127;
 
-		protected override void ManageReceivedLine(string rline)
-		{
-			System.Diagnostics.Debug.WriteLine(rline);
-			if (IsVigoStatusMessage(rline))
-				ManageVigoStatus(rline);
-			else
-				base.ManageReceivedLine(rline);
-		}
+        protected override void ManageReceivedLine(string rline)
+        {
+            System.Diagnostics.Debug.WriteLine(rline);
+            if (IsVigoStatusMessage(rline))
+                ManageVigoStatus(rline);
+            else
+                base.ManageReceivedLine(rline);
+        }
 
-		protected virtual bool IsVigoStatusMessage(string rline)
-		{
-			return rline.StartsWith("<VSta") && rline.EndsWith(">");
-		}
+        protected virtual bool IsVigoStatusMessage(string rline)
+        {
+            return rline.StartsWith("<VSta") && rline.EndsWith(">");
+        }
 
-		protected virtual void ManageVigoStatus(string rline)
-		{
-			try
-			{
-				rline = rline.Substring(1, rline.Length - 2);
-				string[] arr = rline.Split("|".ToCharArray());
+        protected virtual void ManageVigoStatus(string rline)
+        {
+            try
+            {
+                rline = rline.Substring(1, rline.Length - 2);
+                string[] arr = rline.Split("|".ToCharArray());
 
-				for (int i = 0; i < arr.Length; i++)
-				{
-					if (arr[i].StartsWith("VSta:"))
-						ParseVSta(arr[i]);
-					else if (arr[i].StartsWith("SBuf:"))
-						ParseSBuf(arr[i]);
-					//else if (arr[i].StartsWith("LTC:"))
-					//	;// ParseLTC(arr[i]);
-				}
-			}
-			catch (Exception ex)
-			{
-				Logger.LogMessage("VigoStatus", "Ex on [{0}] message", rline);
-				Logger.LogException("VigoStatus", ex);
-			}
-		}
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    if (arr[i].StartsWith("VSta:"))
+                        ParseVSta(arr[i]);
+                    else if (arr[i].StartsWith("SBuf:"))
+                        ParseSBuf(arr[i]);
+                    //else if (arr[i].StartsWith("LTC:"))
+                    //	;// ParseLTC(arr[i]);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMessage("VigoStatus", "Ex on [{0}] message", rline);
+                Logger.LogException("VigoStatus", ex);
+            }
+        }
 
-		int mOldSta = 0;
-		private void ParseVSta(string p)
-		{
-			string data = p.Substring(5, p.Length - 5);
-			int mCurSta = (int)ParseFloat(data);
+        int mOldSta = 0;
+        private void ParseVSta(string p)
+        {
+            string data = p.Substring(5, p.Length - 5);
+            int mCurSta = (int)ParseFloat(data);
 
-			if (mOldSta == 2 && mCurSta == 0)
-				injob = false;
+            if (mOldSta == 2 && mCurSta == 0)
+                injob = false;
 
-			mOldSta = mCurSta;
-		}
+            mOldSta = mCurSta;
+        }
 
-		private bool injob = false;
-		private int mOldReceived = 0;
-		private int mOldManaged = 0;
-		private int mOldError = 0;
-		private void ParseSBuf(string p)
-		{
-			string data = p.Substring(5, p.Length - 5);
-			string[] xyz = data.Split(",".ToCharArray());
-			int mCurReceived = (int)ParseFloat(xyz[0]);
-			int mCurManaged = (int)ParseFloat(xyz[1]);
-			int mCurError = (int)ParseFloat(xyz[2]);
+        private bool injob = false;
+        private int mOldReceived = 0;
+        private int mOldManaged = 0;
+        private int mOldError = 0;
+        private void ParseSBuf(string p)
+        {
+            string data = p.Substring(5, p.Length - 5);
+            string[] xyz = data.Split(",".ToCharArray());
+            int mCurReceived = (int)ParseFloat(xyz[0]);
+            int mCurManaged = (int)ParseFloat(xyz[1]);
+            int mCurError = (int)ParseFloat(xyz[2]);
 
-			if (mOldReceived > mCurReceived)
-				mOldReceived = mOldManaged = mOldError = 0; //emergency reset
+            if (mOldReceived > mCurReceived)
+                mOldReceived = mOldManaged = mOldError = 0; //emergency reset
 
-			for (int i = mOldManaged; i < mCurManaged; i++)
-				ManageCommandResponse("ok");
-			for (int i = mOldError; i < mCurError; i++)
-				ManageCommandResponse("error:99");
+            for (int i = mOldManaged; i < mCurManaged; i++)
+                ManageCommandResponse("ok");
+            for (int i = mOldError; i < mCurError; i++)
+                ManageCommandResponse("error:99");
 
-			mOldReceived = mCurReceived;
-			mOldManaged = mCurManaged;
-			mOldError = mCurError; 
-		}
+            mOldReceived = mCurReceived;
+            mOldManaged = mCurManaged;
+            mOldError = mCurError;
+        }
 
-		protected override void OnJobBegin()
-		{
-			injob = true;
-			EnqueueCommand(new GrblCommand(">Ofk9gsd8IKjKBahP0OGS9BrhZCPeWCBALCbyGf", 0, true));
-			base.OnJobBegin();
-		}
+        protected override void OnJobBegin()
+        {
+            injob = true;
+            EnqueueCommand(new GrblCommand(">Ofk9gsd8IKjKBahP0OGS9BrhZCPeWCBALCbyGf", 0, true));
+            base.OnJobBegin();
+        }
 
-		protected override void OnJobEnd()
-		{
-			base.OnJobEnd();
-			EnqueueCommand(new GrblCommand("G0X0Y0M5", 0, true));
-			EnqueueCommand(new GrblCommand(">NPredMjdFaeaJajf6OHy:hkRUygcpBXwtV", 0, true));
+        protected override void OnJobEnd()
+        {
+            base.OnJobEnd();
+            EnqueueCommand(new GrblCommand("G0X0Y0M5", 0, true));
+            EnqueueCommand(new GrblCommand(">NPredMjdFaeaJajf6OHy:hkRUygcpBXwtV", 0, true));
 
-			//injob = false; //tanto sembra che a questo messaggio che segue non risponda e invece si resetta!
-		}
+            //injob = false; //tanto sembra che a questo messaggio che segue non risponda e invece si resetta!
+        }
 
-		protected override void SendToSerial(GrblCommand tosend)
-		{
-			if (injob)
-			{
-				mUsedBuffer += tosend.SerialData.Length;
-				com.Write(tosend.SerialData); //invio dei dati alla linea di comunicazione
-			}
-			else
-			{
-				//mUsedBuffer += tosend.SerialData.Length;
-				com.Write(tosend.SerialData); //invio dei dati alla linea di comunicazione
-				tosend.SetResult("ok", false);
-			}
-		}
+        protected override void SendToSerial(GrblCommand tosend)
+        {
+            if (injob)
+            {
+                mUsedBuffer += tosend.SerialData.Length;
+                com.Write(tosend.SerialData); //invio dei dati alla linea di comunicazione
+            }
+            else
+            {
+                //mUsedBuffer += tosend.SerialData.Length;
+                com.Write(tosend.SerialData); //invio dei dati alla linea di comunicazione
+                tosend.SetResult("ok", false);
+            }
+        }
 
-	}
+    }
 
 }

@@ -94,7 +94,7 @@ namespace LaserGRBL.UserControls
             set
             {
                 thumbCustomShape = value;
-                thumbSize = (int) (barOrientation == Orientation.Horizontal ? value.GetBounds().Width : value.GetBounds().Height) + 1;
+                thumbSize = (int)(barOrientation == Orientation.Horizontal ? value.GetBounds().Width : value.GetBounds().Height) + 1;
                 Invalidate();
             }
         }
@@ -189,7 +189,7 @@ namespace LaserGRBL.UserControls
                 if (value >= barMinimum & value <= barMaximum)
                 {
                     trackerValue = value;
-					RiseChanged();
+                    RiseChanged();
                     Invalidate();
                 }
                 else throw new ArgumentOutOfRangeException("Value is outside appropriate range (min, max)");
@@ -217,7 +217,7 @@ namespace LaserGRBL.UserControls
                     if (trackerValue < barMinimum)
                     {
                         trackerValue = barMinimum;
-						RiseChanged();
+                        RiseChanged();
                     }
                     Invalidate();
                 }
@@ -246,7 +246,7 @@ namespace LaserGRBL.UserControls
                     if (trackerValue > barMaximum)
                     {
                         trackerValue = barMaximum;
-						RiseChanged();
+                        RiseChanged();
                     }
                     Invalidate();
                 }
@@ -356,7 +356,7 @@ namespace LaserGRBL.UserControls
                 else throw new ArgumentOutOfRangeException("MouseWheelBarPartitions has to be greather than zero");
             }
         }
-        
+
         private Color thumbOuterColor = Color.White;
         /// <summary>
         /// Gets or sets the thumb outer color .
@@ -568,7 +568,7 @@ namespace LaserGRBL.UserControls
         }
 
         #endregion
-        
+
         #region Constructors
 
         /// <summary>
@@ -838,7 +838,7 @@ namespace LaserGRBL.UserControls
             {
                 Capture = true;
                 if (Scroll != null) Scroll(this, new ScrollEventArgs(ScrollEventType.ThumbTrack, trackerValue));
-				RiseChanged();
+                RiseChanged();
                 OnMouseMove(e);
             }
         }
@@ -878,7 +878,7 @@ namespace LaserGRBL.UserControls
                 }
 
                 if (Scroll != null) Scroll(this, new ScrollEventArgs(set, trackerValue));
-				RiseChanged();
+                RiseChanged();
             }
             Invalidate();
         }
@@ -893,7 +893,7 @@ namespace LaserGRBL.UserControls
             Capture = false;
             mouseInThumbRegion = IsPointInRect(e.Location, thumbRect);
             if (Scroll != null) Scroll(this, new ScrollEventArgs(ScrollEventType.EndScroll, trackerValue));
-			RiseChanged();
+            RiseChanged();
             Invalidate();
         }
 
@@ -1075,15 +1075,15 @@ namespace LaserGRBL.UserControls
         #endregion
 
 
-		private void RiseChanged()
-		{
-			string tooltip = Value.ToString();
-			if (tooltip != TT.GetToolTip(this))
-				TT.SetToolTip(this, tooltip);
+        private void RiseChanged()
+        {
+            string tooltip = Value.ToString();
+            if (tooltip != TT.GetToolTip(this))
+                TT.SetToolTip(this, tooltip);
 
 
-			if (ValueChanged != null)
-				ValueChanged(this, new EventArgs());
-		}
+            if (ValueChanged != null)
+                ValueChanged(this, new EventArgs());
+        }
     }
 }

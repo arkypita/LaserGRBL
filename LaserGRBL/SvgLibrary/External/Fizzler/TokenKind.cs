@@ -65,7 +65,7 @@ namespace Fizzler
         /// Represents "*="
         /// </summary>
         SubstringMatch,
-        
+
         /// <summary>
         /// Represents {string}
         /// </summary>

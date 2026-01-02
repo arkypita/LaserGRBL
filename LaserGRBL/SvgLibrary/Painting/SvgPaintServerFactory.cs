@@ -34,7 +34,7 @@ namespace Svg
             else
             {
                 var servers = new List<SvgPaintServer>();
-                
+
                 while (!string.IsNullOrEmpty(value))
                 {
                     if (value.StartsWith("url(#"))
@@ -51,7 +51,7 @@ namespace Svg
                     }
                     else if (value.StartsWith("#")) // Otherwise try and parse as colour
                     {
-                        switch(CountHexDigits(value, 1))
+                        switch (CountHexDigits(value, 1))
                         {
                             case 3:
                                 servers.Add(new SvgColourServer((Color)_colourConverter.ConvertFrom(value.Substring(0, 4))));
@@ -76,16 +76,16 @@ namespace Svg
                     return new SvgFallbackPaintServer(servers[0], servers.Skip(1));
                 }
                 return servers[0];
-            } 
-                
-                
+            }
+
+
         }
 
         private static int CountHexDigits(string value, int start)
         {
             int i = Math.Max(start, 0);
             int count = 0;
-            while (i < value.Length && 
+            while (i < value.Length &&
                    ((value[i] >= '0' && value[i] <= '9') ||
                     (value[i] >= 'a' && value[i] <= 'f') ||
                     (value[i] >= 'A' && value[i] <= 'F')))
@@ -95,16 +95,16 @@ namespace Svg
             }
             return count;
         }
-        
+
         public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
         {
             if (value is string)
             {
-            	var s = (string) value;
+                var s = (string)value;
                 if (String.Equals(s.Trim(), "none", StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(s) || s.Trim().Length < 1)
-            		return SvgPaintServer.None;
-            	else
-                	return SvgPaintServerFactory.Create(s, (SvgDocument)context);
+                    return SvgPaintServer.None;
+                else
+                    return SvgPaintServerFactory.Create(s, (SvgDocument)context);
             }
 
             return base.ConvertFrom(context, culture, value);
@@ -157,7 +157,7 @@ namespace Svg
                 }
                 else
                 {
-                	return "none";
+                    return "none";
                 }
             }
 

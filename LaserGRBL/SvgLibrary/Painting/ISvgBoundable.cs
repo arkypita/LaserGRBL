@@ -17,6 +17,6 @@ namespace Svg
         RectangleF Bounds
         {
             get;
-        } 
+        }
     }
 }

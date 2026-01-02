@@ -37,7 +37,7 @@ namespace Svg.Pathing
 
         public override string ToString()
         {
-        	return "C" + this.FirstControlPoint.ToSvgString() + " " + this.SecondControlPoint.ToSvgString() + " " + this.End.ToSvgString();
+            return "C" + this.FirstControlPoint.ToSvgString() + " " + this.SecondControlPoint.ToSvgString() + " " + this.End.ToSvgString();
         }
     }
 }

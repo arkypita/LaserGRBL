@@ -89,8 +89,8 @@ namespace Svg
                     {
                         // A|a rx ry x-axis-rotation large-arc-flag sweep-flag x y
                         segments.Add(new SvgArcSegment(segments.Last.End, coords[0], coords[1], coords[2],
-                            (size ? SvgArcSize.Large : SvgArcSize.Small), 
-                            (sweep ? SvgArcSweep.Positive : SvgArcSweep.Negative), 
+                            (size ? SvgArcSize.Large : SvgArcSize.Small),
+                            (sweep ? SvgArcSweep.Positive : SvgArcSweep.Negative),
                             ToAbsolute(coords[3], coords[4], segments, isRelative)));
                     }
                     break;
@@ -284,7 +284,7 @@ namespace Svg
             }
         }
 
-        
+
 
         //private static IEnumerable<float> ParseCoordinates(string coords)
         //{
@@ -522,7 +522,8 @@ namespace Svg
                 if (paths != null)
                 {
                     var curretCulture = CultureInfo.CurrentCulture;
-                    try {
+                    try
+                    {
                         Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
                         var s = string.Join(" ", paths.Select(p => p.ToString()).ToArray());
                         return s;

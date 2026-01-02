@@ -38,7 +38,7 @@ namespace ExCSS.Model.Extensions
 
         public static StringBuilder TrimLastLine(this StringBuilder builder)
         {
-            while (builder[builder.Length-1] == '\r' || builder[builder.Length-1] == '\n' || builder[builder.Length-1] == '\t')
+            while (builder[builder.Length - 1] == '\r' || builder[builder.Length - 1] == '\n' || builder[builder.Length - 1] == '\t')
             {
                 builder.Remove(builder.Length - 1, 1);
             }

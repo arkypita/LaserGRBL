@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace LaserGRBL.SvgIcons
 {
-    public class SvgIcons: IIconsLoader
+    public class SvgIcons : IIconsLoader
     {
         private Dictionary<string, string> mIconList = new Dictionary<string, string>();
 
@@ -33,7 +33,8 @@ namespace LaserGRBL.SvgIcons
             }
         }
 
-        public Bitmap LoadImage(string resourceName) {
+        public Bitmap LoadImage(string resourceName)
+        {
             if (mIconList.TryGetValue(resourceName, out string svgData))
             {
                 var doc = SvgDocument.FromSvg<SvgDocument>(svgData);

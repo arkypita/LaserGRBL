@@ -19,14 +19,14 @@ using System.ComponentModel;
 
 namespace Cyotek.Drawing.Imaging.ColorReduction
 {
-  [Description("Stucki")]
-  public sealed class StuckiDithering : ErrorDiffusionDithering
-  {
-    #region Constructors
+    [Description("Stucki")]
+    public sealed class StuckiDithering : ErrorDiffusionDithering
+    {
+        #region Constructors
 
-    public StuckiDithering()
-      : base(new byte[,]
-             {
+        public StuckiDithering()
+          : base(new byte[,]
+                 {
                {
                  0, 0, 0, 8, 4
                },
@@ -36,9 +36,9 @@ namespace Cyotek.Drawing.Imaging.ColorReduction
                {
                  1, 2, 4, 2, 1
                }
-             }, 42, false)
-    { }
+                 }, 42, false)
+        { }
 
-    #endregion
-  }
+        #endregion
+    }
 }

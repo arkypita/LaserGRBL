@@ -51,7 +51,7 @@ namespace ExCSS
             {
                 return Rules.Where(r => r is StyleRule).Cast<StyleRule>().ToList();
             }
-        } 
+        }
 
         public IList<CharacterSetRule> CharsetDirectives
         {

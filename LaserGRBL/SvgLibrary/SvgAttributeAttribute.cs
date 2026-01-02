@@ -9,23 +9,23 @@ namespace Svg
     /// <summary>
     /// Specifies the SVG attribute name of the associated property.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Property|AttributeTargets.Event)]
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Event)]
     public class SvgAttributeAttribute : System.Attribute
     {
-		/// <summary>
-		/// Gets a <see cref="string"/> containing the XLink namespace (http://www.w3.org/1999/xlink).
-		/// </summary>
-		public const string SvgNamespace = "http://www.w3.org/2000/svg";
-		public const string XLinkPrefix = "xlink";
-		public const string XLinkNamespace = "http://www.w3.org/1999/xlink";
+        /// <summary>
+        /// Gets a <see cref="string"/> containing the XLink namespace (http://www.w3.org/1999/xlink).
+        /// </summary>
+        public const string SvgNamespace = "http://www.w3.org/2000/svg";
+        public const string XLinkPrefix = "xlink";
+        public const string XLinkNamespace = "http://www.w3.org/1999/xlink";
         public const string XmlNamespace = "http://www.w3.org/XML/1998/namespace";
 
-		public static readonly List<KeyValuePair<string, string>> Namespaces = new List<KeyValuePair<string, string>>()
-    	                                                                	{
-																				new KeyValuePair<string, string>("", SvgNamespace),
-																				new KeyValuePair<string, string>(XLinkPrefix, XLinkNamespace),
-																				new KeyValuePair<string, string>("xml", XmlNamespace)
-		                                                                    };
+        public static readonly List<KeyValuePair<string, string>> Namespaces = new List<KeyValuePair<string, string>>()
+                                                                            {
+                                                                                new KeyValuePair<string, string>("", SvgNamespace),
+                                                                                new KeyValuePair<string, string>(XLinkPrefix, XLinkNamespace),
+                                                                                new KeyValuePair<string, string>("xml", XmlNamespace)
+                                                                            };
         private bool _inAttrDictionary;
         private string _name;
         private string _namespace;
@@ -51,18 +51,18 @@ namespace Svg
             return String.Compare(indicator.Name, this.Name) == 0;
         }
 
-		/// <summary>
-		/// Gets the name of the SVG attribute.
-		/// </summary>
-		public string NamespaceAndName
-		{
-			get
-			{
-				if (_namespace == SvgNamespace)
-					return _name;
-				return Namespaces.First(x => x.Value == _namespace).Key + ":" + _name;
-			}
-		}
+        /// <summary>
+        /// Gets the name of the SVG attribute.
+        /// </summary>
+        public string NamespaceAndName
+        {
+            get
+            {
+                if (_namespace == SvgNamespace)
+                    return _name;
+                return Namespaces.First(x => x.Value == _namespace).Key + ":" + _name;
+            }
+        }
 
 
         /// <summary>

@@ -44,41 +44,41 @@ namespace Svg
             set { this.Attributes["preserveAspectRatio"] = value; }
         }
 
-		[SvgAttribute("x")]
-		public virtual SvgUnit X
-		{
-			get { return this.Attributes.GetAttribute<SvgUnit>("x"); }
-			set { this.Attributes["x"] = value; }
-		}
+        [SvgAttribute("x")]
+        public virtual SvgUnit X
+        {
+            get { return this.Attributes.GetAttribute<SvgUnit>("x"); }
+            set { this.Attributes["x"] = value; }
+        }
 
-		[SvgAttribute("y")]
-		public virtual SvgUnit Y
-		{
-			get { return this.Attributes.GetAttribute<SvgUnit>("y"); }
-			set { this.Attributes["y"] = value; }
-		}
+        [SvgAttribute("y")]
+        public virtual SvgUnit Y
+        {
+            get { return this.Attributes.GetAttribute<SvgUnit>("y"); }
+            set { this.Attributes["y"] = value; }
+        }
 
 
-		[SvgAttribute("width")]
-		public virtual SvgUnit Width
-		{
-			get { return this.Attributes.GetAttribute<SvgUnit>("width"); }
-			set { this.Attributes["width"] = value; }
-		}
+        [SvgAttribute("width")]
+        public virtual SvgUnit Width
+        {
+            get { return this.Attributes.GetAttribute<SvgUnit>("width"); }
+            set { this.Attributes["width"] = value; }
+        }
 
-		[SvgAttribute("height")]
-		public virtual SvgUnit Height
-		{
-			get { return this.Attributes.GetAttribute<SvgUnit>("height"); }
-			set { this.Attributes["height"] = value; }
-		}
+        [SvgAttribute("height")]
+        public virtual SvgUnit Height
+        {
+            get { return this.Attributes.GetAttribute<SvgUnit>("height"); }
+            set { this.Attributes["height"] = value; }
+        }
 
-		[SvgAttribute("href", SvgAttributeAttribute.XLinkNamespace)]
-		public virtual string Href
-		{
-			get { return this.Attributes.GetAttribute<string>("href"); }
-			set { this.Attributes["href"] = value; }
-		}
+        [SvgAttribute("href", SvgAttributeAttribute.XLinkNamespace)]
+        public virtual string Href
+        {
+            get { return this.Attributes.GetAttribute<string>("href"); }
+            set { this.Attributes["href"] = value; }
+        }
 
 
 
@@ -88,9 +88,12 @@ namespace Svg
         /// <value>The bounds.</value>
         public override RectangleF Bounds
         {
-			get { return new RectangleF(this.Location.ToDeviceValue(null, this),
+            get
+            {
+                return new RectangleF(this.Location.ToDeviceValue(null, this),
                                         new SizeF(this.Width.ToDeviceValue(null, UnitRenderingType.Horizontal, this),
-                                                  this.Height.ToDeviceValue(null, UnitRenderingType.Vertical, this))); }
+                                                  this.Height.ToDeviceValue(null, UnitRenderingType.Vertical, this)));
+            }
         }
 
         /// <summary>
@@ -98,19 +101,19 @@ namespace Svg
         /// </summary>
         public override GraphicsPath Path(ISvgRenderer renderer)
         {
-          if (_path == null)
-          {
-            // Same size of rectangle can suffice to provide bounds of the image
-            var rectangle = new RectangleF(Location.ToDeviceValue(renderer, this),
-                SvgUnit.GetDeviceSize(Width, Height, renderer, this));
+            if (_path == null)
+            {
+                // Same size of rectangle can suffice to provide bounds of the image
+                var rectangle = new RectangleF(Location.ToDeviceValue(renderer, this),
+                    SvgUnit.GetDeviceSize(Width, Height, renderer, this));
 
-            _path = new GraphicsPath();
-            _path.StartFigure();
-            _path.AddRectangle(rectangle);
-            _path.CloseFigure();
-          }
+                _path = new GraphicsPath();
+                _path.StartFigure();
+                _path.AddRectangle(rectangle);
+                _path.CloseFigure();
+            }
 
-          return _path;
+            return _path;
         }
 
         /// <summary>
@@ -320,20 +323,20 @@ namespace Svg
         }
 
 
-		public override SvgElement DeepCopy()
-		{
-			return DeepCopy<SvgImage>();
-		}
+        public override SvgElement DeepCopy()
+        {
+            return DeepCopy<SvgImage>();
+        }
 
-		public override SvgElement DeepCopy<T>()
-		{
- 			var newObj = base.DeepCopy<T>() as SvgImage;
-			newObj.Height = this.Height;
-			newObj.Width = this.Width;
-			newObj.X = this.X;
-			newObj.Y = this.Y;
-			newObj.Href = this.Href;
-			return newObj;
-		}
+        public override SvgElement DeepCopy<T>()
+        {
+            var newObj = base.DeepCopy<T>() as SvgImage;
+            newObj.Height = this.Height;
+            newObj.Width = this.Width;
+            newObj.X = this.X;
+            newObj.Y = this.Y;
+            newObj.Href = this.Href;
+            return newObj;
+        }
     }
 }

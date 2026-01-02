@@ -7,7 +7,7 @@ namespace ExCSS
     {
         private Term _term;
         private bool _important;
-        
+
         public Property(string name)
         {
             Name = name;
@@ -33,7 +33,7 @@ namespace ExCSS
         }
 
         public string ToString(bool friendlyFormat, int indentation = 0)
-        { 
+        {
             var value = Name + ":" + _term;
 
             if (_important)

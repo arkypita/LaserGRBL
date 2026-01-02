@@ -21,14 +21,14 @@ namespace Svg
         public SvgUnit StartX
         {
             get { return this._startX; }
-            set 
-            { 
-            	if(_startX != value)
-            	{
-            		this._startX = value;
-            		this.IsPathDirty = true;
-            		OnAttributeChanged(new AttributeEventArgs{ Attribute = "x1", Value = value });
-            	}
+            set
+            {
+                if (_startX != value)
+                {
+                    this._startX = value;
+                    this.IsPathDirty = true;
+                    OnAttributeChanged(new AttributeEventArgs { Attribute = "x1", Value = value });
+                }
             }
         }
 
@@ -36,14 +36,14 @@ namespace Svg
         public SvgUnit StartY
         {
             get { return this._startY; }
-            set 
-            { 
-            	if(_startY != value)
-            	{
-            		this._startY = value;
-            		this.IsPathDirty = true;
-            		OnAttributeChanged(new AttributeEventArgs{ Attribute = "y1", Value = value });
-            	}
+            set
+            {
+                if (_startY != value)
+                {
+                    this._startY = value;
+                    this.IsPathDirty = true;
+                    OnAttributeChanged(new AttributeEventArgs { Attribute = "y1", Value = value });
+                }
             }
         }
 
@@ -51,14 +51,14 @@ namespace Svg
         public SvgUnit EndX
         {
             get { return this._endX; }
-            set 
-            { 
-            	if(_endX != value)
-            	{
-            		this._endX = value;
-            		this.IsPathDirty = true;
-            		OnAttributeChanged(new AttributeEventArgs{ Attribute = "x2", Value = value });
-            	}
+            set
+            {
+                if (_endX != value)
+                {
+                    this._endX = value;
+                    this.IsPathDirty = true;
+                    OnAttributeChanged(new AttributeEventArgs { Attribute = "x2", Value = value });
+                }
             }
         }
 
@@ -66,14 +66,14 @@ namespace Svg
         public SvgUnit EndY
         {
             get { return this._endY; }
-            set 
-            { 
-            	if(_endY != value)
-            	{
-            		this._endY = value;
-            		this.IsPathDirty = true;
-            		OnAttributeChanged(new AttributeEventArgs{ Attribute = "y2", Value = value });
-            	}
+            set
+            {
+                if (_endY != value)
+                {
+                    this._endY = value;
+                    this.IsPathDirty = true;
+                    OnAttributeChanged(new AttributeEventArgs { Attribute = "y2", Value = value });
+                }
             }
         }
 
@@ -105,7 +105,7 @@ namespace Svg
         [SvgAttribute("marker-start")]
         public Uri MarkerStart
         {
-	        get { return this.Attributes.GetAttribute<Uri>("marker-start").ReplaceWithNullIfNone(); }
+            get { return this.Attributes.GetAttribute<Uri>("marker-start").ReplaceWithNullIfNone(); }
             set { this.Attributes["marker-start"] = value; }
         }
 
@@ -126,9 +126,9 @@ namespace Svg
         {
             if ((this._path == null || this.IsPathDirty) && base.StrokeWidth > 0)
             {
-                PointF start = new PointF(this.StartX.ToDeviceValue(renderer, UnitRenderingType.Horizontal, this), 
+                PointF start = new PointF(this.StartX.ToDeviceValue(renderer, UnitRenderingType.Horizontal, this),
                                           this.StartY.ToDeviceValue(renderer, UnitRenderingType.Vertical, this));
-                PointF end = new PointF(this.EndX.ToDeviceValue(renderer, UnitRenderingType.Horizontal, this), 
+                PointF end = new PointF(this.EndX.ToDeviceValue(renderer, UnitRenderingType.Horizontal, this),
                                         this.EndY.ToDeviceValue(renderer, UnitRenderingType.Vertical, this));
 
                 this._path = new GraphicsPath();
@@ -137,16 +137,16 @@ namespace Svg
                 // i.e stroke width only to be considered when calculating boundary
                 if (renderer != null)
                 {
-                  this._path.AddLine(start, end);
-                  this.IsPathDirty = false;
+                    this._path.AddLine(start, end);
+                    this.IsPathDirty = false;
                 }
                 else
-                {	 // only when calculating boundary 
-                  _path.StartFigure();
-                  var radius = base.StrokeWidth / 2;
-                  _path.AddEllipse(start.X - radius, start.Y - radius, 2 * radius, 2 * radius);
-                  _path.AddEllipse(end.X - radius, end.Y - radius, 2 * radius, 2 * radius);
-                  _path.CloseFigure();
+                {    // only when calculating boundary 
+                    _path.StartFigure();
+                    var radius = base.StrokeWidth / 2;
+                    _path.AddEllipse(start.X - radius, start.Y - radius, 2 * radius, 2 * radius);
+                    _path.AddEllipse(end.X - radius, end.Y - radius, 2 * radius, 2 * radius);
+                    _path.CloseFigure();
                 }
             }
             return this._path;
@@ -183,23 +183,23 @@ namespace Svg
             return result;
         }
 
-		public override SvgElement DeepCopy()
-		{
-			return DeepCopy<SvgLine>();
-		}
+        public override SvgElement DeepCopy()
+        {
+            return DeepCopy<SvgLine>();
+        }
 
-		public override SvgElement DeepCopy<T>()
-		{
-			var newObj = base.DeepCopy<T>() as SvgLine;
-			newObj.StartX = this.StartX;
-			newObj.EndX = this.EndX;
-			newObj.StartY = this.StartY;
-			newObj.EndY = this.EndY;
-			if (this.Fill != null)
-				newObj.Fill = this.Fill.DeepCopy() as SvgPaintServer;
+        public override SvgElement DeepCopy<T>()
+        {
+            var newObj = base.DeepCopy<T>() as SvgLine;
+            newObj.StartX = this.StartX;
+            newObj.EndX = this.EndX;
+            newObj.StartY = this.StartY;
+            newObj.EndY = this.EndY;
+            if (this.Fill != null)
+                newObj.Fill = this.Fill.DeepCopy() as SvgPaintServer;
 
-			return newObj;
-		}
+            return newObj;
+        }
 
     }
 }

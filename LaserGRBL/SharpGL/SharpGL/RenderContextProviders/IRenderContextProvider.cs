@@ -22,29 +22,29 @@ namespace SharpGL.RenderContextProviders
         /// <param name="parameter">The extra parameter.</param>
         /// <returns></returns>
 	    bool Create(OpenGLVersion openGLVersion, OpenGL gl, int width, int height, int bitDepth, object parameter);
-	
+
         /// <summary>
         /// Destroys the render context provider instance.
         /// </summary>
-	    void Destroy();
-	
+        void Destroy();
+
         /// <summary>
         /// Sets the dimensions of the render context provider.
         /// </summary>
         /// <param name="width">Width.</param>
         /// <param name="height">Height.</param>
-	    void SetDimensions(int width, int height);
+        void SetDimensions(int width, int height);
 
-	    /// <summary>
-	    /// Makes the render context current.
-	    /// </summary>
-	    void MakeCurrent();
-	
+        /// <summary>
+        /// Makes the render context current.
+        /// </summary>
+        void MakeCurrent();
+
         /// <summary>
         /// Blit the rendered data to the supplied device context.
         /// </summary>
         /// <param name="hdc">The HDC.</param>
-	    void Blit(IntPtr hdc);
+        void Blit(IntPtr hdc);
 
         /// <summary>
         /// Gets the render context handle.
@@ -70,12 +70,12 @@ namespace SharpGL.RenderContextProviders
         {
             get;
         }
-	
+
         /// <summary>
         /// Gets or sets the height.
         /// </summary>
         /// <value>The height.</value>
-	    int Height
+        int Height
         {
             get;
         }

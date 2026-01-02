@@ -13,11 +13,11 @@ namespace ExCSS
 
         public ParserError ParserError { get; set; }
 
-        public int Line{get;set;}
+        public int Line { get; set; }
 
-        public int Column{get;set;}
+        public int Column { get; set; }
 
-        public string Message{get;private set;}
+        public string Message { get; private set; }
 
         public override string ToString()
         {

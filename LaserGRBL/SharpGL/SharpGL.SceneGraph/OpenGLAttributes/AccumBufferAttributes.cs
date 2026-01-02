@@ -7,13 +7,13 @@ using SharpGL.Enumerations;
 
 namespace SharpGL.OpenGLAttributes
 {
-	/// <summary>
-	/// This class has all the settings you can edit for fog.
-	/// </summary>
-	[TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
-	[Serializable()]
+    /// <summary>
+    /// This class has all the settings you can edit for fog.
+    /// </summary>
+    [TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    [Serializable()]
     public class AccumBufferAttributes : OpenGLAttributeGroup
-	{
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="AccumBufferAttributes"/> class.
         /// </summary>
@@ -44,11 +44,11 @@ namespace SharpGL.OpenGLAttributes
 
         private GLColor clear;
 
-		[Description("Clear color."), Category("Fog")]
-		public GLColor Clear
-		{
+        [Description("Clear color."), Category("Fog")]
+        public GLColor Clear
+        {
             get { return clear; }
             set { clear = value; }
-		}
-	}
+        }
+    }
 }

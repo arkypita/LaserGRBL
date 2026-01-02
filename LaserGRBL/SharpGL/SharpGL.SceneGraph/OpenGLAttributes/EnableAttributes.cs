@@ -6,13 +6,13 @@ using SharpGL.SceneGraph;
 
 namespace SharpGL.OpenGLAttributes
 {
-	/// <summary>
-	/// This class has all the settings you can edit for fog.
-	/// </summary>
-	[TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
-	[Serializable()]
+    /// <summary>
+    /// This class has all the settings you can edit for fog.
+    /// </summary>
+    [TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    [Serializable()]
     public class EnableAttributes : OpenGLAttributeGroup
-	{
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="EnableAttributes"/> class.
         /// </summary>
@@ -27,28 +27,28 @@ namespace SharpGL.OpenGLAttributes
         /// <param name="gl">The OpenGL instance.</param>
         public override void SetAttributes(OpenGL gl)
         {
-            if(enableAlphaTest.HasValue) gl.EnableIf(OpenGL.GL_ALPHA_TEST,enableAlphaTest.Value);
-            if(enableAutoNormal.HasValue) gl.EnableIf(OpenGL.GL_AUTO_NORMAL,enableAutoNormal.Value);
-            if(enableBlend.HasValue) gl.EnableIf(OpenGL.GL_BLEND,enableBlend.Value);
-            if(enableCullFace.HasValue) gl.EnableIf(OpenGL.GL_CULL_FACE,enableCullFace.Value);
-            if(enableDepthTest.HasValue) gl.EnableIf(OpenGL.GL_DEPTH_TEST,enableDepthTest.Value);
-            if(enableDither.HasValue) gl.EnableIf(OpenGL.GL_DITHER,enableDither.Value);
-            if(enableFog.HasValue) gl.EnableIf(OpenGL.GL_FOG,enableFog.Value);
-            if(enableLighting.HasValue) gl.EnableIf(OpenGL.GL_LIGHTING,enableLighting.Value);
-            if(enableLineSmooth.HasValue) gl.EnableIf(OpenGL.GL_LINE_SMOOTH,enableLineSmooth.Value);
-            if(enableLineStipple.HasValue) gl.EnableIf(OpenGL.GL_LINE_STIPPLE,enableLineStipple.Value);
-            if(enableColorLogicOp.HasValue) gl.EnableIf(OpenGL.GL_COLOR_LOGIC_OP,enableColorLogicOp.Value);
-            if(enableIndexLogicOp.HasValue) gl.EnableIf(OpenGL.GL_INDEX_LOGIC_OP,enableIndexLogicOp.Value);
-            if(enableNormalize.HasValue) gl.EnableIf(OpenGL.GL_NORMALIZE,enableNormalize.Value);
-            if(enablePointSmooth.HasValue) gl.EnableIf(OpenGL.GL_POINT_SMOOTH,enablePointSmooth.Value);
-            if(enablePolygonOffsetLine.HasValue) gl.EnableIf(OpenGL.GL_POLYGON_OFFSET_LINE,enablePolygonOffsetLine.Value);
-            if(enablePolygonOffsetFill.HasValue) gl.EnableIf(OpenGL.GL_POLYGON_OFFSET_FILL,enablePolygonOffsetFill.Value);
-            if(enablePolygonOffsetPoint.HasValue) gl.EnableIf(OpenGL.GL_POLYGON_OFFSET_POINT,enablePolygonOffsetPoint.Value);
-            if(enablePolygonSmooth.HasValue) gl.EnableIf(OpenGL.GL_POLYGON_SMOOTH,enablePolygonSmooth.Value);
-            if(enablePolygonStipple.HasValue) gl.EnableIf(OpenGL.GL_POLYGON_STIPPLE,enablePolygonStipple.Value);
-            if(enableScissorTest.HasValue) gl.EnableIf(OpenGL.GL_SCISSOR_TEST,enableScissorTest.Value);
-            if(enableStencilTest.HasValue) gl.EnableIf(OpenGL.GL_STENCIL,enableStencilTest.Value);
-            if(enableTexture1D.HasValue) gl.EnableIf(OpenGL.GL_TEXTURE_1D,enableTexture1D.Value);
+            if (enableAlphaTest.HasValue) gl.EnableIf(OpenGL.GL_ALPHA_TEST, enableAlphaTest.Value);
+            if (enableAutoNormal.HasValue) gl.EnableIf(OpenGL.GL_AUTO_NORMAL, enableAutoNormal.Value);
+            if (enableBlend.HasValue) gl.EnableIf(OpenGL.GL_BLEND, enableBlend.Value);
+            if (enableCullFace.HasValue) gl.EnableIf(OpenGL.GL_CULL_FACE, enableCullFace.Value);
+            if (enableDepthTest.HasValue) gl.EnableIf(OpenGL.GL_DEPTH_TEST, enableDepthTest.Value);
+            if (enableDither.HasValue) gl.EnableIf(OpenGL.GL_DITHER, enableDither.Value);
+            if (enableFog.HasValue) gl.EnableIf(OpenGL.GL_FOG, enableFog.Value);
+            if (enableLighting.HasValue) gl.EnableIf(OpenGL.GL_LIGHTING, enableLighting.Value);
+            if (enableLineSmooth.HasValue) gl.EnableIf(OpenGL.GL_LINE_SMOOTH, enableLineSmooth.Value);
+            if (enableLineStipple.HasValue) gl.EnableIf(OpenGL.GL_LINE_STIPPLE, enableLineStipple.Value);
+            if (enableColorLogicOp.HasValue) gl.EnableIf(OpenGL.GL_COLOR_LOGIC_OP, enableColorLogicOp.Value);
+            if (enableIndexLogicOp.HasValue) gl.EnableIf(OpenGL.GL_INDEX_LOGIC_OP, enableIndexLogicOp.Value);
+            if (enableNormalize.HasValue) gl.EnableIf(OpenGL.GL_NORMALIZE, enableNormalize.Value);
+            if (enablePointSmooth.HasValue) gl.EnableIf(OpenGL.GL_POINT_SMOOTH, enablePointSmooth.Value);
+            if (enablePolygonOffsetLine.HasValue) gl.EnableIf(OpenGL.GL_POLYGON_OFFSET_LINE, enablePolygonOffsetLine.Value);
+            if (enablePolygonOffsetFill.HasValue) gl.EnableIf(OpenGL.GL_POLYGON_OFFSET_FILL, enablePolygonOffsetFill.Value);
+            if (enablePolygonOffsetPoint.HasValue) gl.EnableIf(OpenGL.GL_POLYGON_OFFSET_POINT, enablePolygonOffsetPoint.Value);
+            if (enablePolygonSmooth.HasValue) gl.EnableIf(OpenGL.GL_POLYGON_SMOOTH, enablePolygonSmooth.Value);
+            if (enablePolygonStipple.HasValue) gl.EnableIf(OpenGL.GL_POLYGON_STIPPLE, enablePolygonStipple.Value);
+            if (enableScissorTest.HasValue) gl.EnableIf(OpenGL.GL_SCISSOR_TEST, enableScissorTest.Value);
+            if (enableStencilTest.HasValue) gl.EnableIf(OpenGL.GL_STENCIL, enableStencilTest.Value);
+            if (enableTexture1D.HasValue) gl.EnableIf(OpenGL.GL_TEXTURE_1D, enableTexture1D.Value);
             if (enableTexture2D.HasValue) gl.EnableIf(OpenGL.GL_TEXTURE_2D, enableTexture2D.Value);
         }
 
@@ -386,5 +386,5 @@ namespace SharpGL.OpenGLAttributes
             get { return enableTexture2D; }
             set { enableTexture2D = value; }
         }
-	}
+    }
 }

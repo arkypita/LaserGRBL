@@ -268,7 +268,7 @@ namespace SharpGL.Serialization.Wavefront
                 }
             }
         }
-                
+
         //public bool SaveData(Scene scene, SceneElement element, string path)
         //{
         //    string mtlPath = Path.ChangeExtension(path, ".mtl");

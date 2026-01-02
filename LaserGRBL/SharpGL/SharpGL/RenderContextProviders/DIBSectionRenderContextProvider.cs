@@ -62,46 +62,46 @@ namespace SharpGL.RenderContextProviders
         /// Destroys the render context provider instance.
         /// </summary>
 	    public override void Destroy()
-	    {
+        {
             //  Destroy the bitmap.
             dibSection.Destroy();
 
-		    //	Release the device context.
+            //	Release the device context.
             Win32.ReleaseDC(IntPtr.Zero, deviceContextHandle);
 
             //	Call the base, which will delete the render context handle.
             base.Destroy();
-	    }
+        }
 
-	    public override void SetDimensions(int width, int height)
-	    {
+        public override void SetDimensions(int width, int height)
+        {
             //  Call the base.
             base.SetDimensions(width, height);
 
-		    //	Resize.
+            //	Resize.
             dibSection.Resize(width, height, BitDepth);
-	    }
+        }
 
-	    public override void Blit(IntPtr hdc) 
-	    {
+        public override void Blit(IntPtr hdc)
+        {
             //  We must have a device context.
             // [RS] Why can the deviceContextHandle be zero?
             if (deviceContextHandle == IntPtr.Zero)
                 return;
 
-			//	Swap the buffers.
+            //	Swap the buffers.
             Win32.SwapBuffers(deviceContextHandle);
 
             //  Blit to the device context.
             Win32.BitBlt(hdc, 0, 0, Width, Height, deviceContextHandle, 0, 0, Win32.SRCCOPY);
-	    }
-	
-	    public override void MakeCurrent()
-	    {
+        }
+
+        public override void MakeCurrent()
+        {
             //  If we have a render context and DC make current.
             if (renderContextHandle != IntPtr.Zero && deviceContextHandle != IntPtr.Zero)
                 Win32.wglMakeCurrent(deviceContextHandle, renderContextHandle);
-	    }
+        }
 
         /// <summary>
         /// The DIB Section object.

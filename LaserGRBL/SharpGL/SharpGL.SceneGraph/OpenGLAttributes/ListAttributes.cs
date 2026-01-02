@@ -7,13 +7,13 @@ using SharpGL.Enumerations;
 
 namespace SharpGL.OpenGLAttributes
 {
-	/// <summary>
-	/// This class has all the settings you can edit for lists.
-	/// </summary>
-	[TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
-	[Serializable()]
+    /// <summary>
+    /// This class has all the settings you can edit for lists.
+    /// </summary>
+    [TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    [Serializable()]
     public class ListAttributes : OpenGLAttributeGroup
-	{
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="ListAttributes"/> class.
         /// </summary>
@@ -55,9 +55,9 @@ namespace SharpGL.OpenGLAttributes
         /// </value>
 		[Description("."), Category("List")]
         public uint? ListBase
-		{
+        {
             get { return listBase; }
             set { listBase = value; }
-		}
-	}
+        }
+    }
 }

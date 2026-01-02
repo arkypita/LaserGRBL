@@ -9,7 +9,7 @@ using System.Drawing.Imaging;
 namespace Svg.FilterEffects
 {
 
-	[SvgElement("feMergeNode")]
+    [SvgElement("feMergeNode")]
     public class SvgMergeNode : SvgElement
     {
         [SvgAttribute("in")]
@@ -19,10 +19,10 @@ namespace Svg.FilterEffects
             set { this.Attributes["in"] = value; }
         }
 
-		public override SvgElement DeepCopy()
-		{
-			throw new NotImplementedException();
-		}
+        public override SvgElement DeepCopy()
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }

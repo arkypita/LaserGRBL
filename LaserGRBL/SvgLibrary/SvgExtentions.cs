@@ -67,7 +67,7 @@ namespace Svg
                 // Make sure to set back the old culture even an error occurred.
                 Thread.CurrentThread.CurrentCulture = currentCulture;
             }
-            
+
             return result;
         }
 

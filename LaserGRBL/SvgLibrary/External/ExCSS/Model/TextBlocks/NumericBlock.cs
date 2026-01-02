@@ -17,7 +17,7 @@ namespace ExCSS.Model.TextBlocks
         {
             get { return Single.Parse(_data, CultureInfo.InvariantCulture); }
         }
-        
+
         public override string ToString()
         {
             return _data;

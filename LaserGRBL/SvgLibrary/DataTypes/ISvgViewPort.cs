@@ -15,6 +15,6 @@ namespace Svg
         /// </summary>
         SvgViewBox ViewBox { get; set; }
         SvgAspectRatio AspectRatio { get; set; }
-		SvgOverflow Overflow { get; set; }
+        SvgOverflow Overflow { get; set; }
     }
 }

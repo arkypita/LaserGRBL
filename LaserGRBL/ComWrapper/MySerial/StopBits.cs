@@ -7,14 +7,14 @@
 // (c) Copyright 2006 Novell, Inc. (http://www.novell.com)
 //
 
-namespace MySerialPort 
+namespace MySerialPort
 {
-	public enum StopBits 
-	{
-		None,
-		One,
-		Two,
-		OnePointFive
-	} 
+    public enum StopBits
+    {
+        None,
+        One,
+        Two,
+        OnePointFive
+    }
 }
 

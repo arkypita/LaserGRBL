@@ -7,13 +7,13 @@ using SharpGL.Enumerations;
 
 namespace SharpGL.OpenGLAttributes
 {
-	/// <summary>
-	/// This class has all the settings you can edit for fog.
-	/// </summary>
-	[TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
-	[Serializable()]
+    /// <summary>
+    /// This class has all the settings you can edit for fog.
+    /// </summary>
+    [TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    [Serializable()]
     public class DepthBufferAttributes : OpenGLAttributeGroup
-	{
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="DepthBufferAttributes"/> class.
         /// </summary>
@@ -42,8 +42,8 @@ namespace SharpGL.OpenGLAttributes
         /// </returns>
         public override bool AreAnyAttributesSet()
         {
-            return enableDepthTest.HasValue || 
-                depthFunction.HasValue || 
+            return enableDepthTest.HasValue ||
+                depthFunction.HasValue ||
                 depthClearValue.HasValue || enableDepthWritemask.HasValue;
         }
 
@@ -51,7 +51,7 @@ namespace SharpGL.OpenGLAttributes
         private DepthFunction? depthFunction;
         private float? depthClearValue;
         private bool? enableDepthWritemask;
-        
+
         /// <summary>
         /// Gets or sets the enable depth writemask.
         /// </summary>
@@ -103,5 +103,5 @@ namespace SharpGL.OpenGLAttributes
             get { return enableDepthTest; }
             set { enableDepthTest = value; }
         }
-	}
+    }
 }

@@ -6,37 +6,37 @@ using SharpGL.SceneGraph.Core;
 
 namespace SharpGL.SceneGraph.Assets
 {
-		/// <summary>
-		/// A material object is defined in mathematical terms, i.e it's not exclusivly 
-		/// for OpenGL. This means later on, DirectX or custom library functions could
-		/// be added.
-		/// </summary>
-	[TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
-	[Serializable()]
-	public class Material : Asset, IBindable
-	{
+    /// <summary>
+    /// A material object is defined in mathematical terms, i.e it's not exclusivly 
+    /// for OpenGL. This means later on, DirectX or custom library functions could
+    /// be added.
+    /// </summary>
+    [TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    [Serializable()]
+    public class Material : Asset, IBindable
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="Material"/> class.
         /// </summary>
-		public Material() 
+		public Material()
         {
             Name = "Material";
         }
-        
+
         /// <summary>
         /// Calculates the lighting.
         /// </summary>
         /// <param name="light">The light.</param>
         /// <param name="angle">The angle.</param>
         /// <returns></returns>
-		public GLColor CalculateLighting(Light light, float angle)
-		{
-			double angleRadians = angle * 3.14159 / 360.0;
-			GLColor reflected = ambient * light.Ambient;
-			reflected += diffuse * light.Diffuse * (float)Math.Cos(angleRadians);
+        public GLColor CalculateLighting(Light light, float angle)
+        {
+            double angleRadians = angle * 3.14159 / 360.0;
+            GLColor reflected = ambient * light.Ambient;
+            reflected += diffuse * light.Diffuse * (float)Math.Cos(angleRadians);
 
-			return reflected;
-		}
+            return reflected;
+        }
 
         /// <summary>
         /// Pushes this object into the provided OpenGL instance.
@@ -98,11 +98,11 @@ namespace SharpGL.SceneGraph.Assets
         /// Specular color.
         /// </summary>
         private GLColor specular = new GLColor(0, 0, 0, 1);
-       
+
         /// <summary>
         /// Emission.
         /// </summary>
-		private GLColor emission = new GLColor(0.1f, 0.1f, 0.1f, 1);
+        private GLColor emission = new GLColor(0.1f, 0.1f, 0.1f, 1);
 
         /// <summary>
         /// Shininess.
@@ -113,7 +113,7 @@ namespace SharpGL.SceneGraph.Assets
         /// The texture.
         /// </summary>
         private Texture texture = new Texture();
-		
+
         /// <summary>
         /// Gets or sets the ambient.
         /// </summary>
@@ -121,11 +121,11 @@ namespace SharpGL.SceneGraph.Assets
         /// The ambient.
         /// </value>
         [Description("Ambient color."), Category("Material")]
-		public System.Drawing.Color Ambient
-		{
-			get {return ambient.ColorNET;}
-			set {ambient.ColorNET = value;}
-		}
+        public System.Drawing.Color Ambient
+        {
+            get { return ambient.ColorNET; }
+            set { ambient.ColorNET = value; }
+        }
 
         /// <summary>
         /// Gets or sets the diffuse.
@@ -134,11 +134,11 @@ namespace SharpGL.SceneGraph.Assets
         /// The diffuse.
         /// </value>
         [Description("Diffuse color."), Category("Material")]
-		public System.Drawing.Color Diffuse
-		{
-			get {return diffuse.ColorNET;}
-			set {diffuse.ColorNET = value;}
-		}
+        public System.Drawing.Color Diffuse
+        {
+            get { return diffuse.ColorNET; }
+            set { diffuse.ColorNET = value; }
+        }
 
         /// <summary>
         /// Gets or sets the specular.
@@ -147,11 +147,11 @@ namespace SharpGL.SceneGraph.Assets
         /// The specular.
         /// </value>
         [Description("Specular color."), Category("Material")]
-		public System.Drawing.Color Specular
-		{
-			get {return specular.ColorNET;}
-			set {specular.ColorNET = value;}
-		}
+        public System.Drawing.Color Specular
+        {
+            get { return specular.ColorNET; }
+            set { specular.ColorNET = value; }
+        }
 
         /// <summary>
         /// Gets or sets the emission.
@@ -160,11 +160,11 @@ namespace SharpGL.SceneGraph.Assets
         /// The emission.
         /// </value>
         [Description("Emission color."), Category("Material")]
-		public System.Drawing.Color Emission
-		{
-			get {return emission.ColorNET;}
-			set {emission.ColorNET = value;}
-		}
+        public System.Drawing.Color Emission
+        {
+            get { return emission.ColorNET; }
+            set { emission.ColorNET = value; }
+        }
 
         /// <summary>
         /// Gets or sets the shininess.
@@ -173,11 +173,11 @@ namespace SharpGL.SceneGraph.Assets
         /// The shininess.
         /// </value>
         [Description("Shininess."), Category("Material")]
-		public float Shininess
-		{
-			get {return shininess;}
-			set {shininess = value;}
-		}
+        public float Shininess
+        {
+            get { return shininess; }
+            set { shininess = value; }
+        }
 
         /// <summary>
         /// Gets or sets the texture.
@@ -186,12 +186,12 @@ namespace SharpGL.SceneGraph.Assets
         /// The texture.
         /// </value>
         [Description("The Material's Texture."), Category("Material")]
-		public Texture Texture
-		{
-			get {return texture;}
-			set {texture = value;}
-		}
+        public Texture Texture
+        {
+            get { return texture; }
+            set { texture = value; }
+        }
     }
-	
+
 }
 

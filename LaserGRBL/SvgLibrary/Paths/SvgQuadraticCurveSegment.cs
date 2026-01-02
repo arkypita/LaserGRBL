@@ -48,11 +48,11 @@ namespace Svg.Pathing
         {
             graphicsPath.AddBezier(this.Start, this.FirstControlPoint, this.SecondControlPoint, this.End);
         }
-        
+
         public override string ToString()
-		{
-			return "Q" + this.ControlPoint.ToSvgString() + " " + this.End.ToSvgString();
-		}
+        {
+            return "Q" + this.ControlPoint.ToSvgString() + " " + this.End.ToSvgString();
+        }
 
     }
 }

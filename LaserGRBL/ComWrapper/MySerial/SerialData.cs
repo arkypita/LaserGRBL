@@ -7,12 +7,12 @@
 // (c) Copyright 2006 Novell, Inc. (http://www.novell.com)
 //
 
-namespace MySerialPort 
+namespace MySerialPort
 {
-	public enum SerialData 
-	{
-		Chars = 1,
-		Eof
-	} 
+    public enum SerialData
+    {
+        Chars = 1,
+        Eof
+    }
 }
 

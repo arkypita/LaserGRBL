@@ -74,9 +74,12 @@ namespace RJCP.Datastructures
             set
             {
                 m_StopWatch.Reset();
-                if (value < 0) {
+                if (value < 0)
+                {
                     m_Milliseconds = System.Threading.Timeout.Infinite;
-                } else {
+                }
+                else
+                {
                     m_Milliseconds = value;
                     if (value > 0) m_StopWatch.Start();
                 }
@@ -110,7 +113,8 @@ namespace RJCP.Datastructures
         /// </summary>
         public void Reset()
         {
-            if (m_Milliseconds > 0) {
+            if (m_Milliseconds > 0)
+            {
                 m_StopWatch.Reset();
                 m_StopWatch.Start();
             }

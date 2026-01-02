@@ -13,7 +13,7 @@ namespace Svg
     public class SvgGradientStop : SvgElement
     {
         private SvgUnit _offset;
-        
+
         /// <summary>
         /// Gets or sets the offset, i.e. where the stop begins from the beginning, of the gradient stop.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Svg
         [TypeConverter(typeof(SvgPaintServerFactory))]
         public override SvgPaintServer StopColor
         {
-            get 
+            get
             {
                 var direct = this.Attributes.GetAttribute<SvgPaintServer>("stop-color", SvgColourServer.NotSet);
                 if (direct == SvgColourServer.Inherit) return this.Attributes["stop-color"] as SvgPaintServer ?? SvgColourServer.NotSet;
@@ -103,16 +103,16 @@ namespace Svg
             return core.Colour;
         }
 
-		public override SvgElement DeepCopy()
-		{
-			return DeepCopy<SvgGradientStop>();
-		}
+        public override SvgElement DeepCopy()
+        {
+            return DeepCopy<SvgGradientStop>();
+        }
 
-		public override SvgElement DeepCopy<T>()
-		{
-			var newObj = base.DeepCopy<T>() as SvgGradientStop;
-			newObj.Offset = this.Offset;
-			return newObj;
-		}
+        public override SvgElement DeepCopy<T>()
+        {
+            var newObj = base.DeepCopy<T>() as SvgGradientStop;
+            newObj.Offset = this.Offset;
+            return newObj;
+        }
     }
 }

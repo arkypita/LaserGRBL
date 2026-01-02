@@ -26,10 +26,11 @@ namespace Svg
         public virtual string Text
         {
             get { return base.Content; }
-            set {
+            set
+            {
                 Nodes.Clear();
                 Children.Clear();
-                if(value != null)
+                if (value != null)
                 {
                     Nodes.Add(new SvgContentNode { Content = value });
                 }
@@ -327,7 +328,7 @@ namespace Svg
                 }
                 else
                 {
-                    TextDrawingState newState= new TextDrawingState(state, textNode);
+                    TextDrawingState newState = new TextDrawingState(state, textNode);
 
                     textNode.SetPath(newState);
                     state.NumChars += newState.NumChars;

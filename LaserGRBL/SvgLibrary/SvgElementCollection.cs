@@ -55,10 +55,10 @@ namespace Svg
         {
             InsertAndForceUniqueID(index, item, true, true, LogIDChange);
         }
-        
+
         private void LogIDChange(SvgElement elem, string oldId, string newID)
         {
-        	 System.Diagnostics.Debug.WriteLine("ID of SVG element " + elem.ToString() + " changed from " + oldId + " to " + newID);
+            System.Diagnostics.Debug.WriteLine("ID of SVG element " + elem.ToString() + " changed from " + oldId + " to " + newID);
         }
 
         public void InsertAndForceUniqueID(int index, SvgElement item, bool autoForceUniqueID = true, bool autoFixChildrenID = true, Action<SvgElement, string, string> logElementOldIDNewID = null)
@@ -100,8 +100,8 @@ namespace Svg
         {
             if (!this._mock)
             {
-            	if (this._owner.OwnerDocument != null)
-            	{
+                if (this._owner.OwnerDocument != null)
+                {
                     this._owner.OwnerDocument.IdManager.AddAndForceUniqueID(item, sibling, autoForceUniqueID, logElementOldIDNewID);
 
                     if (!(item is SvgDocument)) //don't add subtree of a document to parent document
@@ -112,7 +112,7 @@ namespace Svg
                         }
                     }
                 }
-                
+
                 //if all checked, set parent
                 item._parent = this._owner;
             }
@@ -169,30 +169,30 @@ namespace Svg
             return removed;
         }
 
-		/// <summary>
-		/// expensive recursive search for nodes of type T
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		public IEnumerable<T> FindSvgElementsOf<T>() where T : SvgElement
-		{
-			return _elements.Where(x => x is T).Select(x => x as T).Concat(_elements.SelectMany(x => x.Children.FindSvgElementsOf<T>()));
-		}
+        /// <summary>
+        /// expensive recursive search for nodes of type T
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public IEnumerable<T> FindSvgElementsOf<T>() where T : SvgElement
+        {
+            return _elements.Where(x => x is T).Select(x => x as T).Concat(_elements.SelectMany(x => x.Children.FindSvgElementsOf<T>()));
+        }
 
-		/// <summary>
-		/// expensive recursive search for first node of type T
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		public T FindSvgElementOf<T>() where T : SvgElement
-		{
-			return _elements.OfType<T>().FirstOrDefault() ?? _elements.Select(x => x.Children.FindSvgElementOf<T>()).FirstOrDefault<T>(x => x != null);
-		}
+        /// <summary>
+        /// expensive recursive search for first node of type T
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T FindSvgElementOf<T>() where T : SvgElement
+        {
+            return _elements.OfType<T>().FirstOrDefault() ?? _elements.Select(x => x.Children.FindSvgElementOf<T>()).FirstOrDefault<T>(x => x != null);
+        }
 
-		public T GetSvgElementOf<T>() where T : SvgElement
-		{
-			return _elements.FirstOrDefault(x => x is T) as T;
-		}
+        public T GetSvgElementOf<T>() where T : SvgElement
+        {
+            return _elements.FirstOrDefault(x => x is T) as T;
+        }
 
 
         public IEnumerator<SvgElement> GetEnumerator()

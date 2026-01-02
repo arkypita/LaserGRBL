@@ -7,13 +7,13 @@ using SharpGL.Enumerations;
 
 namespace SharpGL.OpenGLAttributes
 {
-	/// <summary>
-	/// This class has all the settings you can edit for fog.
-	/// </summary>
-	[TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
-	[Serializable()]
+    /// <summary>
+    /// This class has all the settings you can edit for fog.
+    /// </summary>
+    [TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    [Serializable()]
     public class TextureAttributes : OpenGLAttributeGroup
-	{
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="TextureAttributes"/> class.
         /// </summary>
@@ -63,11 +63,11 @@ glTexGen plane equations for S, T, R, and Q*/
 
         private bool? enableAutoNormal;
 
-		[Description("."), Category("Eval")]
+        [Description("."), Category("Eval")]
         public bool? EnableAutoNormal
-		{
+        {
             get { return enableAutoNormal; }
             set { enableAutoNormal = value; }
-		}
-	}
+        }
+    }
 }

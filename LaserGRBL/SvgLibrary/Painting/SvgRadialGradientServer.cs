@@ -140,7 +140,7 @@ namespace Svg
 
                 // Calculate any required scaling
                 var scaleBounds = RectangleF.Inflate(renderingElement.Bounds, renderingElement.StrokeWidth, renderingElement.StrokeWidth);
-								var scale = CalcScale(scaleBounds, path);
+                var scale = CalcScale(scaleBounds, path);
 
                 // Not ideal, but this makes sure that the rest of the shape gets properly filled or drawn
                 if (scale > 1.0f && SpreadMethod == SvgGradientSpreadMethod.Pad)
@@ -218,10 +218,10 @@ namespace Svg
         private float CalcScale(RectangleF bounds, GraphicsPath path, Graphics graphics = null)
         {
             var points = new PointF[] {
-                new PointF(bounds.Left, bounds.Top), 
-                new PointF(bounds.Right, bounds.Top), 
-                new PointF(bounds.Right, bounds.Bottom), 
-                new PointF(bounds.Left, bounds.Bottom) 
+                new PointF(bounds.Left, bounds.Top),
+                new PointF(bounds.Right, bounds.Top),
+                new PointF(bounds.Right, bounds.Bottom),
+                new PointF(bounds.Left, bounds.Bottom)
             };
             var pathBounds = path.GetBounds();
             var pathCenter = new PointF(pathBounds.X + pathBounds.Width / 2, pathBounds.Y + pathBounds.Height / 2);
@@ -234,20 +234,20 @@ namespace Svg
                 while (!(path.IsVisible(points[0]) && path.IsVisible(points[1]) &&
                          path.IsVisible(points[2]) && path.IsVisible(points[3])))
                 {
-										var previousPoints = new PointF[] 
-										{
-												new PointF(points[0].X, points[0].Y), 
-												new PointF(points[1].X, points[1].Y), 
-												new PointF(points[2].X, points[2].Y), 
-												new PointF(points[3].X, points[3].Y) 
-										};
+                    var previousPoints = new PointF[]
+                    {
+                                                new PointF(points[0].X, points[0].Y),
+                                                new PointF(points[1].X, points[1].Y),
+                                                new PointF(points[2].X, points[2].Y),
+                                                new PointF(points[3].X, points[3].Y)
+                    };
 
                     transform.TransformPoints(points);
 
-										if (Enumerable.SequenceEqual(previousPoints, points))
-										{
-											break;
-										}
+                    if (Enumerable.SequenceEqual(previousPoints, points))
+                    {
+                        break;
+                    }
                 }
             }
             return bounds.Height / (points[2].Y - points[1].Y);

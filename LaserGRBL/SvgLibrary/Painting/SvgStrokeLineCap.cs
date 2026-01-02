@@ -14,7 +14,7 @@ namespace Svg
 
         /// <summary>The ends of the subpaths are square but do not extend past the end of the subpath.</summary>
         Butt,
-        
+
         /// <summary>The ends of the subpaths are rounded.</summary>
         Round,
 

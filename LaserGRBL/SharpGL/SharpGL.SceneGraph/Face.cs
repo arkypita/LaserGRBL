@@ -17,7 +17,7 @@ namespace SharpGL.SceneGraph
         /// <summary>
         /// Initializes a new instance of the <see cref="Face"/> class.
         /// </summary>
-        public Face() 
+        public Face()
         {
         }
 

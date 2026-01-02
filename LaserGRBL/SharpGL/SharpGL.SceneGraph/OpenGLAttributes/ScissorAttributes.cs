@@ -7,13 +7,13 @@ using SharpGL.Enumerations;
 
 namespace SharpGL.OpenGLAttributes
 {
-	/// <summary>
-	/// This class has all the settings you can edit for fog.
-	/// </summary>
-	[TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
-	[Serializable()]
+    /// <summary>
+    /// This class has all the settings you can edit for fog.
+    /// </summary>
+    [TypeConverter(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    [Serializable()]
     public class ScissorAttributes : OpenGLAttributeGroup
-	{
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="ScissorAttributes"/> class.
         /// </summary>
@@ -28,9 +28,9 @@ namespace SharpGL.OpenGLAttributes
         /// <param name="gl">The OpenGL instance.</param>
         public override void SetAttributes(OpenGL gl)
         {
-            if (enableScissorTest.HasValue) 
+            if (enableScissorTest.HasValue)
                 gl.EnableIf(OpenGL.GL_SCISSOR_TEST, enableScissorTest.Value);
-            if (scissorX.HasValue && scissorY.HasValue && scissorWidth.HasValue && scissorHeight.HasValue) 
+            if (scissorX.HasValue && scissorY.HasValue && scissorWidth.HasValue && scissorHeight.HasValue)
                 gl.Scissor(scissorX.Value, scissorY.Value, scissorWidth.Value, scissorHeight.Value);
 
         }
@@ -65,7 +65,7 @@ namespace SharpGL.OpenGLAttributes
         /// </value>
 		[Description("."), Category("Scissor")]
         public bool? EnableScissorTest
-		{
+        {
             get { return enableScissorTest; }
             set { enableScissorTest = value; }
         }
@@ -121,5 +121,5 @@ namespace SharpGL.OpenGLAttributes
             get { return scissorHeight; }
             set { scissorHeight = value; }
         }
-	}
+    }
 }

@@ -15,59 +15,59 @@ using System.Windows.Forms;
 
 namespace LaserGRBL
 {
-	public partial class RunFromPositionForm : Form
-	{
+    public partial class RunFromPositionForm : Form
+    {
 
 
-		bool mAllowH;
+        bool mAllowH;
 
-		internal static int CreateAndShowDialog(Form parent, int total, bool allowHoming, out bool homing)
-		{
-			RunFromPositionForm f = new RunFromPositionForm(total, allowHoming);
+        internal static int CreateAndShowDialog(Form parent, int total, bool allowHoming, out bool homing)
+        {
+            RunFromPositionForm f = new RunFromPositionForm(total, allowHoming);
 
-			int rv = f.ShowDialog(parent) == DialogResult.OK ? f.Position : -1;
-			homing = f.DoHoming;
-			f.Dispose();
-			return rv;
-		}
+            int rv = f.ShowDialog(parent) == DialogResult.OK ? f.Position : -1;
+            homing = f.DoHoming;
+            f.Dispose();
+            return rv;
+        }
 
-		private RunFromPositionForm(int total, bool allowHoming)
-		{
-			InitializeComponent();
-			mAllowH = allowHoming;
-			UdSpecific.Maximum = total+1;
-			UdSpecific.Value = 1;
-			
-			RbFromSpecific.Checked = true;
+        private RunFromPositionForm(int total, bool allowHoming)
+        {
+            InitializeComponent();
+            mAllowH = allowHoming;
+            UdSpecific.Maximum = total + 1;
+            UdSpecific.Value = 1;
 
-			CbRedoHoming.Visible = allowHoming;
-			CbRedoHoming.Checked = false;
-		}
+            RbFromSpecific.Checked = true;
+
+            CbRedoHoming.Visible = allowHoming;
+            CbRedoHoming.Checked = false;
+        }
 
 
-	
 
-		public bool DoHoming
-		{ get { return CbRedoHoming.Checked; } }
 
-		public int Position 
-		{
-			get
-			{
-				return (int)UdSpecific.Value -1;
-			}
-		}
+        public bool DoHoming
+        { get { return CbRedoHoming.Checked; } }
 
-		private void BtnCancel_Click(object sender, EventArgs e)
-		{
-			DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			Close();
-		}
+        public int Position
+        {
+            get
+            {
+                return (int)UdSpecific.Value - 1;
+            }
+        }
 
-		private void BtnOK_Click(object sender, EventArgs e)
-		{
-			DialogResult = System.Windows.Forms.DialogResult.OK;
-			Close();
-		}
-	}
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            Close();
+        }
+
+        private void BtnOK_Click(object sender, EventArgs e)
+        {
+            DialogResult = System.Windows.Forms.DialogResult.OK;
+            Close();
+        }
+    }
 }

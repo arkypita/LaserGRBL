@@ -337,12 +337,12 @@ namespace SharpGL.Serialization.Discreet
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 4; j++)
-                    matrix[i,j] = stream.ReadSingle();
+                    matrix[i, j] = stream.ReadSingle();
             }
 
             matrix.Transpose();
         }
 
-        public Matrix matrix = new Matrix(4,4);
+        public Matrix matrix = new Matrix(4, 4);
     }
 }

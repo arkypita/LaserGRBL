@@ -15,8 +15,8 @@ namespace SharpGL.SceneGraph.Quadrics
         /// <summary>
         /// Initializes a new instance of the <see cref="Cylinder"/> class.
         /// </summary>
-        public Cylinder() 
-        { 
+        public Cylinder()
+        {
             //  Set the name.
             Name = "Cylinder";
 
@@ -78,8 +78,8 @@ namespace SharpGL.SceneGraph.Quadrics
         public double BaseRadius
         {
             get { return baseRadius; }
-            set 
-            { 
+            set
+            {
                 baseRadius = value;
                 BoundingVolume.FromCylindricalVolume(new Vertex(), (float)height, (float)baseRadius, (float)topRadius);
             }
@@ -95,7 +95,7 @@ namespace SharpGL.SceneGraph.Quadrics
         public double TopRadius
         {
             get { return topRadius; }
-            set 
+            set
             {
                 topRadius = value;
                 BoundingVolume.FromCylindricalVolume(new Vertex(), (float)height, (float)baseRadius, (float)topRadius);
@@ -112,7 +112,7 @@ namespace SharpGL.SceneGraph.Quadrics
         public double Height
         {
             get { return height; }
-            set 
+            set
             {
                 height = value;
                 BoundingVolume.FromCylindricalVolume(new Vertex(), (float)height, (float)baseRadius, (float)topRadius);

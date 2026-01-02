@@ -7,15 +7,15 @@
 // (c) Copyright 2006 Novell, Inc. (http://www.novell.com)
 //
 
-namespace MySerialPort 
+namespace MySerialPort
 {
-	public enum Handshake 
-	{
-		None,
-		XOnXOff,
-		RequestToSend,
-		RequestToSendXOnXOff
-	} 
+    public enum Handshake
+    {
+        None,
+        XOnXOff,
+        RequestToSend,
+        RequestToSendXOnXOff
+    }
 }
 
 

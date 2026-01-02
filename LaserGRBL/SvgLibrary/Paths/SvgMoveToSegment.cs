@@ -17,11 +17,11 @@ namespace Svg.Pathing
         {
             graphicsPath.StartFigure();
         }
-        
+
         public override string ToString()
-		{
-        	return "M" + this.Start.ToSvgString();
-		}
+        {
+            return "M" + this.Start.ToSvgString();
+        }
 
     }
 }

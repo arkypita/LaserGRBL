@@ -455,11 +455,14 @@ namespace RJCP.Datastructures
             if (m_Count == Capacity) return 0;
             if (count == 0) return 0;
 
-            if (count <= WriteLength) {
+            if (count <= WriteLength)
+            {
                 System.Array.Copy(array, offset, m_Array, End, count);
                 Produce(count);
                 return count;
-            } else {
+            }
+            else
+            {
                 count = Math.Min(Free, count);
                 System.Array.Copy(array, offset, m_Array, End, WriteLength);
                 System.Array.Copy(array, offset + WriteLength, m_Array, 0, count - WriteLength);
@@ -545,7 +548,8 @@ namespace RJCP.Datastructures
             int c = Math.Min(Free, count);
             int r = c;
 
-            while (r > 0) {
+            while (r > 0)
+            {
                 int rl = (o + r >= buffer.Capacity) ? (buffer.Capacity - o) : r;
                 int cp = Math.Min(r, WriteLength);
                 cp = Math.Min(cp, rl);
@@ -678,11 +682,14 @@ namespace RJCP.Datastructures
             if (offset > array.Length - count) throw new ArgumentException("Offset and count exceed boundary length");
 
             int length = Math.Min(count, Length);
-            if (ReadLength >= count) {
+            if (ReadLength >= count)
+            {
                 // The block of data is one continuous block to copy
                 System.Array.Copy(m_Array, Start, array, offset, length);
                 return length;
-            } else {
+            }
+            else
+            {
                 // The block of data wraps over
                 System.Array.Copy(m_Array, Start, array, offset, ReadLength);
                 System.Array.Copy(m_Array, 0, array, offset + ReadLength, length - ReadLength);
@@ -720,7 +727,8 @@ namespace RJCP.Datastructures
             if (buff == null) return null;
             if (length == 0) return string.Empty;
             if (length > buff.Length) length = buff.Length;
-            if (buff.Start + length > buff.Capacity) {
+            if (buff.Start + length > buff.Capacity)
+            {
                 StringBuilder sb = new StringBuilder(length);
                 sb.Append(buff.Array, buff.Start, buff.Capacity - buff.Start);
                 sb.Append(buff.Array, 0, length + buff.Start - buff.Capacity);
@@ -747,12 +755,15 @@ namespace RJCP.Datastructures
             if (offset + length > buff.Length) length = buff.Length - offset;
 
             int start = (buff.Start + offset) % buff.Capacity;
-            if (start + length > buff.Capacity) {
+            if (start + length > buff.Capacity)
+            {
                 StringBuilder sb = new StringBuilder(length);
                 sb.Append(buff.Array, start, buff.Capacity - start);
                 sb.Append(buff.Array, 0, length + start - buff.Capacity);
                 return sb.ToString();
-            } else {
+            }
+            else
+            {
                 return new string(buff.Array, start, length);
             }
         }
@@ -837,15 +848,19 @@ namespace RJCP.Datastructures
             bool outFlush = false;
 
             int rl = bytes.ReadLength;
-            while (rl > 0 && charCount > 0) {
+            while (rl > 0 && charCount > 0)
+            {
                 int bu;
                 int cu;
                 if (rl == bytes.Length) outFlush = flush;
-                try {
+                try
+                {
                     decoder.Convert(bytes.Array, bytes.Start, rl,
                         chars, charIndex, charCount,
                         outFlush, out bu, out cu, out completed);
-                } catch (ArgumentException e) {
+                }
+                catch (ArgumentException e)
+                {
                     if (e.ParamName == null || !e.ParamName.Equals("chars")) throw;
 
                     // NOTE: While a decoder may not consume anything, using the CircularBuffer extension may, if the
@@ -909,23 +924,28 @@ namespace RJCP.Datastructures
             bool outFlush = false;
 
             int rl = bytes.ReadLength;
-            while (rl > 0 && charCount > 0) {
+            while (rl > 0 && charCount > 0)
+            {
                 int bu;
                 int cu;
                 if (rl == bytes.Length) outFlush = flush;
-                try {
+                try
+                {
                     decoder.Convert(bytes.Array, bytes.Start, rl,
                         chars.Array, chars.End, Math.Min(chars.WriteLength, charCount),
                         outFlush, out bu, out cu, out completed);
                     bytes.Consume(bu);
                     chars.Produce(cu);
                     rl = bytes.ReadLength;
-                } catch (ArgumentException e) {
+                }
+                catch (ArgumentException e)
+                {
                     if (e.ParamName == null || !e.ParamName.Equals("chars")) throw;
 
                     // Decoder tried to write bytes, but not enough free space. We need to write to a temp array, then
                     // copy into the circular buffer. We assume that the underlying decoder hasn't changed state.
-                    if (charCount <= chars.WriteLength) {
+                    if (charCount <= chars.WriteLength)
+                    {
                         // There's no free space left, so we raise the same exception as the decoder
                         if (bytesUsed == 0) throw;
                         completed = false;
@@ -934,10 +954,13 @@ namespace RJCP.Datastructures
 
                     int tmpLen = Math.Min(16, charCount);
                     char[] tmp = new char[tmpLen];
-                    try {
+                    try
+                    {
                         decoder.Convert(bytes.Array, bytes.Start, rl,
                             tmp, 0, tmp.Length, outFlush, out bu, out cu, out completed);
-                    } catch (ArgumentException e2) {
+                    }
+                    catch (ArgumentException e2)
+                    {
                         if (e2.ParamName == null || !e2.ParamName.Equals("chars")) throw;
                         if (bytesUsed == 0) throw;
                         completed = false;
@@ -1036,11 +1059,14 @@ namespace RJCP.Datastructures
             completed = true;
             if (byteCount == 0) return;
 
-            do {
+            do
+            {
                 int bu;
                 int cu;
-                try {
-                    if (bytesUsed != 0 && chars.WriteLength == 0) {
+                try
+                {
+                    if (bytesUsed != 0 && chars.WriteLength == 0)
+                    {
                         completed = false;
                         return;
                     }
@@ -1052,12 +1078,15 @@ namespace RJCP.Datastructures
                     byteIndex += bu;
                     chars.Produce(cu);
                     charsUsed += cu;
-                } catch (ArgumentException e) {
+                }
+                catch (ArgumentException e)
+                {
                     if (e.ParamName == null || !e.ParamName.Equals("chars")) throw;
 
                     // Decoder tried to write bytes, but not enough free space. We need to write to a temp array, then
                     // copy into the circular buffer. We assume that the underlying decoder hasn't changed state.
-                    if (chars.WriteLength == chars.Free) {
+                    if (chars.WriteLength == chars.Free)
+                    {
                         // There's no free space left, so we raise the same exception as the decoder
                         if (bytesUsed == 0) throw;
                         completed = false;
@@ -1066,10 +1095,13 @@ namespace RJCP.Datastructures
 
                     int tempLen = Math.Min(16, chars.Free);
                     char[] tmp = new char[tempLen];
-                    try {
+                    try
+                    {
                         decoder.Convert(bytes, byteIndex, byteCount,
                             tmp, 0, tmp.Length, flush, out bu, out cu, out completed);
-                    } catch (ArgumentException e2) {
+                    }
+                    catch (ArgumentException e2)
+                    {
                         // There still isn't enough space, so abort
                         if (e2.ParamName == null || !e2.ParamName.Equals("chars")) throw;
                         if (bytesUsed == 0) throw;
@@ -1135,11 +1167,14 @@ namespace RJCP.Datastructures
             completed = true;
             if (charCount == 0) return;
 
-            do {
+            do
+            {
                 int bu;
                 int cu;
-                try {
-                    if (charsUsed != 0 && bytes.WriteLength == 0) {
+                try
+                {
+                    if (charsUsed != 0 && bytes.WriteLength == 0)
+                    {
                         completed = false;
                         return;
                     }
@@ -1152,12 +1187,15 @@ namespace RJCP.Datastructures
                     charIndex += cu;
                     bytes.Produce(bu);
                     bytesUsed += bu;
-                } catch (ArgumentException e) {
+                }
+                catch (ArgumentException e)
+                {
                     if (e.ParamName == null || !e.ParamName.Equals("bytes")) throw;
 
                     // Encoder tried to write chars, but not enough free space. We need to write to a temp array, then
                     // copy into the circular buffer. We assume that the underlying encoder hasn't changed state.
-                    if (bytes.WriteLength == bytes.Free) {
+                    if (bytes.WriteLength == bytes.Free)
+                    {
                         // There's no free space left, so we raise the same exception as the decoder
                         if (charsUsed == 0) throw;
                         completed = false;
@@ -1166,10 +1204,13 @@ namespace RJCP.Datastructures
 
                     int tempLen = Math.Min(16, bytes.Free);
                     byte[] tmp = new byte[tempLen];
-                    try {
+                    try
+                    {
                         encoder.Convert(chars, charIndex, charCount,
                             tmp, 0, tmp.Length, flush, out cu, out bu, out completed);
-                    } catch (ArgumentException e2) {
+                    }
+                    catch (ArgumentException e2)
+                    {
                         // There still isn't enough space, so abort
                         if (e2.ParamName == null || !e2.ParamName.Equals("bytes")) throw;
                         if (charsUsed == 0) throw;

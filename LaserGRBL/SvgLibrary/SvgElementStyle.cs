@@ -13,7 +13,7 @@ namespace Svg
     public partial class SvgElement
     {
         private bool _dirty;
-        
+
         /// <summary>
         /// Gets or sets a value indicating whether this element's <see cref="Path"/> is dirty.
         /// </summary>
@@ -339,7 +339,7 @@ namespace Svg
                 this.IsPathDirty = true;
             }
         }
-        
+
         /// <summary>
         /// Get the font information based on data stored with the text object or inherited from the parent.
         /// </summary>
