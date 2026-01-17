@@ -1,0 +1,22 @@
+name: Build
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Check-in Build
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: dotnet build
+        run: dotnet build -c Release
+
+      - name: dotnet test
+        run: dotnet test -c Release --no-build
