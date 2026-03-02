@@ -32,8 +32,8 @@ namespace LaserGRBL
 		//public static PSHelper.PSFile MaterialDB = PSHelper.PSFile.Load();
 		public static PSHelper.MaterialDB MaterialDB = PSHelper.MaterialDB.Load();
 
-		public static string GCODE_STD_HEADER = "G90 (use absolute coordinates)";
-		public static string GCODE_STD_PASSES = ";(Uncomment if you want to sink Z axis)\r\n;G91 (use relative coordinates)\r\n;G0 Z-1 (sinks the Z axis, 1mm)\r\n;G90 (use absolute coordinates)";
+		public static string GCODE_STD_HEADER = ";LaserGRBL\r\n; GRBL device profile\r\n;Bounds: X[left] Y[bottom] to X[right] Y[top]\r\nG00 G17 G40 G21 G54\r\nG90 (use absolute coordinates)";
+        public static string GCODE_STD_PASSES = ";(Uncomment if you want to sink Z axis)\r\n;G91 (use relative coordinates)\r\n;G0 Z-1 (sinks the Z axis, 1mm)\r\n;G90 (use absolute coordinates)";
 		public static string GCODE_STD_FOOTER = "G0 X0 Y0 Z0 (move back to origin)";
 
 		private static string CH340Version;
@@ -650,7 +650,9 @@ namespace LaserGRBL
 		public static readonly List<string> ImageExtensions = new List<string>(new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif" });
 		public static readonly List<string> GCodeExtensions = new List<string>(new string[] { ".nc", ".cnc", ".tap", ".gcode", ".ngc" });
 		public static readonly List<string> ProjectFileExtensions = new List<string>(new string[] { ".lps" });
-		public void OpenFile(string filename = null, bool append = false)
+        public static readonly List<string> GerberExtensions = new List<string>(new string[] { ".gbl", ".gbs", ".gbo", ".gtl", ".gts", ".gto", ".gbr" });
+
+        public void OpenFile(string filename = null, bool append = false)
 		{
 			if (!CanLoadNewFile) return;
 
@@ -665,8 +667,9 @@ namespace LaserGRBL
 						if (lastFN != null && System.IO.File.Exists(lastFN))
 							ofd.FileName = lastFN;
 
-						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.ngc;*.bmp;*.png;*.jpg;*.jpeg;*.gif;*.svg;*.lps|GCODE Files|*.nc;*.cnc;*.tap;*.gcode;*.ngc|Raster Image|*.bmp;*.png;*.jpg;*.jpeg;*.gif|Vector Image (experimental)|*.svg|LaserGRBL Project|*.lps";
-						ofd.CheckFileExists = true;
+                        //ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.ngc;*.bmp;*.png;*.jpg;*.jpeg;*.gif;*.svg;*.lps|GCODE Files|*.nc;*.cnc;*.tap;*.gcode;*.ngc|Raster Image|*.bmp;*.png;*.jpg;*.jpeg;*.gif|Vector Image (experimental)|*.svg|LaserGRBL Project|*.lps";
+                        ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.ngc;*.bmp;*.png;*.jpg;*.jpeg;*.gif;*.svg;*.lps;*.gbl;*.gbs;*.gbo;*.gtl;*.gts;*.gto;*.gbr|GCODE Files|*.nc;*.cnc;*.tap;*.gcode;*.ngc|Raster Image|*.bmp;*.png;*.jpg;*.jpeg;*.gif|Vector Image (experimental)|*.svg|LaserGRBL Project|*.lps|Gerber files|*.gbl;*.gbs;*.gbo;*.gtl;*.gts;*.gto;*.gbr";
+                        ofd.CheckFileExists = true;
 						ofd.Multiselect = false;
 						ofd.RestoreDirectory = true;
 
@@ -792,7 +795,31 @@ namespace LaserGRBL
 						System.IO.File.Delete(imageFilepath);
 					}
 				}
-				else
+                else if (GerberExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load gerber files
+                {
+                    CRXGerber.CRXGerber m_Gerber = new CRXGerber.CRXGerber(filename);
+                    string bmpname = filename + ".png";
+
+                    using (Bitmap bmp = m_Gerber.m_FinalImg)
+                    {
+                        if (System.IO.File.Exists(bmpname))
+                            System.IO.File.Delete(bmpname);
+
+                        bmp.Save(bmpname);
+                    }
+
+                    try
+                    {
+                        Settings.SetObject("Core.LastOpenFile", bmpname);
+                        RasterConverter.RasterToLaserForm.CreateAndShowDialog(this, bmpname, append);
+                        UsageCounters.RasterFile++;
+                        if (System.IO.File.Exists(bmpname))
+                            System.IO.File.Delete(bmpname);
+                    }
+                    catch (Exception ex)
+                    { Logger.LogException("Gerber Import Error", ex); }
+                }
+                else
 				{
 					System.Windows.Forms.MessageBox.Show(Strings.UnsupportedFiletype, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 				}
@@ -1175,7 +1202,7 @@ namespace LaserGRBL
 				//if (errors > 0)
 				//	throw new WriteConfigException(mSentPtr);
 			}
-			catch (Exception ex)
+			catch (Exception /*ex*/)
 			{
 				//Logger.LogException("Write Config", ex);
 				//throw (ex);
@@ -1220,7 +1247,7 @@ namespace LaserGRBL
 					//if (errors > 0)
 					//	throw new WriteConfigException(mSentPtr);
 				}
-				catch (Exception ex)
+				catch (Exception /*ex*/)
 				{
 					//Logger.LogException("Write Config", ex);
 					//throw (ex);
@@ -1777,11 +1804,12 @@ namespace LaserGRBL
 
 		public void JogAbort() //da chiamare su ButtonUp
 		{
-			if (!SupportTrueJogging)																// old firmware
-				;																						// abort not supported
-			else if (!ContinuosJogEnabled)															// continuous jog disabled
-				;                                                                                       // we can abort but we don't want
-			else                                                                                    // continuoud jog enabled
+			//if (!SupportTrueJogging)																// old firmware
+				//;																						// abort not supported
+			//else if (!ContinuosJogEnabled)															// continuous jog disabled
+			//	;                                                                                       // we can abort but we don't want
+			//else                                                                                    // continuoud jog enabled
+			if (SupportTrueJogging && ContinuosJogEnabled)	
 				ContinuousJog.Abort();														               // assign jog target
 		}
 
@@ -1978,13 +2006,12 @@ namespace LaserGRBL
 				if (abortRequired)
 					SendImmediate(0x85); // abort previous jog command
 
-				if (newJog.Direction == JogDirection.Abort)
-					; //nothing to send, the abort is sent by previous test if needed
-				else if (newJog.Direction == JogDirection.Position)
+				//if (newJog.Direction == JogDirection.Abort); //nothing to send, the abort is sent by previous test if needed
+				if (newJog.Direction == JogDirection.Position)
 					EnqueueCommand(new GrblCommand(string.Format("$J=G90X{0}Y{1}F{2}", newJog.Target.X.ToString("0.00", NumberFormatInfo.InvariantInfo), newJog.Target.Y.ToString("0.00", NumberFormatInfo.InvariantInfo), newJog.Speed)));
 				else if (newJog.Direction == JogDirection.Home)
 					EnqueueCommand(new GrblCommand(string.Format("$J=G90X0Y0F{0}", newJog.Speed)));
-				else
+				else if (newJog.Direction != JogDirection.Abort)
 				{
 					JogDirection dir = newJog.Direction;
 					string cmd = "$J=G53";
@@ -2815,8 +2842,8 @@ namespace LaserGRBL
 						FixCH340_goodread++;
 					}
 				}
-				catch (System.IO.IOException ex)
-				{
+				catch (System.IO.IOException /*ex*/)
+                {
 					FixCH340_exception++;
 
 					if (!FixCH340 && FixCH340_exception > 5)

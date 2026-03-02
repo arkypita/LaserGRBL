@@ -1,4 +1,4 @@
-﻿namespace System
+﻿/*namespace System
 {
     /// <summary>
     /// The exception that is thrown when an attempt to load a class fails due to the absence of an entry method.
@@ -35,3 +35,4 @@
             : base(message, innerException) { }
     }
 }
+*/

@@ -59,11 +59,11 @@ namespace LaserGRBL.Generator
 			int maxPwm = 1000;
 
 			try {maxrateX = (int)GrblCore.Configuration.MaxRateX;}
-			catch (Exception ex) { }
+			catch (Exception /*ex*/) { }
 			try { maxrateY = (int)GrblCore.Configuration.MaxRateY; }
-			catch (Exception ex) { }
+			catch (Exception /*ex*/) { }
 			try { maxPwm = (int)GrblCore.Configuration.MaxPWM; }
-			catch (Exception ex) { }
+			catch (Exception /*ex*/) { }
 
 			
 
@@ -77,10 +77,10 @@ namespace LaserGRBL.Generator
 			int maxlenA = 400;
 
 			try { maxrateA = ((string)CbAxis.SelectedItem == "X") ? (int)GrblCore.Configuration.MaxRateX : (int)GrblCore.Configuration.MaxRateY; }
-			catch (Exception ex) { }
+			catch (Exception /*ex*/) { }
 
 			try { maxlenA = ((string)CbAxis.SelectedItem == "X") ? (int)GrblCore.Configuration.TableWidth : (int)GrblCore.Configuration.TableHeight; }
-			catch (Exception ex) { }
+			catch (Exception /*ex*/) { }
 
 			IiAxisLen.MaxValue = maxlenA;
 			IiAxisLen.CurrentValue = maxlenA;
