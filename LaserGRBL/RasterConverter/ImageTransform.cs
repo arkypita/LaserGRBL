@@ -465,7 +465,7 @@ namespace LaserGRBL.RasterConverter
 				g.Dispose();
 			}
 
-			System.GC.Collect();
+			// Removed forced GC. Allow the runtime to manage garbage collection for better performance.
 
 			return newBitmap.Bitmap;
 		}
@@ -535,7 +535,7 @@ namespace LaserGRBL.RasterConverter
 				g.Dispose();
 			}
 
-			System.GC.Collect();
+			// Removed forced GC. Allow the runtime to manage garbage collection for better performance.
 
 			return newBitmap.Bitmap;
 		}
