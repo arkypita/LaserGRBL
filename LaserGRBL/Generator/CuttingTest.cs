@@ -88,7 +88,7 @@ namespace LaserGRBL.Generator
 				maxrateX = (int)GrblCore.Configuration.MaxRateX;
 				maxPwm = (int)GrblCore.Configuration.MaxPWM;
 			}
-			catch (Exception ex) { }
+			catch (Exception /*ex*/) { }
 
 			Ii_Ftext.MaxValue = Ii_Fmin.MaxValue = Ii_Fmax.MaxValue = maxrateX;
 			Ii_Stext.MaxValue = maxPwm;

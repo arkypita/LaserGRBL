@@ -57,6 +57,16 @@ namespace LaserGRBL.RasterConverter
             IconsMgr.PrepareButton(BtnDPI, "custom-exif", new Size(34, 24));
             IconsMgr.PrepareButton(BtnReset, "mdi-arrow-u-left-top-bold", icoSize);
 
+            IconsMgr.PrepareButton(BtnCTargetBL, "mdi-CTargetBL", icoSize);
+			IconsMgr.PrepareButton(BtnCTargetBM, "mdi-CTargetBM", icoSize);
+            IconsMgr.PrepareButton(BtnCTargetBR, "mdi-CTargetBR", icoSize);
+			IconsMgr.PrepareButton(BtnCTargetCenter, "mdi-CTargetCenter", icoSize);
+            IconsMgr.PrepareButton(BtnCTargetML, "mdi-CTargetML", icoSize);
+            IconsMgr.PrepareButton(BtnCTargetMR, "mdi-CTargetMR", icoSize);
+            IconsMgr.PrepareButton(BtnCTargetTL, "mdi-CTargetTL", icoSize);
+            IconsMgr.PrepareButton(BtnCTargetTM, "mdi-CTargetTM", icoSize);
+            IconsMgr.PrepareButton(BtnCTargetTR, "mdi-CTargetTR", icoSize);
+
             LblMaxPerc.Visible = LblMinPerc.Visible = LblSmin.Visible = LblSmax.Visible = IIMaxPower.Visible = IIMinPower.Visible = BtnModulationInfo.Visible = supportPWM;
 			AssignMinMaxLimit();
 
@@ -74,7 +84,7 @@ namespace LaserGRBL.RasterConverter
 				tableWidth = (int)GrblCore.Configuration.TableWidth;
 				tableHeight = (int)GrblCore.Configuration.TableHeight;
 			}
-			catch (Exception ex) { MessageBox.Show(Strings.BoxMachineSizeOutOfRangeText, Strings.BoxMachineSizeOutOfRangeTitle, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+			catch (Exception /*ex*/) { MessageBox.Show(Strings.BoxMachineSizeOutOfRangeText, Strings.BoxMachineSizeOutOfRangeTitle, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
 			IISizeW.MaxValue = tableWidth;
 			IISizeH.MaxValue = tableHeight;
@@ -105,7 +115,7 @@ namespace LaserGRBL.RasterConverter
 				maxrateX = (int)GrblCore.Configuration.MaxRateX;
 				maxPwm = (int)GrblCore.Configuration.MaxPWM;
 			}
-			catch (Exception ex) {  }
+			catch (Exception /*ex*/) {  }
 
 			IIBorderTracing.MaxValue = IILinearFilling.MaxValue = maxrateX;
 			IIMaxPower.MaxValue = maxPwm;
@@ -138,10 +148,19 @@ namespace LaserGRBL.RasterConverter
 			IIBorderTracing.Visible = LblBorderTracing.Visible = LblBorderTracingmm.Visible = (IP.SelectedTool == ImageProcessor.Tool.Vectorize || IP.SelectedTool == ImageProcessor.Tool.Centerline);
 			LblLinearFilling.Text = IP.SelectedTool == ImageProcessor.Tool.Vectorize ? "Filling Speed" : "Engraving Speed";
 
-			IIOffsetX.CurrentValue = IP.TargetOffset.X = Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F);
-			IIOffsetY.CurrentValue = IP.TargetOffset.Y = Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F);
+			if (IP.TargetOrigin.X != 0 && IP.TargetOrigin.Y != 0)
+			{
+                IIOffsetX.CurrentValue = IP.TargetOrigin.X;
+                IIOffsetY.CurrentValue = IP.TargetOrigin.Y;
+                CbAutosize.Checked = true;
+            }
+			else
+			{
+                IIOffsetX.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.Offset.X", 0F);
+                IIOffsetY.CurrentValue = Settings.GetObject("GrayScaleConversion.Gcode.Offset.Y", 0F);
+            }
 
-			RefreshPerc();
+            RefreshPerc();
 			ShowDialog(parent);
 
 			ratiolock = KeepSizeRatio;
@@ -295,6 +314,7 @@ namespace LaserGRBL.RasterConverter
 		{
 			IISizeH.Enabled = IISizeW.Enabled = !CbAutosize.Checked;
 			IIDpi.Enabled = CbAutosize.Checked;
+			IIDpi.CurrentValue = IP.FileDPI;
 
 			ComputeDpiSize();
 		}
@@ -359,14 +379,14 @@ namespace LaserGRBL.RasterConverter
 
 		private void BtnReset_Click(object sender, EventArgs e)
 		{
-			IIOffsetY.CurrentValue = 0;
 			IIOffsetX.CurrentValue = 0;
+			IIOffsetY.CurrentValue = 0;
 		}
 
 		private void BtnCenter_Click(object sender, EventArgs e)
 		{
-			IIOffsetY.CurrentValue = -(IISizeH.CurrentValue / 2);
 			IIOffsetX.CurrentValue = -(IISizeW.CurrentValue / 2);
+			IIOffsetY.CurrentValue = -(IISizeH.CurrentValue / 2);
 		}
 
 		private void BtnUnlockProportion_Click(object sender, EventArgs e)
@@ -384,5 +404,59 @@ namespace LaserGRBL.RasterConverter
 					IISizeW.CurrentValue = IP.HeightToWidht(IISizeH.CurrentValue);
 			}
 		}
-	}
+
+        private void BtnCTargetTL_Click(object sender, EventArgs e)
+        {
+            IIOffsetX.CurrentValue = IP.TargetOrigin.X;
+            IIOffsetY.CurrentValue = (float)GrblCore.Configuration.TableHeight - IISizeH.CurrentValue - IP.TargetOrigin.Y;
+        }
+
+        private void BtnCTargetTM_Click(object sender, EventArgs e)
+        {
+            IIOffsetX.CurrentValue = ((float)GrblCore.Configuration.TableWidth / 2) - (IISizeW.CurrentValue / 2);
+            IIOffsetY.CurrentValue = (float)GrblCore.Configuration.TableHeight - IISizeH.CurrentValue - IP.TargetOrigin.Y;
+        }
+
+        private void BtnCTargetTR_Click(object sender, EventArgs e)
+        {
+            IIOffsetX.CurrentValue = (float)GrblCore.Configuration.TableWidth - IISizeW.CurrentValue - IP.TargetOrigin.X;
+            IIOffsetY.CurrentValue = (float)GrblCore.Configuration.TableHeight - IISizeH.CurrentValue - IP.TargetOrigin.Y;
+        }
+
+        private void BtnCTargetML_Click(object sender, EventArgs e)
+        {
+            IIOffsetX.CurrentValue = IP.TargetOrigin.X;
+            IIOffsetY.CurrentValue = ((float)GrblCore.Configuration.TableHeight / 2) - (IISizeH.CurrentValue / 2);
+        }
+
+        private void BtnCTargetCenter_Click(object sender, EventArgs e)
+        {
+            IIOffsetX.CurrentValue = ((float)GrblCore.Configuration.TableWidth / 2) - (IISizeW.CurrentValue / 2);
+            IIOffsetY.CurrentValue = ((float)GrblCore.Configuration.TableHeight / 2) - (IISizeH.CurrentValue / 2);
+        }
+
+        private void BtnCTargetMR_Click(object sender, EventArgs e)
+        {
+            IIOffsetX.CurrentValue = (float)GrblCore.Configuration.TableWidth - IISizeW.CurrentValue - IP.TargetOrigin.X;
+            IIOffsetY.CurrentValue = ((float)GrblCore.Configuration.TableHeight / 2) - (IISizeH.CurrentValue / 2);
+        }
+
+        private void BtnCTargetBL_Click(object sender, EventArgs e)
+        {
+            IIOffsetX.CurrentValue = IP.TargetOrigin.X;
+            IIOffsetY.CurrentValue = IP.TargetOrigin.Y;
+        }
+
+        private void BtnCTargetBM_Click(object sender, EventArgs e)
+        {
+            IIOffsetX.CurrentValue = ((float)GrblCore.Configuration.TableWidth/2) - (IISizeW.CurrentValue/2);
+            IIOffsetY.CurrentValue = IP.TargetOrigin.Y;
+        }
+
+        private void BtnCTargetBR_Click(object sender, EventArgs e)
+        {
+            IIOffsetX.CurrentValue = (float)GrblCore.Configuration.TableWidth - IISizeW.CurrentValue - IP.TargetOrigin.X;
+            IIOffsetY.CurrentValue = IP.TargetOrigin.Y; 
+        }
+    }
 }

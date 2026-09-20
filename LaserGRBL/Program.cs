@@ -124,9 +124,9 @@ namespace LaserGRBL
 				if (Tools.OSHelper.Is64BitProcess) LoadNvApi64();
 				else LoadNvApi32();
 			}
-			catch (EntryPointNotFoundException ex) { } // normal exception, will always fail since 'fake' entry point doesn't exists (but the library is loaded now)
-			catch (DllNotFoundException ex) { } // if not NVIDIA driver, the dll does not exists, so it is normat to have this exception
-			catch (Exception ex) { } //any other cases... simply ignore 
+			catch (EntryPointNotFoundException /*ex*/) { } // normal exception, will always fail since 'fake' entry point doesn't exists (but the library is loaded now)
+			catch (DllNotFoundException /*ex*/) { } // if not NVIDIA driver, the dll does not exists, so it is normat to have this exception
+			catch (Exception /*ex*/) { } //any other cases... simply ignore 
 		}
 
 	}

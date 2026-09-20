@@ -54,7 +54,7 @@ namespace LaserGRBL.UserControls
 		// last control size
 		private PointF mLastControlSize;
 		// drawing thread
-		private Tools.ThreadObject mThreadDraw;
+		//private Tools.ThreadObject mThreadDraw;
 		// generated 3d bitmap
 		private DoubleBufferBmp mBmp = new DoubleBufferBmp();
 		// open gl object
@@ -498,7 +498,7 @@ namespace LaserGRBL.UserControls
 		private void GrblPanel3D_Disposed(object sender, EventArgs e)
 		{
 			DisposeGrbl3D();
-			mThreadDraw?.Dispose();
+			//mThreadDraw?.Dispose();
 		}
 
 		private void DrawPointer()
@@ -691,8 +691,7 @@ namespace LaserGRBL.UserControls
 				DrawException(e, "3.Init Complete");
 			else if (OpCounter == 4)
 				DrawException(e, "4.Draw Begin");
-			else if (mBmp == null)
-				;
+			//else if (mBmp == null);
 		}
 
 		private void DrawException(PaintEventArgs e, string text)

@@ -231,8 +231,7 @@ namespace LaserGRBL.Hershey
 
 				if (c >= 32 && c <= 126)
 				{
-					if (c == ' ')
-						;
+					//if (c == ' ');
 					double maxX = 0, maxY = 0;
 					string[] charmap = horiz ? hor[c - 32] : ver[c - 32];
 					charmap = ApplyOffset(charmap, oX, oY, ref maxX, ref maxY);

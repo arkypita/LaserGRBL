@@ -175,9 +175,9 @@ namespace SharpGL
         }
 
 
-        long totalDrawTextTicks = 0;
-        int totalDrawTestCalls = 0;
-        double baselineTicksPerCall = 0;
+        //long totalDrawTextTicks = 0;
+        //int totalDrawTestCalls = 0;
+        //double baselineTicksPerCall = 0;
 
         /// <summary>
         /// Draws the text.

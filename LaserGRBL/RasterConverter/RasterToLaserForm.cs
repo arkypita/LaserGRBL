@@ -26,7 +26,7 @@ namespace LaserGRBL.RasterConverter
 		bool preventClose;
 		bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
-		private RasterToLaserForm(GrblCore core, string filename, bool append)
+		private RasterToLaserForm(GrblCore core, string filename, bool append, PointF MMOrigin = default)
 		{
 			InitializeComponent();
 			mCore = core;
@@ -61,7 +61,9 @@ namespace LaserGRBL.RasterConverter
 			ImageProcessor.PreviewReady += OnPreviewReady;
 			ImageProcessor.PreviewBegin += OnPreviewBegin;
 			ImageProcessor.GenerationComplete += OnGenerationComplete;
-
+			
+			IP.TargetOrigin = MMOrigin;
+					
 			LblGrayscale.Visible = CbMode.Visible = !IP.IsGrayScale;
 
 			CbResize.SuspendLayout();
@@ -179,9 +181,9 @@ namespace LaserGRBL.RasterConverter
 			WB.Running = true;
 		}
 
-		internal static void CreateAndShowDialog(GrblCore core, string filename, bool append)
+		internal static void CreateAndShowDialog(GrblCore core, string filename, bool append, PointF MMOrigin = default)
 		{
-			using (RasterToLaserForm f = new RasterToLaserForm(core, filename, append))
+			using (RasterToLaserForm f = new RasterToLaserForm(core, filename, append, MMOrigin))
 			{
 				f.Icon = FormsHelper.MainForm.Icon;
                 f.ShowDialog(FormsHelper.MainForm);
@@ -797,7 +799,7 @@ namespace LaserGRBL.RasterConverter
 				if (IP != null)
 					IP.FormResize(GetImageSize());
 			}
-			catch (System.ArgumentException ex)
+			catch (System.ArgumentException /*ex*/)
 			{
 				//Catching this exception https://github.com/arkypita/LaserGRBL/issues/1288
 			}

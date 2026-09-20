@@ -72,7 +72,8 @@ namespace LaserGRBL.RasterConverter
 		//option for gcode generator
 		public SizeF TargetSize;
 		public PointF TargetOffset;
-		public string LaserOn;
+        public PointF TargetOrigin;
+        public string LaserOn;
 		public string LaserOff;
 		public int BorderSpeed;
 		public int MarkSpeed;

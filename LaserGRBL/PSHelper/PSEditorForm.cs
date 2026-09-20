@@ -90,7 +90,7 @@ namespace LaserGRBL.PSHelper
 					}
 				}
 			}
-			catch (Exception ex) { }
+			catch (Exception /*ex*/) { }
 		}
 
 		private Int32 GetInt(string v)
