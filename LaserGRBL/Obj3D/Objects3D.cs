@@ -212,8 +212,18 @@ namespace LaserGRBL.Obj3D
             AddVertex(mCamera.Right, y, f, color);
         }
 
+        // the lists are rebuilt only when invalidated, but zooming can change mShowMinor before that happens
+        protected override void ClearDisplayList()
+        {
+            base.ClearDisplayList();
+            mDisplayTick = null;
+            mDisplayMinor = null;
+        }
+
         protected override void Draw()
         {
+            mDisplayTick = null;
+            mDisplayMinor = null;
             NewDisplayList(true);
             if (ControlWidth <= 0) return;
             int left = (int)mCamera.Left;
@@ -246,11 +256,10 @@ namespace LaserGRBL.Obj3D
 
         protected override void CallDisplayList(OpenGL gl)
         {
-            mDisplayTick.Call(gl);
-            if (mShowMinor)
-            {
+            if (mDisplayTick != null)
+                mDisplayTick.Call(gl);
+            if (mShowMinor && mDisplayMinor != null)
                 mDisplayMinor.Call(gl);
-            }
             mInvalidate = false;
         }
 
