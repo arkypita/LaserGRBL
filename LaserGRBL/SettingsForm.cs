@@ -20,6 +20,7 @@ namespace LaserGRBL
         private GrblCore Core;
         public static event EventHandler SettingsChanged;
 		private Settings.GraphicMode PrevGraphicMode;
+		private NumericUpDown UdSplineTolerance;
 
 		public SettingsForm(GrblCore core)
 		{
@@ -31,6 +32,7 @@ namespace LaserGRBL
             ForeColor = ColorScheme.FormForeColor;
             TpVectorImport.BackColor = TpRasterImport.BackColor = TpHardware.BackColor = TpJogControl.BackColor = TpAutoCooling.BackColor  = TpGCodeSettings.BackColor = BtnCancel.BackColor = BtnSave.BackColor = TpSoundSettings.BackColor = changeConBtn.BackColor = changeDconBtn.BackColor = changeFatBtn.BackColor = changeSucBtn.BackColor = changeWarBtn.BackColor = ColorScheme.FormBackColor;
 
+			CreateSplineToleranceRow();
 			ThemeMgr.SetTheme(this, true);
 			Size btnSize = new Size(16, 16);
 			IconsMgr.PrepareButton(BtnStreamingMode, "mdi-information-slab-box", btnSize);
@@ -101,6 +103,7 @@ namespace LaserGRBL
             DisconnectFullLabel.Text = Settings.GetObject($"Sound.{SoundEvent.EventId.Disconnect}", $"Sound\\{SoundEvent.EventId.Disconnect}.wav");
 
 			CbSmartBezier.Checked = Settings.GetObject($"Vector.UseSmartBezier", true);
+			UdSplineTolerance.Value = Math.Max(UdSplineTolerance.Minimum, Math.Min(UdSplineTolerance.Maximum, (decimal)Settings.GetObject(SvgConverter.ArcFitter.ToleranceSetting, SvgConverter.ArcFitter.DefaultTolerance)));
 
 			CbDisableSafetyCD.Checked = Settings.GetObject("DisableSafetyCountdown", false);
 			CbQuietSafetyCB.Checked = Settings.GetObject("QuietSafetyCountdown", false);
@@ -251,6 +254,7 @@ namespace LaserGRBL
             Settings.SetObject("Raster Hi-Res", CbHiRes.Checked);
 
 			Settings.SetObject("Vector.UseSmartBezier", CbSmartBezier.Checked);
+			Settings.SetObject(SvgConverter.ArcFitter.ToleranceSetting, (double)UdSplineTolerance.Value);
 
 			Settings.SetObject("DisableSafetyCountdown", CbDisableSafetyCD.Checked);
 			Settings.SetObject("QuietSafetyCountdown", CbQuietSafetyCB.Checked);
@@ -370,5 +374,50 @@ namespace LaserGRBL
 
 		private void BtnRenderingMode_Click(object sender, EventArgs e)
 		{ Tools.Utils.OpenLink(@"https://lasergrbl.com/configuration/#rendering-mode"); }
-	}
+	
+		// the vector import page is translated in the designer resources: the new row is added here, below smart bezier
+		private void CreateSplineToleranceRow()
+		{
+			FlowLayoutPanel input = new FlowLayoutPanel();
+			input.AutoSize = true;
+			input.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+			input.WrapContents = false;
+			input.Margin = new Padding(0);
+
+			Label caption = new Label();
+			caption.Text = Strings.SettingsSplineArcTolerance;
+			caption.AutoSize = true;
+			caption.Margin = new Padding(3, 6, 3, 3);
+
+			UdSplineTolerance = new NumericUpDown();
+			UdSplineTolerance.DecimalPlaces = 2;
+			UdSplineTolerance.Increment = 0.01m;
+			UdSplineTolerance.Minimum = 0;
+			UdSplineTolerance.Maximum = 1;
+			UdSplineTolerance.Width = 60;
+			UdSplineTolerance.TextAlign = HorizontalAlignment.Right;
+
+			Label unit = new Label();
+			unit.Text = "mm";
+			unit.AutoSize = true;
+			unit.Margin = new Padding(3, 6, 3, 3);
+
+			input.Controls.Add(caption);
+			input.Controls.Add(UdSplineTolerance);
+			input.Controls.Add(unit);
+
+			Label info = new Label();
+			info.Text = Strings.SettingsSplineArcToleranceInfo;
+			info.AutoSize = true;
+			info.Margin = label43.Margin;
+			info.MaximumSize = label43.MaximumSize;
+
+			tableLayoutPanel18.SuspendLayout();
+			tableLayoutPanel18.RowStyles.Insert(1, new RowStyle(SizeType.AutoSize));
+			tableLayoutPanel18.RowCount++;
+			tableLayoutPanel18.Controls.Add(input, 1, 1);
+			tableLayoutPanel18.Controls.Add(info, 2, 1);
+			tableLayoutPanel18.ResumeLayout(true);
+		}
+}
 }

@@ -495,6 +495,19 @@
     </Compile>
     <Compile Include="SvgConverter\GCodeFromSVG.cs" />
     <Compile Include="SvgConverter\gcodeRelated.cs" />
+    <Compile Include="SvgConverter\SvgColorLayer.cs" />
+    <Compile Include="SvgConverter\ArcFitter.cs" />
+    <Compile Include="SvgConverter\DxfReader.cs" />
+    <Compile Include="SvgConverter\VectorDrawing.cs" />
+    <Compile Include="SvgConverter\VectorGCode.cs" />
+    <Compile Include="SvgConverter\VectorImportSource.cs" />
+    <Compile Include="SvgConverter\SvgLayerAccordion.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SvgConverter\SvgLayerPreview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SvgConverter\SvgFilling.cs" />
     <Compile Include="SvgConverter\SvgModeForm.cs">
       <SubType>Form</SubType>
     </Compile>

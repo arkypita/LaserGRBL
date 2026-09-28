@@ -1145,5 +1145,212 @@ namespace LaserGRBL {
                 return ResourceManager.GetString("WarnWrongLaserModeTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color layers.
+        /// </summary>
+        internal static string SvgLayersTitle {
+            get {
+                return ResourceManager.GetString("SvgLayersTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mode.
+        /// </summary>
+        internal static string SvgLayerMode {
+            get {
+                return ResourceManager.GetString("SvgLayerMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speed.
+        /// </summary>
+        internal static string SvgLayerSpeed {
+            get {
+                return ResourceManager.GetString("SvgLayerSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Power.
+        /// </summary>
+        internal static string SvgLayerPower {
+            get {
+                return ResourceManager.GetString("SvgLayerPower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passes.
+        /// </summary>
+        internal static string SvgLayerPasses {
+            get {
+                return ResourceManager.GetString("SvgLayerPasses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Line.
+        /// </summary>
+        internal static string SvgLayerModeLine {
+            get {
+                return ResourceManager.GetString("SvgLayerModeLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cut.
+        /// </summary>
+        internal static string SvgLayerModeCut {
+            get {
+                return ResourceManager.GetString("SvgLayerModeCut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ignore.
+        /// </summary>
+        internal static string SvgLayerModeIgnore {
+            get {
+                return ResourceManager.GetString("SvgLayerModeIgnore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} elements.
+        /// </summary>
+        internal static string SvgLayerElements {
+            get {
+                return ResourceManager.GetString("SvgLayerElements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fill.
+        /// </summary>
+        internal static string SvgLayerModeFill {
+            get {
+                return ResourceManager.GetString("SvgLayerModeFill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fill+Line.
+        /// </summary>
+        internal static string SvgLayerModeFillLine {
+            get {
+                return ResourceManager.GetString("SvgLayerModeFillLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fill pattern.
+        /// </summary>
+        internal static string SvgLayerFillPattern {
+            get {
+                return ResourceManager.GetString("SvgLayerFillPattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lines/mm.
+        /// </summary>
+        internal static string SvgLayerLinesPerMM {
+            get {
+                return ResourceManager.GetString("SvgLayerLinesPerMM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Binary DXF files are not supported. Save the drawing as ASCII DXF and try again..
+        /// </summary>
+        internal static string DxfBinaryNotSupported {
+            get {
+                return ResourceManager.GetString("DxfBinaryNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The DXF file does not contain any supported entity (lines, polylines, circles, arcs, ellipses, splines or blocks)..
+        /// </summary>
+        internal static string DxfNoEntities {
+            get {
+                return ResourceManager.GetString("DxfNoEntities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error importing DXF file: {0}.
+        /// </summary>
+        internal static string DxfImportError {
+            get {
+                return ResourceManager.GetString("DxfImportError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading preview....
+        /// </summary>
+        internal static string SvgPreviewLoading {
+            get {
+                return ResourceManager.GetString("SvgPreviewLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preview not available.
+        /// </summary>
+        internal static string SvgPreviewError {
+            get {
+                return ResourceManager.GetString("SvgPreviewError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click a shape or a color in the list to configure it.
+        /// </summary>
+        internal static string SvgPreviewHint {
+            get {
+                return ResourceManager.GetString("SvgPreviewHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wheel: zoom · Drag: move · Double click: fit.
+        /// </summary>
+        internal static string SvgPreviewNavigation {
+            get {
+                return ResourceManager.GetString("SvgPreviewNavigation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calculating fill....
+        /// </summary>
+        internal static string SvgPreviewFilling {
+            get {
+                return ResourceManager.GetString("SvgPreviewFilling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splines to arcs, tolerance.
+        /// </summary>
+        internal static string SettingsSplineArcTolerance {
+            get {
+                return ResourceManager.GetString("SettingsSplineArcTolerance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Curves of DXF files (SPLINE) are converted to arcs (G2/G3) that stay within this distance from the original curve: shorter gcode and smoother motion. Set 0 to keep the short straight segments..
+        /// </summary>
+        internal static string SettingsSplineArcToleranceInfo {
+            get {
+                return ResourceManager.GetString("SettingsSplineArcToleranceInfo", resourceCulture);
+            }
+        }
     }
 }

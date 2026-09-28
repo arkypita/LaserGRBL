@@ -489,4 +489,73 @@ Do you want to restart LaserGRBL and switch to software rendering?</value>
   <data name="TipsZoomOut" xml:space="preserve">
     <value>Zoom Out  (-10%)</value>
   </data>
+  <data name="SvgLayersTitle" xml:space="preserve">
+    <value>Color layers</value>
+  </data>
+  <data name="SvgLayerMode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="SvgLayerSpeed" xml:space="preserve">
+    <value>Speed</value>
+  </data>
+  <data name="SvgLayerPower" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="SvgLayerPasses" xml:space="preserve">
+    <value>Passes</value>
+  </data>
+  <data name="SvgLayerModeLine" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="SvgLayerModeCut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="SvgLayerModeIgnore" xml:space="preserve">
+    <value>Ignore</value>
+  </data>
+  <data name="SvgLayerElements" xml:space="preserve">
+    <value>{0} elements</value>
+  </data>
+  <data name="SvgLayerModeFill" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+  <data name="SvgLayerModeFillLine" xml:space="preserve">
+    <value>Fill+Line</value>
+  </data>
+  <data name="SvgLayerFillPattern" xml:space="preserve">
+    <value>Fill pattern</value>
+  </data>
+  <data name="SvgLayerLinesPerMM" xml:space="preserve">
+    <value>Lines/mm</value>
+  </data>
+  <data name="DxfBinaryNotSupported" xml:space="preserve">
+    <value>Binary DXF files are not supported. Save the drawing as ASCII DXF and try again.</value>
+  </data>
+  <data name="DxfNoEntities" xml:space="preserve">
+    <value>The DXF file does not contain any supported entity (lines, polylines, circles, arcs, ellipses, splines or blocks).</value>
+  </data>
+  <data name="DxfImportError" xml:space="preserve">
+    <value>Error importing DXF file: {0}</value>
+  </data>
+  <data name="SvgPreviewLoading" xml:space="preserve">
+    <value>Loading preview...</value>
+  </data>
+  <data name="SvgPreviewError" xml:space="preserve">
+    <value>Preview not available</value>
+  </data>
+  <data name="SvgPreviewHint" xml:space="preserve">
+    <value>Click a shape or a color in the list to configure it</value>
+  </data>
+  <data name="SvgPreviewNavigation" xml:space="preserve">
+    <value>Wheel: zoom · Drag: move · Double click: fit</value>
+  </data>
+  <data name="SvgPreviewFilling" xml:space="preserve">
+    <value>Calculating fill...</value>
+  </data>
+  <data name="SettingsSplineArcTolerance" xml:space="preserve">
+    <value>Splines to arcs, tolerance</value>
+  </data>
+  <data name="SettingsSplineArcToleranceInfo" xml:space="preserve">
+    <value>Curves of DXF files (SPLINE) are converted to arcs (G2/G3) that stay within this distance from the original curve: shorter gcode and smoother motion. Set 0 to keep the short straight segments.</value>
+  </data>
 </root>

@@ -665,7 +665,7 @@ namespace LaserGRBL
 						if (lastFN != null && System.IO.File.Exists(lastFN))
 							ofd.FileName = lastFN;
 
-						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.ngc;*.bmp;*.png;*.jpg;*.jpeg;*.gif;*.svg;*.lps|GCODE Files|*.nc;*.cnc;*.tap;*.gcode;*.ngc|Raster Image|*.bmp;*.png;*.jpg;*.jpeg;*.gif|Vector Image (experimental)|*.svg|LaserGRBL Project|*.lps";
+						ofd.Filter = "Any supported file|*.nc;*.cnc;*.tap;*.gcode;*.ngc;*.bmp;*.png;*.jpg;*.jpeg;*.gif;*.svg;*.dxf;*.lps|GCODE Files|*.nc;*.cnc;*.tap;*.gcode;*.ngc|Raster Image|*.bmp;*.png;*.jpg;*.jpeg;*.gif|Vector Image (experimental)|*.svg|DXF Drawing|*.dxf|LaserGRBL Project|*.lps";
 						ofd.CheckFileExists = true;
 						ofd.Multiselect = false;
 						ofd.RestoreDirectory = true;
@@ -748,6 +748,30 @@ namespace LaserGRBL
 						}
 						catch (Exception ex)
 						{ Logger.LogException("SvgBmpImport", ex); }
+					}
+				}
+				else if (System.IO.Path.GetExtension(filename).ToLowerInvariant() == ".dxf") //import dxf with the same color layers dialog of svg
+				{
+					try
+					{
+						Cursor.Current = Cursors.WaitCursor;
+						SvgConverter.VectorDrawing drawing = SvgConverter.DxfReader.Read(filename);
+						Cursor.Current = Cursors.Default;
+
+						SvgConverter.SvgToGCodeForm.CreateAndShowDialog(this, filename, new SvgConverter.DxfImportSource(drawing), append);
+						UsageCounters.SvgFile++;
+					}
+					catch (SvgConverter.DxfImportException ex)
+					{
+						Cursor.Current = Cursors.Default;
+						Logger.LogMessage("DxfImport", "{0}", ex.Message);
+						System.Windows.Forms.MessageBox.Show(ex.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+					}
+					catch (Exception ex)
+					{
+						Cursor.Current = Cursors.Default;
+						Logger.LogException("DxfImport", ex);
+						System.Windows.Forms.MessageBox.Show(String.Format(Strings.DxfImportError, ex.Message), "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 					}
 				}
 				else if (GCodeExtensions.Contains(System.IO.Path.GetExtension(filename).ToLowerInvariant()))  //load GCODE file

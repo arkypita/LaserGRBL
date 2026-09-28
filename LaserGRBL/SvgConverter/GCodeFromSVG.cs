@@ -67,6 +67,8 @@ namespace LaserGRBL.SvgConverter
 		private Matrix oldMatrixElement = new Matrix();     // store finally applied matrix
 
 		private ColorFilter loadColorFilter = ColorFilter.All;
+		private string currentLayerColor = null;	// when set, only elements of this color are converted
+		private List<List<Point>> capturedShapes = null;	// when set, geometry is collected here instead of written as gcode
 		private const int FilterColorLimitHLow = 20;
 		private const int FilterColorLimitHigh = 127;
 		private const string SvgStrokeAttribute = "stroke";
@@ -81,7 +83,7 @@ namespace LaserGRBL.SvgConverter
 		private bool importInMM = false;
 		//private bool fromText = false;
 
-		Regex RemoveInvalidUnicode = new Regex(@"[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-u10FFFF]+", RegexOptions.Compiled);
+		private static readonly Regex RemoveInvalidUnicode = new Regex(@"[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-u10FFFF]+", RegexOptions.Compiled);
 		public string convertFromText(string text, GrblCore core, bool importMM = false, ColorFilter filter=ColorFilter.All)
 		{
 			//fromText = true;
@@ -98,15 +100,137 @@ namespace LaserGRBL.SvgConverter
 			return convertSVG(svgCode, core);
 		}
 
-		public string convertFromFile(string file, GrblCore core, ColorFilter filter)
+		private static string ReadSvgFile(string file)
 		{
-			string xml;
 			if (Resources.ResourceHelper.IsEmbeddedResource(file))
-				xml = Resources.ResourceHelper.GetFileAsText(file);
+				return Resources.ResourceHelper.GetFileAsText(file);
 			else
-				xml = File.ReadAllText(file);
+				return File.ReadAllText(file);
+		}
 
-			return convertFromText(xml, core, true, filter);
+		public static XElement ParseSvgFile(string file)
+		{
+			return XElement.Parse(RemoveInvalidUnicode.Replace(ReadSvgFile(file), string.Empty), LoadOptions.None);
+		}
+
+		/// <summary>
+		/// Convert the svg one color layer at a time, each with its own speed, power and number of passes
+		/// </summary>
+		public string convertFromFile(string file, GrblCore core, List<SvgColorLayer> layers)
+		{
+			return convertFromXml(ParseSvgFile(file), core, layers);
+		}
+
+		/// <summary>
+		/// Same as convertFromFile, for an svg document already loaded
+		/// </summary>
+		public string convertFromXml(XElement svg, GrblCore core, List<SvgColorLayer> layers)
+		{
+			importInMM = true;
+			svgCode = svg;
+			loadColorFilter = ColorFilter.All;
+
+			gcode.setup(core);
+			gcode.setRapidNum(Settings.GetObject("Disable G0 fast skip", false) ? 1 : 0);
+			gcode.PutInitialCommand(gcodeString);
+
+			// stable sort: keep user order, but fill first and cut layers always last
+			var ordered = layers.Where(l => l.Mode != SvgLayerMode.Ignore).Select((l, i) => new { l, i }).OrderBy(x => x.l.ExecutionOrder).ThenBy(x => x.i).Select(x => x.l);
+			foreach (SvgColorLayer layer in ordered)
+			{
+				currentLayerColor = layer.Color;
+				List<List<Point>> filling = layer.HasFill ? SvgFilling.Build(CaptureShapes(), layer.FillDirection, layer.LinesPerMM) : null;
+
+				for (int pass = 1; pass <= layer.Passes; pass++)
+				{
+					gcodeString.AppendFormat("(Layer {0} {1} pass {2}/{3})\r\n", layer.Color, layer.Mode, pass, layer.Passes);
+					gcode.SetLayerParams(gcodeString, layer.Speed, layer.Power);
+					if (filling != null)
+						emitPolylines(filling, "fill");
+					if (layer.HasOutline)
+						startConvert(svgCode);
+				}
+			}
+			currentLayerColor = null;
+
+			gcode.PutFinalCommand(gcodeString);
+			return gcodeString.Replace(',', '.').ToString();
+		}
+
+		/// <summary>
+		/// Return the shapes of each layer as polylines in final coordinates (mm), the same geometry used
+		/// to create the gcode: used by the import dialog preview
+		/// </summary>
+		public Dictionary<string, List<List<Point>>> CaptureLayers(XElement svg, GrblCore core, IEnumerable<SvgColorLayer> layers)
+		{
+			importInMM = true;
+			svgCode = svg;
+			loadColorFilter = ColorFilter.All;
+			gcode.setup(core);
+
+			Dictionary<string, List<List<Point>>> rv = new Dictionary<string, List<List<Point>>>();
+			foreach (SvgColorLayer layer in layers)
+			{
+				currentLayerColor = layer.Color;
+				rv[layer.Color] = CaptureShapes();
+			}
+			currentLayerColor = null;
+			return rv;
+		}
+
+		/// <summary>
+		/// Run the conversion without writing gcode, returning the shapes of the current layer as polylines in final coordinates (mm)
+		/// </summary>
+		private List<List<Point>> CaptureShapes()
+		{
+			StringBuilder output = gcodeString;
+			gcodeString = new StringBuilder(); // discard comments written during capture
+			capturedShapes = new List<List<Point>>();
+			try
+			{
+				startConvert(svgCode);
+				return capturedShapes;
+			}
+			finally
+			{
+				capturedShapes = null;
+				gcodeString = output;
+			}
+		}
+
+		private void emitPolylines(List<List<Point>> polylines, string cmt)
+		{
+			foreach (List<Point> polyline in polylines)
+			{
+				gcodePenUp(cmt);
+				gcode.MoveToRapid(gcodeString, polyline[0], cmt);
+				for (int i = 1; i < polyline.Count; i++)
+				{
+					gcodePenDown(cmt);
+					gcode.MoveTo(gcodeString, polyline[i], cmt);
+				}
+			}
+			gcodePenUp(cmt);
+		}
+
+		private void captureArcCCW(Point end, Point ij)
+		{
+			List<Point> shape = capturedShapes.Last();
+			Point start = shape.Last();
+			double cx = start.X + ij.X, cy = start.Y + ij.Y;
+			double r = Math.Sqrt(ij.X * ij.X + ij.Y * ij.Y);
+			double a1 = Math.Atan2(start.Y - cy, start.X - cx);
+			double a2 = Math.Atan2(end.Y - cy, end.X - cx);
+			double sweep = a2 - a1;
+			if (sweep <= 1e-9) sweep += 2 * Math.PI; // G3 is counterclockwise, same start and end is a full circle
+
+			int segments = Math.Max(8, (int)Math.Ceiling(sweep * r / 0.2)); // about 0.2mm segments
+			for (int i = 1; i < segments; i++)
+			{
+				double a = a1 + sweep * i / segments;
+				shape.Add(new Point(cx + r * Math.Cos(a), cy + r * Math.Sin(a)));
+			}
+			shape.Add(end);
 		}
 
 		private string convertSVG(XElement svgCode, GrblCore core)
@@ -468,7 +592,7 @@ namespace LaserGRBL.SvgConverter
 			{
 				foreach (var pathElement in svgCode.Elements(nspace + form))
 				{
-					if (filterByColor(pathElement, loadColorFilter))
+					if (acceptElement(pathElement))
 					{
 						string myColor = getColor(pathElement);
 
@@ -618,7 +742,7 @@ namespace LaserGRBL.SvgConverter
 		{
 			foreach (var pathElement in svgCode.Elements(nspace + "path"))
 			{
-				if (filterByColor(pathElement, loadColorFilter))
+				if (acceptElement(pathElement))
 				{
 					offsetX = 0;// (float)matrixElement.OffsetX;
 					offsetY = 0;// (float)matrixElement.OffsetY;
@@ -666,6 +790,14 @@ namespace LaserGRBL.SvgConverter
 				}
 			}
 			return;
+		}
+
+		private bool acceptElement(XElement pathElement)
+		{
+			if (currentLayerColor != null && SvgColorLayer.ResolveColor(pathElement) != currentLayerColor)
+				return false;
+
+			return filterByColor(pathElement, loadColorFilter);
 		}
 
 		private bool filterByColor(XElement pathElement, ColorFilter filter)
@@ -1257,6 +1389,11 @@ namespace LaserGRBL.SvgConverter
 			Point coord = translateXY(x, y);
 			lastGCX = coord.X; lastGCY = coord.Y;
 			lastSetGCX = coord.X; lastSetGCY = coord.Y;
+			if (capturedShapes != null)
+			{
+				capturedShapes.Add(new List<Point>() { coord });
+				return;
+			}
 			gcodePenUp(cmt);
 			gcode.MoveToRapid(gcodeString, coord, cmt);
 			if (svgPausePenDown) { /*gcode.Pause(gcodeString, "Pause before Pen Down");*/ }
@@ -1299,6 +1436,14 @@ namespace LaserGRBL.SvgConverter
 		private void gcodeMoveTo(Point orig, string cmt)
 		{
 			Point coord = translateXY(orig);
+			if (capturedShapes != null)
+			{
+				if (capturedShapes.Count == 0)
+					capturedShapes.Add(new List<Point>());
+				capturedShapes.Last().Add(coord);
+				lastGCX = coord.X; lastGCY = coord.Y;
+				return;
+			}
 			rejectPoint = false;
 			gcodePenDown(cmt);
 			if (gcodeReduce && isReduceOk)
@@ -1327,6 +1472,13 @@ namespace LaserGRBL.SvgConverter
 		{
 			Point coordxy = translateXY(x, y);
 			Point coordij = translateIJ(i, j);
+			if (capturedShapes != null)
+			{
+				if (capturedShapes.Count > 0 && capturedShapes.Last().Count > 0)
+					captureArcCCW(coordxy, coordij);
+				lastGCX = coordxy.X; lastGCY = coordxy.Y;
+				return;
+			}
 			gcodePenDown(cmt);
 			if (gcodeReduce && isReduceOk)      // restore last skipped point for accurat G2/G3 use
 			{
@@ -1341,12 +1493,16 @@ namespace LaserGRBL.SvgConverter
 		/// </summary>
 		private void gcodePenUp(string cmt)
 		{
+			if (capturedShapes != null)
+				return;
 			if (penIsDown)
 				gcode.PenUp(gcodeString, cmt);
 			penIsDown = false;
 		}
 		private void gcodePenDown(string cmt)
 		{
+			if (capturedShapes != null)
+				return;
 			if (!penIsDown)
 				gcode.PenDown(gcodeString, cmt);
 			penIsDown = true;
