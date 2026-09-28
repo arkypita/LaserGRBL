@@ -84,6 +84,22 @@ namespace LaserGRBL.SvgConverter
 			lastx = -1; lasty = -1; lastz = 0; lasts = -1 ; lastg = -1;
 		}
 
+		// change feed and power for the next moves (used by svg color layers)
+		public static void SetLayerParams(StringBuilder gcodeString, float feed, float power)
+		{
+			gcodeXYFeed = feed;
+			gcodeSpindleSpeed = power;
+
+			// Smoothieware firmware need a value between 0.0 and 1.1
+			if (firmwareType == Firmware.Smoothie)
+				gcodeSpindleSpeed /= 255.0f;
+
+			applyXYFeedRate = true;
+
+			if (!SupportPWM) //power is not emitted on pen down, set it now
+				gcodeString.AppendFormat("S{0}\r\n", gcodeSpindleSpeed);
+		}
+
 		public static bool reduceGCode
 		{
 			get { return gcodeCompress; }
