@@ -24,6 +24,7 @@ namespace LaserGRBL
 		private UserControls.TextInput TbFileName;
 		private LaserGRBL.UserControls.DoubleProgressBar PB;
 		private LaserGRBL.UserControls.ImageButton BtnOpen;
+		private LaserGRBL.UserControls.ImageButton BtnNewProject;
 		private LaserGRBL.UserControls.ImageButton BtnRunProgram;
 		private System.Windows.Forms.Panel GBConnection;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -69,6 +70,7 @@ namespace LaserGRBL
             this.TbFileName = new UserControls.TextInput();
             this.PB = new LaserGRBL.UserControls.DoubleProgressBar();
             this.BtnOpen = new LaserGRBL.UserControls.ImageButton();
+            this.BtnNewProject = new LaserGRBL.UserControls.ImageButton();
             this.BtnRunProgram = new LaserGRBL.UserControls.ImageButton();
             this.UDLoopCounter = new LaserGRBL.UserControls.NumericInput.NumericUpDown();
             this.BtnAbortProgram = new LaserGRBL.UserControls.ImageButton();
@@ -147,6 +149,7 @@ namespace LaserGRBL
             this.tableLayoutPanel5.Controls.Add(this.TbFileName, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.PB, 1, 1);
             this.tableLayoutPanel5.Controls.Add(this.BtnOpen, 3, 0);
+            this.tableLayoutPanel5.Controls.Add(this.BtnNewProject, 4, 0);
             this.tableLayoutPanel5.Controls.Add(this.BtnRunProgram, 3, 1);
             this.tableLayoutPanel5.Controls.Add(this.UDLoopCounter, 2, 1);
             this.tableLayoutPanel5.Controls.Add(this.BtnAbortProgram, 4, 1);
@@ -200,7 +203,6 @@ namespace LaserGRBL
             resources.ApplyResources(this.BtnOpen, "BtnOpen");
             this.BtnOpen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnOpen.Caption = null;
-            this.tableLayoutPanel5.SetColumnSpan(this.BtnOpen, 2);
             this.BtnOpen.Image = ((System.Drawing.Image)(resources.GetObject("BtnOpen.Image")));
             this.BtnOpen.Name = "BtnOpen";
             this.BtnOpen.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
@@ -208,6 +210,22 @@ namespace LaserGRBL
             this.TT.SetToolTip(this.BtnOpen, resources.GetString("BtnOpen.ToolTip"));
             this.BtnOpen.UseAltImage = false;
             this.BtnOpen.Click += new System.EventHandler(this.BtnOpenClick);
+            // 
+            // BtnNewProject
+            // 
+            this.BtnNewProject.AltImage = null;
+            this.BtnNewProject.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnNewProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnNewProject.Caption = null;
+            this.BtnNewProject.Image = null;
+            this.BtnNewProject.Margin = new System.Windows.Forms.Padding(1);
+            this.BtnNewProject.Name = "BtnNewProject";
+            this.BtnNewProject.Size = new System.Drawing.Size(17, 17);
+            this.BtnNewProject.SizingMode = LaserGRBL.UserControls.ImageButton.SizingModes.FixedSize;
+            this.BtnNewProject.TabIndex = 7;
+            this.BtnNewProject.TabStop = false;
+            this.BtnNewProject.UseAltImage = false;
+            this.BtnNewProject.Click += new System.EventHandler(this.BtnNewProjectClick);
             // 
             // BtnRunProgram
             // 

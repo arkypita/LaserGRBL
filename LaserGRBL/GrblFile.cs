@@ -154,6 +154,24 @@ namespace LaserGRBL
             });
 		}
 
+		public void Clear(decimal x, decimal y, decimal x1, decimal y1)
+		{
+			SafeLoadFile(() =>
+			{
+				RiseOnFileLoading(string.Empty);
+
+				ClearList();
+
+				//restore the same fake range used at startup for manual movements
+				mRange.ResetRange();
+				mRange.UpdateXYRange(new GrblCommand.Element('X', x), new GrblCommand.Element('Y', y), false);
+				mRange.UpdateXYRange(new GrblCommand.Element('X', x1), new GrblCommand.Element('Y', y1), false);
+				mEstimatedTotalTime = TimeSpan.Zero;
+
+				RiseOnFileLoaded(string.Empty, 0);
+			});
+		}
+
 		public void LoadImportedSVG(string filename, bool append, GrblCore core, ColorFilter filter)
         {
             SafeLoadFile(() =>

@@ -43,6 +43,8 @@ namespace LaserGRBL
             IconsMgr.PrepareButton(BtnAbortProgram, "mdi-stop-circle", btnSize);
             IconsMgr.PrepareButton(BtnConnectDisconnect, "mdi-power-plug", btnSize, "mdi-power-plug-off");
             IconsMgr.PrepareButton(BtnOpen, "mdi-folder", btnSize);
+            IconsMgr.PrepareButton(BtnNewProject, "mdi-file-plus-outline", btnSize);
+            TT.SetToolTip(BtnNewProject, Strings.NewProjectTT);
 
             InitSpeedCB();
 			InitPortCB();
@@ -83,7 +85,7 @@ namespace LaserGRBL
 			}
 			else
 			{
-				mLoadedFileName = filename;
+				mLoadedFileName = string.IsNullOrEmpty(filename) ? null : filename;
 				TbFileName.Text = System.IO.Path.GetFileName(filename);
 			}
 		}
@@ -203,6 +205,11 @@ namespace LaserGRBL
 			Core.OpenFile();
 		}
 
+		void BtnNewProjectClick(object sender, EventArgs e)
+		{
+			Core.NewProject();
+		}
+
 		void BtnRunProgramClick(object sender, EventArgs e)
 		{
 			BtnRunProgram.Enabled = false;
@@ -252,6 +259,7 @@ namespace LaserGRBL
             BtnRunProgram.Visible = !Core.CanAbortProgram;
             BtnAbortProgram.Visible = Core.CanAbortProgram;
             BtnOpen.Enabled = Core.CanLoadNewFile;
+            BtnNewProject.Enabled = Core.CanNewProject;
 
 			bool old = TxtManualCommand.Enabled;
 			TxtManualCommand.Enabled = Core.CanSendManualCommand;

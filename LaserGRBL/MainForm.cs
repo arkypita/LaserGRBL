@@ -50,6 +50,7 @@ namespace LaserGRBL
 			};
 
 			MnOrtur.Visible = false;
+			MnNewProject.Text = Strings.NewProjectTitle;
 			MMn.Renderer = new MMnRenderer();
 
 			splitContainer1.FixedPanel = FixedPanel.Panel1;
@@ -182,6 +183,7 @@ namespace LaserGRBL
 			IconsMgr.PrepareMenuItem(MnMaterialDB, "mdi-database");
 			IconsMgr.PrepareMenuItem(laserUsageStatsToolStripMenuItem, "mdi-chart-bar");
 			IconsMgr.PrepareMenuItem(MnHotkeys, "mdi-keyboard");
+			IconsMgr.PrepareMenuItem(MnNewProject, "mdi-file-plus-outline");
 			IconsMgr.PrepareMenuItem(MnFileOpen, "mdi-folder");
 			IconsMgr.PrepareMenuItem(MnFileAppend, "mdi-folder-plus");
 			IconsMgr.PrepareMenuItem(MnReOpenFile, "mdi-reload");
@@ -622,6 +624,11 @@ namespace LaserGRBL
 			Close();
 		}
 
+		private void MnNewProject_Click(object sender, EventArgs e)
+		{
+			Core.NewProject();
+		}
+
 		private void MnFileOpen_Click(object sender, EventArgs e)
 		{
 			Project.ClearSettings();
@@ -867,6 +874,7 @@ namespace LaserGRBL
 
 		private void fileToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
 		{
+			MnNewProject.Enabled = Core.CanNewProject;
 			MnFileOpen.Enabled = Core.CanLoadNewFile;
 			MnFileAppend.Enabled = Core.CanLoadNewFile;
 			MnReOpenFile.Enabled = Core.CanReOpenFile;

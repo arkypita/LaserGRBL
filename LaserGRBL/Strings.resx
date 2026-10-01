@@ -489,4 +489,13 @@ Do you want to restart LaserGRBL and switch to software rendering?</value>
   <data name="TipsZoomOut" xml:space="preserve">
     <value>Zoom Out  (-10%)</value>
   </data>
+  <data name="NewProjectConfirm" xml:space="preserve">
+    <value>Discard the loaded job and clear the workspace (file, preview and command log)?</value>
+  </data>
+  <data name="NewProjectTitle" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="NewProjectTT" xml:space="preserve">
+    <value>New (clear loaded file, preview and command log)</value>
+  </data>
 </root>

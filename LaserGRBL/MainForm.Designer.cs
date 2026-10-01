@@ -67,6 +67,7 @@
 			this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
 			this.MnExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.MnNewProject = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnFileOpen = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnFileAppend = new System.Windows.Forms.ToolStripMenuItem();
 			this.MnReOpenFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -457,6 +458,7 @@
 			// fileToolStripMenuItem
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MnNewProject,
             this.MnFileOpen,
             this.MnFileAppend,
             this.MnReOpenFile,
@@ -472,6 +474,12 @@
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
 			this.fileToolStripMenuItem.DropDownOpening += new System.EventHandler(this.fileToolStripMenuItem_DropDownOpening);
+			// 
+			// MnNewProject
+			// 
+			this.MnNewProject.Name = "MnNewProject";
+			this.MnNewProject.Size = new System.Drawing.Size(215, 22);
+			this.MnNewProject.Click += new System.EventHandler(this.MnNewProject_Click);
 			// 
 			// MnFileOpen
 			// 
@@ -1302,6 +1310,7 @@
 		private System.Windows.Forms.ToolStripStatusLabel TTTEstimated;
 		private System.Windows.Forms.MenuStrip MMn;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem MnNewProject;
 		private System.Windows.Forms.ToolStripMenuItem MnFileOpen;
 		private System.Windows.Forms.ToolStripMenuItem MnFileSend;
 		private System.Windows.Forms.ToolStripMenuItem MnGrbl;

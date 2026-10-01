@@ -489,4 +489,13 @@ Você quer reiniciar o LaserGRBL e alternar para renderização de software?</va
   <data name="TipsPan" xml:space="preserve">
     <value>ARRASTO: Clique e arraste (ou toque e  arraste)</value>
   </data>
+  <data name="NewProjectConfirm" xml:space="preserve">
+    <value>Descartar o trabalho carregado e limpar a área de trabalho (arquivo, pré-visualização e log de comandos)?</value>
+  </data>
+  <data name="NewProjectTitle" xml:space="preserve">
+    <value>Novo</value>
+  </data>
+  <data name="NewProjectTT" xml:space="preserve">
+    <value>Novo (limpa o arquivo carregado, a pré-visualização e o log de comandos)</value>
+  </data>
 </root>

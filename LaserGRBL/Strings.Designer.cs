@@ -875,6 +875,33 @@ namespace LaserGRBL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discard the loaded job and clear the workspace (file, preview and command log)?.
+        /// </summary>
+        internal static string NewProjectConfirm {
+            get {
+                return ResourceManager.GetString("NewProjectConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New.
+        /// </summary>
+        internal static string NewProjectTitle {
+            get {
+                return ResourceManager.GetString("NewProjectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New (clear loaded file, preview and command log).
+        /// </summary>
+        internal static string NewProjectTT {
+            get {
+                return ResourceManager.GetString("NewProjectTT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prepare drawing....
         /// </summary>
         internal static string PrepareDrawing {

@@ -641,6 +641,22 @@ namespace LaserGRBL
 		public GrblFile LoadedFile
 		{ get { return file; } }
 
+		public void NewProject()
+		{
+			if (!CanNewProject) return;
+
+			if (MessageBox.Show(FormsHelper.MainForm, Strings.NewProjectConfirm, Strings.NewProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+				return;
+
+			Logger.LogMessage("NewProject", "Clear workspace");
+			Project.ClearSettings();
+
+			lock (this)
+			{ mSent.Clear(); } //clear command log
+
+			file.Clear(0, 0, Configuration.TableWidth, Configuration.TableHeight);
+		}
+
 		public void ReOpenFile()
 		{
 			if (CanReOpenFile)
@@ -3019,6 +3035,9 @@ namespace LaserGRBL
 
 		public bool CanLoadNewFile
 		{ get { return !InProgram && !file.CheckInUse(false); } }
+
+		public bool CanNewProject
+		{ get { return CanLoadNewFile && (HasProgram || Executed > 0); } }
 
 		public bool CanSendFile
 		{ get { return IsConnected && HasProgram && IdleOrCheck && QueueEmpty && !mDoingSend; } }
