@@ -9,7 +9,6 @@ using LaserGRBL.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Windows.Forms;
 
