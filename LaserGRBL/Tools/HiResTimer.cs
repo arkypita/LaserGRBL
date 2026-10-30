@@ -56,12 +56,25 @@ namespace Tools
 #endif
 
 
-		[DllImport("Kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
-		private static extern bool QueryPerformanceCounter(ref long count);
-		[DllImport("Kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
-		private static extern bool QueryPerformanceFrequency(ref long timerFrequency);
-		[DllImport("Kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
-		private static extern int GetTickCount();
+		// Use managed timers so the same code works on Windows and Unix (Mono).
+		private static readonly Stopwatch mStopwatch = Stopwatch.StartNew();
+
+		private static bool QueryPerformanceCounter(ref long count)
+		{
+			count = Stopwatch.GetTimestamp();
+			return true;
+		}
+
+		private static bool QueryPerformanceFrequency(ref long timerFrequency)
+		{
+			timerFrequency = Stopwatch.Frequency;
+			return true;
+		}
+
+		private static int GetTickCount()
+		{
+			return Environment.TickCount;
+		}
 
 
 		//emulo la GetTickCount64 perché non esiste su WindowsXP

@@ -149,6 +149,10 @@ namespace LaserGRBL.UserControls
 
         public static void Initialize()
         {
+            // this theme API is Windows-only
+            if (Environment.OSVersion.Platform != PlatformID.Win32NT)
+                return;
+
             // check if os is at least vista
             if (Environment.OSVersion.Version.Major >= 6)
             {

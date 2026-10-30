@@ -1387,20 +1387,29 @@ namespace LaserGRBL
 	{
 		public MMnRenderer() : base(new CustomMenuColor()) { }
 
+		private static void FillBackground(Graphics g, Color color, Rectangle bounds)
+		{
+			// Graphics.Clear() ignores per-item clipping on some platforms (Mono), so it
+			// wipes text already painted by neighbouring items. Always fill the actual
+			// bounds instead.
+			using (SolidBrush brush = new SolidBrush(color))
+				g.FillRectangle(brush, bounds);
+		}
+
 		protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs e)
 		{
 			Color c = e.Item.Selected ? ColorScheme.MenuHighlightColor : ColorScheme.FormBackColor;
-			e.Graphics.Clear(c);
+			FillBackground(e.Graphics, c, e.Item.Bounds);
 		}
 
 		protected override void OnRenderImageMargin(ToolStripRenderEventArgs e)
 		{
-			e.Graphics.Clear(ColorScheme.FormBackColor);
+			FillBackground(e.Graphics, ColorScheme.FormBackColor, e.AffectedBounds);
 		}
 
 		protected override void OnRenderItemBackground(ToolStripItemRenderEventArgs e)
 		{
-			e.Graphics.Clear(ColorScheme.FormBackColor);
+			FillBackground(e.Graphics, ColorScheme.FormBackColor, e.Item.Bounds);
 		}
 
 		protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
@@ -1411,7 +1420,7 @@ namespace LaserGRBL
 
 		protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
 		{
-			e.Graphics.Clear(ColorScheme.FormBackColor);
+			FillBackground(e.Graphics, ColorScheme.FormBackColor, e.AffectedBounds);
 		}
 
 		protected override void OnRenderToolStripContentPanelBackground(ToolStripContentPanelRenderEventArgs e)
