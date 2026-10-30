@@ -14,6 +14,9 @@ namespace Tools
 
 		public static void SetClockResolution(int msec) //volendo potrebbe gestire anche 0.5 msec ma a noi basta 1-15 msec, quindi usiamo int
 		{
+			if (Environment.OSVersion.Platform != PlatformID.Win32NT)
+				return;
+
 			uint DesiredResolution = (uint)msec * 10000;
 			bool SetResolution = true;
 			uint CurrentResolution = 0;

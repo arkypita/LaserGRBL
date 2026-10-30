@@ -66,7 +66,8 @@ namespace LaserGRBL
                 tableLayoutPanel1.Controls.Remove(GrblPanel as Control);
 				(GrblPanel as Control).Dispose();
             }
-            if (Settings.RequestedGraphicMode == Settings.GraphicMode.GDI)
+            // OpenGL rendering is Windows-only, so use the GDI panel elsewhere
+            if (Settings.RequestedGraphicMode == Settings.GraphicMode.GDI || Environment.OSVersion.Platform != PlatformID.Win32NT)
                 GrblPanel = new GrblPanel();
             else
                 GrblPanel = new GrblPanel3D();
