@@ -53,7 +53,44 @@ namespace LaserGRBL
                 command.Dispose();
             }
             list.Clear();
+            mMarkStrokes.Clear();
+            mRegistrationMarks = new List<PrintAndCut.RegistrationMark>();
         }
+
+		private readonly List<PrintAndCut.Bounds> mMarkStrokes = new List<PrintAndCut.Bounds>();
+		private List<PrintAndCut.RegistrationMark> mRegistrationMarks = new List<PrintAndCut.RegistrationMark>();
+
+		/// <summary>
+		/// Print and Cut registration marks found in the imported SVG files of the current job
+		/// (accumulated when files are appended), in job coordinates.
+		/// </summary>
+		public List<PrintAndCut.RegistrationMark> RegistrationMarks
+		{ get { return mRegistrationMarks; } }
+
+		/// <summary>The lines of the job, as they are sent to the machine.</summary>
+		internal List<string> GetLines()
+		{
+			List<string> rv = new List<string>(list.Count);
+			foreach (GrblCommand cmd in list)
+				rv.Add(cmd.Command);
+			return rv;
+		}
+
+		/// <summary>
+		/// Print and Cut: a copy of this job with the given lines (one for each command), whose commands
+		/// share result and preview with the original ones. Range and timing are computed on the new lines.
+		/// </summary>
+		internal GrblFile CreateLinkedCopy(IList<string> lines)
+		{
+			if (lines.Count != list.Count)
+				throw new ArgumentException("One line for each command is required.", "lines");
+
+			GrblFile rv = new GrblFile();
+			for (int i = 0; i < list.Count; i++)
+				rv.list.Add(list[i].CloneWithLine(lines[i]));
+			rv.Analyze();
+			return rv;
+		}
 
         public void SaveGCODE(string filename, bool header, bool footer, bool between, int cycles, bool useLFLineEndings, GrblCore core)
 		{
@@ -154,6 +191,15 @@ namespace LaserGRBL
             });
 		}
 
+		private static SvgConverter.GCodeFromSVG CreateSvgConverter(Color reservedColor)
+		{
+			SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
+			converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
+			converter.UseLegacyBezier = !Settings.GetObject($"Vector.UseSmartBezier", true);
+			converter.ReservedColor = reservedColor;
+			return converter;
+		}
+
 		public void LoadImportedSVG(string filename, bool append, GrblCore core, ColorFilter filter)
         {
             SafeLoadFile(() =>
@@ -167,11 +213,27 @@ namespace LaserGRBL
 
 				mRange.ResetRange();
 
-				SvgConverter.GCodeFromSVG converter = new SvgConverter.GCodeFromSVG();
-				converter.GCodeXYFeed = Settings.GetObject("GrayScaleConversion.VectorizeOptions.BorderSpeed", 1000);
-				converter.UseLegacyBezier = !Settings.GetObject($"Vector.UseSmartBezier", true);
-
+				SvgConverter.GCodeFromSVG converter = CreateSvgConverter(PrintAndCut.PrintAndCutSettings.ReservedColor);
 				string gcode = converter.convertFromFile(filename, core, filter);
+
+				// Print and Cut needs two marks at least. With fewer, the reserved color is just one more
+				// color of the drawing and must be cut or engraved as it always was.
+				if (converter.MarkStrokes.Count > 0)
+				{
+					List<PrintAndCut.Bounds> candidates = new List<PrintAndCut.Bounds>(mMarkStrokes);
+					candidates.AddRange(converter.MarkStrokes);
+					if (PrintAndCut.MarkDetector.Detect(candidates).Count < 2)
+					{
+						Logger.LogMessage("PrintAndCut", "Less than two registration marks in {0}: the reserved color is converted as any other color", filename);
+						converter = CreateSvgConverter(Color.Empty);
+						gcode = converter.convertFromFile(filename, core, filter);
+					}
+				}
+
+				mMarkStrokes.AddRange(converter.MarkStrokes);
+				mRegistrationMarks = PrintAndCut.MarkDetector.Detect(mMarkStrokes);
+				if (converter.MarkStrokes.Count > 0)
+					Logger.LogMessage("PrintAndCut", "{0} reserved color strokes excluded from the job, {1} registration marks", converter.MarkStrokes.Count, mRegistrationMarks.Count);
 				string[] lines = gcode.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 				foreach (string l in lines)
 				{

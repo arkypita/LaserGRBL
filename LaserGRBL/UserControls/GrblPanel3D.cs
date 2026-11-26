@@ -304,6 +304,8 @@ namespace LaserGRBL.UserControls
 				OpenGL.Hint(OpenGL.GL_LINE_SMOOTH_HINT, OpenGL.GL_NICEST);
 				CheckError(OpenGL, "Smooth");
 				// manage grbl object
+				if (Core != null && PrintAndCutAlignmentChanged())
+					mReload = true; // the preview draws the aligned job: rebuild it
 				if (mReload)
 				{
 					mReload = false;
@@ -358,6 +360,8 @@ namespace LaserGRBL.UserControls
 				// main hud
 				DrawPointer();
 				CheckError(OpenGL, "Pointer");
+				DrawPrintAndCutMarks();
+				CheckError(OpenGL, "PrintAndCutMarks");
 				DrawRulers();
 				CheckError(OpenGL, "Rulers");
 				OpenGL.Flush();
@@ -519,6 +523,63 @@ namespace LaserGRBL.UserControls
 			OpenGL.Vertex(pointerPos.X, pointerPos.Y - size, pointerPos.Z);
 			OpenGL.Vertex(pointerPos.X, pointerPos.Y + size, pointerPos.Z);
 			OpenGL.End();
+			OpenGL.Flush();
+		}
+
+		private int mPncVersion = -1;
+		private double mPncOffsetX, mPncOffsetY;
+
+		/// <summary>True when the alignment (or the work offset it depends on) changed since the job was drawn.</summary>
+		private bool PrintAndCutAlignmentChanged()
+		{
+			PrintAndCut.PrintAndCutManager pnc = Core.PrintAndCutManager;
+			bool enabled = pnc.IsEnabled;
+			PrintAndCut.Vec2 offset = Core.PrintAndCutWorkOffset;
+			int version = enabled ? pnc.Version : -1;
+			double x = enabled ? offset.X : 0;
+			double y = enabled ? offset.Y : 0;
+			if (version == mPncVersion && Math.Abs(x - mPncOffsetX) < PrintAndCut.AlignedJobCache.WorkOffsetTolerance && Math.Abs(y - mPncOffsetY) < PrintAndCut.AlignedJobCache.WorkOffsetTolerance)
+				return false;
+
+			mPncVersion = version;
+			mPncOffsetX = x;
+			mPncOffsetY = y;
+			return true;
+		}
+
+		/// <summary>Print and Cut: outlines and numbers of the registration marks, which are not part of the job.</summary>
+		private void DrawPrintAndCutMarks()
+		{
+			if (Core == null || Core.LoadedFile == null) return;
+
+			System.Collections.Generic.List<PrintAndCut.RegistrationMark> marks = Core.LoadedFile.RegistrationMarks;
+			if (marks.Count == 0) return;
+
+			PrintAndCut.PrintAndCutManager pnc = Core.PrintAndCutManager;
+			PrintAndCut.AlignmentTransform alignment = Core.PreviewTransform; // the marks follow the aligned job
+			double wRatio = Width / (mCamera.Right - mCamera.Left);
+			double hRatio = Height / (mCamera.Top - mCamera.Bottom);
+			double margin = 4 / wRatio; // 4 px around the mark
+
+			foreach (PrintAndCut.RegistrationMark mark in marks)
+			{
+				GLColor color = new GLColor();
+				color.FromColor(PrintAndCut.PrintAndCutActions.MarkColor(mark, pnc));
+				PrintAndCut.Bounds b = PrintAndCut.PrintAndCutActions.PreviewBounds(mark, alignment);
+
+				OpenGL.Color(color);
+				OpenGL.LineWidth(2);
+				OpenGL.Begin(OpenGL.GL_LINE_LOOP);
+				OpenGL.Vertex(b.MinX - margin, b.MinY - margin, 0.15f);
+				OpenGL.Vertex(b.MaxX + margin, b.MinY - margin, 0.15f);
+				OpenGL.Vertex(b.MaxX + margin, b.MaxY + margin, 0.15f);
+				OpenGL.Vertex(b.MinX - margin, b.MaxY + margin, 0.15f);
+				OpenGL.End();
+
+				double x = (b.MinX - margin - mCamera.Left) * wRatio;
+				double y = (b.MaxY + margin - mCamera.Bottom) * hRatio + 3;
+				DrawText(PrintAndCut.PrintAndCutActions.MarkLabel(mark, pnc), x, y, color);
+			}
 			OpenGL.Flush();
 		}
 
@@ -972,6 +1033,7 @@ namespace LaserGRBL.UserControls
 			Core.OnZoomInDrawing += Core_OnZoomInDrawing;
 			Core.OnZoomOutDrawing += Core_OnZoomOutDrawing;
 			Core.OnProgramEnded += OnProgramEnded;
+			Core.PrintAndCutManager.StateChanged += (s, e) => RR.Set(); // redraw marks colors
 		}
 
         private void OnFileLoading(long elapsed, string filename)

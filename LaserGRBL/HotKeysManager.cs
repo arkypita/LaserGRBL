@@ -37,7 +37,8 @@ namespace LaserGRBL
 				OverridePowerDefault = 1100, OverridePowerUp = 1101, OverridePowerDown = 1102,
 				OverrideLinearDefault = 1110, OverrideLinearUp = 1111, OverrideLinearDown = 1112,
 				OverrideRapidDefault = 1120, OverrideRapidUp = 1121, OverrideRapidDown = 1122,
-				CustomButton1 = 2000, CustomButton2 = 2001, CustomButton3 = 2002, CustomButton4 = 2003, CustomButton5 = 2004, CustomButton6 = 2005, CustomButton7 = 2006, CustomButton8 = 2007, CustomButton9 = 2008, CustomButton10 = 2009
+				CustomButton1 = 2000, CustomButton2 = 2001, CustomButton3 = 2002, CustomButton4 = 2003, CustomButton5 = 2004, CustomButton6 = 2005, CustomButton7 = 2006, CustomButton8 = 2007, CustomButton9 = 2008, CustomButton10 = 2009,
+				PrintAndCutStartWizard = 3000, PrintAndCutSetFirstTarget = 3001, PrintAndCutSetSecondTarget = 3002, PrintAndCutAlign = 3003, PrintAndCutAlignNoScaling = 3004, PrintAndCutReset = 3005
 			}
 
 			private Keys mCombination;
@@ -181,6 +182,14 @@ namespace LaserGRBL
 			AddNew(new HotKey(HotKey.Actions.AutoSizeDrawing, Keys.Control | Keys.A));
 			AddNew(new HotKey(HotKey.Actions.ZoomInDrawing, Keys.Control | Keys.Add));
 			AddNew(new HotKey(HotKey.Actions.ZoomOutDrawing, Keys.Control | Keys.Subtract));
+
+			// same shortcuts as LightBurn, so that its Print and Cut tutorials apply
+			AddNew(new HotKey(HotKey.Actions.PrintAndCutStartWizard, Keys.Alt | Keys.D0));
+			AddNew(new HotKey(HotKey.Actions.PrintAndCutSetFirstTarget, Keys.Alt | Keys.D1));
+			AddNew(new HotKey(HotKey.Actions.PrintAndCutSetSecondTarget, Keys.Alt | Keys.D2));
+			AddNew(new HotKey(HotKey.Actions.PrintAndCutAlign, Keys.Alt | Keys.D3));
+			AddNew(new HotKey(HotKey.Actions.PrintAndCutAlignNoScaling, Keys.Alt | Keys.D4));
+			AddNew(new HotKey(HotKey.Actions.PrintAndCutReset, Keys.None));
 		}
 
 		private void AddNew(HotKey toadd)
@@ -340,6 +349,18 @@ namespace LaserGRBL
 					EmulateCustomButtonDown(8); break;
 				case HotKey.Actions.CustomButton10:
 					EmulateCustomButtonDown(9); break;
+				case HotKey.Actions.PrintAndCutStartWizard:
+					PrintAndCut.PrintAndCutActions.ShowWizard(parent, mCore); break;
+				case HotKey.Actions.PrintAndCutSetFirstTarget:
+					PrintAndCut.PrintAndCutActions.SetTarget(parent, mCore, true); break;
+				case HotKey.Actions.PrintAndCutSetSecondTarget:
+					PrintAndCut.PrintAndCutActions.SetTarget(parent, mCore, false); break;
+				case HotKey.Actions.PrintAndCutAlign:
+					PrintAndCut.PrintAndCutActions.Align(parent, mCore, true); break;
+				case HotKey.Actions.PrintAndCutAlignNoScaling:
+					PrintAndCut.PrintAndCutActions.Align(parent, mCore, false); break;
+				case HotKey.Actions.PrintAndCutReset:
+					PrintAndCut.PrintAndCutActions.Reset(mCore); break;
 				default:
 					break;
 			}

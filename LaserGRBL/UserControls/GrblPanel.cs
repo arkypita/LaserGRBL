@@ -73,6 +73,8 @@ namespace LaserGRBL.UserControls
 					e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 					e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
+					DrawPrintAndCutMarks(e.Graphics);
+
 					using (Pen px = GetPen(ColorScheme.PreviewCross, 2f))
 					{
 						e.Graphics.DrawLine(px, (int)p.X, (int)p.Y - 5, (int)p.X, (int)p.Y - 5 + 10);
@@ -135,6 +137,30 @@ namespace LaserGRBL.UserControls
 			Core = core;
 			Core.OnFileLoading += OnFileLoading;
 			Core.OnFileLoaded += OnFileLoaded;
+			Core.PrintAndCutManager.StateChanged += (s, e) => { if (IsHandleCreated) BeginInvoke(new Action(Invalidate)); };
+		}
+
+		/// <summary>Print and Cut: outlines and numbers of the registration marks, which are not part of the job.</summary>
+		private void DrawPrintAndCutMarks(Graphics g)
+		{
+			if (Core.LoadedFile == null) return;
+
+			System.Collections.Generic.List<PrintAndCut.RegistrationMark> marks = Core.LoadedFile.RegistrationMarks;
+			PrintAndCut.PrintAndCutManager pnc = Core.PrintAndCutManager;
+			foreach (PrintAndCut.RegistrationMark mark in marks)
+			{
+				PrintAndCut.Bounds b = mark.Bounds;
+				PointF p1 = MachineToDraw(new PointF((float)b.MinX, (float)b.MinY));
+				PointF p2 = MachineToDraw(new PointF((float)b.MaxX, (float)b.MaxY));
+				RectangleF r = RectangleF.FromLTRB(Math.Min(p1.X, p2.X), Math.Min(p1.Y, p2.Y), Math.Max(p1.X, p2.X), Math.Max(p1.Y, p2.Y));
+				r.Inflate(4, 4);
+
+				Color c = PrintAndCut.PrintAndCutActions.MarkColor(mark, pnc);
+				using (Pen pen = new Pen(c, 2f))
+					g.DrawRectangle(pen, r.X, r.Y, r.Width, r.Height);
+				using (Brush brush = new SolidBrush(c))
+					g.DrawString(PrintAndCut.PrintAndCutActions.MarkLabel(mark, pnc), Font, brush, r.X, r.Y - Font.Height - 1);
+			}
 		}
 
 		void OnFileLoading(long elapsed, string filename)

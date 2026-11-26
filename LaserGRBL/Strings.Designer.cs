@@ -1145,5 +1145,428 @@ namespace LaserGRBL {
                 return ResourceManager.GetString("WarnWrongLaserModeTitle", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Print and Cut.
+        /// </summary>
+        internal static string PnCTitle {
+            get {
+                return ResourceManager.GetString("PnCTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Print and Cut is enabled but this job uses inches (G20) and cannot be aligned. Nothing will be sent. Use a job in millimeters or reset Print and Cut..
+        /// </summary>
+        internal static string PnCErrorInches {
+            get {
+                return ResourceManager.GetString("PnCErrorInches", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Print and Cut is enabled, but the following commands of the job are sent without alignment:  {0} Send the job anyway?.
+        /// </summary>
+        internal static string PnCWarnUnalignedCommands {
+            get {
+                return ResourceManager.GetString("PnCWarnUnalignedCommands", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to G53 moves in machine coordinates.
+        /// </summary>
+        internal static string PnCIssueMachineCoordinates {
+            get {
+                return ResourceManager.GetString("PnCIssueMachineCoordinates", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to G92 / G10 coordinate system changes.
+        /// </summary>
+        internal static string PnCIssueCoordinateOffset {
+            get {
+                return ResourceManager.GetString("PnCIssueCoordinateOffset", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to G28 / G30 moves to a stored position.
+        /// </summary>
+        internal static string PnCIssueReturnToStoredPosition {
+            get {
+                return ResourceManager.GetString("PnCIssueReturnToStoredPosition", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to G38 probing moves.
+        /// </summary>
+        internal static string PnCIssueProbe {
+            get {
+                return ResourceManager.GetString("PnCIssueProbe", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to moves with an unknown start position.
+        /// </summary>
+        internal static string PnCIssueUnknownPosition {
+            get {
+                return ResourceManager.GetString("PnCIssueUnknownPosition", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to job in inches (G20).
+        /// </summary>
+        internal static string PnCIssueInchUnits {
+            get {
+                return ResourceManager.GetString("PnCIssueInchUnits", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Start Wizard.
+        /// </summary>
+        internal static string PnCMenuStartWizard {
+            get {
+                return ResourceManager.GetString("PnCMenuStartWizard", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Set First Target Position.
+        /// </summary>
+        internal static string PnCMenuSetFirst {
+            get {
+                return ResourceManager.GetString("PnCMenuSetFirst", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Set Second Target Position.
+        /// </summary>
+        internal static string PnCMenuSetSecond {
+            get {
+                return ResourceManager.GetString("PnCMenuSetSecond", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Align Output to Targets.
+        /// </summary>
+        internal static string PnCMenuAlign {
+            get {
+                return ResourceManager.GetString("PnCMenuAlign", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Align Output to Targets (no scaling).
+        /// </summary>
+        internal static string PnCMenuAlignNoScaling {
+            get {
+                return ResourceManager.GetString("PnCMenuAlignNoScaling", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Print and Cut.
+        /// </summary>
+        internal static string PnCMenuReset {
+            get {
+                return ResourceManager.GetString("PnCMenuReset", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled Mode(s): Print and Cut.
+        /// </summary>
+        internal static string PnCStatusEnabled {
+            get {
+                return ResourceManager.GetString("PnCStatusEnabled", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Print and Cut Wizard.
+        /// </summary>
+        internal static string PnCWizardTitle {
+            get {
+                return ResourceManager.GetString("PnCWizardTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to First Target Position.
+        /// </summary>
+        internal static string PnCFirstTarget {
+            get {
+                return ResourceManager.GetString("PnCFirstTarget", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Second Target Position.
+        /// </summary>
+        internal static string PnCSecondTarget {
+            get {
+                return ResourceManager.GetString("PnCSecondTarget", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Set.
+        /// </summary>
+        internal static string PnCSet {
+            get {
+                return ResourceManager.GetString("PnCSet", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Store the current head position as the position of the selected mark.
+        /// </summary>
+        internal static string PnCSetTip {
+            get {
+                return ResourceManager.GetString("PnCSetTip", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Jog.
+        /// </summary>
+        internal static string PnCJog {
+            get {
+                return ResourceManager.GetString("PnCJog", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Jog To Selection: move the head (laser off) to the expected position of the selected mark.
+        /// </summary>
+        internal static string PnCJogTip {
+            get {
+                return ResourceManager.GetString("PnCJogTip", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Scaled.
+        /// </summary>
+        internal static string PnCScaled {
+            get {
+                return ResourceManager.GetString("PnCScaled", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Align Output to Targets: rotate, move and scale the job to the targets.
+        /// </summary>
+        internal static string PnCScaledTip {
+            get {
+                return ResourceManager.GetString("PnCScaledTip", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No Scaling.
+        /// </summary>
+        internal static string PnCNoScaling {
+            get {
+                return ResourceManager.GetString("PnCNoScaling", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Align Output to Targets (no scaling): rotate and move the job, keep its size.
+        /// </summary>
+        internal static string PnCNoScalingTip {
+            get {
+                return ResourceManager.GetString("PnCNoScalingTip", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Laser (hold to aim).
+        /// </summary>
+        internal static string PnCAim {
+            get {
+                return ResourceManager.GetString("PnCAim", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Hold down to turn on the laser at low power (3%) and aim at the center of the printed mark. Release to turn it off. Wear safety glasses..
+        /// </summary>
+        internal static string PnCAimTip {
+            get {
+                return ResourceManager.GetString("PnCAimTip", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Mark #{0}   (X {1:0.##}  Y {2:0.##}).
+        /// </summary>
+        internal static string PnCMarkItem {
+            get {
+                return ResourceManager.GetString("PnCMarkItem", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to {0} registration marks found (color {1}). Select a mark, jog the head on its printed center and press Set..
+        /// </summary>
+        internal static string PnCMarksFound {
+            get {
+                return ResourceManager.GetString("PnCMarksFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No registration marks found in the loaded job. Draw at least two marks in the SVG with color {0} and import it again..
+        /// </summary>
+        internal static string PnCNoMarks {
+            get {
+                return ResourceManager.GetString("PnCNoMarks", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Only one registration mark found (color {0}). At least two are needed..
+        /// </summary>
+        internal static string PnCOneMark {
+            get {
+                return ResourceManager.GetString("PnCOneMark", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Mark #{0} is {1:0.#} x {2:0.#} mm: several marks may have been merged, or other elements use the reserved color..
+        /// </summary>
+        internal static string PnCOversized {
+            get {
+                return ResourceManager.GetString("PnCOversized", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Not set.
+        /// </summary>
+        internal static string PnCTargetNotSet {
+            get {
+                return ResourceManager.GetString("PnCTargetNotSet", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Mark #{0} set at X {1:0.###}  Y {2:0.###}.
+        /// </summary>
+        internal static string PnCTargetSet {
+            get {
+                return ResourceManager.GetString("PnCTargetSet", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Print and Cut is not enabled..
+        /// </summary>
+        internal static string PnCStatusDisabled {
+            get {
+                return ResourceManager.GetString("PnCStatusDisabled", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Print and Cut enabled ({0}): rotation {1:0.###} deg, scale {2:0.#####}, second target error {3:0.##} mm..
+        /// </summary>
+        internal static string PnCStatusAligned {
+            get {
+                return ResourceManager.GetString("PnCStatusAligned", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to scaled.
+        /// </summary>
+        internal static string PnCModeScaled {
+            get {
+                return ResourceManager.GetString("PnCModeScaled", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to no scaling.
+        /// </summary>
+        internal static string PnCModeNoScaling {
+            get {
+                return ResourceManager.GetString("PnCModeNoScaling", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The machine must be connected and idle..
+        /// </summary>
+        internal static string PnCErrorNotIdle {
+            get {
+                return ResourceManager.GetString("PnCErrorNotIdle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Mark #{0} is not in the loaded job. Import an SVG with at least two registration marks..
+        /// </summary>
+        internal static string PnCErrorNoMark {
+            get {
+                return ResourceManager.GetString("PnCErrorNoMark", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Set the first and second target positions before aligning..
+        /// </summary>
+        internal static string PnCErrorTargetsMissing {
+            get {
+                return ResourceManager.GetString("PnCErrorTargetsMissing", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The first and second target must use two different marks..
+        /// </summary>
+        internal static string PnCErrorSameMark {
+            get {
+                return ResourceManager.GetString("PnCErrorSameMark", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The two targets are too close to each other. Use two marks far apart..
+        /// </summary>
+        internal static string PnCErrorTooClose {
+            get {
+                return ResourceManager.GetString("PnCErrorTooClose", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The distance between the targets measured on the machine differs by {0:0.0}% from the design. Check that each target was set on the right mark and in the right order.  Enable the alignment anyway?.
+        /// </summary>
+        internal static string PnCWarnScale {
+            get {
+                return ResourceManager.GetString("PnCWarnScale", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to {0}  Use this mark anyway?.
+        /// </summary>
+        internal static string PnCWarnOversized {
+            get {
+                return ResourceManager.GetString("PnCWarnOversized", resourceCulture);
+            }
+        }
     }
 }
