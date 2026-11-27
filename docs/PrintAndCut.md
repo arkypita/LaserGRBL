@@ -34,6 +34,8 @@ LightBurn tutorials are a good complement to this page.
 18. [Known limitations](#18-known-limitations)
 19. [Quick checklist](#19-quick-checklist)
 
+Example files to try it without preparing a design: [`docs/examples/print-and-cut`](examples/print-and-cut/README.md).
+
 ---
 
 ## 1. Concepts
