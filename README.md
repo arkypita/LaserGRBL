@@ -27,6 +27,7 @@ Do you like LaserGRBL? Support development with your donation!
 - Jogging (for any Grbl version)
 - Feed overrides (for Grbl > v1.1) with easy-to-use interface
 - Support for [WiFi connection via ESP8266 WebSocket](http://lasergrbl.com/en/usage/wifi-with-esp8266/)
+- [Print and Cut](docs/PrintAndCut.md): align a cut or engraving with a printed design using two registration marks (as in LightBurn)
 
 ### Usage
 

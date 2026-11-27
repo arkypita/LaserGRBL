@@ -868,6 +868,19 @@
     <Compile Include="CSV\FormattedMessage.cs" />
     <Compile Include="GrblCommand.cs" />
     <Compile Include="GrblFile.cs" />
+    <Compile Include="PrintAndCut\AlignedJobCache.cs" />
+    <Compile Include="PrintAndCut\AlignmentTransform.cs" />
+    <Compile Include="PrintAndCut\GCodeTransformer.cs" />
+    <Compile Include="PrintAndCut\MarkDetector.cs" />
+    <Compile Include="PrintAndCut\PrintAndCutActions.cs" />
+    <Compile Include="PrintAndCut\PrintAndCutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintAndCut\PrintAndCutForm.Designer.cs">
+      <DependentUpon>PrintAndCutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintAndCut\PrintAndCutManager.cs" />
+    <Compile Include="PrintAndCut\PrintAndCutSettings.cs" />
     <Compile Include="HotkeyManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>

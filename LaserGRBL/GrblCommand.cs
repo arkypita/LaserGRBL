@@ -266,6 +266,18 @@ namespace LaserGRBL
 		public object Clone()
 		{ return MemberwiseClone(); }
 
+		/// <summary>
+		/// Print and Cut: a copy that sends another line but shares result and preview display list with
+		/// this command, so the progress of the aligned job is shown on the original drawing.
+		/// </summary>
+		internal GrblCommand CloneWithLine(string line)
+		{
+			GrblCommand rv = (GrblCommand)MemberwiseClone();
+			rv.mLine = line;
+			rv.mHelper = null;
+			return rv;
+		}
+
 		public string Command
 		{ get { return mLine; } }
 

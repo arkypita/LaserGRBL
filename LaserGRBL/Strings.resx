@@ -489,4 +489,156 @@ Do you want to restart LaserGRBL and switch to software rendering?</value>
   <data name="TipsZoomOut" xml:space="preserve">
     <value>Zoom Out  (-10%)</value>
   </data>
+  <data name="PnCTitle" xml:space="preserve">
+    <value>Print and Cut</value>
+  </data>
+  <data name="PnCErrorInches" xml:space="preserve">
+    <value>Print and Cut is enabled but this job uses inches (G20) and cannot be aligned.
+Nothing will be sent. Use a job in millimeters or reset Print and Cut.</value>
+  </data>
+  <data name="PnCWarnUnalignedCommands" xml:space="preserve">
+    <value>Print and Cut is enabled, but the following commands of the job are sent without alignment:
+
+{0}
+Send the job anyway?</value>
+  </data>
+  <data name="PnCIssueMachineCoordinates" xml:space="preserve">
+    <value>G53 moves in machine coordinates</value>
+  </data>
+  <data name="PnCIssueCoordinateOffset" xml:space="preserve">
+    <value>G92 / G10 coordinate system changes</value>
+  </data>
+  <data name="PnCIssueReturnToStoredPosition" xml:space="preserve">
+    <value>G28 / G30 moves to a stored position</value>
+  </data>
+  <data name="PnCIssueProbe" xml:space="preserve">
+    <value>G38 probing moves</value>
+  </data>
+  <data name="PnCIssueUnknownPosition" xml:space="preserve">
+    <value>moves with an unknown start position</value>
+  </data>
+  <data name="PnCIssueInchUnits" xml:space="preserve">
+    <value>job in inches (G20)</value>
+  </data>
+  <data name="PnCMenuStartWizard" xml:space="preserve">
+    <value>Start Wizard</value>
+  </data>
+  <data name="PnCMenuSetFirst" xml:space="preserve">
+    <value>Set First Target Position</value>
+  </data>
+  <data name="PnCMenuSetSecond" xml:space="preserve">
+    <value>Set Second Target Position</value>
+  </data>
+  <data name="PnCMenuAlign" xml:space="preserve">
+    <value>Align Output to Targets</value>
+  </data>
+  <data name="PnCMenuAlignNoScaling" xml:space="preserve">
+    <value>Align Output to Targets (no scaling)</value>
+  </data>
+  <data name="PnCMenuReset" xml:space="preserve">
+    <value>Reset Print and Cut</value>
+  </data>
+  <data name="PnCStatusEnabled" xml:space="preserve">
+    <value>Enabled Mode(s): Print and Cut</value>
+  </data>
+  <data name="PnCWizardTitle" xml:space="preserve">
+    <value>Print and Cut Wizard</value>
+  </data>
+  <data name="PnCFirstTarget" xml:space="preserve">
+    <value>First Target Position</value>
+  </data>
+  <data name="PnCSecondTarget" xml:space="preserve">
+    <value>Second Target Position</value>
+  </data>
+  <data name="PnCSet" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="PnCSetTip" xml:space="preserve">
+    <value>Store the current head position as the position of the selected mark</value>
+  </data>
+  <data name="PnCJog" xml:space="preserve">
+    <value>Jog</value>
+  </data>
+  <data name="PnCJogTip" xml:space="preserve">
+    <value>Jog To Selection: move the head (laser off) to the expected position of the selected mark</value>
+  </data>
+  <data name="PnCScaled" xml:space="preserve">
+    <value>Scaled</value>
+  </data>
+  <data name="PnCScaledTip" xml:space="preserve">
+    <value>Align Output to Targets: rotate, move and scale the job to the targets</value>
+  </data>
+  <data name="PnCNoScaling" xml:space="preserve">
+    <value>No Scaling</value>
+  </data>
+  <data name="PnCNoScalingTip" xml:space="preserve">
+    <value>Align Output to Targets (no scaling): rotate and move the job, keep its size</value>
+  </data>
+  <data name="PnCAim" xml:space="preserve">
+    <value>Laser (hold to aim)</value>
+  </data>
+  <data name="PnCAimTip" xml:space="preserve">
+    <value>Hold down to turn on the laser at low power (3%) and aim at the center of the printed mark.
+Release to turn it off. Wear safety glasses.</value>
+  </data>
+  <data name="PnCMarkItem" xml:space="preserve">
+    <value>Mark #{0}   (X {1:0.##}  Y {2:0.##})</value>
+  </data>
+  <data name="PnCMarksFound" xml:space="preserve">
+    <value>{0} registration marks found (color {1}). Select a mark, jog the head on its printed center and press Set.</value>
+  </data>
+  <data name="PnCNoMarks" xml:space="preserve">
+    <value>No registration marks found in the loaded job.
+Draw at least two marks in the SVG with color {0} and import it again.</value>
+  </data>
+  <data name="PnCOneMark" xml:space="preserve">
+    <value>Only one registration mark found (color {0}). At least two are needed.</value>
+  </data>
+  <data name="PnCOversized" xml:space="preserve">
+    <value>Mark #{0} is {1:0.#} x {2:0.#} mm: several marks may have been merged, or other elements use the reserved color.</value>
+  </data>
+  <data name="PnCTargetNotSet" xml:space="preserve">
+    <value>Not set</value>
+  </data>
+  <data name="PnCTargetSet" xml:space="preserve">
+    <value>Mark #{0} set at X {1:0.###}  Y {2:0.###}</value>
+  </data>
+  <data name="PnCStatusDisabled" xml:space="preserve">
+    <value>Print and Cut is not enabled.</value>
+  </data>
+  <data name="PnCStatusAligned" xml:space="preserve">
+    <value>Print and Cut enabled ({0}): rotation {1:0.###} deg, scale {2:0.#####}, second target error {3:0.##} mm.</value>
+  </data>
+  <data name="PnCModeScaled" xml:space="preserve">
+    <value>scaled</value>
+  </data>
+  <data name="PnCModeNoScaling" xml:space="preserve">
+    <value>no scaling</value>
+  </data>
+  <data name="PnCErrorNotIdle" xml:space="preserve">
+    <value>The machine must be connected and idle.</value>
+  </data>
+  <data name="PnCErrorNoMark" xml:space="preserve">
+    <value>Mark #{0} is not in the loaded job. Import an SVG with at least two registration marks.</value>
+  </data>
+  <data name="PnCErrorTargetsMissing" xml:space="preserve">
+    <value>Set the first and second target positions before aligning.</value>
+  </data>
+  <data name="PnCErrorSameMark" xml:space="preserve">
+    <value>The first and second target must use two different marks.</value>
+  </data>
+  <data name="PnCErrorTooClose" xml:space="preserve">
+    <value>The two targets are too close to each other. Use two marks far apart.</value>
+  </data>
+  <data name="PnCWarnScale" xml:space="preserve">
+    <value>The distance between the targets measured on the machine differs by {0:0.0}% from the design.
+Check that each target was set on the right mark and in the right order.
+
+Enable the alignment anyway?</value>
+  </data>
+  <data name="PnCWarnOversized" xml:space="preserve">
+    <value>{0}
+
+Use this mark anyway?</value>
+  </data>
 </root>

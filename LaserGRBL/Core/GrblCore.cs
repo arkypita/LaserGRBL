@@ -522,7 +522,15 @@ namespace LaserGRBL
 					}
 
 					if (newStatus == MacStatus.Disconnected)
+					{
 						SetFS(0, 0);
+						if (PrintAndCutManager.HasFirstTarget || PrintAndCutManager.HasSecondTarget || PrintAndCutManager.IsEnabled)
+						{
+							// the targets are machine positions: connecting resets most boards, so they are stale from now on
+							PrintAndCutManager.Reset();
+							Logger.LogMessage("PrintAndCut", "Reset: machine disconnected");
+						}
+					}
 				}
 			}
 		}
@@ -632,6 +640,7 @@ namespace LaserGRBL
 
 		void RiseOnFileLoaded(long elapsed, string filename)
 		{
+			mAlignedJob.Invalidate();
 			mTP.Reset(true);
 
 			if (OnFileLoaded != null)
@@ -640,6 +649,84 @@ namespace LaserGRBL
 
 		public GrblFile LoadedFile
 		{ get { return file; } }
+
+		#region Print and Cut
+
+		private readonly PrintAndCut.AlignedJobCache mAlignedJob = new PrintAndCut.AlignedJobCache();
+
+		/// <summary>Print and Cut state: targets and alignment applied to every job sent, framed or saved.</summary>
+		public PrintAndCut.PrintAndCutManager PrintAndCutManager { get; } = new PrintAndCut.PrintAndCutManager();
+
+		/// <summary>Current work coordinate offset (WCO = MPos - WPos) in the XY plane.</summary>
+		public PrintAndCut.Vec2 PrintAndCutWorkOffset
+		{ get { GPoint wco = mWCO; return new PrintAndCut.Vec2(wco.X, wco.Y); } }
+
+		/// <summary>Aligned lines of the loaded job, or null if Print and Cut is not enabled.</summary>
+		/// <param name="blocked">True if Print and Cut is enabled but the job cannot be aligned: nothing must be sent.</param>
+		private IList<string> GetAlignedLines(out bool blocked)
+		{
+			PrintAndCut.GCodeTransformResult result = mAlignedJob.GetLines(file, PrintAndCutManager, PrintAndCutWorkOffset);
+			blocked = result != null && result.HasBlockingIssues;
+			return result == null || blocked ? null : result.Lines;
+		}
+
+		/// <summary>Copy of the command at <paramref name="index"/> to enqueue, aligned when <paramref name="aligned"/> is not null.</summary>
+		private GrblCommand JobCommand(int index, IList<string> aligned)
+		{
+			return aligned == null ? (GrblCommand)file[index].Clone() : file[index].CloneWithLine(aligned[index]);
+		}
+
+		/// <summary>The job as it is output (aligned when Print and Cut is enabled), for range and saving; null if it cannot be aligned.</summary>
+		private GrblFile OutputFile
+		{
+			get { return PrintAndCutManager.IsEnabled ? mAlignedJob.GetAnalyzedCopy(file, PrintAndCutManager, PrintAndCutWorkOffset) : file; }
+		}
+
+		/// <summary>
+		/// True when nothing is queued, waiting for a response or waiting to be jogged, so the last
+		/// reported position is where the head stopped (Print and Cut reads it as a target).
+		/// </summary>
+		internal bool MotionSettled
+		{ get { return QueueEmpty && !HasPendingCommands() && !ContinuousJog.IsPending; } }
+
+		/// <summary>The job as the preview draws it: aligned when Print and Cut is enabled and the job can be aligned.</summary>
+		internal GrblFile PreviewFile
+		{ get { return OutputFile ?? file; } }
+
+		/// <summary>The alignment the preview applies (null when the preview shows the job as loaded), to draw the marks where the job is now.</summary>
+		internal PrintAndCut.AlignmentTransform PreviewTransform
+		{ get { return OutputFile == null ? null : PrintAndCutManager.GetTransform(PrintAndCutWorkOffset); } }
+
+		/// <summary>
+		/// Before sending the job: refuses a job that cannot be aligned and asks the user to confirm
+		/// when some commands are sent without alignment. True if the job can be sent.
+		/// </summary>
+		private bool ConfirmPrintAndCut(Form parent)
+		{
+			PrintAndCut.GCodeTransformResult result = mAlignedJob.GetLines(file, PrintAndCutManager, PrintAndCutWorkOffset);
+			if (result == null)
+				return true;
+
+			if (result.HasBlockingIssues)
+			{
+				MessageBox.Show(parent, Strings.PnCErrorInches, Strings.PnCTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+
+			if (result.Warnings.Count == 0)
+				return true;
+
+			System.Text.StringBuilder issues = new System.Text.StringBuilder();
+			foreach (PrintAndCut.GCodeTransformWarning w in result.Warnings)
+			{
+				string text = Strings.ResourceManager.GetString("PnCIssue" + w.Issue.ToString());
+				issues.AppendLine(string.Format("- {0} (#{1})", text ?? w.Issue.ToString(), w.LineIndex + 1));
+			}
+
+			return MessageBox.Show(parent, string.Format(Strings.PnCWarnUnalignedCommands, issues), Strings.PnCTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes;
+		}
+
+		#endregion
 
 		public void ReOpenFile()
 		{
@@ -851,7 +938,13 @@ namespace LaserGRBL
 				}
 
 				if (filename != null)
-					file.SaveGCODE(filename, header, footer, between, cycles, useLFLineEndings, this);
+				{
+					GrblFile output = OutputFile; // aligned when Print and Cut is enabled
+					if (output == null)
+						MessageBox.Show(parent, Strings.PnCErrorInches, Strings.PnCTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+					else
+						output.SaveGCODE(filename, header, footer, between, cycles, useLFLineEndings, this);
+				}
 			}
 		}
 
@@ -1286,7 +1379,7 @@ namespace LaserGRBL
 		{
 			try
 			{
-				if (CanSendFile)
+				if (CanSendFile && ConfirmPrintAndCut(parent))
 				{
 					mDoingSend = true;
 
@@ -1327,7 +1420,7 @@ namespace LaserGRBL
 
 		public void RunProgramFromPosition(Form parent)
 		{
-			if (CanSendFile)
+			if (CanSendFile && ConfirmPrintAndCut(parent))
 			{
 				bool homing = false;
 				int position = LaserGRBL.RunFromPositionForm.CreateAndShowDialog(parent, LoadedFile.Count, Configuration.HomingEnabled, out homing);
@@ -1355,6 +1448,14 @@ namespace LaserGRBL
 			if (!pass && !SafetyCountdown.CanGo())
 				return;
 
+			bool blocked;
+			IList<string> aligned = GetAlignedLines(out blocked);
+			if (blocked)
+			{
+				Logger.LogMessage("EnqueueProgram", "Print and Cut enabled but the job cannot be aligned: nothing sent");
+				return;
+			}
+
 			lock (this)
 			{
 				ClearQueue(true);
@@ -1375,8 +1476,8 @@ namespace LaserGRBL
 
 
 				Logger.LogMessage("EnqueueProgram", "Push File, {0} lines", file.Count);
-				foreach (GrblCommand cmd in file)
-					mQueuePtr.Enqueue(cmd.Clone() as GrblCommand);
+				for (int i = 0; i < file.Count; i++)
+					mQueuePtr.Enqueue(JobCommand(i, aligned));
 
 				mTP.JobStart(LoadedFile, mQueuePtr, first);
 				Logger.LogMessage("EnqueueProgram", "Running program, {0} lines", file.Count);
@@ -1406,6 +1507,14 @@ namespace LaserGRBL
 			if (!SafetyCountdown.CanGo())
 				return;
 
+			bool blocked;
+			IList<string> aligned = GetAlignedLines(out blocked);
+			if (blocked)
+			{
+				Logger.LogMessage("ResumeProgram", "Print and Cut enabled but the job cannot be aligned: nothing sent");
+				return;
+			}
+
 			lock (this)
 			{
 
@@ -1428,7 +1537,7 @@ namespace LaserGRBL
 				}
 
 				for (int i = 0; i < position && i < file.Count; i++) //analizza fino alla posizione
-					spb.AnalyzeCommand(file[i], false);
+					spb.AnalyzeCommand(aligned == null ? file[i] : JobCommand(i, aligned), false);
 
 				mQueuePtr.Enqueue(new GrblCommand("G90")); //absolute coordinate
 				mQueuePtr.Enqueue(new GrblCommand(string.Format("M5 G0 {0} {1} {2} {3} {4}", spb.X, spb.Y, spb.Z, spb.F, spb.S))); //fast go to the computed position with laser off and set speed and power
@@ -1440,7 +1549,7 @@ namespace LaserGRBL
 				{
 					if (spb != null) //check the very first movement command and ensure modal MotionMode is settled
 					{
-						GrblCommand cmd = file[i].Clone() as GrblCommand;
+						GrblCommand cmd = JobCommand(i, aligned);
 						cmd.BuildHelper();
 						if (cmd.IsMovement && cmd.G == null)
 							mQueuePtr.Enqueue(new GrblCommand(spb.MotionMode, cmd));
@@ -1451,7 +1560,7 @@ namespace LaserGRBL
 					}
 					else
 					{
-						mQueuePtr.Enqueue(file[i].Clone() as GrblCommand);
+						mQueuePtr.Enqueue(JobCommand(i, aligned));
 					}
 				}
 			}
@@ -1943,6 +2052,12 @@ namespace LaserGRBL
 					}
 				}
 				return rv;
+			}
+
+			/// <summary>True if a jog target was requested and has not been sent to the machine yet.</summary>
+			public static bool IsPending
+			{
+				get { lock (mCurrentTargetLock) { return mCurr != null && mCurr != mPrev; } }
 			}
 
 			public static void Abort() => SetJogTarget(new ContinuousJog(JogDirection.Abort, 0, PointF.Empty));
@@ -3127,7 +3242,17 @@ namespace LaserGRBL
 			{
 				if (mDataPath == null)
 				{
-					mDataPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LaserGRBL");
+					// 1) LASERGRBL_DATA_PATH (keeps the unit tests away from the user's real settings)
+					// 2) a "Datos" folder next to the executable (portable copy, e.g. a build with its own settings)
+					// 3) %AppData%\LaserGRBL, as always
+					string custom = Environment.GetEnvironmentVariable("LASERGRBL_DATA_PATH");
+					if (string.IsNullOrEmpty(custom))
+					{
+						string portable = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Datos");
+						if (System.IO.Directory.Exists(portable))
+							custom = portable;
+					}
+					mDataPath = !string.IsNullOrEmpty(custom) ? custom : System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LaserGRBL");
 					if (!System.IO.Directory.Exists(mDataPath))
 						System.IO.Directory.CreateDirectory(mDataPath);
 				}
@@ -3312,10 +3437,11 @@ namespace LaserGRBL
 		{
 			try
 			{
-				decimal left = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.X.Min : 0;
-				decimal right = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.X.Max : 0;
-				decimal top = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.Y.Max : 0;
-				decimal bottom = LoadedFile != null && LoadedFile.Range.DrawingRange.ValidRange ? LoadedFile.Range.DrawingRange.Y.Min : 0;
+				GrblFile rangeFile = LoadedFile != null && LoadedFile.Count > 0 ? (OutputFile ?? LoadedFile) : LoadedFile; // framing follows Print and Cut alignment
+				decimal left = rangeFile != null && rangeFile.Range.DrawingRange.ValidRange ? rangeFile.Range.DrawingRange.X.Min : 0;
+				decimal right = rangeFile != null && rangeFile.Range.DrawingRange.ValidRange ? rangeFile.Range.DrawingRange.X.Max : 0;
+				decimal top = rangeFile != null && rangeFile.Range.DrawingRange.ValidRange ? rangeFile.Range.DrawingRange.Y.Max : 0;
+				decimal bottom = rangeFile != null && rangeFile.Range.DrawingRange.ValidRange ? rangeFile.Range.DrawingRange.Y.Min : 0;
 				decimal width = right - left;
 				decimal height = top - bottom;
 				decimal jogstep = JogStep;

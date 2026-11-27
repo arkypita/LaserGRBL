@@ -118,6 +118,8 @@ namespace LaserGRBL
 			ConnectionForm.SetCore(Core);
 			JogForm.SetCore(Core);
 
+			BuildPrintAndCutUI();
+
 			GitHub.NewVersion += GitHub_NewVersion;
 
 			AssignIcons();
@@ -577,11 +579,75 @@ namespace LaserGRBL
 			MnOrtur.Visible = Core.IsOrturBoard;
 			MnLonger.Visible = Core.IsLongerBoard;
 
+			if (TTPrintAndCut != null && TTPrintAndCut.Visible != Core.PrintAndCutManager.IsEnabled)
+				TTPrintAndCut.Visible = Core.PrintAndCutManager.IsEnabled;
+
 			string NewTTLLText = $"{LaserLifeHandler.GetCurrentTime().TotalHours.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)}h";
 			if (TTlaserLife.Text != NewTTLLText) TTlaserLife.Text = NewTTLLText; //prevent tooltip flickering
 
 			ResumeLayout();
 		}
+
+		#region Print and Cut
+
+		private ToolStripMenuItem MnPrintAndCut;
+		private ToolStripMenuItem MnPnCWizard, MnPnCSetFirst, MnPnCSetSecond, MnPnCAlign, MnPnCAlignNoScaling, MnPnCReset;
+		private ToolStripStatusLabel TTPrintAndCut;
+
+		/// <summary>
+		/// Tools > Print and Cut submenu (LightBurn: Laser Tools > Print and Cut) and the
+		/// "Enabled Mode(s): Print and Cut" indicator in the status bar. Built in code to leave
+		/// the designer file and its translations untouched.
+		/// </summary>
+		private void BuildPrintAndCutUI()
+		{
+			MnPnCWizard = new ToolStripMenuItem(Strings.PnCMenuStartWizard, null, (s, e) => PrintAndCut.PrintAndCutActions.ShowWizard(this, Core));
+			MnPnCSetFirst = new ToolStripMenuItem(Strings.PnCMenuSetFirst, null, (s, e) => PrintAndCut.PrintAndCutActions.SetTarget(this, Core, true));
+			MnPnCSetSecond = new ToolStripMenuItem(Strings.PnCMenuSetSecond, null, (s, e) => PrintAndCut.PrintAndCutActions.SetTarget(this, Core, false));
+			MnPnCAlign = new ToolStripMenuItem(Strings.PnCMenuAlign, null, (s, e) => PrintAndCut.PrintAndCutActions.Align(this, Core, true));
+			MnPnCAlignNoScaling = new ToolStripMenuItem(Strings.PnCMenuAlignNoScaling, null, (s, e) => PrintAndCut.PrintAndCutActions.Align(this, Core, false));
+			MnPnCReset = new ToolStripMenuItem(Strings.PnCMenuReset, null, (s, e) => PrintAndCut.PrintAndCutActions.Reset(Core));
+
+			MnPrintAndCut = new ToolStripMenuItem(Strings.PnCTitle);
+			MnPrintAndCut.DropDownItems.AddRange(new ToolStripItem[] { MnPnCWizard, new ToolStripSeparator(), MnPnCSetFirst, MnPnCSetSecond, MnPnCAlign, MnPnCAlignNoScaling, new ToolStripSeparator(), MnPnCReset });
+			MnPrintAndCut.DropDownOpening += MnPrintAndCut_DropDownOpening;
+
+			toolsToolStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
+			toolsToolStripMenuItem.DropDownItems.Add(MnPrintAndCut);
+
+			TTPrintAndCut = new ToolStripStatusLabel(Strings.PnCStatusEnabled);
+			TTPrintAndCut.BackColor = Color.LightGreen;
+			TTPrintAndCut.ForeColor = Color.Black;
+			TTPrintAndCut.Visible = false;
+			TTPrintAndCut.IsLink = false;
+			TTPrintAndCut.ToolTipText = Strings.PnCMenuStartWizard;
+			TTPrintAndCut.Click += (s, e) => PrintAndCut.PrintAndCutActions.ShowWizard(this, Core);
+			StatusBar.Items.Add(TTPrintAndCut);
+
+			Core.PrintAndCutManager.StateChanged += (s, e) => { if (IsHandleCreated) BeginInvoke(new Action(TimerUpdate)); };
+		}
+
+		private void MnPrintAndCut_DropDownOpening(object sender, EventArgs e)
+		{
+			PrintAndCut.PrintAndCutManager pnc = Core.PrintAndCutManager;
+			bool ready = PrintAndCut.PrintAndCutActions.MachineReady(Core);
+
+			MnPnCSetFirst.Enabled = MnPnCSetSecond.Enabled = ready;
+			MnPnCAlign.Enabled = MnPnCAlignNoScaling.Enabled = pnc.CanAlign;
+			MnPnCReset.Enabled = pnc.IsEnabled || pnc.HasFirstTarget || pnc.HasSecondTarget;
+			MnPnCAlign.Checked = pnc.IsEnabled && pnc.AllowScaling;
+			MnPnCAlignNoScaling.Checked = pnc.IsEnabled && !pnc.AllowScaling;
+
+			// show the shortcuts actually configured (they can be changed in the hotkey manager)
+			MnPnCWizard.ShortcutKeyDisplayString = Core.GetHotKeyString(HotKeysManager.HotKey.Actions.PrintAndCutStartWizard);
+			MnPnCSetFirst.ShortcutKeyDisplayString = Core.GetHotKeyString(HotKeysManager.HotKey.Actions.PrintAndCutSetFirstTarget);
+			MnPnCSetSecond.ShortcutKeyDisplayString = Core.GetHotKeyString(HotKeysManager.HotKey.Actions.PrintAndCutSetSecondTarget);
+			MnPnCAlign.ShortcutKeyDisplayString = Core.GetHotKeyString(HotKeysManager.HotKey.Actions.PrintAndCutAlign);
+			MnPnCAlignNoScaling.ShortcutKeyDisplayString = Core.GetHotKeyString(HotKeysManager.HotKey.Actions.PrintAndCutAlignNoScaling);
+			MnPnCReset.ShortcutKeyDisplayString = Core.GetHotKeyString(HotKeysManager.HotKey.Actions.PrintAndCutReset);
+		}
+
+		#endregion
 
 		private bool IsConfiguredForWiFi()
 		{

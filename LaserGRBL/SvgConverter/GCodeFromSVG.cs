@@ -67,6 +67,24 @@ namespace LaserGRBL.SvgConverter
 		private Matrix oldMatrixElement = new Matrix();     // store finally applied matrix
 
 		private ColorFilter loadColorFilter = ColorFilter.All;
+
+		/// <summary>
+		/// Print and Cut: elements drawn with this color (stroke or fill) are registration marks.
+		/// They are never converted to G-code; their bounding boxes are collected in <see cref="MarkStrokes"/>.
+		/// Color.Empty disables the feature.
+		/// </summary>
+		public Color ReservedColor = Color.Empty;
+
+		/// <summary>Maximum difference per RGB channel to consider a color equal to <see cref="ReservedColor"/>.</summary>
+		public const int ReservedColorTolerance = 24;
+
+		/// <summary>Bounding box (mm, job coordinates) of each element drawn with <see cref="ReservedColor"/>.</summary>
+		public readonly List<PrintAndCut.Bounds> MarkStrokes = new List<PrintAndCut.Bounds>();
+
+		private bool capturingMark = false;     // true while the current element is a registration mark
+		private List<PrintAndCut.Vec2> markPoints = new List<PrintAndCut.Vec2>();
+		private Point markLast;                  // last captured point, start of the next arc
+
 		private const int FilterColorLimitHLow = 20;
 		private const int FilterColorLimitHigh = 127;
 		private const string SvgStrokeAttribute = "stroke";
@@ -127,6 +145,8 @@ namespace LaserGRBL.SvgConverter
 		private void startConvert(XElement svgCode)
 		{
 			countSubPath = 0;
+			MarkStrokes.Clear();
+			capturingMark = false;
 			startFirstElement = true;
 			gcodeScale = 1;
 			svgWidthPx = 0; svgHeightPx = 0;
@@ -468,8 +488,12 @@ namespace LaserGRBL.SvgConverter
 			{
 				foreach (var pathElement in svgCode.Elements(nspace + form))
 				{
-					if (filterByColor(pathElement, loadColorFilter))
+					bool isMark = isReservedColor(pathElement);
+					if (isMark && (form == "text" || form == "image"))
+						continue; // no geometry to measure
+					if (isMark || filterByColor(pathElement, loadColorFilter))
 					{
+						beginMark(isMark);
 						string myColor = getColor(pathElement);
 
 						if (svgComments)
@@ -604,6 +628,7 @@ namespace LaserGRBL.SvgConverter
 						{ if (svgComments) gcodeString.Append("( ++++++ Unknown Shape: " + form + " )"); }
 
 						matrixElement = oldMatrixElement;
+						endMark();
 					}
 				}
 			}
@@ -618,8 +643,10 @@ namespace LaserGRBL.SvgConverter
 		{
 			foreach (var pathElement in svgCode.Elements(nspace + "path"))
 			{
-				if (filterByColor(pathElement, loadColorFilter))
+				bool isMark = isReservedColor(pathElement);
+				if (isMark || filterByColor(pathElement, loadColorFilter))
 				{
+					beginMark(isMark);
 					offsetX = 0;// (float)matrixElement.OffsetX;
 					offsetY = 0;// (float)matrixElement.OffsetY;
 					currentX = offsetX; currentY = offsetX;
@@ -663,9 +690,101 @@ namespace LaserGRBL.SvgConverter
 					gcodePenUp("End path");
 
 					matrixElement = oldMatrixElement;
+					endMark();
 				}
 			}
 			return;
+		}
+
+		/// <summary>
+		/// Print and Cut: true if the element (or, when it has no color, its closest colored ancestor)
+		/// is drawn with <see cref="ReservedColor"/>, either as stroke or as fill.
+		/// </summary>
+		private bool isReservedColor(XElement element)
+		{
+			if (ReservedColor.IsEmpty) return false;
+
+			for (XElement e = element; e != null; e = e.Parent)
+			{
+				string stroke, fill;
+				readColors(e, out stroke, out fill);
+				if (stroke == null && fill == null)
+					continue; // inherit from the parent group
+
+				return sameColor(stroke, ReservedColor) || sameColor(fill, ReservedColor);
+			}
+			return false;
+		}
+
+		private void readColors(XElement e, out string stroke, out string fill)
+		{
+			stroke = null;
+			fill = null;
+			try
+			{
+				Dictionary<string, string> style = parseStyle(e);
+				if (style != null)
+				{
+					style.TryGetValue(SvgStrokeAttribute, out stroke);
+					style.TryGetValue(SvgFillAttribute, out fill);
+				}
+			}
+			catch { } // malformed style attribute: fall back to presentation attributes
+
+			Dictionary<string, string> attributes = parseColorAttributes(e);
+			if (stroke == null) attributes.TryGetValue(SvgStrokeAttribute, out stroke);
+			if (fill == null) attributes.TryGetValue(SvgFillAttribute, out fill);
+		}
+
+		private static bool sameColor(string svgColor, Color reference)
+		{
+			if (string.IsNullOrEmpty(svgColor)) return false;
+
+			Color c;
+			try { c = ColorTranslator.FromHtml(svgColor.Trim()); }
+			catch { return false; } // rgb(), url(#gradient), currentColor... are not supported
+
+			return !c.IsEmpty
+				&& Math.Abs(c.R - reference.R) <= ReservedColorTolerance
+				&& Math.Abs(c.G - reference.G) <= ReservedColorTolerance
+				&& Math.Abs(c.B - reference.B) <= ReservedColorTolerance;
+		}
+
+		private void beginMark(bool isMark)
+		{
+			capturingMark = isMark;
+			markPoints.Clear();
+		}
+
+		private void endMark()
+		{
+			if (capturingMark && markPoints.Count > 0)
+				MarkStrokes.Add(PrintAndCut.Bounds.FromPoints(markPoints));
+			capturingMark = false;
+			markPoints.Clear();
+		}
+
+		private void captureMarkPoint(Point p)
+		{
+			markPoints.Add(new PrintAndCut.Vec2(p.X, p.Y));
+			markLast = p;
+		}
+
+		/// <summary>
+		/// Captures an arc of a registration mark. Only full circles extend beyond their end points
+		/// (partial arcs come from rounded rectangle corners, which stay inside the rectangle).
+		/// </summary>
+		private void captureMarkArc(Point end, Point ij)
+		{
+			Point start = markLast;
+			if (Math.Abs(start.X - end.X) < 0.0001 && Math.Abs(start.Y - end.Y) < 0.0001)
+			{
+				double cx = start.X + ij.X, cy = start.Y + ij.Y;
+				double r = Math.Sqrt(ij.X * ij.X + ij.Y * ij.Y);
+				markPoints.Add(new PrintAndCut.Vec2(cx - r, cy - r));
+				markPoints.Add(new PrintAndCut.Vec2(cx + r, cy + r));
+			}
+			captureMarkPoint(end);
 		}
 
 		private bool filterByColor(XElement pathElement, ColorFilter filter)
@@ -1255,6 +1374,7 @@ namespace LaserGRBL.SvgConverter
 		private void gcodeStartPath(float x, float y, string cmt)
 		{
 			Point coord = translateXY(x, y);
+			if (capturingMark) { captureMarkPoint(coord); return; } // never write marks (nor touch the static gcode state)
 			lastGCX = coord.X; lastGCY = coord.Y;
 			lastSetGCX = coord.X; lastSetGCY = coord.Y;
 			gcodePenUp(cmt);
@@ -1268,6 +1388,7 @@ namespace LaserGRBL.SvgConverter
 		/// </summary>
 		private void gcodeStopPath(string cmt)
 		{
+			if (capturingMark) return;
 			if (gcodeReduce)
 			{
 				if ((lastSetGCX != lastGCX) || (lastSetGCY != lastGCY)) // restore last skipped point for accurat G2/G3 use
@@ -1299,6 +1420,7 @@ namespace LaserGRBL.SvgConverter
 		private void gcodeMoveTo(Point orig, string cmt)
 		{
 			Point coord = translateXY(orig);
+			if (capturingMark) { captureMarkPoint(coord); return; }
 			rejectPoint = false;
 			gcodePenDown(cmt);
 			if (gcodeReduce && isReduceOk)
@@ -1327,6 +1449,7 @@ namespace LaserGRBL.SvgConverter
 		{
 			Point coordxy = translateXY(x, y);
 			Point coordij = translateIJ(i, j);
+			if (capturingMark) { captureMarkArc(coordxy, coordij); return; }
 			gcodePenDown(cmt);
 			if (gcodeReduce && isReduceOk)      // restore last skipped point for accurat G2/G3 use
 			{
@@ -1341,12 +1464,14 @@ namespace LaserGRBL.SvgConverter
 		/// </summary>
 		private void gcodePenUp(string cmt)
 		{
+			if (capturingMark) return;
 			if (penIsDown)
 				gcode.PenUp(gcodeString, cmt);
 			penIsDown = false;
 		}
 		private void gcodePenDown(string cmt)
 		{
+			if (capturingMark) return;
 			if (!penIsDown)
 				gcode.PenDown(gcodeString, cmt);
 			penIsDown = true;
