@@ -146,7 +146,11 @@ internal static class Program
         Check(PowerLevels(lines.Take(pause)).SequenceEqual(new decimal[] { 5, 5 }), "each frame pass uses S5");
         Check(lines.Take(pause).Count(line => IsCommand(line, "G1")) == 8, "two frame laps");
         Check(PowerLevels(lines.Skip(pause)).SequenceEqual(new decimal[] { 128 }), "work after pause");
-        Check(lines.Contains("M400"), "configured synchronization");
+        int[] powerChanges = Enumerable.Range(1, lines.Length - 2)
+            .Where(index => IsCommand(lines[index], "M106") ||
+                (lines[index] == "M107" && IsCommand(lines[index + 1], "M0")))
+            .ToArray();
+        Check(powerChanges.Length > 0 && powerChanges.All(index => lines[index - 1] == "M400"), "configured synchronization precedes a power transition");
         VerifyCv01Safety(lines, profile, true);
 
         Check(!Lines(ProfileExporter.Create(profile, new[] { layer }, 1000, true, false)).Contains("M0"), "pause can be disabled");
