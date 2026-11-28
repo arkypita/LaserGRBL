@@ -3127,7 +3127,12 @@ namespace LaserGRBL
 			{
 				if (mDataPath == null)
 				{
-					mDataPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LaserGRBL");
+#if DEVICE_PROFILE_EDITION
+					const string directoryName = "LaserGRBL Device Profiles";
+#else
+					const string directoryName = "LaserGRBL";
+#endif
+					mDataPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), directoryName);
 					if (!System.IO.Directory.Exists(mDataPath))
 						System.IO.Directory.CreateDirectory(mDataPath);
 				}

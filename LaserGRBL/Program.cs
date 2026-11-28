@@ -36,7 +36,9 @@ namespace LaserGRBL
 			FixTLS();
 
 			Logger.Start();
+#if !DEVICE_PROFILE_EDITION
 			GitHub.InitUpdate();
+#endif
 			UsageStats.LoadFile();
 			CustomButtons.LoadFile();
 			Application.EnableVisualStyles();
