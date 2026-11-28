@@ -327,7 +327,8 @@ internal static class Program
         Check(bytes.All(value => value < 128), "reference file uses ASCII");
         string text = Encoding.ASCII.GetString(bytes);
         Check(text.Contains("\r\n") && !text.Replace("\r\n", "").Contains('\n'), "reference file uses CRLF");
-        string[] lines = text.Split("\r\n", StringSplitOptions.RemoveEmptyEntries).Select(line => line.Trim()).ToArray();
+        string[] lines = text.Split("\r\n", StringSplitOptions.RemoveEmptyEntries).Select(line => line.Trim())
+            .Where(line => line.Length > 0 && !line.StartsWith(";", StringComparison.Ordinal)).ToArray();
         Check(lines.Take(7).Contains("G28 X0 Y0") && lines.First() == "M107", "reference starts with laser off and homes");
         Check(lines.TakeWhile(line => line != "M0").Count(line => line == "M106 S5") == 2, "reference has two S5 frame passes before the pause");
         Check(lines.Count(line => line == "M0") == 1, "reference pause");
