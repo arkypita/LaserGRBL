@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../LaserGRBL/DeviceProfiles/DeviceProfile.cs" Link="DeviceProfile.cs" />
+    <Compile Include="../../LaserGRBL/DeviceProfiles/SourceProgram.cs" Link="SourceProgram.cs" />
+    <Compile Include="../../LaserGRBL/DeviceProfiles/ProfileExporter.cs" Link="ProfileExporter.cs" />
+    <Compile Include="../../LaserGRBL/DeviceProfiles/JobPatterns.cs" Link="JobPatterns.cs" />
+    <Compile Include="../../LaserGRBL/DeviceProfiles/ManagedCardJobs.cs" Link="ManagedCardJobs.cs" />
+    <Compile Include="../../LaserGRBL/DeviceProfiles/MaterialProfiles.cs" Link="MaterialProfiles.cs" />
+  </ItemGroup>
+</Project>

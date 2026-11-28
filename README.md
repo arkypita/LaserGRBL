@@ -5,6 +5,8 @@ LaserGRBL is a Windows GUI for [GRBL](https://github.com/gnea/grbl/wiki). Unlike
 
 All downloads available at https://github.com/arkypita/LaserGRBL/releases
 
+[Device profiles, Creality CV-01 export, and Windows build instructions (Estonian)](docs/device-profiles.md)
+
 ### Support and Donation
 
 Do you like LaserGRBL? Support development with your donation!

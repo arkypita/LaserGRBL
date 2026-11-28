@@ -1,0 +1,45 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Use the installed Roslyn compiler when the legacy Windows SDK assembly linker is absent. -->
+  <PropertyGroup>
+    <GenerateSatelliteAssembliesForCore>true</GenerateSatelliteAssembliesForCore>
+    <CreateSatelliteAssembliesDependsOn>$(CreateSatelliteAssembliesDependsOn);BuildDeviceProfileSatellites</CreateSatelliteAssembliesDependsOn>
+  </PropertyGroup>
+
+  <Target Name="GetDeviceProfileAssemblyIdentity">
+    <GetAssemblyIdentity AssemblyFiles="$(IntermediateOutputPath)$(TargetName)$(TargetExt)">
+      <Output TaskParameter="Assemblies" ItemName="_DeviceProfileAssemblyIdentity" />
+    </GetAssemblyIdentity>
+  </Target>
+
+  <Target Name="BuildDeviceProfileSatellites"
+          DependsOnTargets="GetDeviceProfileAssemblyIdentity"
+          Condition="'@(_SatelliteAssemblyResourceInputs)' != ''"
+          Inputs="$(MSBuildAllProjects);@(_SatelliteAssemblyResourceInputs);$(IntermediateOutputPath)$(TargetName)$(TargetExt)"
+          Outputs="$(IntermediateOutputPath)%(Culture)\$(TargetName).resources.dll">
+    <PropertyGroup>
+      <_SatelliteDirectory>$(IntermediateOutputPath)%(_SatelliteAssemblyResourceInputs.Culture)</_SatelliteDirectory>
+      <_SatelliteSource>$(_SatelliteDirectory)\$(TargetName).resources.cs</_SatelliteSource>
+      <_SatelliteAssembly>$(_SatelliteDirectory)\$(TargetName).resources.dll</_SatelliteAssembly>
+    </PropertyGroup>
+
+    <MakeDir Directories="$(_SatelliteDirectory)" />
+    <ItemGroup>
+      <_SatelliteAttributes Include="System.Reflection.AssemblyCultureAttribute">
+        <_Parameter1>%(_SatelliteAssemblyResourceInputs.Culture)</_Parameter1>
+      </_SatelliteAttributes>
+      <_SatelliteAttributes Include="System.Reflection.AssemblyVersionAttribute">
+        <_Parameter1>@(_DeviceProfileAssemblyIdentity->'%(Version)')</_Parameter1>
+      </_SatelliteAttributes>
+      <_SatelliteCoreReference Include="@(ReferencePath)" Condition="'%(ReferencePath.Filename)' == 'mscorlib'" />
+    </ItemGroup>
+    <WriteCodeFragment AssemblyAttributes="@(_SatelliteAttributes)" Language="C#" OutputFile="$(_SatelliteSource)">
+      <Output TaskParameter="OutputFile" ItemName="FileWrites" />
+    </WriteCodeFragment>
+    <Csc Resources="@(_SatelliteAssemblyResourceInputs)" Sources="$(_SatelliteSource)"
+         OutputAssembly="$(_SatelliteAssembly)" References="@(_SatelliteCoreReference)"
+         NoConfig="true" NoLogo="true" NoStandardLib="true" TargetType="Library"
+         ToolExe="$(CscToolExe)" ToolPath="$(CscToolPath)" UseSharedCompilation="$(UseSharedCompilation)">
+      <Output TaskParameter="OutputAssembly" ItemName="FileWrites" />
+    </Csc>
+  </Target>
+</Project>

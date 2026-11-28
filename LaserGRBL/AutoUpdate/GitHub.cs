@@ -75,11 +75,13 @@ namespace LaserGRBL
 
 		public static void CheckVersion(bool manual)
 		{
+#if !DEVICE_PROFILE_EDITION
 			if (UrlManager.UpdateMain != null || UrlManager.UpdateMirror != null)
 			{
 				System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(GitHub.AsyncCheckVersion), manual);
 				System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(GitHub.AsyncDownloadDB), manual);
 			}
+#endif
 		}
 
 		private static void AsyncCheckVersion(object foo)

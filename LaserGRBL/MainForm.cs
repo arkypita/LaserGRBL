@@ -5,11 +5,13 @@
 // You should have received a copy of the GPLv3 General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,  USA. using System;
 
 using LaserGRBL.Icons;
+using LaserGRBL.DeviceProfiles;
 using LaserGRBL.UserControls;
 using LaserGRBL.WiFiConfigurator;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -25,6 +27,7 @@ namespace LaserGRBL
     {
 
         private GrblCore Core;
+		private readonly List<ProfileExportForm.JobLayer> profileLayers = new List<ProfileExportForm.JobLayer>();
 		private UsageStats.MessageData ToolBarMessage;
 		private bool IsBufferStuck = false;
 		private bool MultiRunShown = false;
@@ -38,6 +41,9 @@ namespace LaserGRBL
 			ColorScheme.CurrentScheme = Settings.GetObject("Color Schema", Scheme.CADDark);
 
 			InitializeComponent();
+			var profileExport = new ToolStripMenuItem("Seadmeprofiilid ja G-koodi eksport…");
+			profileExport.Click += (sender, eventArgs) => ShowProfileExport();
+			fileToolStripMenuItem.DropDownItems.Insert(fileToolStripMenuItem.DropDownItems.IndexOf(MnAdvancedSave) + 1, profileExport);
 			ExceptionManager.ParentMain = this;
 
 			mLineWidthMenu = new List<ToolStripMenuItem>()
@@ -712,6 +718,37 @@ namespace LaserGRBL
 		private void MnAdvancedSave_Click(object sender, EventArgs e)
 		{
 			SaveOptionForm.CreateAndShowDialog(this, Core);
+		}
+
+		private void ShowProfileExport()
+		{
+			if (profileLayers.Count == 0)
+			{
+				ProfileExportForm.JobLayer current = CaptureProfileLayer();
+				if (current != null)
+					profileLayers.Add(current);
+			}
+			try
+			{
+				using (var dialog = new ProfileExportForm(profileLayers, CaptureProfileLayer, (int)GrblCore.Configuration.MaxPWM))
+					dialog.ShowDialog(this);
+			}
+			catch (Exception ex) when (ex is System.IO.IOException || ex is UnauthorizedAccessException)
+			{
+				MessageBox.Show(this, ex.Message, "Seadmeprofiilid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
+		}
+
+		private ProfileExportForm.JobLayer CaptureProfileLayer()
+		{
+			if (!Core.CanLoadNewFile || !Core.HasProgram)
+				return null;
+			string lastFile = Settings.GetObject<string>("Core.LastOpenFile", null);
+			return new ProfileExportForm.JobLayer
+			{
+				Title = string.IsNullOrEmpty(lastFile) ? "Avatud töö" : System.IO.Path.GetFileName(lastFile),
+				Lines = Core.LoadedFile.Commands.Select(command => command.Command).ToArray()
+			};
 		}
 
 		private void MnSaveProject_Click(object sender, EventArgs e)

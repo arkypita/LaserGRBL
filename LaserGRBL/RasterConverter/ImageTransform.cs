@@ -158,7 +158,8 @@ namespace LaserGRBL.RasterConverter
 			Sierra2,
 			Sierra3,
 			SierraLight,
-			Stucki
+			Stucki,
+			BlueNoise
 		}
 
 		private static Cyotek.Drawing.Imaging.ColorReduction.IErrorDiffusion GetDitheringMode(DitheringMode mode)
@@ -181,6 +182,8 @@ namespace LaserGRBL.RasterConverter
 				return new Cyotek.Drawing.Imaging.ColorReduction.SierraLiteDithering();
 			else if (mode == DitheringMode.Stucki)
 				return new Cyotek.Drawing.Imaging.ColorReduction.StuckiDithering();
+			else if (mode == DitheringMode.BlueNoise)
+				return new BlueNoiseDithering();
 			else
 				return new Cyotek.Drawing.Imaging.ColorReduction.FloydSteinbergDithering();
 		}

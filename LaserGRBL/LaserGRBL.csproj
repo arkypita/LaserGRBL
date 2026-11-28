@@ -87,6 +87,9 @@
   <PropertyGroup>
     <StartupObject>LaserGRBL.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(DeviceProfileEdition)' == 'true'">
+    <DefineConstants>$(DefineConstants);DEVICE_PROFILE_EDITION</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -107,6 +110,16 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeviceProfiles\CardDelivery.cs" />
+    <Compile Include="DeviceProfiles\DeviceProfile.cs" />
+    <Compile Include="DeviceProfiles\JobPatterns.cs" />
+    <Compile Include="DeviceProfiles\JobPreview.cs" />
+    <Compile Include="DeviceProfiles\ManagedCardJobs.cs" />
+    <Compile Include="DeviceProfiles\MaterialProfileForm.cs" />
+    <Compile Include="DeviceProfiles\MaterialProfiles.cs" />
+    <Compile Include="DeviceProfiles\ProfileExporter.cs" />
+    <Compile Include="DeviceProfiles\ProfileExportForm.cs" />
+    <Compile Include="DeviceProfiles\SourceProgram.cs" />
     <Compile Include="Autotrace\AutotraceTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -931,6 +944,7 @@
     </Compile>
     <Compile Include="RasterConverter\Dithering\ArgbColor.cs" />
     <Compile Include="RasterConverter\Dithering\AtkinsonDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\BlueNoiseDithering.cs" />
     <Compile Include="RasterConverter\Dithering\BurkesDithering.cs" />
     <Compile Include="RasterConverter\Dithering\ErrorDiffusionDithering.cs" />
     <Compile Include="RasterConverter\Dithering\FloydSteinbergDithering.cs" />
@@ -2562,6 +2576,7 @@
     <Folder Include="SvgLibrary\Web\Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\scripts\device-profile-satellites.targets" Condition="'$(DeviceProfileEdition)' == 'true'" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
