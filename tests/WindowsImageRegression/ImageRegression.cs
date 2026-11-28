@@ -13,6 +13,13 @@ using LaserGRBL.SvgConverter;
 
 public static class ImageRegression
 {
+    public static int Main(string[] args)
+    {
+        if (args.Length != 1)
+            throw new ArgumentException("Provide the temporary fixture directory.");
+        Run(args[0]);
+        return 0;
+    }
     private const BindingFlags InternalInstance = BindingFlags.Instance | BindingFlags.NonPublic;
     private const BindingFlags InternalStatic = BindingFlags.Static | BindingFlags.NonPublic;
     private const int SourceMax = 1000;
