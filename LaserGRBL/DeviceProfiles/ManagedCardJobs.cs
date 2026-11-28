@@ -29,16 +29,16 @@ namespace LaserGRBL.DeviceProfiles
 			if (extension != null && extension.StartsWith(".", StringComparison.Ordinal))
 				extension = extension.Substring(1);
 			if (extension == null || !Extension.IsMatch(extension))
-				throw new ArgumentException("The card file extension must contain 1–12 ASCII letters or digits.", "extension");
+				throw new ArgumentException("Kaardifaili laiendis peab olema 1–12 ASCII tähte või numbrit.", "extension");
 			return "LASERGRB." + extension.ToLowerInvariant();
 		}
 
 		internal static void Replace(ICardFiles files, string name, byte[] program)
 		{
 			if (program == null || program.Length == 0)
-				throw new ArgumentException("The validated job is empty.", "program");
+				throw new ArgumentException("Kontrollitud tööfail on tühi.", "program");
 			if (!Record.IsMatch(name + " " + new string('0', 64)))
-				throw new ArgumentException("The card job name is invalid.", "name");
+				throw new ArgumentException("Kaardi tööfaili nimi on vigane.", "name");
 
 			byte[] previousManifest = files.ReadManifest();
 			var owned = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -48,13 +48,13 @@ namespace LaserGRBL.DeviceProfiles
 				if (onCard == null)
 					continue;
 				if (!group.Any(entry => onCard == entry.Value))
-					throw new IOException(group.Key + " was changed outside LaserGRBL. Move it off the card before saving a new job.");
+					throw new IOException("Faili " + group.Key + " muudeti väljaspool LaserGRBL-i. Tõsta see enne uue töö salvestamist kaardilt mujale.");
 				owned.Add(group.Key, onCard);
 			}
 
 			string previousJobHash;
 			if (!owned.TryGetValue(name, out previousJobHash) && files.ReadJobHash(name) != null)
-				throw new IOException(name + " exists without a matching LaserGRBL manifest. Move it off the card before saving a new job.");
+				throw new IOException("Kaardil on samanimeline fail " + name + ". Tõsta see enne uue töö salvestamist kaardilt mujale.");
 
 			// The journal accepts both the old and new hashes until the new job has been read back.
 			// An interrupted replacement can therefore be retried without treating either file as foreign.
@@ -77,12 +77,12 @@ namespace LaserGRBL.DeviceProfiles
 				yield break;
 			string[] lines = Encoding.ASCII.GetString(content).Split('\n');
 			if (content.Length > MaxManifestLength || lines.Length < 3 || lines[0] != ManifestHeader || lines[lines.Length - 1] != "")
-				throw new IOException(ManifestName + " is not a recognized LaserGRBL card manifest.");
+				throw new IOException("LaserGRBL ei tuvasta kaardi tööde nimekirja " + ManifestName + ".");
 			for (int i = 1; i < lines.Length - 1; i++)
 			{
 				Match match = Record.Match(lines[i]);
 				if (!match.Success)
-					throw new IOException(ManifestName + " contains an invalid entry.");
+					throw new IOException("Kaardi tööde nimekirjas " + ManifestName + " on vigane kirje.");
 				yield return new KeyValuePair<string, string>(match.Groups[1].Value, match.Groups[2].Value);
 			}
 		}
@@ -93,7 +93,7 @@ namespace LaserGRBL.DeviceProfiles
 			foreach (var entry in entries.Distinct())
 				text.Append(entry.Key).Append(' ').Append(entry.Value).Append('\n');
 			if (text.Length > MaxManifestLength)
-				throw new IOException("The LaserGRBL card manifest has too many entries.");
+				throw new IOException("Kaardi LaserGRBL-i tööde nimekirjas on liiga palju kirjeid.");
 			return Encoding.ASCII.GetBytes(text.ToString());
 		}
 

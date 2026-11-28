@@ -13,7 +13,7 @@ namespace LaserGRBL.DeviceProfiles
 {
 	internal static class CardDelivery
 	{
-		private const string Title = "Save to SD card";
+		private const string Title = "Salvesta mälukaardile";
 
 		internal static void ShowDialog(IWin32Window parent, byte[] validatedProgram, string extension)
 		{
@@ -21,7 +21,7 @@ namespace LaserGRBL.DeviceProfiles
 			List<WindowsCard> cards = WindowsCard.FindRemovableCards();
 			if (cards.Count == 0)
 			{
-				MessageBox.Show(parent, "Insert a writable memory card that Windows reports as removable.", Title,
+				MessageBox.Show(parent, "Sisesta kirjutatav mälukaart, mille Windows tuvastab eemaldatava kettana.", Title,
 					MessageBoxButtons.OK, MessageBoxIcon.Information);
 				return;
 			}
@@ -32,13 +32,13 @@ namespace LaserGRBL.DeviceProfiles
 			using (var worker = new BackgroundWorker())
 			{
 				var label = new Label { Location = new Point(12, 12), Size = new Size(461, 48),
-					Text = "Select a card to save " + fileName + ". Only previous jobs identified by the LaserGRBL card manifest can be replaced." };
+					Text = "Vali kaart, kuhu salvestada " + fileName + ". LaserGRBL asendab ainult kaardil registreeritud varasemad tööd." };
 				var choice = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList, Location = new Point(12, 65), Width = 461 };
 				foreach (WindowsCard card in cards)
 					choice.Items.Add(card);
 				var status = new Label { Location = new Point(12, 101), Size = new Size(461, 20) };
-				var save = new Button { Location = new Point(253, 130), Size = new Size(137, 28), Text = "Replace and eject", Enabled = false };
-				var cancel = new Button { Location = new Point(398, 130), Size = new Size(75, 28), Text = "Cancel", DialogResult = DialogResult.Cancel };
+				var save = new Button { Location = new Point(253, 130), Size = new Size(137, 28), Text = "Asenda ja väljuta", Enabled = false };
+				var cancel = new Button { Location = new Point(398, 130), Size = new Size(75, 28), Text = "Loobu", DialogResult = DialogResult.Cancel };
 				dialog.Controls.AddRange(new Control[] { label, choice, status, save, cancel });
 				dialog.CancelButton = cancel;
 
@@ -48,7 +48,7 @@ namespace LaserGRBL.DeviceProfiles
 				{
 					var selected = (WindowsCard)choice.SelectedItem;
 					choice.Enabled = save.Enabled = cancel.Enabled = false;
-					status.Text = "Writing, verifying SHA-256 and ejecting…";
+					status.Text = "Salvestan, kontrollin SHA-256 summat ja väljutan kaardi…";
 					dialog.UseWaitCursor = true;
 					worker.RunWorkerAsync(selected);
 				};
@@ -57,14 +57,14 @@ namespace LaserGRBL.DeviceProfiles
 				{
 					dialog.UseWaitCursor = false;
 					if (args.Error != null)
-						MessageBox.Show(dialog, "Card export did not finish. The card was not ejected.\n\n" + args.Error.Message,
+						MessageBox.Show(dialog, "Salvestamine jäi pooleli. Kaardi väljutamine jäi kinnitamata.\n\n" + args.Error.Message,
 							Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 					else if (args.Result is string)
-						MessageBox.Show(dialog, fileName + " was saved and verified. Windows could not eject this card. " +
-							"Use Windows Safely Remove Hardware before removing it.\n\n" + args.Result,
+						MessageBox.Show(dialog, "Fail " + fileName + " on salvestatud ja kontrollitud. " +
+							"Eemalda kaart Windowsi turvalise eemaldamise menüüst.\n\n" + args.Result,
 							Title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					else
-						MessageBox.Show(dialog, fileName + " was saved, verified and ejected.", Title,
+						MessageBox.Show(dialog, "Fail " + fileName + " on salvestatud ja kontrollitud. Kaart on väljutatud.", Title,
 							MessageBoxButtons.OK, MessageBoxIcon.Information);
 					dialog.Close();
 				};
@@ -102,32 +102,32 @@ namespace LaserGRBL.DeviceProfiles
 		private static WindowsCard Identify(string root)
 		{
 			if (Native.GetDriveType(root) != (uint)DriveType.Removable)
-				throw new IOException("The selected drive is not a removable card.");
+				throw new IOException("Windows ei tuvasta valitud ketast eemaldatavana.");
 			var volume = new StringBuilder(64);
 			if (!Native.GetVolumeNameForVolumeMountPoint(root, volume, (uint)volume.Capacity))
-				throw Native.Error("Cannot identify the card volume");
+				throw Native.Error("Kaardi ketta tuvastamine ebaõnnestus");
 			var label = new StringBuilder(261);
 			uint serial;
 			uint maxComponentLength;
 			uint flags;
 			if (!Native.GetVolumeInformation(volume.ToString(), label, (uint)label.Capacity, out serial, out maxComponentLength,
 				out flags, null, 0))
-				throw Native.Error("Cannot read card volume information");
+				throw Native.Error("Kaardi kettaandmete lugemine ebaõnnestus");
 			if ((flags & Native.FileReadOnlyVolume) != 0)
-				throw new IOException("The card is write-protected.");
+				throw new IOException("Kaart on kirjutuskaitstud.");
 			return new WindowsCard(root, volume.ToString(), serial, label.ToString());
 		}
 
 		public override string ToString()
 		{
-			return root + "  " + (label.Length == 0 ? "Unlabelled" : label) + "  (" + serial.ToString("X8") + ")";
+			return root + "  " + (label.Length == 0 ? "Nimeta" : label) + "  (" + serial.ToString("X8") + ")";
 		}
 
 		private void VerifyIdentity()
 		{
 			WindowsCard current = Identify(root);
 			if (!string.Equals(volume, current.volume, StringComparison.OrdinalIgnoreCase) || serial != current.serial)
-				throw new IOException("The selected card changed. Select the intended card again.");
+				throw new IOException("Valitud kaart on vahetunud. Vali soovitud kaart uuesti.");
 		}
 
 		internal string SaveAndEject(string name, byte[] program)
@@ -138,7 +138,7 @@ namespace LaserGRBL.DeviceProfiles
 				try { owned = mutex.WaitOne(0); }
 				catch (AbandonedMutexException) { owned = true; }
 				if (!owned)
-					throw new IOException("LaserGRBL is already writing to this card.");
+					throw new IOException("LaserGRBL kirjutab juba sellele kaardile.");
 				try
 				{
 					VerifyIdentity();
@@ -158,7 +158,7 @@ namespace LaserGRBL.DeviceProfiles
 				if (stream == null)
 					return null;
 				if (stream.Length > ManagedCardJobs.MaxManifestLength)
-					throw new IOException("The card manifest is too large.");
+					throw new IOException("Kaardi LaserGRBL-i tööde nimekiri on liiga mahukas.");
 				using (var bytes = new MemoryStream())
 				{
 					stream.CopyTo(bytes);
@@ -194,16 +194,19 @@ namespace LaserGRBL.DeviceProfiles
 					writer.Flush(true);
 				}
 				if (ReadHash(staged) != expected)
-					throw new IOException("The staged card file failed SHA-256 verification.");
+					throw new IOException("Kaardi ajutise faili SHA-256 kontrollsumma ei klapi.");
 				VerifyIdentity();
 				if (previousHash != null)
+				{
 					backup = BackUpVerifiedFile(name, previousHash);
+					VerifyIdentity();
+				}
 				// Omitting replace flags leaves a file that appeared at the destination untouched.
 				if (!Native.MoveFileEx(volume + staged, volume + name, Native.MoveWriteThrough))
-					throw Native.Error("Cannot install " + name + " on the card");
+					throw Native.Error("Faili " + name + " kaardile paigutamine ebaõnnestus");
 				created = false;
 				if (ReadHash(name) != expected)
-					throw new IOException(name + " failed SHA-256 verification after writing.");
+					throw new IOException("Faili " + name + " SHA-256 kontrollsumma ei klapi.");
 				if (backup != null)
 					DeleteVerifiedJob(backup, previousHash);
 			}
@@ -213,7 +216,7 @@ namespace LaserGRBL.DeviceProfiles
 					throw;
 				if (created && RestoreBackup(backup, name, previousHash))
 					throw;
-				throw new IOException(original.Message + " The previous file was retained as " + backup + ".", original);
+				throw new IOException(original.Message + " Eelmine fail on varukoopiana nimega " + backup + ".", original);
 			}
 			finally
 			{
@@ -230,7 +233,7 @@ namespace LaserGRBL.DeviceProfiles
 			using (FileStream stream = OpenRegular(name, Native.GenericRead | Native.Delete, Native.OpenExisting, FileAccess.Read, true))
 			{
 				if (stream == null || ManagedCardJobs.Hash(stream) != expectedHash)
-					throw new IOException(name + " changed while the card was being written.");
+					throw new IOException("Fail " + name + " muutus kaardile kirjutamise ajal.");
 				string backup = "_LGRBL-" + Guid.NewGuid().ToString("N") + ".bak";
 				// A handle-based rename keeps the checked file open against concurrent writes and deletions.
 				Native.RenameVerifiedHandle(stream.SafeFileHandle, volume + backup, name);
@@ -256,11 +259,11 @@ namespace LaserGRBL.DeviceProfiles
 				if (stream == null)
 					return;
 				if (ManagedCardJobs.Hash(stream) != expectedHash)
-					throw new IOException(name + " changed and was kept on the card.");
+					throw new IOException("Fail " + name + " oli muudetud ja jäeti kaardile alles.");
 				// Deleting the hashed handle prevents a path replacement from redirecting the deletion.
 				byte deleteOnClose = 1;
 				if (!Native.SetFileInformationByHandle(stream.SafeFileHandle, Native.FileDispositionInfo, ref deleteOnClose, 1))
-					throw Native.Error("Cannot remove the previous LaserGRBL job " + name);
+					throw Native.Error("Varasema LaserGRBL-i faili " + name + " kustutamine ebaõnnestus");
 			}
 		}
 
@@ -276,17 +279,17 @@ namespace LaserGRBL.DeviceProfiles
 				handle.Dispose();
 				if (optional && error == Native.ErrorFileNotFound)
 					return null;
-				throw Native.Error("Cannot open " + name + " on the card", error);
+				throw Native.Error("Kaardil oleva faili " + name + " avamine ebaõnnestus", error);
 			}
 			try
 			{
 				Native.FileInformation info;
 				if (!Native.GetFileInformationByHandle(handle, out info))
-					throw Native.Error("Cannot verify card file " + name);
+					throw Native.Error("Kaardifaili " + name + " kontrollimine ebaõnnestus");
 				const FileAttributes protectedAttributes = FileAttributes.Directory | FileAttributes.ReparsePoint |
 					FileAttributes.System | FileAttributes.Hidden | FileAttributes.ReadOnly;
 				if (info.VolumeSerial != serial || info.NumberOfLinks != 1 || (info.Attributes & protectedAttributes) != 0)
-					throw new IOException(name + " is not a regular writable file on the selected card.");
+					throw new IOException("Fail " + name + " pole valitud kaardil tavaline kirjutatav fail.");
 				return new FileStream(handle, streamAccess, 65536);
 			}
 			catch
@@ -303,15 +306,15 @@ namespace LaserGRBL.DeviceProfiles
 				(uint)(FileShare.Read | FileShare.Write), IntPtr.Zero, Native.OpenExisting, 0, IntPtr.Zero))
 			{
 				if (handle.IsInvalid)
-					throw Native.Error("Cannot open the card for ejection");
+					throw Native.Error("Kaardi avamine väljutamiseks ebaõnnestus");
 				uint transferred;
 				if (!Native.DeviceIoControl(handle, Native.LockVolume, null, 0, IntPtr.Zero, 0, out transferred, IntPtr.Zero))
-					throw Native.Error("Cannot lock the card volume");
+					throw Native.Error("Kaardi ketta lukustamine ebaõnnestus");
 				if (!Native.DeviceIoControl(handle, Native.DismountVolume, null, 0, IntPtr.Zero, 0, out transferred, IntPtr.Zero))
-					throw Native.Error("Cannot dismount the card volume");
+					throw Native.Error("Kaardi failisüsteemi lahtiühendamine ebaõnnestus");
 				Native.DeviceIoControl(handle, Native.AllowMediaRemoval, new byte[] { 0 }, 1, IntPtr.Zero, 0, out transferred, IntPtr.Zero);
 				if (!Native.DeviceIoControl(handle, Native.EjectMedia, null, 0, IntPtr.Zero, 0, out transferred, IntPtr.Zero))
-					throw Native.Error("The card reader did not accept the eject request");
+					throw Native.Error("Kaardilugeja lükkas väljutamistaotluse tagasi");
 			}
 		}
 
@@ -389,7 +392,7 @@ namespace LaserGRBL.DeviceProfiles
 				Buffer.BlockCopy(BitConverter.GetBytes(pathBytes.Length - sizeof(char)), 0, info, lengthOffset, sizeof(uint));
 				Buffer.BlockCopy(pathBytes, 0, info, nameOffset, pathBytes.Length);
 				if (!SetRenameInformation(handle, FileRenameInfo, info, (uint)info.Length))
-					throw Error("Cannot preserve the previous file " + name);
+					throw Error("Varasema faili " + name + " varundamine ebaõnnestus");
 			}
 
 			internal static IOException Error(string operation)

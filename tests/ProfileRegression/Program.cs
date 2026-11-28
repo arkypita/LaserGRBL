@@ -78,6 +78,8 @@ internal static class Program
             profile.Overscan = 1.75m;
             profile.WorkFeed = 333.5m;
             profile.PreviewPasses = 3;
+            profile.FrameByDefault = true;
+            profile.PauseByDefault = true;
             profile.LineEndings = "LF";
             profile.Write(path);
 
@@ -89,6 +91,7 @@ internal static class Program
             Check(restored.Overscan == profile.Overscan && restored.WorkFeed == profile.WorkFeed, "decimal round trip");
             Check(restored.LaserOn == profile.LaserOn && restored.LaserOff == profile.LaserOff, "laser commands round trip");
             Check(restored.PreviewPasses == 3 && restored.LineEndings == "LF", "output options round trip");
+            Check(restored.FrameByDefault && restored.PauseByDefault, "frame and pause settings round trip");
         }
         finally
         {
@@ -140,7 +143,7 @@ internal static class Program
 
         Check(!job.Bytes.Contains((byte)'\r'), "LF output");
         Check(pause > 0, "explicit pause after framing");
-        Check(PowerLevels(lines.Take(pause)).All(power => power == 5), "framing only uses S5");
+        Check(PowerLevels(lines.Take(pause)).SequenceEqual(new decimal[] { 5, 5 }), "each frame pass uses S5");
         Check(lines.Take(pause).Count(line => IsCommand(line, "G1")) == 8, "two frame laps");
         Check(PowerLevels(lines.Skip(pause)).SequenceEqual(new decimal[] { 128 }), "work after pause");
         Check(lines.Contains("M400"), "configured synchronization");
@@ -164,6 +167,10 @@ internal static class Program
         Check(lines.Any(line => Word(line, 'X') == 6 && Word(line, 'Y') == 25), "4 mm lead-in");
         Check(lines.Any(line => Word(line, 'X') == 24 && Word(line, 'Y') == 25), "4 mm lead-out");
         VerifyCv01Safety(lines, profile, false);
+
+        var edge = Layer("M4 S0", "G0 X2 Y25", "G1 X20 F900 S1000", "M5");
+        edge.ApplyOverscan = true;
+        Reject(() => Export(profile, edge));
     }
 
     private static void OriginAndAxisDirectionsAreApplied()
@@ -233,6 +240,10 @@ internal static class Program
 
         profile = DeviceProfile.CreateCv01();
         profile.LaserOn = "M106 P1 S{power}";
+        Reject(profile.Validate);
+
+        profile = DeviceProfile.CreateCv01();
+        profile.MaxPower = 256;
         Reject(profile.Validate);
 
         profile = DeviceProfile.CreateCv01();

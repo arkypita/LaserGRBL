@@ -377,8 +377,8 @@ namespace LaserGRBL.DeviceProfiles
 				warnings.Add(material.Notes);
 			if (frame.Checked)
 				warnings.Add("Fail alustab seadmes madala võimsusega laserraamimisega.");
-			if (string.Equals(profile.Name, "Creality CV-01", StringComparison.OrdinalIgnoreCase))
-				warnings.Add("CV-01 PWM-i ajastus vajab kinnitamist sellel seadmel.");
+			if (profile.LaserOn.StartsWith("M106 ", StringComparison.Ordinal))
+				warnings.Add("Ventilaatoriväljundi PWM-i ajastus vajab kinnitamist seadme püsivaral.");
 			if (warnings.Count != 0 && MessageBox.Show(this, string.Join("\n\n", warnings) + "\n\nKas salvestada G-kood?",
 				"Kontrolli töö seadistust", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
 				return null;

@@ -944,6 +944,7 @@
     </Compile>
     <Compile Include="RasterConverter\Dithering\ArgbColor.cs" />
     <Compile Include="RasterConverter\Dithering\AtkinsonDithering.cs" />
+    <Compile Include="RasterConverter\Dithering\BlueNoiseDithering.cs" />
     <Compile Include="RasterConverter\Dithering\BurkesDithering.cs" />
     <Compile Include="RasterConverter\Dithering\ErrorDiffusionDithering.cs" />
     <Compile Include="RasterConverter\Dithering\FloydSteinbergDithering.cs" />
@@ -2575,6 +2576,7 @@
     <Folder Include="SvgLibrary\Web\Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\scripts\device-profile-satellites.targets" Condition="'$(DeviceProfileEdition)' == 'true'" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

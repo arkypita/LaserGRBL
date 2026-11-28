@@ -15,7 +15,7 @@ Profiilieksport loeb olemasoleva muunduri väljundit. Uus järjekord, koordinaat
 
 ## Töö koostamine
 
-1. Ava PNG, JPG või SVG LaserGRBL-is. Vali pildi muunduris mustvalge, halltoonid, rasterhajutus või vektorrajad. Nimeta eri toimingute lähtefailid eraldi, kui graveerimine, voltimisjoon ja lõikamine vajavad eri seadeid.
+1. Ava PNG, JPG või SVG LaserGRBL-is. Vali pildi muunduris mustvalge, halltoonid, rasterhajutus või vektorrajad. Rasterhajutuse valikutes on ka **BlueNoise**. Nimeta eri toimingute lähtefailid eraldi, kui graveerimine, voltimisjoon ja lõikamine vajavad eri seadeid.
 2. Ava **File → Seadmeprofiilid ja G-koodi eksport**. Vali **Creality CV-01** või impordi enda profiil. Lisa avatud töö, GRBL-fail või testmuster. Väljal **Algtöö max. S** peab olema lähte-G-koodi võimsusskaala.
 3. Määra iga rea toiming ja läbimised. Materjali seaded jõustuvad real, millel valid **Kasuta materjali**. Järjekord on graveerimine, voltimisjoon ja lõikamine. Sama toimingu read säilitavad lisamisjärjestuse. Kasuta **Kiirendusvaru** ainult horisontaalsel rasterkihil ja jäta CV-01-l tööjälje mõlemasse serva vähemalt 4 mm vaba ruumi.
 4. Vali **Eelvaade ekraanil** ja kontrolli töö mõõte. Vali soovi korral **Raami seadmes laseriga** ja **Paus enne tööd**. Salvesta G-kood või kasuta **Tühjenda ja salvesta KAART**.
@@ -26,7 +26,7 @@ Materjalil on eraldi võimsus, kiirus, läbimiste arv ja katsetamise olek iga to
 
 ## Profiil ja valideerimine
 
-Profiile saab salvestada ning importida ja eksportida JSON-failina. Kohustuslikud väljad määravad vorminguversiooni `"Version": 1`, nime, tööala, töö- ja kiirliikumise kiirused, võimsuse ülempiiri, laserikäskude paari, faililaiendi ja reavahetuse `LF` või `CRLF`. Nullpunkt, telgede peegeldus, kiirendusvaru, miinimumvõimsus, raamimine, paus ning algus- ja lõpukäsud on valikulised. Kohatäide `{power}` asendub täisarvulise väljundvõimsusega.
+Profiile saab salvestada ning importida ja eksportida JSON-failina. Kohustuslikud väljad määravad vorminguversiooni `"Version": 1`, nime, tööala, töö- ja kiirliikumise kiirused, võimsuse ülempiiri, laserikäskude paari, faililaiendi ja reavahetuse `LF` või `CRLF`. Nullpunkt, telgede peegeldus, kiirendusvaru, miinimumvõimsus, raamimine, paus ning algus- ja lõpukäsud on valikulised. `FrameByDefault` ja `PauseByDefault` määravad ekspordidialoogi vaikeseaded. Kohatäide `{power}` asendub täisarvulise väljundvõimsusega.
 
 Lubatud väljundpaarid on `M3/M4` koos `M5` ja `M106` koos `M107` või `M106 S0`. Marlini puhul peab sisselülitus ja väljalülitus kasutama sama ventilaatori väljundit. Algus- ja lõpukäsud piirduvad ühikute, koordinaadirežiimi ning käsustikule sobiva nullimise ja sünkroonimisega. Profiilieksport ei ava jadaporti ega käivita laserit. LaserGRBL-i tavalisi käivitamise juhtnuppe tuleb kasutada eraldi ja ainult sobiva seadmega.
 
@@ -54,6 +54,7 @@ Windowsis kasuta Visual Studio 2022 Build Toolsi koos MSBuildiga.
 
 ```powershell
 powershell -NoProfile -File .\scripts\build-device-profiles.ps1
+powershell -NoProfile -File .\tests\WindowsImageRegression\Run.ps1 -App .\artifacts\device-profiles\app\LaserGRBL.exe
 ```
 
 Paigaldaja ja selle SHA-256 fail ilmuvad kausta `artifacts\device-profiles\installer`. Paigaldus lisab eraldi programmi ja kasutajaseadete kausta. `-SkipInstaller` koostab ainult rakenduse.
@@ -62,4 +63,4 @@ Paigaldaja ja selle SHA-256 fail ilmuvad kausta `artifacts\device-profiles\insta
 dotnet run --project tests/ProfileRegression/ProfileRegression.csproj --configuration Release
 ```
 
-Eraldiseisev testikomplekt kontrollib profiili JSON-i, GRBL-i modaalset sisendit ja kaari, väljundi vormingut ja võimsust, tööala ning kiirendusvaru, kihte ja kordusi, raamimist, pausi, väljalülitamise järjekorda, testmustrite mõõte ning mälukaardi failide omandit ja katkestusest taastumist. Lisa argumendid `-- --cv01-reference <näidisfaili tee>`, et kontrollida ka kasutaja varem töötanud joonlauafaili. CV-01 tegelik PWM-i ajastus, füüsilise SD-kaardi eemaldamine ja kõigi pilditöötlusrežiimide visuaalne korduskatse vajavad kinnitamist.
+Eraldiseisev testikomplekt kontrollib profiili JSON-i, GRBL-i modaalset sisendit ja kaari, väljundi vormingut ja võimsust, tööala ning kiirendusvaru, kihte ja kordusi, raamimist, pausi, väljalülitamise järjekorda, testmustrite mõõte ning mälukaardi failide omandit ja katkestusest taastumist. Lisa argumendid `-- --cv01-reference <näidisfaili tee>`, et kontrollida ka kasutaja varem töötanud joonlauafaili. Windowsi integratsioonitestid käitavad PNG, JPG ja SVG muundamist, sealhulgas rasterhajutust ja vektorkontuure. CV-01 tegelik PWM-i ajastus ja füüsilise SD-kaardi eemaldamine vajavad seadmekatset.
